@@ -1,0 +1,96 @@
+
+<refentry id="mididefault">
+<indexterm id="IndexMididefault"><primary>mididefault</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:MIDI/Score Interoperability</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>mididefault</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>mididefault</refname>
+    <refpurpose>
+      Changes values, depending on MIDI activation.
+          </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>mididefault</emphasis> is designed to simplify writing instruments that can be used interchangeably for either score or MIDI input, and to make it easier to adapt instruments originally written for score input to work with MIDI input.
+    </para>
+
+    <para>
+      In general, it should be possible to write instrument definitions that work identically with both scores
+and MIDI, including both MIDI files and real-time MIDI input, without using any conditional statements, and that take full advantage of MIDI voice messages.
+    </para>
+
+    <para>
+      Note that correlating Csound instruments with MIDI channel numbers is done using the <link linkend="massign"><citetitle>massign</citetitle></link> opcode for real-time performance,.  For file-driven performance, instrument numbers default to MIDI channel number + 1, but the defaults are overridden by any MIDI program change messages in the file.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>mididefault</command> xdefault, xvalue</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>xdefault</emphasis> -- specifies a default value that will be used during MIDI activation.
+    </para>
+
+    <para>
+      <emphasis>xvalue</emphasis> -- overwritten by <emphasis>xdefault</emphasis> during MIDI activation, remains unchanged otherwise.
+    </para>
+
+    <para>
+      If the instrument was activated by MIDI input, the opcode will overwrite the value of <emphasis>xvalue</emphasis> with the value of <emphasis>xdefault</emphasis>. If the instrument was <emphasis>NOT</emphasis> activated by MIDI input, <emphasis>xvalue</emphasis> will remain unchanged.
+    </para>
+
+    <para>
+      This enables score pfields to receive a default value during MIDI activation, and score values otherwise.
+    </para>
+
+    <note>
+      <title>Adapting a score-activated Csound instrument.</title>
+      <para>See the <link linkend="MidiInterop"><citetitle>MIDI interop opcodes</citetitle></link> section for details on adapting score driven instruments for MIDI or vice-versa.</para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the mididefault opcode. It uses the file <ulink url="examples/mididefault.csd"><citetitle>mididefault.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the mididefault opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/mididefault.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="midichannelaftertouch"><citetitle>midichannelaftertouch</citetitle></link>, 
+      <link linkend="midicontrolchange"><citetitle>midicontrolchange</citetitle></link>, 
+      <link linkend="midinoteoff"><citetitle>midinoteoff</citetitle></link>, 
+      <link linkend="midinoteoncps"><citetitle>midinoteoncps</citetitle></link>, 
+      <link linkend="midinoteonkey"><citetitle>midinoteonkey</citetitle></link>, 
+      <link linkend="midinoteonoct"><citetitle>midinoteonoct</citetitle></link>, 
+      <link linkend="midinoteonpch"><citetitle>midinoteonpch</citetitle></link>, 
+      <link linkend="midipitchbend"><citetitle>midipitchbend</citetitle></link>, 
+      <link linkend="midipolyaftertouch"><citetitle>midipolyaftertouch</citetitle></link>, 
+      <link linkend="midiprogramchange"><citetitle>midiprogramchange</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: Michael Gogins</para>
+    <para>New in version 4.20</para>
+  </refsect1>
+</refentry>

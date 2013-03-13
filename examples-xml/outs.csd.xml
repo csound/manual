@@ -1,0 +1,41 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac    <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o outs.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1
+
+asig <emphasis role="opc">vco2</emphasis> .01, 110	<emphasis role="comment">; sawtooth waveform at low volume</emphasis>
+<emphasis role="comment">;filter a channel</emphasis>
+kcut1 <emphasis role="opc">line</emphasis> 60, p3, 300	<emphasis role="comment">; Vary cutoff frequency</emphasis>
+kresonance1 <emphasis role="op">=</emphasis> 3
+inumlayer1 <emphasis role="op">=</emphasis> 3
+asig1 <emphasis role="opc">lowresx</emphasis> asig, kcut1, kresonance1, inumlayer1
+<emphasis role="comment">;filter the other channel</emphasis>
+kcut2 <emphasis role="opc">line</emphasis> 300, p3, 60	<emphasis role="comment">; Vary cutoff frequency</emphasis>
+kresonance2 <emphasis role="op">=</emphasis> 3
+inumlayer2 <emphasis role="op">=</emphasis> 3
+asig2 <emphasis role="opc">lowresx</emphasis> asig, kcut2, kresonance2, inumlayer2
+
+      <emphasis role="opc">outs</emphasis> asig1, asig2	<emphasis role="comment">; output both channels 1 &amp; 2</emphasis>
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1 0 3
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

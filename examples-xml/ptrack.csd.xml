@@ -1,0 +1,40 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac   <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o ptrack.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100 
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32 
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1 
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+
+<emphasis role="oblock">instr</emphasis> 1
+
+ihop  <emphasis role="op">=</emphasis> p4
+aout  <emphasis role="opc">diskin2</emphasis> "fox.wav",1, 0, 1
+kf,ka <emphasis role="opc">ptrack</emphasis> aout, ihop	<emphasis role="comment">; pitch track with different hopsizes</emphasis>
+kcps  <emphasis role="opc">port</emphasis> kf, 0.01	<emphasis role="comment">; smooth freq</emphasis>
+kamp  <emphasis role="opc">port</emphasis> ka, 0.01	<emphasis role="comment">; smooth amp</emphasis>
+<emphasis role="comment">; drive an oscillator</emphasis>
+asig  <emphasis role="opc">poscil</emphasis> <emphasis role="opc">ampdb</emphasis>(kamp)<emphasis role="op">*</emphasis>0dbfs, kcps, 1
+      <emphasis role="opc">outs</emphasis>  asig, asig
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="comment">; simple sine wave</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 4096 10 1
+
+<emphasis role="stamnt">i</emphasis> 1 0  5 128
+<emphasis role="stamnt">i</emphasis> 1 6  5 512
+<emphasis role="stamnt">i</emphasis> 1 12 5 1024
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

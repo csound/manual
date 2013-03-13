@@ -1,0 +1,105 @@
+
+<refentry id="setctrl">
+<indexterm id="IndexSetctrl"><primary>setctrl</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>setctrl</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>setctrl</refname>
+    <refpurpose>
+      Configurable slider controls for realtime user input.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Configurable slider controls for realtime user input. Requires Winsound or TCL/TK. <emphasis>setctrl</emphasis> sets a slider to a specific value, or sets a minimum or maximum range.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>setctrl</command> inum, ival, itype</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      Note that this opcode is not available on Windows due to the implimentation of pipes on that system 
+    </para>
+     <para>
+      <emphasis>inum</emphasis> -- number of the slider to set
+    </para>
+
+    <para>
+      <emphasis>ival</emphasis> -- value to be sent to the slider
+    </para>
+
+    <para>
+      <emphasis>itype</emphasis> -- type of value sent to the slider as follows:
+      <itemizedlist>
+        <listitem><para>1 -- set the current value. Initial value is 0.</para></listitem>
+        <listitem><para>2 -- set the minimum value. Default is 0.</para></listitem>
+        <listitem><para>3 -- set the maximum value. Default is 127.</para></listitem>
+        <listitem><para>4 -- set the label. (New in Csound version 4.09)</para></listitem>
+      </itemizedlist>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      Calling <emphasis>setctrl</emphasis> will create a new slider on the screen. There is no theoretical limit to the number of sliders. Windows and TCL/TK use only integers for slider values, so the values may need rescaling. GUIs usually pass values at a fairly slow rate, so it may be advisable to pass the output of control through <emphasis>port</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the setctrl opcode. It uses the file <ulink url="examples/setctrl.csd"><citetitle>setctrl.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the setctrl opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/setctrl.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Its output should include lines like this:
+      <screen>
+ i1    38.00000
+ i1    40.00000
+ i1    43.00000
+      </screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="control"><citetitle>control</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>University of Bath, Codemist. Ltd.</member>
+        <member>Bath, UK</member>
+        <member>May 2000</member>
+      </simplelist>
+    </para>
+    <para>Example written by &namekevin;.</para>
+
+    <para>New in Csound version 4.06</para>
+  </refsect1>
+</refentry>

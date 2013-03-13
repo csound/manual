@@ -1,0 +1,87 @@
+
+<refentry id="vexp_i">
+<indexterm id="IndexVexp_i"><primary>vexp_i</primary></indexterm>
+  <refentryinfo><title>Vectorial:Scalar operations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vexp_i</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vexp_i</refname>
+    <refpurpose>
+      Performs power-of operations between a vector and a scalar
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Performs power-of operations between a vector and a scalar
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>vexp_i</command>  ifn, ival, ielements[, idstoffset]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifn</emphasis> - number of the table hosting the vectorial signal to be processed
+    </para>
+    <para>
+      <emphasis>ival</emphasis> - scalar operand to be processed
+    </para>
+    <para>
+      <emphasis>ielements</emphasis> - number of elements of the vector
+    </para>
+    <para>
+      <emphasis>ival</emphasis> - scalar value to be added
+    </para>
+    <para>
+      <emphasis>idstoffset</emphasis> - index offset for the destination table
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>vexp_i</emphasis> rises <emphasis>ival</emphasis> to each element contained in a vector from table <emphasis>ifn</emphasis>, starting from table index <emphasis>idstoffset</emphasis>. This enables you to process a specific section of a table by specifying the offset and the number of elements to be processed. Offset is counted starting from 0, so if no offset is specified (or set to 0), the table will be modified from the beginning.
+    </para>
+    <para>
+      Negative values for <emphasis>idstoffset</emphasis> are valid. Elements from the vector that are outside the table, will be discarded, and they will not wrap around the table.
+    </para>
+    <para>
+      This opcode runs only on initialization, there is a k-rate version of this opcode called <link linkend="vexp"><citetitle>vexp</citetitle></link>.
+    </para>
+    <para>
+      In all these opcodes, the resulting vectors are stored in <emphasis>ifn</emphasis>, overriding the initial vectors. If you want to keep initial vector, use <link linkend="vcopy"><citetitle>vcopy</citetitle></link> or <link linkend="vcopy_i"><citetitle>vcopy_i</citetitle></link> to copy it in another table. All these operators are designed to be used together with other opcodes that operate with vectorial signals such as <emphasis>bmscan</emphasis>, <link linkend="vcella"><citetitle>vcella</citetitle></link>, <link linkend="adsynt"><citetitle>adsynt</citetitle></link>, <link linkend="adsynt2"><citetitle>adsynt2</citetitle></link>, etc.  They can also be useful in conjunction with the spectral opcodes <link linkend="pvsftw"><citetitle>pvsftw</citetitle></link> and <link linkend="pvsftr"><citetitle>pvsftr</citetitle></link>.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the vexp_i opcode. It uses the file <ulink url="examples/vexp_i.csd"><citetitle>vexp_i.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the vexp_i opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+        <xi:include href="examples-xml/vexp_i.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>See also</title>
+    <para>
+      <link linkend="vadd_i"><citetitle>vadd</citetitle></link>, <link linkend="vmult_i"><citetitle>vmult_i</citetitle></link>, <link linkend="vpow_i"><citetitle>vpow_i</citetitle></link> and <link linkend="vexp"><citetitle>vexp_i</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Written by Gabriel Maldonado. Optional arguments added by Andres Cabrera and Istvan Varga.</para>
+    <para>New in Csound 5 (Previously available only on CsoundAV)</para>
+  </refsect1>
+</refentry>

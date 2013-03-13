@@ -1,0 +1,163 @@
+
+<refentry id="FLroller">
+<indexterm id="IndexFLroller"><primary>FLroller</primary></indexterm>
+  <refentryinfo><title>FLTK:Valuators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLroller</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>FLroller</refname>
+    <refpurpose>
+      A FLTK widget that creates a transversal knob.
+          </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>FLroller</emphasis> is a sort of knob, but put transversally.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kout, ihandle <command>FLroller</command> &quot;label&quot;, imin, imax, istep, iexp, itype, idisp, \
+      iwidth, iheight, ix, iy</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ihandle</emphasis> -- a handle value (an integer number) that unequivocally references a corresponding widget. This is used by other opcodes that modify a widget's properties (see <link linkend="ControlFltkAppearance"><citetitle>Modifying FLTK Widget Appearance</citetitle></link>). It is automatically output by <emphasis>FLroller</emphasis> and must not be set by the user label. (The user label is a double-quoted string containing some user-provided text placed near the widget.)
+    </para>
+
+    <para>
+      <emphasis><quote>label</quote></emphasis> -- a double-quoted string containing some user-provided text, placed near the corresponding widget.
+    </para>
+
+    <para>
+      <emphasis>imin</emphasis> -- minimum value of output range.
+    </para>
+
+    <para>
+      <emphasis>imax</emphasis> -- maximum value of output range.
+    </para>
+
+    <para>
+      <emphasis>istep</emphasis> -- a floating-point number indicating the increment of valuator value corresponding to of each mouse click. The <emphasis>istep</emphasis> argument allows the user to arbitrarily slow roller's motion, enabling arbitrary precision.
+    </para>
+
+    <para>
+      <emphasis>iexp</emphasis> -- an integer number denoting the behaviour of valuator: 
+      <itemizedlist>
+        <listitem><para>0 = valuator output is linear</para></listitem>
+        <listitem><para>-1 = valuator output is exponential</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      All other positive numbers for <emphasis>iexp</emphasis> indicate the number of an existing table that is used for indexing. Linear interpolation is provided in table indexing. A negative table number suppresses interpolation. 
+    </para>
+
+    <warning>
+      <title>IMPORTANT!</title>
+      <para>
+        Notice that the tables used by valuators must be created with the <link linkend="ftgen"><citetitle>ftgen</citetitle></link> opcode and placed in the orchestra before the corresponding valuator. They can not placed
+in the score. In fact, tables placed in the score are created later than the initialization of the opcodes placed in the header section of the orchestra.
+      </para>
+    </warning>
+
+    <para>
+      <emphasis>itype</emphasis> -- an integer number denoting the appearance of the valuator.
+    </para>
+
+    <para>
+      The <emphasis>itype</emphasis> argument can be set to the following values:
+
+      <itemizedlist>
+        <listitem><para>1 - horizontal roller</para></listitem>
+        <listitem><para>2 - vertical roller</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>idisp</emphasis> -- a handle value that was output from a previous instance of the <link linkend="FLvalue"><citetitle>FLvalue</citetitle></link> opcode to display the current value of the current valuator in the <emphasis>FLvalue</emphasis> widget itself. If the user doesn't want to use this feature that displays current values, it must be set to a negative number by the user.
+    </para>
+
+    <para>
+      <emphasis>iwidth</emphasis> -- width of widget.
+    </para>
+
+    <para>
+      <emphasis>iheight</emphasis> -- height of widget.
+    </para>
+
+    <para>
+      <emphasis>ix</emphasis> -- horizontal position of upper left corner of the valuator, relative to the upper left corner of corresponding window (expressed in pixels).
+    </para>
+
+    <para>
+      <emphasis>iy</emphasis> -- vertical position of upper left corner of the valuator, relative to the upper left corner of corresponding window (expressed in pixels).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kout</emphasis> -- output value
+    </para>
+
+    <para>
+      <emphasis>FLroller</emphasis> is a sort of knob, but put transversally:
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/flroller.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>FLroller.</phrase>
+        </textobject>
+
+        <caption>
+          <para>FLroller.</para>
+        </caption>
+      </mediaobject>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the FLroller opcode. It uses the file <ulink url="examples/FLroller.csd"><citetitle>FLroller.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the FLroller opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/FLroller.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="FLcount"><citetitle>FLcount</citetitle></link>,
+      <link linkend="FLjoy"><citetitle>FLjoy</citetitle></link>,
+      <link linkend="FLknob"><citetitle>FLknob</citetitle></link>,
+      <link linkend="FLslider"><citetitle>FLslider</citetitle></link>,
+      <link linkend="FLtext"><citetitle>FLtext</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namegabriel;</para>
+    <para>New in version 4.22</para>
+    <para>Example written by Iain McCurdy, edited by &namekevin;.</para>
+  </refsect1>
+</refentry>

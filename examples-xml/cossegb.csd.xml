@@ -1,0 +1,49 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac      <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">;-o linseg.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+giSine <emphasis role="ohdr">ftgen</emphasis> 0, 0, 2^10, 10, 1
+
+<emphasis role="oblock">instr</emphasis> 1
+
+kcps <emphasis role="op">=</emphasis> <emphasis role="opc">cpspch</emphasis>(p4)
+kenv cossegb 0, 0.25, 1, 1, 0
+asig <emphasis role="opc">poscil</emphasis> kenv, kcps, giSine
+     <emphasis role="opc">outs</emphasis> asig, asig
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 2	<emphasis role="comment">; scaling to duration</emphasis>
+
+kcps <emphasis role="op">=</emphasis> <emphasis role="opc">cpspch</emphasis>(p4)
+kenv cossegb 0, p3<emphasis role="op">*</emphasis>0.25, 1, p3, 0
+asig <emphasis role="opc">poscil</emphasis> kenv, kcps, giSine
+     <emphasis role="opc">outs</emphasis> asig, asig
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1 0 1   7.00	<emphasis role="comment">; = 1 sec, p3 fits exactly</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 2 2   7.00	<emphasis role="comment">; = 2 sec, p3 truncated at 1 sec</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 2 4 1   7.00	<emphasis role="comment">; scales to duration</emphasis>
+<emphasis role="stamnt">i</emphasis> 2 6 2   7.00	<emphasis role="comment">; of p3</emphasis>
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

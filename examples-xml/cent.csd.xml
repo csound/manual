@@ -1,0 +1,58 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac     <emphasis role="comment">;;;RT audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if RT audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o cent.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis> <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1	<emphasis role="comment">; original pitch</emphasis>
+  
+iroot <emphasis role="op">=</emphasis> 440	<emphasis role="comment">; root note = A (440 Hz)</emphasis>
+
+<emphasis role="opc">print</emphasis> iroot	<emphasis role="comment">;print out</emphasis>
+
+asig <emphasis role="opc">oscili</emphasis> 0.6, iroot, 1 
+     <emphasis role="opc">outs</emphasis> asig, asig
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 2
+  
+iroot   <emphasis role="op">=</emphasis> 440	<emphasis role="comment">; root note = A (440 Hz)</emphasis>
+icents  <emphasis role="op">=</emphasis> p4	<emphasis role="comment">; change root note by 300 and 1200 cents</emphasis>
+
+ifactor <emphasis role="op">=</emphasis> <emphasis role="opc">cent</emphasis>(icents) <emphasis role="comment">; calculate new note</emphasis>
+inew    <emphasis role="op">=</emphasis> iroot <emphasis role="op">*</emphasis> ifactor
+
+<emphasis role="opc">print</emphasis> iroot	<emphasis role="comment">; Print all</emphasis>
+<emphasis role="opc">print</emphasis> ifactor
+<emphasis role="opc">print</emphasis> inew
+
+asig <emphasis role="opc">oscili</emphasis> 0.6, inew, 1 
+     <emphasis role="opc">outs</emphasis> asig, asig
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="comment">; sine wave</emphasis>
+<emphasis role="stamnt">f</emphasis>1 0 32768 10 1
+
+<emphasis role="stamnt">i</emphasis> 1 0  2  0	<emphasis role="comment">;no change</emphasis>
+<emphasis role="stamnt">i</emphasis> 2 2.5 2 300	<emphasis role="comment">;note = C above A</emphasis>
+<emphasis role="stamnt">i</emphasis> 2 5  2 1200	<emphasis role="comment">;1 octave higher </emphasis>
+
+<emphasis role="stamnt">e</emphasis>
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

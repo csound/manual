@@ -1,0 +1,119 @@
+
+<refentry id="slider16">
+<indexterm id="IndexSlider16"><primary>slider16</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Slider Banks</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>slider16</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>slider16</refname>
+
+    <refpurpose>
+      Creates a bank of 16 different MIDI control message numbers.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Creates a bank of 16 different MIDI control message numbers.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>i1,...,i16 <command>slider16</command> ichan, ictlnum1, imin1, imax1, init1, ifn1,..., \
+      ictlnum16, imin16, imax16, init16, ifn16</synopsis>
+
+    <synopsis>k1,...,k16 <command>slider16</command> ichan, ictlnum1, imin1, imax1, init1, ifn1,..., \
+      ictlnum16, imin16, imax16, init16, ifn16</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>i1 ... i16</emphasis> -- output values
+    </para>
+
+    <para>
+      <emphasis>ichan</emphasis> -- MIDI channel (1-16)
+    </para>
+
+    <para>
+      <emphasis>ictlnum1 ... ictlnum16</emphasis> -- MIDI control number (0-127)
+    </para>
+
+    <para>
+      <emphasis>imin1 ... imin16</emphasis> -- minimum values for each controller
+    </para>
+
+    <para>
+      <emphasis>imax1 ... imax16</emphasis> -- maximum values for each controller
+    </para>
+
+    <para>
+      <emphasis>init1 ... init16</emphasis> -- initial value for each controller
+    </para>
+
+    <para>
+      <emphasis>ifn1 ... ifn16</emphasis> -- function table for conversion for each controller
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>k1 ... k16</emphasis> -- output values
+    </para>
+
+    <para>
+      <emphasis>slider16</emphasis> is a bank of MIDI controllers, useful when using MIDI mixer such as Kawai MM-16 or others for changing whatever sound parameter in real-time. The raw MIDI control messages at the input port are converted to agree with <emphasis>iminN</emphasis> and <emphasis>imaxN</emphasis>,  and an initial value can be set. Also, an optional non-interpolated function table with a custom translation curve is allowed, useful for enabling exponential response curves.
+    </para>
+
+    <para>
+      When no function table translation is required, set the <emphasis>ifnN</emphasis> value to 0, else set <emphasis>ifnN</emphasis> to a valid function table number.  When table translation is enabled (i.e. setting <emphasis>ifnN</emphasis> value to a non-zero number referring to an already allocated function table), <emphasis>initN</emphasis> value should be set equal to <emphasis>iminN</emphasis> or <emphasis>imaxN</emphasis> value, else the initial output value will not be the same as specified in <emphasis>initN</emphasis> argument.
+    </para>
+
+    <para>
+      <emphasis>slider16</emphasis> allows a bank of 16 different MIDI control message numbers.
+    </para>
+
+    <para>
+      As the input and output arguments are many, you can split the line using '\' (backslash) character (new in 3.47 version) to improve the readability. Using these opcodes is considerably more efficient than using the separate ones (<link linkend="ctrl7"><citetitle>ctrl7</citetitle></link> and <link linkend="tonek"><citetitle>tonek</citetitle></link>) when more controllers are required.
+    </para>
+
+    <para>
+      In the i-rate version of <emphasis>slider16</emphasis>, there is not an initial value input argument, because the output is gotten directly from current status of internal controller array of Csound.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="s16b14"><citetitle>s16b14</citetitle></link>,
+      <link linkend="s32b14"><citetitle>s32b14</citetitle></link>,
+      <link linkend="slider16f"><citetitle>slider16f</citetitle></link>,
+      <link linkend="slider32"><citetitle>slider32</citetitle></link>,
+      <link linkend="slider32f"><citetitle>slider32f</citetitle></link>,
+      <link linkend="slider64"><citetitle>slider64</citetitle></link>,
+      <link linkend="slider64f"><citetitle>slider64f</citetitle></link>, 
+      <link linkend="slider8"><citetitle>slider8</citetitle></link>,
+      <link linkend="slider8f"><citetitle>slider8f</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namegabriel;</member>
+        <member>Italy</member>
+        <member>December 1998</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.50</para>
+    <para>Thanks goes to &namerasmus; for pointing out the correct MIDI channel and controller number ranges.</para>
+  </refsect1>
+</refentry>

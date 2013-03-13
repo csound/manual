@@ -1,0 +1,56 @@
+
+<refentry id="dssiinit">
+<indexterm id="IndexDssiinit"><primary>dssiinit</primary></indexterm>
+  <refentryinfo><title>Plugin Hosting:DSSI and LADSPA</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>dssiinit</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>dssiinit</refname>
+    <refpurpose>Loads a DSSI or LADSPA plugin.
+    </refpurpose>
+  </refnamediv>
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ihandle <command>dssiinit</command> ilibraryname, iplugindex [, iverbose] </synopsis>
+  </refsect1>
+  <refsect1>
+    <title>Description</title>
+    <para><emphasis>dssiinit</emphasis> is used to load a DSSI or LADSPA plugin into memory for use with
+      the other dssi4cs opcodes. Both LADSPA effects and DSSI instruments can be used.</para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Initialization</title>
+    <para><emphasis>ihandle</emphasis> - the number which identifies the
+      plugin, to be passed to other dssi4cs opcodes.</para>
+    <para><emphasis>ilibraryname</emphasis> - the name of the .so (shared object) file to load.</para>
+    <para><emphasis>iplugindex</emphasis> - The index of the plugin to be used.</para>
+    <para><emphasis>iverbose</emphasis> (optional) - show plugin information and
+      parameters when loading. (default = 1)</para>
+    <para>  <emphasis>dssiinit</emphasis> looks for  <emphasis>ilibraryname</emphasis> on LADSPA_PATH and DSSI_PATH. One of these variables must be set, otherwise <emphasis>dssiinit</emphasis> will return an error. LADSPA and DSSI libraries may contain more than one plugin which must be referenced by its index. <emphasis>dssiinit</emphasis> then attempts to find plugin index <emphasis>iplugindex</emphasis> in the library and load the plugin into memory if it is found. To find out which plugins you have available and their index numbers you can use:  <link linkend="dssilist"><citetitle>dssilist</citetitle></link>. </para>
+    <para>If <emphasis>iverbose</emphasis> is not 0 (the default), information about the plugin detailing its characteristics and its ports will be shown. This information is important for opcodes like  <link linkend="dssictls"><citetitle>dssictls</citetitle></link>.</para>
+    <para>Plugins are set to inactive by default, so you <emphasis>*must*</emphasis> use <link linkend="dssiactivate"><citetitle>dssiactivate</citetitle></link> to get the plugin to produce sound. This is required even if the plugin doesn't provide an activate() function.
+    </para>
+    <para>
+      <emphasis>dssiinit</emphasis> may cause audio stream breakups when used in realtime, so it is recommended to load all plugins to be used before playing.</para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the dssinit opcode. It uses the file <ulink url="examples/dssiinit.csd"><citetitle>dssiinit.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the dssiinit opcode. (Remember to change the Library name)</title>
+        <xi:include href="examples-xml/dssiinit.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Credits</title>
+    <para>2005</para>
+    <para>By: &nameandres;</para>
+    <para>Uses code from Richard Furse's LADSPA sdk.</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,35 @@
+
+<section id="OrchUDO">
+  <title>User Defined Opcodes (UDO)</title>
+  <para>
+    Csound allows the definition of opcodes inside the orchestra header using the opcodes <link linkend="opcode"><citetitle>opcode</citetitle></link> and <link linkend="endop"><citetitle>endop</citetitle></link>. The defined opcode may run with a different number of control samples (<link linkend="ksmps"><citetitle>ksmps</citetitle></link>) using <link linkend="setksmps"><citetitle>setksmps</citetitle></link>.
+  </para>
+  <para>
+    To connect inputs and outputs for the UDO, use <link linkend="xin"><citetitle>xin</citetitle></link> and <link linkend="xout"><citetitle>xout</citetitle></link>.
+  </para>
+  <para>
+    An UDO looks like this:
+  </para>
+  <programlisting>
+        <emphasis role="oblock">opcode</emphasis> Lowpass, a, akk
+
+        <emphasis role="opc">setksmps</emphasis> 1              <emphasis role="comment">; need sr=kr</emphasis>
+ain, ka1, ka2   <emphasis role="opc">xin</emphasis>             <emphasis role="comment">; read input parameters</emphasis>
+aout    <emphasis role="opc">init</emphasis> 0                  <emphasis role="comment">; initialize output</emphasis>
+aout    <emphasis role="op">=</emphasis>  ain<emphasis role="op">*</emphasis>ka1 <emphasis role="op">+</emphasis> aout<emphasis role="op">*</emphasis>ka2   <emphasis role="comment">; simple tone-like filter</emphasis>
+        <emphasis role="opc">xout</emphasis> aout               <emphasis role="comment">; write output</emphasis>
+
+        <emphasis role="oblock">endop</emphasis></programlisting>
+  <para>
+    This UDO called <emphasis>Lowpass</emphasis> takes 3 inputs (the first is a-rate, and the next two are k-rate), and delivers 1 a-rate output. Notice the use of <link linkend="xin"><citetitle>xin</citetitle></link> to receive inputs and <link linkend="xout"><citetitle>xout</citetitle></link> to deliver outputs. Also note the use of <link linkend="setksmps"><citetitle>setksmps</citetitle></link>, which is needed for the filter to work properly.
+  </para>
+  <para>To use this UDO within an instrument, you would do something like:</para>
+  <programlisting>
+afiltered Lowpass asource, kvalue1, kvalue2</programlisting>
+  <para>See the entry for <link linkend="opcode"><citetitle>opcode</citetitle></link> for detailed information on UDO definition.
+  </para>
+  <para>
+    You can find many ready made UDO's (or contribute your own) at <ulink url="http://www.csounds.com/"><citetitle>Csounds.com</citetitle></ulink>'s <ulink url="http://www.csounds.com/udo/"><citetitle>User Defined Opcode Database</citetitle></ulink>.
+  </para>
+
+</section>

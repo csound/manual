@@ -1,0 +1,80 @@
+
+<refentry id="zakinit">
+<indexterm id="IndexZakinit"><primary>zakinit</primary></indexterm>
+  <refentryinfo><title>Zak Patch System</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>zakinit</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>zakinit</refname>
+    <refpurpose>
+      Establishes zak space.
+          </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Establishes zak space. Must be called only once.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>zakinit</command> isizea, isizek</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>isizea</emphasis> -- the number of audio rate locations for a-rate patching. Each location is actually an array which is ksmps long.
+    </para>
+
+    <para>
+      <emphasis>isizek</emphasis> -- the number of locations to reserve for floats in the zk space. These can be written and read at i- and k-rates.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      At least one location each is always allocated for both za and zk spaces. There can be thousands or tens of thousands za and zk ranges, but most pieces probably only need a few dozen for patching signals. These patching locations are referred to by number in the other zak opcodes.
+    </para>
+
+    <para>
+      To run <emphasis>zakinit</emphasis> only once, put it outside any instrument definition, in the orchestra file header, after <emphasis>sr</emphasis>, <emphasis>kr</emphasis>, <emphasis>ksmps</emphasis>, and <emphasis>nchnls</emphasis>.
+    </para>
+    <note>
+      <para>
+        Zak channels count from 0, so if you define 1 channel, the only valid channel is channel 0.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the zakinit opcode. It uses the file <ulink url="examples/zakinit.csd"><citetitle>zakinit.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the zakinit opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/zakinit.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Robin Whittle</member>
+        <member>Australia</member>
+        <member>May 1997</member>
+      </simplelist>
+    </para>
+    <para>New in version 3.45</para>
+    <para>Example written by &namekevin;.</para>
+  </refsect1>
+</refentry>

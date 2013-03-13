@@ -1,0 +1,32 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in   No messages  MIDI in</emphasis>
+-odac           -iadc    <emphasis role="comment">; -d         -M0  ;;;RT audio I/O with MIDI in</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">;-o pindex.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="comment">;Example by Anthony Kozar Dec 2006</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 1
+    inum    <emphasis role="opc">pcount</emphasis>
+    index   <emphasis role="opc">init</emphasis> 1
+    loop1<emphasis role="op">:</emphasis>
+        ivalue <emphasis role="opc">pindex</emphasis> index
+        <emphasis role="opc">printf_i</emphasis> "p<emphasis role="op">%</emphasis>d <emphasis role="op">=</emphasis> <emphasis role="op">%</emphasis>f\n", 1, index, ivalue
+        index   <emphasis role="op">=</emphasis> index <emphasis role="op">+</emphasis> 1
+    <emphasis role="octrl">if</emphasis>  (index <emphasis role="op">&lt;=</emphasis> inum) <emphasis role="octrl">igoto</emphasis> loop1
+    <emphasis role="opc">print</emphasis> inum
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">i</emphasis>1  0 3 40 50         <emphasis role="comment">; has 5 pfields</emphasis>
+<emphasis role="stamnt">i</emphasis>1  1 2 80            <emphasis role="comment">; has 5 due to carry</emphasis>
+<emphasis role="stamnt">i</emphasis>1  2 1 40 50 60 70   <emphasis role="comment">; has 7</emphasis>
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

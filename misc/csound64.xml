@@ -1,0 +1,44 @@
+
+<appendix id="MiscCsound64">
+  <title>Csound Double (64-bit) vs. Float (32-bit)</title>
+
+  <para>
+    Csound can be built to use 64-bit DOUBLES internally to do processing versus regular Csound's 32-bit FLOATS. This larger resolution for processing internally yields a much &quot;cleaner&quot; sound but at the expense of extended processing time. Because it does require much longer to process, Csound compiled for doubles is typicaly used after a work is finished for a final production run. If you are using csound for realtime output, you should use the 32-bit (float) version, which provides faster output. For offline rendering, you can use either, but for the final master, the 64-bit version will produce higher quality output.
+  </para>
+<!--Paragraphs below by Michael Gogins, from the Csound Mailing List-->
+  <para>
+    The actual resolution should be the same as for the type of the audio sample variable. For "float" Csound, that is a 32-bit, single-precision floating point number. It has 24 bits of precision in the mantissa. For "double" Csound, that is a 64-bit, double-precision floating point number in the mantissa. It has 52 bits of precision. For each decimal digit, there is between 3 and 4 bits. So, there are 7 digits of precision for "float" and 16 digits of precision for "double."
+  </para>
+
+  <para>
+    For each multiplication or division, depending on whether the operands are integers, rational numbers, repeating decimals, or irrational decimals, there may or may not be rounding error in the result. If there is rounding error, it is at most 1 bit of lost precision per operation (in addition to any rounding in the binary representation of rational or real numbers).
+  </para>
+
+  <para>
+    For float samples, if the signal stays within the mantissa, the signal to noise ratio is 6.02 times 24, or 144 dB. At worst, each operation will create 6.02 dB of additional noise due to rounding error. Our ears have an effective dynamic range of 120 to 130 dB, but we like our music compressed to a dynamic range of AT MOST 60 dB (and usually much less, say 20 dB). That gives us (144 - 60) / 6.02 = about 10 worst-case operations before we could possibly hear any degradation. In practice, we have several times that many operations before we hear any degradation or noise.
+  </para>
+
+  <para>
+    For double samples, if the signal stays within the mantissa, the signal to noise ratio is 6.02 times 52, or 313 dB. At worst, each operation will create 6.02 dB of additional noise due to rounding error.  That gives us (313 - 60) / 6.02 = about 42, in practice several times that, of operations before there is any audible degradation or noise.
+  </para>
+
+  <para>
+    But if you trace the number of arithmetic operations in typical Csound instruments or other software synthesizers, the very complex instruments definitely are pushing into the range of audible degradation on good monitors with float, so it is no surprise that in some cases blindfold, controlled ABX testing confirms <emphasis>occasional</emphasis> audible differences between music synthesized with "float" Csound versus the same music synthesized with "double" Csound. Equally, it is no surprise that there are easily audible differences between digital and analog implementations of the same synthesis algorithms.
+  </para>
+
+  <para>
+    There is a good deal more "digital signal processing headroom" with double Csound, and therefore it should be used for all music rendered for critical listening. The float version should only be used where its speed advantage of about 15% is critical for real-time performance.
+  </para>
+
+  <bridgehead>Notes On Using Csound built for double precision</bridgehead>
+
+  <para>
+    <orderedlist>
+      <listitem><para>hetro, PVOC-EX analysis and pvanal files generated for 32-bit Csound (float) will work with 64-bit Csound (double precision).</para></listitem>
+
+      <listitem><para><link linkend="lpanal"><citetitle>lpanal</citetitle></link> and <link linkend="cvanal"><citetitle>cvanal</citetitle></link> files generated for Csound will not work with Csound64.</para></listitem>
+
+    </orderedlist>
+  </para>
+
+</appendix>

@@ -1,0 +1,93 @@
+
+<refentry id="n">
+      <indexterm id="IndexNStatement"><primary>n statement</primary></indexterm>
+  <refmeta>
+    <refentrytitle>n Statement</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>n</refname>
+    <refpurpose>
+      Repeats a section.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Repeats a section from the referenced <link linkend="m"><citetitle>m statement</citetitle></link>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>n</command> p1</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>p1</emphasis> -- Name of mark to repeat.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      This can be helpful in setting a up verse and chorus structure in the score. Names may contain letters and numerals.
+    </para>
+    <para>
+      For example, the following score:
+    </para>
+    <programlisting>
+<emphasis role="stamnt">m</emphasis> foo
+<emphasis role="stamnt">i</emphasis>1 0 1
+<emphasis role="stamnt">i</emphasis>1 1 1.5
+<emphasis role="stamnt">i</emphasis>1 2.5 2
+<emphasis role="stamnt">s</emphasis>
+<emphasis role="stamnt">i</emphasis>1 0 10
+<emphasis role="stamnt">s</emphasis>
+<emphasis role="stamnt">n</emphasis> foo
+<emphasis role="stamnt">e</emphasis>
+</programlisting>
+    <para>
+      Will be passed from the preprocessor to Csound as:
+    </para>
+    <programlisting>
+<emphasis role="stamnt">i</emphasis>1 0 1
+<emphasis role="stamnt">i</emphasis>1 1 1.5
+<emphasis role="stamnt">i</emphasis>1 2.5 2
+<emphasis role="stamnt">s</emphasis>
+<emphasis role="stamnt">i</emphasis>1 0 10
+<emphasis role="stamnt">s</emphasis>
+<emphasis role="comment">;; this is named section repeated</emphasis>
+<emphasis role="stamnt">i</emphasis>1 0 1
+<emphasis role="stamnt">i</emphasis>1 1 1.5
+<emphasis role="stamnt">i</emphasis>1 2.5 2
+<emphasis role="stamnt">s</emphasis>
+<emphasis role="comment">;; end of named section</emphasis>
+<emphasis role="stamnt">e</emphasis>
+</programlisting>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      See the example for the <link linkend="m"><citetitle>m statement</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>University of Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>April 1998</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.48</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,56 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac     <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o monitor.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+giSine <emphasis role="ohdr">ftgen</emphasis> 0, 0, 2^10, 10, 1
+
+<emphasis role="oblock">instr</emphasis> 1
+
+asig <emphasis role="opc">poscil3</emphasis> .5, 880, giSine
+<emphasis role="comment">;write a raw file: 32 bits with header</emphasis>
+     <emphasis role="opc">fout</emphasis> "fout_880.wav", 15, asig	
+     <emphasis role="opc">outs</emphasis> asig, asig
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 2
+
+klfo <emphasis role="opc">lfo</emphasis> 1, 2, 0
+asig <emphasis role="opc">poscil3</emphasis> .5<emphasis role="op">*</emphasis>klfo, 220, giSine
+<emphasis role="comment">;write an aiff file: 32 bits with header</emphasis>
+     <emphasis role="opc">fout</emphasis> "fout_aif.aiff", 25, asig	
+<emphasis role="comment">;        fout "fout_all3.wav", 14, asig</emphasis>
+     <emphasis role="opc">outs</emphasis> asig, asig
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 99 <emphasis role="comment">;read the stereo csound output buffer</emphasis>
+
+allL, allR <emphasis role="opc">monitor</emphasis>
+<emphasis role="comment">;write the output of csound to an audio file</emphasis>
+<emphasis role="comment">;to a wav file: 16 bits with header</emphasis>
+           <emphasis role="opc">fout</emphasis> "fout_all.wav", 14, allL, allR
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1 0 2
+<emphasis role="stamnt">i</emphasis> 2 0 3
+<emphasis role="stamnt">i</emphasis> 99 0 3
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

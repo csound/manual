@@ -1,0 +1,86 @@
+
+<refentry id="trsplit">
+<indexterm id="Indextrsplit"><primary>trsplit</primary></indexterm>
+
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>trsplit</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>trsplit</refname>
+    <refpurpose>
+      Streaming partial track frequency splitting.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      The <emphasis>trsplit</emphasis> opcode takes an input containg a TRACKS pv streaming signal (as generated,
+      for instance by <emphasis>partials</emphasis>) and splits it into two signals according to a k-rate frequency 'split point'. 
+      The first output will contain all tracks up from 0Hz to the split frequency and the second will 
+      contain the tracks from the split frequency up to the Nyquist.
+      It can also, optionally, scale the gain of the output signals by a k-rate amount (default 1). 
+      The result is two output signals containing only part of the original spectrum.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>fsiglow, fsighi <command>trsplit</command> fin, ksplit[, kgainlow, kgainhigh]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+      <para>
+      <emphasis>fsiglow</emphasis> -- output pv stream in TRACKS format containing the tracks below
+      the split point.
+    </para>
+    
+    <para>
+      <emphasis>fsighi</emphasis> -- output pv stream in TRACKS format containing the tracks above and
+      including the split point.
+    </para>
+  
+    <para>
+      <emphasis>fin</emphasis> -- input pv stream in TRACKS format
+    </para>
+    
+    <para>
+      <emphasis>ksplit</emphasis> -- frequency split point in Hz
+    </para>
+    
+    <para>
+      <emphasis>kgainlow, kgainhig</emphasis> -- amplitude scaling of each one of the
+      outputs (default 1).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the trsplit opcode. It uses the file <ulink url="examples/trsplit.csd"><citetitle>trsplit.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the trsplit opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/trsplit.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>  
+    <para>
+      The example above shows partial tracking of an ifd-analysis signal and
+      linear additive resynthesis of the upper part of the spectrum (from 1500Hz). 
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>February 2006 </member>
+      </simplelist>
+    </para>
+    <para>New in Csound 5.01</para>
+  </refsect1>
+</refentry>

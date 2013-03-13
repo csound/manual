@@ -1,0 +1,88 @@
+
+<refentry id="expcurve">
+<indexterm id="IndexExpcurve"><primary>expcurve</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Linear and Exponential Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>expcurve</refentrytitle>
+  </refmeta>
+  
+
+  <refnamediv>
+    <refname>expcurve</refname>
+    <refpurpose>
+      This opcode implements a formula for generating a normalised exponential curve in range 0 - 1. It is based on the Max / MSP work of Eric Singer (c) 1994.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Generates an exponential curve in range 0 to 1 of arbitrary steepness.
+      Steepness index equal to or lower than 1.0 will result in Not-a-Number
+      errors and cause unstable behavior.
+    </para>
+
+    <para>
+      The formula used to calculate the curve is:
+<programlisting>
+(exp(x * log(y))-1) / (y-1)
+</programlisting>
+      where x is equal to <emphasis>kindex</emphasis> and y is equal to <emphasis>ksteepness</emphasis>.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kout <command>expcurve</command> kindex, ksteepness</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kindex</emphasis> -- Index value. Expected range 0 to 1.
+    </para>
+    <para>
+      <emphasis>ksteepness</emphasis> -- Steepness of the generated curve. Values
+      closer to 1.0 result in a straighter line while larger values steepen the
+      curve.
+    </para>
+    <para>
+      <emphasis>kout</emphasis> -- Scaled output.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the expcurve opcode. It uses the file <ulink url="examples/expcurve.csd"><citetitle>expcurve.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the expcurve opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+        <xi:include href="examples-xml/expcurve.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="scale"><citetitle>scale</citetitle></link>,
+      <link linkend="gainslider"><citetitle>gainslider</citetitle></link>,
+      <link linkend="logcurve"><citetitle>logcurve</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: David Akbari</member>
+        <member>October</member>
+        <member>2006</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

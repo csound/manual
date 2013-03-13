@@ -1,0 +1,119 @@
+<refentry id="syncloop">
+<indexterm id="IndexSyncloop"><primary>syncloop</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Granular Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>syncloop</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>syncloop</refname>
+    <refpurpose>
+Synchronous granular synthesis.
+          </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+<emphasis>syncloop</emphasis> is a variation on <emphasis>syncgrain</emphasis>,
+which implements synchronous granular synthesis. 
+<emphasis>syncloop</emphasis> adds loop start and end points and an optional start position. Loop start
+and end control grain start positions, so the actual grains can go beyond the loop
+points (if the loop points are not at the extremes of the table), enabling
+seamless crossfading. For more information on the granular synthesis process,
+check the <link linkend="syncgrain"><citetitle>syncgrain</citetitle></link> manual page.
+ 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>asig <command>syncloop</command> kamp, kfreq, kpitch, kgrsize, kprate, klstart, \
+      klend, ifun1, ifun2, iolaps[,istart, iskip]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+      <para>
+      <emphasis>ifun1</emphasis> -- source signal function table. Deferred-allocation tables (see
+      <link linkend="GEN01"><citetitle>GEN01</citetitle></link>) 
+are accepted, but the opcode expects a mono source.
+    </para>
+	      <para>
+      <emphasis>ifun2</emphasis> -- grain envelope function table.
+    </para>
+		      <para>
+      <emphasis>iolaps</emphasis> -- maximum number of overlaps,
+      max(<emphasis>kfreq</emphasis>)*max(<emphasis>kgrsize</emphasis>). Estimating
+	  a large value should not affect performance, but execeeding this value will probably have disastrous
+	  consequences.
+    </para>
+	 <para>
+      <emphasis>istart</emphasis> -- starting point of synthesis in secs (defaults to 0).
+    </para>
+
+ <para>
+      <emphasis>iskip </emphasis> -- if 1, the opcode initialisation is skipped, for tied notes, performance
+continues from the position in the loop where the previous note stopped. The default, 0, does not skip
+initialisation
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kamp</emphasis> -- amplitude scaling
+    </para>
+    <para>
+      <emphasis>kfreq</emphasis> -- frequency of grain generation, or density, in grains/sec.
+    </para>
+
+    <para>
+      <emphasis>kpitch</emphasis> -- grain pitch scaling (1=normal pitch, &lt; 1 lower, > 1 higher; negative, backwards)
+    </para>
+
+    <para>
+      <emphasis>kgrsize</emphasis> -- grain size in secs.
+    </para>
+    <para>
+      <emphasis>kprate</emphasis> -- readout pointer rate, in grains. The value of 1 will advance 
+the reading pointer 1 grain ahead in the source table. Larger values 
+will time-compress and smaller values will time-expand the source signal. 
+Negative values will cause the pointer to run backwards and zero will 
+freeze it.
+    </para>
+    <para>
+      <emphasis>klstart</emphasis> -- loop start in secs.
+    </para>
+    <para>
+      <emphasis>klend</emphasis> -- loop end in secs.
+    </para>
+  </refsect1>
+   
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the syncloop opcode. It uses the file <ulink url="examples/syncloop.csd"><citetitle>syncloop.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the syncloop opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/syncloop.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>January 2005</member>
+      </simplelist>
+    </para>
+
+    <para>New plugin in version 5</para>
+    <para>January 2005.</para>
+  </refsect1>
+</refentry>

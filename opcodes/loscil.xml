@@ -1,0 +1,134 @@
+
+<refentry id="loscil">
+<indexterm id="IndexLoscil"><primary>loscil</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Sample Playback</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>loscil</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>loscil</refname>
+    <refpurpose>
+      Read sampled sound from a table.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Read sampled sound (mono or stereo) from a table, with optional sustain and release looping.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ar1 [,ar2] <command>loscil</command> xamp, kcps, ifn [, ibas] [, imod1] [, ibeg1] [, iend1] \
+      [, imod2] [, ibeg2] [, iend2]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifn</emphasis> -- function table number, typically denoting an sampled sound segment with prescribed looping points loaded using <link linkend="GEN01"><citetitle>GEN01</citetitle></link>. The source file may be mono or stereo.
+    </para>
+
+    <para>
+      <emphasis>ibas</emphasis> (optional) -- base frequency in <emphasis>Hz</emphasis> of the recorded sound. This optionally overrides the frequency given in the audio file, but is required if the file did not contain one. The default value is 261.626 Hz, i.e. middle C. (New in Csound 4.03). If this value is not known or not present, use 1 here and in <emphasis>kcps</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>imod1, imod2</emphasis> (optional, default=-1) -- play modes for the sustain and release loops. A value of 1 denotes normal looping, 2 denotes forward &amp; backward looping, 0 denotes no looping. The default value (-1) will defer to the mode and the looping points given in the source file. Make sure you select an appropriate mode if the file does not contain this information.
+    </para>
+
+    <para>
+      <emphasis>ibeg1, iend1, ibeg2, iend2</emphasis> (optional, dependent on <emphasis>mod1, mod2</emphasis>) -- begin and end points of the sustain and release loops. These are measured in <emphasis>sample frames</emphasis> from the beginning of the file, so will look the same whether the sound segment is monaural or stereo. If no loop points are specified, and a looping mode (<emphasis>imod1</emphasis>, <emphasis>imod2</emphasis>) is given, the file will be looped for the whole length.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+
+    <para>
+      <emphasis>ar1, ar2</emphasis> -- the output at audio-rate. There is just <emphasis>ar1</emphasis> for mono output. However, there is both <emphasis>ar1</emphasis> and <emphasis>ar2</emphasis> for stereo output.
+    </para>
+
+    <para>
+      <emphasis>xamp</emphasis> -- the amplitude of the output signal.
+    </para>
+
+    <para>
+      <emphasis>kcps</emphasis> -- the frequency of the output signal in cycles per second.
+    </para>
+
+    <para>
+      <emphasis>loscil</emphasis> samples the ftable audio at a rate determined by <emphasis>kcps</emphasis>, then multiplies the result by <emphasis>xamp</emphasis>. The sampling increment for <emphasis>kcps</emphasis> is dependent on the table's base-note frequency <emphasis>ibas</emphasis>, and is automatically adjusted if the orchestra <emphasis>sr</emphasis> value differs from that at which the source was recorded. In this unit, ftable is always sampled with interpolation.
+    </para>
+    <para>
+      If sampling reaches the <emphasis>sustain loop</emphasis> endpoint and looping is in effect, the point of sampling will be modified and <emphasis>loscil</emphasis> will continue reading from within that loop segment. Once the instrument has received a <emphasis>turnoff</emphasis> signal (from the score or from a MIDI noteoff event), the next sustain endpoint encountered will be ignored and sampling will continue towards the <emphasis>release loop</emphasis> end-point, or towards the last sample (henceforth to zeros).
+    </para>
+
+    <para>
+      <emphasis>loscil</emphasis> is the basic unit for building a sampling synthesizer. Given a sufficient set of recorded piano tones, for example, this unit can resample them to simulate the missing tones. Locating the sound source nearest a desired pitch can be done via table lookup. Once a sampling instrument has begun, its <emphasis>turnoff</emphasis> point may be unpredictable and require an external <emphasis>release</emphasis> envelope; this is often done by gating the sampled audio with <link linkend="linenr"><citetitle>linenr</citetitle></link>, which will extend the duration of a turned-off instrument by a specific period while it implements a decay.
+    </para>
+    <para>
+      If you want to loop the whole file, specify a looping mode in <emphasis>imod1</emphasis> and do not enter any values for <emphasis>ibeg</emphasis> and <emphasis>iend</emphasis>.
+    </para>
+
+    <caution>
+      <title>Note to Windows users</title>
+      <para>
+        Windows users typically use back-slashes, <quote>\</quote>, when specifying the paths of their files. As an example, a Windows user might use the path <quote>c:\music\samples\loop001.wav</quote>. This is problematic because back-slashes are normally used to specify special characters.
+      </para>
+      <para>
+        To correctly specify this path in Csound, one may alternately:
+        <itemizedlist>
+          <listitem><para><emphasis>Use forward slashes</emphasis>: c:/music/samples/loop001.wav</para></listitem>
+          <listitem><para><emphasis>Use back-slash special characters, <quote>\\</quote></emphasis>: c:\\music\\samples\\loop001.wav</para></listitem>
+        </itemizedlist>
+      </para>
+    </caution>
+    <note>
+      <title>Note</title>
+      <para>
+        This is mono <emphasis>loscil</emphasis>:
+
+        <informalexample>
+          <programlisting>
+a1 <emphasis role="opc">loscil</emphasis> 10000, 1, 1, 1 ,1</programlisting>
+        </informalexample>
+
+        ...and this is stereo <emphasis>loscil</emphasis>:
+
+        <informalexample>
+          <programlisting>
+a1, a2 <emphasis role="opc">loscil</emphasis> 10000, 1, 1, 1 ,1</programlisting>
+        </informalexample>
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the loscil opcode. It uses the file <ulink url="examples/loscil.csd"><citetitle>loscil.csd</citetitle></ulink>, <ulink url="examples/mary.wav"><citetitle>mary.wav</citetitle></ulink> and <ulink url="examples/kickroll.wav"><citetitle>kickroll.wav</citetitle></ulink>.
+      <example>
+        <title>Example of the loscil opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/loscil.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="loscil3"><citetitle>loscil3</citetitle></link> and 
+      <link linkend="GEN01"><citetitle>GEN01</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Note about the mono/stereo difference was contributed by &namerasmus;.</para>
+  </refsect1>
+</refentry>

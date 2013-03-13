@@ -1,0 +1,105 @@
+
+<section id = "ScorePreproc">
+  <title>Preprocessing of Standard Scores</title>
+
+  <para>
+    A <emphasis>Score</emphasis> (a collection of score statements) is divided into time-ordered sections by the <link linkend="s"><citetitle>s statement</citetitle></link>. Before being read by the orchestra, a score is preprocessed one section at a time. Each section is normally processed by 3 routines: <link linkend="ScoreCarry"><citetitle>Carry</citetitle></link>, <link linkend="ScoreTempo"><citetitle>Tempo</citetitle></link>, and <link linkend="ScoreSort"><citetitle>Sort</citetitle></link>.
+  </para>
+
+  <section id="ScoreCarry">
+    <title>Carry</title>
+    <para>
+      Within a group of consecutive <link linkend="i"><citetitle>i statements</citetitle></link> whose p1 whole numbers correspond, any pfield left empty will take its value from the same pfield of the preceding statement. An empty pfield can be denoted by a single point (.) delimited by spaces. No point is required after the last nonempty pfield. The output of Carry preprocessing will show the carried values explicitly. The Carry Feature is not affected by intervening comments or blank lines; it is turned off only by a non- <link linkend="i"><citetitle>i statement</citetitle></link> or by an <emphasis>i statement</emphasis> with unlike p1 whole number.
+      <indexterm id="IndexScoreCarry"><primary>score</primary><secondary>carry</secondary></indexterm>
+    </para>
+
+    <para>
+       Three additional features are available for p2 alone: +, 
+^+<emphasis>x</emphasis>, and ^-<emphasis>x</emphasis>. The symbol + in p2 will be given the value of p2 + p3 from the preceding i statement. This enables note action times to be automatically determined from the sum of preceding durations. The + symbol can itself be carried. It is legal only in p2. E.g.: the statements
+
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">i</emphasis>1   0    .5        100
+<emphasis role="stamnt">i</emphasis> .  +
+<emphasis role="stamnt">i</emphasis></programlisting>
+      </informalexample>
+
+      will result in
+
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">i</emphasis>1   0         .5        100
+<emphasis role="stamnt">i</emphasis>1   .5        .5        100
+<emphasis role="stamnt">i</emphasis>1   1         .5        100</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+       The symbols ^+<emphasis>x</emphasis> and ^-<emphasis>x</emphasis> determine the current p2 by adding or subtracting, respectively, the value of <emphasis>x</emphasis> from the preceding p2. These may be used in p2 only and are <emphasis>not</emphasis> carried like the + symbol. Note also that there should be no spaces following the ^, the +, or the - parts of these symbols -- the number must come directly after as in ^+2.3.  If the example above had been 
+
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">i</emphasis>1   0    .5        100
+<emphasis role="stamnt">i</emphasis> .  ^+1
+<emphasis role="stamnt">i</emphasis> .  ^+1</programlisting>
+      </informalexample>
+
+      the result would instead be
+
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">i</emphasis>1   0         .5        100
+<emphasis role="stamnt">i</emphasis>1   1         .5        100
+<emphasis role="stamnt">i</emphasis>1   2         .5        100</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+       The Carry feature should be used liberally. Its use, especially in large scores, can greatly reduce input typing and will simplify later changes.
+    </para>
+    
+    <para>
+       There can sometimes be circumstances where you do not want "missing" pfields after the last one entered to be implicitly carried.  An example would be an instrument that is designed to take a variable number of pfields.  Beginning with Csound 5.08, you can prevent the implicit carrying of pfields at the end of an i statement by using the symbol ! (called the "no-carry symbol").  The ! must appear at the end of an i statement and it cannot be used in p1, p2, or p3, since these pfields are required.  Here is an example:
+
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">i</emphasis>1   0    .5        100
+<emphasis role="stamnt">i</emphasis> .  +
+<emphasis role="stamnt">i</emphasis> .  .    .         !
+<emphasis role="stamnt">i</emphasis></programlisting>
+      </informalexample>
+
+      This score would be interpreted as
+
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">i</emphasis>1   0         .5        100
+<emphasis role="stamnt">i</emphasis>1   .5        .5        100
+<emphasis role="stamnt">i</emphasis>1   1         .5               ; no p4
+<emphasis role="stamnt">i</emphasis>1   1.5       .5               ; only p1 to p3 are carried here</programlisting>
+      </informalexample>
+    </para>
+  </section>
+
+  <section id="ScoreTempo">
+    <title>Tempo</title>
+    <para>
+       This operation time warps a score section according to the information in a <link linkend="t"><citetitle>t statement</citetitle></link>. The tempo operation converts p2 (and, for <link linkend="i"><citetitle>i statements</citetitle></link>, p3) from original beats into real seconds, since those are the units required by the orchestra. After time warping, score files will be seen to have orchestra-readable format demonstrated by the following:
+       <programlisting><emphasis role="stamnt">i</emphasis> p1 p2beats p2seconds p3beats p3seconds p4 p5 ....</programlisting>
+      <indexterm id="IndexScoreTempo"><primary>score</primary><secondary>tempo</secondary></indexterm>
+    </para>
+  </section>
+
+  <section id="ScoreSort">
+    <title>Sort</title>
+    <para>
+       This routine sorts all action-time statements into chronological order by p2 value. It also sorts coincident events into precedence order. Whenever an <link linkend="f"><citetitle>f statement</citetitle></link> and an <link linkend="i"><citetitle>i statement</citetitle></link> have the same p2 value, the <emphasis>f statement</emphasis> will precede. Whenever two or more <emphasis>i statements</emphasis> have the same p2 value, they will be sorted into ascending p1 value order. If they also have the same p1 value, they will be sorted into ascending p3 value order. Score sorting is done section by section (see <link linkend="s"><citetitle>s statement</citetitle></link>). Automatic sorting implies that score statements may appear in any order within a section.
+      <indexterm id="IndexScoreSort"><primary>score</primary><secondary>sort</secondary></indexterm>
+    </para>
+    <note>
+      <para>
+        The operations Carry, Tempo and Sort are combined in a 3-phase single pass over a score file, to produce a new file in orchestra-readable format ( see the Tempo example). Processing can be invoked either explicitly by the <emphasis>Scsort</emphasis> command, or implicitly by Csound which processes the score before calling the orchestra. Source-format files and orchestra-readable files are both in ASCII character form, and may be either perused or further modified by standard text editors. User-written routines can be used to modify score files before or after the above processes, provided the final orchestra-readable statement format is not violated. Sections of different formats can be sequentially batched; and sections of like format can be merged for automatic sorting.
+      </para>
+    </note>
+  </section>
+</section>

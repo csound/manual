@@ -1,0 +1,42 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in    No messages</emphasis>
+<emphasis role="comment">; -odac           -iadc     -d     ;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+-n -Fmidichn_advanced.mid
+<emphasis role="comment">;Don't write audio ouput to disk and use the file midichn_advanced.mid as MIDI input</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+  <emphasis role="ohdr">sr</emphasis>	    <emphasis role="op">=</emphasis>  48000
+  <emphasis role="ohdr">ksmps</emphasis>	    <emphasis role="op">=</emphasis>  16
+  <emphasis role="ohdr">nchnls</emphasis>    <emphasis role="op">=</emphasis>  2
+
+  <emphasis role="comment">;Example by Jonathan Murphy 2007</emphasis>
+
+	    <emphasis role="comment">; assign all midi events to instr 1000</emphasis>
+	    <emphasis role="ohdr">massign</emphasis>   0, 1000
+	    <emphasis role="ohdr">pgmassign</emphasis>	0, 1000
+
+    <emphasis role="oblock">instr</emphasis> 1000
+
+  ktim	<emphasis role="opc">timeinsts</emphasis>
+	
+  kst, kch, kd1, kd2  <emphasis role="opc">midiin</emphasis>
+<emphasis role="octrl">if</emphasis> (kst <emphasis role="op">!=</emphasis> 0) then
+<emphasis role="comment">;  p4 = MIDI event type   p5 = channel   p6= data1    p7= data2</emphasis>
+	    <emphasis role="opc">fprintks</emphasis>  "MIDI2cs.sco", "i1\\t<emphasis role="op">%</emphasis>f\\t<emphasis role="op">%</emphasis>f\\t<emphasis role="op">%</emphasis>d\\t<emphasis role="op">%</emphasis>d\\t<emphasis role="op">%</emphasis>d\\t<emphasis role="op">%</emphasis>d\\n", ktim, 1<emphasis role="op">/</emphasis>kr, kst, kch, kd1, kd2
+<emphasis role="octrl">endif</emphasis>
+
+    <emphasis role="oblock">endin</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">i</emphasis>1000 0 10000
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

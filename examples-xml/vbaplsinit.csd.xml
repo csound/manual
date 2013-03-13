@@ -1,0 +1,41 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac  <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o vbaplsinit.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 8	
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="opc">vbaplsinit</emphasis> 2, 8, 0, 45, 90, 180, 270, 0, 0, 0		<emphasis role="comment">;5 speakers for 5.1 amps</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 1
+
+asig <emphasis role="opc">diskin2</emphasis> "beats.wav", 1, 0, 1			<emphasis role="comment">;loop beats.wav</emphasis>
+kazim <emphasis role="opc">line</emphasis> 1, p3, 355				
+a1,a2,a3,a4,a5,a6,a7,a8 <emphasis role="opc">vbap8</emphasis>  asig, kazim, 0, 1	<emphasis role="comment">;change azimuth of soundsource</emphasis>
+<emphasis role="comment">; Speaker mapping</emphasis>
+aFL <emphasis role="op">=</emphasis> a1 						<emphasis role="comment">; Front Left</emphasis>
+aMF <emphasis role="op">=</emphasis> a5 						<emphasis role="comment">; Mid Front </emphasis>
+aFR <emphasis role="op">=</emphasis> a2 						<emphasis role="comment">; Front Right</emphasis>
+aBL <emphasis role="op">=</emphasis> a3 						<emphasis role="comment">; Back Left</emphasis>
+aBR <emphasis role="op">=</emphasis> a4 						<emphasis role="comment">; Back Right</emphasis>
+    <emphasis role="opc">outo</emphasis> aFL,aFR,aBL,aBR,aMF,a6,a7,a8			<emphasis role="comment">;a6, a7 and a8 are dummies				</emphasis>
+
+<emphasis role="oblock">endin</emphasis> 
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1 0 5
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

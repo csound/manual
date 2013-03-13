@@ -1,0 +1,72 @@
+
+<refentry id="specdisp">
+<indexterm id="IndexSpecdisp"><primary>specdisp</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Non-Standard</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>specdisp</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>specdisp</refname>
+    <refpurpose>
+      Displays the magnitude values of the spectrum.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Displays the magnitude values of the spectrum.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>specdisp</command> wsig, iprd [, iwtflg]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iprd</emphasis> -- the period, in seconds, of each new display.
+    </para>
+
+    <para>
+      <emphasis>iwtflg</emphasis> (optional, default=0) -- wait flag. If non-zero, hold each display until released by the user. The default value is 0 (no wait).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>wsig</emphasis> -- the input spectrum.
+    </para>
+
+    <para>
+      Displays the magnitude values of spectrum <emphasis>wsig</emphasis> every <emphasis>iprd</emphasis> seconds (rounded to some integral number of <emphasis>wsig</emphasis>'s originating <emphasis>iprd</emphasis>).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      <informalexample>
+        <programlisting>
+  ksum     <emphasis role="opc">specsum</emphasis>   wsig, 1              <emphasis role="comment">; sum the spec bins, and ksmooth</emphasis>
+           <emphasis role="octrl">if</emphasis> ksum <emphasis role="op">&lt;</emphasis> 2000 <emphasis role="octrl">kgoto</emphasis> <emphasis role="olabel">zero</emphasis>      <emphasis role="comment">; if sufficient amplitude</emphasis>
+  koct     <emphasis role="opc">specptrk</emphasis>  wsig                 <emphasis role="comment">;    pitch-track the signal</emphasis>
+           <emphasis role="octrl">kgoto</emphasis>     <emphasis role="olabel">contin</emphasis>
+<emphasis role="olabel">zero:</emphasis> 
+  koct     <emphasis role="op">=</emphasis>         0                    <emphasis role="comment">; else output zero</emphasis>
+<emphasis role="olabel">contin:</emphasis></programlisting>
+      </informalexample>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="specsum"><citetitle>specsum</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

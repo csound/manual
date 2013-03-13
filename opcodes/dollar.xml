@@ -1,0 +1,109 @@
+
+<refentry id="dollar">
+<indexterm id="IndexDollarMacros"><primary>macros</primary><secondary>orchestra</secondary></indexterm>
+
+<indexterm id="IndexDollarOrch"><primary>&dollar;NAME</primary><secondary>orchestra</secondary></indexterm>
+
+<indexterm id="IndexDollar"><primary>&dollar;NAME</primary></indexterm>
+  <refentryinfo><title>Orchestra Syntax:Macros</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>&dollar;NAME</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>&dollar;NAME</refname>
+
+    <refpurpose>
+      Calls a defined macro.
+                      </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Macros are textual replacements which are made in the orchestra as it is being read.  The macro system in Csound is a very simple one, and uses the characters &num; and &dollar; to define and call macros. This can save typing, and can lead to a coherent structure and consistent style.  This is similar to, but independent of, the <link linkend="ScoreMacros"><citetitle>macro system in the score language</citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis>&dollar;NAME</emphasis> -- calls a defined macro. To use a macro, the name is used following a &dollar; character. The name is terminated by the first character which is neither a letter nor a number. If it is necessary for the name not to terminate with a space, a period, which will be ignored, can be used to terminate the name. The string, <emphasis>&dollar;NAME</emphasis>., is replaced by the replacement text from the definition. The replacement text can also include macro calls.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>&dollar;NAME</command>&#160;</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>&num; replacement text &num;</emphasis> --  The replacement text is any character string (not containing a &num;) and can extend over mutliple lines. The replacement text is enclosed within the &num; characters, which ensure that additional characters are not inadvertently captured.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      Some care is needed with textual replacement macros, as they can sometimes do strange things.  They take no notice of any meaning, so spaces are significant. This is why, unlike the C programming language, the definition has the replacement text surrounded by &num; characters. Used carefully, this simple macro system is a powerful concept, but it can be abused.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the calling a macro. It uses the file <ulink url="examples/define.csd"><citetitle>define.csd</citetitle></ulink>.
+
+      <example>
+        <title>An example of the calling a macro.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/define.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Its output should include lines like this:
+      <screen>
+Macro definition for VOLUME
+Macro definition for CPS
+Macro definition for TABLE</screen>
+    </para>
+
+    <para>
+      Here is an example of the calling a macro with arguments. It uses the file <ulink url="examples/define_args.csd"><citetitle>define_args.csd</citetitle></ulink>.
+
+      <example>
+        <title>An example of the calling a macro with arguments.</title>
+
+          <xi:include href="examples-xml/define_args.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Its output should include a line like this:
+      <screen>
+Macro definition for OSCMACRO</screen>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="define"><citetitle>&num;define</citetitle></link>,
+      <link linkend="undef"><citetitle>&num;undef</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>University of Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>April, 1998</member>
+      </simplelist>
+    </para>
+    <para>Examples written by &namekevin;.</para>
+
+    <para>New in Csound version 3.48</para>
+  </refsect1>
+</refentry>

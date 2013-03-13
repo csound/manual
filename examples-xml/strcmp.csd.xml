@@ -1,0 +1,49 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac     <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o strcmp.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="comment">;modified example from Joachim Heintz</emphasis>
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+   <emphasis role="oblock">opcode</emphasis> Triad, iii, S				<emphasis role="comment">;define UDO</emphasis>
+Sname      <emphasis role="opc">xin</emphasis>
+iMaj       <emphasis role="opc">strcmp</emphasis>     "maj", Sname
+iMin       <emphasis role="opc">strcmp</emphasis>     "min", Sname
+iPrim      <emphasis role="op">=</emphasis>          8.00			<emphasis role="comment">;notes in pitch notattion</emphasis>
+iQuint     <emphasis role="op">=</emphasis>          8.05
+  <emphasis role="octrl">if</emphasis> iMaj <emphasis role="op">==</emphasis> 0 then
+iTer       <emphasis role="op">=</emphasis>          8.03
+  <emphasis role="octrl">elseif</emphasis> iMin <emphasis role="op">==</emphasis> 0 then
+iTer       <emphasis role="op">=</emphasis>          8.02
+  <emphasis role="octrl">endif</emphasis>
+            <emphasis role="opc">xout</emphasis>       iPrim, iTer, iQuint
+   <emphasis role="oblock">endop</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 1
+
+Sname <emphasis role="opc">strget</emphasis> p4
+ia, ib, ic Triad Sname				<emphasis role="comment">;apply UDO</emphasis>
+      <emphasis role="opc">print</emphasis> ia, ib, ic
+asig1 <emphasis role="opc">pluck</emphasis> 0.7, <emphasis role="opc">cpspch</emphasis>(ia), 220, 0, 1
+asig2 <emphasis role="opc">pluck</emphasis> 0.7, <emphasis role="opc">cpspch</emphasis>(ib), 220, 0, 1
+asig3 <emphasis role="opc">pluck</emphasis> 0.7, <emphasis role="opc">cpspch</emphasis>(ic), 220, 0, 1
+asig  <emphasis role="op">=</emphasis> (asig1<emphasis role="op">+</emphasis>asig2<emphasis role="op">+</emphasis>asig3)<emphasis role="op">*</emphasis>.5
+      <emphasis role="opc">outs</emphasis> asig, asig
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">i</emphasis>1 0 3 "maj"
+<emphasis role="stamnt">i</emphasis>1 4 3 "m<emphasis role="stamnt">i</emphasis>n"
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

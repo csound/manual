@@ -1,0 +1,85 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in    Silent  MIDI in</emphasis>
+-odac           -iadc     -d       -M0  <emphasis role="comment">;;;realtime I/O</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="comment">;xtratim example by Jonathan Murphy Dec. 2006</emphasis>
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 10
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+
+	    <emphasis role="comment">; sine wave for oscillators</emphasis>
+gisin	    <emphasis role="ohdr">ftgen</emphasis>     1, 0, 4096, 10, 1
+	    <emphasis role="comment">; set volume initially to midpoint</emphasis>
+	    <emphasis role="ohdr">ctrlinit</emphasis>  1, 7,64
+
+<emphasis role="comment">;;; simple two oscil, two envelope synth</emphasis>
+    <emphasis role="oblock">instr</emphasis> 1
+
+	    <emphasis role="comment">; frequency</emphasis>
+  kcps	    <emphasis role="opc">cpsmidib</emphasis>
+	    <emphasis role="comment">; initial velocity (noteon)</emphasis>
+  ivel	    <emphasis role="opc">veloc</emphasis>
+
+	    <emphasis role="comment">; master volume</emphasis>
+  kamp	    <emphasis role="opc">ctrl7</emphasis>     1, 7, 0, 127
+  kamp	    <emphasis role="op">=</emphasis>  kamp <emphasis role="op">*</emphasis> ivel
+
+	    <emphasis role="comment">; parameters for aenv1</emphasis>
+  iatt1	    <emphasis role="op">=</emphasis>  0.03	
+  idec1	    <emphasis role="op">=</emphasis>  1
+  isus1	    <emphasis role="op">=</emphasis>  0.25	
+  irel1	    <emphasis role="op">=</emphasis>  1
+	    <emphasis role="comment">; parameters for aenv2</emphasis>
+  iatt2	    <emphasis role="op">=</emphasis>  0.06	
+  idec2	    <emphasis role="op">=</emphasis>  2	
+  isus2	    <emphasis role="op">=</emphasis>  0.5
+  irel2	    <emphasis role="op">=</emphasis>  2
+
+	    <emphasis role="comment">; extra (release) time allocated</emphasis>
+	    <emphasis role="opc">xtratim</emphasis>   (irel1<emphasis role="op">></emphasis>irel2 <emphasis role="op">?</emphasis> irel1 <emphasis role="op">:</emphasis> irel2)
+            <emphasis role="comment">; krel is used to trigger envelope release</emphasis>
+  krel	    <emphasis role="opc">init</emphasis>      0
+  krel	    <emphasis role="opc">release</emphasis>
+	    <emphasis role="comment">; if noteoff received, krel == 1, otherwise krel == 0</emphasis>
+<emphasis role="octrl">if</emphasis> (krel <emphasis role="op">==</emphasis> 1) <emphasis role="octrl">kgoto</emphasis> <emphasis role="olabel">rel</emphasis>
+
+	    <emphasis role="comment">; attack, decay, sustain segments</emphasis>
+  atmp1	    <emphasis role="opc">linseg</emphasis>    0, iatt1, 1, idec1, isus1	, 1, isus1
+  atmp2	    <emphasis role="opc">linseg</emphasis>    0, iatt2, 1, idec2, isus2	, 1, isus2
+  aenv1	    <emphasis role="op">=</emphasis>  atmp1
+  aenv2	    <emphasis role="op">=</emphasis>  atmp2
+	    <emphasis role="octrl">kgoto</emphasis>     <emphasis role="olabel">done</emphasis>
+
+	    <emphasis role="comment">; release segment</emphasis>
+<emphasis role="olabel">rel</emphasis><emphasis role="op">:</emphasis>
+  atmp3	    <emphasis role="opc">linseg</emphasis>    1, irel1, 0, 1, 0
+  atmp4	    <emphasis role="opc">linseg</emphasis>    1, irel2, 0, 1, 0
+  aenv1	    <emphasis role="op">=</emphasis>  atmp1 <emphasis role="op">*</emphasis> atmp3  <emphasis role="comment">;to go from the current value (in case</emphasis>
+  aenv2	    <emphasis role="op">=</emphasis>  atmp2 <emphasis role="op">*</emphasis> atmp4  <emphasis role="comment">;the attack hasn't finished) to the release.</emphasis>
+
+	    <emphasis role="comment">; control oscillator amplitude using envelopes</emphasis>
+<emphasis role="olabel">done</emphasis><emphasis role="op">:</emphasis>
+  aosc1	    <emphasis role="opc">oscil</emphasis>     aenv1, kcps, gisin
+  aosc2	    <emphasis role="opc">oscil</emphasis>     aenv2, kcps <emphasis role="op">*</emphasis> 1.5, gisin
+  aosc1	    <emphasis role="op">=</emphasis>  aosc1 <emphasis role="op">*</emphasis> kamp
+  aosc2	    <emphasis role="op">=</emphasis>  aosc2 <emphasis role="op">*</emphasis> kamp
+
+	    <emphasis role="comment">; send aosc1 to left channel, aosc2 to right,</emphasis>
+	    <emphasis role="comment">; release times are noticably different</emphasis>
+ 
+	    <emphasis role="opc">outs</emphasis>      aosc1, aosc2
+
+    <emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">f</emphasis> 0 3600 <emphasis role="comment">;dummy table to wait for realtime MIDI events</emphasis>
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

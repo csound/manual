@@ -1,0 +1,94 @@
+
+<refentry id="pvsvoc">
+<indexterm id="Indexpvsvoc"><primary>pvsvoc</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsvoc</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>pvsvoc</refname>
+    <refpurpose>
+      Combine the spectral envelope of one fsig with the excitation (frequencies) of another.
+          </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+    This opcode provides support for cross-synthesis of amplitudes and frequencies. It takes
+    the amplitudes of one input fsig and combines with frequencies from another. It is a spectral
+    version of the well-known channel vocoder.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>fsig <command>pvsvoc</command> famp, fexc, kdepth, kgain [,kcoefs]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>fsig</emphasis> -- output pv stream
+    </para>
+
+    <para>
+      <emphasis>famp</emphasis> -- input pv stream from which the amplitudes will be extracted
+    </para>
+   
+   <para>
+      <emphasis>fexc</emphasis> -- input pv stream from which the frequencies will be taken
+    </para>
+
+    <para>
+      <emphasis>kdepth</emphasis> -- depth of effect, affecting how much of the frequencies will
+      be taken from the second fsig: 0, the output is the famp signal, 1 the output is the famp
+      amplitudes and fexc frequencies. 
+    </para>
+
+    <para>
+      <emphasis>kgain</emphasis> -- gain boost/attenuation applied to the output.
+    </para>
+
+<para>
+      <emphasis>kcoefs</emphasis> -- number of cepstrum coefs used in spectral envelope estimation (defaults to 80).
+    </para>
+    <warning>
+      <para>
+        It is unsafe to use the same f-variable for both input and output of pvs opcodes. Using the same one might lead to undefined behavior on some opcodes. Use a different one on the left and right sides of the opcode.
+      </para>
+    </warning>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the pvsvoc opcode. It uses the file <ulink url="examples/pvsvoc.csd"><citetitle>pvsvoc.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the pvsvoc opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/pvsvoc.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+The example above shows a typical cross-synthesis operation. The input signal (say a vocal sound) is used for its amplitude spectrum. An oscillator with an arbitrary complex waveform produces the excitation signal, giving the vocal sound its pitch.
+    </para>  
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>April 2005 </member>
+      </simplelist>
+    </para>
+
+    <para>New plugin in version 5</para>
+    <para>April 2005.</para>
+  </refsect1>
+</refentry>

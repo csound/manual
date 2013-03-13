@@ -1,0 +1,85 @@
+
+<refentry id="lpf18">
+<indexterm id="Indexlpf18"><primary>lpf18</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lpf18</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>lpf18</refname>
+    <refpurpose>
+      A 3-pole sweepable resonant lowpass filter.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Implementation of a 3 pole sweepable resonant lowpass filter.
+    </para>
+  </refsect1>
+ 
+ <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>lpf18</command> asig, kfco, kres, kdist [, iskip]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iskip</emphasis> (optional, default=0) -- Skip initialization if present and non-zero.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kfco</emphasis> -- the filter cutoff frequency in Hz. Should be in the range 0 to <emphasis>sr</emphasis>/2.
+    </para>
+
+    <para>
+      <emphasis>kres</emphasis> -- the amount of resonance. Self-oscillation occurs when <emphasis>kres</emphasis> is approximately 1. Should usually be in the range 0 to 1, however, values slightly greater than 1 are possible for more sustained oscillation and an <quote>overdrive</quote> effect.
+    </para>
+
+    <para>
+      <emphasis>kdist</emphasis> -- amount of distortion. <emphasis>kdist</emphasis> = 0 gives a clean output. <emphasis>kdist</emphasis> &gt; 0 adds <emphasis>tanh</emphasis>() distortion controlled by the filter parameters, in such a way that both low cutoff and high resonance increase the distortion amount. Some experimentation is encouraged.
+    </para>
+
+    <para>
+      <emphasis>lpf18</emphasis> is a digital emulation of a 3 pole (18 dB/oct.) lowpass filter capable of self-oscillation with a built-in distortion unit. It is really a 3-pole version of <link linkend="moogvcf"><citetitle>moogvcf</citetitle></link>, retuned, recalibrated and with some performance improvements. The tuning and feedback tables use no more than 6 adds and 6 multiplies per control rate. The distortion unit, itself, is based on a modified <link linkend="tanh"><citetitle>tanh</citetitle></link> function driven by the filter controls.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        This filter requires that the input signal be normalized to one.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the lpf18 opcode. It uses the file <ulink url="examples/lpf18.csd"><citetitle>lpf18.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the lpf18 opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/lpf18.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Josep M Comajuncosas</member>
+        <member>Spain</member>
+        <member>December 2000</member>
+      </simplelist>
+    </para>
+    <para>Example written by &namekevin; with help from Iain Duncan. Thanks goes to Iain for helping with the example.</para>
+    <para>New in Csound version 4.10</para>
+  </refsect1>
+</refentry>

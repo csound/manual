@@ -1,0 +1,82 @@
+
+<refentry id="sinsyn">
+<indexterm id="Indexsinsyn"><primary>sinsyn</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>sinsyn</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>sinsyn</refname>
+    <refpurpose>
+      Streaming partial track additive synthesis with cubic phase interpolation 
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+  The <emphasis>sinsyn</emphasis> opcode takes an input containg a TRACKS pv streaming signal (as generated,
+  for instance by the <emphasis>partials</emphasis> opcode). It resynthesises the signal using linear amplitude and cubic phase
+  interpolation to drive a bank of interpolating oscillators with amplitude scaling control. <emphasis>sinsyn</emphasis> 
+  attempts to preserve the phase of the partials in the original signal and in so doing it does not allow for
+  pitch or timescale modifications of the signal.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>asig <command>sinsyn</command> fin, kscal, kmaxtracks, ifn</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+	    <para>
+      <emphasis>asig</emphasis> -- output audio rate signal
+    </para>
+	
+    <para>
+      <emphasis>fin</emphasis> -- input pv stream in TRACKS format
+    </para>
+
+    <para>
+      <emphasis>kscal</emphasis> -- amplitude scaling
+    </para>
+
+    <para>
+      <emphasis>kmaxtracks</emphasis> -- max number of tracks in sinsynthesis. Limiting this will cause
+	    a non-linear filtering effect, by discarding newer and higher-frequency tracks (tracks are ordered
+	    by start time and ascending frequency, respectively)
+    </para>
+
+    <para>
+      <emphasis>ifn</emphasis> -- function table containing one cycle of a sinusoid (sine or cosine).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the sinsyn opcode. It uses the file <ulink url="examples/sinsyn.csd"><citetitle>sinsyn.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the sinsyn opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/sinsyn.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+        <para>The example above shows partial tracking of an ifd-analysis signal and cubic-phase additive resynthesis.</para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>June 2005 </member>
+      </simplelist>
+    </para>
+
+    <para>New plugin in version 5</para>
+    <para>November 2004.</para>
+  </refsect1>
+</refentry>

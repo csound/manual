@@ -1,0 +1,91 @@
+
+<refentry id="GEN42">
+      <indexterm id="IndexGEN42"><primary>GEN42</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN42</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>GEN42</refname>
+    <refpurpose>
+      Generates a random distribution of discrete ranges of values.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Generates a random distribution function of discrete ranges of values by giving a list of groups of three numbers.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>f</command> # time size -42  min1 max1 prob1 min2 max2 prob2 min3 max3 prob3 ...  minN maxN probN</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      The first number of each group is a the minimum value of the range, the second is the maximum value and the third is the probability of that an element belonging to that range of values can be chosen by a random algorithm. Probabilities for a range should be a fraction of 1, and the sum of the probabilities for all the ranges should total 1.0.
+    </para>
+
+    <para>
+      This subroutine is designed to be used together with duserrnd and <link linkend="urd"><citetitle>urd</citetitle></link> opcodes (see <link linkend="duserrnd">duserrnd</link> for more information). Since both duserrnd and urd do not use any interpolation, it is suggested to give a size reasonably big.
+    </para>
+  </refsect1>
+
+    <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the GEN42 opcode. It uses the file <ulink url="examples/gen42.csd"><citetitle>gen42.csd</citetitle></ulink>.
+            <example>
+        <title>Example of the GEN42 opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/gen42.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>     
+      Its output should include lines like these:
+      <screen>
+ i1   184.61538
+ i1   130.76923
+ i1   169.23077
+ i1    12.00000
+.......
+
+WARNING: Seeding from current time 3751086165
+
+ i2   138.46154
+ i2    12.00000
+ i2   123.07692
+ i2   161.53846
+ i2   123.07692
+ i2   153.84615
+......
+      </screen>
+
+        <textobject>
+          <phrase>This is the diagram of the waveform of the GEN42 routine, as used in the example:</phrase>
+        </textobject>
+    <para>
+    </para>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen42.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>  f 1 0 -20 -42  10 20 .3 100 200 .7</phrase>
+        </textobject>
+
+        <caption>
+          <para>  f 1 0 -20 -42  10 20 .3 100 200 .7</para>
+        </caption>
+      </mediaobject>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namegabriel;</para>
+  </refsect1>
+</refentry>

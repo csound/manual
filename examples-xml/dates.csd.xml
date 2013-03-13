@@ -1,0 +1,48 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac     <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o dates.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis> <emphasis role="op">=</emphasis> 1
+
+<emphasis role="ohdr">seed</emphasis>     0 <emphasis role="comment">;each time different seed</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 1
+<emphasis role="comment">;;generating a different filename each time csound renders</emphasis>
+itim     <emphasis role="opc">date</emphasis>
+Stim     <emphasis role="opc">dates</emphasis>     itim
+Syear    <emphasis role="opc">strsub</emphasis>    Stim, 20, 24
+Smonth   <emphasis role="opc">strsub</emphasis>    Stim, 4, 7
+Sday     <emphasis role="opc">strsub</emphasis>    Stim, 8, 10
+iday     <emphasis role="opc">strtod</emphasis>    Sday
+Shor     <emphasis role="opc">strsub</emphasis>    Stim, 11, 13
+Smin     <emphasis role="opc">strsub</emphasis>    Stim, 14, 16
+Ssec     <emphasis role="opc">strsub</emphasis>    Stim, 17, 19
+Sfilnam  <emphasis role="opc">sprintf</emphasis>  "<emphasis role="op">%</emphasis>s_<emphasis role="op">%</emphasis>s_<emphasis role="op">%</emphasis>02d_<emphasis role="op">%</emphasis>s_<emphasis role="op">%</emphasis>s_<emphasis role="op">%</emphasis>s.wav", Syear, Smonth, iday, Shor,Smin, Ssec
+<emphasis role="comment">;;rendering with random frequency, amp and pan, and writing to disk</emphasis>
+ifreq    <emphasis role="opc">random</emphasis>    400, 1000
+iamp     <emphasis role="opc">random</emphasis>    .1, 1
+ipan     <emphasis role="opc">random</emphasis>    0, 1
+asin     <emphasis role="opc">oscils</emphasis>    iamp, ifreq, 0
+aL, aR   <emphasis role="opc">pan2</emphasis>      asin, ipan
+         <emphasis role="opc">fout</emphasis>      Sfilnam, 14, aL, aR
+         <emphasis role="opc">outs</emphasis>      aL, aR
+         <emphasis role="opc">printf_i</emphasis>  "File '<emphasis role="op">%</emphasis>s' written to the same directory as this CSD file is!\n", 1, Sfilnam
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 1
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

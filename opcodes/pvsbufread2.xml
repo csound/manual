@@ -1,0 +1,109 @@
+
+<refentry id="pvsbufread2">
+<indexterm id="Indexpvsbufread2"><primary>pvsbufread2</primary></indexterm>
+
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsbufread2</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>pvsbufread2</refname>
+    <refpurpose>
+      This opcode reads a circular buffer of f-signals (streaming PV signals), with binwise additional delays.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This opcode reads from a circular buffer of length ilen (secs),
+      taking a handle for the buffer and a time pointer, which holds the
+      current read position (also in seconds). It is used in conjunction with a <emphasis>pvsbuffer</emphasis> opocde. 
+      Reading is circular, wrapping around at the end of the buffer. Extra delay times are taken from
+      a function table, with each point on it defining a delay time in seconds affecting the corresponding bin.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>fsig <command>pvsbufread2</command>  ktime, khandle, ift1, ift2 </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ift1</emphasis> -- function table with at least fftisze/2+1 points where delays (in secs) for bin amplitudes are
+      set (function table positions are equivalent to bin numbers)
+    </para>
+    <para>
+      <emphasis>ift2</emphasis> -- function table with at least fftisze/2+1 points where delays (in secs) for bin frequencies are
+      set (function table positions are equivalent to bin numbers)
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>fsig</emphasis> -- output pv stream
+    </para>
+   <para>
+      <emphasis>ktime</emphasis> -- time position of reading pointer (in secs).
+    </para>
+    <para>
+      <emphasis>khandle</emphasis> -- handle identifying the buffer to be read. When using k-rate
+      handles, it is important to initialise the k-rate variable to a given existing handle. When changing
+      buffers, fsig buffers need to be compatible (same fsig format).
+    </para>
+    <para>
+      With this opcode and <link linkend="pvsbuffer"><citetitle>pvsbuffer</citetitle></link>, it is possible to, among other things:
+      <itemizedlist>
+        <listitem><simpara>time-stretch/compress a fsig stream, by reading it at
+        different rates</simpara></listitem>
+        <listitem><simpara>delay a fsig or portions of it.</simpara></listitem>
+        <listitem><simpara>'brassage' two or more fsigs by switching buffers, since
+        the reading handles are k-rate. Note that, when using k-rate
+        handles, it is important to initialise the k-rate variable to a
+        given handle (so that the fsig initialisation can take place)
+        and it is only possible to switch handles between compatible
+        fsig buffers (with the same fftsize and overlap).</simpara></listitem>
+      </itemizedlist>
+    </para>
+    <note>
+      <para>
+        It is important that the handle value passed to <emphasis>pvsbufread2</emphasis> is valid and was created by <link linkend="pvsbuffer"><citetitle>pvsbuffer</citetitle></link>. Csound will crash with invalid handles.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the pvsbufread2 opcode. It uses the file <ulink url="examples/pvsbufread2.csd"><citetitle>pvsbufread2.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the pvsbufread2 opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+        <xi:include href="examples-xml/pvsbufread2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link>,
+      <link linkend="pvsynth"><citetitle>pvsynth</citetitle></link>,
+      <link linkend="pvsbuffer"><citetitle>pvsbuffer</citetitle></link>,
+      <link linkend="pvsadsyn"><citetitle>pvsadsyn</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>July 2011</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

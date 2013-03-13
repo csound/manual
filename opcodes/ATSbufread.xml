@@ -1,0 +1,85 @@
+﻿
+<refentry id="ATSbufread">
+<indexterm id="IndexATSbufread"><primary>ATSbufread</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:ATS</title></refentryinfo>
+    <refmeta>
+        <refentrytitle>ATSbufread</refentrytitle>
+    </refmeta>
+
+
+    <refnamediv>
+        <refname>ATSbufread</refname>
+        <refpurpose> reads data from and ATS data file and stores it in an internal data table of frequency, amplitude pairs.
+                    </refpurpose>
+    </refnamediv>
+    <refsect1>
+        <title>Description</title>
+        <para>
+            <emphasis>ATSbufread</emphasis> reads data from and ATS data file and stores it in an internal data table of frequency, amplitude pairs.
+        </para>
+    </refsect1>
+    <refsect1>
+        <title>Syntax</title>
+        <synopsis><command>ATSbufread</command> ktimepnt, kfmod, iatsfile, ipartials[, ipartialoffset, \
+          ipartialincr]</synopsis>
+    </refsect1>
+    <refsect1>
+        <title>Initialization</title>
+        <para>
+        <emphasis>iatsfile</emphasis> – the ATS number (n in ats.n) or the name in quotes of the analysis file made using <ulink url="http://www-ccrma.stanford.edu/~juan/ATS.html"><citetitle>ATS</citetitle></ulink>.
+        </para>
+        <para><emphasis>ipartials</emphasis> – number of partials that will be used in the resynthesis (the noise has a maximum of 25 bands)
+        </para>
+        <para><emphasis>ipartialoffset</emphasis> (optional) – is the first partial used (defaults to 0).
+        </para>
+        <para><emphasis>ipartialincr</emphasis> (optional) – sets an increment by which these synthesis opcodes counts up from <emphasis>ipartialoffset</emphasis> for ibins components in the re-synthesis (defaults to 1).
+        </para>
+    </refsect1>
+    <refsect1>
+        <title>Performance</title>
+        <para><emphasis>ktimepnt</emphasis> – The time pointer in seconds used to index the ATS file. Used for <emphasis>ATSbufread</emphasis> exactly the same as for <link linkend="pvoc"><citetitle>pvoc</citetitle></link>.</para>
+        <para>
+        <emphasis>kfmod</emphasis> – an input for performing pitch transposition or frequency modulation on all of the synthesized partials, if no fm or pitch change is desired then use a 1 for this value.
+        </para>
+        <para><emphasis>ATSbufread</emphasis> is based on pvbufread by Richard Karpen. <link linkend="ATScross"><citetitle>ATScross</citetitle></link>, <link linkend="ATSinterpread"><citetitle>ATSinterpread</citetitle></link> and <link linkend="ATSpartialtap"><citetitle>ATSpartialtap</citetitle></link> are all dependent on <emphasis>ATSbufread</emphasis> just as <link linkend="pvcross"><citetitle>pvcross</citetitle></link> and <link linkend="pvinterp"><citetitle>pvinterp</citetitle></link> are on <link linkend="pvbufread"><citetitle>pvbufread</citetitle></link>. <emphasis>ATSbufread</emphasis> reads data from and ATS data file and stores it in an internal data table of frequency, amplitude pairs. The data stored by an <emphasis>ATSbufread</emphasis> can only be accessed by other unit generators, and therefore, due to the architecture of Csound, an <emphasis>ATSbufread</emphasis>  must come before (but not necessarily directly) any dependent unit generator. Besides the fact that <emphasis>ATSbufread</emphasis> doesn't output any data directly, it works almost exactly as <link linkend="ATSadd"><citetitle>ATSadd</citetitle></link>. The ugen uses a time pointer (<emphasis>ktimepnt</emphasis>) to index the data in time, <emphasis>ipartials</emphasis>, <emphasis>ipartialoffset</emphasis> and <emphasis>ipartialincr</emphasis> to select which partials to store in the table and <emphasis>kfmod</emphasis> to scale partials in frequency.
+        </para>
+    </refsect1>
+    
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the ATSbufread opcode. It uses the file <ulink url="examples/ATSbufread.csd"><citetitle>ATSbufread.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the ATSbufread opcode.</title>
+
+        
+
+          <xi:include href="examples-xml/ATSbufread.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+        <para>See also the examples for <link linkend="ATScross"><citetitle>ATScross</citetitle></link>, <link linkend="ATSinterpread"><citetitle>ATSinterpread</citetitle></link> and <link linkend="ATSpartialtap"><citetitle>ATSpartialtap</citetitle></link></para>
+    </refsect1>
+    <refsect1>
+        <title>See also</title>
+        <para><link linkend="ATSread"><citetitle>ATSread</citetitle></link>, 
+            <link linkend="ATSreadnz"><citetitle>ATSreadnz</citetitle></link>, 
+            <link linkend="ATSinfo"><citetitle>ATSinfo</citetitle></link>, 
+            <link linkend="ATSsinnoi"><citetitle>ATSsinnoi</citetitle></link>, 
+            <link linkend="ATScross"><citetitle>ATScross</citetitle></link>, 
+            <link linkend="ATSinterpread"><citetitle>ATSinterpread</citetitle></link>, 
+            <link linkend="ATSpartialtap"><citetitle>ATSpartialtap</citetitle></link>, 
+            <link linkend="ATSadd"><citetitle>ATSadd</citetitle></link>, 
+            <link linkend="ATSaddnz"><citetitle>ATSaddnz</citetitle></link></para>
+    </refsect1>
+    <refsect1>
+        <title>Credits</title>
+        <para>
+            <simplelist>
+                <member>Author: Alex Norman</member>
+                <member>Seattle,Washington</member>
+                <member>2004</member>
+            </simplelist>
+        </para>
+    </refsect1>
+</refentry>

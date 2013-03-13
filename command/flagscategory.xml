@@ -1,0 +1,1199 @@
+<section id="CommandFlagsCategory">
+  <title>Command-line Flags (by Category)</title>
+
+  <para>
+    Listed below are the command line available in Csound5 organized by categories. Various platform implementations may not react the same way to different flags!
+  </para>
+  <para>
+    You can view the command line flags organized alphabetically in <link linkend="CommandFlags"><citetitle>Command-line Flags (Alphabetically)</citetitle></link>.
+  </para>
+  <para>
+    The format of a command is either:
+    <cmdsynopsis>
+      <command>csound</command>
+      <arg><option>flags</option></arg>
+      <arg>orchname</arg>
+      <arg>scorename</arg>
+    </cmdsynopsis>
+
+    or
+
+    <cmdsynopsis>
+      <command>csound</command>
+      <arg><option>flags</option></arg>
+      <arg>csdfilename</arg>
+    </cmdsynopsis>
+  </para>
+
+  <para>
+    where the arguments are of 2 types: <emphasis>flags</emphasis> arguments (beginning with a <quote>-</quote>,<quote>--</quote> or <quote>-+</quote>), and <emphasis>name</emphasis> arguments (such as filenames). Certain flag arguments take a following name or numeric argument. Flags that start with <quote>--</quote> and <quote>-+</quote> usually take an argument themselves using <quote>=</quote>.
+  </para>
+
+  <variablelist>
+    <title>Audio File Ouput</title>
+    <varlistentry id="FlagsCatMinus3">
+      <term>-3<indexterm id="IndexCatMinus3"><primary>-3</primary></indexterm>, --format&equals;24bit<indexterm id="IndexCatMinusFormat24bit"><primary>--format&equals;24bit</primary></indexterm></term>
+      <listitem>
+        <para>
+          Use 24-bit audio samples.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinus8">
+      <term>-8<indexterm id="IndexCatMinus8"><primary>-8</primary></indexterm>, --format&equals;uchar<indexterm id="IndexCatMinusFormatUchar"><primary>--format&equals;uchar</primary></indexterm></term>
+      <listitem>
+        <para>
+          Use 8-bit unsigned character audio samples.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusUpperA">
+      <term>-A<indexterm id="IndexCatMinusUpperA"><primary>-A</primary></indexterm>, --aiff<indexterm id="IndexCatMinusAiff"><primary>--aiff</primary></indexterm>, --format=aiff<indexterm id="IndexCatMinusFAiff"><primary>--format=aiff</primary></indexterm></term>
+      <listitem>
+        <para>
+          Write an AIFF format soundfile. Use with the <link linkend="FlagsMinusLowerC"><citetitle>-c</citetitle></link>, <link linkend="FlagsMinusLowerS"><citetitle>-s</citetitle></link>, <link linkend="FlagsMinusLowerL"><citetitle>-l</citetitle></link>, or <link linkend="FlagsMinusLowerF"><citetitle>-f</citetitle></link> flags.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusLowerA">
+      <term>-a<indexterm id="IndexCatMinusLowerA"><primary>-a</primary></indexterm>, --format=alaw<indexterm id="IndexCatMinusFormatAlaw"><primary>--format=alaw</primary></indexterm></term>
+      <listitem>
+        <para>
+          Use a-law audio samples.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusLowerC">
+      <term>-c<indexterm id="IndexCatMinusLowerC"><primary>-c</primary></indexterm>, --format=schar<indexterm id="IndexCatMinusFormatSchar"><primary>--format=schar</primary></indexterm></term>
+      <listitem>
+        <para>
+          Use 8-bit signed character audio samples.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusLowerF">
+      <term>-f<indexterm id="IndexCatMinusLowerF"><primary>-f</primary></indexterm>, --format=float<indexterm id="IndexCatMinusFormatFloat"><primary>--format=float</primary></indexterm></term>
+      <listitem>
+        <para>
+          Use single-format float audio samples (not playable on some systems, but can be read by <link linkend="FlagsCatMinusLowerI"><citetitle>-i</citetitle></link>, <link linkend="soundin"><citetitle>soundin</citetitle></link> and <link linkend="GEN01"><citetitle>GEN01</citetitle></link>
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusFormat">
+      <term>--format=<emphasis>type</emphasis><indexterm id="IndexCatMinusFormat"><primary>--format</primary></indexterm></term>
+      <listitem>
+        <para>
+          Set the audio file output format to one of the formats
+          available in libsndfile.  At present the list is
+          aiff, au, avr, caf, flac, htk, ircam, mat4, mat5, nis, paf, pvf,
+          raw, sd2, sds, svx, voc, w64, wav, wavex and xi.
+          Can also be used as --format=type:format or --format=format:type
+          to set both the file type (wav, aiff, etc.) and sample format
+          (short, long, float, etc.) at the same time.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusLowerH">
+      <term>-h<indexterm id="IndexCatMinusLowerH"><primary>-h</primary></indexterm>, --noheader<indexterm id="IndexCatMinusNoheader"><primary>--noheader</primary></indexterm></term>
+      <listitem>
+        <para>
+          No header on output soundfile.
+          Don't write a file header, just binary samples.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusLowerI">
+      <term>-i FILE<indexterm id="IndexCatMinusLowerI"><primary>-i</primary></indexterm>, --input=FILE<indexterm id="IndexCatMinusInput"><primary>--input</primary></indexterm></term>
+      <listitem>
+        <para>
+          Input soundfile name. If not a full pathname, the file will be sought first in the current directory, then in that given by the environment variable <link linkend="CommandEnvironment"><citetitle>SSDIR</citetitle></link> (if defined), then by <link linkend="CommandEnvironment"><citetitle>SFDIR</citetitle></link>. The name <emphasis>stdin</emphasis> will cause audio to be read from standard input.
+        </para>
+        <para>
+          The name <emphasis>devaudio</emphasis> or <emphasis>adc</emphasis> will request sound from the host audio input device. It is possible to select a device number by appending an integer value in the range 0 to 1023, or a device name separated by a : character. It depends on the host audio interface whether a device number or a name should be used. In the first case, an out of range number usually results in an error and listing the valid device numbers.
+        </para>
+        <para>
+            The audio coming in using <emphasis>-i</emphasis> can be received using opcodes like <link linkend="inch"><citetitle>inch</citetitle></link>.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusUpperJ">
+      <term>-J<indexterm id="IndexCatMinusUpperJ"><primary>-J</primary></indexterm>, --ircam<indexterm id="IndexCatMinusIrcam"><primary>--ircam</primary></indexterm>, --format=ircam<indexterm id="IndexCatMinusFIrcam"><primary>--format=ircam</primary></indexterm></term>
+      <listitem>
+        <para>
+          Write an IRCAM format soundfile.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusUpperK">
+      <term>-K<indexterm id="IndexCatMinusUpperK"><primary>-K</primary></indexterm>, --nopeaks<indexterm id="IndexCatMinusNopeaks"><primary>--nopeaks</primary></indexterm></term>
+      <listitem>
+        <para>
+          Do not generate any PEAK chunks.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusLowerL">
+      <term>-l<indexterm id="IndexCatMinusLowerL"><primary>-l</primary></indexterm>, --format=long<indexterm id="IndexCatMinusFormatLong"><primary>--format=long</primary></indexterm></term>
+      <listitem>
+        <para>
+          Use long integer audio samples.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusLowerN">
+      <term>-n<indexterm id="IndexCatMinusLowerN"><primary>-n</primary></indexterm>, --nosound<indexterm id="IndexCatMinusNosound"><primary>--nosound</primary></indexterm></term>
+      <listitem>
+        <para>
+          No sound. Do all processing, but bypass writing of sound to disk. This flag does not change the execution in any other way.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusLowerO">
+      <term>-o FILE<indexterm id="IndexCatMinusLowerO"><primary>-o</primary></indexterm>, --output=FILE<indexterm id="IndexCatMinusOutput"><primary>--output</primary></indexterm></term>
+      <listitem>
+        <para>
+          Output soundfile name. If not a full pathname, the soundfile will be placed in the directory given by the environment variable <link linkend="CommandEnvironment"><citetitle>SFDIR</citetitle></link> (if defined), else in the current directory. The name <emphasis>stdout</emphasis> will cause audio to be written to standard output, while <emphasis>null</emphasis> results in no sound output similarly to the -n flag. If no name is given, the default name will be <emphasis>test</emphasis>.
+        </para>
+        <para>
+          The name <emphasis>dac</emphasis> or <emphasis>devaudio</emphasis> (you can use <emphasis>-odac</emphasis> or <emphasis>-o dac</emphasis>) will request writing sound to the host audio output device. It is possible to select a device number by appending an integer value in the range 0 to 1023, or a device name separated by a : character. It depends on the host audio interface whether a device number or a name should be used. In the first case, an out of range number usually results in an error and listing the valid device numbers.
+        </para>
+      </listitem>
+    </varlistentry>
+
+        <varlistentry id="FlagsCatMinusMinusOgg">
+          <term>--ogg<indexterm id="IndexCatMinusMinusOgg"><primary>--ogg</primary></indexterm></term>
+          <listitem>
+            <para>
+              Set output file format to ogg.  (Csound 5.18 and later).
+            </para>
+          </listitem>
+        </varlistentry>
+
+    <varlistentry id="FlagsCatMinusUpperR">
+      <term>-R<indexterm id="IndexCatMinusUpperR"><primary>-R</primary></indexterm>, --rewrite<indexterm id="IndexCatMinusRewrite"><primary>--rewrite</primary></indexterm></term>
+      <listitem>
+        <para>
+          Continually rewrite the header while writing the soundfile (WAV/AIFF).
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusLowerS">
+      <term>-s<indexterm id="IndexCatMinusLowerS"><primary>-s</primary></indexterm>, --format=short<indexterm id="IndexCatMinusFormatShort"><primary>--format=short</primary></indexterm></term>
+      <listitem>
+        <para>
+          Use short integer audio samples.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusLowerU">
+      <term>-u<indexterm
+                        id="IndexCatMinusLowerU"><primary>-u</primary></indexterm>,
+        --format=ulaw<indexterm
+                               id="IndexCatMinusFormatUlaw"><primary>--format=ulaw</primary></indexterm></term>
+      <listitem>
+        <para>
+          Use u-law audio samples.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusUpperW">
+      <term>-W<indexterm id="IndexCatMinusUpperW"><primary>-W</primary></indexterm>, --wave<indexterm id="IndexCatMinusWave"><primary>--wave</primary></indexterm>, --format=wave<indexterm id="IndexCatMinusFWave"><primary>--format=wave</primary></indexterm></term>
+      <listitem>
+        <para>
+          Write a WAV format soundfile.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusUpperZ">
+      <term>-Z<indexterm id="IndexCatMinusUpperZ"><primary>-Z</primary></indexterm>, --dither<indexterm id="IndexCatMinusDither"><primary>--dither</primary></indexterm></term>
+      <listitem>
+        <para>
+          Switch on dithering of audio conversion from internal
+          floating point to 32, 16 and 8-bit formats.  The default 
+          form of the dither is triangular. 
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusUpperZ2">
+      <term>-Z<indexterm id="IndexCatMinusUpperZd"><primary>-Zd</primary></indexterm>, --dither--triangular<indexterm id="IndexCatMinusDitherTrangular"><primary>--dither--triangular</primary></indexterm>, --dither--uniform<indexterm id="IndexCatMinusDitherUniform"><primary>--dither--uniform</primary></indexterm></term>
+      <listitem>
+        <para>
+          Switch on dithering of audio conversion from internal
+          floating point to 32, 16 and 8-bit formats.  In the case
+          of -Z the next digit should be a 1 (for trangular) or a
+          2 (for uniform).  The exact interpretation depends on
+          the output system.
+        </para>
+      </listitem>
+    </varlistentry>
+
+  </variablelist>
+
+  <variablelist>
+    <title>Output File Id tags</title>
+    <varlistentry id="FlagsCatMinusPlusIdArtist">
+      <term>-+id_artist=string<indexterm id="IndexCatMinusPlusIdArtist"><primary>-+id_artist</primary></indexterm></term>
+      <listitem>
+        <para>
+          (max. length = 200 characters) Artist tag in output soundfile (no spaces)
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusPlusIdComment">
+      <term>-+id_comment=string<indexterm id="IndexCatMinusPlusIdComment"><primary>-+id_comment</primary></indexterm></term>
+      <listitem>
+        <para>
+          (max. length = 200 characters) Comment tag in output soundfile (no spaces)
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusPlusIdCopyright">
+      <term>-+id_copyright=string<indexterm id="IndexCatMinusPlusIdCopyright"><primary>-+id_copyright</primary></indexterm></term>
+      <listitem>
+        <para>
+          (max. length = 200 characters) Copyright tag in output soundfile (no spaces)
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusPlusIdDate">
+      <term>-+id_date=string<indexterm id="IndexCatMinusPlusIdDate"><primary>-+id_date</primary></indexterm></term>
+      <listitem>
+        <para>
+          (max. length = 200 characters) Date tag in output soundfile (no spaces)
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusPlusIdSoftware">
+      <term>-+id_software=string<indexterm id="IndexCatMinusPlusIdSoftware"><primary>-+id_software</primary></indexterm></term>
+      <listitem>
+        <para>
+          (max. length = 200 characters) Software tag in output soundfile (no spaces)
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusPlusIdTitle">
+      <term>-+id_title=string<indexterm id="IndexCatMinusPlusIdTitle"><primary>-+id_title</primary></indexterm></term>
+      <listitem>
+        <para>
+          (max. length = 200 characters) Title tag in output soundfile (no spaces)
+        </para>
+      </listitem>
+    </varlistentry>
+
+  </variablelist>
+
+  <variablelist>
+    <title>Realtime Audio Input/Output</title>
+    <varlistentry id="FlagsCatMinusLowerIadc">
+      <term>-i adc[DEVICE]<indexterm id="IndexCatMinusLowerIadc"><primary>-i</primary></indexterm>, --input=adc[DEVICE]<indexterm id="IndexCatMinusInputIadc"><primary>--input</primary></indexterm></term>
+      <listitem>
+        <para>
+          The name <emphasis>devaudio</emphasis> or <emphasis>adc</emphasis> will request sound from the host audio input device. It is possible to select a device number by appending an integer value in the range 0 to 1023, or a device name separated by a : character (e.g. -iadc3, -iadc:hw:1,1). It depends on the host audio interface whether a device number or a name should be used. In the first case, an out of range number usually results in an error and listing the valid device numbers.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusLowerOdac">
+      <term>-o dac[DEVICE]<indexterm id="IndexCatMinusLowerOdac"><primary>-o</primary></indexterm>, --output=dac[DEVICE]<indexterm id="IndexCatMinusOutputdac"><primary>--output</primary></indexterm></term>
+      <listitem>
+        <para>
+          The name <emphasis>dac</emphasis> or <emphasis>devaudio</emphasis> (you can use <emphasis>-odac</emphasis> or <emphasis>-o dac</emphasis>) will request writing sound to the host audio output device. It is possible to select a device number by appending an integer value in the range 0 to 1023, or a device name separated by a : character (e.g. -odac3, -odac:hw:1,1). It depends on the host audio interface whether a device number or a name should be used. In the first case, an out of range number usually results in an error and listing the valid device numbers.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusPlusRtaudio">
+      <term>-+rtaudio=string<indexterm id="IndexCatMinusRtaudio"><primary>-+rtaudio</primary></indexterm></term>
+      <listitem>
+        <para>
+          (max. length = 20 characters) Real time audio module name.
+          The default is PortAudio (all platforms). Also available, depending on platform and build options: Linux: alsa, jack; Windows: mme; Mac OS X: CoreAudio. In addition, null can be used on all platforms, to disable the use of any real time audio plugin.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusPlusServer">
+      <term>-+server=string<indexterm id="IndexCatMinusPlusServer"><primary>-+server</primary></indexterm></term>
+      <listitem>
+        <para>
+          Pulseaudio server name.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusPlusOutputStream">
+      <term>-+output_stream=string<indexterm id="IndexCatMinusPlusOutputStream"><primary>-+output_stream</primary></indexterm></term>
+      <listitem>
+        <para>
+          Pulseaudio output stream name.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusPlusInputStream">
+      <term>-+input_stream=string<indexterm id="IndexCatMinusPlusInputStream"><primary>-+input_stream</primary></indexterm></term>
+      <listitem>
+        <para>
+          Pulseaudio input stream name.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusPlusJackClient">
+      <term>-+jack_client=[client_name]<indexterm id="IndexCatMinusPlusJackClient"><primary>-+jack_client</primary></indexterm></term>
+      <listitem>
+        <para>
+          The client name used by Csound, defaults to 'csound5'.
+          If multiple instances of Csound connect to the JACK server,
+          different client names need to be used to avoid name
+          conflicts. (Linux and Mac OS X only)
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry id="IndexCatMinusPlusJackPortname">
+      <term>-+jack_inportname=[input port name prefix], -+jack_outportname=[output port name prefix]
+      <indexterm id="IndexCatMinusPlusJackInportname"><primary>-+jack_inportname</primary></indexterm>
+      <indexterm id="IndexCatMinusPlusJackOutportname"><primary>-+jack_outportname</primary></indexterm></term>
+      <listitem>
+        <para>
+          Name prefix of Csound JACK input/output ports; the default is
+          'input' and 'output'. The actual port name is the channel number
+          appended to the name prefix. (Linux and Mac OS X only)
+        </para>
+        <para>
+          Example: with the above default settings, a stereo orchestra will
+          create these ports in full duplex operation:
+          <screen>
+csound5:input1              (record left)
+csound5:input2              (record right)
+csound5:output1             (playback left)
+csound5:output2             (playback right)</screen>
+        </para>
+      </listitem>
+    </varlistentry>
+
+  </variablelist>
+
+  <variablelist>
+    <title>MIDI File Input/Ouput</title>
+
+    <varlistentry id="FlagsCatMinusUpperF">
+      <term>-F FILE<indexterm id="IndexCatMinusUpperF"><primary>-F</primary></indexterm>, --midifile=FILE<indexterm id="IndexCatMinusMidifile"><primary>--midifile</primary></indexterm></term>
+      <listitem>
+        <para>
+          Read MIDI events from MIDI file <emphasis>FILE</emphasis>.
+          The file should have only one track in Csound versions 4.xx and
+          earlier; this limitation is removed in Csound 5.00.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusMidiOutFile">
+      <term>--midioutfile=FILENAME<indexterm id="IndexCatMinusMidiOutFile"><primary>--midioutfile</primary></indexterm></term>
+      <listitem>
+        <para>
+          Save MIDI output to a file (Csound 5.00 and later only).
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusPlusMuteTracks">
+      <term>-+mute_tracks=string<indexterm id="IndexCatMinusPlusMuteTracks"><primary>-+mute_tracks</primary></indexterm></term>
+      <listitem>
+        <para>
+          (max. length = 255 characters) Ignore events (other than
+          tempo changes) in MIDI file tracks defined by pattern (for
+          example, -+mute_tracks=00101 will mute the third and fifth
+          tracks).
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusPlusRawControlerMode">
+      <term>-+raw_controller_mode=boolean<indexterm id="IndexCatMinusRawControllerMode"><primary>-+raw_controller_mode</primary></indexterm></term>
+      <listitem>
+        <para>
+          Disable special handling of MIDI controllers like sustain
+          pedal, all notes off etc., allowing the use of all the 128
+          controllers for any purpose. This will also set the initial value
+          of all controllers to zero.  Default: no.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusPlusSkipSeconds">
+      <term>-+skip_seconds=float<indexterm id="IndexCatMinusSkipSeconds"><primary>-+skip_seconds</primary></indexterm></term>
+      <listitem>
+        <para>
+          (min: 0) Start playback at the specified time (in seconds),
+          skipping earlier events in the score and MIDI file.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusUpperT">
+      <term>-T<indexterm id="IndexCatMinusUpperT"><primary>-T</primary></indexterm>, --terminate-on-midi<indexterm id="IndexCatMinusTerminateonmidi"><primary>--terminate-on-midi</primary></indexterm></term>
+      <listitem>
+        <para>
+          Terminate the performance when the end of MIDI file is reached.
+        </para>
+      </listitem>
+    </varlistentry>
+
+  </variablelist>
+
+  <variablelist>
+    <title>MIDI Realtime Input/Ouput</title>
+
+    <varlistentry id="FlagsCatMinusUpperM">
+      <term>-M DEVICE<indexterm id="IndexCatMinusUpperM"><primary>-M</primary></indexterm>, --midi-device=DEVICE<indexterm id="IndexCatMinusMididevice"><primary>--midi-device</primary></indexterm></term>
+      <listitem>
+        <para>
+          Read MIDI events from device <emphasis>DEVICE</emphasis>. If using ALSA MIDI (<link linkend="FlagsCatMinusPlusRtmidi"><citetitle>-+rtmidi</citetitle></link>=alsa), devices are selected by name and not number. So, you need to use an option like -M hw:CARD,DEVICE where CARD and DEVICE are the card and device numbers (e.g. -M hw:1,0). In the case of PortMidi and MME, DEVICE should be a number, and if it is out of range, an error occurs and the valid device numbers are printed. When using PortMidi, you can use '-Ma' to enable all devices. This is also convenient when you don't have devices as it will not generate an error.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMidiKey">
+      <term>--midi-key=N<indexterm id="IndexCatMidiKey"><primary>--midi-key=N</primary></indexterm></term>
+      <listitem>
+        <para>
+          Route MIDI note on message key number to pfield N as
+	  MIDI value [0-127].
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMidiKeyCps">
+      <term>--midi-key-cps=N<indexterm id="IndexCatMidiKeyCps"><primary>--midi-key-cps=N</primary></indexterm></term>
+      <listitem>
+        <para>
+          Route MIDI note on message key number to pfield N
+	  as cycles per second.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMidiKeyOct">
+      <term>--midi-key-oct=N<indexterm id="IndexCatMidiKeyOct"><primary>--midi-key-oct=N</primary></indexterm></term>
+      <listitem>
+        <para>
+          Route MIDI note on message key number to pfield
+	  N as linear octave.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMidiKeyPch">
+      <term>--midi-key-pch=N<indexterm id="IndexCatMidiKeyPch"><primary>--midi-key-pch=N</primary></indexterm></term>
+      <listitem>
+        <para>
+          Route MIDI note on message key number to
+	  pfield N as oct.pch (pitch class).
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMidiVelocity">
+      <term>--midi-velocity=N<indexterm id="IndexCatMidiVelocity"><primary>--midi-velocity=N</primary></indexterm></term>
+      <listitem>
+        <para>
+          Route MIDI note on message velocity number to pfield
+	  N as MIDI value [0-127].
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMidiKeyAmp">
+      <term>--midi-velocity-amp=N<indexterm id="IndexCatMidiKeyAmp"><primary>--midi-velocity-amp=N</primary></indexterm></term>
+      <listitem>
+        <para>
+          Route MIDI note on message velocity number to pfield
+	  N as amplitude [0-0dbFS].
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusMidiOutFile2">
+      <term>--midioutfile=FILENAME<indexterm id="IndexCatMinusMidiOutFile2"><primary>--midioutfile</primary></indexterm></term>
+      <listitem>
+        <para>
+          Save MIDI output to a file (Csound 5.00 and later only).
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusPlusRtmidi">
+      <term>-+rtmidi=string<indexterm id="IndexCatMinusRtmidi"><primary>-+rtmidi</primary></indexterm></term>
+      <listitem>
+        <para>
+          (max. length = 20 characters) Real time MIDI module name.
+          Defaults to PortMidi, other options (depending on build options): Linux: alsa; Windows: mme, winmm. In addition, null can be used on all platforms, to disable the use of any real time MIDI plugin.
+        </para>
+        <para>ALSA MIDI devices are selected by name and not number. So, you
+          need to use an option like -M hw:CARD,DEVICE where CARD and
+          DEVICE are the card and device numbers (e.g. -M hw:1,0).
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusUpperQ">
+      <term>-Q DEVICE<indexterm id="IndexCatMinusUpperQ"><primary>-Q</primary></indexterm></term>
+      <listitem>
+        <para>
+          Enables MIDI OUT operations to device id <emphasis>DEVICE</emphasis>. This flag allows parallel MIDI OUT and DAC performance. Unfortunately the real-time timing implemented in Csound is completely managed by DAC buffer sample flow. So MIDI OUT operations can present some time irregularities. These irregularities can be reduced by using a lower value for the <link linkend="FlagsMinusLowerB"><citetitle>-b</citetitle></link> flag.
+        </para>
+        <para>
+          If using ALSA MIDI (<link linkend="FlagsCatMinusPlusRtmidi"><citetitle>-+rtmidi</citetitle></link>=alsa), devices are selected by name and not number. So, you need to use an option like -Q hw:CARD,DEVICE where CARD and DEVICE are the card and device numbers (e.g. -Q hw:1,0). In the case of PortMidi and MME, DEVICE should be a number, and if it is out of range, an error occurs and the valid device numbers are printed.
+        </para>
+      </listitem>
+    </varlistentry>
+
+  </variablelist>
+
+  <variablelist>
+    <title>Display</title>
+      <varlistentry id="FlagsCatMinusCsdLineNums">
+        <term>--csd-line-nums=NUM<indexterm id="IndexCatMinusCsdLineNums"><primary>--csd-line-nums</primary></indexterm></term>
+        <listitem>
+          <para>
+            Determines how line numbers are counted and displayed for error messages when processing a Csound Unified Document file (.csd).  This flag has no effect if separate orchestra and score files are used.  (Csound 5.08 and later).
+            <itemizedlist>
+              <listitem><para>0 = line numbers are relative to the beginning of the orchestra or score sections of the CSD</para></listitem>
+              <listitem><para>1 = line numbers are relative to the beginning of the CSD file.  This is the default as of Csound 5.08.</para></listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+      </varlistentry>
+
+    <varlistentry id="FlagsCatMinusLowerD">
+      <term>-d<indexterm id="IndexCatMinusLowerD"><primary>-d</primary></indexterm>, --nodisplays<indexterm id="IndexCatMinusNodisplays"><primary>--nodisplays</primary></indexterm></term>
+      <listitem>
+        <para>
+          Suppress all displays. See <link linkend="FlagsCatMinusUpperO"><citetitle>-O</citetitle></link> if you want to save the log to a file.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusDisplays">
+      <term>--displays<indexterm id="IndexCatMinusDisplays"><primary>--displays</primary></indexterm></term>
+      <listitem>
+        <para>
+          Enables displays, reverting the effect of any previous -d flag.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusUpperG">
+      <term>-G<indexterm id="IndexCatMinusUpperG"><primary>-G</primary></indexterm>, --postscriptdisplay<indexterm id="IndexCatMinusPostscriptdisplay"><primary>--postscriptdisplay</primary></indexterm></term>
+      <listitem>
+        <para>
+          Suppress graphics, use PostScript displays instead.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusLowerG">
+      <term>-g<indexterm id="IndexCatMinusLowerG"><primary>-g</primary></indexterm>, --asciidisplay<indexterm id="IndexCatMinusAsciidisplay"><primary>--asciidisplay</primary></indexterm></term>
+      <listitem>
+        <para>
+          Suppress graphics, use ASCII displays instead.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusUpperH">
+      <term>-H#<indexterm id="IndexCatMinusUpperH"><primary>-H</primary></indexterm>, --heartbeat=NUM<indexterm id="IndexCatMinusHeartbeat"><primary>--heartbeat</primary></indexterm></term>
+      <listitem>
+        <para>
+          Print a heartbeat after each soundfile buffer write:
+          <itemizedlist>
+            <listitem><para>no NUM, a rotating bar.</para></listitem>
+            <listitem><para>NUM = 1, a rotating bar.</para></listitem>
+            <listitem><para>NUM = 2, a dot (.)</para></listitem>
+            <listitem><para>NUM = 3, filesize in seconds.</para></listitem>
+            <listitem><para>NUM = 4, sound a bell.</para></listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusLowerM">
+      <term>-m NUM<indexterm id="IndexCatMinusLowerM"><primary>-m</primary></indexterm>, --messagelevel=NUM<indexterm id="IndexCatMinusMessagelevel"><primary>--messagelevel</primary></indexterm></term>
+      <listitem>
+        <para>
+          Message level for standard (terminal) output. Takes the <emphasis>sum</emphasis> of any of the following values:
+          <itemizedlist>
+            <listitem><para>1 = note amplitude messages</para></listitem>
+            <listitem><para>2 = samples out of range message</para></listitem>
+            <listitem><para>4 = warning messages</para></listitem>
+            <listitem><para>128 = print benchmark information</para></listitem>
+          </itemizedlist>
+          And exactly one of these to select note amplitude format:
+          <itemizedlist>
+            <listitem><para>0 = raw amplitudes, no colours</para></listitem>
+            <listitem><para>32 = dB, no colors</para></listitem>
+            <listitem><para>64 = dB, out of range highlighted with red</para></listitem>
+            <listitem><para>96 = dB, all colors</para></listitem>
+            <listitem><para>256 = raw, out of range highlighted with red</para></listitem>
+            <listitem><para>512 = raw, all colours</para></listitem>
+          </itemizedlist>
+          The default is 135 (128+4+2+1), which means all messages, raw
+          amplitude values, and printing elapsed time at the end of
+          performance.  The coloring of raw amplitudes was introduced
+          in version 5.04
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusLowerMA">
+      <term>--m-amps=NUM<indexterm id="IndexCatMinusLowerMA"></indexterm></term>
+      <listitem>
+        <para>
+          Message level for amplitudes on standard (terminal) output. 
+          <itemizedlist>
+            <listitem><para>0 = no note amplitude messages</para></listitem>
+            <listitem><para>1 = note amplitude messages</para></listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </varlistentry>
+
+     <varlistentry id="FlagsCatMinusLowerMR">
+      <term>--m-range=NUM<indexterm id="IndexCatMinusLowerMR"></indexterm></term>
+      <listitem>
+        <para>
+          Message level for out of range messages on standard (terminal) output. 
+          <itemizedlist>
+            <listitem><para>0 = no samples out of range message</para></listitem>
+            <listitem><para>1 = samples out of range message</para></listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </varlistentry>
+
+     <varlistentry id="FlagsCatMinusLowerMW">
+      <term>--m-warnings=NUM<indexterm id="IndexCatMinusLowerMW"></indexterm></term>
+      <listitem>
+        <para>
+          Message level for warnings on standard (terminal) output. 
+          <itemizedlist>
+            <listitem><para>0 = no warning messages</para></listitem>
+            <listitem><para>1 = warning messages</para></listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </varlistentry>
+
+     <varlistentry id="FlagsCatMinusLowerMD">
+      <term>--m-dB=NUM<indexterm id="IndexCatMinusLowerMD"></indexterm></term>
+      <listitem>
+        <para>
+          Message level for amplitude format on standard (terminal) output. 
+          <itemizedlist>
+            <listitem><para>0 = absolute amplitude messages</para></listitem>
+            <listitem><para>1 = dB amplitude messages</para></listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </varlistentry>
+
+     <varlistentry id="FlagsCatMinusLowerMC">
+      <term>--m-colours=NUM<indexterm id="IndexCatMinusLowerMC"></indexterm></term>
+      <listitem>
+        <para>
+          Message level for amplitude format on standard (terminal) output. 
+          <itemizedlist>
+            <listitem><para>0 = no colouring of amplitude messages</para></listitem>
+            <listitem><para>1 = colouring of amplitude messages</para></listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </varlistentry>
+
+      <varlistentry id="FlagsCatMinusLowerMB">
+      <term>--m-benchmarks=NUM<indexterm id="IndexCatMinusLowerMB"></indexterm></term>
+      <listitem>
+        <para>
+          Message level for benchmark information on standard (terminal) output. 
+          <itemizedlist>
+            <listitem><para>0 = no benchnark numbers</para></listitem>
+            <listitem><para>1 = print benchnark numbers</para></listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusPlusMsgColor">
+      <term>-+msg_color=boolean<indexterm id="IndexCatMinusPlusMsgColor"><primary>-+msg_color</primary></indexterm></term>
+      <listitem>
+        <para>
+          Enable message attributes (colors etc.); might need to be disabled on some terminals which print strange characters instead of modifying text attributes. default: true.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusLowerV">
+      <term>-v<indexterm id="IndexCatMinusLowerV"><primary>-v</primary></indexterm>, --verbose<indexterm id="IndexCatMinusVerbose"><primary>--verbose</primary></indexterm></term>
+      <listitem>
+        <para>
+          Verbose translate and run. Prints details of orch translation and performance, enabling errors to be more clearly located.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusLowerZ">
+      <term>-z NUM<indexterm id="IndexCatMinusLowerZ"><primary>-z</primary></indexterm>, --list-opcodesNUM<indexterm id="IndexCatMinusListopcodes"><primary>--list-opcodesNUM</primary></indexterm></term>
+      <listitem>
+        <para>
+          List opcodes in this version:
+          <itemizedlist>
+            <listitem><para>no NUM, just show names</para></listitem>
+            <listitem><para>NUM = 0, just show names</para></listitem>
+            <listitem><para>NUM = 1, show arguments to each opcode using the format &lt;opname&gt; &lt;outargs&gt; &lt;inargs&gt;</para></listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </varlistentry>
+
+  </variablelist>
+
+  <variablelist>
+    <title>Performance Configuration and Control</title>
+
+    <varlistentry id="FlagsCatMinusUpperB">
+      <term>-B NUM<indexterm id="IndexCatMinusUpperB"><primary>-B</primary></indexterm>, --hardwarebufsamps=NUM<indexterm id="IndexCatMinusHardwarebufsamps"><primary>--hardwarebufsamps</primary></indexterm></term>
+      <listitem>
+        <para>
+          Number of audio sample-frames held in the DAC <emphasis>hardware</emphasis> buffer. This is a threshold on which <emphasis>software</emphasis> audio I/O (above) will wait before returning. A small number reduces audio I/O delay; but the value is often hardware limited, and small values will risk data lates. In the case of portaudio output (the default real-time output), the -B parameter (more precisely, -B / sr) is passed as the "suggested latency" value. Other than that, Csound has no control over how PortAudio interprets the parameter. The default is 1024 on Linux, 4096 on Mac OS X and 16384 on Windows.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusLowerB">
+      <term>-b NUM<indexterm id="IndexCatMinusLowerB"><primary>-b</primary></indexterm>, --iobufsamps=NUM<indexterm id="IndexCatMinusIobufsamps"><primary>--iobufsamps</primary></indexterm></term>
+      <listitem>
+        <para>
+          Number of audio sample-frames per sound i/o <emphasis>software</emphasis> buffer. Large is efficient, but small will reduce audio I/O delay and improve the accuracy of the timing of real time events. The default is 256 on Linux, 1024 on MacOS X, and 4096 on Windows. In real-time performance, Csound waits on audio I/O on <emphasis>NUM</emphasis> boundaries. It also processes audio (and polls for other input like MIDI) on orchestra <emphasis>ksmps</emphasis> boundaries. The two can be made synchronous. For convenience, if NUM is negative, the effective value is <emphasis>ksmps * -NUM</emphasis> (audio synchronous with k-period boundaries). With NUM small (e.g. 1) polling is then frequent and also locked to fixed DAC sample boundaries.
+        </para>
+        <para>
+          Note: if both -iadc and -odac are used at the same time (full duplex
+          real time audio), the -b option should be set to an integer multiple
+          of ksmps.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusLowerK">
+      <term>-k NUM<indexterm id="IndexCatMinusLowerK"><primary>-k</primary></indexterm>, --control-rate=NUM<indexterm id="IndexCatMinusControlrate"><primary>--control-rate</primary></indexterm></term>
+      <listitem>
+        <para>
+          Override the control rate (<link linkend="kr"><citetitle>KR</citetitle></link>) supplied by the orchestra.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusUpperL">
+      <term>-L DEVICE<indexterm id="IndexCatMinusUpperL"><primary>-L</primary></indexterm>, --score-in=DEVICE<indexterm id="IndexCatMinusScorein"><primary>--score-in</primary></indexterm></term>
+      <listitem>
+        <para>
+          Read line-oriented real-time score events from device <emphasis>DEVICE</emphasis>. The name <emphasis>stdin</emphasis> will permit score events to be typed at your terminal, or piped from another process. Each line-event is terminated by a carriage-return. Events are coded just like those in a <emphasis>standard numeric score</emphasis>, except that an event with p2=0 will be performed immediately, and an event with p2=T will be performed T seconds after arrival. Events can arrive at any time, and in any order. The score <emphasis>carry</emphasis> feature is legal here, as are held notes (p3 negative) and string arguments, but ramps and <emphasis>pp</emphasis> or <emphasis>np</emphasis> references are not.
+        </para>
+	<note>
+	  <para>
+	    The -L flag is only valid on *NIX systems which have pipes. It doesn't work on Windows.
+	  </para>
+	</note>
+      </listitem>
+    </varlistentry>
+
+
+    <varlistentry id="FlagsCatMinusOmacro">
+      <term>--omacro:XXX=YYY<indexterm id="IndexCatMinusOmacro"><primary>--omacro</primary></indexterm></term>
+      <listitem>
+        <para>
+          Set orchestra macro XXX to value YYY
+        </para>
+      </listitem>
+    </varlistentry>
+
+
+    <varlistentry id="FlagsCatMinusLowerR">
+      <term>-r NUM<indexterm id="IndexCatMinusLowerR"><primary>-r</primary></indexterm>, --sample-rate=NUM<indexterm id="IndexCatMinusSamplerate"><primary>--sample-rate</primary></indexterm></term>
+      <listitem>
+        <para>
+          Override the sampling rate (<link linkend="sr"><citetitle>SR</citetitle></link>) supplied by the orchestra.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusSched">
+      <term>--sched<indexterm id="IndexCatMinusSched"><primary>--sched</primary></indexterm></term>
+      <listitem>
+        <para>
+          <emphasis>Linux only.</emphasis> Use real-time scheduling and lock memory. (Also requires <link linkend="FlagsMinusLowerD"><citetitle>-d</citetitle></link> and either <link linkend="FlagsMinusLowerO"><citetitle>-o dac</citetitle></link> or <link linkend="FlagsMinusLowerO"><citetitle>-o devaudio</citetitle></link>).
+          See also --sched=N below.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusSchedN">
+      <term>--sched=N<indexterm id="IndexCatMinusSchedN"><primary>--sched=N</primary></indexterm></term>
+      <listitem>
+        <para>
+          <emphasis>Linux only.</emphasis>
+          Same as --sched, but allows specifying a priority value: if N
+          is positive (in the range 1 to 99) the scheduling policy
+          SCHED_RR will be used with a priority of N; otherwise,
+          SCHED_OTHER is used with the nice level set to N.
+          Can also be used in the format --sched=N,MAXCPU,TIME to enable the
+          use of a "watchdog" thread that terminates Csound if the average CPU
+          usage exceeds MAXCPU percents over a peroid of TIME seconds (new in
+          Csound 5.00).
+        </para>
+      </listitem>
+    </varlistentry>
+
+
+    <varlistentry id="FlagsCatMinusSmacro">
+      <term>--smacro:XXX=YYY<indexterm id="IndexCatMinusSmacro"><primary>--smacro</primary></indexterm></term>
+      <listitem>
+        <para>
+          Set score macro XXX to value YYY
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusStrset">
+      <term>--strset<indexterm id="IndexCatMinusStrset"><primary>--strset</primary></indexterm></term>
+      <listitem>
+        <para>
+          <emphasis>Csound 5.</emphasis>
+          The --strset option allows setting strset string values from
+          the command line, in the format '--strsetN=VALUE'. It is
+          useful for passing parameters to the orchestra (e.g. file
+          names).
+        </para>
+      </listitem>
+    </varlistentry>
+
+
+    <varlistentry id="FlagsCatMinusPlusSkipSecondsPerf2">
+      <term>-+skip_seconds=float<indexterm id="IndexCatMinusSkipSecondsPerf"><primary>-+skip_seconds</primary></indexterm></term>
+      <listitem>
+        <para>
+          (min: 0) Start playback at the specified time (in seconds),
+          skipping earlier events in the score and MIDI file.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusLowerT">
+      <term>-t NUM<indexterm id="IndexCatMinusLowerT"><primary>-t</primary></indexterm>, --tempo=NUM<indexterm id="IndexCatMinusTempo"><primary>--tempo=NUM</primary></indexterm></term>
+      <listitem>
+        <para>
+          Use the uninterpreted beats of <emphasis>score.srt</emphasis> for this performance, and set the initial tempo at <emphasis>NUM</emphasis> beats per minute. When this flag is set, the tempo of score performance is also controllable from within the orchestra. WARNING: this mode of operation is experimental and may be unreliable.
+        </para>
+      </listitem>
+    </varlistentry>
+
+  </variablelist>
+
+  <variablelist>
+    <title>Miscellaneous</title>
+    <varlistentry id="FlagsCatMinusAt">
+      <term>-&commat; FILE<indexterm id="IndexCatMinusAt"><primary>-&commat;</primary></indexterm></term>
+      <listitem>
+        <para>
+          Provide an extended command-line in file <quote>FILE</quote>
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusUpperC">
+      <term>-C<indexterm id="IndexCatMinusUpperC"><primary>-C</primary></indexterm>, --cscore<indexterm id="IndexCatMinusCscore"><primary>--cscore</primary></indexterm></term>
+      <listitem>
+        <para>
+          Use Cscore processing of the scorefile.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusDefaultPaths">
+      <term>--default-paths<indexterm id="IndexCatMinusDefaultPaths"><primary>--no-default-paths</primary></indexterm></term>
+      <listitem>
+        <para>
+          Reenables adding of directory of CSD/ORC/SCO to search paths,
+          if it has been disabled by a previous <link linkend="FlagsMinusNoDefaultPaths"><citetitle>--no-default-paths</citetitle></link> (e.g. in <link linkend="CommandUnifileParFile"><citetitle>.csoundrc</citetitle></link>).
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusUpperD">
+      <term>-D<indexterm id="IndexCatMinusUpperD"><primary>-D</primary></indexterm>, --defer-gen1<indexterm id="IndexCatMinusDefergen1"><primary>--defer-gen1</primary></indexterm></term>
+      <listitem>
+        <para>
+          Defer GEN01 soundfile loads until performance time.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusEnvEquals">
+      <term>--env:NAME=VALUE<indexterm id="IndexCatMinusEnvEquals"><primary>--env:NAME=VALUE</primary></indexterm></term>
+      <listitem>
+        <para>
+          Set environment variable NAME to VALUE. Note: not all
+          environment variables can be set this way, because some are
+          read before parsing the command line. INCDIR, SADIR, <link linkend="CommandEnvironment"><citetitle>SFDIR</citetitle></link>,
+          and <link linkend="CommandEnvironment"><citetitle>SSDIR</citetitle></link> are known to work.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusEnvPlusEquals">
+      <term>--env:NAME+=VALUE<indexterm id="IndexCatMinusEnvPlusEquals"><primary>--env:NAME+=VALUE</primary></indexterm></term>
+      <listitem>
+        <para>
+          Append VALUE to ';' separated list of search paths in
+          environment variable NAME (should be INCDIR, SADIR, <link linkend="CommandEnvironment"><citetitle>SFDIR</citetitle></link>,
+          or <link linkend="CommandEnvironment"><citetitle>SSDIR</citetitle></link>). If a file is found in multiple directories, the
+          last will be used.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusExpressionOpt">
+      <term>--expression-opt<indexterm id="IndexCatMinusExpressionOpt"><primary>--expression-opt</primary></indexterm></term>
+      <listitem>
+        <para>
+          <emphasis>Since Csound 5.</emphasis>
+          Turns on some optimizations in expressions:
+          <itemizedlist>
+            <listitem><para>Redundant assignment operations are eliminated whenever
+                possible. This means that for example this line
+                a1 = a2 + a3
+                will compile as
+                a1 Add a2, a3
+                instead of
+                #a0 Add a2, a3
+                a1 = #a0
+                saving a temporary variable and an opcode call. Less opcode
+                calls result in reduced CPU usage (an average orchestra may
+                compile about 10% faster with --expression-opt, but it
+                depends largely on how many expressions are used, what the
+                control rate is (see also below), etc.; thus, the difference
+                may be less, but also much more).</para></listitem>
+            <listitem><para>number of a- and k-rate temporary variables is significantly
+                reduced. This expression</para>
+              <programlisting>
+(a1 + a2 + a3 + a4)</programlisting>
+              <para>will compile as</para>
+              <programlisting>
+#a0 Add a1, a2
+#a0 Add #a0, a3
+#a0 Add #a0, a4       ; (the result is in #a0)</programlisting>
+              <para>instead of</para>
+              <programlisting>
+#a0 Add a1, a2
+#a1 Add #a0, a3
+#a2 Add #a1, a4       ; (the result is in #a2)</programlisting>
+
+              <para>The advantages of less temporary variables are:</para>
+              <itemizedlist>
+                <listitem><simpara>less cache memory is used, which may improve performance
+                  of orchestras with many a-rate expressions and a low
+                  control rate (e.g. ksmps = 100)</simpara></listitem>
+                <listitem><simpara>large orchestras may load faster due to less different
+                  identifier names</simpara></listitem>
+                <listitem>
+                  <simpara>index overflow errors (i.e. when messages like this
+                  Case2: indx=-56004 (ffff253c); (short)indx = 9532 (253c)
+                  are printed and odd behavior or a Csound crash occurs) may
+                  be fixed, because such errors are triggered by too many
+                  different (especially a-rate) variable names in a single
+                  instrument.</simpara>
+                </listitem>
+              </itemizedlist>
+              <para>Note that this optimization (due to technical reasons) is not
+                performed on i-rate temporary variables.</para>
+            </listitem>
+          </itemizedlist>
+
+          <warning>
+            <title>Warning</title>
+            <para>
+              When --expression-opt is turned on, it is not allowed to use the i()
+              function with an expression argument, and relying on the value of
+              k-rate expressions at i-time is unsafe.
+            </para>
+          </warning>
+
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusHelp">
+      <term>--help<indexterm id="IndexCatMinusHelp"><primary>--help</primary></indexterm></term>
+      <listitem>
+        <para>
+          Display on-line help message.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusUpperI">
+      <term>-I<indexterm id="IndexCatMinusUpperI"><primary>-I</primary></indexterm>, --i-only<indexterm id="IndexCatMinusIonly"><primary>--i-only</primary></indexterm></term>
+      <listitem>
+        <para>
+          <emphasis>i-time only.</emphasis> Allocate and initialize all instruments as per the score, but skip all p-time processing (no k-signals or a-signals, and thus no amplitudes and no sound). Provides a fast validity check of the score pfields and orchestra i-variables.  This option is exclusive of the --syntax-check-only flag.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusPlusIgnoreCsopts">
+      <term>-+ignore_csopts=integer<indexterm id="IndexCatMinusPlusIgnoreCsopts"><primary>-+ignore_csopts=</primary></indexterm></term>
+      <listitem>
+        <para>
+          If set to 1, Csound will ignore all options specified in the csd file's CsOptions section. See <link linkend="CommandUnifile"><citetitle>Unified File Format for Orchestras and Scores</citetitle></link>.
+        </para>
+      </listitem>
+    </varlistentry>
+
+<!--    <varlistentry id="FlagsCatMinusLowerJ">
+      <term>-j FILE<indexterm id="IndexCatMinusLowerJ"><primary>-j</primary></indexterm></term>
+      <listitem>
+        <para>
+          <emphasis>Currently disabled.</emphasis> Use database <emphasis>FILE</emphasis> for messages to print to console during performance. In Csound 5.00 and later versions, the localization of messages is controlled by two environment variables, both of which are optional. CSSTRNGS points to a directory containing .xmg files, and CS_LANG selects a language.
+        </para>
+      </listitem>
+    </varlistentry>-->
+
+    <varlistentry id="FlagsCatMinusPlusMaxStrLen">
+      <term>-+max_str_len=integer<indexterm id="IndexCatMinusPlusMaxStrLen"><primary>-+max_str_len</primary></indexterm></term>
+      <listitem>
+        <para>
+          (min: 10, max: 10000) Maximum length of string variables + 1;
+          defaults to 256 allowing a length of 255 characters. The length of
+          string constants is not limited by this parameter.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusUpperN">
+      <term>-N<indexterm id="IndexCatMinusUpperN"><primary>-N</primary></indexterm>, --notify<indexterm id="IndexCatMinusNotify"><primary>--notify</primary></indexterm></term>
+      <listitem>
+        <para>
+          Notify (ring the bell) when score or MIDI track is done.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusNoDefaultPaths">
+      <term>--no-default-paths<indexterm id="IndexCatMinusNoDefaultPaths"><primary>--no-default-paths</primary></indexterm></term>
+      <listitem>
+        <para>
+          Disables adding of directory of CSD/ORC/SCO to search paths.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusNoExpressionOpt">
+      <term>--no-expression-opt<indexterm id="IndexCatMinusNoExpressionOpt"><primary>--no-expression-opt</primary></indexterm></term>
+      <listitem>
+        <para>
+          Disables expression optimization.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusUpperO">
+      <term>-O FILE<indexterm id="IndexCatMinusUpperO"><primary>-O</primary></indexterm>, --logfile=FILE<indexterm id="IndexCatMinusLogfile"><primary>--logfile</primary></indexterm></term>
+      <listitem>
+        <para>
+          Log output to file <emphasis>FILE</emphasis>. If <emphasis>FILE</emphasis> is null (i.e. <emphasis>-O null</emphasis> or <emphasis>--logfile=null</emphasis>) all printing of messages to the console is disabled.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusOpcodeLib">
+      <term>--opcode-lib=LIBNAME<indexterm id="IndexCatMinusOpcodeLib"><primary>--opcode-lib</primary></indexterm></term>
+      <listitem>
+        <para>
+          Load plugin library <emphasis>LIBNAME</emphasis>.
+        </para>
+      </listitem>
+    </varlistentry>
+
+      <varlistentry id="FlagCatMinuMinusOrc">
+	<term>--orc orcname<indexterm id="IndexCatMinusMinusOrc"><primary>--orc</primary></indexterm></term>
+	<listitem>
+	  <para>
+	    Set the argument as the orchestra file.  Used when not
+            score is required>.  (Csound 5.18 and later).
+	  </para>
+	</listitem>
+      </varlistentry>
+      
+      <varlistentry id="FlagsCatMinusSyntaxCheckOnly">
+        <term>--syntax-check-only<indexterm id="IndexCatMinusSyntaxCheckOnly"><primary>--syntax-check-only</primary></indexterm></term>
+        <listitem>
+          <para>
+            Causes Csound to exit immediately after the orchestra and score parsers finish checking the syntax of the input files and before the orchestra performs the score.  This option is exclusive of the --i-only flag.  (Csound 5.08 and later).
+          </para>
+        </listitem>
+      </varlistentry>
+
+    <varlistentry id="FlagsCatMinusLowerT0">
+      <term>-t0<indexterm id="IndexCatMinusLowerT0"><primary>-t0</primary></indexterm>, --keep-sorted-score<indexterm id="IndexCatMinusKeepsortedscore"><primary>--keep-sorted-score</primary></indexterm></term>
+      <listitem>
+        <para>
+          Prevents Csound from deleting the sorted score file, score.srt, upon exit.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusUpperU">
+      <term>-U UTILITY<indexterm id="IndexCatMinusUpperU"><primary>-U</primary></indexterm>, --utility=UTILITY<indexterm id="IndexCatMinusUtility"><primary>--utility</primary></indexterm></term>
+      <listitem>
+        <para>
+          Invoke the utility program <emphasis>UTILITY</emphasis>. Use any
+          invalid name to list the available utilities.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusLowerX">
+      <term>-x FILE<indexterm id="IndexCatMinusLowerX"><primary>-x</primary></indexterm>, --extract-score=FILE<indexterm id="IndexCatMinusExtractscore"><primary>--extract-score</primary></indexterm></term>
+      <listitem>
+        <para>
+          Extract a portion of the sorted score, score.srt, using the extract file <emphasis>FILE</emphasis> (see <link linkend="commandpreextract"><citetitle>Extract</citetitle></link>).
+        </para>
+      </listitem>
+    </varlistentry>
+
+  </variablelist>
+
+</section>

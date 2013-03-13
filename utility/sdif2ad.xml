@@ -1,0 +1,111 @@
+
+<refentry id="sdif2ad">
+  <refentryinfo><title>Utilities</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>sdif2ad</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>sdif2ad</refname>
+    <refpurpose>
+      Converts SDIF files to files usable by adsyn.
+      <indexterm id="IndexSdif2ad"><primary>sdif2ad</primary></indexterm>
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Convert files Sound Description Interchange Format (SDIF) to the
+    format usable by Csound's <emphasis>adsyn</emphasis> opcode. As of
+    Csound version 4.10, <emphasis>sdif2ad</emphasis> was available
+    only as a standalone program for Windows console and DOS. 
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+<!--     <synopsis><command>csound -U sdif2ad</command> [flags] infilename outfilename</synopsis>  -->
+    <synopsis><command>sdif2ad</command> [flags] infilename outfilename</synopsis> 
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      Flags:
+      <itemizedlist>
+        <listitem><para><emphasis>-s</emphasis>N -- apply amplitude
+    scale factor N</para></listitem> 
+        <listitem><para><emphasis>-p</emphasis>N -- keep only the
+    first N partials. Limited to 1024 partials. The source partial
+    track indices are used directly to select internal storage. As
+    these can be arbitrary values, the maximum of 1024 partials may
+    not be realized in all cases.</para></listitem> 
+        <listitem><para><emphasis>-r</emphasis> -- byte-reverse output
+    file data. The byte-reverse option  is there to facilitate
+    transfer across platforms, as Csound's <link
+    linkend="HetroFileFormat"><citetitle>adsyn</citetitle></link> file
+    format is not portable.</para></listitem> 
+      </itemizedlist>
+    </para>
+
+    <para>
+      If the filename passed to <link
+    linkend="hetro"><citetitle>hetro</citetitle></link> has the
+    extension <quote>.sdif</quote>, data will be written in SDIF
+    format as 1TRC frames of additive synthesis data. The utility
+    program <emphasis>sdif2ad</emphasis> can be used to convert any
+    SDIF file containing a stream of 1TRC data to the Csound <link
+    linkend="HetroFileFormat"><citetitle>adsyn</citetitle></link>
+    format. <emphasis>sdif2ad</emphasis> allows the user to limit the
+    number of partials retained, and to apply an amplitude scaling
+    factor. This is often necessary, as the SDIF specification does
+    not, as of the release of <emphasis>sdif2ad</emphasis>, require
+    amplitudes to be within a particular
+    range. <emphasis>sdif2ad</emphasis> reports information about the
+    file to the console, including the frequency range. 
+    </para>
+
+    <para>
+      The main advantages of SDIF over the <emphasis>adsyn</emphasis>
+    format, for Csound users, is that SDIF files are fully portable
+    across platforms (data is <quote>big-endian</quote>), and do not
+    have the duration limit of 32.76 seconds imposed by the 16 bit
+    <emphasis>adsyn</emphasis> format. This limit is necessarily
+    imposed by <emphasis>sdif2ad</emphasis>. Eventually, SDIF reading
+    will be incorporated directly into <emphasis>adsyn</emphasis>,
+    thus enabling files of any length (subject to system memory
+    limits) to be analysed and processed. 
+    </para>
+
+    <para>
+      Users should remember that the SDIF formats are still under
+    development. While the 1TRC format is now fairly well established,
+    it can still change. 
+    </para>
+
+    <para>
+      For detailed information on  the Sound Description Interchange
+      Format, refer to the CNMAT website: 
+
+      <ulink
+    url="http://cnmat.CNMAT.Berkeley.EDU/SDIF"><citetitle>http://cnmat.CNMAT.Berkeley.EDU/SDIF</citetitle></ulink>
+    </para>
+
+    <para>
+      Some other SDIF resources (including a viewer) are available via
+      the NC_DREAM website: 
+
+      <ulink
+    url="http://www.bath.ac.uk/~masjpf/NCD/dreamhome.html"><citetitle>http://www.bath.ac.uk/~masjpf/NCD/dreamhome.html</citetitle></ulink>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: Richard Dobson</para>
+    <para>Somerset, England</para>
+    <para>August, 2000</para>
+    <para>New in Csound version 4.08</para>
+  </refsect1>
+</refentry>

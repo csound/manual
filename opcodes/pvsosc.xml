@@ -1,0 +1,113 @@
+
+<refentry id="pvsosc">
+<indexterm id="Indexpvsosc"><primary>pvsosc</primary></indexterm>
+
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsosc</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvsosc</refname>
+    <refpurpose>
+      PVS-based oscillator simulator.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Generates periodic signal spectra in AMP-FREQ format, with the option of four wave types:
+      <orderedlist>
+        <listitem><simpara>sawtooth-like (harmonic weight 1/n, where n is partial number)</simpara></listitem>
+        <listitem><simpara>square-like (similar to 1., but only odd partials)</simpara></listitem>
+        <listitem><simpara>pulse (all harmonics with same weight)</simpara></listitem>
+        <listitem><simpara>cosine</simpara></listitem>
+      </orderedlist>
+      Complex waveforms (ie. all types except cosine) contain all harmonics up to the Nyquist. This makes pvsosc an option for generation of band-limited periodic waves. In addition, types can be changed using a k-rate variable.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>fsig <command>pvsosc</command> kamp, kfreq, ktype, isize [,ioverlap] [, iwinsize] [, iwintype] [, iformat]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>fsig</emphasis> -- output pv stream set to zero.
+    </para>
+
+    <para>  
+      <emphasis>isize</emphasis> -- size of analysis frame and window.
+    </para>
+    <para>
+      <emphasis>ioverlap</emphasis> -- (Optional) size of overlap, defaults to isize/4.
+    </para>
+    <para>
+      <emphasis>iwinsize</emphasis> -- (Optional) window size, defaults to isize.
+    </para>
+    <para>
+      <emphasis>iwintype</emphasis> -- (Optional) window type, defaults to Hanning. The choices are currently:
+      <itemizedlist>
+        <listitem><para>0 = Hamming window</para></listitem>
+        <listitem><para>1 = von Hann window</para></listitem>
+      </itemizedlist>
+    </para>
+    <para>
+      <emphasis>iformat</emphasis> -- (Optional) data format, defaults to 0 which produces AMP:FREQ data. That is currently the only option.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kamp</emphasis> -- signal amplitude. Note that the actual signal amplitude can, 
+	  depending on wave type and frequency, vary slightly above or below this value. Generally
+	  the amplitude will tend to exceed kamp on higher frequencies (> 1000 Hz) and be reduced on
+	  lower ones. Also due to the overlap-add process, when resynthesing with pvsynth, frequency
+	  glides will cause the output amplitude to fluctuate above and below kamp.
+    </para>
+
+    <para>  
+	<emphasis>kfreq</emphasis> -- fundamental frequency in Hz.
+    </para>
+	<para>
+      <emphasis>ktype</emphasis> -- wave type: 1. sawtooh-like, 2.square-like, 3.pulse and any other
+	  value for cosine.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the pvsosc opcode. It uses the file <ulink url="examples/pvsosc.csd"><citetitle>pvsosc.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the pvsosc opcode</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+        <xi:include href="examples-xml/pvsosc.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link>,
+      <link linkend="pvsynth"><citetitle>pvsynth</citetitle></link>,
+      <link linkend="pvsadsyn"><citetitle>pvsadsyn</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>August 2006 </member>
+      </simplelist>
+    </para>
+
+  </refsect1>
+</refentry>

@@ -1,0 +1,104 @@
+
+<refentry id="bformdec">
+<indexterm id="IndexBformdec"><primary>bformdec</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Panning and Spatialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>bformdec</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>bformdec</refname>
+    <refpurpose>
+      Deprecated. Decodes an ambisonic B format signal.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Decodes an ambisonic B format signal into loudspeaker specific signals. Note that this opcode is
+      deprecated as it is inaccurate, and is replaced by the much
+      better opcode <link linkend="bformdec1"><citetitle>bformdec1</citetitle></link> which replicates all
+      the important features.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ao1, ao2 <command>bformdec</command> isetup, aw, ax, ay, az [, ar, as, at, au, av \
+      [, abk, al, am, an, ao, ap, aq]]</synopsis>
+    <synopsis>ao1, ao2, ao3, ao4 <command>bformdec</command> isetup, aw, ax, ay, az [, ar, as, at, \
+      au, av [, abk, al, am, an, ao, ap, aq]]</synopsis>
+    <synopsis>ao1, ao2, ao3, ao4, ao5 <command>bformdec</command> isetup, aw, ax, ay, az [, ar, as, \
+      at, au, av [, abk, al, am, an, ao, ap, aq]]</synopsis>
+    <synopsis>ao1, ao2, ao3, ao4, ao5, ao6, ao7, ao8 <command>bformdec</command> isetup, aw, ax, ay, az \
+      [, ar, as, at, au, av [, abk, al, am, an, ao, ap, aq]]]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+
+	<para>
+	<emphasis>isetup</emphasis> –- loudspeaker setup. There are
+        five supported setups: 1 denotes stereo setup.  There must be
+        two output cells with loudspeaker positions <!--(azimuth angle
+        clockwise/altitude angle)--> assumed to be (330/0, 30/0). </para>
+        <para>2 denotes quad setup. There must be four output cells.
+        Loudspeaker positions assumed to be (45°/0), (135°/0),
+        (225/0), (315/0).</para>
+        <para>3 is a 5.1 surround setup.  There must be five output
+        cells. LFE channel is not supported. Loudspeaker positions
+        assumed to be (330/0), (30/0), (0/0), (250/0), (110/0).</para> 
+        <para> 4 denotes eight loudspeaker circle setup. There must be
+        eight output cells. Loudspeaker positions assumed to be 
+        (22.5/0), (67.5/0), (112.5/0), (157.5/0), (202.5/0),
+        (247.5/0), (292.5/0), (337.5/0).</para> 
+        <para> 5 means an eight loudspeaker cubic setup. There must be
+        eight output cells. Loudspeaker positions assumed to be
+        (45/0), (45/30), (135/0), (135/30), (225/0), (225/30),
+        (315/0), (315/30).</para> 
+
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+
+	<para>
+	<emphasis>aw, ax, ay, ... </emphasis>
+	-- input signal in the B format.
+	</para>
+
+        <para>
+	<emphasis>ao1 .. ao8</emphasis> -– loudspeaker specific output signals.
+        </para>
+
+
+  </refsect1>
+
+  <refsect1>
+    <title>Example</title>
+    <para>
+      Here is an example of the bformdec opcode. It uses the file <ulink url="examples/bformenc.csd"><citetitle>bformenc.csd</citetitle></ulink>.
+
+    <example>
+      <title>Example of the bformdec opcode.</title>
+
+      <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+
+      <xi:include href="examples-xml/bformenc.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Samuel Groner</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+    <para>New in version 5.07. Deprecated in 5.09</para>
+  </refsect1>
+</refentry>

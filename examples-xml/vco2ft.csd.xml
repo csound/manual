@@ -1,0 +1,68 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in    No messages</emphasis>
+-odac           -iadc     -d     <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o vco2ft.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis>      <emphasis role="op">=</emphasis>  44100
+<emphasis role="ohdr">ksmps</emphasis>   <emphasis role="op">=</emphasis>  10
+<emphasis role="ohdr">nchnls</emphasis>  <emphasis role="op">=</emphasis>  1
+
+<emphasis role="comment">; user defined waveform -1: trapezoid wave with default parameters (can be</emphasis>
+<emphasis role="comment">; accessed at ftables starting from 10000)</emphasis>
+itmp    <emphasis role="ohdr">ftgen</emphasis> 1, 0, 16384, 7, 0, 2048, 1, 4096, 1, 4096, <emphasis role="op">-</emphasis>1, 4096, <emphasis role="op">-</emphasis>1, 2048, 0
+ift     <emphasis role="opc">vco2init</emphasis> <emphasis role="op">-</emphasis>1, 10000, 0, 0, 0, 1
+<emphasis role="comment">; user defined waveform -2: fixed table size (4096), number of partials</emphasis>
+<emphasis role="comment">; multiplier is 1.02 (~238 tables)</emphasis>
+itmp    <emphasis role="ohdr">ftgen</emphasis> 2, 0, 16384, 7, 1, 4095, 1, 1, <emphasis role="op">-</emphasis>1, 4095, <emphasis role="op">-</emphasis>1, 1, 0, 8192, 0
+ift     <emphasis role="opc">vco2init</emphasis> <emphasis role="op">-</emphasis>2, ift, 1.02, 4096, 4096, 2
+
+        <emphasis role="oblock">instr</emphasis> 1
+kcps    <emphasis role="opc">expon</emphasis> p4, p3, p5                <emphasis role="comment">; instr 1: basic vco2 example</emphasis>
+a1      <emphasis role="opc">vco2</emphasis> 12000, kcps                <emphasis role="comment">; (sawtooth wave with default</emphasis>
+        <emphasis role="opc">out</emphasis> a1                          <emphasis role="comment">; parameters)</emphasis>
+        <emphasis role="oblock">endin</emphasis>
+
+        <emphasis role="oblock">instr</emphasis> 2
+kcps    <emphasis role="opc">expon</emphasis> p4, p3, p5                        <emphasis role="comment">; instr 2:</emphasis>
+kpw     <emphasis role="opc">linseg</emphasis> 0.1, p3<emphasis role="op">/</emphasis>2, 0.9, p3<emphasis role="op">/</emphasis>2, 0.1        <emphasis role="comment">; PWM example</emphasis>
+a1      <emphasis role="opc">vco2</emphasis> 10000, kcps, 2, kpw
+        <emphasis role="opc">out</emphasis> a1
+        <emphasis role="oblock">endin</emphasis>
+
+        <emphasis role="oblock">instr</emphasis> 3
+kcps    <emphasis role="opc">expon</emphasis> p4, p3, p5                <emphasis role="comment">; instr 3: vco2 with user</emphasis>
+a1      <emphasis role="opc">vco2</emphasis> 14000, kcps, 14            <emphasis role="comment">; defined waveform (-1)</emphasis>
+aenv    <emphasis role="opc">linseg</emphasis> 1, p3 <emphasis role="op">-</emphasis> 0.1, 1, 0.1, 0   <emphasis role="comment">; de-click envelope</emphasis>
+        <emphasis role="opc">out</emphasis> a1 <emphasis role="op">*</emphasis> aenv
+        <emphasis role="oblock">endin</emphasis>
+
+        <emphasis role="oblock">instr</emphasis> 4
+kcps    <emphasis role="opc">expon</emphasis> p4, p3, p5                <emphasis role="comment">; instr 4: vco2ft example,</emphasis>
+kfn     <emphasis role="opc">vco2ft</emphasis> kcps, <emphasis role="op">-</emphasis>2, 0.25           <emphasis role="comment">; with user defined waveform</emphasis>
+a1      <emphasis role="opc">oscilikt</emphasis> 12000, kcps, kfn       <emphasis role="comment">; (-2), and sr/4 bandwidth</emphasis>
+        <emphasis role="opc">out</emphasis> a1
+        <emphasis role="oblock">endin</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1  0 3 20 2000
+<emphasis role="stamnt">i</emphasis> 2  4 2 200 400
+<emphasis role="stamnt">i</emphasis> 3  7 3 400 20
+<emphasis role="stamnt">i</emphasis> 4 11 2 100 200
+
+<emphasis role="stamnt">f</emphasis> 0 14
+
+<emphasis role="stamnt">e</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

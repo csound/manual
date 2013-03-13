@@ -1,0 +1,65 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in    No messages</emphasis>
+-odac           -iadc     -d     <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o locsend_quad.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="comment">; Initialize the global variables.</emphasis>
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">kr</emphasis> <emphasis role="op">=</emphasis> 4410
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 10
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 4
+
+ga1	<emphasis role="opc">init</emphasis>	0
+ga2	<emphasis role="opc">init</emphasis>	0
+ga3	<emphasis role="opc">init</emphasis>	0
+ga4	<emphasis role="opc">init</emphasis>	0
+<emphasis role="comment">; Instrument #1</emphasis>
+<emphasis role="oblock">instr</emphasis> 1
+  <emphasis role="comment">; Use the "beats.wav" audio file.</emphasis>
+aout		<emphasis role="opc">diskin2</emphasis> "beats.wav", 1, 0, 1
+kdegree	<emphasis role="opc">line</emphasis> 0, p3, 360
+kdistance	<emphasis role="opc">line</emphasis> 1, p3 , 10
+a1, a2, a3, a4	<emphasis role="opc">locsig</emphasis> aout, kdegree, kdistance, .1
+ar1, ar2, ar3, ar4	<emphasis role="opc">locsend</emphasis>
+ga1	<emphasis role="op">=</emphasis>	ga1<emphasis role="op">+</emphasis>ar1
+ga2	<emphasis role="op">=</emphasis>	ga2<emphasis role="op">+</emphasis>ar2
+ga3	<emphasis role="op">=</emphasis>	ga3<emphasis role="op">+</emphasis>ar3
+ga4	<emphasis role="op">=</emphasis>	ga4<emphasis role="op">+</emphasis>ar4
+
+	<emphasis role="opc">outq</emphasis> a1, a2, a3, a4
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 99 <emphasis role="comment">; reverb instrument</emphasis>
+a1	<emphasis role="opc">reverb2</emphasis>	ga1, 3.5, .5
+a2	<emphasis role="opc">reverb2</emphasis>	ga2, 3.5, .5
+a3	<emphasis role="opc">reverb2</emphasis>	ga3, 3.5, .5
+a4	<emphasis role="opc">reverb2</emphasis>	ga4, 3.5, .5
+
+	<emphasis role="opc">outq</emphasis>	a1, a2, a3, a4
+	
+ga1 <emphasis role="op">=</emphasis> 0
+ga2 <emphasis role="op">=</emphasis> 0
+ga3 <emphasis role="op">=</emphasis> 0
+ga4 <emphasis role="op">=</emphasis> 0
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="comment">; Table #1, a sine wave.</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 16384 10 1
+
+<emphasis role="stamnt">i</emphasis> 1 0 2
+<emphasis role="stamnt">i</emphasis>99 0 5
+<emphasis role="stamnt">e</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

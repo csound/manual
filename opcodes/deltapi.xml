@@ -1,0 +1,123 @@
+
+<refentry id="deltapi">
+<indexterm id="IndexDeltapi"><primary>deltapi</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Delay</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>deltapi</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>deltapi</refname>
+    <refpurpose>
+      Taps a delay line at variable offset times, uses interpolation.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Taps a delay line at variable offset times, uses interpolation.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>deltapi</command> xdlt</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>xdlt</emphasis> -- specifies the tapped delay time in seconds. Each can range from 1 control period to the full delay time of the read/write pair; however, since there is no internal check for adherence to this range, the user is wholly responsible. Each argument can be a constant, a variable, or a time-varying signal; the <emphasis>xdlt</emphasis> argument in <emphasis>deltapi</emphasis> implies that an audio-varying delay is permitted there.
+    </para>
+
+    <para>
+      <emphasis>deltapi</emphasis> extracts sound by interpolated readout. By interpolating between adjacent stored samples <emphasis>deltapi</emphasis> represents a particular delay time with more accuracy, but it will take about twice as long to run.
+    </para>
+
+
+    <para>
+      This opcode can tap into a <link linkend="delayr"><citetitle>delayr</citetitle></link>/<link linkend="delayw"><citetitle>delayw</citetitle></link> pair, extracting delayed audio from the <emphasis>idlt</emphasis> seconds of stored sound. There can be any number of <link linkend="deltap"><citetitle>deltap</citetitle></link> and/or <emphasis>deltapi</emphasis> units between a read/write pair. Each receives an audio tap with no change of original amplitude.
+    </para>
+
+    <para>
+      This opcode can provide multiple delay taps for arbitrary delay path and feedback networks. They can deliver either constant-time or time-varying taps, and are useful for building chorus effects, harmonizers, and Doppler shifts. Constant-time delay taps (and some slowly changing ones) do not need interpolated readout; they are well served by <emphasis>deltap</emphasis>. Medium-paced or fast varying dlt's, however, will need the extra services of <emphasis>deltapi</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>delayr</emphasis>/<emphasis>delayw</emphasis> pairs may be interleaved. To associate a delay tap unit with a specific <emphasis>delayr</emphasis> unit, it not only has to be located between that <emphasis>delayr</emphasis> and the appropriate <emphasis>delayw</emphasis> unit, but must also precede any following <emphasis>delayr</emphasis> units. See Example 2. (This feature added in Csound version 3.57 by Jens Groh and &namejohn;).
+    </para>
+
+    <para>
+      <emphasis>N.B.</emphasis> k-rate delay times are not internally interpolated, but rather lay down stepped time-shifts of audio samples; this will be found quite adequate for slowly changing tap times. For medium to fast-paced changes, however, one should provide a higher resolution audio-rate timeshift as input.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      <example>
+        <title>deltap example #1</title>
+        <programlisting>
+  asource  <emphasis role="opc">buzz</emphasis>      1, 440, 20, 1
+  atime    <emphasis role="opc">linseg</emphasis>    1, p3<emphasis role="op">/</emphasis>2,.01, p3<emphasis role="op">/</emphasis>2,1   <emphasis role="comment">; trace a distance in secs</emphasis>
+  ampfac   <emphasis role="op">=</emphasis>         1<emphasis role="op">/</emphasis>atime<emphasis role="op">/</emphasis>atime         <emphasis role="comment">; and calc an amp factor</emphasis>
+  adump    <emphasis role="opc">delayr</emphasis>    1                     <emphasis role="comment">; set maximum distance</emphasis>
+  amove    <emphasis role="opc">deltapi</emphasis>   atime                 <emphasis role="comment">; move sound source past</emphasis>
+           <emphasis role="opc">delayw</emphasis>    asource               <emphasis role="comment">; the listener</emphasis>
+           <emphasis role="opc">out</emphasis>       amove <emphasis role="op">*</emphasis> ampfac</programlisting>
+      </example>
+    </para>
+
+    <para>
+      <example>
+        <title>deltap example #2</title>
+        <programlisting>
+  ainput1 <emphasis role="op">=</emphasis>	..... 
+  ainput2 <emphasis role="op">=</emphasis>	..... 
+  kdlyt1  <emphasis role="op">=</emphasis>	..... 
+  kdlyt2  <emphasis role="op">=</emphasis>	..... 
+
+<emphasis role="comment">;Read delayed signal, first delayr instance:</emphasis>
+  adump   <emphasis role="opc">delayr</emphasis>  4.0 
+  adly1   <emphasis role="opc">deltap</emphasis>  kdlyt1       <emphasis role="comment">; associated with first delayr instance</emphasis>
+
+<emphasis role="comment">;Read delayed signal, second delayr instance:</emphasis>
+  adump   <emphasis role="opc">delayr</emphasis>  4.0 
+  adly2   <emphasis role="opc">deltap</emphasis>  kdlyt2       <emphasis role="comment">; associated with second delayr instance</emphasis>
+
+<emphasis role="comment">;Do some cross-coupled manipulation:</emphasis>
+  afdbk1  <emphasis role="op">=</emphasis>       0.7 <emphasis role="op">*</emphasis> adly1 <emphasis role="op">+</emphasis> 0.7 <emphasis role="op">*</emphasis> adly2 <emphasis role="op">+</emphasis> ainput1 
+  afdbk2  <emphasis role="op">=</emphasis>       -0.7 <emphasis role="op">*</emphasis> adly1 <emphasis role="op">+</emphasis> 0.7 <emphasis role="op">*</emphasis> adly2 <emphasis role="op">+</emphasis> ainput2 
+
+<emphasis role="comment">;Feed back signal, associated with first delayr instance:</emphasis>
+          <emphasis role="opc">delayw</emphasis>  afdbk1 
+
+<emphasis role="comment">;Feed back signal, associated with second delayr instance:</emphasis>
+          <emphasis role="opc">delayw</emphasis>  afdbk2
+          <emphasis role="opc">outs</emphasis>    adly1, adly2</programlisting>
+      </example>
+    </para>
+
+    <para>
+      Here is yet another example of the deltapi opcode. It uses the file <ulink url="examples/deltapi.csd"><citetitle>deltapi.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the deltapi opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/deltapi.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="deltap"><citetitle>deltap</citetitle></link>,
+      <link linkend="deltap3"><citetitle>deltap3</citetitle></link>,
+      <link linkend="deltapn"><citetitle>deltapn</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

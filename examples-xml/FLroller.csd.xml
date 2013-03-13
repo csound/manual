@@ -1,0 +1,70 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in    No messages</emphasis>
+-odac           -iadc     -d     <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o FLroller.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="comment">; A sine with oscillator with flroller controlled frequency</emphasis>
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">kr</emphasis> <emphasis role="op">=</emphasis> 441
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 100
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 1
+
+<emphasis role="opc">FLpanel</emphasis> "Frequency Roller", 900, 400, 50, 50
+    <emphasis role="comment">; Minimum value output by the roller</emphasis>
+    imin <emphasis role="op">=</emphasis> 200
+    <emphasis role="comment">; Maximum value output by the roller</emphasis>
+    imax <emphasis role="op">=</emphasis> 5000
+    <emphasis role="comment">; Increment with each pixel</emphasis>
+    istep <emphasis role="op">=</emphasis> 1
+    <emphasis role="comment">; Logarithmic type roller selected</emphasis>
+    iexp <emphasis role="op">=</emphasis> <emphasis role="op">-</emphasis>1 
+    <emphasis role="comment">; Roller graphic type (1=horizontal)</emphasis>
+    itype <emphasis role="op">=</emphasis> 1
+    <emphasis role="comment">; Display handle (-1=not used)</emphasis>
+    idisp <emphasis role="op">=</emphasis> <emphasis role="op">-</emphasis>1
+    <emphasis role="comment">; Width of the roller in pixels</emphasis>
+    iwidth <emphasis role="op">=</emphasis> 300
+    <emphasis role="comment">; Height of the roller in pixels</emphasis>
+    iheight <emphasis role="op">=</emphasis> 50 
+    <emphasis role="comment">; Distance of the left edge of the knob</emphasis>
+    <emphasis role="comment">; from the left edge of the panel </emphasis>
+    ix <emphasis role="op">=</emphasis> 300
+    <emphasis role="comment">; Distance of the top edge of the knob</emphasis>
+    <emphasis role="comment">; from the top edge of the panel</emphasis>
+    iy <emphasis role="op">=</emphasis> 50
+
+    gkfreq, ihandle <emphasis role="opc">FLroller</emphasis> "Frequency", imin, imax, istep, iexp, itype, idisp, iwidth, iheight, ix, iy
+<emphasis role="comment">; End of panel contents</emphasis>
+<emphasis role="opc">FLpanelEnd</emphasis>
+<emphasis role="comment">; Run the widget thread!</emphasis>
+<emphasis role="opc">FLrun</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 1
+    iamp <emphasis role="op">=</emphasis> 15000
+    ifn <emphasis role="op">=</emphasis> 1
+    asig <emphasis role="opc">oscili</emphasis> iamp, gkfreq, ifn
+    <emphasis role="opc">out</emphasis> asig
+<emphasis role="oblock">endin</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="comment">; Function table that defines a single cycle</emphasis>
+<emphasis role="comment">; of a sine wave.</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 1024 10 1
+
+<emphasis role="comment">; Instrument 1 will play a note for 1 hour.</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 3600
+<emphasis role="stamnt">e</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

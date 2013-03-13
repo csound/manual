@@ -1,0 +1,83 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac     <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o endop.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis> <emphasis role="op">=</emphasis> 1
+
+<emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> example <emphasis role="oblock">opcode</emphasis> 1<emphasis role="op">:</emphasis> simple oscillator <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+
+        <emphasis role="oblock">opcode</emphasis> Oscillator, a, kk
+
+kamp, kcps      <emphasis role="opc">xin</emphasis>             <emphasis role="comment">; read input parameters</emphasis>
+a1      <emphasis role="opc">vco2</emphasis> kamp, kcps         <emphasis role="comment">; sawtooth oscillator</emphasis>
+        <emphasis role="opc">xout</emphasis> a1                 <emphasis role="comment">; write output</emphasis>
+
+        <emphasis role="oblock">endop</emphasis>
+
+<emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> example <emphasis role="oblock">opcode</emphasis> 2<emphasis role="op">:</emphasis> lowpass filter with local <emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+
+        <emphasis role="oblock">opcode</emphasis> Lowpass, a, akk
+
+        <emphasis role="opc">setksmps</emphasis> 1              <emphasis role="comment">; need sr=kr</emphasis>
+ain, ka1, ka2   <emphasis role="opc">xin</emphasis>             <emphasis role="comment">; read input parameters</emphasis>
+aout    <emphasis role="opc">init</emphasis> 0                  <emphasis role="comment">; initialize output</emphasis>
+aout    <emphasis role="op">=</emphasis>  ain<emphasis role="op">*</emphasis>ka1 <emphasis role="op">+</emphasis> aout<emphasis role="op">*</emphasis>ka2   <emphasis role="comment">; simple tone-like filter</emphasis>
+        <emphasis role="opc">xout</emphasis> aout               <emphasis role="comment">; write output</emphasis>
+
+        <emphasis role="oblock">endop</emphasis>
+
+<emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> example <emphasis role="oblock">opcode</emphasis> 3<emphasis role="op">:</emphasis> recursive call <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+
+        <emphasis role="oblock">opcode</emphasis> RecursiveLowpass, a, akkpp
+
+ain, ka1, ka2, idep, icnt       <emphasis role="opc">xin</emphasis>     <emphasis role="comment">; read input parameters</emphasis>
+        <emphasis role="octrl">if</emphasis> (icnt <emphasis role="op">>=</emphasis> idep) <emphasis role="octrl">goto</emphasis> <emphasis role="olabel">skip1</emphasis>    <emphasis role="comment">; check if max depth reached</emphasis>
+ain     RecursiveLowpass ain, ka1, ka2, idep, icnt <emphasis role="op">+</emphasis> 1
+<emphasis role="olabel">skip1</emphasis><emphasis role="op">:</emphasis>
+aout    Lowpass ain, ka1, ka2           <emphasis role="comment">; call filter</emphasis>
+        <emphasis role="opc">xout</emphasis> aout                       <emphasis role="comment">; write output</emphasis>
+
+        <emphasis role="oblock">endop</emphasis>
+
+<emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> example <emphasis role="oblock">opcode</emphasis> 4<emphasis role="op">:</emphasis> de<emphasis role="op">-</emphasis>click envelope <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+
+        <emphasis role="oblock">opcode</emphasis> DeClick, a, <emphasis role="opc">a</emphasis>
+
+ain     <emphasis role="opc">xin</emphasis>
+aenv    <emphasis role="opc">linseg</emphasis> 0, 0.02, 1, p3 <emphasis role="op">-</emphasis> 0.05, 1, 0.02, 0, 0.01, 0
+        <emphasis role="opc">xout</emphasis> ain <emphasis role="op">*</emphasis> aenv         <emphasis role="comment">; apply envelope and write output</emphasis>
+
+        <emphasis role="oblock">endop</emphasis>
+
+<emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> <emphasis role="oblock">instr</emphasis> 1 uses the example opcodes <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+
+        <emphasis role="oblock">instr</emphasis> 1
+
+kamp    <emphasis role="op">=</emphasis>  .6                <emphasis role="comment">; amplitude</emphasis>
+kcps    <emphasis role="opc">expon</emphasis> 50, p3, 500       <emphasis role="comment">; pitch</emphasis>
+a1      Oscillator kamp, kcps                   <emphasis role="comment">; call oscillator</emphasis>
+kflt    <emphasis role="opc">linseg</emphasis> 0.4, 1.5, 0.4, 1, 0.8, 1.5, 0.8  <emphasis role="comment">; filter envelope</emphasis>
+a1      RecursiveLowpass a1, kflt, 1 <emphasis role="op">-</emphasis> kflt, 10 <emphasis role="comment">; 10th order lowpass</emphasis>
+a1      DeClick a1
+        <emphasis role="opc">outs</emphasis> a1, a1
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1 0 4
+<emphasis role="stamnt">e</emphasis>
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

@@ -1,0 +1,42 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac  <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o vco2ift.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="comment">; user defined waveform -2: fixed table size (64), number of partials</emphasis>
+<emphasis role="comment">; multiplier is 1.4</emphasis>
+itmp    <emphasis role="ohdr">ftgen</emphasis> 2, 0, 64, 5, 1, 2, 120, 60, 1, 1, 0.001, 1
+ift     <emphasis role="opc">vco2init</emphasis> <emphasis role="op">-</emphasis>2, 2, 1.4, 4096, 4096, 2
+
+
+<emphasis role="oblock">instr</emphasis> 1
+
+icps <emphasis role="op">=</emphasis> p4
+ifn  <emphasis role="opc">vco2ift</emphasis> icps, <emphasis role="op">-</emphasis>2, 0.5	<emphasis role="comment">;with user defined waveform</emphasis>
+<emphasis role="opc">print</emphasis> ifn
+asig <emphasis role="opc">oscili</emphasis> 1, 220, ifn		<emphasis role="comment">; (-2), and sr/2 bandwidth</emphasis>
+     <emphasis role="opc">outs</emphasis> asig, asig
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1 0 2 20
+<emphasis role="stamnt">i</emphasis> 1 3 2 2000
+<emphasis role="stamnt">i</emphasis> 1 6 2 20000
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

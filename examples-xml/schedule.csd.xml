@@ -1,0 +1,51 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in</emphasis>
+-odac           -iadc    <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o schedule.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="comment">; Initialize the global variables.</emphasis>
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">kr</emphasis> <emphasis role="op">=</emphasis> 4410
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 10
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 1
+
+<emphasis role="comment">; Instrument #1 - oscillator with a high note.</emphasis>
+<emphasis role="oblock">instr</emphasis> 1
+  <emphasis role="comment">; Play Instrument #2 at the same time.</emphasis>
+  <emphasis role="opc">schedule</emphasis> 2, 0, p3
+
+  <emphasis role="comment">; Play a high note.</emphasis>
+  a1 <emphasis role="opc">oscils</emphasis> 10000, 880, 1
+  <emphasis role="opc">out</emphasis> a1
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="comment">; Instrument #2 - oscillator with a low note.</emphasis>
+<emphasis role="oblock">instr</emphasis> 2
+  <emphasis role="comment">; Play a low note.</emphasis>
+  a1 <emphasis role="opc">oscils</emphasis> 10000, 220, 1
+  <emphasis role="opc">out</emphasis> a1
+<emphasis role="oblock">endin</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="comment">; Table #1, a sine wave.</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 16384 10 1
+
+<emphasis role="comment">; Play Instrument #1 for half a second.</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 0.5
+<emphasis role="comment">; Play Instrument #1 for half a second.</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 1 0.5
+<emphasis role="stamnt">e</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

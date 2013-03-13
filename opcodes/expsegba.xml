@@ -1,0 +1,92 @@
+
+<refentry id="expsegba">
+<indexterm id="IndexExpsegba"><primary>expsegba</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Linear and Exponential Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>expsegba</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>expsegba</refname>
+    <refpurpose>
+      An exponential segment generator operating at a-rate with
+      absolute times.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      An exponential segment generator operating at a-rate. This unit
+      is almost identical to <link
+      linkend="expsegb"><citetitle>expsegb</citetitle></link>, but
+      more precise when defining segments with very short durations
+      (i.e., in a percussive attack phase) at audio rate. 
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>expsegba</command> ia, itim1, ib [, itim2] [, ic] [...]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ia</emphasis> -- starting value. Zero is illegal.
+    </para>
+
+    <para>
+      <emphasis>ib</emphasis>, <emphasis>ic</emphasis>, etc. -- value after <emphasis>itim1</emphasis> seconds, etc. must be non-zero and must agree in sign with <emphasis>ia</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>itim1</emphasis> -- time in seconds at end of first segment.
+    </para>
+
+    <para>
+      <emphasis>itim2</emphasis>, <emphasis>itim3</emphasis>, etc. --
+      time in seconds at the end of subsequent segments.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      This unit generate audio signals whose values can pass through
+      two or more specified points. The final <emphasis>tim
+      </emphasis> value may or may not equal the instrument's
+      performance time. A shorter performance will truncate the
+      specified pattern, while a longer one will cause the last
+      defined segment to continue on in the same direction.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the expsegba opcode. It uses the file <ulink url="examples/expsegba.csd"><citetitle>expsegba.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the expsegba opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/expsegba.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="expsegb"><citetitle>expsegb</citetitle></link>, 
+      <link linkend="expsegr"><citetitle>expsegr</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namejohn;</para>
+    <para>June 2011</para>
+    <para>New in Csound 5.14</para>
+  </refsect1>
+</refentry>

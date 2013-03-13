@@ -1,0 +1,75 @@
+
+<refentry id="vmultv_i">
+<indexterm id="IndexVmultv_i"><primary>vmultv_i</primary></indexterm>
+  <refentryinfo><title>Vectorial:Vectorial operations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vmultv_i</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vmultv_i</refname>
+    <refpurpose>
+      Performs mutiplication between two vectorial control signals at init time.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Performs mutiplication between two vectorial control signals at init time.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>vmultv_i</command>  ifn1, ifn2, ielements [, idstoffset] [, isrcoffset]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifn1</emphasis>  - number of the table hosting the first vector to be processed
+    </para>
+    <para>
+      <emphasis>ifn2</emphasis>  - number of the table hosting the second vector to be processed
+    </para>
+     <para>
+      <emphasis>ielements</emphasis> - number of elements of the two vectors
+    </para>
+    <para>
+      <emphasis>idstoffset</emphasis> - index offset for the destination (ifn1) table (Default=0)
+    </para>
+    <para>
+      <emphasis>isrcoffset</emphasis> - index offset for the source (ifn2) table (Default=0)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>vmultv_i</emphasis> multiplies two vectorial control signals, that is, each element of the first vector is processed (only) with the corresponding element of the other vector. Each vectorial signal is hosted by a table (ifn1 and ifn2). The number of elements contained in both vectors must be the same.
+    </para>
+    <para>
+      The result is a new vectorial control signal that overrides old values of ifn1. If you want to keep the old ifn1 vector, use <link linkend="vcopy_i"><citetitle>vcopy_i</citetitle></link> opcode to copy it in another table. You can use <emphasis>idstoffset</emphasis> and <emphasis>isrcoffset</emphasis> to specify vectors in any location of the tables.
+    </para>
+    <para>
+      Negative values for <emphasis>idstoffset</emphasis> and <emphasis>isrcoffset</emphasis> are acceptable. If <emphasis>idstoffset</emphasis> is negative, the out of range section of the vector will be discarded. If <emphasis>isrcoffset</emphasis> is negative, the out of range elements will be assumed to be 1 (i.e. the destination elements will not be changed). If elements for the destination vector are beyond the size of the table (including guard point), these elements are discarded (i.e. elements do not wrap around the tables). If elements for the source vector are beyond the table length, these elements are taken as 1 (i.e. the destination vector will not be changed for these elements).
+    </para>
+    <warning>
+      <para>
+        Using the same table as source and destination table in versions earlier than 5.04, might produce unexpected behavior, so use with care.
+      </para>
+    </warning>
+    <para>
+      This opcode works at init time. There's an k-rate version of this opcode called <link linkend="vmultv"><citetitle>vmultv</citetitle></link>.
+    </para>
+    <para>
+      All these operators (<link linkend="vaddv_i"><citetitle>vaddv_i</citetitle></link>,<link linkend="vsubv_i"><citetitle>vsubv_i</citetitle></link>,<link linkend="vmultv_i"><citetitle>vmultv_i</citetitle></link>,<link linkend="vdivv_i"><citetitle>vdivv_i</citetitle></link>,<link linkend="vpowv_i"><citetitle>vpowv_i</citetitle></link>,<link linkend="vexpv_i"><citetitle>vexpv_i</citetitle></link>, <link linkend="vcopy"><citetitle>vcopy</citetitle></link> and <link linkend="vmap"><citetitle>vmap</citetitle></link>) are designed to be used together with other opcodes that operate with vectorial signals such as <emphasis>bmscan</emphasis>, <link linkend="vcella"><citetitle>vcella</citetitle></link>, <link linkend="adsynt"><citetitle>adsynt</citetitle></link>, <link linkend="adsynt2"><citetitle>adsynt2</citetitle></link> etc. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Written by Gabriel Maldonado. Optional arguments added by Andres Cabrera and Istvan Varga.</para>
+    <para>New in Csound 5 (Previously available only on CsoundAV)</para>
+  </refsect1>
+</refentry>

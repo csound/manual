@@ -1,0 +1,124 @@
+
+<refentry id="vbapz">
+<indexterm id="IndexVbapz"><primary>vbapz</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Panning and Spatialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vbapz</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vbapz</refname>
+    <refpurpose>
+      Writes a multi-channel audio signal to a ZAK array.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Writes a multi-channel audio signal to a ZAK array.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>vbapz</command> inumchnls, istartndx, asig, kazim [, kelev] [, kspread]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>inumchnls</emphasis> -- number of channels to write to the ZA array. Must be in the range 2 - 256.
+    </para>
+
+    <para>
+      <emphasis>istartndx</emphasis> -- first index or position in the ZA array to use
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asig</emphasis> -- audio signal to be panned
+    </para>
+    <para>
+      <emphasis>kazim</emphasis> -- azimuth angle of the virtual source
+    </para>
+    <para>
+      <emphasis>kelev</emphasis> (optional) -- elevation angle of the virtual source
+    </para>
+    <para>
+      <emphasis>kspread</emphasis> (optional) -- spreading of the virtual source (range 0 - 100).  If value is zero, conventional amplitude panning is used. When <emphasis>kspread</emphasis> is increased, the number of loudspeakers used in panning increases. If value is 100, the sound is applied to all loudspeakers.
+    </para>
+
+    <para>
+      The opcode <emphasis>vbapz</emphasis> is the multiple channel analog of the opcodes like <link linkend="vbap4"><citetitle>vbap4</citetitle></link>, working on <emphasis>inumchnls</emphasis> and using a ZAK array for output.
+    </para>
+    <warning>
+      <para>Please note that all <emphasis>vbap</emphasis> panning opcodes require the <emphasis>vbap</emphasis> system to be initialized using <link linkend="vbaplsinit"><citetitle>vbaplsinit</citetitle></link>.</para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      See the entry for <link linkend="vbap8"><citetitle>vbap8</citetitle></link> for an example of usage of the <emphasis>vbap</emphasis> opcodes.
+<!--      <example>
+        <title>2-D panning example with stationary virtual sources</title>
+        <programlisting>
+  <emphasis>sr</emphasis>      =          4100
+  <emphasis>kr</emphasis>      =           441
+  <emphasis>ksmps</emphasis>   =           100
+  <emphasis>nchnls</emphasis>  =             4
+  <emphasis>vbaplsinit</emphasis>         2, 6,  0, 45, 90, 135, 200, 245, 290, 315 
+
+          <emphasis>instr</emphasis> 1	           
+  asig    <emphasis>oscil</emphasis>      20000, 440, 1                    
+  a1,a2,a3,a4,a5,a6,a7,a8   <emphasis>vbap8</emphasis>  asig, p4, 0, 20 ;p4 = azimuth
+	
+  ;render twice with alternate <emphasis>outq</emphasis> statements
+  ;  to obtain two 4 channel .wav files:
+
+          <emphasis>outq</emphasis>       a1,a2,a3,a4
+  ;       <emphasis>outq</emphasis>       a5,a6,a7,a8
+          <emphasis>endin</emphasis>
+        </programlisting>
+      </example>-->
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Reference</title>
+    <para>
+      Ville Pulkki: <quote>Virtual Sound Source Positioning Using Vector Base Amplitude Panning</quote> <emphasis>Journal of the Audio Engineering Society</emphasis>, 1997 June, Vol. 45/6, p. 456.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="vbap16"><citetitle>vbap16</citetitle></link>,
+      <link linkend="vbap16move"><citetitle>vbap16move</citetitle></link>,
+      <link linkend="vbap4"><citetitle>vbap4</citetitle></link>,
+      <link linkend="vbap4move"><citetitle>vbap4move</citetitle></link>,
+      <link linkend="vbap8"><citetitle>vbap8</citetitle></link>,
+      <link linkend="vbap8move"><citetitle>vbap8move</citetitle></link>,
+      <link linkend="vbaplsinit"><citetitle>vbaplsinit</citetitle></link>,
+      <link linkend="vbapzmove"><citetitle>vbapzmove</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>&namejohn;</member>
+        <member>University of Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>May 2000</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound Version 4.07. Input parameters accept k-rate since Csund 5.09.</para>
+  </refsect1>
+</refentry>

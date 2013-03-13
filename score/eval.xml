@@ -1,0 +1,100 @@
+﻿
+<section id="ScoreEval">
+  <title>Evaluation of Expressions</title>
+
+  <para>
+    In earlier versions of Csound the numbers presented in a score were used as given.  There are occasions when some simple evaluation would be easier.  This need is increased when there are macros.  To assist in this area the syntax of arithmetic expressions within square brackets [ ] has been introduced.  Expressions built from the operations +, -, *,  /, % ("modulo"), and ^ ("power of") are allowed, together with grouping with ( ). Unary minus and plus are also supported. The expressions can include numbers, and naturally macros whose values are numeric or arithmetic strings.  All calculations are made in floating point numbers. The usual precedence rules are followed when evaluating: expressions within parantheses ( ) are evaluated first and ^ is evaluated before *, /, and % which are evaluated before + and -.
+  </para>
+
+  <para>
+    In addition to arithmetic operations, the following bitwise logical operators are also available: &amp; (AND), | (OR), and # (XOR, exclusive-OR).  These operators round their operands to the nearest (long) integer before evaluating.  The logical operators have the same precedence as the *, /, and % arithmetic operators.
+  </para>
+
+  <para>
+    Finally, the tilde symbol &tilde; can be used in an expression wherever a number is permissible to use.  Each &tilde; will evaluate to a random value between zero (0) and one (1).
+  </para>
+
+  <simplesect>
+    <title>Example</title>
+    <para>
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">r</emphasis>3  CNT
+
+<emphasis role="stamnt">i</emphasis>1  0  [0.3*$CNT.]
+<emphasis role="stamnt">i</emphasis>1  +  [($CNT./3)+0.2]
+
+<emphasis role="stamnt">e</emphasis></programlisting>
+      </informalexample>
+
+      As the three copies of the section have the macro $CNT. with the different values of 1, 2 and 3, this expands to
+
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">s</emphasis>
+<emphasis role="stamnt">i</emphasis>1  0  0.3
+<emphasis role="stamnt">i</emphasis>1  0.3  0.533333
+<emphasis role="stamnt">s</emphasis>
+<emphasis role="stamnt">i</emphasis>1  0  0.6
+<emphasis role="stamnt">i</emphasis>1  0.6  0.866667
+<emphasis role="stamnt">s</emphasis>
+<emphasis role="stamnt">i</emphasis>1  0  0.9
+<emphasis role="stamnt">i</emphasis>1  0.9  1.2
+<emphasis role="stamnt">e</emphasis></programlisting>
+      </informalexample>
+
+      This is an extreme form, but the evaluation system can be used to ensure that repeated sections are subtly different.
+    </para>
+
+    <para>
+      Here are some simple examples of each operator:
+      
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">i</emphasis>1  0   1   [ 110 + 220 ]      ; evaluates to 330
+<emphasis role="stamnt">i</emphasis>1  +   .   [ 330 - 55 ]       ; 275
+<emphasis role="stamnt">i</emphasis>1  +   .   [ 44 * 10 ]        ; 440
+<emphasis role="stamnt">i</emphasis>1  +   .   [ 1100 / 2 ]       ; 550
+<emphasis role="stamnt">i</emphasis>1  +   .   [ 5 ^ 4 ]          ; 625
+<emphasis role="stamnt">i</emphasis>1  +   .   [ 5660 % 1000 ]    ; 660
+<emphasis role="stamnt">i</emphasis>1  +   .   [ 110 &amp; 220 ]      ; 76
+<emphasis role="stamnt">i</emphasis>1  +   .   [ 110 | 220 ]      ; 254
+<emphasis role="stamnt">i</emphasis>1  +   .   [ 110 # 220 ]      ; 178
+<emphasis role="stamnt">i</emphasis>1  +   .   [~]                ; random between 0-1
+<emphasis role="stamnt">i</emphasis>1  +   .   [~ * 4 + 1]        ; random between 1-5
+<emphasis role="stamnt">i</emphasis>1  +   .   [~ * 95 + 5]       ; random between 5-100
+
+<emphasis role="stamnt">i</emphasis>1  +   .   [ 8 / 2 * 3 ]      ; 12
+<emphasis role="stamnt">i</emphasis>1  +   .   [ 4 + 3 - 2 + 1 ]  ; 6
+<emphasis role="stamnt">i</emphasis>1  +   .   [ 4 + 3 * 2 + 1 ]  ; 11
+<emphasis role="stamnt">i</emphasis>1  +   .   [(4 + 3)*(2 + 1)]  ; 21
+
+<emphasis role="stamnt">i</emphasis>1  +   .   [ 2 * 2 &amp; 3 ]      ; 4
+<emphasis role="stamnt">i</emphasis>1  +   .   [ 3 &amp; 2 * 2 ]      ; 0
+<emphasis role="stamnt">i</emphasis>1  +   .   [ 4 | 3 * 3 ]      ; 13
+        </programlisting>
+      </informalexample>
+    </para>
+  </simplesect>
+    <simplesect>
+    <title>The &commat; operator</title>
+    <para>
+    New in Csound version 3.56 are <emphasis>&commat;</emphasis><emphasis>x</emphasis> (next power-of-two greater than or equal to <emphasis>x</emphasis>) and <emphasis>&commat;&commat;</emphasis><emphasis>x</emphasis> (next power-of-two-plus-one greater than or equal to <emphasis>x</emphasis>).
+
+    <indexterm id="IndexCommat"><primary>&commat;</primary></indexterm>
+    <indexterm id="IndexCommatCommat"><primary>&commat;&commat;</primary></indexterm>
+  </para>
+      <informalexample>
+        <programlisting>
+[ @ 11 ] will evaluate to 16
+[ @@ 11 ] to 17</programlisting>
+      </informalexample>
+      </simplesect>
+  <simplesect>
+    <title>Credits</title>
+    <para>Author: &namejohn;</para>
+    <para>University of Bath/Codemist Ltd.</para>
+    <para>Bath, UK</para>
+    <para>April, 1998 (New in Csound version 3.48)</para>
+  </simplesect>
+</section>

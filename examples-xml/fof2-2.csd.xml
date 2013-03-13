@@ -1,0 +1,180 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in</emphasis>
+-odac           -iadc    <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o fof2.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 128
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+
+<emphasis role="comment">; Example by Chuckk Hubbard 2007</emphasis>
+
+    <emphasis role="oblock">instr</emphasis> 1            <emphasis role="comment">;table-lookup vocal synthesis</emphasis>
+
+iolaps    <emphasis role="op">=</emphasis>    120
+ifna    <emphasis role="op">=</emphasis>    1        <emphasis role="comment">;f1 - sine wave</emphasis>
+ifnb    <emphasis role="op">=</emphasis>    2        <emphasis role="comment">;f2 - linear rise shape</emphasis>
+itotdur    <emphasis role="op">=</emphasis>    p3
+iamp    <emphasis role="op">=</emphasis>    p4 <emphasis role="op">*</emphasis> <emphasis role="ohdr">0dbfs</emphasis>
+ifreq1    <emphasis role="op">=</emphasis>    p5        <emphasis role="comment">;starting frequency</emphasis>
+ifreq2    <emphasis role="op">=</emphasis>    p6        <emphasis role="comment">;ending frequency</emphasis>
+
+kamp    <emphasis role="opc">linseg</emphasis>    0, .003, iamp, itotdur<emphasis role="op">-</emphasis>.007, iamp, .003, 0, .001, 0
+kfund    <emphasis role="opc">expseg</emphasis>    ifreq1, itotdur, ifreq2
+koct    <emphasis role="opc">init</emphasis>    0
+kris    <emphasis role="opc">init</emphasis>    .003
+kdur    <emphasis role="opc">init</emphasis>    .02
+kdec    <emphasis role="opc">init</emphasis>    .007
+kphs    <emphasis role="opc">init</emphasis>    0
+kgliss    <emphasis role="opc">init</emphasis>    0
+
+iforma    <emphasis role="op">=</emphasis>    p7        <emphasis role="comment">;starting spectrum</emphasis>
+iformb    <emphasis role="op">=</emphasis>    p8        <emphasis role="comment">;ending spectrum</emphasis>
+
+iform1a    <emphasis role="opc">tab_i</emphasis>    0, iforma        <emphasis role="comment">;read values of 5 formants for 1st spectrum</emphasis>
+iform2a    <emphasis role="opc">tab_i</emphasis>    1, iforma
+iform3a    <emphasis role="opc">tab_i</emphasis>    2, iforma
+iform4a    <emphasis role="opc">tab_i</emphasis>    3, iforma
+iform5a    <emphasis role="opc">tab_i</emphasis>    4, iforma
+idb1a    <emphasis role="opc">tab_i</emphasis>    5, iforma        <emphasis role="comment">;read decibel levels for same 5 formants</emphasis>
+idb2a    <emphasis role="opc">tab_i</emphasis>    6, iforma
+idb3a    <emphasis role="opc">tab_i</emphasis>    7, iforma
+idb4a    <emphasis role="opc">tab_i</emphasis>    8, iforma
+idb5a    <emphasis role="opc">tab_i</emphasis>    9, iforma
+iband1a    <emphasis role="opc">tab_i</emphasis>    10, iforma    <emphasis role="comment">;read bandwidths for same 5 formants</emphasis>
+iband2a    <emphasis role="opc">tab_i</emphasis>    11, iforma
+iband3a    <emphasis role="opc">tab_i</emphasis>    12, iforma
+iband4a    <emphasis role="opc">tab_i</emphasis>    13, iforma
+iband5a    <emphasis role="opc">tab_i</emphasis>    14, iforma
+iamp1a    <emphasis role="op">=</emphasis>    <emphasis role="opc">ampdb</emphasis>(idb1a)    <emphasis role="comment">;convert db to linear multipliers</emphasis>
+iamp2a    <emphasis role="op">=</emphasis>    <emphasis role="opc">ampdb</emphasis>(idb2a)
+iamp3a    <emphasis role="op">=</emphasis>    <emphasis role="opc">ampdb</emphasis>(idb3a)
+iamp4a    <emphasis role="op">=</emphasis>    <emphasis role="opc">ampdb</emphasis>(idb4a)
+iamp5a    <emphasis role="op">=</emphasis>    <emphasis role="opc">ampdb</emphasis>(idb5a)
+
+iform1b    <emphasis role="opc">tab_i</emphasis>    0, iformb        <emphasis role="comment">;values of 5 formants for 2nd spectrum</emphasis>
+iform2b    <emphasis role="opc">tab_i</emphasis>    1, iformb
+iform3b    <emphasis role="opc">tab_i</emphasis>    2, iformb
+iform4b    <emphasis role="opc">tab_i</emphasis>    3, iformb
+iform5b    <emphasis role="opc">tab_i</emphasis>    4, iformb
+idb1b    <emphasis role="opc">tab_i</emphasis>    5, iformb        <emphasis role="comment">;decibel levels for 2nd set of formants</emphasis>
+idb2b    <emphasis role="opc">tab_i</emphasis>    6, iformb
+idb3b    <emphasis role="opc">tab_i</emphasis>    7, iformb
+idb4b    <emphasis role="opc">tab_i</emphasis>    8, iformb
+idb5b    <emphasis role="opc">tab_i</emphasis>    9, iformb
+iband1b    <emphasis role="opc">tab_i</emphasis>    10, iformb    <emphasis role="comment">;bandwidths for 2nd set of formants</emphasis>
+iband2b    <emphasis role="opc">tab_i</emphasis>    11, iformb
+iband3b    <emphasis role="opc">tab_i</emphasis>    12, iformb
+iband4b    <emphasis role="opc">tab_i</emphasis>    13, iformb
+iband5b    <emphasis role="opc">tab_i</emphasis>    14, iformb
+iamp1b    <emphasis role="op">=</emphasis>    <emphasis role="opc">ampdb</emphasis>(idb1b)    <emphasis role="comment">;convert db to linear multipliers</emphasis>
+iamp2b    <emphasis role="op">=</emphasis>    <emphasis role="opc">ampdb</emphasis>(idb2b)
+iamp3b    <emphasis role="op">=</emphasis>    <emphasis role="opc">ampdb</emphasis>(idb3b)
+iamp4b    <emphasis role="op">=</emphasis>    <emphasis role="opc">ampdb</emphasis>(idb4b)
+iamp5b    <emphasis role="op">=</emphasis>    <emphasis role="opc">ampdb</emphasis>(idb5b)
+
+kform1    <emphasis role="opc">line</emphasis>    iform1a, itotdur, iform1b    <emphasis role="comment">;transition between formants</emphasis>
+kform2    <emphasis role="opc">line</emphasis>    iform2a, itotdur, iform2b
+kform3    <emphasis role="opc">line</emphasis>    iform3a, itotdur, iform3b
+kform4    <emphasis role="opc">line</emphasis>    iform4a, itotdur, iform4b
+kform5    <emphasis role="opc">line</emphasis>    iform5a, itotdur, iform5b
+kband1    <emphasis role="opc">line</emphasis>    iband1a, itotdur, iband1b    <emphasis role="comment">;transition of bandwidths</emphasis>
+kband2    <emphasis role="opc">line</emphasis>    iband2a, itotdur, iband2b
+kband3    <emphasis role="opc">line</emphasis>    iband3a, itotdur, iband3b
+kband4    <emphasis role="opc">line</emphasis>    iband4a, itotdur, iband4b
+kband5    <emphasis role="opc">line</emphasis>    iband5a, itotdur, iband5b
+kamp1    <emphasis role="opc">line</emphasis>    iamp1a, itotdur, iamp1b    <emphasis role="comment">;transition of amplitudes of formants</emphasis>
+kamp2    <emphasis role="opc">line</emphasis>    iamp2a, itotdur, iamp2b
+kamp3    <emphasis role="opc">line</emphasis>    iamp3a, itotdur, iamp3b
+kamp4    <emphasis role="opc">line</emphasis>    iamp4a, itotdur, iamp4b
+kamp5    <emphasis role="opc">line</emphasis>    iamp5a, itotdur, iamp5b
+
+<emphasis role="comment">;5 formants for each spectrum</emphasis>
+a1    <emphasis role="opc">fof2</emphasis>    kamp1, kfund, kform1, koct, kband1, kris, kdur, kdec, iolaps, ifna, ifnb, itotdur, kphs, kgliss
+a2    <emphasis role="opc">fof2</emphasis>    kamp2, kfund, kform2, koct, kband2, kris, kdur, kdec, iolaps, ifna, ifnb, itotdur, kphs, kgliss
+a3    <emphasis role="opc">fof2</emphasis>    kamp3, kfund, kform3, koct, kband3, kris, kdur, kdec, iolaps, ifna, ifnb, itotdur, kphs, kgliss
+a4    <emphasis role="opc">fof2</emphasis>    kamp4, kfund, kform4, koct, kband4, kris, kdur, kdec, iolaps, ifna, ifnb, itotdur, kphs, kgliss
+a5    <emphasis role="opc">fof2</emphasis>    kamp5, kfund, kform5, koct, kband5, kris, kdur, kdec, iolaps, ifna, ifnb, itotdur, kphs, kgliss
+
+aout    <emphasis role="op">=</emphasis>    (a1<emphasis role="op">+</emphasis>a2<emphasis role="op">+</emphasis>a3<emphasis role="op">+</emphasis>a4<emphasis role="op">+</emphasis>a5) <emphasis role="op">*</emphasis> kamp<emphasis role="op">/</emphasis>5    <emphasis role="comment">;sum and scale</emphasis>
+
+aenv <emphasis role="opc">linen</emphasis> 1, 0.05, p3, 0.05  <emphasis role="comment">;to avoid clicking</emphasis>
+
+    <emphasis role="opc">outs</emphasis>    aout<emphasis role="op">*</emphasis>aenv, aout<emphasis role="op">*</emphasis>aenv
+    <emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis>1 0 8192 10 1
+<emphasis role="stamnt">f</emphasis>2 0 4096 7 0 4096 1
+
+<emphasis role="comment">;****************************************************************</emphasis>
+<emphasis role="comment">; tables of formant values adapted from MiscFormants.html</emphasis>
+<emphasis role="comment">; 100's: soprano    200's: alto    300's: countertenor        400's: tenor    500's: bass</emphasis>
+<emphasis role="comment">; -01: "a" sound    -02: "e" sound    -03: "i" sound    -04: "o" sound    -05: "u" sound</emphasis>
+<emphasis role="comment">; p-5 through p-9: frequencies of 5 formants</emphasis>
+<emphasis role="comment">; p-10 through p-14: decibel levels of 5 formants</emphasis>
+<emphasis role="comment">; p-15 through p-19: bandwidths of 5 formants</emphasis>
+
+<emphasis role="comment">;        formant frequencies            decibel levels                bandwidths</emphasis>
+<emphasis role="comment">;soprano</emphasis>
+<emphasis role="stamnt">f</emphasis>101 0 16 -2    800      1150      2900      3900      4950     0.001     -6     -32     -20     -50     80     90     120     130     140
+<emphasis role="stamnt">f</emphasis>102 0 16 -2    350     2000     2800     3600     4950     0.001     -20     -15     -40     -56     60     100     120     150     200
+<emphasis role="stamnt">f</emphasis>103 0 16 -2    270     2140     2950     3900     4950     0.001    -12     -26     -26     -44     60     90     100     120     120
+<emphasis role="stamnt">f</emphasis>104 0 16 -2    450     800     2830     3800     4950     0.001    -11     -22     -22     -50     40     80     100     120     120
+<emphasis role="stamnt">f</emphasis>105 0 16 -2    325     700     2700     3800     4950     0.001    -16     -35     -40     -60     50     60     170     180     200
+<emphasis role="comment">;alto</emphasis>
+<emphasis role="stamnt">f</emphasis>201 0 16 -2    800      1150      2800      3500      4950    0.001    -4     -20     -36     -60    80    90     120     130     140
+<emphasis role="stamnt">f</emphasis>202 0 16 -2    400      1600      2700      3300      4950    0.001    -24     -30     -35     -60    60     80     120     150     200
+<emphasis role="stamnt">f</emphasis>203 0 16 -2     350      1700      2700      3700      4950     0.001    -20     -30     -36     -60     50     100     120     150     200
+<emphasis role="stamnt">f</emphasis>204 0 16 -2    450      800      2830      3500      4950     0.001    -9     -16     -28     -55     70     80     100     130     135
+<emphasis role="stamnt">f</emphasis>205 0 16 -2    325      700      2530      3500      4950     0.001    -12     -30     -40     -64     50     60     170     180     200
+<emphasis role="comment">;countertenor</emphasis>
+<emphasis role="stamnt">f</emphasis>301 0 16 -2    660      1120      2750      3000      3350     0.001    -6     -23     -24     -38     80     90     120     130     140
+<emphasis role="stamnt">f</emphasis>302 0 16 -2    440     1800     2700     3000     3300     0.001    -14     -18     -20     -20     70     80     100     120     120
+<emphasis role="stamnt">f</emphasis>303 0 16 -2    270     1850     2900     3350     3590     0.001    -24     -24     -36     -36     40     90     100     120     120
+<emphasis role="stamnt">f</emphasis>304 0 16 -2    430     820     2700     3000     3300     0.001    -10     -26     -22     -34     40     80     100     120     120
+<emphasis role="stamnt">f</emphasis>305 0 16 -2    370     630     2750     3000     3400     0.001    -20     -23     -30     -34     40     60     100     120     120
+<emphasis role="comment">;tenor</emphasis>
+<emphasis role="stamnt">f</emphasis>401 0 16 -2    650      1080      2650      2900      3250     0.001    -6     -7     -8     -22     80     90     120     130     140
+<emphasis role="stamnt">f</emphasis>402 0 16 -2    400     1700     2600     3200     3580     0.001    -14     -12     -14     -20     70     80     100     120     120
+<emphasis role="stamnt">f</emphasis>403 0 16 -2    290     1870     2800     3250     3540     0.001    -15     -18     -20     -30     40     90     100     120     120
+<emphasis role="stamnt">f</emphasis>404 0 16 -2    400     800     2600     2800     3000     0.001    -10     -12     -12     -26     70     80     100     130     135
+<emphasis role="stamnt">f</emphasis>405 0 16 -2    350     600     2700     2900     3300     0.001    -20     -17     -14     -26     40     60     100     120     120
+<emphasis role="comment">;bass</emphasis>
+<emphasis role="stamnt">f</emphasis>501 0 16 -2    600      1040      2250      2450      2750     0.001    -7     -9     -9     -20     60     70     110     120     130
+<emphasis role="stamnt">f</emphasis>502 0 16 -2    400      1620      2400      2800      3100     0.001     -12     -9     -12     -18     40     80     100     120     120
+<emphasis role="stamnt">f</emphasis>503 0 16 -2    250      1750      2600      3050      3340     0.001    -30     -16     -22     -28     60     90     100     120     120
+<emphasis role="stamnt">f</emphasis>504 0 16 -2    400      750      2400      2600      2900    0.001    -11     -21     -20     -40     40     80     100     120     120
+<emphasis role="stamnt">f</emphasis>505 0 16 -2    350      600      2400      2675      2950     0.001    -20     -32     -28     -36     40     80     100     120     120
+<emphasis role="comment">;****************************************************************</emphasis>
+
+<emphasis role="comment">;    start dur  amp    start freq    end freq    start formant   end formant</emphasis>
+<emphasis role="stamnt">i</emphasis>1    0    1    .8        440		412.5		201        203
+<emphasis role="stamnt">i</emphasis>1    +    .    .8        412.5		550		201        204
+<emphasis role="stamnt">i</emphasis>1    +    .    .8        495		330		202        205
+
+<emphasis role="stamnt">i</emphasis>1    +    .    .8        110		103.125		501        503
+<emphasis role="stamnt">i</emphasis>1    +    .    .8        103.125	137.5 		501        504
+<emphasis role="stamnt">i</emphasis>1    +    .    .8        123.75	82.5		502        505
+
+<emphasis role="stamnt">i</emphasis>1    7    .    .4        440		412.5		201        203
+<emphasis role="stamnt">i</emphasis>1    8    .    .4        412.5		550		201        204
+<emphasis role="stamnt">i</emphasis>1    9    .    .4        495		330		202        205
+<emphasis role="stamnt">i</emphasis>1    7    .    .4        110		103.125		501        503
+<emphasis role="stamnt">i</emphasis>1    8    .    .4        103.125	137.5		501        504
+<emphasis role="stamnt">i</emphasis>1    9    .    .4        123.75	82.5		502        505
+<emphasis role="stamnt">i</emphasis>1    +    .    .4        440		412.5		101        103
+<emphasis role="stamnt">i</emphasis>1    +    .    .4        412.5		550		101        104
+<emphasis role="stamnt">i</emphasis>1    +    .    .4        495		330		102        105
+<emphasis role="stamnt">e</emphasis>
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

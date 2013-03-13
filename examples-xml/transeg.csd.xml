@@ -1,0 +1,41 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in</emphasis>
+-odac           -iadc    <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o transeg.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 128
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+
+<emphasis role="ohdr">0dbfs</emphasis> <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1
+<emphasis role="comment">;p4 and p5 determine the type of curve for each</emphasis>
+<emphasis role="comment">;section of the envelope</emphasis>
+kenv <emphasis role="opc">transeg</emphasis> 0.01, p3<emphasis role="op">*</emphasis>0.25, p4, 1, p3<emphasis role="op">*</emphasis>0.75, p5, 0.01
+a1 <emphasis role="opc">oscil</emphasis> kenv, 440, 1
+<emphasis role="opc">outs</emphasis> a1, a1
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="comment">; Table #1, a sine wave.</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 16384 10 1
+
+<emphasis role="stamnt">i</emphasis> 1 0 2 2 2
+<emphasis role="stamnt">i</emphasis> 1 + . 5 5
+<emphasis role="stamnt">i</emphasis> 1 + . 1 1
+<emphasis role="stamnt">i</emphasis> 1 + . 0 0
+<emphasis role="stamnt">i</emphasis> 1 + . -2 -2
+<emphasis role="stamnt">i</emphasis> 1 + . -2 2
+<emphasis role="stamnt">i</emphasis> 1 + . 2 -2
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

@@ -1,0 +1,264 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis>    48000
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis>   100
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis>    1
+
+    gibegan     <emphasis role="opc">rtclock</emphasis>
+
+    <emphasis role="opc">lua_opdef</emphasis>   "moogladder", {{
+local ffi = require("ffi")
+local math = require("math")
+local string = require("string")
+local csoundApi = ffi.load('csound64.dll.5.2')
+ffi.cdef[[
+    int csoundGetKsmps(void *);
+    double csoundGetSr(void *);
+    struct moogladder_t {
+      double *out;
+      double *inp;
+      double *freq;
+      double *res;
+      double *istor;
+      double sr;
+      double ksmps>;
+      double thermal;
+      double f;
+      double fc;
+      double fc2;
+      double fc3;
+      double fcr;
+      double acr;
+      double tune;
+      double res4;
+      double input;
+      double i;
+      double j;
+      double k;
+      double kk;
+      double stg[6];
+      double delay[6];
+      double tanhstg[6];
+    };
+]]
+
+local moogladder_ct = ffi.typeof('struct moogladder_t *')
+
+function moogladder_init(csound, opcode, carguments)
+    local p = ffi.cast(moogladder_ct, carguments)
+    p.sr = csoundApi.csoundGetSr(csound)
+    p.ksmps = csoundApi.csoundGetKsmps(csound)
+    if p.istor[0] == 0 then
+        for i = 0, 5 do
+            p.delay[i] = 0.0
+        end
+        for i = 0, 3 do
+            p.tanhstg[i] = 0.0
+        end
+    end
+    return 0
+end
+
+function moogladder_kontrol(csound, opcode, carguments)
+    local p = ffi.cast(moogladder_ct, carguments)
+    -- transistor thermal voltage
+    p.thermal = 1.0 / 40000.0
+    if p.res[0] &lt; 0.0 then
+        p.res[0] = 0.0
+    end
+    -- sr is half the actual filter sampling rate
+    p.fc = p.freq[0] / p.sr
+    p.f = p.fc / 2.0
+    p.fc2 = p.fc * p.fc
+    p.fc3 = p.fc2 * p.fc
+    -- frequency &amp; amplitude correction
+    p.fcr = 1.873 * p.fc3 + 0.4955 * p.fc2 - 0.6490 * p.fc + 0.9988
+    p.acr = -3.9364 * p.fc2 + 1.8409 * p.fc + 0.9968
+    -- filter tuning
+    p.tune = (1.0 - math.exp(-(2.0 * math.pi * p.f * p.fcr))) / p.thermal
+    p.res4 = 4.0 * p.res[0] * p.acr
+    -- Nested 'for' loops crash, not sure why.
+    -- Local loop variables also are problematic.
+    -- Lower-level loop constructs don't crash.
+    p.i = 0
+    while p.i &lt; p.ksmps do
+        p.j = 0
+        while p.j &lt; 2 do
+            p.k = 0
+            while p.k &lt; 4 do
+                if p.k == 0 then
+                    p.input = p.inp[p.i] - p.res4 * p.delay[5]
+                    p.stg[p.k] = p.delay[p.k] + p.tune * (math.tanh(p.input * p.thermal) - p.tanhstg[p.k])
+                else
+                    p.input = p.stg[p.k - 1]
+                    p.tanhstg[p.k - 1] = math.tanh(p.input * p.thermal)
+                    if p.k &lt; 3 then
+                        p.kk = p.tanhstg[p.k]
+                    else
+                        p.kk = math.tanh(p.delay[p.k] * p.thermal)
+                    end
+                    p.stg[p.k] = p.delay[p.k] + p.tune * (p.tanhstg[p.k - 1] - p.kk)
+                end
+                p.delay[p.k] = p.stg[p.k]
+                p.k = p.k + 1
+            end
+            -- 1/2-sample delay for phase compensation
+            p.delay[5] = (p.stg[3] + p.delay[4]) * 0.5
+            p.delay[4] = p.stg[3]
+            p.j = p.j + 1
+        end
+        p.out[p.i] = p.delay[5]
+        p.i = p.i + 1
+    end
+    return 0
+end
+}}
+
+<emphasis role="comment">/*
+Moogladder - An improved implementation of the Moog ladder filter
+
+DESCRIPTION
+This is an new digital implementation of the Moog ladder filter based on the work of Antti Huovilainen,
+described in the paper \"Non-Linear Digital Implementation of the Moog Ladder Filter\" (Proceedings of DaFX04, Univ of Napoli).
+This implementation is probably a more accurate digital representation of the original analogue filter.
+This is version 2 (revised 14/DEC/04), with improved amplitude/resonance scaling and frequency correction using a couple of polynomials,as suggested by Antti.
+
+SYNTAX
+ar  Moogladder  asig, kcf, kres
+
+PERFORMANCE
+asig - input signal
+kcf - cutoff frequency (Hz)
+kres - resonance (0 - 1).
+
+CREDITS
+Victor Lazzarini
+*/</emphasis>
+
+                    <emphasis role="oblock">opcode</emphasis>  moogladderu, a, akk
+asig, kcf, kres     <emphasis role="opc">xin</emphasis>
+                    <emphasis role="opc">setksmps</emphasis>    1
+ipi                 <emphasis role="op">=</emphasis>           4 <emphasis role="op">*</emphasis> <emphasis role="opc">taninv</emphasis>(1)
+<emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> filter delays <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+az1                 <emphasis role="opc">init</emphasis>        0
+az2                 <emphasis role="opc">init</emphasis>        0
+az3                 <emphasis role="opc">init</emphasis>        0
+az4                 <emphasis role="opc">init</emphasis>        0
+az5                 <emphasis role="opc">init</emphasis>        0
+ay4                 <emphasis role="opc">init</emphasis>        0
+amf                 <emphasis role="opc">init</emphasis>        0
+                    <emphasis role="octrl">if</emphasis>          kres <emphasis role="op">></emphasis> 1 then
+kres                <emphasis role="op">=</emphasis>           1
+                    <emphasis role="octrl">elseif</emphasis>      kres <emphasis role="op">&lt;</emphasis> 0 then
+kres                <emphasis role="op">=</emphasis>           0
+                    <emphasis role="octrl">endif</emphasis>
+<emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> twice the \'thermal voltage of <emphasis role="opc">a</emphasis> transistor\' <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+i2v                 <emphasis role="op">=</emphasis>           40000
+<emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> <emphasis role="ohdr">sr</emphasis> is half the actual filter sampling rate  <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+kfc                 <emphasis role="op">=</emphasis>           kcf<emphasis role="op">/</emphasis><emphasis role="ohdr">sr</emphasis>
+kf                  <emphasis role="op">=</emphasis>           kcf<emphasis role="op">/</emphasis>(<emphasis role="ohdr">sr</emphasis><emphasis role="op">*</emphasis>2)
+<emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> frequency <emphasis role="op">&amp;</emphasis> amplitude correction  <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+kfcr                <emphasis role="op">=</emphasis>           1.8730 <emphasis role="op">*</emphasis> (kfc^3) <emphasis role="op">+</emphasis> 0.4955 <emphasis role="op">*</emphasis> (kfc^2) <emphasis role="op">-</emphasis> 0.6490 <emphasis role="op">*</emphasis> kfc <emphasis role="op">+</emphasis> 0.9988
+kacr                <emphasis role="op">=</emphasis>           <emphasis role="op">-</emphasis>3.9364 <emphasis role="op">*</emphasis> (kfc^2) <emphasis role="op">+</emphasis> 1.8409 <emphasis role="op">*</emphasis> kfc <emphasis role="op">+</emphasis> 0.9968
+<emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> filter tuning  <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+k2vg                <emphasis role="op">=</emphasis>           i2v <emphasis role="op">*</emphasis> (1 <emphasis role="op">-</emphasis> <emphasis role="opc">exp</emphasis>(<emphasis role="op">-</emphasis>2 <emphasis role="op">*</emphasis> ipi <emphasis role="op">*</emphasis> kfcr <emphasis role="op">*</emphasis> kf))
+<emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> cascade of 4 1st order sections         <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+ay1                 <emphasis role="op">=</emphasis>           az1 <emphasis role="op">+</emphasis> k2vg <emphasis role="op">*</emphasis> (<emphasis role="opc">tanh</emphasis>((asig <emphasis role="op">-</emphasis> 4 <emphasis role="op">*</emphasis> kres <emphasis role="op">*</emphasis> amf <emphasis role="op">*</emphasis> kacr) <emphasis role="op">/</emphasis> i2v) <emphasis role="op">-</emphasis> <emphasis role="opc">tanh</emphasis>(az1 <emphasis role="op">/</emphasis> i2v))
+az1                 <emphasis role="op">=</emphasis>           ay1
+ay2                 <emphasis role="op">=</emphasis>           az2 <emphasis role="op">+</emphasis> k2vg <emphasis role="op">*</emphasis> (<emphasis role="opc">tanh</emphasis>(ay1 <emphasis role="op">/</emphasis> i2v) <emphasis role="op">-</emphasis> <emphasis role="opc">tanh</emphasis>(az2 <emphasis role="op">/</emphasis> i2v ))
+az2                 <emphasis role="op">=</emphasis>           ay2
+ay3                 <emphasis role="op">=</emphasis>           az3 <emphasis role="op">+</emphasis> k2vg <emphasis role="op">*</emphasis> (<emphasis role="opc">tanh</emphasis>(ay2 <emphasis role="op">/</emphasis> i2v) <emphasis role="op">-</emphasis> <emphasis role="opc">tanh</emphasis>(az3 <emphasis role="op">/</emphasis> i2v))
+az3                 <emphasis role="op">=</emphasis>           ay3
+ay4                 <emphasis role="op">=</emphasis>           az4 <emphasis role="op">+</emphasis> k2vg <emphasis role="op">*</emphasis> (<emphasis role="opc">tanh</emphasis>(ay3 <emphasis role="op">/</emphasis> i2v) <emphasis role="op">-</emphasis> <emphasis role="opc">tanh</emphasis>(az4 <emphasis role="op">/</emphasis> i2v))
+az4                 <emphasis role="op">=</emphasis>           ay4
+<emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> 1<emphasis role="op">/</emphasis>2<emphasis role="op">-</emphasis>sample <emphasis role="opc">delay</emphasis> for phase compensation  <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+amf                 <emphasis role="op">=</emphasis>           (ay4 <emphasis role="op">+</emphasis> az5) <emphasis role="op">*</emphasis>0.5
+az5                 <emphasis role="op">=</emphasis>           ay4
+<emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> oversampling  <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+ay1                 <emphasis role="op">=</emphasis>           az1 <emphasis role="op">+</emphasis> k2vg <emphasis role="op">*</emphasis> (<emphasis role="opc">tanh</emphasis>((asig <emphasis role="op">-</emphasis> 4 <emphasis role="op">*</emphasis> kres <emphasis role="op">*</emphasis> amf <emphasis role="op">*</emphasis> kacr) <emphasis role="op">/</emphasis> i2v) <emphasis role="op">-</emphasis> <emphasis role="opc">tanh</emphasis>(az1 <emphasis role="op">/</emphasis> i2v))
+az1                 <emphasis role="op">=</emphasis>           ay1
+ay2                 <emphasis role="op">=</emphasis>           az2 <emphasis role="op">+</emphasis> k2vg <emphasis role="op">*</emphasis> (<emphasis role="opc">tanh</emphasis>(ay1 <emphasis role="op">/</emphasis> i2v) <emphasis role="op">-</emphasis> <emphasis role="opc">tanh</emphasis>(az2 <emphasis role="op">/</emphasis> i2v ))
+az2                 <emphasis role="op">=</emphasis>           ay2
+ay3                 <emphasis role="op">=</emphasis>           az3 <emphasis role="op">+</emphasis> k2vg <emphasis role="op">*</emphasis> (<emphasis role="opc">tanh</emphasis>(ay2 <emphasis role="op">/</emphasis> i2v) <emphasis role="op">-</emphasis> <emphasis role="opc">tanh</emphasis>(az3 <emphasis role="op">/</emphasis> i2v))
+az3                 <emphasis role="op">=</emphasis>           ay3
+ay4                 <emphasis role="op">=</emphasis>           az4 <emphasis role="op">+</emphasis> k2vg <emphasis role="op">*</emphasis> (<emphasis role="opc">tanh</emphasis>(ay3 <emphasis role="op">/</emphasis> i2v) <emphasis role="op">-</emphasis> <emphasis role="opc">tanh</emphasis>(az4 <emphasis role="op">/</emphasis> i2v))
+az4                 <emphasis role="op">=</emphasis>           ay4
+amf                 <emphasis role="op">=</emphasis>           (ay4 <emphasis role="op">+</emphasis> az5) <emphasis role="op">*</emphasis> 0.5
+az5                 <emphasis role="op">=</emphasis>           ay4
+                    <emphasis role="opc">xout</emphasis>        amf
+                    <emphasis role="oblock">endop</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 1
+                <emphasis role="opc">prints</emphasis>      "No filter.\n"
+	kfe         <emphasis role="opc">expseg</emphasis>      500, p3<emphasis role="op">*</emphasis>0.9, 1800, p3<emphasis role="op">*</emphasis>0.1, 3000
+    kenv        <emphasis role="opc">linen</emphasis>       10000, 0.05, p3, 0.05
+    asig        <emphasis role="opc">buzz</emphasis>        kenv, 100, <emphasis role="ohdr">sr</emphasis><emphasis role="op">/</emphasis>(200), 1
+    <emphasis role="comment">; afil      moogladder  asig, kfe, 1</emphasis>
+                <emphasis role="opc">out</emphasis>         asig
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 2
+                <emphasis role="opc">prints</emphasis>      "Native moogladder.\n"
+	kfe         <emphasis role="opc">expseg</emphasis>      500, p3<emphasis role="op">*</emphasis>0.9, 1800, p3<emphasis role="op">*</emphasis>0.1, 3000
+    kenv        <emphasis role="opc">linen</emphasis>       10000, 0.05, p3, 0.05
+    asig        <emphasis role="opc">buzz</emphasis>        kenv, 100, <emphasis role="ohdr">sr</emphasis><emphasis role="op">/</emphasis>(200), 1
+    afil        <emphasis role="opc">moogladder</emphasis>  asig, kfe, 1
+                <emphasis role="opc">out</emphasis>         afil
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 3
+                <emphasis role="opc">prints</emphasis>      "UDO moogladder.\n"
+	kfe         <emphasis role="opc">expseg</emphasis>      500, p3<emphasis role="op">*</emphasis>0.9, 1800, p3<emphasis role="op">*</emphasis>0.1, 3000
+    kenv        <emphasis role="opc">linen</emphasis>       10000, 0.05, p3, 0.05
+    asig        <emphasis role="opc">buzz</emphasis>        kenv, 100, <emphasis role="ohdr">sr</emphasis><emphasis role="op">/</emphasis>(200), 1
+    afil        moogladderu asig, kfe, 1
+                <emphasis role="opc">out</emphasis>         afil
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 4
+                <emphasis role="opc">prints</emphasis>      "Lua moogladder.\n"
+    kres        <emphasis role="opc">init</emphasis>        1
+    istor       <emphasis role="opc">init</emphasis>        0
+	kfe         <emphasis role="opc">expseg</emphasis>      500, p3<emphasis role="op">*</emphasis>0.9, 1800, p3<emphasis role="op">*</emphasis>0.1, 3000
+    kenv        <emphasis role="opc">linen</emphasis>       10000, 0.05, p3, 0.05
+    asig        <emphasis role="opc">buzz</emphasis>        kenv, 100, <emphasis role="ohdr">sr</emphasis><emphasis role="op">/</emphasis>(200), 1
+    afil        <emphasis role="opc">init</emphasis>        0
+                <emphasis role="opc">lua_ikopcall</emphasis>    "moogladder", afil, asig, kfe, kres, istor
+                <emphasis role="opc">out</emphasis>         afil
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 5
+    giended     <emphasis role="opc">rtclock</emphasis>
+    ielapsed    <emphasis role="op">=</emphasis>           giended <emphasis role="op">-</emphasis> gibegan
+                <emphasis role="opc">print</emphasis>       ielapsed
+    gibegan     <emphasis role="opc">rtclock</emphasis>
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis> 1     0 65536 10 1
+<emphasis role="stamnt">i</emphasis> 5.1   0   1
+<emphasis role="stamnt">i</emphasis> 4     1   20
+<emphasis role="stamnt">i</emphasis> 5.2   21  1
+<emphasis role="stamnt">i</emphasis> 4     22  20
+<emphasis role="stamnt">i</emphasis> 5.3   42  1
+<emphasis role="stamnt">i</emphasis> 2     43  20
+<emphasis role="stamnt">i</emphasis> 5.4   63  1
+<emphasis role="stamnt">i</emphasis> 2     64  20
+<emphasis role="stamnt">i</emphasis> 5.5   84  1
+<emphasis role="stamnt">i</emphasis> 3     85  20
+<emphasis role="stamnt">i</emphasis> 5.6   105 1
+<emphasis role="stamnt">i</emphasis> 3     106 20
+<emphasis role="stamnt">i</emphasis> 5.7   126 1
+<emphasis role="stamnt">i</emphasis> 1     127 20
+<emphasis role="stamnt">i</emphasis> 5.8   147 1
+<emphasis role="stamnt">i</emphasis> 1     148 20
+<emphasis role="stamnt">i</emphasis> 5.9   168 1
+<emphasis role="stamnt">i</emphasis> 4     169 20
+<emphasis role="stamnt">i</emphasis> 4     170 20
+<emphasis role="stamnt">i</emphasis> 4     171 20
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

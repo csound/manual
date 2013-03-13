@@ -1,0 +1,111 @@
+
+<refentry id="schedwhen">
+<indexterm id="IndexSchedwhen"><primary>schedwhen</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Invocation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>schedwhen</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>schedwhen</refname>
+    <refpurpose>
+      Adds a new score event.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Adds a new score event.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>schedwhen</command> ktrigger, kinsnum, kwhen, kdur [, ip4] [, ip5] [...]</synopsis>
+    <synopsis><command>schedwhen</command> ktrigger, &quot;insname&quot;, kwhen, kdur [, ip4] [, ip5] [...]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ip4, ip5, ...</emphasis> -- Equivalent to p4, p5, etc., in a score <link linkend="i"><citetitle>i statement</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kinsnum</emphasis> -- instrument number. Equivalent to p1 in a score <link linkend="i"><citetitle>i statement</citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis><quote>insname</quote></emphasis> -- A string (in double-quotes) representing a named instrument.
+    </para>
+
+    <para>
+      <emphasis>ktrigger</emphasis> -- trigger value for new event
+    </para>
+
+    <para>
+      <emphasis>kwhen</emphasis> -- start time of the new event. Equivalent to p2 in a score <link linkend="i"><citetitle>i statement</citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis>kdur</emphasis> -- duration of event. Equivalent to p3 in a score <link linkend="i"><citetitle>i statement</citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis>schedwhen</emphasis> adds a new score event. The event is only scheduled when the k-rate value <emphasis>ktrigger</emphasis> is first non-zero. The arguments, including options, are the same as in a score. The <emphasis>kwhen</emphasis> time (p2) is measured from the time of this event.
+    </para>
+
+    <para>
+      If the duration is zero or negative the new event is of MIDI type, and inherits the release sub-event from the scheduling instruction.
+    </para>
+
+    <note>
+      <para> Note that the <emphasis>schedwhen</emphasis> opcode can't accept string p-fields. If you need to pass strings when instantiating an instrument, use the <link linkend="scoreline"><citetitle>scoreline</citetitle></link> or <link linkend="scoreline_i"><citetitle>scoreline_i</citetitle></link> opcode.</para>
+    </note>
+<!--    <warning>
+      <title>Warning</title>
+      <para>Support for named instruments is broken in version 4.23</para>
+    </warning>-->
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the schedwhen opcode. It uses the file <ulink url="examples/schedwhen.csd"><citetitle>schedwhen.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the schedwhen opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/schedwhen.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See also</title>
+    <para><link linkend="event"><citetitle>event</citetitle></link>,
+    <link linkend="event_i"><citetitle>event_i</citetitle></link>,
+    <link linkend="schedule"><citetitle>schedule</citetitle></link>,
+    <link linkend="schedkwhen"><citetitle>schedkwhen</citetitle></link>,
+    <link linkend="schedkwhennamed"><citetitle>schedkwhennamed</citetitle></link>,
+    <link linkend="scoreline"><citetitle>scoreline</citetitle></link>,
+    <link linkend="scoreline_i"><citetitle>scoreline_i</citetitle></link></para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>University of Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>November 1998</member>
+      </simplelist>
+    </para>
+    <para>New in Csound version 3.491</para>
+    <para>Based on work by &namegabriel;</para>
+  </refsect1>
+</refentry>

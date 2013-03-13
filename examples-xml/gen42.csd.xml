@@ -1,0 +1,51 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac   <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o GEN42.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1 
+
+ktab  <emphasis role="op">=</emphasis> 1			<emphasis role="comment">;ftable 1</emphasis>
+kurd  <emphasis role="op">=</emphasis> <emphasis role="opc">urd</emphasis>(ktab) 
+ktrig <emphasis role="opc">metro</emphasis> 5			<emphasis role="comment">;triggers 5 times per second</emphasis>
+kres  <emphasis role="opc">samphold</emphasis> kurd, ktrig	<emphasis role="comment">;sample and hold value of kurd</emphasis>
+      <emphasis role="opc">printk2</emphasis> kres		<emphasis role="comment">;print it</emphasis>
+asig  <emphasis role="opc">poscil</emphasis> .5, 220<emphasis role="op">+</emphasis>kres, 2
+      <emphasis role="opc">outs</emphasis> asig, asig
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 2
+
+<emphasis role="ohdr">seed</emphasis> 0	<emphasis role="comment">;every run new values</emphasis>
+
+ktab  <emphasis role="op">=</emphasis> 1 			<emphasis role="comment">;ftable 1</emphasis>
+kurd  <emphasis role="op">=</emphasis> <emphasis role="opc">urd</emphasis>(ktab) 
+ktrig <emphasis role="opc">metro</emphasis> 5			<emphasis role="comment">;triggers 5 times per second</emphasis>
+kres  <emphasis role="opc">samphold</emphasis> kurd, ktrig	<emphasis role="comment">;sample and hold value of kurd</emphasis>
+      <emphasis role="opc">printk2</emphasis> kres		<emphasis role="comment">;print it</emphasis>
+asig  <emphasis role="opc">poscil</emphasis> .5, 220<emphasis role="op">+</emphasis>kres, 2
+      <emphasis role="opc">outs</emphasis> asig, asig
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis>1 0 -20 -42  10 20 .3 100 200 .7 <emphasis role="comment">;30% choose between 10 and 20 and 70% between 100 and 200</emphasis>
+<emphasis role="stamnt">f</emphasis>2 0 8192 10 1			  <emphasis role="comment">;sine wave</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1 0 5
+<emphasis role="stamnt">i</emphasis> 2 6 5
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

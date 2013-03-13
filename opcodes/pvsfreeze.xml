@@ -1,0 +1,104 @@
+
+<refentry id="pvsfreeze">
+<indexterm id="Indexpvsfreeze"><primary>pvsfreeze</primary></indexterm>
+
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsfreeze</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvsfreeze</refname>
+    <refpurpose>
+      Freeze the amplitude and frequency time functions of a pv stream according to a control-rate
+      trigger.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This opcodes 'freezes' the evolution of pvs stream by locking into steady amplitude and/or
+      frequency values for each bin. The freezing is controlled, independently for amplitudes and
+      frequencies, by a control-rate trigger, which switches the freezing 'on' if equal to or above
+      1 and 'off' if below 1.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>fsig <command>pvsfreeze</command> fsigin, kfreeza, kfreezf</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>fsig</emphasis> -- output pv stream
+    </para>
+
+    <para>
+      <emphasis>fsigin</emphasis> -- input pv stream.
+    </para>
+
+    <para>
+      <emphasis>kfreeza</emphasis> -- freezing switch for amplitudes. Freezing is on if above or equal to 1 and off if below 1.
+    </para>
+
+    <para>
+      <emphasis>kfcf</emphasis> -- freezing switch for frequencies. Freezing is on if above or equal to 1 and off if below 1.
+    </para>
+
+    <warning>
+      <para>
+        It is unsafe to use the same f-variable for both input and output of pvs opcodes. Using the same one might lead to undefined behavior on some opcodes. Use a different one on the left and right sides of the opcode.
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      <example>
+        <title>Example</title>
+        <programlisting>
+asig  <emphasis role="opc">in</emphasis>                                       <emphasis role="comment">; input</emphasis>
+ktrig <emphasis role="opc">oscil</emphasis>     1.5, 0.25, 1                   <emphasis role="comment">; trigger</emphasis>
+fim   <emphasis role="opc">pvsanal</emphasis>   asig1, 1024, 256, 1024, 0      <emphasis role="comment">; pvoc analysis </emphasis>
+fou   <emphasis role="opc">pvsfreeze</emphasis> fim, <emphasis role="opc">abs</emphasis>(ktrig), <emphasis role="opc">abs</emphasis>(ktrig)    <emphasis role="comment">; regular 'freeze' of spectra</emphasis>
+aout  <emphasis role="opc">pvsynth</emphasis>   fou                            <emphasis role="comment">; pvoc synthesis</emphasis></programlisting>
+      </example>
+    </para>
+    <para>
+      In the example above the input signal will be regularly 'frozen' for a short while, 
+      as the trigger rises above 1 about every two seconds.</para>
+    <para>
+      Here is an example of the use of the <emphasis>pvsfreeze</emphasis> opcode. It uses the file <ulink url="examples/pvsfreeze.csd"><citetitle>pvsfreeze.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the <emphasis>pvsfreeze</emphasis> opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/pvsfreeze.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link>,
+      <link linkend="pvsynth"><citetitle>pvsynth</citetitle></link>,
+      <link linkend="pvsadsyn"><citetitle>pvsadsyn</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>May 2006 </member>
+      </simplelist>
+    </para>
+    <para>New plugin in version 5</para>
+    <para>May 2006.</para>
+  </refsect1>
+</refentry>

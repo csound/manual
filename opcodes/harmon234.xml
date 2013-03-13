@@ -1,0 +1,140 @@
+
+<refentry id="harmon2">
+<indexterm id="IndexHarmon2"><primary>harmon2</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Special Effects</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>harmon2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>harmon2</refname>
+    <refpurpose>
+      Analyze an audio input and generate harmonizing voices in
+      synchrony with formants preserved.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Generate harmonizing voices with formants preserved.
+   </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>harmon2</command> asig, koct, kfrq1, kfrq2, icpsmode, ilowest[, ipolarity]</synopsis>
+    <synopsis>ares <command>harmon3</command> asig, koct, kfrq1, \
+    kfrq2, kfrq3, icpsmode, ilowest[, ipolarity]</synopsis>
+    <synopsis>ares <command>harmon4</command> asig, koct, kfrq1, \
+    kfrq2, kfrq3, kfrq4, icpsmode, ilowest[, ipolarity]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>icpsmode</emphasis> -- interpreting mode for the
+	generating frequency inputs <emphasis>kfrq1</emphasis>, <emphasis>kfrq2</emphasis>, <emphasis>kfrq3</emphasis> and <emphasis>kfrq4</emphasis>:
+	0: input values are ratios w.r.t. the cps equivalent of <emphasis>koct</emphasis>.
+	1: input values are the actual requested frequencies in cps.
+    </para>
+
+    <para>
+      <emphasis>ilowest</emphasis> -- lowest value of the <emphasis>koct</emphasis> input for which harmonizing voices will be generated.
+    </para>
+
+    <para>
+      <emphasis>ipolarity</emphasis> -- polarity of <emphasis>asig</emphasis> input, 1 = positive glottal pulses, 0 = negative. Default is 1.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <command>Harmon2</command>, <command>harmon3</command>
+      and <command>harmon4</command> are high-performance harmonizers,
+      able to provide up to four pitch-shifted copies of the input
+      <emphasis>asig</emphasis> with spectral formants preserved. The
+      pitch-shifting algorithm requires an accurate running estimate
+      (<emphasis>koct</emphasis>, in decimal oct units) of the pitched
+      content of <emphasis>asig</emphasis>, normally gained from an
+      independent pitch tracker such as <emphasis>specptrk</emphasis>.
+      The algorithm then isolates the most recent full pulse
+      within <emphasis>asig</emphasis>, and uses this to generate the
+      other voices at their required pulse rates.
+    </para>
+    <para>
+      If the frequency (or ratio) presented
+      to <emphasis>kfrq1</emphasis>, <emphasis>kfrq2</emphasis>, <emphasis>kfrq3</emphasis>
+      or <emphasis>kfrq4</emphasis> is zero, then no signal is
+      generated for that voice.  If any of them is non-zero, but
+      the <emphasis>koct</emphasis> input is below the
+      value <emphasis>ilowest</emphasis>, then that voice will output
+      a direct copy of the input <emphasis>asig.</emphasis>  As a
+      consequence, the data arriving at the k-rate inputs can
+      variously cause the generated voices to be turned on or off, to
+      pass a direct copy of a non-voiced fricative source, or to
+      harmonize the source according to some constructed algorithm.
+      The transition from one mode to another is cross-faded, giving
+      seemless alternating between voiced (harmonized) and non-voiced
+      fricatives during spoken or sung input. 
+    </para>
+    <para>
+      <emphasis>harmon2</emphasis>, <emphasis>harmon3</emphasis>, 
+      <emphasis>harmon4</emphasis> are especially matched to the output
+      of <emphasis>specptrk</emphasis>.  The latter generates pitch
+      data in decimal octave format; it also emits its base value if
+      no pitch is identified (as in fricative noise) and emits zero if
+      the energy falls below a threshold, so
+      that <emphasis>harmon2</emphasis>, <emphasis>harmon3</emphasis>, 
+      <emphasis>harmon4</emphasis> can be set to pass the direct
+      signal in both cases.  Of course, any other form of pitch
+      estimation could also be used.  Since pitch trackers usually
+      incur a slight delay for accurate estimation
+      (for <emphasis>specptrk</emphasis> the delay is printed by the
+      <emphasis>spectrum</emphasis> unit), it is normal to delay the audio signal by the
+      same amount so that <emphasis>harmon2</emphasis>, 
+      <emphasis>harmon3</emphasis>, <emphasis>harmon4</emphasis>
+      can work from a fully concurrent estimate.
+     </para>
+ </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the harmon2 opcode. It uses the file <ulink url="examples/harmon.csd"><citetitle>harmon.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the harmon2 opcode.</title>
+
+          <programlisting>
+a1,a2      <emphasis role="opc">ins</emphasis>                                     <emphasis role="comment">; get mic input</emphasis>
+w1         <emphasis role="opc">spectrum</emphasis>  a1, .02, 7, 24, 12, 1, 3      <emphasis role="comment">; and examine it</emphasis>
+koct,kamp  <emphasis role="opc">specptrk</emphasis>  w1, 1, 6.5, 9.5, 7.5, 10, 7, .7, 0, 3, 1
+a3         <emphasis role="opc">delay</emphasis>     a1, .065                      <emphasis role="comment">; allow for ptrk delay</emphasis>
+a4         <emphasis role="opc">harmon2</emphasis>   a3, koct, 1.25, 0.75, 0, 6.9  <emphasis role="comment">; output a fixed 6-4 harmony</emphasis>
+           <emphasis role="opc">outs</emphasis>      a3, a4                        <emphasis role="comment">; as well as the original</emphasis></programlisting>
+      </example>
+    </para>
+    <para>
+      Here is a complete example of the harmon3 opcode. It uses the file <ulink url="examples/harmon3.csd"><citetitle>harmon3.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the harmon3 opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/harmon3.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namebarry;</member>
+        <member>M.I.T., Cambridge, Mass</member>
+        <member>2006</member>
+      </simplelist>
+    </para>
+    <para>New in version 5.04</para>
+  </refsect1>
+</refentry>

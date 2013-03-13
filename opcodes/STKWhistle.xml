@@ -1,0 +1,85 @@
+﻿<refentry id="STKWhistle">
+  <indexterm id="IndexStkwhistle"><primary>STKWhistle</primary></indexterm>
+  <refentryinfo><title>Signal Generators:STK Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>STKWhistle</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>STKWhistle</refname>
+    <refpurpose>
+      STKWhistle produces whistle sounds.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      STKWhistle produces (police) whistle sounds. It uses a hybrid physical/spectral model of a police whistle (a la Cook).</para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>asignal <command>STKWhistle</command> ifrequency, iamplitude, [kmod, kv1[, knoise, kv2[, kfipfreq, kv3[, kfipgain, kv4[, kvol, kv5]]]]]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+      <para>
+      <emphasis>ifrequency</emphasis> -- Frequency of note played, in Hertz.
+    </para>
+   
+    <para>
+      <emphasis>iamplitude</emphasis> -- Amplitude of note played (range 0-1).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+<para><emphasis>kmod</emphasis> -- controller 2, blowing frequency modulation. Value range of kv1 is 0-127.</para>
+<para><emphasis>knoise</emphasis> -- controller 4, noise gain. Value range of kv2 is 0-127.</para>
+<para><emphasis>kfipfreq</emphasis> -- controller 11, fipple modulation frequency. Value range of kv3 is 0-127.</para>
+<para><emphasis>kfipgain</emphasis> -- controller 1, fipple modulation gain. Value range of kv4 is 0-127.</para>
+<para><emphasis>kvol</emphasis> -- controller 128, volume. Value range of kv5 is 0-127.</para>
+  </refsect1>
+ 
+    <refsect1>
+    <note>
+      <title>Note</title>
+      <para>
+         The code for this opcode is taken directly from the Whistle class in the Synthesis Toolkit in C++ by Perry R. Cook and Gary P. Scavone. More on the STK classes can be found here:  
+<ulink url="https://ccrma.stanford.edu/software/stk/classes.html"><citetitle>https://ccrma.stanford.edu/software/stk/classes.html</citetitle></ulink>
+</para>
+      <para>
+        <emphasis>kc1, kv1, kc2, kv2, kc3, kv3, kc4, kv4, kc5, kv5, kc6, kv6, kc7, kv7, kc8, kv8</emphasis> -- Up to 8 optional k-rate controller pairs for the STK opcodes.
+      Each controller pair consists of a controller number (kc) followed by a controller value (kv). Both the controller numbers and the controller values are krate variables. However, during a performance, normally the controller numbers stay fixed while the corresponding controller values may change at any time.
+The order of the controller pair is arbitrary, as long as they are after <emphasis>iamplitude</emphasis>. Also, it is not needed that all controller pairs are used.
+</para>
+    </note>
+  </refsect1>
+  
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the STKWhistle opcode. It uses the file <ulink url="examples/STKWhistle.csd"><citetitle>STKWhistle.csd</citetitle></ulink>.
+     
+      <example>
+        <title>Example of the STKWhistle opcode.</title>
+        <xi:include href="examples-xml/STKWhistle.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namemichael; (after &nameperry;)</member>
+        <member>Irreducible Productions</member>
+        <member>New York, NY</member>
+      </simplelist>
+    </para>
+    <para>New in Csound version 5.11</para>
+  </refsect1>
+</refentry>
+

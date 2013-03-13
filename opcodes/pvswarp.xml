@@ -1,0 +1,105 @@
+
+<refentry id="pvswarp">
+<indexterm id="Indexpvswarp"><primary>pvswarp</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvswarp</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvswarp</refname>
+    <refpurpose>
+      Warp the spectral envelope of a PVS signal
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Warp the spectral envelope of a PVS signal by means of shifting and scaling.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>fsig <command>pvswarp</command> fsigin, kscal, kshift[, klowest, kmeth, kgain, kcoefs]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>fsig</emphasis> -- output pv stream
+    </para>
+
+    <para>
+      <emphasis>fsigin</emphasis> -- input pv stream
+    </para>
+
+    <para>
+      <emphasis>kscal</emphasis> -- spectral envelope scaling ratio. Values > 1 stretch the envelope and &lt; 1 compress it.
+    </para>
+
+    <para>
+      <emphasis>kshift</emphasis> -- spectral envelope shift, values > 0 shift the envelope linearly upwards and values &lt; 1 shift it downwards.
+    </para>
+ 
+   <para>
+      <emphasis>klowest</emphasis> -- lowest frequency shifted (affects only kshift, defaults to 0).
+    </para>
+
+    <para>
+      <emphasis>kmethod</emphasis> -- spectral envelope extraction method
+                                1:  liftered cepstrum method; 2: true envelope method
+                                (defaults to 1). 
+    </para>
+
+    <para>
+      <emphasis>kgain</emphasis> -- amplitude scaling (defaults to 1).
+    </para>
+
+<para>
+      <emphasis>kcoefs</emphasis> -- number of cepstrum coefs used in formant preservation (defaults to 80).
+    </para>
+
+    <warning>
+      <para>
+        It is unsafe to use the same f-variable for both input and output of pvs opcodes. Using the same one might lead to undefined behavior on some opcodes. Use a different one on the left and right sides of the opcode.
+      </para>
+   </warning>
+  </refsect1>
+  
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the pvswarp opcode. It uses the file <ulink url="examples/pvswarp.csd"><citetitle>pvswarp.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the pvswarp opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/pvswarp.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+     <para>Used with vocal sounds, it will shift the formants and result in a changed vowel timbre, similar to the effect of a singer inhaling helium (the 'donald duck' effect).</para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link>,
+      <link linkend="pvsynth"><citetitle>pvsynth</citetitle></link>,
+      <link linkend="pvsadsyn"><citetitle>pvsadsyn</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>November 2004 </member>
+      </simplelist>
+    </para>
+
+    <para>New plugin in version 5</para>
+    <para>November 2004.</para>
+  </refsect1>
+</refentry>

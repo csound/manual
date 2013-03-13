@@ -1,0 +1,72 @@
+
+<refentry id="release">
+<indexterm id="IndexRelease"><primary>release</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Event Extenders</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>release</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>release</refname>
+
+    <refpurpose>
+      Indicates whether a note is in its <quote>release</quote> stage.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Provides a way of knowing when a note off message for the current note is received. Only a noteoff message with the same MIDI note number as the one which triggered the note will be reported by <emphasis>release</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kflag <command>release</command></synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kflag</emphasis> -- indicates whether the note is in its <quote>release</quote> stage. (1 if a note off is received, otherwise 0)
+    </para>
+
+    <para>
+      <emphasis>release</emphasis> outputs current note state. If current note is in the <quote>release</quote> stage (i.e. if its duration has been extended with <link linkend="xtratim"><citetitle>xtratim</citetitle></link> opcode and if it has only just deactivated), then the <emphasis>kflag</emphasis> output argument is set to 1. Otherwise (in sustain stage of current note), <emphasis>kflag</emphasis> is set to 0.
+    </para>
+
+    <para>
+       This opcode is useful for implementing complex release-oriented envelopes. When used in conjunction with <link linkend="xtratim"><citetitle>xtratim</citetitle></link> it can provide an alternative to the hard-coded behaviour of the "r" opcodes (<link linkend="linsegr"><citetitle>linsegr</citetitle></link>, <link linkend="expsegr"><citetitle>expsegr</citetitle></link> et al), where release time is set to the longest time specified in the active instrument.
+
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      See the examples for <link linkend="xtratim"><citetitle>xtratim</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="xtratim"><citetitle>xtratim</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namegabriel;</member>
+        <member>Italy</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.47</para>
+  </refsect1>
+</refentry>

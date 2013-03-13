@@ -1,0 +1,66 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">;-odac     ;;;RT audio out</emphasis>
+-iadc    <emphasis role="comment">;;;uncomment -iadc if RT audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">;-o convolve.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="comment">; NB: 'Small' reverbs often require a much higher</emphasis>
+<emphasis role="comment">; percentage of wet signal to sound interesting. 'Large'</emphasis>
+<emphasis role="comment">; reverbs seem require less. Experiment! The wet/dry mix is</emphasis>
+<emphasis role="comment">; very important - a small change can make a large difference.</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis> <emphasis role="op">=</emphasis> 1
+<emphasis role="comment">;The analysis file is not system independent! </emphasis>
+<emphasis role="comment">; create "rv_mono.wav" and "rv_stereo.wav" with cvanal first!</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 1 
+
+imix <emphasis role="op">=</emphasis> 0.25	<emphasis role="comment">;wet/dry mix. Vary as desired.</emphasis>
+ivol <emphasis role="op">=</emphasis> 1 	<emphasis role="comment">;Overall volume level of reverb. May need to adjust</emphasis>
+<emphasis role="comment">;when wet/dry mix is changed, to avoid clipping.</emphasis>
+
+idel   <emphasis role="opc">filelen</emphasis> p4			<emphasis role="comment">;calculate length and number of channels of soundfile</emphasis>
+<emphasis role="opc">print</emphasis>  idel
+ichnls <emphasis role="opc">filenchnls</emphasis>  p4
+<emphasis role="opc">print</emphasis>  ichnls
+
+<emphasis role="octrl">if</emphasis> (ichnls <emphasis role="op">==</emphasis> 1) then
+
+adry    <emphasis role="opc">soundin</emphasis> "fox.wav"               <emphasis role="comment">; input (dry) audio</emphasis>
+awet    <emphasis role="opc">convolve</emphasis> adry,"rv_mono.cva"	<emphasis role="comment">; mono convolved (wet) audio</emphasis>
+awet    <emphasis role="opc">diff</emphasis>    awet                    <emphasis role="comment">; brighten</emphasis>
+adrydel <emphasis role="opc">delay</emphasis>   (1<emphasis role="op">-</emphasis>imix)<emphasis role="op">*</emphasis>adry, idel	<emphasis role="comment">; Delay dry signal to align it with convolved signal</emphasis>
+					<emphasis role="comment">; Apply level adjustment here too.</emphasis>
+<emphasis role="opc">outs</emphasis>    ivol<emphasis role="op">*</emphasis>(adrydel<emphasis role="op">+</emphasis>imix<emphasis role="op">*</emphasis>awet),ivol<emphasis role="op">*</emphasis>(adrydel<emphasis role="op">+</emphasis>imix<emphasis role="op">*</emphasis>awet) <emphasis role="comment">; Mix wet &amp; dry</emphasis>
+
+<emphasis role="octrl">else</emphasis>
+
+adry    <emphasis role="opc">soundin</emphasis> "fox.wav"               <emphasis role="comment">; input (dry) audio</emphasis>
+awet1, awet2 <emphasis role="opc">convolve</emphasis> adry,"rv_stereo.cva" <emphasis role="comment">; stereo convolved (wet) audio</emphasis>
+awet1   <emphasis role="opc">diff</emphasis>    awet1                   <emphasis role="comment">; brighten left</emphasis>
+awet2   <emphasis role="opc">diff</emphasis>    awet2                   <emphasis role="comment">; and brighten right</emphasis>
+adrydel <emphasis role="opc">delay</emphasis>   (1<emphasis role="op">-</emphasis>imix)<emphasis role="op">*</emphasis>adry, idel     <emphasis role="comment">; Delay dry signal to align it with convolved signal</emphasis>
+					<emphasis role="comment">; Apply level adjustment here too.</emphasis>
+<emphasis role="opc">outs</emphasis>    ivol<emphasis role="op">*</emphasis>(adrydel<emphasis role="op">+</emphasis>imix<emphasis role="op">*</emphasis>awet1),ivol<emphasis role="op">*</emphasis>(adrydel<emphasis role="op">+</emphasis>imix<emphasis role="op">*</emphasis>awet2) <emphasis role="comment">; Mix wet &amp; dry signals</emphasis>
+
+<emphasis role="octrl">endif</emphasis>
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1 0 4 "rv_mono.wav"
+<emphasis role="stamnt">i</emphasis> 1 5 4 "rv_stereo.wav"
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

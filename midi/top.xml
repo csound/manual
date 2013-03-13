@@ -1,0 +1,68 @@
+
+<chapter id="MidiTop">
+  <title>Real-time MIDI Support</title>
+  <para>
+    Csound supports realtime MIDI input and output, as well as input from MIDI files. Realtime MIDI input is activated using the <link linkend="FlagsCatMinusUpperM"><citetitle>-M</citetitle></link> (or <emphasis>--midi-device</emphasis>=DEVICE) command line flag. You must specify the device number or name after the <emphasis>-M</emphasis>. For example to use device number 2, you would use something like:
+  </para>
+  <literallayout>csound -M2 myrtmidi.csd</literallayout>
+  <para>
+    You can find out the available devices by using an out of range device:
+  </para>
+  <literallayout>csound -M99 myrtmidi.csd</literallayout>
+  <note>
+    <para>
+    This will only work if the MIDI module can be accessed by device number. For alsa, you must first find the device name using:
+    </para>
+    <literallayout>cat /proc/asound/cards</literallayout>
+    <para>
+    You must then use something like:
+    </para>
+    <literallayout>csound -+rtmidi=alsa -M hw:3 myrtmidi.csd</literallayout>
+  </note>
+  <para>
+    Realtime MIDI output is activated using <link linkend="FlagsCatMinusUpperQ"><citetitle>-Q</citetitle></link>, using device number or names as shown above.
+  </para>
+  <para>
+    You can also load a MIDI file using the <link linkend="FlagsCatMinusUpperF"><citetitle>-F</citetitle></link> or <emphasis>--midifile</emphasis>=FILE command line flag. The MIDI file is read in realtime, and behaves as if it was being performed or recieved in realtime. So the csound program is not aware if MIDI input comes from a MIDI file or directly from a MIDI interface.
+  </para>
+  <para>
+    Once realtime MIDI input and/or output has been activated, opcodes like <link linkend="MidiInput"><citetitle>MIDI Input</citetitle></link> and <link linkend="MidiOutput"><citetitle>MIDI Output</citetitle></link> will have effect.
+  </para>  <para>
+    When MIDI input is enabled (with -M or -F), each incoming <emphasis>noteon</emphasis> message will generate a note event for an instrument which has the same number as the channel of the event  (This means that MIDI controlled instruments are polyphonic by default, since each note will generate a new instance of the instrument.)
+If you have 1 instrument only, Csound works in omni mode, ie. it responds to all channels into that single instrument.
+If you have more than one instrument and instrs 1 - 16 , then by default  instr 1 -> chn 1, instr 2 -> chn 2, unless you alter the mapping (see <link linkend="massign"><citetitle>massign</citetitle></link> and <link linkend="pgmassign"><citetitle>pgmassign</citetitle></link> to change this behavior).
+If you have more than one instrument, but instr N in between 1 - 16 is missing, then chn N will be routed by default to the lowest order instrument.
+  </para>
+  <para>
+    See the <link linkend="MidiInterop"><citetitle>MIDI/Score Interoperability</citetitle></link> opcodes for information on designing instruments which can be used from the score or driven by MIDI.
+  </para>
+  <para>
+    There are several realtime MIDI modules available, you must use the <emphasis>-+rtmidi</emphasis> flag (See <link linkend="FlagsCatMinusPlusRtmidi"><citetitle>-+rtmidi</citetitle></link>), to specify the module. The default module is portmidi which provides adecuate MIDI I/O on all platforms, however for improved performance and reliablity some platform specific modules are also provided.
+  </para>
+  <para>
+    Currently the midi modules available are:
+  </para>
+  <itemizedlist>
+    <listitem><para><emphasis>alsa</emphasis> - To use the ALSA midi system (Linux only)</para></listitem>
+    <listitem><para><emphasis>winmme</emphasis> - To use the windows MME system (Windows only)</para></listitem>
+    <listitem><para><emphasis>portmidi</emphasis> - To use the portmidi system (all platforms). This is the default setting.</para></listitem>
+    <listitem><para><emphasis>virtual</emphasis> - To use a virtual graphical keyboard (See below) as MIDI input (all platforms)</para></listitem>
+  </itemizedlist>
+
+  <tip>
+    <para>When csound runs, it will process the score and then quit. If there are no events in the score, Csound will exit immediately. If you want to use only MIDI events instead of score events, you need to tell Csound to run for a certain amount of time. This can be done with a dummy <link linkend="f"><citetitle>f-statement</citetitle></link> like "f 0 3600".
+    </para>
+  </tip>
+
+  &midivirtual;
+  &midiinput;
+  &midioutput;
+  &midigeneric;
+  &midiconvert;
+  &midiextender;
+  &midionoff;
+  &midiinterop;
+  &midirealtime;
+  &midisliderbk;
+
+</chapter>

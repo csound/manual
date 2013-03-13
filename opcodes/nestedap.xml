@@ -1,0 +1,149 @@
+
+<refentry id="nestedap">
+<indexterm id="IndexNestedap"><primary>nestedap</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Reverberation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>nestedap</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>nestedap</refname>
+    <refpurpose>
+      Three different nested all-pass filters.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Three different nested all-pass filters, useful for implementing reverbs.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>nestedap</command> asig, imode, imaxdel, idel1, igain1 [, idel2] [, igain2] \
+      [, idel3] [, igain3] [, istor]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>imode</emphasis> -- operating mode of the filter:
+      <itemizedlist>
+        <listitem>
+          <para>1 = simple all-pass filter</para>
+        </listitem>
+
+        <listitem>
+          <para>2 = single nested all-pass filter</para>
+        </listitem>
+
+        <listitem>
+          <para>3 = double nested all-pass filter</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>idel1</emphasis>, <emphasis>idel2</emphasis>, <emphasis>idel3</emphasis> -- delay times of the filter stages. Delay times are in seconds and must be greater than zero. <emphasis>idel1</emphasis> must be greater than the sum of <emphasis>idel2</emphasis> and <emphasis>idel3</emphasis>. 
+    </para>
+
+    <para>
+      <emphasis>igain1</emphasis>, <emphasis>igain2</emphasis>, <emphasis>igain3</emphasis> -- gain of the filter stages.
+    </para>
+
+    <para>
+      <emphasis>imaxdel</emphasis> -- will be necessary if k-rate delays are implemented. Not currently used.
+    </para>
+
+    <para>
+      <emphasis>istor</emphasis> -- Skip initialization if non-zero (default: 0).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asig</emphasis> -- input signal
+    </para>
+
+    <para>
+      If <emphasis>imode</emphasis> = 1, the filter takes the form:
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/imode1.png" format="PNG"/>
+        </imageobject>
+ 
+        <textobject>
+          <phrase>Picture of nestedap imode 1 filter.</phrase>
+        </textobject>
+ 
+        <caption>
+          <para>Picture of imode 1 filter.</para>
+        </caption>
+      </mediaobject>
+    </para>
+
+    <para>
+      If <emphasis>imode</emphasis> = 2, the filter takes the form:
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/imode2.png" format="PNG"/>
+        </imageobject>
+ 
+        <textobject>
+          <phrase>Picture of nestedap imode 2 filter.</phrase>
+        </textobject>
+ 
+        <caption>
+          <para>Picture of imode 2 filter.</para>
+        </caption>
+      </mediaobject>
+    </para>
+
+    <para>
+      If <emphasis>imode</emphasis> = 3, the filter takes the form:
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/imode3.png" format="PNG"/>
+        </imageobject>
+ 
+        <textobject>
+          <phrase>Picture of nestedap imode 3 filter.</phrase>
+        </textobject>
+ 
+        <caption>
+          <para>Picture of imode 3 filter.</para>
+        </caption>
+      </mediaobject>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the nestedap opcode. It uses the file <ulink url="examples/nestedap.csd"><citetitle>nestedap.csd</citetitle></ulink>, and <ulink url="examples/beats.wav"><citetitle>beats.wav</citetitle></ulink>.
+      <example>
+        <title>Example of the nestedap opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/nestedap.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namehans;</member>
+        <member>February 1999</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.53</para>
+    <para>The example was updated May 2002, thanks to &namehans;</para>
+  </refsect1>
+</refentry>

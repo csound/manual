@@ -1,0 +1,87 @@
+﻿
+<refentry id="binit">
+<indexterm id="Indexbinit"><primary>binit</primary></indexterm>
+
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>binit</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>binit</refname>
+    <refpurpose>
+    PVS tracks to amplitude+frequency conversion.
+      
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+  The binit opcode takes an input containg a TRACKS pv streaming signal (as generated,
+  for instance by partials) and converts it into a equal-bandwidth bin-frame containing amplitude
+  and frequency pairs (PVS_AMP_FREQ), suitable for overlap-add resynthesis (such as performed by 
+  pvsynth) or further PVS streaming phase vocoder signal transformations. For each frequency bin,
+  it will look for a suitable track signal to fill it; if not found, the bin will be empty (0 amplitude).
+  If more than one track fits a certain bin, the one with highest amplitude will be chosen. This
+  means that not all of the input signal is actually 'binned', the operation is lossy. However, in
+  many situations this loss is not perceptually relevant. 
+	      </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>fsig <command>binit</command> fin, isize</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+	    <para>
+      <emphasis>fsig</emphasis> -- output pv stream in PVS_AMP_FREQ format
+    </para>
+	
+    <para>
+      <emphasis>fin</emphasis> -- input pv stream in TRACKS format
+    </para>
+    <para>
+      <emphasis>isize</emphasis> -- FFT size of output (N).
+    </para>
+  <para>
+    
+  </para>    
+    
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the binit opcode. It uses the file <ulink url="examples/binit.csd"><citetitle>binit.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the binit opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/binit.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    <para>
+The example above shows partial tracking of an ifd-analysis signal, conversion to
+bin frames and overlap-add resynthesis.</para>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>February 2006 </member>
+      </simplelist>
+    </para>
+    <para>New in Csound5.01</para>
+  </refsect1>
+  
+</refentry>

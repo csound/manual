@@ -1,0 +1,100 @@
+
+<refentry id="noise">
+<indexterm id="IndexNoise"><primary>noise</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Random (Noise) Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>noise</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>noise</refname>
+    <refpurpose>
+      A white noise generator with an IIR lowpass filter.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      A white noise generator with an IIR lowpass filter.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>noise</command> xamp, kbeta</synopsis>
+  </refsect1>
+ 
+<!--  <refsect1>
+    <title>Initialization</title>
+  </refsect1>-->
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>xamp</emphasis> -- amplitude of final output
+    </para>
+
+    <para>
+      <emphasis>kbeta</emphasis> -- beta of the lowpass filter. Should
+      be in the range of -1 to 1, exclusive of the end-points.
+    </para>
+
+    <para>
+      The filter equation is:
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/noise-filter.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>[Filter equation for filter in noise opcode.]</phrase>
+        </textobject>
+
+<!--        <caption>
+          <para>A diagram showing the Poisson distribution.</para>
+        </caption>-->
+      </mediaobject>
+
+      where <emphasis>x<subscript>n</subscript></emphasis> is the original white noise and <emphasis>y<subscript>n</subscript></emphasis> is lowpass filtered noise. The higher &beta; is, the lower the filter's cut-off frequency. The cutoff frequency is roughly sr * ((1-kbeta)/2).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the noise opcode. It uses the file <ulink url="examples/noise.csd"><citetitle>noise.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the noise opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/noise.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Here is an example of the noise opcode controlling the kbeta parameter with a GUI interface. It uses the file <ulink url="examples/noise-2.csd"><citetitle>noise-2.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the noise opcode controlled with a GUI.</title>
+
+          <xi:include href="examples-xml/noise-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>University of Bath, Codemist. Ltd.</member>
+        <member>Bath, UK</member>
+        <member>December 2000</member>
+      </simplelist>
+    </para>
+    <para>New in Csound version 4.10</para>
+  </refsect1>
+</refentry>

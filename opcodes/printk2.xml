@@ -1,0 +1,98 @@
+
+<refentry id="printk2">
+<indexterm id="IndexPrintk2"><primary>printk2</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Printing and Display</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>printk2</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>printk2</refname>
+    <refpurpose>
+      Prints a new value every time a control variable changes.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Prints a new value every time a control variable changes.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>printk2</command> kvar [, inumspaces]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>inumspaces</emphasis> (optional, default=0) -- number of space characters printed before the value of <emphasis>kvar</emphasis>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kvar</emphasis> -- signal to be printed
+    </para>
+
+    <para>
+      Derived from Robin Whittle's <emphasis>printk</emphasis>, prints a new value of <emphasis>kvar</emphasis> each time <emphasis>kvar</emphasis> changes. Useful for monitoring MIDI control changes when using sliders.
+    </para>
+
+    <warning>
+      <para>
+        <emphasis>WARNING!</emphasis> Don't use this opcode with normal, continuously variant k-signals, because it can hang the computer, as the rate of printing is too fast.
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+
+    <para>
+      Here is an example of the printk2 opcode. It uses the file <ulink url="examples/printk2.csd"><citetitle>printk2.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the printk2 opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/printk2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Its output should include lines like these:
+      <screen>
+ i1     0.00000
+ i1     3.00000
+ i1     1.00000
+ i1     3.00000
+ i1     1.00000
+ i1     2.00000
+ i1     3.00000
+.....
+      </screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="printk"><citetitle>printk</citetitle></link> and
+      <link linkend="printks"><citetitle>printks</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namegabriel;</member>
+        <member>Italy</member>
+        <member>1998</member>
+      </simplelist>
+    </para>
+    <para>New in Csound version 3.48</para>
+  </refsect1>
+</refentry>

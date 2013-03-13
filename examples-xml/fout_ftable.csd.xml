@@ -1,0 +1,40 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in    No messages</emphasis>
+-odac           -iadc     -d     <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o fout_ftable.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="comment">; By: Jonathan Murphy 2007</emphasis>
+
+  gilen		<emphasis role="op">=</emphasis>		131072
+  gicps		<emphasis role="op">=</emphasis>		<emphasis role="ohdr">sr</emphasis><emphasis role="op">/</emphasis>gilen
+  gitab		<emphasis role="ohdr">ftgen</emphasis>		1, 0, gilen, 10, 1
+
+                <emphasis role="oblock">instr</emphasis> 1
+
+  <emphasis role="op">/</emphasis><emphasis role="op">*</emphasis><emphasis role="op">*</emphasis><emphasis role="op">*</emphasis><emphasis role="op">*</emphasis><emphasis role="op">*</emphasis><emphasis role="op">*</emphasis><emphasis role="op">*</emphasis><emphasis role="op">*</emphasis> write file to <emphasis role="opc">table</emphasis> <emphasis role="op">*</emphasis><emphasis role="op">*</emphasis><emphasis role="op">*</emphasis><emphasis role="op">*</emphasis><emphasis role="op">*</emphasis><emphasis role="op">*</emphasis><emphasis role="op">*</emphasis><emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+
+  ain		<emphasis role="opc">diskin2</emphasis>		"beats.wav", 1, 0, 1
+  aphs		<emphasis role="opc">phasor</emphasis>		gicps
+  andx		<emphasis role="op">=</emphasis>		aphs <emphasis role="op">*</emphasis> gilen
+		<emphasis role="opc">tablew</emphasis>		ain, andx, gitab
+
+  <emphasis role="op">/</emphasis><emphasis role="op">*</emphasis><emphasis role="op">*</emphasis><emphasis role="op">*</emphasis><emphasis role="op">*</emphasis><emphasis role="op">*</emphasis><emphasis role="op">*</emphasis><emphasis role="op">*</emphasis><emphasis role="op">*</emphasis> write <emphasis role="opc">table</emphasis> to file <emphasis role="op">*</emphasis><emphasis role="op">*</emphasis><emphasis role="op">*</emphasis><emphasis role="op">*</emphasis><emphasis role="op">*</emphasis><emphasis role="op">*</emphasis><emphasis role="op">*</emphasis><emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+
+  aosc		<emphasis role="opc">table</emphasis>		aphs, gitab, 1
+		<emphasis role="opc">out</emphasis>		aosc
+		<emphasis role="opc">fout</emphasis>		"beats_copy.wav", 6, aosc
+
+                <emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">i</emphasis>1 0 2
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

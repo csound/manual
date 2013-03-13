@@ -1,0 +1,84 @@
+
+<refentry id="vdelay3">
+<indexterm id="IndexVdelay3"><primary>vdelay3</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Delay</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vdelay3</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vdelay3</refname>
+    <refpurpose>
+      A variable time delay with cubic interpolation.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>vdelay3</emphasis> is experimental. It is the same as <link linkend="vdelay"><citetitle>vdelay</citetitle></link> except that it uses cubic interpolation. (New in Version 3.50.)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>vdelay3</command> asig, adel, imaxdel [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>imaxdel</emphasis> -- Maximum value of delay in milliseconds. If <emphasis>adel</emphasis> gains a value greater than <emphasis>imaxdel</emphasis> it is folded around <emphasis>imaxdel</emphasis>. This should not happen.
+    </para>
+
+    <para>
+      <emphasis>iskip</emphasis> (optional) -- Skip initialization if present and non-zero.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      With this unit generator it is possible to do Doppler effects or chorusing and flanging.
+    </para>
+
+    <para>
+      <emphasis>asig</emphasis> -- Input signal.
+    </para>
+
+    <para>
+      <emphasis>adel</emphasis> -- Current value of delay in milliseconds. Note that linear functions have no pitch change effects. Fast changing values of <emphasis>adel</emphasis> will cause discontinuities in the waveform resulting noise.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the vdelay3 opcode. It uses the file <ulink url="examples/vdelay3.csd"><citetitle>vdelay3.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the vdelay3 opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/vdelay3.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+       Two important points here. First, the delay time must be always positive. And second, even though the delay time can be controlled in k-rate, it is not advised to do so, since sudden time changes will create clicks.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="vdelay"><citetitle>vdelay</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &nameparis;</member>
+        <member>MIT, Cambridge</member>
+        <member>1995</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

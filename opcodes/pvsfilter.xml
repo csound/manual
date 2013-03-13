@@ -1,0 +1,121 @@
+
+<refentry id="pvsfilter">
+<indexterm id="IndexPvsfilter"><primary>pvsfilter</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsfilter</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvsfilter</refname>
+    <refpurpose>
+      Multiply amplitudes of a pvoc stream by those of a second
+pvoc stream, with dynamic scaling.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Multiply amplitudes of a pvoc stream by those of a second
+pvoc stream, with dynamic scaling.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>fsig <command>pvsfilter</command> fsigin, fsigfil, kdepth[, igain]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>fsig</emphasis> -- output pv stream
+    </para>
+
+    <para>
+      <emphasis>fsigin</emphasis> -- input pv stream.
+    </para>
+
+    <para>
+      <emphasis>fsigfil</emphasis> -- filtering pvoc stream.
+    </para>
+
+    <para>
+      <emphasis>kdepth</emphasis> -- controls the depth of filtering
+    of fsigin by fsigfil .
+    </para>
+
+    <para>
+      <emphasis>igain</emphasis> -- amplitude scaling (optional, defaults to 1).
+    </para>
+
+  <para>
+    Here the input pvoc stream amplitudes are modified by the
+    filtering stream, keeping its frequencies intact. As usual, both
+    signals have to be in the same format.
+  </para>
+  <warning>
+    <para>
+      It is unsafe to use the same f-variable for both input and output of pvs opcodes. Using the same one might lead to undefined behavior on some opcodes. Use a different one on the left and right sides of the opcode.
+    </para>
+  </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      <example>
+        <title>Example</title>
+        <programlisting>
+kfreq  <emphasis role="opc">expon</emphasis> 500, p3, 4000           <emphasis role="comment">; 3-octave sweep</emphasis>
+kdepth <emphasis role="opc">linseg</emphasis> 1, p3/2, 0.5, p3/2, 1  <emphasis role="comment">; varying filter depth</emphasis>
+
+asig  <emphasis role="opc">in</emphasis>                             <emphasis role="comment">; input</emphasis>
+afil  <emphasis role="opc">oscili</emphasis>  1, kfreq, 1            <emphasis role="comment">; filter t-domain signal</emphasis>
+
+fim   <emphasis role="opc">pvsanal</emphasis>  asig,1024,256,1024,0  <emphasis role="comment">; pvoc analysis</emphasis>
+fil   <emphasis role="opc">pvsanal</emphasis>  afil,1024,256,1024,0  
+fou   <emphasis role="opc">pvsfilter</emphasis> fim, fil, kdepth     <emphasis role="comment">; filter signal</emphasis>
+aout  <emphasis role="opc">pvsynth</emphasis>  fou                   <emphasis role="comment">; pvoc synthesis</emphasis>
+        </programlisting>
+      </example>
+
+    </para>
+    
+    <para>
+     In the example above the filter curve will depend on the
+spectral envelope of afil; in the simple case of a sinusoid,
+it will be equivalent to a narrowband band-pass filter.</para>
+    <para>
+      Here is an example of the use of the <emphasis>pvsfilter</emphasis> opcode. It uses the file <ulink url="examples/pvsfilter.csd"><citetitle>pvsfilter.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the <emphasis>pvsfilter</emphasis> opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/pvsfilter.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link>,
+      <link linkend="pvsynth"><citetitle>pvsynth</citetitle></link>,
+      <link linkend="pvsadsyn"><citetitle>pvsadsyn</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>November 2004 </member>
+      </simplelist>
+    </para>
+
+    <para>New plugin in version 5</para>
+    <para>November 2004.</para>
+  </refsect1>
+</refentry>

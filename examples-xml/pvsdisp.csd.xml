@@ -1,0 +1,33 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in</emphasis>
+-odac           -iadc    <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o pvsdisp.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">kr</emphasis> <emphasis role="op">=</emphasis> 4410
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 10
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1
+asig <emphasis role="opc">inch</emphasis> 1
+<emphasis role="comment">;a1   soundin "input.wav"  ;select a soundifle</emphasis>
+fsig <emphasis role="opc">pvsanal</emphasis> asig, 1024,256, 1024, 1
+<emphasis role="opc">pvsdisp</emphasis> fsig
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1 0 30
+<emphasis role="stamnt">e</emphasis>
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

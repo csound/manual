@@ -1,0 +1,99 @@
+
+<refentry id="filter2">
+<indexterm id="IndexFilter2"><primary>filter2</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Specialized Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>filter2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>filter2</refname>
+    <refpurpose>
+      Performs filtering using a transposed form-II digital filter lattice with no time-varying control.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      General purpose custom filter with no time-varying pole control. The filter coefficients implement the following difference equation:
+      <literallayout>
+(1)*y(n) = b0*x[n] + b1*x[n-1] +...+ bM*x[n-M] - a1*y[n-1] -...- aN*y[n-N]
+      </literallayout>
+    </para>
+
+    <para>
+      the system function for which is represented by:
+      <literallayout>
+           B(Z)      b0 + b1*Z<superscript>-1</superscript>  + ... + bM*Z<superscript>-M</superscript>
+  H(Z)  =  ----  =  --------------------------
+           A(Z)       1 + a1*Z<superscript>-1</superscript>  + ... + aN*Z<superscript>-N</superscript>
+      </literallayout>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>filter2</command> asig, iM, iN, ib0, ib1, ..., ibM, ia1, ia2, ..., iaN</synopsis>
+
+    <synopsis>kres <command>filter2</command> ksig, iM, iN, ib0, ib1, ..., ibM, ia1, ia2, ..., iaN</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      At initialization the number of zeros and poles of the filter are specified along with the corresponding zero and pole coefficients. The coefficients must be obtained by an external filter-design application such as Matlab and specified directly or loaded into a table via <link linkend="GEN01"><citetitle>GEN01</citetitle></link>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      The<emphasis> filter2</emphasis> opcodes perform filtering using a transposed form-II digital filter lattice with no time-varying control.
+    </para>
+
+    <para>
+      Since <emphasis>filter2</emphasis> implements generalized recursive filters, it can be used to specify a large range of general DSP algorithms. For example, a digital waveguide can be implemented for musical instrument modeling using a pair of <link linkend="delayr"><citetitle>delayr</citetitle></link> and <link linkend="delayw"><citetitle>delayw</citetitle></link> opcodes in conjunction with the <emphasis>filter2</emphasis> opcode.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      A first-order linear-phase lowpass FIR filter operating on a k-rate signal:
+
+      <informalexample>
+        <programlisting>
+k1 <emphasis role="opc">filter2</emphasis> ksig, 2, 0, 0.5, 0.5   <emphasis role="comment">;; k-rate FIR filter</emphasis></programlisting>
+      </informalexample>
+    </para>
+    <para>
+      Here is another example of the filter2 opcode. It uses the file <ulink url="examples/filter2.csd"><citetitle>filter2.csd</citetitle></ulink>.
+            <example>
+        <title>Example of the filter2 opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/filter2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="zfilter2"><citetitle>zfilter2</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Michael A. Casey</member>
+        <member>M.I.T.</member>
+        <member>Cambridge, Mass.</member>
+        <member>1997</member>
+      </simplelist>
+    </para>
+    <para>New in version 3.47</para>
+  </refsect1>
+</refentry>

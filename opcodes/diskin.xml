@@ -1,0 +1,173 @@
+
+<refentry id="diskin">
+<indexterm id="IndexDiskin"><primary>diskin</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Signal Input</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>diskin</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>diskin</refname>
+    <refpurpose>
+      Deprecated. Reads audio data from an external device or stream and can alter its pitch.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Deprecated. Reads audio data from an external device or stream and can alter its pitch.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ar1 [, ar2 [, ar3 [, ... arN]]] <command>diskin</command> ifilcod, kpitch [, iskiptim] \
+      [, iwraparound] [, iformat] [, iskipinit]</synopsis>
+<para> Note the N was 24 in versions before 5.14, and 40 after.</para>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifilcod</emphasis> -- integer or character-string denoting the source soundfile name. An integer denotes the file soundin.filcod ; a character-string (in double quotes, spaces permitted) gives the filename itself, optionally a full pathname. If not a full path, the named file is sought first in the current directory, then in that given by the environment variable <link linkend="CommandEnvironment"><citetitle>SSDIR</citetitle></link> (if defined) then by <link linkend="CommandEnvironment"><citetitle>SFDIR</citetitle></link>. See also <link linkend="GEN01"><citetitle>GEN01</citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis>iskptim</emphasis> (optional) -- time in seconds of input sound to be skipped. The default value is 0.
+    </para>
+
+    <para>
+      <emphasis>iformat</emphasis> (optional) -- specifies the audio data file format:
+      <itemizedlist>
+        <listitem>
+          <para>1 = 8-bit signed char (high-order 8 bits of a 16-bit integer)</para>
+        </listitem>
+
+        <listitem>
+          <para>2 = 8-bit A-law bytes</para>
+        </listitem>
+
+        <listitem>
+          <para>3 = 8-bit U-law bytes</para>
+        </listitem>
+
+        <listitem>
+          <para>4 = 16-bit short integers</para>
+        </listitem>
+
+        <listitem>
+          <para>5 = 32-bit long integers</para>
+        </listitem>
+
+        <listitem>
+          <para>6 = 32-bit floats</para>
+        </listitem>
+
+        <listitem>
+          <para>7 = 8-bit unsigned int (not available in Csound versions older than 5.00)</para>
+        </listitem>
+
+        <listitem>
+          <para>8 = 24-bit int (not available in Csound versions older than 5.00)</para>
+        </listitem>
+
+        <listitem>
+          <para>9 = 64-bit doubles (not available in Csound versions older than 5.00)</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>iwraparound</emphasis> -- 1 = on, 0 = off (wraps
+      around to end of file either direction, enabling looping)
+    </para>
+
+    <para>
+     <emphasis>iskipinit</emphasis> switches off all initialisation if
+     non zero (default =0).  This was introduced in 4_23f13 and
+     csound5.
+    </para>
+
+    <para>
+      If <emphasis>iformat</emphasis> = 0 it is taken from the soundfile header, and if no header from the Csound <link linkend="FlagsMinusLowerO"><citetitle>-o</citetitle></link> command-line flag. The default value is 0.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <note><simpara><emphasis>diskin</emphasis> is deprecated since it can crash easily under certain circumstances. Use <link linkend="diskin2"><citetitle>diskin2</citetitle></link> instead.</simpara></note>
+    <para>
+      <emphasis>kpitch</emphasis> -- can be any real number. A negative number signifies backwards playback. The given number is a pitch ratio, where:
+      <itemizedlist>
+        <listitem><para><emphasis>1</emphasis> = normal pitch</para></listitem>
+        <listitem><para><emphasis>2</emphasis> = 1 octave higher</para></listitem>
+        <listitem><para><emphasis>3</emphasis> = 12th higher, etc.</para></listitem>
+        <listitem><para><emphasis>.5</emphasis> = 1 octave lower</para></listitem>
+        <listitem><para><emphasis>.25</emphasis> = 2 octaves lower, etc.</para></listitem>
+        <listitem><para><emphasis>-1</emphasis> = normal pitch backwards</para></listitem>
+        <listitem><para><emphasis>-2</emphasis> = 1 octave higher backwards, etc.</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>diskin</emphasis> is identical to <link linkend="soundin"><citetitle>soundin</citetitle></link> except that it can alter the pitch of the sound that is being read, and is capable of looping.
+    </para>
+
+    <caution>
+      <title>Note to Windows users</title>
+      <para>
+        Windows users typically use back-slashes, <quote>\</quote>, when specifying the paths of their files. As an example, a Windows user might use the path <quote>c:\music\samples\loop001.wav</quote>. This is problematic because back-slashes are normally used to specify special characters.
+      </para>
+
+      <para>
+        To correctly specify this path in Csound, one may alternately:
+        <itemizedlist>
+          <listitem><para><emphasis>Use forward slashes</emphasis>: c:/music/samples/loop001.wav</para></listitem>
+          <listitem><para><emphasis>Use back-slash special characters, <quote>\\</quote></emphasis>: c:\\music\\samples\\loop001.wav</para></listitem>
+
+        </itemizedlist>
+      </para>
+    </caution>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the diskin opcode. It uses the file <ulink url="examples/diskin.csd"><citetitle>diskin.csd</citetitle></ulink>, <ulink url="examples/beats.wav"><citetitle>beats.wav</citetitle></ulink>.
+      <example>
+        <title>Example of the diskin opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/diskin.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="in"><citetitle>in</citetitle></link>,
+      <link linkend="inh"><citetitle>inh</citetitle></link>,
+      <link linkend="ino"><citetitle>ino</citetitle></link>,
+      <link linkend="inq"><citetitle>inq</citetitle></link>,
+      <link linkend="ins"><citetitle>ins</citetitle></link>,
+      <link linkend="soundin"><citetitle>soundin</citetitle></link> and 
+      <link linkend="diskin2"><citetitle>diskin2</citetitle></link>
+     </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Authors: &namebarry;, &namematt;/&namemike;</member>
+        <member>MIT, Mills College</member>
+        <member>1993-1997</member>
+      </simplelist>
+    </para>
+    <para>New in version 3.46</para>
+
+    <para>Warning to Windows users added by &namekevin;, April 2002</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,42 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-n  <emphasis role="comment">;;;no output</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o serialWrite.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis>  <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 500 <emphasis role="comment">; the default krate can be too fast for the arduino to handle</emphasis>
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1
+
+iPort <emphasis role="opc">serialBegin</emphasis> "<emphasis role="op">/</emphasis>dev<emphasis role="op">/</emphasis>cu.usbmodemfa131", 9600			<emphasis role="comment">;connect to the arduino with baudrate = 9600</emphasis>
+
+kGain <emphasis role="opc">init</emphasis> 16							<emphasis role="comment">;read our knob value</emphasis>
+kVal <emphasis role="opc">serialRead</emphasis> iPort
+<emphasis role="octrl">if</emphasis> (kVal <emphasis role="op">!=</emphasis> <emphasis role="op">-</emphasis>1) then
+    kGain <emphasis role="op">=</emphasis> kVal<emphasis role="op">/</emphasis>128
+<emphasis role="octrl">endif</emphasis>
+
+aSig <emphasis role="opc">in</emphasis>								<emphasis role="comment">;get our audio input and get its rms</emphasis>
+kRms <emphasis role="opc">rms</emphasis> aSig<emphasis role="op">*</emphasis>kGain
+
+kRms <emphasis role="op">=</emphasis> kRms<emphasis role="op">*</emphasis>kRms<emphasis role="op">*</emphasis>255						<emphasis role="comment">;scale the rms to a good value for the LED and send it out</emphasis>
+<emphasis role="opc">serialWrite</emphasis> iPort, (kRms <emphasis role="op">&lt;</emphasis> 255 <emphasis role="op">?</emphasis> kRms <emphasis role="op">:</emphasis> 255)			<emphasis role="comment">;must be in range: 0-255</emphasis>
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 1024 10 1 1 1 1 1 1
+
+<emphasis role="stamnt">i</emphasis> 1 0 200
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

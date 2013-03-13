@@ -1,0 +1,49 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac    <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o outleta.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1 
+
+<emphasis role="opc">connect</emphasis>	 "1", "Outl", "reverby", "InL" 
+<emphasis role="opc">connect</emphasis>	 "1", "Outr", "reverby", "InR" 
+
+<emphasis role="opc">alwayson</emphasis> "reverby", 1
+
+<emphasis role="oblock">instr</emphasis> 1
+
+aIn <emphasis role="opc">diskin2</emphasis> "fox.wav", 1 
+    <emphasis role="opc">outleta</emphasis> "Outl", aIn 
+    <emphasis role="opc">outleta</emphasis> "Outr", aIn 
+
+<emphasis role="oblock">endin</emphasis> 
+
+<emphasis role="oblock">instr</emphasis> reverby
+
+aInL   <emphasis role="opc">inleta</emphasis> "InL" 
+aInR   <emphasis role="opc">inleta</emphasis> "InR" 
+
+al, ar <emphasis role="opc">reverbsc</emphasis>	aInL, aInR, 0.7, 21000 
+ifxlev <emphasis role="op">=</emphasis> 0.5 
+al     <emphasis role="op">=</emphasis> (aInL<emphasis role="op">*</emphasis>ifxlev)<emphasis role="op">+</emphasis>(al<emphasis role="op">*</emphasis>(1<emphasis role="op">-</emphasis>ifxlev)) 
+ar     <emphasis role="op">=</emphasis> (aInR<emphasis role="op">*</emphasis>ifxlev)<emphasis role="op">+</emphasis>(ar<emphasis role="op">*</emphasis>(1<emphasis role="op">-</emphasis>ifxlev)) 
+       <emphasis role="opc">outs</emphasis> al, ar 
+                                
+<emphasis role="oblock">endin</emphasis> 
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1 0 3 
+<emphasis role="stamnt">e</emphasis>4
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

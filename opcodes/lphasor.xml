@@ -1,0 +1,106 @@
+
+<refentry id="lphasor">
+<indexterm id="IndexLphasor"><primary>lphasor</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Sample Playback</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lphasor</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>lphasor</refname>
+    <refpurpose>
+      Generates a table index for sample playback
+          </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This opcode can be used to generate table index for sample playback (e.g. <link linkend="tablexkt">tablexkt</link>).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>lphasor</command> xtrns [, ilps] [, ilpe] [, imode] [, istrt] [, istor]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ilps</emphasis> -- loop start.
+    </para>
+
+    <para>
+      <emphasis>ilpe</emphasis> -- loop end (must be greater than <emphasis>ilps</emphasis> to enable looping).  The default value of <emphasis>ilps</emphasis> and <emphasis>ilpe</emphasis> is zero.
+    </para>
+
+    <para>
+      <emphasis>imode</emphasis> (optional: default = 0) -- loop mode. Allowed values are:
+      <itemizedlist>
+        <listitem>
+           <para><emphasis>0:</emphasis> no loop</para>
+        </listitem>
+
+        <listitem>
+           <para><emphasis>1:</emphasis> forward loop</para>
+        </listitem>
+
+        <listitem>
+           <para><emphasis>2:</emphasis> backward loop</para>
+        </listitem>
+
+        <listitem>
+           <para><emphasis>3:</emphasis> forward-backward loop</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>istrt</emphasis> (optional: default = 0) -- The initial output value (phase). It must be less than <emphasis>ilpe</emphasis> if looping is enabled, but is allowed to be greater than <emphasis>ilps</emphasis> (i.e. you can start playback in the middle of the loop).
+    </para>
+
+    <para>
+      <emphasis>istor</emphasis> (optional: default = 0) -- skip initialization if set to any non-zero value.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ares</emphasis> -- a raw table index in samples (same unit for loop points). Can be used as index with the table opcodes.
+    </para>
+
+    <para>
+      <emphasis>xtrns</emphasis> -- transpose factor, expressed as a playback ratio. <emphasis>ares</emphasis> is incremented by this value, and wraps around loop points. For example, 1.5 means a fifth above, 0.75 means fourth below. It is not allowed to be negative.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the lphasor opcode. It uses the file <ulink url="examples/lphasor.csd"><citetitle>lphasor.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the lphasor opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/lphasor.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &nameistvan;</member>
+        <member>January 2002</member>
+        <member>Example by: Jonathan Murphy</member>
+      </simplelist>
+    </para>
+
+    <para>New in version 4.18</para>
+    <para>Updated April 2002 and November 2002 by &nameistvan;</para>
+  </refsect1>
+</refentry>

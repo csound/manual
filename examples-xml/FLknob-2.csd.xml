@@ -1,0 +1,74 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in    No messages</emphasis>
+-odac           -iadc     -d     <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o FLknob.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">kr</emphasis> <emphasis role="op">=</emphasis> 441
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 100
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 1
+
+<emphasis role="comment">;By Andres Cabrera 2007</emphasis>
+<emphasis role="opc">FLpanel</emphasis> "Knob Types", 330, 230, 50, 50
+    <emphasis role="comment">; Distance of the left edge of the knob </emphasis>
+    <emphasis role="comment">; from the left edge of the panel</emphasis>
+    ix <emphasis role="op">=</emphasis> 20
+    <emphasis role="comment">; Distance of the top edge of the knob </emphasis>
+    <emphasis role="comment">; from the top of the panel</emphasis>
+    iy <emphasis role="op">=</emphasis> 20
+
+    <emphasis role="comment">;Create boxes that display a widget's value</emphasis>
+    ihandleA <emphasis role="opc">FLvalue</emphasis> "A", 60, 20, ix <emphasis role="op">+</emphasis> 130, iy <emphasis role="op">+</emphasis> 110
+    ihandleB <emphasis role="opc">FLvalue</emphasis> "B", 60, 20, ix <emphasis role="op">+</emphasis> 220, iy <emphasis role="op">+</emphasis> 110
+    ihandleC <emphasis role="opc">FLvalue</emphasis> "C", 60, 20, ix <emphasis role="op">+</emphasis> 130, iy <emphasis role="op">+</emphasis> 160
+    ihandleD <emphasis role="opc">FLvalue</emphasis> "D", 60, 20, ix <emphasis role="op">+</emphasis> 220, iy <emphasis role="op">+</emphasis> 160
+
+    <emphasis role="comment">; The foru types of FLknobs</emphasis>
+    gkdummy1, ihandle1 <emphasis role="opc">FLknob</emphasis> "Type 1", 200, 5000, <emphasis role="op">-</emphasis>1, 1, ihandleA, 70, ix, iy, 90
+    gkdummy2, ihandle2 <emphasis role="opc">FLknob</emphasis> "Type 2", 200, 5000, <emphasis role="op">-</emphasis>1, 2, ihandleB, 70, ix <emphasis role="op">+</emphasis> 100, iy
+    gkdummy3, ihandle3 <emphasis role="opc">FLknob</emphasis> "Type 3", 200, 5000, <emphasis role="op">-</emphasis>1, 3, ihandleC, 70, ix <emphasis role="op">+</emphasis> 200, iy
+    gkdummy4, ihandle4 <emphasis role="opc">FLknob</emphasis> "Type 4", 200, 5000, <emphasis role="op">-</emphasis>1, 4, ihandleD, 70, ix , iy <emphasis role="op">+</emphasis> 100
+<emphasis role="comment">; End of panel contents</emphasis>
+<emphasis role="opc">FLpanelEnd</emphasis>
+<emphasis role="comment">; Run the widget thread!</emphasis>
+<emphasis role="opc">FLrun</emphasis>
+
+<emphasis role="comment">; Set the color of widgets</emphasis>
+<emphasis role="opc">FLsetColor</emphasis> 20, 23, 100, ihandle1
+<emphasis role="opc">FLsetColor</emphasis> 0, 123, 100, ihandle2
+<emphasis role="opc">FLsetColor</emphasis> 180, 23, 12, ihandle3
+<emphasis role="opc">FLsetColor</emphasis> 10, 230, 0, ihandle4
+
+<emphasis role="opc">FLsetColor2</emphasis> 200, 230, 0, ihandle1
+<emphasis role="opc">FLsetColor2</emphasis> 200,0 ,123 , ihandle2
+<emphasis role="opc">FLsetColor2</emphasis> 180, 180, 100, ihandle3
+<emphasis role="opc">FLsetColor2</emphasis> 180, 23, 12, ihandle4
+
+
+<emphasis role="comment">; Set the initial value of the widget</emphasis>
+<emphasis role="opc">FLsetVal_i</emphasis> 300, ihandle1
+<emphasis role="opc">FLsetVal_i</emphasis> 1000, ihandle2
+
+
+<emphasis role="oblock">instr</emphasis> 1
+<emphasis role="comment">; Nothing here for now</emphasis>
+<emphasis role="oblock">endin</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">f</emphasis> 0 3600   <emphasis role="comment">;Dumy table to make csound wait for realtime events</emphasis>
+
+<emphasis role="stamnt">e</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

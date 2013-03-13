@@ -1,0 +1,43 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac    -M1  <emphasis role="comment">;;;realtime audio out and midi in </emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o midipolyaftertouch.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1<emphasis role="comment">;midi keyboard and score are used</emphasis>
+
+<emphasis role="opc">midinoteoncps</emphasis> p4, p5				<emphasis role="comment">;puts MIDI key translated to cycles per second into p4, and MIDI velocity into p5</emphasis>
+
+kafter  <emphasis role="opc">init</emphasis> 127				<emphasis role="comment">;full open				</emphasis>
+<emphasis role="opc">midipolyaftertouch</emphasis>  kafter, 1
+<emphasis role="opc">printk2</emphasis> kafter					<emphasis role="comment">;display the key value when it changes and when key is pressed</emphasis>
+ 
+kvel <emphasis role="op">=</emphasis> p5<emphasis role="op">/</emphasis>127					<emphasis role="comment">;scale midi velocity to 0-1</emphasis>
+kenv <emphasis role="opc">madsr</emphasis> 0.5, 0.8, 0.8, 0.5			<emphasis role="comment">;amplitude envelope multiplied by</emphasis>
+ain  <emphasis role="opc">pluck</emphasis> kenv<emphasis role="op">*</emphasis>kvel, p4, p4, 2, 1		<emphasis role="comment">;velocity value			</emphasis>
+asig <emphasis role="opc">moogvcf2</emphasis> ain, 300<emphasis role="op">+</emphasis>(kafter<emphasis role="op">*</emphasis>100), .5		<emphasis role="comment">;use value of aftertouch to control frequency of filter</emphasis>
+     <emphasis role="opc">outs</emphasis>  asig, asig				<emphasis role="comment">;base freq of filter = 300 Hz</emphasis>
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis> 0 30	<emphasis role="comment">;runs for 30 seconds</emphasis>
+<emphasis role="stamnt">f</emphasis> 2 0 4096 10 1	<emphasis role="comment">;sine wave</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1 0 2 440 100	<emphasis role="comment">;play these notes from score as well</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 + 2 1440 100
+<emphasis role="stamnt">e</emphasis>
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

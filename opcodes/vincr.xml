@@ -1,0 +1,78 @@
+
+<refentry id="vincr">
+<indexterm id="IndexVincr"><primary>vincr</primary></indexterm>
+  <refentryinfo><title>Mathematical Operations:Comparators and Accumulators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vincr</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vincr</refname>
+    <refpurpose>
+      Accumulates audio signals.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>vincr</emphasis> increments one audio variable with another signal, i.e. it accumulates output.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>vincr</command> accum, aincr</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>accum</emphasis> -- audio-rate accumulator variable to be incremented 
+    </para>
+
+    <para>
+      <emphasis>aincr</emphasis> -- incrementing signal 
+    </para>
+
+    <para>
+      <emphasis>vincr</emphasis> (variable increment) and <link linkend="clear"><citetitle>clear</citetitle></link> are intended to be used together. <emphasis>vincr</emphasis> stores the result of the sum of two audio variables into the first variable itself (which is intended to be used as an accumulator in polyphony). The accumulator is typically a global variable that is used to combine signals from several sources (different instruments or instrument instances) for further processing (for example, via a global effect that reads the accumulator) or for outputting the combined signal by some means other than one of the <emphasis>out</emphasis> opcodes (eg. via the <link linkend="fout"><citetitle>fout</citetitle></link> opcode). After the accumulator is used, the accumulator variable should be set to zero by means of the <emphasis>clear</emphasis> opcode (or it will explode).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      The following example uses the vincr opcode. It uses the file <ulink url="examples/vincr.csd"><citetitle>vincr.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the vincr opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/vincr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      This is another example uses the vincr opcode. It uses the file <ulink url="examples/vincr-complex.csd"><citetitle>vincr-complex.csd</citetitle></ulink>.
+      <example>
+          <xi:include href="examples-xml/vincr-complex.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="clear"><citetitle>clear</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namegabriel;</member>
+        <member>Italy</member>
+        <member>1999</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.56</para>
+  </refsect1>
+</refentry>

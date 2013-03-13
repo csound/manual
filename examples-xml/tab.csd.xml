@@ -1,0 +1,37 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac    <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o tab.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+gifn1 <emphasis role="ohdr">ftgen</emphasis> 1, 0, 0, 1, "flute.aiff", 0, 4, 0	<emphasis role="comment">;deferred-size table</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 1 
+
+atab  <emphasis role="opc">init</emphasis> 0 
+isize <emphasis role="opc">tableng</emphasis> 1					<emphasis role="comment">;length of table?</emphasis>
+<emphasis role="opc">print</emphasis> isize
+andx  <emphasis role="opc">phasor</emphasis> 1 <emphasis role="op">/</emphasis> (isize <emphasis role="op">/</emphasis> sr) 
+asig  <emphasis role="opc">tab</emphasis> andx, 1, 1				<emphasis role="comment">;has a 0 to 1 range</emphasis>
+      <emphasis role="opc">outs</emphasis> asig, asig
+
+<emphasis role="oblock">endin</emphasis> 
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+ 
+
+<emphasis role="stamnt">i</emphasis> 1 0 2.3
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

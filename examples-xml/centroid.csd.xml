@@ -1,0 +1,39 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac     <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o centroid.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+giSine <emphasis role="ohdr">ftgen</emphasis> 0, 0, 16384, 10, 1
+
+<emphasis role="oblock">instr</emphasis> 1
+
+ktrig <emphasis role="opc">init</emphasis> 1				<emphasis role="comment">;calculate centroid</emphasis>
+a1   <emphasis role="opc">oscil3</emphasis> 0.5, p4, giSine		<emphasis role="comment">;of the sine wave</emphasis>
+k1   <emphasis role="opc">centroid</emphasis> a1, ktrig, 16384
+asig <emphasis role="opc">oscil3</emphasis> 0.5, k1, giSine
+     <emphasis role="opc">printk2</emphasis> k1				<emphasis role="comment">;print &amp; compare:</emphasis>
+     <emphasis role="opc">outs</emphasis> a1, asig			<emphasis role="comment">;left = original, right = centroid signal</emphasis>
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis>1 0 2 20
+<emphasis role="stamnt">i</emphasis>1 + 2 200
+<emphasis role="stamnt">i</emphasis>1 + 2 2000
+<emphasis role="stamnt">e</emphasis>     
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

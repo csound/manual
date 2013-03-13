@@ -1,0 +1,86 @@
+
+<refentry id="MixerSend">
+<indexterm id="IndexMixerSend"><primary>MixerSend</primary></indexterm>
+  <refentryinfo><title>Mixer Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>MixerSend</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>MixerSend</refname>
+    <refpurpose>
+      Mixes an arate signal into a channel of a buss.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>MixerSend</command> asignal, isend, ibuss, ichannel</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Description</title> 
+    <para>Mixes an arate signal into a channel of a buss.
+    </para>  
+    </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+
+    <para><emphasis>isend</emphasis> -- The number of the send, for example the number of the instrument sending the signal. 
+The gain of the send is controlled by the <link linkend="MixerSetLevel"><citetitle>MixerSetLevel</citetitle></link> opcode. 
+The reason that the sends are numbered is to enable different levels for different sends to be set independently 
+of the actual level of the signals.</para>
+
+<para><emphasis>ibuss</emphasis> -- The number of the buss, for example the number of the instrument receiving the signal.</para>
+
+<para><emphasis>ichannel</emphasis> -- The number of the channel. Each buss has <literal>nchnls</literal> channels.</para>
+  </refsect1>
+
+<refsect1>
+<title>Performance</title>
+<para><emphasis>asignal</emphasis> -- The signal that will be mixed into the indicated channel of the buss.</para>
+<para>
+Use of the mixer requires that instruments setting gains have smaller numbers than instruments sending signals, 
+and that instruments sending signals have smaller numbers than instruments receiving those signals. 
+However, an instrument may have any number of sends or receives. After the final signal is received, 
+<link linkend="MixerClear"><citetitle>MixerClear</citetitle></link> must be invoked to reset the busses to 0 before the next kperiod.
+</para>
+</refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+
+<programlisting>
+<emphasis role="oblock">instr</emphasis> 100 <emphasis role="comment">; Fluidsynth output</emphasis>
+<emphasis role="comment">; INITIALIZATION</emphasis>
+<emphasis role="comment">; Normalize so iamplitude for p5 of 80 == ampdb(80).</emphasis>
+iamplitude 		<emphasis role="op">=</emphasis> 			<emphasis role="opc">ampdb</emphasis>(p5) <emphasis role="op">*</emphasis> 2.0
+<emphasis role="comment">; AUDIO</emphasis>
+aleft, aright 		<emphasis role="opc">fluidAllOut</emphasis>		giFluidsynth
+asig1 			<emphasis role="op">=</emphasis> 			aleft <emphasis role="op">*</emphasis> iamplitude
+asig2 			<emphasis role="op">=</emphasis> 			aright <emphasis role="op">*</emphasis> iamplitude
+			<emphasis role="comment">; To the chorus.</emphasis>
+			<emphasis role="opc">MixerSend</emphasis>		asig1, 100, 200, 0
+			<emphasis role="opc">MixerSend</emphasis>		asig2, 100, 200, 1
+			<emphasis role="comment">; To the reverb.</emphasis>
+			<emphasis role="opc">MixerSend</emphasis>		asig1, 100, 210, 0
+			<emphasis role="opc">MixerSend</emphasis>		asig2, 100, 210, 1
+			<emphasis role="comment">; To the output.</emphasis>
+			<emphasis role="opc">MixerSend</emphasis>		asig1, 100, 220, 0
+			<emphasis role="opc">MixerSend</emphasis>		asig2, 100, 220, 1
+<emphasis role="oblock">endin</emphasis></programlisting>
+    <para>
+      Here is a complete example of the MixerSend opcode. It uses the file <ulink url="examples/Mixer.csd"><citetitle>Mixer.csd</citetitle></ulink>
+      <example>
+        <title>Complete example of the MixerSend opcode.</title>
+        <xi:include href="examples-xml/Mixer.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+</refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Michael Gogins (gogins at pipeline dot com).</para>
+  </refsect1>
+</refentry>

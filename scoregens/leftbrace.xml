@@ -1,0 +1,143 @@
+
+<refentry id="leftbrace">
+      <indexterm id="IndexLeftBraceStatement"><primary>{ statement</primary></indexterm>
+  <refmeta>
+    <refentrytitle>{ Statement</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>{</refname>
+    <refpurpose>
+      Begins a non-sectional, nestable loop.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      The <emphasis>{</emphasis> and <emphasis>} statements</emphasis> can be used to repeat a group of score statements.  These loops do not constitute independent score sections and thus may repeat events within the same section.  Multiple loops may overlap in time or be nested within each other.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>{</command> p1 p2</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>p1</emphasis> -- Number of times to repeat the loop.
+    </para>
+
+    <para>
+      <emphasis>p2</emphasis> -- A macro name that is automatically defined at the beginning of the loop and whose value is advanced with each repetition (optional).  The initial value is zero and the final value is (p1 - 1).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      The <emphasis>{ statement</emphasis> is used in conjunction with the <link linkend="rightbrace"><citetitle>} statement</citetitle></link> to define repeating groups of other score events.  A score loop begins with the <emphasis>{ statement</emphasis> which defines the number of repetitions and a unique macro name that will contain the current loop counter.  The body of a loop can contain any number of other events (including sectional breaks) and is terminated by a <emphasis>} statement</emphasis> on its own line.  The <emphasis>} statement</emphasis> takes no parameters.
+    </para>
+
+    <para>
+      The use of the term "loop" here does not imply any sort of temporal succession to the loop iterations.  In other words, the p2 values of the events inside of the loop are not automatically incremented by the length of the loop in each repetition.  This is actually an advantage since it allows groups of simulataneous events to be easily defined as well.  The loop macro can be used along with <link linkend="ScoreEval"><citetitle> score expressions</citetitle></link> to increase the start times of events or to vary the events in any other way desired for each iteration.  The macro is incremented by one for each repetition.  Note that unlike the <emphasis>r statement</emphasis>, the value of the macro the first time through the loop is zero (0), not one (1).  Therefore the final value is one less than the number of repetitions. 
+    </para>
+
+    <para>
+      Score loops are a very powerful tool. While similar to the section repeat facility (the <link linkend="r"><citetitle>r statement</citetitle></link>), their chief advantage is that the score events in successive iterations of the loop are not separated by a section termination. Thus, it is possible to create multiple loops that overlap in time. Loops also can be nested within each other to a depth of 39 levels.
+    </para>
+
+    <warning>
+      <title>Warning</title>
+      <para>
+        Because of serious problems of interaction with macro expansion, loops must start and end in the same file, and not in a macro.
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here are some examples of the <emphasis>{</emphasis> and <emphasis>} statements</emphasis>.
+
+      <example>
+        <title>Sequentially repeat a three-note phrase four times.</title>
+        <programlisting>
+<emphasis role="stamnt">{</emphasis> 4 CNT
+
+<emphasis role="stamnt">i</emphasis>1  [0.00 + 0.75 * $CNT.]   0.2   220
+<emphasis role="stamnt">i</emphasis>1  [0.25 + 0.75 * $CNT.]   .     440
+<emphasis role="stamnt">i</emphasis>1  [0.50 + 0.75 * $CNT.]   .     880
+
+<emphasis role="stamnt">}</emphasis>
+        </programlisting>
+      is interpreted as 
+        <programlisting>
+<emphasis role="stamnt">i</emphasis>1  0.00   0.2   220
+<emphasis role="stamnt">i</emphasis>1  0.25   .     440
+<emphasis role="stamnt">i</emphasis>1  0.50   .     880
+
+<emphasis role="stamnt">i</emphasis>1  0.75   0.2   220
+<emphasis role="stamnt">i</emphasis>1  1.00   .     440
+<emphasis role="stamnt">i</emphasis>1  1.25   .     880
+
+<emphasis role="stamnt">i</emphasis>1  1.50   0.2   220
+<emphasis role="stamnt">i</emphasis>1  1.75   .     440
+<emphasis role="stamnt">i</emphasis>1  2.00   .     880
+
+<emphasis role="stamnt">i</emphasis>1  2.25   0.2   220
+<emphasis role="stamnt">i</emphasis>1  2.50   .     440
+<emphasis role="stamnt">i</emphasis>1  2.75   .     880
+        </programlisting>
+      </example>
+    </para>
+
+    <para>
+      <example>
+        <title>Create a group of simultaneous harmonic partials.</title>
+        In this example, <emphasis>p4</emphasis> is assumed to be the frequency of the note event.
+
+        <programlisting>
+<emphasis role="stamnt">{</emphasis> 8 PARTIAL
+<emphasis role="stamnt">i</emphasis>1  0  1   [100 * ($PARTIAL. + 1)]
+<emphasis role="stamnt">}</emphasis>
+        </programlisting>
+      is interpreted as 
+        <programlisting>
+<emphasis role="stamnt">i</emphasis>1  0  1   100
+<emphasis role="stamnt">i</emphasis>1  0  1   200
+<emphasis role="stamnt">i</emphasis>1  0  1   300
+<emphasis role="stamnt">i</emphasis>1  0  1   400
+<emphasis role="stamnt">i</emphasis>1  0  1   500
+<emphasis role="stamnt">i</emphasis>1  0  1   600
+<emphasis role="stamnt">i</emphasis>1  0  1   700
+<emphasis role="stamnt">i</emphasis>1  0  1   800
+        </programlisting>
+      </example>
+    </para>
+
+    <para>
+       Here is a full example of the <emphasis>{</emphasis> and <emphasis>} statements</emphasis>. It uses the file <ulink url="examples/leftbrace.csd"><citetitle>leftbrace.csd</citetitle></ulink>.
+
+     <example>
+        <title>An example of nested loops to create several inharmonic sine clusters.</title>
+
+        <xi:include href="examples-xml/leftbrace.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namegabriel;</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.52 (?).  (Fixed in version 5.08).</para>
+  </refsect1>
+</refentry>

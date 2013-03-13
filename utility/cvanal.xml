@@ -1,0 +1,86 @@
+
+<refentry id="cvanal">
+  <refentryinfo><title>Utilities</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>cvanal</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>cvanal</refname>
+    <refpurpose>
+      Converts a soundfile into a single Fourier transform frame.
+      <indexterm id="IndexCvanal"><primary>cvanal</primary></indexterm>
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Impulse Response Fourier Analysis for <link linkend="convolve"><citetitle>convolve</citetitle></link> operator
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>csound -U cvanal</command> [flags] infilename outfilename</synopsis>
+    <synopsis><command>cvanal</command> [flags] infilename outfilename</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>cvanal</emphasis> -- converts a soundfile into a single Fourier transform frame. The output file can be used by the <emphasis>convolve</emphasis> operator to perform Fast Convolution between an input signal and the original impulse response. Analysis is conditioned by the flags below. A space is optional between the flag and its argument.
+    </para>
+
+    <para>
+      <emphasis>-s rate</emphasis> -- sampling rate of the audio input file. This will over-ride the srate of the soundfile header, which otherwise applies. If neither is present, the default is 10000.
+    </para>
+
+    <para>
+      <emphasis>-c channel</emphasis> -- channel number sought. If omitted, the default is to process all channels. If a value is given, only the selected channel will be processed.
+    </para>
+
+    <para>
+      <emphasis>-b begin</emphasis> -- beginning time (in seconds) of the audio segment to be analyzed. The default is 0.0
+    </para>
+
+    <para>
+      <emphasis>-d duration</emphasis> -- duration (in seconds) of the audio segment to be analyzed. The default of 0.0 means to the end of the file.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+<!--       <informalexample> -->
+        <programlisting><emphasis>cvanal</emphasis> asound cvfile</programlisting>
+<!--       </informalexample> -->
+
+      will analyze the soundfile &quot;asound&quot; to produce the file &quot;cvfile&quot; for the use with <link linkend="convolve"><citetitle>convolve</citetitle></link>.
+    </para>
+
+    <para>
+      To use data that is not already contained in a soundfile, a soundfile converter that accepts text files may be used to create a standard audio file, e.g., the .DAT format for SOX. This is useful for implementing FIR filters.
+    </para>
+
+    <refsect2>
+      <title>Files</title>
+      <para>
+        The output file has a special <emphasis>convolve</emphasis> header, containing details of the source audio file. The analysis data is stored as <quote>float</quote>, in rectangular (real/imaginary) form.
+      </para>
+
+      <note>
+        <title>Note</title>
+        <para>
+          The analysis file is <emphasis>not</emphasis> system independent! Ensure that the original impulse recording/data is retained. If/when required, the analysis file can be recreated.
+        </para>
+      </note>
+    </refsect2>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: Greg Sullivan</para>
+    <para>Based on algorithm given in <emphasis>Elements Of Computer Music</emphasis>, by F. Richard Moore.</para>
+  </refsect1>
+</refentry>

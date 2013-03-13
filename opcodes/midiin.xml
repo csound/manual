@@ -1,0 +1,91 @@
+
+<refentry id="midiin">
+<indexterm id="IndexMidiin"><primary>midiin</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Generic I/O</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>midiin</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>midiin</refname>
+
+    <refpurpose>
+      Returns a generic MIDI message received by the MIDI IN port.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Returns a generic MIDI message received by the MIDI IN port
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kstatus, kchan, kdata1, kdata2 <command>midiin</command></synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kstatus</emphasis> -- the type of MIDI message. Can be:
+      <itemizedlist>
+	<listitem><para>128 (note off)</para></listitem>
+	<listitem><para>144 (note on)</para></listitem>
+	<listitem><para>160 (polyphonic aftertouch)</para></listitem>
+	<listitem><para>176 (control change)</para></listitem>
+	<listitem><para>192 (program change)</para></listitem>
+	<listitem><para>208 (channel aftertouch)</para></listitem>
+	<listitem><para>224 (pitch bend</para></listitem>
+	<listitem><para>0 if no MIDI message are pending in the MIDI IN buffer</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>kchan</emphasis> -- MIDI channel (1-16)
+    </para>
+
+    <para>
+      <emphasis>kdata1, kdata2</emphasis> -- message-dependent data values
+    </para>
+
+    <para>
+      <emphasis>midiin</emphasis> has no input arguments, because it reads at the MIDI in port implicitly. It works at k-rate. Normally (i.e., when no messages are pending) <emphasis>kstatus</emphasis> is zero, only when MIDI data are present in the MIDI IN buffer, is <emphasis>kstatus</emphasis> set to the type of the relevant messages.
+    </para>
+    <note>
+      <para>
+	Be careful when using <emphasis>midiin</emphasis> in low numbered instruments, since a MIDI note will launch additional instances of the instrument, resulting in duplicate events and weird behaviour. Use <link linkend="massign"><citetitle>massign</citetitle></link> to direct MIDI note on messages to a different instrument or to disable triggering of instruments from MIDI.
+      </para>
+    </note>
+  </refsect1>
+  
+   <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the midiin opcode. It uses the file <ulink url="examples/midiin.csd"><citetitle>midiin.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the midiin opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/midiin.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namegabriel;</member>
+        <member>Italy</member>
+        <member>1998</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.492</para>
+  </refsect1>
+</refentry>

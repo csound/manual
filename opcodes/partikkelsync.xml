@@ -1,0 +1,85 @@
+
+<refentry id="partikkelsync">
+<indexterm id="IndexPartikkelsync"><primary>partikkelsync</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Granular Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>partikkelsync</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>partikkelsync</refname>
+    <refpurpose> Outputs <emphasis>partikkel</emphasis>'s grain
+      scheduler clock pulse and phase to synchronize several instances of the <emphasis>partikkel</emphasis>
+      opcode to the same clock source.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>partikkelsync</emphasis> is an opcode for outputting <link linkend="partikkel"><citetitle>partikkel</citetitle></link>'s grain scheduler clock pulse and phase. <emphasis>partikkelsync</emphasis>'s output can be used to synchronize other instances of the <link linkend="partikkel"><citetitle>partikkel</citetitle></link> opcode to the same clock.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>async [,aphase] <command>partikkelsync</command> iopcode_id</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+      <para>
+      <emphasis>iopcode_id</emphasis> -- the opcode id, linking an
+      instance of <link linkend="partikkel"><citetitle>partikkel</citetitle></link> to an instance of <emphasis>partikkelsync</emphasis>. 
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>async</emphasis> -- trigger pulse signal. 
+      Outputs trigger pulses synchronized to a <emphasis>partikkel</emphasis> opcode's grain scheduler clock. 
+      One trigger pulse is generated for each grain started in the <emphasis>partikkel</emphasis> opcode with the same <emphasis>opcode_id</emphasis>.
+      The normal usage would be to send this signal to another <emphasis>partikkel</emphasis> opcode's <emphasis>async</emphasis> input to 
+      synchronize several instances of <emphasis>partikkel</emphasis>.
+    </para>
+    <para>
+      <emphasis>aphase</emphasis> -- clock phase. 
+      Outputs a linear ramping phase signal. Can be used e.g. for softsynchronization, or just as a phase generator ala <emphasis>phasor</emphasis>.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Example</title>
+    <para>
+      Here is an example of the partikkelsync opcodes. It uses the file <ulink url="examples/partikkelsync.csd"><citetitle>partikkelsync.csd</citetitle></ulink>.
+      <example>
+        <title>Example with soft sync of two partikkel generators.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/partikkelsync.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para><link linkend="partikkel"><citetitle>partikkel</citetitle></link>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Thom Johansen</member>
+        <member>Author: Torgeir Strand Henriksen</member>
+        <member>Author: &nameoeyvind;</member>
+        <member>April 2007</member>
+      </simplelist>
+    <para>New in version 5.06</para>
+    </para>
+  </refsect1>
+</refentry>
+

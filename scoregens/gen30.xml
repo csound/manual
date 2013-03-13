@@ -1,0 +1,75 @@
+
+<refentry id="GEN30">
+      <indexterm id="IndexGEN30"><primary>GEN30</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN30</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>GEN30</refname>
+    <refpurpose>
+      Generates harmonic partials by analyzing an existing table.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Extracts a range of harmonic partials from an existing waveform.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>f</command> # time size  30  src  minh maxh [ref_sr] [interp]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>src</emphasis> -- source ftable
+    </para>
+
+    <para>
+      <emphasis>minh</emphasis> -- lowest harmonic number
+    </para>
+
+    <para>
+      <emphasis>maxh</emphasis> -- highest harmonic number
+    </para>
+
+    <para>
+      <emphasis>ref_sr</emphasis> (optional) -- maxh is scaled by (sr / ref_sr). The default value of ref_sr is sr. If <emphasis>ref_sr</emphasis> is zero or negative, it is now ignored.
+    </para>
+
+    <para>
+      <emphasis>interp</emphasis> (optional) -- if non-zero, allows changing the amplitude of the lowest and highest harmonic partial depending on the fractional part of <emphasis>minh</emphasis> and <emphasis>maxh</emphasis>. For example, if <emphasis>maxh</emphasis> is 11.3 then the 12th harmonic partial is added with 0.3 amplitude. This parameter is zero by default.
+    </para>
+
+    <para>
+      <emphasis>GEN30</emphasis> does not support tables with an extended guard point (ie. table size = power of two + 1). Although such tables will work both for input and output, when reading source table(s), the guard point is ignored, and when writing the output table, guard point is simply copied from the first sample (table index = 0). 
+    </para>
+
+    <para>
+      The reason of this limitation is that <emphasis>GEN30</emphasis> uses FFT, which requires power of two table size.  <link linkend="GEN32"><citetitle>GEN32</citetitle></link> allows using linear interpolation for resampling and phase shifting, which makes it possible to use any table size (however, for partials calculated with FFT, the power of two limitation still exists).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the GEN30 routine. It uses the files <ulink url="examples/gen30.csd"><citetitle>gen30.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the GEN30 routine.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+        <xi:include href="examples-xml/gen30.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &nameistvan;</para>
+    <para>New in version 4.16</para>
+  </refsect1>
+</refentry>

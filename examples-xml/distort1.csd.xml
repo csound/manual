@@ -1,0 +1,55 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac     <emphasis role="comment">;;;RT audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if RT audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o distort1.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis> <emphasis role="op">=</emphasis> 1
+
+
+gadist <emphasis role="opc">init</emphasis> 0
+  
+<emphasis role="oblock">instr</emphasis> 1
+  iamp <emphasis role="op">=</emphasis> p4
+  ifqc <emphasis role="op">=</emphasis> <emphasis role="opc">cpspch</emphasis>(p5)
+  asig <emphasis role="opc">pluck</emphasis> iamp, ifqc, ifqc, 0, 1
+  gadist <emphasis role="op">=</emphasis> gadist <emphasis role="op">+</emphasis> asig
+<emphasis role="oblock">endin</emphasis>
+  
+<emphasis role="oblock">instr</emphasis> 50
+  kpre <emphasis role="opc">init</emphasis> p4
+  kpost <emphasis role="opc">init</emphasis> p5
+  kshap1 <emphasis role="opc">init</emphasis> p6
+  kshap2 <emphasis role="opc">init</emphasis> p7
+  aout <emphasis role="opc">distort1</emphasis> gadist, kpre, kpost, kshap1, kshap2, 1
+
+  <emphasis role="opc">outs</emphasis> aout, aout
+
+  gadist <emphasis role="op">=</emphasis> 0
+<emphasis role="oblock">endin</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="comment">;   Sta  Dur  Amp    Pitch</emphasis>
+<emphasis role="stamnt">i</emphasis>1  0.0  3.0  0.5  6.00
+<emphasis role="stamnt">i</emphasis>1  0.5  2.5  0.5  7.00
+<emphasis role="stamnt">i</emphasis>1  1.0  2.0  0.5  7.07
+<emphasis role="stamnt">i</emphasis>1  1.5  1.5  0.5  8.00
+  
+<emphasis role="comment">;   Sta  Dur  PreGain PostGain Shape1 Shape2</emphasis>
+<emphasis role="stamnt">i</emphasis>50 0    4      2       .5       0      0
+<emphasis role="stamnt">e</emphasis>
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

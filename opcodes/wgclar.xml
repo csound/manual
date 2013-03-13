@@ -1,0 +1,109 @@
+
+<refentry id="wgclar">
+<indexterm id="IndexWgclar"><primary>wgclar</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Waveguide Physical Modeling</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>wgclar</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>wgclar</refname>
+    <refpurpose>
+      Creates a tone similar to a clarinet.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Audio output is a tone similar to a clarinet, using a physical model developed from &nameperry;, but re-coded for Csound.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>wgclar</command> kamp, kfreq, kstiff, iatt, idetk, kngain, kvibf, kvamp, ifn \
+      [, iminfreq]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iatt</emphasis> -- time in seconds to reach full blowing pressure. 0.1 seems to correspond to reasonable playing. A longer time gives a definite initial wind sound.
+    </para>
+
+    <para>
+      <emphasis>idetk</emphasis> -- time in seconds taken to stop blowing. 0.1 is a smooth ending
+    </para>
+
+    <para>
+      <emphasis>ifn</emphasis> -- table of shape of vibrato, usually a sine table, created by a function
+    </para>
+
+    <para>
+      <emphasis>iminfreq</emphasis> (optional) -- lowest frequency at which the instrument will play. If it is omitted it is taken to be the same as the initial <emphasis>kfreq</emphasis>. If <emphasis>iminfreq</emphasis> is negative, initialization will be skipped.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      A note is played on a clarinet-like instrument, with the arguments as below.
+    </para>
+
+    <para>
+      <emphasis>kamp</emphasis> -- Amplitude of note.
+    </para>
+
+    <para>
+      <emphasis>kfreq</emphasis> -- Frequency of note played.
+    </para>
+
+    <para>
+      <emphasis>kstiff</emphasis> -- a stiffness parameter for the reed. Values should be negative, and about -0.3. The useful range is approximately -0.44 to -0.18.
+    </para>
+
+    <para>
+      <emphasis>kngain</emphasis> -- amplitude of the noise component, about 0 to 0.5
+    </para>
+
+    <para>
+      <emphasis>kvibf</emphasis> -- frequency of vibrato in Hertz. Suggested range is 0 to 12
+    </para>
+
+    <para>
+      <emphasis>kvamp</emphasis> -- amplitude of the vibrato
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the wgclar opcode. It uses the file <ulink url="examples/wgclar.csd"><citetitle>wgclar.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the wgclar opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/wgclar.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn; (after &nameperry;)</member>
+        <member>University of Bath, Codemist Ltd.</member>
+        <member>Bath, UK</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.47</para>
+  </refsect1>
+</refentry>

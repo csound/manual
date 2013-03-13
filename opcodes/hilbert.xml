@@ -1,0 +1,144 @@
+
+<refentry id="hilbert">
+<indexterm id="IndexHilbert"><primary>hilbert</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Specialized Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>hilbert</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>hilbert</refname>
+    <refpurpose>
+      A Hilbert transformer.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      An IIR implementation of a Hilbert transformer.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ar1, ar2 <command>hilbert</command> asig</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asig</emphasis> -- input signal
+    </para>
+
+    <para>
+      <emphasis>ar1</emphasis> -- sine output of <emphasis>asig</emphasis>
+    </para>
+
+    <para>
+      <emphasis>ar2</emphasis> -- cosine output of <emphasis>asig</emphasis>
+    </para>
+
+    <para>
+      <emphasis>hilbert</emphasis> is an IIR filter based implementation of a broad-band 90 degree phase difference network. The input to <emphasis>hilbert</emphasis> is an audio signal, with a frequency range from 15 Hz to 15 kHz. The outputs of <emphasis>hilbert</emphasis> have an identical frequency response to the input (i.e. they sound the same), but the two outputs have a constant phase difference of 90 degrees, plus or minus some small amount of error, throughout the entire frequency range. The outputs are in quadrature.
+    </para>
+
+    <para>
+      <emphasis>hilbert</emphasis> is useful in the implementation of many digital signal processing techniques that require a signal in phase quadrature. <emphasis>ar1</emphasis> corresponds to the cosine output of <emphasis>hilbert</emphasis>, while <emphasis>ar2</emphasis> corresponds to the sine output. The two outputs have a constant phase difference throughout the audio range that corresponds to the phase relationship between cosine and sine waves.
+    </para>
+
+    <para>
+      Internally, <emphasis>hilbert</emphasis> is based on two parallel 6th-order allpass filters. Each allpass filter implements a phase lag that increases with frequency; the difference between the phase lags of the parallel allpass filters at any given point is approximately 90 degrees.
+    </para>
+
+    <para>
+      Unlike an FIR-based Hilbert transformer, the output of <emphasis>hilbert</emphasis> does not have a linear phase response. However, the IIR structure used in <emphasis>hilbert</emphasis> is far more efficient to compute, and the nonlinear phase response can be used in the creation of interesting audio effects, as in the second example below.
+    </para>
+  </refsect1>
+
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      The first example implements frequency shifting, or single sideband amplitude modulation. Frequency shifting is similar to ring modulation, except the upper and lower sidebands are separated into individual outputs. By using only one of the outputs, the input signal can be &quot;detuned,&quot; where the harmonic components of the signal are shifted out of harmonic alignment with each other, e.g. a signal with harmonics at 100, 200, 300, 400 and 500 Hz, shifted up by 50 Hz, will have harmonics at 150, 250, 350, 450, and 550 Hz.
+    </para>
+
+    <para>
+      Here is the first example of the hilbert opcode. It uses the file <ulink url="examples/hilbert.csd"><citetitle>hilbert.csd</citetitle></ulink>, and <ulink url="examples/beats.wav"><citetitle>beats.wav</citetitle></ulink>.
+
+      <example>
+        <title>Example of the hilbert opcode implementing frequency shifting.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/hilbert.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+    <para>
+      The second example is a variation of the first, but with the output being fed back into the input. With very small shift amounts (i.e. between 0 and +-6 Hz), the result is a sound that has been described as a <quote>barberpole phaser</quote> or <quote>Shepard tone phase shifter.</quote> Several notches appear in the spectrum, and are constantly swept in the direction opposite that of the shift, producing a filtering effect that is reminiscent of Risset's <quote>endless glissando</quote>.
+    </para>
+
+    <para>
+      Here is the second example of the hilbert opcode. It uses the file <ulink url="examples/hilbert_barberpole.csd"><citetitle>hilbert_barberpole.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the hilbert opcode sounding like a <quote>barberpole phaser</quote>.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/hilbert_barberpole.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Technical History</title>
+    <para>
+      The use of phase-difference networks in frequency shifters was pioneered by Harald Bode<superscript>1</superscript>. Bode and Bob Moog provide an excellent description of the implementation and use of a frequency shifter in the analog realm in <superscript>2</superscript>; this would be an excellent first source for those that wish to explore the possibilities of single sideband modulation. Bernie Hutchins provides more applications of the frequency shifter, as well as a detailed technical analysis<superscript>3</superscript>. A recent paper by Scott Wardle<superscript>4</superscript> describes a digital implementation of a frequency shifter, as well as some unique applications.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>References</title>
+    <para>
+      <orderedlist>
+        <listitem>
+          <para>
+            H. Bode, &quot;Solid State Audio Frequency Spectrum Shifter.&quot; AES Preprint No. 395 (1965).
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            H. Bode and R.A. Moog, &quot;A High-Accuracy Frequency Shfiter for Professional Audio Applications.&quot; <emphasis>Journal of the Audio Engineering Society</emphasis>, July/August 1972, vol. 20, no. 6, p. 453.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            B. Hutchins. <emphasis>Musical Engineer's Handbook</emphasis> (Ithaca, NY: Electronotes, 1975), ch. 6a.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            S. Wardle, &quot;A Hilbert-Transformer Frequency Shifter for Audio.&quot; Available online at <ulink url="http://www.iua.upf.es/dafx98/papers/"><citetitle>http://www.iua.upf.es/dafx98/papers/</citetitle></ulink>.
+          </para>
+        </listitem>
+      </orderedlist>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namesean;</member>
+        <member>Seattle, Washington</member>
+        <member>1999</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.55</para>
+    <para>The examples were updated April 2002. Thanks go to &namesean; for fixing the barberpole example.</para>
+  </refsect1>
+</refentry>

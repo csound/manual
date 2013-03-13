@@ -1,0 +1,55 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in</emphasis>
+-odac           -iadc     <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o vmap.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 256
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+gisize <emphasis role="op">=</emphasis> 64
+
+gitable <emphasis role="ohdr">ftgen</emphasis> 0, 0, gisize, 10, 1  <emphasis role="comment">;Table to be processed</emphasis>
+gimap1 <emphasis role="ohdr">ftgen</emphasis>  0, 0, gisize, <emphasis role="op">-</emphasis>7, gisize<emphasis role="op">-</emphasis>1, gisize<emphasis role="op">-</emphasis>1, 0 <emphasis role="comment">; Mapping function to reverse table</emphasis>
+gimap2 <emphasis role="ohdr">ftgen</emphasis> 0, 0, gisize, <emphasis role="op">-</emphasis>5, 1, gisize<emphasis role="op">-</emphasis>1, gisize<emphasis role="op">-</emphasis>1  <emphasis role="comment">; Mapping function for PWM</emphasis>
+gimap3 <emphasis role="ohdr">ftgen</emphasis> 0, 0, gisize, <emphasis role="op">-</emphasis>7, 1, (gisize<emphasis role="op">/</emphasis>2)<emphasis role="op">-</emphasis>1, gisize<emphasis role="op">-</emphasis>1, 1, 1, (gisize<emphasis role="op">/</emphasis>2)<emphasis role="op">-</emphasis>1, gisize<emphasis role="op">-</emphasis>1  <emphasis role="comment">; Double frequency</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 1  <emphasis role="comment">;Hear an oscillator using gitable</emphasis>
+asig <emphasis role="opc">oscil</emphasis> 10000, 440, gitable
+<emphasis role="opc">outs</emphasis> asig,asig
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 2  <emphasis role="comment">;Reverse the table (no sound change, except for a single click</emphasis>
+<emphasis role="opc">vmap</emphasis> gimap1, gitable, gisize
+<emphasis role="opc">vcopy_i</emphasis> gitable, gimap1, gisize
+<emphasis role="opc">turnoff</emphasis>
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 3  <emphasis role="comment">;Non-interpolated PWM (or phase waveshaping)</emphasis>
+<emphasis role="opc">vmap</emphasis> gimap2, gitable, gisize
+<emphasis role="opc">vcopy_i</emphasis> gitable, gimap2, gisize
+<emphasis role="opc">turnoff</emphasis>
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 4  <emphasis role="comment">;Double frequency</emphasis>
+<emphasis role="opc">vmap</emphasis> gimap3, gitable, gisize
+<emphasis role="opc">vcopy_i</emphasis> gitable, gimap3, gisize
+<emphasis role="opc">turnoff</emphasis>
+<emphasis role="oblock">endin</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 8
+
+<emphasis role="stamnt">i</emphasis> 2 2 1
+<emphasis role="stamnt">i</emphasis> 3 4 1
+<emphasis role="stamnt">i</emphasis> 4 6 1
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

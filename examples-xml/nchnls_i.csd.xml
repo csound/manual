@@ -1,0 +1,39 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac  -idac <emphasis role="comment">;;;realtime audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; nchnls_i.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis>   <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis>   <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis>   <emphasis role="op">=</emphasis> 2	<emphasis role="comment">;2 channels out</emphasis>
+<emphasis role="ohdr">0dbfs</emphasis>    <emphasis role="op">=</emphasis> 1
+nchnls_i <emphasis role="op">=</emphasis> 4	<emphasis role="comment">;4 channels in</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 1 <emphasis role="comment">;4 channels in, two channels out</emphasis>
+
+ain1, ain2, ain3, ain4 <emphasis role="opc">inq</emphasis>		<emphasis role="comment">;grab your mics and sing</emphasis>
+
+adel   <emphasis role="opc">linseg</emphasis> 0, p3<emphasis role="op">*</emphasis>.5, 0.02, p3<emphasis role="op">*</emphasis>.5, 0	  <emphasis role="comment">;max delay time = 20ms</emphasis>
+adel2  <emphasis role="opc">linseg</emphasis> 0.02, p3<emphasis role="op">*</emphasis>.5, 0, p3<emphasis role="op">*</emphasis>.5, 0.02 <emphasis role="comment">;max delay time = 20ms	</emphasis>
+aoutl  <emphasis role="opc">flanger</emphasis> ain1, adel, .7
+aoutr  <emphasis role="opc">flanger</emphasis> ain2, adel<emphasis role="op">*</emphasis>2, .8
+aoutla <emphasis role="opc">flanger</emphasis> ain3, adel2, .9
+aoutra <emphasis role="opc">flanger</emphasis> ain4, adel2<emphasis role="op">*</emphasis>2, .5
+<emphasis role="comment">;write to quad file, 16 bits with header</emphasis>
+       <emphasis role="opc">fout</emphasis> "in_4.wav", 14, aoutl, aoutr, aoutla, aoutra	
+       <emphasis role="opc">outs</emphasis> (aoutl<emphasis role="op">+</emphasis>aoutla)<emphasis role="op">*</emphasis>.5, (aoutr<emphasis role="op">+</emphasis>aoutra)<emphasis role="op">*</emphasis>.5 <emphasis role="comment">;stereo out</emphasis>
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1 0 10
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

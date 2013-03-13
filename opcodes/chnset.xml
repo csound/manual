@@ -1,0 +1,98 @@
+
+<refentry id="chnset">
+<indexterm id="Indexchnset"><primary>chnset</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Software Bus</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>chnset</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>chnset</refname>
+    <refpurpose>
+      Writes data to the named software bus.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Write to a channel of the named software bus. Implies declaring the
+      channel with <emphasis>imod</emphasis>=2 (see also
+      <link linkend="chn"><citetitle>chn_k, chn_a, and chn_S</citetitle></link>).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>chnset</command> ival, Sname</synopsis>
+    <synopsis><command>chnset</command> kval, Sname</synopsis>
+    <synopsis><command>chnset</command> aval, Sname</synopsis>
+    <synopsis><command>chnset</command> Sval, Sname</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>Sname</emphasis> -- a string that indicates which
+      named channel of the software bus to write.
+    </para>
+    <para>
+      <emphasis>ival</emphasis> -- the control value to write at i-time.
+    </para>
+    <para>
+      <emphasis>Sval</emphasis> -- the string value to write at i-time.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kval</emphasis> -- the control value to write at performance
+      time.
+    </para>
+    <para>
+      <emphasis>aval</emphasis> -- the audio signal to write at performance
+      time.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Example</title>
+    <para>
+      The example shows the software bus being used to write pitch
+      information to a controlling program.
+    </para>
+
+    <informalexample>
+      <programlisting>
+        <emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+        <emphasis role="ohdr">kr</emphasis> <emphasis role="op">=</emphasis> 100
+        <emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 1
+
+        <emphasis role="oblock">instr</emphasis>   1
+           a1    <emphasis role="opc">in</emphasis>
+           kp,ka <emphasis role="opc">pitchamdf</emphasis> a1
+                 <emphasis role="opc">chnset</emphasis>    kp, "pitch"
+        <emphasis role="oblock">endin</emphasis>
+      </programlisting>
+    </informalexample>
+    <para>
+      Here is another example of the chnset opcode. It uses the file <ulink url="examples/chnset.csd"><citetitle>chnset.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the chnset opcode.</title>
+        <xi:include href="examples-xml/chnset.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &nameistvan;</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

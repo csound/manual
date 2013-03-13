@@ -1,0 +1,82 @@
+
+<chapter id="OrchTop">
+  <title>Syntax of the Orchestra</title>
+  <para>
+    The Csound orchestra (.orc) or the <emphasis>&lt;CsInstruments&gt;</emphasis> section of a csd file, contains:
+    <itemizedlist>
+      <listitem>
+        <para>A <link linkend="OrchHeader"><citetitle>header section</citetitle></link>, which specifies global options for instrument performance</para>
+      </listitem>
+      <listitem>
+        <para>A list of <link linkend="OrchUDO"><citetitle>User defined opcodes</citetitle></link> and <link linkend="OrchIblock"><citetitle>instrument blocks</citetitle></link> containing UDO and instrument definitions.</para>
+      </listitem>
+    </itemizedlist>
+  </para>
+  <para>
+    The orchestra header, instrument blocks, and UDOs contain <emphasis>Orchestra statements</emphasis>. An <emphasis>orchestra statement</emphasis> in Csound has the format:
+
+    <synopsis>
+      label:   <returnvalue>result</returnvalue> <function>opcode</function> <parameter>argument1</parameter>, <parameter>argument2</parameter>, <parameter>...</parameter> ;comments
+    </synopsis>
+  </para>
+
+  <para>
+    The label is optional and identifies the basic statement that follows as the potential target of a go-to operation (see <link linkend="ControlPgmctl"><citetitle>Program Flow Control</citetitle></link>). A label has no effect on the statement per se.
+  </para>
+  <para>
+    Depending on their function, some opcodes produce no output, so they have no result value. Others take no arguments and only produce a result.
+  </para>
+  <para>
+    Every orchestra statement must be on a single line, however long lines can be wrapped to a new line using the '\' character. This character indicates that the next line is part of the current one, this way you can split a line for easier reading, like this:
+    <programlisting>
+a2  <emphasis role="opc">oscbnk</emphasis> kcps, 1.0, kfmd1, 0.0, 40, 203, 0.1, 0.2, kamfr, kamfr2, 148,  \
+           0, 0, 0, 0, 0, 0, -1,                                          \
+           kfnum, 3, 4</programlisting>
+  </para>
+
+  <para>
+     Comments are optional and are for the purpose of letting the user document his orchestra code. Comments begin with a semicolon (;) and extend to the end of the line. Comments can optionally be in C-style, spanning multiple lines like this:
+     <programlisting>
+<emphasis role="comment">/* Anything in here --------
+   is a comment which can span
+   several lines ---------  */</emphasis></programlisting>
+  </para>
+
+  <para>
+    The remainder (result, opcode, and arguments) form the basic statement. This also is optional, i.e. a line may have only a label or comment or be entirely blank. If present, the basic statement must be complete on one line, and is terminated by a carriage return and line feed.
+  </para>
+
+  <para>
+    The opcode determines the operation to be performed; it usually takes some number of input values (or arguments, with a maximum value of about 800); and it usually has a result field variable to which it sends output values at some fixed rate. There are four possible rates:
+    <orderedlist numeration="arabic">
+      <listitem>
+        <para>once only, at orchestra setup time (effectively a permanent assignment)</para>
+      </listitem>
+
+      <listitem>
+        <para>once at the beginning of each note (at initialization (init) time: i-rate)</para>
+      </listitem>
+
+      <listitem>
+        <para>once every performance-time control loop (perf-time control rate, or k-rate)</para>
+      </listitem>
+
+      <listitem>
+        <para>once each sound sample of every control loop (perf-time audio rate, or a-rate)</para>
+      </listitem>
+    </orderedlist>
+  </para>
+
+  &orchheader;
+  &orchiblock;
+  &orchstatemnt;
+  &orchkvar;
+  &orchexpress;
+  &orchdirfiles;
+  &orchnomen;
+  &orchmacros;<!--
+  &orchvarinit;-->
+  &orchnamedinstruments;
+  &orchUDO;
+  &orchtab;
+</chapter>

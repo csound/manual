@@ -1,0 +1,88 @@
+
+<refentry id="spsend">
+<indexterm id="IndexSpsend"><primary>spsend</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Panning and Spatialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>spsend</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>spsend</refname>
+    <refpurpose>
+      Generates output signals based on a previously defined <emphasis>space</emphasis> opcode.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>spsend</emphasis> depends upon the existence of a previously defined <link linkend="space"><citetitle>space</citetitle></link>. The output signals from <emphasis>spsend</emphasis> are derived from the values given for xy and reverb in the <emphasis>space</emphasis> and are ready to be sent to local or global reverb units (see example below).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>a1, a2, a3, a4 <command>spsend</command></synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      The configuration of the xy coordinates in space places the signal in the following way:
+      <itemizedlist>
+        <listitem>
+           <para>a1 is -1, 1</para>
+        </listitem>
+
+        <listitem>
+           <para>a2 is 1, 1</para>
+        </listitem>
+
+        <listitem>
+           <para>a3 is -1, -1</para>
+        </listitem>
+
+        <listitem>
+           <para>a4 is 1, -1</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      This assumes a loudspeaker set up as a1 is left front, a2 is right front, a3 is left back, a4 is right back. Values greater than 1 will result in sounds being attenuated, as if in the distance. <emphasis>space</emphasis> considers the speakers to be at a distance of 1; smaller values of xy can be used, but <emphasis>space</emphasis> will not amplify the signal in this case. It will, however balance the signal so that it can sound as if it were within the 4 speaker <emphasis>space</emphasis>.  x=0, y=1, will place the signal equally balanced between left and right front channels, x=y=0 will place the signal equally in all 4 channels, and so on. Although there must be 4 output signals from <emphasis>space</emphasis>, it can be used in a 2 channel orchestra. If the xy's are kept so that Y&gt;=1, it should work well to do panning and fixed localization in a stereo field.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is a stereo example of the spsend opcode. It uses the file <ulink url="examples/spsend.csd"><citetitle>spsend.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the spsend opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/spsend.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="space"><citetitle>space</citetitle></link>,
+      <link linkend="spdist"><citetitle>spdist</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Richard Karpen</member>
+        <member>Seattle, WA USA</member>
+        <member>1998</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.48</para>
+  </refsect1>
+</refentry>

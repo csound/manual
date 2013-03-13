@@ -1,0 +1,59 @@
+
+<refentry id="vtablewi">
+<indexterm id="IndexVtablewi"><primary>vtablewi</primary></indexterm>
+  <refentryinfo><title>Vectorial:Tables</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vtablewi</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vtablewi</refname>
+    <refpurpose>
+      Write vectors (to tables -or arrays of vectors).
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This opcode writes vectors to tables at init time.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>vtablewi</command>  indx, ifn, ixmode, inarg1 [, inarg2, inarg3 , .... , inargN ]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>indx</emphasis> - Index into f-table, either a positive number range matching the table length (<emphasis>ixmode</emphasis> = 0) or a 0 to 1 range (<emphasis>ixmode</emphasis> != 0).
+    </para>
+    <para> 
+      <emphasis>ifn</emphasis> - table number
+    </para>
+    <para><emphasis>ixmode</emphasis> - index data mode. The default value is 0.</para>
+    <para>            == 0 index is treated as a raw table location,</para>
+    <para>            == 1 index is normalized (0 to 1).</para>
+    <para>
+      <emphasis>inarg1...inargN</emphasis> - input vector elements
+    </para> 
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      This opcode is useful in all cases in which one needs to write sets of values associated to unique indexes (for example, multi-channel samples, STFT bin frames, spectral formants, p-field based scores etc.). The number of elements of each vector (length of the vector) is determined by the number of optional arguments on the right (<emphasis>inarg1</emphasis>, <emphasis>inarg2</emphasis>, <emphasis>inarg3</emphasis>, ....  <emphasis>inargN</emphasis>).
+    </para>
+    <para>
+      Notice that no wrap nor limit mode is implemented.  So, if  an index attempt to access to a zone not allocated by the table, Csound will probably crash. However this drawback can be easily avoided by using wrap or limit opcodes applied to indexes before using <emphasis>vtablewi</emphasis>, in order to correct eventual out-of-range values.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Written by Gabriel Maldonado.</para>
+    <para>New in Csound 5 (Previously available only on CsoundAV)</para>
+  </refsect1>
+</refentry>

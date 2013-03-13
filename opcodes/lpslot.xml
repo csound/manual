@@ -1,0 +1,84 @@
+
+<refentry id="lpslot">
+<indexterm id="IndexLpslot"><primary>lpslot</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:LPC</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lpslot</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>lpslot</refname>
+    <refpurpose>
+      Selects the slot to be use by further lp opcodes.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Selects the slot to be use by further lp opcodes.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>lpslot</command> islot</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>islot</emphasis> -- number of slot to be selected.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>lpslot</emphasis> selects the slot to be use by further lp opcodes. This is the way to load and reference several analyses at the same time.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is a typical orc using the opcodes:
+      <informalexample>
+        <programlisting>
+ipower <emphasis role="opc">init</emphasis> 50000  <emphasis role="comment">; Define sound generator</emphasis>
+ifreq  <emphasis role="opc">init</emphasis> 440 
+asrc   <emphasis role="opc">buzz</emphasis> ipower, ifreq, 10, 1
+  
+ktime  <emphasis role="opc">line</emphasis> 0, p3, p3              <emphasis role="comment">; Define time lin</emphasis>
+       <emphasis role="opc">lpslot</emphasis> 0                    <emphasis role="comment">; Read square data poles</emphasis>
+krmsr, krmso, kerr, kcps <emphasis role="opc">lpread</emphasis> ktime,&quot;square.pol&quot;                     
+       <emphasis role="opc">lpslot</emphasis> 1                    <emphasis role="comment">; Read triangle data poles</emphasis>
+krmsr, krmso, kerr, kcps <emphasis role="opc">lpread</emphasis> ktime,&quot;triangle.pol&quot;
+kmix   <emphasis role="opc">line</emphasis> 0, p3, 1               <emphasis role="comment">; Compute result of mixing</emphasis>
+       <emphasis role="opc">lpinterp</emphasis> 0, 1, kmix         <emphasis role="comment">; and balance power</emphasis>
+ares   <emphasis role="opc">lpreson</emphasis> asrc
+aout   <emphasis role="opc">balance</emphasis> ares, asrc
+       <emphasis role="opc">out</emphasis> aout</programlisting>
+      </informalexample>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="lpinterp"><citetitle>lpinterp</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Mark Resibois</member>
+        <member>Brussels</member>
+        <member>1996</member>
+      </simplelist>
+    </para>
+    <para>New in version 3.44</para>
+  </refsect1>
+</refentry>

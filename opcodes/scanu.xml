@@ -1,0 +1,130 @@
+
+<refentry id="scanu">
+<indexterm id="IndexScanu"><primary>scanu</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Scanned Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>scanu</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>scanu</refname>
+    <refpurpose>
+      Compute the waveform and the wavetable for use in scanned synthesis.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Compute the waveform and the wavetable for use in scanned synthesis.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>scanu</command> init, irate, ifnvel, ifnmass, ifnstif, ifncentr, ifndamp, kmass, \
+      kstif, kcentr, kdamp, ileft, iright, kpos, kstrngth, ain, idisp, id</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>init</emphasis> -- the initial position of the masses.  If this is a negative number, then the absolute of <emphasis>init</emphasis> signifies the table to use as a hammer shape.  If <emphasis>init</emphasis> &gt; 0, the length of it should be the same as the intended mass number, otherwise it can be anything.
+    </para>
+
+    <para>
+      <emphasis>ifnvel</emphasis> -- the ftable that contains the initial velocity for each mass.  It should have the same size as the intended mass number.
+    </para>
+
+    <para>
+      <emphasis>ifnmass</emphasis> -- ftable that contains the mass of each mass.  It should have the same size as the intended mass number.
+    </para>
+
+    <para>
+      <emphasis>ifnstif</emphasis> -- ftable that contains the spring stiffness of each connection. It should have the same size as the square of the intended mass number.  The data ordering is a row after row dump of the connection matrix of the system.
+    </para>
+
+    <para>
+      <emphasis>ifncentr</emphasis> -- ftable that contains the centering force of each mass. It should have the same size as the intended mass number.
+    </para>
+
+    <para>
+      <emphasis>ifndamp</emphasis> -- the ftable that contains the damping factor of each mass. It should have the same size as the intended mass number.
+    </para>
+
+    <para>
+      <emphasis>ileft</emphasis> -- If <emphasis>init</emphasis> &lt; 0, the position of the left hammer (<emphasis>ileft</emphasis> = 0 is hit at leftmost, <emphasis>ileft</emphasis> = 1 is hit at rightmost).
+    </para>
+
+    <para>
+      <emphasis>iright</emphasis> -- If <emphasis>init</emphasis> &lt; 0, the position of the right hammer (<emphasis>iright</emphasis> = 0 is hit at leftmost, <emphasis>iright</emphasis> = 1 is hit at rightmost).
+    </para>
+
+    <para>
+      <emphasis>idisp</emphasis> -- If 0, no display of the masses is provided.
+    </para>
+
+    <para>
+      <emphasis>id</emphasis> --  If positive, the ID of the opcode.  This will be used to point the scanning opcode to the proper waveform maker.  If this value is negative, the absolute of this value is the wavetable on which to write the waveshape. That wavetable can be used later from an other opcode to generate sound.  The initial contents of this table will be destroyed.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kmass</emphasis> -- scales the masses
+    </para>
+
+    <para>
+      <emphasis>kstif</emphasis> -- scales the spring stiffness
+    </para>
+
+    <para>
+      <emphasis>kcentr</emphasis> -- scales the centering force
+    </para>
+
+    <para>
+      <emphasis>kdamp</emphasis> -- scales the damping
+    </para>
+
+    <para>
+      <emphasis>kpos</emphasis> -- position of an active hammer along the string (<emphasis>kpos</emphasis> = 0 is leftmost, <emphasis>kpos</emphasis> = 1 is rightmost).  The shape of the hammer is determined by <emphasis>init</emphasis> and the power it pushes with is <emphasis>kstrngth</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>kstrngth</emphasis> -- power that the active hammer uses
+    </para>
+
+    <para>
+      <emphasis>ain</emphasis> -- audio input that adds to the velocity of the masses. Amplitude should not be too great.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      For an example, see the documentation on <link linkend="scans"><citetitle>scans</citetitle></link>.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>See Also</title>
+        <para> More information on this opcode: <ulink url="http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html"><citetitle>http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html</citetitle></ulink>  , written by Steven Yi </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &nameparis;</member>
+        <member>MIT Media Lab</member>
+        <member>Boston, Massachussetts USA</member>
+        <member>March 2000</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 4.05</para>
+  </refsect1>
+</refentry>

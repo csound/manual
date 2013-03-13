@@ -1,0 +1,41 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac      <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o notequal.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1
+
+ipch   <emphasis role="op">=</emphasis> <emphasis role="opc">cpspch</emphasis>(p4)
+iprint <emphasis role="op">=</emphasis> p5
+<emphasis role="octrl">if</emphasis> (iprint <emphasis role="op">!=</emphasis> 1) <emphasis role="octrl">igoto</emphasis> <emphasis role="olabel">skipPrint</emphasis>
+<emphasis role="opc">print</emphasis>  ipch
+asig   <emphasis role="opc">vco2</emphasis> .7, ipch
+       <emphasis role="opc">outs</emphasis> asig, asig
+
+<emphasis role="olabel">skipPrint</emphasis><emphasis role="op">:</emphasis>
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 65536 10 1	<emphasis role="comment">;sine wave</emphasis>
+
+<emphasis role="stamnt">i</emphasis>1 0 .5 8.00 0
+<emphasis role="stamnt">i</emphasis>1 0 .5 8.01 1 <emphasis role="comment">; this note will print it's ipch value and only this one will be played</emphasis>
+<emphasis role="stamnt">i</emphasis>1 0 .5 8.02 2
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

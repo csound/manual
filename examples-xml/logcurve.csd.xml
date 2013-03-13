@@ -1,0 +1,34 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in    Silent</emphasis>
+-odac           -iadc     -d    <emphasis role="comment">;;;realtime output</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis>	<emphasis role="op">=</emphasis>	48000
+<emphasis role="ohdr">ksmps</emphasis>	<emphasis role="op">=</emphasis>	100
+<emphasis role="ohdr">nchnls</emphasis>	<emphasis role="op">=</emphasis>	2
+
+		<emphasis role="oblock">instr</emphasis>	1	<emphasis role="comment">; logcurve test</emphasis>
+
+kmod	<emphasis role="opc">phasor</emphasis>	1<emphasis role="op">/</emphasis>p3
+
+kout	<emphasis role="opc">logcurve</emphasis> kmod, p4
+
+	<emphasis role="opc">printks</emphasis> "kmod <emphasis role="op">=</emphasis> <emphasis role="op">%</emphasis>f  kout <emphasis role="op">=</emphasis> <emphasis role="op">%</emphasis>f\\n", 0.1, kmod, kout
+
+		<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis>1	0	10 2
+<emphasis role="stamnt">i</emphasis>1	10	10 30
+<emphasis role="stamnt">i</emphasis>1	20	10 0.5
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

@@ -1,0 +1,85 @@
+<refentry id="midremot">
+<indexterm id="Indexmidremot"><primary>midremot</primary></indexterm>
+  <refentryinfo><title>Remote Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>midremot</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>midremot</refname>
+    <refpurpose>
+      An opcode which can be used to implement a remote midi orchestra. This opcode will send midi events from a source machine to one destination.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      With the <emphasis>midremot</emphasis> and <link linkend="midglobal"><citetitle>midglobal</citetitle></link> opcodes you are able to perform instruments on remote machines and control them from a master machine. The remote opcodes are implemented using the master/client model. All the machines involved contain the same orchestra but only the master machine contains the information of the midi score. During the performance the master machine sends the midi events to the clients. The <emphasis>midremot</emphasis> opcode will send events from a source machine to one destination if you want to send events to many destinations (broadcast) use the <link linkend="midglobal"><citetitle>midglobal</citetitle></link> opcode instead. These two opcodes can be used in combination.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>midremot</command> idestination, isource, instrnum [,instrnum...] </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>idestination</emphasis>
+      -- a string that is the intended host computer (e.g. 192.168.0.100). This is the destination host which receives the events from the given instrument.
+    </para>
+
+    <para>
+      <emphasis>isource</emphasis>
+      -- a string that is the intended host computer (e.g. 192.168.0.100). This is the source host which generates the events of the given instrument and sends it to the address given by idestination.
+    </para>
+
+    <para>
+      <emphasis>instrnum</emphasis>
+      -- a list of instrument numbers which will be played on the destination machine
+    </para>
+
+  </refsect1>
+
+<!--  <refsect1>
+    <title>Performance</title>
+    
+  </refsect1>-->
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the midremot opcode. It uses the files <ulink url="examples/midremot.csd"><citetitle>insremot.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the insremot opcode.</title>
+        <para>The example shows a Bach fugue played on 4 remote computers. The master machine is named "192.168.1.100", client1 "192.168.1.101" and so on. Start the clients on each machine (they will be waiting to receive the events from the master machine) and then start the master. Here is the command on linux to start a client (csound -dm0 -odac -+rtaudio=alsa midremot.csd -+rtmidi=Null), and the command on the master machine will look like this (csound -dm0 -odac -+rtaudio=alsa midremot.csd -F midremot.mid).</para>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+
+        <xi:include href="examples-xml/midremot.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See also</title>
+    <para>
+      <link linkend="insglobal"><citetitle>insglobal</citetitle></link>, <link linkend="insremot"><citetitle>insremot</citetitle></link>, <link linkend="midglobal"><citetitle>midglobal</citetitle></link>, <link linkend="remoteport"><citetitle>remoteport</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Simon Schampijer</member>
+        <member>2006</member>
+      </simplelist>
+    </para>
+    <para>
+      New in version 5.03
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,129 @@
+
+<refentry id="instr">
+<indexterm id="IndexInstr"><primary>instr</primary></indexterm>
+  <refentryinfo><title>Orchestra Syntax:Block Statements</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>instr</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>instr</refname>
+
+    <refpurpose>
+      Starts an instrument block.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Starts an instrument block.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>instr</command> i, j, ...</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      Starts an instrument block defining instruments <emphasis>i, j</emphasis>, ...
+    </para>
+
+    <para>
+      <emphasis>i, j</emphasis>, ... must be numbers, not expressions. Any positive integer is legal, and in any order, but excessively high numbers are best avoided.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        There may be any number of instrument blocks in an orchestra.
+      </para>
+    </note>
+
+     <para>
+       Instruments can be defined in any order (but they will always be both initialized and performed in ascending instrument number order, with the exception of notes triggered by real time events that are initialized in the order of being received but still performed in ascending instrument number order).  Instrument blocks cannot be nested (i.e. one block cannot contain another).
+     </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <refsect2 id="InstrSubinstrument">
+      <title>Calling an Instrument within an Instrument</title>
+      <warning><para>
+        This behavior is not fully available in Csound 5. In Csound 5,
+        you must use
+        the <link linkend="subinstr"><citetitle>subinstr</citetitle></link>
+        opcode.
+      </para></warning>
+      <para>
+        You can call an instrument within an instrument as if it were an opcode either with the <link linkend="subinstr"><citetitle>subinstr</citetitle></link> opcode or by specifying an instrument with a text name:
+
+        <informalexample>
+          <programlisting>
+<emphasis role="oblock">instr</emphasis> <command>MyOscil</command>
+...
+<emphasis role="oblock">endin</emphasis></programlisting>
+        </informalexample>
+      </para>
+
+      <para>
+        By default, all output parameters correspond to the called instrument's output with the <link linkend="SigioOutput"><citetitle>signal output</citetitle></link> opcodes.  All input parameters are mapped to the called instrument's p-fields starting with the fourth one, p4.  The values of the called instrument's second and third p-fields, p2 and p3, are automatically set to those of the calling instrument's.
+      </para>
+
+      <para>
+        A named instrument must be defined before any instrument that calls it.
+      </para>
+
+      <note>
+        <title>Hint</title>
+        <para>
+          If you use the <link linkend="outc"><citetitle>outc</citetitle></link> opcode, you can create an instrument that will compile and function in any orchestra of any number of channels greater than or equal to the output channels of the instrument.
+        </para>
+
+        <para>
+          A nice feature to use with named instruments is the <link linkend="include"><citetitle>&num;include</citetitle></link> feature.  You can then define your named instruments in separate files, using &num;include when you need to use one.
+        </para>
+      </note>
+    </refsect2>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the instr opcode. It uses the file <ulink url="examples/instr.csd"><citetitle>instr.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the instr opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/instr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="endin"><citetitle>endin</citetitle></link>,
+      <link linkend="in"><citetitle>in</citetitle></link>,
+      <link linkend="out"><citetitle>out</citetitle></link>,
+      <link linkend="opcode"><citetitle>opcode</citetitle></link>,
+      <link linkend="endop"><citetitle>endop</citetitle></link>,
+      <link linkend="setksmps"><citetitle>setksmps</citetitle></link>,
+      <link linkend="xin"><citetitle>xin</citetitle></link>,
+      <link linkend="xout"><citetitle>xout</citetitle></link>,
+      <link linkend="subinstr"><citetitle>subinstr</citetitle></link>,
+      <link linkend="subinstrinit"><citetitle>subinstrinit</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Example written by &namekevin;.</para>
+  </refsect1>
+</refentry>

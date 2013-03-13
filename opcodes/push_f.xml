@@ -1,0 +1,62 @@
+
+<refentry id="push_f">
+<indexterm id="Indexpush_f"><primary>push_f</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Stacks</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>push_f</refentrytitle>
+  </refmeta>
+  
+  <refnamediv>
+    <refname>push_f</refname>
+    <refpurpose>
+      Pushes an f-sig frame into the global stack.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Pushes an f-sig frame into the global stack.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>push_f</command>  fsig</synopsis>
+  </refsect1>
+  
+<!--  <refsect1>
+    <title>Initialization</title>
+  </refsect1>-->
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>fsig </emphasis>  - f-signal to be pushed into the stack.
+    </para>
+    <para>
+      The values are pushed into the global stack. The global stack works in LIFO order: after multiple <emphasis>push_f</emphasis> calls, <link linkend="pop_f"><citetitle>pop_f</citetitle></link> should be used in reverse order.
+    </para>
+    <para>
+      push/pop for a, k, i, and S types copy data by value. By contrast, <emphasis>push_f</emphasis> only pushes a "reference" to the f-signal, and then the corresponding <link linkend="pop_f"><citetitle>pop_f</citetitle></link> will copy directly from the original variable to its output signal. For this reason, changing the source f-signal of <emphasis>push_f</emphasis> before <link linkend="pop_f"><citetitle>pop_f</citetitle></link> is called is not recommended, and if the instrument instance owning the variable that was passed by <emphasis>push_f</emphasis> is deactivated before <link linkend="pop_f"><citetitle>pop_f</citetitle></link> is called, undefined behavior may occur.
+    </para>
+    <para>
+      <link linkend="pop_f"><citetitle>pop_f</citetitle></link> and <emphasis>push_f</emphasis> can only take a single argument, and the data is passed both at init and performance time.
+    </para>
+    <para>
+      Any stack errors (trying to push when there is no more space, or pop from an empty stack, inconsistent number or type of arguments, etc.) are fatal and terminate performance.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>See also</title>
+    <para>
+      <link linkend="stack"><citetitle>stack</citetitle></link>,
+      <link linkend="push"><citetitle>push</citetitle></link>,
+      <link linkend="pop"><citetitle>pop</citetitle></link> and
+      <link linkend="pop_f"><citetitle>pop_f</citetitle></link>.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Credits</title>
+    <para>By: &nameistvan;.</para>
+    <para>2006</para>
+  </refsect1>
+</refentry>

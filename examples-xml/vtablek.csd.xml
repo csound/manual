@@ -1,0 +1,43 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+-odac -B441 -b441
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis>     <emphasis role="op">=</emphasis>        44100
+<emphasis role="ohdr">kr</emphasis>     <emphasis role="op">=</emphasis>        100
+<emphasis role="ohdr">ksmps</emphasis>  <emphasis role="op">=</emphasis>        441
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis>        2
+
+gkindx <emphasis role="opc">init</emphasis> <emphasis role="op">-</emphasis>1
+
+       <emphasis role="oblock">instr</emphasis>    1
+kindex <emphasis role="opc">init</emphasis> 0
+ktrig <emphasis role="opc">metro</emphasis> 0.5
+<emphasis role="octrl">if</emphasis> ktrig <emphasis role="op">=</emphasis> 0 <emphasis role="octrl">goto</emphasis> <emphasis role="olabel">noevent</emphasis>
+gkindx <emphasis role="op">=</emphasis> gkindx <emphasis role="op">+</emphasis> 1
+<emphasis role="olabel">noevent</emphasis><emphasis role="op">:</emphasis>
+
+	<emphasis role="oblock">endin</emphasis>
+
+	<emphasis role="oblock">instr</emphasis>	2
+kout1 <emphasis role="opc">init</emphasis> 0
+kout2 <emphasis role="opc">init</emphasis> 0
+kout3 <emphasis role="opc">init</emphasis> 0
+kout4 <emphasis role="opc">init</emphasis> 0
+<emphasis role="opc">vtablek</emphasis>  gkindx, 1, 1, 0, kout1,kout2, kout3, kout4
+<emphasis role="opc">printk2</emphasis> kout1
+<emphasis role="opc">printk2</emphasis> kout2
+<emphasis role="opc">printk2</emphasis> kout3
+<emphasis role="opc">printk2</emphasis> kout4
+	<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 32 10 1
+<emphasis role="stamnt">i</emphasis> 1 0 20
+<emphasis role="stamnt">i</emphasis> 2 0 20
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

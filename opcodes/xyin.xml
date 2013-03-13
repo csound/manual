@@ -1,0 +1,84 @@
+
+<refentry id="xyin">
+<indexterm id="IndexXyin"><primary>xyin</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>xyin</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>xyin</refname>
+
+    <refpurpose>
+      Sense the cursor position in an output window
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Sense the cursor position in an output window. When <emphasis>xyin</emphasis> is called the position of the mouse within the output window is used to reply to the request.  This simple mechanism does mean that only one <emphasis>xyin</emphasis> can be used accurately at once.  The position of the mouse is reported in the output window.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kx, ky <command>xyin</command> iprd, ixmin, ixmax, iymin, iymax [, ixinit] [, iyinit]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iprd</emphasis> -- period of cursor sensing (in seconds). Typically .1 seconds.
+    </para>
+
+    <para>
+      <emphasis>xmin, xmax, ymin, ymax</emphasis> -- edge values for the x-y coordinates of a cursor in the input window.
+    </para>
+
+    <para>
+      <emphasis>ixinit, iyinit</emphasis> (optional) -- initial x-y coordinates reported; the default values are 0,0. If these values are not within the given min-max range, they will be coerced into that range.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>xyin</emphasis> samples the cursor x-y position in an input window every <emphasis>iprd</emphasis> seconds. Output values are repeated (not interpolated) at the k-rate, and remain fixed until a new change is registered in the window. There may be any number of input windows. This unit is useful for real-time control, but continuous motion should be avoided if <emphasis>iprd</emphasis> is unusually small.
+    </para>
+    <note>
+      <para>
+        Depending on your platform and distribution, you might need to enable displays using the <emphasis>--displays</emphasis> command line flag.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the xyin opcode. It uses the file <ulink url="examples/xyin.csd"><citetitle>xyin.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the xyin opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/xyin.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      As the values of kx and ky change, they will be printed out like this:
+      <screen>
+kx=8.612036, ky=22.677933
+kx=10.765685, ky=15.644135
+      </screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Example written by &namekevin;.</para>
+  </refsect1>
+</refentry>

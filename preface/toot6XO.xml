@@ -1,0 +1,33 @@
+<section id="PrefaceToot6">
+  <title>Toot 6</title>
+
+  <para>
+    The first character in a <link linkend="ScoreStatements"><citetitle>score statement</citetitle></link> is an <emphasis>opcode</emphasis>, determining an action request; the remaining data consists of numeric parameter fields (p-fields) to be used by that action. So far we have been dealing with two different <emphasis>opcodes</emphasis> in our score: <link linkend="f"><citetitle>f</citetitle></link> and <link linkend="i"><citetitle>i</citetitle></link>. i statements, or note statements, invoke the p1 instrument at time p2 and turn it off after p3 seconds; all remaining p-fields are passed to the instrument.
+  </para>
+  <para>
+    On the other hand, <link linkend="f"><citetitle>f statements</citetitle></link>, or lines with an opcode of f, invoke function-drawing subroutines called <link linkend="ScoreGenRef"><citetitle>GENS</citetitle></link>. In Csound there are many <link linkend="ScoreGenRef"><citetitle>GENS</citetitle></link> which fill tables in a variety of ways. For example, <link linkend="GEN01"><citetitle>GEN01</citetitle></link> transfers data from a soundfile;  <link linkend="GEN07"><citetitle>GEN07</citetitle></link> allows you to construct functions from segments of straight lines; and <link linkend="GEN10"><citetitle>GEN10</citetitle></link>, which we've been using in our scores so far, generates composite waveforms made up of a weighted sum of simple sinusoids. We have named the function "f1," invoked it at time 0, defined it to contain 512 points, and instructed <link linkend="GEN10"><citetitle>GEN10</citetitle></link> to fill that table with a single sinusoid whose amplitude is 1. <link linkend="GEN10"><citetitle>GEN10</citetitle></link> can in fact be used to approximate a variety of other waveforms, as illustrated by the following:
+  </para>
+  <programlisting>
+  <emphasis role="opc">f</emphasis> 1 0 2048 10 1                                         ; Sine
+  <emphasis role="opc">f</emphasis> 2 0 2048 10 1 0.5 0.3 0.25 0.2 0.167 0.14 0.125 .111  ; Sawtooth
+  <emphasis role="opc">f</emphasis> 3 0 2048 10 1 0   0.3 0    0.2 0     0.14 0     .111  ; Square
+  <emphasis role="opc">f</emphasis> 4 0 2048 10 1 1   1   1    0.7 0.5   0.3  0.1         ; Pulse</programlisting>
+
+  <para>For the opcode f, the first four p-fields are interpreted as follows:
+    <itemizedlist>
+      <listitem><simpara>p1 - table number - In the orchestra, you reference this table by its number.</simpara></listitem>
+      <listitem><simpara>p2 - creation time - The time at which the function is generated.</simpara></listitem>
+      <listitem><simpara>p3 - table size - Number of points in table - must be a power of 2, or that plus 1.</simpara></listitem>
+      <listitem><simpara>p4 - generating subroutine - Which of the GEN soubroutine will you employ.</simpara></listitem>
+      <listitem><simpara>p5 - meaning determined by the particular GEN subroutine.</simpara></listitem>
+    </itemizedlist>
+  </para>
+
+  <para>
+    In the instrument and score below, we have added three additional functions to the score, and modified the orchestra so that the instrument can call them via <emphasis>p11</emphasis>. The csd file is <ulink url="examples/toot6.csd"><citetitle>toot6.csd</citetitle></ulink>.
+  </para>
+
+  <para>
+    <xi:include href="examples-xml/toot6.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </para>
+</section>

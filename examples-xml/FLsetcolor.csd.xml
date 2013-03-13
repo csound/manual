@@ -1,0 +1,56 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in    No messages</emphasis>
+-odac           -iadc     -d     <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o FLsetcolor.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="comment">; Using the opcode flsetcolor to change from the</emphasis>
+<emphasis role="comment">; default colours for widgets</emphasis>
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">kr</emphasis> <emphasis role="op">=</emphasis> 441
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 100
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 1
+
+<emphasis role="opc">FLpanel</emphasis> "Coloured Sliders", 900, 360, 50, 50
+    gkfreq, ihandle <emphasis role="opc">FLslider</emphasis> "A Red Slider", 200, 5000, <emphasis role="op">-</emphasis>1, 5, <emphasis role="op">-</emphasis>1, 750, 30, 85, 50
+    ired1 <emphasis role="op">=</emphasis> 255
+    igreen1 <emphasis role="op">=</emphasis> 0
+    iblue1 <emphasis role="op">=</emphasis> 0
+    <emphasis role="opc">FLsetColor</emphasis> ired1, igreen1, iblue1, ihandle
+
+    gkfreq, ihandle <emphasis role="opc">FLslider</emphasis> "A Green Slider", 200, 5000, <emphasis role="op">-</emphasis>1, 5, <emphasis role="op">-</emphasis>1, 750, 30, 85, 150
+    ired1 <emphasis role="op">=</emphasis> 0
+    igreen1 <emphasis role="op">=</emphasis> 255
+    iblue1 <emphasis role="op">=</emphasis> 0
+    <emphasis role="opc">FLsetColor</emphasis> ired1, igreen1, iblue1, ihandle
+
+    gkfreq, ihandle <emphasis role="opc">FLslider</emphasis> "A Blue Slider", 200, 5000, <emphasis role="op">-</emphasis>1, 5, <emphasis role="op">-</emphasis>1, 750, 30, 85, 250
+    ired1 <emphasis role="op">=</emphasis> 0
+    igreen1 <emphasis role="op">=</emphasis> 0
+    iblue1 <emphasis role="op">=</emphasis> 255
+    <emphasis role="opc">FLsetColor</emphasis> ired1, igreen1, iblue1, ihandle
+<emphasis role="comment">; End of panel contents</emphasis>
+<emphasis role="opc">FLpanelEnd</emphasis>
+<emphasis role="comment">; Run the widget thread!</emphasis>
+<emphasis role="opc">FLrun</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 1
+<emphasis role="oblock">endin</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="comment">; 'Dummy' score event for 1 hour.</emphasis>
+<emphasis role="stamnt">f</emphasis> 0 3600
+<emphasis role="stamnt">e</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

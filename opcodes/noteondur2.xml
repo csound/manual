@@ -1,0 +1,102 @@
+
+<refentry id="noteondur2">
+<indexterm id="IndexNoteondur2"><primary>noteondur2</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Note Output</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>noteondur2</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>noteondur2</refname>
+
+    <refpurpose>
+      Sends a noteon and a noteoff MIDI message both with the same channel, number and velocity.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Sends a noteon and a noteoff MIDI message both with the same channel, number and velocity.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>noteondur2</command> ichn, inum, ivel, idur</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ichn</emphasis> -- MIDI channel number (1-16)
+    </para>
+
+    <para>
+      <emphasis>inum</emphasis> -- note number (0-127)
+    </para>
+
+    <para>
+      <emphasis>ivel</emphasis> -- velocity (0-127)
+    </para>
+
+    <para>
+      <emphasis>idur</emphasis> -- how long, in seconds, this note should last.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>noteondur2</emphasis> (i-rate note on with duration) sends a noteon and a noteoff MIDI message both with the same channel, number and velocity. Noteoff message is sent after <emphasis>idur</emphasis> seconds are elapsed by the time <emphasis>noteondur2</emphasis> was active.
+    </para>
+
+    <para>
+      <emphasis>noteondur</emphasis> differs from <emphasis>noteondur2</emphasis> in that <emphasis>noteondur</emphasis> truncates note duration when current instrument is deactivated by score or by real-time playing, while <emphasis>noteondur2</emphasis> will extend performance time of current instrument until <emphasis>idur</emphasis> seconds have elapsed. In real-time playing, it is suggested to use <emphasis>noteondur</emphasis> also for undefined durations, giving a large <emphasis>idur</emphasis> value.
+    </para>
+
+    <para>
+      Any number of <emphasis>noteondur2</emphasis> opcodes can appear in the same Csound instrument, allowing chords to be played by a single instrument.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the noteondur2 opcode. It uses the file <ulink url="examples/noteondur2.csd"><citetitle>noteondur2.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the noteondur2 opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+        <para>This example generates notes for every note received on the MIDI input. It generates MIDI notes on csound's MIDI output, so be sure to connect something.</para>
+          <xi:include href="examples-xml/noteondur2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="noteoff"><citetitle>noteoff</citetitle></link>,
+      <link linkend="noteon"><citetitle>noteon</citetitle></link>,
+      <link linkend="noteondur"><citetitle>noteondur</citetitle></link>,
+      <link linkend="midion"><citetitle>midion</citetitle></link>,
+      <link linkend="midion2"><citetitle>midion2</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namegabriel;</member>
+        <member>Italy</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.47</para>
+    <para>Thanks goes to &namerasmus; for pointing out the correct MIDI channel and controller number ranges.</para>
+  </refsect1>
+</refentry>

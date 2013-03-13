@@ -1,0 +1,90 @@
+
+<refentry id="linenr">
+<indexterm id="IndexLinenr"><primary>linenr</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Envelope Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>linenr</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>linenr</refname>
+    <refpurpose>
+      The <emphasis>linen</emphasis> opcode extended with a final release segment.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>linenr</emphasis> -- same as <link linkend="linen"><citetitle>linen</citetitle></link> except that the final segment is entered only on sensing a MIDI note release. The note is then extended by the decay time.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>linenr</command> xamp, irise, idec, iatdec</synopsis>
+
+    <synopsis>kres <command>linenr</command> kamp, irise, idec, iatdec</synopsis>
+ </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>irise</emphasis> -- rise time in seconds. A zero or negative value signifies no rise modification.
+    </para>
+
+    <para>
+      <emphasis>idec</emphasis> -- decay time in seconds. Zero means no decay. An <emphasis>idec</emphasis> &gt; <emphasis>idur</emphasis> will cause a truncated decay.
+    </para>
+
+    <para>
+      <emphasis>iatdec</emphasis> -- attenuation factor by which the closing steady state value is reduced exponentially over the decay period. This value must be positive and is normally of the order of .01. A large or excessively small value is apt to produce a cutoff which is audible. A zero or negative value is illegal.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kamp, xamp</emphasis> -- input amplitude signal.
+    </para>
+
+    <para>
+      <emphasis>linenr</emphasis> is unique within Csound in containing a <emphasis>note-off sensor</emphasis> and <emphasis>release time extender</emphasis>. When it senses either a score event termination or a MIDI noteoff, it will immediately extend the performance time of the current instrument by <emphasis>idec</emphasis> seconds, then execute an exponential decay towards the factor <emphasis>iatdec</emphasis>. For two or more units in an instrument, extension is by the greatest <emphasis>idec</emphasis>.
+    </para>
+
+    <para>
+      You can use other pre-made envelopes which start a release segment upon recieving a note off message, like <link linkend="linsegr"><citetitle>linsegr</citetitle></link> and <link linkend="expsegr"><citetitle>expsegr</citetitle></link>, or you can construct more complex envelopes using <link linkend="xtratim"><citetitle>xtratim</citetitle></link> and <link linkend="release"><citetitle>release</citetitle></link>. Note that you don't need to use <link linkend="xtratim"><citetitle>xtratim</citetitle></link> if you are using <emphasis>linenr</emphasis>, since the time is extended automatically.
+    </para>
+
+    <para>
+      These <quote>r</quote> units can also be modified by MIDI noteoff velocities (see veloffs).
+    </para>
+
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the linenr opcode. It uses the file <ulink url="examples/linenr.csd"><citetitle>linenr.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the linenr opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/linenr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="linsegr"><citetitle>linsegr</citetitle></link>,
+      <link linkend="expsegr"><citetitle>expsegr</citetitle></link>,
+      <link linkend="envlpxr"><citetitle>envlpxr</citetitle></link>,
+      <link linkend="mxadsr"><citetitle>mxadsr</citetitle></link>,
+      <link linkend="madsr"><citetitle>madsr</citetitle></link>,
+      <link linkend="envlpx"><citetitle>envlpx</citetitle></link>,
+      <link linkend="linen"><citetitle>linen</citetitle></link>,
+      <link linkend="xtratim"><citetitle>xtratim</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

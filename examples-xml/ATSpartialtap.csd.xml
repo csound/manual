@@ -1,0 +1,43 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac     <emphasis role="comment">;;;RT audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc for RT audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o ATSpartialtap.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis> <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1	<emphasis role="comment">; "beats.ats" is created by atsa</emphasis>
+
+ktime	<emphasis role="opc">line</emphasis>	0, p3, 2
+	<emphasis role="opc">ATSbufread</emphasis> ktime, 1, "beats.ats", 30
+kfreq1, kam1	<emphasis role="opc">ATSpartialtap</emphasis>  5
+kfreq2, kam2	<emphasis role="opc">ATSpartialtap</emphasis>  20
+kfreq3, kam3	<emphasis role="opc">ATSpartialtap</emphasis>  30
+
+aout1	<emphasis role="opc">oscil</emphasis>	kam1, kfreq1, 1
+aout2	<emphasis role="opc">oscil</emphasis>	kam2, kfreq2, 1
+aout3	<emphasis role="opc">oscil</emphasis>	kam3, kfreq3, 1
+aout	<emphasis role="op">=</emphasis>	(aout1<emphasis role="op">+</emphasis>aout2<emphasis role="op">+</emphasis>aout3)<emphasis role="op">*</emphasis>10	<emphasis role="comment">; amplify some more</emphasis>
+	<emphasis role="opc">outs</emphasis>	aout, aout
+
+<emphasis role="oblock">endin</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="comment">; sine wave.</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 16384 10 1
+<emphasis role="stamnt">i</emphasis> 1 0 2
+<emphasis role="stamnt">e</emphasis>
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

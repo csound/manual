@@ -1,0 +1,110 @@
+<refentry id="ampmidid">
+<indexterm id="IndexAmpmidid"><primary>ampmidid</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Converters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ampmidid</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ampmidid</refname>
+    <refpurpose>
+        Musically map MIDI velocity to peak amplitude within a specified dynamic range in decibels.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+        Musically map MIDI velocity to peak amplitude within a specified dynamic range in decibels.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>iamplitude <command>ampmidid</command> ivelocity, idecibels</synopsis>
+    <synopsis>kamplitude <command>ampmidid</command> kvelocity, idecibels</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iamplitude</emphasis> -- Amplitude.
+    </para>
+
+    <para>
+      <emphasis>ivelocity</emphasis> -- MIDI velocity number, ranging from 0 through 127.
+    </para>
+
+    <para>
+      <emphasis>idecibels</emphasis> -- Desired dynamic range in decibels.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kamplitude</emphasis> -- Amplitude.
+    </para>
+
+    <para>
+      <emphasis>kvelocity</emphasis> -- MIDI velocity number, ranging from 0 through 127.
+    </para>
+
+    <para>
+Musically map MIDI velocity to peak amplitude
+within a specified dynamic range in decibels:
+a = (m * v + b) ^ 2,
+where a = amplitude,
+v = MIDI velocity,
+r = 10 ^ (R / 20),
+b = 127 / (126 * sqrt( r )) - 1 / 126,
+m = (1 - b) / 127,
+and R = specified dynamic range in decibels.
+See Roger Dannenberg, "The Interpretation of MIDI Velocity,"
+in Georg Essl and Ichiro Fujinaga (Eds.), Proceedings of the
+2006 International Computer Music Conference,
+November 6-11, 2006 (San Francisco:
+The International Computer Music Association), pp. 193-196.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the ampmidid opcode. It uses the file <ulink url="examples/ampmidid.csd"><citetitle>ampmidid.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the ampmidid opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/ampmidid.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="aftouch"><citetitle>aftouch</citetitle></link>,
+      <link linkend="cpsmidi"><citetitle>cpsmidi</citetitle></link>,
+      <link linkend="cpsmidib"><citetitle>cpsmidib</citetitle></link>,
+      <link linkend="midictrl"><citetitle>midictrl</citetitle></link>,
+      <link linkend="notnum"><citetitle>notnum</citetitle></link>,
+      <link linkend="octmidi"><citetitle>octmidi</citetitle></link>,
+      <link linkend="octmidib"><citetitle>octmidib</citetitle></link>,
+      <link linkend="pchbend"><citetitle>pchbend</citetitle></link>,
+      <link linkend="pchmidi"><citetitle>pchmidi</citetitle></link>,
+      <link linkend="pchmidib"><citetitle>pchmidib</citetitle></link>,
+      <link linkend="veloc"><citetitle>veloc</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namemichael;</member>
+        <member>2006</member>
+      </simplelist>
+    </para>
+
+  </refsect1>
+</refentry>

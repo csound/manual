@@ -1,0 +1,120 @@
+
+<refentry id="GEN02">
+      <indexterm id="IndexGEN02"><primary>GEN02</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN02</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN02</refname>
+    <refpurpose>
+      Transfers data from immediate pfields into a function table.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This subroutine transfers data from immediate pfields into a function table.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>f</command> # time size 2 v1 v2 v3 ...</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>size</emphasis> -- number of points in the table. Must be a power of 2 or a power-of-2 plus 1 (see <link linkend="f"><citetitle>f statement</citetitle></link>). The maximum tablesize is 16777216 (2<superscript>24</superscript>) points.
+    </para>
+
+    <para>
+      <emphasis>v1, v2, v3,</emphasis> etc. -- values to be copied directly into the table space. The number of values is limited by the compile-time variable <emphasis>PMAX</emphasis>, which controls the maximum pfields (currently 1000). The values copied may include the table guard point; any table locations not filled will contain zeros.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        If p4 (the GEN routine number is positive, the table will be
+        post-normalized (rescaled to a maximum absolute value of 1 after
+        generation). A negative p4 will cause rescaling to be skipped. You will
+        usually want to use -2 with this GEN function, so that your values are
+        not normalized.
+      </para>
+    </note>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the GEN02 routine. It uses the files <ulink url="examples/gen02.csd"><citetitle>gen02.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the GEN02 routine.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+        <xi:include href="examples-xml/gen02.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+        <textobject>
+          <phrase>These are the diagrams of the waveforms of the GEN02 routines, as used in the example:</phrase>
+        </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen02_1.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 2 0 5 2 0 2 0</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 2 0 5 2 0 2 0</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen02_2.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 3 0 5 2 0 2 10 0</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 3 0 5 2 0 2 10 0</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen02_3.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 4 0 9 2 0 2 10 100 0</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 4 0 9 2 0 2 10 100 0</para>
+        </caption>
+      </mediaobject>
+
+    </para>
+  </refsect1>
+
+  <refsect1>
+     <title>See Also</title>
+     <para>
+       <link linkend="GEN17"><citetitle>GEN17</citetitle></link>
+     </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>December 2002. Thanks to &namerasmus;, corrected the limit of the <emphasis>PMAX</emphasis> variable.</para>
+  </refsect1>
+</refentry>

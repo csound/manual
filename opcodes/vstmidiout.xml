@@ -1,0 +1,104 @@
+<refentry id="vstmidiout">
+<indexterm id="IndexVstMidiOut"><primary>vstmidiout</primary></indexterm>
+  <refentryinfo><title>Plugin Hosting:VST</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vstmidiout</refentrytitle>
+  </refmeta>
+  
+  <refnamediv>
+    <refname>vstmidiout</refname>
+    <refpurpose>
+      Sends MIDI information to a VST plugin.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>vstmidiout</command> instance, kstatus, kchan, kdata1, kdata2</synopsis>
+  </refsect1>
+  
+  <refsect1>
+    <title>Description</title>
+    <para><emphasis>vstmidiout</emphasis> is used for sending MIDI information to a VST plugin.</para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>instance</emphasis> - the number which identifies the
+      plugin, to be passed to other vst4cs opcodes.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kstatus</emphasis> - the type of midi message to be
+      sent. Currently noteon (144), note off (128), Control Change (176),
+      Program change (192), Aftertouch (208) and Pitch Bend (224) are
+      supported.
+    </para>
+    <para>
+      <emphasis>kchan</emphasis> - the MIDI channel transmitted
+      on.
+    </para>
+    <para>
+      <emphasis>kdata1, kdata2</emphasis> - the MIDI data pair, which
+      varies depending on <emphasis>kstatus</emphasis>. e.g. note/velocity for note on and note
+      off, Controller number/value for control change.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Examples</title>
+    <example>
+      <title>Example for vstmidiout</title>
+<programlisting>
+<emphasis role="comment">/* orc */</emphasis>
+<emphasis role="ohdr">sr</emphasis>     <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">kr</emphasis>     <emphasis role="op">=</emphasis> 4410
+<emphasis role="ohdr">ksmps</emphasis>  <emphasis role="op">=</emphasis> 10
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+
+gihandle1 <emphasis role="opc">vstinit</emphasis> "c:/vstplugins/cheeze/cheeze machine.dll", 1
+
+<emphasis role="oblock">instr</emphasis> 3
+ain1      <emphasis role="op">=</emphasis>           0
+ab1, ab2  <emphasis role="opc">vstaudio</emphasis>    gihandle1, ain1, ain1
+          <emphasis role="opc">outs</emphasis>        ab1, ab2
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 4
+          <emphasis role="opc">vstmidiout</emphasis>  gihandle1, 144, 1, p4, p5
+<emphasis role="oblock">endin</emphasis>
+
+
+<emphasis role="comment">/* sco */</emphasis>
+<emphasis role="stamnt">i</emphasis> 3 0 21
+
+<emphasis role="stamnt">i</emphasis> 4  1 1 57  32
+<emphasis role="stamnt">i</emphasis> 4  3 1 60 100
+<emphasis role="stamnt">i</emphasis> 4  5 1 62 100
+<emphasis role="stamnt">i</emphasis> 4  7 1 64 100
+<emphasis role="stamnt">i</emphasis> 4  9 1 65 100
+<emphasis role="stamnt">i</emphasis> 4 11 1 67 100
+<emphasis role="stamnt">i</emphasis> 4 13 1 69 100
+<emphasis role="stamnt">i</emphasis> 4 15 3 71 100
+<emphasis role="stamnt">i</emphasis> 4 18 3 72 100
+<emphasis role="stamnt">e</emphasis></programlisting>
+    </example>
+  </refsect1>
+  
+  <refsect1>
+    <title>Credits</title>
+    <para>By: &nameandres; and &namemichael;</para>
+    <para>
+      Uses code from Hermann Seib's VSTHost and Thomas Grill's vst~
+      object.
+    </para>
+    <para>
+      VST is a trademark of Steinberg Media Technologies GmbH. 
+      VST Plug-In Technology by Steinberg.
+    </para>
+  </refsect1>
+</refentry>

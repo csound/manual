@@ -1,0 +1,37 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac  <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o pvsmix.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+gisin	<emphasis role="ohdr">ftgen</emphasis>	1, 0, 2048, 10, 1
+
+<emphasis role="oblock">instr</emphasis> 1
+
+asig1 <emphasis role="opc">diskin2</emphasis> "fox.wav", 1		<emphasis role="comment">;signal in 1</emphasis>
+asig2 <emphasis role="opc">oscil</emphasis>   .3, 100, gisin		<emphasis role="comment">;signal in 2</emphasis>
+fsig1 <emphasis role="opc">pvsanal</emphasis> asig1,1024,256,1024,0	<emphasis role="comment">;pvoc analysis </emphasis>
+fsig2 <emphasis role="opc">pvsanal</emphasis> asig2,1024,256,1024,0	<emphasis role="comment">;of both signals</emphasis>
+fsall <emphasis role="opc">pvsmix</emphasis>  fsig1, fsig2 
+asig  <emphasis role="opc">pvsynth</emphasis> fsall
+      <emphasis role="opc">outs</emphasis> asig, asig 
+
+<emphasis role="oblock">endin</emphasis> 
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1 0 3
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

@@ -1,0 +1,103 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac     <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o mandel.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="comment">;example by Brian Evans</emphasis>
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+
+<emphasis role="oblock">instr</emphasis> 1
+
+ipitchtable <emphasis role="op">=</emphasis> 1						<emphasis role="comment">; pitch table in score      </emphasis>
+ipitchndx <emphasis role="op">=</emphasis> p5						<emphasis role="comment">; p5=pitch index from table</emphasis>
+    
+ipitch <emphasis role="opc">table</emphasis>  ipitchndx, ipitchtable   
+kenv   <emphasis role="opc">expseg</emphasis> 1.0, 1.0, 1.0, 11.5, .0001              
+asig   <emphasis role="opc">pluck</emphasis>  <emphasis role="opc">ampdb</emphasis>(p4)<emphasis role="op">*</emphasis>kenv, <emphasis role="opc">cpspch</emphasis>(ipitch), <emphasis role="opc">cpspch</emphasis>(ipitch), 0, 1
+       <emphasis role="opc">outs</emphasis>   asig, asig
+       
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">f</emphasis>1 0 32 -2 6.00 6.02 6.04 6.05 6.07 6.09 6.11		<emphasis role="comment">; f1 is a pitch table defining a four octave C major scale starting </emphasis>
+           7.00 7.02 7.04 7.05 7.07 7.09 7.11		<emphasis role="comment">; on C two octaves below middle C</emphasis>
+           8.00 8.02 8.04 8.05 8.07 8.09 8.11
+           9.00 9.02 9.04 9.05 9.07 9.09 9.11
+
+<emphasis role="comment">;ins start   dur ampdb(p4) pitchndx(p5)</emphasis>
+
+<emphasis role="stamnt">i</emphasis>1   0       12.0   75     3 
+<emphasis role="stamnt">i</emphasis>1   1.5999  12.0   75     4 
+<emphasis role="stamnt">i</emphasis>1   3.4000  12.0   75     5 
+<emphasis role="stamnt">i</emphasis>1   4.2000  12.0   75     6 
+<emphasis role="stamnt">i</emphasis>1   4.4000  12.0   75     7 
+<emphasis role="stamnt">i</emphasis>1   4.6000  12.0   75     9 
+<emphasis role="stamnt">i</emphasis>1   4.8000  12.0   75     10 
+<emphasis role="stamnt">i</emphasis>1   5.0000  12.0   75     5 
+<emphasis role="stamnt">i</emphasis>1   5.2000  12.0   75     27 
+<emphasis role="stamnt">i</emphasis>1   5.4000  12.0   75     5 
+<emphasis role="stamnt">i</emphasis>1   5.6000  12.0   75     20 
+<emphasis role="stamnt">i</emphasis>1   6.0000  12.0   75     24 
+<emphasis role="stamnt">i</emphasis>1   6.2000  12.0   75     2 
+<emphasis role="stamnt">i</emphasis>1   6.4000  12.0   75     27 
+<emphasis role="stamnt">i</emphasis>1   6.6000  12.0   75     20 
+<emphasis role="stamnt">i</emphasis>1   6.8000  12.0   75     15 
+<emphasis role="stamnt">i</emphasis>1   7.0000  12.0   75     3 
+<emphasis role="stamnt">i</emphasis>1   7.2000  12.0   75     3 
+<emphasis role="stamnt">i</emphasis>1   7.4000  12.0   75     23 
+<emphasis role="stamnt">i</emphasis>1   7.6000  12.0   75     9 
+<emphasis role="stamnt">i</emphasis>1   7.8000  12.0   75     17 
+<emphasis role="stamnt">i</emphasis>1   8.0000  12.0   75     18 
+<emphasis role="stamnt">i</emphasis>1   8.2000  12.0   75     3 
+<emphasis role="stamnt">i</emphasis>1   8.4000  12.0   75     26 
+<emphasis role="stamnt">i</emphasis>1   8.6000  12.0   75     15 
+<emphasis role="stamnt">i</emphasis>1   8.8     12.0   75     2 
+<emphasis role="stamnt">i</emphasis>1   9       12.0   75     26 
+<emphasis role="stamnt">i</emphasis>1   9.2     12.0   75     8 
+<emphasis role="stamnt">i</emphasis>1   9.3999  12.0   75     22 
+<emphasis role="stamnt">i</emphasis>1   9.5999  12.0   75     22 
+<emphasis role="stamnt">i</emphasis>1   9.7999  12.0   75     20 
+<emphasis role="stamnt">i</emphasis>1   9.9999  12.0   75     19 
+<emphasis role="stamnt">i</emphasis>1   10.399  12.0   75     20 
+<emphasis role="stamnt">i</emphasis>1   10.799  12.0   75     22 
+<emphasis role="stamnt">i</emphasis>1   10.999  12.0   75     27 
+<emphasis role="stamnt">i</emphasis>1   11.199  12.0   75     25 
+<emphasis role="stamnt">i</emphasis>1   11.399  12.0   75     20 
+<emphasis role="stamnt">i</emphasis>1   11.599  12.0   75     21 
+<emphasis role="stamnt">i</emphasis>1   11.799  12.0   75     24 
+<emphasis role="stamnt">i</emphasis>1   11.999  12.0   75     24 
+<emphasis role="stamnt">i</emphasis>1   12.199  12.0   75     4 
+<emphasis role="stamnt">i</emphasis>1   12.399  12.0   75     13 
+<emphasis role="stamnt">i</emphasis>1   12.599  12.0   75     15 
+<emphasis role="stamnt">i</emphasis>1   12.799  12.0   75     14 
+<emphasis role="stamnt">i</emphasis>1   12.999  12.0   75     3 
+<emphasis role="stamnt">i</emphasis>1   13.199  12.0   75     21 
+<emphasis role="stamnt">i</emphasis>1   13.399  12.0   75     6 
+<emphasis role="stamnt">i</emphasis>1   13.599  12.0   75     3 
+<emphasis role="stamnt">i</emphasis>1   13.799  12.0   75     10 
+<emphasis role="stamnt">i</emphasis>1   13.999  12.0   75     25 
+<emphasis role="stamnt">i</emphasis>1   14.199  12.0   75     21 
+<emphasis role="stamnt">i</emphasis>1   14.399  12.0   75     20 
+<emphasis role="stamnt">i</emphasis>1   14.599  12.0   75     19 
+<emphasis role="stamnt">i</emphasis>1   14.799  12.0   75     18 
+<emphasis role="stamnt">i</emphasis>1   15.199  12.0   75     17 
+<emphasis role="stamnt">i</emphasis>1   15.599  12.0   75     16 
+<emphasis role="stamnt">i</emphasis>1   15.999  12.0   75     15 
+<emphasis role="stamnt">i</emphasis>1   16.599  12.0   75     14 
+<emphasis role="stamnt">i</emphasis>1   17.199  12.0   75     13 
+<emphasis role="stamnt">i</emphasis>1   18.399  12.0   75     12 
+<emphasis role="stamnt">i</emphasis>1   18.599  12.0   75     11 
+<emphasis role="stamnt">i</emphasis>1   19.199  12.0   75     10 
+<emphasis role="stamnt">i</emphasis>1   19.799  12.0   75     9 
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

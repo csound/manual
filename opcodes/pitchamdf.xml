@@ -1,0 +1,118 @@
+
+<refentry id="pitchamdf">
+<indexterm id="IndexPitchamdf"><primary>pitchamdf</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pitchamdf</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>pitchamdf</refname>
+
+    <refpurpose>
+      Follows the pitch of a signal based on the AMDF method.
+          </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Follows the pitch of a signal based on the AMDF method (Average Magnitude Difference Function). Outputs pitch and amplitude tracking signals. The method is quite fast and should run in realtime. This technique usually works best for monophonic signals.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kcps, krms <command>pitchamdf</command> asig, imincps, imaxcps [, icps] [, imedi] \
+      [, idowns] [, iexcps] [, irmsmedi]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>imincps</emphasis> -- estimated minimum frequency (expressed in Hz) present in the signal
+    </para>
+
+    <para>
+      <emphasis>imaxcps</emphasis> -- estimated maximum frequency present in the signal
+    </para>
+
+    <para>
+      <emphasis>icps</emphasis> (optional, default=0) -- estimated initial frequency of the signal. If 0, icps = (<emphasis>imincps</emphasis>+<emphasis>imaxcps</emphasis>) / 2. The default is 0.
+    </para>
+
+    <para>
+      <emphasis>imedi</emphasis> (optional, default=1) -- size of median filter applied to the output <emphasis>kcps</emphasis>. The size of the filter will be <emphasis>imedi</emphasis>*2+1. If 0, no median filtering will be applied. The default is 1.
+    </para>
+
+    <para>
+      <emphasis>idowns</emphasis> (optional, default=1) -- downsampling factor for <emphasis>asig</emphasis>. Must be an integer. A factor of <emphasis>idowns</emphasis> &gt; 1 results in faster performance, but may result in worse pitch detection. Useful range is 1 - 4. The default is 1.
+    </para>
+
+    <para>
+      <emphasis>iexcps</emphasis> (optional, default=0) -- how frequently pitch analysis is executed, expressed in Hz.  If 0, <emphasis>iexcps</emphasis> is set to <emphasis>imincps</emphasis>. This is usually reasonable, but experimentation with other values may lead to better results. Default is 0.
+    </para>
+
+    <para>
+      <emphasis>irmsmedi</emphasis> (optional, default=0) -- size of median filter applied to the output <emphasis>krms</emphasis>. The size of the filter will be <emphasis>irmsmedi</emphasis>*2+1. If 0, no median filtering will be applied. The default is 0.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kcps</emphasis> -- pitch tracking output
+    </para>
+
+    <para>
+      <emphasis>krms</emphasis> -- amplitude tracking output
+    </para>
+
+    <para>
+      <emphasis>pitchamdf</emphasis> usually works best for monophonic signals, and is quite reliable if appropriate initial values are chosen. Setting <emphasis>imincps</emphasis> and <emphasis>imaxcps</emphasis> as narrow as possible to the range of the signal's pitch, results in better detection and performance.
+    </para>
+
+    <para>
+      Because this process can only detect pitch after an initial delay, setting <emphasis>icps</emphasis> close to the signal's real initial pitch prevents spurious data at the beginning.
+    </para>
+
+    <para>
+      The median filter prevents <emphasis>kcps</emphasis> from jumping. Experiment to determine the optimum value for <emphasis>imedi</emphasis> for a given signal.
+    </para>
+
+    <para>
+      Other initial values can usually be left at the default settings. Lowpass filtering of <emphasis>asig</emphasis> before passing it to <emphasis>pitchamdf</emphasis>, can improve performance, especially with complex waveforms.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the pitchamdf opcode. It uses the file <ulink url="examples/pitchamdf.csd"><citetitle>pitchamdf.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the pitchamdf opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/pitchamdf.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Peter Neub&auml;cker</member>
+        <member>Munich, Germany</member>
+        <member>August 1999</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.59</para>
+  </refsect1>
+</refentry>

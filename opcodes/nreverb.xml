@@ -1,0 +1,103 @@
+
+<refentry id="nreverb">
+<indexterm id="IndexNreverb"><primary>nreverb</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Reverberation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>nreverb</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>nreverb</refname>
+    <refpurpose>
+      A reverberator consisting of 6 parallel comb-lowpass filters.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This is a reverberator consisting of 6 parallel comb-lowpass filters being fed into a series of 5 allpass filters. <emphasis>nreverb</emphasis> replaces <link linkend="reverb2"><citetitle>reverb2</citetitle></link> (version 3.48) and so both opcodes are identical.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>nreverb</command> asig, ktime, khdif [, iskip] [,inumCombs] [, ifnCombs] \
+      [, inumAlpas] [, ifnAlpas]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iskip</emphasis> (optional, default=0) -- Skip initialization if present and non-zero.
+    </para>
+
+    <para>
+      <emphasis>inumCombs</emphasis> (optional) -- number of filter constants in comb filter. If omitted, the values default to the nreverb constants. New in Csound version 4.09.
+    </para>
+
+    <para>
+      <emphasis>ifnCombs</emphasis> - function table with <emphasis>inumCombs</emphasis> comb filter time values, followed the same number of gain values.  The ftable should not be rescaled (use negative fgen number). Positive time values are in seconds. The time values are converted internally into number of samples, then set to the next greater prime number. If the time is negative, it is interpreted directly as time in sample frames, and no processing is done (except negation). New in Csound version 4.09.
+    </para>
+
+    <para>
+    <emphasis>inumAlpas</emphasis>, <emphasis>ifnAlpas</emphasis> (optional) -- same as <emphasis>inumCombs/ifnCombs</emphasis>, for allpass filter. New in Csound 4.09.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      The input signal asig is reverberated for <emphasis>ktime</emphasis> seconds. The parameter <emphasis>khdif</emphasis> controls the high frequency diffusion amount. The values of <emphasis>khdif</emphasis> should be from 0 to 1. If <emphasis>khdif</emphasis> is set to 0 the all the frequencies decay with the same speed. If <emphasis>khdif</emphasis> is 1, high frequencies decay faster than lower ones. If <emphasis>ktime</emphasis> is inadvertently set to a non-positive number, <emphasis>ktime</emphasis> will be reset automatically to 0.01. (New in Csound version 4.07.)
+    </para>
+
+    <para>
+    As of Csound version 4.09, <emphasis>nreverb</emphasis> may read any number of comb and allpass filter from an ftable.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is a simple example of the nreverb opcode. It uses the file <ulink url="examples/nreverb.csd"><citetitle>nreverb.csd</citetitle></ulink>.
+
+      <example>
+        <title>Simple example of the nreverb opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/nreverb.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+    <para>
+      Here is an example of the nreverb opcode using an ftable for filter constants. It uses the file <ulink url="examples/nreverb_ftable.csd"><citetitle>nreverb_ftable.csd</citetitle></ulink>, and <ulink url="examples/beats.wav"><citetitle>beats.wav</citetitle></ulink>.
+      <example>
+        <title>An example of the nreverb opcode using an ftable for filter constants.</title>
+          <xi:include href="examples-xml/nreverb_ftable.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Authors: &nameparis; (<emphasis>reverb2</emphasis>)</member>
+        <member>MIT, Cambridge</member>
+        <member>1995</member>
+      </simplelist>
+    </para>
+
+    <para>
+      <simplelist>
+        <member>Author: Richard Karpen (<emphasis>nreverb</emphasis>)</member>
+        <member>Seattle, Wash</member>
+        <member>1998</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

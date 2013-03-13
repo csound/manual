@@ -1,0 +1,71 @@
+
+<refentry id="seed">
+<indexterm id="IndexSeed"><primary>seed</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Random (Noise) Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>seed</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>seed</refname>
+
+    <refpurpose>
+      Sets the global seed value.
+          </refpurpose> 
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Sets the global seed value for all <emphasis>x-class noise generators</emphasis>, as well as other opcodes that use a random call, such as <link linkend="grain"><citetitle>grain</citetitle></link>.
+    </para>
+    <note>
+      <title>Please Note</title>
+      <para><link linkend="rand"><citetitle>rand</citetitle></link>, <link linkend="randh"><citetitle>randh</citetitle></link>, <link linkend="randi"><citetitle>randi</citetitle></link>, <link linkend="rnd"><citetitle>rnd(x)</citetitle></link> and <link linkend="birnd"><citetitle>birnd(x)</citetitle></link> are not affected by seed.</para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>seed</command> ival</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      Use of <emphasis>seed</emphasis> will provide predictable results from an orchestra using with random generators, when required from multiple performances.
+    </para>
+
+    <para>
+      When specifying a seed value, <emphasis>ival</emphasis> should be an integer between 0 and 2<superscript>32</superscript>. If <emphasis>ival</emphasis> = 0, the value of <emphasis>ival</emphasis> will be derived from the system clock.
+    </para>
+  </refsect1>
+  
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the seed opcode. It uses the file <ulink url="examples/seed.csd"><citetitle>seed.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the seed opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/seed.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Its output should include lines like:
+      <screen>
+i   1 time     0.00067:   100.00000
+i   1 time     0.50000:   175.78677
+i   1 time     1.00000:   170.89579
+
+WARNING: Seeding from current time 834128659
+
+ i   2 time     2.00067:   100.00000
+ i   2 time     2.50000:   197.58517
+ i   2 time     3.00000:   188.69525
+      </screen>
+    </para>
+  </refsect1>
+
+</refentry>

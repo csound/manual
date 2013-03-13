@@ -1,0 +1,92 @@
+
+<refentry id="lpshold">
+<indexterm id="IndexLpshold"><primary>lpshold</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Linear and Exponential Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lpshold</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>lpshold</refname>
+    <refpurpose>
+      Generate control signal consisting of held segments.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Generate control signal consisting of held segments delimited by two or more specified points. The entire envelope is looped at <emphasis>kfreq</emphasis> rate. Each parameter can be varied at k-rate.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ksig <command>lpshold</command> kfreq, ktrig, iphase, ktime0, kvalue0  [, ktime1] [, kvalue1] [, ktime2] [, kvalue2] [...]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ksig</emphasis> -- Output signal
+    </para>
+
+    <para>
+      <emphasis>kfreq</emphasis> -- Repeat rate in Hz or fraction of Hz
+    </para>
+
+    <para>
+      <emphasis>ktrig</emphasis> -- If non-zero, retriggers the envelope from start (see <link linkend="trigger"><citetitle>trigger opcode</citetitle></link>), before the envelope cycle is completed.
+    </para>
+
+    <para>
+      <emphasis>iphase</emphasis> -- A vaue between 0 and 1 to say
+      where to start the loop.  Zero, the commonest value, indicates
+      the beginning.
+    </para>
+
+    <para>
+      <emphasis>ktime0...ktimeN</emphasis> -- Times of points; expressed in fraction of a cycle
+    </para>
+
+    <para>
+      <emphasis>kvalue0...kvalueN</emphasis> -- Values of points
+    </para>
+
+    <para>
+      <emphasis>lpshold</emphasis> is similar to <link linkend="loopseg"><citetitle>loopseg</citetitle></link>, but can generate only horizontal segments, i.e. holds values for each time interval placed between <emphasis>ktimeN</emphasis> and <emphasis>ktimeN+1</emphasis>. It can be useful, among other things, for melodic control, like old analog sequencers.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the lpshold opcode. It uses the file <ulink url="examples/lpshold.csd"><citetitle>lpshold.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the lpshold opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/lpshold.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="loopseg"><citetitle>loopseg</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namegabriel;</para>
+    <para>New in Version 4.13</para>
+  </refsect1>
+</refentry>

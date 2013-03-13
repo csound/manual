@@ -1,0 +1,44 @@
+
+<section id="ScoreRamping">
+  <title>Ramping</title>
+
+  <para>
+    <emphasis>i statement</emphasis> pfields containing the symbol <emphasis>&lt;</emphasis> will be replaced by values derived from linear interpolation of a time-based ramp. Ramps are anchored at each end by the first real number found in the same pfield of a preceding and following note played by the same instrument. E.g.: the statements
+
+    <indexterm id="IndexRamping"><primary>score</primary><secondary>ramping</secondary></indexterm>
+
+    <informalexample>
+      <programlisting>
+<emphasis role="stamnt">i</emphasis>1   0    1    100
+<emphasis role="stamnt">i</emphasis>1   1    1    &lt;
+<emphasis role="stamnt">i</emphasis>1   2    1    &lt;
+<emphasis role="stamnt">i</emphasis>1   3    1    400
+<emphasis role="stamnt">i</emphasis>1   4    1    &lt;
+<emphasis role="stamnt">i</emphasis>1   5    1    0</programlisting>
+    </informalexample>
+
+    will result in
+
+    <informalexample>
+      <programlisting>
+<emphasis role="stamnt">i</emphasis>1   0    1    100 
+<emphasis role="stamnt">i</emphasis>1   1    1    200
+<emphasis role="stamnt">i</emphasis>1   2    1    300
+<emphasis role="stamnt">i</emphasis>1   3    1    400
+<emphasis role="stamnt">i</emphasis>1   4    1    200
+<emphasis role="stamnt">i</emphasis>1   5    1    0</programlisting>
+    </informalexample>
+  </para>
+
+  <para>
+    Ramps cannot cross a Section boundary. Ramps cannot be anchored by an <emphasis>np</emphasis> or <emphasis>pp</emphasis> symbol (although they may be referenced by these). Ramp symbols are illegal in p1, p2 and p3. Ramp symbols may be Carried. Note, however, that while the Carry feature will propagate ramp symbols through unsorted statements, the operation that interprets these symbols is acting on a time-warped and fully sorted version of the score. In fact, time-based linear interpolation is based on warped score-time, so that a ramp which spans a group of accelerating notes will remain linear with respect to strict chronological time.
+  </para>
+
+  <para>
+    Starting with Csound version 3.52, using the symbols ( or ) will result in an exponential interpolation ramp, similar to <emphasis>expon</emphasis>. Using the symbol &tilde; (a tilde) will result in uniform, random distribution between the first and last values of the ramp. Use of these functions must follow the same rules as the linear ramp function.
+
+    <indexterm id="IndexLeftParen"><primary>(</primary></indexterm>
+    <indexterm id="IndexRightParen"><primary>)</primary></indexterm>
+    <indexterm id="IndexTilde"><primary>&tilde;</primary></indexterm>
+  </para>
+</section>

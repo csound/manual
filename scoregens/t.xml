@@ -1,0 +1,86 @@
+
+<refentry id="t">
+      <indexterm id="IndexTStatement"><primary>t statement</primary></indexterm>
+      <indexterm id="IndexTempoStatement"><primary>tempo statement</primary></indexterm>
+  <refmeta>
+    <refentrytitle>t Statement (Tempo Statement)</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>t</refname>
+    <refpurpose>
+      Sets the tempo.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This statement sets the tempo and specifies the accelerations and decelerations for the current section. This is done by converting beats into seconds.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>t</command>  p1  p2  p3  p4 ... (unlimited)</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>p1</emphasis> -- Must be zero.
+    </para>
+
+    <para>
+      <emphasis>p2</emphasis> -- Initial tempo on beats per minute.
+    </para>
+
+    <para>
+      <emphasis>p3, p5, p7,...</emphasis> -- Times in beats (in non-decreasing order).
+    </para>
+
+    <para>
+      <emphasis>p4, p6, p8,...</emphasis> -- Tempi for the referenced beat times.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      Time and Tempo-for-that-time are given as ordered couples that define points on a &quot;tempo vs. time&quot; graph. (The time-axis here is in beats so is not necessarily linear.) The beat-rate of a Section can be thought of as a movement from point to point on that graph: motion between two points of equal height signifies constant tempo, while motion between two points of unequal height will cause an accelarando or ritardando accordingly. The graph can contain discontinuities: two points given equal times but different tempi will cause an immediate tempo change.
+    </para>
+
+    <para>
+      Motion between different tempos over non-zero time is inverse linear. That is, an accelerando between two tempos M1 and M2 proceeds by linear interpolation of the single-beat durations from 60/M1 to 60/M2.
+    </para>
+
+    <para>
+      The first tempo given must be for beat 0.
+    </para>
+
+    <para>
+      A tempo, once assigned, will remain in effect from that time-point unless influenced by a succeeding tempo, i.e. the last specified tempo will be held to the end of the section.
+    </para>
+
+    <para>
+      A <emphasis>t statement</emphasis> applies only to the score section in which it appears. Only one <emphasis>t statement</emphasis> is meaningful in a section; it can be placed anywhere within that section. If a score section contains no <emphasis>t statement</emphasis>, then beats are interpreted as seconds (i.e. with an implicit <emphasis>t 0 60</emphasis> statement).
+    </para>
+
+    <para>
+      N.B. If the CSound command includes a <link linkend="FlagsMinusLowerT"><citetitle>-t flag</citetitle></link>, the interpreted tempo of all score <emphasis>t statements</emphasis> will be overridden by the command-line tempo.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the t statement. It uses the file <ulink url="examples/t.csd"><citetitle>t.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the t statement.</title>
+        <xi:include href="examples-xml/t.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+</refentry>
+

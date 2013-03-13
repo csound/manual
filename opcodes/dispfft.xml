@@ -1,0 +1,78 @@
+
+<refentry id="dispfft">
+<indexterm id="IndexDispfft"><primary>dispfft</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Printing and Display</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>dispfft</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>displayfft</refname>
+    <refpurpose>
+      Displays the Fourier Transform of an audio or control signal.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      These units will print orchestra init-values, or produce graphic display of orchestra control signals and audio signals. Uses X11 windows if enabled, else (or if <link linkend="FlagsMinusLowerG"><citetitle>-g</citetitle></link> flag is set) displays are approximated in ASCII characters.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>dispfft</command> xsig, iprd, iwsiz [, iwtyp] [, idbout] [, iwtflg]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iprd</emphasis> -- the period of display in seconds.
+    </para>
+
+    <para>
+      <emphasis>iwsiz</emphasis> -- size of the input window in samples. A window of <emphasis>iwsiz</emphasis> points will produce a Fourier transform of <emphasis>iwsiz</emphasis>/2 points, spread linearly in frequency from 0 to sr/2. <emphasis>iwsiz</emphasis> must be a power of 2, with a minimum of 16 and a maximum of 4096. The windows are permitted to overlap.
+    </para>
+
+    <para>
+      <emphasis>iwtyp</emphasis> (optional, default=0) -- window type. 0 = rectangular, 1 = Hanning. The default value is 0 (rectangular).
+    </para>
+
+    <para>
+      <emphasis>idbout</emphasis> (optional, default=0) -- units of output for the Fourier coefficients. 0 = magnitude, 1 = decibels. The default is 0 (magnitude).
+    </para>
+
+    <para>
+      <emphasis>iwtflg</emphasis> (optional, default=0) -- wait flag. If non-zero, each display is held until released by the user. The default value is 0 (no wait).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>dispfft</emphasis> -- displays the Fourier Transform of an audio or control signal (<emphasis>asig</emphasis> or <emphasis>ksig</emphasis>) every <emphasis>iprd</emphasis> seconds using the Fast Fourier Transform method.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the dispfft opcode. It uses the file <ulink url="examples/dispfft.csd"><citetitle>dispfft.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the dispfft opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/dispfft.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="display"><citetitle>display</citetitle></link>,
+      <link linkend="print"><citetitle>print</citetitle></link>
+    </para>
+  </refsect1>
+
+</refentry>

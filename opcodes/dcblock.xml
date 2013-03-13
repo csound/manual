@@ -1,0 +1,85 @@
+
+<refentry id="dcblock">
+<indexterm id="IndexDcblock"><primary>dcblock</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Specialized Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>dcblock</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>dcblock</refname>
+    <refpurpose>
+      A DC blocking filter.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Implements the DC blocking filter
+      <literallayout>
+Y[i] = X[i] - X[i-1] + (igain * Y[i-1])
+      </literallayout>
+    </para>
+
+    <para>
+      Based on work by &nameperry;.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>dcblock</command> ain [, igain]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>igain</emphasis> -- the gain of the filter, which defaults to 0.99
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ain</emphasis> -- audio signal input
+    </para>
+    <note>
+      <para>The new <link linkend="dcblock2"><citetitle>dcblock2</citetitle></link> opcode is an improved method of removing DC from an audio signal.</para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+        <para>
+     The result can be viewed in a graphical audio editor program like <emphasis>audacity</emphasis>. <emphasis>audacity</emphasis> is available for Linux, Windows, and the MacOS and may be downloaded from <ulink url="http://audacity.sourceforge.net/"><citetitle>http://audacity.sourceforge.net</citetitle></ulink>.
+    </para>
+    <para>
+      Here is an example of the dcblock opcode. It uses the file <ulink url="examples/dcblock.csd"><citetitle>dcblock.csd</citetitle></ulink>, and <ulink url="examples/beats.wav"><citetitle>beats.wav</citetitle></ulink>.
+      <example>
+        <title>Example of the dcblock opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/dcblock.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See also</title>
+    <para><link linkend="dcblock2"><citetitle>dcblock2</citetitle></link></para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>University of Bath, Codemist Ltd.</member>
+        <member>Bath, UK</member>
+      </simplelist>
+    </para>
+    <para>New in Csound version 3.49</para>
+    <para>February 2003: Thanks to a note from Anders Andersson, corrected the formula.</para>
+  </refsect1>
+</refentry>

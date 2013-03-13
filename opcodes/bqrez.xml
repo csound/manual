@@ -1,0 +1,111 @@
+
+<refentry id="bqrez">
+<indexterm id="IndexBqrez"><primary>bqrez</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>bqrez</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>bqrez</refname>
+    <refpurpose>
+      A second-order multi-mode filter.
+          </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      A second-order multi-mode filter.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>bqrez</command> asig, xfco, xres [, imode] [, iskip]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>imode</emphasis> (optional, default=0) -- The mode of the filter. Choose from one of the following:
+      <itemizedlist>
+        <listitem><para>0 = low-pass (default)</para></listitem>
+        <listitem><para>1 = high-pass</para></listitem>
+        <listitem><para>2 = band-pass</para></listitem>
+        <listitem><para>3 = band-reject</para></listitem>
+        <listitem><para>4 = all-pass</para></listitem>
+      </itemizedlist>
+    </para>
+    <para>
+      <emphasis>iskip</emphasis> (optional, default=0) -- if non zero
+    skip the initialisation of the filter. (New in Csound version
+    4.23f13 and 5.0)
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ares</emphasis> -- output audio signal.
+    </para>
+
+    <para>
+      <emphasis>asig</emphasis> -- input audio signal.
+    </para>
+
+    <para>
+      <emphasis>xfco</emphasis> -- filter cut-off frequency in Hz. May be i-time, k-rate, a-rate.
+    </para>
+
+    <para>
+      <emphasis>xres</emphasis> -- amount of resonance. Values of 1 to 100 are typical. Resonance should be one or greater. A value of 100 gives a 20dB gain at the cutoff frequency. May be i-time, k-rate, a-rate.
+    </para>
+
+    <para>
+      All filter modes can be frequency modulated as well as the resonance can also be frequency modulated.
+    </para>
+
+    <para>
+      <emphasis>bqrez</emphasis> is a resonant low-pass filter created using the Laplace s-domain equations for low-pass, high-pass, and band-pass filters normalized to a frequency. The bi-linear transform was used which contains a frequency transform constant from s-domain to z-domain to exactly match the frequencies together. Alot of trigonometric identities where used to simplify the calculation. It is very stable across the working frequency range up to the Nyquist frequency.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the bqrez opcode. It uses the file <ulink url="examples/bqrez.csd"><citetitle>bqrez.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the bqrez opcode borrowed from the <quote>rezzy</quote> opcode in Kevin Conder's manual.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/bqrez.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="biquad"><citetitle>biquad</citetitle></link>, 
+      <link linkend="moogvcf"><citetitle>moogvcf</citetitle></link>, 
+      <link linkend="rezzy"><citetitle>rezzy</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Matt Gerassimoff</member>
+        <member>New in version 4.32</member>
+        <member>Written in November 2002.</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

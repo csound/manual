@@ -1,0 +1,88 @@
+
+<refentry id="tabmorph">
+<indexterm id="IndexTabmorph"><primary>tabmorph</primary></indexterm>
+  <refentryinfo><title>Table Control:Read/Write Opreations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tabmorph</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>tabmorph</refname>
+    <refpurpose>
+      Allow morphing between a set of tables.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>tabmorph</emphasis> allows morphing between a set of tables of the same size, by means of a weighted average between two currently selected tables.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kout <command>tabmorph</command> kindex, kweightpoint, ktabnum1, ktabnum2, \
+      ifn1, ifn2 [, ifn3, ifn4, ...,ifnN]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifn1, ifn2 [, ifn3, ifn4, ..., ifnN]</emphasis> - function table numbers. This is a set of chosen tables the user want to use in the morphing. All tables must have the same length. Be aware that only two of these tables can be chosen for the morphing at one time. Since it is possible to use non-integer numbers for the <emphasis>ktabnum1</emphasis> and <emphasis>ktabnum2</emphasis> arguments, the morphing is the result from the interpolation between adjacent consecutive tables of the set.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kout</emphasis> - The output value for index <emphasis>kindex</emphasis>, resulting from morphing two tables (see below).
+    </para>
+    <para>
+      <emphasis>kindex</emphasis> - main index of the morphed resultant table. The range is 0 to table_length (not included).
+    </para>
+    <para>
+      <emphasis>kweightpoint</emphasis> - the weight of the influence of a pair of selected tables in the morphing. The range of this argument is 0 to 1. A zero makes it output the first table unaltered, a 1 makes it output the second table of the pair unaltered. All intermediate values between 0 and 1 determine the gradual morphing between the two tables of the pair.
+    </para>
+    <para>
+      <emphasis>ktabnum1</emphasis> - the first table chosen for the morphing. This number doesn’t express the table number directly, but the position of the table in the set sequence (starting from 0 to N-1). If this number is an integer, the corresponding table will be chosen unaltered. If it contains fractional values, then an interpolation with the next adjacent table will result.
+    </para>
+    <para>
+      <emphasis>ktabnum2</emphasis> - the second table chosen for the morphing. This number doesn’t express the table number directly, but the position of the table in the set sequence (starting from 0 to N-1). If this number is an integer, corresponding table will be chosen unaltered. If it contains fractional values, then an interpolation with the next adjacent table will result.
+    </para>
+    <para>
+      The <emphasis>tabmorph</emphasis> family of opcodes is similar to the <link linkend="table"><citetitle>table</citetitle></link> family, but allows morphing between two tables chosen into a set of tables. Firstly the user has to provide a set of tables of equal length (ifn2 [, ifn3, ifn4, ..., ifnN]). Then he can choose a pair of tables in the set in order to perform the morphing: <emphasis>ktabnum1</emphasis> and <emphasis>ktabnum2</emphasis> are filled with numbers (zero represents the first table in the set, 1 the second, 2 the third and so on). Then determine the morphing between the two chosen tables with the <emphasis>kweightpoint</emphasis> parameter. After that the resulting table can be indexed with the <emphasis>kindex</emphasis> parameter like a normal <emphasis>table</emphasis> opcode. If the value of this parameter surpasses the length of tables (which must be the same for all tables), then it is wrapped around.
+    </para>
+    <para>
+      <emphasis>tabmorph</emphasis> acts similarly to the <link linkend="table"><citetitle>table</citetitle></link> opcode, that is, without using interpolation. This means that it truncates the fractional part of the <emphasis>kindex</emphasis> argument. Anyway, fractional parts of <emphasis>ktabnum1</emphasis> and <emphasis>ktabnum2</emphasis> are significant, resulting in linear interpolation between the same element of two adjacent subsequent tables.</para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the tabmorph opcode. It uses the file <ulink url="examples/tabmorph.csd"><citetitle>tabmorph.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the tabmorph opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/tabmorph.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="table"><citetitle>table</citetitle></link>,
+      <link linkend="tabmorphi"><citetitle>tabmorphi</citetitle></link>,
+      <link linkend="tabmorpha"><citetitle>tabmorpha</citetitle></link>,
+      <link linkend="tabmorphak"><citetitle>tabmorphak</citetitle></link>,
+      <link linkend="ftmorf"><citetitle>ftmorf</citetitle></link>,
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namegabriel;</para>
+    <para>New in version 5.06</para>
+  </refsect1>
+</refentry>

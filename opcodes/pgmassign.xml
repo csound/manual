@@ -1,0 +1,121 @@
+
+<refentry id="pgmassign">
+<indexterm id="IndexPgmassign"><primary>pgmassign</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Input</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pgmassign</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>pgmassign</refname>
+    <refpurpose>
+      Assigns an instrument number to a specified MIDI program.
+          </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Assigns an instrument number to a specified (or all) MIDI program(s).
+    </para>
+
+    <para>
+      By default, the instrument is the same as the program number. If the selected instrument is zero or negative or does not exist, the program change is ignored. This opcode is normally used in the orchestra header. Although, like <link linkend="massign"><citetitle>massign</citetitle></link>, it also works in instruments.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>pgmassign</command> ipgm, inst[, ichn]</synopsis>
+    <synopsis><command>pgmassign</command> ipgm, &quot;insname&quot;[, ichn]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ipgm</emphasis> -- MIDI program number (1 to 128). A value of zero selects all programs.
+    </para>
+
+    <para>
+      <emphasis>inst</emphasis> -- instrument number. If set to zero, or negative, MIDI program changes to <emphasis>ipgm</emphasis> are ignored. Currently, assignment to an instrument that does not exist has the same effect. This may be changed in a later release to print an error message.
+    </para>
+
+    <para>
+      <emphasis><quote>insname</quote></emphasis> -- A string (in double-quotes) representing a named instrument.
+    </para>
+
+    <para>
+      <emphasis><quote>ichn</quote></emphasis> (optional, defaults to zero) -- channel number. If zero, program changes are assigned on all channels.
+    </para>
+    <para>
+      You can disable the turning on of any instruments by using the following in the header:
+      <programlisting>
+        massign 0, 0
+        pgmassign 0, 0
+      </programlisting>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the pgmassign opcode. It uses the file <ulink url="examples/pgmassign.csd"><citetitle>pgmassign.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the pgmassign opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/pgmassign.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+    <para>
+      Here is an example of the pgmassign opcode that will ignore program change events. It uses the file <ulink url="examples/pgmassign_ignore.csd"><citetitle>pgmassign_ignore.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the pgmassign opcode that will ignore program change events.</title>
+
+          <xi:include href="examples-xml/pgmassign_ignore.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+    <para>
+      Here is an advanced example of the pgmassign opcode. It uses the file <ulink url="examples/pgmassign_advanced.csd"><citetitle>pgmassign_advanced.csd</citetitle></ulink>.
+    </para>
+
+    <para>
+      Don't forget that you must include the <link linkend="FlagsMinusUpperF"><citetitle>-F flag</citetitle></link> when using an external MIDI file like <quote>pgmassign_advanced.mid</quote>.
+    </para>
+
+    <para>
+      <example>
+        <title>An advanced example of the pgmassign opcode.</title>
+
+          <xi:include href="examples-xml/pgmassign_advanced.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="midichn"><citetitle>midichn</citetitle></link> and <link linkend="massign"><citetitle>massign</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &nameistvan;</member>
+        <member>May 2002</member>
+      </simplelist>
+    </para>
+
+    <para>New in version 4.20</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,121 @@
+
+<refentry id="interp">
+<indexterm id="IndexInterp"><primary>interp</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Sample Level Operators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>interp</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>interp</refname>
+    <refpurpose>
+      Converts a control signal to an audio signal using linear interpolation.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Converts a control signal to an audio signal using linear interpolation.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>interp</command> ksig [, iskip] [, imode]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iskip</emphasis> (optional, default=0) -- initial disposition of internal save space (see <link linkend="reson"><citetitle>reson</citetitle></link>). The default value is 0.
+    </para>
+
+    <para>
+      <emphasis>imode</emphasis> (optional, default=0) -- sets the initial output value to the first k-rate input instead of zero.  The following graphs show the output of interp with a constant input value, in the original, when skipping init, and in the new mode:
+
+      <example>
+        <title>iskip=0, imode=0</title>
+        <literallayout>
+ |    ________
+ |   /        
+ |  /         
+ | /          
+ |/           
+-+------------
+ |            
+        </literallayout>
+      </example>
+
+      <example>
+        <title>iskip=1, imode=0</title>
+        <literallayout>
+(prev)
+ |  __________
+ | /          
+ |/           
+ |            
+ |            
+-+------------
+ |            
+        </literallayout>
+      </example>
+
+      <example>
+        <title>iskip=0, imode=1</title>
+        <literallayout>
+ |____________
+ |
+ |
+ |
+ |
+-+------------
+ |
+        </literallayout>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ksig</emphasis> -- input k-rate signal.
+    </para>
+
+    <para>
+      <emphasis>interp</emphasis> converts a control signal to an audio signal. It uses linear interpolation between successive kvals. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the interp opcode. It uses the file <ulink url="examples/interp.csd"><citetitle>interp.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the interp opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/interp.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="diff"><citetitle>diff</citetitle></link>,
+      <link linkend="downsamp"><citetitle>downsamp</citetitle></link>,
+      <link linkend="integ"><citetitle>integ</citetitle></link>,
+      <link linkend="samphold"><citetitle>samphold</citetitle></link>,
+      <link linkend="upsamp"><citetitle>upsamp</citetitle></link>
+    </para>
+            <para> More information on this opcode: <ulink url="http://www.csounds.com/journal/issue10/CsoundRates.html"><citetitle>http://www.csounds.com/journal/issue10/CsoundRates.html</citetitle></ulink>  , written by Andrés Cabrera </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Updated November 2002, thanks to a note from both &namerasmus; and &nameistvan;.</para>
+  </refsect1>
+</refentry>

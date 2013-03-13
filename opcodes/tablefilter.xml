@@ -1,0 +1,98 @@
+
+<refentry id="tablefilter">
+<indexterm id="IndexTablefilter"><primary>tablefilter</primary></indexterm>
+  <refentryinfo><title>Table Control:Models and Emulations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tablefilter</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>tablefilter</refname>
+    <refpurpose>
+      Filters a source table and writes result into a destination table.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This opcode can be used in order to filter values from function
+      tables following certain algorithms. The filtered output is
+      written into a destination table and the number of elements that
+      have passed the filter is returned.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>knumpassed <command>tablefilter</command> kouttable, kintatble, kmode, kparam</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>knumpassed</emphasis> -- the number of elements that
+      have passed the filter.
+    </para>
+
+    <para>
+      <emphasis>kouttable</emphasis> -- the number of the table containing the values that have passed.
+    </para>
+
+    <para>
+      <emphasis>kintatble</emphasis> -- the number of the table used as filter input.
+    </para>
+
+    <para>
+      <emphasis>kmode</emphasis> -- mode of the filter:
+      <itemizedlist>
+        <listitem>
+          1 -- tests the weight of the denominators of the fractions
+          in the source table.  Letting pass only values from the
+          source that are less heavy than the weight of the threshold.
+        </listitem>
+        <listitem>
+          2 -- tests the weight of the denominators of the fractions
+          in the source table.  Letting pass only values from the
+          source that are heavier than or equal to the weight of the
+          threshold.
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>kparam</emphasis> -- integer threshold parameter for
+      the filter. It means that denominators whose weights are heavier
+      than the weight of this threshold are not passed through the
+      filter. The weight of an integer is calculated using Clarence
+      Barlow's function of indigestibility of a number. According to
+      this function, higher prime numbers contribute to an increased
+      weight of any natural integer they divide.  The order of the
+      first 16 integers according to their indigestibility is: 1, 2,
+      4, 3, 8, 6, 16, 12, 9, 5, 10, 15, 7, 14.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the tablefilter opcode. It uses the file <ulink url="examples/tablefilter.csd"><citetitle>tablefilter.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the tablefilter opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/tablefilter.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Georg Boenn </member>
+        <member>University of Glamorgan, UK</member>
+      </simplelist>
+    </para>
+    <para>New in Csound version 5.13</para>
+  </refsect1>
+</refentry>

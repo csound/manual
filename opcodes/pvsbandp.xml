@@ -1,0 +1,105 @@
+
+<refentry id="pvsbandp">
+  <indexterm id="IndexPvsbandp"><primary>pvsbandp</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsbandp</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvsbandp</refname>
+    <refpurpose>
+      A band pass filter working in the spectral domain.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Filter the pvoc frames, passing bins whose frequency is within a
+      band, and with linear interpolation for transitional bands.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>fsig <command>pvsbandp</command> fsigin, xlowcut, xlowfull, \
+      xhighfull, xhighcut[, ktype]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>fsig</emphasis> -- output pv stream
+    </para>
+    <para>
+      <emphasis>fsigin</emphasis> -- input pv stream.
+    </para>
+    <para>
+      <emphasis>xlowcut, xlowfull, xhighfull, xhighcut</emphasis> --
+      define a trapezium shape for the band that is passed.  The a-rate
+      versions only apply to the sliding case.
+    </para>
+    <para>
+      <emphasis>ktype</emphasis> -- specifies the shape of the
+      transitional band.  If at the default value of zero the shape is
+      as below, with linear transition in amplitude.  Other values
+      yield and exponential shape:
+      <literallayout>
+(1 - exp( r*type )) / (1 - exp(type))
+      </literallayout>
+      This includes a linear dB shape when <emphasis>ktype</emphasis> is
+      <emphasis>log</emphasis>(10) or about 2.30.
+    </para>
+
+    <para>
+      The opcode performs a band-pass filter with a spectral envelope
+      shaped like
+<literallayout>
+     klowfull __________________________ khighfull
+             /                          \
+            /                            \
+           /                              \
+          /                                \
+         /                                  \
+________/                                    \______________
+        klowcut                       khighcut
+</literallayout>
+
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the pvsbandp opcode. It uses the file <ulink url="examples/pvsbandp.csd"><citetitle>pvsbandp.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the pvsbandp opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/pvsbandp.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link>,
+      <link linkend="pvsynth"><citetitle>pvsynth</citetitle></link>,
+      <link linkend="pvsadsyn"><citetitle>pvsadsyn</citetitle></link>,
+      <link linkend="pvsbandr"><citetitle>pvsbandr</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>December 2007 </member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

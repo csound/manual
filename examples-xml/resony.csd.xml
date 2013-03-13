@@ -1,0 +1,46 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac   <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o resonx.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1	<emphasis role="comment">; unfiltered noise</emphasis>
+
+kenv	<emphasis role="opc">linseg</emphasis>	0, p3<emphasis role="op">*</emphasis>.5, 1, p3<emphasis role="op">*</emphasis>.5, 0	<emphasis role="comment">;envelope</emphasis>
+asig	<emphasis role="opc">rand</emphasis>	0.7			<emphasis role="comment">;white noise</emphasis>
+	<emphasis role="opc">outs</emphasis>	asig<emphasis role="op">*</emphasis>kenv, asig<emphasis role="op">*</emphasis>kenv
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 2	<emphasis role="comment">; filtered noise</emphasis>
+
+ksep	<emphasis role="op">=</emphasis> p4				<emphasis role="comment">;vary seperation of center frequency of filters in octaves</emphasis>
+kenv	<emphasis role="opc">linseg</emphasis>	0, p3<emphasis role="op">*</emphasis>.5, 1, p3<emphasis role="op">*</emphasis>.5, 0	<emphasis role="comment">;envelope</emphasis>
+asig	<emphasis role="opc">rand</emphasis>	0.7
+kbf	<emphasis role="opc">line</emphasis>	300, p3, 2000		<emphasis role="comment">;vary base frequency</emphasis>
+afilt	<emphasis role="opc">resony</emphasis>	asig, kbf, 300, 4, ksep
+asig	<emphasis role="opc">balance</emphasis> afilt, asig
+	<emphasis role="opc">outs</emphasis>	asig<emphasis role="op">*</emphasis>kenv, asig<emphasis role="op">*</emphasis>kenv
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1 0 2
+<emphasis role="stamnt">i</emphasis> 2 3 2 1
+<emphasis role="stamnt">i</emphasis> 2 6 2 3
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

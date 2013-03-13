@@ -1,0 +1,115 @@
+
+<refentry id="foscil">
+<indexterm id="Indexfoscil"><primary>foscil</primary></indexterm>
+  <refentryinfo><title>Signal Generators:FM Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>foscil</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>foscil</refname>
+    <refpurpose>
+      A basic frequency modulated oscillator.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      A basic frequency modulated oscillator.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>foscil</command> xamp, kcps, xcar, xmod, kndx, ifn [, iphs]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifn</emphasis> -- function table number. Requires a wrap-around guard point.
+    </para>
+
+    <para>
+      <emphasis>iphs</emphasis> (optional, default=0) -- initial phase of waveform in table <emphasis>ifn</emphasis>, expressed as a fraction of a cycle (0 to 1). A negative value will cause phase initialization to be skipped. The default value is 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>xamp</emphasis> -- the amplitude of the output signal.
+    </para>
+
+    <para>
+      <emphasis>kcps</emphasis> -- a common denominator, in cycles per second, for the carrier and modulating frequencies.
+    </para>
+
+    <para>
+      <emphasis>xcar</emphasis> -- a factor that, when multiplied by the <emphasis>kcps</emphasis> parameter, gives the carrier frequency.
+    </para>
+
+    <para>
+      <emphasis>xmod</emphasis> -- a factor that, when multiplied by the <emphasis>kcps</emphasis> parameter, gives the modulating frequency.
+    </para>
+
+    <para>
+      <emphasis>kndx</emphasis> -- the modulation index.
+    </para>
+
+    <para>
+      <emphasis>foscil</emphasis> is a composite unit that effectively
+      banks two <emphasis>oscil</emphasis> opcodes in the familiar
+      Chowning FM setup, wherein the audio-rate output of one
+      generator is used to modulate the frequency input of another
+      (the <quote>carrier</quote>). Effective carrier frequency =
+      <emphasis>kcps</emphasis> * <emphasis>xcar</emphasis>, and
+      modulating frequency = <emphasis>kcps</emphasis> *
+      <emphasis>xmod</emphasis>. For integral values of
+      <emphasis>xcar</emphasis> and <emphasis>xmod</emphasis>, the
+      perceived fundamental will be the minimum positive value of
+      <emphasis>kcps</emphasis> * (<emphasis>xcar</emphasis> - <emphasis>n</emphasis> *
+      <emphasis>xmod</emphasis>), <emphasis>n</emphasis> = 0,1,2,... The input
+      <emphasis>kndx</emphasis> is the index of modulation (usually
+      time-varying and ranging 0 to 4 or so) which determines the
+      spread of acoustic energy over the partial positions given by <emphasis>n</emphasis>
+      = 0,1,2,.., etc. <emphasis>ifn</emphasis> should point to a
+      stored sine wave. Previous to version 3.50,
+      <emphasis>xcar</emphasis> and <emphasis>xmod</emphasis> could be
+      k-rate only.
+    </para>
+    <para>
+      The actual formula used for this implementation of FM synthesis
+      is
+      <emphasis>xamp</emphasis> * cos(2&#960; * <emphasis>t</emphasis> * <emphasis>kcps</emphasis> *
+      <emphasis>xcar</emphasis> +
+      <emphasis>kndx</emphasis> * sin(2&#960; * <emphasis>t </emphasis>* <emphasis>kcps</emphasis> *
+      <emphasis>xmod</emphasis>) - &#960;),
+      assuming that the table is a sine wave.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the foscil opcode. It uses the file <ulink url="examples/foscil.csd"><citetitle>foscil.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the foscil opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/foscil.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+      
+  <refsect1>
+    <title>See Also</title>
+    <para> More information about frequency modulation on Wikipedia: <ulink url="http://en.wikipedia.org/wiki/Frequency_modulation_synthesis"><citetitle>http://en.wikipedia.org/wiki/Frequency_modulation_synthesis</citetitle></ulink></para>
+  </refsect1>
+</refentry>

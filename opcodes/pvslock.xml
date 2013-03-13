@@ -1,0 +1,75 @@
+
+<refentry id="pvslock">
+<indexterm id="IndexPvslock"><primary>pvslock</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvslock</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvslock</refname>
+    <refpurpose>
+      Frequency lock an input fsig
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This opcode searches for spectral peaks and then locks the frequencies around those peaks. This is similar to
+      phase-locking in non-streaming PV processing. It can be used to improve timestretching and pitch-shifting quality in
+      PV processing.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>fsig <command>pvslock</command> fsigin, klock</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>fsig</emphasis> -- output pv stream
+    </para>
+
+    <para>
+      <emphasis>fsigin</emphasis> -- input pv stream.
+    </para>
+
+    <para>
+      <emphasis>klock</emphasis> -- frequency lock, 1 -> lock, 0 -> unlock (bypass).
+    </para>
+    <warning>
+      <para>
+        It is unsafe to use the same f-variable for both input and output of pvs opcodes. Using the same one might lead to undefined behavior on some opcodes. Use a different one on the left and right sides of the opcode.
+      </para>
+    </warning>
+
+  </refsect1>
+  
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the pvslock opcode. It uses the file <ulink url="examples/pvslock.csd"><citetitle>pvslock.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the pvslock opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/pvslock.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>November 2004 </member>
+      </simplelist>
+    </para>
+
+    <para>New plugin in version 5</para>
+    <para>November 2004.</para>
+  </refsect1>
+</refentry>

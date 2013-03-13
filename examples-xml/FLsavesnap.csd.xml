@@ -1,0 +1,119 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in</emphasis>
+-odac           -iadc    <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis><emphasis role="op">=</emphasis>48000
+<emphasis role="ohdr">ksmps</emphasis><emphasis role="op">=</emphasis>128
+<emphasis role="ohdr">nchnls</emphasis><emphasis role="op">=</emphasis>2
+
+<emphasis role="comment">; Example by Hector Centeno and Andres Cabrera 2007</emphasis>
+
+<emphasis role="comment">; giSWMtab4 ftgen 0, 0, 513, 21, 10, 1, .3</emphasis>
+<emphasis role="comment">; giSWMtab4M ftgen 0, 0, 64, 7, 1, 50, 1</emphasis>
+
+<emphasis role="opc">FLpanel</emphasis>	"Snapshots", 530, 350, 40, 410, 3
+    <emphasis role="opc">FLcolor</emphasis>  100, 118 ,140
+   <emphasis role="opc">FLsetSnapGroup</emphasis>  0
+    ivalSM1		 	<emphasis role="opc">FLvalue</emphasis>  "", 70, 20, 270, 20
+    ivalSM2			<emphasis role="opc">FLvalue</emphasis>  "", 70, 20, 270, 60
+    ivalSM3			<emphasis role="opc">FLvalue</emphasis>  "", 70, 20, 270, 100
+    ivalSM4			<emphasis role="opc">FLvalue</emphasis>  "", 70, 20, 270, 140
+    gksliderA, gislidSM1 	<emphasis role="opc">FLslider</emphasis> "Slider A", <emphasis role="op">-</emphasis>4, 4, 0, 3, ivalSM1, 250, 20, 20, 20
+    gksliderB, gislidSM2 	<emphasis role="opc">FLslider</emphasis> "Slider B", 1, 10, 0, 3, ivalSM2, 250, 20, 20, 60
+    gksliderC, gislidSM3 	<emphasis role="opc">FLslider</emphasis> "Slider C", 0, 1, 0, 3, ivalSM3, 250, 20, 20, 100
+    gksliderD, gislidSM4 	<emphasis role="opc">FLslider</emphasis> "Slider D", 0, 1, 0, 3, ivalSM4, 250, 20, 20, 140
+    itext1		 <emphasis role="opc">FLbox</emphasis>	  "store", 1, 1, 14, 50, 25, 355, 15
+    itext2		 <emphasis role="opc">FLbox</emphasis>	  "load", 1, 1, 14, 50, 25, 415, 15
+    itext3		 <emphasis role="opc">FLbox</emphasis>	  "Group 1", 1, 1, 14, 30, 145, 485, 15
+    gksnap, ibuttn1	 <emphasis role="opc">FLbutton</emphasis> "1", 1, 0, 11, 25, 25, 364, 45, 0, 3, 0, 3, 1
+    gksnap, ibuttn2	 <emphasis role="opc">FLbutton</emphasis> "2", 1, 0, 11, 25, 25, 364, 75, 0, 3, 0, 3, 2
+    gksnap, ibuttn3	 <emphasis role="opc">FLbutton</emphasis> "3", 1, 0, 11, 25, 25, 364, 105, 0, 3, 0, 3, 3
+    gksnap, ibuttn4	 <emphasis role="opc">FLbutton</emphasis> "4", 1, 0, 11, 25, 25, 364, 135, 0, 3, 0, 3, 4
+    gkload, ibuttn1	 <emphasis role="opc">FLbutton</emphasis> "1", 1, 0, 11, 25, 25, 424, 45, 0, 4, 0, 3, 1
+    gkload, ibuttn2	 <emphasis role="opc">FLbutton</emphasis> "2", 1, 0, 11, 25, 25, 424, 75, 0, 4, 0, 3, 2
+    gkload, ibuttn3	 <emphasis role="opc">FLbutton</emphasis> "3", 1, 0, 11, 25, 25, 424, 105, 0, 4, 0, 3, 3
+    gkload, ibuttn4	 <emphasis role="opc">FLbutton</emphasis> "4", 1, 0, 11, 25, 25, 424, 135, 0, 4, 0, 3, 4
+
+    <emphasis role="opc">FLcolor</emphasis>  100, 140 ,118
+   <emphasis role="opc">FLsetSnapGroup</emphasis>  1
+    ivalSM5		 	<emphasis role="opc">FLvalue</emphasis>  "", 70, 20, 270, 190
+    ivalSM6			<emphasis role="opc">FLvalue</emphasis>  "", 70, 20, 270, 230
+    ivalSM7			<emphasis role="opc">FLvalue</emphasis>  "", 70, 20, 270, 270
+    ivalSM8			<emphasis role="opc">FLvalue</emphasis>  "", 70, 20, 270, 310
+    gkknobA, gislidSM5 	<emphasis role="opc">FLknob</emphasis> "Knob A", <emphasis role="op">-</emphasis>4, 4, 0, 3, ivalSM5, 45, 10, 230
+    gkknobB, gislidSM6 	<emphasis role="opc">FLknob</emphasis> "Knob B", 1, 10, 0, 3, ivalSM6, 45, 75, 230
+    gkknobC, gislidSM7 	<emphasis role="opc">FLknob</emphasis> "Knob C", 0, 1, 0, 3, ivalSM7, 45, 140, 230
+    gkknobD, gislidSM8 	<emphasis role="opc">FLknob</emphasis> "Knob D", 0, 1, 0, 3, ivalSM8, 45, 205, 230
+    itext4		 <emphasis role="opc">FLbox</emphasis>	  "store", 1, 1, 14, 50, 25, 355, 185
+    itext5		 <emphasis role="opc">FLbox</emphasis>	  "load", 1, 1, 14, 50, 25, 415, 185
+    itext6		 <emphasis role="opc">FLbox</emphasis>	  "Group 2", 1, 1, 14, 30, 145, 485, 185
+    gksnap, ibuttn1	 <emphasis role="opc">FLbutton</emphasis> "5", 1, 0, 11, 25, 25, 364, 215, 0, 3, 0, 3, 5
+    gksnap, ibuttn2	 <emphasis role="opc">FLbutton</emphasis> "6", 1, 0, 11, 25, 25, 364, 245, 0, 3, 0, 3, 6
+    gksnap, ibuttn3	 <emphasis role="opc">FLbutton</emphasis> "7", 1, 0, 11, 25, 25, 364, 275, 0, 3, 0, 3, 7
+    gksnap, ibuttn4	 <emphasis role="opc">FLbutton</emphasis> "8", 1, 0, 11, 25, 25, 364, 305, 0, 3, 0, 3, 8
+    gkload, ibuttn1	 <emphasis role="opc">FLbutton</emphasis> "5", 1, 0, 11, 25, 25, 424, 215, 0, 4, 0, 3, 5
+    gkload, ibuttn2	 <emphasis role="opc">FLbutton</emphasis> "6", 1, 0, 11, 25, 25, 424, 245, 0, 4, 0, 3, 6
+    gkload, ibuttn3	 <emphasis role="opc">FLbutton</emphasis> "7", 1, 0, 11, 25, 25, 424, 275, 0, 4, 0, 3, 7
+    gkload, ibuttn4	 <emphasis role="opc">FLbutton</emphasis> "8", 1, 0, 11, 25, 25, 424, 305, 0, 4, 0, 3, 8
+<emphasis role="opc">FLpanelEnd</emphasis>
+<emphasis role="opc">FLsetVal_i</emphasis> 1, gislidSM1
+<emphasis role="opc">FLsetVal_i</emphasis> 1, gislidSM2
+<emphasis role="opc">FLsetVal_i</emphasis> 0, gislidSM3
+<emphasis role="opc">FLsetVal_i</emphasis> 0, gislidSM4
+<emphasis role="opc">FLsetVal_i</emphasis> 1, gislidSM5
+<emphasis role="opc">FLsetVal_i</emphasis> 1, gislidSM6
+<emphasis role="opc">FLsetVal_i</emphasis> 0, gislidSM7
+<emphasis role="opc">FLsetVal_i</emphasis> 0, gislidSM8
+<emphasis role="opc">FLrun</emphasis>
+
+	<emphasis role="oblock">instr</emphasis> 1
+
+	<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 3 <emphasis role="comment">; Save snapshot</emphasis>
+index <emphasis role="opc">init</emphasis> 0
+ipstno <emphasis role="op">=</emphasis> p4
+igroup <emphasis role="op">=</emphasis> 0
+Sfile <emphasis role="opc">sprintf</emphasis> "PVCsynth.<emphasis role="op">%</emphasis>d.snap", ipstno 
+<emphasis role="octrl">if</emphasis> ipstno <emphasis role="op">></emphasis> 4 then
+  igroup <emphasis role="op">=</emphasis> 1
+<emphasis role="octrl">endif</emphasis>
+
+
+  inumsnap, inumval  <emphasis role="opc">FLsetsnap</emphasis> index , <emphasis role="op">-</emphasis>1, igroup
+<emphasis role="opc">FLsavesnap</emphasis> Sfile
+
+	<emphasis role="oblock">endin</emphasis>
+
+
+<emphasis role="oblock">instr</emphasis> 4 <emphasis role="comment">;Load snapshot</emphasis>
+index <emphasis role="opc">init</emphasis> 0
+ipstno <emphasis role="op">=</emphasis> p4
+igroup <emphasis role="op">=</emphasis> 0
+Sfile <emphasis role="opc">sprintf</emphasis> "PVCsynth.<emphasis role="op">%</emphasis>d.snap", ipstno
+<emphasis role="octrl">if</emphasis> ipstno <emphasis role="op">></emphasis> 4 then
+  igroup <emphasis role="op">=</emphasis> 1
+<emphasis role="octrl">endif</emphasis>
+
+<emphasis role="opc">FLloadsnap</emphasis> Sfile
+  inumload <emphasis role="opc">FLgetsnap</emphasis> index , igroup
+
+	<emphasis role="oblock">endin</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+  <emphasis role="comment">;Dummy table for FLgetsnap</emphasis>
+<emphasis role="comment">; f 1 0 1024 10 1</emphasis>
+<emphasis role="stamnt">f</emphasis> 0 3600
+
+<emphasis role="stamnt">e</emphasis>
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

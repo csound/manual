@@ -1,0 +1,42 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in    No messages</emphasis>
+-odac           -iadc     <emphasis role="comment">;;;-d     RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o pvsarp.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="comment">; Initialize the global variables.</emphasis>
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 100
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 1
+<emphasis role="ohdr">0dbfs</emphasis> <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1
+asig  <emphasis role="opc">in</emphasis>                                 <emphasis role="comment">; get the signal in</emphasis>
+idepth <emphasis role="op">=</emphasis> p4
+
+fsig  <emphasis role="opc">pvsanal</emphasis>   asig, 1024, 256, 1024, 1 <emphasis role="comment">; analyse it</emphasis>
+kbin  <emphasis role="opc">oscili</emphasis>   0.1, 0.5, 1               <emphasis role="comment">; ftable 1 in the 0-1 range</emphasis>
+ftps  <emphasis role="opc">pvsarp</emphasis>   fsig, kbin<emphasis role="op">+</emphasis>0.01, idepth, 2   <emphasis role="comment">; arpeggiate it (range 220.5 - 2425.5)</emphasis>
+atps  <emphasis role="opc">pvsynth</emphasis>  ftps                      <emphasis role="comment">; synthesise it</emphasis>
+
+       <emphasis role="opc">out</emphasis> atps
+<emphasis role="oblock">endin</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 4096 10 1 <emphasis role="comment">;sine wave</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1 0 10 0.9
+<emphasis role="stamnt">i</emphasis> 1 + 10 0.5
+<emphasis role="stamnt">e</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

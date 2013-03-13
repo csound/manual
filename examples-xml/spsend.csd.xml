@@ -1,0 +1,66 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac   <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o spsend.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100 
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32 
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1 
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2	<emphasis role="comment">;stereo output</emphasis>
+  
+ga1 <emphasis role="opc">init</emphasis> 0
+ga2 <emphasis role="opc">init</emphasis> 0
+
+<emphasis role="oblock">instr</emphasis> 1	<emphasis role="comment">;sends different amounts to reverb</emphasis>
+
+irev <emphasis role="op">=</emphasis> p6
+asig <emphasis role="opc">diskin2</emphasis> "fox.wav", 1
+a1, a2, a3, a4 <emphasis role="opc">space</emphasis> asig, 0, 0, irev, p4, p5	<emphasis role="comment">;take position values from p4, p5</emphasis>
+ar1, ar2, ar3, ar4 <emphasis role="opc">spsend</emphasis>			<emphasis role="comment">;send to reverb</emphasis>
+
+ga1 <emphasis role="op">=</emphasis> ga1<emphasis role="op">+</emphasis>ar1
+ga2 <emphasis role="op">=</emphasis> ga2<emphasis role="op">+</emphasis>ar2
+    <emphasis role="opc">outs</emphasis> a1, a2
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 99 <emphasis role="comment">; reverb instrument</emphasis>
+
+a1 <emphasis role="opc">reverb2</emphasis> ga1, 2.5, .5
+a2 <emphasis role="opc">reverb2</emphasis> ga2, 2.5, .5
+   <emphasis role="opc">outs</emphasis>	a1, a2
+
+ga1<emphasis role="op">=</emphasis>0
+ga2<emphasis role="op">=</emphasis>0
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="comment">;WITH REVERB</emphasis>
+<emphasis role="comment">;place the sound in the left speaker and near</emphasis>
+<emphasis role="stamnt">i</emphasis>1 0 1 -1 1 .1
+<emphasis role="comment">;place the sound in the right speaker and far</emphasis>
+<emphasis role="stamnt">i</emphasis>1 1 1 45 45 .1
+<emphasis role="comment">;place the sound equally between left and right and in the middle ground distance</emphasis>
+<emphasis role="stamnt">i</emphasis>1 2 1 0 12 .1
+
+<emphasis role="comment">;NO REVERB</emphasis>
+<emphasis role="comment">;place the sound in the left speaker and near</emphasis>
+<emphasis role="stamnt">i</emphasis>1 6 1 -1 1 0
+<emphasis role="comment">;place the sound in the right speaker and far</emphasis>
+<emphasis role="stamnt">i</emphasis>1 7 1 45 45 0
+<emphasis role="comment">;place the sound equally between left and right and in the middle ground distance</emphasis>
+<emphasis role="stamnt">i</emphasis>1 8 1 0 12 0
+
+<emphasis role="stamnt">i</emphasis> 99 0 12	<emphasis role="comment">;keep reverb active all the time</emphasis>
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

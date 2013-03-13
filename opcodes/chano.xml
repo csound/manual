@@ -1,0 +1,92 @@
+
+<refentry id="chano">
+<indexterm id="Indexchano"><primary>chano</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Software Bus</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>chano</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>chano</refname>
+    <refpurpose>
+      Send data to the outwards software bus
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Send data to a channel of the outward software bus.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>chano</command> kval, kchan</synopsis>
+
+    <synopsis><command>chano</command> aval, kchan</synopsis>
+  </refsect1>
+
+  <!--<refsect1>
+    <title>Initialization</title>
+    <para>
+    </para>
+
+  </refsect1>-->
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+    <emphasis>xval</emphasis> --- value to transmit
+    </para>
+
+    <para>
+    <emphasis>kchan</emphasis> -- a positive integer that indicates
+    which channel of the software bus to write
+    </para>
+
+   <para>
+   Note that the inward and outward software busses are independent, and
+  are not mixer buses.  Also the k-rate and a-rate busses are
+  independent.  The last value remains until a new value is
+  written.  There is no imposed limit to the number of busses but they
+  use memory so small numbers are to be preferred.
+  </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Example</title>
+    <para>
+      The example shows the software bus being used as an output audio
+    channel. It assumes that an external program that has access to the API is
+    receiving the values.
+    </para>
+
+      <informalexample>
+        <programlisting>
+        <emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+        <emphasis role="ohdr">kr</emphasis> <emphasis role="op">=</emphasis> 100
+        <emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 1
+
+
+        <emphasis role="oblock">instr</emphasis>   1
+           a1   <emphasis role="opc">oscil</emphasis>     p4, p5, 100
+                <emphasis role="opc">chano</emphasis>     1, a1
+        <emphasis role="oblock">endin</emphasis>
+        </programlisting>
+      </informalexample>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+    <para>New in Csound 5.00</para>
+  </refsect1>
+</refentry>

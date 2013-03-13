@@ -1,0 +1,144 @@
+
+<refentry id="cpsxpch">
+<indexterm id="IndexCpsxpch"><primary>cpsxpch</primary></indexterm>
+  <refentryinfo><title>Pitch Converters:Tuning Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>cpsxpch</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>cpsxpch</refname>
+
+    <refpurpose>
+       Converts a pitch-class value into cycles-per-second (Hz) for equal divisions of any interval.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Converts a pitch-class value into cycles-per-second (Hz) for equal divisions of any interval. There is a restriction of no more than 100 equal divisions.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>icps <command>cpsxpch</command> ipch, iequal, irepeat, ibase</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ipch</emphasis> -- Input number of the form 8ve.pc, indicating an 'octave' and which note in the octave.
+    </para>
+
+    <para>
+      <emphasis>iequal</emphasis> -- if positive, the number of equal intervals into which the 'octave' is divided. Must be less than or equal to 100. If negative, is the number of a table of frequency multipliers.
+    </para>
+
+    <para>
+      <emphasis>irepeat</emphasis> -- Number indicating the interval which is the 'octave.' The integer 2 corresponds to octave divisions, 3 to a twelfth, 4 is two octaves, and so on. This need not be an integer, but must be positive.
+    </para>
+
+    <para>
+      <emphasis>ibase</emphasis> -- The frequency which corresponds to pitch 0.0
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>The following are essentially the same
+            <programlisting>
+ia  <emphasis role="op">=</emphasis>  <emphasis role="opc">cpspch</emphasis>(8.02)
+ib     <emphasis role="opc">cps2pch</emphasis>  8.02, 12
+ic     <emphasis role="opc">cpsxpch</emphasis>  8.02, 12, 2, 1.02197503906</programlisting>
+            </para>
+          </listitem>
+
+          <listitem>
+            <para>
+              These are opcodes not functions
+            </para>
+          </listitem>
+
+	  <listitem>
+            <para>
+              Negative values of <emphasis>ipch</emphasis> are allowed, but not negative <emphasis>irepeat</emphasis>, <emphasis>iequal</emphasis> or <emphasis>ibase</emphasis>.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </note>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the cpsxpch opcode. It uses the file <ulink url="examples/cpsxpch.csd"><citetitle>cpsxpch.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the cpsxpch opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/cpsxpch.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Its output should include lines like this:
+      <screen>instr 1:  icps = 293.666</screen>
+    </para>
+
+    <para>
+      Here is an example of the cpsxpch opcode using a 10.5 ET scale. It uses the file <ulink url="examples/cpsxpch_105et.csd"><citetitle>cpsxpch_105et.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the cpsxpch opcode using a 10.5 ET scale.</title>
+
+          <xi:include href="examples-xml/cpsxpch_105et.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Its output should include lines like this:
+      <screen>instr 1:  icps = 4776.824</screen>
+    </para>
+
+    <para>
+      Here is an example of the cpsxpch opcode using a Pierce scale centered on middle A. It uses the file <ulink url="examples/cpsxpch_pierce.csd"><citetitle>cpsxpch_pierce.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the cpsxpch opcode using a Pierce scale centered on middle A.</title>
+
+          <xi:include href="examples-xml/cpsxpch_pierce.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Its output should include lines like this:
+      <screen>instr 1:  icps = 2827.762</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="cpspch"><citetitle>cpspch</citetitle></link>,
+      <link linkend="cps2pch"><citetitle>cps2pch</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>University of Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>1997</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.492</para>
+  </refsect1>
+</refentry>

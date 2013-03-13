@@ -1,0 +1,145 @@
+
+<refentry id="cpspch">
+<indexterm id="IndexCpspch"><primary>cpspch</primary></indexterm>
+  <refentryinfo><title>Pitch Converters:Functions</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>cpspch</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>cpspch</refname>
+
+    <refpurpose>
+      Converts a pitch-class value to cycles-per-second.
+    </refpurpose>
+  </refnamediv>
+
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Converts a pitch-class value to cycles-per-second.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>cpspch</command> (pch)  (init- or control-rate args only)</synopsis>
+
+    <para>
+      where the argument within the parentheses may be a further expression.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>cpspch</emphasis> and its related opcodes are really <emphasis>value converters</emphasis> with a special function of manipulating pitch data.
+    </para>
+
+    <para>
+      Data concerning pitch and frequency can exist in any of the following forms:
+    </para>
+
+    <table frame="none" colsep="0">
+      <title>Pitch and Frequency Values</title>
+
+      <tgroup cols="2">
+        <thead>
+          <row>
+            <entry>Name</entry>
+            <entry>Abbreviation</entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry>octave point pitch-class (8ve.pc)</entry>
+            <entry>pch</entry>
+          </row>
+
+          <row>
+            <entry>octave point decimal</entry>
+            <entry>oct</entry>
+          </row>
+
+          <row>
+            <entry>cycles per second</entry>
+            <entry>cps</entry>
+          </row>
+
+          <row>
+            <entry>Midi note number (0-127)</entry>
+            <entry>midinn</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+
+    <para>
+      The first two forms consist of a whole number, representing octave registration, followed by a specially interpreted fractional part. For <emphasis>pch</emphasis>, the fraction is read as two decimal digits representing the 12 equal-tempered pitch classes from .00 for C to .11 for B. For <emphasis>oct</emphasis>, the fraction is interpreted as a true decimal fractional part of an octave. The two fractional forms are thus related by the factor 100/12. In both forms, the fraction is preceded by a whole number octave index such that 8.00 represents Middle C, 9.00 the C above, etc. Midi note number values range between 0 and 127 (inclusively) with 60 representing Middle C, and are usually whole numbers. Thus A440 can be represented alternatively by 440 (<emphasis>cps</emphasis>), 69 (<emphasis>midinn</emphasis>), 8.09 (<emphasis>pch</emphasis>), or 8.75 (<emphasis>oct</emphasis>). Microtonal divisions of the <emphasis>pch</emphasis> semitone can be encoded by using more than two decimal places.
+    </para>
+
+    <para>
+      The mnemonics of the pitch conversion units are derived from morphemes of the forms involved, the second morpheme describing the source and the first morpheme the object (result). Thus <emphasis>cpspch</emphasis>(8.09) will convert the pitch argument 8.09 to its <emphasis>cps</emphasis> (or Hertz) equivalent, giving the value of 440. Since the argument is constant over the duration of the note, this conversion will take place at i-time, before any samples for the current note are produced. 
+    </para>
+
+    <para>
+      By contrast, the conversion <emphasis>cpsoct</emphasis>(8.75 + k1) which gives the value of A440 transposed by the octave interval <emphasis>k1</emphasis>. The calculation will be repeated every k-period since that is the rate at which <emphasis>k1</emphasis> varies.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        The conversion from <emphasis>pch</emphasis>, <emphasis>oct</emphasis>, or <emphasis>midinn</emphasis> into <emphasis>cps</emphasis> is not a linear operation but involves an exponential process that could be time-consuming when executed repeatedly. Csound now uses a built-in table lookup to do this efficiently, even at audio rates. Because the table index is truncated without interpolation, pitch resolution when using one of these opcodes is limited to 8192 discrete and equal divisions of the octave, and some pitches of the standard 12-tone equally-tempered scale are very slightly mistuned (by at most 0.15 cents).
+      </para>
+      <para>
+        If you need more precision in the calculation, use 
+      <link linkend="cps2pch"><citetitle>cps2pch</citetitle></link> or
+      <link linkend="cpsxpch"><citetitle>cpsxpch</citetitle></link> instead.
+      
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the cpspch opcode. It uses the file <ulink url="examples/cpspch.csd"><citetitle>cpspch.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the cpspch opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/cpspch.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Its output should include lines like this:
+      <screen>
+instr 1:  icps = 277.167
+instr 1:  icps = 293.656
+instr 1:  icps = 311.101
+instr 1:  icps = 54.995
+</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="cps2pch"><citetitle>cps2pch</citetitle></link>,
+      <link linkend="cpsoct"><citetitle>cpsoct</citetitle></link>,
+      <link linkend="cpsxpch"><citetitle>cpsxpch</citetitle></link>,
+      <link linkend="octcps"><citetitle>octcps</citetitle></link>,
+      <link linkend="octpch"><citetitle>octpch</citetitle></link>,
+      <link linkend="pchoct"><citetitle>pchoct</citetitle></link>,
+      <link linkend="cpsmidinn"><citetitle>cpsmidinn</citetitle></link>,
+      <link linkend="octmidinn"><citetitle>octmidinn</citetitle></link>,
+      <link linkend="pchmidinn"><citetitle>pchmidinn</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

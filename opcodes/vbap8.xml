@@ -1,0 +1,106 @@
+
+<refentry id="vbap8">
+<indexterm id="IndexVbap8"><primary>vbap8</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Panning and Spatialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vbap8</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vbap8</refname>
+    <refpurpose>
+      Distributes an audio signal among 8 channels.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Distributes an audio signal among 8 channels.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ar1, ..., ar8 <command>vbap8</command> asig, kazim [, kelev] [, kspread]</synopsis>
+  </refsect1>
+
+<!--  <refsect1>
+    <title>Initialization</title>
+  </refsect1>-->
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asig</emphasis> -- audio signal to be panned
+    </para>
+    <para>
+      <emphasis>kazim</emphasis> -- azimuth angle of the virtual source
+    </para>
+
+    <para>
+      <emphasis>kelev</emphasis> (optional) -- elevation angle of the virtual source
+    </para>
+
+    <para>
+      <emphasis>kspread</emphasis> (optional) -- spreading of the virtual source (range 0 - 100).  If value is zero, conventional amplitude panning is used. When <emphasis>kspread</emphasis> is increased, the number of loudspeakers used in panning increases. If value is 100, the sound is applied to all loudspeakers.
+    </para>
+
+    <para>
+      <emphasis>vbap8</emphasis> takes an input signal, <emphasis>asig</emphasis>, and distributes it among 8 outputs, according to the controls <emphasis>kazim</emphasis> and <emphasis>kelev</emphasis>, and the configured loudspeaker placement.  If <emphasis>idim</emphasis> = 2, <emphasis>kelev</emphasis> is set to zero. The distribution is performed using Vector Base Amplitude Panning (VBAP - See reference).  VBAP distributes the signal using loudspeaker data configured with <emphasis>vbaplsinit</emphasis>. The signal is applied to, at most, two loudspeakers in 2-D loudspeaker configurations, and three loudspeakers in 3-D loudspeaker configurations. If the virtual source is panned outside the region spanned by loudspeakers, the nearest loudspeakers are used in panning.
+    </para>
+    <warning>
+      <para>Please note that all <emphasis>vbap</emphasis> panning opcodes require the <emphasis>vbap</emphasis> system to be initialized using <link linkend="vbaplsinit"><citetitle>vbaplsinit</citetitle></link>.</para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Example</title>
+    <para>
+      Here is a simple example of the <emphasis>vbap8</emphasis> opcode. It uses the file <ulink url="examples/vbap8.csd"><citetitle>vbap8.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the vbap8 opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/vbap8.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Reference</title>
+    <para>
+      Ville Pulkki: <quote>Virtual Sound Source Positioning Using Vector Base Amplitude Panning</quote> <emphasis>Journal of the Audio Engineering Society</emphasis>, 1997 June, Vol. 45/6, p. 456.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="vbap16"><citetitle>vbap16</citetitle></link>,
+      <link linkend="vbap16move"><citetitle>vbap16move</citetitle></link>,
+      <link linkend="vbap4"><citetitle>vbap4</citetitle></link>,
+      <link linkend="vbap4move"><citetitle>vbap4move</citetitle></link>,
+      <link linkend="vbap8move"><citetitle>vbap8move</citetitle></link>,
+      <link linkend="vbaplsinit"><citetitle>vbaplsinit</citetitle></link>,
+      <link linkend="vbapz"><citetitle>vbapz</citetitle></link>,
+      <link linkend="vbapzmove"><citetitle>vbapzmove</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Ville Pulkki</member>
+        <member>Sibelius Academy Computer Music Studio</member>
+        <member>Laboratory of Acoustics and Audio Signal Processing</member>
+        <member>Helsinki University of Technology</member>
+        <member>Helsinki, Finland</member>
+        <member>May 2000</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound Version 4.07. Input parameters accept k-rate since Csund 5.09.</para>
+  </refsect1>
+</refentry>

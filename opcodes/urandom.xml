@@ -1,0 +1,119 @@
+
+<refentry id="urandom">
+<indexterm id="IndexUrandom"><primary>urandom</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Random (Noise) Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>urandom</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>urandom</refname>
+    <refpurpose>
+      truly random opcodes with controllable range.
+          </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      truly random opcodes with controllable range. These
+      units are for Linux only and use /dev/urandom to construct
+      Csound random values
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ax <command>urandom</command> [imin, imax]</synopsis>
+
+    <synopsis>ix <command>urandom</command> [imin, imax]</synopsis>
+
+    <synopsis>kx <command>urandom</command> [imin, imax]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ix</emphasis> -- i-rate output value.
+    </para>
+
+    <para>
+      <emphasis>imin</emphasis> -- minimum value of range; defaults to -1.
+    </para>
+
+    <para>
+      <emphasis>imax</emphasis> -- maximum value of range; defaults to +1.
+    </para>
+
+    <note>
+      <title>Notes</title>
+      <para>
+        The algorithm produces 2^64 different possible values which
+        are scaled to fit the range requested.  The randomness comes
+        form the usual Linux /dev/urandom method, and there is no
+        guarantee that it will be truly random, but there is a good
+        chance.  It does not show any cycles.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ax</emphasis> -- a-rate output value.
+    </para>
+
+    <para>
+      <emphasis>kx</emphasis> -- k-rate output value.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the urandom opcode at a-rate. It uses the file <ulink url="examples/urandom.csd"><citetitle>urandom.csd</citetitle></ulink>.
+
+      <example>
+        <title>An example of the urandom opcode at a-rate.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/urandom.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Here is an example of the urandom opcode at k-rate. It uses the file <ulink url="examples/urandom_krate.csd"><citetitle>urandom_krate.csd</citetitle></ulink>.
+
+      <example>
+        <title>An example of the urandom opcode at k-rate.</title>
+
+          <xi:include href="examples-xml/urandom_krate.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Its output should include lines like this:
+      <screen>
+k1=0.229850
+k1=-0.077047
+k1=-0.199339
+k1=-0.620577
+k1=-0.119447
+k1=-0.596258
+k1=0.525800
+k1=-0.171583
+k1=-0.017196
+k1=-0.974613
+k1=-0.036276
+      </screen>
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namejohn;</para>
+    <para>New in version 5.13</para>
+  </refsect1>
+</refentry>

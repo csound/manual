@@ -1,0 +1,155 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in    No messages</emphasis>
+-odac           -iadc     -d     <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o FLslider-2.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">kr</emphasis> <emphasis role="op">=</emphasis> 441
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 100
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 1
+
+<emphasis role="comment">;By Andres Cabrera 2007</emphasis>
+
+<emphasis role="opc">FLpanel</emphasis> "Slider Types", 410, 260, 50, 50
+    <emphasis role="comment">; Distance of the left edge of the slider</emphasis>
+    <emphasis role="comment">; from the left edge of the panel</emphasis>
+    ix <emphasis role="op">=</emphasis> 10
+    <emphasis role="comment">; Distance of the top edge of the slider </emphasis>
+    <emphasis role="comment">; from the top edge of the panel</emphasis>
+    iy <emphasis role="op">=</emphasis> 10
+    <emphasis role="comment">; Create boxes to display widget values</emphasis>
+    givalue1 <emphasis role="opc">FLvalue</emphasis> "1", 60, 20, ix <emphasis role="op">+</emphasis> 330, iy
+    givalue3 <emphasis role="opc">FLvalue</emphasis> "3", 60, 20, ix <emphasis role="op">+</emphasis> 330, iy <emphasis role="op">+</emphasis> 40
+    givalue5 <emphasis role="opc">FLvalue</emphasis> "5", 60, 20, ix <emphasis role="op">+</emphasis> 330, iy <emphasis role="op">+</emphasis> 80
+
+    givalue2 <emphasis role="opc">FLvalue</emphasis> "2", 60, 20, ix <emphasis role="op">+</emphasis> 60, iy <emphasis role="op">+</emphasis> 140
+    givalue4 <emphasis role="opc">FLvalue</emphasis> "4", 60, 20, ix <emphasis role="op">+</emphasis> 195, iy <emphasis role="op">+</emphasis> 140
+    givalue6 <emphasis role="opc">FLvalue</emphasis> "6", 60, 20, ix <emphasis role="op">+</emphasis> 320, iy <emphasis role="op">+</emphasis> 140
+
+    <emphasis role="comment">;Horizontal sliders</emphasis>
+    gkdummy1, gihandle1 <emphasis role="opc">FLslider</emphasis> "Type 1", 200, 5000, <emphasis role="op">-</emphasis>1, 1, givalue1, 320, 20, ix, iy
+    gkdummy3, gihandle3 <emphasis role="opc">FLslider</emphasis> "Type 3", 0, 15000, 0, 3, givalue3, 320, 20, ix, iy <emphasis role="op">+</emphasis> 40
+    <emphasis role="comment">; Reversed slider</emphasis>
+    gkdummy5, gihandle5 <emphasis role="opc">FLslider</emphasis> "Type 5", 1, 0, 0, 5, givalue5, 320, 20, ix, iy <emphasis role="op">+</emphasis> 80
+
+    <emphasis role="comment">;Vertical sliders</emphasis>
+    gkdummy2, gihandle2 <emphasis role="opc">FLslider</emphasis> "Type 2", 0, 1, 0, 2, givalue2, 20, 100, ix<emphasis role="op">+</emphasis> 30 , iy <emphasis role="op">+</emphasis> 120
+    <emphasis role="comment">; Reversed slider</emphasis>
+    gkdummy4, gihandle4 <emphasis role="opc">FLslider</emphasis> "Type 4", 1, 0, 0, 4, givalue4, 20, 100, ix <emphasis role="op">+</emphasis> 165 , iy <emphasis role="op">+</emphasis> 120
+    gkdummy6, gihandle6 <emphasis role="opc">FLslider</emphasis> "Type 6", 0, 1, 0, 6, givalue6, 20, 100, ix <emphasis role="op">+</emphasis> 290 , iy <emphasis role="op">+</emphasis> 120
+<emphasis role="opc">FLpanelEnd</emphasis>
+
+<emphasis role="opc">FLpanel</emphasis> "Plastic Slider Types", 410, 300, 150, 150
+    <emphasis role="comment">; Distance of the left edge of the slider</emphasis>
+    <emphasis role="comment">; from the left edge of the panel</emphasis>
+    ix <emphasis role="op">=</emphasis> 10
+    <emphasis role="comment">; Distance of the top edge of the slider </emphasis>
+    <emphasis role="comment">; from the top edge of the panel</emphasis>
+    iy <emphasis role="op">=</emphasis> 10
+    <emphasis role="comment">; Create boxes to display widget values</emphasis>
+    givalue21 <emphasis role="opc">FLvalue</emphasis> "21", 60, 20, ix <emphasis role="op">+</emphasis> 330, iy
+    givalue23 <emphasis role="opc">FLvalue</emphasis> "23", 60, 20, ix <emphasis role="op">+</emphasis> 330, iy <emphasis role="op">+</emphasis> 40
+    givalue25 <emphasis role="opc">FLvalue</emphasis> "25", 60, 20, ix <emphasis role="op">+</emphasis> 330, iy <emphasis role="op">+</emphasis> 80
+
+    givalue22 <emphasis role="opc">FLvalue</emphasis> "22", 60, 20, ix <emphasis role="op">+</emphasis> 60, iy <emphasis role="op">+</emphasis> 140
+    givalue24 <emphasis role="opc">FLvalue</emphasis> "24", 60, 20, ix <emphasis role="op">+</emphasis> 195, iy <emphasis role="op">+</emphasis> 140
+    givalue26 <emphasis role="opc">FLvalue</emphasis> "26", 60, 20, ix <emphasis role="op">+</emphasis> 320, iy <emphasis role="op">+</emphasis> 140
+
+    <emphasis role="comment">;Horizontal sliders</emphasis>
+    gkdummy21, gihandle21 <emphasis role="opc">FLslider</emphasis> "Type 21", 200, 5000, <emphasis role="op">-</emphasis>1, 21, givalue21, 320, 20, ix, iy
+    gkdummy23, gihandle23 <emphasis role="opc">FLslider</emphasis> "Type 23", 0, 15000, 0, 23, givalue23, 320, 20, ix, iy <emphasis role="op">+</emphasis> 40
+    <emphasis role="comment">; Reversed slider</emphasis>
+    gkdummy25, gihandle25 <emphasis role="opc">FLslider</emphasis> "Type 25", 1, 0, 0, 25, givalue25, 320, 20, ix, iy <emphasis role="op">+</emphasis> 80
+
+    <emphasis role="comment">;Vertical sliders</emphasis>
+    gkdummy22, gihandle22 <emphasis role="opc">FLslider</emphasis> "Type 22", 0, 1, 0, 22, givalue22, 20, 100, ix<emphasis role="op">+</emphasis> 30 , iy <emphasis role="op">+</emphasis> 120
+    <emphasis role="comment">; Reversed slider</emphasis>
+    gkdummy24, gihandle24 <emphasis role="opc">FLslider</emphasis> "Type 24", 1, 0, 0, 24, givalue24, 20, 100, ix <emphasis role="op">+</emphasis> 165 , iy <emphasis role="op">+</emphasis> 120
+    gkdummy26, gihandle26 <emphasis role="opc">FLslider</emphasis> "Type 26", 0, 1, 0, 26, givalue26, 20, 100, ix <emphasis role="op">+</emphasis> 290 , iy <emphasis role="op">+</emphasis> 120
+    <emphasis role="comment">;Button to add color to the sliders</emphasis>
+    gkcolors, ihdummy <emphasis role="opc">FLbutton</emphasis> "Color", 1, 0, 21, 150, 30, 30, 260, 0, 10, 0, 1
+<emphasis role="opc">FLpanelEnd</emphasis>
+<emphasis role="opc">FLrun</emphasis>
+
+
+
+<emphasis role="comment">;Set some widget's initial value</emphasis>
+<emphasis role="opc">FLsetVal_i</emphasis> 500, gihandle1
+<emphasis role="opc">FLsetVal_i</emphasis> 1000, gihandle3
+
+<emphasis role="oblock">instr</emphasis> 10
+<emphasis role="comment">; Set the color of widgets</emphasis>
+<emphasis role="opc">FLsetColor</emphasis> 200, 230, 0, gihandle1
+<emphasis role="opc">FLsetColor</emphasis> 0, 123, 100, gihandle2
+<emphasis role="opc">FLsetColor</emphasis> 180, 23, 12, gihandle3
+<emphasis role="opc">FLsetColor</emphasis> 10, 230, 0, gihandle4
+<emphasis role="opc">FLsetColor</emphasis> 0, 0, 0, gihandle5
+<emphasis role="opc">FLsetColor</emphasis> 0, 0, 0, gihandle6
+
+<emphasis role="opc">FLsetColor</emphasis> 200, 230, 0, givalue1
+<emphasis role="opc">FLsetColor</emphasis> 0, 123, 100, givalue2
+<emphasis role="opc">FLsetColor</emphasis> 180, 23, 12, givalue3
+<emphasis role="opc">FLsetColor</emphasis> 10, 230, 0, givalue4
+<emphasis role="opc">FLsetColor</emphasis> 255, 255, 255, givalue5
+<emphasis role="opc">FLsetColor</emphasis> 255, 255, 255, givalue6
+
+<emphasis role="opc">FLsetColor2</emphasis> 20, 23, 100, gihandle1
+<emphasis role="opc">FLsetColor2</emphasis> 200,0 ,123 , gihandle2
+<emphasis role="opc">FLsetColor2</emphasis> 180, 180, 100, gihandle3
+<emphasis role="opc">FLsetColor2</emphasis> 180, 23, 12, gihandle4
+<emphasis role="opc">FLsetColor2</emphasis> 180, 180, 100, gihandle5
+<emphasis role="opc">FLsetColor2</emphasis> 180, 23, 12, gihandle6
+
+<emphasis role="opc">FLsetColor</emphasis> 200, 230, 0, gihandle21
+<emphasis role="opc">FLsetColor</emphasis> 0, 123, 100, gihandle22
+<emphasis role="opc">FLsetColor</emphasis> 180, 23, 12, gihandle23
+<emphasis role="opc">FLsetColor</emphasis> 10, 230, 0, gihandle24
+<emphasis role="opc">FLsetColor</emphasis> 0, 0, 0, gihandle25
+<emphasis role="opc">FLsetColor</emphasis> 0, 0, 0, gihandle26
+
+<emphasis role="opc">FLsetColor</emphasis> 200, 230, 0, givalue21
+<emphasis role="opc">FLsetColor</emphasis> 0, 123, 100, givalue22
+<emphasis role="opc">FLsetColor</emphasis> 180, 23, 12, givalue23
+<emphasis role="opc">FLsetColor</emphasis> 10, 230, 0, givalue24
+<emphasis role="opc">FLsetColor</emphasis> 255, 255, 255, givalue25
+<emphasis role="opc">FLsetColor</emphasis> 255, 255, 255, givalue26
+
+<emphasis role="opc">FLsetColor2</emphasis> 20, 23, 100, gihandle21
+<emphasis role="opc">FLsetColor2</emphasis> 200,0 ,123 , gihandle22
+<emphasis role="opc">FLsetColor2</emphasis> 180, 180, 100, gihandle23
+<emphasis role="opc">FLsetColor2</emphasis> 180, 23, 12, gihandle24
+<emphasis role="opc">FLsetColor2</emphasis> 180, 180, 100, gihandle25
+<emphasis role="opc">FLsetColor2</emphasis> 180, 23, 12, gihandle26
+
+<emphasis role="comment">; Slider values must be updated for colors to change</emphasis>
+<emphasis role="opc">FLsetVal_i</emphasis> 250, gihandle1
+<emphasis role="opc">FLsetVal_i</emphasis> 0.5, gihandle2
+<emphasis role="opc">FLsetVal_i</emphasis> 0, gihandle3
+<emphasis role="opc">FLsetVal_i</emphasis> 0, gihandle4
+<emphasis role="opc">FLsetVal_i</emphasis> 0, gihandle5
+<emphasis role="opc">FLsetVal_i</emphasis> 0.5, gihandle6
+<emphasis role="opc">FLsetVal_i</emphasis> 250, gihandle21
+<emphasis role="opc">FLsetVal_i</emphasis> 0.5, gihandle22
+<emphasis role="opc">FLsetVal_i</emphasis> 500, gihandle23
+<emphasis role="opc">FLsetVal_i</emphasis> 0, gihandle24
+<emphasis role="opc">FLsetVal_i</emphasis> 0, gihandle25
+<emphasis role="opc">FLsetVal_i</emphasis> 0.5, gihandle26
+
+<emphasis role="oblock">endin</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis> 0 3600   <emphasis role="comment">;Dumy table to make csound wait for realtime events</emphasis>
+
+<emphasis role="stamnt">e</emphasis>
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

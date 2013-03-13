@@ -1,0 +1,179 @@
+
+<refentry id="GEN13">
+      <indexterm id="IndexGEN13"><primary>GEN13</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN13</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN13</refname>
+    <refpurpose>
+      Stores a polynomial whose coefficients derive from the Chebyshev polynomials of the first kind.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Uses Chebyshev coefficients to generate stored polynomial functions which, under waveshaping, can be used to split a sinusoid into harmonic partials having a pre-definable spectrum.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>f</command> # time size 13 xint xamp h0 h1 h2 ...</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>size</emphasis> -- number of points in the table. Must be a power of 2 or a power-of-2 plus 1 (see <link linkend="f"><citetitle>f statement</citetitle></link>). The normal value is power-of-2 plus 1.
+    </para>
+
+    <para>
+      <emphasis>xint</emphasis> -- provides the left and right values [<emphasis>-xint, +xint</emphasis>] of the x interval over which the polynomial is to be drawn. These subroutines both call <link linkend="GEN03"><citetitle>GEN03</citetitle></link> to draw their functions; the p5 value here is therefor expanded to a negative-positive p5, p6 pair before <emphasis>GEN03</emphasis> is actually called. The normal value is 1.
+    </para>
+
+    <para>
+      <emphasis>xamp </emphasis> -- amplitude scaling factor of the sinusoid input that is expected to produce the following spectrum.
+    </para>
+
+    <para>
+      <emphasis>h0, h1, h2,</emphasis> etc. -- relative strength of partials 0 (DC), 1 (fundamental), 2 ... that will result when a sinusoid of amplitude
+
+      <literallayout>
+xamp * int(size/2)/xint
+      </literallayout>
+
+      is waveshaped using this function table. These values thus describe a frequency spectrum associated with a particular factor <emphasis>xamp</emphasis> of the input signal.
+    </para>
+
+    <para>
+      <emphasis>GEN13</emphasis> is the function generator normally employed in standard waveshaping. It stores a polynomial whose coefficients derive from the Chebyshev polynomials of the first kind, so that a driving sinusoid of strength <emphasis>xamp</emphasis> will exhibit the specified spectrum at output. Note that the evolution of this spectrum is generally not linear with varying <emphasis>xamp</emphasis>. However, it is bandlimited (the only partials to appear will be those specified at generation time); and the partials will tend to occur and to develop in ascending order (the lower partials dominating at low <emphasis>xamp</emphasis>, and the spectral richness increasing for higher values of <emphasis>xamp</emphasis>). A negative <emphasis>hn</emphasis> value implies a 180 degree phase shift of that partial; the requested full-amplitude spectrum will not be affected by this shift, although the evolution of several of its component partials may be. The pattern +,+,-,-,+,+,... for <emphasis>h0,h1,h2..</emphasis>. will minimize the normalization problem for low <emphasis>xamp</emphasis> values (see above), but does not necessarily provide the smoothest pattern of evolution.
+    </para>
+  </refsect1>
+
+    <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the GEN13 opcode. It uses the file <ulink url="examples/gen13.csd"><citetitle>gen13.csd</citetitle></ulink>.
+           <example>
+        <title>Example of the GEN13 opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/gen13.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>  
+        <textobject>
+          <phrase>These are the diagrams of the waveforms of the GEN13 routines, as used in the example:</phrase>
+        </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen13_1.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f1 0 513 13 1 1 0 100 -50 -33 25 20 -16.7 -14.2 12.5 11.1 -10 -9.09 8.333 7.69 -7.14 -6.67 6.25 5.88 -5.55 -5.26 5 -  quasi sawtooth transfer function</phrase>
+        </textobject>
+
+        <caption>
+          <para>f1 0 513 13 1 1 0 100 -50 -33 25 20 -16.7 -14.2 12.5 11.1 -10 -9.09 8.333 7.69 -7.14 -6.67 6.25 5.88 -5.55 -5.26 5 -  quasi sawtooth transfer function</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen13_2.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f3 0 513 13 1 1 0 100 0 -33 0 20 0 -14.2 0 11.1 0 -9.09 0 7.69 0 -6.67 0 5.88 0 -5.26 - quasi square wave transfer function</phrase>
+        </textobject>
+
+        <caption>
+          <para>f3 0 513 13 1 1 0 100 0 -33 0 20 0 -14.2 0 11.1 0 -9.09 0 7.69 0 -6.67 0 5.88 0 -5.26 - quasi square wave transfer function</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen13_3.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f5 0 513 13 1 1 0 100 0 -11.11 0 4 0 -2.04 0 1.23 0 -.826 0 .59 0 -.444 0 .346 0 -.277 - quasi triangle wave transfer function</phrase>
+        </textobject>
+
+        <caption>
+          <para>f5 0 513 13 1 1 0 100 0 -11.11 0 4 0 -2.04 0 1.23 0 -.826 0 .59 0 -.444 0 .346 0 -.277 - quasi triangle wave transfer function</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen13_4.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f7 0 513 13 1 1 0 1 -.8 0 .6 0 0 0 .4 0 0 0 0 .1 -.2 -.3 .5 - transfer function 1</phrase>
+        </textobject>
+
+        <caption>
+          <para>f7 0 513 13 1 1 0 1 -.8 0 .6 0 0 0 .4 0 0 0 0 .1 -.2 -.3 .5 - transfer function 1</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen13_5.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f9 0 513 13 1 1 0 0 0 -.1 0 .3 0 -.5 0 .7 0 -.9 0 1 0 -1 0 - transfer function 2</phrase>
+        </textobject>
+
+        <caption>
+          <para>f9 0 513 13 1 1 0 0 0 -.1 0 .3 0 -.5 0 .7 0 -.9 0 1 0 -1 0 - transfer function 2</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen13_6.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f11 0 513 13 1 1 0 0 0 0 0 0 0 -1 0 1 0 0 -.1 0 .1 0 -.2 .3 0 -.7 0 .2 0 -.1  - transfer function 3</phrase>
+        </textobject>
+
+        <caption>
+          <para>f11 0 513 13 1 1 0 0 0 0 0 0 0 -1 0 1 0 0 -.1 0 .1 0 -.2 .3 0 -.7 0 .2 0 -.1  - transfer function 3</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen13_7.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f13 0 513 13 1 1 0 5 0 3 0 1 - split a sinusoid into 3 odd-harmonic partials of relative strength 5:3:1</phrase>
+        </textobject>
+
+        <caption>
+          <para>f13 0 513 13 1 1 0 5 0 3 0 1 - split a sinusoid into 3 odd-harmonic partials of relative strength 5:3:1</para>
+        </caption>
+      </mediaobject>
+
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="GEN03"><citetitle>GEN03</citetitle></link>,
+      <link linkend="GEN14"><citetitle>GEN14</citetitle></link>, and
+      <link linkend="GEN15"><citetitle>GEN15</citetitle></link>.
+          <para> Information about the Chebyshev polynomials on Wikipedia: <ulink url="http://en.wikipedia.org/wiki/Chebyshev_polynomials"><citetitle>http://en.wikipedia.org/wiki/Chebyshev_polynomials</citetitle></ulink></para>
+    </para>
+  </refsect1>
+</refentry>

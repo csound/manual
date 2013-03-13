@@ -1,0 +1,111 @@
+
+<refentry id="pvstencil">
+<indexterm id="IndexPvstencil"><primary>pvstencil</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvstencil</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvstencil</refname>
+    <refpurpose>
+      Transforms a pvoc stream according to a masking function table.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Transforms a pvoc stream according to a masking function table;
+      if the pvoc stream amplitude falls below the value of the function
+      for a specific pvoc channel, it applies a gain to that channel.
+    </para>
+    <para>
+      The pvoc stream amplitudes are compared to a masking table, if
+      the fall below the table values, they are scaled by <emphasis>kgain</emphasis>. Prior
+      to the operation, table values are scaled by <emphasis>klevel</emphasis>, which can be
+      used as masking depth control.
+    </para>
+    <para>
+    Tables have to be at least fftsize/2 in size; for most GENS it is
+    important to use an extended-guard point (size power-of-two plus
+    one), however this is not necessary with GEN43.
+    </para>
+    <para>
+    One of the typical uses of <emphasis>pvstencil</emphasis> would be in noise
+    reduction. A noise print can be analysed with <emphasis>pvanal</emphasis> into a PVOC-EX
+    file and loaded in a table with <emphasis>GEN43</emphasis>. This then can be used as
+    the masking table for <emphasis>pvstencil</emphasis> and the amount of reduction would
+    be controlled by <emphasis>kgain</emphasis>. Skipping post-normalisation will keep the
+    original noise print average amplitudes. This would provide a good
+    starting point for a successful noise reduction (so that <emphasis>klevel</emphasis>
+    can be generally set to close to 1).
+    </para>
+    <para>
+    Other possible transformation effects are possible, such as
+    filtering and `inverse-masking'.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>fsig <command>pvstencil</command> fsigin, kgain, klevel, iftable</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>fsig</emphasis> -- output pv stream
+    </para>
+
+    <para>
+      <emphasis>fsigin</emphasis> -- input pv stream.
+    </para>
+
+    <para>
+      <emphasis>kgain</emphasis> -- `stencil' gain.
+    </para>
+
+    <para>
+      <emphasis>klevel</emphasis> -- masking function level (scales
+      the ftable prior to `stenciling') .
+    </para>
+
+    <para>
+      <emphasis>iftable</emphasis> -- masking function table.
+    </para>
+
+    <warning>
+      <para>
+        It is unsafe to use the same f-variable for both input and output of pvs opcodes. Using the same one might lead to undefined behavior on some opcodes. Use a different one on the left and right sides of the opcode.
+      </para>
+    </warning>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      <example>
+        <title>Example</title>
+        <programlisting>
+fsig    <emphasis role="opc">pvsanal</emphasis>   asig, 1024, 256, 1024, 1
+fclean  <emphasis role="opc">pvstencil</emphasis> fsig, 0, 1, 1
+aclean  <emphasis role="opc">pvsynth</emphasis>   fclean</programlisting>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>November 2004 </member>
+      </simplelist>
+    </para>
+
+    <para>New plugin in version 5</para>
+    <para>November 2004.</para>
+  </refsect1>
+</refentry>

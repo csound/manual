@@ -1,0 +1,157 @@
+
+<refentry id="GEN51">
+      <indexterm id="IndexGEN51"><primary>GEN51</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN51</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>GEN51</refname>
+    <refpurpose>
+      This subroutine fills a table with a fully customized micro-tuning scale, in the manner of Csound opcodes <emphasis>cpstun</emphasis>, <emphasis>cpstuni</emphasis> and <emphasis>cpstmid</emphasis>.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This subroutine fills a table with a fully customized micro-tuning
+ 	  scale, in the manner of Csound opcodes <link linkend="cpstun"><citetitle>cpstun</citetitle></link>,
+      <link linkend="cpstuni"><citetitle>cpstuni</citetitle></link> et
+      <link linkend="cpstmid"><citetitle>cpstmid</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>f</command> # time size -51 numgrades interval basefreq basekey tuningRatio1 tuningRatio2  .... tuningRationN</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      The first four parameters (i.e. p5, p6, p7 and p8) define the following
+ generation directives:</para>
+
+ 	<para>
+ 	<emphasis>p5 (numgrades)</emphasis>
+ 	-- the number of grades of the micro-tuning scale
+ 	</para>
+
+ 	<para>
+ 	<emphasis>p6 (interval)</emphasis>
+ 	-- the frequency range covered before repeating the grade
+ ratios, for example 2 for one octave, 1.5 for a fifth etcetera
+	</para>
+
+	<para>
+	<emphasis>p7 (basefreq)</emphasis>
+	-- the base frequency of the scale in cps
+	</para>
+
+	<para>
+	<emphasis>p8 (basekey)</emphasis>
+	-- the integer index of the scale to which to assign basefreq unmodified
+	</para>
+
+	<para>
+	The other parameters define the ratios of the scale:
+	</para>
+
+ 	<para>
+	 <emphasis>p9...pN (tuningRatio1...etc.)</emphasis>
+	 -- the tuning ratios of the scale
+	 </para>
+
+ 	<para>
+ For example, for a standard 12-grade scale with the base-frequency of
+ 261 cps assigned to the key-number 60, the corresponding f-statement in
+ the score to generate the table should be:</para>
+
+	<programlisting>
+<emphasis role="comment">;             numgrades        basefreq           tuning-ratios  (eq.temp) .......</emphasis>
+<emphasis role="comment">;                     interval         basekey</emphasis>
+<emphasis role="stamnt">f</emphasis>1 0 64 -51     12       2      261      60        1   1.059463 1.12246 1.18920 ..etc...</programlisting>
+
+	<para>
+	 After the gen has been processed, the table f1 is filled with 64
+	 different frequency values. The 60th element is filled with the
+	 frequency value of 261, and all other elements (preceding and
+	 subsequents) of the table are filled according to the tuning ratios
+	</para>
+
+
+	<para>
+	 Another example with a 24-grade scale with a base frequency of 440
+	 assigned to the key-number 48, and a repetition interval of 1.5:</para>
+
+
+	<programlisting>
+<emphasis role="comment">;            numgrades       basefreq             tuning-ratios .....</emphasis>
+<emphasis role="comment">;                     interval         basekey</emphasis>
+<emphasis role="stamnt">f</emphasis>1 0 64 -51     24      1.5     440      48         1   1.01  1.02  1.03  ..etc...</programlisting>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+	    Here is an example of the GEN51 routine. It uses the files <ulink url="examples/gen51.csd"><citetitle>gen51.csd</citetitle></ulink>.
+      <example>
+        <title>An example of the GEN51 routine.</title>
+        <xi:include href="examples-xml/gen51.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+        <textobject>
+          <phrase>These are the diagrams of the waveforms of the GEN51 routines, as used in the example:</phrase>
+        </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen51_1.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 1 0 128 -51 12 2 cpsoct(8) 60 1 2^(1/12) 2^(2/12) 2^(3/12) 2^(4/12) 2^(5/12) 2^(6/12) 2^(7/12) 2^(8/12) 2^(9/12) 2^(10/12) 2^(11/12) 2^(12/12)</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 1 0 128 -51 12 2 cpsoct(8) 60 1 2^(1/12) 2^(2/12) 2^(3/12) 2^(4/12) 2^(5/12) 2^(6/12) 2^(7/12) 2^(8/12) 2^(9/12) 2^(10/12) 2^(11/12) 2^(12/12)</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen51_2.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 2 0 128 -51 10 2 cpsoct(8) 60 1 2^(1/10) 2^(2/10) 2^(3/10) 2^(4/10) 2^(5/10) 2^(6/10) 2^(7/10) 2^(8/10) 2^(9/10) 2^(10/10)</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 2 0 128 -51 10 2 cpsoct(8) 60 1 2^(1/10) 2^(2/10) 2^(3/10) 2^(4/10) 2^(5/10) 2^(6/10) 2^(7/10) 2^(8/10) 2^(9/10) 2^(10/10)</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen51_3.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 3 0 128 -51 24 2 cpsoct(8) 60 1 2^(1/24) 2^(2/24) 2^(3/24) 2^(4/24) 2^(5/24) 2^(6/24) 2^(7/24) 2^(8/24) 2^(9/24) 2^(10/24) 2^(11/24) 2^(12/24) 2^(13/24) 2^(14/24) 2^(15/24) 2^(16/24) 2^(17/24) 2^(18/24) 2^(19/24) 2^(20/24) 2^(21/24) 2^(22/24) 2^(23/24) 2^(24/24)</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 3 0 128 -51 24 2 cpsoct(8) 60 1 2^(1/24) 2^(2/24) 2^(3/24) 2^(4/24) 2^(5/24) 2^(6/24) 2^(7/24) 2^(8/24) 2^(9/24) 2^(10/24) 2^(11/24) 2^(12/24) 2^(13/24) 2^(14/24) 2^(15/24) 2^(16/24) 2^(17/24) 2^(18/24) 2^(19/24) 2^(20/24) 2^(21/24) 2^(22/24) 2^(23/24) 2^(24/24)</para>
+        </caption>
+      </mediaobject>
+
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namegabriel;</para>
+  </refsect1>
+</refentry>

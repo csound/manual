@@ -1,0 +1,38 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac     <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">;-o floor.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1
+
+idiv <emphasis role="opc">init</emphasis> 1
+
+<emphasis role="olabel">loop</emphasis><emphasis role="op">:</emphasis>
+inumber <emphasis role="op">=</emphasis> 9
+i1  <emphasis role="op">=</emphasis> inumber <emphasis role="op">/</emphasis> idiv
+ifl <emphasis role="op">=</emphasis> <emphasis role="opc">floor</emphasis>(i1)
+<emphasis role="opc">print</emphasis> inumber, idiv, ifl <emphasis role="comment">;print number / idiv = result using floor</emphasis>
+idiv <emphasis role="op">=</emphasis> idiv <emphasis role="op">+</emphasis> 1
+<emphasis role="octrl">if</emphasis> (idiv <emphasis role="op">&lt;=</emphasis> 10) <emphasis role="octrl">igoto</emphasis> <emphasis role="olabel">loop</emphasis>
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1 0 0
+<emphasis role="stamnt">e</emphasis>
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

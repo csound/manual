@@ -1,0 +1,99 @@
+
+<refentry id="GEN25">
+      <indexterm id="IndexGEN25"><primary>GEN25</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN25</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN25</refname>
+    <refpurpose>
+      Construct functions from segments of exponential curves in breakpoint fashion.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      These subroutines are used to construct functions from segments of exponential curves in breakpoint fashion.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>f</command> # time size 25 x1 y1 x2 y2 x3  ...</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>size </emphasis> -- number of points in the table. Must be a power of 2 or power-of-2 plus 1 (see <link linkend="f"><citetitle>f statement</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis>x1, x2, x3,</emphasis> etc. -- locations in table at which to attain the following y value. Must be in increasing order. If the last value is less than size, then the rest will be set to zero. Should not be negative but can be zero.
+    </para>
+
+    <para>
+      <emphasis>y1, y2, y3,</emphasis>, etc. -- Breakpoint values attained at the location specified by the preceding x value. These must be non-zero and must be alike in sign.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        If p4 is positive, functions are post-normalized (rescaled to a maximum absolute value of 1 after generation). A negative p4 will cause rescaling to be skipped.
+      </para>
+    </note>
+  </refsect1>
+ 
+    <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the GEN25 opcode. It uses the file <ulink url="examples/gen25.csd"><citetitle>gen25.csd</citetitle></ulink>.
+           <example>
+        <title>Example of the GEN25 opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/gen25.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>  
+        <textobject>
+          <phrase>This is the diagram of the waveform of the GEN25 routine, as used in the example:</phrase>
+        </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen25.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 2 0 1025 25 0 0.01 200 1 400 1 513 0.01 - a function which begins at 0.01, rises to 1 at the 200th table location, makes a straight line to the 400th location, and returns to 0.01 by the end of the table</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 2 0 1025 25 0 0.01 200 1 400 1 513 0.01 - a function which begins at 0.01, rises to 1 at the 200th table location, makes a straight line to the 400th location, and returns to 0.01 by the end of the table</para>
+        </caption>
+      </mediaobject>
+   
+    </para>
+  </refsect1> 
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="f"><citetitle>f statement</citetitle></link>,
+      <link linkend="GEN27"><citetitle>GEN27</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>University of Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.49</para>
+  </refsect1>
+</refentry>

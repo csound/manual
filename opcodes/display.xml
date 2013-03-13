@@ -1,0 +1,76 @@
+
+<refentry id="display">
+<indexterm id="IndexDisplay"><primary>display</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Printing and Display</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>display</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>display</refname>
+    <refpurpose>
+      Displays the audio or control signals as an amplitude vs. time graph.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      These units will print orchestra init-values, or produce graphic display of orchestra control signals and audio signals. Uses X11 windows if enabled, else (or if <link linkend="FlagsMinusLowerG"><citetitle>-g</citetitle></link> flag is set) displays are approximated in ASCII characters.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>display</command> xsig, iprd [, inprds] [, iwtflg]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iprd</emphasis> -- the period of display in seconds.
+    </para>
+
+    <para>
+      <emphasis>inprds</emphasis> (optional, default=1) -- Number of display periods retained in each display graph. A value of 2 or more will provide a larger perspective of the signal motion. The default value is 1 (each graph completely new).
+      <emphasis>inprds</emphasis> is a scaling factor for the displayed waveform, controlling how many <emphasis>iprd</emphasis>-sized frames of samples are drawn in the window (the default and minimum value is 1.0). Higher <emphasis>inprds</emphasis> values are slower to draw (more points to draw) but will show the waveform scrolling through the window, which is useful with low <emphasis>iprd</emphasis> values.
+    </para>
+
+    <para>
+      <emphasis>iwtflg</emphasis> (optional, default=0) -- wait flag. If non-zero, each display is held until released by the user. The default value is 0 (no wait).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>display</emphasis> -- displays the audio or control signal <emphasis>xsig</emphasis> every <emphasis>iprd</emphasis> seconds, as an amplitude vs. time graph.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the display opcode. It uses the file <ulink url="examples/display.csd"><citetitle>display.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the display opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/display.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="dispfft"><citetitle>dispfft</citetitle></link>,
+      <link linkend="print"><citetitle>print</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Comments about the <emphasis>inprds</emphasis> parameter contributed by &namerasmus;.</para>
+  </refsect1>
+</refentry>

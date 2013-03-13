@@ -1,0 +1,89 @@
+
+<refentry id="oscil3">
+<indexterm id="IndexOscil3"><primary>oscil3</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Basic Oscillators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>oscil3</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>oscil3</refname>
+    <refpurpose>
+      A simple oscillator with cubic interpolation.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+        <emphasis>oscil3</emphasis> reads table <emphasis>ifn</emphasis> sequentially and repeatedly at a frequency <emphasis>xcps</emphasis>. The amplitude is scaled by <emphasis>xamp</emphasis>. Cubic interpolation is applied for table look up from internal phase values.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>oscil3</command> xamp, xcps, ifn [, iphs]</synopsis>
+
+    <synopsis>kres <command>oscil3</command> kamp, kcps, ifn [, iphs]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifn</emphasis> -- function table number. Requires a wrap-around guard point.
+    </para>
+
+    <para>
+      <emphasis>iphs</emphasis> (optional) -- initial phase of sampling, expressed as a fraction of a cycle (0 to 1). A negative value will cause phase initialization to be skipped. The default value is 0.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kamp, xamp</emphasis> -- amplitude
+    </para>
+
+    <para>
+      <emphasis>kcps, xcps</emphasis> -- frequency in cycles per second.
+    </para>
+
+    <para>
+      <emphasis>oscil3</emphasis> is identical to <link linkend="oscili"><citetitle>oscili</citetitle></link>, except that it uses cubic interpolation.
+    </para>
+    <para>
+      Table <emphasis>ifn</emphasis> is incrementally sampled modulo the table length and the value obtained is multiplied by <emphasis>amp</emphasis>.
+    </para>
+    <para>
+      If you need to change the oscillator table with a k-rate signal, you can use <link linkend="oscilikt"><citetitle>oscilikt</citetitle></link>.
+    </para>
+ </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the oscil3 opcode. It uses the file <ulink url="examples/oscil3.csd"><citetitle>oscil3.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the oscil3 opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/oscil3.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="oscil"><citetitle>oscil</citetitle></link>,
+      <link linkend="oscili"><citetitle>oscili</citetitle></link>,
+      <link linkend="oscilikt"><citetitle>oscilikt</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namejohn;</para>
+    <para>New in Csound version 3.50</para>
+  </refsect1>
+</refentry>

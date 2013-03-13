@@ -1,0 +1,41 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac  <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o vpow-2.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1
+
+ain   <emphasis role="opc">diskin2</emphasis> "fox.wav", 1				<emphasis role="comment">;soundfile</emphasis>
+fsrc  <emphasis role="opc">pvsanal</emphasis> ain, 1024, 256, 1024, 1
+ifn   <emphasis role="ohdr">ftgen</emphasis>   0, 0, 1024<emphasis role="op">/</emphasis>2, 2, 0			<emphasis role="comment">;create empty function table for the 513 bins</emphasis>
+kflag <emphasis role="opc">pvsftw</emphasis> fsrc,ifn					<emphasis role="comment">;export only amplitudes to table	</emphasis>
+kval  <emphasis role="opc">line</emphasis> .001, p3, 1					<emphasis role="comment">;start with big distortion, cahnge over note duration to clean sound</emphasis>
+kbin  <emphasis role="opc">line</emphasis> p4, p3, p5					<emphasis role="comment">;vary the bins</emphasis>
+<emphasis role="opc">vpow</emphasis>  ifn, kval, kbin, 0				<emphasis role="comment">;note that this operation is applied each k-cycle!</emphasis>
+<emphasis role="comment">;vpow ifn, kval, kbin, 10				;if you set kdstoffset to 10 it will affect bins 10+(kbin line p4, p3, p5)</emphasis>
+      <emphasis role="opc">pvsftr</emphasis>  fsrc,ifn					<emphasis role="comment">;read modified data back to fsrc</emphasis>
+aout  <emphasis role="opc">pvsynth</emphasis> fsrc					<emphasis role="comment">;and resynth</emphasis>
+      <emphasis role="opc">outs</emphasis> aout<emphasis role="op">*</emphasis>p6, aout<emphasis role="op">*</emphasis>p6				<emphasis role="comment">;adjust volume to compensate</emphasis>
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1 0 4 100 100 .02	<emphasis role="comment">;first 100 bins are affected</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 + 4 10  10  .1	<emphasis role="comment">;first 10 bins</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 + 4 1 400	.05	<emphasis role="comment">;sweep from bin 1 to 400</emphasis>
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

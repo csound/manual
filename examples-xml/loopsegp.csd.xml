@@ -1,0 +1,41 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in</emphasis>
+-odac           -iadc    <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o loopsegp.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="ohdr">sr</emphasis><emphasis role="op">=</emphasis>44100
+<emphasis role="ohdr">ksmps</emphasis><emphasis role="op">=</emphasis>1
+<emphasis role="ohdr">nchnls</emphasis><emphasis role="op">=</emphasis>2
+
+<emphasis role="comment">; By Mark Van Peteghem 2008</emphasis>
+
+   <emphasis role="oblock">instr</emphasis> 1
+iphase  <emphasis role="op">=</emphasis> p4
+
+kenv      <emphasis role="opc">linen</emphasis> 1, 0.1, p3, 0.1
+kph_amp   <emphasis role="opc">phasor</emphasis> 2, 0
+kamp      <emphasis role="opc">loopsegp</emphasis> kph_amp, 60, 1, 30, 1, 60
+kamp    <emphasis role="op">=</emphasis> <emphasis role="opc">ampdb</emphasis>(kamp)<emphasis role="op">*</emphasis>kenv
+
+kph_freq  <emphasis role="opc">phasor</emphasis> 2, iphase
+klow_freq <emphasis role="opc">line</emphasis> 200, p3, 100
+kfreq     <emphasis role="opc">loopsegp</emphasis> kph_freq, 400, 1, klow_freq, 1, 400
+
+asig      <emphasis role="opc">vco2</emphasis> kamp, kfreq, 2, 0.5
+
+         <emphasis role="opc">outs</emphasis> asig, asig
+
+   <emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">i</emphasis>1 0 3 0
+<emphasis role="stamnt">i</emphasis>1 + . 0.50
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

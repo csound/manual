@@ -1,0 +1,155 @@
+
+<section id="OrchKvar">
+  <title>Types, Constants and Variables</title>
+
+  <para>
+    <emphasis>Constants</emphasis>
+    are floating point numbers, such as 1, 3.14159, or -73.45. They are
+    available continuously and do not change in value.
+  </para>
+
+  <para>
+    <emphasis>Variables</emphasis> are named cells containing numbers. They are available continuously and may be updated at one of the four update rates (setup only, i-rate, k-rate, or a-rate). i- and k-rate variables are scalars (i.e. they take on only one value at any given time) and are primarily used to store and recall controlling data, that is, data that changes at the note rate (for i-rate variables) or at the control rate (for k-rate variables). i- and k-variables are therefore useful for storing note parameter values, pitches, durations, slow-moving frequencies, vibratos, etc. a-rate variables, on the other hand, are arrays or vectors of information. Though renewed on the same perf-time control pass as k-rate variables, these array cells represent a finer resolution of time by dividing the control period into sample periods (see <link linkend="ksmps"><citetitle>ksmps</citetitle></link>). a-rate variables are used to store and recall data changing at the audio sampling rate (e.g. output signals of oscillators, filters, etc.).
+  </para>
+  <para>
+    Some types of variables can be thought of as signals. For example
+    a-rate and k-rate variables are signals that have a constant
+    update frequency (see <link
+    linkend="kr"><citetitle>kr</citetitle></link> and <link
+    linkend="sr"><citetitle>sr</citetitle></link>). This abstraction
+    is generally quite useful, but be aware that a-rate signals are
+    actually vectors which are processed at k-rate, i.e. Csound works
+    at k-rate internally but processes <link
+    linkend="ksmps"><citetitle>ksmps</citetitle></link> number samples for
+    each a-rate variable on every control pass.
+  </para>
+  <para>
+    There are other types of signals that require rates that don't
+    match <link linkend="kr"><citetitle>kr</citetitle></link> or <link
+    linkend="sr"><citetitle>sr</citetitle></link>. f-rate and w-rate
+    signals are used for spectral processing and their rate is
+    determined by the window size and overlap factor.
+  </para>
+
+
+  <para>
+    A further distinction is that between local and global variables. <emphasis>local</emphasis> variables are private to a particular instrument, and cannot be read from or written into by any other instrument. Their values are preserved, and they may carry information from pass to pass (e.g. from initialization time to performance time) within a single instrument. Local variable names begin with the letter <emphasis>p, i, k</emphasis>, or <emphasis>a</emphasis>. The same local variable name may appear in two or more different instrument blocks without conflict.
+  </para>
+
+  <para id="GlobalVariables">
+    <emphasis>Global</emphasis> variables are cells that are accessible by all instruments. The names are either like local names preceded by the letter <emphasis>g</emphasis>, or are special reserved symbols. Global variables are used for broadcasting general values, for communicating between instruments (semaphores), or for sending sound from one instrument to another (e.g. mixing prior to reverberation).
+  </para>
+
+  <para>
+    Given these distinctions, there are nine forms of local and global variables:
+  </para>
+
+  <para>
+    <table id="VariableTypes" frame="all">
+      <title>Types of Variables</title>
+      <tgroup cols="4" colsep="1" rowsep="1">
+        <thead>
+          <row>
+            <entry>Type</entry>
+            <entry>When Renewable</entry>
+            <entry>Local</entry>
+            <entry>Global</entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry>reserved symbols</entry>
+            <entry>permanent</entry>
+            <entry> -- </entry>
+            <entry>rsymbol</entry>
+          </row>
+
+          <row>
+            <entry>score pfields</entry>
+            <entry>i-time</entry>
+            <entry>p number</entry>
+            <entry> -- </entry>
+          </row>
+
+          <row>
+            <entry>init variables</entry>
+            <entry>i-time</entry>
+            <entry>i name</entry>
+            <entry>gi name </entry>
+          </row>
+
+          <row>
+            <entry>control signals</entry>
+            <entry>p-time, k-rate</entry>
+            <entry>k name</entry>
+            <entry>gk name</entry>
+          </row>
+
+          <row>
+            <entry>audio signals</entry>
+            <entry>p-time, k-rate (all audio samples in a k-pass)</entry>
+            <entry>a name</entry>
+            <entry>ga name</entry>
+          </row>
+
+          <row>
+            <entry>spectral data types</entry>
+            <entry>k-rate</entry>
+            <entry>w name</entry>
+            <entry> -- </entry>
+          </row>
+
+          <row>
+            <entry>streaming spectral data types</entry>
+            <entry>k-rate</entry>
+            <entry>f name</entry>
+            <entry>gf name</entry>
+          </row>
+
+          <row>
+            <entry>string variables</entry>
+            <entry>i-time and optionally k-rate</entry>
+            <entry>S name</entry>
+            <entry>gS name</entry>
+          </row>
+
+          <row>
+            <entry>vector variables</entry>
+            <entry>k-rate</entry>
+            <entry>t name</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </para>
+
+  <para>
+    Where <emphasis>rsymbol</emphasis> is a special reserved symbol (e.g. <emphasis>sr, kr</emphasis>), <emphasis>number</emphasis> is a positive integer referring to a score pfield or sequence number, and <emphasis>name</emphasis> is a string of letters, the underscore character, and/or digits with local or global meaning. As might be apparent, score parameters are local i-rate variables whose values are copied from the invoking score statement just prior to the init pass through an instrument, while MIDI controllers are variables which can be updated asynchronously from a MIDI file or MIDI device.
+  </para>
+  <section id="OrchVarinit">
+    <title>Variable Initialization</title>
+  
+    <para>
+      Opcodes that let one initialize variables are:
+      <itemizedlist>
+        <listitem>
+          <para><link linkend="assign"><citetitle>assign</citetitle></link></para>
+        </listitem>
+        <listitem>
+          <para><link linkend="divz"><citetitle>divz</citetitle></link></para>
+        </listitem>
+        <listitem>
+          <para><link linkend="init"><citetitle>init</citetitle></link></para>
+        </listitem>
+        <listitem>
+          <para><link linkend="tival"><citetitle>tival</citetitle></link></para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  <simplesect id="Predefined Constants">
+    <title>Predefined Math Constant Macros</title>
+    <para>Csound defines several important math constants as <link linkend="OrchMacros"><citetitle>Macros</citetitle></link>. You can see the full list <link linkend="opcodesDefineMathConstMacros"><citetitle>here</citetitle></link>.</para>
+  </simplesect>
+  </section>
+</section>

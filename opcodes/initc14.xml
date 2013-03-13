@@ -1,0 +1,88 @@
+
+<refentry id="initc14">
+<indexterm id="IndexInitc14"><primary>initc14</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Input</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>initc14</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>initc14</refname>
+
+    <refpurpose>
+      Initializes the controllers used to create a 14-bit MIDI value.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Initializes the controllers used to create a 14-bit MIDI value.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>initc14</command> ichan, ictlno1, ictlno2, ivalue</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ichan</emphasis> -- MIDI channel (1-16)
+    </para>
+
+    <para>
+      <emphasis>ictlno1</emphasis> -- most significant byte controller number (0-127)
+    </para>
+
+    <para>
+      <emphasis>ictlno2</emphasis> -- least significant byte controller number (0-127)
+    </para>
+
+    <para>
+      <emphasis>ivalue</emphasis> -- floating point value (must be within 0 to 1)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+     <emphasis>initc14</emphasis> can be used together with both <link linkend="midic14"><citetitle>midic14</citetitle></link> and <link linkend="ctrl14"><citetitle>ctrl14</citetitle></link> opcodes for initializing the first controller's value. <emphasis>ivalue</emphasis> argument must be set with a number within 0 to 1. An error occurs if it is not. Use the following formula to set <emphasis>ivalue</emphasis> according with <emphasis>midic14</emphasis> and <emphasis>ctrl14</emphasis> min and max range:
+
+       <literallayout>
+ivalue = (initial_value - min) / (max - min)
+       </literallayout>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="ctrl7"><citetitle>ctrl7</citetitle></link>,
+      <link linkend="ctrl14"><citetitle>ctrl14</citetitle></link>,
+      <link linkend="ctrl21"><citetitle>ctrl21</citetitle></link>,
+      <link linkend="ctrlinit"><citetitle>ctrlinit</citetitle></link>,
+      <link linkend="initc7"><citetitle>initc7</citetitle></link>,
+      <link linkend="initc21"><citetitle>initc21</citetitle></link>,
+      <link linkend="midic7"><citetitle>midic7</citetitle></link>,
+      <link linkend="midic14"><citetitle>midic14</citetitle></link>,
+      <link linkend="midic21"><citetitle>midic21</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namegabriel;</member>
+        <member>Italy</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.47</para>
+    <para>Thanks goes to &namerasmus; for pointing out the correct MIDI channel and controller number ranges.</para>
+  </refsect1>
+</refentry>

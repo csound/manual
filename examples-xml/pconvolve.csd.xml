@@ -1,0 +1,76 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac  <emphasis role="comment">;;;realtime audio out</emphasis>
+-iadc    <emphasis role="comment">;;;uncomment -iadc if real audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o pconvolve.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis>   1
+
+kmix <emphasis role="op">=</emphasis> .5	<emphasis role="comment">; Wet/dry mix. Vary as desired.</emphasis>
+kvol  <emphasis role="op">=</emphasis> .05<emphasis role="op">*</emphasis>kmix	<emphasis role="comment">; Overall volume level of reverb. May need to adjust</emphasis>
+		<emphasis role="comment">; when wet/dry mix is changed, to avoid clipping.</emphasis>
+                     			
+<emphasis role="comment">; do some safety checking to make sure we the parameters a good</emphasis>
+kmix <emphasis role="op">=</emphasis> (kmix <emphasis role="op">&lt;</emphasis> 0 <emphasis role="op">||</emphasis> kmix <emphasis role="op">></emphasis> 1 <emphasis role="op">?</emphasis> .5 <emphasis role="op">:</emphasis> kmix)
+kvol  <emphasis role="op">=</emphasis> (kvol <emphasis role="op">&lt;</emphasis> 0 <emphasis role="op">?</emphasis> 0 <emphasis role="op">:</emphasis> .5<emphasis role="op">*</emphasis>kvol<emphasis role="op">*</emphasis>kmix)
+
+<emphasis role="comment">; size of each convolution partion -- for best performance, this parameter needs to be tweaked</emphasis>
+ipartitionsize <emphasis role="op">=</emphasis> p4
+
+<emphasis role="comment">; calculate latency of pconvolve opcode</emphasis>
+idel <emphasis role="op">=</emphasis> (<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">&lt;</emphasis> ipartitionsize <emphasis role="op">?</emphasis> ipartitionsize <emphasis role="op">+</emphasis> <emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">:</emphasis> ipartitionsize)<emphasis role="op">/</emphasis><emphasis role="ohdr">sr</emphasis>
+<emphasis role="opc">prints</emphasis> "Convolving with <emphasis role="opc">a</emphasis> latency of <emphasis role="op">%</emphasis>f seconds<emphasis role="op">%</emphasis>n", idel
+
+<emphasis role="comment">; actual processing</emphasis>
+al, ar <emphasis role="opc">ins</emphasis>	<emphasis role="comment">;get live input</emphasis>
+awetl, awetr <emphasis role="opc">pconvolve</emphasis> kvol<emphasis role="op">*</emphasis>(al<emphasis role="op">+</emphasis>ar), "kickroll.wav", ipartitionsize
+<emphasis role="comment">; Delay dry signal, to align it with the convoled sig</emphasis>
+adryl <emphasis role="opc">delay</emphasis> (1<emphasis role="op">-</emphasis>kmix)<emphasis role="op">*</emphasis>al, idel
+adryr <emphasis role="opc">delay</emphasis> (1<emphasis role="op">-</emphasis>kmix)<emphasis role="op">*</emphasis>al, idel
+      <emphasis role="opc">outs</emphasis> adryl<emphasis role="op">+</emphasis>awetl, adryr<emphasis role="op">+</emphasis>awetr
+
+<emphasis role="oblock">endin</emphasis>
+    
+<emphasis role="oblock">instr</emphasis> 2
+
+imix <emphasis role="op">=</emphasis> 0.5          	<emphasis role="comment">; Wet/dry mix. Vary as desired.</emphasis>
+ivol <emphasis role="op">=</emphasis> .05<emphasis role="op">*</emphasis>imix     	<emphasis role="comment">; Overall volume level of reverb. May need to adjust</emphasis>
+                	<emphasis role="comment">; when wet/dry mix is changed, to avoid clipping.</emphasis>
+ipartitionsize <emphasis role="op">=</emphasis> 1024	<emphasis role="comment">; size of each convolution partion</emphasis>
+idel <emphasis role="op">=</emphasis> (<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">&lt;</emphasis> ipartitionsize <emphasis role="op">?</emphasis> ipartitionsize <emphasis role="op">+</emphasis> <emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">:</emphasis> ipartitionsize)<emphasis role="op">/</emphasis><emphasis role="ohdr">sr</emphasis>   <emphasis role="comment">; latency of pconvolve opcode</emphasis>
+
+kcount	<emphasis role="opc">init</emphasis>	idel<emphasis role="op">*</emphasis><emphasis role="ohdr">kr</emphasis>
+<emphasis role="comment">; since we are using a soundin [instead of ins] we can</emphasis>
+<emphasis role="comment">; do a kind of "look ahead" by looping during one k-pass</emphasis>
+<emphasis role="comment">; without output, creating zero-latency</emphasis>
+<emphasis role="olabel">loop</emphasis><emphasis role="op">:</emphasis>
+    asig <emphasis role="opc">soundin</emphasis> p4, 0
+    awetl, awetr <emphasis role="opc">pconvolve</emphasis> ivol<emphasis role="op">*</emphasis>(asig),"rv_stereo.wav", ipartitionsize
+    adry <emphasis role="opc">delay</emphasis>	(1<emphasis role="op">-</emphasis>imix)<emphasis role="op">*</emphasis>asig,idel  <emphasis role="comment">; Delay dry signal, to align it with</emphasis>
+    kcount <emphasis role="op">=</emphasis> kcount <emphasis role="op">-</emphasis> 1
+ <emphasis role="octrl">if</emphasis> kcount <emphasis role="op">></emphasis> 0 <emphasis role="octrl">kgoto</emphasis> <emphasis role="olabel">loop</emphasis>
+    <emphasis role="opc">outs</emphasis> awetl<emphasis role="op">+</emphasis>adry, awetr<emphasis role="op">+</emphasis>adry
+		
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1 0 20 1024		<emphasis role="comment">;play live for 20 seconds</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 2 20 5 "fox.wav"
+<emphasis role="stamnt">i</emphasis> 2 25 5 "flute.a<emphasis role="stamnt">i</emphasis>ff"
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

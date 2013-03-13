@@ -1,0 +1,85 @@
+
+<refentry id="rms">
+<indexterm id="IndexRms"><primary>rms</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>rms</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>rms</refname>
+    <refpurpose>
+      Determines the root-mean-square amplitude of an audio signal.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Determines the root-mean-square amplitude of an audio signal. It low-pass filters the actual value, to average in the manner of a VU meter.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kres <command>rms</command> asig [, ihp] [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ihp</emphasis> (optional, default=10) -- half-power point (in Hz) of a special internal low-pass filter. The default value is 10.
+    </para>
+
+    <para>
+      <emphasis>iskip</emphasis> (optional, default=0) -- initial disposition of internal data space (see <link linkend="reson"><citetitle>reson</citetitle></link>). The default value is 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asig</emphasis> -- input audio signal
+    </para>
+    <para>
+      <emphasis>kres</emphasis> -- low-pass filtered rms value of the input signal
+    </para>
+
+    <para>
+      <emphasis>rms</emphasis> output values <emphasis>kres</emphasis> will trace the root-mean-square value of the audio input <emphasis>asig</emphasis>. This unit is not a signal modifier, but functions rather as a signal power-gauge. It uses an internal low-pass filter to make the response smoother. <emphasis>ihp</emphasis> can be used to control this smoothing. The higher the value, the "snappier" the measurement.
+    </para>
+    <para>
+      This opcode can also be used as an evelope follower.
+    </para>
+    <para>
+      The <emphasis>kres</emphasis> output from this opcode is given in amplitude and depends on <link linkend="Zerodbfs"><citetitle>0dbfs</citetitle></link>. If you want the output in decibels, you can use <link linkend="dbamp"><citetitle>dbamp</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      <informalexample>
+        <programlisting>
+arms <emphasis role="opc">rms</emphasis>    asig <emphasis role="comment">; get rms value of signal asig</emphasis>
+        </programlisting>
+      </informalexample>
+    </para>
+    <para>
+      Here is an example of the rms opcode. It uses the file <ulink url="examples/rms.csd"><citetitle>rms.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the rms opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/rms.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="balance"><citetitle>balance</citetitle></link>,
+      <link linkend="gain"><citetitle>gain</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

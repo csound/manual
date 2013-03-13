@@ -1,0 +1,135 @@
+
+<refentry id="GEN10">
+      <indexterm id="IndexGEN10"><primary>GEN10</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN10</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN10</refname>
+    <refpurpose>
+      Generate composite waveforms made up of weighted sums of simple sinusoids.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      These subroutines generate composite waveforms made up of weighted sums of simple sinusoids. The specification of each contributing partial requires 1 pfield using <emphasis>GEN10</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>f</command> # time size 10 str1 str2 str3 str4 ...</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>size</emphasis> -- number of points in the table. Must be a power of 2 or power-of-2 plus 1 (see <link linkend="f"><citetitle>f statement</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis>str1, str2, str3, etc.</emphasis> -- relative strengths of the fixed harmonic partial numbers 1,2,3, etc., beginning in p5. Partials not required should be given a strength of zero.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              These subroutines generate stored functions as sums of sinusoids of different frequencies. The two major restrictions on <emphasis>GEN10</emphasis> that the partials be harmonic and in phase do not apply to <emphasis>GEN09</emphasis> or <emphasis>GEN19</emphasis>.
+            </para>
+
+            <para>
+              In each case the composite wave, once drawn, is then rescaled to unity if p4 was positive. A negative p4 will cause rescaling to be skipped.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+	    Here is an example of the GEN10 routine. It uses the files <ulink url="examples/gen10.csd"><citetitle>gen10.csd</citetitle></ulink>.
+      <example>
+        <title>An example of the GEN10 routine.</title>
+        <xi:include href="examples-xml/gen10.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+        <textobject>
+          <phrase>These are the diagrams of the waveforms of the GEN10 routines, as used in the example:</phrase>
+        </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen10_1.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 1 0 16384 10 1 - sine wave with only the fundamental frequency</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 1 0 16384 10 1 - sine wave with only the fundamental frequency</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen10_2.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 2 0 16384 10 1 0.5 0.3 0.25 0.2 0.167 0.14 0.125 .111 - sawtooth, with a fundamental and 8 harmonics </phrase>
+        </textobject>
+
+        <caption>
+          <para>f 2 0 16384 10 1 0.5 0.3 0.25 0.2 0.167 0.14 0.125 .111 - sawtooth, with a fundamental and 8 harmonics </para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen10_3.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 3 0 16384 10 1 0 0.3 0 0.2 0 0.14 0 .111 - square wave, with a fundamental and 8 harmonics but 4 have 0 strength</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 3 0 16384 10 1 0 0.3 0 0.2 0 0.14 0 .111 - square wave, with a fundamental and 8 harmonics but 4 have 0 strength</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen10_4.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 4 0 16384 10 1 1 1 1 0.7 0.5 0.3 0.1 - pulse wave, with a fundamental and 8 harmonics</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 4 0 16384 10 1 1 1 1 0.7 0.5 0.3 0.1 - pulse wave, with a fundamental and 8 harmonics</para>
+        </caption>
+      </mediaobject>
+    </para>
+  </refsect1>
+
+  <refsect1>
+     <title>See Also</title>
+     <para>
+       <link linkend="GEN09"><citetitle>GEN09</citetitle></link>,
+       <link linkend="GEN11"><citetitle>GEN11</citetitle></link>, and
+       <link linkend="GEN19"><citetitle>GEN19</citetitle></link>.
+     </para>
+  </refsect1>
+
+</refentry>

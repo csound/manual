@@ -1,0 +1,109 @@
+
+<refentry id="tone">
+<indexterm id="IndexTone"><primary>tone</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tone</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>tone</refname>
+    <refpurpose>
+      A first-order recursive low-pass filter with variable frequency response.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      A first-order recursive low-pass filter with variable frequency response.
+    </para>
+
+    <para>
+      <emphasis>tone</emphasis> is a 1 term IIR filter. Its formula is:
+        <informalexample>
+          <para>
+            y<subscript>n</subscript> = c1 * x<subscript>n</subscript> + c2 * y<subscript>n-1</subscript>
+          </para>
+        </informalexample>
+
+      where
+
+        <informalexample>
+          <para>
+            <itemizedlist>
+              <listitem>
+                <para>b  = 2 - cos(2 &pi; hp/sr);</para>
+              </listitem>
+              <listitem>
+                <para>c2 = b - sqrt(b<superscript>2</superscript> - 1.0)</para>
+              </listitem>
+              <listitem>
+                <para>c1 = 1 - c2</para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </informalexample>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>tone</command> asig, khp [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iskip</emphasis> (optional, default=0) -- initial disposition of internal data space. Since filtering incorporates a feedback loop of previous output, the initial status of the storage space used is significant. A zero value will clear the space; a non-zero value will allow previous information to remain. The default value is 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ares</emphasis> -- the output audio signal.
+    </para>
+
+    <para>
+      <emphasis>asig</emphasis> -- the input audio signal.
+    </para>
+
+    <para>
+      <emphasis>khp</emphasis> --  the response curve's half-power point, in Hertz. Half power is defined as peak power / root 2. 
+    </para>
+
+    <para>
+      <emphasis>tone</emphasis> implements a first-order recursive low-pass filter in which the variable <emphasis>khp</emphasis> (in Hz) determines the response curve's half-power point. Half power is defined as peak power / root 2.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the tone opcode. It uses the file <ulink url="examples/tone.csd"><citetitle>tone.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the tone opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/tone.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="areson"><citetitle>areson</citetitle></link>,
+      <link linkend="aresonk"><citetitle>aresonk</citetitle></link>,
+      <link linkend="atone"><citetitle>atone</citetitle></link>,
+      <link linkend="atonek"><citetitle>atonek</citetitle></link>,
+      <link linkend="port"><citetitle>port</citetitle></link>,
+      <link linkend="portk"><citetitle>portk</citetitle></link>,
+      <link linkend="reson"><citetitle>reson</citetitle></link>,
+      <link linkend="resonk"><citetitle>resonk</citetitle></link>,
+      <link linkend="tonek"><citetitle>tonek</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

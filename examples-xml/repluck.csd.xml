@@ -1,0 +1,52 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac   <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o repluck.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100 
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32 
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1 
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+
+<emphasis role="oblock">instr</emphasis> 1
+
+iplk  <emphasis role="op">=</emphasis> 0.75
+kamp  <emphasis role="op">=</emphasis> .8
+icps  <emphasis role="op">=</emphasis> 110
+krefl <emphasis role="op">=</emphasis> p4
+kpick <emphasis role="op">=</emphasis> p5
+
+
+axcite <emphasis role="opc">oscil</emphasis> 1, 1, 1
+asig <emphasis role="opc">repluck</emphasis> iplk, kamp, icps, kpick, krefl, axcite
+asig <emphasis role="opc">dcblock2</emphasis> asig		<emphasis role="comment">;get rid of DC offset</emphasis>
+     <emphasis role="opc">outs</emphasis> asig, asig
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 16384 10 1	<emphasis role="comment">;sine wave.</emphasis>
+
+<emphasis role="stamnt">s</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 1 0.95 0.75	<emphasis role="comment">;sounds heavier (=p5)</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 + 1  &lt;
+<emphasis role="stamnt">i</emphasis> 1 + 1  &lt;
+<emphasis role="stamnt">i</emphasis> 1 + 1  &lt;
+<emphasis role="stamnt">i</emphasis> 1 + 10 0.6
+
+<emphasis role="stamnt">s</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 1 0.95 0.15	<emphasis role="comment">;sounds softer (=p5)</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 + 1  &lt;
+<emphasis role="stamnt">i</emphasis> 1 + 1  &lt;
+<emphasis role="stamnt">i</emphasis> 1 + 1  &lt;
+<emphasis role="stamnt">i</emphasis> 1 + 10 0.6
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

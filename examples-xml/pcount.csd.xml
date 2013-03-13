@@ -1,0 +1,88 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac  <emphasis role="comment">;;;realtime audio</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o pcount.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="comment">; This UDO returns a pfield value but returns 0 if it does not exist.</emphasis>
+<emphasis role="oblock">opcode</emphasis>  mypvalue, i, <emphasis role="opc">i</emphasis>
+	index  <emphasis role="opc">xin</emphasis>
+	inum   <emphasis role="opc">pcount</emphasis>
+	<emphasis role="octrl">if</emphasis>	  (index <emphasis role="op">></emphasis> inum)  then
+		iout <emphasis role="op">=</emphasis> 0.0
+	<emphasis role="octrl">else</emphasis>
+		iout <emphasis role="opc">pindex</emphasis> index
+	<emphasis role="octrl">endif</emphasis>
+	
+	<emphasis role="opc">xout</emphasis>	iout
+<emphasis role="oblock">endop</emphasis>
+	
+<emphasis role="comment">; Envelope UDO that reads parameters from a flexible number of pfields</emphasis>
+<emphasis role="comment">; Syntax:   kenv  flexlinseg  ipstart</emphasis>
+<emphasis role="comment">;           ipstart is the first pfield of the envelope</emphasis>
+<emphasis role="comment">;               parameters.  Reads remaining pfields (up to 21 of them).</emphasis>
+<emphasis role="comment">;           kenv is the output envelope.</emphasis>
+
+<emphasis role="oblock">opcode</emphasis>  flexlinseg, k, <emphasis role="opc">i</emphasis>
+	ipstart <emphasis role="opc">xin</emphasis>
+	
+	iep1   mypvalue	ipstart
+	iep2   mypvalue	ipstart <emphasis role="op">+</emphasis> 1
+	iep3   mypvalue	ipstart <emphasis role="op">+</emphasis> 2
+	iep4   mypvalue	ipstart <emphasis role="op">+</emphasis> 3
+	iep5   mypvalue	ipstart <emphasis role="op">+</emphasis> 4
+	iep6   mypvalue	ipstart <emphasis role="op">+</emphasis> 5
+	iep7   mypvalue	ipstart <emphasis role="op">+</emphasis> 6
+	iep8   mypvalue	ipstart <emphasis role="op">+</emphasis> 7
+	iep9   mypvalue	ipstart <emphasis role="op">+</emphasis> 8
+	iepa   mypvalue	ipstart <emphasis role="op">+</emphasis> 9
+	iepb   mypvalue	ipstart <emphasis role="op">+</emphasis> 10
+	iepc   mypvalue	ipstart <emphasis role="op">+</emphasis> 11
+	iepd   mypvalue	ipstart <emphasis role="op">+</emphasis> 12
+	iepe   mypvalue	ipstart <emphasis role="op">+</emphasis> 13
+	iepf   mypvalue	ipstart <emphasis role="op">+</emphasis> 14
+	iepg   mypvalue	ipstart <emphasis role="op">+</emphasis> 15
+	ieph   mypvalue	ipstart <emphasis role="op">+</emphasis> 16
+	iepi   mypvalue	ipstart <emphasis role="op">+</emphasis> 17
+	iepj   mypvalue	ipstart <emphasis role="op">+</emphasis> 18
+	iepk   mypvalue	ipstart <emphasis role="op">+</emphasis> 19
+	iepl   mypvalue	ipstart <emphasis role="op">+</emphasis> 20
+
+	kenv   <emphasis role="opc">linseg</emphasis>	 iep1, iep2, iep3, iep4, iep5, iep6, iep7, iep8, \
+	                   iep9, iepa, iepb, iepc, iepd, iepe, iepf, iepg, \
+	                   ieph, iepi, iepj, iepk, iepl	
+	<emphasis role="opc">xout</emphasis>   kenv
+<emphasis role="oblock">endop</emphasis>
+	
+<emphasis role="oblock">instr</emphasis> 1
+<emphasis role="comment">; This instrument only requires 3 pfields but can accept up to 24.</emphasis>
+<emphasis role="comment">; (You will still get warnings about more than 3).	</emphasis>
+kenv flexlinseg  4		<emphasis role="comment">; envelope params start at p4</emphasis>
+aout <emphasis role="opc">oscili</emphasis> kenv<emphasis role="op">*</emphasis>.5, 256, 1
+     <emphasis role="opc">outs</emphasis> aout, aout
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis>1  0 8192 10 1
+
+<emphasis role="stamnt">i</emphasis>1  0 2  0.0 1.0 1.0 1.0 0.0
+<emphasis role="stamnt">i</emphasis>1  2 2  0.0 0.1 1.0 1.0 1.0 0.1 0.0
+<emphasis role="stamnt">i</emphasis>1  4 2  0.0 0.5 0.0	  			<emphasis role="comment">; one problem is that "missing" pfields carry</emphasis>
+<emphasis role="stamnt">i</emphasis>1  6 2  0.0 0.5 0.0 !	  			<emphasis role="comment">; now we can fix this problem with !</emphasis>
+<emphasis role="stamnt">i</emphasis>1  8 10  0.0  3.0 1.0  0.3 0.1  0.3 1.0  0.3 0.1  0.3 1.0  0.3 0.1  0.8 0.9  5.0 0.0
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

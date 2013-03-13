@@ -1,0 +1,110 @@
+
+<refentry id="hrtfreverb">
+<indexterm id="Indexhrtfreverb"><primary>hrtfreverb</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Panning and Spatialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>hrtfreverb</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>hrtfreverb</refname>
+    <refpurpose>
+      A binaural, dynamic FDN based diffuse-field reverberator. The opcode works independently as an efficient, flexible reverberator.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+     A frequency-dependent, efficient reverberant field is created based on low and high frequency desired reverb times. The opcode is designed to work with <link linkend="hrtfearly"><citetitle>hrtfearly</citetitle></link>, ideally using its outputs as inputs. However, <link linkend="hrtfreverb"><citetitle>hrtfreverb</citetitle></link> can be used as a standalone tool. Stability is enforced.
+    </para>
+    <para>
+      It is, however, designed for use with <link linkend="hrtfearly"><citetitle>hrtfearly</citetitle></link> to provide spatially accurate reverberation with user definable source trajectories. Accurate interaural coherence is also provided.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>aleft, aright, idel <command>hrtfreverb</command> asrc, ilowrt60, ihighrt60, ifilel, ifiler [,isr, imfp, iorder]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ilowrt60</emphasis> - low frequency reverb time. 
+    </para>
+    <para>
+      <emphasis>ihighrt60</emphasis> - high frequency reverb time.
+    </para>
+    <para>
+      <emphasis>ifilel</emphasis> - left HRTF spectral data file.
+    </para>
+    <para>
+      <emphasis>ifiler</emphasis> - right HRTF spectral data file.
+    </para>
+    <note>
+      <para>Spectral datafiles (based on the MIT HRTF database) are available in 3 different sampling rates: 44.1, 48 and 96 kHz and are labelled accordingly. Input and processing <emphasis>sr</emphasis> should match datafile <emphasis>sr</emphasis>. Files should be in the current directory or the SADIR (see <link linkend="CommandEnvironment"><citetitle>Environment Variables</citetitle></link>).
+      </para>
+    </note>
+     <note>
+      <para>HRTF Data files for use with 
+      <link linkend="hrtfmove"><citetitle>hrtfmove</citetitle></link>,
+      <link linkend="hrtfmove2"><citetitle>hrtfmove2</citetitle></link>,
+      <link linkend="hrtfstat"><citetitle>hrtfstat</citetitle></link>,
+      <link linkend="hrtfreverb"><citetitle>hrtfreverb</citetitle></link>,
+      <link linkend="hrtfreverb"><citetitle>hrtfreverb</citetitle></link>
+       were updated for Csound 5.15 and later (the code was updated and is more efficient). Old datafiles are now deprecated.
+      </para>
+    </note>
+    <para>
+<emphasis>isr</emphasis> - optional, default 44.1kHz, legal values: 44100, 48000 and 96000.
+ </para>
+ <para>
+      <emphasis>imfp</emphasis> - optional, mean free path, defaults to that of a medium room. If used with <link linkend="hrtfearly"><citetitle>hrtfearly</citetitle></link>, the mean free path of the room can be used to calculate the appropriate delay for the later reverb. Legal range: the mean free path of the smallest room allowed by hrtfearly (0.003876)  1.
+  </para>
+  <para>
+      <emphasis>iorder</emphasis> - optional, order of early reflection processing. If used with <link linkend="hrtfearly"><citetitle>hrtfearly</citetitle></link>, the order of early reflections can be used to calculate the appropriate delay on the later reverb. 
+  </para>
+   
+  
+ <title>Performance</title>
+    <para>
+      <emphasis>asrc</emphasis> - Input/source signal.
+    </para>
+    
+    <title>Output</title>
+    <para>
+      <emphasis>idel</emphasis> - if used with <link linkend="hrtfearly"><citetitle>hrtfearly</citetitle></link>, the appropriate delay for the later reverb, based on the room and order of processing.
+    </para>
+    
+  </refsect1>
+
+  <refsect1>  
+    <title>Example</title>
+    <para>
+      See the <link linkend="hrtfearly"><citetitle>hrtfearly</citetitle></link> manual page for a simple example of the <link linkend="hrtfearly"><citetitle>hrtfearly</citetitle></link> and <emphasis>hrtfreverb</emphasis> opcodes.
+    </para>
+   </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="hrtfearly"><citetitle>hrtfearly</citetitle></link>
+      <link linkend="hrtfmove"><citetitle>hrtfmove</citetitle></link>,
+      <link linkend="hrtfmove2"><citetitle>hrtfmove2</citetitle></link>,
+      <link linkend="hrtfstat"><citetitle>hrtfstat</citetitle></link>,
+      <link linkend="hrtfer"><citetitle>hrtfer</citetitle></link>.
+    </para>        
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Brian Carty</member>
+        <member>Maynooth</member>
+        <member>2011</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,94 @@
+
+<refentry id="vcella">
+<indexterm id="IndexVcella"><primary>vcella</primary></indexterm>
+  <refentryinfo><title>Vectorial:Cellular Automata</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vcella</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vcella</refname>
+    <refpurpose>
+    Cellular Automata
+      
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+	Unidimensional Cellular Automata applied to Csound vectors
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>vcella</command> ktrig, kreinit, ioutFunc, initStateFunc, \
+      iRuleFunc, ielements, irulelen [, iradius]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+       <emphasis>ioutFunc</emphasis> - number of the table where the state of each cell is stored
+    </para>
+    <para>
+      <emphasis>initStateFunc</emphasis>  - number of a table containig the inital states of each cell
+    </para>
+       <para>
+      <emphasis>iRuleFunc</emphasis> - number of a lookup table containing the rules
+      </para>
+      <para>
+      <emphasis>ielements</emphasis> - total number of cells
+    </para>
+    <para>
+      <emphasis>irulelen</emphasis>  - total number of rules
+    </para>
+       <para>
+      <emphasis>iradius</emphasis> (optional) - radius of Cellular Automata. At present time CA radius can be 1 or 2 (1 is the default)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+       <emphasis>ktrig</emphasis> - trigger signal. Each time it is non-zero, a new generation of cells is evaluated
+    </para>
+    <para>
+      <emphasis>kreinit</emphasis> - trigger signal. Each time it is non-zero, state of all cells is forced to be that of <emphasis>initStateFunc</emphasis>.
+    </para>
+    <para>
+      <emphasis>vcella</emphasis> supports unidimensional cellular automata, where the state of each cell is stored in <emphasis>ioutFunc</emphasis>. So <emphasis>ioutFunc</emphasis> is a vector containing current state of each cell. This variant vector can be used together with any other vector-based opcode, such as
+      <link linkend="adsynt"><citetitle>adsynt</citetitle></link>,
+      <link linkend="vmap"><citetitle>vmap</citetitle></link>,
+      <link linkend="vpowv"><citetitle>vpowv</citetitle></link> etc.
+	</para>
+	<para>
+<emphasis>initStateFunc</emphasis> is an input vector containing the inital value of the row of cells, while <emphasis>iRuleFunc</emphasis> is an input vector containing the rules in the form of a lookup table. Notice that <emphasis>initStateFunc</emphasis> and <emphasis>iRuleFunc</emphasis> can be updated during the performance by means of other vector-based opcodes (for example <link linkend="vcopy"><citetitle>vcopy</citetitle></link>) in order to force to change rules and status at performance time.
+	</para>
+	<para>
+A new generation of cells is evaluated each time <emphasis>ktrig</emphasis> contains a non-zero value. Also the status of all cells can be forced to assume the status corresponding to the contents of <emphasis>initStateFunc</emphasis> each time <emphasis>kreinit</emphasis> contains a non-zero value.
+    </para>
+    <para>
+Radius of CA algorithm can be 1 or 2 (optional <emphasis>iradius</emphasis> arguement). 
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the vcella opcode. It uses the file <ulink url="examples/vcella.csd"><citetitle>vcella.csd</citetitle></ulink>.</para>
+    <para>
+      The following example uses <emphasis>vcella</emphasis>
+      <example>
+        <title>Example of the vcella opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+<xi:include href="examples-xml/vcella.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Credits</title>
+    <para>Written by: Gabriel Maldonado.</para>
+    <para>New in Csound 5 (Previously available only on CsoundAV)</para>
+    <para>Example by: Anthony Kozar</para>
+  </refsect1>
+</refentry>

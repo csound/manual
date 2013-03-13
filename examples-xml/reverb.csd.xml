@@ -1,0 +1,50 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac   <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o reverb.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100 
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32 
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1 
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+
+ga1 <emphasis role="opc">init</emphasis> 0 
+
+<emphasis role="oblock">instr</emphasis> 1 
+
+asig <emphasis role="opc">poscil</emphasis> .2, <emphasis role="opc">cpspch</emphasis>(p4), 1 
+     <emphasis role="opc">outs</emphasis> asig, asig 
+
+ga1 <emphasis role="op">=</emphasis> ga1 <emphasis role="op">+</emphasis> asig<emphasis role="comment">;add direct signal to global reverb</emphasis>
+ 
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 99	<emphasis role="comment">;(highest instr number executed last)</emphasis>
+
+arev <emphasis role="opc">reverb</emphasis> ga1, 1.5
+  <emphasis role="opc">outs</emphasis> arev, arev 
+  
+ga1 <emphasis role="op">=</emphasis> 0		<emphasis role="comment">;clear</emphasis>
+<emphasis role="oblock">endin</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 128 10 1	<emphasis role="comment">;sine</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1 0 0.1 7.00	<emphasis role="comment">;short sounds</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 1 0.1 8.02
+<emphasis role="stamnt">i</emphasis> 1 2 0.1 8.04
+<emphasis role="stamnt">i</emphasis> 1 3 0.1 8.06
+
+<emphasis role="stamnt">i</emphasis> 99 0 6	<emphasis role="comment">;reverb runs for 6 seconds</emphasis>
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

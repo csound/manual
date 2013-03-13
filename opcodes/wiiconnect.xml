@@ -1,0 +1,100 @@
+
+<refentry id="wiiconnect">
+<indexterm id="Indexwiiconnect"><primary>wiiconnect</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>wiiconnect</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>wiiconnect</refname>
+    <refpurpose>
+      Reads data from a number of external Nintendo Wiimote controllers.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Opens and at control-rate polls up to four external Nintendo Wiimote controllers.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ires <command>wiiconnect</command> [itimeout, imaxnum]</synopsis>
+  </refsect1>
+ 
+   <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>itimeout</emphasis> -- integer number of seconds the
+      system should wait for all Wiimotes to be connected.  If not
+      given it defaults to 10 seconds.
+    </para>
+    <para>
+      <emphasis>imaxnum</emphasis> -- maximum number of Wiimotes to locate.  If not
+      given it defaults to 4.
+    </para>
+    <para>
+      Initially each Wiimote has its numeric allocation indicated by
+      lighting one of the four LEDs.
+    </para>
+    <para>
+      <emphasis>ires</emphasis> -- return value is 1 if sucess or zero
+      on failure.
+    </para>
+
+
+  </refsect1>
+
+ <refsect1>
+    <title>Performance</title>
+   <note>
+     <para>
+       Please note that these opcodes are currently only supported on
+       Linux.
+     </para>
+   </note>
+    <para>
+      Every control cycle each Wiimote is polled for its status and
+      position.  These values are read by
+      the <emphasis>wiidata</emphasis> opcode.  The result returned is
+      1 in most cases, but will be zero if a Wiimote disconnects,
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Example</title>
+    <para>
+      Here is an example of the wii opcodes. It uses the file <ulink url="examples/wii.csd"><citetitle>wii.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the wii opcodes.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/wii.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="wiidata"><citetitle>wiidata</citetitle></link>,
+      <link linkend="wiirange"><citetitle>wiirange</citetitle></link>,
+      <link linkend="wiisend"><citetitle>wiisend</citetitle></link>
+     </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>Codemist Ltd</member>
+        <member>2009</member>
+      </simplelist>
+    </para>
+    <para>New in version 5.11</para>
+  </refsect1>
+</refentry>

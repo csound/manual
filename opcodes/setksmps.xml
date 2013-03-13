@@ -1,0 +1,118 @@
+
+<refentry id="setksmps">
+<indexterm id="IndexSetksmps"><primary>setksmps</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Software Bus</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>setksmps</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>setksmps</refname>
+    <refpurpose>
+      Sets the local ksmps value in a user-defined opcode block.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Sets the local ksmps value in a user-defined opcode block.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>setksmps</command> iksmps</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iksmps</emphasis> -- sets the local ksmps value.
+    </para>
+
+    <para>
+      If <emphasis>iksmps</emphasis> is set to zero, the <emphasis>ksmps</emphasis> of the caller instrument or opcode is used (this is the default behavior).
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        The local <emphasis>ksmps</emphasis> is implemented by splitting up a control period into smaller sub-kperiods and temporarily modifying internal Csound global variables. This also requires converting the rate of k-rate input and output arguments (input variables receive the same value in all sub-kperiods, while outputs are written only in the last one). It also means that you cannot use a local <link linkend="ksmps"><citetitle>ksmps</citetitle></link> that is higher than the global <link linkend="ksmps"><citetitle>ksmps</citetitle></link>.
+      </para>
+    </note>
+
+    <warning>
+      <title>Warning about local ksmps</title>
+      <para>
+        When the local <emphasis>ksmps</emphasis> is not the same as the orchestra level <emphasis>ksmps</emphasis> value (as specified in the orchestra header), global a-rate operations must not be used in the user-defined opcode block.
+      </para>
+
+      <para>
+        These include:
+
+        <itemizedlist>
+          <listitem><para>any access to <quote>ga</quote> variables</para></listitem>
+          <listitem><para>a-rate zak opcodes (<link linkend="zar"><citetitle>zar</citetitle></link>, <link linkend="zaw"><citetitle>zaw</citetitle></link>, etc.)</para></listitem>
+          <listitem><para><link linkend="tablera"><citetitle>tablera</citetitle></link> and <link linkend="tablewa"><citetitle>tablewa</citetitle></link> (these two opcodes may in fact work, but caution is needed)</para></listitem>
+          <listitem><para>The <emphasis>in</emphasis> and <emphasis>out</emphasis> opcode family (these read from, and write to global a-rate buffers)</para></listitem>
+        </itemizedlist>
+      </para>
+
+      <para>
+        In general, the local <emphasis>ksmps</emphasis> should be used with care as it is an experimental feature. Though it works correctly in most cases.
+      </para>
+    </warning>
+
+    <para>
+      The <emphasis>setksmps</emphasis> statement can be used to set the local <link linkend="ksmps"><citetitle>ksmps</citetitle></link> value of the user-defined opcode block. It has one i-time parameter specifying the new <emphasis>ksmps</emphasis> value (which is left unchanged if zero is used). <emphasis>setksmps</emphasis> should be used before any other opcodes (but allowed after <link linkend="xin"><citetitle>xin</citetitle></link>), otherwise unpredictable results may occur.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      The syntax of a user-defined opcode block is as follows:
+
+      <programlisting>
+<emphasis role="oblock">opcode</emphasis>  name, outtypes, intypes
+xinarg1 [, xinarg2] [, xinarg3] ... [xinargN]  <emphasis role="opc">xin</emphasis>
+[<emphasis role="opc">setksmps</emphasis>  iksmps]
+... the rest of the instrument's code.
+<emphasis role="opc">xout</emphasis>  xoutarg1 [, xoutarg2] [, xoutarg3] ... [xoutargN]
+<emphasis role="oblock">endop</emphasis>
+      </programlisting>
+    </para>
+
+    <para>
+      The new opcode can then be used with the usual syntax:
+
+      <literallayout>
+[xinarg1] [, xinarg2] ... [xinargN]  name  [xoutarg1] [, xoutarg2] ... [xoutargN] [, iksmps]
+      </literallayout>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      See the example for the <link linkend="opcode"><citetitle>opcode</citetitle></link> opcode.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="endop"><citetitle>endop</citetitle></link>, 
+      <link linkend="opcode"><citetitle>opcode</citetitle></link>, 
+      <link linkend="xin"><citetitle>xin</citetitle></link>, 
+      <link linkend="xout"><citetitle>xout</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: Istvan Varga, 2002; based on code by Matt J. Ingalls</para>
+    <para>New in version 4.22</para>
+  </refsect1>
+</refentry>

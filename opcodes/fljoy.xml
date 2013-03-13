@@ -1,0 +1,159 @@
+
+<refentry id="FLjoy">
+<indexterm id="IndexFLjoy"><primary>FLjoy</primary></indexterm>
+  <refentryinfo><title>FLTK:Valuators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLjoy</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>FLjoy</refname>
+    <refpurpose>
+      A FLTK opcode that acts like a joystick. 
+          </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>FLjoy</emphasis> is a squared area that allows the user to modify two output values at the same time. It acts like a joystick. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>koutx, kouty, ihandlex, ihandley <command>FLjoy</command> &quot;label&quot;, iminx, imaxx, iminy, \
+      imaxy, iexpx, iexpy, idispx, idispy, iwidth, iheight, ix, iy</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ihandlex</emphasis> -- a handle value (an integer number) that unequivocally references a corresponding widget. Used by further opcodes that changes some valuator's properties. It is automatically set by the corresponding valuator.
+    </para>
+
+    <para>
+      <emphasis>ihandley</emphasis> -- a handle value (an integer number) that unequivocally references a corresponding widget. Used by further opcodes that changes some valuator's properties. It is automatically set by the corresponding valuator.
+    </para>
+
+    <para>
+      <emphasis><quote>label</quote></emphasis> -- a double-quoted string containing some user-provided text, placed near the corresponding widget.
+    </para>
+
+    <para>
+      <emphasis>iminx</emphasis> -- minimum x value of output range
+    </para>
+
+    <para>
+      <emphasis>imaxx</emphasis> -- maximum x value of output range
+    </para>
+
+    <para>
+      <emphasis>iminy</emphasis> -- minimum y value of output range
+    </para>
+
+    <para>
+      <emphasis>imaxy</emphasis> -- maximum y value of output range
+    </para>
+
+    <para>
+      <emphasis>iwidth</emphasis> -- width of widget.
+    </para>
+
+    <para>
+      <emphasis>idispx</emphasis> -- a handle value that was output from a previous instance of the <link linkend="FLvalue"><citetitle>FLvalue</citetitle></link> opcode to display the current value of the current valuator in the <emphasis>FLvalue</emphasis> widget itself. If the user doesn't want to use this feature that displays current values, it must be set to a negative number by the user.
+    </para>
+
+    <para>
+      <emphasis>idispy</emphasis> -- a handle value that was output from a previous instance of the <link linkend="FLvalue"><citetitle>FLvalue</citetitle></link> opcode to display the current value of the current valuator in the <emphasis>FLvalue</emphasis> widget itself. If the user doesn't want to use this feature that displays current values, it must be set to a negative number by the user.
+    </para>
+
+    <para>
+      <emphasis>iexpx</emphasis> -- an integer number denoting the behaviour of valuator: 
+      <itemizedlist>
+        <listitem><para>0 = valuator output is linear</para></listitem>
+        <listitem><para>-1 = valuator output is exponential</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      All other positive numbers for <emphasis>iexpx</emphasis> indicate the number of an existing table that is used for indexing. Linear interpolation is provided in table indexing. A negative table number suppresses interpolation. 
+    </para>
+
+    <para>
+      <emphasis>iexpy</emphasis> -- an integer number denoting the behaviour of valuator: 
+      <itemizedlist>
+        <listitem><para>0 = valuator output is linear</para></listitem>
+        <listitem><para>-1 = valuator output is exponential</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      All other positive numbers for <emphasis>iexpy</emphasis> indicate the number of an existing table that is used for indexing. Linear interpolation is provided in table indexing. A negative table number suppresses interpolation. 
+    </para>
+
+    <warning>
+      <title>IMPORTANT!</title>
+      <para>
+        Notice that the tables used by valuators must be created with the <link linkend="ftgen"><citetitle>ftgen</citetitle></link> opcode and placed in the orchestra before the corresponding valuator. They can not placed in the score. In fact, tables placed in the score are created later than the initialization of the opcodes placed in the header section of the orchestra.
+      </para>
+    </warning>
+
+    <para>
+      <emphasis>iheight</emphasis> -- height of widget.
+    </para>
+
+    <para>
+      <emphasis>ix</emphasis> -- horizontal position of upper left corner of the valuator, relative to the upper left corner of corresponding window (expressed in pixels).
+    </para>
+
+    <para>
+      <emphasis>iy</emphasis> -- vertical position of upper left corner of the valuator, relative to the upper left corner of corresponding window (expressed in pixels).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>koutx</emphasis> -- x output value
+    </para>
+
+    <para>
+      <emphasis>kouty</emphasis> -- y output value
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the FLjoy opcode. It uses the file <ulink url="examples/FLjoy.csd"><citetitle>FLjoy.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the FLjoy opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/FLjoy.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="FLcount"><citetitle>FLcount</citetitle></link>,
+      <link linkend="FLknob"><citetitle>FLknob</citetitle></link>,
+      <link linkend="FLroller"><citetitle>FLroller</citetitle></link>,
+      <link linkend="FLslider"><citetitle>FLslider</citetitle></link>,
+      <link linkend="FLtext"><citetitle>FLtext</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namegabriel;</para>
+    <para>New in version 4.22</para>
+    <para>Example written by Iain McCurdy, edited by &namekevin;.</para>
+  </refsect1>
+</refentry>

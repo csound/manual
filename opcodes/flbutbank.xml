@@ -1,0 +1,150 @@
+
+<refentry id="FLbutBank">
+<indexterm id="IndexFLbutBank"><primary>FLbutBank</primary></indexterm>
+  <refentryinfo><title>FLTK:Other</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLbutBank</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>FLbutBank</refname>
+    <refpurpose>
+      A FLTK widget opcode that creates a bank of buttons.
+          </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      A FLTK widget opcode that creates a bank of buttons.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kout, ihandle <command>FLbutBank</command> itype, inumx, inumy, iwidth, iheight, ix, iy, \
+      iopcode [, kp1] [, kp2] [, kp3] [, kp4] [, kp5] [....] [, kpN]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ihandle</emphasis> -- a handle value (an integer number) that unequivocally references a corresponding widget. This is used by other opcodes that modify a widget's properties (see <link linkend="ControlFltkAppearance"><citetitle>Modifying FLTK Widget Appearance</citetitle></link>). It is automatically output by <emphasis>FLbutBank</emphasis> and must not be set by the user label. (The user label is a double-quoted string containing some user-provided text placed near the widget.)
+    </para>
+
+    <para>
+      <emphasis>itype</emphasis> -- an integer number denoting the appearance of the widget. The valid numbers are:
+      <itemizedlist>
+        <listitem><para>1 - normal button</para></listitem>
+        <listitem><para>2 - light button</para></listitem>
+        <listitem><para>3 - check button</para></listitem>
+        <listitem><para>4 - round button</para></listitem>
+      </itemizedlist>
+      You can add 20 to the value to create a "plastic" type button. (Note that there is no Platic Round button. i.e. if you set type to 24 it will look exactly like type 23).
+    </para>
+
+    <para>
+      <emphasis>inumx</emphasis> -- number of buttons in each row of the bank.
+    </para>
+
+    <para>
+      <emphasis>inumy</emphasis> -- number of buttons in each column of the bank
+    </para>
+
+    <para>
+      <emphasis>ix</emphasis> -- horizontal position of upper left corner of the valuator, relative to the upper left corner of corresponding window, expressed in pixels
+    </para>
+
+    <para>
+      <emphasis>iy</emphasis> -- vertical position of upper left corner of the valuator, relative to the upper left corner of corresponding window, expressed in pixels
+    </para>
+
+    <para>
+      <emphasis>iopcode</emphasis> -- score opcode type. You have to provide the ascii code of the letter corresponding to the score opcode. At present time only <quote>i</quote> (ascii code 105) score statements are supported. A zero value refers to a default value of <quote>i</quote>. So both 0 and 105 activates the <link linkend="i"><citetitle>i</citetitle></link> opcode. A value of -1 disables this opcode feature.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kout</emphasis> -- output value
+    </para>
+
+    <para>
+      <emphasis>kp1</emphasis>, <emphasis>kp2</emphasis>, ..., <emphasis>kpN</emphasis> -- arguments of the activated instruments.
+    </para>
+
+    <para>
+      The <emphasis>FLbutBank</emphasis> opcode creates a bank of buttons. For example, the following line:
+      <informalexample>
+        <programlisting>
+gkButton,ihb1  FLbutBank  22, 8, 8, 380, 180, 50, 350, 0, 7, 0, 0, 5000, 6000
+        </programlisting>
+      </informalexample>
+
+      will create the this bank:
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/flbutbank.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>FLbutBank.</phrase>
+        </textobject>
+
+        <caption>
+          <para>FLbutBank.</para>
+        </caption>
+      </mediaobject>
+    </para>
+
+    <para>
+      A click to a button checks that button. It may also uncheck a previous checked button belonging to the same bank. So the behaviour is always that of radio-buttons. Notice that each button is labeled with a progressive number. The <emphasis>kout</emphasis> argument is filled with that number when corresponding button is checked.
+    </para>
+
+    <para>
+      <emphasis>FLbutBank</emphasis> not only outputs a value but can also activate (or schedule) an instrument provided by the user each time a button is pressed. If the <emphasis>iopcode</emphasis> argument is set to a negative number, no instrument is activated so this feature is optional. In order to activate an instrument, <emphasis>iopcode</emphasis> must be set to 0 or to 105 (the ascii code of character <quote>i</quote>, referring to the <link linkend="i"><citetitle>i</citetitle></link> score opcode). P-fields of the activated instrument are <emphasis>kp1</emphasis> (instrument number), <emphasis>kp2</emphasis> (action time), <emphasis>kp3</emphasis> (duration) and so on with user p-fields.
+    </para>
+
+    <para>
+      The <emphasis>itype</emphasis> argument sets the type of buttons identically to the <link linkend="FLbutton"><citetitle>FLbutton</citetitle></link> opcode. By adding 10 to the <emphasis>itype</emphasis> argument (i.e. by setting 11 for type 1, 12 for type 2, 13 for type 3 and 14 for type 4), it is possible to skip the current <emphasis>FLbutBank</emphasis> value when getting/setting snapshots (see <link linkend="ControlFltkGeneral"><citetitle>General FLTK Widget-related Opcodes</citetitle></link>). You can also add 10 to "plastic" button types (31 for type 1, 32 for type 2, etc.)
+    </para>
+    <para>
+      FLbutBank is very useful to retrieve snapshots.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the FLbutBank opcode. It uses the file <ulink url="examples/FLbutBank.csd"><citetitle>FLbutBank.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the FLbutBank opcode.</title>
+
+
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/FLbutBank.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="FLbox"><citetitle>FLbox</citetitle></link>,
+      <link linkend="FLbutton"><citetitle>FLbutton</citetitle></link>,
+      <link linkend="FLprintk"><citetitle>FLprintk</citetitle></link>,
+      <link linkend="FLprintk2"><citetitle>FLprintk2</citetitle></link>,
+      <link linkend="FLvalue"><citetitle>FLvalue</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namegabriel;</para>
+    <para>New in version 4.22</para>
+  </refsect1>
+</refentry>

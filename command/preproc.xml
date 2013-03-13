@@ -1,0 +1,73 @@
+
+<section id="CommandPreproc">
+  <title>Score File Preprocessing</title>
+
+  <section id="commandpreextract">
+    <title>The Extract Feature</title> 
+
+    <para>
+      <indexterm id="IndexExtract"><primary>extract</primary></indexterm>
+      This feature will extract a segment of a sorted numeric score file according to instructions taken from a control file. The control file contains an instrument list and two time points, from and to, in the form:
+      <informalexample>
+        <programlisting>instruments 1  2  from  1:27.5  to  2:2</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      The component labels may be abbreviated as i, f and t. The time points denote the beginning and end of the extract in terms of:
+      <informalexample>
+        <programlisting>[section no.] : [beat no.].</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      Each of the three parts of the argument is optional. The default values for missing i, f or t are:
+      <informalexample>
+        <programlisting>all instruments, beginning of score, end of score.</programlisting>
+      </informalexample>
+    </para>
+  </section>
+
+
+  <section id="CommandPreindie">
+    <title>Independent Pre-Processing with Scsort</title>
+    <para>
+      <indexterm id="IndexScsort"><primary>Scsort</primary></indexterm>
+      Although the result of all score preprocessing is retained in the file score.srt after orchestra performance (it exists as soon as score preprocessing has completed), the user may sometimes want to run these phases independently. The command
+
+      <informalexample>
+        <programlisting><command>scot</command> filename</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      will process the Scot formatted filename, and leave a <link linkend="ScoreTop"><citetitle>standard numeric score</citetitle></link> result in a file named score for perusal or later processing.
+    </para>
+
+    <para>
+      The command
+      <informalexample>
+        <programlisting><command>scscort</command> &lt; infile &gt; outfile</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      will put a numeric score infile through Carry, Tempo, and Sort preprocessing, leaving the result in outfile.
+    </para>
+
+    <para>
+      Likewise <emphasis>extract</emphasis>, also normally invoked as part of the <link linkend="CommandTop"><citetitle>Csound command</citetitle></link>, can be invoked as a standalone program:
+      <informalexample>
+        <programlisting><command>extract</command> xfile &lt; score.sort &gt; score.extract</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      This command expects an already sorted score. An unsorted score should first be sent through Scsort then piped to the extract program:
+      <informalexample>
+        <programlisting>
+<command>scsort</command> &lt; scorefile | <command>extract</command> xfile &gt; score.extract</programlisting>
+      </informalexample>
+    </para>
+  </section>
+</section>

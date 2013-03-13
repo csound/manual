@@ -1,0 +1,48 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac  <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o pvsftr.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+gifil <emphasis role="ohdr">ftgen</emphasis> 0, 0, 0, <emphasis role="op">-</emphasis>1, "fox.wav", 0, 0, 1
+
+<emphasis role="oblock">instr</emphasis> 1
+
+ifftsize <emphasis role="op">=</emphasis> 1024				<emphasis role="comment">;fft size</emphasis>
+ioverlap <emphasis role="op">=</emphasis> 256				<emphasis role="comment">;overlap</emphasis>
+knewamp  <emphasis role="op">=</emphasis> 0				<emphasis role="comment">;new value for amplitudes</emphasis>
+
+<emphasis role="comment">;create fsig stream from function table</emphasis>
+fsrc	<emphasis role="opc">pvstanal</emphasis> 1, 1, 1, gifil, 0, 0, 0, ifftsize, ioverlap, 0
+ifn	<emphasis role="ohdr">ftgen</emphasis>	0, 0, ifftsize<emphasis role="op">/</emphasis>2, 2, 0	<emphasis role="comment">;create empty function table</emphasis>
+kflag	<emphasis role="opc">pvsftw</emphasis>	fsrc,ifn		<emphasis role="comment">;export amps to table	</emphasis>
+<emphasis role="comment">;overwrite the first 10 bins each time the table has been filled new</emphasis>
+<emphasis role="octrl">if</emphasis> kflag <emphasis role="op">==</emphasis> 1 then
+kndx <emphasis role="op">=</emphasis> 0
+kmaxbin <emphasis role="op">=</emphasis> 10
+<emphasis role="olabel">loop</emphasis><emphasis role="op">:</emphasis>
+<emphasis role="opc">tablew</emphasis> knewamp, kndx, ifn
+<emphasis role="octrl">loop_le</emphasis> kndx, 1, kmaxbin, <emphasis role="olabel">loop</emphasis>
+<emphasis role="octrl">endif</emphasis>
+	<emphasis role="opc">pvsftr</emphasis>	fsrc,ifn		<emphasis role="comment">;read modified data back to fsrc</emphasis>
+aout	<emphasis role="opc">pvsynth</emphasis>	fsrc			<emphasis role="comment">;and resynth</emphasis>
+	<emphasis role="opc">outs</emphasis>	aout, aout
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 4
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

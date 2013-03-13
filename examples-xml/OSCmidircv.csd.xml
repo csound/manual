@@ -1,0 +1,97 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in</emphasis>
+-odac           -iadc    <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+  <emphasis role="ohdr">sr</emphasis>	    <emphasis role="op">=</emphasis>  44100
+  <emphasis role="ohdr">ksmps</emphasis>	    <emphasis role="op">=</emphasis>  128
+  <emphasis role="ohdr">nchnls</emphasis>    <emphasis role="op">=</emphasis>  1
+
+<emphasis role="comment">; Example by Jonathan Murphy and Andres Cabrera 2007</emphasis>
+<emphasis role="comment">; Use file OSCmidisend.csd to generate OSC events for this file</emphasis>
+
+  <emphasis role="ohdr">0dbfs</emphasis>	    <emphasis role="op">=</emphasis>  1
+
+  gilisten  <emphasis role="opc">OSCinit</emphasis>   47120
+
+  gisin	    <emphasis role="ohdr">ftgen</emphasis>     1, 0, 16384, 10, 1
+  givel	    <emphasis role="ohdr">ftgen</emphasis>     2, 0, 128, <emphasis role="op">-</emphasis>2, 0
+  gicc	    <emphasis role="ohdr">ftgen</emphasis>     3, 0, 128, <emphasis role="op">-</emphasis>7, 100, 128, 100  <emphasis role="comment">;Default all controllers to 100</emphasis>
+ 
+<emphasis role="comment">;Define scale tuning</emphasis>
+  giji_12   <emphasis role="ohdr">ftgen</emphasis>     202, 0, 32, <emphasis role="op">-</emphasis>2, 12, 2, 256, 60, 1, 16<emphasis role="op">/</emphasis>15, 9<emphasis role="op">/</emphasis>8, 6<emphasis role="op">/</emphasis>5, 5<emphasis role="op">/</emphasis>4, 4<emphasis role="op">/</emphasis>3, 7<emphasis role="op">/</emphasis>5, \
+                               3<emphasis role="op">/</emphasis>2, 8<emphasis role="op">/</emphasis>5, 5<emphasis role="op">/</emphasis>3, 9<emphasis role="op">/</emphasis>5, 15<emphasis role="op">/</emphasis>8, 2
+
+<emphasis role="omacro">#define</emphasis> DEST #"<emphasis role="op">/</emphasis>midi"#
+<emphasis role="comment">; Use controller number 7 for volume</emphasis>
+<emphasis role="omacro">#define</emphasis> VOL #7#
+
+<emphasis role="opc">turnon</emphasis> 1000
+
+
+    <emphasis role="oblock">instr</emphasis>   1000
+
+  kst	    <emphasis role="opc">init</emphasis>      0
+  kch	    <emphasis role="opc">init</emphasis>      0
+  kd1	    <emphasis role="opc">init</emphasis>      0
+  kd2	    <emphasis role="opc">init</emphasis>      0
+
+<emphasis role="olabel">next</emphasis><emphasis role="op">:</emphasis>
+
+  kk	    <emphasis role="opc">OSClisten</emphasis>	gilisten, $DEST, "iiii", kst, kch, kd1, kd2
+
+<emphasis role="octrl">if</emphasis> (kk <emphasis role="op">==</emphasis> 0) <emphasis role="octrl">goto</emphasis> <emphasis role="olabel">done</emphasis>
+
+<emphasis role="opc">printks</emphasis> "kst <emphasis role="op">=</emphasis> <emphasis role="op">%</emphasis>i, kch <emphasis role="op">=</emphasis> <emphasis role="op">%</emphasis>i, kd1 <emphasis role="op">=</emphasis> <emphasis role="op">%</emphasis>i, kd2 <emphasis role="op">=</emphasis> <emphasis role="op">%</emphasis>i\\n", \
+         0, kst, kch, kd1, kd2
+
+<emphasis role="octrl">if</emphasis> (kst <emphasis role="op">==</emphasis> 176) then
+<emphasis role="comment">;Store controller information in a table</emphasis>
+	    <emphasis role="opc">tablew</emphasis>    kd2, kd1, gicc
+<emphasis role="octrl">endif</emphasis>  
+
+<emphasis role="octrl">if</emphasis> (kst <emphasis role="op">==</emphasis> 144) then
+<emphasis role="comment">;Process noteon and noteoff messages.</emphasis>
+  kkey	    <emphasis role="op">=</emphasis>  kd1
+  kvel	    <emphasis role="op">=</emphasis>  kd2
+  kcps	    <emphasis role="opc">cpstun</emphasis>    kvel, kkey, giji_12
+  kamp	    <emphasis role="op">=</emphasis>  kvel<emphasis role="op">/</emphasis>127
+
+<emphasis role="octrl">if</emphasis> (kvel <emphasis role="op">==</emphasis> 0) then
+	    <emphasis role="opc">turnoff2</emphasis>  1001, 4, 1
+<emphasis role="octrl">elseif</emphasis> (kvel <emphasis role="op">></emphasis> 0) then
+	    <emphasis role="opc">event</emphasis>     "i", 1001, 0, <emphasis role="op">-</emphasis>1, kcps, kamp
+<emphasis role="octrl">endif</emphasis>
+<emphasis role="octrl">endif</emphasis>
+
+	<emphasis role="octrl">kgoto</emphasis>	<emphasis role="olabel">next</emphasis>  <emphasis role="comment">;Process all events in queue</emphasis>
+
+<emphasis role="olabel">done</emphasis><emphasis role="op">:</emphasis>
+    <emphasis role="oblock">endin</emphasis>
+
+
+
+    <emphasis role="oblock">instr</emphasis> 1001   <emphasis role="comment">;Simple instrument</emphasis>
+
+  icps	    <emphasis role="opc">init</emphasis>      p4
+  kvol	    <emphasis role="opc">table</emphasis>     $VOL, gicc  <emphasis role="comment">;Read MIDI volume from controller table</emphasis>
+  kvol	    <emphasis role="op">=</emphasis>  kvol<emphasis role="op">/</emphasis>127
+
+  aenv     <emphasis role="opc">linsegr</emphasis>    0, .003, p5, 0.03, p5 <emphasis role="op">*</emphasis> 0.5, 0.3, 0
+  aosc	    <emphasis role="opc">oscil</emphasis>     aenv, icps, gisin
+
+	    <emphasis role="opc">out</emphasis>	      aosc <emphasis role="op">*</emphasis> kvol
+    <emphasis role="oblock">endin</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis> 0 3600  <emphasis role="comment">;Dummy f-table</emphasis>
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

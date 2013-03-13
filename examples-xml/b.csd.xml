@@ -1,0 +1,67 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac     <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if RT audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o b.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1
+
+aenv <emphasis role="opc">expseg</emphasis> .01, p3<emphasis role="op">*</emphasis>0.25, 1, p3<emphasis role="op">*</emphasis>0.75, 0.01
+asig <emphasis role="opc">poscil3</emphasis> .4<emphasis role="op">*</emphasis>aenv, 220, 1
+     <emphasis role="opc">outs</emphasis> asig, asig
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 2
+
+asig <emphasis role="opc">pluck</emphasis> 0.7, p4, 220, 0, 1
+     <emphasis role="opc">outs</emphasis> asig, asig
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 3
+
+asig <emphasis role="opc">loscil</emphasis> .8, 1, 2, 1
+     <emphasis role="opc">outs</emphasis> asig, asig
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 4
+asig  <emphasis role="opc">bamboo</emphasis> .8, 0.01
+      <emphasis role="opc">outs</emphasis> asig, asig
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 16384 10 1		<emphasis role="comment">;sine wave</emphasis>
+<emphasis role="stamnt">f</emphasis> 2 0 0 1 "<emphasis role="stamnt">f</emphasis>ox.wav" 0 0 0	<emphasis role="comment">;sample</emphasis>
+
+<emphasis role="stamnt">i</emphasis>1  0 2
+<emphasis role="stamnt">i</emphasis>1  10 2
+
+<emphasis role="stamnt">b</emphasis> 5			<emphasis role="comment">; set the clock "forward"</emphasis>
+<emphasis role="stamnt">i</emphasis>2 1 2 220		<emphasis role="comment">; start time = 6</emphasis>
+<emphasis role="stamnt">i</emphasis>2 2 2 110		<emphasis role="comment">; start time = 7</emphasis>
+
+<emphasis role="stamnt">b</emphasis> -1     
+<emphasis role="stamnt">i</emphasis>3  3  2		<emphasis role="comment">; start time = 2</emphasis>
+<emphasis role="stamnt">i</emphasis>3 5.5 1		<emphasis role="comment">; start time = 4.5</emphasis>
+
+
+<emphasis role="stamnt">b</emphasis> 0			<emphasis role="comment">; reset clock to normal</emphasis>
+<emphasis role="stamnt">i</emphasis>4 10 2			<emphasis role="comment">; start time = 10</emphasis>
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

@@ -1,0 +1,88 @@
+
+<refentry id="svfilter">
+<indexterm id="IndexSvfilter"><primary>svfilter</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>svfilter</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>svfilter</refname>
+    <refpurpose>
+      A resonant second order filter, with simultaneous lowpass, highpass and bandpass outputs.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Implementation of a resonant second order filter, with simultaneous lowpass, highpass and bandpass outputs.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>alow, ahigh, aband <command>svfilter</command>  asig, kcf, kq [, iscl]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iscl</emphasis> -- coded scaling factor, similar to that in <link linkend="reson"><citetitle>reson</citetitle></link>. A non-zero value signifies a peak response factor of 1, i.e. all frequencies other than <emphasis>kcf</emphasis> are attenuated in accordance with the (normalized) response curve. A zero value signifies no scaling of the signal, leaving that to some later adjustment (see <link linkend="balance"><citetitle>balance</citetitle></link>). The default value is 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>svfilter</emphasis> is a second order state-variable filter, with k-rate controls for cutoff frequency and Q.  As Q is increased, a resonant peak forms around the cutoff frequency. <emphasis>svfilter</emphasis> has simultaneous lowpass, highpass, and bandpass filter outputs; by mixing the outputs together, a variety of frequency responses can be generated. The state-variable filter, or &quot;multimode&quot; filter was a common feature in early analog synthesizers, due to the wide variety of sounds available from the interaction between cutoff, resonance, and output mix ratios. <emphasis>svfilter</emphasis> is well suited to the emulation of &quot;analog&quot; sounds, as well as other applications where resonant filters are called for.
+    </para>
+
+    <para>
+      <emphasis>asig</emphasis> -- Input signal to be filtered.
+    </para>
+
+    <para>
+      <emphasis>kcf</emphasis> -- Cutoff or resonant frequency of the filter, measured in Hz.
+    </para>
+
+    <para>
+      <emphasis>kq</emphasis> -- Q of the filter, which is defined (for bandpass filters) as bandwidth/cutoff. <emphasis>kq</emphasis> should be in a range between 1 and 500. As <emphasis>kq</emphasis> is increased, the resonance of the filter increases, which corresponds to an increase in the magnitude and &quot;sharpness&quot; of the resonant peak. When using <emphasis>svfilter</emphasis> without any scaling of the signal (where <emphasis>iscl</emphasis> is either absent or 0), the volume of the resonant peak increases as Q increases. For high values of Q, it is recommended that <emphasis>iscl</emphasis> be set to a non-zero value, or that an external scaling function such as <link linkend="balance"><citetitle>balance</citetitle></link> is used.
+    </para>
+
+    <para>
+      <emphasis>svfilter</emphasis> is based upon an algorithm in Hal Chamberlin's <emphasis>Musical Applications of Microprocessor</emphasis>s (Hayden Books, 1985).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the svfilter opcode. It uses the file <ulink url="examples/svfilter.csd"><citetitle>svfilter.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the svfilter opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/svfilter.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namesean;</member>
+        <member>Seattle, Washington</member>
+        <member>1999</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.55</para>
+  </refsect1>
+</refentry>

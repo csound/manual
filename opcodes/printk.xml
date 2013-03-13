@@ -1,0 +1,103 @@
+
+<refentry id="printk">
+<indexterm id="IndexPrintk"><primary>printk</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Printing and Display</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>printk</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>printk</refname>
+    <refpurpose>
+      Prints one k-rate value at specified intervals.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Prints one k-rate value at specified intervals.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>printk</command> itime, kval [, ispace]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>itime</emphasis> -- time in seconds between printings.
+    </para>
+
+    <para>
+      <emphasis>ispace</emphasis> (optional, default=0) -- number of spaces to insert before printing. (default: 0, max: 130)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kval</emphasis> -- The k-rate values to be printed. 
+    </para>
+
+    <para>
+      <emphasis>printk</emphasis> prints one k-rate value on every k-cycle, every second or at intervals specified. First the instrument number is printed, then the absolute time in seconds, then a specified number of spaces, then the <emphasis>kval</emphasis> value. The variable number of spaces enables different values to be spaced out across the screen - so they are easier to view.
+    </para>
+
+    <para>
+      This opcode can be run on every k-cycle it is run in the instrument. To every accomplish this, set <emphasis>itime</emphasis> to 0.
+    </para>
+
+    <para>
+      When <emphasis>itime</emphasis> is not 0, the opcode print on the first k-cycle it is called, and subsequently when every <emphasis>itime</emphasis> period has elapsed. The time cycles start from the time the opcode is initialized - typically the initialization of the instrument.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the printk opcode. It uses the file <ulink url="examples/printk.csd"><citetitle>printk.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the printk opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/printk.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Its output should include lines like this:
+      <screen>
+ i   1 time     0.00002:     0.00000
+ i   1 time     1.00002:    20.01084
+ i   1 time     2.00002:    40.02999
+ i   1 time     3.00002:    60.04914
+ i   1 time     4.00002:    79.93327</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="printk2"><citetitle>printk2</citetitle></link> and
+      <link linkend="printks"><citetitle>printks</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Robin Whittle</member>
+        <member>Australia</member>
+        <member>May 1997</member>
+      </simplelist>
+    </para>
+    <para>Example written by &namekevin;.</para>
+
+    <para>Thanks goes to Luis Jure for pointing out a mistake with the <emphasis>itime</emphasis> parameter.</para>
+  </refsect1>
+</refentry>

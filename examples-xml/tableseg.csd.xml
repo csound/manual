@@ -1,0 +1,35 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac     <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o tableseg.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1
+<emphasis role="comment">; analyze "fox.wav" with PVANAL first</emphasis>
+iend  <emphasis role="op">=</emphasis> p4
+ktime <emphasis role="opc">line</emphasis> 0, p3, iend
+      <emphasis role="opc">tableseg</emphasis> p5, p3, p6		<emphasis role="comment">;morph from table 1</emphasis>
+asig  <emphasis role="opc">vpvoc</emphasis> ktime, 1, "fox.pvx"		<emphasis role="comment">;to table 2</emphasis>
+      <emphasis role="opc">outs</emphasis> asig<emphasis role="op">*</emphasis>3, asig<emphasis role="op">*</emphasis>3
+
+<emphasis role="oblock">endin</emphasis>      
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 512 9 .5 1 0
+<emphasis role="stamnt">f</emphasis> 2 0 512 7 0 20 1 30 0 230 0 232 1
+
+<emphasis role="stamnt">i</emphasis> 1 0 10 2.7 1 2
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

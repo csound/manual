@@ -1,0 +1,206 @@
+
+<refentry id="wiidata">
+<indexterm id="Indexwiidata"><primary>wiidata</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>wiidata</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>wiidata</refname>
+    <refpurpose>
+      Reads data fields from a number of external Nintendo Wiimote controllers.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+       Reads data fields from upto four external Nintendo Wiimote controllers.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kres <command>wiidata</command> kcontrol[, knum]</synopsis>
+  </refsect1>
+ 
+   <refsect1>
+    <title>Initialization</title>
+    <para>
+      This opcode must be used in conjuction with
+      a running <emphasis>wiiconnect</emphasis> opcode.
+    </para>
+
+  </refsect1>
+
+ <refsect1>
+   <title>Performance</title>
+   <note>
+     <para>
+       Please note that these opcodes are currently only supported on
+       Linux.
+     </para>
+   </note>
+   <para>
+     <emphasis>kcontrol</emphasis> -- the code for which control to read
+   </para>
+   <para>
+     <emphasis>knum</emphasis> -- the number of the which Wiimote to
+     access, which defaults to the first one.
+   </para>
+   <para>
+     On each access a particular data item of the Wiimote is read.
+     The currently implemented controls are given below, together with
+     the macro name defined in the file <emphasis>wii_mac</emphasis>:
+   </para>
+   <para>
+     0 (WII_BUTTONS): returns a bit pattern for all buttons that were pressed.
+   </para>
+   <para>
+1 (WII_TWO): returns 1 if the button has just been pressed, or 0 otherwise.
+   </para>
+   <para>
+2 (WII_ONE): as above.
+   </para>
+   <para>
+3 (WII_B): as above.
+   </para>
+   <para>
+4 (WII_A): as above.
+   </para>
+   <para>
+5 (WII_MINUS): as above.
+   </para>
+   <para>
+8 (WII_HOME): as above.
+   </para>
+   <para>
+9 (WII_LEFT): as above.
+   </para>
+   <para>
+10 (WII_RIGHT): as above.
+   </para>
+   <para>
+11 (WII_DOWN): as above.
+   </para>
+   <para>
+12 (WII_UP): as above.
+   </para>
+   <para>
+13 (WII_PLUS): as above.
+   </para>
+<para> 
+If the control number is 100 more than one of these button codes then
+the current state of the button is returned.  Macros with names
+like WII_S_TWO etc are defined for this.
+</para>
+<para> 
+If the control number is 200 more than one of these button codes then
+the return value is 1 if the button i held and 0 otherwise.  Macros with names
+like WII_H_TWO etc are defined for this.
+</para>
+<para> 
+If the control number is 300 more than one of these button codes then
+the value is 1 if the button has just been released, and 0 otherwise.
+Macros with names like WII_R_TWO etc are defined for this.
+</para>
+
+   <!-- <para> -->
+   <!--   17 (WII_AXIS_X): The  -->
+   <!-- </para> -->
+   <!-- <para> -->
+   <!--   18 (WII_AXIS_Y): -->
+   <!-- </para> -->
+   <!-- <para> -->
+   <!--   19 (WII_AXIS_Z): -->
+   <!-- </para> -->
+   <para>
+     20 (WII_PITCH): The pitch of the Wiimote.  The value is in
+     degrees between -90 and +90, unless modified by a <emphasis>wiirange</emphasis> call.
+   </para>
+   <para>
+     21 (WII_ROLL): The roll of the Wiimote.  The value is in
+     degrees between -90 and +90, unless modified by a <emphasis>wiirange</emphasis> call.
+   </para>
+   <!-- <para> -->
+   <!--   22 (WII_YAW): -->
+   <!-- </para> -->
+   <para>
+     23 (WII_FORCE_X): The force applied to the Wiimote in the three axes.
+   </para>
+   <para>
+     24 (WII_FORCE_Y):
+   </para>
+   <para>
+     25 (WII_FORCE_Z):
+   </para>
+   <para>
+     26 (WII_FORCE_TOTAL): The total magnitude of the force applied to
+     the Wiimote.
+   </para>
+   <para>
+     27 (WII_BATTERY): The percent of the battery that remains.
+   </para>
+   <para>
+     28 (WII_NUNCHUK_ANG): The angle of the nunchuk joystick in degrees.
+   </para>
+   <para>
+     29 (WII_NUNCHUK_MAG): The magnitude of the nunchuk joystick from neutral.
+   </para>
+   <para>
+     30 (WII_NUNCHUK_PITCH):  The pitch of the nunchuk in degrees, in
+     range -90 to +90 unless modified by a <emphasis>wiirange</emphasis> call.
+   </para>
+   <para>
+     31 (WII_NUNCHUK_ROLL):  The roll of the nunchuk in degrees, in
+     range -90 to +90 unless modified by a <emphasis>wiirange</emphasis> call.
+   </para>
+   <!-- <para> -->
+   <!--   32 (WII_NUNCHUK_AXIS_Z): -->
+   <!-- </para> -->
+   <para>
+     33 (WII_NUNCHUK_Z): The state of the nunchuk Z button.
+   </para>
+   <para>
+     34 (WII_NUNCHUK_C): The state of the nunchuk C button.
+   </para>
+   <para>
+     35 (WII_IR1_X): The infrared pointing of the Wiimote.
+   </para>
+   <para>
+     36 (WII_IR1_Y):
+   </para>
+   <para>
+     37 (WII_IR1_Z):
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      See the example for <link linkend="wiiconnect"><citetitle>wiiconnect</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="wiiconnect"><citetitle>wiiconnect</citetitle></link>,
+      <link linkend="wiirange"><citetitle>wiirange</citetitle></link>,
+      <link linkend="wiisend"><citetitle>wiisend</citetitle></link>,
+     </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>Codemist Ltd</member>
+        <member>2009</member>
+      </simplelist>
+    </para>
+    <para>New in version 5.11</para>
+  </refsect1>
+</refentry>

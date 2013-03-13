@@ -1,0 +1,117 @@
+
+<refentry id="FLsetTextType">
+<indexterm id="IndexFLsetTextType"><primary>FLsetTextType</primary></indexterm>
+  <refentryinfo><title>FLTK:Appearance</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLsetTextType</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>FLsetTextType</refname>
+    <refpurpose>
+      Sets some font attributes of the text label of a FLTK widget.
+          </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>FLsetTextType</emphasis> sets some attributes related to the fonts of the text label of the target widget.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>FLsetTextType</command> itype, ihandle</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>itype</emphasis> -- an integer number that modify the appearance of the target widget.
+    </para>
+
+    <para>
+      The legal values of <emphasis>itype</emphasis> are:
+
+      <itemizedlist>
+        <listitem><para>0 - normal label</para></listitem>
+        <listitem><para>1 - no label (hides the text)</para></listitem>
+        <listitem><para>2 - symbol label (see below)</para></listitem>
+        <listitem><para>3 - shadow label</para></listitem>
+        <listitem><para>4 - engraved label</para></listitem>
+        <listitem><para>5- embossed label</para></listitem>
+        <listitem><para>6- bitmap label (not implemented yet)</para></listitem>
+        <listitem><para>7- pixmap label (not implemented yet)</para></listitem>
+        <listitem><para>8- image label (not implemented yet)</para></listitem>
+        <listitem><para>9- multi label (not implemented yet)</para></listitem>
+        <listitem><para>10- free-type label (not implemented yet)</para></listitem>
+      </itemizedlist>
+
+      When using <emphasis>itype</emphasis>=3 (symbol label), it is possible to assign a graphical symbol instead of the text label of the target widget. In this case, the string of the target label must always start with <quote>@</quote>. If it starts with something else (or the symbol is not found), the label is drawn normally. The following symbols are supported:
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/symbols.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>FLTK label supported symbols.</phrase>
+        </textobject>
+
+        <caption>
+          <para>FLTK label supported symbols.</para>
+        </caption>
+      </mediaobject>
+    </para>
+
+    <para>
+      The @ sign may be followed by the following optional <quote>formatting</quote> characters, in this order:
+
+      <orderedlist>
+        <listitem><para><quote>#</quote> forces square scaling rather than distortion to the widget's shape.</para></listitem>
+        <listitem><para>+[1-9] or -[1-9] tweaks the scaling a little bigger or smaller.</para></listitem>
+        <listitem><para>[1-9] rotates by a multiple of 45 degrees. <quote>6</quote> does nothing, the others point in the direction of that key on a numeric keypad.</para></listitem>
+      </orderedlist>
+    </para>
+
+    <para>
+      Notice that with <link linkend="FLbox"><citetitle>FLbox</citetitle></link> and <link linkend="FLbutton"><citetitle>FLbutton</citetitle></link>, it is not necessary to call <emphasis>FLsetTextType</emphasis> opcode at all in order to use a symbol. In this case, it is sufficient to set a label starting with <quote>@</quote> followed by the proper formatting string.
+    </para>
+
+    <para>
+      <emphasis>ihandle</emphasis> -- an integer number (used as unique identifier) taken from the output of a previously located widget opcode (which corresponds to the target widget). It is used to unequivocally identify the widget when modifying its appearance with this class of opcodes. The user must not set the <emphasis>ihandle</emphasis> value directly, otherwise a Csound crash will occur.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+        <link linkend="FLcolor2"><citetitle>FLcolor2</citetitle></link>, 
+        <link linkend="FLhide"><citetitle>FLhide</citetitle></link>, 
+        <link linkend="FLlabel"><citetitle>FLlabel</citetitle></link>, 
+        <link linkend="FLsetAlign"><citetitle>FLsetAlign</citetitle></link>, 
+        <link linkend="FLsetBox"><citetitle>FLsetBox</citetitle></link>, 
+        <link linkend="FLsetColor"><citetitle>FLsetColor</citetitle></link>, 
+        <link linkend="FLsetColor2"><citetitle>FLsetColor2</citetitle></link>, 
+        <link linkend="FLsetFont"><citetitle>FLsetFont</citetitle></link>, 
+        <link linkend="FLsetPosition"><citetitle>FLsetPosition</citetitle></link>, 
+        <link linkend="FLsetSize"><citetitle>FLsetSize</citetitle></link>, 
+        <link linkend="FLsetText"><citetitle>FLsetText</citetitle></link>, 
+        <link linkend="FLsetTextColor"><citetitle>FLsetTextColor</citetitle></link>, 
+        <link linkend="FLsetTextSize"><citetitle>FLsetTextSize</citetitle></link>, 
+        <link linkend="FLsetTextType"><citetitle>FLsetTextType</citetitle></link>, 
+        <link linkend="FLsetVal_i"><citetitle>FLsetVal_i</citetitle></link>, 
+        <link linkend="FLsetVal"><citetitle>FLsetVal</citetitle></link>, 
+        <link linkend="FLshow"><citetitle>FLshow</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namegabriel;</para>
+    <para>New in version 4.22</para>
+  </refsect1>
+</refentry>

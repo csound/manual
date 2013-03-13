@@ -1,0 +1,95 @@
+
+<refentry id="distort1">
+<indexterm id="IndexDistort1"><primary>distort1</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Special Effects</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>distort1</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>distort1</refname>
+    <refpurpose>
+      Modified hyperbolic tangent distortion.
+          </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Implementation of modified hyperbolic tangent distortion. <emphasis>distort1</emphasis> can be used to generate wave shaping distortion based on a modification of the <link linkend="tanh"><citetitle>tanh</citetitle></link> function.
+    </para>
+
+    <para>
+      <literallayout>
+         exp(asig * (shape1 + pregain)) - exp(asig * (shape2 - pregain))
+  aout = ---------------------------------------------------------------
+         exp(asig * pregain)            + exp(-asig * pregain)
+      </literallayout>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>distort1</command> asig, kpregain, kpostgain, kshape1, kshape2[, imode]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>imode</emphasis> (Csound version 5.00 and later only; optional, defaults to 0) -- scales kpregain, kpostgain, kshape1, and kshape2 for use with audio signals in the range -32768 to 32768 (imode=0), -0dbfs to 0dbfs (imode=1), or disables scaling of kpregain and kpostgain and scales kshape1 by kpregain and kshape2 by -kpregain (imode=2).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asig</emphasis> -- is the input signal.
+    </para>
+
+    <para>
+      <emphasis>kpregain</emphasis> -- determines the amount of gain applied to the signal before waveshaping. A value of 1 gives slight distortion.
+    </para>
+
+    <para>
+      <emphasis>kpostgain</emphasis> -- determines the amount of gain applied to the signal after waveshaping.
+    </para>
+
+    <para>
+      <emphasis>kshape1</emphasis> -- determines the shape of the positive part of the curve. A value of 0 gives a flat clip, small positive values give sloped shaping.
+    </para>
+
+    <para>
+      <emphasis>kshape2</emphasis> -- determines the shape of the negative part of the curve.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the distort1 opcode. It uses the file <ulink url="examples/distort1.csd"><citetitle>distort1.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the distort1 opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/distort1.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namehans;</member>
+        <member>December 1998</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.50</para>
+  </refsect1>
+</refentry>

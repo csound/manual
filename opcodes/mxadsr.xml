@@ -1,0 +1,126 @@
+
+<refentry id="mxadsr">
+<indexterm id="IndexMxadsr"><primary>mxadsr</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Envelope Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>mxadsr</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>mxadsr</refname>
+    <refpurpose>
+      Calculates the classical ADSR envelope using the <emphasis>expsegr</emphasis> mechanism.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Calculates the classical ADSR envelope using the <link linkend="expsegr"><citetitle>expsegr</citetitle></link> mechanism.
+   </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>mxadsr</command> iatt, idec, islev, irel [, idel] [, ireltim]</synopsis>
+
+    <synopsis>kres <command>mxadsr</command> iatt, idec, islev, irel [, idel] [, ireltim]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iatt</emphasis> -- duration of attack phase
+    </para>
+
+    <para>
+      <emphasis>idec</emphasis> -- duration of decay
+    </para>
+
+    <para>
+      <emphasis>islev</emphasis> -- level for sustain phase
+    </para>
+
+    <para>
+      <emphasis>irel</emphasis> -- duration of release phase
+    </para>
+
+    <para>
+      <emphasis>idel</emphasis> (optional, default=0) -- period of zero before the envelope starts
+    </para>
+
+    <para>
+      <emphasis>ireltim</emphasis> (optional, default=-1) -- Control release time after receiving a MIDI noteoff event. If less than zero, the longest release time given in the current instrument is used. If zero or more, the given value will be used for release time. Its default value is -1. (New in Csound 3.59 - not yet properly tested)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      The envelope is in the range 0 to 1 and may need to be scaled further. The envelope may be described as:
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/adsr.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>Picture of an ADSR envelope.</phrase>
+        </textobject>
+        
+        <caption>
+          <para>Picture of an ADSR envelope.</para>
+        </caption>
+      </mediaobject>
+    </para>
+
+    <para>
+       The length of the sustain is calculated from the length of the note. This means <emphasis>adsr</emphasis> is not suitable for use with MIDI events. The opcode <link linkend="madsr"><citetitle>madsr</citetitle></link> uses the <link linkend="linsegr"><citetitle>linsegr</citetitle></link> mechanism, and so can be used in MIDI applications. The opcode <emphasis>mxadsr</emphasis> is identical to <link linkend="madsr"><citetitle>madsr</citetitle></link> except it uses exponential, rather than linear, line segments. 
+    </para>
+    <para>
+      You can use other pre-made envelopes which start a release segment upon recieving a note off message, like <link linkend="linsegr"><citetitle>linsegr</citetitle></link> and <link linkend="expsegr"><citetitle>expsegr</citetitle></link>, or you can construct more complex envelopes using <link linkend="xtratim"><citetitle>xtratim</citetitle></link> and <link linkend="release"><citetitle>release</citetitle></link>. Note that you don't need to use <link linkend="xtratim"><citetitle>xtratim</citetitle></link> if you are using <emphasis>mxadsr</emphasis>, since the time is extended automatically.
+    </para>
+    <para>
+      <emphasis>mxadsr</emphasis> is new in Csound version 3.51.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the mxadsr opcode. It uses the file <ulink url="examples/mxadsr.csd"><citetitle>mxadsr.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the mxadsr opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/mxadsr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="expsegr"><citetitle>linsegr</citetitle></link>,
+      <link linkend="linenr"><citetitle>expsegr</citetitle></link>,
+      <link linkend="envlpxr"><citetitle>envlpxr</citetitle></link>,
+      <link linkend="xadsr"><citetitle>mxadsr</citetitle></link>,
+      <link linkend="madsr"><citetitle>madsr</citetitle></link>,
+      <link linkend="adsr"><citetitle>adsr</citetitle></link>,
+      <link linkend="expon"><citetitle>expon</citetitle></link>,
+      <link linkend="expseg"><citetitle>expseg</citetitle></link>,
+      <link linkend="expsega"><citetitle>expsega</citetitle></link>
+      <link linkend="line"><citetitle>line</citetitle></link>,
+      <link linkend="linseg"><citetitle>linseg</citetitle></link>,
+      <link linkend="xtratim"><citetitle>xtratim</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namejohn;</para>
+    <para>November 2002. Thanks to &namerasmus;, added documentation for the <emphasis>ireltim</emphasis> parameter.</para>
+    <para>November 2003. Thanks to &namekanata;, fixed the link to the <emphasis>linsegr</emphasis> opcode.</para>
+
+  </refsect1>
+</refentry>

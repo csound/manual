@@ -1,0 +1,108 @@
+
+<refentry id="s32b14">
+<indexterm id="IndexS32b14"><primary>s32b14</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Slider Banks</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>s32b14</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>s32b14</refname>
+
+    <refpurpose>
+      Creates a bank of 32 different 14-bit MIDI control message numbers.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Creates a bank of 32 different 14-bit MIDI control message numbers.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>i1,...,i32 <command>s32b14</command> ichan, ictlno_msb1, ictlno_lsb1, imin1, imax1, \
+      initvalue1, ifn1,..., ictlno_msb32, ictlno_lsb32, imin32, imax32, initvalue32, ifn32</synopsis>
+
+    <synopsis>k1,...,k32 <command>s32b14</command> ichan, ictlno_msb1, ictlno_lsb1, imin1, imax1, \
+      initvalue1, ifn1,..., ictlno_msb32, ictlno_lsb32, imin32, imax32, initvalue32, ifn32</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>i1 ... i64</emphasis> -- output values
+    </para>
+
+    <para>
+      <emphasis>ichan</emphasis> -- MIDI channel (1-16)
+    </para>
+
+    <para>
+      <emphasis>ictlno_msb1 .... ictlno_msb32</emphasis> -- MIDI control number, most significant byte (0-127)
+    </para>
+
+    <para>
+      <emphasis>ictlno_lsb1 .... ictlno_lsb32</emphasis> -- MIDI control number, least significant byte (0-127)
+    </para>
+
+    <para>
+      <emphasis>imin1 ... imin64</emphasis> -- minimum values for each controller
+    </para>
+
+    <para>
+      <emphasis>imax1 ... imax64</emphasis> -- maximum values for each controller
+    </para>
+
+    <para>
+      <emphasis>init1 ... init64</emphasis> -- initial value for each controller
+    </para>
+
+    <para>
+      <emphasis>ifn1 ... ifn64</emphasis> -- function table for conversion for each controller
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>k1 ... k64</emphasis> -- output values
+    </para>
+
+    <para>
+      <emphasis>s32b14</emphasis> is a bank of MIDI controllers, useful when using MIDI mixer such as Kawai MM-16 or others for changing whatever sound parameter in real-time. The raw MIDI control messages at the input port are converted to agree with <emphasis>iminN</emphasis> and <emphasis>imaxN</emphasis>,  and an initial value can be set. Also, an optional non-interpolated function table with a custom translation curve is allowed, useful for enabling exponential response curves.
+    </para>
+
+    <para>
+      When no function table translation is required, set the <emphasis>ifnN</emphasis> value to 0, else set <emphasis>ifnN</emphasis> to a valid function table number.  When table translation is enabled (i.e. setting <emphasis>ifnN</emphasis> value to a non-zero number referring to an already allocated function table), <emphasis>initN</emphasis> value should be set equal to <emphasis>iminN</emphasis> or <emphasis>imaxN</emphasis> value, else the initial output value will not be the same as specified in <emphasis>initN</emphasis> argument.
+    </para>
+
+    <para>
+      <emphasis>s32b14</emphasis> allows a bank of 32 different MIDI control message numbers. It uses 14-bit values instead of MIDI's normal 7-bit values.
+    </para>
+
+    <para>
+      As the input and output arguments are many, you can split the line using '\' (backslash) character (new in 3.47 version) to improve the readability. Using these opcodes is considerably more efficient than using the separate ones (<link linkend="ctrl7"><citetitle>ctrl7</citetitle></link> and <link linkend="tonek"><citetitle>tonek</citetitle></link>) when more controllers are required.
+    </para>
+
+    <para>
+      In the i-rate version of <emphasis>s32b14</emphasis>, there is not an initial value input argument. The output is taken directly from the current status of internal controller array of Csound.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namegabriel;</member>
+        <member>Italy</member>
+        <member>December 1998</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.50</para>
+    <para>Thanks goes to &namerasmus; for pointing out the correct MIDI channel and controller number ranges.</para>
+  </refsect1>
+</refentry>

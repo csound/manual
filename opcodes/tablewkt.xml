@@ -1,0 +1,176 @@
+
+<refentry id="tablewkt">
+<indexterm id="IndexTablewkt"><primary>tablewkt</primary></indexterm>
+  <refentryinfo><title>Table Control:Read/Write Opreations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tablewkt</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>tablewkt</refname>
+    <refpurpose>
+      Change the contents of existing function tables.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This opcode operates on existing function tables, changing their contents. <emphasis>tablewkt</emphasis> uses a k-rate variable for selecting the table number. The valid combinations of variable types are shown by the first letter of the variable names.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>tablewkt</command> asig, andx, kfn [, ixmode] [, ixoff] [, iwgmode]</synopsis>
+
+    <synopsis><command>tablewkt</command> ksig, kndx, kfn [, ixmode] [, ixoff] [, iwgmode]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>asig</emphasis>, <emphasis>ksig</emphasis> -- The value to be written into the table.
+    </para>
+
+    <para>
+      <emphasis>andx</emphasis>, <emphasis>kndx</emphasis> -- Index into table, either a positive number range matching the table length (<emphasis>ixmode</emphasis> = 0) or a 0 to 1 range (<emphasis>ixmode</emphasis> != 0)
+    </para>
+
+    <para>
+      <emphasis>kfn</emphasis> -- Table number. Must be &gt;= 1. Floats are rounded down to an integer. If a table number does not point to a valid table, or the table has not yet been loaded (<link linkend="GEN01"><citetitle>GEN01</citetitle></link>) then an error will result and the instrument will be de-activated.
+    </para>
+
+    <para>
+      <emphasis>ixmode</emphasis> -- index mode. Default is zero.
+      <itemizedlist>
+        <listitem>
+          <para>
+            0 = <emphasis>xndx</emphasis> and <emphasis>ixoff</emphasis> ranges match the length of the table.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Not equal to 0 = <emphasis>xndx</emphasis> and <emphasis>ixoff</emphasis> have a 0 to 1 range. 
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>ixoff</emphasis> -- index offset. Default is 0.
+
+      <itemizedlist>
+        <listitem>
+           <para>
+             0 = Total index is controlled directly by <emphasis>xndx</emphasis>, i.e. the indexing starts from the start of the table. 
+           </para>
+        </listitem>
+
+        <listitem>
+           <para>
+             Not equal to 0 = Start indexing from somewhere else in the table. Value must be positive and less than the table length (<emphasis>ixmode</emphasis> = 0) or less than 1 (<emphasis>ixmode</emphasis> != 0).
+           </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>iwgmode</emphasis> -- table writing mode. Default is 0.
+
+      <itemizedlist>
+        <listitem>
+           <para>
+             0 = Limit mode.
+           </para>
+        </listitem>
+
+        <listitem>
+           <para>
+             1 = Wrap mode.
+           </para>
+        </listitem>
+
+        <listitem>
+           <para>
+             2 = Guardpoint mode.
+           </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+
+    <refsect2>
+      <title>Limit mode (0)</title>
+      <para>
+        Limit the total index (<emphasis>ndx</emphasis> + <emphasis>ixoff</emphasis>) to between 0 and the guard point. For a table of length 5, this means that locations 0 to 3 and location 4 (the guard point) can be written. A negative total index writes to location 0.
+      </para>
+    </refsect2>
+
+    <refsect2>
+      <title>Wrap mode (1)</title>
+      <para>
+        Wrap total index value into locations 0 to E, where E is one less than either the table length or the factor of 2 number which is one less than the table length. For example, wrap into a 0 to 3 range - so that total index 6 writes to location 2.
+      </para>
+    </refsect2>
+
+    <refsect2>
+      <title>Guardpoint mode (2)</title>
+      <para>
+        The guardpoint is written at the same time as location 0 is written - with the same value.
+      </para>
+
+      <para>
+        This facilitates writing to tables which are intended to be read with interpolation for producing smooth cyclic waveforms. In addition, before it is used, the total index is incremented by half the range between one location and the next, before being rounded down to the integer address of a table location.
+      </para>
+
+      <para>
+        Normally (<emphasis>igwmode</emphasis> = 0 or 1) for a table of length 5 - which has locations 0 to 3 as the main table and location 4 as the guard point, a total index in the range of 0 to 0.999 will write to location 0. (&quot;0.999&quot; means just less than 1.0.) 1.0 to 1.999 will write to location 1 etc. A similar pattern holds for all total indexes 0 to 4.999 (<emphasis>igwmode</emphasis> = 0) or to 3.999 (<emphasis>igwmode</emphasis> = 1). <emphasis>igwmode</emphasis> = 0 enables locations 0 to 4 to be written - with the guardpoint (4) being written with a potentially different value from location 0.
+      </para>
+
+      <para>
+        With a table of length 5 and the <emphasis>iwgmode</emphasis> = 2, then when the total index is in the range 0 to 0.499, it will write to locations 0 and 4. Range 0.5 to 1.499 will write to location 1 etc. 3.5 to 4.0 will also write to locations 0 and 4.
+      </para>
+
+      <para>
+        This way, the writing operation most closely approximates the results of interpolated reading. Guard point mode should only be used with tables that have a guardpoint.
+      </para>
+
+      <para>
+        Guardpoint mode is accomplished by adding 0.5 to the total index, rounding to the next lowest integer, wrapping it modulo the factor of two which is one less than the table length, writing the table (locations 0 to 3 in our example) and then writing to the guard point if index = 0.
+      </para>
+    </refsect2>
+
+    <refsect2>
+      <title>Caution with k-rate table numbers</title>
+      <para>
+        At k-rate or a-rate, if a table number of &lt; 1 is given, or the table number points to a non-existent table, or to one which has a length of 0 (it is to be loaded from a file later) then an error will result and the instrument will be deactivated. <emphasis>kfn</emphasis> and <emphasis>afn</emphasis> must be initialized at the appropriate rate using <emphasis>init</emphasis>. Attempting to load an i-rate value into <emphasis>kfn</emphasis> or <emphasis>afn</emphasis> will result in an error.
+      </para>
+    </refsect2>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="tableiw"><citetitle>tableiw</citetitle></link>,
+      <link linkend="tablew"><citetitle>tablew</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Robin Whittle</member>
+        <member>Australia</member>
+        <member>May 1997</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

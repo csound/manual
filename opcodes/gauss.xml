@@ -1,0 +1,109 @@
+
+<refentry id="gauss">
+<indexterm id="IndexGaussXClass"><primary>x-class noise generators</primary></indexterm>
+
+<indexterm id="IndexGauss"><primary>gauss</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Random (Noise) Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>gauss</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>gauss</refname>
+    <refpurpose>
+      Gaussian distribution random number generator.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Gaussian distribution random number generator. This is an x-class noise generator.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>gauss</command> krange</synopsis>
+
+    <synopsis>ires <command>gauss</command> krange</synopsis>
+
+    <synopsis>kres <command>gauss</command> krange</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>krange</emphasis> -- the range of the random numbers (-<emphasis>krange</emphasis> to +<emphasis>krange</emphasis>). Outputs both positive and negative numbers.
+    </para>
+    <para>
+      <emphasis>gauss</emphasis> returns random numbers following a normal distribution centered around 0.0 (mu = 0.0) with a variance (sigma) of <emphasis>krange</emphasis> / 3.83. Thus more than 99.99%
+      of the random values generated are in the range -<emphasis>krange</emphasis> to +<emphasis>krange</emphasis>. If a mean value different of 0.0 is desired, this mean value has to
+      be added to the generated numbers (see example below).
+    </para>
+
+    <para>
+      For more detailed explanation of these distributions, see:
+      <orderedlist>
+        <listitem>
+          <para>C. Dodge - T.A. Jerse 1985. Computer music. Schirmer books. pp.265 - 286</para>
+        </listitem>
+
+        <listitem>
+          <para>D. Lorrain. A panoply of stochastic cannons. In C. Roads, ed. 1989. Music machine . Cambridge, Massachusetts: MIT press, pp. 351 - 379.</para>
+        </listitem>
+      </orderedlist>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the gauss opcode. It uses the file <ulink url="examples/gauss.csd"><citetitle>gauss.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the gauss opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/gauss.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Its output should include lines like this:
+      <screen>
+mean = 0.000, std = 0.260, samples inside the given range: 99.993%
+mean = 0.005, std = 0.999, samples inside the given range: 99.998%
+mean = 2.700, std = 1.497, samples inside the given range: 100.000%</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="seed"><citetitle>seed</citetitle></link>,
+      <link linkend="betarand"><citetitle>betarand</citetitle></link>,
+      <link linkend="bexprnd"><citetitle>bexprnd</citetitle></link>,
+      <link linkend="cauchy"><citetitle>cauchy</citetitle></link>,
+      <link linkend="exprand"><citetitle>exprand</citetitle></link>,
+      <link linkend="linrand"><citetitle>linrand</citetitle></link>,
+      <link linkend="pcauchy"><citetitle>pcauchy</citetitle></link>,
+      <link linkend="poisson"><citetitle>poisson</citetitle></link>,
+      <link linkend="trirand"><citetitle>trirand</citetitle></link>,
+      <link linkend="unirand"><citetitle>unirand</citetitle></link>,
+      <link linkend="weibull"><citetitle>weibull</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &nameparis;</member>
+        <member>MIT, Cambridge</member>
+        <member>1995</member>
+      </simplelist>
+    </para>
+    <para>Precisions about mu and sigma added by &namepinot; after a discussion with
+    Joachim Heintz on the Csound List, December 2010.</para>
+    <para>Example written by &namepinot;, adapted from a csd file by Joachim Heintz, December 2010.</para>
+    <para>Existed in 3.30</para>
+  </refsect1>
+</refentry>

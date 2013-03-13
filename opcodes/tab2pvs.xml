@@ -1,0 +1,79 @@
+
+<refentry id="tab2pvs">
+<indexterm id="IndexTab2pvs"><primary>tab2pvs</primary></indexterm>
+
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tab2pvs</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>tab2pvs</refname>
+    <refpurpose>
+     Copies spectral data from t-variables.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+       Copies a pvs frame from a t-variable. Currently only AMP+FREQ is produced. This opcode requires the t-type to be defined, which means it only works in the new bison/flex-based parser.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>fsig <command>tab2pvs</command> tvar[,ihopsize, iwinsize, iwintype]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+   
+
+    <para>
+      <emphasis>tvar</emphasis> -- t-variable containing the input. It is produced at every k-period, but may not contain a new frame, pvs frames are produced at their own frame rate that is independent of kr. The size of this vector will determine the fftsize, N = size - 2.
+    </para>
+
+    <para>
+      <emphasis>fsig</emphasis> -- output fsig to be copied.
+    </para>
+    
+<para>
+      <emphasis>iolap</emphasis> -- size of the analysis overlap, defaults to <emphasis>isize</emphasis>/4.
+    </para>
+    <para>
+      <emphasis>iwinsize</emphasis> -- size of the analysis window, defaults to <emphasis>isize</emphasis>.
+    </para>
+    <para>
+      <emphasis>iwintype</emphasis> -- type of analysis window, defaults to 1, Hanning.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      <example>
+        <title>Example</title>
+        <programlisting>
+t1 init 1026
+...
+fsig1  <emphasis role="opc">tab2pvs</emphasis>t1</programlisting>
+aout pvsynth fsig1
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>October 2011 </member>
+      </simplelist>
+    </para>
+
+    <para>New plugin in version 5</para>
+    <para>October 2011.</para>
+  </refsect1>
+</refentry>

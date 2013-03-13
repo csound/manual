@@ -1,0 +1,96 @@
+
+<refentry id="pvsblur">
+<indexterm id="IndexPvsblur"><primary>pvsblur</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsblur</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvsblur</refname>
+    <refpurpose>
+      Average the amp/freq time functions of each analysis channel for
+    a specified time.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Average the amp/freq time functions of each analysis channel for
+    a specified time (truncated to number of frames). As a side-effect
+    the input pvoc stream will be delayed by that amount.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>fsig <command>pvsblur</command> fsigin, kblurtime, imaxdel</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>fsig</emphasis> -- output pv stream
+    </para>
+
+    <para>
+      <emphasis>fsigin</emphasis> -- input pv stream.
+    </para>
+
+    <para>
+      <emphasis>kblurtime</emphasis> -- time in secs during which
+    windows will be averaged .
+    </para>
+
+    <para>
+      <emphasis>imaxdel</emphasis> -- maximum delay time, used for
+    allocating memory used in the averaging operation. 
+    </para>
+
+    <para>
+      This opcode will blur a pvstream by smoothing the amplitude and
+      frequency time functions (a type of low-pass filtering); the
+      amount of blur will depend on the length of the averaging period,
+      larger blurtimes will result in a more pronounced effect.
+    </para>
+    <warning>
+      <para>
+        It is unsafe to use the same f-variable for both input and output of pvs opcodes. Using the same one might lead to undefined behavior on some opcodes. Use a different one on the left and right sides of the opcode.
+      </para>
+    </warning>
+  </refsect1>
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the use of the <emphasis>pvsblur</emphasis> opcode. It uses the file <ulink url="examples/pvsblur.csd"><citetitle>pvsblur.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the <emphasis>pvsblur</emphasis> opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/pvsblur.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link>,
+      <link linkend="pvsynth"><citetitle>pvsynth</citetitle></link>,
+      <link linkend="pvsadsyn"><citetitle>pvsadsyn</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>November 2004 </member>
+      </simplelist>
+    </para>
+
+    <para>New plugin in version 5</para>
+    <para>November 2004.</para>
+  </refsect1>
+</refentry>

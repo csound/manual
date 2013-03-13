@@ -1,0 +1,99 @@
+
+<refentry id="pvsarp">
+<indexterm id="Indexpvsarp"><primary>pvsarp</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsarp</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvsarp</refname>
+    <refpurpose>
+      Arpeggiate the spectral components of a streaming pv signal.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+    This opcode arpeggiates spectral components, by amplifying one bin and attenuating
+    all the others around it. Used with an LFO it will provide a spectral arpeggiator similar to Trevor Wishart's
+    CDP program specarp.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>fsig <command>pvsarp</command> fsigin, kbin, kdepth, kgain</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>fsig</emphasis> -- output pv stream
+    </para>
+
+    <para>
+      <emphasis>fsigin</emphasis> -- input pv stream
+    </para>
+
+    <para>
+      <emphasis>kbin</emphasis> -- target bin, normalised 0 - 1 (0Hz - Nyquist).
+    </para>
+
+    <para>
+      <emphasis>kdepth</emphasis> -- depth of attenuation of surrounding bins 
+    </para>
+
+    <para>
+      <emphasis>kgain</emphasis> -- gain boost applied to target bin
+    </para>
+    <warning>
+      <para>
+        It is unsafe to use the same f-variable for both input and output of pvs opcodes. Using the same one might lead to undefined behavior on some opcodes. Use a different one on the left and right sides of the opcode.
+      </para>
+    </warning>
+
+  </refsect1>
+    <refsect1>
+        <title>Examples</title>
+        <para>
+        Here is an example of the pvsarp opcode. It uses the file <ulink url="examples/pvsarp.csd"><citetitle>pvsarp.csd</citetitle></ulink>
+        <example>
+            <title>Example of the pvsarp opcode.</title>
+            <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+            <xi:include href="examples-xml/pvsarp.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        </example>
+        </para>
+        <para>
+        Here is another example of the pvsarp opcode. It uses the file <ulink url="examples/pvsarp2.csd"><citetitle>pvsarp2.csd</citetitle></ulink>
+        <example>
+            <title>Example of the pvsarp opcode.</title>
+            <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+            <xi:include href="examples-xml/pvsarp2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        </example>
+        </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link>,
+      <link linkend="pvsynth"><citetitle>pvsynth</citetitle></link>,
+      <link linkend="pvsadsyn"><citetitle>pvsadsyn</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>April 2005 </member>
+      </simplelist>
+    </para>
+
+    <para>New plugin in version 5</para>
+    <para>April 2005.</para>
+  </refsect1>
+</refentry>

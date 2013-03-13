@@ -1,0 +1,107 @@
+
+<refentry id="syncphasor">
+<indexterm id="IndexSyncPhasor"><primary>syncphasor</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Phasors</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>syncphasor</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>syncphasor</refname>
+    <refpurpose>
+      Produces a normalized moving phase value with sync input and output.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Produces a moving phase value between zero and one and an extra impulse output ("sync out") whenever its phase value crosses or is reset to zero. The phase can be reset at any time by an impulse on the "sync in" parameter.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>aphase, asyncout <command>syncphasor</command> xcps, asyncin, [, iphs]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iphs</emphasis> (optional) -- initial phase, expressed as a fraction of a cycle (0 to 1). A negative value will cause phase initialization to be skipped. The default value is zero.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>aphase</emphasis> -- the output phase value; always between 0 and 1.
+    </para>
+
+    <para>
+      <emphasis>asyncout</emphasis> -- the sync output has a value of 1.0 for one sample whenever the phase value crosses zero or whenever the sync input is non-zero.  It is zero at all other times.
+    </para>
+
+    <para>
+      <emphasis>asyncin</emphasis> -- the sync input causes the phase to reset  to zero whenever <emphasis>asyncin</emphasis> is non-zero.
+    </para>
+
+    <para>
+      <emphasis>xcps</emphasis> -- frequency of the phasor in cycles-per-second.  If <emphasis>xcps</emphasis> is negative, the phase value will decrease from 1 to 0 instead of increasing.
+    </para>
+
+    <para>
+      An internal phase is successively accumulated in accordance with the <emphasis>xcps</emphasis> frequency to produce a moving phase value, normalized to lie in the range 0 &lt;= phs &lt; 1.  When used as the index to a <link linkend="table"><citetitle>table</citetitle></link> unit, this phase (multiplied by the desired function table length) will cause it to behave like an oscillator.
+    </para>
+
+    <para>
+      The phase of <emphasis>syncphasor</emphasis> though can be synced to another phasor (or other signal) using the <emphasis>asyncin</emphasis> parameter.  Any time that <emphasis>asyncin</emphasis> is a non-zero value, the value of <emphasis>aphase</emphasis> will be reset to zero.  <emphasis>syncphasor</emphasis> also outputs its own "sync" signal that consists of a one-sample impulse whenever its phase crosses zero or is reset.  This makes it easy to chain together multiple <emphasis>syncphasor</emphasis> opcodes to create an oscillator "hard sync" effect.    
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the syncphasor opcode. It uses the file <ulink url="examples/syncphasor.csd"><citetitle>syncphasor.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the syncphasor opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/syncphasor.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Here is another example of the syncphasor opcode. It uses the file <ulink url="examples/syncphasor-CZresonance.csd"><citetitle>syncphasor-CZresonance.csd</citetitle></ulink>.
+      <example>
+        <title>Another example of the syncphasor opcode.</title>
+        <xi:include href="examples-xml/syncphasor-CZresonance.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See also</title>
+    <para>
+      <link linkend="phasor"><citetitle>phasor</citetitle></link>.
+    </para>
+    <para>
+      And the <link linkend="SiggenTableacc"><citetitle>Table Access</citetitle></link> opcodes like: <link linkend="table"><citetitle>table</citetitle></link>, <link linkend="tablei"><citetitle>tablei</citetitle></link>, <link linkend="table3"><citetitle>table3</citetitle></link>  and <link linkend="tab"><citetitle>tab</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Adapted from the <emphasis>phasor</emphasis> opcode by &nameanthony;</member>
+        <member>January 2008</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 5.08</para>
+  </refsect1>
+</refentry>

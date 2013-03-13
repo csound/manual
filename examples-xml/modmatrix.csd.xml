@@ -1,0 +1,173 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in</emphasis>
+<emphasis role="comment">;-odac           -iadc    ;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+ -o modmatrix.wav -W <emphasis role="comment">;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+	<emphasis role="ohdr">sr</emphasis>	<emphasis role="op">=</emphasis>	44100
+	<emphasis role="ohdr">kr</emphasis>	<emphasis role="op">=</emphasis>	441
+	<emphasis role="ohdr">ksmps</emphasis>	<emphasis role="op">=</emphasis>	100
+	<emphasis role="ohdr">nchnls</emphasis>	<emphasis role="op">=</emphasis>	2
+	<emphasis role="ohdr">0dbfs</emphasis>	<emphasis role="op">=</emphasis> 	1
+
+<emphasis role="comment">; basic waveforms</emphasis>
+giSine	<emphasis role="ohdr">ftgen</emphasis>	0, 0, 65537, 10, 1	<emphasis role="comment">; sine wave</emphasis>
+giSaw 	<emphasis role="ohdr">ftgen</emphasis>	0, 0, 4097, 7, 1, 4096, <emphasis role="op">-</emphasis>1	<emphasis role="comment">; saw (linear)</emphasis>
+giSoftSaw <emphasis role="ohdr">ftgen</emphasis>	0, 0, 65537, 30, giSaw, 1, 10	<emphasis role="comment">; soft saw (only 10 first harmonics)</emphasis>
+
+<emphasis role="comment">; modmatrix tables</emphasis>
+giMaxNumParam	<emphasis role="op">=</emphasis> 128
+giMaxNumMod	<emphasis role="op">=</emphasis> 32
+giParam_In <emphasis role="ohdr">ftgen</emphasis> 0, 0, giMaxNumParam, 2, 0	<emphasis role="comment">; input parameters table</emphasis>
+<emphasis role="comment">; output parameters table (parameter values with added modulators)</emphasis>
+giParam_Out <emphasis role="ohdr">ftgen</emphasis> 0, 0, giMaxNumParam, 2, 0	
+giModulators <emphasis role="ohdr">ftgen</emphasis> 0, 0, giMaxNumMod, 2, 0	 <emphasis role="comment">; modulators table</emphasis>
+<emphasis role="comment">; modulation scaling and routing (mod matrix) table, start with empty table</emphasis>
+giModScale <emphasis role="ohdr">ftgen</emphasis> 0, 0, giMaxNumParam<emphasis role="op">*</emphasis>giMaxNumMod, <emphasis role="op">-</emphasis>2, 0		
+
+<emphasis role="comment">;********************************************</emphasis>
+<emphasis role="comment">; generate the modulator signals</emphasis>
+<emphasis role="comment">;********************************************</emphasis>
+	<emphasis role="oblock">instr</emphasis> 1
+
+<emphasis role="comment">; LFO1, 1.5 Hz, normalized range (0.0 to 1.0)</emphasis>
+kLFO1	<emphasis role="opc">oscil</emphasis>	0.5, 1.5, giSine		<emphasis role="comment">; generate LFO signal</emphasis>
+kLFO1	<emphasis role="op">=</emphasis> kLFO1<emphasis role="op">+</emphasis>0.5				<emphasis role="comment">; offset</emphasis>
+
+<emphasis role="comment">; LFO2, 0.4 Hz, normalized range (0.0 to 1.0)</emphasis>
+kLFO2	<emphasis role="opc">oscil</emphasis>	0.5, 0.4, giSine		<emphasis role="comment">; generate LFO signal</emphasis>
+kLFO2	<emphasis role="op">=</emphasis> kLFO2<emphasis role="op">+</emphasis>0.5				<emphasis role="comment">; offset</emphasis>
+
+
+<emphasis role="comment">; write modulators to table</emphasis>
+	<emphasis role="opc">tablew</emphasis>	kLFO1, 0, giModulators
+	<emphasis role="opc">tablew</emphasis>	kLFO2, 1, giModulators
+
+	<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="comment">;********************************************</emphasis>
+<emphasis role="comment">; set parameter values</emphasis>
+<emphasis role="comment">;********************************************</emphasis>
+	<emphasis role="oblock">instr</emphasis> 2
+
+<emphasis role="comment">; Here we can set the parameter values</emphasis>
+icps1	<emphasis role="op">=</emphasis> p4
+icps2	<emphasis role="op">=</emphasis> p5
+icutoff	<emphasis role="op">=</emphasis> p6
+	
+<emphasis role="comment">; write parameters to table</emphasis>
+	<emphasis role="opc">tableiw</emphasis>	icps1, 0, giParam_In
+	<emphasis role="opc">tableiw</emphasis>	icps2, 1, giParam_In
+	<emphasis role="opc">tableiw</emphasis>	icutoff, 2, giParam_In
+
+	<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="comment">;********************************************</emphasis>
+<emphasis role="comment">; mod matrix edit</emphasis>
+<emphasis role="comment">;********************************************</emphasis>
+	<emphasis role="oblock">instr</emphasis> 3
+
+<emphasis role="comment">; Here we can write to the modmatrix table by using tablew or tableiw</emphasis>
+
+iLfo1ToCps1	<emphasis role="op">=</emphasis> p4
+iLfo1ToCps2	<emphasis role="op">=</emphasis> p5
+iLfo1ToCutoff	<emphasis role="op">=</emphasis> p6
+iLfo2ToCps1	<emphasis role="op">=</emphasis> p7
+iLfo2ToCps2	<emphasis role="op">=</emphasis> p8
+iLfo2ToCutoff	<emphasis role="op">=</emphasis> p9
+
+	<emphasis role="opc">tableiw</emphasis>	iLfo1ToCps1, 0, giModScale
+	<emphasis role="opc">tableiw</emphasis>	iLfo1ToCps2, 1, giModScale
+	<emphasis role="opc">tableiw</emphasis>	iLfo1ToCutoff, 2, giModScale
+	<emphasis role="opc">tableiw</emphasis>	iLfo2ToCps1, 3, giModScale
+	<emphasis role="opc">tableiw</emphasis>	iLfo2ToCps2, 4, giModScale
+	<emphasis role="opc">tableiw</emphasis>	iLfo2ToCutoff, 5, giModScale
+	
+<emphasis role="comment">; and set the update flag for modulator matrix </emphasis>
+<emphasis role="comment">; ***(must update to enable changes)</emphasis>
+ktrig	<emphasis role="opc">init</emphasis> 1
+	<emphasis role="opc">chnset</emphasis>	ktrig, "modulatorUpdateFlag"
+ktrig	<emphasis role="op">=</emphasis> 0
+
+	<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="comment">;********************************************</emphasis>
+<emphasis role="comment">; mod matrix</emphasis>
+<emphasis role="comment">;********************************************</emphasis>
+	<emphasis role="oblock">instr</emphasis> 4
+
+<emphasis role="comment">; get the update flag</emphasis>
+kupdate	<emphasis role="opc">chnget</emphasis>	"modulatorUpdateFlag"		
+
+<emphasis role="comment">; run the mod matrix </emphasis>
+inum_mod	<emphasis role="op">=</emphasis> 2
+inum_parm	<emphasis role="op">=</emphasis> 3
+	<emphasis role="opc">modmatrix</emphasis> giParam_Out, giModulators, giParam_In, \\
+	giModScale, inum_mod, inum_parm, kupdate
+
+<emphasis role="comment">; and reset the update flag</emphasis>
+	<emphasis role="opc">chnset</emphasis>	0, "modulatorUpdateFlag"  <emphasis role="comment">; reset the update flag</emphasis>
+
+	<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="comment">;********************************************</emphasis>
+<emphasis role="comment">; audio generator to test values</emphasis>
+<emphasis role="comment">;********************************************</emphasis>
+	<emphasis role="oblock">instr</emphasis> 5
+
+<emphasis role="comment">; basic parameters</emphasis>
+	iamp	<emphasis role="op">=</emphasis> <emphasis role="opc">ampdbfs</emphasis>(<emphasis role="op">-</emphasis>5)
+
+<emphasis role="comment">; read modulated parameters from table</emphasis>
+	kcps1	<emphasis role="opc">table</emphasis>	0, giParam_Out
+	kcps2	<emphasis role="opc">table</emphasis>	1, giParam_Out
+	kcutoff	<emphasis role="opc">table</emphasis>	2, giParam_Out
+
+<emphasis role="comment">; set filter parameters</emphasis>
+	kCF_freq1	<emphasis role="op">=</emphasis> kcps1<emphasis role="op">*</emphasis>kcutoff
+	kCF_freq2	<emphasis role="op">=</emphasis> kcps2<emphasis role="op">*</emphasis>kcutoff
+	kReso		<emphasis role="op">=</emphasis> 0.7
+	kDist		<emphasis role="op">=</emphasis> 0.3
+
+<emphasis role="comment">; oscillators and filters</emphasis>
+	a1	<emphasis role="opc">oscili</emphasis>	iamp, kcps1, giSoftSaw
+	a1	<emphasis role="opc">lpf18</emphasis>	a1, kCF_freq1, kReso, kDist
+
+	a2	<emphasis role="opc">oscili</emphasis>	iamp, kcps2, giSoftSaw
+	a2	<emphasis role="opc">lpf18</emphasis>	a2, kCF_freq2, kReso, kDist
+	
+		<emphasis role="opc">outs</emphasis> 	a1, a2
+
+	<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="comment">;********************************************</emphasis>
+<emphasis role="comment">; set initial parameters</emphasis>
+<emphasis role="comment">;	cps1	cps2	cutoff</emphasis>
+<emphasis role="stamnt">i</emphasis>2 0 1	400	800	3
+
+<emphasis role="comment">;********************************************</emphasis>
+<emphasis role="comment">; set modmatrix values</emphasis>
+<emphasis role="comment">;	lfo1ToCps1 lfo1ToCps2 lfo1ToCut lfo2ToCps1 lfo2ToCps2 lfo2ToCut</emphasis>
+<emphasis role="stamnt">i</emphasis>3 0 1 	40         0          -2        -50        100        3
+
+<emphasis role="comment">;********************************************</emphasis>
+<emphasis role="comment">; start "always on" instruments</emphasis>
+#define SCORELEN # 20 #	 <emphasis role="comment">; set length of score</emphasis>
+
+<emphasis role="stamnt">i</emphasis>1 0 $SCORELEN			<emphasis role="comment">; start modulators</emphasis>
+<emphasis role="stamnt">i</emphasis>4 0 $SCORELEN			<emphasis role="comment">; start mod matrix</emphasis>
+<emphasis role="stamnt">i</emphasis>5 0 $SCORELEN			<emphasis role="comment">; start audio oscillator</emphasis>
+
+<emphasis role="stamnt">e</emphasis>	
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

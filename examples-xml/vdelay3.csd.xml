@@ -1,0 +1,38 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac  <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o vdelay3.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1 
+
+ims  <emphasis role="op">=</emphasis> 100			<emphasis role="comment">;maximum delay time in msec</emphasis>
+aout <emphasis role="opc">poscil</emphasis> .8, 220, 1		<emphasis role="comment">;make a signal</emphasis>
+a2   <emphasis role="opc">poscil</emphasis> ims<emphasis role="op">/</emphasis>2, 1<emphasis role="op">/</emphasis>p3, 1	<emphasis role="comment">;make an LFO</emphasis>
+a2   <emphasis role="op">=</emphasis> a2 <emphasis role="op">+</emphasis> ims<emphasis role="op">/</emphasis>2		<emphasis role="comment">;offset the LFO so that it is positive</emphasis>
+asig <emphasis role="opc">vdelay3</emphasis> aout, a2, ims	<emphasis role="comment">;use the LFO to control delay time</emphasis>
+     <emphasis role="opc">outs</emphasis>  asig, asig
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis>1 0 8192 10 1
+
+<emphasis role="stamnt">i</emphasis> 1 0 5 
+
+<emphasis role="stamnt">e</emphasis>
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

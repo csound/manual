@@ -1,0 +1,94 @@
+
+<refentry id="gbuzz">
+<indexterm id="IndexGbuzz"><primary>gbuzz</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Dynamic Spectrum Oscillators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>gbuzz</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>gbuzz</refname>
+    <refpurpose>
+      Output is a set of harmonically related cosine partials.                      
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Output is a set of harmonically related cosine partials.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>gbuzz</command> xamp, xcps, knh, klh, kmul, ifn [, iphs]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifn</emphasis> -- table number of a stored function containing a cosine wave. A large table of at least 8192 points is recommended.
+    </para>
+
+    <para>
+      <emphasis>iphs</emphasis> (optional, default=0) -- initial phase of the fundamental frequency, expressed as a fraction of a cycle (0 to 1). A negative value will cause phase initialization to be skipped. The default value is zero
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      The buzz units generate an additive set of harmonically related cosine partials of fundamental frequency <emphasis>xcps</emphasis>, and whose amplitudes are scaled so their summation peak equals <emphasis>xamp</emphasis>. The selection and strength of partials is determined by the following control parameters:
+    </para>
+
+    <para>
+      <emphasis>knh</emphasis> -- total number of harmonics requested. If <emphasis>knh</emphasis> is negative, the absolute value is used. If <emphasis>knh</emphasis> is zero, a value of 1 is used.
+    </para>
+
+    <para>
+      <emphasis>klh</emphasis> -- lowest harmonic present. Can be positive, zero or negative. In <emphasis>gbuzz</emphasis> the set of partials can begin at any partial number and proceeds upwards; if <emphasis>klh</emphasis> is negative, all partials below zero will reflect as positive partials without phase change (since cosine is an even function), and will add constructively to any positive partials in the set.
+    </para>
+
+    <para>
+      <emphasis>kmul</emphasis> -- specifies the multiplier in the series of amplitude coefficients. This is a power series: if the <emphasis>klh</emphasis>th partial has a strength coefficient of A, the (<emphasis>klh</emphasis> + n)th partial will have a coefficient of A * (<emphasis>kmul</emphasis> ** n), i.e. strength values trace an exponential curve. <emphasis>kmul</emphasis> may be positive, zero or negative, and is not restricted to integers.
+    </para>
+
+    <para>
+      <link linkend="buzz"><citetitle>buzz</citetitle></link> and <emphasis>gbuzz </emphasis>are useful as complex sound sources in subtractive synthesis. <emphasis>buzz</emphasis> is a special case of the more general <emphasis>gbuzz</emphasis> in which <emphasis>klh</emphasis> = <emphasis>kmul</emphasis> = 1; it thus produces a set of <emphasis>knh</emphasis> equal-strength harmonic partials, beginning with the fundamental. (This is a band-limited pulse train; if the partials extend to the Nyquist, i.e. <emphasis>knh</emphasis> = int (sr / 2 / fundamental freq.), the result is a real pulse train of amplitude <emphasis>xamp</emphasis>.) 
+    </para>
+
+    <para>
+      Although both <emphasis>knh</emphasis> and <emphasis>klh</emphasis> may be varied during performance, their internal values are necessarily integer and may cause <quote>pops</quote> due to discontinuities in the output. <emphasis>kmul,</emphasis> however, can be varied during performance to good effect. <emphasis>gbuzz</emphasis> can be amplitude- and/or frequency-modulated by either control or audio signals.
+    </para>
+
+    <para>
+      N.B. This unit has its analog in <link linkend="GEN11"><citetitle>GEN11</citetitle></link>, in which the same set of cosines can be stored in a function table for sampling by an oscillator. Although computationally more efficient, the stored pulse train has a fixed spectral content, not a time-varying one as above.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the gbuzz opcode. It uses the file <ulink url="examples/gbuzz.csd"><citetitle>gbuzz.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the gbuzz opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/gbuzz.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="buzz"><citetitle>buzz</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>September 2003. Thanks to &namekanata; for correcting the mentions of the <emphasis>kmul</emphasis> parameter.</para>
+  </refsect1>
+</refentry>

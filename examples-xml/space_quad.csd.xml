@@ -1,0 +1,60 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac   <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o space_quad.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100 
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32 
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1 
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 4
+  
+ga1	<emphasis role="opc">init</emphasis>	0
+ga2	<emphasis role="opc">init</emphasis>	0
+ga3	<emphasis role="opc">init</emphasis>	0
+ga4	<emphasis role="opc">init</emphasis>	0
+
+<emphasis role="oblock">instr</emphasis> 1	<emphasis role="comment">;uses GEN28 file "move", as found in /manual/examples</emphasis>
+
+ktime <emphasis role="opc">line</emphasis>  0, 5, 5				<emphasis role="comment">;same time as in table 1 (="move")</emphasis>
+asig  <emphasis role="opc">diskin2</emphasis> "beats.wav", 1, 0, 1		<emphasis role="comment">;sound source is looped</emphasis>
+a1, a2, a3, a4 <emphasis role="opc">space</emphasis> asig, 1, ktime, .1		<emphasis role="comment">;use table 1 = GEN28</emphasis>
+ar1, ar2, ar3, ar4 <emphasis role="opc">spsend</emphasis>			<emphasis role="comment">;send to reverb</emphasis>
+
+ga1  <emphasis role="op">=</emphasis> ga1<emphasis role="op">+</emphasis>ar1
+ga2  <emphasis role="op">=</emphasis> ga2<emphasis role="op">+</emphasis>ar2
+ga3  <emphasis role="op">=</emphasis> ga3<emphasis role="op">+</emphasis>ar3
+ga4  <emphasis role="op">=</emphasis> ga4<emphasis role="op">+</emphasis>ar4
+     <emphasis role="opc">outq</emphasis> a1, a2, a3, a4
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 99 <emphasis role="comment">; reverb instrument</emphasis>
+
+a1 <emphasis role="opc">reverb2</emphasis> ga1, 2.5, .5
+a2 <emphasis role="opc">reverb2</emphasis> ga2, 2.5, .5
+a3 <emphasis role="opc">reverb2</emphasis> ga3, 2.5, .5
+a4 <emphasis role="opc">reverb2</emphasis> ga4, 2.5, .5
+   <emphasis role="opc">outq</emphasis>	a1, a2, a3, a4
+
+ga1<emphasis role="op">=</emphasis>0	
+ga2<emphasis role="op">=</emphasis>0
+ga3<emphasis role="op">=</emphasis>0
+ga4<emphasis role="op">=</emphasis>0
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis>1 0 0 28 "move"
+
+<emphasis role="stamnt">i</emphasis>1 0 5		<emphasis role="comment">;same time as ktime</emphasis>
+<emphasis role="stamnt">i</emphasis> 99 0 10	<emphasis role="comment">;keep reverb active</emphasis>
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

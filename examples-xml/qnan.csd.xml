@@ -1,0 +1,48 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+-+rtaudio=alsa -o dac:hw:0
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 400
+
+<emphasis role="omacro">#define</emphasis> WII_B           #3#
+<emphasis role="omacro">#define</emphasis> WII_A           #4#
+<emphasis role="omacro">#define</emphasis> WII_R_A         #304#
+<emphasis role="omacro">#define</emphasis> WII_PITCH       #20#
+<emphasis role="omacro">#define</emphasis> WII_ROLL        #21#
+
+gkcnt <emphasis role="opc">init</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1  
+  i1  wiiconnect 3,1
+
+      wiirange   $WII_PITCH., <emphasis role="op">-</emphasis>20, 0
+  kt  wiidata    $WII_B.
+  ka  wiidata    $WII_A.
+  kra wiidata    $WII_R_A.
+  gka wiidata    $WII_PITCH.
+  gkp wiidata    $WII_ROLL.
+<emphasis role="comment">; If the B (trigger) button is pressed then activate a note</emphasis>
+  <emphasis role="octrl">if</emphasis>  (kt<emphasis role="op">==</emphasis>0)    <emphasis role="octrl">goto</emphasis> ee
+  <emphasis role="octrl">if</emphasis> (qnan(gka)) <emphasis role="octrl">goto</emphasis> ee
+  <emphasis role="octrl">if</emphasis> (qnan(gkp)) <emphasis role="octrl">goto</emphasis> ee
+  <emphasis role="opc">event</emphasis> "i", 2, 0, 5
+  gkcnt <emphasis role="op">=</emphasis> gkcnt <emphasis role="op">+</emphasis> 1
+  <emphasis role="opc">printk2</emphasis>  kb
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 2
+  a1 <emphasis role="opc">oscil</emphasis>  <emphasis role="opc">ampdbfs</emphasis>(gka), 440<emphasis role="op">+</emphasis>gkp, 1
+     <emphasis role="opc">outs</emphasis>   a1, a1
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis>1 0 4096 10 1
+<emphasis role="stamnt">i</emphasis>1 0 300
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

@@ -1,0 +1,77 @@
+
+<refentry id="delay">
+<indexterm id="IndexDelay"><primary>delay</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Delay</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>delay</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>delay</refname>
+    <refpurpose>
+      Delays an input signal by some time interval.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      A signal can be read from or written into a delay path, or it can be automatically delayed by some time interval.
+   </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>delay</command> asig, idlt [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>idlt</emphasis> -- requested delay time in seconds. This can be as large as available memory will permit. The space required for n seconds of delay is 4n * <emphasis>sr</emphasis> bytes. It is allocated at the time the instrument is first initialized, and returned to the pool at the end of a score section.
+    </para>
+
+    <para>
+      <emphasis>iskip</emphasis> (optional, default=0) -- initial disposition of delay-loop data space (see <link linkend="reson"><citetitle>reson</citetitle></link>). The default value is 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asig</emphasis> -- audio signal
+    </para>
+
+    <para>
+      <emphasis>delay</emphasis> is a composite of <link linkend="delayr"><citetitle>delayr</citetitle></link> and <link linkend="delayw"><citetitle>delayw</citetitle></link>, both reading from and writing into its own storage area. It can thus accomplish signal time-shift, although modified feedback is not possible. There is no minimum delay period.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the delay opcode. It uses the file <ulink url="examples/delay.csd"><citetitle>delay.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the delay opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/delay.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="delay1"><citetitle>delay1</citetitle></link>, 
+      <link linkend="delayr"><citetitle>delayr</citetitle></link>, 
+      <link linkend="delayw"><citetitle>delayw</citetitle></link>
+    </para>
+  </refsect1>
+
+</refentry>

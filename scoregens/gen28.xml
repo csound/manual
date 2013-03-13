@@ -1,0 +1,110 @@
+
+<refentry id="GEN28">
+      <indexterm id="IndexGEN28"><primary>GEN28</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN28</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN28</refname>
+    <refpurpose>
+      Reads a text file which contains a time-tagged trajectory.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This function generator reads a text file which contains sets of three values representing the xy coordinates and a time-tag for when the signal should be placed at that location, allowing the user to define a time-tagged trajectory. The file format is in the form:
+      <literallayout>
+time1    X1      Y1
+time2    X2      Y2
+time3    X3      Y3
+      </literallayout>
+    </para>
+
+    <para>
+      The configuration of the xy coordinates in space places the signal in the following way:
+
+      <itemizedlist>
+        <listitem>
+          <para>a1 is -1, 1</para>
+        </listitem>
+        <listitem>
+	  <para>a2 is 1, 1</para>
+        </listitem>
+        <listitem>
+	  <para>a3 is -1, -1</para>
+        </listitem>
+        <listitem>
+	  <para>a4 is 1, -1</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      This assumes a loudspeaker set up as a1 is left front, a2 is right front, a3 is left back, a4 is right back. Values greater than 1 will result in sounds being attenuated as if in the distance. <emphasis>GEN28</emphasis> creates values to 10 milliseconds of resolution.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>f</command> # time size 28 ifilcod</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>size</emphasis> -- number of points in the table. Must be 0. <emphasis>GEN28</emphasis> takes 0 as the size and automatically allocates memory.
+    </para>
+
+    <para>
+      <emphasis>ifilcod</emphasis> -- character-string denoting the source file name. A character-string (in double quotes, spaces permitted) gives the filename itself, optionally a full pathname. If not a full path, the named file is sought in the current directory.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      <informalexample>
+        <programlisting><emphasis role="stamnt">f</emphasis>1 0 0 28 &quot;move&quot;</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      The file &quot;move&quot; should look like:
+
+      <literallayout>
+0       -1       1
+1        1       1
+2        4       4
+2.1     -4      -4
+3        10     -10
+5       -40      0
+      </literallayout>
+
+      Since <emphasis>GEN28</emphasis> creates values to 10 milliseconds of resolution, there will be 500 values created by interpolating X1 to X2 to X3 and so on, and Y1 to Y2 to Y3 and so on, over the appropriate number of values that are stored in the function table. The sound will begin in the left front, over 1 second it will move to the right front, over another second it move further into the distance but still in the right front, then in just 1/10th of a second it moves to the left rear, a bit distant. Finally over the last .9 seconds the sound will move to the right rear, moderately distant, and it comes to rest between the two left channels (due west!), quite distant.
+    </para>
+    <para>
+      Here is an example of the GEN28 routine. It uses the file <ulink url="examples/gen28.csd"><citetitle>gen28.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the gen28 opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/gen28.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Richard Karpen</member>
+        <member>Seattle, Wash</member>
+        <member>1998</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.48</para>
+  </refsect1>
+</refentry>

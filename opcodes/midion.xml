@@ -1,0 +1,98 @@
+
+<refentry id="midion">
+<indexterm id="IndexMidion"><primary>midion</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Note Output</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>midion</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>midion</refname>
+
+    <refpurpose>
+      Generates MIDI note messages at k-rate.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Generates MIDI note messages at k-rate.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>midion</command> kchn, knum, kvel</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kchn</emphasis> -- MIDI channel number (1-16)
+    </para>
+
+    <para>
+      <emphasis>knum</emphasis> -- note number (0-127)
+    </para>
+
+    <para>
+      <emphasis>kvel</emphasis> -- velocity (0-127)
+    </para>
+
+    <para>
+      <emphasis>midion</emphasis> (k-rate note on) plays MIDI notes with current <emphasis>kchn</emphasis>, <emphasis>knum</emphasis> and <emphasis>kvel</emphasis>. These arguments can be varied at k-rate. Each time the MIDI converted value of any of these arguments changes, last MIDI note played by current instance of <emphasis>midion</emphasis> is immediately turned off and a new note with the new argument values is activated. This opcode, as well as <emphasis>moscil</emphasis>, can generate very complex melodic textures if controlled by complex k-rate signals.
+    </para>
+
+    <para>
+      Any number of <emphasis>midion</emphasis> opcodes can appear in the same Csound instrument, allowing a counterpoint-style polyphony within a single instrument.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is a simple example of the midion opcode. It uses the file <ulink url="examples/midion_simple.csd"><citetitle>midion_simple.csd</citetitle></ulink>.
+      <example>
+        <title>Simple Example of the midion opcode.</title>
+          <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <para>This example generates a minor chord over every note received on the MIDI input. It generates MIDI notes on csound's MIDI output, so be sure to connect something.</para>
+          <xi:include href="examples-xml/midion_simple.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Here is another example of the midion opcode. It uses the file <ulink url="examples/midion_scale.csd"><citetitle>midion_scale.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the midion opcode to generate random notes from a scale.</title>
+          <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <para>This example generates random notes from a given scale for every note received on the MIDI input. It generates MIDI notes on csound's MIDI output, so be sure to connect something.</para>
+          <xi:include href="examples-xml/midion_scale.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="moscil"><citetitle>moscil</citetitle></link>,
+      <link linkend="midion2"><citetitle>midion2</citetitle></link>,
+      <link linkend="noteon"><citetitle>noteon</citetitle></link>,
+      <link linkend="noteoff"><citetitle>noteoff</citetitle></link>,
+      <link linkend="noteondur"><citetitle>noteondur</citetitle></link>,
+      <link linkend="noteondur2"><citetitle>noteondur2</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namegabriel;</member>
+        <member>Italy</member>
+        <member>May 1997</member>
+      </simplelist>
+    </para>
+
+    <para>Thanks goes to &namerasmus; for pointing out the correct MIDI channel and controller number ranges.</para>
+  </refsect1>
+</refentry>

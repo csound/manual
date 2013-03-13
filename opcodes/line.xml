@@ -1,0 +1,93 @@
+
+<refentry id="line">
+<indexterm id="IndexLine"><primary>line</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Linear and Exponential Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>line</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>line</refname>
+    <refpurpose>
+      Trace a straight line between specified points.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Trace a straight line between specified points.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>line</command> ia, idur, ib</synopsis>
+
+    <synopsis>kres <command>line</command> ia, idur, ib</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ia</emphasis> -- starting value.
+    </para>
+
+    <para>
+      <emphasis>ib</emphasis> -- value after <emphasis>idur</emphasis> seconds.
+    </para>
+
+    <para>
+      <emphasis>idur</emphasis> -- duration in seconds of segment. A zero or negative value will cause all initialization to be skipped.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>line</emphasis> generates control or audio signals whose values move linearly from an initial value to a final one.
+    </para>
+    <note>
+      <para>
+        A common error with this opcode is to assume that the value of
+        <emphasis>ib</emphasis> is held after the time
+        <emphasis>idur1</emphasis>. <emphasis>line</emphasis> does not
+        automatically end or stop at the end of the duration given. If your
+        note length is longer than <emphasis>idur</emphasis> seconds,
+        <emphasis>kres</emphasis> (or <emphasis>ares</emphasis>) will not come
+        to rest at <emphasis>ib</emphasis>, but will instead continue to rise
+        or fall with the same rate. If a rise (or fall) and then hold is
+        required that the <emphasis>linseg</emphasis> opcode should be 
+        considered instead.
+      </para>
+    </note>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the line opcode. It uses the file <ulink url="examples/line.csd"><citetitle>line.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the line opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/line.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="expon"><citetitle>expon</citetitle></link>, 
+      <link linkend="expseg"><citetitle>expseg</citetitle></link>, 
+      <link linkend="expsegr"><citetitle>expsegr</citetitle></link>, 
+      <link linkend="linseg"><citetitle>linseg</citetitle></link>, 
+      <link linkend="linsegr"><citetitle>linsegr</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+  </refsect1>
+</refentry>

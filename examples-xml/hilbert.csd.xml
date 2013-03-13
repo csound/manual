@@ -1,0 +1,77 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac     <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o hilbert.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+  
+<emphasis role="oblock">instr</emphasis> 1
+  idur <emphasis role="op">=</emphasis> p3
+  <emphasis role="comment">; Initial amount of frequency shift.</emphasis>
+  <emphasis role="comment">; It can be positive or negative.</emphasis>
+  ibegshift <emphasis role="op">=</emphasis> p4 
+  <emphasis role="comment">; Final amount of frequency shift.</emphasis>
+  <emphasis role="comment">; It can be positive or negative.</emphasis>
+  iendshift <emphasis role="op">=</emphasis> p5 
+  
+  <emphasis role="comment">; A simple envelope for determining the </emphasis>
+  <emphasis role="comment">; amount of frequency shift.</emphasis>
+  kfreq <emphasis role="opc">linseg</emphasis> ibegshift, idur, iendshift
+ 
+  <emphasis role="comment">; Use the sound of your choice.</emphasis>
+  ain <emphasis role="opc">diskin2</emphasis> "beats.wav", 1, 0, 1
+ 
+  <emphasis role="comment">; Phase quadrature output derived from input signal.</emphasis>
+  areal, aimag <emphasis role="opc">hilbert</emphasis> ain
+ 
+  <emphasis role="comment">; Quadrature oscillator.</emphasis>
+  asin <emphasis role="opc">oscili</emphasis> 1, kfreq, 1
+  acos <emphasis role="opc">oscili</emphasis> 1, kfreq, 1, .25
+ 
+  <emphasis role="comment">; Use a trigonometric identity. </emphasis>
+  <emphasis role="comment">; See the references for further details.</emphasis>
+  amod1 <emphasis role="op">=</emphasis> areal <emphasis role="op">*</emphasis> acos
+  amod2 <emphasis role="op">=</emphasis> aimag <emphasis role="op">*</emphasis> asin
+
+  <emphasis role="comment">; Both sum and difference frequencies can be </emphasis>
+  <emphasis role="comment">; output at once.</emphasis>
+  <emphasis role="comment">; aupshift corresponds to the sum frequencies.</emphasis>
+  aupshift <emphasis role="op">=</emphasis> (amod1 <emphasis role="op">-</emphasis> amod2) <emphasis role="op">*</emphasis> 0.7
+  <emphasis role="comment">; adownshift corresponds to the difference frequencies. </emphasis>
+  adownshift <emphasis role="op">=</emphasis> (amod1 <emphasis role="op">+</emphasis> amod2) <emphasis role="op">*</emphasis> 0.7
+
+  <emphasis role="comment">; Notice that the adding of the two together is</emphasis>
+  <emphasis role="comment">; identical to the output of ring modulation.</emphasis>
+
+  <emphasis role="opc">outs</emphasis> aupshift, aupshift
+<emphasis role="oblock">endin</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="comment">; Sine table for quadrature oscillator.</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 16384 10 1
+
+<emphasis role="comment">; Starting with no shift, ending with all</emphasis>
+<emphasis role="comment">; frequencies shifted up by 2000 Hz.</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 6 0 2000
+
+<emphasis role="comment">; Starting with no shift, ending with all</emphasis>
+<emphasis role="comment">; frequencies shifted down by 250 Hz.</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 7 6 0 -250
+<emphasis role="stamnt">e</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

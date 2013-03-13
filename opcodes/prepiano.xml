@@ -1,0 +1,167 @@
+
+<refentry id="prepiano">
+<indexterm id="IndexPrepiano"><primary>prepiano</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Models and Emulations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>prepiano</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>prepiano</refname>
+    <refpurpose>
+      Creates a tone similar to a piano string prepared in a Cageian fashion.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Audio output is a tone similar to a piano string, prepared with
+    a number of rubbers and rattles. The method uses a
+    physical model developed from solving the partial differential
+    equation.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>prepiano</command> ifreq, iNS, iD, iK, \
+    iT30,iB, kbcl, kbcr, imass, ifreq, iinit, ipos, ivel, isfreq, \
+    isspread[, irattles, irubbers]</synopsis>
+    <synopsis>al,ar <command>prepiano</command> ifreq, iNS, iD, iK, \
+    iT30,iB, kbcl, kbcr, imass, ifreq, iinit, ipos, ivel, isfreq, \
+    isspread[, irattles, irubbers]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+
+    <para>
+    <emphasis>ifreq</emphasis> -- The base frequency of the string.
+    </para>
+
+    <para>
+    <emphasis>iNS</emphasis> -- the number of strings involved.  In a
+    real piano 1, 2 or 3 strings are found in different frequency regions.
+    </para>
+
+    <para>
+    <emphasis>iD</emphasis> -- the amount each string other that the
+    first is detuned from the main frequency, measured in cents.
+    </para>
+    
+    <para>
+    <emphasis>iK</emphasis> -- dimensionless stiffness parameter.
+    </para>
+
+    <para>
+    <emphasis>iT30</emphasis> -- 30 db decay time in seconds.
+    </para>
+
+    <para>
+    <emphasis>ib</emphasis> -- high-frequency loss parameter (keep this small).
+    </para>
+
+    <para>
+    <emphasis>imass</emphasis> -- the mass of the piano hammer.
+    </para>
+
+    <para>
+    <emphasis>ifreq</emphasis> -- the frequency of the natural
+    vibrations of the hammer.
+    </para>
+
+    <para>
+    <emphasis>iinit</emphasis> -- the initial position of the hammer.
+    </para>
+
+    <para>
+    <emphasis>ipos</emphasis> -- position along the string that the strike occurs.
+    </para>
+
+    <para>
+    <emphasis>ivel</emphasis> -- normalized strike velocity.
+    </para>
+
+    <para>
+    <emphasis>isfreq</emphasis> -- scanning frequency of the reading place.
+    </para>
+
+    <para>
+    <emphasis>isspread</emphasis> -- scanning frequency spread.
+    </para>
+
+    <para>
+    <emphasis>irattles</emphasis> -- table number giving locations of
+    any rattle(s).
+    </para>
+
+    <para>
+    <emphasis>irubbers</emphasis> -- table number giving locations of
+    any rubbers(s).
+    </para>
+
+    <para>
+      The rattles and rubbers tables are collections of four values,
+      preceeded by a count.
+      In the case of a rattle the four are position, mass density
+      ratio of rattle/string,
+      frequency of rattle and vertical length of the rattle.  For the
+      rubber the fours are position, mass density ratio of
+      rubber/string, frequency of rubber and the loss parameter.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      A note is played on a piano string, with the arguments as below.
+    </para>
+
+    <para>
+      <emphasis>kbcL</emphasis> -- Boundary condition at left end of
+    string (1 is clamped, 2 pivoting and 3 free).
+    </para>
+
+    <para>
+      <emphasis>kbcR</emphasis> -- Boundary condition at right end of
+    string (1 is clamped, 2 pivoting and 3 free).
+    </para>
+
+    <para>
+      Note that changing the boundary conditions during playing may
+  lead to glitches and is made available as an experiment.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the prepiano opcode. It uses the file <ulink url="examples/prepiano.csd"><citetitle>prepiano.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the prepiano opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/prepiano.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Stefan Bilbao </member>
+        <member>University of Edinburgh, UK</member>
+        <member>Author: &namejohn; </member>
+        <member>University of Bath, Codemist Ltd.</member>
+        <member>Bath, UK</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 5.05</para>
+  </refsect1>
+</refentry>

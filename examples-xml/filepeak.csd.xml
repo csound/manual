@@ -1,0 +1,48 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac      <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o filepeak.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1 
+
+iscaldb <emphasis role="op">=</emphasis> p4 <emphasis role="comment">;set peak amplitude in dB</emphasis>
+ipeak   <emphasis role="opc">filepeak</emphasis> "Church.wav"
+iscal   <emphasis role="op">=</emphasis> <emphasis role="opc">ampdb</emphasis>(iscaldb)<emphasis role="op">/</emphasis>ipeak <emphasis role="comment">;calculate amp multiplier</emphasis>
+<emphasis role="opc">printf_i</emphasis> "\nPeak value <emphasis role="opc">in</emphasis> file '<emphasis role="op">%</emphasis>s' is <emphasis role="op">%</emphasis>f (<emphasis role="op">%</emphasis>.3f dB).\n\n", 1, "Church.wav", ipeak, <emphasis role="opc">dbamp</emphasis>(ipeak)
+
+asnd <emphasis role="opc">soundin</emphasis> "Church.wav"
+     <emphasis role="opc">outs</emphasis> asnd, asnd
+<emphasis role="comment">; scale &amp; write file to disk</emphasis>
+asig <emphasis role="op">=</emphasis> asnd<emphasis role="op">*</emphasis>iscal <emphasis role="comment">;scale to p4</emphasis>
+<emphasis role="opc">fout</emphasis> "Church_norm.wav", 14, asig
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 2 <emphasis role="comment">; play scaled file</emphasis>
+
+aout   <emphasis role="opc">soundin</emphasis>  "Church_norm.wav"
+ipknew <emphasis role="opc">filepeak</emphasis> "Church_norm.wav"
+<emphasis role="opc">printf_i</emphasis> "\nPeak value <emphasis role="opc">in</emphasis> file '<emphasis role="op">%</emphasis>s' is <emphasis role="op">%</emphasis>f (<emphasis role="op">%</emphasis>.3f dB).\n\n", 1, "Church_norm.wav", ipknew, <emphasis role="opc">dbamp</emphasis>(ipknew)
+       <emphasis role="opc">outs</emphasis> aout, aout
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1 0 2 -6 <emphasis role="comment">; normalize audio to -6 dB</emphasis>
+<emphasis role="stamnt">i</emphasis> 2 2 2
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

@@ -1,0 +1,104 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac     <emphasis role="comment">;;;RT audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if RT audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o adsynt2.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis> <emphasis role="op">=</emphasis> 1
+<emphasis role="comment">; Generate a sinewave table.</emphasis>
+giwave <emphasis role="ohdr">ftgen</emphasis> 1, 0, 1024, 10, 1
+<emphasis role="comment">; Generate two empty tables for adsynt2.</emphasis>
+gifrqs <emphasis role="ohdr">ftgen</emphasis> 2, 0, 32, 7, 0, 32, 0
+<emphasis role="comment">; A table for freqency and amp parameters.</emphasis>
+giamps <emphasis role="ohdr">ftgen</emphasis> 3, 0, 32, 7, 0, 32, 0
+  
+<emphasis role="comment">; Generates parameters at init time</emphasis>
+<emphasis role="oblock">instr</emphasis> 1
+  <emphasis role="comment">; Generate 10 voices.</emphasis>
+  icnt <emphasis role="op">=</emphasis> 10 
+  <emphasis role="comment">; Init loop index.</emphasis>
+  index <emphasis role="op">=</emphasis> 0 
+
+<emphasis role="comment">; Loop only executed at init time.</emphasis>
+<emphasis role="olabel">loop</emphasis><emphasis role="op">:</emphasis> 
+  <emphasis role="comment">; Define non-harmonic partials.</emphasis>
+  ifreq <emphasis role="opc">pow</emphasis> index <emphasis role="op">+</emphasis> 1, 1.5 
+  <emphasis role="comment">; Define amplitudes.</emphasis>
+  iamp <emphasis role="op">=</emphasis> 1 <emphasis role="op">/</emphasis> (index<emphasis role="op">+</emphasis>1) 
+  <emphasis role="comment">; Write to tables.</emphasis>
+  <emphasis role="opc">tableiw</emphasis> ifreq, index, gifrqs 
+  <emphasis role="comment">; Used by adsynt2.</emphasis>
+  <emphasis role="opc">tableiw</emphasis> iamp, index, giamps 
+  
+  index <emphasis role="op">=</emphasis> index <emphasis role="op">+</emphasis> 1
+  <emphasis role="comment">; Do loop/</emphasis>
+  <emphasis role="octrl">if</emphasis> (index <emphasis role="op">&lt;</emphasis> icnt) <emphasis role="octrl">igoto</emphasis> <emphasis role="olabel">loop</emphasis> 
+  
+  asig <emphasis role="opc">adsynt2</emphasis> 0.4, 150, giwave, gifrqs, giamps, icnt
+  <emphasis role="opc">outs</emphasis> asig, asig
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="comment">; Generates parameters every k-cycle.</emphasis>
+<emphasis role="oblock">instr</emphasis> 2 
+  <emphasis role="comment">; Generate 10 voices.</emphasis>
+  icnt <emphasis role="op">=</emphasis> 10 
+  <emphasis role="comment">; Reset loop index.</emphasis>
+  kindex <emphasis role="op">=</emphasis> 0
+
+<emphasis role="comment">; Loop executed every k-cycle.</emphasis>
+<emphasis role="olabel">loop</emphasis><emphasis role="op">:</emphasis>
+  <emphasis role="comment">; Generate lfo for frequencies.</emphasis>
+  kspeed  <emphasis role="opc">pow</emphasis> kindex <emphasis role="op">+</emphasis> 1, 1.6
+  <emphasis role="comment">; Individual phase for each voice.</emphasis>
+  kphas <emphasis role="opc">phasorbnk</emphasis> kspeed <emphasis role="op">*</emphasis> 0.7, kindex, icnt
+  klfo <emphasis role="opc">table</emphasis> kphas, giwave, 1
+  <emphasis role="comment">; Arbitrary parameter twiddling...</emphasis>
+  kdepth <emphasis role="opc">pow</emphasis> 1.4, kindex
+  kfreq <emphasis role="opc">pow</emphasis> kindex <emphasis role="op">+</emphasis> 1, 1.5
+  kfreq <emphasis role="op">=</emphasis> kfreq <emphasis role="op">+</emphasis> klfo<emphasis role="op">*</emphasis>0.006<emphasis role="op">*</emphasis>kdepth
+
+  <emphasis role="comment">; Write freqs to table for adsynt2.</emphasis>
+  <emphasis role="opc">tablew</emphasis> kfreq, kindex, gifrqs 
+  
+  <emphasis role="comment">; Generate lfo for amplitudes.</emphasis>
+  kspeed  <emphasis role="opc">pow</emphasis> kindex <emphasis role="op">+</emphasis> 1, 0.8
+  <emphasis role="comment">; Individual phase for each voice.</emphasis>
+  kphas <emphasis role="opc">phasorbnk</emphasis> kspeed<emphasis role="op">*</emphasis>0.13, kindex, icnt, 2
+  klfo <emphasis role="opc">table</emphasis> kphas, giwave, 1
+  <emphasis role="comment">; Arbitrary parameter twiddling...</emphasis>
+  kamp <emphasis role="opc">pow</emphasis> 1 <emphasis role="op">/</emphasis> (kindex <emphasis role="op">+</emphasis> 1), 0.4
+  kamp <emphasis role="op">=</emphasis> kamp <emphasis role="op">*</emphasis> (0.3<emphasis role="op">+</emphasis>0.35<emphasis role="op">*</emphasis>(klfo<emphasis role="op">+</emphasis>1))
+
+  <emphasis role="comment">; Write amps to table for adsynt2.</emphasis>
+  <emphasis role="opc">tablew</emphasis> kamp, kindex, giamps
+  
+  kindex <emphasis role="op">=</emphasis> kindex <emphasis role="op">+</emphasis> 1
+  <emphasis role="comment">; Do loop.</emphasis>
+  <emphasis role="octrl">if</emphasis> (kindex <emphasis role="op">&lt;</emphasis> icnt) <emphasis role="octrl">kgoto</emphasis> <emphasis role="olabel">loop</emphasis>
+
+  asig <emphasis role="opc">adsynt2</emphasis> 0.25, 150, giwave, gifrqs, giamps, icnt
+  <emphasis role="opc">outs</emphasis> asig, asig
+<emphasis role="oblock">endin</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="comment">; Play Instrument #1 for 2.5 seconds.</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 2.5
+<emphasis role="comment">; Play Instrument #2 for 2.5 seconds.</emphasis>
+<emphasis role="stamnt">i</emphasis> 2 3 2.5
+<emphasis role="stamnt">e</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

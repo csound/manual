@@ -1,0 +1,92 @@
+
+<refentry id="MixerReceive">
+<indexterm id="IndexMixerReceive"><primary>MixerReceive</primary></indexterm>
+  <refentryinfo><title>Mixer Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>MixerReceive</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>MixerReceive</refname>
+    <refpurpose>
+      Receives an arate signal from a channel of a buss.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>asignal <command>MixerReceive</command> ibuss, ichannel</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Description</title> 
+    <para>Receives an arate signal that has been mixed onto a channel of a buss.
+    </para>  
+    </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+
+<para><emphasis>ibuss</emphasis> -- The number of the buss, for example the number of the instrument receiving the signal.</para>
+
+<para><emphasis>ichannel</emphasis> -- The number of the channel. Each buss has <literal>nchnls</literal> channels.</para>
+  </refsect1>
+
+<refsect1>
+<title>Performance</title>
+<para><emphasis>asignal</emphasis> -- The signal that has been mixed onto the indicated channel of the buss.</para>
+
+<para>
+Use of the mixer requires that instruments setting gains have smaller numbers than instruments sending signals, 
+and that instruments sending signals have smaller numbers than instruments receiving those signals. 
+However, an instrument may have any number of sends or receives. After the final signal is received, 
+<link linkend="MixerClear"><citetitle>MixerClear</citetitle></link> must be invoked to reset the busses to 0 before the next kperiod.
+</para>
+</refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+
+<programlisting>
+<emphasis role="oblock">instr</emphasis> 220 <emphasis role="comment">; Master output</emphasis>
+    <emphasis role="comment">; It applies a bass enhancement, compression and fadeout</emphasis>
+    <emphasis role="comment">; to the whole piece, outputs signals, and clears the mixer.</emphasis>
+  a1  <emphasis role="opc">MixerReceive</emphasis> 220, 0
+  a2  <emphasis role="opc">MixerReceive</emphasis> 220, 1
+  <emphasis role="comment">; Bass enhancement</emphasis>
+  al1 <emphasis role="opc">butterlp</emphasis> a1, 100
+  al2 <emphasis role="opc">butterlp</emphasis> a2, 100
+  a1 <emphasis role="op">=</emphasis> al1<emphasis role="op">*</emphasis>1.5 <emphasis role="op">+</emphasis> a1
+  a2 <emphasis role="op">=</emphasis> al2<emphasis role="op">*</emphasis>1.5 <emphasis role="op">+</emphasis> a2 
+
+  <emphasis role="comment">; Global amplitude shape</emphasis>
+  kenv   <emphasis role="opc">linseg</emphasis> 0., p5 <emphasis role="op">/</emphasis> 2.0, p4, p3 <emphasis role="op">-</emphasis> p5, p4, p5 <emphasis role="op">/</emphasis> 2.0, 0.
+  a1<emphasis role="op">=</emphasis>a1<emphasis role="op">*</emphasis>kenv
+  a2<emphasis role="op">=</emphasis>a2<emphasis role="op">*</emphasis>kenv 
+  
+  <emphasis role="comment">; Compression</emphasis>
+  a1 <emphasis role="opc">dam</emphasis> a1, 5000, 0.5, 1, 0.2, 0.1  
+  a2 <emphasis role="opc">dam</emphasis> a2, 5000, 0.5, 1, 0.2, 0.1  
+  
+  <emphasis role="comment">; Remove DC bias</emphasis>
+  a1blocked <emphasis role="opc">dcblock</emphasis>		a1
+  a2blocked	<emphasis role="opc">dcblock</emphasis>		a2
+  
+  <emphasis role="comment">; Output signals</emphasis>
+  <emphasis role="opc">outs</emphasis> a1blocked, a2blocked
+  <emphasis role="opc">MixerClear</emphasis>
+<emphasis role="oblock">endin</emphasis></programlisting>
+    <para>
+      Here is a complete example of the MixerReceive opcode. It uses the file <ulink url="examples/Mixer.csd"><citetitle>Mixer.csd</citetitle></ulink>
+      <example>
+        <title>Complete example of the MixerReceive opcode.</title>
+        <xi:include href="examples-xml/Mixer.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+</refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Michael Gogins (gogins at pipeline dot com).</para>
+  </refsect1>
+</refentry>

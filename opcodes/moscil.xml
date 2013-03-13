@@ -1,0 +1,101 @@
+
+<refentry id="moscil">
+<indexterm id="IndexMoscil"><primary>moscil</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Note Output</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>moscil</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>moscil</refname>
+
+    <refpurpose>
+      Sends a stream of the MIDI notes.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Sends a stream of the MIDI notes.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>moscil</command> kchn, knum, kvel, kdur, kpause</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kchn</emphasis> -- MIDI channel number (1-16)
+    </para>
+
+    <para>
+      <emphasis>knum</emphasis> -- note number (0-127)
+    </para>
+
+    <para>
+      <emphasis>kvel</emphasis> -- velocity (0-127)
+    </para>
+
+    <para>
+      <emphasis>kdur</emphasis> -- note duration in seconds
+    </para>
+
+    <para>
+      <emphasis>kpause</emphasis> -- pause duration after each noteoff and before new note in seconds
+    </para>
+
+    <para>
+      <emphasis>moscil</emphasis> and <link linkend="midion"><citetitle>midion</citetitle></link> are the most powerful MIDI OUT opcodes. <emphasis>moscil</emphasis> (MIDI oscil) plays a stream of notes of <emphasis>kdur</emphasis> duration. Channel, pitch, velocity, duration and pause can be controlled at k-rate, allowing very complex algorithmically generated melodic lines. When current instrument is deactivated, the note played by current instance of <emphasis>moscil</emphasis> is forcedly truncated.
+    </para>
+
+    <para>
+      Any number of <emphasis>moscil</emphasis> opcodes can appear in the same Csound instrument, allowing a counterpoint-style polyphony within a single instrument.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the moscil opcode. It uses the file <ulink url="examples/moscil.csd"><citetitle>moscil.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the moscil opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+        <para>This example generates a stream of notes for every note received on the MIDI input. It generates MIDI notes on csound's MIDI output, so be sure to connect something.</para>
+          <xi:include href="examples-xml/moscil.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="midion"><citetitle>midion</citetitle></link>,
+      <link linkend="midion2"><citetitle>midion2</citetitle></link>,
+      <link linkend="noteon"><citetitle>noteon</citetitle></link>,
+      <link linkend="noteoff"><citetitle>noteoff</citetitle></link>,
+      <link linkend="noteondur"><citetitle>noteondur</citetitle></link>,
+      <link linkend="noteondur2"><citetitle>noteondur2</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namegabriel;</member>
+        <member>Italy</member>
+        <member>May 1997</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.47</para>
+    <para>Thanks goes to &namerasmus; for pointing out the correct MIDI channel and controller number ranges.</para>
+  </refsect1>
+</refentry>

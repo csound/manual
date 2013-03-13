@@ -1,0 +1,109 @@
+﻿
+<refentry id="xadsr">
+<indexterm id="IndexXadsr"><primary>xadsr</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Envelope Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>xadsr</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>xadsr</refname>
+    <refpurpose>
+      Calculates the classical ADSR envelope.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Calculates the classical ADSR envelope
+   </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>xadsr</command> iatt, idec, islev, irel [, idel]</synopsis>
+
+    <synopsis>kres <command>xadsr</command> iatt, idec, islev, irel [, idel]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iatt</emphasis> -- duration of attack phase
+    </para>
+
+    <para>
+      <emphasis>idec</emphasis> -- duration of decay
+    </para>
+
+    <para>
+      <emphasis>islev</emphasis> -- level for sustain phase
+    </para>
+
+    <para>
+      <emphasis>irel</emphasis> -- duration of release phase
+    </para>
+
+    <para>
+      <emphasis>idel</emphasis> -- period of zero before the envelope starts
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      The envelope generated is the range 0 to 1 and may need to be scaled 
+      further, depending on the amplitude required. If using 
+      <link linkend="Zerodbfs"><citetitle>0dbfs</citetitle></link> = 1, scaling down
+      will probably be required since playing more than one note might result in clipping.
+      If not using <link linkend="Zerodbfs"><citetitle>0dbfs</citetitle></link>, scaling
+       to a large amplitude (e.g. 32000) might be required.
+      </para>
+      <para>
+      The envelope may be described as:
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/adsr.png" format="PNG"/>
+        </imageobject>
+        <textobject>
+          <phrase>Picture of an ADSR envelope.</phrase>
+        </textobject>
+        <caption>
+          <para>Picture of an ADSR envelope.</para>
+        </caption>
+      </mediaobject>
+    </para>
+    <para>
+      The length of the sustain is calculated from the length of the note. This means <emphasis>xadsr</emphasis> is not suitable for use with MIDI events, use <link linkend="mxadsr"><citetitle>mxadsr</citetitle></link> instead. The opcode <emphasis>xadsr</emphasis> is identical to <link linkend="adsr"><citetitle>adsr</citetitle></link> except it uses exponential, rather than linear, line segments.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the xadsr opcode. It uses the file <ulink url="examples/xadsr.csd"><citetitle>xadsr.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the xadsr opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/xadsr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="adsr"><citetitle>adsr</citetitle></link>,
+      <link linkend="madsr"><citetitle>madsr</citetitle></link>,
+      <link linkend="mxadsr"><citetitle>mxadsr</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namejohn;
+      <emphasis>xadsr</emphasis> is new in Csound version 3.51.
+    </para>
+  </refsect1>
+</refentry>

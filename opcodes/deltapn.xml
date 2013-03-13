@@ -1,0 +1,79 @@
+
+<refentry id="deltapn">
+<indexterm id="IndexDeltapn"><primary>deltapn</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Delay</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>deltapn</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>deltapn</refname>
+    <refpurpose>
+      Taps a delay line at variable offset times.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Tap a delay line at variable offset times. 
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>deltapn</command> xnumsamps</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>xnumsamps</emphasis> -- specifies the tapped delay time in number of samples. Each can range from 1 control period to the full delay time of the read/write pair; however, since there is no internal check for adherence to this range, the user is wholly responsible. Each argument can be a constant, a variable, or a time-varying signal.
+    </para>
+
+    <para>
+      <emphasis>deltapn</emphasis> is identical to <link linkend="deltapi"><citetitle>deltapi</citetitle></link>, except delay time is specified in number of samples, instead of seconds (&namehans;).
+    </para>
+
+    <para>
+      This opcode can tap into a <emphasis>delayr</emphasis>/<emphasis>delayw</emphasis> pair, extracting delayed audio from the <emphasis>idlt</emphasis> seconds of stored sound. There can be any number of <emphasis>deltap</emphasis> and/or <emphasis>deltapi</emphasis> units between a read/write pair. Each receives an audio tap with no change of original amplitude.
+    </para>
+
+    <para>
+      This opcode can provide multiple delay taps for arbitrary delay path and feedback networks. They can deliver either constant-time or time-varying taps, and are useful for building chorus effects, harmonizers, and Doppler shifts. Constant-time delay taps (and some slowly changing ones) do not need interpolated readout; they are well served by <emphasis>deltap</emphasis>. Medium-paced or fast varying dlt's, however, will need the extra services of <emphasis>deltapi</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>delayr</emphasis>/<emphasis>delayw</emphasis> pairs may be interleaved. To associate a delay tap unit with a specific <emphasis>delayr</emphasis> unit, it not only has to be located between that <emphasis>delayr</emphasis> and the appropriate <emphasis>delayw</emphasis> unit, but must also precede any following <emphasis>delayr</emphasis> units. See Example 2. (This feature added in Csound version 3.57 by Jens Groh and &namejohn;).
+    </para>
+
+    <para>
+      <emphasis>N.B.</emphasis> k-rate delay times are not internally interpolated, but rather lay down stepped time-shifts of audio samples; this will be found quite adequate for slowly changing tap times. For medium to fast-paced changes, however, one should provide a higher resolution audio-rate timeshift as input.
+    </para>
+  </refsect1>
+ 
+  
+    <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the deltapn opcode. It uses the file <ulink url="examples/deltapn.csd"><citetitle>deltapn.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the deltapn opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/deltapn.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="deltap"><citetitle>deltap</citetitle></link>,
+      <link linkend="deltap3"><citetitle>deltap3</citetitle></link>,
+      <link linkend="deltapi"><citetitle>deltapi</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

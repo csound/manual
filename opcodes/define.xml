@@ -1,0 +1,199 @@
+
+<refentry id="define">
+<indexterm id="IndexDefine"><primary>&num;define</primary></indexterm>
+  <indexterm id="IndexDefineOrch"><primary>&num;define</primary><secondary>orchestra</secondary></indexterm>
+  <indexterm id="IndexDefineMacros"><primary>macros</primary><secondary>orchestra</secondary></indexterm>
+  <refentryinfo><title>Orchestra Syntax:Macros</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>&num;define</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>&num;define</refname>
+    <refpurpose>
+      Defines a macro.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Macros are textual replacements which are made in the orchestra as it is being read.  The macro system in Csound is a very simple one, and uses the characters &num; and &dollar; to define and call macros. This can save typing, and can lead to a coherent structure and consistent style.  This is similar to, but independent of, the <link linkend="ScoreMacros"><citetitle>macro system in the score language</citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis>&num;define NAME</emphasis> -- defines a simple macro. The name of the macro must begin with a letter and can consist of any combination of letters and numbers. Case is significant. This form is limiting, in that the variable names are fixed.  More flexibility can be obtained by using a macro with arguments, described below.
+    </para>
+
+    <para>
+      <emphasis>&num;define NAME</emphasis>(<emphasis>a&apos; b&apos; c&apos;</emphasis>) -- defines a macro with arguments. This can be used in more complex situations. The name of the macro must begin with a letter and can consist of any combination of letters and numbers. Within the replacement text, the arguments can be substituted by the form: &dollar;A.  In fact, the implementation defines the arguments as simple macros.  There may be up to 5 arguments, and the names may be any choice of letters.  Remember that case is significant in macro names.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>&num;define</command> NAME &num; replacement text &num;</synopsis>
+
+    <synopsis><command>&num;define</command> NAME(a&apos; b&apos; c&apos;) &num; replacement text &num;</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>&num; replacement text &num;</emphasis> --  The replacement text is any character string (not containing a &num;) and can extend over mutliple lines. The replacement text is enclosed within the &num; characters, which ensure that additional characters are not inadvertently captured.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      Some care is needed with textual replacement macros, as they can sometimes do strange things.  They take no notice of any meaning, so spaces are significant. This is why, unlike the C programming language, the definition has the replacement text surrounded by &num; characters. Used carefully, this simple macro system is a powerful concept, but it can be abused.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is a simple example of the defining a macro. It uses the file <ulink url="examples/define.csd"><citetitle>define.csd</citetitle></ulink>.
+
+      <example>
+        <title>Simple example of the define macro.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/define.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Its output should include lines like this:
+      <screen>
+Macro definition for VOLUME
+Macro definition for CPS
+Macro definition for TABLE</screen>
+    </para>
+
+    <para>
+      Here is an example of the defining a macro with arguments. It uses the file <ulink url="examples/define_args.csd"><citetitle>define_args.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the define macro with arguments.</title>
+          <xi:include href="examples-xml/define_args.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Its output should include lines like this:
+      <screen>
+Macro definition for OSCMACRO</screen>
+    </para>
+  </refsect1>
+
+  <refsect1 id="opcodesDefineMathConstMacros">
+    <title>Predefined Math Constant Macros</title>
+    <para>New in Csound 5.04 are predefined Math Constant Macros.  The values
+    defined are those found in the C header math.h, and are automatically
+    defined when Csound starts and available for use in orchestras.</para>
+
+    <informaltable frame="all">
+        <tgroup cols="3" colsep="1" rowsep="1">
+          <thead>
+            <row>
+              <entry>Macro</entry>
+              <entry>Value</entry>
+              <entry>Equivalent to</entry>
+            </row>
+          </thead>
+
+          <tbody>
+
+            <row>
+              <entry>$M_E</entry>
+              <entry>2.7182818284590452354</entry>
+              <entry>e</entry>
+            </row>
+            <row>
+              <entry>$M_LOG2E</entry>
+              <entry>1.4426950408889634074</entry>
+              <entry>log_2(e)</entry>
+            </row>
+            <row>
+              <entry>$M_LOG10E</entry>
+              <entry>0.43429448190325182765</entry>
+              <entry>log_10(e)</entry>
+            </row>
+            <row>
+              <entry>$M_LN2</entry>
+              <entry>0.69314718055994530942</entry>
+              <entry>log_e(2)</entry>
+            </row>
+            <row>
+              <entry>$M_LN10</entry>
+              <entry>2.30258509299404568402</entry>
+              <entry>log_e(10)</entry>
+            </row>
+            <row>
+              <entry>$M_PI</entry>
+              <entry>3.14159265358979323846</entry>
+              <entry>pi</entry>
+            </row>
+            <row>
+              <entry>$M_PI_2</entry>
+              <entry>1.57079632679489661923</entry>
+              <entry>pi/2</entry>
+            </row>
+            <row>
+              <entry>$M_PI_4</entry>
+              <entry>0.78539816339744830962</entry>
+              <entry>pi/4</entry>
+            </row>
+            <row>
+              <entry>$M_1_PI</entry>
+              <entry>0.31830988618379067154</entry>
+              <entry>1/pi</entry>
+            </row>
+            <row>
+              <entry>$M_2_PI</entry>
+              <entry>0.63661977236758134308</entry>
+              <entry>2/pi</entry>
+            </row>
+            <row>
+              <entry>$M_2_SQRTPI</entry>
+              <entry>1.12837916709551257390</entry>
+              <entry>2/sqrt(pi)</entry>
+            </row>
+            <row>
+              <entry>$M_SQRT2</entry>
+              <entry>1.41421356237309504880</entry>
+              <entry>sqrt(2)</entry>
+            </row>
+            <row>
+              <entry>$M_SQRT1_2</entry>
+              <entry>0.70710678118654752440</entry>
+              <entry>1/sqrt(2)</entry>
+            </row>
+
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="dollar"><citetitle>&dollar;NAME</citetitle></link>,
+      <link linkend="undef"><citetitle>&num;undef</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>University of Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>April 1998</member>
+      </simplelist>
+    </para>
+    <para>Examples written by &namekevin;.</para>
+
+    <para>New in Csound version 3.48</para>
+  </refsect1>
+</refentry>

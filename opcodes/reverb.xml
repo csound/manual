@@ -1,0 +1,89 @@
+
+<refentry id="reverb">
+<indexterm id="IndexReverb"><primary>reverb</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Reverberation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>reverb</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>reverb</refname>
+    <refpurpose>
+      Reverberates an input signal with a <quote>natural room</quote> frequency response.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Reverberates an input signal with a <quote>natural room</quote> frequency response.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>reverb</command> asig, krvt [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iskip</emphasis> (optional, default=0) -- initial disposition of delay-loop data space (cf. <link linkend="reson"><citetitle>reson</citetitle></link>). The default value is 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>krvt</emphasis> -- the reverberation time (defined as the time in seconds for a signal to decay to 1/1000, or 60dB down from its original amplitude).
+    </para>
+
+    <para>
+      A standard <emphasis>reverb</emphasis> unit is composed of four <link linkend="comb"><citetitle>comb</citetitle></link> filters in parallel followed by two <link linkend="alpass"><citetitle>alpass</citetitle></link> units in series. Loop times are set for optimal <quote>natural room response.</quote> Core storage requirements for this unit are proportional only to the sampling rate, each unit requiring approximately 3K words for every 10KC. The <link linkend="comb"><citetitle>comb</citetitle></link>, <link linkend="alpass"><citetitle>alpass</citetitle></link>, <link linkend="delay"><citetitle>delay</citetitle></link>, <link linkend="tone"><citetitle>tone</citetitle></link> and other Csound units provide the means for experimenting with alternate reverberator designs.
+    </para>
+
+    <para>
+      Since output from the standard <emphasis>reverb</emphasis> will begin to appear only after 1/20 second or so of delay, and often with less than three-fourths of the original power, it is normal to output both the source and the reverberated signal. If <emphasis>krvt</emphasis> is inadvertently set to a non-positive number, <emphasis>krvt</emphasis> will be reset automatically to 0.01. (New in Csound version 4.07.) Also, since the reverberated sound will persist long after the cessation of source events, it is normal to put <emphasis>reverb</emphasis> in a separate instrument to which sound is passed via a <emphasis>global variable</emphasis>, and to leave that instrument running throughout the performance.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the reverb opcode. It uses the file <ulink url="examples/reverb.csd"><citetitle>reverb.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the reverb opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/reverb.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="alpass"><citetitle>alpass</citetitle></link>,
+      <link linkend="comb"><citetitle>comb</citetitle></link>,
+      <link linkend="valpass"><citetitle>valpass</citetitle></link>,
+      <link linkend="vcomb"><citetitle>vcomb</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: William <quote>Pete</quote> Moss</member>
+        <member>University of Texas at Austin</member>
+        <member>Austin, Texas USA</member>
+        <member>January 2002</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

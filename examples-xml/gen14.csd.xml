@@ -1,0 +1,56 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac  <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o gen14.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100 
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32 
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2 
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1 
+<emphasis role="comment">;after the example from The Csound Book, page 83</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 1	<emphasis role="comment">;compare results from GEN13 &amp; GEN14</emphasis>
+		
+iwshpfn	<emphasis role="op">=</emphasis> p6	
+inrmfn	<emphasis role="op">=</emphasis> p7	
+aswp	<emphasis role="opc">linseg</emphasis>	0.01, p3<emphasis role="op">*</emphasis>.5, .49, p3<emphasis role="op">*</emphasis>.5, 0.01		<emphasis role="comment">;index sweep function</emphasis>
+aindex	<emphasis role="opc">poscil</emphasis>	aswp, p5, 2				<emphasis role="comment">;sound to waveshape</emphasis>
+atable	<emphasis role="opc">tablei</emphasis>	aindex, iwshpfn, 1, .5			<emphasis role="comment">;waveshape index</emphasis>
+anrm	<emphasis role="opc">tablei</emphasis>	aswp<emphasis role="op">*</emphasis>2, inrmfn, 1			<emphasis role="comment">;normalization </emphasis>
+aenv	<emphasis role="opc">linen</emphasis>	p4, .01, p3, .02			<emphasis role="comment">;amplitude envelope</emphasis>
+asig	<emphasis role="op">=</emphasis> (atable<emphasis role="op">*</emphasis>anrm)<emphasis role="op">*</emphasis>aenv				<emphasis role="comment">;normalize and impose envelope</emphasis>
+asig    <emphasis role="opc">dcblock2</emphasis> asig					<emphasis role="comment">;get rid of DC</emphasis>
+	<emphasis role="opc">outs</emphasis>    asig, asig
+
+<emphasis role="oblock">endin</emphasis>		
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">f</emphasis> 2 0 8192 10 1			<emphasis role="comment">;sine wave</emphasis>
+
+<emphasis role="stamnt">f</emphasis> 28  0   4097 13  1 1 1 0 .8 0 .5 0 .2		<emphasis role="comment">;waveshaping function: GEN13 - odd harmonics</emphasis>
+<emphasis role="stamnt">f</emphasis> 280 0   2049 4   28 1				<emphasis role="comment">;normalization function for f28</emphasis>
+<emphasis role="stamnt">f</emphasis> 29  0   4097 14  1 1 1 0 .8 0 .5 0 .2		<emphasis role="comment">;waveshaping function: GEN14 - same harmonics</emphasis>
+<emphasis role="stamnt">f</emphasis> 290 0   2049 4   29 1				<emphasis role="comment">;normalization function for f29</emphasis>
+
+
+<emphasis role="stamnt">f</emphasis> 30  0   4097 13  1 1 0 1 0 .6 0 .4 0 .1	<emphasis role="comment">;waveshaping function: GEN13 - even harmonics</emphasis>
+<emphasis role="stamnt">f</emphasis> 301 0   2049 4   30 1				<emphasis role="comment">;normalization function for f30</emphasis>
+<emphasis role="stamnt">f</emphasis> 31  0   4097 14  1 1 0 1 0 .6 0 .4 0 .1	<emphasis role="comment">;waveshaping function: GEN13 - even harmonics</emphasis>
+<emphasis role="stamnt">f</emphasis> 310 0   2049 4   31 1				<emphasis role="comment">;normalization function for 31</emphasis>
+<emphasis role="stamnt">s</emphasis>
+<emphasis role="stamnt">i</emphasis>1 0   3   .7   440 28  280 
+<emphasis role="stamnt">i</emphasis>1 4   .   .7    .  29  290
+<emphasis role="stamnt">i</emphasis>1 8   .   .7    .  30  301
+<emphasis role="stamnt">i</emphasis>1 12  3   .7    .  31  310
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

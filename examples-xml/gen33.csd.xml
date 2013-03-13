@@ -1,0 +1,48 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac      <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o gen33.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1	<emphasis role="comment">; partials 1, 4, 7, 10, 13, 16, etc. with base frequency of 400 Hz</emphasis>
+
+ibsfrq  <emphasis role="op">=</emphasis>  400										
+inumh   <emphasis role="op">=</emphasis>  <emphasis role="opc">int</emphasis>(1.5 <emphasis role="op">+</emphasis> <emphasis role="ohdr">sr</emphasis> <emphasis role="op">*</emphasis> 0.5 <emphasis role="op">/</emphasis> (3 <emphasis role="op">*</emphasis> ibsfrq))					<emphasis role="comment">; estimate number of partials			</emphasis>
+isrcln  <emphasis role="op">=</emphasis>  <emphasis role="opc">int</emphasis>(0.5 <emphasis role="op">+</emphasis> <emphasis role="opc">exp</emphasis>(<emphasis role="opc">log</emphasis>(2) <emphasis role="op">*</emphasis> <emphasis role="opc">int</emphasis>(1.01 <emphasis role="op">+</emphasis> <emphasis role="opc">log</emphasis>(inumh <emphasis role="op">*</emphasis> 3) <emphasis role="op">/</emphasis> <emphasis role="opc">log</emphasis>(2))))		<emphasis role="comment">; source table length</emphasis>
+itmp    <emphasis role="ohdr">ftgen</emphasis> 1, 0, isrcln, <emphasis role="op">-</emphasis>2, 0						<emphasis role="comment">; create empty source table</emphasis>
+ifpos   <emphasis role="op">=</emphasis>  0
+ifrq    <emphasis role="op">=</emphasis>  ibsfrq
+inumh   <emphasis role="op">=</emphasis>  0
+<emphasis role="olabel">l1</emphasis><emphasis role="op">:</emphasis>
+        <emphasis role="opc">tableiw</emphasis> ibsfrq <emphasis role="op">/</emphasis> ifrq, ifpos, 1						<emphasis role="comment">; amplitude</emphasis>
+        <emphasis role="opc">tableiw</emphasis> ifrq, ifpos <emphasis role="op">+</emphasis> 1, 1						<emphasis role="comment">; frequency</emphasis>
+        <emphasis role="opc">tableiw</emphasis> 0, ifpos <emphasis role="op">+</emphasis> 2, 1							<emphasis role="comment">; phase</emphasis>
+ifpos   <emphasis role="op">=</emphasis>  ifpos <emphasis role="op">+</emphasis> 3
+ifrq    <emphasis role="op">=</emphasis>  ifrq <emphasis role="op">+</emphasis> ibsfrq <emphasis role="op">*</emphasis> 3
+inumh   <emphasis role="op">=</emphasis>  inumh <emphasis role="op">+</emphasis> 1
+        <emphasis role="octrl">if</emphasis> (ifrq <emphasis role="op">&lt;</emphasis> (<emphasis role="ohdr">sr</emphasis> <emphasis role="op">*</emphasis> 0.5)) <emphasis role="octrl">igoto</emphasis> <emphasis role="olabel">l1</emphasis>
+
+itemp   <emphasis role="ohdr">ftgen</emphasis> 2, 0, 262144, <emphasis role="op">-</emphasis>33, 1, inumh, 1, <emphasis role="op">-</emphasis>1				<emphasis role="comment">; store output in ftable 2 (size = 262144)</emphasis>
+asig    <emphasis role="opc">poscil</emphasis> .5, ibsfrq, itemp
+        <emphasis role="opc">outs</emphasis> asig, asig 
+   
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1 0 2 
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

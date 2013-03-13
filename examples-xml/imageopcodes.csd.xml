@@ -1,0 +1,53 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-n <emphasis role="comment">;no sound output</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis><emphasis role="op">=</emphasis>48000
+<emphasis role="ohdr">ksmps</emphasis><emphasis role="op">=</emphasis>1
+<emphasis role="ohdr">nchnls</emphasis><emphasis role="op">=</emphasis>2
+
+<emphasis role="comment">; this test .csd copies image.png into a new file 'imageout.png'</emphasis>
+
+giimage1 <emphasis role="opc">imageload</emphasis> "image.png"
+giimagew, giimageh <emphasis role="opc">imagesize</emphasis> giimage1
+giimage2 <emphasis role="opc">imagecreate</emphasis> giimagew,giimageh
+
+    <emphasis role="oblock">instr</emphasis> 1
+
+kndx <emphasis role="op">=</emphasis> 0
+kx_ <emphasis role="opc">linseg</emphasis> 0, p3, 1
+<emphasis role="comment">;print imagewidth and imageheigth of image.png</emphasis>
+<emphasis role="opc">prints</emphasis> "imagewidth <emphasis role="op">=</emphasis> <emphasis role="op">%</emphasis>f pixels, imageheigth <emphasis role="op">=</emphasis> <emphasis role="op">%</emphasis>f pixels\\n", giimagew, giimageh
+
+<emphasis role="olabel">myloop</emphasis><emphasis role="op">:</emphasis>
+ky_ <emphasis role="op">=</emphasis> kndx<emphasis role="op">/</emphasis>(giimageh)
+kr_, kg_, kb_ <emphasis role="opc">imagegetpixel</emphasis> giimage1, kx_, ky_
+<emphasis role="opc">imagesetpixel</emphasis> giimage2, kx_, ky_, kr_, kg_, kb_
+<emphasis role="octrl">loop_lt</emphasis> kndx, 0.5, giimageh, <emphasis role="olabel">myloop</emphasis>
+    <emphasis role="oblock">endin</emphasis>
+
+    <emphasis role="oblock">instr</emphasis> 2
+
+<emphasis role="opc">imagesave</emphasis> giimage2, "imageout.png"
+    <emphasis role="oblock">endin</emphasis>
+
+    <emphasis role="oblock">instr</emphasis> 3
+<emphasis role="opc">imagefree</emphasis> giimage1
+<emphasis role="opc">imagefree</emphasis> giimage2
+    <emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis>1 1 1
+<emphasis role="stamnt">i</emphasis>2 2 1
+<emphasis role="stamnt">i</emphasis>3 3 1
+<emphasis role="stamnt">e</emphasis>
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

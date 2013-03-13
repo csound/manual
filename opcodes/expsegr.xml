@@ -1,0 +1,105 @@
+
+<refentry id="expsegr">
+<indexterm id="IndexExpsegr"><primary>expsegr</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Linear and Exponential Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>expsegr</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>expsegr</refname>
+    <refpurpose>
+      Trace a series of exponential segments between specified points including a release segment.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Trace a series of exponential segments between specified points including a release segment.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>expsegr</command> ia, idur1, ib [, idur2] [, ic] [...], irel, iz</synopsis>
+
+    <synopsis>kres <command>expsegr</command> ia, idur1, ib [, idur2] [, ic] [...], irel, iz</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ia</emphasis> -- starting value. Zero is illegal for exponentials.
+    </para>
+
+    <para>
+      <emphasis>ib, ic</emphasis>, etc. -- value after <emphasis>dur1</emphasis> seconds, etc. For exponentials, must be non-zero and must agree in sign with <emphasis>ia</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>idur1</emphasis> -- duration in seconds of first segment. A zero or negative value will cause all initialization to be skipped.
+    </para>
+
+    <para>
+      <emphasis>idur2, idur3</emphasis>, etc. -- duration in seconds of subsequent segments. A zero or negative value will terminate the initialization process with the preceding point, permitting the last-defined line or curve to be continued indefinitely in performance. The default is zero.
+    </para>
+
+    <para>
+      <emphasis>irel, iz</emphasis> -- duration in seconds and final value of a note releasing segment.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      These units generate control or audio signals whose values can pass through 2 or more specified points. The sum of <emphasis>dur</emphasis> values may or may not equal the instrument's performance time: a shorter performance will truncate the specified pattern, while a longer one will cause the last-defined segment to continue on in the same direction.
+    </para>
+
+    <para>
+      <emphasis>expsegr</emphasis> is amongst the Csound <quote>r</quote> units that contain a note-off sensor and release time extender. When each senses an event termination or MIDI noteoff, it immediately extends the performance time of the current instrument by <emphasis>irel </emphasis>seconds, and sets out to reach the value <emphasis>iz</emphasis> by the end of that period (no matter which segment the unit is in). <quote>r</quote> units can also be modified by MIDI noteoff velocities. For two or more extenders in an instrument, extension is by the greatest period.
+    </para>
+    <para>
+      You can use other pre-made envelopes which start a release segment upon recieving a note off message, like <link linkend="linsegr"><citetitle>linsegr</citetitle></link> and <link linkend="madsr"><citetitle>madsr</citetitle></link>, or you can construct more complex envelopes using <link linkend="xtratim"><citetitle>xtratim</citetitle></link> and <link linkend="release"><citetitle>release</citetitle></link>. Note that you don't need to use <link linkend="xtratim"><citetitle>xtratim</citetitle></link> if you are using <emphasis>expsegr</emphasis>, since the time is extended automatically.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the expsegr opcode. It uses the file <ulink url="examples/expsegr.csd"><citetitle>expsegr.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the expsegr opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/expsegr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="linsegr"><citetitle>linsegr</citetitle></link>,
+      <link linkend="linenr"><citetitle>expsegr</citetitle></link>,
+      <link linkend="envlpxr"><citetitle>envlpxr</citetitle></link>,
+      <link linkend="mxadsr"><citetitle>mxadsr</citetitle></link>,
+      <link linkend="madsr"><citetitle>madsr</citetitle></link>
+      <link linkend="expon"><citetitle>expon</citetitle></link>,
+      <link linkend="expseg"><citetitle>expseg</citetitle></link>,
+      <link linkend="expsega"><citetitle>expsega</citetitle></link>,
+      <link linkend="xtratim"><citetitle>xtratim</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namebarry;</para>
+    <para>New in Csound 3.47</para>
+  </refsect1>
+</refentry>

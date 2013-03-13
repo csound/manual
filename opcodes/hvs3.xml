@@ -1,0 +1,149 @@
+
+<refentry id="hvs3">
+<indexterm id="IndexHvs3"><primary>hvs3</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Hyper Vectorial Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>hvs3</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>hvs3</refname>
+    <refpurpose>
+      Allows three-dimensional Hyper Vectorial Synthesis (HVS) controlled by externally-updated k-variables.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>hvs3</emphasis> allows three-dimensional Hyper Vectorial Synthesis (HVS) controlled by externally-updated k-variables.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>hvs3</command> kx, ky, kz, inumParms, inumPointsX, inumPointsY, inumPointsZ, iOutTab, iPositionsTab, iSnapTab [, iConfigTab]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>inumParms</emphasis> - number of parameters controlled by the HVS. Each HVS snapshot is made up of <emphasis>inumParms</emphasis> elements.
+    </para>
+    <para>
+      <emphasis>inumPointsX</emphasis>, <emphasis>inumPointsY</emphasis>, <emphasis>inumPointsZ</emphasis> - number of points that each dimension of the HVS cube (or square in case of two-dimensional HVS; or line in case of one-dimensional HVS) is made up.
+    </para>
+    <para>
+      <emphasis>iOutTab</emphasis> - number of the table receiving the set of output-parameter instant values of the HVS. The total amount of parameters is defined by the <emphasis>inumParms</emphasis> argument.
+    </para>
+    <para>
+      <emphasis>iPositionsTab</emphasis> – a table filled with the individual positions of snapshots in the HVS matrix (see below for more information).
+    </para>
+    <para>
+      <emphasis>iSnapTab</emphasis> – a table filled with all the snapshots. Each snapshot is made up of a set of parameter values. The amount of elements contained in each snapshots is specified by the <emphasis>inumParms</emphasis> argument. The set of elements of each snapshot follows (and is adjacent) to the previous one in this table. So the total size of this table should be >= to <emphasis>inumParms</emphasis> multiplied the number of snapshots you intend to store for the HVS.
+    </para>
+    <para>
+      <emphasis>iConfigTab</emphasis> – (optional) a table containing the behavior of the HVS for each parameter. If the value of <emphasis>iConfigTab</emphasis> is zero (default), this argument is ignored, meaning that each parameter is treated with linear interpolation by the HVS. If <emphasis>iConfigTab</emphasis> is different than zero, then it must refer to an existing table whose contents are in its turn referring to a particolar kind of interpolation. In this table, a value of -1 indicates that corresponding parameter is leaved unchanged (ignored) by the HVS; a value of zero indicates that corresponding parameter is treated with linear-interpolation; each other values must be integer numbers indicating an existing table filled with a shape which will determine the kind of special interpolation to be used (table-based interpolation).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kx, ky, kz</emphasis> -  these are externally-modified variables which controls the motion of the pointer in the HVS matrix cube (or square or line in case of HVS matrices made up of less than 3 dimensions). The range of these input arguments must be 0 to 1.
+    </para>
+    <para>
+      Hyper Vectorial Synthesis is a technique that allows control of a huge set of parameters by using a simple and global approach. The key concepts of the HVS are:
+    </para>
+    <para>
+      The set of HVS parameters, whose amount is fixed and defined by the <emphasis>inumParms</emphasis> argument. During the HVS performance, all these parameters are variant and can be applied to any sound synthesis technique, as well as to any global control for algorithmic composition and any other kind of level. The user must previously define several sets of fixed values for each HVS parameter, each set corresponding to a determinate synthesis configuration. Each set of values is called snapshot, and can be considered as the coordinates of a bound of a multi-dimensional space. The HVS consists on moving a point in this multi-dimensional space (by using a special motion pointer, see below), according and inside the bounds defined by the snapshots. You can fix any amount of HVS parameters (each parameter being a dimension of the multi-dimensional space), even a huge number, the limit only depends on the processing power (and the memory) of your computer and on the complexity of the sound-synthesis you will use.
+    </para>
+    <para>
+      The HVS cube (or square or line). This is the matrix (of 3, 2 or 1 dimensions, according to the hvs opcode you intend to use) of “mainstays” (or pivot) points of HVS. The total amount of pivot-points depends on the value of the <emphasis>inumPointsX</emphasis>, <emphasis>inumPointsY</emphasis> and <emphasis>inumPointsZ</emphasis> arguments. In the case of a 3-dimensional HVS matrix you can define, for instance, 3 points for the X dimension, 5 for the Y dimension and 2 for the Z dimension. In this case, the total number of pivot-points is 3 * 5 * 2 = 30. With this set of pivot points, the cube Is divided into smaller cubed zones each one bounded by eight nearby points. Each point is numbered. The numeral order of these points is enstabilished in the following way: number zero is the first point, number 1 the second and so on. Assuming you are using a 3-dimensional HVS cube having the number of points above mentioned (i.e. 3, 5 and 2 respectively for the X, Y and Z axis), the first point (point zero) is the upper-left-front vertex of the cube, by facing the XY plane of the cube. The second point is the middle point of the upper front edge of the cube and so on. You can refer to the figure below in order to understand how the numeral order of the pivot-points proceeds:
+    </para>
+    <para>
+      For the 2-dimensional HVS, it is the same, by only omitting the rear cube face, so each zone is bounded by 4 pivot-points instead of 8. For the 1-dimensional HVS, the whole thing is even simpler because it is a line with the pivot-points proceeding from left to right. Each point is coupled with a snapshot.
+    </para>
+    <para>
+      Snapshot order, as stored into the <emphasis>iSnapTab</emphasis>, can or cannot follow the order of the pivot-points numbers. In fact it is possible to alter this order by means the <emphasis>iPositionsTab</emphasis>, a table that remaps the position of each snapshot in relation to the pivot points. The <emphasis>iPositionsTab</emphasis> is made up of the positions of the snapshots (contained in the <emphasis>iSnapTab</emphasis>) in the two-dimensional grid. Each subsequent element is actually a pointer representing the position in the <emphasis>iSnapTab</emphasis>. For example, in a 2-dimensional HVS matrix such as the following (in this case having <emphasis>inumPointsX</emphasis> = 3 and <emphasis>inumPointsY</emphasis> = 5:
+    </para>
+    <table frame="all" colsep="1">
+  <!--     <title></title> -->
+  
+      <tgroup cols="3">
+  <!--      <thead>
+          <row>
+            <entry></entry>
+          </row>
+        </thead>
+  -->
+        <tbody>
+          <row>
+            <entry>5</entry><entry>7</entry><entry>1</entry>
+          </row>
+          <row>
+            <entry>3</entry><entry>4</entry><entry>9</entry>
+          </row>
+          <row>
+            <entry>6</entry><entry>2</entry><entry>0</entry>
+          </row>
+          <row>
+            <entry>4</entry><entry>1</entry><entry>3</entry>
+          </row>
+          <row>
+            <entry>8</entry><entry>2</entry><entry>7</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+    <para>
+      These numbers (to be stored in the <emphasis>iSnapTab</emphasis> table by using, for instance, the GEN02 function generator) represents the snapshot position within the grid (in this case a 3x5 matrix). So, the first element 5, has index zero and represents the 6th (element zero is the first) snapshot contained in the iSnapTab, the second element 7 represents the 8th element of <emphasis>iSnapTab</emphasis> and so on. Summing up, the vertices of each zone (a cubed zone is delimited by 8 vertices; a squared zone by 4 vertices and a linear zone by 2 points) are coupled with a determinate snapshot, whose number is remapped by the <emphasis>iSnapTab</emphasis>.
+    </para>
+    <para>
+      Output values of the HVS are influenced by the motion pointer, a point whose position, in the HVS cube (or square or segment) is determined by the <emphasis>kx</emphasis>, <emphasis>ky</emphasis> and <emphasis>kz</emphasis> arguments. The values of these arguments, which must be in the 0 to 1 range, are externally set by the user. The output values, whose amount is equal to the <emphasis>inumParms</emphasis> argument, are stored in the <emphasis>iOutTab</emphasis>, a table that must be already allocated by the user, and must be at least <emphasis>inumParms</emphasis> size. In what way the motion pointer influences the output? Well, when the motion pointer falls in a determinate cubed zone, delimited, for instance, by 8 vertices (or pivot points), we assume that each vertex has associated a different snapshot (i.e. a set of <emphasis>inumParms</emphasis> values), well, the output will be the weighted average value of the 8 vertices, calculated according on the distance of the motion pointer from each of the 8 vertices. In the case of a default behavior, when the <emphasis>iConfigTab</emphasis> argument is not set, the exact output is calculated by using linear interpolation which is applied to each different parameter of the HVS. Anyway, it is possible to influence this behavior by setting the <emphasis>iConfigTab</emphasis> argument to a number of a table whose contents can affect one or more HVS parameters. The <emphasis>iConfigTab</emphasis> table elements are associated to each HVS parameter and their values affect the HVS output in the following way:
+      <itemizedlist>
+        <listitem>
+          <para>
+            If <emphasis>iConfigTab</emphasis> is equal to -1, corresponding output is skipped, i.e. the element is not calculated, leaving corresponding element value in the <emphasis>iOutTab</emphasis> unchanged;
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            If <emphasis>iConfigTab</emphasis> is equal to zero, then the normal HVS output is calculated (by using weighted average of the nearest vertex of current zone where it falls the motion pointer);
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            If <emphasis>iConfigTab</emphasis> element is equal to an integer number > zero, then the contents of a table having that number is used as a shape of a table-based interpolation.
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </refsect1>
+<!--  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the hvs3 opcode. It uses the file <ulink url="examples/hvs3.csd"><citetitle>hvs3.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the hvs3 opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/hvs3.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>-->
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="hvs1"><citetitle>hvs1</citetitle></link>,
+      <link linkend="hvs2"><citetitle>hvs2</citetitle></link>,
+      <link linkend="vphaseseg"><citetitle>vphaseseg</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namegabriel;</para>
+    <para>New in version 5.06</para>
+  </refsect1>
+</refentry>

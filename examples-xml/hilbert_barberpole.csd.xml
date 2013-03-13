@@ -1,0 +1,77 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in    No messages</emphasis>
+-odac           -iadc     -d     <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o hilbert_barberpole.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="comment">; Initialize the global variables.</emphasis>
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="comment">; kr must equal sr for the barberpole effect to work.</emphasis>
+<emphasis role="ohdr">kr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 1
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+
+<emphasis role="comment">; Instrument #1</emphasis>
+<emphasis role="oblock">instr</emphasis> 1
+  idur <emphasis role="op">=</emphasis> p3
+  ibegshift <emphasis role="op">=</emphasis> p4
+  iendshift <emphasis role="op">=</emphasis> p5
+
+  <emphasis role="comment">; sawtooth wave, not bandlimited</emphasis>
+  asaw   <emphasis role="opc">phasor</emphasis> 100
+  <emphasis role="comment">; add offset to center phasor amplitude between -.5 and .5</emphasis>
+  asaw <emphasis role="op">=</emphasis> asaw <emphasis role="op">-</emphasis> .5
+  <emphasis role="comment">; sawtooth wave, with amplitude of 10000</emphasis>
+  ain <emphasis role="op">=</emphasis> asaw <emphasis role="op">*</emphasis> 20000
+  
+  <emphasis role="comment">; The envelope of the frequency shift.</emphasis>
+  kfreq <emphasis role="opc">linseg</emphasis> ibegshift, idur, iendshift
+
+  <emphasis role="comment">; Phase quadrature output derived from input signal.</emphasis>
+  areal, aimag <emphasis role="opc">hilbert</emphasis> ain
+
+  <emphasis role="comment">; The quadrature oscillator.</emphasis>
+  asin <emphasis role="opc">oscili</emphasis> 1, kfreq, 1
+  acos <emphasis role="opc">oscili</emphasis> 1, kfreq, 1, .25
+
+  <emphasis role="comment">; Based on trignometric identities.</emphasis>
+  amod1 <emphasis role="op">=</emphasis> areal <emphasis role="op">*</emphasis> acos
+  amod2 <emphasis role="op">=</emphasis> aimag <emphasis role="op">*</emphasis> asin
+
+  <emphasis role="comment">; Calculate the up-shift and down-shift.</emphasis>
+  aupshift <emphasis role="op">=</emphasis> (amod1 <emphasis role="op">+</emphasis> amod2) <emphasis role="op">*</emphasis> 0.7
+  adownshift <emphasis role="op">=</emphasis> (amod1 <emphasis role="op">-</emphasis> amod2) <emphasis role="op">*</emphasis> 0.7
+
+  <emphasis role="comment">; Mix in the original signal to achieve the barberpole effect.</emphasis>
+  amix1 <emphasis role="op">=</emphasis> aupshift <emphasis role="op">+</emphasis> ain
+  amix2 <emphasis role="op">=</emphasis> aupshift <emphasis role="op">+</emphasis> ain
+  
+  <emphasis role="comment">; Make sure the output doesn't get louder than the original signal.</emphasis>
+  aout1 <emphasis role="opc">balance</emphasis> amix1, ain
+  aout2 <emphasis role="opc">balance</emphasis> amix2, ain
+
+  <emphasis role="opc">outs</emphasis> aout1, aout2
+<emphasis role="oblock">endin</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="comment">; Table 1: A sine wave for the quadrature oscillator.</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 16384 10 1
+
+<emphasis role="comment">; The score.</emphasis>
+<emphasis role="comment">; p4 = frequency shifter, starting frequency.</emphasis>
+<emphasis role="comment">; p5 = frequency shifter, ending frequency.</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 6 -10 10
+<emphasis role="stamnt">e</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

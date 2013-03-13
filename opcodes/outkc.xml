@@ -1,0 +1,104 @@
+
+<refentry id="outkc">
+<indexterm id="IndexOutkc"><primary>outkc</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Output</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>outkc</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>outkc</refname>
+
+    <refpurpose>
+      Sends MIDI controller messages at k-rate.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Sends MIDI controller messages at k-rate.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>outkc</command> kchn, knum, kvalue, kmin, kmax</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kchn</emphasis> -- MIDI channel number (1-16)
+    </para>
+
+    <para>
+      <emphasis>knum</emphasis> -- controller number (0-127 for example 1 = ModWheel; 2 = BreathControl etc.)
+    </para>
+
+    <para>
+      <emphasis>kvalue</emphasis> -- floating point value
+    </para>
+
+    <para>
+      <emphasis>kmin</emphasis> -- minimum floating point value (converted in MIDI integer value 0)
+    </para>
+
+    <para>
+      <emphasis>kmax</emphasis> -- maximum floating point value (converted in MIDI integer value 127 (7 bit))
+    </para>
+
+    <para>
+      <emphasis>outkc</emphasis> (k-rate MIDI controller output) sends controller messages to MIDI OUT device. It works only with MIDI instruments which recognize them. It can drive a different value of a parameter for each note currently active. 
+    </para>
+
+    <para>
+      It can scale the k-value floating-point argument according to the <emphasis>kmin</emphasis> and <emphasis>kmax</emphasis> values. For example: set <emphasis>kmin</emphasis> = 1.0 and <emphasis>kmax</emphasis> = 2.0.
+When the <emphasis>kvalue</emphasis> argument receives a 2.0 value, the opcode will send a 127 value to the MIDI OUT device. When the <emphasis>kvalue</emphasis> argument receives a 1.0 value, it will send a 0 value. k-rate opcodes send a message each time the MIDI converted value of argument <emphasis>kvalue</emphasis> changes.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the outkc opcode. It uses the file <ulink url="examples/outkc.csd"><citetitle>outkc.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the outkc opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/outkc.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="outiat"><citetitle>outiat</citetitle></link>,
+      <link linkend="outic14"><citetitle>outic14</citetitle></link>,
+      <link linkend="outic"><citetitle>outic</citetitle></link>,
+      <link linkend="outipat"><citetitle>outipat</citetitle></link>,
+      <link linkend="outipb"><citetitle>outipb</citetitle></link>,
+      <link linkend="outipc"><citetitle>outipc</citetitle></link>,
+      <link linkend="outkat"><citetitle>outkat</citetitle></link>,
+      <link linkend="outkc14"><citetitle>outkc14</citetitle></link>,
+      <link linkend="outkpat"><citetitle>outkpat</citetitle></link>,
+      <link linkend="outkpb"><citetitle>outkpb</citetitle></link>,
+      <link linkend="outkpc"><citetitle>outkpc</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namegabriel;</member>
+        <member>Italy</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.47</para>
+    <para>Thanks goes to &namerasmus; for pointing out the correct MIDI channel and controller number ranges.</para>
+  </refsect1>
+</refentry>

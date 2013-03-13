@@ -1,0 +1,111 @@
+
+<refentry id="ftgentmp">
+<indexterm id="Indexftgentmp"><primary>ftgentmp</primary></indexterm>
+  <refentryinfo><title>Table Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ftgentmp</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ftgentmp</refname>
+    <refpurpose>
+       Generate a score function table from within the orchestra, which is deleted at the end of the note.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Generate a score function table from within the orchestra,
+    which is optionally deleted at the end of the note.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ifno <command>ftgentmp</command> ip1, ip2dummy, isize, igen, iarga, iargb, ...</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+    <emphasis>ifno</emphasis> --  either a requested or automatically
+    assigned table number above 100.
+    </para>
+    <para>
+    <emphasis>ip1</emphasis> -- the number of the table to be
+    generated or 0 if the number is to be assigned, in which case the
+    table is deleted at the end of the note activation.
+    </para>
+    <para>
+
+    <emphasis>ip2dummy</emphasis> -- ignored.
+    </para>
+    <para>
+      <emphasis>isize</emphasis> -- table size. Corresponds to p3 of the score <emphasis>f statement</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>igen</emphasis> -- function table <emphasis>GEN</emphasis> routine. Corresponds to p4 of the score <emphasis>f statement</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>iarga, iargb, ...</emphasis> -- function table arguments. Correspond to p5 through p<emphasis>n</emphasis> of the score <emphasis>f statement</emphasis>.
+    </para>
+    <note>
+      <para>Csound was originally designed to support tables with power of two sizes only. Though this has changed in recent versions (you can use any size by using a negative number), many opcodes will not accept them.</para>
+    </note>
+  </refsect1>
+<!--
+  <refsect1>
+    <title>Performance</title>
+  </refsect1>-->
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the ftgentmp opcode. It uses the file <ulink url="examples/ftgentmp.csd"><citetitle>ftgentmp.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the ftgentmp opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/ftgentmp.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      The output of this csd shows that the tables are destroyed after the instrument instances that created them terminates, causing an init error if the tables are queried.
+<screen>
+SECTION 1:
+new alloc for instr 1:
+ftable 101:
+instr 1:  ifno = 101.000
+B  0.000 ..  2.000 T  2.000 TT  2.000 M:  0.00000  0.00000
+new alloc for instr 2:
+instr 2:  #i0 = 512.000
+B  2.000 ..  5.000 T  5.001 TT  5.001 M:  0.00000  0.00000
+new alloc for instr 1:
+ftable 102:
+instr 1:  ifno = 102.000
+B  5.000 ..  7.000 T  7.001 TT  7.001 M:  0.00000  0.00000
+instr 2:  #i0 = 512.000
+B  7.000 .. 12.000 T 11.999 TT 11.999 M:  0.00000  0.00000
+INIT ERROR in instr 2: Invalid ftable no. 101.000000
+#i0     ftlen.i p4
+instr 2:  #i0 = -1.000
+         B 12.000 - note deleted.  i2 had 1 init errors
+B 12.000 .. 17.000 T 17.000 TT 17.000 M:  0.00000  0.00000
+INIT ERROR in instr 2: Invalid ftable no. 102.000000
+#i0     ftlen.i p4
+instr 2:  #i0 = -1.000
+         B 17.000 - note deleted.  i2 had 1 init errors
+</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Authors: &nameistvan;</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

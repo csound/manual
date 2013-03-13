@@ -1,0 +1,147 @@
+
+<refentry id="readk4">
+<indexterm id="IndexReadk4"><primary>readk4</primary></indexterm>
+  <refentryinfo><title>Signal I/O:File I/O</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>readk4</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>readk4</refname>
+    <refpurpose>
+      Periodically reads four orchestra control-signal values from an external file.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Periodically reads four orchestra control-signal values from an external file.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kr1, kr2, kr3, kr4 <command>readk4</command> ifilname, iformat, iprd</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifilname</emphasis> -- an integer N denoting a file named "readk.N" or a character string (in double quotes, spaces permitted) denoting the external file name. For a string, it may either be a full path name with directory specified or a simple filename.  In the later case, the file is sought first in the current directory, then in <link linkend="CommandEnvironment"><citetitle>SSDIR</citetitle></link>, and finally in <link linkend="CommandEnvironment"><citetitle>SFDIR</citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis>iformat</emphasis> -- specifies the input data format:
+      <itemizedlist>
+        <listitem>
+          <para>1 = 8-bit signed integers (char)</para>
+        </listitem>
+
+        <listitem>
+          <para>4 = 16-bit short integers</para>
+        </listitem>
+
+        <listitem>
+          <para>5 = 32-bit long integers</para>
+        </listitem>
+
+        <listitem>
+          <para>6 = 32-bit floats</para>
+        </listitem>
+
+        <listitem>
+          <para>7 = ASCII long integers (plain text)</para>
+        </listitem>
+
+        <listitem>
+          <para>8 = ASCII floats (plain text)</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      Note that A-law and U-law formats are not available, and that all formats except the last two are binary. The input file should be a "raw", headerless data file.
+    </para>
+
+    <para>
+      <emphasis>iprd</emphasis> -- the rate (period) in seconds, rounded to the nearest orchestra control period, at which the signals are read from the input file.  A value of 0 implies one control period (the enforced minimum), which will read new values at the orchestra control rate.  Longer periods will cause the same values to repeat for more than one control period.
+      <!--unless interpolation is used.-->
+    </para>
+
+
+<!--    <para>
+      <emphasis>interp</emphasis> - (optional) interpolate between values.
+    </para>-->
+<!--
+    <para>
+      <emphasis>ipol</emphasis> - if non-zero, and <emphasis>iprd</emphasis> implies more than one control period, interpolate the k- signals between the periodic reads from the external file. If the value is 0, repeat each signal between frames. Currently not supported.
+    </para>-->
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kr1, kr2, kr3, kr4</emphasis> -- output of the signals read from <emphasis>ifilname</emphasis>.
+    </para>
+
+    <para>
+      This opcode allows four generated control signal values to be read from a named external file. The file should contain no header information but it should contain a regularly sampled time series of control values. For binary formats, the individual samples of each signal are interleaved. For ASCII text formats, the values are assumed to be separated by at least one whitespace character.  The four "channels" in a sample frame may be on the same line or separated by newline characters, it does not matter. There may be any number of <emphasis>readk4</emphasis> opcodes in an instrument or orchestra and they may read from the same or different files.
+    </para>
+  </refsect1>
+
+<refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the readk4 opcode. It uses the file <ulink url="examples/readk4.csd"><citetitle>readk4.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the readk4 opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/readk4.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      The output should include lines like these:
+      <screen>
+WRITING:
+kcf = 1122.469723, kq = 11.762839, kdb = -14.313445, kpan = 0.538142
+kcf = 1122.469723, kq = 11.762839, kdb = -14.313445, kpan = 0.538142
+kcf = 1148.638412, kq = 12.040490, kdb = -14.061868, kpan = 0.552205
+kcf = 165.796855, kq = 18.523179, kdb = -15.816977, kpan = 0.901528
+kcf = 147.729960, kq = 13.071911, kdb = -11.924531, kpan = 0.982518
+kcf = 497.430113, kq = 13.605512, kdb = -21.586611, kpan = 0.179229
+
+READING:
+WARNING: Seeding from current time 3308160476
+
+kcf = 1122.469700, kq = 11.762800, kdb = -14.313400, kpan = 0.538100
+kcf = 1122.469700, kq = 11.762800, kdb = -14.313400, kpan = 0.538100
+kcf = 1148.638400, kq = 12.040500, kdb = -14.061900, kpan = 0.552200
+kcf = 165.796900, kq = 18.523200, kdb = -15.817000, kpan = 0.901500
+kcf = 147.730000, kq = 13.071900, kdb = -11.924500, kpan = 0.982500
+kcf = 497.430100, kq = 13.605500, kdb = -21.586600, kpan = 0.179200
+      </screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="dumpk"><citetitle>dumpk</citetitle></link>,
+      <link linkend="dumpk2"><citetitle>dumpk2</citetitle></link>,
+      <link linkend="dumpk3"><citetitle>dumpk3</citetitle></link>,
+      <link linkend="dumpk4"><citetitle>dumpk4</citetitle></link>,
+      <link linkend="readk"><citetitle>readk</citetitle></link>,
+      <link linkend="readk2"><citetitle>readk2</citetitle></link>,
+      <link linkend="readk3"><citetitle>readk3</citetitle></link>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Credits</title>
+    <para>By: John ffitch and Barry Vercoe</para>
+    <para>1999 or earlier</para>
+  </refsect1>
+</refentry>

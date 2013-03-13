@@ -1,0 +1,85 @@
+
+<refentry id="max_k">
+<indexterm id="Indexmax_k"><primary>max_k</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Comparators and Accumulators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>max_k</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>max_k</refname>
+    <refpurpose>
+      Local maximum (or minimum) value of an incoming asig signal
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>max_k</emphasis> outputs the local maximum (or minimum) value of  the incoming asig signal, checked in the time interval between ktrig has become true twice.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>knumkout <command>max_k</command> asig, ktrig, itype</synopsis>
+  </refsect1>
+ 
+    <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>itype</emphasis> - itype determinates the behaviour of max_k (see below)
+    </para>
+
+  </refsect1>
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asig</emphasis> - incoming (input) signal
+    </para>
+    <para>
+      <emphasis>ktrig</emphasis> - trigger signal
+    </para>
+    <para>
+      max_k outputs the local maximum (or minimum) value of  the incoming <emphasis>asig</emphasis> signal, checked in the time interval between <emphasis>ktrig</emphasis> has become true twice. <emphasis>itype</emphasis> determinates the behaviour of max_k:</para>
+    <para>
+      1 - absolute maximum (sign of negative values is changed to positive before evaluation).
+    </para>
+    <para>
+      2 - actual maximum.
+    </para>
+    <para>
+      3 - actual minimum.
+    </para>
+    <para>
+      4 - calculate average value of <emphasis>asig</emphasis> in the
+      time interval since the last trigger.
+    </para>
+    <para>
+      This opcode can be useful in several situations, for example to implement a vu-meter.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the max_k opcode. It uses the file <ulink url="examples/max_k.csd"><citetitle>max_k.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the max_k opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/max_k.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Written by &namegabriel;.</para>
+    <para>New in Csound 5 (Previously available only on
+    CsoundAV)</para>
+    <para>Fixed to agree with documentation in 5.15</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,55 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac  -Ma   <emphasis role="comment">;;;realtime audio out and midi in (on all inputs)</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if RT audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o max_k.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+
+	<emphasis role="opc">FLpanel</emphasis>	"This Panel contains VU<emphasis role="op">-</emphasis>meter",300,100
+gk1,gih1 <emphasis role="opc">FLslider</emphasis> "VU<emphasis role="op">-</emphasis>meter", 0,1,0,1, <emphasis role="op">-</emphasis>1, 250,30, 30,30
+	<emphasis role="opc">FLsetColor2</emphasis> 50, 50, 255,  gih1
+	<emphasis role="opc">FLpanel_end</emphasis>
+	<emphasis role="opc">FLrun</emphasis>
+
+ga1 <emphasis role="opc">init</emphasis> 0
+	
+<emphasis role="oblock">instr</emphasis> 1
+
+kenv	<emphasis role="opc">linsegr</emphasis>	0,.5,.7,.5,.5,.2,0
+ifreq	<emphasis role="opc">cpsmidi</emphasis>
+a1	<emphasis role="opc">poscil</emphasis>	<emphasis role="ohdr">0dbfs</emphasis><emphasis role="op">*</emphasis>kenv, ifreq, 1
+ga1	<emphasis role="op">=</emphasis>	ga1<emphasis role="op">+</emphasis>a1
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 2
+
+	<emphasis role="opc">outs</emphasis>	ga1, ga1
+ktrig	<emphasis role="opc">metro</emphasis>	25					<emphasis role="comment">;refresh 25 times per second</emphasis>
+kval	<emphasis role="opc">max_k</emphasis>	ga1, ktrig, 1
+	<emphasis role="opc">FLsetVal</emphasis> ktrig, kval, gih1
+ga1	<emphasis role="op">=</emphasis>	0
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis>1 0 1024 10 1
+
+<emphasis role="stamnt">i</emphasis>2 0 3600
+<emphasis role="stamnt">f</emphasis>0 3600
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

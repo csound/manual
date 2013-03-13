@@ -1,0 +1,104 @@
+
+<refentry id="event">
+<indexterm id="IndexEvent"><primary>event</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Invocation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>event</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>event</refname>
+    <refpurpose>
+      Generates a score event from an instrument.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Generates a score event from an instrument.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>event</command> &quot;scorechar&quot;, kinsnum, kdelay, kdur, [, kp4] [, kp5] [, ...]</synopsis>
+    <synopsis><command>event</command> &quot;scorechar&quot;, &quot;insname&quot;, kdelay, kdur, [, kp4] [, kp5] [, ...]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis><quote>scorechar</quote></emphasis> -- A string (in double-quotes) representing the first p-field in a score statement. This is usually <link linkend="e"><citetitle><quote>e</quote></citetitle></link>, <link linkend="f"><citetitle><quote>f</quote></citetitle></link>, or <link linkend="i"><citetitle><quote>i</quote></citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis><quote>insname</quote></emphasis> -- A string (in double-quotes) representing a named instrument.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kinsnum</emphasis> -- The instrument to use for the event. This corresponds to the first p-field, p1, in a score statement.
+    </para>
+
+    <para>
+      <emphasis>kdelay</emphasis> -- When (in seconds) the event will occur from the current performance time. This corresponds to the second p-field, p2, in a score statement.
+    </para>
+
+    <para>
+      <emphasis>kdur</emphasis> -- How long (in seconds) the event will happen. This corresponds to the third p-field, p3, in a score statement.
+    </para>
+
+    <para>
+      <emphasis>kp4, kp5, ...</emphasis> (optional) -- Parameters representing additional p-field in a score statement. It starts with the fourth p-field, p4.
+    </para>
+    <note>
+      <para> Note that the <emphasis>event</emphasis> opcode cannot accept string p-fields. If you need to pass strings when instantiating an instrument, use the <link linkend="scoreline"><citetitle>scoreline</citetitle></link> or <link linkend="scoreline_i"><citetitle>scoreline_i</citetitle></link> opcode.</para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the event opcode. It uses the file <ulink url="examples/event.csd"><citetitle>event.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the event opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/event.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+    <para>
+      Here is an example of the event opcode using a named instrument. It uses the file <ulink url="examples/event_named.csd"><citetitle>event_named.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the event opcode using a named instrument.</title>
+
+          <xi:include href="examples-xml/event_named.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See also</title>
+    <para><link linkend="event_i"><citetitle>event_i</citetitle></link>,
+    <link linkend="schedule"><citetitle>schedule</citetitle></link>,
+    <link linkend="schedwhen"><citetitle>schedwhen</citetitle></link>,
+    <link linkend="schedkwhen"><citetitle>schedkwhen</citetitle></link>,
+    <link linkend="schedkwhennamed"><citetitle>schedkwhennamed</citetitle></link>,
+    <link linkend="scoreline"><citetitle>scoreline</citetitle></link>,
+    <link linkend="scoreline_i"><citetitle>scoreline_i</citetitle></link></para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Examples written by &namekevin;.</para>
+    <para>New in version 4.17</para>
+    <para>Thanks goes to Matt Ingalls for helping to fix the example.</para>
+    <para>Thanks goes to Matt Ingalls for helping clarify the kwhen/kdelay parameter.</para>
+  </refsect1>
+</refentry>

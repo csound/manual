@@ -1,0 +1,38 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac  <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o pvsmooth.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1
+
+kacf <emphasis role="op">=</emphasis> p4
+kfcf <emphasis role="op">=</emphasis> p5
+asig <emphasis role="opc">soundin</emphasis> "fox.wav"
+fsig <emphasis role="opc">pvsanal</emphasis> asig, 1024, 256, 1024, 1	<emphasis role="comment">; analyse it</emphasis>
+ftps <emphasis role="opc">pvsmooth</emphasis> fsig, kacf, kfcf
+atps <emphasis role="opc">pvsynth</emphasis> ftps			<emphasis role="comment">; synthesise it                      </emphasis>
+     <emphasis role="opc">outs</emphasis> atps<emphasis role="op">*</emphasis>3, atps<emphasis role="op">*</emphasis>3
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="comment">;       amp  freq </emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 3 0.01 0.01	<emphasis role="comment">;smooth amplitude and frequency with cutoff frequency of filter at 1% of 1/2 frame-rate (ca 0.86 Hz)</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 + 3  1   0.01	<emphasis role="comment">;no smoothing on amplitude, but frequency with cf at 1% of 1/2 frame-rate (ca 0.86 Hz)</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 + 10 .001  1	<emphasis role="comment">;smooth amplitude with cf at 0.1% of 1/2 frame-rate (ca 0.086 Hz)</emphasis>
+			<emphasis role="comment">;and no smoothing of frequency</emphasis>
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

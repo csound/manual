@@ -1,0 +1,97 @@
+
+<refentry id="socksend">
+<indexterm id="Indexsocksend"><primary>socksend</primary></indexterm>
+  <refentryinfo><title>Network</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>socksend</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>socksend</refname>
+    <refpurpose>
+      Sends data to other processes using the low-level UDP or TCP protocols
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Transmits data directly using the UDP (<emphasis>socksend</emphasis> and
+      <emphasis>socksends</emphasis>) or TCP (<emphasis>stsend</emphasis>)
+      protocol onto a network. The data is not subject to any encoding or special
+      routing. The <emphasis>socksends</emphasis> opcode send a stereo signal interleaved.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>socksend</command> asig, Sipaddr, iport, ilength</synopsis>
+    <synopsis><command>socksends</command> asigl, asigr, Sipaddr, iport,
+    ilength</synopsis>
+    <synopsis><command>stsend</command> asig, Sipaddr, iport</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>Sipaddr</emphasis>
+      -- a string that is the IP address of the receiver in standard
+    4-octet dotted form.
+    </para>
+
+    <para>
+      <emphasis>iport</emphasis>
+      -- the number of the port that is used for the communication.
+    </para>
+
+    <para>
+      <emphasis>ilength</emphasis>
+      -- the length of the individual packets in UDP transmission.
+      This number must be sufficiently small to fit a single MTU,
+      which is set to the save value of 1456.  In UDP transmissions
+      the receiver needs to know this value
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asig, asigl, asigr</emphasis> -- audio data to be transmitted.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Example</title>
+    <para>
+      The example shows a simple sine wave being sent just
+    once to a computer called "172.16.0.255", on port 7777 using UDP.
+    Note that .255 is often used for broadcasting.
+    </para>
+
+      <informalexample>
+        <programlisting>
+        <emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+        <emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 100
+        <emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 1
+
+
+        <emphasis role="oblock">instr</emphasis>   1
+        a1 <emphasis role="opc">oscil</emphasis>        20000,441,1
+           <emphasis role="opc">socksend</emphasis>     a1, &quot;172.16.0.255&quot;,7777, 200
+        <emphasis role="oblock">endin</emphasis></programlisting>
+      </informalexample>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>2006</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

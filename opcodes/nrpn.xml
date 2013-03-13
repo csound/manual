@@ -1,0 +1,76 @@
+
+<refentry id="nrpn">
+<indexterm id="IndexNrpn"><primary>nrpn</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Output</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>nrpn</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>nrpn</refname>
+
+    <refpurpose>
+      Sends a Non-Registered Parameter Number to the MIDI OUT port.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Sends a NPRN (Non-Registered Parameter Number) message to the MIDI OUT port each time one of the input arguments changes.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>nrpn</command> kchan, kparmnum, kparmvalue</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kchan</emphasis> -- MIDI channel (1-16)
+    </para>
+
+    <para>
+      <emphasis>kparmnum</emphasis> -- number of NRPN parameter
+    </para>
+
+    <para>
+      <emphasis>kparmvalue</emphasis> -- value of NRPN parameter
+    </para>
+
+    <para>
+      This opcode sends new message when the MIDI translated value of one of the input arguments changes. It operates at k-rate. Useful with the MIDI instruments that recognize NRPNs (for example with the newest sound-cards with internal MIDI synthesizer such as SB AWE32, AWE64, GUS etc. in which each patch parameter can be changed during the performance via NRPN)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the nrpn opcode. It uses the file <ulink url="examples/nrpn.csd"><citetitle>nrpn.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the nrpn opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+        <para>This example generates notes for every note received on the MIDI input. It generates MIDI notes on csound's MIDI output, so be sure to connect something.</para>
+          <xi:include href="examples-xml/nrpn.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namegabriel;</member>
+        <member>Italy</member>
+        <member>1998</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.492</para>
+    <para>Thanks goes to &namerasmus; for pointing out the correct MIDI channel and controller number ranges.</para>
+  </refsect1>
+</refentry>

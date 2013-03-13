@@ -1,0 +1,60 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in    No messages</emphasis>
+-odac           -iadc     -d     <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o FLvalue.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="comment">; Using the opcode flvalue to display the output of a slider </emphasis>
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">kr</emphasis> <emphasis role="op">=</emphasis> 441
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 100
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 1
+
+<emphasis role="opc">FLpanel</emphasis> "Value Display Box", 900, 200, 50, 50
+    <emphasis role="comment">; Width of the value display box in pixels</emphasis>
+    iwidth <emphasis role="op">=</emphasis> 50
+    <emphasis role="comment">; Height of the value display box in pixels</emphasis>
+    iheight <emphasis role="op">=</emphasis> 20
+    <emphasis role="comment">; Distance of the left edge of the value display</emphasis>
+    <emphasis role="comment">; box from the left edge of the panel</emphasis>
+    ix <emphasis role="op">=</emphasis> 65
+    <emphasis role="comment">; Distance of the top edge of the value display</emphasis>
+    <emphasis role="comment">; box from the top edge of the panel</emphasis>
+    iy <emphasis role="op">=</emphasis> 55
+
+    idisp <emphasis role="opc">FLvalue</emphasis> "Hertz", iwidth, iheight, ix, iy
+    gkfreq, ihandle <emphasis role="opc">FLslider</emphasis> "Frequency", 200, 5000, <emphasis role="op">-</emphasis>1, 5, idisp, 750, 30, 125, 50
+    <emphasis role="opc">FLsetVal_i</emphasis> 500, ihandle
+<emphasis role="comment">; End of panel contents</emphasis>
+<emphasis role="opc">FLpanelEnd</emphasis>
+<emphasis role="comment">; Run the widget thread!</emphasis>
+<emphasis role="opc">FLrun</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 1
+    iamp <emphasis role="op">=</emphasis> 15000
+    ifn <emphasis role="op">=</emphasis> 1
+    asig <emphasis role="opc">oscili</emphasis> iamp, gkfreq, ifn
+    <emphasis role="opc">out</emphasis> asig
+<emphasis role="oblock">endin</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="comment">; Function table that defines a single cycle</emphasis>
+<emphasis role="comment">; of a sine wave.</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 1024 10 1
+
+<emphasis role="comment">; Instrument 1 will play a note for 1 hour.</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 3600
+<emphasis role="stamnt">e</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

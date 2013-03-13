@@ -1,0 +1,34 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in    No messages</emphasis>
+-odac           -iadc     -d     <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o flooper2.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="ohdr">sr</emphasis>      <emphasis role="op">=</emphasis>  44100
+<emphasis role="ohdr">ksmps</emphasis>   <emphasis role="op">=</emphasis>  10
+<emphasis role="ohdr">nchnls</emphasis>  <emphasis role="op">=</emphasis>  1
+
+       <emphasis role="oblock">instr</emphasis> 1
+<emphasis role="comment">; looping back and forth,  0.05 crossfade</emphasis>
+aout	<emphasis role="opc">flooper2</emphasis>	16000, 1, 0, 1.6, 0.05, 1, 0, 2  
+	<emphasis role="opc">out</emphasis>	aout
+
+       <emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="comment">; Table #1: an audio file.</emphasis>
+<emphasis role="comment">; Its table size is deferred,</emphasis>
+<emphasis role="comment">; and format taken from the soundfile header.</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 0 1 "beats.wav" 0 0 0
+
+<emphasis role="stamnt">i</emphasis> 1 0 6.5
+<emphasis role="stamnt">e</emphasis>
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

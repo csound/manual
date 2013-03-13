@@ -1,0 +1,122 @@
+
+<refentry id="vbaplsinit">
+<indexterm id="IndexVbaplsinit"><primary>vbaplsinit</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Panning and Spatialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vbaplsinit</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vbaplsinit</refname>
+    <refpurpose>
+      Configures VBAP output according to loudspeaker parameters.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Configures VBAP output according to loudspeaker parameters.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>vbaplsinit</command> idim, ilsnum [, idir1] [, idir2] [...] [, idir32]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>idim</emphasis> -- dimensionality of loudspeaker
+      array. Either 2 or 3.  If the dimension has a fractional part
+      then that is used as the index of the layout created (used in
+      <emphasis>vbap</emphasis>, <emphasis>vbapz</emphasis> and
+      <emphasis>vbapg</emphasis> only).  The factional part should be
+      between .00 and .99.
+    </para>
+
+    <para>
+      <emphasis>ilsnum</emphasis> -- number of loudspeakers. In two
+      dimensions, the number can vary from 2 to 64. In three
+      dimensions, the number can vary from 3 and 64.
+    </para>
+
+    <para>
+      <emphasis>idir1, idir2, ..., idir32</emphasis> -- directions of
+      loudspeakers. Number of directions must be less than or equal to
+      16. In two-dimensional loudspeaker positioning,
+      <emphasis>idir</emphasis>n is the azimuth angle respective to
+      <emphasis>n</emphasis>th channel.  In three-dimensional
+      loudspeaker positioning, fields are the azimuth and elevation
+      angles of each loudspeaker consequently
+      (<emphasis>azi1</emphasis>, <emphasis>ele1</emphasis>,
+      <emphasis>azi2</emphasis>, <emphasis>ele2</emphasis>, etc.).
+    </para>
+    <para>
+      <note> In 2 dimensions the angle between two adjacent speakers
+      must be less than 179 degrees (170 degrees in earlier versions).
+      This is a restriction of the algorithm.</note>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      VBAP distributes the signal using loudspeaker data configured with <emphasis>vbaplsinit</emphasis>. The signal is applied to, at most, two loudspeakers in 2-D loudspeaker configurations, and three loudspeakers in 3-D loudspeaker configurations. If the virtual source is panned outside the region spanned by loudspeakers, the nearest loudspeakers are used in panning.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the vbaplsinit opcode. It uses the file <ulink url="examples/vbaplsinit.csd"><citetitle>vbaplsinit.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the vbaplsinit opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/vbaplsinit.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      See the other entries of the vbap opcodes for different examples.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Reference</title>
+    <para>
+      Ville Pulkki: <quote>Virtual Sound Source Positioning Using Vector Base Amplitude Panning</quote> <emphasis>Journal of the Audio Engineering Society</emphasis>, 1997 June, Vol. 45/6, p. 456.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="vbap"><citetitle>vbap</citetitle></link>,
+      <link linkend="vbapg"><citetitle>vbapg</citetitle></link>,
+      <link linkend="vbap4"><citetitle>vbap4</citetitle></link>,
+      <link linkend="vbap4move"><citetitle>vbap4move</citetitle></link>,
+      <link linkend="vbap8"><citetitle>vbap8</citetitle></link>,
+      <link linkend="vbap8move"><citetitle>vbap8move</citetitle></link>,
+      <link linkend="vbap16"><citetitle>vbap16</citetitle></link>,
+      <link linkend="vbap16move"><citetitle>vbap16move</citetitle></link>,
+      <link linkend="vbapz"><citetitle>vbapz</citetitle></link>,
+      <link linkend="vbapzmove"><citetitle>vbapzmove</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Ville Pulkki</member>
+        <member>Sibelius Academy Computer Music Studio</member>
+        <member>Laboratory of Acoustics and Audio Signal Processing</member>
+        <member>Helsinki University of Technology</member>
+        <member>Helsinki, Finland</member>
+        <member>May 2000</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound Version 4.07</para>
+    <para>Multiple layouts new ib version 5.17.14</para>
+  </refsect1>
+</refentry>

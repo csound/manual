@@ -1,0 +1,84 @@
+
+<refentry id="pop">
+<indexterm id="Indexpop"><primary>pop</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Stacks</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pop</refentrytitle>
+  </refmeta>
+  
+  <refnamediv>
+    <refname>pop</refname>
+    <refpurpose>
+      Pops values from the global stack.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Pops values from the global stack.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>xval1, [xval2, ... , xval31] <command>pop</command></synopsis>
+    <synopsis>ival1, [ival2, ... , ival31] <command>pop</command></synopsis>
+  </refsect1>
+  
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ival1 ... ival31 </emphasis>  - values to be popped from the stack.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>xval1 ... xval31 </emphasis>  - values to be popped from the stack.
+    </para>
+    <para>
+      The given values are poped from  the stack. The global stack works in LIFO order: after multiple <link linkend="push"><citetitle>push</citetitle></link> calls, <emphasis>pop</emphasis> should be used in reverse order.
+    </para>
+    <para>
+      Each <link linkend="push"><citetitle>push</citetitle></link> or <emphasis>pop</emphasis> operation can work on a "bundle" of multiple variables. When using <emphasis>pop</emphasis>, the number, type, and order of items must match those used by the corresponding <link linkend="push"><citetitle>push</citetitle></link>. That is, after a 'push Sfoo, ibar', you must call something like 'Sbar, ifoo pop', and not e.g. two separate 'pop' statements.
+    </para>
+    <para>
+      <link linkend="push"><citetitle>push</citetitle></link> and <emphasis>pop</emphasis> opcodes can take variables of any type (i-, k-, a- and strings). Use of any combination of i, k, a, and S types is allowed. Variables of type 'a' and 'k' are passed at performance time only, while 'i' and 'S' are passed at init time only.
+    </para>
+    <para>
+      push/pop for a, k, i, and S types copy data by value. By contrast, <link linkend="push_f"><citetitle>push_f</citetitle></link> only pushes a "reference" to the f-signal, and then the corresponding <link linkend="pop_f"><citetitle>pop_f</citetitle></link> will copy directly from the original variable to its output signal. For this reason, changing the source f-signal of <link linkend="push_f"><citetitle>push_f</citetitle></link> before <link linkend="pop_f"><citetitle>pop_f</citetitle></link> is called is not recommended, and if the instrument instance owning the variable that was passed by push_f is deactivated before pop_f is called, undefined behavior may occur.
+    </para>
+    <para>
+      Any stack errors (trying to push when there is no more space, or pop from an empty stack, inconsistent number or type of arguments, etc.) are fatal and terminate performance.
+    </para>
+  </refsect1>
+  <refsect1>
+     
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the pop opcode. It uses the file <ulink url="examples/pop.csd"><citetitle>pop.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the pop opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/pop.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+    <title>See also</title>
+    <para>
+      <link linkend="stack"><citetitle>stack</citetitle></link>,
+      <link linkend="push"><citetitle>push</citetitle></link>,
+      <link linkend="pop_f"><citetitle>pop_f</citetitle></link> and 
+      <link linkend="push_f"><citetitle>push_f</citetitle></link>.
+    </para>
+   <para>Using this opcode is somewhat hackish, as you can read here: <ulink url="http://csound.1045644.n5.nabble.com/passing-a-string-to-a-UDO-td1099284.html"></ulink></para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Credits</title>
+    <para>By: &nameistvan;.</para>
+    <para>2006</para>
+  </refsect1>
+</refentry>

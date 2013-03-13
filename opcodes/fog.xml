@@ -1,0 +1,119 @@
+
+<refentry id="fog">
+<indexterm id="IndexFog"><primary>fog</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Granular Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>fog</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>fog</refname>
+    <refpurpose>
+      Audio output is a succession of grains derived from data in a stored function table
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Audio output is a succession of grains derived from data in a stored function table <emphasis>ifna</emphasis>. The local envelope of these grains and their timing is based on the model of <emphasis>fof</emphasis> synthesis and permits detailed control of the granular synthesis.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>fog</command> xamp, xdens, xtrans, aspd, koct, kband, kris, kdur, kdec, \
+      iolaps, ifna, ifnb, itotdur [, iphs] [, itmode] [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iolaps</emphasis> -- number of pre-located spaces needed to hold overlapping grain data. Overlaps are density dependent, and the space required depends on the maximum value of <emphasis>xdens</emphasis> * <emphasis>kdur</emphasis>. Can be over-estimated at no computation cost. Uses less than 50 bytes of memory per <emphasis>iolap</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>ifna</emphasis>, <emphasis>ifnb</emphasis> -- table numbers of two stored functions. The first is the data used for granulation, usually from a soundfile (<link linkend="GEN01"><citetitle>GEN01</citetitle></link>). The second is a rise shape, used forwards and backwards to shape the grain rise and decay; this is normally a sigmoid (<link linkend="GEN19"><citetitle>GEN19</citetitle></link>) but may be linear (<link linkend="GEN05"><citetitle>GEN05</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis>itotdur</emphasis> -- total time during which this <emphasis>fog</emphasis> will be active. Normally set to p3. No new grain is created if it cannot complete its <emphasis>kdur</emphasis> within the remaining <emphasis>itotdur</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>iphs</emphasis> (optional) -- initial phase of the fundamental, expressed as a fraction of a cycle (0 to 1). The default value is 0.
+    </para>
+
+    <para>
+      <emphasis>itmode</emphasis> (optional) -- transposition mode. If zero, each grain keeps the <emphasis>xtrans</emphasis> value it was launched with. If non-zero, each is influenced by <emphasis>xtrans</emphasis> continuously. The default value is 0.
+    </para>
+
+    <para>
+      <emphasis>iskip</emphasis> (optional, default=0) -- If non-zero, skip initialization (allows legato use).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>xamp</emphasis> -- amplitude factor. Amplitude is also dependent on the number of overlapping grains, the interaction of the rise shape (<emphasis>ifnb</emphasis>) and the exponential decay (<emphasis>kband</emphasis>), and the scaling of the grain waveform (<emphasis>ifna</emphasis>). The actual amplitude may therefore exceed <emphasis>xamp</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>xdens</emphasis> -- density. The frequency of grains per second.
+    </para>
+
+    <para>
+      <emphasis>xtrans</emphasis> -- transposition factor. The rate at which data from the stored function table <emphasis>ifna</emphasis> is read within each grain. This has the effect of transposing the original material. A value of 1 produces the original pitch. Higher values transpose upwards, lower values downwards. Negative values result in the function table being read backwards.
+    </para>
+
+<!--    <para>
+      <emphasis>aspd</emphasis> - speed. The rate at which successive grains advance through the stored function table <emphasis>ifna</emphasis>. <emphasis>aspd</emphasis> is in the form of an index (0 to 1) to <emphasis>ifna</emphasis>. This determines the movement of a pointer used as the starting point for reading data within each grain. (<emphasis>xtrans</emphasis> determines the rate at which data is read starting from this pointer.)
+    </para>-->
+    <para>
+      <emphasis>aspd</emphasis> -- Starting index pointer. <emphasis>aspd</emphasis> is the normalized index (0 to 1) to table <emphasis>ifna</emphasis> that determines the movement of a pointer used as the starting point for reading data within each grain. (<emphasis>xtrans</emphasis> determines the rate at which data is read starting from this pointer.)
+    </para>
+
+    <para>
+      <emphasis>koct</emphasis> -- octaviation index. The operation of this parameter is identical to that in <link linkend="fof"><citetitle>fof</citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis>kband</emphasis>, <emphasis>kris</emphasis>, <emphasis>kdur</emphasis>, <emphasis>kdec</emphasis> -- grain envelope shape. These parameters determine the exponential decay (<emphasis>kband</emphasis>), and the rise (<emphasis>kris</emphasis>), overall duration (<emphasis>kdur</emphasis>,) and decay (<emphasis>kdec</emphasis> ) times of the grain envelope. Their operation is identical to that of the local envelope parameters in <emphasis>fof</emphasis>.
+    </para>
+
+  </refsect1>
+  
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the fog opcode. It uses the file <ulink url="examples/fog.csd"><citetitle>fog.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the fog opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/fog.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Michael Clark</member>
+        <member>Huddersfield</member>
+        <member>May 1997</member>
+      </simplelist>
+    </para>
+
+    <para>New in version 3.46</para>
+    <para>
+      The Csound fog generator is by Michael Clarke, extending his earlier work based on IRCAM's FOF algorithm.
+    </para>
+    <para>Added notes by &namerasmus; on September 2002.</para>
+  </refsect1>
+</refentry>

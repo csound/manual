@@ -1,0 +1,97 @@
+
+<refentry id="zfilter2">
+<indexterm id="IndexZfilter2"><primary>zfilter2</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Specialized Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>zfilter2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>zfilter2</refname>
+    <refpurpose>
+      Performs filtering using a transposed form-II digital filter lattice with radial pole-shearing and angular pole-warping.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      General purpose custom filter with time-varying pole control. The filter coefficients implement the following difference equation:
+      <literallayout>
+(1)*y(n) = b0*x[n] + b1*x[n-1] +...+ bM*x[n-M] - a1*y[n-1] -...- aN*y[n-N]
+      </literallayout>
+    </para>
+
+    <para>
+      the system function for which is represented by:
+      <literallayout>
+           B(Z)      b0 + b1*Z<superscript>-1</superscript>  + ... + bM*Z<superscript>-M</superscript>
+  H(Z)  =  ----  =  --------------------------
+           A(Z)       1 + a1*Z<superscript>-1</superscript>  + ... + aN*Z<superscript>-N</superscript>
+      </literallayout>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>zfilter2</command> asig, kdamp, kfreq, iM, iN, ib0, ib1, ..., ibM, \
+      ia1,ia2, ..., iaN</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      At initialization the number of zeros and poles of the filter are specified along with the corresponding zero and pole coefficients. The coefficients must be obtained by an external filter-design application such as Matlab and specified directly or loaded into a table via <link linkend="GEN01"><citetitle>GEN01</citetitle></link>. With <emphasis>zfilter2</emphasis>, the roots of the characteristic polynomials are solved at initialization so that the pole-control operations can be implemented efficiently.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      The <link linkend="filter2"><citetitle>filter2</citetitle></link> opcodes perform filtering using a transposed form-II digital filter lattice with no time-varying control. <emphasis>zfilter2</emphasis> uses the additional operations of radial pole-shearing and angular pole-warping in the Z plane.
+    </para>
+
+    <para>
+      Pole shearing increases the magnitude of poles along radial lines in the Z-plane. This has the affect of altering filter ring times. The k-rate variable <emphasis>kdamp</emphasis> is the damping parameter. Positive values (0.01 to 0.99) increase the ring-time of the filter (hi-Q), negative values (-0.01 to -0.99) decrease the ring-time of the filter, (lo-Q).
+    </para>
+
+    <para>
+      Pole warping changes the frequency of poles by moving them along angular paths in the Z plane. This operation leaves the shape of the magnitude response unchanged but alters the frequencies by a constant factor (preserving 0 and p). The k-rate variable <emphasis>kfreq</emphasis> determines the frequency warp factor. Positive values (0.01 to 0.99) increase frequencies toward p and negative values (-0.01 to -0.99) decrease frequencies toward 0.
+    </para>
+
+    <para>
+      Since <emphasis>filter2</emphasis> implements generalized recursive filters, it can be used to specify a large range of general DSP algorithms. For example, a digital waveguide can be implemented for musical instrument modeling using a pair of <link linkend="delayr"><citetitle>delayr</citetitle></link> and <link linkend="delayw"><citetitle>delayw</citetitle></link> opcodes in conjunction with the <emphasis>filter2</emphasis> opcode.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      A controllable second-order IIR filter operating on an a-rate signal:
+      <informalexample>
+        <programlisting>
+a1 <emphasis role="opc">zfilter2</emphasis> asig, kdamp, kfreq, 1, 2, 1, ia1, ia2 <emphasis role="comment">;; controllable a-rate IIR filter</emphasis></programlisting>
+      </informalexample>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="filter2"><citetitle>filter2</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Michael A. Casey</member>
+        <member>M.I.T.</member>
+        <member>Cambridge, Mass.</member>
+        <member>1997</member>
+      </simplelist>
+    </para>
+    <para>New in Version 3.47</para>
+  </refsect1>
+</refentry>

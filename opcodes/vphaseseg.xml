@@ -1,0 +1,89 @@
+
+<refentry id="vphaseseg">
+<indexterm id="IndexVphaseseg"><primary>vphaseseg</primary></indexterm>
+  <refentryinfo><title>FLTK:Other</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vphaseseg</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vphaseseg</refname>
+    <refpurpose>
+      Allows one-dimensional HVS (Hyper-Vectorial Synthesis).
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>vphaseseg</emphasis> allows one-dimensional HVS (Hyper-Vectorial Synthesis).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>vphaseseg</command> kphase, ioutab, ielems, itab1,idist1,itab2 \
+      [,idist2,itab3, ... ,idistN-1,itabN]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ioutab</emphasis> - number of output table.
+    </para>
+    <para>
+      <emphasis>ielem</emphasis> - number of elements to process
+    </para>
+    <para>
+      <emphasis>itab1,...,itabN</emphasis> - breakpoint table numbers
+    </para>
+    <para>
+      <emphasis>idist1,...,idistN-1</emphasis> -  distances between breakpoints in percentage values
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title> 
+    <para>
+      <emphasis>kphase</emphasis> - phase pointer
+    </para>
+    <para>
+      <emphasis>vphaseseg</emphasis> returns the coordinates of section points of an N-dimensional space path. The coordinates of section points are stored into an output table. The number of dimensions of the N-dimensional space is determined by the <emphasis>ielem</emphasis> argument that is equal to N and can be set to any number. To define the path, user have to provide a set of points of the N-dimensional space, called break-points. Coordinates of each break-point must be contained by a different table. The number of coordinates to insert in each break-point table must obviously equal to <emphasis>ielem</emphasis> argument. There can be any number of break-point tables filled by the user.
+    </para>
+
+    <para>
+      Hyper-Vectorial Synthesis actually deals with two kinds of spaces. The first space is the N-dimensional space in which the path is defined, this space is called time-variant parameter space (or SPACE A). The path belonging to this space is covered by moving a point into the second space that normally has a number of dimensions smaller than the first. Actually, the point in motion is the projection of corresponding point of the N-dimensional space (could also be considered a section of the path). The second space is called user-pointer-motion space (or SPACE B) and, in the case of <emphasis>vphaseseg</emphasis> opcode, has only ONE DIMENSION. Space B is covered by means of <emphasis>kphase</emphasis> argument (that is a sort of path pointer), and its range is 0 to 1. The output corresponding to current pointer value is stored in <emphasis>ioutab</emphasis> table, whose data can be afterwards used to control any syntesis parameters.
+    </para>
+
+    <para>
+      In <emphasis>vphaseseg</emphasis>, each break-point is separated from the other by a distance expressed in percentage, where all the path length is equal to the sum of all distances. So distances between breakpoints can be different, differently from kinds of HVS in which space B has more than one dimension, in these cases distance between break-points MUST be THE SAME for all intervals.
+    </para>
+  </refsect1>
+<!--
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the vphaseseg opcode. It uses the file <ulink url="examples/vphaseseg.csd"><citetitle>vphaseseg.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the vphaseseg opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/vphaseseg.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>-->
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="hvs1"><citetitle>hvs1</citetitle></link>,
+      <link linkend="hvs2"><citetitle>hvs2</citetitle></link>,
+      <link linkend="hvs3"><citetitle>hvs3</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namegabriel;</para>
+    <para>New in version 5.06</para>
+  </refsect1>
+</refentry>

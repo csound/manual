@@ -1,0 +1,110 @@
+
+<refentry id="ftgen">
+<indexterm id="IndexFtgen"><primary>ftgen</primary></indexterm>
+  <refentryinfo><title>Table Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ftgen</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ftgen</refname>
+    <refpurpose>
+      Generate a score function table from within the orchestra.
+    </refpurpose>
+  </refnamediv> 
+
+  <refsect1>
+    <title>Description</title>
+    <para>Generate a score function table from within the orchestra.</para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>gir <command>ftgen</command> ifn, itime, isize, igen, iarga [, iargb ] [...]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>gir</emphasis> -- either a requested or automatically assigned table number above 100.
+    </para>
+
+    <para> 
+      <emphasis>ifn</emphasis> -- requested table number If <emphasis>ifn</emphasis> is zero, the number is assigned automatically and the value placed in <emphasis>gir</emphasis>. Any other value is used as the table number
+    </para>
+
+    <para>
+      <emphasis>itime</emphasis> -- is ignored, but otherwise corresponds to p2 in the score <emphasis>f statement</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>isize</emphasis> -- table size. Corresponds to p3 of the score <emphasis>f statement</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>igen</emphasis> -- function table <emphasis>GEN</emphasis> routine. Corresponds to p4 of the score <emphasis>f statement</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>iarga, iargb, ...</emphasis> -- function table arguments. Correspond to p5 through p<emphasis>n</emphasis> of the score <emphasis>f statement</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      This is equivalent to table generation in the score with the <emphasis>f statement</emphasis>.
+    </para>
+    <note>
+      <para>Csound was originally designed to support tables with power of two sizes only. Though this has changed in recent versions (you can use any size by using a negative number), many opcodes will not accept them.</para>
+    </note>
+
+    <warning>
+      <title>Warning</title>
+      <para>
+        Although Csound will not protest if ftgen is used inside instr-endin statements, this is not the intended or supported use, and must be handled with care as it has global effects. (In particular, a different size usually leads to relocation of the table, which may cause a crash or otherwise erratic behaviour.
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the ftgen opcode. It uses the file <ulink url="examples/ftgen.csd"><citetitle>ftgen.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the ftgen opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/ftgen.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Here is another example of the ftgen opcode. It uses the file <ulink url="examples/ftgen-2.csd"><citetitle>ftgen-2.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the ftgen opcode.</title>
+        <para>
+          This example queries a file for it length to create an f-table of the appropriate size.
+        </para>
+          <xi:include href="examples-xml/ftgen-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>See also</title>
+    <para>
+      <link linkend="ScoreGenRef"><citetitle>GEN routine overview</citetitle></link>, <link linkend="ftgentmp"><citetitle>ftgentmp</citetitle></link>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Credits</title> 
+    <para>
+      <simplelist>
+        <member>Author: &namebarry;</member>
+        <member>M.I.T., Cambridge, Mass</member>
+        <member>1997</member>
+      </simplelist>
+    </para>
+
+    <para>Added warning April 2002 by &namerasmus;</para>
+  </refsect1>
+</refentry> 

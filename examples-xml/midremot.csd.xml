@@ -1,0 +1,114 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in</emphasis>
+-odac           -iadc     <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o midremot.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="ohdr">sr</emphasis>	<emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">kr</emphasis>	<emphasis role="op">=</emphasis> 441
+<emphasis role="ohdr">ksmps</emphasis>	<emphasis role="op">=</emphasis> 100
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+
+<emphasis role="ohdr">massign</emphasis> 1,1 
+<emphasis role="ohdr">massign</emphasis> 2,2 
+<emphasis role="ohdr">massign</emphasis> 3,3 
+<emphasis role="ohdr">massign</emphasis> 4,4 
+<emphasis role="ohdr">massign</emphasis> 5,5 
+
+ga1 <emphasis role="opc">init</emphasis> 0
+ga2 <emphasis role="opc">init</emphasis> 0
+
+gi1	<emphasis role="opc">sfload</emphasis>	   "19Trumpet.sf2" 
+
+gi2	<emphasis role="opc">sfload</emphasis>	   "01hpschd.sf2" 
+
+gi3	<emphasis role="opc">sfload</emphasis>	   "07AcousticGuitar.sf2" 
+
+gi4	<emphasis role="opc">sfload</emphasis>	   "22Bassoon.sf2" 
+
+gitab	<emphasis role="ohdr">ftgen</emphasis>	1,0,1024,10,1
+
+<emphasis role="opc">midremot</emphasis> "192.168.1.100", "192.168.1.101", 1
+<emphasis role="opc">midremot</emphasis> "192.168.1.100", "192.168.1.102", 2
+<emphasis role="opc">midremot</emphasis> "192.168.1.100", "192.168.1.103", 3
+
+<emphasis role="opc">midglobal</emphasis> "192.168.1.100", 5
+
+
+	<emphasis role="oblock">instr</emphasis> 1
+	<emphasis role="opc">sfpassign</emphasis>	   0, gi1
+ifreq	<emphasis role="opc">cpsmidi</emphasis>
+iamp	<emphasis role="opc">ampmidi</emphasis> 10
+inum	<emphasis role="opc">notnum</emphasis>
+ivel	<emphasis role="opc">veloc</emphasis>
+kamp	<emphasis role="opc">linsegr</emphasis>	1,1,1,.1,0
+kfreq	<emphasis role="opc">init</emphasis>	1
+a1,a2	<emphasis role="opc">sfplay</emphasis>	ivel,inum,kamp<emphasis role="op">*</emphasis>iamp,kfreq,0,0
+	<emphasis role="opc">outs</emphasis>	a1,a2
+<emphasis role="opc">vincr</emphasis> ga1, a1<emphasis role="op">*</emphasis>.5
+<emphasis role="opc">vincr</emphasis> ga2, a2<emphasis role="op">*</emphasis>.5
+	<emphasis role="oblock">endin</emphasis>
+
+	<emphasis role="oblock">instr</emphasis> 2
+	<emphasis role="opc">sfpassign</emphasis>	0,    gi2
+ifreq	<emphasis role="opc">cpsmidi</emphasis>
+iamp	<emphasis role="opc">ampmidi</emphasis> 15
+inum	<emphasis role="opc">notnum</emphasis>
+ivel	<emphasis role="opc">veloc</emphasis>
+kamp	<emphasis role="opc">linsegr</emphasis>	1,1,1,.1,0
+kfreq	<emphasis role="opc">init</emphasis>	1
+a1,a2	<emphasis role="opc">sfplay</emphasis>	ivel,inum,kamp<emphasis role="op">*</emphasis>iamp,kfreq,0,0
+	<emphasis role="opc">outs</emphasis>	a1,a2
+<emphasis role="opc">vincr</emphasis> ga1, a1<emphasis role="op">*</emphasis>.4
+<emphasis role="opc">vincr</emphasis> ga2, a2<emphasis role="op">*</emphasis>.4
+	<emphasis role="oblock">endin</emphasis>
+
+	<emphasis role="oblock">instr</emphasis> 3
+	<emphasis role="opc">sfpassign</emphasis>	0,    gi3
+ifreq	<emphasis role="opc">cpsmidi</emphasis>
+iamp	<emphasis role="opc">ampmidi</emphasis> 10
+inum	<emphasis role="opc">notnum</emphasis>
+ivel	<emphasis role="opc">veloc</emphasis>
+kamp	<emphasis role="opc">linsegr</emphasis>	1,1,1,.1,0
+kfreq	<emphasis role="opc">init</emphasis>	1
+a1,a2	<emphasis role="opc">sfplay</emphasis>	ivel,inum,kamp<emphasis role="op">*</emphasis>iamp,kfreq,0,0
+	<emphasis role="opc">outs</emphasis>	a1,a2
+<emphasis role="opc">vincr</emphasis> ga1, a1<emphasis role="op">*</emphasis>.5
+<emphasis role="opc">vincr</emphasis> ga2, a2<emphasis role="op">*</emphasis>.5
+	<emphasis role="oblock">endin</emphasis>
+
+	<emphasis role="oblock">instr</emphasis> 4
+	<emphasis role="opc">sfpassign</emphasis>	0,    gi4
+ifreq	<emphasis role="opc">cpsmidi</emphasis>
+iamp	<emphasis role="opc">ampmidi</emphasis> 15
+inum	<emphasis role="opc">notnum</emphasis>
+ivel	<emphasis role="opc">veloc</emphasis>
+kamp	<emphasis role="opc">linsegr</emphasis>	1,1,1,.1,0
+kfreq	<emphasis role="opc">init</emphasis>	1
+a1,a2	<emphasis role="opc">sfplay</emphasis>	ivel,inum,kamp<emphasis role="op">*</emphasis>iamp,kfreq,0,0
+	<emphasis role="opc">outs</emphasis>	a1,a2
+<emphasis role="opc">vincr</emphasis> ga1, a1<emphasis role="op">*</emphasis>.5
+<emphasis role="opc">vincr</emphasis> ga2, a2<emphasis role="op">*</emphasis>.5
+	<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis>	5
+      kamp <emphasis role="opc">midic7</emphasis> 1,0,1	
+      <emphasis role="opc">denorm</emphasis> ga1
+      <emphasis role="opc">denorm</emphasis> ga2
+aL, aR  <emphasis role="opc">reverbsc</emphasis> ga1, ga2, .9, 16000, sr, 0.5
+        <emphasis role="opc">outs</emphasis> aL, aR
+	ga1	<emphasis role="op">=</emphasis>	0
+     ga2   <emphasis role="op">=</emphasis>     0
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="comment">; Score</emphasis>
+<emphasis role="stamnt">f</emphasis>0  160
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

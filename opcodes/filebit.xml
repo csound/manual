@@ -1,0 +1,95 @@
+
+<refentry id="filebit">
+<indexterm id="IndexFileBit"><primary>filebit</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Soundfile Queries</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>filebit</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>filebit</refname>
+    <refpurpose>
+      Returns the number of bits in each sample in a sound file.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Returns the number of bits in each sample in a sound file.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ir <command>filebit</command> ifilcod [, iallowraw]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifilcod</emphasis> -- sound file to be queried
+    </para>
+    <para>
+      <emphasis>iallowraw</emphasis> -- (Optional) Allow raw sound files (default=1)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>filebit</emphasis> returns the number of bits in each
+      sample in the sound file <emphasis>ifilcod</emphasis>.  In the
+      case of floating point samples the value -1 is returned for
+      floats and -2 for doubles.  For non-PCM formats the value is
+      negative, and based on libsndfile's format encoding.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the filebit opcode. It uses the file <ulink url="examples/filebit.csd"><citetitle>filebit.csd</citetitle></ulink>,
+and <ulink url="examples/mary.wav"><citetitle>mary.wav</citetitle></ulink>.
+
+      <example>
+        <title>Example of the filebit opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/filebit.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      The audio file <quote>mary.wav</quote> is in monoaural CD format, so <emphasis>filebit</emphasis>'s output should include a line like this:
+      <screen>
+instr 1:  ibits = 16.000
+      </screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="filelen"><citetitle>filelen</citetitle></link>,
+      <link linkend="filenchnls"><citetitle>filenchnls</citetitle></link>,
+      <link linkend="filepeak"><citetitle>filepeak</citetitle></link>,
+      <link linkend="filesr"><citetitle>filesr</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>July 1999</member>
+      </simplelist>
+    </para>
+    <para>Example written by &namejohn;.</para>
+
+    <para>New in Csound version 5.11</para>
+  </refsect1>
+</refentry>

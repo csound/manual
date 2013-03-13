@@ -1,0 +1,103 @@
+
+<refentry id="FLxyin">
+<indexterm id="IndexFLxyin"><primary>FLxyin</primary></indexterm>
+  <refentryinfo><title>FLTK:Other</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLxyin</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLxyin</refname>
+    <refpurpose>
+      Senses the mouse cursor position in a user-defined area inside an FLpanel.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Similar to <link linkend="xyin"><citetitle>xyin</citetitle></link>, sense the mouse cursor position in a user-defined area inside an FLpanel.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>koutx, kouty, kinside  <command>FLxyin</command> ioutx_min, ioutx_max, iouty_min, iouty_max, \
+      iwindx_min, iwindx_max, iwindy_min, iwindy_max [, iexpx, iexpy, ioutx, iouty]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ioutx_min, ioutx_max</emphasis> - the minimum and maximum limits of the interval to be output (X or horizontal axis).
+    </para>
+    <para>
+      <emphasis>iouty_min, iouty_max </emphasis> - the minimum and maximum limits of the interval to be output (Y or vertical axis).
+    </para>
+    <para>
+      <emphasis>iwindx_min, iwindx_max</emphasis> - the X coordinate of the horizontal edges of the sensible area, relative to the FLpanel ,in pixels.
+    </para>
+    <para>
+      <emphasis>iwindy_min, iwindy_max</emphasis>  - the Y coordinates of the vertical edges of the sensible area, relative to the FLpanel, in pixels.
+    </para>
+    <para>
+      <emphasis>iexpx, iexpy</emphasis> - (optional) integer numbers denoting the behavior of the x or y output: 0 -> output is linear; -1 -> output is exponential; any other number indicates the number of an existing table that is used for indexing. With a positive value for table number, linear interpolation is provided in table indexing. A negative table number suppresses interpolation. Notice that in normal operations, the table should be normalized and unipolar (i.e. all table elements should be in the zero to one range). In this case all table elements will be rescaled according to imax and imin. Anyway, it is possible to use non-normalized tables (created with a negative table number, that can contain elements of any value), in order to access the actual values of table elements, without rescaling, by assigning 0 to iout_min and 1 to iout_max.
+    </para>
+    <para>
+      <emphasis>ioutx, iouty</emphasis> – (optional) initial output values.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>koutx, kouty</emphasis> - output values, scaled according to user choices.
+    </para>
+    <para>
+      <emphasis>kinside</emphasis> - a flag that informs if the mouse cursor falls out of the rectangle of the user-defined area. If it is out of the area, kinside is set to zero.
+    </para>
+
+
+    <para>
+      <emphasis>FLxyin</emphasis> senses the mouse cursor position in a user-defined area inside an <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link>. When <emphasis>FLxyin</emphasis> is called, the position of the mouse within the chosen area is returned at k-rate. It is possible to define the sensible area, as well the minimum and maximum values corresponding to the minimum and maximum mouse positions. Mouse buttons don’t need to be pressed to make <emphasis>FLxyin</emphasis> to operate. It is able to function correctly even if other widgets (present in the <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link>) overlap the sensible area.
+    </para>
+    <para>
+      <emphasis>FLxyin</emphasis> unlike most other FLTK opcodes can't be used inside the header, since it is not a widget. It is just a definition of an area for mouse sensing within an FLTK panel.
+    </para>
+
+  </refsect1>
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the FLxyin opcode. It uses the file <ulink url="examples/FLxyin.csd"><citetitle>FLxyin.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the FLxyin opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/FLxyin.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Here is another example of the FLxyin opcode. It uses the file <ulink url="examples/FLxyin-2.csd"><citetitle>FLxyin-2.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the FLxyin opcode.</title>
+          <xi:include href="examples-xml/FLxyin-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namegabriel;</para>
+    <para>New in version 5.06</para>
+  </refsect1>
+</refentry>

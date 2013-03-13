@@ -1,0 +1,110 @@
+
+<refentry id="lpanal">
+  <refentryinfo><title>Utilities</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lpanal</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>lpanal</refname>
+    <refpurpose>
+      Performs both linear predictive and pitch-tracking analysis on a soundfile.
+      <indexterm id="IndexLpanal"><primary>lpanal</primary></indexterm>
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+	    Linear predictive analysis for the Csound <link linkend="SpectralLpcresyn"><citetitle>Linear Predictive Coding (LPC) Resynthesis</citetitle></link> opcodes. 
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>csound -U lpanal</command> [flags] infilename outfilename</synopsis>
+
+    <synopsis><command>lpanal</command> [flags] infilename outfilename</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>lpanal</emphasis> performs both lpc and pitch-tracking analysis on a soundfile to produce a time-ordered sequence of <emphasis>frames</emphasis> of control information suitable for Csound resynthesis. Analysis is conditioned by the control flags below. A space is optional between the flag and its value.
+    </para>
+
+    <para>
+      <emphasis>-a</emphasis> -- [alternate storage] asks lpanal to write a file with filter poles values rather than the usual filter coefficient files. When <emphasis>lpread</emphasis> / <emphasis>lpreson</emphasis> are used with pole files, automatic stabilization is performed and the filter should not get wild. (This is the default in the Windows GUI) - Changed by Marc Resibois.
+    </para>
+
+    <para>
+      <emphasis>-s srate</emphasis> -- sampling rate of the audio input file. This will over-ride the srate of the soundfile header, which otherwise applies. If neither is present, the default is 10000.
+    </para>
+
+    <para>
+      <emphasis>-c channel</emphasis> -- channel number sought. The default is 1.
+    </para>
+
+    <para>
+      <emphasis>-b begin</emphasis> -- beginning time (in seconds) of the audio segment to be analyzed. The default is 0.0
+    </para>
+
+    <para>
+      <emphasis>-d duration</emphasis> -- duration (in seconds) of the audio segment to be analyzed. The default of 0.0 means to the end of the file.
+    </para>
+
+    <para>
+      <emphasis>-p npoles</emphasis> -- number of poles for analysis. The default is 34, the maximum 50.
+    </para>
+
+    <para>
+      <emphasis>-h hopsize</emphasis> -- hop size (in samples) between frames of analysis. This determines the number of frames per second (srate / hopsize) in the output control file. The analysis framesize is hopsize * 2 samples. The default is 200, the maximum 500.
+    </para>
+
+    <para>
+      <emphasis>-C string</emphasis> -- text for the comments field of the lpfile header. The default is the null string.
+    </para>
+
+    <para>
+      <emphasis>-P mincps</emphasis> -- lowest frequency (in Hz) of pitch tracking. -P0 means no pitch tracking.
+    </para>
+
+    <para>
+      <emphasis>-Q maxcps</emphasis> -- highest frequency (in Hz) of pitch tracking. The narrower the pitch range, the more accurate the pitch estimate. The defaults are -P70, -Q200.
+    </para>
+
+    <para>
+      <emphasis>-v verbosity</emphasis> -- level of terminal information during analysis. 
+      <itemizedlist>
+        <listitem><para>0 = none</para></listitem>
+        <listitem><para>1 = verbose</para></listitem>
+        <listitem><para>2 = debug</para></listitem>
+      </itemizedlist>
+
+      The default is 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+<!--       <informalexample> -->
+        <programlisting>
+<emphasis>lpanal</emphasis> -a -p26 -d2.5 -P100 -Q400 audiofile.test lpfil22</programlisting>
+<!--       </informalexample> -->
+
+      will analyze the first 2.5 seconds of file &quot;audiofile.test&quot;, producing srate/200 frames per second, each containing 26-pole filter coefficients and a pitch estimate between 100 and 400 Hertz. Stabilized (<emphasis>-a</emphasis>) output will be placed in &quot;lpfil22&quot; in the current directory.
+    </para>
+
+    <refsect2>
+      <title>File Format </title>
+      <para>
+        Output is a file comprised of an identifiable header plus a set of frames of floating point analysis data. Each frame contains four values of pitch and gain information, followed by <emphasis>npoles</emphasis> filter coefficients. The file is readable by Csound's <link linkend="lpread"><citetitle>lpread</citetitle></link>.
+      </para>
+
+      <para>
+        <emphasis>lpanal</emphasis> is an extensive modification of Paul Lanksy's lpc analysis programs.
+      </para>
+    </refsect2>
+  </refsect1>
+</refentry>

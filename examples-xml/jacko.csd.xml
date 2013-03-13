@@ -1,0 +1,104 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+csound -m255 -M0 -+rtmidi=null -RWf --midi-key=4 --midi-velocity=5 -o jacko_test.wav
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="comment">;;;;</emphasis>
+<emphasis role="comment">;;;; NOTE: this csd must be run after starting "aeolus -t".</emphasis>
+<emphasis role="comment">;;;;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis>    	   <emphasis role="op">=</emphasis> 48000
+	   <emphasis role="comment">; The control rate must be BOTH a power of 2 (for Jack)</emphasis>
+	   <emphasis role="comment">; AND go evenly into sr. This is about the only one that works!</emphasis>
+<emphasis role="ohdr">ksmps</emphasis> 	   <emphasis role="op">=</emphasis> 128
+<emphasis role="ohdr">nchnls</emphasis> 	   <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis> 	   <emphasis role="op">=</emphasis> 1
+
+	   <emphasis role="opc">JackoInit</emphasis>		"default", "csound"
+
+	   <emphasis role="comment">; To use ALSA midi ports, use "jackd -Xseq"</emphasis>
+	   <emphasis role="comment">; and use "jack_lsp -A -c" or aliases from JackInfo,</emphasis>
+	   <emphasis role="comment">; probably together with information from the sequencer,</emphasis>
+	   <emphasis role="comment">; to figure out the damn port names.</emphasis>
+
+	   <emphasis role="comment">; JackoMidiInConnect   "alsa_pcm:in-131-0-Master", "midiin"</emphasis>
+	   <emphasis role="opc">JackoAudioInConnect</emphasis> 	"aeolus<emphasis role="op">:</emphasis>out.L", "leftin"
+	   <emphasis role="opc">JackoAudioInConnect</emphasis> 	"aeolus<emphasis role="op">:</emphasis>out.R", "rightin"
+	   <emphasis role="opc">JackoMidiOutConnect</emphasis> 	"midiout", "aeolus<emphasis role="op">:</emphasis>Midi<emphasis role="op">/</emphasis>in"
+
+           <emphasis role="comment">; Note that Jack enables audio to be output to a regular</emphasis>
+ 	   <emphasis role="comment">; Csound soundfile and, at the same time, to a sound </emphasis>
+	   <emphasis role="comment">; card in real time to the system client via Jack. </emphasis>
+
+       	   <emphasis role="opc">JackoAudioOutConnect</emphasis> "leftout", "system<emphasis role="op">:</emphasis>playback_1"
+	   <emphasis role="opc">JackoAudioOutConnect</emphasis> "rightout", "system<emphasis role="op">:</emphasis>playback_2"
+	   <emphasis role="opc">JackoInfo</emphasis>
+
+	   <emphasis role="comment">; Turning freewheeling on seems automatically </emphasis>
+           <emphasis role="comment">; to turn system playback off. This is good!</emphasis>
+
+	   <emphasis role="opc">JackoFreewheel</emphasis>	1
+	   <emphasis role="opc">JackoOn</emphasis>
+
+	   <emphasis role="opc">alwayson</emphasis>		"jackin"
+
+	   <emphasis role="oblock">instr</emphasis> 1
+	   <emphasis role="comment">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</emphasis>
+ichannel   <emphasis role="op">=</emphasis>			p1 <emphasis role="op">-</emphasis> 1
+itime 	   <emphasis role="op">=</emphasis> 			p2
+iduration  <emphasis role="op">=</emphasis> 			p3
+ikey 	   <emphasis role="op">=</emphasis> 			p4
+ivelocity  <emphasis role="op">=</emphasis> 			p5
+	   <emphasis role="opc">JackoNoteOut</emphasis> 	"midiout", ichannel, ikey, ivelocity
+	   <emphasis role="opc">print</emphasis> 		itime, iduration, ichannel, ikey, ivelocity
+	   <emphasis role="oblock">endin</emphasis>
+
+	   <emphasis role="oblock">instr</emphasis> jackin
+	   <emphasis role="comment">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</emphasis>
+	   <emphasis role="opc">JackoTransport</emphasis>	3, 1.0
+aleft 	   <emphasis role="opc">JackoAudioIn</emphasis>		"leftin"
+aright 	   <emphasis role="opc">JackoAudioIn</emphasis> 	"rightin"
+
+	   <emphasis role="comment">; Aeolus uses MIDI controller 98 to control stops. </emphasis>
+           <emphasis role="comment">; Only 1 data value byte is used, not the 2 data </emphasis>
+	   <emphasis role="comment">; bytes often used  with NRPNs. </emphasis>
+           <emphasis role="comment">; The format for control mode is 01mm0ggg:</emphasis>
+	   <emphasis role="comment">; mm 10 to set stops, 0, ggg group (or Division, 0 based).</emphasis>
+	   <emphasis role="comment">; The format for stop selection is 000bbbbb:   </emphasis>
+	   <emphasis role="comment">; bbbbb for button number (0 based).</emphasis>
+
+	   <emphasis role="comment">; Mode to enable stops for Divison I: b1100010 (98 </emphasis>
+           <emphasis role="comment">; [this controller VALUE is a pure coincidence]).</emphasis>
+
+	   <emphasis role="opc">JackoMidiOut</emphasis>          "midiout", 176, 0, 98, 98 
+
+	   <emphasis role="comment">; Stops: Principal 8 (0), Principal 4 (1) , Flote 8 (8) , Flote 2 (10)</emphasis>
+
+	   <emphasis role="opc">JackoMidiOut</emphasis>          "midiout", 176, 0, 98, 0
+	   <emphasis role="opc">JackoMidiOut</emphasis>          "midiout", 176, 0, 98, 1
+	   <emphasis role="opc">JackoMidiOut</emphasis>          "midiout", 176, 0, 98, 8
+	   <emphasis role="opc">JackoMidiOut</emphasis>          "midiout", 176, 0, 98, 10
+
+	   <emphasis role="comment">; Sends audio coming in from Aeolus out</emphasis>
+	   <emphasis role="comment">; not only to the Jack system out (sound card),</emphasis>
+	   <emphasis role="comment">; but also to the output soundfile.</emphasis>
+           <emphasis role="comment">; Note that in freewheeling mode, "leftout"</emphasis>
+           <emphasis role="comment">; and "rightout" simply go silent.</emphasis>
+
+ 	   <emphasis role="opc">JackoAudioOut</emphasis> 	"leftout", aleft
+	   <emphasis role="opc">JackoAudioOut</emphasis> 	"rightout", aright
+	   <emphasis role="opc">outs</emphasis>  		aright, aleft
+	   <emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis> 0 30
+<emphasis role="stamnt">i</emphasis> 1 1 30 60 60
+<emphasis role="stamnt">i</emphasis> 1 2 30 64 60
+<emphasis role="stamnt">i</emphasis> 1 3 30 71 60
+<emphasis role="stamnt">e</emphasis> 2
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

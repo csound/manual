@@ -1,0 +1,103 @@
+
+<refentry id="cpuprc">
+<indexterm id="IndexCpuprc"><primary>cpuprc</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Realtime Performance Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>cpuprc</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>cpuprc</refname>
+    <refpurpose>
+      Control allocation of cpu resources on a per-instrument basis, to optimize realtime output.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Control allocation of cpu resources on a per-instrument basis, to optimize realtime output.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>cpuprc</command> insnum, ipercent</synopsis>
+    <synopsis><command>cpuprc</command> Sinsname, ipercent</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>insnum</emphasis> -- instrument number or string
+    </para>
+    <para>
+      <emphasis>Sinsname</emphasis> -- instrument number or string
+    </para>
+
+    <para>
+      <emphasis>ipercent</emphasis> -- percent of cpu processing-time to assign. Can also be expressed as a fractional value.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>cpuprc</emphasis> sets the cpu processing-time percent usage of an instrument, in order to avoid buffer underrun in realtime performances, enabling a sort of polyphony theshold. The user must set <emphasis>ipercent</emphasis> value for each instrument to be activated in realtime. Assuming that the total theoretical processing time of the cpu of the computer is 100%, this percent value can only be defined empirically, because there are too many factors that contribute to limiting realtime polyphony in different computers.
+    </para> 
+
+    <para>
+      For example, if <emphasis>ipercent</emphasis> is set to 5% for instrument 1, the maximum number of voices that can be allocated in realtime, is 20 (5% * 20 = 100%). If the user attempts to play a further note while the 20 previous notes are still playing, Csound inhibits the allocation of that note and will display the following warning message:
+      <literallayout>
+  can't allocate last note because it exceeds 100% of cpu time
+      </literallayout>
+    </para> 
+
+    <para>
+      In order to avoid audio buffer underruns, it is suggested to set the maximum number of voices slightly lower than the real processing power of the computer. Sometimes an instrument can require more processing time than normal. If, for example, the instrument contains an oscillator which reads a table that doesn't fit in cache memory, it will be slower than normal. In addition, any program running concurrently in multitasking, can subtract processing power to varying degrees.
+    </para> 
+
+    <para>
+      At the start, all instruments are set to a default value of <emphasis>ipercent</emphasis> = 0.0% (i.e. zero processing time or rather infinite cpu processing-speed). This setting is OK for deferred-time sessions.
+    </para>
+
+    <para>
+      All instances of <emphasis>cpuprc</emphasis> must be defined in the header section, not in the instrument body.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the cpuprc opcode. It uses the file <ulink url="examples/cpuprc.csd"><citetitle>cpuprc.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the cpuprc opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/cpuprc.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="maxalloc"><citetitle>maxalloc</citetitle></link>, <link linkend="prealloc"><citetitle>prealloc</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namegabriel;</member>
+        <member>Italy</member>
+        <member>July, 1999</member>
+      </simplelist>
+    </para>
+    <para>New in Csound version 3.57; named instruments added version 5.13</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,48 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in     Virtual MIDI    -M0 is needed anyway</emphasis>
+-odac           -iadc    -+rtmidi=virtual -M0
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="comment">; By Mark Jamerson 2007</emphasis>
+
+<emphasis role="ohdr">sr</emphasis><emphasis role="op">=</emphasis>44100
+<emphasis role="ohdr">ksmps</emphasis><emphasis role="op">=</emphasis>10
+<emphasis role="ohdr">nchnls</emphasis><emphasis role="op">=</emphasis>2
+
+<emphasis role="ohdr">massign</emphasis> 1,1
+<emphasis role="opc">prealloc</emphasis> 1,10
+
+<emphasis role="oblock">instr</emphasis> 1  <emphasis role="comment">;Midi FM synth </emphasis>
+
+inote <emphasis role="opc">cpsmidi</emphasis>
+iveloc <emphasis role="opc">ampmidi</emphasis> 10000
+idur <emphasis role="op">=</emphasis> 2
+    <emphasis role="opc">xtratim</emphasis> 1
+
+kgate <emphasis role="opc">oscil</emphasis> 1,10,2
+anoise <emphasis role="opc">noise</emphasis> 100<emphasis role="op">*</emphasis>inote,.99
+acps  <emphasis role="opc">samphold</emphasis> anoise,kgate
+aosc <emphasis role="opc">oscili</emphasis> 1000,acps,1
+aout <emphasis role="op">=</emphasis> aosc
+
+<emphasis role="comment">; Use controller 7 to control volume</emphasis>
+kvol <emphasis role="opc">ctrl7</emphasis> 1, 7, 0.2, 1
+
+<emphasis role="opc">outs</emphasis> kvol <emphasis role="op">*</emphasis> aout, kvol <emphasis role="op">*</emphasis> aout
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis>0 3600
+<emphasis role="stamnt">f</emphasis>1 0 1024 10 1 
+<emphasis role="stamnt">f</emphasis>2 0 16 7 1 8 0 8
+<emphasis role="stamnt">f</emphasis>3 0 1024 10 1 .5 .6 .3 .2 .5
+
+<emphasis role="stamnt">e</emphasis> 
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

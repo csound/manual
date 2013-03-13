@@ -1,0 +1,207 @@
+
+<refentry id="FLslider">
+<indexterm id="IndexFLslider"><primary>FLslider</primary></indexterm>
+  <refentryinfo><title>FLTK:Valuators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLslider</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>FLslider</refname>
+    <refpurpose>
+      Puts a slider into the corresponding FLTK container.
+          </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>FLslider</emphasis> puts a slider into the corresponding container.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kout, ihandle <command>FLslider</command> &quot;label&quot;, imin, imax, iexp, itype, idisp, iwidth, \
+      iheight, ix, iy</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ihandle</emphasis> -- a handle value (an integer number) that unequivocally references a corresponding widget. This is used by other opcodes that modify a widget's properties (see <link linkend="ControlFltkAppearance"><citetitle>Modifying FLTK Widget Appearance</citetitle></link>). It is automatically output by <emphasis>FLslider</emphasis> and must not be set by the user label. (The user label is a double-quoted string containing some user-provided text placed near the widget.)
+    </para>
+
+    <para>
+      <emphasis><quote>label</quote></emphasis> -- a double-quoted string containing some user-provided text, placed near the corresponding widget.
+    </para>
+
+    <para>
+      <emphasis>imin</emphasis> -- minimum value of output range (corresponds to the left value for horizontal sliders, and the top value for vertical sliders).
+    </para>
+
+    <para>
+      <emphasis>imax</emphasis> -- maximum value of output range (corresponds to the right value for horizontal sliders, and the bottom value for vertical sliders).
+    </para>
+
+    <para>
+      The <emphasis>imin</emphasis> argument may be greater than <emphasis>imax</emphasis> argument. This has the effect of <quote>reversing</quote> the object so the larger values are in the opposite direction. This also switches which end of the filled sliders is filled.
+    </para>
+
+    <para>
+      <emphasis>iexp</emphasis> -- an integer number denoting the behaviour of valuator:
+      <itemizedlist>
+        <listitem><para>0 = valuator output is linear</para></listitem>
+        <listitem><para>-1 = valuator output is exponential</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      All other positive numbers for <emphasis>iexp</emphasis> indicate the number of an existing table that is used for indexing. Linear interpolation is provided in table indexing. A negative table number suppresses interpolation.
+    </para>
+    <warning>
+      <title>IMPORTANT!</title>
+      <para>
+        Notice that the tables used by valuators must be created with the <link linkend="ftgen"><citetitle>ftgen</citetitle></link> opcode and placed in the orchestra before the corresponding valuator. They can not placed in the score. This is because tables placed in the score are created later than the initialization of the opcodes placed in the header section of the orchestra.
+      </para>
+    </warning>
+
+    <para>
+      <emphasis>itype</emphasis> -- an integer number denoting the appearance of the valuator.
+    </para>
+
+    <para>
+      The <emphasis>itype</emphasis> argument can be set to the following values:
+
+      <itemizedlist>
+        <listitem><para>1 - shows a horizontal fill slider</para></listitem>
+        <listitem><para>2 - a vertical fill slider</para></listitem>
+        <listitem><para>3 - a horizontal engraved slider</para></listitem>
+        <listitem><para>4 - a vertical engraved slider</para></listitem>
+        <listitem><para>5 - a horizontal nice slider</para></listitem>
+        <listitem><para>6 - a vertical nice slider</para></listitem>
+        <listitem><para>7 - a horizontal up-box nice slider</para></listitem>
+        <listitem><para>8 - a vertical up-box nice slider</para></listitem>
+      </itemizedlist>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/flslider_horizontal-fill.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>FLslider - a horizontal fill slider (itype=1).</phrase>
+        </textobject>
+
+        <caption>
+          <para>FLslider - a horizontal fill slider (itype=1).</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/flslider_horizontal-engraved.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>FLslider - a horizontal engraved slider (itype=3).</phrase>
+        </textobject>
+
+        <caption>
+          <para>FLslider - a horizontal engraved slider (itype=3).</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/flslider_horizontal-nice.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>FLslider - a horizontal nice slider (itype=5).</phrase>
+        </textobject>
+
+        <caption>
+          <para>FLslider - a horizontal nice slider (itype=5).</para>
+        </caption>
+      </mediaobject>
+      You can also create "plastic" looking sliders by adding 20 to <emphasis>itype</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>idisp</emphasis> -- a handle value that was output from a previous instance of the <link linkend="FLvalue"><citetitle>FLvalue</citetitle></link> opcode to display the current value of the current valuator in the <emphasis>FLvalue</emphasis> widget itself. If the user doesn't want to use this feature that displays current values, it must be set to a negative number by the user.
+    </para>
+
+    <para>
+      <emphasis>iwidth</emphasis> -- width of widget.
+    </para>
+
+    <para>
+      <emphasis>iheight</emphasis> -- height of widget.
+    </para>
+
+    <para>
+      <emphasis>ix</emphasis> -- horizontal position of upper left corner of the valuator, relative to the upper left corner of corresponding window (expressed in pixels).
+    </para>
+
+    <para>
+      <emphasis>iy</emphasis> -- vertical position of upper left corner of the valuator, relative to the upper
+left corner of corresponding window (expressed in pixels).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kout</emphasis> -- output value
+    </para>
+    <para>
+      FLsliders are created with the minimum value by default in the left/at the top. If you want to reverse the slider, reverse the values. See the example below.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the FLslider opcode. It uses the file <ulink url="examples/FLslider.csd"><citetitle>FLslider.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the FLslider opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/FLslider.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Here is another example of the FLslider opcode, showing the slider types and other options. It also shows the usage of FLvalue to display a widget's contents. It uses the file <ulink url="examples/FLslider-2.csd"><citetitle>FLslider-2.csd</citetitle></ulink>.
+
+      <example>
+        <title>More complex example of the FLslider opcode.</title>
+
+          <xi:include href="examples-xml/FLslider-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="FLcount"><citetitle>FLcount</citetitle></link>,
+      <link linkend="FLjoy"><citetitle>FLjoy</citetitle></link>,
+      <link linkend="FLknob"><citetitle>FLknob</citetitle></link>,
+      <link linkend="FLroller"><citetitle>FLroller</citetitle></link>,
+      <link linkend="FLslidBnk"><citetitle>FLslidBnk</citetitle></link>,
+      <link linkend="FLtext"><citetitle>FLtext</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namegabriel;</para>
+    <para>New in version 4.22</para>
+    <para>February 2004. Thanks to a note from Dave Phillips, deleted the extraneous istep parameter.</para>
+    <para>Example written by Iain McCurdy, edited by &namekevin;.</para>
+  </refsect1>
+</refentry>

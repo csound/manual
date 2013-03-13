@@ -1,0 +1,101 @@
+<refentry id="ftgenonce">
+<indexterm id="Indexftgenonce"><primary>ftgenonce</primary></indexterm>
+<refentryinfo><title>Signal Flow Graph Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ftgenonce</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ftgenonce</refname>
+    <refpurpose>
+       Generate a function table from within an instrument definition, without duplication of data.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Enables the creation of function tables entirely inside 
+      instrument definitions, without any duplication of data.
+    </para>
+    
+    <para>
+      The ftgenonce opcode is designed to simplify writing instrument definitions 
+      that can be re-used in different orchestras simply by #including them
+      and plugging them into some output instrument. There is no need to define 
+      function tables either in the score, or in the orchestra header.
+    </para>
+    
+    <para>
+      The ftgenonce opcode is similar to ftgentmp, and has identical arguments.
+      However, function tables are neither duplicated nor deleted. Instead, 
+      all of the arguments to the opcode are concatenated to form the key to a 
+      lookup table that points to the function table number. Thus, every request 
+      to ftgenonce with the same arguments receives the same instance of the 
+      function table data. Every change in the value of any ftgenonce argument
+      causes the creation of a new function table.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ifno <command>ftgenonce</command> ip1, ip2dummy, isize, igen, iarga, iargb, ...</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifno</emphasis> --  an automatically
+      assigned table number.
+    </para>
+    <para>
+      <emphasis>ip1</emphasis> -- the number of the table to be
+      generated or 0 if the number is to be assigned.
+    </para>
+    <para>
+
+    <emphasis>ip2dummy</emphasis> -- ignored.
+    </para>
+    <para>
+      <emphasis>isize</emphasis> -- table size. Corresponds to p3 of the score <emphasis>f statement</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>igen</emphasis> -- function table <emphasis>GEN</emphasis> routine. Corresponds to p4 of the score <emphasis>f statement</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>iarga, iargb, ...</emphasis> -- function table arguments. Correspond to p5 through p<emphasis>n</emphasis> of the score <emphasis>f statement</emphasis>.
+    </para>
+    <note>
+      <para>Csound was originally designed to support tables with power of two sizes only. Though this has changed in recent versions (you can use any size by using a negative number), many opcodes will not accept them.</para>
+    </note>
+  </refsect1>
+<!--
+  <refsect1>
+    <title>Performance</title>
+  </refsect1>-->
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the ftgenonce opcode. It uses the file <ulink url="examples/ftgenonce.csd"><citetitle>ftgenonce.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the ftgenonce opcode.</title>
+          <xi:include href="examples-xml/ftgenonce.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    </refsect1>
+   
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Authors: &namemichael;</member>
+        <member>2009</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

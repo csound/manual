@@ -1,0 +1,90 @@
+<refentry id="vaget">
+<indexterm id="IndexAvarGet"><primary>vaget</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Sample Level Operators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vaget</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>vaget</refname>
+    <refpurpose>
+      Access values of the current buffer of an a-rate variable by indexing.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Access values of the current buffer of an a-rate variable by indexing.
+      Useful for doing sample-by-sample manipulation at k-rate without using
+      setksmps 1.
+
+      <note>
+        <title>Note</title>
+        <para>Because this opcode does not do any bounds checking, the user
+        must be careful not to try to read values past ksmps (the
+        size of a buffer for an a-rate variable) by using index values greater
+        than ksmps.</para>
+      </note>
+      <note>
+        <title>Note</title>
+        <para>In Csound6 this opcode does do bounds checking.</para>
+      </note>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kval <command>vaget</command> kndx, avar</synopsis>
+  </refsect1>
+
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kval</emphasis> - value read from avar
+    </para>
+    <para>
+      <emphasis>kndx</emphasis> - index of the sample to read from the current
+      buffer of the given avar variable
+    </para>
+    <para>
+      <emphasis>avar</emphasis> - a-rate variable to read from
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the vaget opcode. It uses the file <ulink url="examples/vaget.csd"><citetitle>vaget.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the vaget opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/vaget.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="vaset"><citetitle>vaset</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Steven Yi</member>
+      </simplelist>
+    </para>
+
+    <para>New in version 5.04</para>
+    <para>September 2006.</para>
+  </refsect1>
+</refentry>

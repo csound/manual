@@ -1,0 +1,42 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in</emphasis>
+-odac           -iadc    <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o readk.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="comment">; Initialize the global variables.</emphasis>
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">kr</emphasis> <emphasis role="op">=</emphasis> 4410
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 10
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 1
+
+<emphasis role="ohdr">0dbfs</emphasis> <emphasis role="op">=</emphasis> 1
+<emphasis role="comment">; By Andres Cabrera 2008</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 1
+<emphasis role="comment">; Read a number from the file every 0.5 seconds</emphasis>
+  kfibo <emphasis role="opc">readk</emphasis> "fibonacci.txt", 7, 0.5
+  kpitchclass <emphasis role="op">=</emphasis> 8 <emphasis role="op">+</emphasis>  ((kfibo <emphasis role="op">%</emphasis> 12)<emphasis role="op">/</emphasis>100)
+  <emphasis role="opc">printk2</emphasis> kpitchclass
+  kcps <emphasis role="op">=</emphasis> <emphasis role="opc">cpspch</emphasis>( kpitchclass )
+  <emphasis role="opc">printk2</emphasis> kcps
+  a1 <emphasis role="opc">oscil</emphasis> 0.5, kcps, 1
+  <emphasis role="opc">out</emphasis> a1
+<emphasis role="oblock">endin</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 1024 10 1
+<emphasis role="stamnt">i</emphasis> 1 0 10
+<emphasis role="stamnt">e</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

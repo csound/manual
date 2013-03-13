@@ -1,0 +1,36 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+-odac
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 16
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 1
+<emphasis role="ohdr">0dbfs</emphasis> <emphasis role="op">=</emphasis> 1
+
+<emphasis role="comment">;; example written by joachim heintz 2009</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 1
+ifftsize	<emphasis role="op">=</emphasis>		1024
+ioverlap	<emphasis role="op">=</emphasis>		ifftsize <emphasis role="op">/</emphasis> 4
+iwinsize	<emphasis role="op">=</emphasis>		ifftsize
+iwinshape	<emphasis role="op">=</emphasis>		1<emphasis role="comment">; von-Hann window</emphasis>
+Sfile		<emphasis role="op">=</emphasis>		"fox.wav"
+ain		<emphasis role="opc">soundin</emphasis>	Sfile
+fftin		<emphasis role="opc">pvsanal</emphasis>	ain, ifftsize, ioverlap, iwinsize, iwinshape<emphasis role="comment">; fft-analysis of the audio-signal</emphasis>
+fftblur	<emphasis role="opc">pvsblur</emphasis>	fftin, p4, 1<emphasis role="comment">; blur</emphasis>
+aout		<emphasis role="opc">pvsynth</emphasis>	fftblur<emphasis role="comment">; resynthesis</emphasis>
+		<emphasis role="opc">out</emphasis>		aout
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 3 0
+<emphasis role="stamnt">i</emphasis> 1 3 3 .1
+<emphasis role="stamnt">i</emphasis> 1 6 3 .5
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

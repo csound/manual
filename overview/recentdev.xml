@@ -1,0 +1,221 @@
+
+<chapter id="RecentDevelopments">
+
+  <title>Recent Developments</title>
+
+  <para>In the time since Barry Vercoe wrote the original Preface to
+    this manual, printed above, many further contributions have been made
+    to Csound. CsoundAC is an extended version of Csound 5.</para>
+
+  <section id="newFeaturesInCsound5">
+
+  <title>Features of Csound 5</title>
+
+  <para>Csound 5 begins a new major version of Csound that includes the
+    following new features:</para>
+
+  <itemizedlist>
+
+    <listitem>
+      <simpara>Now licensed under the GNU Lesser General Public License, an
+        open source license.</simpara>
+    </listitem>
+
+    <listitem>
+      <simpara>A new, easier to manage build system using
+        <application>SCons</application>.</simpara>
+    </listitem>
+
+    <listitem>
+      <simpara>The use of widely--accepted open source libraries:</simpara>
+
+      <itemizedlist>
+
+        <listitem><simpara>libsndfile for soundfile input and output.</simpara></listitem>
+
+        <listitem><simpara>PortAudio with ASIO drivers for low-latency, real-time audio input and output.</simpara></listitem>
+
+        <listitem><simpara>FLTK for graphical widgets that can be programmed in orchestra code.</simpara></listitem>
+
+        <listitem><simpara>PortMidi for real-time MIDI input and output.</simpara></listitem>
+
+      </itemizedlist>
+
+      <simpara>In addition, Istvan Varga has contributed native MIDI and audio drivers for Windows and Linux.</simpara>
+
+    </listitem>
+
+    <listitem><simpara>Simplified audio buffering system.</simpara></listitem>
+
+    <listitem><simpara>Status returns from all internal functions, including opcode functions.</simpara></listitem>
+
+    <listitem><simpara>MIDI interop opcodes, that enable the same instrument
+      definitions to be used interchangeably for either live MIDI
+      performance or off-line, score-driven performance.</simpara></listitem>
+
+    <listitem><simpara>Plugin opcodes are working and becoming more widely
+      accepted. Many opcodes have been moved to plugins. Most new opcodes
+      are plugins, including:</simpara>
+
+      <itemizedlist>
+
+        <listitem><simpara>The FluidSynth-based SoundFont opcodes.</simpara></listitem>
+
+        <listitem><simpara>Python opcodes allowing Python code to execute in the
+          orchestra header or in instrument code, at <literal>i</literal>-rate or <literal>k</literal>-rate.</simpara></listitem>
+
+        <listitem><simpara>Loris opcodes for time/frequency analysis and resynthesis.</simpara></listitem>
+
+        <listitem><simpara>Control bus opcodes.</simpara></listitem>
+
+        <listitem><simpara>Audio mixer opcodes.</simpara></listitem>
+
+        <listitem><simpara>String conversion opcodes.</simpara></listitem>
+
+        <listitem><simpara>Improved Open Sound Control (OSC) opcodes.</simpara></listitem>
+
+        <listitem><simpara>Vectorial opcodes.</simpara></listitem>
+
+        <listitem><simpara>The <application>pvs</application> opcodes
+        for real-time spectral processing, a port of Mark Dolson's
+        phase vocoder code.</simpara></listitem> 
+
+        <listitem><simpara>The <application>ATS</application> opcodes
+        for spectral Analysis, Transformation, and Synthesis of sound
+        based on a sinusoidal plus critical-band noise model. A sound
+        in ATS is a symbolic object representing a spectral model that
+        can be sculpted using a variety of transformation
+        functions. These opcodes can read, transform and resynthesize
+        ATS analysis files. Please note that you need the ATS
+        application to produce analysis files.</simpara></listitem> 
+
+        <listitem><simpara>The STK opcodes, consisting of Perry Cook's
+        original Synthesis Toolkit in C++ instruments, in C++, adapted
+        as opcodes.</simpara></listitem> 
+
+        <listitem><simpara><application>DSSI</application>
+        and <application>LADSPA</application> adapter opcodes for
+        hosting <application>DSSI</application>
+        and <application>LADSPA</application> plugins in
+        Csound.</simpara></listitem> 
+
+        <listitem><simpara><application>vst4cs</application> VST
+        adapter opcodes for hosting VST plugins in
+        Csound. (Distributed in source form only due to the VST SDK
+        licence restrictions.)</simpara></listitem> 
+      </itemizedlist>
+    </listitem>
+
+    <listitem><simpara>The <filename>OpcodeBase.hpp</filename> header file for
+      writing plugin opcodes in C++. This is based on the technique of
+      static polymorphism via template inheritance.</simpara></listitem>
+
+    <listitem><simpara>Istvan Varga's csound5gui frontend for Csound, simplifying 
+      the editing of Csound, the use of Csound especially for live performance, 
+      and the monitoring of performances.</simpara></listitem>
+
+    <listitem><simpara>Victor Lazzarini's Tcl/Tk frontends for
+    Csound, <application>cstclsh</application>
+    and <application>cswish</application>.</simpara></listitem> 
+
+    <listitem><simpara>The Csound API is becoming more standardized
+      and more widely used. There are interfaces or wrappers 
+      to the API in the following languages:</simpara>
+
+      <itemizedlist>
+
+        <listitem><simpara>C
+        (include <literal>csound.h</literal>).</simpara></listitem>
+
+        <listitem><simpara>C++
+        (include <literal>csound.hpp)</literal>). This API includes
+        Csound score and orchestra file container
+        functions.</simpara></listitem>
+
+        <listitem><simpara>Python (<literal>import
+        csnd</literal>).</simpara></listitem>
+
+        <listitem><simpara>Java (<literal>import
+        csnd.*;</literal>).</simpara></listitem>
+
+        <listitem><simpara>Lua (<literal>require
+        "csnd";</literal>).</simpara></listitem>
+
+        <listitem><simpara>Lisp (use the CFFI
+        file <literal>csound5.lisp</literal>).</simpara></listitem>
+
+      </itemizedlist>
+    </listitem>
+
+    <listitem><simpara>Csound is now truly re-entrant, meaning that
+    multiple instances of Csound can run at the same time, in the same
+    process.</simpara></listitem>
+
+  </itemizedlist>
+
+  <para>John ffitch plans to replace the handwritten parser with one
+    written using a parser generator, which should make it more
+    bug-free and perhaps more efficient.</para>
+
+    </section>
+
+  <section id="featuresOfCsoundAC">
+
+  <title>Features of CsoundAC</title>
+
+  <para>CsoundAC is a Python extension module for writing music by programming in Python. CsoundAC is based
+    on Michael Gogins' concept of music graphs, in which a score is represented as hierarchical tree of nodes,
+    which can contain notes, score generators, score transforms, and other nodes.</para>
+  
+  <para>CsoundAC also provides a Python interface to the Csound API. This makes it very easy to use Csound to render
+    CsoundAC compositions. Using Python's triple quotes, it is even possible to embed the formatted Csound orchestra
+    code for a piece directly into the Python code for that piece, so that all programming for a composition can be 
+    maintained in a single file.</para>
+  
+  <para>The coordinate system in CsoundAC is based on a Euclidean music space with dimensions {time, duration, event type, instrument number,
+    pitch as MIDI key, loudness as MIDI velocity, phase, spatial X coordinate, spatial Y coordinate, spatial Z coordinate, pitch-class set, 1}. 
+    A point in music space can be a note, an inflection of a note, or even a grain of sound.</para>
+  
+  <para>A music graph is a directed acyclical graph, or tree, of nodes in music space. These nodes are associated with local transformations
+    of coordinate system. There are nodes for containing scores or fragments of scores, for generating scores, and for
+    transforming scores. In addition, any node may contain child nodes that inherit the parent's coordinate system.</para> 
+  
+  <para>Thus, it is possible to compose a musical score by containing or generating notes in lower level nodes, assembling them into a 
+    score using higher level nodes, and finally rendering the score with Csound. The process is strictly analogous to the 
+    construction of a 3-dimensional scene in computer graphics by generating primitive objects such as spheres, cones, and cubes and 
+    moving them around in space to assemble a scene.</para>
+  
+  <para>Some of the node classes included in CsoundAC are:</para>
+  
+  <itemizedlist>
+    
+    <listitem><simpara>ScoreNode: Simply contains a sequence of notes or other points in music space, perhaps imported from a MIDI file.</simpara></listitem>
+    
+    <listitem><simpara>Rescale: Rescales child points to fit a desired range in time, duration, pitch, and/or other dimensions.</simpara></listitem>
+    
+    <listitem><simpara>Cell: Repeats child points in a sequence at regular intervals; 
+	the interval can be shorter or longer than the actual duration of the child points.</simpara></listitem>
+    
+    <listitem><simpara>Hocket: Hockets points produced by child nodes.</simpara></listitem>
+    
+    <listitem><simpara>Lindenmayer: Generates scores using O-L Lindenmayer systems.</simpara></listitem>
+    
+    <listitem><simpara>StrangeAttractor: Generates scores from a variety of tunable chaotic dynamical systems.</simpara></listitem>
+    
+    <listitem><simpara>MCRM: Generates scores using the Multiple Copy Reducing Machine algorithm.</simpara></listitem>
+    
+    <listitem><simpara>ImageToScore: Generates scores by translating image files into points in music space.</simpara></listitem>
+    
+    <listitem><simpara>Random: Randomizes child points on any dimension or dimensions of music space, using a variety of random variables.</simpara></listitem>
+    
+    <listitem><simpara>VoiceleadingNode: Generates chord progressions and voice-leadings for child notes, using operations based on the mathematical music theory
+	of Dmitri Tymoczko.</simpara></listitem>
+    
+  </itemizedlist>
+  
+  <para>Finally, is is possible to derive a new Node class in Python from any existing Node, 
+    in order to create new score generators and transforms as part of the composing process.</para>
+  
+  </section>
+  
+</chapter>

@@ -1,0 +1,40 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac  <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o vco2init.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis><emphasis role="op">=</emphasis>44100
+<emphasis role="ohdr">ksmps</emphasis><emphasis role="op">=</emphasis>1
+<emphasis role="ohdr">nchnls</emphasis><emphasis role="op">=</emphasis>2
+
+<emphasis role="comment">; create waveform with discontinuities, so it has a lot of high freq content</emphasis>
+gitable <emphasis role="ohdr">ftgen</emphasis> 0, 0, 2^16<emphasis role="op">+</emphasis>1, 7, <emphasis role="op">-</emphasis>1, 2^14, 1, 0, <emphasis role="op">-</emphasis>1, 2^14, 1, 0, <emphasis role="op">-</emphasis>1, 2^15, 1
+<emphasis role="comment">; make bandlimited tables of the waveform</emphasis>
+gi_nextfree <emphasis role="opc">vco2init</emphasis> <emphasis role="op">-</emphasis>gitable, gitable<emphasis role="op">+</emphasis>1, 1.05, 128, 2^16, gitable
+gitable_bl <emphasis role="op">=</emphasis> <emphasis role="op">-</emphasis>gitable
+
+<emphasis role="oblock">instr</emphasis> 1
+
+kfreq  <emphasis role="opc">expon</emphasis> 14000, p3, 500
+kfn    <emphasis role="opc">vco2ft</emphasis> kfreq, gitable_bl
+asig   <emphasis role="opc">oscilikt</emphasis> 5000, kfreq, kfn
+<emphasis role="opc">printk</emphasis> 0.1, kfn
+
+<emphasis role="comment">; remove semicolon on next line to hear original waveform, demonstrating the aliasing</emphasis>
+<emphasis role="comment">;asig   oscili 5000, kfreq, gitable</emphasis>
+       <emphasis role="opc">outs</emphasis> asig, asig
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">i</emphasis>1 0 5
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

@@ -1,0 +1,127 @@
+
+<refentry id="pvshift">
+<indexterm id="IndexPvshift"><primary>pvshift</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvshift</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvshift</refname>
+    <refpurpose>
+      Shift the frequency components of a pv stream, stretching/compressing
+      its spectrum.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Shift the frequency components of a pv stream, stretching/compressing
+      its spectrum.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>fsig <command>pvshift</command> fsigin, kshift, klowest[, kkeepform, igain, kcoefs]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>fsig</emphasis> -- output pv stream
+    </para>
+
+    <para>
+      <emphasis>fsigin</emphasis> -- input pv stream
+    </para>
+
+    <para>
+      <emphasis>kshift</emphasis> -- shift amount (in Hz, positive or negative).
+    </para>
+
+    <para>
+      <emphasis>klowest</emphasis> -- lowest frequency to be shifted. 
+    </para>
+
+    <para>
+      <emphasis>kkeepform</emphasis> -- attempt to keep input signal
+      formants; 0: do not keep formants;
+      1: keep formants using a liftered cepstrum method; 2: keep formants by 
+      using a true envelope method
+      (defaults to 0). 
+    </para>
+
+    <para>
+      <emphasis>kgain</emphasis> -- amplitude scaling (defaults to 1).
+    </para>
+<para>
+      <emphasis>kcoefs</emphasis> -- number of cepstrum coefs used in formant preservation (defaults to 80).
+    </para>
+    <para>
+      This opcode will shift the components of a pv stream, from a certain
+      frequency upwards, up or down a fixed amount (in Hz). It can be used to 
+      transform a harmonic spectrum into an inharmonic one. The <emphasis>kkeepform</emphasis> flag 
+      can be used to try and preserve formants for possibly interesting and unusual
+      spectral modifications.
+    </para>
+
+    <warning>
+      <para>
+        It is unsafe to use the same f-variable for both input and output of pvs opcodes. Using the same one might lead to undefined behavior on some opcodes. Use a different one on the left and right sides of the opcode.
+      </para>
+    </warning>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      <example>
+        <title>Example</title>
+        <programlisting>
+asig  <emphasis role="opc">in</emphasis>                                 <emphasis role="comment">; get the signal in</emphasis>
+
+fsig  <emphasis role="opc">pvsanal</emphasis>   asig, 1024, 256, 1024, 1 <emphasis role="comment">; analyse it</emphasis>
+ftps  <emphasis role="opc">pvshift</emphasis>   fsig, 100, 0             <emphasis role="comment">; add 100 Hz to each component</emphasis>
+atps  <emphasis role="opc">pvsynth</emphasis>   ftps                     <emphasis role="comment">; synthesise it</emphasis></programlisting>
+      </example>
+    </para>
+
+    <para>
+      Depending on the input, this will transform a pitched sound into an inharmonic,
+      bell-like sound.
+    </para>
+    <para>
+      Here is an example of the use of the <emphasis>pvshift</emphasis> opcode. It uses the file <ulink url="examples/pvshift.csd"><citetitle>pvshift.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the <emphasis>pvshift</emphasis> opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/pvshift.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link>,
+      <link linkend="pvsynth"><citetitle>pvsynth</citetitle></link>,
+      <link linkend="pvsadsyn"><citetitle>pvsadsyn</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>November 2004 </member>
+      </simplelist>
+    </para>
+
+    <para>New plugin in version 5</para>
+    <para>November 2004.</para>
+  </refsect1>
+</refentry>

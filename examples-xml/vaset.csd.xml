@@ -1,0 +1,55 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in    No messages</emphasis>
+-odac           -iadc     -d     <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o avarset.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="ohdr">sr</emphasis><emphasis role="op">=</emphasis>44100
+<emphasis role="ohdr">ksmps</emphasis><emphasis role="op">=</emphasis>1
+<emphasis role="ohdr">nchnls</emphasis><emphasis role="op">=</emphasis>2
+
+	<emphasis role="oblock">instr</emphasis> 1	<emphasis role="comment">; Sine Wave</emphasis>
+ifreq <emphasis role="op">=</emphasis> (p4 <emphasis role="op">></emphasis> 15 <emphasis role="op">?</emphasis> p4 <emphasis role="op">:</emphasis> <emphasis role="opc">cpspch</emphasis>(p4))
+iamp <emphasis role="op">=</emphasis> <emphasis role="opc">ampdb</emphasis>(p5)
+
+kenv <emphasis role="opc">adsr</emphasis> 0.1, 0.05, .9, 0.2
+
+aout <emphasis role="opc">init</emphasis> 0
+ksampnum <emphasis role="opc">init</emphasis> 0
+
+kcount <emphasis role="op">=</emphasis> 0
+
+iperiod <emphasis role="op">=</emphasis> <emphasis role="ohdr">sr</emphasis> <emphasis role="op">/</emphasis> ifreq
+
+i2pi <emphasis role="op">=</emphasis> 3.14159 <emphasis role="op">*</emphasis> 2
+
+<emphasis role="olabel">loopStart</emphasis><emphasis role="op">:</emphasis>
+
+kphase <emphasis role="op">=</emphasis> (ksampnum <emphasis role="op">%</emphasis> iperiod) <emphasis role="op">/</emphasis> iperiod
+
+knewval <emphasis role="op">=</emphasis> <emphasis role="opc">sin</emphasis>(kphase <emphasis role="op">*</emphasis> i2pi)
+
+	<emphasis role="opc">vaset</emphasis> knewval, kcount,aout
+
+	ksampnum <emphasis role="op">=</emphasis> ksampnum <emphasis role="op">+</emphasis> 1
+
+<emphasis role="octrl">loop_lt</emphasis> kcount, 1, ksmps, <emphasis role="olabel">loopStart</emphasis>
+
+aout <emphasis role="op">=</emphasis> aout <emphasis role="op">*</emphasis> iamp <emphasis role="op">*</emphasis> kenv
+
+<emphasis role="opc">outs</emphasis> aout, aout
+	<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis>1	0.0	2 440 80
+<emphasis role="stamnt">e</emphasis>
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

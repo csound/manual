@@ -1,0 +1,90 @@
+
+<refentry id="mode">
+<indexterm id="IndexMode"><primary>mode</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>mode</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>mode</refname>
+    <refpurpose>
+      A filter that simulates a mass-spring-damper system
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Filters the incoming signal with the specified resonance frequency and
+      quality factor. It can also be seen as a signal generator for high quality
+      factor, with an impulse for the excitation. You can combine several modes
+      to built complex instruments such as bells or guitar tables.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>aout <command>mode</command> ain, kfreq, kQ [, iskip]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iskip</emphasis>
+      (optional, default=0) -- if non zero skip the initialisation of the
+      filter.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>aout</emphasis> -- filtered signal
+    </para>
+
+    <para>
+      <emphasis>ain</emphasis> -- signal to filter
+    </para>
+
+    <para>
+      <emphasis>kfreq</emphasis> -- resonant frequency of the filter
+      <warning>
+        <title>Warning</title>
+        <para>
+          This filter becomes unstable if <emphasis>sr</emphasis>/<emphasis>kfreq</emphasis> &lt;
+          pi (e.g <emphasis>kfreq</emphasis> &gt; 14037 Hz @ 44 kHz)
+        </para>
+        </warning>
+    </para>
+
+    <para>
+      <emphasis>kQ</emphasis> -- quality factor of the filter
+    </para>
+
+    <para>The resonance time is roughly proportionnal to <emphasis>kQ</emphasis>/<emphasis>kfreq</emphasis>.</para>
+
+    <para>
+      See <link linkend="MiscModalFreq"><citetitle>Modal Frequency Ratios</citetitle></link> for frequency ratios of real intruments which can be used to determine the values of <emphasis>kfreq</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the mode opcode. It uses the file <ulink url="examples/mode.csd"><citetitle>mode.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the mode opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/mode.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Original UDO and documentation/example by François Blanc</para>
+    <para>Opcode translation to C-code by Steven Yi</para>
+    <para>New in version 5.04</para>
+  </refsect1>
+</refentry>

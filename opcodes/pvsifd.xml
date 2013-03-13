@@ -1,0 +1,93 @@
+
+<refentry id="pvsifd">
+<indexterm id="Indexpvsifd"><primary>pvsifd</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsifd</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>pvsifd</refname>
+    <refpurpose>
+     Instantaneous Frequency Distribution, magnitude and phase analysis.
+          </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+  The pvsifd opcode takes an input a-rate signal and performs an Instantaneous Frequency,
+  magnitude and phase analysis, using the STFT and pvsifd (Instantaneous Frequency Distribution),
+  as described in Lazzarini et al, "Time-stretching using the Instantaneous Frequency Distribution and Partial
+  Tracking", Proc.of ICMC05, Barcelona. It generates two PV streaming signals, one containing the
+  amplitudes and frequencies (a similar output to pvsanal) and another containing amplitudes and 
+  unwrapped phases. 
+	      </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ffr,fphs <command>pvsifd</command> ain, ifftsize, ihopsize, iwintype[,iscal]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ffr</emphasis> -- output pv stream in AMP_FREQ format
+    </para>
+
+    <para>
+      <emphasis>fphs</emphasis> -- output pv stream in AMP_PHASE format
+    </para>
+
+    <para>
+      <emphasis>ifftsize</emphasis> -- FFT analysis size, must be power-of-two and integer multiple of the hopsize.
+    </para>
+
+    <para>
+      <emphasis>ihopsize</emphasis> -- hopsize in samples
+    </para>
+
+    <para>
+      <emphasis>iwintype</emphasis> -- window type (O: Hamming, 1: Hanning) 
+    </para>
+
+    <para>
+      <emphasis>iscal</emphasis> -- amplitude scaling (defaults to 1).
+    </para>
+  <warning>
+    <para>
+      It is unsafe to use the same f-variable for both input and output of pvs opcodes. Using the same one might lead to undefined behavior on some opcodes. Use a different one on the left and right sides of the opcode.
+    </para>
+  </warning>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the pvsifd opcode. It uses the file <ulink url="examples/pvsifd.csd"><citetitle>pvsifd.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the pvsifd opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/pvsifd.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+        <para>The example above shows the pvsifd analysis feeding into partial tracking andcubic-phase additive resynthesis with pitch shifting.</para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>June 2005 </member>
+      </simplelist>
+    </para>
+
+    <para>New plugin in version 5</para>
+    <para>November 2004.</para>
+  </refsect1>
+</refentry>

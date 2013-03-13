@@ -1,0 +1,34 @@
+
+<section id="RealTimeWindows">
+  <title>Windows</title>
+  <bridgehead>Real-time Audio</bridgehead>
+  <para>
+    Windows users can use either the default <emphasis>PortAudio</emphasis> Realtime module, or the <emphasis>winmm</emphasis> Realtime Audio Module. The winmm module is a native windows module which provides great stability, but latency will usually be too high for realtime interaction. To activate a realtime module, you can use the <link linkend="FlagsCatMinusPlusRtaudio"><citetitle>-+rtaudio</citetitle></link> flag with value of <emphasis>portaudio</emphasis> or <emphasis>winmme</emphasis>. The default value is <emphasis>portaudio</emphasis>, which is activated by default without specifying it.
+  </para>
+  <para>
+    You also need to specify the sound device you want to use, and specify that you want to generate real-time audio ouput instead of soundfile to disk output. To do this, you must use the <link linkend="FlagsCatMinusLowerOdac"><citetitle>-odac</citetitle></link> or <link linkend="FlagsCatMinusLowerOdac"><citetitle>-o dac</citetitle></link> flag, which tells csound to output to the Digital-to-Analog converters instead of a file. By adding a number after the flag (e.g. -odac2), you can choose the device number you want. To find out available devices in your system, you can use a large out of range number (e.g. -odac99), and csound will report an error, and list available devices.
+  </para>
+  <para>
+    When choosing the device number under Portaudio, you are also choosing the driver interface, since Portaudio supports WinMME, DirectX and ASIO. If you have an ASIO capable interface or an ASIO driver emulator like <ulink url="http://www.asio4all.com">ASIO4ALL</ulink>, the device will show multiple times, once for each driver interface. ASIO will give you the best latency on your system, so if available it should be your choice for realtime audio output.
+  </para>
+  <para>
+    Enabling realtime audio input is done using <link linkend="FlagsCatMinusLowerIadc"><citetitle>-iadc</citetitle></link>, which makes csound listen to the realtime audio outputs. You can again select the device by its number, and check for available devices using an out of range number. Note that for input you use 'adc' instead of 'dac'. Make sure you have the appropriate input selected in your soundcard's control panel.
+  </para>
+  <bridgehead>Real-time MIDI</bridgehead>
+  <para>
+    To enable Real-time MIDI on Windows, you can use the <link linkend="FlagsCatMinusUpperM"><citetitle>-M</citetitle></link> flag for MIDI input and the <link linkend="FlagsCatMinusUpperM"><citetitle>-Q</citetitle></link> flag for MIDI output. You might need to specify the device number after the flag (e.g. -M2), and again, you can find the available devices by giving an out of range number.
+  </para>
+  <para>
+    Csound will use PortMidi as the default MIDI module, but there's also a native winmme module, which can be activated with the flag:
+  </para>
+  <literallayout>
+    -+rtmidi=winmme
+  </literallayout>
+  <para>
+    A typical set of flags to enable Real-time Audio and MIDI I/O can look like:
+  </para>
+  <literallayout>
+    -+rtmidi=winmme -M1 -Q1 -+rtaudio=portaudio -odac3 -iadc3
+  </literallayout>
+  
+</section>

@@ -1,0 +1,101 @@
+
+<refentry id="midinoteoff">
+<indexterm id="IndexMidinoteoff"><primary>midinoteoff</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:MIDI/Score Interoperability</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>midinoteoff</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>midinoteoff</refname>
+    <refpurpose>
+      Gets a MIDI noteoff value.
+          </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>midinoteoff</emphasis> is designed to simplify writing instruments that can be used interchangeably for either score or MIDI input, and to make it easier to adapt instruments originally written for score input to work with MIDI input.
+    </para>
+
+    <para>
+      In general, it should be possible to write instrument definitions that work identically with both scores
+and MIDI, including both MIDI files and real-time MIDI input, without using any conditional statements, and that take full advantage of MIDI voice messages.
+    </para>
+
+    <para>
+      Note that correlating Csound instruments with MIDI channel numbers is done using the <link linkend="massign"><citetitle>massign</citetitle></link> opcode for real-time performance,.  For file-driven performance, instrument numbers default to MIDI channel number + 1, but the defaults are overridden by any MIDI program change messages in the file.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>midinoteoff</command> xkey, xvelocity</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>xkey</emphasis> -- returns MIDI key during MIDI activation, remains unchanged otherwise.
+    </para>
+
+    <para>
+      <emphasis>xvelocity</emphasis> -- returns MIDI velocity during MIDI activation, remains unchanged otherwise.
+    </para>
+
+    <para>
+      If the instrument was activated by MIDI input, the opcode overwrites the values of the <emphasis>xkey</emphasis> and <emphasis>xvelocity</emphasis> with the corresponding values from MIDI input. If the instrument was <emphasis>NOT</emphasis> activated by MIDI input, the values of <emphasis>xkey</emphasis> and <emphasis>xvelocity</emphasis> remain unchanged.
+    </para>
+
+    <para>
+      This enables score p-fields to receive MIDI input data during MIDI activation, and score values otherwise.
+    </para>
+
+    <note>
+      <title>Adapting a score-activated Csound instrument.</title>
+      <para>See the <link linkend="MidiInterop"><citetitle>MIDI interop opcodes</citetitle></link> section for details on adapting score driven instruments for MIDI or vice-versa.</para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the midinoteoff opcode. It uses the file <ulink url="examples/midinoteoff.csd"><citetitle>midinoteoff.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the midinoteoff opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/midinoteoff.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Its output should include lines like:
+      <screen>
+ i1    60.00000
+ i1    76.00000
+      </screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="midichannelaftertouch"><citetitle>midichannelaftertouch</citetitle></link>, 
+      <link linkend="midicontrolchange"><citetitle>midicontrolchange</citetitle></link>, 
+      <link linkend="mididefault"><citetitle>mididefault</citetitle></link>, 
+      <link linkend="midinoteoncps"><citetitle>midinoteoncps</citetitle></link>, 
+      <link linkend="midinoteonkey"><citetitle>midinoteonkey</citetitle></link>, 
+      <link linkend="midinoteonoct"><citetitle>midinoteonoct</citetitle></link>, 
+      <link linkend="midinoteonpch"><citetitle>midinoteonpch</citetitle></link>, 
+      <link linkend="midipitchbend"><citetitle>midipitchbend</citetitle></link>, 
+      <link linkend="midipolyaftertouch"><citetitle>midipolyaftertouch</citetitle></link>, 
+      <link linkend="midiprogramchange"><citetitle>midiprogramchange</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: Michael Gogins</para>
+    <para>New in version 4.20</para>
+  </refsect1>
+</refentry>

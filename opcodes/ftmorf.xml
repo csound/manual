@@ -1,0 +1,102 @@
+
+<refentry id="ftmorf">
+<indexterm id="IndexFtmorf"><primary>ftmorf</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Convolution and Morphing</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ftmorf</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>ftmorf</refname>
+    <refpurpose>
+       Morphs between multiple ftables as specified in a list.
+          </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Uses an index into a table of ftable numbers to morph between adjacent tables in the list.This morphed function is written into the table referenced by <emphasis>iresfn</emphasis> on every k-cycle.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>ftmorf</command> kftndx, iftfn, iresfn</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iftfn</emphasis> -- The table containing the numbers of any existing tables which are used for the morphing.
+    </para>
+
+    <para>
+      <emphasis>iresfn</emphasis> -- Table number of the morphed function
+    </para>
+
+    <para>
+      The length of all the tables in <emphasis>iftfn</emphasis> must equal the length of <emphasis>iresfn</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kftndx</emphasis> -- the index into the <emphasis>iftfn</emphasis> table.
+    </para>
+
+    <para>
+      If <emphasis>iftfn</emphasis> contains (6, 4, 6, 8, 7, 4):
+
+      <itemizedlist>
+        <listitem>
+          <para>
+            <emphasis>kftndx=4</emphasis> will write the contents of f7 into <emphasis>iresfn</emphasis>.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            <emphasis>kftndx=4.5</emphasis> will write the average of the contents of f7 and f4 into <emphasis>iresfn</emphasis>.
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+    <note>
+      <para>     
+        <emphasis>iresfn</emphasis> is only updated if the morfing index changes it's value,
+        if <emphasis>kftindx</emphasis> is static, no writing to <emphasis>iresfn</emphasis> will occur.
+      </para>
+    </note>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the ftmorf opcode. It uses the file <ulink url="examples/ftmorf.csd"><citetitle>ftmorf.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the ftmorf opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/ftmorf.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: William <quote>Pete</quote> Moss</member>
+        <member>University of Texas at Austin</member>
+        <member>Austin, Texas USA</member>
+        <member>Jan. 2002</member>
+      </simplelist>
+    </para>
+
+    <para>New in version 4.18</para>
+  </refsect1>
+</refentry>

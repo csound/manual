@@ -1,0 +1,119 @@
+<refentry id="cell">
+<indexterm id="IndexCell"><primary>cell</primary></indexterm>
+  <refentryinfo><title>Vectorial:Cellular Automata</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>cell</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>cell</refname>
+
+    <refpurpose>
+      Cellular Automaton
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+	 One-Dimensional Cellular Automaton. This opcode is the
+         modified version of <emphasis>vcella</emphasis> by Gabriel Maldonado.
+    </para>
+  </refsect1>
+
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>cell</command> ktrig, kreinit, ioutFunc, initStateFunc, iRuleFunc, ielements</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ioutFunc</emphasis> -- number of the table where the state of each cell is stored.
+    </para>
+
+    <para>
+      <emphasis>initStateFunc</emphasis> -- number of the table
+      containing the inital states of cells. 
+    </para>
+
+    <para>
+      <emphasis>iRuleFunc</emphasis> -- number of a lookup table
+      containing the 8-bit rule.
+    </para>
+
+    <para>
+      <emphasis>ielements</emphasis> -- total number of cells in a row. 
+    </para>
+
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ktri</emphasis> -- trigger signal. Each time it is
+      non-zero, a new generation of cells is evaluated. 
+    </para>
+
+    <para>
+      <emphasis>kreinit</emphasis> -- reset signal. Each time it is
+      non-zero, state of all cells is forced to be that of
+      initStateFunc.
+    </para>
+
+    <para>
+      <emphasis>cell</emphasis> models a classical 1D cellular
+      automaton and stores the state of each cell in the table
+      identified by <emphasis>ioutFunc</emphasis>.
+    </para>
+    <para>
+      <emphasis>initStateFunc</emphasis> is an input vector containing
+      the inital value of the row of cells, while
+      <emphasis>iRuleFunc</emphasis> is an input vector containing the
+      chosen rule in the binary form (least significant bit first). 
+    </para>
+    <para>
+      A new generation of cells is evaluated each time
+      <emphasis>ktrig</emphasis> contains a non-zero value.  Also the
+      status of all cells can be forced to assume the status
+      corresponding to the contents of
+      <emphasis>initStateFunc</emphasis> each time
+      <emphasis>kreinit</emphasis> contains a non-zero value.
+    </para>
+    <para>
+      Note that each cell is supposed to be in one of two possible
+      states (1 = "alive", 0 = "dead"), although fractional values
+      should work too, because truncation is used. 
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is a simple example of the cell opcode. It uses the file
+      <ulink
+          url="examples/cell.csd"><citetitle>cell.csd</citetitle></ulink>. 
+      <example>
+        <title>A simple example of the cell opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/cell.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Gleb Rogozinsky</member>
+        <member>October 2011</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 5.16.6</para>
+  </refsect1>
+</refentry>
+

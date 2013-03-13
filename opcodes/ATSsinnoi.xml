@@ -1,0 +1,92 @@
+﻿
+<refentry id="ATSsinnoi">
+<indexterm id="IndexATSsinnoi"><primary>ATSsinnoi</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:ATS</title></refentryinfo>
+    <refmeta>
+        <refentrytitle>ATSsinnoi</refentrytitle>
+    </refmeta>
+    <refnamediv>
+        <refname>ATSsinnoi</refname>
+        <refpurpose> uses the data from an ATS analysis file to perform resynthesis.
+        </refpurpose>
+    </refnamediv>
+    <refsect1>
+        <title>Description</title>
+        <para>
+            <emphasis>ATSsinnoi</emphasis> reads data from an ATS data file and uses the information to synthesize sines and noise together.
+        </para>
+    </refsect1>
+    <refsect1>
+        <title>Syntax</title>
+        <synopsis>ar <command>ATSsinnoi</command> ktimepnt, ksinlev, knzlev, kfmod, iatsfile, ipartials \
+          [, ipartialoffset, ipartialincr]</synopsis>
+    </refsect1>
+    <refsect1>
+        <title>Initialization</title>
+        <para>
+        <emphasis>iatsfile</emphasis> – the ATS number (n in ats.n) or the name in quotes of the analysis file made using <ulink url="http://www-ccrma.stanford.edu/~juan/ATS.html"><citetitle>ATS</citetitle></ulink>.
+        </para>
+        <para><emphasis>ipartials</emphasis> – number of partials that will be used in the resynthesis (the noise has a maximum of 25 bands)
+        </para>
+        <para><emphasis>ipartialoffset</emphasis> (optional) – is the first partial used (defaults to 0).
+        </para>
+        <para><emphasis>ipartialincr</emphasis> (optional) – sets an increment by which these synthesis opcodes counts up from <emphasis>ipartialoffset</emphasis> for ibins components in the re-synthesis (defaults to 1).
+        </para>
+    </refsect1>
+    <refsect1>
+        <title>Performance</title>
+        <para><emphasis>ktimepnt</emphasis> – The time pointer in seconds used to index the ATS file. Used for <emphasis>ATSsinnoi</emphasis> exactly the same as for <link linkend="pvoc"><citetitle>pvoc</citetitle></link>.</para>
+        <para>
+        <emphasis>ksinlev</emphasis> - controls the level of the sines in the <emphasis>ATSsinnoi</emphasis> ugen. A value of 1 gives full volume sinewaves.
+        </para>
+        <para><emphasis>knzlev</emphasis> - controls the level of the noise components in the <emphasis>ATSsinnoi</emphasis> ugen. A value of 1 gives full volume noise.
+        </para>
+        <para>
+        <emphasis>kfmod</emphasis> – an input for performing pitch transposition or frequency modulation on all of the synthesized partials, if no fm or pitch change is desired then use a 1 for this value.
+        </para>
+        <para><emphasis>ATSsinnoi</emphasis> reads data from an ATS data file and uses the information to synthesize sines and noise together. The noise energy for each band is distributed equally among each partial that falls in that band. Each partial is then synthesized, along with that partial's noise component. Each noise component is then modulated by the corresponding partial to be put in the correct place in the frequency spectrum. The level of the noise and the partials are individually controllable. See the <ulink url="http://www-ccrma.stanford.edu/~juan/ATS.html"><citetitle>ATS</citetitle></ulink> webpage for more info about the sinnoi synthesis. An ATS analysis differs from a pvanal in that ATS tracks the partials and computes the noise energy of the sound being analyzed. For more info about ATS analysis read Juan Pampin's description on the the <ulink url="http://www-ccrma.stanford.edu/~juan/ATS.html"><citetitle>ATS</citetitle></ulink> web-page.
+        </para>
+    </refsect1>
+    <refsect1>
+        <title>Examples</title>
+    <programlisting>
+  ktime   <emphasis role="opc">line</emphasis>       0, p3, 2.5
+  asig    <emphasis role="opc">ATSsinnoi</emphasis>  ktime, 1, 1, 1, &quot;beats.ats&quot;, 42</programlisting>
+        <para>Here we synthesize both the noise and the sinewaves (all 42 partials) contained in &quot;beats.ats&quot; together. The relative volumes of the noise and the partials are unaltered (each set to 1).
+        </para>
+      <para>
+      Here is another example of the ATSsinnoi opcode. It uses the file <ulink url="examples/ATSsinnoi.csd"><citetitle>ATSsinnoi.csd</citetitle></ulink>.
+      </para>
+      <example>
+        <title>Example of the ATSsinnoi opcode.</title>
+
+        
+
+          <xi:include href="examples-xml/ATSsinnoi.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+        <para>This example here is like the other example except that we use an envelope to control <emphasis>knzlev</emphasis> (the noise level). The result of this will be the "beats.wav" sound that has its noise component fade in over the duration of the note.
+        </para>
+    </refsect1>
+    <refsect1>
+        <title>See also</title>
+        <para><link linkend="ATSread"><citetitle>ATSread</citetitle></link>, 
+            <link linkend="ATSreadnz"><citetitle>ATSreadnz</citetitle></link>, 
+            <link linkend="ATSinfo"><citetitle>ATSinfo</citetitle></link>, 
+            <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>, 
+            <link linkend="ATScross"><citetitle>ATScross</citetitle></link>, 
+            <link linkend="ATSinterpread"><citetitle>ATSinterpread</citetitle></link>, 
+            <link linkend="ATSpartialtap"><citetitle>ATSpartialtap</citetitle></link>, 
+            <link linkend="ATSadd"><citetitle>ATSadd</citetitle></link>, 
+            <link linkend="ATSaddnz"><citetitle>ATSaddnz</citetitle></link></para>
+    </refsect1>
+    <refsect1>
+        <title>Credits</title>
+        <para>
+            <simplelist>
+                <member>Author: Alex Norman</member>
+                <member>Seattle,Washington</member>
+                <member>2004</member>
+            </simplelist>
+        </para>
+    </refsect1>
+</refentry>

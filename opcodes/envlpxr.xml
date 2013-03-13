@@ -1,0 +1,113 @@
+
+<refentry id="envlpxr">
+<indexterm id="IndexEnvlpxr"><primary>envlpxr</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Envelope Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>envlpxr</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>envlpxr</refname>
+    <refpurpose>
+      The <emphasis>envlpx</emphasis> opcode with a final release segment.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>envlpxr</emphasis> is the same as <link linkend="envlpx"><citetitle>envlpx</citetitle></link> except that the final segment is entered only on sensing a MIDI note release. The note is then extended by the decay time.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>envlpxr</command> xamp, irise, idec, ifn, iatss, iatdec [, ixmod] [,irind]</synopsis>
+
+    <synopsis>kres <command>envlpxr</command> kamp, irise, idec, ifn, iatss, iatdec [, ixmod] [,irind]</synopsis>
+ </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>irise</emphasis> -- rise time in seconds. A zero or negative value signifies no rise modification.
+    </para>
+
+    <para>
+      <emphasis>idec</emphasis> -- decay time in seconds. Zero means no decay.
+    </para>
+
+    <para>
+      <emphasis>ifn</emphasis> -- function table number of stored rise shape with extended guard point.
+    </para>
+
+    <para>
+      <emphasis>iatss</emphasis> -- attenuation factor, by which the last value of the <emphasis>envlpxr</emphasis> rise is modified during the note's pseudo steady state. A factor greater than 1 causes an exponential growth and a factor less than 1 creates an exponential decay. A factor of 1 will maintain a true steady state at the last rise value.  Note that this attenuation is not by fixed rate (as in a piano), but is sensitive to a note's duration. However, if <emphasis>iatss</emphasis> is negative (or if steady state &lt; 4 k-periods) a fixed attenuation rate of <emphasis>abs</emphasis>(<emphasis>iatss</emphasis>) per second will be used. 0 is illegal.
+    </para>
+
+    <para>
+      <emphasis>iatdec</emphasis> -- attenuation factor by which the closing steady state value is reduced exponentially over the decay period. This value must be positive and is normally of the order of .01. A large or excessively small value is apt to produce a cutoff which is audible. A zero or negative value is illegal.
+    </para>
+
+    <para>
+      <emphasis>ixmod</emphasis> (optional, between +- .9 or so) -- exponential curve modifier, influencing the steepness of the exponential trajectory during the steady state. Values less than zero will cause an accelerated growth or decay towards the target (e.g. <emphasis>subito piano</emphasis>). Values greater than zero will cause a retarded growth or decay. The default value is zero (unmodified exponential).
+    </para>
+
+    <para>
+      <emphasis>irind </emphasis> (optional) -- independence flag. If left zero, the release time (<emphasis>idec</emphasis>) will influence the extended life of the current note following a note-off. If non-zero, the <emphasis>idec</emphasis> time is quite independent of the note extension (see below). The default value is 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kamp, xamp</emphasis> -- input amplitude signal.
+    </para>
+
+    <para>
+      <emphasis>envlpxr</emphasis> is an example of the special Csound <quote>r</quote> units that contain a note-off sensor and release time extender. When each senses a score event termination or a MIDI noteoff, it will immediately extend the performance time of the current instrument by <emphasis>idec</emphasis> seconds unless it is made independent by <emphasis>irind</emphasis>. Then it will begin a decay from wherever it was at the time. 
+    </para>
+
+    <para>
+      You can use other pre-made envelopes which start a release segment upon recieving a note off message, like <link linkend="linsegr"><citetitle>linsegr</citetitle></link> and <link linkend="expsegr"><citetitle>expsegr</citetitle></link>, or you can construct more complex envelopes using <link linkend="xtratim"><citetitle>xtratim</citetitle></link> and <link linkend="release"><citetitle>release</citetitle></link>. Note that you don't need to use <link linkend="xtratim"><citetitle>xtratim</citetitle></link> if you are using <emphasis>envlpxr</emphasis>, since the time is extended automatically.
+    </para>
+
+    <para>
+      These <quote>r</quote> units can also be modified by MIDI noteoff velocities (see veloffs). If the <emphasis>irind</emphasis> flag is on (non-zero), the overall performance time is unaffected by note-off and veloff data.
+    </para>
+
+    <formalpara>
+      <title>Multiple <quote>r</quote> units</title>
+      <para>
+         When two or more <quote>r</quote> units occur in the same instrument it is usual to have only one of them influence the overall note duration. This is normally the master amplitude unit. Other units controlling, say, filter motion can still be sensitive to note-off commands while not affecting the duration by making them independent (<emphasis>irind</emphasis> non-zero). Depending on their own <emphasis>idec</emphasis> (release time) values, independent <quote>r</quote> units may or may not reach their final destinations before the instrument terminates. If they do, they will simply hold their target values until termination. If two or more <quote>r</quote> units are simultaneously master, note extension is by the greatest <emphasis>idec</emphasis>.
+      </para>
+    </formalpara>
+  </refsect1>
+  
+   <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the envlpxr opcode. It uses the file <ulink url="examples/envlpxr.csd"><citetitle>envlpxr.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the envlpxr opcode.</title>
+          <xi:include href="examples-xml/envlpxr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="envlpx"><citetitle>envlpx</citetitle></link>,
+      <link linkend="linen"><citetitle>linen</citetitle></link>,
+      <link linkend="linenr"><citetitle>linenr</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Thanks goes to &nameluis; for pointing out a mistake with <emphasis>iatss</emphasis>.</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,100 @@
+
+<refentry id="moogvcf">
+<indexterm id="IndexMoogvcf"><primary>moogvcf</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>moogvcf</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>moogvcf</refname>
+    <refpurpose>
+      A digital emulation of the Moog diode ladder filter configuration.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      A digital emulation of the Moog diode ladder filter configuration.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>moogvcf</command> asig, xfco, xres [,iscale, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iscale</emphasis> (optional, default=1) -- internal
+    scaling factor. Use if <emphasis>asig</emphasis> is not in the
+    range +/-1. Input is first divided by <emphasis>iscale</emphasis>,
+    then output is mutliplied <emphasis>iscale</emphasis>. Default
+    value is 1. (New in Csound version 3.50)
+    </para>
+    <para>
+      <emphasis>iskip</emphasis> (optional, default=0) -- if non zero
+    skip the initialisation of the filter. (New in Csound version
+    4.23f13 and 5.0)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asig</emphasis> -- input signal
+    </para>
+
+    <para>
+      <emphasis>xfco</emphasis> -- filter cut-off frequency in Hz. As of version 3.50, may i-,k-, or a-rate.
+    </para>
+
+    <para>
+      <emphasis>xres</emphasis> -- amount of resonance. Self-oscillation occurs when <emphasis>xres</emphasis> is approximately one. As of version 3.50, may a-rate, i-rate, or k-rate.
+    </para>
+
+    <para>
+      <emphasis>moogvcf</emphasis> is a digital emulation of the Moog diode ladder filter configuration. This emulation is based loosely on the paper <quote>Analyzing the Moog VCF with Considerations for Digital Implementation</quote> by Stilson and Smith (CCRMA). This version was originally coded in Csound by Josep Comajuncosas. Some modifications and conversion to C were done by &namehans;.
+    </para>
+
+    <warning>
+      <para>This filter requires that the input signal be normalized to one. This can be easily achieved using <link linkend="Zerodbfs"><citetitle>0dbfs</citetitle></link>, like this:
+      <literallayout>ares <command>moogvcf</command> asig, kfco, kres, 0dbfs</literallayout></para>
+      <para>You can also use <link linkend="moogvcf2"><citetitle>moogvcf2</citetitle></link> which defaults scaling to <link linkend="Zerodbfs"><citetitle>0dbfs</citetitle></link>. </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the moogvcf opcode. It uses the file <ulink url="examples/moogvcf.csd"><citetitle>moogvcf.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the moogvcf opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/moogvcf.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="moogvcf2"><citetitle>moogvcf2</citetitle></link>,
+      <link linkend="biquad"><citetitle>biquad</citetitle></link>,
+      <link linkend="rezzy"><citetitle>rezzy</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namehans;</member>
+        <member>October 1998</member>
+      </simplelist>
+    </para>
+    <para>New in Csound version 3.49</para>
+  </refsect1>
+</refentry>

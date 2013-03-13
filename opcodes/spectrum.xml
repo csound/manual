@@ -1,0 +1,93 @@
+
+<refentry id="spectrum">
+<indexterm id="IndexSpectrum"><primary>spectrum</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Non-Standard</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>spectrum</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>spectrum</refname>
+    <refpurpose>
+      Generate a constant-Q, exponentially-spaced DFT.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Generate a constant-Q, exponentially-spaced DFT across all octaves of a multiply-downsampled control or audio input signal.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>wsig <command>spectrum</command> xsig, iprd, iocts, ifrqa [, iq] [, ihann] [, idbout] \
+      [, idsprd] [, idsinrs]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ihann</emphasis> (optional) -- apply a Hamming or Hanning window to the input. The default is 0 (Hamming window)
+    </para>
+
+    <para>
+      <emphasis>idbout</emphasis> (optional) -- coded conversion of the DFT output:
+       <itemizedlist>
+         <listitem>
+           <para>0 = magnitude</para>
+         </listitem>
+
+         <listitem>
+           <para>1 = dB</para>
+         </listitem>
+
+         <listitem>
+           <para>2 = mag squared</para>
+         </listitem>
+
+         <listitem>
+           <para>3 = root magnitude</para>
+         </listitem>
+       </itemizedlist>
+
+      The default value is 0 (magnitude).
+    </para>
+
+    <para>
+      <emphasis>idisprd</emphasis> (optional) -- if non-zero, display the composite downsampling buffer every <emphasis>idisprd</emphasis> seconds.  The default value is 0 (no display).
+    </para>
+
+    <para>
+      <emphasis>idsines</emphasis> (optional) -- if non-zero, display the Hamming or Hanning windowed sinusoids used in DFT filtering.  The default value is 0 (no sinusoid display).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      This unit first puts signal <emphasis>asig</emphasis> or <emphasis>ksig</emphasis> through <emphasis>iocts</emphasis> of successive octave decimation and downsampling, and preserves a buffer of down-sampled values in each octave (optionally displayed as a composite buffer every <emphasis>idisprd</emphasis> seconds).  Then at every <emphasis>iprd</emphasis> seconds, the preserved samples are passed through a filter bank (<emphasis>ifrqs</emphasis> parallel filters per octave, exponentially spaced, with frequency/bandwidth Q of <emphasis>iq</emphasis>), and the output magnitudes optionally converted (<emphasis>idbout </emphasis>) to produce a band-limited spectrum that can be read by other units.
+    </para>
+
+    <para>
+      The stages in this process are computationally intensive, and computation time varies directly with <emphasis>iocts</emphasis>, <emphasis>ifrqs</emphasis>, <emphasis>iq</emphasis>, and inversely with <emphasis>iprd</emphasis>. Settings of <emphasis>ifrqs</emphasis> = 12, <emphasis>iq</emphasis> = 10, <emphasis>idbout</emphasis> = 3, and <emphasis>iprd</emphasis> = .02 will normally be adequate, but experimentation is encouraged. <emphasis>ifrqs</emphasis> currently has a maximum of 120 divisions per octave. For audio input, the frequency bins are tuned to coincide with A440.
+    </para>
+
+    <para>
+      This unit produces a self-defining spectral datablock <emphasis>wsig</emphasis>, whose characteristics used (<emphasis>iprd</emphasis>, <emphasis>iocts</emphasis>, <emphasis>ifrqs</emphasis>, <emphasis>idbout</emphasis>) are passed via the data block itself to all derivative <emphasis>wsigs</emphasis>. There can be any number of <emphasis>spectrum</emphasis> units in an instrument or orchestra, but all <emphasis>wsig</emphasis> names must be unique.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      <informalexample>
+        <programlisting>
+asig <emphasis role="opc">in</emphasis>                                        <emphasis role="comment">; get external audio</emphasis>
+wsig <emphasis role="opc">spectrum</emphasis>  asig, 0.02, 6, 12, 33, 0, 1, 1  <emphasis role="comment">; downsample in 6 octs &amp; calc a 72 pt dft</emphasis>
+                                               <emphasis role="comment">; (Q 33, dB out) every 20 msecs</emphasis></programlisting>
+      </informalexample>
+    </para>
+  </refsect1>
+</refentry>

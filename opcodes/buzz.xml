@@ -1,0 +1,97 @@
+﻿
+<refentry id="buzz">
+<indexterm id="IndexBuzz"><primary>buzz</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Dynamic Spectrum Oscillators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>buzz</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>buzz</refname>
+    <refpurpose>
+      Output is a set of harmonically related sine partials.                                  
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Output is a set of harmonically related sine partials.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>buzz</command> xamp, xcps, knh, ifn [, iphs]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifn</emphasis> -- table number of a stored function containing a sine wave. A large table of at least 8192 points is recommended.
+    </para>
+
+    <para>
+      <emphasis>iphs</emphasis> (optional, default=0) -- initial phase of the fundamental frequency, expressed as a fraction of a cycle (0 to 1). A negative value will cause phase initialization to be skipped. The default value is zero
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>xamp</emphasis> -- amplitude
+    </para>
+
+    <para>
+      <emphasis>xcps</emphasis> -- frequency in cycles per second
+    </para>
+
+    <para>
+      The <emphasis>buzz</emphasis> units generate an additive set of harmonically related cosine partials of fundamental frequency <emphasis>xcps</emphasis>, and whose amplitudes are scaled so their summation peak equals <emphasis>xamp</emphasis>. The selection and strength of partials is determined by the following control parameters:
+    </para>
+
+    <para>
+      <emphasis>knh</emphasis> -- total number of harmonics requested. New in Csound version 3.57, <emphasis>knh</emphasis> defaults to one. If <emphasis>knh</emphasis> is negative, the absolute value is used.
+    </para>
+
+    <para>
+      <emphasis>buzz</emphasis> and <link linkend="gbuzz"><citetitle>gbuzz</citetitle></link> are useful as complex sound sources in subtractive synthesis. <emphasis>buzz</emphasis> is a special case of the more general <emphasis>gbuzz</emphasis> in which <emphasis>klh</emphasis> = <emphasis>kmul</emphasis> = 1; it thus produces a set of <emphasis>knh</emphasis> equal-strength harmonic partials, beginning with the fundamental. (This is a band-limited pulse train; if the partials extend to the Nyquist, i.e. <emphasis>knh</emphasis> = int (sr / 2 / fundamental freq.), the result is a real pulse train of amplitude <emphasis>xamp</emphasis>.) 
+    </para>
+
+    <para>
+      Although <emphasis>knh</emphasis> may be varied during performance, its internal value is necessarily integer and may cause <quote>pops</quote> due to discontinuities in the output. <emphasis>buzz</emphasis> can be amplitude- and/or frequency-modulated by either control or audio signals.
+    </para>
+
+    <para>
+      N.B. This unit has its analog in <link linkend="GEN11"><citetitle>GEN11</citetitle></link>, in which the same set of cosines can be stored in a function table for sampling by an oscillator. Although computationally more efficient, the stored pulse train has a fixed spectral content, not a time-varying one as above.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the buzz opcode. It uses the file <ulink url="examples/buzz.csd"><citetitle>buzz.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the buzz opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/buzz.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="gbuzz"><citetitle>gbuzz</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>September 2003. Thanks to &namekanata; for correcting the mentions of the <emphasis>kmul</emphasis> parameter.</para>
+  </refsect1>
+</refentry>

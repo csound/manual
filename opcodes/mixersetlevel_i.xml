@@ -1,0 +1,64 @@
+
+<refentry id="MixerSetLevel_i">
+  <indexterm id="IndexMixerSetLevel_i"><primary>MixerSetLevel_i</primary></indexterm>
+  <refentryinfo><title>Mixer Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>MixerSetLevel_i</refentrytitle>
+  </refmeta>
+  
+  <refnamediv>
+    <refname>MixerSetLevel_i</refname>
+    <refpurpose>
+      Sets the level of a send to a buss.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>MixerSetLevel_i</command> isend, ibuss, igain</synopsis>
+  </refsect1>
+  
+  <refsect1>
+    <title>Description</title> 
+    <para>Sets the level at which signals from the send are added to the buss. This opcode, because all parameters are irate, may 
+      be used in the orchestra header. The actual sending of the signal to the buss 
+      is performed by the <link linkend="MixerSend"><citetitle>MixerSend</citetitle></link> opcode. 
+    </para>  
+  </refsect1>
+  
+  <refsect1>
+    <title>Initialization</title>
+    
+    <para><emphasis>isend</emphasis> -- The number of the send, for example the number of the instrument sending the signal (but any integer can be used).</para>
+    
+    <para><emphasis>ibuss</emphasis> -- The number of the buss, for example the number of the instrument receiving the signal (but any integer can be used).</para>
+    
+    <para><emphasis>igain</emphasis> -- The level (any real number) at which the signal from the send will be mixed onto the buss. The default is 0.</para>
+    
+    <para>Setting the gain for a buss also creates the buss.</para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Performance</title>
+    
+    <para>
+      Use of the mixer requires that instruments setting gains have smaller numbers than instruments sending signals, 
+      and that instruments sending signals have smaller numbers than instruments receiving those signals. 
+      However, an instrument may have any number of sends or receives. After the final signal is received, 
+      <link linkend="MixerClear"><citetitle>MixerClear</citetitle></link> must be invoked to reset the busses before the next kperiod.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Examples</title>
+    
+    <para>In the orchestra header, set the gain for the send from buss 3 to buss 4:</para>
+    <programlisting>
+      <emphasis role="opc">MixerSetLevel_i</emphasis>		3, 4, 0.76</programlisting>
+    
+  </refsect1>
+  <refsect1>
+    <title>Credits</title>
+    <para>Michael Gogins (gogins at pipeline dot com).</para>
+  </refsect1>
+</refentry>

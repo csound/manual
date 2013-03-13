@@ -1,0 +1,33 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac -+rtmidi=virtual  -M0  <emphasis role="comment">;;;realtime audio I/O with MIDI in</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+gisine	<emphasis role="ohdr">ftgen</emphasis> 0, 0, 1024, 10, 1
+
+<emphasis role="oblock">instr</emphasis> 1
+
+ivel <emphasis role="opc">veloc</emphasis> 0, 1				<emphasis role="comment">;scale 0 - 1</emphasis>
+<emphasis role="opc">print</emphasis> ivel				<emphasis role="comment">;print velocity</emphasis>
+asig <emphasis role="opc">poscil</emphasis> .5<emphasis role="op">*</emphasis>ivel, 220, gisine	<emphasis role="comment">;and use it as amplitude</emphasis>
+     <emphasis role="opc">outs</emphasis> asig, asig
+       
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">f</emphasis> 0 30     <emphasis role="comment">;runs 30 seconds</emphasis>
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

@@ -1,0 +1,78 @@
+<refentry id="pvsbuffer">
+<indexterm id="Indexpvsbuffer"><primary>pvsbuffer</primary></indexterm>
+
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsbuffer</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvsbuffer</refname>
+    <refpurpose>
+        This opcode creates and writes to a circular buffer for f-signals (streaming PV signals).
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+        This opcode sets up and writes to a circular buffer of length ilen (secs),
+        giving a handle for the buffer and a time pointer, which holds the
+        current write position (also in seconds). It can be used with one or 
+        more <link linkend="pvsbufread"><citetitle>pvsbufread</citetitle></link> opcodes. Writing is circular, wrapping around at the
+        end of the buffer.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ihandle, ktime  <command>pvsbuffer</command> fsig, ilen </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ihandle</emphasis> -- handle identifying this particular buffer, which should be passed to a reader opcode.
+    </para>
+
+   <para>
+      <emphasis>ilen</emphasis> -- buffer length in seconds.
+    </para>
+
+    <title>Performance</title>
+    <para>
+      <emphasis>fsig</emphasis> -- an input pv stream
+    </para>
+    <para>
+      <emphasis>ktime</emphasis> -- the current time of writing in the buffer
+    </para>
+    <para>
+        <emphasis>pvsbuffer</emphasis> stores <emphasis>fsig</emphasis> in a buffer which can be read by <link linkend="pvsbufread"><citetitle>pvsbufread</citetitle></link> using the handle <emphasis>ihandle</emphasis>. Different buffers will have different handles so they can be read independently by different <link linkend="pvsbufread"><citetitle>pvsbufread</citetitle></link> opcodes. <emphasis>pvsbuffer</emphasis> gives in its output the current time (<emphasis>ktime</emphasis>) inside the ring buffer which has just been written.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      See <link linkend="pvsbufread"><citetitle>pvsbufread</citetitle></link> for examples of the pvsbuffer opcode.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See also</title>
+    <para>
+      <link linkend="pvsbufread"><citetitle>pvsbufread</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>July 2007</member>
+      </simplelist>
+    </para>
+
+  </refsect1>
+</refentry>

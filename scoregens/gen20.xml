@@ -1,0 +1,198 @@
+
+<refentry id="GEN20">
+      <indexterm id="IndexGEN20"><primary>GEN20</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN20</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>GEN20</refname>
+    <refpurpose>
+      Generates functions of different windows.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This subroutine generates functions of different windows. These windows are usually used for spectrum analysis or for grain envelopes.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>f</command> # time size 20 window max [opt]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>size</emphasis> -- number of points in the table. Must be a power of 2 ( + 1).
+    </para>
+
+    <para>
+      <emphasis>window</emphasis> -- Type of window to generate:
+
+      <itemizedlist>
+        <listitem>
+          <para>1 = Hamming</para>
+        </listitem>
+        <listitem>
+          <para>2 = Hanning</para>
+        </listitem>
+        <listitem>
+          <para>3 = Bartlett ( triangle)</para>
+        </listitem>
+        <listitem>
+          <para>4 = Blackman ( 3-term)</para>
+        </listitem>
+        <listitem>
+          <para>5 = Blackman - Harris ( 4-term)</para>
+        </listitem>
+        <listitem>
+          <para>6 = Gaussian</para>
+        </listitem>
+        <listitem>
+          <para>7 = Kaiser</para>
+        </listitem>
+        <listitem>
+          <para>8 = Rectangle</para>
+        </listitem>
+        <listitem>
+          <para>9 = Sync</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>max</emphasis> -- For negative p4 this will be the absolute 
+      value at window peak point. If p4 is positive or p4 is negative
+      and p6 is missing the table will be post-rescaled to a maximum
+      value of 1. 
+    </para>
+
+    <para>
+      <emphasis>opt</emphasis> -- Optional argument required by the 
+      Gaussian window and the Kaiser window.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">f</emphasis>       1       0       1024    20      5</programlisting>
+      </informalexample>
+
+      This creates a function which contains a 4 - term Blackman - Harris window with maximum value of 1.
+    </para>
+
+    <para>
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">f</emphasis>       1       0       1024    -20     2       456</programlisting>
+      </informalexample>
+
+      This creates a function that contains a Hanning window with a maximum value of 456.
+    </para>
+
+    <para>
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">f</emphasis>       1       0       1024    -20     1</programlisting>
+      </informalexample>
+
+      This creates a function that contains a Hamming window with a maximum value of 1.
+    </para>
+
+    <para>
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">f</emphasis>       1       0       1024    20      7       1       2</programlisting>
+      </informalexample>
+
+      This creates a function that contains a Kaiser window with a maximum value of 1. The extra argument specifies how &quot;open&quot; the window is, for example a value of 0 results in a rectangular window and a value of 10 in a Hamming like window.
+    </para>
+
+    <para>
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">f</emphasis>       1       0       1024    20      6       1       2</programlisting>
+      </informalexample>
+
+      This creates a function that contains a Gaussian window with a
+      maximum value of 1.  The extra argument specifies how broad the
+      window is, as the standard deviation of the curve; in this
+      example the s.d. is 2.  The default value is 1.
+    </para>
+    <para>
+      For all diagrams, see <link linkend="MiscWindows"><citetitle>Window Functions</citetitle></link>
+    </para>
+
+    <para>
+      Here is an example of the GEN20 routine. It uses the file <ulink url="examples/gen20.csd"><citetitle>gen20.csd</citetitle></ulink>.
+
+           <example>
+        <title>Example of the GEN20 routine.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/gen20.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>  
+        <textobject>
+          <phrase>These are the diagrams of the waveforms of the GEN20 routines, as used in the example:</phrase>
+        </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen20_1.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>  f 1  0 512 20 2 - Hanning window</phrase>
+        </textobject>
+
+
+        <caption>
+          <para>  f 1  0 512 20 2 - Hanning window</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen20_2.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>  f 2  0 512 20 6 1 - Gaussian window</phrase>
+        </textobject>
+
+        <caption>
+          <para>  f 2  0 512 20 6 1 - Gaussian window</para>
+        </caption>
+      </mediaobject>
+   
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &nameparis;</member>
+        <member>MIT, Cambridge</member>
+        <member>1995</member>
+      </simplelist>
+    </para>
+
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>University of Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.2</para>
+    <para>Optional argument to Gaussian added in 5.10</para>
+  </refsect1>
+</refentry>

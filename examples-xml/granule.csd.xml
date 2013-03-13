@@ -1,0 +1,40 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in    No messages</emphasis>
+-odac           -iadc     -d     <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o granule.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">kr</emphasis> <emphasis role="op">=</emphasis> 4410
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 10
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="oblock">instr</emphasis> 1
+<emphasis role="comment">;</emphasis>
+k1      <emphasis role="opc">linseg</emphasis> 0,0.5,1,(p3<emphasis role="op">-</emphasis>p2<emphasis role="op">-</emphasis>1),1,0.5,0
+a1      <emphasis role="opc">granule</emphasis> p4<emphasis role="op">*</emphasis>k1,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,\
+        p16,p17,p18,p19,p20,p21,p22,p23,p24
+a2      <emphasis role="opc">granule</emphasis> p4<emphasis role="op">*</emphasis>k1,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,\
+        p16,p17,p18,p19, p20<emphasis role="op">+</emphasis>0.17,p21,p22,p23,p24
+<emphasis role="opc">outs</emphasis> a1,a2
+<emphasis role="oblock">endin</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="comment">; f statement read sound file mary.wav in the SFDIR </emphasis>
+<emphasis role="comment">; directory into f-table 1</emphasis>
+<emphasis role="stamnt">f</emphasis>1      0 262144 1 "mary.wav" 0 0 0
+<emphasis role="stamnt">i</emphasis>1      0 10 2000 64 0.5 0 0 1 4 0 0.005 5 0.01 50 0.02 50 30 30 0.39 \
+        1 1.42 0.29 2
+<emphasis role="stamnt">e</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

@@ -1,0 +1,371 @@
+
+<refentry id="spat3d">
+<indexterm id="IndexSpat3d"><primary>spat3d</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Panning and Spatialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>spat3d</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>spat3d</refname>
+    <refpurpose>
+      Positions the input sound in a 3D space and allows moving the sound at k-rate.
+          </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This opcode positions the input sound in a 3D space, with optional simulation of room acoustics, in various output formats. <emphasis>spat3d</emphasis> allows moving the sound at k-rate (this movement is interpolated internally to eliminate "zipper noise" if sr not equal to kr).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>aW, aX, aY, aZ <command>spat3d</command> ain, kX, kY, kZ, idist, ift, imode, imdel, iovr [, istor]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>idist</emphasis> -- For modes 0 to 3, <emphasis>idist</emphasis> is the unit circle distance in meters. For mode 4, <emphasis>idist</emphasis> is the distance between microphones. 
+    </para>
+
+    <para>
+      The following formulas describe amplitude and delay as a function of sound source distance from microphone(s):
+      <literallayout>
+amplitude = 1 / (0.1 + distance)
+      </literallayout>
+
+      <literallayout>
+delay = distance / 340 (in seconds)
+      </literallayout>
+    </para>
+
+    <para>
+      Distance can be calculated as:
+
+      <literallayout>
+distance = sqrt(iX&circ;2 + iY&circ;2 + iZ&circ;2)
+      </literallayout>
+
+      In Mode 4, distance can be calculated as:
+
+      <literallayout>
+distance from left mic = sqrt((iX + idist/2)&circ;2 + iY&circ;2 + iZ&circ;2)
+distance from right mic = sqrt((iX - idist/2)&circ;2 + iY&circ;2 + iZ&circ;2)
+      </literallayout>
+    </para>
+
+    <para>
+      With <emphasis>spat3d</emphasis> the distance between the sound source and any microphone should be at least (340 * 18) / sr meters. Shorter distances will work, but may produce artifacts in some cases.  There is no such limitation for <emphasis>spat3di</emphasis> and <emphasis>spat3dt</emphasis>.
+    </para>
+
+    <para>
+      Sudden changes or discontinuities in sound source location can result in pops or clicks. Very fast movement may also degrade quality.
+    </para>
+
+    <para>
+      <emphasis>ift</emphasis> -- Function table storing room parameters (for free field spatialization, set it to zero or negative). Table size is 54. The values in the table are:
+
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <thead>
+            <row>
+              <entry>Room Parameter</entry>
+              <entry>Purpose</entry>
+            </row>
+          </thead>
+
+         <tbody>
+            <row>
+              <entry>0</entry>
+              <entry>Early reflection recursion depth (0 is the sound source, 1 is the first reflection etc.) for spat3d and spat3di. The number of echoes for four walls (front, back, right, left) is: N = (2*R + 2) * R. If all six walls are enabled: N = (((4*R + 6)*R + 8)*R) / 3</entry>
+            </row>
+
+            <row>
+              <entry>1</entry>
+              <entry>Late reflection recursion depth (used by spat3dt only). spat3dt skips early reflections and renders echoes up to this level. If early reflection depth is negative, spat3d and spat3di will output zero, while spat3dt will start rendering from the sound source.</entry>
+            </row>
+
+            <row>
+              <entry>2</entry>
+              <entry>imdel for spat3d. Overrides opcode parameter if non-negative.</entry>
+            </row>
+
+            <row>
+              <entry>3</entry>
+              <entry>irlen for spat3dt. Overrides opcode parameter if non-negative.</entry>
+            </row>
+
+            <row>
+              <entry>4</entry>
+              <entry>idist value. Overrides opcode parameter if >= 0.</entry>
+            </row>
+
+            <row>
+              <entry>5</entry>
+              <entry>Random seed (0 - 65535) -1 seeds from current time.</entry>
+            </row>
+
+            <row>
+              <entry>6 - 53</entry>
+              <entry>wall parameters (w = 6: ceil, w = 14: floor, w = 22: front, w = 30: back, w = 38: right, w = 46: left)</entry>
+            </row>
+
+            <row>
+              <entry>w + 0</entry>
+              <entry>Enable reflections from this wall (0: no, 1: yes)</entry>
+            </row>
+
+            <row>
+              <entry>w + 1</entry>
+              <entry>Wall distance from listener (in meters)</entry>
+            </row>
+
+            <row>
+              <entry>w + 2</entry>
+              <entry>Randomization of wall distance (0 - 1) (in units of 1 / (wall distance))</entry>
+            </row>
+
+            <row>
+              <entry>w + 3</entry>
+              <entry>Reflection level (-1 - 1)</entry>
+            </row>
+
+            <row>
+              <entry>w + 4</entry>
+              <entry>Parametric equalizer frequency in Hz.</entry>
+            </row>
+
+            <row>
+              <entry>w + 5</entry>
+              <entry>Parametric equalizer level (1.0: no filtering)</entry>
+            </row>
+
+            <row>
+              <entry>w + 6</entry>
+              <entry>Parametric equalizer Q (0.7071: no resonance)</entry>
+            </row>
+
+            <row>
+              <entry>w + 7</entry>
+              <entry>Parametric equalizer mode (0: peak EQ, 1: low shelf, 2: high shelf)</entry>
+            </row>
+         </tbody>
+        </tgroup>
+      </informaltable>
+    </para>
+
+    <para>
+      <emphasis>imode</emphasis> -- Output mode
+      <itemizedlist>
+        <listitem><para>0: B format with W output only (mono)
+<literallayout>
+aout    =  aW
+</literallayout>
+        </para></listitem>
+
+        <listitem><para>1: B format with W and Y output (stereo)
+<literallayout>
+aleft   =  aW + 0.7071*aY
+aright  =  aW - 0.7071*aY
+</literallayout>
+        </para></listitem>
+
+        <listitem><para>2: B format with W, X, and Y output (2D). This can be converted to UHJ:
+<literallayout>
+aWre, aWim      hilbert aW
+aXre, aXim      hilbert aX
+aYre, aYim      hilbert aY
+aWXr    =  0.0928*aXre + 0.4699*aWre
+aWXiYr  =  0.2550*aXim - 0.1710*aWim + 0.3277*aYre
+aleft   =  aWXr + aWXiYr
+aright  =  aWXr - aWXiYr
+</literallayout>
+        </para></listitem>
+
+        <listitem><para>3: B format with all outputs (3D)</para></listitem>
+
+        <listitem><para>4: Simulates a pair of microphones (stereo output)
+<literallayout>
+aW      butterlp aW, ifreq      ; recommended values for ifreq
+aY      butterlp aY, ifreq      ; are around 1000 Hz
+aleft   =  aW + aX
+aright  =  aY + aZ
+</literallayout>
+        </para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      Mode 0 is the cheapest to calculate, while mode 4 is the most expensive.
+    </para>
+
+    <para>
+      In Mode 4, The optional lowpass filters can change the frequency response depending on direction. For example, if the sound source is located left to the listener then the high frequencies are attenuated in the right channel and slightly increased in the left. This effect can be disabled by not using filters. You can also experiment with other filters (tone etc.) for better effect.
+    </para>
+
+    <para>
+      Note that mode 4 is most useful for listening with headphones, and is also more expensive to calculate than the B-format (0 to 3) modes. The <emphasis>idist</emphasis> parameter in this case sets the distance between left and right microphone; for headphones, values between 0.2 - 0.25 are recommended, although higher settings up to 0.4 may be used for wide stereo effects.
+    </para>
+
+    <para>
+      More information about B format can be found here: <ulink url="http://www.york.ac.uk/inst/mustech/3d_audio/ambis2.htm"><citetitle>http://www.york.ac.uk/inst/mustech/3d_audio/ambis2.htm</citetitle></ulink>
+    </para>
+
+    <para>
+      <emphasis>imdel</emphasis> -- Maximum delay time for spat3d in seconds. This has to be longer than the delay time of the latest reflection (depends on room dimensions, sound source distance, and recursion depth; using this formula gives a safe (although somewhat overestimated) value:
+
+       <literallayout>
+imdel = (R + 1) * sqrt(W*W + H*H + D*D) / 340.0
+       </literallayout>
+
+      where R is the recursion depth, W, H, and D are the width, height, and depth
+  of the room, respectively).
+    </para>
+
+    <para>
+      <emphasis>iovr</emphasis> -- Oversample ratio for spat3d (1 to 8). Setting it higher improves quality at the expense of memory and CPU usage. The recommended value is 2.
+    </para>
+
+    <para>
+      <emphasis>istor</emphasis> (optional, default=0) -- Skip initialization if non-zero (default: 0).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>aW, aX, aY, aZ</emphasis> -- Output signals
+
+      <informaltable frame="all">
+        <tgroup cols="6" colsep="1" rowsep="1">
+          <thead>
+            <row>
+              <entry>&nbsp;</entry>
+              <entry>mode 0</entry>
+              <entry>mode 1</entry>
+              <entry>mode 2</entry>
+              <entry>mode 3</entry>
+              <entry>mode 4</entry>
+            </row>
+          </thead>
+
+         <tbody>
+            <row>
+              <entry>aW</entry>
+              <entry>W out</entry>
+              <entry>W out</entry>
+              <entry>W out</entry>
+              <entry>W out</entry>
+              <entry>left chn / low freq.</entry>
+            </row>
+
+            <row>
+              <entry>aX</entry>
+              <entry>0</entry>
+              <entry>0</entry>
+              <entry>X out</entry>
+              <entry>X out</entry>
+              <entry>left chn / high frq.</entry>
+            </row>
+
+            <row>
+              <entry>aY</entry>
+              <entry>0</entry>
+              <entry>Y out</entry>
+              <entry>Y out</entry>
+              <entry>Y out</entry>
+              <entry>right chn / low frq.</entry>
+            </row>
+
+            <row>
+              <entry>aZ</entry>
+              <entry>0</entry>
+              <entry>0</entry>
+              <entry>0</entry>
+              <entry>Z out</entry>
+              <entry>right chn / high fr.</entry>
+            </row>
+         </tbody>
+        </tgroup>
+      </informaltable>
+    </para>
+
+    <para>
+      <emphasis>ain</emphasis> -- Input signal
+    </para>
+
+    <para>
+      <emphasis>kX, kY, kZ</emphasis> -- Sound source coordinates (in meters)
+    </para>
+
+    <para>
+      If you encounter very slow performance (up to 100 times slower), it may be caused by denormals (this is also true of many other IIR opcodes, including <link linkend="butterlp"><citetitle>butterlp</citetitle></link>, <link linkend="pareq"><citetitle>pareq</citetitle></link>, <link linkend="hilbert"><citetitle>hilbert</citetitle></link>, and many others). Underflows can be avoided by:
+      <itemizedlist>
+        <listitem><para>Using the <link linkend="denorm"><citetitle>denorm</citetitle></link> opcode on <emphasis>ain</emphasis> before <emphasis>spat3d</emphasis>.</para></listitem>
+
+        <listitem><para>mixing low level DC or noise to the input signal, e.g. <literallayout>atmp rnd31 1/1e24, 0, 0</literallayout> <literallayout>aW, aX, aY, aZ spa3di ain + atmp, ...</literallayout> or <literallayout>aW, aX, aY, aZ spa3di ain + 1/1e24, ...</literallayout></para></listitem>
+        <listitem><para>reducing <emphasis>irlen</emphasis> in the case of <emphasis>spat3dt</emphasis> (which does not have an input signal). A value of about 0.005 is suitable for most uses, although it also depends on EQ settings. If the equalizer is not used, <quote>irlen</quote> can be set to 0.</para></listitem>
+      </itemizedlist>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is a example of the spat3d opcode that outputs a stereo file. It uses the file <ulink url="examples/spat3d_stereo.csd"><citetitle>spat3d_stereo.csd</citetitle></ulink>.
+
+      <example>
+        <title>Stereo example of the spat3d opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/spat3d_stereo.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+    <para>
+      Here is a example of the spat3d opcode that outputs a UHJ file. It uses the file <ulink url="examples/spat3d_UHJ.csd"><citetitle>spat3d_UHJ.csd</citetitle></ulink>.
+
+      <example>
+        <title>UHJ example of the spat3d opcode.</title>
+
+          <xi:include href="examples-xml/spat3d_UHJ.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+    <para>
+      Here is a example of the spat3d opcode that outputs a quadrophonic file. It uses the file <ulink url="examples/spat3d_quad.csd"><citetitle>spat3d_quad.csd</citetitle></ulink>.
+
+      <example>
+        <title>Quadrophonic example of the spat3d opcode.</title>
+
+          <xi:include href="examples-xml/spat3d_quad.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="spat3di"><citetitle>spat3di</citetitle></link>,
+      <link linkend="spat3dt"><citetitle>spat3dt</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &nameistvan;</member>
+        <member>2001</member>
+      </simplelist>
+    </para>
+
+    <para>New in version 4.12</para>
+    <para>Updated April 2002 by &nameistvan;</para>
+  </refsect1>
+</refentry>

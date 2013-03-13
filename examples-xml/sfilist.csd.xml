@@ -1,0 +1,47 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac -+rtmidi=virtual -M0   <emphasis role="comment">;;;realtime audio out, virtual midi in</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if RT audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o sfilist.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+gisf	<emphasis role="opc">sfload</emphasis>	"sf_GMbank.sf2"
+	<emphasis role="opc">sfilist</emphasis>	gisf						<emphasis role="comment">;list all instruments</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 1	<emphasis role="comment">; play from score and midi keyboard</emphasis>
+
+	<emphasis role="opc">mididefault</emphasis>	60, p3
+	<emphasis role="opc">midinoteonkey</emphasis>	p4, p5
+inum	<emphasis role="opc">init</emphasis>	p4
+ivel	<emphasis role="opc">init</emphasis>	p5
+ivel	<emphasis role="opc">init</emphasis>	ivel<emphasis role="op">/</emphasis>127					<emphasis role="comment">;make velocity dependent</emphasis>
+kamp	<emphasis role="opc">linsegr</emphasis>	1, 1, 1, .1, 0
+kamp	<emphasis role="op">=</emphasis> kamp<emphasis role="op">/</emphasis>3000						<emphasis role="comment">;scale amplitude</emphasis>
+kfreq	<emphasis role="opc">init</emphasis>	1						<emphasis role="comment">;do not change freq from sf</emphasis>
+a1, a2	<emphasis role="opc">sfinstr3</emphasis> ivel, inum, kamp<emphasis role="op">*</emphasis>ivel, kfreq, 100, gisf		<emphasis role="comment">;choose Halo Pad</emphasis>
+	<emphasis role="opc">outs</emphasis>	a1, a2
+	
+<emphasis role="oblock">endin</emphasis>
+	
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis>0  60				<emphasis role="comment">; stay active for 1 minute</emphasis>
+
+<emphasis role="stamnt">i</emphasis>1 0 1 60 127
+<emphasis role="stamnt">i</emphasis>1 + 1 62 &lt;
+<emphasis role="stamnt">i</emphasis>1 + 1 65 &lt;
+<emphasis role="stamnt">i</emphasis>1 + 1 69 10
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

@@ -1,0 +1,108 @@
+
+<refentry id="printf">
+<indexterm id="Indexprintf_i"><primary>printf_i</primary></indexterm>
+
+<indexterm id="Indexprintf"><primary>printf</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Printing and Display</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>printf</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>printf</refname>
+    <refpurpose>
+      printf-style formatted output
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <command>printf</command> and <command>printf_i</command> write
+    formatted output, similarly to the C function
+    printf(). <command>printf_i</command> runs at i-time only, while
+    <command>printf</command> runs both at initialization and
+    performance time. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>printf_i</command> Sfmt, itrig, [iarg1[, iarg2[, ... ]]]</synopsis>
+    <synopsis><command>printf</command> Sfmt, ktrig, [xarg1[, xarg2[, ... ]]]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>Sfmt</emphasis> -- format string, has the same format
+    as in printf() and other similar C functions, except length
+    modifiers (l, ll, h, etc.) are not supported. The following
+    conversion specifiers are allowed: 
+      <itemizedlist>
+        <listitem>
+	  <para>d, i, o, u, x, X, e, E, f, F, g, G, c, s</para>
+	</listitem>
+      </itemizedlist>
+    </para>
+    <para>
+      <emphasis>iarg1, iarg2, ...</emphasis> -- input arguments
+      (max. 30) for format.  Integer formats like %d round the input
+      values to the nearest integer. 
+    </para>
+    <para>
+      <emphasis>itrig</emphasis> -- if greater than zero the opcode
+    performs the printing; otherwise it is an null operation.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ktrig</emphasis> -- if greater than zero and different
+    from the value on the previous control cycle the opcode
+    performs the requested printing.  Initially this previous value is
+    taken as zero.
+    </para>
+    <para>
+      <emphasis>xarg1, xarg2, ...</emphasis> -- input arguments
+    (max. 30) for format.  Integer formats like %d round the input
+    values to the nearest integer. Note that only k-rate and i-rate arguments are valid (no a-rate printing)
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the printf opcode. It uses the file <ulink url="examples/printf.csd"><citetitle>printf.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the printf opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/printf.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      The example will produce the following output:
+      <screen>
+Audiofile 'frox.wav' does not exist!
+      </screen>
+    </para>
+  </refsect1>
+  
+    <refsect1>
+    <title>See Also</title>
+    <para>
+<para> More information about printf: <ulink url="http://www.cplusplus.com/reference/clibrary/cstdio/printf/"><citetitle>http://www.cplusplus.com/reference/clibrary/cstdio/printf/</citetitle></ulink></para>
+    </para>
+  </refsect1>
+    
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Istvan Varga</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,90 @@
+
+<refentry id="oscil1">
+<indexterm id="IndexOscil1"><primary>oscil1</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Table Access</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>oscil1</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>oscil1</refname>
+    <refpurpose>
+      Accesses table values by incremental sampling.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Accesses table values by incremental sampling.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kres <command>oscil1</command> idel, kamp, idur, ifn</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>idel</emphasis> -- delay in seconds before <emphasis>oscil1</emphasis> incremental sampling begins.
+    </para>
+
+    <para>
+      <emphasis>idur</emphasis> -- duration in seconds to sample through the <emphasis>oscil1</emphasis> table just once. A zero or negative value will cause all initialization to be skipped.
+    </para>
+
+    <para>
+      <emphasis>ifn</emphasis> -- function table number. <emphasis>tablei, oscil1i</emphasis> require the extended guard point.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kamp</emphasis> -- amplitude factor.
+    </para>
+
+    <para>
+      <emphasis>oscil1</emphasis> accesses values by sampling once through the function table at a rate determined by <emphasis>idur</emphasis>. For the first <emphasis>idel</emphasis> seconds, the point of scan will reside at the first location of the table; it will then begin moving through the table at a constant rate, reaching the end in another <emphasis>idur</emphasis> seconds; from that time on (i.e. after <emphasis>idel</emphasis> + <emphasis>idur</emphasis> seconds) it will remain pointing at the last location. Each value obtained from sampling is then multiplied by an amplitude factor <emphasis>kamp</emphasis> before being written into the result.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the oscil1 opcode. It uses the file <ulink url="examples/oscil1.csd"><citetitle>oscil1.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the oscil1 opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/oscil1i.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+     </para>
+              <para>
+      The example will produce the following output:
+      <screen>
+ i1     0.50000
+ i1     0.20000
+ i1     0.80000
+ i1     0.10000
+ i1     0.90000
+ i1     0.00000
+ i1     1.00000
+ i1     0.50000
+      </screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="table"><citetitle>table</citetitle></link>,
+      <link linkend="tablei"><citetitle>tablei</citetitle></link>,
+      <link linkend="table3"><citetitle>table3</citetitle></link>,
+      <link linkend="oscil1i"><citetitle>oscil1i</citetitle></link>,
+      <link linkend="osciln"><citetitle>osciln</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

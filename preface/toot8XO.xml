@@ -1,0 +1,44 @@
+<section id="PrefaceToot8">
+  <title>Toot 8</title>
+
+  <para>
+    Now instead of continuing to enhance the same instrument, we will design a totally different one. In it we'll play a soundfile from disk in the orchestra, apply an amplitude envelope to it, and add some reverb. To do this we will employ Csound's <link linkend="soundin"><citetitle>soundin</citetitle></link> and <link linkend="reverb"><citetitle>reverb</citetitle></link> generators. The first is used like this:
+  </para>
+
+  <programlisting>a1 <emphasis role="opc">soundin</emphasis> ifilcod[, iskiptime[, iformat]]</programlisting>
+
+  <para>
+    <link linkend="soundin"><citetitle>soundin</citetitle></link> derives its signal from a pre-existing file. <emphasis>ifilcod</emphasis> is either the filename in double quotes, or an integer suffix (.n) to the name "soundin". Thus the file soundin.5 could be referenced either by the quoted name or by the integer 5. To read from 500ms into this file we might say (i.e. to skip the first 500ms):
+  </para>
+
+  <programlisting>a1 <emphasis role="opc">soundin</emphasis> "soundin.5", .5</programlisting>
+
+  <para>
+    The Csound <link linkend="reverb"><citetitle>reverb</citetitle></link> generator is actually composed of four parallel <link linkend="comb"><citetitle>comb</citetitle></link> filters plus two <link linkend="alpass"><citetitle>alpass</citetitle></link> filters in series. Although we could design a variant of our own using these same primitives, the preset reverb is convenient, and simulates a natural room response via internal parameter values. Only two arguments are required the input (<emphasis>asig</emphasis>) and the reverb time (<emphasis>krvt</emphasis>)
+  </para>
+
+  <programlisting>ar <emphasis role="opc">reverb</emphasis> asig, krvt</programlisting>
+
+  <para>
+    Here's a schematic representation of the instrument.
+  </para>
+  <para>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/toot08.gif" format="GIF"/>
+      </imageobject>
+      <textobject>
+        <phrase>[TOOT 8 Schematic]</phrase>
+      </textobject>
+      <caption>
+        <para>TOOT 8 Schematic</para>
+      </caption>
+    </mediaobject>
+  </para>
+  <para>
+    The soundfile instrument with artificial envelope and a reverb (included directly) is as follows:
+  </para>
+  <para>
+    <xi:include href="examples-xml/toot8.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </para>
+</section>

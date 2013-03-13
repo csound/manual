@@ -1,0 +1,112 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="ohdr">sr</emphasis>      <emphasis role="op">=</emphasis>           44100
+<emphasis role="ohdr">nchnls</emphasis> 	<emphasis role="op">=</emphasis> 		2
+
+gi1 <emphasis role="ohdr">ftgen</emphasis> 1, 0, 4096, 10, 1
+gi2 <emphasis role="ohdr">ftgen</emphasis> 2, 0, 4096, 7, <emphasis role="op">-</emphasis>1, 4096, 1    <emphasis role="comment">; sawtooth</emphasis>
+gi3 <emphasis role="ohdr">ftgen</emphasis> 3, 0, 4096, 7,  0, 1024, 1, 2048, <emphasis role="op">-</emphasis>1, 1024, 0  <emphasis role="comment">;triangle</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 101,102,103
+  iamp <emphasis role="op">=</emphasis>      <emphasis role="opc">ampdbfs</emphasis>(p5)
+  a1   <emphasis role="opc">oscil</emphasis>  iamp, p4, p1<emphasis role="op">-</emphasis>100
+  kenv <emphasis role="opc">expseg</emphasis> 1, p3, .01
+  a1   <emphasis role="op">=</emphasis>      a1 <emphasis role="op">*</emphasis> kenv
+       <emphasis role="opc">outs</emphasis>   a1, a1
+<emphasis role="oblock">endin</emphasis>
+ 
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="comment">; by Brian Baughn 3-14-05</emphasis>
+<emphasis role="comment">; bbaughn@berklee.net</emphasis>
+
+<emphasis role="stamnt">b</emphasis>eats = 100
+permeasure = 4
+
+<emphasis role="stamnt">i</emphasis>101    m1 b1   q    mp   D3
+<emphasis role="stamnt">i</emphasis>101                      F3
+<emphasis role="stamnt">i</emphasis>101                      D3
+
+<emphasis role="stamnt">i</emphasis>101    m2 b1             D3
+<emphasis role="stamnt">i</emphasis>101       b3             D3
+
+<emphasis role="stamnt">i</emphasis>101    m3 b1             D3
+<emphasis role="stamnt">i</emphasis>101                      F3
+<emphasis role="stamnt">i</emphasis>101                      D3
+
+<emphasis role="stamnt">i</emphasis>101    m4 b1             D3
+<emphasis role="stamnt">i</emphasis>101       b3             D3
+
+<emphasis role="stamnt">i</emphasis>101    m5 b1              D3
+<emphasis role="stamnt">i</emphasis>101       b4              G5
+
+<emphasis role="stamnt">i</emphasis>101    m6 b1              E5
+<emphasis role="stamnt">i</emphasis>101       b2              F5
+<emphasis role="stamnt">i</emphasis>101       b3     e      Eb5
+<emphasis role="stamnt">i</emphasis>101       b3.5   e          
+<emphasis role="stamnt">i</emphasis>101       b4     q          
+
+<emphasis role="stamnt">i</emphasis>101    m7 b1     e       D5
+<emphasis role="stamnt">i</emphasis>101                            
+<emphasis role="stamnt">i</emphasis>101                q          
+<emphasis role="stamnt">i</emphasis>101                e      Db5
+<emphasis role="stamnt">i</emphasis>101                            
+<emphasis role="stamnt">i</emphasis>101                q          
+
+<emphasis role="stamnt">i</emphasis>101    m8 b1     q       D5
+<emphasis role="stamnt">i</emphasis>101                         E5
+<emphasis role="stamnt">i</emphasis>101                         D5
+
+<emphasis role="stamnt">i</emphasis>102    m1 b2      q      D4
+<emphasis role="stamnt">i</emphasis>102       b4              E4
+<emphasis role="stamnt">i</emphasis>102       b4             Bb3
+
+<emphasis role="stamnt">i</emphasis>102    m2 b2              F4
+<emphasis role="stamnt">i</emphasis>102       b2              B3
+<emphasis role="stamnt">i</emphasis>102       b4             C#4
+<emphasis role="stamnt">i</emphasis>102       b4             Bb3
+
+<emphasis role="stamnt">i</emphasis>102    m3 b2      q      D4
+<emphasis role="stamnt">i</emphasis>102       b4              E4
+<emphasis role="stamnt">i</emphasis>102       b4             Bb3
+
+<emphasis role="stamnt">i</emphasis>102    m4 b2              F4
+<emphasis role="stamnt">i</emphasis>102       b2              B3
+<emphasis role="stamnt">i</emphasis>102       b4             C#4
+<emphasis role="stamnt">i</emphasis>102       b4             Bb3
+
+<emphasis role="stamnt">i</emphasis>103    m5 b2      e     F6
+<emphasis role="stamnt">i</emphasis>103       b2      e     A5
+<emphasis role="stamnt">i</emphasis>103       b2.5    e     D6
+<emphasis role="stamnt">i</emphasis>103       b3      e     F6
+<emphasis role="stamnt">i</emphasis>103       b3      e     A5
+<emphasis role="stamnt">i</emphasis>103       b4      e     E6
+
+<emphasis role="stamnt">i</emphasis>103    m6 b1      q     C#6
+<emphasis role="stamnt">i</emphasis>103               q     D6
+<emphasis role="stamnt">i</emphasis>103               e     C6
+<emphasis role="stamnt">i</emphasis>103                           
+<emphasis role="stamnt">i</emphasis>103               q        
+
+<emphasis role="stamnt">i</emphasis>103    m7 b1      e     B5
+<emphasis role="stamnt">i</emphasis>103                            
+<emphasis role="stamnt">i</emphasis>103                 q         
+<emphasis role="stamnt">i</emphasis>103                 e    Bb5
+<emphasis role="stamnt">i</emphasis>103                            
+<emphasis role="stamnt">i</emphasis>103                 q         
+
+<emphasis role="stamnt">i</emphasis>103     m8 b1     e     F5
+<emphasis role="stamnt">i</emphasis>103        b1     e     A5
+<emphasis role="stamnt">i</emphasis>103        b1.5   e     D6
+<emphasis role="stamnt">i</emphasis>103        b2     e    Bb5
+<emphasis role="stamnt">i</emphasis>103        b2.5   e     D6
+<emphasis role="stamnt">i</emphasis>103        b3     q     F5
+<emphasis role="stamnt">i</emphasis>103        b3           A5
+<emphasis role="stamnt">e</emphasis>nd
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

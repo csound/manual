@@ -1,0 +1,76 @@
+
+<refentry id="clear">
+<indexterm id="IndexClear"><primary>clear</primary></indexterm>
+  <refentryinfo><title>Mathematical Operations:Comparators and Accumulators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>clear</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>clear</refname>
+    <refpurpose>
+      Zeroes a list of audio signals.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>clear</emphasis> zeroes a list of audio signals.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>clear</command> avar1 [, avar2] [, avar3] [...]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>avar1, avar2, avar3,</emphasis> ... -- signals to be zeroed
+    </para>
+
+    <para>
+      <emphasis>clear</emphasis> sets every sample of each of the given audio signals to zero when it is performed.  This is equivalent to writing <emphasis>avarN = 0</emphasis> in the orchestra for each of the specified variables.  Typically, <emphasis>clear</emphasis> is used with global variables that combine multiple signals from different sources and change with each k-pass (performance loop) through all of the active instrument instances.  After the final usage of such a variable and before the next k-pass, it is necessary to clear the variable so that it does not add the next cycle's signals to the previous result.  <emphasis>clear</emphasis> is especially useful in combination with <link linkend="vincr"><citetitle>vincr</citetitle></link> (variable increment) and they are intended to be used together with file output opcodes such as <link linkend="fout"><citetitle>fout</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the clear opcode. It uses the file <ulink url="examples/clear.csd"><citetitle>clear.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the clear opcode.</title>
+
+        
+
+          <xi:include href="examples-xml/clear.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      See the <link linkend="fout"><citetitle>fout</citetitle></link> opcode for another example.
+    </para>
+    </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="vincr"><citetitle>vincr</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namegabriel;</member>
+        <member>Italy</member>
+        <member>1999</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.56</para>
+  </refsect1>
+</refentry>

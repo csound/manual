@@ -1,0 +1,50 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in</emphasis>
+<emphasis role="comment">;-odac           -iadc    ;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+-o vbap8.wav -W <emphasis role="comment">;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+  <emphasis role="ohdr">sr</emphasis>       <emphasis role="op">=</emphasis>          44100
+  <emphasis role="ohdr">kr</emphasis>       <emphasis role="op">=</emphasis>           441
+  <emphasis role="ohdr">ksmps</emphasis>    <emphasis role="op">=</emphasis>           100
+  <emphasis role="ohdr">nchnls</emphasis>   <emphasis role="op">=</emphasis>             4
+  <emphasis role="opc">vbaplsinit</emphasis>          2, 8,  0, 45, 90, 135, 200, 245, 290, 315 
+
+          <emphasis role="oblock">instr</emphasis>  1
+  asig    <emphasis role="opc">oscil</emphasis>       20000, 440, 1
+  a1,a2,a3,a4,a5,a6,a7,a8   <emphasis role="opc">vbap8</emphasis>   asig, p4, 0, 20 <emphasis role="comment">;p4 = azimuth</emphasis>
+	
+  <emphasis role="comment">;render twice with alternate outq  statements</emphasis>
+  <emphasis role="comment">;  to obtain two 4 channel .wav files:</emphasis>
+
+          <emphasis role="opc">outq</emphasis>        a1,a2,a3,a4
+  <emphasis role="comment">;       outq        a5,a6,a7,a8</emphasis>
+<emphasis role="comment">; or use an 8-channel output for realtime output (set nchnls to 8):</emphasis>
+<emphasis role="comment">;        outo a1,a2,a3,a4,a5,a6,a7,a8</emphasis>
+          <emphasis role="oblock">endin</emphasis> 
+
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 8192 10 1
+<emphasis role="comment">; Play Instrument #1 for one second.</emphasis>
+<emphasis role="comment">;          azimuth</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 1      20
+<emphasis role="stamnt">i</emphasis> 1 + .      40
+<emphasis role="stamnt">i</emphasis> 1 + .      60
+<emphasis role="stamnt">i</emphasis> 1 + .      80
+<emphasis role="stamnt">i</emphasis> 1 + .      100
+<emphasis role="stamnt">i</emphasis> 1 + .      120
+<emphasis role="stamnt">i</emphasis> 1 + .      140
+<emphasis role="stamnt">i</emphasis> 1 + .      160
+<emphasis role="stamnt">e</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

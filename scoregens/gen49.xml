@@ -1,0 +1,126 @@
+
+<refentry id="GEN49">
+      <indexterm id="IndexGEN49"><primary>GEN49</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN49</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN49</refname>
+    <refpurpose>
+      Transfers data from an MP3 soundfile into a function table.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This subroutine transfers data from an MP3 soundfile into a function table.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>f</command>#  time  size  49  filcod  skiptime  format</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>size</emphasis> -- number of points in the
+      table. Ordinarily a power of 2 or a power-of-2 plus 1
+      (see <link linkend="f"><citetitle>f
+      statement</citetitle></link>); the maximum tablesize is 16777216
+      (2<superscript>24</superscript>) points. The allocation of table
+      memory can be <emphasis>deferred</emphasis> by setting this
+      parameter to 0; the size allocated is then the number of points
+      in the file (probably not a power-of-2), and the table is not
+      usable by normal oscillators, but it is usable by
+      a <link linkend="loscil"><citetitle>loscil</citetitle></link>
+      unit. The soundfile can also be mono or stereo. 
+    </para>
+
+    <para>
+      <emphasis>filcod</emphasis> -- integer or character-string
+      denoting the source soundfile name. An integer denotes the
+      file <emphasis>soundin</emphasis>.<emphasis>filcod</emphasis> ;
+      a character-string (in double quotes, spaces permitted) gives
+      the filename itself, optionally a full pathname. If not a full
+      path, the file is sought first in the current directory, then in
+      that given by the environment variable <link linkend="CommandEnvironment"><citetitle>SSDIR</citetitle></link> (if defined) then
+      by <link linkend="CommandEnvironment"><citetitle>SFDIR</citetitle></link>. See
+      also <link linkend="soundin"><citetitle>soundin</citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis>skiptime</emphasis> -- begin reading at <emphasis>skiptime</emphasis> seconds into the file.
+    </para>
+
+    <para>
+      <emphasis>format</emphasis> -- specifies the audio data-file format required:
+        <literallayout>
+1 - Mono file                 3 - First channel (left)
+2 - Stereo file               4 - Second channel (right)
+        </literallayout>
+    </para>
+
+    <para>
+      If <emphasis>format</emphasis> = 0 the sample format is taken from the soundfile header.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Reading stops at end-of-file or when the table is full. Table locations not filled will contain zeros.
+            </para>
+          </listitem>
+
+          <listitem>
+            <para>
+              If p4 is positive, the table will be post-normalized (rescaled to a maximum absolute value of 1 after generation). A negative p4 will cause rescaling to be skipped.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+	    Here is an example of the GEN49 routine. It uses the files <ulink url="examples/gen49.csd"><citetitle>gen49.csd</citetitle></ulink>.
+      <example>
+        <title>An example of the GEN49 routine.</title>
+        <xi:include href="examples-xml/gen49.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+        <textobject>
+          <phrase>This is the diagram of the waveforms of the GEN49 routine, as used in the example:</phrase>
+        </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen49.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 1 0 131072 49 "beats.mp3" 0 1</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 1 0 131072 49 "beats.mp3" 0 1</para>
+        </caption>
+      </mediaobject>
+
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Written by &namejohn;</para>
+    <para>February 2009.</para>
+  </refsect1>
+</refentry>

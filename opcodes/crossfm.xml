@@ -1,0 +1,146 @@
+
+<refentry id="crossfm">
+<indexterm id="Indexcrossfm"><primary>crossfm</primary></indexterm>
+  <refentryinfo><title>Signal Generators:FM Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>crossfm</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>crossfm</refname>
+    <refpurpose>
+      Two mutually frequency and/or phase modulated oscillators.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Two oscillators, mutually frequency and/or phase modulated by each other.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>a1, a2 <command>crossfm</command> xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2]</synopsis>
+    <synopsis>a1, a2 <command>crossfmi</command> xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2]</synopsis>
+    <synopsis>a1, a2 <command>crosspm</command> xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2]</synopsis>
+    <synopsis>a1, a2 <command>crosspmi</command> xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2]</synopsis>
+    <synopsis>a1, a2 <command>crossfmpm</command> xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2]</synopsis>
+    <synopsis>a1, a2 <command>crossfmpmi</command> xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifn1</emphasis> -- function table number for oscillator #1.
+      Requires a wrap-around guard point.
+    </para>
+    <para>
+      <emphasis>ifn2</emphasis> -- function table number for oscillator #2.
+      Requires a wrap-around guard point.
+    </para>
+    <para>
+      <emphasis>iphs1</emphasis> (optional, default=0) -- initial phase of waveform
+      in table <emphasis>ifn1</emphasis>, expressed as a fraction of a cycle (0 to 1).
+      A negative value will cause phase initialization to be skipped.
+    </para>
+    <para>
+      <emphasis>iphs2</emphasis> (optional, default=0) -- initial phase of waveform
+      in table <emphasis>ifn2</emphasis>, expressed as a fraction of a cycle (0 to 1).
+      A negative value will cause phase initialization to be skipped.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>xfrq1</emphasis> -- a factor that, when multipled by the
+      <emphasis>kcps</emphasis> parameter, gives the frequency of oscillator #1.
+    </para>
+    <para>
+      <emphasis>xfrq2</emphasis> -- a factor that, when multipled by the
+      <emphasis>kcps</emphasis> parameter, gives the frequency of oscillator #2.
+    </para>
+    <para>
+      <emphasis>xndx1</emphasis> -- the index of the modulation of oscillator #2
+      by oscillator #1.
+    </para>
+    <para>
+      <emphasis>xndx2</emphasis> -- the index of the modulation of oscillator #1
+      by oscillator #2.
+    </para>
+    <para>
+      <emphasis>kcps</emphasis> -- a common denominator, in cycles per second,
+      for both oscillators frequencies.
+    </para>
+    <para>
+      <emphasis>crossfm</emphasis> implements a crossed frequency modulation
+      algorithm. The audio-rate output of oscillator #1 is used to modulate the
+      frequency input of oscillator #2 while the audio-rate output of oscillator #2
+      is used to modulate the frequency input of oscillator #1. This double feedback
+      structure produces a rich set of sounds with some chaotic behaviour.
+      <emphasis>crossfmi</emphasis> behaves like <emphasis>crossfm</emphasis>
+      except that linear interpolation is used for table lookup.
+    </para>
+    <para>
+      <emphasis>crosspm</emphasis> and <emphasis>crosspmi</emphasis> implement
+      cross phase modulation between two oscillators.
+    </para>
+    <para>
+      <emphasis>crossfmpm</emphasis> and <emphasis>crossfmpmi</emphasis>
+      implement cross frequency/phase modulation between two oscillators.
+      Oscillator #1 is frequency-modulated by oscillator #2 while oscillator #2
+      is phase-modulated by oscillator #1.
+    </para>
+    <para>
+      You can read my <ulink url="http://www.csounds.com/journal/issue12/crossfm.html"><citetitle>paper</citetitle></ulink>
+      in the Csound Journal for more information.
+    </para>
+    <warning>
+      <title>Warning</title>
+      <para>
+        Those opcodes may produce very rich spectra, especially with high
+        modulation indexes, and in some cases foldover aliases may occur if the
+        sampling rate is not high enough. Moreover the audio output may vary in
+        function of the sampling rate, due to the non-linearity of the algorithm.
+        In Csound, two other opcodes have this characteristic:
+        <emphasis>planet</emphasis> and <emphasis>chuap</emphasis>. 
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the crossfm opcode. It uses the file
+      <ulink url="examples/crossfm.csd"><citetitle>crossfm.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the crossfm opcode.</title>
+         <xi:include href="examples-xml/crossfm.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      In this example, an FLTK GUI is used to control in real-time the oscillators
+      frequency with two <emphasis>Flcount</emphasis> widgets and the cross
+      modulation indexes with one <emphasis>FLjoy</emphasis> widget. It uses a
+      sampling rate of 96000Hz.
+    </para>
+  </refsect1>
+  
+    <refsect1>
+    <title>See Also</title>
+    <para> More information on this opcode: <ulink url="http://www.csounds.com/journal/issue12/crossfm.html"><citetitle>http://www.csounds.com/journal/issue12/crossfm.html</citetitle></ulink> , written by François Pinot  </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namepinot;</member>
+        <member>2005-2009</member>
+      </simplelist>
+      <para>New in version 5.12</para>
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,38 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac      <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">;-o looptseg.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1
+
+kfreq <emphasis role="opc">linseg</emphasis> 10, p3<emphasis role="op">*</emphasis>.5, 1, p3<emphasis role="op">*</emphasis>.5, 5	<emphasis role="comment">; vary speed</emphasis>
+ktyp <emphasis role="opc">linseg</emphasis> 100, p3<emphasis role="op">*</emphasis>.5, <emphasis role="op">-</emphasis>5, p3<emphasis role="op">*</emphasis>.5, <emphasis role="op">-</emphasis>20	<emphasis role="comment">; change form of segment</emphasis>
+<emphasis role="comment">;klp looptseg kfreq,ktrig,ktime0,kvalue0,ktype0,ktime1,kvalue1,ktype1,ktime2,kvalue2,ktype2,ktime3,kvalue3</emphasis>
+ klp <emphasis role="opc">looptseg</emphasis> kfreq,  0,    0,     0,     ktyp,   .6,     .9,     <emphasis role="op">-</emphasis>10,    .8,     .4,    1,     .1,     0 
+
+asig <emphasis role="opc">poscil3</emphasis> klp, 440, 1
+     <emphasis role="opc">outs</emphasis> asig, asig
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="comment">; sine wave.</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 16384 10 1
+
+<emphasis role="stamnt">i</emphasis> 1 0 12
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

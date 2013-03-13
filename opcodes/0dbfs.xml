@@ -1,0 +1,113 @@
+﻿
+<refentry id="Zerodbfs">
+<indexterm id="Index0dbfs"><primary>0dbfs</primary></indexterm>
+<refentryinfo><title>Orchestra Syntax:Header</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>0dbfs</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>0dbfs</refname>
+    <refpurpose>
+      Sets the value of 0 decibels using full scale amplitude.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Sets the value of 0 decibels using full scale amplitude.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>0dbfs</command> = iarg</synopsis>
+    <synopsis><command>0dbfs</command> </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iarg</emphasis> -- the value of 0 decibels using full scale amplitude.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      The default is 32767, so all existing orcs <emphasis>should</emphasis> work.
+    </para>
+
+    <para>
+      Amplitude values in Csound are always relative to a "<link linkend="Zerodbfs"><citetitle>0dbfs</citetitle></link>" value representing the peak available amplitude before clipping. In the original Csound, this value was always 32767, corresponding to the bipolar range of a 16bit soundfile or 16bit AD/DA codec. This remains the <emphasis>default</emphasis> peak amplitude for Csound, for backward compatibility. The <link linkend="Zerodbfs"><citetitle>0dbfs</citetitle></link> value enables Csound to produce appropriately scaled values to whatever output format is being used, whether 16bit integer, 24bit integer, 32bit floats, or even 32bit integers.
+    </para>
+    <para>
+      OdBFS can be defined in the header, to set the amplitude reference Csound will use, but it can also be used as a varible inside instruments like this:
+
+      <informalexample>
+        <programlisting>ipeak <emphasis role="op">=</emphasis> <emphasis role="ohdr">0dbfs</emphasis></programlisting>
+      </informalexample>
+
+      <informalexample>
+        <programlisting>
+asig <emphasis role="opc">oscil</emphasis> <emphasis role="ohdr">0dbfs</emphasis>, freq, 1
+     <emphasis role="opc">out</emphasis>   asig * 0.3 * <emphasis role="ohdr">0dbfs</emphasis></programlisting>
+      </informalexample>
+
+    </para>
+
+    <para>
+      The purpose of the <emphasis>0dbfs</emphasis> opcode is for people to start to code 0dbfs-relatively (and use the <link linkend="ampdbfs"><citetitle>ampdbfs()</citetitle></link> opcodes a lot more!), rather than use explicit sample values. Using 0dbfs=1 is in accordance to industry practice, as ranges from -1 to 1 are used in most commercial plugin formats and in most other synthesis systems like Pure Data.
+    </para>
+
+    <para>
+      Floats written to a file, when <emphasis>0dbfs = 1</emphasis>, will in effect go through no range translation at all. So the numbers in the file are exactly what the orc says they are.
+    </para>
+    <para>For more details on amplitude values in Csound, see the section <link linkend="AmplitudeCsound"><citetitle>Amplitude values in Csound</citetitle></link></para>
+
+<!--    <note>
+      <title>BIG NB</title>
+      <para>
+        All the main sample formats are supported, but I haven't got around to dealing with the char formats. Probably it's straight-forward...
+      </para>
+
+      <para>
+        I have tried to cover the main utils - adsyn, lpanal, etc. But there are bound to be things missing, sorry.
+      </para>
+
+      <para>
+        Some of the parsing code is a bit grungy because I have a variable with a leading digit!
+      </para>
+    </note>-->
+  </refsect1>
+
+  <refsect1>
+    <title>Example</title>
+    <para>
+      Here is an example of the 0dbfs opcode. It uses the file <ulink url="examples/0dbfs.csd"><citetitle>0dbfs.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the 0dbfs opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/0dbfs.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>See also</title>
+    <para><link linkend="ampdbfs"><citetitle>ampdbfs()</citetitle></link></para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Richard Dobson</member>
+        <member>May 2002</member>
+      </simplelist>
+    </para>
+    <para>New in version 4.10</para>
+  </refsect1>
+</refentry>

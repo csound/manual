@@ -1,0 +1,35 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac     <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if real audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o prepiano.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1
+<emphasis role="comment">;;          fund NS detune stiffness decay loss (bndry) (hammer) scan prep</emphasis>
+aa,ab <emphasis role="opc">prepiano</emphasis> 60, 3, 10, p4, 3, 0.002, 2, 2, 1, 5000, <emphasis role="op">-</emphasis>0.01, p5, p6, 0, 0.1, 1, 2
+      <emphasis role="opc">outs</emphasis> aa<emphasis role="op">*</emphasis>.2, ab<emphasis role="op">*</emphasis>.2
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis>1 0 8 2 1 0.6 10 100 0.001 <emphasis role="comment">;; 1 rattle</emphasis>
+<emphasis role="stamnt">f</emphasis>2 0 8 2 1 0.7 50 500 1000  <emphasis role="comment">;; 1 rubber</emphasis>
+<emphasis role="stamnt">i</emphasis>1 0.0 1 1 0.09 20
+<emphasis role="stamnt">i</emphasis>1 1 .  -1 0.09 40        <emphasis role="comment">;; 1 -> skip initialisation</emphasis>
+<emphasis role="stamnt">i</emphasis>1 2 .  -1 0.09 60
+<emphasis role="stamnt">i</emphasis>1 3 .  -1 0.09 80
+<emphasis role="stamnt">i</emphasis>1 4 1.8  -1 0.09 100
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

@@ -1,0 +1,59 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+-odac
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+          <emphasis role="oblock">instr</emphasis> 7
+
+ifunc1    <emphasis role="op">=</emphasis>         p11                                <emphasis role="comment">; initial waveform</emphasis>
+ifunc2    <emphasis role="op">=</emphasis>         p12                                <emphasis role="comment">; crossfade waveform</emphasis>
+
+ifad1     <emphasis role="op">=</emphasis>         p3 <emphasis role="op">*</emphasis> p13                           <emphasis role="comment">; calculate initial fade (% of dur)</emphasis>
+ifad2     <emphasis role="op">=</emphasis>         p3 <emphasis role="op">-</emphasis> ifad1                         <emphasis role="comment">; calculate remaining duration</emphasis>
+
+irel      <emphasis role="op">=</emphasis>         .01                                <emphasis role="comment">; set vibrato release time</emphasis>
+idel1     <emphasis role="op">=</emphasis>         p3 <emphasis role="op">*</emphasis> p10                           <emphasis role="comment">; calculate initial delay (% of dur)</emphasis>
+isus      <emphasis role="op">=</emphasis>         p3 <emphasis role="op">-</emphasis> (idel1 <emphasis role="op">+</emphasis> irel)                <emphasis role="comment">; calculate remaining duration</emphasis>
+
+iamp      <emphasis role="op">=</emphasis>         <emphasis role="opc">ampdb</emphasis>(p4)
+iscale    <emphasis role="op">=</emphasis>         iamp <emphasis role="op">*</emphasis> .166                        <emphasis role="comment">; p4=amp</emphasis>
+inote     <emphasis role="op">=</emphasis>         <emphasis role="opc">cpspch</emphasis>(p5)                         <emphasis role="comment">; p5=freq</emphasis>
+
+k3        <emphasis role="opc">linseg</emphasis>    0, idel1, p9, isus, p9, irel, 0    <emphasis role="comment">; p6=attack time</emphasis>
+k2        <emphasis role="opc">oscil</emphasis>     k3, p8, 1                          <emphasis role="comment">; p7=release time</emphasis>
+k1        <emphasis role="opc">linen</emphasis>     iscale, p6, p3, p7                 <emphasis role="comment">; p8=vib rate</emphasis>
+a6        <emphasis role="opc">oscil</emphasis>     k1, inote<emphasis role="op">*</emphasis>.998<emphasis role="op">+</emphasis>k2, ifunc2          <emphasis role="comment">; p9=vib depth</emphasis>
+a5        <emphasis role="opc">oscil</emphasis>     k1, inote<emphasis role="op">*</emphasis>1.002<emphasis role="op">+</emphasis>k2, ifunc2         <emphasis role="comment">; p10=vib delay (0-1)</emphasis>
+a4        <emphasis role="opc">oscil</emphasis>     k1, inote<emphasis role="op">+</emphasis>k2, ifunc2               <emphasis role="comment">; p11=initial wave</emphasis>
+a3        <emphasis role="opc">oscil</emphasis>     k1, inote<emphasis role="op">*</emphasis>.997<emphasis role="op">+</emphasis>k2, ifunc1          <emphasis role="comment">; p12=cross wave</emphasis>
+a2        <emphasis role="opc">oscil</emphasis>     k1, inote<emphasis role="op">*</emphasis>1.003<emphasis role="op">+</emphasis>k2, ifunc1         <emphasis role="comment">; p13=fade time</emphasis>
+a1        <emphasis role="opc">oscil</emphasis>     k1, inote<emphasis role="op">+</emphasis>k2, ifunc1
+
+kfade     <emphasis role="opc">linseg</emphasis>    1, ifad1, 0, ifad2, 1
+afunc1    <emphasis role="op">=</emphasis>         kfade <emphasis role="op">*</emphasis> (a1<emphasis role="op">+</emphasis>a2<emphasis role="op">+</emphasis>a3)
+afunc2    <emphasis role="op">=</emphasis>         (1 <emphasis role="op">-</emphasis> kfade) <emphasis role="op">*</emphasis> (a4<emphasis role="op">+</emphasis>a5<emphasis role="op">+</emphasis>a6)
+
+          <emphasis role="opc">out</emphasis>       afunc1 <emphasis role="op">+</emphasis> afunc2
+
+          <emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">f</emphasis>1   0    2048 10   1                                                                <emphasis role="comment">; Sine</emphasis>
+<emphasis role="stamnt">f</emphasis>2   0    2048 10   1    0.5  0.3  0.25 0.2  0.167     0.14      0.125     .111      <emphasis role="comment">; Sawtooth</emphasis>
+<emphasis role="stamnt">f</emphasis>3   0    2048 10   1    0    0.3  0    0.2  0         0.14      0         .111      <emphasis role="comment">; Square</emphasis>
+<emphasis role="stamnt">f</emphasis>4   0    2048 10   1    1    1    1    0.7  0.5       0.3       0.1                 <emphasis role="comment">; Pulse</emphasis>
+
+
+<emphasis role="comment">;in st    dur  amp  frq       atk  rel  vbrt vbdp vbdl stw  ndw  crstm</emphasis>
+<emphasis role="stamnt">i</emphasis>7   0    5    96   8.07      .03  .1   5    6    .99  1    2    .1
+<emphasis role="stamnt">i</emphasis>7   6    5    96   8.09      .03  .1   5    6    .99  1    3    .1
+<emphasis role="stamnt">i</emphasis>7  12    8    96   8.07      .03  .1   5    6    .99  1    4    .
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

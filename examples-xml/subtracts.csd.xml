@@ -1,0 +1,41 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in    No messages</emphasis>
+-odac    <emphasis role="comment">;;;realtime audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o -.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1
+
+idur <emphasis role="op">=</emphasis> p3
+iatt <emphasis role="op">=</emphasis> p4
+idec <emphasis role="op">=</emphasis> p5
+isus <emphasis role="op">=</emphasis> p3<emphasis role="op">-</emphasis>iatt<emphasis role="op">-</emphasis>idec				<emphasis role="comment">;calculate sustain time from subtracting attack and decay</emphasis>
+<emphasis role="opc">printf_i</emphasis> "sutain time<emphasis role="op">=</emphasis> note duration <emphasis role="op">-</emphasis> attack <emphasis role="op">-</emphasis> decay <emphasis role="op">-</emphasis><emphasis role="op">-</emphasis><emphasis role="op">></emphasis> <emphasis role="op">%</emphasis>.1f<emphasis role="op">-</emphasis><emphasis role="op">%</emphasis>.1f<emphasis role="op">-</emphasis><emphasis role="op">%</emphasis>.1f <emphasis role="op">=</emphasis> <emphasis role="op">%</emphasis>.1f\n", 1, idur, iatt, idec, isus
+
+kenv <emphasis role="opc">expseg</emphasis> 0.01, iatt, 1, isus, 1, idec, 0.01	<emphasis role="comment">;envelope</emphasis>
+asig <emphasis role="opc">poscil</emphasis> 1<emphasis role="op">*</emphasis>kenv, 200, 1
+     <emphasis role="opc">outs</emphasis> asig, asig
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 4096 10 1	<emphasis role="comment">;sine wave</emphasis>
+<emphasis role="comment">;      attack decay</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 3 .1     .2
+<emphasis role="stamnt">i</emphasis> 1 4 3 .5    1.5
+<emphasis role="stamnt">i</emphasis> 1 8 5  4     .5
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

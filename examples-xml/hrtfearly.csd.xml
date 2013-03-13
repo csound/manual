@@ -1,0 +1,74 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+
+<emphasis role="comment">; Select flags here</emphasis>
+<emphasis role="comment">; realtime audio out</emphasis>
+ -o dac
+<emphasis role="comment">; file ouput </emphasis>
+<emphasis role="comment">; -o hrtf.wav</emphasis>
+  
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+
+gasrc <emphasis role="opc">init</emphasis> 0	<emphasis role="comment">;global</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 1		<emphasis role="comment">;a plucked string, distorted and filtered</emphasis>
+
+  iamp <emphasis role="op">=</emphasis> 15000
+  icps <emphasis role="op">=</emphasis> <emphasis role="opc">cpspch</emphasis>(p4)
+
+  a1 <emphasis role="opc">pluck</emphasis> iamp, icps, icps, 0, 1
+  adist <emphasis role="opc">distort1</emphasis> a1, 10, .5, 0, 0
+  afilt <emphasis role="opc">moogvcf2</emphasis> adist, 8000, .5 
+  aout <emphasis role="opc">linen</emphasis> afilt, 0, p3, .01
+  
+  gasrc <emphasis role="op">=</emphasis> gasrc <emphasis role="op">+</emphasis> aout
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 10	<emphasis role="comment">;uses output from instr1 as source</emphasis>
+  
+  <emphasis role="comment">;simple path for source</emphasis>
+  kx <emphasis role="opc">line</emphasis> 2, p3, 9
+
+  <emphasis role="comment">;early reflections, room default 1</emphasis>
+  aearlyl,aearlyr, irt60low, irt60high, imfp <emphasis role="opc">hrtfearly</emphasis> gasrc, kx, 5, 1, 5, 1, 1, "hrtf<emphasis role="op">-</emphasis>44100<emphasis role="op">-</emphasis>left.dat", "hrtf<emphasis role="op">-</emphasis>44100<emphasis role="op">-</emphasis>right.dat", 1
+
+  <emphasis role="comment">;later reverb, uses outputs from above</emphasis>
+  arevl, arevr, idel <emphasis role="opc">hrtfreverb</emphasis> gasrc, irt60low, irt60high, "hrtf<emphasis role="op">-</emphasis>44100<emphasis role="op">-</emphasis>left.dat", "hrtf<emphasis role="op">-</emphasis>44100<emphasis role="op">-</emphasis>right.dat", 44100, imfp
+
+  <emphasis role="comment">;delayed and scaled</emphasis>
+  alatel <emphasis role="opc">delay</emphasis> arevl <emphasis role="op">*</emphasis> .1, idel
+  alater <emphasis role="opc">delay</emphasis> arevr <emphasis role="op">*</emphasis> .1, idel
+
+  <emphasis role="opc">outs</emphasis>	aearlyl <emphasis role="op">+</emphasis> alatel, aearlyr <emphasis role="op">+</emphasis> alater
+  
+  gasrc <emphasis role="op">=</emphasis> 0
+
+<emphasis role="oblock">endin</emphasis>
+  
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="comment">; Play Instrument 1: a simple arpeggio</emphasis>
+<emphasis role="stamnt">i</emphasis>1 0 .2 8.00 
+<emphasis role="stamnt">i</emphasis>1 + .2 8.04
+<emphasis role="stamnt">i</emphasis>1 + .2 8.07
+<emphasis role="stamnt">i</emphasis>1 + .2 8.11
+<emphasis role="stamnt">i</emphasis>1 + .2 9.02
+<emphasis role="stamnt">i</emphasis>1 + 1.5 8.11
+<emphasis role="stamnt">i</emphasis>1 + 1.5 8.07
+<emphasis role="stamnt">i</emphasis>1 + 1.5 8.04
+<emphasis role="stamnt">i</emphasis>1 + 1.5 8.00
+<emphasis role="stamnt">i</emphasis>1 + 1.5 7.09
+<emphasis role="stamnt">i</emphasis>1 + 4 8.00
+
+<emphasis role="comment">; Play Instrument 10 for 13 seconds.</emphasis>
+<emphasis role="stamnt">i</emphasis>10 0 13
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

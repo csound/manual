@@ -1,0 +1,88 @@
+﻿<refentry id="STKBlowHole">
+  <indexterm id="IndexStkblowhole"><primary>STKBlowHole</primary></indexterm>
+  <refentryinfo><title>Signal Generators:STK Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>STKBlowHole</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>STKBlowHole</refname>
+    <refpurpose>
+      STK clarinet physical model with one register hole and one tonehole. 
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This opcode is based on the clarinet model, with the addition of a two-port register hole and a three-port dynamic tonehole implementation.</para>
+      <para>
+      In this implementation, the distances between the reed/register hole and tonehole/bell are fixed.
+      As a result, both the tonehole and register hole will have variable influence on the playing frequency, which is dependent on the length of the air column. In addition, the highest playing freqeuency is limited by these fixed lengths.</para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>asignal <command>STKBlowHole</command> ifrequency, iamplitude, [kreed, kv1[, knoise, kv2[, khole, kv3[, kreg, kv4[, kbreath, kv5]]]]]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+      <para>
+      <emphasis>ifrequency</emphasis> -- Frequency of note played, in Hertz.
+    </para>
+   
+    <para>
+      <emphasis>iamplitude</emphasis> -- Amplitude of note played (range 0-1).
+    </para>
+  </refsect1>
+ 
+    <refsect1>
+    <title>Performance</title>
+<para><emphasis>kreed</emphasis> -- controller 2, stiffness of reed. Value range of kv1 is 0-127.</para>
+<para><emphasis>knoise</emphasis> -- controller 4, gain of noise. Value range of kv2 is 0-127.</para>
+<para><emphasis>khole</emphasis> -- controller 11, state of tonehole. Value range of kv3 is 0-127.</para>
+<para><emphasis>kreg</emphasis> -- controller 1, state of register. Value range of kv4 is 0-127.</para>
+<para><emphasis>kbreath</emphasis> -- controller 128, breath pressure. Value range of kv5 is 0-127.</para>
+  </refsect1>
+ 
+  <refsect1>
+    <note>
+      <title>Notes</title>
+      <para>
+        The code for this opcode is taken directly from the BlowHole class in the Synthesis Toolkit in C++ by Perry R. Cook and Gary P. Scavone. More on the STK classes can be found here:  
+<ulink url="https://ccrma.stanford.edu/software/stk/classes.html"><citetitle>https://ccrma.stanford.edu/software/stk/classes.html</citetitle></ulink>
+</para>
+      <para>
+        <emphasis>kc1, kv1, kc2, kv2, kc3, kv3, kc4, kv4, kc5, kv5, kc6, kv6, kc7, kv7, kc8, kv8</emphasis> -- Up to 8 optional k-rate controller pairs for the STK opcodes.
+      Each controller pair consists of a controller number (kc) followed by a controller value (kv). Both the controller numbers and the controller values are krate variables. However, during a performance, normally the controller numbers stay fixed while the corresponding controller values may change at any time.
+The order of the controller pair is arbitrary, as long as they are after <emphasis>iamplitude</emphasis>. Also, it is not needed that all controller pairs are used.
+</para>
+    </note>
+  </refsect1>
+  
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the STKBlowHole opcode. It uses the file <ulink url="examples/STKBlowHole.csd"><citetitle>STKBlowHole.csd</citetitle></ulink>.
+     
+      <example>
+        <title>Example of the STKBlowHole opcode.</title>
+        <xi:include href="examples-xml/STKBlowHole.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namemichael; (after &nameperry;)</member>
+        <member>Irreducible Productions</member>
+        <member>New York, NY</member>
+      </simplelist>
+    </para>
+    <para>New in Csound version 5.11</para>
+  </refsect1>
+</refentry>
+

@@ -1,0 +1,136 @@
+
+<refentry id="lorisread">
+<indexterm id="IndexLorisRead"><primary>lorisread</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Loris</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lorisread</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>lorisread</refname>
+    <refpurpose>Imports a set of bandwidth-enhanced partials from a SDIF-format
+    data file, applying control-rate frequency, amplitude, and
+    bandwidth scaling envelopes, and stores the modified partials in
+    memory.
+           </refpurpose>
+</refnamediv>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>lorisread</command> ktimpnt, ifilcod, istoreidx, kfreqenv, kampenv, kbwenv[, ifadetime]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Description</title> 
+    <para>lorisread imports a set of bandwidth-enhanced partials from a SDIF-format data file, applying control-rate frequency, amplitude, and bandwidth scaling envelopes, and stores the modified partials in memory.
+    </para>  
+    </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+<para><emphasis>ifilcod </emphasis> - integer or character-string
+denoting a control-file derived from reassigned bandwidth-enhanced
+analysis of an audio signal. An integer denotes the suffix of a file
+loris.sdif (e.g. loris.sdif.1); a character-string (in double quotes)
+gives a filename, optionally a full pathname. If not a full pathname, the
+file is sought first in the current directory, then in the one given
+by the environment variable SADIR (if defined). The reassigned
+bandwidth-enhanced data file contains breakpoint frequency, amplitude,
+noisiness, and phase envelope values organized for bandwidth-enhanced
+additive resynthesis. The control data must conform to one of the SDIF
+formats that can be</para>
+
+<para>Loris stores partials in SDIF RBEP frames. Each RBEP frame
+contains one RBEP matrix, and each row in a RBEP matrix describes one
+breakpoint in a Loris partial. A RBEL frame containing one RBEL matrix
+describing the labeling of the partials may precede the first RBEP
+frame in the SDIF file. The RBEP and RBEL frame and matrix definitions
+are included in the SDIF file's header. In addition to RBEP frames,
+Loris can also read and write SDIF 1TRC frames. Since 1TRC frames do
+not represent bandwidth-enhancement or the exact timing of Loris
+breakpoints, their use is not recommended. 1TRC capabilities are
+provided to allow interchange with programs that are unable to handle
+RBEP frames.</para>
+
+<para><emphasis>istoreidx, ireadidx, isrcidx, itgtidx</emphasis> are
+labels that identify a stored set of bandwidth-enhanced
+partials. lorisread imports partials from a SDIF file and stores them
+with the integer label istoreidx. lorismorph morphs sets of partials
+labeled isrcidx and itgtidx, and stores the resulting partials with
+the integer label istoreidx. lorisplay renders the partials stored
+with the label ireadidx. The labels are used only at initialization
+time, and may be reused without any cost or benefit in efficiency, and
+without introducing any interaction between instruments or
+instances.</para>
+
+<para><emphasis>ifadetime (optional)</emphasis> - In general,
+partials exported from Loris begin and end at non-zero amplitude. In
+order to prevent artifacts, it is very often necessary to fade the
+partials in and out, instead of turning them abruptly on and
+off. Specification of a non-zero ifadetime causes partials to fade in
+at their onsets and to fade out at their terminations. This is
+achieved by adding two more breakpoints to each partial: one ifadetime
+seconds before the start time and another ifadetime seconds after the
+end time. (However, no breakpoint will be introduced at a time less
+than zero. If necessary, the onset fade time will be shortened.) The
+additional breakpoints at the partial onset and termination will have
+the same frequency and bandwidth as the first and last breakpoints in
+the partial, respectively, but their amplitudes will be zero. The
+phase of the new breakpoints will be extrapolated to preserve phase
+correctness. If no value is specified, ifadetime defaults to
+zero. Note that the fadetime may not be exact, since the partial
+parameter envelopes are sampled at the control rate (krate) and
+indexed by ktimpnt (see below), and not by real time.</para>
+
+  </refsect1>
+
+<refsect1>
+
+<title>Performance</title>
+
+<para>lorisread reads pre-computed Reassigned Bandwidth-Enhanced
+analysis data from a file stored in SDIF format, as described
+above. The passage of time through this file is specified by ktimpnt,
+which represents the time in seconds. ktimpnt must always be positive,
+but can move forwards or backwards in time, be stationary or
+discontinuous, as a pointer into the analysis file. kfreqenv is a
+control-rate transposition factor: a value of 1 incurs no
+transposition, 1.5 transposes up a perfect fifth, and .5 down an
+octave. kampenv is a control-rate scale factor that is applied to all
+partial amplitude envelopes. kbwenv is a control-rate scale factor
+that is applied to all partial bandwidth or noisiness envelopes. The
+bandwidth-enhanced partial data is stored in memory with a specified
+label for future access by another generator.</para>
+
+</refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the lorisread opcode. It uses the file <ulink url="examples/lorisread.csd"><citetitle>lorisread.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the lorisread opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/lorisread.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+<refsect1>
+    
+<title>Credits</title>
+        
+<para>This implementation of the Loris unit generators was written by Kelly
+Fitz (<ulink
+url="mailto:loris@cerlsoundgroup.org">loris@cerlsoundgroup.org</ulink>). It is patterned after a prototype implementation of the
+<emphasis>lorisplay</emphasis> unit generator written by Corbin Champion, and based on the
+method of Bandwidth-Enhanced Additive Synthesis and on the sound
+morphing algorithms implemented in the Loris library for sound
+modeling and manipulation. The opcodes were further adapted as a
+plugin for Csound 5 by Michael Gogins.</para>
+
+</refsect1>
+
+</refentry>

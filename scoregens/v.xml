@@ -1,0 +1,91 @@
+
+<refentry id="v">
+      <indexterm id="IndexVStatement"><primary>v statement</primary></indexterm>
+  <refmeta>
+    <refentrytitle>v Statement</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>v</refname>
+    <refpurpose>
+      Provides for locally variable time warping of score events.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      The <emphasis>v statement</emphasis> provides for locally variable time warping of score events.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>v</command> p1</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <command>p1</command> -- Time warp factor (must be positive).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      The <emphasis>v statement</emphasis> takes effect with the following <link linkend="i"><citetitle>i statement</citetitle></link>, and remains in effect until the next <link linkend="v"><citetitle>v statement</citetitle></link>, <link linkend="s"><citetitle>s statement</citetitle></link>, or <link linkend="e"><citetitle>e statement</citetitle></link>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      The value of p1 is used as a multiplier for the start times (p2) of subsequent <link linkend="i"><citetitle>i statements</citetitle></link>.
+    </para>
+
+    <para>
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">i</emphasis>1   0 1  <emphasis role="comment">; note1</emphasis>
+<emphasis role="stamnt">v</emphasis>2
+<emphasis role="stamnt">i</emphasis>1   1 1  <emphasis role="comment">; note2</emphasis></programlisting>
+      </informalexample>
+
+      In this example, the second note occurs two beats after the first note, and is twice as long.
+    </para>
+
+    <para>
+      Although the <emphasis>v statement</emphasis> is similar to the <link linkend="t"><citetitle>t statement</citetitle></link>, the <emphasis>v statement</emphasis> is local in operation. That is, <emphasis>v</emphasis> affects only the following notes, and its effect may be cancelled or changed by another <emphasis>v statement</emphasis>.
+    </para>
+
+    <para>
+      Carried values are unaffected by the <emphasis>v statement</emphasis> (see <link linkend="ScoreCarry"><citetitle>Carry</citetitle></link>).
+    </para>
+
+    <para>
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">i</emphasis>1   0 1
+<emphasis role="stamnt">v</emphasis>2
+<emphasis role="stamnt">i</emphasis>.   + .
+<emphasis role="stamnt">i</emphasis>.   . .</programlisting>
+      </informalexample>
+
+      In this example, the <emphasis>v statement</emphasis> has no effect.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the v statement. It uses the file <ulink url="examples/v.csd"><citetitle>v.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the v statement.</title>
+        <xi:include href="examples-xml/v.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      In this example, note3 and note5 occur simultaneously, while note4 actually occurs before note3, that is, at its original place. Durations are unaffected.
+    </para>
+  </refsect1>
+ 
+</refentry>

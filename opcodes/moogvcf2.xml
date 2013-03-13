@@ -1,0 +1,108 @@
+
+<refentry id="moogvcf2">
+<indexterm id="IndexMoogvcf2"><primary>moogvcf2</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>moogvcf2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>moogvcf2</refname>
+    <refpurpose>
+      A digital emulation of the Moog diode ladder filter configuration.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      A digital emulation of the Moog diode ladder filter configuration.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>moogvcf2</command> asig, xfco, xres [,iscale, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iscale</emphasis> (optional, default=0dBfs) -- internal
+    scaling factor, as the operation of the code requires the signal
+    to be in the range +/-1.  Input is first divided by
+    <emphasis>iscale</emphasis>, then output is mutliplied by
+    <emphasis>iscale</emphasis>.
+    </para>
+    <para>
+      <emphasis>iskip</emphasis> (optional, default=0) -- if non zero
+    skip the initialisation of the filter. 
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asig</emphasis> -- input signal
+    </para>
+
+    <para>
+      <emphasis>xfco</emphasis> -- filter cut-off frequency in
+    Hz. which may be i-,k-, or a-rate. 
+    </para>
+
+    <para>
+      <emphasis>xres</emphasis> -- amount of
+    resonance. Self-oscillation occurs when <emphasis>xres</emphasis>
+    is approximately one. May be a-rate, i-rate, or k-rate. 
+    </para>
+
+    <para>
+      <emphasis>moogvcf2</emphasis> is a digital emulation of the Moog
+    diode ladder filter configuration. This emulation is based loosely
+    on the paper <quote>Analyzing the Moog VCF with Considerations for
+    Digital Implementation</quote> by Stilson and Smith (CCRMA). This
+    version was originally coded in Csound by Josep Comajuncosas. Some
+    modifications and conversion to C were done by &namehans; and then
+    adjusted.
+    </para>
+    <para>
+      <emphasis>moogvcf2</emphasis> is identical to <link linkend="moogvcf"><citetitle>moogvcf</citetitle></link>, except that the 
+      <emphasis>iscale</emphasis> parameter defaults to <link linkend="Zerodbfs"><citetitle>0dbfs</citetitle></link> instead of 0, guaranteeing that amplitude will usually be OK.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the moogvcf2 opcode. It uses the file <ulink url="examples/moogvcf2.csd"><citetitle>moogvcf2.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the moogvcf2 opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/moogvcf2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="moogvcf"><citetitle>moogvcf</citetitle></link>,
+      <link linkend="biquad"><citetitle>biquad</citetitle></link>,
+      <link linkend="rezzy"><citetitle>rezzy</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namehans; and &namejohn;</member>
+        <member>October 1998/ July 2006</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 5.03</para>
+  </refsect1>
+</refentry>

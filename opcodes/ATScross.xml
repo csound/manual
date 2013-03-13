@@ -1,0 +1,89 @@
+﻿
+<refentry id="ATScross">
+<indexterm id="IndexATScross"><primary>ATScross</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:ATS</title></refentryinfo>
+    <refmeta>
+        <refentrytitle>ATScross</refentrytitle>
+    </refmeta>
+
+    <refnamediv>
+        <refname>ATScross</refname>
+        <refpurpose> perform cross synthesis from ATS analysis files.
+        </refpurpose>
+    </refnamediv>
+    <refsect1>
+        <title>Description</title>
+        <para>
+            <emphasis>ATScross</emphasis> uses data from an ATS analysis file and data from an <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link> to perform cross synthesis.
+        </para>
+    </refsect1>
+    <refsect1>
+        <title>Syntax</title>
+        <synopsis>ar <command>ATScross</command> ktimepnt, kfmod, iatsfile, ifn, kmylev, kbuflev, ipartials \
+          [, ipartialoffset, ipartialincr]</synopsis>
+    </refsect1>
+    <refsect1>
+        <title>Initialization</title>
+        <para>
+            <emphasis>iatsfile</emphasis> – integer or character-string denoting a control-file derived from ATS analysis of an audio signal. An integer denotes the suffix of a file ATS.m; a character-string (in double quotes) gives a filename, optionally a full pathname. If not full-path, the file is sought first in the current directory, then in the one given by the environment variable SADIR (if defined).
+        </para>
+        <para><emphasis>ifn</emphasis> – table number of a stored function containing a sine wave.</para>
+        <para><emphasis>ipartials</emphasis> – number of partials that will be used in the resynthesis
+        </para>
+        <para><emphasis>ipartialoffset</emphasis> (optional) – is the first partial used (defaults to 0).
+        </para>
+        <para><emphasis>ipartialincr</emphasis> (optional) – sets an increment by which these synthesis opcodes counts up from <emphasis>ipartialoffset</emphasis> for ibins components in the re-synthesis (defaults to 1).
+        </para>
+    </refsect1>
+    <refsect1>
+        <title>Performance</title>
+        <para><emphasis>ktimepnt</emphasis> – The time pointer in seconds used to index the ATS file. Used for <emphasis>ATScross</emphasis> exactly the same as for <link linkend="pvoc"><citetitle>pvoc</citetitle></link>.</para>
+        <para>
+        <emphasis>kfmod</emphasis> – an input for performing pitch transposition or frequency modulation on all of the synthesized partials, if no fm or pitch change is desired then use a 1 for this value.
+        </para>
+        <para><emphasis>kmylev</emphasis> - scales the <emphasis>ATScross</emphasis> component of the frequency spectrum applied to the partials from the ATS file indicated by the <emphasis>ATScross</emphasis> opcode. The frequency spectrum information comes from the <emphasis>ATScross</emphasis> ATS file. A value of 1 (and 0 for <emphasis>kbuflev</emphasis>) gives the same results as <link linkend="ATSadd"><citetitle>ATSadd</citetitle></link>.
+        </para>
+        <para><emphasis>kbuflev</emphasis> - scales the <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link> component of the frequency spectrum applied to the partials from the ATS file indicated by the <emphasis>ATScross</emphasis> opcode. The frequency spectrum information comes from the <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link> ATS file. A value of 1 (and 0 for <emphasis>kmylev</emphasis>) results in partials that have frequency information from the ATS file given by the <emphasis>ATScross</emphasis>, but amplitudes imposed by data from the ATS file given by <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>.
+        </para>
+        <para><emphasis>ATScross</emphasis> uses data from an ATS analysis file (indicated by <emphasis>iatsfile</emphasis>) and data from an <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link> to perform cross synthesis. <emphasis>ATScross</emphasis> uses <emphasis>ktimepnt</emphasis>, <emphasis>kfmod</emphasis>, <emphasis>ipartials</emphasis>, <emphasis>ipartialoffset</emphasis> and <emphasis>ipartialincr</emphasis> just like  <link linkend="ATSadd"><citetitle>ATSadd</citetitle></link>. <emphasis>ATScross</emphasis> synthesizes a sine-wave for each partial selected by the user and uses the frequency of that partial (after scaling in frequency by <emphasis>kfmod</emphasis>) to index the table created by <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>. Interpolation is used to get in-between values. <emphasis>ATScross</emphasis> uses the sum of the amplitude data from its ATS file (scaled by <emphasis>kmylev</emphasis>) and the amplitude data gained from an <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link> (scaled by <emphasis>kbuflev</emphasis>) to scale the amplitude of each partial it synthesizes. Setting <emphasis>kmylev</emphasis> to one and <emphasis>kbuflev</emphasis> to zero will make <emphasis>ATScross</emphasis> act exactly like <link linkend="ATSadd"><citetitle>ATSadd</citetitle></link>. Setting <emphasis>kmylev</emphasis> to zero and <emphasis>kbuflev</emphasis> to one will produce a sound that has all the partials selected by the <emphasis>ATScross</emphasis> ugen, but with amplitudes taken from an <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>. The time pointers of the <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link> and <emphasis>ATScross</emphasis> do not need to be the same.
+        </para>
+    </refsect1>
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the ATScross opcode. It uses the file <ulink url="examples/ATScross.csd"><citetitle>ATScross.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the ATScross opcode.</title>
+
+        
+
+          <xi:include href="examples-xml/ATScross.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+        <para> This example performs cross synthesis using two ATS-files,  "fox.ats" and "beats.ats". The result of this will be a sound that starts out with the shape (in frequency) of fox.ats, and ends with the shape of beats.ats. All the sine-wave frequencies come from beats.ats. The <emphasis>kbuflev</emphasis> value is scaled because the energy produced by applying fox.ats's frequency spectrum to beats.ats's partials is very large. Notice also that the time pointers of the <emphasis>ATSbufread</emphasis> (fox.ats) and <emphasis>ATScross</emphasis> (beats.ats) need not have the same value, this way you can read through the two ATS files at different rates.
+        </para>
+    </refsect1>
+    <refsect1>
+        <title>See also</title>
+        <para><link linkend="ATSread"><citetitle>ATSread</citetitle></link>, 
+            <link linkend="ATSreadnz"><citetitle>ATSreadnz</citetitle></link>, 
+            <link linkend="ATSinfo"><citetitle>ATSinfo</citetitle></link>, 
+            <link linkend="ATSsinnoi"><citetitle>ATSsinnoi</citetitle></link>, 
+            <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>, 
+            <link linkend="ATSinterpread"><citetitle>ATSinterpread</citetitle></link>, 
+            <link linkend="ATSpartialtap"><citetitle>ATSpartialtap</citetitle></link>, 
+            <link linkend="ATSadd"><citetitle>ATSadd</citetitle></link>, 
+            <link linkend="ATSaddnz"><citetitle>ATSaddnz</citetitle></link></para>
+    </refsect1>
+    <refsect1>
+        <title>Credits</title>
+        <para>
+            <simplelist>
+                <member>Author: Alex Norman</member>
+                <member>Seattle,Washington</member>
+                <member>2004</member>
+            </simplelist>
+        </para>
+    </refsect1>
+</refentry>

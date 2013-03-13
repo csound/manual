@@ -1,0 +1,103 @@
+﻿
+<refentry id="looptseg">
+<indexterm id="IndexLooptseg"><primary>looptseg</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Linear and Exponential Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>looptseg</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>looptseg</refname>
+    <refpurpose>
+      Generate control signal consisting of exponential or linear segments delimited by two or more specified points.
+          </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Generate control signal consisting of controllable exponential segments or linear segments delimited by two or more specified points. The entire envelope is looped at <emphasis>kfreq</emphasis> rate. Each parameter can be varied at k-rate.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ksig <command>looptseg</command> kfreq, ktrig, ktime0, kvalue0, ktype0, [, ktime1] [, kvalue1] [,ktype1] \
+      [, ktime2] [, kvalue2] [,ktype2] [...][, ktimeN] [, kvalueN]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ksig</emphasis> -- Output signal.
+    </para>
+
+    <para>
+      <emphasis>kfreq</emphasis> -- Repeat rate in Hz or fraction of Hz.
+    </para>
+
+    <para>
+      <emphasis>ktrig</emphasis> -- If non-zero, retriggers the envelope from start (see <link linkend="trigger"><citetitle>trigger opcode</citetitle></link>), before the envelope cycle is completed.
+    </para>
+
+    <para>
+      <emphasis>ktime0...ktimeN</emphasis> -- Times of points; expressed in fraction of a cycle.
+    </para>
+
+    <para>
+      <emphasis>kvalue0...kvalueN</emphasis> -- Values of points
+    </para>
+
+    <para>
+      <emphasis>ktype0...ktypeN</emphasis> -- shape of the envelope.  If the value is 0 then the shap eis linear; otherwise it is an concave exponential (positive type) or a convex exponential (negative type).
+    </para>
+
+    <para>
+      <emphasis>looptseg</emphasis> opcode is similar to <link linkend="transeg"><citetitle>transeg</citetitle></link>, but the entire envelope is looped at <emphasis>kfreq</emphasis> rate. Notice that times are not expressed in seconds but in fraction of a cycle. Actually each duration represent is proportional to the other, and the entire cycle duration is proportional to the sum of all duration values.  
+    </para>
+
+    <para>
+      The sum of all duration is then rescaled according to <emphasis>kfreq</emphasis> argument. For example, considering an envelope made up of 3 segments, each segment having 100 as duration value, their sum will be 300. This value represents the total duration of the envelope, and is actually divided into 3 equal parts, a part for each segment.
+    </para>
+
+    <para>
+      Actually, the real envelope duration in seconds is determined by <emphasis>kfreq</emphasis>. Again, if the envelope is made up of 3 segments, but this time the first and last segments have a duration of 50, whereas the central segment has a duration of 100 again, their sum will be 200. This time 200 represent the total duration of the 3 segments, so the central segment will be twice as long as the other segments.
+    </para>
+
+    <para>
+      All parameters can be varied at k-rate.  Negative frequency values are allowed, reading the envelope backward.  <emphasis>ktime0</emphasis> should always be set to 0, except if the user wants some special effect.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the looptseg opcode. It uses the file <ulink url="examples/looptseg.csd"><citetitle>looptseg.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the looptseg opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/looptseg.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="lpshold"><citetitle>lpshold</citetitle></link>
+      <link linkend="loopseg"><citetitle>loopseg</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namejohn;</para>
+    <para>New in Version 5.12</para>
+  </refsect1>
+</refentry>

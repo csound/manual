@@ -1,0 +1,138 @@
+
+<refentry id="GEN04">
+      <indexterm id="IndexGEN04"><primary>GEN04</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN04</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN04</refname>
+    <refpurpose>
+      Generates a normalizing function.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This subroutine generates a normalizing function by examining the contents of an existing table.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>f</command>  #  time  size  4  source#  sourcemode</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>size</emphasis> -- number of points in the table. Should be power-of-2 plus 1. Must not exceed (except by 1) the size of the source table being examined; limited to just half that size if the sourcemode is of type offset (see below).
+    </para>
+
+    <para>
+      <emphasis>source #</emphasis> -- table number of stored function to be examined.
+    </para>
+
+    <para>
+      <emphasis>sourcemode</emphasis> -- a coded value, specifying how the source table is to be scanned to obtain the normalizing function. Zero indicates that the source is to be scanned from left to right. Non-zero indicates that the source has a bipolar structure; scanning will begin at the mid-point and progress outwards, looking at pairs of points equidistant from the center.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The normalizing function derives from the progressive absolute maxima of the source table being scanned. The new table is created left-to-right, with stored values equal to 1/(absolute maximum so far scanned). Stored values will thus begin with 1/(first value scanned), then get progressively smaller as new maxima are encountered. For a source table which is normalized (values &lt;= 1), the derived values will range from 1/(first value scanned) down to 1. If the first value scanned is zero, that inverse will be set to 1.
+            </para>
+
+          </listitem>
+          <listitem>
+            <para>
+              The normalizing function from <emphasis>GEN04</emphasis> is not itself normalized.
+            </para>
+          </listitem>
+
+          <listitem>
+            <para>
+              <emphasis>GEN04</emphasis> is useful for scaling a table-derived signal so that it has a consistent peak amplitude. A particular application occurs in waveshaping when the carrier (or indexing) signal is less than full amplitude.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is a simple example of the GEN04 routine. It uses the files <ulink url="examples/gen04.csd"><citetitle>gen04.csd</citetitle></ulink>.
+      <example>
+        <title>An example of the GEN04 routine.</title>
+        <xi:include href="examples-xml/gen04.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+        <textobject>
+          <phrase>These are the diagrams of the waveforms of the GEN04 routines, as used in the example:</phrase>
+        </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen04_1.png" format="PNG"/>         
+        </imageobject>
+
+        <textobject>
+          <phrase>f1 0 64 21 6 - Gaussian (random) distribution</phrase>
+        </textobject>
+
+        <caption>
+          <para>f1 0 64 21 6 - Gaussian (random) distribution</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen04_2.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f2 0 33 4 1 1 - AND its normalizing function with midpoint bipolar offset</phrase>
+        </textobject>
+
+        <caption>
+          <para>f2 0 33 4 1 1 - AND its normalizing function with midpoint bipolar offset</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen04_3.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f3 0 1025 13 1 1 0 5 0 5 0 10 - Chebyshev algorithm</phrase>
+        </textobject>
+
+        <caption>
+          <para>f3 0 1025 13 1 1 0 5 0 5 0 10 - Chebyshev algorithm</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen04_4.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f4 0 513 4 3 1 - AND its normalizing function with midpoint bipolar offset</phrase>
+        </textobject>
+
+        <caption>
+          <para>f4 0 513 4 3 1 - AND its normalizing function with midpoint bipolar offset</para>
+        </caption>
+      </mediaobject>
+
+    </para>
+  </refsect1>
+</refentry>

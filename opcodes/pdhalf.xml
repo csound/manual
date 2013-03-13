@@ -1,0 +1,124 @@
+
+<refentry id="pdhalf">
+<indexterm id="IndexPdhalf"><primary>pdhalf</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Waveshaping</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pdhalf</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pdhalf</refname>
+    <refpurpose>
+      Distorts a phasor for reading the two halves of a table at different rates.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      The <emphasis>pdhalf</emphasis> opcode is designed to emulate the "classic" phase distortion synthesis method of the Casio CZ-series of synthesizers from the mid-1980's.  This technique reads the first and second halves of a function table at different rates in order to warp the waveform.  For example, <emphasis>pdhalf</emphasis> can smoothly transform a sine wave into something approximating the shape of a saw wave.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>aout <command>pdhalf</command> ain, kShapeAmount [, ibipolar [, ifullscale]]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ibipolar</emphasis> -- an optional parameter specifying either unipolar (0) or bipolar (1) mode.  Defaults to unipolar mode.
+    </para>
+
+    <para>
+      <emphasis>ifullscale</emphasis> -- an optional parameter specifying the range of input and output values. The maximum will be <emphasis>ifullscale</emphasis>. The minimum depends on the mode of operation: zero for unipolar or -<emphasis>ifullscale</emphasis> for bipolar.  Defaults to 1.0 -- you should set this parameter to the maximum expected input value.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ain</emphasis> --  the input signal to be distorted.
+    </para>
+
+    <para>
+      <emphasis>aout</emphasis> --  the output signal.
+    </para>
+
+    <para>
+      <emphasis>kShapeAmount</emphasis> --  the amount of distortion applied to the input.  Must be between negative one and one (-1 to 1). An amount of zero means no distortion.
+    </para>
+
+    <para>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/pdhalf.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>Transfer function created by pdhalf and a negative kShapeAmount.</phrase>
+        </textobject>
+        
+        <caption>
+          <para>Transfer function created by pdhalf and a negative kShapeAmount.</para>
+        </caption>
+      </mediaobject>
+
+      The <emphasis>pdhalf</emphasis> opcode calculates a transfer function that is composed of two linear segments (see the graph).  These segments meet at a "pivot point" which always lies on the same horizontal axis.  (In unipolar mode, the axis is y = 0.5, and for bipolar mode it is the x axis).  The <emphasis>kShapeAmount</emphasis> parameter specifies where on the horizontal axis this point falls.  When <emphasis>kShapeAmount</emphasis> is zero, the pivot point is in the middle of the input range, forming a straight line for the transfer function and thus causing no change in the input signal.  As <emphasis>kShapeAmount</emphasis> changes from zero (0) to negative one (-1), the pivot point moves towards the left side of the graph, producing a phase distortion pattern like the Casio CZ's "sawtooth waveform".  As it changes from zero (0) to positive one (1), the pivot point moves toward the right, producing an inverted pattern.
+    </para>
+
+    <para>
+      If the input to <emphasis>pdhalf</emphasis> is a phasor and the output is used to index a table, values for <emphasis>kShapeAmount</emphasis> that are less than zero will cause the first half of the table to be read more quickly than the second half.  The reverse is true for values of <emphasis>kShapeAmount</emphasis> greater than zero. The rates at which the halves are read are calculated so that the frequency of the phasor is unchanged.  Thus, this method of phase distortion can only produce higher partials in a harmonic series.  It cannot produce inharmonic sidebands in the way that frequency modulation does. 
+    </para>
+
+    <para>
+      <emphasis>pdhalf</emphasis> can work in either unipolar or bipolar modes. Unipolar mode is appropriate for signals like phasors that range between zero and some maximum value (selectable with <emphasis>ifullscale</emphasis>). Bipolar mode is appropriate for signals that range above and below zero by roughly equal amounts such as most audio signals.  Applying <emphasis>pdhalf</emphasis> directly to an audio signal in this way results in a crude but adjustable sort of waveshaping/distortion.
+    </para>
+
+    <para>
+      A typical example of the use of pdhalf is
+
+      <informalexample>
+        <programlisting>
+    aphase    <emphasis role="opc">phasor</emphasis>    ifreq
+    apd       <emphasis role="opc">pdhalf</emphasis>    aphase, kamount
+    aout      <emphasis role="opc">tablei</emphasis>    apd, 1, 1</programlisting>
+      </informalexample>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the pdhalf opcode. It uses the file <ulink url="examples/pdhalf.csd"><citetitle>pdhalf.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the pdhalf opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/pdhalf.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+    
+  <refsect1>
+    <title>See Also</title>
+        <para>
+      <link linkend="pdhalfy"><citetitle>pdhalfy</citetitle></link>,
+      <link linkend="pdclip"><citetitle>pdclip</citetitle></link>
+    </para>
+    <para> More information about phase distortion on Wikipedia: <ulink url="http://en.wikipedia.org/wiki/Phase_distortion_synthesis"><citetitle>http://en.wikipedia.org/wiki/Phase_distortion_synthesis</citetitle></ulink></para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &nameanthony;</member>
+        <member>January 2008</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 5.08</para>
+  </refsect1>
+</refentry>

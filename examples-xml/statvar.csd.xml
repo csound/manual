@@ -1,0 +1,36 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in    No messages</emphasis>
+-odac           -iadc     -d   -M0     <emphasis role="comment">;;;RT audio I/O, midi in</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o statevar.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">kr</emphasis> <emphasis role="op">=</emphasis> 4410
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 10
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+
+	<emphasis role="oblock">instr</emphasis> 1
+
+kenv		<emphasis role="opc">linseg</emphasis>	0,0.1,1, p3<emphasis role="op">-</emphasis>0.2,1, 0.1, 0
+asig		<emphasis role="opc">buzz</emphasis>		16000<emphasis role="op">*</emphasis>kenv, 100, 100, 1
+kf		<emphasis role="opc">expseg</emphasis>	100, p3<emphasis role="op">/</emphasis>2, 5000, p3<emphasis role="op">/</emphasis>2, 1000
+ahp,alp,abp,abr <emphasis role="opc">statevar</emphasis>	asig, kf, 200
+		<emphasis role="opc">outs</emphasis>		alp,ahp					<emphasis role="comment">; lowpass left, highpass right</emphasis>
+	
+	<emphasis role="oblock">endin</emphasis>
+	
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="comment">; Table #1, a sine wave.</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 16384 10 1
+
+<emphasis role="stamnt">i</emphasis>1 0 2 
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

@@ -1,0 +1,229 @@
+<chapter id="Using">
+
+  <title>Using Csound</title>
+
+  <para>Csound can be operated in a variety of modes and
+    configurations. The original method for running Csound was as a console
+    program (DOS prompt for Windows, Terminal for Mac OS X). This, of course,
+    still works. Running
+    <application>csound</application> without any arguments prints out a
+    list of command-line options, which are more fully explained in the
+    <link linkend="CommandFlagsCategory"><citetitle>Command Line Flags
+    (by Category)</citetitle></link> section.
+    Normally, the user executes something
+    like:
+    <programlisting>csound myfile.csd</programlisting>
+    or separate orchestra (orc) and score (sco) files can be used:
+    <programlisting>csound myorchestra.orc myscore.sco</programlisting>
+    You can find many .csd files in the examples folder. Most opcode entries in this manual also include simple .csd files showing the usage of the opcode.
+  </para>
+  <para>
+    There are also many <link linkend="OviewFrontEnds"><citetitle>Front-Ends</citetitle></link> 
+    which can be used to run
+    <application>csound</application>. A 
+    <link linkend="OviewFrontEnds"><citetitle>Front-End</citetitle></link> is a graphical program
+    that eases the process of running csound, and sometimes provides editing
+    and composing functions.
+  </para>
+  <para>
+    Csound also has several ways of producing output. It can:
+    <itemizedlist>
+      <listitem><simpara>Read and write soundfiles (off-line rendering) - Using the <link linkend="FlagsCatMinusLowerO"><citetitle>-o</citetitle></link> and <link linkend="FlagsCatMinusLowerI"><citetitle>-i</citetitle></link> flags specifying an output filename.</simpara>
+      </listitem>
+      <listitem><simpara>
+	Read and write digital audio using a sound card (real-time rendering) - Using the <link linkend="FlagsCatMinusLowerOdac"><citetitle>-odac</citetitle></link> and <link linkend="FlagsCatMinusLowerIadc"><citetitle>-iadc</citetitle></link> flags</simpara>
+      </listitem>
+      <listitem><simpara>Read and write MIDI files (non-realtime) - Using the <link linkend="FlagsCatMinusUpperF"><citetitle>-F</citetitle></link> and <link linkend="FlagsCatMinusMidiOutFile"><citetitle>--midioutfile</citetitle></link> flags.</simpara>
+      </listitem>
+      <listitem><simpara>
+	Read and write MIDI using a MIDI interface and controller (real-time control) - Using the <link linkend="FlagsCatMinusUpperM"><citetitle>-M</citetitle></link> and <link linkend="FlagsCatMinusUpperQ"><citetitle>-Q</citetitle></link> flags.</simpara>
+      </listitem>
+    </itemizedlist>
+  </para>
+  <section id="ConsoleOutput">
+    <title>Csound's Console Output</title>
+    <para>
+      When Csound runs, it prints a text output to the console, which shows data about the Csound run. A Console output looks something like this:
+      <programlisting>time resolution is 0.455 ns                                  
+PortMIDI real time MIDI plugin for Csound                    
+virtual_keyboard real time MIDI plugin for Csound                                       
+PortAudio real-time audio module for Csound                                              
+0dBFS level = 32768.0                                                                    
+Csound version 5.10 beta (float samples) Apr 19 2009                                     
+libsndfile-1.0.17                                                                        
+Reading options from $HOME/.csoundrc                                                     
+UnifiedCSD:  oscil.csd                                                                   
+STARTING FILE                                                                            
+Creating options                                                                         
+Creating orchestra                                                                       
+Creating score                                                                           
+orchname:  /tmp/csound-XYACV6.orc                                                        
+scorename: /tmp/csound-IYtLAJ.sco                                                        
+rtaudio: ALSA module enabled                                                             
+rtmidi: PortMIDI module enabled                                                          
+orch compiler:                                                                           
+17 lines read                                                                            
+        instr   1                                                                        
+Elapsed time at end of orchestra compile: real: 0.129s, CPU: 0.020s                      
+sorting score ...                                                                        
+        ... done                                                                         
+Elapsed time at end of score sort: real: 0.130s, CPU: 0.020s                             
+Csound version 5.10 beta (float samples) Apr 19 2009                                     
+displays suppressed                                                                      
+0dBFS level = 32768.0
+orch now loaded
+audio buffered in 256 sample-frame blocks
+ALSA input: total buffer size: 1024, period size: 256
+reading 1024-byte blks of shorts from adc (RAW)
+ALSA output: total buffer size: 1024, period size: 256
+writing 1024-byte blks of shorts to dac
+SECTION 1:
+ftable 1:
+new alloc for instr 1:
+B  0.000 ..  2.000 T  2.000 TT  2.000 M:  10000.0  10000.0
+Score finished in csoundPerform().
+inactive allocs returned to freespace
+end of score.              overall amps:  10000.0  10000.0
+           overall samples out of range:        0        0
+0 errors in performance
+Elapsed time at end of performance: real: 2.341s, CPU: 0.050s
+345 1024-byte soundblks of shorts written to dac
+Removing temporary file /tmp/csound-CoVcrm.srt ...
+Removing temporary file /tmp/csound-IYtLAJ.sco ...
+Removing temporary file /tmp/csound-XYACV6.orc ...</programlisting>
+      The console output of Csound is quite verbose, particularly before the actual performance (like version, plugins loaded, etc.). Performance actually started when the console printed:
+      <programlisting>SECTION 1:</programlisting>
+      In this particular run, the lines:
+      <programlisting>new alloc for instr 1:
+B  0.000 ..  2.000 T  2.000 TT  2.000 M:  10000.0  10000.0</programlisting>
+      Show that a single note for instrument 1, that lasted 2 seconds starting at time 0.000, was produced with an amplitude of 10000 for both channel 1 and 2. An important section of the console output is:
+      <programlisting>end of score.              overall amps:  10000.0  10000.0
+           overall samples out of range:        0        0</programlisting>
+      Which shows the overall amplitude and the number of samples which were clipped because they were out of range.
+    </para>
+<!--     The following paragraph adapted from an email by Victor Lazzarini in the Csound mailing list -->
+    <para>
+      The line:
+      <programlisting>Elapsed time at end of performance: real: 2.341s, CPU: 0.050s</programlisting>
+      Shows the clock time and the CPU time it takes for the processor to complete the task. If CPU time is lower than clock time it means the csd can run in realtime (unless it has some sections which are extremely CPU intensive). The "real time" figure is the total running time and it is larger because it acounts for disk access. module loading, etc. (CPU time is strictly number-crunching time). If you have a sound that lasts for 100s and it takes 5s to generate it offline, it means that you are taking around 5% of CPU, and that it runs on 0.05 of realtime.
+    </para>
+  </section>
+
+ &oviewdesign;
+
+  <section id="UsingRealTime">
+
+    <title>Real-Time Audio</title>
+    <para>
+      The following information applies mostly to csound being run directly from the command line. Front-ends implement these features in different ways, but knowledge of them is necessary in some of them.
+    </para>
+    <para>
+      The <link linkend="FlagsCatMinusLowerI"><citetitle>-i</citetitle></link> and <link linkend="FlagsCatMinusLowerO"><citetitle>-o</citetitle></link> flags can are used to specify realtime output instead of the ordinary non-realtime file output. You should use <literal>-o dac</literal> for realtime output and <literal>-i adc</literal> for realtime input. Naturally, you can use either one or both if your hardware supports it. You can also specify the hardware you want to use by appending a device number or name to the flag (See <link linkend="FlagsCatMinusLowerI"><citetitle>-i</citetitle></link> and <link linkend="FlagsCatMinusLowerO"><citetitle>-o</citetitle></link>).
+    </para>
+    <para>
+      You might also need to use the <link linkend="FlagsCatMinusPlusRtaudio"><citetitle>-+rtaudio</citetitle></link> flag to specify the driver interface to be used. Csound defaults to using Portaudio, which is cross-plaform and reliable, but for better performance, you might need to use ALSA or JACK on linux, and CoreAudio on Mac. You can use ASIO on Windows if your version of Portaudio has been compiled with ASIO support.
+    </para>
+    <para>
+      You can see a list of available devices by giving a device number which is out of range, for instance <literal>-o dac99</literal>. This will also reveal if you have ASIO available if you are using PortAudio.
+    </para>
+    <bridgehead>
+      Period &amp; Buffer Sizes</bridgehead>
+    <para>Period and buffer sizes will vary greatly from one machine to
+      another. Lower buffer sizes will result in lower latency, but might 
+      cause breakups or clicks in the audio. The Csound
+      flags which control period and buffer sizes are <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> and <link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link>,
+      respectively. Buffer size is hardware dependant, and some
+      experimentation may be necessary to find the optimal balance between
+      low latency performance and uninterrupted audio output. The values
+      given to <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> and <link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link> should be powers of two, and the value of <link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link>
+      should be at least one power of two higher than that of <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link>.
+    </para>
+    <para>Currently, with <literal><link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link></literal> set to 512, audio output latency
+      is about 12 milliseconds, fast enough for reasonably responsive
+      keyboad playing. Even shorter latencies, are feasible on some systems.</para>
+    <bridgehead>Control Rate</bridgehead>
+    <para>
+      Low values for ksmps will in general give a higher quality of
+      synthesis, but will consume more system resources. There is no hard
+      and fast rule for setting ksmps - different orchestras will require
+      different control rates. A waveguide instrument will need a ksmps of
+      1 (and may not be suitable for realtime use), whereas a simple FM
+      synth may be run with a higher ksmps without noticeable degradation of
+      sound. If the FM synth were to be used to play a monophonic bassline,
+      a very low ksmps may be used, however more complex note clusters will
+      require a higher ksmps. A well-tuned Linux system should be capable of
+      running even complex polyphonic synths with ksmps values as low as 4
+      or 8. If full duplex audio is required, <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> must be an integer
+      multiple of ksmps. Bearing this in mind, a rule of thumb might be to
+      only use powers of two for ksmps.
+    </para>
+    <para>
+      Some settings differ according to platform. See further below for information for each platform.
+    </para>
+
+&oviewrealtimelinux;
+&oviewrealtimewindows;
+&oviewrealtimemac;
+
+
+  </section>
+
+
+
+  <section id="UsingOptimizing">
+    <title>Optimizing Audio I/O Latency</title>
+<!--    Written by Jonathan Murphy-->
+    <para>
+      To achieve the lowest latency possible without audio break ups, a combination of variables needs to be tweaked. The final values will be platform and system dependent, and will also depend on the complexity of the audio calculations performed. You need to adjust <link linkend="ksmps"><citetitle>ksmps</citetitle></link> in the orchestra, as well as the software (<link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link>) and harware buffer (<link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link>) sizes.
+    </para>
+    <para>
+      Usually the simplest solution is the following:
+    </para>
+      <orderedlist>
+        <listitem>
+          <para>Set <link linkend="ksmps"><citetitle>ksmps</citetitle></link> to a value with a good tradeoff between quality and performance, without adjusting <link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link> at all.</para>
+        </listitem>
+        <listitem>
+          <para>Set <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> to a negative power of two of this value.</para>
+          <para>
+            To get the optimal values, start with something you think is going to be too low, ie -1, and then continue "upwards", -2, -4 and so on, until you stop getting x-runs (glitches). The real value of <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> will be the absolute value of <emphasis>-b * ksmps</emphasis>.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Reduce the hardware buffer (<link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link>). Bring it down from the default (1024 on Linux, 4096 on Mac OS X, 16384 on Windows), halving it each time, until you start to get x-runs (glitches) again. Then take it back up again until performance is continuous.
+          </para>
+        </listitem>
+      </orderedlist>
+      <para>
+        This process assumes you have a 16-bit soundcard. If you have a 24-bit soundcard, then <link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link> should be 3/2, or 3 times <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link>, rather than 2 or 4 times. Csound works with 32-bit floats, or 64-bit doubles whereas most soundcards are 16 or 24-bit integer. <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> is the internal buffer, so it's dealing with the 32 or 64-bit side of things, whereas <link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link> is the hardware buffer, so it's dealing with the 16 or 24-bit side. The csound default for floats is <emphasis>-B = 4 * -b</emphasis>. This is a sane value for a 16 bit card. You can usually get away with <emphasis>-B = 2 * -b</emphasis>, but this is the absolute minimum. For example, if you set <emphasis>-b1024 -B2048</emphasis>, csound will tell you that:
+        <screen>audio buffered in 1024 sample-frame blocks
+writing 4096-byte blocks to dac</screen>
+      </para>
+      <para>
+        4096 bytes is 32768 bits. 32768/32 = 1024, our sample-frame size, 1024 * 32/16 = 2048, our buffer size. Were we to reduce the value of <link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link>, we would need to reduce the value of <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> by a corresponding amount in order to continue to write 16-bit integers to dac. The minimum size of <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> is <emphasis>(-B * bitrate)/32</emphasis>. That is to say that the minimum ratio of <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> to <link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link> should be:
+        <itemizedlist>
+          <listitem>
+            <simpara>16-bit: 1:2</simpara>
+          </listitem>
+          <listitem>
+            <simpara>24-bit: 2:3</simpara>
+          </listitem>
+          <listitem>
+            <simpara>32-bit: 1:1</simpara>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        While there is no theoretical maximum ratio, it makes no sense to have a very high ratio here, as the software buffer has to fill the hardware buffer before returning. If the ratio is high, it will take a long time, defeating the purpose of setting a small value for <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link>.
+      </para>
+      <para>
+        The value of <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> is something that will need to be varied depending on the complexity of the instrument you're working with, but because it's intimately related to the value of ksmps, it's better to synchronise it with <link linkend="ksmps"><citetitle>ksmps</citetitle></link> and go from there. One way to do it is to decide how long the release on your envelopes might need to be at maximum (for desired effect), set the release on all envelopes to maximum, give yourself a generous value for <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link>,  and then play. If it breaks up, double ksmps, repeat until smooth, then bring the value of <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> down as far as possible.
+      </para>
+      <para>
+        The value of <link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link> is primarily determined by operating system and soundcard. Figure out (using above method) how low you can go, and use that value (or one higher for safety). If you
+        have problems you'll know that it's probably because of an inappropriate value for ksmps, too low a value for <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link>, or denormals (see <link linkend="denorm"><citetitle>denorm</citetitle></link>).
+      </para>
+  </section>
+</chapter>
+

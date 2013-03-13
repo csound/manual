@@ -1,0 +1,39 @@
+
+<section id="ScoreNextp">
+  <title>Next-P and Previous-P Symbols</title>
+  <para>
+    At the close of any of the operations <link linkend="ScoreCarry"><citetitle>Carry</citetitle></link>, <link linkend="ScoreTempo"><citetitle>Tempo</citetitle></link>, and <link linkend="ScoreSort"><citetitle>Sort</citetitle></link>, three additional score features are interpreted during file writeout: next-p, previous-p, and <emphasis>ramping</emphasis>.
+
+    <indexterm id="IndexNp"><primary>np</primary></indexterm>
+    <indexterm id="IndexPp"><primary>pp</primary></indexterm>
+    <indexterm id="IndexScoreNextP"><primary>score</primary><secondary>next-p</secondary></indexterm>
+    <indexterm id="IndexScorePreviousP"><primary>score</primary><secondary>previous-p</secondary></indexterm>
+  </para>
+
+  <para>
+    <link linkend="i"><citetitle>i statement</citetitle></link> pfields containing the symbols <emphasis>np</emphasis><emphasis>x</emphasis> or <emphasis>pp</emphasis><emphasis>x</emphasis> (where <emphasis>x</emphasis> is some integer) will be replaced by the appropriate pfield value found on the next i statement (or previous i statement) that has the same p1. For example, the symbol <emphasis>np</emphasis>7 will be replaced by the value found in p7 of the next note that is to be played by this instrument. <emphasis>np</emphasis> and <emphasis>pp </emphasis>symbols are recursive and can reference other <emphasis>np</emphasis> and <emphasis>pp</emphasis> symbols which can reference others, etc. References must eventually terminate in a real number or a <emphasis>ramp symbol</emphasis>. Closed loop references should be avoided. <emphasis>np</emphasis> and <emphasis>pp</emphasis> symbols are illegal in p1, p2 and p3 (although they may reference these). <emphasis>np</emphasis> and <emphasis>pp</emphasis> symbols may be Carried. <emphasis>np</emphasis> and <emphasis>pp</emphasis> references cannot cross a Section boundary. Any forward or backward reference to a non-existent note-statement will be given the value zero.
+  </para>
+
+  <para>
+   E.g.: the statements
+   <informalexample>
+     <programlisting>
+<emphasis role="stamnt">i</emphasis>1   0    1    10   np4  pp5 
+<emphasis role="stamnt">i</emphasis>1   1    1    20
+<emphasis role="stamnt">i</emphasis>1   1    1    30</programlisting>
+   </informalexample>
+
+   will result in
+
+   <informalexample>
+     <programlisting>
+<emphasis role="stamnt">i</emphasis>1   0    1    10   20   0 
+<emphasis role="stamnt">i</emphasis>1   1    1    20   30   20 
+<emphasis role="stamnt">i</emphasis>1   2    1    30   0    30</programlisting>
+   </informalexample>
+  </para>
+
+  <para>
+    <emphasis>np</emphasis> and <emphasis>pp</emphasis> symbols can provide an instrument with contextual knowledge of the score, enabling it to glissando or crescendo, for instance, toward the pitch or dynamic of some future event (which may or may not be immediately adjacent). Note that while the <link linkend="ScoreCarry"><citetitle>Carry</citetitle></link> feature will propagate <emphasis>np</emphasis> and <emphasis>pp</emphasis> through unsorted statements, the operation that interprets these symbols is acting on a time-warped and fully sorted version of the score.
+  </para>
+</section>

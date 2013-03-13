@@ -1,0 +1,82 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac      <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o lorismorph.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+<emphasis role="comment">; clarinet.sdif and meow.sdif can be found in /manual/examples</emphasis>
+
+<emphasis role="comment">; Morph the partials in meow.sdif into the partials in clarinet.sdif over the duration of</emphasis>
+<emphasis role="comment">; the sustained portion of the two tones (from .2 to 2.0 seconds in the meow, and from</emphasis>
+<emphasis role="comment">; .5 to 2.1 seconds in the clarinet). The onset and decay portions in the morphed sound are</emphasis>
+<emphasis role="comment">; specified by parameters p4 and p5, respectively. The morphing time is the time between the</emphasis>
+<emphasis role="comment">; onset and the decay. The meow partials are shfited in pitch to match the pitch of the clarinet</emphasis>
+<emphasis role="comment">; tone (D above middle C). </emphasis>
+
+<emphasis role="oblock">instr</emphasis> 1
+
+ionset	<emphasis role="op">=</emphasis> p4
+idecay	<emphasis role="op">=</emphasis> p5
+itmorph <emphasis role="op">=</emphasis> p3 <emphasis role="op">-</emphasis> (ionset <emphasis role="op">+</emphasis> idecay)
+ipshift	<emphasis role="op">=</emphasis> <emphasis role="opc">cpspch</emphasis>(8.02)<emphasis role="op">/</emphasis><emphasis role="opc">cpspch</emphasis>(8.08)
+    
+ktme	<emphasis role="opc">linseg</emphasis>	0, ionset, .2, itmorph, 2.0, idecay, 2.1    <emphasis role="comment">; meow time function, morph from .2 to 2.0 seconds</emphasis>
+ktcl	<emphasis role="opc">linseg</emphasis>	0, ionset, .5, itmorph, 2.1, idecay, 2.3    <emphasis role="comment">; clarinet time function, morph from .5 to 2.1 seconds</emphasis>
+kmurph	<emphasis role="opc">linseg</emphasis>	0, ionset, 0, itmorph, 1, idecay, 1
+	lorisread  ktme, "meow.sdif", 1, ipshift, 2, 1, .001
+	lorisread  ktcl, "clarinet.sdif", 2, 1, 1, 1, .001
+	lorismorph 1, 2, 3, kmurph, kmurph, kmurph
+asig	lorisplay  3, 1, 1, 1
+	<emphasis role="opc">outs</emphasis>	   asig, asig
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="comment">; Morph the partials in clarinet.sdif into the partials in meow.sdif. The start and end times</emphasis>
+<emphasis role="comment">; for the morph are specified by parameters p4 and p5, respectively. The morph occurs over the</emphasis>
+<emphasis role="comment">; second of four pitches in each of the sounds, from .75 to 1.2 seconds in the flutter-tongued</emphasis>
+<emphasis role="comment">; clarinet tone, and from 1.7 to 2.2 seconds in the cat's meow. Different morphing functions are</emphasis>
+<emphasis role="comment">; used for the frequency and amplitude envelopes, so that the partial amplitudes make a faster  </emphasis>
+<emphasis role="comment">; transition from clarinet to cat than the frequencies. (The bandwidth envelopes use the same          </emphasis>
+<emphasis role="comment">; morphing function as the amplitudes.) </emphasis>
+
+<emphasis role="oblock">instr</emphasis> 2
+
+ionset	 <emphasis role="op">=</emphasis> p4
+imorph	 <emphasis role="op">=</emphasis> p5 <emphasis role="op">-</emphasis> p4
+irelease <emphasis role="op">=</emphasis> p3 <emphasis role="op">-</emphasis> p5
+    
+ktclar	<emphasis role="opc">linseg</emphasis>	0, ionset, .75, imorph, 1.2, irelease, 2.4
+ktmeow	<emphasis role="opc">linseg</emphasis>	0, ionset, 1.7, imorph, 2.2, irelease, 3.4
+    
+kmfreq	<emphasis role="opc">linseg</emphasis>	0, ionset, 0, .75<emphasis role="op">*</emphasis>imorph, .25, .25<emphasis role="op">*</emphasis>imorph, 1, irelease, 1
+kmamp	<emphasis role="opc">linseg</emphasis>	0, ionset, 0, .75<emphasis role="op">*</emphasis>imorph, .9, .25<emphasis role="op">*</emphasis>imorph, 1, irelease, 1
+    
+	lorisread  ktclar, "clarinet.sdif", 1, 1, 1, 1, .001
+	lorisread  ktmeow, "meow.sdif", 2, 1, 1, 1, .001
+	lorismorph 1, 2, 3, kmfreq, kmamp, kmamp
+asig	lorisplay  3, 1, 1, 1
+	<emphasis role="opc">outs</emphasis>	   asig, asig
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="comment">;     strt   dur   onset   decay</emphasis>
+<emphasis role="stamnt">i</emphasis> 1    0      3     .25     .15
+<emphasis role="stamnt">i</emphasis> 1    +      1     .10     .10
+<emphasis role="stamnt">i</emphasis> 1    +      6    1.      1.
+
+<emphasis role="comment">;    strt   dur  morph_start   morph_end</emphasis>
+ <emphasis role="stamnt">i</emphasis> 2    9    4     .75           2.75
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

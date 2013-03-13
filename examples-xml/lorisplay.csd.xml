@@ -1,0 +1,69 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac      <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o lorisplay.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+<emphasis role="comment">; clarinet.sdif can be found in /manual/examples</emphasis>
+
+<emphasis role="comment">; Play the partials in clarinet.sdif from 0 to 3 sec with 1 ms fadetime</emphasis>
+<emphasis role="comment">; and no frequency , amplitude, or bandwidth modification.</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 1
+
+ktime	<emphasis role="opc">linseg</emphasis>	  0, p3, 3.0			<emphasis role="comment">; linear time function from 0 to 3 seconds</emphasis>
+	lorisread ktime, "clarinet.sdif", 1, 1, 1, 1, .001
+kfrq	<emphasis role="op">=</emphasis> p4	<emphasis role="comment">; pitch shifting</emphasis>
+asig	lorisplay 1, kfrq, 1, 1
+	<emphasis role="opc">outs</emphasis> 	  asig, asig
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="comment">; Play the partials in clarinet.sdif from 0 to 3 sec with 1 ms fadetime</emphasis>
+<emphasis role="comment">; adding tuning and vibrato, increasing the "breathiness" (noisiness) and overall</emphasis>
+<emphasis role="comment">; amplitude, and adding a highpass filter.</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 2
+
+ktime	<emphasis role="opc">linseg</emphasis>	0, p3, 3.0			<emphasis role="comment">; linear time function from 0 to 3 seconds</emphasis>
+						<emphasis role="comment">; compute frequency scale for tuning</emphasis>
+    
+ifscale	<emphasis role="op">=</emphasis>	<emphasis role="opc">cpspch</emphasis>(p4)<emphasis role="op">/</emphasis><emphasis role="opc">cpspch</emphasis>(8.08)		<emphasis role="comment">; (original pitch was G#4)</emphasis>
+						<emphasis role="comment">; make a vibrato envelope</emphasis>
+kvenv	<emphasis role="opc">linseg</emphasis>	0, p3<emphasis role="op">/</emphasis>6, 0, p3<emphasis role="op">/</emphasis>6, .02, p3<emphasis role="op">/</emphasis>3, .02, p3<emphasis role="op">/</emphasis>6, 0, p3<emphasis role="op">/</emphasis>6, 0
+kvib	<emphasis role="opc">oscil</emphasis>	kvenv, 4, 1			<emphasis role="comment">; table 1, sinusoid</emphasis>
+kbwenv	<emphasis role="opc">linseg</emphasis>	1, p3<emphasis role="op">/</emphasis>6, 1, p3<emphasis role="op">/</emphasis>6, 100, 2<emphasis role="op">*</emphasis>p3<emphasis role="op">/</emphasis>3, 100 <emphasis role="comment">;lots of noise</emphasis>
+	lorisread ktime, "clarinet.sdif", 1, 1, 1, 1, .001
+a1	lorisplay 1, ifscale<emphasis role="op">+</emphasis>kvib, 2, kbwenv
+asig	<emphasis role="opc">atone</emphasis>	a1, 1000			<emphasis role="comment">; highpass filter, cutoff 1000 Hz</emphasis>
+	<emphasis role="opc">outs</emphasis>	asig, asig
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="comment">; a sinusoid </emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 4096 10 1
+
+<emphasis role="stamnt">i</emphasis> 1  0   3  1.2	<emphasis role="comment">; shifted up</emphasis>
+<emphasis role="stamnt">i</emphasis> 1  +   1  1.5
+<emphasis role="stamnt">i</emphasis> 1  +   6  .5	<emphasis role="comment">; shifted down</emphasis>
+<emphasis role="stamnt">s</emphasis>
+
+<emphasis role="comment">;     strt   dur   ptch</emphasis>
+<emphasis role="stamnt">i</emphasis> 2      1    3    8.08
+<emphasis role="stamnt">i</emphasis> 2      3.5  1    8.04
+<emphasis role="stamnt">i</emphasis> 2      4    6    8.00
+<emphasis role="stamnt">i</emphasis> 2      4    6    8.07
+<emphasis role="stamnt">e</emphasis>
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

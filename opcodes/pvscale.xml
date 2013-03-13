@@ -1,0 +1,127 @@
+
+<refentry id="pvscale">
+<indexterm id="IndexPvscale"><primary>pvscale</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvscale</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvscale</refname>
+    <refpurpose>
+      Scale the frequency components of a pv stream.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Scale the frequency components of a pv stream, resulting
+      in pitch shift. Output amplitudes can be optionally modified in order
+      to attempt formant preservation.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>fsig <command>pvscale</command> fsigin, kscal[, kkeepform, kgain, kcoefs]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>fsig</emphasis> -- output pv stream
+    </para>
+
+    <para>
+      <emphasis>fsigin</emphasis> -- input pv stream
+    </para>
+
+    <para>
+      <emphasis>kscal</emphasis> -- scaling ratio.
+    </para>
+
+    <para>
+      <emphasis>kkeepform</emphasis> -- attempt to keep input signal
+      formants; 0: do not keep formants;
+      1: keep formants using a liftered cepstrum method; 2: keep formants by 
+      using a true envelope method
+      (defaults to 0). 
+    </para>
+
+    <para>
+      <emphasis>kgain</emphasis> -- amplitude scaling (defaults to 1).
+    </para>
+
+<para>
+      <emphasis>kcoefs</emphasis> -- number of cepstrum coefs used in formant preservation (defaults to 80).
+    </para>
+
+
+    <para>
+      The quality of the pitch shift will be improved with the use of a
+      Hanning window in the pvoc analysis. Formant preservation method 1 is less intensive than method 2, which might not be suited
+      to realtime use.
+    </para>
+    <warning>
+      <para>
+        It is unsafe to use the same f-variable for both input and output of pvs opcodes. Using the same one might lead to undefined behavior on some opcodes. Use a different one on the left and right sides of the opcode.
+      </para>
+   </warning>
+
+  </refsect1>
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      <example>
+        <title>Example</title>
+        <programlisting>
+asig  <emphasis role="opc">in</emphasis>                                 <emphasis role="comment">; get the signal in</emphasis>
+
+fsig  <emphasis role="opc">pvsanal</emphasis>   asig, 1024, 256, 1024, 1 <emphasis role="comment">; analyse it</emphasis>
+ftps  <emphasis role="opc">pvscale</emphasis>   fsig, 1.5, 1, 1          <emphasis role="comment">; transpose it keeping formants</emphasis>
+atps  <emphasis role="opc">pvsynth</emphasis>   ftps                     <emphasis role="comment">; synthesise it</emphasis>
+
+adp   <emphasis role="opc">delayr</emphasis>    0.1                      <emphasis role="comment">; delay original signal</emphasis>
+adel  <emphasis role="opc">deltapn</emphasis>   1024                     <emphasis role="comment">; by 1024 samples</emphasis>
+      <emphasis role="opc">delayw</emphasis>    asig
+      <emphasis role="opc">out</emphasis>       atps <emphasis role="op">+</emphasis> adel              <emphasis role="comment">; add tranposed and original</emphasis></programlisting>
+      </example>
+    </para>
+    <para>
+    The example above shows a vocal harmoniser. The delay is necessary to
+    time-align the signals, as the analysis-synthesis process will imply a
+    delay of 1024 samples between the analysis input and the synthesis output.
+    </para>
+    <para>
+      Here is an example of the use of the <emphasis>pvscale</emphasis> opcode. It uses the file <ulink url="examples/pvscale.csd"><citetitle>pvscale.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the <emphasis>pvscale</emphasis> opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/pvscale.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link>,
+      <link linkend="pvsynth"><citetitle>pvsynth</citetitle></link>,
+      <link linkend="pvsadsyn"><citetitle>pvsadsyn</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>November 2004 </member>
+      </simplelist>
+    </para>
+
+    <para>New plugin in version 5</para>
+    <para>November 2004.</para>
+  </refsect1>
+</refentry>

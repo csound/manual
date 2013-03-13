@@ -1,0 +1,94 @@
+<refentry id="JackoMidiOut">
+  <indexterm id="IndexJackoMidiOut"><primary>JackoMidiOut</primary></indexterm>
+  <refentryinfo><title>Jacko Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>JackoMidiOut</refentrytitle>
+  </refmeta>
+  
+  <refnamediv>
+    <refname>JackoMidiOut</refname>
+    <refpurpose>
+      Sends a MIDI channel message to a Jack port.     
+    </refpurpose>
+  </refnamediv>  
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Sends a MIDI channel message to a Jack MIDI output port
+      inside this instance of Csound, and in turn to its 
+      connected external Jack MIDI input port.
+    </para>    
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>JackoMidiOut </command> ScsoundPortName, kstatus, kchannel, kdata1[, kdata2]</synopsis>
+  </refsect1>
+  
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ScsoundPortName</emphasis> -- The short name ("portname") 
+      of the internal Jack MIDI output port.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para> 
+      <emphasis>kstatus</emphasis> -- MIDI status byte; must indicate a MIDI channel
+      message.
+    </para>
+
+    <para> 
+      <emphasis>kchannel</emphasis> -- MIDI channel (from 0 through 15).
+    </para>
+    
+    <para> 
+      <emphasis>kdata1</emphasis> -- First data byte of a MIDI channel message.
+    </para>
+    
+    <para> 
+      <emphasis>kdata2</emphasis> -- Optional second data byte of a MIDI channel message.
+    </para>
+    
+    <para> 
+      This opcode can be called any number of times 
+      in the same kperiod. Messages from multiple instances 
+      of the opcode sending to the same port are collected 
+      before sending. 
+    </para>
+    
+    <para> 
+      Running status, system exclusive messages, and 
+      real-time messages are not supported.
+    </para>
+    
+    <para> 
+      The granularity of timing is Csound's kperiod.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="JackoInit"><citetitle>JackoInfo</citetitle></link>, 
+      <link linkend="JackoInfo"><citetitle>JackoInfo</citetitle></link>, 
+      <link linkend="JackoFreewheel"><citetitle>JackoFreewheel</citetitle></link>, 
+      <link linkend="JackoAudioInConnect"><citetitle>JackoAudioOutConnect</citetitle></link>, 
+      <link linkend="JackoMidiInConnect"><citetitle>JackoMidiInConnect</citetitle></link>, 
+      <link linkend="JackoMidiOutConnect"><citetitle>JackoMidiOutConnect</citetitle></link>, 
+      <link linkend="JackoOn"><citetitle>JackoOn</citetitle></link>, 
+      <link linkend="JackoAudioIn"><citetitle>JackoAudioIn</citetitle></link>, 
+      <link linkend="JackoNoteOut"><citetitle>JackoNoteOut</citetitle></link>, 
+      <link linkend="JackoTransport"><citetitle>JackoTransport</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>By: &namemichael; 2010</para>
+  </refsect1>
+
+</refentry>

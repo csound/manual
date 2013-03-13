@@ -1,0 +1,127 @@
+
+<refentry id="GEN07">
+      <indexterm id="IndexGEN07"><primary>GEN07</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN07</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN07</refname>
+    <refpurpose>
+      Constructs functions from segments of straight lines.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Constructs functions from segments of straight lines.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>f</command>  #    time    size   7   a   n1   b   n2   c  ...</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>size </emphasis> -- number of points in the table. Must be a power of 2 or power-of-2 plus 1 (see <link linkend="f"><citetitle>f statement</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis>a, b, c,</emphasis> etc. -- ordinate values, in odd-numbered pfields p5, p7, p9, . . .
+    </para>
+
+    <para>
+      <emphasis>n1, n2</emphasis>, etc. -- length of segment (no. of storage locations), in even-numbered pfields. Cannot be negative, but a zero is meaningful for specifying discontinuous waveforms (e.g. in the example below). The sum <emphasis>n1</emphasis> + <emphasis>n2</emphasis> + .... will normally equal <emphasis>size</emphasis> for fully specified functions. If the sum is smaller, the function locations not included will be set to zero; if the sum is greater, only the first <emphasis>size</emphasis> locations will be stored.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              If p4 is positive, functions are post-normalized (rescaled to a maximum absolute value of 1 after generation). A negative p4 will cause rescaling to be skipped.
+            </para>
+          </listitem>
+
+          <listitem>
+            <para>
+              Discrete-point linear interpolation implies an increase or decrease along a segment by equal differences between adjacent locations; exponential interpolation implies that the progression is by equal ratio. In both forms the interpolation from <emphasis>a</emphasis> to <emphasis>b</emphasis> is such as to assume that the value <emphasis>b</emphasis> will be attained in the n + 1th location. For discontinuous functions, and for the segment encompassing the end location, this value will not actually be reached, although it may eventually appear as a result of final scaling.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+	    Here is an example of the GEN07 routine. It uses the files <ulink url="examples/gen07.csd"><citetitle>gen07.csd</citetitle></ulink>.
+      <example>
+        <title>An example of the GEN07 routine.</title>
+        <xi:include href="examples-xml/gen07.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+        <textobject>
+          <phrase>These are the diagrams of the waveforms of the GEN07 routines, as used in the example:</phrase>
+        </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen07_1.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 2 0 1024 7 0 512 1 0 -1 512 0 - sawtooth up and down, starting and ending at 0</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 2 0 1024 7 0 512 1 0 -1 512 0 - sawtooth up and down, starting and ending at 0</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen07_2.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 3 0 1024 7 1 512 1 0 -1 512 -1 - a square from positive to negative</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 3 0 1024 7 1 512 1 0 -1 512 -1 - a square from positive to negative</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen07_3.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 4 0 1024 7 1 1024 -1 - sawtooth down, a straight line from positive to negative</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 4 0 1024 7 1 1024 -1 - sawtooth down, a straight line from positive to negative</para>
+        </caption>
+      </mediaobject>
+
+    </para>
+  </refsect1>
+
+  <refsect1>
+     <title>See Also</title>
+     <para>
+       <link linkend="GEN05"><citetitle>GEN05</citetitle></link>,
+       <link linkend="GEN06"><citetitle>GEN06</citetitle></link>, and
+       <link linkend="GEN08"><citetitle>GEN08</citetitle></link>
+     </para>
+  </refsect1>
+</refentry>

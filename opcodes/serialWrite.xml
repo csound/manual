@@ -1,0 +1,99 @@
+<refentry id="serialWrite">
+<indexterm
+    id="IndexSerialWrite"><primary>serialrite</primary></indexterm>
+
+  <refentryinfo><title>Serial I/O</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>serialWrite</refentrytitle>
+  </refmeta>
+
+   <refnamediv>
+    <refname>serialWrite</refname>
+    <refpurpose>
+      Write data to a serial port.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Write data to a serial port for arduino.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+      <synopsis> <command>serialWrite</command> iPort, iByte</synopsis>
+      <synopsis> <command>serialWrite</command> iPort, kByte</synopsis>
+      <synopsis> <command>serialWrite</command> iPort, SBytes</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>iPort</emphasis> -- port number optained from a
+      <emphasis>serialBegin</emphasis> opcode.
+    </para>
+    <para>
+      <emphasis>iByte</emphasis> -- a byte of data to write.
+    </para>
+ </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the serialWrite opcode. It uses the file <ulink url="examples/serialWrite.csd"><citetitle>serialWrite.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the serialWrite opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/serialWrite.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+        This is the matching Arduino code :
+      <screen>
+void setup() {
+  // enable serial communication
+  Serial.begin(9600);
+
+  // declare pin 9 to be an output:
+  pinMode(9, OUTPUT);
+}
+
+void loop() {
+  // only do something if we received something (this should be at csound's k-rate)
+  if (Serial.available()) {
+    // set the brightness of LED (connected to pin 9) to our input value
+    int brightness = Serial.read();
+    analogWrite(9, brightness);
+
+    // while we are here, get our knob value and send it to csound
+    int sensorValue = analogRead(A0);
+    Serial.write(sensorValue/4); // scale to 1-byte range (0-255)
+  }     
+}
+.....</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="serialBegin"><citetitle></citetitle>serialBegin</link>,
+      <link linkend="serialEnd"><citetitle></citetitle>serialEnd</link>,
+      <link linkend="serialWrite_i"><citetitle></citetitle>serialWrite_i</link>,
+      <link linkend="serialRead"><citetitle></citetitle>serialRead</link>,
+      <link linkend="serialPrint"><citetitle></citetitle>serialPrint</link>,
+      <link linkend="serialFlush"><citetitle></citetitle>serialFlush</link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namematt;</member>
+        <member>2011</member>
+      </simplelist>
+    </para>
+    <para>New in version 5.14</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,198 @@
+
+<refentry id="printks">
+<indexterm id="IndexPrintks"><primary>printks</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Printing and Display</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>printks</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>printks</refname>
+    <refpurpose>
+      Prints at k-rate using a printf() style syntax.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Prints at k-rate using a printf() style syntax.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>printks</command> &quot;string&quot;, itime [, kval1] [, kval2] [...]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>&quot;string&quot;</emphasis> -- the text string to be printed. Can be up to 8192 characters and must be in double quotes.
+    </para>
+
+    <para>
+      <emphasis>itime</emphasis> -- time in seconds between printings.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kval1, kval2, ...</emphasis> (optional) -- The k-rate values to be printed. These are specified in <emphasis><quote>string</quote></emphasis> with the standard C value specifier (%f, %d, etc.) in the order given.
+    </para>
+
+    <para>
+      In Csound version 4.23, you can use as many <emphasis>kval</emphasis> variables as you like. In versions prior to 4.23, you must specify 4 and only 4 kvals (using 0 for unused kvals).
+    </para>
+
+    <para>
+      <emphasis>printks</emphasis> prints numbers and text which can be i-time or k-rate values. <emphasis>printks</emphasis> is highly flexible, and if used together with cursor positioning codes, could be used to write specific values to locations in the screen as the Csound processing proceeds.
+    </para>
+
+    <para>
+      A special mode of operation allows this <emphasis>printks</emphasis> to convert <emphasis>kval1</emphasis> input parameter into a 0 to 255 value and to use it as the first character to be printed. This enables a Csound program to send arbitrary characters to the console. To achieve this, make the first character of the string a &num; and then, if desired continue with normal text and format specifiers.
+    </para>
+
+    <para>
+      This opcode can be run on every k-cycle it is run in the instrument. To every accomplish this, set <emphasis>itime</emphasis> to 0.
+    </para>
+
+    <para>
+      When <emphasis>itime</emphasis> is not 0, the opcode print on the first k-cycle it is called, and subsequently when every <emphasis>itime</emphasis> period has elapsed. The time cycles start from the time the opcode is initialized - typically the initialization of the instrument.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Print Output Formatting</title>
+    <para>
+      All standard C language printf() control characters may be used. For example, if <emphasis>kval1</emphasis> = 153.26789 then some common formatting options are:
+
+        <orderedlist>
+          <listitem><para>%f prints with full precision: 153.26789</para></listitem>
+          <listitem><para>%5.2f prints: 153.26</para></listitem>
+          <listitem><para>%d prints integers-only: 153</para></listitem>
+          <listitem><para>%c treats <emphasis>kval1</emphasis> as an ascii character code. </para></listitem>
+        </orderedlist>
+    </para>
+
+    <para>
+      In addition to all the printf() codes, printks supports these useful character codes:
+
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <thead>
+            <row>
+              <entry>printks Code</entry>
+              <entry>Character Code</entry>
+            </row>
+          </thead>
+
+         <tbody>
+            <row>
+              <entry>\\r, \\R, %r, or %R</entry>
+              <entry>return character (\r)</entry>
+            </row>
+
+            <row>
+              <entry>\\n, \\N, %n, %N</entry>
+              <entry>newline character (\n)</entry>
+            </row>
+
+            <row>
+              <entry>\\t, \\T, %t, or %T</entry>
+              <entry>tab character (\t)</entry>
+            </row>
+
+            <row>
+              <entry>%!</entry>
+              <entry>semicolon character (;) This was needed because a <quote>;</quote> is interpreted as an comment.</entry>
+            </row>
+
+            <row>
+              <entry>^</entry>
+              <entry>escape character (0x1B)</entry>
+            </row>
+
+            <row>
+              <entry>^ ^</entry>
+              <entry>caret character (^)</entry>
+            </row>
+
+            <row>
+              <entry>&tilde;</entry>
+              <entry>ESC[ (escape+[ is the escape sequence for ANSI consoles)</entry>
+            </row>
+
+            <row>
+              <entry>&tilde;&tilde;</entry>
+              <entry>tilde (&tilde;)</entry>
+            </row>
+         </tbody>
+        </tgroup>
+      </informaltable>
+    </para>
+
+    <para>
+      For more information about printf() formatting, consult any C language documentation.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        Prior to version 4.23, only the %f format code was supported.
+      </para>
+    </note>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the printks opcode. It uses the file <ulink url="examples/printks.csd"><citetitle>printks.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the printks opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/printks.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Its output should include lines like this:
+
+      <screen>
+kup = 0.000000, kdown = 30.000000
+kup = 20.010843, kdown = 25.962524
+kup = 40.029991, kdown = 21.925049
+kup = 60.049141, kdown = 17.887573
+kup = 79.933266, kdown = 13.872493
+      </screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="printk2"><citetitle>printk2</citetitle></link> and 
+      <link linkend="printk"><citetitle>printk</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Robin Whittle</member>
+        <member>Australia</member>
+        <member>May 1997</member>
+      </simplelist>
+    </para>
+    <para>Example written by &namekevin;.</para>
+
+    <para>Thanks goes to &nameluis; for pointing out a mistake with the <emphasis>itime</emphasis> parameter.</para>
+    <para>Thanks to &namematt;, updated the documentation for version 4.23.</para>
+  </refsect1>
+</refentry>

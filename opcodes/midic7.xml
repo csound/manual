@@ -1,0 +1,115 @@
+
+<refentry id="midic7">
+<indexterm id="IndexMidic7"><primary>midic7</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Input</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>midic7</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>midic7</refname>
+
+    <refpurpose>
+      Allows a floating-point 7-bit MIDI signal scaled with a minimum and a maximum range.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Allows a floating-point 7-bit MIDI signal scaled with a minimum and a maximum range.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>idest <command>midic7</command> ictlno, imin, imax [, ifn]</synopsis>
+
+    <synopsis>kdest <command>midic7</command> ictlno, kmin, kmax [, ifn]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>idest</emphasis> -- output signal
+    </para>
+
+    <para>
+      <emphasis>ictlno</emphasis> -- MIDI controller number (0-127)
+    </para>
+
+    <para>
+      <emphasis>imin</emphasis> -- user-defined minimum floating-point value of output
+    </para>
+
+    <para>
+      <emphasis>imax</emphasis> -- user-defined maximum floating-point value of output
+    </para>
+
+    <para>
+      <emphasis>ifn</emphasis> (optional) -- table to be read when indexing is required. Table must be normalized. Output is scaled according to the <emphasis>imin</emphasis> and <emphasis>imax</emphasis> values.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kdest</emphasis> -- output signal
+    </para>
+
+    <para>
+      <emphasis>kmin</emphasis> -- user-defined minimum floating-point value of output
+    </para>
+
+    <para>
+      <emphasis>kmax</emphasis> -- user-defined maximum floating-point value of output
+    </para>
+
+    <para>
+      <emphasis>midic7</emphasis> (i- and k-rate 7 bit MIDI control) allows a floating-point 7-bit MIDI signal scaled with a minimum and a maximum range. It also allows optional non-interpolated table indexing. In <emphasis>midic7</emphasis> minimum and maximum values can be varied at k-rate. 
+    </para>
+    <note>
+      <para>Please note that the <emphasis>midic</emphasis> family of opcodes are designed for MIDI triggered events, and don't require a channel number since they will respond to the same channel as the one that triggered the instrument (see <link linkend="massign"><citetitle>massign</citetitle></link>). However they will crash if called from a score driven event.</para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the midic7 opcode. It uses the file <ulink url="examples/midic7.csd"><citetitle>midic7.csd</citetitle></ulink>
+      <example>
+        <title>Example of the midic7 opcode.</title>
+        <xi:include href="examples-xml/midic7.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="ctrl7"><citetitle>ctrl7</citetitle></link>,
+      <link linkend="ctrl14"><citetitle>ctrl14</citetitle></link>,
+      <link linkend="ctrl21"><citetitle>ctrl21</citetitle></link>,
+      <link linkend="initc7"><citetitle>initc7</citetitle></link>,
+      <link linkend="initc14"><citetitle>initc14</citetitle></link>,
+      <link linkend="initc21"><citetitle>initc21</citetitle></link>,
+      <link linkend="midic14"><citetitle>midic14</citetitle></link>,
+      <link linkend="midic21"><citetitle>midic21</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namegabriel;</member>
+        <member>Italy</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.47</para>
+    <para>Thanks goes to &namerasmus; for pointing out the correct controller number range.</para>
+  </refsect1>
+</refentry>

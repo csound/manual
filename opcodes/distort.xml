@@ -1,0 +1,125 @@
+
+<refentry id="distort">
+<indexterm id="IndexDistort"><primary>distort</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Special Effects</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>distort</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>distort</refname>
+    <refpurpose>
+      Distort an audio signal via waveshaping and optional clipping.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Distort an audio signal via waveshaping and optional clipping.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ar <command>distort</command> asig, kdist, ifn[, ihp, istor]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifn</emphasis> -- table number of a waveshaping
+    function with extended guard point.  The function can be of any
+    shape, but it should pass through 0 with positive slope at the
+    table mid-point.  The table size need not be large, since it is
+    read with interpolation. 
+     </para>
+     <para>
+      <emphasis>ihp</emphasis> -- (optional) half-power point (in cps)
+    of an internal low-pass filter. The default value is 10. 
+     </para>
+     <para>
+      <emphasis>istor</emphasis> -- (optional) initial disposition of
+    internal data space (see reson).  The default value is 0. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asig</emphasis> -- Audio signal to be processed
+    </para>
+    <para>
+      <emphasis>kdist</emphasis> -- Amount of distortion (usually between 0 and
+      1)
+    </para>
+    <para>
+      This unit distorts an incoming signal using a waveshaping function
+      <emphasis>ifn</emphasis> and a distortion index
+      <emphasis>kdist</emphasis>. The input signal is first compressed using a
+      running rms, then passed through a waveshaping function which may modify
+      its shape and spectrum. Finally it is rescaled to approximately its
+      original power.
+    </para>
+    <para>
+       The amount of distortion depends on the nature of the shaping function
+       and on the value of <emphasis>kdist</emphasis>, which generally ranges
+       from 0 to 1. For low values of <emphasis>kdist</emphasis>, we should like
+       the shaping function to pass the signal almost unchanged.  This will be
+       the case if, at the mid-point of the table, the shaping function is
+       near-linear and is passing through 0 with positive slope.  A line function
+       from  -1 to +1 will satisfy this requirement;  so too will a sigmoid
+       (sinusoid from 270 to 90 degrees).  As <emphasis>kdist</emphasis> is
+       increased, the compressed signal is expanded to encounter more and more
+       of the shaping function, and if this becomes non-linear the signal is
+       increasingly <emphasis>bent</emphasis> on read-through to cause
+       distortion.
+     </para>
+    <para>
+    When <emphasis>kdist</emphasis> becomes large enough, the read-through process will
+    eventually hit the outer limits of the table.  The table is not
+    read with wrap-around, but will <quote>stick</quote> at the end-points as the
+    incoming signal exceeds them;  this introduces clipping, an
+    additional form of signal distortion.  The point at which clipping
+    begins will depend on the complexity (rms-to-peak value) of the
+    input signal.  For a pure sinusoid, clipping will begin only as
+    <emphasis>kdist</emphasis> exceeds 0.7;  for a more complex input, clipping might begin
+    at a <emphasis>kdist</emphasis> of 0.5 or much less.  <emphasis>kdist</emphasis> can exceed
+    the clip point by any amount, and may be greater than 1. 
+    </para>
+    <para>
+    The shaping function can be made arbitrarily complex for extra effect.
+    It should generally be continuous, though this is not a
+    requirement.  It should also be well-behaved near the mid-point,
+    and roughly balanced positive-negative overall, else some
+    excessive DC offset may result.  The user might experiment with
+    more aggressive functions to suit the purpose.  A generally
+    positive slope allows the distorted signal to be mixed with the
+    source without phase cancellation. 
+    </para>
+    <para>
+    <emphasis>distort</emphasis> is useful as an effects process, and is usually combined with
+    reverb and chorusing on effects busses.  However, it can
+    alternatively be used to good effect within a single instrument. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the distort opcode. It uses the file <ulink url="examples/distort.csd"><citetitle>distort.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the distort opcode.</title>      
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/distort.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Written by &namebarry; for Extended Csound and released in Csound5.</para>
+  </refsect1>
+</refentry>

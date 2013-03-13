@@ -1,0 +1,95 @@
+
+<refentry id="resony">
+<indexterm id="IndexResony"><primary>resony</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>resony</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>resony</refname>
+    <refpurpose>
+      A bank of second-order bandpass filters, connected in parallel.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      A bank of second-order bandpass filters, connected in parallel.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>resony</command> asig, kbf, kbw, inum, ksep [, isepmode] [, iscl] [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>inum</emphasis> -- number of filters
+    </para>
+
+    <para>
+      <emphasis>isepmode</emphasis> (optional, default=0) -- if <emphasis>isepmode</emphasis> = 0, the separation of center frequencies of each filter is generated logarithmically (using octave as unit of measure). If <emphasis>isepmode</emphasis> not equal to 0, the separation of center frequencies of each filter is generated linearly (using Hertz). Default value is 0.
+    </para>
+
+    <para>
+      <emphasis>iscl</emphasis> (optional, default=0) -- coded scaling factor for resonators. A value of 1 signifies a peak response factor of 1, i.e. all frequencies other than <emphasis>kcf</emphasis> are attenuated in accordance with the (normalized) response curve. A value of 2 raises the response factor so that its overall RMS value equals 1. (This intended equalization of input and output power assumes all frequencies are physically present; hence it is most applicable to white noise.) A zero value signifies no scaling of the signal, leaving that to some later adjustment (e.g. <link linkend="balance"><citetitle>balance</citetitle></link>). The default value is 0.
+    </para>
+
+    <para>
+      <emphasis>iskip</emphasis> (optional, default=0) -- initial disposition of internal data space. Since filtering incorporates a feedback loop of previous output, the initial status of the storage space used is significant. A zero value will clear the space; a non-zero value will allow previous information to remain. The default value is 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asig</emphasis> -- audio input signal
+    </para>
+
+    <para>
+      <emphasis>kbf</emphasis> -- base frequency, i.e. center frequency of lowest filter in Hz
+    </para>
+
+    <para>
+      <emphasis>kbw</emphasis> -- bandwidth in Hz
+    </para>
+
+    <para>
+      <emphasis>ksep</emphasis> -- separation of the center frequency of filters in octaves
+    </para>
+
+    <para>
+      <emphasis>resony</emphasis> is a bank of second-order bandpass filters, with k-rate variant frequency separation, base frequency and bandwidth, connected in parallel (i.e. the resulting signal is a mix of the output of each filter). The center frequency of each filter depends of <emphasis>kbf</emphasis> and <emphasis>ksep</emphasis> variables. The maximum number of filters is set to 100.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the resony opcode. It uses the file <ulink url="examples/resony.csd"><citetitle>resony.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the resony opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/resony.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namegabriel;</member>
+        <member>Italy</member>
+        <member>1999</member>
+      </simplelist>
+    </para>
+    <para>New in Csound version 3.56</para>
+  </refsect1>
+</refentry>

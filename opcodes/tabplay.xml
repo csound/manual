@@ -1,0 +1,76 @@
+
+<refentry id="tabplay">
+<indexterm id="IndexTabPlay"><primary>tabplay</primary></indexterm>
+  <refentryinfo><title>Table Control:Read/Write Opreations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tabplay</refentrytitle>
+  </refmeta>
+
+
+   <refnamediv>
+    <refname>tabplay</refname>
+    <refpurpose>
+      Playing-back control signals.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Plays-back control-rate signals on trigger-temporization basis.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>tabplay</command>  ktrig, knumtics, kfn, kout1 [,kout2,..., koutN]</synopsis>
+  </refsect1>
+<!--
+  <refsect1>
+    <title>Initialization</title>
+  </refsect1>-->
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ktrig</emphasis> -- starts playing when non-zero.
+    </para>
+    <para>
+      <emphasis>knumtics</emphasis> -- stop recording or reset playing
+    pointer to zero when the number of tics defined by this argument
+    is reached.
+    </para>
+    <para>
+      <emphasis>kfn</emphasis> -- table where k-rate signals are recorded.
+    </para>
+    <para>
+      <emphasis>kout1,...,koutN</emphasis> -- playback output signals.
+    </para>
+    <para>
+      The <emphasis>tabplay</emphasis> and <link linkend="tabrec"><citetitle>tabrec</citetitle></link>
+      opcodes allow to record/playback control signals on
+      trigger-temporization basis.
+    </para>
+   <para>
+      <emphasis>tabplay</emphasis> plays back a group of k-rate
+      signals, previously recorded by tabrec into a table. Each time
+      ktrig argument is triggered, an internal counter is increased of
+      one unit. After knumtics trigger impluses are received by ktrig
+      argument, the internal counter is zeroed and playback is
+      restarted from the beginning, in looping style.
+   </para>
+   <para>
+     These opcodes can be used like a  sort of ``middle-term'' memory
+     that ``remembers'' generated signals. Such memory can be used to
+     supply generative music with a coherent iterative compositional structure.
+   </para>
+  </refsect1>
+  <refsect1>
+    <title>See Also</title>
+    <para><link linkend="tabrec"><citetitle>tabrec</citetitle></link></para>
+  </refsect1>
+  <refsect1>
+    <title>Credits</title>
+    <para>Written by &namegabriel;.</para>
+  </refsect1>
+</refentry>

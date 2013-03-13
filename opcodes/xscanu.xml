@@ -1,0 +1,180 @@
+
+<refentry id="xscanu">
+<indexterm id="IndexXscanu"><primary>xscanu</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Scanned Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>xscanu</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>xscanu</refname>
+    <refpurpose>
+      Compute the waveform and the wavetable for use in scanned synthesis.
+          </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Experimental version of <link linkend="scanu"><citetitle>scanu</citetitle></link>. Allows much larger matrices and is faster and smaller but removes some (unused?) flexibility.  If liked, it will replace the older opcode as it is syntax compatible but extended.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>xscanu</command> init, irate, ifnvel, ifnmass, ifnstif, ifncentr, ifndamp, kmass, \
+      kstif, kcentr, kdamp, ileft, iright, kpos, kstrngth, ain, idisp, id</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>init</emphasis> -- the initial position of the masses. If this is a negative number, then the absolute of init signifies the table to use as a hammer shape. If init &gt; 0, the length of it should be the same as the intended mass number, otherwise it can be anything.
+    </para>
+
+    <para>
+      <emphasis>irate</emphasis> -- update rate.
+    </para>
+
+    <para>
+      <emphasis>ifnvel</emphasis> -- the ftable that contains the initial velocity for each mass.  It should have the same size as the intended mass number.
+    </para>
+
+    <para>
+      <emphasis>ifnmass</emphasis> -- ftable that contains the mass of each mass. It should have the same size as the intended mass number.
+    </para>
+
+    <para>
+      <emphasis>ifnstif</emphasis> --  
+      <itemizedlist>
+        <listitem><para><emphasis>either</emphasis> an ftable that contains the spring stiffness of each connection. It should have the same size as the square of the intended mass number. The data ordering is a row after row dump of the connection matrix of the system.</para></listitem>
+        <listitem><para><emphasis>or</emphasis> a string giving the name of a file in the MATRIX format</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>ifncentr</emphasis> -- ftable that contains the centering force of each mass. It should have the same size as the intended mass number.
+    </para>
+
+    <para>
+      <emphasis>ifndamp</emphasis> -- the ftable that contains the damping factor of each mass.  It should have the same size as the intended mass number.
+    </para>
+
+    <para>
+      <emphasis>ileft</emphasis> -- If init &lt; 0, the position of the left hammer (ileft = 0 is hit at leftmost, ileft = 1 is hit at rightmost).
+    </para>
+
+    <para>
+      <emphasis>iright</emphasis> -- If init &lt; 0, the position of the right hammer (iright = 0 is hit at leftmost, iright = 1 is hit at rightmost).
+    </para>
+
+    <para>
+      <emphasis>idisp</emphasis> -- If 0, no display of the masses is provided.
+    </para>
+
+    <para>
+      <emphasis>id</emphasis> -- If positive, the ID of the opcode. This will be used to point the scanning opcode to the proper waveform maker. If this value is negative, the absolute of this value is the wavetable on which to write the waveshape. That wavetable can be used later from an other opcode to generate sound. The initial contents of this table will be destroyed.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+
+    <para>
+      <emphasis>kmass</emphasis> -- scales the masses
+    </para>
+
+    <para>
+      <emphasis>kstif</emphasis> -- scales the spring stiffness
+    </para>
+
+    <para>
+      <emphasis>kcentr</emphasis> -- scales the centering force
+    </para>
+
+    <para>
+      <emphasis>kdamp</emphasis> -- scales the damping
+    </para>
+
+    <para>
+      <emphasis>kpos</emphasis> -- position of an active hammer along the string (kpos = 0 is leftmost, kpos = 1 is rightmost). The shape of the hammer is determined by init and the power it pushes with is kstrngth.
+    </para>
+
+    <para>
+      <emphasis>kstrngth</emphasis> -- power that the active hammer uses
+    </para>
+
+    <para>
+      <emphasis>ain</emphasis> -- audio input that adds to the velocity of the masses. Amplitude should not be too great.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Matrix Format</title>
+
+    <para>
+      The new matrix format is a list of connections, one per line linking point x to point y.   There is no weight given to the link; it is assumed to be unity.  The list is proceeded by the line &lt;MATRIX&gt; and ends with a &lt;/MATRIX&gt; line
+    </para>
+
+    <para>
+      For example, a circular string of 8 would be coded as
+
+      <informalexample>
+        <programlisting>
+&lt;MATRIX&gt;
+0 1
+1 0
+1 2
+2 1
+2 3
+3 2
+3 4
+4 3
+4 5
+5 4
+5 6
+6 5
+6 7
+7 6
+0 7
+&lt;/MATRIX&gt;
+        </programlisting>
+      </informalexample>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the xscanu opcode. It uses the file <ulink url="examples/xscanu.csd"><citetitle>xscanu.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the xscanu opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/xscanu.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    <para>
+      For similar examples, see the documentation on <link linkend="scans"><citetitle>scans</citetitle></link>.
+    </para>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+        <para>
+More information on Scanned Synthesis (as well as several other matrices) is available on the <ulink url="http://www.csounds.com/scanned/"><citetitle>Scanned Synthesis page</citetitle></ulink> at cSounds.com.
+    </para>
+        <para> Also an article on these opcodes: <ulink url="http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html"><citetitle>http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html</citetitle></ulink>  , written by Steven Yi </para>
+    <para>
+      <link linkend="scanu"><citetitle>scanu</citetitle></link>,
+      <link linkend="xscans"><citetitle>xscans</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Written by &namejohn;.</para>
+    <para>New in version 4.20</para>
+  </refsect1>
+</refentry>

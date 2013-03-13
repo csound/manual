@@ -1,0 +1,83 @@
+
+<refentry id="stack">
+<indexterm id="IndexStack"><primary>stack</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Stacks</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>stack</refentrytitle>
+  </refmeta>
+  
+  <refnamediv>
+    <refname>stack</refname>
+    <refpurpose>
+      Initializes the stack.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Initializes and sets the size of the global stack.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>stack</command>  iStackSize</synopsis>
+  </refsect1>
+  
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iStackSize</emphasis>  - size of the stack in bytes.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      Csound implements a single global stack. Initializing the stack with the <emphasis>stack</emphasis> opcode is not required - it is optional, and if not done, the first use of <link linkend="push"><citetitle>push</citetitle></link> or <link linkend="push_f"><citetitle>push_f</citetitle></link> will automatically create a stack of 32768 bytes. Otherwise, <emphasis>stack</emphasis> is normally called from the orchestra header, and takes a stack size parameter in bytes (there is an upper limit of about 16 MB). Once set, the stack size is fixed and cannot be changed during performance.
+    </para>
+    <para>
+      The global stack works in LIFO order: after multiple <link linkend="push"><citetitle>push</citetitle></link> calls, <link linkend="pop"><citetitle>pop</citetitle></link> should be used in reverse order.
+    </para>
+    <para>
+      Each <link linkend="push"><citetitle>push</citetitle></link> or <link linkend="pop"><citetitle>pop</citetitle></link> operation can work on a "bundle" of multiple variables. When using <link linkend="pop"><citetitle>pop</citetitle></link>, the number, type, and order of items must match those used by the corresponding <link linkend="push"><citetitle>push</citetitle></link>. That is, after a 'push Sfoo, ibar', you must call something like 'Sbar, ifoo pop', and not e.g. two separate 'pop' statements.
+    </para>
+    <para>
+      <link linkend="push"><citetitle>push</citetitle></link> and <link linkend="pop"><citetitle>pop</citetitle></link> opcodes can take variables of any type (i-, k-, a- and strings). Variables of type 'a' and 'k' are passed at performance time only, while 'i' and 'S' are passed at init time only.
+    </para>
+    <para>
+      push/pop for a, k, i, and S types copy data by value. By contrast, <link linkend="push_f"><citetitle>push_f</citetitle></link> only pushes a "reference" to the f-signal, and then the corresponding <link linkend="pop_f"><citetitle>pop_f</citetitle></link> will copy directly from the original variable to its output signal. For this reason, changing the source f-signal of <link linkend="push_f"><citetitle>push_f</citetitle></link> before <link linkend="pop_f"><citetitle>pop_f</citetitle></link> is called is not recommended, and if the instrument instance owning the variable that was passed by push_f is deactivated before pop_f is called, undefined behavior may occur.
+    </para>
+    <para>
+      Any stack errors (trying to push when there is no more space, or pop from an empty stack, inconsistent number or type of arguments, etc.) are fatal and terminate performance.
+    </para>
+  </refsect1>
+   
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the stack opcode. It uses the file <ulink url="examples/stack.csd"><citetitle>stack.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the stack opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/stack.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See also</title>
+    <para>
+      <link linkend="pop"><citetitle>pop</citetitle></link>,
+      <link linkend="push"><citetitle>push</citetitle></link>,
+      <link linkend="pop_f"><citetitle>pop_f</citetitle></link> and 
+      <link linkend="push_f"><citetitle>push_f</citetitle></link>.
+    </para>
+   <para>Using this opcode is somewhat hackish, as you can read here: <ulink url="http://csound.1045644.n5.nabble.com/passing-a-string-to-a-UDO-td1099284.html"></ulink></para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Credits</title>
+    <para>By: &nameistvan;.</para>
+    <para>2006</para>
+  </refsect1>
+</refentry>

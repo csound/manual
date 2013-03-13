@@ -1,0 +1,86 @@
+
+<refentry id="phasorbnk">
+<indexterm id="IndexPhasorbnk"><primary>phasorbnk</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Phasors</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>phasorbnk</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>phasorbnk</refname>
+    <refpurpose>
+      Produce an arbitrary number of normalized moving phase values.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Produce an arbitrary number of normalized moving phase values, accessable by an index.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>phasorbnk</command> xcps, kndx, icnt [, iphs]</synopsis>
+
+    <synopsis>kres <command>phasorbnk</command> kcps, kndx, icnt [, iphs]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>icnt</emphasis> -- maximum number of phasors to be used.
+    </para>
+
+    <para>
+      <emphasis>iphs</emphasis> -- initial phase, expressed as a fraction of a cycle (0 to 1). If -1 initialization is skipped. If <emphasis>iphas</emphasis>&gt;1 each phasor will be initialized with a random value.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kndx</emphasis> -- index value to access individual phasors
+    </para>
+
+    <para>
+      For each independent phasor, an internal phase is successively accumulated in accordance with the <emphasis>kcps</emphasis> or <emphasis>xcps</emphasis> frequency to produce a moving phase value, normalized to lie in the range 0 &lt;= phs &lt; 1. Each individual phasor is accessed by index <emphasis>kndx</emphasis>.
+    </para>
+
+    <para>
+      This phasor bank can be used inside a k-rate loop to generate multiple independent voices, or together with the <link linkend="adsynt"><citetitle>adsynt</citetitle></link> opcode to change parameters in the tables used by <emphasis>adsynt</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the phasorbnk opcode. It uses the file <ulink url="examples/phasorbnk.csd"><citetitle>phasorbnk.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the phasorbnk opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/phasorbnk.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Generate multiple voices with independent partials. This example is better with <emphasis>adsynt</emphasis>. See also the example under <link linkend="adsynt"><citetitle>adsynt</citetitle></link>, for k-rate use of <emphasis>phasorbnk</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Peter Neub&auml;cker</member>
+        <member>Munich, Germany</member>
+        <member>August 1999</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.58</para>
+  </refsect1>
+</refentry>

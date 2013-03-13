@@ -1,0 +1,127 @@
+
+<refentry id="slider16tablef">
+<indexterm id="IndexSlider16tablef"><primary>slider16tablef</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Slider Banks</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>slider16tablef</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>slider16tablef</refname>
+
+    <refpurpose>
+      Stores a bank of 16 different MIDI control messages to a table, filtered before output.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Stores a bank of 16 different MIDI control messages to a table, filtered before output.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kflag <command>slider16tablef</command> ichan, ioutTable, ioffset, ictlnum1, imin1, imax1, \
+      init1, ifn1, icutoff1, .... , ictlnum16, imin16, imax16, init16, ifn16, icutoff16</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ichan</emphasis> -- MIDI channel (1-16)
+    </para>
+
+    <para>
+      <emphasis>ioutTable</emphasis> -- number of the table that will contain the output
+    </para>
+
+    <para>
+      <emphasis>ioffset</emphasis> -- output table offset. A zero means that the output of the first slider will affect the first table element. A 10 means that the output of the first slider will affect the 11th table element.
+    </para>
+
+    <para>
+      <emphasis>ictlnum1 ... ictlnum16</emphasis> -- MIDI control number (0-127)
+    </para>
+
+    <para>
+      <emphasis>imin1 ... imin16</emphasis> -- minimum values for each controller
+    </para>
+
+    <para>
+      <emphasis>imax1 ... imax16</emphasis> -- maximum values for each controller
+    </para>
+
+    <para>
+      <emphasis>init1 ... init16</emphasis> -- initial value for each controller
+    </para>
+
+    <para>
+      <emphasis>ifn1 ... ifn16</emphasis> -- function table for conversion for each controller
+    </para>
+
+    <para>
+      <emphasis>icutoff1 ... icutoff16</emphasis> -- low-pass filter cutoff frequency for each controller
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kflag</emphasis> -- a flag that informs if any control-change message in the bank has been received. In this case <emphasis>kflag</emphasis> is set to 1. Otherwise is set to zero.
+    </para>
+
+    <para>
+      <emphasis>slider16tablef</emphasis> is a bank of MIDI controllers, useful when using MIDI mixer such as Kawai MM-16 or others for changing whatever sound parameter in real-time. The raw MIDI control messages at the input port are converted to agree with <emphasis>iminN</emphasis> and <emphasis>imaxN</emphasis>,  and an initial value can be set. Also, an optional non-interpolated function table with a custom translation curve is allowed, useful for enabling exponential response curves.
+    </para>
+
+    <para>
+      When no function table translation is required, set the <emphasis>ifnN</emphasis> value to 0, else set <emphasis>ifnN</emphasis> to a valid function table number.  When table translation is enabled (i.e. setting <emphasis>ifnN</emphasis> value to a non-zero number referring to an already allocated function table), <emphasis>initN</emphasis> value should be set equal to <emphasis>iminN</emphasis> or <emphasis>imaxN</emphasis> value, else the initial output value will not be the same as specified in <emphasis>initN</emphasis> argument.
+    </para>
+
+    <para>
+      <emphasis>slider16tablef</emphasis> allows a bank of 16 different MIDI control message numbers. It filters the signal before output. This eliminates discontinuities due to the low resolution of the MIDI (7 bit). The cutoff frequency can be set separately for each controller (suggested range: .1 to 5 Hz).
+    </para>
+
+    <para>
+      As the input and output arguments are many, you can split the line using '\' (backslash) character (new in 3.47 version) to improve the readability. Using these opcodes is considerably more efficient than using the separate ones (<link linkend="ctrl7"><citetitle>ctrl7</citetitle></link> and <link linkend="tonek"><citetitle>tonek</citetitle></link>) when more controllers are required.
+    </para>
+
+    <para>
+      <emphasis>slider16tablef</emphasis> is very similar to  <link linkend="slider16f"><citetitle>slider16f</citetitle></link> and <emphasis>sliderNf</emphasis> family of opcodes (see their manual for more information). The actual difference is that the output is not stored to k-rate variables, but to a table, denoted by the <emphasis>ioutTable</emphasis> argument. It is possible to define a starting index in order to use the same table for more than one slider bank (or other purposes).
+    </para>
+    <para>
+      It is possible to use this opcode together with <link linkend="FLslidBnk2Setk"><citetitle>FLslidBnk2Setk</citetitle></link> and <link linkend="FLslidBnk2"><citetitle>FLslidBnk2</citetitle></link>, so you can synchronize the position of the MIDI values to the position of the FLTK valuator widgets of <link linkend="FLslidBnk2"><citetitle>FLslidBnk2</citetitle></link>. Notice that you have to specify the same min/max values as well the linear/exponential responses in both <emphasis>sliderNtable(f)</emphasis> and <link linkend="FLslidBnk2"><citetitle>FLslidBnk2</citetitle></link>. The exception is when using table-indexed response instead of a lin/exp response. In this case, in order to achieve a useful result, the table-indexed response and actual min/max values must be set only in <link linkend="FLslidBnk2"><citetitle>FLslidBnk2</citetitle></link>, whereas, in sliderNtable(f), you have to set a linear response and a minimum of zero and a maximum of one in all sliders.
+    </para>
+
+    <warning>
+      <para>
+        <emphasis>slider16tablef</emphasis> does not output the required initial value immediately, but only after some k-cycles because the filter slightly delays the output.
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="slider16table"><citetitle>slider16table</citetitle></link>,
+      <link linkend="slider32table"><citetitle>slider32table</citetitle></link>,
+      <link linkend="slider32tablef"><citetitle>slider32tablef</citetitle></link>,
+      <link linkend="slider64table"><citetitle>slider64table</citetitle></link>,
+      <link linkend="slider64tablef"><citetitle>slider64tablef</citetitle></link>, 
+      <link linkend="slider8table"><citetitle>slider8table</citetitle></link>,
+      <link linkend="slider8tablef"><citetitle>slider8tablef</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namegabriel;</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 5.06</para>
+  </refsect1>
+</refentry>

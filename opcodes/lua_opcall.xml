@@ -1,0 +1,137 @@
+ <refentry id="lua_opcall">
+    <indexterm id="Indexlua_opcall">
+        <primary>
+            lua_opcall
+        </primary>
+    </indexterm>
+    <refentryinfo><title>Lua Opcodes</title></refentryinfo>
+    <refmeta>
+        <refentrytitle>
+            lua_opcall
+        </refentrytitle>
+    </refmeta>
+
+    <refnamediv>
+        <refname>
+            lua_opcall
+        </refname>
+        <refpurpose>
+            Calls a Lua opcode at i-rate only. Any number of output and/or 
+            input arguments may be passed. All arguments must be passed on 
+            the right-hand side. Outputs are returned in the argument.        
+        </refpurpose>
+    </refnamediv>
+    
+    <refsect1>
+        <title>
+            Syntax
+        </title>
+        <synopsis><command>lua_iopcall</command> Sname, ...</synopsis>
+        <synopsis><command>lua_ikopcall</command> Sname, ...</synopsis>
+        <synopsis><command>lua_iaopcall</command> Sname, ...</synopsis>
+        <synopsis><command>lua_iopcall_off</command> Sname, ...</synopsis>
+        <synopsis><command>lua_ikopcall_off</command> Sname, ...</synopsis>
+        <synopsis><command>lua_iaopcall_off</command> Sname, ...</synopsis>
+    </refsect1>
+
+    <refsect1>
+        <title>
+            Initialization and Performance
+        </title>
+        <para>
+            <emphasis>Sname</emphasis> -- The name of the opcode.
+        </para>
+        <para>
+            <emphasis>...</emphasis> -- An arbitrary list of any number of 
+            output and input arguments, of any type. The number, sequence, 
+            and types of these arguments must agree with the cdef of the 
+            arguments structure that is declared in the corresponding 
+            <literal>lua_opdef</literal> opcode.
+        </para>
+        <para>
+            <literal>lua_iopcall</literal> calls a Lua opcode at i-rate only. 
+            Requires <literal>opname_init</literal> to be defined in Lua.
+        </para>
+            <literal>lua_ikopcall</literal> calls a Lua opcode at i-rate and 
+            k-rate. Requires <literal>opname_init</literal> and 
+            <literal>opname_kontrol</literal> to be defined in Lua.
+        <para>
+            <literal>lua_iaopcall</literal> calls a Lua opcode at i-rate and a-rate. 
+            Requires <literal>opname_init</literal> and 
+            <literal>opname_audio</literal> to be defined in Lua.
+        </para>
+        <para>
+            <literal>lua_iopcall_off</literal> calls a Lua opcode at i-rate only. 
+            Requires <literal>opname_init</literal> and 
+            <literal>opname_noteoff</literal> to be defined in Lua. 
+        </para>
+            <literal>lua_ikopcall_off</literal> calls a Lua opcode at i-rate and 
+            k-rate. Requires <literal>opname_init</literal>, 
+            <literal>opname_kontrol</literal>, and <literal>opname_noteoff</literal> 
+            to be defined in Lua.
+        <para>
+            <literal>lua_iaopcall_off</literal> calls a Lua opcode at i-rate 
+            and a-rate. Requires <literal>opname_init</literal>, 
+            <literal>opname_audio</literal>, and <literal>opname_noteoff</literal> 
+            to be defined in Lua.
+        </para>
+        <para>
+            Lua code accesses elements of arguments as follows (pointers 
+            to both scalars and arrays are dereferenced by the Lua array access 
+            operator):
+        </para>
+        <programlisting>
+            ffi.cdef(' struct arguments_t { double *a_out, double *i_in, double *i_txt, double *f_sig };');
+            local arguments = ffi.cast("struct arguments_t *", carguments_lightuserdata)
+            for i = 0, ksmps -1 do begin carguments.a_out[i] = carguments.i_in[0] * 3 end end
+        </programlisting>
+        <para>
+            The "off" variants of the opcode always schedule a "note off" event 
+            that is called when the intrument instance is removed from the 
+            active list, and which can be used to release unneeded resources, 
+            reschedule the instrument to render a reverb tail, and so on.
+        </para>
+    </refsect1>
+
+    <refsect1>
+        <!--To add examples, create the csd file in the examples directory, then run:-->
+        <!--python csd2docbook.py -f newopcodename.csd-->
+        <!--to generate the xml highlighted version used below-->
+        <title>
+            Example
+        </title>
+        <para>
+            Here is an example of a Lua opcode, showing how to pass strings 
+            back and forth between Lua opcodes and Csound orchestra code. 
+            The example uses the file <ulink url="examples/luaopcode.csd">
+            <citetitle>luaopcode.csd</citetitle></ulink>.
+            <example>
+                <title>
+                    Example of a Lua opcode.
+                </title>
+                <xi:include href="examples-xml/luaopcode.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+            </example>
+        </para>
+    </refsect1>
+    <refsect1>
+        <title>
+            See Also
+        </title>
+        <para>
+            <link linkend="lua_exec"><citetitle>lua_exec</citetitle></link>, 
+            <link linkend="lua_opdef"><citetitle>lua_opdef</citetitle></link>. 
+        </para>
+    </refsect1>
+    
+    <refsect1>
+        <title>
+            Credits
+        </title>
+        <para>
+            By: &namemichael; 2011
+        </para>
+        <para>
+            New in Csound version 5.13.2
+        </para>
+    </refsect1>
+</refentry>

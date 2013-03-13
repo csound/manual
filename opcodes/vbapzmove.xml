@@ -1,0 +1,124 @@
+
+<refentry id="vbapzmove">
+<indexterm id="IndexVbapzmove"><primary>vbapzmove</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Panning and Spatialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vbapzmove</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vbapzmove</refname>
+    <refpurpose>
+      Writes a multi-channel audio signal to a ZAK array with moving virtual sources.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Writes a multi-channel audio signal to a ZAK array with moving virtual sources.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>vbapzmove</command> inumchnls, istartndx, asig, idur, ispread, ifldnum, ifld1, \
+      ifld2, [...]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>inumchnls</emphasis> -- number of channels to write to the ZA array. Must be in the range 2 - 256.
+    </para>
+
+    <para>
+      <emphasis>istartndx</emphasis> -- first index or position in the ZA array to use
+    </para>
+
+    <para>
+      <emphasis>idur</emphasis> -- the duration over which the
+    movement takes place.
+    </para>
+
+    <para>
+      <emphasis>ispread</emphasis> -- spreading of the virtual source
+    (range 0 - 100).  If value is zero, conventional amplitude panning
+    is used. When <emphasis>ispread</emphasis> is increased, the
+    number of loudspeakers used in panning increases. If value is 100,
+    the sound is applied to all loudspeakers. 
+    </para>
+
+    <para>
+      <emphasis>ifldnum</emphasis> -- number of fields (absolute value
+    must be 2 or larger). If <emphasis>ifldnum</emphasis> is positive,
+    the virtual source movement is a polyline specified by given
+    directions. Each transition is performed in an equal time
+    interval. If <emphasis>ifldnum</emphasis> is negative, specified
+    angular velocities are applied to the virtual source during
+    specified relative time intervals (see below). 
+    </para>
+
+    <para>
+      <emphasis>ifld1, ifld2, ...</emphasis> -- azimuth angles or
+    angular velocities, and relative durations of movement phases (see
+    below). 
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asig</emphasis> -- audio signal to be panned
+    </para>
+
+    <para>
+      The opcode <emphasis>vbapzmove</emphasis> is the multiple channel analog of the opcodes like <link linkend="vbap4move"><citetitle>vbap4move</citetitle></link>, working on <emphasis>inumchnls</emphasis> and using a ZAK array for output.
+    </para>
+    <warning>
+      <para>Please note that all <emphasis>vbap</emphasis> panning opcodes require the <emphasis>vbap</emphasis> system to be initialized using <link linkend="vbaplsinit"><citetitle>vbaplsinit</citetitle></link>.</para>
+    </warning>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      See the entry for <link linkend="vbap8move"><citetitle>vbap8move</citetitle></link> for an example of usage of the <emphasis>vbapXmove</emphasis> opcodes.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Reference</title>
+    <para>
+      Ville Pulkki: <quote>Virtual Sound Source Positioning Using Vector Base Amplitude Panning</quote> <emphasis>Journal of the Audio Engineering Society</emphasis>, 1997 June, Vol. 45/6, p. 456.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="vbap16"><citetitle>vbap16</citetitle></link>,
+      <link linkend="vbap16move"><citetitle>vbap16move</citetitle></link>,
+      <link linkend="vbap4"><citetitle>vbap4</citetitle></link>,
+      <link linkend="vbap4move"><citetitle>vbap4move</citetitle></link>,
+      <link linkend="vbap8"><citetitle>vbap8</citetitle></link>,
+      <link linkend="vbap8move"><citetitle>vbap8move</citetitle></link>,
+      <link linkend="vbaplsinit"><citetitle>vbaplsinit</citetitle></link>,
+      <link linkend="vbapz"><citetitle>vbapz</citetitle></link>,
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>&namejohn;</member>
+        <member>University of Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>May 2000</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound Version 4.07</para>
+  </refsect1>
+</refentry>

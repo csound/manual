@@ -1,0 +1,72 @@
+
+<refentry id="specsum">
+<indexterm id="IndexSpecsum"><primary>specsum</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Non-Standard</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>specsum</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>specsum</refname>
+    <refpurpose>
+      Sums the magnitudes across all channels of the spectrum.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Sums the magnitudes across all channels of the spectrum.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ksum <command>specsum</command> wsig [, interp]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>interp</emphasis> (optional, default-0) -- if non-zero, interpolate the output signal (<emphasis>koct </emphasis>or <emphasis>ksum</emphasis>). The default value is 0 (repeat the signal value between changes).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ksum</emphasis> -- the output signal.
+    </para>
+
+    <para>
+      <emphasis>wsig</emphasis> -- the input spectrum.
+    </para>
+
+    <para>
+      Sums the magnitudes across all channels of the spectrum. At each new frame of <emphasis>wsig</emphasis>, the magnitudes are summed and released as a scalar <emphasis>ksum</emphasis> signal. Between frames, the output is either repeated or interpolated at the k-rate. This unit produces a k-signal summation of the magnitudes present in the spectral data, and is thereby a running measure of its moment-to-moment overall strength.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      <informalexample>
+        <programlisting>
+  ksum     <emphasis role="opc">specsum</emphasis>   wsig, 1              <emphasis role="comment">; sum the spec bins, and ksmooth</emphasis>
+           <emphasis role="octrl">if</emphasis> ksum <emphasis role="op">&lt;</emphasis> 2000 <emphasis role="octrl">kgoto</emphasis> <emphasis role="olabel">zero</emphasis>      <emphasis role="comment">; if sufficient amplitude</emphasis>
+  koct     <emphasis role="opc">specptrk</emphasis>  wsig                 <emphasis role="comment">;    pitch-track the signal</emphasis>
+           <emphasis role="octrl">kgoto</emphasis>     <emphasis role="olabel">contin</emphasis>
+<emphasis role="olabel">zero:</emphasis> 
+  koct     <emphasis role="op">=</emphasis>         0                    <emphasis role="comment">; else output zero</emphasis>
+<emphasis role="olabel">contin:</emphasis></programlisting>
+      </informalexample>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="specdisp"><citetitle>specdisp</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

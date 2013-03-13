@@ -1,0 +1,278 @@
+
+<refentry id="diskin2">
+<indexterm id="IndexDiskin2"><primary>diskin2</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Signal Input</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>diskin2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>diskin2</refname>
+    <refpurpose>
+      Reads audio data from a file, and can alter its pitch using one of several
+      available interpolation types, as well as convert the sample rate to match
+      the orchestra sr setting.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+	Reads audio data from a file, and can alter its pitch using
+	one of several available interpolation types, as well as
+	convert the sample rate to match the orchestra sr
+	setting. <emphasis>diskin2</emphasis> can also read
+	multichannel files with any number of channels in the range 1
+	to 24 in versions before 5.14, and 40 after.  .
+	<emphasis>diskin2</emphasis> allows more control and higher
+	sound quality than <emphasis>diskin</emphasis>, but there is
+	also the disadvantage of higher CPU usage.
+    </para>
+
+
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>a1[, a2[, ... aN]] <command>diskin2</command> ifilcod, kpitch[, iskiptim \
+      [, iwrap[, iformat [, iwsize[, ibufsize[, iskipinit]]]]]]</synopsis>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+
+	<para>
+	<emphasis>ifilcod</emphasis>
+	-- integer or character-string denoting the source soundfile
+	name. An integer denotes the file soundin.ifilcod; a character-string
+   	(in double quotes, spaces permitted) gives the filename itself,
+   	optionally a full pathname. If not a full path, the named file is
+   	sought first in the current directory, then in those given by the
+   	environment variable <link linkend="CommandEnvironment"><citetitle>SSDIR</citetitle></link> (if defined) then by <link linkend="CommandEnvironment"><citetitle>SFDIR</citetitle></link>. See also
+    <link linkend="GEN01"><citetitle>GEN01</citetitle></link>.
+   	Note: files longer than 2<superscript>31</superscript>-1 sample frames may not be played correctly
+   	on 32 bit platforms; this means a maximum length about 3 hours with a
+   	sample rate of 192000 Hz.
+   	</para>
+
+   	<para>
+   	<emphasis>iskiptim</emphasis>
+   	(optional, defaults to zero) -- time in seconds of input sound to
+   	be skipped, assuming <emphasis>kpitch</emphasis>=1. Can be negative, to add
+    -<emphasis>iskiptim</emphasis>/<emphasis>kpitch</emphasis>
+   	seconds of delay instead of skipping sound.
+    <note>
+    <title>Note</title>
+    <para>If <emphasis>iwrap</emphasis> is not 0 (locations are wrapped),
+    <emphasis>iskiptim</emphasis> will not delay the sound if a negative value is used.
+    Instead, the negative value will be "wrapped" from the end of the file.
+    </para>
+    </note>
+   	</para>
+
+	<para>
+	<emphasis>iwrap</emphasis>
+	(optional, defaults to zero) -- if set to any non-zero value, read
+   	locations that are negative or are beyond the end of the file are wrapped
+   	to the duration of the sound file instead of assuming zero samples.
+   	Useful for playing a file in a loop.
+
+   	<note>
+   	<title>Note</title>
+   	<para>
+   	If <emphasis>iwrap</emphasis> is enabled, the file length should not be shorter than
+   	the interpolation window size (see below), otherwise there may be clicks
+   	in the sound output.
+   	</para>
+   	</note>
+
+   	</para>
+
+   	<para>
+   	<emphasis>iformat</emphasis>
+   	(optional, defaults to zero) -- sample format, for raw (headerless)
+   	files only. This parameter is ignored if the file has a header.
+   	Allowed values are:
+
+	<itemizedlist>
+        <listitem>
+          <para>0: 16-bit short integers</para>
+        </listitem>
+
+        <listitem>
+          <para>1: 8-bit signed char (high-order 8 bits of a 16-bit integer)</para>
+        </listitem>
+
+        <listitem>
+          <para>2: 8-bit A-law bytes</para>
+        </listitem>
+
+        <listitem>
+          <para>3: 8-bit U-law bytes</para>
+        </listitem>
+
+        <listitem>
+          <para>4: 16-bit short integers</para>
+        </listitem>
+
+        <listitem>
+          <para>5: 32-bit long integers</para>
+        </listitem>
+
+        <listitem>
+          <para>6: 32-bit floats</para>
+        </listitem>
+
+        <listitem>
+          <para>7: 8-bit unsigned int</para>
+        </listitem>
+
+        <listitem>
+          <para>8: 24-bit int</para>
+        </listitem>
+
+        <listitem>
+          <para>9: 64-bit doubles</para>
+        </listitem>
+    </itemizedlist>
+
+	</para>
+
+	<para>
+	<emphasis>iwsize</emphasis>
+	(optional, defaults to zero) -- interpolation window size, in samples.
+   	Can be one of the following:
+
+   	<itemizedlist>
+
+		<listitem>
+			<para>1: round to nearest sample (no interpolation, for <emphasis>kpitch</emphasis>=1)</para>
+		</listitem>
+
+		<listitem>
+			<para>2: linear interpolation</para>
+		</listitem>
+
+		<listitem>
+			<para>4: cubic interpolation</para>
+		</listitem>
+
+		<listitem>
+			<para>>= 8: <emphasis>iwsize</emphasis> point sinc interpolation with anti-aliasing (slow)</para>
+		</listitem>
+
+	</itemizedlist>
+
+	Zero or negative values select the default, which is cubic interpolation.
+
+  	<note>
+  	<title>Note</title>
+  	<para>If interpolation is used, <emphasis>kpitch</emphasis> is automatically scaled by the
+	ratio of the sample rate of the sound file and the orchestra, so that
+    the file will always be played at the original pitch if <emphasis>kpitch</emphasis> is 1.
+    However, the sample rate conversion is disabled if <emphasis>iwsize</emphasis> is 1.
+    </para>
+    </note>
+
+    </para>
+
+    <para>
+	<emphasis>ibufsize</emphasis>
+	(optional, defaults to 0) -- buffer size in mono samples (not sample
+        frames). This is only the suggested value, the actual setting will be
+        rounded so that the number of sample frames is an integer power of two
+        and is in the range 128 (or <emphasis>iwsize</emphasis> if greater than 128) to 1048576.
+        The default, which is 4096, and is enabled by zero or negative values,
+        should be suitable for most uses, but for non-realtime mixing of many
+        large sound files, a high buffer setting is recommended to improve the
+        efficiency of disk reads. For real time audio output, reading the files
+        from a fast RAM file system (on platforms where this option is
+        available) with a small buffer size may be preferred.
+    </para>
+
+    <para>
+        <emphasis>iskipinit</emphasis>
+        (optional, defaults to 0) -- skip initialization if set to any
+        non-zero value.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+
+	<para>
+	<emphasis>a1 ... a24</emphasis>
+	-- output signals, in the range -0dbfs to 0dbfs. Any samples
+    before the beginning (i.e. negative location) and after the end of
+    the file are assumed to be zero, unless <emphasis>iwrap</emphasis> is non-zero.
+    The number of output arguments must be the same as the number of sound
+    file channels - which can be determined with the
+    <link linkend="filenchnls"><citetitle>filenchnls</citetitle></link> opcode,
+    otherwise an init error will occur.
+
+    <note>
+    <title>Note</title>
+    <para>It is more efficient to read a single file with many channels,
+   	than many files with only a single channel, especially with high <emphasis>iwsize</emphasis>
+	settings.
+	</para>
+	</note>
+
+	</para>
+
+	<para>
+	<emphasis>kpitch</emphasis>
+	-- transpose the pitch of input sound by this factor (e.g. 0.5 means
+    one octave lower, 2 is one octave higher, and 1 is the original pitch).
+    Fractional and negative values are allowed (the latter results in
+    playing the file backwards, however, in this case the skip time parameter
+    should be set to some positive value, e.g. the length of the file, or
+    <emphasis>iwrap</emphasis> should be non-zero, otherwise nothing would be played).
+    If interpolation is enabled, and the sample rate of the file differs
+    from the orchestra sample rate, the transpose ratio is automatically
+    adjusted to make sure that <emphasis>kpitch</emphasis>=1 plays at the original pitch.
+    Using a high <emphasis>iwsize</emphasis> setting (40 or more) can significantly improve
+    sound quality when transposing up, although at the expense of high
+    CPU usage.
+    </para>
+
+  </refsect1>
+
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the diskin2 opcode. It uses the file <ulink url="examples/diskin2.csd"><citetitle>diskin2.csd</citetitle></ulink>, <ulink url="examples/beats.wav"><citetitle>beats.wav</citetitle></ulink>.
+      <example>
+        <title>Example of the diskin2 opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/diskin2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="in"><citetitle>in</citetitle></link>,
+      <link linkend="inh"><citetitle>inh</citetitle></link>,
+      <link linkend="ino"><citetitle>ino</citetitle></link>,
+      <link linkend="inq"><citetitle>inq</citetitle></link>,
+      <link linkend="ins"><citetitle>ins</citetitle></link>,
+      <link linkend="soundin"><citetitle>soundin</citetitle></link> and 
+      <link linkend="diskin"><citetitle>diskin</citetitle></link>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Istvan Varga</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+    <para>New in version 5.00</para>
+  </refsect1>
+</refentry>

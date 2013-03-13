@@ -1,0 +1,127 @@
+
+<refentry id="FLslidBnk2">
+<indexterm id="IndexFLslidBnk2"><primary>FLslidBnk2</primary></indexterm>
+  <refentryinfo><title>FLTK:Other</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLslidBnk2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLslidBnk2</refname>
+    <refpurpose>
+      A FLTK widget containing a bank of horizontal sliders.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>FLslidBnk2</emphasis> is a widget containing a bank of horizontal sliders.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>FLslidBnk2</command> &quot;names&quot;, inumsliders, ioutable, iconfigtable [,iwidth, iheight, ix, iy, istart_index] </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis><quote>names</quote></emphasis> -- a double-quoted string containing the names of each slider.  Each slider can have a different name. Separate each name with <quote>@</quote> character, for example: <quote>frequency@amplitude@cutoff</quote>. It is possible to not provide any name by giving a single space <quote> </quote>. In this case, the opcode will automatically assign a progressive number as a label for each slider.
+    </para>
+
+    <para>
+      <emphasis>inumsliders</emphasis> -- the number of sliders.
+    </para>
+
+    <para>
+      <emphasis>ioutable</emphasis> (optional, default=0) -- number of a previously-allocated table in which to store output values of each slider. The user must be sure that table size is large enough to contain all output cells, otherwise a segfault will crash Csound. By assigning zero to this argument, the output will be directed to the zak space in the k-rate zone. In this case, the zak space must be previously allocated with the <link linkend="zakinit"><citetitle>zakinit</citetitle></link> opcode and the user must be sure that the allocation size is big enough to cover all sliders. The default value is zero (i.e. store output in zak space).
+    </para>
+
+    <para>
+      <emphasis>iconfigtable</emphasis> -- in the <emphasis>FLslidBnk2</emphasis> and FLvslidBnk2 opcodes, this table replaces <emphasis>iminmaxtable</emphasis>, <emphasis>iexptable</emphasis> and <emphasis>istyletable</emphasis>, all these parameters being placed into a single table. This table has to be filled with a group of 4 parameters for each slider in this way:
+    </para>
+
+    <literallayout>min1, max1, exp1, style1, min2, max2, exp2, style2, min3, max3, exp3, style3 etc.</literallayout>
+
+    <para>for example using GEN02 you can type:</para>
+
+    <literallayout>inum <emphasis>ftgen</emphasis> 1,0,256, -2,     0,1,0,1,    100, 5000, -1, 3,      50, 200, -1, 5,….. [etcetera]</literallayout>
+
+    <para>
+      In this example the first slider will be affected by the [0,1,0,1] parameters (the range will be 0 to 1, it will have linear response, and its aspect will be a fill slider), the second slider will be affected by the [100,5000,-1,3] parameters (the range is 100 to 5000, the response is exponential and the aspect is a normal slider), the third slider will be affected by the [50,200,-1,5] parameters (the range is 50 to 200, the behavior exponential, and the aspect is a nice slider), and so on.
+    </para>
+
+    <para>
+      <emphasis>iwidth</emphasis> (optional) -- width of the rectangular area containing all sliders of the bank, excluding text labels, that are placed to the left of that area.
+    </para>
+
+    <para>
+      <emphasis>iheight</emphasis> (optional) -- height of the rectangular area containing all sliders of the bank, excluding text labels, that are placed to the left of that area.
+    </para>
+
+    <para>
+      <emphasis>ix</emphasis> (optional) -- horizontal position of the upper left corner of the rectangular area containing all sliders belonging to the bank. You have to leave enough space, at the left of that rectangle, in order to make sure labels of sliders to be visible. This is because the labels themselves are external to the rectangular area.
+    </para>
+
+    <para>
+      <emphasis>iy</emphasis> (optional) -- vertical position of the upper left corner of the rectangular area containing all sliders belonging to the bank. You have to leave enough space, at the left of that rectangle, in order to make sure labels of sliders to be visible. This is because the labels themselves are external to the rectangular area.
+    </para>
+
+    <para>
+      <emphasis>istart_index</emphasis> (optional, default=0) -- an integer number referring to a starting offset of output cell locations. It can be positive to allow multiple banks of sliders to output in the same table or in the zak space. The default value is zero (no offset).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      There are no k-rate arguments, even if cells of the output table (or the zak space) are updated at k-rate.
+    </para>
+
+    <para>
+      <emphasis>FLslidBnk2</emphasis> is a widget containing a bank of horizontal sliders. Any number of sliders can be placed into the bank (<emphasis>inumsliders</emphasis> argument). The output of all sliders is stored into a previously allocated table or into the zak space (<emphasis>ioutable</emphasis> argument). It is possible to determine the first location of the table (or of the zak space) in which to store the output of the first slider by means of <emphasis>istart_index</emphasis> argument.
+    </para>
+
+    <para>
+      Each slider can have an individual label that is placed to the left of it. Labels are defined by the <emphasis><quote>names</quote></emphasis> argument. The output range of each slider can be individually set by means of the <emphasis>min</emphasis> and <emphasis>max</emphasis> values inside the <emphasis>iconfigtable</emphasis> table. The curve response of each slider can be set individually, by means of a list of identifiers placed in the <emphasis>iconfigtable</emphasis> table (<emphasis>exp</emphasis> argument). It is possible to define the aspect of each slider independently or to make all sliders have the same aspect (<emphasis>style</emphasis> argument in the <emphasis>iconfigtable</emphasis> table).
+    </para>
+
+    <para>
+      The <emphasis>iwidth</emphasis>, <emphasis>iheight</emphasis>, <emphasis>ix</emphasis>, and <emphasis>iy</emphasis> arguments determine width, height, horizontal and vertical position of the rectangular area containing sliders. Notice that the label of each slider is placed to the left of them and is not included in the rectangular area containing sliders. So the user should leave enough space to the left of the bank by assigning a proper <emphasis>ix</emphasis> value in order to leave labels visible.
+    </para>
+    <warning>
+      <title>IMPORTANT!</title>
+      <para>
+        Notice that the tables used by <emphasis>FLslidBnk2</emphasis> must be created with the <link linkend="ftgen"><citetitle>ftgen</citetitle></link> opcode and placed in the orchestra before the corresponding valuator. They can not placed in the score. This is because tables placed in the score are created later than the initialization of the opcodes placed in the header section of the orchestra.
+      </para>
+    </warning>
+  </refsect1>
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the FLslidBnk2 opcode. It uses the file <ulink url="examples/FLslidBnk2.csd"><citetitle>FLslidBnk2.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the FLslidBnk2 opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/FLslidBnk2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="FLslider"><citetitle>FLslider</citetitle></link>,
+      <link linkend="FLslidBnk"><citetitle>FLslidBnk</citetitle></link>,
+      <link linkend="FLvslidBnk"><citetitle>FLvslidBnk</citetitle></link>,
+      <link linkend="FLvslidBnk2"><citetitle>FLvslidBnk2</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namegabriel;</para>
+    <para>New in version 5.06</para>
+  </refsect1>
+</refentry>

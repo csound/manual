@@ -1,0 +1,100 @@
+
+<refentry id="tablecopy">
+<indexterm id="IndexTablecopy"><primary>tablecopy</primary></indexterm>
+  <refentryinfo><title>Table Control:Read/Write Opreations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tablecopy</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>tablecopy</refname>
+    <refpurpose>
+      Simple, fast table copy opcode.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Simple, fast table copy opcode.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>tablecopy</command> kdft, ksft</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kdft</emphasis> -- Destination function table.
+    </para>
+
+    <para>
+      <emphasis>ksft</emphasis> -- Number of source function table.
+    </para>
+
+    <para>
+      <emphasis>tablecopy</emphasis> -- Simple, fast table copy opcode. Takes the table length from the destination table, and reads from the start of the source table. For speed reasons, does not check the source length - just copies regardless - in <quote>wrap</quote> mode. This may read through the source table several times. A source table with length 1 will cause all values in the destination table to be written to its value.
+    </para>
+
+    <para>
+      <emphasis>tablecopy</emphasis> cannot read or write the guardpoint. To read it use <link linkend="table"><citetitle>table</citetitle></link>, with <emphasis>ndx</emphasis> = the table length. Likewise use table write to write it.
+    </para>
+
+    <para>
+      To write the guardpoint to the value in location 0, use <link linkend="tablegpw"><citetitle>tablegpw</citetitle></link>.
+    </para>
+
+    <para>
+      This is primarily to change function tables quickly in a real-time situation.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the tablecopy opcode. It uses the file <ulink url="examples/tablecopy.csd"><citetitle>tablecopy.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the tablecopy opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/tablecopy.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Its output should include a lines like these:
+<screen>
+i1     5.00000
+i1     3.00000
+i1     2.00000
+i1     4.00000
+i1     7.00000
+i1     6.00000
+i1     7.00000</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="tablegpw"><citetitle>tablegpw</citetitle></link>,
+      <link linkend="tablemix"><citetitle>tablemix</citetitle></link>,
+      <link linkend="tableicopy"><citetitle>tableicopy</citetitle></link>,
+      <link linkend="tableigpw"><citetitle>tableigpw</citetitle></link>,
+      <link linkend="tableimix"><citetitle>tableimix</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Robin Whittle</member>
+        <member>Australia</member>
+        <member>May 1997</member>
+      </simplelist>
+    </para>
+    <para>New in version 3.47</para>
+  </refsect1>
+</refentry>

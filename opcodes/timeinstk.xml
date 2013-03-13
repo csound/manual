@@ -1,0 +1,94 @@
+
+<refentry id="timeinstk">
+<indexterm id="IndexTimeinstk"><primary>timeinstk</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Time Reading</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>timeinstk</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>timeinstk</refname>
+    <refpurpose>
+      Read absolute time in k-rate cycles.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+    	Read absolute time, in k-rate cycles, since the start of an
+    	instance of an instrument. Called at both i-time as well as
+    	k-time.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kres <command>timeinstk</command></synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>timeinstk</emphasis> is for time in k-rate cycles. So with:
+
+      <informalexample>
+        <programlisting>
+  <emphasis role="opc">sr</emphasis>    <emphasis role="op">=</emphasis> 44100
+  <emphasis role="opc">kr</emphasis>    <emphasis role="op">=</emphasis> 6300
+  <emphasis role="opc">ksmps</emphasis> <emphasis role="op">=</emphasis> 7</programlisting>
+      </informalexample>
+
+      then after half a second, the <emphasis>timeinstk</emphasis> opcode would report 3150. It will always report an integer.
+    </para>
+
+    <para>
+      <emphasis>timeinstk</emphasis> produces a k-rate variable for output. There are no input parameters.
+    </para>
+
+    <para>
+      <emphasis>timeinstk</emphasis> is similar to <link linkend="timek"><citetitle>timek</citetitle></link> except it returns the time since the start of this instance of the instrument.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the timeinstk opcode. It uses the file <ulink url="examples/timeinstk.csd"><citetitle>timeinstk.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the timeinstk opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/timeinstk.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Its output should include lines like this:
+      <screen>
+k1 = 1.000000 samples
+k1 = 2205.000000 samples
+k1 = 4410.000000 samples
+k1 = 6615.000000 samples
+k1 = 8820.000000 samples
+      </screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="timeinsts"><citetitle>timeinsts</citetitle></link>, <link linkend="timek"><citetitle>timek</citetitle></link>, <link linkend="times"><citetitle>times</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Robin Whittle</member>
+        <member>Australia</member>
+        <member>May 1997</member>
+      </simplelist>
+    </para>
+    <para>Example written by &namekevin;.</para>
+  </refsect1>
+</refentry>

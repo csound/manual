@@ -1,0 +1,41 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac  <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o vdelayxq.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 4
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1 
+
+ims   <emphasis role="op">=</emphasis>	.5						<emphasis role="comment">;maximum delay time in seconds</emphasis>
+iws   <emphasis role="op">=</emphasis>	1024						<emphasis role="comment">;window size</emphasis>
+adl   <emphasis role="op">=</emphasis>	.5
+aout1  <emphasis role="opc">diskin2</emphasis> "beats.wav", 1, 0, 1			<emphasis role="comment">;loop beats.wav</emphasis>
+aout2  <emphasis role="opc">diskin2</emphasis> "fox.wav", 1, 0, 1			<emphasis role="comment">;loop fox.wav</emphasis>
+aout3  <emphasis role="opc">diskin2</emphasis> "Church.wav", 1, 0, 1			<emphasis role="comment">;loop Church.wav</emphasis>
+aout4  <emphasis role="opc">diskin2</emphasis> "flute.aiff", 1, 0, 1			<emphasis role="comment">;loop flute.aiff</emphasis>
+a2    <emphasis role="opc">poscil</emphasis> .1, .5, 1					<emphasis role="comment">;make an LFO, 1 cycle per 2 seconds</emphasis>
+adl   <emphasis role="op">=</emphasis> a2 <emphasis role="op">+</emphasis> ims<emphasis role="op">/</emphasis>2      				<emphasis role="comment">;offset the LFO so that it is positive</emphasis>
+aout1, aout2, aout3, aout4 <emphasis role="opc">vdelayxq</emphasis> aout1, aout2, aout3, aout4, adl, ims, iws<emphasis role="comment">; Use the LFO to control delay time</emphasis>
+      <emphasis role="opc">outq</emphasis> aout1, aout2, aout3, aout4
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis>1 0 8192 10 1
+
+<emphasis role="stamnt">i</emphasis> 1 0 10 
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

@@ -1,0 +1,93 @@
+
+<refentry id="maxabsaccum">
+<indexterm id="IndexMaxabsaccum"><primary>maxabsaccum</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Comparators and Accumulators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>maxabsaccum</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>maxabsaccum</refname>
+    <refpurpose>
+      Accumulates the maximum of the absolute values of audio signals.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>maxabsaccum</emphasis> compares two audio-rate variables and stores the maximum of their absolute values into the first.  
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>maxabsaccum</command> aAccumulator, aInput</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>aAccumulator</emphasis> -- audio variable to store the maximum value
+    </para>
+
+    <para>
+      <emphasis>aInput</emphasis> -- signal that aAccumulator is compared to
+    </para>
+
+    <para>
+      The <emphasis>maxabsaccum</emphasis> opcode is designed to accumulate the maximum value from among many audio signals that may be in different note instances, different channels, or otherwise cannot all be compared at once using the <emphasis>maxabs</emphasis> opcode.  <emphasis>maxabsaccum</emphasis> is identical to <emphasis>maxaccum</emphasis> except that it takes the absolute value of aInput before the comparison.  Its semantics are similar to <emphasis>vincr</emphasis> since <emphasis>aAccumulator</emphasis> is used as both an input and an output variable, except that <emphasis>maxabsaccum</emphasis> keeps the maximum absolute value instead of adding the signals together.  <emphasis>maxabsaccum</emphasis> performs the following operation on each pair of samples:
+    </para>
+
+    <para>
+      <literallayout>
+            if  (abs(aInput) > aAccumulator)  aAccumulator = abs(aInput)
+      </literallayout>
+    </para>
+
+    <para>
+      <emphasis>aAccumulator</emphasis> will usually be a global audio variable.  At the end of any given computation cycle (k-period), after its value is read and used in some way, the accumulator variable should usually be reset to zero  (perhaps by using the <emphasis>clear</emphasis> opcode).  Clearing to zero is sufficient for <emphasis>maxabsaccum</emphasis>, unlike the <emphasis>maxaccum</emphasis> opcode.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the maxabsaccum opcode. It uses the file <ulink url="examples/maxabsaccum.csd"><citetitle>maxabsaccum.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the maxabsaccum opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/maxabsaccum.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="minabsaccum"><citetitle>minabsaccum</citetitle></link>, 
+      <link linkend="maxaccum"><citetitle>maxaccum</citetitle></link>, 
+      <link linkend="minaccum"><citetitle>minaccum</citetitle></link>, 
+      <link linkend="max"><citetitle>max</citetitle></link>, 
+      <link linkend="min"><citetitle>min</citetitle></link>, 
+      <link linkend="maxabs"><citetitle>maxabs</citetitle></link>, 
+      <link linkend="minabs"><citetitle>minabs</citetitle></link>, 
+      <link linkend="vincr"><citetitle>vincr</citetitle></link>,
+      <link linkend="clear"><citetitle>clear</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &nameanthony;</member>
+        <member>March 2006</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 5.01</para>
+  </refsect1>
+</refentry>

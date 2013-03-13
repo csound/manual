@@ -1,0 +1,73 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in</emphasis>
+-odac           -iadc    <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o imageopcodesdemo2.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+ 
+<emphasis role="ohdr">sr</emphasis>      <emphasis role="op">=</emphasis>      	48000 
+<emphasis role="ohdr">ksmps</emphasis>  	<emphasis role="op">=</emphasis>     	100
+<emphasis role="ohdr">nchnls</emphasis>	<emphasis role="op">=</emphasis>	2
+
+<emphasis role="comment">;By Cesare Marilungo 2008</emphasis>
+<emphasis role="opc">zakinit</emphasis> 10,1
+
+<emphasis role="comment">;Load the image - should be 512x512 pixels</emphasis>
+giimage <emphasis role="opc">imageload</emphasis> "test1.png"
+<emphasis role="comment">;giimage imageload "test2.png" ;--try this too</emphasis>
+giimagew, giimageh <emphasis role="opc">imagesize</emphasis> giimage
+
+giwave <emphasis role="ohdr">ftgen</emphasis> 1, 0, 1024, 10, 1
+gifrqs <emphasis role="ohdr">ftgen</emphasis> 2,0,512,<emphasis role="op">-</emphasis>5, 1,512,10
+giamps <emphasis role="ohdr">ftgen</emphasis> 3, 0, 512, 10, 1
+
+	<emphasis role="oblock">instr</emphasis> 100
+
+kindex <emphasis role="op">=</emphasis> 0
+icnt <emphasis role="op">=</emphasis> giimageh
+kx_ <emphasis role="opc">linseg</emphasis> 0, p3, 1
+kenv <emphasis role="opc">linseg</emphasis> 0, .2, 500, p3 <emphasis role="op">-</emphasis> .4, 500, .2, 0
+
+<emphasis role="comment">; Read a column of pixels and store the red values</emphasis>
+<emphasis role="comment">; inside the table 'giamps'</emphasis>
+<emphasis role="olabel">loop</emphasis><emphasis role="op">:</emphasis>
+    ky_ <emphasis role="op">=</emphasis> kindex<emphasis role="op">/</emphasis>giimageh
+
+    <emphasis role="comment">;Get the pixel color values at kx_, ky_</emphasis>
+    kred, kgreen, kblue <emphasis role="opc">imagegetpixel</emphasis> giimage, kx_, ky_
+
+    <emphasis role="comment">;Write the red values inside the table 'giamps'</emphasis>
+    <emphasis role="opc">tablew</emphasis> kred, kindex, giamps
+    kindex <emphasis role="op">=</emphasis> kindex<emphasis role="op">+</emphasis>1
+
+<emphasis role="octrl">if</emphasis> (kindex <emphasis role="op">&lt;</emphasis> icnt) <emphasis role="octrl">kgoto</emphasis> <emphasis role="olabel">loop</emphasis>
+
+<emphasis role="comment">; Use an oscillator bank (additive synthesis) to generate sound</emphasis>
+<emphasis role="comment">; setting amplitudes for each partial according to the image</emphasis>
+asig <emphasis role="opc">adsynt</emphasis> kenv, 220, giwave, gifrqs, giamps, icnt, 2
+<emphasis role="opc">outs</emphasis> asig, asig
+
+	<emphasis role="oblock">endin</emphasis>
+
+	<emphasis role="oblock">instr</emphasis> 101
+<emphasis role="comment">; Free memory used by the image</emphasis>
+<emphasis role="opc">imagefree</emphasis> giimage
+	<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">t</emphasis> 0 60
+
+<emphasis role="stamnt">i</emphasis>100 1 20 
+<emphasis role="stamnt">i</emphasis>101 21 1
+
+<emphasis role="stamnt">e</emphasis>
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

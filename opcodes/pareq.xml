@@ -1,0 +1,149 @@
+
+<refentry id="pareq">
+<indexterm id="IndexPareq"><primary>pareq</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Specialized Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pareq</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>pareq</refname>
+    <refpurpose>
+      Implementation of Zoelzer's parametric equalizer filters.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Implementation of Zoelzer's parametric equalizer filters, with some modifications by the author.
+    </para>
+
+    <para>
+      The formula for the low shelf filter is:
+      <literallayout>
+omega = 2*pi*f/sr
+K     = tan(omega/2)
+	
+b0    = 1 + sqrt(2*V)*K + V*K^2
+b1    = 2*(V*K^2 - 1)
+b2    = 1 - sqrt(2*V)*K + V*K^2
+	
+a0    = 1 + K/Q + K^2
+a1    = 2*(K^2 - 1)
+a2    = 1 - K/Q + K^2
+      </literallayout>
+    </para>
+
+    <para>
+      The formula for the high shelf filter is:
+      <literallayout>
+omega = 2*pi*f/sr
+K     = tan((pi-omega)/2)
+	
+b0    = 1 + sqrt(2*V)*K + V*K^2
+b1    = -2*(V*K^2 - 1)
+b1    = 1 - sqrt(2*V)*K + V*K^2
+	
+a0    = 1 + K/Q + K^2
+a1    = -2*(K^2 - 1)
+a2    = 1 - K/Q + K^2
+      </literallayout>
+    </para>
+
+    <para>
+      The formula for the peaking filter is:
+      <literallayout>
+omega = 2*pi*f/sr
+K     = tan(omega/2)
+	
+b0 =  1 + V*K/2 + K^2
+b1 =  2*(K^2 - 1)
+b2 =  1 - V*K/2 + K^2
+	
+a0 =  1 + K/Q + K^2
+a1 =  2*(K^2 - 1)
+a2 =  1 - K/Q + K^2
+      </literallayout>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>pareq</command> asig, kc, kv, kq [, imode] [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>imode</emphasis> (optional, default: 0) -- operating mode
+      <itemizedlist>
+        <listitem>
+          <para>0 = Peaking</para>
+        </listitem>
+
+        <listitem>
+          <para>1 = Low Shelving</para>
+        </listitem>
+
+        <listitem>
+          <para>2 = High Shelving</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+    <para>
+      <emphasis>iskip</emphasis> (optional, default=0) -- if non zero
+    skip the initialisation of the filter. (New in Csound version
+    4.23f13 and 5.0)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kc</emphasis> -- center frequency in peaking mode, corner frequency in shelving mode.
+    </para>
+
+    <para>
+      <emphasis>kv</emphasis> -- amount of boost or cut. A value less than 1 is a cut. A value greater than 1 is a boost. A value of 1 is a flat response.
+    </para>
+
+    <para>
+      <emphasis>kq</emphasis> -- Q of the filter (sqrt(.5) is no resonance)
+    </para>
+
+    <para>
+      <emphasis>asig</emphasis> -- the incoming signal
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the pareq opcode. It uses the file <ulink url="examples/pareq.csd"><citetitle>pareq.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the pareq opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/pareq.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>&namehans;</member>
+        <member>December 1998</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.50</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,39 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   No messages  MIDI in</emphasis>
+-odac            -d         -M0  <emphasis role="comment">;;;RT audio I/O with MIDI in</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if RT audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o chanctrl.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis> <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1	<emphasis role="comment">; press your midi keyboard and move your midi controller to see result</emphasis>
+
+ichnl  <emphasis role="op">=</emphasis> 1		<emphasis role="comment">;MIDI note inputs on channel 1</emphasis>
+ictlno <emphasis role="op">=</emphasis> 7		<emphasis role="comment">;use midi volume controller </emphasis>
+kch  <emphasis role="opc">chanctrl</emphasis> ichnl, 7	<emphasis role="comment">;to control amplitude of oscil</emphasis>
+     <emphasis role="opc">printk2</emphasis>  kch
+
+asig <emphasis role="opc">oscil</emphasis> kch<emphasis role="op">*</emphasis>(1<emphasis role="op">/</emphasis>127), 220, 1
+     <emphasis role="opc">outs</emphasis>  asig, asig
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="comment">;Dummy f-table to give time for real-time MIDI events</emphasis>
+<emphasis role="stamnt">f</emphasis> 0 30
+<emphasis role="comment">;sine wave.</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 16384 10 1
+<emphasis role="stamnt">e</emphasis>
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

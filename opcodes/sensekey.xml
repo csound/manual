@@ -1,0 +1,118 @@
+
+<refentry id="sensekey">
+<indexterm id="IndexSensekey"><primary>sensekey</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>sensekey</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>sensekey</refname>
+    <refpurpose>
+      Returns the ASCII code of a key that has been pressed.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Returns the ASCII code of a key that has been pressed, or -1 if no key has been pressed.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kres[, kkeydown] <command>sensekey</command></synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kres</emphasis> - returns the ASCII value of a key which is pressed or released.
+    </para>
+    <para>
+      <emphasis>kkeydown</emphasis> - returns 1 if the key was pressed, 0 if it was released or if there is no key event.
+    </para>
+    <para>
+      <emphasis>kres</emphasis> can be used to read keyboard events from stdin and returns the ASCII value of any key that is pressed or released, or it returns -1 when there is no keyboard activity. The value of <emphasis>kkeydown</emphasis> is 1 when a key was pressed, or 0 otherwise. This behavior is emulated by default, so a key release is generated immediately after every key press. To have full functionality, FLTK can be used to capture keyboard events. <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link> can be used to capture keyboard events and send them to the sensekey opcode, by adding an additional optional argument. See <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link> for more information.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        This opcode can also be written as <link linkend="sense"><citetitle>sense</citetitle></link>.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the sensekey opcode. It uses the file <ulink url="examples/sensekey.csd"><citetitle>sensekey.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the sensekey opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/sensekey.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Here is what the output should look like when the "q" button is pressed...
+      <screen>
+q i1   113.00000
+      </screen>
+    </para>
+    <para>
+      Here is an example of the sensekey opcode in conjucntion with <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link>. It uses the file <ulink url="examples/FLpanel-sensekey.csd"><citetitle>FLpanel-sensekey.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the sensekey opcode using keyboard capture from an FLpanel.</title>
+          <xi:include href="examples-xml/FLpanel-sensekey.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      The lit button in the FLpanel window shows the last key pressed.
+    </para>
+    <para>
+      Here is a more complex example of the sensekey opcode in conjucntion with <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link>. It uses the file <ulink url="examples/FLpanel-sensekey.csd"><citetitle>FLpanel-sensekey2.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the sensekey opcode using keyboard capture from an FLpanel.</title>
+          <xi:include href="examples-xml/FLpanel-sensekey2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      The console output will look something like:
+<literallayout>
+new alloc for instr 1:
+Key code = 65, state = 1
+Character = 'e'
+Key code = 65, state = 0
+Key code = 72, state = 1
+Character = 'r'
+Key code = 72, state = 0
+Key code = 61, state = 1
+Character = 'a'
+Key code = 61, state = 0
+</literallayout>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>See also</title>
+    <para>
+      <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link>,
+      <link linkend="FLkeyIn"><citetitle>FLkeyIn</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>University of Bath, Codemist. Ltd.</member>
+        <member>Bath, UK</member>
+        <member>October 2000</member>
+      </simplelist>
+    </para>
+    <para>Examples written by &namekevin;, Johnathan Murphy and Istvan Varga.</para>
+
+    <para>New in Csound version 4.09. Renamed in Csound version 4.10.</para>
+  </refsect1>
+</refentry>

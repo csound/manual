@@ -1,0 +1,50 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac     <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if RT audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o loop_lt.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="ohdr">seed</emphasis> 0
+gisine <emphasis role="ohdr">ftgen</emphasis> 0, 0, 2^10, 10, 1
+
+<emphasis role="oblock">instr</emphasis> 1 <emphasis role="comment">;master instrument</emphasis>
+
+ininstr <emphasis role="op">=</emphasis> 5 <emphasis role="comment">;number of called instances</emphasis>
+indx <emphasis role="op">=</emphasis> 0
+<emphasis role="olabel">loop</emphasis><emphasis role="op">:</emphasis>
+      <emphasis role="opc">prints</emphasis> "play instance <emphasis role="op">%</emphasis>d\\n", indx
+ipan  <emphasis role="opc">random</emphasis> 0, 1
+ifreq <emphasis role="opc">random</emphasis> 100, 1000
+iamp  <emphasis role="op">=</emphasis> 1<emphasis role="op">/</emphasis>ininstr
+<emphasis role="opc">event_i</emphasis> "i", 10, 0, p3, iamp, ifreq, ipan
+<emphasis role="octrl">loop_lt</emphasis> indx, 1, ininstr, <emphasis role="olabel">loop</emphasis>
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 10
+
+ipeak <emphasis role="opc">random</emphasis> 0, 1 <emphasis role="comment">;where is the envelope peak</emphasis>
+asig  <emphasis role="opc">poscil3</emphasis> p4, p5, gisine
+aenv  <emphasis role="opc">transeg</emphasis> 0, p3<emphasis role="op">*</emphasis>ipeak, 6, 1, p3<emphasis role="op">-</emphasis>p3<emphasis role="op">*</emphasis>ipeak, <emphasis role="op">-</emphasis>6, 0
+aL,aR <emphasis role="opc">pan2</emphasis> asig<emphasis role="op">*</emphasis>aenv, p6
+      <emphasis role="opc">outs</emphasis> aL, aR
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">i</emphasis>1 0 10
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

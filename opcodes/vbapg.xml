@@ -1,0 +1,152 @@
+
+<refentry id="vbapg">
+<indexterm id="IndexVbapg"><primary>vbapg</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Panning and Spatialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vbapg</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vbapg</refname>
+    <refpurpose>
+      Calculates the gains for a sound location between multiple channels.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Calculates the gains for a sound location for up to 64.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>k1[, k2...] <command>vbapg</command> kazim [,kelev] [, kspread] [, ilayout]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ilayout</emphasis> -- index of the speaker layout in
+      the range 0-99, corresponding to a call to
+      <emphasis>vbaplsinit</emphasis>.  The default value is 0.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kazim</emphasis> -- azimuth angle of the virtual source
+    </para>
+
+    <para>
+      <emphasis>kelev</emphasis> (optional) -- elevation angle of the virtual source
+    </para>
+
+    <para>
+      <emphasis>kspread</emphasis> (optional) -- spreading of the
+      virtual source (range 0 - 100).  If value is zero, conventional
+      amplitude panning is used. When <emphasis>kspread</emphasis> is
+      increased, the number of loudspeakers used in panning
+      increases. If value is 100, the sound is applied to all
+      loudspeakers. 
+    </para>
+
+    <para>
+      <emphasis>vbapg</emphasis> calculates the gains that an input
+      signal would have between multiple speakers
+      according to the controls <emphasis>kazim</emphasis> and
+      <emphasis>kelev</emphasis>, and the configured loudspeaker
+      placement <emphasis>ilayout</emphasis>.  If <emphasis>idim</emphasis> = 2,
+      <emphasis>kelev</emphasis> is set to zero. The distribution is
+      performed using Vector Base Amplitude Panning (VBAP - See
+      reference).  VBAP distributes the signal using loudspeaker data
+      configured with <emphasis>vbaplsinit</emphasis>. The signal is
+      applied to, at most, two loudspeakers in 2-D loudspeaker
+      configurations, and three loudspeakers in 3-D loudspeaker
+      configurations. If the virtual source is panned outside the
+      region spanned by loudspeakers, the nearest loudspeakers are
+      used in panning.
+    </para>
+    <warning>
+      <para>Please note that all <emphasis>vbap</emphasis> panning opcodes require the <emphasis>vbap</emphasis> system to be initialized using <link linkend="vbaplsinit"><citetitle>vbaplsinit</citetitle></link>.</para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Reference</title>
+    <para>
+      Ville Pulkki: <quote>Virtual Sound Source Positioning Using Vector Base Amplitude Panning</quote> <emphasis>Journal of the Audio Engineering Society</emphasis>, 1997 June, Vol. 45/6, p. 456.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the vbapg opcode. It uses the file <ulink url="examples/vbapg.csd"><citetitle>vbapg.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the vbapg opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/vbapg.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+        Its output should include lines like these:
+      <screen>
+spread of source = 0
+spread of source = 8
+spread of source = 17
+spread of source = 25
+spread of source = 33
+spread of source = 42
+spread of source = 50
+spread of source = 58
+spread of source = 67
+spread of source = 75
+spread of source = 83
+spread of source = 92
+spread of source = 100
+      </screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="vbap"><citetitle>vbap</citetitle></link>,
+      <link linkend="vbapmove"><citetitle>vbapmove</citetitle></link>,
+      <link linkend="vbap4"><citetitle>vbap4</citetitle></link>,
+      <link linkend="vbap4move"><citetitle>vbap4move</citetitle></link>,
+      <link linkend="vbap8"><citetitle>vbap8</citetitle></link>,
+      <link linkend="vbap8move"><citetitle>vbap8move</citetitle></link>,
+      <link linkend="vbap16"><citetitle>vbap16</citetitle></link>,
+      <link linkend="vbap16move"><citetitle>vbap16move</citetitle></link>,
+      <link linkend="vbaplsinit"><citetitle>vbaplsinit</citetitle></link>,
+      <link linkend="vbapz"><citetitle>vbapz</citetitle></link>,
+      <link linkend="vbapzmove"><citetitle>vbapzmove</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Ville Pulkki</member>
+        <member>Sibelius Academy Computer Music Studio</member>
+        <member>Laboratory of Acoustics and Audio Signal Processing</member>
+        <member>Helsinki University of Technology</member>
+        <member>Helsinki, Finland</member>
+        <member>May 2000</member>
+        <member>Author: &namejohn;</member>
+        <member>July 2012</member>
+       </simplelist>
+    </para>
+
+    <para>New in Csound Version 5.17.13. </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,102 @@
+
+<refentry id="include">
+<indexterm id="IndexMultiFileOrch"><primary>multiple file orchestras</primary></indexterm>
+
+<indexterm id="IndexIncludeOrch"><primary>&num;include</primary><secondary>orchestra</secondary></indexterm>
+  <refentryinfo><title>Orchestra Syntax:Macros</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>&num;include</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>&num;include</refname>
+
+    <refpurpose>
+      Includes an external file for processing.
+                </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Includes an external file for processing.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>&num;include</command> <quote>filename</quote></synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      It is sometimes convenient to have the orchestra arranged in a number of files, for example with each instrument in a separate file.  This style is supported by the <emphasis>&num;include</emphasis> facility which is part of the macro system.  A line containing the text
+
+      <informalexample>
+        <programlisting>
+<emphasis role="omacro">#include</emphasis> "filename"</programlisting>
+      </informalexample>
+
+      where the character &quot; can be replaced by any suitable character.  For most uses the double quote symbol will probably be the most convenient. The file name can include a full path.
+    </para>
+
+    <para>
+      This takes input from the named file until it ends, when input reverts to the previous input.
+      <emphasis>Note: </emphasis>Csound versions prior to 4.19 had a limit of 20 on the depth of included files and macros.
+    </para>
+
+    <para>
+      Another suggested use of <emphasis>&num;include</emphasis> would be to define a set of macros which are part of the composer's style.
+    </para>
+
+    <para>
+      An extreme form would be to have each instrument defines as a macro, with the instrument number as a parameter.  Then an entire orchestra could be constructed from a number of <emphasis>&num;include</emphasis> statements followed by macro calls.
+
+      <informalexample>
+        <programlisting>
+<emphasis role="omacro">#include</emphasis> "clarinet"
+<emphasis role="omacro">#include</emphasis> "flute"
+<emphasis role="omacro">#include</emphasis> "bassoon"
+$CLARINET(1)
+$FLUTE(2)
+$BASSOON(3)</programlisting>
+      </informalexample>
+
+      It must be stressed that these changes are at the textual level and so take no cognizance of any meaning.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the include opcode. It uses the file <ulink url="examples/include.csd"><citetitle>include.csd</citetitle></ulink>, and <ulink url="examples/table1.inc"><citetitle>table1.inc</citetitle></ulink>.
+
+      <example>
+        <title>Example of the include opcode.</title>
+
+<xi:include href="examples-xml/table1.inc.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/include.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>University of Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>April 1998</member>
+      </simplelist>
+    </para>
+    <para>Example written by &namekevin;.</para>
+
+    <para>New in Csound version 3.48</para>
+  </refsect1>
+</refentry>

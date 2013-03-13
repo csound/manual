@@ -1,0 +1,38 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac     <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o jspline.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1
+
+kamp    <emphasis role="opc">init</emphasis> p4
+kcpsmin <emphasis role="opc">init</emphasis> 2
+kcpsmax <emphasis role="opc">init</emphasis> 20
+
+ksp  <emphasis role="opc">jspline</emphasis> kamp, kcpsmin, kcpsmax
+aout <emphasis role="opc">pluck</emphasis> 1, 200<emphasis role="op">+</emphasis>ksp, 1000, 0, 1
+aout <emphasis role="opc">dcblock</emphasis> aout	<emphasis role="comment">;remove DC</emphasis>
+     <emphasis role="opc">outs</emphasis> aout, aout
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1 0 10 2	<emphasis role="comment">;a bit jitter</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 8 10 10	<emphasis role="comment">;some more</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 16 10 20	<emphasis role="comment">;lots more</emphasis>
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

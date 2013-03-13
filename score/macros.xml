@@ -1,0 +1,144 @@
+
+<section id="ScoreMacros">
+  <title>Score Macros</title>
+ 
+  <simplesect>
+    <title>Description</title>
+    <para>
+      Macros are textual replacements which are made in the score as it is being presented to the system.  The macro system in Csound is a very simple one, and uses the characters &num; and &dollar; to define and call macros. This can can allow for simpler score writing, and provide an elementary alternative to full score generation systems.The score macro system is similar to, but independent of, the macro system in the orchestra language.
+
+      <indexterm id="IndexScoreMacros"><primary>score</primary><secondary>macros</secondary></indexterm>
+      <indexterm id="IndexMacrosScore"><primary>macros</primary><secondary>score</secondary></indexterm>
+    </para>
+
+    <para>
+      <emphasis>&num;define</emphasis> NAME -- defines a simple macro. The name of the macro must begin with a letter and can consist of any combination of letters and numbers. Case is significant. This form is limiting, in that the variable names are fixed.  More flexibility can be obtained by using a macro with arguments, described below.
+
+    <indexterm id="IndexDefineScore"><primary>&num;define</primary><secondary>score</secondary></indexterm>
+    <indexterm id="IndexNameScore"><primary>&dollar;name</primary><secondary>score</secondary></indexterm>
+    <indexterm id="IndexUndefScore"><primary>&num;undef</primary><secondary>score</secondary></indexterm>
+    </para>
+
+    <para>
+      <emphasis>&num;define</emphasis> NAME(<emphasis>a&apos; b&apos; c&apos;</emphasis>) -- defines a macro with arguments. This can be used in more complex situations. The name of the macro must begin with a letter and can consist of any combination of letters and numbers. Within the replacement text, the arguments can be substituted by the form: &dollar;A.  In fact, the implementation defines the arguments as simple macros.  There may be up to 5 arguments, and the names may be any choice of letters.  Remember that case is significant in macro names.
+    </para>
+
+    <para>
+      <emphasis>&dollar;NAME.</emphasis> --  calls a defined macro.  To use a macro, the name is used following a &dollar; character.  The name is terminated by the first character which is neither a letter nor a number.  If it is necessary for the name not to terminate with a space, a period, which will be ignored, can be used to terminate the name.  The string, <emphasis>&dollar;NAME</emphasis>., is replaced by the replacement text from the definition.  The replacement text can also include macro calls.
+    </para>
+
+    <para>
+      <emphasis>&num;undef</emphasis> NAME -- undefines a macro name. If a macro is no longer required, it can be undefined with <emphasis>&num;undef</emphasis> NAME.
+    </para>
+  </simplesect>
+
+ 
+  <simplesect>
+    <title>Syntax</title>
+    <synopsis><command>&num;define</command> NAME &num; replacement text &num;</synopsis>
+
+    <synopsis><command>&num;define</command> NAME(a&apos; b&apos; c&apos;) &num; replacement text &num;</synopsis>
+
+    <synopsis><command>&dollar;NAME.</command></synopsis>
+
+    <synopsis><command>&num;undef</command>  NAME</synopsis>
+  </simplesect>  
+
+ 
+  <simplesect>
+    <title>Initialization</title>
+    <para>
+      <emphasis>&num; replacement text &num;</emphasis> --  The replacement text is any character string (not containing a &num;) and can extend over mutliple lines. The replacement text is enclosed within the &num; characters, which ensure that additional characters are not inadvertently captured.
+    </para>
+  </simplesect>
+ 
+  <simplesect>
+    <title>Performance</title>
+    <para>
+      Some care is needed with textual replacement macros, as they can sometimes do strange things.  They take no notice of any meaning, so spaces are significant. This is why, unlike the C programming language, the definition has the replacement text surrounded by &num; characters. Used carefully, this simple macro system is a powerful concept, but it can be abused.
+    </para>
+
+    <formalpara>
+      <title>Another Use For Macros</title>
+      <para>
+        When writing a complex score it is sometimes all too easy to forget to what the various instrument numbers refer.  One can use macros to give names to the numbers.  For example
+        <informalexample>
+          <programlisting>
+<emphasis>#define</emphasis> Flute  #i1#
+<emphasis>#define</emphasis> Whoop  #i2#
+
+<emphasis>$Flute.</emphasis>  0  10  4000  440
+<emphasis>$Whoop.</emphasis>  5  1</programlisting>
+        </informalexample>
+      </para>
+    </formalpara>
+  </simplesect>
+ 
+  <simplesect>
+    <title>Examples</title>
+    <para>
+      <example>
+        <title>Simple Macro</title>
+        <para>
+          A note-event has a set of p-fields which are repeated:
+          <programlisting>
+<emphasis>#define</emphasis> ARGS # 1.01 2.33 138#
+<emphasis role="stamnt">i</emphasis>1 0 1 8.00  1000 $ARGS
+<emphasis role="stamnt">i</emphasis>1 0 1 8.01  1500 $ARGS
+<emphasis role="stamnt">i</emphasis>1 0 1 8.02  1200 $ARGS
+<emphasis role="stamnt">i</emphasis>1 0 1 8.03  1000 $ARGS</programlisting>
+
+          This will get expanded before sorting into:
+          <programlisting>
+<emphasis role="stamnt">i</emphasis>1 0 1 8.00  1000 1.01 2.33 138
+<emphasis role="stamnt">i</emphasis>1 0 1 8.01  1500 1.01 2.33 138
+<emphasis role="stamnt">i</emphasis>1 0 1 8.02  1200 1.01 2.33 138
+<emphasis role="stamnt">i</emphasis>1 0 1 8.03  1000 1.01 2.33 138</programlisting>
+        </para>
+      </example>
+    </para>
+
+    <para>
+      This can save typing, and is makes revisions easier. If there were two sets of p-fields one could have a second macro (there is no real limit on the number of macros one can define).
+      <informalexample>
+        <programlisting>
+<emphasis>#define</emphasis> ARGS1 # 1.01 2.33 138#
+<emphasis>#define</emphasis> ARGS2 # 1.41 10.33 1.00#
+<emphasis role="stamnt">i</emphasis>1 0 1 8.00  1000 $ARGS1
+<emphasis role="stamnt">i</emphasis>1 0 1 8.01  1500 $ARGS2
+<emphasis role="stamnt">i</emphasis>1 0 1 8.02  1200 $ARGS1
+<emphasis role="stamnt">i</emphasis>1 0 1 8.03  1000 $ARGS2</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      <example>
+        <title>Macros with arguments</title>
+        <para>
+          <informalexample>
+            <programlisting>
+<emphasis>#define</emphasis> ARG(A) # 2.345   1.03   $A   234.9#
+<emphasis role="stamnt">i</emphasis>1 0 1 8.00 1000 $ARG(2.0)
+<emphasis role="stamnt">i</emphasis>1 + 1 8.01 1200 $ARG(3.0)</programlisting>
+          </informalexample>
+
+          which expands to
+
+          <informalexample>
+            <programlisting>
+<emphasis role="stamnt">i</emphasis>1 0 1 8.00 1000 2.345   1.03   2.0   234.9
+<emphasis role="stamnt">i</emphasis>1 + 1 8.01 1200 2.345   1.03   3.0   234.9</programlisting>
+          </informalexample>
+        </para>
+      </example>
+    </para>
+  </simplesect>
+
+  <simplesect>
+    <title>Credits</title>
+    <para>Author: &namejohn;</para>
+    <para>University of Bath/Codemist Ltd.</para>
+    <para>Bath, UK</para>
+    <para>April, 1998 (New in Csound version 3.48)</para>
+  </simplesect>
+</section>

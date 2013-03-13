@@ -1,0 +1,38 @@
+<section id="PrefaceToot9">
+  <title>Toot 9</title>
+
+  <para>
+    In the previous example you may have noticed the <link linkend="soundin"><citetitle>soundin</citetitle></link> source being "cut off" at ends of notes, because the reverb was inside the instrument itself. It is better to create a companion instrument, a global reverb instrument, to which the source signal can be sent. Let's also make this stereo (two channel).
+  </para>
+  <para>
+    Variables are named cells which store numbers. In Csound, they can be either local or global, are available continuously, and can be updated at one of four rates - setup, i-rate, k-rate, or a-rate.
+  </para>
+  <para>
+    Local variables (which begin with the letters p, i, k, or a) are private to a particular instrument. They cannot be read from, or written to, by any other instrument or by other notes from the same instrument.
+  </para>
+  <para>
+    Global Variables are cells which are accessible by all instruments. Three of the same four variable types are supported (i, k, and a), but these letters are preceded by the letter "g" to identify them as "global." Global variables are used for "broadcasting" general values, for communicating between instruments, and for sending sound from one instrument to another.
+  </para>
+  <para>
+    The reverb instr 99 below, receives input from instr 9 via the global a-rate variable <emphasis>garvbsig</emphasis>. Since instr 9 adds into this global, several copies of instr 9 can do this without losing any data. The addition requires <emphasis>garvbsig</emphasis> to be cleared before each k-rate pass through any active instruments. This is accomplished first with an init statement in the orchestra header, giving the reverb instrument a higher number than any other (instruments are performed in numerical order), and then clearing <emphasis>garvbsig</emphasis> within instr 99 once its data has been placed into the reverb.
+  </para>
+  <para>
+    In the score we turn the global reverb on at time 0 and keep it on until <emphasis>irvbtime</emphasis> after the last note.
+  </para>
+  <para>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/toot09.gif" format="GIF"/>
+      </imageobject>
+      <textobject>
+        <phrase>[TOOT 9 Schematic]</phrase>
+      </textobject>
+      <caption>
+        <para>TOOT 9 Schematic</para>
+      </caption>
+    </mediaobject>
+  </para>
+  <para>
+    <xi:include href="examples-xml/toot9.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </para>
+</section>

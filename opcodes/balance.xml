@@ -1,0 +1,80 @@
+
+<refentry id="balance">
+<indexterm id="IndexBalance"><primary>balance</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Amplitude Modifiers</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>balance</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>balance</refname>
+    <refpurpose>
+      Adjust one audio signal according to the values of another.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      The rms power of asig can be interrogated, set, or adjusted to match that of a comparator signal.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>balance</command> asig, acomp [, ihp] [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ihp</emphasis> (optional) -- half-power point (in Hz) of a special internal low-pass filter. The default value is 10.
+    </para>
+
+    <para>
+      <emphasis>iskip</emphasis> (optional, default=0) -- initial disposition of internal data space (see <link linkend="reson"><citetitle>reson</citetitle></link>). The default value is 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asig</emphasis> -- input audio signal
+    </para>
+
+    <para>
+      <emphasis>acomp</emphasis> -- the comparator signal
+    </para>
+
+    <para>
+      <emphasis>balance</emphasis> outputs a version of <emphasis>asig</emphasis>, amplitude-modified so that its rms power is equal to that of a comparator signal <emphasis>acomp</emphasis>. Thus a signal that has suffered loss of power (eg., in passing through a filter bank) can be restored by matching it with, for instance, its own source. It should be noted that <link linkend="gain"><citetitle>gain</citetitle></link> and <emphasis>balance</emphasis> provide amplitude modification only - output signals are not altered in any other respect.
+    </para>
+  </refsect1>
+ 
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the balance opcode. It uses the file <ulink url="examples/balance.csd"><citetitle>balance.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the balance opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/balance.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="gain"><citetitle>gain</citetitle></link>,
+      <link linkend="rms"><citetitle>rms</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

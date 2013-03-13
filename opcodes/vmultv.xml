@@ -1,0 +1,107 @@
+
+<refentry id="vmultv">
+<indexterm id="IndexVmultv"><primary>vmultv</primary></indexterm>
+  <refentryinfo><title>Vectorial:Vectorial operations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vmultv</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vmultv</refname>
+    <refpurpose>
+      Performs mutiplication between two vectorial control signals
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Performs mutiplication between two vectorial control signals
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>vmultv</command>  ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [,kverbose]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifn1</emphasis> - number of the table hosting the first vector to be processed
+    </para>
+    <para>
+      <emphasis>ifn2</emphasis> - number of the table hosting the second vector to be processed
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kelements</emphasis> - number of elements of the two vectors
+    </para>
+    <para>
+      <emphasis>kdstoffset</emphasis> - index offset for the destination (<emphasis>ifn1</emphasis>) table (Default=0)
+    </para>
+    <para>
+      <emphasis>ksrcoffset</emphasis> - index offset for the source (<emphasis>ifn2</emphasis>) table (Default=0)
+    </para>
+    <para>
+      <emphasis>kverbose</emphasis> - Selects whether or not warnings are printed (Default=0)
+    </para>
+    <para>
+      <emphasis>vmultv</emphasis> multiplies two vectorial control signals, that is, each element of the first vector is processed (only) with the corresponding element of the other vector. Each vectorial signal is hosted by a table (<emphasis>ifn1</emphasis> and <emphasis>ifn2</emphasis>). The number of elements contained in both vectors must be the same.
+    </para>
+    <para>
+      The Result is a new vectorial control signal that overrides old values of <emphasis>ifn1</emphasis>. If you want to keep the old <emphasis>ifn1</emphasis> vector, use <link linkend="vcopy_i"><citetitle>vcopy_i</citetitle></link> opcode to copy it in another table. You can use <emphasis>kdstoffset</emphasis> and <emphasis>ksrcoffset</emphasis> to specify vectors in any location of the tables.
+    </para>
+    <para>
+      Negative values for <emphasis>kdstoffset</emphasis> and <emphasis>ksrcoffset</emphasis> are acceptable. If <emphasis>kdstoffset</emphasis> is negative, the out of range section of the vector will be discarded. If <emphasis>ksrcoffset</emphasis> is negative, the out of range elements will be assumed to be 1 (i.e. the destination elements will not be changed). If elements for the destination vector are beyond the size of the table (including guard point), these elements are discarded (i.e. elements do not wrap around the tables). If elements for the source vector are beyond the table length, these elements are taken as 1 (i.e. the destination vector will not be changed for these elements).
+    </para>
+    <para>
+      If the optional <emphasis>kverbose</emphasis> argument is different to 0, the opcode will print warning messages every k-pass if table lengths are exceeded.
+    </para>
+    <warning>
+      <para>
+        Using the same table as source and destination table in versions earlier than 5.04, might produce unexpected behavior, so use with care.
+      </para>
+    </warning>
+    <para>
+      This opcode works at k-rate (this means that every k-pass the vectors are multiplied). There's an i-rate version of this opcode called <link linkend="vmultv_i"><citetitle>vmultv_i</citetitle></link>.
+    </para>
+    <note>
+      <para>
+        Please note that the <emphasis>elements</emphasis> argument has changed in version 5.03 from i-rate to k-rate. This will change the opcode's behavior in the unusual cases where the i-rate variable <emphasis>ielements</emphasis> is changed inside the instrument, for example in:
+        <programlisting>
+    <emphasis role="oblock">instr</emphasis> 1
+ielements  <emphasis role="op">=</emphasis>        10
+           <emphasis role="opc">vadd</emphasis>     1, 1, ielements
+ielements  <emphasis role="op">=</emphasis>        20
+           <emphasis role="opc">vadd</emphasis>     2, 1, ielements
+           <emphasis role="opc">turnoff</emphasis>
+    <emphasis role="oblock">endin</emphasis></programlisting>
+      </para>
+    </note>
+    <para>
+      All these operators (<link linkend="vaddv"><citetitle>vaddv</citetitle></link>, <link linkend="vsubv"><citetitle>vsubv</citetitle></link>, <link linkend="vmultv"><citetitle>vmultv</citetitle></link>, <link linkend="vdivv"><citetitle>vdivv</citetitle></link>, <link linkend="vpowv"><citetitle>vpowv</citetitle></link>, <link linkend="vexpv"><citetitle>vexpv</citetitle></link>, <link linkend="vcopy"><citetitle>vcopy</citetitle></link> and <link linkend="vmap"><citetitle>vmap</citetitle></link>) are designed to be used together with other opcodes that operate with vectorial signals such as <emphasis>bmscan</emphasis>, <link linkend="vcella"><citetitle>vcella</citetitle></link>, <link linkend="adsynt"><citetitle>adsynt</citetitle></link>, <link linkend="adsynt2"><citetitle>adsynt2</citetitle></link> etc. 
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the vmultv opcode. It uses the file <ulink url="examples/vmultv.csd"><citetitle>vmultv.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the vmultv opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+        <xi:include href="examples-xml/vmultv.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Credits</title>
+    <para>Written by Gabriel Maldonado. Optional arguments added by Andres Cabrera and Istvan Varga.</para>
+    <para>New in Csound 5 (Previously available only on CsoundAV)</para>
+  </refsect1>
+</refentry>

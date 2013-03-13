@@ -1,0 +1,286 @@
+<section id="MidiVirtual">
+  <title>Virtual MIDI Keyboard</title>
+
+  <para>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/virtualkeyboard.png" format="PNG"/>
+      </imageobject>
+
+      <textobject>
+        <phrase>[Virtual MIDI keyboard]</phrase>
+      </textobject>
+
+      <caption>
+        <para>Virtual MIDI keyboard.</para>
+      </caption>
+    </mediaobject>
+  </para>
+
+  <para>
+    The virtual MIDI keyboard module (activated using -+rtmidi=virtual on the
+    command line flags) provides a way of sending realtime MIDI information to
+    Csound without the need of a MIDI device. It can send note information,
+    control changes, bank and program changes on a specified channel. The MIDI
+    information from the virtual keyboard is processed by Csound in exactly the
+    same way as MIDI information that comes from the other MIDI drivers, so if
+    your Csound orchestra is designed to work with hardware MIDI devices, this
+    will also work.
+  </para>
+
+  <para>
+    For the device flag (-M), the virtual keyboard uses this to take in the name
+    of a keyboard mapping files. Like all MIDI drivers, a device must be given
+    to activate the driver. If you would like to just use the default settings
+    of the keyboard, simply passing in 0 (i.e. -M0) and the virtual keyboard
+    will use its default settings. If instead of the 0 a name of a file is
+    given, the keyboard will attempt to load the file as a keyboard mapping. If
+    the file could not be opened or read correctly, the default settings will be
+    used.
+  </para>
+
+  <para>
+    Keyboard Mapping files allow the user to customize the name and number of banks
+    as well as the name and number of programs per bank.  The following example
+    keyboard mapping (named keyboard.map) has inline comments on the file format.
+    This file is also available with the Csound source distribution in the
+    InOut/virtual_keyboard folder.
+  </para>
+
+<programlisting>
+# Custom Keyboard Map for Virtual Keyboard
+# Steven Yi
+#
+# USAGE
+#
+# When using the Virtual Keyboard, you can supply a filename for a mapping
+# of banks and programs via the -M flag, for example:
+#
+# csound -+rtmidi=virtual -Mkeyboard.map my_project.csd
+#
+# INFORMATION ON THE FORMAT
+#
+# -lines that start with '#' are comments
+# -lines that have [] start new bank definitions,
+#  the contents are bankNum=bankName, with bankNum=[1,16384]
+# -lines following bank statements are program definitions
+#  in the format programNum=programName, with programNum=[1,128]
+# -bankNumbers and programNumbers are defined in this file
+#  starting with 1, but are converted to midi values (starting
+#  with 0) when read
+#
+# NOTES
+#
+# -if an invalid bank definition is found, all program
+#  defintions that follow will be ignored until a new
+#  valid bank definition is found
+# -if a valid bank is defined by no valid programs found
+#  for that bank, it will default to General MIDI program
+#  definitions
+# -if an invalid program definition is found, it will be
+#  ignored
+
+[1=My Bank]
+1=My Test Patch 1
+2=My Test Patch 2
+30=My Test Patch 30
+
+[2=My Bank2]
+1=My Test Patch 1(bank2)
+2=My Test Patch 2(bank2)
+30=My Test Patch 30(bank3)
+</programlisting>
+
+  <para>
+    The ten sliders up top are by default set to MIDI Controller number 1-10
+    though they can be changed to whatever one wishes to use. The controller
+    numbers and values of each slider are set per channel, so one may use
+    different settings and values for each channel.
+  </para>
+
+  <para>
+    By default there are 128 banks and for each bank 128 patches defaulting to
+    General Midi names. The MIDI bank standard uses 14-bit resolution to support
+    16384 possible banks, but the bank numbers by default are 0-127. To use
+    values higher than 127, one should use a custom keyboard map and set the
+    desired bank number value for the bank name. The virtual keyboard will
+    correctly transmit the bank number as MSB and LSB with controller numbers 0
+    and 32.
+  </para>
+
+  <para>
+    Beyond the input available from interacting with the GUI via mouse, one may
+    also trigger off MIDI notes by using the ASCII keyboard when the virtual
+    keyboard window is focused. The layout is done much like a tracker and offers
+    two octaves and a major third to trigger, starting from Middle-C (MIDI note 60).
+    The ASCII keyboard MIDI note values are given in the following table.
+  </para>
+
+    <table>
+      <title>ASCII Keyboard MIDI Note Values</title>
+      <tgroup cols="2">
+        <thead>
+          <row>
+            <entry>Keyboard Key</entry>
+            <entry>MIDI Value</entry>
+          </row>
+        </thead>
+        <tbody>
+
+        <row>
+            <entry>z</entry>
+            <entry>60</entry>
+          </row>
+
+          <row>
+            <entry>s</entry>
+            <entry>61</entry>
+          </row>
+
+          <row>
+            <entry>x</entry>
+            <entry>62</entry>
+          </row>
+
+          <row>
+            <entry>d</entry>
+            <entry>63</entry>
+          </row>
+
+          <row>
+            <entry>c</entry>
+            <entry>64</entry>
+          </row>
+
+          <row>
+            <entry>v</entry>
+            <entry>65</entry>
+          </row>
+
+          <row>
+            <entry>g</entry>
+            <entry>66</entry>
+          </row>
+
+          <row>
+            <entry>b</entry>
+            <entry>67</entry>
+          </row>
+
+          <row>
+            <entry>h</entry>
+            <entry>68</entry>
+          </row>
+
+          <row>
+            <entry>n</entry>
+            <entry>69</entry>
+          </row>
+
+          <row>
+            <entry>j</entry>
+            <entry>70</entry>
+          </row>
+
+          <row>
+            <entry>m</entry>
+            <entry>71</entry>
+          </row>
+
+          <row>
+            <entry>q</entry>
+            <entry>72</entry>
+          </row>
+
+          <row>
+            <entry>2</entry>
+            <entry>73</entry>
+          </row>
+
+          <row>
+            <entry>w</entry>
+            <entry>74</entry>
+          </row>
+
+          <row>
+            <entry>3</entry>
+            <entry>75</entry>
+          </row>
+
+          <row>
+            <entry>e</entry>
+            <entry>76</entry>
+          </row>
+
+          <row>
+            <entry>r</entry>
+            <entry>77</entry>
+          </row>
+
+          <row>
+            <entry>5</entry>
+            <entry>78</entry>
+          </row>
+
+          <row>
+            <entry>t</entry>
+            <entry>79</entry>
+          </row>
+
+          <row>
+            <entry>6</entry>
+            <entry>80</entry>
+          </row>
+
+          <row>
+            <entry>y</entry>
+            <entry>81</entry>
+          </row>
+
+          <row>
+            <entry>7</entry>
+            <entry>82</entry>
+          </row>
+
+          <row>
+            <entry>u</entry>
+            <entry>83</entry>
+          </row>
+
+          <row>
+            <entry>i</entry>
+            <entry>84</entry>
+          </row>
+
+          <row>
+            <entry>9</entry>
+            <entry>85</entry>
+          </row>
+
+          <row>
+            <entry>o</entry>
+            <entry>86</entry>
+          </row>
+
+          <row>
+            <entry>0</entry>
+            <entry>87</entry>
+          </row>
+
+          <row>
+            <entry>p</entry>
+            <entry>88</entry>
+          </row>
+
+
+
+        </tbody>
+      </tgroup>
+    </table>
+    <para>
+      Here's an example of usage of the virtual MIDI keyboard. It uses the file <ulink url="examples/virtual.csd"><citetitle>virtual.csd</citetitle></ulink>.
+ <xi:include href="examples-xml/virtual.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </para>
+
+
+</section>

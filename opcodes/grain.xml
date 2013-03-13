@@ -1,0 +1,112 @@
+
+<refentry id="grain">
+<indexterm id="IndexGrain"><primary>grain</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Granular Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>grain</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>grain</refname>
+    <refpurpose>
+      Generates granular synthesis textures.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Generates granular synthesis textures.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>grain</command> xamp, xpitch, xdens, kampoff, kpitchoff, kgdur, igfn, \
+      iwfn, imgdur [, igrnd]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>igfn</emphasis> -- The ftable number of the grain waveform. This can be just a sine wave or a sampled sound.
+    </para>
+
+    <para>
+      <emphasis>iwfn</emphasis> -- Ftable number of the amplitude envelope used for the grains (see also <link linkend="GEN20"><citetitle>GEN20</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis>imgdur</emphasis> -- Maximum grain duration in seconds. This is the biggest value to be assigned to <emphasis>kgdur</emphasis>.
+    </para>
+
+    <para>
+     <emphasis>igrnd</emphasis> (optional) -- if non-zero, turns off grain offset randomness. This means that all grains will begin reading from the beginning of the <emphasis>igfn</emphasis> table. If zero (the default), grains will start reading from random <emphasis>igfn</emphasis> table positions.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>xamp</emphasis> -- Amplitude of each grain.
+    </para>
+
+    <para>
+      <emphasis>xpitch</emphasis> -- Grain pitch. To use the original frequency of the input sound, use the formula:
+      <literallayout>   sndsr / ftlen(<emphasis>igfn</emphasis>)</literallayout>
+    </para>
+
+    <para>
+      where sndsr is the original sample rate of the <emphasis>igfn</emphasis> sound.
+    </para>
+
+    <para>
+      <emphasis>xdens</emphasis> -- Density of grains measured in grains per second. If this is constant then the output is synchronous granular synthesis, very similar to <link linkend="fof"><citetitle>fof</citetitle></link>. If <emphasis>xdens</emphasis> has a random element (like added noise), then the result is more like asynchronous granular synthesis.
+    </para>
+
+    <para>
+      <emphasis>kampoff</emphasis> -- Maximum amplitude deviation from <emphasis>xamp</emphasis>. This means that the maximum amplitude a grain can have is <emphasis>xamp</emphasis> + <emphasis>kampoff</emphasis> and the minimum is <emphasis>xamp</emphasis>. If <emphasis>kampoff</emphasis> is set to zero then there is no random amplitude for each grain.
+    </para>
+
+    <para>
+      <emphasis>kpitchoff</emphasis> -- Maximum pitch deviation from <emphasis>xpitch</emphasis> in Hz. Similar to <emphasis>kampoff</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>kgdur</emphasis> -- Grain duration in seconds. The maximum value for this should be declared in <emphasis>imgdur</emphasis>. If <emphasis>kgdur</emphasis> at any point becomes greater than <emphasis>imgdur</emphasis>, it will be truncated to <emphasis>imgdur</emphasis>.
+    </para>
+
+    <para>
+      The grain generator is based primarily on work and writings of Barry Truax and Curtis Roads.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      This example generates a texture with gradually shorter grains and wider amp and pitch spread. It uses the file <ulink url="examples/grain.csd"><citetitle>grain.csd</citetitle></ulink>, and <ulink url="examples/beats.wav"><citetitle>beats.wav</citetitle></ulink>.
+
+      <example>
+        <title>Example of the grain opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/grain.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &nameparis;</member>
+        <member>MIT</member>
+        <member>May 1997</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

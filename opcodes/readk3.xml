@@ -1,0 +1,144 @@
+
+<refentry id="readk3">
+<indexterm id="IndexReadk3"><primary>readk3</primary></indexterm>
+  <refentryinfo><title>Signal I/O:File I/O</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>readk3</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>readk3</refname>
+    <refpurpose>
+      Periodically reads three orchestra control-signal values from an external file.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Periodically reads three orchestra control-signal values from an external file.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kr1, kr2, kr3 <command>readk3</command> ifilname, iformat, iprd</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifilname</emphasis> -- an integer N denoting a file named "readk.N" or a character string (in double quotes, spaces permitted) denoting the external file name. For a string, it may either be a full path name with directory specified or a simple filename.  In the later case, the file is sought first in the current directory, then in <link linkend="CommandEnvironment"><citetitle>SSDIR</citetitle></link>, and finally in <link linkend="CommandEnvironment"><citetitle>SFDIR</citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis>iformat</emphasis> -- specifies the input data format:
+      <itemizedlist>
+        <listitem>
+          <para>1 = 8-bit signed integers (char)</para>
+        </listitem>
+
+        <listitem>
+          <para>4 = 16-bit short integers</para>
+        </listitem>
+
+        <listitem>
+          <para>5 = 32-bit long integers</para>
+        </listitem>
+
+        <listitem>
+          <para>6 = 32-bit floats</para>
+        </listitem>
+
+        <listitem>
+          <para>7 = ASCII long integers (plain text)</para>
+        </listitem>
+
+        <listitem>
+          <para>8 = ASCII floats (plain text)</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      Note that A-law and U-law formats are not available, and that all formats except the last two are binary. The input file should be a "raw", headerless data file.
+    </para>
+
+    <para>
+      <emphasis>iprd</emphasis> -- the rate (period) in seconds, rounded to the nearest orchestra control period, at which the signals are read from the input file.  A value of 0 implies one control period (the enforced minimum), which will read new values at the orchestra control rate.  Longer periods will cause the same values to repeat for more than one control period.
+      <!--unless interpolation is used.-->
+    </para>
+
+<!--    <para>
+      <emphasis>interp</emphasis> - (optional) interpolate between values.
+    </para>-->
+<!--
+    <para>
+      <emphasis>ipol</emphasis> - if non-zero, and <emphasis>iprd</emphasis> implies more than one control period, interpolate the k- signals between the periodic reads from the external file. If the value is 0, repeat each signal between frames. Currently not supported.
+    </para>-->
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kr1, kr2, kr3</emphasis> -- output of the signals read from <emphasis>ifilname</emphasis>.
+    </para>
+
+    <para>
+      This opcode allows three generated control signal values to be read from a named external file. The file should contain no header information but it should contain a regularly sampled time series of control values. For binary formats, the individual samples of each signal are interleaved. For ASCII text formats, the values are assumed to be separated by at least one whitespace character.  The three "channels" in a sample frame may be on the same line or separated by newline characters, it does not matter. There may be any number of <emphasis>readk3</emphasis> opcodes in an instrument or orchestra and they may read from the same or different files.
+    </para>
+  </refsect1>
+
+<refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the readk3 opcode. It uses the file <ulink url="examples/readk3.csd"><citetitle>readk3.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the readk3 opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/readk3.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      The output should include lines like these:
+      <screen>
+WRITING:
+kfreq = 473.352855, kdb = -15.197657, kpan = 0.366764
+kfreq = 473.352855, kdb = -15.197657, kpan = 0.366764
+kfreq = 441.426368, kdb = -19.026206, kpan = 0.207327
+kfreq = 452.965140, kdb = -21.447486, kpan = 0.553270
+kfreq = 585.106328, kdb = -11.903852, kpan = 0.815665
+kfreq = 482.056760, kdb = -4.046744, kpan = 0.876537
+
+READING:
+kfreq = 473.352900, kdb = -15.197700, kpan = 0.366800
+kfreq = 473.352900, kdb = -15.197700, kpan = 0.366800
+kfreq = 441.426400, kdb = -19.026200, kpan = 0.207300
+kfreq = 452.965100, kdb = -21.447500, kpan = 0.553300
+kfreq = 585.106300, kdb = -11.903900, kpan = 0.815700
+kfreq = 482.056800, kdb = -4.046700, kpan = 0.876500
+      </screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="dumpk"><citetitle>dumpk</citetitle></link>,
+      <link linkend="dumpk2"><citetitle>dumpk2</citetitle></link>,
+      <link linkend="dumpk3"><citetitle>dumpk3</citetitle></link>,
+      <link linkend="dumpk4"><citetitle>dumpk4</citetitle></link>,
+      <link linkend="readk"><citetitle>readk</citetitle></link>,
+      <link linkend="readk2"><citetitle>readk2</citetitle></link>,
+      <link linkend="readk4"><citetitle>readk4</citetitle></link>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Credits</title>
+    <para>By: John ffitch and Barry Vercoe</para>
+    <para>1999 or earlier</para>
+  </refsect1>
+</refentry>

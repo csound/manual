@@ -1,0 +1,47 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac   <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o tival.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100 
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32 
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1 
+
+<emphasis role="oblock">instr</emphasis> 1
+
+idur  <emphasis role="op">=</emphasis> <emphasis role="opc">abs</emphasis>(p3)				<emphasis role="comment">;make p3 positive even if p3 is negative in score</emphasis>
+itiv  <emphasis role="opc">tival</emphasis>
+i1    <emphasis role="op">=</emphasis> <emphasis role="op">-</emphasis>1				<emphasis role="comment">;assume this is tied note, so keep fase of oscili</emphasis>
+      <emphasis role="octrl">tigoto</emphasis> <emphasis role="olabel">slur</emphasis>			<emphasis role="comment">;no reinitialisation on tied notes</emphasis>
+i1    <emphasis role="op">=</emphasis> 0				<emphasis role="comment">;first note, so reset phase</emphasis>
+aatt  <emphasis role="opc">line</emphasis> p4, idur, 0			<emphasis role="comment">;primary envelope</emphasis>
+
+<emphasis role="olabel">slur</emphasis><emphasis role="op">:</emphasis>
+      <emphasis role="octrl">if</emphasis> itiv<emphasis role="op">==</emphasis>0 <emphasis role="octrl">kgoto</emphasis> <emphasis role="olabel">note</emphasis>		<emphasis role="comment">;no expression on first and second note</emphasis>
+aslur <emphasis role="opc">linseg</emphasis> 0, idur<emphasis role="op">*</emphasis>.3, p4, idur<emphasis role="op">*</emphasis>.7, 0	<emphasis role="comment">;envelope for slurred note</emphasis>
+aatt  <emphasis role="op">=</emphasis> aatt <emphasis role="op">+</emphasis> aslur
+
+<emphasis role="olabel">note</emphasis><emphasis role="op">:</emphasis>
+asig  <emphasis role="opc">oscili</emphasis> aatt, p5, 1, i1
+      <emphasis role="opc">outs</emphasis>   asig, asig
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis>1 0 4096 10 1	<emphasis role="comment">;sine wave</emphasis>
+
+<emphasis role="stamnt">i</emphasis>1  0    -5  .8  451	<emphasis role="comment">;p3 = 5 seconds</emphasis>
+<emphasis role="stamnt">i</emphasis>1  1.5 -1.5 .1  512 
+<emphasis role="stamnt">i</emphasis>1  3    2   .7  440	<emphasis role="comment">;3 notes together--> duration = 5 seconds</emphasis>
+                    
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

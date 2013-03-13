@@ -1,0 +1,45 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in</emphasis>
+-odac           -iadc    <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o divz.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="comment">; Initialize the global variables.</emphasis>
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">kr</emphasis> <emphasis role="op">=</emphasis> 4410
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 10
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 1
+
+<emphasis role="comment">; Instrument #1.</emphasis>
+<emphasis role="oblock">instr</emphasis> 1
+  <emphasis role="comment">; Define the numbers to be divided.</emphasis>
+  ka <emphasis role="opc">init</emphasis> 200
+  <emphasis role="comment">; Linearly change the value of kb from 200 to 0.</emphasis>
+  kb <emphasis role="opc">line</emphasis> 0, p3, 200
+  <emphasis role="comment">; If a "divide by zero" error occurs, substitute -1.</emphasis>
+  ksubst <emphasis role="opc">init</emphasis> <emphasis role="op">-</emphasis>1
+  
+  <emphasis role="comment">; Safely divide the numbers.</emphasis>
+  kresults <emphasis role="opc">divz</emphasis> ka, kb, ksubst
+
+  <emphasis role="comment">; Print out the results.</emphasis>
+  <emphasis role="opc">printks</emphasis> "<emphasis role="op">%</emphasis>f <emphasis role="op">/</emphasis> <emphasis role="op">%</emphasis>f <emphasis role="op">=</emphasis> <emphasis role="op">%</emphasis>f\\n", 0.1, ka, kb, kresults
+<emphasis role="oblock">endin</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="comment">; Play Instrument #1 for one second.</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 1
+<emphasis role="stamnt">e</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

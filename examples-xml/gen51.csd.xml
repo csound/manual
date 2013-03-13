@@ -1,0 +1,60 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+ 
+<emphasis role="comment">; Select audio/midi flags here according to platform </emphasis>
+-odac   -M0    <emphasis role="comment">;;;realtime audio out and midi input</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too </emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below: </emphasis>
+<emphasis role="comment">; -o gen51.wav -W ;;; for file output any platform </emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+ 
+<emphasis role="comment">;example by Iain McCurdy</emphasis>
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100 
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32 
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2 
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1 
+
+giEqTmp12	<emphasis role="ohdr">ftgen</emphasis>	1,0,128,<emphasis role="op">-</emphasis>51,12,2,cpsoct(8),60,1,2^(1<emphasis role="op">/</emphasis>12),2^(2<emphasis role="op">/</emphasis>12),2^(3<emphasis role="op">/</emphasis>12),2^(4<emphasis role="op">/</emphasis>12),2^(5<emphasis role="op">/</emphasis>12),2^(6<emphasis role="op">/</emphasis>12),2^(7<emphasis role="op">/</emphasis>12),2^(8<emphasis role="op">/</emphasis>12),2^(9<emphasis role="op">/</emphasis>12),2^(10<emphasis role="op">/</emphasis>12),2^(11<emphasis role="op">/</emphasis>12),2^(12<emphasis role="op">/</emphasis>12)
+giEqTmp10	<emphasis role="ohdr">ftgen</emphasis>	2,0,128,<emphasis role="op">-</emphasis>51,10,2,cpsoct(8),60,1,2^(1<emphasis role="op">/</emphasis>10),2^(2<emphasis role="op">/</emphasis>10),2^(3<emphasis role="op">/</emphasis>10),2^(4<emphasis role="op">/</emphasis>10),2^(5<emphasis role="op">/</emphasis>10),2^(6<emphasis role="op">/</emphasis>10),2^(7<emphasis role="op">/</emphasis>10),2^(8<emphasis role="op">/</emphasis>10),2^(9<emphasis role="op">/</emphasis>10),2^(10<emphasis role="op">/</emphasis>10)
+giEqTmp24	<emphasis role="ohdr">ftgen</emphasis>	3,0,128,<emphasis role="op">-</emphasis>51,24,2,cpsoct(8),60,1,2^(1<emphasis role="op">/</emphasis>24),2^(2<emphasis role="op">/</emphasis>24),2^(3<emphasis role="op">/</emphasis>24),2^(4<emphasis role="op">/</emphasis>24),2^(5<emphasis role="op">/</emphasis>24),2^(6<emphasis role="op">/</emphasis>24),2^(7<emphasis role="op">/</emphasis>24),2^(8<emphasis role="op">/</emphasis>24),2^(9<emphasis role="op">/</emphasis>24),2^(10<emphasis role="op">/</emphasis>24),2^(11<emphasis role="op">/</emphasis>24), \ 2^(12<emphasis role="op">/</emphasis>24),2^(13<emphasis role="op">/</emphasis>24),2^(14<emphasis role="op">/</emphasis>24),2^(15<emphasis role="op">/</emphasis>24),2^(16<emphasis role="op">/</emphasis>24),2^(17<emphasis role="op">/</emphasis>24),2^(18<emphasis role="op">/</emphasis>24),2^(19<emphasis role="op">/</emphasis>24),2^(20<emphasis role="op">/</emphasis>24),2^(21<emphasis role="op">/</emphasis>24),2^(22<emphasis role="op">/</emphasis>24),2^(23<emphasis role="op">/</emphasis>24),2^(24<emphasis role="op">/</emphasis>24)
+
+<emphasis role="oblock">instr</emphasis>	1	<emphasis role="comment">;midi input instrument</emphasis>
+	<emphasis role="op">/</emphasis><emphasis role="op">*</emphasis>USE PITCH BEND TO MODULATE NOTE NUMBER UP OR DOWN ONE STEP <emphasis role="op">-</emphasis> ACTUAL INTERVAL IT WILL MODULATE BY WILL BE DEPENDENT UPON THE GEN51 SCALE USED<emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+	<emphasis role="comment">;kbend	pchbend	0,2</emphasis>
+	
+	<emphasis role="op">/</emphasis><emphasis role="op">*</emphasis>ALTERNATIVELY IF USING VIRTUAL MIDI DEVICE OR A KEYBOARD WITH NO PITCH BEND WHEEL, USE CONTROLLERS 1 AND 2 TO MODULATE PITCH UP OR DOWN 1 STEP<emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+kup	<emphasis role="opc">ctrl7</emphasis>	1, 1, 0, 1
+kdown	<emphasis role="opc">ctrl7</emphasis>	1, 2, 0, <emphasis role="op">-</emphasis>1
+kbend	<emphasis role="op">=</emphasis>	kup<emphasis role="op">+</emphasis>kdown
+	
+inum	<emphasis role="opc">notnum</emphasis>
+kcps	<emphasis role="opc">tablei</emphasis>	inum<emphasis role="op">+</emphasis>kbend, giEqTmp24	<emphasis role="comment">;read cps values from GEN51, scale table using a combination of note played and pitch bend/controllers 1 and 2</emphasis>
+a1	<emphasis role="opc">vco2</emphasis>	0.2, kcps, 4, 0.5
+	<emphasis role="opc">outs</emphasis>	a1, a1
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis>	2	<emphasis role="comment">;score input instrument</emphasis>
+
+knum	<emphasis role="opc">line</emphasis>	p4, p3, p5		<emphasis role="comment">;gliss using a straight line bewteen p4 and p5 for the entire note duration</emphasis>
+kcps	<emphasis role="opc">tablei</emphasis>	knum, giEqTmp24		<emphasis role="comment">;read cps values from GEN51 scale table</emphasis>
+a1	<emphasis role="opc">vco2</emphasis>	0.2, kcps, 4, 0.5	
+	<emphasis role="opc">outs</emphasis>	a1, a1
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis> 0 3600
+
+<emphasis role="comment">;instr 2. Score input. Gliss from step number p4 to step number p5</emphasis>
+<emphasis role="comment">;p4 - starting note number</emphasis>
+<emphasis role="comment">;p5 - ending note number</emphasis>
+<emphasis role="stamnt">i</emphasis> 2 0 2 60    61
+<emphasis role="stamnt">i</emphasis> 2 + 2 70    58
+<emphasis role="stamnt">i</emphasis> 2 + 2 66    66.5
+<emphasis role="stamnt">i</emphasis> 2 + 2 71.25 71
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

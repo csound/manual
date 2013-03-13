@@ -1,0 +1,147 @@
+
+<refentry id="FLsavesnap">
+<indexterm id="IndexFLsavesnap"><primary>FLsavesnap</primary></indexterm>
+  <refentryinfo><title>FLTK:Other</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLsavesnap</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLsavesnap</refname>
+    <refpurpose>
+      Saves all snapshots currently created into a file.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>FLsavesnap</emphasis> saves all snapshots currently created (i.e. the entire memory bank) into a file.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>FLsavesnap</command> &quot;filename&quot; [, igroup]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis><quote>filename</quote></emphasis> -- a double-quoted string corresponding to a file to store a bank of snapshots.
+    </para>
+    <para>
+      <emphasis>igroup</emphasis> -- (optional) an integer number referring to a snapshot-related group of widget. It allows to get/set, or to load/save the state of a subset of valuators. Default value is zero that refers to the first group. The group number is determined by the opcode <link linkend="FLsetSnapGroup"><citetitle>FLsetSnapGroup</citetitle></link>.
+    </para>
+    <note>
+      <para>
+        The <emphasis>igroup</emphasis> parameter has not been yet fully implemented in the current version of csound. Please do not rely on it yet.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>FLsavesnap</emphasis> saves all snapshots currently created (i.e. the entire memory bank) into a file whose name is <emphasis>filename</emphasis>. Since the file is a text file, snapshot values can also be edited manually by means of a text editor. The format of the data stored in the file is the following (at present time, this could be changed in next Csound version):
+
+      <informalexample>
+        <programlisting>
+----------- 0 -----------
+FLvalue 0 0 1 0 ""
+FLvalue 0 0 1 0 ""
+FLvalue 0 0 1 0 ""
+FLslider 331.946 80 5000 -1 "frequency of the first oscillator"
+FLslider 385.923 80 5000 -1 "frequency of the second oscillator"
+FLslider 80 80 5000 -1 "frequency of the third oscillator"
+FLcount 0 0 10 0 "this index must point to the location number where snapshot is stored"
+FLbutton 0 0 1 0 "Store snapshot to current index"
+FLbutton 0 0 1 0 "Save snapshot bank to disk"
+FLbutton 0 0 1 0 "Load snapshot bank from disk"
+FLbox 0 0 1 0 ""
+----------- 1 -----------
+FLvalue 0 0 1 0 ""
+FLvalue 0 0 1 0 ""
+FLvalue 0 0 1 0 ""
+FLslider 819.72 80 5000 -1 "frequency of the first oscillator"
+FLslider 385.923 80 5000 -1 "frequency of the second oscillator"
+FLslider 80 80 5000 -1 "frequency of the third oscillator"
+FLcount 1 0 10 0 "this index must point to the location number where snapshot is stored"
+FLbutton 0 0 1 0 "Store snapshot to current index"
+FLbutton 0 0 1 0 "Save snapshot bank to disk"
+FLbutton 0 0 1 0 "Load snapshot bank from disk"
+FLbox 0 0 1 0 ""
+----------- 2 -----------
+..... etc...
+----------- 3 -----------
+..... etc...
+---------------------------
+        </programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      As you can see, each snapshot contain several lines. Each snapshot is separated from previous and next snapshot by a line of this kind:
+
+      <literallayout>
+"----------- snapshot Num -----------"
+      </literallayout>
+
+      Then there are several lines containing data. Each of these lines corresponds to a widget.
+    </para>
+
+    <para>
+      The first field of each line is an unquoted string containing opcode name corresponding to that widget. Second field is a number that expresses current value of a snapshot. In current version, this is the only field that can be modified manually. The third and fourth fields shows minimum and maximum values allowed for that valuator. The fifth field is a special number that indicates if the valuator is linear (value 0), exponential (value -1), or is indexed by a table interpolating values (negative table numbers) or non-interpolating (positive table numbers). The last field is a quoted string with the label of the widget.  Last line of the file is always
+
+    <literallayout>
+"---------------------------"
+    </literallayout>.
+    </para>
+    <para>
+      Note that <link linkend="FLvalue"><citetitle>FLvalue</citetitle></link> and<link linkend="FLbox"><citetitle>FLbox</citetitle></link> are not valuators and their values are fixed, so they cannot be modified.
+    </para>
+    <para>
+      For purposes of snapshot saving, widgets can be grouped, so that snapshots affect only a defined group of widgets. The opcode <link linkend="FLsetSnapGroup"><citetitle>FLsetSnapGroup</citetitle></link> is used to specify the group for all widgets declared after it, until the next <link linkend="FLsetSnapGroup"><citetitle>FLsetSnapGroup</citetitle></link> statement.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is a simple example of the FLTK snapshot saving. It uses the file <ulink url="examples/FLsavesnap_simple.csd"><citetitle>FLsavesnap_simple.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of FLTK snapshot saving.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/FLsavesnap_simple.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Here is another example of FLTK snapshot saving using snapshot groups. It uses the file <ulink url="examples/FLsavesnap.csd"><citetitle>FLsavesnap.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of FLTK snapshot saving using snapshot groups.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/FLsavesnap.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="FLgetsnap"><citetitle>FLgetsnap</citetitle></link>,
+      <link linkend="FLloadsnap"><citetitle>FLloadsnap</citetitle></link>,
+      <link linkend="FLsetSnapGroup"><citetitle>FLsetSnapGroup</citetitle></link>,
+      <link linkend="FLrun"><citetitle>FLrun</citetitle></link>,
+      <link linkend="FLsetsnap"><citetitle>FLsetsnap</citetitle></link>,
+      <link linkend="FLupdate"><citetitle>FLupdate</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namegabriel;</para>
+    <para>New in version 4.22</para>
+  </refsect1>
+</refentry>

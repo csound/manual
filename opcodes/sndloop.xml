@@ -1,0 +1,90 @@
+
+<refentry id="sndloop">
+<indexterm id="Indexsndloop"><primary>sndloop</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Sample Playback</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>sndloop</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>sndloop</refname>
+    <refpurpose>
+      A sound looper with pitch control.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+   This opcode records input audio and plays it back in a loop with user-defined
+   duration and crossfade time. It also allows the pitch of the loop to be controlled,
+   including reversed playback.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>asig, krec <command>sndloop</command> ain, kpitch, ktrig, idur, ifad</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>idur </emphasis> -- loop duration in seconds
+    </para>
+        <para>
+      <emphasis>ifad </emphasis> -- crossfade duration in seconds
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asig</emphasis> -- output sig
+    </para>
+
+    <para>
+      <emphasis>krec</emphasis> -- 'rec on' signal, 1 when recording, 0 otherwise
+    </para>
+
+    <para>
+      <emphasis>kpitch</emphasis> -- pitch control (transposition ratio); negative values play the loop back in reverse
+    </para>
+
+    <para>
+      <emphasis>ktrig</emphasis> -- trigger signal: when 0, processing is bypassed. When switched on (ktrig >= 1),
+      the opcode starts recording until the loop memory is full. It then plays
+      the looped sound until it is switched off again (ktrig = 0). Another recording
+      can start again with ktrig >= 1.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the sndloop opcode. It uses the file <ulink url="examples/sndloop.csd"><citetitle>sndloop.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the sndloop opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/sndloop.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+       <para>
+      The example above shows the basic operation of sndloop. Pitch can
+      be controlled at the k-rate, recording is started as soon as the
+      trigger value is >= 1. Recording can be restarted by making the trigger 0 and
+      then 1 again.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>April 2005 </member>
+      </simplelist>
+    </para>
+    <para>New in Version 5.00</para>
+  </refsect1>
+</refentry>

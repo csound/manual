@@ -1,0 +1,98 @@
+
+<refentry id="pvsmooth">
+<indexterm id="Indexpvsmooth"><primary>pvsmooth</primary></indexterm>
+
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsmooth</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvsmooth</refname>
+    <refpurpose>
+      Smooth the amplitude and frequency time functions of a pv stream using parallel 1st order
+      lowpass IIR filters with time-varying cutoff frequency. 
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Smooth the amplitude and frequency time functions of a pv stream using a 1st order
+      lowpass IIR with time-varying cutoff frequency. This opcode uses the same filter 
+      as the <emphasis>tone</emphasis> opcode, but this time acting separately on the amplitude and frequency
+      time functions that make up a pv stream. The cutoff frequency parameter runs at the
+      control-rate, but unlike <emphasis>tone</emphasis> and <emphasis>tonek</emphasis>, it is not specified in Hz, but as fractions
+      of 1/2 frame-rate (actually the pv stream sampling rate), which is easier to
+      understand. This means that the highest cutoff frequency is 1 and the lowest 0; the lower
+      the frequency the smoother the functions and more pronounced the effect will be. 
+    </para>
+    <para>
+      These are filters applied to control signals so the effect is basically blurring the spectral evolution. The effects produced are more or less similar to <emphasis>pvsblur</emphasis>, but with two important
+      differences: 1.smoothing of amplitudes and frequencies use separate sets of filters; and 2. there is
+      no increase in computational cost when higher amounts of 'blurring' (smoothing) are desired.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>fsig <command>pvsmooth</command> fsigin, kacf, kfcf</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>fsig</emphasis> -- output pv stream
+    </para>
+
+    <para>
+      <emphasis>fsigin</emphasis> -- input pv stream.
+    </para>
+
+    <para>
+      <emphasis>kacf</emphasis> -- amount of cutoff frequency for amplitude function filtering, between 0 and 1,
+      in fractions of 1/2 frame-rate.
+    </para>
+
+    <para>
+      <emphasis>kfcf</emphasis> -- amount of cutoff frequency for frequency function filtering, between 0 and 1,
+      in fractions of 1/2 frame-rate.
+    </para>
+
+    <warning>
+      <para>
+        It is unsafe to use the same f-variable for both input and output of pvs opcodes. Using the same one might lead to undefined behavior on some opcodes. Use a different one on the left and right sides of the opcode.
+      </para>
+    </warning>
+  </refsect1>
+  
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the pvsmooth opcode. It uses the file <ulink url="examples/pvsmooth.csd"><citetitle>pvsmooth.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the pvsmooth opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/pvsmooth.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>  
+    <para>
+     The formula for calculating the cutoff frequency of the filter: frame rate / hopsize = new frame starts per second (in Hz), then the percentage of half the framerate.
+     For example, looking at the first note in the example, the frame rate is 44100 / 256 = 172,265625 Hz (= 172 new frame starts per 
+second). half of the frame rate is about 86 Hz, and one percent of this is 0.86 Hz.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>May 2006 </member>
+      </simplelist>
+    </para>
+
+    <para>New plugin in version 5</para>
+    <para>May 2006.</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,41 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in</emphasis>
+-odac           -iadc    <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o pvsbin.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">kr</emphasis> <emphasis role="op">=</emphasis> 4410
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 10
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1
+ifftsize <emphasis role="op">=</emphasis> 1024  
+iwtype <emphasis role="op">=</emphasis> 1    <emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> cleaner with hanning window <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+
+<emphasis role="comment">;a1   soundin "input.wav"  ;select a soundifle</emphasis>
+a1 <emphasis role="opc">inch</emphasis> 1   <emphasis role="comment">;Use realtime input</emphasis>
+
+fsig <emphasis role="opc">pvsanal</emphasis>   a1, ifftsize, ifftsize<emphasis role="op">/</emphasis>4, ifftsize, iwtype
+kamp, kfr <emphasis role="opc">pvsbin</emphasis>   fsig, 10
+adm  <emphasis role="opc">oscil</emphasis>     kamp, kfr, 1
+
+       <emphasis role="opc">out</emphasis>    adm
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="comment">; sine wave</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 4096 10 1
+
+<emphasis role="stamnt">i</emphasis> 1 0 30
+<emphasis role="stamnt">e</emphasis>
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

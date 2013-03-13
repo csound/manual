@@ -1,0 +1,117 @@
+
+<refentry id="transegb">
+<indexterm id="IndexTransegb"><primary>transegb</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Linear and Exponential Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>transegb</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>transegb</refname>
+    <refpurpose>
+      Constructs a user-definable envelope in absolute time.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Constructs a user-definable envelope in absolute time.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>transegb</command> ia, itim, itype, ib [, itim2] [, itype] [, ic] ...</synopsis>
+    <synopsis>kres <command>transegb</command> ia, itim, itype, ib [, itim2] [, itype] [, ic] ...</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ia</emphasis> -- starting value.
+    </para>
+
+    <para>
+      <emphasis>ib, ic,</emphasis> etc. -- value after <emphasis>itim</emphasis> seconds.
+    </para>
+
+    <para>
+      <emphasis>itim</emphasis> -- time in seconds of end of first segment.
+    </para>
+
+    <para>
+      <emphasis>itim2,... itimx</emphasis> etc. -- time in seconds at
+      the end of the segment.
+    </para>
+
+    <para>
+      <emphasis>itype, itype2,</emphasis> etc. -- if 0, a straight line is produced. If non-zero, then <emphasis>transegb</emphasis> creates the following curve, for <emphasis>n</emphasis> steps:
+
+      <literallayout>
+ibeg + (ivalue - ibeg) * (1 - exp( i*itype/(n-1) )) / (1 - exp(itype))
+      </literallayout>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      If <emphasis>itype</emphasis> &gt; 0, there is a slowly rising (concave) or slowly decaying
+      (convex) curve, while if <emphasis>itype</emphasis> &lt; 0, the curve is fast rising (convex) or
+      fast decaying (concave). See also <link linkend="GEN16"><citetitle>GEN16</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the transegb opcode. It uses the file <ulink url="examples/transegb.csd"><citetitle>transegb.csd</citetitle></ulink>. The example produces the following output:
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/transegb.png" format="PNG"/>
+        </imageobject>
+        <textobject>
+          <phrase>Output of the transegb example.</phrase>
+        </textobject>
+        <caption>
+          <para>Output of the transegb example.</para>
+        </caption>
+      </mediaobject>
+      <example>
+        <title>Example of the transegb opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+        <xi:include href="examples-xml/transegb.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="expseg"><citetitle>expseg</citetitle></link>,
+      <link linkend="expsega"><citetitle>expsega</citetitle></link>,
+      <link linkend="expsegb"><citetitle>expsega</citetitle></link>,
+      <link linkend="expsegr"><citetitle>expsegr</citetitle></link>,
+      <link linkend="linseg"><citetitle>linseg</citetitle></link>,
+      <link linkend="linsegb"><citetitle>linsegb</citetitle></link>,
+      <link linkend="linsegr"><citetitle>linsegr</citetitle></link>,
+      <link linkend="transeg"><citetitle>transeg</citetitle></link>
+      <link linkend="transegr"><citetitle>transegr</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>University of Bath, Codemist. Ltd.</member>
+        <member>Bath, UK</member>
+        <member>June 2011</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 5.14</para>
+  </refsect1>
+</refentry>

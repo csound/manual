@@ -1,0 +1,121 @@
+
+<refentry id="ftconv">
+<indexterm id="IndexFtconv"><primary>ftconv</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Convolution and Morphing</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ftconv</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ftconv</refname>
+    <refpurpose>
+      Low latency multichannel convolution, using a function table as impulse
+	response source.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+	Low latency multichannel convolution, using a function table as impulse
+	response source. The algorithm is to split the impulse response to
+	partitions of length determined by the <emphasis>iplen</emphasis> parameter, and delay and
+	mix partitions so that the original, full length impulse response is
+	reconstructed without gaps. The output delay (latency) is <emphasis>iplen</emphasis> samples,
+	and does not depend on the control rate, unlike in the case of other
+	convolve opcodes.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>a1[, a2[, a3[, ... a8]]] <command>ftconv</command> ain, ift, iplen[, iskipsamples \
+      [, iirlen[, iskipinit]]]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+
+	<para>
+	<emphasis>ift</emphasis>
+	-- source ftable number. The table is expected to contain interleaved
+   multichannel audio data, with the number of channels equal to the number
+   of output variables (a1, a2, etc.). An interleaved table can be created
+   from a set of mono tables with <link linkend="GEN52"><citetitle>GEN52</citetitle></link>.
+   </para>
+
+	<para>
+	<emphasis>iplen</emphasis>
+	-- length of impulse response partitions, in sample frames; must be an
+   integer power of two. Lower settings allow for shorter output delay, but
+   will increase CPU usage.
+   </para>
+
+	<para>
+	<emphasis>iskipsamples</emphasis>
+	(optional, defaults to zero) -- number of sample frames to skip
+   at the beginning of the table.
+   Useful for reverb responses that have some amount of initial delay.
+   If this delay is not less than <emphasis>iplen</emphasis> samples, then setting
+   <emphasis>iskipsamples</emphasis> to the same value as <emphasis>iplen</emphasis>
+   will eliminate any additional latency by <emphasis>ftconv</emphasis>.
+   </para>
+
+   	<para>
+   	<emphasis>iirlen</emphasis>
+   	(optional) -- total length of impulse response, in sample frames.
+   	The default is to use all table data (not including the guard point).
+   	</para>
+
+	<para>
+	<emphasis>iskipinit</emphasis>
+	(optional, defaults to zero) -- if set to any non-zero value, skip
+	initialization whenever possible without causing an error.
+	</para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+
+     <para>
+      <emphasis>ain</emphasis>
+      -- input signal.
+      </para>
+
+    <para>
+      <emphasis>a1 ... a8</emphasis>
+      -- output signal(s).
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Example</title>
+    <para>
+      Here is an example of the ftconv opcode. It uses the file <ulink url="examples/ftconv.csd"><citetitle>ftconv.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the ftconv opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+       <xi:include href="examples-xml/ftconv.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>See also</title>
+    <para>
+      <link linkend="pconvolve"><citetitle>pconvolve</citetitle></link>,
+      <link linkend="convolve"><citetitle>convolve</citetitle></link>,
+      <link linkend="dconv"><citetitle>dconv</citetitle></link>.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Istvan Varga</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

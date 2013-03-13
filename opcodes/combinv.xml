@@ -1,0 +1,110 @@
+
+<refentry id="combinv">
+<indexterm id="IndexCombinv"><primary>combinv</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Reverberation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>combinv</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>combinv</refname>
+    <refpurpose>
+      Reverberates an input signal with a <quote>colored</quote> frequency response.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Reverberates an input signal with a <quote>colored</quote>
+      frequency response with a FIR filter.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>combinv</command> asig, krvt, ilpt [, iskip] [, insmps]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ilpt</emphasis> -- loop time in seconds, which
+      determines the <quote>echo density</quote> of the
+      reverberation. This in turn characterizes the
+      <quote>color</quote> of the <emphasis>combinv</emphasis> filter
+      whose frequency response curve will contain
+      <emphasis>ilpt</emphasis> * <emphasis>sr</emphasis>/2 peaks
+      spaced evenly between 0 and <emphasis>sr</emphasis>/2 (the
+      Nyquist frequency). Loop time can be as large as available
+      memory will permit. The space required for an
+      <emphasis>n</emphasis> second loop is
+      <emphasis>n</emphasis>*<emphasis>sr</emphasis> floating or
+      double numbers (usually 4 or 8 bytes). Delay space is allocated
+      and returned as in <link
+      linkend="delay"><citetitle>delay</citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis>iskip</emphasis> (optional, default=0) -- initial disposition of delay-loop data space (cf. <link linkend="reson"><citetitle>reson</citetitle></link>). The default value is 0.
+    </para>
+
+    <para>
+      <emphasis>insmps</emphasis> (optional, default=0) -- delay amount, as a number of samples.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>krvt</emphasis> -- the reverberation time (defined as the time in seconds for a signal to decay to 1/1000, or 60dB down from its original amplitude).
+    </para>
+
+    <para>
+      This filter reiterates input with an echo density determined by
+      loop time <emphasis>ilpt</emphasis>. The attenuation rate is
+      independent and is determined by <emphasis>krvt</emphasis>, the
+      reverberation time (defined as the time in seconds for a signal
+      to decay to 1/1000, or 60dB down from its original amplitude).  Affect from a combinv filter will appear only after <emphasis>ilpt</emphasis> seconds.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the combinv opcode. It uses the file <ulink url="examples/combinv.csd"><citetitle>combinv.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the combinv opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/combinv.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="alpass"><citetitle>alpass</citetitle></link>,
+      <link linkend="comb"><citetitle>comb</citetitle></link>
+      <link linkend="reverb"><citetitle>reverb</citetitle></link>,
+      <link linkend="valpass"><citetitle>valpass</citetitle></link>,
+      <link linkend="vcomb"><citetitle>vcomb</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>October 2012</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

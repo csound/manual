@@ -1,0 +1,73 @@
+<section id="MidiInterop">
+  <title>MIDI/Score Interoperability opcodes</title>
+  
+  <para>
+    The following opcodes can be used to design instruments that work interchangably for real-time MIDI and score events:
+    <itemizedlist>
+      <listitem>
+        <para><link linkend="midichannelaftertouch"><citetitle>midichannelaftertouch</citetitle></link></para>
+      </listitem>
+      <listitem>
+        <para><link linkend="midichn"><citetitle>midichn</citetitle></link></para>
+      </listitem>
+      <listitem>
+        <para><link linkend="midicontrolchange"><citetitle>midicontrolchange</citetitle></link></para>
+      </listitem>
+      <listitem>
+        <para><link linkend="mididefault"><citetitle>mididefault</citetitle></link></para>
+      </listitem>
+      <listitem>
+        <para><link linkend="midinoteoff"><citetitle>midinoteoff</citetitle></link></para>
+      </listitem>
+      <listitem>
+        <para><link linkend="midinoteoncps"><citetitle>midinoteoncps</citetitle></link></para>
+      </listitem>
+      <listitem>
+        <para><link linkend="midinoteonkey"><citetitle>midinoteonkey</citetitle></link></para>
+      </listitem>
+      <listitem>
+        <para><link linkend="midinoteonoct"><citetitle>midinoteonoct</citetitle></link></para>
+      </listitem>
+      <listitem>
+        <para><link linkend="midinoteonpch"><citetitle>midinoteonpch</citetitle></link></para>
+      </listitem>
+      <listitem>
+        <para><link linkend="midipitchbend"><citetitle>midipitchbend</citetitle></link></para>
+      </listitem>
+      <listitem>
+        <para><link linkend="midipolyaftertouch"><citetitle>midipolyaftertouch</citetitle></link></para>
+      </listitem>
+      <listitem>
+        <para><link linkend="midiprogramchange"><citetitle>midiprogramchange</citetitle></link>.</para>
+      </listitem>
+    </itemizedlist>
+  </para>
+  <note>
+    <title>Adapting a score-activated Csound instrument.</title>
+    <para>
+      To adapt an ordinary Csound instrument designed for score activation for score/MIDI interoperability:
+      <itemizedlist>
+        <listitem><para>Change all <link linkend="linen"><citetitle>linen</citetitle></link>, <link linkend="linseg"><citetitle>linseg</citetitle></link>, and <link linkend="expseg"><citetitle>expseg</citetitle></link> opcodes to <link linkend="linenr"><citetitle>linenr</citetitle></link>, <link linkend="linsegr"><citetitle>linsegr</citetitle></link>, and <link linkend="expsegr"><citetitle>expsegr</citetitle></link>, respectively, except for a de-clicking or damping envelope. This will not materially change score-driven performance.</para></listitem>
+        <listitem><para>Add the following lines at the beginning of the instrument definition:
+            <informalexample>
+              <programlisting>
+  <emphasis role="comment">; Ensures that a MIDI-activated instrument</emphasis>
+  <emphasis role="comment">; will have a positive p3 field.</emphasis>
+  <emphasis role="opc">mididefault</emphasis> 60, p3 
+  <emphasis role="comment">; Puts MIDI key translated to cycles per</emphasis>
+  <emphasis role="comment">; second into p4, and MIDI velocity into p5</emphasis>
+  <emphasis role="opc">midinoteoncps</emphasis> p4, p5</programlisting>
+            </informalexample>
+            Obviously, <emphasis>midinoteoncps</emphasis> could be changed to <emphasis>midinoteonoct</emphasis> or any of the other options, and the choice of p-fields is arbitrary.</para></listitem>
+      </itemizedlist>
+    </para>
+  </note>
+  <note>
+    <title>MIDI Realtime Input/Ouput command line options</title>
+    <para>New <link linkend="FlagsCatMinusUpperM"><citetitle>MIDI I/O
+    flags</citetitle></link> in Csound 5.02, can replace most uses of these MIDI
+    interop opcodes, and make usage easier.</para>
+  </note>
+  
+
+</section>

@@ -1,0 +1,119 @@
+
+<refentry id="hrtfmove2">
+<indexterm id="IndexHrtfmove2"><primary>hrtfmove2</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Panning and Spatialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>hrtfmove2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>hrtfmove2</refname>
+    <refpurpose>
+      Generates dynamic 3d binaural audio for headphones using a Woodworth based spherical head model
+      with improved low frequency phase accuracy.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This opcode takes a source signal and spatialises it in the 3 dimensional space around a listener
+      using head related transfer function (HRTF) based filters.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>aleft, aright <command>hrtfmove2</command> asrc, kAz, kElev, ifilel, ifiler [,ioverlap, iradius, isr]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifilel</emphasis> -- left HRTF spectral data file
+    </para>
+    <para>
+      <emphasis>ifiler</emphasis> -- right HRTF spectral data file
+    </para>
+    <note>
+      <para>
+        Spectral datafiles (based on the MIT HRTF database) are available in 3 different sampling rates: 44.1, 48 and 96 khz and are labelled accordingly. Input and processing <emphasis>sr</emphasis> should match datafile <emphasis>sr</emphasis>. Files should be in the current directory or the SADIR (see <link linkend="CommandEnvironment"><citetitle>Environment Variables</citetitle></link>).
+      </para>
+    </note>
+<note>
+      <para>
+       HRTF Data files for use with 
+      <link linkend="hrtfmove"><citetitle>hrtfmove</citetitle></link>,
+      <link linkend="hrtfmove2"><citetitle>hrtfmove2</citetitle></link>,
+      <link linkend="hrtfstat"><citetitle>hrtfstat</citetitle></link>,
+      <link linkend="hrtfearly"><citetitle>hrtfearly</citetitle></link>,
+      <link linkend="hrtfreverb"><citetitle>hrtfreverb</citetitle></link>
+       were updated for Csound 5.15 and later (the code was updated and is more efficient). Old datafiles are now deprecated.
+      </para>
+</note>
+    <para>
+      <emphasis>ioverlap</emphasis> -- optional, number of overlaps for STFT processing (default 4). See STFT section of manual.
+    </para>
+    <para>
+      <emphasis>iradius</emphasis> --  optional, head radius used for phase spectra calculation in centimeters (default 9.0)
+    </para>
+
+    <para>
+      <emphasis>isr</emphasis> - optional, default 44.1kHz, legal values: 44100, 48000 and 96000.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asrc</emphasis> -- Input/source signal.
+    </para>
+    <para>
+      <emphasis>kAz</emphasis> -- azimuth value in degrees. Positive values represent position on the right, negative values are positions on the left.
+    </para>
+    <para>
+      <emphasis>kElev</emphasis> -- elevation value in degrees. Positive values represent position above horizontal, negative values are positions below horizontal (min -40).
+    </para>
+    <para>
+      Artifact-free user-defined trajectories are made possible using an interpolation algorithm based on spectral
+      magnitude interpolation and a derived phase spectrum based on the Woodworth spherical head model.
+      Accuracy is increased for the data set provided by extracting and applying a frequency dependent scaling factor
+      to the phase spectra, leading to a more precise low frequency interaural time difference.
+      Users can control head radius for the phase derivation, allowing a crude level of individualisation.
+      The dynamic source version of the opcode uses a Short Time Fourier Transform algorithm to avoid artefacts
+      caused by derived phase spectra changes. STFT processing means this opcode is more computationally intensive
+      than <link linkend="hrtfmove"><citetitle>hrtfmove</citetitle></link> using phase truncation, but phase is constantly updated by <emphasis>hrtfmove2</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the hrtfmove2 opcode. It uses the file <ulink url="examples/hrtfmove2.csd"><citetitle>hrtfmove2.csd</citetitle></ulink>.
+    </para>
+    <example>
+      <title>Example of the htrfmove2 opcode.</title>
+<xi:include href="examples-xml/hrtfmove2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </example>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="hrtfmove"><citetitle>hrtfmove</citetitle></link>,
+      <link linkend="hrtfstat"><citetitle>hrtfstat</citetitle></link>,
+      <link linkend="hrtfer"><citetitle>hrtfer</citetitle></link>.
+    </para>
+            <para> More information on this opcode: <ulink url="http://www.csounds.com/journal/issue9/newHRTFOpcodes.html"><citetitle>http://www.csounds.com/journal/issue9/newHRTFOpcodes.html</citetitle></ulink>  , written by Brian Carty </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Brian Carty</member>
+        <member>Maynooth</member>
+        <member>2008</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry> 

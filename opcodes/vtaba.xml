@@ -1,0 +1,82 @@
+
+<refentry id="vtaba">
+<indexterm id="IndexVtaba"><primary>vtaba</primary></indexterm>
+  <refentryinfo><title>Vectorial:Tables</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vtaba</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vtaba</refname>
+    <refpurpose>
+      Read vectors (from tables -or arrays of vectors).
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This opcode reads vectors from tables at a-rate.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>vtaba</command>  andx, ifn, aout1 [, aout2, aout3, .... , aoutN ]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifn</emphasis> - table number
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>andx</emphasis> - Index into f-table, either a positive number range matching the table length
+    </para>
+    <para>
+      <emphasis>aout1...aoutN</emphasis> - output vector elements
+    </para>
+    <para>
+      This opcode is useful in all cases in which one needs to access sets of values associated to unique indexes (for example, multi-channel samples, STFT bin frames, spectral formants, p-field based scores etc.). The number of elements of each vector (length of the vector) is determined by the number of optional arguments on the right (<emphasis>aout1</emphasis>, <emphasis>aout2</emphasis>, <emphasis>aout3</emphasis>, ....  <emphasis>aoutN</emphasis>).
+    </para>
+    <para>
+      Notice that no wrap nor limit mode is implemented.  So, if  an index attempt to access to a zone not allocated by the table, Csound will probably crash. However this drawback can be easily avoided by using wrap or limit opcodes applied to indexes before using <emphasis>vtaba</emphasis>, in order to correct eventual out-of-range values.
+    </para>
+    <para>
+      The <command>vtab</command> family is similar to the <command>vtable</command> family, but is much faster because interpolation is not available, table number cannot be changed after initialization, and only raw indexing is supported.
+    </para>
+    <note>
+      <para>
+        Notice that <emphasis>vtaba</emphasis>'s output arguments are placed at the right of the opcode name, differently from usual (this style is already used in other opcodes using undefined lists of output arguments such as <link linkend="fin"><citetitle>fin</citetitle></link> or <link linkend="trigseq"><citetitle>trigseq</citetitle></link>).
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+       The usage of <emphasis>vtaba</emphasis> is similar to <link linkend="vtablek"><citetitle>vtablek</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See also</title>
+    <para>
+      <link linkend="vtabk"><citetitle>vtabk</citetitle></link>,
+      <link linkend="vtabi"><citetitle>vtabi</citetitle></link>,
+      <link linkend="vtablea"><citetitle>vtablea</citetitle></link>,
+      <link linkend="vtablewa"><citetitle>vtablewa</citetitle></link>,
+      <link linkend="vtabwa"><citetitle>vtabwa</citetitle></link>,
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>Written by Gabriel Maldonado.</para>
+    <para>New in Csound 5 (Previously available only on CsoundAV)</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,56 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in</emphasis>
+-odac          <emphasis role="comment">; -iadc    ;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o system.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="comment">; Initialize the global variables.</emphasis>
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">kr</emphasis> <emphasis role="op">=</emphasis> 4410
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 10
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1
+<emphasis role="comment">; Waits for command to execute before continuing</emphasis>
+ires <emphasis role="opc">system_i</emphasis> 1,{{     ps
+            <emphasis role="opc">date</emphasis>
+            cd <emphasis role="op">~</emphasis><emphasis role="op">/</emphasis>Desktop
+            pwd
+            ls <emphasis role="op">-</emphasis>l
+            whois csounds.com
+        }}
+<emphasis role="opc">print</emphasis> ires
+<emphasis role="opc">turnoff</emphasis>
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 2
+<emphasis role="comment">; Runs command in a separate thread</emphasis>
+ires <emphasis role="opc">system_i</emphasis> 1,{{     ps
+            <emphasis role="opc">date</emphasis>
+            cd <emphasis role="op">~</emphasis><emphasis role="op">/</emphasis>Desktop
+            pwd
+            ls <emphasis role="op">-</emphasis>l
+            whois csounds.com
+        }}, 1
+
+<emphasis role="opc">print</emphasis> ires
+<emphasis role="opc">turnoff</emphasis>
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="comment">; Play Instrument #1 for thirty seconds.</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 1
+<emphasis role="stamnt">i</emphasis> 2 5 1
+<emphasis role="stamnt">e</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

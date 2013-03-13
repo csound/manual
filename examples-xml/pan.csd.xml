@@ -1,0 +1,42 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac     <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if real audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o pan.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 4
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1
+
+kcps <emphasis role="op">=</emphasis> p4
+k1   <emphasis role="opc">phasor</emphasis> kcps		<emphasis role="comment">; "fraction" of circle - controls speed of rotation - can be negative</emphasis>
+k2   <emphasis role="opc">tablei</emphasis> k1, 1, 1 		<emphasis role="comment">; sin of angle (sinusoid in f1)</emphasis>
+k3   <emphasis role="opc">tablei</emphasis> k1, 1, 1, .25, 1	<emphasis role="comment">; cos of angle (sin offset 1/4 circle)</emphasis>
+arnd <emphasis role="opc">randomi</emphasis> 400, 1000, 50	<emphasis role="comment">; produce random values </emphasis>
+asig <emphasis role="opc">poscil</emphasis> .7, arnd, 1		<emphasis role="comment">; audio signal.. </emphasis>
+
+a1,a2,a3,a4 <emphasis role="opc">pan</emphasis>	asig, k2<emphasis role="op">/</emphasis>2, k3<emphasis role="op">/</emphasis>2, 2, 1, 1	<emphasis role="comment">; sent in a circle (f2=1st quad sin)</emphasis>
+	<emphasis role="opc">outq</emphasis>	a1, a2, a3, a4
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">f</emphasis>1 0 8192 10 1
+<emphasis role="stamnt">f</emphasis>2 0 8193 9 .25 1 0
+
+<emphasis role="stamnt">i</emphasis>1 0 10 .2	<emphasis role="comment">;move to the tight</emphasis>
+<emphasis role="stamnt">i</emphasis>1 11 10 -.2	<emphasis role="comment">;move to the left</emphasis>
+<emphasis role="stamnt">e</emphasis>
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

@@ -1,0 +1,124 @@
+
+<refentry id="vbap4move">
+<indexterm id="IndexVbap4move"><primary>vbap4move</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Panning and Spatialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vbap4move</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vbap4move</refname>
+    <refpurpose>
+      Distributes an audio signal among 4 channels with moving virtual sources.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Distributes an audio signal among 4 channels with moving virtual sources.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ar1, ar2, ar3, ar4 <command>vbap4move</command> asig, idur, ispread, ifldnum, ifld1 \
+      [, ifld2] [...]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>idur</emphasis> -- the duration over which the
+    movement takes place.
+    </para>
+    <para>
+      <emphasis>ispread</emphasis> -- spreading of the virtual source
+    (range 0 - 100).  If value is zero, conventional amplitude panning
+    is used. When <emphasis>ispread</emphasis> is increased, the
+    number of loudspeakers used in panning increases. If value is 100,
+    the sound is applied to all loudspeakers. 
+    </para>
+
+    <para>
+      <emphasis>ifldnum</emphasis> -- number of fields (absolute value must be 2 or larger). If <emphasis>ifldnum</emphasis> is positive, the virtual source movement is a polyline specified by given directions. Each transition is performed in an equal time interval. If <emphasis>ifldnum</emphasis> is negative, specified angular velocities are applied to the virtual source during specified relative time intervals (see below).
+    </para>
+
+    <para>
+      <emphasis>ifld1, ifld2, ...</emphasis> -- azimuth angles or angular velocities, and relative durations of movement phases (see below).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asig</emphasis> -- audio signal to be panned
+    </para>
+
+    <para>
+      <emphasis>vbap4move</emphasis> allows the use of moving virtual sources. If <emphasis>ifldnum</emphasis> is positive, the fields represent directions of virtual sources and equal times, <emphasis>iazi1</emphasis>, [<emphasis>iele1</emphasis>,] <emphasis>iazi2</emphasis>, [<emphasis>iele2</emphasis>,], etc.  The position of the virtual source is interpolated between directions starting from the first direction and ending at the last. Each interval is interpolated in time that is fraction total_time / number_of_intervals of the duration of the sound event.
+    </para>
+
+    <para>
+      If <emphasis>ifldnum</emphasis> is negative, the fields represent angular velocities and equal times. The first field is, however, the starting direction, <emphasis>iazi1</emphasis>, [<emphasis>iele1</emphasis>,] <emphasis>iazi_vel1</emphasis>, [<emphasis>iele_vel1</emphasis>,] <emphasis>iazi_vel2</emphasis>, [<emphasis>iele_vel2</emphasis>,] .... Each velocity is applied to the note that is fraction total_time / number_of_velocities of the duration of the sound event.  If the elevation of the virtual source becomes greater than 90 degrees or less than 0 degrees, the polarity of angular velocity is changed. Thus the elevational angular velocity produces a virtual source that moves up and down between 0 and 90 degrees.
+    </para>
+    <warning>
+      <para>Please note that all <emphasis>vbap</emphasis> panning opcodes require the <emphasis>vbap</emphasis> system to be initialized using <link linkend="vbaplsinit"><citetitle>vbaplsinit</citetitle></link>.</para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      See the entry for <link linkend="vbap8move"><citetitle>vbap8move</citetitle></link> for an example of usage of the <emphasis>vbapXmove</emphasis> opcodes.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Reference</title>
+    <para>
+      Ville Pulkki: <quote>Virtual Sound Source Positioning Using Vector Base Amplitude Panning</quote> <emphasis>Journal of the Audio Engineering Society</emphasis>, 1997 June, Vol. 45/6, p. 456.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the vbap4move opcode. It uses the file <ulink url="examples/vbap4move.csd"><citetitle>vbap4move.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the vbap4move opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/vbap4move.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="vbap16"><citetitle>vbap16</citetitle></link>,
+      <link linkend="vbap16move"><citetitle>vbap16move</citetitle></link>,
+      <link linkend="vbap4"><citetitle>vbap4</citetitle></link>,
+      <link linkend="vbap8"><citetitle>vbap8</citetitle></link>,
+      <link linkend="vbap8move"><citetitle>vbap8move</citetitle></link>,
+      <link linkend="vbaplsinit"><citetitle>vbaplsinit</citetitle></link>,
+      <link linkend="vbapz"><citetitle>vbapz</citetitle></link>,
+      <link linkend="vbapzmove"><citetitle>vbapzmove</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Ville Pulkki</member>
+        <member>Sibelius Academy Computer Music Studio</member>
+        <member>Laboratory of Acoustics and Audio Signal Processing</member>
+        <member>Helsinki University of Technology</member>
+        <member>Helsinki, Finland</member>
+        <member>May 2000</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound Version 4.07</para>
+  </refsect1>
+</refentry>

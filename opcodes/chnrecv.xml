@@ -1,0 +1,91 @@
+
+<refentry id="chnrecv">
+<indexterm id="IndexChnrecv"><primary>chnrecv</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Software Bus</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>chnrecv</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>chnrecv</refname>
+    <refpurpose>
+      Recieves data from the software bus.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Receives data from a channel of the inward named software bus.
+      Implies declaring the channel with imode=1 (see also chn_k, chn_a,
+      and chn_S).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ival <command>chnrecv</command> Sname</synopsis>
+    <synopsis>kval <command>chnrecv</command> Sname</synopsis>
+    <synopsis>aval <command>chnrecv</command> Sname</synopsis>
+    <synopsis>Sval <command>chnrecv</command> Sname</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>Sname</emphasis> -- a string that identifies a channel
+      of the named software bus to read.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ival</emphasis> -- the control value read at i-time.
+    </para>
+    <para>
+      <emphasis>kval</emphasis> -- the control value read at performance time.
+    </para>
+    <para>
+      <emphasis>aval</emphasis> -- the audio signal read at performance time.
+    </para>
+    <para>
+      <emphasis>Sval</emphasis> -- the string value read at i-time.
+    </para>
+    <note><para></para></note>
+  </refsect1>
+
+  <refsect1>
+    <title>Example</title>
+    <para>
+      The example shows the software bus being used as an asynchronous
+      control signal to select a filter cutoff.  It assumes that an
+      external program that has access to the API is feeding the values.
+    </para>
+
+    <informalexample>
+      <programlisting>
+        <emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+        <emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 100
+        <emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 1
+
+        <emphasis role="oblock">instr</emphasis>   1
+           kc   <emphasis role="opc">chnrecv</emphasis>    "cutoff"
+           a1   <emphasis role="opc">oscil</emphasis>     p4, p5, 100
+           a2   <emphasis role="opc">lowpass2</emphasis>  a1, kc, 200
+                <emphasis role="opc">out</emphasis>       a2
+        <emphasis role="oblock">endin</emphasis></programlisting>
+    </informalexample>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &nameistvan;</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

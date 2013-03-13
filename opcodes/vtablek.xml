@@ -1,0 +1,102 @@
+
+<refentry id="vtablek">
+<indexterm id="IndexVtablek"><primary>vtablek</primary></indexterm>
+  <refentryinfo><title>Vectorial:Tables</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vtablek</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vtablek</refname>
+    <refpurpose>
+     Read vectors (from tables -or arrays of vectors).
+      
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+	This opcode reads vectors from tables at k-rate.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>vtablek</command>  kndx, kfn, kinterp, ixmode, kout1 [, kout2, kout3, .... , koutN ]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para> <emphasis>ixmode</emphasis> -  index data mode. The default value is 0.
+    </para>
+      <para>                == 0 index is treated as a raw table location,
+      </para>
+      <para>                == 1 index is normalized (0 to 1).
+      </para>
+      <para>
+      <emphasis>kinterp</emphasis> - switch beetween interpolated or non-interpolated output. 0 -&gt; non-interpolation , non-zero -&gt; interpolation activated
+      </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kndx</emphasis> - Index into f-table, either a positive number range matching the table length (ixmode = 0) or a 0 to 1 range (ixmode != 0).
+     </para> 
+     <para>
+      <emphasis>kfn</emphasis> - table number
+     </para>
+     <para>
+      <emphasis>kout1...koutN</emphasis> - output vector elements
+    </para> 
+    <para>
+      This opcode is useful in all cases in which one needs to access sets of values associated to unique indexes (for example, multi-channel samples, STFT bin frames, spectral formants, p-field based scores etc.). The number of elements of each vector (length of the vector) is determined by the number of optional arguments on the right (kout1 , kout2, kout3, ....  koutN).
+    </para>
+    <para>
+      <emphasis>vtablek</emphasis> allows the user to switch beetween interpolated or non-interpolated output at k-rate by means of kinterp argument.
+    </para>
+    <para>
+      <emphasis>vtablek</emphasis> allows also to switch the table number at k-rate (but this is possible only when vector frames of each used table have the same number of elements, otherwise unpredictable results could occurr), as well as to choose indexing style (raw or normalized, see  also ixmode argument of table opcode ).
+    </para>
+    <para>
+      Notice that no wrap nor limit mode is implemented.  So, if  an index attempt to access to a zone not allocated by the table, Csound will probably crash. However this drawback can be easily avoided by using wrap or limit opcodes applied to indexes before using vtable, in order to correct eventual out-of-range values.
+    </para>
+    <note>
+      <para>
+        Notice that <emphasis>vtablek</emphasis>'s output arguments are placed at the left of the opcode name, differently from usual (this style is already used in other opcodes using undefined lists of output arguments such as <link linkend="fin"><citetitle>fin</citetitle></link> or <link linkend="trigseq"><citetitle>trigseq</citetitle></link>).
+      </para>
+    </note>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the vtablek opcode. It uses the files <ulink url="examples/vtablek.csd"><citetitle>vtablek.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the vtablek opcode.</title>
+        <xi:include href="examples-xml/vtablek.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See also</title>
+    <para>
+      <link linkend="vtablea"><citetitle>vtablea</citetitle></link>,
+      <link linkend="vtablei"><citetitle>vtablei</citetitle></link>,
+      <link linkend="vtabk"><citetitle>vtabk</citetitle></link>,
+      <link linkend="vtablewk"><citetitle>vtablewk</citetitle></link>,
+      <link linkend="vtabwk"><citetitle>vtabwk</citetitle></link>,
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Written by Gabriel Maldonado.</para>
+    <para>Example written by Andres Cabrera.</para>
+    <para>New in Csound 5 (Previously available only on CsoundAV)</para>
+  </refsect1>
+</refentry>

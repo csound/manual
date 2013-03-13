@@ -1,0 +1,130 @@
+
+<refentry id="locsig">
+<indexterm id="IndexLocsig"><primary>locsig</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Panning and Spatialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>locsig</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>locsig</refname>
+    <refpurpose>
+      Takes an input signal and distributes between 2 or 4 channels.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>locsig</emphasis> takes an input signal and distributes it among 2 or 4 channels using values in degrees to calculate the balance between adjacent channels. It also takes arguments for distance (used to attenuate signals that are to sound as if they are some distance further than the loudspeaker itself), and for the amount the signal that will be sent to reverberators. This unit is based upon the example in the Charles Dodge/Thomas Jerse book, <emphasis>Computer Music</emphasis>, page 320.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>a1, a2 <command>locsig</command> asig, kdegree, kdistance, kreverbsend</synopsis>
+
+    <synopsis>a1, a2,  a3, a4 <command>locsig</command> asig, kdegree, kdistance, kreverbsend</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kdegree</emphasis> -- value between 0 and 360 for placement of the signal in a 2 or 4 channel space configured as: a1=0, a2=90, a3=180, a4=270 (kdegree=45 would balanced the signal equally between a1 and a2). <emphasis>locsig</emphasis> maps <emphasis>kdegree</emphasis> to sin and cos functions to derive the signal balances (e.g.: asig=1, kdegree=45, a1=a2=.707).
+    </para>
+
+    <para>
+      <emphasis>kdistance</emphasis> -- value &gt;= 1 used to attenuate the signal and to calculate reverb level to simulate distance cues.  As <emphasis>kdistance</emphasis> gets larger the sound should get softer and somewhat more reverberant (assuming the use of <emphasis>locsend</emphasis> in this case).
+    </para>
+
+    <para>
+      <emphasis>kreverbsend</emphasis> -- the percentage of the direct signal that will be factored along with the distance and degree values to derive signal amounts that can be sent to a reverb unit such as <emphasis>reverb</emphasis>, or <emphasis>reverb2</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the locsig opcode. It uses the file <ulink url="examples/locsig_quad.csd"><citetitle>locsig_quad.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the locsig opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/locsig_quad.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+    <para>
+      In the above example, the signal, <emphasis>aout</emphasis>, is sent around a complete circle once during the duration of a note while at the same time it becomes more and more &quot;distant&quot; from the listeners' location. <emphasis>locsig</emphasis> sends the appropriate amount of the signal internally to <emphasis>locsend</emphasis>. The outputs of the <emphasis>locsend</emphasis> are added to global accumulators in a common Csound style and the global signals are used as inputs to the reverb units in a separate instrument.
+    </para>
+
+    <para>
+      <emphasis>locsig</emphasis> is useful for quad and stereo panning as well as fixed placed of sounds anywhere between two loudspeakers. Below is an example of the fixed placement of sounds in a stereo field.
+    </para>
+
+    <para>
+      <informalexample>
+        <programlisting>
+<emphasis role="oblock">instr</emphasis> 1
+  a1, a2             <emphasis role="opc">locsig</emphasis>  asig, p4, p5, .1
+  ar1, ar2           <emphasis role="opc">locsend</emphasis>
+  ga1 <emphasis role="op">=</emphasis> ga1<emphasis role="op">+</emphasis>ar1
+  ga2 <emphasis role="op">=</emphasis> ga2<emphasis role="op">+</emphasis>ar2
+                     <emphasis role="opc">outs</emphasis> a1, a
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="oblock">instr</emphasis> 99 
+  <emphasis role="comment">; reverb....</emphasis>
+<emphasis role="oblock">endin</emphasis></programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      A few notes:
+      <informalexample>
+        <programlisting>
+  <emphasis role="comment">;place the sound in the left speaker and near:</emphasis>
+  <emphasis role="stamnt">i</emphasis>1 0 1 0 1
+  
+  <emphasis role="comment">;place the sound in the right speaker and far:</emphasis>
+  <emphasis role="stamnt">i</emphasis>1 1 1 90 25
+  
+  <emphasis role="comment">;place the sound equally between left and right and in the middle ground distance:</emphasis>
+  <emphasis role="stamnt">i</emphasis>1 2 1 45 12
+  <emphasis role="stamnt">e</emphasis></programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      The next example shows a simple intuitive use of the distance value to simulate Doppler shift. The same value is used to scale the frequency as is used as the distance input to <emphasis>locsig</emphasis>.
+      <informalexample>
+        <programlisting>
+  kdistance          <emphasis role="opc">line</emphasis>    1, p3, 10
+  kfreq <emphasis role="op">=</emphasis> (ifreq <emphasis role="op">*</emphasis> 340) <emphasis role="op">/</emphasis> (340 <emphasis role="op">+</emphasis> kdistance)
+  asig               <emphasis role="opc">oscili</emphasis>  iamp, kfreq, 1
+  kdegree            <emphasis role="opc">line</emphasis>    0, p3, 360
+  a1, a2, a3, a4     <emphasis role="opc">locsig</emphasis>  asig, kdegree, kdistance, .1
+  ar1, ar2, ar3, ar4 <emphasis role="opc">locsend</emphasis></programlisting>
+      </informalexample>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="locsend"><citetitle>locsend</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Richard Karpen</member>
+        <member>Seattle, WA USA</member>
+        <member>1998</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.48</para>
+  </refsect1>
+</refentry>

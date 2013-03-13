@@ -1,0 +1,90 @@
+
+<refentry id="eqfil">
+<indexterm id="Indexeqfil"><primary>eqfil</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Specialized Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>eqfil</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>eqfil</refname>
+    <refpurpose>
+      Equalizer filter
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      The opcode eqfil is a 2nd order tunable equalisation filter based on Regalia and Mitra
+      design ("Tunable Digital Frequency Response Equalization Filters", IEEE Trans.
+      on Ac., Sp. and Sig Proc., 35 (1), 1987). It provides a peak/notch filter for
+      building parametric/graphic equalisers.
+    </para>
+    <para>
+      The amplitude response for this filter will be flat (=1) for <emphasis>kgain</emphasis>=1. With <emphasis>kgain</emphasis> bigger than 1, there
+      will be a peak at the centre frequency, whose width is given by the <emphasis>kbw</emphasis> parameter, but 
+      outside this band, the response will tend towards 1. Conversely, if <emphasis>kgain</emphasis> is smaller than 1, a notch will
+      be created around the CF.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>asig <command>eqfil</command> ain, kcf, kbw, kgain[, istor]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+      <para>
+        <emphasis>istor</emphasis> --initial disposition of internal data space. Since 
+        filtering incorporates a feedback loop of previous output, 
+        the initial status of the storage space used is significant. 
+        A zero value will clear the space; a non-zero value will allow 
+        previous information to remain. The default value is 0.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asig</emphasis> -- filtered output signal.
+    </para>
+    <para>
+      <emphasis>ain</emphasis> -- input signal.
+    </para>
+    <para>
+      <emphasis>kcf</emphasis> -- filter centre frequency.
+    </para>
+
+    <para>
+      <emphasis>kbw</emphasis> -- peak/notch bandwidth (Hz). 
+    </para>
+  <para>
+      <emphasis>kgain</emphasis> -- peak/notch gain. 
+    </para>
+  </refsect1>
+
+    <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the eqfil opcode. It uses the file <ulink url="examples/eqfil.csd"><citetitle>eqfil.csd</citetitle></ulink>.
+            <example>
+        <title>Example of the eqfil opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/eqfil.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>April 2007</member>
+      </simplelist>
+    </para>
+    <para>New in version 5.06</para>
+  </refsect1>
+</refentry>

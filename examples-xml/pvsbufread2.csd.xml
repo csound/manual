@@ -1,0 +1,37 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="ohdr">ksmps</emphasis>  <emphasis role="op">=</emphasis> 64
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+
+<emphasis role="oblock">instr</emphasis> 1
+kcnt     <emphasis role="opc">init</emphasis>         0
+ifftsize <emphasis role="op">=</emphasis>            2048
+ihop     <emphasis role="op">=</emphasis>            ifftsize<emphasis role="op">/</emphasis>4
+
+a1       <emphasis role="opc">diskin2</emphasis>      "beats.wav", 1, 0, 1
+a1       <emphasis role="op">=</emphasis>            a1<emphasis role="op">*</emphasis>0.5
+fsig1    <emphasis role="opc">pvsanal</emphasis>      a1, ifftsize, ihop, ifftsize, 1
+ih, kt   <emphasis role="opc">pvsbuffer</emphasis>    fsig1, 10
+
+fsig2    <emphasis role="opc">pvsbufread2</emphasis>  kt, ih, 1, 1
+fsig3    <emphasis role="opc">pvsbufread2</emphasis>  kt, ih, 2, 2
+
+a2       <emphasis role="opc">pvsynth</emphasis>      fsig3
+a3       <emphasis role="opc">pvsynth</emphasis>      fsig2
+
+         <emphasis role="opc">outs</emphasis>         a2, a3
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis>1 0 2048 -7 0 128 1.1 128 0.5  256 1.8 512 1.1 1024 0.1
+<emphasis role="stamnt">f</emphasis>2 0 2048 -7 1 128 0.2 128 0.05 256 0.5 512 0.9 1024 0.1
+
+<emphasis role="stamnt">i</emphasis>1 0 60
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

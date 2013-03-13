@@ -1,0 +1,183 @@
+
+<refentry id="tableiw">
+<indexterm id="IndexTableiw"><primary>tableiw</primary></indexterm>
+  <refentryinfo><title>Table Control:Read/Write Opreations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tableiw</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>tableiw</refname>
+    <refpurpose>
+      Change the contents of existing function tables.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This opcode operates on existing function tables, changing their contents. <emphasis>tableiw</emphasis> is used when all inputs are init time variables or constants and you only want to run it at the initialization of the instrument. The valid combinations of variable types are shown by the first letter of the variable names.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>tableiw</command> isig, indx, ifn [, ixmode] [, ixoff] [, iwgmode]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>isig</emphasis> -- Input value to write to the table.
+    </para>
+
+    <para>
+      <emphasis>indx</emphasis> -- Index into table, either a positive number range matching the table length (<emphasis>ixmode</emphasis> = 0) or a 0 to 1 range (<emphasis>ixmode</emphasis> not equal to 0)
+    </para>
+
+    <para>
+      <emphasis>ifn</emphasis> -- Table number. Must be &gt;= 1. Floats are rounded down to an integer. If a table number does not point to a valid table, or the table has not yet been loaded (<link linkend="GEN01"><citetitle>GEN01</citetitle></link>) then an error will result and the instrument will be de-activated.
+    </para>
+
+    <para>
+      <emphasis>ixmode</emphasis> (optional, default=0) -- index mode.
+      <itemizedlist>
+        <listitem>
+          <para>
+            0 = <emphasis>indx</emphasis> and <emphasis>ixoff</emphasis> ranges match the length of the table.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            not equal to 0 = <emphasis>indx</emphasis> and <emphasis>ixoff</emphasis> have a 0 to 1 range. 
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>ixoff</emphasis> (optional, default=0) -- index offset.
+
+      <itemizedlist>
+        <listitem>
+           <para>
+             0 = Total index is controlled directly by <emphasis>indx</emphasis>, i.e. the indexing starts from the start of the table. 
+           </para>
+        </listitem>
+
+        <listitem>
+           <para>
+             Not equal to 0 = Start indexing from somewhere else in the table. Value must be positive and less than the table length (<emphasis>ixmode</emphasis> = 0) or less than 1 (<emphasis>ixmode</emphasis> not equal to  0).
+           </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>iwgmode</emphasis> (optional, default=0) -- Wrap and guard point mode.
+
+      <itemizedlist>
+        <listitem>
+           <para>
+             0 = Limit mode.
+           </para>
+        </listitem>
+
+        <listitem>
+           <para>
+             1 = Wrap mode.
+           </para>
+        </listitem>
+
+        <listitem>
+           <para>
+             2 = Guardpoint mode.
+           </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+
+    <refsect2>
+      <title>Limit mode (0)</title>
+      <para>
+        Limit the total index (<emphasis>indx</emphasis> + <emphasis>ixoff</emphasis>) to between 0 and the guard point. For a table of length 5, this means that locations 0 to 3 and location 4 (the guard point) can be written. A negative total index writes to location 0. 
+      </para>
+    </refsect2>
+
+    <refsect2>
+      <title>Wrap mode (1)</title>
+      <para>
+        Wrap total index value into locations 0 to E, where E is either one less than the table length or the factor of 2 number which is one less than the table length. For example, wrap into a 0 to 3 range - so that total index 6 writes to location 2.
+      </para>
+    </refsect2>
+
+    <refsect2>
+      <title>Guardpoint mode (2)</title>
+      <para>
+        The guardpoint is written at the same time as location 0 is written - with the same value.
+      </para>
+
+      <para>
+        This facilitates writing to tables which are intended to be read with interpolation for producing smooth cyclic waveforms. In addition, before it is used, the total index is incremented by half the range between one location and the next, before being rounded down to the integer address of a table location.
+      </para>
+
+      <para>
+        Normally (<emphasis>iwgmode</emphasis> = 0 or 1) for a table of length 5 - which has locations 0 to 3 as the main table and location 4 as the guard point, a total index in the range of 0 to 0.999 will write to location 0. (&quot;0.999&quot; means just less than 1.0.) 1.0 to 1.999 will write to location 1 etc. A similar pattern holds for all total indexes 0 to 4.999 (<emphasis>igwmode</emphasis> = 0) or to 3.999 (<emphasis>igwmode</emphasis> = 1). <emphasis>igwmode</emphasis> = 0 enables locations 0 to 4 to be written - with the guardpoint (4) being written with a potentially different value from location 0.
+      </para>
+
+      <para>
+        With a table of length 5 and the <emphasis>iwgmode</emphasis> = 2, then when the total index is in the range 0 to 0.499, it will write to locations 0 and 4. Range 0.5 to 1.499 will write to location 1 etc. 3.5 to 4.0 will also write to locations 0 and 4.
+      </para>
+
+      <para>
+        This way, the writing operation most closely approximates the results of interpolated reading. Guard point mode should only be used with tables that have a guardpoint.
+      </para>
+
+      <para>
+        Guardpoint mode is accomplished by adding 0.5 to the total index, rounding to the next lowest integer, wrapping it modulo the factor of two which is one less than the table length, writing the table (locations 0 to 3 in our example) and then writing to the guard point if index = 0.
+      </para>
+    </refsect2>
+  </refsect1>
+      
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the tableiw opcode. It uses the file <ulink url="examples/tableiw.csd"><citetitle>tableiw.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the tableiw opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/tableiw.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="tablew"><citetitle>tablew</citetitle></link>, 
+      <link linkend="tablewkt"><citetitle>tablewkt</citetitle></link>
+    </para>
+    <para> More information on this opcode: <ulink url="http://www.csounds.com/journal/issue12/genInstruments.html"><citetitle>http://www.csounds.com/journal/issue12/genInstruments.html</citetitle></ulink>  , written by Jacob Joaquin </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Robin Whittle</member>
+        <member>Australia</member>
+        <member>May 1997</member>
+      </simplelist>
+    </para>
+    <para>New in version 3.47</para>
+
+    <para>Updated August 2002, thanks go to Abram Hindle for pointing out the correct syntax.</para>
+  </refsect1>
+</refentry>

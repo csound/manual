@@ -1,0 +1,39 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac  <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o gen24.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1
+
+ifn  <emphasis role="op">=</emphasis> p4				<emphasis role="comment">;choose between tables</emphasis>
+kcps <emphasis role="opc">init</emphasis> 1<emphasis role="op">/</emphasis>p3				<emphasis role="comment">;create index over duration of note.</emphasis>
+kndx <emphasis role="opc">phasor</emphasis> kcps
+ixmode <emphasis role="op">=</emphasis> 1				<emphasis role="comment">;normalize to 0-1</emphasis>
+kval <emphasis role="opc">table</emphasis> kndx, ifn, ixmode
+asig <emphasis role="opc">poscil</emphasis> .7, 440 <emphasis role="op">+</emphasis> kval, 1		<emphasis role="comment">;add to frequency</emphasis>
+     <emphasis role="opc">outs</emphasis> asig, asig
+  
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 16384 10 1	<emphasis role="comment">;sine wave</emphasis>
+<emphasis role="stamnt">f</emphasis> 10 0 16384 -24 1 0 400<emphasis role="comment">;scale sine wave from table 1 from 0 to 400</emphasis>
+<emphasis role="stamnt">f</emphasis> 11 0 16384 -24 1 0 50	<emphasis role="comment">;and from 0 to 50</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1 0 3 10
+<emphasis role="stamnt">i</emphasis> 1 4 3 11
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

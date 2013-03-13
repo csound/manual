@@ -1,0 +1,44 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac     <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o exp.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis> <emphasis role="op">=</emphasis>1
+
+gisine    <emphasis role="ohdr">ftgen</emphasis>     0, 0, 2^10, 10, 1 <emphasis role="comment">;table for a sine wave</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 1 <emphasis role="comment">;master instrument</emphasis>
+koct      <emphasis role="opc">linseg</emphasis>    6, p3, 12 <emphasis role="comment">; octave register straight rising from 6 to 12</emphasis>
+kexp      <emphasis role="opc">linseg</emphasis>    0, p3<emphasis role="op">/</emphasis>3, 5, p3<emphasis role="op">/</emphasis>3, 5, p3<emphasis role="op">/</emphasis>3, 0 <emphasis role="comment">;exponent goes from 0 to 5 and back</emphasis>
+kdens     <emphasis role="op">=</emphasis>         <emphasis role="opc">exp</emphasis>(kexp) <emphasis role="comment">;density is e to the power of kexp</emphasis>
+          <emphasis role="opc">printks</emphasis>   "Generated events per second<emphasis role="op">:</emphasis> <emphasis role="op">%</emphasis>d\n", 1, kdens
+ktrig     <emphasis role="opc">metro</emphasis>     kdens <emphasis role="comment">;trigger single notes in kdens frequency</emphasis>
+ <emphasis role="octrl">if</emphasis> ktrig <emphasis role="op">==</emphasis> 1 then
+<emphasis role="comment">;call instr 10 for 1/kdens duration, .5 amplitude and koct register</emphasis>
+          <emphasis role="opc">event</emphasis>     "i", 10, 0, 1<emphasis role="op">/</emphasis>kdens, .5, koct
+ <emphasis role="octrl">endif</emphasis>
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 10 <emphasis role="comment">;performs one tone</emphasis>
+ioct      <emphasis role="opc">rnd31</emphasis>     1, 0 <emphasis role="comment">;random deviation maximum one octave plus/minus</emphasis>
+aenv      <emphasis role="opc">transeg</emphasis>   p4, p3, <emphasis role="op">-</emphasis>6, 0 <emphasis role="comment">;fast decaying envelope for p4 amplitude</emphasis>
+asin      <emphasis role="opc">poscil</emphasis>    aenv, <emphasis role="opc">cpsoct</emphasis>(p5<emphasis role="op">+</emphasis>ioct), gisine <emphasis role="comment">;sine for p5 octave register plus random deviation</emphasis>
+          <emphasis role="opc">outs</emphasis>      asin, asin
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 30
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

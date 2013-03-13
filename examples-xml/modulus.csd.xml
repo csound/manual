@@ -1,0 +1,41 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac -Ma --midi-key=4 --midi-velocity-amp=5 -m0  <emphasis role="comment">;;;realtime audio out and midi in</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o %.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+giScale <emphasis role="ohdr">ftgen</emphasis> 1, 0, <emphasis role="op">-</emphasis>12, <emphasis role="op">-</emphasis>2, 0, <emphasis role="op">-</emphasis>34, <emphasis role="op">-</emphasis>7, 10, <emphasis role="op">-</emphasis>14, 3, <emphasis role="op">-</emphasis>21, <emphasis role="op">-</emphasis>3, <emphasis role="op">-</emphasis>27, <emphasis role="op">-</emphasis>10, 7, <emphasis role="op">-</emphasis>17	<emphasis role="comment">;12 note scale with detuned keys</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 1
+
+ikey	<emphasis role="op">=</emphasis> p4
+ivel	<emphasis role="op">=</emphasis> p5
+indx	<emphasis role="op">=</emphasis> ikey <emphasis role="op">%</emphasis> 12								<emphasis role="comment">;work on the twelftone scale</emphasis>
+icent	<emphasis role="opc">tab_i</emphasis> indx, giScale							<emphasis role="comment">;load the scale</emphasis>
+ifreqeq	<emphasis role="op">=</emphasis> <emphasis role="opc">cpsmidinn</emphasis>(ikey)
+ifreq	<emphasis role="op">=</emphasis> ifreqeq <emphasis role="op">*</emphasis> <emphasis role="opc">cent</emphasis>(icent)							<emphasis role="comment">;change frequency by cents from table</emphasis>
+<emphasis role="opc">prints</emphasis>	"Key <emphasis role="op">%</emphasis>d modulus 12 <emphasis role="op">=</emphasis>  <emphasis role="op">%</emphasis>d. ", ikey, indx
+<emphasis role="opc">prints</emphasis>	"Equal<emphasis role="op">-</emphasis>tempered frequency of this key  <emphasis role="op">=</emphasis> <emphasis role="op">%</emphasis>f,", ifreqeq
+<emphasis role="opc">prints</emphasis>  " but here with <emphasis role="opc">cent</emphasis> deviation <emphasis role="op">%</emphasis>d <emphasis role="op">=</emphasis> <emphasis role="op">%</emphasis>f<emphasis role="op">%</emphasis>n", icent, ifreq
+asig	<emphasis role="opc">vco2</emphasis> ivel<emphasis role="op">*</emphasis>.5, ifreq
+	<emphasis role="opc">outs</emphasis> asig, asig
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis> 0 60		<emphasis role="comment">;run for 60 seconds</emphasis>
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

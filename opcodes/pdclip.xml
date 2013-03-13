@@ -1,0 +1,121 @@
+
+<refentry id="pdclip">
+<indexterm id="IndexPdclip"><primary>pdclip</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Waveshaping</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pdclip</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>pdclip</refname>
+
+    <refpurpose>
+      Performs linear clipping on an audio signal or a phasor.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      The <emphasis>pdclip</emphasis> opcode allows a percentage of the input range of a signal to be clipped to fullscale. It is similar to simply multiplying the signal and limiting the range of the result, but <emphasis>pdclip</emphasis> allows you to think about how much of the signal range is being distorted instead of the scalar factor and has a offset parameter for assymetric clipping of the signal range. <emphasis>pdclip</emphasis> is also useful for remapping phasors for phase distortion synthesis.  
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>aout <command>pdclip</command> ain, kWidth, kCenter [, ibipolar [, ifullscale]]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ibipolar</emphasis> -- an optional parameter specifying either unipolar (0) or bipolar (1) mode.  Defaults to unipolar mode.
+    </para>
+
+    <para>
+      <emphasis>ifullscale</emphasis> -- an optional parameter specifying the range of input and output values. The maximum will be <emphasis>ifullscale</emphasis>. The minimum depends on the mode of operation: zero for unipolar or -<emphasis>ifullscale</emphasis> for bipolar.  Defaults to 1.0 -- you should set this parameter to the maximum expected input value.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ain</emphasis> --  the input signal to be clipped.
+    </para>
+
+    <para>
+      <emphasis>aout</emphasis> --  the output signal.
+    </para>
+
+    <para>
+      <emphasis>kWidth</emphasis> --  the percentage of the signal range that is clipped (must be between 0 and 1).
+    </para>
+
+    <para>
+      <emphasis>kCenter</emphasis> --  an offset for shifting the unclipped window of the signal higher or lower in the range (essentially a DC offset).   Values should be in the range [-1, 1] with a value of zero representing no shift (regardless of whether bipolar or unipolar mode is used).
+    </para>
+
+    <para>
+      The <emphasis>pdclip</emphasis> opcode performs linear clipping on the input signal ain. <emphasis>kWidth</emphasis> specifies the percentage of the signal range that is clipped. The rest of the input range is mapped linearly from zero to ifullscale in unipolar mode and from -ifullscale to ifullscale in bipolar mode.  When <emphasis>kCenter</emphasis> is zero, equal amounts of the top and bottom of the signal range are clipped.  A negative value shifts the unclipped range more towards the bottom of the input range and a positive value shifts it more towards the top.  ibipolar should be 1 for bipolar operation and 0 for unipolar mode.  The default is unipolar mode (ibipolar = 0).  ifullscale sets the maximum amplitude of the input and output signals (defaults to 1.0).
+    </para>
+
+    <para>
+      This amounts to waveshaping the input with the following transfer function (normalized to ifullscale=1.0 in bipolar mode):
+    </para>
+
+    <para>
+      <literallayout>
+        1|   _______      x-axis is input range, y-axis is output
+         |  /       
+         | /              width of clipped region is 2*kWidth
+-1       |/        1      width of unclipped region is 2*(1 - kWidth)
+--------------------      kCenter shifts the unclipped region
+        /|                 left or right (up to kWidth)
+       / |
+      /  |
+------   |-1
+      </literallayout>
+    </para>
+
+    <para>
+      Bipolar mode can be used for direct, linear distortion of an audio signal.  Alternatively, unipolar mode is useful for modifying the output of a phasor before it is used to index a function table, effectively making this a phase distortion technique.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="pdhalf"><citetitle>pdhalf</citetitle></link>, 
+      <link linkend="pdhalfy"><citetitle>pdhalfy</citetitle></link>,
+      <link linkend="limit"><citetitle>limit</citetitle></link>,
+      <link linkend="clip"><citetitle>clip</citetitle></link>,
+      <link linkend="distort1"><citetitle>distort1</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the pdclip opcode. It uses the file <ulink url="examples/pdclip.csd"><citetitle>pdclip.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the pdclip opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/pdclip.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &nameanthony;</member>
+        <member>January 2008</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 5.08</para>
+  </refsect1>
+</refentry>

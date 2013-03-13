@@ -1,0 +1,93 @@
+
+<refentry id="readclock">
+<indexterm id="IndexReadClock"><primary>readclock</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Time Reading</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>readclock</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>readclock</refname>
+
+    <refpurpose>
+      Reads the value of an internal clock.
+          </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Reads the value of an internal clock.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ir <command>readclock</command> inum</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>inum</emphasis> -- the number of a clock.  There are 32 clocks numbered 0 through 31. All other values are mapped to clock number 32.
+    </para>
+
+    <para>
+      <emphasis>ir</emphasis> -- value at i-time, of the clock specified by <emphasis>inum</emphasis>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      Between a <link linkend="clockon"><citetitle>clockon</citetitle></link> and a <link linkend="clockoff"><citetitle>clockoff</citetitle></link> opcode, the CPU time used is accumulated in the clock. The precision is machine dependent but is the millisecond range on UNIX and Windows systems. The <emphasis>readclock</emphasis> opcde reads the current value of a clock at initialization time.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the readclock opcode. It uses the file <ulink url="examples/readclock.csd"><citetitle>readclock.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the readclock opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/readclock.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Its output should include lines like this:
+      <screen>
+instr 1:  i1 = 0.000
+instr 1:  i1 = 90.000
+instr 1:  i1 = 180.000
+      </screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="clockoff"><citetitle>clockoff</citetitle></link>, <link linkend="clockon"><citetitle>clockon</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>University of Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>July, 1999</member>
+      </simplelist>
+    </para>
+    <para>Example written by &namekevin;.</para>
+
+    <para>New in Csound version 3.56</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,118 @@
+
+<refentry id="fof">
+<indexterm id="IndexFof"><primary>fof</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Granular Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>fof</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>fof</refname>
+    <refpurpose>
+      Produces sinusoid bursts useful for formant and granular synthesis.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Audio output is a succession of sinusoid bursts initiated at frequency <emphasis>xfund</emphasis> with a spectral peak at <emphasis>xform</emphasis>. For <emphasis>xfund</emphasis> above 25 Hz these bursts produce a speech-like formant with spectral characteristics determined by the k-input parameters. For lower fundamentals this generator provides a special form of granular synthesis.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>fof</command> xamp, xfund, xform, koct, kband, kris, kdur, kdec, iolaps, \
+      ifna, ifnb, itotdur [, iphs] [, ifmode] [, iskip]</synopsis>
+ </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iolaps</emphasis> -- number of preallocated spaces needed to hold overlapping burst data. Overlaps are frequency dependent, and the space required depends on the maximum value of <emphasis>xfund * kdur</emphasis>. Can be over-estimated at no computation cost. Uses less than 50 bytes of memory per <emphasis>iolap</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>ifna, ifnb</emphasis> -- table numbers of two stored functions. The first is a sine table for sineburst synthesis (size of at least 4096 recommended). The second is a rise shape, used forwards and backwards to shape the sineburst rise and decay; this may be linear (<link linkend="GEN07"><citetitle>GEN07</citetitle></link>) or perhaps a sigmoid (<link linkend="GEN19"><citetitle>GEN19</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis>itotdur</emphasis> -- total time during which this <emphasis>fof</emphasis> will be active. Normally set to p3. No new sineburst is created if it cannot complete its <emphasis>kdur</emphasis> within the remaining <emphasis>itotdur</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>iphs</emphasis> (optional, default=0) -- initial phase of the fundamental, expressed as a fraction of a cycle (0 to 1). The default value is 0.
+    </para>
+
+    <para>
+      <emphasis>ifmode</emphasis> (optional, default=0) -- formant frequency mode. If zero, each sineburst keeps the <emphasis>xform</emphasis> frequency it was launched with. If non-zero, each is influenced by <emphasis>xform</emphasis> continuously. The default value is 0.
+    </para>
+
+    <para>
+      <emphasis>iskip</emphasis> (optional, default=0) -- If non-zero, skip initialisation (allows legato use).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>xamp</emphasis> -- peak amplitude of each sineburst, observed at the true end of its rise pattern. The rise may exceed this value given a large bandwidth (say, Q &lt; 10) and/or when the bursts are overlapping.
+    </para>
+
+    <para>
+      <emphasis>xfund</emphasis> -- the fundamental frequency (in Hertz) of the impulses that create new sinebursts.
+    </para>
+
+    <para>
+      <emphasis>xform</emphasis> -- the formant frequency, i.e. freq of the sinusoid burst induced by each <emphasis>xfund</emphasis> impulse. This frequency can be fixed for each burst or can vary continuously (see <emphasis>ifmode</emphasis>).
+    </para>
+
+    <para>
+      <emphasis>koct</emphasis> -- octaviation index, normally zero. If greater than zero, lowers the effective <emphasis>xfund</emphasis> frequency by attenuating odd-numbered sinebursts. Whole numbers are full octaves, fractions transitional.
+    </para>
+
+    <para>
+      <emphasis>kband</emphasis> -- the formant bandwidth (at -6dB), expressed in Hz. The bandwidth determines the rate of exponential decay throughout the sineburst, before the enveloping described below is applied.
+    </para>
+
+    <para>
+      <emphasis>kris, kdur, kdec</emphasis> -- rise, overall duration, and decay times (in seconds) of the sinusoid burst. These values apply an enveloped duration to each burst, in similar fashion to a Csound <emphasis>linen</emphasis> generator but with rise and decay shapes derived from the <emphasis>ifnb</emphasis> input. <emphasis>kris</emphasis> inversely determines the skirtwidth (at -40 dB) of the induced formant region. <emphasis>kdur</emphasis> affects the density of sineburst overlaps, and thus the speed of computation. Typical values for vocal imitation are .003,.02,.007.
+    </para>
+
+    <para>
+      Csound's <emphasis>fof</emphasis> generator is loosely based on Michael Clarke's C-coding of IRCAM's <emphasis>CHANT</emphasis> program (Xavier Rodet et al.). Each fof produces a single formant, and the output of four or more of these can be summed to produce a rich vocal imitation. <emphasis>fof</emphasis> synthesis is a special form of granular synthesis, and this implementation aids transformation between vocal imitation and granular textures. Computation speed depends on <emphasis>kdur, xfund</emphasis>, and the density of any overlaps.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the fof opcode. It uses the file <ulink url="examples/fof.csd"><citetitle>fof.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the fof opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/fof.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      The formant values for the alto-"a" sound were taken from the <link linkend="MiscFormants"><citetitle>Formant Values Appendix</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="fof2"><citetitle>fof2</citetitle></link>, 
+      <link linkend="MiscFormants"><citetitle>Formant Values Appendix</citetitle></link>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Credits</title>
+    <para>Added in version 1 (1990)</para>
+  </refsect1>
+</refentry>

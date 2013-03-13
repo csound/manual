@@ -1,0 +1,78 @@
+﻿
+<refentry id="ATSread">
+<indexterm id="IndexATSread"><primary>ATSread</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:ATS</title></refentryinfo>
+    <refmeta>
+        <refentrytitle>ATSread</refentrytitle>
+    </refmeta>
+
+    <refnamediv>
+        <refname>ATSread</refname>
+        <refpurpose> reads data from an ATS file.
+        </refpurpose>
+    </refnamediv>
+    <refsect1>
+        <title>Description</title>
+        <para>
+            <emphasis>ATSread</emphasis> returns the amplitude (<emphasis>kamp</emphasis>) and frequency (<emphasis>kfreq</emphasis>) information of a user specified partial contained in the ATS analysis file at the time indicated by the time pointer <emphasis>ktimepnt</emphasis>.
+        </para>
+    </refsect1>
+    <refsect1>
+        <title>Syntax</title>
+        <synopsis>kfreq, kamp <command>ATSread</command> ktimepnt, iatsfile, ipartial</synopsis>
+    </refsect1>
+    <refsect1>
+        <title>Initialization</title>
+        <para>
+            <emphasis>iatsfile</emphasis> – the ATS number (n in ats.n) or the name in quotes of the analysis file made using <ulink url="http://www-ccrma.stanford.edu/~juan/ATS.html"><citetitle>ATS</citetitle></ulink>.
+        </para>
+        <para>
+            <emphasis>ipartial</emphasis> – the number of the analysis partial to return the frequency in Hz and amplitude.
+        </para>
+    </refsect1>
+    <refsect1>
+        <title>Performance</title>
+        <para>
+            <emphasis>kfreq, kamp</emphasis> - outputs of the <emphasis>ATSread</emphasis> unit. These values represent the frequency and amplitude of a specific partial selected by the user using <emphasis>ipartial</emphasis>. The partials' informations are derived from an ATS analysis. <emphasis>ATSread</emphasis> linearly interpolates the frequency and amplitude between frames in the ATS analysis file at k-rate. The output is dependent on the data in the analysis file and the pointer <emphasis>ktimepnt</emphasis>.
+        </para>
+        <para><emphasis>ktimepnt</emphasis> – The time pointer in seconds used to index the ATS file. Used for <emphasis>ATSread</emphasis> exactly the same as for <link linkend="pvoc"><citetitle>pvoc</citetitle></link> and <link linkend="ATSadd"><citetitle>ATSadd</citetitle></link>.</para>
+    </refsect1>
+     <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the ATSread opcode. It uses the file <ulink url="examples/ATSread.csd"><citetitle>ATSread.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the ATSread opcode.</title>
+
+        
+
+          <xi:include href="examples-xml/ATSread.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+      <para>Here we're using <emphasis>ATSread</emphasis> to get the 100th partial's frequency and amplitude data out of the 'beats.ats' ATS analysis file. We're using that data to drive an oscillator, but we could use it for anything else that can take a k-rate input, like the bandwidth and resonance of a filter etc.
+      </para>
+    </refsect1>
+    <refsect1>
+        <title>See also</title>
+        <para><link linkend="ATSreadnz"><citetitle>ATSreadnz</citetitle></link>, 
+            <link linkend="ATSinfo"><citetitle>ATSinfo</citetitle></link>, 
+            <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>, 
+            <link linkend="ATScross"><citetitle>ATScross</citetitle></link>, 
+            <link linkend="ATSinterpread"><citetitle>ATSinterpread</citetitle></link>, 
+            <link linkend="ATSpartialtap"><citetitle>ATSpartialtap</citetitle></link>, 
+            <link linkend="ATSadd"><citetitle>ATSadd</citetitle></link>, 
+            <link linkend="ATSaddnz"><citetitle>ATSaddnz</citetitle></link>, 
+            <link linkend="ATSsinnoi"><citetitle>ATSsinnoi</citetitle></link></para>
+    </refsect1>
+    <refsect1>
+        <title>Credits</title>
+        <para>
+            <simplelist>
+                <member>Author: Alex Norman</member>
+                <member>Seattle,Washington</member>
+                <member>2004</member>
+            </simplelist>
+        </para>
+    </refsect1>
+</refentry>

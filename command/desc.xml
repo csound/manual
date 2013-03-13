@@ -1,0 +1,47 @@
+
+<section id="CommandDesc">
+  <title>Description of the command syntax</title>
+
+  <para>
+    The csound command is followed by a set of <link linkend="CommandFlagsCategory"><citetitle>Command Line Flags</citetitle></link> and the name of the orchestra (<link linkend="OrchTop"><citetitle>.orc</citetitle></link>) and score (<link linkend="ScoreTop"><citetitle>.sco</citetitle></link>) files or the <link linkend="CommandUnifile"><citetitle>Unified csd file</citetitle></link> (containing both orchestra and score) to process. <link linkend="CommandFlagsCategory"><citetitle>Command Line Flags</citetitle></link> to control input and output configuration may appear anywhere in the command line, either separately or bundled together. A flag taking a Name or Number will find it in that argument, or in the immediately subsequent one. The following are thus equivalent commands:
+    <informalexample>
+       <programlisting>
+<command>csound</command> -nm3 orchname -Sxxfilename scorename
+<command>csound</command> -n -m 3 orchname -x xfilename -S scorename</programlisting>
+    </informalexample>
+  </para>
+
+  <para>
+    All flags and names are optional. The default values are:
+    <informalexample>
+       <programlisting>
+<command>csound</command> -s -otest -b1024 -B1024 -m7 -P128 orchname scorename</programlisting>
+    </informalexample>
+  </para>
+
+  <para>
+    where <emphasis>orchname</emphasis> is a file containing Csound orchestra code, and scorename is a file of score data in standard numeric score format, optionally presorted and time-warped. If <emphasis>scorename</emphasis> is omitted, there are two default options:
+    <orderedlist>
+      <listitem>
+        <para>if real-time input is expected (e.g. <link linkend="FlagsCatMinusUpperL"><citetitle>-L</citetitle></link>, <link linkend="FlagsCatMinusUpperM"><citetitle>-M</citetitle></link>, <link linkend="FlagsCatMinusLowerIadc"><citetitle>-iadc</citetitle></link> or <link linkend="FlagsCatMinusUpperF"><citetitle>-F</citetitle></link>), a dummy score file is substituted consisting of the single statement 'f 0 3600' (i.e. listen for RT input for one hour)</para>
+      </listitem>
+
+      <listitem>
+	<para>else Csound uses the previously processed <emphasis>score.srt</emphasis> in the current directory.</para>
+      </listitem>
+    </orderedlist>
+  </para>
+
+  <para>
+    Csound reports on the various stages of score and orchestra processing as it executes, performing various syntax and error checks along the way. Once the actual performance has begun, any error messages will derive from either the instrument loader or the unit generators themselves. A CSound command may include any rational combination of flag arguments.
+  </para>
+  <bridgehead>Running the examples in this manual from the command line</bridgehead>
+  <para>
+    Most of the manual's examples come ready to run without the need of adding any command line flags since they specify options within the csd file's &lt;CsOptions&gt; tag, so you only need to type something like:
+    <informalexample>
+       <programlisting>
+<command>csound</command> oscil.csd</programlisting>
+    </informalexample>
+    within the examples folder, and realtime audio output should be generated.
+  </para>
+</section>

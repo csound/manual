@@ -1,0 +1,118 @@
+
+<refentry id="init">
+<indexterm id="IndexInit"><primary>init</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Initialization and Reinitialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>init</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>init</refname>
+    <refpurpose>
+       Puts the value of the i-time expression into a k-, a-rate or t- variable.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>init</command> iarg</synopsis>
+    <synopsis>ires <command>init</command> iarg</synopsis>
+    <synopsis>kres <command>init</command> iarg</synopsis>
+    <synopsis>ares, ...  <command>init</command> iarg, ...</synopsis>
+    <synopsis>ires, ... <command>init</command> iarg, ...</synopsis>
+    <synopsis>kres, ... <command>init</command> iarg, ...</synopsis>
+    <synopsis>tab <command>init</command> isize[, ival]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Description</title>
+    <para> 
+      Put the value of the i-time expression into a k- or a-rate variable.
+    </para> 
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      Puts the value of the i-time expression
+      <emphasis>iarg</emphasis> into a k-, a-rate or t- variable, i.e.,
+      initialize the result. Note that <emphasis
+      role="strong">init</emphasis> provides the only case of an
+      init-time statement being permitted to write into a perf-time
+      (k- or a-rate) result cell; the statement has no effect at
+      perf-time.
+    </para>
+    <para>
+      Since version 5.13 it is possible to initialise upto 24
+      variables of the same class in one statement.  If there are more
+      output variables than input expressions then the last one is
+      repeated.  It is an error to have more inputs than outputs.
+    </para>
+    <para>
+      The t-variable form was introduced in 5.14 and allocated space
+      for a vector or the given size, initialised to the given value
+      (default value is zero).
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the init opcode. It uses the file <ulink url="examples/init.csd"><citetitle>init.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the init opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/init.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+            Its output should include lines like these:
+      <screen>
+ i   1 time     0.00073:     1.00000
+ i   1 time     0.10014:   138.00000
+ i   1 time     0.20027:   276.00000
+ i   1 time     0.30041:   414.00000
+ i   1 time     0.40054:   552.00000
+ i   1 time     0.50068:   690.00000
+ i   1 time     0.60009:   827.00000
+ i   1 time     0.70023:   965.00000
+ i   1 time     0.80036:  1103.00000
+ i   1 time     0.90050:  1241.00000
+
+ i   2 time     2.00054:     1.00000
+ i   2 time     2.09995:     1.00000
+ i   2 time     2.20009:     1.00000
+ i   2 time     2.30023:     1.00000
+ i   2 time     2.40036:     1.00000
+ i   2 time     2.50050:     1.00000
+ i   2 time     2.59991:     1.00000
+ i   2 time     2.70005:     1.00000
+ i   2 time     2.80018:     1.00000
+ i   2 time     2.90032:     1.00000
+      </screen>
+    </para>
+  </refsect1>
+      
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="assign"><citetitle>=</citetitle></link>,
+      <link linkend="divz"><citetitle>divz</citetitle></link>,
+      <link linkend="tival"><citetitle>tival</citetitle></link>
+    </para>             
+        <para> Other information on this opcode in the Floss Manuals: <ulink url="http://www.flossmanuals.net/csound/ch016_a-initialization-and-performance-pass"><citetitle>http://www.flossmanuals.net/csound/ch016_a-initialization-and-performance-pass</citetitle></ulink></para>   
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      Init first appeared in the original Csound, but the extension to
+      multiple values is by
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>University of Bath, and Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>February 2010</member>
+      </simplelist>
+    </para>
+    <para>Multiple form new in version 5.13; t-variable form new in 5.14.</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,91 @@
+
+<refentry id="outch">
+<indexterm id="IndexOutch"><primary>outch</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Signal Output</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>outch</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>outch</refname>
+    <refpurpose>
+      Writes multi-channel audio data, with user-controllable channels, to an external device or stream.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Writes multi-channel audio data, with user-controllable channels, to an external device or stream.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>outch</command> kchan1, asig1 [, kchan2] [, asig2] [...]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>outch</emphasis> outputs <emphasis>asig1</emphasis> on the channel determined by <emphasis>kchan1</emphasis>, <emphasis>asig2</emphasis> on the channel determined by <emphasis>kchan2</emphasis>, etc.
+    </para>
+    <note>
+      <para>
+        The highest number for <emphasis>kchanX</emphasis> available for use with <emphasis>outch</emphasis> depends on <link linkend="nchnls"><citetitle>nchnls</citetitle></link>. If <emphasis>kchanX</emphasis> is greater than <emphasis>nchnls</emphasis>, <emphasis>asigX</emphasis> will be silent. Note that <emphasis>outch</emphasis> will give a warning but not an error in this case.
+     </para>
+   </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the outch opcode. It uses the file <ulink url="examples/outch.csd"><citetitle>outch.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the outch opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/outch.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+            <screen>
+signal is sent to channel 5
+signal is sent to channel 4
+signal is sent to channel 3
+signal is sent to channel 2
+signal is sent to channel 1
+signal is sent to channel 5
+........
+      </screen>
+    </para>
+        <para>
+      Here is another example of the outch opcode. It uses the file <ulink url="examples/outch.csd"><citetitle>outch-2.csd</citetitle></ulink>.
+      <example>
+        <title>Another example of the outch opcode.</title>
+          <xi:include href="examples-xml/outch-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="out32"><citetitle>out32</citetitle></link>,
+      <link linkend="outc"><citetitle>outc</citetitle></link>,
+      <link linkend="outx"><citetitle>outx</citetitle></link>,
+      <link linkend="outz"><citetitle>outz</citetitle></link>
+    </para>
+    <para> More information on this opcode: <ulink url="http://www.csounds.com/journal/issue16/audiorouting.html"><citetitle>http://www.csounds.com/journal/issue16/audiorouting.html</citetitle></ulink>  , written by Andreas Russo </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>University of Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>May 2000</member>
+      </simplelist>
+    </para>
+    <para>New in Csound Version 4.07</para>
+  </refsect1>
+</refentry>

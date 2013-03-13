@@ -1,0 +1,106 @@
+
+<refentry id="schedkwhennamed">
+<indexterm id="IndexSchedkwhennamed"><primary>schedkwhennamed</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Invocation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>schedkwhennamed</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>schedkwhennamed</refname>
+    <refpurpose>
+      Similar to schedkwhen but uses a named instrument at init-time.
+    </refpurpose>
+  </refnamediv>   
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Similar to <link linkend="schedkwhen"><citetitle>schedkwhen</citetitle></link> but uses a named instrument at init-time.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+
+    <synopsis><command>schedkwhennamed</command> ktrigger, kmintim, kmaxnum, &quot;name&quot;, kwhen, kdur \
+      [, ip4] [, ip5] [...]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ip4, ip5, ...</emphasis> -- Equivalent to p4, p5, etc., in a score <link linkend="i"><citetitle>i statement</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ktrigger</emphasis> -- triggers a new score event. If <emphasis>ktrigger</emphasis> is 0, no new event is triggered.
+    </para>
+
+    <para>
+      <emphasis>kmintim</emphasis> -- minimum time between generated events, in seconds. If <emphasis>kmintim</emphasis> is less than or equal to 0, no time limit exists.
+    </para>
+
+    <para>
+      <emphasis>kmaxnum</emphasis> -- maximum number of simultaneous instances of named instrument allowed. If the number of existant instances of the named instrument is greater than or equal to <emphasis>kmaxnum</emphasis>, no new event is generated. If <emphasis>kmaxnum</emphasis> is less than or equal to 0, it is not used to limit event generation.
+    </para>
+
+    <para>
+      <emphasis>&quot;name&quot;</emphasis> -- the named instrument's name.
+    </para>
+
+    <para>
+      <emphasis>kwhen</emphasis> -- start time of the new event. Equivalent to p2 in a score <link linkend="i"><citetitle>i statement</citetitle></link>. Measured from the time of the triggering event. <emphasis>kwhen</emphasis> must be greater than or equal to 0. If <emphasis>kwhen</emphasis> greater than 0, the instrument will not be initialized until the actual time when it should start performing.
+    </para>
+
+    <para>
+      <emphasis>kdur</emphasis> -- duration of event. Equivalent to p3 in a score <link linkend="i"><citetitle>i statement</citetitle></link>. If <emphasis>kdur</emphasis> is 0, the instrument will only do an initialization pass, with no performance. If <emphasis>kdur</emphasis> is negative, a held note is initiated. (See <link linkend="ihold"><citetitle>ihold</citetitle></link> and <link linkend="i"><citetitle>i statement</citetitle></link>.)
+    </para>
+
+    <note>
+      <para> While waiting for events to be triggered by <emphasis>schedkwhennamed</emphasis>, the performance must be kept going, or Csound may quit if no score events are expected. To guarantee continued performance, an <link linkend="f"><citetitle>f0 statement</citetitle></link> may be used in the score.</para>
+    </note>
+    <note>
+      <para> Note that the <emphasis>schedkwhennamed</emphasis> opcode can't accept string p-fields. If you need to pass strings when instantiating an instrument, use the <link linkend="scoreline"><citetitle>scoreline</citetitle></link> or <link linkend="scoreline_i"><citetitle>scoreline_i</citetitle></link> opcode.</para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the schedkwhennamed opcode. It uses the file <ulink url="examples/schedkwhennamed.csd"><citetitle>schedkwhennamed.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the schedkwhennamed opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/schedkwhennamed.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See also</title>
+    <para><link linkend="event"><citetitle>event</citetitle></link>,
+    <link linkend="event_i"><citetitle>event_i</citetitle></link>,
+    <link linkend="schedule"><citetitle>schedule</citetitle></link>,
+    <link linkend="schedwhen"><citetitle>schedwhen</citetitle></link>,
+    <link linkend="schedkwhen"><citetitle>schedkwhen</citetitle></link>,
+    <link linkend="scoreline"><citetitle>scoreline</citetitle></link>,
+    <link linkend="scoreline_i"><citetitle>scoreline_i</citetitle></link></para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namerasmus;</member>
+        <member>EMS, Stockholm, Sweden</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 4.23</para>
+  </refsect1> 
+</refentry>

@@ -1,0 +1,69 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac    <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o tablecopy.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis>  <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+<emphasis role="comment">;after an example from Jonathan Murphy </emphasis>
+  
+gilen <emphasis role="op">=</emphasis> 7
+gilist  <emphasis role="ohdr">ftgen</emphasis> 1, 0, gilen <emphasis role="op">+</emphasis> 1, <emphasis role="op">-</emphasis>2, 2, 3, 4, 5, 6, 7	<emphasis role="comment">;only 6 elements, so 1 is doubled</emphasis>
+gitmp   <emphasis role="ohdr">ftgen</emphasis> 2, 0, gilen <emphasis role="op">+</emphasis> 1, <emphasis role="op">-</emphasis>2, 0			<emphasis role="comment">;empty table</emphasis>
+gkmax   <emphasis role="opc">init</emphasis> gilen
+
+<emphasis role="ohdr">seed</emphasis> 0							<emphasis role="comment">;each time different </emphasis>
+
+<emphasis role="oblock">instr</emphasis> 1
+
+ktrig <emphasis role="opc">metro</emphasis> 3						<emphasis role="comment">;trigger values</emphasis>
+krnd  <emphasis role="opc">random</emphasis> 0, gkmax
+
+<emphasis role="octrl">if</emphasis> (ktrig <emphasis role="op">==</emphasis> 1) then
+  kval    <emphasis role="opc">table</emphasis>  krnd, gilist
+          <emphasis role="opc">tablew</emphasis> 0, krnd, gilist
+  kread   <emphasis role="op">=</emphasis> 0
+  kwrite  <emphasis role="op">=</emphasis> 0
+<emphasis role="olabel">start</emphasis><emphasis role="op">:</emphasis>
+  knew    <emphasis role="opc">table</emphasis> kread, gilist
+<emphasis role="octrl">if</emphasis> (knew <emphasis role="op">!=</emphasis> 0) then
+          <emphasis role="opc">tablew</emphasis> knew, kwrite, gitmp
+  kwrite    <emphasis role="op">=</emphasis>  kwrite <emphasis role="op">+</emphasis> 1
+<emphasis role="octrl">endif</emphasis>
+  kread   <emphasis role="op">=</emphasis> kread <emphasis role="op">+</emphasis> 1
+<emphasis role="octrl">if</emphasis> (kread <emphasis role="op">&lt;=</emphasis> gilen) <emphasis role="octrl">kgoto</emphasis> <emphasis role="olabel">start</emphasis>
+          <emphasis role="opc">tablecopy</emphasis> gilist, gitmp			<emphasis role="comment">;fill with zeroes</emphasis>
+  gkmax   <emphasis role="op">=</emphasis> gkmax <emphasis role="op">-</emphasis> 1
+<emphasis role="octrl">endif</emphasis>
+
+<emphasis role="opc">printk2</emphasis> kval
+
+<emphasis role="octrl">if</emphasis> (gkmax <emphasis role="op">&lt;</emphasis> 0) then
+          <emphasis role="opc">event</emphasis> "i", 2, 0, 1<emphasis role="op">/</emphasis><emphasis role="ohdr">kr</emphasis>				<emphasis role="comment">;when ready, then stop</emphasis>
+<emphasis role="octrl">endif</emphasis>
+
+asig <emphasis role="opc">vco2</emphasis> .5, 40<emphasis role="op">*</emphasis>kval					<emphasis role="comment">;sound generation</emphasis>
+<emphasis role="opc">outs</emphasis> asig, asig
+    
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 2
+
+<emphasis role="opc">exitnow</emphasis>
+    
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">i</emphasis>1 0 5
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

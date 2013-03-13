@@ -1,0 +1,103 @@
+
+<refentry id="biquad">
+<indexterm id="IndexBiquad"><primary>biquad</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>biquad</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>biquad</refname>
+    <refpurpose>
+      A sweepable general purpose biquadratic digital filter.
+          </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      A sweepable general purpose biquadratic digital filter.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>biquad</command> asig, kb0, kb1, kb2, ka0, ka1, ka2 [, iskip]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iskip</emphasis> (optional, default=0) -- if non-zero, intialization will be skipped. Default value 0. (New in Csound version 3.50)
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asig</emphasis> -- input signal
+    </para>
+
+    <para>
+      <emphasis>biquad</emphasis> is a general purpose biquadratic digital filter of the form:
+      <literallayout>
+  a0*y(n) + a1*y[n-1] + a2*y[n-2] = b0*x[n] + b1*x[n-1] + b2*x[n-2]
+      </literallayout>
+    </para>
+
+    <para>
+      This filter has the following frequency response:
+      <literallayout>
+         B(Z)   b0 + b1*Z<superscript>-1</superscript>  + b2*Z<superscript>-2</superscript>
+  H(Z) = ---- = ------------------
+         A(Z)   a0 + a1*Z<superscript>-1</superscript>  + a2*Z<superscript>-2</superscript>
+      </literallayout>
+    </para>
+
+    <para>
+      This type of filter is often encountered in digital signal processing literature. It allows six user-defined k-rate coefficients.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the biquad opcode. It uses the file <ulink url="examples/biquad.csd"><citetitle>biquad.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the biquad opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/biquad.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para><para>
+      Here is another example of the biquad opcode used for modal synthesis. It uses the file <ulink url="examples/biquad-2.csd"><citetitle>biquad-2.csd</citetitle></ulink>. See the <link linkend="MiscModalFreq"><citetitle>Modal Frequency Ratios</citetitle></link> appendix for other frequency ratios.
+
+      <example>
+        <title>Example of the biquad opcode for modal synthesis.</title>
+          <xi:include href="examples-xml/biquad-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="biquada"><citetitle>biquada</citetitle></link>,
+      <link linkend="moogvcf"><citetitle>moogvcf</citetitle></link>,
+      <link linkend="rezzy"><citetitle>rezzy</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namehans;</member>
+        <member>October 1998</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.49</para>
+  </refsect1>
+</refentry>

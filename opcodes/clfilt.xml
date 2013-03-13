@@ -1,0 +1,98 @@
+
+<refentry id="clfilt">
+<indexterm id="IndexClfilt"><primary>clfilt</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>clfilt</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>clfilt</refname>
+    <refpurpose>
+      Implements low-pass and high-pass filters of different styles.
+          </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+       Implements the classical standard analog filter types: low-pass and high-pass. They are implemented with the four classical kinds of filters: Butterworth, Chebyshev Type I, Chebyshev Type II, and Elliptical.  The number of poles may be any even number from 2 to 80.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>clfilt</command> asig, kfreq, itype, inpol [, ikind] [, ipbr] [, isba] [, iskip]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>itype</emphasis> -- 0 for low-pass, 1 for high-pass.
+    </para>
+
+    <para>
+      <emphasis>inpol</emphasis> -- The number of poles in the filter. It must be an even number from 2 to 80.
+    </para>
+
+    <para>
+      <emphasis>ikind</emphasis> (optional) -- 0 for Butterworth, 1 for Chebyshev Type I, 2 for Chebyshev Type II, 3 for Elliptical. Defaults to 0 (Butterworth)
+    </para>
+
+    <para>
+      <emphasis>ipbr</emphasis> (optional) -- The pass-band ripple in dB. Must be greater than 0. It is ignored by Butterworth and Chebyshev Type II. The default is 1 dB.
+    </para>
+
+    <para>
+      <emphasis>isba</emphasis> (optional) -- The stop-band attenuation in dB. Must be less than 0. It is ignored by Butterworth and Chebyshev Type I. The default is -60 dB.
+    </para>
+
+    <para>
+      <emphasis>iskip</emphasis> (optional) --  0 initializes all filter internal states to 0. 1 skips initialization. The default is 0.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asig</emphasis> -- The input audio signal.
+    </para>
+
+    <para>
+      <emphasis>kfreq</emphasis> -- The corner frequency for low-pass or high-pass.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the clfilt opcode as a low-pass filter. It uses the file <ulink url="examples/clfilt_lowpass.csd"><citetitle>clfilt_lowpass.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the clfilt opcode as a low-pass filter.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/clfilt_lowpass.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+    <para>
+      Here is an example of the clfilt opcode as a high-pass filter. It uses the file <ulink url="examples/clfilt_highpass.csd"><citetitle>clfilt_highpass.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the clfilt opcode as a high-pass filter.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/clfilt_highpass.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: Erik Spjut</para>
+    <para>New in version 4.20</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,119 @@
+
+<refentry id="hsboscil">
+<indexterm id="Indexhsboscil"><primary>hsboscil</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Additive Synthesis/Resynthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>hsboscil</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>hsboscil</refname>
+    <refpurpose>
+      An oscillator which takes tonality and brightness as arguments.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      An oscillator which takes tonality and brightness as arguments, relative to a base frequency.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>hsboscil</command> kamp, ktone, kbrite, ibasfreq, iwfn, ioctfn \
+               [, ioctcnt] [, iphs]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ibasfreq</emphasis> -- base frequency to which tonality and brighness are relative
+    </para>
+
+    <para>
+      <emphasis>iwfn</emphasis> -- function table of the waveform, usually a sine
+    </para>
+
+    <para>
+      <emphasis>ioctfn</emphasis> -- function table used for weighting the octaves, usually something like:
+      <literallayout><emphasis role="stamnt">f</emphasis>1 0  1024  -19  1  0.5  270  0.5</literallayout>
+    </para>
+
+    <para>
+      <emphasis>ioctcnt</emphasis> (optional) -- number of octaves used for brightness blending. Must be in the range 2 to 10. Default is 3.
+    </para>
+
+    <para>
+      <emphasis>iphs</emphasis> (optional, default=0) -- initial phase of the oscillator. If <emphasis>iphs</emphasis> = -1, initialization is skipped.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kamp</emphasis> -- amplitude of note
+    </para>
+
+    <para>
+      <emphasis>ktone</emphasis> -- cyclic tonality parameter relative to <emphasis>ibasfreq</emphasis> in logarithmic octave, range 0 to 1, values &gt; 1 can be used, and are internally reduced to <emphasis>frac</emphasis>(<emphasis>ktone</emphasis>).
+    </para>
+
+    <para>
+      <emphasis>kbrite</emphasis> -- brightness parameter relative to <emphasis>ibasfreq</emphasis>, achieved by weighting <emphasis>ioctcnt</emphasis> octaves. It is scaled in such a way, that a value of 0 corresponds to the orignal value of <emphasis>ibasfreq</emphasis>, 1 corresponds to one octave above <emphasis>ibasfreq</emphasis>, -2 corresponds to two octaves below <emphasis>ibasfreq</emphasis>, etc. <emphasis>kbrite</emphasis> may be fractional.
+    </para>
+
+    <para>
+      <emphasis>hsboscil</emphasis> takes tonality and brightness as arguments, relative to a base frequency (<emphasis>ibasfreq</emphasis>). Tonality is a cyclic parameter in the logarithmic octave, brightness is realized by mixing multiple weighted octaves. It is useful when tone space is understood in a concept of polar coordinates.
+    </para>
+
+    <para>
+      Making <emphasis>ktone</emphasis> a line, and <emphasis>kbrite</emphasis> a constant, produces Risset's glissando.
+    </para>
+
+    <para>
+      Oscillator table <emphasis>iwfn</emphasis> is always read interpolated. Performance time requires about <emphasis>ioctcnt</emphasis> * <emphasis>oscili</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the hsboscil opcode. It uses the file <ulink url="examples/hsboscil.csd"><citetitle>hsboscil.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the hsboscil opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/hsboscil.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+    <para>
+      Here is an example of the hsboscil opcode in a MIDI instrument. It uses the file <ulink url="examples/hsboscil_midi.csd"><citetitle>hsboscil_midi.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the hsboscil opcode in a MIDI instrument.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/hsboscil_midi.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Peter Neub&auml;cker</member>
+        <member>Munich, Germany</member>
+        <member>August, 1999</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.58</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,396 @@
+<refentry id="opcode">
+<indexterm id="IndexOpcode"><primary>opcode</primary></indexterm>
+  <refentryinfo><title>Orchestra Syntax:Block Statements</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>opcode</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>opcode</refname>
+    <refpurpose>
+      Defines the start of user-defined opcode block.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Defining opcodes</title>
+    <para>
+      The <emphasis>opcode</emphasis> and <emphasis>endop</emphasis> statements allow defining a new opcode that can be used the same way as any of the built-in Csound opcodes. These opcode blocks are very similar to instruments (and are, in fact, implemented as special instruments), but cannot be called as a normal instrument e.g. with the <link linkend="i"><citetitle>i statements</citetitle></link>.
+    </para>
+
+    <para>
+      A user-defined opcode block must precede the instrument (or other opcode) from which it is used. But it is possible to call the opcode from itself. This allows recursion of any depth that is limited only by available memory. Additionally, there is an experimental feature that allows running the opcode definition at a higher control rate than the <link linkend="kr"><citetitle>kr</citetitle></link> value specified in the orchestra header.
+    </para>
+
+    <para>
+      Similarly to instruments, the variables and labels of a user-defined opcode block are local and cannot be accessed from the caller instrument (and the opcode cannot access variables of the caller, either).
+    </para>
+
+    <para>
+      Some parameters are automatically copied at initialization, however:
+
+      <itemizedlist>
+        <listitem><para>all p-fields (including <emphasis>p1</emphasis>)</para></listitem>
+        <listitem><para>extra time (see also <link linkend="xtratim"><citetitle>xtratim</citetitle></link>, <link linkend="linsegr"><citetitle>linsegr</citetitle></link>, and related opcodes). This may affect the operation of <emphasis>linsegr</emphasis>/<emphasis>expsegr</emphasis>/<emphasis>linenr</emphasis>/<emphasis>envlpxr</emphasis> in the user-defined opcode block.</para></listitem>
+        <listitem><para>MIDI parameters, if there are any.</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      Also, the release flag (see the <link linkend="release"><citetitle>release</citetitle></link> opcode) is copied at performance time.
+    </para>
+
+    <para>
+      Modifying the note duration in the opcode definition by assigning to
+      <emphasis>p3</emphasis>, or using <link linkend="ihold"><citetitle>ihold</citetitle></link>,
+      <link linkend="turnoff"><citetitle>turnoff</citetitle></link>,
+      <link linkend="xtratim"><citetitle>xtratim</citetitle></link>,
+      <link linkend="linsegr"><citetitle>linsegr</citetitle></link>,
+      or similar opcodes will also affect the caller instrument.
+      Changes to MIDI controllers (for example with
+      <link linkend="ctrlinit"><citetitle>ctrlinit</citetitle></link>) will
+      also apply to the instrument from which the opcode was called.
+    </para>
+
+    <para>
+      Use the <link linkend="setksmps"><citetitle>setksmps</citetitle></link> opcode to set the local <link linkend="ksmps"><citetitle>ksmps</citetitle></link> value.
+    </para>
+
+    <para>
+      The <link linkend="xin"><citetitle>xin</citetitle></link> and <link linkend="xout"><citetitle>xout</citetitle></link> opcodes copy variables to and from the opcode definition, allowing communication with the calling instrument.
+    </para>
+
+    <para>
+      The types of input and output variables are defined by the parameters <emphasis>intypes</emphasis> and <emphasis>outtypes</emphasis>.
+      <tip><para>
+          You can create UDOs which take no inputs or outputs by using 0 instead of a string.</para></tip>
+    </para>
+
+    <note>
+      <title>Notes</title>
+      <para>
+        <itemizedlist>
+          <listitem><para><emphasis>xin</emphasis> and <emphasis>xout</emphasis> should be called only once, and <emphasis>xin</emphasis> should precede <emphasis>xout</emphasis>, otherwise an init error and deactivation of the current instrument may occur.</para></listitem>
+          <listitem><para>These opcodes actually run only at i-time. Performance time copying is done by the user opcode call. This means that skipping <emphasis>xin</emphasis> or <emphasis>xout</emphasis> with <link linkend="kgoto"><citetitle>kgoto</citetitle></link> has no effect, while skipping with <link linkend="igoto"><citetitle>igoto</citetitle></link> affects both init and performance time operation.</para></listitem>
+        </itemizedlist>
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>opcode</command> name, outtypes, intypes</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>name</emphasis> -- name of the opcode. It may consist of any combination of letters, digits, and underscore but should not begin with a digit. If an opcode with the specified name already exists, it is redefined (a warning is printed in such cases). Some reserved words (like <emphasis>instr</emphasis> and <emphasis>endin</emphasis>) cannot be redefined.
+    </para>
+
+    <para>
+      <emphasis>intypes</emphasis> -- list of input types, any combination of the characters: a, k, O, P, V, K, i, o, p, and j. A single 0 character can be used if there are no input arguments. Double quotes and delimiter characters (e.g. comma) are <emphasis>not</emphasis> needed.
+    </para>
+
+    <para>
+      The meaning of the various <emphasis>intypes</emphasis> is shown in the following table:
+
+      <informaltable frame="all">
+        <tgroup cols="4" colsep="1" rowsep="1">
+          <thead>
+            <row>
+              <entry>Type</entry>
+              <entry>Description</entry>
+              <entry>Variable Types Allowed</entry>
+              <entry>Updated At</entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry>a</entry>
+              <entry>a-rate variable</entry>
+              <entry>a-rate</entry>
+              <entry>a-rate</entry>
+            </row>
+
+            <row>
+              <entry>i</entry>
+              <entry>i-rate variable</entry>
+              <entry>i-rate</entry>
+              <entry>i-time</entry>
+            </row>
+
+            <row>
+              <entry>j</entry>
+              <entry>optional i-time, defaults to -1</entry>
+              <entry>i-rate, constant</entry>
+              <entry>i-time</entry>
+            </row>
+
+            <row>
+              <entry>k</entry>
+              <entry>k-rate variable</entry>
+              <entry>k- and i-rate, constant</entry>
+              <entry>k-rate</entry>
+            </row>
+
+           <row>
+              <entry>O</entry>
+              <entry>optional k-rate variable, defaults to 0</entry>
+              <entry>k- and i-rate, constant</entry>
+              <entry>k-rate</entry>
+            </row>
+
+             <row>
+              <entry>P</entry>
+              <entry>optional k-rate variable, defaults to 1</entry>
+              <entry>k- and i-rate, constant</entry>
+              <entry>k-rate</entry>
+            </row>
+
+            <row>
+              <entry>V</entry>
+              <entry>optional k-rate variable, defaults to 0.5</entry>
+              <entry>k- and i-rate, constant</entry>
+              <entry>k-rate</entry>
+            </row>
+
+            <row>
+              <entry>K</entry>
+              <entry>k-rate with initialization</entry>
+              <entry>k- and i-rate, constant</entry>
+              <entry>i-time and k-rate</entry>
+            </row>
+
+            <row>
+              <entry>o</entry>
+              <entry>optional i-time, defaults to 0</entry>
+              <entry>i-rate, constant</entry>
+              <entry>i-time</entry>
+            </row>
+
+            <row>
+              <entry>p</entry>
+              <entry>optional i-time, defaults to 1</entry>
+              <entry>i-rate, constant</entry>
+              <entry>i-time</entry>
+            </row>
+
+            <row>
+              <entry>S</entry>
+              <entry>string variable</entry>
+              <entry>i-rate string</entry>
+              <entry>i-time</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </para>
+
+    <para>
+      The maximum allowed number of input arguments is 256.
+    </para>
+
+    <para>
+      <emphasis>outtypes</emphasis> -- list of output types. The format is the same as in the case of <emphasis>intypes</emphasis>.
+    </para>
+
+    <para>
+      Here are the available <emphasis>outtypes</emphasis>:
+
+      <informaltable frame="all">
+        <tgroup cols="4" colsep="1" rowsep="1">
+          <thead>
+            <row>
+              <entry>Type</entry>
+              <entry>Description</entry>
+              <entry>Variable Types Allowed</entry>
+              <entry>Updated At</entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry>a</entry>
+              <entry>a-rate variable</entry>
+              <entry>a-rate</entry>
+              <entry>a-rate</entry>
+            </row>
+
+            <row>
+              <entry>i</entry>
+              <entry>i-rate variable</entry>
+              <entry>i-rate</entry>
+              <entry>i-time</entry>
+            </row>
+
+            <row>
+              <entry>k</entry>
+              <entry>k-rate variable</entry>
+              <entry>k-rate</entry>
+              <entry>k-rate</entry>
+            </row>
+
+            <row>
+              <entry>K</entry>
+              <entry>k-rate with initialization</entry>
+              <entry>k-rate</entry>
+              <entry>i-time and k-rate</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </para>
+
+    <para>
+      The maximum allowed number of output arguments is 256.
+    </para>
+
+    <para>
+      <emphasis>iksmps</emphasis> (optional, default=0) -- sets the local
+      <emphasis>ksmps</emphasis> value. Must be a positive integer, and also
+      the <emphasis>ksmps</emphasis> of the
+      calling instrument or opcode must be an integer multiple of this value.
+      For example, if <emphasis>ksmps</emphasis> is 10 in the instrument from which
+      the opcode was called, the allowed values for <emphasis>iksmps</emphasis>
+      are 1, 2, 5, and 10.
+    </para>
+
+    <para>
+      If <emphasis>iksmps</emphasis> is set to zero, the
+      <emphasis>ksmps</emphasis> of the caller instrument or opcode is used
+      (this is the default behavior).
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        The local <emphasis>ksmps</emphasis> is implemented by splitting up
+        a control period into smaller sub-kperiods and temporarily modifying
+        internal Csound global variables. This also requires converting the
+        rate of k-rate input and output arguments (input variables receive
+        the same value in all sub-kperiods, while outputs are written only
+        in the last one).
+      </para>
+    </note>
+
+    <warning>
+      <title>Warning about local <emphasis>ksmps</emphasis></title>
+      <para>
+        When the local <emphasis>ksmps</emphasis> is not the same as the
+        orchestra level <emphasis>ksmps</emphasis> value (as specified in the
+        orchestra header), global a-rate operations must not be used in the
+        user-defined opcode block.
+      </para>
+
+      <para>
+        These include:
+
+        <itemizedlist>
+          <listitem><para>any access to <quote>ga</quote> variables</para></listitem>
+          <listitem><para>a-rate zak opcodes (<link linkend="zar"><citetitle>zar</citetitle></link>, <link linkend="zaw"><citetitle>zaw</citetitle></link>, etc.)</para></listitem>
+          <listitem><para><link linkend="tablera"><citetitle>tablera</citetitle></link> and <link linkend="tablewa"><citetitle>tablewa</citetitle></link> (these two opcodes may in fact work, but caution is needed)</para></listitem>
+          <listitem><para>The <emphasis>in</emphasis> and <emphasis>out</emphasis> opcode family (these read from, and write to global a-rate buffers)</para></listitem>
+        </itemizedlist>
+      </para>
+
+      <para>
+        In general, the local <emphasis>ksmps</emphasis> should be used with
+        care as it is an experimental feature, although it works correctly in
+        most cases.
+      </para>
+    </warning>
+
+    <para>
+      The <link linkend="setksmps"><citetitle>setksmps</citetitle></link>
+      statement can be used to set the local <emphasis>ksmps</emphasis> value
+      of the user-defined opcode block. It has one i-time parameter specifying
+      the new <emphasis>ksmps</emphasis> value (which is left unchanged if zero
+      is used, see also the notes about <emphasis>iksmps</emphasis> above).
+      <emphasis>setksmps</emphasis> should be used before any other opcodes
+      (but allowed after <emphasis>xin</emphasis>), otherwise unpredictable
+      results may occur.
+    </para>
+
+    <para>
+      The input parameters can be read with <emphasis>xin</emphasis>, and the
+      output is written by <emphasis>xout</emphasis> opcode. Only one instance
+      of these units should be used, as <emphasis>xout</emphasis> overwrites
+      and does not accumulate the output. The number and type of arguments for
+      <emphasis>xin</emphasis> and <emphasis>xout</emphasis> must be the same
+      as in the declaration of the user-defined opcode block (see tables above).
+    </para>
+
+    <para>
+      The input and output arguments must agree with the definition both in
+      number (except if the optional i-time input is used) and type.
+      An optional i-time input parameter (<emphasis>iksmps</emphasis>) is
+      automatically added to the <emphasis>intypes</emphasis> list, and
+      (similarly to setksmps) sets the local <emphasis>ksmps</emphasis> value.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      The syntax of a user-defined opcode block is as follows:
+
+      <programlisting>
+<emphasis role="oblock">opcode</emphasis>  <command>name</command>, outtypes, intypes
+xinarg1 [, xinarg2] [, xinarg3] ... [xinargN]  <emphasis role="opc">xin</emphasis>
+[<emphasis role="opc">setksmps</emphasis>  iksmps]
+... the rest of the instrument's code.
+<emphasis role="opc">xout</emphasis>  xoutarg1 [, xoutarg2] [, xoutarg3] ... [xoutargN]
+<emphasis role="oblock">endop</emphasis></programlisting>
+    </para>
+
+    <para>
+      The new opcode can then be used with the usual syntax:
+
+      <programlisting>
+  [xoutarg1] [, xoutarg2] ... [xoutargN] <command>name</command>  [xinarg1] [, xinarg2] ... [xinargN] [, iksmps]</programlisting>
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        The opcode call is always executed both at initialization and
+        performance time, even if there are no a- or k-rate arguments.
+        If there are many user opcode calls that are known to have no
+        effect at performance time in an instrument, then it may save some
+        CPU time to jump over groups of such opcodes with
+        <link linkend="kgoto"><citetitle>kgoto</citetitle></link>.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of a user-defined opcode. It uses the file <ulink url="examples/opcode_example.csd"><citetitle>opcode.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of a user-defined opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/opcode_example.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="endop"><citetitle>endop</citetitle></link>,
+      <link linkend="setksmps"><citetitle>setksmps</citetitle></link>,
+      <link linkend="xin"><citetitle>xin</citetitle></link>,
+      <link linkend="xout"><citetitle>xout</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: Istvan Varga, 2002; based on code by Matt J. Ingalls</para>
+    <para>New in version 4.22</para>
+  </refsect1>
+</refentry>

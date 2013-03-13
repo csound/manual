@@ -1,0 +1,47 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+-odac
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 16
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 1
+<emphasis role="ohdr">0dbfs</emphasis> <emphasis role="op">=</emphasis> 1
+
+<emphasis role="comment">;; example written by joachim heintz 2009</emphasis>
+
+giSine		<emphasis role="ohdr">ftgen</emphasis>		0, 0, 4096, 10, 1
+giBell		<emphasis role="ohdr">ftgen</emphasis>		0, 0, 4096, 9, .56, 1, 0, .57, .67, 0, .92, 1.8, 0, .93, 1.8, 0, 1.19, 2.67, 0, 1.7, 1.67, 0, 2, 1.46, 0, 2.74, 1.33, 0, 3, 1.33, 0, 3.76, 1, 0, 4.07, 1.33, 0<emphasis role="comment">; bell-like (after Risset)</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 1
+ipermut	<emphasis role="op">=</emphasis>		p4<emphasis role="comment">; 1 = change order of soundfiles </emphasis>
+ifftsize	<emphasis role="op">=</emphasis>		1024
+ioverlap	<emphasis role="op">=</emphasis>		ifftsize <emphasis role="op">/</emphasis> 4
+iwinsize	<emphasis role="op">=</emphasis>		ifftsize
+iwinshape	<emphasis role="op">=</emphasis>		1<emphasis role="comment">; von-Hann window</emphasis>
+Sfile1		<emphasis role="op">=</emphasis>		"fox.wav"
+ain1		<emphasis role="opc">soundin</emphasis>	Sfile1
+kfreq		<emphasis role="opc">randomi</emphasis>	200, 300, 3
+ain2		<emphasis role="opc">oscili</emphasis>		.2, kfreq, giBell
+<emphasis role="comment">;ain2		oscili		.2, kfreq, giSine; try also this </emphasis>
+fftin1		<emphasis role="opc">pvsanal</emphasis>	ain1, ifftsize, ioverlap, iwinsize, iwinshape<emphasis role="comment">; fft-analysis of file 1</emphasis>
+fftin2		<emphasis role="opc">pvsanal</emphasis>	ain2, ifftsize, ioverlap, iwinsize, iwinshape<emphasis role="comment">; fft-analysis of file 2</emphasis>
+<emphasis role="octrl">if</emphasis> ipermut <emphasis role="op">==</emphasis> 1 then
+fcross		<emphasis role="opc">pvsfilter</emphasis>	fftin2, fftin1, 1
+<emphasis role="octrl">else</emphasis>
+fcross		<emphasis role="opc">pvsfilter</emphasis>	fftin1, fftin2, 1
+<emphasis role="octrl">endif</emphasis>
+aout		<emphasis role="opc">pvsynth</emphasis>	fcross
+		<emphasis role="opc">out</emphasis>		aout <emphasis role="op">*</emphasis> 20
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 2.757 0<emphasis role="comment">; frequencies from fox.wav, amplitudes multiplied by amplitudes of giBell</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 3 2.757 1<emphasis role="comment">; frequencies from giBell, amplitudes multiplied by amplitudes of fox.wav</emphasis>
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

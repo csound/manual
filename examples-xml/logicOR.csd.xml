@@ -1,0 +1,34 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac -+rtmidi=virtual -M0   <emphasis role="comment">;;;realtime audio out and virtual midi keyboard</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="comment">;after a UDO from Rory Walsh</emphasis>
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+
+<emphasis role="oblock">instr</emphasis> 1	<emphasis role="comment">;displays notes, midi channel and control number information</emphasis>
+
+kstatus, kchan, kdata1, kdata2 <emphasis role="opc">midiin</emphasis>
+k1 <emphasis role="opc">changed</emphasis> kstatus
+k2 <emphasis role="opc">changed</emphasis> kchan
+k3 <emphasis role="opc">changed</emphasis> kdata1
+k4 <emphasis role="opc">changed</emphasis> kdata2
+<emphasis role="octrl">if</emphasis>((k1<emphasis role="op">==</emphasis>1)<emphasis role="op">||</emphasis>(k2<emphasis role="op">==</emphasis>1)<emphasis role="op">||</emphasis>(k3<emphasis role="op">==</emphasis>1)<emphasis role="op">||</emphasis>(k4<emphasis role="op">==</emphasis>1)) then
+<emphasis role="opc">printks</emphasis> "Value<emphasis role="op">:</emphasis><emphasis role="op">%</emphasis>d ChanNo<emphasis role="op">:</emphasis><emphasis role="op">%</emphasis>d CtrlNo<emphasis role="op">:</emphasis><emphasis role="op">%</emphasis>d\n" , 0, kdata2, kchan, kdata1  
+<emphasis role="octrl">endif</emphasis> 
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis>1  0  60	<emphasis role="comment">;print values for 60 seconds</emphasis>
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

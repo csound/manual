@@ -1,0 +1,166 @@
+
+<refentry id="GEN03">
+      <indexterm id="IndexGEN03"><primary>GEN03</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN03</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN03</refname>
+    <refpurpose>
+      Generates a stored function table by evaluating a polynomial.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This subroutine generates a stored function table by evaluating a polynomial in x over a fixed interval and with specified coefficients.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>f</command>  #  time  size  3  xval1  xval2  c0  c1  c2  ...  cn</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>size </emphasis> -- number of points in the table. Must be a power of 2 or a power-of-2 plus 1.
+    </para>
+
+    <para>
+      <emphasis>xval1, xval2 </emphasis> -- left and right values of the x interval over which the polynomial is defined (<emphasis>xval1</emphasis> &lt; <emphasis>xval2</emphasis>). These will produce the 1st stored value and the (power-of-2 plus l)th stored value respectively in the generated function table.
+    </para>
+
+    <para>
+      <emphasis>c0, c1, c2, ..., cn</emphasis> -- coefficients of the nth-order polynomial
+    </para>
+
+    <para>
+      <emphasis>C<subscript>0</subscript></emphasis> + <emphasis>C<subscript>1</subscript>x</emphasis> +
+      <emphasis>C<subscript>2</subscript>x<superscript>2</superscript></emphasis> + . . . +
+      <emphasis>C<subscript>n</subscript>x<superscript>n</superscript></emphasis>
+    </para>
+
+    <para>
+      Coefficients may be positive or negative real numbers; a zero denotes a missing term in the polynomial. The coefficient list begins in p7, providing a current upper limit of 144 terms.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The defined segment [fn(<emphasis>xval1</emphasis>), fn(<emphasis>xval2</emphasis>)] is evenly distributed. Thus a 512-point table over the interval [-1,1] will have its origin at location 257 (at the start of the 2nd half). Provided the extended guard point is requested, both fn(-1) and fn(1) will exist in the table.
+            </para>
+          </listitem>
+
+          <listitem>
+            <para>
+              <emphasis>GEN03</emphasis> is useful in conjunction with <link linkend="table"><citetitle>table</citetitle></link> or <link linkend="tablei"><citetitle>tablei</citetitle></link> for audio waveshaping (sound modification by non-linear distortion). Coefficients to produce a particular formant from a sinusoidal lookup index of known amplitude can be determined at preprocessing time using algorithms such as Chebyshev formulae. See also <link linkend="GEN13"><citetitle>GEN13</citetitle></link>.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </note>
+  </refsect1>
+
+    <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the GEN03 opcode. It uses the file <ulink url="examples/gen03.csd"><citetitle>gen03.csd</citetitle></ulink>.
+           <example>
+        <title>Example of the GEN03 opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/gen03.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>  
+        <textobject>
+          <phrase>These are the diagrams of the waveforms of the GEN03 routines, as used in the example:</phrase>
+        </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen03_1.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f4 0 513 3 1 1 0 1 - first-order Chebyshev: x</phrase>
+        </textobject>
+
+        <caption>
+          <para>f4 0 513 3 1 1 0 1 - first-order Chebyshev: x</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen03_2.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f6 0 513 3 -1 1 -1 0 2 - second-order Chebyshev: 2x2 - 1</phrase>
+        </textobject>
+
+        <caption>
+          <para>f6 0 513 3 -1 1 -1 0 2 - second-order Chebyshev: 2x2 - 1</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen03_3.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f8 0 513 3 -1 1 0 -3 0 4 - third-order Chebyshev: 4x3 - 3x</phrase>
+        </textobject>
+
+        <caption>
+          <para>f8 0 513 3 -1 1 0 -3 0 4 - third-order Chebyshev: 4x3 - 3x</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen03_4.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f10 0 513 3 -1 10 0 -7 0 56 0 -112 0 64 - seventh-order Chebyshev: 64x7 - 112x5 + 56x3 - 7x</phrase>
+        </textobject>
+
+        <caption>
+          <para>f10 0 513 3 -1 10 0 -7 0 56 0 -112 0 64 - seventh-order Chebyshev: 64x7 - 112x5 + 56x3 - 7x</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen03_5.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f12 0 513 3 -1 1 5 4 3 2 2 1 - a 4th order polynomial function over the x-interval -1 to 1</phrase>
+        </textobject>
+
+        <caption>
+          <para>f12 0 513 3 -1 1 5 4 3 2 2 1 - a 4th order polynomial function over the x-interval -1 to 1</para>
+        </caption>
+      </mediaobject>
+
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="GEN13"><citetitle>GEN13</citetitle></link>,
+      <link linkend="GEN14"><citetitle>GEN14</citetitle></link>, and
+      <link linkend="GEN15"><citetitle>GEN15</citetitle></link>.
+          <para> Information about the Chebyshev polynomials on Wikipedia: <ulink url="http://en.wikipedia.org/wiki/Chebyshev_polynomials"><citetitle>http://en.wikipedia.org/wiki/Chebyshev_polynomials</citetitle></ulink></para>
+    </para>
+  </refsect1>
+</refentry>

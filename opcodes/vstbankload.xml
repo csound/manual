@@ -1,0 +1,76 @@
+<refentry id="vstbankload">
+<indexterm id="IndexVstBankLoad"><primary>vstbankload</primary></indexterm>
+  <refentryinfo><title>Plugin Hosting:VST</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vstbankload</refentrytitle>
+  </refmeta>
+  
+  <refnamediv>
+    <refname>vstbankload</refname>
+    <refpurpose>
+      Loads parameter banks to a VST plugin.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>vstbankload</command> instance, ipath</synopsis>
+  </refsect1>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>vstbankload</emphasis> is used for loading parameter
+      banks to a VST plugin.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>instance</emphasis> - the number which identifies the
+      plugin, to be passed to other vst4cs opcodes.
+    </para>
+    <para>
+      <emphasis>ipath</emphasis> - the full pathname of the parameter
+      bank (<filename>.fxb</filename> file).
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Examples</title>
+    <example>
+      <title>Example for vstbankload</title>
+      <programlisting>
+<emphasis role="comment">/* orc */</emphasis>
+<emphasis role="ohdr">sr</emphasis>     <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">kr</emphasis>     <emphasis role="op">=</emphasis> 4410
+<emphasis role="ohdr">ksmps</emphasis>  <emphasis role="op">=</emphasis> 10
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+
+gihandle1 <emphasis role="opc">vstinit</emphasis> "c:/vstplugins/cheeze/cheeze machine.dll", 1
+
+<emphasis role="oblock">instr</emphasis> 4
+  <emphasis role="opc">vstbankload</emphasis>  gihandle1,"c:/vstplugins/cheeze/chengo'scheese.fxb"
+  <emphasis role="opc">vstinfo</emphasis>      gihandle1
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="comment">/* sco */</emphasis>
+<emphasis role="stamnt">i</emphasis> 3 0 21
+<emphasis role="stamnt">i</emphasis> 4 1 1 57 32</programlisting>
+    </example>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>By: &nameandres; and &namemichael;</para>
+    <para>
+      Uses code from Hermann Seib's VSTHost and Thomas Grill's vst~
+      object.
+    </para>
+    <para>
+      VST is a trademark of Steinberg Media Technologies GmbH. 
+      VST Plug-In Technology by Steinberg.
+    </para>
+  </refsect1>
+</refentry>

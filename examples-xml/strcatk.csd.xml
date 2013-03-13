@@ -1,0 +1,41 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in</emphasis>
+-odac           -iadc    <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o strcatk.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+  <emphasis role="ohdr">sr</emphasis>	    <emphasis role="op">=</emphasis>  48000
+  <emphasis role="ohdr">ksmps</emphasis>	    <emphasis role="op">=</emphasis>  16
+  <emphasis role="ohdr">nchnls</emphasis>    <emphasis role="op">=</emphasis>  2
+  <emphasis role="ohdr">0dbfs</emphasis>	    <emphasis role="op">=</emphasis>  1
+
+<emphasis role="comment">; Example by Jonathan Murphy 2007</emphasis>
+
+    <emphasis role="oblock">instr</emphasis> 1
+
+  S1	    <emphasis role="op">=</emphasis>  "1"
+  S2	    <emphasis role="op">=</emphasis>  " <emphasis role="op">+</emphasis> 1"
+  ktrig	    <emphasis role="opc">init</emphasis>      0
+  kval	    <emphasis role="opc">init</emphasis>      2
+<emphasis role="octrl">if</emphasis> (ktrig <emphasis role="op">==</emphasis> 1) then
+  S1	    <emphasis role="opc">strcatk</emphasis>   S1, S2
+  kval	    <emphasis role="op">=</emphasis>  kval <emphasis role="op">+</emphasis> 1
+<emphasis role="octrl">endif</emphasis>
+  String    <emphasis role="opc">sprintfk</emphasis>  "<emphasis role="op">%</emphasis>s <emphasis role="op">=</emphasis> <emphasis role="op">%</emphasis>d", S1, kval
+	    <emphasis role="opc">puts</emphasis>      String, kval
+  ktrig	    <emphasis role="opc">metro</emphasis>     1
+
+    <emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">i</emphasis>1 0 10
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

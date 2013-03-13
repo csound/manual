@@ -1,0 +1,76 @@
+
+<refentry id="lineto">
+<indexterm id="IndexLineto"><primary>lineto</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lineto</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>lineto</refname>
+    <refpurpose>
+      Generate glissandos starting from a control signal.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Generate glissandos starting from a control signal.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kres <command>lineto</command> ksig, ktime</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kres</emphasis> -- Output signal.
+    </para>
+
+    <para>
+      <emphasis>ksig</emphasis> -- Input signal.
+    </para>
+
+    <para>
+      <emphasis>ktime</emphasis> -- Time length of glissando in seconds.
+    </para>
+
+    <para>
+      <emphasis>lineto</emphasis> adds glissando (i.e. straight lines) to a stepped input signal (for example, produced by <link linkend="randh"><citetitle>randh</citetitle></link> or <link linkend="lpshold"><citetitle>lpshold</citetitle></link>).  It generates a straight line starting from previous step value, reaching the new step value in <emphasis>ktime</emphasis> seconds. When the new step value is reached, such value is held until a new step occurs. Be sure that <emphasis>ktime</emphasis> argument value is smaller than the time elapsed between two consecutive steps of the original signal, otherwise discontinuities will occur in output signal.
+    </para>
+
+    <para>
+      When used together with the output of <link linkend="lpshold"><citetitle>lpshold</citetitle></link> it emulates the glissando effect of old analog sequencers.
+    </para>
+    <note><para>No new value for <emphasis>ksig</emphasis> or <emphasis>ktime</emphasis> will have effect until the previous <emphasis>ktime</emphasis> has elapsed.</para></note>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the lineto opcode. It uses the file <ulink url="examples/lineto.csd"><citetitle>lineto.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the lineto opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/lineto.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="tlineto"><citetitle>tlineto</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namegabriel;</para>
+    <para>New in Version 4.13</para>
+  </refsect1>
+</refentry>

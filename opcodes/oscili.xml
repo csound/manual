@@ -1,0 +1,86 @@
+
+<refentry id="oscili">
+<indexterm id="IndexOscili"><primary>oscili</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Basic Oscillators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>oscili</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>oscili</refname>
+    <refpurpose>
+      A simple oscillator with linear interpolation.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+        <emphasis>oscili</emphasis> reads table <emphasis>ifn</emphasis> sequentially and repeatedly at a frequency <emphasis>xcps</emphasis>. The amplitude is scaled by <emphasis>xamp</emphasis>. Linear interpolation is applied for table look up from internal phase values.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>oscili</command> xamp, xcps, ifn [, iphs]</synopsis>
+
+    <synopsis>kres <command>oscili</command> kamp, kcps, ifn [, iphs]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifn</emphasis> -- function table number. Requires a wrap-around guard point.
+    </para>
+
+    <para>
+      <emphasis>iphs</emphasis> (optional) -- initial phase of sampling, expressed as a fraction of a cycle (0 to 1). A negative value will cause phase initialization to be skipped. The default value is 0.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kamp, xamp</emphasis> -- amplitude
+    </para>
+
+    <para>
+      <emphasis>kcps, xcps</emphasis> -- frequency in cycles per second.
+    </para>
+
+    <para>
+      <emphasis>oscili</emphasis> differs from <link linkend="oscil"><citetitle>oscil</citetitle></link> in that the standard procedure of using a truncated phase as a sampling index is here replaced by a process that interpolates between two successive lookups. Interpolating generators will produce a noticeably cleaner output signal, but they may take as much as twice as long to run. Adequate accuracy can also be gained without the time cost of interpolation by using large stored function tables of 2K, 4K or 8K points if the space is available.
+    </para>
+    <para>
+      Table <emphasis>ifn</emphasis> is incrementally sampled modulo the table length and the value obtained is multiplied by <emphasis>amp</emphasis>.
+    </para>
+    <para>
+      If you need to change the oscillator table with a k-rate signal, you can use <link linkend="oscilikt"><citetitle>oscilikt</citetitle></link>.
+    </para>
+ </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the oscili opcode. It uses the file <ulink url="examples/oscili.csd"><citetitle>oscili.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the oscili opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/oscili.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="oscil"><citetitle>oscil</citetitle></link>,
+      <link linkend="oscil3"><citetitle>oscil3</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+  </refsect1>
+</refentry>

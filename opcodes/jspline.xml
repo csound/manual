@@ -1,0 +1,80 @@
+
+<refentry id="jspline">
+<indexterm id="IndexJspline"><primary>jspline</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Linear and Exponential Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>jspline</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>jspline</refname>
+    <refpurpose>
+      A jitter-spline generator.
+          </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      A jitter-spline generator.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>jspline</command> xamp, kcpsMin, kcpsMax</synopsis>
+
+    <synopsis>kres <command>jspline</command> kamp, kcpsMin, kcpsMax</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kres, ares</emphasis> -- Output signal
+    </para>
+
+    <para>
+      <emphasis>xamp</emphasis> -- Amplitude factor
+    </para>
+
+    <para>
+      <emphasis>kcpsMin, kcpsMax</emphasis> -- Range of point-generation rate. Min and max limits are expressed in cps.
+    </para>
+
+    <para>
+      <emphasis>jspline</emphasis> (jitter-spline generator) generates a smooth curve based on random points generated at [<emphasis>cpsMin</emphasis>, <emphasis>cpsMax</emphasis>] rate.  This opcode is similar to <link linkend="randomi"><citetitle>randomi</citetitle></link> or <link linkend="randi"><citetitle>randi</citetitle></link> or <link linkend="jitter"><citetitle>jitter</citetitle></link>, but segments are not straight lines, but cubic spline curves. Output value range is approximately &gt; -<emphasis>xamp</emphasis> and &lt; <emphasis>xamp</emphasis>. Actually, real range could be a bit greater, because of interpolating curves beetween each pair of random-points.
+    </para>
+
+    <para>
+      At present time generated curves are quite smooth when <emphasis>cpsMin</emphasis> is not too different from <emphasis>cpsMax</emphasis>. When <emphasis>cpsMin</emphasis>-<emphasis>cpsMax</emphasis> interval is big, some little discontinuity could occurr, but it should not be a problem, in most cases. Maybe the algorithm will be improved in next versions.
+    </para>
+
+    <para>
+      These opcodes are often better than <link linkend="jitter"><citetitle>jitter</citetitle></link> when user wants to <quote>naturalize</quote> or <quote>analogize</quote> digital sounds. They could be used also in algorithmic composition, to generate smooth random melodic lines when used together with <link linkend="samphold"><citetitle>samphold</citetitle></link> opcode.
+    </para>
+
+    <para>
+      Note that the result is quite different from the one obtained by filtering white noise, and they allow the user to obtain a much more precise control.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the jspline opcode. It uses the file <ulink url="examples/jspline.csd"><citetitle>jspline.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the jspline opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/jspline.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namegabriel;</para>
+    <para>New in Version 4.15</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,113 @@
+
+<refentry id="trigseq">
+<indexterm id="IndexTrigseq"><primary>trigseq</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>trigseq</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>trigseq</refname>
+    <refpurpose>
+      Accepts a trigger signal as input and outputs a group of values.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Accepts a trigger signal as input and outputs a group of values.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>trigseq</command> ktrig_in, kstart, kloop, kinitndx, kfn_values, kout1 [, kout2] [...]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ktrig_in</emphasis> -- input trigger signal
+    </para>
+
+    <para>
+      <emphasis>kstart</emphasis> -- start index of looped section
+    </para>
+
+    <para>
+      <emphasis>kloop</emphasis> -- end index of looped section
+    </para>
+
+    <para>
+      <emphasis>kinitndx</emphasis> -- initial index
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        Although <emphasis>kinitndx</emphasis> is listed as k-rate, it is in fact accessed only at init-time. So if you are using a k-rate argument, it must be assigned with <link linkend="init"><citetitle>init</citetitle></link>.
+      </para>
+    </note>
+
+    <para>
+      <emphasis>kfn_values</emphasis> -- number of a table containing a sequence of groups of values
+    </para>
+
+    <para>
+      <emphasis>kout1</emphasis> -- output values
+    </para>
+
+    <para>
+      <emphasis>kout2, ...</emphasis> (optional) -- more output values
+    </para>
+
+    <para>
+      This opcode handles timed-sequences of groups of values stored into a table.
+    </para>
+
+    <para>
+      <emphasis>trigseq</emphasis> accepts a trigger signal (<emphasis>ktrig_in</emphasis>) as input and outputs group of values (contained in the <emphasis>kfn_values</emphasis> table) each time <emphasis>ktrig_in</emphasis> assumes a non-zero value. Each time a group of values is triggered, table pointer is advanced of a number of positions corresponding to the number of group-elements, in order to point to the next group of values. The number of elements of groups is determined by the number of <emphasis>koutX</emphasis> arguments. 
+    </para>
+
+    <para>
+      It is possible to start the sequence from a value different than the first, by assigning to <emphasis>kinitndx</emphasis> an index different than zero (which corresponds to the first value of the table). Normally the sequence is looped, and the start and end of loop can be adjusted by modifying <emphasis>kstart</emphasis> and <emphasis>kloop</emphasis> arguments. User must be sure that values of these arguments (as well as <emphasis>kinitndx</emphasis>) correspond to valid table numbers, otherwise Csound will crash because no range-checking is implemented. 
+    </para>
+
+    <para>
+      It is possible to disable loop (one-shot mode) by assigning the same value both to <emphasis>kstart</emphasis> and <emphasis>kloop</emphasis> arguments. In this case, the last read element will be the one corresponding to the value of such arguments. Table can be read backward by assigning a negative <emphasis>kloop</emphasis> value.
+    </para>
+
+    <para>
+      <emphasis>trigseq</emphasis> is designed to be used together with <link linkend="seqtime"><citetitle>seqtime</citetitle></link> or <link linkend="trigger"><citetitle>trigger</citetitle></link> opcodes.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the trigseq opcode. It uses the file <ulink url="examples/trigseq.csd"><citetitle>trigseq.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the trigseq opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/trigseq.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="seqtime"><citetitle>seqtime</citetitle></link>,
+      <link linkend="trigger"><citetitle>trigger</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namegabriel;</para>
+    <para>November 2002. Added a note about the <emphasis>kinitndx</emphasis> parameter, thanks to &namerasmus;.</para>
+    <para>January 2003. Thanks to a note from &nameoeyvind;, I corrected the credits.</para>
+    <para>New in version 4.06</para>
+  </refsect1>
+</refentry>

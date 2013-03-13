@@ -1,0 +1,37 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in    No messages</emphasis>
+-odac           -iadc     -d         -M0  -Q1<emphasis role="comment">;;;RT audio I/O with MIDI in</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">kr</emphasis> <emphasis role="op">=</emphasis> 4410
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 10
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+
+<emphasis role="comment">; Example by Giorgio Zucco 2007</emphasis>
+
+<emphasis role="opc">FLpanel</emphasis> "outkpc",200,100,90,90<emphasis role="comment">;start of container</emphasis>
+gkpg, gihandle <emphasis role="opc">FLcount</emphasis> "Midi<emphasis role="op">-</emphasis>Program change",0,127,1,5,1,152,40,16,23,<emphasis role="op">-</emphasis>1
+<emphasis role="opc">FLpanelEnd</emphasis>
+
+<emphasis role="opc">FLrun</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 1
+
+ktrig <emphasis role="opc">changed</emphasis> gkpg
+<emphasis role="opc">outkpc</emphasis>     ktrig,gkpg,0,127
+
+<emphasis role="oblock">endin</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="comment">; Run instrument 1 for 60 seconds</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0  60
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

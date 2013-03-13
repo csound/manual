@@ -1,0 +1,172 @@
+
+<refentry id="rnd31">
+<indexterm id="IndexRnd31"><primary>rnd31</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Random (Noise) Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>rnd31</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>rnd31</refname>
+    <refpurpose>
+      31-bit bipolar random opcodes with controllable distribution.
+          </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      31-bit bipolar random opcodes with controllable distribution. These units are portable, i.e. using the same seed value will generate the same random sequence on all systems. The distribution of generated random numbers can be varied at k-rate.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ax <command>rnd31</command> kscl, krpow [, iseed]</synopsis>
+
+    <synopsis>ix <command>rnd31</command> iscl, irpow [, iseed]</synopsis>
+
+    <synopsis>kx <command>rnd31</command> kscl, krpow [, iseed]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ix</emphasis> -- i-rate output value.
+    </para>
+
+    <para>
+      <emphasis>iscl</emphasis> -- output scale. The generated random numbers are in the range -iscl to iscl.
+    </para>
+
+    <para>
+      <emphasis>irpow</emphasis> -- controls the distribution of random numbers. If irpow is positive, the random distribution (x is in the range -1 to 1) is <emphasis>abs(x) &circ; ((1 / irpow) - 1)</emphasis>; for negative irpow values, it is <emphasis>(1 - abs(x)) &circ; ((-1 / irpow) - 1)</emphasis>. Setting <emphasis>irpow</emphasis> to -1, 0, or 1 will result in uniform distribution (this is also faster to calculate).  
+    </para>
+
+    <para>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/rnd31_rand.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>[A graph of distributions for different values of irpow.]</phrase>
+        </textobject>
+
+        <caption>
+          <para>A graph of distributions for different values of irpow.</para>
+        </caption>
+      </mediaobject>
+    </para>
+
+    <para>
+      <emphasis>iseed</emphasis> (optional, default=0) -- seed value for random number generator (positive integer in the range 1 to 2147483646 (2 &circ; 31 - 2)). Zero or negative value seeds from current time (this is also the default). Seeding from current time is guaranteed to generate different random sequences, even if multiple random opcodes are called in a very short time.
+    </para>
+<para> In the a- and k-rate version the seed is set at opcode initialization. With i-rate output, if iseed is zero or negative, it will seed from current time in the first call, and return the next value from the random sequence in successive calls; positive seed values are set at all i-rate calls.  The seed is local for a- and k-rate, and global for i-rate units.
+    </para>
+
+    <note>
+      <title>Notes</title>
+      <para>
+        <itemizedlist>
+          <listitem><para>although seed values up to 2147483646 are allowed, it is recommended to use smaller numbers (&lt; 1000000) for portability, as large integers may be rounded to a different value if 32-bit floats are used.</para></listitem>
+          <listitem><para>i-rate <emphasis>rnd31</emphasis> with a positive seed will always produce the same output value (this is not a bug). To get different values, set seed to 0 in successive calls, which will return the next value from the random sequence.</para></listitem>
+        </itemizedlist>
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ax</emphasis> -- a-rate output value.
+    </para>
+
+    <para>
+      <emphasis>kx</emphasis> -- k-rate output value.
+    </para>
+
+    <para>
+      <emphasis>kscl</emphasis> -- output scale. The generated random numbers are in the range -kscl to kscl. It is the same as <emphasis>iscl</emphasis>, but can be varied at k-rate.
+    </para>
+
+    <para>
+      <emphasis>krpow</emphasis> -- controls the distribution of random numbers. It is the same as <emphasis>irpow</emphasis>, but can be varied at k-rate.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the rnd31 opcode at a-rate. It uses the file <ulink url="examples/rnd31.csd"><citetitle>rnd31.csd</citetitle></ulink>.
+
+      <example>
+        <title>An example of the rnd31 opcode at a-rate.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/rnd31.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Here is an example of the rnd31 opcode at k-rate. It uses the file <ulink url="examples/rnd31_krate.csd"><citetitle>rnd31_krate.csd</citetitle></ulink>.
+
+      <example>
+        <title>An example of the rnd31 opcode at k-rate.</title>
+
+          <xi:include href="examples-xml/rnd31_krate.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Its output should include lines like this:
+      <screen>
+k1=0.112106
+k1=-0.274665
+k1=0.403933
+      </screen>
+    </para>
+
+    <para>
+      Here is an example of the rnd31 opcode that uses the number 7 as a seed value. It uses the file <ulink url="examples/rnd31_seed7.csd"><citetitle>rnd31_seed7.csd</citetitle></ulink>.
+
+      <example>
+        <title>An example of the rnd31 opcode that uses the number 7 as a seed value.</title>
+
+          <xi:include href="examples-xml/rnd31_seed7.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Its output should include lines like this:
+      <screen>
+instr 1:  i1 = -0.649
+instr 1:  i2 = -0.761
+instr 1:  i3 = 0.677
+      </screen>
+    </para>
+
+    <para>
+      Here is an example of the rnd31 opcode that uses the current time as a seed value. It uses the file <ulink url="examples/rnd31_time.csd"><citetitle>rnd31_time.csd</citetitle></ulink>.
+
+      <example>
+        <title>An example of the rnd31 opcode that uses the current time as a seed value.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/rnd31_time.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Its output should include lines like this:
+      <screen>
+instr 1:  i1 = -0.691
+instr 1:  i2 = -0.686
+instr 1:  i3 = -0.358
+      </screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &nameistvan;</para>
+    <para>New in version 4.16</para>
+  </refsect1>
+</refentry>

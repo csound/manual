@@ -1,0 +1,151 @@
+
+<refentry id="FLpanel">
+  <indexterm id="IndexFLpanel"><primary>FLpanel</primary></indexterm>
+  <refentryinfo><title>FLTK:Containers</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLpanel</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLpanel</refname>
+    <refpurpose>
+      Creates a window that contains FLTK widgets.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Creates a window that contains FLTK widgets.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>FLpanel</command> &quot;label&quot;, iwidth, iheight [, ix] [, iy] [, iborder] [, ikbdcapture] [, iclose]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis><quote>label</quote></emphasis> -- a double-quoted string containing some user-provided text, placed near the corresponding widget.
+    </para>
+
+    <para>
+      <emphasis>iwidth</emphasis> -- width of widget.
+    </para>
+
+    <para>
+      <emphasis>iheight</emphasis> -- height of widget.
+    </para>
+
+    <para>
+      <emphasis>ix</emphasis> (optional) -- horizontal position of upper left corner of the valuator, relative to the upper left corner of corresponding window (expressed in pixels).
+    </para>
+
+    <para>
+      <emphasis>iy</emphasis> (optional) -- vertical position of upper left corner of the valuator, relative to the upper left corner of corresponding window (expressed in pixels).
+    </para>
+
+    <para>
+      <emphasis>iborder</emphasis> (optional) -- border type of the container. It is expressed by means of an integer number chosen from the following:
+
+      <itemizedlist>
+        <listitem><para>0 - no border</para></listitem>
+        <listitem><para>1 - down box border</para></listitem>
+        <listitem><para>2 - up box border</para></listitem>
+        <listitem><para>3 - engraved border</para></listitem>
+        <listitem><para>4 - embossed border</para></listitem>
+        <listitem><para>5 - black line border</para></listitem>
+        <listitem><para>6 - thin down border</para></listitem>
+        <listitem><para>7 - thin up border</para></listitem>
+      </itemizedlist>
+    </para>
+    <para>
+      <emphasis>ikbdcapture</emphasis> (default = 0) -- If this flag is set to 1, keyboard events are captured by the window (for use with <link linkend="sensekey"><citetitle>sensekey</citetitle></link> and <link linkend="FLkeyIn"><citetitle>FLkeyIn</citetitle></link>)
+    </para>
+    <para>
+      <emphasis>iclose</emphasis> (default = 0) -- If this flag is set to anything other than 0, the close button of the window is disabled, and the window cannot be closed by the user directly. It will close when csound exits.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      Containers are useful to format the graphic appearance of the widgets. The most important container is <emphasis>FLpanel</emphasis>, that actually creates a window. It can be filled with other containers and/or valuators or other kinds of widgets.
+    </para>
+
+    <para>
+      There are no k-rate arguments in containers.
+    </para>
+
+    <para>
+      <emphasis>FLpanel</emphasis> creates a window. It must be followed by the opcode <link linkend="FLpanelEnd"><citetitle>FLpanelEnd</citetitle></link> when all widgets internal to it are declared. For example:
+      <informalexample>
+        <programlisting>
+         <emphasis role="opc">FLpanel</emphasis>    "PanelPluto",450,550,100,100 <emphasis role="comment">;***** start of container</emphasis>
+gk1, ih1 <emphasis role="opc">FLslider</emphasis>   "FLslider 1", 500, 1000, 2 ,1, -1, 300,15, 20,50
+gk2, ih2 <emphasis role="opc">FLslider</emphasis>   "FLslider 2", 300, 5000, 2 ,3, -1, 300,15, 20,100
+gk3, ih3 <emphasis role="opc">FLslider</emphasis>   "FLslider 3", 350, 1000, 2 ,5, -1, 300,15, 20,150
+gk4, ih4 <emphasis role="opc">FLslider</emphasis>   "FLslider 4", 250, 5000, 1 ,11,-1, 300,30, 20,200
+         <emphasis role="opc">FLpanelEnd</emphasis> <emphasis role="comment">;***** end of container</emphasis></programlisting>
+      </informalexample>
+
+      will output the following result:
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/flpanel.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>FLpanel.</phrase>
+        </textobject>
+
+        <caption>
+          <para>FLpanel.</para>
+        </caption>
+      </mediaobject>
+    </para>
+    <para>
+      If the <emphasis>ikbdcapture</emphasis> flag is set, the window captures keyboard events, and sends them to all <link linkend="sensekey"><citetitle>sensekey</citetitle></link>. This flag modifies the behavior of <link linkend="sensekey"><citetitle>sensekey</citetitle></link>, and makes it receive events from the FLTK window instead of stdin.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the FLpanel opcode. It uses the file <ulink url="examples/FLpanel.csd"><citetitle>FLpanel.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the FLpanel opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/FLpanel.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="FLgroup"><citetitle>FLgroup</citetitle></link>, 
+      <link linkend="FLgroupEnd"><citetitle>FLgroupEnd</citetitle></link>, 
+      <link linkend="FLpack"><citetitle>FLpack</citetitle></link>, 
+      <link linkend="FLpackEnd"><citetitle>FLpackEnd</citetitle></link>, 
+      <link linkend="FLpanelEnd"><citetitle>FLpanelEnd</citetitle></link>, 
+      <link linkend="FLscroll"><citetitle>FLscroll</citetitle></link>, 
+      <link linkend="FLscrollEnd"><citetitle>FLscrollEnd</citetitle></link>, 
+      <link linkend="FLtabs"><citetitle>FLtabs</citetitle></link>, 
+      <link linkend="FLtabsEnd"><citetitle>FLtabsEnd</citetitle></link>, 
+      <link linkend="sensekey"><citetitle>sensekey</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namegabriel;</para>
+    <para>New in version 4.22</para>
+    <para>Example written by Iain McCurdy, edited by &namekevin;.</para>
+  </refsect1>
+</refentry>

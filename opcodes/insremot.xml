@@ -1,0 +1,114 @@
+<refentry id="insremot">
+<indexterm id="Indexinsremot"><primary>insremot</primary></indexterm>
+  <refentryinfo><title>Remote Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>insremot</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>insremot</refname>
+    <refpurpose>
+      An opcode which can be used to implement a remote
+      orchestra. This opcode will send note events from a source
+      machine to one destination. 
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      With the <emphasis>insremot</emphasis> and <link
+      linkend="insglobal"><citetitle>insglobal</citetitle></link>
+      opcodes you are able to perform instruments on remote machines
+      and control them from a master machine. The remote opcodes are
+      implemented using the master/client model. All the machines
+      involved contain the same orchestra but only the master machine
+      contains the information of the score. During the performance
+      the master machine sends the note events to the clients. The
+      <emphasis>insremot</emphasis> opcode will send events from a
+      source machine to one destination if you want to send events to
+      many destinations (broadcast) use the <link
+      linkend="insglobal"><citetitle>insglobal</citetitle></link>
+      opcode instead. These two opcodes can be used in combination.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>insremot</command> idestination, isource, instrnum [,instrnum...] </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>idestination</emphasis>
+      -- a string that is the intended client computer (e.g. 192.168.0.100). This is the destination host which receives the events from the given instrument.
+    </para>
+
+    <para>
+      <emphasis>isource</emphasis>
+      -- a string that is the intended server computer (e.g. 192.168.0.100). This is the source host which generates the events of the given instrument and sends it to the address given by idestination.
+    </para>
+
+    <para>
+      <emphasis>instrnum</emphasis>
+      -- a list of instrument numbers which will be played on the destination machine
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <note>
+      If is essential the computers using this opcode have the same
+      byte-order, data size (double or float) and pointer size.  One
+      cannot use it with mixed 32 and 64 computers for instance.
+    </note>    
+    <note>
+      Internally this opcode makes use of the gethostname and
+      gethostbyname functions to determine the client's and server's
+      IP address for checking which messages are for which machine.
+      If a computer has more than one IP address there is no way to
+      control which IP address is found.
+    </note>
+    <note>
+      The remote operation does not allow the sending of strings at
+      all.
+    </note>
+  </refsect1>
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the insremot opcode. It uses the files <ulink url="examples/insremot.csd"><citetitle>insremot.csd</citetitle></ulink> and <ulink url="examples/insremotM.csd"><citetitle>insremotM.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the insremot opcode.</title>
+        <para>The simple example below shows the bilbar example played on a remote machine. The master machine is named "192.168.1.100" and the client "192.168.1.101". Start the client on the machine (it will wait to receive the events from the master machine) and then start the master. Here is the command on linux to start a client (csound -+rtaudio=alsa -odac -dm0 insremot.csd), and the command on the master machine will look like this (csound -+rtaudio=alsa -odac -dm0 insremotM.csd).</para>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+
+<xi:include href="examples-xml/insremot.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+<xi:include href="examples-xml/insremotM.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See also</title>
+    <para>
+      <link linkend="insglobal"><citetitle>insglobal</citetitle></link>, <link linkend="midglobal"><citetitle>midglobal</citetitle></link>, <link linkend="midremot"><citetitle>midremot</citetitle></link>, <link linkend="remoteport"><citetitle>remoteport</citetitle></link>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Simon Schampijer</member>
+        <member>2006</member>
+      </simplelist>
+    </para>
+    <para>
+      New in version 5.03
+    </para>
+  </refsect1>
+</refentry>

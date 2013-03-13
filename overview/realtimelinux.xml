@@ -1,0 +1,364 @@
+<section id="RealTimeLinux">
+  <title>Realtime I/O on Linux</title>
+<!--  Most of this file was contributed by Jonathan Murphy on July 2006-->
+  <para>
+    Under Linux, the default PortAudio/PortMidi settings will result in
+    higher latency than that which can be achieved using ALSA and/or JACK.
+    The PortMusic plugins are audio and MIDI servers, which provide an
+    interface to the ALSA drivers, in a manner which is in some respects
+    similar but fundamentally different from that provided by JACK. For a
+    more detailed comparison please refer to:
+  </para>
+  <para><ulink url="http://jackaudio.org/faq">http://jackaudio.org/faq</ulink>
+  </para>
+  <bridgehead>Using ALSA</bridgehead>
+  <para>
+    The highest level of control and the lowest possible level of latency
+    are to be achieved using the ALSA plugins in combination with the <link linkend="IndexCatMinusSched"><citetitle>--sched</citetitle></link>
+     flag. Using <link linkend="IndexCatMinusSched"><citetitle>--sched</citetitle></link> requires that Csound be run as the root user, which may be impossible or undesirable in some
+    circumstances.
+  </para>
+  <para>
+    The ALSA plugins require the "name" of a "card" and a "device". Unless
+    you have named your "cards" in ~/.asoundrc (or /etc/asound.conf), the
+    "names" will actually be numbers. In order to obtain a list of the
+    possible configurations, use the command line utilities "aplay",
+    "arecord" and "amidi". These utilities are included with most Linux
+    distros, or can be downloaded and built from source here:
+  </para>
+  <para><ulink url="ftp://ftp.alsa-project.org/pub/utils/">ftp://ftp.alsa-project.org/pub/utils/</ulink></para>
+  <bridgehead>Audio Output</bridgehead>
+  <para>Running the following command:</para>
+  <screen>
+          aplay -l</screen>
+  <para>will give you a list of the audio playback devices available on your
+    system. Typically this list will look something like:
+  </para>
+  <literallayout>[....]
+**** List of PLAYBACK Hardware Devices ****
+card 0: A5451 [ALI 5451], device 0: ALI 5451 [ALI 5451]
+[....]
+</literallayout>
+    <para>If you have more than one card on your system, or if there is more
+        than one device on your card, the list will of course be more
+        complicated, however in all cases the information that is pertinent is
+        the number/name of the card/device. In order to use the above
+        soundcard for audio output, the following flag would be added to the
+        Csound command line, ~/.csoundrc, or the &lt;CsOptions&gt;section of a
+        CSD:
+    </para>
+    <screen>
+          -+rtaudio=alsa -o dac</screen>
+
+  <bridgehead>Output with dmix</bridgehead>
+  <para>
+    If you would like to use Csound with dmix and your soundcard does not
+    support hardware mixing of audio streams, special care is needed in setting
+    up of software (-b) and hardware (-B) buffers.  If you get a message from
+    Csound's ALSA driver that looks like the following:
+  </para>
+  <screen>
+ALSA: -B 8192 not allowed on this device; use 7526 instead</screen>
+  <para>
+    there is a good chance that you may be using dmix.  If you are using dmix,
+    the -b and -B settings of Csound must be synced the period_size and
+    buffer_size of dmix respectively, using a ratio of the sr for the Csound
+    project to the sample rate that dmix is set up to.  The following formula
+    will determine what settings to use for Csound given the settings of dmix:
+  </para>
+  <screen>
+-b = (csound_sr/dmix_sample_rate) * dmix_period_size
+-B = (csound_sr/dmix_sample_rate)  * dmix_buffer_size</screen>
+  <para>
+    For example, if dmix is set to 48000 sample rate, a period_size of 1024,
+    and a buffer_size of 8192, when running a Csound project with sr=48000,
+    the settings for buffers should be "-b 1024 -B8192".  If the sr=24000,
+    the settings for buffers should be "-b 512 -B4096".
+  </para>
+  <para>
+    Because of this relationship, if a Csound project's sr does not evenly
+    divide into the sample_rate used by dmix, then it may be difficult if not
+    imposible to set the correct setting for -b and -B due to rounding errors.
+    It is suggested then that if you are using sample rates different than
+    what your setting is for dmix, then you may want to configure dmix to
+    have a period_size and buffer_size that can be evenly divided by the ratio
+    between the csound sr and dmix sample_rate.  For example, to run a project
+    with sr=16000, the following dmix setting:
+  </para>
+  <screen>
+pcm.amix {
+   type dmix
+   ipc_key 50557
+   slave {
+       pcm "hw:0,0"
+       period_time 0
+       #period_size 1024
+       #buffer_size 8192
+       period_size 1536
+       buffer_size 12288
+   }
+   bindings {
+       0 0
+       1 1
+   }
+}
+
+# route ALSA software through pcm.amix
+pcm.!default {
+   type plug
+   slave.pcm "amix"
+}</screen>
+  <para>   with period_size 1536 and buffer_size 12288 will divide nicely by 3 
+    (the ratio of the csound sr to the dmix sample_rate) to get "-b 512 -B4096" 
+    ( (16000/48000) * 1536 = 512, (16000/48000) * 12288 = 4096 ).
+
+  </para>
+  <note>
+    <title>Note</title>
+    <para>
+      For most soundcards that this affects, the default sample rate for the
+      card will be 48000 and the defaults for dmix will be 1024 and 8192.
+    </para>
+  </note>
+
+  <bridgehead>Audio Input</bridgehead>
+    <para>
+      Typically the same card will be used for both input and output, so to
+      continue using the foregoing example, the flag:
+    </para>
+    <screen>
+          -i adc:hw:0,0</screen>
+    <para>would be added for audio input from Card 0 Device 0. To use the
+      default card employ one of the following flags, with the forementioned
+      warning that this will not necessarily work:
+    </para>
+    <screen>
+          -i adc</screen>
+    <para>If you wish to use a different card or device for input, running the
+      following utility from the command line will provide a list of input
+      devices:
+    </para>
+    <screen>
+          arecord -l</screen>
+    <para>If, by way of an example, you wanted to use a USB audio interface,
+      which is the second "card" in your system, for output, but wanted to
+      use your internal soundcard, the first card in your setup, for input,
+      you would put the following flags somewhere useful:
+    </para>
+    <screen>
+          -+rtaudio=alsa -i adc:hw:0,0 -o dac:hw:1,0</screen>
+    <para>If you wanted to use the second device on your USB interface, to send
+      audio to a specific channel, for instance, you would use the following
+      flags:
+    </para>
+    <screen>
+          -+rtaudio=alsa -i adc:hw:0,0 -o dac:hw:1,1</screen>
+  <bridgehead>MIDI Input</bridgehead>
+    <para>Csound does not automatically create its own ALSA sequencer port. It creates
+      an ALSA raw midi port each time it runs. In order to enable your orchestra to receive MIDI input you can use VirMIDI or MIDIThru, whichever you prefer. Setting up these
+      virtual MIDI ports is a topic that has been covered extensively
+      elsewhere, see 
+      <ulink url="http://www.midi-howto.com/">The Linux MIDI how-to</ulink> 
+      or browse your distro's documentation or the ALSA documentation for
+      instructions on how to install and configure either VirMIDI or
+      MIDIThru (seqdummy). Once you have done so run:
+    </para>
+    <screen>
+          amidi -l</screen>
+    <para>for a list of available devices. Typically this will look something
+      like the following:
+    </para>
+    <literallayout>    [....]
+Device    Name
+hw:1,0    Virtual Raw MIDI (16 subdevices)
+hw:1,1    Virtual Raw MIDI (16 subdevices)
+hw:1,2    Virtual Raw MIDI (16 subdevices)
+hw:1,3    Virtual Raw MIDI (16 subdevices)
+hw:2,0,0  PCR MIDI
+hw:2,0,1  PCR 1</literallayout>
+    <para>In this example, Csound can connect to any of the four available
+      Virtual Raw MIDI ports, where it will listen for MIDI input. The
+      following flag instructs Csound to listen on the first of these ports:
+    </para>
+    <screen>
+          -+rtmidi=alsa -Mhw:1,0</screen>
+    <para>
+      You will then need to connect your hardware or software controller to
+      the port which is hosting your Csound synthesizer. The simplest way to do
+      this is using the "aconnect" utility. Run:
+    </para>
+    <screen>
+          aconnect -li</screen>
+    <para>for a list of available input devices, and:</para>
+    <screen>
+          aconnect -lo</screen>
+    <para>for a list of available output devices (including the port to which
+      Csound has been connected). These should give something like the following:
+    </para>
+    <literallayout>
+#aconnect -li
+client 0: 'System' [type=kernel]
+    0 'Timer           '
+    1 'Announce        '
+        Connecting To: 15:0
+client 20: 'Virtual Raw MIDI 1-0' [type=kernel]
+    0 'VirMIDI 1-0     '
+client 21: 'Virtual Raw MIDI 1-1' [type=kernel]
+    0 'VirMIDI 1-1     '
+client 22: 'Virtual Raw MIDI 1-2' [type=kernel]
+    0 'VirMIDI 1-2     '
+client 23: 'Virtual Raw MIDI 1-3' [type=kernel]
+    0 'VirMIDI 1-3     '
+client 24: 'PCR' [type=kernel]
+    0 'PCR MIDI        '
+    1 'PCR 1           '
+    2 'PCR 2           '</literallayout>
+        <literallayout>
+#aconnect -lo
+client 20: 'Virtual Raw MIDI 1-0' [type=kernel]
+    0 'VirMIDI 1-0     '
+client 21: 'Virtual Raw MIDI 1-1' [type=kernel]
+    0 'VirMIDI 1-1     '
+client 22: 'Virtual Raw MIDI 1-2' [type=kernel]
+    0 'VirMIDI 1-2     '
+client 23: 'Virtual Raw MIDI 1-3' [type=kernel]
+    0 'VirMIDI 1-3     '
+client 24: 'PCR' [type=kernel]
+    0 'PCR MIDI        '
+    1 'PCR 1           '</literallayout>
+    <para>
+      In the following example, the USB keyboard which is listed above as
+      client 24 will be connected to a Csound synthesizer which is listening
+      on the first VirMIDI port. The keyboard has three output ports. The
+      first (24:0) transmits messages received on the MIDI in port, the
+      second (24:1) transmits keyboard and controller messages, and the
+      third (24:2) transmits system exclusive messages. The following
+      command connects the second port of the keyboard to the Csound
+      synthesizer:</para>
+    <screen>
+          aconnect 24:1 20:0</screen>
+    <para>Remember that Csound acts as a raw MIDI device and is not an ALSA sequencer client. This means that Csound will not appear in MIDI device listings and will not be available for use directly with <emphasis>aconnect</emphasis>, so you must connect to a virtual device (like 'virtual raw MIDI' or 'MIDI through') for persistent connections, or conect directly to the destination using command line flags.</para>
+  <bridgehead>MIDI Output</bridgehead>
+    <para>Csound can be connected to any device which shows up on the ALSA
+      sequencer list of output ports, obtained by "amidi -l" as above. In
+      order to connect a Csound synthesizer to the MIDI out port of the
+      keyboard listed above, the following flag would be used:</para>
+    <screen>
+          -Qhw:2,0,0</screen>
+  <bridgehead>Scheduling</bridgehead>
+    <para>If you are able to run Csound as the root user, using the "--sched"
+      flag will dramatically improve realtime performance, when using ALSA,
+      however you may hang your system if you do something stupid. DO NOT
+      use "--sched" if you are using JACK for audio output. JACK controls
+      scheduling for the audio applications connected to it, and also tries
+      to run at the highest possible priority. If the "--sched" flag is
+      used, Csound and JACK will be competing rather than cooperating,
+      resulting in extremely poor performance. </para>
+
+  <bridgehead>Using JACK</bridgehead>
+        <para>The simplest way to use the JACK plugin enabling input and output is as follows:
+        <screen>
+          -+rtaudio=jack -i adc -o dac</screen>
+        Additionally, there are some command line options specific to JACK:
+        <variablelist>
+          <title>JACK Command-line Flags</title>
+          <varlistentry>
+            <term>-+jack_client=[client_name]</term>
+            <listitem>
+              <para>
+                The client name used by Csound, defaults to 'csound5'.
+                If multiple instances of Csound connect to the JACK server,
+                different client names need to be used to avoid name
+                conflicts.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>-+jack_inportname=[input port name prefix], -+jack_outportname=[output port name prefix]
+            </term>
+            <listitem>
+              <para>
+                Name prefix of Csound JACK input/output ports; the default is
+                'input' and 'output'. The actual port name is the channel number
+                appended to the name prefix.
+                Example: with the above default settings, a stereo orchestra will
+                create these ports in full duplex operation:
+                <screen>
+csound5:input1              (record left)
+csound5:input2              (record right)
+csound5:output1             (playback left)
+csound5:output2             (playback right)</screen>
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>-+jack_sleep_time=[sleep time in microseconds]</term>
+            <listitem>
+              <para>
+                As of Csound version 5.01, this option is deprecated and
+                ignored.
+              </para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </para>
+      <bridgehead>Connecting Csound to other JACK clients</bridgehead>
+      <para>
+        By default, no connections are made (you need to use jack_connect,
+        qjackctl, or a similar utility); however, the plugin can connect to
+        ports specified as '-iadc:portname_prefix' or
+        '-odac:portname_prefix', where portname_prefix is the full name of
+        a port without a channel number, such as 'alsa_pcm:capture_' (for
+        -i adc), or 'alsa_pcm:playback_' (for -o dac).
+      </para>
+      <bridgehead>Notes on buffer sizes</bridgehead>
+      <para>
+        Audio data is received from and sent to the JACK server by Csound
+        using a ring buffer that is controlled by the -b and -B flags.
+        -B is the total size of the buffer, while -b is the size of a
+        single period. These values are rounded so that the total size is
+        an integer multiple of, and greater than the period size.
+        The difference of the Csound buffer and period size must be greater
+        than or equal to the JACK period size.
+      </para>
+      <para>
+	If both -iadc and -odac are used at the same time, the -b option
+	should be set to an integer multiple of ksmps.
+      </para>
+      <para>
+	An example of buffer settings for low latency on a fast system:
+	<screen>
+          jackd -d alsa -P -r 48000 -p 64 -n 4 -zt &amp;
+          csound -+rtaudio=jack -b 64 -B 256 [...]</screen>
+	with real time scheduling (as root):
+	<screen>
+          jackd -R -P 90 -d alsa -P -r 48000 -p 64 -n 2 -zt &amp;
+          csound --sched=80,90,10 -d -+rtaudio=jack -b 64 -B 192 [...]</screen>
+	To improve performance, use ksmps values like 32 and 64.
+      </para>
+      <para>
+	The sample rate of the orchestra must be the same as that of the
+	JACK server.
+      </para>
+      <bridgehead>Using Pulseaudio</bridgehead>
+      <para>Support for <ulink url="http://www.pulseaudio.org/">Pulseaudio</ulink> was added in Csound 5.09. You can specify the following settings:</para>
+      <orderedlist>
+        <listitem><simpara>Sink names: it's possible to use a number instead of the full name, so
+      -odac:1  would select your second device (count starts at 0).</simpara>
+        </listitem>
+        <listitem><simpara>Server name: it's possible to connect to a specific server by using
+      -+server=&lt;server_string&gt;
+        where server_string is a name of a server or a more
+        complex server selection string (see <ulink url="http://www.pulseaudio.org/">pulseaudio.org</ulink> on
+        server strings). This should be network transparent and should allow connections to remote machines.</simpara>
+        </listitem>
+        <listitem><simpara>Stream names: it is possible to label the streams generated by csound, by
+            using
+            -+output_stream=&lt;stream-name&gt;
+              and
+              -+input_stream=&lt;stream-name&gt;</simpara>
+        </listitem>
+      </orderedlist>
+      <para>Here's an example command line:</para>
+      <literallayout>csound -odac:1 examples/trapped.csd -+rtaudio=pulse -+server=unix:/tmp/pulse-victor/native -+output_stream=trapped</literallayout>
+</section>

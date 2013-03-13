@@ -1,0 +1,96 @@
+
+<refentry id="FLsetsnap">
+<indexterm id="IndexFLsetsnap"><primary>FLsetsnap</primary></indexterm>
+  <refentryinfo><title>FLTK:Other</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLsetsnap</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLsetsnap</refname>
+    <refpurpose>
+      Stores the current status of all FLTK valuators into a snapshot location.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>FLsetsnap</emphasis> stores the current status of all valuators present in the orchestra into a snapshot location (in memory).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>inumsnap, inumval <command>FLsetsnap</command> index [, ifn, igroup]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>inumsnap</emphasis> -- current number of snapshots.
+    </para>
+
+    <para>
+      <emphasis>inumval</emphasis> -- number of valuators (whose value is stored in a snapshot) present in current orchestra.
+    </para>
+
+    <para>
+      <emphasis>index</emphasis> -- a number referring unequivocally to a snapshot. Several snapshots can be stored in the same bank.
+    </para>
+
+    <para>
+      <emphasis>ifn</emphasis> (optional) -- optional argument referring to an already allocated table, to store values of a snapshot.
+    </para>
+
+    <para>
+      <emphasis>igroup</emphasis> -- (optional) an integer number referring to a snapshot-related group of widget. It allows to get/set, or to load/save the state of a subset of valuators. Default value is zero that refers to the first group. The group number is determined by the opcode <link linkend="FLsetSnapGroup"><citetitle>FLsetSnapGroup</citetitle></link>.
+    </para>
+    <note>
+      <para>
+        The <emphasis>igroup</emphasis> parameter has not been yet fully implemented in the current version of csound. Please do not rely on it yet.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      The <emphasis>FLsetsnap</emphasis> opcode stores current status of all valuators present in the orchestra into a snapshot location (in memory). Any number of snapshots can be stored in the current bank. Banks are structures that only exist in memory, there are no other reference to them other that they can be accessed by <emphasis>FLsetsnap</emphasis>, <link linkend="FLsavesnap"><citetitle>FLsavesnap</citetitle></link>, <link linkend="FLloadsnap"><citetitle>FLloadsnap</citetitle></link> and <link linkend="FLgetsnap"><citetitle>FLgetsnap</citetitle></link> opcodes. Only a single bank can be present in memory.
+    </para>
+
+    <para>
+      If the optional <emphasis>ifn</emphasis> argument refers to an already allocated and valid table, the snapshot will be stored in the table instead of in the bank. So that table can be accessed from other Csound opcodes.
+    </para>
+
+    <para>
+      The <emphasis>index</emphasis> argument unequivocally refers to a determinate snapshot. If the value of <emphasis>index</emphasis> refers to a previously stored snapshot, all its old values will be replaced with current ones. If <emphasis>index</emphasis> refers to a snapshot that doesn't exist, a new snapshot will be created. If the <emphasis>index</emphasis> value is not adjacent with that of a previously created snapshot, some empty snapshots will be created. For example, if a location with <emphasis>index</emphasis> 0 contains the only and unique snapshot present in a bank and the user stores a new snapshot using <emphasis>index</emphasis> 5, all locations between 1 and 4 will automatically contain empty snapshots. Empty snapshots don't contain any data and are neutral.
+    </para>
+
+    <para>
+      <emphasis>FLsetsnap</emphasis> outputs the current number of snapshots (the <emphasis>inumsnap</emphasis> argument) and the total number of values stored in each snapshot (<emphasis>inumval</emphasis>). <emphasis>inumval</emphasis> is equal to the number of valuators present in the orchestra.
+    </para>
+
+    <para>
+      For purposes of snapshot saving, widgets can be grouped, so that snapshots affect only a defined group of widgets. The opcode <link linkend="FLsetSnapGroup"><citetitle>FLsetSnapGroup</citetitle></link> is used to specify the group for all widgets declared after it, until the next <link linkend="FLsetSnapGroup"><citetitle>FLsetSnapGroup</citetitle></link> statement.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="FLgetsnap"><citetitle>FLgetsnap</citetitle></link>,
+      <link linkend="FLloadsnap"><citetitle>FLloadsnap</citetitle></link>,
+      <link linkend="FLsetSnapGroup"><citetitle>FLsetSnapGroup</citetitle></link>,
+      <link linkend="FLrun"><citetitle>FLrun</citetitle></link>,
+      <link linkend="FLsavesnap"><citetitle>FLsavesnap</citetitle></link>,
+      <link linkend="FLupdate"><citetitle>FLupdate</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namegabriel;</para>
+    <para>New in version 4.22</para>
+  </refsect1>
+</refentry>

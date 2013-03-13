@@ -1,0 +1,69 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis><emphasis role="op">=</emphasis>44100
+<emphasis role="ohdr">ksmps</emphasis><emphasis role="op">=</emphasis>10
+<emphasis role="ohdr">nchnls</emphasis><emphasis role="op">=</emphasis>1
+
+      gifarn <emphasis role="opc">init</emphasis> 8     <emphasis role="comment">; initialise integer for Farey Sequence F_8</emphasis>
+      gires <emphasis role="opc">fareyleni</emphasis> gifarn  <emphasis role="comment">; calculate length of F_8, returns 23</emphasis>
+      <emphasis role="comment">; the table length won't be a power of 2</emphasis>
+      <emphasis role="comment">; (The length of a Farey Sequence with n > 1 is always odd)</emphasis>
+      gilen <emphasis role="opc">init</emphasis> gires <emphasis role="op">*</emphasis> <emphasis role="op">-</emphasis>1
+
+      gifarey <emphasis role="ohdr">ftgen</emphasis> 200, 0, gilen, "farey", gifarn, 0
+
+      <emphasis role="comment">; initialize destiniation table with 0s</emphasis>
+      gifiltered <emphasis role="ohdr">ftgen</emphasis> 0, 0, gilen, 21, 1, 0
+
+      <emphasis role="comment">; initialize second destiniation table with 0s</emphasis>
+      gifiltered2 <emphasis role="ohdr">ftgen</emphasis> 0, 0, gilen, 21, 1, 0
+
+      <emphasis role="comment">; table filtering opcode:   dest.         source,         mode,   threshold</emphasis>
+      ginumpassed <emphasis role="opc">tablefilteri</emphasis>    gifiltered,   gifarey,        1,      6
+      <emphasis role="comment">; the threshold parameter indicates that denominators whose weights are heavier</emphasis>
+      <emphasis role="comment">; than 6 are not passing through the filter. The weight is calculated using</emphasis>
+      <emphasis role="comment">; Clarence Barlow's function of indigestibility of a number. According to this function,</emphasis>
+      <emphasis role="comment">; higher prime numbers contribute to an increased weight of any natural integer they divide.</emphasis>
+      <emphasis role="comment">; ginumpassed is the number of elements from the source table 'gifarey'</emphasis>
+      <emphasis role="comment">; that have passed the test and which have been copied to the destination table 'gifiltered'</emphasis>
+
+      <emphasis role="comment">; apply a different filter:</emphasis>
+      ginumpassed2 <emphasis role="opc">tablefilteri</emphasis>   gifiltered2,  gifarey,        2,      5
+      <emphasis role="comment">; In mode=2 we again test the digestibility of the denominators of the</emphasis>
+      <emphasis role="comment">; fractions in the source table.</emphasis>
+      <emphasis role="comment">; The difference to mode=1 is that we now let pass only vaules from the</emphasis>
+      <emphasis role="comment">; source that are as heavy as the threshold or greater.</emphasis>
+
+
+<emphasis role="oblock">instr</emphasis> 4
+      kndx <emphasis role="opc">init</emphasis> 0 <emphasis role="comment">; read out elements of now filtered F_8 sequentially and print to file</emphasis>
+      <emphasis role="octrl">if</emphasis> (kndx <emphasis role="op">&lt;</emphasis> ginumpassed) then
+         kelem <emphasis role="opc">tab</emphasis> kndx, gifiltered
+         <emphasis role="opc">fprintks</emphasis> "fareyfilter_lp.txt", "<emphasis role="op">%</emphasis>2.6f\\n", kelem
+         kndx <emphasis role="op">=</emphasis> kndx<emphasis role="op">+</emphasis>1
+      <emphasis role="octrl">endif</emphasis>
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 5
+      kndx <emphasis role="opc">init</emphasis> 0 <emphasis role="comment">; read out elements and print to file</emphasis>
+      <emphasis role="octrl">if</emphasis> (kndx <emphasis role="op">&lt;</emphasis> ginumpassed2) then
+         kelem <emphasis role="opc">tab</emphasis> kndx, gifiltered2
+         <emphasis role="opc">fprintks</emphasis> "fareyfilter_hp.txt", "<emphasis role="op">%</emphasis>2.6f\\n", kelem
+         kndx <emphasis role="op">=</emphasis> kndx<emphasis role="op">+</emphasis>1
+      <emphasis role="octrl">endif</emphasis>
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis>4      0     1
+<emphasis role="stamnt">i</emphasis>5      0     1
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

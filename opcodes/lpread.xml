@@ -1,0 +1,106 @@
+
+<refentry id="lpread">
+<indexterm id="IndexLpread"><primary>lpread</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:LPC</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lpread</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>lpread</refname>
+    <refpurpose>
+      Reads a control file of time-ordered information frames.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Reads a control file of time-ordered information frames.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>krmsr, krmso, kerr, kcps <command>lpread</command> ktimpnt, ifilcod [, inpoles] [, ifrmrate]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifilcod</emphasis> -- integer or character-string denoting a control-file (reflection coefficients and four parameter values) derived from n-pole linear predictive spectral analysis of a source audio signal. An integer denotes the suffix of a file <emphasis>lp.m</emphasis>; a character-string (in double quotes) gives a filename, optionally a full pathname. If not fullpath, the file is sought first in the current directory, then in that of the environment variable SADIR (if defined). Memory usage depends on the size of the file, which is held entirely in memory during computation but shared by multiple calls (see also <emphasis>adsyn</emphasis>, <link linkend="pvoc"><citetitle>pvoc</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis>inpoles</emphasis> (optional, default=0) -- number of poles in the lpc analysis. It is required only when the control file does not have a header; it is ignored when a header is detected.
+    </para>
+
+    <para>
+      <emphasis>ifrmrate</emphasis> (optional, default=0) -- frame rate per second in the lpc analysis. It is required only when the control file does not have a header; it is ignored when a header is detected.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>lpread</emphasis> accesses a control file of time-ordered information frames, each containing n-pole filter coefficients derived from linear predictive analysis of a source signal at fixed time intervals (e.g. 1/100 of a second), plus four parameter values:
+    </para>
+
+    <para>
+      <emphasis>krmsr</emphasis> -- root-mean-square (rms) of the residual of analysis
+    </para>
+
+    <para>
+      <emphasis>krmso</emphasis> -- rms of the original signal
+    </para>
+
+    <para>
+      <emphasis>kerr</emphasis> -- the normalized error signal
+    </para>
+
+    <para>
+      <emphasis>kcps</emphasis> -- pitch in Hz
+    </para>
+
+    <para>
+      <emphasis>ktimpnt</emphasis> -- The passage of time, in seconds, through the analysis file. <emphasis>ktimpnt</emphasis> must always be positive, but can move forwards or backwards in time, be stationary or discontinuous, as a pointer into the analysis file.
+    </para>
+
+    <para>
+      <emphasis>lpread</emphasis> gets its values from the control file according to the input value <emphasis>ktimpnt</emphasis> (in seconds). If <emphasis>ktimpnt</emphasis> proceeds at the analysis rate, time-normal synthesis will result; proceeding at a faster, slower, or variable rate will result in time-warped synthesis. At each k-period, <emphasis>lpread</emphasis> interpolates between adjacent frames to more accurately determine the parameter values (presented as output) and the filter coefficient settings (passed internally to a subsequent <link linkend="lpreson"><citetitle>lpreson</citetitle></link>).
+    </para>
+    <para>The error signal <emphasis>kerr</emphasis> (between 0 and 1) derived during predictive analysis reflects the deterministic/random nature of the analyzed source. This will emerge low for pitched (periodic) material and higher for noisy material. The transition from voiced to unvoiced speech, for example, produces an error signal value of about .3. During synthesis, the error signal value can be used to determine the nature of the <link linkend="lpreson"><citetitle>lpreson</citetitle></link> driving function: for example, by arbitrating between pitched and non-pitched input, or even by determining a mix of the two. In normal speech resynthesis, the pitched input to <link linkend="lpreson"><citetitle>lpreson</citetitle></link> is a wideband periodic signal or pulse train derived from a unit such as <link linkend="buzz"><citetitle>buzz</citetitle></link>, and the nonpitched source is usually derived from <link linkend="rand"><citetitle>rand</citetitle></link>. However, any audio signal can be used as the driving function, the only assumption of the analysis being that it has a flat response.
+    </para>
+    <para><link linkend="lpfreson"><citetitle>lpfreson</citetitle></link> is a formant shifted <link linkend="lpreson"><citetitle>lpreson</citetitle></link>, in which <emphasis>kfrqratio</emphasis> is the (cps) ratio of shifted to original formant positions. This permits synthesis in which the source object changes its apparent acoustic size. <link linkend="lpfreson"><citetitle>lpfreson</citetitle></link> with <emphasis>kfrqratio</emphasis> = 1 is equivalent to <link linkend="lpreson"><citetitle>lpreson</citetitle></link>.
+    </para>    
+    <para>Generally, <link linkend="lpreson"><citetitle>lpreson</citetitle></link> provides a means whereby the time-varying content and spectral shaping of a composite audio signal can be controlled by the dynamic spectral content of another. There can be any number of lpread/lpreson (or lpfreson) pairs in an instrument or in an orchestra; they can read from the same or different control files independently.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the lpread opcode. It uses the file <ulink url="examples/lpread.csd"><citetitle>lpread.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the lpread opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/lpread.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      The audio file <quote>fox.wav</quote> is 2.8 seconds long. So <emphasis>filelen</emphasis>'s output should be a line like this:
+      <screen>
+fox.wav = 2.756667 seconds
+      </screen>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="lpfreson"><citetitle>lpfreson</citetitle></link>, 
+      <link linkend="lpreson"><citetitle>lpreson</citetitle></link>, 
+      <link linkend="lpanal"><citetitle>LPANAL</citetitle></link> 
+    </para>
+  </refsect1>
+</refentry>

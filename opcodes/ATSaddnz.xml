@@ -1,0 +1,91 @@
+﻿
+<refentry id="ATSaddnz">
+<indexterm id="IndexATSaddnz"><primary>ATSaddnz</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:ATS</title></refentryinfo>
+    <refmeta>
+        <refentrytitle>ATSaddnz</refentrytitle>
+    </refmeta>
+
+    <refnamediv>
+        <refname>ATSaddnz</refname>
+        <refpurpose> uses the data from an ATS analysis file to perform noise resynthesis.
+        </refpurpose>
+    </refnamediv>
+    <refsect1>
+        <title>Description</title>
+        <para>
+            <emphasis>ATSaddnz</emphasis> reads from an ATS analysis file and uses the data to perform additive synthesis using a modified randi function.
+        </para>
+    </refsect1>
+    <refsect1>
+        <title>Syntax</title>
+        <synopsis>ar <command>ATSaddnz</command> ktimepnt, iatsfile, ibands[, ibandoffset, ibandincr]</synopsis>
+    </refsect1>
+    <refsect1>
+        <title>Initialization</title>
+        <para>
+            <emphasis>iatsfile</emphasis> – the ATS number (n in ats.n) or the name in quotes of the analysis file made using <ulink url="http://www-ccrma.stanford.edu/~juan/ATS.html"><citetitle>ATS</citetitle></ulink>.
+        </para>
+        <para><emphasis>ibands</emphasis> – number of noise bands that will be used in the resynthesis (the noise has a maximum of 25 bands)
+        </para>
+        <para><emphasis>ibandoffset</emphasis> (optional) – is the first noise band used (defaults to 0).
+        </para>
+        <para><emphasis>ibandincr</emphasis> (optional) – sets an increment by which these synthesis opcodes counts up from <emphasis>ibandoffset</emphasis> for ibins components in the re-synthesis (defaults to 1).
+        </para>
+    </refsect1>
+    <refsect1>
+        <title>Performance</title>
+        <para><emphasis>ktimepnt</emphasis> – The time pointer in seconds used to index the ATS file. Used for <emphasis>ATSaddnz</emphasis> exactly the same as for <link linkend="pvoc"><citetitle>pvoc</citetitle></link> and <link linkend="ATSadd"><citetitle>ATSadd</citetitle></link>.</para>
+        <para><emphasis>ATSaddnz</emphasis> and <link linkend="ATSadd"><citetitle>ATSadd</citetitle></link> are based on <link linkend="pvadd"><citetitle>pvadd</citetitle></link> by Richard Karpen and use files created by Juan Pampin's ATS (<ulink url="http://www-ccrma.stanford.edu/~juan/ATS.html"><citetitle>Analysis - Transformation - Synthesis</citetitle></ulink>).
+        </para>
+        <para><emphasis>ATSaddnz</emphasis> also reads from an ATS file but it resynthesizes the noise from noise energy data contained in the ATS file. It uses a modified randi function to create band limited noise and modulates that with a cosine wave, to synthesize a user specified selection of frequency bands. Modulating the noise is required to put the band limited noise in the correct place in the frequency spectrum.
+        </para>
+    </refsect1>
+    <refsect1>
+        <title>Examples</title>
+        <programlisting>  ktime <emphasis role="opc">line</emphasis>     0, p3, 2.5
+  asig  <emphasis role="opc">ATSaddnz</emphasis> ktime, "clarinet.ats", 25
+        </programlisting>
+        <para>In the example above we're synthesizing all 25 noise bands from the data contained in the ATS analysis file called "clarinet.ats".
+        </para>
+        </refsect1>
+        
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an another example of the ATSaddnz opcode. It uses the file <ulink url="examples/ATSaddnz.csd"><citetitle>ATSaddnz.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the ATSaddnz opcode.</title>
+
+        
+
+          <xi:include href="examples-xml/ATSaddnz.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+        <para>Here we synthesize only the 25th noise band (<emphasis>ibandoffset</emphasis> of 24 and <emphasis>ibands</emphasis> of 1).
+        </para>
+    </refsect1>
+    <refsect1>
+        <title>See also</title>
+        <para><link linkend="ATSread"><citetitle>ATSread</citetitle></link>, 
+            <link linkend="ATSreadnz"><citetitle>ATSreadnz</citetitle></link>, 
+            <link linkend="ATSinfo"><citetitle>ATSinfo</citetitle></link>, 
+            <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>, 
+            <link linkend="ATScross"><citetitle>ATScross</citetitle></link>, 
+            <link linkend="ATSinterpread"><citetitle>ATSinterpread</citetitle></link>, 
+            <link linkend="ATSpartialtap"><citetitle>ATSpartialtap</citetitle></link>, 
+            <link linkend="ATSaddnz"><citetitle>ATSaddnz</citetitle></link>, 
+            <link linkend="ATSsinnoi"><citetitle>ATSsinnoi</citetitle></link></para>
+    </refsect1>
+    <refsect1>
+        <title>Credits</title>
+        <para>
+            <simplelist>
+                <member>Author: Alex Norman</member>
+                <member>Seattle,Washington</member>
+                <member>2004</member>
+            </simplelist>
+        </para>
+    </refsect1>
+</refentry>

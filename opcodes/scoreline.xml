@@ -1,0 +1,83 @@
+
+<refentry id="scoreline">
+<indexterm id="Indexscoreline"><primary>scoreline</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Invocation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>scoreline</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>scoreline</refname>
+    <refpurpose>
+      Issues one or more score line events from an instrument.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Scoreline will issue one or more score events, if ktrig is 1 every k-period. 
+	  It can handle strings in the same conditions as
+	  the standard score. Multi-line strings are accepted, using {{  }} to enclose the string.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>scoreline</command> Sin, ktrig</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis><quote>Sin</quote></emphasis> --  a string (in double-quotes or enclosed by {{ }}) containing one or more score events.
+</para>    
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+	<para>
+      <emphasis><quote>ktrig</quote></emphasis> -- event trigger, 1 issues the score event, 0 bypasses it.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the scoreline opcode. It uses the file <ulink url="examples/scoreline.csd"><citetitle>scoreline.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the scoreline opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/scoreline.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <para>
+      You can use string opcodes like <link linkend="sprintfk"><citetitle>sprintfk</citetitle></link> to produce strings to be passed to <emphasis>scoreline</emphasis> like this:
+<programlisting>
+Sfil <emphasis role="op">=</emphasis> "/Volumes/Bla/file.aif"
+String  <emphasis role="opc">sprintfk</emphasis> {{i 2 0 %f "%s" %f %f %f %f}}, idur, Sfil, p5, p6, knorm, iskip
+<emphasis role="opc">scoreline</emphasis> String, ktrig
+ </programlisting>
+    </para>
+      </example>
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>See also</title>
+    <para><link linkend="event"><citetitle>event</citetitle></link>,
+    <link linkend="event_i"><citetitle>event_i</citetitle></link>,
+    <link linkend="schedule"><citetitle>schedule</citetitle></link>,
+    <link linkend="schedwhen"><citetitle>schedwhen</citetitle></link>,
+    <link linkend="schedkwhen"><citetitle>schedkwhen</citetitle></link>,
+    <link linkend="schedkwhennamed"><citetitle>schedkwhennamed</citetitle></link>,
+    <link linkend="scoreline_i"><citetitle>scoreline_i</citetitle></link>
+<para> More information on this opcode: <ulink url="http://www.csounds.com/journal/issue15/phrase_loops.html"><citetitle>http://www.csounds.com/journal/issue15/phrase_loops.html</citetitle></ulink>  , written by Jim Aikin </para>
+<para>And in the Floss Manuals: <ulink url="http://en.flossmanuals.net/csound/ch020_e-triggering-instrument-events/"><citetitle>http://en.flossmanuals.net/csound/ch020_e-triggering-instrument-events/</citetitle></ulink>.</para>
+</para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namevictor;, 2007 </para>
+  </refsect1>
+</refentry>

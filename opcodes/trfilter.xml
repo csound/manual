@@ -1,0 +1,80 @@
+
+<refentry id="trfilter">
+<indexterm id="Indextrfilter"><primary>trfilter</primary></indexterm>
+
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>trfilter</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>trfilter</refname>
+    <refpurpose>
+      Streaming partial track filtering.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      The <emphasis>trfilter</emphasis> opcode takes an input containg a TRACKS pv streaming signal (as generated,
+      for instance by <emphasis>partials</emphasis>) and filters it using an amplitude response curve stored in
+      a function table. The function table can have any size (no restriction to powers-of-two).
+      The table lookup is done by linear-interpolation. It is possible to create time-varying
+      filter curves by updating the amlitude response table with a table-writing opcode.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>fsig <command>trfilter</command> fin, kamnt, ifn</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+      <para>
+      <emphasis>fsig</emphasis> -- output pv stream in TRACKS format
+    </para>
+  
+    <para>
+      <emphasis>fin</emphasis> -- input pv stream in TRACKS format
+    </para>
+    <para>
+      <emphasis>kamnt</emphasis> -- amount of filtering (0-1)
+    </para>
+    
+    <para>
+      <emphasis>ifn</emphasis> -- function table number. This will contain an
+      amplitude response curve, from 0 Hz to the Nyquist (table indexes 0 to N). Any size is
+      allowed. Larger tables will provide a smoother amplitude response curve. Table reading uses
+      linear interpolation.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the trfilter opcode. It uses the file <ulink url="examples/trfilter.csd"><citetitle>trfilter.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the trfilter opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/trfilter.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      The example above shows partial tracking of an ifd-analysis signal and
+      linear additive resynthesis with low-pass filtering. 
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Victor Lazzarini;</member>
+        <member>February 2006 </member>
+      </simplelist>
+    </para>
+    <para>New in Csound 5.01</para>
+  </refsect1>
+</refentry>

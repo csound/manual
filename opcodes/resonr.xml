@@ -1,0 +1,149 @@
+
+<refentry id="resonr">
+<indexterm id="IndexResonr"><primary>resonr</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>resonr</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>resonr</refname>
+    <refpurpose>
+      A bandpass filter with variable frequency response.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Implementations of a second-order, two-pole two-zero bandpass filter with variable frequency response.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>resonr</command> asig, kcf, kbw [, iscl] [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      The optional initialization variables for <emphasis>resonr</emphasis> are identical to the i-time variables for <link linkend="reson"><citetitle>reson</citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis>iscl</emphasis> (optional, default=0) -- coded scaling factor for resonators. A value of 1 signifies a peak response factor of 1, i.e.  all frequencies other than <emphasis>kcf</emphasis> are attenuated in accordance with the (normalized) response curve. A value of 2 raises the response factor so that its overall RMS value equals 1. This intended equalization of input and output power assumes all frequencies are physically present; hence it is most applicable to white noise. A zero value signifies no scaling of the signal, leaving that to some later adjustment (see <link linkend="balance"><citetitle>balance</citetitle></link>). The default value is 0.
+    </para>
+
+    <para>
+      <emphasis>iskip</emphasis> (optional, default=0) -- initial disposition of internal data space. Since filtering incorporates a feedback loop of previous output, the initial status of the storage space used is significant. A zero value will clear the space; a non-zero value will allow previous information to remain. The default value is 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asig</emphasis> -- input signal to be filtered
+    </para>
+
+    <para>
+      <emphasis>kcf</emphasis> -- cutoff or resonant frequency of the filter, measured in Hz
+    </para>
+
+    <para>
+      <emphasis>kbw</emphasis> -- bandwidth of the filter (the Hz difference between the upper and lower half-power points)
+    </para>
+
+    <para>
+      <emphasis>resonr</emphasis> and <emphasis>resonz</emphasis> are variations of the classic two-pole bandpass resonator (<link linkend="reson"><citetitle>reson</citetitle></link>). Both filters have two zeroes in their transfer functions, in addition to the two poles. <emphasis>resonz</emphasis> has its zeroes located at z = 1 and z = -1. <emphasis>resonr</emphasis> has its zeroes located at +sqrt(<emphasis>R</emphasis>) and -sqrt(<emphasis>R</emphasis>), where <emphasis>R</emphasis> is the radius of the poles in the complex z-plane. The addition of zeroes to <emphasis>resonr</emphasis> and <emphasis>resonz</emphasis> results in the improved selectivity of the magnitude response of these filters at cutoff frequencies close to 0, at the expense of less selectivity of frequencies above the cutoff peak.
+    </para>
+
+    <para>
+      <emphasis>resonr</emphasis> and <emphasis>resonz</emphasis> are very close to constant-gain as the center frequency is swept, resulting in a more efficient control of the magnitude response than with traditional two-pole resonators such as <emphasis>reson</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>resonr</emphasis> and <emphasis>resonz</emphasis> produce a sound that is considerably different from <emphasis>reson</emphasis>, especially for lower center frequencies; trial and error is the best way of determining which resonator is best suited for a particular application.
+    </para>
+ </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the resonr and resonz opcodes. It uses the file <ulink url="examples/resonr.csd"><citetitle>resonr.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the resonr and resonz opcodes.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/resonr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Technical History</title>
+    <para>
+      <emphasis>resonr</emphasis> and <emphasis>resonz</emphasis> were originally described in an article by Julius O. Smith and James B. Angell.<superscript>1</superscript> Smith and Angell recommended the <emphasis>resonz</emphasis> form (zeros at +1 and -1) when computational efficiency was the main concern, as it has one less multiply per sample, while <emphasis>resonr</emphasis> (zeroes at + and - the square root of the pole radius R) was recommended for situations when a perfectly constant-gain center peak was required.
+    </para>
+
+    <para>
+      Ken Steiglitz, in a later article <superscript>2</superscript>, demonstrated that <emphasis>resonz</emphasis> had constant gain at the true peak of the filter, as opposed to <emphasis>resonr</emphasis>, which displayed constant gain at the pole angle. Steiglitz also recommended <emphasis>resonz</emphasis> for its sharper notches in the gain curve at zero and Nyquist frequency. Steiglitz's recent book <superscript>3</superscript> features a thorough technical discussion of <emphasis>reson</emphasis> and <emphasis>resonz</emphasis>, while Dodge and Jerse's textbook <superscript>4</superscript> illustrates the differences in the response curves of <emphasis>reson</emphasis> and <emphasis>resonz</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>References</title>
+    <para>
+      <orderedlist>
+        <listitem>
+          <para>
+            Smith, Julius O. and Angell, James B., &quot;A Constant-Gain Resonator Tuned by a Single Coefficient,&quot; <emphasis>Computer Music Journal</emphasis>, vol. 6, no. 4, pp. 36-39, Winter 1982.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Steiglitz, Ken, &quot;A Note on Constant-Gain Digital Resonators,&quot; <emphasis>Computer Music Journal</emphasis>, vol. 18, no. 4, pp. 8-10, Winter 1994.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Ken Steiglitz, <emphasis>A Digital Signal Processing Primer, with Applications to Digital Audio and Computer Music</emphasis>. Addison-Wesley Publishing Company, Menlo Park, CA, 1996.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Dodge, Charles and Jerse, Thomas A., <emphasis>Computer Music: Synthesis, Composition, and Performance</emphasis>. New York: Schirmer Books, 1997, 2nd edition, pp. 211-214.
+          </para>
+        </listitem>
+      </orderedlist>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="resonz"><citetitle>resonz</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namesean;</member>
+        <member>Seattle, Washington</member>
+        <member>1999</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.55</para>
+  </refsect1>
+</refentry>

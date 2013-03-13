@@ -1,0 +1,138 @@
+<refentry id="chuap">
+  <indexterm id="Indexchuap"><primary>chuap</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Models and Emulations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>chuap</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>chuap</refname>
+    <refpurpose>
+      Simulates Chua's oscillator, an LRC oscillator with an active resistor, proved capable of bifurcation and chaotic attractors, with k-rate control of circuit elements.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Simulates Chua's oscillator, an LRC oscillator with an active resistor, proved capable of bifurcation and chaotic attractors, with k-rate control of circuit elements.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>aI3, aV2, aV1 <command>chuap</command> kL, kR0, kC1, kG, kGa, kGb, kE, kC2, iI3, iV2, iV1, ktime_step</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iI3</emphasis> -- Initial current at G
+    </para>
+    <para>
+      <emphasis>iV2</emphasis> -- Initial voltage at C2
+    </para>
+    <para>
+      <emphasis>iV1</emphasis> -- Initial voltage at C1
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kL</emphasis> -- Inductor L
+    </para>
+    <para>
+      <emphasis>kR0</emphasis> -- Resistor R0
+    </para>
+    <para>
+      <emphasis>kC1</emphasis> -- Capacitor C1
+    </para>
+    <para>
+      <emphasis>kG</emphasis> -- Resistor G
+    </para>
+    <para>
+      <emphasis>kGa</emphasis> -- Resistor V (nonlinearity term)
+    </para>
+    <para>
+      <emphasis>kGb</emphasis> -- Resistor V (nonlinearity term)
+    </para>
+    <para>
+      <emphasis>kGb</emphasis> -- Resistor V (nonlinearity term)
+    </para>
+    <para>
+      <emphasis>ktime_step</emphasis> -- Delta time in the difference equation, can be used to more or less control pitch.
+    </para>
+    <para>
+      <emphasis>Chua's oscillator</emphasis> is a simple LRC oscillator with an active resistor. The oscillator can be driven
+      into period bifurcation, and thus to chaos, because of the nonlinear response of the active resistor. 
+    </para>
+    <mediaobject>
+      <imageobject>
+        <!--         This image is taken from Wikipedia and is in the public domain en.wikipedia.org/wiki/File:Chua's_circuit.svg-->
+        <imagedata fileref="images/600px-Chua's_circuit.svg.png" format="PNG"/>
+      </imageobject>
+      <caption>
+        <para>Diagram of Chua's Oscillator Circuit</para>
+      </caption>
+    </mediaobject>
+    <para>
+      The circuit is described by a set of three ordinary differential equations called Chua's equations:
+    </para>
+    <literallayout>
+      dI3      R0      1
+      --- =  - -- I3 - - V2
+      dt       L       L
+
+      dV2    1       G
+      --- = -- I3 - -- (V2 - V1)
+      dt    C2      C2
+
+      dV1    G              1
+      --- = -- (V2 - V1) - -- f(V1)
+      dt    C1             C1
+    </literallayout>
+    <para>
+      where f() is a piecewise discontinuity simulating the active resistor:
+    </para>
+    <literallayout>
+      f(V1) = Gb V1 + - (Ga - Gb)(|V1 + E| - |V1 - E|)
+    </literallayout>
+    <para>A solution of these equations (I3,V2,V1)(t) starting from an initial state (I3,V2,V1)(0) is called a trajectory of Chua's
+      oscillator. The Csound implementation is a difference equation simulation of Chua's oscillator with Runge-Kutta integration.
+    </para>
+    <note>
+      <para>This algorithm uses internal non linear feedback loops which causes audio result to depend on the orchestra
+      sampling rate. For example, if you develop a project with <emphasis>sr</emphasis>=48000Hz and if you want to produce
+      an audio CD from it, you should record a file with <emphasis>sr</emphasis>=48000Hz and then downsample the file to 44100Hz
+      using the <link linkend="srconv"><citetitle>srconv</citetitle></link> utility.</para> 
+    </note>
+    <warning>
+      Be careful! Some sets of parameters will produce amplitude spikes or positive feedback that could damage your speakers.
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the chuap opcode. It uses the file <ulink url="examples/chuap.csd"><citetitle>chuap.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the chuap opcode.</title>
+        <xi:include href="examples-xml/chuap.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+	<member>Inventor of Chua's oscillator: <ulink url="http://www.eecs.berkeley.edu/~chua"><citetitle>Leon O. Chua</citetitle></ulink></member>
+        <member>Author of MATLAB simulation: James Patrick McEvoy <ulink url="http://www.mathworks.com/matlabcentral/fileexchange/loadFile.do?objectId=3541"><citetitle>MATLAB Adventures in Bifurcations and Chaos (ABC++)</citetitle></ulink></member>
+        <member>Author of Csound port: Michael Gogins</member>
+    </simplelist>
+  </para>
+  <para>New in Csound version 5.09</para>
+  <para>Note added by &namepinot;, August 2009</para>
+</refsect1>
+</refentry>

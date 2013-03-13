@@ -1,0 +1,171 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out  </emphasis>
+-odac           <emphasis role="comment">;;;RT audio </emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o partikkel_softsync.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 20
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+
+<emphasis role="comment">; Example by Oeyvind Brandtsegg 2007, revised 2008</emphasis>
+
+giSine		<emphasis role="ohdr">ftgen</emphasis>	0, 0, 65537, 10, 1
+giCosine	<emphasis role="ohdr">ftgen</emphasis>	0, 0, 8193, 9, 1, 1, 90
+giSigmoRise	<emphasis role="ohdr">ftgen</emphasis>		0, 0, 8193, 19, 0.5, 1, 270, 1			<emphasis role="comment">; rising sigmoid </emphasis>
+giSigmoFall	<emphasis role="ohdr">ftgen</emphasis>		0, 0, 8193, 19, 0.5, 1, 90, 1			<emphasis role="comment">; falling sigmoid </emphasis>
+
+<emphasis role="comment">; *************************************************</emphasis>
+<emphasis role="comment">; example of soft synchronization of two partikkel instances</emphasis>
+<emphasis role="comment">; *************************************************</emphasis>
+	<emphasis role="oblock">instr</emphasis> 1
+
+
+<emphasis role="op">/</emphasis><emphasis role="op">*</emphasis>score parameters<emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+igrainrate	<emphasis role="op">=</emphasis> p4		<emphasis role="comment">; grain rate</emphasis>
+igrainsize	<emphasis role="op">=</emphasis> p5		<emphasis role="comment">; grain size in ms</emphasis>
+igrainFreq	<emphasis role="op">=</emphasis> p6		<emphasis role="comment">; fundamental frequency of source waveform</emphasis>
+iosc2Dev	<emphasis role="op">=</emphasis> p7		<emphasis role="comment">; partikkel instance 2 grain rate deviation factor</emphasis>
+iMaxSync	<emphasis role="op">=</emphasis> p8		<emphasis role="comment">; max soft sync amount (increasing to this value during length of note)</emphasis>
+
+<emphasis role="op">/</emphasis><emphasis role="op">*</emphasis>overall envelope<emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+iattack		<emphasis role="op">=</emphasis> 0.001
+idecay		<emphasis role="op">=</emphasis> 0.2
+isustain	<emphasis role="op">=</emphasis> 0.7
+irelease	<emphasis role="op">=</emphasis> 0.2
+amp		<emphasis role="opc">linsegr</emphasis>	0, iattack, 1, idecay, isustain, 1, isustain, irelease, 0
+
+kgrainfreq	<emphasis role="op">=</emphasis> igrainrate		<emphasis role="comment">; grains per second</emphasis>
+kdistribution	<emphasis role="op">=</emphasis> 0			<emphasis role="comment">; periodic grain distribution</emphasis>
+idisttab	<emphasis role="op">=</emphasis> <emphasis role="op">-</emphasis>1			<emphasis role="comment">; (default) flat distribution used</emphasis>
+                                        <emphasis role="comment">; for grain distribution</emphasis>
+async		<emphasis role="op">=</emphasis> 0			<emphasis role="comment">; no sync input</emphasis>
+kenv2amt	<emphasis role="op">=</emphasis> 0			<emphasis role="comment">; no secondary enveloping</emphasis>
+ienv2tab	<emphasis role="op">=</emphasis> <emphasis role="op">-</emphasis>1			<emphasis role="comment">; default secondary envelope (flat)</emphasis>
+ienv_attack	<emphasis role="op">=</emphasis> giSigmoRise		<emphasis role="comment">; default attack envelope (flat)</emphasis>
+ienv_decay	<emphasis role="op">=</emphasis> giSigmoFall		<emphasis role="comment">; default decay envelope (flat)</emphasis>
+ksustain_amount	<emphasis role="op">=</emphasis> 0.3			<emphasis role="comment">; time (in fraction of grain dur) at</emphasis>
+                                        <emphasis role="comment">; sustain level for each grain</emphasis>
+ka_d_ratio	<emphasis role="op">=</emphasis> 0.2 			<emphasis role="comment">; balance between attack and decay time</emphasis>
+kduration	<emphasis role="op">=</emphasis> igrainsize		<emphasis role="comment">; set grain duration in ms</emphasis>
+kamp		<emphasis role="op">=</emphasis> 0.2<emphasis role="op">*</emphasis><emphasis role="ohdr">0dbfs</emphasis> 		<emphasis role="comment">; amp</emphasis>
+igainmasks	<emphasis role="op">=</emphasis> <emphasis role="op">-</emphasis>1			<emphasis role="comment">; (default) no gain masking</emphasis>
+kwavfreq	<emphasis role="op">=</emphasis> igrainFreq		<emphasis role="comment">; fundamental frequency of source waveform</emphasis>
+ksweepshape	<emphasis role="op">=</emphasis> 0			<emphasis role="comment">; shape of frequency sweep (0=no sweep)</emphasis>
+iwavfreqstarttab <emphasis role="op">=</emphasis> <emphasis role="op">-</emphasis>1			<emphasis role="comment">; default frequency sweep start</emphasis>
+                                        <emphasis role="comment">; (value in table = 1, which give</emphasis>
+                                        <emphasis role="comment">; no frequency modification)</emphasis>
+iwavfreqendtab	<emphasis role="op">=</emphasis> <emphasis role="op">-</emphasis>1			<emphasis role="comment">; default frequency sweep end</emphasis>
+                                        <emphasis role="comment">; (value in table = 1, which give</emphasis>
+                                        <emphasis role="comment">; no frequency modification)</emphasis>
+awavfm		<emphasis role="op">=</emphasis> 0			<emphasis role="comment">; no FM input</emphasis>
+ifmamptab	<emphasis role="op">=</emphasis> <emphasis role="op">-</emphasis>1			<emphasis role="comment">; default FM scaling (=1)</emphasis>
+kfmenv		<emphasis role="op">=</emphasis> <emphasis role="op">-</emphasis>1			<emphasis role="comment">; default FM envelope (flat)</emphasis>
+icosine		<emphasis role="op">=</emphasis> giCosine		<emphasis role="comment">; cosine ftable</emphasis>
+kTrainCps	<emphasis role="op">=</emphasis> kgrainfreq		<emphasis role="comment">; set trainlet cps equal to grain</emphasis>
+                                        <emphasis role="comment">; rate for single-cycle trainlet in</emphasis>
+                                        <emphasis role="comment">; each grain</emphasis>
+knumpartials	<emphasis role="op">=</emphasis> 3			<emphasis role="comment">; number of partials in trainlet</emphasis>
+kchroma		<emphasis role="op">=</emphasis> 1			<emphasis role="comment">; balance of partials in trainlet</emphasis>
+ichannelmasks	<emphasis role="op">=</emphasis> <emphasis role="op">-</emphasis>1			<emphasis role="comment">; (default) no channel masking,</emphasis>
+                                        <emphasis role="comment">; all grains to output 1</emphasis>
+krandommask	<emphasis role="op">=</emphasis> 0			<emphasis role="comment">; no random grain masking</emphasis>
+kwaveform1	<emphasis role="op">=</emphasis> giSine		<emphasis role="comment">; source waveforms</emphasis>
+kwaveform2	<emphasis role="op">=</emphasis> giSine		<emphasis role="comment">;</emphasis>
+kwaveform3	<emphasis role="op">=</emphasis> giSine		<emphasis role="comment">;</emphasis>
+kwaveform4	<emphasis role="op">=</emphasis> giSine		<emphasis role="comment">;</emphasis>
+iwaveamptab	<emphasis role="op">=</emphasis> <emphasis role="op">-</emphasis>1			<emphasis role="comment">; mix of 4 source waveforms and</emphasis>
+                                        <emphasis role="comment">; trainlets (set to default)</emphasis>
+asamplepos1	<emphasis role="op">=</emphasis> 0			<emphasis role="comment">; phase offset for reading source waveform</emphasis>
+asamplepos2	<emphasis role="op">=</emphasis> 0			<emphasis role="comment">;</emphasis>
+asamplepos3	<emphasis role="op">=</emphasis> 0			<emphasis role="comment">;</emphasis>
+asamplepos4	<emphasis role="op">=</emphasis> 0			<emphasis role="comment">;</emphasis>
+kwavekey1	<emphasis role="op">=</emphasis> 1			<emphasis role="comment">; original key for source waveform</emphasis>
+kwavekey2	<emphasis role="op">=</emphasis> 1			<emphasis role="comment">;</emphasis>
+kwavekey3	<emphasis role="op">=</emphasis> 1			<emphasis role="comment">;</emphasis>
+kwavekey4	<emphasis role="op">=</emphasis> 1			<emphasis role="comment">;</emphasis>
+imax_grains	<emphasis role="op">=</emphasis> 100			<emphasis role="comment">; max grains per k period</emphasis>
+iopcode_id	<emphasis role="op">=</emphasis> 1			<emphasis role="comment">; id of opcode, linking partikkel</emphasis>
+                                        <emphasis role="comment">; to partikkelsync</emphasis>
+
+a1  <emphasis role="opc">partikkel</emphasis> kgrainfreq, kdistribution, idisttab, async, kenv2amt, \
+       ienv2tab,ienv_attack, ienv_decay, ksustain_amount, ka_d_ratio, \
+       kduration, kamp, igainmasks, kwavfreq, ksweepshape, \
+       iwavfreqstarttab, iwavfreqendtab, awavfm, ifmamptab, kfmenv, \
+       icosine, kTrainCps, knumpartials, kchroma, ichannelmasks, \
+       krandommask, kwaveform1, kwaveform2, kwaveform3, kwaveform4, \
+       iwaveamptab, asamplepos1, asamplepos2, asamplepos3, asamplepos4, \
+       kwavekey1, kwavekey2, kwavekey3, kwavekey4, imax_grains, iopcode_id
+
+async1		<emphasis role="opc">partikkelsync</emphasis>	iopcode_id   <emphasis role="comment">; clock pulse output of the </emphasis>
+                                             <emphasis role="comment">; partikkel instance above</emphasis>
+ksyncGravity 	<emphasis role="opc">line</emphasis> 0, p3, iMaxSync	     <emphasis role="comment">; strength of synchronization</emphasis>
+aphase2		<emphasis role="opc">init</emphasis> 0					
+asyncPolarity	<emphasis role="opc">limit</emphasis> (<emphasis role="opc">int</emphasis>(aphase2<emphasis role="op">*</emphasis>2)<emphasis role="op">*</emphasis>2)<emphasis role="op">-</emphasis>1, <emphasis role="op">-</emphasis>1, 1
+<emphasis role="comment">; use the phase of partikkelsync instance 2 to find sync </emphasis>
+<emphasis role="comment">; polarity for partikkel instance 2.</emphasis>
+<emphasis role="comment">; If the phase of instance 2 is less than 0.5, we want to</emphasis>
+<emphasis role="comment">; nudge it down when synchronizing,</emphasis>
+<emphasis role="comment">; and if the phase is > 0.5 we want to nudge it upwards.</emphasis>
+async1		<emphasis role="op">=</emphasis> async1<emphasis role="op">*</emphasis>ksyncGravity<emphasis role="op">*</emphasis>asyncPolarity  <emphasis role="comment">; prepare sync signal</emphasis>
+                                                  <emphasis role="comment">; with polarity and strength</emphasis>
+
+kgrainfreq2	<emphasis role="op">=</emphasis> igrainrate <emphasis role="op">*</emphasis> iosc2Dev		<emphasis role="comment">; grains per second for second partikkel instance</emphasis>
+iopcode_id2	<emphasis role="op">=</emphasis> 2
+a2 <emphasis role="opc">partikkel</emphasis> kgrainfreq2, kdistribution, idisttab, async1, kenv2amt, \
+       ienv2tab, ienv_attack, ienv_decay, ksustain_amount, ka_d_ratio, \
+       kduration, kamp, igainmasks, kwavfreq, ksweepshape, \
+       iwavfreqstarttab, iwavfreqendtab, awavfm, ifmamptab, kfmenv, \
+       icosine, kTrainCps, knumpartials, kchroma, ichannelmasks, \
+       krandommask, kwaveform1, kwaveform2, kwaveform3, kwaveform4, \
+       iwaveamptab, asamplepos1, asamplepos2, asamplepos3, \ 
+       asamplepos4, kwavekey1, kwavekey2, kwavekey3, kwavekey4, \
+       imax_grains, iopcode_id2
+
+async2, aphase2	<emphasis role="opc">partikkelsync</emphasis>	iopcode_id2
+<emphasis role="comment">; clock pulse and phase </emphasis>
+<emphasis role="comment">; output of the partikkel instance above,</emphasis>
+<emphasis role="comment">; we will only use the phase</emphasis>
+
+<emphasis role="opc">outs</emphasis>	a1<emphasis role="op">*</emphasis>amp, a2<emphasis role="op">*</emphasis>amp
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+/*score parameters
+<emphasis role="stamnt">i</emphasis>gra<emphasis role="stamnt">i</emphasis>nrate	= p4		<emphasis role="comment">; grain rate</emphasis>
+<emphasis role="stamnt">i</emphasis>gra<emphasis role="stamnt">i</emphasis>ns<emphasis role="stamnt">i</emphasis>ze	= p5		<emphasis role="comment">; grain size in ms</emphasis>
+<emphasis role="stamnt">i</emphasis>gra<emphasis role="stamnt">i</emphasis>nFreq	= p6		<emphasis role="comment">; frequency of source wave within grain</emphasis>
+<emphasis role="stamnt">i</emphasis>osc2Dev	= p7		<emphasis role="comment">; partikkel instance 2 grain rate deviation factor</emphasis>
+<emphasis role="stamnt">i</emphasis>MaxSync	= p8		<emphasis role="comment">; max soft sync amount (increasing to this value during length of note)</emphasis>
+*/
+<emphasis role="comment">;		GrRate	GrSize	GrFund	Osc2Dev	MaxSync</emphasis>
+
+<emphasis role="stamnt">i</emphasis>1 0 	10	2	20	880	1.3	0.3
+<emphasis role="stamnt">s</emphasis>
+<emphasis role="stamnt">i</emphasis>1 0 	10	5	20	440	0.8	0.3	
+<emphasis role="stamnt">s</emphasis>
+<emphasis role="stamnt">i</emphasis>1 0 	6	55	15	660	1.8	0.45
+<emphasis role="stamnt">s</emphasis>
+<emphasis role="stamnt">i</emphasis>1 0 	6	110	10	440	0.6	0.6	
+<emphasis role="stamnt">s</emphasis>
+<emphasis role="stamnt">i</emphasis>1 0 	6	220	3	660	2.6	0.45
+<emphasis role="stamnt">s</emphasis>
+<emphasis role="stamnt">i</emphasis>1 0 	6	220	3	660	2.1	0.45
+<emphasis role="stamnt">s</emphasis>
+<emphasis role="stamnt">i</emphasis>1 0 	6	440	3	660	0.8	0.22
+<emphasis role="stamnt">s</emphasis>
+
+<emphasis role="stamnt">e</emphasis>
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

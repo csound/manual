@@ -1,0 +1,34 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac  <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o pvsfread.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100 
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32 
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1 
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+
+<emphasis role="oblock">instr</emphasis> 1
+<emphasis role="comment">; create a PVOC-EX (*.pvx) file with PVANAL first</emphasis>
+idur  <emphasis role="opc">filelen</emphasis>   "kickroll.pvx"		<emphasis role="comment">;find duration of (stereo) analysis file</emphasis>
+kpos  <emphasis role="opc">line</emphasis>      0,p3,idur		<emphasis role="comment">;to ensure we process whole file</emphasis>
+fsigr <emphasis role="opc">pvsfread</emphasis>  kpos,"kickroll.pvx", 1	<emphasis role="comment">;create fsig from right channel</emphasis>
+aout  <emphasis role="opc">pvsynth</emphasis>	fsigr			<emphasis role="comment">;resynthesise it</emphasis>
+      <emphasis role="opc">outs</emphasis>	aout, aout
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1 0 10
+<emphasis role="stamnt">i</emphasis> 1 11 1
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

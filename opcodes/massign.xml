@@ -1,0 +1,99 @@
+
+<refentry id="massign">
+<indexterm id="IndexMassign"><primary>massign</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Input</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>massign</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>massign</refname>
+
+    <refpurpose>
+      Assigns a MIDI channel number to a Csound instrument.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+	    Assigns a MIDI channel number to a Csound instrument.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>massign</command> ichnl, insnum[, ireset]</synopsis>
+    <synopsis><command>massign</command> ichnl, &quot;insname&quot;[, ireset]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ichnl</emphasis> -- MIDI channel number (1-16).
+    </para>
+
+    <para>
+      <emphasis>insnum</emphasis> -- Csound orchestra instrument number.
+      If zero or negative, the channel is muted (i.e. it doesn't trigger a csound instrument, though information will still be received by opcodes like <link linkend="midiin"><citetitle>midiin</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis><quote>insname</quote></emphasis> -- A string (in double-quotes) representing a named instrument.
+    </para>
+    <para>
+      <emphasis>ireset</emphasis> -- If non-zero resets the
+    controllers; default is to reset.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      Assigns a MIDI channel number to a Csound instrument. Also useful to make sure a certain instrument (if its number is from 1 to 16) will not be triggered by midi noteon messages (if using something <link linkend="midiin"><citetitle>midiin</citetitle></link> to interpret midi information). In this case set <emphasis>insnum</emphasis> to 0 or a negative number.
+    </para>
+    <para>
+      If <emphasis>ichan</emphasis> is set to 0, the value of <emphasis>insnum</emphasis> is used for all channels. This way you can route all MIDI channels to a single Csound instrument. You can also disable triggering of instruments from MIDI note events from all channels with the following line:
+    </para>
+    <programlisting>massign 0,0</programlisting>
+    <para>
+      This can be useful if you are doing all MIDI evaluation within Csound with an always on instrument(e.g. using <link linkend="midiin"><citetitle>midiin</citetitle></link> and <link linkend="turnon"><citetitle>turnon</citetitle></link>) to avoid doubling the instrument when a note is played.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the massign opcode. It uses the file <ulink url="examples/massign.csd"><citetitle>massign.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the massign opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/massign.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="ctrlinit"><citetitle>ctrlinit</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>  
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namebarry; - &namemike;</member>
+        <member>MIT, Cambridge, Mass.</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.47</para>
+    <para><emphasis>ireset</emphasis> parameter new in Csound5</para>
+    <para>Thanks goes to &namerasmus; for pointing out the correct MIDI channel range.</para>
+  </refsect1>
+</refentry>

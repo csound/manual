@@ -1,0 +1,87 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac     <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o strcpyk.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="ohdr">seed</emphasis> 0
+
+<emphasis role="oblock">instr</emphasis> 1 
+<emphasis role="comment">;get one element of the input string whenever the metro</emphasis>
+<emphasis role="comment">;triggers, and call a subinstrument to play the file</emphasis>
+
+Smember   <emphasis role="opc">strget</emphasis>    p4
+istrlen   <emphasis role="opc">strlen</emphasis>    Smember
+kprint    <emphasis role="opc">init</emphasis>      0
+ktrig     <emphasis role="opc">metro</emphasis>     .6 
+
+ <emphasis role="comment">;whenever the trigger gives signal</emphasis>
+ <emphasis role="octrl">if</emphasis> ktrig <emphasis role="op">==</emphasis> 1 then
+  <emphasis role="comment">;choose a random element (0, 1 or 2)</emphasis>
+kel       <emphasis role="opc">random</emphasis>    0, 3.9999
+kel       <emphasis role="op">=</emphasis>         <emphasis role="opc">int</emphasis>(kel)
+ <emphasis role="comment">;make a copy for leaving Smember intact</emphasis>
+Scopy     <emphasis role="opc">strcpyk</emphasis>   Smember 
+ <emphasis role="comment">;set the initial index for reading substrings</emphasis>
+kndx      <emphasis role="op">=</emphasis>         0 
+ <emphasis role="comment">;set counter for searching the element</emphasis>
+kcount    <emphasis role="op">=</emphasis>         0
+ <emphasis role="comment">;start looping over the elements in Smember</emphasis>
+<emphasis role="olabel">loop</emphasis><emphasis role="op">:</emphasis>
+kdelim    <emphasis role="opc">strindexk</emphasis> Scopy, "<emphasis role="op">:</emphasis>"
+  <emphasis role="comment">;as long as ":" occurs in Scopy, do:</emphasis>
+  <emphasis role="octrl">if</emphasis> kdelim <emphasis role="op">></emphasis> 0 then
+   <emphasis role="comment">;if this is the element to get</emphasis>
+   <emphasis role="octrl">if</emphasis> kel <emphasis role="op">==</emphasis> kcount then
+    <emphasis role="comment">;read it as substring</emphasis>
+Sfile     <emphasis role="opc">strsubk</emphasis>   Scopy, kndx, kdelim
+kprint <emphasis role="op">=</emphasis> kprint<emphasis role="op">+</emphasis>1
+    <emphasis role="comment">;and jump out</emphasis>
+          <emphasis role="octrl">kgoto</emphasis>     <emphasis role="olabel">call</emphasis>
+   <emphasis role="comment">;if not</emphasis>
+   <emphasis role="octrl">else</emphasis>
+    <emphasis role="comment">;cut off this element from Scopy</emphasis>
+Scopy     <emphasis role="opc">strsubk</emphasis>   Scopy, kdelim<emphasis role="op">+</emphasis>1, istrlen
+   <emphasis role="octrl">endif</emphasis>
+   <emphasis role="comment">;if no element has been found,go back to loop </emphasis>
+   <emphasis role="comment">;and look for the next element</emphasis>
+kcount    <emphasis role="op">=</emphasis>         kcount<emphasis role="op">+</emphasis>1
+          <emphasis role="octrl">kgoto</emphasis>     <emphasis role="olabel">loop</emphasis>
+  <emphasis role="comment">;if there is no delimiter left, the rest is the searched element</emphasis>
+  <emphasis role="octrl">else</emphasis>
+Sfile     <emphasis role="opc">strcpyk</emphasis>   Scopy
+  <emphasis role="octrl">endif</emphasis>
+<emphasis role="olabel">call</emphasis><emphasis role="op">:</emphasis>
+ <emphasis role="comment">;print the result, call the subinstrument and play the file</emphasis>
+          <emphasis role="opc">printf</emphasis>    "kel <emphasis role="op">=</emphasis> <emphasis role="op">%</emphasis>d, file <emphasis role="op">=</emphasis> '<emphasis role="op">%</emphasis>s'\n", ktrig<emphasis role="op">+</emphasis>kprint, kel, Sfile
+S_call    <emphasis role="opc">sprintfk</emphasis>  {{i 2 0 1 "<emphasis role="op">%</emphasis>s"}}, Sfile
+          <emphasis role="opc">scoreline</emphasis> S_call, ktrig
+ <emphasis role="octrl">endif</emphasis>
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 2 <emphasis role="comment">;play</emphasis>
+Sfile     <emphasis role="opc">strget</emphasis>    p4
+ilen      <emphasis role="opc">filelen</emphasis>   Sfile
+p3        <emphasis role="op">=</emphasis>         ilen
+asig      <emphasis role="opc">soundin</emphasis>   Sfile
+          <emphasis role="opc">outs</emphasis>      asig, asig
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1 0 30 "mary.wav:fox.wav:beats.wav:flute.a<emphasis role="stamnt">i</emphasis>ff"
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

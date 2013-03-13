@@ -1,0 +1,84 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in    No messages</emphasis>
+-odac           -iadc     -d     <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o FLbutton.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="comment">; Using FLbuttons to create on screen controls for play, </emphasis>
+<emphasis role="comment">; stop, fast forward and fast rewind of a sound file</emphasis>
+<emphasis role="comment">; This example also makes use of a preset graphic for buttons.</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">kr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 1
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+
+<emphasis role="opc">FLpanel</emphasis> "Buttons", 240, 400, 100, 100
+    ion <emphasis role="op">=</emphasis> 0
+    ioff <emphasis role="op">=</emphasis> 0
+    itype <emphasis role="op">=</emphasis> 1
+    iwidth <emphasis role="op">=</emphasis> 50
+    iheight <emphasis role="op">=</emphasis> 50
+    ix <emphasis role="op">=</emphasis> 10
+    iy <emphasis role="op">=</emphasis> 10
+    iopcode <emphasis role="op">=</emphasis> 0
+    istarttim <emphasis role="op">=</emphasis> 0
+    idur <emphasis role="op">=</emphasis> <emphasis role="op">-</emphasis>1  <emphasis role="comment">;Turn instruments on idefinitely</emphasis>
+
+    <emphasis role="comment">; Normal speed forwards</emphasis>
+    gkplay, ihb1 <emphasis role="opc">FLbutton</emphasis> "@<emphasis role="op">></emphasis>", ion, ioff, itype, iwidth, iheight, ix, iy, iopcode, 1, istarttim, idur, 1 
+    <emphasis role="comment">; Stationary </emphasis>
+    gkstop, ihb2 <emphasis role="opc">FLbutton</emphasis> "@square", ion,ioff, itype, iwidth, iheight, ix<emphasis role="op">+</emphasis>55, iy, iopcode, 2, istarttim, idur
+    <emphasis role="comment">; Double speed backwards</emphasis>
+    gkrew, ihb3 <emphasis role="opc">FLbutton</emphasis> "@<emphasis role="op">&lt;</emphasis><emphasis role="op">&lt;</emphasis>", ion, ioff, itype, iwidth, iheight, ix <emphasis role="op">+</emphasis> 110, iy, iopcode, 1, istarttim, idur, <emphasis role="op">-</emphasis>2
+    <emphasis role="comment">; Double speed forward</emphasis>
+    gkff, ihb4 <emphasis role="opc">FLbutton</emphasis> "@<emphasis role="op">></emphasis><emphasis role="op">></emphasis>", ion, ioff, itype, iwidth, iheight, ix<emphasis role="op">+</emphasis>165, iy, iopcode, 1, istarttim, idur, 2
+    <emphasis role="comment">; Type 1</emphasis>
+    gkt1, iht1 <emphasis role="opc">FLbutton</emphasis> "1<emphasis role="op">-</emphasis>Normal Button", ion, ioff, 1, 200, 40, ix, iy <emphasis role="op">+</emphasis> 65, <emphasis role="op">-</emphasis>1 
+    <emphasis role="comment">; Type 2</emphasis>
+    gkt2, iht2 <emphasis role="opc">FLbutton</emphasis> "2<emphasis role="op">-</emphasis>Light Button", ion, ioff, 2, 200, 40, ix, iy <emphasis role="op">+</emphasis> 110, <emphasis role="op">-</emphasis>1 
+    <emphasis role="comment">; Type 3</emphasis>
+    gkt3, iht3 <emphasis role="opc">FLbutton</emphasis> "3<emphasis role="op">-</emphasis>Check Button", ion, ioff, 3, 200, 40, ix, iy <emphasis role="op">+</emphasis> 155, <emphasis role="op">-</emphasis>1 
+    <emphasis role="comment">; Type 4</emphasis>
+    gkt4, iht4 <emphasis role="opc">FLbutton</emphasis> "4<emphasis role="op">-</emphasis>Round Button", ion, ioff, 4, 200, 40, ix, iy <emphasis role="op">+</emphasis> 200, <emphasis role="op">-</emphasis>1 
+    <emphasis role="comment">; Type 21</emphasis>
+    gkt5, iht5 <emphasis role="opc">FLbutton</emphasis> "21<emphasis role="op">-</emphasis>Plastic Button", ion, ioff, 21, 200, 40, ix, iy <emphasis role="op">+</emphasis> 245, <emphasis role="op">-</emphasis>1 
+    <emphasis role="comment">; Type 22</emphasis>
+    gkt6, iht6 <emphasis role="opc">FLbutton</emphasis> "22<emphasis role="op">-</emphasis>Plastic Light Button", ion, ioff, 22, 200, 40, ix, iy <emphasis role="op">+</emphasis> 290, <emphasis role="op">-</emphasis>1
+    <emphasis role="comment">; Type 23</emphasis>
+    gkt7, iht7 <emphasis role="opc">FLbutton</emphasis> "23<emphasis role="op">-</emphasis>Plastic Check Button", ion, ioff, 23, 200, 40, ix, iy <emphasis role="op">+</emphasis> 335, <emphasis role="op">-</emphasis>1 
+<emphasis role="opc">FLpanelEnd</emphasis>
+<emphasis role="opc">FLrun</emphasis>
+
+<emphasis role="comment">; Ensure that only 1 instance of instr 1</emphasis>
+<emphasis role="comment">; plays even if the play button is clicked repeatedly</emphasis>
+insnum <emphasis role="op">=</emphasis> 1
+icount <emphasis role="op">=</emphasis> 1
+<emphasis role="opc">maxalloc</emphasis> insnum, icount
+
+<emphasis role="oblock">instr</emphasis> 1
+    asig <emphasis role="opc">diskin2</emphasis> "beats.wav", p4, 0, 1
+    <emphasis role="opc">outs</emphasis> asig, asig
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 2
+    <emphasis role="opc">turnoff2</emphasis> 1, 0, 0   <emphasis role="comment">;Turn off instr 1</emphasis>
+    <emphasis role="opc">turnoff</emphasis>   <emphasis role="comment">;Turn off this instrument</emphasis>
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="comment">; Real-time performance for 1 hour.</emphasis>
+<emphasis role="stamnt">f</emphasis> 0 3600
+<emphasis role="stamnt">e</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

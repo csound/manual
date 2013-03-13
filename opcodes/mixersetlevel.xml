@@ -1,0 +1,97 @@
+
+<refentry id="MixerSetLevel">
+<indexterm id="IndexMixerSetLevel"><primary>MixerSetLevel</primary></indexterm>
+  <refentryinfo><title>Mixer Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>MixerSetLevel</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>MixerSetLevel</refname>
+    <refpurpose>
+      Sets the level of a send to a buss.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>MixerSetLevel</command> isend, ibuss, kgain</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Description</title> 
+    <para>Sets the level at which signals from the send are added to the buss. The actual sending of the signal to the buss 
+is performed by the <link linkend="MixerSend"><citetitle>MixerSend</citetitle></link> opcode. 
+    </para>  
+    </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+
+    <para><emphasis>isend</emphasis> -- The number of the send, for example the number of the instrument sending the signal (but any integer can be used).</para>
+
+<para><emphasis>ibuss</emphasis> -- The number of the buss, for example the number of the instrument receiving the signal (but any integer can be used).</para>
+
+<para>Setting the gain for a buss also creates the buss.</para>
+
+  </refsect1>
+
+<refsect1>
+<title>Performance</title>
+<para><emphasis>kgain</emphasis> -- The level (any real number) at which the signal from the send will be mixed onto the buss. The default is 0.</para>
+
+<para>
+Use of the mixer requires that instruments setting gains have smaller numbers than instruments sending signals, 
+and that instruments sending signals have smaller numbers than instruments receiving those signals. 
+However, an instrument may have any number of sends or receives. After the final signal is received, 
+<link linkend="MixerClear"><citetitle>MixerClear</citetitle></link> must be invoked to reset the busses before the next kperiod.
+</para>
+</refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+
+<para>In the orchestra, define an instrument to control mixer levels:</para>
+<programlisting>
+<emphasis role="oblock">instr</emphasis> 1
+	<emphasis role="opc">MixerSetLevel</emphasis>		p4, p5, p6
+<emphasis role="oblock">endin</emphasis></programlisting>
+
+<para>In the score, use that instrument to set mixer levels:</para>
+<programlisting>
+<emphasis role="comment">; SoundFonts</emphasis>
+<emphasis role="comment">; to Chorus</emphasis>
+<emphasis role="stamnt">i</emphasis> 1  0  0 100  200  0.9
+<emphasis role="comment">; to Reverb</emphasis>
+<emphasis role="stamnt">i</emphasis> 1  0  0  100  210  0.7
+<emphasis role="comment">; to Output</emphasis>
+<emphasis role="stamnt">i</emphasis> 1  0  0  100  220  0.3
+
+<emphasis role="comment">; Kelley Harpsichord</emphasis>
+<emphasis role="comment">; to Chorus</emphasis>
+<emphasis role="stamnt">i</emphasis> 1  0  0  3  200  0.30
+<emphasis role="comment">; to Reverb</emphasis>
+<emphasis role="stamnt">i</emphasis> 1  0  0  3  210  0.9
+<emphasis role="comment">; to Output</emphasis>
+<emphasis role="stamnt">i</emphasis> 1  0  0  3  220  0.1
+
+<emphasis role="comment">; Chorus to Reverb</emphasis>
+<emphasis role="stamnt">i</emphasis> 1  0  0  200  210  0.5
+<emphasis role="comment">; Chorus to Output</emphasis>
+<emphasis role="stamnt">i</emphasis> 1  0  0  200  220  0.5
+<emphasis role="comment">; Reverb to Output</emphasis>
+<emphasis role="stamnt">i</emphasis> 1  0  0  210  220  0.2</programlisting>
+    <para>
+      Here is a complete example of the MixerSetLevel opcode. It uses the file <ulink url="examples/Mixer.csd"><citetitle>Mixer.csd</citetitle></ulink>
+      <example>
+        <title>Complete example of the MixerSetLevel opcode.</title>
+        <xi:include href="examples-xml/Mixer.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+</refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Michael Gogins (gogins at pipeline dot com).</para>
+  </refsect1>
+</refentry>

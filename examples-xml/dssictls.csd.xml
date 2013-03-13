@@ -1,0 +1,66 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac     <emphasis role="comment">;;;RT audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if RT audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o dssictls.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+
+gihandle <emphasis role="opc">dssiinit</emphasis> "caps.so", 1, 1	<emphasis role="comment">; = equaliser and</emphasis>
+gaoutl <emphasis role="opc">init</emphasis>  0				<emphasis role="comment">; verbose about all ports</emphasis>
+gaoutr <emphasis role="opc">init</emphasis>  0
+
+<emphasis role="oblock">instr</emphasis> 1	<emphasis role="comment">; activate DSSI</emphasis>
+
+<emphasis role="opc">dssiactivate</emphasis> gihandle, 1
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 2
+ain1	<emphasis role="opc">diskin2</emphasis> "beats.wav", 1,0,1	<emphasis role="comment">; loop</emphasis>
+
+gaoutl <emphasis role="op">=</emphasis> gaoutl<emphasis role="op">+</emphasis>(ain1<emphasis role="op">*</emphasis>.1)		<emphasis role="comment">; temper input</emphasis>
+gaoutr <emphasis role="op">=</emphasis> gaoutr<emphasis role="op">+</emphasis>(ain1<emphasis role="op">*</emphasis>.1)
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 3
+
+<emphasis role="opc">dssictls</emphasis> gihandle, 2, <emphasis role="op">-</emphasis>48, 1	<emphasis role="comment">; 31 Hz range -48 to 24</emphasis>
+<emphasis role="opc">dssictls</emphasis> gihandle, 3, <emphasis role="op">-</emphasis>48, 1	<emphasis role="comment">; 63 Hz range -48 to 24</emphasis>
+<emphasis role="opc">dssictls</emphasis> gihandle, 4, <emphasis role="op">-</emphasis>48, 1	<emphasis role="comment">; 125 Hz range -48 to 24</emphasis>
+<emphasis role="opc">dssictls</emphasis> gihandle, 5, 20, 1	<emphasis role="comment">; 250 Hz range -48 to 24</emphasis>
+<emphasis role="opc">dssictls</emphasis> gihandle, 6, <emphasis role="op">-</emphasis>48, 1	<emphasis role="comment">; 500 Hz range -48 to 24</emphasis>
+<emphasis role="opc">dssictls</emphasis> gihandle, 7, <emphasis role="op">-</emphasis>48, 1	<emphasis role="comment">; 1 kHz Hz range -48 to 24</emphasis>
+<emphasis role="opc">dssictls</emphasis> gihandle, 8, <emphasis role="op">-</emphasis>48, 1	<emphasis role="comment">; 2 kHz range -48 to 24</emphasis>
+<emphasis role="opc">dssictls</emphasis> gihandle, 9, 24, 1	<emphasis role="comment">; 4 kHz range -48 to 24</emphasis>
+<emphasis role="opc">dssictls</emphasis> gihandle, 10, 24, 1	<emphasis role="comment">; 8 kHz range -48 to 24</emphasis>
+<emphasis role="opc">dssictls</emphasis> gihandle, 11, 24, 1	<emphasis role="comment">; 16 kHz range -48 to 24</emphasis>
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 4
+
+aout1, aout2	<emphasis role="opc">dssiaudio</emphasis> gihandle, gaoutl, gaoutr	<emphasis role="comment">;get beats.wav, mono out</emphasis>
+		<emphasis role="opc">outs</emphasis> aout1,aout2
+
+gaoutl <emphasis role="op">=</emphasis> 0
+gaoutr <emphasis role="op">=</emphasis> 0
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 20 
+<emphasis role="stamnt">i</emphasis> 2 1 20
+<emphasis role="stamnt">i</emphasis> 3 1 20
+<emphasis role="stamnt">i</emphasis> 4 0 20
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

@@ -1,0 +1,79 @@
+
+<refentry id="FLkeyIn">
+<indexterm id="IndexFLkeyIn"><primary>FLkeyIn</primary></indexterm>
+  <refentryinfo><title>FLTK:Other</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLkeyIn</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLkeyIn</refname>
+    <refpurpose>
+      Reports keys pressed (on alphanumeric keyboard) when an FLTK panel has focus.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>FLkeyIn</emphasis> informs about the status of a key pressed by the user on the alphanumeric keyboard when an FLTK panel has got the focus.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kascii <command>FLkeyIn</command> [ifn]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>ifn – (optional, default value is zero) set the behavior of FLkeyIn (see below).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para><emphasis>kascii</emphasis> - the ascii value of last pressed key. If the key is pressed, the value is positive, when the key is released the value is negative.
+    </para>
+    <para>
+      <emphasis>FLkeyIn</emphasis> is useful to know whether a key has been pressed on the computer keyboard. The behavior of this opcode depends on the optional <emphasis>ifn</emphasis> argument.
+    </para>
+    <para>
+      If <emphasis>ifn</emphasis> = 0 (default), <emphasis>FLkeyIn</emphasis> outputs the ascii code of the last pressed key. If it is a special key (ctrl, shift, alt, f1-f12 etc.), a value of 256 is added to the output value in order to distinguish it from normal keys. The output will continue to output the last key value, until a new key is pressed or released. Notice that the output will be negative when a key is depressed.
+    </para>
+    <para>
+      If <emphasis>ifn</emphasis> is set to the number of an already-allocated table having at least 512 elements, then the table element having index equal to the ascii code of the key pressed is set to 1, all other table elements are set to 0. This allows to check the state of a certain key or set of keys.
+    </para>
+    <para>
+      Be aware that you must set the <emphasis>ikbdcapture</emphasis> parameter to something other than 0 on a designated <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link> for <emphasis>FLkeyIn</emphasis> to capture keyboard events from that panel.
+    </para>
+    <note>
+      <para><emphasis>FLkeyIn</emphasis> works internally at k-rate, so it can't be used in the header as other FLTK opcodes. It must be used inside an instrument.
+      </para>
+    </note>
+  </refsect1>
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the FLkeyIn opcode. It uses the file <ulink url="examples/FLkeyIn.csd"><citetitle>FLkeyIn.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the FLkeyIn opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/FLkeyIn.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+<!--  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="FLgetsnap"><citetitle>FLgetsnap</citetitle></link>
+    </para>
+  </refsect1>-->
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namegabriel;</para>
+    <para>New in version 5.06</para>
+  </refsect1>
+</refentry>

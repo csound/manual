@@ -1,0 +1,82 @@
+
+<refentry id="inch">
+<indexterm id="IndexInch"><primary>inch</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Signal Input</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>inch</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>inch</refname>
+    <refpurpose>
+      Reads from numbered channels in an external audio signal or stream.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Reads from numbered channels in an external audio signal or stream.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ain1[, ...] <command>inch</command> kchan1[,...]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ain1, ...</emphasis> - input audio signals
+    </para>
+    <para>
+      <emphasis>kchan1,...</emphasis> - channel numbers
+    </para>
+    <para>
+      <emphasis>inch</emphasis> reads from numbered channels
+      determined by the corresponding <emphasis>kchan</emphasis> into
+      the associated <emphasis>ain</emphasis>. If the command-line <link linkend="FlagsMinusLowerI"><citetitle>-i</citetitle></link> flag is set, sound is read continuously from the audio input stream (e.g. <emphasis>stdin</emphasis> or a soundfile). <emphasis>inch</emphasis> can also be used to receive audio in realtime from the audio interface using <emphasis>-iadc</emphasis>.
+    </para>
+    <note>
+      <para>
+        The highest number for <emphasis>kchan</emphasis> available for use with <emphasis>inch</emphasis> depends on <link linkend="nchnls_i"><citetitle>nchnls_i</citetitle></link>. If <emphasis>kchan</emphasis> is greater than <emphasis>nchnls_i</emphasis>, <emphasis>ain</emphasis> will be silent. Note that <emphasis>inch</emphasis> will give a warning but not an error in this case.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the inch opcode. It uses the file <ulink url="examples/inch.csd"><citetitle>inch.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the inch opcode.</title>
+        <xi:include href="examples-xml/inch.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>      
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="in32"><citetitle>in32</citetitle></link>,
+      <link linkend="inx"><citetitle>inx</citetitle></link>,
+      <link linkend="inz"><citetitle>inz</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>University of Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>May 2000</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound Version 4.07</para>
+    <para>Multiple arguments from version 5.13</para>
+  </refsect1>
+</refentry>

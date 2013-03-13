@@ -1,0 +1,146 @@
+
+<refentry id="FLcount">
+<indexterm id="IndexFLcount"><primary>FLcount</primary></indexterm>
+  <refentryinfo><title>FLTK:Valuators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLcount</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>FLcount</refname>
+    <refpurpose>
+      A FLTK widget opcode that creates a counter.
+          </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Allows the user to increase/decrease a value with mouse clicks on a corresponding arrow button.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kout, ihandle <command>FLcount</command> &quot;label&quot;, imin, imax, istep1, istep2, itype, \
+      iwidth, iheight, ix, iy, iopcode [, kp1] [, kp2] [, kp3] [...] [, kpN]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ihandle</emphasis> -- a handle value (an integer number) that unequivocally references a corresponding widget. Used by further opcodes that changes some valuator's properties. It is automatically set by the corresponding valuator.
+    </para>
+
+    <para>
+      <emphasis><quote>label</quote></emphasis> -- a double-quoted string containing some user-provided text, placed near the corresponding widget.
+    </para>
+
+    <para>
+      <emphasis>imin</emphasis> -- minimum value of output range
+    </para>
+
+    <para>
+      <emphasis>imax</emphasis> -- maximum value of output range
+    </para>
+
+    <para>
+      <emphasis>istep1</emphasis> -- a floating-point number indicating the increment of valuator value corresponding to of each mouse click. <emphasis>istep1</emphasis> is for fine adjustments.
+    </para>
+
+    <para>
+      <emphasis>istep2</emphasis> -- a floating-point number indicating the increment of valuator value corresponding to of each mouse click. <emphasis>istep2</emphasis> is for coarse adjustments.
+    </para>
+
+    <para>
+      <emphasis>itype</emphasis> -- an integer number denoting the appearance of the valuator.
+    </para>
+
+    <para>
+      <emphasis>iwidth</emphasis> -- width of widget.
+    </para>
+
+    <para>
+      <emphasis>iheight</emphasis> -- height of widget.
+    </para>
+
+    <para>
+      <emphasis>ix</emphasis> -- horizontal position of upper left corner of the valuator, relative to the upper left corner of corresponding window (expressed in pixels).
+    </para>
+
+    <para>
+      <emphasis>iy</emphasis> -- vertical position of upper left corner of the valuator, relative to the upper left corner of corresponding window (expressed in pixels).
+    </para>
+
+    <para>
+      <emphasis>iopcode</emphasis> -- score opcode type. You have to provide the ascii code of the letter corresponding to the score opcode. At present time only <quote>i</quote> (ascii code 105) score statements are supported. A zero value refers to a default value of <quote>i</quote>. So both 0 and 105 activates the <link linkend="i"><citetitle>i</citetitle></link> opcode. A value of -1 disables this opcode feature.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kout</emphasis> -- output value
+    </para>
+
+    <para>
+      <emphasis>kp1</emphasis>, <emphasis>kp2</emphasis>, ..., <emphasis>kpN</emphasis> -- arguments of the activated instruments.
+    </para>
+
+    <para>
+      <emphasis>FLcount</emphasis> allows the user to increase/decrease a value with mouse clicks on corresponding arrow buttons:
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/flcount.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>FLcount.</phrase>
+        </textobject>
+
+        <caption>
+          <para>FLcount.</para>
+        </caption>
+      </mediaobject>
+    </para>
+
+    <para>
+      There are two kind of arrow buttons, for larger and smaller steps. Notice that <emphasis>FLcount</emphasis> not only outputs a value and a handle, but can also activate (schedule) an instrument provided by the user each time a button is pressed.  P-fields of the activated instrument are <emphasis>kp1</emphasis> (instrument number), <emphasis>kp2</emphasis> (action time), <emphasis>kp3</emphasis> (duration) and so on with user p-fields. If the <emphasis>iopcode</emphasis> argument is set to a negative number, no instrument is activated. So this feature is optional.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the FLcount opcode. It uses the file <ulink url="examples/FLcount.csd"><citetitle>FLcount.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the FLcount opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/FLcount.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="FLjoy"><citetitle>FLjoy</citetitle></link>,
+      <link linkend="FLknob"><citetitle>FLknob</citetitle></link>,
+      <link linkend="FLroller"><citetitle>FLroller</citetitle></link>,
+      <link linkend="FLslider"><citetitle>FLslider</citetitle></link>,
+      <link linkend="FLtext"><citetitle>FLtext</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namegabriel;</para>
+    <para>New in version 4.22</para>
+    <para>Example written by Iain McCurdy, edited by &namekevin;.</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,46 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac     <emphasis role="comment">;;;RT audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if RT audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o denorm.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="comment">; slightly simplified example from Istvan Varga 2006</emphasis>
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis> <emphasis role="op">=</emphasis> 1
+
+garvb <emphasis role="opc">init</emphasis> 0
+
+<emphasis role="oblock">instr</emphasis> 1
+
+a1  <emphasis role="opc">oscils</emphasis> 0.6, 440, 0
+a2  <emphasis role="opc">linsegr</emphasis> 0, 0.005, 1, 3600, 1, 0.08, 0
+a1  <emphasis role="op">=</emphasis>  a1 <emphasis role="op">*</emphasis> a2
+    <emphasis role="opc">vincr</emphasis> garvb, a1
+    <emphasis role="opc">outs</emphasis> a1, a1
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 99	<emphasis role="comment">;"Always on"</emphasis>
+
+       <emphasis role="opc">denorm</emphasis> garvb
+aL, aR <emphasis role="opc">reverbsc</emphasis> garvb <emphasis role="op">*</emphasis> 0.5, garvb <emphasis role="op">*</emphasis> 0.5, 0.92, 10000
+       <emphasis role="opc">clear</emphasis> garvb
+       <emphasis role="opc">outs</emphasis> aL, aR
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 99 0 -1	<emphasis role="comment">;held by a negative p3, means "always on" </emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 0.5
+<emphasis role="stamnt">i</emphasis> 1 4 0.5
+<emphasis role="stamnt">e</emphasis> 8		<emphasis role="comment">;8 extra seconds after the performance</emphasis>
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

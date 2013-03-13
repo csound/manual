@@ -1,0 +1,119 @@
+
+<refentry id="freeverb">
+<indexterm id="IndexFreeverb"><primary>freeverb</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Reverberation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>freeverb</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>freeverb</refname>
+    <refpurpose>
+      Opcode version of Jezar's Freeverb
+          </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+		freeverb is a stereo reverb unit based on Jezar's public domain
+		C++ sources, composed of eight parallel comb filters on both
+		channels, followed by four allpass units in series. The filters
+		on the right channel are slightly detuned compared to the left
+		channel in order to create a stereo effect.
+    </para>
+
+
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>aoutL, aoutR <command>freeverb</command> ainL, ainR, kRoomSize, kHFDamp[, iSRate[, iSkip]] </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+
+    <para>
+      <emphasis>iSRate</emphasis>
+      (optional, defaults to 44100): adjusts the reverb parameters for
+    use with the specified sample rate (this will affect the length of
+    the delay lines in samples, and, as of the latest CVS version, the
+    high frequency attenuation). Only integer multiples of 44100 will
+    reproduce the original character of the reverb exactly, so it may
+    be useful to set this to 44100 or 88200 for an orchestra sample
+    rate of 48000 or 96000 Hz, respectively. While iSRate is normally
+    expected to be close to the orchestra sample rate, different
+    settings may be useful for special effects.
+    </para>
+
+    <para>
+      <emphasis>iSkip</emphasis>
+      (optional, defaults to zero): if non-zero, initialization of the
+    opcode will be skipped, whenever possible.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+     <para>
+      <emphasis>ainL, ainR</emphasis>
+      -- input signals; usually both are the same, but different
+    inputs can be used for special effect
+
+    <note>
+    <title>Note</title>
+    <para>It is recommended to process the input signal(s) with the
+    denorm opcode in order to avoid denormalized numbers which could
+    significantly increase CPU usage in some cases
+    </para>
+    </note>
+
+    </para>
+
+    <para>
+      <emphasis>aoutL, aoutR</emphasis>
+      -- output signals for left and right channel
+    </para>
+
+    <para>
+      <emphasis>kRoomSize</emphasis>
+      (range: 0 to 1) -- controls the length of the reverb, a higher
+      value means longer reverb. Settings above 1 may make the opcode
+      unstable.
+    </para>
+
+    <para>
+      <emphasis>kHFDamp</emphasis>
+      (range: 0 to 1): high frequency attenuation; a value of zero
+    means all frequencies decay at the same rate, while higher settings
+    will result in a faster decay of the high frequency range.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the <emphasis>freeverb</emphasis> opcode. It uses the file <ulink url="examples/freeverb.csd"><citetitle>freeverb.csd</citetitle></ulink>.
+      <example>
+        <title>An example of the freeverb opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+        <xi:include href="examples-xml/freeverb.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Istvan Varga</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

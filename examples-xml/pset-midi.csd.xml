@@ -1,0 +1,45 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+ 
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac -+rtmidi=virtual -M0 --midi-key-oct=4 --midi-velocity=5   <emphasis role="comment">;;;realtime audio out and virtual midi keyboard</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o pset-midi.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+ 
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100 
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1 
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2 
+
+<emphasis role="oblock">instr</emphasis> 1
+
+            <emphasis role="opc">pset</emphasis> 0, 0, 3600, 0, 0, 0
+iinstrument <emphasis role="op">=</emphasis> p1
+istarttime  <emphasis role="op">=</emphasis> p2
+iattack     <emphasis role="op">=</emphasis> 0.005
+isustain    <emphasis role="op">=</emphasis> p3
+irelease    <emphasis role="op">=</emphasis> 0.06
+p3          <emphasis role="op">=</emphasis> isustain <emphasis role="op">+</emphasis> iattack <emphasis role="op">+</emphasis> irelease
+kdamping    <emphasis role="opc">linsegr</emphasis> 0.0, iattack, 1.0, isustain, 1.0, irelease, 0.0
+
+ioctave     <emphasis role="op">=</emphasis> p4
+ifrequency  <emphasis role="op">=</emphasis> <emphasis role="opc">cpsoct</emphasis>(ioctave)
+iamplitude  <emphasis role="op">=</emphasis> p5<emphasis role="op">*</emphasis>.15			<emphasis role="comment">;lower volume</emphasis>
+
+<emphasis role="opc">print</emphasis> p1, p2, p3, p4, p5
+asig <emphasis role="opc">STKBandedWG</emphasis> ifrequency, iamplitude
+     <emphasis role="opc">outs</emphasis> asig, asig
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis> 0 60	<emphasis role="comment">; runs 69 seconds</emphasis>
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

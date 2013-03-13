@@ -1,0 +1,111 @@
+
+<refentry id="vpow">
+<indexterm id="IndexVpow"><primary>vpow</primary></indexterm>
+  <refentryinfo><title>Vectorial:Scalar operations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vpow</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vpow</refname>
+    <refpurpose>
+      Raises each element of a vector to a scalar power.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+       Raises each element of a vector to a scalar power.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>vpow</command>  ifn, kval, kelements [, kdstoffset] [, kverbose]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifn</emphasis>  - number of the table hosting the vectorial signal to be processed
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kval</emphasis> - scalar value to which the elements of <emphasis>ifn</emphasis> will be raised
+    </para>
+    <para>
+      <emphasis>kelements</emphasis> - number of elements of the vector
+    </para>
+    <para>
+      <emphasis>kdstoffset</emphasis> - index offset for the destination table (Optional, default = 0)
+    </para>
+    <para>
+      <emphasis>kverbose</emphasis> - Selects whether or not warnings are printed (Default=0)
+    </para>
+    <para>
+      <emphasis>vpow</emphasis> raises each element of the vector contained in the table <emphasis>ifn</emphasis> to the power of <emphasis>kval</emphasis>, starting from table index <emphasis>kdstoffset</emphasis>. This enables you to process a specific section of a table by specifying the offset and the number of elements to be processed. Offset is counted starting from 0, so if no offset is specified (or set to 0), the table will be modified from the beginning.
+    </para>
+    <para>
+      Note that this opcode runs at k-rate so the value of <emphasis>kval</emphasis> is processed every control period. Use with care or you will end up with very large (or small) numbers (or use <link linkend="vpow_i"><citetitle>vpow_i</citetitle></link>).
+    </para>
+    <para>
+      These opcodes (<link linkend="vadd"><citetitle>vadd</citetitle></link>, <link linkend="vmult"><citetitle>vmult</citetitle></link>, <link linkend="vpow"><citetitle>vpow</citetitle></link> and <link linkend="vexp"><citetitle>vexp</citetitle></link>) perform numeric operations between a vectorial control signal (hosted by the table <emphasis>ifn</emphasis>), and a scalar signal (<emphasis>kval</emphasis>). Result is a new vector that overrides old values of <emphasis>ifn</emphasis>. All these opcodes work at k-rate.
+    </para>
+    <para>
+      Negative values for <emphasis>kdstoffset</emphasis> are valid. Elements from the vector that are outside the table, will be discarded, and they will not wrap around the table.
+    </para>
+    <para>
+      If the optional <emphasis>kverbose</emphasis> argument is different to 0, the opcode will print warning messages every k-pass if table lengths are exceeded.
+    </para>
+    <para>
+      In all these opcodes, the resulting vectors are stored in <emphasis>ifn</emphasis>, overriding the intial vectors. If you want to keep initial vector, use <link linkend="vcopy"><citetitle>vcopy</citetitle></link> or <link linkend="vcopy_i"><citetitle>vcopy_i</citetitle></link> to copy it in another table. All these operators are designed to be used together with other opcodes that operate with vectorial signals such as <link linkend="vcella"><citetitle>vcella</citetitle></link>, <link linkend="adsynt"><citetitle>adsynt</citetitle></link>, <link linkend="adsynt2"><citetitle>adsynt2</citetitle></link>, etc.  They can also be useful in conjunction with the spectral opcodes <link linkend="pvsftw"><citetitle>pvsftw</citetitle></link> and <link linkend="pvsftr"><citetitle>pvsftr</citetitle></link>.
+    </para>
+    <note>
+      <para>
+        Please note that the <emphasis>elements</emphasis> argument has changed in version 5.03 from i-rate to k-rate. This will change the opcode's behavior in the unusual cases where the i-rate variable <emphasis>ielements</emphasis> is changed inside the instrument, for example in:
+        <programlisting>
+    <emphasis role="oblock">instr</emphasis> 1
+ielements  <emphasis role="op">=</emphasis>        10
+           <emphasis role="opc">vadd</emphasis>     1, 1, ielements
+ielements  <emphasis role="op">=</emphasis>        20
+           <emphasis role="opc">vadd</emphasis>     2, 1, ielements
+           <emphasis role="opc">turnoff</emphasis>
+    <emphasis role="oblock">endin</emphasis></programlisting>
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the vpow opcode. It uses the file <ulink url="examples/vpow.csd"><citetitle>vpow.csd</citetitle></ulink>.
+      <example>
+        <title>Examples of the vpow opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+        <xi:include href="examples-xml/vpow.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Here is another example of the vpow opcode. It uses the file <ulink url="examples/vpow-2.csd"><citetitle>vpow-2.csd</citetitle></ulink>.
+      <example>
+        <xi:include href="examples-xml/vpow-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>See also</title>
+    <para>
+      <link linkend="vadd"><citetitle>vadd_i</citetitle></link>, <link linkend="vmult"><citetitle>vmult</citetitle></link>, <link linkend="vpow_i"><citetitle>vpow</citetitle></link> and <link linkend="vexp"><citetitle>vexp</citetitle></link>.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Credits</title>
+    <para>Written by Gabriel Maldonado. Optional arguments added by Andres Cabrera and Istvan Varga.</para>
+    <para>New in Csound 5 (Previously available only on CsoundAV)</para>
+  </refsect1>
+</refentry>

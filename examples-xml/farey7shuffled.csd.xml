@@ -1,0 +1,87 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+-odac -+rtaudio=alsa --midioutfile=farey7.mid
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="ohdr">sr</emphasis><emphasis role="op">=</emphasis>48000
+<emphasis role="ohdr">ksmps</emphasis><emphasis role="op">=</emphasis>10
+<emphasis role="ohdr">nchnls</emphasis><emphasis role="op">=</emphasis>1
+<emphasis role="ohdr">0dbfs</emphasis> <emphasis role="op">=</emphasis> 1
+
+gidelta <emphasis role="opc">init</emphasis> 100
+gimult <emphasis role="opc">init</emphasis> 101
+
+<emphasis role="comment">;-------- loop and trigger instrument 901 using a Farey Sequence polyrhythm</emphasis>
+	  <emphasis role="oblock">instr</emphasis> 1
+kindx <emphasis role="opc">init</emphasis> 0
+kindx2 <emphasis role="opc">init</emphasis> 0
+ktrigger <emphasis role="opc">init</emphasis> 0
+ktime_unit <emphasis role="opc">init</emphasis> p6
+kstart <emphasis role="opc">init</emphasis> p4
+kloop <emphasis role="opc">init</emphasis> p5
+kinitndx <emphasis role="opc">init</emphasis> 0
+kfn_times <emphasis role="opc">init</emphasis> gidelta
+knote <emphasis role="opc">init</emphasis> 60
+kbasenote <emphasis role="opc">init</emphasis> p8
+ifundam <emphasis role="opc">init</emphasis> p7
+ktrigger <emphasis role="opc">seqtime</emphasis> ktime_unit, kstart, kloop, kinitndx, kfn_times
+<emphasis role="octrl">if</emphasis> (ktrigger <emphasis role="op">></emphasis> 0 ) then
+     kpitch <emphasis role="op">=</emphasis> <emphasis role="opc">cpspch</emphasis>(ifundam)
+     kmult <emphasis role="opc">tab</emphasis> kindx2, gimult
+     kpitch <emphasis role="op">=</emphasis> kpitch <emphasis role="op">*</emphasis> kmult
+     knote <emphasis role="op">=</emphasis> kbasenote <emphasis role="op">+</emphasis> kmult
+     <emphasis role="opc">event</emphasis> "i", 901, 0, .4, .1, kpitch, kpitch <emphasis role="op">*</emphasis> .9, .4,  5,   .75, .8,  1.0, .15, .0,  .125, .125, .25, .5,  1.0, .0, .0,  .0,  .0,  .125, .25, .25, .25, knote
+     kindx <emphasis role="op">=</emphasis> kindx <emphasis role="op">+</emphasis> 1
+     kindx <emphasis role="op">=</emphasis> kindx <emphasis role="op">%</emphasis> kloop
+     kindx2 <emphasis role="op">=</emphasis> kindx2 <emphasis role="op">+</emphasis> 1
+     kindx2 <emphasis role="op">=</emphasis> kindx2 <emphasis role="op">%</emphasis> kloop
+     <emphasis role="octrl">if</emphasis> (kindx2 <emphasis role="op">==</emphasis> 0) then
+     	<emphasis role="opc">tableshuffle</emphasis> gimult
+     <emphasis role="octrl">endif</emphasis>
+	
+<emphasis role="octrl">endif</emphasis>
+	<emphasis role="oblock">endin</emphasis> <emphasis role="comment">; 1</emphasis>
+
+<emphasis role="comment">;------ basic 2 Operators FM algorithm ----------------</emphasis>
+	<emphasis role="oblock">instr</emphasis> 901
+inotedur	<emphasis role="op">=</emphasis>		p3
+imaxamp		<emphasis role="op">=</emphasis>		p4 <emphasis role="comment">;ampdb(p4)</emphasis>
+icarrfreq	<emphasis role="op">=</emphasis>		p5
+imodfreq	<emphasis role="op">=</emphasis>		p6
+ilowndx		<emphasis role="op">=</emphasis>		p7
+indxdiff	<emphasis role="op">=</emphasis>		p8<emphasis role="op">-</emphasis>p7
+knote	        <emphasis role="op">=</emphasis>		p27
+aampenv		<emphasis role="opc">linseg</emphasis>	p9, p14<emphasis role="op">*</emphasis>p3, p10, p15<emphasis role="op">*</emphasis>p3, p11, p16<emphasis role="op">*</emphasis>p3, p12, p17<emphasis role="op">*</emphasis>p3, p13 
+adevenv		<emphasis role="opc">linseg</emphasis>	p18, p23<emphasis role="op">*</emphasis>p3, p19, p24<emphasis role="op">*</emphasis>p3, p20, p25<emphasis role="op">*</emphasis>p3, p21, p26<emphasis role="op">*</emphasis>p3, p22
+amodosc		<emphasis role="opc">oscili</emphasis>	(ilowndx<emphasis role="op">+</emphasis>indxdiff<emphasis role="op">*</emphasis>adevenv)<emphasis role="op">*</emphasis>imodfreq, imodfreq, 10 
+acarosc		<emphasis role="opc">oscili</emphasis>	imaxamp<emphasis role="op">*</emphasis>aampenv, icarrfreq<emphasis role="op">+</emphasis>amodosc, 10 
+			<emphasis role="opc">out</emphasis>		acarosc 
+<emphasis role="comment">;------ we also write down a midi track here ----------</emphasis>
+<emphasis role="opc">midion</emphasis> 1, knote, 100
+       	<emphasis role="oblock">endin</emphasis> <emphasis role="comment">; 901</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis>10 0 4096 10 1				
+<emphasis role="stamnt">f</emphasis>100 0 -18 "<emphasis role="stamnt">f</emphasis>arey" 7 1
+<emphasis role="stamnt">f</emphasis>101 0 -18 "<emphasis role="stamnt">f</emphasis>arey" 7 2
+
+<emphasis role="comment">; p4 kstart  := index offset into the Farey Sequence</emphasis>
+<emphasis role="comment">; p5 kloop   := end index into Farey Seq.</emphasis>
+<emphasis role="comment">; p6 timefac := time in seconds for one loop to complete</emphasis>
+<emphasis role="comment">; p7 fundam  := fundamental of the FM instrument</emphasis>
+<emphasis role="comment">; p8 basenote:= root pitch of the midi voice output</emphasis>
+<emphasis role="comment">; note that pitch structures of the midi file output are not equivalent to the</emphasis>
+<emphasis role="comment">; ones used for the FM real-time synthesis.</emphasis>
+
+<emphasis role="comment">;	start		dur		kstart	kloop   timefac	fundam. basenote</emphasis>
+<emphasis role="stamnt">i</emphasis>1	0.0		44		0 	18	1	6.05	60
+<emphasis role="stamnt">i</emphasis>1	4		40		0 	18	3	7.05	72
+<emphasis role="stamnt">i</emphasis>1	10		38		0 	18	1.5	8	84
+<emphasis role="stamnt">i</emphasis>1	15		50		0	18	1	5	48
+<emphasis role="stamnt">i</emphasis>1	22		75		5	17	1.7	4	36	
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

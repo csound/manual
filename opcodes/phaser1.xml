@@ -1,0 +1,152 @@
+
+<refentry id="phaser1">
+<indexterm id="IndexPhaser1"><primary>phaser1</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Special Effects</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>phaser1</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>phaser1</refname>
+    <refpurpose>
+      First-order allpass filters arranged in a series.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      An implementation of <emphasis>iord</emphasis> number of first-order allpass filters in series.
+   </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>phaser1</command> asig, kfreq, kord, kfeedback [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iskip</emphasis> (optional, default=0) -- used to control initial disposition of internal data space. Since filtering incorporates a feedback loop of previous output, the initial status of the storage space used is significant. A zero value will clear the space; a non-zero value will allow previous information to remain. The default value is 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kfreq</emphasis> -- frequency (in Hz) of the filter(s). This is the frequency at which each filter in the series shifts its input by 90 degrees. 
+    </para>
+
+    <para>
+      <emphasis>kord</emphasis> -- the number of allpass stages in series. These are first-order filters and can range from 1 to 4999.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        Although <emphasis>kord</emphasis> is listed as k-rate, it is in fact accessed only at init-time. So if you are using a k-rate argument, it must be assigned with <link linkend="init"><citetitle>init</citetitle></link>.
+      </para>
+    </note>
+
+    <para>
+      <emphasis>kfeedback</emphasis> -- amount of the output which is fed back into the input of the allpass chain. With larger amounts of feedback, more prominent notches appear in the spectrum of the output. <emphasis>kfeedback</emphasis> must be between -1 and +1. for stability.
+    </para>
+
+    <para>
+      <emphasis>phaser1</emphasis> implements <emphasis>iord</emphasis> number of first-order allpass sections, serially connected, all sharing the same coefficient. Each allpass section can be represented by the following difference equation:
+      <literallayout>
+y(n) = C * x(n) + x(n-1) - C * y(n-1)
+      </literallayout>
+      where x(n) is the input, x(n-1) is the previous input, y(n) is the output, y(n-1) is the previous output, and C is a coefficient which is calculated from the value of <emphasis>kfreq</emphasis>, using the bilinear z-transform.
+    </para>
+
+    <para>
+      By slowly varying <emphasis>kfreq</emphasis>, and mixing the output of the allpass chain with the input, the classic &quot;phase shifter&quot; effect is created, with notches moving up and down in frequency. This works best with <emphasis>iord</emphasis> between 4 and 16. When the input to the allpass chain is mixed with the output, 1 notch is generated for every 2 allpass stages, so that with <emphasis>iord</emphasis> = 6, there will be 3 notches in the output. With higher values for <emphasis>iord</emphasis>, modulating <emphasis>kfreq</emphasis> will result in a form of nonlinear pitch modulation.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the phaser1 opcode. It uses the file <ulink url="examples/phaser1.csd"><citetitle>phaser1.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the phaser1 opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/phaser1.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Technical History</title>
+    <para>
+      A general description of the differences between flanging and phasing can be found in Hartmann [1]. An early implementation of first-order allpass filters connected in series can be found in Beigel [2], where the bilinear z-transform is used for determining the phase shift frequency of each stage. Cronin [3] presents a similar implementation for a four-stage phase shifting network. Chamberlin [4] and Smith [5] both discuss using second-order allpass sections for greater control over notch depth, width, and frequency.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>References</title>
+    <para>
+      <orderedlist>
+        <listitem>
+          <para>
+            Hartmann, W.M. &quot;Flanging and Phasers.&quot; Journal of the Audio Engineering Society, Vol. 26, No. 6, pp. 439-443, June 1978. 
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Beigel, Michael I. &quot;A Digital 'Phase Shifter' for Musical Applications, Using the Bell Labs (Alles-Fischer) Digital Filter Module.&quot; Journal of the Audio Engineering Society, Vol. 27, No. 9, pp. 673-676,September 1979. 
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Cronin, Dennis. &quot;Examining Audio DSP Algorithms.&quot; Dr. Dobb's Journal, July 1994, p. 78-83.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Chamberlin, Hal. Musical Applications of Microprocessors. Second edition. Indianapolis, Indiana: Hayden Books, 1985.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Smith, Julius O. &quot;An Allpass Approach to Digital Phasing and Flanging.&quot; Proceedings of the 1984 ICMC, p. 103-108.
+          </para>
+        </listitem>
+      </orderedlist>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="phaser2"><citetitle>phaser2</citetitle></link>
+          <para> Other information about phasers on Wikipedia: <ulink url="http://en.wikipedia.org/wiki/Phaser_(effect)"><citetitle>http://en.wikipedia.org/wiki/Phaser_(effect)</citetitle></ulink></para>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namesean;</member>
+        <member>Seattle, Washington</member>
+        <member>1999</member>
+      </simplelist>
+    </para>
+
+    <para>November 2002. Added a note about the <emphasis>kord</emphasis> parameter, thanks to &namerasmus;.</para>
+    <para>New in Csound version 4.0</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,172 @@
+<refentry id="seqtime2">
+<indexterm id="IndexSeqtime2"><primary>seqtime2</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>seqtime2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>seqtime2</refname>
+    <refpurpose>
+      Generates a trigger signal according to the values stored in a table.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Generates a trigger signal according to the values stored in a table.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ktrig_out <command>seqtime2</command> ktrig_in, ktime_unit, kstart, kloop, kinitndx, kfn_times</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ktrig_out</emphasis> -- output trigger signal
+    </para>
+
+    <para>
+      <emphasis>ktime_unit</emphasis> -- unit of measure of time, related to seconds.
+    </para>
+
+    <para>
+      <emphasis>ktrig_in</emphasis> -- input trigger signal.
+    </para>
+
+    <para>
+      <emphasis>kstart</emphasis> -- start index of looped section
+    </para>
+
+    <para>
+      <emphasis>kloop</emphasis> -- end index of looped section
+    </para>
+
+    <para>
+      <emphasis>kinitndx</emphasis> -- initial index
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        Although <emphasis>kinitndx</emphasis> is listed as k-rate, it is in fact accessed only at init-time. So if you are using a k-rate argument, it must be assigned with <link linkend="init"><citetitle>init</citetitle></link>.
+      </para>
+    </note>
+
+    <para>
+      <emphasis>kfn_times</emphasis> -- number of table containing a sequence of times
+    </para>
+
+    <para>
+      This opcode handles timed-sequences of groups of values stored into a table.
+    </para>
+
+    <para>
+      <emphasis>seqtime2</emphasis> generates a trigger signal (a
+    sequence of impulses, see also <link
+    linkend="trigger"><citetitle>trigger</citetitle></link> opcode),
+    according to the values stored in the
+    <emphasis>kfn_times</emphasis> table. This table should contain a
+    series of delta-times (i.e. times beetween to adjacent
+    events). The time units stored into table are expressed in
+    seconds, but can be rescaled by means of <emphasis>ktime_unit</emphasis> argument. The
+    table can be filled with <link
+    linkend="GEN02"><citetitle>GEN02</citetitle></link> or by means of
+    an external text-file containing numbers, with <link
+    linkend="GEN23"><citetitle>GEN23</citetitle></link>.  
+    </para>
+
+    <para>
+      It is possible to start the sequence from a value different than
+    the first, by assigning to <emphasis>initndx</emphasis> an index
+    different than zero (which corresponds to the first value of the
+    table). Normally the sequence is looped, and the start and end of
+    loop can be adjusted by modifying <emphasis>kstart</emphasis> and
+    <emphasis>kloop</emphasis> arguments. User must be sure that
+    values of these arguments (as well as
+    <emphasis>initndx</emphasis>) correspond to valid table numbers,
+    otherwise Csound will crash (because no range-checking is
+    implementeted).  
+    </para>
+
+    <para>
+      It is possible to disable loop (one-shot mode) by assigning the
+    same value both to <emphasis>kstart</emphasis> and
+    <emphasis>kloop</emphasis> arguments. In this case, the last read
+    element will be the one corresponding to the value of such
+    arguments.  Table can be read backward by assigning a negative
+    <emphasis>kloop</emphasis> value. It is possible to trigger two
+    events almost at the same time (actually separated by a k-cycle)
+    by giving a zero value to the corresponding delta-time.  First
+    element contained in the table should be zero, if the user intends
+    to send a trigger impulse, it should come immediately after the
+    orchestra instrument containing <emphasis>seqtime2</emphasis>
+    opcode. 
+    </para>
+
+    <para>
+      <emphasis>seqtime2</emphasis> is similar to
+      <link linkend="seqtime"><citetitle>seqtime</citetitle></link>,
+      the difference is that when
+      <emphasis>ktrig_in</emphasis> contains a non-zero value, current index is reset to
+      <emphasis>kinitndx</emphasis> value.  <emphasis>kinitndx</emphasis> can be varied at performance time.
+    </para>
+  </refsect1>
+
+    <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the seqtime2 opcode. It uses the file <ulink url="examples/seqtime2.csd"><citetitle>seqtime2.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the seqtime2 opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/seqtime2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+<!--   <refsect1> -->
+<!--     <title>Examples</title> -->
+<!--     <para> -->
+<!--       <example> -->
+<!--         <title>Example of the seqtime2 opcode.</title> -->
+
+<!--         <programlisting> -->
+<!--         instr   1 -->
+<!-- icps    cpsmidi -->
+<!-- iamp    ampmidi 5000 -->
+<!-- ktrig   seqtime2 1,       1,          10,      0,   1 -->
+<!-- trigseq ktrig, 0, 10, 0, 2, kdur, kampratio, kfreqratio -->
+<!--         schedkwhen      ktrig, -1, -1, 2, 0, kdur, kampratio*iamp, kfreqratio*icps -->
+<!--         endin -->
+
+
+<!--         instr  2 -->
+<!-- **** put here your intrument code ******* -->
+<!--         out     a1 -->
+<!--         endin -->
+<!--         </programlisting> -->
+<!--       </example> -->
+<!--     </para> -->
+<!--   </refsect1> -->
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="GEN02"><citetitle>GEN02</citetitle></link>,
+      <link linkend="GEN23"><citetitle>GEN23</citetitle></link>,
+      <link linkend="seqtime"><citetitle>seqtime</citetitle></link>,
+      <link linkend="trigseq"><citetitle>trigseq</citetitle></link>,
+      <link linkend="trigseq"><citetitle>timedseq</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namegabriel;</para>
+  </refsect1>
+</refentry>

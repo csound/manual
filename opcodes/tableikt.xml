@@ -1,0 +1,110 @@
+
+<refentry id="tableikt">
+<indexterm id="IndexTableikt"><primary>tableikt</primary></indexterm>
+  <refentryinfo><title>Table Control:Dynamic Selection</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tableikt</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>tableikt</refname>
+    <refpurpose>
+      Provides k-rate control over table numbers.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      k-rate control over table numbers. Function tables are read with linear interpolation.
+    </para>
+
+    <para>
+      The standard Csound opcode <link linkend="tablei"><citetitle>tablei</citetitle></link>, when producing a k- or a-rate result, can only use an init-time variable to select the table number. <emphasis>tableikt</emphasis> accepts k-rate control as well as i-time. In all other respects they are similar to the original opcodes.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>tableikt</command> xndx, kfn [, ixmode] [, ixoff] [, iwrap]</synopsis>
+
+    <synopsis>kres <command>tableikt</command> kndx, kfn [, ixmode] [, ixoff] [, iwrap]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ixmode</emphasis> -- if 0, <emphasis>xndx</emphasis> and <emphasis>ixoff</emphasis> ranges match the length of the table. if non-zero <emphasis>xndx</emphasis> and <emphasis>ixoff</emphasis> have a 0 to 1 range. Default is 0
+    </para>
+
+    <para>
+      <emphasis>ixoff</emphasis> -- if 0, total index is controlled directly by <emphasis>xndx,</emphasis> ie. the indexing starts from the start of the table. If non-zero, start indexing from somewhere else in the table. Value must be positive and less than the table length (<emphasis>ixmode</emphasis> = 0) or less than 1 (<emphasis>ixmode</emphasis> not equal to 0). Default is 0.
+    </para>
+
+    <para>
+      <emphasis>iwrap</emphasis> -- if <emphasis>iwrap</emphasis> = 0, <emphasis>Limit mode</emphasis>: when total index is below 0, then final index is 0.Total index above table length results in a final  index of the table length - high out of range total indexes stick at the upper limit of the table. If <emphasis>iwrap</emphasis> not equal to 0, <emphasis>Wrap mode</emphasis>: total index is wrapped  modulo the table length so that all total indexes map into the table. For instance, in a table of length 8, <emphasis>xndx</emphasis> = 5 and <emphasis>ixoff</emphasis> = 6 gives a total index of 11, which wraps to a final  index of 3. Default is 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kndx</emphasis> -- Index into table, either a positive number range matching the table length (<emphasis>ixmode</emphasis> = 0) or a 0 to 1 range (<emphasis>ixmode</emphasis> not equal to 0).
+    </para>
+
+    <para>
+      <emphasis>xndx</emphasis> -- matching the table length (<emphasis>ixmode</emphasis> = 0) or a 0 to 1 range (<emphasis>ixmode</emphasis> not equal to 0)
+    </para>
+
+    <para>
+      <emphasis>kfn</emphasis> -- Table number. Must be &gt;= 1. Floats are rounded down to an integer.  If a table number does not point to a valid table, or the table has not yet been loaded (<link linkend="GEN01"><citetitle>GEN01</citetitle></link>) then an error will result and the instrument will be de-activated.
+    </para>
+
+    <caution>
+      <title>Caution with k-rate table numbers</title>
+      <para>
+        At k-rate, if a table number of &lt; 1 is given, or the table number points to a non-existent table, or to one which has a length of 0 (it is to be loaded from a file later) then an error will result and the instrument will be deactivated. <emphasis>kfn</emphasis> must be initialized at the appropriate rate using <link linkend="init"><citetitle>init</citetitle></link>. Attempting to load an i-rate value into <emphasis>kfn</emphasis> will result in an error.
+      </para>
+    </caution>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the tableikt opcode. It uses the file <ulink url="examples/tableikt.csd"><citetitle>tableikt.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the tableikt opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/tableikt.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Its output should include lines like these:
+      <screen>
+play table no: 8
+play table no: 7
+play table no: 6
+.....
+play table no: 2
+play table no: 1</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="tablekt"><citetitle>tablekt</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Robin Whittle</member>
+        <member>Australia</member>
+        <member>May 1997</member>
+      </simplelist>
+    </para>
+    <para>New in version 3.47</para>
+  </refsect1>
+</refentry>

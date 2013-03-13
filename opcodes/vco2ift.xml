@@ -1,0 +1,99 @@
+
+<refentry id="vco2ift">
+<indexterm id="IndexVco2ift"><primary>vco2ift</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Dynamic Spectrum Oscillators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vco2ift</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>vco2ift</refname>
+    <refpurpose>
+      Returns a table number at i-time for a given oscillator frequency and wavform.
+          </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>vco2ift</emphasis> is the same as <link linkend="vco2ft"><citetitle>vco2ft</citetitle></link>, but works at i-time. It is suitable for use with opcodes that expect an i-rate table number (for example, <link linkend="oscili"><citetitle>oscili</citetitle></link>).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ifn <command>vco2ift</command> icps, iwave [, inyx]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifn</emphasis> -- the ftable number.
+    </para>
+
+    <para>
+      <emphasis>icps</emphasis> --  frequency in Hz. Zero and negative values are allowed. However, if the absolute value exceeds <link linkend="sr"><citetitle>sr</citetitle></link>/2 (or <emphasis>sr</emphasis> * <emphasis>inyx</emphasis>), the selected table will contain silence.
+    </para>
+
+    <para>
+      <emphasis>iwave</emphasis> -- the waveform for which table number is to be selected. Allowed values are:
+        <itemizedlist>
+          <listitem><para>0: sawtooth</para></listitem>
+          <listitem><para>1: 4 * x * (1 - x)   (integrated sawtooth)</para></listitem>
+          <listitem><para>2: pulse (not normalized)</para></listitem>
+          <listitem><para>3: square wave</para></listitem>
+          <listitem><para>4: triangle</para></listitem>
+        </itemizedlist>
+    </para>
+
+    <para>
+      Additionally, negative <emphasis>iwave</emphasis> values select user defined waveforms (see also <link linkend="vco2init"><citetitle>vco2init</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis>inyx</emphasis> (optional, default=0.5) -- bandwidth of the generated waveform, as percentage (0 to 1) of the sample rate. The expected range is 0 to 0.5 (i.e. up to <link linkend="sr"><citetitle>sr</citetitle></link>/2), other values are limited to the allowed range.
+    </para>
+
+    <para>
+      Setting <emphasis>inyx</emphasis> to 0.25 (<emphasis>sr</emphasis>/4), or 0.3333 (<emphasis>sr</emphasis>/3) can produce a <quote>fatter</quote> sound in some cases, although it is more likely to reduce quality.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the vco2ift opcode. It uses the file <ulink url="examples/vco2ift.csd"><citetitle>vco2ift.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the vco2ift opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+        <xi:include href="examples-xml/vco2ift.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Its output should include a line like these:
+      <screen>
+instr 1:  ifn = 22.000
+instr 1:  ifn = 8.000
+instr 1:  ifn = 3.000
+      </screen>
+    </para>
+    <para>
+      See the example for the <link linkend="vco2"><citetitle>vco2</citetitle></link> opcode too.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="vco2ft"><citetitle>vco2ft</citetitle></link>,
+      <link linkend="vco2init"><citetitle>vco2init</citetitle></link>, and
+      <link linkend="vco2"><citetitle>vco2</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &nameistvan;</para>
+    <para>New in version 4.22</para>
+  </refsect1>
+</refentry>

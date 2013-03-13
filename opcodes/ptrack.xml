@@ -1,0 +1,84 @@
+
+<refentry id="ptrack">
+  <indexterm id="Indexptrack"><primary>ptrack</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ptrack</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ptrack</refname>
+    <refpurpose>
+      Tracks the pitch of a signal.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>ptrack</emphasis> takes an input signal, splits it into <emphasis>ihopsize</emphasis> blocks and using a STFT method, extracts an estimated pitch for its fundamental frequency as well as estimating the total amplitude of the signal in dB, relative to full-scale (0dB). The method implies an analysis window size of 2*<emphasis>ihopsize</emphasis> samples (overlaping by 1/2 window), which has to be a power-of-two, between 128 and 8192 (hopsizes between 64 and 4096). Smaller windows will give better time precision, but worse frequency accuracy (esp. in low fundamentals).This opcode is based on an original algorithm by M. Puckette.
+      </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kcps, kamp <command>ptrack</command> asig, ihopsize[,ipeaks]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ihopsize</emphasis> -- size of the analysis 'hop', in samples, required to be power-of-two (min 64, max 4096). 
+      This is the period between measurements.
+    </para>
+
+    <para>
+      <emphasis>ipeaks</emphasis>, <emphasis>ihi</emphasis> -- number of spectral peaks to use in the analysis, defaults to 20 (optional)
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kcps</emphasis> -- estimated pitch in Hz.
+    </para>
+
+    <para>
+      <emphasis>kamp</emphasis> -- estimated amplitude in dB relative to full-scale (0dB) (ie. always &lt;= 0).
+    </para>
+
+    <para>
+      <emphasis>ptrack</emphasis> analyzes the input signal, <emphasis>asig</emphasis>, 
+      to give a pitch/amplitude pair of outputs, for the fundamental of a monophonic signal. 
+      The output is updated every <emphasis>sr/ihopsize</emphasis> seconds.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the ptrack opcode. This example uses the files <ulink url="examples/ptrack.csd"><citetitle>ptrack.csd</citetitle></ulink>.
+      <example>
+            <title>Example of the ptrack opcode.</title>
+
+            See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> 
+            and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.
+            <xi:include href="examples-xml/ptrack.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>NUI, Maynooth.</member>
+        <member>Maynooth, Ireland</member>
+        <member>March, 2007</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 5.05</para>
+  </refsect1>
+</refentry>

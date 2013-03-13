@@ -1,0 +1,108 @@
+
+<refentry id="pvsftw">
+<indexterm id="IndexPvsftw"><primary>pvsftw</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsftw</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>pvsftw</refname>
+    <refpurpose>
+      Writes amplitude and/or frequency data to function tables.
+          </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Writes amplitude and/or frequency data to function tables.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kflag <command>pvsftw</command> fsrc, ifna [, ifnf]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifna</emphasis> -- A table, at least inbins in size, that stores amplitude data. Ignored if ifna  = 0
+    </para>
+
+    <para>
+      <emphasis>ifnf</emphasis> -- A table, at least inbins in size, that stores frequency data. Ignored if ifnf = 0
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kflag</emphasis> -- A flag that has the value of 1 when new data is available, 0 otherwise.
+    </para>
+
+    <para>
+      <emphasis>fsrc</emphasis> -- a PVOC-EX formatted source.
+    </para>
+
+    <para>
+      Enables the contents of <emphasis>fsrc</emphasis> to be exchanged with function tables, for custom processing. Except when the frame overlap equals <emphasis>ksmps</emphasis> (which will generally not be the case), the frame data is not updated each control period. The data in <emphasis>ifna</emphasis>, <emphasis>ifnf</emphasis> should only be processed when <emphasis>kflag</emphasis> is set to 1. To process only frequency data, set <emphasis>ifna</emphasis> to zero.
+    </para>
+
+    <para>
+      As the functions tables are required only to store data from <emphasis>fsrc</emphasis>, there is no advantage in defining then in the score. They should generally be created in the instrument using <link linkend="ftgen"><citetitle>ftgen</citetitle></link>.
+    </para>
+
+    <para>
+      By exporting amplitude data, say, from one fsig and importing it into another, basic cross-synthesis (as in <link linkend="pvscross"><citetitle>pvscross</citetitle></link>) can be performed, with the option to modify the data beforehand using the table manipulation opodes.
+    </para>
+
+    <para>
+      Note that the format data in the source fsig is not written to the tables. This therefore offers a means of transferring amplitude and frequency data between non-identical fsigs. Used this way, these opcodes become potentially pathological, and can be relied upon to produce unexpected  results. In such cases, resynthesis using <link linkend="pvsadsyn"><citetitle>pvsadsyn</citetitle></link> would almost certainly be required.
+    </para>
+
+    <para>
+      To perform a straight copy from one fsig to another one of identical format, the conventional assignment syntax can be used:
+
+      <literallayout> 
+fsig1 = fsig2
+      </literallayout> 
+ 
+      It is not necessary to use function tables in this case.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the pvsftw opcode. It uses the file <ulink url="examples/pvsftw.csd"><citetitle>pvsftw.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the pvsftw opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/pvsftw.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="pvsftr"><citetitle>pvsftr</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namerichard;</member>
+        <member>August 2001 </member>
+      </simplelist>
+    </para>
+
+    <para>New in version 4.13</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,68 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Credits: Adapted by Michael Gogins </emphasis>
+<emphasis role="comment">; from code by David Horowitz and Lian Cheung. </emphasis>
+<emphasis role="comment">; The "--displays" option is required in order for </emphasis>
+<emphasis role="comment">; the Pianoteq GUI to dispatch events and display properly.</emphasis>
+-m3 --displays -odac
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="ohdr">sr</emphasis>     <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis>  <emphasis role="op">=</emphasis> 20
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+                <emphasis role="comment">; Load the Pianoteq into memory.</emphasis>
+gipianoteq      <emphasis role="opc">vstinit</emphasis>      "C<emphasis role="op">:</emphasis>\\Program Files\\Steinberg\\VstPlugins\\Pianoteq 3.0 Trial\\Pianoteq30 Trial.dll", 1
+                
+                <emphasis role="comment">; Print information about the Pianoteq, such as parameter names and numbers.</emphasis>
+                <emphasis role="opc">vstinfo</emphasis>      gipianoteq
+                
+                <emphasis role="comment">; Open the Pianoteq's GUI.</emphasis>
+                <emphasis role="opc">vstedit</emphasis>      gipianoteq
+
+                <emphasis role="comment">; Send notes from the score to the Pianoteq.</emphasis>
+                <emphasis role="oblock">instr</emphasis> 1 
+                <emphasis role="comment">; MIDI channels are numbered starting at 0.</emphasis>
+                <emphasis role="comment">; p3 always contains the duration of the note.</emphasis>
+                <emphasis role="comment">; p4 contains the MIDI key number (pitch),</emphasis>
+                <emphasis role="comment">; p5 contains the MIDI velocity number (loudness),</emphasis>
+imidichannel    <emphasis role="opc">init</emphasis>         0
+                <emphasis role="opc">vstnote</emphasis>      gipianoteq, imidichannel, p4, p5, p3
+                <emphasis role="oblock">endin</emphasis>
+
+                <emphasis role="comment">; Send parameter changes to the Pianoteq.</emphasis>
+                <emphasis role="oblock">instr</emphasis> 2 
+                <emphasis role="comment">; p4 is the parameter number.</emphasis>
+                <emphasis role="comment">; p5 is the parameter value.</emphasis>
+                <emphasis role="opc">vstparamset</emphasis>  gipianoteq, p4, p5 
+                <emphasis role="oblock">endin</emphasis>
+
+                <emphasis role="comment">; Send audio from the Pianoteq to the output.</emphasis>
+                <emphasis role="oblock">instr</emphasis> 3 
+ablankinput     <emphasis role="opc">init</emphasis>         0
+aleft, aright   <emphasis role="opc">vstaudio</emphasis>     gipianoteq, ablankinput, ablankinput
+                <emphasis role="opc">outs</emphasis>         aleft, aright
+                <emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="comment">; Turn on the instrument that receives audio from the Pianoteq indefinitely.</emphasis>
+<emphasis role="stamnt">i</emphasis> 3 0 -1
+<emphasis role="comment">; Send parameter changes to Pianoteq before sending any notes.</emphasis>
+<emphasis role="comment">; NOTE: All parameters must be between 0.0 and 1.0.</emphasis>
+<emphasis role="comment">; Length of piano strings:</emphasis>
+<emphasis role="stamnt">i</emphasis> 2 0 1 33 0.5
+<emphasis role="comment">; Hammer noise:</emphasis>
+<emphasis role="stamnt">i</emphasis> 2 0 1 25 0.1
+<emphasis role="comment">; Send a C major 7th arpeggio to the Pianoteq.</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 1 10 60 76
+<emphasis role="stamnt">i</emphasis> 1 2 10 64 73
+<emphasis role="stamnt">i</emphasis> 1 3 10 67 70 
+<emphasis role="stamnt">i</emphasis> 1 4 10 71 67
+<emphasis role="comment">; End the performance, leaving some time </emphasis>
+<emphasis role="comment">; for the Pianoteq to finish sending out its audio,</emphasis>
+<emphasis role="comment">; or for the user to play with the Pianoteq virtual keyboard.</emphasis>
+<emphasis role="stamnt">e</emphasis> 20
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

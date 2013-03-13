@@ -1,0 +1,47 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in   No messages  MIDI in</emphasis>
+-odac           -iadc     -d         -M0  <emphasis role="comment">;;;RT audio I/O with MIDI in</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis>      <emphasis role="op">=</emphasis>       44100
+<emphasis role="ohdr">ksmps</emphasis>   <emphasis role="op">=</emphasis>       10
+<emphasis role="ohdr">nchnls</emphasis>  <emphasis role="op">=</emphasis>       2
+
+<emphasis role="comment">; Set MIDI channel 1 to play instr 1.</emphasis>
+        <emphasis role="ohdr">massign</emphasis> 1, 1
+
+                <emphasis role="oblock">instr</emphasis>   1
+
+<emphasis role="comment">; Returns MIDI note number - an integer in range (0-127)</emphasis>
+iNum    <emphasis role="opc">notnum</emphasis>
+
+<emphasis role="comment">; Convert MIDI note number to Hz</emphasis>
+iHz     <emphasis role="op">=</emphasis> (440.0<emphasis role="op">*</emphasis><emphasis role="opc">exp</emphasis>(<emphasis role="opc">log</emphasis>(2.0)<emphasis role="op">*</emphasis>((iNum)<emphasis role="op">-</emphasis>69.0)<emphasis role="op">/</emphasis>12.0))
+
+<emphasis role="comment">; Generate audio by indexing a table; fixed amplitude.</emphasis>
+aosc    <emphasis role="opc">oscil</emphasis>   10000, iHz, 1
+
+<emphasis role="comment">; Since there is no enveloping, there will be clicks.</emphasis>
+        <emphasis role="opc">outs</emphasis>    aosc, aosc
+
+                <emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="comment">; Generate a Sine-wave to be indexed at audio rate</emphasis>
+<emphasis role="comment">;  by the oscil opcode.</emphasis>
+<emphasis role="stamnt">f</emphasis>1      0       16384   10      1
+
+<emphasis role="comment">; Keep the score "open" for 1 hour so that MIDI</emphasis>
+<emphasis role="comment">;  notes can allocate new note events, arbitrarily.</emphasis>
+<emphasis role="stamnt">f</emphasis>0      3600
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

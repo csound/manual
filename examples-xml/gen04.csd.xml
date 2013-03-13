@@ -1,0 +1,54 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac  <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o gen04.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100 
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32 
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2 
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1 
+
+gisine   <emphasis role="ohdr">ftgen</emphasis> 0, 0, 16384, 10, 1						<emphasis role="comment">;sine wave</emphasis>
+
+<emphasis role="oblock">instr</emphasis>   1
+
+ihertz <emphasis role="op">=</emphasis> <emphasis role="opc">cpspch</emphasis>(p4)
+ipkamp <emphasis role="op">=</emphasis> p5
+iwsfn  <emphasis role="op">=</emphasis> p6									<emphasis role="comment">;waveshaping function	</emphasis>
+inmfn  <emphasis role="op">=</emphasis> p7									<emphasis role="comment">;normalization function 								</emphasis>
+agate   <emphasis role="opc">linen</emphasis>   1, .01, p3, .1            					<emphasis role="comment">;overall amp envelope</emphasis>
+kctrl   <emphasis role="opc">linen</emphasis>  	.9, 2, p3, 2							<emphasis role="comment">;waveshaping index control</emphasis>
+aindex  <emphasis role="opc">poscil</emphasis>  kctrl<emphasis role="op">/</emphasis>2, ihertz, gisine						<emphasis role="comment">;sine wave to be distorted</emphasis>
+asignal <emphasis role="opc">tablei</emphasis>  .5<emphasis role="op">+</emphasis>aindex, iwsfn, 1						<emphasis role="comment">;waveshaping</emphasis>
+knormal <emphasis role="opc">tablei</emphasis>  1<emphasis role="op">/</emphasis>kctrl, inmfn , 1						<emphasis role="comment">;amplitude normalization</emphasis>
+        <emphasis role="opc">outs</emphasis>    asignal<emphasis role="op">*</emphasis>knormal<emphasis role="op">*</emphasis>ipkamp<emphasis role="op">*</emphasis>agate, asignal<emphasis role="op">*</emphasis>knormal<emphasis role="op">*</emphasis>ipkamp<emphasis role="op">*</emphasis>agate
+           
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis>1 0 64 21 6	<emphasis role="comment">;Gaussian (random) distribution</emphasis>
+<emphasis role="stamnt">f</emphasis>2 0 33 4 1 1	<emphasis role="comment">;normalizing function with midpoint bipolar offset</emphasis>
+
+<emphasis role="stamnt">s</emphasis>
+<emphasis role="comment">;	st	dur	pch	amp   wsfn inmfn</emphasis>
+<emphasis role="stamnt">i</emphasis>1      0       4      6.00    .7      1     2
+<emphasis role="stamnt">i</emphasis>1      4       .      7.00    .
+<emphasis role="stamnt">i</emphasis>1      8       .      8.00    .
+<emphasis role="comment">;-------------------------------------------------------------------------------------</emphasis>
+<emphasis role="stamnt">f</emphasis>3 0 1025 13 1 1 0 5 0 5 0 10	<emphasis role="comment">;Chebyshev algorithm</emphasis>
+<emphasis role="stamnt">f</emphasis>4 0 513 4 3 1			<emphasis role="comment">;normalizing function with midpoint bipolar offset</emphasis>
+<emphasis role="stamnt">s</emphasis>
+<emphasis role="comment">;	st	dur	pch	amp   wsfn inmfn</emphasis>
+<emphasis role="stamnt">i</emphasis>1      0       4      6.00    .9      3     4
+<emphasis role="stamnt">i</emphasis>1      4       .      7.00    .
+<emphasis role="stamnt">i</emphasis>1      8       .      8.00    .
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

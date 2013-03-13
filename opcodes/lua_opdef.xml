@@ -1,0 +1,157 @@
+<refentry id="lua_opdef">
+    <indexterm id="Indexlua_opdef">
+        <primary>
+            lua_opdef
+        </primary>
+    </indexterm>
+    <refentryinfo><title>Lua Opcodes</title></refentryinfo>
+    <refmeta>
+        <refentrytitle>
+            lua_opdef
+        </refentrytitle>
+    </refmeta>
+
+    <refnamediv>
+        <refname>
+            lua_opdef
+        </refname>
+        <refpurpose>
+             Define an opcode in Lua at i-rate. The opcode can take any 
+             number of output and/or input arguments of any type. 
+        </refpurpose>
+    </refnamediv>
+
+    <refsect1>
+        <title>
+            Description
+        </title>
+        <para>
+            Define an opcode in Lua at i-rate. The opcode can take any 
+            number of output and/or input arguments of any type. 
+            The code is executed at initialization time, typically from the 
+            orchestra header. Global and local variables, functions, 
+            tables, and classes may be declared and defined. Objects defined 
+            at global Lua scope remain in scope throughout the performance, 
+            and are visible to any other Lua code in the same Csound thread.
+        </para>
+        <note>
+            <para>
+               By default, all objects defined in Lua are defined at global 
+               scope. In order to ensure that objects are confined to their 
+               own block of code, that is to ensure that the object is visible 
+               only in lexical scope, the object must be declared as local. 
+               This is the feature of Lua that beginners tend to find the most 
+               troublesome.
+            </para> 
+            <para>
+               Another thing to look out for is that Lua arrays use 1-based 
+               indexing, not the 0-based indexing used in C and many other 
+               programming languages.
+            </para>
+        </note>
+    </refsect1>
+
+    <refsect1>
+        <title>
+            Syntax
+        </title>
+        <synopsis><command>lua_opdef</command> Sname, Sluacode</synopsis>
+    </refsect1>
+
+    <refsect1>
+        <title>
+            Initialization
+        </title>
+        <para>
+            <emphasis>Sname</emphasis> -- The name of the opcode.
+        </para>
+        <para>
+            <emphasis>Sluacode</emphasis> -- A block of Lua code, of any 
+            length. Multi-line blocks may be enclosed in double braces
+            (i.e. <literal>{{ }}</literal>). This code is 
+            evaluated once at initialization time.  
+        </para>
+        <para>
+            The Lua code must define all functions that will be called from Csound,
+            using the following naming convention, where opcodename
+            stands for the actual opcode name:
+        </para>        
+        <itemizedlist>
+            <listitem><simpara>
+                <literal>opcodename_init</literal> for the i-rate opcode subroutine.
+            </simpara></listitem>
+            <listitem><simpara>
+                <literal>opcodename_kontrol</literal> for the k-rate opcode subroutine.
+            </simpara></listitem>
+            <listitem><simpara>
+                <literal>opcodename_audio</literal> for the a-rate opcode subroutine.
+            </simpara></listitem>
+            <listitem><simpara>
+                <literal>opcodename_noteoff</literal> for the note-off subroutine.
+            </simpara></listitem>
+        </itemizedlist>
+        <para>
+            Each of these Lua functions will receive three lightuserdata
+            (i.e. pointer) arguments: the CSOUND object, the opcode instance,
+            and a pointer to the opcode arguments, which the Lua code must be type cast
+            to a LuaJIT FFI ctype structure containing the opcode output arguments,
+            input arguments, and state variables. Using LuaJIT FFI, the elements of
+            this structure will be accessible as though they were Lua types.
+        </para>
+        <para>
+            Each of these Lua functions must return 0 for success
+            or 1 for failure.
+        </para>
+        <para>
+            The Lua functions may do absolutely anything, although of
+            course if real-time performance is expected, care must be
+            taken to disable Lua garbage collection and observe other
+            recommendations for real-time code.
+        </para>
+    </refsect1>
+
+    <refsect1>
+        <!--To add examples, create the csd file in the examples directory, then run:-->
+        <!--python csd2docbook.py -f newopcodename.csd-->
+        <!--to generate the xml highlighted version used below-->
+        <title>
+            Example
+        </title>
+        <para>
+            Here is an example of a Lua opcode, implementing a Moog 
+            ladder filter. For purposes of comparison, a user-defined 
+            opcode and the native Csound opcode that compute the same 
+            sound using the same algorithm also are shown, and timed. 
+            The example uses the file <ulink url="examples/luamoog.csd">
+            <citetitle>luamoog.csd</citetitle></ulink>.
+            <example>
+                <title>
+                    Example of a Lua opcode.
+                </title>
+                <xi:include href="examples-xml/luamoog.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+            </example>
+        </para>
+    </refsect1>
+
+    <refsect1>
+        <title>
+            See Also
+        </title>
+        <para>
+            <link linkend="lua_exec"><citetitle>lua_exec</citetitle></link>, 
+            <link linkend="lua_opcall"><citetitle>lua_opcall</citetitle></link>. 
+        </para>
+    </refsect1>
+    
+    <refsect1>
+        <title>
+            Credits
+        </title>
+        <para>
+            By: &namemichael; 2011
+        </para>
+        <para>
+            New in Csound version 5.13.2
+        </para>
+    </refsect1>
+</refentry>

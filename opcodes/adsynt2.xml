@@ -1,0 +1,92 @@
+﻿
+<refentry id="adsynt2">
+<indexterm id="IndexAdsynt2"><primary>adsynt2</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Additive Synthesis/Resynthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>adsynt2</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>adsynt2</refname>
+    <refpurpose>
+      Performs additive synthesis with an arbitrary number of partials -not necessarily harmonic- with interpolation.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Performs additive synthesis with an arbitrary number of partials, not necessarily harmonic. (see <link linkend="adsynt"><citetitle>adsynt</citetitle></link> for detailed manual)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ar <command>adsynt2</command> kamp, kcps, iwfn, ifreqfn, iampfn, icnt [, iphs]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iwfn</emphasis> -- table containing a waveform, usually a sine. Table values are not interpolated for performance reasons, so larger tables provide better quality.
+    </para>
+
+    <para>
+      <emphasis>ifreqfn</emphasis> -- table containing frequency values for each partial. <emphasis>ifreqfn</emphasis> may contain beginning frequency values for each partial, but is usually used for generating parameters at runtime with <emphasis>tablew</emphasis>. Frequencies must be relative to <emphasis>kcps</emphasis>. Size must be at least <emphasis>icnt</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>iampfn</emphasis> -- table containing amplitude values for each partial. <emphasis>iampfn</emphasis> may contain beginning amplitude values for each partial, but is usually used for generating parameters at runtime with <emphasis>tablew</emphasis>. Amplitudes must be relative to <emphasis>kamp</emphasis>. Size must be at least <emphasis>icnt</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>icnt</emphasis> -- number of partials to be generated
+    </para>
+
+    <para>
+      <emphasis>iphs</emphasis> -- initial phase of each oscillator, if <emphasis>iphs</emphasis> = -1, initialization is skipped. If <emphasis>iphs</emphasis> &gt; 1, all phases will be initialized with a random value.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kamp</emphasis> -- amplitude of note
+    </para>
+
+    <para>
+      <emphasis>kcps</emphasis> -- base frequency of note. Partial frequencies will be relative to <emphasis>kcps</emphasis>.
+    </para>
+
+    <para>
+       Frequency and amplitude of each partial is given in the two tables provided. The purpose of this opcode is to have an instrument generate synthesis parameters at k-rate and write them to global parameter tables with the <emphasis>tablew</emphasis> opcode.
+    </para>
+    <para>
+    <emphasis>adsynt2</emphasis> is identical to <emphasis>adsynt</emphasis> (by Peter Neubäcker), except it provides linear interpolation for amplitude envelopes of each partial. It is a bit slower than <emphasis>adsynt</emphasis>, but interpolation higly improves sound quality in fast amplitude envelope transients when <emphasis>kr</emphasis> &lt; <emphasis>sr</emphasis> (i.e. when <emphasis>ksmps</emphasis> &gt; 1). No interpolation is provided for pitch envelopes, since in this case sound quality degradation is not so evident even with high values of <emphasis>ksmps</emphasis>. It is not recommended when <emphasis>kr</emphasis> = <emphasis>sr</emphasis>, in this case <emphasis>adsynt</emphasis> is better (since it is faster).
+    </para>
+  </refsect1>
+  
+   <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the adsynt2 opcode. It uses the file <ulink url="examples/adsynt2.csd"><citetitle>adsynt2.csd</citetitle></ulink>. These two instruments perform additive synthesis. The output of each sounds like a Tibetan bowl. The first one is static, as parameters are only generated at init-time. In the second one, parameters are continuously changed.
+
+      <example>
+        <title>Example of the adsynt2 opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/adsynt2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>Written by &namegabriel;.</para>
+    <para>New in Csound 5 (Previously available only on CsoundAV)</para>
+  </refsect1>
+</refentry>

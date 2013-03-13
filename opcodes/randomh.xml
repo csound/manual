@@ -1,0 +1,136 @@
+
+<refentry id="randomh">
+<indexterm id="IndexRandomh"><primary>randomh</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Random (Noise) Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>randomh</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>randomh</refname>
+    <refpurpose>
+      Generates random numbers with a user-defined limit and holds them for a period of time. 
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Generates random numbers with a user-defined limit and holds them for a period of time. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>randomh</command> kmin, kmax, xcps [,imode] [,ifirstval]</synopsis>
+
+    <synopsis>kres <command>randomh</command> kmin, kmax, kcps [,imode] [,ifirstval]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>imode</emphasis> (optional, default=0) -- generation mode of the
+      first output value (see below)
+    </para>
+    
+    <para>
+      <emphasis>ifirstval</emphasis> (optional, default=0) -- first output value
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kmin</emphasis> -- minimum range limit
+    </para>
+
+    <para>
+      <emphasis>kmax</emphasis> -- maximum range limit
+    </para>
+
+    <para>
+      <emphasis>kcps, xcps</emphasis> -- rate of random break-point generation
+    </para>
+
+    <para>
+      The <emphasis>randomh</emphasis> opcode is similar to <link linkend="randh"><citetitle>randh</citetitle></link> but allows the user to set arbitrary minimum and maximum values.
+    </para>
+    
+    <para>
+      When <emphasis>imode</emphasis> = 0 (the default), the <emphasis>kmin</emphasis>
+      argument value is outputted during <emphasis>1/kcps</emphasis> (resp.
+      <emphasis>1/xcps</emphasis>) seconds at the beginning of the note. Then,
+      the normal process takes place with a new random number generated and held
+      every <emphasis>1/kcps</emphasis> (resp. <emphasis>1/xcps</emphasis>) seconds.
+    </para>
+    
+    <para>
+      When <emphasis>imode</emphasis> = 2, the <emphasis>ifirstval</emphasis>
+      argument value is outputted during <emphasis>1/kcps</emphasis> (resp.
+      <emphasis>1/xcps</emphasis>) seconds at the beginning of the note. Then,
+      the normal process takes place with a new random number generated and held
+      every <emphasis>1/kcps</emphasis> (resp. <emphasis>1/xcps</emphasis>) seconds.
+    </para>
+    
+    <para>
+      When <emphasis>imode</emphasis> = 3, the generation process begins with a
+      random value from the initialization time.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the randomh opcode. It uses the file <ulink url="examples/randomh.csd"><citetitle>randomh.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the randomh opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/randomh.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Its output should include lines like this:
+      <screen>
+Mode: 0
+ i1   220.00000
+ i1   396.26079
+ i1   240.75446
+ i1   364.24577
+    ...
+
+Mode: 2
+ i1   330.00000
+ i1   416.50935
+ i1   356.11619
+ i1   433.59324
+    ...
+
+Mode: 3
+ i1   261.17741
+ i1   402.00891
+ i1   393.86592
+ i1   307.19839
+    ...</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="randh"><citetitle>randh</citetitle></link>,
+      <link linkend="random"><citetitle>random</citetitle></link>,
+      <link linkend="randomi"><citetitle>randomi</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namegabriel;</para>
+    <para>Arguments <emphasis>imode</emphasis> and <emphasis>ifirstval</emphasis>
+    added by &namepinot;, Jan. 2011, after a discussion with Peiman Khosravi on
+    the csnd list.</para>
+    <para>Example written by &namekevin;, adapted for new args by &namepinot;.</para>
+  </refsect1>
+</refentry>

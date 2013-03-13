@@ -1,0 +1,153 @@
+
+<refentry id="randomi">
+<indexterm id="IndexRandomi"><primary>randomi</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Random (Noise) Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>randomi</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>randomi</refname>
+    <refpurpose>
+      Generates a user-controlled random number series with interpolation between each new number.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Generates a user-controlled random number series with interpolation between each new number.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>randomi</command> kmin, kmax, xcps [,imode] [,ifirstval]</synopsis>
+
+    <synopsis>kres <command>randomi</command> kmin, kmax, kcps [,imode] [,ifirstval]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>imode</emphasis> (optional, default=0) -- first interpolation cycle mode (see below)
+    </para>
+    
+    <para>
+      <emphasis>ifirstval</emphasis> (optional, default=0) -- first output value
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kmin</emphasis> -- minimum range limit
+    </para>
+
+    <para>
+      <emphasis>kmax</emphasis> -- maximum range limit
+    </para>
+
+    <para>
+      <emphasis>kcps, xcps</emphasis> -- rate of random break-point generation
+    </para>
+
+    <para>
+      The <emphasis>randomi</emphasis> opcode is similar to <link linkend="randi"><citetitle>randi</citetitle></link> but allows the user to set arbitrary minimum and maximum values.
+    </para>
+    
+    <para>
+      When <emphasis>imode</emphasis> = 0 (the default), the <emphasis>kmin</emphasis>
+      argument value is outputted during <emphasis>1/kcps</emphasis> (resp.
+      <emphasis>1/xcps</emphasis>) seconds at the beginning of the note, before
+      the first random number is generated. Then the normal interpolation process
+      takes place, first between <emphasis>kmin</emphasis> and the first random
+      number generated, and then between successive generated random numbers,
+      each interpolation cycle having a duration of <emphasis>1/kcps</emphasis>
+      (resp. <emphasis>1/xcps</emphasis>) seconds.
+    </para>
+    
+    <para>
+      When <emphasis>imode</emphasis> = 1, a random number is generated at
+      initialization and interpolation begins immediately between the
+      <emphasis>kmin</emphasis> argument value and that random number.
+    </para>
+    
+    <para>
+      When <emphasis>imode</emphasis> = 2, a random number is generated at
+      initialization and interpolation begins immediately between the
+      <emphasis>ifirstval</emphasis> argument value and that random number.
+    </para>
+    
+    <para>
+      When <emphasis>imode</emphasis> = 3, two random numbers are generated
+      at initialization as breakpoints for the first interpolation cycle.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the randomi opcode. It uses the file <ulink url="examples/randomi.csd"><citetitle>randomi.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the randomi opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/randomi.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Its output should include lines like this:
+      <screen>
+Mode: 0
+k1 = 220.000000
+k1 = 220.000000
+k1 = 220.146093
+k1 = 246.827703
+k1 = 395.595775
+    ...
+
+Mode: 1
+k1 = 220.000000
+k1 = 224.325329
+k1 = 274.370074
+k1 = 343.216049
+k1 = 414.324347
+    ...
+
+Mode: 2
+k1 = 330.000000
+k1 = 292.628171
+k1 = 334.519777
+k1 = 290.610602
+k1 = 394.905366
+    ...
+
+Mode: 3
+k1 = 360.727674
+k1 = 431.680412
+k1 = 380.625254
+k1 = 289.267139
+k1 = 303.038109
+    ...</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="randi"><citetitle>randi</citetitle></link>,
+      <link linkend="random"><citetitle>random</citetitle></link>,
+      <link linkend="randomh"><citetitle>randomh</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namegabriel;</para>
+    <para>Arguments <emphasis>imode</emphasis> and <emphasis>ifirstval</emphasis>
+    added by &namepinot;, Jan. 2011, after a discussion with Peiman Khosravi on
+    the csnd list.</para>
+    <para>Example written by &namekevin;, adapted for new args by &namepinot;.</para>
+  </refsect1>
+</refentry>

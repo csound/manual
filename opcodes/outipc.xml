@@ -1,0 +1,103 @@
+
+<refentry id="outipc">
+<indexterm id="IndexOutipc"><primary>outipc</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Output</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>outipc</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>outipc</refname>
+
+    <refpurpose>
+      Sends MIDI program change messages at i-rate
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Sends MIDI program change messages at i-rate
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>outipc</command> ichn, iprog, imin, imax</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ichn</emphasis> -- MIDI channel number (1-16)
+    </para>
+
+    <para>
+      <emphasis>iprog</emphasis> -- program change number in floating point
+    </para>
+
+    <para>
+      <emphasis>imin</emphasis> -- minimum floating point value (converted in MIDI integer value 0)
+    </para>
+
+    <para>
+      <emphasis>imax</emphasis> -- maximum floating point value (converted in MIDI integer value 127 (7 bit))
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+
+    <para>
+     <emphasis>outipc</emphasis> (i-rate program change output) sends program change messages. It works only with MIDI instruments which recognize them. It can drive a different value of a parameter for each note currently active. 
+    </para>
+
+    <para>
+      It can scale an i-value floating-point argument according to the <emphasis>imin</emphasis> and <emphasis>imax</emphasis> values. For example, set <emphasis>imin</emphasis> = 1.0 and <emphasis>imax</emphasis> = 2.0. When the <emphasis>ivalue</emphasis> argument receives a 2.0 value, the opcode will send a 127 value to the MIDI OUT device. When the <emphasis>ivalue</emphasis> argument receives a 1.0 value, it will send a 0 value. i-rate opcodes send their message once during instrument initialization.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the outipc opcode. It uses the file <ulink url="examples/outipc.csd"><citetitle>outipc.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the outipc opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/outipc.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="outiat"><citetitle>outiat</citetitle></link>,
+      <link linkend="outic14"><citetitle>outic14</citetitle></link>,
+      <link linkend="outic"><citetitle>outic</citetitle></link>,
+      <link linkend="outipat"><citetitle>outipat</citetitle></link>,
+      <link linkend="outipb"><citetitle>outipb</citetitle></link>,
+      <link linkend="outkat"><citetitle>outkat</citetitle></link>,
+      <link linkend="outkc14"><citetitle>outkc14</citetitle></link>,
+      <link linkend="outkc"><citetitle>outkc</citetitle></link>,
+      <link linkend="outkpat"><citetitle>outkpat</citetitle></link>,
+      <link linkend="outkpb"><citetitle>outkpb</citetitle></link>,
+      <link linkend="outkpc"><citetitle>outkpc</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namegabriel;</member>
+        <member>Italy</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.47</para>
+    <para>Thanks goes to &namerasmus; for pointing out the correct MIDI channel and controller number ranges.</para>
+  </refsect1>
+</refentry>

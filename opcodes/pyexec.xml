@@ -1,0 +1,162 @@
+<refentry id="pyexec">
+<indexterm id="IndexPyExec"><primary>pyexec</primary></indexterm>
+  <refentryinfo><title>Python Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pyexec Opcodes</refentrytitle>
+  </refmeta>
+  
+  <refnamediv>
+    <refname>pyexec</refname>
+    <refpurpose>Execute a script from a file at k-time or i-time (i suffix).
+    </refpurpose>
+  </refnamediv>
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>pyexec</command> "filename"</synopsis>
+    <synopsis><command>pyexeci</command> "filename"</synopsis>
+    <synopsis><command>pylexec</command> "filename"</synopsis>
+    <synopsis><command>pylexeci</command> "filename"</synopsis>
+    <synopsis><command>pyexect</command> ktrigger, "filename"</synopsis>
+    <synopsis><command>plyexect</command> ktrigger, "filename"</synopsis>
+  </refsect1>
+  <refsect1>
+    <title>Description</title>
+    <para>Execute a script from a file at k-time or i-time (i
+      suffix).</para>
+    <para>This is not the same as calling the script with the <literal>system()</literal>
+      call, since the code is executed by the embedded interpreter.</para>
+    <para>The code contained in the specified file is executed in the
+      global environment for opcodes pyexec and pyexeci and in the private
+      environment for the opcodes pylexec and pylexeci.</para>
+    <para>These opcodes perform no message passing. However, since the
+      statement has access to the main namespace and the private namespace,
+      it can interact with objects previously created in that
+      environment.</para>
+    <para>The "local" version of the <emphasis>pyexec</emphasis> opcodes are useful when the
+      code ran by different instances of an instrument should not
+      interact.</para>
+  </refsect1>
+  <refsect1>
+    <title>Example of the pyexec Opcode Group</title>
+    <example>
+      <title>Orchestra (pyexec.orc)</title>
+<programlisting>
+<emphasis role="ohdr">sr</emphasis>=44100
+<emphasis role="ohdr">kr</emphasis>=4410
+<emphasis role="ohdr">ksmps</emphasis>=10
+<emphasis role="ohdr">nchnls</emphasis>=1
+
+<emphasis role="comment">;If you're not running CsoundAC you need the following line</emphasis>
+<emphasis role="comment">;to initialize the python interpreter</emphasis>
+<emphasis role="comment">;pyinit</emphasis>
+
+        <emphasis role="opc">pyruni</emphasis> "import random"
+
+        <emphasis role="opc">pyexeci</emphasis> "pyexec1.py"
+
+<emphasis role="oblock">instr</emphasis> 1
+
+        <emphasis role="opc">pyexec</emphasis>          "pyexec2.py"
+
+        <emphasis role="opc">pylexeci</emphasis>        "pyexec3.py"
+        <emphasis role="opc">pylexec</emphasis>         "pyexec4.py"
+
+<emphasis role="oblock">endin</emphasis></programlisting>
+
+</example>
+
+<example>
+
+<title>Score (pyexec.sco)</title>
+
+<programlisting>
+<emphasis role="stamnt">i</emphasis>1 0 0.01
+<emphasis role="stamnt">i</emphasis>1 0 0.01</programlisting>
+
+</example>
+
+<example>
+
+<title>The pyexec1.py Script</title>
+
+<programlisting>
+import time, os
+
+print
+print "Welcome to Csound!"
+
+try:
+    s = ', %s?' % os.getenv('USER')
+except:
+    s = '?'
+
+print 'What sound do you want to hear today%s' % s
+answer = raw_input()</programlisting>
+</example>
+<example>
+<title>The pyexec2.py script</title>
+<programlisting>
+print 'your answer is "%s"' % answer</programlisting>
+</example>
+<example>
+<title>The pyexec3.py script</title>
+<programlisting>
+message = 'a private random number: %f' % random.random()</programlisting>
+</example>
+<example>
+<title>The pyexec4.py script</title>
+
+<programlisting>
+print message</programlisting>
+</example>
+
+<para>If I run this example on my machine I get something like:</para>
+<screen>
+Using ../../csound.xmg
+Csound Version 4.19 (Mar 23 2002)
+Embedded Python interpreter version 2.2
+orchname:  pyexec.orc
+scorename: pyexec.sco
+sorting score ...
+        ... done
+orch compiler:
+11 lines read
+        instr   1       
+Csound Version 4.19 (Mar 23 2002)
+displays suppressed
+
+Welcome to Csound!
+What sound do you want to hear today, maurizio?</screen>
+<para>then I answer</para>
+<screen>
+a sound</screen>
+<para>then Csound continues with the normal performance</para>
+<screen>
+your answer is "a sound"
+a private random number: 0.884006
+new alloc for instr 1:
+your answer is "a sound"
+a private random number: 0.884006
+your answer is "a sound"
+a private random number: 0.889868
+your answer is "a sound"
+a private random number: 0.884006
+your answer is "a sound"
+a private random number: 0.889868
+your answer is "a sound"
+a private random number: 0.884006
+your answer is "a sound"
+...</screen>
+<para>In the same instrument a message is created in the private
+namespace and printed, appearing different for each instance.</para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Copyright (c) 2002 by Maurizio Umberto Puxeddu. All rights
+      reserved. Portions copyright (c) 2004 and 2005 by Michael Gogins. This
+      document has been updated Sunday 25 July 2004 and 1 February 2005 by
+      &namemichael;.</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,124 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in    No messages</emphasis>
+-odac           -iadc     -d     <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o syncphasor-CZresonance.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="comment">; by Anthony Kozar. February 2008</emphasis>
+<emphasis role="comment">; http://www.anthonykozar.net/</emphasis>
+
+<emphasis role="comment">; Imitation of the Casio CZ-series synthesizer's "Resonance" waveforms</emphasis>
+<emphasis role="comment">; using a synced phasor to read a sinusoid table.  The jumps at the sync </emphasis>
+<emphasis role="comment">; points are smoothed by multiplying with a windowing function controlled</emphasis>
+<emphasis role="comment">; by the master phasor.</emphasis>
+
+<emphasis role="comment">; Based on information from the Wikipedia article on phase distortion:</emphasis>
+<emphasis role="comment">; http://en.wikipedia.org/wiki/Phase_distortion_synthesis</emphasis>
+
+<emphasis role="comment">; Sawtooth Resonance waveform. Smoothing function is just the inverted</emphasis>
+<emphasis role="comment">; master phasor.</emphasis>
+
+<emphasis role="comment">; The Wikipedia article shows an inverted cosine as the stored waveform,</emphasis>
+<emphasis role="comment">; which implies that it must be unipolar for the smoothing to work.</emphasis>
+<emphasis role="comment">; I have substituted a sine wave in the first phrase to keep the output</emphasis>
+<emphasis role="comment">; bipolar.  The second phrase demonstrates the much "rezzier" sound of the</emphasis>
+<emphasis role="comment">; bipolar cosine due to discontinuities.</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 1
+  ifreq      <emphasis role="op">=</emphasis>           <emphasis role="opc">cpspch</emphasis>(p4)
+  initReson  <emphasis role="op">=</emphasis>           p5
+  itable     <emphasis role="op">=</emphasis>           p6
+  imaxamp    <emphasis role="op">=</emphasis>           10000
+  anosync    <emphasis role="opc">init</emphasis>        0.0
+
+  kslavecps       <emphasis role="opc">line</emphasis>        ifreq <emphasis role="op">*</emphasis> initReson, p3, ifreq
+  amaster, async  <emphasis role="opc">syncphasor</emphasis>  ifreq, anosync		<emphasis role="comment">; pair of phasors</emphasis>
+  aslave, async2  <emphasis role="opc">syncphasor</emphasis>  kslavecps, async		<emphasis role="comment">; slave synced to master</emphasis>
+  aosc            <emphasis role="opc">tablei</emphasis>      aslave, itable, 1		<emphasis role="comment">; use slave phasor to read a (co)sine table</emphasis>
+  aout            <emphasis role="op">=</emphasis>           aosc <emphasis role="op">*</emphasis> (1.0 <emphasis role="op">-</emphasis> amaster)	<emphasis role="comment">; inverted master smoothes jumps </emphasis>
+  adeclick        <emphasis role="opc">linseg</emphasis>      0.0, 0.05, 1.0, p3 <emphasis role="op">-</emphasis> 0.1, 1.0, 0.05, 0.0
+
+                    <emphasis role="opc">out</emphasis>         aout <emphasis role="op">*</emphasis> adeclick <emphasis role="op">*</emphasis> imaxamp
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="comment">; Triangle or Trapezoidal Resonance waveform. Uses a second table to change</emphasis>
+<emphasis role="comment">; the shape of the smoothing function.  (This is my best guess so far as to</emphasis>
+<emphasis role="comment">; how these worked). The cosine table works fine with the triangular smoothing</emphasis>
+<emphasis role="comment">; but we once again need to use a sine table with the trapezoidal smoothing.</emphasis>
+
+<emphasis role="comment">; (It might be interesting to be able to vary the "width" of the trapezoid.</emphasis>
+<emphasis role="comment">; This could be done with the pdhalf opcode).</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 2
+  ifreq      <emphasis role="op">=</emphasis>           <emphasis role="opc">cpspch</emphasis>(p4)
+  initReson  <emphasis role="op">=</emphasis>           p5
+  itable     <emphasis role="op">=</emphasis>           p6
+  ismoothtbl <emphasis role="op">=</emphasis>           p7
+  imaxamp    <emphasis role="op">=</emphasis>           10000
+  anosync    <emphasis role="opc">init</emphasis>        0.0
+
+  kslavecps       <emphasis role="opc">line</emphasis>        ifreq <emphasis role="op">*</emphasis> initReson, p3, ifreq
+  amaster, async  <emphasis role="opc">syncphasor</emphasis>  ifreq, anosync		<emphasis role="comment">; pair of phasors</emphasis>
+  aslave, async2  <emphasis role="opc">syncphasor</emphasis>  kslavecps, async		<emphasis role="comment">; slave synced to master</emphasis>
+  aosc            <emphasis role="opc">tablei</emphasis>      aslave, itable, 1		<emphasis role="comment">; use slave phasor to read a (co)sine table</emphasis>
+  asmooth         <emphasis role="opc">tablei</emphasis>      amaster, ismoothtbl, 1	<emphasis role="comment">; use master phasor to read smoothing table</emphasis>
+  aout            <emphasis role="op">=</emphasis>           aosc <emphasis role="op">*</emphasis> asmooth
+  adeclick        <emphasis role="opc">linseg</emphasis>      0.0, 0.05, 1.0, p3 <emphasis role="op">-</emphasis> 0.1, 1.0, 0.05, 0.0
+
+  <emphasis role="opc">out</emphasis>         aout <emphasis role="op">*</emphasis> adeclick <emphasis role="op">*</emphasis> imaxamp
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis>1 0 16385 10  1
+<emphasis role="stamnt">f</emphasis>3 0 16385  9  1 1 270			<emphasis role="comment">; inverted cosine</emphasis>
+<emphasis role="stamnt">f</emphasis>5 0 4097   7  0.0 2048 1.0 2049 0.0	<emphasis role="comment">; unipolar triangle</emphasis>
+<emphasis role="stamnt">f</emphasis>6 0 4097   7  1.0 2048 1.0 2049 0.0    <emphasis role="comment">; "trapezoid"</emphasis>
+
+<emphasis role="comment">; Sawtooth resonance with a sine table</emphasis>
+<emphasis role="stamnt">i</emphasis>1 0 1    7.00  5.0  1
+<emphasis role="stamnt">i</emphasis>. + 0.5  7.02  4.0
+<emphasis role="stamnt">i</emphasis>. + .    7.05  3.0
+<emphasis role="stamnt">i</emphasis>. + .    7.07  2.0
+<emphasis role="stamnt">i</emphasis>. + .    7.09  1.0
+<emphasis role="stamnt">i</emphasis>. + 2    7.06  12.0
+<emphasis role="stamnt">f</emphasis>0 6
+<emphasis role="stamnt">s</emphasis>
+
+<emphasis role="comment">; Sawtooth resonance with a cosine table</emphasis>
+<emphasis role="stamnt">i</emphasis>1 0 1    7.00  5.0  3
+<emphasis role="stamnt">i</emphasis>. + 0.5  7.02  4.0
+<emphasis role="stamnt">i</emphasis>. + .    7.05  3.0
+<emphasis role="stamnt">i</emphasis>. + .    7.07  2.0
+<emphasis role="stamnt">i</emphasis>. + .    7.09  1.0
+<emphasis role="stamnt">i</emphasis>. + 2    7.06  12.0
+<emphasis role="stamnt">f</emphasis>0 6
+<emphasis role="stamnt">s</emphasis>
+
+<emphasis role="comment">; Triangle resonance with a cosine table</emphasis>
+<emphasis role="stamnt">i</emphasis>2 0 1    7.00  5.0  3  5
+<emphasis role="stamnt">i</emphasis>. + 0.5  7.02  4.0
+<emphasis role="stamnt">i</emphasis>. + .    7.05  3.0
+<emphasis role="stamnt">i</emphasis>. + .    7.07  2.0
+<emphasis role="stamnt">i</emphasis>. + .    7.09  1.0
+<emphasis role="stamnt">i</emphasis>. + 2    7.06  12.0
+<emphasis role="stamnt">f</emphasis>0 6
+<emphasis role="stamnt">s</emphasis>
+
+<emphasis role="comment">; Trapezoidal resonance with a sine table</emphasis>
+<emphasis role="stamnt">i</emphasis>2 0 1    7.00  5.0  1  6
+<emphasis role="stamnt">i</emphasis>. + 0.5  7.02  4.0
+<emphasis role="stamnt">i</emphasis>. + .    7.05  3.0
+<emphasis role="stamnt">i</emphasis>. + .    7.07  2.0
+<emphasis role="stamnt">i</emphasis>. + .    7.09  1.0
+<emphasis role="stamnt">i</emphasis>. + 2    7.06  12.0
+
+<emphasis role="stamnt">e</emphasis>
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

@@ -1,0 +1,103 @@
+ <section id="UsingDesign">
+   <title>How Csound5 works</title>
+<!--    Adapted from John ffitch's article at LAC2005 "On the design of Csound5"
+        and an email by Richard Dobson on the csound list -->
+   Csound processes and generates output using "unit generators" (ugens) called <emphasis>opcodes</emphasis>. These opcodes are used to define <link linkend="OrchIblock"><citetitle>instruments</citetitle></link> in the <link linkend="OrchTop"><citetitle>orchestra</citetitle></link>. When you run Csound, the engine loads the base Opcodes, and the opcodes contained in separate loadable "opcode libraries" <!--(there are also loadable GEN routines)-->. It then interprets the orchestra (through the orchestra reader). The engine sets up an instrument processing chain, which then receives events from the score or in real-time. The processing chain uses the input/output modules to generate output. There are modules that can write to file, or generate <link linkend="UsingRealTime"><citetitle>real-time audio output</citetitle></link>.
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/engine.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>[The Csound5 Modular structure.]</phrase>
+        </textobject>
+        <caption>
+          <para>The Csound5 Modular structure.</para>
+        </caption>
+      </mediaobject>
+  <bridgehead>Csound's processing buffers</bridgehead>
+  <para>
+    Csound processes audio in sample blocks called buffers. There are three separate buffer layers:
+    <orderedlist>
+      <listitem>
+        <para><emphasis>spout</emphasis> = Csound's innermost software buffer, contains <link linkend="ksmps"><citetitle>ksmps</citetitle></link> sample frames. Csound processes real-time control events once every <link linkend="ksmps"><citetitle>ksmps</citetitle></link> sample frames.</para>
+      </listitem>
+      <listitem>
+        <para><emphasis>-b</emphasis> = Csound's intermediate software buffer (the "software" buffer), in sample frames. Should be (but does not need to be) an integral multiple of <link linkend="ksmps"><citetitle>ksmps</citetitle></link> (can equal ksmps too). Once per ksmps sample frames, Csound copies <emphasis>spout</emphasis> to the <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> buffer. Once per <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> sample frames, Csound copies the <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> buffer to the <link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link> "hardware" buffer.</para>
+      </listitem>
+      <listitem>
+        <para><emphasis>-B</emphasis> = The sound card's internal buffer (the "hardware" buffer), in sample frames. Should be (and may need to be) an integral multiple of  <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link>. If Csound misses delivering a <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> one time, the extra <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> sample frames in <link linkend="FlagsCatMinusUpperB"><citetitle>-b</citetitle></link> are still there for the sound card to keep playing while Csound catches up. But they can be the same size if you're willing to bet Csound can always keep up with the sound card.</para>
+      </listitem>
+    </orderedlist>
+  </para>
+  <section id="AmplitudeCsound">
+    <title>Amplitude values in Csound</title>
+    <para>
+      Amplitude values in Csound are always relative to a "<link linkend="Zerodbfs"><citetitle>0dbfs</citetitle></link>" value representing the peak available amplitude before clipping, in either an AD/DA codec, or in a soundfile with a defined range (which both WAVE and AIFF are). In the original Csound, this value was always 32767, corresponding to the bipolar range of a 16bit soundfile or 16bit AD/DA codec, Csound's only possible output back then. This remains the <emphasis>default</emphasis> peak amplitude for Csound, for backward compatibility and you will find some of this manual's examples still use this value (hence you find large amplitude values like 10000).
+    </para>
+    <para>
+      The <link linkend="Zerodbfs"><citetitle>0dbfs</citetitle></link> value enables Csound to produce appropriately scaled values to whatever output format is being used, whether 24bit integer, 32bit floats, or even 32bit integers. Put another way, the literal amplitude values you write in a Csound instrument only match those written <emphasis>literally</emphasis> to the file if the <link linkend="Zerodbfs"><citetitle>0dbfs</citetitle></link> value in Csound corresponds exactly to that of the output sample format. The consequence of this approach is that you can write a piece with a certain amplitude and have it render correctly and identically (setting aside of course the better dynamic range of the high-res formats) whether written to an integer or floats file, or rendered in real-time.
+    </para>
+    <note>
+      <para>The one exception to this is if you choose to write to a "raw" (headerless) file format. In such cases the internal <link linkend="Zerodbfs"><citetitle>0dbfs</citetitle></link> value is meaningless, and whatever values you use are written unmodified. This does enable arbitrary data to be generated or processed by Csound. It is a relatively exotic thing to do, but some users need it.</para>
+    </note>
+    <para>
+      You can choose to redefine the <link linkend="Zerodbfs"><citetitle>0dbfs</citetitle></link> value in the orchestra header, purely for your own convenience or preference. Many people will choose 1.0 (the standard for SAOL, other software like Pure Data, and for many plugin standards such as VST,  LADSPA, CoreAudio AudioUnits, etc), but any value is possible.
+    </para>
+    <para>
+      The common factor in defining amplitudes is the decibel (dB) scale, with 0dB<subscript>FS</subscript> always understood as digital peak; hence "0dbfs" means "0dB Full-Scale value". This measure is different to actual amplitude values, since amplitude values are a linear scale which show the actual oscillation around 0, so they can be positive or negative. Decibel values are an absolute logarithmic scale, but can be useful for most opcodes as well. You can convert amplitude to and from decibels using the <link linkend="ampdb"><citetitle>ampdb</citetitle></link>,<link linkend="ampdbfs"><citetitle>ampdbfs</citetitle></link>, <link linkend="dbamp"><citetitle>dbamp</citetitle></link> and <link linkend="dbfsamp"><citetitle>dbfsamp</citetitle></link> functions. This way, Csound enables the programmer to express all amplitudes in dB - lower amplitudes will then be represented by negative dB values. This reflects industry practice (e.g. in level meters in mixers, etc).</para>
+
+    <para>
+      For example the same dB level of -6dB (half the amplitude) or -20dB are actually a different linear amplitude according to 0dbfs like this:
+    <table frame="all" colsep="1">
+      <title>dB<subscript>FS</subscript> in relation to amplitude</title>
+      <tgroup cols="4">
+        <thead>
+          <row>
+            <entry>dB<subscript>FS</subscript></entry>
+            <entry>0dbfs = 32767 (default)</entry>
+            <entry>0dbfs = 1</entry>
+            <entry>0dbfs = 1000 (unusual)</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>0 dB</entry>
+            <entry>32767</entry>
+            <entry>1</entry>
+            <entry>1000</entry>
+          </row>
+          <row>
+            <entry>-6 dB</entry>
+            <entry>16384</entry>
+            <entry>0.5</entry>
+            <entry>500</entry>
+          </row>
+          <row>
+            <entry>-20 dB</entry>
+            <entry>3276.7</entry>
+            <entry>0.1</entry>
+            <entry>100</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </para>
+
+    <para>
+      Some Csound users might therefore be minded to express all levels in dB<subscript>FS</subscript>, and obviate any confusion or ambiguity of level that may otherwise arise when using explicit amplitude values. The decibel scale reflects the response of the ear pretty closely, and that when you want to express a really quiet level, it might be easier and more expressive to write "-46dB" than "0.005" or "163.8".
+    </para>
+    <para>
+      The reason for using 0dbfs is very simple: digital peak equates to maximum level regardless of sample resolution. If you then define a signal at -110dB  you will lose it if rendering to a 16bit file, but retain it (audibly or not) if rendering to 24bit or better.  In other words, there is a fixed ceiling, but a moveable floor - you can define sounds as quietly as you like (e.g. envelope tails), in a predictable way,and  preserve them or not (without changing the orch code at all), depending on the resolution (file or audio i/o) you render to.
+    </para>
+    <note>
+      <title>A note on digital amplitude, decibels and dynamic range</title>
+      <para>
+        A convenient aproximation of dynamic range for a certain digital precision is to calculate the decibel interval between the minimum value and the maximum value for a sample. As a rule of thumb, 1 bit (doubling of level) is 6dB, so 16bits = 96dB.
+      </para>
+      <para>
+        This is not entirely accurate since audio sample values are represented on a bipolar scale with positive and negative values, and 1 bit is used for the sign. Therefore, for 16bit integer samples actually use 1 bit for the sign and 15 bits for the values, so the actual dynamic range is 90dB.
+      </para>
+    </note>
+  </section>
+</section>

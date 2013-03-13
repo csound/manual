@@ -1,0 +1,81 @@
+
+<refentry id="samphold">
+<indexterm id="IndexSamphold"><primary>samphold</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Sample Level Operators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>samphold</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>samphold</refname>
+    <refpurpose>
+      Performs a sample-and-hold operation on its input.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Performs a sample-and-hold operation on its input.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>samphold</command> asig, agate [, ival] [, ivstor]</synopsis>
+
+    <synopsis>kres <command>samphold</command> ksig, kgate [, ival] [, ivstor]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ival, ivstor</emphasis> (optional) -- controls initial disposition of internal save space. If <emphasis>ivstor</emphasis> is zero the internal <quote>hold</quote> value is set to <emphasis>ival</emphasis> ; else it retains its previous value. Defaults are 0,0 (i.e. init to zero)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kgate, xgate</emphasis> -- controls whether to hold the signal.
+    </para>
+
+    <para>
+      <emphasis>samphold</emphasis> performs a sample-and-hold operation on its input according to the value of <emphasis>gate</emphasis>. If <emphasis>gate != 0</emphasis>, the input samples are passed to the output; if <emphasis>gate = 0</emphasis>, the last output value is repeated. The controlling <emphasis>gate</emphasis> can be a constant, a control signal, or an audio signal.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      <informalexample>
+        <programlisting>
+asrc  <emphasis role="opc">buzz</emphasis>      10000, 440, 20, 1     <emphasis role="comment">; band-limited pulse train</emphasis>
+adif  <emphasis role="opc">diff</emphasis>      asrc                  <emphasis role="comment">; emphasize the highs</emphasis>
+anew  <emphasis role="opc">balance</emphasis>   adif, asrc            <emphasis role="comment">;   but retain the power</emphasis>
+agate <emphasis role="opc">reson</emphasis>     asrc, 0, 440          <emphasis role="comment">; use a lowpass of the original</emphasis>
+asamp <emphasis role="opc">samphold</emphasis>  anew, agate           <emphasis role="comment">;   to gate the new audiosig</emphasis>
+aout  <emphasis role="opc">tone</emphasis>      asamp, 100            <emphasis role="comment">; smooth out the rough edges</emphasis></programlisting>
+      </informalexample>
+    </para>
+    <para>
+      Here is another example of the samphold opcode. It uses the file <ulink url="examples/samphold.csd"><citetitle>samphold.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the samphold opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/samphold.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="diff"><citetitle>diff</citetitle></link>,
+      <link linkend="downsamp"><citetitle>downsamp</citetitle></link>,
+      <link linkend="integ"><citetitle>integ</citetitle></link>,
+      <link linkend="interp"><citetitle>interp</citetitle></link>,
+      <link linkend="upsamp"><citetitle>upsamp</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

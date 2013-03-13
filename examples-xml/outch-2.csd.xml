@@ -1,0 +1,37 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac      <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o outch-2.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 4
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="ohdr">seed</emphasis>     0
+
+<emphasis role="oblock">instr</emphasis> 1 <emphasis role="comment">;random movements between 4 speakers with outch</emphasis>
+
+ichn1     <emphasis role="opc">random</emphasis>    1, 4.999 <emphasis role="comment">;channel to start</emphasis>
+ichn2     <emphasis role="opc">random</emphasis>    1, 4.999 <emphasis role="comment">;channel to end</emphasis>
+          <emphasis role="opc">prints</emphasis>    "Moving from speaker <emphasis role="op">%</emphasis>d to speaker <emphasis role="op">%</emphasis>d<emphasis role="op">%</emphasis>n", <emphasis role="opc">int</emphasis>(ichn1), <emphasis role="opc">int</emphasis>(ichn2)
+asamp     <emphasis role="opc">soundin</emphasis>   "fox.wav"
+kmov      <emphasis role="opc">linseg</emphasis>    0, p3, 1
+a1, a2    <emphasis role="opc">pan2</emphasis>      asamp, kmov
+          <emphasis role="opc">outch</emphasis>     <emphasis role="opc">int</emphasis>(ichn1), a1, <emphasis role="opc">int</emphasis>(ichn2), a2
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">r</emphasis> 5
+<emphasis role="stamnt">i</emphasis> 1 0 3
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

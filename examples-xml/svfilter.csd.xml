@@ -1,0 +1,64 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in    No messages</emphasis>
+-odac           -iadc     -d     <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o svfilter.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="comment">; Orchestra file for resonant filter sweep of a sawtooth-like waveform. </emphasis>
+<emphasis role="comment">; The seperate outputs of the filter are scaled by values from the score,</emphasis>
+<emphasis role="comment">; and are mixed together.</emphasis>
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">kr</emphasis> <emphasis role="op">=</emphasis> 2205
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 20
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 1
+  
+<emphasis role="oblock">instr</emphasis> 1
+  
+  idur     <emphasis role="op">=</emphasis> p3
+  ifreq    <emphasis role="op">=</emphasis> p4
+  iamp     <emphasis role="op">=</emphasis> p5
+  ilowamp  <emphasis role="op">=</emphasis> p6              <emphasis role="comment">; determines amount of lowpass output in signal</emphasis>
+  ihighamp <emphasis role="op">=</emphasis> p7              <emphasis role="comment">; determines amount of highpass output in signal</emphasis>
+  ibandamp <emphasis role="op">=</emphasis> p8              <emphasis role="comment">; determines amount of bandpass output in signal</emphasis>
+  iq       <emphasis role="op">=</emphasis> p9              <emphasis role="comment">; value of q</emphasis>
+  
+  iharms   <emphasis role="op">=</emphasis>        (<emphasis role="ohdr">sr</emphasis><emphasis role="op">*</emphasis>.4) <emphasis role="op">/</emphasis> ifreq
+  
+  asig    <emphasis role="opc">gbuzz</emphasis> 1, ifreq, iharms, 1, .9, 1             <emphasis role="comment">; Sawtooth-like waveform</emphasis>
+  kfreq   <emphasis role="opc">linseg</emphasis> 1, idur <emphasis role="op">*</emphasis> 0.5, 4000, idur <emphasis role="op">*</emphasis> 0.5, 1     <emphasis role="comment">; Envelope to control filter cutoff</emphasis>
+  
+  alow, ahigh, aband   <emphasis role="opc">svfilter</emphasis> asig, kfreq, iq
+  
+  aout1   <emphasis role="op">=</emphasis>         alow <emphasis role="op">*</emphasis> ilowamp
+  aout2   <emphasis role="op">=</emphasis>         ahigh <emphasis role="op">*</emphasis> ihighamp
+  aout3   <emphasis role="op">=</emphasis>         aband <emphasis role="op">*</emphasis> ibandamp
+  asum    <emphasis role="op">=</emphasis>         aout1 <emphasis role="op">+</emphasis> aout2 <emphasis role="op">+</emphasis> aout3
+  kenv    <emphasis role="opc">linseg</emphasis> 0, .1, iamp, idur <emphasis role="op">-</emphasis>.2, iamp, .1, 0     <emphasis role="comment">; Simple amplitude envelope</emphasis>
+          <emphasis role="opc">out</emphasis> asum <emphasis role="op">*</emphasis> kenv
+  
+<emphasis role="oblock">endin</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">f</emphasis>1 0 8192 9 1 1 .25
+  
+<emphasis role="stamnt">i</emphasis>1  0 5 100 1000 1 0 0  5  <emphasis role="comment">; lowpass sweep</emphasis>
+<emphasis role="stamnt">i</emphasis>1  5 5 200 1000 1 0 0 30  <emphasis role="comment">; lowpass sweep, octave higher, higher q</emphasis>
+<emphasis role="stamnt">i</emphasis>1 10 5 100 1000 0 1 0  5  <emphasis role="comment">; highpass sweep</emphasis>
+<emphasis role="stamnt">i</emphasis>1 15 5 200 1000 0 1 0 30  <emphasis role="comment">; highpass sweep, octave higher, higher q</emphasis>
+<emphasis role="stamnt">i</emphasis>1 20 5 100 1000 0 0 1  5  <emphasis role="comment">; bandpass sweep</emphasis>
+<emphasis role="stamnt">i</emphasis>1 25 5 200 1000 0 0 1 30  <emphasis role="comment">; bandpass sweep, octave higher, higher q</emphasis>
+<emphasis role="stamnt">i</emphasis>1 30 5 200 2000 .4 .6  0  <emphasis role="comment">; notch sweep - notch formed by combining highpass and lowpass outputs</emphasis>
+<emphasis role="stamnt">e</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

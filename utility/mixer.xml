@@ -1,0 +1,229 @@
+
+<refentry id="mixer">
+  <refentryinfo><title>Utilities</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>mixer</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>mixer</refname>
+    <refpurpose>
+      Mixes together a number of soundfiles.
+      <indexterm id="IndexMixer"><primary>mixer</primary></indexterm>
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+        Mixes together a number of soundfiles, starting at different
+    times and with individual channel selection from the input files.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>mixer</command> [OPTIONS ... ] infile [[OPTIONS... ] infile] ...</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      Flags:
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+            -<emphasis>A</emphasis>
+            = Generate an AIFF output file.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+            -<emphasis>W</emphasis>
+            = Generate an WAV output file.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+            -<emphasis>h</emphasis>
+            = Generate an output file with no header.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+              -<emphasis>c</emphasis>
+            = Generate 8-bit signed_char sound samples.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+              -<emphasis>a</emphasis>
+            = Generate alaw sound samples.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+              -<emphasis>u</emphasis>
+            = Generate ulaw sound samples.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+              -<emphasis>s</emphasis>
+            = Generate short integer sound samples.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+            -<emphasis>l</emphasis>
+            = Generate long (32 bit) integer sound samples.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+            -<emphasis>f</emphasis>
+            = Generate floating point samples.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+            -<emphasis>F arg</emphasis>
+            = Specifies the gain to be applied to the following 
+            input file.  If arg is a
+            floating point number that gain is applied uniformly to
+            the input.  Alternatively it could be a file name which
+            specifies a breakpoint file for varying the gain for
+            different periods.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+            -<emphasis>S integer</emphasis>
+            = Indicate at which sample to start to mix in the next
+            input file.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+            -<emphasis>T fpnum</emphasis>
+            = Indicate at which time (in seconds) to start to mix in the next
+            input file.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+            -<emphasis>1</emphasis>
+            = Mix in channel 1 from next sound file.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+            -<emphasis>2</emphasis>
+            = Mix in channel 2 from next sound file.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+            -<emphasis>3</emphasis>
+            = Mix in channel 3 from next sound file.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+            -<emphasis>4</emphasis>
+            = Mix in channel 4 from next sound file.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+            -<emphasis>^ intx inty</emphasis>
+            = Mix in channel x from next sound file as channel y in
+            the output.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+            -<emphasis>v</emphasis>
+            = Verbose mode.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+            -<emphasis>R</emphasis>
+            = Continually rewrite the header while writing soundfile
+            (WAV/AIFF). 
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+            -<emphasis>H integer</emphasis>
+            = Show a "heart-beat" to indicate progress, in style 1,
+            2 or 3.          </para>
+      </listitem>
+
+      <listitem>
+        <para>
+            -<emphasis>N</emphasis>
+            = Alert call (usually ringing the bell) when finished.
+        </para>
+      </listitem>
+
+      <listitem>
+              <para>
+                      -<emphasis>o fname</emphasis>
+                      = output file name (default: test.wav)
+              </para>
+      </listitem>
+    </itemizedlist>
+
+
+  </refsect1>
+
+  <refsect1>
+  	<title>Examples</title>
+  	<para>
+
+        The default values are
+<programlisting>
+    <emphasis>mixer</emphasis> -s -otest -F 1.0 -S 0</programlisting>
+
+    For example
+<programlisting>
+    <emphasis>mixer</emphasis> -F 0.96 in1.wav -S 300 -2 in2.aiff -S 300 -^4 1 in3.wav -o out.wav</programlisting>
+
+
+  		This creates a new sound file with a constant gain of
+  		0.96 from in1.wav with the second channel of in2.aiff
+  		mixed in after 300 samples and channel 4 of in3.wav
+  		outpout as channel 1 after 300 samples.
+  	</para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namejohn;</para>
+    <para>1994</para>
+  </refsect1>
+
+</refentry>

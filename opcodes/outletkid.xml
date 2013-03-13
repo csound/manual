@@ -1,0 +1,81 @@
+<refentry id="outletkid">
+<indexterm id="Indexoutletkid"><primary>outletkid</primary></indexterm>
+  <refentryinfo><title>Signal Flow Graph Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>outletkid</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>outletkid</refname>
+    <refpurpose>
+      Sends a krate signal out from an instrument to a named port.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Sends a krate signal out from an instrument to a named port. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>outletkid </command>Sname, SinstanceID, ksignal</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>Sname</emphasis> -- String name of the outlet port.       
+      The name of the outlet is implicitly qualified by the instrument name 
+      or number, so it is valid to use the same outlet name in more than one 
+      instrument (but not to use the same outlet name twice in one instrument).
+    </para>
+    <para>
+      <emphasis>SinstanceID</emphasis> -- String name of the outlet port's 
+      instance ID. This enables the inlet to discriminate between different 
+      instances of the outlet, e,g. one instance of the outlet might be created by a note 
+      specifying one instance ID, and another instance might be created by a note 
+      specifying another ID. This might be used, e.g., to situate difference instances 
+      of an instrument at different points in an Ambisonic space in a spatializing 
+      effects processor.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ksignal</emphasis> -- krate output signal
+    </para>
+
+    <para>
+      During performance, the krate output signal is sent to each instance of an instrument
+      containing an inlet port to which this outlet has been connected using the 
+      <link linkend="connect">connect</link> opcode.
+      The signals of all the outlets connected to an inlet, but only those 
+      that have a matching instance ID, are summed in the inlet.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="outleta"><citetitle>outleta</citetitle></link>
+      <link linkend="outletf"><citetitle>outletf</citetitle></link>
+      <link linkend="inleta"><citetitle>inleta</citetitle></link>
+      <link linkend="inletk"><citetitle>inletk</citetitle></link>
+      <link linkend="inletkid"><citetitle>inletkid</citetitle></link>
+      <link linkend="inletf"><citetitle>inletf</citetitle></link>
+      <link linkend="connect"><citetitle>connect</citetitle></link>
+      <link linkend="alwayson"><citetitle>alwayson</citetitle></link>
+      <link linkend="ftgenonce"><citetitle>ftgenonce</citetitle></link>
+    </para>
+            <para> More information on this opcode: <ulink url="http://www.csounds.com/journal/issue13/signalFlowGraphOpcodes.html"><citetitle>http://www.csounds.com/journal/issue13/signalFlowGraphOpcodes.html</citetitle></ulink>  , written by Michael Gogins </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>By: &namemichael; 2009</para>
+  </refsect1>
+</refentry>

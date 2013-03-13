@@ -1,0 +1,68 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in    No messages</emphasis>
+-odac     <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o gen30.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="comment">;a simplified example of Istvan Varga</emphasis>
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis>  44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis>  32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis>  2
+<emphasis role="ohdr">0dbfs</emphasis>   <emphasis role="op">=</emphasis> 1
+
+isaw	<emphasis role="ohdr">ftgen</emphasis> 1, 0, 16384, 7, 1, 16384, <emphasis role="op">-</emphasis>1						<emphasis role="comment">;sawtooth wave </emphasis>
+iFM	<emphasis role="ohdr">ftgen</emphasis> 3, 0, 4096, 7, 0, 512, 0.25, 512, 1, 512, 0.25, 512,	\
+			     0, 512, <emphasis role="op">-</emphasis>0.25, 512, <emphasis role="op">-</emphasis>1, 512, <emphasis role="op">-</emphasis>0.25, 512, 0			<emphasis role="comment">;FM waveform</emphasis>
+iAM	<emphasis role="ohdr">ftgen</emphasis> 4, 0, 4096, 5, 1, 4096, 0.01						<emphasis role="comment">;AM waveform</emphasis>
+iEQ	<emphasis role="ohdr">ftgen</emphasis> 5, 0, 1024, 5, 1, 512, 32, 512, 1						<emphasis role="comment">;FM to EQ</emphasis>
+isine	<emphasis role="ohdr">ftgen</emphasis> 6, 0, 1024, 10, 1								<emphasis role="comment">;sine wave</emphasis>
+
+<emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> generate bandlimited sawtooth waves <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+i0	<emphasis role="op">=</emphasis>  0
+<emphasis role="olabel">loop1</emphasis><emphasis role="op">:</emphasis>
+imaxh	<emphasis role="op">=</emphasis>  <emphasis role="ohdr">sr</emphasis> <emphasis role="op">/</emphasis> (2 <emphasis role="op">*</emphasis> 440.0 <emphasis role="op">*</emphasis> <emphasis role="opc">exp</emphasis> (<emphasis role="opc">log</emphasis>(2.0) <emphasis role="op">*</emphasis> (i0 <emphasis role="op">-</emphasis> 69) <emphasis role="op">/</emphasis> 12))
+i_	<emphasis role="ohdr">ftgen</emphasis> i0 <emphasis role="op">+</emphasis> 10, 0, 4096, <emphasis role="op">-</emphasis>30, 1, 1, imaxh					<emphasis role="comment">;use gen 30</emphasis>
+i0	<emphasis role="op">=</emphasis>  i0 <emphasis role="op">+</emphasis> 1
+	<emphasis role="octrl">if</emphasis> (i0 <emphasis role="op">&lt;</emphasis> 127.5) <emphasis role="octrl">igoto</emphasis> <emphasis role="olabel">loop1</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 1
+
+kcps	<emphasis role="op">=</emphasis>  440.0 <emphasis role="op">*</emphasis> <emphasis role="opc">exp</emphasis> (<emphasis role="opc">log</emphasis>(2.0) <emphasis role="op">*</emphasis> (p4 <emphasis role="op">-</emphasis> 69) <emphasis role="op">/</emphasis> 12)					<emphasis role="comment">;note frequency</emphasis>
+klpmaxf	<emphasis role="opc">limit</emphasis> p5 <emphasis role="op">*</emphasis> kcps, 1000.0, 12000.0						<emphasis role="comment">;lowpass max. frequency</emphasis>
+
+kfmd1	<emphasis role="op">=</emphasis>  0.03 <emphasis role="op">*</emphasis> kcps									<emphasis role="comment">;FM depth in Hz</emphasis>
+kamfr	<emphasis role="op">=</emphasis>  kcps <emphasis role="op">*</emphasis> 0.02									<emphasis role="comment">;AM frequency</emphasis>
+kamfr2	<emphasis role="op">=</emphasis>  kcps <emphasis role="op">*</emphasis> 0.1
+
+kfnum	<emphasis role="op">=</emphasis>  (10 <emphasis role="op">+</emphasis> 69 <emphasis role="op">+</emphasis> 0.5 <emphasis role="op">+</emphasis> 12 <emphasis role="op">*</emphasis> <emphasis role="opc">log</emphasis>(kcps <emphasis role="op">/</emphasis> 440.0) <emphasis role="op">/</emphasis> <emphasis role="opc">log</emphasis>(2.0))				<emphasis role="comment">;table number</emphasis>
+aenv	<emphasis role="opc">linseg</emphasis> 0, p3<emphasis role="op">*</emphasis>0.25, 1, p3<emphasis role="op">*</emphasis>0.75, 0						<emphasis role="comment">;amp. envelope</emphasis>
+
+asig	<emphasis role="opc">oscbnk</emphasis> kcps, 0.0, kfmd1, 0.0, 40, 200, 0.1, 0.2, 0, 0, 144,	      \
+		0.0, klpmaxf, 0.0, 0.0, 1.5, 1.5, 2, kfnum, 3, 0, 5, 5, 5
+asig	<emphasis role="op">=</emphasis> asig <emphasis role="op">*</emphasis> aenv<emphasis role="op">*</emphasis>.03
+<emphasis role="opc">outs</emphasis> asig, asig
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">s</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 6 41 10
+<emphasis role="stamnt">i</emphasis> 1 0 6 60
+<emphasis role="stamnt">i</emphasis> 1 0 6 65
+<emphasis role="stamnt">i</emphasis> 1 0 6 69
+<emphasis role="stamnt">s</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 6 41 64
+<emphasis role="stamnt">i</emphasis> 1 0 6 60
+<emphasis role="stamnt">i</emphasis> 1 0 6 65
+<emphasis role="stamnt">i</emphasis> 1 0 6 69
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

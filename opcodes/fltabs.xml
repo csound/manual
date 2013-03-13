@@ -1,0 +1,205 @@
+
+<refentry id="FLtabs">
+<indexterm id="IndexFLtabs"><primary>FLtabs</primary></indexterm>
+  <refentryinfo><title>FLTK:Containers</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLtabs</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLtabs</refname>
+    <refpurpose>
+      Creates a tabbed FLTK interface.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>FLtabs</emphasis> is a <quote>file card tabs</quote> interface that is useful to display several areas containing widgets in the same windows, alternatively. It must be used together with <link linkend="FLgroup"><citetitle>FLgroup</citetitle></link>, another container that groups child widgets.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>FLtabs</command> iwidth, iheight, ix, iy</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iwidth</emphasis> -- width of widget.
+    </para>
+
+    <para>
+      <emphasis>iheight</emphasis> -- height of widget.
+    </para>
+
+    <para>
+      <emphasis>ix</emphasis> -- horizontal position of upper left corner of the valuator, relative
+to the upper left corner of corresponding window. Expressed in pixels.
+    </para>
+
+    <para>
+      <emphasis>iy</emphasis> -- vertical position of upper left corner of the valuator, relative to the upper left corner of corresponding window. Expressed in pixels.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      Containers are useful to format the graphic appearance of the widgets. The most important container is <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link>, that actually creates a window. It can be filled with other containers and/or valuators or other kinds of widgets.
+    </para>
+
+    <para>
+      There are no k-rate arguments in containers.
+    </para>
+
+    <para>
+      <emphasis>FLtabs</emphasis> is a <quote>file card tabs</quote> interface that is useful to display several alternate areas containing widgets in the same window.
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/fltabs.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>FLtabs.</phrase>
+        </textobject>
+
+        <caption>
+          <para>FLtabs.</para>
+        </caption>
+      </mediaobject>
+    </para>
+
+    <para>
+      It must be used together with <link linkend="FLgroup"><citetitle>FLgroup</citetitle></link>, another FLTK container opcode that groups child widgets.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      The following example code:
+
+      <informalexample>
+        <programlisting>
+         <emphasis role="opc">FLpanel</emphasis>  "Panel1", 450, 550, 100, 100
+         <emphasis role="opc">FLscroll</emphasis> 450, 550, 0, 0
+         <emphasis role="opc">FLtabs</emphasis>   400, 550, 5, 5
+         
+         <emphasis role="opc">FLgroup</emphasis>  "sliders", 380, 500, 10, 40, 1
+gk1, ihs <emphasis role="opc">FLslider</emphasis>  "FLslider 1", 500, 1000, 2 ,1, -1, 300,15, 20,50
+gk2, ihs <emphasis role="opc">FLslider</emphasis>  "FLslider 2", 300, 5000, 2 ,3, -1, 300,15, 20,100
+gk3, ihs <emphasis role="opc">FLslider</emphasis>  "FLslider 3", 350, 1000, 2 ,5, -1, 300,15, 20,150
+gk4, ihs <emphasis role="opc">FLslider</emphasis>  "FLslider 4", 250, 5000, 1 ,11, -1, 300,30, 20,200
+gk5, ihs <emphasis role="opc">FLslider</emphasis>  "FLslider 5", 220, 8000, 2 ,1, -1, 300,15, 20,250
+gk6, ihs <emphasis role="opc">FLslider</emphasis>  "FLslider 6", 1, 5000, 1 ,13, -1, 300,15, 20,300
+gk7, ihs <emphasis role="opc">FLslider</emphasis>  "FLslider 7", 870, 5000, 1 ,15, -1, 300,30, 20,350
+gk8, ihs <emphasis role="opc">FLslider</emphasis>  "FLslider 8", 20, 20000, 2 ,6, -1, 30,400, 350,50
+         <emphasis role="opc">FLgroupEnd</emphasis>
+
+         <emphasis role="opc">FLgroup</emphasis>  "rollers", 380, 500, 10, 30, 2
+gk1, ihr <emphasis role="opc">FLroller</emphasis>  "FLroller 1", 50, 1000,.1,2 ,1 ,-1, 200,22, 20,50
+gk2, ihr <emphasis role="opc">FLroller</emphasis>  "FLroller 2", 80, 5000,1,2 ,1 ,-1, 200,22, 20,100
+gk3, ihr <emphasis role="opc">FLroller</emphasis>  "FLroller 3", 50, 1000,.1,2 ,1 ,-1, 200,22, 20,150
+gk4, ihr <emphasis role="opc">FLroller</emphasis>  "FLroller 4", 80, 5000,1,2 ,1 ,-1, 200,22, 20,200
+gk5, ihr <emphasis role="opc">FLroller</emphasis>  "FLroller 5", 50, 1000,.1,2 ,1 ,-1, 200,22, 20,250
+gk6, ihr <emphasis role="opc">FLroller</emphasis>  "FLroller 6", 80, 5000,1,2 ,1 ,-1, 200,22, 20,300
+gk7, ihr <emphasis role="opc">FLroller</emphasis>  "FLroller 7",50, 5000,1,1 ,2 ,-1, 30,300, 280,50
+         <emphasis role="opc">FLgroupEnd</emphasis>
+
+         <emphasis role="opc">FLgroup</emphasis> "joysticks", 380, 500, 10, 40, 3
+gk1, gk2, ihj1, ihj2 <emphasis role="opc">FLjoy</emphasis> "FLjoy", 50, 18000, 50, 18000, 2, 2, -1, -1, 300, 300, 30, 60
+         <emphasis role="opc">FLgroupEnd</emphasis>
+
+         <emphasis role="opc">FLtabsEnd</emphasis>
+         <emphasis role="opc">FLscrollEnd</emphasis>
+         <emphasis role="opc">FLpanelEnd</emphasis></programlisting>
+      </informalexample>
+
+       ...will produce the following result:
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/fltabs_sliders-tab.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>FLtabs example, sliders tab.</phrase>
+        </textobject>
+
+        <caption>
+          <para>FLtabs example, sliders tab.</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/fltabs_rollers-tab.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>FLtabs example, rollers tab.</phrase>
+        </textobject>
+
+        <caption>
+          <para>FLtabs example, rollers tab.</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/fltabs_joysticks-tab.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>FLtabs example, joysticks tab.</phrase>
+        </textobject>
+
+        <caption>
+          <para>FLtabs example, joysticks tab.</para>
+        </caption>
+      </mediaobject>
+
+       (Each picture shows a different tab selection inside the same window.)
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the FLtabs opcode. It uses the file <ulink url="examples/FLtabs.csd"><citetitle>FLtabs.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the FLtabs opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/FLtabs.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="FLgroup"><citetitle>FLgroup</citetitle></link>, 
+      <link linkend="FLgroupEnd"><citetitle>FLgroupEnd</citetitle></link>, 
+      <link linkend="FLpack"><citetitle>FLpack</citetitle></link>, 
+      <link linkend="FLpackEnd"><citetitle>FLpackEnd</citetitle></link>, 
+      <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link>, 
+      <link linkend="FLpanelEnd"><citetitle>FLpanelEnd</citetitle></link>, 
+      <link linkend="FLscroll"><citetitle>FLscroll</citetitle></link>, 
+      <link linkend="FLscrollEnd"><citetitle>FLscrollEnd</citetitle></link>, 
+      <link linkend="FLtabsEnd"><citetitle>FLtabsEnd</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namegabriel;</para>
+    <para>New in version 4.22</para>
+    <para>Example written by Iain McCurdy, edited by &namekevin;.</para>
+  </refsect1>
+</refentry>

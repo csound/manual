@@ -1,0 +1,136 @@
+
+<refentry id="clip">
+<indexterm id="IndexClip"><primary>clip</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Amplitude Modifiers</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>clip</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>clip</refname>
+    <refpurpose>
+      Clips a signal to a predefined limit.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Clips an a-rate signal to a predefined limit, in a <quote>soft</quote> manner, using one of three methods.
+   </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>clip</command> asig, imeth, ilimit [, iarg]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>imeth</emphasis> -- selects the clipping method. The default is 0. The methods are:
+      <itemizedlist>
+        <listitem>
+            <para>0 = Bram de Jong method (default)</para>
+        </listitem>
+
+        <listitem>
+            <para>1 = sine clipping</para>
+        </listitem>
+
+        <listitem>
+            <para>2 = tanh clipping</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>ilimit</emphasis> -- limiting value
+    </para>
+
+    <para>
+      <emphasis>iarg</emphasis> (optional, default=0.5) -- when <emphasis>imeth</emphasis> = 0, indicates the point at which clipping starts, in the range 0 - 1. Not used when <emphasis>imeth</emphasis> = 1 or <emphasis>imeth</emphasis> = 2. Default is 0.5.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asig</emphasis> -- a-rate input signal
+    </para>
+
+    <para>
+      The Bram de Jong method (<emphasis>imeth</emphasis> = 0) applies the algorithm (denoting <emphasis>ilimit</emphasis> as <emphasis>limit</emphasis> and <emphasis>iarg</emphasis> as <emphasis>a</emphasis>):
+    </para>
+
+    <para>
+      <informalexample>
+        <programlisting>
+|<emphasis>x</emphasis>| &gt;= 0 and |<emphasis>x</emphasis>| &lt;= (<emphasis>limit*a</emphasis>):  f(<emphasis>x</emphasis>) = f(<emphasis>x</emphasis>)
+|<emphasis>x</emphasis>| &gt; (<emphasis>limit*a</emphasis>) and |<emphasis>x</emphasis>| &lt;= <emphasis>limit</emphasis>:  f(<emphasis>x</emphasis>) = sign(<emphasis>x</emphasis>) * (<emphasis>limit*a</emphasis>+(<emphasis>x-limit*a</emphasis>)/(1+((<emphasis>x-limit*a</emphasis>)/(<emphasis>limit</emphasis>*(1-<emphasis>a</emphasis>)))<superscript>2</superscript>))
+|<emphasis>x</emphasis>| &gt; <emphasis>limit</emphasis>:  f(<emphasis>x</emphasis>) = sign(<emphasis>x</emphasis>) * (<emphasis>limit</emphasis>*(<emphasis>1+a</emphasis>))/2</programlisting>
+      </informalexample>
+    </para>
+
+    <!--<para>
+      This method requires that <emphasis>asig</emphasis> be normalized to 1.
+    </para>-->
+
+    <para>
+      The second method (<emphasis>imeth</emphasis> = 1) is the sine clip:
+    </para>
+
+    <para>
+      <informalexample>
+        <programlisting>
+|<emphasis>x</emphasis>| &lt; <emphasis>limit</emphasis>:  f(<emphasis>x</emphasis>) = <emphasis>limit</emphasis> * sin(&pi;*<emphasis>x</emphasis>/(2*<emphasis>limit</emphasis>)),   |<emphasis>x</emphasis>| &gt;= <emphasis>limit</emphasis>:  f(<emphasis>x</emphasis>) = <emphasis>limit</emphasis> * sign(<emphasis>x</emphasis>)</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      The third method (<emphasis>imeth = 2</emphasis>) is the tanh clip:
+    </para>
+
+    <para>
+      <informalexample>
+        <programlisting>
+|<emphasis>x</emphasis>| &lt; <emphasis>limit</emphasis>:  f(<emphasis>x</emphasis>) = <emphasis>limit</emphasis> * tanh(<emphasis>x/limit</emphasis>)/tanh(1),   |<emphasis>x</emphasis>| &gt;= <emphasis>limit</emphasis>:  f(<emphasis>x</emphasis>) = <emphasis>limit</emphasis> * sign(<emphasis>x</emphasis>)</programlisting>
+      </informalexample>
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        Method 1 appears to be non-functional at release of Csound version 4.07.
+      </para>
+    </note>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the clip opcode. It uses the file <ulink url="examples/clip.csd"><citetitle>clip.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the clip opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/clip.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>University of Bath, Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>August, 2000</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 4.07</para>
+    <para>September 2009: Thanks to a note from Paolo Dell'Osso, corrected the formula.</para>
+  </refsect1>
+</refentry>

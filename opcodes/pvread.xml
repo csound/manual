@@ -1,0 +1,84 @@
+
+<refentry id="pvread">
+<indexterm id="IndexPvread"><primary>pvread</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:STFT</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvread</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvread</refname>
+    <refpurpose>
+      Reads from a phase vocoder analysis file and returns the frequency and amplitude from a single analysis channel or bin.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>pvread</emphasis> reads from a <link linkend="pvoc"><citetitle>pvoc</citetitle></link> file and returns the frequency and amplitude from a single analysis channel or bin. The returned values can be used anywhere else in the Csound instrument. For example, one can use them as arguments to an oscillator to synthesize a single component from an analyzed signal or a bank of <emphasis>pvreads</emphasis> can be used to resynthesize the analyzed sound using additive synthesis by passing the frequency and magnitude values to a bank of oscillators.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kfreq, kamp <command>pvread</command> ktimpnt, ifile, ibin</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifile</emphasis> -- the <emphasis>pvoc</emphasis> number (n in pvoc.n) or the name in quotes of the analysis file made using <emphasis>pvanal</emphasis>. (See <link linkend="pvoc"><citetitle>pvoc</citetitle></link>.)
+    </para>
+
+    <para>
+      <emphasis>ibin</emphasis> -- the number of the analysis channel from which to return frequency in Hz and magnitude.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kfreq, kamp</emphasis> -- outputs of the <emphasis>pvread</emphasis> unit. These values, retrieved from a phase vocoder analysis file, represent the values of frequency and amplitude from a single analysis channel specified in the <emphasis>ibin</emphasis> argument. Interpolation between analysis frames is performed at k-rate resolution and dependent of course upon the rate and direction of <emphasis>ktimpnt</emphasis>. 
+    </para>
+
+    <para>
+      <emphasis>ktimpnt</emphasis> -- the passage of time, in seconds, through this file. <emphasis>ktimpnt</emphasis> must always be positive, but can move forwards or backwards in time, be stationary or discontinuous, as a pointer into the analysis file.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      The example below shows the use <emphasis>pvread</emphasis> to synthesize a single component at a time from a phase vocoder analysis file. It should be noted that the <emphasis>kfreq</emphasis> and <emphasis>kamp</emphasis> outputs can be used for any kind of synthesis, filtering, processing, and so on.
+      <example>
+        <title>Example of the pvread opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/pvread.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+     </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="pvbufread"><citetitle>pvbufread</citetitle></link>, 
+      <link linkend="pvcross"><citetitle>pvcross</citetitle></link>, 
+      <link linkend="pvinterp"><citetitle>pvinterp</citetitle></link>, 
+      <link linkend="tableseg"><citetitle>tableseg</citetitle></link>, 
+      <link linkend="tablexseg"><citetitle>tablexseg</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Richard Karpen</member>
+        <member>Seattle, Wash</member>
+        <member>1997</member>
+      </simplelist>
+    </para>
+    <para>New in version 3.44</para>
+  </refsect1>
+</refentry>

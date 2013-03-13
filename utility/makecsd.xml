@@ -1,0 +1,192 @@
+
+<refentry id="makecsd">
+  <refentryinfo><title>Utilities</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>makecsd</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>makecsd</refname>
+    <refpurpose>
+      Creates a CSD file from the specified input files.
+      <indexterm id="IndexMakecsd"><primary>makecsd</primary></indexterm>
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+    	Creates a CSD file from the specified input files. The first
+    	input file that has a .orc extension (case is not significant)
+    	is put to the &lt;CsInstruments&gt; section, and the first input
+    	file that has a .sco extension becomes &lt;CsScore&gt;. Any
+    	remaining files are Base64 encoded and added as &lt;CsFileB&gt;
+    	tags. An empty &lt;CsOptions&gt; section is always added.
+    </para>
+
+    <para>
+
+    Some text filtering is performed on the orchestra and score file:
+
+    <itemizedlist>
+    	<listitem>
+    		<para>
+    			newlines are converted to the native format of the
+    			system on which makecsd is being run.
+    		</para>
+    	</listitem>
+
+
+    	<listitem>
+    		<para>
+    			blank lines are removed from the beginning and end of
+    			files.
+    		</para>
+    	</listitem>
+
+    	<listitem>
+    		<para>
+    			any trailing whitespace is removed from the end of
+    			lines.
+    		</para>
+    	</listitem>
+
+    	<listitem>
+    		<para>
+    			optionally, tabs can be expanded to spaces with an user
+    			specified tabstop size.
+    		</para>
+    	</listitem>
+
+    	<listitem>
+    		<para>
+    			optionally, a MIDI file can be included.
+    		</para>
+    	</listitem>
+
+    	<listitem>
+    		<para>
+    			optionally, a Licence can be specified as
+                        either a file or a common one.
+    		</para>
+    	</listitem>
+
+     	<listitem>
+    		<para>
+    			if required a score processor can be specified
+                        for the &lt;CsScore&gt; section.
+    		</para>
+    	</listitem>
+
+    </itemizedlist>
+
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>makecsd</command> [OPTIONS ... ] infile1 [ infile2 [ ... ]]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      Flags:
+      <itemizedlist>
+        <listitem>
+        	<para>
+        		- <emphasis>t n</emphasis>
+        		= expand tabs to spaces using tabstop size n (default:
+        		disabled). This applies only to the orchestra and score
+        		file.
+        	</para>
+        </listitem>
+
+        <listitem>
+        	<para>
+        		- <emphasis>w n</emphasis>
+        		= set Base64 line width to n (default: 72). Note: the
+            orchestra and score are not wrapped.
+        	</para>
+        </listitem>
+
+        <listitem>
+        	<para>
+        		- <emphasis>o fname</emphasis>
+        		= output file name (default: stdout)
+        	</para>
+        </listitem>
+
+        <listitem>
+        	<para>
+        		- <emphasis>m fname</emphasis>
+        		= specify a MIDI file to include (default: none)
+        	</para>
+        </listitem>
+
+        <listitem>
+        	<para>
+        		- <emphasis>b progname</emphasis>
+        		= specify the program to process the score (default: none)
+        	</para>
+        </listitem>
+
+        <listitem>
+        	<para>
+        		- <emphasis>L fname</emphasis>
+        		= file name containing the licence text (default: none)
+        	</para>
+        </listitem>
+
+        <listitem>
+        	<para>
+        		- <emphasis>l integer</emphasis>
+        		= specify a standard licence (default: none).
+                        The ones available are:
+                        <itemizedlist>
+                          <listitem> 0: All rights reserved</listitem>
+                          <listitem> 1: CC BY-NC-ND</listitem>
+                          <listitem> 2: CC BY-NC-SA</listitem>
+                          <listitem> 3: CC BY-NC</listitem>
+                          <listitem> 4: CC BY-ND</listitem>
+                          <listitem> 5: CC BY-SA</listitem>
+                          <listitem> 6: CC BY</listitem>
+                          <listitem> 7: Licenced under BSD</listitem>
+                        </itemizedlist>
+        	</para>
+        </listitem>
+
+      </itemizedlist>
+
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+  	<title>Examples</title>
+  	<para>
+
+<programlisting>
+    <emphasis>makecsd</emphasis> -t 6 -w 78 -o file.csd file.mid file.orc file.sco sample.aif</programlisting>
+
+
+  		This creates a CSD from file.orc and file.sco (tabs are
+  		expanded to spaces assuming a tabstop size of 6 characters),
+  		and file.mid and sample.aif are added as &lt;CsFileB&gt; tags
+  		containing Base64 encoded data with a line width of 78
+  		characters. The output file is file.csd.
+  	</para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: Istvan Varga</para>
+    <para>Jan 2003</para>
+    <para>Author: &namejohn;</para>
+    <para>Feb 2011</para>
+    <para>Options for MIDI, score processing and licence new in version 5.14</para>
+  </refsect1>
+
+</refentry>

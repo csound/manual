@@ -1,0 +1,70 @@
+
+<refentry id="delayr">
+<indexterm id="IndexDelayr"><primary>delayr</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Delay</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>delayr</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>delayr</refname>
+    <refpurpose>
+      Reads from an automatically established digital delay line.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Reads from an automatically established digital delay line.
+   </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>delayr</command> idlt [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>idlt</emphasis> -- requested delay time in seconds. This can be as large as available memory will permit. The space required for n seconds of delay is 4n * <emphasis>sr</emphasis> bytes. It is allocated at the time the instrument is first initialized, and returned to the pool at the end of a score section.
+    </para>
+
+    <para>
+      <emphasis>iskip</emphasis> (optional, default=0) -- initial disposition of delay-loop data space (see <link linkend="reson"><citetitle>reson</citetitle></link>). The default value is 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>delayr</emphasis> reads from an automatically established digital delay line, in which the signal retrieved has been resident for <emphasis>idlt</emphasis> seconds. This unit must be paired with and precede an accompanying <link linkend="delayw"><citetitle>delayw</citetitle></link> unit. Any other Csound statements can intervene.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the delayr opcode. It uses the file <ulink url="examples/delayr.csd"><citetitle>delayr.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the delayr opcode.</title>       
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/delayr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="delay"><citetitle>delay</citetitle></link>,
+      <link linkend="delay1"><citetitle>delay1</citetitle></link>,
+      <link linkend="delayw"><citetitle>delayw</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

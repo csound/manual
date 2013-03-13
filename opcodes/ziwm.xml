@@ -1,0 +1,99 @@
+
+<refentry id="ziwm">
+<indexterm id="IndexZiwm"><primary>ziwm</primary></indexterm>
+  <refentryinfo><title>Zak Patch System</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ziwm</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>ziwm</refname>
+    <refpurpose>
+      Writes to a zk variable to an i-rate variable with mixing.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Writes to a zk variable to an i-rate variable with mixing.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>ziwm</command> isig, indx [, imix]</synopsis>
+ </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>isig</emphasis> -- initializes the value of the zk location.
+    </para>
+
+    <para>
+      <emphasis>indx</emphasis> -- points to the zk location location to which to write.
+    </para>
+
+    <para>
+      <emphasis>imix</emphasis> (optional, default=1) -- indicates if mixing should occur.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ziwm</emphasis> is a mixing opcode, it adds the signal to the current value of the variable. If no <emphasis>imix</emphasis> is specified, mixing always occurs. <emphasis>imix</emphasis> = 0 will cause overwriting like <emphasis>ziw</emphasis>, <emphasis>zkw</emphasis>, and <emphasis>zaw</emphasis>. Any other value will cause mixing.
+    </para>
+
+    <para>
+      <emphasis>Caution</emphasis>: When using the mixing opcodes <emphasis>ziwm</emphasis>, <emphasis>zkwm</emphasis>, and <emphasis>zawm</emphasis>, care must be taken that the variables mixed to, are zeroed at the end (or start) of each k- or a-cycle. Continuing to add signals to them, can cause their values can drift to astronomical figures.
+    </para>
+
+    <para>
+      One approach would be to establish certain ranges of zk or za variables to be used for mixing, then use <emphasis>zkcl</emphasis> or <emphasis>zacl</emphasis> to clear those ranges.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the ziwm opcode. It uses the file <ulink url="examples/ziwm.csd"><citetitle>ziwm.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the ziwm opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/ziwm.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="zaw"><citetitle>zaw</citetitle></link>,
+      <link linkend="zawm"><citetitle>zawm</citetitle></link>,
+      <link linkend="ziw"><citetitle>ziw</citetitle></link>,
+      <link linkend="zkw"><citetitle>zkw</citetitle></link>,
+      <link linkend="zkwm"><citetitle>zkwm</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Robin Whittle</member>
+        <member>Australia</member>
+        <member>May 1997</member>
+      </simplelist>
+    </para>
+    <para>New in version 3.45</para>
+    <para>Example written by &namekevin;.</para>
+  </refsect1>
+</refentry>

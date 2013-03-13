@@ -1,0 +1,75 @@
+
+<refentry id="trmix">
+<indexterm id="Indextrmix"><primary>trmix</primary></indexterm>
+
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>trmix</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>trmix</refname>
+    <refpurpose>
+      Streaming partial track mixing.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      The <emphasis>trmix</emphasis> opcode takes two inputs containg TRACKS pv streaming signals (as generated,
+      for instance by <emphasis>partials</emphasis>) and mixes them into a single TRACKS stream. Tracks will be
+      mixed up to the available space (defined by the original number of FFT bins in 
+      the analysed signals). If the sum of the input tracks exceeds this space, the higher-ordered
+      tracks in the second input will be pruned. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>fsig <command>trmix</command> fin1, fin2 </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+      <para>
+      <emphasis>fsig</emphasis> -- output pv stream in TRACKS format 
+    </para>
+    
+    <para>
+      <emphasis>fin1</emphasis> -- first input pv stream in TRACKS format.
+    </para>
+  
+    <para>
+      <emphasis>fin2</emphasis> -- second input pv stream in TRACKS format
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the trmix opcode. It uses the file <ulink url="examples/trmix.csd"><citetitle>trmix.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the trmix opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/trmix.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      The example above shows partial tracking of an ifd-analysis signal, frequency
+      splitting and pitch shifting of the upper part of the spectrum, followed by
+      the remix of the two parts of the spectrum and resynthesis. 
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>February 2006 </member>
+      </simplelist>
+    </para>
+    <para>New in Csound 5.01</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,48 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in    No messages</emphasis>
+-odac           -iadc     -d     <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o FLbutton.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 1
+
+<emphasis role="opc">FLpanel</emphasis> "Button Bank", 520, 140, 100, 100
+    <emphasis role="comment">;itype = 2    ;Light Buttons</emphasis>
+    itype <emphasis role="op">=</emphasis> 22    <emphasis role="comment">;Plastic Light Buttons</emphasis>
+    inumx <emphasis role="op">=</emphasis> 10
+    inumy <emphasis role="op">=</emphasis> 4
+    iwidth <emphasis role="op">=</emphasis> 500
+    iheight <emphasis role="op">=</emphasis> 120
+    ix <emphasis role="op">=</emphasis> 10
+    iy <emphasis role="op">=</emphasis> 10
+    iopcode <emphasis role="op">=</emphasis> 0
+    istarttim <emphasis role="op">=</emphasis> 0
+    idur <emphasis role="op">=</emphasis> 1
+
+    gkbutton, ihbb <emphasis role="opc">FLbutBank</emphasis> itype, inumx, inumy, iwidth, iheight, ix, iy, iopcode, 1, istarttim, idur
+
+<emphasis role="opc">FLpanelEnd</emphasis>
+<emphasis role="opc">FLrun</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 1
+  ibutton <emphasis role="op">=</emphasis> <emphasis role="opc">i</emphasis>(gkbutton)
+  <emphasis role="opc">prints</emphasis> "Button <emphasis role="op">%</emphasis><emphasis role="opc">i</emphasis> pushed!\\n", ibutton  
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="comment">; Real-time performance for 1 hour.</emphasis>
+<emphasis role="stamnt">f</emphasis> 0 3600
+<emphasis role="stamnt">e</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

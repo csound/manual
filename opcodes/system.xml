@@ -1,0 +1,100 @@
+
+<refentry id="system">
+<indexterm id="Indexsystem_i"><primary>system_i</primary></indexterm>
+
+<indexterm id="Indexsystem"><primary>system</primary></indexterm>
+  <refentryinfo><title>Miscellaneous</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>system</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>system</refname>
+    <refpurpose>
+      Call an external program via the system call
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <command>system</command> and <command>system_i</command> call
+    any external command understood by the operating system, similarly
+    to the C function     system(). <command>system_i</command> runs
+    at i-time only, while 
+      <command>system</command> runs both at initialization and
+      performance time. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ires <command>system_i</command> itrig, Scmd, [inowait]</synopsis>
+    <synopsis>kres <command>system</command> ktrig, Scmd, [knowait]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>Scmd</emphasis> -- command string
+    </para>
+    <para>
+      <emphasis>itrig</emphasis> -- if greater than zero the opcode
+    performs the printing; otherwise it is an null operation.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ktrig</emphasis> -- if greater than zero and different
+    from the value on the previous control cycle the opcode
+    performs the requested printing.  Initially this previous value is
+    taken as zero.
+    </para>
+    <para>
+      <emphasis>inowait,knowait</emphasis> -- if given an non zero the 
+      command is run in the background and the command does not wait
+      for the result. (default = 0)
+    </para>
+    <para>
+      <emphasis>ires, kres</emphasis> -- the return code of the 
+      command in wait mode and if the command is run.In other cases 
+      returns zero.
+    </para>
+    <para>
+      More than one system command (a script) can be executed with a single <command>system</command> opcode by using double braces strings {{ }}.
+    </para>
+    <note>
+      This opcode is very system dependant, so should be used with extreme care (or not used) if platform neutrality is desired.
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Example</title>
+        <para>
+      Here is an example of the system_i opcode. It uses the file <ulink url="examples/system.csd"><citetitle>system.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the system opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/system.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>2007</member>
+      </simplelist>
+      <para>New in version 5.06</para>
+    </para>
+  </refsect1>
+</refentry>

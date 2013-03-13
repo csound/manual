@@ -1,0 +1,106 @@
+
+<refentry id="GEN06">
+      <indexterm id="IndexGEN06"><primary>GEN06</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN06</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN06</refname>
+    <refpurpose>
+      Generates a function comprised of segments of cubic polynomials.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This subroutine will generate a function comprised of segments of cubic polynomials, spanning specified points just three at a time.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>f</command>  #   time   size   6   a   n1   b   n2   c   n3   d ...</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>size</emphasis> -- number of points in the table. Must be a power off or power-of-2 plus 1 (see <link linkend="f"><citetitle>f statement</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis>a, c, e, ...</emphasis> -- local maxima or minima of successive segments, depending on the relation of these points to adjacent inflexions. May be either positive or negative.
+    </para>
+
+    <para>
+      <emphasis>b, d, f, ...</emphasis> -- ordinate values of points of inflexion at the ends of successive curved segments. May be positive or negative.
+    </para>
+
+    <para>
+      <emphasis>n1, n2, n3 ...</emphasis> -- number of stored values between specified points. Cannot be negative, but a zero is meaningful for specifying discontinuities. The sum <emphasis>n1</emphasis> + <emphasis>n2</emphasis> + ... will normally equal size for fully specified functions. (for details, see <link linkend="GEN05"><citetitle>GEN05</citetitle></link>).
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        <emphasis>GEN06</emphasis> constructs a stored function from segments of cubic polynomial functions. Segments link ordinate values in groups of 3: point of inflexion, maximum/minimum, point of inflexion. The first complete segment encompasses <emphasis>b</emphasis>, <emphasis>c</emphasis>, <emphasis>d</emphasis> and has length <emphasis>n2</emphasis> + <emphasis>n3</emphasis>, the next encompasses <emphasis>d</emphasis>, <emphasis>e</emphasis>, <emphasis>f</emphasis> and has length <emphasis>n4</emphasis> + <emphasis>n5</emphasis>, etc. The first segment (<emphasis>a</emphasis>, <emphasis>b</emphasis> with length <emphasis>n1</emphasis>) is partial with only one inflexion; the last segment may be partial too. Although the inflexion points <emphasis>b</emphasis>, <emphasis>d</emphasis>, <emphasis>f</emphasis> ... each figure in two segments (to the left and right), the slope of the two segments remains independent at that common point (i.e. the 1st derivative will likely be discontinuous). When <emphasis>a</emphasis>, <emphasis>c</emphasis>, <emphasis>e</emphasis>... are alternately maximum and minimum, the inflexion joins will be relatively smooth; for successive maxima or successive minima the inflexions will be comb-like.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+	    Here is an example of the GEN06 routine. It uses the files <ulink url="examples/gen06.csd"><citetitle>gen06.csd</citetitle></ulink>.
+      <example>
+        <title>An example of the GEN06 routine.</title>
+        <xi:include href="examples-xml/gen06.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+        <textobject>
+          <phrase>These are the diagrams of the waveforms of the GEN06 routines, as used in the example:</phrase>
+        </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen06_1.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 2 0 513 6 1 128 -1 128 1 64 -.5 64 .5 16 -.5 8 1 16 -.5 8 1 16 -.5 84 1 16 -.5 8 .1 16 -.1 17 0 - a not-so-smooth curve</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 2 0 513 6 1 128 -1 128 1 64 -.5 64 .5 16 -.5 8 1 16 -.5 8 1 16 -.5 84 1 16 -.5 8 .1 16 -.1 17 0 - a not-so-smooth curve</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen06_2.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 3 0 513 6 0 128 0.5 128 1 128 0 129 -1 - a curve running 0 to 1 to -1, with a minimum, maximum and minimum at these values respectively. Inflexions are at .5 and 0 and are relatively smooth</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 3 0 513 6 0 128 0.5 128 1 128 0 129 -1 - a curve running 0 to 1 to -1, with a minimum, maximum and minimum at these values respectively. Inflexions are at .5 and 0 and are relatively smooth</para>
+        </caption>
+      </mediaobject>
+
+    </para>
+  </refsect1>
+
+
+  <refsect1>
+     <title>See Also</title>
+     <para>
+       <link linkend="GEN05"><citetitle>GEN05</citetitle></link>,
+       <link linkend="GEN07"><citetitle>GEN07</citetitle></link>, and
+       <link linkend="GEN08"><citetitle>GEN08</citetitle></link>
+     </para>
+  </refsect1>
+</refentry>

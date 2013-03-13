@@ -1,0 +1,110 @@
+
+<refentry id="babo">
+<indexterm id="IndexBabo"><primary>babo</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Reverberation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>babo</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>babo</refname>
+    <refpurpose>
+      A physical model reverberator.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>babo</emphasis>  stands  for  <emphasis>ba</emphasis>ll-within-the-<emphasis>bo</emphasis>x.   It is a physical model reverberator based on the paper by Davide  Rocchesso "The  Ball  within  the Box: a sound-processing metaphor", Computer Music Journal,  Vol  19,  N.4,  pp.45-47,  Winter 1995.
+    </para>
+
+    <para>
+      The resonator geometry can be defined, along with some response characteristics, the position of the listener within the resonator, and the position of the sound source.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>a1, a2 <command>babo</command> asig, ksrcx, ksrcy, ksrcz, irx, iry, irz [, idiff] [, ifno]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>irx, iry, irz</emphasis> -- the  coordinates of the geometry of the resonator (length of the edges in meters)
+    </para>
+
+    <para>
+      <emphasis>idiff</emphasis> -- is  the  coefficient  of  diffusion  at  the walls,  which regulates the amount of diffusion (0-1, where 0 = no diffusion, 1 = maximum diffusion - default: 1)
+    </para>
+
+    <para>
+      <emphasis>ifno</emphasis> -- expert  values  function:  a function number that holds all the additional parameters  of the resonator. This is typically a GEN2--type function used in non-rescaling mode. They are as follows:
+      <itemizedlist>
+        <listitem><para><emphasis>decay</emphasis> -- main decay of the resonator (default: 0.99)</para></listitem>
+        <listitem><para><emphasis>hydecay</emphasis> -- high frequency decay of the resonator (default: 0.1)</para></listitem>
+        <listitem><para><emphasis>rcvx, rcvy, rcvz</emphasis> -- the coordinates of the position of the receiver (the listener) (in  meters;  0,0,0 is the resonator center)</para></listitem>
+        <listitem><para><emphasis>rdistance</emphasis> -- the  distance in meters between the two pickups (your ears,  for  example  - default: 0.3)</para></listitem>
+        <listitem><para><emphasis>direct</emphasis> -- the attenuation of the direct signal (0-1, default: 0.5)</para></listitem>
+        <listitem><para><emphasis>early_diff</emphasis> -- the attenuation coefficient of the  early reflections (0-1, default: 0.8)</para></listitem>
+      </itemizedlist>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asig</emphasis> -- the input signal
+    </para>
+
+    <para>
+      <emphasis>ksrcx, ksrcy, ksrcz</emphasis> -- the virtual coordinates of the source of sound (the input signal). These are allowed to move at k-rate and provide all the necessary variations in terms of response of the resonator.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is a simple example of the babo opcode. It uses the file <ulink url="examples/babo.csd"><citetitle>babo.csd</citetitle></ulink>, and <ulink url="examples/beats.wav"><citetitle>beats.wav</citetitle></ulink>.
+      <example>
+        <title>A simple example of the babo opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/babo.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+    <para>
+      Here is an advanced example of the babo opcode. It uses the file <ulink url="examples/babo_expert.csd"><citetitle>babo_expert.csd</citetitle></ulink>, and <ulink url="examples/beats.wav"><citetitle>beats.wav</citetitle></ulink>.
+
+      <example>
+        <title>An advanced example of the babo opcode.</title>
+
+          <xi:include href="examples-xml/babo_expert.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Paolo Filippi</member>
+        <member>Padova, Italy</member>
+        <member>1999</member>
+      </simplelist>
+    </para>
+
+    <para>
+      <simplelist>
+        <member>Nicola Bernardini</member>
+        <member>Rome, Italy</member>
+        <member>2000</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 4.09</para>
+  </refsect1>
+</refentry>

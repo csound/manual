@@ -1,0 +1,110 @@
+
+<refentry id="OSCsend">
+<indexterm id="IndexOSCsend"><primary>OSCsend</primary></indexterm>
+  <refentryinfo><title>OSC</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>OSCsend</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>OSCsend</refname>
+    <refpurpose>
+      Sends data to other processes using the OSC protocol
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Uses the OSC protocol to send message to other OSC listening processes.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>OSCsend</command> kwhen, ihost, iport, idestination, itype [, kdata1, kdata2, ...]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ihost</emphasis>
+      -- a string that is the intended host computer domain name.  An
+    empty string is interpreted as the current computer.
+    </para>
+
+    <para>
+      <emphasis>iport</emphasis>
+      -- the number of the port that is used for the communication.
+    </para>
+
+    <para>
+      <emphasis>idest</emphasis>
+      -- a string that is the destination address.  This takes the
+      form of a file name with directories.  Csound just passes this
+      string to the raw sending code and makes no interpretation.
+    </para>
+
+    <para>
+      <emphasis>itype</emphasis>
+      -- a string that indicates the types of the optional arguments
+      that are read at k-rate.  The string can contain the characters
+      "bcdfilmst" which stand for Boolean, character, double, float,
+      32-bit integer, 64-bit integer, MIDI, string and timestamp.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kwhen</emphasis> -- a message is sent whenever this
+    value changes.  A message will always be sent on the first call.
+    </para>
+
+    <para>
+      The data is taken from the k-values that follow the format
+    string.   In a similar way to a printf format, the characters in
+    order determine how the argument is interpreted.  Note that a time
+    stamp takes two arguments.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Example</title>
+    <para>
+      The example shows a simple instrument, which when called, sends a group of 3 messages to a computer called "xenakis", on port 7770, to be read by a process that recognises /foo/bar as its address.
+    </para>
+
+    <informalexample>
+      <programlisting>
+      <emphasis role="oblock">instr</emphasis>   1
+          <emphasis role="opc">OSCsend</emphasis>     1, &quot;xenakis.cs.bath.ac.uk&quot;,7770, &quot;/foo/bar&quot;, &quot;sis&quot;, &quot;FOO&quot;, 42, &quot;bar&quot;
+      <emphasis role="oblock">endin</emphasis></programlisting>
+    </informalexample>
+    <para>
+      See the entry for <link linkend="OSClisten"><citetitle>OSClisten</citetitle></link>, for an example of send/recieve usage using OSC.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+      <para>
+        <link linkend="OSClisten"><citetitle>OSClisten</citetitle></link>,
+        <link linkend="OSCinit"><citetitle>OSCinit</citetitle></link>
+      </para>
+               <para> More information on this opcode: <ulink url="http://www.youtube.com/watch?v=JX1C3TqP_9Y"><citetitle>http://www.youtube.com/watch?v=JX1C3TqP_9Y</citetitle></ulink>  , made by Andrés Cabrera </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

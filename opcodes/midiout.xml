@@ -1,0 +1,90 @@
+
+<refentry id="midiout">
+<indexterm id="IndexMidiout"><primary>midiout</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Generic I/O</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>midiout</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>midiout</refname>
+
+    <refpurpose>
+      Sends a generic MIDI message to the MIDI OUT port.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Sends a generic MIDI message to the MIDI OUT port.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>midiout</command> kstatus, kchan, kdata1, kdata2</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kstatus</emphasis> -- the type of MIDI message. Can be:
+      <itemizedlist>
+	<listitem><para>128 (note off)</para></listitem>
+	<listitem><para>144 (note on)</para></listitem>
+	<listitem><para>160 (polyphonic aftertouch)</para></listitem>
+	<listitem><para>176 (control change)</para></listitem>
+	<listitem><para>192 (program change)</para></listitem>
+	<listitem><para>208 (channel aftertouch)</para></listitem>
+	<listitem><para>224 (pitch bend)</para></listitem>
+	<listitem><para>0 when no MIDI messages must be sent to the MIDI OUT port</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>kchan</emphasis> -- MIDI channel (1-16)
+    </para>
+
+    <para>
+      <emphasis>kdata1, kdata2</emphasis> -- message-dependent data values
+    </para>
+
+    <para>
+      <emphasis>midiout</emphasis> has no output arguments, because it sends a message to the MIDI OUT port implicitly. It works at k-rate. It sends a MIDI message only when <emphasis>kstatus</emphasis> is non-zero.
+    </para>
+
+    <warning>
+      <para>
+        <emphasis>Warning:</emphasis> Normally <emphasis>kstatus</emphasis> should be set to 0. Only when the user intends to send a MIDI message, can it be set to the corresponding message type number.
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the midiout opcode. It uses the file <ulink url="examples/midiout.csd"><citetitle>midiout.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the midiout opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/midiout.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namegabriel;</member>
+        <member>Italy</member>
+        <member>1998</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.492</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,132 @@
+
+<refentry id="fof2">
+<indexterm id="IndexFof2"><primary>fof2</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Granular Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>fof2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>fof2</refname>
+    <refpurpose>
+      Produces sinusoid bursts including k-rate incremental indexing with each successive burst.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Audio output is a succession of sinusoid bursts initiated at frequency <emphasis>xfund</emphasis> with a spectral peak at <emphasis>xform</emphasis>. For <emphasis>xfund</emphasis> above 25 Hz these bursts produce a speech-like formant with spectral characteristics determined by the k-input parameters. For lower fundamentals this generator provides a special form of granular synthesis.
+    </para>
+
+    <para>
+      <emphasis>fof2</emphasis> implements k-rate incremental indexing into <emphasis>ifna</emphasis> function with each successive burst.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>fof2</command> xamp, xfund, xform, koct, kband, kris, kdur, kdec, iolaps, \
+      ifna, ifnb, itotdur, kphs, kgliss [, iskip]</synopsis>
+ </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iolaps</emphasis> -- number of preallocated spaces needed to hold overlapping burst data. Overlaps are frequency dependent, and the space required depends on the maximum value of <emphasis>xfund * kdur</emphasis>. Can be over-estimated at no computation cost. Uses less than 50 bytes of memory per <emphasis>iolap</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>ifna, ifnb</emphasis> -- table numbers of two stored functions. The first is a sine table for sineburst synthesis (size of at least 4096 recommended). The second is a rise shape, used forwards and backwards to shape the sineburst rise and decay; this may be linear (<link linkend="GEN07"><citetitle>GEN07</citetitle></link>) or perhaps a sigmoid (<link linkend="GEN19"><citetitle>GEN19</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis>itotdur</emphasis> -- total time during which this <emphasis>fof</emphasis> will be active. Normally set to p3. No new sineburst is created if it cannot complete its <emphasis>kdur</emphasis> within the remaining <emphasis>itotdur</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>iskip</emphasis> (optional, default=0) -- If non-zero, skip initialization (allows legato use).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>xamp</emphasis> -- peak amplitude of each sineburst, observed at the true end of its rise pattern. The rise may exceed this value given a large bandwidth (say, Q &lt; 10) and/or when the bursts are overlapping.
+    </para>
+
+    <para>
+      <emphasis>xfund</emphasis> -- the fundamental frequency (in Hertz) of the impulses that create new sinebursts.
+    </para>
+
+    <para>
+      <emphasis>xform</emphasis> -- the formant frequency, i.e. freq of the sinusoid burst induced by each <emphasis>xfund</emphasis> impulse. This frequency can be fixed for each burst or can vary continuously (see <emphasis>ifmode</emphasis>).
+    </para>
+
+    <para>
+      <emphasis>koct</emphasis> -- octaviation index, normally zero. If greater than zero, lowers the effective <emphasis>xfund</emphasis> frequency by attenuating odd-numbered sinebursts. Whole numbers are full octaves, fractions transitional.
+    </para>
+
+    <para>
+      <emphasis>kband</emphasis> -- the formant bandwidth (at -6dB), expressed in Hz. The bandwidth determines the rate of exponential decay throughout the sineburst, before the enveloping described below is applied.
+    </para>
+
+    <para>
+      <emphasis>kris, kdur, kdec</emphasis> -- rise, overall duration, and decay times (in seconds) of the sinusoid burst. These values apply an enveloped duration to each burst, in similar fashion to a Csound <emphasis>linen</emphasis> generator but with rise and decay shapes derived from the <emphasis>ifnb</emphasis> input. <emphasis>kris</emphasis> inversely determines the skirtwidth (at -40 dB) of the induced formant region. <emphasis>kdur</emphasis> affects the density of sineburst overlaps, and thus the speed of computation. Typical values for vocal imitation are .003,.02,.007.
+    </para>
+
+    <para>
+      <emphasis>kphs</emphasis> -- allows k-rate indexing of function table <emphasis>ifna</emphasis> with each successive burst, making it suitable for time-warping applications. Values of <emphasis>kphs</emphasis> are normalized from 0 to 1, 1 being the end of the function table <emphasis>ifna</emphasis>. 
+    </para>
+
+    <para>
+      <emphasis>kgliss</emphasis> -- sets the end pitch of each grain relative to the initial pitch, in octaves. Thus <emphasis>kgliss</emphasis> = 2 means that the grain ends two octaves above its initial pitch, while <emphasis>kgliss</emphasis> = -3/4 has the grain ending a major sixth below. Each 1/12 added to <emphasis>kgliss</emphasis> raises the ending frequency one half-step.  If you want no glissando, set <emphasis>kgliss</emphasis> to 0.
+    </para>
+    <para>
+      Csound's <link linkend="fof"><citetitle>fof</citetitle></link> generator is loosely based on Michael Clarke's C-coding of IRCAM's <emphasis>CHANT</emphasis> program (Xavier Rodet et al.). Each <emphasis>fof</emphasis> produces a single formant, and the output of four or more of these can be summed to produce a rich vocal imitation. <emphasis>fof</emphasis> synthesis is a special form of granular synthesis, and this implementation aids transformation between vocal imitation and granular textures. Computation speed depends on <emphasis>kdur, xfund</emphasis>, and the density of any overlaps.
+    </para>
+    <note>
+      <para>The ending frequency of any grain is equal to <emphasis>kform</emphasis> * (2 ^ <emphasis>kgliss</emphasis>), so setting <emphasis>kgliss</emphasis> too high may result in aliasing.  For example, <emphasis>kform</emphasis> = 3000 and <emphasis>kgliss</emphasis> = 3 places the ending frequency over the Nyquist if <emphasis>sr</emphasis> = 44100.  It is a good idea to scale <emphasis>kgliss</emphasis> accordingly.</para>
+    </note>
+  </refsect1>
+
+    <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the fof2 opcode. It uses the file <ulink url="examples/fof2.csd"><citetitle>fof2.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the fof2 opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/fof2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Here is another example of the fof2 opcode, which generates vowel tones using formants generated by fof2 coinciding with values from the <link linkend="MiscFormants"><citetitle>Formant Values</citetitle></link> appendix. It uses the file <ulink url="examples/fof2-2.csd"><citetitle>fof2-2.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the fof2 opcode to produce vowel sounds.</title>
+
+          <xi:include href="examples-xml/fof2-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="fof"><citetitle>fof</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namerasmus;</member>
+        <member><emphasis>fof2</emphasis> is a modification of <emphasis>fof</emphasis> by &namerasmus;</member>
+      </simplelist>
+    </para>
+    <para>New in Csound 3.45</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,85 @@
+
+<refentry id="foscili">
+<indexterm id="Indexfoscili"><primary>foscili</primary></indexterm>
+  <refentryinfo><title>Signal Generators:FM Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>foscili</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>foscili</refname>
+    <refpurpose>
+      Basic frequency modulated oscillator with linear interpolation.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Basic frequency modulated oscillator with linear interpolation.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>foscili</command> xamp, kcps, xcar, xmod, kndx, ifn [, iphs]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifn</emphasis> -- function table number. Requires a wrap-around guard point.
+    </para>
+
+    <para>
+      <emphasis>iphs</emphasis> (optional, default=0) -- initial phase of waveform in table <emphasis>ifn</emphasis>, expressed as a fraction of a cycle (0 to 1). A negative value will cause phase initialization to be skipped. The default value is 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>xamp</emphasis> -- the amplitude of the output signal.
+    </para>
+
+    <para>
+      <emphasis>kcps</emphasis> -- a common denominator, in cycles per second, for the carrier and modulating frequencies.
+    </para>
+
+    <para>
+      <emphasis>xcar</emphasis> -- a factor that, when multiplied by the <emphasis>kcps</emphasis> parameter, gives the carrier frequency.
+    </para>
+
+    <para>
+      <emphasis>xmod</emphasis> -- a factor that, when multiplied by the <emphasis>kcps</emphasis> parameter, gives the modulating frequency.
+    </para>
+
+    <para>
+      <emphasis>kndx</emphasis> -- the modulation index.
+    </para>
+
+    <para>
+      <emphasis>foscili</emphasis> differs from <link linkend="foscil"><citetitle>foscil</citetitle></link> in that the standard procedure of using a truncated phase as a sampling index is here replaced by a process that interpolates between two successive lookups. Interpolating generators will produce a noticeably cleaner output signal, but they may take as much as twice as long to run. Adequate accuracy can also be gained without the time cost of interpolation by using large stored function tables of 2K, 4K or 8K points if the space is available.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the foscili opcode. It uses the file <ulink url="examples/foscili.csd"><citetitle>foscili.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the foscili opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/foscili.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+      
+  <refsect1>
+    <title>See Also</title>
+    <para> More information about frequency modulation on Wikipedia: <ulink url="http://en.wikipedia.org/wiki/Frequency_modulation_synthesis"><citetitle>http://en.wikipedia.org/wiki/Frequency_modulation_synthesis</citetitle></ulink></para>
+  </refsect1>
+</refentry>

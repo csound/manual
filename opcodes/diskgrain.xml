@@ -1,0 +1,126 @@
+<refentry id="diskgrain">
+  <indexterm id="Indexdiskgrain"><primary>diskgrain</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Granular Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>diskgrain</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>diskgrain</refname>
+    <refpurpose>
+      Synchronous granular synthesis, using a soundfile as source.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>diskgrain</emphasis> implements synchronous granular synthesis. The source sound for the grains is obtained by reading a soundfile containing the samples of the source waveform. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>asig <command>diskgrain</command> Sfname, kamp, kfreq, kpitch, kgrsize, kprate, \
+      ifun, iolaps [,imaxgrsize , ioffset]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>Sfilename</emphasis> -- source soundfile.
+    </para>
+    <para>
+      <emphasis>ifun</emphasis> -- grain envelope function table.
+    </para>
+    <para>
+      <emphasis>iolaps</emphasis> -- maximum number of overlaps, max(kfreq)*max(kgrsize). Estimating
+      a large value should not affect performance, but exceeding this value will probably have disastrous
+      consequences.
+    </para>
+    <para>
+      <emphasis>imaxgrsize</emphasis> -- max grain size in secs (default 1.0).
+    </para>
+    <para>
+      <emphasis>ioffset</emphasis> -- start offset in secs from beginning of file (default: 0).	
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kamp</emphasis> -- amplitude scaling
+    </para>
+    <para>
+      <emphasis>kfreq</emphasis> -- frequency of grain generation, or density, in grains/sec.
+    </para>
+
+    <para>
+      <emphasis>kpitch</emphasis> -- grain pitch scaling (1=normal pitch, &lt; 1 lower, > 1 higher; negative, backwards)
+    </para>
+
+    <para>
+      <emphasis>kgrsize</emphasis> -- grain size in secs.
+    </para>
+    <para>
+      <emphasis>kprate</emphasis> -- readout pointer rate, in grains. The value of 1 will advance 
+      the reading pointer 1 grain ahead in the source table. Larger values 
+      will time-compress and smaller values will time-expand the source signal. 
+      Negative values will cause the pointer to run backwards and zero will 
+      freeze it.
+    </para>
+    <para>
+      The grain generator has full control of frequency (grains/sec), overall amplitude, 
+      grain pitch (a sampling increment) and grain size (in secs), 
+      both as fixed or time-varying (signal) parameters. 
+      An extra parameter is the grain pointer speed (or rate), 
+      which controls which position the generator will start reading samples 
+      in the file for each successive grain. It is measured in fractions of grain size, 
+      so a value of 1 (the default) will make each successive grain read from where the 
+      previous grain should finish. A value of 0.5 will make the next grain start at the midway position 
+      from the previous grain start and finish, etc.. A value of 0 will make the generator read 
+      always from a fixed position  (wherever the pointer was last at).
+      A negative value will decrement pointer positions. This control gives extra flexibility for creating 
+      timescale modifications in the resynthesis.
+    </para>
+    <para>
+      <emphasis>Diskgrain</emphasis> will generate any number of parallel grain streams (which will depend on grain density/frequency), 
+      up to the olaps value (default 100). The number of streams (overlapped grains) is 
+      determined by grainsize*grain_freq. More grain overlaps will demand more calculations and 
+      the synthesis might not run in realtime (depending on processor power).
+    </para>
+    <para>
+      <emphasis>Diskgrain</emphasis> can simulate FOF-like formant synthesis, provided that a suitable shape is used 
+      as grain envelope and a sinewave as the grain wave. For this use, grain sizes of around 
+      0.04 secs can be used. The formant centre frequency is determined by the grain pitch. 
+      Since this is a sampling increment, in order to use a frequency in Hz, that value has to be 
+      scaled by tablesize/sr. Grain frequency will determine the fundamental.
+    </para>
+    <para>
+      This opcode is a variation on the <link linkend="syncgrain"><citetitle>syncgrain</citetitle></link> opcode.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the diskgrain opcode. It uses the file <ulink url="examples/diskgrain.csd"><citetitle>diskgrain.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the diskgrain opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/diskgrain.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>May 2007</member>
+      </simplelist>
+      New in Csound 5.06
+    </para>
+  </refsect1>
+</refentry>

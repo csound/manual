@@ -1,0 +1,260 @@
+
+<refentry id="bbcutm">
+<indexterm id="IndexBbcutm"><primary>bbcutm</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Sample Playback</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>bbcutm</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>bbcutm</refname>
+    <refpurpose>
+      Generates breakbeat-style cut-ups of a mono audio stream.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      The BreakBeat Cutter automatically generates cut-ups of a source audio stream in the style of drum and bass/jungle breakbeat manipulations.  There are two versions, for mono (<emphasis>bbcutm</emphasis>) or stereo (<emphasis>bbcuts</emphasis>) sources.  Whilst originally based on breakbeat cutting, the opcode can be applied to any type of source audio.
+    </para>
+
+    <para>
+      The prototypical cut sequence favoured over one bar with eighth note subdivisions would be
+
+      <literallayout>
+3+ 3R + 2
+      </literallayout>
+ 
+      where we take a 3 unit block from the source's start, repeat it, then 2 units from the 7th and 8th eighth notes of the source.
+    </para>
+
+    <para>
+      We talk of rendering phrases (a sequence of cuts before reaching a new phrase at the beginning of a bar) and units (as subdivision th notes).
+    </para>
+
+    <para>
+      The opcode comes most alive when multiple synchronised versions are used simultaneously.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>a1 <command>bbcutm</command> asource, ibps, isubdiv, ibarlength, iphrasebars, inumrepeats \
+      [, istutterspeed] [, istutterchance] [, ienvchoice ]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ibps</emphasis> -- Tempo to cut at, in beats per second.
+    </para>
+
+    <para>
+      <emphasis>isubdiv</emphasis> -- Subdivisions unit, for a bar. So 8 is eighth notes (of a 4/4 bar).
+    </para>
+
+    <para>
+      <emphasis>ibarlength</emphasis> -- How many beats per bar. Set to 4 for default 4/4 bar behaviour.
+    </para>
+
+    <para>
+      <emphasis>iphrasebars</emphasis> -- The output cuts are generated in phrases, each phrase is up to iphrasebars long
+    </para>
+
+    <para>
+      <emphasis>inumrepeats</emphasis> --  In normal use the algorithm would allow up to one additional repeat of a given cut at a time. This parameter allows that to be changed. Value 1 is normal- up to one extra repeat. 0 would avoid repeating, and you would always get back the original source except for enveloping and stuttering.
+    </para>
+
+    <para>
+      <emphasis>istutterspeed</emphasis> -- (optional, default=1) The stutter can be an integer multiple of the subdivision speed. For instance, if subdiv is 8 (quavers) and stutterspeed is 2, then the stutter is in semiquavers (sixteenth notes= subdiv 16). The default is 1.
+    </para>
+
+    <para>
+      <emphasis>istutterchance</emphasis> -- (optional, default=0) The tail of a phrase has this chance of becoming a single repeating one unit cell stutter (0.0 to 1.0). The default is 0.
+    </para>
+
+    <para>
+      <emphasis>ienvchoice</emphasis> -- (optional, default=1) choose 1 for on (exponential envelope for cut grains) or 0 for off. Off will cause clicking, but may give good noisy results, especially for percussive sources. The default is 1, on.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asource</emphasis> -- The audio signal to be cut up. This version runs in real-time without knowledge of future audio.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+
+    <para>
+      Here is a simple example of the bbcutm opcode. It uses the file <ulink url="examples/bbcutm.csd"><citetitle>bbcutm.csd</citetitle></ulink>, and <ulink url="examples/beats.wav"><citetitle>beats.wav</citetitle></ulink>.
+      <example>
+        <title>A simple example of the bbcutm opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/bbcutm.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+    <para>
+      Here are some more advanced examples...
+
+      <example>
+        <title>First steps- mono and stereo versions</title>
+        <programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="ohdr">sr</emphasis>        <emphasis role="op">=</emphasis>         44100
+<emphasis role="ohdr">kr</emphasis>        <emphasis role="op">=</emphasis>         4410
+<emphasis role="ohdr">ksmps</emphasis>     <emphasis role="op">=</emphasis>         10
+<emphasis role="ohdr">nchnls</emphasis>    <emphasis role="op">=</emphasis>         2
+ 
+<emphasis role="oblock">instr</emphasis> 1
+    asource <emphasis role="opc">diskin</emphasis> "break7.wav",1,0,1 <emphasis role="comment">; a source breakbeat sample, wraparound lest it stop!</emphasis>
+ 
+    <emphasis role="comment">; cuts in eighth notes per 4/4 bar, up to 4 bar phrases, up to 1</emphasis>
+    <emphasis role="comment">; repeat in total (standard use) rare stuttering at 16 note speed,</emphasis>
+    <emphasis role="comment">; no enveloping</emphasis>
+    asig <emphasis role="opc">bbcutm</emphasis> asource, 2.6937, 8, 4, 4, 1, 2, 0.1, 0
+ 
+    <emphasis role="opc">outs</emphasis>        asig,asig
+<emphasis role="oblock">endin</emphasis>
+ 
+<emphasis role="oblock">instr</emphasis> 2 <emphasis role="comment">;stereo version</emphasis>
+   asource1,asource2 <emphasis role="opc">diskin</emphasis> "break7stereo.wav", 1, 0, 1    <emphasis role="comment">; a source breakbeat sample, wraparound lest it stop!</emphasis>
+ 
+  <emphasis role="comment">; cuts in eighth notes per 4/4 bar, up to 4 bar phrases, up to 1</emphasis>
+  <emphasis role="comment">; repeat in total (standard use) rare stuttering at 16 note speed,</emphasis>
+  <emphasis role="comment">; no enveloping</emphasis>
+  asig1,asig2 <emphasis role="opc">bbcuts</emphasis> asource1, asource2, 2.6937, 8, 4, 4, 1, 2, 0.1, 0
+ 
+  <emphasis role="opc">outs</emphasis>  asig1,asig2
+<emphasis role="oblock">endin</emphasis>
+ 
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">i</emphasis>1 0 10
+<emphasis role="stamnt">i</emphasis>2 11 10
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis></programlisting>
+      </example>
+    </para>
+
+    <para>
+      <example>
+        <title>Multiple simultaneous synchronised breaks</title>
+        <programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="ohdr">sr</emphasis>        <emphasis role="op">=</emphasis>         44100
+<emphasis role="ohdr">kr</emphasis>        <emphasis role="op">=</emphasis>         4410
+<emphasis role="ohdr">ksmps</emphasis>     <emphasis role="op">=</emphasis>         10
+<emphasis role="ohdr">nchnls</emphasis>    <emphasis role="op">=</emphasis>         2
+ 
+<emphasis role="oblock">instr</emphasis> 1
+  ibps    <emphasis role="op">=</emphasis> 2.6937
+  iplaybackspeed <emphasis role="op">=</emphasis> ibps<emphasis role="op">/</emphasis>p5
+  asource <emphasis role="opc">diskin</emphasis> p4, iplaybackspeed, 0, 1
+ 
+  asig <emphasis role="opc">bbcutm</emphasis> asource, 2.6937, p6, 4, 4, p7, 2, 0.1, 1
+ 
+  <emphasis role="opc">out</emphasis>   asig
+<emphasis role="oblock">endin</emphasis>
+ 
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+ 
+<emphasis role="comment">;   source      bps cut repeats</emphasis>
+<emphasis role="stamnt">i</emphasis>1 0 10 "break1.wav" 2.3 8   2  <emphasis role="Ccomment">//2.3 is the source original tempo</emphasis>
+<emphasis role="stamnt">i</emphasis>1 0 10 "break2.wav" 2.4 8   3
+<emphasis role="stamnt">i</emphasis>1 0 10 "break3.wav" 2.5 16  4
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis></programlisting>
+      </example>
+    </para>
+
+    <para>
+      <example>
+        <title>Cutting up any old audio- much more interesting noises than this should be possible!</title>
+        <programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="ohdr">sr</emphasis>        <emphasis role="op">=</emphasis>         44100
+<emphasis role="ohdr">kr</emphasis>        <emphasis role="op">=</emphasis>         4410
+<emphasis role="ohdr">ksmps</emphasis>     <emphasis role="op">=</emphasis>         10
+<emphasis role="ohdr">nchnls</emphasis>    <emphasis role="op">=</emphasis>         2
+ 
+<emphasis role="oblock">instr</emphasis> 1
+  asource <emphasis role="opc">oscil</emphasis> 20000, 70, 1
+  <emphasis role="comment">; ain, bps, subdiv, barlength, phrasebars, numrepeats,</emphasis>
+  <emphasis role="comment">;stutterspeed, stutterchance, envelopingon</emphasis>
+  asig <emphasis role="opc">bbcutm</emphasis> asource, 2, 32, 1, 1, 2, 4, 0.6, 1
+  <emphasis role="opc">outs</emphasis>  asig
+<emphasis role="oblock">endin</emphasis>
+ 
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis>1 0 256 10 1
+<emphasis role="stamnt">i</emphasis>1 0 10
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis></programlisting>
+      </example>
+    </para>
+
+    <para>
+      <example>
+        <title>Constant stuttering- faked, not possible since can only stutter in last half bar could make extra stuttering option parameter</title>
+        <programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="ohdr">sr</emphasis>        <emphasis role="op">=</emphasis>         44100
+<emphasis role="ohdr">kr</emphasis>        <emphasis role="op">=</emphasis>         4410
+<emphasis role="ohdr">ksmps</emphasis>     <emphasis role="op">=</emphasis>         10
+<emphasis role="ohdr">nchnls</emphasis>    <emphasis role="op">=</emphasis>         2
+ 
+<emphasis role="oblock">instr</emphasis> 1
+  asource <emphasis role="opc">diskin</emphasis> "break7.wav", 1, 0, 1
+ 
+  <emphasis role="comment">;16th note cuts- but cut size 2 over half a beat.</emphasis>
+  <emphasis role="comment">;each half beat will either survive intact or be turned into</emphasis>
+  <emphasis role="comment">;the first sixteenth played twice in succession</emphasis>
+ 
+  asig <emphasis role="opc">bbcutm</emphasis> asource, 2.6937, 2, 0.5, 1, 2, 2, 1.0, 0
+  <emphasis role="opc">outs</emphasis>  asig
+<emphasis role="oblock">endin</emphasis>
+ 
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">i</emphasis>1 0 30
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis></programlisting>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="bbcuts"><citetitle>bbcuts</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Nick Collins</member>
+        <member>London</member>
+        <member>August 2001</member>
+      </simplelist>
+    </para>
+
+    <para>New in version 4.13</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,134 @@
+
+<refentry id="ctrl7">
+<indexterm id="IndexCtrl7"><primary>ctrl7</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Input</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ctrl7</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>ctrl7</refname>
+
+    <refpurpose>
+      Allows a floating-point 7-bit MIDI signal scaled with a minimum and a maximum range.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Allows a floating-point 7-bit MIDI signal scaled with a minimum and a maximum range.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>idest <command>ctrl7</command> ichan, ictlno, imin, imax [, ifn]</synopsis>
+    <synopsis>kdest <command>ctrl7</command> ichan, ictlno, kmin, kmax [, ifn]</synopsis>
+    <synopsis>adest <command>ctrl7</command> ichan, ictlno, kmin, kmax [, ifn] [, icutoff]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>idest</emphasis> -- output signal
+    </para>
+
+    <para>
+      <emphasis>ichan</emphasis> -- MIDI channel (1-16)
+    </para>
+
+    <para>
+      <emphasis>ictlno</emphasis> -- MIDI controller number (0-127)
+    </para>
+
+    <para>
+      <emphasis>imin</emphasis> -- user-defined minimum floating-point value of output
+    </para>
+
+    <para>
+      <emphasis>imax</emphasis> -- user-defined maximum floating-point value of output
+    </para>
+
+    <para>
+      <emphasis>ifn</emphasis> (optional) -- table to be read when indexing is required. Table must be normalized. Output is scaled according to <emphasis>imax</emphasis> and <emphasis>imin</emphasis> val.
+    </para>
+
+    <para>
+      <emphasis>icutoff</emphasis> (optional) -- low pass filter cut-off frequency for smoothing a-rate output.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kdest, adest</emphasis> -- output signal
+    </para>
+
+    <para>
+      <emphasis>kmin</emphasis> -- user-defined minimum floating-point value of output
+    </para>
+
+    <para>
+      <emphasis>kmax</emphasis> -- user-defined maximum floating-point value of output
+    </para>
+
+    <para>
+      <emphasis>ctrl7</emphasis> (i- and k-rate 7 bit MIDI control) allows a floating-point 7-bit MIDI signal scaled with a minimum and a maximum range. It also allows optional non-interpolated table indexing. Minimum and maximum values can be varied at k-rate.
+    </para>
+
+    <para>
+      <emphasis>ctrl7</emphasis> differs from <link linkend="midic7"><citetitle>midic7</citetitle></link> because it can be included in score-oriented instruments without Csound crashes. It also needs the additional parameter <emphasis>ichan</emphasis> containing the MIDI channel of the controller.
+    </para>
+    <para>
+      The a-rate version of <emphasis>ctrl7</emphasis> outputs an a-rate variable, which is low-pass filtered (smoothed). It contains an optional <emphasis>icutoff</emphasis> parameter, to set the cutoff frecuency for the low-pass filter. The default is 5.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the ctrl7 opcode. It uses the file <ulink url="examples/ctrl7.csd"><citetitle>ctrl7.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the ctrl7 opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/ctrl7.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <note>
+    ctrl7 only outputs k values once the controller is first moved. To
+    set an initial k-value, a call to initc7 is required. Ctrlinit does not work
+    for this purpose.
+  </note>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="ctrl14"><citetitle>ctrl14</citetitle></link>,
+      <link linkend="ctrl21"><citetitle>ctrl21</citetitle></link>,
+      <link linkend="initc7"><citetitle>initc7</citetitle></link>,
+      <link linkend="initc14"><citetitle>initc14</citetitle></link>,
+      <link linkend="initc21"><citetitle>initc21</citetitle></link>,
+      <link linkend="midic7"><citetitle>midic7</citetitle></link>,
+      <link linkend="midic14"><citetitle>midic14</citetitle></link>,
+      <link linkend="midic21"><citetitle>midic21</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namegabriel;</member>
+        <member>Italy</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.47</para>
+    <para>Thanks goes to &namerasmus; for pointing out the correct MIDI channel and controller number ranges.
+    </para>
+    <para>The a-rate version of <emphasis>ctrl7</emphasis> was added in version 5.06</para>
+  </refsect1>
+</refentry>

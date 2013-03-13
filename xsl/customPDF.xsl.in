@@ -1,0 +1,149 @@
+<?xml version='1.0' ?>
+
+<xsl:stylesheet  
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:fo="http://www.w3.org/1999/XSL/Format"
+    version="1.0">
+
+<xsl:import href="@xsl_base_path@/fo/docbook.xsl"/>
+
+<xsl:param name="fop.extensions" select="1" />
+
+<xsl:param name="chunk.section.depth" select="2" />
+<xsl:param name="use.id.as.filename" select="1" />
+<xsl:param name="chunker.output.indent" select="'yes'" />
+<xsl:param name="toc.section.depth" select="2" /> 
+<xsl:param name="refentry.generate.name" select="0" />
+<xsl:param name="refentry.generate.title" select="1" />
+<xsl:param name="chapter.autolabel" select="0" />
+<xsl:param name="admon.graphics" select="1" />
+
+<!-- <xsl:param name="html.stylesheet" select="'blue.css'"/> -->
+<!-- <xsl:param name="chunk.first.sections" select="1" /> -->
+<!-- <xsl:param name="section.autolabel" select="1" /> -->
+<!--<xsl:param name="section.label.includes.component.label" select="1" /> -->
+<!-- <xsl:param name="navig.graphics" select="1" /> -->
+
+<xsl:param name="generate.toc">
+appendix  toc,title
+article/appendix  nop
+article   toc,title
+book      toc,title <!--,figure,table,example,equation -->
+chapter   title <!-- toc, -->
+part      toc,title
+preface   toc,title
+qandadiv  toc
+qandaset  toc
+reference toc,title
+sect1     toc
+sect2     toc
+sect3     toc
+sect4     toc
+sect5     toc
+section   toc
+set       toc,title
+</xsl:param>
+
+<!-- monospace fonts smaller -->
+<xsl:attribute-set name="monospace.properties">
+  <xsl:attribute name="font-family">
+    <xsl:value-of select="$monospace.font.family"/>
+  </xsl:attribute>
+  <xsl:attribute name="font-size">8pt</xsl:attribute>
+</xsl:attribute-set>
+
+<!-- rules for quickref -->
+<xsl:template match="chapter/formalpara/para/synopsis">
+  <xsl:variable name="id"><xsl:call-template name="object.id"/></xsl:variable>
+  <xsl:variable name="content">
+    <xsl:apply-templates mode="quickref"/>
+  </xsl:variable>
+  <fo:block id="{$id}"
+    white-space-collapse='false'
+    white-space-treatment='preserve'
+    linefeed-treatment="preserve"
+    text-align="left"
+    xsl:use-attribute-sets="monospace.properties">
+    <xsl:copy-of select="$content"/>
+  </fo:block>
+</xsl:template>
+
+<xsl:template match="link" mode="quickref">
+  <xsl:element name="fo:basic-link">
+    <xsl:attribute name="internal-destination"><xsl:value-of select="@linkend"/></xsl:attribute>
+    <xsl:element name="fo:inline">
+      <xsl:attribute name="color"><xsl:value-of select="'blue'"/></xsl:attribute>
+      <xsl:attribute name="font-weight"><xsl:value-of select="'bold'"/></xsl:attribute>
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:element>
+</xsl:template>
+
+<!-- rules for syntax highlighting -->
+<xsl:template match="emphasis[@role='csdtag']">
+  <fo:inline color="rgb(165,42,42)">
+    <xsl:apply-templates/>
+  </fo:inline>
+</xsl:template>
+
+<xsl:template match="emphasis[@role='comment']">
+  <fo:inline color="rgb(0,128,0)" font-style="italic">
+    <xsl:apply-templates/>
+  </fo:inline>
+</xsl:template>
+
+<xsl:template match="emphasis[@role='Ccomment']">
+  <fo:inline color="rgb(205,133,63)" font-style="italic">
+    <xsl:apply-templates/>
+  </fo:inline>
+</xsl:template>
+
+<xsl:template match="emphasis[@role='ohdr']">
+  <fo:inline color="rgb(139,0,0)" font-weight="bold">
+    <xsl:apply-templates/>
+  </fo:inline>
+</xsl:template>
+
+<xsl:template match="emphasis[@role='oblock']">
+  <fo:inline color="rgb(128,0,128)" font-weight="bold">
+    <xsl:apply-templates/>
+  </fo:inline>
+</xsl:template>
+
+<xsl:template match="emphasis[@role='opc']">
+  <fo:inline color="rgb(0,0,255)" font-weight="bold">
+    <xsl:apply-templates/>
+  </fo:inline>
+</xsl:template>
+
+<xsl:template match="emphasis[@role='op']">
+  <fo:inline font-weight="bold">
+    <xsl:apply-templates/>
+  </fo:inline>
+</xsl:template>
+
+<xsl:template match="emphasis[@role='octrl']">
+  <fo:inline color="rgb(0,128,0)" font-weight="bold">
+    <xsl:apply-templates/>
+  </fo:inline>
+</xsl:template>
+
+<xsl:template match="emphasis[@role='olabel']">
+  <fo:inline color="rgb(205,92,92)" font-weight="bold">
+    <xsl:apply-templates/>
+  </fo:inline>
+</xsl:template>
+
+<xsl:template match="emphasis[@role='omacro']">
+  <fo:inline color="rgb(186,85,211)" font-weight="bold">
+    <xsl:apply-templates/>
+  </fo:inline>
+</xsl:template>
+
+<xsl:template match="emphasis[@role='stamnt']">
+  <fo:inline color="rgb(0,0,255)" font-weight="bold">
+    <xsl:apply-templates/>
+  </fo:inline>
+</xsl:template>
+
+</xsl:stylesheet>

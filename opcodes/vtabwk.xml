@@ -1,0 +1,54 @@
+
+<refentry id="vtabwk">
+<indexterm id="IndexVtabwk"><primary>vtabwk</primary></indexterm>
+  <refentryinfo><title>Vectorial:Tables</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vtabwk</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vtabwk</refname>
+    <refpurpose>
+      Write vectors (to tables -or arrays of vectors).
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This opcode writes vectors to tables at k-rate.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>vtabwk</command>  kndx, ifn, kinarg1 [, kinarg2, kinarg3 , .... , kinargN ]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para><emphasis>ifn</emphasis> - table number</para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kndx</emphasis> - Index into f-table, a positive number range matching the table length
+    </para>
+    <para>
+      <emphasis>kinarg1...kinargN</emphasis> - input vector elements
+    </para>
+    <para>
+      This opcode is useful in all cases in which one needs to write sets of values associated to unique indexes (for example, multi-channel samples, STFT bin frames, spectral formants, p-field based scores etc.) . The number of elements of each vector (length of the vector) is determined by the number of optional arguments on the right (<emphasis>kinarg1</emphasis>, <emphasis>kinarg2</emphasis>, <emphasis>kinarg3</emphasis>, ....  <emphasis>kinargN</emphasis>).
+    </para>
+    <para>
+      Notice that no wrap nor limit mode is implemented.  So, if  an index attempt to access to a zone not allocated by the table, Csound will probably crash. However this drawback can be easily avoided by using wrap or limit opcodes applied to indexes before using <emphasis>vtabwk</emphasis>, in order to correct eventual out-of-range values.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>Written by Gabriel Maldonado.</para>
+    <para>New in Csound 5 (Previously available only on CsoundAV)</para>
+  </refsect1>
+</refentry>

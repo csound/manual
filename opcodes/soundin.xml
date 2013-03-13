@@ -1,0 +1,161 @@
+
+<refentry id="soundin">
+<indexterm id="IndexSoundin"><primary>soundin</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Signal Input</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>soundin</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>soundin</refname>
+    <refpurpose>
+      Reads audio data from an external device or stream.
+          </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Reads audio data from an external device or stream.  Up to 24
+      channels may be read before v5.14, extended to 40 in later versions.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ar1[, ar2[, ar3[, ... a24]]] <command>soundin</command> ifilcod [, iskptim] [, iformat] \
+      [, iskipinit] [, ibufsize]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifilcod</emphasis> -- integer or character-string denoting the source soundfile name. An integer denotes the file soundin.filcod; a character-string (in double quotes, spaces permitted) gives the filename itself, optionally a full pathname. If not a full path, the named file is sought first in the current directory, then in that given by the environment variable <link linkend="CommandEnvironment"><citetitle>SSDIR</citetitle></link> (if defined) then by <link linkend="CommandEnvironment"><citetitle>SFDIR</citetitle></link>. See also <link linkend="GEN01"><citetitle>GEN01</citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis>iskptim</emphasis> (optional, default=0) -- time in seconds of input sound to be skipped. The default value is 0. In csound 5.00 and later, this may be negative to add a delay instead of skipping time.
+    </para>
+
+    <para>
+      <emphasis>iformat</emphasis> (optional, default=0) -- specifies the audio data file format:
+      <itemizedlist>
+        <listitem>
+          <para>1 = 8-bit signed char (high-order 8 bits of a 16-bit integer)</para>
+        </listitem>
+
+        <listitem>
+          <para>2 = 8-bit A-law bytes</para>
+        </listitem>
+
+        <listitem>
+          <para>3 = 8-bit U-law bytes</para>
+        </listitem>
+
+        <listitem>
+          <para>4 = 16-bit short integers</para>
+        </listitem>
+
+        <listitem>
+          <para>5 = 32-bit long integers</para>
+        </listitem>
+
+        <listitem>
+          <para>6 = 32-bit floats</para>
+        </listitem>
+
+        <listitem>
+          <para>7 = 8-bit unsigned int (not available in Csound versions older than 5.00)</para>
+        </listitem>
+
+        <listitem>
+          <para>8 = 24-bit int (not available in Csound versions older than 5.00)</para>
+        </listitem>
+
+        <listitem>
+          <para>9 = 64-bit doubles (not available in Csound versions older than 5.00)</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+     <emphasis>iskipinit</emphasis> -- switches off all initialisation if
+     non zero (default=0).  This was introduced in 4_23f13 and
+     csound5.
+    </para>
+
+    <para>
+     <emphasis>ibufsize</emphasis> -- buffer size in mono samples (not sample frames). Not available in Csound versions older than 5.00. The default buffer size is 2048.
+    </para>
+
+   <para>
+      If <emphasis>iformat</emphasis> = 0 it is taken from the soundfile header, and if no header from the Csound <link linkend="FlagsMinusLowerO"><citetitle>-o</citetitle></link> command-line flag. The default value is 0.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>soundin</emphasis> is functionally an audio generator that derives its signal from a pre-existing file. The number of channels read in is controlled by the number of result cells, a1, a2, etc., which must match that of the input file. A <emphasis>soundin</emphasis> opcode opens this file whenever the host instrument is initialized, then closes it again each time the instrument is turned off.
+    </para>
+
+    <para>
+      There can be any number of <emphasis>soundin</emphasis> opcodes within a single instrument or orchestra. Two or more of them can read simultaneously from the same external file.
+    </para>
+
+    <caution>
+      <title>Note to Windows users</title>
+      <para>
+        Windows users typically use back-slashes, <quote>\</quote>, when specifying the paths of their files. As an example, a Windows user might use the path <quote>c:\music\samples\loop001.wav</quote>. This is problematic because back-slashes are normally used to specify special characters.
+      </para>
+
+      <para>
+	To correctly specify this path in Csound, one may alternately:
+        <itemizedlist>
+          <listitem><para><emphasis>Use forward slashes</emphasis>: c:/music/samples/loop001.wav</para></listitem>
+          <listitem><para><emphasis>Use back-slash special characters, <quote>\\</quote></emphasis>: c:\\music\\samples\\loop001.wav</para></listitem>
+
+        </itemizedlist>
+      </para>
+    </caution>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the soundin opcode. It uses the file <ulink url="examples/soundin.csd"><citetitle>soundin.csd</citetitle></ulink>,
+<ulink url="examples/fox.wav"><citetitle>fox.wav</citetitle></ulink> and <ulink url="examples/kickroll.wav"><citetitle>kickroll.wav</citetitle></ulink>.
+      <example>
+        <title>Example of the soundin opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/soundin.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="diskin"><citetitle>diskin</citetitle></link>,
+      <link linkend="in"><citetitle>in</citetitle></link>,
+      <link linkend="inh"><citetitle>inh</citetitle></link>,
+      <link linkend="ino"><citetitle>ino</citetitle></link>,
+      <link linkend="inq"><citetitle>inq</citetitle></link>,
+      <link linkend="ins"><citetitle>ins</citetitle></link>
+     </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Authors: &namebarry;, &namematt;/&namemike;</member>
+        <member>MIT, Mills College</member>
+        <member>1993-1997</member>
+      </simplelist>
+    </para>
+    <para>Warning to Windows users added by &namekevin;, April 2002</para>
+  </refsect1>
+</refentry>

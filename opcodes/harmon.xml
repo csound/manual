@@ -1,0 +1,104 @@
+
+<refentry id="harmon">
+<indexterm id="IndexHarmon"><primary>harmon</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Special Effects</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>harmon</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>harmon</refname>
+    <refpurpose>
+      Analyze an audio input and generate harmonizing voices in synchrony.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Analyze an audio input and generate harmonizing voices in synchrony.
+   </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>harmon</command> asig, kestfrq, kmaxvar, kgenfreq1, kgenfreq2, imode, \
+      iminfrq, iprd</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>imode</emphasis> -- interpreting mode for the generating frequency inputs <emphasis>kgenfreq1</emphasis>, <emphasis>kgenfreq2</emphasis>. 0: input values are ratios with respect to the audio signal analyzed frequency. 1: input values are the actual requested frequencies in Hz.
+    </para>
+
+    <para>
+      <emphasis>iminfrq</emphasis> -- the lowest expected frequency (in Hz) of the audio input. This parameter determines how much of the input is saved for the running analysis, and sets a lower bound on the internal pitch tracker.
+    </para>
+
+    <para>
+      <emphasis>iprd</emphasis> -- period of analysis (in seconds). Since the internal pitch analysis can be time-consuming, the input is typically analyzed only each 20 to 50 milliseconds.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kestfrq</emphasis> -- estimated frequency of the input.
+    </para>
+
+    <para>
+      <emphasis>kmaxvar</emphasis> -- the maximum variance (expects a value betwee 0 and 1).
+    </para>
+
+    <para>
+      <emphasis>kgenfreq1</emphasis> -- the first generated frequency.
+    </para>
+
+    <para>
+      <emphasis>kgenfreq2</emphasis> -- the second generated frequency.
+    </para>
+
+    <para>
+      This unit is a harmonizer, able to provide up to two additional voices with the same amplitude and spectrum as the input. The input analysis is assisted by two things: an input estimated frequency <emphasis>kestfrq</emphasis> (in Hz), and a fractional maximum variance <emphasis>kmaxvar</emphasis> about that estimate which serves to limit the size of the search. Once the real input frequency is determined, the most recent pulse shape is used to generate the other voices at their requested frequencies.
+    </para>
+
+    <para>
+      The three frequency inputs can be derived in various ways from a score file or MIDI source. The first is the expected pitch, with a variance parameter allowing for inflections or inaccuracies; if the expected pitch is zero the harmonizer will be silent. The second and third pitches control the output frequencies; if either is zero the harmonizer will output only the non-zero request; if both are zero the harmonizer will be silent. When the requested frequency is higher than the input, the process requires additional computation due to overlapped output pulses. This is currently limited for efficiency reasons, with the result that only one voice can be higher than the input at any one time.
+    </para>
+
+    <para>
+      This unit is useful for supplying a background chorus effect on demand, or for correcting the pitch of a faulty input vocal. There is essentially no delay between input and output. Output includes only the generated parts, and does not include the input.
+    </para>
+ </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the harmon opcode. It uses the file <ulink url="examples/harmon.csd"><citetitle>harmon.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the harmon opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/harmon.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namebarry;</member>
+        <member>M.I.T., Cambridge, Mass</member>
+        <member>1997</member>
+      </simplelist>
+    </para>
+    <para>New in version 3.47</para>
+  </refsect1>
+</refentry>

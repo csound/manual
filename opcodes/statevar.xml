@@ -1,0 +1,105 @@
+
+<refentry id="statevar">
+<indexterm id="IndexStatevar"><primary>statevar</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>statevar</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>statevar</refname>
+    <refpurpose>
+      State-variable filter.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+Statevar is a new digital implementation of the analogue state-variable filter. 
+This filter has four simultaneous outputs: high-pass, low-pass,
+band-pass and band-reject. This filter uses oversampling for sharper
+resonance (default: 3 times oversampling). It includes a
+resonance limiter that prevents the filter from getting unstable. 
+  </para>
+  
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ahp,alp,abp,abr <command>statevar</command> ain, kcf, kq [, iosamps, istor]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+
+      <para>
+      <emphasis>iosamps</emphasis>  -- number of times of oversampling used in the 
+filtering process. This will determine the maximum sharpness
+of the filter resonance (Q). More oversampling allows higher Qs,
+less oversampling will limit the resonance. The default is 3
+times (iosamps=0).
+	</para>
+      <para>
+      <emphasis>istor</emphasis> --initial disposition of internal data space. Since 
+filtering incorporates a feedback loop of previous output, 
+the initial status of the storage space used is significant. 
+A zero value will clear the space; a non-zero value will allow 
+previous information to remain. The default value is 0.
+    </para>
+	  
+  </refsect1>
+  
+  <refsect1>
+    <title>Performance</title>
+	    <para>
+      <emphasis>ahp</emphasis> -- high-pass output signal.
+    </para>
+	    <para>
+      <emphasis>alp</emphasis> -- low-pass output signal.
+    </para>
+	    <para>
+      <emphasis>abp</emphasis> -- band-pass signal.
+    </para>
+	    <para>
+      <emphasis>abr</emphasis> -- band-reject signal.
+    </para>
+    <para>
+      <emphasis>asig</emphasis> -- input signal.
+    </para>
+    <para>
+      <emphasis>kcf</emphasis> -- filter cutoff frequency
+    </para>
+
+    <para>
+      <emphasis>kq</emphasis> -- filter Q. This value is limited internally depending on
+the frequency and the number of times of oversampling used in
+the process (3-times oversampling by default).
+    </para>
+
+  </refsect1>
+  
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the statevar opcode. It uses the file <ulink url="examples/statevar.csd"><citetitle>statevar.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the statevar opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/statevar.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>January 2005</member>
+      </simplelist>
+    </para>
+    <para>New plugin in version 5</para>
+    <para>January 2005.</para>
+  </refsect1>
+</refentry>

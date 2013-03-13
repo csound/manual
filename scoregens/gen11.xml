@@ -1,0 +1,130 @@
+
+<refentry id="GEN11">
+      <indexterm id="IndexGEN11"><primary>GEN11</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN11</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN11</refname>
+    <refpurpose>
+      Generates an additive set of cosine partials.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This subroutine generates an additive set of cosine partials, in the manner of Csound generators <link linkend="buzz"><citetitle>buzz</citetitle></link> and <link linkend="gbuzz"><citetitle>gbuzz</citetitle></link>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>f</command> # time size 11 nh [lh] [r]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>size</emphasis> -- number of points in the table. Must be a power of 2 or power-of-2 plus 1 (see <link linkend="f"><citetitle>f statement</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis>nh</emphasis> -- number of harmonics requested. Must be positive.
+    </para>
+
+    <para>
+      <emphasis>lh</emphasis>(optional) -- lowest harmonic partial present. Can be positive, zero or negative. The set of partials can begin at any partial number and proceeds upwards; if <emphasis>lh</emphasis> is negative, all partials below zero will reflect in zero to produce positive partials without phase change (since cosine is an even function), and will add constructively to any positive partials in the set. The default value is 1
+    </para>
+
+    <para>
+      <emphasis>r</emphasis>(optional) -- multiplier in an amplitude coefficient series. This is a power series: if the <emphasis>lh</emphasis>th partial has a strength coefficient of A the (<emphasis>lh</emphasis> + n)th partial will have a coefficient of A * r<superscript>n</superscript>, i.e. strength values trace an exponential curve. <emphasis>r</emphasis> may be positive, zero or negative, and is not restricted to integers. The default value is 1.
+    </para>
+
+    <note>
+     <title>Note</title>
+     <para>
+       <itemizedlist>
+         <listitem>
+           <para>
+             This subroutine is a non-time-varying version of the CSound <link linkend="buzz"><citetitle>buzz</citetitle></link>and <link linkend="gbuzz"><citetitle>gbuzz</citetitle></link> generators, and is similarly useful as a complex sound source in subtractive synthesis. With <emphasis>lh</emphasis> and <emphasis>r</emphasis> present it parallels <emphasis>gbuzz</emphasis>; with both absent or equal to 1 it reduces to the simpler <emphasis>buzz</emphasis> (i.e. <emphasis>nh</emphasis> equal-strength harmonic partials beginning with the fundamental).
+           </para>
+         </listitem>
+
+         <listitem>
+           <para>
+             Sampling the stored waveform with an oscillator is more efficient than using the dynamic buzz units. However, the spectral content is invariant and care is necessary, lest the higher partials exceed the Nyquist during sampling to produce fold-over.
+           </para>
+         </listitem>
+       </itemizedlist>
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+	    Here is an example of the GEN11 routine. It uses the files <ulink url="examples/gen01.csd"><citetitle>gen11.csd</citetitle></ulink>.
+      <example>
+        <title>An example of the GEN11 routine.</title>
+        <xi:include href="examples-xml/gen11.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+        <textobject>
+          <phrase>These are the diagrams of the waveforms of the GEN11 routines, as used in the example:</phrase>
+        </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen11_1.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 1 0 16384 11 1 1</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 1 0 16384 11 1 1</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen11_2.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 2 0 16384 11 10 1 .7</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 2 0 16384 11 10 1 .7</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen11_3.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 3 0 16384 11 10 5 2</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 3 0 16384 11 10 5 2</para>
+        </caption>
+      </mediaobject>
+
+    </para>
+  </refsect1>
+
+  <refsect1>
+     <title>See Also</title>
+     <para>
+       <link linkend="GEN10"><citetitle>GEN10</citetitle></link>
+     </para>
+  </refsect1>
+
+</refentry>

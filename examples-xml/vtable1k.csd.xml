@@ -1,0 +1,64 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in    No messages</emphasis>
+-odac           -iadc     -d     <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis>	<emphasis role="op">=</emphasis>	44100
+<emphasis role="ohdr">ksmps</emphasis>	<emphasis role="op">=</emphasis>	100
+<emphasis role="ohdr">nchnls</emphasis>	<emphasis role="op">=</emphasis>	2
+
+giElem	<emphasis role="opc">init</emphasis>	13
+giOutTab	<emphasis role="ohdr">ftgen</emphasis>	1,0,128, 2, 	0
+giFreqTab	<emphasis role="ohdr">ftgen</emphasis>	2,0,128,<emphasis role="op">-</emphasis>7, 	1,giElem, giElem<emphasis role="op">+</emphasis>1
+giSine	<emphasis role="ohdr">ftgen</emphasis>	3,0,256,10,	1
+
+	<emphasis role="opc">FLpanel</emphasis>	"This Panel contains <emphasis role="opc">a</emphasis> Slider Bank",500,400
+	<emphasis role="opc">FLslidBnk</emphasis>	"mod1@mod2@mod3@amp@freq1@freq2@freq3@freqPo", giElem, giOutTab, 360, 600, 100, 10
+	<emphasis role="opc">FLpanel_end</emphasis>
+
+	<emphasis role="opc">FLrun</emphasis>
+
+	<emphasis role="oblock">instr</emphasis> 1
+
+kout1	<emphasis role="opc">init</emphasis>	0
+kout2	<emphasis role="opc">init</emphasis>	0
+kout3	<emphasis role="opc">init</emphasis>	0
+kout4	<emphasis role="opc">init</emphasis>	0
+kout5	<emphasis role="opc">init</emphasis>	0
+kout6	<emphasis role="opc">init</emphasis>	0
+kout7	<emphasis role="opc">init</emphasis>	0
+kout8	<emphasis role="opc">init</emphasis>	0
+
+<emphasis role="opc">vtable1k</emphasis>  giOutTab, kout1 , kout2, kout3, kout4, kout5 , kout6, kout7, kout8
+kmodindex1<emphasis role="op">=</emphasis> 	2 <emphasis role="op">*</emphasis> <emphasis role="opc">db</emphasis>(kout1 <emphasis role="op">*</emphasis> 80 )
+kmodindex2<emphasis role="op">=</emphasis>	2 <emphasis role="op">*</emphasis> <emphasis role="opc">db</emphasis>(kout2 <emphasis role="op">*</emphasis> 80 )
+kmodindex3<emphasis role="op">=</emphasis>	2 <emphasis role="op">*</emphasis> <emphasis role="opc">db</emphasis>(kout3 <emphasis role="op">*</emphasis> 80 )
+kamp	<emphasis role="op">=</emphasis>	50 <emphasis role="op">*</emphasis> <emphasis role="opc">db</emphasis>(kout4 <emphasis role="op">*</emphasis> 70 )
+kfreq1	<emphasis role="op">=</emphasis>	1.1 <emphasis role="op">*</emphasis> <emphasis role="opc">octave</emphasis>(kout5 <emphasis role="op">*</emphasis> 10)
+kfreq2	<emphasis role="op">=</emphasis>	1.1 <emphasis role="op">*</emphasis> <emphasis role="opc">octave</emphasis>(kout6 <emphasis role="op">*</emphasis> 10) 
+kfreq3	<emphasis role="op">=</emphasis>	1.1 <emphasis role="op">*</emphasis> <emphasis role="opc">octave</emphasis>(kout7 <emphasis role="op">*</emphasis> 10)
+kfreq4	<emphasis role="op">=</emphasis>	30 <emphasis role="op">*</emphasis> <emphasis role="opc">octave</emphasis>(kout8 <emphasis role="op">*</emphasis> 8)
+
+amod1	<emphasis role="opc">oscili</emphasis>	kmodindex1, kfreq1, giSine
+amod2	<emphasis role="opc">oscili</emphasis>	kmodindex2, kfreq2, giSine
+amod3	<emphasis role="opc">oscili</emphasis>	kmodindex3, kfreq3, giSine
+aout	<emphasis role="opc">oscili</emphasis>	kamp,       kfreq4<emphasis role="op">+</emphasis>amod1<emphasis role="op">+</emphasis>amod2<emphasis role="op">+</emphasis>amod3, giSine
+
+	
+	<emphasis role="opc">outs</emphasis>	aout, aout
+	<emphasis role="oblock">endin</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis>1 0 3600
+<emphasis role="stamnt">f</emphasis>0 3600
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

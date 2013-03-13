@@ -1,0 +1,127 @@
+
+<refentry id="pitch">
+<indexterm id="IndexPitch"><primary>pitch</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pitch</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>pitch</refname>
+
+    <refpurpose>
+      Tracks the pitch of a signal.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Using the same techniques as <link linkend="spectrum"><citetitle>spectrum</citetitle></link> and <link linkend="specptrk"><citetitle>specptrk</citetitle></link>, pitch tracks the pitch of the signal in octave point decimal form, and amplitude in dB.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>koct, kamp <command>pitch</command> asig, iupdte, ilo, ihi, idbthresh [, ifrqs] [, iconf] \
+      [, istrt] [, iocts] [, iq] [, inptls] [, irolloff] [, iskip]</synopsis> 
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iupdte</emphasis> -- length of period, in seconds, that outputs are updated
+    </para>
+
+    <para>
+      <emphasis>ilo</emphasis>, <emphasis>ihi</emphasis> -- range in which pitch is detected, expressed in octave point decimal
+    </para>
+
+    <para>
+      <emphasis>idbthresh</emphasis> -- amplitude, expressed in decibels, necessary for the pitch to be detected.  Once started it continues until it is 6 dB down.
+    </para>
+
+    <para>
+      <emphasis>ifrqs</emphasis> (optional) -- number of divisons of an octave. Default is 12 and is limited to 120.
+    </para>
+
+    <para>
+      <emphasis>iconf</emphasis> (optional) -- the number of conformations needed for an octave jump.  Default is 10. 
+    </para>
+
+    <para>
+      <emphasis>istrt</emphasis> (optional) -- starting pitch for tracker. Default value is (<emphasis>ilo</emphasis> + <emphasis>ihi</emphasis>)/2.
+    </para>
+
+    <para>
+      <emphasis>iocts</emphasis> (optional) -- number of octave decimations in spectrum. Default is 6.
+    </para>
+
+    <para>
+      <emphasis>iq</emphasis> (optional) -- Q of analysis filters. Default is 10.
+    </para>
+
+    <para>
+      <emphasis>inptls</emphasis> (optional) -- number of harmonics, used in matching. Computation time increases with the number of harmonics. Default is 4.
+    </para>
+
+    <para>
+      <emphasis>irolloff</emphasis> (optional) -- amplitude rolloff for the set of filters expressed as fraction per octave. Values must be positive. Default is 0.6.
+    </para>
+
+    <para>
+      <emphasis>iskip</emphasis> (optional) -- if non-zero, skips initialization. Default is 0.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>koct</emphasis> -- The pitch output, given in the octave point decimal format.
+    </para>
+
+    <para>
+      <emphasis>kamp</emphasis> -- The amplitude output.
+    </para>
+
+    <para>
+      <emphasis>pitch</emphasis> analyzes the input signal, <emphasis>asig</emphasis>, to give a pitch/amplitude pair of outputs, for the strongest frequency in the signal. The value is updated every <emphasis>iupdte</emphasis> seconds.
+    </para>
+
+    <para>
+      The number of partials and rolloff fraction can effect the pitch tracking, so some experimentation may be necessary. Suggested values are 4 or 5 harmonics, with rolloff 0.6, up to 10 or 12 harmonics with rolloff 0.75 for complex timbres, with a weak fundamental.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the pitch opcode. It uses the file <ulink url="examples/pitch.csd"><citetitle>pitch.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the pitch opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/pitch.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>University of Bath, Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>April 1999</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.54</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,113 @@
+
+<refentry id="wgflute">
+<indexterm id="IndexWgflute"><primary>wgflute</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Waveguide Physical Modeling</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>wgflute</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>wgflute</refname>
+    <refpurpose>
+      Creates a tone similar to a flute.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Audio output is a tone similar to a flute, using a physical model developed from &nameperry;, but re-coded for Csound.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>wgflute</command> kamp, kfreq, kjet, iatt, idetk, kngain, kvibf, kvamp, ifn \
+      [, iminfreq] [, ijetrf] [, iendrf]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iatt</emphasis> -- time in seconds to reach full blowing pressure. 0.1 seems to correspond to reasonable playing.
+    </para>
+
+    <para>
+      <emphasis>idetk</emphasis> -- time in seconds taken to stop blowing. 0.1 is a smooth ending
+    </para>
+
+    <para>
+      <emphasis>ifn</emphasis> -- table of shape of vibrato, usually a sine table, created by a function
+    </para>
+
+    <para>
+      <emphasis>iminfreq</emphasis> (optional) -- lowest frequency at which the instrument will play. If it is omitted it is taken to be the same as the initial kfreq. If <emphasis>iminfreq</emphasis> is negative, initialization will be skipped.
+    </para>
+
+    <para>
+      <emphasis>ijetrf</emphasis> (optional, default=0.5) -- amount of reflection in the breath jet that powers the flute. Default value is 0.5.
+    </para>
+
+    <para>
+      <emphasis>iendrf</emphasis> (optional, default=0.5) -- reflection coefficient of the breath jet. Default value is 0.5. Both <emphasis>ijetrf</emphasis> and <emphasis>iendrf</emphasis> are used in the calculation of the pressure differential.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kamp</emphasis> -- Amplitude of note.
+    </para>
+
+    <para>
+      <emphasis>kfreq</emphasis> -- Frequency of note played. While it can be varied in performance, I have not tried it.
+    </para>
+
+    <para>
+      <emphasis>kjet</emphasis> -- a parameter controlling the air jet. Values should be positive, and about 0.3. The useful range is approximately 0.08 to 0.56.
+    </para>
+
+    <para>
+      <emphasis>kngain</emphasis> -- amplitude of the noise component, about 0 to 0.5
+    </para>
+
+    <para>
+      <emphasis>kvibf</emphasis> -- frequency of vibrato in Hertz. Suggested range is 0 to 12
+    </para>
+
+    <para>
+      <emphasis>kvamp</emphasis> -- amplitude of the vibrato
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the wgflute opcode. It uses the file <ulink url="examples/wgflute.csd"><citetitle>wgflute.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the wgflute opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/wgflute.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn; (after &nameperry;)</member>
+        <member>University of Bath, Codemist Ltd.</member>
+        <member>Bath, UK</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.47</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,119 @@
+
+<refentry id="f">
+      <indexterm id="IndexFStatement"><primary>f statement</primary></indexterm>
+      <indexterm id="IndexFunctionTableStatement"><primary>function table statement</primary></indexterm>
+  <refmeta>
+    <refentrytitle>f Statement (or Function Table Statement)</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>f Statement (or Function Table Statement)</refname>
+    <refpurpose>
+      Causes a GEN subroutine to place values in a stored function table.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This causes a GEN subroutine to place values in a stored function table for use by instruments.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>f</command> p1  p2  p3  p4  p5 ... PMAX</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+       <emphasis>p1</emphasis> -- Table number by which the stored function will be known. A negative number requests that the table be destroyed.
+    </para>
+
+    <para>
+       <emphasis>p2</emphasis> -- Action time of function generation (or destruction) in beats. 
+    </para>
+
+    <para>
+       <emphasis>p3</emphasis> -- Size of function table (i.e.  number of points) Must be a power of 2, or a power-of-2 plus 1 if this number is positive. Maximum table size is 16777216 (2<superscript>24</superscript>) points. 
+    </para>
+
+    <para>
+      <emphasis>p4</emphasis> -- Number of the GEN routine to be called (see <link linkend="ScoreGenRef"><citetitle>GEN ROUTINES</citetitle></link>). A negative value will cause rescaling to be omitted. 
+    </para>
+
+    <para>
+       <emphasis>p5 ... PMAX</emphasis> -- Parameters whose meaning is determined by the particular GEN routine.
+    </para>
+
+    <refsect2>
+      <title>Special Considerations</title>
+
+      <para>
+        Function tables are arrays of floating-point values. You can create a simple sine wave using the line:
+<literallayout>f 1 0 1024 10 1</literallayout>
+        This table uses <link linkend="GEN10"><citetitle>GEN10</citetitle></link> to fill the table.
+      </para>
+      <para>
+        Historically, due to older platform constraints, Csound could only accept tables whose size was a power of two. This limitation has been removed in recent versions, and you can freely create tables of any size. However, to create a table whose size is not a power of two (or power of two plus one), you must specify the size as a negative number.
+      </para>
+      <note><para>Not all opcodes accept tables whose size is not a power of two, since they may depend on this for internal optimization.</para>
+      </note>
+      <para>For arrays whose length is a power of 2, space allocation always provides for 2<superscript>n</superscript> points plus an additional <emphasis>guard point</emphasis>. The guard point value, used during interpolated lookup, can be automatically set to reflect the table's purpose: If <emphasis>size</emphasis> is an exact power of 2, the guard point will be a copy of the first point; this is appropriate for <emphasis>interpolated wrap-around lookup</emphasis> as in <emphasis>oscili</emphasis>, etc., and should even be used for non-interpolating <emphasis>oscil</emphasis> for safe consistency. If <emphasis>size</emphasis> is set to 2 <superscript>n</superscript> + 1, the guard point value automatically extends the contour of table values; this is appropriate for single-scan functions such in <emphasis>envplx</emphasis>, <emphasis>oscil1</emphasis>, <emphasis>oscil1i</emphasis>, etc.
+      
+      </para>
+      <para>
+	The size of the table is used as a code to tell Csound how to fill this guard-point. If the size is exactly power-of-two, then the guard point contains a copy of the first point on the table. If the size is power-of-two plus one, Csound will extend the contour of the function stored in the table for one extra point.
+      </para>
+      <para>
+        Table space is allocated in primary memory, along with instrument data space. The maximum table number used to be 200. This has been changed to be limited by memory only. (Currently there is an internal soft limit of 300, this is automatically extended as required.)
+      </para>
+
+      <para>
+        An existing function table can be removed by an <emphasis>f statement</emphasis> containing a negative p1 and an appropriate action time. A function table can also be removed by the generation of another table with the same p1. Functions are not automatically erased at the end of a score section.
+      </para>
+
+      <para>
+        p2 action time is treated in the same way as in <emphasis>i statement</emphasis>s with respect to sorting and modification by <emphasis>t statement</emphasis>s. If an <emphasis>f statement</emphasis> and an <emphasis>i statement</emphasis> have the same p2, the sorter gives the <emphasis>f statement</emphasis> precedence so that the function table will be available during note initialization.
+      </para>
+      <warning>
+        <para>The maximum number of p-fields accepted in the score is determined by PMAX (a compilation time varible). PMAX is currently set to 1000. This may discard values entered when using <link linkend="GEN02"><citetitle>GEN02</citetitle></link>. To overcome this, use <link linkend="GEN23"><citetitle>GEN23</citetitle></link> or <link linkend="GEN28"><citetitle>GEN28</citetitle></link> to read the values from a file.</para>
+      </warning>
+
+      <para>
+        An <emphasis>f 0 statement</emphasis> (zero p1, positive p2) may be used to create an action time with no associated action. Such time markers are useful for padding out a score section (see <link linkend="s"><citetitle>s statement</citetitle></link>) and for letting Csound run from realtime events only (e.g. using only MIDI input without score events). The time given is the number of seconds Csound will run. If you want Csound to run for 10 hours, use:
+        <literallayout>f0 36000</literallayout>
+      </para>
+
+      <para>
+        The simplest way to fill a table (f1) with 0's is:
+        <literallayout>f1 0 xx 2 0</literallayout>
+        where xx = table size.
+      </para>
+
+      <para>
+        The simplest way to fill a table (f1) with *any* single value is:
+        <literallayout>f1 0 xx -7 yy xx yy</literallayout>
+        where xx = table size and yy = any single value
+      </para>
+
+      <para>
+        In both of the above examples, table size (p3) must be a power of 2 or power-of-2 plus 1.
+      </para>
+    </refsect2>
+  </refsect1>
+  <refsect1>
+    <title>See also</title>
+    <para>
+      <link linkend="ScoreGenRef"><citetitle>GEN ROUTINES</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      Updated August 2002 thanks to a note from &namerasmus;. There is no longer a hard limit of 200 function tables.
+    </para>
+  </refsect1>
+</refentry>

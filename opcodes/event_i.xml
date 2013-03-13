@@ -1,0 +1,91 @@
+
+<refentry id="event_i">
+<indexterm id="IndexEventi"><primary>event_i</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Invocation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>event_i</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>event_i</refname>
+    <refpurpose>
+      Generates a score event from an instrument.
+          </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Generates a score event from an instrument.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>event_i</command> &quot;scorechar&quot;, iinsnum, idelay, idur, [, ip4] [, ip5] [, ...]</synopsis>
+    <synopsis><command>event_i</command> &quot;scorechar&quot;, &quot;insname&quot;, idelay, idur, [, ip4] [, ip5] [, ...]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis><quote>scorechar</quote></emphasis> -- A string (in double-quotes) representing the first p-field in a score statement. This is usually <link linkend="e"><citetitle><quote>e</quote></citetitle></link>, <link linkend="f"><citetitle><quote>f</quote></citetitle></link>, or <link linkend="i"><citetitle><quote>i</quote></citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis><quote>insname</quote></emphasis> -- A string (in double-quotes) representing a named instrument.
+    </para>
+    <para>
+      <emphasis>iinsnum</emphasis> -- The instrument to use for the event. This corresponds to the first p-field, p1, in a score statement.
+    </para>
+
+    <para>
+      <emphasis>idelay</emphasis> -- When (in seconds) the event will occur from the current performance time. This corresponds to the second p-field, p2, in a score statement.
+    </para>
+
+    <para>
+      <emphasis>idur</emphasis> -- How long (in seconds) the event will happen. This corresponds to the third p-field, p3, in a score statement.
+    </para>
+
+    <para>
+      <emphasis>ip4, ip5, ...</emphasis> (optional) -- Parameters representing additional p-field in a score statement. It starts with the fourth p-field, p4.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para> The event is added to the queue at initialisation time.</para>
+    <note>
+      <para> Note that the <emphasis>event_i</emphasis> opcode cannot accept string p-fields. If you need to pass strings when instantiating an instrument, use the <link linkend="scoreline"><citetitle>scoreline</citetitle></link> or <link linkend="scoreline_i"><citetitle>scoreline_i</citetitle></link> opcode.</para>
+    </note>
+  </refsect1>
+  
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the event_i opcode. It uses the file <ulink url="examples/event_i.csd"><citetitle>event_i.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the event_i opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/event_i.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+      
+  <refsect1>
+    <title>See also</title>
+    <para><link linkend="event"><citetitle>event</citetitle></link>,
+    <link linkend="schedule"><citetitle>schedule</citetitle></link>,
+    <link linkend="schedwhen"><citetitle>schedwhen</citetitle></link>,
+    <link linkend="schedkwhen"><citetitle>schedkwhen</citetitle></link>,
+    <link linkend="schedkwhennamed"><citetitle>schedkwhennamed</citetitle></link>,
+    <link linkend="scoreline"><citetitle>scoreline</citetitle></link>,
+    <link linkend="scoreline_i"><citetitle>scoreline_i</citetitle></link></para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Written by &nameistvan;.</para>
+    <para>New in Csound5</para>
+  </refsect1>
+</refentry>

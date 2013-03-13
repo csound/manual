@@ -1,0 +1,108 @@
+
+<refentry id="getcfg">
+<indexterm id="Indexgetcfg"><primary>getcfg</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>getcfg</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>getcfg</refname>
+    <refpurpose>
+      Return Csound settings.
+          </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Return various configuration settings in Svalue as a string at init time.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>Svalue <command>getcfg</command> iopt</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+
+    <para>
+      <emphasis>iopt</emphasis>
+      -- The parameter to be returned, can be one of:
+      <itemizedlist>
+        <listitem>
+          <para>1: the maximum length of string variables in characters; this is at least the value of the -+max_str_len command line option - 1</para>
+        </listitem>
+
+        <listitem>
+          <para>2: the input sound file name (-i), or empty if there is no input file</para>
+        </listitem>
+
+        <listitem>
+          <para>3: the output sound file name (-o), or empty if there is no output file</para>
+        </listitem>
+
+        <listitem>
+          <para>4: return "1" if real time audio input or output is being used, and "0" otherwise</para>
+        </listitem>
+
+        <listitem>
+          <para>5: return "1" if running in beat mode (-t command line option), and "0" otherwise</para>
+        </listitem>
+
+        <listitem>
+          <para>6: the host operating system name</para>
+        </listitem>
+
+        <listitem>
+          <para>7: return "1" if a callback function for the chnrecv and chnsend opcodes has been set, and "0" otherwise (which means these opcodes do nothing)</para>
+        </listitem>
+      </itemizedlist>
+
+    </para>
+  </refsect1>
+
+<refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the getcfg opcode. It uses the file <ulink url="examples/getcfg.csd"><citetitle>getcfg.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the getcfg opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/getcfg.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      The output should include lines like these:
+      <screen>
+------------------------------
+Max string len : 255
+Input file name (-i) : adc
+Output file name (-o) : dac
+RTaudio (-odac) : 1
+Beat mode (-t)? : 0
+Host Op. Sys. : Linux
+Callback ? : 0
+------------------------------
+      </screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Istvan Varga</member>
+        <member>2006</member>
+      </simplelist>
+    </para>
+    <para>New in version 5.02</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,127 @@
+
+<refentry id="dnoise">
+  <refentryinfo><title>Utilities</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>dnoise</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>dnoise</refname>
+    <refpurpose>
+      Reduces noise in a file.
+      <indexterm id="IndexDnoise"><primary>dnoise</primary></indexterm>
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This is a noise reduction scheme using frequency-domain noise-gating. 
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>dnoise</command> [flags] -i noise_ref_file  -o output_soundfile  input_soundfile</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      Dnoise specific flags:
+
+      <itemizedlist>
+        <listitem><para><emphasis>(no flag)</emphasis> input soundfile to be denoised</para></listitem>
+        <listitem><para><emphasis>-i fname</emphasis> input reference noise soundfile</para></listitem>
+        <listitem><para><emphasis>-o fname</emphasis> output soundfile</para></listitem>
+        <listitem><para><emphasis>-N fnum</emphasis> # of bandpass filters (default: 1024)</para></listitem>
+        <listitem><para><emphasis>-w fovlp</emphasis> filter overlap factor: {0,1,(2),3} DON'T USE <emphasis>-w</emphasis> AND <emphasis>-M</emphasis></para></listitem>
+        <listitem><para><emphasis>-M awlen</emphasis> analysis window length (default: N-1 unless <emphasis>-w</emphasis> is specified)</para></listitem>
+        <listitem><para><emphasis>-L swlen</emphasis> synthesis window length (default: M)</para></listitem>
+        <listitem><para><emphasis>-D dfac</emphasis> decimation factor (default: M/8)</para></listitem>
+        <listitem><para><emphasis>-b btim</emphasis> begin time in noise reference soundfile (default: 0)</para></listitem>
+        <listitem><para><emphasis>-B smpst</emphasis> starting sample in noise reference soundfile (default: 0)</para></listitem>
+        <listitem><para><emphasis>-e etim</emphasis> end time in noise reference soundfile (default: end of file)</para></listitem>
+        <listitem><para><emphasis>-E smpend</emphasis> final sample in noise reference soundfile (default: end of file)</para></listitem>
+        <listitem><para><emphasis>-t thr</emphasis> threshold above noise reference in dB (default: 30)</para></listitem>
+        <listitem><para><emphasis>-S gfact</emphasis> sharpness of noise-gate turnoff, range: 1 to 5 (default: 1)</para></listitem>
+        <listitem><para><emphasis>-n numfrm</emphasis> number of FFT frames to average over (default: 5)</para></listitem>
+        <listitem><para><emphasis>-m mingain</emphasis> minimum gain of noise-gate when off in dB (default: -40)</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      Soundfile format options:
+
+      <itemizedlist>
+        <listitem><para><emphasis>-A</emphasis> AIFF format output</para></listitem>
+        <listitem><para><emphasis>-W</emphasis> WAV format output</para></listitem>
+        <listitem><para><emphasis>-J</emphasis> IRCAM format output</para></listitem>
+        <listitem><para><emphasis>-h</emphasis> skip soundfile header (not valid for AIFF/WAV output)</para></listitem>
+        <listitem><para><emphasis>-8</emphasis> 8-bit unsigned char sound samples</para></listitem>
+        <listitem><para><emphasis>-c</emphasis> 8-bit signed_char sound samples</para></listitem>
+        <listitem><para><emphasis>-a</emphasis> alaw sound samples</para></listitem>
+        <listitem><para><emphasis>-u</emphasis> ulaw sound samples</para></listitem>
+        <listitem><para><emphasis>-s</emphasis> short_int sound samples</para></listitem>
+        <listitem><para><emphasis>-l</emphasis> long_int sound samples</para></listitem>
+        <listitem><para><emphasis>-f</emphasis> float sound samples. Floats also supported for WAV files. (New in Csound 3.47.)</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      Additional options:
+
+      <itemizedlist>
+        <listitem><para><emphasis>-R</emphasis> verbose - print status info</para></listitem>
+        <listitem><para><emphasis>-H [N]</emphasis> print a heartbeat character at each soundfile write.</para></listitem>
+        <listitem><para><emphasis>-- fname</emphasis> output to log file fname</para></listitem>
+        <listitem><para><emphasis>-V</emphasis> verbose - print status info</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        DNOISE also looks at the environment variable SFOUTYP to determine soundfile output format.
+      </para>
+
+      <para>
+        The -i flag is used for a reference noise file (normally created from a short section of the denoised file, where only noise is audible). The input soundfile to be denoised can be given anywhere on the command line, without a flag.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      This is a noise reduction scheme using frequency-domain noise-gating.  This should work best in the case of high signal-to-noise with hiss-type noise.
+    </para>
+
+    <para>
+      The algorithm is that suggested by Moorer &amp; Berger in <quote>Linear-Phase Bandsplitting: Theory and Applications</quote> presented at the 76th Convention 1984 October 8-11 New York of the Audio Engineering Society (preprint &num;2132) except that it uses the Weighted Overlap-Add formulation for short-time Fourier analysis-synthesis in place of the recursive formulation suggested by Moorer &amp; Berger.  The gain in each frequency bin is computed independently according to
+
+      <literallayout>
+gain = g0 + (1-g0) * [avg / (avg + th*th*nref)] &circ; sh
+      </literallayout>
+
+      where <emphasis>avg</emphasis> and <emphasis>nref</emphasis> are the mean squared signal and noise respectively for the bin in question.  (This is slightly different than in Moorer &amp; Berger.)
+    </para>
+
+    <para>
+      The critical parameters <emphasis>th</emphasis> and <emphasis>g0</emphasis> are specified in dB and internally converted to decimal values.  The <emphasis>nref</emphasis> values are computed at the start of the program on the basis of a noise_soundfile (specified in the command line) which contains noise without signal.
+    </para>
+
+    <para>
+      The <emphasis>avg</emphasis> values are computed over a rectangular window of m FFT frames looking both ahead and behind the current time.  This corresponds to a temporal extent of m*D/R (which is typically (m*N/8)/R).  The default settings of N, M, and D should be appropriate for most uses.  A higher sample rate than 16 Khz might indicate a higher N.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: Mark Dolson</para>
+    <para>August 26, 1989</para>
+    <para>Author: &namejohn;</para>
+    <para>December 30, 2000</para>
+    <para>Updated by &namerasmus; on March 11, 2002.</para>
+  </refsect1>
+</refentry>

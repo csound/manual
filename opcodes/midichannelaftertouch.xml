@@ -1,0 +1,108 @@
+
+<refentry id="midichannelaftertouch">
+<indexterm id="IndexMidichannelaftertouch"><primary>midichannelaftertouch</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:MIDI/Score Interoperability</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>midichannelaftertouch</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>midichannelaftertouch</refname>
+    <refpurpose>
+      Gets a MIDI channel's aftertouch value.
+          </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>midichannelaftertouch</emphasis> is designed to simplify writing instruments that can be used interchangeably for either score or MIDI input, and to make it easier to adapt instruments originally written for score input to work with MIDI input.
+    </para>
+
+    <para>
+      In general, it should be possible to write instrument definitions that work identically with both scores and MIDI, including both MIDI files and real-time MIDI input, without using any conditional statements, and that take full advantage of MIDI voice messages.
+    </para>
+
+    <para>
+      Note that correlating Csound instruments with MIDI channel numbers is done using the <link linkend="massign"><citetitle>massign</citetitle></link> opcode for real-time performance,.  For file-driven performance, instrument numbers default to MIDI channel number + 1, but the defaults are overridden by any MIDI program change messages in the file.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>midichannelaftertouch</command> xchannelaftertouch [, ilow] [, ihigh]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ilow</emphasis> (optional) -- optional low value after rescaling, defaults to 0.
+    </para>
+
+    <para>
+      <emphasis>ihigh</emphasis> (optional) -- optional high value after rescaling, defaults to 127.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>xchannelaftertouch</emphasis> -- returns the MIDI channel aftertouch during MIDI activation, remains unchanged otherwise.
+    </para>
+
+    <para>
+      If the instrument was activated by MIDI input, the opcode overwrites the value of <emphasis>xchannelaftertouch</emphasis> with the corresponding value from MIDI input. If the instrument was <emphasis>NOT</emphasis> activated by MIDI input, the value of <emphasis>xchannelaftertouch</emphasis> remains unchanged.
+    </para>
+
+    <para>
+      This enables score p-fields to receive MIDI input data during MIDI activation, and score values otherwise.
+    </para>
+
+    <note>
+      <title>Adapting a score-activated Csound instrument.</title>
+      <para>See the <link linkend="MidiInterop"><citetitle>MIDI interop opcodes</citetitle></link> section for details on adapting score driven instruments for MIDI or vice-versa.</para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the midichannelaftertouch opcode. It uses the file <ulink url="examples/midichannelaftertouch.csd"><citetitle>midichannelaftertouch.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the midichannelaftertouch opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/midichannelaftertouch.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Its output should include lines like:
+      <screen>
+ i1   127.00000
+ i1    20.00000
+ i1    44.00000
+      </screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="midicontrolchange"><citetitle>midicontrolchange</citetitle></link>, 
+      <link linkend="mididefault"><citetitle>mididefault</citetitle></link>, 
+      <link linkend="midinoteoff"><citetitle>midinoteoff</citetitle></link>, 
+      <link linkend="midinoteoncps"><citetitle>midinoteoncps</citetitle></link>, 
+      <link linkend="midinoteonkey"><citetitle>midinoteonkey</citetitle></link>, 
+      <link linkend="midinoteonoct"><citetitle>midinoteonoct</citetitle></link>, 
+      <link linkend="midinoteonpch"><citetitle>midinoteonpch</citetitle></link>, 
+      <link linkend="midipitchbend"><citetitle>midipitchbend</citetitle></link>, 
+      <link linkend="midipolyaftertouch"><citetitle>midipolyaftertouch</citetitle></link>, 
+      <link linkend="midiprogramchange"><citetitle>midiprogramchange</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: Michael Gogins</para>
+    <para>New in version 4.20</para>
+  </refsect1>
+</refentry>

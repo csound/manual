@@ -1,0 +1,42 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac     <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o tabmorpha.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>   <emphasis role="op">=</emphasis>1
+
+giSine	 <emphasis role="ohdr">ftgen</emphasis>	0, 0, 8193, 10, 1						<emphasis role="comment">; sine wave</emphasis>
+giSquare <emphasis role="ohdr">ftgen</emphasis>	0, 0, 8193, 7, 1, 4096, 1, 0, <emphasis role="op">-</emphasis>1, 4096, <emphasis role="op">-</emphasis>1			<emphasis role="comment">; square wave </emphasis>
+giTri	 <emphasis role="ohdr">ftgen</emphasis>	0, 0, 8193, 7, 0, 2048, 1, 4096, <emphasis role="op">-</emphasis>1, 2048, 0			<emphasis role="comment">; triangle wave </emphasis>
+giSaw	 <emphasis role="ohdr">ftgen</emphasis>	0, 0, 8193, 7, 1, 8192, <emphasis role="op">-</emphasis>1					<emphasis role="comment">; sawtooth wave, downward slope </emphasis>
+
+	
+<emphasis role="oblock">instr</emphasis>	1
+
+iamp	<emphasis role="op">=</emphasis> .7
+aindex	<emphasis role="opc">phasor</emphasis> 110			<emphasis role="comment">; read table value at this index</emphasis>
+aweightpoint <emphasis role="op">=</emphasis> 0			<emphasis role="comment">; set weightpoint</emphasis>
+atabnum1 <emphasis role="opc">line</emphasis> 0, p3, 3			<emphasis role="comment">; morph through all tables</emphasis>
+atabnum2 <emphasis role="op">=</emphasis> 2				<emphasis role="comment">; set to triangle wave</emphasis>
+asig	 <emphasis role="opc">tabmorpha</emphasis> aindex, aweightpoint, atabnum1,atabnum2, giSine, giSquare, giTri, giSaw
+asig	 <emphasis role="op">=</emphasis> asig<emphasis role="op">*</emphasis>iamp
+	 <emphasis role="opc">outs</emphasis> asig, asig
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis>1 0 10
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

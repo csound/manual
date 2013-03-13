@@ -1,0 +1,107 @@
+
+<refentry id="pvcross">
+<indexterm id="IndexPvcross"><primary>pvcross</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:STFT</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvcross</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvcross</refname>
+    <refpurpose>
+      Applies the amplitudes from one phase vocoder analysis file to the data from a second file.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>pvcross</emphasis> applies the amplitudes from one phase vocoder analysis file to the data from a second file and then performs the resynthesis. The data is passed, as described above, from a previously called <link linkend="pvbufread"><citetitle>pvbufread</citetitle></link> unit. The two k-rate amplitude arguments are used to scale the amplitudes of each files separately before they are added together and used in the resynthesis (see below for further explanation). The frequencies of the first file are not used at all in this process. This unit simply allows for cross-synthesis through the application of the amplitudes of the spectra of one signal to the frequencies of a second signal. Unlike <link linkend="pvinterp"><citetitle>pvinterp</citetitle></link>, <emphasis>pvcross</emphasis> does allow for the use of the <emphasis>ispecwp</emphasis> as in <link linkend="pvoc"><citetitle>pvoc</citetitle></link> and <link linkend="vpvoc"><citetitle>vpvoc</citetitle></link>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>pvcross</command> ktimpnt, kfmod, ifile, kampscale1, kampscale2 [, ispecwp]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifile</emphasis> -- the <emphasis>pvoc</emphasis> number (n in pvoc.n) or the name in quotes of the analysis file made using <emphasis>pvanal</emphasis>. (See <link linkend="pvoc"><citetitle>pvoc</citetitle></link>.)
+    </para>
+
+    <para>
+      <emphasis>ispecwp</emphasis> (optional, default=0) -- if non-zero, attempts to preserve the spectral envelope while
+its frequency content is varied by <emphasis>kfmod</emphasis>. The default value is zero.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ktimpnt</emphasis> -- the passage of time, in seconds, through this file. <emphasis>ktimpnt</emphasis> must always be positive, but can move forwards or backwards in time, be stationary or discontinuous, as a pointer into the analysis file. 
+    </para>
+
+    <para>
+      <emphasis>kfmod</emphasis> -- a control-rate transposition factor: a value of 1 incurs no transposition, 1.5 transposes up a perfect fifth, and 0.5 down an octave.
+    </para>
+
+    <para>
+      <emphasis>kampscale1, kampscale2</emphasis> -- used to scale the amplitudes stored in each frame of the phase vocoder analysis file. <emphasis>kampscale1</emphasis> scale the amplitudes of the data from the file read by the previously called <emphasis>pvbufread</emphasis>. <emphasis>kampscale2</emphasis> scale the amplitudes of the file named by <emphasis>ifile</emphasis>. 
+    </para>
+
+    <para>
+      By using these arguments, it is possible to adjust these values before applying the interpolation. For example, if file1 is much louder than file2, it might be desirable to scale down the amplitudes of file1 or scale up those of file2 before interpolating. Likewise one can adjust the frequencies of each to bring them more in accord with one another (or just the opposite, of course!) before the interpolation is performed.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Below is an example using <link linkend="pvbufread"><citetitle>pvbufread</citetitle></link> with <emphasis>pvcross</emphasis>. In this example the amplitudes used in the resynthesis gradually change from those of the oboe to those of the clarinet. The frequencies, of course, remain those of the clarinet throughout the process since <emphasis>pvcross</emphasis> does not use the frequency data from the file read by <emphasis>pvbufread</emphasis>.
+    </para>
+
+    <para>
+      <informalexample>
+        <programlisting>
+ktime1  <emphasis role="opc">line</emphasis>      0, p3, 3.5 <emphasis role="comment">; used as index in the &quot;oboe.pvoc&quot; file</emphasis>
+ktime2  <emphasis role="opc">line</emphasis>      0, p3, 4.5 <emphasis role="comment">; used as index in the &quot;clar.pvoc&quot; file</emphasis>
+kcross  <emphasis role="opc">expon</emphasis>     0.001, p3, 1
+        <emphasis role="opc">pvbufread</emphasis> ktime1, &quot;oboe.pvoc&quot;
+apv     <emphasis role="opc">pvcross</emphasis>   ktime2, 1, &quot;clar.pvoc&quot;, 1<emphasis role="op">-</emphasis>kcross, kcross</programlisting>
+      </informalexample>
+    </para>
+            <para>
+      Here is a complete example of the pvcross opcode. It uses the file <ulink url="examples/pvcross.csd"><citetitle>pvcross.csd</citetitle></ulink>
+      <example>
+        <title>Example of the pvcross opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/pvcross.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="pvbufread"><citetitle>pvbufread</citetitle></link>,
+      <link linkend="pvinterp"><citetitle>pvinterp</citetitle></link>,
+      <link linkend="pvread"><citetitle>pvread</citetitle></link>,
+      <link linkend="tableseg"><citetitle>tableseg</citetitle></link>,
+      <link linkend="tablexseg"><citetitle>tablexseg</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Richard Karpen</member>
+        <member>Seattle, Wash</member>
+        <member>1997</member>
+      </simplelist>
+    </para>
+    <para>New in version 3.44</para>
+  </refsect1>
+</refentry>

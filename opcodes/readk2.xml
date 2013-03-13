@@ -1,0 +1,143 @@
+
+<refentry id="readk2">
+<indexterm id="IndexReadk2"><primary>readk2</primary></indexterm>
+  <refentryinfo><title>Signal I/O:File I/O</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>readk2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>readk2</refname>
+    <refpurpose>
+      Periodically reads two orchestra control-signal values from an external file.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Periodically reads two orchestra control-signal values from an external file.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kr1, kr2 <command>readk2</command> ifilname, iformat, iprd</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifilname</emphasis> -- an integer N denoting a file named "readk.N" or a character string (in double quotes, spaces permitted) denoting the external file name. For a string, it may either be a full path name with directory specified or a simple filename.  In the later case, the file is sought first in the current directory, then in <link linkend="CommandEnvironment"><citetitle>SSDIR</citetitle></link>, and finally in <link linkend="CommandEnvironment"><citetitle>SFDIR</citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis>iformat</emphasis> -- specifies the input data format:
+      <itemizedlist>
+        <listitem>
+          <para>1 = 8-bit signed integers (char)</para>
+        </listitem>
+
+        <listitem>
+          <para>4 = 16-bit short integers</para>
+        </listitem>
+
+        <listitem>
+          <para>5 = 32-bit long integers</para>
+        </listitem>
+
+        <listitem>
+          <para>6 = 32-bit floats</para>
+        </listitem>
+
+        <listitem>
+          <para>7 = ASCII long integers (plain text)</para>
+        </listitem>
+
+        <listitem>
+          <para>8 = ASCII floats (plain text)</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      Note that A-law and U-law formats are not available, and that all formats except the last two are binary. The input file should be a "raw", headerless data file.
+    </para>
+
+    <para>
+      <emphasis>iprd</emphasis> -- the rate (period) in seconds, rounded to the nearest orchestra control period, at which the signals are read from the input file.  A value of 0 implies one control period (the enforced minimum), which will read new values at the orchestra control rate.  Longer periods will cause the same values to repeat for more than one control period.
+      <!--unless interpolation is used.-->
+    </para>
+
+
+<!--    <para>
+      <emphasis>interp</emphasis> - (optional) interpolate between values.
+    </para>-->
+<!--
+    <para>
+      <emphasis>ipol</emphasis> - if non-zero, and <emphasis>iprd</emphasis> implies more than one control period, interpolate the k- signals between the periodic reads from the external file. If the value is 0, repeat each signal between frames. Currently not supported.
+    </para>-->
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kr1, kr2</emphasis> -- output of the signals read from <emphasis>ifilname</emphasis>.
+    </para>
+
+    <para>
+      This opcode allows two generated control signal values to be read from a named external file. The file should contain no header information but it should contain a regularly sampled time series of control values. For binary formats, the individual samples of each signal are interleaved. For ASCII text formats, the values are assumed to be separated by at least one whitespace character.  The two "channels" in a sample frame may be on the same line or separated by newline characters, it does not matter. There may be any number of <emphasis>readk2</emphasis> opcodes in an instrument or orchestra and they may read from the same or different files.
+    </para>
+  </refsect1>
+
+<refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the readk2 opcode. It uses the file <ulink url="examples/readk2.csd"><citetitle>readk2.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the readk2 opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/readk2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      The output should include lines like these:
+      <screen>
+kfreq = 429.202551, kdb = -20.495694
+kfreq = 429.202551, kdb = -20.495694
+kfreq = 407.275258, kdb = -23.123776
+kfreq = 475.264472, kdb = -9.300846
+kfreq = 569.979181, kdb = -7.315527
+kfreq = 440.103457, kdb = -0.058331
+
+kfreq = 429.202600, kdb = -20.495700
+kfreq = 429.202600, kdb = -20.495700
+kfreq = 407.275300, kdb = -23.123800
+kfreq = 475.264500, kdb = -9.300800
+kfreq = 569.979200, kdb = -7.315500
+kfreq = 440.103500, kdb = -0.058300
+      </screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="dumpk"><citetitle>dumpk</citetitle></link>,
+      <link linkend="dumpk2"><citetitle>dumpk2</citetitle></link>,
+      <link linkend="dumpk3"><citetitle>dumpk3</citetitle></link>,
+      <link linkend="dumpk4"><citetitle>dumpk4</citetitle></link>,
+      <link linkend="readk"><citetitle>readk</citetitle></link>,
+      <link linkend="readk3"><citetitle>readk3</citetitle></link>,
+      <link linkend="readk4"><citetitle>readk4</citetitle></link>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Credits</title>
+    <para>By: John ffitch and Barry Vercoe</para>
+    <para>1999 or earlier</para>
+  </refsect1>
+</refentry>

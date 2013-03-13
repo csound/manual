@@ -1,0 +1,82 @@
+
+<refentry id="dconv">
+<indexterm id="IndexDconv"><primary>dconv</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Convolution and Morphing</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>dconv</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>dconv</refname>
+    <refpurpose>
+      A direct convolution opcode.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      A direct convolution opcode.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>dconv</command> asig, isize, ifn</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>isize</emphasis> -- the size of the convolution buffer to use. If the buffer size is smaller than the size of <emphasis>ifn</emphasis>, then only the first <emphasis>isize</emphasis> values will be used from the table.
+    </para>
+
+    <para>
+      <emphasis>ifn</emphasis> -- table number of a stored function containing the impulse response for convolution.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      Rather than the analysis/resynthesis method of the <emphasis>convolve</emphasis> opcode, <emphasis>dconv</emphasis> uses direct convolution to create the result.  For small tables it can do this quite efficiently, however larger table require much more time to run. <emphasis>dconv</emphasis> does (<emphasis>isize</emphasis> * <emphasis>ksmps</emphasis>) multiplies on every k-cycle. Therefore, reverb and delay effects are best done with other opcodes (unless the times are short).
+    </para>
+
+    <para>
+      <emphasis>dconv</emphasis> was designed to be used with time varying tables to facilitate new realtime filtering capabilities.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the dconv opcode. It uses the file <ulink url="examples/dconv.csd"><citetitle>dconv.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the dconv opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/dconv.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>See also</title>
+    <para>
+      <link linkend="pconvolve"><citetitle>pconvolve</citetitle></link>,
+      <link linkend="convolve"><citetitle>convolve</citetitle></link>,
+      <link linkend="ftconv"><citetitle>ftconv</citetitle></link>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: William <quote>Pete</quote> Moss</member>
+        <member>2001</member>
+      </simplelist>
+    </para>
+
+    <para>New in version 4.12</para>
+  </refsect1>
+</refentry>

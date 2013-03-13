@@ -1,0 +1,46 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac     <emphasis role="comment">;;;RT audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if RT audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o diskgrain.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis>     <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis>  <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1
+
+iolaps  <emphasis role="op">=</emphasis> 2
+igrsize <emphasis role="op">=</emphasis> 0.04
+ifreq   <emphasis role="op">=</emphasis> iolaps<emphasis role="op">/</emphasis>igrsize
+ips     <emphasis role="op">=</emphasis> 1<emphasis role="op">/</emphasis>iolaps
+
+istr <emphasis role="op">=</emphasis> p4  <emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> timescale <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+ipitch <emphasis role="op">=</emphasis> p5 <emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> pitchscale <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+
+a1 <emphasis role="opc">diskgrain</emphasis> "mary.wav", 1, ifreq, ipitch, igrsize, ips<emphasis role="op">*</emphasis>istr, 1, iolaps
+   <emphasis role="opc">outs</emphasis>   a1, a1
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 8192 20 2 1  <emphasis role="comment">;Hanning function</emphasis>
+
+<emphasis role="comment">;           timescale   pitchscale</emphasis>
+<emphasis role="stamnt">i</emphasis> 1   0   5     1           1
+<emphasis role="stamnt">i</emphasis> 1   +   5     2           1
+<emphasis role="stamnt">i</emphasis> 1   +   5     1          0.75
+<emphasis role="stamnt">i</emphasis> 1   +   5     1.5        1.5
+<emphasis role="stamnt">i</emphasis> 1   +   5     0.5        1.5
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

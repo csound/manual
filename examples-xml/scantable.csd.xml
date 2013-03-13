@@ -1,0 +1,42 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac -+rtmidi=virtual -M0 <emphasis role="comment">;;;realtime audio out and midi in</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o scantable.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+gi1 <emphasis role="ohdr">ftgen</emphasis> 1, 0, 128, 7, 0, 64, 1, 64, 0		<emphasis role="comment">; initial position</emphasis>
+gi2 <emphasis role="ohdr">ftgen</emphasis> 2, 0, 128, <emphasis role="op">-</emphasis>7, 1, 128, 1		<emphasis role="comment">; masses</emphasis>
+gi3 <emphasis role="ohdr">ftgen</emphasis> 3, 0, 128, <emphasis role="op">-</emphasis>7, 0, 64, 100, 64, 0	<emphasis role="comment">; stiffness</emphasis>
+gi4 <emphasis role="ohdr">ftgen</emphasis> 4, 0, 128, <emphasis role="op">-</emphasis>7, 1, 128, 1		<emphasis role="comment">; damping</emphasis>
+gi5 <emphasis role="ohdr">ftgen</emphasis> 5, 0, 128, <emphasis role="op">-</emphasis>7, 0, 128, 0.5		<emphasis role="comment">; initial velocity</emphasis>
+
+
+<emphasis role="oblock">instr</emphasis> 1
+
+iamp <emphasis role="opc">ampmidi</emphasis> .5
+ipch <emphasis role="opc">cpsmidi</emphasis> 
+kenv <emphasis role="opc">madsr</emphasis> .1, .1, .8, .3
+
+asig <emphasis role="opc">scantable</emphasis> iamp, ipch, 1, 2, 3, 4, 5
+asig <emphasis role="opc">dcblock</emphasis> asig
+     <emphasis role="opc">outs</emphasis> asig<emphasis role="op">*</emphasis>kenv, asig<emphasis role="op">*</emphasis>kenv
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">f</emphasis>0 60	<emphasis role="comment">; play for 60 seconds</emphasis>
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

@@ -1,0 +1,39 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac  <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o gen27.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+gisin <emphasis role="ohdr">ftgen</emphasis> 1, 0, 32768, 10, 1
+gienv <emphasis role="ohdr">ftgen</emphasis> 2, 0, 1025, 27, 0, 0,200, 1, 400, <emphasis role="op">-</emphasis>1, 513, 0
+  
+<emphasis role="oblock">instr</emphasis> 1
+
+kcps <emphasis role="opc">init</emphasis> 3<emphasis role="op">/</emphasis>p3			<emphasis role="comment">;play 3x over duration of note</emphasis>
+kndx <emphasis role="opc">phasor</emphasis> kcps
+ixmode <emphasis role="op">=</emphasis> 1			<emphasis role="comment">;normalize to 0-1</emphasis>
+kval <emphasis role="opc">table</emphasis> kndx, gienv, ixmode
+kval <emphasis role="op">=</emphasis> kval<emphasis role="op">*</emphasis>100			<emphasis role="comment">;scale 0-100</emphasis>
+asig <emphasis role="opc">poscil</emphasis> 1, 220<emphasis role="op">+</emphasis>kval, 1	<emphasis role="comment">;add to 220 Hz</emphasis>
+     <emphasis role="opc">outs</emphasis> asig, asig
+  
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1 0 4
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

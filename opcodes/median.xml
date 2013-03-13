@@ -1,0 +1,91 @@
+
+<refentry id="median">
+<indexterm id="IndexMedian"><primary>median</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Low Pass</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>median</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>median</refname>
+    <refpurpose>
+      A median filter, a variant FIR lowpass filter.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Implementation of a median filter.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>median</command> asig, ksize, imaxsize [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>imaxsize</emphasis> -- the maximun  size of the window used to
+      select the data.
+      </para>
+      <para>
+        <emphasis>iskip</emphasis> -- initial
+        disposition of internal data space. A zero value will clear the
+        space; a non-zero value will allow previous information to
+        remain. The default value is 0.
+      </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asig</emphasis> -- input signal to be filtered
+    </para>
+    <para>
+      <emphasis>ksize</emphasis> -- size of the window over which the
+      input is to be filtered.  It must not exceed the maximum window
+      size; if it does it is truncated.
+    </para>
+
+    <para>
+      <emphasis>median</emphasis> is a simple filter that retuns the
+      median value of the last <emphasis>ksize</emphasis> values.  It
+      has a lowpass action.  The efficiency decreases as the window
+      size increases.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the median opcode. It uses the file <ulink url="examples/median.csd"><citetitle>median.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the median opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/median.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>University of Bath</member>
+        <member>May 2010</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 5.13</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,77 @@
+
+<refentry id="trigger">
+<indexterm id="IndexTrigger"><primary>trigger</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>trigger</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>trigger</refname>
+
+    <refpurpose>
+      Informs when a krate signal crosses a threshold.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Informs when a krate signal crosses a threshold.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kout <command>trigger</command> ksig, kthreshold, kmode</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ksig</emphasis> -- input signal
+    </para>
+
+    <para>
+      <emphasis>kthreshold</emphasis> -- trigger threshold
+    </para>
+
+    <para>
+      <emphasis>kmode</emphasis> -- can be 0 , 1 or 2
+    </para>
+
+    <para>
+      Normally <emphasis>trigger</emphasis> outputs zeroes: only each time <emphasis>ksig</emphasis> crosses <emphasis>kthreshold</emphasis> <emphasis>trigger</emphasis> outputs a 1. There are three modes of using <emphasis>ktrig</emphasis>:
+      <itemizedlist>
+        <listitem><para><emphasis>kmode</emphasis> = 0 - (down-up) <emphasis>ktrig</emphasis> outputs a 1 when current value of <emphasis>ksig</emphasis> is higher than <emphasis>kthreshold,</emphasis> while old value of <emphasis>ksig</emphasis> was equal to or lower than <emphasis>kthreshold</emphasis>.</para></listitem>
+        <listitem><para><emphasis>kmode</emphasis> = 1 - (up-down) <emphasis>ktrig</emphasis> outputs a 1 when current value of <emphasis>ksig</emphasis> is lower than <emphasis>kthreshold</emphasis> while old value of <emphasis>ksig</emphasis> was equal or higher than <emphasis>kthreshold</emphasis>.</para></listitem>
+        <listitem><para><emphasis>kmode</emphasis> = 2  - (both) <emphasis>ktrig</emphasis> outputs a 1 in both the two previous cases.</para></listitem>
+      </itemizedlist>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the trigger opcode. It uses the file <ulink url="examples/trigger.csd"><citetitle>trigger.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the trigger opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/trigger.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namegabriel;</member>
+        <member>Italy</member>
+      </simplelist>
+    </para>
+    <para>New in Csound version 3.49</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,119 @@
+
+<refentry id="dripwater">
+<indexterm id="IndexDripwater"><primary>dripwater</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Models and Emulations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>dripwater</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>dripwater</refname>
+    <refpurpose>
+      Semi-physical model of a water drop.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>dripwater</emphasis> is a semi-physical model of a water drop. It is one of the PhISEM percussion opcodes. PhISEM (Physically Informed Stochastic Event Modeling) is an algorithmic approach for simulating collisions of multiple independent sound producing objects.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>dripwater</command> kamp, idettack [, inum] [, idamp] [, imaxshake] [, ifreq] \
+      [, ifreq1] [, ifreq2]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>idettack</emphasis> -- period of time over which all sound is stopped
+    </para>
+ 
+    <para>
+      <emphasis>inum</emphasis> (optional) -- The number of beads, teeth, bells, timbrels, etc.  If zero, the default value is 10.
+    </para>
+
+
+    <para>
+      <emphasis>idamp</emphasis> (optional) -- the damping factor, as part of this equation:
+      <literallayout>damping_amount = 0.996 + (idamp * 0.002)</literallayout>
+    </para>
+
+    <para>
+      The default <emphasis>damping_amount</emphasis> is 0.996 which means that the default value of <emphasis>idamp</emphasis> is 0. The maximum <emphasis>damping_amount</emphasis> is 1.0 (no damping). This means the maximum value for <emphasis>idamp</emphasis> is 2.0. 
+    </para>
+
+    <para>
+      The recommended range for <emphasis>idamp</emphasis> is usually below 75% of the maximum value. &namerasmus; suggests a range of 1.4-1.75. He also suggests a maximum value of 1.9 instead of the theoretical limit of 2.0.
+    </para>
+
+    <para>
+      <emphasis>imaxshake</emphasis> (optional, default=0) -- amount of energy to add back into the system. The value should be in range 0 to 1.
+    </para>
+
+    <para>
+      <emphasis>ifreq</emphasis> (optional) -- the main resonant frequency. The default value is 450.
+    </para>
+
+    <para>
+      <emphasis>ifreq1</emphasis> (optional) -- the first resonant frequency. The default value is 600.
+    </para>
+
+    <para>
+      <emphasis>ifreq2</emphasis> (optional) -- the second resonant frequency. The default value is 750.
+    </para>
+ </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kamp</emphasis> -- Amplitude of output.  Note: As these instruments are stochastic, this is only an approximation.
+    </para>
+ </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the dripwater opcode. It uses the file <ulink url="examples/dripwater.csd"><citetitle>dripwater.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the dripwater opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/dripwater.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="bamboo"><citetitle>bamboo</citetitle></link>,
+      <link linkend="guiro"><citetitle>guiro</citetitle></link>,
+      <link linkend="sleighbells"><citetitle>sleighbells</citetitle></link>,
+      <link linkend="tambourine"><citetitle>tambourine</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &nameperry;, part of the PhISEM (Physically Informed Stochastic Event Modeling)</member>
+        <member>Adapted by &namejohn;</member>
+        <member>University of Bath, Codemist Ltd.</member>
+        <member>Bath, UK</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 4.07</para>
+    <para>Added notes by &namerasmus; on May 2002.</para>
+  </refsect1>
+</refentry>

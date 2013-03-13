@@ -1,0 +1,89 @@
+﻿<refentry id="STKShakers">
+  <indexterm id="IndexStkshakers"><primary>STKShakers</primary></indexterm>
+  <refentryinfo><title>Signal Generators:STK Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>STKShakers</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>STKShakers</refname>
+    <refpurpose>
+      STKShakers is an instrument that simulates environmental sounds or collisions of multiple independent sound producing objects. </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+    STKShakers are a set of PhISEM and PhOLIES instruments: 
+      PhISEM (Physically Informed Stochastic Event Modeling) is an algorithmic approach for simulating collisions of multiple independent sound producing objects. 
+      It can simulate a Maraca, Sekere, Cabasa, Bamboo Wind Chimes, Water Drops, Tambourine, Sleighbells, and a Guiro. On <ulink url="http://soundlab.cs.princeton.edu/research/controllers/shakers/"></ulink>
+PhOLIES (Physically-Oriented Library of Imitated Environmental Sounds) there is a similar approach for the synthesis of environmental sounds. 
+It simulates of breaking sticks, crunchy snow (or not), a wrench, sandpaper, and more..</para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>asignal <command>STKShakers</command> ifrequency, iamplitude, [kenerg, kv1[, kdecay, kv2[, kshake, kv3[, knum, kv4[, kres, kv5[, kinstr, kv6]]]]]]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifrequency</emphasis> -- Frequency of note played, in Hertz.
+    </para>
+   
+    <para>
+      <emphasis>iamplitude</emphasis> -- Amplitude of note played (range 0-1).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+<para><emphasis>kenerg</emphasis> -- controller 2, shake energy. Value range of kv1 is 0-127.</para>
+<para><emphasis>kdecay</emphasis> -- controller 4, system decay. Value range of kv2 is 0-127.</para>
+<para><emphasis>kshake</emphasis> -- controller 128, shake energy. Value range of kv3 is 0-127.</para>
+<para><emphasis>knum</emphasis> -- controller 11, number of objects. Value range of kv4 is 0-127.</para>
+<para><emphasis>kres</emphasis> -- controller 1, resonance frequency. Value range of kv5 is 0-127.</para>
+<para><emphasis>kinstr</emphasis> -- controller 1071, instrument selection (Maraca = 0, Cabasa = 1, Sekere = 2, Guiro = 3, Water Drops = 4, Bamboo Chimes = 5, Tambourine = 6, Sleigh Bells = 7, Sticks = 8, Crunch = 9, Wrench = 10, Sand Paper = 11, Coke Can = 12, Next Mug = 13, Penny + Mug = 14, Nickle + Mug = 15, Dime + Mug = 16, Quarter + Mug = 17, Franc + Mug = 18, Peso + Mug = 19, Big Rocks = 20, Little Rocks = 21, Tuned Bamboo Chimes = 22). Value range of kv6 is 0-22.</para>
+  </refsect1>
+ 
+    <refsect1>
+    <note>
+      <title>Note</title>
+      <para>
+         The code for this opcode is taken directly from the Shakers class in the Synthesis Toolkit in C++ by Perry R. Cook and Gary P. Scavone. More on the STK classes can be found here:  
+<ulink url="https://ccrma.stanford.edu/software/stk/classes.html"><citetitle>https://ccrma.stanford.edu/software/stk/classes.html</citetitle></ulink>
+</para>
+      <para>
+        <emphasis>kc1, kv1, kc2, kv2, kc3, kv3, kc4, kv4, kc5, kv5, kc6, kv6, kc7, kv7, kc8, kv8</emphasis> -- Up to 8 optional k-rate controller pairs for the STK opcodes.
+      Each controller pair consists of a controller number (kc) followed by a controller value (kv). Both the controller numbers and the controller values are krate variables. However, during a performance, normally the controller numbers stay fixed while the corresponding controller values may change at any time.
+The order of the controller pair is arbitrary, as long as they are after <emphasis>iamplitude</emphasis>. Also, it is not needed that all controller pairs are used.
+</para>
+    </note>
+  </refsect1>
+  
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the STKShakers opcode. It uses the file <ulink url="examples/STKShakers.csd"><citetitle>STKShakerscsd</citetitle></ulink>.
+     
+      <example>
+        <title>Example of the STKShakers opcode.</title>
+        <xi:include href="examples-xml/STKShakers.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namemichael; (after Georg Essl)</member>
+        <member>Irreducible Productions</member>
+        <member>New York, NY</member>
+      </simplelist>
+    </para>
+    <para>New in Csound version 5.11</para>
+  </refsect1>
+</refentry>
+

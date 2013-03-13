@@ -1,0 +1,109 @@
+
+<refentry id="transegr">
+<indexterm id="IndexTransegr"><primary>transegr</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Linear and Exponential Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>transegr</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>transegr</refname>
+    <refpurpose>
+      Constructs a user-definable envelope with extended release segment.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Constructs a user-definable envelope. It is the same
+      as <link linkend="transeg"><citetitle>transeg</citetitle></link>,
+      with an extended release segment.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>transegr</command> ia, idur, itype, ib [, idur2] [, itype] [, ic] ...</synopsis>
+    <synopsis>kres <command>transegr</command> ia, idur, itype, ib [, idur2] [, itype] [, ic] ...</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ia</emphasis> -- starting value.
+    </para>
+
+    <para>
+      <emphasis>ib, ic,</emphasis> etc. -- value after <emphasis>idur</emphasis> seconds.
+    </para>
+
+    <para>
+      <emphasis>idur</emphasis> -- duration in seconds of first segment. A zero or negative value will cause all initialization to be skipped.
+    </para>
+
+    <para>
+      <emphasis>idur2,... idurx</emphasis> etc. -- duration in seconds of segment
+    </para>
+
+    <para>
+      <emphasis>itype, itype2,</emphasis> etc. -- if 0, a straight line is produced. If non-zero, then <emphasis>transegr</emphasis> creates the following curve, for <emphasis>n</emphasis> steps:
+
+      <literallayout>
+ibeg + (ivalue - ibeg) * (1 - exp( i*itype/(n-1) )) / (1 - exp(itype))
+      </literallayout>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      If <emphasis>itype</emphasis> &gt; 0, there is a slowly rising (concave) or slowly decaying
+      (convex) curve, while if <emphasis>itype</emphasis> &lt; 0, the curve is fast rising (convex) or
+      fast decaying (concave). See also <link linkend="GEN16"><citetitle>GEN16</citetitle></link>.
+    </para>
+    <para>
+      This opcode is the same as 
+      of <link linkend="transeg"><citetitle>transeg</citetitle></link>
+      with an additional release segment triggered by a MIDI noteoff
+      event, a negative p1 <link linkend="i"><citetitle>note event</citetitle></link> in the score or
+      a <link linkend="turnoff2"><citetitle>turnoff2</citetitle></link>
+      opcode.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the transegr opcode. It uses the file <ulink url="examples/transegr.csd"><citetitle>transegr.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the transegr opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/transegr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="expsega"><citetitle>expsega</citetitle></link>,
+      <link linkend="expsegr"><citetitle>expsegr</citetitle></link>,
+      <link linkend="linseg"><citetitle>linseg</citetitle></link>,
+      <link linkend="linsegr"><citetitle>linsegr</citetitle></link>,
+      <link linkend="transeg"><citetitle>transeg</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>january 2010</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 5.12</para>
+  </refsect1>
+</refentry>

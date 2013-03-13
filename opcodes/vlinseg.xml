@@ -1,0 +1,80 @@
+
+<refentry id="vlinseg">
+<indexterm id="IndexVlinseg"><primary>vlinseg</primary></indexterm>
+  <refentryinfo><title>Vectorial:Envelopes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vlinseg</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vlinseg</refname>
+    <refpurpose>
+      Vectorial envelope generator
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Generate linear vectorial segments
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>vlinseg</command>  ifnout, ielements, ifn1, idur1, ifn2 [, idur2, ifn3 [...]]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifnout</emphasis>  - number of table hosting output vectorial signal
+    </para>
+    <para>
+      <emphasis>ifn1</emphasis> - starting vector
+    </para>
+    <para>
+      <emphasis>ifn2,ifn3,etc.</emphasis> - vector after <emphasis>idurx</emphasis> seconds
+    </para>
+    <para>
+      <emphasis>idur1</emphasis> - duration in seconds of first segment.
+    </para>
+    <para>
+      <emphasis>idur2, idur3, etc. </emphasis> - duration in seconds of subsequent segments.
+    </para>
+    <para>
+      <emphasis>ielements</emphasis> - number of elements of vectors.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      These opcodes are similar to <emphasis>linseg</emphasis> and <emphasis>expseg</emphasis>, but operate with vectorial signals instead of with scalar signals.
+   </para>
+   <para>
+     Output is a vectorial control signal hosted by <emphasis>ifnout</emphasis> (that must be previously allocated), while each break-point of the envelope is actually a vector of values. All break-points must contain the same number of elements (<emphasis>ielements</emphasis>).
+   </para>
+   <para>
+     All these operators are designed to be used together with other opcodes that operate with vectorial signals such as <emphasis>bmscan</emphasis>, <emphasis>vcella</emphasis>, <emphasis>adsynt</emphasis>, <emphasis>adsynt2</emphasis>, etc. 
+   </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Example</title>
+    <para>
+      Here is an example of the vlinseg opcode. It uses the files <ulink url="examples/vlinseg.csd"><citetitle>vlinseg.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the vlinseg opcode.</title>
+        <xi:include href="examples-xml/vlinseg.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Credits</title>
+    <para>Written by Gabriel Maldonado.</para>
+    <para>Example by Andres Cabrera.</para>
+    <para>New in Csound 5 (Previously available only on CsoundAV)</para>
+  </refsect1>
+</refentry>

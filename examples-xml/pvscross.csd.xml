@@ -1,0 +1,44 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+-odac
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 16
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 1
+<emphasis role="ohdr">0dbfs</emphasis> <emphasis role="op">=</emphasis> 1
+
+<emphasis role="comment">;; example written by joachim heintz 2009</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 1
+ipermut	<emphasis role="op">=</emphasis>		p4<emphasis role="comment">; 1 = change order of soundfiles </emphasis>
+ifftsize	<emphasis role="op">=</emphasis>		1024
+ioverlap	<emphasis role="op">=</emphasis>		ifftsize <emphasis role="op">/</emphasis> 4
+iwinsize	<emphasis role="op">=</emphasis>		ifftsize
+iwinshape	<emphasis role="op">=</emphasis>		1<emphasis role="comment">; von-Hann window</emphasis>
+Sfile1		<emphasis role="op">=</emphasis>		"fox.wav"
+Sfile2		<emphasis role="op">=</emphasis>		"wave.wav"
+ain1		<emphasis role="opc">soundin</emphasis>	Sfile1
+ain2		<emphasis role="opc">soundin</emphasis>	Sfile2
+fftin1		<emphasis role="opc">pvsanal</emphasis>	ain1, ifftsize, ioverlap, iwinsize, iwinshape<emphasis role="comment">; fft-analysis of file 1</emphasis>
+fftin2		<emphasis role="opc">pvsanal</emphasis>	ain2, ifftsize, ioverlap, iwinsize, iwinshape<emphasis role="comment">; fft-analysis of file 2</emphasis>
+ktrans		<emphasis role="opc">linseg</emphasis>		0, p3, 1<emphasis role="comment">; linear transition </emphasis>
+<emphasis role="octrl">if</emphasis> ipermut <emphasis role="op">==</emphasis> 1 then
+fcross		<emphasis role="opc">pvscross</emphasis>	fftin2, fftin1, ktrans, 1<emphasis role="op">-</emphasis>ktrans
+<emphasis role="octrl">else</emphasis>
+fcross		<emphasis role="opc">pvscross</emphasis>	fftin1, fftin2, ktrans, 1<emphasis role="op">-</emphasis>ktrans
+<emphasis role="octrl">endif</emphasis>
+aout		<emphasis role="opc">pvsynth</emphasis>	fcross
+		<emphasis role="opc">out</emphasis>		aout
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 2.757 0<emphasis role="comment">; frequencies from fox. wav; amplitudes moving from wave to fox</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 3 2.757 1<emphasis role="comment">; frequencies from wave.wav, amplitudes moving from fox to wave</emphasis>
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

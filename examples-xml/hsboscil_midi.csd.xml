@@ -1,0 +1,45 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out  </emphasis>
+-odac   -M0 <emphasis role="comment">;;;realtime audio out and realtime MIDI in</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; -o hsboscil_midi.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="comment">; synth waveform</emphasis>
+giwave  <emphasis role="ohdr">ftgen</emphasis> 1, 0, 1024, 10, 1, 1, 1, 1
+<emphasis role="comment">; blending window</emphasis>
+giblend <emphasis role="ohdr">ftgen</emphasis> 2, 0, 1024, <emphasis role="op">-</emphasis>19, 1, 0.5, 270, 0.5
+
+<emphasis role="oblock">instr</emphasis> 1
+
+ibase <emphasis role="op">=</emphasis> <emphasis role="opc">cpsoct</emphasis>(6)
+ioctcnt <emphasis role="op">=</emphasis> 5
+
+<emphasis role="comment">; all octaves sound alike.</emphasis>
+  itona <emphasis role="opc">octmidi</emphasis>
+  <emphasis role="comment">; velocity is mapped to brightness</emphasis>
+  ibrite <emphasis role="opc">ampmidi</emphasis> 4
+
+<emphasis role="comment">; Map an exponential envelope for the amplitude.</emphasis>
+kenv <emphasis role="opc">expon</emphasis> .8, 1, .01
+asig <emphasis role="opc">hsboscil</emphasis> kenv, itona, ibrite, ibase, giwave, giblend, ioctcnt
+     <emphasis role="opc">outs</emphasis> asig, asig
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1 0 30 <emphasis role="comment">; play for 30 seconds</emphasis>
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

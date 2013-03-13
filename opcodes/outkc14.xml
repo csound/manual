@@ -1,0 +1,100 @@
+
+<refentry id="outkc14">
+<indexterm id="IndexOutkc14"><primary>outkc14</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Output</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>outkc14</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>outkc14</refname>
+
+    <refpurpose>
+      Sends 14-bit MIDI controller output at k-rate.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Sends 14-bit MIDI controller output at k-rate.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>outkc14</command> kchn, kmsb, klsb, kvalue, kmin, kmax</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kchn</emphasis> -- MIDI channel number (1-16)
+    </para>
+
+    <para>
+      <emphasis>kmsb</emphasis> -- most significant byte controller number when using 14-bit parameters (0-127)
+    </para>
+
+    <para>
+      <emphasis>klsb</emphasis> -- least significant byte controller number when using 14-bit parameters (0-127)
+    </para>
+
+    <para>
+      <emphasis>kvalue</emphasis> -- floating point value
+    </para>
+
+    <para>
+      <emphasis>kmin</emphasis> -- minimum floating point value (converted in MIDI integer value 0)
+    </para>
+
+    <para>
+      <emphasis>kmax</emphasis> -- maximum floating point value (converted in MIDI integer value 16383 (14-bit))
+    </para>
+
+    <para>
+      <emphasis>outkc14</emphasis> (k-rate MIDI 14-bit controller output) sends a pair of controller messages. It works only with MIDI instruments which recognize them. These opcodes can drive 14-bit parameters on MIDI instruments that recognize them. The first control message contains the most significant byte of <emphasis>kvalue</emphasis> argument while the second message contains the less significant byte. <emphasis>kmsb</emphasis> and <emphasis>klsb</emphasis> are the number of the most and less significant controller.
+    </para>
+
+    <para>
+      It can drive a different value of a parameter for each note currently active. 
+    </para>
+
+    <para>
+      It can scale the k-value floating-point argument according to the <emphasis>kmin</emphasis> and <emphasis>kmax</emphasis> values. For example: set <emphasis>kmin</emphasis> = 1.0 and <emphasis>kmax</emphasis> = 2.0.
+When the <emphasis>kvalue</emphasis> argument receives a 2.0 value, the opcode will send a 127 value to the MIDI OUT device. When the <emphasis>kvalue</emphasis> argument receives a 1.0 value, it will send a 0 value. k-rate opcodes send a message each time the MIDI converted value of argument <emphasis>kvalue</emphasis> changes.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="outiat"><citetitle>outiat</citetitle></link>,
+      <link linkend="outic14"><citetitle>outic14</citetitle></link>,
+      <link linkend="outic"><citetitle>outic</citetitle></link>,
+      <link linkend="outipat"><citetitle>outipat</citetitle></link>,
+      <link linkend="outipb"><citetitle>outipb</citetitle></link>,
+      <link linkend="outipc"><citetitle>outipc</citetitle></link>,
+      <link linkend="outkat"><citetitle>outkat</citetitle></link>,
+      <link linkend="outkc"><citetitle>outkc</citetitle></link>,
+      <link linkend="outkpat"><citetitle>outkpat</citetitle></link>,
+      <link linkend="outkpb"><citetitle>outkpb</citetitle></link>,
+      <link linkend="outkpc"><citetitle>outkpc</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namegabriel;</member>
+        <member>Italy</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.47</para>
+    <para>Thanks goes to &namerasmus; for pointing out the correct MIDI channel and controller number ranges.</para>
+  </refsect1>
+</refentry>

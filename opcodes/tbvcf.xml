@@ -1,0 +1,89 @@
+
+<refentry id="tbvcf">
+<indexterm id="IndexTbvcf"><primary>tbvcf</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tbvcf</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>tbvcf</refname>
+    <refpurpose>
+       Models some of the filter characteristics of a Roland TB303 voltage-controlled filter.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This opcode attempts to model some of the filter characteristics of a Roland TB303 voltage-controlled filter. Euler's method is used to approximate the system, rather than traditional filter methods. Cutoff frequency, Q, and distortion are all coupled. Empirical methods were used to try to unentwine,  but frequency is only approximate as a result. Future fixes for some problems with this opcode may break existing orchestras relying on this version of <emphasis>tbvcf</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>tbvcf</command> asig, xfco, xres, kdist, kasym [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iskip</emphasis> (optional, default=0) -- if non zero
+    skip the initialisation of the filter. (New in Csound version
+    4.23f13 and 5.0)
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asig</emphasis> -- input signal. Should be normalized to &plusmn;1.
+    </para>
+
+    <para>
+      <emphasis>xfco</emphasis> -- filter cutoff frequency. Optimum range is 10,000 to 1500. Values below 1000 may cause problems.
+    </para>
+
+    <para>
+      <emphasis>xres</emphasis> -- resonance or Q. Typically in the range 0 to 2.
+    </para>
+
+    <para>
+      <emphasis>kdist</emphasis> -- amount of distortion. Typical value is 2. Changing <emphasis>kdist</emphasis> significantly from 2 may cause odd interaction with <emphasis>xfco</emphasis> and <emphasis>xres</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>kasym</emphasis> -- asymmetry of resonance. Typically in the range 0 to 1.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the tbvcf opcode. It uses the file <ulink url="examples/tbvcf.csd"><citetitle>tbvcf.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the tbvcf opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/tbvcf.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namehans;</member>
+        <member>December, 2000 -- January, 2001</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound 4.10</para>
+  </refsect1>
+</refentry>

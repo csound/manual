@@ -1,0 +1,81 @@
+
+<refentry id="vtablewa">
+<indexterm id="IndexVtablewa"><primary>vtablewa</primary></indexterm>
+  <refentryinfo><title>Vectorial:Tables</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vtablewa</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vtablewa</refname>
+    <refpurpose>
+     Write vectors (to tables -or arrays of vectors).
+      
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+	This opcode writes vectors to tables at a-rate.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>vtablewa</command>  andx, kfn, ixmode, ainarg1 [, ainarg2, ainarg3 , .... , ainargN ]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ixmode</emphasis> -  index data mode. The default value is 0.
+    </para>
+    <para>            == 0 index is treated as a raw table location,
+    </para>
+    <para>               == 1 index is normalized (0 to 1).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>andx</emphasis> - Index into f-table, either a positive number range matching the table length (ixmode = 0) or a 0 to 1 range (ixmode != 0).
+    </para>
+    <para>
+      <emphasis>kfn</emphasis> - table number
+    </para>
+    <para>
+      <emphasis>ainarg1...ainargN</emphasis> - input vector elements
+    </para>
+    <para>
+      This opcode is useful in all cases in which one needs to write sets of values associated to unique indexes (for example, multi-channel samples, STFT bin frames, spectral formants, p-field based scores etc.). The number of elements of each vector (length of the vector) is determined by the number of optional arguments on the right (ainarg1 , ainarg2, ainarg3, ....  ainargN).
+    </para>
+    <para>
+      <emphasis>vtablewa</emphasis> allows also to switch the table number at k-rate (but this is possible only when vector frames of each used table have the same number of elements, otherwise unpredictable results could occurr), as well as to choose indexing style (raw or normalized, see  also ixmode argument of table opcode ).
+    </para>
+    <para>
+      Notice that no wrap nor limit mode is implemented.  So, if  an index attempt to access to a zone not allocated by the table, Csound will probably crash. However this drawback can be easily avoided by using wrap or limit opcodes applied to indexes before using <emphasis>vtablewa</emphasis>, in order to correct eventual out-of-range values.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the vtablewa opcode. It uses the files <ulink url="examples/vtablewa.csd"><citetitle>vtablewa.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the vtablewa opcode.</title>
+        <xi:include href="examples-xml/vtablewa.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>Written by Gabriel Maldonado.</para>
+    <para>Example written by Andres Cabrera.</para>
+    <para>New in Csound 5 (Previously available only on CsoundAV)</para>
+  </refsect1>
+</refentry>

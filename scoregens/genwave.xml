@@ -1,0 +1,107 @@
+<refentry id="GENwave">
+      <indexterm id="IndexGENwave"><primary>GENwave</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GENwave</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>"wave"</refname>
+    <refpurpose>
+      Generates a compactly supported wavelet function.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Creates a compactly supported wavelet, scaling function or wavelet
+      packet. The output function is obtained by deconvolution of
+      corresponding mirror filter impulse response. This procedure is
+      applied in an iterative fashion. 
+    </para>
+    <para>
+      The filter bank used in classic discrete wavelet transform grows
+      only towards low frequencies. Meanwhile wavelet packet transform
+      introduces any possible direction of tree's growth. The sequence
+      of mirror filters used in deconvolution is determined by binary
+      form of seq value. "0" corresponds to low-pass filter and "1" to
+      high-pass. 
+    </para>
+    <para>
+      The number of iteration steps is determined by filter's length
+      and size of function table. I.e. for filter length 8 and table
+      size 256 there are log2(256/8) = 5 iterations available. 
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>f</command> # time size "wave" fnsf seq rescale</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>size</emphasis> -- number of points in the table. Must
+      be a power of 2 or power-of-2 plus 1 (see <link
+      linkend="f"><citetitle>f statement</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis>fnsf</emphasis> -- pre-existing table with scaling
+      function coefficients. 
+    </para>
+    <para>
+      <emphasis>seq</emphasis> -- non-negative integer number which
+      corresponds to sequence of low-pass and high-pass mirror filters
+      during deconvolution procedure. 
+    </para>
+    <para>
+      <emphasis>rescale</emphasis> -- if not zero the table is not rescaled
+    </para>
+
+  </refsect1>
+  
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the GENwave routine. It uses the file
+      <ulink
+          url="examples/genwave.csd"><citetitle>genwave.csd</citetitle></ulink>. 
+      <example>
+        <title>Example of the GENwave routine.</title>
+        <para>
+          See the sections <link
+          linkend="UsingRealTime"><citetitle>Real-time
+          Audio</citetitle></link> and <link
+          linkend="CommandFlags"><citetitle>Command Line
+          Flags</citetitle></link> for more information on using
+          command line flags.
+        </para> 
+        <xi:include href="examples-xml/genwave.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>  
+    </para>
+  </refsect1>
+
+  <refsect1>
+     <title>See Also</title>
+     <para>
+       Ingrid Daubechies. Ten Lectures on Wavelets, SIAM 1992.
+    </para>
+    <para>
+      Pedro A.G. Batista. An Introduction to Sound Synthesis with
+      Wavelet Packets, Csound Book CD Chapters, MIT 2000. 
+    </para>
+    <para>
+      Victor M. Wickerhauser. Acoustic Signal Compression with Wavelet
+      Packets, Yale 1992. 
+     </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Written by Gleb Rogozinsky</para>
+    <para>Saint-Petersburg University of Film and Television</para>
+    <para>Saint-Petersburg, Russia</para>
+    <para>April 2012</para>
+  </refsect1>
+</refentry>

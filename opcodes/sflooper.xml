@@ -1,0 +1,138 @@
+
+<refentry id="sflooper">
+<indexterm id="Indexsflooper"><primary>sflooper</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Sample Playback</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>sflooper</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>sflooper</refname>
+    <refpurpose>
+      Plays a SoundFont2 (SF2) sample preset, generating a stereo sound, with user-defined
+      time-varying crossfade looping.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Plays a SoundFont2 (SF2) sample preset, generating a stereo sound, similarly to <emphasis>sfplay</emphasis>. Unlike that opcode, though,
+	  it ignores the looping points set in the SF2 file and substitutes them for a user-defined crossfade loop. It is
+	  a cross between <link linkend="sfplay"><citetitle>sfplay</citetitle></link> and
+      <link linkend="flooper2"><citetitle>flooper2</citetitle></link>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ar1, ar2 <command>sflooper</command> ivel, inotenum, kamp, kpitch, ipreindex, kloopstart, kloopend, kcrossfade \
+      [, istart, imode, ifenv, iskip] </synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ivel</emphasis> -- velocity value
+    </para>
+
+    <para>
+      <emphasis>inotenum</emphasis> -- MIDI note number value
+    </para>
+
+    <para>
+      <emphasis>ipreindex</emphasis> -- preset index
+    </para>
+
+       <para>
+      <emphasis>istart </emphasis> -- playback start pos in seconds
+    </para>
+    <para>
+      <emphasis>imode </emphasis> -- loop modes: 0 forward, 1 backward, 2 back-and-forth [def: 0]
+    </para>
+        <para>
+      <emphasis>ifenv </emphasis> -- if non-zero, crossfade envelope shape table number. The default, 0, sets
+the crossfade to linear.
+    </para>
+        <para>
+      <emphasis>iskip </emphasis> -- if 1, the opcode initialisation is skipped, for tied notes, performance
+continues from the position in the loop where the previous note stopped. The default, 0, does not skip
+initialisation
+    </para>
+	
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+
+	 <para>
+      <emphasis>kamp</emphasis> -- amplitude scaling </para>
+    <para>
+      <emphasis>kpitch</emphasis> -- pitch control (transposition ratio); negative values are not allowed.
+    </para>
+<para>
+      <emphasis>kloopstart</emphasis> -- loop start point (secs). Note that although k-rate, loop parameters
+such as this are only updated once per loop cycle. If loop start is set beyond the end of the sample, no looping
+will result. 
+</para>
+<para>
+      <emphasis>kloopend</emphasis> -- loop end point (secs), updated once per loop cycle.
+</para>
+<para>
+      <emphasis>kcrossfade </emphasis> -- crossfade length (secs), updated once per loop cycle and limited to
+loop length.</para>
+  </refsect1>
+   
+<refsect1>
+    <para>
+      <emphasis>sflooper</emphasis> plays a preset, generating a stereo sound. 
+	 </para>
+
+    <para>
+      These opcodes only support the sample structure of SF2 files. The modulator structure of the SoundFont2 format is not supported in Csound. Any modulation or processing to the sample data is left to the Csound user, bypassing all restrictions forced by the SF2 standard.
+    </para>
+    <para>
+      Note: The looping points are set on the root key of every sample that is part of the preset of the soundfont. 
+For instance, a soundfont can have a single sample for the whole keyboard. In that case, sflooper will work like flooper and flooper2, because as the sample is transposed, played back at different rates, the loop will get short or longer.
+If however the soundfont has a sample for each key, than there will be no transposition and the loop will stay the same length (unless you change kpitch).
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the sflooper opcode. It uses the file <ulink url="examples/sflooper.csd"><citetitle>sflooper.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the sflooper opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/sflooper.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="sfilist"><citetitle>sfilist</citetitle></link>,
+      <link linkend="sfinstr"><citetitle>sfinstr</citetitle></link>,
+      <link linkend="sfinstrm"><citetitle>sfinstrm</citetitle></link>,
+      <link linkend="sfload"><citetitle>sfload</citetitle></link>,
+      <link linkend="sfpassign"><citetitle>sfpassign</citetitle></link>,
+      <link linkend="sfplaym"><citetitle>sfplaym</citetitle></link>,
+      <link linkend="sfplist"><citetitle>sfplist</citetitle></link>,
+      <link linkend="sfpreset"><citetitle>sfpreset</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>August 2007</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound Version 5.07</para>
+  </refsect1>
+</refentry>

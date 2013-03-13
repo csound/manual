@@ -1,0 +1,78 @@
+
+<refentry id="nsamp">
+<indexterm id="IndexNsamp"><primary>nsamp</primary></indexterm>
+  <refentryinfo><title>Table Control:Table Queries</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>nsamp</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>nsamp</refname>
+    <refpurpose>
+      Returns the number of samples loaded into a stored function table number.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Returns the number of samples loaded into a stored function table number.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>nsamp</command>(x) (init-rate args only)</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      Returns the number of samples loaded into stored function table number <emphasis>x</emphasis> by GEN01. This is useful when a sample is shorter than the power-of-two function table that holds it. New in Csound version 3.49.
+    </para>
+    <para>
+      As of Csound version 5.02, <emphasis>nsamp</emphasis> works with deferred-length function tables (see
+      <link linkend="GEN01"><citetitle>GEN01</citetitle></link>).
+    </para>
+    <para>
+      <emphasis>nsamp</emphasis> differs from <emphasis>ftlen</emphasis> in that <emphasis>nsamp</emphasis> gives the number of sample frames loaded, while <emphasis>ftlen</emphasis> gives the total number of samples. For example, with a stereo sound file of 10000 samples, ftlen() would return 19999 (i.e. a total of 20000 mono samples, not including a guard point), but nsamp() returns 10000.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the nsamp opcode. It uses the file <ulink url="examples/nsamp.csd"><citetitle>nsamp.csd</citetitle></ulink>, <ulink url="examples/kickroll.wav"><citetitle>kickroll.wav</citetitle></ulink>. and <ulink url="examples/fox.wav"><citetitle>fox.wav</citetitle></ulink>.
+      <example>
+        <title>Example of the nsamp opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/nsamp.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Since the stereo audio file <quote>kickroll.wav</quote> has 37792 samples and the mono file <quote>fox.wav</quote> has 121569 samples, its output should include lines like these:
+      <screen>
+actual numbers of samples = 37792
+actual numbers of samples = 121569</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="ftchnls"><citetitle>ftchnls</citetitle></link>,
+      <link linkend="ftlen"><citetitle>ftlen</citetitle></link>,
+      <link linkend="ftlptim"><citetitle>ftlptim</citetitle></link>,
+      <link linkend="ftsr"><citetitle>ftsr</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namegabriel;</member>
+        <member>Italy</member>
+        <member>October 1998</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

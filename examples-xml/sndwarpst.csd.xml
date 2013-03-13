@@ -1,0 +1,45 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac     <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o sndwarpst.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+
+<emphasis role="oblock">instr</emphasis> 1
+
+ktimewarp <emphasis role="opc">line</emphasis> 0, p3, 1		<emphasis role="comment">;length of stereo file "kickroll.wav"</emphasis>
+kresample <emphasis role="opc">init</emphasis> 1		<emphasis role="comment">;playback at the normal speed</emphasis>
+ibeg <emphasis role="op">=</emphasis> 0
+iwsize <emphasis role="op">=</emphasis> 4410
+irandw <emphasis role="op">=</emphasis> 441
+ioverlap <emphasis role="op">=</emphasis> p4
+itimemode <emphasis role="op">=</emphasis> 1			<emphasis role="comment">; Use the ktimewarp parameter as a "time" pointer</emphasis>
+
+aL, aR <emphasis role="opc">sndwarpst</emphasis> .3, ktimewarp, kresample, 1, ibeg, iwsize, irandw, ioverlap, 2, itimemode
+aL <emphasis role="opc">dcblock</emphasis> aL			<emphasis role="comment">;get rid of DC offsets for left channel &amp;</emphasis>
+aR <emphasis role="opc">dcblock</emphasis> aR			<emphasis role="comment">;right channel</emphasis>
+   <emphasis role="opc">outs</emphasis> aL, aR
+  
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 65536 1 "kickroll.wav" 0 0 0
+<emphasis role="stamnt">f</emphasis> 2 0 16384 9 0.5 1 0		<emphasis role="comment">;half of a sine wave</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1 0 7 2			<emphasis role="comment">;different overlaps</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 + 7 5
+<emphasis role="stamnt">i</emphasis> 1 + 7 15
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

@@ -1,0 +1,55 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac     <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o fmvoice.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32  
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1
+
+kfreq <emphasis role="op">=</emphasis> 110
+kvowel <emphasis role="op">=</emphasis> p4	<emphasis role="comment">; p4 = vowel (0 - 64)</emphasis>
+ktilt  <emphasis role="op">=</emphasis> p5
+kvibamt <emphasis role="op">=</emphasis> 0.005
+kvibrate <emphasis role="op">=</emphasis> 6
+
+asig <emphasis role="opc">fmvoice</emphasis> .5, kfreq, kvowel, ktilt, kvibamt, kvibrate
+<emphasis role="opc">outs</emphasis> asig, asig
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="comment">;  sine wave.</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 16384 10 1
+
+<emphasis role="stamnt">i</emphasis> 1 0 1 1  0	<emphasis role="comment">; tilt=0</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 1 1 >  .
+<emphasis role="stamnt">i</emphasis> 1 2 1 >  .
+<emphasis role="stamnt">i</emphasis> 1 3 1 >  .
+<emphasis role="stamnt">i</emphasis> 1 4 1 >  .
+<emphasis role="stamnt">i</emphasis> 1 5 1 >  .
+<emphasis role="stamnt">i</emphasis> 1 6 1 >  .
+<emphasis role="stamnt">i</emphasis> 1 7 1 12 .
+
+<emphasis role="stamnt">i</emphasis> 1 10 1 1  90	<emphasis role="comment">; tilt=90</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 11 1 >  .
+<emphasis role="stamnt">i</emphasis> 1 12 1 >  .
+<emphasis role="stamnt">i</emphasis> 1 13 1 >  .
+<emphasis role="stamnt">i</emphasis> 1 14 1 >  .
+<emphasis role="stamnt">i</emphasis> 1 15 1 >  .
+<emphasis role="stamnt">i</emphasis> 1 16 1 >  .
+<emphasis role="stamnt">i</emphasis> 1 17 1 12 .
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

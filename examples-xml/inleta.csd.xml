@@ -1,0 +1,144 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+ 
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac     <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o inleta.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+ 
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+
+<emphasis role="comment">; Connect up instruments and effects to create the signal flow graph. </emphasis>
+
+<emphasis role="opc">connect</emphasis> "SimpleSine",   "leftout", "Reverberator", "leftin" 
+<emphasis role="opc">connect</emphasis> "SimpleSine",   "rightout","Reverberator", "rightin" 
+
+<emphasis role="opc">connect</emphasis> "Moogy",        "leftout", "Reverberator", "leftin" 
+<emphasis role="opc">connect</emphasis> "Moogy",        "rightout","Reverberator", "rightin" 
+
+<emphasis role="opc">connect</emphasis> "Reverberator", "leftout", "Compressor",   "leftin" 
+<emphasis role="opc">connect</emphasis> "Reverberator", "rightout","Compressor",   "rightin" 
+
+<emphasis role="opc">connect</emphasis> "Compressor",   "leftout", "Soundfile",    "leftin" 
+<emphasis role="opc">connect</emphasis> "Compressor",   "rightout","Soundfile",    "rightin" 
+
+<emphasis role="comment">; Turn on the "effect" units in the signal flow graph. </emphasis>
+
+<emphasis role="opc">alwayson</emphasis> "Reverberator", 0.91, 12000 
+<emphasis role="opc">alwayson</emphasis> "Compressor" 
+<emphasis role="opc">alwayson</emphasis> "Soundfile" 
+
+<emphasis role="comment">; Define instruments and effects in order of signal flow.</emphasis>
+
+<emphasis role="oblock">instr</emphasis> SimpleSine 
+<emphasis role="comment">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</emphasis>
+<emphasis role="comment">; Default values:   p1  p2  p3  p4  p5  p6  p7  p8  p9  p10</emphasis>
+                <emphasis role="opc">pset</emphasis>	        0,  0,  10, 0,  0,  0,  0.5
+iattack		<emphasis role="op">=</emphasis> 0.015
+idecay		<emphasis role="op">=</emphasis> 0.07
+isustain	<emphasis role="op">=</emphasis> p3
+irelease	<emphasis role="op">=</emphasis> 0.3
+p3		<emphasis role="op">=</emphasis> iattack <emphasis role="op">+</emphasis> idecay <emphasis role="op">+</emphasis> isustain <emphasis role="op">+</emphasis> irelease
+adamping	<emphasis role="opc">linsegr</emphasis> 0.0, iattack, 1.0, idecay <emphasis role="op">+</emphasis> isustain, 1.0, irelease, 0.0
+iHz 		<emphasis role="op">=</emphasis> <emphasis role="opc">cpsmidinn</emphasis>(p4) 
+<emphasis role="comment">; Rescale MIDI velocity range to a musically usable range of dB. </emphasis>
+iamplitude 	<emphasis role="op">=</emphasis> <emphasis role="opc">ampdb</emphasis>(p5 <emphasis role="op">/</emphasis> 127 <emphasis role="op">*</emphasis> 15.0 <emphasis role="op">+</emphasis> 60.0) 
+<emphasis role="comment">; Use ftgenonce instead of ftgen, ftgentmp, or f statement. </emphasis>
+icosine		<emphasis role="opc">ftgenonce</emphasis> 0, 0, 65537, 11, 1 
+aoscili		<emphasis role="opc">oscili</emphasis> iamplitude, iHz, icosine 
+aadsr 		<emphasis role="opc">madsr</emphasis> iattack, idecay, 0.6, irelease 
+asignal 	<emphasis role="op">=</emphasis> aoscili <emphasis role="op">*</emphasis> aadsr 
+aleft, aright	<emphasis role="opc">pan2</emphasis> asignal, p7
+<emphasis role="comment">; Stereo audio output to be routed in the orchestra header. </emphasis>
+		<emphasis role="opc">outleta</emphasis> "leftout", aleft
+		<emphasis role="opc">outleta</emphasis> "rightout", aright
+<emphasis role="oblock">endin</emphasis> 
+
+<emphasis role="oblock">instr</emphasis> Moogy 
+<emphasis role="comment">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</emphasis>
+<emphasis role="comment">; Default values:   p1  p2  p3  p4  p5  p6  p7  p8  p9  p10</emphasis>
+		<emphasis role="opc">pset</emphasis>            0,  0,  10, 0,  0,  0,  0.5
+iattack		<emphasis role="op">=</emphasis> 0.003
+isustain	<emphasis role="op">=</emphasis> p3
+irelease	<emphasis role="op">=</emphasis> 0.05
+p3		<emphasis role="op">=</emphasis> iattack <emphasis role="op">+</emphasis> isustain <emphasis role="op">+</emphasis> irelease
+adamping	<emphasis role="opc">linsegr</emphasis>	0.0, iattack, 1.0, isustain, 1.0, irelease, 0.0
+iHz 		<emphasis role="op">=</emphasis> <emphasis role="opc">cpsmidinn</emphasis>(p4)
+<emphasis role="comment">; Rescale MIDI velocity range to a musically usable range of dB. </emphasis>
+iamplitude 	<emphasis role="op">=</emphasis> <emphasis role="opc">ampdb</emphasis>(p5 <emphasis role="op">/</emphasis> 127 <emphasis role="op">*</emphasis> 20.0 <emphasis role="op">+</emphasis> 60.0) 
+		<emphasis role="opc">print</emphasis> iHz, iamplitude 
+<emphasis role="comment">; Use ftgenonce instead of ftgen, ftgentmp, or f statement. </emphasis>
+isine 		<emphasis role="opc">ftgenonce</emphasis> 0, 0, 65537, 10, 1 
+asignal 	<emphasis role="opc">vco</emphasis> iamplitude, iHz, 1, 0.5, isine 
+kfco 		<emphasis role="opc">line</emphasis> 2000, p3, 200
+krez 		<emphasis role="op">=</emphasis> 0.8 
+asignal 	<emphasis role="opc">moogvcf</emphasis> asignal, kfco, krez, 100000 
+asignal		<emphasis role="op">=</emphasis> asignal <emphasis role="op">*</emphasis> adamping
+aleft, aright	<emphasis role="opc">pan2</emphasis> asignal, p7
+<emphasis role="comment">; Stereo audio output to be routed in the orchestra header. </emphasis>
+		<emphasis role="opc">outleta</emphasis> "leftout", aleft
+		<emphasis role="opc">outleta</emphasis> "rightout", aright 
+<emphasis role="oblock">endin</emphasis> 
+
+<emphasis role="oblock">instr</emphasis> Reverberator 
+<emphasis role="comment">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</emphasis>
+<emphasis role="comment">; Stereo input. </emphasis>
+aleftin 	<emphasis role="opc">inleta</emphasis> "leftin" 
+arightin 	<emphasis role="opc">inleta</emphasis> "rightin" 
+idelay 		<emphasis role="op">=</emphasis> p4 
+icutoff 	<emphasis role="op">=</emphasis> p5 
+aleft, aright 	<emphasis role="opc">reverbsc</emphasis> aleftin, arightin, idelay, icutoff 
+<emphasis role="comment">; Stereo output. </emphasis>
+		<emphasis role="opc">outleta</emphasis> "leftout", aleft 
+		<emphasis role="opc">outleta</emphasis> "rightout", aright 
+<emphasis role="oblock">endin</emphasis> 
+
+<emphasis role="oblock">instr</emphasis> Compressor 
+<emphasis role="comment">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</emphasis>
+<emphasis role="comment">; Stereo input. </emphasis>
+aleftin 	<emphasis role="opc">inleta</emphasis> "leftin" 
+arightin 	<emphasis role="opc">inleta</emphasis> "rightin" 
+kthreshold 	<emphasis role="op">=</emphasis> 25000 
+icomp1 		<emphasis role="op">=</emphasis> 0.5 
+icomp2 		<emphasis role="op">=</emphasis> 0.763 
+irtime 		<emphasis role="op">=</emphasis> 0.1 
+iftime 		<emphasis role="op">=</emphasis> 0.1 
+aleftout 	<emphasis role="opc">dam</emphasis> aleftin, kthreshold, icomp1, icomp2, irtime, iftime 
+arightout 	<emphasis role="opc">dam</emphasis> arightin, kthreshold, icomp1, icomp2, irtime, iftime 
+<emphasis role="comment">; Stereo output. </emphasis>
+		<emphasis role="opc">outleta</emphasis> "leftout", aleftout 
+		<emphasis role="opc">outleta</emphasis> "rightout", arightout 
+<emphasis role="oblock">endin</emphasis> 
+
+<emphasis role="oblock">instr</emphasis> Soundfile 
+<emphasis role="comment">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</emphasis>
+<emphasis role="comment">; Stereo input. </emphasis>
+aleftin 	<emphasis role="opc">inleta</emphasis> "leftin" 
+arightin 	<emphasis role="opc">inleta</emphasis> "rightin" 
+		<emphasis role="opc">outs</emphasis> aleftin, arightin 
+<emphasis role="oblock">endin</emphasis> 
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+ 
+
+<emphasis role="comment">; It is not necessary to activate "effects" or create f-tables in the score! </emphasis>
+<emphasis role="comment">; Overlapping notes create new instances of instruments with proper connections. </emphasis>
+
+<emphasis role="stamnt">i</emphasis> "S<emphasis role="stamnt">i</emphasis>mpleS<emphasis role="stamnt">i</emphasis>ne" 1 5 60 85 
+<emphasis role="stamnt">i</emphasis> "S<emphasis role="stamnt">i</emphasis>mpleS<emphasis role="stamnt">i</emphasis>ne" 2 5 64 80 
+<emphasis role="stamnt">i</emphasis> "Moogy" 3 5 67 75 
+<emphasis role="stamnt">i</emphasis> "Moogy" 4 5 71 70 
+<emphasis role="comment">;1 extra second after the performance</emphasis>
+<emphasis role="stamnt">e</emphasis> 1 
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

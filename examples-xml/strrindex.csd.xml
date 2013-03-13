@@ -1,0 +1,31 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-n    <emphasis role="comment">;;;no sound output</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="comment">;example by Joachim Heintz</emphasis>
+
+  <emphasis role="oblock">opcode</emphasis> FilNam, S, S
+<emphasis role="comment">;returns the name of a file path</emphasis>
+Spath  <emphasis role="opc">xin</emphasis>
+ipos   <emphasis role="opc">strrindex</emphasis> Spath, "<emphasis role="op">/</emphasis>"	<emphasis role="comment">;look for the rightmost '/'</emphasis>
+Snam   <emphasis role="opc">strsub</emphasis>    Spath, ipos<emphasis role="op">+</emphasis>1	<emphasis role="comment">;extract the substring </emphasis>
+       <emphasis role="opc">xout</emphasis>      Snam
+  <emphasis role="oblock">endop</emphasis>
+  
+<emphasis role="oblock">instr</emphasis> name
+       <emphasis role="opc">prints</emphasis>    "Printing name<emphasis role="op">:</emphasis>\n"
+Snam   FilNam    "<emphasis role="op">/</emphasis>my<emphasis role="op">/</emphasis>dir<emphasis role="op">/</emphasis>my<emphasis role="op">/</emphasis>file.WAV"
+       <emphasis role="opc">puts</emphasis>      Snam, 1  
+
+<emphasis role="oblock">endin</emphasis> 
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">i</emphasis> "name" 0 0
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

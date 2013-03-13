@@ -1,0 +1,112 @@
+
+<refentry id="dam">
+<indexterm id="IndexDam"><primary>dam</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Amplitude Modifiers</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>dam</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>dam</refname>
+    <refpurpose>
+      A dynamic compressor/expander.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This opcode dynamically modifies a gain value applied to the input sound <emphasis>ain</emphasis> by comparing its power level to a given threshold level. The signal will be compressed/expanded with different factors regarding that it is over or under the threshold.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>dam</command> asig, kthreshold, icomp1, icomp2, irtime, iftime</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>icomp1</emphasis> -- compression ratio for upper zone.
+    </para>
+
+    <para>
+      <emphasis>icomp2</emphasis> -- compression ratio for lower zone
+    </para>
+
+    <para>
+      <emphasis>irtime</emphasis> -- gain rise time in seconds. Time over which the gain factor is allowed to raise of one unit.
+    </para>
+
+    <para>
+      <emphasis>iftime</emphasis> -- gain fall time in seconds. Time over which the gain factor is allowed to decrease of one unit.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asig</emphasis> -- input signal to be modified
+    </para>
+
+    <para>
+      <emphasis>kthreshold</emphasis> -- level of input signal which acts as the threshold. Can be changed at k-time (e.g. for ducking)
+    </para>
+
+    <para>
+      Note on the compression factors: A compression ratio of one leaves the sound unchanged. Setting the ratio to a value smaller than one will compress the signal (reduce its volume) while setting the ratio to a value greater than one will expand the signal (augment its volume).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Because the results of the <emphasis>dam</emphasis> opcode can be subtle, I recommend looking at them in a graphical audio editor program like <emphasis>audacity</emphasis>. <emphasis>audacity</emphasis> is available for Linux, Windows, and the MacOS and may be downloaded from <ulink url="http://audacity.sourceforge.net/"><citetitle>http://audacity.sourceforge.net</citetitle></ulink>.
+    </para>
+
+    <para>
+      Here is an example of the dam opcode. It uses the file <ulink url="examples/dam.csd"><citetitle>dam.csd</citetitle></ulink>, and <ulink url="examples/beats.wav"><citetitle>beats.wav</citetitle></ulink>.
+      <example>
+        <title>An example of the dam opcode compressing an audio signal.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/dam.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      This example compresses the audio file <quote>beats.wav</quote>. You should hear a drum pattern repeat twice. The second time, the sound should be quieter (compressed) than the first. 
+    </para>
+
+    <para>
+      Here is another example of the dam opcode. It uses the file <ulink url="examples/dam_expanded.csd"><citetitle>dam_expanded.csd</citetitle></ulink>, and <ulink url="examples/beats.wav"><citetitle>beats.wav</citetitle></ulink>.
+
+      <example>
+        <title>An example of the dam opcode expanding an audio signal.</title>
+
+          <xi:include href="examples-xml/dam_expanded.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      This example expands the audio file <quote>beats.wav</quote>. You should hear a drum pattern repeat twice. The second time, the sound should be louder (expanded) than the first. To prevent distortion the volume of the signal has been lowered.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="compress"><citetitle>compress</citetitle></link>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Marc Resibois</member>
+        <member>Belgium</member>
+        <member>1997</member>
+      </simplelist>
+    </para>
+    <para>New in version 3.47</para>
+  </refsect1>
+</refentry>

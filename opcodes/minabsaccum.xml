@@ -1,0 +1,92 @@
+
+<refentry id="minabsaccum">
+<indexterm id="IndexMinabsaccum"><primary>minabsaccum</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Comparators and Accumulators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>minabsaccum</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>minabsaccum</refname>
+    <refpurpose>
+      Accumulates the minimum of the absolute values of audio signals.
+          </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>minabsaccum</emphasis> compares two audio-rate variables and stores the minimum of their absolute values into the first.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>minabsaccum</command> aAccumulator, aInput</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>aAccumulator</emphasis> -- audio variable to store the minimum value
+    </para>
+
+    <para>
+      <emphasis>aInput</emphasis> -- signal that aAccumulator is compared to
+    </para>
+
+    <para>
+      The <emphasis>minabsaccum</emphasis> opcode is designed to accumulate the minimum value from among many audio signals that may be in different note instances, different channels, or otherwise cannot all be compared at once using the <emphasis>minabs</emphasis> opcode.  <emphasis>minabsaccum</emphasis> is identical to <emphasis>minaccum</emphasis> except that it takes the absolute value of aInput before the comparison.  Its semantics are similar to <emphasis>vincr</emphasis> since <emphasis>aAccumulator</emphasis> is used as both an input and an output variable, except that <emphasis>minabsaccum</emphasis> keeps the minimum absolute value instead of adding the signals together.  <emphasis>minabsaccum</emphasis> performs the following operation on each pair of samples:
+    </para>
+
+    <para>
+      <literallayout>
+            if  (abs(aInput) &lt; aAccumulator)  aAccumulator = abs(aInput)
+      </literallayout>
+    </para>
+
+    <para>
+      <emphasis>aAccumulator</emphasis> will usually be a global audio variable.  At the end of any given computation cycle (k-period), after its value is read and used in some way, the accumulator variable should usually be reset to some large enough positive value that will always be greater than the input signals to which it is compared.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the minabsaccum opcode. It uses the file <ulink url="examples/minabsaccum.csd"><citetitle>minabsaccum.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the minabsaccum opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/minabsaccum.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="maxabsaccum"><citetitle>maxabsaccum</citetitle></link>,
+      <link linkend="maxaccum"><citetitle>maxaccum</citetitle></link>,
+      <link linkend="minaccum"><citetitle>minaccum</citetitle></link>,
+      <link linkend="max"><citetitle>max</citetitle></link>,
+      <link linkend="min"><citetitle>min</citetitle></link>,
+      <link linkend="maxabs"><citetitle>maxabs</citetitle></link>,
+      <link linkend="minabs"><citetitle>minabs</citetitle></link>,
+      <link linkend="vincr"><citetitle>vincr</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &nameanthony;</member>
+        <member>March 2006</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 5.01</para>
+  </refsect1>
+</refentry>

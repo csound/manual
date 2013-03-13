@@ -1,0 +1,78 @@
+
+<refentry id="noteoff">
+<indexterm id="IndexNoteoff"><primary>noteoff</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Note Output</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>noteoff</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>noteoff</refname>
+
+    <refpurpose>
+      Send a noteoff message to the MIDI OUT port.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Send a noteoff message to the MIDI OUT port.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>noteoff</command> ichn, inum, ivel</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ichn</emphasis> -- MIDI channel number (1-16)
+    </para>
+
+    <para>
+      <emphasis>inum</emphasis> -- note number (0-127)
+    </para>
+
+    <para>
+      <emphasis>ivel</emphasis> -- velocity (0-127)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>noteon</emphasis> (i-rate note on) and <emphasis>noteoff</emphasis> (i-rate note off) are the simplest MIDI OUT opcodes. <emphasis>noteon</emphasis> sends a MIDI noteon message to MIDI OUT port, and <emphasis>noteoff</emphasis> sends a noteoff message. A <link linkend="noteon"><citetitle>noteon</citetitle></link> opcode must always be followed by an <emphasis>noteoff</emphasis> with the same channel and number inside the same instrument, otherwise the note will play endlessly. 
+    </para>
+
+    <para>
+      These <emphasis>noteon</emphasis> and <emphasis>noteoff</emphasis> opcodes are useful only when introducing a <link linkend="timout"><citetitle>timout</citetitle></link> statement to play a non-zero duration MIDI note. For most purposes, it is better to use <link linkend="noteondur"><citetitle>noteondur</citetitle></link> and <link linkend="noteondur2"><citetitle>noteondur2</citetitle></link>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="noteon"><citetitle>noteon</citetitle></link>, 
+      <link linkend="noteondur"><citetitle>noteondur</citetitle></link>, 
+      <link linkend="noteondur2"><citetitle>noteondur2</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namegabriel;</member>
+        <member>Italy</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.47</para>
+    <para>Thanks goes to &namerasmus; for pointing out the correct MIDI channel and controller number ranges.</para>
+  </refsect1>
+</refentry>

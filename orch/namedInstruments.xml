@@ -1,0 +1,237 @@
+
+<section id="OrchNamedInstruments">
+  <title>Named Instruments</title>
+
+  <para>
+    As a recent addition to the orchestra syntax, instruments can be defined
+    with string names. Such named instruments are callable from the score, and
+    are supported by a number of opcodes.
+  </para>
+
+  <simplesect>
+  <title>Syntax</title>
+
+  <para>A named instrument is declared as shown below:</para>
+
+<programlisting>
+        <emphasis role="oblock">instr</emphasis> Name[, Name2[, Name3[, ...]]]
+
+        [...]
+
+        <emphasis role="oblock">endin</emphasis></programlisting>
+
+
+  <para>
+    A single instrument can have any number of names, and any of these names can
+    be used to call the instrument. Additionally, it is possible to use numbers
+    as name, denoting a standard numbered instrument, so the following
+    declaration is also valid:
+  </para>
+
+  <programlisting>
+        <emphasis role="oblock">instr</emphasis> 100, Name1, 99, Name2, 1, 2, 3</programlisting>
+
+  <para>
+    An instrument name may consist of any number of letters, digits, and the
+    underscore (_) character, however, the first character must not be a digit.
+    Optionally, the instrument name may be prefixed with the '+' character (see
+    below), for example:
+  </para>
+
+  <programlisting>
+        <emphasis role="oblock">instr</emphasis> +Reverb</programlisting>
+
+  <para>
+    For all instrument names, a number is automatically assigned (note: if the
+    message level (-m) is not zero, these numbers are printed to the console
+    during orchestra compilation), following these rules:
+  </para>
+
+  <itemizedlist>
+    <listitem>
+      <para>
+        any unused instrument numbers are taken up in ascending order, starting
+        from 1
+      </para>
+    </listitem>
+
+    <listitem>
+      <para>
+        the numbers are assigned in the order of instrument name definition, so
+        named instruments that are defined later will always have a higher
+        number (except if the '+' modifier is used)
+      </para>
+    </listitem>
+
+    <listitem>
+      <para>
+        if the instrument name was prefixed with '+', the assigned number will
+        be higher than that of any of the (both numbered and named) other
+        instruments without '+'. If there are multiple '+' instruments, the
+        numbering of these will follow the order of definition, according to the
+        above rule.
+      </para>
+      <para>
+        Using '+' is mainly useful for global output or effect instruments, that
+        must be performed after the other instruments.
+      </para>
+    </listitem>
+   </itemizedlist>
+
+   <para>An example for instrument numbers:</para>
+
+   <programlisting>
+        <emphasis role="oblock">instr</emphasis> 1, 2
+        <emphasis role="oblock">endin</emphasis>
+
+        <emphasis role="oblock">instr</emphasis> Instr1
+        <emphasis role="oblock">endin</emphasis>
+
+        <emphasis role="oblock">instr</emphasis> +Effect1, Instr2
+        <emphasis role="oblock">endin</emphasis>
+
+        <emphasis role="oblock">instr</emphasis> 100, Instr3, +Effect2, Instr4, 5
+        <emphasis role="oblock">endin</emphasis></programlisting>
+
+  <para>
+  In this example, the instrument numbers are assigned as follows:
+  </para>
+
+  <programlisting>
+        Instr1:  3
+        Effect1: 101
+        Instr2:  4
+        Instr3:  6
+        Effect2: 102
+        Instr4:  7</programlisting>
+
+   </simplesect>
+
+  <simplesect>
+    <title>Using Named Instruments</title>
+
+    <para>
+      Named instruments can be called by using the name in double quotes as the
+      instrument number (note: the '+' character should be omitted). Currently
+      (as of Csound 4.22.4), named instruments are supported by:
+    </para>
+
+    <itemizedlist>
+
+      <listitem>
+        <para>'i' and 'q' score events</para>
+
+        <note>
+          <title>Notes</title>
+
+          <orderedlist>
+            <listitem>
+              <para>
+                in score files, unmatched quotes, and spaces or other invalid
+                characters in the strings should be avoided, otherwise (at least
+                with current version) unpredictable behavior may occur (this
+                problem does not exist for -L line events). However, there is
+                checking for undefined instruments, and in such cases, the event
+                is simply ignored with a warning.
+              </para>
+            </listitem>
+
+            <listitem>
+              <para>
+                Stand-alone utilities (score sort and extract) do not support
+                named instruments. It is still possible to sort such scores by
+                using the -t0 option of the main Csound executable)
+              </para>
+            </listitem>
+          </orderedlist>
+
+        </note>
+      </listitem>
+
+      <listitem>
+        <para>real-time line events (-L)</para>
+      </listitem>
+
+      <listitem>
+        <para>event, schedkwhen, subinstr, and subinstrinit opcodes</para>
+      </listitem>
+
+      <listitem>
+        <para>massign, pgmassign, prealloc, and mute opcodes</para>
+      </listitem>
+
+    </itemizedlist>
+
+    <para>
+      Additionaly, there is a new opcode (nstrnum) that returns the number of a
+      named instrument:
+    </para>
+
+    <programlisting>
+        insno <emphasis role="opc">nstrnum</emphasis> "name"</programlisting>
+
+    <para>
+      With the above example, nstrnum "Effect1" would return 101. If an
+      instrument with the specified name does not exist, an init error occurs,
+      and -1 is returned.
+    </para>
+
+  </simplesect>
+
+  <simplesect>
+  <title>Example</title>
+
+  <programlisting>
+<emphasis role="comment">; ---- orchestra ----</emphasis>
+
+<emphasis role="ohdr">sr</emphasis>      <emphasis role="op">=</emphasis>  44100
+<emphasis role="ohdr">ksmps</emphasis>   <emphasis role="op">=</emphasis>  10
+<emphasis role="ohdr">nchnls</emphasis>  <emphasis role="op">=</emphasis>  1
+
+        <emphasis role="ohdr">prealloc</emphasis> "SineWave", 20
+        <emphasis role="ohdr">prealloc</emphasis> "MIDISineWave", 20
+
+        <emphasis role="ohdr">massign</emphasis> 1, "MIDISineWave"
+
+gaOutSend       <emphasis role="opc">init</emphasis> 0
+
+        <emphasis role="oblock">instr</emphasis> +OutputInstr
+
+        <emphasis role="opc">out</emphasis> gaOutSend
+        <emphasis role="opc">clear</emphasis> gaOutSend
+
+        <emphasis role="oblock">endin</emphasis>
+
+        <emphasis role="oblock">instr</emphasis> SineWave
+
+a1      <emphasis role="opc">oscils</emphasis> p4, p5, 0
+        <emphasis role="opc">vincr</emphasis> gaOutSend, a1
+
+        <emphasis role="oblock">endin</emphasis>
+
+        <emphasis role="oblock">instr</emphasis> MIDISineWave
+
+iamp    <emphasis role="opc">veloc</emphasis>
+inote   <emphasis role="opc">notnum</emphasis>
+icps    <emphasis role="op">=</emphasis>  <emphasis role="opc">cpsoct</emphasis>(inote <emphasis role="op">/</emphasis> 12 <emphasis role="op">+</emphasis> 3)
+a1      <emphasis role="opc">oscils</emphasis> iamp <emphasis role="op">*</emphasis> 100, icps, 0
+        <emphasis role="opc">vincr</emphasis> gaOutSend, a1
+
+        <emphasis role="oblock">endin</emphasis>
+
+<emphasis role="comment">; ---- score ----</emphasis>
+
+<emphasis role="stamnt">i</emphasis> "SineWave" 0 2 12000 440
+<emphasis role="stamnt">i</emphasis> "OutputInstr" 0 3
+<emphasis role="stamnt">e</emphasis></programlisting>
+
+</simplesect>
+
+<simplesect>
+<title>Author</title>
+<para>Istvan Varga</para>
+<para>2002</para>
+</simplesect>
+
+
+</section>

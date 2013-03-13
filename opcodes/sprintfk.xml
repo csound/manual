@@ -1,0 +1,95 @@
+
+<refentry id="sprintfk">
+<indexterm id="Indexsprintfk"><primary>sprintfk</primary></indexterm>
+  <refentryinfo><title>Strings:Manipulation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>sprintfk</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>sprintfk</refname>
+    <refpurpose>
+      printf-style formatted output to a string variable at k-rate.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>sprintfk</emphasis> writes printf-style formatted output to a string variable, similarly to the C function sprintf(). <emphasis>sprintfk</emphasis> runs both at initialization and performance time.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>Sdst <command>sprintfk</command> Sfmt, xarg1[, xarg2[, ... ]]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>Sfmt</emphasis> -- format string, has the same format as in printf() and other similar C functions, except length modifiers (l, ll, h, etc.) are not supported. The following conversion specifiers are allowed:
+      <itemizedlist>
+        <listitem>
+	  <para>d, i, o, u, x, X, e, E, f, F, g, G, c, s</para>
+	</listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>xarg1, xarg2, ...</emphasis> -- input arguments (max. 30) for format, should be i-rate for all conversion specifiers except %s, which requires a string argument. sprintfk also allows k-rate number arguments, but these should still be valid at init time as well (unless sprintfk is skipped with igoto). Integer formats like %d round the input values to the nearest integer.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>Sdst</emphasis> -- output string variable
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the sprintfk opcode. It uses the file <ulink url="examples/sprintfk.csd"><citetitle>sprintfk.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the sprintfk opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/sprintfk.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+            Its output should include lines like this:
+      <screen>
+1 + 1 = 2
+1 + 1 + 1 = 3
+1 + 1 + 1 + 1 = 4
+1 + 1 + 1 + 1 + 1 = 5
+1 + 1 + 1 + 1 + 1 + 1 = 6
+1 + 1 + 1 + 1 + 1 + 1 + 1 = 7
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 8
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 9
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 10
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 11
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 12</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See also</title>
+    <para>
+      <link linkend="sprintf"><citetitle>sprintf</citetitle></link>,
+      <link linkend="puts"><citetitle>puts</citetitle></link>,
+      <link linkend="strcatk"><citetitle>strcatk</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Istvan Varga</member>
+        <member>2005</member>
+        <member>Example by Jonathan Murphy</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,62 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac  -+rtmidi=virtual -M0    <emphasis role="comment">;;;realtime audio out and realtime midi in</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">;-o fluidAllOut.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+giengine1 <emphasis role="opc">fluidEngine</emphasis>
+isfnum1	  <emphasis role="opc">fluidLoad</emphasis> "sf_GMbank.sf2", giengine1, 1
+	  <emphasis role="opc">fluidProgramSelect</emphasis> giengine1, 1, isfnum1, 0, 0
+
+giengine2 <emphasis role="opc">fluidEngine</emphasis>
+<emphasis role="comment">; soundfont path to manual/examples</emphasis>
+isfnum2	  <emphasis role="opc">fluidLoad</emphasis> "22Bassoon.sf2", giengine2, 1
+	  <emphasis role="opc">fluidProgramSelect</emphasis> giengine2, 1, isfnum2, 0, 70
+
+<emphasis role="oblock">instr</emphasis> 1
+
+     <emphasis role="opc">mididefault</emphasis>   60, p3
+     <emphasis role="opc">midinoteonkey</emphasis> p4, p5
+ikey <emphasis role="opc">init</emphasis> p4
+ivel <emphasis role="opc">init</emphasis> p5
+     <emphasis role="opc">fluidNote</emphasis> giengine1, 1, ikey, ivel
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 2
+
+     <emphasis role="opc">mididefault</emphasis>   60, p3
+     <emphasis role="opc">midinoteonkey</emphasis> p4, p5
+ikey <emphasis role="opc">init</emphasis> p4
+ivel <emphasis role="opc">init</emphasis> p5
+     <emphasis role="opc">fluidNote</emphasis> giengine2, 1, ikey, ivel
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 100
+
+imvol <emphasis role="opc">init</emphasis> 7 <emphasis role="comment">;amplify a bit</emphasis>
+asigl, asigr <emphasis role="opc">fluidAllOut</emphasis>
+      <emphasis role="opc">outs</emphasis> asigl<emphasis role="op">*</emphasis>imvol, asigr<emphasis role="op">*</emphasis>imvol
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1 0 2 60 127 <emphasis role="comment">;play one note on instr 1</emphasis>
+<emphasis role="stamnt">i</emphasis> 2 2 2 60 127 <emphasis role="comment">;play another note on instr 2 and...</emphasis>
+<emphasis role="stamnt">i</emphasis> 100 0 60     <emphasis role="comment">;play virtual midi keyboard</emphasis>
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

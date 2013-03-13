@@ -1,0 +1,153 @@
+
+<refentry id="GEN14">
+      <indexterm id="IndexGEN14"><primary>GEN14</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN14</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN14</refname>
+    <refpurpose>
+      Stores a polynomial whose coefficients derive from Chebyshevs of the second kind.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Uses Chebyshev coefficients to generate stored polynomial functions which, under waveshaping, can be used to split a sinusoid into harmonic partials having a pre-definable spectrum.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>f</command> # time size 14 xint xamp h0 h1 h2 ...</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>size</emphasis> -- number of points in the table. Must be a power of 2 or a power-of-2 plus 1 (see <link linkend="f"><citetitle>f statement</citetitle></link>). The normal value is power-of-2 plus 1.
+    </para>
+
+    <para>
+      <emphasis>xint</emphasis> -- provides the left and right values [<emphasis>-xint, +xint</emphasis>] of the x interval over which the polynomial is to be drawn. These subroutines both call <link linkend="GEN03"><citetitle>GEN03</citetitle></link> to draw their functions; the p5 value here is therefore expanded to a negative-positive p5, p6 pair before <emphasis>GEN03</emphasis> is actually called. The normal value is 1.
+    </para>
+
+    <para>
+      <emphasis>xamp </emphasis> -- amplitude scaling factor of the sinusoid input that is expected to produce the following spectrum.
+    </para>
+
+    <para>
+      <emphasis>h0, h1, h2,</emphasis> etc. -- relative strength of partials 0 (DC), 1 (fundamental), 2 ... that will result when a sinusoid of amplitude
+
+      <literallayout>
+xamp * int(size/2)/xint
+      </literallayout>
+
+      is waveshaped using this function table. These values thus describe a frequency spectrum associated with a particular factor <emphasis>xamp</emphasis> of the input signal.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              <link linkend="GEN13"><citetitle>GEN13</citetitle></link> is the function generator normally employed in standard waveshaping. It stores a polynomial whose coefficients derive from the Chebyshev polynomials of the first kind, so that a driving sinusoid of strength <emphasis>xamp</emphasis> will exhibit the specified spectrum at output. Note that the evolution of this spectrum is generally not linear with varying <emphasis>xamp</emphasis>. However, it is bandlimited (the only partials to appear will be those specified at generation time); and the partials will tend to occur and to develop in ascending order (the lower partials dominating at low <emphasis>xamp</emphasis>, and the spectral richness increasing for higher values of <emphasis>xamp</emphasis>). A negative <emphasis>hn</emphasis> value implies a 180 degree phase shift of that partial; the requested full-amplitude spectrum will not be affected by this shift, although the evolution of several of its component partials may be. The pattern +,+,-,-,+,+,... for <emphasis>h0,h1,h2..</emphasis>. will minimize the normalization problem for low <emphasis>xamp</emphasis> values (see above), but does not necessarily provide the smoothest pattern of evolution.
+            </para>
+          </listitem>
+
+          <listitem>
+            <para>
+              <emphasis>GEN14</emphasis> stores a polynomial whose coefficients derive from Chebyshevs of the second kind.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </note>
+  </refsect1>
+
+    <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the GEN14 opcode. It uses the file <ulink url="examples/gen14.csd"><citetitle>gen14.csd</citetitle></ulink>.
+           <example>
+        <title>Example of the GEN14 opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/gen14.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>  
+        <textobject>
+          <phrase>These are the diagrams of the waveforms of the GEN14 routines, as used in the example:</phrase>
+        </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen14_1.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f28 0 4097 13  1 1 1 0 .8 0 .5 0 .2 - waveshaping function: GEN13, odd harmonics</phrase>
+        </textobject>
+
+        <caption>
+          <para>f28 0 4097 13  1 1 1 0 .8 0 .5 0 .2 - waveshaping function: GEN13, odd harmonics</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen14_2.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f29 0 4097 14  1 1 1 0 .8 0 .5 0 .2 - waveshaping function: GEN14, the same odd harmonics</phrase>
+        </textobject>
+
+        <caption>
+          <para>f29 0 4097 14  1 1 1 0 .8 0 .5 0 .2 - waveshaping function: GEN14, the same odd harmonics</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen14_3.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f30 0 4097 13  1 1 0 1 0 .6 0 .4 0 .1 - waveshaping function: GEN13, even harmonics</phrase>
+        </textobject>
+
+        <caption>
+          <para>f30 0 4097 13  1 1 0 1 0 .6 0 .4 0 .1 - waveshaping function: GEN13, even harmonics</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen14_4.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f31 0 4097 14  1 1 0 1 0 .6 0 .4 0 .1 - waveshaping function: GEN14, the same even harmonics</phrase>
+        </textobject>
+
+        <caption>
+          <para>f31 0 4097 14  1 1 0 1 0 .6 0 .4 0 .1 - waveshaping function: GEN14, the same even harmonics</para>
+        </caption>
+      </mediaobject>
+
+    </para>
+  </refsect1>
+
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="GEN03"><citetitle>GEN03</citetitle></link>,
+      <link linkend="GEN13"><citetitle>GEN13</citetitle></link>, and
+      <link linkend="GEN15"><citetitle>GEN15</citetitle></link>.
+          <para> Information about the Chebyshev polynomials on Wikipedia: <ulink url="http://en.wikipedia.org/wiki/Chebyshev_polynomials"><citetitle>http://en.wikipedia.org/wiki/Chebyshev_polynomials</citetitle></ulink></para>
+    </para>
+  </refsect1>
+</refentry>

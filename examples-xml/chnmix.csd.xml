@@ -1,0 +1,85 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac     <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o chnmix.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="comment">;Example by Joachim Heintz</emphasis>
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis> <emphasis role="op">=</emphasis> 1
+
+  <emphasis role="oblock">instr</emphasis> 1<emphasis role="comment">; send i-values</emphasis>
+          <emphasis role="opc">chnset</emphasis>    1, "sio"
+          <emphasis role="opc">chnset</emphasis>    <emphasis role="op">-</emphasis>1, "non"
+  <emphasis role="oblock">endin</emphasis>
+
+  <emphasis role="oblock">instr</emphasis> 2<emphasis role="comment">; send k-values</emphasis>
+kfreq     <emphasis role="opc">randomi</emphasis>   100, 300, 1
+          <emphasis role="opc">chnset</emphasis>    kfreq, "cntrfreq"
+kbw       <emphasis role="op">=</emphasis>         kfreq<emphasis role="op">/</emphasis>10
+          <emphasis role="opc">chnset</emphasis>    kbw, "bandw"
+  <emphasis role="oblock">endin</emphasis>
+
+  <emphasis role="oblock">instr</emphasis> 3<emphasis role="comment">; send a-values</emphasis>
+anois     <emphasis role="opc">rand</emphasis>      .1
+          <emphasis role="opc">chnset</emphasis>    anois, "noise"
+ loop<emphasis role="op">:</emphasis>
+idur      <emphasis role="opc">random</emphasis>    .3, 1.5
+          <emphasis role="octrl">timout</emphasis>    0, idur, do
+          <emphasis role="opc">reinit</emphasis>    loop
+ do<emphasis role="op">:</emphasis>
+ifreq     <emphasis role="opc">random</emphasis>    400, 1200
+iamp      <emphasis role="opc">random</emphasis>    .1, .3
+asig      <emphasis role="opc">oscils</emphasis>    iamp, ifreq, 0
+aenv      <emphasis role="opc">transeg</emphasis>   1, idur, <emphasis role="op">-</emphasis>10, 0
+asine     <emphasis role="op">=</emphasis>         asig <emphasis role="op">*</emphasis> aenv
+          <emphasis role="opc">chnset</emphasis>    asine, "sine"
+  <emphasis role="oblock">endin</emphasis>
+
+  <emphasis role="oblock">instr</emphasis> 11<emphasis role="comment">; receive some chn values and send again</emphasis>
+ival1     <emphasis role="opc">chnget</emphasis>    "sio"
+ival2     <emphasis role="opc">chnget</emphasis>    "non"
+          <emphasis role="opc">print</emphasis>     ival1, ival2
+kcntfreq  <emphasis role="opc">chnget</emphasis>    "cntrfreq"
+kbandw    <emphasis role="opc">chnget</emphasis>    "bandw"
+anoise    <emphasis role="opc">chnget</emphasis>    "noise"
+afilt     <emphasis role="opc">reson</emphasis>     anoise, kcntfreq, kbandw
+afilt     <emphasis role="opc">balance</emphasis>   afilt, anoise
+          <emphasis role="opc">chnset</emphasis>    afilt, "filtered"
+  <emphasis role="oblock">endin</emphasis>
+
+  <emphasis role="oblock">instr</emphasis> 12<emphasis role="comment">; mix the two audio signals</emphasis>
+amix1     <emphasis role="opc">chnget</emphasis>     "sine"
+amix2     <emphasis role="opc">chnget</emphasis>     "filtered"
+          <emphasis role="opc">chnmix</emphasis>     amix1, "mix"
+          <emphasis role="opc">chnmix</emphasis>     amix2, "mix"
+  <emphasis role="oblock">endin</emphasis>
+
+  <emphasis role="oblock">instr</emphasis> 20<emphasis role="comment">; receive and reverb</emphasis>
+amix      <emphasis role="opc">chnget</emphasis>     "mix"
+aL, aR    <emphasis role="opc">freeverb</emphasis>   amix, amix, .8, .5
+          <emphasis role="opc">outs</emphasis>       aL, aR
+  <emphasis role="oblock">endin</emphasis>
+
+  <emphasis role="oblock">instr</emphasis> 100<emphasis role="comment">; clear</emphasis>
+          <emphasis role="opc">chnclear</emphasis>   "mix"
+  <emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 20
+<emphasis role="stamnt">i</emphasis> 2 0 20
+<emphasis role="stamnt">i</emphasis> 3 0 20
+<emphasis role="stamnt">i</emphasis> 11 0 20
+<emphasis role="stamnt">i</emphasis> 12 0 20
+<emphasis role="stamnt">i</emphasis> 20 0 20
+<emphasis role="stamnt">i</emphasis> 100 0 20
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

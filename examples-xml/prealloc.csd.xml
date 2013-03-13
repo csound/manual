@@ -1,0 +1,47 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in    No messages</emphasis>
+-odac           -iadc     -d     <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o prealloc.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="comment">; Initialize the global variables.</emphasis>
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">kr</emphasis> <emphasis role="op">=</emphasis> 4410
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 10
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 1
+
+<emphasis role="comment">; Pre-allocate memory for five instances of Instrument #1.</emphasis>
+<emphasis role="opc">prealloc</emphasis> 1, 5
+ 
+<emphasis role="comment">; Instrument #1</emphasis>
+<emphasis role="oblock">instr</emphasis> 1
+  <emphasis role="comment">; Generate a waveform, get the cycles per second from the 4th p-field.</emphasis>
+  a1 <emphasis role="opc">oscil</emphasis> 6500, p4, 1
+  <emphasis role="opc">out</emphasis> a1
+<emphasis role="oblock">endin</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="comment">; Just generate a nice, ordinary sine wave.</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 32768 10 1
+
+<emphasis role="comment">; Play five instances of Instrument #1 for one second.</emphasis>
+<emphasis role="comment">; Note that 4th p-field contains cycles per second.</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 1 220
+<emphasis role="stamnt">i</emphasis> 1 0 1 440
+<emphasis role="stamnt">i</emphasis> 1 0 1 880
+<emphasis role="stamnt">i</emphasis> 1 0 1 1320
+<emphasis role="stamnt">i</emphasis> 1 0 1 1760
+<emphasis role="stamnt">e</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

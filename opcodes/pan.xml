@@ -1,0 +1,70 @@
+
+<refentry id="pan">
+<indexterm id="IndexPan"><primary>pan</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Panning and Spatialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pan</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pan</refname>
+    <refpurpose>
+      Distribute an audio signal amongst four channels.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Distribute an audio signal amongst four channels with localization control.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>a1, a2, a3, a4 <command>pan</command> asig, kx, ky, ifn [, imode] [, ioffset]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifn</emphasis> -- function table number of a stored pattern describing the amplitude growth in a speaker channel as sound moves towards it from an adjacent speaker. Requires extended guard-point.
+    </para>
+
+    <para>
+      <emphasis>imode</emphasis> (optional) -- mode of the <emphasis>kx, ky</emphasis> position values. 0 signifies raw index mode, 1 means the inputs are normalized (0 - 1). The default value is 0.
+    </para>
+
+    <para>
+      <emphasis>ioffset</emphasis> (optional) -- offset indicator for <emphasis>kx, ky</emphasis>. 0 infers the origin to be at channel 3 (left rear); 1 requests an axis shift to the quadraphonic center. The default value is 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>pan</emphasis> takes an input signal <emphasis>asig</emphasis> and distributes it amongst four outputs (essentially quad speakers) according to the controls <emphasis>kx</emphasis> and <emphasis>ky</emphasis>. For normalized input (mode=1) and no offset, the four output locations are in order: left-front at (0,1), right-front at (1,1), left-rear at the origin (0,0), and right-rear at (1,0). In the notation (<emphasis>kx</emphasis>, <emphasis>ky)</emphasis>, the coordinates <emphasis>kx</emphasis> and <emphasis>ky</emphasis>, each ranging 0 - 1, thus control the 'rightness' and 'forwardness' of a sound location.
+    </para>
+
+    <para>
+      Movement between speakers is by amplitude variation, controlled by the stored function table <emphasis>ifn</emphasis>. As <emphasis>kx</emphasis> goes from 0 to 1, the strength of the right-hand signals will grow from the left-most table value to the right-most, while that of the left-hand signals will progress from the right-most table value to the left-most. For a simple linear pan, the table might contain the linear function 0 - 1. A more correct pan that maintains constant power would be obtained by storing the first quadrant of a sinusoid. Since <emphasis>pan</emphasis> will scale and truncate <emphasis>kx</emphasis> and <emphasis>ky</emphasis> in simple table lookup, a medium-large table (say 8193) should be used.
+    </para>
+
+    <para>
+      <emphasis>kx, ky</emphasis> values are not restricted to 0 - 1. A circular motion passing through all four speakers (inscribed) would have a diameter of root 2, and might be defined by a circle of radius R = root 1/2 with center at (.5,.5). <emphasis>kx, ky</emphasis> would then come from Rcos(angle), Rsin(angle), with an implicit origin at (.5,.5) (i.e. <emphasis>ioffset</emphasis> = 1). Unscaled raw values operate similarly. Sounds can thus be located anywhere in the polar or Cartesian plane; points lying outside the speaker square are projected correctly onto the square's perimeter as for a listener at the center.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Example</title>
+    <para>
+      Here is an example of the pan opcodes. It uses the file <ulink url="examples/pan.csd"><citetitle>pan.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the pan opcodes.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/pan.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+</refentry>

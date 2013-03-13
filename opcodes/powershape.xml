@@ -1,0 +1,96 @@
+
+<refentry id="powershape">
+<indexterm id="IndexPowershape"><primary>powershape</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Waveshaping</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>powershape</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>powershape</refname>
+
+    <refpurpose>
+      Waveshapes a signal by raising it to a variable exponent.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      The <emphasis>powershape</emphasis> opcode raises an input signal to a power with pre- and post-scaling of the signal so that the output will be in a predictable range.  It also processes negative inputs in a symmetrical way to positive inputs, calculating a dynamic transfer function that is useful for waveshaping.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>aout <command>powershape</command> ain, kShapeAmount [, ifullscale]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifullscale</emphasis> -- optional parameter specifying the range of input values from -<emphasis>ifullscale</emphasis> to <emphasis>ifullscale</emphasis>.  Defaults to 1.0 -- you should set this parameter to the maximum expected input value.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ain</emphasis> --  the input signal to be shaped.
+    </para>
+
+    <para>
+      <emphasis>aout</emphasis> --  the output signal.
+    </para>
+
+    <para>
+      <emphasis>kShapeAmount</emphasis> --  the amount of the shaping effect applied to the input; equal to the power that the input signal is raised.
+    </para>
+
+    <para>
+The <emphasis>powershape</emphasis> opcode is very similar to the <emphasis>pow</emphasis> unit generators for calculating the mathematical "power of" operation.  However, it introduces a couple of twists that can make it much more useful for waveshaping audio-rate signals.  The <emphasis>kShapeAmount</emphasis> parameter is the exponent to which the input signal is raised.
+    </para>
+
+    <para>
+To avoid discontinuities, the <emphasis>powershape</emphasis> opcode treats all input values as positive (by taking their absolute value) but preserves their original sign in the output signal.  This allows for smooth shaping of any input signal while varying the exponent over any range.  (<emphasis>powershape</emphasis> also (hopefully) deals intelligently with  discontinuities that could arise when the exponent and input are both zero.  Note though that negative exponents will usually cause the signal to exceed the maximum amplitude specified by the ifullscale parameter and should normally be avoided).
+    </para>
+
+    <para>
+The other adaptation involves the <emphasis>ifullscale</emphasis> parameter.  The input signal is divided by <emphasis>ifullscale</emphasis> before being raised to <emphasis>kShapeAmount</emphasis> and then multiplied by <emphasis>ifullscale</emphasis> before being output.  This normalizes the input signal to the interval [-1,1], guaranteeing that the output (before final scaling) will also be within this range for positive shaping amounts and providing a smoothly evolving transfer function while varying the amount of shaping.  Values of <emphasis>kShapeAmount</emphasis> between (0,1) will make the signal more "convex" while values greater than 1 will make it more "concave". A value of exactly 1.0 will produce no change in the input signal.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="pow"><citetitle>pow</citetitle></link>, 
+      <link linkend="powoftwo"><citetitle>powoftwo</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the powershape opcode. It uses the file <ulink url="examples/powershape.csd"><citetitle>powershape.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the powershape opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/powershape.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &nameanthony;</member>
+        <member>January 2008</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 5.08</para>
+  </refsect1>
+</refentry>

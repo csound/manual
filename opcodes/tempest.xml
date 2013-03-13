@@ -1,0 +1,105 @@
+
+<refentry id="tempest">
+<indexterm id="IndexTempest"><primary>tempest</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tempest</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>tempest</refname>
+
+    <refpurpose>
+      Estimate the tempo of beat patterns in a control signal.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Estimate the tempo of beat patterns in a control signal.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ktemp <command>tempest</command> kin, iprd, imindur, imemdur, ihp, ithresh, ihtim, ixfdbak, \
+      istartempo, ifn [, idisprd] [, itweek]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iprd</emphasis> -- period between analyses (in seconds). Typically about .02 seconds.
+    </para>
+
+    <para>
+      <emphasis>imindur</emphasis> -- minimum duration (in seconds) to serve as a unit of tempo. Typically about .2 seconds.
+    </para>
+
+    <para>
+      <emphasis>imemdur</emphasis> -- duration (in seconds) of the <emphasis>kin</emphasis> short-term memory buffer which will be scanned for periodic patterns. Typically about 3 seconds.
+    </para>
+
+    <para>
+      <emphasis>ihp</emphasis> -- half-power point (in Hz) of a low-pass filter used to smooth input <emphasis>kin</emphasis> prior to other processing. This will tend to suppress activity that moves much faster. Typically 2 Hz.
+    </para>
+
+    <para>
+      <emphasis>ithresh</emphasis> -- loudness threshold by which the low-passed <emphasis>kin</emphasis> is center-clipped before being placed in the short-term buffer as tempo-relevant data. Typically at the noise floor of the incoming data.
+    </para>
+
+    <para>
+      <emphasis>ihtim</emphasis> -- half-time (in seconds) of an internal forward-masking filter that masks new <emphasis>kin</emphasis> data in the presence of recent, louder data. Typically about .005 seconds.
+    </para>
+
+    <para>
+      <emphasis>ixfdbak</emphasis> -- proportion of this unit's <emphasis>anticipated value</emphasis> to be mixed with the incoming <emphasis>kin</emphasis> prior to all processing. Typically about .3.
+    </para>
+
+    <para>
+      <emphasis>istartempo</emphasis> -- initial tempo (in beats per minute). Typically 60.
+    </para>
+
+    <para>
+      <emphasis>ifn</emphasis> -- table number of a stored function (drawn left-to-right) by which the short-term memory data is attenuated over time.
+    </para>
+
+    <para>
+      <emphasis>idisprd</emphasis> (optional) -- if non-zero, display the short-term past and future buffers every <emphasis>idisprd</emphasis> seconds (normally a multiple of <emphasis>iprd</emphasis>). The default value is 0 (no display).
+    </para>
+
+    <para>
+      <emphasis>itweek</emphasis> (optional) -- fine-tune adjust this unit so that it is stable when analyzing events controlled by its own output. The default value is 1 (no change).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+<emphasis>tempest</emphasis> examines <emphasis>kin</emphasis> for amplitude periodicity, and estimates a current tempo. The input is first low-pass filtered, then center-clipped, and the residue placed in a short-term memory buffer (attenuated over time) where it is analyzed for periodicity using a form of autocorrelation. The period, expressed as a <emphasis>tempo</emphasis> in beats per minute, is output as <emphasis>ktemp</emphasis>. The period is also used internally to make predictions about future amplitude patterns, and these are placed in a buffer adjacent to that of the input. The two adjacent buffers can be periodically displayed, and the predicted values optionally mixed with the incoming signal to simulate expectation.
+    </para>
+
+    <para>
+This unit is useful for sensing the metric implications of any k-signal (e.g.- the RMS of an audio signal, or the second derivative of a conducting gesture), before sending to a <link linkend="tempo"><citetitle>tempo</citetitle></link> statement.
+    </para>
+  </refsect1>
+
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the tempest opcode. It uses the file <ulink url="examples/tempest.csd"><citetitle>tempest.csd</citetitle></ulink>, and <ulink url="examples/beats.wav"><citetitle>beats.wav</citetitle></ulink>.
+      <example>
+        <title>Example of the tempest opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/tempest.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      The tempo of the audio file <quote>beats.wav</quote> is 120 beats per minute. In this examples, tempest will print out its best guess as the audio file plays. Its output should include lines like this:
+      <screen>
+. i1   118.24654
+. i1   121.72949</screen>
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,87 @@
+
+<refentry id="s">
+      <indexterm id="IndexSStatement"><primary>s statement</primary></indexterm>
+  <refmeta>
+    <refentrytitle>s Statement</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>s</refname>
+    <refpurpose>
+      Marks the end of a section.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      The <emphasis>s statement</emphasis> marks the end of a section.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>s</command> [time]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      The first p-field <emphasis>time</emphasis> is optional and if present determines the end time (length in beats) of the section.  This time must be after the end of the last event in the section otherwise it will have no effect. This can be used to create a pause before the beginning of the next section or to allow "always on" instruments such as effects to play by themselves for some length of time.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      Sorting of the <link linkend="i"><citetitle>i statement</citetitle></link>, <link linkend="f"><citetitle>f statement</citetitle></link> and <link linkend="a"><citetitle>a statement</citetitle></link> by action time is done section by section.
+    </para>
+
+    <para>
+      Time warping for the <link linkend="t"><citetitle>t statement</citetitle></link> is done section by section.
+    </para>
+
+    <para>
+      All action times within a section are relative to its beginning. A section statement establishes a new relative time of 0, but has no other reinitializing effects (e.g. stored function tables are preserved across section boundaries).
+    </para>
+
+    <para>
+      A section is considered complete when all action times and finite durations have been satisfied (i.e., the &quot;length&quot; of a section is determined by the last occurring action or turn-off). A section can be extended by the use of an <link linkend="f"><citetitle>f0 statement</citetitle></link> or by supplying the optional <emphasis>p1</emphasis> value to the <emphasis>s statement</emphasis>.
+    </para>
+
+    <para>
+      A section ending automatically invokes a purge of inactive instrument and data spaces.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Since score statements are processed section by section, the amount of memory required depends on the maximum number of score statements in a section. Memory allocation is dynamic, and the user will be informed as extra memory blocks are requested during score processing.
+            </para>
+          </listitem>
+
+          <listitem>
+            <para>
+              For the end of the final section of a score, the <emphasis>s statement</emphasis> is optional; the <link linkend="e"><citetitle>e statement</citetitle></link> may be used instead.
+            </para>
+          </listitem>
+        </itemizedlist>
+    </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the s statement. It uses the file <ulink url="examples/s.csd"><citetitle>s.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the s statement.</title>
+        <xi:include href="examples-xml/s.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+</refentry>

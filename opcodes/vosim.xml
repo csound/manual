@@ -1,0 +1,168 @@
+
+<refentry id="vosim">
+<indexterm id="IndexVosim"><primary>vosim</primary></indexterm>
+<refentryinfo><title>Signal Generators:Granular Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vosim</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vosim</refname>
+    <refpurpose>
+      Simple vocal simulation based on glottal pulses with formant characteristics.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This opcode produces a simple vocal simulation based on glottal pulses with formant characteristics.
+Output is a series of sound events, where each event is composed of a burst of squared sine pulses followed by silence.
+The VOSIM (VOcal SIMulation) synthesis method was developed by Kaegi and Tempelaars in the 1970's.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ar <command>vosim</command> kamp, kFund, kForm, kDecay, kPulseCount, kPulseFactor, ifn [, iskip]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Intialization</title>
+    <para><emphasis>ifn</emphasis> - a sound table, normally containing half a period of a sinewave, squared (see notes below).</para>
+    <para><emphasis>iskip</emphasis> - (optional) Skip initialization, for tied notes.</para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para><emphasis>ar</emphasis> - output signal. Note that the output is usually unipolar - positive only.</para>
+    <para><emphasis>kamp</emphasis> - output amplitude, the peak amplitude of the first pulse in each burst.
+</para>
+    <para><emphasis>kFund</emphasis> - fundamental pitch, in Herz. Each event is 1/kFund seconds long.
+</para>
+    <para><emphasis>kForm</emphasis> - formant center frequency. Length of each pulse in the burst is 1/kForm seconds.
+</para>
+    <para><emphasis>kDecay</emphasis> - a dampening factor from pulse to pulse. This is subtracted from amplitude on each new pulse.
+</para>
+    <para><emphasis>kPulseCount</emphasis> - number of pulses in the burst part of each event.
+</para>
+    <para><emphasis>kPulseFactor</emphasis> - the pulse width is multiplied by this value at each new pulse.
+This results in formant sweeping. If factor is  &lt; 1.0, the formant sweeps up, if &gt; 1.0 each new pulse is longer,
+so the formant sweeps down. The final pitch of the formant is kForm * pow(kPulseFactor, kPulseCount)</para>
+    <para>The output of <emphasis>vosim</emphasis> is a series of sound events, where each each event is composed of a burst of squared sine pulses followed by silence.
+The total duration of the events determines fundamental frequency.
+The length of each single pulse in the squared-sine bursts produce a formant frequency band. The width of the formant is determined by rate of silence to pulses (see below). The final result is also shaped by the dampening factor from pulse to pulse.</para>
+
+    <para>A small practical problem in using this opcode is that no GEN function will create a squared sine wave out of the box. Something like the following can be used to create the appropriate table from the score.</para>
+    <programlisting><emphasis role="comment">; use GEN09 to create half a sine in table 17
+</emphasis>
+<emphasis role="stamnt">f</emphasis> 17 <emphasis>time</emphasis> <emphasis>size</emphasis> 9  0.5  1 0
+
+<emphasis role="comment">; run instr 101 on table 17 for a single init-pass
+</emphasis>
+<emphasis role="stamnt">i</emphasis> 101 0 0 17
+    </programlisting>
+
+    <para>It can also be done with an instrument writing to an f-table in the orchestra:</para>
+    <programlisting>	; square each point in table #p4. This should be run as init-only, just once in the performance.
+
+<emphasis role="oblock">instr</emphasis> 101
+
+    index <emphasis role="opc">tableng</emphasis> p4
+
+    index <emphasis role="op">=</emphasis> index - 1  <emphasis role="comment">; start from last point</emphasis>
+loop:
+
+    ival <emphasis role="opc">table</emphasis> index, p4
+
+    ival <emphasis role="op">=</emphasis> ival * ival
+
+    <emphasis role="opc">tableiw</emphasis> ival, index, p4
+
+    index <emphasis role="op">=</emphasis> index - 1
+
+    if index &lt; 0 <emphasis role="opctrl">igoto</emphasis> <emphasis role="olabel">endloop</emphasis>
+            <emphasis role="opctrl">igoto</emphasis> <emphasis role="olabel">loop</emphasis>
+<emphasis role="olabel">endloop:</emphasis>
+<emphasis role="oblock">endin</emphasis></programlisting>
+
+    <note><title>Parameter Limits</title><para>The count of pulses multiplied by pulse width should fit in the event length (1/<emphasis>kFund</emphasis>).
+If this is not fulfilled, the algorithm does not break, we just do not start any pulses that would outlast the event.
+This might introduce a silence at end of event even if none was intended.
+In consequence,
+<emphasis>kForm</emphasis> should be higher than <emphasis>kFund</emphasis>, otherwise only silence is output.</para></note>
+
+    <para><emphasis>Vosim</emphasis> was created to emulate voice sounds using a model of glottal pulse.
+Rich sounds can be created by combining several instances of <emphasis>vosim</emphasis> with different parameters.
+One drawback is that the signal is not band-limited. But as the authors point out, attenuation of high-pitch components is -60 dB
+at 6 times the fundamental frequency. The signal can also be changed by changing the source signal in the lookup table.
+The technique has historical interest, and can produce rich sound very cheaply (each sample requires only a table lookup and a single multiplication for attenuation).
+</para>
+
+    <para>As stated, formant bandwidth depends on the ratio between pulse burst and silence in an event.
+But this is not an independent parameter: The fundamental decides event length, and formant center defines the pulse length. It is therefore impossible to guarantee a specific burst/silence ratio, since the burst length has to be an integer multiple of pulse length. The decay of pulses can be used to smooth the transition from N to N+/-1 pulses, but there will still be steps in the spectral profile of output. The example code below shows one approach to this.
+</para>
+
+    <para>All input parameters are k-rate. The input parameters are only used to set up each new event (or grain). Event amplitude is fixed for each event at initialization.
+In normal parameter ranges, when <link linkend="ksmps"><citetitle>ksmps</citetitle></link> &lt;500, the k-rate parameters are updated more often than events are created. In any case, no wide-band noise will be injected in the system due to k-rate inputs being updated less often than they are read,
+but some other artefacts could be created.</para>
+
+
+    <para>The opcode should behave reasonably in the face of all user inputs. Some details:
+      <orderedlist numeration="loweralpha">
+        <listitem>
+          <para>kFund &lt; 0: This is forced to positive - no point in "reversed" events.</para>
+        </listitem>
+        <listitem>
+          <para>kFund == 0: This leads to "infinite" length event, ie a pulse burst followed by very long indefinite silence.</para>
+        </listitem>
+        <listitem>
+          <para>kForm == 0: This leads to infinite length pulse, so no pulses are generated (i.e. silence).</para>
+        </listitem>
+        <listitem>
+          <para>kForm &lt; 0: Table is read backward. If table is symmetric, <emphasis>kform</emphasis> and -<emphasis>kform</emphasis> should give bit-identical outputs.
+</para>
+        </listitem>
+        <listitem>
+          <para>kPulseFactor == 0: Second pulse onwards is zero. See (c).</para>
+        </listitem>
+        <listitem>
+          <para>kPulseFactor &lt; 0: Pulses alternately read table forward and reversed.
+</para>
+        </listitem>
+      </orderedlist>
+    </para>
+    <para>With asymmetric pulse table there may be some use for negative <emphasis>kForm</emphasis> or negative <emphasis>kPulseFactor</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the vosim opcode. It uses the file <ulink url="examples/vosim.csd"><citetitle>vosim.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the vosim opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/vosim.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>See also</title>
+    <para>
+      <link linkend="fof"><citetitle>fof</citetitle></link>,
+      <link linkend="fof2"><citetitle>fof2</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namerasmus;</member>
+        <member>March 2008</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

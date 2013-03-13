@@ -1,0 +1,106 @@
+
+<refentry id="GEN19">
+      <indexterm id="IndexGEN19"><primary>GEN19</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN19</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN19</refname>
+    <refpurpose>
+      Generate composite waveforms made up of weighted sums of simple sinusoids.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      These subroutines generate composite waveforms made up of weighted sums of simple sinusoids. The specification of each contributing partial requires 4 p-fields using <emphasis>GEN19</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>f</command> # time size  19  pna   stra  phsa  dcoa  pnb strb  phsb  dcob  ...</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>size</emphasis> -- number of points in the table. Must be a power of 2 or power-of-2 plus 1 (see <link linkend="f"><citetitle>f statement</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis>pna, pnb</emphasis>, etc. -- partial no. (relative to a fundamental that would occupy <emphasis>size</emphasis> locations per cycle) of sinusoid a, sinusoid b, etc. Must be positive, but need not be a whole number, i.e., non-harmonic partials are permitted. Partials may be in any order.
+    </para>
+
+    <para>
+      <emphasis>stra, strb</emphasis>, etc. -- strength of partials <emphasis>pna, pnb</emphasis>, etc. These are relative strengths, since the composite waveform may be rescaled later. Negative values are permitted and imply a 180 degree phase shift.
+    </para>
+
+    <para>
+      <emphasis>phsa, phsb</emphasis>, etc. -- initial phase of partials <emphasis>pna, pnb,</emphasis> etc., expressed in degrees.
+    </para>
+
+    <para>
+      <emphasis>dcoa, dcob</emphasis>, etc. -- DC offset of partials <emphasis>pna, pnb</emphasis>, etc. This is applied <emphasis>after</emphasis> strength scaling, i.e. a value of 2 will lift a 2-strength sinusoid from range [-2,2] to range [0,4] (before later rescaling).
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              These subroutines generate stored functions as sums of sinusoids of different frequencies. The two major restrictions on <emphasis>GEN10</emphasis> that the partials be harmonic and in phase do not apply to <emphasis>GEN09</emphasis> or <emphasis>GEN19</emphasis>.
+            </para>
+
+            <para>
+              In each case the composite wave, once drawn, is then rescaled to unity if p4 was positive. A negative p4 will cause rescaling to be skipped.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+	    Here is an example of the GEN19 routine. It uses the files <ulink url="examples/gen19.csd"><citetitle>gen19.csd</citetitle></ulink>.
+      <example>
+        <title>An example of the GEN19 routine.</title>
+        <xi:include href="examples-xml/gen19.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+        <textobject>
+          <phrase>This is the diagram of the waveform of the GEN19 routines, as used in the example:</phrase>
+        </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen19_1.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 2 0 1024 19 .5 .5 270 .5 - a rising sigmoid</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 2 0 1024 19 .5 .5 270 .5 - a rising sigmoid</para>
+        </caption>
+      </mediaobject>
+
+    </para>
+  </refsect1>
+
+
+  <refsect1>
+     <title>See Also</title>
+     <para>
+       <link linkend="GEN09"><citetitle>GEN09</citetitle></link> and
+       <link linkend="GEN10"><citetitle>GEN10</citetitle></link>
+     </para>
+  </refsect1>
+
+</refentry>

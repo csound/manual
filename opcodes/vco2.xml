@@ -1,0 +1,147 @@
+
+<refentry id="vco2">
+<indexterm id="IndexVco2"><primary>vco2</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Dynamic Spectrum Oscillators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vco2</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>vco2</refname>
+    <refpurpose>
+      Implementation of a band-limited oscillator using pre-calculated tables.
+          </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>vco2</emphasis> is similar to <link linkend="vco"><citetitle>vco</citetitle></link>. But the implementation uses pre-calculated tables of band-limited waveforms (see also <link linkend="GEN30"><citetitle>GEN30</citetitle></link>) rather than integrating impulses. This opcode can be faster than <emphasis>vco</emphasis> (especially if a low control-rate is used) and also allows better sound quality. Additionally, there are more waveforms and oscillator phase can be modulated at k-rate. The disadvantage is increased memory usage. For more details about vco2 tables, see also <link linkend="vco2init"><citetitle>vco2init</citetitle></link> and <link linkend="vco2ft"><citetitle>vco2ft</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>vco2</command> kamp, kcps [, imode] [, kpw] [, kphs] [, inyx]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>imode</emphasis> (optional, default=0) -- a sum of values representing the waveform and its control values.
+    </para>
+
+    <para>
+      One may use any of the following values for <emphasis>imode</emphasis>:
+      <itemizedlist>
+        <listitem><para>16: enable k-rate phase control (if set, <emphasis>kphs</emphasis> is a required k-rate parameter that allows phase modulation)</para></listitem>
+        <listitem><para>1: skip initialization</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      One may use exactly one of these <emphasis>imode</emphasis> values to select the waveform to be generated:
+      <itemizedlist>
+        <listitem><para>14: user defined waveform -1 (requires using the <link linkend="vco2init"><citetitle>vco2init</citetitle></link> opcode)</para></listitem>
+        <listitem><para>12: triangle (no ramp, faster)</para></listitem>
+        <listitem><para>10: square wave (no PWM, faster)</para></listitem>
+        <listitem><para>8: 4 * x * (1 - x) (i.e. integrated sawtooth)</para></listitem>
+        <listitem><para>6: pulse (not normalized)</para></listitem>
+        <listitem><para>4: sawtooth / triangle / ramp</para></listitem>
+        <listitem><para>2: square / PWM</para></listitem>
+        <listitem><para>0: sawtooth</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+        The default value for <emphasis>imode</emphasis> is zero, which means a sawtooth wave with no k-rate phase control.
+    </para>
+
+    <para>
+      <emphasis>inyx</emphasis> (optional, default=0.5) -- bandwidth of the generated waveform, as percentage (0 to 1) of the sample rate. The expected range is 0 to 0.5 (i.e. up to <link linkend="sr"><citetitle>sr</citetitle></link>/2), other values are limited to the allowed range.
+    </para>
+
+    <para>
+      Setting <emphasis>inyx</emphasis> to 0.25 (<emphasis>sr</emphasis>/4), or 0.3333 (<emphasis>sr</emphasis>/3) can produce a <quote>fatter</quote> sound in some cases, although it is more likely to reduce quality.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ares </emphasis> -- the output audio signal.
+    </para>
+
+    <para>
+      <emphasis>kamp</emphasis> -- amplitude scale. In the case of a <emphasis>imode</emphasis> waveform value of 6 (a pulse waveform), the actual output level can be a lot higher than this value.
+    </para>
+
+    <para>
+      <emphasis>kcps</emphasis> -- frequency in Hz (should be in the range -<emphasis>sr</emphasis>/2 to <emphasis>sr</emphasis>/2).
+    </para>
+
+    <para>
+      <emphasis>kpw</emphasis> (optional) -- the pulse width of the square wave (<emphasis>imode</emphasis> waveform=2) or the ramp characteristics of the triangle wave (<emphasis>imode</emphasis> waveform=4). It is required only by these waveforms and ignored in all other cases. The expected range is 0 to 1, any other value is wrapped to the allowed range.
+    </para>
+
+    <warning>
+      <title>Warning</title>
+      <para>
+        <emphasis>kpw</emphasis> must not be an exact integer value (e.g. 0 or 1) if a sawtooth / triangle / ramp (<emphasis>imode</emphasis> waveform=4) is generated. In this case, the recommended range is about 0.01 to 0.99. There is no such limitation for a square/PWM waveform.
+      </para>
+    </warning>
+
+    <para>
+      <emphasis>kphs</emphasis> (optional) -- oscillator phase (depending on <emphasis>imode</emphasis>, this can be either an optional i-rate parameter that defaults to zero or required k-rate). Similarly to <emphasis>kpw</emphasis>, the expected range is 0 to 1.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        When a low control-rate is used, pulse width (<emphasis>kpw</emphasis>) and phase (<emphasis>kphs</emphasis>) modulation is internally converted to frequency modulation. This allows for faster processing and reduced artifacts. But in the case of very long notes and continuous fast changes in <emphasis>kpw</emphasis> or <emphasis>kphs</emphasis>, the phase may drift away from the requested value. In most cases, the phase error is at most 0.037 per hour (assuming a sample rate of 44100 Hz).
+      </para>
+
+      <para>
+        This is a problem mainly in the case of pulse width (<emphasis>kpw</emphasis>), where it may result in various artifacts. While future releases of <emphasis>vco2</emphasis> may fix such errors, the following work-arounds may also be of some help:
+
+        <itemizedlist>
+          <listitem><para>Use <emphasis>kpw</emphasis> values only in the range 0.05 to 0.95. (There are more artifacts around integer values)</para></listitem>
+          <listitem><para>Try to avoid modulating <emphasis>kpw</emphasis> by asymmetrical waveforms like a sawtooth wave. Relatively slow (&lt;= 20 Hz) symmetrical modulation (e.g. sine or triangle), random splines (also slow), or a fixed pulse width is a lot less likely to cause synchronization problems.
+</para></listitem>
+          <listitem><para>In some cases, adding random jitter (for example: random splines with an amplitude of about 0.01) to <emphasis>kpw</emphasis> may also fix the problem.</para></listitem>
+        </itemizedlist>
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the vco2 opcode. It uses the file <ulink url="examples/vco2.csd"><citetitle>vco2.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the vco2 opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+        <xi:include href="examples-xml/vco2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="vco"><citetitle>vco</citetitle></link>,
+      <link linkend="vco2ft"><citetitle>vco2ft</citetitle></link>,
+      <link linkend="vco2ift"><citetitle>vco2ift</citetitle></link>, and
+      <link linkend="vco2init"><citetitle>vco2init</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &nameistvan;</para>
+    <para>New in version 4.22</para>
+  </refsect1>
+</refentry>

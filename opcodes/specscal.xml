@@ -1,0 +1,76 @@
+
+<refentry id="specscal">
+<indexterm id="IndexSpecscal"><primary>specscal</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Non-Standard</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>specscal</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>specscal</refname>
+    <refpurpose>
+      Scales an input spectral datablock with spectral envelopes.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Scales an input spectral datablock with spectral envelopes.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>wsig <command>specscal</command> wsigin, ifscale, ifthresh</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifscale</emphasis> -- scale function table. A function table containing values by which a value's magnitude is rescaled.
+    </para>
+
+    <para>
+      <emphasis>ifthresh</emphasis> -- threshold function table. If <emphasis>ifthresh</emphasis> is non-zero, each magnitude is reduced by its corresponding table-value (to not less than zero)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>wsig</emphasis> -- the output spectrum
+    </para>
+
+    <para>
+      <emphasis>wsigin</emphasis> -- the input spectra
+    </para>
+
+    <para>
+      Scales an input spectral datablock with spectral envelopes. Function tables <emphasis>ifthresh</emphasis> and <emphasis>ifscale</emphasis> are initially sampled across the (logarithmic) frequency space of the input spectrum; then each time a new input spectrum is sensed the sampled values are used to scale each of its magnitude channels as follows: if <emphasis>ifthresh</emphasis> is non-zero, each magnitude is reduced by its corresponding table-value (to not less than zero); then each magnitude is rescaled by the corresponding <emphasis>ifscale</emphasis> value, and the resulting spectrum written to <emphasis>wsig</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      <informalexample>
+        <programlisting>
+  wsig2    <emphasis role="opc">specdiff</emphasis>    wsig1         <emphasis role="comment">; sense onsets</emphasis>
+  wsig3    <emphasis role="opc">specfilt</emphasis>    wsig2, 2      <emphasis role="comment">; absorb slowly</emphasis>
+           <emphasis role="opc">specdisp</emphasis>    wsig2, 0.1    <emphasis role="comment">; &amp; display both spectra</emphasis>
+           <emphasis role="opc">specdisp</emphasis>    wsig3, 0.1</programlisting>
+      </informalexample>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="specaddm"><citetitle>specaddm</citetitle></link>,
+      <link linkend="specdiff"><citetitle>specdiff</citetitle></link>,
+      <link linkend="specfilt"><citetitle>specfilt</citetitle></link>,
+      <link linkend="spechist"><citetitle>spechist</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

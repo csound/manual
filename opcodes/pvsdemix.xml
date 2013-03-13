@@ -1,0 +1,112 @@
+
+<refentry id="pvsdemix">
+<indexterm id="IndexPvsdemix"><primary>pvsdemix</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsdemix</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvsdemix</refname>
+    <refpurpose>
+      Spectral azimuth-based de-mixing of stereo sources.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Spectral azimuth-based de-mixing of stereo sources, with a reverse-panning result. This
+      opcode implements the Azimuth Discrimination and Resynthesis (ADRess) algorithm, developed by
+      Dan Barry (Barry et Al. "Sound Source Separation Azimuth Discrimination and Resynthesis". DAFx'04, 
+      Univ. of Napoli). The source separation, or de-mixing, is controlled by two parameters: an azimuth
+      position (<emphasis>kpos</emphasis>) and a subspace width (<emphasis>kwidth</emphasis>). The first one is used to locate the spectral peaks of 
+      individual sources on a stereo mix, whereas the second widens the 'search space', including/exclufing 
+      the peaks around <emphasis>kpos</emphasis>. These two parameters can be used interactively to extract source sounds from
+      a stereo mix. The algorithm is particularly successful with studio recordings where individual instruments
+      occupy individual panning positions; it is, in fact, a reverse-panning algorithm. 
+    </para>
+    <warning>
+      <para>
+        It is unsafe to use the same f-variable for both input and output of pvs opcodes. Using the same one might lead to undefined behavior on some opcodes. Use a different one on the left and right sides of the opcode.
+      </para>
+    </warning>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>fsig <command>pvsdemix</command> fleft, fright, kpos, kwidth, ipoints</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>fsig</emphasis> -- output pv stream
+    </para>
+
+    <para>
+      <emphasis>fleft</emphasis> -- left channel input pv stream.
+    </para>
+
+    <para>
+      <emphasis>fright</emphasis> -- right channel pv stream.
+    </para>
+
+    <para>
+      <emphasis>kpos</emphasis> -- the azimuth target centre position, which will be de-mixed, from
+      left to right (-1 &lt;= <emphasis>kpos</emphasis> &lt;= 1). This is the reverse pan-pot control.
+    </para>
+    <para>
+      <emphasis>kwidth</emphasis> -- the azimuth subspace width, which will determine the number
+      of points around <emphasis>kpos</emphasis> which will be used in the de-mixing process.
+      (1 &lt;= <emphasis>kwidth</emphasis> &lt;= <emphasis>ipoints</emphasis>)
+    </para>
+
+    <para>
+      <emphasis>ipoints</emphasis> -- total number of discrete points, which will divide
+      each pan side of the stereo image. This ultimately affects 
+      the resolution of the process.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      The example below takes a stereo input and passes through a de-mixing
+      process revealing a source located at ipos +/- iwidth points. These parameters
+      can be controlled in realtime (e.g. using FLTK widgets or MIDI) for an interactive
+      search of sound sources.
+      <example>
+        <title>Example</title>
+        <programlisting>
+ifftsize <emphasis role="op">=</emphasis> 1024  
+iwtype   <emphasis role="op">=</emphasis> 1     <emphasis role="comment">/* cleaner with hanning window      */</emphasis>
+ipos     <emphasis role="op">=</emphasis> -0.8  <emphasis role="comment">/* to the left of the stereo image  */</emphasis>
+iwidth   <emphasis role="op">=</emphasis> 20    <emphasis role="comment">/* use peaks of 20 points around it */</emphasis>
+
+al,ar  <emphasis role="opc">soundin</emphasis>   "sinput.wav"
+
+flc    <emphasis role="opc">pvsanal</emphasis>   al, ifftsize, ifftsize/4, ifftsize, iwtype
+frc    <emphasis role="opc">pvsanal</emphasis>   ar, ifftsize, ifftsize/4, ifftsize, iwtype
+fdm    <emphasis role="opc">pvsdemix</emphasis>  flc, frc, kpos, kwidth, 100
+adm    <emphasis role="opc">pvsynth</emphasis>   fdm
+   
+       <emphasis role="opc">outs</emphasis>      adm, adm</programlisting>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>January 2005</member>
+      </simplelist>
+    </para>
+
+    <para>New plugin in version 5</para>
+    <para>January 2005.</para>
+  </refsect1>
+</refentry>

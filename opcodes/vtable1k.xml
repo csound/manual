@@ -1,0 +1,75 @@
+
+<refentry id="vtable1k">
+<indexterm id="IndexVtable1k"><primary>vtable1k</primary></indexterm>
+  <refentryinfo><title>Vectorial:Tables</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vtable1k</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vtable1k</refname>
+    <refpurpose>
+     Read a vector (several scalars simultaneously) from a table.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This opcode reads vectors from tables at k-rate.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>vtable1k</command>  kfn,kout1 [, kout2, kout3, .... , koutN ]</synopsis>
+  </refsect1>
+<!-- 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      </para>
+  </refsect1>-->
+ 
+  <refsect1>
+    <title>Performance</title>
+     <para>
+      <emphasis>kfn</emphasis> - table number
+     </para>
+     <para>
+      <emphasis>kout1...koutN</emphasis> - output vector elements
+    </para> 
+    <para>
+      <emphasis>vtable1k</emphasis> is a reduced version of <link linkend="vtablek"><citetitle>vtablek</citetitle></link>, it only allows to access the first vector (it is equivalent to vtablek with kndx = zero, but a bit faster). It is useful to easily and quickly convert a set of values stored in a table into a set of k-rate variables to be used in normal opocodes, instead of using individual <link linkend="table"><citetitle>table</citetitle></link> opcodes for each value.
+    </para>
+    <note>
+      <para>
+        <emphasis>vtable1k</emphasis> is an unusual opcode as it produces its output on the right side arguments of the opcode.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the vtable1k opcode. It uses the files <ulink url="examples/vtable1k.csd"><citetitle>vtable1k.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the vtable1k opcode.</title>
+        <xi:include href="examples-xml/vtable1k.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="vtablek"><citetitle>vtablek</citetitle></link>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Credits</title>
+    <para>Written by Gabriel Maldonado.</para>
+    <para>New in Csound 5.06</para>
+  </refsect1>
+</refentry>

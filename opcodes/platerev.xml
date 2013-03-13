@@ -1,0 +1,113 @@
+
+<refentry id="platerev">
+<indexterm id="IndexPlaterev"><primary>platerev</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Reverberation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>platerev</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>platerev</refname>
+    <refpurpose>
+      Models the reverberation of a metal plate.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Models the reverberation of a rectangular metal plate with
+      settable physical characteristics when excited by audio signal(s).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>a1[, a2, ...] <command>platerev</command> itabexcite. itabouts, kbndry, iaspect, istiff, idecay, iloss, aexcite1[, aexcite2, ...]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>itabexcite</emphasis> -- number of a table that
+      contains triplets for each excitation signal, (frequency, radius,
+      initial phase in radians).  The radius should be less than 1.
+      These control where the excitation happens.  The values in the
+      table for frequency and radius may be changed in performance,
+      with the proviso about clicking if the changes are too large.
+    </para>
+    
+    <para>
+      <emphasis>itabouts</emphasis> -- number of a table that
+      contains triplets for each output signal, (frequency, radius,
+      initial phase in radians).  See itabexcite description.
+      
+    </para>
+    
+    <para>
+      <emphasis>kbndry</emphasis> -- boundary condition of the plate;
+      0 = free, 1 = clamped, 2 = pivoting.  Other values are
+      undefined.  Thus parameter may be changed at k-rate but that
+      might give rise to clicks.
+    </para>
+    <para>
+      <emphasis>iaspect</emphasis> -- plate aspect ratio which should
+      be less than or equal to 1.
+    </para>
+    <para>
+      <emphasis>istiff</emphasis> -- plate stiffness parameter (set
+      around 1 or less for plate reverb).
+    </para>
+    <para>
+      <emphasis>idecay</emphasis> -- time taken for 30 dB decay
+    </para>
+    <para>
+      <emphasis>iloss</emphasis> -- loss parameter for
+      high-frequency damping (value about 0.001 suggested).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      A metal plate is excited by a stereo signal and the resulting
+      reverberation captured.
+    </para>
+    <para>
+      <emphasis>aexcite</emphasis>n -- excitation signal to be
+      inserted into the plate.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the platerev opcode. It uses the file <ulink url="examples/plate.csd"><citetitle>plate.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the platerev opcode.</title>
+
+        
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/plate.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Stefan Bilbao </member>
+        <member>University of Edinburgh, UK</member>
+        <member>Author: &namejohn; </member>
+        <member>University of Bath, Codemist Ltd.</member>
+        <member>Bath, UK</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 5.17.12</para>
+  </refsect1>
+</refentry>

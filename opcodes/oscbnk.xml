@@ -1,0 +1,205 @@
+
+<refentry id="oscbnk">
+<indexterm id="IndexOscbnk"><primary>oscbnk</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Basic Oscillators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>oscbnk</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>oscbnk</refname>
+    <refpurpose>
+      Mixes the output of any number of oscillators.
+          </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This unit generator mixes the output of any number of oscillators. The frequency, phase, and amplitude of each oscillator can be modulated by two LFOs (all oscillators have a separate set of LFOs, with different phase and frequency); additionally, the output of each oscillator can be filtered through an optional parametric equalizer (also controlled by the LFOs).  This opcode is most useful for rendering ensemble (strings, choir, etc.) instruments.
+    </para>
+
+    <para>
+      Although the LFOs run at k-rate, amplitude, phase and filter modulation are interpolated internally, so it is possible (and recommended in most cases) to use this unit at low (&tilde;1000 Hz) control rates without audible quality degradation.
+    </para>
+
+    <para>
+      The start phase and frequency of all oscillators and LFOs can be set by a built-in seedable 31-bit random number generator, or specified manually in a function table (GEN2).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>oscbnk</command>  kcps, kamd, kfmd, kpmd, iovrlap, iseed, kl1minf, kl1maxf, \
+      kl2minf, kl2maxf, ilfomode, keqminf, keqmaxf, keqminl, keqmaxl, \
+      keqminq, keqmaxq, ieqmode, kfn [, il1fn] [, il2fn] [, ieqffn]   \
+      [, ieqlfn] [, ieqqfn] [, itabl] [, ioutfn]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iovrlap</emphasis> -- Number of oscillator units.
+    </para>
+
+    <para>
+      <emphasis>iseed</emphasis> -- Seed value for random number generator (positive integer in the range 1 to 2147483646 (2 &circ; 31 - 2)). <emphasis>iseed</emphasis> &lt;= 0 seeds from the current time.
+    </para>
+
+    <para>
+      <emphasis>ieqmode</emphasis> -- Parametric equalizer mode
+        <itemizedlist>
+          <listitem><para>-1: disable EQ (faster)</para></listitem>
+          <listitem><para>0: peak</para></listitem>
+          <listitem><para>1: low shelf</para></listitem>
+          <listitem><para>2: high shelf</para></listitem>
+          <listitem><para>3: peak (filter interpolation disabled)</para></listitem>
+          <listitem><para>4: low shelf (interpolation disabled)</para></listitem>
+          <listitem><para>5: high shelf (interpolation disabled)</para></listitem>
+        </itemizedlist>
+
+      The non-interpolated modes are faster, and in some cases (e.g. high shelf filter at low cutoff frequencies) also more stable; however, interpolation is useful for avoiding <quote>zipper noise</quote> at low control rates.
+    </para>
+
+    <para>
+      <emphasis>ilfomode</emphasis> -- LFO modulation mode, sum of:
+        <itemizedlist>
+          <listitem><para>128: LFO1 to frequency</para></listitem>
+          <listitem><para>64: LFO1 to amplitude</para></listitem>
+          <listitem><para>32: LFO1 to phase</para></listitem>
+          <listitem><para>16: LFO1 to EQ</para></listitem>
+          <listitem><para>8: LFO2 to frequency</para></listitem>
+          <listitem><para>4: LFO2 to amplitude</para></listitem>
+          <listitem><para>2: LFO2 to phase</para></listitem>
+          <listitem><para>1: LFO2 to EQ</para></listitem>
+        </itemizedlist>
+
+      If an LFO does not modulate anything, it is not calculated, and the ftable number (<emphasis>il1fn</emphasis> or <emphasis>il2fn</emphasis>) can be omitted.
+    </para>
+
+    <para>
+      <emphasis>il1fn</emphasis> (optional: default=0) -- LFO1 function table number. The waveform in this table has to be normalized (absolute value &lt;= 1), and is read with linear interpolation.
+    </para>
+
+    <para>
+      <emphasis>il2fn</emphasis> (optional: default=0) -- LFO2 function table number. The waveform in this table has to be normalized, and is read with linear interpolation.
+    </para>
+
+    <para>
+      <emphasis>ieqffn, ieqlfn, ieqqfn</emphasis> (optional: default=0) -- Lookup tables for EQ frequency, level, and Q (optional if EQ is disabled). Table read position is 0 if the modulator signal is less than, or equal to -1, (table length / 2) if the modulator signal is zero, and the guard point if the modulator signal is greater than, or equal to 1. These tables have to be normalized to the range 0 - 1, and have an extended guard point (table length = power of two + 1). All tables are read with linear interpolation.
+    </para>
+
+    <para>
+      <emphasis>itabl</emphasis> (optional: default=0) -- Function table storing phase and frequency values for all oscillators (optional). The values in this table are in the following order (5 for each oscillator unit):
+
+      <informalexample>
+        <literallayout>oscillator phase, lfo1 phase, lfo1 frequency, lfo2 phase, lfo2 frequency, ...</literallayout>
+      </informalexample>
+
+      All values are in the range 0 to 1; if the specified number is greater than 1, it is wrapped (phase) or limited (frequency) to the allowed range. A negative value (or end of table) will use the output of the random number generator.  The random seed is always updated (even if no random number was used), so switching one value between random and fixed will not change others.
+    </para>
+
+    <para>
+      <emphasis>ioutfn</emphasis> (optional: default=0) -- Function table to write phase and frequency values (optional). The format is the same as in the case of <emphasis>itabl</emphasis>. This table is useful when experimenting with random numbers to record the best values.
+    </para>
+
+    <para>
+      The two optional tables (<emphasis>itabl</emphasis> and <emphasis>ioutfn</emphasis>) are accessed only at i-time. This is useful to know, as the tables can be safely overwritten after opcode initialization, which allows precalculating parameters at i-time and storing in a temporary table before <emphasis>oscbnk</emphasis> initialization.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ares</emphasis> -- Output signal.
+    </para>
+
+    <para>
+      <emphasis>kcps</emphasis> -- Oscillator frequency in Hz.
+    </para>
+
+    <para>
+      <emphasis>kamd</emphasis> -- AM depth (0 - 1). 
+
+      <literallayout>
+(AM output) = (AM input) * ((1 - (AM depth)) + (AM depth) * (modulator))
+      </literallayout>
+
+      If <emphasis>ilfomode</emphasis> isn't set to modulate the amplitude, then (AM output) = (AM input) regardless of the value of <emphasis>kamd</emphasis>. That means that <emphasis>kamd</emphasis> will have no effect.
+    </para>
+
+    <para>
+      Note: Amplitude modulation is applied before the parametric equalizer. 
+    </para>
+
+    <para>
+      <emphasis>kfmd</emphasis> -- FM depth (in Hz).
+    </para>
+
+    <para>
+      <emphasis>kpmd</emphasis> -- Phase modulation depth.
+    </para>
+
+    <para>
+      <emphasis>kl1minf, kl1maxf</emphasis> -- LFO1 minimum and maximum frequency in Hz.
+    </para>
+
+    <para>
+      <emphasis>kl2minf, kl2maxf</emphasis> --  LFO2 minimum and maximum frequency in Hz. (Note: oscillator and LFO frequencies are allowed to be zero or negative.)
+    </para>
+
+    <para>
+      <emphasis>keqminf, keqmaxf</emphasis> -- Parametric equalizer minimum and maximum frequency in Hz.
+    </para>
+
+    <para>
+      <emphasis>keqminl, keqmaxl</emphasis> -- Parametric equalizer minimum and maximum level.
+    </para>
+
+    <para>
+      <emphasis>keqminq, keqmaxq</emphasis> -- Parametric equalizer minimum and maximum Q.
+    </para>
+
+    <para>
+      <emphasis>kfn</emphasis> -- Oscillator waveform table. Table number can be changed at k-rate (this is useful to select from a set of band-limited tables generated by GEN30, to avoid aliasing). The table is read with linear interpolation.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        <emphasis>oscbnk</emphasis> uses the same random number generator as <emphasis>rnd31</emphasis>. So reading <link linkend="rnd31"><citetitle>its documentation</citetitle></link> is also recommended.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of oscbnk opcode. It uses the file <ulink url="examples/oscbnk.csd"><citetitle>oscbnk.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the oscbnk opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/oscbnk.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &nameistvan;</member>
+        <member>2001</member>
+      </simplelist>
+    </para>
+
+    <para>New in version 4.15</para>
+    <para>Updated April 2002 by &nameistvan;</para>
+  </refsect1>
+</refentry>

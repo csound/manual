@@ -1,0 +1,94 @@
+﻿
+<refentry id="ATSreadnz">
+<indexterm id="IndexATSreadnz"><primary>ATSreadnz</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:ATS</title></refentryinfo>
+    <refmeta>
+        <refentrytitle>ATSreadnz</refentrytitle>
+    </refmeta>
+
+    <refnamediv>
+        <refname>ATSreadnz</refname>
+        <refpurpose> reads data from an ATS file.
+        </refpurpose>
+    </refnamediv>
+    <refsect1>
+        <title>Description</title>
+        <para>
+            <emphasis>ATSreadnz</emphasis> returns the energy (<emphasis>kenergy</emphasis>) of a user specified noise band (1-25 bands) at the time indicated by the time pointer <emphasis>ktimepnt</emphasis>.
+        </para>
+    </refsect1>
+    <refsect1>
+        <title>Syntax</title>
+        <synopsis>kenergy <command>ATSreadnz</command> ktimepnt, iatsfile, iband</synopsis>
+    </refsect1>
+    <refsect1>
+        <title>Initialization</title>
+        <para>
+            <emphasis>iatsfile</emphasis> – the ATS number (n in ats.n) or the name in quotes of the analysis file made using <ulink url="http://www-ccrma.stanford.edu/~juan/ATS.html"><citetitle>ATS</citetitle></ulink>.
+        </para>
+        <para>
+            <emphasis>iband</emphasis> – the number of the noise band to return the energy data.
+        </para>
+    </refsect1>
+    <refsect1>
+        <title>Performance</title>
+        <para>
+            <emphasis>kenergy</emphasis> outputs the linearly interpolated energy of the noise band indicated in <emphasis>iband</emphasis>. The output is dependent on the data in the analysis file and the <emphasis>ktimepnt</emphasis>.
+        </para>
+        <para><emphasis>ktimepnt</emphasis> – The time pointer in seconds used to index the ATS file. Used for <emphasis>ATSreadnz</emphasis> exactly the same as for <link linkend="pvoc"><citetitle>pvoc</citetitle></link> and <link linkend="ATSadd"><citetitle>ATSadd</citetitle></link>.</para>
+        <para><emphasis>ATSaddnz</emphasis> reads from an ATS file and resynthesizes the noise from noise energy data contained in the ATS file. It uses a modified randi function to create band limited noise and modulates that with a user supplied wave table (one period of a cosine wave), to synthesize a user specified selection of frequency bands. Modulating the noise is required to put the band limited noise in the correct place in the frequency spectrum.
+        </para>
+        <para>An ATS analysis differs from a pvanal in that ATS tracks the partials and computes the noise energy of the sound being analyzed. For more info about ATS analysis read Juan Pampin's description on the the <ulink url="http://www-ccrma.stanford.edu/~juan/ATS.html"><citetitle>ATS</citetitle></ulink> web-page.
+        </para>
+    </refsect1>
+    <refsect1>
+        <title>Examples</title>
+    <programlisting>
+  ktime   <emphasis role="opc">line</emphasis>      2.5, p3, 0
+  kenergy	<emphasis role="opc">ATSreadnz</emphasis> ktime, "clarinet.ats", 5</programlisting>
+    <para>Here we are extracting the noise energy from band 5 in the 'clarinet.ats' ATS analysis file. We're actually reading backwards from 2.5 seconds to the beginning of the analysis file. We could use this to synthesize noise like this:
+    </para>
+    <programlisting>
+  anoise  <emphasis role="opc">randi</emphasis>     <emphasis role="opc">sqrt</emphasis>(kenergy), 55
+  aout    <emphasis role="opc">oscili</emphasis>    4000000000000000000000000, 455, 2
+  aout    <emphasis role="op">=</emphasis>         aout <emphasis role="op">*</emphasis> anoise</programlisting>
+        <para>Function table 2 used in the oscillator is a cosine, which is needed to shift the band limited noise into the correct place in the frequency spectrum. The <emphasis>randi</emphasis> function creates a band of noise centered about 0 Hz that has a bandwidth of about 110 Hz; multiplying it by a cosine will shift it to be centered at 455 Hz, which is the center frequency of the 5th critical noise band. This is only an example, for synthesizing the noise you'd be better off just using <link linkend="ATSaddnz"><citetitle>ATSaddnz</citetitle></link> unless you want to use your own noise synthesis algorithm. Maybe you could use the noise energy for something else like applying a small amount of jitter to specific partials or for controlling something totally unrelated to the source sound?
+        </para>
+    </refsect1>
+      <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is another example of the ATSreadnz opcode. It uses the file <ulink url="examples/ATSreadnz.csd"><citetitle>ATSreadnz.csd</citetitle></ulink>.
+
+      <example>
+        <title>Another example of the ATSreadnz opcode.</title>
+
+        
+
+          <xi:include href="examples-xml/ATSreadnz.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+    <refsect1>
+        <title>See also</title>
+        <para><link linkend="ATSread"><citetitle>ATSread</citetitle></link>, 
+            <link linkend="ATSinfo"><citetitle>ATSinfo</citetitle></link>, 
+            <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>, 
+            <link linkend="ATScross"><citetitle>ATScross</citetitle></link>, 
+            <link linkend="ATSinterpread"><citetitle>ATSinterpread</citetitle></link>, 
+            <link linkend="ATSpartialtap"><citetitle>ATSpartialtap</citetitle></link>, 
+            <link linkend="ATSadd"><citetitle>ATSadd</citetitle></link>, 
+            <link linkend="ATSaddnz"><citetitle>ATSaddnz</citetitle></link>, 
+            <link linkend="ATSsinnoi"><citetitle>ATSsinnoi</citetitle></link></para>
+    </refsect1>
+    <refsect1>
+        <title>Credits</title>
+        <para>
+            <simplelist>
+                <member>Author: Alex Norman</member>
+                <member>Seattle,Washington</member>
+                <member>2004</member>
+            </simplelist>
+        </para>
+    </refsect1>
+</refentry>

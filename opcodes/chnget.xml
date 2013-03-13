@@ -1,0 +1,97 @@
+
+<refentry id="chnget">
+<indexterm id="Indexchnget"><primary>chnget</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Software Bus</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>chnget</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>chnget</refname>
+    <refpurpose>
+      Reads data from the software bus.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Reads data from a channel of the inward named software bus.
+      Implies declaring the channel with <emphasis>imode</emphasis>=1 (see also
+      <link linkend="chn"><citetitle>chn_k, chn_a, and chn_S</citetitle></link>).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ival <command>chnget</command> Sname</synopsis>
+    <synopsis>kval <command>chnget</command> Sname</synopsis>
+    <synopsis>aval <command>chnget</command> Sname</synopsis>
+    <synopsis>Sval <command>chnget</command> Sname</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>Sname</emphasis> -- a string that identifies a channel
+      of the named software bus to read.
+    </para>
+    <para>
+      <emphasis>ival</emphasis> -- the control value read at i-time.
+    </para>
+    <para>
+      <emphasis>Sval</emphasis> -- the string value read at i-time.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kval</emphasis> -- the control value read at performance time.
+    </para>
+    <para>
+      <emphasis>aval</emphasis> -- the audio signal read at performance time.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Example</title>
+    <para>
+      The example shows the software bus being used as an asynchronous
+      control signal to select a filter cutoff.  It assumes that an
+      external program that has access to the API is feeding the values.
+    </para>
+
+    <informalexample>
+      <programlisting>
+        <emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+        <emphasis role="ohdr">kr</emphasis> <emphasis role="op">=</emphasis> 100
+        <emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 1
+
+        <emphasis role="oblock">instr</emphasis>   1
+           kc   <emphasis role="opc">chnget</emphasis>    "cutoff"
+           a1   <emphasis role="opc">oscil</emphasis>     p4, p5, 100
+           a2   <emphasis role="opc">lowpass2</emphasis>  a1, kc, 200
+                <emphasis role="opc">out</emphasis>       a2
+        <emphasis role="oblock">endin</emphasis>
+      </programlisting>
+    </informalexample>
+    <para>
+      Here is another example of the chnget opcode. It uses the file <ulink url="examples/chnget.csd"><citetitle>chnget.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the chnget opcode.</title>
+        <xi:include href="examples-xml/chnget.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &nameistvan;</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

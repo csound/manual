@@ -1,0 +1,87 @@
+
+<refentry id="pyrun">
+<indexterm id="IndexPyRun"><primary>pyrun</primary></indexterm>
+  <refentryinfo><title>Python Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pyrun Opcodes</refentrytitle>
+  </refmeta>
+  
+  <refnamediv>
+    <refname>pyrun</refname>
+    <refpurpose>Run a Python statement or block of statements.
+    </refpurpose>
+  </refnamediv>
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>pyrun</command> "statement"</synopsis>
+    <synopsis><command>pyruni</command> "statement"</synopsis>
+    <synopsis><command>pylrun</command> "statement"</synopsis>
+    <synopsis><command>pylruni</command> "statement"</synopsis>
+    <synopsis><command>pyrunt</command> ktrigger, "statement"</synopsis>
+    <synopsis><command>pylrunt</command> ktrigger, "statement"</synopsis>
+  </refsect1>
+  <refsect1>
+    <title>Description</title>
+    <para>Execute the specified Python statement at k-time
+      (<emphasis>pyrun</emphasis> and <emphasis>pylrun</emphasis>) or i-time
+      (<emphasis>pyruni</emphasis> and <emphasis>pylruni</emphasis>).</para>
+    <para>The statement is executed in the global environment for pyrun
+      and pyruni or the local environment for pylrun and pylruni.</para>
+    <para>These opcodes perform no message passing. However, since the
+      statement have access to the main namespace and the private namespace,
+      it can interact with objects previously created in that
+      environment.</para>
+    <para>The "local" version of the <emphasis>pyrun</emphasis> opcodes are useful when the
+      code ran by different instances of an instrument should not
+      interact.</para>
+  </refsect1>
+  <refsect1>
+    <title>Example of the pyrun Opcode Group</title>
+    <example>
+      <title>Orchestra</title>
+      <programlisting>
+<emphasis role="ohdr">sr</emphasis>=44100
+<emphasis role="ohdr">kr</emphasis>=4410
+<emphasis role="ohdr">ksmps</emphasis>=10
+<emphasis role="ohdr">nchnls</emphasis>=1
+
+<emphasis role="comment">;If you're not running CsoundAC you need the following line</emphasis>
+<emphasis role="comment">;to initialize the python interpreter</emphasis>
+<emphasis role="comment">;pyinit</emphasis>
+
+<emphasis role="opc">pyruni</emphasis> "import random"
+
+<emphasis role="oblock">instr 1</emphasis>
+        <emphasis role="comment">; This message is stored in the main namespace</emphasis>
+        <emphasis role="comment">; and is the same for every instance</emphasis>
+        <emphasis role="opc">pyruni</emphasis>  "message = 'a global random number: %f' % random.random()"
+        <emphasis role="opc">pyrun</emphasis>   "print message"
+
+        <emphasis role="comment">; This message is stored in the private namespace</emphasis>
+        <emphasis role="comment">; and is different for different instances</emphasis>
+        <emphasis role="opc">pylruni</emphasis> "message = 'a private random number: %f' % random.random()"
+        <emphasis role="opc">pylrun</emphasis>  "print message"
+<emphasis role="oblock">endin</emphasis></programlisting>
+     </example>
+     <example>
+       <title>Score</title>
+       <programlisting>
+<emphasis role="stamnt">i</emphasis>1 0 0.1</programlisting>
+     </example>
+     <para>Running this score you should get intermixed pairs of messages
+       from the two instances of instrument 1.</para>
+     <para>The first message of each pair is stored into the main namespace
+       and so the second instance overwrites the message of the first
+       instance. The result is that first message will be the same for both
+       instances.</para>
+     <para>The second message is different for the two instances, being
+       stored in the private namespace.</para>
+   </refsect1>
+   <refsect1>
+     <title>Credits</title>
+     <para>Copyright (c) 2002 by Maurizio Umberto Puxeddu. All rights
+       reserved. Portions copyright (c) 2004 and 2005 by Michael Gogins. This
+       document has been updated Sunday 25 July 2004 and 1 February 2005 by
+       &namemichael;.</para>
+   </refsect1>
+ </refentry>

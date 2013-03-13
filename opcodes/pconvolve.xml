@@ -1,0 +1,125 @@
+
+<refentry id="pconvolve">
+<indexterm id="IndexPconvolve"><primary>pconvolve</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Convolution and Morphing</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pconvolve</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>convolve</refname>
+    <refpurpose>
+      Convolution based on a uniformly partitioned overlap-save algorithm
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Convolution based on a uniformly partitioned overlap-save algorithm. Compared to the <link linkend="convolve"><citetitle>convolve</citetitle></link> opcode, <emphasis>pconvolve</emphasis> has these benefits:
+    </para>
+
+		<itemizedlist>
+
+		<listitem>
+		<para>small delay</para>
+		</listitem>
+
+		<listitem>
+		<para>possible to run in real-time for shorter impulse files</para>
+		</listitem>
+
+		<listitem>
+		<para>no pre-process analysis pass</para>
+		</listitem>
+
+		<listitem>
+		<para>can often render faster than <emphasis>convolve</emphasis></para>
+		</listitem>
+
+		</itemizedlist>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ar1 [, ar2] [, ar3] [, ar4] <command>pconvolve</command> ain, ifilcod [, ipartitionsize, ichannel]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifilcod</emphasis>
+      -- integer or character-string denoting an impulse response soundfile. Multichannel files are supported, the file must have the same sample-rate as the orc. [Note: <emphasis>cvanal</emphasis> files cannot be used!]  Keep in mind that longer files require more calculation time [and probably larger partition sizes and more latency].  At current processor speeds, files longer than a few seconds may not render in real-time.
+    </para>
+
+    <para>
+      <emphasis>ipartitionsize</emphasis>
+      (optional, defaults to the output buffersize [-b]) -- the size in samples of each partition of the impulse file.  This is the parameter that needs tweaking for best performance depending on the impulse file size. Generally, a small size means smaller latency but more computation time. If you specify a value that is not a power-of-2 the opcode will find the next power-of-2 greater and use that as the actual partition size.
+    </para>
+
+    <para>
+      <emphasis>ichannel</emphasis>
+      (optional) -- which channel to use from the impulse response data
+      file.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ain</emphasis> -- input audio signal.
+    </para>
+
+    <para>
+      The overall latency of the opcode can be calculated as such [assuming <emphasis>ipartitionsize</emphasis> is a power of 2]
+    </para>
+
+    <programlisting>
+    ilatency = (ksmps &lt; ipartitionsize ? ipartitionsize + ksmps : ipartitionsize)/sr</programlisting>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Instrument 1 shows an example of real-time convolution.
+    </para>
+
+    <para>
+    Instrument 2 shows how to do file-based convolution with a 'look ahead' method to remove all delay.
+    </para>
+
+    <note>
+    <title>NOTE</title>
+    <para>
+	You can download impulse response files from noisevault.com
+	or replace the filenames with your own impulse files.
+	</para>
+	</note>
+    <para>
+      Here is an example of the pconvolve opcode. It uses the file <ulink url="examples/pconvolve.csd"><citetitle>pconvolve.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the pconvolve opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/pconvolve.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>See also</title>
+    <para>
+      <link linkend="convolve"><citetitle>convolve</citetitle></link>, <link linkend="dconv"><citetitle>dconv</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Matt Ingalls</member>
+        <member>2004</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

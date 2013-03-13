@@ -1,0 +1,151 @@
+
+<refentry id="FLslidBnk">
+<indexterm id="IndexFLslidBnk"><primary>FLslidBnk</primary></indexterm>
+  <refentryinfo><title>FLTK:Other</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLslidBnk</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>FLslidBnk</refname>
+    <refpurpose>
+      A FLTK widget containing a bank of horizontal sliders.
+          </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>FLslidBnk</emphasis> is a widget containing a bank of horizontal sliders.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>FLslidBnk</command> &quot;names&quot;, inumsliders [, ioutable] [, iwidth] [, iheight] [, ix] \
+      [, iy] [, itypetable] [, iexptable] [, istart_index] [, iminmaxtable]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis><quote>names</quote></emphasis> -- a double-quoted string containing the names of each slider.  Each slider can have a different name. Separate each name with <quote>@</quote> character, for example: <quote>frequency@amplitude@cutoff</quote>. It is possible to not provide any name by giving a single space <quote> </quote>. In this case, the opcode will automatically assign a progressive number as a label for each slider.
+    </para>
+
+    <para>
+      <emphasis>inumsliders</emphasis> -- the number of sliders.
+    </para>
+
+    <para>
+      <emphasis>ioutable</emphasis> (optional, default=0) -- number of a previously-allocated table in which to store output values of each slider. The user must be sure that table size is large enough to contain all output cells, otherwise a segfault will crash Csound. By assigning zero to this argument, the output will be directed to the zak space in the k-rate zone. In this case, the zak space must be previously allocated with the <link linkend="zakinit"><citetitle>zakinit</citetitle></link> opcode and the user must be sure that the allocation size is big enough to cover all sliders. The default value is zero (i.e. store output in zak space).
+    </para>
+
+    <para>
+      <emphasis>istart_index</emphasis> (optional, default=0) -- an integer number referring to a starting offset of output cell locations. It can be positive to allow multiple banks of sliders to output in the same table or in the zak space. The default value is zero (no offset).
+    </para>
+
+    <para>
+      <emphasis>iminmaxtable</emphasis> (optional, default=0) -- number of a previously-defined table containing a list of min-max pairs, referred to each slider. A zero value defaults to the 0 to 1 range for all sliders without necessity to provide a table. The default value is zero.
+    </para>
+
+    <para>
+      <emphasis>iexptable</emphasis> (optional, default=0) -- number of a previously-defined table containing a list of identifiers (i.e. integer numbers) provided to modify the behaviour of each slider independently. Identifiers can assume the following values:
+
+      <itemizedlist>
+        <listitem><para>-1 -- exponential curve response</para></listitem>
+        <listitem><para>0 -- linear response</para></listitem>
+        <listitem><para>number &gt; than 0 -- follow the curve of a previously-defined table to shape the response of the corresponding slider. In this case, the number corresponds to table number.</para></listitem>
+      </itemizedlist>
+
+      You can assume that all sliders of the bank have the same response curve (exponential or linear). In this case, you can assign -1 or 0 to <emphasis>iexptable</emphasis> without worrying about previously defining any table. The default value is zero (all sliders have a linear response, without having to provide a table).
+    </para>
+
+    <para>
+      <emphasis>itypetable</emphasis> (optional, default=0) -- number of a previously-defined table containing a list of identifiers (i.e. integer numbers) provided to modify the aspect of each individual slider independently. Identifiers can assume the following values:
+
+      <itemizedlist>
+        <listitem><para>0 = Nice slider</para></listitem>
+        <listitem><para>1 = Fill slider</para></listitem>
+        <listitem><para>3 = Normal slider</para></listitem>
+        <listitem><para>5 = Nice slider</para></listitem>
+        <listitem><para>7 = Nice slider with down-box</para></listitem>
+      </itemizedlist>
+
+      You can assume that all sliders of the bank have the same aspect. In this case, you can assign a negative number to <emphasis>itypetable</emphasis> without worrying about previously defining any table. Negative numbers have the same meaning of the corresponding positive identifiers with the difference that the same aspect is assigned to all sliders. You can also assign a random aspect to each slider by setting <emphasis>itypetable</emphasis> to a negative number lower than -7. The default value is zero (all sliders have the aspect of nice sliders, without having to provide a table).
+    </para>
+    <para>
+      You can add 20 to a value inside the table to make the slider "plastic", or subtract 20 if you want to set the value for all widgets without defining a table (e.g. -21 to set all sliders types to Plastic Fill slider).
+    </para>
+
+    <para>
+      <emphasis>iwidth</emphasis> (optional) -- width of the rectangular area containing all sliders of the bank, excluding text labels, that are placed to the left of that area.
+    </para>
+
+    <para>
+      <emphasis>iheight</emphasis> (optional) -- height of the rectangular area containing all sliders of the bank, excluding text labels, that are placed to the left of that area.
+    </para>
+
+    <para>
+      <emphasis>ix</emphasis> (optional) -- horizontal position of the upper left corner of the rectangular area containing all sliders belonging to the bank. You have to leave enough space, at the left of that rectangle, in order to make sure labels of sliders to be visible. This is because the labels themselves are external to the rectangular area.
+    </para>
+
+    <para>
+      <emphasis>iy</emphasis> (optional) -- vertical position of the upper left corner of the rectangular area containing all sliders belonging to the bank. You have to leave enough space, at the left of that rectangle, in order to make sure labels of sliders to be visible. This is because the labels themselves are external to the rectangular area.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      There are no k-rate arguments, even if cells of the output table (or the zak space) are updated at k-rate.
+    </para>
+
+    <para>
+      <emphasis>FLslidBnk</emphasis> is a widget containing a bank of horizontal sliders. Any number of sliders can be placed into the bank (<emphasis>inumsliders</emphasis> argument). The output of all sliders is stored into a previously allocated table or into the zak space (<emphasis>ioutable</emphasis> argument). It is possible to determine the first location of the table (or of the zak space) in which to store the output of the first slider by means of <emphasis>istart_index</emphasis> argument.
+    </para>
+
+    <para>
+      Each slider can have an individual label that is placed to the left of it. Labels are defined by the <emphasis><quote>names</quote></emphasis> argument. The output range of each slider can be individually set by means of an external table (<emphasis>iminmaxtable</emphasis> argument). The curve response of each slider can be set individually, by means of a list of identifiers placed in a table (<emphasis>iexptable</emphasis> argument). It is possible to define the aspect of each slider independently or to make all sliders have the same aspect (<emphasis>itypetable</emphasis> argument).
+    </para>
+
+    <para>
+      The <emphasis>iwidth</emphasis>, <emphasis>iheight</emphasis>, <emphasis>ix</emphasis>, and <emphasis>iy</emphasis> arguments determine width, height, horizontal and vertical position of the rectangular area containing sliders. Notice that the label of each slider is placed to the left of them and is not included in the rectangular area containing sliders. So the user should leave enough space to the left of the bank by assigning a proper <emphasis>ix</emphasis> value in order to leave labels visible.
+    </para>
+    <warning>
+      <title>IMPORTANT!</title>
+      <para>
+        Notice that the tables used by <emphasis>FLslidBnk</emphasis> must be created with the <link linkend="ftgen"><citetitle>ftgen</citetitle></link> opcode and placed in the orchestra before the corresponding valuator. They can not placed in the score. This is because tables placed in the score are created later than the initialization of the opcodes placed in the header section of the orchestra.
+      </para>
+    </warning>
+  </refsect1>
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the FLslidBnk opcode. It uses the file <ulink url="examples/FLslidBnk.csd"><citetitle>FLslidBnk.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the FLslidBnk opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/FLslidBnk.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="FLslider"><citetitle>FLslider</citetitle></link>,
+      <link linkend="FLslidBnk2"><citetitle>FLslidBnk2</citetitle></link>,
+      <link linkend="FLvslidBnk"><citetitle>FLvslidBnk</citetitle></link>,
+      <link linkend="FLvslidBnk2"><citetitle>FLvslidBnk2</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namegabriel;</para>
+    <para>New in version 4.22</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,82 @@
+
+<refentry id="cross2">
+<indexterm id="IndexCross2"><primary>cross2</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Convolution and Morphing</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>cross2</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>cross2</refname>
+    <refpurpose>
+      Cross synthesis using FFT's.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This is an implementation of cross synthesis using FFT's.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>cross2</command> ain1, ain2, isize, ioverlap, iwin, kbias</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>isize</emphasis> --  This is the size of the FFT to be performed.  The larger the size the better the frequency response but a sloppy time response.
+    </para>
+
+    <para>
+      <emphasis>ioverlap</emphasis> --  This is the overlap factor of the FFT's, must be a power of two.  The best settings are 2 and 4.  A  big overlap takes a long time to compile.
+    </para>
+
+    <para>
+      <emphasis>iwin</emphasis> --  This is the function table that contains the window to be used in the analysis. One can use the <link linkend="GEN20"><citetitle>GEN20</citetitle></link> routine to create this window.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ain1</emphasis> --  The stimulus sound.  Must have high frequencies for best results.
+    </para>
+
+    <para>
+      <emphasis>ain2</emphasis> --  The modulating sound.  Must have a moving frequency response (like speech) for best results.
+    </para>
+
+    <para>
+      <emphasis>kbias</emphasis> --  The amount of cross synthesis.  1 is the normal, 0 is no cross synthesis.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the cross2 opcode. It uses the file <ulink url="examples/cross2.csd"><citetitle>cross2.csd</citetitle></ulink> and <ulink url="examples/fox.wav"><citetitle>fox.wav</citetitle></ulink>.
+      <example>
+        <title>Example of the cross2 opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/cross2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &nameparis;</member>
+        <member>MIT, Cambridge</member>
+        <member>1997</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

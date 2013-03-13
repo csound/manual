@@ -1,0 +1,62 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+ 
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in    No messages</emphasis>
+-odac           -iadc     -d     <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o FLsetText.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 128
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+
+<emphasis role="comment">; Example by Giorgio Zucco and Andres Cabrera 2007</emphasis>
+
+<emphasis role="opc">FLpanel</emphasis> "FLsetText",250,100,50,50
+
+gk1,giha <emphasis role="opc">FLcount</emphasis> "", 1, 20, 1, 20, 1, 200, 40, 20, 20, 0, 1, 0, 1
+
+<emphasis role="opc">FLpanelEnd</emphasis>
+<emphasis role="opc">FLrun</emphasis>
+
+
+    <emphasis role="oblock">instr</emphasis> 1
+<emphasis role="comment">; This instrument is triggered by FLcount above each time</emphasis>
+<emphasis role="comment">; its value changes</emphasis>
+iname <emphasis role="op">=</emphasis> <emphasis role="opc">i</emphasis>(gk1)
+<emphasis role="opc">print</emphasis> iname
+<emphasis role="comment">; Must use FLsetText on the init pass!</emphasis>
+<emphasis role="octrl">if</emphasis> (iname <emphasis role="op">==</emphasis> 1) <emphasis role="octrl">igoto</emphasis> <emphasis role="olabel">text1</emphasis>
+<emphasis role="octrl">if</emphasis> (iname <emphasis role="op">==</emphasis> 2) <emphasis role="octrl">igoto</emphasis> <emphasis role="olabel">text2</emphasis>
+<emphasis role="octrl">if</emphasis> (iname <emphasis role="op">==</emphasis> 3) <emphasis role="octrl">igoto</emphasis> <emphasis role="olabel">text3</emphasis>
+
+<emphasis role="octrl">igoto</emphasis> <emphasis role="olabel">end</emphasis>
+
+<emphasis role="olabel">text1</emphasis><emphasis role="op">:</emphasis>
+<emphasis role="opc">FLsetText</emphasis> "FM",giha
+<emphasis role="octrl">igoto</emphasis> <emphasis role="olabel">end</emphasis>
+
+<emphasis role="olabel">text2</emphasis><emphasis role="op">:</emphasis>
+<emphasis role="opc">FLsetText</emphasis> "GRANUL",giha
+<emphasis role="octrl">igoto</emphasis> <emphasis role="olabel">end</emphasis>
+
+<emphasis role="olabel">text3</emphasis><emphasis role="op">:</emphasis>
+<emphasis role="opc">FLsetText</emphasis> "PLUCK",giha
+<emphasis role="octrl">igoto</emphasis> <emphasis role="olabel">end</emphasis>
+
+<emphasis role="olabel">end</emphasis><emphasis role="op">:</emphasis>
+    <emphasis role="oblock">endin</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">f</emphasis> 0 3600
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

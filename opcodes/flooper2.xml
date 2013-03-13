@@ -1,0 +1,121 @@
+
+<refentry id="flooper2">
+<indexterm id="Indexflooper2"><primary>flooper2</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Sample Playback</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>flooper2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>flooper2</refname>
+    <refpurpose>
+      Function-table-based crossfading looper.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+   This opcode implements a crossfading looper with variable loop parameters and three
+  looping modes, optionally using a table for its crossfade shape. It accepts 
+  non-power-of-two tables for its source sounds, such as deferred-allocation
+   GEN01 tables.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>asig <command>flooper2</command> kamp, kpitch, kloopstart, kloopend, kcrossfade, ifn \
+      [, istart, imode, ifenv, iskip]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+ <para>
+      <emphasis>ifn </emphasis> -- sound source function table number, generally created using GEN01
+    </para>
+        <para>
+      <emphasis>istart </emphasis> -- playback start pos in seconds
+    </para>
+    <para>
+      <emphasis>imode </emphasis> -- loop modes: 0 forward, 1 backward, 2 back-and-forth [def: 0]
+    </para>
+        <para>
+      <emphasis>ifenv </emphasis> -- if non-zero, crossfade envelope shape table number. The default, 0, sets
+the crossfade to linear.
+    </para>
+        <para>
+      <emphasis>iskip </emphasis> -- if 1, the opcode initialisation is skipped, for tied notes, performance
+continues from the position in the loop where the previous note stopped. The default, 0, does not skip
+initialisation
+    </para>
+
+</refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asig</emphasis> -- output sig
+    </para>
+    <para>
+      <emphasis>kamp</emphasis> -- amplitude control </para>
+    <para>
+      <emphasis>kpitch</emphasis> -- pitch control (transposition ratio); negative values are not allowed.
+    </para>
+<para>
+      <emphasis>kloopstart</emphasis> -- loop start point (secs). Note that although k-rate, loop parameters
+such as this are only updated once per loop cycle.
+</para>
+<para>
+      <emphasis>kloopend</emphasis> -- loop end point (secs), updated once per loop cycle.
+</para>
+<para>
+      <emphasis>kcrossfade </emphasis> -- crossfade length (secs), updated once per loop cycle and limited to
+loop length.</para>
+    <para>
+      Mode 1 for <emphasis>imode </emphasis> will only loop backwards from the end point to the start point.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      <example>
+        <programlisting>
+aout <emphasis role="opc">flooper2</emphasis> 16000, 1, 1, 5, 0.05, 1  <emphasis role="comment">; loop starts at 1 sec, for 4 secs, 0.05 crossfade</emphasis>
+     <emphasis role="opc">out</emphasis>      aout</programlisting>
+      </example>
+    </para>
+
+    <para>
+The example above shows the basic operation of <emphasis>flooper2</emphasis>. Pitch can
+be controlled at the k-rate, as well as amplitude and loop parameters. 
+The example assumes
+table 1 to contain at least 5.05 seconds of audio (4 secs loop duration,
+starting 1 sec into the table, using 0.05 secs after the loop end for the
+crossfade). Looping is in mode 0 (normal forward loop).
+    </para>
+
+    <para>
+      Here is another example of the flooper2 opcode. It uses the file <ulink url="examples/flooper2.csd"><citetitle>flooper2.csd</citetitle></ulink> and <ulink url="examples/fox.wav"><citetitle>fox.wav</citetitle></ulink>.
+      <example>
+        
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/flooper2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>July 2006 </member>
+      </simplelist>
+    </para>
+
+    <para>New plugin in version 5</para>
+    <para>July 2006.</para>
+  </refsect1>
+</refentry>

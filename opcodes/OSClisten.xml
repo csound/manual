@@ -1,0 +1,141 @@
+
+<refentry id="OSClisten">
+<indexterm id="IndexOSClisten"><primary>OSClisten</primary></indexterm>
+  <refentryinfo><title>OSC</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>OSClisten</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>OSClisten</refname>
+    <refpurpose>
+      Listen for OSC messages to a particular path.
+          </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      On each k-cycle looks to see if an OSC message has been send to
+      a given path of a given type.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kans <command>OSClisten</command> ihandle, idest, itype [, xdata1, xdata2, ...]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ihandle</emphasis>
+      -- a handle returned by an earlier call to OSCinit, to associate
+      OSClisten with a particular port number.
+    </para>
+    <para>
+      <emphasis>idest</emphasis>
+      -- a string that is the destination address.  This takes the
+      form of a file name with directories.  Csound uses this address
+      to decide if messages are meant for csound.
+    </para>
+
+    <para>
+      <emphasis>itype</emphasis>
+      -- a string that indicates the types of the optional arguments
+      that are to be read.  The string can contain the characters
+      "cdfhis" which stand for character, double, float, 64-bit integer,
+      32-bit integer, and string. All types other than 's' require a
+      k-rate variable, while 's' requires a string variable.
+    </para>
+
+    <para> A handler is inserted into the listener (see OSCinit) to
+      intercept messages of this pattern.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kans</emphasis> -- set to 1 if a new message was
+      received, or zero if not. If multiple messages are received in
+      a single control period, the messages are buffered, and OSClisten
+      can be called again until zero is returned.
+    </para>
+
+    <para>
+      If there was a message the <emphasis>xdata</emphasis> variables
+      are set to the incoming values, as interpretted by the
+      <emphasis>itype</emphasis> parameter.
+      Note that although the <emphasis>xdata</emphasis> variables are on
+      the right of an operation they are actually outputs, and so must be
+      variables of type k, gk, S, or gS, and may need to be declared with
+      init, or = in the case of string variables, before calling OSClisten.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Example</title>
+    <para>
+      The example shows a pair of floating point numbers being received
+      on port 7770.
+    </para>
+
+      <informalexample>
+        <programlisting>
+  <emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+  <emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 100
+  <emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+
+  gihandle <emphasis role="opc">OSCinit</emphasis> 7770
+
+  <emphasis role="oblock">instr</emphasis>   1
+    kf1 <emphasis role="opc">init</emphasis> 0
+    kf2 <emphasis role="opc">init</emphasis> 0
+nxtmsg:
+    kk  <emphasis role="opc">OSClisten</emphasis> gihandle, &quot;/foo/bar&quot;, &quot;ff&quot;, kf1, kf2
+if (kk <emphasis role="opc">==</emphasis> 0) goto ex
+    <emphasis role="opc">printk</emphasis> 0,kf1
+    <emphasis role="opc">printk</emphasis> 0,kf2
+    <emphasis role="opc">kgoto</emphasis> nxtmsg
+ex:
+  <emphasis role="oblock">endin</emphasis>
+        </programlisting>
+      </informalexample>
+
+    <para>
+      Below are two .csd files which demonstrate the usage of the OSC opcodes. They use the files <ulink url="examples/OSCmidisend.csd"><citetitle>OSCmidisend.csd</citetitle></ulink> and <ulink url="examples/OSCmidircv.csd"><citetitle>OSCmidircv.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the OSC opcodes.</title>
+        <para>The following two .csd files demonstrate the usage of the OSC opcodes in csound. The first file, <ulink url="examples/OSCmidisend.csd"><citetitle>OSCmidisend.csd</citetitle></ulink>, transforms received real-time MIDI messages into OSC data. The second file, <ulink url="examples/OSCmidircv.csd"><citetitle>OSCmidircv.csd</citetitle></ulink>, can take these OSC messages, and intrepret them to generate sound from note messages, and store controller values. It will use controller number 7 to control volume. Note that these files are designed to be on the same machine, but if a different host address (in the IPADDRESS macro) is used, they can be separate machines on a network, or connected through the internet.</para>
+        <para>CSD file to send OSC messages:</para>
+          <xi:include href="examples-xml/OSCmidisend.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <para>CSD file to receive OSC messages:</para>
+          <xi:include href="examples-xml/OSCmidircv.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+      <para>
+        <link linkend="OSCsend"><citetitle>OSCsend</citetitle></link>,
+        <link linkend="OSCinit"><citetitle>OSCinit</citetitle></link>
+      </para>
+               <para> More information on this opcode: <ulink url="http://www.youtube.com/watch?v=JX1C3TqP_9Y"><citetitle>http://www.youtube.com/watch?v=JX1C3TqP_9Y</citetitle></ulink>  , made by Andrés Cabrera </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>2005</member>
+        <member>Examples by: David Akbari, &nameandres; and Jonathan Murphy 2007</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

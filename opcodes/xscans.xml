@@ -1,0 +1,120 @@
+
+<refentry id="xscans">
+<indexterm id="IndexXscans"><primary>xscans</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Scanned Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>xscans</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>xscans</refname>
+    <refpurpose>
+      Fast scanned synthesis waveform and the wavetable generator.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Experimental version of <link linkend="scans"><citetitle>scans</citetitle></link>.  Allows much larger matrices and is faster and smaller but removes some (unused?) flexibility.  If liked, it will replace the older opcode as it is syntax compatible but extended.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>xscans</command> kamp, kfreq, ifntraj, id [, iorder]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifntraj</emphasis> --  table containing the scanning trajectory. This is a series of numbers that contains addresses of masses. The order of these addresses is used as the scan path. It should not contain values greater than the number of masses, or negative numbers. See the <link linkend="SiggenScanTop"><citetitle>introduction to the scanned synthesis section</citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis>id</emphasis> -- If positive, the ID of the opcode. This will be used to point the scanning opcode to the proper waveform maker. If this value is negative, the absolute of this value is the wavetable on which to write the waveshape. That wavetable can be used later from an other opcode to generate sound. The initial contents of this table will be destroyed.
+    </para>
+
+    <para>
+      <emphasis>iorder</emphasis> (optional, default=0) -- order of interpolation used internally. It can take any value in the range 1 to 4, and defaults to 4, which is quartic interpolation. The setting of 2 is quadratic and 1 is linear. The higher numbers are slower, but not necessarily better. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kamp</emphasis>  -- output amplitude. Note that the resulting amplitude is also dependent on instantaneous value in the wavetable. This number is effectively the scaling factor of the wavetable.
+    </para>
+
+    <para>
+      <emphasis>kfreq</emphasis> -- frequency of the scan rate
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Matrix Format</title>
+
+    <para>
+      The new matrix format is a list of connections, one per line linking point x to point y.   There is no weight given to the link; it is assumed to be unity.  The list is preceded by the line &lt;MATRIX&gt; and ends with a &lt;/MATRIX&gt; line
+    </para>
+
+    <para>
+      For example, a circular string of 8 would be coded as
+
+      <informalexample>
+        <programlisting>
+&lt;MATRIX&gt;
+0 1
+1 0
+1 2
+2 1
+2 3
+3 2
+3 4
+4 3
+4 5
+5 4
+5 6
+6 5
+6 7
+7 6
+0 7
+&lt;/MATRIX&gt;
+        </programlisting>
+      </informalexample>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the xscans opcode. It uses the file <ulink url="examples/xscans.csd"><citetitle>xscans.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the xscans opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/xscans.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    <para>
+      For similar examples, see the documentation on <link linkend="scans"><citetitle>scans</citetitle></link>.
+    </para>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+        <para>
+More information on Scanned Synthesis (as well as several other matrices) is available on the <ulink url="http://www.csounds.com/scanned/"><citetitle>Scanned Synthesis page</citetitle></ulink> at cSounds.com.
+    </para>
+        <para> Also an article on these opcodes: <ulink url="http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html"><citetitle>http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html</citetitle></ulink>  , written by Steven Yi </para>
+    <para>
+      <link linkend="scans"><citetitle>scans</citetitle></link>, 
+      <link linkend="xscanu"><citetitle>xscanu</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Written by &namejohn;.</para>
+    <para>New in version 4.20</para>
+  </refsect1>
+</refentry>

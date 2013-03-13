@@ -1,0 +1,97 @@
+
+<refentry id="pvoc">
+<indexterm id="IndexPvoc"><primary>pvoc</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:STFT</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvoc</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvoc</refname>
+    <refpurpose>
+      Implements signal reconstruction using an fft-based phase vocoder.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Implements signal reconstruction using an fft-based phase vocoder.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>pvoc</command> ktimpnt, kfmod, ifilcod [, ispecwp] [, iextractmode] \
+      [, ifreqlim] [, igatefn]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifilcod</emphasis> -- integer or character-string denoting a control-file derived from analysis of an audio signal. An integer denotes the suffix of a file <emphasis>pvoc.m</emphasis>; a character-string (in double quotes) gives a filename, optionally a full pathname. If not fullpath, the file is sought first in the current directory, then in the one given by the environment variable <link linkend="OrchDirFiles"><citetitle>SADIR</citetitle></link> (if defined).  <emphasis>pvoc</emphasis> control contains breakpoint amplitude and frequency envelope values organized for fft resynthesis. Memory usage depends on the size of the files involved, which are read and held entirely in memory during computation but are shared by multiple calls (see also <link linkend="lpread"><citetitle>lpread</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis>ispecwp</emphasis> (optional) -- if non-zero, attempts to preserve the spectral envelope while its frequency content is varied by <emphasis>kfmod</emphasis>. The default value is zero.
+    </para>
+
+    <para>
+      <emphasis>iextractmode</emphasis> (optional) -- determines if spectral extraction will be carried out and if so whether components that have changes in frequency below <emphasis>ifreqlim</emphasis> or above <emphasis>ifreqlim</emphasis> will be discarded. A value for <emphasis>iextractmode</emphasis> of 1 will cause <emphasis>pvoc</emphasis> to synthesize only those components where the frequency difference between analysis frames is greater than <emphasis>ifreqlim</emphasis>. A value of 2 for <emphasis>iextractmode</emphasis> will cause <emphasis>pvoc</emphasis> to synthesize only those components where the frequency difference between frames is less than <emphasis>ifreqlim</emphasis>. The default values for <emphasis>iextractmode</emphasis> and <emphasis>ifreqlim</emphasis> are 0, in which case a simple resynthesis will be done. See examples under <link linkend="pvadd"><citetitle>pvadd</citetitle></link> for how to use spectral extraction. 
+    </para>
+
+    <para>
+      <emphasis>igatefn</emphasis> (optional) -- the number of a stored function which will be applied to the amplitudes of the analysis bins before resynthesis takes place. If <emphasis>igatefn</emphasis> is greater than 0 the amplitudes of each bin will be scaled by <emphasis>igatefn</emphasis> through a simple mapping process. First, the  amplitudes of all of the bins in all of the frames in the entire analysis file are compared to determine the maximum amplitude value. This value is then used create normalized amplitudes as indeces into the stored function <emphasis>igatefn</emphasis>. The maximum amplitude will map to the last point in the function. An amplitude of 0 will map to the first point in the function. Values between 0 and 1 will map accordingly to points along the function table. See examples under <link linkend="pvadd"><citetitle>pvadd</citetitle></link> for how to use amplitude gating.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ktimpnt</emphasis> -- The passage of time, in seconds, through the analysis file. <emphasis>ktimpnt</emphasis> must always be positive, but can move forwards or backwards in time, be stationary or discontinuous, as a pointer into the analysis file.
+    </para>
+
+    <para>
+      <emphasis>kfmod</emphasis> -- a control-rate transposition factor: a value of 1 incurs no transposition,
+1.5 transposes up a perfect fifth, and .5 down an octave.
+    </para>
+
+    <para>
+      <emphasis>pvoc</emphasis> implements signal reconstruction using an fft-based phase vocoder. The control data stems from a precomputed analysis file with a known frame rate.
+    </para>
+
+    <para>
+      This implementation of <emphasis>pvoc</emphasis> was orignally written by Dan Ellis. It is based in part on the system of Mark Dolson, but the pre-analysis concept is new. The  spectral extraction and amplitude gating (new in Csound version 3.56) were added by Richard Karpen based on functions in SoundHack by Tom Erbe.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the pvoc opcode. It uses the file <ulink url="examples/pvoc.csd"><citetitle>pvoc.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the pvoc opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/pvoc.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="vpvoc"><citetitle>vpvoc</citetitle></link>, <link linkend="pvanal"><citetitle>PVANAL</citetitle></link>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Authors: Dan Ellis and Richard Karpen</member>
+        <member>Seattle, Wash</member>
+        <member>1997</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

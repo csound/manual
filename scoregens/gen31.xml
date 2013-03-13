@@ -1,0 +1,59 @@
+
+<refentry id="GEN31">
+      <indexterm id="IndexGEN31"><primary>GEN31</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN31</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>GEN31</refname>
+    <refpurpose>
+      Mixes any waveform specified in an existing table.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This routine is similar to <link linkend="GEN09">GEN09</link>, but allows mixing any waveform specified in an existing table.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>f</command> # time size  31  src  pna stra phsa  pnb strb phsb  ...</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>src</emphasis> -- source table number
+    </para>
+
+    <para>
+      <emphasis>pna, pnb, ...</emphasis> -- partial number, must be a positive integer
+    </para>
+
+    <para>
+      <emphasis>stra, strb, ...</emphasis> -- amplitude scale
+    </para>
+
+    <para>
+      <emphasis>phsa, phsb, ...</emphasis> -- start phase (0 to 1)
+    </para>
+
+    <para>
+      <emphasis>GEN31</emphasis> does not support tables with an extended guard point (ie. table size = power of two + 1). Although such tables will work both for input and output, when reading source table(s), the guard point is ignored, and when writing the output table, guard point is simply copied from the first sample (table index = 0).
+    </para>
+
+    <para>
+      The reason of this limitation is that <emphasis>GEN31</emphasis> uses FFT, which requires power of two table size.  <link linkend="GEN32"><citetitle>GEN32</citetitle></link> allows using linear interpolation for resampling and phase shifting, which makes it possible to use any table size (however, for partials calculated with FFT, the power of two limitation still exists).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &nameistvan;</para>
+    <para>New in version 4.15</para>
+  </refsect1>
+</refentry>

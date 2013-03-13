@@ -1,0 +1,60 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in</emphasis>
+-odac           -iadc    <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o r.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="comment">; Initialize the global variables.</emphasis>
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">kr</emphasis> <emphasis role="op">=</emphasis> 4410
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 10
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 1
+
+<emphasis role="comment">; Instrument #1.</emphasis>
+<emphasis role="oblock">instr</emphasis> 1
+  <emphasis role="comment">; The score's p4 parameter has the number of repeats.</emphasis>
+  kreps <emphasis role="op">=</emphasis> p4
+  <emphasis role="comment">; The score's p5 parameter has our note's frequency.</emphasis>
+  kcps <emphasis role="op">=</emphasis> p5
+  
+  <emphasis role="comment">; Print the number of repeats.</emphasis>
+  <emphasis role="opc">printks</emphasis> "Repeated <emphasis role="op">%</emphasis><emphasis role="opc">i</emphasis> time(s).\\n", 1, kreps
+
+  <emphasis role="comment">; Generate a nice beep.</emphasis>
+  a1 <emphasis role="opc">oscil</emphasis> 20000, kcps, 1
+  <emphasis role="opc">out</emphasis> a1
+<emphasis role="oblock">endin</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="comment">; Table #1, a sine wave.</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 16384 10 1
+
+<emphasis role="comment">; We'll repeat this section 6 times. Each time it </emphasis>
+<emphasis role="comment">; is repeated, its macro REPS_MACRO is incremented. </emphasis>
+<emphasis role="stamnt">r</emphasis>6 REPS_MACRO
+
+<emphasis role="comment">; Play Instrument #1.</emphasis>
+<emphasis role="comment">; p4 = the r statement's macro, REPS_MACRO.</emphasis>
+<emphasis role="comment">; p5 = the frequency in cycles per second.</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 00.10 00.10 $REPS_MACRO 1760
+<emphasis role="stamnt">i</emphasis> 1 00.30 00.10 $REPS_MACRO 880
+<emphasis role="stamnt">i</emphasis> 1 00.50 00.10 $REPS_MACRO 440
+<emphasis role="stamnt">i</emphasis> 1 00.70 00.10 $REPS_MACRO 220
+
+<emphasis role="comment">; Marks the end of the section.</emphasis>
+<emphasis role="stamnt">s</emphasis>
+
+<emphasis role="stamnt">e</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

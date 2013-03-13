@@ -1,0 +1,56 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+-odac
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+    <emphasis role="oblock">instr</emphasis> 6
+
+  ifunc     <emphasis role="op">=</emphasis>         p11                                <emphasis role="comment">; select the basic waveform</emphasis>
+  irel      <emphasis role="op">=</emphasis>         0.01                               <emphasis role="comment">; set vibrato release time</emphasis>
+  idel1     <emphasis role="op">=</emphasis>         p3 <emphasis role="op">*</emphasis> p10                           <emphasis role="comment">; calculate initial delay (% of dur)</emphasis>
+  isus      <emphasis role="op">=</emphasis>         p3 <emphasis role="op">-</emphasis> (idel1 <emphasis role="op">+</emphasis> irel)                <emphasis role="comment">; calculate remaining duration</emphasis>
+
+  iamp      <emphasis role="op">=</emphasis>         <emphasis role="opc">ampdb</emphasis>(p4)
+  iscale    <emphasis role="op">=</emphasis>         iamp <emphasis role="op">*</emphasis> .333                        <emphasis role="comment">; p4=amp</emphasis>
+  inote     <emphasis role="op">=</emphasis>         <emphasis role="opc">cpspch</emphasis>(p5)                         <emphasis role="comment">; p5=freq</emphasis>
+
+  k3        <emphasis role="opc">linseg</emphasis>    0, idel1, p9, isus, p9, irel, 0    <emphasis role="comment">; p6=attack time</emphasis>
+  k2        <emphasis role="opc">oscil</emphasis>     k3, p8, 1                          <emphasis role="comment">; p7=release time</emphasis>
+  k1        <emphasis role="opc">linen</emphasis>     iscale, p6, p3, p7                 <emphasis role="comment">; p8=vib rate</emphasis>
+
+  a3        <emphasis role="opc">oscil</emphasis>     k1, inote<emphasis role="op">*</emphasis>.999<emphasis role="op">+</emphasis>k2, ifunc           <emphasis role="comment">; p9=vib depth</emphasis>
+  a2        <emphasis role="opc">oscil</emphasis>     k1, inote<emphasis role="op">*</emphasis>1.001<emphasis role="op">+</emphasis>k2, ifunc          <emphasis role="comment">; p10=vib delay (0-1)</emphasis>
+  a1        <emphasis role="opc">oscil</emphasis>     k1, inote<emphasis role="op">+</emphasis>k2, ifunc
+
+  <emphasis role="opc">out</emphasis>       a1<emphasis role="op">+</emphasis>a2<emphasis role="op">+</emphasis>a3
+
+    <emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">f</emphasis>1   0    2048 10   1                                                                <emphasis role="comment">; Sine</emphasis>
+
+<emphasis role="stamnt">f</emphasis>2   0    2048 10   1    0.5  0.3  0.25 0.2  0.167     0.14      0.125     .111      <emphasis role="comment">; Sawtooth</emphasis>
+
+<emphasis role="stamnt">f</emphasis>3   0    2048 10   1    0    0.3  0    0.2  0         0.14      0         .111      <emphasis role="comment">; Square</emphasis>
+
+<emphasis role="stamnt">f</emphasis>4   0    2048 10   1    1    1    1    0.7  0.5       0.3       0.1                 <emphasis role="comment">; Pulse</emphasis>
+
+
+
+<emphasis role="comment">;ins strt dur  amp       frq       atk       rel       vbrt vbdpt     vibdl     waveform</emphasis>
+
+<emphasis role="stamnt">i</emphasis>6   0     2   86        8.00      .03       .7        6    9         .8        1
+
+<emphasis role="stamnt">i</emphasis>6   3     2   86        8.02      .03       .7        6    9         .8        2
+
+<emphasis role="stamnt">i</emphasis>6   6     2   86        8.04      .03       .7        6    9         .8        3
+
+<emphasis role="stamnt">i</emphasis>6   9     3   86        8.05      .03       .7        6    9         .8
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

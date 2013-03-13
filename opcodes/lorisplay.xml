@@ -1,0 +1,85 @@
+
+<refentry id="lorisplay">
+  <indexterm id="IndexLorisPlay"><primary>lorisplay</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Loris</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lorisplay</refentrytitle>
+  </refmeta>
+  
+  
+  <refnamediv>
+    <refname>lorisplay</refname>
+    <refpurpose>renders a stored set of bandwidth-enhanced partials using the method of Bandwidth-Enhanced Additive Synthesis implemented in the Loris software, applying control-rate frequency, amplitude, and bandwidth scaling envelopes.</refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ar <command>lorisplay</command> ireadidx, kfreqenv, kampenv, kbwenv</synopsis>
+    </refsect1>
+
+    <refsect1>
+    <title>Description</title> 
+
+    <para><emphasis>lorisplay</emphasis> renders a stored set of
+    bandwidth-enhanced partials using the method of Bandwidth-Enhanced
+    Additive Synthesis implemented in the Loris software, applying
+    control-rate frequency, amplitude, and bandwidth scaling
+    envelopes.</para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para><emphasis>istoreidx, ireadidx, isrcidx, itgtidx</emphasis> are
+    labels that identify a stored set of bandwidth-enhanced
+    partials. <emphasis>lorisread</emphasis> imports partials from a SDIF file and stores them
+    with the integer label istoreidx. <emphasis>lorismorph</emphasis> morphs sets of partials
+    labeled <emphasis>isrcidx</emphasis> and <emphasis>itgtidx</emphasis>, and stores the resulting partials with
+    the integer label <emphasis>istoreidx</emphasis>. <emphasis>lorisplay</emphasis> renders the partials stored
+    with the label <emphasis>ireadidx</emphasis>. The labels are used only at initialization
+    time, and may be reused without any cost or benefit in efficiency, and
+    without introducing any interaction between instruments or
+    instances.</para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para><emphasis>lorisplay</emphasis> implements signal reconstruction using
+    Bandwidth-Enhanced Additive Synthesis. The control data is obtained
+    from a stored set of bandwidth-enhanced partials imported from an SDIF
+    file using <emphasis>lorisread</emphasis> or constructed by another unit generator such as
+    <emphasis>lorismorph</emphasis>. <emphasis>kfreqenv</emphasis> is a control-rate transposition factor: a value
+    of 1 incurs no transposition, 1.5 transposes up a perfect fifth, and
+    .5 down an octave. <emphasis>kampenv</emphasis> is a control-rate scale factor that is
+    applied to all partial amplitude envelopes. kbwenv is a control-rate
+    scale factor that is applied to all partial bandwidth or noisiness
+    envelopes. The bandwidth-enhanced partial data is stored in memory
+    with a specified label for future access by another generator.</para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the lorisplay opcode. It uses the file <ulink url="examples/lorisplay.csd"><citetitle>lorisplay.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the lorisplay opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/lorisplay.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>This implementation of the Loris unit generators was written by Kelly
+    Fitz (<ulink
+    url="mailto:loris@cerlsoundgroup.org">loris@cerlsoundgroup.org</ulink>). It is patterned after a prototype implementation of the
+    <emphasis>lorisplay</emphasis> unit generator written by Corbin Champion, and based on the
+    method of Bandwidth-Enhanced Additive Synthesis and on the sound
+    morphing algorithms implemented in the Loris library for sound
+    modeling and manipulation. The opcodes were further adapted as a
+    plugin for Csound 5 by Michael Gogins.</para>
+  </refsect1>
+
+</refentry>

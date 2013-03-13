@@ -1,0 +1,75 @@
+
+<refentry id="joystick">
+<indexterm id="Indexjoystick"><primary>joystick</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>joystick</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>joystick</refname>
+    <refpurpose>
+      Reads data from a joystick controller.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+       Reads data from a Linux joystick controller
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kres <command>joystick</command> kdevice ktab</synopsis>
+  </refsect1>
+ 
+ <refsect1>
+   <title>Performance</title>
+   <note>
+     <para>
+       Please note that this opcode is currently only supported on
+       Linux.
+     </para>
+   </note>
+   <para>
+     <emphasis>kdevice</emphasis> -- the index of the joystick device, either /dev/js<emphasis>N</emphasis> or
+            /dev/input/js<emphasis>N</emphasis>.
+   </para>
+   <para>
+     <emphasis>ktab</emphasis> -- A table to hold input results,
+     should be at least enough elements to store one value for each
+     stick axis and one for each button + 2.  The first two elements
+     of the table are initialized with the number of axes and the
+     number of buttons, respectively, when a joystick is opened. If a
+     joystick is unplugged during performance, the opcode will
+     repeatedly attempt to reopen the device with a delay between
+     attempts.
+   </para>
+  </refsect1>
+
+   <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the joystick opcode. It uses the file <ulink url="examples/joystick.csd"><citetitle>joystick.csd</citetitle></ulink>.
+    <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+    </para>
+    <xi:include href="examples-xml/joystick.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <para>
+      Here is another example of the joystick opcode. It uses the file <ulink url="examples/joystick-2.csd"><citetitle>joystick-2.csd</citetitle></ulink>.
+    </para>
+    <xi:include href="examples-xml/joystick-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Justin Glenn Smith</member>
+        <member>2010</member>
+      </simplelist>
+    </para>
+    <para>New in version 5.17.12</para>
+  </refsect1>
+</refentry>

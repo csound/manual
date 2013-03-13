@@ -1,0 +1,40 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac    <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o linen.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1
+<emphasis role="comment">; p4=amp</emphasis>
+<emphasis role="comment">; p5=freq</emphasis>
+<emphasis role="comment">; p6=attack time</emphasis>
+<emphasis role="comment">; p7=release time</emphasis>
+ares <emphasis role="opc">linen</emphasis>  p4, p6, p3, p7 
+asig <emphasis role="opc">poscil</emphasis> ares, p5, 1    
+     <emphasis role="opc">outs</emphasis>   asig, asig     
+                                         
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis>1   0    4096 10 1      <emphasis role="comment">; sine wave</emphasis>
+
+<emphasis role="comment">;ins strt dur amp  freq attack release</emphasis>
+<emphasis role="stamnt">i</emphasis>1   0    1   .5   440   0.5    0.7
+<emphasis role="stamnt">i</emphasis>1   1.5  1   .2   440   0.9    0.1
+<emphasis role="stamnt">i</emphasis>1   3    1   .2   880   0.02   0.99
+<emphasis role="stamnt">i</emphasis>1   4.5  1   .2   880   0.7    0.01
+<emphasis role="stamnt">i</emphasis>1   6    3   .7   220   0.5    0.5
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

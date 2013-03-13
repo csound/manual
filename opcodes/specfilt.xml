@@ -1,0 +1,69 @@
+
+<refentry id="specfilt">
+<indexterm id="IndexSpecfilt"><primary>specfilt</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Non-Standard</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>specfilt</refentrytitle>
+  </refmeta>
+
+
+  <refnamediv>
+    <refname>specfilt</refname>
+    <refpurpose>
+      Filters each channel of an input spectrum.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Filters each channel of an input spectrum.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>wsig <command>specfilt</command> wsigin, ifhtim</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifhtim</emphasis> --  half-time constant.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>wsigin</emphasis> --  the input spectrum.
+    </para>
+
+    <para>
+      Filters each channel of an input spectrum. At each new frame of <emphasis>wsigin</emphasis>, each magnitude value is injected into a 1st-order lowpass recursive filter, whose half-time constant has been initially set by sampling the ftable <emphasis>ifhtim</emphasis> across the (logarithmic) frequency space of the input spectrum. This unit effectively applies a <emphasis>persistence</emphasis> factor to the data occurring in each spectral channel, and is useful for simulating the <emphasis>energy integration</emphasis> that occurs during auditory perception. It may also be used as a time-attenuated running <emphasis>histogram</emphasis> of the spectral distribution.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      <informalexample>
+        <programlisting>
+  wsig2    <emphasis role="opc">specdiff</emphasis>    wsig1         <emphasis role="comment">; sense onsets</emphasis>
+  wsig3    <emphasis role="opc">specfilt</emphasis>    wsig2, 2      <emphasis role="comment">; absorb slowly</emphasis>
+           <emphasis role="opc">specdisp</emphasis>    wsig2, 0.1    <emphasis role="comment">; &amp; display both spectra</emphasis>
+           <emphasis role="opc">specdisp</emphasis>    wsig3, 0.1</programlisting>
+      </informalexample>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="specaddm"><citetitle>specaddm</citetitle></link>,
+      <link linkend="specdiff"><citetitle>specdiff</citetitle></link>,
+      <link linkend="spechist"><citetitle>spechist</citetitle></link>,
+      <link linkend="specscal"><citetitle>specscal</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

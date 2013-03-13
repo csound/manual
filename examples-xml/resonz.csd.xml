@@ -1,0 +1,72 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in    No messages</emphasis>
+-odac           -iadc     -d     <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o resonz.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> Written by Sean Costello <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+ <emphasis role="comment">; Orchestra file for resonant filter sweep of a sawtooth-like waveform. </emphasis>
+  <emphasis role="comment">; The outputs of reson, resonr, and resonz are scaled by coefficients</emphasis>
+  <emphasis role="comment">; specified in the score, so that each filter can be heard on its own</emphasis>
+  <emphasis role="comment">; from the same instrument.</emphasis>
+
+  <emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+  <emphasis role="ohdr">kr</emphasis> <emphasis role="op">=</emphasis> 4410
+  <emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 10
+  <emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 1
+  
+<emphasis role="oblock">instr</emphasis> 1
+  
+  idur     <emphasis role="op">=</emphasis>        p3
+  ibegfreq <emphasis role="op">=</emphasis>        p4                              <emphasis role="comment">; beginning of sweep frequency</emphasis>
+  iendfreq <emphasis role="op">=</emphasis>        p5                              <emphasis role="comment">; ending of sweep frequency</emphasis>
+  ibw      <emphasis role="op">=</emphasis>        p6                              <emphasis role="comment">; bandwidth of filters in Hz</emphasis>
+  ifreq    <emphasis role="op">=</emphasis>        p7                              <emphasis role="comment">; frequency of gbuzz that is to be filtered</emphasis>
+  iamp     <emphasis role="op">=</emphasis>        p8                              <emphasis role="comment">; amplitude to scale output by</emphasis>
+  ires     <emphasis role="op">=</emphasis>        p9                              <emphasis role="comment">; coefficient to scale amount of reson in output</emphasis>
+  iresr    <emphasis role="op">=</emphasis>        p10                             <emphasis role="comment">; coefficient to scale amount of resonr in output</emphasis>
+  iresz    <emphasis role="op">=</emphasis>        p11                             <emphasis role="comment">; coefficient to scale amount of resonz in output</emphasis>
+  
+ <emphasis role="comment">; Frequency envelope for reson cutoff</emphasis>
+  kfreq    <emphasis role="opc">linseg</emphasis> ibegfreq, idur <emphasis role="op">*</emphasis> .5, iendfreq, idur <emphasis role="op">*</emphasis> .5, ibegfreq
+  
+ <emphasis role="comment">; Amplitude envelope to prevent clicking</emphasis>
+  kenv     <emphasis role="opc">linseg</emphasis> 0, .1, iamp, idur <emphasis role="op">-</emphasis> .2, iamp, .1, 0
+  
+ <emphasis role="comment">; Number of harmonics for gbuzz scaled to avoid aliasing</emphasis>
+  iharms   <emphasis role="op">=</emphasis>        (<emphasis role="ohdr">sr</emphasis><emphasis role="op">*</emphasis>.4)<emphasis role="op">/</emphasis>ifreq
+  
+  asig     <emphasis role="opc">gbuzz</emphasis> 1, ifreq, iharms, 1, .9, 1      <emphasis role="comment">; "Sawtooth" waveform</emphasis>
+  ain      <emphasis role="op">=</emphasis>        kenv <emphasis role="op">*</emphasis> asig                     <emphasis role="comment">; output scaled by amp envelope</emphasis>
+  ares     <emphasis role="opc">reson</emphasis> ain, kfreq, ibw, 1
+  aresr    <emphasis role="opc">resonr</emphasis> ain, kfreq, ibw, 1
+  aresz    <emphasis role="opc">resonz</emphasis> ain, kfreq, ibw, 1
+  
+           <emphasis role="opc">out</emphasis> ares <emphasis role="op">*</emphasis> ires <emphasis role="op">+</emphasis> aresr <emphasis role="op">*</emphasis> iresr <emphasis role="op">+</emphasis> aresz <emphasis role="op">*</emphasis> iresz
+  
+<emphasis role="oblock">endin</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+/* Written by Sean Costello */
+<emphasis role="stamnt">f</emphasis>1 0 8192 9 1 1 .25                               <emphasis role="comment">; cosine table for gbuzz generator</emphasis>
+  
+<emphasis role="stamnt">i</emphasis>1  0 10 1 3000 200 100 4000 1 0 0                <emphasis role="comment">; reson  output with bw = 200</emphasis>
+<emphasis role="stamnt">i</emphasis>1 10 10 1 3000 200 100 4000 0 1 0                <emphasis role="comment">; resonr output with bw = 200</emphasis>
+<emphasis role="stamnt">i</emphasis>1 20 10 1 3000 200 100 4000 0 0 1                <emphasis role="comment">; resonz output with bw = 200</emphasis>
+<emphasis role="stamnt">i</emphasis>1 30 10 1 3000  50 200 8000 1 0 0                <emphasis role="comment">; reson  output with bw = 50</emphasis>
+<emphasis role="stamnt">i</emphasis>1 40 10 1 3000  50 200 8000 0 1 0                <emphasis role="comment">; resonr output with bw = 50</emphasis>
+<emphasis role="stamnt">i</emphasis>1 50 10 1 3000  50 200 8000 0 0 1                <emphasis role="comment">; resonz output with bw = 50</emphasis>
+<emphasis role="stamnt">e</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

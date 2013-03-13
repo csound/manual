@@ -1,0 +1,77 @@
+
+<refentry id="vmap">
+<indexterm id="IndexVmap"><primary>vmap</primary></indexterm>
+  <refentryinfo><title>Vectorial:Vectorial operations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vmap</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vmap</refname>
+    <refpurpose>
+      Maps elements from a vector according to indexes contained in another vector.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Maps elements from a vector onto another according to the indexes of a this vector.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>vmap</command>  ifn1, ifn2, ielements [,idstoffset, isrcoffset]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifn1</emphasis> - number of the table where the vectorial signal will be copied, and which contains the mapping vector
+    </para>
+    <para>
+      <emphasis>ifn2</emphasis> - number of the table hosting the vectorial signal to be copied
+    </para>
+    <para>
+      <emphasis>ielements</emphasis> - number of elements to process
+    </para>
+    <para>
+      <emphasis>idstoffset</emphasis> - index offset for destination table (<emphasis>ifn1</emphasis>)
+    </para>
+    <para>
+      <emphasis>isrcoffset</emphasis> - index offset for source table (<emphasis>ifn2</emphasis>)
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>vmap</emphasis> maps elements of <emphasis>ifn2</emphasis> according to the values of table <emphasis>ifn1</emphasis>. Elements of <emphasis>ifn1</emphasis> are treated as indexes of table <emphasis>ifn2</emphasis>, so element values of <emphasis>ifn1</emphasis> must not exceed the length of <emphasis>ifn2</emphasis> table otherwise a Csound will report an error. Elements of <emphasis>ifn1</emphasis> are treated as integers, so any fractional part will be truncated. There is no interpolation performed on this operation.
+    </para>
+    <para>In practice, what happens is that the elements of <emphasis>ifn1</emphasis> are used as indexes to <emphasis>ifn2</emphasis>, and then are replaced by the corresponding elements from <emphasis>ifn2</emphasis>. <emphasis>ifn1</emphasis> must be different from <emphasis>ifn2</emphasis>, otherwise the results are unpredictable. Csound will produce an init error if they are not.
+    </para>
+    <para>
+      All these operators (<link linkend="vaddv"><citetitle>vaddv</citetitle></link>, <link linkend="vsubv"><citetitle>vsubv</citetitle></link>, <link linkend="vmultv"><citetitle>vmultv</citetitle></link>, <link linkend="vdivv"><citetitle>vdivv</citetitle></link>, <link linkend="vpowv"><citetitle>vpowv</citetitle></link>, <link linkend="vexpv"><citetitle>vexpv</citetitle></link>, <link linkend="vcopy"><citetitle>vcopy</citetitle></link> and <link linkend="vmap"><citetitle>vmap</citetitle></link>) are designed to be used together with other opcodes that operate with vectorial signals such as <emphasis>bmscan</emphasis>, <link linkend="vcella"><citetitle>vcella</citetitle></link>, <link linkend="adsynt"><citetitle>adsynt</citetitle></link>, <link linkend="adsynt2"><citetitle>adsynt2</citetitle></link>, etc. 
+    </para>
+    <para><emphasis>Note:</emphasis> bmscan not yet available on Canonical Csound</para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the vmap opcode. It uses the file <ulink url="examples/vmap.csd"><citetitle>vmap.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the vmap opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+        <xi:include href="examples-xml/vmap.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Credits</title>
+    <para>Written by Gabriel Maldonado.</para>
+    <para>New in Csound 5 (Previously available only on CsoundAV)</para>
+  </refsect1>
+</refentry>

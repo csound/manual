@@ -1,0 +1,59 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac     <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if RT audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o timedseq.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+giseq <emphasis role="ohdr">ftgen</emphasis> 0,0,128,<emphasis role="op">-</emphasis>2, 2,  0,   0.5, 8.00,\		<emphasis role="comment">;first note</emphasis>
+                        2,  1,   0.5, 8.02,\		<emphasis role="comment">;second note</emphasis>
+                        2,  2,   0.5, 8.04,\		<emphasis role="comment">;third</emphasis>
+                        2,  3,   0.5, 8.05,\		<emphasis role="comment">;fourth</emphasis>
+                        2,  4,   0.5, 8.07,\		<emphasis role="comment">;fifth</emphasis>
+                        2,  5,   0.5, 8.09,\		<emphasis role="comment">;sixth</emphasis>
+                        2,  6,   0.5, 8.11,\		<emphasis role="comment">;seventh</emphasis>
+                        2,  7,   0.5, 9.00,\		<emphasis role="comment">;eight note</emphasis>
+                        2,  8,   0.5, 8.00,\		<emphasis role="comment">;due to a quirk in the opcode, it needs an extra note - a copy of the first note</emphasis>
+                        <emphasis role="op">-</emphasis>1, 8,   <emphasis role="op">-</emphasis>1,  <emphasis role="op">-</emphasis>1		<emphasis role="comment">;last line is a dummy event that indicates to timedseq when to loop back to the beginning</emphasis>
+
+<emphasis role="oblock">instr</emphasis>	1
+
+ibeats	<emphasis role="op">=</emphasis> 8						<emphasis role="comment">;lengths of sequence in beats</emphasis>
+itempo	<emphasis role="op">=</emphasis> p4						<emphasis role="comment">;tempo</emphasis>
+iBPS	<emphasis role="op">=</emphasis> itempo<emphasis role="op">/</emphasis>60					<emphasis role="comment">;beats per second	</emphasis>
+kphase	<emphasis role="opc">phasor</emphasis>	iBPS<emphasis role="op">/</emphasis>ibeats				<emphasis role="comment">;phasor to move through table</emphasis>
+kpointer <emphasis role="op">=</emphasis> kphase<emphasis role="op">*</emphasis>ibeats				<emphasis role="comment">;multiply phase (range 0 - 1) by the number of beats contained within the sequence</emphasis>
+kp1 <emphasis role="opc">init</emphasis> 0
+kp2 <emphasis role="opc">init</emphasis> 0
+kp3 <emphasis role="opc">init</emphasis> 0 
+kp4 <emphasis role="opc">init</emphasis> 0       		
+ktrigger   <emphasis role="opc">timedseq</emphasis> kpointer, giseq, kp1, kp2,kp3, kp4
+<emphasis role="opc">schedkwhen</emphasis> ktrigger, 0, 0, 2, 0, kp3<emphasis role="op">/</emphasis><emphasis role="opc">abs</emphasis>(iBPS), kp4	<emphasis role="comment">;p3 values have been scaled according to tempo so that they maesure beats rather than seconds</emphasis>
+<emphasis role="oblock">endin</emphasis>							<emphasis role="comment">;abs(iBPS)(absolute value) is used because the tempo provided by the fourth note of the score is negative.</emphasis>
+							<emphasis role="comment">;Durations here should be positive, because negative values for duration would indicate a held note.</emphasis>
+<emphasis role="oblock">instr</emphasis>	2
+
+aenv	<emphasis role="opc">linseg</emphasis>	0,0.01,1,p3<emphasis role="op">-</emphasis>0.01,0			<emphasis role="comment">;amplitude envelope</emphasis>
+asig	<emphasis role="opc">vco2</emphasis>	0.4, <emphasis role="opc">cpspch</emphasis>(p4), 4, 0.5
+	<emphasis role="opc">outs</emphasis>	asig<emphasis role="op">*</emphasis>aenv, asig<emphasis role="op">*</emphasis>aenv			
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 4 120
+<emphasis role="stamnt">i</emphasis> 1 + . 240
+<emphasis role="stamnt">i</emphasis> 1 + . 480
+<emphasis role="stamnt">i</emphasis> 1 + . -480	<emphasis role="comment">;when negative it plays backwards </emphasis>
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

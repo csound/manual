@@ -1,0 +1,126 @@
+
+<refentry id="nlfilt">
+<indexterm id="IndexNlfilt"><primary>nlfilt</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Specialized Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>nlfilt</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>nlfilt</refname>
+    <refpurpose>
+      A filter with a non-linear effect.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Implements the filter:
+      <literallayout>
+Y{n} =a Y{n-1} + b Y{n-2} + d Y^2{n-L} + X{n} - C 
+      </literallayout>
+      described in Dobson and Fitch (ICMC'96)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>nlfilt</command> ain, ka, kb, kd, kC, kL</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <orderedlist>
+        <listitem>
+          <para>
+            Non-linear effect. The range of parameters are:
+            <literallayout>
+  a = b = 0
+  d = 0.8, 0.9, 0.7
+  C = 0.4, 0.5, 0.6
+  L = 20
+            </literallayout>
+            This affects the lower register most but there are audible effects over the whole range. We suggest that it may be useful for coloring drums, and for adding arbitrary highlights to notes.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Low Pass with non-linear. The range of parameters are:
+            <literallayout>
+  a = 0.4
+  b = 0.2
+  d = 0.7
+  C = 0.11
+  L = 20, ... 200
+            </literallayout>
+            There are instability problems with this variant but the effect is more pronounced of the lower register, but is otherwise much like the pure comb. Short values of <emphasis>L</emphasis> can add attack to a sound.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            High Pass with non-linear. The range of parameters are:
+            <literallayout>
+  a = 0.35
+  b = -0.3
+  d = 0.95
+  C = 0,2, ... 0.4
+  L = 200
+            </literallayout>
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            High Pass with non-linear. The range of parameters are:
+            <literallayout>
+  a = 0.7
+  b = -0.2, ... 0.5
+  d = 0.9
+  C = 0.12, ... 0.24
+  L = 500, 10
+            </literallayout>
+            The high pass version is less likely to oscillate. It adds scintillation to medium-high registers. With a large delay <emphasis>L</emphasis> it is a little like a reverberation, while with small values there appear to be formant-like regions. There are arbitrary color changes and resonances as the pitch changes. Works well with individual notes.
+          </para>
+        </listitem>
+      </orderedlist>
+    </para>
+
+    <warning>
+      <title>Warning</title>
+      <para>
+        The &quot;useful&quot; ranges of parameters are not yet mapped.
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the nlfilt opcode. It uses the file <ulink url="examples/nlfilt.csd"><citetitle>nlfilt.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the nlfilt opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/nlfilt.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+   
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>University of Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>1997</member>
+      </simplelist>
+    </para>
+    <para>New in version 3.44</para>
+  </refsect1>
+</refentry>

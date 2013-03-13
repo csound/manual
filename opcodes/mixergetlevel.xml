@@ -1,0 +1,69 @@
+
+<refentry id="MixerGetLevel">
+<indexterm id="IndexMixerGetLevel"><primary>MixerGetLevel</primary></indexterm>
+  <refentryinfo><title>Mixer Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>MixerGetLevel</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>MixerGetLevel</refname>
+    <refpurpose>
+      Gets the level of a send to a buss.
+           </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kgain <command>MixerGetLevel</command> isend, ibuss</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Description</title> 
+    <para>Gets the level at which signals from the send are being added to the buss. The actual sending of the signal to the buss 
+is performed by the <link linkend="MixerSend"><citetitle>MixerSend</citetitle></link> opcode. 
+    </para>  
+    </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+
+    <para><emphasis>isend</emphasis> -- The number of the send, for example the number of the instrument sending the signal.</para>
+
+<para><emphasis>ibuss</emphasis> -- The number of the buss, for example the number of the instrument receiving the signal.</para>
+
+  </refsect1>
+
+<refsect1>
+<title>Performance</title>
+    <para><emphasis>kgain</emphasis> -- The level (any real number) at which the signal from the send will be mixed onto the buss.</para>
+
+<para>
+This opcode reports the level set by <link linkend="MixerSetLevel"><citetitle>MixerSetLevel</citetitle></link> for a send and buss pair.
+</para>
+<para>
+Use of the mixer requires that instruments setting gains have smaller numbers than instruments sending signals, 
+and that instruments sending signals have smaller numbers than instruments receiving those signals. 
+However, an instrument may have any number of sends or receives. After the final signal is received, 
+<link linkend="MixerClear"><citetitle>MixerClear</citetitle></link> must be invoked to reset the busses to 0 before the next kperiod.
+</para>
+</refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the MixerGetLevel opcode. It uses the file <ulink url="examples/Mixer.csd"><citetitle>Mixer.csd</citetitle></ulink>
+      <example>
+        <title>Example of the MixerGetLevel opcode.</title>
+        <xi:include href="examples-xml/Mixer.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+</refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Michael Gogins (gogins at pipeline dot com).</para>
+  </refsect1>
+</refentry>

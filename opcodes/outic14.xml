@@ -1,0 +1,102 @@
+
+<refentry id="outic14">
+<indexterm id="IndexOutic14"><primary>outic14</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Output</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>outic14</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>outic14</refname>
+
+    <refpurpose>
+      Sends 14-bit MIDI controller output at i-rate.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Sends 14-bit MIDI controller output at i-rate.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>outic14</command> ichn, imsb, ilsb, ivalue, imin, imax</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ichn</emphasis> -- MIDI channel number (1-16)
+    </para>
+
+    <para>
+      <emphasis>imsb</emphasis> -- most significant byte controller number when using 14-bit parameters (0-127)
+    </para>
+
+    <para>
+      <emphasis>ilsb</emphasis> -- least significant byte controller number when using 14-bit parameters (0-127)
+    </para>
+
+    <para>
+      <emphasis>ivalue</emphasis> -- floating point value
+    </para>
+
+    <para>
+      <emphasis>imin</emphasis> -- minimum floating point value (converted in MIDI integer value 0)
+    </para>
+
+    <para>
+      <emphasis>imax</emphasis> -- maximum floating point value (converted in MIDI integer value 16383 (14-bit))
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>outic14</emphasis> (i-rate MIDI 14-bit controller output) sends a pair of controller messages. This opcode can drive 14-bit parameters on MIDI instruments that recognize them. The first control message contains the most significant byte of <emphasis>ivalue</emphasis> argument while the second message contains the less significant byte. <emphasis>imsb</emphasis> and <emphasis>ilsb</emphasis> are the number of the most and less significant controller.
+    </para>
+
+    <para>
+      This opcode can drive a different value of a parameter for each note currently active.
+    </para>
+
+    <para>
+      It can scale an i-value floating-point argument according to the <emphasis>imin</emphasis> and <emphasis>imax</emphasis> values. For example, set <emphasis>imin</emphasis> = 1.0 and <emphasis>imax</emphasis> = 2.0. When the <emphasis>ivalue</emphasis> argument receives a 2.0 value, the opcode will send a 127 value to the MIDI OUT device. When the <emphasis>ivalue</emphasis> argument receives a 1.0 value, it will send a 0 value. i-rate opcodes send their message once during instrument initialization.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="outiat"><citetitle>outiat</citetitle></link>,
+      <link linkend="outic"><citetitle>outic</citetitle></link>,
+      <link linkend="outipat"><citetitle>outipat</citetitle></link>,
+      <link linkend="outipb"><citetitle>outipb</citetitle></link>,
+      <link linkend="outipc"><citetitle>outipc</citetitle></link>,
+      <link linkend="outkat"><citetitle>outkat</citetitle></link>,
+      <link linkend="outkc14"><citetitle>outkc14</citetitle></link>,
+      <link linkend="outkc"><citetitle>outkc</citetitle></link>,
+      <link linkend="outkpat"><citetitle>outkpat</citetitle></link>,
+      <link linkend="outkpb"><citetitle>outkpb</citetitle></link>,
+      <link linkend="outkpc"><citetitle>outkpc</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namegabriel;</member>
+        <member>Italy</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.47</para>
+    <para>Thanks goes to &namerasmus; for pointing out the correct MIDI channel and controller number ranges.</para>
+  </refsect1>
+</refentry>

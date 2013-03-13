@@ -1,0 +1,88 @@
+
+<refentry id="ntrpol">
+<indexterm id="IndexNtrpol"><primary>ntrpol</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Sample Level Operators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ntrpol</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>ntrpol</refname>
+    <refpurpose>
+      Calculates the weighted mean value of two input signals.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Calculates the weighted mean value (i.e. linear interpolation) of two input signals
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>ntrpol</command> asig1, asig2, kpoint [, imin] [, imax]</synopsis>
+
+    <synopsis>ires <command>ntrpol</command> isig1, isig2, ipoint [, imin] [, imax]</synopsis>
+
+    <synopsis>kres <command>ntrpol</command> ksig1, ksig2, kpoint [, imin] [, imax]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>imin</emphasis> -- minimum xpoint value (optional, default 0)
+    </para>
+
+    <para>
+      <emphasis>imax</emphasis> -- maximum xpoint value (optional, default 1)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>xsig1</emphasis>, <emphasis>xsig2</emphasis> -- input signals
+    </para>
+
+    <para>
+      <emphasis>xpoint</emphasis> -- interpolation point between the two values
+    </para>
+
+    <para>
+      <emphasis>ntrpol</emphasis> opcode outputs the linear interpolation between two input values. <emphasis>xpoint</emphasis> is the distance of evaluation point from the first value. With the default values of <emphasis>imin</emphasis> and <emphasis>imax</emphasis>, (0 and 1) a zero value indicates no distance from the first value and the maximum distance from the second one. With a 0.5 value, <emphasis>ntrpol</emphasis> will output the mean value of the two inputs, indicating the exact half point between <emphasis>xsig1</emphasis> and <emphasis>xsig2</emphasis>. A 1 value indicates the maximum distance from the first value and no distance from the second one. The range of <emphasis>xpoint</emphasis> can be also defined with <emphasis>imin</emphasis> and <emphasis>imax</emphasis> to make its management easier.
+    </para>
+
+    <para>
+      These opcodes are useful for crossfading two signals.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the ntrpol opcode. It uses the file <ulink url="examples/ntrpol.csd"><citetitle>ntrpol.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the ntrpol opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/ntrpol.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namegabriel;</member>
+        <member>Italy</member>
+        <member>October 1998</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.49</para>
+  </refsect1>
+</refentry>

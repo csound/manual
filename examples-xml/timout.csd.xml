@@ -1,0 +1,47 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1
+
+indx <emphasis role="op">=</emphasis> 0
+itim <emphasis role="op">=</emphasis> p4				<emphasis role="comment">;change time for one step</emphasis>
+
+<emphasis role="olabel">clock</emphasis><emphasis role="op">:</emphasis> 
+   <emphasis role="octrl">timout</emphasis> 0, itim, <emphasis role="olabel">time</emphasis>
+   <emphasis role="opc">reinit</emphasis> <emphasis role="olabel">clock</emphasis>
+
+<emphasis role="olabel">time</emphasis><emphasis role="op">:</emphasis>
+   itmp <emphasis role="opc">table</emphasis> indx, 2, 0, 0, 1
+   <emphasis role="octrl">if</emphasis> itmp <emphasis role="op">==</emphasis> 1 then
+   <emphasis role="opc">print</emphasis> itmp
+   <emphasis role="opc">event_i</emphasis> "i",2, 0, .1			<emphasis role="comment">;event has duration of .1 second</emphasis>
+<emphasis role="octrl">endif</emphasis>
+indx <emphasis role="op">=</emphasis> indx<emphasis role="op">+</emphasis>1
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 2	<emphasis role="comment">;play it</emphasis>
+
+kenv <emphasis role="opc">transeg</emphasis> 0.01, p3<emphasis role="op">*</emphasis>0.25, 1, 1, p3<emphasis role="op">*</emphasis>0.75, .5, 0.01
+asig <emphasis role="opc">oscili</emphasis> kenv<emphasis role="op">*</emphasis>.4, 400, 1
+     <emphasis role="opc">outs</emphasis> asig, asig
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 1024 10 1	<emphasis role="comment">;sine</emphasis>
+<emphasis role="stamnt">f</emphasis> 2 0 16 2 1 0 0 1 0 1 0 1 0 1 0 0 0 0 0 0 <emphasis role="comment">;the rythm table</emphasis>
+
+<emphasis role="stamnt">i</emphasis>1 0 10 .1
+<emphasis role="stamnt">i</emphasis>1 + 10 .05
+<emphasis role="stamnt">i</emphasis>1 + 10 .01
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

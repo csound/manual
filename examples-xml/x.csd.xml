@@ -1,0 +1,47 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac     <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if RT audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o x.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1
+
+aenv <emphasis role="opc">expseg</emphasis> .01, p3<emphasis role="op">*</emphasis>0.25, 1, p3<emphasis role="op">*</emphasis>0.75, 0.01
+asig <emphasis role="opc">poscil3</emphasis> .8<emphasis role="op">*</emphasis>aenv, p4, 1
+     <emphasis role="opc">outs</emphasis> asig, asig
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 16384 10 1	<emphasis role="comment">;sine wave</emphasis>
+
+<emphasis role="stamnt">s</emphasis>			<emphasis role="comment">;first section</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 2 110
+<emphasis role="stamnt">i</emphasis> 1 3 2 220
+<emphasis role="stamnt">i</emphasis> 1 6 2 440
+<emphasis role="stamnt">i</emphasis> 1 9 2 880
+<emphasis role="stamnt">s</emphasis>			<emphasis role="comment">;second section</emphasis>
+<emphasis role="stamnt">x</emphasis>			<emphasis role="comment">;skip the rest</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 2 110		<emphasis role="comment">;of this section</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 3 2 220
+<emphasis role="stamnt">i</emphasis> 1 6 2 440
+<emphasis role="stamnt">i</emphasis> 1 9 2 880
+<emphasis role="stamnt">s</emphasis>			<emphasis role="comment">;but continue with this one</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 2 880
+<emphasis role="stamnt">i</emphasis> 1 3 2 440
+<emphasis role="stamnt">i</emphasis> 1 6 2 220
+<emphasis role="stamnt">i</emphasis> 1 9 2 110
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

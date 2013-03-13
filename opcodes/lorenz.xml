@@ -1,0 +1,112 @@
+
+<refentry id="lorenz">
+<indexterm id="IndexLorenz"><primary>lorenz</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Models and Emulations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lorenz</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>lorenz</refname>
+    <refpurpose>
+      Implements the Lorenz system of equations.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+       Implements the Lorenz system of equations.  The Lorenz system is a chaotic-dynamic system which was originally used to simulate the motion of a particle in convection currents and simplified weather systems. Small differences in initial conditions rapidly lead to diverging values. This is sometimes expressed as the butterfly effect. If a butterfly flaps its wings in Australia, it will have an effect on the weather in Alaska. This system is one of the milestones in the development of chaos theory. It is useful as a chaotic audio source or as a low frequency modulation source.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ax, ay, az <command>lorenz</command> ksv, krv, kbv, kh, ix, iy, iz, iskip [, iskipinit]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ix</emphasis>, <emphasis>iy</emphasis>, <emphasis>iz</emphasis> -- the initial coordinates of the particle.
+    </para>
+
+    <para>
+      <emphasis>iskip</emphasis> -- used to skip generated values. If <emphasis>iskip</emphasis> is set to 5, only every fifth value generated is output. This is useful in generating higher pitched tones.
+    </para>
+    <para>
+      <emphasis>iskipinit</emphasis> (optional, default=0) -- if non zero
+    skip the initialisation of the filter. (New in Csound version
+    4.23f13 and 5.0)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ksv</emphasis> -- the Prandtl number or sigma
+    </para>
+
+    <para>
+      <emphasis>krv</emphasis> -- the Rayleigh number
+    </para>
+
+    <para>
+      <emphasis>kbv</emphasis> -- the ratio of the length and width of the box in which the convection currents are generated
+    </para>
+
+    <para>
+      <emphasis>kh</emphasis> -- the step size used in approximating the differential equation. This can be used to control the pitch of the systems. Values of .1-.001 are typical.
+    </para>
+
+    <para>
+      The equations are approximated as follows:
+      <literallayout>
+x = x + h*(s*(y - x))
+y = y + h*(-x*z + r*x - y)
+z = z + h*(x*y - b*z)
+      </literallayout>
+    </para>
+
+    <para>
+      The historical values of these parameters are:
+      <literallayout>
+ks = 10
+kr = 28
+kb = 8/3
+      </literallayout>
+    </para>
+    <note>
+      <para>This algorithm uses internal non linear feedback loops which causes audio result to depend on the orchestra
+      sampling rate. For example, if you develop a project with <emphasis>sr</emphasis>=48000Hz and if you want to produce
+      an audio CD from it, you should record a file with <emphasis>sr</emphasis>=48000Hz and then downsample the file to 44100Hz
+      using the <link linkend="srconv"><citetitle>srconv</citetitle></link> utility.</para> 
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the lorenz opcode. It uses the file <ulink url="examples/lorenz.csd"><citetitle>lorenz.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the lorenz opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/lorenz.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namehans;</member>
+        <member>February 1999</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.53</para>
+    <para>Note added by &namepinot;, August 2009</para>
+  </refsect1>
+</refentry>

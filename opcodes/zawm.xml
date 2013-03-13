@@ -1,0 +1,103 @@
+
+<refentry id="zawm">
+<indexterm id="IndexZawm"><primary>zawm</primary></indexterm>
+  <refentryinfo><title>Zak Patch System</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>zawm</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>zawm</refname>
+    <refpurpose>
+      Writes to a za variable at a-rate with mixing.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Writes to a za variable at a-rate with mixing.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>zawm</command> asig, kndx [, imix]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>imix</emphasis> (optional, default=1) -- indicates if mixing should occur.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asig</emphasis> -- value to be written to the za location.
+    </para>
+
+    <para>
+      <emphasis>kndx</emphasis> -- points to the zk or za location to which to write.
+    </para>
+
+    <para>
+      These opcodes are fast, and always check that the index is within the range of zk or za space. If not, an error is reported, 0 is returned, and no writing takes place.
+    </para>
+
+    <para>
+      <emphasis>zawm</emphasis> is a mixing opcode, it adds the signal to the current value of the variable. If no <emphasis>imix</emphasis> is specified, mixing always occurs. <emphasis>imix</emphasis> = 0 will cause overwriting like <emphasis>ziw</emphasis>, <emphasis>zkw</emphasis>, and <emphasis>zaw</emphasis>. Any other value will cause mixing.
+    </para>
+
+    <para>
+      <emphasis>Caution</emphasis>: When using the mixing opcodes <emphasis>ziwm</emphasis>, <emphasis>zkwm</emphasis>, and <emphasis>zawm</emphasis>, care must be taken that the variables mixed to, are zeroed at the end (or start) of each k- or a-cycle. Continuing to add signals to them, can cause their values can drift to astronomical figures.
+    </para>
+
+    <para>
+      One approach would be to establish certain ranges of zk or za variables to be used for mixing, then use <emphasis>zkcl</emphasis> or <emphasis>zacl</emphasis> to clear those ranges.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the zawm opcode. It uses the file <ulink url="examples/zawm.csd"><citetitle>zawm.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the zawm opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/zawm.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="zaw"><citetitle>zaw</citetitle></link>,
+      <link linkend="ziw"><citetitle>ziw</citetitle></link>,
+      <link linkend="ziwm"><citetitle>ziwm</citetitle></link>,
+      <link linkend="zkw"><citetitle>zkw</citetitle></link>,
+      <link linkend="zkwm"><citetitle>zkwm</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Robin Whittle</member>
+        <member>Australia</member>
+        <member>May 1997</member>
+      </simplelist>
+    </para>
+    <para>New in version 3.45</para>
+    <para>Example written by &namekevin;.</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,93 @@
+
+<refentry id="GEN12">
+      <indexterm id="IndexGEN12"><primary>GEN12</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN12</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN12</refname>
+    <refpurpose>
+      Generates the log of a modified Bessel function of the second kind.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This generates the log of a modified Bessel function of the second kind, order 0, suitable for use in amplitude-modulated FM.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>f</command> # time size 12 xint</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>size </emphasis> -- number of points in the table. Must be a power of 2 or a power-of-2 plus 1 (see <link linkend="f"><citetitle>f statement</citetitle></link>). The normal value is power-of-2 plus 1.
+    </para>
+
+    <para>
+      <emphasis>xint</emphasis> -- specifies the <emphasis>x</emphasis> interval [0 to <emphasis>+xint</emphasis>] over which the function is defined.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              This subroutine draws the natural log of a modified Bessel function of the second kind, order 0 (commonly written as <emphasis>I</emphasis> subscript 0), over the x-interval requested. The call should have rescaling inhibited.
+            </para>
+          </listitem>
+
+          <listitem>
+            <para>
+              The function is useful as an amplitude scaling factor in cycle-synchronous amplitude-modulated FM. (See Palamin &amp; Palamin, <emphasis>J. Audio Eng. Soc., 36/9</emphasis>, Sept. 1988, pp.671-684.) The algorithm is interesting because it permits the normally symmetric FM spectrum to be made asymmetric around a frequency other than the carrier, and is thereby useful for formant positioning. By using a table lookup index of <emphasis>I</emphasis>(r - 1/r), where <emphasis>I</emphasis> is the FM modulation index and <emphasis>r</emphasis> is an exponential parameter affecting partial strengths, the Palamin algorithm becomes relatively efficient, requiring only oscil's, table lookups, and a single <emphasis>exp</emphasis> call.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </note>
+  </refsect1>
+
+    <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the GEN12 opcode. It uses the file <ulink url="examples/gen12.csd"><citetitle>gen12.csd</citetitle></ulink>.
+           <example>
+        <title>Example of the GEN12 opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/gen12.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>  
+        <textobject>
+          <phrase>This is the diagram of the waveform of the GEN12 routines, as used in the example:</phrase>
+        </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen12.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 37 0 1024 -12 40 - Bessel function-defined from 0 to 40</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 37 0 1024 -12 40 - Bessel function-defined from 0 to 40</para>
+        </caption>
+      </mediaobject>
+   
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      Example is, with minor modifications, taken from The Csound Book (page 87).
+    </para>
+  </refsect1>
+</refentry>

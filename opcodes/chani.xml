@@ -1,0 +1,89 @@
+
+<refentry id="chani">
+<indexterm id="Indexchani"><primary>chani</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Software Bus</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>chani</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>chani</refname>
+    <refpurpose>
+      Reads data from the software bus
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Reads data from a channel of the inward software bus.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kval <command>chani</command> kchan</synopsis>
+
+    <synopsis>aval <command>chani</command> kchan</synopsis>
+  </refsect1>
+
+  <!--<refsect1>
+    <title>Initialization</title>
+    <para>
+    </para>
+
+  </refsect1>-->
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kchan</emphasis> -- a positive integer that indicates
+    which channel of the software bus to read
+    </para>
+
+   <para>
+   Note that the inward and outward software busses are independent, and
+  are not mixer buses.  Also the k-rate and a-rate busses are
+  independent.  The last value remains until a new value is
+  written.  There is no imposed limit to the number of busses but they
+  use memory so small numbers are to be preferred.
+  </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Example</title>
+    <para>
+      The example shows the software bus being used as an asynchronous
+    control signal to select a filter cutoff.  It assumes that an
+    external program that has access to the API is feeding the values
+    </para>
+
+      <informalexample>
+        <programlisting>
+        <emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+        <emphasis role="ohdr">kr</emphasis> <emphasis role="op">=</emphasis> 100
+        <emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 1
+
+
+        <emphasis role="oblock">instr</emphasis>   1
+           kc   <emphasis role="opc">chani</emphasis>     1
+           a1   <emphasis role="opc">oscil</emphasis>     p4, p5, 100
+           a2   <emphasis role="opc">lowpass2</emphasis>  a1, kc, 200
+                <emphasis role="opc">out</emphasis>       a2
+        <emphasis role="oblock">endin</emphasis>
+        </programlisting>
+      </informalexample>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+    <para>New in Csound 5.00</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,118 @@
+
+<refentry id="pluck">
+<indexterm id="IndexPluck"><primary>pluck</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Waveguide Physical Modeling</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pluck</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pluck</refname>
+    <refpurpose>
+      Produces a naturally decaying plucked string or drum sound.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Audio output is a naturally decaying plucked string or drum sound based on the Karplus-Strong algorithms.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>pluck</command> kamp, kcps, icps, ifn, imeth [, iparm1] [, iparm2]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>icps</emphasis> -- intended pitch value in Hz, used to set up a buffer of 1 cycle of audio samples which will be smoothed over time by a chosen decay method. <emphasis>icps</emphasis> normally anticipates the value of <emphasis>kcps</emphasis>, but may be set artificially high or low to influence the size of the sample buffer.
+    </para>
+
+    <para>
+      <emphasis>ifn</emphasis> -- table number of a stored function used to initialize the cyclic decay buffer. If <emphasis>ifn</emphasis> = 0, a random sequence will be used instead.
+    </para>
+
+    <para>
+      <emphasis>imeth</emphasis> -- method of natural decay. There are six, some of which use parameters values that follow.
+      <orderedlist>
+        <listitem>
+          <para>
+             simple averaging. A simple smoothing process, uninfluenced by parameter values.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+	    stretched averaging. As above, with smoothing time stretched by a factor of <emphasis>iparm1</emphasis> (>=1).
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+             simple drum. The range from pitch to noise is controlled by a 'roughness factor' in <emphasis>iparm1</emphasis> (0 to 1). Zero gives the plucked string effect, while 1 reverses the polarity of every sample (octave down, odd harmonics). The setting .5 gives an optimum snare drum.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+	    stretched drum. Combines both roughness and stretch factors. <emphasis>iparm1</emphasis> is roughness (0 to 1), and <emphasis>iparm2</emphasis> the stretch factor (>=1).
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            weighted averaging. As method 1, with <emphasis>iparm1</emphasis> weighting the current sample (the status quo) and <emphasis>iparm2</emphasis> weighting the previous adjacent one. <emphasis>iparm1 + iparm2</emphasis> must be &lt;= 1.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            1st order recursive filter, with coefs .5. Unaffected by parameter values.
+          </para>
+        </listitem>
+      </orderedlist>
+    </para>
+
+    <para>
+      <emphasis>iparm1, iparm2</emphasis> (optional) -- parameter values for use by the smoothing algorithms (above). The default values are both 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kamp</emphasis> -- the output amplitude.
+    </para>
+
+    <para>
+      <emphasis>kcps</emphasis> -- the resampling frequency in cycles-per-second.
+    </para>
+
+    <para>
+      An internal audio buffer, filled at i-time according to <emphasis>ifn</emphasis>, is continually resampled with periodicity <emphasis>kcps</emphasis> and the resulting output is multiplied by <emphasis>kamp</emphasis>. Parallel with the sampling, the buffer is smoothed to simulate the effect of natural decay.
+    </para>
+
+    <para>
+      Plucked strings (1, 2, 5, 6) are best realized by starting with a random noise source, which is rich in initial harmonics. Drum sounds (methods 3, 4) work best with a flat source (wide pulse), which produces a deep noise attack and sharp decay.
+    </para>
+
+    <para>
+      The original Karplus-Strong algorithm used a fixed number of samples per cycle, which caused serious quantization of the pitches available and their intonation. This implementation resamples a buffer at the exact pitch given by <emphasis>kcps</emphasis>, which can be varied for vibrato and glissando effects. For low values of the orch sampling rate (e.g. <emphasis>sr</emphasis> = 10000), high frequencies will store only very few samples (<emphasis>sr / icps</emphasis>). Since this may cause noticeable noise in the resampling process, the internal buffer has a minimum size of 64 samples. This can be further enlarged by setting <emphasis>icps</emphasis> to some artificially lower pitch.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the pluck opcode. It uses the file <ulink url="examples/pluck.csd"><citetitle>pluck.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the pluck opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/pluck.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+</refentry>

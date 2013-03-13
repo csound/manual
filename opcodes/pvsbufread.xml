@@ -1,0 +1,133 @@
+
+<refentry id="pvsbufread">
+<indexterm id="Indexpvsbufread"><primary>pvsbufread</primary></indexterm>
+
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsbufread</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>pvsbufread</refname>
+    <refpurpose>
+      This opcode reads a circular buffer of f-signals (streaming PV signals).
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This opcode reads from a circular buffer of length ilen (secs),
+      taking a handle for the buffer and a time pointer, which holds the
+      current read position (also in seconds). It is used in conjunction with a
+      <emphasis>pvsbuffer</emphasis> opocde. 
+      Reading is circular, wrapping around at the end of the buffer.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>fsig <command>pvsbufread</command>  ktime, khandle[, ilo, ihi, iclear] </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ilo, ihi</emphasis> -- set the lowest and highest freqs to be read from the buffer (defaults to 0, Nyquist).
+    </para>
+   <para>
+      <emphasis>iclear</emphasis> -- set to 1 to clear output fsig before every write (default 1), 0 tells the opcode not to clear
+      the output fsig. This is relevant when writing to subsets of an fsig frame using <emphasis>ilo</emphasis>, <emphasis>ihi</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>fsig</emphasis> -- output pv stream
+    </para>
+    <para>
+      <emphasis>ktime</emphasis> -- time position of reading pointer (in secs).
+    </para>
+    <para>
+      <emphasis>khandle</emphasis> -- handle identifying the buffer to be read. When using k-rate
+      handles, it is important to initialise the k-rate variable to a given existing handle. When changing
+      buffers, fsig buffers need to be compatible (same fsig format).
+    </para>
+    <para>
+      With this opcode and <link linkend="pvsbuffer"><citetitle>pvsbuffer</citetitle></link>, it is possible to, among other things:
+      <itemizedlist>
+        <listitem><simpara>time-stretch/compress a fsig stream, by reading it at
+        different rates</simpara></listitem>
+        <listitem><simpara>delay a fsig or portions of it.</simpara></listitem>
+        <listitem><simpara>'brassage' two or more fsigs by switching buffers, since
+        the reading handles are k-rate. Note that, when using k-rate
+        handles, it is important to initialise the k-rate variable to a
+        given handle (so that the fsig initialisation can take place)
+        and it is only possible to switch handles between compatible
+        fsig buffers (with the same fftsize and overlap).</simpara></listitem>
+    </itemizedlist>
+  </para>
+  <note>
+    <para>It is important that the handle value passed to <emphasis>pvsbufread</emphasis> is valid and was created by <link linkend="pvsbuffer"><citetitle>pvsbuffer</citetitle></link>. Csound will crash with invalid handles.
+    </para>
+  </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the pvsbufread opcode. It does 'brassage' by switching between two buffers.
+      <example>
+        <title>Example of the pvsbufread opcode</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+
+        <programlisting>
+fsig1       <emphasis role="opc">pvsanal</emphasis>     asig1, 1024, 256, 1024, 1
+fsig2       <emphasis role="opc">pvsanal</emphasis>     asig2, 1024, 256, 1024, 1
+
+
+ibuf1, kt1  <emphasis role="opc">pvsbuffer</emphasis>   fsig1, 10   <emphasis role="comment">; 10-sec buf with fsig1</emphasis>
+ibuf2, kt2  <emphasis role="opc">pvsbuffer</emphasis>   fsig2, 7    <emphasis role="comment">; 7-sec buf with fsig2</emphasis>
+
+khan        <emphasis role="opc">init</emphasis>        ibuf1       <emphasis role="comment">; initialise handle to buf1</emphasis>
+
+<emphasis role="opc">if</emphasis>  ktrig  <emphasis role="op">&gt;</emphasis> 0 <emphasis role="opc">then</emphasis>                 <emphasis role="comment">; switch buffers according to trigger</emphasis>
+khan <emphasis role="op">=</emphasis> ibuf2
+<emphasis role="opc">else</emphasis>
+khan <emphasis role="op">=</emphasis> ibuf1
+<emphasis role="opc">endif</emphasis>
+
+fsb         <emphasis role="opc">pvsbufread</emphasis>  kt1, khan   <emphasis role="comment">; read buffer</emphasis></programlisting>
+      </example>
+    </para>
+    <para>
+      Here is an example of the pvsbufread opcode. It uses the file <ulink url="examples/pvsbufread.csd"><citetitle>pvsbufread.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the pvsbufread opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+        <xi:include href="examples-xml/pvsbufread.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link>,
+      <link linkend="pvsynth"><citetitle>pvsynth</citetitle></link>,
+      <link linkend="pvsbuffer"><citetitle>pvsbuffer</citetitle></link>,
+      <link linkend="pvsadsyn"><citetitle>pvsadsyn</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>July 2007</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>
+

@@ -1,0 +1,108 @@
+
+<refentry id="loop_le">
+<indexterm id="Indexloop_le"><primary>loop_le</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Program Flow Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>loop_le</refentrytitle>
+  </refmeta>
+  
+
+  <refnamediv>
+    <refname>loop_le</refname>
+    <refpurpose>
+      Looping constructions.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Construction of looping operations.
+   </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>loop_le</command>  indx, incr, imax, label</synopsis>
+    <synopsis><command>loop_le</command>  kndx, kncr, kmax, label</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>indx</emphasis> -- i-rate variable to count loop.
+    </para>
+
+    <para>
+      <emphasis>incr</emphasis> -- value to increment the loop.
+    </para>
+
+    <para>
+      <emphasis>imax</emphasis> -- maximum value of loop index.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kndx</emphasis> -- k-rate variable to count loop.
+    </para>
+    <para>
+      <emphasis>kncr</emphasis> -- value to increment the loop.
+    </para>
+    <para>
+      <emphasis>kmax</emphasis> -- maximum value of loop index.
+    </para>
+    <para>
+      The actions of <command>loop_le</command> are equivalent to the
+      code
+       <programlisting>
+         indx  <emphasis role="op">=</emphasis>  indx <emphasis role="op">+</emphasis> incr
+         <emphasis role="opc">if</emphasis> (indx <emphasis role="op">&lt;=</emphasis> imax) <emphasis role="opc">igoto</emphasis> label</programlisting>
+ <!-- except that the values of the <emphasis>incr</emphasis> and
+      <emphasis>imax</emphasis> parameters cannot change in the loop; --> or
+       <programlisting>
+         kndx  <emphasis role="op">=</emphasis>  kndx <emphasis role="op">+</emphasis> kncr
+         <emphasis role="opc">if</emphasis> (kndx <emphasis role="op">&lt;=</emphasis> kmax) <emphasis role="opc">kgoto</emphasis> label</programlisting>
+    </para>
+  </refsect1>
+    
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the loop_le opcode. It uses the file <ulink url="examples/loop_le.csd"><citetitle>loop_le.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the loop_le opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/loop_le.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+            Its output should include a line like this:
+      <screen>
+play instance 0
+play instance 1
+play instance 2
+play instance 3
+play instance 4
+play instance 5
+      </screen>
+    </para>
+  </refsect1>
+      
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="loop_ge"><citetitle>loop_ge</citetitle></link>,
+      <link linkend="loop_gt"><citetitle>loop_gt</citetitle></link> and
+      <link linkend="loop_lt"><citetitle>loop_lt</citetitle></link>.
+    </para>
+	    <para> More information on this opcode: <ulink url="http://www.csounds.com/journal/2006summer/controlFlow_part2.html"><citetitle>http://www.csounds.com/journal/2006summer/controlFlow_part2.html</citetitle></ulink>  , written by Steven Yi. 
+ And in the Floss Manuals: <ulink url="http://en.flossmanuals.net/csound/ch018_c-control-structures"><citetitle> http://en.flossmanuals.net/csound/ch018_c-control-structures</citetitle></ulink></para>
+	    </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>&nameistvan;.</para>
+    <para>New in Csound version 5.01</para>
+  </refsect1>
+</refentry>

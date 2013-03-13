@@ -1,0 +1,104 @@
+
+<refentry id="pvbufread">
+<indexterm id="IndexPvbufread"><primary>pvbufread</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:STFT</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvbufread</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvbufread</refname>
+    <refpurpose>
+      Reads from a phase vocoder analysis file and makes the retrieved data available.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>pvbufread</emphasis> reads from a <link linkend="pvoc"><citetitle>pvoc</citetitle></link> file and makes the retrieved data available to any following <link linkend="pvinterp"><citetitle>pvinterp</citetitle></link> and <link linkend="pvcross"><citetitle>pvcross</citetitle></link> units that appear in an instrument before a subsequent <emphasis>pvbufread</emphasis> (just as <link linkend="lpread"><citetitle>lpread</citetitle></link> and <link linkend="lpreson"><citetitle>lpreson</citetitle></link> work together). The data is passed internally and the unit has no output of its own. 
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>pvbufread</command> ktimpnt, ifile</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifile</emphasis> -- the <emphasis>pvoc</emphasis> number (n in pvoc.n) or the name in quotes of the analysis file made using <emphasis>pvanal</emphasis>. (See <link linkend="pvoc"><citetitle>pvoc</citetitle></link>.)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ktimpnt</emphasis> -- the passage of time, in seconds, through this file. <emphasis>ktimpnt</emphasis> must always be positive, but can move forwards or backwards in time, be stationary or discontinuous, as a pointer into the analysis file.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      The example below shows an example using <emphasis>pvbufread</emphasis> with <emphasis>pvinterp</emphasis> to interpolate between the sound of an oboe and the sound of a clarinet. The value of <emphasis>kinterp</emphasis> returned by a <emphasis>linseg</emphasis> is used to determine the timing of the transitions between the two sounds. The interpolation of frequencies and amplitudes are controlled by the same factor in this example, but for other effects it might be interesting to not have them synchronized in this way. In this example the sound will begin as a clarinet, transform into the oboe and then return again to the clarinet sound. The value of <emphasis>kfreqscale2</emphasis> is 1.065 because the oboe in this case is a semitone higher in pitch than the clarinet and this brings them approximately to the same pitch. The value of <emphasis>kampscale2</emphasis> is 0.75 because the analyzed clarinet was somewhat louder than the analyzed oboe. The setting of these two parameters make the transition quite smooth in this case, but such adjustments are by no means necessary or even advocated.
+    </para>
+
+    <para>
+      <informalexample>
+        <programlisting>
+ktime1  <emphasis role="opc">line</emphasis>      0, p3, 3.5 <emphasis role="comment">; used as index in the &quot;oboe.pvoc&quot; file</emphasis>
+ktime2  <emphasis role="opc">line</emphasis>      0, p3, 4.5 <emphasis role="comment">; used as index in the  &quot;clar.pvoc&quot; file</emphasis>
+kinterp <emphasis role="opc">linseg</emphasis>    1, p3<emphasis role="op">*</emphasis>0.15, 1, p3<emphasis role="op">*</emphasis>0.35, 0, p3<emphasis role="op">*</emphasis>0.25, 0, p3<emphasis role="op">*</emphasis>0.15, 1, p3<emphasis role="op">*</emphasis>0.1, 1
+        <emphasis role="opc">pvbufread</emphasis> ktime1, &quot;oboe.pvoc&quot;
+apv     <emphasis role="opc">pvinterp</emphasis>  ktime2,1,&quot;clar.pvoc&quot;, 1, 1.065, 1, 0.75, 1<emphasis role="op">-</emphasis>kinterp, 1<emphasis role="op">-</emphasis>kinterp</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      Below is an example using <emphasis>pvbufread</emphasis> with <emphasis>pvcross</emphasis>. In this example the amplitudes used in the resynthesis gradually change from those of the oboe to those of the clarinet. The frequencies, of course, remain those of the clarinet throughout the process since <emphasis>pvcross</emphasis> does not use the frequency data from the file read by <emphasis>pvbufread</emphasis>.
+    </para>
+
+    <para>
+      <informalexample>
+        <programlisting>
+ktime1  <emphasis role="opc">line</emphasis>      0, p3, 3.5 <emphasis role="comment">; used as index in the &quot;oboe.pvoc&quot; file</emphasis>
+ktime2  <emphasis role="opc">line</emphasis>      0, p3, 4.5 <emphasis role="comment">; used as index in the &quot;clar.pvoc&quot; file</emphasis>
+kcross  <emphasis role="opc">expon</emphasis>     0.001, p3, 1
+        <emphasis role="opc">pvbufread</emphasis> ktime1, &quot;oboe.pvoc&quot;
+apv     <emphasis role="opc">pvcross</emphasis>   ktime2, 1, &quot;clar.pvoc&quot;, 1<emphasis role="op">-</emphasis>kcross, kcross</programlisting>
+      </informalexample>
+    </para>
+    <para>
+      Here is a complete example of the pvbufread opcode. It uses the file <ulink url="examples/pvbufread.csd"><citetitle>pvbufread.csd</citetitle></ulink>
+      <example>
+        <title>Example of the pvbufread opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/pvbufread.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="pvcross"><citetitle>pvcross</citetitle></link>,
+      <link linkend="pvinterp"><citetitle>pvinterp</citetitle></link>,
+      <link linkend="pvread"><citetitle>pvread</citetitle></link>,
+      <link linkend="tableseg"><citetitle>tableseg</citetitle></link>,
+      <link linkend="tablexseg"><citetitle>tablexseg</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Richard Karpen</member>
+        <member>Seattle, WA USA</member>
+        <member>1997</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

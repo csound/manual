@@ -1,0 +1,93 @@
+
+<refentry id="FLslidBnk2Setk">
+<indexterm id="IndexFLslidBnk2Setk"><primary>FLslidBnk2Setk</primary></indexterm>
+  <refentryinfo><title>FLTK:Other</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLslidBnk2Setk</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLslidBnk2Setk</refname>
+    <refpurpose>
+      modify the values of a slider bank.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>FLslidBnk2Setk</emphasis> modifies the values of a slider bank according to an array of values stored in a table.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>FLslidBnk2Setk</command>  ktrig, ihandle, ifn [, istartIndex, istartSlid, inumSlid]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ihandle</emphasis> - handle of the sliderBnk (to be used to set its values).
+    </para>
+    <para>
+      <emphasis>ifn</emphasis> - number of a table containing an array of values to set each slider to.
+    </para>
+    <para>
+      <emphasis>istartIndex</emphasis> - (optional) starting index of the table element of to be evaluated firstly. Default value is zero
+    </para>
+    <para>
+      <emphasis>istartSlid</emphasis> - (optional) starting slider to be evaluated. Default 0, denoting the first slider.
+    </para>
+    <para>
+      <emphasis>inumSlid</emphasis> - (optional) number of sliders to be updated. Default 0, denoting all sliders.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ktrig</emphasis> – the output of <emphasis>FLslidBnk2Setk</emphasis> consists of a trigger that informs if sliders have to be updated or not. A non-zero value forces the slider to be updated.
+    </para>
+    <para>
+     <emphasis>FLslidBnk2Setk</emphasis> is similar to <link linkend="FLslidBnkSet"><citetitle>FLslidBnkSet</citetitle></link> but allows k-rate to modify the values of <link linkend="FLslidBnk2"><citetitle>FLslidBnk2</citetitle></link>  (<emphasis>FLslidBnk2Setk</emphasis> can also be used with <link linkend="FLvslidBnk2"><citetitle>FLvslidBnk2</citetitle></link>, obtaining identical result). It also allows the slider bank to be joined with MIDI. If you are using MIDI (for instance, when using the <link linkend="slider8table"><citetitle>slider8table</citetitle></link> opcode), <emphasis>FLslidBnk2Setk</emphasis> changes the values of <link linkend="FLslidBnk2"><citetitle>FLslidBnk2</citetitle></link> bank of sliders to a set of values located in a table. This opcode is actually able to serve as a MIDI bridge to the <link linkend="FLslidBnk2"><citetitle>FLslidBnk2</citetitle></link> widget when used together with the <emphasis>sliderXXtable</emphasis> set of opcodes (see <link linkend="slider8table"><citetitle>slider8table</citetitle></link> entry for more information). Notice, that, when you want to use table indexing as a curve response, it is not possible to do it directly in the <emphasis>iconfigtable</emphasis> configuration of <link linkend="FLslidBnk2"><citetitle>FLslidBnk2</citetitle></link>, when you intend to use the <emphasis>FLslidBnk2Setk</emphasis> opcode. In fact, corresponding <emphasis>inputTable</emphasis> element of <emphasis>FLslidBnk2Setk</emphasis> must be set in linear mode and respect the 0 to 1 range. Even the corresponding elements of <emphasis>sliderXXtable</emphasis> must be set in linear mode and in the normalized range. You can do table indexing later, by using the <link linkend="tab"><citetitle>tab</citetitle></link> and <link linkend="tb"><citetitle>tb</citetitle></link> opcodes, and rescaling output according to max and min values. By the other hand, it is possible to use linear and exponential curve response directly, by setting the actual min-max range and flag both in the <emphasis>iconfigtable</emphasis> of corresponding <link linkend="FLslidBnk2"><citetitle>FLslidBnk2</citetitle></link> and in <emphasis>sliderXXtable</emphasis>.
+    </para>
+    <para>
+      <emphasis>FLslidBnk2Setk</emphasis> the k-rate version of <link linkend="FLslidBnk2Set"><citetitle>FLslidBnk2Set</citetitle></link>.
+    </para>
+
+  </refsect1>
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the FLslidBnk2Setk opcode. It uses the file <ulink url="examples/FLslidBnk2Setk.csd"><citetitle>FLslidBnk2Setk.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the FLslidBnk2Setk opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/FLslidBnk2Setk.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="FLslider"><citetitle>FLslider</citetitle></link>,
+      <link linkend="FLslidBnkGetHandle"><citetitle>FLslidBnkGetHandle</citetitle></link>,
+      <link linkend="FLslidBnk"><citetitle>FLslidBnk</citetitle></link>,
+      <link linkend="FLslidBnk2"><citetitle>FLslidBnk2</citetitle></link>,
+      <link linkend="FLvslidBnk"><citetitle>FLvslidBnk</citetitle></link>,
+      <link linkend="FLvslidBnk2"><citetitle>FLvslidBnk2</citetitle></link>
+      <link linkend="FLslidBnkSet"><citetitle>FLslidBnkSet</citetitle></link>,
+      <link linkend="FLslidBnk2Set"><citetitle>FLslidBnk2Set</citetitle></link>,
+      <link linkend="slider8table"><citetitle>slider8table</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namegabriel;</para>
+    <para>New in version 5.06</para>
+  </refsect1>
+</refentry>

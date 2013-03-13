@@ -1,0 +1,131 @@
+
+<refentry id="active">
+<indexterm id="IndexActive"><primary>active</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Realtime Performance Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>active</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>active</refname>
+    <refpurpose>
+      Returns the number of active instances of an instrument.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Returns the number of active instances of an instrument.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ir <command>active</command> insnum [,iopt]</synopsis>
+    <synopsis>ir <command>active</command> Sinsname [,iopt]</synopsis>
+    <synopsis>kres <command>active</command> kinsnum [,iopt]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>insnum</emphasis> -- number or string name of the instrument to be reported
+    </para>
+    <para>
+      <emphasis>Sinsname</emphasis> -- instrument name
+    </para>
+    <para>
+      <emphasis>iopt</emphasis> -- select currently active (zero, default),
+      or all every active (non zero)
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kinsnum</emphasis> -- number or string name of the instrument to be reported
+    </para>
+
+    <para>
+      <emphasis>active</emphasis> returns the number of active
+      instances of instrument number
+      <emphasis>insnum/kinsnum</emphasis> (or named instrument
+      <emphasis>Sinsname</emphasis>). As of Csound 4.17 the output is
+      updated at k-rate (if input arg is k-rate), to allow running
+      count of instr instances. 
+    </para>
+    <para>
+      As of Csound 5.17 if the instrument number is given as zero then
+      all instruments are counted.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+
+    <para>
+      Here is a simple example of the active opcode. It uses the file
+      <ulink
+          url="examples/active.csd"><citetitle>active.csd</citetitle></ulink>. 
+
+      <example>
+        <title>Simple example of the active opcode.</title>
+        <para>
+          See the sections <link linkend="UsingRealTime"><citetitle>Real-time
+          Audio</citetitle></link> and <link
+          linkend="CommandFlags"><citetitle>Command Line
+          Flags</citetitle></link> for more information on using command
+          line flags.
+        </para> 
+        <xi:include href="examples-xml/active.csd.xml"
+                    xmlns:xi="http://www.w3.org/2001/XInclude"/> 
+      </example>
+
+      Its output should include lines like this:
+      <screen>
+instr 2:  icount = 1.000
+instr 2:  icount = 2.000
+      </screen>
+    </para>
+
+    <para>
+      Here is a more advanced example of the active opcode. It displays the results of the active opcode at k-rate instead of i-rate. It uses the file <ulink url="examples/active_k.csd"><citetitle>active_k.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the active opcode at k-rate.</title>
+
+          <xi:include href="examples-xml/active_k.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Its output should include lines like:
+      <screen>
+ i2     1.00000
+ i2     2.00000
+      </screen>
+    </para>
+    <para>
+      Here is another example of the active opcode, using the number of instances to calculate gain. It uses the file <ulink url="examples/active_scale.csd"><citetitle>active_scale.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the active opcode at k-rate.</title>
+        <xi:include href="examples-xml/active_scale.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>University of Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>July, 1999</member>
+      </simplelist>
+    </para>
+    <para>Examples written by &namekevin;.</para>
+    <para>New in Csound version 3.57; named instruments added version 5.13</para>
+    <para>Option for all ever active new in 5.13</para>
+    <para>Count of all instruments new in 5.17</para>
+  </refsect1>
+</refentry>

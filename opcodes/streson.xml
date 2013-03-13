@@ -1,0 +1,84 @@
+
+<refentry id="streson">
+<indexterm id="IndexStreson"><primary>streson</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Waveguide Physical Modeling</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>streson</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>streson</refname>
+    <refpurpose>
+      A string resonator with variable fundamental frequency.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      An audio signal is modified by a string resonator with variable fundamental frequency.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>streson</command> asig, kfr, ifdbgain</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifdbgain</emphasis> -- feedback gain, between 0 and 1, of the internal delay line. A value close to 1 creates a slower decay and a more pronounced resonance. Small values may leave the input signal unaffected. Depending on the filter frequency, typical values are &gt; .9.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asig</emphasis> -- the input audio signal.
+    </para>
+
+    <para>
+      <emphasis>kfr</emphasis> -- the fundamental frequency of the string.
+    </para>
+
+    <para>
+      <emphasis>streson</emphasis> passes the input <emphasis>asig</emphasis> through a network composed of comb, low-pass and all-pass filters, similar to the one used in some versions of the Karplus-Strong algorithm, creating a string resonator effect. The fundamental frequency of the <quote>string</quote> is controlled by the k-rate variable <emphasis>kfr</emphasis>.This opcode can be used to simulate sympathetic resonances to an input signal.
+    </para>
+    <para>
+      See <link linkend="MiscModalFreq"><citetitle>Modal Frequency Ratios</citetitle></link> for frequency ratios of real intruments which can be used to determine the values of <emphasis>kfrq</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>streson</emphasis> is an adaptation of the StringFlt object of the SndObj Sound Object Library developed by the author.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the streson opcode. It uses the file <ulink url="examples/streson.csd"><citetitle>streson.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the streson opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/streson.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>Music Department</member>
+        <member>National University of Ireland, Maynooth</member>
+        <member>Maynooth, Co. Kildare</member>
+        <member>1998</member>
+      </simplelist>
+    </para>
+    <para>New in Csound version 3.494</para>
+  </refsect1>
+</refentry>

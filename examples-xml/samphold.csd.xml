@@ -1,0 +1,35 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac     <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o samphold.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1
+
+kx	<emphasis role="opc">line</emphasis> <emphasis role="op">-</emphasis>1, p3, 1   	<emphasis role="comment">; between -1 and +1 </emphasis>
+ktrig	<emphasis role="opc">metro</emphasis> 1	 		<emphasis role="comment">; triggers 1 time per second </emphasis>
+kval	<emphasis role="opc">samphold</emphasis> kx, ktrig	<emphasis role="comment">; change value whenever ktrig = 1 </emphasis>
+        <emphasis role="opc">printk2</emphasis> kval		<emphasis role="comment">; will print every time kval changes </emphasis>
+asig	<emphasis role="opc">diskin2</emphasis>	"flute.aiff", 1<emphasis role="op">+</emphasis>kval, 0, 1
+	<emphasis role="opc">outs</emphasis> asig, asig
+
+<emphasis role="oblock">endin</emphasis> 
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+ 
+
+<emphasis role="stamnt">i</emphasis> 1 0 11 
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

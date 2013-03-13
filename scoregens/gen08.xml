@@ -1,0 +1,114 @@
+
+<refentry id="GEN08">
+      <indexterm id="IndexGEN08"><primary>GEN08</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN08</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN08</refname>
+    <refpurpose>
+      Generate a piecewise cubic spline curve.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This subroutine will generate a piecewise cubic spline curve, the smoothest possible through all specified points.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>f</command> # time size 8 a n1 b n2 c n3 d ...</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>size</emphasis> -- number of points in the table. Must be a power of 2 or power-of-2 plus 1 (see <link linkend="f"><citetitle>f statement</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis>a, b, c,</emphasis> etc. -- ordinate values of the function.
+    </para>
+
+    <para>
+      <emphasis>n1, n2, n3 ... </emphasis> -- length of each segment measured in stored values. May not be zero, but may be fractional. A particular segment may or may not actually store any values; stored values will be generated at integral points from the beginning of the function. The sum <emphasis>n1</emphasis> + <emphasis>n2</emphasis> + ... will normally equal <emphasis>size</emphasis> for fully specified functions.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              <emphasis>GEN08</emphasis> constructs a stored table from segments of cubic polynomial functions. Each segment runs between two specified points but depends as well on their neighbors on each side. Neighboring segments will agree in both value and slope at their common point. (The common slope is that of a parabola through that point and its two neighbors). The slope at the two ends of the function is constrained to be zero (flat).
+            </para>
+          </listitem>
+
+          <listitem>
+            <para>
+              <emphasis>Hint:</emphasis> to make a discontinuity in slope or value in the function as stored, arrange a series of points in the interval between two stored values; likewise for a non-zero boundary slope.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+	    Here is an example of the GEN08 routine. It uses the files <ulink url="examples/gen08.csd"><citetitle>gen08.csd</citetitle></ulink>.
+      <example>
+        <title>An example of the GEN08 routine.</title>
+        <xi:include href="examples-xml/gen08.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+        <textobject>
+          <phrase>These are the diagrams of the waveforms of the GEN08 routines, as used in the example:</phrase>
+        </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen08_1.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 2 0 65 8 0 16 1 16 1 16 0 17 0 - a curve with a smooth hump in the middle, going briefly negative outside the hump then flat at its ends</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 2 0 65 8 0 16 1 16 1 16 0 17 0 - a curve with a smooth hump in the middle, going briefly negative outside the hump then flat at its ends</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen08_2.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 3 0 65 8 -1 32 1 2 0 14 0 17 0 - from a negative value,a curve with a smooth hump, going negative creating a small hump then flat at its ends</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 3 0 65 8 -1 32 1 2 0 14 0 17 0 - from a negative value,a curve with a smooth hump, going negative creating a small hump then flat at its ends</para>
+        </caption>
+      </mediaobject>
+
+    </para>
+  </refsect1>
+
+
+  <refsect1>
+     <title>See Also</title>
+     <para>
+       <link linkend="GEN05"><citetitle>GEN05</citetitle></link>,
+       <link linkend="GEN06"><citetitle>GEN06</citetitle></link>, and
+       <link linkend="GEN07"><citetitle>GEN07</citetitle></link>
+     </para>
+  </refsect1>
+</refentry>

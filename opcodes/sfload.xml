@@ -1,0 +1,105 @@
+
+<refentry id="sfload">
+<indexterm id="IndexSfload"><primary>sfload</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Sample Playback</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>sfload</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>sfload</refname>
+    <refpurpose>
+      Loads an entire SoundFont2 (SF2) sample file into memory.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Loads an entire SoundFont2 (SF2) sample file into memory. These opcodes allow management the sample-structure of SF2 files. In order to understand the usage of these opcodes, the user must have some knowledge of the SF2 format, so a brief description of this format can be found in the <link linkend="MiscSf2"><citetitle>SoundFont2 File Format Appendix</citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis>sfload</emphasis> should be placed in the header section of a Csound orchestra.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ir <command>sfload</command> &quot;filename&quot;</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ir</emphasis> -- output to be used by other SF2 opcodes. For <emphasis>sfload</emphasis>, <emphasis>ir</emphasis> is <emphasis>ifilhandle</emphasis>. 
+    </para>
+
+    <para>
+      <emphasis><quote>filename</quote></emphasis> -- name of the SF2
+                                file, with its complete path. It must
+                                be a string typed within
+                                double-quotes with <quote>/</quote> to
+                                separate directories (this applies to
+                                DOS and Windows as well, where using a
+                                backslash will generate an error), or
+                                an integer that has been the subject
+                                of a <link linkend="strset"><citetitle>strset</citetitle></link> operation
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>sfload</emphasis> loads an entire SF2 file into memory. It returns a file handle to be used by other opcodes. Several instances of <emphasis>sfload</emphasis> can placed in the header section of an orchestra, allowing use of more than one SF2 file in a single orchestra.
+    </para>
+
+    <para>
+      These opcodes only support the sample structure of SF2 files. The modulator structure of the SoundFont2 format is not supported in Csound. Any modulation or processing to the sample data is left to the Csound user, bypassing all restrictions forced by the SF2 standard.
+    </para>
+
+    <para>
+      It should be noted that before version 5.12 a maximum of 10
+      sound fonts could be loaded, a restriction since relaxed.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the sfload opcode. It uses the file <ulink url="examples/sfload.csd"><citetitle>sfload.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the sfload opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/sfload.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="sfilist"><citetitle>sfilist</citetitle></link>,
+      <link linkend="sfinstr"><citetitle>sfinstr</citetitle></link>,
+      <link linkend="sfinstrm"><citetitle>sfinstrm</citetitle></link>,
+      <link linkend="sfpassign"><citetitle>sfpassign</citetitle></link>,
+      <link linkend="sfplay"><citetitle>sfplay</citetitle></link>,
+      <link linkend="sfplaym"><citetitle>sfplaym</citetitle></link>,
+      <link linkend="sfplist"><citetitle>sfplist</citetitle></link>,
+      <link linkend="sfpreset"><citetitle>sfpreset</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namegabriel;</member>
+        <member>Italy</member>
+        <member>May 2000</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound Version 4.07</para>
+  </refsect1>
+</refentry>

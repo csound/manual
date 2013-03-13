@@ -1,0 +1,173 @@
+
+<refentry id="grain3">
+<indexterm id="IndexGrain3"><primary>grain3</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Granular Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>grain3</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>grain3</refname>
+    <refpurpose>
+      Generate granular synthesis textures with more user control.
+          </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Generate granular synthesis textures. <link linkend="grain2"><citetitle>grain2</citetitle></link> is simpler to use but <emphasis>grain3</emphasis> offers more control.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>grain3</command> kcps, kphs, kfmd, kpmd, kgdur, kdens, imaxovr, kfn, iwfn, \
+      kfrpow, kprpow [, iseed] [, imode]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>imaxovr</emphasis> -- maximum number of overlapping grains. The number of overlaps can be calculated by (<emphasis>kdens</emphasis> * <emphasis>kgdur</emphasis>); however, it can be overestimated at no cost in rendering time, and a single overlap uses (depending on system) 16 to 32 bytes of memory.
+    </para>
+
+    <para>
+      <emphasis>iwfn</emphasis> -- function table containing window waveform (Use <link linkend="GEN20">GEN20</link> to calculate <emphasis>iwfn</emphasis>).
+    </para>
+
+
+    <para>
+      <emphasis>iseed</emphasis> (optional, default=0) -- seed value for random number generator (positive integer in the range 1 to 2147483646 (2<superscript>31</superscript> - 2)). Zero or negative value seeds from current time (this is also the default).
+    </para>
+
+    <para>
+      <emphasis>imode</emphasis> (optional, default=0) -- sum of the following values:
+      <itemizedlist>
+        <listitem><para><emphasis>64:</emphasis> synchronize start phase of grains to <emphasis>kcps</emphasis>.</para></listitem>
+        <listitem><para><emphasis>32:</emphasis> start all grains at integer sample location. This may be faster in some cases, however it also makes the timing of grain envelopes less accurate.</para></listitem>
+        <listitem><para><emphasis>16:</emphasis> do not render grains with start time less than zero. (see the image below; this option turns off grains marked with red on the image).</para></listitem>
+        <listitem><para><emphasis>8:</emphasis> interpolate window waveform (slower).</para></listitem>
+        <listitem><para><emphasis>4:</emphasis> do not interpolate grain waveform (fast, but lower quality).</para></listitem>
+        <listitem><para><emphasis>2:</emphasis> grain frequency is continuously modified by <emphasis>kcps</emphasis> and <emphasis>kfmd</emphasis> (by default, each grain keeps the frequency it was launched with). This may be slower at high control rates. It also controls phase modulation (<emphasis>kphs</emphasis>).</para></listitem>
+        <listitem><para><emphasis>1:</emphasis> skip initialization.</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/grain3_2.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>[A diagram showing grains with a start time less than zero in red.]</phrase>
+        </textobject>
+
+        <caption>
+          <para>A diagram showing grains with a start time less than zero in red.</para>
+        </caption>
+      </mediaobject>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ares</emphasis> -- output signal.
+    </para>
+
+    <para>
+      <emphasis>kcps</emphasis> -- grain frequency in Hz.
+    </para>
+
+    <para>
+      <emphasis>kphs</emphasis> -- grain phase. This is the location in the grain waveform table, expressed
+as a fraction (between 0 to 1) of the table length.
+    </para>
+
+    <para>
+      <emphasis>kfmd</emphasis> -- random variation (bipolar) in grain frequency in Hz.
+    </para>
+
+    <para>
+      <emphasis>kpmd</emphasis> -- random variation (bipolar) in start phase.
+    </para>
+
+    <para>
+      <emphasis>kgdur</emphasis> -- grain duration in seconds. <emphasis>kgdur</emphasis> also controls the duration of already active grains (actually the speed at which the window function is read). This behavior does not depend on the <emphasis>imode</emphasis> flags.
+    </para>
+
+    <para>
+      <emphasis>kdens</emphasis> -- number of grains per second.
+    </para>
+
+    <para>
+      <emphasis>kfrpow</emphasis> -- this value controls the distribution of grain frequency variation.  If <emphasis>kfrpow</emphasis> is positive, the random distribution (x is in the range -1 to 1) is <literallayout>abs(x) &circ; ((1 / kfrpow) - 1)</literallayout>; for negative <emphasis>kfrpow</emphasis> values, it is <literallayout>(1 - abs(x)) &circ; ((-1 / kfrpow) - 1)</literallayout>Setting <emphasis>kfrpow</emphasis> to -1, 0, or 1 will result in uniform distribution (this is also faster to calculate). The image below shows some examples for <emphasis>kfrpow</emphasis>. The default value of <emphasis>kfrpow</emphasis> is 0.
+    </para>
+    <para>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/grain2_rand-448x289.png" format="PNG"/>
+        </imageobject>
+        <textobject>
+          <phrase>[A graph of distributions for different values of <emphasis>kfrpow</emphasis>.]</phrase>
+        </textobject>
+        <caption>
+          <para>A graph of distributions for different values of <emphasis>kfrpow</emphasis>.</para>
+        </caption>
+      </mediaobject>
+    </para>
+    <para>
+      <emphasis>kprpow</emphasis> -- distribution of random phase variation (see <emphasis>kfrpow</emphasis>).  Setting <emphasis>kphs</emphasis> and <emphasis>kpmd</emphasis> to 0.5, and <emphasis>kprpow</emphasis> to 0 will emulate <emphasis>grain2</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>kfn</emphasis> -- function table containing grain waveform. Table number can be changed at k-rate (this is useful to select from a set of band-limited tables generated by <link linkend="GEN30">GEN30</link>, to avoid aliasing).
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        <emphasis>grain3</emphasis> internally uses the same random number generator as <emphasis>rnd31</emphasis>. So reading <link linkend="rnd31"><citetitle>its documentation</citetitle></link> is also recommended.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the grain3 opcode. It uses the file <ulink url="examples/grain3.csd"><citetitle>grain3.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the grain3 opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/grain3.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="grain2"><citetitle>grain2</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &nameistvan;</member>
+      </simplelist>
+    </para>
+
+    <para>New in version 4.15</para>
+    <para>Updated April 2002 by &nameistvan;</para>
+  </refsect1>
+</refentry>

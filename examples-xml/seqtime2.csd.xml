@@ -1,0 +1,54 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac    <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o seqtime2.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+gitabMap2 <emphasis role="ohdr">ftgen</emphasis>	57,0,512,<emphasis role="op">-</emphasis>2, 1,1<emphasis role="op">/</emphasis>4,1<emphasis role="op">/</emphasis>4,1<emphasis role="op">/</emphasis>8,1<emphasis role="op">/</emphasis>8,1<emphasis role="op">/</emphasis>8,1<emphasis role="op">/</emphasis>8,1<emphasis role="op">/</emphasis>4,1<emphasis role="op">/</emphasis>4,.5,1<emphasis role="op">/</emphasis>4,1<emphasis role="op">/</emphasis>4,1<emphasis role="op">/</emphasis>16,1<emphasis role="op">/</emphasis>16,1<emphasis role="op">/</emphasis>16,1<emphasis role="op">/</emphasis>16,1<emphasis role="op">/</emphasis>16,1<emphasis role="op">/</emphasis>16,1<emphasis role="op">/</emphasis>16,1<emphasis role="op">/</emphasis>16
+gisine	  <emphasis role="ohdr">ftgen</emphasis>	1,0,512,10, 1
+
+<emphasis role="oblock">instr</emphasis> 1
+
+ktrigin	<emphasis role="opc">metro</emphasis>	.333333333333
+ktrig2	<emphasis role="opc">metro</emphasis>	1
+	<emphasis role="opc">schedkwhen</emphasis> ktrig2, 0,0, 2, 0, .1			<emphasis role="comment">; just to set the metronome!</emphasis>
+kspeed	<emphasis role="opc">init</emphasis>	1
+<emphasis role="comment">;          	 ktime_unit, kstart, kloop, initndx, kfn_times </emphasis>
+ktrig	<emphasis role="opc">seqtime2</emphasis> ktrigin, kspeed, 0, 20, 2, gitabMap2
+<emphasis role="comment">;ktrig	seqtime	 kspeed, 0, 20, 0, gitabMap2			; try with seqtime too...		</emphasis>
+	<emphasis role="opc">schedkwhen</emphasis> ktrig, 0, 0, 3, 0, ktrig			<emphasis role="comment">; the duration is got from seqtime2 output!</emphasis>
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 2
+
+a1	<emphasis role="opc">line</emphasis>	1,p3,0
+aout	<emphasis role="opc">oscili</emphasis>	0.7<emphasis role="op">*</emphasis>a1,500,gisine
+	<emphasis role="opc">outs1</emphasis>	aout
+<emphasis role="oblock">endin</emphasis>	
+
+
+<emphasis role="oblock">instr</emphasis> 3
+
+a1	<emphasis role="opc">line</emphasis> 	1,p3,0
+aout	<emphasis role="opc">oscili</emphasis>	0.7<emphasis role="op">*</emphasis>a1,1000,gisine
+	<emphasis role="opc">outs2</emphasis>	aout
+<emphasis role="oblock">endin</emphasis>	
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">i</emphasis>1 0 20
+
+<emphasis role="comment">;f0 3600</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

@@ -1,0 +1,115 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac  <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o gen13.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100 
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32 
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2 
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1 
+<emphasis role="comment">;example by Russell Pinkston - Univ. of Texas  (but slightly modified)</emphasis>
+
+gisine   <emphasis role="ohdr">ftgen</emphasis> 0, 0, 16384, 10, 1							<emphasis role="comment">;sine wave</emphasis>
+
+<emphasis role="oblock">instr</emphasis>   1
+
+ihertz <emphasis role="op">=</emphasis> <emphasis role="opc">cpspch</emphasis>(p4)
+ipkamp <emphasis role="op">=</emphasis> p5
+iwsfn  <emphasis role="op">=</emphasis> p6										<emphasis role="comment">;waveshaping function</emphasis>
+inmfn  <emphasis role="op">=</emphasis> p7										<emphasis role="comment">;normalization function</emphasis>
+agate   <emphasis role="opc">linen</emphasis>  1, .01, p3, .1            					 	<emphasis role="comment">;overall amp envelope</emphasis>
+kctrl   <emphasis role="opc">linen</emphasis>  .99, 2, p3, 2								<emphasis role="comment">;waveshaping index control</emphasis>
+aindex  <emphasis role="opc">poscil</emphasis> kctrl<emphasis role="op">/</emphasis>2, ihertz, gisine							<emphasis role="comment">;sine wave to be distorted</emphasis>
+asignal <emphasis role="opc">tablei</emphasis> .5<emphasis role="op">+</emphasis>aindex, iwsfn, 1							<emphasis role="comment">;waveshaping</emphasis>
+knormal <emphasis role="opc">tablei</emphasis> kctrl, inmfn, 1								<emphasis role="comment">;amplitude normalization</emphasis>
+asig    <emphasis role="op">=</emphasis>      asignal<emphasis role="op">*</emphasis>knormal<emphasis role="op">*</emphasis>ipkamp<emphasis role="op">*</emphasis>agate
+        <emphasis role="opc">outs</emphasis>   asig, asig
+           
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="comment">; This proves the statement in Dodge (p. 147) that Chebyshev polynomials</emphasis>
+<emphasis role="comment">; of order K have "only the kth harmonic." This is only true when the </emphasis>
+<emphasis role="comment">; waveshaping index is at the maximum - i.e., when the entire transfer</emphasis>
+<emphasis role="comment">; function is being accessed. RP.</emphasis>
+<emphasis role="comment">;--------------------------------------------------------------------------------------------------------------------------------------------</emphasis>
+<emphasis role="comment">; quasi sawtooth transfer function: </emphasis>
+<emphasis role="comment">;		 h0   h1   h2   h3   h4   h5   h6    h7   h8   h9   h10   h11 	h12   h13    h14    h15    h16    h17    h18    h19    h20</emphasis>
+<emphasis role="stamnt">f</emphasis>1 0 513 13 1 1  0   100  -50  -33   25   20 -16.7 -14.2 12.5 11.1 -10  -9.09  8.333  7.69  -7.14  -6.67  6.25	  5.88	-5.55  -5.26    5		
+<emphasis role="stamnt">f</emphasis>2 0 257 4 1 1	 <emphasis role="comment">; normalizing function with midpoint bipolar offset</emphasis>
+
+<emphasis role="comment">;	st	dur	pch	amp	wsfn	nmfn</emphasis>
+<emphasis role="stamnt">i</emphasis>1      0       4      6.00    .7 	 1	 2
+<emphasis role="stamnt">i</emphasis>1      4       .      7.00    .
+<emphasis role="stamnt">i</emphasis>1      8       .      8.00    .
+<emphasis role="comment">;--------------------------------------------------------------------------------------------------------------------------------------------	</emphasis>
+<emphasis role="comment">; quasi square wave transfer function: </emphasis>
+<emphasis role="comment">;		 h0   h1   h2   h3   h4   h5   h6    h7   h8   h9   h10   h11 	h12   h13    h14    h15    h16    h17    h18    h19</emphasis>
+<emphasis role="stamnt">f</emphasis>3 0 513 13 1 1  0   100   0   -33   0    20   0   -14.2  0   11.1   0  -9.09	 0   7.69     0    -6.67    0    5.88     0    -5.26
+<emphasis role="stamnt">f</emphasis>4 0 257 4 3 1	 <emphasis role="comment">; normalizing function with midpoint bipolar offset</emphasis>
+
+<emphasis role="comment">;	st	dur	pch	amp	wsfn	nmfn</emphasis>
+<emphasis role="stamnt">i</emphasis>1      16       4     6.00     .7	 3	 4
+<emphasis role="stamnt">i</emphasis>1      20       .     7.00     .
+<emphasis role="stamnt">i</emphasis>1      24       .     8.00     .
+<emphasis role="comment">;--------------------------------------------------------------------------------------------------------------------------------------------	</emphasis>
+<emphasis role="comment">; quasi triangle wave transfer function: </emphasis>
+<emphasis role="comment">;		 h0   h1   h2   h3   h4   h5   h6    h7   h8   h9   h10   h11 	h12   h13    h14    h15    h16    h17    h18    h19</emphasis>
+<emphasis role="stamnt">f</emphasis>5 0 513 13 1 1  0   100   0  -11.11 0    4    0   -2.04  0   1.23  0   -.826	0    .59      0    -.444    0    .346     0   -.277	
+<emphasis role="stamnt">f</emphasis>6 0 257 4 5 1	 <emphasis role="comment">; normalizing function with midpoint bipolar offset</emphasis>
+<emphasis role="comment">;	st	dur	pch	amp	wsfn	nmfn</emphasis>
+<emphasis role="stamnt">i</emphasis>1      32       4     6.00     .7	 5	 6
+<emphasis role="stamnt">i</emphasis>1      36       .     7.00     .
+<emphasis role="stamnt">i</emphasis>1      40       .     8.00     .
+<emphasis role="comment">;--------------------------------------------------------------------------------------------------------------------------------------------</emphasis>
+<emphasis role="comment">; transfer function1:  h0 h1 h2 h3 h4 h5 h6 h7 h8 h9 h10 h11 h12 h13 h14 h15 h16</emphasis>
+<emphasis role="stamnt">f</emphasis>7 0 513 13 1 1        0  1 -.8 0 .6  0  0  0 .4  0  0   0   0   .1 -.2 -.3  .5
+<emphasis role="stamnt">f</emphasis>8 0 257 4 7 1	       <emphasis role="comment">; normalizing function with midpoint bipolar offset</emphasis>
+<emphasis role="comment">;	st	dur	pch	amp	wsfn	nmfn</emphasis>
+<emphasis role="stamnt">i</emphasis>1      48       4     5.00     .7	 7	 8
+<emphasis role="stamnt">i</emphasis>1      52       .     6.00     .
+<emphasis role="stamnt">i</emphasis>1      56       .     7.00     .
+<emphasis role="comment">;--------------------------------------------------------------------------------------------------------------------------------------------</emphasis>
+<emphasis role="comment">;=========================================================================;</emphasis>
+<emphasis role="comment">; This demonstrates the use of high partials, sometimes without a         ;</emphasis>
+<emphasis role="comment">; fundamental, to get quasi-inharmonic spectra from waveshaping.          ;</emphasis>
+<emphasis role="comment">;=========================================================================;</emphasis>
+<emphasis role="comment">; transfer function2:  h0 h1 h2 h3 h4 h5 h6 h7 h8 h9 h10 h11 h12 h13 h14 h15 h16</emphasis>
+<emphasis role="stamnt">f</emphasis>9 0 513 13 1 1        0  0  0 -.1  0 .3  0 -.5 0 .7  0 -.9  0   1   0  -1   0
+<emphasis role="stamnt">f</emphasis>10 0 257 4 9 1	       <emphasis role="comment">; normalizing function with midpoint bipolar offset</emphasis>
+<emphasis role="comment">;	st	dur	pch	amp	wsfn	nmfn</emphasis>
+<emphasis role="stamnt">i</emphasis>1      64       4       5.00   .7	 9	10
+<emphasis role="stamnt">i</emphasis>1      68       .       6.00    .
+<emphasis role="stamnt">i</emphasis>1      72       .       7.00    .
+<emphasis role="comment">;--------------------------------------------------------------------------------------------------------------------------------------------</emphasis>
+<emphasis role="comment">; transfer function3: h0   h1   h2   h3   h4   h5   h6    h7   h8   h9   h10   h11 	h12   h13    h14    h15    h16    h17    h18    h19    h17   h18   h19   h20</emphasis>
+<emphasis role="stamnt">f</emphasis>11 0 513 13 1 1      0    0    0    0    0    0    0     -1   0    1     0     0       -.1    0     .1      0     -.2    .3      0     -.7     0    .2     0    -.1                        
+<emphasis role="stamnt">f</emphasis>12 0 257 4 11 1      <emphasis role="comment">; normalizing function with midpoint bipolar offset</emphasis>
+
+<emphasis role="comment">;	st	dur	pch	amp	wsfn	nmfn</emphasis>
+<emphasis role="stamnt">i</emphasis>1      80       4     5.00     .7	 11	12
+<emphasis role="stamnt">i</emphasis>1      84       .     5.06     .
+<emphasis role="stamnt">i</emphasis>1      88       .     6.00     .
+<emphasis role="comment">;--------------------------------------------------------------------------------------------------------------------------------------------</emphasis>
+<emphasis role="comment">;=========================================================================;</emphasis>
+<emphasis role="comment">; split a sinusoid into 3 odd-harmonic partials of relative strength 5:3:1</emphasis>
+<emphasis role="comment">;=========================================================================;</emphasis>
+<emphasis role="comment">;--------------------------------------------------------------------------------------------------------------------------------------------</emphasis>
+<emphasis role="comment">; transfer function4: h0   h1   h2   h3   h4   h5</emphasis>
+<emphasis role="stamnt">f</emphasis>13 0 513 13 1 1      0    5    0    3    0    1	
+<emphasis role="stamnt">f</emphasis>14 0 257 4 13 1      <emphasis role="comment">; normalizing function with midpoint bipolar offset</emphasis>
+
+<emphasis role="comment">;	st	dur	pch	amp	wsfn	nmfn</emphasis>
+<emphasis role="stamnt">i</emphasis>1      96      4     5.00     .7	 13	14
+<emphasis role="stamnt">i</emphasis>1      100     .     5.06     .
+<emphasis role="stamnt">i</emphasis>1      104     .     6.00     .
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

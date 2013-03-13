@@ -1,0 +1,68 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac     <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o tableiw.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="ohdr">seed</emphasis> 0	<emphasis role="comment">;generate new values every time the instr is played</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 1
+
+ifn <emphasis role="op">=</emphasis> p4
+isize <emphasis role="op">=</emphasis> p5
+ithresh <emphasis role="op">=</emphasis> 0.5
+    
+itemp <emphasis role="ohdr">ftgen</emphasis> ifn, 0, isize, 21, 2
+
+iwrite_value <emphasis role="op">=</emphasis> 0
+i_index <emphasis role="op">=</emphasis> 0
+    
+<emphasis role="olabel">loop_start</emphasis><emphasis role="op">:</emphasis>
+    iread_value <emphasis role="opc">tablei</emphasis> i_index, ifn
+    
+    <emphasis role="octrl">if</emphasis> iread_value <emphasis role="op">></emphasis> ithresh then
+         iwrite_value <emphasis role="op">=</emphasis> 1
+    <emphasis role="octrl">else</emphasis>
+         iwrite_value <emphasis role="op">=</emphasis> <emphasis role="op">-</emphasis>1
+    <emphasis role="octrl">endif</emphasis>
+<emphasis role="opc">tableiw</emphasis> iwrite_value, i_index, ifn
+<emphasis role="octrl">loop_lt</emphasis> i_index, 1, isize, <emphasis role="olabel">loop_start</emphasis>        
+    <emphasis role="opc">turnoff</emphasis>
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 2
+
+ifn <emphasis role="op">=</emphasis> p4
+isize <emphasis role="op">=</emphasis> <emphasis role="opc">ftlen</emphasis>(ifn)    
+<emphasis role="opc">prints</emphasis> "Index\tValue\n"
+    
+i_index <emphasis role="op">=</emphasis> 0
+<emphasis role="olabel">loop_start</emphasis><emphasis role="op">:</emphasis>
+    ivalue <emphasis role="opc">tablei</emphasis> i_index, ifn
+    <emphasis role="opc">prints</emphasis> "<emphasis role="op">%</emphasis>d<emphasis role="op">:</emphasis>\t<emphasis role="op">%</emphasis>f\n", i_index, ivalue
+
+  <emphasis role="octrl">loop_lt</emphasis> i_index, 1, isize, <emphasis role="olabel">loop_start</emphasis>		<emphasis role="comment">;read table 1 with our index</emphasis>
+
+aout <emphasis role="opc">oscili</emphasis> .5, 100, ifn			<emphasis role="comment">;use table to play the polypulse</emphasis>
+     <emphasis role="opc">outs</emphasis>   aout, aout
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 1 100 16
+<emphasis role="stamnt">i</emphasis> 2 0 2 100
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

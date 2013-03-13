@@ -1,0 +1,119 @@
+<refentry id="JackoInit">
+  <indexterm id="IndexJackoInit"><primary>JackoInit</primary></indexterm>
+  <refentryinfo><title>Jacko Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>JackoInit</refentrytitle>
+  </refmeta>
+  
+  <refnamediv>
+    <refname>JackoInit</refname>
+    <refpurpose>
+      Initializes Csound as a Jack client.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Initializes this instance of Csound as a Jack client. 
+    </para>
+
+    <para> 
+      Csound's sr must be equal to the Jack daemon's 
+      frames per second.
+    </para> 
+
+    <para> 
+      Csound's ksmps must be equal to the Jack daemon's 
+      frames per period.
+    </para>
+    
+    <para> 
+      Frames per period must not only (a) be a power of 2,
+      but also (b) go evenly into the frames per second,
+      e.g. 128 frames per period goes into 48000 
+      frames per second 375 times, for a latency or 
+      MIDI time granularity of about 2.7 milliseconds
+      (as good as or better than the absolute best 
+      human performers). 
+    </para>
+    
+    <para> 
+      The order of processing of all signals that pass 
+      from Jack input ports, through Csound processing, 
+      and to Jack output ports, must be properly
+      determined by sequence of instrument and 
+      opcode definition within Csound.
+    </para>
+
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>JackoInit </command>SclientName, ServerName</synopsis>
+  </refsect1>
+  
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>Sname</emphasis> -- String name of the inlet port.       
+      The name of the inlet is implicitly qualified by the instrument name 
+      or number, so it is valid to use the same inlet name in more than one 
+      instrument (but not to use the same inlet name twice in one instrument).
+    </para>
+
+    <para>
+      <emphasis>SclientName</emphasis> -- The name of the Jack client; 
+      normally, should be "csound". 
+    </para>
+    
+    <para>
+      <emphasis>ServerName</emphasis> -- The name of the Jack daemon; 
+      normally, will be "default".
+    </para>
+    
+    <para>
+      This opcode must be called once and only once in the 
+      orchestra header, and before any other Jack opcodes. 
+      If more than one instance of Csound is using the Jack
+      opcodes at the same time, then each instance of Csound 
+      must use a different client name.
+    </para>        
+  </refsect1>
+  
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the JackoInit opcode. It uses the file <ulink url="examples/JackoInit.csd"><citetitle>JackoInit.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the JackoInit opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/JackoInit.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="JackoInfo"><citetitle>JackoInfo</citetitle></link>, 
+      <link linkend="JackoFreewheel"><citetitle>JackoFreewheel</citetitle></link>, 
+      <link linkend="JackoAudioInConnect"><citetitle>JackoAudioInConnect</citetitle></link>, 
+      <link linkend="JackoAudioOutConnect"><citetitle>JackoAudioOutConnect</citetitle></link>, 
+      <link linkend="JackoMidiInConnect"><citetitle>JackoMidiInConnect</citetitle></link>, 
+      <link linkend="JackoMidiOutConnect"><citetitle>JackoMidiOutConnect</citetitle></link>, 
+      <link linkend="JackoOn"><citetitle>JackoOn</citetitle></link>, 
+      <link linkend="JackoAudioIn"><citetitle>JackoAudioIn</citetitle></link>, 
+      <link linkend="JackoAudioOut"><citetitle>JackoAudioOut</citetitle></link>, 
+      <link linkend="JackoMidiOut"><citetitle>JackoMidiOut</citetitle></link>, 
+      <link linkend="JackoNoteOut"><citetitle>JackoNoteOut</citetitle></link>, 
+      <link linkend="JackoTransport"><citetitle>JackoTransport</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>By: &namemichael; 2010</para>
+  </refsect1>
+
+</refentry>

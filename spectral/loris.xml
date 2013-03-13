@@ -1,0 +1,231 @@
+<section id="loris">
+<title>Loris Opcodes</title>
+<note>
+	<para>These opcodes are an optional component of Csound5. You can check if they are installed by using the command 'csound -z' which lists all available opcodes.</para>
+</note>
+<para>The Loris family of opcodes wraps:
+    <link linkend="lorisread"><citetitle>lorisread</citetitle></link>
+    which imports a set of bandwidth-enhanced partials from a SDIF-format data file, applying control-rate frequency, amplitude, and bandwidth scaling envelopes, and stores the modified partials in memory;
+    <link
+    linkend="lorismorph"><citetitle>lorismorph</citetitle></link>,
+    which morphs two stored sets of bandwidth-enhanced partials and stores a new set of partials representing the morphed sound. The morph is performed by linearly interpolating the parameter envelopes (frequency, amplitude, and bandwidth, or noisiness) of the bandwidth-enhanced partials according to control-rate frequency, amplitude, and bandwidth morphing functions, and 
+    <link linkend="lorisplay"><citetitle>lorisplay</citetitle></link>,
+    which renders a stored set of bandwidth-enhanced partials using the method of Bandwidth-Enhanced Additive Synthesis implemented in the Loris software, applying control-rate frequency, amplitude, and bandwidth scaling envelopes.
+</para>
+
+<!--<para>Note that a version of Loris with a Python interface is packaged as part of the
+CsoundAC distribution, so it is possible to perform both analysis and
+synthesis with Loris in Csound 5.</para>-->
+
+<para>For more information about sound morphing and manipulation using
+Loris and the Reassigned Bandwidth-Enhanced Additive Model, visit the
+Loris web site at <ulink
+url="http://www.cerlsoundgroup.org/Loris">www.cerlsoundgroup.org/Loris</ulink>.</para>
+
+<bridgehead>Examples</bridgehead>
+
+<example>
+  <title>Play the partials wihtout modification</title>
+<programlisting>
+<emphasis role="comment">; 
+; Play the partials in clarinet.sdif 
+; from 0 to 3 sec with 1 ms fadetime 
+; and no frequency , amplitude, or 
+; bandwidth modification.
+;</emphasis>
+<emphasis role="oblock">instr 1</emphasis>
+    ktime    <emphasis role="opc">linseg</emphasis>      0, p3, 3.0    <emphasis role="comment">; linear time function from 0 to 3 seconds</emphasis>
+             <emphasis role="opc">lorisread</emphasis>   ktime, "clarinet.sdif", 1, 1, 1, 1, .001
+    asig     <emphasis role="opc">lorisplay</emphasis>   1, 1, 1, 1
+             <emphasis role="opc">out</emphasis>         asig
+<emphasis role="oblock">endin</emphasis></programlisting>
+</example>
+
+<example>
+  <title>Add tuning and vibrato</title>
+<programlisting>
+<emphasis role="comment">; Play the partials in clarinet.sdif 
+; from 0 to 3 sec with 1 ms fadetime 
+; adding tuning and vibrato, increasing the 
+; "breathiness" (noisiness) and overall
+; amplitude, and adding a highpass filter.
+;</emphasis>
+<emphasis role="oblock">instr 2</emphasis>
+    ktime    <emphasis role="opc">linseg</emphasis>      0, p3, 3.0    <emphasis role="comment">; linear time function from 0 to 3 seconds</emphasis>
+
+    <emphasis role="comment">; compute frequency scale for tuning</emphasis>
+    <emphasis role="comment">; (original pitch was G#4)</emphasis>
+    ifscale  <emphasis role="op">=</emphasis>           <emphasis role="opc">cpspch</emphasis>(p4)<emphasis role="op">/</emphasis><emphasis role="opc">cpspch</emphasis>(8.08)
+
+    <emphasis role="comment">; make a vibrato envelope</emphasis>
+    kvenv    <emphasis role="opc">linseg</emphasis>      0, p3/6, 0, p3/6, .02, p3/3, .02, p3/6, 0, p3/6, 0
+    kvib     <emphasis role="opc">oscil</emphasis>       kvenv, 4, 1   <emphasis role="comment">; table 1, sinusoid</emphasis>
+
+    kbwenv   <emphasis role="opc">linseg</emphasis>      1, p3<emphasis role="op">/</emphasis>6, 1, p3<emphasis role="op">/</emphasis>6, 2, 2<emphasis role="op">*</emphasis>p3<emphasis role="op">/</emphasis>3, 2
+             <emphasis role="opc">lorisread</emphasis>   ktime, "clarinet.sdif", 1, 1, 1, 1, .001
+    a1       <emphasis role="opc">lorisplay</emphasis>   1, ifscale<emphasis role="op">+</emphasis>kvib, 2, kbwenv  
+    a2       <emphasis role="opc">atone</emphasis>       a1, 1000      <emphasis role="comment">; highpass filter, cutoff 1000 Hz</emphasis>
+             <emphasis role="opc">out</emphasis>         a2
+<emphasis role="oblock">endin</emphasis></programlisting>
+</example>
+
+<para>The instrument in the first example synthesizes a clarinet tone from
+beginning to end using partials derived from reassigned
+bandwidth-enhanced analysis of a three-second clarinet tone, stored in
+a file, <filename>clarinet.sdif</filename>. The instrument in Example 2 adds tuning and
+vibrato to the clarinet tone synthesized by instr 1, boosts its
+amplitde and noisiness, and applies a highpass filter to the
+result. The following score can be used to test both of the
+instruments described above.</para>
+
+<programlisting>
+    <emphasis role="comment">; make sinusoid in table 1</emphasis>
+    <emphasis role="stamnt">f</emphasis> 1 0 4096 10 1
+
+    <emphasis role="comment">; play instr 1</emphasis>
+    <emphasis role="comment">;     strt   dur</emphasis>
+    <emphasis role="stamnt">i</emphasis> 1    0      3
+    <emphasis role="stamnt">i</emphasis> 1    +      1
+    <emphasis role="stamnt">i</emphasis> 1    +      6
+    <emphasis role="stamnt">s</emphasis>
+	
+    <emphasis role="comment">; play instr 2</emphasis>
+    <emphasis role="comment">;     strt   dur   ptch</emphasis>
+    <emphasis role="stamnt">i</emphasis> 2     1     3    8.08
+    <emphasis role="stamnt">i</emphasis> 2     3.5   1    8.04
+    <emphasis role="stamnt">i</emphasis> 2     4     6    8.00
+    <emphasis role="stamnt">i</emphasis> 2     4     6    8.07
+
+    <emphasis role="stamnt">e</emphasis></programlisting>
+
+<example>
+  <title>Morph partials</title>
+<programlisting>
+<emphasis role="comment">; Morph the partials in clarinet.sdif into the
+; partials in flute.sdif over the duration of
+; the sustained portion of the two tones (from
+; .2 to 2.0 seconds in the clarinet, and from
+; .5 to 2.1 seconds in the flute). The onset
+; and decay portions in the morphed sound are
+; specified by parameters p4 and p5, respectively.
+; The morphing time is the time between the
+; onset and the decay. The clarinet partials are
+; shfited in pitch to match the pitch of the flute
+; tone (D above middle C). 
+;</emphasis>
+<emphasis role="oblock">instr</emphasis> 1
+    ionset   <emphasis role="op">=</emphasis>           p4
+    idecay   <emphasis role="op">=</emphasis>           p5
+    itmorph  <emphasis role="op">=</emphasis>           p3 <emphasis role="op">-</emphasis> (ionset <emphasis role="op">+</emphasis> idecay)
+    ipshift  <emphasis role="op">=</emphasis>           <emphasis role="opc">cpspch</emphasis>(8.02)<emphasis role="op">/</emphasis><emphasis role="opc">cpspch</emphasis>(8.08)
+    
+      <emphasis role="comment">; clarinet time function, morph from .2 to 2.0 seconds</emphasis>
+    ktcl     <emphasis role="opc">linseg</emphasis>      0, ionset, .2, itmorph, 2.0, idecay, 2.1
+      <emphasis role="comment">; flute time function, morph from .5 to 2.1 seconds</emphasis>
+    ktfl     <emphasis role="opc">linseg</emphasis>      0, ionset, .5, itmorph, 2.1, idecay, 2.3
+    kmurph   <emphasis role="opc">linseg</emphasis>      0, ionset, 0, itmorph, 1, idecay, 1
+             <emphasis role="opc">lorisread</emphasis>   ktcl, "clarinet.sdif", 1, ipshift, 2, 1, .001
+             <emphasis role="opc">lorisread</emphasis>   ktfl, "flute.sdif", 2, 1, 1, 1, .001
+             <emphasis role="opc">lorismorph</emphasis>  1, 2, 3, kmurph, kmurph, kmurph
+    asig     <emphasis role="opc">lorisplay</emphasis>   3, 1, 1, 1
+             <emphasis role="opc">out</emphasis>         asig
+<emphasis role="oblock">endin</emphasis></programlisting>
+</example>
+
+<example>
+  <title>More morphing</title>
+<programlisting>
+<emphasis role="comment">; Morph the partials in trombone.sdif into the
+; partials in meow.sdif. The start and end times
+; for the morph are specified by parameters p4 
+; and p5, respectively. The morph occurs over the
+; second of four pitches in each of the sounds, 
+; from .75 to 1.2 seconds in the flutter-tongued
+; trombone tone, and from 1.7 to 2.2 seconds in 
+; the cat's meow. Different morphing functions are
+; used for the frequency and amplitude envelopes,
+; so that the partial amplitudes make a faster  
+; transition from trombone to cat than the frequencies. 
+; (The bandwidth envelopes use the same morphing 
+; function as the amplitudes.) 
+;</emphasis>
+<emphasis role="oblock">instr</emphasis> 2
+    ionset   <emphasis role="op">=</emphasis>           p4
+    imorph   <emphasis role="op">=</emphasis>           p5 <emphasis role="op">-</emphasis> p4
+    irelease <emphasis role="op">=</emphasis>           p3 <emphasis role="op">-</emphasis> p5
+        
+    kttbn    <emphasis role="opc">linseg</emphasis>      0, ionset, .75, imorph, 1.2, irelease, 2.4
+    ktmeow   <emphasis role="opc">linseg</emphasis>      0, ionset, 1.7, imorph, 2.2, irelease, 3.4
+    
+    kmfreq   <emphasis role="opc">linseg</emphasis>      0, ionset, 0, .75*imorph, .25, .25*imorph, 1, irelease, 1
+    kmamp    <emphasis role="opc">linseg</emphasis>      0, ionset, 0, .75*imorph, .9, .25*imorph, 1, irelease, 1
+    
+             <emphasis role="opc">lorisread</emphasis>   kttbn, "trombone.sdif", 1, 1, 1, 1, .001
+             <emphasis role="opc">lorisread</emphasis>   ktmeow, "meow.sdif", 2, 1, 1, 1, .001
+             <emphasis role="opc">lorismorph</emphasis>  1, 2, 3, kmfreq, kmamp, kmamp
+    asig     <emphasis role="opc">lorisplay</emphasis>   3, 1, 1, 1
+             <emphasis role="opc">out</emphasis>         asig
+<emphasis role="oblock">endin</emphasis></programlisting>
+</example>
+
+<para>The instrument in the first morphing example performs a sound morph
+between a clarinet tone and a flute tone using reassigned
+bandwidth-enhanced partials stored in <filename>clarinet.sdif</filename> and
+<filename>flute.sdif</filename>.</para>
+
+<para>The morph is performed over the sustain portions of the tones,
+2. seconds to 2.0 seconds in the case of the clarinet tone and .5
+seconds to 2.1 seconds in the case of the flute tone. The time index
+functions, ktcl and ktfl, align the onset and decay portions of the
+tones with the specified onset and decay times for the morphed sound,
+specified by parameters p4 and p5, respectively. The onset in the
+morphed sounds is purely clarinet partial data, and the decay is
+purely flute data. The clarinet partials are shifted in pitch to match
+the pitch of the flute tone (D above middle C).</para>
+
+<para>The instrument in the second morphing example performs a sound morph
+between a flutter-tongued trombone tone and a cat's meow using
+reassigned bandwidth-enhanced partials stored in <filename>trombone.sdif</filename> and
+<filename>meow.sdif</filename>. The data in these SDIF files have been channelized and
+distilled to establish correspondences between partials.</para>
+
+<para>The two sets of partials are imported and stored in memory
+locations labeled 1 and 2, respectively. Both of the original sounds
+have four notes, and the morph is performed over the second note in
+each sound (from .75 to 1.2 seconds in the flutter-tongued trombone
+tone, and from 1.7 to 2.2 seconds in the cat's meow). The different
+time index functions, kttbn and ktmeow, align those segments of the
+source and target partial sets with the specified morph start, morph
+end, and overall duration parameters. Two different morphing functions
+are used, so that the partial ammplitudes and bandwidth coefficients
+morph quickly from the trombone values to the cat's-meow values, and
+the frequencies make a more gradual transition. The morphed partials
+are stored in a memory location labeled 3 and rendered by the
+subsequent lorisplay instruction. They could also have been used as a
+source for another morph in a three-way morphing instrument. The
+following score can be used to test both of the instruments described
+above.</para>
+
+<programlisting>
+    <emphasis role="comment">; play instr 1</emphasis>
+    <emphasis role="comment">;     strt   dur   onset   decay</emphasis>
+    <emphasis role="stamnt">i</emphasis> 1    0      3     .25     .15
+    <emphasis role="stamnt">i</emphasis> 1    +      1     .10     .10
+    <emphasis role="stamnt">i</emphasis> 1    +      6    1.      1.
+    <emphasis role="stamnt">s</emphasis>
+
+    <emphasis role="comment">; play instr 2</emphasis>
+    <emphasis role="comment">;     strt   dur  morph_start   morph_end</emphasis>
+    <emphasis role="stamnt">i</emphasis> 2    0      4     .75           2.75
+
+    <emphasis role="stamnt">e</emphasis></programlisting>
+
+
+<bridgehead>Credits</bridgehead>
+
+<para>This implementation of the Loris unit generators was written by Kelly
+Fitz (<ulink
+url="mailto:loris@cerlsoundgroup.org">loris@cerlsoundgroup.org</ulink>).</para>
+<para>It is patterned after a prototype implementation of the <emphasis>lorisplay</emphasis> unit generator written by Corbin Champion, and based on the method of Bandwidth-Enhanced Additive Synthesis and on the sound morphing algorithms implemented in the Loris library for sound modeling and manipulation. The opcodes were further adapted as a plugin for Csound 5 by Michael Gogins.</para>
+
+</section>

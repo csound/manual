@@ -1,0 +1,84 @@
+
+<refentry id="GEN52">
+      <indexterm id="IndexGEN52"><primary>GEN52</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN52</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>GEN52</refname>
+    <refpurpose>
+      Creates an interleaved multichannel table from the specified
+	 source tables, in the format expected by the <emphasis>ftconv</emphasis> opcode.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+    GEN52 creates an interleaved multichannel table from the specified
+	source tables, in the format expected by the <link linkend="ftconv"><citetitle>ftconv</citetitle></link> opcode.
+	It can also be used to extract a channel from a multichannel table
+	and store it in a normal mono table, copy tables with skipping some
+	samples, adding delay, or store in reverse order, etc.
+    </para>
+    <para>
+      Three parameters must be given for each channel to be processed. <emphasis>fsrc</emphasis> declares the source f-table number. The parameter <emphasis>offset</emphasis> specifies an offset for the source file. If different to 0, the source file is not read from the beginning, but the  <emphasis>offset</emphasis> number of values are skipped. The <emphasis>offset</emphasis> is used to determine the channel number to be read from interleaved f-tables, e.g. for channel 2, <emphasis>offset</emphasis> must be 1. It can also be used to set a read offset on the source table. This parameter gives absolute values, so if a skip of 20 sample frames for a 2 channel f-table is desired, <emphasis>offset</emphasis> must be set to 40. The <emphasis>srcchnls</emphasis> parameter is used to declare the number of channels in the source f-table. This parameter sets the skip size when reading the source f-table.
+    </para>
+    <para>
+      When more than one channel (<emphasis>nchannels</emphasis> > 1) is given, source f-tables are interleaved in the newly created table.
+    </para>
+    <para>
+      If the source f-table is finished before the destination f-table is full, the remaining values are set to 0.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>f</command> # time size 52 nchannels fsrc1 offset1 srcchnls1 [fsrc2 offset2 srcchnls2 ... fsrcN offsetN srcchnlsN]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Example</title>
+	<programlisting>
+<emphasis role="comment">; source tables</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 16384 10 1
+<emphasis role="stamnt">f</emphasis> 2 0 16384 10 0 1
+<emphasis role="comment">; create 2 channel interleaved table</emphasis>
+<emphasis role="stamnt">f</emphasis> 3 0 32768 -52 2 1 0 1 2 0 1
+<emphasis role="comment">; extract first channel from table 3</emphasis>
+<emphasis role="stamnt">f</emphasis> 4 0 16384 -52 1 3 0 2
+<emphasis role="comment">; extract second channel from table 3</emphasis>
+<emphasis role="stamnt">f</emphasis> 5 0 16384 -52 1 3 1 2</programlisting>
+    <para>
+      Here is a complete example of the GEN52 opcode. It uses the file <ulink url="examples/gen52.csd"><citetitle>gen52.csd</citetitle></ulink>.
+           <example>
+        <title>Example of the GEN52 opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/gen52.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>  
+        <textobject>
+          <phrase>This is the diagram of the waveform of the GEN52 routine, as used in the example:</phrase>
+        </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen52.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 3 0 262144 -52 3 2 0 4 2 1 4 2 2 4</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 3 0 262144 -52 3 2 0 4 2 1 4 2 2 4</para>
+        </caption>
+      </mediaobject>
+   
+    </para>
+  </refsect1> 
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &nameistvan;</para>
+  </refsect1>
+</refentry>

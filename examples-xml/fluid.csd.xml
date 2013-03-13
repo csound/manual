@@ -1,0 +1,42 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Audio out   Audio in</emphasis>
+-odac           -iadc     -M0    <emphasis role="comment">;;;RT audio I/O and RT midi</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 100
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+
+giengine	<emphasis role="opc">fluidEngine</emphasis>
+<emphasis role="comment">; soundfont path to manual/examples</emphasis>
+isfnum	<emphasis role="opc">fluidLoad</emphasis> "07AcousticGuitar.sf2", giengine, 1
+		<emphasis role="opc">fluidProgramSelect</emphasis> giengine, 1, isfnum, 0, 0
+
+<emphasis role="oblock">instr</emphasis> 1
+	<emphasis role="opc">mididefault</emphasis>		60, p3
+	<emphasis role="opc">midinoteonkey</emphasis>	p4, p5
+ikey	<emphasis role="opc">init</emphasis>	p4
+ivel	<emphasis role="opc">init</emphasis>	p5
+
+	<emphasis role="opc">fluidNote</emphasis>	giengine, 1, ikey, ivel
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 99
+imvol	<emphasis role="opc">init</emphasis>	120000
+asigl, asigr	<emphasis role="opc">fluidOut</emphasis>	giengine
+	<emphasis role="opc">outs</emphasis>	asigl <emphasis role="op">*</emphasis> imvol, asigr <emphasis role="op">*</emphasis> imvol
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1 0 3600 60 100
+<emphasis role="stamnt">i</emphasis> 99 0 3600
+<emphasis role="stamnt">e</emphasis>
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

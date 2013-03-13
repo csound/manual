@@ -1,0 +1,81 @@
+
+<refentry id="pvsin">
+<indexterm id="Indexpvsin"><primary>pvsin</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsin</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvsin</refname>
+    <refpurpose>
+      Retrieve an fsig from the input software bus; a pvs equivalent to chani.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This opcode retrieves an f-sig from the pvs in software bus, which can be
+      used to get data from an external source, using the Csound 5 API. A channel
+      is created if not already existing. The fsig channel is in that case initialised with
+      the given parameters. It is important to note that the pvs input
+      and output (pvsout opcode) busses are independent and data is not shared between them.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>fsig <command>pvsin</command> kchan[, isize, iolap, iwinsize, iwintype, iformat]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>isize</emphasis> -- initial DFT size,defaults to 1024.
+    </para>
+    <para>
+      <emphasis>iolap</emphasis> -- size of overlap, defaults to <emphasis>isize</emphasis>/4.
+    </para>
+   <para>
+      <emphasis>iwinsize</emphasis> -- size of analysis window, defaults to <emphasis>isize</emphasis>.
+    </para>
+   <para>
+      <emphasis>iwintype</emphasis> -- type of window, defaults to Hanning (1) (see <emphasis>pvsanal</emphasis>)
+    </para>
+   <para>
+      <emphasis>iformat</emphasis> -- data format, defaults 0 (PVS_AMP_FREQ). Other possible
+      values are 1 (PVS_AMP_PHASE), 2  (PVS_COMPLEX) or 3 (PVS_TRACKS).
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>fsig</emphasis> -- output fsig.
+    </para>
+    <para>
+      <emphasis>kchan</emphasis> -- channel number. If non-existent, a channel will be created.
+    </para>
+   </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      <example>
+        <title>Example</title>
+        <programlisting>
+          fsig  <emphasis role="opc">pvsin</emphasis>   0  <emphasis role="comment">; get data from pvs in bus channel 0</emphasis></programlisting>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>August 2006 </member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

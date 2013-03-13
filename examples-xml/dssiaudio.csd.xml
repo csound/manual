@@ -1,0 +1,58 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac     <emphasis role="comment">;;;RT audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if RT audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o DSSIplay_mono.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+
+gihandle <emphasis role="opc">dssiinit</emphasis> "caps.so", 19, 1	<emphasis role="comment">; = mono phaser and</emphasis>
+gaout    <emphasis role="opc">init</emphasis>  0			<emphasis role="comment">; verbose about all ports</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 1	<emphasis role="comment">; activate DSSI</emphasis>
+
+<emphasis role="opc">dssiactivate</emphasis> gihandle, 1
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 2
+ain1	<emphasis role="opc">diskin2</emphasis> "beats.wav", 1,0,1	<emphasis role="comment">; loop</emphasis>
+
+gaout <emphasis role="op">=</emphasis> gaout<emphasis role="op">+</emphasis>(ain1<emphasis role="op">*</emphasis>.5)
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 3
+
+<emphasis role="opc">dssictls</emphasis> gihandle, 0, .8, 1		<emphasis role="comment">; range -1 to 1</emphasis>
+<emphasis role="opc">dssictls</emphasis> gihandle, 1, .05, 1		<emphasis role="comment">; rate 0 to 10</emphasis>
+<emphasis role="opc">dssictls</emphasis> gihandle, 2, .8, 1		<emphasis role="comment">; depth 0 to 1</emphasis>
+<emphasis role="opc">dssictls</emphasis> gihandle, 3, 2, 1		<emphasis role="comment">; spread 0 to 3.14</emphasis>
+<emphasis role="opc">dssictls</emphasis> gihandle, 4, .7, 1		<emphasis role="comment">; feedback 0 to 0.999</emphasis>
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 4
+
+aout1 <emphasis role="opc">dssiaudio</emphasis> gihandle, gaout	<emphasis role="comment">;get beats.wav, mono out</emphasis>
+      <emphasis role="opc">outs</emphasis> aout1,aout1
+
+gaout <emphasis role="op">=</emphasis> 0
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 20 
+<emphasis role="stamnt">i</emphasis> 2 1 20
+<emphasis role="stamnt">i</emphasis> 3 1 20
+<emphasis role="stamnt">i</emphasis> 4 0 20
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

@@ -1,0 +1,177 @@
+
+<refentry id="i">
+      <indexterm id="IndexIStatement"><primary>i statement</primary></indexterm>
+      <indexterm id="IndexInstrumentStatement"><primary>instrument statement</primary></indexterm>
+      <indexterm id="IndexNoteStatement"><primary>note statement</primary></indexterm>
+  <refmeta>
+    <refentrytitle>i Statement (Instrument or Note Statement)</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>i</refname>
+    <refpurpose>
+      Makes an instrument active at a specific time and for a certain duration.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This statement calls for an instrument to be made active at a specific time and for a certain duration. The parameter field values are passed to that instrument prior to its initialization, and remain valid throughout its Performance.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>i</command>  p1  p2  p3  p4  ...</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>p1</emphasis> -- Instrument number, usually a non-negative integer. An optional fractional part can provide an additional tag for specifying ties between particular notes of consecutive clusters. A negative p1 (including tag) can be used to turn off a particular <quote>held</quote> note.
+    </para>
+
+    <para>
+      <emphasis>p2</emphasis> -- Starting time in arbitrary units called beats.
+    </para>
+
+    <para>
+      <emphasis>p3</emphasis> -- Duration time in beats (usually positive). A negative value will initiate a  held note (see also <link linkend="ihold"><citetitle>ihold</citetitle></link>). A negative value can also be used for 'always on' instruments like reverberation. These notes are not terminated by <link linkend="s"><citetitle>s statements</citetitle></link> A zero value will invoke an initialization pass without performance (see also <link linkend="instr"><citetitle>instr</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis>p4 ...</emphasis> -- Parameters whose significance is determined by the instrument.      
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      Beats are evaluated as seconds, unless there is a <link linkend="t"><citetitle>t statement</citetitle></link> in this score section or a <link linkend="FlagsMinusLowerT"><citetitle>-t flag</citetitle></link> in the command-line.
+    </para>
+
+    <para>
+      Starting or action times are relative to the beginning of a section ( see <link linkend="s"><citetitle>s statement</citetitle></link>), which is assigned time 0.
+    </para>
+
+    <para>
+      Note statements within a section may be placed in any order. Before being sent to an orchestra, unordered score statements must first be processed by Sorter, which will reorder them by ascending p2 value. Notes with the same p2 value will be ordered by ascending p1; if the same p1, then by ascending p3.
+    </para>
+
+    <para>
+      Notes may be stacked, i.e., a single instrument can perform any number of notes simultaneously. (The necessary copies of the instrument's data space will be allocated dynamically by the orchestra loader.) Each note will normally turn off when its p3 duration has expired, or on receipt of a MIDI noteoff signal. An instrument can modify its own duration either by changing its p3 value during note initialization, or by prolonging itself through the action of a <link linkend="linenr"><citetitle>linenr</citetitle></link> or <link linkend="xtratim"><citetitle>xtratim</citetitle></link> unit.
+    </para>
+
+    <para>
+     An instrument may be turned on and left to perform indefinitely either by giving it a negative p3 or by including an <emphasis>ihold</emphasis> in its i-time code. If a held note is active, an <emphasis>i statement</emphasis> <emphasis>with matching p1</emphasis> will not cause a new allocation but will take over the data space of the held note. The new pfields (including p3) will now be in effect, and an i-time pass will be executed in which the units can either be newly initialized or allowed to continue as required for a tied note (see <link linkend="tigoto"><citetitle>tigoto</citetitle></link>). A held note may be succeeded either by another held note or by a note of finite duration. A held note will continue to perform across section endings (see <link linkend="s"><citetitle>s statement</citetitle></link>). It is halted only by <link linkend="turnoff"><citetitle>turnoff</citetitle></link> or by an <emphasis>i statement</emphasis> with negative matching p1 or by an <link linkend="e"><citetitle>e statement</citetitle></link>.
+    </para>
+
+    <para>
+      It is possible to have multiple instances (usually, but not necessarily, notes of different pitches) of the same instrument, held simultaneously, via negative p3 values. The instrument can then be fed new parameters from the score. This is useful for avoiding long hard-coded <emphasis>linseg</emphasis>s, and can be accomplished by adding a decimal part to the instrument number.
+    </para>
+
+    <para>
+      For example, to hold three copies of instrument 10 in a simple chord:
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">i</emphasis>10.1    0    -1    7.00
+<emphasis role="stamnt">i</emphasis>10.2    0    -1    7.04
+<emphasis role="stamnt">i</emphasis>10.3    0    -1    7.07</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      Subsequent <emphasis>i</emphasis> statements can refer to the same sounding note instances, and if the instrument definition is done properly, the new p-fields can be used to alter the character of the notes in progress.  For example, to bend the previous chord up an octave and release it:
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">i</emphasis>10.1    1    1    8.00
+<emphasis role="stamnt">i</emphasis>10.2    1    1    8.04
+<emphasis role="stamnt">i</emphasis>10.3    1    1    8.07</programlisting>
+      </informalexample>
+    </para>
+    <tip>
+      <para>When turning off notes, bear in mind that i 1.1 == i 1.10 and i 1.1 != i 1.01. The maximum number of decimal places that can be used depends on the precision Csound was compiled with (See <link linkend="MiscCsound64"><citetitle>Csound Double (64-bit) vs. Float (32-bit)</citetitle></link>)</para>
+    </tip>
+
+    <para>
+      The instrument definition has to take this into account, however, especially if clicks are to be avoided (see the example below).
+    </para>
+
+    <para>
+      Note that the decimal instrument number notation cannot be used in conjunction with real-time MIDI. In this case, the instrument would be monophonic while a note was held.
+    </para>
+
+    <para>
+      Notes being tied to previous instances of the same instrument, should skip most initialization by means of <link linkend="tigoto"><citetitle>tigoto</citetitle></link>, except for the values entered in score. For example, all table reading opcodes in the instrument, should usually be skipped, as they store their phase internally. If this is suddenly changed, there will be audible clicks in the output. 
+    </para>
+
+    <para>
+      Note that many opcodes (such as <emphasis>delay</emphasis> and <emphasis>reverb</emphasis>) are prepared for optional initialization. To use this feature, the <link linkend="tival"><citetitle>tival opcode</citetitle></link> is suitable. Therefore, they need not be hidden by a <emphasis>tigoto</emphasis> jump.
+    </para>
+
+    <para>
+      Beginning with Csound version 3.53, strings are recognized in  p-fields for opcodes that accept them (<emphasis>convolve, adsyn, diskin,</emphasis> etc.).  There may be only one string per score line.
+    </para>
+    <para>
+      You can also turnoff notes from the score by using a negative
+      number for the instrument (p1). This is equivalent to using
+      the <link linkend="turnoff2"><citetitle>turnoff2</citetitle></link>
+      opcode. When a note is turned off from the score, it is allowed
+      to release
+      (if <link linkend="xtratim"><citetitle>xtratim</citetitle></link>
+      or opcodes with release section
+      like <link linkend="linenr"><citetitle>linenr</citetitle></link>
+      are used) and only notes with the same fractional part are
+      turned off. Also, only the last instance of the instrument will
+      be turned off, so there have to be as many negative instrument
+      numbers as positive ones for all notes to be turned off.
+
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">i</emphasis> 1.1    1    300    8.00
+<emphasis role="stamnt">i</emphasis> 1.2    1    300    8.04
+<emphasis role="stamnt">i</emphasis> 1.3    1    -300    8.07
+<emphasis role="stamnt">i</emphasis> 1.3    1    -300    8.09
+
+<emphasis role="comment">; notice that p-fields after p2 will be ignored if </emphasis>
+<emphasis role="comment">; instrument number is negative</emphasis>
+<emphasis role="stamnt">i</emphasis> -1.1    3    1    4.00
+<emphasis role="stamnt">i</emphasis> -1.2    4    51    4.04
+<emphasis role="stamnt">i</emphasis> -1.3    5    1    4.07
+<emphasis role="stamnt">i</emphasis> -1.3    6    10    4.09
+	</programlisting>
+      </informalexample>
+    </para>
+    <refsect2>
+      <title>Special Considerations</title>
+
+      <para>
+        The maximum instrument number used to be 200. This has been changed to be limited by memory only (currently there is an internal soft limit of 200; this is automatically extended as required).
+      </para>
+    </refsect2>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the i statement. It uses the file <ulink url="examples/i_statement.csd"><citetitle>i_statement.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the i statement.</title>
+        <xi:include href="examples-xml/i_statement.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      Additional text (Csound Version 4.07) explaining tied notes, edited by &namerasmus; from a note by David Kirsh, posted to the Csound mailing list. Example instrument by &namerasmus;.
+    </para>
+
+    <para>
+      Updated August 2002 thanks to a note from &namerasmus;. There is no longer a hard limit of 200 instruments.
+    </para>
+  </refsect1>
+</refentry>
+

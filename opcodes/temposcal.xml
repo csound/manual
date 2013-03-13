@@ -1,0 +1,95 @@
+<refentry id="temposcal">
+<indexterm id="IndexTemposcal"><primary>temposcal</primary></indexterm>
+  <refentryinfo><title>Spectral processing: temposcal</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>temposcal</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>temposcal</refname>
+    <refpurpose>
+      Phase-locked vocoder processing with onset detection/processing, 'tempo-scaling'.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>temposcal</emphasis> implements phase-locked vocoder processing using function tables
+      containing sampled-sound sources, with <link linkend="GEN01"><citetitle>GEN01</citetitle></link>, and
+      <emphasis>temposcal</emphasis> will accept deferred allocation tables.
+    </para>
+    <para>
+      This opcode allows for time and frequency-independent scaling. Time is advanced internally, but controlled by a tempo scaling parameter; when an onset is detected, timescaling is momentarily stopped to avoid smearing of attacks. The quality of the effect is generally improved with phase locking switched on. 
+    </para>
+    <para>
+      <emphasis>temposcal</emphasis> will also scale pitch, independently of frequency, using a transposition factor (k-rate).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>asig <command>temposcal</command> ktimescal, kamp, kpitch, ktab, klock [,ifftsize, idecim, ithresh]
+      </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifftsize</emphasis> -- FFT size (power-of-two), defaults to 2048.
+    </para>
+    <para>
+      <emphasis>idecim</emphasis> -- decimation, defaults to 4 (meaning hopsize = fftsize/4)
+    </para>
+    <para>
+      <emphasis>idbthresh</emphasis> -- threshold based on dB power spectrum ratio between two successive windows. A detected ratio above it will cancel timescaling momentarily, to avoid smearing (defaults to 1)
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ktimescal</emphasis> -- timescaling ratio, &lt; 1 stretch, > 1 contract.
+    </para>
+    <para>
+      <emphasis>kamp</emphasis> -- amplitude scaling
+    </para>
+    <para>
+      <emphasis>kpitch</emphasis> -- grain pitch scaling (1=normal pitch, &lt; 1 lower, > 1 higher; negative, backwards)
+    </para>
+    <para>
+      <emphasis>klock</emphasis> -- 0 or 1, to switch phase-locking on/off
+    </para>
+    <para>
+      <emphasis>ktab</emphasis> -- source signal function table. Deferred-allocation tables (see
+      <link linkend="GEN01"><citetitle>GEN01</citetitle></link>) are accepted, but the opcode
+      expects a mono source. Tables can be switched at k-rate.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the temposcal opcode. It uses the file <ulink url="examples/temposcal.csd"><citetitle>temposcal.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the temposcal opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/temposcal.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>February 2010</member>
+      </simplelist>
+    </para>
+
+    <para>New plugin in version 5.13</para>
+    <para>February 2005.</para>
+  </refsect1>
+</refentry>
+

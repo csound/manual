@@ -1,0 +1,40 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac   -M0  <emphasis role="comment">;;;RT audio I/O with MIDI in</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if RT audio input is needed too</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis> <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1	<emphasis role="comment">; expects MIDI controller input on channel 1</emphasis>
+<emphasis role="comment">; run and move your midi controller to see result</emphasis>
+
+imax <emphasis role="op">=</emphasis> 1
+imin <emphasis role="op">=</emphasis> 0
+ichan <emphasis role="op">=</emphasis> 1 
+ictlno <emphasis role="op">=</emphasis> 7
+ 
+	<emphasis role="opc">initc7</emphasis>	1, 7, 1			<emphasis role="comment">; start at max. volume</emphasis>
+kamp	<emphasis role="opc">ctrl7</emphasis>	ichan, ictlno, imin, imax	<emphasis role="comment">; controller 7</emphasis>
+	<emphasis role="opc">printk2</emphasis>	kamp
+asig	<emphasis role="opc">oscil</emphasis>	kamp, 220, 1
+	<emphasis role="opc">outs</emphasis>	asig, asig
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 4096 10 1
+
+<emphasis role="stamnt">i</emphasis>1 0 20
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

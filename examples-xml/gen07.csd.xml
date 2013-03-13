@@ -1,0 +1,42 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac      <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o gen07.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100 
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32 
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2 
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1 
+
+<emphasis role="oblock">instr</emphasis> 1	<emphasis role="comment">;use GEN07 to alter frequency</emphasis>
+
+ifn  <emphasis role="op">=</emphasis> p4						<emphasis role="comment">;use different GEN07 tables</emphasis>
+kcps <emphasis role="opc">init</emphasis> 10<emphasis role="op">/</emphasis>p3						<emphasis role="comment">;index ftable 10 times over the duration of entire note</emphasis>
+kndx <emphasis role="opc">phasor</emphasis> kcps
+ixmode <emphasis role="op">=</emphasis> 1						<emphasis role="comment">;normalize index data</emphasis>
+kfrq <emphasis role="opc">tablei</emphasis> kndx, ifn, ixmode
+kfrq <emphasis role="op">=</emphasis> kfrq<emphasis role="op">*</emphasis>1000					<emphasis role="comment">;scale</emphasis>
+asig <emphasis role="opc">poscil</emphasis> .8, 1220<emphasis role="op">+</emphasis>kfrq, 1				<emphasis role="comment">;add to frequency</emphasis>
+     <emphasis role="opc">outs</emphasis> asig, asig
+  
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 8192 10 1				<emphasis role="comment">;sine wave</emphasis>
+<emphasis role="stamnt">f</emphasis> 2 0 1024 7 0 512 1 0 -1 512 0		<emphasis role="comment">;sawtooth up and down</emphasis>
+<emphasis role="stamnt">f</emphasis> 3 0 1024 7 1 512 1 0 -1 512 -1	<emphasis role="comment">;square</emphasis>
+<emphasis role="stamnt">f</emphasis> 4 0 1024 7 1 1024 -1 			<emphasis role="comment">;saw down</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1 0 2 2
+<emphasis role="stamnt">i</emphasis> 1 + 2 3
+<emphasis role="stamnt">i</emphasis> 1 + 1 4
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

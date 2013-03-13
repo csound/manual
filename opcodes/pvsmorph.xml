@@ -1,0 +1,91 @@
+<refentry id="pvsmorph">
+  <indexterm id="Indexpvsmorph"><primary>pvsmorph</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsmorph</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvsmorph</refname>
+    <refpurpose>
+      Performs morphing (or interpolation) between two source fsigs.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Performs morphing (or interpolation)  between two source fsigs.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>fsig <command>pvsmorph</command> fsig1, fsig2, kampint, kfrqint</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      The operation of this opcode is similar to that of <link linkend="pvcross"><citetitle>pvinterp</citetitle></link> (q.v.), 
+      except in using <emphasis>fsig</emphasis>s rather than analysis files, and the absence of spectral envelope preservation. 
+      The amplitudes and frequencies of <emphasis>fsig1</emphasis> are interpolated with those of <emphasis>fsig2</emphasis>, 
+      depending on the values of <emphasis>kampint</emphasis> and <emphasis>kfrqint</emphasis>, respectively. These range
+      between 0 and 1, where 0 means <emphasis>fsig1</emphasis> and 1, <emphasis>fsig2</emphasis>. Anything in between will
+      interpolate amps and/or freqs of the two fsigs.
+    </para>
+    <para>
+      With this opcode, morphing can be performed on real-time audio input, by using 
+      <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link> to generate <emphasis>fsig1</emphasis> and <emphasis>fsig2</emphasis>. 
+      These must have the same format.
+    </para>
+    <warning>
+      <para>
+        It is unsafe to use the same f-variable for both input and output of pvs opcodes. Using the same one might lead to undefined behavior on some opcodes. Use a different one on the left and right sides of the opcode.
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the pvsmorph opcode. It uses the file <ulink url="examples/pvsmorph.csd"><citetitle>pvsmorph.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the pvsmorph opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/pvsmorph.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Here is another example of the pvsmorph opcode. It uses the file <ulink url="examples/pvsmorph2.csd"><citetitle>pvsmorph2.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the pvsmorph opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/pvsmorph2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link>,
+      <link linkend="pvsynth"><citetitle>pvsynth</citetitle></link>,
+      <link linkend="pvsadsyn"><citetitle>pvsadsyn</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>April 2007 </member>
+      </simplelist>
+      New in Csound 5.06
+    </para>
+
+  </refsect1>
+</refentry>

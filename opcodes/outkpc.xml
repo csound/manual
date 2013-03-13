@@ -1,0 +1,109 @@
+
+<refentry id="outkpc">
+<indexterm id="IndexOutkpc"><primary>outkpc</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Output</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>outkpc</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>outkpc</refname>
+
+    <refpurpose>
+      Sends MIDI program change messages at k-rate.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Sends MIDI program change messages at k-rate.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>outkpc</command> kchn, kprog, kmin, kmax</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kchn</emphasis> -- MIDI channel number (1-16)
+    </para>
+
+    <para>
+      <emphasis>kprog</emphasis> -- program change number in floating point
+    </para>
+
+    <para>
+      <emphasis>kmin</emphasis> -- minimum floating point value (converted in MIDI integer value 0)
+    </para>
+
+    <para>
+      <emphasis>kmax</emphasis> -- maximum floating point value (converted in MIDI integer value 127 (7 bit))
+    </para>
+
+    <para>
+     <emphasis>outkpc</emphasis> (k-rate program change output) sends program change messages. It works only with MIDI instruments which recognize them. These opcodes can drive a different value of a parameter for each note currently active. 
+    </para>
+
+    <para>
+      It can scale the k-value floating-point argument according to the <emphasis>kmin</emphasis> and <emphasis>kmax</emphasis> values. For example: set <emphasis>kmin</emphasis> = 1.0 and <emphasis>kmax</emphasis> = 2.0.
+When the <emphasis>kvalue</emphasis> argument receives a 2.0 value, the opcode will send a 127 value to the MIDI OUT device. When the <emphasis>kvalue</emphasis> argument receives a 1.0 value, it will send a 0 value. k-rate opcodes send a message each time the MIDI converted value of argument <emphasis>kvalue</emphasis> changes.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the outkpc opcode. It uses the file <ulink url="examples/outkpc.csd"><citetitle>outkpc.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the outkpc opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+        <para>This example generates a program change and a note on Csound's MIDI output port whenever a note is received on channel 1. Be sure to have something connected to Csound's MIDI out port to hear the result.</para>
+          <xi:include href="examples-xml/outkpc.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Here is another example of the outkpc opcode. It uses the file <ulink url="examples/outkpc_fltk.csd"><citetitle>outkpc_flkt.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the outkpc opcode using FLTK.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/outkpc_fltk.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="outiat"><citetitle>outiat</citetitle></link>,
+      <link linkend="outic14"><citetitle>outic14</citetitle></link>,
+      <link linkend="outic"><citetitle>outic</citetitle></link>,
+      <link linkend="outipat"><citetitle>outipat</citetitle></link>,
+      <link linkend="outipb"><citetitle>outipb</citetitle></link>,
+      <link linkend="outipc"><citetitle>outipc</citetitle></link>,
+      <link linkend="outkat"><citetitle>outkat</citetitle></link>,
+      <link linkend="outkc14"><citetitle>outkc14</citetitle></link>,
+      <link linkend="outkc"><citetitle>outkc</citetitle></link>,
+      <link linkend="outkpat"><citetitle>outkpat</citetitle></link>,
+      <link linkend="outkpb"><citetitle>outkpb</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namegabriel;</member>
+        <member>Italy</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 3.47</para>
+    <para>Thanks goes to &namerasmus; for pointing out the correct MIDI channel and controller number ranges.</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,86 @@
+﻿
+<refentry id="atonex">
+<indexterm id="IndexAtonex"><primary>atonex</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>atonex</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>atonex</refname>
+    <refpurpose>
+      Emulates a stack of filters using the atone opcode.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>atonex</emphasis> is equivalent to a filter consisting of more layers of <link linkend="atone"><citetitle>atone</citetitle></link> with the same arguments, serially connected. Using a stack of a larger number of filters allows a sharper cutoff. They are faster than using a larger number instances in a Csound orchestra of the old opcodes, because only one initialization and k- cycle are needed at time and the audio loop falls entirely inside the cache memory of processor.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>atonex</command> asig, khp [, inumlayer] [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>inumlayer</emphasis> (optional) -- number of elements in the filter stack. Default value is 4.
+    </para>
+
+    <para>
+      <emphasis>iskip</emphasis> (optional, default=0) -- initial disposition of internal data space. Since filtering incorporates a feedback loop of previous output, the initial status of the storage space used is significant. A zero value will clear the space; a non-zero value will allow previous information to remain. The default value is 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asig</emphasis> -- input signal
+    </para>
+
+    <para>
+      <emphasis>khp</emphasis> -- the response curve's half-power point. Half power is defined as peak power / root 2.
+    </para>
+    
+  </refsect1>
+    <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the atonex opcode. It uses the file <ulink url="examples/atonex.csd"><citetitle>atonex.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the atonex opcode.</title>
+
+        
+
+        <xi:include href="examples-xml/atonex.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="resonx"><citetitle>resonx</citetitle></link>,
+      <link linkend="tonex"><citetitle>tonex</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namegabriel; (adapted by &namejohn;)</member>
+        <member>Italy</member>
+      </simplelist>
+    </para>
+    
+<para>New in Csound version 3.49</para>
+  </refsect1>
+</refentry>

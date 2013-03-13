@@ -1,0 +1,102 @@
+
+<refentry id="cabasa">
+<indexterm id="IndexCabasa"><primary>cabasa</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Models and Emulations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>cabasa</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>cabasa</refname>
+    <refpurpose>
+      Semi-physical model of a cabasa sound.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>cabasa</emphasis> is a semi-physical model of a cabasa sound. It is one of the PhISEM percussion opcodes. PhISEM (Physically Informed Stochastic Event Modeling) is an algorithmic approach for simulating collisions of multiple independent sound producing objects.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>cabasa</command> iamp, idettack [, inum] [, idamp] [, imaxshake]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iamp</emphasis> -- Amplitude of output.  Note: As these instruments are stochastic, this is only a approximation.
+    </para>
+
+    <para>
+      <emphasis>idettack</emphasis> -- period of time over which all sound is stopped
+    </para>
+ 
+    <para>
+      <emphasis>inum</emphasis> (optional) -- The number of beads, teeth, bells, timbrels, etc.  If zero, the default value is 512.
+    </para>
+
+    <para>
+      <emphasis>idamp</emphasis> (optional) -- the damping factor, as part of this equation:
+      <literallayout>damping_amount = 0.998 + (idamp * 0.002)</literallayout>
+    </para>
+
+    <para>
+      The default <emphasis>damping_amount</emphasis> is 0.997 which means that the default value of <emphasis>idamp</emphasis> is -0.5. The maximum <emphasis>damping_amount</emphasis> is 1.0 (no damping). This means the maximum value for <emphasis>idamp</emphasis> is 1.0.
+    </para>
+
+    <para>
+      The recommended range for <emphasis>idamp</emphasis> is usually below 75% of the maximum value.
+    </para>
+
+    <para>
+      <emphasis>imaxshake</emphasis> (optional) -- amount of energy to add back into the system. The value should be in range 0 to 1.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the cabasa opcode. It uses the file <ulink url="examples/cabasa.csd"><citetitle>cabasa.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the cabasa opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/cabasa.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="crunch"><citetitle>crunch</citetitle></link>, 
+      <link linkend="sandpaper"><citetitle>sandpaper</citetitle></link>, 
+      <link linkend="sekere"><citetitle>sekere</citetitle></link>, 
+      <link linkend="stix"><citetitle>stix</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &nameperry;, part of the PhISEM (Physically Informed Stochastic Event Modeling)</member>
+        <member>Adapted by &namejohn;</member>
+        <member>University of Bath, Codemist Ltd.</member>
+        <member>Bath, UK</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 4.07</para>
+    <para>Added notes by &namerasmus; on May 2002.</para>
+  </refsect1>
+</refentry>

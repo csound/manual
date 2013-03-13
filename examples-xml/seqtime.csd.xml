@@ -1,0 +1,72 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in</emphasis>
+-odac           -iadc    <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o seqtime.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+ <emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+ <emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 64
+ <emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 1
+
+<emphasis role="comment">; By Tim Mortimer and Andres Cabrera 2007</emphasis>
+
+<emphasis role="ohdr">0dbfs</emphasis> <emphasis role="op">=</emphasis> 1
+
+gisine         <emphasis role="ohdr">ftgen</emphasis>    0, 0, 8192, 10,    1
+<emphasis role="comment">;;; table defining an integer pitch set</emphasis>
+gipset    <emphasis role="ohdr">ftgen</emphasis>     0, 0, 4, <emphasis role="op">-</emphasis>2, 8.00, 8.04, 8.07, 8.10
+<emphasis role="comment">;;;DELTA times for seqtime</emphasis>
+gidelta    <emphasis role="ohdr">ftgen</emphasis>    0, 0, 4, <emphasis role="op">-</emphasis>2, .5, 1, .25, 1.25
+
+
+  <emphasis role="oblock">instr</emphasis> 1
+
+kndx <emphasis role="opc">init</emphasis> 0
+ktrigger <emphasis role="opc">init</emphasis> 0
+
+ktime_unit <emphasis role="opc">init</emphasis> 1
+kstart <emphasis role="opc">init</emphasis> p4
+kloop <emphasis role="opc">init</emphasis> p5
+kinitndx <emphasis role="opc">init</emphasis> 0
+kfn_times <emphasis role="opc">init</emphasis> gidelta
+
+ktrigger <emphasis role="opc">seqtime</emphasis> ktime_unit, kstart, kloop, kinitndx, kfn_times
+
+<emphasis role="opc">printk2</emphasis> ktrigger
+
+
+<emphasis role="octrl">if</emphasis> (ktrigger <emphasis role="op">></emphasis> 0) then
+   kpitch <emphasis role="opc">table</emphasis> kndx, gipset
+   <emphasis role="opc">event</emphasis> "i", 2, 0, 1, kpitch
+   kndx <emphasis role="op">=</emphasis> kndx <emphasis role="op">+</emphasis> 1
+   kndx <emphasis role="op">=</emphasis> kndx <emphasis role="op">%</emphasis> kloop
+<emphasis role="octrl">endif</emphasis>
+
+  <emphasis role="oblock">endin</emphasis>
+
+
+  <emphasis role="oblock">instr</emphasis> 2
+icps <emphasis role="op">=</emphasis> <emphasis role="opc">cpspch</emphasis> (p4)
+a1    <emphasis role="opc">buzz</emphasis>    1, icps, 7, gisine
+aamp <emphasis role="opc">expseg</emphasis>    0.00003,.02,1,p3<emphasis role="op">-</emphasis>.02,0.00003
+
+a1 <emphasis role="op">=</emphasis> a1 <emphasis role="op">*</emphasis> aamp <emphasis role="op">*</emphasis> 0.5
+
+<emphasis role="opc">out</emphasis> a1
+  <emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="comment">;      start    dur   kstart  kloop</emphasis>
+<emphasis role="stamnt">i</emphasis> 1	0	7	0	4
+<emphasis role="stamnt">i</emphasis> 1	8	10	0	3
+<emphasis role="stamnt">i</emphasis> 1	19	10	4	4
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

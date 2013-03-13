@@ -1,0 +1,57 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac     <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o oscil3.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1
+
+kamp <emphasis role="op">=</emphasis> .6
+kcps <emphasis role="op">=</emphasis> 440
+ifn  <emphasis role="op">=</emphasis> p4
+
+asig <emphasis role="opc">oscil</emphasis> kamp, kcps, ifn
+     <emphasis role="opc">outs</emphasis> asig,asig
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 2
+
+kamp <emphasis role="op">=</emphasis> .6
+kcps <emphasis role="op">=</emphasis> 440
+ifn  <emphasis role="op">=</emphasis> p4
+
+asig <emphasis role="opc">oscil3</emphasis> kamp, kcps, ifn
+     <emphasis role="opc">outs</emphasis> asig,asig
+
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis>1 0 128 10 1                                          <emphasis role="comment">; Sine with a small amount of data</emphasis>
+<emphasis role="stamnt">f</emphasis>2 0 128 10 1 0.5 0.3 0.25 0.2 0.167 0.14 0.125 .111   <emphasis role="comment">; Sawtooth with a small amount of data</emphasis>
+<emphasis role="stamnt">f</emphasis>3 0 128 10 1 0   0.3 0    0.2 0     0.14 0     .111   <emphasis role="comment">; Square with a small amount of data</emphasis>
+<emphasis role="stamnt">f</emphasis>4 0 128 10 1 1   1   1    0.7 0.5   0.3  0.1          <emphasis role="comment">; Pulse with a small amount of data</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1  0 2 1
+<emphasis role="stamnt">i</emphasis> 2  3 2 1
+<emphasis role="stamnt">i</emphasis> 1  6 2 2
+<emphasis role="stamnt">i</emphasis> 2  9 2 2
+<emphasis role="stamnt">i</emphasis> 1 12 2 3
+<emphasis role="stamnt">i</emphasis> 2 15 2 3
+<emphasis role="stamnt">i</emphasis> 1 18 2 4
+<emphasis role="stamnt">i</emphasis> 2 21 2 4
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

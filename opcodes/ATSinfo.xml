@@ -1,0 +1,115 @@
+﻿
+<refentry id="ATSinfo">
+<indexterm id="IndexATSinfo"><primary>ATSinfo</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:ATS</title></refentryinfo>
+    <refmeta>
+        <refentrytitle>ATSinfo</refentrytitle>
+    </refmeta>
+
+    <refnamediv>
+        <refname>ATSinfo</refname>
+        <refpurpose> reads data out of the header of an ATS file.
+        </refpurpose>
+    </refnamediv>
+    <refsect1>
+        <title>Description</title>
+        <para>
+            <emphasis>atsinfo</emphasis> reads data out of the header of an ATS file.
+        </para>
+    </refsect1>
+    <refsect1>
+        <title>Syntax</title>
+        <synopsis>idata <command>ATSinfo</command> iatsfile, ilocation</synopsis>
+    </refsect1>
+    <refsect1>
+        <title>Initialization</title>
+        <para>
+            <emphasis>iatsfile</emphasis> – the ATS number (n in ats.n) or the name in quotes of the analysis file made using <ulink url="http://www-ccrma.stanford.edu/~juan/ATS.html"><citetitle>ATS</citetitle></ulink>.
+        </para>
+        <para>
+            <emphasis>ilocation</emphasis> – indicates which location in the header file to return. The data in the header gives information about the data contained in the rest of the ATS file. The possible values for <emphasis>ilocation</emphasis> are given in the following list:
+        </para>
+        <para>  0 - Sample rate (Hz)</para>
+        <para>  1 - Frame Size (samples)</para>
+        <para>  2 - Window Size (samples)</para>
+        <para>  3 - Number of Partials</para>
+        <para>  4 - Number of Frames</para>
+        <para>  5 - Maximum Amplitude</para>
+        <para>  6 - Maximum Frequency (Hz)</para>
+        <para>  7 - Duration (seconds)</para>
+        <para>  8 - ATS file Type</para>
+    </refsect1>
+    <refsect1>
+        <title>Performance</title>
+        <para>Macros can really improve the legibility of your csound code, I've provided my Macro Definitions below: </para>
+        <programlisting>
+            #define ATS_SAMP_RATE #0#
+            #define ATS_FRAME_SZ #1#
+            #define ATS_WIN_SZ #2#
+            #define ATS_N_PARTIALS #3#
+            #define ATS_N_FRAMES #4#
+            #define ATS_AMP_MAX #5#
+            #define ATS_FREQ_MAX #6#
+            #define ATS_DUR #7#
+            #define ATS_TYPE #8#</programlisting>
+        <para><emphasis>ATSinfo</emphasis> can be useful for writing generic instruments that will work with many ATS files, even if they have different lengths and different numbers of partials etc. Example 2 is a simple application of this.</para>
+    </refsect1>
+    
+     <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the ATSinfo opcode. It uses the file <ulink url="examples/ATSinfo.csd"><citetitle>ATSinfo.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the ATSinfo opcode.</title>
+
+        
+
+          <xi:include href="examples-xml/ATSinfo.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+         <para>In the example above we use <emphasis>ATSinfo</emphasis> to retrieve the number of partials in the ATS file </para>
+  </refsect1>
+    <refsect1>
+        <title>Other examples</title>
+        <orderedlist>
+            <listitem>
+            <programlisting>
+  imax_freq     <emphasis role="opc">ATSinfo</emphasis> "cl.ats", $ATS_FREQ_MAX</programlisting>
+            <para>In the example above we get the maximum frequency value from the ATS file "cl.ats" and store it in imax_freq. We use the Csound Macro (defined above) $ATS_FREQ_MAX, which is equivalent to the number 6.
+            </para>
+            </listitem>
+            <listitem>
+        <programlisting>
+  i_npartials   <emphasis role="opc">ATSinfo</emphasis> p4, $ATS_N_PARTIALS
+  i_dur         <emphasis role="opc">ATSinfo</emphasis> p4, $ATS_DUR
+  ktimepnt      <emphasis role="opc">line</emphasis>    0, p3, i_dur
+  aout          <emphasis role="opc">ATSadd</emphasis>  ktimepnt, 1, p4, 1, i_npartials</programlisting>
+            <para>In the example above we use <emphasis>ATSinfo</emphasis> to retrieve the duration and number of partials in the ATS file indicated by p4. With this info we synthesize the partials using atsadd. Since the duration and number of partials are not "hard-coded" we can use this code with any ATS file.</para>
+            </listitem>
+        </orderedlist>
+    </refsect1>
+    
+    <refsect1>
+        <title>See also</title>
+        <para><link linkend="ATSread"><citetitle>ATSread</citetitle></link>, 
+            <link linkend="ATSreadnz"><citetitle>ATSreadnz</citetitle></link>, 
+            <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>, 
+            <link linkend="ATScross"><citetitle>ATScross</citetitle></link>, 
+            <link linkend="ATSinterpread"><citetitle>ATSinterpread</citetitle></link>, 
+            <link linkend="ATSpartialtap"><citetitle>ATSpartialtap</citetitle></link>, 
+            <link linkend="ATSadd"><citetitle>ATSadd</citetitle></link>, 
+            <link linkend="ATSaddnz"><citetitle>ATSaddnz</citetitle></link>, 
+            <link linkend="ATSsinnoi"><citetitle>ATSsinnoi</citetitle></link></para>
+    </refsect1>
+    <refsect1>
+        <title>Credits</title>
+        <para>
+            <simplelist>
+                <member>Author: Alex Norman</member>
+                <member>Seattle,Washington</member>
+                <member>2004</member>
+            </simplelist>
+        </para>
+    </refsect1>
+</refentry>

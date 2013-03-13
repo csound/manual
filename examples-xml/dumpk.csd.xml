@@ -1,0 +1,45 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in</emphasis>
+-odac           -iadc    <emphasis role="comment">;;;RT audio I/O</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o dumpk.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="comment">; Initialize the global variables.</emphasis>
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">kr</emphasis> <emphasis role="op">=</emphasis> 20
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 1
+
+<emphasis role="comment">; By Andres Cabrera 2008</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 1
+<emphasis role="comment">; Write fibonacci numbers to file "fibonacci.txt"</emphasis>
+<emphasis role="comment">; as ascii long integers (mode 7), using the orchestra's</emphasis>
+<emphasis role="comment">; control rate (iprd = 0)</emphasis>
+
+knumber <emphasis role="opc">init</emphasis> 0
+koldnumber <emphasis role="opc">init</emphasis> 1
+ktrans <emphasis role="opc">init</emphasis> 1
+ktrans <emphasis role="op">=</emphasis> knumber
+knumber <emphasis role="op">=</emphasis> knumber <emphasis role="op">+</emphasis> koldnumber
+koldnumber <emphasis role="op">=</emphasis> ktrans
+<emphasis role="opc">dumpk</emphasis>  knumber, "fibonacci.txt", 7, 0
+<emphasis role="opc">printk2</emphasis> knumber
+<emphasis role="oblock">endin</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="comment">;Write to the file for 1 second. Since control rate is 20, 20 values will be written</emphasis>
+ <emphasis role="stamnt">i</emphasis> 1 0 1
+
+
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

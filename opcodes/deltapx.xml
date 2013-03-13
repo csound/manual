@@ -1,0 +1,115 @@
+
+<refentry id="deltapx">
+<indexterm id="IndexDeltapx"><primary>deltapx</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Delay</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>deltapx</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>deltapx</refname>
+    <refpurpose>
+      Read from or write to a delay line with interpolation.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>deltapx</emphasis> is similar to <link linkend="deltapi"><citetitle>deltapi</citetitle></link> or <link linkend="deltap3"><citetitle>deltap3</citetitle></link>. However, it allows higher quality interpolation. This opcode can read from and write to a <emphasis>delayr/delayw</emphasis> delay line with interpolation. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>aout <command>deltapx</command> adel, iwsize</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iwsize</emphasis> -- interpolation window size in samples. Allowed values are integer multiplies of 4 in the range 4 to 1024. <emphasis>iwsize</emphasis> = 4 uses cubic interpolation. Increasing <emphasis>iwsize</emphasis> improves sound quality at the expense of CPU usage, and minimum delay time.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>aout</emphasis> -- Output signal.
+    </para>
+
+    <para>
+      <emphasis>adel</emphasis> -- Delay time in seconds.
+    </para>
+
+    <para>
+      <informalexample>
+        <programlisting>
+a1      <emphasis role="opc">delayr</emphasis>   idlr
+        <emphasis role="opc">deltapxw</emphasis> a2, adl1, iws1
+a3      <emphasis role="opc">deltapx</emphasis>  adl2, iws2
+        <emphasis role="opc">deltapxw</emphasis> a4, adl3, iws3
+        <emphasis role="opc">delayw</emphasis>   a5</programlisting>
+      </informalexample>
+    </para>
+ 
+    <para>
+      Minimum and maximum delay times:
+
+      <informalexample>
+        <programlisting>
+idlr &gt;= 1/kr                                Delay line length
+ 
+adl1 &gt;= (iws1/2)/sr                         Write before read
+adl1 &lt;= idlr - (1 + iws1/2)/sr              (allows shorter delays)
+ 
+adl2 &gt;= 1/kr + (iws2/2)/sr                  Read time
+adl2 &lt;= idlr - (1 + iws2/2)/sr
+adl2 &gt;= adl1 + (iws1 + iws2) / (2*sr)
+adl2 &gt;= 1/kr + adl3 + (iws2 + iws3) / (2*sr)
+ 
+adl3 &gt;= (iws3/2)/sr                         Write after read
+adl3 &lt;= idlr - (1 + iws3/2)/sr              (allows feedback)
+        </programlisting>
+      </informalexample>
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        Window sizes for opcodes other than <emphasis>deltapx</emphasis> are: <emphasis>deltap</emphasis>, <emphasis>deltapn</emphasis>: 1, <emphasis>deltapi</emphasis>: 2 (linear), <emphasis>deltap3</emphasis>: 4 (cubic)
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the deltapx opcode. It uses the file <ulink url="examples/deltapx.csd"><citetitle>deltapx.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the deltapx opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/deltapx.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="deltapxw"><citetitle>deltapxw</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &nameistvan;</member>
+        <member>August 2001</member>
+      </simplelist>
+    </para>
+
+    <para>New in version 4.13</para>
+  </refsect1>
+</refentry>

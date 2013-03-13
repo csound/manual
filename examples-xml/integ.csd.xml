@@ -1,0 +1,62 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac     <emphasis role="comment">;;;RT audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if RT audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o integ.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis> <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1
+
+asig <emphasis role="opc">diskin2</emphasis> "fox.wav", 1
+     <emphasis role="opc">outs</emphasis> asig, asig
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 2	<emphasis role="comment">; with diff</emphasis>
+
+asig <emphasis role="opc">diskin2</emphasis> "fox.wav", 1
+ares <emphasis role="opc">diff</emphasis> asig
+     <emphasis role="opc">outs</emphasis> ares, ares
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 3	<emphasis role="comment">; with integ</emphasis>
+
+asig <emphasis role="opc">diskin2</emphasis> "fox.wav", 1
+aint <emphasis role="opc">integ</emphasis> asig
+aint <emphasis role="op">=</emphasis> aint<emphasis role="op">*</emphasis>.05			<emphasis role="comment">;way too loud</emphasis>
+     <emphasis role="opc">outs</emphasis> aint, aint
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 4	<emphasis role="comment">; with diff and integ</emphasis>
+
+asig <emphasis role="opc">diskin2</emphasis> "fox.wav", 1
+ares <emphasis role="opc">diff</emphasis> asig
+aint <emphasis role="opc">integ</emphasis> ares
+     <emphasis role="opc">outs</emphasis> aint, aint
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1 0 1
+<emphasis role="stamnt">i</emphasis> 2 1 1
+<emphasis role="stamnt">i</emphasis> 3 2 1
+<emphasis role="stamnt">i</emphasis> 4 3 1
+
+<emphasis role="stamnt">e</emphasis>
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>
