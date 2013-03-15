@@ -6,15 +6,13 @@
 #       on your system.
 # *************************************************************************
 BASENAME=Csound
-BASENAMEOLPC=OLPCsound
-VERSION=5.19
+VERSION=6.00
 
 # export PATH=$PATH:/home/andres/bin/fop-0.20.5/
 # export JAVA_HOME=/usr/lib/jvm/java-6-sun/
 
 # Output Directories
 HTML_DIR=html
-HTMLXO_DIR=manualOLPC
 HTML_ONE_DIR=singleHTML
 HTMLHELP_DIR=htmlhelp
 MANPAGES_DIR=manpages
@@ -496,48 +494,6 @@ html-bw: $(XSL_HTML) manual.xml $(SRCS) Makefile
 	rm -rf ${HTML_DIR}/images/callouts/CVS
 	rm -rf ${HTML_DIR}/examples/CVS
 
-htmlXO: $(XSL_HTML) manualXO.xml $(SRCS) Makefile
-	-mkdir -p ${HTMLXO_DIR}
-	xsltproc  --xinclude -o ${HTMLXO_DIR}/ ${XSL_HTML} manualXO.xml
-	cp -R images ${HTMLXO_DIR}/
-	cp -R imagesXO ${HTMLXO_DIR}/
-	cp -R examples ${HTMLXO_DIR}/
-	cp copying.txt ${HTMLXO_DIR}/
-	cp csoundXO.css ${HTMLXO_DIR}/csound.css
-	rm -rf ${HTMLXO_DIR}/flbutbank.png
-	rm -rf ${HTMLXO_DIR}/flbutton.png
-	rm -rf ${HTMLXO_DIR}/flcount.png
-	rm -rf ${HTMLXO_DIR}/flknob_3d.png
-	rm -rf ${HTMLXO_DIR}/flknob_clock.png
-	rm -rf ${HTMLXO_DIR}/flknob_flat.png
-	rm -rf ${HTMLXO_DIR}/flknob_pie.png
-	rm -rf ${HTMLXO_DIR}/flpack.png
-	rm -rf ${HTMLXO_DIR}/flpanel.png
-	rm -rf ${HTMLXO_DIR}/flroller.png
-	rm -rf ${HTMLXO_DIR}/flscroll.png
-	rm -rf ${HTMLXO_DIR}/flslider_horizontal-engraved.png
-	rm -rf ${HTMLXO_DIR}/flslider_horizontal-fill.png
-	rm -rf ${HTMLXO_DIR}/flslider_horizontal-nice.png
-	rm -rf ${HTMLXO_DIR}/fltabs.png
-	rm -rf ${HTMLXO_DIR}/fltabs_joysticks-tab.png
-	rm -rf ${HTMLXO_DIR}/fltabs_rollers-tab.png
-	rm -rf ${HTMLXO_DIR}/fltabs_sliders-tab.png
-	rm -rf ${HTMLXO_DIR}/fltext.png
-	rm -rf ${HTMLXO_DIR}/symbols.png
-	rm -rf ${HTMLXO_DIR}/virtualkeyboard.png
-	rm -rf ${HTMLXO_DIR}/images/CVS
-	rm -rf ${HTMLXO_DIR}/images/callouts/CVS
-	rm -rf ${HTMLXO_DIR}/examples/CVS
-
-bundleXO: htmlXO
-	cp -R ${HTMLXO_DIR} ${BASENAMEOLPC}${VERSION}_manual
-	mkdir $(BASENAMEOLPC)$(VERSION)_manual/library
-	cp XO/library.info $(BASENAMEOLPC)$(VERSION)_manual/library
-	rm -Rd $(BASENAMEOLPC)$(VERSION)_manual.xol
-	zip -r /tmp/$(BASENAMEOLPC)$(VERSION)_manual.xol ${BASENAMEOLPC}${VERSION}_manual
-	mv /tmp/$(BASENAMEOLPC)$(VERSION)_manual.xol ./
-	rm -Rd $(BASENAMEOLPC)$(VERSION)_manual
-
 html-onechunk: $(XSL_HTML_ONECHUNK) manual.xml $(SRCS) Makefile
 	-mkdir -p ${HTML_ONE_DIR}
 	xsltproc  --xinclude -o ${HTML_ONE_DIR}/ ${XSL_HTML_ONECHUNK} manual.xml
@@ -554,22 +510,11 @@ pdf: $(XSL_PRINT) manual.xml $(SRCS) Makefile
 	fop.sh -fo $(BASENAME)$(VERSION)_manual.fo -pdf $(BASENAME)$(VERSION)_manual.pdf
 	rm $(BASENAME)$(VERSION)_manual.fo
 
-pdfXO: $(XSL_PRINT) manualXO.xml $(SRCS) Makefile
-	xsltproc  --xinclude -o $(BASENAMEOLPC)$(VERSION)_manual.fo ${XSL_PRINT} manualXO.xml
-	fop.sh -fo $(BASENAMEOLPC)$(VERSION)_manual.fo -pdf $(BASENAMEOLPC)$(VERSION)_manual.pdf
-	rm $(BASENAMEOLPC)$(VERSION)_manual.fo
-
 pdfA4: $(XSL_PRINT) manual.xml $(SRCS) Makefile
 	xsltproc --stringparam paper.type A4  --xinclude \
 		-o $(BASENAME)$(VERSION)_manual_A4.fo ${XSL_PRINT} manual.xml
 	fop.sh -fo $(BASENAME)$(VERSION)_manual_A4.fo -pdf $(BASENAME)$(VERSION)_manual_A4.pdf
 	rm $(BASENAME)$(VERSION)_manual_A4.fo
-
-pdfA4XO: $(XSL_PRINT) manualXO.xml $(SRCS) Makefile
-	xsltproc --stringparam paper.type A4  --xinclude \
-		-o $(BASENAMEOLPC)$(VERSION)_manual_A4.fo ${XSL_PRINT} manualXO.xml
-	fop.sh -fo $(BASENAMEOLPC)$(VERSION)_manual_A4.fo -pdf $(BASENAMEOLPC)$(VERSION)_manual_A4.pdf
-	rm $(BASENAMEOLPC)$(VERSION)_manual_A4.fo
 
 htmlhelp: ${XSL_HTMLHELP} manual.xml $(SRCS)
 	-mkdir -p ${HTMLHELP_DIR}
@@ -591,11 +536,6 @@ html-clean:
 	rm -rf html
 	rm -f examples/*.csd~
 
-xo-clean:
-	rm -rf htmlXO
-	rm -rf ${HTMLXO_DIR}
-	rm -f *.xol
-
 pdf-clean:
 	rm -f *.pdf *.fo
 
@@ -606,7 +546,7 @@ htmlhelp-clean:
 manpages-clean:
 	rm -rf manpages
 
-clean: html-clean pdf-clean htmlhelp-clean manpages-clean xo-clean
+clean: html-clean pdf-clean htmlhelp-clean manpages-clean
 	rm -f $(XSL_HTML) $(XSL_HTML_ONECHUNK) $(XSL_PRINT) $(XSL_HTMLHELP)
 
 distclean: clean
