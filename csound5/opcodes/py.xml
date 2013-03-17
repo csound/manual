@@ -1,0 +1,76 @@
+<chapter id="py">
+
+  <title>Python Opcodes</title>
+  <section id="PythonOpcodes">
+    <title>Introduction</title>
+    <para>Using the Python opcode family, you can interact with a Python interpreter embedded in Csound in five ways:</para>
+    <orderedlist>
+      <listitem><simpara>Initialize the Python interpreter (the <link
+      linkend="pyinit"><citetitle>pyinit</citetitle></link> opcodes),</simpara></listitem>
+      <listitem><simpara>Run a statement (the <link
+      linkend="pyrun"><citetitle>pyrun</citetitle></link> opcodes),</simpara></listitem>
+      <listitem><simpara>Execute a script (the <link
+      linkend="pyexec"><citetitle>pyexec</citetitle></link> opcodes),</simpara></listitem>
+      <listitem><simpara>Invoke a callable and pass arguments (the <link
+      linkend="pycall"><citetitle>pycall</citetitle></link> opcodes),</simpara></listitem>
+      <listitem><simpara>Evaluate an expression (the <link
+      linkend="pyeval"><citetitle>pyeval</citetitle></link> opcodes), or</simpara></listitem>
+      <listitem><simpara>Change the value of a Python object, possibly creating a new
+      Python object (the <link
+      linkend="pyassign"><citetitle>pyassign</citetitle></link> opcodes);</simpara></listitem>
+    </orderedlist>
+    <para>and you can do any of these things:</para>
+    <orderedlist>
+      <listitem><simpara>At i-time or at k-time,</simpara></listitem>
+      <listitem><simpara>In the global Python namespace, or in a namespace specific
+      to an individual instance of a Csound instrument (local or "l" context),</simpara></listitem>
+      <listitem><simpara>And can you can retrieve from 0 to 8 return values from
+      callables that accept N parameters.</simpara></listitem>
+    </orderedlist>
+    <para>...this means that there are many Python-related opcodes. But
+    all of these opcodes share the same <emphasis>py</emphasis> prefix, and have a regular
+    naming scheme:</para>
+
+<programlisting>
+"py" + [optional context prefix] + [action name] + [optional x-time suffix]</programlisting>
+  
+  </section>
+  <section id="PythonOpcodesSyntax">
+    <title>Orchestra Syntax</title>
+    <para>Blocks of Python code, and indeed entire scripts, can be
+    embedded in Csound orchestras using the {{ and }} directives to
+    enclose the script, as follows:</para>
+
+<programlisting>
+<emphasis role="ohdr">sr</emphasis><emphasis role="op">=</emphasis>44100
+<emphasis role="ohdr">kr</emphasis><emphasis role="op">=</emphasis>4410
+<emphasis role="ohdr">ksmps</emphasis><emphasis role="op">=</emphasis>10
+<emphasis role="ohdr">nchnls</emphasis><emphasis role="op">=</emphasis>1
+<emphasis role="opc">pyinit</emphasis>
+
+giSinusoid	<emphasis role="opc">ftgen</emphasis>	0,	0, 8192, 10,	1
+
+<emphasis role="opc">pyruni</emphasis> {{
+import random
+
+pool = [(1 + i/10.0) ** 1.2 for i in range(100)]
+
+def get_number_from_pool(n, p):
+    if random.random() &lt; p:
+        i = int(random.random() * len(pool))
+        pool[i] = n
+    return random.choice(pool)
+}}
+
+<emphasis role="oblock">instr</emphasis> 1
+	k1	<emphasis role="opc">oscil</emphasis>	1, 3, giSinusoid	
+	k2	<emphasis role="opc">pycall1</emphasis>	"get_number_from_pool", k1 <emphasis role="op">+</emphasis> 2, p4
+		<emphasis role="opc">printk</emphasis>	0.01, k2
+<emphasis role="oblock">endin</emphasis></programlisting>
+  <bridgehead>Credits</bridgehead>
+  <para>Copyright (c) 2002 by Maurizio Umberto Puxeddu. All rights
+  reserved.</para>
+  <para>Portions copyright (c) 2004 and 2005 by Michael Gogins.</para>
+
+  </section>
+</chapter>

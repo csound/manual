@@ -1,0 +1,107 @@
+<chapter id="SignalFlowGraphOpcodes">
+  
+  <title>
+    Signal Flow Graph Opcodes
+</title>
+
+  <para>
+    These opcodes enable the use of signal flow graphs 
+    (AKA asynchronous data flow graphs) in Csound orchestras. 
+    Signals flow from the outlets of source instruments
+    and are summed in the inlets of sink instruments. 
+    Signals may be krate, arate, or frate.
+    Any number of outlets may be connected to any number of inlets. 
+    When a new instance of an instrument is instantiated during performance, 
+    the declared connections also are automatically instantiated.
+  </para>
+  
+  <para>  
+    Signal flow graphs simplify the construction of complex mixers, 
+    signal processing chains, and the like. They also simplify the re-use 
+    of "plug and play" instrument definitions and even entire sub-orchestras, 
+    which can simply be #included and then "plugged in" to existing orchestras.
+  </para>
+  
+  <para>
+    Note that inlets and outlets are defined in instruments without reference 
+    to how they are connected. Connections are defined in the orchestra header. 
+    It is this separation that enables plug-in instruments.
+  </para>
+  
+  <para>
+    Inlets must be named. Instruments may be named or numbered, but in 
+    either case each source instrument must be defined 
+    in the orchestra before any of its sinks. Naming instruments makes 
+    it easier to connect outlets and inlets in any higher-level orchestra 
+    to inlets and outlets in any lower-level #included orchestra. 
+  </para>
+
+  <para>
+    The signal flow graph opcodes include: 
+    
+    <link linkend="outleta"><citetitle>outleta</citetitle></link>, for
+    sending an arate signal from any instrument out a named port.
+    
+    <link linkend="outletk"><citetitle>outletk</citetitle></link>, for
+    sending a krate signal from any instrument out a named port.
+    
+    <link linkend="outletkid"><citetitle>outletkid</citetitle></link>, 
+    similar to outletk, but receiving a krate signal only from an identified instance of a port.
+    
+    <link linkend="outletf"><citetitle>outletf</citetitle></link>, for
+    sending an frate signal from any instrument out a named port.
+    
+    <link linkend="inleta"><citetitle>inleta</citetitle></link>, for
+    receiving an arate signal through a named port.
+    
+    <link linkend="inletk"><citetitle>inletk</citetitle></link>, for
+    receiving a krate signal through a named port.
+    
+    <link linkend="inletkid"><citetitle>inletkid</citetitle></link>, 
+    similiar to inletk, but transmitting a signal only between inlet and outlet opcodes 
+    .
+    <link linkend="inletf"><citetitle>inletf</citetitle></link>, for
+    receiving an frate signal through a named port.
+    
+    <link linkend="connect"><citetitle>connect</citetitle></link>, for
+    routing the signal from a named outlet in a source instrument 
+    to a named inlet in a sink instrument.
+    
+    <link linkend="alwayson"><citetitle>alwayson</citetitle></link> for
+    permanently activating an instrument from the orchestra header,
+    without need of a score statement, e.g. for use as an effect processor
+    receiving inputs from a number of sources.
+
+    <link linkend="ftgenonce"><citetitle>ftgenonce</citetitle></link> for
+    instantiating function tables from within instrument definitions, without
+    need for f-statements in the score or ftgen opcodes in the orchestra header.
+  </para>
+  
+  <para>
+    A typical scenario for the use of these opcodes would be something like this.
+    A set of instruments would be defined, each in its own orchestra file, and 
+    each instrument would define inlet ports, outlet ports, and function tables within itself. Such 
+    instruments are completely self-contained. Then, a set of effects processors, such 
+    as equalizers, reverbs, compressors, and so on, would also be defined, each in its 
+    own file. Then, a customized master orchestra would #include the instruments 
+    and effects to be used, route the outputs of some instruments into one equalizer
+    and the outputs of other effects into another equalizer, then route the outputs of
+    both equalizers into a reverb, the output of the reverb into a compressor, and 
+    the output of the compressor into a stereo output soundfile.
+  </para>
+
+  <refsect1>
+    <!--To add examples, create the csd file in the examples directory, then run:-->
+    <!--python csd2docbook.py -f newopcodename.csd-->
+    <!--to generate the xml highlighted version used below-->
+    <title>Example</title>
+    <para>
+      Here is an example of the signal flow graph opcodes. It uses the file <ulink url="examples/signalflowgraph.csd"><citetitle>signalflowgraph.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the signal flow graph opcodes.</title>
+        <xi:include href="examples-xml/signalflowgraph.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+</chapter>

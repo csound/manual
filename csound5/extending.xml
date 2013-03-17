@@ -1,0 +1,575 @@
+<chapter id="csound5extending">
+
+<title>Extending Csound</title>
+
+<section id="csound5addingopcodes">
+
+<title>Adding Unit Generators</title>
+
+<para>If the existing Csound unit generators do not suit your needs,
+it is relatively easy to extend Csound by writing new unit generators
+in C or C++. The translator, loader, and run-time monitor will treat
+your module just like any other, provided you follow some conventions.
+</para>
+
+<para>
+  Historically, this has been done with builtin unit generators,
+  that is, with code that is statically linked with the rest of the
+  Csound executable.
+</para>
+
+<para>
+  Today, the preferred method is to create plugin unit
+  generators. These are dynamic link libraries (DLLs) on Windows, and
+  loadable modules (shared libraries that are <literal>dlopen</literal>ed) on
+  Linux. Csound searches for and loads these plugins at run time on the path defined in <link linkend="CommandEnvironment"><citetitle>OPCODEDIR</citetitle></link>. You
+  can also load plugin opcodes from the command line using the <link linkend="FlagsMinusOpcodeLib"><citetitle>--opcode-lib</citetitle></link> flag.
+</para>
+
+<para> 
+  The
+  advantage of this method, of course, is that plugins created by any
+  developer at any time can be used with already existing versions of
+  Csound.
+</para>
+
+<section>
+
+<title>Creating a Builtin Unit Generator</title>
+
+<para>You need a structure defining the inputs, outputs and
+workspace, plus some initialization code and some perf-time code. Let's
+put an example of these in two new files,
+<filename>newgen.h</filename> and
+<filename>newgen.c</filename>. The examples given are for Csound 5. 
+For earlier versions, all opcode functions omit the first parameter (<literal>CSOUND *csound</literal>).
+
+<informalexample>
+<programlisting>
+/* newgen.h  -  define a structure */
+
+/* Declares Csound structures and functions. */
+#include &quot;csoundCore.h&quot;
+
+typedef struct
+{
+  OPDS h;                                         /* required header */
+  MYFLT *result, *istrt, *incr, *itime, *icontin; /* addr outarg, inargs */
+  MYFLT curval, vincr;                            /* private dataspace */
+  long countdown;                                 /* ditto */
+} RMP;
+
+
+/* newgen.c -  init and perf code */
+/* Declares Csound structures and functions. */
+#include &quot;csoundCore.h&quot;
+/* Declares RMP structure. */
+#include &quot;newgen.h&quot;
+
+int rampset (CSOUND *csound, RMP * p)     /* at note initialization: */
+{
+  if (*p-&gt;icontin == FL(0.0))
+    p-&gt;curval = *p-&gt;istrt;                /* optionally get new start value */
+  p-&gt;vincr = *p-&gt;incr / csound-&gt;esr;      /* set s-rate increment per sec. */
+  p-&gt;countdown = *p-&gt;itime * csound-&gt;esr; /* counter for itime seconds */
+  return OK;
+}
+
+int ramp (CSOUND *csound, RMP * p)        /* during note performance: */
+{
+  MYFLT *rsltp = p-&gt;result;               /* init an output array pointer */
+  int nn = csound-&gt;ksmps;                 /* array size from orchestra */
+  do
+    {
+      *rsltp++ = p-&gt;curval;               /* copy current value to output */
+      if (--p-&gt;countdown &gt; 0)             /* for the first itime seconds, */
+        p-&gt;curval += p-&gt;vincr;            /* ramp the value */
+    }
+  while (--nn);
+  return OK;
+}</programlisting>
+</informalexample>
+</para>
+
+<para>Now we add this module to the translator table in
+<filename>entry1.c</filename>, under the opcode name
+<literal>rampt</literal>:
+
+<informalexample>
+<programlisting>
+#include &quot;newgen.h&quot;
+
+int rampset(CSOUND *, RMP *), ramp(CSOUND *, RMP *);
+
+/*   opname    dsblksiz  thread    outypes   intypes   iopadr    kopadr    aopadr  */
+
+{ &quot;rampt&quot;,  S(RMP),  5,        &quot;a&quot;,      &quot;iiio&quot;,     (SUBR) rampset, (SUBR) NULL, (SUBR) ramp  },</programlisting>
+</informalexample>
+</para>
+
+<para>Finally you must relink Csound with the new module. Add the name of the C file to the <literal>libCsoundSources</literal> list in the <literal>SConstruct</literal> file:
+
+<informalexample>
+<programlisting>
+libCsoundSources = Split('''
+Engine/auxfd.c
+...
+OOps/newgen.c
+...
+Top/utility.c
+''')</programlisting>
+</informalexample>
+</para>
+
+<para>Run <application>scons</application> just as you would for any
+other Csound build, and the new module will be built into your Csound.</para>
+
+  <para>
+    The above actions have added a new generator to the Csound language. It is an audio-rate linear ramp function which modifies an input value at a user-defined slope for some period. A ramp can optionally continue from the previous note's last value. The Csound manual entry would look like:
+    <informalexample>
+      <programlisting>ar rampt istart, islope, itime [, icontin]</programlisting>
+    </informalexample>
+  </para>
+
+  <para>
+    <emphasis>istart</emphasis> -- beginning value of an audio-rate linear ramp. Optionally overridden by a continue flag.
+  </para>
+
+  <para>
+    <emphasis>islope</emphasis>  -- slope of ramp, expressed as the y-interval change per second.
+  </para>
+
+  <para><emphasis>itime</emphasis> -- ramp time in seconds, after which the value is held for the remainder of the note.
+  </para>
+
+  <para><emphasis>icontin</emphasis> (optional) -- continue flag. If zero, ramping will proceed from input <emphasis>istart</emphasis> . If non-zero, ramping will proceed from the last value of the previous note. The default value is zero.
+  </para>
+
+  <para>
+    The file <filename>newgen.h</filename> includes a one-line list of
+    output and input parameters. These are the ports through which the
+    new generator will communicate with the other generators in an
+    instrument. Communication is by <emphasis>address</emphasis>, not
+    <emphasis>value</emphasis>, and this is a list of pointers to
+    values of type MYFLT (which is double if the macro USE_DOUBLE is
+    defined, and float otherwise). There are no restrictions on names,
+    but the input-output argument types are further defined by character
+    strings in entry1.c (inargs, outargs). Inarg types are commonly
+    <emphasis>x</emphasis>, <emphasis>a</emphasis>,
+    <emphasis>k</emphasis>, and <emphasis>i</emphasis>, in the normal
+    Csound manual conventions; also available are o (optional,
+    defaulting to 0), p (optional, defaulting to 1). Outarg types
+    include <emphasis>a</emphasis>, <emphasis>k</emphasis>,
+    <emphasis>i</emphasis> and <emphasis>s</emphasis> (asig or
+    ksig). It is important that all listed argument names be assigned
+    a corresponding argument type in <filename>entry1.c</filename>.
+    Also, i-type args are valid only at initialization time, and other-type
+    args are available only at perf time. Subsequent lines in the RMP
+    structure declare the work space needed to keep the code re-entrant.
+    These enable the module to be used multiple times in multiple instrument
+    copies while preserving all data.</para>
+
+  <para>
+    The file <emphasis>newgen.c</emphasis> contains two subroutines,
+    each called with a pointer to the Csound instance and a pointer to the uniquely allocated RMP structure and its data. The subroutines can be of three types: note initialization, <literal>k</literal>-rate signal generation, <literal>a</literal>-rate signal generation. A module normally requires two of these: initialization, and either <literal>k</literal>-rate or <literal>a</literal>-rate subroutines which become inserted in various threaded lists of runnable tasks when an instrument is activated. The thread-types appear in entry1.c in two forms: <emphasis>isub</emphasis>, <emphasis>ksub</emphasis> and <emphasis>asub</emphasis> names; and a threading index which is the sum of isub=1, ksub=2, asub=4. The code itself may reference (but should only read) public members of the CSOUND structure defined in <emphasis>csoundCore.h</emphasis>, the most useful of which are:
+
+    <informalexample>
+      <programlisting>
+        OPARMS  *oparms
+        MYFLT   esr                 user-defined sampling rate
+        MYFLT   ekr                 user-defined control rate
+        int     ksmps               user-defined ksmps
+        int     nchnls              user-defined nchnls
+        int     oparms-&gt;odebug      command-line -v flag
+        int     oparms-&gt;msglevel    command-line -m level
+        MYFLT   tpidsr              2 * PI / esr</programlisting>
+    </informalexample>
+  </para>
+
+  <section id="CS5AddmodFtables">
+    <title>Function tables</title>
+
+    <para>
+      To access <indexterm id="CS5IndexStoredFuncTables"><primary>tables</primary><secondary>stored function</secondary></indexterm> stored function tables, special help is available. The newly defined structure should include a pointer
+      <informalexample>
+        <programlisting>FUNC        *ftp;</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      initialized by the statement
+      <informalexample>
+        <programlisting>ftp = csound-&gt;FTFind(csound, p-&gt;ifuncno);</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      where MYFLT *ifuncno is an i-type input argument containing the ftable number. The stored table is then at ftp-&gt;ftable, and other data such as length, phase masks, cps-to-incr converters, are also accessed from this pointer. See the FUNC structure in csoundCore.h, the csoundFTFind() code in fgens.c, and the code for oscset() and koscil() in OOps/ugens2.c.
+    </para>
+  </section>
+
+  <section id="AddmodAddSpace">
+    <title>Additional Space</title>
+
+    <para>
+      Sometimes the space requirement of a module is too large to be part of a structure (upper limit 65279 bytes, due to the unsigned short dsblksiz parameter and reserved codes >= 0xFF00), or it is dependent on an i-arg value which is not known until initialization. Additional space can be dynamically allocated and properly managed by including the line
+      <informalexample>
+        <programlisting>AUXCH      auxch;</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      in the defined structure (*p), then using the following style of code in the init module:
+      <informalexample>
+        <programlisting>
+csound-&gt;AuxAlloc(csound, npoints * sizeof(MYFLT), &amp;p-&gt;auxch);</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      The address of this auxiliary space is kept in a chain of such spaces belonging to this instrument, and is automatically managed while the instrument is being duplicated or garbage-collected during performance. The assignment
+      <informalexample>
+        <programlisting>void *auxp = p-&gt;auxch.auxp;</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      will find the allocated space for init-time and perf-time use. See the LINSEG structure in ugens1.h and the code for lsgset() and klnseg() in OOps/ugens1.c.
+    </para>
+  </section>
+
+  <section id="AddmodFsharing">
+    <title>File Sharing</title>
+      <para>
+        When accessing an external file often, or doing it from multiple places, it is often efficient to read the entire file into memory. This is accomplished by including the line
+      <informalexample>
+        <programlisting>MEMFIL    *mfp;</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      in the defined structure (*p), then using the following style of code in the init module:
+      <informalexample>
+        <programlisting>p-&gt;mfp = csound-&gt;ldmemfile(csound, filname);</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      where char *filname is a string name of the file requested. The data read will be found between
+      <informalexample>
+        <programlisting>(char *)  p-&gt;mfp-&gt;beginp; and (char *) p-&gt;mfp-&gt;endp;</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      Loaded files do not belong to a particular instrument, but are automatically shared for multiple access. See the ADSYN structure in ugens3.h and the code for adset() and adsyn() in OOps/ugens3.c.
+    </para>
+  </section>
+
+  <section id="AddmodStringargs">
+    <title>String arguments</title>
+
+    <para>
+      To permit a string input argument (MYFLT *ifilnam, say) in our defined structure (*p), assign it the argtype <emphasis>S</emphasis> in entry1.c, and include the following code in the init module:
+      <informalexample>
+        <programlisting>strcpy(filename, (char*) p-&gt;ifilnam);</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      See the code for adset() in OOps/ugens3.c, lprdset() in OOps/ugens5.c, and pvset() in OOps/ugens8.c.
+    </para>
+
+</section>
+
+</section>
+
+<section>
+
+<title>Adding a Plugin Unit Generator</title>
+
+<para>The procedure for creating a plugin unit generator is very
+similar to the procedure for creating a builtin. The actual unit
+generator code would normally be identical. The differences are as
+follows.</para>
+
+<para>Again supposing that your unit generator is named
+<literal>newgen</literal>, perform the following steps:</para>
+
+<orderedlist>
+
+<listitem><para>Write your <literal>newgen.c</literal> and <literal>newgen.h</literal> file as
+you would for a builtin unit generator. Put these files in the
+<literal>csound5/Opcodes</literal> directory.</para></listitem>
+
+<listitem><para><literal>#include "csdl.h"</literal> in your unit generator
+sources, instead of csoundCore.h.</para></listitem>
+
+<listitem><para>Add your <literal>OENTRY</literal> records and unit generator
+registration functions at the bottom of your C file. Example (but you
+can have as many unit generators in one plugin as you like):</para>
+
+<programlisting>
+#define S sizeof
+
+static OENTRY localops[] = {
+        { "rampt",  S(RMP),  5, "a", "iiio",  (SUBR) rampset, (SUBR) NULL, (SUBR)ramp  },
+};
+
+/*
+ * The following macro from csdl.h defines
+ * the "csound_opcode_init()" opcode registration
+ * function for the localops table.
+ */
+LINKAGE</programlisting>
+</listitem>
+
+<listitem><para>Add your plugin as a new target in the plugin opcodes section of the <literal>SConstruct</literal> build file:</para>
+
+<programlisting>
+pluginEnvironment.SharedLibrary('newgen',
+    Split('''Opcodes/newgen.c
+    Opcodes/another_file_used_by_newgen.c
+    Opcodes/yet_another_file_used_by_newgen.c'''))</programlisting>
+</listitem>
+
+<listitem><para>Run the Csound 5 build in the regular way.</para></listitem>
+
+</orderedlist>
+
+</section>
+
+<section>
+
+<title><literal>OENTRY</literal> Reference</title>
+
+<para>The <literal>OENTRY</literal> structure (see
+<literal>H/csoundCore.h</literal>, <literal>Engine/entry1.c</literal>,
+and <literal>Engine/rdorch.c</literal>) contains the following
+public fields:</para>
+<programlisting>
+opname, dsblksiz, thread, outypes, intypes, iopadr, kopadr, aopadr</programlisting>
+
+<variablelist>
+
+<varlistentry><term><literal>dsblksiz</literal></term><listitem><para>There
+are two types of opcodes, polymorphic and non-polymorphic. For
+non-polymorphic opcodes, the <literal>dsblksiz</literal> flag specifies
+the size of the opcode structure in bytes, and arguments are always
+passed to the opcode at the same rate. Polymorphic opcodes can accept
+arguments at different rates, and those arguments are actually
+dispatched to other opcodes as determined by the
+<literal>dsblksiz</literal> flag and the following naming convention
+(note: the following list is not complete, see Engine/entry1.c
+for all possible special dsblksiz codes):
+
+<variablelist>
+
+<varlistentry><term><literal>0xffff</literal></term><listitem><para>The
+type of the first output argument determines which unit generator
+function is actually called: <literal>XXX</literal> -&gt;
+<literal>XXX.a</literal>, <literal>XXX.i</literal>, or
+<literal>XXX.k</literal>.</para></listitem></varlistentry>
+
+<varlistentry><term><literal>0xfffe</literal></term><listitem><para>The
+types of the first two input arguments determine which unit generator
+function is actually called:  <literal>XXX</literal> -&gt;
+<literal>XXX.aa</literal>, <literal>XXX.ak</literal>,
+<literal>XXX.ka</literal>, or <literal>XXX.kk</literal>, as in the
+<literal>oscil</literal> unit generator.</para></listitem></varlistentry>
+
+<varlistentry><term><literal>0xfffd</literal></term><listitem><para>Refers
+to one input argument of type a or k, as in the <literal>peak</literal>
+unit generator.</para></listitem></varlistentry>
+
+</variablelist>
+</para>
+</listitem>
+
+</varlistentry>
+
+<varlistentry><term><literal>thread</literal></term><listitem><para>Specifies
+the rate(s) at which the unit generator's functions are called, as
+follows:
+
+<table>
+  <title>Rate at which ugens are called according to thread parameter</title>
+<tgroup cols="2">
+<colspec colname="thread"/>
+<colspec colname="Description"/>
+<tbody>
+<row>
+<entry><literal>0</literal></entry><entry><literal>i</literal>-rate <emphasis>or</emphasis> <literal>k</literal>-rate (B out only)</entry>
+</row>
+<row>
+<entry><literal>1</literal></entry><entry><literal>i</literal>-rate</entry>
+</row>
+<row>
+<entry><literal>2</literal></entry><entry><literal>k</literal>-rate</entry>
+</row>
+<row>
+<entry><literal>3</literal></entry><entry><literal>i</literal>-rate <emphasis>and</emphasis> <literal>k</literal>-rate</entry>
+</row>
+<row>
+<entry><literal>4</literal></entry><entry><literal>a</literal>-rate</entry>
+</row>
+<row>
+<entry><literal>5</literal></entry><entry><literal>i</literal>-rate <emphasis>and</emphasis> <literal>a</literal>-rate</entry>
+</row>
+<row>
+<entry><literal>7</literal></entry><entry><literal>i</literal>-rate <emphasis>and</emphasis> (<literal>k</literal>-rate <emphasis>or</emphasis> <literal>a</literal>-rate)</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term><literal>outypes</literal></term><listitem><para>Lists
+the return values of the unit generator functions, if any. The types
+allowed are (note: the following list is not complete, see Engine/entry1.c
+for all possible output types):
+
+<table><title>List of out types for ugens</title>
+<tgroup cols="2">
+<colspec colname="Type"/>
+<colspec colname="Description"/>
+<tbody>
+<row>
+<entry><literal>i</literal></entry><entry><literal>i</literal>-rate scalar</entry>
+</row>
+<row>
+<entry><literal>k</literal></entry><entry><literal>k</literal>-rate scalar</entry>
+</row>
+<row>
+<entry><literal>a</literal></entry><entry>a-rate vector</entry>
+</row>
+<row>
+<entry><literal>x</literal></entry><entry><literal>k</literal>-rate scalar or a-rate vector</entry>
+</row>
+<row>
+<entry><literal>f</literal></entry><entry><literal>f</literal>-rate streaming pvoc fsig type</entry>
+</row>
+<row>
+<entry><literal>m</literal></entry><entry>multiple a-rate output arguments</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term><literal>intypes</literal></term><listitem><para>Lists
+the arguments the unit generator functions take, if any.  The types
+allowed are (note: the following list is not complete, see Engine/entry1.c
+for all possible input types):
+
+<table><title>List of in types ofr ugens</title>
+<tgroup cols="2">
+<colspec colname="Type"/>
+<colspec colname="Description"/>
+<tbody>
+<row>
+<entry><literal>i</literal></entry><entry><literal>i</literal>-rate scalar</entry>
+</row>
+<row>
+<entry><literal>k</literal></entry><entry><literal>k</literal>-rate scalar</entry>
+</row>
+<row>
+<entry><literal>a</literal></entry><entry><literal>a</literal>-rate vector</entry>
+</row>
+<row>
+<entry><literal>x</literal></entry><entry><literal>a</literal>-rate scalar or <literal>a</literal>-rate vector</entry>
+</row>
+<row>
+<entry><literal>f</literal></entry><entry><literal>f</literal>-rate streaming pvoc fsig type</entry>
+</row>
+<row>
+<entry><literal>S</literal></entry><entry>String</entry>
+</row>
+<row>
+<entry><literal>B</literal></entry><entry></entry>
+</row>
+<row>
+<entry><literal>l</literal></entry><entry></entry>
+</row>
+<row>
+<entry><literal>m</literal></entry><entry>Begins an indefinite list of <literal>i</literal>-rate arguments
+(any count)</entry>
+</row>
+<row>
+<entry><literal>M</literal></entry><entry>Begins an indefinite list of arguments (any
+rate, any count)</entry>
+</row>
+<row>
+  <entry><literal>N</literal></entry><entry>Begins an indefinite list of (optional <literal>a</literal>-, <literal>k</literal>-, <literal>i</literal>-, or <literal>S-rate</literal>)-rate arguments (any odd count)</entry>
+</row>
+<row>
+<entry><literal>n</literal></entry><entry>Begins an indefinite list of <literal>i</literal>-rate arguments
+(any odd count)</entry>
+</row>
+<row>
+  <entry><literal>O</literal></entry><entry>Optional k-rate, defaulting to 0</entry>
+</row>
+<row>
+<entry><literal>o</literal></entry><entry>Optional i-rate, defaulting to 0</entry>
+</row>
+<row>
+<entry><literal>p</literal></entry><entry>Optional i-rate, defaulting to 1</entry>
+</row>
+<row>
+<entry><literal>q</literal></entry><entry>Optional i-rate, defaulting to 10</entry>
+</row>
+<row>
+  <entry><literal>V</literal></entry><entry>Optional k-rate, defaulting to 0.5</entry>
+</row>
+<row>
+<entry><literal>v</literal></entry><entry>Optional i-rate, defaulting to 0.5</entry>
+</row>
+<row>
+<entry><literal>j</literal></entry><entry>Optional i-rate, defaulting to -1</entry>
+</row>
+<row>
+<entry><literal>h</literal></entry><entry>Optional i-rate, defaulting to 127</entry>
+</row>
+<row>
+<entry><literal>y</literal></entry><entry>Begins an indefinite list of <literal>a</literal>-rate arguments
+(any count)</entry>
+</row>
+<row>
+<entry><literal>z</literal></entry><entry>Begins an indefinite list of <literal>k</literal>-rate arguments
+(any count)</entry>
+</row>
+<row>
+<entry><literal>Z</literal></entry><entry>Begins an indefinite list of alternating <literal>k</literal>-rate
+and <literal>a</literal>-rate arguments (kaka...)
+(any count)</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term><literal>iopadr</literal></term><listitem><para>The
+        address of the unit generator function (of type <literal>int
+        (*SUBR)(CSOUND *, void *)</literal>) that is called at i-time, or NULL for no
+        function.</para></listitem></varlistentry>
+
+<varlistentry><term><literal>kopadr</literal></term><listitem><para>The address of the unit
+        generator function (of type <literal>int (*SUBR)(CSOUND *, void *)</literal>) that is called at <literal>k</literal>-rate, or NULL for no function.</para></listitem></varlistentry>
+
+<varlistentry><term><literal>aopadr</literal></term><listitem><para>The address of the unit
+        generator function (of type <literal>int (*SUBR)(CSOUND *, void *)</literal>) that is called at a-rate, or NULL for no function.</para></listitem></varlistentry>
+
+</variablelist>
+
+</section>
+
+</section>
+
+</chapter>
+

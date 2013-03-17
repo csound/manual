@@ -1,0 +1,288 @@
+<chapter id="tclcsound">
+<title>TclCsound</title>
+<para>
+TclCsound was introduced to provide a simple scripting interface to Csound.
+Tcl is a simple language that is easy to extend and provide nice facilities such as easy file 
+access and TCP networking. With its Tk component, it can also handle a graphic and event interface. 
+TclCsound provides three ‘points of contact' with Tcl: </para>
+<para>1. a csound-aware tcl interpreter (cstclsh) </para>
+<para>2. a csound-aware windowing shell (cswish) </para>
+<para>3. a csound commands module for Tcl/Tk (tclcsound dynamic lib) </para>
+<section id="tclcsh">
+<title>The Tcl interpreter: cstclsh </title>
+<para>With cstclsh, it is possible to have interactive control over a csound performance.
+ The command starts an interactive shell, which holds an instance of Csound. 
+ A number of commands can then be used to control it. For instance, the following 
+ command can compile csound code and load it in memory ready for performance: </para>
+<programlisting>csCompile -odac <emphasis>orchestra</emphasis> <emphasis>score</emphasis> -m0 </programlisting>
+<para>Once this is done, performance can be started in two ways: using csPlay or csPerform . The command </para>
+<programlisting>csPlay </programlisting>
+<para>will start the Csound performance in a separate thread and return to the cstclsh prompt. 
+A number of commands can then be used to control Csound. For instance, </para>
+<programlisting>csPause </programlisting>
+<para>will pause performance; and </para>
+<programlisting>csRewind </programlisting>
+<para>will rewind to the beginning of the note-list. The csNote, csTable and 
+csEvent commands can be used to add Csound score events to the performance, on-the-fly. 
+The csPerform command, as opposed to csPlay , will not launch a separate thread, but will run Csound in 
+the same thread, returning only when the performance is finished. A variety of other commands exist, 
+providing full control of Csound. </para>
+</section>
+<section id="cswish">
+<title>Cswish: the windowing shell </title>
+<para>With Cswish, Tk widgets and commands can be used to provide graphical 
+interface and event handling. As with cstclsh, running the cswish command also opens an 
+interactive shell. For instance, the following commands can be used to create a transport 
+control panel for Csound: </para>
+<programlisting>frame .fr
+button .fr.play -text play -command csPlay
+button .fr.pause -text pause -command csPause
+button .fr.rew -text rew -command csRewind
+pack .fr .fr.play .fr.pause .fr.rew </programlisting>
+<para>Similarly, it is possible to bind keys to commands so that the computer keyboard can be 
+used to play Csound. </para>
+<para>Particularly useful are the control channel commands that TclCsound provides. 
+For instance, named IO channels can be registered with TclCsound and these can be used with the 
+invalue, outvalue opcodes. In addition, the Csound API also provides a complete software bus for audio, 
+control and string channels. It is possible in TclCsound to access control and string bus channels 
+(the audio bus is not implemented, as Tcl is not able to handle such data). 
+With these TclCsound commands, Tk widgets can be easily connected to synthesis parameters. </para>
+</section>
+<section id="csserver">
+<title>A Csound server </title>
+<para>In Tcl, setting up TCP network connections is very simple. With a few lines of code a csound server can be built. 
+This can accept connections from the local machine or from remote clients. Not only Tcl/Tk clients can send 
+commands to it, but TCP connections can be made from other sofware, such as, for instance, Pure Data (PD). 
+A Tcl script that can be run under the standard tclsh interpreter is shown below. It uses the Tclcsound module, 
+a dynamic library that adds the Csound API commands to Tcl. </para>
+<programlisting>
+# load tclcsound.so
+#(OSX: tclcsound.dylib, Windows: tclcsound.dll)
+load tclcsound.so Tclcsound
+set forever 0
+
+# This arranges for commands to be evaluated
+proc ChanEval { chan client } {
+if { [catch { set rtn [eval [gets $chan]]} err] } {
+puts &quot;Error: $err&quot;
+} else {
+puts $client $rtn
+flush $client
+}
+} 
+</programlisting>
+<programlisting>
+# this arranges for connections to be made 
+</programlisting>
+<programlisting>
+proc NewChan { chan host port } {
+puts &quot;Csound server: connected to $host on port $port ($chan)&quot;
+fileevent $chan readable [list ChanEval $chan $host]
+} 
+</programlisting>
+<programlisting>
+# this sets up a server to listen for
+# connections 
+</programlisting>
+<programlisting>
+set server [socket -server NewChan 40001]
+set sinfo [fconfigure $server -sockname]
+puts &quot;Csound server: ready for connections on port [lindex $sinfo 2]&quot;
+vwait forever 
+</programlisting>
+<para>With the server running, it is then possible to set up clients to control the Csound server. 
+Such clients can be run from standard Tcl/Tk interpreters, as they do not evaluate the Csound commands themselves. Here is an example of client connections to a Csound server, using Tcl: </para>
+<programlisting>
+# connect to server
+set sock [socket localhost 40001]
+
+# compile Csound code
+puts $sock &quot;csCompile -odac <emphasis>orchestra</emphasis> <emphasis>score</emphasis>&quot;
+flush $sock 
+</programlisting>
+<programlisting>
+# start performance
+puts $sock &quot;csPlay&quot;
+flush $sock 
+</programlisting>
+<programlisting>
+# stop performance
+puts $sock &quot;csStop&quot;
+flush $sock 
+</programlisting>
+<para>As mentioned before, it is possible to set up clients using other software systems, such as PD. 
+Such clients need only to connect to the server (using a netsend object) and send messages to it. The first 
+item of each message is taken to be a command. Further items can optionally be added to it as arguments to that command. </para>
+</section>
+<section id="tclscripting">
+<title>A Scripting Environment </title>
+<para>With TclCsound, it is possible to transform the popular text editor e-macs into a Csound scripting/performing 
+environment. When in Tcl mode, the editor allows for Tcl expressions to be evaluated by selection and use of a simple 
+escape sequence (Ctrl-C Ctrl-X). This facility allows the integrated editing and performance of Csound and Tcl/Tk code. </para>
+<para>In Tcl it is possible to write score and orchestra files that can be saved, compiled and run by the same script, 
+under the e-macs environment. The following example shows a Tcl script that builds a csound instrument and then 
+proceeds to run a csound performance. It creates 10 slightly detuned parallel oscillators, generating sounds similar 
+to those found in Risset's <emphasis>Inharmonique</emphasis>. </para>
+<programlisting>load tclcsound.so Tclcsound </programlisting>
+<programlisting># set up some intermediary files </programlisting>
+<programlisting>
+set orcfile &quot;tcl.orc&quot;
+set scofile &quot;tcl.sco&quot;
+set orc [open $orcfile w]
+set sco [open $scofile w] 
+</programlisting>
+<programlisting># This Tcl procedure builds an instrument
+proc MakeIns { no code } {
+global orc sco
+puts $orc &quot;instr $no&quot;
+puts $orc $code
+puts $orc &quot;endin&quot;
+} 
+</programlisting>
+<programlisting>
+# Here is the instrument code
+append ins &quot;asum init 0 \n&quot;
+append ins &quot;ifreq = p5 \n&quot;
+append ins &quot;iamp = p4 \n&quot; 
+</programlisting>
+<programlisting>
+for { set i 0 } { $i &lt; 10 } { incr i } {
+append ins &quot;a$i oscili iamp,
+ifreq+ifreq*[expr $i * 0.002], 1\n&quot;
+} 
+</programlisting>
+<programlisting>for { set i 0 } {$i &lt; 10 } { incr i } {
+if { $i } {
+append ins &quot; + a$i&quot;
+} else {
+append ins &quot;asum = a$i &quot;
+}
+} 
+</programlisting>
+<programlisting>
+append ins &quot;\nk1 linen 1, 0.01, p3, 0.1 \n&quot;
+append ins &quot;out asum*k1&quot; 
+</programlisting>
+<programlisting>
+# build the instrument and a dummy score 
+</programlisting>
+<programlisting>
+MakeIns 1 $ins
+puts $sco &quot;f0 10&quot;
+close $orc
+close $sco 
+</programlisting>
+<programlisting>
+# compile
+csCompile $orcfile $scofile -odac -d -m0 
+</programlisting>
+<programlisting>
+# set a wavetable
+csTable 1 0 16384 10 1 .5 .25 .2 .17 .15 .12 .1 
+</programlisting>
+<programlisting>
+# send in a sequence of events and perform it
+for {set i 0} { $i &lt; 60 } { incr i } {
+csNote 1 [expr $i * 0.1] .5 \
+[expr ($i * 10) + 500] [expr 100 + $i * 10]
+}
+csPerform 
+</programlisting>
+<programlisting>
+# it is possible to run it interactively as
+# well
+csNote 1 0 10 1000 200
+csPlay 
+</programlisting>
+<para>The use of such facilities as provided by e-macs can emulate an environment not 
+unlike the one found under the so-called ‘modern synthesis systems', such as SuperCollider (SC).
+In fact, it is possible to run Csound in a client-server set-up, which is one of the features of SC3. 
+A major advantage is that Csound provides about three or four times the number of unit generators 
+found in that language (as well as providing a lower-level approach to signal processing, in fact 
+these are but a few advantages of Csound). </para>
+</section>
+<section id="tclwrapper">
+<title> TclCsound as a language wrapper </title>
+<para>It is possible to use TclCsound at a slightly lower level, as many of the 
+C API functions have been wrapped as Tcl commands. For instance it is possible to create a ‘classic' 
+Csound command-line frontend completely written in Tcl. The following script demonstrates this: </para>
+<programlisting>#!/usr/local/bin/cstclsh </programlisting>
+<programlisting>
+set result 1
+csCompileList $argv
+while { $result != 0 } {
+set result csPerformKsmps
+}
+</programlisting>
+</section>
+<section id="tclrefe">
+<title> TclCsound Command Reference</title>
+
+<para> Performance control commands: </para>
+<para> <command> 
+csCompile [csound command-line] : </command> compiles an orc/sco/csd + any options 
+</para> <para> <command> 
+csCompileList arglist : </command> compiles an orc/sco/csd + options given as a Tcl list 'arglist'
+</para> <para> <command> 
+csPerform : </command> plays the score, returning when finished
+</para> <para> <command> 
+csPerformKsmps : </command> performs one ksmps block of audio samples, returning when finished
+</para> <para> <command> 
+csPerformBuffer : </command> performs one buffersize block of audio samples, returning when finished
+</para> <para> <command> 
+csPlay : </command> starts asynchronous performance in a separate thread, returning immediately
+</para> <para> <command> 
+csPause : </command> pauses playback
+</para> <para> <command> 
+csStop : </command> stops performance and resets csound
+</para> <para> <command> 
+csRewind : </command> rewinds the score
+</para> <para> <command> 
+csOffset secs : </command> offsets score playback by secs
+</para> <para> <command> 
+csGetoffset : </command> returns the score offset in secs
+</para> <para> <command> 
+csGetScoreTime : </command> returns the score time in secs
+</para>
+
+<para>Event commands:</para>
+<para> <command> csNote [p-fields] : </command> sends in a i-statement event
+</para> <para> <command> csTable [p-fields] : </command> sends in a f-statement event
+</para> <para> <command> csEvent opcode [p-fields] : </command> sends in a score event defined by 'opcode' plus p-fields
+</para> <para> <command> csNoteList arglist : </command> sends in a i-statement event with p-fields as a Tcl list 'arglist'
+</para> <para> <command> csTableList arglist : </command> sends in a f-statement event with p-fields as a Tcl list 'arglist'
+</para> <para> <command> csEventList arglist : </command> sends in a score event defined by 'opcode' plus p-fields as a Tcl list 'arglist'
+</para>
+<para>Invalue, outvalue, pvsin, pvsout control and string channel commands:</para>
+<para> <command> csInChannel name : </command> registers a csound invalue channel 
+</para> <para> <command> csOutChannel name : </command> registers a csound outvalue channel and creates tcl global variable 'name'
+</para> <para> <command> csInValue channel value : </command> sets the value of a csound invalue channel
+</para> <para> <command> csOutValue channel : </command> returns the value of a csound outvalue channel
+</para> <para> <command> csPvsIn number [size olaps wsize wtype]: </command> registers a pvs in bus channel, optionally initialising fsig
+values for fftsize to 'size' (default:1024), overlaps to 'olaps' (def.: size/4), window size to 'wsize' (def.: size) and window type
+to 'wtype' (def.: 1, Hanning window, see manual page for pvsanal). Works with pvsin opcode (PVS_AMP_FREQ format only). 
+</para> <para> <command> csPvsOut number [size olaps wsize wtype]: </command> registers a pvs out bus channel. Works with opcode pvsout (PVS_AMP_FREQ format only).
+</para> <para> <command> csPvsInSet channel bin amp freq: </command> sets the amp and freq of a bin of the pvs in channel number.
+</para> <para> <command> csPvsOutGet channel bin [isFreq]: </command> returns the amp or freq of a bin of the pvs out channel number. The optional 
+argument 'isFreq' (default: 0) controls whether the returned value is the bin amp (0) or freq (1).
+</para> <para> <command> csSetControlChannel channel value : </command> sets the value of control channel 'channel', creating it if it does not exist
+</para> <para> <command> csGetControlChannel channel : </command> returns the value of control channel 'channel'; creates the channel it if it does not exist
+</para> <para> <command> csSetStringChannel channel string : </command> sets the string channel 'channel', creating it if it does not exist
+</para> <para> <command> csGetStringChannel channel : </command> returns the string in channel 'channel'; creates the channel it if it does not exist
+</para>
+<para> Message commands: </para>
+<para> <command>csMessageOutput  var: </command>appends all csound messages to the tcl variable var. </para>
+
+<para>Table commands:</para>
+<para> <command> csGetTableSize ftn : </command> returns the size of function table ftn (-1 if non-existent)
+</para> <para> <command> csSetTable ftn index value : </command> sets the value of position 'index' to 'value' in function table 'ftn'
+</para> <para> <command> csGetTable ftn index : </command> returns the value of position 'index' in function table 'ftn'
+</para>
+<para>Environment variable commands:
+</para>
+<para> <command> csOpcodedir opcodedir : </command> sets the opcode directory
+</para> <para> <command> csSetenv envvar value : </command> sets any environment variable (eg. SFDIR, SADIR) 
+</para>
+</section>
+</chapter>
+

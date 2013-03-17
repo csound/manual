@@ -1,0 +1,149 @@
+
+<section id="CscoreCompile">
+  <title>Compiling a Cscore Program</title>
+
+  <para>
+    A <emphasis>Cscore</emphasis> program can be invoked either as a <emphasis>standalone program</emphasis> or as part of Csound in between sorting the score and performing the score with the orchestra:
+  </para>
+
+  <para>
+    <cmdsynopsis>
+      <command>cscore</command>
+      <arg><replaceable>scorefilein</replaceable></arg>
+      <arg><replaceable>&gt; scorefileout</replaceable></arg>
+    </cmdsynopsis>
+  </para>
+
+  <para>
+    or
+  </para>
+
+  <para>
+    <cmdsynopsis>
+      <command>csound</command>
+      <arg>-C</arg>
+      <arg><option>otherflags</option></arg>
+      <arg><replaceable>orchname</replaceable></arg>
+      <arg><replaceable>scorename</replaceable></arg>
+    </cmdsynopsis>
+  </para>
+
+  <para>
+    Before trying to compile your own <emphasis>Cscore</emphasis> program, you will most likely want to obtain a copy of the Csound source code.  Either download the latest source distribution for your platform or check out a copy of the csound5 module from Sourceforge CVS.  There are several files in the sources that will help you.  Within the <filename>examples/cscore/</filename> directory are a number of examples of <emphasis>Cscore</emphasis> control programs, including all of the examples contained in this manual.  And in the <filename>frontends/cscore/</filename> directory are the two files <emphasis>cscoremain.c</emphasis> and <emphasis>cscore.c</emphasis>.  <emphasis>cscoremain.c</emphasis> contains a simple <emphasis>main</emphasis> function that performs all of the initialization that a standalone <emphasis>Cscore</emphasis> program needs to do before it calls your control function.  This main <quote>stub</quote> initializes Csound, reads the commandline arguments, opens the input and output score files, and then calls a function <emphasis>cscore()</emphasis>.  As described above, it is expected that you will write the <emphasis>cscore()</emphasis> function and provide it in another file.  The file <emphasis>frontends/cscore/cscore.c</emphasis> shows the simplest example of a <emphasis>cscore()</emphasis> function that reads in a score of any length and writes it to the output unchanged.
+  </para>
+
+  <para>
+So, to create a standalone program, write a control program as shown in the previous section.  Let's assume that you saved this program in a file named <quote><emphasis>mycscore.c</emphasis></quote>.  Next, you need to compile and link this program with the Csound library and <emphasis>cscoremain.c</emphasis> in order to create an exectuable by following the set of directions below that apply to your operating system. It will be helpful to already have some familiarity with the C compiler on your computer since the information below cannot be complete for all possible systems.
+  </para>
+
+<bridgehead>Linux and Unix</bridgehead>
+
+  <para>
+The following commands assume that you have copied your file <emphasis>mycscore.c</emphasis> into the same directory as <emphasis>cscoremain.c</emphasis>, that you have opened a terminal to that same directory, and that you have previously installed a binary distribution of Csound that placed a library <emphasis>libcsound.a</emphasis> or <emphasis>libcsound.so</emphasis> into <emphasis>/usr/local/lib</emphasis> and the header files for the Csound API into <emphasis>/usr/local/include/csound</emphasis>.
+  </para>
+
+  <para>
+To compile and link:
+  </para>
+  
+  <informalexample>
+    <screen>
+gcc mycscore.c cscoremain.c -o cscore -lcsound -L/usr/local/lib -I/usr/local/include/csound</screen>
+  </informalexample>
+
+  <para>
+To run (sending the results to standard output):
+  </para>
+
+  <informalexample>
+    <screen>./cscore test.sco</screen>
+  </informalexample>
+
+  <para>
+It is possible that on some Unix systems, the C compiler will be named <emphasis>cc</emphasis> or something else other than <emphasis>gcc</emphasis>.
+  </para>
+
+
+<bridgehead>Windows</bridgehead>
+
+  <para>
+Csound is usually compiled on Windows using the MinGW environment that makes GCC -- the same compiler used on Linux -- available using a Unix-like command shell (MSYS).  Since pre-compiled libraries for Csound on Windows are built in this way, you may need to use MinGW as well to link to them.  If you have built Csound using another compiler, then you should be able to build <emphasis>Cscore</emphasis> with that compiler as well.
+  </para>
+
+  <para>
+Compiling standalone <emphasis>Cscore</emphasis> programs using MinGW should be similar to the procedure for Linux above with library and header paths changed appropriately for where Csound is installed on the Windows system.  <emphasis>(Please feel free to contribute more detailed instructions here as the editor has been unable to test Cscore on a Windows machine).</emphasis>
+  </para>
+
+
+<bridgehead>OS X</bridgehead>
+
+  <para>
+The following commands assume that you have copied your file <emphasis>mycscore.c</emphasis> into the same directory as <emphasis>cscoremain.c</emphasis> and that you have opened a terminal to that same directory.  In addition, the Apple-supplied developer tools (including the GCC compiler) should be installed on your system and you should have previously installed a binary distribution of Csound that placed the CsoundLib framework into <emphasis>/Library/Frameworks</emphasis>.
+  </para>
+
+  <para>
+Use this command compile and link. (You may get a warning about "multiple definitions of symbol _cscore").
+  </para>
+  
+  <informalexample>
+    <screen>
+gcc cscore.c cscoremain.c -o cscore -framework CsoundLib -I/Library/Frameworks/CsoundLib.framework/Headers</screen>
+  </informalexample>
+
+  <para>
+To run (sending the results to standard output):
+  </para>
+
+  <informalexample>
+    <screen>./cscore test.sco</screen>
+  </informalexample>
+
+
+<bridgehead>MacOS 9</bridgehead>
+  <para>
+    You will need CodeWarrior or some other development environment installed on your computer (MPW may work).  Download the source code distribution for OS 9 (it will have a name like <emphasis>Csound5.05_OS9_src.smi.bin</emphasis>).
+  </para>
+
+  <para>
+      If using CodeWarrior, find and open the project file "Cscore5.cw8.mcp" in the folder "Csound5.04-OS9-source:macintosh:Csound5Library:".  This project file is configured to use the source files <emphasis>cscore.c</emphasis> and <emphasis>cscoremain_MacOS9.c</emphasis> from the csound5 source tree and the Csound5Lib shared library produced by compiling Csound with the "Csound5.cw8.mcp" project file.  You should substitute your own <emphasis>Cscore</emphasis> program file for <emphasis>cscore.c</emphasis> and either compile Csound5Lib first or substitute a copy of the library in the project from the binary distribution of Csound for OS 9.  The file <emphasis>cscoremain_MacOS9.c</emphasis> contains specialized code for configuring CodeWarrior's SIOUX console library and allows commandline arguments to be entered before the program is run.
+  </para>
+
+  <para>
+Once you have the proper files included in the project window, click the "Make" button and CodeWarrior should produce an application named <quote><emphasis>Cscore</emphasis></quote>.  When you run this application, it first displays a window allowing you to type in the arguments to the main function.  You only need to type in the filename or pathname to the input score -- do not type in "cscore".  The input file should be in the same folder as the application or else you will need to type a full or relative pathname to the file.  Output will be displayed in the console window.  You can use the <emphasis>Save</emphasis> command from the <emphasis>File</emphasis> menu before quitting if you wish.  Alternatively, in the commandline dialog, you can choose to redirect the output to a file by clicking on the <emphasis>File</emphasis> button on the right side of the dialog.  (Note that the console window can only display about 32,000 characters, so writing to a file is necessary for long scores).
+  </para>
+
+<bridgehead>Making Cscore usable from within Csound</bridgehead>
+  <para>
+    To operate from Csound, first follow the instructions for compiling Csound (see <link linkend="BuildingCsound"><citetitle>Building Csound</citetitle></link>) according to the operating system that you are using.  Once you have successfully built an unmodified Csound system, then substitute your own <emphasis>cscore()</emphasis> function for the one in the file <emphasis>Top/cscore_internal.c</emphasis>, and rebuild Csound.
+  </para>
+
+  <para>
+   The resulting executable is your own special Csound, usable as above. The <link linkend="FlagsMinusUpperC"><citetitle>-C flag</citetitle></link> will invoke your <emphasis>Cscore</emphasis> program after the input score is sorted into <quote><emphasis>score.srt</emphasis></quote>. The details of what happens when you run Csound with the -C flag are given in the next section.
+  </para>
+
+  <para>
+   Csound 5 also provides an additional way to run your own <emphasis>Cscore</emphasis> program from within Csound.  Using the API, a host application can set a <emphasis>Cscore</emphasis> <emphasis>callback function</emphasis>, which is a function that Csound will call instead of using the built-in <emphasis>cscore()</emphasis> function.  One advantage of this approach is that it is not necessary to recompile the entirety of Csound.  Another benefit is that the host application can select at runtime from more than one <emphasis>Cscore</emphasis> function to designate as the callback.  The disadvantage is that you need to write a host application.
+  </para>
+
+  <para>
+   A simple approach to using a <emphasis>Cscore</emphasis> callback via the API would be to modify the standard Csound main program -- which is a simple Csound host -- contained in the file <emphasis>frontends/csound/csound_main.c</emphasis>.  Adding a call to <emphasis>csoundSetCscoreCallback()</emphasis> after the call to <emphasis>csoundCreate()</emphasis> but before the call to <emphasis>csoundCompile()</emphasis> should do the job.  Recompiling this file and linking to an existing Csound library will make a commandline version of Csound that works similarly to the one described above.  Don't forget to use the -C flag.
+  </para>
+
+<bridgehead>Notes about score formats and run-time behavior</bridgehead>
+  
+  <para>
+    As stated previously, the input files to <emphasis>Cscore</emphasis> may be in original or time-warped and pre-sorted form; this modality will be preserved (section by section) in reading, processing, and writing scores. Standalone processing will most often use unwarped sources and create unwarped new files. When running from within Csound, the input score will arrive already warped and sorted, and can thus be sent directly (normally section by section) to the orchestra. One advantage of this method of using <emphasis>Cscore</emphasis> is that all of the syntactical conveniences of the full Csound score language may be used -- macros, arithmetic expressions, carry, ramp, etc. -- since the score will go through the "Carry, Tempo, Sort" phases of score processing before being passed to the user-supplied <emphasis>Cscore</emphasis> program.
+  </para>
+
+  <para>
+    When running within Csound, a list of events can be conveyed to a Csound orchestra using <emphasis>cscoreListPlay()</emphasis>. There may be any number of <emphasis>cscoreListPlay()</emphasis> calls in a <emphasis>Cscore</emphasis> program. Each list so conveyed can be either time-warped or not, but each list must be in strict <emphasis>p2</emphasis>-chronological order (either from presorting or using <emphasis>cscoreListSort()</emphasis>). If there is no <emphasis>cscoreListPlay()</emphasis> in a <emphasis>Cscore</emphasis> module run from within Csound, all events written out (via <emphasis>cscorePutEvent()</emphasis>, <emphasis>cscorePutString()</emphasis>, or <emphasis>cscoreListPut()</emphasis>) are written to a new score in the current directory with the name <quote><emphasis>cscore.out</emphasis></quote>.  Csound then invokes the score sorter again before sending this new score to the orchestra for performance. The final, sorted, output score is written to a file named <quote><emphasis>cscore.srt</emphasis></quote>.
+  </para>
+
+  <para>
+    A standalone <emphasis>Cscore</emphasis> program will normally use the <quote>put</quote> commands to write into its output file. If a standalone <emphasis>Cscore</emphasis> program calls <emphasis>cscoreListPlay()</emphasis>, the events thus intended for performance will be sent to the output in the same way as if <emphasis>cscoreListPut()</emphasis> had been called instead.
+  </para>
+
+  <para>
+    A note list sent by <emphasis>cscoreListPlay()</emphasis> for performance should be temporally distinct from subsequent note lists. No note-end should extend past the next list's start time, since <emphasis>cscoreListPlay()</emphasis> will complete each list before starting the next (i.e. like a Section marker that doesn't reset local time to zero). This is important when using <emphasis>cscoreListGetNext()</emphasis> or <emphasis>cscoreListGetUntil()</emphasis> to fetch and process score segments prior to performance, because these functions may only read part of an unsorted section.
+  </para>
+</section>

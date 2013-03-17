@@ -1,0 +1,333 @@
+
+<section id="CscoreMain">
+  <title>Writing a Cscore Control Program</title>
+
+  <para>
+    The general format for a <emphasis>Cscore</emphasis> control program is:
+
+    <informalexample>
+      <programlisting>
+#include  &quot;cscore.h&quot; 
+void cscore(CSOUND *cs) 
+{ 
+ /*  VARIABLE DECLARATIONS  */ 
+ /*  PROGRAM BODY  */ 
+}</programlisting>
+    </informalexample>
+  </para>
+
+  <para>
+    The <emphasis>include</emphasis> statement will define the event and list structures and all of the <emphasis>Cscore</emphasis> API functions for the program.  The name of the user function needs to be <emphasis>cscore</emphasis> if it will be linked with the standard main program in <filename>cscormai.c</filename> or linked as the internal <emphasis>Cscore</emphasis> routine for a personal Csound executable.  This <emphasis>cscore()</emphasis> function receives one argument from <filename>cscormai.c</filename> or Csound -- <emphasis>CSOUND *cs</emphasis> -- which is a pointer to a Csound object.  The pointer <emphasis>cs</emphasis> must be passed as the first parameter to every <emphasis>Cscore</emphasis> API function that the program calls.
+  </para>
+
+  <para>
+    The following C program will read from a <emphasis>standard numeric score,</emphasis> up to (but not including) the first <emphasis>s</emphasis> or <emphasis>e statement</emphasis>, then write that data (unaltered) as output.
+  </para>
+
+  <para>
+    <informalexample>
+      <programlisting>
+#include  &quot;cscore.h&quot; 
+void cscore(CSOUND *cs) 
+{ 
+     EVLIST *a;                    /* a is allowed to point to an event list */ 
+     a = cscoreListGetSection(cs); /* read events in, return the list pointer */ 
+     cscoreListPut(cs, a);         /* write these events out (unchanged) */ 
+     cscorePutString(cs, &quot;e&quot;);     /* write the string e to output */ 
+}</programlisting>
+    </informalexample>
+  </para>
+
+  <para>
+    After execution of <emphasis>cscoreListGetSection()</emphasis>, the variable <emphasis>a</emphasis> points to a list of event addresses, each of which points to a stored event. We have used that same pointer to enable another list function -- <emphasis>cscoreListPut()</emphasis> -- to access and write out all of the events that were read. If we now define another symbol <emphasis>e</emphasis> to be an event pointer, then the statement
+
+    <informalexample>
+      <programlisting>e = a-&gt;e[4];</programlisting>
+    </informalexample>
+
+    will set it to the contents of the 4th slot in the <emphasis>EVLIST</emphasis> structure, <emphasis>a</emphasis>. The contents is a pointer to an event, which is itself comprised of an <emphasis>array</emphasis> of parameter field values. Thus the term <emphasis>e-&gt;p[5]</emphasis> will mean the value of parameter field 5 of the 4th event in the <emphasis>EVLIST</emphasis> denoted by <emphasis>a</emphasis>. The program below will multiply the value of that <emphasis>pfield</emphasis> by 2 before writing it out.
+  </para>
+
+  <para>
+    <informalexample>
+      <programlisting>
+#include  &quot;cscore.h&quot; 
+void cscore(CSOUND *cs) 
+{ 
+     EVENT  *e;                    /* a pointer to an event   */ 
+     EVLIST *a; 
+     a = cscoreListGetSection(cs); /* read a score as a list of events */ 
+     e = a-&gt;e[4];                  /* point to event 4 in event list a  */ 
+     e-&gt;p[5] *= 2;                 /* find pfield 5, multiply its value by 2 */ 
+     cscoreListPut(cs, a);         /* write out the list of events  */ 
+     cscorePutString(cs, &quot;e&quot;);     /* add a &quot;score end&quot; statement */ 
+}</programlisting>
+    </informalexample>
+  </para>
+
+  <para>
+    Now consider the following score, in which <emphasis>p[5]</emphasis> contains frequency in Hz.
+
+    <informalexample>
+      <programlisting>
+<emphasis role="stamnt">f</emphasis> 1 0 257 10 1 
+<emphasis role="stamnt">f</emphasis> 2 0 257 7 0 300 1 212 .8 
+<emphasis role="stamnt">i</emphasis> 1 1 3 0 440 10000
+<emphasis role="stamnt">i</emphasis> 1 4 3 0 256 10000
+<emphasis role="stamnt">i</emphasis> 1 7 3 0 880 10000
+<emphasis role="stamnt">e</emphasis></programlisting>
+    </informalexample>
+  </para>
+
+  <para>
+    If this score were given to the preceding main program, the resulting output would look like this:
+
+    <informalexample>
+      <programlisting>
+<emphasis role="stamnt">f</emphasis> 1 0 257 10 1 
+<emphasis role="stamnt">f</emphasis> 2 0 257 7 0 300 1 212 .8
+<emphasis role="stamnt">i</emphasis> 1 1 3 0 440 10000
+<emphasis role="stamnt">i</emphasis> 1 4 3 0 512 10000        <emphasis role="comment">; p[5] has become 512 instead of 256.</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 7 3 0 880 10000 
+<emphasis role="stamnt">e</emphasis></programlisting>
+    </informalexample>
+  </para>
+
+  <para>
+    Note that the 4th event is in fact the second note of the score. So far we have not distinguished between notes and function table setup in a numeric score. Both can be classed as events. Also note that our 4th event has been stored in <emphasis>e[4]</emphasis> of the structure. For compatibility with Csound <emphasis>pfield</emphasis> notation, we will ignore <emphasis>p[0]</emphasis> and <emphasis>e[0]</emphasis> of the event and list structures, storing <emphasis>p1</emphasis> in <emphasis>p[1]</emphasis>, event 1 in <emphasis>e[1]</emphasis>, etc. The <emphasis>Cscore</emphasis> functions all adopt this convention.
+  </para>
+
+  <para>
+    As an extension to the above, we could decide to use the same pointers <emphasis>a</emphasis> and <emphasis>e</emphasis> to examine each of the events in the list. Note that <emphasis>e</emphasis> was not set to the numeral 4, but to the location of the 4th slot in the list. To inspect <emphasis>p5</emphasis> of the previous event in the list, we need only redefine <emphasis>e</emphasis> with the assignment
+
+    <informalexample>
+      <programlisting>e = a-&gt;e[3];</programlisting>
+    </informalexample>
+    
+and reference the 5th slot of the <emphasis>pfield</emphasis> array using the expression
+
+    <informalexample>
+      <programlisting>e-&gt;p[5]</programlisting>
+    </informalexample>
+  </para>
+
+  <para>
+    More generally, we can use an integer variable as an index to the array <emphasis>e[]</emphasis>, and access each event in sequence by using a loop and incrementing the index.  The number of events stored in an <emphasis>EVLIST</emphasis> is contained in the <emphasis>nevents</emphasis> member of the struct.
+  </para>
+
+  <para>
+    <informalexample>
+      <programlisting>
+int index;    /* start with e[1] because e[0] is not used */
+for (index = 1; index &lt;= a-&gt;nevents; index++)
+{
+    e = a-&gt;e[index];
+    /* do something with e */
+}</programlisting>
+    </informalexample>
+  </para>
+
+  <para>
+    The above example starts with <emphasis>e[1]</emphasis> and increases the index each time through the loop (<emphasis>index++</emphasis>) until it is greater than <emphasis>a-&gt;nevents</emphasis>, the index of the last event in the list.  The statements inside the <emphasis>for</emphasis> loop do execute a final time when <emphasis>index</emphasis> equals <emphasis>a-&gt;nevents</emphasis>.
+  </para>
+
+  <para>
+    In the following program we will use the same input score. This time we will separate the <emphasis>ftable</emphasis> statements from the <emphasis>note</emphasis> statements. We will next write the three note-events stored in the list <emphasis>a</emphasis> to the output, then create a second score section consisting of the original pitch set and a transposed version of itself. This will bring about an octave doubling.
+  </para>
+
+  <para>
+    Here, our index to the array is <emphasis>n</emphasis> and we increment <emphasis>n</emphasis> as part of a <emphasis>for</emphasis> block which iterates <emphasis>nevents</emphasis> times, allowing one statement to act upon the same <emphasis>pfield</emphasis> of each successive event.
+  </para>
+
+  <para>
+    <informalexample>
+      <programlisting>
+#include  &quot;cscore.h&quot;
+void cscore(CSOUND *cs)
+{
+      EVENT  *e, *f;
+      EVLIST *a, *b;
+      int n;
+      
+      a = cscoreListGetSection(cs);            /* read score into event list &quot;a&quot; */ 
+      b = cscoreListSeparateF(cs, a);          /* separate f statements */ 
+      cscoreListPut(cs, b);                    /* write f statements out to score */ 
+      cscoreListFreeEvents(cs, b);             /* and release the spaces used */ 
+      e = cscoreDefineEvent(cs, &quot;t 0 120&quot;);    /* define event for tempo statement */ 
+      cscorePutEvent(cs, e);                   /* write tempo statement to score */ 
+      cscoreListPut(cs, a);                    /* write the notes */ 
+      cscorePutString(cs, &quot;s&quot;);                /* section end */ 
+      cscorePutEvent(cs, e);                   /* write tempo statement again */ 
+      b = cscoreListCopyEvents(cs, a);         /* make a copy of the notes in &quot;a&quot; */ 
+      for (n = 1; n &lt;= b-&gt;nevents; n++)        /* iterate the following lines nevents times: */
+      { 
+          f = b-&gt;e[n]; 
+          f-&gt;p[5] *= 0.5;                      /* transpose pitch down one octave */
+      }
+      a = cscoreListAppendList(cs, a, b);      /* now add these notes to original pitches */ 
+      cscoreListPut(cs, a); 
+      cscorePutString(cs, &quot;e&quot;);
+}</programlisting>
+    </informalexample>
+  </para>
+
+  <para>
+    The output of this program is:
+  </para>
+
+  <para>
+    <informalexample>
+      <programlisting>
+<emphasis role="stamnt">f</emphasis> 1 0 257 10 1
+<emphasis role="stamnt">f</emphasis> 2 0 257 7 0 300 1 212 .8
+<emphasis role="stamnt">t</emphasis> 0 120
+<emphasis role="stamnt">i</emphasis> 1 1 3 0 440 10000
+<emphasis role="stamnt">i</emphasis> 1 4 3 0 256 10000
+<emphasis role="stamnt">i</emphasis> 1 7 3 0 880 10000
+<emphasis role="stamnt">s</emphasis>
+<emphasis role="stamnt">t</emphasis> 0 120
+<emphasis role="stamnt">i</emphasis> 1 1 3 0 440 10000
+<emphasis role="stamnt">i</emphasis> 1 4 3 0 256 10000
+<emphasis role="stamnt">i</emphasis> 1 7 3 0 880 10000
+<emphasis role="stamnt">i</emphasis> 1 1 3 0 220 10000
+<emphasis role="stamnt">i</emphasis> 1 4 3 0 128 10000
+<emphasis role="stamnt">i</emphasis> 1 7 3 0 440 10000
+<emphasis role="stamnt">e</emphasis></programlisting>
+    </informalexample>
+  </para>
+
+  <para>
+    If the output is only being written to a file, then the unsorted order of the events is not a problem.  The output is written to a file (or standard output) whenever the function <emphasis>cscoreListPut()</emphasis> is used. However, if this program were to be called during a Csound performance and the function <emphasis>cscoreListPlay()</emphasis> replaced <emphasis>cscoreListPut()</emphasis>, then the events would be sent to the orchestra instead of to a file and they should then be sorted beforehand by calling the function <emphasis>cscoreListSort()</emphasis>. The details of score output and playing when using <emphasis>Cscore</emphasis> from within Csound are described in the next section.
+  </para>
+
+  <para>
+    Next we extend the above program by using the <emphasis>for</emphasis> loop to look at <emphasis>p[5]</emphasis> and <emphasis>p[6]</emphasis>. In the original score <emphasis>p[6]</emphasis> denotes amplitude. To create a diminuendo in the added lower octave, which is independent from the original set of notes, a variable called <emphasis>dim</emphasis> will be used.
+  </para>
+
+  <para>
+    <informalexample>
+      <programlisting>
+#include &quot;cscore.h&quot; 
+void cscore(CSOUND *cs)
+{
+      EVENT  *e, *f;
+      EVLIST *a, *b;
+      int n, dim;                              /* declare two integer variables */ 
+      
+      a = cscoreListGetSection(cs);
+      b = cscoreListSeparateF(cs, a);
+      cscoreListPut(cs, b);
+      cscoreListFreeEvents(cs, b);
+      e = cscoreDefineEvent(cs, &quot;t 0 120&quot;);
+      cscorePutEvent(cs, e);
+      cscoreListPut(cs, a);
+      cscorePutString(cs, &quot;s&quot;);
+      cscorePutEvent(cs, e);                   /* write out another tempo statement */
+      b = cscoreListCopyEvents(cs, a);
+      dim = 0;                                 /* initialize dim to 0 */ 
+      for (n = 1; n &lt;= b-&gt;nevents; n++)
+      { 
+          f = b-&gt;e[n]; 
+          f-&gt;p[6] -= dim;                      /* subtract current value of dim */ 
+          f-&gt;p[5] *= 0.5;                      /* transpose pitch down one octave */
+          dim += 2000;                         /* increase dim for each note */ 
+      }
+      a = cscoreListAppendList(cs, a, b);      /* now add these notes to original pitches */ 
+      cscoreListPut(cs, a); 
+      cscorePutString(cs, &quot;e&quot;);
+}</programlisting>
+    </informalexample>
+  </para>
+
+  <para>
+    Using the same input score again, the output from this program is:
+
+    <informalexample>
+      <programlisting>
+<emphasis role="stamnt">f</emphasis> 1 0 257 10 1 
+<emphasis role="stamnt">f</emphasis> 2 0 257 7 0 300 1 212 .8
+<emphasis role="stamnt">t</emphasis> 0 120
+<emphasis role="stamnt">i</emphasis> 1 1 3 0 440 10000
+<emphasis role="stamnt">i</emphasis> 1 4 3 0 256 10000
+<emphasis role="stamnt">i</emphasis> 1 7 3 0 880 10000
+<emphasis role="stamnt">s</emphasis>
+<emphasis role="stamnt">t</emphasis> 0 120
+<emphasis role="stamnt">i</emphasis> 1 1 3 0 440 10000     <emphasis role="comment">; Three original notes at</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 4 3 0 256 10000     <emphasis role="comment">; beats 1,4 and 7 with no dim.</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 7 3 0 880 10000
+<emphasis role="stamnt">i</emphasis> 1 1 3 0 220 10000     <emphasis role="comment">; three notes transposed down one octave</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 4 3 0 128 8000      <emphasis role="comment">; also at beats 1,4 and 7 with dim.</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 7 3 0 440 6000
+<emphasis role="stamnt">e</emphasis></programlisting>
+    </informalexample>
+  </para>
+
+  <para>
+    In the following program the same three-note sequence will be repeated at various time intervals. The starting time of each group is determined by the values of the array <emphasis>cue</emphasis>. This time the <emphasis>dim</emphasis> will occur for each group of notes rather than each note. Note the position of the statement which increments the variable <emphasis>dim</emphasis> outside the inner <emphasis>for</emphasis> loop.
+  </para>
+
+  <para>
+    <informalexample>
+      <programlisting>
+#include  &quot;cscore.h&quot; 
+int cue[3] = {0,10,17};                        /* declare an array of 3 integers */ 
+void cscore(CSOUND *cs) 
+{
+      EVENT  *e, *f;
+      EVLIST *a, *b;
+      int n, dim, cuecount;                    /* declare new variable cuecount */
+      
+      a = cscoreListGetSection(cs);
+      b = cscoreListSeparateF(cs, a);
+      cscoreListPut(cs, b);
+      cscoreListFreeEvents(cs, b);
+      e = cscoreDefineEvent(cs, &quot;t 0 120&quot;);
+      cscorePutEvent(cs, e);
+      dim = 0; 
+      for (cuecount = 0; cuecount &lt;= 2; cuecount++) /* elements of cue are numbered 0, 1, 2 */
+      {
+          for (n = 1; n &lt;= a-&gt;nevents; n++)
+          { 
+              f = a-&gt;e[n]; 
+              f-&gt;p[6] -= dim; 
+              f-&gt;p[2] += cue[cuecount];        /* add values of cue */ 
+          } 
+          printf(&quot;; diagnostic:  cue = %d\n&quot;, cue[cuecount]); 
+          dim += 2000; 
+          cscoreListPut(cs, a);
+      } 
+      cscorePutString(cs, &quot;e&quot;);
+}</programlisting>
+    </informalexample>
+  </para>
+
+  <para>
+    Here the inner <emphasis>for</emphasis> loop looks at the events of list <emphasis>a</emphasis> (the notes) and the outer <emphasis>for</emphasis> loop looks at each <emphasis>repetition</emphasis> of the events of list <emphasis>a</emphasis> (the pitch group "cues"). This program also demonstrates a useful trouble-shooting device with the <emphasis>printf</emphasis> function. The <emphasis>semi-colon</emphasis> is first in the character string to produce a comment statement in the resulting score file. In this case the value of <emphasis>cue</emphasis> is being printed in the output to insure that the program is taking the proper <emphasis>array</emphasis> member at the proper time. When output data is wrong or error messages are encountered, the <emphasis>printf</emphasis> function can help to pinpoint the problem.
+  </para>
+
+  <para>
+    Using the same input file, the C program above will generate the following score.  Can you determine why the last set of notes starts at the wrong time and how to correct the problem?
+  </para>
+
+  <para>
+    <informalexample>
+      <programlisting>
+<emphasis role="stamnt">f</emphasis> 1 0 257 10 1
+<emphasis role="stamnt">f</emphasis> 2 0 257 7 0 300 1 212 .8
+<emphasis role="stamnt">t</emphasis> 0 120
+<emphasis role="comment">; diagnostic:  cue = 0</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 1 3 0 440 10000
+<emphasis role="stamnt">i</emphasis> 1 4 3 0 256 10000
+<emphasis role="stamnt">i</emphasis> 1 7 3 0 880 10000
+<emphasis role="comment">; diagnostic:  cue = 10</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 11 3 0 440 8000
+<emphasis role="stamnt">i</emphasis> 1 14 3 0 256 8000
+<emphasis role="stamnt">i</emphasis> 1 17 3 0 880 8000
+<emphasis role="comment">; diagnostic:  cue = 17</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 28 3 0 440 4000
+<emphasis role="stamnt">i</emphasis> 1 31 3 0 256 4000
+<emphasis role="stamnt">i</emphasis> 1 34 3 0 880 4000
+<emphasis role="stamnt">e</emphasis></programlisting>
+    </informalexample>
+  </para>
+</section>
