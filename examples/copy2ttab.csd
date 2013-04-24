@@ -11,23 +11,16 @@ nchnls = 2
 0dbfs  = 1
 
 instr 1
-  kT[]    tabgen 0,10
-          scalet kT,0,1
-  printk2 kT[0]
-  printk2 kT[1]
-  printk2 kT[2]
-  printk2 kT[3]
-  printk2 kT[4]
-  printk2 kT[5]
-  printk2 kT[6]
-  printk2 kT[7]
-  printk2 kT[8]
-  printk2 kT[9]
+  kS[] init 1024
+  printk2 kS[123]
+  copy2ttab kS, 1
+  printk2 kS[123]
 endin
 
 </CsInstruments>
 <CsScore>
-i 1 0 0
+f1 0 1024 10 1
+i 1 0 0.1
 e
 </CsScore>
 </CsoundSynthesizer>

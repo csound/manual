@@ -1,7 +1,6 @@
 <CsoundSynthesizer>
 <CsOptions>
 ; Select audio/midi flags here according to platform
--n
 </CsOptions>
 <CsInstruments>
 
@@ -11,23 +10,17 @@ nchnls = 2
 0dbfs  = 1
 
 instr 1
-  kT[]    tabgen 0,10
-          scalet kT,0,1
-  printk2 kT[0]
-  printk2 kT[1]
-  printk2 kT[2]
-  printk2 kT[3]
-  printk2 kT[4]
-  printk2 kT[5]
-  printk2 kT[6]
-  printk2 kT[7]
-  printk2 kT[8]
-  printk2 kT[9]
+kS[] init 1024
+kS   tabgen 0,1024
+     scalet kS,0,1
+     copy2ftab kS, 1
+aa   oscil 0.5, 440, 1
+     out aa
 endin
 
 </CsInstruments>
 <CsScore>
-i 1 0 0
+i 1 0 0.2
 e
 </CsScore>
 </CsoundSynthesizer>
