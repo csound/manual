@@ -11,18 +11,11 @@ nchnls = 2
 0dbfs  = 1
 
 instr 1
-  kT[]    tabgen 0,10
-          scalet kT,0,1
-  printk2 kT[0]
-  printk2 kT[1]
-  printk2 kT[2]
-  printk2 kT[3]
-  printk2 kT[4]
-  printk2 kT[5]
-  printk2 kT[6]
-  printk2 kT[7]
-  printk2 kT[8]
-  printk2 kT[9]
+
+  kS[] fill 1,7,5
+       printk2 kS[0]
+       printk2 kS[1]
+       printk2 kS[2]
 endin
 
 </CsInstruments>
