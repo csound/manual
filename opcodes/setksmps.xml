@@ -9,14 +9,14 @@
   <refnamediv>
     <refname>setksmps</refname>
     <refpurpose>
-      Sets the local ksmps value in a user-defined opcode block.
+      Sets the local ksmps value in an instrument or user-defined opcode block
     </refpurpose>
   </refnamediv>
 
   <refsect1>
     <title>Description</title>
     <para>
-      Sets the local ksmps value in a user-defined opcode block.
+      Sets the local ksmps value in an instrument or user-defined opcode block.
     </para>
   </refsect1>
 
@@ -38,24 +38,24 @@
     <note>
       <title>Note</title>
       <para>
-        The local <emphasis>ksmps</emphasis> is implemented by splitting up a control period into smaller sub-kperiods and temporarily modifying internal Csound global variables. This also requires converting the rate of k-rate input and output arguments (input variables receive the same value in all sub-kperiods, while outputs are written only in the last one). It also means that you cannot use a local <link linkend="ksmps"><citetitle>ksmps</citetitle></link> that is higher than the global <link linkend="ksmps"><citetitle>ksmps</citetitle></link>.
+        The local <emphasis>ksmps</emphasis> is implemented by splitting up a control period into smaller sub-kperiods and setting up the instrument local ksmps to the new value. This also requires converting the rate of k-rate input and output arguments (input variables receive the same value in all sub-kperiods, while outputs are written only in the last one). It also means that you cannot use a local <link linkend="ksmps"><citetitle>ksmps</citetitle></link> that is higher than the global <link linkend="ksmps"><citetitle>ksmps</citetitle></link>.
       </para>
     </note>
 
     <warning>
       <title>Warning about local ksmps</title>
       <para>
-        When the local <emphasis>ksmps</emphasis> is not the same as the orchestra level <emphasis>ksmps</emphasis> value (as specified in the orchestra header), global a-rate operations must not be used in the user-defined opcode block.
+        When the local <emphasis>ksmps</emphasis> is not the same as the orchestra level <emphasis>ksmps</emphasis> value (as specified in the orchestra header), global a-rate operations must be carefully coded to access the data in a vector according to the local ksmps. The audio rate bus channel opcodes (chnget/chnset) can be used freely, however, as they will do the necessary conversion between ksmp sizes.
       </para>
 
       <para>
-        These include:
+        Other opcodes that require some care include:
 
         <itemizedlist>
           <listitem><para>any access to <quote>ga</quote> variables</para></listitem>
           <listitem><para>a-rate zak opcodes (<link linkend="zar"><citetitle>zar</citetitle></link>, <link linkend="zaw"><citetitle>zaw</citetitle></link>, etc.)</para></listitem>
           <listitem><para><link linkend="tablera"><citetitle>tablera</citetitle></link> and <link linkend="tablewa"><citetitle>tablewa</citetitle></link> (these two opcodes may in fact work, but caution is needed)</para></listitem>
-          <listitem><para>The <emphasis>in</emphasis> and <emphasis>out</emphasis> opcode family (these read from, and write to global a-rate buffers)</para></listitem>
+          <listitem><para>  The <emphasis>in</emphasis> and <emphasis>out</emphasis> opcode family cannot be used in local-ksmps UDOs (these read from, and write to global a-rate buffers), but are safe in local-ksmps instruments</para></listitem>
         </itemizedlist>
       </para>
 
@@ -65,7 +65,7 @@
     </warning>
 
     <para>
-      The <emphasis>setksmps</emphasis> statement can be used to set the local <link linkend="ksmps"><citetitle>ksmps</citetitle></link> value of the user-defined opcode block. It has one i-time parameter specifying the new <emphasis>ksmps</emphasis> value (which is left unchanged if zero is used). <emphasis>setksmps</emphasis> should be used before any other opcodes (but allowed after <link linkend="xin"><citetitle>xin</citetitle></link>), otherwise unpredictable results may occur.
+      The <emphasis>setksmps</emphasis> statement can be used to set the local <link linkend="ksmps"><citetitle>ksmps</citetitle></link> value of the instrument or user-defined opcode block. It has one i-time parameter specifying the new <emphasis>ksmps</emphasis> value (which is left unchanged if zero is used). <emphasis>setksmps</emphasis> should be used before any other opcodes (but allowed after <link linkend="xin"><citetitle>xin</citetitle></link> in UDOs), otherwise unpredictable results may occur.
     </para>
   </refsect1>
 
@@ -112,7 +112,7 @@ xinarg1 [, xinarg2] [, xinarg3] ... [xinargN]  <emphasis role="opc">xin</emphasi
 
   <refsect1>
     <title>Credits</title>
-    <para>Author: Istvan Varga, 2002; based on code by Matt J. Ingalls</para>
+    <para>Author: Istvan Varga, 2002; based on code by Matt J. Ingalls; Modified by V Lazzarini for Csound 6</para>
     <para>New in version 4.22</para>
   </refsect1>
 </refentry>
