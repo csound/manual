@@ -1,0 +1,39 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+-ndm0
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="comment">;example by joachim heintz 2013</emphasis>
+
+  <emphasis role="oblock">opcode</emphasis> ToAscii, S, S				<emphasis role="comment">;returns the ASCII numbers of the input string as string</emphasis>
+
+Sin        <emphasis role="opc">xin</emphasis> 					<emphasis role="comment">;input string</emphasis>
+ilen       <emphasis role="opc">strlen</emphasis>     Sin 			<emphasis role="comment">;its length</emphasis>
+ipos       <emphasis role="op">=</emphasis>          0 			<emphasis role="comment">;set counter to zero</emphasis>
+Sres       <emphasis role="op">=</emphasis>          "" 			<emphasis role="comment">;initialize output string</emphasis>
+<emphasis role="olabel">loop</emphasis><emphasis role="op">:</emphasis>                 				<emphasis role="comment">;for all characters in input string:</emphasis>
+ichr       <emphasis role="opc">strchar</emphasis>    Sin, ipos 		<emphasis role="comment">;get its ascii code number</emphasis>
+Snew       <emphasis role="opc">sprintf</emphasis>    "<emphasis role="op">%</emphasis>d ", ichr 		<emphasis role="comment">;put this number into a new string</emphasis>
+Sres       <emphasis role="opc">strcat</emphasis>     Sres, Snew 		<emphasis role="comment">;append this to the output string</emphasis>
+           <emphasis role="octrl">loop_lt</emphasis>    ipos, 1, ilen, <emphasis role="olabel">loop</emphasis> 	<emphasis role="comment">;see comment for 'loop:'</emphasis>
+           <emphasis role="opc">xout</emphasis>       Sres 			<emphasis role="comment">;return output string</emphasis>
+  <emphasis role="oblock">endop</emphasis>
+
+  <emphasis role="oblock">instr</emphasis> Characters
+
+<emphasis role="opc">printf_i</emphasis> "\nCharacters<emphasis role="op">:</emphasis>\n  given as single strings<emphasis role="op">:</emphasis> <emphasis role="op">%</emphasis>s<emphasis role="op">%</emphasis>s<emphasis role="op">%</emphasis>s<emphasis role="op">%</emphasis>s<emphasis role="op">%</emphasis>s<emphasis role="op">%</emphasis>s\n", 1, "c", "s", "o", "u", "n", "d"
+<emphasis role="opc">printf_i</emphasis> "  but can also be given as numbers<emphasis role="op">:</emphasis> <emphasis role="op">%</emphasis>c<emphasis role="op">%</emphasis>c<emphasis role="op">%</emphasis>c<emphasis role="op">%</emphasis>c<emphasis role="op">%</emphasis>c<emphasis role="op">%</emphasis>c\n", 1, 99, 115, 111, 117, 110, 100 
+Scsound ToAscii "csound"
+<emphasis role="opc">printf_i</emphasis> "  <emphasis role="opc">in</emphasis> csound, the ASCII code of <emphasis role="opc">a</emphasis> character can be accessed with the <emphasis role="oblock">opcode</emphasis> strchar.<emphasis role="op">%</emphasis>s", 1, "\n"
+<emphasis role="opc">printf_i</emphasis> "  the name 'csound' returns the numbers <emphasis role="op">%</emphasis>s\n\n", 1, Scsound
+  <emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis> "Characters" 0 0
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>
