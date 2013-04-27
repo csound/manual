@@ -11,8 +11,8 @@ nchnls = 2
 0dbfs  = 1
 
 instr 1
-  kT[]    tabgen 0,10
-          scalet kT,0,1
+  kT[]    genarray   0,10
+          scalearray kT,0,1
   printk2 kT[0]
   printk2 kT[1]
   printk2 kT[2]
