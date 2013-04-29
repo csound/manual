@@ -22,27 +22,29 @@
 
   <refsect1>
     <title>Syntax</title>
-    <synopsis>ares <command>poscil</command> aamp, acps, ifn [, iphs]</synopsis>
+    <synopsis>ares <command>poscil</command> aamp, acps [, ifn, iphs]</synopsis>
 
-    <synopsis>ares <command>poscil</command> aamp, kcps, ifn [, iphs]</synopsis>
+    <synopsis>ares <command>poscil</command> aamp, kcps [, ifn, iphs]</synopsis>
 
-    <synopsis>ares <command>poscil</command> kamp, acps, ifn [, iphs]</synopsis>
+    <synopsis>ares <command>poscil</command> kamp, acps [, ifn, iphs]</synopsis>
 
-    <synopsis>ares <command>poscil</command> kamp, kcps, ifn [, iphs]</synopsis>
+    <synopsis>ares <command>poscil</command> kamp, kcps [, ifn, iphs]</synopsis>
 
-    <synopsis>ires <command>poscil</command> kamp, kcps, ifn [, iphs]</synopsis>
+    <synopsis>ires <command>poscil</command> kamp, kcps [, ifn, iphs]</synopsis>
 
-    <synopsis>kres <command>poscil</command> kamp, kcps, ifn [, iphs]</synopsis>
+    <synopsis>kres <command>poscil</command> kamp, kcps [, ifn, iphs]</synopsis>
   </refsect1>
 
   <refsect1>
     <title>Initialization</title>
     <para>
-      <emphasis>ifn</emphasis> -- function table number
+      <emphasis>ifn</emphasis> -- (optional) function table number.  This
+      defaults to -1 which indicates a sinewave.
     </para>
 
     <para>
-      <emphasis>iphs</emphasis> (optional, default=0) -- initial phase (normalized table index 0-1)
+      <emphasis>iphs</emphasis> (optional, default=0) -- initial phase
+      (normalized table index 0-1) 
     </para>
   </refsect1>
 
@@ -52,29 +54,51 @@
       <emphasis>ares</emphasis> -- output signal
     </para>
     <para>
-      <emphasis>kamp</emphasis>, <emphasis>aamp</emphasis> -- the amplitude of the output signal.
+      <emphasis>kamp</emphasis>, <emphasis>aamp</emphasis> -- the
+      amplitude of the output signal. 
     </para>
     <para>
-      <emphasis>kcps</emphasis>, <emphasis>acps</emphasis> -- the frequency of the output signal in cycles per second.
+      <emphasis>kcps</emphasis>, <emphasis>acps</emphasis> -- the
+      frequency of the output signal in cycles per second. 
     </para>
     <para>
-      <emphasis>poscil</emphasis> (precise oscillator) is the same as <link linkend="oscili"><citetitle>oscili</citetitle></link>, but allows much more precise frequency control, especially when using long tables and low frequency values. It uses floating-point table indexing, instead of integer math, like <emphasis>oscil</emphasis> and <emphasis>oscili</emphasis>.  It is only a bit slower than <emphasis>oscili</emphasis>.
+      <emphasis>poscil</emphasis> (precise oscillator) is the same as
+      <link linkend="oscili"><citetitle>oscili</citetitle></link>, but
+      allows much more precise frequency control, especially when
+      using long tables and low frequency values. It uses
+      floating-point table indexing, instead of integer math, like
+      <emphasis>oscil</emphasis> and <emphasis>oscili</emphasis>.  It
+      is only a bit slower than <emphasis>oscili</emphasis>. 
     </para>
     <para>
-      Since Csound 4.22, <emphasis>poscil</emphasis> can accept also negative frequency values and use a-rate values both for amplitude and frequency. So both AM and FM are allowed using this opcode.
+      Since Csound 4.22, <emphasis>poscil</emphasis> can accept also
+      negative frequency values and use a-rate values both for
+      amplitude and frequency. So both AM and FM are allowed using
+      this opcode. 
     </para>
-    <para>The opcode <link linkend="poscil3"><citetitle>poscil3</citetitle></link> is the same as  <emphasis>poscil</emphasis>, but uses cubic interpolation.</para>
-    <para>Note that <emphasis>poscil</emphasis> can use deffered (non-power of two) length tables.</para>
+    <para>The opcode <link
+    linkend="poscil3"><citetitle>poscil3</citetitle></link> is the
+    same as  <emphasis>poscil</emphasis>, but uses cubic
+    interpolation.</para> 
+    <para>Note that <emphasis>poscil</emphasis> can use deffered
+    (non-power of two) length tables.</para> 
   </refsect1>
 
   <refsect1>
     <title>Examples</title>
     <para>
-      Here is an example of the poscil opcode. It uses the file <ulink url="examples/poscil.csd"><citetitle>poscil.csd</citetitle></ulink>.
+      Here is an example of the poscil opcode. It uses the file <ulink
+      url="examples/poscil.csd"><citetitle>poscil.csd</citetitle></ulink>. 
       <example>
         <title>Example of the poscil opcode.</title>
-        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
-          <xi:include href="examples-xml/poscil.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <para>See the sections <link
+        linkend="UsingRealTime"><citetitle>Real-time
+        Audio</citetitle></link> and <link
+        linkend="CommandFlags"><citetitle>Command Line
+        Flags</citetitle></link> for more information on using command
+        line flags.</para> 
+          <xi:include href="examples-xml/poscil.csd.xml"
+                      xmlns:xi="http://www.w3.org/2001/XInclude"/> 
       </example>
     </para>
   </refsect1>
@@ -95,7 +119,9 @@
         <member>1998</member>
       </simplelist>
     </para>
-    <para>November 2002. Added a note about the changes to Csound version 4.22, thanks to &namerasmus;.</para>
+    <para>November 2002. Added a note about the changes to Csound
+    version 4.22, thanks to &namerasmus;.</para> 
     <para>New in Csound version 3.52</para>
+    <para>Function table optional in Csound version 6.00</para>
   </refsect1>
 </refentry>
