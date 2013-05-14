@@ -91,7 +91,7 @@ OPCODES = 	opcodes/0dbfs.xml	opcodes/abetarand.xml \
 	opcodes/clfilt.xml	opcodes/clip.xml	opcodes/clock.xml \
 	opcodes/clockoff.xml	opcodes/clockon.xml	opcodes/cngoto.xml \
 	opcodes/comb.xml	opcodes/control.xml	opcodes/convle.xml \
-	opcodes/convolve.xml	opcodes/copy2ftab.xml	opcodes/copy2ttab.xml \
+	opcodes/convolve.xml	opcodes/copya2ftab.xml	opcodes/copyf2array.xml \
 	opcodes/cos.xml	opcodes/cosh.xml \
 	opcodes/cosinv.xml	opcodes/cps2pch.xml	opcodes/cpsmidi.xml \
 	opcodes/cpsmidib.xml	opcodes/cpsoct.xml	opcodes/cpspch.xml \
