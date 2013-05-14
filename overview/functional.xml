@@ -1,0 +1,45 @@
+<section id="functional">
+  <title>Function syntax in Csound 6</title>
+  <para>
+    Csound 6 has introduced a new alternative syntax for orchestra code. This is initially an experimental feature, which has some limitations,
+as explained below. It will also allow the introduction of some non-backwards-compatible language features.
+  </para>
+  <bridgehead>Overview</bridgehead>
+  <para>
+   The main aspect of the new syntax is that some opcodes can be called as functions, and inlined in orchestra code. The
+general form of this is the expression:
+  </para>
+  <literallayout>
+   var* = op(exprlist*)
+  </literallayout>
+    <para>
+   where * indicates optional, var is a single variable in one of Csound6 types, and exprlist is a comma separated list
+   of expressions (or a single expression or variable). These expressions can be placed anywhere inside instrument or
+   opcode blocks. I-time operations can also be placed outside instrument blocks. The functional syntax can be intermixed with 
+   standard Csound code.
+    </para>
+ <para>
+ Here are some examples of these expressions: 
+ </para>
+  <literallayout>
+
+   a1 = oscil(p4,p5)
+   out(vco2(p4*linen(1,0.1,p3,0.1),p5)
+   outs(oscili(in(),p5), in())
+
+  </literallayout>
+  <bridgehead>Limitations</bridgehead>
+  <para>
+    The main limitation is that only opcodes with single outputs (or no outputs) are allowed. In addition, opcodes with
+multiple optional outputs (such as diskin) will not be parsed successfully in this form. An alternative to allow for these
+is to wrap them in user-defined opcodes, or just to intermix standard Csound syntax with this new style.
+  </para>
+  <para>
+Another limitation is that, in the absence of type hints, the polymorphic output in opcodes is 'locked' into given
+types. For instance, standard oscillators used in this way will default to audio-rate output, whereas envelope
+generators will be producing 'k-rate' outputs, unless an audio-rate input is used. Once type annotations are
+generally available, this limitation will disappear.
+
+</para>
+
+</section>

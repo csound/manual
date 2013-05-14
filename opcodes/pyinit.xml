@@ -16,22 +16,29 @@
   </refsect1>
   <refsect1>
     <title>Description</title>
-    <para>In the command-line version of Csound, you must first invoke the
+    <para>In Csound, you must first invoke the
       <emphasis>pyinit</emphasis> opcode in the orchestra header to initialize the Python
       interpreter, before using any of the other Python opcodes.</para>
-    <para>But if you use the Python opcodes in the CsoundAC version of
-      Csound, you need not invoke <emphasis>pyinit</emphasis>, because CsoundAC automatically
-      initializes the Python interpreter for you. In addition, CsoundAC
-      automatically creates a Python interface to the Csound API, in the
+    <para>But if you use the Python opcodes within CsoundAC, or from a python frontend using the
+       csnd6 module, Csound, you need not invoke <emphasis>pyinit</emphasis>, because 
+      the Python interpreter will have already been initialized. In this case, CsoundAC (or the csnd6 python module)
+      automatically creates a Python interface to the Csound API. In CsoundAC, this exists in the
       form a global instance of the <literal>CsoundAC.CppSound</literal> class named
-      <literal>csound</literal>. Therefore, Python code written in the Csound orchestra has
+      <literal>csound</literal>. From a python frontend which imports the csnd6 module, the name
+       of the variable holding the Csound instance will depend on the frontend code.
+      Therefore, Python code written in the Csound orchestra has
       access to the global <literal>csound</literal> object.</para>
+      <para>
+      The running Csound instance in which pyinit has been called is stored in a global python variable
+      called _CSOUND_. This holds the actual memory address of the instance and it can be used with
+      the csnd6 module via the csoundGetInstance(instance) call. This python function returns an object
+      that can be used with all the Csound API functions. 
+</para>
   </refsect1>
   <refsect1>
     <title>Credits</title>
     <para>Copyright (c) 2002 by Maurizio Umberto Puxeddu. All rights
-      reserved. Portions copyright (c) 2004 and 2005 by Michael Gogins. This
-      document has been updated Sunday 25 July 2004 and 1 February 2005 by
-      &namemichael;.</para>
+      reserved. Portions copyright (c) 2004 and 2005 by Michael Gogins, and (c) 2013, V Lazzarini.
+    </para>
   </refsect1>
 </refentry>
