@@ -1,0 +1,67 @@
+
+<refentry id="faustctl">
+<indexterm id="Indexfaustctl"><primary>faustctl</primary></indexterm>
+  <refentryinfo><title>Faust Opcodes: control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>faustctl</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>faustctl</refname>
+    <refpurpose>
+      Adjusts a given control in a Faust DSP instance.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Faustctl will set a given control in a running faust program
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>faustctl</command> idsp,Scontrol,kval </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis><quote>Scontrol</quote></emphasis> --  a string containing the control name
+</para>    
+    <para>
+      <emphasis><quote>idsp</quote></emphasis> -- a handle to an existing Faust DSP instance
+</para>  
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+   	<para>
+      <emphasis><quote>kval</quote></emphasis> -- value to which the control will be set.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the faustctl opcode, with a simple program that adjusts the gain of an input:
+      <example>
+   <para>   
+<programlisting>
+idsp,a1 <emphasis role="op">faustgen</emphasis> {{
+gain = hslider("vol",1,0,1,0.01);
+process = (_ * gain); 
+}}, ain1
+<emphasis role="op">faustctl</emphasis> idsp, "vol", 0.5
+ </programlisting>
+    </para>
+      </example>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namevictor;, 2013 </para>
+  </refsect1>
+</refentry>
