@@ -12,13 +12,13 @@
 <emphasis role="ohdr">ksmps</emphasis>  <emphasis role="op">=</emphasis> 20
 <emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
                 <emphasis role="comment">; Load the Pianoteq into memory.</emphasis>
-gipianoteq      <emphasis role="opc">vstinit</emphasis>      "C<emphasis role="op">:</emphasis>\\Program Files\\Steinberg\\VstPlugins\\Pianoteq 3.0 Trial\\Pianoteq30 Trial.dll", 1
+gipianoteq      vstinit         "C<emphasis role="op">:</emphasis>\\Program Files\\Steinberg\\VstPlugins\\Pianoteq 3.0 Trial\\Pianoteq30 Trial.dll", 1
                 
                 <emphasis role="comment">; Print information about the Pianoteq, such as parameter names and numbers.</emphasis>
-                <emphasis role="opc">vstinfo</emphasis>      gipianoteq
+                vstinfo         gipianoteq
                 
                 <emphasis role="comment">; Open the Pianoteq's GUI.</emphasis>
-                <emphasis role="opc">vstedit</emphasis>      gipianoteq
+                vstedit         gipianoteq
 
                 <emphasis role="comment">; Send notes from the score to the Pianoteq.</emphasis>
                 <emphasis role="oblock">instr</emphasis> 1 
@@ -26,22 +26,22 @@ gipianoteq      <emphasis role="opc">vstinit</emphasis>      "C<emphasis role="o
                 <emphasis role="comment">; p3 always contains the duration of the note.</emphasis>
                 <emphasis role="comment">; p4 contains the MIDI key number (pitch),</emphasis>
                 <emphasis role="comment">; p5 contains the MIDI velocity number (loudness),</emphasis>
-imidichannel    <emphasis role="opc">init</emphasis>         0
-                <emphasis role="opc">vstnote</emphasis>      gipianoteq, imidichannel, p4, p5, p3
+imidichannel    <emphasis role="opc">init</emphasis>            0
+                vstnote         gipianoteq, imidichannel, p4, p5, p3
                 <emphasis role="oblock">endin</emphasis>
 
                 <emphasis role="comment">; Send parameter changes to the Pianoteq.</emphasis>
                 <emphasis role="oblock">instr</emphasis> 2 
                 <emphasis role="comment">; p4 is the parameter number.</emphasis>
                 <emphasis role="comment">; p5 is the parameter value.</emphasis>
-                <emphasis role="opc">vstparamset</emphasis>  gipianoteq, p4, p5 
+                vstparamset     gipianoteq, p4, p5 
                 <emphasis role="oblock">endin</emphasis>
 
                 <emphasis role="comment">; Send audio from the Pianoteq to the output.</emphasis>
                 <emphasis role="oblock">instr</emphasis> 3 
-ablankinput     <emphasis role="opc">init</emphasis>         0
-aleft, aright   <emphasis role="opc">vstaudio</emphasis>     gipianoteq, ablankinput, ablankinput
-                <emphasis role="opc">outs</emphasis>         aleft, aright
+ablankinput     <emphasis role="opc">init</emphasis>            0
+aleft, aright   vstaudio        gipianoteq, ablankinput, ablankinput
+                <emphasis role="opc">outs</emphasis>            aleft, aright
                 <emphasis role="oblock">endin</emphasis>
 
 <emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
