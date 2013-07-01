@@ -13,13 +13,13 @@
 <emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
 <emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
 
-gihandle <emphasis role="opc">dssiinit</emphasis> "caps.so", 19, 1	<emphasis role="comment">; = mono phaser and</emphasis>
+gihandle dssiinit "caps.so", 19, 1	<emphasis role="comment">; = mono phaser and</emphasis>
 gaout <emphasis role="opc">init</emphasis>  0				<emphasis role="comment">; verbose about all ports</emphasis>
 
 <emphasis role="oblock">instr</emphasis> 1	<emphasis role="comment">; activate DSSI</emphasis>
 
 ktoggle	<emphasis role="op">=</emphasis>  p4
-<emphasis role="opc">dssiactivate</emphasis> gihandle, ktoggle
+dssiactivate gihandle, ktoggle
 <emphasis role="oblock">endin</emphasis>
 
 <emphasis role="oblock">instr</emphasis> 2
@@ -32,17 +32,17 @@ gaout <emphasis role="op">=</emphasis> gaout<emphasis role="op">+</emphasis>ain1
 
 <emphasis role="oblock">instr</emphasis> 3
 
-<emphasis role="opc">dssictls</emphasis> gihandle, 0, 1, 1			<emphasis role="comment">; range -1 to 1</emphasis>
-<emphasis role="opc">dssictls</emphasis> gihandle, 1, 2, 1			<emphasis role="comment">; rate 0 to 10</emphasis>
-<emphasis role="opc">dssictls</emphasis> gihandle, 2, .8, 1			<emphasis role="comment">; depth 0 to 1</emphasis>
-<emphasis role="opc">dssictls</emphasis> gihandle, 3, 3, 1			<emphasis role="comment">; spread 0 to 3.14</emphasis>
-<emphasis role="opc">dssictls</emphasis> gihandle, 4, .9, 1			<emphasis role="comment">; feedback 0 to 0.999</emphasis>
+dssictls gihandle, 0, 1, 1			<emphasis role="comment">; range -1 to 1</emphasis>
+dssictls gihandle, 1, 2, 1			<emphasis role="comment">; rate 0 to 10</emphasis>
+dssictls gihandle, 2, .8, 1			<emphasis role="comment">; depth 0 to 1</emphasis>
+dssictls gihandle, 3, 3, 1			<emphasis role="comment">; spread 0 to 3.14</emphasis>
+dssictls gihandle, 4, .9, 1			<emphasis role="comment">; feedback 0 to 0.999</emphasis>
 
 <emphasis role="oblock">endin</emphasis>
 
 <emphasis role="oblock">instr</emphasis> 4
 
-aout1 <emphasis role="opc">dssiaudio</emphasis> gihandle, gaout	<emphasis role="comment">;get beats.wav, mono out</emphasis>
+aout1 dssiaudio gihandle, gaout	<emphasis role="comment">;get beats.wav, mono out</emphasis>
 	<emphasis role="opc">outs</emphasis> aout1,aout1
 
 gaout <emphasis role="op">=</emphasis> 0

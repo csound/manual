@@ -20,7 +20,7 @@
 # http://www.fsf.org/licensing/licenses/lgpl.html
 # 
 
-import csnd
+import csnd6
 import getopt, sys, os, glob, re
 from xml.dom import minidom
 
@@ -43,7 +43,7 @@ class OrchestraDict(dict):
         CsoundOpcodeList() in order to get the opcode list. So we use a dummy
         csd file for that purpose (tricky isn't it?)
         '''
-        csound = csnd.CppSound()
+        csound = csnd6.CppSound()
         dummy = '''<CsoundSynthesizer>
         <CsOptions>
         -dodac
@@ -62,7 +62,7 @@ class OrchestraDict(dict):
         f.write(dummy)
         f.close()
         csound.Compile("dummy.csd")
-        lo = csnd.CsoundOpcodeList(csound.GetCsound())
+        lo = csnd6.CsoundOpcodeList(csound.GetCsound())
         n = lo.Count()
         print n, "Opcodes registered"
         for i in xrange(n):
