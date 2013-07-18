@@ -12,21 +12,74 @@
 <emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
 
 <emphasis role="oblock">instr</emphasis> 1
-  kS[] <emphasis role="opc">init</emphasis> 10
-  kT[] <emphasis role="opc">init</emphasis> 10
-  kS   <emphasis role="opc">tabgen</emphasis> 0,10,0.01
-  kT   <emphasis role="opc">tabmap</emphasis> kS,"sin"
-  <emphasis role="opc">printk2</emphasis> kS[0]
-  <emphasis role="opc">printk2</emphasis> kS[4]
-  <emphasis role="opc">printk2</emphasis> kS[9]
-  <emphasis role="opc">printk2</emphasis> kT[0]
-  <emphasis role="opc">printk2</emphasis> kT[4]
-  <emphasis role="opc">printk2</emphasis> kT[9]
+
+<emphasis role="comment">;create an array and fill with numbers</emphasis>
+kArrSrc[] <emphasis role="opc">fillarray</emphasis> 1.01, 2.02, 3.03, 4.05, 5.08, 6.13, 7.21
+
+<emphasis role="comment">;print source array</emphasis>
+        <emphasis role="opc">printf</emphasis>  "<emphasis role="op">%</emphasis>s", 1, "\nSource <emphasis role="opc">array</emphasis><emphasis role="op">:</emphasis>\n"
+kndx    <emphasis role="op">=</emphasis>       0
+  until kndx <emphasis role="op">==</emphasis> <emphasis role="opc">lenarray</emphasis>(kArrSrc) do
+        <emphasis role="opc">printf</emphasis>  "kArrSrc[<emphasis role="op">%</emphasis>d] <emphasis role="op">=</emphasis> <emphasis role="op">%</emphasis>f\n", kndx<emphasis role="op">+</emphasis>1, kndx, kArrSrc[kndx]
+kndx    <emphasis role="op">+</emphasis><emphasis role="op">=</emphasis>      1
+  od
+
+<emphasis role="comment">;create an empty array for the results</emphasis>
+kArrRes[] <emphasis role="opc">init</emphasis>  7
+
+<emphasis role="comment">;apply the sqrt() function to each element</emphasis>
+kArrRes <emphasis role="opc">maparray</emphasis> kArrSrc, "sqrt"
+
+<emphasis role="comment">;print the result</emphasis>
+        <emphasis role="opc">printf</emphasis>  "<emphasis role="op">%</emphasis>s", 1, "\nResult after applying <emphasis role="opc">sqrt</emphasis>() to source array\n"
+kndx    <emphasis role="op">=</emphasis>       0
+  until kndx <emphasis role="op">==</emphasis> <emphasis role="opc">lenarray</emphasis>(kArrRes) do
+        <emphasis role="opc">printf</emphasis>  "kArrRes[<emphasis role="op">%</emphasis>d] <emphasis role="op">=</emphasis> <emphasis role="op">%</emphasis>f\n", kndx<emphasis role="op">+</emphasis>1, kndx, kArrRes[kndx]
+kndx    <emphasis role="op">+</emphasis><emphasis role="op">=</emphasis>      1
+  od
+
+<emphasis role="comment">;apply the log() function to each element</emphasis>
+kArrRes <emphasis role="opc">maparray</emphasis> kArrSrc, "log"
+
+<emphasis role="comment">;print the result</emphasis>
+        <emphasis role="opc">printf</emphasis>  "<emphasis role="op">%</emphasis>s", 1, "\nResult after applying <emphasis role="opc">log</emphasis>() to source array\n"
+kndx    <emphasis role="op">=</emphasis>       0
+  until kndx <emphasis role="op">==</emphasis> <emphasis role="opc">lenarray</emphasis>(kArrRes) do
+        <emphasis role="opc">printf</emphasis>  "kArrRes[<emphasis role="op">%</emphasis>d] <emphasis role="op">=</emphasis> <emphasis role="op">%</emphasis>f\n", kndx<emphasis role="op">+</emphasis>1, kndx, kArrRes[kndx]
+kndx    <emphasis role="op">+</emphasis><emphasis role="op">=</emphasis>      1
+  od
+
+<emphasis role="comment">;apply the int() function to each element</emphasis>
+kArrRes <emphasis role="opc">maparray</emphasis> kArrSrc, "int"
+
+<emphasis role="comment">;print the result</emphasis>
+        <emphasis role="opc">printf</emphasis>  "<emphasis role="op">%</emphasis>s", 1, "\nResult after applying <emphasis role="opc">int</emphasis>() to source array\n"
+kndx    <emphasis role="op">=</emphasis>       0
+  until kndx <emphasis role="op">==</emphasis> <emphasis role="opc">lenarray</emphasis>(kArrRes) do
+        <emphasis role="opc">printf</emphasis>  "kArrRes[<emphasis role="op">%</emphasis>d] <emphasis role="op">=</emphasis> <emphasis role="op">%</emphasis>f\n", kndx<emphasis role="op">+</emphasis>1, kndx, kArrRes[kndx]
+kndx     <emphasis role="op">+</emphasis><emphasis role="op">=</emphasis>     1
+  od
+
+<emphasis role="comment">;apply the frac() function to each element</emphasis>
+kArrRes <emphasis role="opc">maparray</emphasis> kArrSrc, "frac"
+
+<emphasis role="comment">;print the result</emphasis>
+        <emphasis role="opc">printf</emphasis>  "<emphasis role="op">%</emphasis>s", 1, "\nResult after applying <emphasis role="opc">frac</emphasis>() to source array\n"
+kndx    <emphasis role="op">=</emphasis>       0
+  until kndx <emphasis role="op">==</emphasis> <emphasis role="opc">lenarray</emphasis>(kArrRes) do
+        <emphasis role="opc">printf</emphasis>  "kArrRes[<emphasis role="op">%</emphasis>d] <emphasis role="op">=</emphasis> <emphasis role="op">%</emphasis>f\n", kndx<emphasis role="op">+</emphasis>1, kndx, kArrRes[kndx]
+kndx <emphasis role="op">+</emphasis><emphasis role="op">=</emphasis> 1
+  od
+
+<emphasis role="comment">;turn instrument instance off</emphasis>
+        <emphasis role="opc">turnoff</emphasis>
+        
 <emphasis role="oblock">endin</emphasis>
+
 
 <emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
 <emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
-<emphasis role="stamnt">i</emphasis> 1 0 0
+<emphasis role="stamnt">i</emphasis> 1 0 0.1
 <emphasis role="stamnt">e</emphasis>
 <emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
 <emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
