@@ -13,7 +13,7 @@ instr 1
 kArr[]     init       10
 ;fill in random numbers and print them out
 kIndx      =          0
-  until      kIndx == 10 do
+  until kIndx == 10 do
 kNum       random     -100, 100
 kArr[kIndx] =         kNum
            printf     "kArr[%d] = %10f\n", kIndx+1, kIndx, kNum
@@ -24,10 +24,11 @@ kMax, kMaxIndx maxarray kArr
            printf     "Maximum of kArr = %f at index %d\n", kIndx+1, kMax, kMaxIndx
            turnoff
 endin
+
+
 </CsInstruments>
 <CsScore>
 i1 0 0.1
 e
 </CsScore>
 </CsoundSynthesizer>
-
