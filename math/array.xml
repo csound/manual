@@ -1,0 +1,338 @@
+<refentry id="arrayOpcodes">
+  <indexterm id="Indexarray">
+    <primary>Array opcodes</primary>
+  </indexterm>
+  <refentryinfo>
+    <title>Mathematical Operations</title>
+  </refentryinfo>
+  <refmeta>
+    <refentrytitle>Array Opcodes</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>Array Opcodes</refname>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Variable Name</title>
+    <para>
+      An array must be created (via <link linkend="init"><citetitle>init</citetitle></link>
+      or <link linkend="fillarray"><citetitle>fillarray</citetitle></link>) as
+      kMyName <emphasis role="strong">plus</emphasis> ending brackets. The
+      brackets determine
+      the dimensions of the array. So,
+      <informalexample>
+        <programlisting>
+kArr[] <emphasis role="opc">init</emphasis> 10</programlisting>
+      </informalexample>
+      creates a one-dimensional array of length 10, whereas
+      <informalexample>
+        <programlisting>
+kArr[][] <emphasis role="opc">init</emphasis> 10, 10</programlisting>
+      </informalexample>
+      creates a two-dimensional array with 10 rows and 10 columns.
+    </para>
+    
+    <para>
+      After the initalization of the array, referring to the array as a whole is
+      done <emphasis role="strong">without</emphasis> any brackets. Brackets are
+      only used if an element is indexed:
+      <informalexample>
+        <programlisting>
+kArr[]   <emphasis role="opc">init</emphasis> 10             <emphasis role="comment">;with brackets because of initialization</emphasis>
+kLen     <emphasis role="op">=</emphasis> lenarray(kArr)    <emphasis role="comment">;without brackets</emphasis>
+kFirstEl <emphasis role="op">=</emphasis> kArr[0]           <emphasis role="comment">;indexing with brackets</emphasis></programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      The same syntax is used for a simple copy via the '=' operator:
+      <informalexample>
+        <programlisting>
+kArr1[] <emphasis role="opc">fillarray</emphasis> 1, 2, 3, 4, 5
+kArr2[] <emphasis role="op">=</emphasis> kArr1              <emphasis role="comment">;creates kArr2 as copy of kArr1</emphasis></programlisting>
+      </informalexample>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>k-rate</title>
+    <para>
+      Note that most array operations are currently k-rate only. So like any
+      other k-rate opcode, an operation on arrays will be automatically repeated
+      every k-cycle. For instance, this code will repeat re-writing the array
+      with different random values every k-cycle, as long as the instrument runs:
+      <informalexample>
+        <programlisting>
+kArr[] <emphasis role="opc">init</emphasis> 10
+kIndx  <emphasis role="op">=</emphasis> 0
+<emphasis role="octrl">until</emphasis> kIndx <emphasis role="op">==</emphasis> <emphasis role="opc">lenarray</emphasis>(kArr) <emphasis role="octrl">do</emphasis>
+  kArr[kIndx] <emphasis role="opc">rnd31</emphasis> 10, 0
+  kIndx <emphasis role="op">+=</emphasis> 1
+<emphasis role="octrl">od</emphasis></programlisting>
+      </informalexample>
+    </para>
+    
+    <para>
+      If you want to avoid this, you must organize it in one of the usual ways,
+      for instance by using a trigger:
+      <informalexample>
+        <programlisting>
+kArr[] <emphasis role="opc">init</emphasis> 10
+kTrig <emphasis role="opc">metro</emphasis> 1
+<emphasis role="octrl">if</emphasis> kTrig <emphasis role="op">==</emphasis> 1 <emphasis role="octrl">then</emphasis> <emphasis role="comment">;do the following once a second</emphasis>
+  kIndx  <emphasis role="op">=</emphasis> 0
+  <emphasis role="octrl">until</emphasis> kIndx <emphasis role="op">==</emphasis> <emphasis role="opc">lenarray</emphasis>(kArr) <emphasis role="octrl">do</emphasis>
+    kArr[kIndx] <emphasis role="opc">rnd31</emphasis> 10, 0
+    kIndx <emphasis role="op">+=</emphasis> 1
+  <emphasis role="octrl">od</emphasis>
+<emphasis role="octrl">endif</emphasis></programlisting>
+      </informalexample>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Creation/Initialization</title>
+    <para>
+      The usual way to create an array is with init:
+      <informalexample>
+        <programlisting>
+kArr[]   <emphasis role="opc">init</emphasis> 10     <emphasis role="comment">;creates one-dimensional array with length 10</emphasis>
+kArr[][] <emphasis role="opc">init</emphasis> 10, 10 <emphasis role="comment">;creates two-dimensional array</emphasis></programlisting>
+      </informalexample>
+    </para>
+    <para>
+      A one-dimensional array can also be created and filled with distinct values
+      by the opcode <emphasis>fillarray</emphasis>. This line creates a vector
+      with length 4 and puts in the numbers [1, 2, 3, 4]:
+    </para>
+      <informalexample>
+        <programlisting>
+kArr[] <emphasis role="opc">fillarray</emphasis> 1, 2, 3, 4</programlisting>
+      </informalexample>
+  </refsect1>
+  
+  <refsect1>
+    <title>Length</title>
+    <para>
+      The function <emphasis>lenarray(kArr)</emphasis> reports the length of an
+      array. See example for function
+      <link linkend="lenarray"><citetitle>lenarray</citetitle></link>.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Copy Arrays to/from Tables</title>
+    <para>
+      <informalexample>
+        <programlisting>
+<emphasis role="opc">copyf2array</emphasis> kArr, kfn</programlisting>
+      </informalexample>
+      copies data from an ftable to a vector.
+    </para>
+    <para>
+      <informalexample>
+        <programlisting>
+<emphasis role="opc">copya2ftab</emphasis> kArr, kfn</programlisting>
+      </informalexample>
+      copies data from a vector to an function table.
+    </para>
+    <para>
+      See examples for opcodes
+      <link linkend="copyf2array"><citetitle>copyf2array</citetitle></link> and
+      <link linkend="copya2ftab"><citetitle>copya2ftab</citetitle></link>.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Array Operations: Math</title>
+    <refsect2>
+      <title>+, -, *, / on a Number</title>
+      <para>
+        If the four basic math operators are used between an array and a scalar 
+        (number), the operation is applied to each element. The safest way to do
+        this is to store the result in a new array:
+        <informalexample>
+          <programlisting>
+kArr1[] <emphasis role="opc">fillarray</emphasis> 1, 2, 3
+kArr2[] <emphasis role="op">=</emphasis> kArr1 <emphasis role="op">+</emphasis> 10    <emphasis role="comment">;(kArr2 is now [11, 12, 13])</emphasis></programlisting>
+        </informalexample>
+        Here is an example of array/scalar operations. It uses the file
+        <ulink url="examples/array_scalar_math.csd"><citetitle>array_scalar_math.csd</citetitle></ulink>.
+        <example>
+          <title>Example of array operations</title>
+          <xi:include href="examples-xml/array_scalar_math.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        </example>
+      </para>
+    </refsect2>
+    <refsect2>
+      <title>+, -, *, / on a Second Array</title>
+      <para>
+        If the four basic math operators are used between two arrays, the
+        operation is applied element by element. The result can be
+        straightforward stored in a new array:
+        <informalexample>
+          <programlisting>
+kArr1[] <emphasis role="opc">fillarray</emphasis> 1, 2, 3
+kArr2[] <emphasis role="opc">fillarray</emphasis> 10, 20, 30
+kArr3[] <emphasis role="op">=</emphasis> kArr1 <emphasis role="op">+</emphasis> kArr2    <emphasis role="comment">;(kArr3 is now [11, 22, 33])</emphasis></programlisting>
+        </informalexample>
+        Here is an example of array operations. It uses the file
+        <ulink url="examples/array_array_math.csd"><citetitle>array_array_math.csd</citetitle></ulink>.
+        <example>
+          <title>Example of array operations</title>
+          <xi:include href="examples-xml/array_array_math.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        </example>
+      </para>
+    </refsect2>
+  </refsect1>
+  
+  <refsect1>
+    <title>Map a Function to an Array</title>
+    <para>
+      <informalexample>
+        <programlisting>
+kArrRes <emphasis role="opc">maparray</emphasis> kArrSrc, "fun"</programlisting>
+      </informalexample>
+      maps the k-rate 1-arg function in the string to every element of the vector.
+    </para>
+    <para>
+      Possible functions are for instance <emphasis>abs, ceil, exp, floor, frac,
+      int, log, log10, round, sqrt</emphasis>. This is a simple example:
+      <informalexample>
+        <programlisting>
+kArrSrc[] <emphasis role="opc">fillarray</emphasis> 1, 2, 3, 4, 5
+kArrRes[] <emphasis role="opc">init</emphasis>      5
+kArrRes   <emphasis role="opc">maparray</emphasis>  kArrSrc, "sqrt"</programlisting>
+      </informalexample>
+      See example for opcode
+      <link linkend="maparray"><citetitle>maparray</citetitle></link>.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Array Operations: min, max, sum, scale, slice</title>
+    <refsect2>
+      <title>Minimum and Maximum</title>
+      <para>
+        <informalexample>
+          <programlisting>
+  kMin [,kMinIndx] <emphasis role="opc">minarray</emphasis> kArr</programlisting>
+        </informalexample>
+        returns the smallest value in an array, and optionally its index.
+      </para>
+      <para>
+        <informalexample>
+          <programlisting>
+  kMax [,kMaxIndx] <emphasis role="opc">maxarray</emphasis> kArr</programlisting>
+        </informalexample>
+        returns the largest value in an array, and optionally its index.
+        See examples for opcodes
+        <link linkend="minarray"><citetitle>minarray</citetitle></link> and
+        <link linkend="maxarray"><citetitle>maxarray</citetitle></link>.
+      </para>
+    </refsect2>
+    
+    <refsect2>
+      <title>Sum</title>
+      <para>
+        <informalexample>
+          <programlisting>
+  kSum <emphasis role="opc">sumarray</emphasis> kArr</programlisting>
+        </informalexample>
+        returns the sum of all values in kArr.
+        See example for opcode
+        <link linkend="sumarray"><citetitle>sumarray</citetitle></link>.
+      </para>
+    </refsect2>
+    
+    <refsect2>
+      <title>Scale</title>
+      <para>
+        <informalexample>
+          <programlisting>
+  <emphasis role="opc">scalearray</emphasis> kArr, kMin, kMax</programlisting>
+        </informalexample>
+        scales all values in kArr between kMin and kMax.
+      </para>
+      <para>
+        <informalexample>
+          <programlisting>
+  kArr[] <emphasis role="opc">fillarray</emphasis>  1, 3, 9, 5, 6
+         <emphasis role="opc">scalearray</emphasis> kArr, 1, 3</programlisting>
+        </informalexample>
+        changes <emphasis>kArr</emphasis> to [1, 1.5, 3, 2, 2.25].
+        See example for opcode
+        <link linkend="scalearray"><citetitle>scalearray</citetitle></link>.
+      </para>
+    </refsect2>
+    
+    <refsect2>
+      <title>Slice</title>
+      <para>
+        <informalexample>
+          <programlisting>
+  <emphasis role="opc">slicearray</emphasis> kArr, iStart, iEnd</programlisting>
+        </informalexample>
+        returns a slice of <emphasis>kArr</emphasis> from index
+        <emphasis>iStart</emphasis> to index <emphasis>iEnd</emphasis> (included).
+      </para>
+      <para>
+        The array for receiving the slice must have been created in advance:
+        <informalexample>
+          <programlisting>
+  kArr[]  <emphasis role="opc">fillarray</emphasis>  1, 2, 3, 4, 5, 6, 7, 8, 9
+  kArr1[] <emphasis role="opc">init</emphasis>       5
+  kArr2[] <emphasis role="opc">init</emphasis>       4
+  kArr1   <emphasis role="opc">slicearray</emphasis> kArr, 0, 4        <emphasis role="comment">;[1, 2, 3, 4, 5]</emphasis>
+  kArr2   <emphasis role="opc">slicearray</emphasis> kArr, 5, 8        <emphasis role="comment">;[6, 7, 8, 9]</emphasis></programlisting>
+        </informalexample>
+        See example for opcode
+        <link linkend="slicearray"><citetitle>slicearray</citetitle></link>.
+      </para>
+    </refsect2>
+  </refsect1>
+  
+  <refsect1>
+    <title>Arrays in UDOs</title>
+    <para>
+      The dimension of an input array must be declared in two places:
+      <itemizedlist>
+        <listitem>
+          as k[] or k[][] in the type input list
+        </listitem>
+        <listitem>
+          as kName[], kName[][] etc in the xin list.
+        </listitem>
+      </itemizedlist>
+      For instance :
+      <informalexample>
+        <programlisting>
+<emphasis role="oblock">opcode</emphasis> FirstEl, k, k[]
+<emphasis role="comment">;returns the first element of vector kArr</emphasis>
+kArr[] <emphasis role="opc">xin</emphasis>
+       <emphasis role="opc">xout</emphasis>   kArr[0]
+<emphasis role="oblock">endop</emphasis></programlisting>
+      </informalexample>
+      Here is an example of an array in an UDO. It uses the file
+      <ulink url="examples/array_udo.csd"><citetitle>array_udo.csd</citetitle></ulink>.
+      <example>
+        <title>Example of an array in an UDO</title>
+        <xi:include href="examples-xml/array_udo.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Joachim Heintz</member>
+        <member>July 2013</member>
+      </simplelist>
+    </para>
+    <para>New in Csound 6.00</para>
+  </refsect1>
+</refentry>
+
+      
