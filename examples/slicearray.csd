@@ -13,7 +13,7 @@ nchnls = 2
 instr 1
 
 ;create and fill an array
-kArr[] fillarray 1, 2, 3, 4, 5, 6, 7, 8, 9
+kArr[] genarray_i 1, 9
 
 ;print the content
         printf  "%s", 1, "kArr = whole array\n"
