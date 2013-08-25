@@ -150,7 +150,7 @@ the Quick Reference. If no info tag is provided the opcode will appear in
 the manual, and add the necessary cross references.
 
 6) For transforming the myOpcodeEntry.csd example file to myOpcodeEntry.csd.xml
-(in examples-xml), you the csd2docbook.py or csd2docbook2.py script. The former
+(in examples-xml), use the csd2docbook.py or csd2docbook2.py script. The former
 uses the Csound API for an opcode list, while the latter uses a file 
 opcode_list.txt (which is similar to the result of the command 'csound -z').
 For instance: $ python csd2docbook2.py -f genarray_i.csd will create the file
