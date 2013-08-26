@@ -4,24 +4,40 @@
 -o dac -d
 <emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
 <emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 1
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">0dbfs</emphasis> <emphasis role="op">=</emphasis> 1
 
 <emphasis role="oblock">instr</emphasis> 1
 
-i1 <emphasis role="opc">compilestr</emphasis> {{
+ <emphasis role="comment">;will fail because of wrong code</emphasis>
+ires <emphasis role="opc">compilestr</emphasis> {{
+<emphasis role="oblock">instr</emphasis> 2 
+a1 oscilb p4, p5, 0
+<emphasis role="opc">out</emphasis> a1 
+<emphasis role="oblock">endin</emphasis> 
+}}
+<emphasis role="opc">print</emphasis> ires <emphasis role="comment">; returns -1 because not successfull</emphasis>
+
+ <emphasis role="comment">;will compile ...</emphasis>
+ires <emphasis role="opc">compilestr</emphasis> {{
 <emphasis role="oblock">instr</emphasis> 2 
 a1 <emphasis role="opc">oscils</emphasis> p4, p5, 0
 <emphasis role="opc">out</emphasis> a1 
 <emphasis role="oblock">endin</emphasis> 
 }}
-<emphasis role="opc">scoreline_i</emphasis> "i 2 0 1 10000 440"
+<emphasis role="opc">print</emphasis> ires <emphasis role="comment">; ... and returns 0</emphasis>
 
-<emphasis role="opc">turnoff</emphasis>
+ <emphasis role="comment">;call the new instrument</emphasis>
+ <emphasis role="comment">;(note that the overall performance is extended)</emphasis>
+<emphasis role="opc">scoreline_i</emphasis> "i 2 0 3 .2 415"
+
 <emphasis role="oblock">endin</emphasis>
 
 <emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
 <emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
 <emphasis role="stamnt">i</emphasis>1 0 1
-
 <emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
 <emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
 </programlisting>
