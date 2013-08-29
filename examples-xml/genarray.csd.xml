@@ -1,0 +1,44 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-n
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1
+
+<emphasis role="comment">;create and fill two arrays</emphasis>
+iArr1[] <emphasis role="opc">genarray</emphasis> 1, 6
+iArr2[] <emphasis role="opc">genarray</emphasis> 1, 6, 2<emphasis role="op">/</emphasis>3
+
+<emphasis role="comment">;print the content of iArr1</emphasis>
+        <emphasis role="opc">printf</emphasis>  "<emphasis role="op">%</emphasis>s", 1, "iArr1<emphasis role="op">:</emphasis> start<emphasis role="op">=</emphasis>1, end<emphasis role="op">=</emphasis>6, step<emphasis role="op">=</emphasis>default\n"
+kndx    <emphasis role="op">=</emphasis>       0
+  until kndx <emphasis role="op">==</emphasis> <emphasis role="opc">lenarray</emphasis>(iArr1) do
+        <emphasis role="opc">printf</emphasis>  "iArr[<emphasis role="op">%</emphasis>d] <emphasis role="op">=</emphasis> <emphasis role="op">%</emphasis>f\n", kndx<emphasis role="op">+</emphasis>1, kndx, iArr1[kndx]
+kndx    <emphasis role="op">+</emphasis><emphasis role="op">=</emphasis>      1
+  od
+
+<emphasis role="comment">;print the content of iArr2</emphasis>
+        <emphasis role="opc">printf</emphasis>  "<emphasis role="op">%</emphasis>s", 1, "iArr2<emphasis role="op">:</emphasis> start<emphasis role="op">=</emphasis>1, end<emphasis role="op">=</emphasis>6, step<emphasis role="op">=</emphasis>2<emphasis role="op">/</emphasis>3\n"
+kndx    <emphasis role="op">=</emphasis>       0
+  until kndx <emphasis role="op">==</emphasis> <emphasis role="opc">lenarray</emphasis>(iArr2) do
+        <emphasis role="opc">printf</emphasis>  "iArr[<emphasis role="op">%</emphasis>d] <emphasis role="op">=</emphasis> <emphasis role="op">%</emphasis>f\n", kndx<emphasis role="op">+</emphasis>1, kndx, iArr2[kndx]
+kndx    <emphasis role="op">+</emphasis><emphasis role="op">=</emphasis>      1
+  od
+
+        <emphasis role="opc">turnoff</emphasis>
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 1
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>
