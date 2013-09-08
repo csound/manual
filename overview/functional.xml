@@ -1,5 +1,5 @@
 <section id="functional">
-  <title>Function syntax in Csound 6</title>
+  <title>Function Syntax in Csound6</title>
   <para>
     Csound 6 has introduced a new alternative syntax for orchestra code. This is initially an experimental feature, which has some limitations,
 as explained below. It will also allow the introduction of some non-backwards-compatible language features.
@@ -31,15 +31,23 @@ general form of this is the expression:
   <bridgehead>Limitations</bridgehead>
   <para>
     The main limitation is that only opcodes with single outputs (or no outputs) are allowed. In addition, opcodes with
-multiple optional outputs (such as diskin) will not be parsed successfully in this form. An alternative to allow for these
+multiple optional outputs will not be parsed successfully in this form. An alternative to allow for these
 is to wrap them in user-defined opcodes, or just to intermix standard Csound syntax with this new style.
   </para>
   <para>
-Another limitation is that, in the absence of type hints, the polymorphic output in opcodes is 'locked' into given
-types. For instance, standard oscillators used in this way will default to audio-rate output, whereas envelope
-generators will be producing 'k-rate' outputs, unless an audio-rate input is used. Once type annotations are
-generally available, this limitation will disappear.
+To resolve opcode ambiguities, we have introduced type annotations, in the form of op:type(exprlist). For instance
+the code:
+  </para>
+  <para>
+  <literallayout>
 
-</para>
+   a1 = oscili(oscili:k(p4,p5), 440)
 
+  </literallayout>
+  </para>
+  <para>
+will choose a control-rate opcode to modulate the amplitude of the audio carrier, rather than an audio rate one. There will
+be cases where the type annotation will be required, when the input arguments cannot be used to determine the correct type
+of opcode to be applied.
+  </para>
 </section>

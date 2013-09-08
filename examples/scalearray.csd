@@ -1,33 +1,38 @@
 <CsoundSynthesizer>
 <CsOptions>
 ; Select audio/midi flags here according to platform
--n
+-n 
 </CsOptions>
 <CsInstruments>
+;example by joachim heintz
 
-sr = 44100
-ksmps = 32
-nchnls = 2
-0dbfs  = 1
+           seed       0
 
 instr 1
-  kT[]    genarray   0,10
-          scalearray kT,0,1
-  printk2 kT[0]
-  printk2 kT[1]
-  printk2 kT[2]
-  printk2 kT[3]
-  printk2 kT[4]
-  printk2 kT[5]
-  printk2 kT[6]
-  printk2 kT[7]
-  printk2 kT[8]
-  printk2 kT[9]
+;create an array with 10 elements
+kArr[]     init       10
+;fill in random numbers and print them out
+           printks    "kArr in maximum range 0..100:\n", 0
+kIndx      =          0
+  until kIndx == 10 do
+kNum       random     0, 100
+kArr[kIndx] =         kNum
+           printf     "kArr[%d] = %10f\n", kIndx+1, kIndx, kNum
+kIndx      +=         1
+  od
+;scale numbers 0...1 and print them out again
+           scalearray kArr, 0, 1
+kIndx      =          0
+           printks    "kArr in range 0..1\n", 0
+  until kIndx == 10 do
+           printf     "kArr[%d] = %10f\n", kIndx+1, kIndx, kArr[kIndx]
+kIndx      +=         1
+  od
+           turnoff
 endin
-
 </CsInstruments>
 <CsScore>
-i 1 0 0
+i1 0 0.1
 e
 </CsScore>
 </CsoundSynthesizer>

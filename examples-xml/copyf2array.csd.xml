@@ -11,18 +11,31 @@
 <emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
 <emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
 
-<emphasis role="oblock">instr</emphasis> 1
-  kS[] <emphasis role="opc">init</emphasis> 1024
-  <emphasis role="opc">printk2</emphasis> kS[123]
-  copy2ttab kS, 1
-  <emphasis role="opc">printk2</emphasis> kS[123]
-<emphasis role="oblock">endin</emphasis>
+<emphasis role="comment">;8 points sine wave function table</emphasis>
+giSine  <emphasis role="ohdr">ftgen</emphasis>   0, 0, 8, 10, 1
 
+
+  <emphasis role="oblock">instr</emphasis> 1
+<emphasis role="comment">;create array</emphasis>
+kArr[]  <emphasis role="opc">init</emphasis>    8
+
+<emphasis role="comment">;copy table values in it</emphasis>
+        <emphasis role="opc">copyf2array</emphasis> kArr, giSine
+        
+<emphasis role="comment">;print values</emphasis>
+kndx    <emphasis role="op">=</emphasis>       0
+  <emphasis role="octrl">until</emphasis> kndx <emphasis role="op">==</emphasis> <emphasis role="opc">lenarray</emphasis>(kArr) <emphasis role="octrl">do</emphasis>
+        <emphasis role="opc">printf</emphasis>  "kArr[%d] = %f\n", kndx<emphasis role="op">+</emphasis>1, kndx, kArr[kndx]
+kndx    <emphasis role="op">+=</emphasis>      1
+  <emphasis role="octrl">od</emphasis>
+
+<emphasis role="comment">;turn instrument off</emphasis>
+        <emphasis role="opc">turnoff</emphasis>
+  <emphasis role="oblock">endin</emphasis>
+  
 <emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
 <emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
-<emphasis role="stamnt">f</emphasis>1 0 1024 10 1
 <emphasis role="stamnt">i</emphasis> 1 0 0.1
-<emphasis role="stamnt">e</emphasis>
 <emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
 <emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
 </programlisting>

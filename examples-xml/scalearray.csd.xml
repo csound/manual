@@ -2,33 +2,38 @@
 <emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
 <emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
 <emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
--n
+-n 
 <emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
 <emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="comment">;example by joachim heintz</emphasis>
 
-<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
-<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
-<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
-<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+           <emphasis role="ohdr">seed</emphasis>       0
 
 <emphasis role="oblock">instr</emphasis> 1
-  kT[]    genarray   0,10
-          scalearray kT,0,1
-  <emphasis role="opc">printk2</emphasis> kT[0]
-  <emphasis role="opc">printk2</emphasis> kT[1]
-  <emphasis role="opc">printk2</emphasis> kT[2]
-  <emphasis role="opc">printk2</emphasis> kT[3]
-  <emphasis role="opc">printk2</emphasis> kT[4]
-  <emphasis role="opc">printk2</emphasis> kT[5]
-  <emphasis role="opc">printk2</emphasis> kT[6]
-  <emphasis role="opc">printk2</emphasis> kT[7]
-  <emphasis role="opc">printk2</emphasis> kT[8]
-  <emphasis role="opc">printk2</emphasis> kT[9]
+<emphasis role="comment">;create an array with 10 elements</emphasis>
+kArr[]     <emphasis role="opc">init</emphasis>       10
+<emphasis role="comment">;fill in random numbers and print them out</emphasis>
+           <emphasis role="opc">printks</emphasis>    "kArr in maximum range 0..100:\n", 0
+kIndx      <emphasis role="op">=</emphasis>          0
+  <emphasis role="octrl">until</emphasis> kIndx <emphasis role="op">==</emphasis> 10 <emphasis role="octrl">do</emphasis>
+kNum       <emphasis role="opc">random</emphasis>     0, 100
+kArr[kIndx] <emphasis role="op">=</emphasis>         kNum
+           <emphasis role="opc">printf</emphasis>     "kArr[%d] = %10f\n", kIndx<emphasis role="op">+</emphasis>1, kIndx, kNum
+kIndx      <emphasis role="op">+</emphasis><emphasis role="op">=</emphasis>         1
+  <emphasis role="octrl">od</emphasis>
+<emphasis role="comment">;scale numbers 0...1 and print them out again</emphasis>
+           <emphasis role="opc">scalearray</emphasis> kArr, 0, 1
+kIndx      <emphasis role="op">=</emphasis>          0
+           <emphasis role="opc">printks</emphasis>    "kArr in range 0..1\n", 0
+  <emphasis role="octrl">until</emphasis> kIndx <emphasis role="op">==</emphasis> 10 <emphasis role="octrl">do</emphasis>
+           <emphasis role="opc">printf</emphasis>     "kArr[%d] = %10f\n", kIndx<emphasis role="op">+</emphasis>1, kIndx, kArr[kIndx]
+kIndx      <emphasis role="op">+</emphasis><emphasis role="op">=</emphasis>         1
+  <emphasis role="octrl">od</emphasis>
+           <emphasis role="opc">turnoff</emphasis>
 <emphasis role="oblock">endin</emphasis>
-
 <emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
 <emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
-<emphasis role="stamnt">i</emphasis> 1 0 0
+<emphasis role="stamnt">i</emphasis>1 0 0.1
 <emphasis role="stamnt">e</emphasis>
 <emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
 <emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>

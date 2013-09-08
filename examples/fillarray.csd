@@ -12,7 +12,7 @@ nchnls = 2
 
 instr 1
 
-  kS[] fill 1,7,5
+  kS[] fillarray 1,7,5
        printk2 kS[0]
        printk2 kS[1]
        printk2 kS[2]

@@ -64,6 +64,519 @@
       </listitem>
     </itemizedlist>
   </para>-->
+<bridgehead>Release Notes for Csound6</bridgehead>
+<para>
+  Csound6 is a significant rewrite of much of the code.  In particular
+  the API is not compatible, although all orc/sco/csd works should still
+  run.
+</para>
+
+<para>
+  There are new facilities, like sample accuracy and realtime mode,
+  described below. 
+</para>
+
+<para>
+  IMPORTANT:  The environment variable to find plugins are called
+  <emphasis role="strong">OPCODE6DIR64</emphasis> or
+  <emphasis role="strong">OPCODE6DIR</emphasis> (note the 6) so it can co-exist
+  with Csound5.
+</para>
+
+<para>
+  Similarly <emphasis role="strong">.csoundrc</emphasis> is renamed
+  <emphasis role="strong">.csound6rc</emphasis>.
+</para>
+
+<para>
+  Arrays are now mainstream, with syntax and opcode support.  They also
+  exist in multidimensional format.  They are created (usually)
+  with <emphasis>init</emphasis> opcode or <emphasis>fillarray</emphasis>.
+      <informalexample>
+        <programlisting>
+  k1[]  <emphasis role="opc">init</emphasis> 4</programlisting>
+      </informalexample>
+  generates a k-rate 1-D array of length 4. Similarly
+      <informalexample>
+        <programlisting>
+  a2[][] <emphasis role="opc">init</emphasis> 4, 4</programlisting>
+      </informalexample>
+  creates a square 4x4 a-rate array.
+      <informalexample>
+        <programlisting>
+  k2[]  <emphasis role="opc">fillarray</emphasis> 1, 2, 3, 4</programlisting>
+      </informalexample>
+  creates a 4-element vector filled with 1,..4, which also defines the
+  length.
+</para>
+
+<para>
+  Elements are used via indexing in [] such as k1[2] or a2[2][3].
+  One dimensional arrays replace tvars, and can be used in opcodes like
+  <emphasis>maxtab</emphasis>, <emphasis>mintab</emphasis> and
+  <emphasis>sumtab</emphasis> (see below). Array setting can be done in
+  left-hand side of opcodes, i.e.:
+      <informalexample>
+        <programlisting>
+  aSigs[0] <emphasis role="opc">vco2</emphasis> .1, 440
+  aSigs[1] <emphasis role="opc">vco2</emphasis> .1, 880</programlisting>
+      </informalexample>
+</para>
+
+<para>
+  The new realtime priority mode can be switched on with by passing the
+  --realtime or setting the CSOUND_PARAMS field realtime_mode to 1.
+  This has the following effects:
+  <orderedlist>
+    <listitem>
+      <simpara>all opcode audio file reading/writing is handled asynchronously
+      by a separate thread.</simpara>
+    </listitem>
+    <listitem>
+      <simpara>all init-pass operations are also performed asynchronously.</simpara>
+    </listitem>
+  </orderedlist>
+</para>
+
+<para>
+  Multicore support is totally rewritten using a different algorithm for
+  task-dispatch, which should use less memory and fewer locks.
+</para>
+
+<para>
+  <itemizedlist>
+    <listitem>
+      <para>New opcodes:
+        <itemizedlist>
+          <listitem>
+            <simpara><emphasis>faustgen</emphasis></simpara>
+          </listitem>
+          <listitem>
+            <simpara><emphasis>array</emphasis> -- many new or revised
+            opcodes -- see <link linkend="arrayOpcodes"><citetitle>Array
+            Opcodes</citetitle></link>.</simpara>
+          </listitem>
+          <listitem>
+            <simpara><emphasis>compileorc</emphasis> takes a filename containing
+            a collection of instrument definitions and compiles them, replacing
+            existing versions. It returns 0 on success.</simpara>
+          </listitem>
+          <listitem>
+            <simpara><emphasis>compilestr</emphasis> is like
+            <emphasis>compileorc</emphasis> but takes a string.</simpara>
+          </listitem>
+          <listitem>
+            <simpara><emphasis>readscore</emphasis> runs the score preprocessor
+            on a string and then schedules new events via the RT event mechanism,
+            returning 0 if successful.</simpara>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </listitem>
+    <listitem>
+      <para>Orchestra
+        <itemizedlist>
+          <listitem>
+            <simpara>Note events can start and end in mid-kcycle. As this is an
+            incompatible change it is only invoked when the command-line option
+            --sample-accurate is specified. Note that this does not work for
+            tied notes, and use of skipping initialisation has questionable
+            use.</simpara>
+          </listitem>
+          <listitem>
+            <simpara>Instruments can run at local <emphasis>ksmps</emphasis>
+            values using <code>setksmps iksmps</code> as in Csound 5 UDOs.</simpara>
+          </listitem>
+          <listitem>
+            <simpara>Compilation can be done at any stage, new instruments are
+            added or replace old ones.  Running instances of old instrument
+            definitions are not affected.  Only limitation is that header
+            constants in instr 0 are read only once at the time of the
+            first compilation.  Init-time code can be placed outside
+            instruments in the global space, and this will be executed
+            once-only following the compilation.  In this case, score event
+            generation can be completely replaced by orchestra code.
+            See also new opcodes <emphasis>compileorc</emphasis> and
+            <emphasis>compilestr</emphasis>.</simpara>
+          </listitem>
+          <listitem>
+            <simpara>New syntax operators +=, -=, *= and /=.  These are more
+            than syntactic sugar; please use += and -= for accumulating reverbs
+            as it gives better multicore behaviour.</simpara>
+          </listitem>
+          <listitem>
+            <simpara>The opcodes <emphasis>add</emphasis>, <emphasis>sub</emphasis>,
+            <emphasis>mul</emphasis> and <emphasis>div</emphasis> have been
+            deleted; use the forms + - * /. Not many people were aware of these
+            opcodes.</simpara>
+          </listitem>
+          <listitem>
+            <simpara>Any opcode with a single output or with no outputs can be
+            used as a function. Some opcodes might require type annotation to
+            resolve ambiguities, more details on the
+            <link linkend="functional"><citetitle>Function syntax in
+            Csound 6</citetitle></link>.</simpara>
+          </listitem>
+          <listitem>
+            <simpara>A statement can be broken across lines after a , = or
+            arithmetic operation.</simpara>
+          </listitem>
+          <listitem>
+            <simpara>There are a range of new or recoded operations on k-valued
+            arrays, most restricted to 1 dimensional arrays (vectors):
+            <informalexample>
+              <programlisting>
+ kans <emphasis role="opc">minarray</emphasis> ktab       <emphasis role="comment">returns the smallest value in the</emphasis>
+                          <emphasis role="comment">(possibly) multidimensional array</emphasis>
+ kans <emphasis role="opc">maxarray</emphasis> ktab       <emphasis role="comment">is like mintab</emphasis>
+ kabs <emphasis role="opc">sumarray</emphasis> ktab       <emphasis role="comment">returns sum of all values in the array</emphasis>
+ ktab <emphasis role="opc">genarray</emphasis> imin, imax[, inc]
+                          <emphasis role="comment">generates vector of values from imin</emphasis>
+                          <emphasis role="comment">to imax by increments of inc (default 1)</emphasis>
+ ktab2 <emphasis role="opc">maparray</emphasis> ktab1, "sin" <emphasis role="comment">maps the k-rate 1-arg function in</emphasis>
+                          <emphasis role="comment">the string to every element of the vector</emphasis>
+ ktab2 <emphasis role="opc">maparray_i</emphasis> ktab1, "sin" <emphasis role="comment">maps the i-rate 1-arg function</emphasis>
+                          <emphasis role="comment">in the string to every element of the vector</emphasis>
+ ktab2 <emphasis role="opc">slicearray</emphasis> ktab1, istart, iend
+                          <emphasis role="comment">returns a slice of ktab1 from ktab1[istart]</emphasis>
+                          <emphasis role="comment">to ktab1[iend]</emphasis>
+ <emphasis role="opc">copyf2array</emphasis> ktab, kfn    <emphasis role="comment">copies data from an ftable to a vector</emphasis>
+ <emphasis role="opc">copya2ftab</emphasis>  ktab, kfn    <emphasis role="comment">copies data from a vector to an ftable</emphasis></programlisting>
+            </informalexample>
+
+            Arithmetic on arrays is allowed.  In particular addition,
+            subtraction, multiplication, division on a element-by-element
+            version is provided in arithmetic format. Similar operations
+            between an array and a scalar are allowed.</simpara>
+          </listitem>
+          <listitem>
+            <simpara>Each instance of any instrument has a scratchpad of 4 values
+            that persist; allows values to carry to next use of the
+            instrument; hope it may be useful in legato etc.</simpara>
+          </listitem>
+          <listitem>
+            <simpara>If a table number is given as -1 then an internal sine wave
+            equivalent to <code>f. 0 16382 10 1</code> is used. Attempts to
+            write to this table will give unpredictable results, but is not
+            policed. The 16382 can be change by command line option
+            --sine-size=# where the # is rounded up to a power of two.</simpara>
+          </listitem>
+          <listitem>
+            <simpara>A number of oscil opcodes now have the f-table parameter as
+            optional, defaulting to the internal sine wave. (<emphasis>oscil1,
+            oscil1i, oscil, oscil3, oscili, foscil, foscil1, loscil,
+            loscil3</emphasis>).</simpara>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </listitem>
+    <listitem>
+      <para>Score:
+        <itemizedlist>
+          <listitem>
+            <simpara>Score lines can have multiple strings.</simpara>
+          </listitem>
+          <listitem>
+            <simpara>Change to escape characters in score strings -- they do not
+            happen.</simpara>
+          </listitem>
+          <listitem>
+            <simpara>Also note the <emphasis>readscore</emphasis> opcode.</simpara>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </listitem>
+    <listitem>
+      <para>Modified Opcodes and Gens:
+        <itemizedlist>
+          <listitem>
+            <simpara>The <emphasis>k()</emphasis> function can take an a-rate
+            argument in which case it is a call to <emphasis>downsamp</emphasis>.
+            </simpara>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </listitem>
+    <listitem>
+      <para>Utilities
+        <itemizedlist>
+          <listitem>
+            <simpara><emphasis>Hetro/adsyn</emphasis> analysis files can be
+            machine byte-order independent if created with -X. Down side is a
+            longer file and a little slower loading. The
+            <emphasis>het_export</emphasis> utility will create the independent
+            format from the old, and <emphasis>het_import</emphasis> is no
+            longer necessary.</simpara>
+          </listitem>
+          <listitem>
+            <simpara><emphasis>cvanal</emphasis> and <emphasis>lpanal</emphasis>
+            will produce machine independent files if -X option is used. The
+            <emphasis>convolve</emphasis> and <emphasis>lpread</emphasis> etc
+            opcodes will accept either format. You are encouraged to use the
+            machine independent form. Analysis files produced with -X can be used
+            on other systems.</simpara>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </listitem>
+    <listitem>
+      <para>Frontends</para>
+    </listitem>
+    <listitem>
+      <para>Bugs fixed:</para>
+    </listitem>
+    <listitem>
+      <para>System Changes:
+        <itemizedlist>
+          <listitem>
+            <simpara>In Linux and OSX the treatment of locales is now thread-safe
+            and local.</simpara>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </listitem>
+    <listitem>
+      <para>Platform Changes:</para>
+    </listitem>
+    <listitem>
+      <para>API:
+        <simpara>New API functions...</simpara>
+        <itemizedlist>
+          <listitem>
+            <simpara>new configuration/parameter setting functions
+            <informalexample>
+              <programlisting>
+        PUBLIC int csoundSetOption(CSOUND *csound, char *option);
+        PUBLIC void csoundSetParams(CSOUND *csound, CSOUND_PARAMS *p);
+        PUBLIC void csoundGetParams(CSOUND *csound, CSOUND_PARAMS *p);
+        PUBLIC void csoundSetOutput(CSOUND *csound, char *name, char *type,
+                                    char *format);
+        PUBLIC void csoundSetInput(CSOUND *csound, char *name);
+        PUBLIC void csoundSetMIDIInput(CSOUND *csound, char *name);
+        PUBLIC void csoundSetMIDIFileInput(CSOUND *csound, char *name);
+        PUBLIC void csoundSetMIDIOutput(CSOUND *csound, char *name);
+        PUBLIC void csoundSetMIDIFileOutput(CSOUND *csound, char *name);</programlisting>
+            </informalexample></simpara>
+          </listitem>
+          <listitem>
+            <simpara>new parsing/compilation functions 
+            <informalexample>
+              <programlisting>
+        PUBLIC TREE *csoundParseOrc(CSOUND *csound, char *str);
+        PUBLIC int csoundCompileTree(CSOUND *csound, TREE *root);
+        PUBLIC int csoundCompileOrc(CSOUND *csound, const char *str);
+        PUBLIC int csoundReadScore(CSOUND *csound, char *str);
+        PUBLIC int csoundCompileArgs(CSOUND *, int argc, char **argv);</programlisting>
+            </informalexample></simpara>
+          </listitem>
+          <listitem>
+            <simpara>new function for starting csound after first compilation
+            <informalexample>
+              <programlisting>
+        PUBLIC int csoundStart(CSOUND *csound);</programlisting>
+            </informalexample></simpara>
+          </listitem>
+          <listitem>
+            <simpara>new software bus threadsafe getters/setters
+            <informalexample>
+              <programlisting>
+        PUBLIC MYFLT csoundGetControlChannel(CSOUND *csound, const char *name);
+        PUBLIC void csoundSetControlChannel(CSOUND *csound, const char *name, MYFLT val);
+        PUBLIC void csoundGetAudioChannel(CSOUND *csound, const char *name, MYFLT *samples);
+        PUBLIC void csoundSetAudioChannel(CSOUND *csound, const char *name, MYFLT *samples);
+        PUBLIC void csoundSetStringChannel(CSOUND *csound, const char *name, char *string);
+        PUBLIC void csoundGetStringChannel(CSOUND *csound, const char  *name, char *string);</programlisting>
+            </informalexample></simpara>
+          </listitem>
+          <listitem>
+            <simpara>new table threadsafe copy functions
+            <informalexample>
+              <programlisting>
+        PUBLIC void csoundTableCopyOut(CSOUND *csound, int table, MYFLT *dest);
+        PUBLIC void csoundTableCopyIn(CSOUND *csound, int table, MYFLT *src);</programlisting>
+            </informalexample></simpara>
+          </listitem>
+        </itemizedlist>
+        API has been made threadsafe so that performance and control
+        can occur in separate threads (after a call to <emphasis>csoundStart()</emphasis>
+        or <emphasis>csoundCompile()</emphasis>). Threadsafety is ensure by
+        <orderedlist>
+          <listitem>
+            <simpara>use of atomic read/writing to control channels</simpara>
+          </listitem>
+          <listitem>
+            <simpara>spinlocks in audio and string channels</simpara>
+          </listitem>
+          <listitem>
+            <simpara>mutexes protecting compilation, score events and table
+            access.</simpara>
+          </listitem>
+        </orderedlist>
+      </para>
+    </listitem>
+    <listitem>
+      <para>Internal:
+        <itemizedlist>
+          <listitem>
+            <simpara>The build system is now cmake (and not scons as in
+            Csound5).</simpara>
+          </listitem>
+          <listitem>
+            <simpara>A number of table access opcodes have been rewritten but
+            should behave the same. Similarly <emphasis>diskin</emphasis> and
+            <emphasis>diskin2</emphasis> now use the same code and so
+            <emphasis>diskin</emphasis> should be more stable.</simpara>
+          </listitem>
+          <listitem>
+            <simpara>The old parser is completely removed.</simpara>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </listitem>
+    <listitem>
+      <para>New internal functions in Csound
+      <informalexample>
+        <programlisting>
+    void (*FlushCircularBuffer)(CSOUND *, void *);
+    void *(*FileOpenAsync)(CSOUND *, void *, int, const char *, void *,
+                           const char *, int, int, int);
+    unsigned int (*ReadAsync)(CSOUND *, void *, MYFLT *, int);
+    unsigned int (*WriteAsync)(CSOUND *, void *, MYFLT *, int);
+    int  (*FSeekAsync)(CSOUND *, void *, int, int);
+    char *(*GetString)(CSOUND *, MYFLT);
+             <emphasis role="comment">Extract a string originating from a score-event argument.</emphasis></programlisting>
+      </informalexample>
+      </para>
+    </listitem>
+    <listitem>
+      <para>Functions removed
+      <informalexample>
+        <programlisting>
+    void *(*FileOpen)(CSOUND *, void*, int, const char*, void*, const char*);</programlisting>
+      </informalexample>
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        The "private" parts of the API have been changed considerably.
+        Also structures like EVTBLK have changed.
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        The LINKAGE1/FLINKAGE1 macros are renamed as
+        LINKAGE_BUILTIN/FLINKAGE_BUILTIN.
+      </para>
+    </listitem>
+    <listitem>
+      <para>Template for a-rate perf-pass opcodes is
+      <informalexample>
+        <programlisting>
+int perf_myopcode(CSOUND *csound, MYOPCODE *p)
+{
+    uint32_t offset = p-&gt;h.insdshead-&gt;ksmps_offset;
+    uint32_t early  = p-&gt;h.insdshead-&gt;ksmps_no_end;
+    uint32_t nsmps = CS_KSMPS;
+    ...
+    if (UNLIKELY(offset)) memset(p-&gt;res, '\0', offset*sizeof(MYFLT));
+    if (UNLIKELY(early))  {
+      nsmps -= early;
+      memset(&amp;p-&gt;res[nsmps], '\0', early*sizeof(MYFLT));
+    }
+    for (n=offset; n&lt;nsmps; n++) {
+        .....
+        p-&gt;res[n] = ....
+    }
+    return OK;
+}</programlisting>
+      </informalexample>
+      </para>
+    </listitem>
+    <listitem>
+      <para>String variables re-implemented</para>
+    </listitem>
+    <listitem>
+      <para>
+        OENTRY structure has changed and has a new dependency field; please
+        use this field as it is required for multicore semantics. You could
+        set it to -1 and disallow all parallelism, but at least it is safe.
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        All opcodes that touch audio should take note of sample-accurate code.
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        A number of previous API functions are removed;
+        <emphasis>OpenFile</emphasis> and <emphasis>OpenFile2</emphasis>
+        both replaced by new <emphasis>OpenFile2</emphasis> with additional
+        argument.
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        Additions have been made for arg type specifications for opcodes.
+        <itemizedlist>
+          <listitem>
+            <simpara>Any-types have been added, as follows:
+            <itemizedlist>
+              <listitem><simpara>'.' signifies a required arg of any-type</simpara></listitem>
+              <listitem><simpara>'?' signifies an optional arg of any-type</simpara></listitem>
+              <listitem><simpara>'*' signifies a var-arg list of any-type</simpara></listitem>
+            </itemizedlist></simpara>
+          </listitem>
+          <listitem>
+            <simpara>Arrays are now specified using "[x]" where x is a
+            type-specifier. The type-specifier can be any of the of the current
+            specifiers, including any-types. See <emphasis>Opcodes/arrays.c</emphasis>
+            for example usage.</simpara>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </listitem>
+    <listitem>
+      <para>New Type System</para>
+      <para>
+        A new type system has been added to Csound6, and significant changes
+        have been made to the compiler. The previous system for handling types 
+        involved depending on the first-letter of a variable's name every time
+        it was used to determine type. This meant there was a lot of re-checking
+        of types. Also, adding new types was difficult, as there was a lot of
+        custom code that had to be updated to check for new type letters.
+      </para>
+      <para>
+        In Csound6, a separate system of types was added.  Types are defined as
+        CS_TYPE's. The creation of variables from types and the initialisation
+        of memory has been encapsulated within the CS_TYPE's. This change 
+        allows easier addition of new types, as well as generic calculations of
+        memory pools, amongst other things.
+      </para>
+      <para>
+        The compiler has been modified since Csound5 to now use the type system
+        as an integral part of its semantic checking phase. Variables are now
+        registered into a CS_VAR_POOL when they are first defined, with the
+        CS_VARIABLE having a reference to its CS_TYPE.  After first time
+        definition within the pool, the type information is then looked up in
+        consequent variable lookups, rather than re-calculated from the variable
+        name. This opens up possibilities for new variable naming and typing 
+        strategies, i.e. using "myVar:K" to denote a k-rate arg. This also 
+        opens up possibilities for user-defined types, such as 
+        "data myType kval, aval", then using "myVar:myType" to define a var
+        of that type. (The previous is speculative, and is not an active 
+        proposal at this time.)
+      </para>
+      <para>
+        The addition of the type system has formalised the static type system 
+        that has existed in Csound prior to Csound6. It has, arguably, simplified
+        the code-base in terms of type handling, as well as laid the ground work
+        for future type-related research to be integrated into Csound. 
+      </para>
+    </listitem>
+  </itemizedlist>
+</para>
+
 <bridgehead>New in Version 5.19 (2013 January 7)</bridgehead>
 <para>
   This is mainly a bug-fixing release but with a number of new opcodes and
@@ -553,8 +1066,8 @@
   </para>
   <bridgehead>New in Version 5.17 (March 2012)</bridgehead>
   <para>
-	This is mainly a bug-fixing release with no major changes, but the
-	number of fixes warrants a release.  
+  This is mainly a bug-fixing release with no major changes, but the
+  number of fixes warrants a release.  
   </para>
   <para>
     <itemizedlist>
@@ -655,7 +1168,7 @@
             </listitem>
             <listitem>
               <simpara>fix windows installer so it removes full $INSTDIR\bin from PATH during uninstall: this cleans up the PATH environment variable when uninstalling on
-			Windows.  Previously, it was leaving a trailing "\bin" on the PATH.</simpara>
+      Windows.  Previously, it was leaving a trailing "\bin" on the PATH.</simpara>
             </listitem>
             <listitem>
               <simpara>CsoundAC MusicModel class more usable by C++ programs </simpara>
@@ -1505,7 +2018,7 @@
          <itemizedlist>
            <listitem>
              <simpara>
-	       <link linkend="transegr"><citetitle>transegr</citetitle></link>
+         <link linkend="transegr"><citetitle>transegr</citetitle></link>
                is a version of
                the <link linkend="transeg"><citetitle>transeg</citetitle></link>
                opcode which has a release section which is triggered
@@ -1513,14 +2026,14 @@
                a <link linkend="turnoff2"><citetitle>turnoff2</citetitle></link>
                opcode or a negative instrument
                number <link linkend="i"><citetitle>i score event</citetitle></link>.
-	     </simpara>
+       </simpara>
            </listitem>
            <listitem>
              <simpara>
-	       <link linkend="ftgenonce"><citetitle>ftgenonce</citetitle></link>
+         <link linkend="ftgenonce"><citetitle>ftgenonce</citetitle></link>
                generates a function table from within an instrument
                definition, without duplication of data.
-	     </simpara>
+       </simpara>
            </listitem>
            <listitem>
              <simpara><link linkend="passign"><citetitle>passign</citetitle></link>
@@ -1532,18 +2045,18 @@
            </listitem>
            <listitem>
              <simpara>
-	       <link linkend="loopxseg"><citetitle>loopxseg</citetitle></link>
+         <link linkend="loopxseg"><citetitle>loopxseg</citetitle></link>
                is
                like <link linkend="loopseg"><citetitle>loopseg</citetitle></link>
                but with exponential envelope.
-	     </simpara>
+       </simpara>
            </listitem>
            <listitem>
              <simpara>
-	       <link linkend="looptseg"><citetitle>looptseg</citetitle></link>
+         <link linkend="looptseg"><citetitle>looptseg</citetitle></link>
                is like <link linkend="loopseg"><citetitle>loopseg</citetitle></link>
                but with a flexible envelope like <link linkend="transeg"><citetitle>transeg</citetitle></link> 
-	     </simpara>
+       </simpara>
            </listitem>
          </itemizedlist>
        </para>
@@ -1553,51 +2066,51 @@
          <itemizedlist>
            <listitem>
              <simpara>    
-	       <link linkend="pvshift"><citetitle>pvshift</citetitle></link> would overwrite in double mode.
+         <link linkend="pvshift"><citetitle>pvshift</citetitle></link> would overwrite in double mode.
              </simpara>
            </listitem>
            <listitem>
              <simpara>
-	       <link linkend="pan2"><citetitle>pan2</citetitle></link> case 3 fixed.
+         <link linkend="pan2"><citetitle>pan2</citetitle></link> case 3 fixed.
              </simpara>
            </listitem>
   <!--           <listitem>-->
  <!--             <simpara> -->
-<!-- 	       <link linkend="gettempo"><citetitle>gettempo</citetitle></link> now works. -->
+<!--          <link linkend="gettempo"><citetitle>gettempo</citetitle></link> now works. -->
 <!--              </simpara> -->
   <!--          </listitem> -->
            <listitem>
              <simpara>
-	       <link linkend="clockon"><citetitle>clockon</citetitle></link>
-	       and  <link linkend="clockoff"><citetitle>clockoff</citetitle></link>
-	       now work again.
+         <link linkend="clockon"><citetitle>clockon</citetitle></link>
+         and  <link linkend="clockoff"><citetitle>clockoff</citetitle></link>
+         now work again.
              </simpara>
            </listitem>
            <listitem>
              <simpara>
-	       <link linkend="cross2"><citetitle>cross2</citetitle></link> and <link linkend="interp"><citetitle>interp</citetitle></link> could have divided by zero
+         <link linkend="cross2"><citetitle>cross2</citetitle></link> and <link linkend="interp"><citetitle>interp</citetitle></link> could have divided by zero
              </simpara>
            </listitem>
            <listitem>
              <simpara>
-	       linecount for error messages no longer includes text
-	       from <link linkend="CommandUnifileParFile"><citetitle>.csoundrc</citetitle></link>
+         linecount for error messages no longer includes text
+         from <link linkend="CommandUnifileParFile"><citetitle>.csoundrc</citetitle></link>
              </simpara>
            </listitem>
            <listitem>
              <simpara>
-	       <link linkend="p5gconnect"><citetitle>p5gconnect</citetitle></link>
-	       changed to use a separate thread to avoid timeout problem.
+         <link linkend="p5gconnect"><citetitle>p5gconnect</citetitle></link>
+         changed to use a separate thread to avoid timeout problem.
              </simpara>
            </listitem>
            <listitem>
              <simpara>
-	       <link linkend="transeg"><citetitle>transeg</citetitle></link> checks argument count.
+         <link linkend="transeg"><citetitle>transeg</citetitle></link> checks argument count.
              </simpara>
            </listitem>
            <listitem>
              <simpara>
-	       <link linkend="sfload"><citetitle>sfload</citetitle></link>
+         <link linkend="sfload"><citetitle>sfload</citetitle></link>
                used to be limited to 10 sound fonts and was not policed.
                Now open-ended.
              </simpara>
@@ -1611,28 +2124,28 @@
          <itemizedlist>
            <listitem>
              <simpara>
-	       \&quot; allowed as an escape in orchestral strings
+         \&quot; allowed as an escape in orchestral strings
              </simpara>
            </listitem>
            <listitem>
              <simpara>
-	       New parser fixed on optional arguments
+         New parser fixed on optional arguments
              </simpara>
            </listitem>
            <listitem>
              <simpara>
-	       Better checking of <link linkend="f"><citetitle>f</citetitle></link> statement with negative number
+         Better checking of <link linkend="f"><citetitle>f</citetitle></link> statement with negative number
              </simpara>
            </listitem>
            <listitem>
              <simpara>
-	       Soundfonts only initialise pitches array once, in the
-	       soundfont opcodes.
+         Soundfonts only initialise pitches array once, in the
+         soundfont opcodes.
              </simpara>
            </listitem>
            <listitem>
              <simpara>
-	       Usual collection of gratuitous minor changes, layout and comments
+         Usual collection of gratuitous minor changes, layout and comments
              </simpara>
            </listitem>
          </itemizedlist>
@@ -1671,10 +2184,10 @@
             </listitem>
            <listitem>
              <simpara>
-	       The new <link linkend="SignalFlowGraphOpcodes"><citetitle>Signal
-		   Flow opcodes </citetitle></link> enable the usage of
+         The new <link linkend="SignalFlowGraphOpcodes"><citetitle>Signal
+       Flow opcodes </citetitle></link> enable the usage of
                signal flow graphs in Csound.
-	     </simpara>
+       </simpara>
            </listitem>
           </itemizedlist>
         </para>

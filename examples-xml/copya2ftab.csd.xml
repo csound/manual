@@ -2,6 +2,7 @@
 <emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
 <emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
 <emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-n
 <emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
 <emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
 
@@ -10,19 +11,54 @@
 <emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
 <emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
 
-<emphasis role="oblock">instr</emphasis> 1
-kS[] <emphasis role="opc">init</emphasis> 1024
-kS   tabgen 0,1024
-     scalet kS,0,1
-     copy2ftab kS, 1
-aa   <emphasis role="opc">oscil</emphasis> 0.5, 440, 1
-     <emphasis role="opc">out</emphasis> aa
-<emphasis role="oblock">endin</emphasis>
+<emphasis role="comment">;an 'empty' function table with 10 points</emphasis>
+giTable <emphasis role="ohdr">ftgen</emphasis>   0, 0, <emphasis role="op">-</emphasis>10, 2, 0
 
+
+  <emphasis role="oblock">instr</emphasis> 1
+
+<emphasis role="comment">;print inital values of giTable</emphasis>
+        <emphasis role="opc">puts</emphasis>    "\nInitial table content:", 1
+indx    <emphasis role="op">=</emphasis>       0
+  <emphasis role="octrl">until</emphasis> indx <emphasis role="op">==</emphasis> <emphasis role="opc">ftlen</emphasis>(giTable) <emphasis role="octrl">do</emphasis>
+iVal    <emphasis role="opc">table</emphasis>   indx, giTable
+        <emphasis role="opc">printf_i</emphasis> "Table index %d = %f\n", 1, indx, iVal
+indx <emphasis role="op">+</emphasis><emphasis role="op">=</emphasis> 1
+  <emphasis role="octrl">od</emphasis>
+
+<emphasis role="comment">;create array</emphasis>
+kArr[]  <emphasis role="opc">init</emphasis>    10
+
+<emphasis role="comment">;fill in values</emphasis>
+kArr    <emphasis role="opc">genarray</emphasis> 1, 10
+
+<emphasis role="comment">;print array values</emphasis>
+        <emphasis role="opc">printf</emphasis>  "%s", 1, "\nArray content>:\n"
+kndx    <emphasis role="op">=</emphasis>       0
+  <emphasis role="octrl">until</emphasis> kndx <emphasis role="op">==</emphasis> <emphasis role="opc">lenarray</emphasis>(kArr) <emphasis role="octrl">do</emphasis>
+        <emphasis role="opc">printf</emphasis>  "kArr[%d] = %f\n", kndx<emphasis role="op">+</emphasis>1, kndx, kArr[kndx]
+kndx    <emphasis role="op">+</emphasis><emphasis role="op">=</emphasis>      1
+  <emphasis role="octrl">od</emphasis>
+
+<emphasis role="comment">;copy array values to table</emphasis>
+        <emphasis role="opc">copya2ftab</emphasis> kArr, giTable
+
+<emphasis role="comment">;print modified values of giTable</emphasis>
+        <emphasis role="opc">printf</emphasis>  "%s", 1, "\nModified table content after copya2ftab:\n"
+kndx    <emphasis role="op">=</emphasis>       0
+  <emphasis role="octrl">until</emphasis> kndx <emphasis role="op">==</emphasis> <emphasis role="opc">ftlen</emphasis>(giTable) <emphasis role="octrl">do</emphasis>
+kVal    <emphasis role="opc">table</emphasis>   kndx, giTable
+        <emphasis role="opc">printf</emphasis>  "Table index %d = %f\n", kndx<emphasis role="op">+</emphasis>1, kndx, kVal
+kndx <emphasis role="op">+</emphasis><emphasis role="op">=</emphasis> 1
+  <emphasis role="octrl">od</emphasis>
+
+<emphasis role="comment">;turn instrument off</emphasis>
+        <emphasis role="opc">turnoff</emphasis>
+  <emphasis role="oblock">endin</emphasis>
+  
 <emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
 <emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
-<emphasis role="stamnt">i</emphasis> 1 0 0.2
-<emphasis role="stamnt">e</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 0.1
 <emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
 <emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
 </programlisting>

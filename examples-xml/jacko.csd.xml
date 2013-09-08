@@ -16,7 +16,7 @@ csound -m255 -M0 -+rtmidi=null -RWf --midi-key=4 --midi-velocity=5 -o jacko_test
 <emphasis role="ohdr">nchnls</emphasis> 	   <emphasis role="op">=</emphasis> 2
 <emphasis role="ohdr">0dbfs</emphasis> 	   <emphasis role="op">=</emphasis> 1
 
-	   <emphasis role="opc">JackoInit</emphasis>		"default", "csound"
+	   JackoInit		"default", "csound"
 
 	   <emphasis role="comment">; To use ALSA midi ports, use "jackd -Xseq"</emphasis>
 	   <emphasis role="comment">; and use "jack_lsp -A -c" or aliases from JackInfo,</emphasis>
@@ -24,23 +24,23 @@ csound -m255 -M0 -+rtmidi=null -RWf --midi-key=4 --midi-velocity=5 -o jacko_test
 	   <emphasis role="comment">; to figure out the damn port names.</emphasis>
 
 	   <emphasis role="comment">; JackoMidiInConnect   "alsa_pcm:in-131-0-Master", "midiin"</emphasis>
-	   <emphasis role="opc">JackoAudioInConnect</emphasis> 	"aeolus<emphasis role="op">:</emphasis>out.L", "leftin"
-	   <emphasis role="opc">JackoAudioInConnect</emphasis> 	"aeolus<emphasis role="op">:</emphasis>out.R", "rightin"
-	   <emphasis role="opc">JackoMidiOutConnect</emphasis> 	"midiout", "aeolus<emphasis role="op">:</emphasis>Midi<emphasis role="op">/</emphasis>in"
+	   JackoAudioInConnect 	"aeolus<emphasis role="op">:</emphasis>out.L", "leftin"
+	   JackoAudioInConnect 	"aeolus<emphasis role="op">:</emphasis>out.R", "rightin"
+	   JackoMidiOutConnect 	"midiout", "aeolus<emphasis role="op">:</emphasis>Midi<emphasis role="op">/</emphasis>in"
 
            <emphasis role="comment">; Note that Jack enables audio to be output to a regular</emphasis>
  	   <emphasis role="comment">; Csound soundfile and, at the same time, to a sound </emphasis>
 	   <emphasis role="comment">; card in real time to the system client via Jack. </emphasis>
 
-       	   <emphasis role="opc">JackoAudioOutConnect</emphasis> "leftout", "system<emphasis role="op">:</emphasis>playback_1"
-	   <emphasis role="opc">JackoAudioOutConnect</emphasis> "rightout", "system<emphasis role="op">:</emphasis>playback_2"
-	   <emphasis role="opc">JackoInfo</emphasis>
+       	   JackoAudioOutConnect "leftout", "system<emphasis role="op">:</emphasis>playback_1"
+	   JackoAudioOutConnect "rightout", "system<emphasis role="op">:</emphasis>playback_2"
+	   JackoInfo
 
 	   <emphasis role="comment">; Turning freewheeling on seems automatically </emphasis>
            <emphasis role="comment">; to turn system playback off. This is good!</emphasis>
 
-	   <emphasis role="opc">JackoFreewheel</emphasis>	1
-	   <emphasis role="opc">JackoOn</emphasis>
+	   JackoFreewheel	1
+	   JackoOn
 
 	   <emphasis role="opc">alwayson</emphasis>		"jackin"
 
@@ -51,15 +51,15 @@ itime 	   <emphasis role="op">=</emphasis> 			p2
 iduration  <emphasis role="op">=</emphasis> 			p3
 ikey 	   <emphasis role="op">=</emphasis> 			p4
 ivelocity  <emphasis role="op">=</emphasis> 			p5
-	   <emphasis role="opc">JackoNoteOut</emphasis> 	"midiout", ichannel, ikey, ivelocity
+	   JackoNoteOut 	"midiout", ichannel, ikey, ivelocity
 	   <emphasis role="opc">print</emphasis> 		itime, iduration, ichannel, ikey, ivelocity
 	   <emphasis role="oblock">endin</emphasis>
 
 	   <emphasis role="oblock">instr</emphasis> jackin
 	   <emphasis role="comment">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</emphasis>
-	   <emphasis role="opc">JackoTransport</emphasis>	3, 1.0
-aleft 	   <emphasis role="opc">JackoAudioIn</emphasis>		"leftin"
-aright 	   <emphasis role="opc">JackoAudioIn</emphasis> 	"rightin"
+	   JackoTransport	3, 1.0
+aleft 	   JackoAudioIn		"leftin"
+aright 	   JackoAudioIn 	"rightin"
 
 	   <emphasis role="comment">; Aeolus uses MIDI controller 98 to control stops. </emphasis>
            <emphasis role="comment">; Only 1 data value byte is used, not the 2 data </emphasis>
@@ -72,14 +72,14 @@ aright 	   <emphasis role="opc">JackoAudioIn</emphasis> 	"rightin"
 	   <emphasis role="comment">; Mode to enable stops for Divison I: b1100010 (98 </emphasis>
            <emphasis role="comment">; [this controller VALUE is a pure coincidence]).</emphasis>
 
-	   <emphasis role="opc">JackoMidiOut</emphasis>          "midiout", 176, 0, 98, 98 
+	   JackoMidiOut          "midiout", 176, 0, 98, 98 
 
 	   <emphasis role="comment">; Stops: Principal 8 (0), Principal 4 (1) , Flote 8 (8) , Flote 2 (10)</emphasis>
 
-	   <emphasis role="opc">JackoMidiOut</emphasis>          "midiout", 176, 0, 98, 0
-	   <emphasis role="opc">JackoMidiOut</emphasis>          "midiout", 176, 0, 98, 1
-	   <emphasis role="opc">JackoMidiOut</emphasis>          "midiout", 176, 0, 98, 8
-	   <emphasis role="opc">JackoMidiOut</emphasis>          "midiout", 176, 0, 98, 10
+	   JackoMidiOut          "midiout", 176, 0, 98, 0
+	   JackoMidiOut          "midiout", 176, 0, 98, 1
+	   JackoMidiOut          "midiout", 176, 0, 98, 8
+	   JackoMidiOut          "midiout", 176, 0, 98, 10
 
 	   <emphasis role="comment">; Sends audio coming in from Aeolus out</emphasis>
 	   <emphasis role="comment">; not only to the Jack system out (sound card),</emphasis>
@@ -87,8 +87,8 @@ aright 	   <emphasis role="opc">JackoAudioIn</emphasis> 	"rightin"
            <emphasis role="comment">; Note that in freewheeling mode, "leftout"</emphasis>
            <emphasis role="comment">; and "rightout" simply go silent.</emphasis>
 
- 	   <emphasis role="opc">JackoAudioOut</emphasis> 	"leftout", aleft
-	   <emphasis role="opc">JackoAudioOut</emphasis> 	"rightout", aright
+ 	   JackoAudioOut 	"leftout", aleft
+	   JackoAudioOut 	"rightout", aright
 	   <emphasis role="opc">outs</emphasis>  		aright, aleft
 	   <emphasis role="oblock">endin</emphasis>
 
