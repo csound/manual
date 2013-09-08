@@ -11,7 +11,7 @@ instr 1
 read:
 Sline, iLineNum readfi "readfi.csd"
         printf_i  "Line %d: %s", iLineNum, iLineNum, Sline
-        if iLineNum < 17 igoto read
+        if iLineNum != -1 igoto read
 endin
 </CsInstruments>
 
