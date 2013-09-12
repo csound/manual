@@ -2,40 +2,51 @@
 <emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
 <emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
 <emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
-<emphasis role="comment">; Audio out   Audio in</emphasis>
--odac           -iadc    <emphasis role="comment">;;;RT audio I/O</emphasis>
+-odac      <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
 <emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
 <emphasis role="comment">; -o loopsegp.wav -W ;;; for file output any platform</emphasis>
 <emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
 <emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
-<emphasis role="ohdr">sr</emphasis><emphasis role="op">=</emphasis>44100
-<emphasis role="ohdr">ksmps</emphasis><emphasis role="op">=</emphasis>1
-<emphasis role="ohdr">nchnls</emphasis><emphasis role="op">=</emphasis>2
 
-<emphasis role="comment">; By Mark Van Peteghem 2008</emphasis>
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
 
-   <emphasis role="oblock">instr</emphasis> 1
-iphase  <emphasis role="op">=</emphasis> p4
+<emphasis role="oblock">instr</emphasis> 1
+ktrig <emphasis role="opc">metro</emphasis> 22<emphasis role="op">/</emphasis>8 <emphasis role="comment">; triggers used to generate new direction values</emphasis>
+kdir  <emphasis role="opc">trandom</emphasis> ktrig,<emphasis role="op">-</emphasis>2.99,2.99
+kdir  <emphasis role="op">=</emphasis>       0.5<emphasis role="op">*</emphasis><emphasis role="opc">int</emphasis>(kdir) <emphasis role="comment">; kdir will either -1, -0.5, 0, 0.5 or 1</emphasis>
+<emphasis role="comment">; kphase - looping pointer</emphasis>
+kphase <emphasis role="opc">phasor</emphasis> kdir
+<emphasis role="comment">; a loop sequence of midi note numbers and durations</emphasis>
+knote <emphasis role="opc">loopsegp</emphasis>  kphase, 40,1,40,0, 43,1,43,0, 49,2,48,0, \
+ 47,1,47,0, 46,1,46,0, 46,1,47,0, 49,1,49,0, 43,1,43,0, 46,1,46,0, 40,1,39,0    
+kmul  <emphasis role="opc">rspline</emphasis> 0.1,0.8,0.5,5                         <emphasis role="comment">; modulation of buzz tone</emphasis>
+asig  <emphasis role="opc">gbuzz</emphasis>   0.2, <emphasis role="opc">cpsmidinn</emphasis>(knote), 30, 3, kmul, 1 <emphasis role="comment">; buzz tone</emphasis>
+      <emphasis role="opc">outs</emphasis>    asig, asig
+      
+      <emphasis role="opc">schedkwhen</emphasis> ktrig,0,0,2,0,0.1 <emphasis role="comment">; play metronome</emphasis>
+<emphasis role="oblock">endin</emphasis>
 
-kenv      <emphasis role="opc">linen</emphasis> 1, 0.1, p3, 0.1
-kph_amp   <emphasis role="opc">phasor</emphasis> 2, 0
-kamp      <emphasis role="opc">loopsegp</emphasis> kph_amp, 60, 1, 30, 1, 60
-kamp    <emphasis role="op">=</emphasis> <emphasis role="opc">ampdb</emphasis>(kamp)<emphasis role="op">*</emphasis>kenv
-
-kph_freq  <emphasis role="opc">phasor</emphasis> 2, iphase
-klow_freq <emphasis role="opc">line</emphasis> 200, p3, 100
-kfreq     <emphasis role="opc">loopsegp</emphasis> kph_freq, 400, 1, klow_freq, 1, 400
-
-asig      <emphasis role="opc">vco2</emphasis> kamp, kfreq, 2, 0.5
-
-         <emphasis role="opc">outs</emphasis> asig, asig
-
-   <emphasis role="oblock">endin</emphasis>
+<emphasis role="oblock">instr</emphasis> 2 <emphasis role="comment">; metronome</emphasis>
+acps  <emphasis role="opc">expon</emphasis>   180<emphasis role="op">+</emphasis><emphasis role="opc">rnd</emphasis>(40),p3,50
+aamp  <emphasis role="opc">expon</emphasis>   0.05<emphasis role="op">+</emphasis><emphasis role="opc">rnd</emphasis>(0.05),p3,0.001
+asig  <emphasis role="opc">poscil</emphasis>  aamp<emphasis role="op">-</emphasis>0.001,acps,2
+      <emphasis role="opc">outs</emphasis>    asig,asig
+<emphasis role="oblock">endin</emphasis>
 
 <emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
 <emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
-<emphasis role="stamnt">i</emphasis>1 0 3 0
-<emphasis role="stamnt">i</emphasis>1 + . 0.50
+<emphasis role="comment">; cosine wave.</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 16384 11 1
+<emphasis role="comment">; sine wave.</emphasis>
+<emphasis role="stamnt">f</emphasis> 2 0 16384 10 1
+
+<emphasis role="stamnt">i</emphasis> 1 0 360 0.25
+
+<emphasis role="stamnt">e</emphasis>
 <emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
 <emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
 </programlisting>
