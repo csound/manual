@@ -179,8 +179,8 @@
 <synopsis>ares <link linkend="linsegb">linsegb</link> ia, itim1, ib [, itim2] [, ic] [...]</synopsis><synopsis>kres <link linkend="linsegb">linsegb</link> ia, itim1, ib [, itim2] [, ic] [...]</synopsis><para/>
 <synopsis>ares <link linkend="linsegr">linsegr</link> ia, idur1, ib [, idur2] [, ic] [...], irel, iz</synopsis><synopsis>kres <link linkend="linsegr">linsegr</link> ia, idur1, ib [, idur2] [, ic] [...], irel, iz</synopsis><para/>
 <synopsis>kout <link linkend="logcurve">logcurve</link> kindex, ksteepness</synopsis><para/>
-<synopsis>ksig <link linkend="loopseg">loopseg</link> kfreq, ktrig, iphase, ktime0, kvalue0 [, ktime1] [, kvalue1] \
-      [, ktime2] [, kvalue2] [...]</synopsis><para/>
+<synopsis>ksig <link linkend="loopseg">loopseg</link> kfreq, ktrig, iphase, kvalue0, ktime0 [, kvalue1] [, ktime1] \
+[, kvalue2] [, ktime2][...]</synopsis><para/>
 <synopsis>ksig <link linkend="loopsegp">loopsegp</link>  kphase, kvalue0, kdur0, kvalue1 \
       [, kdur1, ... , kdurN-1, kvalueN]</synopsis><para/>
 <synopsis>ksig <link linkend="looptseg">looptseg</link> kfreq, ktrig, ktime0, kvalue0, ktype0, [, ktime1] [, kvalue1] [,ktype1] \
@@ -455,11 +455,11 @@
 <synopsis><link linkend="dumpk3">dumpk3</link> ksig1, ksig2, ksig3, ifilname, iformat, iprd</synopsis><para/>
 <synopsis><link linkend="dumpk4">dumpk4</link> ksig1, ksig2, ksig3, ksig4, ifilname, iformat, iprd</synopsis><para/>
 <synopsis><link linkend="ficlose">ficlose</link> ihandle</synopsis><synopsis><link linkend="ficlose">ficlose</link> Sfilename</synopsis><para/>
-<synopsis><link linkend="fin">fin</link> ifilename, iskipframes, iformat, ain1 [, ain2] [, ain3] [,...]</synopsis><para/>
+<synopsis><link linkend="fin">fin</link> ifilename, iskipframes, iformat, ain1 [, ain2] [, ain3] [,...]</synopsis><synopsis><link linkend="fin">fin</link> ifilename, iskipframes, iformat, arr[]</synopsis><para/>
 <synopsis><link linkend="fini">fini</link> ifilename, iskipframes, iformat, in1 [, in2] [, in3] [, ...]</synopsis><para/>
 <synopsis><link linkend="fink">fink</link> ifilename, iskipframes, iformat, kin1 [, kin2] [, kin3] [,...]</synopsis><para/>
 <synopsis>ihandle <link linkend="fiopen">fiopen</link> ifilename, imode</synopsis><para/>
-<synopsis><link linkend="fout">fout</link> ifilename, iformat, aout1 [, aout2, aout3,...,aoutN]</synopsis><para/>
+<synopsis><link linkend="fout">fout</link> ifilename, iformat, aout1 [, aout2, aout3,...,aoutN]</synopsis><synopsis><link linkend="fout">fout</link> ifilename, iformat, array[]</synopsis><para/>
 <synopsis><link linkend="fouti">fouti</link> ihandle, iformat, iflag, iout1 [, iout2, iout3,....,ioutN]</synopsis><para/>
 <synopsis><link linkend="foutir">foutir</link> ihandle, iformat, iflag, iout1 [, iout2, iout3,....,ioutN]</synopsis><para/>
 <synopsis><link linkend="foutk">foutk</link> ifilename, iformat, kout1 [, kout2, kout3,....,koutN]</synopsis><para/>
@@ -478,7 +478,7 @@
       [, iwraparound] [, iformat] [, iskipinit]</synopsis><para/>
 <synopsis>a1[, a2[, ... aN]] <link linkend="diskin2">diskin2</link> ifilcod, kpitch[, iskiptim \
       [, iwrap[, iformat [, iwsize[, ibufsize[, iskipinit]]]]]]</synopsis><para/>
-<synopsis>ar1 <link linkend="in">in</link>&#160;</synopsis><para/>
+<synopsis>ar1 <link linkend="in">in</link>&#160;</synopsis><synopsis>aarray <link linkend="in">in</link>&#160;</synopsis><para/>
 <synopsis>ar1, ar2, ar3, ar4, ar5, ar6, ar7, ar8, ar9, ar10, ar11, ar12, ar13, ar14, \
       ar15, ar16, ar17, ar18, ar19, ar20, ar21, ar22, ar23, ar24, ar25, ar26, \
       ar27, ar28, ar29, ar30, ar31, ar32 <link linkend="in32">in32</link>&#160;</synopsis><para/>
@@ -502,7 +502,7 @@
 <para/>
 <synopsis><link linkend="mdelay">mdelay</link> kstatus, kchan, kd1, kd2, kdelay</synopsis><para/>
 <synopsis>aout1 [,aout2 ... aoutX] <link linkend="monitor">monitor</link>&#160;</synopsis><para/>
-<synopsis><link linkend="out">out</link> asig</synopsis><para/>
+<synopsis><link linkend="out">out</link> asig1[, asig2,....]</synopsis><synopsis><link linkend="out">out</link> aarray</synopsis><para/>
 <synopsis><link linkend="out32">out32</link> asig1, asig2, asig3, asig4, asig5, asig6, asig7, asig8, asig10, \
       asig11, asig12, asig13, asig14, asig15, asig16, asig17, asig18, \
       asig19, asig20, asig21, asig22, asig23, asig24, asig25, asig26, \
@@ -661,6 +661,7 @@
 <synopsis>k1 <link linkend="spdist">spdist</link> ifn, ktime, kx, ky</synopsis><para/>
 <synopsis>a1, a2, a3, a4 <link linkend="spsend">spsend</link>&#160;</synopsis><para/>
 <synopsis>ar1[, ar2...] <link linkend="vbap">vbap</link> asig, kazim [,
+    kelev] [, kspread] [, ilayout]</synopsis><synopsis>array[] <link linkend="vbap">vbap</link> asig, kazim [,
     kelev] [, kspread] [, ilayout]</synopsis><para/>
 <synopsis>ar1, ..., ar16 <link linkend="vbap16">vbap16</link> asig, kazim [, kelev] [, kspread]</synopsis><para/>
 <synopsis>ar1, ..., ar16 <link linkend="vbap16move">vbap16move</link> asig, idur, ispread, ifldnum, ifld1 \
@@ -671,9 +672,13 @@
 <synopsis>ar1, ..., ar8 <link linkend="vbap8">vbap8</link> asig, kazim [, kelev] [, kspread]</synopsis><para/>
 <synopsis>ar1, ..., ar8 <link linkend="vbap8move">vbap8move</link> asig, idur, ispread, ifldnum, ifld1 \
       [, ifld2] [...]</synopsis><para/>
-<synopsis>k1[, k2...] <link linkend="vbapg">vbapg</link> kazim [,kelev] [, kspread] [, ilayout]</synopsis><para/>
+<synopsis>k1[, k2...] <link linkend="vbapg">vbapg</link> kazim [,kelev] [, kspread] [, ilayout]</synopsis><synopsis>karray[] <link linkend="vbapg">vbapg</link> kazim [,kelev] [, kspread] [, ilayout]</synopsis><para/>
+<synopsis>kr1[, kr2...] <link linkend="vbapgmove">vbapgmove</link> idur, ispread, ifldnum, ifld1 \
+      [, ifld2] [...]</synopsis><synopsis>karray[] <link linkend="vbapgmove">vbapgmove</link> idur, ispread, ifldnum, ifld1 \
+      [, ifld2] [...]</synopsis><para/>
 <synopsis><link linkend="vbaplsinit">vbaplsinit</link> idim, ilsnum [, idir1] [, idir2] [...] [, idir32]</synopsis><para/>
 <synopsis>ar1[, ar2...] <link linkend="vbapmove">vbapmove</link> asig, idur, ispread, ifldnum, ifld1 \
+      [, ifld2] [...]</synopsis><synopsis>aarray[] <link linkend="vbapmove">vbapmove</link> asig, idur, ispread, ifldnum, ifld1 \
       [, ifld2] [...]</synopsis><para/>
 <synopsis><link linkend="vbapz">vbapz</link> inumchnls, istartndx, asig, kazim [, kelev] [, kspread]</synopsis><para/>
 <synopsis><link linkend="vbapzmove">vbapzmove</link> inumchnls, istartndx, asig, idur, ispread, ifldnum, ifld1, \

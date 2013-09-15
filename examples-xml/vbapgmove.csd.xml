@@ -1,0 +1,35 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac  <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o vbapgmove.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 4	<emphasis role="comment">;quad</emphasis>
+<emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
+
+<emphasis role="opc">vbaplsinit</emphasis> 2, 4, 0, 90, 180, 270
+
+<emphasis role="oblock">instr</emphasis> 1
+
+asig <emphasis role="opc">diskin2</emphasis> "beats.wav", 1, 0, 1		<emphasis role="comment">;loop beats.wav</emphasis>
+
+k0,k1,k2,k3 vbapgmove  p3, 1, 2, 310, 180	<emphasis role="comment">;change movement of soundsource in</emphasis>
+     <emphasis role="opc">outq</emphasis> k0<emphasis role="op">*</emphasis>asig,k1<emphasis role="op">*</emphasis>asig,k2<emphasis role="op">*</emphasis>asig,k3<emphasis role="op">*</emphasis>asig	<emphasis role="comment">;the rear speakers</emphasis>
+
+<emphasis role="oblock">endin</emphasis> 
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1 0 5
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>
