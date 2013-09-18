@@ -5,7 +5,7 @@
 -odac      <emphasis role="comment">;;;realtime audio out</emphasis>
 <emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
 <emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
-<emphasis role="comment">;-o looptseg.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="comment">; -o looptseg.wav -W ;;; for file output any platform</emphasis>
 <emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
 <emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
 
@@ -15,23 +15,24 @@
 <emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
 
 <emphasis role="oblock">instr</emphasis> 1
-
-kfreq <emphasis role="opc">linseg</emphasis> 10, p3<emphasis role="op">*</emphasis>.5, 1, p3<emphasis role="op">*</emphasis>.5, 5	<emphasis role="comment">; vary speed</emphasis>
-ktyp <emphasis role="opc">linseg</emphasis> 100, p3<emphasis role="op">*</emphasis>.5, <emphasis role="op">-</emphasis>5, p3<emphasis role="op">*</emphasis>.5, <emphasis role="op">-</emphasis>20	<emphasis role="comment">; change form of segment</emphasis>
-<emphasis role="comment">;klp looptseg kfreq,ktrig,ktime0,kvalue0,ktype0,ktime1,kvalue1,ktype1,ktime2,kvalue2,ktype2,ktime3,kvalue3</emphasis>
- klp <emphasis role="opc">looptseg</emphasis> kfreq,  0,    0,     0,     ktyp,   .6,     .9,     <emphasis role="op">-</emphasis>10,    .8,     .4,    1,     .1,     0 
-
-asig <emphasis role="opc">poscil3</emphasis> klp, 440, 1
-     <emphasis role="opc">outs</emphasis> asig, asig
-
+kfreq   <emphasis role="op">=</emphasis>        1         <emphasis role="comment">; frequency of loop repetition</emphasis>
+ktrig   <emphasis role="opc">init</emphasis>     0         <emphasis role="comment">; loop restart trigger (not used)</emphasis>
+iphase  <emphasis role="op">=</emphasis>        0         <emphasis role="comment">; initial phase</emphasis>
+ktyp    <emphasis role="opc">line</emphasis>     6,p3,<emphasis role="op">-</emphasis>6   <emphasis role="comment">; explore the useful range of curve types</emphasis>
+<emphasis role="comment">; loop of filter cutoff values (oct format)</emphasis>
+<emphasis role="comment">;                                     value curve dur.</emphasis>
+kcfoct <emphasis role="opc">looptseg</emphasis>  kfreq, ktrig, iphase,13,   ktyp, 1, \
+                                      4,    ktyp, 0, \
+                                      11,   ktyp, 1, \
+                                      4
+asig  <emphasis role="opc">vco2</emphasis>     0.2,cpsmidinn(48),0             <emphasis role="comment">; a sawtooth</emphasis>
+asig  <emphasis role="opc">moogladder</emphasis>  asig,cpsoct(kcfoct),rnd(0.6) <emphasis role="comment">; filter sawtooth</emphasis>
+      <emphasis role="opc">outs</emphasis>     asig, asig
 <emphasis role="oblock">endin</emphasis>
+
 <emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
 <emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
-<emphasis role="comment">; sine wave.</emphasis>
-<emphasis role="stamnt">f</emphasis> 1 0 16384 10 1
-
 <emphasis role="stamnt">i</emphasis> 1 0 12
-
 <emphasis role="stamnt">e</emphasis>
 <emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
 <emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
