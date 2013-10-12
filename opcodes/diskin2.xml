@@ -23,10 +23,8 @@
 	convert the sample rate to match the orchestra sr
 	setting. <emphasis>diskin2</emphasis> can also read
 	multichannel files with any number of channels in the range 1
-	to 24 in versions before 5.14, and 40 after.  .
-	<emphasis>diskin2</emphasis> allows more control and higher
-	sound quality than <emphasis>diskin</emphasis>, but there is
-	also the disadvantage of higher CPU usage.
+	to 24 in versions before 5.14, and 40 after. 
+	
     </para>
 
 
@@ -36,6 +34,11 @@
     <title>Syntax</title>
     <synopsis>a1[, a2[, ... aN]] <command>diskin2</command> ifilcod, kpitch[, iskiptim \
       [, iwrap[, iformat [, iwsize[, ibufsize[, iskipinit]]]]]]</synopsis>
+
+       <synopsis>ar1[] <command>diskin2</command> ifilcod, kpitch[, iskiptim \
+      [, iwrap[, iformat [, iwsize[, ibufsize[, iskipinit]]]]]]</synopsis>
+
+<para> (in the array output version, the number of output channels does not have an upper limit.)</para>
 
   </refsect1>
 
@@ -52,7 +55,7 @@
    	environment variable <link linkend="CommandEnvironment"><citetitle>SSDIR</citetitle></link> (if defined) then by <link linkend="CommandEnvironment"><citetitle>SFDIR</citetitle></link>. See also
     <link linkend="GEN01"><citetitle>GEN01</citetitle></link>.
    	Note: files longer than 2<superscript>31</superscript>-1 sample frames may not be played correctly
-   	on 32 bit platforms; this means a maximum length about 3 hours with a
+   	on 32-bit platforms; this means a maximum length about 3 hours with a
    	sample rate of 192000 Hz.
    	</para>
 
@@ -211,7 +214,14 @@
     file channels - which can be determined with the
     <link linkend="filenchnls"><citetitle>filenchnls</citetitle></link> opcode,
     otherwise an init error will occur.
+</para>
 
+	<para>
+	<emphasis>ar1[]</emphasis>
+         --- output signals, in a-rate array of size N, where N is the number of
+             channels in the file. Arrays are automatically allocated to the correct
+             size.
+	</para>
     <note>
     <title>Note</title>
     <para>It is more efficient to read a single file with many channels,
@@ -220,7 +230,7 @@
 	</para>
 	</note>
 
-	</para>
+	
 
 	<para>
 	<emphasis>kpitch</emphasis>
