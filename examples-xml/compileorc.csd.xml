@@ -4,13 +4,17 @@
 -o dac -d
 <emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
 <emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 1
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">0dbfs</emphasis> <emphasis role="op">=</emphasis> 1
 
 <emphasis role="oblock">instr</emphasis> 1
-
-i1 <emphasis role="opc">compileorc</emphasis> "my.orc"
-i2 <emphasis role="opc">readscore</emphasis> "i 1 0 1 10000 440"
-
-<emphasis role="opc">turnoff</emphasis>
+ires <emphasis role="opc">compileorc</emphasis> "does_not_exist.orc"
+<emphasis role="opc">print</emphasis> ires <emphasis role="comment">; -1 as could not compile</emphasis>
+ires <emphasis role="opc">compileorc</emphasis> "my.orc"
+<emphasis role="opc">print</emphasis> ires <emphasis role="comment">; 0 as compiled successfully</emphasis>
+<emphasis role="opc">event_i</emphasis> "i", 2, 0, 3, .2, 465 <emphasis role="comment">;send event </emphasis>
 <emphasis role="oblock">endin</emphasis>
 
 <emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>

@@ -193,7 +193,7 @@ for j in range(len(sections)):
         (sections[j].attributes['class'].value!='refpurpose')and
         (sections[j].attributes['class'].value!='quote')and
         (sections[j].attributes['class'].value!='emphasis')):
-        print "--------Title"
+        print "--------Title:", sections[j].childNodes[1].firstChild.toxml().encode('utf-8')
         font = minidom.Element('font')
         font.setAttribute('size','4')
         font.setAttribute('color','Black')
@@ -240,8 +240,9 @@ for j in range(len(sections)):
           #sections[j].attributes['class'].value!='quote' and
           #sections[j].attributes['class'].value!='emphasis'):
         if newNode != []:
-            font.appendChild(newNode[0].cloneNode(True))
-        parent.appendChild(font)
+            #    font.appendChild(newNode[0].cloneNode(True))
+            parent.appendChild(newNode[0].cloneNode(True))
+#        parent.appendChild(font)
         parent.removeChild(sections[j])
         #print sections[j].toxml().encode('latin-1')
     
@@ -259,34 +260,33 @@ for num in range(65,93):
     alphabet.extend(chr(num+32))
 
 count = -1
-for j in range(len(unwantedtext)):
-    if (count==15):
-        count = count+1 #There is no 'Q'
-    if (count==23):
-        count = count+1 #There is no 'Y'
-    unwantedtext[j].removeChild(unwantedtext[j].childNodes[0])
-    unwantedtext[j].appendChild(minidom.Element('br'))
-    #print unwantedtext[j].toxml()
-    node = unwantedtext[j].getElementsByTagName('a')
+for text in unwantedtext:
+    if count==15 or count==23:
+        count = count + 1 #There is no 'Q' or 'Y'
+    #print "text: ", text.toxml()
+    text.removeChild(text.childNodes[0])
+    #text.appendChild(minidom.Element('br'))
+    #print "Unwanted: ", text.toxml()
+    node = text.getElementsByTagName('a')
     if ((node[0].firstChild.toxml().encode('utf-8')[0]==alphabet[count+1])
-    or(node[0].toxml().encode('utf-8')[0]==alphabetcaps[count+1])):
+        or(node[0].toxml().encode('utf-8')[0]==alphabetcaps[count+1])):
         count += 1
-        string = '<b><a name="' + alphabet[count] + '">' + alphabetcaps[count] + '</a></b>'
-        #print string
+        string = '<b style="border:solid;"><a name="' + alphabet[count] + '">' + alphabetcaps[count] + '</a></b>'
+        #print "string:", string
         letter = minidom.parseString(string)
-        unwantedtext[j].insertBefore(minidom.Element('br'), unwantedtext[j].firstChild) 
-        unwantedtext[j].insertBefore(letter.firstChild, unwantedtext[j].firstChild)
-        #print unwantedtext[j].toxml().encode('latin-1')
-    #print unwantedtext[j].toxml().encode('latin-1')
+        text.insertBefore(minidom.Element('br'), text.firstChild) 
+        text.insertBefore(letter.firstChild, text.firstChild)
+        print "unwanted2: ", text.firstChild
+    #print text.toxml().encode('latin-1')
 
 
 # routine to remove text description from score statement and GEN entries
 unwantedtext = scoregens.getElementsByTagName('dt')
-for j in xrange(len(unwantedtext)):
-    node = unwantedtext[j].firstChild
+for text in unwantedtext:
+    node = text.firstChild
     if node.nodeType == minidom.Node.ELEMENT_NODE and node.tagName == 'a':
-        unwantedtext[j].removeChild(unwantedtext[j].childNodes[1])
-        unwantedtext[j].appendChild(minidom.Element('br'))
+        text.removeChild(text.childNodes[1])
+        text.appendChild(minidom.Element('br'))
         
 
 # Routines to remove indentation

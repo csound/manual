@@ -15,20 +15,30 @@
 <emphasis role="ohdr">0dbfs</emphasis>  <emphasis role="op">=</emphasis> 1
 
 <emphasis role="oblock">instr</emphasis> 1
-
-kfrq <emphasis role="opc">line</emphasis> 15, p3, .1
-klp  <emphasis role="opc">lpshold</emphasis> kfrq, 0, 0, p3<emphasis role="op">*</emphasis>0.25, 220, p3<emphasis role="op">*</emphasis>0.5, 440, p3<emphasis role="op">*</emphasis>0.25, 0
-asig <emphasis role="opc">oscili</emphasis> .6, 440<emphasis role="op">+</emphasis>klp, 1
-     <emphasis role="opc">outs</emphasis> asig, asig
-
+kfrq  <emphasis role="opc">init</emphasis>    p4  <emphasis role="comment">; frequency of the loop </emphasis>
+ifrac <emphasis role="op">=</emphasis>       p5  <emphasis role="comment">; fraction of frequency at which to force retrigger</emphasis>
+ipan  <emphasis role="op">=</emphasis>       p6  <emphasis role="comment">; pan position</emphasis>
+ktrig <emphasis role="opc">metro</emphasis>   kfrq <emphasis role="op">*</emphasis> ifrac  <emphasis role="comment">; trigger to force restart the loop</emphasis>
+iphs  <emphasis role="op">=</emphasis>       0   <emphasis role="comment">; initial phase of the loop</emphasis>
+<emphasis role="comment">; a loop of midi note numbers:   note duration etc...</emphasis>
+knote <emphasis role="opc">lpshold</emphasis> kfrq, ktrig, iphs, 61,  0.0625,  60, 0.9375,   61, 1, 58, 1, \
+63, 2, 65, 3
+aenv  <emphasis role="opc">linseg</emphasis> 0,0.01,1,p3<emphasis role="op">-</emphasis>0.11,1,0.1,0   <emphasis role="comment">; amplitude envelope</emphasis>
+krnd  <emphasis role="opc">rspline</emphasis> <emphasis role="op">-</emphasis>0.05,0.05,0.5,1 <emphasis role="comment">; random detune</emphasis>
+asig  <emphasis role="opc">gbuzz</emphasis>   0.2<emphasis role="op">*</emphasis>aenv, <emphasis role="opc">cpsmidinn</emphasis>(knote<emphasis role="op">+</emphasis>krnd), 30, 1, 0.5, 1 
+      <emphasis role="opc">outs</emphasis>    asig<emphasis role="op">*</emphasis>ipan, asig<emphasis role="op">*</emphasis>(1<emphasis role="op">-</emphasis>ipan)
 <emphasis role="oblock">endin</emphasis>
+
 <emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
 <emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
-<emphasis role="comment">; sine wave.</emphasis>
-<emphasis role="stamnt">f</emphasis> 1 0 16384 10 1
+<emphasis role="comment">; cosine wave.</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 16384 11 1
 
-<emphasis role="stamnt">i</emphasis> 1 0 10
-
+<emphasis role="comment">; 3 layers of the loop are played, each at a different speed, </emphasis>
+<emphasis role="comment">; - with different retriggering rate, and pan location.</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 60 0.5   [8/10] 0.5
+<emphasis role="stamnt">i</emphasis> 1 0 60 0.375 [8/11] 0.1
+<emphasis role="stamnt">i</emphasis> 1 0 60 0.25  [8/13] 0.9
 <emphasis role="stamnt">e</emphasis>
 <emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
 <emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>

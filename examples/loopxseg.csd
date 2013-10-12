@@ -1,42 +1,36 @@
 <CsoundSynthesizer>
 <CsOptions>
 ; Select audio/midi flags here according to platform
-; Audio out   Audio in    No messages
--odac           -iadc     -d     ;;;RT audio I/O
+-odac      ;;;realtime audio out
+;-iadc    ;;;uncomment -iadc if realtime audio input is needed too
 ; For Non-realtime ouput leave only the line below:
 ; -o loopxseg.wav -W ;;; for file output any platform
 </CsOptions>
 <CsInstruments>
 
-; Initialize the global variables.
 sr = 44100
-kr = 4410
-ksmps = 10
+ksmps = 32
 nchnls = 2
 0dbfs  = 1
 
-; Instrument #1
 instr 1
-  kfreq line 1, p3, 20
-  kval  = p4		; value of second segment
-  klp loopxseg kfreq, 0, 0, 0, 0, kval, 1, 1, 0
-
-  a1 poscil3 klp, 440, 1
-  out a1,a1
+kfreq  rspline  0.01,20,0.2,1   ; freq. of loop repetition created by random spline
+ktrig  init     0   ; loop restart trigger (not used)
+iphase =        0   ; initial phase
+; loop of filter cutoff values (oct format). Rescaled further down.
+kcfoct loopxseg  kfreq, ktrig, iphase, 1,1,0,0
+kenv  linseg   0,0.01,1,p3-5.01,1,5,0
+asig  vco2     0.2*kenv,cpsmidinn(48),0
+kdep  rspline  5,8,0.2,1  ; filter depth created by a random spline
+kcf   port     cpsoct((kcfoct*kdep)+4), 0.001  ; smooth filter changes
+asig  moogladder  asig,kcf,rnd(0.6)
+aL,aR pan2     asig,rnd(1)
+      outs     aL, aR
 endin
-
 
 </CsInstruments>
 <CsScore>
-
-; Table #1, a sine wave.
-f 1 0 16384 10 1
-
-; Play Instrument #1 for five seconds.
-i 1 0 5 .05
-i 1 6 5 .5
+i 1  0 60
 e
-
-
 </CsScore>
 </CsoundSynthesizer>

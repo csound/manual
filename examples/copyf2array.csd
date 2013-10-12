@@ -10,17 +10,30 @@ ksmps = 32
 nchnls = 2
 0dbfs  = 1
 
-instr 1
-  kS[] init 1024
-  printk2 kS[123]
-  copy2ttab kS, 1
-  printk2 kS[123]
-endin
+;8 points sine wave function table
+giSine  ftgen   0, 0, 8, 10, 1
 
+
+  instr 1
+;create array
+kArr[]  init    8
+
+;copy table values in it
+        copyf2array kArr, giSine
+        
+;print values
+kndx    =       0
+  until kndx == lenarray(kArr) do
+        printf  "kArr[%d] = %f\n", kndx+1, kndx, kArr[kndx]
+kndx    +=      1
+  od
+
+;turn instrument off
+        turnoff
+  endin
+  
 </CsInstruments>
 <CsScore>
-f1 0 1024 10 1
 i 1 0 0.1
-e
 </CsScore>
 </CsoundSynthesizer>

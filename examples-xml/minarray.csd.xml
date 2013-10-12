@@ -1,12 +1,29 @@
 <programlisting>
 <emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-n 
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
 <emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="comment">;example by joachim heintz</emphasis>
+
+           <emphasis role="ohdr">seed</emphasis>       0
 
 <emphasis role="oblock">instr</emphasis> 1
-  t1 <emphasis role="opc">init</emphasis> 10
-  t1[3] <emphasis role="op">=</emphasis> 42
-  k1 <emphasis role="opc">mintab</emphasis> t1
-  <emphasis role="opc">printk2</emphasis> k1
+<emphasis role="comment">;create an array with 10 elements</emphasis>
+kArr[]     <emphasis role="opc">init</emphasis>       10
+<emphasis role="comment">;fill in random numbers and print them out</emphasis>
+kIndx      <emphasis role="op">=</emphasis>          0
+  <emphasis role="octrl">until</emphasis> kIndx <emphasis role="op">==</emphasis> 10 <emphasis role="octrl">do</emphasis>
+kNum       <emphasis role="opc">random</emphasis>     <emphasis role="op">-</emphasis>100, 100
+kArr[kIndx] <emphasis role="op">=</emphasis>         kNum
+           <emphasis role="opc">printf</emphasis>     "kArr[%d] = %10f\n", kIndx<emphasis role="op">+</emphasis>1, kIndx, kNum
+kIndx      <emphasis role="op">+</emphasis><emphasis role="op">=</emphasis>         1
+  <emphasis role="octrl">od</emphasis>
+<emphasis role="comment">;investigate minimum number and print it out</emphasis>
+kMin, kMinIndx <emphasis role="opc">minarray</emphasis> kArr
+           <emphasis role="opc">printf</emphasis>     "Minimum of kArr = %f at index %d\n", kIndx<emphasis role="op">+</emphasis>1, kMin, kMinIndx
+           <emphasis role="opc">turnoff</emphasis>
 <emphasis role="oblock">endin</emphasis>
 <emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
 <emphasis role="csdtag">&lt;CsScore&gt;</emphasis>

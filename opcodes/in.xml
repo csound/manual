@@ -18,15 +18,19 @@
   <refsect1>
     <title>Description</title>
     <para>
-      Reads mono audio data from an external device or stream.
+      Reads audio data from an external device or stream.
     </para>
 
     <warning>
       <title>Warning</title>
       <para>
-        This opcode is designed to be used only with orchestras that have
-        nchnls=1. Doing so with orchestras with nchnls &gt; 1 will
+        There are two versions of this opcode.  The first is designed
+        to be used only with orchestras that have 
+        inchnls=1. Doing so with orchestras with inchnls &gt; 1 will
         cause incorrect audio input.
+      </para>
+      <para>
+        The second form will read multiple channels into an array.
       </para>
     </warning>
   </refsect1>
@@ -34,12 +38,23 @@
   <refsect1>
     <title>Syntax</title>
     <synopsis>ar1 <command>in</command></synopsis>
+    <synopsis>aarray <command>in</command></synopsis>
   </refsect1>
 
   <refsect1>
     <title>Performance</title>
     <para>
-      Reads mono audio data from an external device or stream. If the command-line <link linkend="FlagsMinusLowerI"><citetitle>-i</citetitle></link> flag is set, sound is read continuously from the audio input stream (e.g. <emphasis>stdin</emphasis> or a soundfile) into an internal buffer. Any number of these opcodes can read freely from this buffer.
+      Form 1 reads mono audio data from an external device or
+      stream. If the command-line <link
+      linkend="FlagsMinusLowerI"><citetitle>-i</citetitle></link> flag
+      is set, sound is read continuously from the audio input stream
+      (e.g. <emphasis>stdin</emphasis> or a soundfile) into an
+      internal buffer. Any number of these opcodes can read freely
+      from this buffer.
+    </para>
+    <para>
+      The second format will read upto ichnls of audio into an audio
+      array, which must be initialised.
     </para>
   </refsect1>
 
@@ -74,8 +89,11 @@
         <member>Authors: &namebarry;, &namematt;/&namemike;</member>
         <member>MIT, Mills College</member>
         <member>1993-1997</member>
+        <member>Authors: &namejohn;</member>
+        <member>NUIM, 2013</member>
       </simplelist>
     </para>
     <para>Already in version 3.30</para>
+    <para>Array version in versio 6.01</para>
   </refsect1>
 </refentry>

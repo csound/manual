@@ -20,16 +20,16 @@ instr 1
 asig poscil .2, cpspch(p4), 1 
      outs asig, asig 
 
-ga1 = ga1 + asig;add direct signal to global reverb
+ga1  += asig     ;add direct signal to global reverb
  
 endin
 
 instr 99	;(highest instr number executed last)
 
 arev reverb ga1, 1.5
-  outs arev, arev 
+     outs arev, arev 
   
-ga1 = 0		;clear
+ga1  = 0	;clear
 endin
 
 
