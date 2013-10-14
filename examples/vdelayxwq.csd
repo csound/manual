@@ -24,7 +24,7 @@ aout3  diskin2 "Church.wav", 1, 0, 1	;loop Church.wav
 aout4  diskin2 "flute.aiff", 1, 0, 1	;loop flute.aiff
 a2   poscil3 .2, .1, 1			;make an LFO, 1 cycle per 2 seconds
 adl  = a2 + ims/2      			;offset the LFO so that it is positive
-aout1, aout2, aout3, aout4 vdelayxw aout1, aout2, aout3, aout4, adl, ims, iws	;use the LFO to control delay time
+aout1, aout2, aout3, aout4 vdelayxwq aout1, aout2, aout3, aout4, adl, ims, iws	;use the LFO to control delay time
      outq aout1, aout2, aout3, aout4
 
 endin
