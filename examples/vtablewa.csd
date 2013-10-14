@@ -11,6 +11,7 @@ ksmps=10
 nchnls=2
 
 	instr 1
+vcopy 2, 1, 262144
 ar random 0, 1
 vtablewa ar,2,1,ar
 out ar,ar
