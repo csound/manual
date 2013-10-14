@@ -41,7 +41,7 @@ i_	ftgen 7, 0, 64, -2, 4, 50, -1, -1, -1, 11,			\
 
 i0	=  0
 loop1:
-imaxh	=  sr / (2 * 440.0 * exp (log(2.0) * (i0 - 69) / 12))
+imaxh	=  sr / (2 * 440.0 * exp(log(2.0) * (i0 - 69) / 12))
 i_	ftgen i0 + 256, 0, 4096, -30, 1, 1, imaxh
 i0	=  i0 + 1
 	if (i0 < 127.5) igoto loop1
@@ -51,7 +51,7 @@ i0	=  i0 + 1
 p3	=  p3 + 0.4
 
 ; note frequency
-kcps	=  440.0 * exp (log(2.0) * (p4 - 69) / 12)
+kcps	=  440.0 * exp(log(2.0) * (p4 - 69) / 12)
 ; lowpass max. frequency
 klpmaxf	limit 64 * kcps, 1000.0, 12000.0
 ; FM depth in Hz
