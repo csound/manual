@@ -31,7 +31,7 @@ i0	=  i0 + 1
 
 instr 1
 
-kcps	=  440.0 * exp (log(2.0) * (p4 - 69) / 12)					;note frequency
+kcps	=  440.0 * exp(log(2.0) * (p4 - 69) / 12)					;note frequency
 klpmaxf	limit p5 * kcps, 1000.0, 12000.0						;lowpass max. frequency
 
 kfmd1	=  0.03 * kcps									;FM depth in Hz
