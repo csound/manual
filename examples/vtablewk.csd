@@ -12,7 +12,7 @@ ksmps=100
 nchnls=2
 
 	instr 1
-ilen = ftlen (1)
+ilen = ftlen(1)
 
 knew1 oscil 10000, 440, 3
 knew2 oscil 15000, 440, 3, 0.5
@@ -25,7 +25,7 @@ out asig,asig
 
 </CsInstruments>
 <CsScore>
-f1  0 262144   -1 "beats.aiff" 0 4 0
+f1  0 262144   -1 "beats.wav" 0 4 0
 f2  0 262144   2  0
 f3  0 1024  10 1
 
