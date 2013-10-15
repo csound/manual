@@ -25,6 +25,10 @@
     <synopsis>ar1 [, ar2 [, ar3 [, ... arN]]] <command>diskin</command> ifilcod, kpitch [, iskiptim] \
       [, iwraparound] [, iformat] [, iskipinit]</synopsis>
 <para> Note the N was 24 in versions before 5.14, and 40 after.</para>
+
+<synopsis>ar1[] <command>diskin2</command> ifilcod, kpitch[, iskiptim \
+      [, iwrap[, iformat [, iwsize[, ibufsize[, iskipinit]]]]]]</synopsis>
+<para> (in this version, the number of output channels is not limited.)</para>
   </refsect1>
 
   <refsect1>
@@ -97,8 +101,24 @@
 
   <refsect1>
     <title>Performance</title>
-    <note><simpara><emphasis>diskin</emphasis> is deprecated since it can crash easily under certain circumstances. Use <link linkend="diskin2"><citetitle>diskin2</citetitle></link> instead.</simpara></note>
-    <para>
+    	<para>
+	<emphasis>a1 ... a24</emphasis>
+	-- output signals, in the range -0dbfs to 0dbfs. Any samples
+    before the beginning (i.e. negative location) and after the end of
+    the file are assumed to be zero, unless <emphasis>iwrap</emphasis> is non-zero.
+    The number of output arguments must be the same as the number of sound
+    file channels - which can be determined with the
+    <link linkend="filenchnls"><citetitle>filenchnls</citetitle></link> opcode,
+    otherwise an init error will occur.
+</para>
+
+	<para>
+	<emphasis>ar1[]</emphasis>
+         --- output signals, in a-rate array of size N, where N is the number of
+             channels in the file. Arrays are automatically allocated to the correct
+             size.
+	</para>
+<para>
       <emphasis>kpitch</emphasis> -- can be any real number. A negative number signifies backwards playback. The given number is a pitch ratio, where:
       <itemizedlist>
         <listitem><para><emphasis>1</emphasis> = normal pitch</para></listitem>
@@ -111,10 +131,7 @@
       </itemizedlist>
     </para>
 
-    <para>
-      <emphasis>diskin</emphasis> is identical to <link linkend="soundin"><citetitle>soundin</citetitle></link> except that it can alter the pitch of the sound that is being read, and is capable of looping.
-    </para>
-
+  
     <caution>
       <title>Note to Windows users</title>
       <para>
