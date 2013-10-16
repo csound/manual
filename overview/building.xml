@@ -8,25 +8,27 @@ you should try to use one of the precompiled distributions from <ulink
 building from source is probably the best option on GNU/Linux.
   </para>
   <para>
-    This section focuses on the main Csound 5 build system, which uses <ulink url="http://www.scons.org">SCons</ulink>, a Python program that replaces <emphasis>make</emphasis> for cross-platform configuration and building.
+    This section focuses on the main Csound 6 build system, which uses
+    <ulink url="http://www.cmake.org">cmake</ulink>, a cross-platform,
+    open-source build system designed to build, test and package software.
   </para>
   <para>
     When building Csound from source instead of using a precompiled package, you first need to obtain the sources for a release of Csound at <ulink url="http://www.sourceforge.net/projects/csound">http://www.sourceforge.net/projects/csound</ulink>. The source packages have either a zip or tar.gz extension.
   </para>
   <para>
     The latest (possibly unstable) Csound source code is also available through GIT. The Csound GIT front page is located at: <ulink url="http://csound.git.sourceforge.net/git/gitweb-index.cgi">http://csound.git.sourceforge.net/git/gitweb-index.cgi</ulink>.
- Using git for just checking out and compiling is pretty easy. Install GIT for your platform and use this command to clone the Csound5 git repository:
+ Using git for just checking out and compiling is pretty easy. Install GIT for your platform and use this command to clone the Csound6 git repository:
   </para>
-  <programlisting>git clone git://git.code.sf.net/p/csound/csound5-git </programlisting>
+  <programlisting>git clone git://git.code.sf.net/p/csound/csound6-git csound-csound6-git</programlisting>
   <para>
-This will checkout a read-only (meaning, you can not commit back to the central git repository) version of the Csound5 repo. To update with the latest from the master repo, use:
+This will checkout a read-only (meaning, you can not commit back to the central git repository) version of the Csound6 repo. To update with the latest from the master repo, use:
   </para>
   <programlisting>git pull</programlisting>
   <para>
     The same process is used for the Csound manual. Use this command to clone:
   </para>
-  <programlisting>git clone git://git.code.sf.net/p/csound/manual-git </programlisting>
-  <bridgehead>Basic requirements to build Csound 5 on any platform</bridgehead>
+  <programlisting>git clone git://git.code.sf.net/p/csound/csound6-git csound6-git</programlisting>
+  <bridgehead>Basic requirements to build Csound 6 on any platform</bridgehead>
   <itemizedlist>
     <listitem>
       <simpara>
@@ -35,17 +37,16 @@ This will checkout a read-only (meaning, you can not commit back to the central 
     </listitem>
     <listitem>
       <simpara>
-        Install Python from <ulink url="http://www.python.org">www.python.org</ulink>. In most cases it is best to install the most recent stable version. Python is needed for SCons to run.
-      </simpara>
-    </listitem>
-    <listitem>
-      <simpara>
-        Install the SCons build system from <ulink url="http://www.scons.org">www.scons.org</ulink>.
+        Install the Cmake build system from <ulink
+        url="http://www.cmake.org">www.scons.org</ulink> or from your
+        system packages.
       </simpara>
     </listitem>
   </itemizedlist>
   <para>
-    These are the minimum requirements for a build, but csound has many optional components which enhance functionality and add opcodes which may require additional libraries.
+    These are the minimum requirements for a build, but csound has
+    many optional components which enhance functionality and add
+    opcodes which may require additional libraries. 
   </para>
   <bridgehead>Optional configurations (ALL platforms)</bridgehead>
 
@@ -54,7 +55,13 @@ This will checkout a read-only (meaning, you can not commit back to the central 
   <itemizedlist>
     <listitem>
       <simpara>
-        Real-time audio can use the cross-platform PortAudio library (trunk version or devel-19 branch) from <ulink url="http://www.portaudio.com/usingcvs.html">www.portaudio.com/usingcvs.html</ulink>. Please note that stable version 18 will not work. Csound can also use several platform specific audio APIs like ALSA, JACK, CoreAudio and the Windows multimedia library, see each platform notes for details.
+        Real-time audio can use the cross-platform PortAudio library
+        (trunk version or devel-19 branch) from <ulink
+        url="http://www.portaudio.com/usingcvs.html">www.portaudio.com/usingcvs.html</ulink>. Please
+        note that stable version 18 will not work. Csound can also use
+        several platform specific audio APIs like ALSA, JACK,
+        CoreAudio and the Windows multimedia library, see each
+        platform notes for details. 
       </simpara>
     </listitem>
     <listitem>
@@ -75,26 +82,46 @@ This will checkout a read-only (meaning, you can not commit back to the central 
     </listitem>
     <listitem>
       <simpara>
-        <emphasis>CsoundAC</emphasis> requires FLTK and the boost C++ template libraries for random numbers and linear algebra, from  <ulink url="http://www.boost.org">http://www.boost.org</ulink>. <emphasis>CsoundAC</emphasis> requires at least version 1.32.1.
+        Install Python from <ulink
+        url="http://www.python.org">www.python.org</ulink>. In most
+        cases it is best to install the most recent stable version.
       </simpara>
     </listitem>
     <listitem>
-      <simpara>The fluid opcodes require the Fluidsynth library from <ulink url="http://savannah.nongnu.org/download/fluid">http://savannah.nongnu.org/download/fluid</ulink>.
+      <simpara>
+        <emphasis>CsoundAC</emphasis> requires FLTK and the boost C++
+        template libraries for random numbers and linear algebra, from
+        <ulink
+            url="http://www.boost.org">http://www.boost.org</ulink>. <emphasis>CsoundAC</emphasis>
+        requires at least version 1.32.1. 
+      </simpara>
+    </listitem>
+    <listitem>
+      <simpara>The fluid opcodes require the Fluidsynth library from
+      <ulink
+          url="http://savannah.nongnu.org/download/fluid">http://savannah.nongnu.org/download/fluid</ulink>. 
       </simpara>
     </listitem>
     <listitem>
       <simpara>
         The OSC opcodes require the latest version of the liblo library from 
-        <ulink url="http://plugin.org.uk/liblo">http://plugin.org.uk/liblo</ulink>. 
-        On Windows, liblo requires a Windows version of the POSIX thread library (pthreads) which is available from 
-        <ulink url="http://sourceware.org/pthreads-win32">http://sourceware.org/pthreads-win32</ulink>; 
+        <ulink
+            url="http://plugin.org.uk/liblo">http://plugin.org.uk/liblo</ulink>.  
+        On Windows, liblo requires a Windows version of the POSIX
+        thread library (pthreads) which is available from  
+        <ulink
+            url="http://sourceware.org/pthreads-win32">
+          http://sourceware.org/pthreads-win32</ulink>;  
         copy libpthreadGC2.a to libpthread.a. 
         You may also need the latest version of autoconf from MinGW.
       </simpara>
     </listitem>
     <listitem>
       <simpara>
-        The STK opcodes require STK source code from <ulink url="http://ccrma.stanford.edu/software/stk">http://ccrma.stanford.edu/software/stk</ulink>, copied into <filename>csound5/Opcodes/stk</filename>.
+        The STK opcodes require STK source code from <ulink
+        url="http://ccrma.stanford.edu/software/stk">
+        http://ccrma.stanford.edu/software/stk</ulink>,
+        copied into <filename>csound6/Opcodes/stk</filename>. 
       </simpara>
     </listitem>
     <listitem>
@@ -105,22 +132,45 @@ This will checkout a read-only (meaning, you can not commit back to the central 
   </itemizedlist>
 
   <bridgehead>Windows</bridgehead>
-  <para>The following is needed to build on Windows (more complete build instructions for Windows may be found in the csound-build.tex document (csound-build.pdf)):</para>
+  <para>The following is needed to build on Windows (more complete
+  build instructions for Windows may be found in the csound-build.tex
+  document (csound-build.pdf)):</para> 
   <itemizedlist>
     <listitem>
       <simpara>
-        Install a compiler like gcc or Microsoft Visual Studio (there is also support for the Intel C++ compiler). If using MinGW (gcc), install all of the current release of MinGW  using the Automated MinGW Installer from <ulink url="http://www.mingw.org">www.mingw.org</ulink>, for example into <literal>c:/mingw</literal>. This should install gcc, g++, GNU binutils, the MinGW runtime, and the win32 API. Then install the current release of MSys.
+        Install a compiler like gcc or Microsoft Visual Studio (there
+        is also support for the Intel C++ compiler). If using MinGW
+        (gcc), install all of the current release of MinGW  using the
+        Automated MinGW Installer from <ulink
+        url="http://www.mingw.org">www.mingw.org</ulink>, for example
+        into <literal>c:/mingw</literal>. This should install gcc,
+        g++, GNU binutils, the MinGW runtime, and the win32 API. Then
+        install the current release of MSys. 
       </simpara>
-      <simpara>
-        On Windows you can use Microsoft Visual C++ (except for CsoundAC). The free Express Edition, from <ulink url="http://www.microsoft.com/express/vc/">http://www.microsoft.com/express/vc/</ulink> works fine. You will need to obtain a copy of the <filename>dirent.h</filename> header file for Windows, e.g. from <ulink url="http://www.softagalleria.net/dirent.php">http://www.softagalleria.net/dirent.php</ulink>. You may also need to obtain the <literal>bufferoverflowu.lib</literal> library from Microsoft and put it into the Visual C++ <filename>lib</filename> directory. Then open a shell in which to compile Csound, (usually called Visual Studio Command Prompt command, within the Visual C++ program menu).
-      </simpara>
+      <!-- <simpara> -->
+      <!--   On Windows you can use Microsoft Visual C++ (except for -->
+      <!--   CsoundAC). The free Express Edition, from <ulink -->
+      <!--   url="http://www.microsoft.com/express/vc/">http://www.microsoft.com/express/vc/</ulink> -->
+      <!--   works fine. You will need to obtain a copy of the -->
+      <!--   <filename>dirent.h</filename> header file for Windows, -->
+      <!--   e.g. from <ulink -->
+      <!--   url="http://www.softagalleria.net/dirent.php">http://www.softagalleria.net/dirent.php</ulink>. You -->
+      <!--   may also need to obtain the -->
+      <!--   <literal>bufferoverflowu.lib</literal> library from Microsoft -->
+      <!--   and put it into the Visual C++ <filename>lib</filename> -->
+      <!--   directory. Then open a shell in which to compile Csound, -->
+      <!--   (usually called Visual Studio Command Prompt command, within -->
+      <!--   the Visual C++ program menu). -->
+      <!-- </simpara> -->
     </listitem>
   </itemizedlist>
   <para>Optional configurations for Windows include the following:</para>
   <itemizedlist>
     <listitem>
       <simpara>
-        Real-time audio and MIDI can use the Windows multimedia library. This module will be built automatically if the headers are found.
+        Real-time audio and MIDI can use the Windows multimedia
+        library. This module will be built automatically if the
+        headers are found. 
       </simpara>
     </listitem>
     <listitem>
@@ -134,7 +184,13 @@ This will checkout a read-only (meaning, you can not commit back to the central 
   <itemizedlist>
     <listitem>
       <simpara>
-        Real-time audio on Linux can use ALSA (<ulink url="http://www.alsa-project.org">www.alsa-project.org</ulink>) and JACK (<ulink url="http://www.jackaudio.org/">www.jackaudio.org/</ulink>) in addition to PortAudio. Distributions usually provide the appropriate dev packages for these systems through their repositories.
+        Real-time audio on Linux can use ALSA (<ulink
+        url="http://www.alsa-project.org">www.alsa-project.org</ulink>)
+        and JACK (<ulink
+        url="http://www.jackaudio.org/">www.jackaudio.org/</ulink>) in
+        addition to PortAudio. Distributions usually provide the
+        appropriate dev packages for these systems through their
+        repositories. 
       </simpara>
     </listitem>
     <listitem>
@@ -148,7 +204,8 @@ This will checkout a read-only (meaning, you can not commit back to the central 
   <itemizedlist>
     <listitem>
       <simpara>
-        Real-time audio can use CoreAudio (OSX builtin native audio system) and Jack, appart from PortAudio.
+        Real-time audio can use CoreAudio (OSX builtin native audio
+        system) and Jack, apart from PortAudio.
       </simpara>
     </listitem>
     <listitem>
@@ -158,300 +215,295 @@ This will checkout a read-only (meaning, you can not commit back to the central 
     </listitem>
   </itemizedlist>
 
-  <bridgehead>Building Csound 5 with SCons</bridgehead>
+  <bridgehead>Building Csound 6 with CMake</bridgehead>
   <para>
-    When you have all the necessary packages and their sources (or -dev packages) to support your particular requirements on your hardware platform, execute "scons -h" to discover the current configuration options.
+    When you have all the necessary packages and their sources (or
+    -dev packages) to support your particular requirements on your
+    hardware platform it is best to review the file
+    <programlisting>Custom.cmake.ex</programlisting> to discover the
+    current configuration options.  make any changes and place your
+    customisations in <programlisting>Custom.cmake</programlisting>
   </para>
   <para>
-    Building is made considerably easier if, when installing, the downloaded headers and libraries are installed in their default locations. To modify the default build,  in particular to handle non-standard options for third-party dependencies, such as where headers and libraries are to be found:
+    Building is made considerably easier if, when installing, the
+    downloaded headers and libraries are installed in their default
+    locations. To modify the default build, in particular to handle
+    non-standard options for third-party dependencies, such as where
+    headers and libraries are to be found:
   </para>
-  <itemizedlist>
-    <listitem>
-      <simpara>
-        On Windows, when building with Microsoft Visual C++, modify custom-msvc.py. 
-      </simpara>
-    </listitem>
-    <listitem>
-      <simpara>
-        On Windows, when building with MinGW/MSys, modify custom-mingw.py
-      </simpara>
-    </listitem>
-    <listitem>
-      <simpara>
-        On Mac OSX edit custom-osx.py and rename it to custom.py
-      </simpara>
-    </listitem>
-        <listitem>
-      <simpara>
-        On Linux edit custom-linux-jpff.py or custom-linux-mkg.py and rename it to custom.py
-      </simpara>
-    </listitem>
-  </itemizedlist>
   <para>
-  Avoid modifying the SConstruct file.
+    Avoid modifying the CMakeList.txt files.
   </para>
-  <para>Execute scons with the optional custom variables you desire. For example:</para>
-  <programlisting>scons buildOSC=1 buildCsound5GUI=1 buildPythonOpcodes=1 useOSC=1 builBeats=1</programlisting>
-
+  <para>
+    With CMake it is usual to build in a difference directory to the
+    sources.  Create a directory for your build, change to that
+    directory and run <programlisting>cmake
+    path-to-source-directory</programlisting>.  All being well this
+    will create Makefiles as necessary.  You can then run "make" and
+    "make install".  If things go wrong it is sometime necessary to
+    delete the file <programlisting>CMakeCache.txt</programlisting>.
+  </para>
   <note>
     <para>
-      It is important that you set the environment variable <literal>OPCODEDIR</literal> to the directory where plugin libraries are installed; in the case of a double precision build, <literal>OPCODEDIR64</literal> should be set instead. Installers usually take care of this, but it is necessary when building from source so Csound can find its plugin libraries.
+      It is important that you set the environment variable
+      <literal>OPCODE6DIR</literal> to the directory where plugin
+      libraries are installed; in the case of a double precision
+      build, <literal>OPCODE6DIR64</literal> should be set
+      instead. Installers usually take care of this, but it is
+      necessary when building from source so Csound can find its
+      plugin libraries.
     </para>
   </note>
-  <bridgehead>Current build options</bridgehead>
-  <table frame="all" colsep="1">
-    <title>Current SCons Build Options</title>
-    <tgroup cols="2">
-      <thead>
-        <row>
-          <entry>Custom Variable</entry>
-          <entry>Effect if set to 1</entry>
-        </row>
-      </thead>
+  <!-- <bridgehead>Current build options</bridgehead> -->
+  <!-- <table frame="all" colsep="1"> -->
+  <!--   <title>Current SCons Build Options</title> -->
+  <!--   <tgroup cols="2"> -->
+  <!--     <thead> -->
+  <!--       <row> -->
+  <!--         <entry>Custom Variable</entry> -->
+  <!--         <entry>Effect if set to 1</entry> -->
+  <!--       </row> -->
+  <!--     </thead> -->
 
-      <tbody>
-	<row>
-          <entry>includeP5Glove</entry>
-          <entry>Build for use with P5 Glove.</entry>
-        </row>
-        <row>
-          <entry>buildCsoundVST</entry>
-          <entry>Build CsoundVST. Needs CsoundAC, FLTK, boost, Python, SWIG.</entry>
-        </row>
-        <row>
-          <entry>buildCsoundAC</entry>
-          <entry>Build CsoundAC. Needs FLTK, boost, Python, SWIG.</entry>
-        </row>
-        <row>
-          <entry>buildCsound5GUI</entry>
-          <entry>Build FLTK GUI frontend. Requires FLTK 1.1.7 or later.</entry>
-        </row>
-        <row>
-          <entry>buildCSEditor</entry>
-          <entry>Build the Csound syntax highlighting text editor. Requires FLTK headers and libs.</entry>
-        </row>
-        <row>
-          <entry>buildDSSI</entry>
-          <entry>Build DSSI/LADSPA host opcodes.</entry>
-        </row>
-        <row>
-          <entry>buildImageOpcodes</entry>
-          <entry>Build image opcodes. 1 by default. Set to 0 to avoid.</entry>
-        </row>
-        <row>
-          <entry>buildInterfaces</entry>
-          <entry>Build interface library for Python, JAVA, Lua, C++, and other languages.</entry>
-        </row>
-        <row>
-          <entry>buildJavaWrapper</entry>
-          <entry>Build Java wrapper for the interface library.</entry>
-        </row>
-	<row>
-          <entry>buildLuaOpcodes</entry>
-          <entry>Build Lua opcodes. Set to 1 to build.</entry>
-        </row>
-	<row>
-          <entry>buildLuaWrapper</entry>
-          <entry>Build Lua wrapper for the C++ interface library (needs buildInterfaces).</entry>
-        </row>
-        <row>
-          <entry>buildNewParser</entry>
-          <entry>Enable building new parser. Requires Flex/Bison.</entry>
-        </row>
-        <row>
-          <entry>buildOSXGUI</entry>
-          <entry>Build the basic GUI frontend. OSX only.</entry>
-        </row>
-        <row>
-          <entry>buildPDClass</entry>
-          <entry>Build csoundapi~ PD class. Needs m_pd.h in the standard places.</entry>
-        </row>
-        <row>
-          <entry>buildPythonOpcodes</entry>
-          <entry>Build Python opcodes</entry>
-        </row>
-	<row>
-          <entry>buildPythonWrapper</entry>
-          <entry>Build Python wrapper for the C++ interface library (needs buildInterfaces).</entry>
-        </row>
-        <row>
-          <entry>buildRelease</entry>
-          <entry>Build for release. Implies noDebug.</entry>
-        </row>
-        <row>
-          <entry>buildSDFT</entry>
-          <entry>Build SDFT code. 1 by default. Set to 0 to avoid.</entry>
-        </row>
-        <row>
-          <entry>buildStkOpcodes</entry>
-          <entry>build Stk Opcodes. Requires STK source code.</entry>
-        </row>
-        <row>
-          <entry>buildTclcsound</entry>
-          <entry>Build Tclcsound frontend (cstclsh, cswish and tclcsound dynamic module). Requires Tcl/Tk headers and libs.</entry>
-        </row>
-        <row>
-          <entry>buildUtilities</entry>
-          <entry>Build stand-alone executables for utilities that can also be used with -U.</entry>
-        </row>
-        <row>
-          <entry>buildVirtual</entry>
-          <entry>Build Virtual MIDI keyboard. Requires FLTK 1.1.7 or later headers and libs.</entry>
-        </row>
-        <row>
-          <entry>buildvst4cs</entry>
-          <entry>Build vst4cs plugins. Requires Steinberg VST headers.</entry>
-        </row>
-        <row>
-          <entry>buildWinsound</entry>
-          <entry>Build Winsound frontend. Requires FLTK headers and libs.</entry>
-        </row>
-        <row>
-          <entry>buildBeats</entry>
-          <entry>Build csbeats score processor.</entry>
-        </row>
-	<row>
-          <entry>bufferoverflowu</entry>
-          <entry>Set to 1 to use the Windows buffer overflow library, required if you use MinGW to link with MSVC-built libraries.</entry>
-        </row>
-        <row>
-          <entry>dynamicCsoundLibrary</entry>
-          <entry>Build dynamic Csound library instead of libcsound.a.</entry>
-        </row>
-        <row>
-          <entry>gcc3opt</entry>
-          <entry>Enable gcc 3.3.x or later optimizations for the specified CPU architecture (e.g. pentium3); implies noDebug.</entry>
-        </row>
-        <row>
-          <entry>gcc4opt</entry>
-          <entry>Enable gcc 4.0 or later optimizations for the specified CPU architecture (e.g. pentium3); implies noDebug.</entry>
-        </row>
-        <row>
-          <entry>generateTags</entry>
-          <entry>Generate TAGS.</entry>
-        </row>
-        <row>
-          <entry>generatePdf</entry>
-          <entry>Generate PDF documentation.</entry>
-        </row>
-        <row>
-          <entry>install</entry>
-          <entry>Enables the Install targets.</entry>
-        </row>
-        <row>
-          <entry>Lib64</entry>
-          <entry>Build for lib64 rather than lib.</entry>
-        </row>
-        <row>
-          <entry>noDebug</entry>
-          <entry>Build without debugging information.</entry>
-        </row>
-        <row>
-          <entry>noFLTKThreads</entry>
-          <entry>Disable use of a separate thread for FLTK widgets.</entry>
-        </row>
-        <row>
-          <entry>useAltivec</entry>
-          <entry>On OSX use the gcc AltiVec optmisation flags.</entry>
-        </row>
-        <row>
-          <entry>useALSA</entry>
-          <entry>ALSA for real-time audio and MIDI input and output.</entry>
-        </row>
-        <row>
-          <entry>useCoreAudio</entry>
-          <entry>use CoreAudio for real-time audio input and output.</entry>
-        </row>
-        <row>
-          <entry>useDouble</entry>
-          <entry>Use double-precision floating point for audio samples.</entry>
-        </row>
-        <row>
-          <entry>useFLTK</entry>
-          <entry>Use FLTK for graphs and widget opcodes.</entry>
-        </row>
-        <row>
-          <entry>useGettext</entry>
-          <entry>Use the GNU internationalisation/localisation scheme</entry>
-        </row>
-        <row>
-          <entry>useIpMIDI</entry>
-          <entry>Build for use as a network synth.</entry>
-        </row>
-        <row>
-          <entry>useGprof</entry>
-          <entry>Build with profiling information (-pg).</entry>
-        </row>
-        <row>
-          <entry>usePortAudio</entry>
-          <entry>Use PortAudio for real-time audio input and output.</entry>
-        </row>
-        <row>
-          <entry>usePortMIDI</entry>
-          <entry>Build PortMidi plugin for real time MIDI input and output.</entry>
-        </row>
-        <row>
-          <entry>useJack</entry>
-          <entry>Used if you compiled PortAudio to use Jack; also builds Jack plugin.</entry>
-        </row>
-        <row>
-          <entry>useLrint</entry>
-          <entry>Use lrint() and lrintf() for converting floating point values to integers.</entry>
-        </row>
-        <row>
-          <entry>useOSC</entry>
-          <entry>For OSC support.</entry>
-        </row>
-        <row>
-          <entry>useUDP</entry>
-          <entry>For UDP support. 1 by default. Set to 0 to avoid.</entry>
-        </row>
-        <row>
-          <entry>withICL</entry>
-          <entry>Build with the Intel C++ Compiler (also requires Microsoft Visual C++), Set to 0 to build with MinGW. Windows only.</entry>
-        </row>
-        <row>
-          <entry>withMSVC</entry>
-          <entry>Build with Microsoft Visual C++, or set to 0 to build with MinGW. Windows only.</entry>
-        </row>
-        <row>
-          <entry>withSunStudio</entry>
-          <entry>On Solaris, set to 1 to build with Sun Studio, or set to 0 to build with gcc.</entry>
-        </row>
-        <row>
-          <entry>NewParserDebug</entry>
-          <entry>Enable tracing of new parser</entry>
-        </row>
-        <row>
-          <entry>Word64</entry>
-          <entry>Build for 64bit computer.</entry>
-        </row>
-        <row>
-          <entry>pythonVersion</entry>
-          <entry>Set to the Python version to be used.</entry>
-        </row>
-	<row>
-          <entry>includeSerial</entry>
-          <entry>Set to 1 if compiling serial code.</entry>
-        </row>
-	<row>
-          <entry>buildcatalog</entry>
-          <entry>Set to 1 if building opcode/library catalogue.</entry>
-        </row>
-	<row>
-          <entry>includeWii</entry>
-          <entry>Set to 12 or 13 if using libwiiuse v0.12 or v0.13.</entry>
-        </row>
-	<row>
-          <entry>useOpenMP</entry>
-          <entry>Set to 1 to use OpenMP for parallel performance.</entry>
-        </row>
-	<row>
-          <entry>buildMultiCore</entry>
-          <entry>building for multicore sytem (requires new parser).</entry>
-        </row>
-      </tbody>
-    </tgroup>
-  </table>
+  <!--     <tbody> -->
+  <!--       <row> -->
+  <!--         <entry>includeP5Glove</entry> -->
+  <!--         <entry>Build for use with P5 Glove.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>buildCsoundVST</entry> -->
+  <!--         <entry>Build CsoundVST. Needs CsoundAC, FLTK, boost, Python, SWIG.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>buildCsoundAC</entry> -->
+  <!--         <entry>Build CsoundAC. Needs FLTK, boost, Python, SWIG.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>buildCsound5GUI</entry> -->
+  <!--         <entry>Build FLTK GUI frontend. Requires FLTK 1.1.7 or later.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>buildCSEditor</entry> -->
+  <!--         <entry>Build the Csound syntax highlighting text editor. Requires FLTK headers and libs.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>buildDSSI</entry> -->
+  <!--         <entry>Build DSSI/LADSPA host opcodes.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>buildImageOpcodes</entry> -->
+  <!--         <entry>Build image opcodes. 1 by default. Set to 0 to avoid.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>buildInterfaces</entry> -->
+  <!--         <entry>Build interface library for Python, JAVA, Lua, C++, and other languages.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>buildJavaWrapper</entry> -->
+  <!--         <entry>Build Java wrapper for the interface library.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>buildLuaOpcodes</entry> -->
+  <!--         <entry>Build Lua opcodes. Set to 1 to build.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>buildLuaWrapper</entry> -->
+  <!--         <entry>Build Lua wrapper for the C++ interface library (needs buildInterfaces).</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>buildNewParser</entry> -->
+  <!--         <entry>Enable building new parser. Requires Flex/Bison.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>buildOSXGUI</entry> -->
+  <!--         <entry>Build the basic GUI frontend. OSX only.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>buildPDClass</entry> -->
+  <!--         <entry>Build csoundapi~ PD class. Needs m_pd.h in the standard places.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>buildPythonOpcodes</entry> -->
+  <!--         <entry>Build Python opcodes</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>buildPythonWrapper</entry> -->
+  <!--         <entry>Build Python wrapper for the C++ interface library (needs buildInterfaces).</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>buildRelease</entry> -->
+  <!--         <entry>Build for release. Implies noDebug.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>buildSDFT</entry> -->
+  <!--         <entry>Build SDFT code. 1 by default. Set to 0 to avoid.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>buildStkOpcodes</entry> -->
+  <!--         <entry>build Stk Opcodes. Requires STK source code.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>buildUtilities</entry> -->
+  <!--         <entry>Build stand-alone executables for utilities that can also be used with -U.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>buildVirtual</entry> -->
+  <!--         <entry>Build Virtual MIDI keyboard. Requires FLTK 1.1.7 or later headers and libs.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>buildvst4cs</entry> -->
+  <!--         <entry>Build vst4cs plugins. Requires Steinberg VST headers.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>buildWinsound</entry> -->
+  <!--         <entry>Build Winsound frontend. Requires FLTK headers and libs.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>buildBeats</entry> -->
+  <!--         <entry>Build csbeats score processor.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>bufferoverflowu</entry> -->
+  <!--         <entry>Set to 1 to use the Windows buffer overflow library, required if you use MinGW to link with MSVC-built libraries.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>dynamicCsoundLibrary</entry> -->
+  <!--         <entry>Build dynamic Csound library instead of libcsound.a.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>gcc3opt</entry> -->
+  <!--         <entry>Enable gcc 3.3.x or later optimizations for the specified CPU architecture (e.g. pentium3); implies noDebug.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>gcc4opt</entry> -->
+  <!--         <entry>Enable gcc 4.0 or later optimizations for the specified CPU architecture (e.g. pentium3); implies noDebug.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>generateTags</entry> -->
+  <!--         <entry>Generate TAGS.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>generatePdf</entry> -->
+  <!--         <entry>Generate PDF documentation.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>install</entry> -->
+  <!--         <entry>Enables the Install targets.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>Lib64</entry> -->
+  <!--         <entry>Build for lib64 rather than lib.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>noDebug</entry> -->
+  <!--         <entry>Build without debugging information.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>noFLTKThreads</entry> -->
+  <!--         <entry>Disable use of a separate thread for FLTK widgets.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>useAltivec</entry> -->
+  <!--         <entry>On OSX use the gcc AltiVec optmisation flags.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>useALSA</entry> -->
+  <!--         <entry>ALSA for real-time audio and MIDI input and output.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>useCoreAudio</entry> -->
+  <!--         <entry>use CoreAudio for real-time audio input and output.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>useDouble</entry> -->
+  <!--         <entry>Use double-precision floating point for audio samples.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>useFLTK</entry> -->
+  <!--         <entry>Use FLTK for graphs and widget opcodes.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>useGettext</entry> -->
+  <!--         <entry>Use the GNU internationalisation/localisation scheme</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>useIpMIDI</entry> -->
+  <!--         <entry>Build for use as a network synth.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>useGprof</entry> -->
+  <!--         <entry>Build with profiling information (-pg).</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>usePortAudio</entry> -->
+  <!--         <entry>Use PortAudio for real-time audio input and output.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>usePortMIDI</entry> -->
+  <!--         <entry>Build PortMidi plugin for real time MIDI input and output.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>useJack</entry> -->
+  <!--         <entry>Used if you compiled PortAudio to use Jack; also builds Jack plugin.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>useLrint</entry> -->
+  <!--         <entry>Use lrint() and lrintf() for converting floating point values to integers.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>useOSC</entry> -->
+  <!--         <entry>For OSC support.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>useUDP</entry> -->
+  <!--         <entry>For UDP support. 1 by default. Set to 0 to avoid.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>withICL</entry> -->
+  <!--         <entry>Build with the Intel C++ Compiler (also requires Microsoft Visual C++), Set to 0 to build with MinGW. Windows only.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>withMSVC</entry> -->
+  <!--         <entry>Build with Microsoft Visual C++, or set to 0 to build with MinGW. Windows only.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>withSunStudio</entry> -->
+  <!--         <entry>On Solaris, set to 1 to build with Sun Studio, or set to 0 to build with gcc.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>NewParserDebug</entry> -->
+  <!--         <entry>Enable tracing of new parser</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>Word64</entry> -->
+  <!--         <entry>Build for 64bit computer.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>pythonVersion</entry> -->
+  <!--         <entry>Set to the Python version to be used.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>includeSerial</entry> -->
+  <!--         <entry>Set to 1 if compiling serial code.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>buildcatalog</entry> -->
+  <!--         <entry>Set to 1 if building opcode/library catalogue.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>includeWii</entry> -->
+  <!--         <entry>Set to 12 or 13 if using libwiiuse v0.12 or v0.13.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>useOpenMP</entry> -->
+  <!--         <entry>Set to 1 to use OpenMP for parallel performance.</entry> -->
+  <!--       </row> -->
+  <!--       <row> -->
+  <!--         <entry>buildMultiCore</entry> -->
+  <!--         <entry>building for multicore sytem (requires new parser).</entry> -->
+  <!--       </row> -->
+  <!--     </tbody> -->
+  <!--   </tgroup> -->
+  <!-- </table> -->
 </chapter>
 
