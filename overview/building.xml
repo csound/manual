@@ -2,9 +2,9 @@
   <title>Building Csound</title>
 
   <para>
-    Csound has become a complex project and can involve many dependencies. Unless you are a Csound developer or need to develop Csound plugins, 
+    Csound has become a complex project and can involve many dependencies. Unless you are a Csound developer or need to develop Csound plugins,
 you should try to use one of the precompiled distributions from <ulink
-      url="http://www.sourceforge.net/projects/csound">http://www.sourceforge.net/projects/csound</ulink>. However, 
+      url="http://www.sourceforge.net/projects/csound">http://www.sourceforge.net/projects/csound</ulink>. However,
 building from source is probably the best option on GNU/Linux.
   </para>
   <para>
@@ -46,7 +46,7 @@ This will checkout a read-only (meaning, you can not commit back to the central 
   <para>
     These are the minimum requirements for a build, but csound has
     many optional components which enhance functionality and add
-    opcodes which may require additional libraries. 
+    opcodes which may require additional libraries.
   </para>
   <bridgehead>Optional configurations (ALL platforms)</bridgehead>
 
@@ -61,8 +61,10 @@ This will checkout a read-only (meaning, you can not commit back to the central 
         note that stable version 18 will not work. Csound can also use
         several platform specific audio APIs like ALSA, JACK,
         CoreAudio and the Windows multimedia library, see each
-        platform notes for details. 
-      </simpara>
+        platform notes for details. On Windows, you can use the pre-built PortAudio
+        from <ulink
+        url="https://github.com/adfernandes/precompiled-portaudio-windows"></ulink>
+      </simpara>https://github.com/adfernandes/precompiled-portaudio-windows
     </listitem>
     <listitem>
       <simpara>
@@ -84,7 +86,7 @@ This will checkout a read-only (meaning, you can not commit back to the central 
       <simpara>
         Install Python from <ulink
         url="http://www.python.org">www.python.org</ulink>. In most
-        cases it is best to install the most recent stable version.
+        cases it is best to install the most recent 2.7 version.
       </simpara>
     </listitem>
     <listitem>
@@ -93,26 +95,26 @@ This will checkout a read-only (meaning, you can not commit back to the central 
         template libraries for random numbers and linear algebra, from
         <ulink
             url="http://www.boost.org">http://www.boost.org</ulink>. <emphasis>CsoundAC</emphasis>
-        requires at least version 1.32.1. 
+        requires at least version 1.32.1.
       </simpara>
     </listitem>
     <listitem>
       <simpara>The fluid opcodes require the Fluidsynth library from
       <ulink
-          url="http://savannah.nongnu.org/download/fluid">http://savannah.nongnu.org/download/fluid</ulink>. 
+          url="http://savannah.nongnu.org/download/fluid">http://savannah.nongnu.org/download/fluid</ulink>.
       </simpara>
     </listitem>
     <listitem>
       <simpara>
-        The OSC opcodes require the latest version of the liblo library from 
+        The OSC opcodes require the latest version of the liblo library from
         <ulink
-            url="http://plugin.org.uk/liblo">http://plugin.org.uk/liblo</ulink>.  
+            url="http://plugin.org.uk/liblo">http://plugin.org.uk/liblo</ulink>.
         On Windows, liblo requires a Windows version of the POSIX
-        thread library (pthreads) which is available from  
+        thread library (pthreads) which is available from
         <ulink
             url="http://sourceware.org/pthreads-win32">
-          http://sourceware.org/pthreads-win32</ulink>;  
-        copy libpthreadGC2.a to libpthread.a. 
+          http://sourceware.org/pthreads-win32</ulink>;
+        copy libpthreadGC2.a to libpthread.a.
         You may also need the latest version of autoconf from MinGW.
       </simpara>
     </listitem>
@@ -121,7 +123,7 @@ This will checkout a read-only (meaning, you can not commit back to the central 
         The STK opcodes require STK source code from <ulink
         url="http://ccrma.stanford.edu/software/stk">
         http://ccrma.stanford.edu/software/stk</ulink>,
-        copied into <filename>csound6/Opcodes/stk</filename>. 
+        copied into <filename>csound6/Opcodes/stk</filename>.
       </simpara>
     </listitem>
     <listitem>
@@ -133,19 +135,27 @@ This will checkout a read-only (meaning, you can not commit back to the central 
 
   <bridgehead>Windows</bridgehead>
   <para>The following is needed to build on Windows (more complete
-  build instructions for Windows may be found in the csound-build.tex
-  document (csound-build.pdf)):</para> 
+  build instructions for Windows may be found in <filename>How_to_Build_Csound_on_Windows.doc</filename>):</para>
   <itemizedlist>
     <listitem>
       <simpara>
-        Install a compiler like gcc or Microsoft Visual Studio (there
-        is also support for the Intel C++ compiler). If using MinGW
-        (gcc), install all of the current release of MinGW  using the
-        Automated MinGW Installer from <ulink
-        url="http://www.mingw.org">www.mingw.org</ulink>, for example
-        into <literal>c:/mingw</literal>. This should install gcc,
-        g++, GNU binutils, the MinGW runtime, and the win32 API. Then
-        install the current release of MSys. 
+        Install a compiler like gcc or Microsoft Visual Studio. If using MinGW
+        (gcc), download the MinGW-build installer for 32-bit architecture, Posix threads, dwarf2 exception handling from <ulink
+        url="http://sourceforge.net/projects/mingwbuilds/files/latest/download?source=files"/>
+        and run it. Install to a directory such as <filename>D:/mingw32-4.8.1</filename>.
+      </simpara>
+      <simpara>
+        In addition to the compiler, building Csound and its dependencies
+        requires some other tools. Install MSys from <ulink
+        url="http://sourceforge.net/projects/mingwbuilds/files/external-binary-packages/msys%2B7za%2Bwget%2Bsvn%2Bgit%2Bmercurial%2Bcvs-rev13.7z/download">
+        http://sourceforge.net/projects/mingwbuilds/files/external-binary-packages/msys%2B7za%2Bwget%2Bsvn%2Bgit%2Bmercurial%2Bcvs-rev13.7z/download</ulink>.
+        This includes bison, flex, autotools and some other goodies. Edit the MSys <filename>etc/fstab</filename> file to map the MinGW directory to <filename>/mingw</filename>.
+      </simpara>
+      <simpara>
+        Options for the MinGW C compiler should be <literal>-g -O2 -fopenmp -march=nocona -mstackrealign -DNDEBUG -I/usr/local/include</literal>.
+      </simpara>
+      <simpara>
+        Options for the MinGW C++ compiler should be <literal>-g -O2 -std=gnu++11 -fopenmp -march=nocona -mstackrealign -DNDEBUG -I/usr/local/include</literal>.
       </simpara>
       <!-- <simpara> -->
       <!--   On Windows you can use Microsoft Visual C++ (except for -->
@@ -170,7 +180,7 @@ This will checkout a read-only (meaning, you can not commit back to the central 
       <simpara>
         Real-time audio and MIDI can use the Windows multimedia
         library. This module will be built automatically if the
-        headers are found. 
+        headers are found.
       </simpara>
     </listitem>
     <listitem>
@@ -190,7 +200,7 @@ This will checkout a read-only (meaning, you can not commit back to the central 
         url="http://www.jackaudio.org/">www.jackaudio.org/</ulink>) in
         addition to PortAudio. Distributions usually provide the
         appropriate dev packages for these systems through their
-        repositories. 
+        repositories.
       </simpara>
     </listitem>
     <listitem>
