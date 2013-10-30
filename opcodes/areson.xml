@@ -11,26 +11,41 @@
   <refnamediv>
     <refname>areson</refname>
     <refpurpose>
-      A notch filter whose transfer functions are the complements of the reson opcode.
-          </refpurpose>
+      A notch filter whose transfer functions are the complements of
+      the reson opcode. 
+    </refpurpose>
   </refnamediv>
  
   <refsect1>
     <title>Description</title>
     <para>
-      A notch filter whose transfer functions are the complements of the reson opcode.
+      A notch filter whose transfer functions are the complements of
+      the reson opcode. 
     </para>
   </refsect1>
  
   <refsect1>
     <title>Syntax</title>
     <synopsis>ares <command>areson</command> asig, kcf, kbw [, iscl] [, iskip]</synopsis>
+    <synopsis>ares <command>areson</command> asig, acf, kbw [, iscl] [, iskip]</synopsis>
+    <synopsis>ares <command>areson</command> asig, kcf, abw [, iscl] [, iskip]</synopsis>
+    <synopsis>ares <command>areson</command> asig, acf, abw [, iscl] [, iskip]</synopsis>
   </refsect1>
  
   <refsect1>
     <title>Initialization</title>
     <para>
-      <emphasis>iscl</emphasis> (optional, default=0) -- coded scaling factor for resonators. A value of 1 signifies a peak response factor of 1, i.e. all frequencies other than kcf are attenuated in accordance with the (normalized) response curve. A value of 2 raises the response factor so that its overall RMS value equals 1. (This intended equalization of input and output power assumes all frequencies are physically present; hence it is most applicable to white noise.) A zero value signifies no scaling of the signal, leaving that to some later adjustment (see <link linkend="balance"><citetitle>balance</citetitle></link>). The default value is 0.
+      <emphasis>iscl</emphasis> (optional, default=0) -- coded scaling
+      factor for resonators. A value of 1 signifies a peak response
+      factor of 1, i.e. all frequencies other than kcf/acf are attenuated
+      in accordance with the (normalized) response curve. A value of 2
+      raises the response factor so that its overall RMS value equals
+      1. (This intended equalization of input and output power assumes
+      all frequencies are physically present; hence it is most
+      applicable to white noise.) A zero value signifies no scaling of
+      the signal, leaving that to some later adjustment (see <link
+      linkend="balance"><citetitle>balance</citetitle></link>). The
+      default value is 0. 
     </para>
 
     <para>
@@ -49,19 +64,41 @@
     </para>
 
     <para>
-      <emphasis>kcf</emphasis> -- the center frequency of the filter, or frequency position of the peak response.
+      <emphasis>kcf</emphasis>/<emphasis>acf</emphasis>  -- the center
+      frequency of the filter, or frequency position of the peak
+      response. 
     </para>
 
     <para>
-      <emphasis>kbw</emphasis> -- bandwidth of the filter (the Hz difference between the upper and lower half-power points).
+      <emphasis>kbw</emphasis>/<emphasis>abw</emphasis> -- bandwidth
+      of the filter (the Hz difference between the upper and lower
+      half-power points). 
     </para>
 
     <para>
-      <emphasis>areson</emphasis> is a filter whose transfer functions is the complement of <link linkend="reson"><citetitle>reson</citetitle></link>. Thus <emphasis>areson</emphasis> is a notch filter whose transfer functions represents the <quote>filtered out</quote> aspects of their complements. However, power scaling is not normalized in <emphasis>areson</emphasis> but remains the true complement of the corresponding unit. Thus an audio signal, filtered by parallel matching <emphasis>reson</emphasis> and <emphasis>areson</emphasis> units, would under addition simply reconstruct the original spectrum. 
+      <emphasis>areson</emphasis> is a filter whose transfer functions
+      is the complement of <link
+      linkend="reson"><citetitle>reson</citetitle></link>. Thus
+      <emphasis>areson</emphasis> is a notch filter whose transfer
+      functions represents the <quote>filtered out</quote> aspects of
+      their complements. However, power scaling is not normalized in
+      <emphasis>areson</emphasis> but remains the true complement of
+      the corresponding unit. Thus an audio signal, filtered by
+      parallel matching <emphasis>reson</emphasis> and
+      <emphasis>areson</emphasis> units, would under addition simply
+      reconstruct the original spectrum.
     </para>
 
     <para>
-      This property is particularly useful for controlled mixing of different sources (see <link linkend="lpreson"><citetitle>lpreson</citetitle></link>). Complex response curves such as those with multiple peaks can be obtained by using a bank of suitable filters in series. (The resultant response is the product of the component responses.) In such cases, the combined attenuation may result in a serious loss of signal power, but this can be regained by the use of <link linkend="balance"><citetitle>balance</citetitle></link>.
+      This property is particularly useful for controlled mixing of
+      different sources (see <link
+      linkend="lpreson"><citetitle>lpreson</citetitle></link>). Complex
+      response curves such as those with multiple peaks can be
+      obtained by using a bank of suitable filters in series. (The
+      resultant response is the product of the component responses.)
+      In such cases, the combined attenuation may result in a serious
+      loss of signal power, but this can be regained by the use of
+      <link linkend="balance"><citetitle>balance</citetitle></link>.
     </para>
   </refsect1>
 
@@ -72,7 +109,6 @@
 
       <example>
         <title>Example of the areson opcode.</title>
-
         
 
         <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
@@ -94,5 +130,11 @@
       <link linkend="tone"><citetitle>tone</citetitle></link>, 
       <link linkend="tonek"><citetitle>tonek</citetitle></link>
     </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Audio rate parameters introduced in version 6.02</para>
+    <para>October 2013.</para>
   </refsect1>
 </refentry>
