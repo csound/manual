@@ -18,8 +18,8 @@ gamix <emphasis role="opc">init</emphasis> 0
 
 <emphasis role="oblock">instr</emphasis> 1 
 
-kcps    <emphasis role="opc">expon</emphasis> p4, p3, p5
-asig	<emphasis role="opc">vco2</emphasis>  0.6, kcps
+acps    <emphasis role="opc">expon</emphasis> p4, p3, p5
+asig	<emphasis role="opc">vco</emphasis>  0.6, acps, 1
 	<emphasis role="opc">outs</emphasis>  asig, asig 
 
 gamix <emphasis role="op">=</emphasis> gamix <emphasis role="op">+</emphasis> asig 
@@ -28,10 +28,11 @@ gamix <emphasis role="op">=</emphasis> gamix <emphasis role="op">+</emphasis> as
 
 <emphasis role="oblock">instr</emphasis> 99 
 
-krvt <emphasis role="op">=</emphasis>  3.5
+arvt1 <emphasis role="opc">line</emphasis> 3.5<emphasis role="op">*</emphasis>1.5, p3, 6
+arvt2 <emphasis role="opc">line</emphasis> 3.5, p3, 6
 ilpt <emphasis role="op">=</emphasis>  0.1
-aleft	<emphasis role="opc">alpass</emphasis> gamix, krvt<emphasis role="op">*</emphasis>1.5, ilpt
-aright	<emphasis role="opc">alpass</emphasis> gamix, krvt, ilpt<emphasis role="op">*</emphasis>2
+aleft	<emphasis role="opc">alpass</emphasis> gamix, arvt1, ilpt
+aright	<emphasis role="opc">alpass</emphasis> gamix, arvt2, ilpt<emphasis role="op">*</emphasis>2
 	<emphasis role="opc">outs</emphasis>   aleft, aright
 
 gamix <emphasis role="op">=</emphasis> 0	<emphasis role="comment">; clear mixer</emphasis>
@@ -40,7 +41,7 @@ gamix <emphasis role="op">=</emphasis> 0	<emphasis role="comment">; clear mixer<
 
 <emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
 <emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
-
+<emphasis role="stamnt">f</emphasis>1 0 4096 10 1
 <emphasis role="stamnt">i</emphasis> 1 0 3 20 2000
 
 <emphasis role="stamnt">i</emphasis> 99 0 8
