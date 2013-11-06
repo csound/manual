@@ -1,0 +1,120 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+-odac -d -m128
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="comment">;example by joachim heintz</emphasis>
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis> <emphasis role="op">=</emphasis> 1
+
+giSine    <emphasis role="ohdr">ftgen</emphasis>     0, 0, 1024, 10, 1
+gSfile    <emphasis role="op">=</emphasis>         "fox.ats"
+giNumParts <emphasis role="opc">ATSinfo</emphasis>  gSfile, 3 <emphasis role="comment">;overall number of partials</emphasis>
+giDur     <emphasis role="opc">ATSinfo</emphasis>   gSfile, 7 <emphasis role="comment">;duration </emphasis>
+          <emphasis role="ohdr">seed</emphasis>      0
+
+
+  <emphasis role="oblock">instr</emphasis> ReadOnePartial
+iPartial  <emphasis role="op">=</emphasis>         p4
+p3        <emphasis role="op">=</emphasis>         giDur
+ktime     <emphasis role="opc">line</emphasis>      0, giDur, giDur
+          <emphasis role="opc">prints</emphasis>    "Resynthesizing partial number <emphasis role="op">%</emphasis>d.\n", iPartial
+kFq,kAmp  <emphasis role="opc">ATSread</emphasis>   ktime, gSfile, iPartial
+kAmp      <emphasis role="opc">port</emphasis>      kAmp, .1 <emphasis role="comment">;smooth amplitudes - still not satisfactoring</emphasis>
+aOut      <emphasis role="opc">poscil</emphasis>    kAmp, kFq, giSine
+aOut      <emphasis role="opc">linen</emphasis>     aOut, 0, p3, .01 <emphasis role="comment">;anti-click</emphasis>
+          <emphasis role="opc">outs</emphasis>      aOut<emphasis role="op">*</emphasis>10, aOut<emphasis role="op">*</emphasis>10
+
+<emphasis role="comment">;start next instr: normal speed, three loops, pause between loops one second</emphasis>
+          <emphasis role="opc">event_i</emphasis>   "i", "MasterRand", giDur<emphasis role="op">+</emphasis>3, 1, 1, 3, 2
+  <emphasis role="oblock">endin</emphasis>
+
+  <emphasis role="oblock">instr</emphasis> MasterRand
+  <emphasis role="comment">;random selections of 10 partials per second, overlapping</emphasis>
+iSpeed    <emphasis role="op">=</emphasis>         p4 <emphasis role="comment">;speed of reading / playing</emphasis>
+iNumLoops <emphasis role="op">=</emphasis>         p5 <emphasis role="comment">;number of loops</emphasis>
+iPause    <emphasis role="op">=</emphasis>         p6 <emphasis role="comment">;length of pause between loops</emphasis>
+          <emphasis role="opc">prints</emphasis>    "Resynthesizing <emphasis role="opc">random</emphasis> partials.\n"
+p3        <emphasis role="op">=</emphasis>         (giDur<emphasis role="op">/</emphasis>iSpeed<emphasis role="op">+</emphasis>iPause) <emphasis role="op">*</emphasis> iNumLoops
+<emphasis role="comment">;start next instr: half speed, three loops, three seonds pause between loops</emphasis>
+          <emphasis role="opc">event_i</emphasis>   "i", "MasterArp", p3<emphasis role="op">+</emphasis>3, 1, .5, 3, 3
+<emphasis role="comment">;loop over duration plus pause</emphasis>
+<emphasis role="olabel">loop</emphasis><emphasis role="op">:</emphasis>
+          <emphasis role="octrl">timout</emphasis>    0, giDur<emphasis role="op">/</emphasis>iSpeed<emphasis role="op">+</emphasis>iPause, <emphasis role="olabel">play</emphasis>
+          <emphasis role="opc">reinit</emphasis>    <emphasis role="olabel">loop</emphasis>
+<emphasis role="olabel">play</emphasis><emphasis role="op">:</emphasis>
+gkTime    <emphasis role="opc">line</emphasis>      0, giDur<emphasis role="op">/</emphasis>iSpeed, giDur <emphasis role="comment">;start time from 0 in each loop</emphasis>
+kTrig     <emphasis role="opc">metro</emphasis>     10 <emphasis role="comment">;10 new partials per second</emphasis>
+ <emphasis role="comment">;call subinstrument if trigger and no pause</emphasis>
+ <emphasis role="octrl">if</emphasis> kTrig <emphasis role="op">==</emphasis> 1 <emphasis role="op">&amp;&amp;</emphasis> gkTime <emphasis role="op">&lt;</emphasis> giDur then
+kPart     <emphasis role="opc">random</emphasis>    1, giNumParts<emphasis role="op">+</emphasis>.999
+          <emphasis role="opc">event</emphasis>     "i", "PlayRand", 0, 1, <emphasis role="opc">int</emphasis>(kPart)
+ <emphasis role="octrl">endif</emphasis>
+
+  <emphasis role="oblock">endin</emphasis>
+  
+  <emphasis role="oblock">instr</emphasis> MasterArp
+  <emphasis role="comment">;argeggio-like reading and playing of partials </emphasis>
+iSpeed    <emphasis role="op">=</emphasis>         p4 <emphasis role="comment">;speed of reading / playing</emphasis>
+iNumLoops <emphasis role="op">=</emphasis>         p5 <emphasis role="comment">;number of loops</emphasis>
+iPause    <emphasis role="op">=</emphasis>         p6 <emphasis role="comment">;length of pause between loops</emphasis>
+          <emphasis role="opc">prints</emphasis>    "Arpeggiating partials.\n"
+p3        <emphasis role="op">=</emphasis>         (giDur<emphasis role="op">/</emphasis>iSpeed<emphasis role="op">+</emphasis>iPause) <emphasis role="op">*</emphasis> iNumLoops
+<emphasis role="olabel">loop</emphasis><emphasis role="op">:</emphasis>
+          <emphasis role="octrl">timout</emphasis>    0, giDur<emphasis role="op">/</emphasis>iSpeed<emphasis role="op">+</emphasis>iPause, <emphasis role="olabel">play</emphasis>
+          <emphasis role="opc">reinit</emphasis>    <emphasis role="olabel">loop</emphasis>
+<emphasis role="olabel">play</emphasis><emphasis role="op">:</emphasis>
+gkTime    <emphasis role="opc">line</emphasis>      0, giDur<emphasis role="op">/</emphasis>iSpeed, giDur
+kArp      <emphasis role="opc">linseg</emphasis>    1, (giDur<emphasis role="op">/</emphasis>iSpeed)<emphasis role="op">/</emphasis>2, giNumParts, (giDur<emphasis role="op">/</emphasis>iSpeed)<emphasis role="op">/</emphasis>2, 1 <emphasis role="comment">;arp up and down</emphasis>
+kTrig     <emphasis role="opc">metro</emphasis>     10 <emphasis role="comment">;10 new partials per second</emphasis>
+ <emphasis role="octrl">if</emphasis> kTrig <emphasis role="op">==</emphasis> 1 <emphasis role="op">&amp;&amp;</emphasis> gkTime <emphasis role="op">&lt;</emphasis> giDur then
+          <emphasis role="opc">event</emphasis>     "i", "PlayArp", 0, 5, <emphasis role="opc">int</emphasis>(kArp)
+ <emphasis role="octrl">endif</emphasis>
+
+<emphasis role="comment">;exit csound when finished</emphasis>
+          <emphasis role="opc">event_i</emphasis>   "i", "End", p3<emphasis role="op">+</emphasis>5, 1
+  <emphasis role="oblock">endin</emphasis>
+
+  <emphasis role="oblock">instr</emphasis> PlayRand
+iPartial  <emphasis role="op">=</emphasis>         p4
+kFq,kAmp  <emphasis role="opc">ATSread</emphasis>   gkTime, gSfile, iPartial
+kamp      <emphasis role="opc">port</emphasis>      kAmp, .15 <emphasis role="comment">;smooth amplitudes</emphasis>
+aOut      <emphasis role="opc">poscil</emphasis>    kAmp, kFq, giSine
+aOut      <emphasis role="opc">linen</emphasis>     aOut, .01, p3, .01
+          <emphasis role="opc">outs</emphasis>      aOut, aOut
+  <emphasis role="oblock">endin</emphasis>
+
+  <emphasis role="oblock">instr</emphasis> PlayArp
+kCount    <emphasis role="opc">init</emphasis>      1 <emphasis role="comment">;k-cycle</emphasis>
+iPartial  <emphasis role="op">=</emphasis>         p4
+kFq,kAmp  <emphasis role="opc">ATSread</emphasis>   gkTime, gSfile, iPartial
+ <emphasis role="octrl">if</emphasis> kCount <emphasis role="op">==</emphasis> 1 then <emphasis role="comment">;get freq from first k-cycle</emphasis>
+kModFq    <emphasis role="op">=</emphasis>         kFq
+  <emphasis role="comment">;avoid to go with 0 Hz as this blocks the mode filter</emphasis>
+  <emphasis role="octrl">if</emphasis> kModFq <emphasis role="op">==</emphasis> 0 then
+          <emphasis role="opc">turnoff</emphasis>
+  <emphasis role="octrl">endif</emphasis>
+ <emphasis role="octrl">endif</emphasis>
+iVol      <emphasis role="opc">random</emphasis>    <emphasis role="op">-</emphasis>42, <emphasis role="op">-</emphasis>12 <emphasis role="comment">;db</emphasis>
+iOffset   <emphasis role="opc">random</emphasis>    .01, .1 <emphasis role="comment">;no too regularily ...</emphasis>
+aImp      <emphasis role="opc">mpulse</emphasis>    <emphasis role="opc">ampdb</emphasis>(iVol), p3, iOffset
+iQ        <emphasis role="opc">random</emphasis>    500, 5000
+aOut      <emphasis role="opc">mode</emphasis>      aImp, kModFq, iQ
+aOut      <emphasis role="opc">linen</emphasis>     aOut, 0, p3, p3<emphasis role="op">/</emphasis>3
+          <emphasis role="opc">outs</emphasis>      aOut, aOut
+kCount    <emphasis role="op">=</emphasis>         2
+  <emphasis role="oblock">endin</emphasis>
+
+  <emphasis role="oblock">instr</emphasis> End
+          <emphasis role="opc">exitnow</emphasis>
+  <emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">i</emphasis> "ReadOnePart<emphasis role="stamnt">i</emphasis>al" 0 1 10
+<emphasis role="stamnt">e</emphasis> 999
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

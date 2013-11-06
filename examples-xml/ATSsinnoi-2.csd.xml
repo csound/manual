@@ -1,0 +1,81 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+-odac -d -m128
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="comment">;example by joachim heintz</emphasis>
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis> <emphasis role="op">=</emphasis> 1
+
+giSine    <emphasis role="ohdr">ftgen</emphasis>     0, 0, 1024, 10, 1
+gSfile    <emphasis role="op">=</emphasis>         "fox.ats"
+giNumParts <emphasis role="opc">ATSinfo</emphasis>  gSfile, 3 <emphasis role="comment">;overall number of partials</emphasis>
+giDur     <emphasis role="opc">ATSinfo</emphasis>   gSfile, 7 <emphasis role="comment">;duration </emphasis>
+          <emphasis role="ohdr">seed</emphasis>      0
+          
+
+  <emphasis role="oblock">instr</emphasis> PlayList
+<emphasis role="opc">event_i</emphasis> "i", "PlayAll", 0, 1, 1, 0, .5 <emphasis role="comment">;sine only, half speed</emphasis>
+<emphasis role="opc">event_i</emphasis> "i", "PlayAll", giDur<emphasis role="op">*</emphasis>2<emphasis role="op">+</emphasis>1, 1, 0, 1, .5 <emphasis role="comment">;noise only</emphasis>
+<emphasis role="opc">event_i</emphasis> "i", "PlayAll", giDur<emphasis role="op">*</emphasis>4<emphasis role="op">+</emphasis>2, 1, .5, .5, .5 <emphasis role="comment">;half sine, half noise</emphasis>
+  <emphasis role="oblock">endin</emphasis>
+
+  <emphasis role="oblock">instr</emphasis> PlayAll
+iSinAmnt  <emphasis role="op">=</emphasis>         p4 <emphasis role="comment">;sinee amount (0-1)</emphasis>
+iNzAmnt   <emphasis role="op">=</emphasis>         p5 <emphasis role="comment">;noise amount (0-1)</emphasis>
+iSpeed    <emphasis role="op">=</emphasis>         p6 <emphasis role="comment">;speed</emphasis>
+p3        <emphasis role="op">=</emphasis>         giDur<emphasis role="op">/</emphasis>iSpeed
+ktime     <emphasis role="opc">line</emphasis>      0, giDur<emphasis role="op">/</emphasis>iSpeed, giDur
+          <emphasis role="opc">prints</emphasis>    "Resynthesizing all <emphasis role="opc">partials</emphasis> with <emphasis role="opc">tone</emphasis> <emphasis role="op">=</emphasis> <emphasis role="op">%</emphasis>.1f and <emphasis role="opc">noise</emphasis> <emphasis role="op">=</emphasis> <emphasis role="op">%</emphasis>.1f.\n", iSinAmnt, iNzAmnt
+aOut      <emphasis role="opc">ATSsinnoi</emphasis> ktime, iSinAmnt, iNzAmnt, 1, gSfile, giNumParts
+          <emphasis role="opc">outs</emphasis>      aOut, aOut
+  <emphasis role="oblock">endin</emphasis>
+
+  <emphasis role="oblock">instr</emphasis> PlayBand
+iOffset   <emphasis role="op">=</emphasis>         p4 <emphasis role="comment">;offset in partials</emphasis>
+iSpeed    <emphasis role="op">=</emphasis>         p5 <emphasis role="comment">;speed</emphasis>
+p3        <emphasis role="op">=</emphasis>         giDur<emphasis role="op">/</emphasis>iSpeed
+ktime     <emphasis role="opc">line</emphasis>      0, giDur<emphasis role="op">/</emphasis>iSpeed, giDur
+          <emphasis role="opc">prints</emphasis>    "Resynthesizing <emphasis role="opc">partials</emphasis> <emphasis role="op">%</emphasis>d to <emphasis role="op">%</emphasis>d with related noise.\n", iOffset<emphasis role="op">+</emphasis>1, iOffset<emphasis role="op">+</emphasis>10
+aOut      <emphasis role="opc">ATSsinnoi</emphasis> ktime, 1, 1, 1, gSfile, 10, iOffset, 1
+          <emphasis role="opc">outs</emphasis>      aOut, aOut
+<emphasis role="comment">;call itself again</emphasis>
+ <emphasis role="octrl">if</emphasis> iOffset <emphasis role="op">&lt;</emphasis> giNumParts <emphasis role="op">-</emphasis> 20 then
+          <emphasis role="opc">event_i</emphasis>   "i", "PlayBand", giDur<emphasis role="op">/</emphasis>iSpeed<emphasis role="op">+</emphasis>1, 1, iOffset<emphasis role="op">+</emphasis>10, iSpeed
+ <emphasis role="octrl">endif</emphasis>
+  <emphasis role="oblock">endin</emphasis>
+
+  <emphasis role="oblock">instr</emphasis> PlayWeighted
+  <emphasis role="comment">;sine amount, noise amount and speeed are varying</emphasis>
+kSinAmnt  <emphasis role="opc">randomi</emphasis>   0, 1, 1, 3
+kNzAmnt   <emphasis role="op">=</emphasis>         1<emphasis role="op">-</emphasis>kSinAmnt
+kSpeed    <emphasis role="opc">randomi</emphasis>   .01, .3, 1, 3
+async     <emphasis role="opc">init</emphasis>      0
+atime, aEnd <emphasis role="opc">syncphasor</emphasis> kSpeed<emphasis role="op">/</emphasis>giDur, async
+kTrig     <emphasis role="opc">metro</emphasis>     100
+kEnd      <emphasis role="opc">max_k</emphasis>     aEnd, kTrig, 1 <emphasis role="comment">;1 if phasor signal crosses zero</emphasis>
+ktime     <emphasis role="opc">downsamp</emphasis>  atime
+aOut      <emphasis role="opc">ATSsinnoi</emphasis> ktime<emphasis role="op">*</emphasis>giDur, kSinAmnt, kNzAmnt, 1, gSfile, giNumParts
+          <emphasis role="opc">outs</emphasis>      aOut, aOut
+  <emphasis role="comment">;exit if file is at the end </emphasis>
+  <emphasis role="octrl">if</emphasis> kEnd <emphasis role="op">==</emphasis> 1 then
+          <emphasis role="opc">event</emphasis>     "i", "End", 0, 1
+  <emphasis role="octrl">endif</emphasis>
+  <emphasis role="oblock">endin</emphasis>
+
+  <emphasis role="oblock">instr</emphasis> End
+          <emphasis role="opc">exitnow</emphasis>
+  <emphasis role="oblock">endin</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">i</emphasis> "PlayL<emphasis role="stamnt">i</emphasis>st" 0 1
+<emphasis role="stamnt">i</emphasis> "PlayBand" 20 1 0 .5
+<emphasis role="stamnt">i</emphasis> "PlayWe<emphasis role="stamnt">i</emphasis>ghted" 110 100
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>
