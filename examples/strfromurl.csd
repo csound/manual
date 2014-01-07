@@ -24,7 +24,7 @@ endin
 <CsScore>
 
 i 1 0 1
-i 2 + .
+i 2 1 1
 e
 </CsScore>
 </CsoundSynthesizer>
