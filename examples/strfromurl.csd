@@ -17,7 +17,7 @@ nchnls = 2
 
 instr 2
 
-Sfile strget "http://codemist.co.uk/jpff/test.in"
+Sfile strfromurl "http://codemist.co.uk/jpff/test.in"
   prints Sfile
 endin
 </CsInstruments>
