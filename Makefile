@@ -6,7 +6,7 @@
 #       on your system.
 # *************************************************************************
 BASENAME=Csound
-VERSION=6.01
+VERSION=6.02
 
 # export PATH=$PATH:/home/andres/bin/fop-0.20.5/
 # export JAVA_HOME=/usr/lib/jvm/java-6-sun/
@@ -584,8 +584,8 @@ htmlhelp-package:
 	mv /tmp/$(BASENAME)$(VERSION)_manual_winhelp_chm.zip ./
 
 src-package:
-	cvs -z3 -d:pserver:anonymous@csound.cvs.sourceforge.net:/cvsroot/csound export -rCsound-5_08 manual
-	tar -czf manual.tar.gz manual/
+	git clone git://git.code.sf.net/p/csound/manual6-git manual6
+	tar -czf manual_src.tgz manual6/
 
 text-package: clean $(TEXT_FILE)
 	mkdir -p /tmp/csound-$(VERSION)/manual

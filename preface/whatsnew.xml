@@ -1,5 +1,5 @@
 <section id="PrefaceWhatsNew"><title>What's new in Csound &csoundversion;</title>
-<!--     <bridgehead>New in Version 5.XX ()</bridgehead> --><!--  <para>
+<!--     <bridgehead>NRelease Notes for Csound 6.XX ()</bridgehead> --><!--  <para>
     <itemizedlist>
       <listitem>
         <para>New opcodes:
@@ -64,6 +64,319 @@
       </listitem>
     </itemizedlist>
   </para>-->
+<bridgehead>Release Notes for Csound 6.02</bridgehead>
+  <para>
+This new version has a large number of bug fixes (including clearing
+all general tickets on SourceForge). It also introduces some major new
+facilities such as use as a server, code to run Csound in a browser
+and a large generalisation of filter opcodes to have parameters
+changeable at audio rate.
+  </para>
+  <para>
+    <itemizedlist>
+      <listitem>
+        <para>New opcodes:
+          <itemizedlist>
+            <listitem>
+              <simpara><link linkend="instance"><citetitle>instance</citetitle></link>
+              opcode schedules a new instrument instance, storing the instance handle.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara><link linkend="kill"><citetitle>kill</citetitle></link>
+              opcode stops a given instrument instance.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara><link linkend="strfromurl"><citetitle>strfromurl</citetitle></link>
+              to set a string from a URL.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Orchestra:
+          <itemizedlist>
+            <listitem>
+              <simpara>If building supports it, a #include string can be a URL or a
+              file.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>A space is again permitted between a function name and the
+              opening bracket for all functions allowed in Csound5 (but not in
+              general).</simpara>
+            </listitem>
+            <listitem>
+              <simpara>The Csound command can start with an empty CSD in daemon mode
+              (--daemon): do not exit if CSD/orchestra is not
+              given, is empty or does not compile).</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Score:
+          <itemizedlist>
+            <listitem>
+              <simpara>If building supports it, a #include string can be a URL or a
+              file.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Modified Opcodes and Gens:
+          <itemizedlist>
+            <listitem>
+              <simpara>Many filters generalised to allow k- or a-rate parameters.  In
+              particular it includes these:
+              <informaltable frame="none">
+                <tgroup cols="2">
+                <tbody>
+                  <row>
+                    <entry>areson</entry>
+                    <entry>atonex</entry>
+                  </row>
+                  <row>
+                    <entry>butterworth filters</entry>
+                    <entry>fofilter</entry>
+                  </row>
+                  <row>
+                    <entry>lowres</entry>
+                    <entry>lowresx</entry>
+                  </row>
+                  <row>
+                    <entry>lpf18</entry>
+                    <entry>mode</entry>
+                  </row>
+                  <row>
+                    <entry>moogladder</entry>
+                    <entry>moogvcf</entry>
+                  </row>
+                  <row>
+                    <entry>reson</entry>
+                    <entry>resonr</entry>
+                  </row>
+                  <row>
+                    <entry>resonx</entry>
+                    <entry>resonz</entry>
+                  </row>
+                  <row>
+                    <entry>statevar</entry>
+                    <entry>tonex</entry>
+                  </row>
+                </tbody>
+                </tgroup>
+              </informaltable>
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>The maximum number of presets in sfont increased to 16384.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>cpsmidinn</emphasis> is now more accurate.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>max_k</emphasis> now behaves like the documentation.
+              There were caseswhen it gave strange results.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>The vst4cs opcodes have been re-factored. FLTK code has been encapsulated.
+              The build system has been updated for Csound 6.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>In <emphasis>alwayson</emphasis> opcode changes for better
+              handling of pfields, more reliable insert of an instrument instance
+              for repeating or re-started score sections.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>The signal flow graph opcodes have replaced OpenMP
+              multi-threading with pthreads, using one-time initialization
+              of static structures.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Frontends:
+          <itemizedlist>
+            <listitem>
+              <simpara>PNaCl is now supported as a platform, allowing Csound to run
+              under the Chrome browser in all enabled operating systems.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Bugs fixed:
+          <itemizedlist>
+            <listitem>
+              <simpara><emphasis>adsynt2</emphasis> opcode fixed.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>ftgentmp</emphasis> opcode fixed.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>dates</emphasis> opcode fixed.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>fixed a bug in <emphasis>pvsfilter</emphasis>.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>fixed stereo out in <emphasis>temposcal</emphasis> and
+              <emphasis>mincer</emphasis>.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>pan2</emphasis> opcode fixed.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>index overflow in <emphasis>randh</emphasis> and
+              <emphasis>randi</emphasis> fixed.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>A number of fixes to CsoundVST: initialization, score
+              handling, and MIDI driver initialization, so it now works for Csound 6.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>fixed <emphasis>pycalln</emphasis> for no inputs.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>fixed/revised setting and use of <emphasis>ksmps</emphasis>
+              and <emphasis>kr</emphasis> in UDOs.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>fixed problem in sending a score event from max to csound via
+              csound~ (Ticket #58).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>If itype in <emphasis>chn_k</emphasis> was set to 3 and
+              values are set less than 1, Csound6 used to give an INIT Error.
+              (Ticket #67).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>A number of reported seg faults have been dealt with.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>xtratim</emphasis> opcode was using incorrect
+              ekr value from csound instead of from instance; when used in
+              conjunction with <emphasis>setksmps</emphasis>, was causing notes
+              to have very long <emphasis>xtratim</emphasis> set and
+              thus notes were effectively not getting turned off
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>System changes:
+          <itemizedlist>
+            <listitem>
+              <simpara>A server mode is now available, accepting input via UDP (with
+              --port option).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>A longstanding bug in extract was detected and fixed. It does
+              suggest that this facility is little used!
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>The way the external score generator was coded is
+              substantially changed. In particular this should fix a very
+              strange bug in Windows.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Fixed crashing bug with invalue channel callback due to
+              wrong data object being pulled from csound host data.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Fixed bug in UDOs with no local ksmps where kcounter was
+              being used incorrectly.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Better checking in channels.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>(Experimental) If the environment variable CS_UDO_DIR is
+              set then any files in the directory that have an .udo extension
+              are automatically included at the start of the orchestra.
+              This facility needs review to see if it is what is required.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>(Experimental) There are new cuda GPGPU opcodes (source
+              only): cudasynth (3 versions for additive synthesis, additive
+              synthesis of fsigs and phase vocoder resynthesis) and cudanal
+              (a GPGPU version of pvsanal).
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Internal changes:
+          <itemizedlist>
+            <listitem>
+              <simpara>Many attempts at faster code.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Type inference and parsing still improving.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>iOS:
+          <itemizedlist>
+            <listitem>
+              <simpara>Fixed crash where no csoundSetHostImplementedMIDIIO is
+              used on iOS and no _RTMIDI value is set.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>OSX:
+          <itemizedlist>
+            <listitem>
+              <simpara>Fixed input device name for auhal.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+
 <bridgehead>Release Notes for Csound6</bridgehead>
 <para>
   Csound6 is a significant rewrite of much of the code.  In particular
@@ -73,7 +386,7 @@
 
 <para>
   There are new facilities, like sample accuracy and realtime mode,
-  described below. 
+  described below.
 </para>
 
 <para>
@@ -359,7 +672,7 @@
             </informalexample></simpara>
           </listitem>
           <listitem>
-            <simpara>new parsing/compilation functions 
+            <simpara>new parsing/compilation functions
             <informalexample>
               <programlisting>
         PUBLIC TREE *csoundParseOrc(CSOUND *csound, char *str);
@@ -540,7 +853,7 @@ int perf_myopcode(CSOUND *csound, MYOPCODE *p)
       <para>New Type System</para>
       <para>
         A new type system has been added to Csound6, and significant changes
-        have been made to the compiler. The previous system for handling types 
+        have been made to the compiler. The previous system for handling types
         involved depending on the first-letter of a variable's name every time
         it was used to determine type. This meant there was a lot of re-checking
         of types. Also, adding new types was difficult, as there was a lot of
@@ -549,7 +862,7 @@ int perf_myopcode(CSOUND *csound, MYOPCODE *p)
       <para>
         In Csound6, a separate system of types was added.  Types are defined as
         CS_TYPE's. The creation of variables from types and the initialisation
-        of memory has been encapsulated within the CS_TYPE's. This change 
+        of memory has been encapsulated within the CS_TYPE's. This change
         allows easier addition of new types, as well as generic calculations of
         memory pools, amongst other things.
       </para>
@@ -560,18 +873,18 @@ int perf_myopcode(CSOUND *csound, MYOPCODE *p)
         CS_VARIABLE having a reference to its CS_TYPE.  After first time
         definition within the pool, the type information is then looked up in
         consequent variable lookups, rather than re-calculated from the variable
-        name. This opens up possibilities for new variable naming and typing 
-        strategies, i.e. using "myVar:K" to denote a k-rate arg. This also 
-        opens up possibilities for user-defined types, such as 
+        name. This opens up possibilities for new variable naming and typing
+        strategies, i.e. using "myVar:K" to denote a k-rate arg. This also
+        opens up possibilities for user-defined types, such as
         "data myType kval, aval", then using "myVar:myType" to define a var
-        of that type. (The previous is speculative, and is not an active 
+        of that type. (The previous is speculative, and is not an active
         proposal at this time.)
       </para>
       <para>
-        The addition of the type system has formalised the static type system 
+        The addition of the type system has formalised the static type system
         that has existed in Csound prior to Csound6. It has, arguably, simplified
         the code-base in terms of type handling, as well as laid the ground work
-        for future type-related research to be integrated into Csound. 
+        for future type-related research to be integrated into Csound.
       </para>
     </listitem>
   </itemizedlist>
@@ -580,7 +893,7 @@ int perf_myopcode(CSOUND *csound, MYOPCODE *p)
 <bridgehead>New in Version 5.19 (2013 January 7)</bridgehead>
 <para>
   This is mainly a bug-fixing release but with a number of new opcodes and
-  enhanced features. 
+  enhanced features.
 </para>
 <para>
   <itemizedlist>
@@ -886,7 +1199,7 @@ int perf_myopcode(CSOUND *csound, MYOPCODE *p)
 <bridgehead>New in Version 5.18 (2012 August 29)</bridgehead>
 <para>
   This is mainly a bug-fixing release but with a number of new opcodes and
-  enhanced features. 
+  enhanced features.
 </para>
 <para>
   <itemizedlist>
@@ -961,7 +1274,7 @@ int perf_myopcode(CSOUND *csound, MYOPCODE *p)
               <link linkend="fout"><citetitle>fout</citetitle></link>
               and <link
               linkend="fin"><citetitle>fin</citetitle></link> use a
-              better buffering strategy, and so are 
+              better buffering strategy, and so are
               faster
               </simpara>
             </listitem>
@@ -992,7 +1305,7 @@ int perf_myopcode(CSOUND *csound, MYOPCODE *p)
               <simpara>
               <link
                   linkend="dates"><citetitle>dates</citetitle></link>
-              opcode could crash on 64bit architecture; this is fixed 
+              opcode could crash on 64bit architecture; this is fixed
               </simpara>
             </listitem>
             <listitem>
@@ -1033,7 +1346,7 @@ int perf_myopcode(CSOUND *csound, MYOPCODE *p)
               <link linkend="vbaplsinit"><citetitle>vbaplsinit</citetitle></link> can create more than one speaker layout which
               vbap/vbapg can use.  Also much better diagnostics on
               incorrect layouts.
-              </simpara> 
+              </simpara>
             </listitem>
           </itemizedlist>
         </para>
@@ -1067,7 +1380,7 @@ int perf_myopcode(CSOUND *csound, MYOPCODE *p)
   <bridgehead>New in Version 5.17 (March 2012)</bridgehead>
   <para>
   This is mainly a bug-fixing release with no major changes, but the
-  number of fixes warrants a release.  
+  number of fixes warrants a release.
   </para>
   <para>
     <itemizedlist>
@@ -1089,7 +1402,7 @@ int perf_myopcode(CSOUND *csound, MYOPCODE *p)
               <simpara>active now will report total number of active or allocated instruments if argument in zero</simpara>
             </listitem>
             <listitem>
-              <simpara>stsend and strecv the TCP socket opcodes reworked to a logical design </simpara> 
+              <simpara>stsend and strecv the TCP socket opcodes reworked to a logical design </simpara>
             </listitem>
                 <listitem>
               <simpara>DSSI system now will take up to 9 channels </simpara>
@@ -1142,7 +1455,7 @@ int perf_myopcode(CSOUND *csound, MYOPCODE *p)
               <simpara>Android code released </simpara>
             </listitem>
             <listitem>
-              <simpara>Changes to use of tmp files; now all are deleted at end of run (previously some were left) and the environment variable TMPDIR is used.   
+              <simpara>Changes to use of tmp files; now all are deleted at end of run (previously some were left) and the environment variable TMPDIR is used.
               </simpara>
             </listitem>
             <listitem>
@@ -1250,7 +1563,7 @@ int perf_myopcode(CSOUND *csound, MYOPCODE *p)
               <simpara>There was a fence post problem in tab opcode that could falsely report a reference out of range.</simpara>
             </listitem>
             <listitem>
-              <simpara>GEN15 mis-called gens 13 and 14 internally, using uninitialised values voice amplitude. Problem fixed.</simpara> 
+              <simpara>GEN15 mis-called gens 13 and 14 internally, using uninitialised values voice amplitude. Problem fixed.</simpara>
             </listitem>
                 <listitem>
               <simpara>fmbell now takes an optional argument to control the sustain time.</simpara>
@@ -1259,16 +1572,16 @@ int perf_myopcode(CSOUND *csound, MYOPCODE *p)
               <simpara>Change to pvsbasic for tab to table conversions.</simpara>
             </listitem>
             <listitem>
-              <simpara>poscil is now polymorphic, allowing k- or a-rate amplitude and frequency.</simpara> 
+              <simpara>poscil is now polymorphic, allowing k- or a-rate amplitude and frequency.</simpara>
             </listitem>
             <listitem>
-              <simpara>p() and i() changed when argument at k-rate.</simpara> 
+              <simpara>p() and i() changed when argument at k-rate.</simpara>
             </listitem>
             <listitem>
-              <simpara>gen49 deferred now works.</simpara> 
+              <simpara>gen49 deferred now works.</simpara>
             </listitem>
             <listitem>
-              <simpara>gen23 now available deferred.</simpara> 
+              <simpara>gen23 now available deferred.</simpara>
             </listitem>
           </itemizedlist>
         </para>
@@ -1427,7 +1740,7 @@ int perf_myopcode(CSOUND *csound, MYOPCODE *p)
               <simpara>socksend and sockrecv no longer uses MTFU check and work on Windows </simpara>
             </listitem>
             <listitem>
-              <simpara>mpulse changed so if next event is at negative time use the absolute value </simpara> 
+              <simpara>mpulse changed so if next event is at negative time use the absolute value </simpara>
             </listitem>
                 <listitem>
               <simpara>serial opcode now runs on Windows as will as Un*x </simpara>
@@ -1436,7 +1749,7 @@ int perf_myopcode(CSOUND *csound, MYOPCODE *p)
               <simpara>out, out2, outq, outh, outo outx and out32 are now identical opcodes and will take up to as many arguments as nchnls. This replaces the current remapping of opcodes </simpara>
             </listitem>
             <listitem>
-              <simpara>turnoff2 now polymorphic wrt S and k types (ie accepts instrumnet names) </simpara> 
+              <simpara>turnoff2 now polymorphic wrt S and k types (ie accepts instrumnet names) </simpara>
             </listitem>
           </itemizedlist>
         </para>
@@ -1508,7 +1821,7 @@ int perf_myopcode(CSOUND *csound, MYOPCODE *p)
             <simpara>Adjustments to MIDI file precision in output </simpara>
           </listitem>
           <listitem>
-            <simpara>On OSX move from Coreaudio to AuHAL </simpara> 
+            <simpara>On OSX move from Coreaudio to AuHAL </simpara>
           </listitem>
           <listitem>
             <simpara>Multicore now safe for ZAK, Channels and modifying tables </simpara>
@@ -1673,7 +1986,7 @@ int perf_myopcode(CSOUND *csound, MYOPCODE *p)
             </listitem>
             <listitem>
               <simpara>mkdb utility to provide a catalogue of plugin
-              libraries/opcodes </simpara> 
+              libraries/opcodes </simpara>
             </listitem>
                 <listitem>
               <simpara>ladspa library build in default system </simpara>
@@ -1683,7 +1996,7 @@ int perf_myopcode(CSOUND *csound, MYOPCODE *p)
             </listitem>
             <listitem>
               <simpara>there in an until .. do .. od looping syntax
-              (in the new parser only) </simpara> 
+              (in the new parser only) </simpara>
             </listitem>
             <listitem>
               <simpara>SIGPIPE signals are ignored rather than causing Csound to exit </simpara>
@@ -1729,7 +2042,7 @@ int perf_myopcode(CSOUND *csound, MYOPCODE *p)
           </listitem>
           <listitem>
             <simpara>pvsbufread corrected with respect to position
-            counting </simpara> 
+            counting </simpara>
           </listitem>
           <listitem>
             <simpara>tempo opcode fixed </simpara>
@@ -1760,14 +2073,14 @@ int perf_myopcode(CSOUND *csound, MYOPCODE *p)
           </listitem>
           <listitem>
             <simpara>date opcode has new base in some platforms to
-            avoid overflow </simpara> 
+            avoid overflow </simpara>
           </listitem>
           <listitem>
             <simpara>pvsblur now works over reinit </simpara>
           </listitem>
           <listitem>
             <simpara>diskin, diskin2 and soundin now can read up to 40
-            channels </simpara> 
+            channels </simpara>
           </listitem>
           <listitem>
             <simpara>prints behaves better with rounding </simpara>
@@ -1780,7 +2093,7 @@ int perf_myopcode(CSOUND *csound, MYOPCODE *p)
           </listitem>
           <listitem>
             <simpara>comb opcode made safe if in and out arguments the
-            same </simpara> 
+            same </simpara>
           </listitem>
           <listitem>
             <simpara>better accuracy in line and expon </simpara>
@@ -1797,11 +2110,11 @@ int perf_myopcode(CSOUND *csound, MYOPCODE *p)
           </listitem>
           <listitem>
             <simpara>i() will also accept an i-rate value in which
-            case it is a no-op </simpara> 
+            case it is a no-op </simpara>
           </listitem>
           <listitem>
             <simpara>makecsd revised and extended to have options for
-            MIDI and score processing and licenses </simpara> 
+            MIDI and score processing and licenses </simpara>
           </listitem>
           <listitem>
             <simpara>lpanal reworked to remove bugs and oddities </simpara>
@@ -2055,7 +2368,7 @@ int perf_myopcode(CSOUND *csound, MYOPCODE *p)
              <simpara>
          <link linkend="looptseg"><citetitle>looptseg</citetitle></link>
                is like <link linkend="loopseg"><citetitle>loopseg</citetitle></link>
-               but with a flexible envelope like <link linkend="transeg"><citetitle>transeg</citetitle></link> 
+               but with a flexible envelope like <link linkend="transeg"><citetitle>transeg</citetitle></link>
        </simpara>
            </listitem>
          </itemizedlist>
@@ -2065,7 +2378,7 @@ int perf_myopcode(CSOUND *csound, MYOPCODE *p)
        <para>Bug fixes and improvements:
          <itemizedlist>
            <listitem>
-             <simpara>    
+             <simpara>
          <link linkend="pvshift"><citetitle>pvshift</citetitle></link> would overwrite in double mode.
              </simpara>
            </listitem>
@@ -2594,7 +2907,7 @@ int perf_myopcode(CSOUND *csound, MYOPCODE *p)
             <listitem><simpara>New HRTF opcodes by Brian Carty:<link linkend="hrtfmove"><citetitle>hrtfmove</citetitle></link>, <link linkend="hrtfmove2"><citetitle>hrtfmove2</citetitle></link> and <link linkend="hrtfstat"><citetitle>hrtfstat</citetitle></link>.</simpara>
             </listitem>
             <listitem><simpara>New waveshaping opcodes: <link linkend="powershape"><citetitle>powershape</citetitle></link>,
-              <link linkend="polynomial"><citetitle>polynomial</citetitle></link>, 
+              <link linkend="polynomial"><citetitle>polynomial</citetitle></link>,
               <link linkend="chebyshevpoly"><citetitle>chebyshevpoly</citetitle></link>,
               <link linkend="pdclip"><citetitle>pdclip</citetitle></link>,
               <link linkend="pdhalf"><citetitle>pdhalf</citetitle></link>,
@@ -2828,7 +3141,7 @@ int perf_myopcode(CSOUND *csound, MYOPCODE *p)
       </listitem>
       <listitem>
         <para>
-          Also from CsoundAV, many new FLTK widget opcodes: 
+          Also from CsoundAV, many new FLTK widget opcodes:
           <link linkend="FLkeyIn"><citetitle>FLkeyIn</citetitle></link>,
           <link linkend="FLslidBnk2"><citetitle>FLslidBnk2</citetitle></link>,
           <link linkend="FLvslidBnk"><citetitle>FLvslidBnk</citetitle></link>,
