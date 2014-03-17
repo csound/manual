@@ -19,8 +19,8 @@ instr 1
   ; over the period defined by p3.
   kval line 0, p3, 100
 
-  ; Print the value of kval, once per second.
-printks2 "value now %f\n", int(kval)
+  ; Print the value of kval when it changes.
+  printks2 "value now %f\n", int(kval)
 endin
 
 
