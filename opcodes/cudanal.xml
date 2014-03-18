@@ -1,0 +1,120 @@
+
+<refentry id="cudanal">
+<indexterm id="IndexCudanal"><primary>cudanal</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>cudanal</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>cudanal</refname>
+    <refpurpose>
+      Generate an fsig from a mono audio source ain, using phase
+      vocoder overlap-add analysis and GPU hardware. 
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Generate an fsig from a mono audio source ain, using phase vocoder overlap-add analysis and GPU hardware.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>fsig <command>cudaanal</command> ain, ifftsize, ioverlap, iwinsize, iwintype [, iformat] [, iinit]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifftsize</emphasis> -- The FFT size in samples. Need not be a power of two (though these are especially efficient), but must be even. Odd numbers are rounded up internally. <emphasis>ifftsize</emphasis> determines the number of analysis bins in <emphasis>fsig</emphasis>, as <emphasis>ifftsize/2 + 1</emphasis>. For example, where <emphasis>ifftsize</emphasis> = 1024, <emphasis>fsig</emphasis> will contain 513 analysis bins, ordered linearly from the fundamental to Nyquist. The fundamental of analysis (which in principle gives the lowest resolvable frequency) is determined as <emphasis>sr/ifftsize</emphasis>. Thus, for the example just given and assuming <emphasis>sr</emphasis> = 44100, the fundamental of analysis is 43.07Hz. In practice, due to the phase-preserving nature of the phase vocoder, the frequency of any bin can deviate bilaterally, so that DC components are recorded. Given a strongly pitched signal, frequencies in adjacent bins can bunch very closely together, around partials in the source, and the lowest bins may even have negative frequencies.
+    </para>
+
+    <para>
+      As a rule, the only reason to use a non power-of-two value for <emphasis>ifftsize</emphasis> would be to match the known fundamental frequency of a strongly pitched source. Values with many small factors can be almost as efficient as power-of-two sizes; for  example: 384, for a source pitched at around low A=110Hz.
+    </para>
+
+    <para>
+      <emphasis>ioverlap</emphasis> -- The distance in samples (<quote>hop size</quote>) between overlapping analysis frames. As a rule, this needs to be at least <emphasis>ifftsize/4</emphasis>, e.g. 256 for the example above. <emphasis>ioverlap</emphasis> determines the underlying analysis rate, as <emphasis>sr/ioverlap</emphasis>. <emphasis>ioverlap</emphasis> does not require to be a simple factor of <emphasis>ifftsize</emphasis>; for example a value of 160 would be legal. The choice of <emphasis>ioverlap</emphasis> may be dictated by the degree of pitch modification applied to the <emphasis>fsig</emphasis>, if any. As a rule of thumb, the more extreme the pitch shift, the higher the analysis rate needs to be, and hence the smaller the value for <emphasis>ioverlap</emphasis>. A higher analysis rate can also be advantageous with broadband transient sounds, such as drums (where a small analysis window gives less smearing, but more frequency-related errors).
+    </para>
+
+    <para>
+      Note that it is possible, and reasonable, to have distinct fsigs in an orchestra (even in the same instrument), running at different analysis rates. Interactions between such fsigs is currently unsupported,  and the fsig assignment opcode does not allow copying between fsigs with different properties, even if the only difference is in <emphasis>ioverlap</emphasis>. However, this is not a closed issue, as it is possible in theory to achieve crude rate conversion (especially with regard to in-memory analysis files) in ways analogous to time-domain techniques.
+    </para>
+
+    <para>
+      <emphasis>iwinsize</emphasis> -- The size in samples of the analysis window filter (as set by <emphasis>iwintype</emphasis>). This must be at least <emphasis>ifftsize</emphasis>, and can usefully be larger. Though other proportions are permitted, it is recommended that <emphasis>iwinsize</emphasis> always be an integral multiple of <emphasis>ifftsize</emphasis>, e.g. 2048 for the example above. Internally, the analysis window (Hamming, von Hann) is multiplied by a sinc function, so that amplitudes are zero at the boundaries between frames. The larger analysis window size has been found to be especially important for oscillator bank resynthesis (e.g. using <emphasis>cudadsyn</emphasis>), as it has the effect of increasing the frequency resolution of the analysis, and hence the accuracy of the resynthesis. As noted above, <emphasis>iwinsize</emphasis> determines the overall latency of the analysis/resynthesis system. In many cases, and especially in the absence of pitch modifications, it will be found that setting <emphasis>iwinsize=ifftsize</emphasis> works very well, and offers the lowest latency.
+    </para>
+
+    <para>
+      <emphasis>iwintype</emphasis> -- The shape of the analysis window. Currently only two choices are implemented:
+      <itemizedlist>
+        <listitem><para>0 = Hamming window</para></listitem>
+        <listitem><para>1 = von Hann window</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      Both are also supported by the PVOC-EX file format.  The window type is stored as an internal attribute of the fsig, together with the other parameters (see <link linkend="pvsinfo"><citetitle>pvsinfo</citetitle></link>). Other types may be implemented later on (e.g. the Kaiser window, also supported by PVOC-EX), though an obvious alternative is to enable windows to be defined via a function table. The main issue here is the constraint of f-tables to power-of-two sizes, so this method does not offer a complete solution.  Most users will find the Hamming window meets all normal needs, and can be regarded as the default choice.
+    </para>
+
+    <para>
+      <emphasis>iformat</emphasis> -- (optional) The analysis format. Currently only one format is implemented by this opcode:
+
+      <itemizedlist>
+        <listitem><para>0 =  amplitude + frequency</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      This is the classic phase vocoder format; easy to process, and a natural format for oscillator-bank resynthesis. It would be very easy (tempting, one might say) to treat an fsig frame not purely as a phase vocoder frame but as a generic additive synthesis frame. It is indeed possible to use an fsig this way, but it is important to bear in mind that the two are not, strictly speaking, directly equivalent.
+    </para>
+
+    <para>
+      Other important formats (supported by PVOC-EX) are:  
+      <itemizedlist>
+        <listitem><para>1 =  amplitude + phase</para></listitem>
+        <listitem><para>2 =  complex (real + imaginary)</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      iformat is provided in case it proves useful later to add support for these other formats. Formats 0 and 1 are very closely related (as the phase is <quote>wrapped</quote> in both cases - it is a trivial matter to convert from one to the other), but the complex format might warrant a second explicit signal type (a <quote>csig</quote>) specifically for convolution-based processes, and other processes where the full complement of arithmetic operators may be useful.
+    </para>
+
+    <para>
+      <emphasis>iinit</emphasis> -- (optional) Skip reinitialization. This is not currently implemented for any of these opcodes, and it remains to be seen if it is even practical.
+    </para>
+    <warning>
+      <para>
+        It is unsafe to use the same f-variable for both input and output of cuda opcodes. Using the same one might lead to undefined behavior on some opcodes. Use a different one on the left and right sides of the opcode.
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the cudanal opcode. It uses the file <ulink url="examples/cudanal.csd"><citetitle>cudanal.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the cudanal opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/cudanal.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namerichard;</member>
+        <member>August 2001 </member>
+      </simplelist>
+    </para>
+
+    <para>New in version 4.13</para>
+  </refsect1>
+</refentry>
