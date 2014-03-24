@@ -1,4 +1,4 @@
-= About the Manual =
+# About the Manual 
 
 The Csound Reference Manual is written in Docbook-XML. More information about
 Docbook-XML can be found at the following links:
@@ -10,7 +10,7 @@ If you find problems or have suggestions, please report them on the csound
 developer mailing list.
 
 
-= Building the Manual =
+# Building the Manual
 
 To build the manual, a number of different tools are required, depending on 
 what target output is desired. All targets require xsltproc and the Docbook
@@ -51,7 +51,7 @@ Other targets include pdf, pdfA4 and htmlXO. See the makefile for distribution
 and other targets.
 
 
-== HTML ==
+## HTML 
 
 Use:
   $ make html
@@ -60,7 +60,7 @@ Requires: Python (to generate the frames version, and to update the Quick
           Reference)
 
 
-== PDF ==
+## PDF 
 
 Use:
   $ make pdf
@@ -82,7 +82,7 @@ This increases the max ram the VM can use to 384megs, which you'll need
 for FOP to run as the manual is fairly large.
 
 
-== HTMLHELP ==
+## HTMLHELP 
 
 Use:
 
@@ -107,7 +107,7 @@ on valid Docbook tags, see "Docbook: The Definitive Guide" by Norm Walsh,
 available at http://docbook.org/.
 
 
-== Adding an Opcode Entry ==
+## Adding an Opcode Entry 
 
 First, the best place to start is to take an existing entry and use that as a 
 template. All opcode entries are organized in the opcodes folder.
@@ -161,14 +161,14 @@ For instance: $ python csd2docbook2.py -f genarray_i.csd will create the file
 genarray_i.csd.xml from genarray_i.csd for use in the genarray_i opcode entry.
 
 
-= For Maintainers =  
+# For Maintainers 
 
 There are several targets that prepare files for release. It is important to
 remember to change the version number so that files and content are generated 
 with that number. It must be changed both in manual.xml and the Makefile.
 It is also a good idea to update the What's new section for each release.
 
-== General XML Editing Tips ==
+## General XML Editing Tips
 
 * The "<" and ">" symbol, when used as text within XML tags, need to be escaped. The corresponding entities to use are "&lt;" and "&gt;".
 * The refsect1 tag ends with the number 1, not the letter l.
