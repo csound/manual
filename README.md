@@ -94,9 +94,9 @@ Requires: Microsoft HTML Help Workshop
 This target compiles a Windows .chm file, a format that replaced WinHelp.
 
 
-= Editing the Manual = 
+# Editing the Manual
 
-== Modifying an Entry ==
+## Modifying an Entry
 
 In general, be careful to be mindful that these files are XML and must be valid.
 All tags that are openned must be closed, i.e. <para>My Information</para>.
