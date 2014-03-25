@@ -18,7 +18,7 @@ XML DTDs to be installed and findable by xsltproc. The Docbook XSL stylesheets
 have to be installed too. The location of the stylesheets can be noted via the
 XSL_BASE_PATH variable:
 
-  $ make XSL_BASE_PATH=path/to/xsl/installation <target>
+    $ make XSL_BASE_PATH=path/to/xsl/installation <target>
 
 The default is /usr/share/xml/docbook/stylesheet/nwalsh/
 
@@ -39,13 +39,14 @@ or another suitable XSLT processor, please update this documentation.)
 
 The manual is made using make with the included Makefile. For example to make 
 the html (canonical) version:
-$ make html
+
+    $ make html
 
 is all that is needed.
 
 To begin a new build, use
 
-  $ make clean
+    $ make clean
 
 Other targets include pdf, pdfA4 and htmlXO. See the makefile for distribution
 and other targets.
@@ -54,7 +55,8 @@ and other targets.
 ## HTML 
 
 Use:
-  $ make html
+
+    $ make html
 
 Requires: Python (to generate the frames version, and to update the Quick
           Reference)
@@ -63,9 +65,12 @@ Requires: Python (to generate the frames version, and to update the Quick
 ## PDF 
 
 Use:
-  $ make pdf
+
+    $ make pdf
+
 or
-  $ make pdfA4
+
+    $ make pdfA4
 
 Requires: 
 
@@ -76,7 +81,7 @@ Requires:
 FOP can require a lot of memory, so it is recommended to edit the fop.sh file 
 and add "-Xmx384m" to the last line, so it reads as such:
 
-  $JAVACMD -Xmx384m -classpath "$LOCALCLASSPATH" $FOP_OPTS org.apache.fop.apps.Fop "$@"
+    $ JAVACMD -Xmx384m -classpath "$LOCALCLASSPATH" $FOP_OPTS org.apache.fop.apps.Fop "$@"
 
 This increases the max ram the VM can use to 384megs, which you'll need 
 for FOP to run as the manual is fairly large.
@@ -86,7 +91,7 @@ for FOP to run as the manual is fairly large.
 
 Use:
 
-  $ make htmlhelp
+    $ make htmlhelp
 
 Requires: Microsoft HTML Help Workshop
               (http://msdn.microsoft.com/library/default.asp?url=/library/en-us/htmlhelp/html/hwMicrosoftHTMLHelpDownloads.asp)
@@ -119,13 +124,13 @@ To incorporate a new entry into the manual, a few things are required.
 the myOpcodeEntry.xml in the opcodes directory, then this entry should be 
 the one to add in manual.xml:
 
-  <!ENTITY opcodesmyopcodeentry SYSTEM "opcodes/myOpcodeEntry.xml">
+    <!ENTITY opcodesmyopcodeentry SYSTEM "opcodes/myOpcodeEntry.xml">
 
 2. Add the entry to opcodes/top.xml by using the entity.  This will actually add 
 the entry to the reference manual.  The entries are alphabetically ordered, so 
 just find where your opcode should be in the list and add:
 
-  &opcodesmyopcodeentry;
+    &opcodesmyopcodeentry;
 
 The above uses the entity that was defined in the manual.xml file (think of it 
 like an #include).
@@ -134,14 +139,14 @@ like an #include).
 opcode should be cross-referenced from.  For example, if myOpcodeEntry should 
 be categorized with other pvs opcodes in spectral/realtime.xml, it would be
 added in that file as:
-
-  <link linkend="myOpcodeEntry"><citetitle>My Opcode Entry</citetitle></link>
+    
+    <link linkend="myOpcodeEntry"><citetitle>My Opcode Entry</citetitle></link>
 
 The linkend attribute above points to a docbook ID.  The "myOpcodeEntry" ID 
 should be defined in the myOpcodeEntry.xml, probably to be done at the top 
 level like this:
 
-  <refentry id="myOpcodeEntry">
+    <refentry id="myOpcodeEntry">
 
 Repeat step 3 for any sections you think this opcode should be 
 categorized in.
