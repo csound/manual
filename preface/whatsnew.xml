@@ -1,5 +1,6 @@
 <section id="PrefaceWhatsNew"><title>What's new in Csound &csoundversion;</title>
-<!--     <bridgehead>NRelease Notes for Csound 6.XX ()</bridgehead> --><!--  <para>
+<!--     <bridgehead>Release Notes for Csound 6.XX ()</bridgehead>
+  <para>
     <itemizedlist>
       <listitem>
         <para>New opcodes:
@@ -64,6 +65,326 @@
       </listitem>
     </itemizedlist>
   </para>-->
+
+<bridgehead>Release Notes for Csound 6.03 (2014 May)</bridgehead>
+  <para>
+    This new version has a large number of bug fixes (including clearing
+    many tickets on SourceForge and GitHub) as well internal changes to improve
+    performance.
+    <itemizedlist>
+      <listitem>
+        <para>New opcodes:
+          <itemizedlist>
+            <listitem>
+              <simpara><link linkend="printks2"><citetitle></citetitle>prinks2</link></simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>mp3sr</emphasis>, <emphasis>mp3bitrate</emphasis>,
+              and <emphasis>mp3nchnls</emphasis> to get information on mp3 files</simpara>
+            </listitem>
+            <listitem>
+              <simpara>EXPERIMENTAL: CUDA opcodes for partitioned convolution direct
+                convolution and sliding phase vocoding; OpenCL opcode for
+                additive synthesis
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara><link linkend="compilecsd"><citetitle></citetitle>compilecsd</link></simpara>
+              to compile instruments from a standard CSD file
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Orchestra:
+          <itemizedlist>
+            <listitem>
+              <simpara>The argument for i() is supposed to be a variable not an
+                expression. This is now enforced. (bug #90)
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Options:
+          <itemizedlist>
+            <listitem>
+              <simpara>There was a bug in CsOptions; the last argument was missing (issue #296)
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Modified Opcodes and Gens:
+          <itemizedlist>
+            <listitem>
+              <simpara>For ogg output it is possible to specify a VBR (variable block
+                rate) quality.
+              </simpara>
+            </listitem><emphasis>dssi4cs</emphasis> code has been extensively reworked
+              to avoid potential memory faults.
+            <listitem>
+              <simpara>Many array operations now available for i-arrays as well as
+                k-arrays.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>fillarray</emphasis> will work for string arrays
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Displays of FFT (via <emphasis>dispfft</emphasis>) improved
+              with scaling/zooming options
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Signal flow graph opcodes are now working with a-rate array
+                signals.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>In alsa RT code the sample rate is taken from the device
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Faust opcode system updated to latest faust API
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Utilities:
+          <itemizedlist>
+            <listitem>
+              <simpara>fixed bug in lpanal
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          csound~:
+          <itemizedlist>
+            <listitem>
+              <simpara>OSX - fix for running with 32-bit cpu architecture
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Windows - csound~ now available for Windows
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Emscripten:
+          <itemizedlist>
+            <listitem>
+              <simpara>This is now generally merged into the code-base
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          General usage:
+          <itemizedlist>
+            <listitem>
+              <simpara>--displays now switches graphs on, as expected
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>New commandline option --get-system-sr added to obtain the
+                machine's sample rate
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>New command-line option --devices[=in|out] gives a list of
+                available audio devices and then exit
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Bug fixes:
+          <itemizedlist>
+            <listitem>
+              <simpara>fixed the bug when tables were replaced but the size did not change
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>A number of bugs in --sample-accurate have been detected and
+                fixed. This includes opcodes <emphasis>out</emphasis>,
+                <emphasis>outn</emphasis>, and <emphasis>line</emphasis>
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>A number of bugs in <emphasis>grain3</emphasis> were fixed
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Bug in str_chaned could cause a crash; fixed
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Small bug in rtjack fixed
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Error in resize opcode corrected
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Fixed an unlikely bug in atsa
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Fixed rtauhal pause issue
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>A number of bugs/untidiness fixed in GEN23
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Array bound checks fixed
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>strings channels were not correctly set for dynamic-size
+                strings, now fixed
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>memory allocation for string formatting in <emphasis>printfsk</emphasis>
+                was fixed, stopping string truncation
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>strcat</emphasis> safe against overflow
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>error in compilation of arrays fixed (issue #293)
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          System Changes:
+          <itemizedlist>
+            <listitem>
+              <simpara><emphasis>turnoff</emphasis> opcode now checks that the
+                instrument being affected is active
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>lenarray</emphasis> can accept any array type
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>the way of rounding a table number to an integer was changed
+                and is now more as expected
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>there is a new possible section in a csd file called
+                &lt;CsFile...&gt; which is like csFileB but with unencoded text.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>UDO compilation now uses the type system. This means that
+                UDOs now allow any array type to be used
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Internal Changes:
+          <itemizedlist>
+            <listitem>
+              <simpara>The whole system has been checked by the Coverity static checker
+                which identified a number of (mainly minor) problems. These have
+                been reviewed and checked. In particular better use of printing
+                and string copying should prevent overflows
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>The type and variable system has been extensively rewritten; this
+                allows better array and UDO support
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Alignment of variables got right in all cases
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Array copying is now using the type system to copy values; fixes
+                issues with copying string arrays, f-sigs, etc
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Always reset Csound when stopping to ensure state is clean; was
+                not being reset when there was a compile error, so that next
+                successful run would start with an invalid Csound engine (issue
+                #305)
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          API:
+          <itemizedlist>
+            <listitem>
+              <simpara>All opcodes etc now use the API memory allocation operations,
+                so it is possible to replace the whole memory allocator
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Added <emphasis>csoundCompileCsd</emphasis> to API and
+                associated new <emphasis>compilecsd</emphasis> opcode
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Protected <emphasis>csoundGetStringChannel</emphasis> against
+              null and short strings and added a check for string size
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Windows:
+          <itemizedlist>
+            <listitem>
+              <simpara>Soundfonts in Windows had an internal alignement problem
+                which is fixed
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+
 <bridgehead>Release Notes for Csound 6.02</bridgehead>
   <para>
 This new version has a large number of bug fixes (including clearing
