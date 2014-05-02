@@ -76,7 +76,9 @@
         <para>New opcodes:
           <itemizedlist>
             <listitem>
-              <simpara><link linkend="printks2"><citetitle></citetitle>prinks2</link></simpara>
+              <simpara><link linkend="printks2"><citetitle></citetitle>prinks2</link></simpara>:
+              prints a new value every time a control variable
+              changes using a printf() style syntax
             </listitem>
             <listitem>
               <simpara><emphasis>mp3sr</emphasis>, <emphasis>mp3bitrate</emphasis>,
@@ -109,10 +111,27 @@
       </listitem>
       <listitem>
         <para>
+          Score:
+          <itemizedlist>
+            <listitem>
+              <simpara>New score opcode y sets the random seed (for ~) at read time
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
           Options:
           <itemizedlist>
             <listitem>
-              <simpara>There was a bug in CsOptions; the last argument was missing (issue #296)
+              <simpara>There was a bug in CsOptions; the last argument was missed being
+                read(issue #296)
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>As command-line options expression-opt and no-expression-opt do
+                nothing in Csound6 a warning is printed
               </simpara>
             </listitem>
           </itemizedlist>
@@ -234,7 +253,7 @@
               </simpara>
             </listitem>
             <listitem>
-              <simpara>Bug in str_chaned could cause a crash; fixed
+              <simpara>Bug in str_chanel could cause a crash; fixed
               </simpara>
             </listitem>
             <listitem>
@@ -310,6 +329,10 @@
                 UDOs now allow any array type to be used
               </simpara>
             </listitem>
+            <listitem>
+              <simpara>Improved orchestra parsing speeds with better algorithms
+              </simpara>
+            </listitem>
           </itemizedlist>
         </para>
       </listitem>
@@ -367,7 +390,29 @@
               null and short strings and added a check for string size
               </simpara>
             </listitem>
+            <listitem>
+              <simpara>A number of API functions have had char* changed to
+                const char* which reflect the usage
+              </simpara>
+            </listitem>
           </itemizedlist>
+          The performance engine now includes debugging capabilities to allow
+          interrupting rendering and providing introspection into the engine's state
+          and instrument variables. The following new functions are available by
+          including the csdebug.h header:
+          <programlisting>
+void csoundDebuggerInit (CSOUND *csound);
+void csoundDebuggerClean (CSOUND *csound);
+void csoundSetInstrumentBreakpoint (CSOUND *csound, MYFLT instr, int skip);
+void csoundRemoveInstrumentBreakpoint (CSOUND *csound, MYFLT instr);
+void csoundClearBreakpoints (CSOUND *csound);
+void csoundSetBreakpointCallback (CSOUND *csound, breakpoint_cb_t bkpt_cb, void *userdata);
+void csoundDebugContinue (CSOUND *csound);
+void csoundDebugStop (CSOUND *csound);
+debug_instr_t *csoundDebugGetInstrInstances(CSOUND *csound);
+void csoundDebugFreeInstrInstances(CSOUND *csound, debug_instr_t *instr);
+debug_variable_t *csoundDebugGetVariables(CSOUND *csound, debug_instr_t *instr);
+void csoundDebugFreeVariables(CSOUND *csound, debug_variable_t *varHead);</programlisting>
         </para>
       </listitem>
       <listitem>
