@@ -18,7 +18,7 @@ instr 1
 icps	cpsmidi	 	 
 iamp	ampmidi	.5	 
  	 	 	 
-kenv	envlpxr	iamp, 0.2, 1, 1, 1, .01
+kenv	envlpxr	iamp, 0.2, 1, 1, 1, 0.01
 asig	pluck	kenv, icps, 200, 2, 1	 
 	outs	asig, asig
 	 

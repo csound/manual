@@ -2,7 +2,7 @@
 <CsOptions>
 ; Select audio/midi flags here according to platform
 ; Audio out   Audio in    No messages
--odac           -iadc     -d         -M0  -Q1;;;RT audio I/O with MIDI in
+-odac           -iadc     -d         -M0  -Q0 
 </CsOptions>
 <CsInstruments>
 

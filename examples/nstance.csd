@@ -17,7 +17,7 @@ nchnls = 1
 ; Instrument #1 - oscillator with a high note.
 instr 1
   ; Play Instrument #2 at the same time.
-  iHandlenstance 2, 0, p3
+  iHandle nstance 2, 0, p3
 
   ; Play a high note.
   a1 oscils 10000, 880, 1
