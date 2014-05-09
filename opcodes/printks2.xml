@@ -1,0 +1,165 @@
+
+<refentry id="printks2">
+<indexterm id="IndexPrintks2"><primary>printks2</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Printing and Display</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>printks2</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>printks2</refname>
+    <refpurpose>
+      Prints a new value every time a control variable changes using a
+      printf() style syntax. 
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Prints a new value every time a control variable changes using a
+      printf() style syntax. 
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>printks2</command> &quot;string&quot;, kval</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>&quot;string&quot;</emphasis> -- the text string to be
+      used as a format.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kval</emphasis> -- signal to be printed. The style of
+      printing is specified in
+      <emphasis><quote>string</quote></emphasis> with the standard C
+      value specifier (%f, %d, etc.).
+    </para>
+
+  </refsect1>
+ 
+  <refsect1>
+    <title>Print Output Formatting</title>
+    <para>
+      All standard C language printf() control characters may be used. For example, if <emphasis>kval1</emphasis> = 153.26789 then some common formatting options are:
+
+        <orderedlist>
+          <listitem><para>%f prints with full precision: 153.26789</para></listitem>
+          <listitem><para>%5.2f prints: 153.26</para></listitem>
+          <listitem><para>%d prints integers-only: 153</para></listitem>
+          <listitem><para>%c treats <emphasis>kval1</emphasis> as an ascii character code. </para></listitem>
+        </orderedlist>
+    </para>
+
+    <para>
+      In addition to all the printf() codes, printks2 supports these useful character codes:
+
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <thead>
+            <row>
+              <entry>printks2 Code</entry>
+              <entry>Character Code</entry>
+            </row>
+          </thead>
+
+         <tbody>
+            <row>
+              <entry>\\r, \\R, %r, or %R</entry>
+              <entry>return character (\r)</entry>
+            </row>
+
+            <row>
+              <entry>\\n, \\N, %n, %N</entry>
+              <entry>newline character (\n)</entry>
+            </row>
+
+            <row>
+              <entry>\\t, \\T, %t, or %T</entry>
+              <entry>tab character (\t)</entry>
+            </row>
+
+            <row>
+              <entry>%!</entry>
+              <entry>semicolon character (;) This was needed because a <quote>;</quote> is interpreted as an comment.</entry>
+            </row>
+
+            <row>
+              <entry>^</entry>
+              <entry>escape character (0x1B)</entry>
+            </row>
+
+            <row>
+              <entry>^ ^</entry>
+              <entry>caret character (^)</entry>
+            </row>
+
+            <row>
+              <entry>&tilde;</entry>
+              <entry>ESC[ (escape+[ is the escape sequence for ANSI
+              consoles)</entry> 
+            </row>
+
+            <row>
+              <entry>&tilde;&tilde;</entry>
+              <entry>tilde (&tilde;)</entry>
+            </row>
+         </tbody>
+        </tgroup>
+      </informaltable>
+    </para>
+
+    <para>
+      For more information about printf() formatting, consult any C
+      language documentation. 
+    </para>
+
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the printks2 opcode. It uses the file <ulink url="examples/printks2.csd"><citetitle>printks2.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the printks2 opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/printks2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="printk2"><citetitle>printk2</citetitle></link> and 
+      <link linkend="printks"><citetitle>printk2</citetitle></link> and 
+      <link linkend="printk"><citetitle>printk</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>Bath, UK</member>
+        <member>Mar 2014</member>
+      </simplelist>
+    </para>
+    <para>New in Csound version 6.03</para>
+  </refsect1>
+</refentry>
