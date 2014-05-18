@@ -10,20 +10,20 @@
   <refnamediv>
     <refname>pvs2tab</refname>
     <refpurpose>
-     Copies spectral data to t-variables.
+     Copies spectral data to k-rate arrays (or t-variables). Also known as pvs2array.
     </refpurpose>
   </refnamediv>
 
   <refsect1>
     <title>Description</title>
     <para>
-       Copies a pvs frame to a t-variable. Currently only AMP+FREQ and AMP+PHASE formats allowed. This opcode requires the t-type to be defined, which means it only works in the new bison/flex-based parser.
+       Copies a pvs frame to a t-variable. Currently only AMP+FREQ and AMP+PHASE formats allowed. Since t-vars are an earlier version of k-rate arrays, the opcode also works with these. The opcode pvs2array is an alias of this one.
     </para>
   </refsect1>
 
   <refsect1>
     <title>Syntax</title>
-    <synopsis>kframe <command>pvs2tab</command> tvar, fsig</synopsis>
+    <synopsis>kframe <command>pvs2tab</command> tvar|kvar[], fsig</synopsis>
   </refsect1>
 
   <refsect1>
@@ -33,15 +33,13 @@
     </para>
 
     <para>
-      <emphasis>tvar</emphasis> -- t-variable containing the output. It is produced at every k-period, but may not contain a new frame, pvs frames are produced at their own frame rate that is independent of kr. Generally, this vector needs to be big enough to contain the frame samples, i.e. N+2 (N is the dft size). If smaller, only a portion of the frame will be copied; if bigger, unused points will exist at higher indexes.
+      <emphasis>tvar|kvar[]</emphasis> -- t-variable or k-rate array containing the output. It is produced at every k-period, but may not contain a new frame, pvs frames are produced at their own frame rate that is independent of kr. Generally, this vector needs to be big enough to contain the frame samples, i.e. N+2 (N is the dft size). If smaller, only a portion of the frame will be copied; if bigger, unused points will exist at higher indexes. 
     </para>
 
     <para>
       <emphasis>fsig</emphasis> -- input fsig to be copied.
     </para>
-    <para>
-      <emphasis>iwinsize</emphasis> -- size of the analysis window, defaults to <emphasis>isize</emphasis>.
-    </para>
+  
   </refsect1>
 
   <refsect1>
@@ -50,10 +48,10 @@
       <example>
         <title>Example</title>
         <programlisting>
-t1 init 1026
+karr[] init 1026
 a1 inch 1
 fsig1   pvsanal a1, 1024,256,1024, 1
-kframe  <emphasis role="opc">pvs2tab</emphasis>t1, fsig1</programlisting>
+kframe  <emphasis role="opc">pvs2tab</emphasis>karr, fsig1</programlisting>
       </example>
     </para>
   </refsect1>

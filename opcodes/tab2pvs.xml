@@ -10,20 +10,20 @@
   <refnamediv>
     <refname>tab2pvs</refname>
     <refpurpose>
-     Copies spectral data from t-variables.
+     Copies spectral data from k-rate arrays (or t-variables.). Also known as pvsfromarray.
     </refpurpose>
   </refnamediv>
 
   <refsect1>
     <title>Description</title>
     <para>
-       Copies a pvs frame from a t-variable. Currently only AMP+FREQ is produced. This opcode requires the t-type to be defined, which means it only works in the new bison/flex-based parser.
+       Copies a pvs frame from a t-variable or k-rate array. Currently only AMP+FREQ is produced. This opcode requires the t-type to be defined, which means it only works in the new bison/flex-based parser.
     </para>
   </refsect1>
 
   <refsect1>
     <title>Syntax</title>
-    <synopsis>fsig <command>tab2pvs</command> tvar[,ihopsize, iwinsize, iwintype]</synopsis>
+    <synopsis>fsig <command>tab2pvs</command> tvar|karr[][,ihopsize, iwinsize, iwintype]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -31,7 +31,7 @@
    
 
     <para>
-      <emphasis>tvar</emphasis> -- t-variable containing the input. It is produced at every k-period, but may not contain a new frame, pvs frames are produced at their own frame rate that is independent of kr. The size of this vector will determine the fftsize, N = size - 2.
+      <emphasis>tvar</emphasis> -- k-rate array (or t-variable) containing the input. It is produced at every k-period, but may not contain a new frame, pvs frames are produced at their own frame rate that is independent of kr. The size of this vector will determine the fftsize, N = size - 2.
     </para>
 
     <para>
@@ -56,9 +56,9 @@
       <example>
         <title>Example</title>
         <programlisting>
-t1 init 1026
+karr[] init 1026
 ...
-fsig1  <emphasis role="opc">tab2pvs</emphasis>t1</programlisting>
+fsig1  <emphasis role="opc">tab2pvs</emphasis>karr</programlisting>
 aout pvsynth fsig1
       </example>
     </para>
