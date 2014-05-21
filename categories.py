@@ -112,6 +112,8 @@ categories = ['Orchestra Syntax:Header',
               'Python Opcodes',
               'Image Processing Opcodes',
               'Array Opcodes',
+              'Array Operations: Fast Fourier Transform',
+              'Array Operations: complex numbers',
               'Miscellaneous',
               'Testing',
               'Utilities']

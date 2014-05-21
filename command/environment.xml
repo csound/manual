@@ -7,8 +7,8 @@
 	  <listitem><simpara>SADIR: Default directory for analysis files. Used if no full path is given for analysis files. </simpara></listitem>
 	  <listitem><simpara>SFOUTYP: Sets the default output file type. Currently only 'WAV', 'AIFF' and 'IRCAM' are valid. This flag is checked by the csound executable and the utilities and is used if no file output type is specified.</simpara></listitem>
 	  <listitem><simpara>INCDIR: Include directory. Specifies the location of files used by <link linkend="include"><citetitle>#include</citetitle></link> statements.</simpara></listitem> 
-	  <listitem><simpara>OPCODEDIR: Defines the location of csound opcode plugins for the single precision float (32-bit) version.</simpara></listitem>
-	  <listitem><simpara>OPCODEDIR64: Defines the location of csound opcode plugins for the double precision float (64-bit) version.</simpara></listitem>
+	  <listitem><simpara>OPCODE6DIR: Defines the location of csound opcode plugins for the single precision float (32-bit) version.</simpara></listitem>
+	  <listitem><simpara>OPCODE6DIR64: Defines the location of csound opcode plugins for the double precision float (64-bit) version.</simpara></listitem>
 	  <listitem><simpara>SNAPDIR: Is used by the FLTK widget opcodes when loading and saving snapshots. </simpara></listitem>
 	  <listitem><simpara>CSOUNDRC: Defines the csound resource (or configuration) file. A full path and filename containing csound flags must be specified. This variable defaults to .csoundrc if not present.</simpara></listitem>
 	  <listitem><simpara>CSSTRNGS: In Csound 5.00 and later versions, the localisation of messages is controlled by two environment variables CSSTRNGS and CS_LANG, both of which are optional. CSSTRNGS points to a directory containing .xmg files.</simpara></listitem>
@@ -29,7 +29,7 @@
   For more information about SFDIR, SSDIR, SADIR, MFDIR and INCDIR see <link linkend="OrchDirFiles"><citetitle>Directories and files</citetitle></link>.
   </para>
   <para>
-	  The only mandatory environment variables are OPCODEDIR and OPCODEDIR64. It is very important to set them correctly, otherwise most of the opcodes will not be available. Make sure you set the path correctly depending on the precision of your binary. if you run csound on a command line without any arguments you should see some text like : Csound version 5.01.0 beta (float samples) Mar 23 2006. This text refers to the single precision version.
+	  The only mandatory environment variables are OPCODE6DIR and OPCODE6DIR64. It is very important to set them correctly, otherwise most of the opcodes will not be available. Make sure you set the path correctly depending on the precision of your binary. if you run csound on a command line without any arguments you should see some text like : Csound version 6.03.1 (double samples) May 10 2014. This text refers to the double precision version.
   </para>
   <para>
   CSSTRNGS and CS_LANG currently have very limited use since Csound has not yet been completely translated into other languages.</para>
@@ -48,7 +48,7 @@
     <para>You can set environment variables on the command line or the configuration file .csoundrc by using the command line flag --env:NAME=VALUE or --env:NAME+=VALUE, where NAME is the environment variable name, and VALUE is its value. See <link linkend="CommandFlags"><citetitle>Command-line Flags</citetitle></link>
     </para>
     <note>
-      <para>Please note that this method of setting environment variables will not work for variables which are parsed before the command line arguments. SADIR, SSDIR, SFDIR, INCDIR, SNAPDIR, RAWWAVE_PATH, CSNOSTOP, SFOUTYP should work, but the following environment variables must be set on the system prior to running csound: OPCODEDIR, OPCODEDIR64, CSSTRINGS, and CS_LANG. CSOUNDRC can currently (v. 5.02) be set using --env, but this behavior is not guaranteed for future versions.</para>
+      <para>Please note that this method of setting environment variables will not work for variables which are parsed before the command line arguments. SADIR, SSDIR, SFDIR, INCDIR, SNAPDIR, RAWWAVE_PATH, CSNOSTOP, SFOUTYP should work, but the following environment variables must be set on the system prior to running csound: OPCODE6DIR, OPCODE6DIR64, CSSTRINGS, and CS_LANG. CSOUNDRC can currently (v. 5.02) be set using --env, but this behavior is not guaranteed for future versions.</para>
     </note>
     <bridgehead>Windows</bridgehead>
     <para>To set a csound environment on Windows XP and 2000 go to Control Panel->System->Advanced and click on the button 'Environment Variables'. On other versions of Windows earlier than Windows XP and Windows 2000 you set environment variables in the autoexec.bat file. Go to 'My Computer', select C: drive, right click on autoexec.bat, and select 'Edit'. The statement format is: SET NAME=VALUE .
@@ -56,13 +56,8 @@
     <bridgehead>Linux</bridgehead>
     <para>You can set environment variables on Linux in many ways. You can set them using the <emphasis>export</emphasis> shell command, by setting them on .bashrc or similar files or by adding them to the /etc/profile file.</para>
     <bridgehead>Mac</bridgehead>
-    <para>If the user has  a Mac that shipped with an OS X version prior to 10.3 (includes 10.2 and 10.1) then it is possible that the default shell is the Tenex C-shell (tcsh). If this is the case, then you either have to type:</para>
-    <screen> ~% setenv OPCODEDIR "/Users/you/your/Csound5/build"</screen>
-    <para>or change your /etc/profile and or edit your .tcshrc file.</para>
     
-    <para>If the user has a Mac that shipped with OS X 10.3 or 10.4 then it likely has the "Bourne-again" C-shell (bash) as the default shell. If this is the case, then the user must type something like:</para>
-    
-    <screen>~$ export OPCODEDIR=/Users/you/your/Csound5/build</screen>
+    <screen>~$ export OPCODE6DIR64=/Users/you/your/Csound6/build</screen>
     <para>in addition if the bash shell is the default, then it is usually easier to edit your .bashrc or /etc/profile.</para>
     
     <para>	  Note that if users choose one of the above methods, ie editing the .bashrc file then the environment variables are executed when a new shell is created. This can be problematic if your application implements a Quartz or Aqua interface and does not use the commandline.</para>
