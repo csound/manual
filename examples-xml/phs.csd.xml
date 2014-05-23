@@ -1,0 +1,96 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+-d -o dac
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> <emphasis role="ohdr">ksmps</emphasis> needs to be an integer div of
+   hopsize <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 64
+
+<emphasis role="oblock">instr</emphasis> 1
+
+ ihopsize <emphasis role="op">=</emphasis> 256  <emphasis role="comment">; hopsize</emphasis>
+ ifftsize <emphasis role="op">=</emphasis> 2048 <emphasis role="comment">; FFT size </emphasis>
+ iolaps <emphasis role="op">=</emphasis> ifftsize<emphasis role="op">/</emphasis>ihopsize <emphasis role="comment">; overlaps</emphasis>
+ ibw <emphasis role="op">=</emphasis> <emphasis role="ohdr">sr</emphasis><emphasis role="op">/</emphasis>ifftsize <emphasis role="comment">; bin bandwidth</emphasis>
+ kcnt <emphasis role="opc">init</emphasis> 0    <emphasis role="comment">; counting vars</emphasis>
+ krow <emphasis role="opc">init</emphasis> 0
+
+ kOla[] <emphasis role="opc">init</emphasis> ifftsize <emphasis role="comment">; overlap-add buffer</emphasis>
+ kIn[] <emphasis role="opc">init</emphasis> ifftsize  <emphasis role="comment">; input buffer</emphasis>
+ kOlph[] <emphasis role="opc">init</emphasis> ifftsize<emphasis role="op">/</emphasis>2<emphasis role="op">+</emphasis>1 <emphasis role="comment">; old phases</emphasis>
+ kPhs[] <emphasis role="opc">init</emphasis> ifftsize<emphasis role="op">/</emphasis>2<emphasis role="op">+</emphasis>1 <emphasis role="comment">; synthesis phases</emphasis>
+ kDeltaOut[] <emphasis role="opc">init</emphasis> ifftsize<emphasis role="op">/</emphasis>2<emphasis role="op">+</emphasis>1 <emphasis role="comment">; synthesis freqs</emphasis>
+ kMagsOut[] <emphasis role="opc">init</emphasis> ifftsize<emphasis role="op">/</emphasis>2<emphasis role="op">+</emphasis>1 <emphasis role="comment">; synthesis mags</emphasis>
+ kOut[][] <emphasis role="opc">init</emphasis> iolaps, ifftsize <emphasis role="comment">; output buffers</emphasis>
+
+ a1 <emphasis role="opc">diskin2</emphasis> "fox.wav",1,0,1 <emphasis role="comment">; audio input</emphasis>
+
+ <emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> every hopsize samples <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+ <emphasis role="octrl">if</emphasis> kcnt <emphasis role="op">==</emphasis> ihopsize then  
+   <emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> <emphasis role="opc">window</emphasis> and take FFT <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+   kWin[] <emphasis role="opc">window</emphasis> kIn,krow<emphasis role="op">*</emphasis>ihopsize
+   kSpec[] <emphasis role="opc">rfft</emphasis> kWin
+   
+  <emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> <emphasis role="opc">mags</emphasis> <emphasis role="op">&amp;</emphasis> phases <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+  kMags[] <emphasis role="opc">mags</emphasis> kSpec 
+  kPha[] <emphasis role="opc">phs</emphasis> kSpec
+  
+  <emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> phase diffs <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+  kDelta[] <emphasis role="op">=</emphasis> kPha <emphasis role="op">-</emphasis> kOlph 
+  kOlph <emphasis role="op">=</emphasis> kPha
+  
+  <emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> <emphasis role="opc">pitch</emphasis> shift <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+  ki <emphasis role="op">=</emphasis> 0
+  iscal <emphasis role="op">=</emphasis> 1.25 <emphasis role="comment">; maj 3rd up</emphasis>
+  until ki <emphasis role="op">==</emphasis> ifftsize<emphasis role="op">/</emphasis>2 do
+   <emphasis role="octrl">if</emphasis> ki<emphasis role="op">*</emphasis>iscal <emphasis role="op">&lt;</emphasis> ifftsize<emphasis role="op">/</emphasis>2 then
+     kDeltaOut[ki<emphasis role="op">*</emphasis>iscal] <emphasis role="op">=</emphasis> kDelta[ki]<emphasis role="op">*</emphasis>iscal
+     kMagsOut[ki<emphasis role="op">*</emphasis>iscal] <emphasis role="op">=</emphasis> kMags[ki]
+   <emphasis role="octrl">endif</emphasis>
+    ki <emphasis role="op">+</emphasis><emphasis role="op">=</emphasis> 1
+  od
+  
+  <emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> accum phases <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+   kPhs <emphasis role="op">=</emphasis> kDeltaOut <emphasis role="op">+</emphasis> kPhs 
+   kSpec <emphasis role="opc">pol2rect</emphasis> kMagsOut,kPhs
+   
+   <emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> IFFT <emphasis role="op">+</emphasis> <emphasis role="opc">window</emphasis> <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+   kRow[] <emphasis role="opc">irfft</emphasis> kSpec
+   kWin <emphasis role="opc">window</emphasis> kRow, krow<emphasis role="op">*</emphasis>ihopsize
+   <emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> place it on <emphasis role="opc">out</emphasis> buffer <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+   kOut <emphasis role="opc">setrow</emphasis> kWin, krow
+
+   <emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> zero the ola buffer <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+   kOla <emphasis role="op">=</emphasis> 0
+   <emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> overlap<emphasis role="op">-</emphasis>add <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+   ki <emphasis role="op">=</emphasis> 0
+   until ki <emphasis role="op">==</emphasis> iolaps do
+     kRow <emphasis role="opc">getrow</emphasis> kOut, ki
+     kOla <emphasis role="op">=</emphasis> kOla <emphasis role="op">+</emphasis> kRow
+     ki <emphasis role="op">+</emphasis><emphasis role="op">=</emphasis> 1
+   od
+  
+  <emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> update counters <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis> 
+  krow <emphasis role="op">=</emphasis> (krow<emphasis role="op">+</emphasis>1)<emphasis role="op">%</emphasis>iolaps
+  kcnt <emphasis role="op">=</emphasis> 0
+ <emphasis role="octrl">endif</emphasis>
+
+ <emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> shift audio <emphasis role="opc">in</emphasis><emphasis role="op">/</emphasis><emphasis role="opc">out</emphasis> of buffers <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+ kIn <emphasis role="opc">shiftin</emphasis> a1
+ a2 <emphasis role="opc">shiftout</emphasis> kOla
+ a1 <emphasis role="opc">delay</emphasis> a1, (ifftsize<emphasis role="op">+</emphasis>ihopsize)<emphasis role="op">/</emphasis><emphasis role="ohdr">sr</emphasis>
+    <emphasis role="opc">out</emphasis> a1<emphasis role="op">*</emphasis>0.3<emphasis role="op">+</emphasis>a2<emphasis role="op">/</emphasis>iolaps
+
+ <emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> increment counter <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+ kcnt <emphasis role="op">+</emphasis><emphasis role="op">=</emphasis> <emphasis role="ohdr">ksmps</emphasis>
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">i</emphasis>1 0 10
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>
