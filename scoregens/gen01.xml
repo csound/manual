@@ -21,13 +21,17 @@
  
   <refsect1>
     <title>Syntax</title>
-    <synopsis><command>f</command>#  time  size  1  filcod  skiptime  format  channel</synopsis>
+    <synopsis><command>f</command>#  time  size  normalize  filcod  skiptime  format  channel</synopsis>
   </refsect1>
  
   <refsect1>
     <title>Performance</title>
     <para>
       <emphasis>size</emphasis> -- number of points in the table. Ordinarily a power of 2 or a power-of-2 plus 1 (see <link linkend="f"><citetitle>f statement</citetitle></link>); the maximum tablesize is 16777216 (2<superscript>24</superscript>) points. The allocation of table memory can be <emphasis>deferred</emphasis> by setting this parameter to 0; the size allocated is then the number of points in the file (probably not a power-of-2), and the table is not usable by normal oscillators, but it is usable by a <link linkend="loscil"><citetitle>loscil</citetitle></link> unit. The soundfile can also be mono or stereo.
+    </para>
+
+    <para>
+      <emphasis>normalize</emphasis> -- If positive, the table will be post-normalized (rescaled to a maximum absolute value of 1 after generation). A negative value will cause rescaling to be skipped.
     </para>
 
     <para>
@@ -62,12 +66,6 @@
           <listitem>
             <para>
               Reading stops at end-of-file or when the table is full. Table locations not filled will contain zeros.
-            </para>
-          </listitem>
-
-          <listitem>
-            <para>
-              If p4 is positive, the table will be post-normalized (rescaled to a maximum absolute value of 1 after generation). A negative p4 will cause rescaling to be skipped.
             </para>
           </listitem>
 
