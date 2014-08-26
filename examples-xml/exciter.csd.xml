@@ -1,0 +1,37 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="ohdr">sr</emphasis><emphasis role="op">=</emphasis>44100
+<emphasis role="ohdr">ksmps</emphasis><emphasis role="op">=</emphasis>1
+<emphasis role="ohdr">nchnls</emphasis><emphasis role="op">=</emphasis>2
+<emphasis role="ohdr">0dbfs</emphasis><emphasis role="op">=</emphasis>1
+
+<emphasis role="oblock">instr</emphasis> 1 <emphasis role="comment">; original sound</emphasis>
+  a1 <emphasis role="opc">diskin2</emphasis> "beats.wav", 1, 0, 1
+                <emphasis role="comment">;freq, ceiling, drive and blend</emphasis>
+  a2 exciter a1, 3000, 15000, 5, <emphasis role="op">-</emphasis>5
+     <emphasis role="opc">outs</emphasis>     a1, a1
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 2 <emphasis role="comment">; excited sound + original sound</emphasis>
+  a1 <emphasis role="opc">diskin2</emphasis> "beats.wav", 1, 0, 1
+                <emphasis role="comment">;freq, ceiling, ceiling_active, blend and drive</emphasis>
+  a2 exciter a1, 3000, 15000, 5, <emphasis role="op">-</emphasis>5
+     <emphasis role="opc">outs</emphasis>     a2<emphasis role="op">+</emphasis>a1, a2<emphasis role="op">+</emphasis>a1
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 3 <emphasis role="comment">; excited sound only</emphasis>
+  a1 <emphasis role="opc">diskin2</emphasis> "beats.wav", 1, 0, 1
+                <emphasis role="comment">;freq, ceiling, ceiling_active, blend and drive</emphasis>
+  a2 exciter a1, 3000, 15000, 5, <emphasis role="op">-</emphasis>5
+     <emphasis role="opc">outs</emphasis>     a2, a2
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">i</emphasis>3 0 6
+<emphasis role="stamnt">i</emphasis>2 7 6
+<emphasis role="stamnt">i</emphasis>1 14 6
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>
