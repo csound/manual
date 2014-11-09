@@ -1,0 +1,29 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+-odac
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis> <emphasis role="op">=</emphasis> 1
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 8
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+
+<emphasis role="oblock">instr</emphasis> hdf5read
+
+    aArray[], aVar, kVar hdf5read "example.h5", "aArray", "aVar", "kVar" <emphasis role="comment">; Open hdf5 file and read variables</emphasis>
+
+    aLeft <emphasis role="op">=</emphasis> (aArray[0][0] <emphasis role="op">+</emphasis> aArray[0][1] <emphasis role="op">+</emphasis> aVar) <emphasis role="op">/</emphasis> 3 <emphasis role="comment">; Add audio signals together for stereo out</emphasis>
+    aRight <emphasis role="op">=</emphasis> (aArray[1][0] <emphasis role="op">+</emphasis> aArray[1][1] <emphasis role="op">+</emphasis> aVar) <emphasis role="op">/</emphasis> 3
+
+    <emphasis role="opc">outs</emphasis> aLeft <emphasis role="op">*</emphasis> kVar, aRight <emphasis role="op">*</emphasis> kVar <emphasis role="comment">; Multiply audio signals by k-rate signal</emphasis>
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis> "hdf5read" 0 1
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>
