@@ -65,11 +65,15 @@
       cannot use it with mixed 32 and 64 computers for instance.
     </note>    
     <note>
-      Internally this opcode makes use of the gethostname and
+      Internally this opcode may make use of the gethostname and
       gethostbyname functions to determine the client's and server's
-      IP address for checking which messages are for which machine.
+      IP address for checking which messages are for which machine, or
+      on non-windows system other techniques.
       If a computer has more than one IP address there is no way to
-      control which IP address is found.
+      control which IP address is found (but see below).  On
+      non-windows systems the default network is eth0 or en0, and if
+      that fails wlan0.  (Since version 6.05) the network to be used
+      can be set with an environment variable CS_ETHER. 
     </note>
     <note>
       The remote operation does not allow the sending of strings at
