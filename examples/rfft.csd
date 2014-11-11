@@ -36,7 +36,7 @@ A
    kProd cmplxprod kSpec, KSpec2
    
    /* IFFT + window */
-   kRow[] irfft kProd
+   kRow[] rifft kProd
    kWin window kRow, krow*ihopsize
    /* place it on out buffer */
    kOut setrow kWin, krow
