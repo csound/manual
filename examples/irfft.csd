@@ -39,7 +39,7 @@ instr 1
    od
    
    /* IFFT + window */
-   kRow[] irfft kSpec
+   kRow[] rifft kSpec
    kWin window kRow, krow*ihopsize
    /* place it on out buffer */
    kOut setrow kWin, krow

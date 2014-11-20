@@ -16,7 +16,7 @@ a1 oscili 0dbfs/2, 440
 if kcnt >= ifftsize then
  kCmplx[] r2c kIn
  kSpec[] fft kCmplx
- kCmplx ifft kSpec
+ kCmplx ifftinv kSpec
  kOut c2r kCmplx
  kcnt = 0 
 endif
