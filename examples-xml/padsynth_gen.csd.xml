@@ -1,0 +1,54 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="ohdr">sr</emphasis><emphasis role="op">=</emphasis>44100
+<emphasis role="ohdr">ksmps</emphasis><emphasis role="op">=</emphasis>1
+<emphasis role="ohdr">nchnls</emphasis><emphasis role="op">=</emphasis>2
+<emphasis role="ohdr">0dbfs</emphasis><emphasis role="op">=</emphasis>1000
+
+	gispec_len <emphasis role="opc">init</emphasis> 2^18
+
+    <emphasis role="comment">;                    p1 p2 p3         p4           p5    p6  p7 p8  p9</emphasis>
+	gi_padsynth_1 <emphasis role="ohdr">ftgen</emphasis> 0, 0, gispec_len, "padsynth", 440, 56.96943, 1, 1,  0.7600046992, 0.6199994683, 0.9399998784, 0.4400023818, 0.0600003302, 0.8499968648, 0.0899999291, 0.8199964762, 0.3199984133, 0.9400014281, 0.3000001907, 0.120003365, 0.1799997687, 0.5200006366, 0.9300042987
+
+	<emphasis role="oblock">instr</emphasis> 1	<emphasis role="comment">;PadSynth</emphasis>
+    istereo_phase <emphasis role="op">=</emphasis> 0
+    iphase <emphasis role="opc">random</emphasis> 0, 1
+    iattack <emphasis role="op">=</emphasis> 0.08
+    idecay <emphasis role="op">=</emphasis> 0.1
+    isustain <emphasis role="op">=</emphasis> 0.25
+    irelease <emphasis role="op">=</emphasis> 0.2
+    kenv <emphasis role="opc">madsr</emphasis> iattack, idecay, isustain, irelease
+    ifreq <emphasis role="opc">cpsmidinn</emphasis> p4
+    iamp <emphasis role="opc">ampdb</emphasis> p5
+	ibasefreq <emphasis role="op">=</emphasis> 440 <emphasis role="comment">; can be lower or higher frequency; close to played frequency is said to be best</emphasis>
+	ibw_cents <emphasis role="op">=</emphasis> 56.96943 <emphasis role="comment">; width of the peaks, 100 is whole note</emphasis>
+
+<emphasis role="octrl">if</emphasis> istereo_phase<emphasis role="op">==</emphasis>0 then
+	asig <emphasis role="opc">oscili</emphasis> iamp, ifreq<emphasis role="op">*</emphasis>(<emphasis role="ohdr">sr</emphasis><emphasis role="op">/</emphasis>gispec_len<emphasis role="op">/</emphasis>ibasefreq), gi_padsynth_1, iphase
+	asig <emphasis role="op">=</emphasis> asig<emphasis role="op">*</emphasis>kenv
+	aleft, aright <emphasis role="opc">pan2</emphasis> asig, 0.5
+	<emphasis role="opc">outs</emphasis> aleft, aright
+<emphasis role="octrl">else</emphasis>
+	asig1 <emphasis role="opc">oscili</emphasis> iamp, ifreq<emphasis role="op">*</emphasis>(<emphasis role="ohdr">sr</emphasis><emphasis role="op">/</emphasis>gispec_len<emphasis role="op">/</emphasis>ibasefreq), gi_padsynth_1, iphase
+	asig2 <emphasis role="opc">oscili</emphasis> iamp, ifreq<emphasis role="op">*</emphasis>(<emphasis role="ohdr">sr</emphasis><emphasis role="op">/</emphasis>gispec_len<emphasis role="op">/</emphasis>ibasefreq), gi_padsynth_1, iphase<emphasis role="op">+</emphasis>0.5
+	<emphasis role="opc">outs</emphasis> asig1<emphasis role="op">*</emphasis>kenv, asig2<emphasis role="op">*</emphasis>kenv
+<emphasis role="octrl">endif</emphasis>
+
+	<emphasis role="oblock">endin</emphasis>
+
+
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+
+
+<emphasis role="stamnt">i</emphasis>1 0 2 60.00 60
+<emphasis role="stamnt">i</emphasis>1 + 2 72.00 60
+<emphasis role="stamnt">i</emphasis>1 + 2 84.00 60
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

@@ -22,8 +22,8 @@ instr 1
   iamp = 0dbfs / 4  ; Peaks 12 dB below 0dbfs
   print iamp
 
-  a1 noise iamp, gkbeta
-  printk2 gkbeta
+  a1 noise iamp, gkbeta*0.9999
+  printk2 gkbeta*0.9999
   outs a1,a1
 endin
 
