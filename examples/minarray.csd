@@ -4,6 +4,7 @@
 -n 
 </CsOptions>
 <CsInstruments>
+ksmps = 32
 ;example by joachim heintz
 
            seed       0
