@@ -27,25 +27,25 @@
 
  <emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> every hopsize samples <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
  <emphasis role="octrl">if</emphasis> kcnt <emphasis role="op">==</emphasis> ihopsize then
-   <emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> <emphasis role="opc">window</emphasis> and take FFT <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
-   kWin[] <emphasis role="opc">window</emphasis> kIn,krow<emphasis role="op">*</emphasis>ihopsize
-   kSpec[] <emphasis role="opc">rfft</emphasis> kWin
-   kWin <emphasis role="opc">window</emphasis> kSw,krow<emphasis role="op">*</emphasis>ihopsize
-   kSpec2[] <emphasis role="opc">rfft</emphasis> kWin
-   kProd[] <emphasis role="opc">cmplxprod</emphasis> kSpec, kSpec2
+   <emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> window and take FFT <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+   kWin[] window kIn,krow<emphasis role="op">*</emphasis>ihopsize
+   kSpec[] rfft kWin
+   kWin window kSw,krow<emphasis role="op">*</emphasis>ihopsize
+   kSpec2[] rfft kWin
+   kProd[] cmplxprod kSpec, kSpec2
 
-   <emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> IFFT <emphasis role="op">+</emphasis> <emphasis role="opc">window</emphasis> <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
-   kRow[] <emphasis role="opc">rifft</emphasis> kProd
-   kWin <emphasis role="opc">window</emphasis> kRow, krow<emphasis role="op">*</emphasis>ihopsize
+   <emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> IFFT <emphasis role="op">+</emphasis> window <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
+   kRow[] rifft kProd
+   kWin window kRow, krow<emphasis role="op">*</emphasis>ihopsize
    <emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> place it on <emphasis role="opc">out</emphasis> buffer <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
-   kOut <emphasis role="opc">setrow</emphasis> kWin, krow
+   kOut setrow kWin, krow
 
    <emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> zero the ola buffer <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
    kOla <emphasis role="op">=</emphasis> 0
    <emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> overlap<emphasis role="op">-</emphasis>add <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
    ki <emphasis role="op">=</emphasis> 0
    until ki <emphasis role="op">==</emphasis> iolaps do
-     kRow <emphasis role="opc">getrow</emphasis> kOut, ki
+     kRow getrow kOut, ki
      kOla <emphasis role="op">=</emphasis> kOla <emphasis role="op">+</emphasis> kRow
      ki <emphasis role="op">+</emphasis><emphasis role="op">=</emphasis> 1
    od
@@ -56,9 +56,9 @@
  <emphasis role="octrl">endif</emphasis>
 
  <emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> shift audio <emphasis role="opc">in</emphasis><emphasis role="op">/</emphasis><emphasis role="opc">out</emphasis> of buffers <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
- kIn <emphasis role="opc">shiftin</emphasis> a1
- kSw <emphasis role="opc">shiftin</emphasis> asw
- a2 <emphasis role="opc">shiftout</emphasis> kOla
+ kIn shiftin a1
+ kSw shiftin asw
+ a2 shiftout kOla
     <emphasis role="opc">out</emphasis> a2<emphasis role="op">/</emphasis>iolaps
 
  <emphasis role="op">/</emphasis><emphasis role="op">*</emphasis> increment counter <emphasis role="op">*</emphasis><emphasis role="op">/</emphasis>
