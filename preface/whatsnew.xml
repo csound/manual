@@ -66,6 +66,266 @@
     </itemizedlist>
   </para>-->
 
+  <bridgehead>Release Notes for Csound 6.05 (2015 April)</bridgehead>
+  <para>As ever there are new facilities and numerous bug-fixes.  A major part of
+  this release is the removal of a number of memory leaks and over use
+  of memory.  Naturally these changes are all but invisible, just a
+  smaller memory foot-print.
+
+  Note that we track bugs and requests for enhancements via the github
+  issues system, and these had a significant affect on this release.</para>
+  <para>
+    <itemizedlist>
+      <listitem>
+        <para>New Gen and Macros:
+          <itemizedlist>
+            <listitem>
+              <simpara>Paul Octavian Nasca's padsynth algorithm implemented as a gen.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Score:
+          <itemizedlist>
+            <listitem>
+              <simpara>Fixed string location calculation bug when processing score
+              lines [fixes #443]</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Options:
+          <itemizedlist>
+            <listitem>
+              <simpara>A short-format copyright option is available, with a fixed
+              number of well-known licences (CC, etc)</simpara>
+            </listitem>
+            <listitem>
+              <simpara>New command-line option to report MIDI devices in simple
+              format</simpara>
+            </listitem>
+            <listitem>
+              <simpara>A short-format copyright option is available, with a fixed
+              number of well-known licences (CC, etc)</simpara>
+            </listitem>
+            <listitem>
+              <simpara>New command-line option to set ksmps</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Modified Opcodes and Gens:
+          <itemizedlist>
+            <listitem>
+              <simpara><emphasis>adsynt</emphasis> handles amplitude changes
+              better</simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>sfont</emphasis> has better checking for
+              corruptions</simpara>
+            </listitem>
+            <listitem>
+              <simpara>better checking in physical models for out-of-range
+              frequencies</simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>ftgenonce</emphasis> and others allows string
+              parameters</simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>gausstrig</emphasis> reworked and extended with new
+              features</simpara>
+            </listitem>
+            <listitem>
+              <simpara>use of <emphasis>p()</emphasis> function no longer
+              complains overrides the pcnt warning</simpara>
+            </listitem>
+            <listitem>
+              <simpara>fix to <emphasis>midirecv</emphasis></simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>OSCsend</emphasis> cleans up after use
+              improved</simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>fillarray</emphasis> is limited to 1 or 2
+              dimensional arrays; in fact it failed silently previously for 3D
+              and higher.</simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>oscbnk</emphasis> now works when the equaliser
+              is used.</simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>mp3in</emphasis> now works with both mono and
+              stereo input files</simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>flooper</emphasis> &amp; <emphasis>flooper2</emphasis>
+              now allow stereo tables</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Release phase of <emphasis>expsegr</emphasis> fixed</simpara>
+            </listitem>
+            <listitem>
+              <simpara>f-tables created by a large number of arguments could
+              overwrite memory, now fixed</simpara>
+            </listitem>
+            <listitem>
+              <simpara>performance of <emphasis>plltrack</emphasis> improved
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>init of arrays clarified and checked</simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>gen23</emphasis> corrected to stop an infinite
+              loop</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Frontends:
+          <itemizedlist>
+            <listitem>
+              <simpara>pnacl</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>Added interface to allow the use of Csound's MIDI input
+                  system.</simpara>
+                </listitem>
+                <listitem>
+                  <simpara>Fixed audio input to conform to the latest Pepper API
+                  spec.</simpara>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Bugs fixed:
+          <itemizedlist>
+            <listitem>
+              <simpara>bugs in fastabi,oscktp, phasorbnk, adsr, xadsr, hrtfer fixed.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>bugs in the harmon. harmon2, harmon3 and harmon4 fixed.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Csound could crash after a parsing error, a case now removed.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Fixed the alwayson opcode crashing in CsoundVST performance.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          System changes:
+          <itemizedlist>
+            <listitem>
+              <simpara>There are now checks that xin/xout types match those defined
+              as part of UDO definition.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>jack now has a timeout.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Internal Changes:
+          <itemizedlist>
+            <listitem>
+              <simpara>Many defects indicated by coverity fixed or code changed.
+              Should make csound more robust in edge cases.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Parser-related changes simplifies allocation of temporary
+              variables, with some new optimisations.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>code for multi-thread rendering improved and stablised
+              vis-a-vis redefinition of instruments.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Platform Specific:
+          <itemizedlist>
+            <listitem>
+              <simpara>iOS.</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>Fixed audio callback to work correctly with lightning
+                  output and Apple TV.</simpara>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+            <listitem>
+              <simpara>Android.</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>New experimental audio IO mode: csoundPerformKsmps()
+                  is called from the OpenSL ES output callback. This mode can
+                  be optionally enabled by passing a value of "false" to a new
+                  second parameter to the CsoundObj constructor (bool isAsync).
+                  The default constructor and the one-parameter sets this to
+                  "true" (keeping backwards compatibility with existing
+                  code).</simpara>
+                </listitem>
+                <listitem>
+                  <simpara>Android app</simpara>
+                  <itemizedlist>
+                    <listitem>
+                      <simpara>Includes now the OSC opcodes.</simpara>
+                    </listitem>
+                    <listitem>
+                      <simpara>There are new file open and save dialogs that
+                      permit the user to access the SD card on the device, if
+                      there is one, in addition to internal storage.</simpara>
+                    </listitem>
+                    <listitem>
+                      <simpara>There is a new "Save as..." button that permits
+                      the user to save the csd as a new file with a new name.</simpara>
+                    </listitem>
+                    <listitem>
+                      <simpara>Many of the examples in the archive of Android
+                      examples are now built into the app and can be run from the
+                      app's menu.</simpara>
+                    </listitem>
+                    <listitem>
+                      <simpara>Includes now the exciter opcode.</simpara>
+                    </listitem>
+                  </itemizedlist>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+            <listitem>
+              <simpara>Linux.</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>Linux is now build without FLTK threads. This removes
+                  system hangs and is in line with other builds.</simpara>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+
 <bridgehead>Release Notes for Csound 6.04 (2014 November)</bridgehead>
   <para>This new version has many extensions and fixes; many new opcodes
   and significant numbers of internal reworking.  There is a new
