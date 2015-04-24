@@ -9,30 +9,142 @@
   <refnamediv>
     <refname>loscilx</refname>
     <refpurpose>
-      Loop oscillator.
+        Read multi-channel sampled sound from a table.
     </refpurpose>
   </refnamediv>
   
   <refsect1>
     <title>Description</title>
     <para>
-      This file is currently a stub, but the syntax should be correct.
+      Read sampled sound (up to 16 channels) from a table, with
+      optional sustain and release looping. 
     </para>
   </refsect1>
   <refsect1>
     <title>Syntax</title>
     <synopsis>ar1 [, ar2, ar3, ar4, ar5, ar6, ar7, ar8, ar9, ar10, ar11, ar12, ar13, ar14, \
       ar15, ar16] <command>loscilx</command> xamp, kcps, ifn \
-      [, iwsize, ibas, istrt, imod1, ibeg1, iend1]</synopsis>
+      [, iwsize, ibas, istrt, imod, ibeg, iend]</synopsis>
   </refsect1>
  
-<!--  <refsect1>
+  <refsect1>
     <title>Initialization</title>
-  </refsect1>-->
- 
+    <para>
+      <emphasis>ifn</emphasis> -- function table number, typically
+      denoting an sampled sound segment with prescribed looping points
+      loaded using <link
+      linkend="GEN01"><citetitle>GEN01</citetitle></link>. The source
+      file may have up to 16 channels.
+    </para>
+
+    <para>
+      <emphasis>iwsize</emphasis> (optiomal) -- window size used in interpolation.
+    </para>
+
+    <para>
+      <emphasis>ibas</emphasis> (optional) -- base frequency in
+      <emphasis>Hz</emphasis> of the recorded sound. This optionally
+      overrides the frequency given in the audio file, but is required
+      if the file did not contain one. The default value is 261.626
+      Hz, i.e. middle C. (New in Csound 4.03). If this value is not
+      known or not present, use 1 here and in
+      <emphasis>kcps</emphasis>.
+    </para>
+
+    <para><emphasis>istrt</emphasis> (optional, default 0) -- Frame to
+    start reading the data.  If this is not an integer the the data is
+    interpolated (see <emphasis>iwsize</emphasis>).
+    </para>
+
+    <para><emphasis>imod</emphasis> (optional, default -1) --  play mode
+    for the sustain and release loops. A value of 1 denotes normal
+    looping, 2 denotes forward &amp; backward looping, 0 denotes no
+    looping. The default value (-1) will defer to the mode and the
+    looping points given in the source file. Make sure you select an
+    appropriate mode if the file does not contain this information.
+    </para>
+
+    <para><emphasis>ibeg, iend</emphasis> (optional, depending on
+    <emphasis>imod</emphasis>) -- begin and end points of the sustain
+    and release loops. These are measured in <emphasis>sample
+    frames</emphasis> from the beginning of the file. If no loop
+    points are specified, and a looping mode
+    (<emphasis>imod</emphasis> is given, the file will be looped for
+    the whole length.
+    </para>
+  </refsect1> 
+
+    <refsect1>
+    <title>Performance</title>
+
+    <para>
+      <emphasis>ar1, ar2, ...</emphasis> -- the output at audio-rate.
+      The number of outputs must match the number of channels in the
+      sample file.
+    </para>
+
+    <para>
+      <emphasis>xamp</emphasis> -- the amplitude of the output signal.
+    </para>
+
+    <para>
+      <emphasis>kcps</emphasis> -- the factor to read the file.  For
+      example, a value of 1 has no pitch change, 1.5 is up a fifth and
+      2 an octave.
+    </para>
+    <para>
+      <emphasis>loscilx</emphasis> samples the ftable audio at a rate
+      determined by <emphasis>kcps</emphasis>, then multiplies the
+      result by <emphasis>xamp</emphasis>. The sampling increment for
+      <emphasis>kcps</emphasis> is dependent on the table's base-note
+      frequency <emphasis>ibas</emphasis>, and is automatically
+      adjusted if the orchestra <emphasis>sr</emphasis> value differs
+      from that at which the source was recorded. In this unit, ftable
+      is always sampled with interpolation.
+    </para>
+    <para>
+      If sampling reaches the <emphasis>sustain loop</emphasis>
+      endpoint and looping is in effect, the point of sampling will be
+      modified and <emphasis>loscil</emphasis> will continue reading
+      from within that loop segment. Once the instrument has received
+      a <emphasis>turnoff</emphasis> signal (from the score or from a
+      MIDI noteoff event), the next sustain endpoint encountered will
+      be ignored and sampling will continue towards the
+      <emphasis>release loop</emphasis> end-point, or towards the last
+      sample (henceforth to zeros).
+    </para>
+
+    <para>
+      If you want to loop the whole file, specify a looping mode in
+      <emphasis>imod</emphasis> and do not enter any values for
+      <emphasis>ibeg</emphasis> and <emphasis>iend</emphasis>. 
+    </para>
+
+    </refsect1>
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the loscilx opcode. It uses the files
+      <ulink
+          url="examples/loscil.csd"><citetitle>loscil.csd</citetitle></ulink>
+      and <ulink
+      url="examples/kickroll.wav"><citetitle>kickroll.wav</citetitle></ulink>.
+      <example>
+        <title>Example of the loscilx opcode.</title>
+        <para>See the sections <link
+        linkend="UsingRealTime"><citetitle>Real-time
+        Audio</citetitle></link> and <link
+        linkend="CommandFlags"><citetitle>Command Line
+        Flags</citetitle></link> for more information on using command
+        line flags.</para> 
+          <xi:include href="examples-xml/loscilx.csd.xml"
+                      xmlns:xi="http://www.w3.org/2001/XInclude"/> 
+      </example>
+    </para>
+  </refsect1>
+
   <refsect1>
     <title>See Also</title>
-    <para><link linkend="sndload"><citetitle>sndload</citetitle></link></para>
     <para><link linkend="loscil"><citetitle>loscil</citetitle></link></para>
   </refsect1>
   <refsect1>
