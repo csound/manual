@@ -1,15 +1,15 @@
 
-<refentry id="srconv">
+<refentry id="src_conv">
   <refentryinfo><title>Utilities</title></refentryinfo>
   <refmeta>
-    <refentrytitle>srconv</refentrytitle>
+    <refentrytitle>src_conv</refentrytitle>
   </refmeta>
  
   <refnamediv>
-    <refname>srconv</refname>
+    <refname>src_conv</refname>
     <refpurpose>
       Converts the sample rate of an audio file.
-      <indexterm id="IndexSrconv"><primary>srconv</primary></indexterm>
+      <indexterm id="IndexSrc_Conv"><primary>src_conv</primary></indexterm>
     </refpurpose>
   </refnamediv>
  
@@ -20,14 +20,12 @@
     a sample rate of Rout.  Optionally the ratio (Rin / Rout) may be
     linearly time-varying according to a set of (time, ratio) pairs in
     an auxiliary file.
-    <note>This utility is suspect.  Better is to use libsamplerate.
-    srconv will be removed or replaced soon.</note>
     </para>
   </refsect1>
  
   <refsect1>
     <title>Syntax</title>
-    <synopsis><command>srconv</command> [flags] infile</synopsis>
+    <synopsis><command>src_conv</command> [flags] infile</synopsis>
   </refsect1>
 
   <refsect1>
@@ -39,12 +37,12 @@
     transposition ratio (srate / r) [don't specify both P and
     r]</para></listitem> 
         <listitem><para>-<emphasis>Q num</emphasis>  =quality factor
-    (1, 2, 3, or 4: default = 2)</para></listitem> 
+    (1, 2, 3, 4 or 5: default = 3)</para></listitem> 
         <listitem><para>-<emphasis>i filnam</emphasis> = auxiliary 
     breakpoints file (no breakpoint by default. i.e. No ratio change)
     </para></listitem> 
         <listitem><para>-<emphasis>r num</emphasis> = output sample
-    rate (must be specified)</para></listitem> 
+    rate (must be specified if no P)</para></listitem> 
         <listitem><para>-<emphasis>o fnam</emphasis> = sound output
     filename</para></listitem> 
         <listitem><para>-<emphasis>A</emphasis> = create an AIFF
@@ -78,42 +76,39 @@
         <listitem><para>-<emphasis>H#</emphasis> = print a heartbeat
     style 1, 2 or 3 at each soundfile write</para></listitem> 
         <listitem><para>-<emphasis>N</emphasis> = notify (ring the
-    bell) when score or miditrack is done</para></listitem> 
-        <listitem><para>-<emphasis>- fnam</emphasis> = log output to
-    file</para></listitem> 
+    bell) when done</para></listitem> 
+    <!--     <listitem><para>-<emphasis>- fnam</emphasis> = log output to -->
+    <!-- file</para></listitem>  -->
       </itemizedlist>
     </para>
 
     <para>
       This program performs arbitrary sample-rate conversion with high
-      fidelity.  The method is to step through the input at the
-      desired sampling increment, and to compute the output points as
-      appropriately weighted averages of the surrounding input points.
-      There are two cases to consider:
-
-      <orderedlist>
-        <listitem><para>sample rates are in a small-integer ratio -
-        weights are obtained from table.</para></listitem> 
-        <listitem><para>sample rates are in a large-integer ratio -
-        weights are linearly interpolated from
-        table.</para></listitem> 
-      </orderedlist>
+      fidelity using tge libsamplerate library.
     </para>
 
-    <para>
-      Calculate increment: if decimating, then window is impulse
-    response of low-pass filter with cutoff frequency at half of
-    output sample rate; if interpolating, then window is impulse
-    response of lowpass filter with cutoff frequency at half of input
-    sample rate. 
-    </para>
+    <para>The five levels of accuracy are:
+    <itemizedlist>
+      <listitem> 1: A linear converter. The quality is poor, but the
+      conversion speed is blindingly fast. </listitem>
+      <listitem> 2:  A Zero Order Hold converter (interpolated value is
+      equal to the last value). The quality is poor but the conversion
+      speed is blindlingly fast.</listitem>
+      <listitem> 3: This is the fastest bandlimited interpolator and
+      has an SNR of 97dB and a bandwidth of 80%.</listitem>
+      <listitem> 4: This is another bandlimited interpolator much like
+      the previous one. It has an SNR of 97dB and a bandwidth of
+      90%. The speed of the conversion is much faster than the next
+      one.indlingly fast.</listitem>
+      <listitem> 5: This is a bandlimited interpolator derived from
+      the mathematical sinc function and this is the highest quality
+      sinc based converter, providing a worst case Signal-to-Noise
+      Ratio (SNR) of 97dB at a bandwidth of 97%.</itemizedlist>
   </refsect1>
  
   <refsect1>
     <title>Credits</title>
-    <para>Author: Mark Dolson</para>
-    <para>August 26, 1989</para>
     <para>Author: &namejohn;</para>
-    <para>December 30, 2000</para>
+    <para>May 2015</para>
   </refsect1>
 </refentry>

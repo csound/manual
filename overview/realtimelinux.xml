@@ -11,6 +11,7 @@
   </para>
   <para><ulink url="http://jackaudio.org/faq">http://jackaudio.org/faq</ulink>
   </para>
+  
   <bridgehead>Using ALSA</bridgehead>
   <para>
     The highest level of control and the lowest possible level of latency
@@ -27,6 +28,15 @@
     distros, or can be downloaded and built from source here:
   </para>
   <para><ulink url="ftp://ftp.alsa-project.org/pub/utils/">ftp://ftp.alsa-project.org/pub/utils/</ulink></para>
+  
+  <note>
+    On every boot, the soundcard may have a different hardware order number, especially when there are more soundcards in the system. This can be awkward as every time you have to set the right number again. You can assign a fixed order by adding some lines to /etc/modprobe.d/alsa-base-conf, for example for a card with the ice1712 chip :
+  <literallayout> 
+    # ALSA module ordering for soundcard
+    options snd slots=snd_ice1712
+  </literallayout>
+  </note>
+
   <bridgehead>Audio Output</bridgehead>
   <para>Running the following command:</para>
   <screen>
@@ -153,9 +163,22 @@ pcm.!default {
     </para>
     <screen>
           -+rtaudio=alsa -i adc:hw:0,0 -o dac:hw:1,1</screen>
-  <bridgehead>MIDI Input</bridgehead>
-    <para>Csound does not automatically create its own ALSA sequencer port. It creates
-      an ALSA raw midi port each time it runs. In order to enable your orchestra to receive MIDI input you can use VirMIDI or MIDIThru, whichever you prefer. Setting up these
+
+  <bridgehead>MIDI</bridgehead>
+    <para>2 Midi drivers are available:
+<itemizedlist>
+    <listitem>
+       <simpara>Raw Midi.</simpara>
+    </listitem>
+</itemizedlist>
+<itemizedlist>
+    <listitem>
+       <simpara>Alsa Sequencer (since version 5.18).</simpara>
+    </listitem>
+</itemizedlist>
+    </para>
+  <bridgehead>MIDI Input (Raw Midi driver)</bridgehead>
+    <para>In order to enable your orchestra to receive MIDI input you can use VirMIDI or MIDIThru, whichever you prefer. Setting up these
       virtual MIDI ports is a topic that has been covered extensively
       elsewhere, see 
       <ulink url="http://www.midi-howto.com/">The Linux MIDI how-to</ulink> 
@@ -238,13 +261,63 @@ client 24: 'PCR' [type=kernel]
     <screen>
           aconnect 24:1 20:0</screen>
     <para>Remember that Csound acts as a raw MIDI device and is not an ALSA sequencer client. This means that Csound will not appear in MIDI device listings and will not be available for use directly with <emphasis>aconnect</emphasis>, so you must connect to a virtual device (like 'virtual raw MIDI' or 'MIDI through') for persistent connections, or conect directly to the destination using command line flags.</para>
-  <bridgehead>MIDI Output</bridgehead>
+  <bridgehead>MIDI Output (Raw Midi driver)</bridgehead>
     <para>Csound can be connected to any device which shows up on the ALSA
       sequencer list of output ports, obtained by "amidi -l" as above. In
       order to connect a Csound synthesizer to the MIDI out port of the
       keyboard listed above, the following flag would be used:</para>
     <screen>
           -Qhw:2,0,0</screen>
+
+  <bridgehead>MIDI Input and Output (Midi Sequencer driver)</bridgehead>
+    <para>This driver is to be preferred over the Raw Midi driver. It has these advantages:
+<itemizedlist>
+    <listitem>
+       <simpara>Multiple concurrent access.</simpara>
+    </listitem>
+    <listitem>
+       <simpara>Scheduled by priority queues.</simpara>
+    </listitem>
+    <listitem>
+       <simpara>Real-time event dispatching i.e., the role of the Midi Sequencer is to deliver events at the right time (sequence) to the right destination (device).</simpara>
+    </listitem>
+</itemizedlist>
+    </para>
+    
+    <para>The following command will call the Midi Sequencer. Here it listens to midi port 20. The midi output port is also 20:
+    </para>
+    <screen>
+          -+rtmidi=alsaseq -M20 -Q20  </screen>
+
+    <para>Csound will automatically create its own ALSA sequencer port. For a list of available devices, use the following command: </para>
+    <screen>
+          aconnect -i -o </screen>
+ <para>This will create output that will look something
+      like the following:
+    </para>
+    <literallayout>    client 0: 'System' [type=kernel]
+    0 'Timer           '
+    1 'Announce        '
+client 14: 'Midi Through' [type=kernel]
+    0 'Midi Through Port-0'
+client 20: 'M Audio Delta 1010' [type=kernel]
+    0 'M Audio Delta 1010 MIDI'
+client 130: 'Csound' [type=user]
+    0 'Csound </literallayout>
+    <para>The output of Csound will contain lines like:</para>
+    <literallayout>
+...........
+ALSASEQ: opened MIDI output sequencer
+ALSASEQ: created output port 'Csound' 130:0
+ALSASEQ: connected to 20:0
+.............. 
+...........
+ALSASEQ: opened MIDI input sequencer
+ALSASEQ: created input port 'Csound' 130:0
+ALSASEQ: connected from 20:0
+.............. 
+    </literallayout>
+    
   <bridgehead>Scheduling</bridgehead>
     <para>If you are able to run Csound as the root user, using the "--sched"
       flag will dramatically improve realtime performance, when using ALSA,
