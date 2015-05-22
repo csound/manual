@@ -6,7 +6,7 @@
 #       on your system.
 # *************************************************************************
 BASENAME=Csound
-VERSION=6.04
+VERSION=6.05
 
 # export PATH=$PATH:/home/andres/bin/fop-0.20.5/
 # export JAVA_HOME=/usr/lib/jvm/java-6-sun/
