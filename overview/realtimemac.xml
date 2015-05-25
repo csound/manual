@@ -1,8 +1,58 @@
 
 <section id="RealTimeMac">
-  <title>Mac</title>
-    <para>
-      Coming Soon...
-    </para>
-
+  <title>Mac OSX</title>
+  <bridgehead>Real-time Audio</bridgehead>
+  <para>
+    OSX users can use either the  <emphasis>PortAudio</emphasis>
+    (default),<emphasis>auhal</emphasis>(or coreaudio), or the
+    <emphasis>Jack</emphasis> realtime audio modules. The auhal module
+    is a native OSX module which provides good latency, but it might
+    not work with some external hardware. The Jack module can be used
+    for interconnecting with other applications, but you will need to
+    install the JackOSX software in order to use it. To activate a
+    realtime module, you can use the <link
+    linkend="FlagsCatMinusPlusRtaudio"><citetitle>-+rtaudio</citetitle></link>
+    flag with value of <emphasis>portaudio</emphasis>,
+    <emphasis>auhal</emphasis>, or <emphasis>jack</emphasis>. The default value is <emphasis>portaudio</emphasis>, which is activated by default without specifying it.
+  </para>
+  <para>
+    You also need to specify the sound device you want to use, and
+    specify that you want to generate real-time audio ouput instead of
+    soundfile to disk output. To do this, you must use the <link
+    linkend="FlagsCatMinusLowerOdac"><citetitle>-odac</citetitle></link>
+    or <link linkend="FlagsCatMinusLowerOdac"><citetitle>-o
+    dac</citetitle></link> flag, which tells csound to output to the
+    Digital-to-Analog converters instead of a file. By adding a number
+    after the flag (e.g. -odac2), you can choose the device number you
+    want. To find out available devices in your system, you can use a
+    large out of range number (e.g. -odac99), and Csound will report
+    an error, and list available devices. This numbering convention
+    works for portaudio and auhal, but for Jack, you will need to
+    pass the name of the desired output device after a colon (e.g. -odac:system:playback_).
+  </para>
+  <para>
+    Enabling realtime audio input is done using <link
+    linkend="FlagsCatMinusLowerIadc"><citetitle>-iadc</citetitle></link>,
+    which makes csound listen to the realtime audio inputs. You can
+    again select the device by its number (or name), and check for available devices using an out of range number. Note that for input you use 'adc' instead of 'dac'. Make sure you have the appropriate input selected in your soundcard's control panel.
+  </para>
+  <bridgehead>Real-time MIDI</bridgehead>
+  <para>
+    To enable Real-time MIDI on OSX, you can use the <link linkend="FlagsCatMinusUpperM"><citetitle>-M</citetitle></link> flag for MIDI input and the <link linkend="FlagsCatMinusUpperQ"><citetitle>-Q</citetitle></link> flag for MIDI output. You might need to specify the device number after the flag (e.g. -M2), and again, you can find the available devices by giving an out of range number.
+  </para>
+  <para>
+    Csound will use PortMidi as the default MIDI module, but there's also a native coremidi module, which can be activated with the flag:
+  </para>
+  <literallayout>
+    -+rtmidi=cmidi
+  </literallayout>
+  <para>
+    The coremidi module corrently only supports MIDI input.
+  </para>
+  <para>
+    A typical set of flags to enable Real-time Audio and MIDI I/O can look like:
+  </para>
+  <literallayout>
+    -+rtmidi=cmidi -M1 -+rtaudio=auhal-odac3 -iadc3
+  </literallayout>
 </section>
