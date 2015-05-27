@@ -20,13 +20,13 @@ giWave   <emphasis role="ohdr">ftgen</emphasis>      0, 0, 1024, 10, 1, .5, .25
 
 <emphasis role="oblock">instr</emphasis> again 
 
-<emphasis role="opc">instance</emphasis> <emphasis role="op">=</emphasis>          p4 
+instance <emphasis role="op">=</emphasis>          p4 
  <emphasis role="comment">;reset the duration of this instance </emphasis>
 iDur     <emphasis role="opc">rnd31</emphasis>      5, 3				<emphasis role="comment">;shorter values are more probable </emphasis>
 iDur     <emphasis role="op">=</emphasis>          <emphasis role="opc">abs</emphasis>(iDur) <emphasis role="op">+</emphasis> 0.2 
 p3       <emphasis role="op">=</emphasis>          iDur 
  <emphasis role="comment">;trigger the effect instrument of this instance </emphasis>
-         <emphasis role="opc">event_i</emphasis>    "i", "fx_processor", 0, iDur, <emphasis role="opc">instance</emphasis> 
+         <emphasis role="opc">event_i</emphasis>    "i", "fx_processor", 0, iDur, instance 
  <emphasis role="comment">;print the status quo </emphasis>
 kTime    <emphasis role="opc">times</emphasis> 
          <emphasis role="opc">prints</emphasis>     "instance <emphasis role="op">=</emphasis> <emphasis role="op">%</emphasis>d, start <emphasis role="op">=</emphasis> <emphasis role="op">%</emphasis>f, duration <emphasis role="op">=</emphasis> <emphasis role="op">%</emphasis>f\n", instance, <emphasis role="opc">i</emphasis>(kTime), iDur 
@@ -36,11 +36,11 @@ iOct     <emphasis role="opc">random</emphasis>     5, 10				<emphasis role="com
 aEnv     <emphasis role="opc">transeg</emphasis>    0, 0.02, 0, 1<emphasis role="op">/</emphasis>iamp, p3<emphasis role="op">-</emphasis>0.02, <emphasis role="op">-</emphasis>6, 0	<emphasis role="comment">;output envelope </emphasis>
 aSend    <emphasis role="opc">poscil</emphasis>     aEnv, <emphasis role="opc">cpsoct</emphasis>(iOct), giWave		<emphasis role="comment">;audio signal </emphasis>
  <emphasis role="comment">;send signal to effect instrument </emphasis>
-Sbus     <emphasis role="opc">sprintf</emphasis>    "audio_<emphasis role="op">%</emphasis>d", <emphasis role="opc">instance</emphasis>		<emphasis role="comment">;create unique software bus </emphasis>
+Sbus     <emphasis role="opc">sprintf</emphasis>    "audio_<emphasis role="op">%</emphasis>d", instance		<emphasis role="comment">;create unique software bus </emphasis>
          <emphasis role="opc">chnset</emphasis>     aSend<emphasis role="op">/</emphasis>2, Sbus			<emphasis role="comment">;send audio on this bus </emphasis>
  <emphasis role="comment">;get the last k-cycle of this instance and trigger the successor in it </emphasis>
 kLast    <emphasis role="opc">release</emphasis> 
-         <emphasis role="opc">schedkwhen</emphasis> kLast, 0, 0, "again", 0, 1, <emphasis role="opc">instance</emphasis><emphasis role="op">+</emphasis>1 
+         <emphasis role="opc">schedkwhen</emphasis> kLast, 0, 0, "again", 0, 1, instance<emphasis role="op">+</emphasis>1 
 <emphasis role="oblock">endin</emphasis> 
 
 <emphasis role="oblock">instr</emphasis> fx_processor 
