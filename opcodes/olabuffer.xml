@@ -1,0 +1,77 @@
+<refentry id="olabuffer">
+<indexterm id="IndexOlabuffer"><primary>olabuffer</primary></indexterm>
+  <refentryinfo><title>Array operations: Fast Fourier Transform</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>olabuffer</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>olabuffer</refname>
+    <refpurpose>
+        Sum overlapping frames of audio as k-rate arrays and read as an audio signal
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+        <emphasis>olabuffer</emphasis> This opcode takes 1 dimensional k-rate arrays that contain sequential frames of audio and sums them based on an overlap factor resulting in an audio signal output. This is useful for frame based audio processing such as spectral analysis/synthesis.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>aout <command>olabuffer</command> kin, ioverlap</synopsis>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ioverlap</emphasis> -- The amount of overlaps per k-array input frame sample size. For example for an input window size of 1024, and a hop size of 256 the overlap factor would be 4. The overlap factor must be larger than or equal to ksmps and must also be an integer multiple of the input k-rate array sample count.
+    </para>
+     </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+ <para>
+      <emphasis>aout</emphasis> -- The resulting audio signal from the added input frames.
+      <emphasis>kin</emphasis> -- A k-rate array containing sequential frames of audio.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is a simple example of the olabuffer opcode. It uses the file <ulink url="examples/framebuffer.csd"><citetitle>framebuffer.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the olabuffer opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/framebuffer.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+</refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="olabuffer"><citetitle>olabuffer</citetitle></link>
+      <link linkend="shiftin"><citetitle>shiftin</citetitle></link>
+      <link linkend="shiftout"><citetitle>shiftout</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Edward Costello;</member>
+        <member>NUIM, 2015</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>
