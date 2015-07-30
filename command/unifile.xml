@@ -1,7 +1,7 @@
 
 <section id="CommandUnifile">
   <title>Unified File Format for Orchestras and Scores</title>
-   
+
   <section id="CommandUnifileDescription">
     <title>Description</title>
     <para>
@@ -80,7 +80,7 @@
       file will be extracted to the current directory, and deleted at
       end of performance. If there is an already existing file with
       the same name, it is not overwritten, but an error will occur
-      instead. 
+      instead.
     </para>
 
     <bridgehead>Version Blocking (&lt;CsVersion&gt;)</bridgehead>
@@ -112,7 +112,7 @@
         <emphasis>&lt;CsLicence&gt;</emphasis> and the end tag
         <emphasis>&lt;/CsLicence&gt;</emphasis>.  There is no format
         for this information, any text is acceptable.  This text will
-        be printed by Csound to the console when the CSD is run. 
+        be printed by Csound to the console when the CSD is run.
         </para>
 
         <bridgehead>Licence Information (&lt;CsShortLicence&gt; or &lt;CsShortLicense&gt;)</bridgehead>
@@ -121,7 +121,7 @@
           between the start tag
           <emphasis>&lt;CsShortLicence&gt;</emphasis> and the end tag
           <emphasis>&lt;/CsShortLicence&gt;</emphasis>.  This offers
-          seven well-known licences, coded as as an integer. 
+          seven well-known licences, coded as as an integer.
         </para>
         <para>
           <simplelist>
@@ -136,6 +136,43 @@
              </simplelist>
         </para>
 
+    <bridgehead>Embedded HTML (&lt;html&gt;)</bridgehead>
+      <para>
+        Any valid HTML code can be embedded in the CSD file. This code should be structured exactly like an ordinary Web page. This code
+        can contain any valid HTML, JavaScript, Cascading Style Sheet, WebGL, etc., etc. code.
+      </para>
+      <para>
+        In some Csound front ends and programming environments, including at least CsoundQt or Csound for Android, this page will be parsed, executed,
+        and displayed by a Web browser embedded in the environment. JavaScript code in this page will have access to a global <emphasis>csound</emphasis>
+        object that implements the following functions, which are a selected subset of the Csound API. The names, data types, and
+        uses of these functions are exactly the same as detailed in the Csound API Reference Manual.
+        </para>
+        <para>
+            <programlisting>
+[int] getVersion ();
+compileOrc (orchestra_text);
+[double] evalCode (orchestra_expression);
+readScore (score_text);
+setControlChannel (channel_name, numeric_value);
+[double] getControlChannel (channel_name);
+message (message_string);
+[int] getSr ();
+[int] getKsmps ();
+[int] getNchnls ();
+// Not a part of the Csound API -- called by the environment to detect whether Csound is running.
+[int] isPlaying ();
+            </programlisting>
+        </para>
+
+        <para>
+        The HTML element of the CSD file can be used to create custom user interfaces for the piece, to generate score events and even orchestra code
+        using JavaSscript, to store presets for widgets, and for many other purposes. The
+        <ulink url="examples/GameOfLife3D.csd"><citetitle>GameOfLife3D.csd</citetitle></ulink> and
+        <ulink url="examples/LindenmayerCanvas.csd"><citetitle>LindenmayerCanvas.csd</citetitle></ulink>
+        examples demonstrate these uses (tested in CsoundQt; running these examples
+        requires additional resources found in the Csound examples directory in GIT).
+        </para>
+
       </section>
 
       <section id="CommandUnifileExample">
@@ -147,23 +184,23 @@
             <programlisting>
 <emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>;
   <emphasis role="comment">; test.csd - a Csound structured data file</emphasis>
-  
+
 <emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
-  -W -d -o tone.wav 
+  -W -d -o tone.wav
 <emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
-  
+
 <emphasis role="csdtag">&lt;CsVersion&gt;</emphasis>    <emphasis role="comment">; optional section</emphasis>
   Before 4.10  <emphasis role="comment">; these two statements check for</emphasis>
   After 4.08   <emphasis role="comment">; Csound version 4.09</emphasis>
 <emphasis role="csdtag">&lt;/CsVersion&gt;</emphasis>
-  
+
 <emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
-  <emphasis role="comment">; originally tone.orc</emphasis> 
+  <emphasis role="comment">; originally tone.orc</emphasis>
   <emphasis role="ohdr">sr</emphasis> = 44100
   <emphasis role="ohdr">kr</emphasis> = 4410
   <emphasis role="ohdr">ksmps</emphasis> = 10
   <emphasis role="ohdr">nchnls</emphasis> = 1
-  <emphasis role="oblock">instr</emphasis>   1 
+  <emphasis role="oblock">instr</emphasis>   1
       a1 <emphasis role="opc">oscil</emphasis> p4, p5, 1 <emphasis role="comment">; simple oscillator</emphasis>
          <emphasis role="opc">out</emphasis> a1
   <emphasis role="oblock">endin</emphasis>

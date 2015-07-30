@@ -1,0 +1,91 @@
+
+<refentry id="websocket">
+<indexterm id="IndexWebsocket"><primary>websocket</primary></indexterm>
+  <refentryinfo><title>Signal I/O</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>websocket</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>websocket</refname>
+    <refpurpose>
+      Read and write signals and arrays using a websocket connection.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>websocket</emphasis> reads and writes <emphasis>N</emphasis> signals and arrays using a websocket connection.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>xout1[, xout2, xout3, ..., xoutN] <command>websocket</command> iport, xin1[, xin2, xin3, ..., xinN]</synopsis>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+        <emphasis>iport</emphasis> the local web port to read/write data.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>xout1,... xoutN</emphasis> -- The output variables which contain data received from a websocket. On the web side the websocket must send data using a protocol name that matches the output variable name e.g. "ksignal" for a k-rate variable. If an array is intended to be received from a websocket it must be first initialised before being used as an output to the opcode. Otherwise the opcode doesn't know what size data to expect from the websocket. When sending data to a websocket from the web page it must be sent as a 32 or 64 bit array, depending on the build of Csound that is being used. 
+    </para>
+    <para>
+        <emphasis>xin1,... xinN</emphasis> -- The input variables
+        which contain data which is sent to a websocket. On the web
+        side the websocket receives data using a protocol name that
+        matches the input variable name e.g. "ksignal" for a k-rate
+        variable. When receiving data from a websocket on the web page
+        it must be read as a 32 or 64 bit array, depending on the
+        build of Csound that is being used. <note>The total number of
+        input and output arguments is limited to 20.</note>
+    </para>
+
+    <title>Data Formatting</title>
+    <para> 
+        A-rate variables must be send and received as arrays that are <emphasis>ksmps</emphasis> samples large. A-rate arrays similarly are sent and received as <emphasis>ksmps</emphasis> by the number of elements in the array. K-rate variables are sent and received as a single element array. K-rate arrays are sent and received as arrays with matching numbers of elements. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is a simple example of the websocket opcode. It uses the file <ulink url="examples/websocket.csd"><citetitle>websocket.csd</citetitle></ulink> and <ulink url="examples/websocket.html"><citetitle>websocket.html</citetitle></ulink>.
+
+      <example>
+        <title>Example of the websocket opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/websocket.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+</refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="OSClisten"><citetitle>OSClisten</citetitle></link>
+      <link linkend="OSCsend"><citetitle>OSCsend</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Edward Costello;</member>
+        <member>NUIM, 2015</member>
+      </simplelist>
+    </para>
+    <para>New in version 6.06</para>
+  </refsect1>
+</refentry>
