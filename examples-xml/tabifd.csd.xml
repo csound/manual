@@ -1,0 +1,36 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac      <emphasis role="comment">;;;realtime audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o tabifd.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="ohdr">sr</emphasis><emphasis role="op">=</emphasis>44100
+<emphasis role="ohdr">ksmps</emphasis><emphasis role="op">=</emphasis>1
+<emphasis role="ohdr">nchnls</emphasis><emphasis role="op">=</emphasis>1
+<emphasis role="oblock">opcode</emphasis> TrackPlay, a, kkiiii
+ ktime,kthr,isiz,ihsiz,ifcos,ifn  <emphasis role="opc">xin</emphasis> 
+ idel <emphasis role="op">=</emphasis> isiz<emphasis role="op">-</emphasis>ihsiz<emphasis role="op">*</emphasis>(isiz<emphasis role="op">/</emphasis>(2<emphasis role="op">*</emphasis>ihsiz)<emphasis role="op">-</emphasis>1)
+ ffr,fphs <emphasis role="opc">tabifd</emphasis> ktime,10000,1, isiz, ihsiz, 1, ifn
+ ftrk <emphasis role="opc">partials</emphasis> ffr, fphs,kthr, 1, 1, 500
+ aout <emphasis role="opc">tradsyn</emphasis>   ftrk, 2,1, 500, ifcos 
+ <emphasis role="opc">xout</emphasis> aout
+<emphasis role="oblock">endop</emphasis>
+<emphasis role="oblock">instr</emphasis> 1
+p3 <emphasis role="op">=</emphasis> <emphasis role="opc">ftlen</emphasis>(2)<emphasis role="op">/</emphasis><emphasis role="ohdr">sr</emphasis>
+ktime <emphasis role="opc">line</emphasis> 0,p3,p3
+ares TrackPlay ktime, 0.003,2048,256,1,2
+     <emphasis role="opc">outs</emphasis> ares
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis>1 0 16384 9 1 1 90
+<emphasis role="stamnt">f</emphasis>2 0 0 1 "<emphasis role="stamnt">f</emphasis>ox.wav" 0 0 1
+<emphasis role="stamnt">i</emphasis>1	0 1 
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>
