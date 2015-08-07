@@ -1,0 +1,105 @@
+
+<refentry id="tabifd">
+<indexterm id="Indextabifd"><primary>tabifd</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tabifd</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>tabifd</refname>
+    <refpurpose>
+     Instantaneous Frequency Distribution, magnitude and phase analysis.
+          </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+  The tabifd opcode takes an input function table and performs an Instantaneous Frequency,
+  magnitude and phase analysis, using the STFT and tabifd (Instantaneous Frequency Distribution),
+  as described in Lazzarini et al, "Time-stretching using the Instantaneous Frequency Distribution and Partial
+  Tracking", Proc.of ICMC05, Barcelona. It generates two PV streaming signals, one containing the
+  amplitudes and frequencies (a similar output to pvsanal) and another containing amplitudes and 
+  unwrapped phases. 
+	      </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ffr,fphs <command>tabifd</command> ktimpt, kamp, kpitch, ifftsize, ihopsize, iwintype,ifn</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+
+       <para>
+      <emphasis>ifftsize</emphasis> -- FFT analysis size, must be power-of-two and integer multiple of the hopsize.
+    </para>
+    
+     <para>
+      <emphasis>ihopsize</emphasis> -- hopsize in samples
+    </para>
+
+    <para>
+      <emphasis>iwintype</emphasis> -- window type (O: Hamming, 1: Hanning) 
+    </para>
+
+    <para>
+      <emphasis>ifn</emphasis> -- source function table
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ffr</emphasis> -- output pv stream in AMP_FREQ format
+    </para>
+
+    <para>
+      <emphasis>fphs</emphasis> -- output pv stream in AMP_PHASE format
+    </para>
+
+        <para>
+      <emphasis>ktimpt</emphasis> -- time point (in secs) to read from
+      table (if less than 0 or bigger than table length, it will wraparound)
+	</para>
+
+	    <para>
+      <emphasis>kamp</emphasis> -- amplitude scaling
+	    </para>
+
+	        <para>
+      <emphasis>kpitch</emphasis> -- pitch scaling (transposition)
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the tabifd opcode. It uses the file <ulink url="examples/tabifd.csd"><citetitle>tabifd.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the tabifd opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/tabifd.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+        <para>The example above shows the tabifd analysis feeding into partial tracking andcubic-phase additive resynthesis with pitch shifting.</para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>Aug 2015 </member>
+      </simplelist>
+    </para>
+
+    <para>New plugin in version 6</para>
+    <para>Aug 2015</para>
+  </refsect1>
+</refentry>
