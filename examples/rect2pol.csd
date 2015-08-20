@@ -42,7 +42,7 @@ instr 1
    kSpec pol2rect kSpec
    
    /* IFFT + window */
-   kRow[] irfft kSpec
+   kRow[] rifft kSpec
    kWin window kRow, krow*ihopsize
    /* place it on out buffer */
    kOut setrow kWin, krow
