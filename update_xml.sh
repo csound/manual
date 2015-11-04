@@ -1,0 +1,2766 @@
+#!/bin/bash
+
+find . -name "*.xml" -exec sed -i '' \
+  -e 's|&ast;|*|g' \
+  -e 's|&auml;|ä|g' \
+  -e 's|&beta;|β|g' \
+  -e 's|&ccedil;|ç|g' \
+  -e 's|&circ;|^|g' \
+  -e 's|&commat;|@|g' \
+  -e 's|&dollar;|$|g' \
+  -e 's|&eacute;|é|g' \
+  -e 's|&equals;|=|g' \
+  -e 's|&lambda;|λ|g' \
+  -e 's|&le;|≤|g' \
+  -e 's|&minus;|−|g' \
+  -e 's|&nbsp;|\&#xA0;|g' \
+  -e 's|&num;|#|g' \
+  -e 's|&percnt;|\&#x25;|g' \
+  -e 's|&pi;|π|g' \
+  -e 's|&plus;|+|g' \
+  -e 's|&plusmn;|±|g' \
+  -e 's|&shy;|\&#xAD;|g' \
+  -e 's|&sol;|/|g' \
+  -e 's|&tilde;|~|g' \
+  -e 's/&verbar;/|/g' \
+  -e 's|&array;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="array.xml"/>|g' \
+  -e 's|&command;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="command/top.xml"/>|g' \
+  -e 's|&commanddesc;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="desc.xml"/>|g' \
+  -e 's|&commandenvironment;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="environment.xml"/>|g' \
+  -e 's|&commandflags;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flags.xml"/>|g' \
+  -e 's|&commandflagscategory;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flagscategory.xml"/>|g' \
+  -e 's|&commandpreproc;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="preproc.xml"/>|g' \
+  -e 's|&commandunifile;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="unifile.xml"/>|g' \
+  -e 's|&control;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="control/top.xml"/>|g' \
+  -e 's|&controlclockctl;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="clockctl.xml"/>|g' \
+  -e 's|&controlconditional;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="conditional.xml"/>|g' \
+  -e 's|&controldurctl;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="durctl.xml"/>|g' \
+  -e 's|&controlfltkappearance;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fltkappearance.xml"/>|g' \
+  -e 's|&controlfltkcontainers;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fltkcontainers.xml"/>|g' \
+  -e 's|&controlfltkgeneral;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fltkgeneral.xml"/>|g' \
+  -e 's|&controlfltkintro;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fltkintro.xml"/>|g' \
+  -e 's|&controlfltkother;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fltkother.xml"/>|g' \
+  -e 's|&controlfltkvaluators;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fltkvaluators.xml"/>|g' \
+  -e 's|&controlinvocat;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="invocat.xml"/>|g' \
+  -e 's|&controlpgmctl;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pgmctl.xml"/>|g' \
+  -e 's|&controlrealtime;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="realtime.xml"/>|g' \
+  -e 's|&controlreinitn;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="reinitn.xml"/>|g' \
+  -e 's|&controlsensing;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sensing.xml"/>|g' \
+  -e 's|&controlstacks;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="stacks.xml"/>|g' \
+  -e 's|&controlsubinstr;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="subinstr.xml"/>|g' \
+  -e 's|&controltimeread;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="timeread.xml"/>|g' \
+  -e 's|&csbeats;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="csbeats/top.xml"/>|g' \
+  -e 's|&csbeatsexample;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="example.xml"/>|g' \
+  -e 's|&csbeatssyntax;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="syntax.xml"/>|g' \
+  -e 's|&cscore;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cscore/top.xml"/>|g' \
+  -e 's|&cscoreadvancd;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="advancd.xml"/>|g' \
+  -e 's|&cscorecompile;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="compile.xml"/>|g' \
+  -e 's|&cscoreevents;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="events.xml"/>|g' \
+  -e 's|&cscoremain;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="main.xml"/>|g' \
+  -e 's|&csoundversion;|6.06|g' \
+  -e 's|&deprecated;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="deprecated/top.xml"/>|g' \
+  -e 's|&experimental;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="experimental/top.xml"/>|g' \
+  -e 's|&imageopcodes;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="imageopcodes/top.xml"/>|g' \
+  -e 's|&jacko;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="csound5/opcodes/Jacko.xml"/>|g' \
+  -e 's|&linearalgebra;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="linearalgebra.xml"/>|g' \
+  -e 's|&lua;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="csound5/opcodes/lua.xml"/>|g' \
+  -e 's|&math;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="math/top.xml"/>|g' \
+  -e 's|&mathamp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="amp.xml"/>|g' \
+  -e 's|&mathartlogic;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="artlogic.xml"/>|g' \
+  -e 's|&mathmathfunc;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mathfunc.xml"/>|g' \
+  -e 's|&mathopeqfunc;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="opeqfunc.xml"/>|g' \
+  -e 's|&mathrndfunc;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="rndfunc.xml"/>|g' \
+  -e 's|&mathtrig;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="trig.xml"/>|g' \
+  -e 's|&midi;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="midi/top.xml"/>|g' \
+  -e 's|&midiconvert;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="convert.xml"/>|g' \
+  -e 's|&midiextender;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="extender.xml"/>|g' \
+  -e 's|&midigeneric;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="generic.xml"/>|g' \
+  -e 's|&midiinput;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="input.xml"/>|g' \
+  -e 's|&midiinterop;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="interop.xml"/>|g' \
+  -e 's|&midionoff;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="onoff.xml"/>|g' \
+  -e 's|&midioutput;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="output.xml"/>|g' \
+  -e 's|&midirealtime;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="realtime.xml"/>|g' \
+  -e 's|&midisliderbk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sliderbk.xml"/>|g' \
+  -e 's|&midivirtual;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="virtual.xml"/>|g' \
+  -e 's|&misc;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="misc/top.xml"/>|g' \
+  -e 's|&miscamp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="misc/amp.xml"/>|g' \
+  -e 's|&misccsound64;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="misc/csound64.xml"/>|g' \
+  -e 's|&miscexamples;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="misc/examples.xml"/>|g' \
+  -e 's|&miscformants;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="misc/formants.xml"/>|g' \
+  -e 's|&miscglossary;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="misc/glossary.xml"/>|g' \
+  -e 's|&miscmodalfreq;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="misc/modalfreq.xml"/>|g' \
+  -e 's|&miscopcodes;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="miscopcodes/top.xml"/>|g' \
+  -e 's|&miscpitch;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="misc/pitch.xml"/>|g' \
+  -e 's|&miscquickref;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="misc/quickref.xml"/>|g' \
+  -e 's|&miscsf2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="misc/sf2.xml"/>|g' \
+  -e 's|&miscwindows;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="misc/windows.xml"/>|g' \
+  -e 's|&mixer;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="csound5/opcodes/mixer.xml"/>|g' \
+  -e 's|&nameandres;|Andrés Cabrera|g' \
+  -e 's|&nameanthony;|Anthony Kozar|g' \
+  -e 's|&namebarry;|Barry L.\&#xA0;Vercoe|g' \
+  -e 's|&namedavid;|David M.\&#xA0;Boothe|g' \
+  -e 's|&namegabriel;|Gabriel Maldonado|g' \
+  -e 's|&namehans;|Hans Mikelson|g' \
+  -e 's|&nameistvan;|Istvan Varga|g' \
+  -e 's|&namejohn;|John ffitch|g' \
+  -e 's|&namekanata;|Kanata Motohashi|g' \
+  -e 's|&namekevin;|Kevin Conder|g' \
+  -e 's|&nameluis;|Luis Jure|g' \
+  -e 's|&namematt;|Matt Ingalls|g' \
+  -e 's|&namemichael;|Michael Gogins|g' \
+  -e 's|&namemike;|Mike Berry|g' \
+  -e 's|&nameoeyvind;|Øyvind Brandtsegg|g' \
+  -e 's|&nameparis;|Paris Smaragdis|g' \
+  -e 's|&nameperry;|Perry Cook|g' \
+  -e 's|&namepeter;|Peter Brinkmann|g' \
+  -e 's|&namepinot;|François Pinot|g' \
+  -e 's|&namerasmus;|Rasmus Ekman|g' \
+  -e 's|&namerichard;|Richard Dobson|g' \
+  -e 's|&namesean;|Sean Costello|g' \
+  -e 's|&namesteven;|Steven Yi|g' \
+  -e 's|&nametito;|Tito Latini|g' \
+  -e 's|&namevictor;|Victor Lazzarini|g' \
+  -e 's|&Network;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Network.xml"/>|g' \
+  -e 's|&opcodes;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="opcodes/top.xml"/>|g' \
+  -e 's|&opcodes0dbfs;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="0dbfs.xml"/>|g' \
+  -e 's|&opcodesabetarand;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/abetarand.xml"/>|g' \
+  -e 's|&opcodesabexprnd;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/abexprnd.xml"/>|g' \
+  -e 's|&opcodesabs;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="abs.xml"/>|g' \
+  -e 's|&opcodesacauchy;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/acauchy.xml"/>|g' \
+  -e 's|&opcodesactive;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="active.xml"/>|g' \
+  -e 's|&opcodesadds;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="adds.xml"/>|g' \
+  -e 's|&opcodesadsr;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="adsr.xml"/>|g' \
+  -e 's|&opcodesadsyn;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="adsyn.xml"/>|g' \
+  -e 's|&opcodesadsynt;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="adsynt.xml"/>|g' \
+  -e 's|&opcodesadsynt2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="adsynt2.xml"/>|g' \
+  -e 's|&opcodesaexprand;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/aexprand.xml"/>|g' \
+  -e 's|&opcodesaftouch;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="aftouch.xml"/>|g' \
+  -e 's|&opcodesagauss;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/agauss.xml"/>|g' \
+  -e 's|&opcodesagogobel;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/agogobel.xml"/>|g' \
+  -e 's|&opcodesalinrand;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/alinrand.xml"/>|g' \
+  -e 's|&opcodesalpass;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="alpass.xml"/>|g' \
+  -e 's|&opcodesalwayson;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="alwayson.xml"/>|g' \
+  -e 's|&opcodesampdb;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ampdb.xml"/>|g' \
+  -e 's|&opcodesampdbfs;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ampdbfs.xml"/>|g' \
+  -e 's|&opcodesampmidi;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ampmidi.xml"/>|g' \
+  -e 's|&opcodesampmidid;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ampmidid.xml"/>|g' \
+  -e 's|&opcodesapcauchy;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/apcauchy.xml"/>|g' \
+  -e 's|&opcodesapoisson;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/apoisson.xml"/>|g' \
+  -e 's|&opcodesapow;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/apow.xml"/>|g' \
+  -e 's|&opcodesareson;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="areson.xml"/>|g' \
+  -e 's|&opcodesaresonk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="aresonk.xml"/>|g' \
+  -e 's|&opcodesarray;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/array.xml"/>|g' \
+  -e 's|&opcodesassign;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="assign.xml"/>|g' \
+  -e 's|&opcodesatone;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="atone.xml"/>|g' \
+  -e 's|&opcodesatonek;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="atonek.xml"/>|g' \
+  -e 's|&opcodesatonex;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="atonex.xml"/>|g' \
+  -e 's|&opcodesatrirand;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/atrirand.xml"/>|g' \
+  -e 's|&opcodesATSadd;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ATSadd.xml"/>|g' \
+  -e 's|&opcodesATSaddnz;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ATSaddnz.xml"/>|g' \
+  -e 's|&opcodesATSbufread;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ATSbufread.xml"/>|g' \
+  -e 's|&opcodesATScross;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ATScross.xml"/>|g' \
+  -e 's|&opcodesATSinfo;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ATSinfo.xml"/>|g' \
+  -e 's|&opcodesATSinterpread;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ATSinterpread.xml"/>|g' \
+  -e 's|&opcodesATSpartialtap;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ATSpartialtap.xml"/>|g' \
+  -e 's|&opcodesATSread;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ATSread.xml"/>|g' \
+  -e 's|&opcodesATSreadnz;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ATSreadnz.xml"/>|g' \
+  -e 's|&opcodesATSsinnoi;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ATSsinnoi.xml"/>|g' \
+  -e 's|&opcodesaunirand;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/aunirand.xml"/>|g' \
+  -e 's|&opcodesaweibull;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/aweibull.xml"/>|g' \
+  -e 's|&opcodesbabo;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="babo.xml"/>|g' \
+  -e 's|&opcodesbalance;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="balance.xml"/>|g' \
+  -e 's|&opcodesbamboo;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="bamboo.xml"/>|g' \
+  -e 's|&opcodesbarmodel;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="barmodel.xml"/>|g' \
+  -e 's|&opcodesbbcutm;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="bbcutm.xml"/>|g' \
+  -e 's|&opcodesbbcuts;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="bbcuts.xml"/>|g' \
+  -e 's|&opcodesbetarand;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="betarand.xml"/>|g' \
+  -e 's|&opcodesbexprnd;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="bexprnd.xml"/>|g' \
+  -e 's|&opcodesbformdec;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/bformdec.xml"/>|g' \
+  -e 's|&opcodesbformdec1;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="bformdec1.xml"/>|g' \
+  -e 's|&opcodesbformenc;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/bformenc.xml"/>|g' \
+  -e 's|&opcodesbformenc1;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="bformenc1.xml"/>|g' \
+  -e 's|&opcodesbinit;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="binit.xml"/>|g' \
+  -e 's|&opcodesbiquad;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="biquad.xml"/>|g' \
+  -e 's|&opcodesbiquada;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="biquada.xml"/>|g' \
+  -e 's|&opcodesbirnd;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="birnd.xml"/>|g' \
+  -e 's|&opcodesbqrez;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="bqrez.xml"/>|g' \
+  -e 's|&opcodesbutbp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="butbp.xml"/>|g' \
+  -e 's|&opcodesbutbr;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="butbr.xml"/>|g' \
+  -e 's|&opcodesbuthp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="buthp.xml"/>|g' \
+  -e 's|&opcodesbutlp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="butlp.xml"/>|g' \
+  -e 's|&opcodesbutterbp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="butterbp.xml"/>|g' \
+  -e 's|&opcodesbutterbr;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="butterbr.xml"/>|g' \
+  -e 's|&opcodesbutterhp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="butterhp.xml"/>|g' \
+  -e 's|&opcodesbutterlp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="butterlp.xml"/>|g' \
+  -e 's|&opcodesbutton;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="button.xml"/>|g' \
+  -e 's|&opcodesbuzz;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="buzz.xml"/>|g' \
+  -e 's|&opcodesc2r;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="c2r.xml"/>|g' \
+  -e 's|&opcodescabasa;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cabasa.xml"/>|g' \
+  -e 's|&opcodescauchy;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cauchy.xml"/>|g' \
+  -e 's|&opcodescauchyi;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cauchyi.xml"/>|g' \
+  -e 's|&opcodesceil;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ceil.xml"/>|g' \
+  -e 's|&opcodescell;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cell.xml"/>|g' \
+  -e 's|&opcodescent;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cent.xml"/>|g' \
+  -e 's|&opcodescentroid;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="centroid.xml"/>|g' \
+  -e 's|&opcodescggoto;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cggoto.xml"/>|g' \
+  -e 's|&opcodeschanctrl;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chanctrl.xml"/>|g' \
+  -e 's|&opcodeschanged;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="changed.xml"/>|g' \
+  -e 's|&opcodeschani;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chani.xml"/>|g' \
+  -e 's|&opcodeschano;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chano.xml"/>|g' \
+  -e 's|&opcodeschebyshevpoly;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chebyshevpoly.xml"/>|g' \
+  -e 's|&opcodescheckbox;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="checkbox.xml"/>|g' \
+  -e 's|&opcodeschn;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chn.xml"/>|g' \
+  -e 's|&opcodeschnclear;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chnclear.xml"/>|g' \
+  -e 's|&opcodeschnexport;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chnexport.xml"/>|g' \
+  -e 's|&opcodeschnget;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chnget.xml"/>|g' \
+  -e 's|&opcodeschnmix;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chnmix.xml"/>|g' \
+  -e 's|&opcodeschnparams;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chnparams.xml"/>|g' \
+  -e 's|&opcodeschnset;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chnset.xml"/>|g' \
+  -e 's|&opcodeschuap;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chuap.xml"/>|g' \
+  -e 's|&opcodescigoto;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cigoto.xml"/>|g' \
+  -e 's|&opcodesckgoto;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ckgoto.xml"/>|g' \
+  -e 's|&opcodesclear;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="clear.xml"/>|g' \
+  -e 's|&opcodesclfilt;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="clfilt.xml"/>|g' \
+  -e 's|&opcodesclip;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="clip.xml"/>|g' \
+  -e 's|&opcodesclock;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/clock.xml"/>|g' \
+  -e 's|&opcodesclockoff;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="clockoff.xml"/>|g' \
+  -e 's|&opcodesclockon;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="clockon.xml"/>|g' \
+  -e 's|&opcodescmplxprod;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cmplxprod.xml"/>|g' \
+  -e 's|&opcodescngoto;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cngoto.xml"/>|g' \
+  -e 's|&opcodescomb;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="comb.xml"/>|g' \
+  -e 's|&opcodescombinv;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="combinv.xml"/>|g' \
+  -e 's|&opcodescompilecsd;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="compilecsd.xml"/>|g' \
+  -e 's|&opcodescompileorc;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="compileorc.xml"/>|g' \
+  -e 's|&opcodescompilestr;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="compilestr.xml"/>|g' \
+  -e 's|&opcodescompress;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="compress.xml"/>|g' \
+  -e 's|&opcodesconnect;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="connect.xml"/>|g' \
+  -e 's|&opcodescontrol;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="control.xml"/>|g' \
+  -e 's|&opcodesconvle;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="convle.xml"/>|g' \
+  -e 's|&opcodesconvolve;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="convolve.xml"/>|g' \
+  -e 's|&opcodescopya2ftab;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="copya2ftab.xml"/>|g' \
+  -e 's|&opcodescopyf2array;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="copyf2array.xml"/>|g' \
+  -e 's|&opcodescos;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cos.xml"/>|g' \
+  -e 's|&opcodescosh;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cosh.xml"/>|g' \
+  -e 's|&opcodescosinv;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cosinv.xml"/>|g' \
+  -e 's|&opcodescosseg;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cosseg.xml"/>|g' \
+  -e 's|&opcodescossegb;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cossegb.xml"/>|g' \
+  -e 's|&opcodescossegr;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cossegr.xml"/>|g' \
+  -e 's|&opcodescps2pch;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cps2pch.xml"/>|g' \
+  -e 's|&opcodescpsmidi;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cpsmidi.xml"/>|g' \
+  -e 's|&opcodescpsmidib;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cpsmidib.xml"/>|g' \
+  -e 's|&opcodescpsmidinn;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cpsmidinn.xml"/>|g' \
+  -e 's|&opcodescpsoct;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cpsoct.xml"/>|g' \
+  -e 's|&opcodescpspch;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cpspch.xml"/>|g' \
+  -e 's|&opcodescpstmid;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cpstmid.xml"/>|g' \
+  -e 's|&opcodescpstun;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cpstun.xml"/>|g' \
+  -e 's|&opcodescpstuni;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cpstuni.xml"/>|g' \
+  -e 's|&opcodescpsxpch;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cpsxpch.xml"/>|g' \
+  -e 's|&opcodescpumeter;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cpumeter.xml"/>|g' \
+  -e 's|&opcodescpuprc;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cpuprc.xml"/>|g' \
+  -e 's|&opcodescross2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cross2.xml"/>|g' \
+  -e 's|&opcodescrossfm;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="crossfm.xml"/>|g' \
+  -e 's|&opcodescrunch;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="crunch.xml"/>|g' \
+  -e 's|&opcodesctrl14;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ctrl14.xml"/>|g' \
+  -e 's|&opcodesctrl21;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ctrl21.xml"/>|g' \
+  -e 's|&opcodesctrl7;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ctrl7.xml"/>|g' \
+  -e 's|&opcodesctrlinit;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ctrlinit.xml"/>|g' \
+  -e 's|&opcodescudanal;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/cudanal.xml"/>|g' \
+  -e 's|&opcodescudasliding;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/cudasliding.xml"/>|g' \
+  -e 's|&opcodescudasynth;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/cudasynth.xml"/>|g' \
+  -e 's|&opcodescuserrnd;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cuserrnd.xml"/>|g' \
+  -e 's|&opcodesdam;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dam.xml"/>|g' \
+  -e 's|&opcodesdate;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="date.xml"/>|g' \
+  -e 's|&opcodesdates;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dates.xml"/>|g' \
+  -e 's|&opcodesdb;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="db.xml"/>|g' \
+  -e 's|&opcodesdbamp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dbamp.xml"/>|g' \
+  -e 's|&opcodesdbfsamp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dbfsamp.xml"/>|g' \
+  -e 's|&opcodesdcblock;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dcblock.xml"/>|g' \
+  -e 's|&opcodesdcblock2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dcblock2.xml"/>|g' \
+  -e 's|&opcodesdconv;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dconv.xml"/>|g' \
+  -e 's|&opcodesdefine;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="define.xml"/>|g' \
+  -e 's|&opcodesdelay;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="delay.xml"/>|g' \
+  -e 's|&opcodesdelay1;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="delay1.xml"/>|g' \
+  -e 's|&opcodesdelayk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="delayk.xml"/>|g' \
+  -e 's|&opcodesdelayr;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="delayr.xml"/>|g' \
+  -e 's|&opcodesdelayw;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="delayw.xml"/>|g' \
+  -e 's|&opcodesdeltap;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="deltap.xml"/>|g' \
+  -e 's|&opcodesdeltap3;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="deltap3.xml"/>|g' \
+  -e 's|&opcodesdeltapi;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="deltapi.xml"/>|g' \
+  -e 's|&opcodesdeltapn;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="deltapn.xml"/>|g' \
+  -e 's|&opcodesdeltapx;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="deltapx.xml"/>|g' \
+  -e 's|&opcodesdeltapxw;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="deltapxw.xml"/>|g' \
+  -e 's|&opcodesdenorm;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="denorm.xml"/>|g' \
+  -e 's|&opcodesdiff;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="diff.xml"/>|g' \
+  -e 's|&opcodesdiskgrain;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="diskgrain.xml"/>|g' \
+  -e 's|&opcodesdiskin;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="diskin.xml"/>|g' \
+  -e 's|&opcodesdiskin2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="diskin2.xml"/>|g' \
+  -e 's|&opcodesdispfft;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dispfft.xml"/>|g' \
+  -e 's|&opcodesdisplay;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="display.xml"/>|g' \
+  -e 's|&opcodesdistort;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="distort.xml"/>|g' \
+  -e 's|&opcodesdistort1;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="distort1.xml"/>|g' \
+  -e 's|&opcodesdivides;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="divides.xml"/>|g' \
+  -e 's|&opcodesdivz;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="divz.xml"/>|g' \
+  -e 's|&opcodesdollar;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dollar.xml"/>|g' \
+  -e 's|&opcodesdoppler;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="doppler.xml"/>|g' \
+  -e 's|&opcodesdownsamp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="downsamp.xml"/>|g' \
+  -e 's|&opcodesdripwater;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dripwater.xml"/>|g' \
+  -e 's|&opcodesdssiactivate;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dssiactivate.xml"/>|g' \
+  -e 's|&opcodesdssiaudio;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dssiaudio.xml"/>|g' \
+  -e 's|&opcodesdssictls;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dssictls.xml"/>|g' \
+  -e 's|&opcodesdssiinit;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dssiinit.xml"/>|g' \
+  -e 's|&opcodesdssilist;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dssilist.xml"/>|g' \
+  -e 's|&opcodesdumpk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dumpk.xml"/>|g' \
+  -e 's|&opcodesdumpk2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dumpk2.xml"/>|g' \
+  -e 's|&opcodesdumpk3;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dumpk3.xml"/>|g' \
+  -e 's|&opcodesdumpk4;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dumpk4.xml"/>|g' \
+  -e 's|&opcodesduserrnd;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="duserrnd.xml"/>|g' \
+  -e 's|&opcodesdust;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dust.xml"/>|g' \
+  -e 's|&opcodesdust2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dust2.xml"/>|g' \
+  -e 's|&opcodeselse;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="else.xml"/>|g' \
+  -e 's|&opcodeselseif;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="elseif.xml"/>|g' \
+  -e 's|&opcodesendif;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="endif.xml"/>|g' \
+  -e 's|&opcodesendin;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="endin.xml"/>|g' \
+  -e 's|&opcodesendop;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="endop.xml"/>|g' \
+  -e 's|&opcodesenvlpx;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="envlpx.xml"/>|g' \
+  -e 's|&opcodesenvlpxr;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="envlpxr.xml"/>|g' \
+  -e 's|&opcodesephasor;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ephasor.xml"/>|g' \
+  -e 's|&opcodeseqfil;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="eqfil.xml"/>|g' \
+  -e 's|&opcodesequals;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="equals.xml"/>|g' \
+  -e 's|&opcodesevalstr;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="evalstr.xml"/>|g' \
+  -e 's|&opcodesevent_i;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="event_i.xml"/>|g' \
+  -e 's|&opcodesevent;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="event.xml"/>|g' \
+  -e 's|&opcodesexciter;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="exciter.xml"/>|g' \
+  -e 's|&opcodesexitnow;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="exitnow.xml"/>|g' \
+  -e 's|&opcodesexp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="exp.xml"/>|g' \
+  -e 's|&opcodesexpcurve;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="expcurve.xml"/>|g' \
+  -e 's|&opcodesexpon;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="expon.xml"/>|g' \
+  -e 's|&opcodesexprand;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="exprand.xml"/>|g' \
+  -e 's|&opcodesexprandi;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="exprandi.xml"/>|g' \
+  -e 's|&opcodesexpseg;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="expseg.xml"/>|g' \
+  -e 's|&opcodesexpsega;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="expsega.xml"/>|g' \
+  -e 's|&opcodesexpsegb;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="expsegb.xml"/>|g' \
+  -e 's|&opcodesexpsegba;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="expsegba.xml"/>|g' \
+  -e 's|&opcodesexpsegr;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="expsegr.xml"/>|g' \
+  -e 's|&opcodesfareylen;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fareylen.xml"/>|g' \
+  -e 's|&opcodesfareyleni;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fareyleni.xml"/>|g' \
+  -e 's|&opcodesfaustaudio;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="faustaudio.xml"/>|g' \
+  -e 's|&opcodesfaustcompile;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="faustcompile.xml"/>|g' \
+  -e 's|&opcodesfaustctl;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="faustctl.xml"/>|g' \
+  -e 's|&opcodesfaustgen;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="faustgen.xml"/>|g' \
+  -e 's|&opcodesfft;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fft.xml"/>|g' \
+  -e 's|&opcodesficlose;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ficlose.xml"/>|g' \
+  -e 's|&opcodesfilebit;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="filebit.xml"/>|g' \
+  -e 's|&opcodesfilelen;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="filelen.xml"/>|g' \
+  -e 's|&opcodesfilenchnls;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="filenchnls.xml"/>|g' \
+  -e 's|&opcodesfilepeak;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="filepeak.xml"/>|g' \
+  -e 's|&opcodesfilesr;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="filesr.xml"/>|g' \
+  -e 's|&opcodesfilevalid;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="filevalid.xml"/>|g' \
+  -e 's|&opcodesfillarray;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fillarray.xml"/>|g' \
+  -e 's|&opcodesfilter2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="filter2.xml"/>|g' \
+  -e 's|&opcodesfin;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fin.xml"/>|g' \
+  -e 's|&opcodesfini;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fini.xml"/>|g' \
+  -e 's|&opcodesfink;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fink.xml"/>|g' \
+  -e 's|&opcodesfiopen;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fiopen.xml"/>|g' \
+  -e 's|&opcodesflanger;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flanger.xml"/>|g' \
+  -e 's|&opcodesflashtxt;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flashtxt.xml"/>|g' \
+  -e 's|&opcodesflbox;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flbox.xml"/>|g' \
+  -e 's|&opcodesflbutbank;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flbutbank.xml"/>|g' \
+  -e 's|&opcodesflbutton;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flbutton.xml"/>|g' \
+  -e 's|&opcodesflclosebutton;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flclosebutton.xml"/>|g' \
+  -e 's|&opcodesflcolor;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flcolor.xml"/>|g' \
+  -e 's|&opcodesflcolor2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flcolor2.xml"/>|g' \
+  -e 's|&opcodesflcount;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flcount.xml"/>|g' \
+  -e 's|&opcodesflexecbutton;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flexecbutton.xml"/>|g' \
+  -e 's|&opcodesflgetsnap;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flgetsnap.xml"/>|g' \
+  -e 's|&opcodesflgroup_end;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flgroup_end.xml"/>|g' \
+  -e 's|&opcodesflgroup;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flgroup.xml"/>|g' \
+  -e 's|&opcodesflgroupend;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flgroupend.xml"/>|g' \
+  -e 's|&opcodesflhide;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flhide.xml"/>|g' \
+  -e 's|&opcodesflhvsbox;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flhvsbox.xml"/>|g' \
+  -e 's|&opcodesflhvsboxsetvalue;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flhvsboxsetvalue.xml"/>|g' \
+  -e 's|&opcodesfljoy;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fljoy.xml"/>|g' \
+  -e 's|&opcodesflkeyin;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flkeyin.xml"/>|g' \
+  -e 's|&opcodesflknob;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flknob.xml"/>|g' \
+  -e 's|&opcodesfllabel;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fllabel.xml"/>|g' \
+  -e 's|&opcodesflloadsnap;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flloadsnap.xml"/>|g' \
+  -e 's|&opcodesflmouse;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flmouse.xml"/>|g' \
+  -e 's|&opcodesflooper;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flooper.xml"/>|g' \
+  -e 's|&opcodesflooper2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flooper2.xml"/>|g' \
+  -e 's|&opcodesfloor;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="floor.xml"/>|g' \
+  -e 's|&opcodesflpack_end;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flpack_end.xml"/>|g' \
+  -e 's|&opcodesflpack;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flpack.xml"/>|g' \
+  -e 's|&opcodesflpackend;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flpackend.xml"/>|g' \
+  -e 's|&opcodesflpanel_end;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flpanel_end.xml"/>|g' \
+  -e 's|&opcodesflpanel;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flpanel.xml"/>|g' \
+  -e 's|&opcodesflpanelend;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flpanelend.xml"/>|g' \
+  -e 's|&opcodesflprintk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flprintk.xml"/>|g' \
+  -e 's|&opcodesflprintk2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flprintk2.xml"/>|g' \
+  -e 's|&opcodesflroller;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flroller.xml"/>|g' \
+  -e 's|&opcodesflrun;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flrun.xml"/>|g' \
+  -e 's|&opcodesflsavesnap;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flsavesnap.xml"/>|g' \
+  -e 's|&opcodesflscroll_end;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flscroll_end.xml"/>|g' \
+  -e 's|&opcodesflscroll;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flscroll.xml"/>|g' \
+  -e 's|&opcodesflscrollend;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flscrollend.xml"/>|g' \
+  -e 's|&opcodesflsetalign;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flsetalign.xml"/>|g' \
+  -e 's|&opcodesflsetbox;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flsetbox.xml"/>|g' \
+  -e 's|&opcodesflsetcolor;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flsetcolor.xml"/>|g' \
+  -e 's|&opcodesflsetcolor2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flsetcolor2.xml"/>|g' \
+  -e 's|&opcodesflsetfont;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flsetfont.xml"/>|g' \
+  -e 's|&opcodesflsetposition;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flsetposition.xml"/>|g' \
+  -e 's|&opcodesflsetsize;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flsetsize.xml"/>|g' \
+  -e 's|&opcodesflsetsnap;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flsetsnap.xml"/>|g' \
+  -e 's|&opcodesflsetsnapgroup;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flsetsnapgroup.xml"/>|g' \
+  -e 's|&opcodesflsettext;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flsettext.xml"/>|g' \
+  -e 's|&opcodesflsettextcolor;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flsettextcolor.xml"/>|g' \
+  -e 's|&opcodesflsettextsize;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flsettextsize.xml"/>|g' \
+  -e 's|&opcodesflsettexttype;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flsettexttype.xml"/>|g' \
+  -e 's|&opcodesflsetval;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flsetval.xml"/>|g' \
+  -e 's|&opcodesflsetvali;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flsetvali.xml"/>|g' \
+  -e 's|&opcodesflshow;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flshow.xml"/>|g' \
+  -e 's|&opcodesflslidbnk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flslidbnk.xml"/>|g' \
+  -e 's|&opcodesflslidbnk2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flslidbnk2.xml"/>|g' \
+  -e 's|&opcodesflslidbnk2set;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flslidbnk2set.xml"/>|g' \
+  -e 's|&opcodesflslidbnk2setk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flslidbnk2setk.xml"/>|g' \
+  -e 's|&opcodesflslidbnkgethandle;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flslidbnkgethandle.xml"/>|g' \
+  -e 's|&opcodesflslidbnkset;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flslidbnkset.xml"/>|g' \
+  -e 's|&opcodesflslidbnksetk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flslidbnksetk.xml"/>|g' \
+  -e 's|&opcodesflslider;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flslider.xml"/>|g' \
+  -e 's|&opcodesfltabs_end;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fltabs_end.xml"/>|g' \
+  -e 's|&opcodesfltabs;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fltabs.xml"/>|g' \
+  -e 's|&opcodesfltabsend;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fltabsend.xml"/>|g' \
+  -e 's|&opcodesfltext;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fltext.xml"/>|g' \
+  -e 's|&opcodesfluidAllOut;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fluidAllOut.xml"/>|g' \
+  -e 's|&opcodesfluidCCi;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fluidCCi.xml"/>|g' \
+  -e 's|&opcodesfluidCCk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fluidCCk.xml"/>|g' \
+  -e 's|&opcodesfluidControl;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fluidControl.xml"/>|g' \
+  -e 's|&opcodesfluidEngine;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fluidEngine.xml"/>|g' \
+  -e 's|&opcodesfluidLoad;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fluidLoad.xml"/>|g' \
+  -e 's|&opcodesfluidNote;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fluidNote.xml"/>|g' \
+  -e 's|&opcodesfluidOut;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fluidOut.xml"/>|g' \
+  -e 's|&opcodesfluidProgramSelect;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fluidProgramSelect.xml"/>|g' \
+  -e 's|&opcodesfluidSetInterpMethod;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fluidSetInterpMethod.xml"/>|g' \
+  -e 's|&opcodesflupdate;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flupdate.xml"/>|g' \
+  -e 's|&opcodesflvalue;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flvalue.xml"/>|g' \
+  -e 's|&opcodesflvkeybd;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flvkeybd.xml"/>|g' \
+  -e 's|&opcodesflvslidbnk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flvslidbnk.xml"/>|g' \
+  -e 's|&opcodesflvslidbnk2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flvslidbnk2.xml"/>|g' \
+  -e 's|&opcodesflxyin;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flxyin.xml"/>|g' \
+  -e 's|&opcodesfmb3;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fmb3.xml"/>|g' \
+  -e 's|&opcodesfmbell;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fmbell.xml"/>|g' \
+  -e 's|&opcodesfmmetal;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fmmetal.xml"/>|g' \
+  -e 's|&opcodesfmpercfl;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fmpercfl.xml"/>|g' \
+  -e 's|&opcodesfmrhode;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fmrhode.xml"/>|g' \
+  -e 's|&opcodesfmvoice;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fmvoice.xml"/>|g' \
+  -e 's|&opcodesfmwurlie;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fmwurlie.xml"/>|g' \
+  -e 's|&opcodesfof;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fof.xml"/>|g' \
+  -e 's|&opcodesfof2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fof2.xml"/>|g' \
+  -e 's|&opcodesfofilter;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fofilter.xml"/>|g' \
+  -e 's|&opcodesfog;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fog.xml"/>|g' \
+  -e 's|&opcodesfold;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fold.xml"/>|g' \
+  -e 's|&opcodesfollow;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="follow.xml"/>|g' \
+  -e 's|&opcodesfollow2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="follow2.xml"/>|g' \
+  -e 's|&opcodesfoscil;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="foscil.xml"/>|g' \
+  -e 's|&opcodesfoscili;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="foscili.xml"/>|g' \
+  -e 's|&opcodesfout;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fout.xml"/>|g' \
+  -e 's|&opcodesfouti;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fouti.xml"/>|g' \
+  -e 's|&opcodesfoutir;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="foutir.xml"/>|g' \
+  -e 's|&opcodesfoutk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="foutk.xml"/>|g' \
+  -e 's|&opcodesfprintks;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fprintks.xml"/>|g' \
+  -e 's|&opcodesfprints;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fprints.xml"/>|g' \
+  -e 's|&opcodesfrac;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="frac.xml"/>|g' \
+  -e 's|&opcodesfractalnoise;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fractalnoise.xml"/>|g' \
+  -e 's|&opcodesframebuffer;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="framebuffer.xml"/>|g' \
+  -e 's|&opcodesfreeverb;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="freeverb.xml"/>|g' \
+  -e 's|&opcodesftchnls;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ftchnls.xml"/>|g' \
+  -e 's|&opcodesftconv;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ftconv.xml"/>|g' \
+  -e 's|&opcodesftcps;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ftcps.xml"/>|g' \
+  -e 's|&opcodesftfree;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ftfree.xml"/>|g' \
+  -e 's|&opcodesftgen;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ftgen.xml"/>|g' \
+  -e 's|&opcodesftgenonce;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ftgenonce.xml"/>|g' \
+  -e 's|&opcodesftgentmp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ftgentmp.xml"/>|g' \
+  -e 's|&opcodesftlen;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ftlen.xml"/>|g' \
+  -e 's|&opcodesftload;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ftload.xml"/>|g' \
+  -e 's|&opcodesftloadk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ftloadk.xml"/>|g' \
+  -e 's|&opcodesftlptim;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ftlptim.xml"/>|g' \
+  -e 's|&opcodesftmorf;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ftmorf.xml"/>|g' \
+  -e 's|&opcodesftsave;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ftsave.xml"/>|g' \
+  -e 's|&opcodesftsavek;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ftsavek.xml"/>|g' \
+  -e 's|&opcodesftsr;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ftsr.xml"/>|g' \
+  -e 's|&opcodesgain;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gain.xml"/>|g' \
+  -e 's|&opcodesgainslider;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gainslider.xml"/>|g' \
+  -e 's|&opcodesgauss;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gauss.xml"/>|g' \
+  -e 's|&opcodesgaussi;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gaussi.xml"/>|g' \
+  -e 's|&opcodesgausstrig;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gausstrig.xml"/>|g' \
+  -e 's|&opcodesgbuzz;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gbuzz.xml"/>|g' \
+  -e 's|&opcodesgenarray_i;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="genarray_i.xml"/>|g' \
+  -e 's|&opcodesgenarray;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="genarray.xml"/>|g' \
+  -e 's|&opcodesgendy;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gendy.xml"/>|g' \
+  -e 's|&opcodesgendyc;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gendyc.xml"/>|g' \
+  -e 's|&opcodesgendyx;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gendyx.xml"/>|g' \
+  -e 's|&opcodesgetcfg;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="getcfg.xml"/>|g' \
+  -e 's|&opcodesgetrow;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="getrow.xml"/>|g' \
+  -e 's|&opcodesgetseed;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="getseed.xml"/>|g' \
+  -e 's|&opcodesgogobel;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gogobel.xml"/>|g' \
+  -e 's|&opcodesgoto;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="goto.xml"/>|g' \
+  -e 's|&opcodesgrain;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="grain.xml"/>|g' \
+  -e 's|&opcodesgrain2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="grain2.xml"/>|g' \
+  -e 's|&opcodesgrain3;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="grain3.xml"/>|g' \
+  -e 's|&opcodesgranule;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="granule.xml"/>|g' \
+  -e 's|&opcodesgreaterequal;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="greaterequal.xml"/>|g' \
+  -e 's|&opcodesgreaterthan;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="greaterthan.xml"/>|g' \
+  -e 's|&opcodesguiro;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="guiro.xml"/>|g' \
+  -e 's|&opcodesharmon;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="harmon.xml"/>|g' \
+  -e 's|&opcodesharmon2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="harmon234.xml"/>|g' \
+  -e 's|&opcodeshdf5read;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="hdf5read.xml"/>|g' \
+  -e 's|&opcodeshdf5write;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="hdf5write.xml"/>|g' \
+  -e 's|&opcodeshilbert;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="hilbert.xml"/>|g' \
+  -e 's|&opcodeshrtfearly;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="hrtfearly.xml"/>|g' \
+  -e 's|&opcodeshrtfer;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/hrtfer.xml"/>|g' \
+  -e 's|&opcodeshrtfmove;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="hrtfmove.xml"/>|g' \
+  -e 's|&opcodeshrtfmove2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="hrtfmove2.xml"/>|g' \
+  -e 's|&opcodeshrtfreverb;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="hrtfreverb.xml"/>|g' \
+  -e 's|&opcodeshrtfstat;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="hrtfstat.xml"/>|g' \
+  -e 's|&opcodeshsboscil;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="hsboscil.xml"/>|g' \
+  -e 's|&opcodeshvs1;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="hvs1.xml"/>|g' \
+  -e 's|&opcodeshvs2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="hvs2.xml"/>|g' \
+  -e 's|&opcodeshvs3;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="hvs3.xml"/>|g' \
+  -e 's|&opcodesibetarand;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/ibetarand.xml"/>|g' \
+  -e 's|&opcodesibexprnd;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/ibexprnd.xml"/>|g' \
+  -e 's|&opcodesicauchy;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/icauchy.xml"/>|g' \
+  -e 's|&opcodesictrl14;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/ictrl14.xml"/>|g' \
+  -e 's|&opcodesictrl21;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/ictrl21.xml"/>|g' \
+  -e 's|&opcodesictrl7;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/ictrl7.xml"/>|g' \
+  -e 's|&opcodesiexprand;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/iexprand.xml"/>|g' \
+  -e 's|&opcodesif;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="if.xml"/>|g' \
+  -e 's|&opcodesifdef;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ifdef.xml"/>|g' \
+  -e 's|&opcodesifft;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ifft.xml"/>|g' \
+  -e 's|&opcodesifndef;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ifndef.xml"/>|g' \
+  -e 's|&opcodesigauss;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/igauss.xml"/>|g' \
+  -e 's|&opcodesigoto;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="igoto.xml"/>|g' \
+  -e 's|&opcodesihold;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ihold.xml"/>|g' \
+  -e 's|&opcodesilinrand;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/ilinrand.xml"/>|g' \
+  -e 's|&opcodesimagecreate;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="imagecreate.xml"/>|g' \
+  -e 's|&opcodesimagefree;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="imagefree.xml"/>|g' \
+  -e 's|&opcodesimagegetpixel;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="imagegetpixel.xml"/>|g' \
+  -e 's|&opcodesimageload;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="imageload.xml"/>|g' \
+  -e 's|&opcodesimageopcodes;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="imageopcodes.xml"/>|g' \
+  -e 's|&opcodesimagesave;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="imagesave.xml"/>|g' \
+  -e 's|&opcodesimagesetpixel;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="imagesetpixel.xml"/>|g' \
+  -e 's|&opcodesimagesize;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="imagesize.xml"/>|g' \
+  -e 's|&opcodesimidic14;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/imidic14.xml"/>|g' \
+  -e 's|&opcodesimidic21;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/imidic21.xml"/>|g' \
+  -e 's|&opcodesimidic7;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/imidic7.xml"/>|g' \
+  -e 's|&opcodesin;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="in.xml"/>|g' \
+  -e 's|&opcodesin32;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="in32.xml"/>|g' \
+  -e 's|&opcodesinch;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="inch.xml"/>|g' \
+  -e 's|&opcodesinclude;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="include.xml"/>|g' \
+  -e 's|&opcodesinh;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="inh.xml"/>|g' \
+  -e 's|&opcodesinit;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="init.xml"/>|g' \
+  -e 's|&opcodesinitc14;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="initc14.xml"/>|g' \
+  -e 's|&opcodesinitc21;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="initc21.xml"/>|g' \
+  -e 's|&opcodesinitc7;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="initc7.xml"/>|g' \
+  -e 's|&opcodesinleta;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="inleta.xml"/>|g' \
+  -e 's|&opcodesinletf;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="inletf.xml"/>|g' \
+  -e 's|&opcodesinletk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="inletk.xml"/>|g' \
+  -e 's|&opcodesinletkid;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="inletkid.xml"/>|g' \
+  -e 's|&opcodesino;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ino.xml"/>|g' \
+  -e 's|&opcodesinq;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="inq.xml"/>|g' \
+  -e 's|&opcodesinrg;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="inrg.xml"/>|g' \
+  -e 's|&opcodesins;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ins.xml"/>|g' \
+  -e 's|&opcodesinsglobal;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="insglobal.xml"/>|g' \
+  -e 's|&opcodesinsremot;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="insremot.xml"/>|g' \
+  -e 's|&opcodesinstimek;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/instimek.xml"/>|g' \
+  -e 's|&opcodesinstimes;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/instimes.xml"/>|g' \
+  -e 's|&opcodesinstr;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="instr.xml"/>|g' \
+  -e 's|&opcodesint;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="int.xml"/>|g' \
+  -e 's|&opcodesinteg;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="integ.xml"/>|g' \
+  -e 's|&opcodesinterp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="interp.xml"/>|g' \
+  -e 's|&opcodesinvalue;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="invalue.xml"/>|g' \
+  -e 's|&opcodesinx;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="inx.xml"/>|g' \
+  -e 's|&opcodesinz;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="inz.xml"/>|g' \
+  -e 's|&opcodesioff;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/ioff.xml"/>|g' \
+  -e 's|&opcodesion;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/ion.xml"/>|g' \
+  -e 's|&opcodesiondur;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/iondur.xml"/>|g' \
+  -e 's|&opcodesiondur2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/iondur2.xml"/>|g' \
+  -e 's|&opcodesioutat;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/ioutat.xml"/>|g' \
+  -e 's|&opcodesioutc;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/ioutc.xml"/>|g' \
+  -e 's|&opcodesioutc14;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/ioutc14.xml"/>|g' \
+  -e 's|&opcodesioutpat;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/ioutpat.xml"/>|g' \
+  -e 's|&opcodesioutpb;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/ioutpb.xml"/>|g' \
+  -e 's|&opcodesioutpc;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/ioutpc.xml"/>|g' \
+  -e 's|&opcodesipcauchy;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/ipcauchy.xml"/>|g' \
+  -e 's|&opcodesipoisson;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/ipoisson.xml"/>|g' \
+  -e 's|&opcodesipow;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/ipow.xml"/>|g' \
+  -e 's|&opcodesis16b14;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/is16b14.xml"/>|g' \
+  -e 's|&opcodesis32b14;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/is32b14.xml"/>|g' \
+  -e 's|&opcodesislider16;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/islider16.xml"/>|g' \
+  -e 's|&opcodesislider32;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/islider32.xml"/>|g' \
+  -e 's|&opcodesislider64;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/islider64.xml"/>|g' \
+  -e 's|&opcodesislider8;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/islider8.xml"/>|g' \
+  -e 's|&opcodesitablecopy;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/itablecopy.xml"/>|g' \
+  -e 's|&opcodesitablegpw;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/itablegpw.xml"/>|g' \
+  -e 's|&opcodesitablemix;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/itablemix.xml"/>|g' \
+  -e 's|&opcodesitablew;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/itablew.xml"/>|g' \
+  -e 's|&opcodesitrirand;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/itrirand.xml"/>|g' \
+  -e 's|&opcodesiunirand;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/iunirand.xml"/>|g' \
+  -e 's|&opcodesiweibull;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/iweibull.xml"/>|g' \
+  -e 's|&opcodesjackoaudioin;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="JackoAudioIn.xml"/>|g' \
+  -e 's|&opcodesjackoaudioinconnect;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="JackoAudioInConnect.xml"/>|g' \
+  -e 's|&opcodesjackoaudioout;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="JackoAudioOut.xml"/>|g' \
+  -e 's|&opcodesjackoaudiooutconnect;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="JackoAudioOutConnect.xml"/>|g' \
+  -e 's|&opcodesjackofreewheel;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="JackoFreewheel.xml"/>|g' \
+  -e 's|&opcodesjackoinfo;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="JackoInfo.xml"/>|g' \
+  -e 's|&opcodesjackoinit;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="JackoInit.xml"/>|g' \
+  -e 's|&opcodesjackomidiinconnect;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="JackoMidiInConnect.xml"/>|g' \
+  -e 's|&opcodesjackomidiout;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="JackoMidiOut.xml"/>|g' \
+  -e 's|&opcodesjackomidioutconnect;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="JackoMidiOutConnect.xml"/>|g' \
+  -e 's|&opcodesjackonoteout;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="JackoNoteOut.xml"/>|g' \
+  -e 's|&opcodesjackoon;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="JackoOn.xml"/>|g' \
+  -e 's|&opcodesjackotransport;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="JackoTransport.xml"/>|g' \
+  -e 's|&opcodesjacktransport;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="jacktransport.xml"/>|g' \
+  -e 's|&opcodesjitter;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="jitter.xml"/>|g' \
+  -e 's|&opcodesjitter2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="jitter2.xml"/>|g' \
+  -e 's|&opcodesjoystick;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="joystick.xml"/>|g' \
+  -e 's|&opcodesjspline;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="jspline.xml"/>|g' \
+  -e 's|&opcodeskbetarand;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/kbetarand.xml"/>|g' \
+  -e 's|&opcodeskbexprnd;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/kbexprnd.xml"/>|g' \
+  -e 's|&opcodeskcauchy;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/kcauchy.xml"/>|g' \
+  -e 's|&opcodeskdump;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/kdump.xml"/>|g' \
+  -e 's|&opcodeskdump2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/kdump2.xml"/>|g' \
+  -e 's|&opcodeskdump3;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/kdump3.xml"/>|g' \
+  -e 's|&opcodeskdump4;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/kdump4.xml"/>|g' \
+  -e 's|&opcodeskexprand;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/kexprand.xml"/>|g' \
+  -e 's|&opcodeskfilter2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/kfilter2.xml"/>|g' \
+  -e 's|&opcodeskgauss;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/kgauss.xml"/>|g' \
+  -e 's|&opcodeskgoto;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kgoto.xml"/>|g' \
+  -e 's|&opcodesklinrand;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/klinrand.xml"/>|g' \
+  -e 's|&opcodeskon;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/kon.xml"/>|g' \
+  -e 's|&opcodeskoutat;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/koutat.xml"/>|g' \
+  -e 's|&opcodeskoutc;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/koutc.xml"/>|g' \
+  -e 's|&opcodeskoutc14;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/koutc14.xml"/>|g' \
+  -e 's|&opcodeskoutpat;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/koutpat.xml"/>|g' \
+  -e 's|&opcodeskoutpb;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/koutpb.xml"/>|g' \
+  -e 's|&opcodeskoutpc;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/koutpc.xml"/>|g' \
+  -e 's|&opcodeskpcauchy;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/kpcauchy.xml"/>|g' \
+  -e 's|&opcodeskpoisson;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/kpoisson.xml"/>|g' \
+  -e 's|&opcodeskpow;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/kpow.xml"/>|g' \
+  -e 's|&opcodeskr;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kr.xml"/>|g' \
+  -e 's|&opcodeskread;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/kread.xml"/>|g' \
+  -e 's|&opcodeskread2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/kread2.xml"/>|g' \
+  -e 's|&opcodeskread3;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/kread3.xml"/>|g' \
+  -e 's|&opcodeskread4;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/kread4.xml"/>|g' \
+  -e 's|&opcodesksmps;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ksmps.xml"/>|g' \
+  -e 's|&opcodesktableseg;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/ktableseg.xml"/>|g' \
+  -e 's|&opcodesktrirand;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/ktrirand.xml"/>|g' \
+  -e 's|&opcodeskunirand;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/kunirand.xml"/>|g' \
+  -e 's|&opcodeskweibull;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/kweibull.xml"/>|g' \
+  -e 's|&opcodeslenarray;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lenarray.xml"/>|g' \
+  -e 's|&opcodeslessequal;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lessequal.xml"/>|g' \
+  -e 's|&opcodeslessthan;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lessthan.xml"/>|g' \
+  -e 's|&opcodeslfo;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lfo.xml"/>|g' \
+  -e 's|&opcodeslimit;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="limit.xml"/>|g' \
+  -e 's|&opcodesline;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="line.xml"/>|g' \
+  -e 's|&opcodeslinen;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="linen.xml"/>|g' \
+  -e 's|&opcodeslinenr;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="linenr.xml"/>|g' \
+  -e 's|&opcodeslineto;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lineto.xml"/>|g' \
+  -e 's|&opcodeslinrand;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="linrand.xml"/>|g' \
+  -e 's|&opcodeslinseg;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="linseg.xml"/>|g' \
+  -e 's|&opcodeslinsegb;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="linsegb.xml"/>|g' \
+  -e 's|&opcodeslinsegr;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="linsegr.xml"/>|g' \
+  -e 's|&opcodeslocsend;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="locsend.xml"/>|g' \
+  -e 's|&opcodeslocsig;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="locsig.xml"/>|g' \
+  -e 's|&opcodeslog;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="log.xml"/>|g' \
+  -e 's|&opcodeslog10;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="log10.xml"/>|g' \
+  -e 's|&opcodeslog2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="log2.xml"/>|g' \
+  -e 's|&opcodeslogbtwo;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="logbtwo.xml"/>|g' \
+  -e 's|&opcodeslogcurve;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="logcurve.xml"/>|g' \
+  -e 's|&opcodesloop_ge;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="loop_ge.xml"/>|g' \
+  -e 's|&opcodesloop_gt;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="loop_gt.xml"/>|g' \
+  -e 's|&opcodesloop_le;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="loop_le.xml"/>|g' \
+  -e 's|&opcodesloop_lt;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="loop_lt.xml"/>|g' \
+  -e 's|&opcodesloopseg;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="loopseg.xml"/>|g' \
+  -e 's|&opcodesloopsegp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="loopsegp.xml"/>|g' \
+  -e 's|&opcodeslooptseg;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="looptseg.xml"/>|g' \
+  -e 's|&opcodesloopxseg;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="loopxseg.xml"/>|g' \
+  -e 's|&opcodeslorenz;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lorenz.xml"/>|g' \
+  -e 's|&opcodeslorismorph;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lorismorph.xml"/>|g' \
+  -e 's|&opcodeslorisplay;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lorisplay.xml"/>|g' \
+  -e 's|&opcodeslorisread;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lorisread.xml"/>|g' \
+  -e 's|&opcodesloscil;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="loscil.xml"/>|g' \
+  -e 's|&opcodesloscil3;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="loscil3.xml"/>|g' \
+  -e 's|&opcodesloscilx;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="loscilx.xml"/>|g' \
+  -e 's|&opcodeslowpass2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lowpass2.xml"/>|g' \
+  -e 's|&opcodeslowres;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lowres.xml"/>|g' \
+  -e 's|&opcodeslowresx;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lowresx.xml"/>|g' \
+  -e 's|&opcodeslpf18;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lpf18.xml"/>|g' \
+  -e 's|&opcodeslpfreson;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lpfreson.xml"/>|g' \
+  -e 's|&opcodeslphasor;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lphasor.xml"/>|g' \
+  -e 's|&opcodeslpinterp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lpinterp.xml"/>|g' \
+  -e 's|&opcodeslposcil;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lposcil.xml"/>|g' \
+  -e 's|&opcodeslposcil3;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lposcil3.xml"/>|g' \
+  -e 's|&opcodeslposcila;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lposcila.xml"/>|g' \
+  -e 's|&opcodeslposcilsa;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lposcilsa.xml"/>|g' \
+  -e 's|&opcodeslposcilsa2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lposcilsa2.xml"/>|g' \
+  -e 's|&opcodeslpread;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lpread.xml"/>|g' \
+  -e 's|&opcodeslpreson;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lpreson.xml"/>|g' \
+  -e 's|&opcodeslpshold;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lpshold.xml"/>|g' \
+  -e 's|&opcodeslpsholdp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lpsholdp.xml"/>|g' \
+  -e 's|&opcodeslpslot;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lpslot.xml"/>|g' \
+  -e 's|&opcodeslua_exec;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lua_exec.xml"/>|g' \
+  -e 's|&opcodeslua_opcall;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lua_opcall.xml"/>|g' \
+  -e 's|&opcodeslua_opdef;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lua_opdef.xml"/>|g' \
+  -e 's|&opcodesmac;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mac.xml"/>|g' \
+  -e 's|&opcodesmaca;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="maca.xml"/>|g' \
+  -e 's|&opcodesmadsr;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="madsr.xml"/>|g' \
+  -e 's|&opcodesmags;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mags.xml"/>|g' \
+  -e 's|&opcodesmandel;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mandel.xml"/>|g' \
+  -e 's|&opcodesmandol;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mandol.xml"/>|g' \
+  -e 's|&opcodesmaparray;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="maparray.xml"/>|g' \
+  -e 's|&opcodesmarimba;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="marimba.xml"/>|g' \
+  -e 's|&opcodesmassign;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="massign.xml"/>|g' \
+  -e 's|&opcodesmax_k;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="max_k.xml"/>|g' \
+  -e 's|&opcodesmax;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="max.xml"/>|g' \
+  -e 's|&opcodesmaxabs;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="maxabs.xml"/>|g' \
+  -e 's|&opcodesmaxabsaccum;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="maxabsaccum.xml"/>|g' \
+  -e 's|&opcodesmaxaccum;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="maxaccum.xml"/>|g' \
+  -e 's|&opcodesmaxalloc;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="maxalloc.xml"/>|g' \
+  -e 's|&opcodesmaxarray;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="maxarray.xml"/>|g' \
+  -e 's|&opcodesmclock;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mclock.xml"/>|g' \
+  -e 's|&opcodesmdelay;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mdelay.xml"/>|g' \
+  -e 's|&opcodesmedian;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="median.xml"/>|g' \
+  -e 's|&opcodesmediank;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mediank.xml"/>|g' \
+  -e 's|&opcodesmetro;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="metro.xml"/>|g' \
+  -e 's|&opcodesmidglobal;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="midglobal.xml"/>|g' \
+  -e 's|&opcodesmidic14;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="midic14.xml"/>|g' \
+  -e 's|&opcodesmidic21;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="midic21.xml"/>|g' \
+  -e 's|&opcodesmidic7;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="midic7.xml"/>|g' \
+  -e 's|&opcodesmidichannelaftertouch;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="midichannelaftertouch.xml"/>|g' \
+  -e 's|&opcodesmidichn;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="midichn.xml"/>|g' \
+  -e 's|&opcodesmidicontrolchange;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="midicontrolchange.xml"/>|g' \
+  -e 's|&opcodesmidictrl;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="midictrl.xml"/>|g' \
+  -e 's|&opcodesmididefault;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mididefault.xml"/>|g' \
+  -e 's|&opcodesmidifilestatus;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="midifilestatus.xml"/>|g' \
+  -e 's|&opcodesmidiin;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="midiin.xml"/>|g' \
+  -e 's|&opcodesmidinoteoff;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="midinoteoff.xml"/>|g' \
+  -e 's|&opcodesmidinoteoncps;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="midinoteoncps.xml"/>|g' \
+  -e 's|&opcodesmidinoteonkey;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="midinoteonkey.xml"/>|g' \
+  -e 's|&opcodesmidinoteonoct;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="midinoteonoct.xml"/>|g' \
+  -e 's|&opcodesmidinoteonpch;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="midinoteonpch.xml"/>|g' \
+  -e 's|&opcodesmidion;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="midion.xml"/>|g' \
+  -e 's|&opcodesmidion2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="midion2.xml"/>|g' \
+  -e 's|&opcodesmidiout;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="midiout.xml"/>|g' \
+  -e 's|&opcodesmidipitchbend;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="midipitchbend.xml"/>|g' \
+  -e 's|&opcodesmidipolyaftertouch;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="midipolyaftertouch.xml"/>|g' \
+  -e 's|&opcodesmidiprogramchange;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="midiprogramchange.xml"/>|g' \
+  -e 's|&opcodesmiditempo;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="miditempo.xml"/>|g' \
+  -e 's|&opcodesmidremot;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="midremot.xml"/>|g' \
+  -e 's|&opcodesmin;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="min.xml"/>|g' \
+  -e 's|&opcodesminabs;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="minabs.xml"/>|g' \
+  -e 's|&opcodesminabsaccum;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="minabsaccum.xml"/>|g' \
+  -e 's|&opcodesminaccum;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="minaccum.xml"/>|g' \
+  -e 's|&opcodesminarray;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="minarray.xml"/>|g' \
+  -e 's|&opcodesmincer;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mincer.xml"/>|g' \
+  -e 's|&opcodesmirror;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mirror.xml"/>|g' \
+  -e 's|&opcodesmixerclear;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mixerclear.xml"/>|g' \
+  -e 's|&opcodesmixergetlevel;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mixergetlevel.xml"/>|g' \
+  -e 's|&opcodesmixerreceive;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mixerreceive.xml"/>|g' \
+  -e 's|&opcodesmixersend;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mixersend.xml"/>|g' \
+  -e 's|&opcodesmixersetlevel;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mixersetlevel.xml"/>|g' \
+  -e 's|&opcodesmixersetleveli;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mixersetlevel_i.xml"/>|g' \
+  -e 's|&opcodesmode;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mode.xml"/>|g' \
+  -e 's|&opcodesmodmatrix;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="modmatrix.xml"/>|g' \
+  -e 's|&opcodesmodulus;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="modulus.xml"/>|g' \
+  -e 's|&opcodesmonitor;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="monitor.xml"/>|g' \
+  -e 's|&opcodesmoog;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="moog.xml"/>|g' \
+  -e 's|&opcodesmoogladder;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="moogladder.xml"/>|g' \
+  -e 's|&opcodesmoogvcf;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="moogvcf.xml"/>|g' \
+  -e 's|&opcodesmoogvcf2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="moogvcf2.xml"/>|g' \
+  -e 's|&opcodesmoscil;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="moscil.xml"/>|g' \
+  -e 's|&opcodesmp3in;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mp3in.xml"/>|g' \
+  -e 's|&opcodesmp3len;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mp3len.xml"/>|g' \
+  -e 's|&opcodesmpulse;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mpulse.xml"/>|g' \
+  -e 's|&opcodesmrtmsg;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mrtmsg.xml"/>|g' \
+  -e 's|&opcodesmultiplies;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multiplies.xml"/>|g' \
+  -e 's|&opcodesmultitap;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multitap.xml"/>|g' \
+  -e 's|&opcodesmute;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mute.xml"/>|g' \
+  -e 's|&opcodesmxadsr;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mxadsr.xml"/>|g' \
+  -e 's|&opcodesnchnls;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="nchnls.xml"/>|g' \
+  -e 's|&opcodesnchnlsi;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="nchnls_i.xml"/>|g' \
+  -e 's|&opcodesnestedap;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="nestedap.xml"/>|g' \
+  -e 's|&opcodesnlfilt;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="nlfilt.xml"/>|g' \
+  -e 's|&opcodesnlfilt2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="nlfilt2.xml"/>|g' \
+  -e 's|&opcodesnoise;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="noise.xml"/>|g' \
+  -e 's|&opcodesnoteoff;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="noteoff.xml"/>|g' \
+  -e 's|&opcodesnoteon;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="noteon.xml"/>|g' \
+  -e 's|&opcodesnoteondur;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="noteondur.xml"/>|g' \
+  -e 's|&opcodesnoteondur2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="noteondur2.xml"/>|g' \
+  -e 's|&opcodesnotequal;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="notequal.xml"/>|g' \
+  -e 's|&opcodesnotnum;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="notnum.xml"/>|g' \
+  -e 's|&opcodesnreverb;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="nreverb.xml"/>|g' \
+  -e 's|&opcodesnrpn;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="nrpn.xml"/>|g' \
+  -e 's|&opcodesnsamp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="nsamp.xml"/>|g' \
+  -e 's|&opcodesnstance;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="nstance.xml"/>|g' \
+  -e 's|&opcodesnstrnum;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="nstrnum.xml"/>|g' \
+  -e 's|&opcodesntrpol;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ntrpol.xml"/>|g' \
+  -e 's|&opcodesoctave;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="octave.xml"/>|g' \
+  -e 's|&opcodesoctcps;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="octcps.xml"/>|g' \
+  -e 's|&opcodesoctmidi;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="octmidi.xml"/>|g' \
+  -e 's|&opcodesoctmidib;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="octmidib.xml"/>|g' \
+  -e 's|&opcodesoctmidinn;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="octmidinn.xml"/>|g' \
+  -e 's|&opcodesoctpch;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="octpch.xml"/>|g' \
+  -e 's|&opcodesolabuffer;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="olabuffer.xml"/>|g' \
+  -e 's|&opcodesopa;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="opa.xml"/>|g' \
+  -e 's|&opcodesopand;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="opand.xml"/>|g' \
+  -e 's|&opcodesopbitand;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="opbitand.xml"/>|g' \
+  -e 's|&opcodesopbitnot;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="opbitnot.xml"/>|g' \
+  -e 's|&opcodesopbitor;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="opbitor.xml"/>|g' \
+  -e 's|&opcodesopbitshl;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="opbitshl.xml"/>|g' \
+  -e 's|&opcodesopbitshr;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="opbitshr.xml"/>|g' \
+  -e 's|&opcodesopcode;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="opcode.xml"/>|g' \
+  -e 's|&opcodesopi;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="opi.xml"/>|g' \
+  -e 's|&opcodesopk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="opk.xml"/>|g' \
+  -e 's|&opcodesopnonequiv;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="opnonequiv.xml"/>|g' \
+  -e 's|&opcodesopor;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="opor.xml"/>|g' \
+  -e 's|&opcodesoscbnk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="oscbnk.xml"/>|g' \
+  -e 's|&opcodesoscil;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="oscil.xml"/>|g' \
+  -e 's|&opcodesoscil1;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="oscil1.xml"/>|g' \
+  -e 's|&opcodesoscil1i;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="oscil1i.xml"/>|g' \
+  -e 's|&opcodesoscil3;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="oscil3.xml"/>|g' \
+  -e 's|&opcodesoscili;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="oscili.xml"/>|g' \
+  -e 's|&opcodesoscilikt;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="oscilikt.xml"/>|g' \
+  -e 's|&opcodesosciliktp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="osciliktp.xml"/>|g' \
+  -e 's|&opcodesoscilikts;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="oscilikts.xml"/>|g' \
+  -e 's|&opcodesosciln;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="osciln.xml"/>|g' \
+  -e 's|&opcodesoscils;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="oscils.xml"/>|g' \
+  -e 's|&opcodesoscilx;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="oscilx.xml"/>|g' \
+  -e 's|&opcodesOSCinit;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="OSCinit.xml"/>|g' \
+  -e 's|&opcodesOSClisten;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="OSClisten.xml"/>|g' \
+  -e 's|&opcodesOSCsend;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="OSCsend.xml"/>|g' \
+  -e 's|&opcodesout;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="out.xml"/>|g' \
+  -e 's|&opcodesout32;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="out32.xml"/>|g' \
+  -e 's|&opcodesoutc;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="outc.xml"/>|g' \
+  -e 's|&opcodesoutch;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="outch.xml"/>|g' \
+  -e 's|&opcodesouth;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="outh.xml"/>|g' \
+  -e 's|&opcodesoutiat;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="outiat.xml"/>|g' \
+  -e 's|&opcodesoutic;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="outic.xml"/>|g' \
+  -e 's|&opcodesoutic14;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="outic14.xml"/>|g' \
+  -e 's|&opcodesoutipat;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="outipat.xml"/>|g' \
+  -e 's|&opcodesoutipb;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="outipb.xml"/>|g' \
+  -e 's|&opcodesoutipc;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="outipc.xml"/>|g' \
+  -e 's|&opcodesoutkat;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="outkat.xml"/>|g' \
+  -e 's|&opcodesoutkc;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="outkc.xml"/>|g' \
+  -e 's|&opcodesoutkc14;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="outkc14.xml"/>|g' \
+  -e 's|&opcodesoutkpat;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="outkpat.xml"/>|g' \
+  -e 's|&opcodesoutkpb;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="outkpb.xml"/>|g' \
+  -e 's|&opcodesoutkpc;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="outkpc.xml"/>|g' \
+  -e 's|&opcodesoutleta;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="outleta.xml"/>|g' \
+  -e 's|&opcodesoutletf;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="outletf.xml"/>|g' \
+  -e 's|&opcodesoutletk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="outletk.xml"/>|g' \
+  -e 's|&opcodesoutletkid;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="outletkid.xml"/>|g' \
+  -e 's|&opcodesouto;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="outo.xml"/>|g' \
+  -e 's|&opcodesoutq;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="outq.xml"/>|g' \
+  -e 's|&opcodesoutq1;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="outq1.xml"/>|g' \
+  -e 's|&opcodesoutq2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="outq2.xml"/>|g' \
+  -e 's|&opcodesoutq3;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="outq3.xml"/>|g' \
+  -e 's|&opcodesoutq4;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="outq4.xml"/>|g' \
+  -e 's|&opcodesoutrg;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="outrg.xml"/>|g' \
+  -e 's|&opcodesouts;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="outs.xml"/>|g' \
+  -e 's|&opcodesouts1;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="outs1.xml"/>|g' \
+  -e 's|&opcodesouts2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="outs2.xml"/>|g' \
+  -e 's|&opcodesoutvalue;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="outvalue.xml"/>|g' \
+  -e 's|&opcodesoutx;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="outx.xml"/>|g' \
+  -e 's|&opcodesoutz;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="outz.xml"/>|g' \
+  -e 's|&opcodesp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="p.xml"/>|g' \
+  -e 's|&opcodesp5gconnect;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="p5gconnect.xml"/>|g' \
+  -e 's|&opcodesp5gdata;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="p5gdata.xml"/>|g' \
+  -e 's|&opcodespan;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pan.xml"/>|g' \
+  -e 's|&opcodespan2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pan2.xml"/>|g' \
+  -e 's|&opcodespareq;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pareq.xml"/>|g' \
+  -e 's|&opcodespartials;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials.xml"/>|g' \
+  -e 's|&opcodespartikkel;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partikkel.xml"/>|g' \
+  -e 's|&opcodespartikkelsync;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partikkelsync.xml"/>|g' \
+  -e 's|&opcodespassign;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="passign.xml"/>|g' \
+  -e 's|&opcodespcauchy;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pcauchy.xml"/>|g' \
+  -e 's|&opcodespchbend;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pchbend.xml"/>|g' \
+  -e 's|&opcodespchmidi;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pchmidi.xml"/>|g' \
+  -e 's|&opcodespchmidib;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pchmidib.xml"/>|g' \
+  -e 's|&opcodespchmidinn;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pchmidinn.xml"/>|g' \
+  -e 's|&opcodespchoct;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pchoct.xml"/>|g' \
+  -e 's|&opcodespconvolve;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pconvolve.xml"/>|g' \
+  -e 's|&opcodespcount;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pcount.xml"/>|g' \
+  -e 's|&opcodespdclip;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pdclip.xml"/>|g' \
+  -e 's|&opcodespdhalf;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pdhalf.xml"/>|g' \
+  -e 's|&opcodespdhalfy;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pdhalfy.xml"/>|g' \
+  -e 's|&opcodespeak;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="peak.xml"/>|g' \
+  -e 's|&opcodespeakk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/peakk.xml"/>|g' \
+  -e 's|&opcodespgmassign;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pgmassign.xml"/>|g' \
+  -e 's|&opcodesphaser1;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="phaser1.xml"/>|g' \
+  -e 's|&opcodesphaser2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="phaser2.xml"/>|g' \
+  -e 's|&opcodesphasor;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="phasor.xml"/>|g' \
+  -e 's|&opcodesphasorbnk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="phasorbnk.xml"/>|g' \
+  -e 's|&opcodesphs;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="phs.xml"/>|g' \
+  -e 's|&opcodespindex;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pindex.xml"/>|g' \
+  -e 's|&opcodespinker;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pinker.xml"/>|g' \
+  -e 's|&opcodespinkish;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pinkish.xml"/>|g' \
+  -e 's|&opcodespitch;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pitch.xml"/>|g' \
+  -e 's|&opcodespitchamdf;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pitchamdf.xml"/>|g' \
+  -e 's|&opcodesplanet;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="planet.xml"/>|g' \
+  -e 's|&opcodesplaterev;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="platerev.xml"/>|g' \
+  -e 's|&opcodesplltrack;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="plltrack.xml"/>|g' \
+  -e 's|&opcodespluck;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pluck.xml"/>|g' \
+  -e 's|&opcodesplusbecomes;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="plusbecomes.xml"/>|g' \
+  -e 's|&opcodespoisson;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="poisson.xml"/>|g' \
+  -e 's|&opcodespol2rect;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pol2rect.xml"/>|g' \
+  -e 's|&opcodespolyaft;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="polyaft.xml"/>|g' \
+  -e 's|&opcodespolynomial;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="polynomial.xml"/>|g' \
+  -e 's|&opcodespop_f;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/pop_f.xml"/>|g' \
+  -e 's|&opcodespop;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/pop.xml"/>|g' \
+  -e 's|&opcodesport;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="port.xml"/>|g' \
+  -e 's|&opcodesportk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="portk.xml"/>|g' \
+  -e 's|&opcodesposcil;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="poscil.xml"/>|g' \
+  -e 's|&opcodesposcil3;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="poscil3.xml"/>|g' \
+  -e 's|&opcodespow;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pow.xml"/>|g' \
+  -e 's|&opcodespowershape;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="powershape.xml"/>|g' \
+  -e 's|&opcodespowoftwo;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="powoftwo.xml"/>|g' \
+  -e 's|&opcodesprealloc;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="prealloc.xml"/>|g' \
+  -e 's|&opcodesprepiano;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="prepiano.xml"/>|g' \
+  -e 's|&opcodesprint;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="print.xml"/>|g' \
+  -e 's|&opcodesprintf;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="printf.xml"/>|g' \
+  -e 's|&opcodesprintk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="printk.xml"/>|g' \
+  -e 's|&opcodesprintk2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="printk2.xml"/>|g' \
+  -e 's|&opcodesprintks;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="printks.xml"/>|g' \
+  -e 's|&opcodesprintks2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="printks2.xml"/>|g' \
+  -e 's|&opcodesprints;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="prints.xml"/>|g' \
+  -e 's|&opcodesproduct;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="product.xml"/>|g' \
+  -e 's|&opcodespset;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pset.xml"/>|g' \
+  -e 's|&opcodesptable;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ptable.xml"/>|g' \
+  -e 's|&opcodesptable3;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ptable3.xml"/>|g' \
+  -e 's|&opcodesptablei;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ptablei.xml"/>|g' \
+  -e 's|&opcodesptablew;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ptablew.xml"/>|g' \
+  -e 's|&opcodesptrack;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ptrack.xml"/>|g' \
+  -e 's|&opcodespush_f;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/push_f.xml"/>|g' \
+  -e 's|&opcodespush;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/push.xml"/>|g' \
+  -e 's|&opcodesputs;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="puts.xml"/>|g' \
+  -e 's|&opcodespvadd;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvadd.xml"/>|g' \
+  -e 's|&opcodespvbufread;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvbufread.xml"/>|g' \
+  -e 's|&opcodespvcross;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvcross.xml"/>|g' \
+  -e 's|&opcodespvinterp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvinterp.xml"/>|g' \
+  -e 's|&opcodespvoc;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvoc.xml"/>|g' \
+  -e 's|&opcodespvread;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvread.xml"/>|g' \
+  -e 's|&opcodespvs2tab;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvs2tab.xml"/>|g' \
+  -e 's|&opcodespvsadsyn;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvsadsyn.xml"/>|g' \
+  -e 's|&opcodespvsanal;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvsanal.xml"/>|g' \
+  -e 's|&opcodespvsarp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvsarp.xml"/>|g' \
+  -e 's|&opcodespvsbandp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvsbandp.xml"/>|g' \
+  -e 's|&opcodespvsbandr;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvsbandr.xml"/>|g' \
+  -e 's|&opcodespvsbin;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvsbin.xml"/>|g' \
+  -e 's|&opcodespvsblur;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvsblur.xml"/>|g' \
+  -e 's|&opcodespvsbuffer;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvsbuffer.xml"/>|g' \
+  -e 's|&opcodespvsbufread;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvsbufread.xml"/>|g' \
+  -e 's|&opcodespvsbufread2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvsbufread2.xml"/>|g' \
+  -e 's|&opcodespvscale;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvscale.xml"/>|g' \
+  -e 's|&opcodespvscent;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvscent.xml"/>|g' \
+  -e 's|&opcodespvscross;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvscross.xml"/>|g' \
+  -e 's|&opcodespvsdemix;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvsdemix.xml"/>|g' \
+  -e 's|&opcodespvsdiskin;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvsdiskin.xml"/>|g' \
+  -e 's|&opcodespvsdisp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvsdisp.xml"/>|g' \
+  -e 's|&opcodespvsfilter;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvsfilter.xml"/>|g' \
+  -e 's|&opcodespvsfread;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvsfread.xml"/>|g' \
+  -e 's|&opcodespvsfreeze;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvsfreeze.xml"/>|g' \
+  -e 's|&opcodespvsftr;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvsftr.xml"/>|g' \
+  -e 's|&opcodespvsftw;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvsftw.xml"/>|g' \
+  -e 's|&opcodespvsfwrite;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvsfwrite.xml"/>|g' \
+  -e 's|&opcodespvsgain;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvsgain.xml"/>|g' \
+  -e 's|&opcodespvshift;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvshift.xml"/>|g' \
+  -e 's|&opcodespvsifd;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvsifd.xml"/>|g' \
+  -e 's|&opcodespvsin;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvsin.xml"/>|g' \
+  -e 's|&opcodespvsinfo;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvsinfo.xml"/>|g' \
+  -e 's|&opcodespvsinit;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvsinit.xml"/>|g' \
+  -e 's|&opcodespvslock;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvslock.xml"/>|g' \
+  -e 's|&opcodespvsmaska;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvsmaska.xml"/>|g' \
+  -e 's|&opcodespvsmix;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvsmix.xml"/>|g' \
+  -e 's|&opcodespvsmooth;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvsmooth.xml"/>|g' \
+  -e 's|&opcodespvsmorph;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvsmorph.xml"/>|g' \
+  -e 's|&opcodespvsosc;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvsosc.xml"/>|g' \
+  -e 's|&opcodespvsout;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvsout.xml"/>|g' \
+  -e 's|&opcodespvspitch;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvspitch.xml"/>|g' \
+  -e 's|&opcodespvstanal;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvstanal.xml"/>|g' \
+  -e 's|&opcodespvstencil;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvstencil.xml"/>|g' \
+  -e 's|&opcodespvsvoc;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvsvoc.xml"/>|g' \
+  -e 's|&opcodespvswarp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvswarp.xml"/>|g' \
+  -e 's|&opcodespvsynth;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvsynth.xml"/>|g' \
+  -e 's|&opcodespwd;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pwd.xml"/>|g' \
+  -e 's|&opcodespyassign;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pyassign.xml"/>|g' \
+  -e 's|&opcodespycall;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pycall.xml"/>|g' \
+  -e 's|&opcodespyeval;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pyeval.xml"/>|g' \
+  -e 's|&opcodespyexec;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pyexec.xml"/>|g' \
+  -e 's|&opcodespyinit;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pyinit.xml"/>|g' \
+  -e 's|&opcodespyrun;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pyrun.xml"/>|g' \
+  -e 's|&opcodesqinf;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="qinf.xml"/>|g' \
+  -e 's|&opcodesqnan;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="qnan.xml"/>|g' \
+  -e 's|&opcodesr2c;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="r2c.xml"/>|g' \
+  -e 's|&opcodesraises;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="raises.xml"/>|g' \
+  -e 's|&opcodesrand;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="rand.xml"/>|g' \
+  -e 's|&opcodesrandh;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="randh.xml"/>|g' \
+  -e 's|&opcodesrandi;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="randi.xml"/>|g' \
+  -e 's|&opcodesrandom;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="random.xml"/>|g' \
+  -e 's|&opcodesrandomh;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="randomh.xml"/>|g' \
+  -e 's|&opcodesrandomi;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="randomi.xml"/>|g' \
+  -e 's|&opcodesrbjeq;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="rbjeq.xml"/>|g' \
+  -e 's|&opcodesreadclock;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="readclock.xml"/>|g' \
+  -e 's|&opcodesreadf;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="readf.xml"/>|g' \
+  -e 's|&opcodesreadfi;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="readfi.xml"/>|g' \
+  -e 's|&opcodesreadk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="readk.xml"/>|g' \
+  -e 's|&opcodesreadk2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="readk2.xml"/>|g' \
+  -e 's|&opcodesreadk3;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="readk3.xml"/>|g' \
+  -e 's|&opcodesreadk4;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="readk4.xml"/>|g' \
+  -e 's|&opcodesreadscore;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="readscore.xml"/>|g' \
+  -e 's|&opcodesreadscratch;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="readscratch.xml"/>|g' \
+  -e 's|&opcodesrect2pol;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="rect2pol.xml"/>|g' \
+  -e 's|&opcodesreinit;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="reinit.xml"/>|g' \
+  -e 's|&opcodesrelease;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="release.xml"/>|g' \
+  -e 's|&opcodesremoteport;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="remoteport.xml"/>|g' \
+  -e 's|&opcodesremove;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="remove.xml"/>|g' \
+  -e 's|&opcodesrepluck;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="repluck.xml"/>|g' \
+  -e 's|&opcodesreson;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="reson.xml"/>|g' \
+  -e 's|&opcodesresonk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="resonk.xml"/>|g' \
+  -e 's|&opcodesresonr;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="resonr.xml"/>|g' \
+  -e 's|&opcodesresonx;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="resonx.xml"/>|g' \
+  -e 's|&opcodesresonxk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="resonxk.xml"/>|g' \
+  -e 's|&opcodesresony;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="resony.xml"/>|g' \
+  -e 's|&opcodesresonz;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="resonz.xml"/>|g' \
+  -e 's|&opcodesresyn;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="resyn.xml"/>|g' \
+  -e 's|&opcodesreturn;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="return.xml"/>|g' \
+  -e 's|&opcodesreverb;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="reverb.xml"/>|g' \
+  -e 's|&opcodesreverb2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="reverb2.xml"/>|g' \
+  -e 's|&opcodesreverbsc;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="reverbsc.xml"/>|g' \
+  -e 's|&opcodesrewindscore;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="rewindscore.xml"/>|g' \
+  -e 's|&opcodesrezzy;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="rezzy.xml"/>|g' \
+  -e 's|&opcodesrfft;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="rfft.xml"/>|g' \
+  -e 's|&opcodesrifft;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="rifft.xml"/>|g' \
+  -e 's|&opcodesrigoto;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="rigoto.xml"/>|g' \
+  -e 's|&opcodesrireturn;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="rireturn.xml"/>|g' \
+  -e 's|&opcodesrms;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="rms.xml"/>|g' \
+  -e 's|&opcodesrnd;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="rnd.xml"/>|g' \
+  -e 's|&opcodesrnd31;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="rnd31.xml"/>|g' \
+  -e 's|&opcodesround;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="round.xml"/>|g' \
+  -e 's|&opcodesrspline;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="rspline.xml"/>|g' \
+  -e 's|&opcodesrtclock;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="rtclock.xml"/>|g' \
+  -e 's|&opcodess16b14;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="s16b14.xml"/>|g' \
+  -e 's|&opcodess32b14;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="s32b14.xml"/>|g' \
+  -e 's|&opcodessamphold;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="samphold.xml"/>|g' \
+  -e 's|&opcodessandpaper;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sandpaper.xml"/>|g' \
+  -e 's|&opcodesscale;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="scale.xml"/>|g' \
+  -e 's|&opcodesscalearray;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="scalearray.xml"/>|g' \
+  -e 's|&opcodesscanhammer;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="scanhammer.xml"/>|g' \
+  -e 's|&opcodesscans;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="scans.xml"/>|g' \
+  -e 's|&opcodesscantable;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="scantable.xml"/>|g' \
+  -e 's|&opcodesscanu;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="scanu.xml"/>|g' \
+  -e 's|&opcodesschedkwhen;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="schedkwhen.xml"/>|g' \
+  -e 's|&opcodesschedkwhennamed;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="schedkwhennamed.xml"/>|g' \
+  -e 's|&opcodesschedule;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="schedule.xml"/>|g' \
+  -e 's|&opcodesschedwhen;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="schedwhen.xml"/>|g' \
+  -e 's|&opcodesscoreline_i;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="scoreline_i.xml"/>|g' \
+  -e 's|&opcodesscoreline;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="scoreline.xml"/>|g' \
+  -e 's|&opcodesseed;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="seed.xml"/>|g' \
+  -e 's|&opcodessekere;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sekere.xml"/>|g' \
+  -e 's|&opcodessemitone;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="semitone.xml"/>|g' \
+  -e 's|&opcodessense;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sense.xml"/>|g' \
+  -e 's|&opcodessensekey;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sensekey.xml"/>|g' \
+  -e 's|&opcodesseqtime;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="seqtime.xml"/>|g' \
+  -e 's|&opcodesseqtime2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="seqtime2.xml"/>|g' \
+  -e 's|&opcodesserialBegin;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="serialBegin.xml"/>|g' \
+  -e 's|&opcodesserialEnd;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="serialEnd.xml"/>|g' \
+  -e 's|&opcodesserialFlush;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="serialFlush.xml"/>|g' \
+  -e 's|&opcodesserialPrint;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="serialPrint.xml"/>|g' \
+  -e 's|&opcodesserialRead;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="serialRead.xml"/>|g' \
+  -e 's|&opcodesserialWrite_i;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="serialWrite_i.xml"/>|g' \
+  -e 's|&opcodesserialWrite;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="serialWrite.xml"/>|g' \
+  -e 's|&opcodessetctrl;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="setctrl.xml"/>|g' \
+  -e 's|&opcodessetksmps;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="setksmps.xml"/>|g' \
+  -e 's|&opcodessetrow;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="setrow.xml"/>|g' \
+  -e 's|&opcodessetscorepos;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="setscorepos.xml"/>|g' \
+  -e 's|&opcodessfilist;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sfilist.xml"/>|g' \
+  -e 's|&opcodessfinstr;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sfinstr.xml"/>|g' \
+  -e 's|&opcodessfinstr3;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sfinstr3.xml"/>|g' \
+  -e 's|&opcodessfinstr3m;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sfinstr3m.xml"/>|g' \
+  -e 's|&opcodessfinstrm;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sfinstrm.xml"/>|g' \
+  -e 's|&opcodessfload;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sfload.xml"/>|g' \
+  -e 's|&opcodessflooper;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sflooper.xml"/>|g' \
+  -e 's|&opcodessfpassign;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sfpassign.xml"/>|g' \
+  -e 's|&opcodessfplay;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sfplay.xml"/>|g' \
+  -e 's|&opcodessfplay3;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sfplay3.xml"/>|g' \
+  -e 's|&opcodessfplay3m;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sfplay3m.xml"/>|g' \
+  -e 's|&opcodessfplaym;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sfplaym.xml"/>|g' \
+  -e 's|&opcodessfplist;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sfplist.xml"/>|g' \
+  -e 's|&opcodessfpreset;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sfpreset.xml"/>|g' \
+  -e 's|&opcodesshaker;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="shaker.xml"/>|g' \
+  -e 's|&opcodesshiftin;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="shiftin.xml"/>|g' \
+  -e 's|&opcodesshiftout;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="shiftout.xml"/>|g' \
+  -e 's|&opcodessignum;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="signum.xml"/>|g' \
+  -e 's|&opcodessin;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sin.xml"/>|g' \
+  -e 's|&opcodessinh;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sinh.xml"/>|g' \
+  -e 's|&opcodessininv;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sininv.xml"/>|g' \
+  -e 's|&opcodessinsyn;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sinsyn.xml"/>|g' \
+  -e 's|&opcodessleighbells;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sleighbells.xml"/>|g' \
+  -e 's|&opcodesslicearray;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="slicearray.xml"/>|g' \
+  -e 's|&opcodesslider16;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="slider16.xml"/>|g' \
+  -e 's|&opcodesslider16f;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="slider16f.xml"/>|g' \
+  -e 's|&opcodesslider16table;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="slider16table.xml"/>|g' \
+  -e 's|&opcodesslider16tablef;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="slider16tablef.xml"/>|g' \
+  -e 's|&opcodesslider32;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="slider32.xml"/>|g' \
+  -e 's|&opcodesslider32f;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="slider32f.xml"/>|g' \
+  -e 's|&opcodesslider32table;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="slider32table.xml"/>|g' \
+  -e 's|&opcodesslider32tablef;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="slider32tablef.xml"/>|g' \
+  -e 's|&opcodesslider64;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="slider64.xml"/>|g' \
+  -e 's|&opcodesslider64f;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="slider64f.xml"/>|g' \
+  -e 's|&opcodesslider64table;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="slider64table.xml"/>|g' \
+  -e 's|&opcodesslider64tablef;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="slider64tablef.xml"/>|g' \
+  -e 's|&opcodesslider8;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="slider8.xml"/>|g' \
+  -e 's|&opcodesslider8f;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="slider8f.xml"/>|g' \
+  -e 's|&opcodesslider8table;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="slider8table.xml"/>|g' \
+  -e 's|&opcodesslider8tablef;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="slider8tablef.xml"/>|g' \
+  -e 's|&opcodessliderkawai;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sliderkawai.xml"/>|g' \
+  -e 's|&opcodessndload;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/sndload.xml"/>|g' \
+  -e 's|&opcodessndloop;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sndloop.xml"/>|g' \
+  -e 's|&opcodessndwarp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sndwarp.xml"/>|g' \
+  -e 's|&opcodessndwarpst;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sndwarpst.xml"/>|g' \
+  -e 's|&opcodessockrecv;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sockrecv.xml"/>|g' \
+  -e 's|&opcodessocksend;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="socksend.xml"/>|g' \
+  -e 's|&opcodessoundin;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="soundin.xml"/>|g' \
+  -e 's|&opcodessoundout;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/soundout.xml"/>|g' \
+  -e 's|&opcodessoundouts;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/soundouts.xml"/>|g' \
+  -e 's|&opcodesspace;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="space.xml"/>|g' \
+  -e 's|&opcodesspat3d;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="spat3d.xml"/>|g' \
+  -e 's|&opcodesspat3di;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="spat3di.xml"/>|g' \
+  -e 's|&opcodesspat3dt;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="spat3dt.xml"/>|g' \
+  -e 's|&opcodesspdist;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="spdist.xml"/>|g' \
+  -e 's|&opcodesspecaddm;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="specaddm.xml"/>|g' \
+  -e 's|&opcodesspecdiff;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="specdiff.xml"/>|g' \
+  -e 's|&opcodesspecdisp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="specdisp.xml"/>|g' \
+  -e 's|&opcodesspecfilt;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="specfilt.xml"/>|g' \
+  -e 's|&opcodesspechist;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="spechist.xml"/>|g' \
+  -e 's|&opcodesspecptrk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="specptrk.xml"/>|g' \
+  -e 's|&opcodesspecscal;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="specscal.xml"/>|g' \
+  -e 's|&opcodesspecsum;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="specsum.xml"/>|g' \
+  -e 's|&opcodesspectrum;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="spectrum.xml"/>|g' \
+  -e 's|&opcodessplitrig;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="splitrig.xml"/>|g' \
+  -e 's|&opcodessprintf;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sprintf.xml"/>|g' \
+  -e 's|&opcodessprintfk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sprintfk.xml"/>|g' \
+  -e 's|&opcodesspsend;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="spsend.xml"/>|g' \
+  -e 's|&opcodessqrt;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sqrt.xml"/>|g' \
+  -e 's|&opcodessr;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sr.xml"/>|g' \
+  -e 's|&opcodesstack;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../opcodes/stack.xml"/>|g' \
+  -e 's|&opcodesstatevar;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="statevar.xml"/>|g' \
+  -e 's|&opcodesstix;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="stix.xml"/>|g' \
+  -e 's|&opcodesSTKbandedwg;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="STKBandedWG.xml"/>|g' \
+  -e 's|&opcodesSTKbeethree;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="STKBeeThree.xml"/>|g' \
+  -e 's|&opcodesSTKblowbotl;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="STKBlowBotl.xml"/>|g' \
+  -e 's|&opcodesSTKblowhole;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="STKBlowHole.xml"/>|g' \
+  -e 's|&opcodesSTKbowed;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="STKBowed.xml"/>|g' \
+  -e 's|&opcodesSTKbrass;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="STKBrass.xml"/>|g' \
+  -e 's|&opcodesSTKclarinet;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="STKClarinet.xml"/>|g' \
+  -e 's|&opcodesSTKdrummer;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="STKDrummer.xml"/>|g' \
+  -e 's|&opcodesSTKflute;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="STKFlute.xml"/>|g' \
+  -e 's|&opcodesSTKfmvoices;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="STKFMVoices.xml"/>|g' \
+  -e 's|&opcodesSTKhevymetl;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="STKHevyMetl.xml"/>|g' \
+  -e 's|&opcodesSTKmandolin;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="STKMandolin.xml"/>|g' \
+  -e 's|&opcodesSTKmodalbar;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="STKModalBar.xml"/>|g' \
+  -e 's|&opcodesSTKmoog;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="STKMoog.xml"/>|g' \
+  -e 's|&opcodesSTKpercflut;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="STKPercFlut.xml"/>|g' \
+  -e 's|&opcodesSTKplucked;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="STKPlucked.xml"/>|g' \
+  -e 's|&opcodesSTKresonate;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="STKResonate.xml"/>|g' \
+  -e 's|&opcodesSTKrhodey;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="STKRhodey.xml"/>|g' \
+  -e 's|&opcodesSTKsaxofony;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="STKSaxofony.xml"/>|g' \
+  -e 's|&opcodesSTKshakers;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="STKShakers.xml"/>|g' \
+  -e 's|&opcodesSTKsimple;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="STKSimple.xml"/>|g' \
+  -e 's|&opcodesSTKsitar;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="STKSitar.xml"/>|g' \
+  -e 's|&opcodesSTKstifkarp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="STKStifKarp.xml"/>|g' \
+  -e 's|&opcodesSTKtubebell;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="STKTubeBell.xml"/>|g' \
+  -e 's|&opcodesSTKvoiceform;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="STKVoicForm.xml"/>|g' \
+  -e 's|&opcodesSTKwhistle;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="STKWhistle.xml"/>|g' \
+  -e 's|&opcodesSTKwurley;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="STKWurley.xml"/>|g' \
+  -e 's|&opcodesstrcat;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="strcat.xml"/>|g' \
+  -e 's|&opcodesstrcatk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="strcatk.xml"/>|g' \
+  -e 's|&opcodesstrchar;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="strchar.xml"/>|g' \
+  -e 's|&opcodesstrchark;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="strchark.xml"/>|g' \
+  -e 's|&opcodesstrcmp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="strcmp.xml"/>|g' \
+  -e 's|&opcodesstrcmpk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="strcmpk.xml"/>|g' \
+  -e 's|&opcodesstrcpy;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="strcpy.xml"/>|g' \
+  -e 's|&opcodesstrcpyk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="strcpyk.xml"/>|g' \
+  -e 's|&opcodesstreson;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="streson.xml"/>|g' \
+  -e 's|&opcodesstrfromurl;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="strfromurl.xml"/>|g' \
+  -e 's|&opcodesstrget;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="strget.xml"/>|g' \
+  -e 's|&opcodesstrindex;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="strindex.xml"/>|g' \
+  -e 's|&opcodesstrindexk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="strindexk.xml"/>|g' \
+  -e 's|&opcodesstrlen;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="strlen.xml"/>|g' \
+  -e 's|&opcodesstrlenk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="strlenk.xml"/>|g' \
+  -e 's|&opcodesstrlower;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="strlower.xml"/>|g' \
+  -e 's|&opcodesstrlowerk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="strlowerk.xml"/>|g' \
+  -e 's|&opcodesstrrindex;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="strrindex.xml"/>|g' \
+  -e 's|&opcodesstrrindexk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="strrindexk.xml"/>|g' \
+  -e 's|&opcodesstrset;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="strset.xml"/>|g' \
+  -e 's|&opcodesstrsub;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="strsub.xml"/>|g' \
+  -e 's|&opcodesstrsubk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="strsubk.xml"/>|g' \
+  -e 's|&opcodesstrtod;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="strtod.xml"/>|g' \
+  -e 's|&opcodesstrtodk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="strtodk.xml"/>|g' \
+  -e 's|&opcodesstrtol;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="strtol.xml"/>|g' \
+  -e 's|&opcodesstrtolk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="strtolk.xml"/>|g' \
+  -e 's|&opcodesstrupper;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="strupper.xml"/>|g' \
+  -e 's|&opcodesstrupperk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="strupperk.xml"/>|g' \
+  -e 's|&opcodessubinstr;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="subinstr.xml"/>|g' \
+  -e 's|&opcodessubinstrinit;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="subinstrinit.xml"/>|g' \
+  -e 's|&opcodessubtracts;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="subtracts.xml"/>|g' \
+  -e 's|&opcodessum;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sum.xml"/>|g' \
+  -e 's|&opcodessumarray;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sumarray.xml"/>|g' \
+  -e 's|&opcodessvfilter;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="svfilter.xml"/>|g' \
+  -e 's|&opcodessyncgrain;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="syncgrain.xml"/>|g' \
+  -e 's|&opcodessyncloop;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="syncloop.xml"/>|g' \
+  -e 's|&opcodessyncphasor;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="syncphasor.xml"/>|g' \
+  -e 's|&opcodessystem;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="system.xml"/>|g' \
+  -e 's|&opcodestab;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tab.xml"/>|g' \
+  -e 's|&opcodestab2pvs;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tab2pvs.xml"/>|g' \
+  -e 's|&opcodestabifd;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tabifd.xml"/>|g' \
+  -e 's|&opcodestable;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="table.xml"/>|g' \
+  -e 's|&opcodestable3;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="table3.xml"/>|g' \
+  -e 's|&opcodestablecopy;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tablecopy.xml"/>|g' \
+  -e 's|&opcodestablefilter;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tablefilter.xml"/>|g' \
+  -e 's|&opcodestablefilteri;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tablefilteri.xml"/>|g' \
+  -e 's|&opcodestablegpw;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tablegpw.xml"/>|g' \
+  -e 's|&opcodestablei;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tablei.xml"/>|g' \
+  -e 's|&opcodestableicopy;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tableicopy.xml"/>|g' \
+  -e 's|&opcodestableigpw;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tableigpw.xml"/>|g' \
+  -e 's|&opcodestableikt;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tableikt.xml"/>|g' \
+  -e 's|&opcodestableimix;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tableimix.xml"/>|g' \
+  -e 's|&opcodestableiw;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tableiw.xml"/>|g' \
+  -e 's|&opcodestablekt;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tablekt.xml"/>|g' \
+  -e 's|&opcodestablemix;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tablemix.xml"/>|g' \
+  -e 's|&opcodestableng;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tableng.xml"/>|g' \
+  -e 's|&opcodestablera;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tablera.xml"/>|g' \
+  -e 's|&opcodestableseg;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tableseg.xml"/>|g' \
+  -e 's|&opcodestableshuffle;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tableshuffle.xml"/>|g' \
+  -e 's|&opcodestablew;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tablew.xml"/>|g' \
+  -e 's|&opcodestablewa;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tablewa.xml"/>|g' \
+  -e 's|&opcodestablewkt;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tablewkt.xml"/>|g' \
+  -e 's|&opcodestablexkt;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tablexkt.xml"/>|g' \
+  -e 's|&opcodestablexseg;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tablexseg.xml"/>|g' \
+  -e 's|&opcodestabmorph;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tabmorph.xml"/>|g' \
+  -e 's|&opcodestabmorpha;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tabmorpha.xml"/>|g' \
+  -e 's|&opcodestabmorphak;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tabmorphak.xml"/>|g' \
+  -e 's|&opcodestabmorphi;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tabmorphi.xml"/>|g' \
+  -e 's|&opcodestabplay;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tabplay.xml"/>|g' \
+  -e 's|&opcodestabrec;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tabrec.xml"/>|g' \
+  -e 's|&opcodestabsum;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tabsum.xml"/>|g' \
+  -e 's|&opcodestambourine;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tambourine.xml"/>|g' \
+  -e 's|&opcodestan;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tan.xml"/>|g' \
+  -e 's|&opcodestanh;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tanh.xml"/>|g' \
+  -e 's|&opcodestaninv;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="taninv.xml"/>|g' \
+  -e 's|&opcodestaninv2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="taninv2.xml"/>|g' \
+  -e 's|&opcodestb;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tb.xml"/>|g' \
+  -e 's|&opcodestbvcf;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tbvcf.xml"/>|g' \
+  -e 's|&opcodestempest;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tempest.xml"/>|g' \
+  -e 's|&opcodestempo;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tempo.xml"/>|g' \
+  -e 's|&opcodestemposcal;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="temposcal.xml"/>|g' \
+  -e 's|&opcodestempoval;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tempoval.xml"/>|g' \
+  -e 's|&opcodestigoto;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tigoto.xml"/>|g' \
+  -e 's|&opcodestimedseq;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="timedseq.xml"/>|g' \
+  -e 's|&opcodestimeinstk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="timeinstk.xml"/>|g' \
+  -e 's|&opcodestimeinsts;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="timeinsts.xml"/>|g' \
+  -e 's|&opcodestimek;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="timek.xml"/>|g' \
+  -e 's|&opcodestimes;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="times.xml"/>|g' \
+  -e 's|&opcodestimout;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="timout.xml"/>|g' \
+  -e 's|&opcodestival;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tival.xml"/>|g' \
+  -e 's|&opcodestlineto;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tlineto.xml"/>|g' \
+  -e 's|&opcodestone;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tone.xml"/>|g' \
+  -e 's|&opcodestonek;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tonek.xml"/>|g' \
+  -e 's|&opcodestonex;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tonex.xml"/>|g' \
+  -e 's|&opcodestradsyn;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tradsyn.xml"/>|g' \
+  -e 's|&opcodestrandom;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="trandom.xml"/>|g' \
+  -e 's|&opcodestranseg;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="transeg.xml"/>|g' \
+  -e 's|&opcodestransegb;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="transegb.xml"/>|g' \
+  -e 's|&opcodestransegr;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="transegr.xml"/>|g' \
+  -e 's|&opcodestrcross;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="trcross.xml"/>|g' \
+  -e 's|&opcodestrfilter;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="trfilter.xml"/>|g' \
+  -e 's|&opcodestrhighest;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="trhighest.xml"/>|g' \
+  -e 's|&opcodestrigger;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="trigger.xml"/>|g' \
+  -e 's|&opcodestrigseq;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="trigseq.xml"/>|g' \
+  -e 's|&opcodestrirand;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="trirand.xml"/>|g' \
+  -e 's|&opcodestrlowest;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="trlowest.xml"/>|g' \
+  -e 's|&opcodestrmix;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="trmix.xml"/>|g' \
+  -e 's|&opcodestrscale;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="trscale.xml"/>|g' \
+  -e 's|&opcodestrshift;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="trshift.xml"/>|g' \
+  -e 's|&opcodestrsplit;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="trsplit.xml"/>|g' \
+  -e 's|&opcodesturnoff;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="turnoff.xml"/>|g' \
+  -e 's|&opcodesturnoff2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="turnoff2.xml"/>|g' \
+  -e 's|&opcodesturnon;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="turnon.xml"/>|g' \
+  -e 's|&opcodesundef;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="undef.xml"/>|g' \
+  -e 's|&opcodesunirand;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="unirand.xml"/>|g' \
+  -e 's|&opcodesuntil;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="until.xml"/>|g' \
+  -e 's|&opcodesupsamp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="upsamp.xml"/>|g' \
+  -e 's|&opcodesurandom;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="urandom.xml"/>|g' \
+  -e 's|&opcodesurd;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="urd.xml"/>|g' \
+  -e 's|&opcodesvactrol;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vactrol.xml"/>|g' \
+  -e 's|&opcodesvadd;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vadd.xml"/>|g' \
+  -e 's|&opcodesvadd;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vadd.xml"/>|g' \
+  -e 's|&opcodesvaddi;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vadd_i.xml"/>|g' \
+  -e 's|&opcodesvaddv_i;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vaddv_i.xml"/>|g' \
+  -e 's|&opcodesvaddv;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vaddv.xml"/>|g' \
+  -e 's|&opcodesvaget;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vaget.xml"/>|g' \
+  -e 's|&opcodesvalpass;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="valpass.xml"/>|g' \
+  -e 's|&opcodesvaset;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vaset.xml"/>|g' \
+  -e 's|&opcodesvbap;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vbap.xml"/>|g' \
+  -e 's|&opcodesvbap16;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vbap16.xml"/>|g' \
+  -e 's|&opcodesvbap16move;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vbap16move.xml"/>|g' \
+  -e 's|&opcodesvbap4;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vbap4.xml"/>|g' \
+  -e 's|&opcodesvbap4move;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vbap4move.xml"/>|g' \
+  -e 's|&opcodesvbap8;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vbap8.xml"/>|g' \
+  -e 's|&opcodesvbap8move;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vbap8move.xml"/>|g' \
+  -e 's|&opcodesvbapg;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vbapg.xml"/>|g' \
+  -e 's|&opcodesvbapgmove;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vbapgmove.xml"/>|g' \
+  -e 's|&opcodesvbaplsinit;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vbaplsinit.xml"/>|g' \
+  -e 's|&opcodesvbapmove;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vbapmove.xml"/>|g' \
+  -e 's|&opcodesvbapz;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vbapz.xml"/>|g' \
+  -e 's|&opcodesvbapzmove;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vbapzmove.xml"/>|g' \
+  -e 's|&opcodesvcella;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vcella.xml"/>|g' \
+  -e 's|&opcodesvco;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vco.xml"/>|g' \
+  -e 's|&opcodesvco2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vco2.xml"/>|g' \
+  -e 's|&opcodesvco2ft;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vco2ft.xml"/>|g' \
+  -e 's|&opcodesvco2ift;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vco2ift.xml"/>|g' \
+  -e 's|&opcodesvco2init;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vco2init.xml"/>|g' \
+  -e 's|&opcodesvcomb;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vcomb.xml"/>|g' \
+  -e 's|&opcodesvcopy_i;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vcopy_i.xml"/>|g' \
+  -e 's|&opcodesvcopy;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vcopy.xml"/>|g' \
+  -e 's|&opcodesvdelay;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vdelay.xml"/>|g' \
+  -e 's|&opcodesvdelay3;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vdelay3.xml"/>|g' \
+  -e 's|&opcodesvdelayk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vdelayk.xml"/>|g' \
+  -e 's|&opcodesvdelayx;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vdelayx.xml"/>|g' \
+  -e 's|&opcodesvdelayxq;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vdelayxq.xml"/>|g' \
+  -e 's|&opcodesvdelayxs;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vdelayxs.xml"/>|g' \
+  -e 's|&opcodesvdelayxw;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vdelayxw.xml"/>|g' \
+  -e 's|&opcodesvdelayxwq;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vdelayxwq.xml"/>|g' \
+  -e 's|&opcodesvdelayxws;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vdelayxws.xml"/>|g' \
+  -e 's|&opcodesvdivv_i;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vdivv_i.xml"/>|g' \
+  -e 's|&opcodesvdivv;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vdivv.xml"/>|g' \
+  -e 's|&opcodesvecdelay;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vecdelay.xml"/>|g' \
+  -e 's|&opcodesveloc;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="veloc.xml"/>|g' \
+  -e 's|&opcodesvexp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vexp.xml"/>|g' \
+  -e 's|&opcodesvexp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vexp.xml"/>|g' \
+  -e 's|&opcodesvexpi;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vexp_i.xml"/>|g' \
+  -e 's|&opcodesvexpseg;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vexpseg.xml"/>|g' \
+  -e 's|&opcodesvexpv_i;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vexpv_i.xml"/>|g' \
+  -e 's|&opcodesvexpv;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vexpv.xml"/>|g' \
+  -e 's|&opcodesvibes;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vibes.xml"/>|g' \
+  -e 's|&opcodesvibr;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vibr.xml"/>|g' \
+  -e 's|&opcodesvibrato;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vibrato.xml"/>|g' \
+  -e 's|&opcodesvincr;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vincr.xml"/>|g' \
+  -e 's|&opcodesvlimit;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vlimit.xml"/>|g' \
+  -e 's|&opcodesvlinseg;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vlinseg.xml"/>|g' \
+  -e 's|&opcodesvlowres;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vlowres.xml"/>|g' \
+  -e 's|&opcodesvmap;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vmap.xml"/>|g' \
+  -e 's|&opcodesvmirror;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vmirror.xml"/>|g' \
+  -e 's|&opcodesvmult;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vmult.xml"/>|g' \
+  -e 's|&opcodesvmult;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vmult.xml"/>|g' \
+  -e 's|&opcodesvmulti;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vmult_i.xml"/>|g' \
+  -e 's|&opcodesvmultv_i;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vmultv_i.xml"/>|g' \
+  -e 's|&opcodesvmultv;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vmultv.xml"/>|g' \
+  -e 's|&opcodesvoice;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="voice.xml"/>|g' \
+  -e 's|&opcodesvosim;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vosim.xml"/>|g' \
+  -e 's|&opcodesvphaseseg;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vphaseseg.xml"/>|g' \
+  -e 's|&opcodesvport;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vport.xml"/>|g' \
+  -e 's|&opcodesvpow;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vpow.xml"/>|g' \
+  -e 's|&opcodesvpow;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vpow.xml"/>|g' \
+  -e 's|&opcodesvpowi;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vpow_i.xml"/>|g' \
+  -e 's|&opcodesvpowv_i;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vpowv_i.xml"/>|g' \
+  -e 's|&opcodesvpowv;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vpowv.xml"/>|g' \
+  -e 's|&opcodesvpvoc;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vpvoc.xml"/>|g' \
+  -e 's|&opcodesvrandh;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vrandh.xml"/>|g' \
+  -e 's|&opcodesvrandi;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vrandi.xml"/>|g' \
+  -e 's|&opcodesvstaudio;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vstaudio.xml"/>|g' \
+  -e 's|&opcodesvstbankload;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vstbankload.xml"/>|g' \
+  -e 's|&opcodesvstedit;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vstedit.xml"/>|g' \
+  -e 's|&opcodesvstinfo;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vstinfo.xml"/>|g' \
+  -e 's|&opcodesvstinit;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vstinit.xml"/>|g' \
+  -e 's|&opcodesvstmidiout;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vstmidiout.xml"/>|g' \
+  -e 's|&opcodesvstnote;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vstnote.xml"/>|g' \
+  -e 's|&opcodesvstparamset;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vstparamset.xml"/>|g' \
+  -e 's|&opcodesvstprogset;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vstprogset.xml"/>|g' \
+  -e 's|&opcodesvsubv_i;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vsubv_i.xml"/>|g' \
+  -e 's|&opcodesvsubv;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vsubv.xml"/>|g' \
+  -e 's|&opcodesvtaba;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vtaba.xml"/>|g' \
+  -e 's|&opcodesvtabi;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vtabi.xml"/>|g' \
+  -e 's|&opcodesvtabk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vtabk.xml"/>|g' \
+  -e 's|&opcodesvtable1k;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vtable1k.xml"/>|g' \
+  -e 's|&opcodesvtablea;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vtablea.xml"/>|g' \
+  -e 's|&opcodesvtablei;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vtablei.xml"/>|g' \
+  -e 's|&opcodesvtablek;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vtablek.xml"/>|g' \
+  -e 's|&opcodesvtablewa;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vtablewa.xml"/>|g' \
+  -e 's|&opcodesvtablewi;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vtablewi.xml"/>|g' \
+  -e 's|&opcodesvtablewk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vtablewk.xml"/>|g' \
+  -e 's|&opcodesvtabwa;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vtabwa.xml"/>|g' \
+  -e 's|&opcodesvtabwi;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vtabwi.xml"/>|g' \
+  -e 's|&opcodesvtabwk;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vtabwk.xml"/>|g' \
+  -e 's|&opcodesvwrap;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vwrap.xml"/>|g' \
+  -e 's|&opcodeswaveset;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="waveset.xml"/>|g' \
+  -e 's|&opcodeswebsocket;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="websocket.xml"/>|g' \
+  -e 's|&opcodesweibull;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="weibull.xml"/>|g' \
+  -e 's|&opcodeswgbow;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="wgbow.xml"/>|g' \
+  -e 's|&opcodeswgbowedbar;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="wgbowedbar.xml"/>|g' \
+  -e 's|&opcodeswgbrass;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="wgbrass.xml"/>|g' \
+  -e 's|&opcodeswgclar;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="wgclar.xml"/>|g' \
+  -e 's|&opcodeswgflute;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="wgflute.xml"/>|g' \
+  -e 's|&opcodeswgpluck;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="wgpluck.xml"/>|g' \
+  -e 's|&opcodeswgpluck2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="wgpluck2.xml"/>|g' \
+  -e 's|&opcodeswguide1;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="wguide1.xml"/>|g' \
+  -e 's|&opcodeswguide2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="wguide2.xml"/>|g' \
+  -e 's|&opcodeswhile;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="while.xml"/>|g' \
+  -e 's|&opcodeswiiconnect;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="wiiconnect.xml"/>|g' \
+  -e 's|&opcodeswiidata;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="wiidata.xml"/>|g' \
+  -e 's|&opcodeswiirange;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="wiirange.xml"/>|g' \
+  -e 's|&opcodeswiisend;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="wiisend.xml"/>|g' \
+  -e 's|&opcodeswindow;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="window.xml"/>|g' \
+  -e 's|&opcodeswrap;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="wrap.xml"/>|g' \
+  -e 's|&opcodeswritescratch;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="writescratch.xml"/>|g' \
+  -e 's|&opcodeswterrain;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="wterrain.xml"/>|g' \
+  -e 's|&opcodesxadsr;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="xadsr.xml"/>|g' \
+  -e 's|&opcodesxin;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="xin.xml"/>|g' \
+  -e 's|&opcodesxout;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="xout.xml"/>|g' \
+  -e 's|&opcodesxscanmap;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="xscanmap.xml"/>|g' \
+  -e 's|&opcodesxscans;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="xscans.xml"/>|g' \
+  -e 's|&opcodesxscansmap;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="xscansmap.xml"/>|g' \
+  -e 's|&opcodesxscanu;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="xscanu.xml"/>|g' \
+  -e 's|&opcodesxtratim;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="xtratim.xml"/>|g' \
+  -e 's|&opcodesxyin;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="xyin.xml"/>|g' \
+  -e 's|&opcodeszacl;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="zacl.xml"/>|g' \
+  -e 's|&opcodeszakinit;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="zakinit.xml"/>|g' \
+  -e 's|&opcodeszamod;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="zamod.xml"/>|g' \
+  -e 's|&opcodeszar;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="zar.xml"/>|g' \
+  -e 's|&opcodeszarg;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="zarg.xml"/>|g' \
+  -e 's|&opcodeszaw;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="zaw.xml"/>|g' \
+  -e 's|&opcodeszawm;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="zawm.xml"/>|g' \
+  -e 's|&opcodeszfilter2;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="zfilter2.xml"/>|g' \
+  -e 's|&opcodeszir;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="zir.xml"/>|g' \
+  -e 's|&opcodesziw;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ziw.xml"/>|g' \
+  -e 's|&opcodesziwm;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ziwm.xml"/>|g' \
+  -e 's|&opcodeszkcl;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="zkcl.xml"/>|g' \
+  -e 's|&opcodeszkmod;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="zkmod.xml"/>|g' \
+  -e 's|&opcodeszkr;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="zkr.xml"/>|g' \
+  -e 's|&opcodeszkw;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="zkw.xml"/>|g' \
+  -e 's|&opcodeszkwm;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="zkwm.xml"/>|g' \
+  -e 's|&orch;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="orch/top.xml"/>|g' \
+  -e 's|&orchdirfiles;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dirfiles.xml"/>|g' \
+  -e 's|&orchexpress;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="express.xml"/>|g' \
+  -e 's|&orchheader;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="header.xml"/>|g' \
+  -e 's|&orchiblock;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="iblock.xml"/>|g' \
+  -e 's|&orchkvar;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kvar.xml"/>|g' \
+  -e 's|&orchmacros;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="macros.xml"/>|g' \
+  -e 's|&orchnamedinstruments;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="namedInstruments.xml"/>|g' \
+  -e 's|&orchnomen;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="nomen.xml"/>|g' \
+  -e 's|&orchstatemnt;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="statemnt.xml"/>|g' \
+  -e 's|&orchtab;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tvars.xml"/>|g' \
+  -e 's|&orchUDO;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="UDO.xml"/>|g' \
+  -e 's|&OSC;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="OSC.xml"/>|g' \
+  -e 's|&oscnetwork;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="oscnetwork/top.xml"/>|g' \
+  -e 's|&oviewbuilding;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="overview/building.xml"/>|g' \
+  -e 's|&oviewconfiguring;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="overview/configuring.xml"/>|g' \
+  -e 's|&oviewdesign;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="design.xml"/>|g' \
+  -e 's|&oviewfrontends;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="overview/frontends.xml"/>|g' \
+  -e 's|&oviewfunctional;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../overview/functional.xml"/>|g' \
+  -e 's|&oviewintroduction;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="overview/introduction.xml"/>|g' \
+  -e 's|&oviewlinks;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="overview/links.xml"/>|g' \
+  -e 's|&oviewoptimizinglatency;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="optimizinglatency.xml"/>|g' \
+  -e 's|&oviewrealtimelinux;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="realtimelinux.xml"/>|g' \
+  -e 's|&oviewrealtimemac;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="realtimemac.xml"/>|g' \
+  -e 's|&oviewrealtimewindows;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="realtimewindows.xml"/>|g' \
+  -e 's|&oviewusersguide;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="usersguide.xml"/>|g' \
+  -e 's|&oviewusing;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="overview/using.xml"/>|g' \
+  -e 's|&pface;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="preface/top.xml"/>|g' \
+  -e 's|&pfacecopy;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="copy.xml"/>|g' \
+  -e 's|&pfacegettingstarted;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gettingstarted.xml"/>|g' \
+  -e 's|&pfacehistory;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="history.xml"/>|g' \
+  -e 's|&pfacepreface;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="preface.xml"/>|g' \
+  -e 's|&pfacewhatsnew;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="whatsnew.xml"/>|g' \
+  -e 's|&pitch;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pitch/top.xml"/>|g' \
+  -e 's|&pitchfuncs;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="funcs.xml"/>|g' \
+  -e 's|&pitchtuning;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tuning.xml"/>|g' \
+  -e 's|&plugin;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="plugin/top.xml"/>|g' \
+  -e 's|&plugindssi4cs;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dssi4cs.xml"/>|g' \
+  -e 's|&pluginvst4cs;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vst4cs.xml"/>|g' \
+  -e 's|&py;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="csound5/opcodes/py.xml"/>|g' \
+  -e 's|&Remote;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Remote.xml"/>|g' \
+  -e 's|&score;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="score/top.xml"/>|g' \
+  -e 's|&scoreampgen;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ampgen.xml"/>|g' \
+  -e 's|&scoreeval;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="eval.xml"/>|g' \
+  -e 's|&scorefilegen;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="filegen.xml"/>|g' \
+  -e 's|&scoregens;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="scoregens/top.xml"/>|g' \
+  -e 's|&scoregensa;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="a.xml"/>|g' \
+  -e 's|&scoregensb;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="b.xml"/>|g' \
+  -e 's|&scoregense;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="e.xml"/>|g' \
+  -e 's|&scoregensexp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="genexp.xml"/>|g' \
+  -e 's|&scoregensf;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="f.xml"/>|g' \
+  -e 's|&scoregensfarey;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="genfarey.xml"/>|g' \
+  -e 's|&scoregensgen01;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen01.xml"/>|g' \
+  -e 's|&scoregensgen02;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen02.xml"/>|g' \
+  -e 's|&scoregensgen03;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen03.xml"/>|g' \
+  -e 's|&scoregensgen04;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen04.xml"/>|g' \
+  -e 's|&scoregensgen05;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen05.xml"/>|g' \
+  -e 's|&scoregensgen06;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen06.xml"/>|g' \
+  -e 's|&scoregensgen07;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen07.xml"/>|g' \
+  -e 's|&scoregensgen08;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen08.xml"/>|g' \
+  -e 's|&scoregensgen09;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen09.xml"/>|g' \
+  -e 's|&scoregensgen10;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen10.xml"/>|g' \
+  -e 's|&scoregensgen11;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen11.xml"/>|g' \
+  -e 's|&scoregensgen12;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen12.xml"/>|g' \
+  -e 's|&scoregensgen13;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen13.xml"/>|g' \
+  -e 's|&scoregensgen14;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen14.xml"/>|g' \
+  -e 's|&scoregensgen15;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen15.xml"/>|g' \
+  -e 's|&scoregensgen16;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen16.xml"/>|g' \
+  -e 's|&scoregensgen17;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen17.xml"/>|g' \
+  -e 's|&scoregensgen18;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen18.xml"/>|g' \
+  -e 's|&scoregensgen19;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen19.xml"/>|g' \
+  -e 's|&scoregensgen20;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen20.xml"/>|g' \
+  -e 's|&scoregensgen21;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen21.xml"/>|g' \
+  -e 's|&scoregensgen22;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../scoregens/gen22.xml"/>|g' \
+  -e 's|&scoregensgen23;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen23.xml"/>|g' \
+  -e 's|&scoregensgen24;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen24.xml"/>|g' \
+  -e 's|&scoregensgen25;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen25.xml"/>|g' \
+  -e 's|&scoregensgen27;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen27.xml"/>|g' \
+  -e 's|&scoregensgen28;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen28.xml"/>|g' \
+  -e 's|&scoregensgen30;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen30.xml"/>|g' \
+  -e 's|&scoregensgen31;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen31.xml"/>|g' \
+  -e 's|&scoregensgen32;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen32.xml"/>|g' \
+  -e 's|&scoregensgen33;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen33.xml"/>|g' \
+  -e 's|&scoregensgen34;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen34.xml"/>|g' \
+  -e 's|&scoregensgen40;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen40.xml"/>|g' \
+  -e 's|&scoregensgen41;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen41.xml"/>|g' \
+  -e 's|&scoregensgen42;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen42.xml"/>|g' \
+  -e 's|&scoregensgen43;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen43.xml"/>|g' \
+  -e 's|&scoregensgen49;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen49.xml"/>|g' \
+  -e 's|&scoregensgen51;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen51.xml"/>|g' \
+  -e 's|&scoregensgen52;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gen52.xml"/>|g' \
+  -e 's|&scoregensi;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="i.xml"/>|g' \
+  -e 's|&scoregensleftbrace;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="leftbrace.xml"/>|g' \
+  -e 's|&scoregensm;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="m.xml"/>|g' \
+  -e 's|&scoregensn;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="n.xml"/>|g' \
+  -e 's|&scoregenspadsynth;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="genpadsynth.xml"/>|g' \
+  -e 's|&scoregensq;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="q.xml"/>|g' \
+  -e 's|&scoregensr;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="r.xml"/>|g' \
+  -e 's|&scoregensrightbrace;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="rightbrace.xml"/>|g' \
+  -e 's|&scoregenss;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="s.xml"/>|g' \
+  -e 's|&scoregenssone;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gensone.xml"/>|g' \
+  -e 's|&scoregenst;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="t.xml"/>|g' \
+  -e 's|&scoregenstanh;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gentanh.xml"/>|g' \
+  -e 's|&scoregensv;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="v.xml"/>|g' \
+  -e 's|&scoregenswave;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="genwave.xml"/>|g' \
+  -e 's|&scoregensx;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="x.xml"/>|g' \
+  -e 's|&scoregensy;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="y.xml"/>|g' \
+  -e 's|&scoremacros;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="macros.xml"/>|g' \
+  -e 's|&scoremixgen;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mixgen.xml"/>|g' \
+  -e 's|&scoremult;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mult.xml"/>|g' \
+  -e 's|&scorenextp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="nextp.xml"/>|g' \
+  -e 's|&scorenumgen;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="numgen.xml"/>|g' \
+  -e 's|&scorepreproc;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="preproc.xml"/>|g' \
+  -e 's|&scoreramp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ramp.xml"/>|g' \
+  -e 's|&scorestatemnt;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="statemnt.xml"/>|g' \
+  -e 's|&scorestrings;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="strings.xml"/>|g' \
+  -e 's|&siggen;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="siggen/top.xml"/>|g' \
+  -e 's|&siggenadditive;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="additive.xml"/>|g' \
+  -e 's|&siggenbasic;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="basic.xml"/>|g' \
+  -e 's|&siggendynamic;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dynamic.xml"/>|g' \
+  -e 's|&siggenenvelope;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="envelope.xml"/>|g' \
+  -e 's|&siggenfmsynth;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fmsynth.xml"/>|g' \
+  -e 's|&siggengranular;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="granular.xml"/>|g' \
+  -e 's|&siggenhvs;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="hvsXO.xml"/>|g' \
+  -e 's|&siggenlineexp;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lineexp.xml"/>|g' \
+  -e 's|&siggenmodels;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="models.xml"/>|g' \
+  -e 's|&siggenphasors;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="phasors.xml"/>|g' \
+  -e 's|&siggenrandom;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="random.xml"/>|g' \
+  -e 's|&siggensample;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sample.xml"/>|g' \
+  -e 's|&siggenscantop;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="scantop.xml"/>|g' \
+  -e 's|&siggentableacc;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tableacc.xml"/>|g' \
+  -e 's|&siggenwaveterr;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="waveterr.xml"/>|g' \
+  -e 's|&siggenwavguide;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="wavguide.xml"/>|g' \
+  -e 's|&sigio;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sigio/top.xml"/>|g' \
+  -e 's|&sigiofileio;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fileio.xml"/>|g' \
+  -e 's|&sigioinput;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="input.xml"/>|g' \
+  -e 's|&sigiooutput;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="output.xml"/>|g' \
+  -e 's|&sigiopdisplay;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pdisplay.xml"/>|g' \
+  -e 's|&sigioqueries;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="queries.xml"/>|g' \
+  -e 's|&sigiosoftbus;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="softbus.xml"/>|g' \
+  -e 's|&sigmod;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sigmod/top.xml"/>|g' \
+  -e 's|&sigmodampmod;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ampmod.xml"/>|g' \
+  -e 's|&sigmodcompaccum;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../sigmod/compaccum.xml"/>|g' \
+  -e 's|&sigmodconmorph;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="conmorph.xml"/>|g' \
+  -e 's|&sigmoddelayops;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="delayops.xml"/>|g' \
+  -e 's|&sigmodenvelope;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="envelope.xml"/>|g' \
+  -e 's|&sigmodpanspatl;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="panspatl.xml"/>|g' \
+  -e 's|&sigmodreverbtn;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="reverbtn.xml"/>|g' \
+  -e 's|&sigmodsample;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sample.xml"/>|g' \
+  -e 's|&sigmodsiglimit;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="siglimit.xml"/>|g' \
+  -e 's|&sigmodspeciale;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="speciale.xml"/>|g' \
+  -e 's|&sigmodspeciali;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="speciali.xml"/>|g' \
+  -e 's|&sigmodstandard;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="standard.xml"/>|g' \
+  -e 's|&sigmodwavguide;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="wavguide.xml"/>|g' \
+  -e 's|&sigmodwavshape;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="wavshape.xml"/>|g' \
+  -e 's|&signalflowgraph;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="csound5/opcodes/signalflowgraph.xml"/>|g' \
+  -e 's|&spectral;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="spectral/top.xml"/>|g' \
+  -e 's|&spectralarray;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="arrays.xml"/>|g' \
+  -e 's|&spectralATS;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ATS.xml"/>|g' \
+  -e 's|&spectralloris;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="loris.xml"/>|g' \
+  -e 's|&spectrallpcresyn;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lpcresyn.xml"/>|g' \
+  -e 's|&spectralnonstand;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="nonstand.xml"/>|g' \
+  -e 's|&spectralrealtime;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="realtime.xml"/>|g' \
+  -e 's|&spectralstft;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="stft.xml"/>|g' \
+  -e 's|&stkopcodes;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="STKopcodes/top.xml"/>|g' \
+  -e 's|&strings;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="strings/top.xml"/>|g' \
+  -e 's|&stringsconvert;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="convert.xml"/>|g' \
+  -e 's|&stringsmanipulate;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="manipulate.xml"/>|g' \
+  -e 's|&table;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="table/top.xml"/>|g' \
+  -e 's|&tablequeries;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="queries.xml"/>|g' \
+  -e 's|&tablereadwrit;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="readwrit.xml"/>|g' \
+  -e 's|&tableselect;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="select.xml"/>|g' \
+  -e 's|&utility;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="utility/top.xml"/>|g' \
+  -e 's|&utilityanalysis;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="analysis.xml"/>|g' \
+  -e 's|&utilityatsa;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="atsa.xml"/>|g' \
+  -e 's|&utilityconvert;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="convert.xml"/>|g' \
+  -e 's|&utilitycs;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cs.xml"/>|g' \
+  -e 's|&utilitycsb64enc;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="csb64enc.xml"/>|g' \
+  -e 's|&utilitycvanal;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cvanal.xml"/>|g' \
+  -e 's|&utilitydnoise;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dnoise.xml"/>|g' \
+  -e 's|&utilityenvext;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="envext.xml"/>|g' \
+  -e 's|&utilityextractor;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="extractor.xml"/>|g' \
+  -e 's|&utilityhet_export;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="het_export.xml"/>|g' \
+  -e 's|&utilityhet_import;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="het_import.xml"/>|g' \
+  -e 's|&utilityhetro;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="hetro.xml"/>|g' \
+  -e 's|&utilitylpanal;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lpanal.xml"/>|g' \
+  -e 's|&utilitymakecsd;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="makecsd.xml"/>|g' \
+  -e 's|&utilitymixer;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mixer.xml"/>|g' \
+  -e 's|&utilitymkdb;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mkdb.xml"/>|g' \
+  -e 's|&utilityother;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="other.xml"/>|g' \
+  -e 's|&utilitypv_export;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pv_export.xml"/>|g' \
+  -e 's|&utilitypv_import;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pv_import.xml"/>|g' \
+  -e 's|&utilitypvanal;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvanal.xml"/>|g' \
+  -e 's|&utilitypvlook;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pvlook.xml"/>|g' \
+  -e 's|&utilityqueries;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="queries.xml"/>|g' \
+  -e 's|&utilityscale;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="scale.xml"/>|g' \
+  -e 's|&utilitysdif2ad;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sdif2ad.xml"/>|g' \
+  -e 's|&utilitysndinfo;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sndinfo.xml"/>|g' \
+  -e 's|&utilitysrc_conv;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="utility/src_conv.xml"/>|g' \
+  -e 's|&utilitysrconv;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="srconv.xml"/>|g' \
+  -e 's|&vectorial;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vectorial/top.xml"/>|g' \
+  -e 's|&vectorialdelay;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="delay.xml"/>|g' \
+  -e 's|&vectorialenvelopeGenerators;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="envelopeGenerators.xml"/>|g' \
+  -e 's|&vectoriallimiting;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="limiting.xml"/>|g' \
+  -e 's|&vectorialrandom;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vectorialrandom.xml"/>|g' \
+  -e 's|&vectorialscalar;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="scalar.xml"/>|g' \
+  -e 's|&vectorialtables;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tables.xml"/>|g' \
+  -e 's|&vectorialvectorial;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vectorial.xml"/>|g' \
+  -e 's|&zak;|<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="zak/top.xml"/>|g' \
+  {} \;
+
+find . -name "*.xml" -exec xsltproc --output {} xsl/UpdateXML.xsl {} \;
+
+sed -i '' 's|href="examples-xml/jacko.csd.xml"|href="../../examples-xml/jacko.csd.xml"|g' csound5/opcodes/Jacko.xml
+sed -i '' 's|href="examples-xml/luamoog.csd.xml"|href="../../examples-xml/luamoog.csd.xml"|g' csound5/opcodes/lua.xml
+sed -i '' 's|href="examples-xml/signalflowgraph.csd.xml"|href="../../examples-xml/signalflowgraph.csd.xml"|g' csound5/opcodes/signalflowgraph.xml
+sed -i '' 's|href="examples-xml/array_scalar_math.csd.xml"|href="../examples-xml/array_scalar_math.csd.xml"|g' math/array.xml
+sed -i '' 's|href="examples-xml/array_array_math.csd.xml"|href="../examples-xml/array_array_math.csd.xml"|g' math/array.xml
+sed -i '' 's|href="examples-xml/array_udo.csd.xml"|href="../examples-xml/array_udo.csd.xml"|g' math/array.xml
+sed -i '' 's|href="examples-xml/virtual.csd.xml"|href="../examples-xml/virtual.csd.xml"|g' midi/virtual.xml
+sed -i '' 's|href="examples-xml/0dbfs.csd.xml"|href="../examples-xml/0dbfs.csd.xml"|g' opcodes/0dbfs.xml
+sed -i '' 's|href="examples-xml/abs.csd.xml"|href="../examples-xml/abs.csd.xml"|g' opcodes/abs.xml
+sed -i '' 's|href="examples-xml/active_k.csd.xml"|href="../examples-xml/active_k.csd.xml"|g' opcodes/active.xml
+sed -i '' 's|href="examples-xml/active_scale.csd.xml"|href="../examples-xml/active_scale.csd.xml"|g' opcodes/active.xml
+sed -i '' 's|href="examples-xml/active.csd.xml"|href="../examples-xml/active.csd.xml"|g' opcodes/active.xml
+sed -i '' 's|href="examples-xml/adds.csd.xml"|href="../examples-xml/adds.csd.xml"|g' opcodes/adds.xml
+sed -i '' 's|href="examples-xml/adsr.csd.xml"|href="../examples-xml/adsr.csd.xml"|g' opcodes/adsr.xml
+sed -i '' 's|href="examples-xml/adsyn.csd.xml"|href="../examples-xml/adsyn.csd.xml"|g' opcodes/adsyn.xml
+sed -i '' 's|href="examples-xml/adsynt.csd.xml"|href="../examples-xml/adsynt.csd.xml"|g' opcodes/adsynt.xml
+sed -i '' 's|href="examples-xml/adsynt2.csd.xml"|href="../examples-xml/adsynt2.csd.xml"|g' opcodes/adsynt2.xml
+sed -i '' 's|href="examples-xml/aftouch.csd.xml"|href="../examples-xml/aftouch.csd.xml"|g' opcodes/aftouch.xml
+sed -i '' 's|href="examples-xml/alpass.csd.xml"|href="../examples-xml/alpass.csd.xml"|g' opcodes/alpass.xml
+sed -i '' 's|href="examples-xml/alwayson.csd.xml"|href="../examples-xml/alwayson.csd.xml"|g' opcodes/alwayson.xml
+sed -i '' 's|href="examples-xml/ampdb.csd.xml"|href="../examples-xml/ampdb.csd.xml"|g' opcodes/ampdb.xml
+sed -i '' 's|href="examples-xml/ampdbfs.csd.xml"|href="../examples-xml/ampdbfs.csd.xml"|g' opcodes/ampdbfs.xml
+sed -i '' 's|href="examples-xml/ampmidi.csd.xml"|href="../examples-xml/ampmidi.csd.xml"|g' opcodes/ampmidi.xml
+sed -i '' 's|href="examples-xml/ampmidid.csd.xml"|href="../examples-xml/ampmidid.csd.xml"|g' opcodes/ampmidid.xml
+sed -i '' 's|href="examples-xml/areson.csd.xml"|href="../examples-xml/areson.csd.xml"|g' opcodes/areson.xml
+sed -i '' 's|href="examples-xml/aresonk.csd.xml"|href="../examples-xml/aresonk.csd.xml"|g' opcodes/aresonk.xml
+sed -i '' 's|href="examples-xml/array.csd.xml"|href="../examples-xml/array.csd.xml"|g' opcodes/array.xml
+sed -i '' 's|href="examples-xml/assign.csd.xml"|href="../examples-xml/assign.csd.xml"|g' opcodes/assign.xml
+sed -i '' 's|href="examples-xml/atone.csd.xml"|href="../examples-xml/atone.csd.xml"|g' opcodes/atone.xml
+sed -i '' 's|href="examples-xml/atonek.csd.xml"|href="../examples-xml/atonek.csd.xml"|g' opcodes/atonek.xml
+sed -i '' 's|href="examples-xml/atonex.csd.xml"|href="../examples-xml/atonex.csd.xml"|g' opcodes/atonex.xml
+sed -i '' 's|href="examples-xml/ATSadd.csd.xml"|href="../examples-xml/ATSadd.csd.xml"|g' opcodes/ATSadd.xml
+sed -i '' 's|href="examples-xml/ATSadd-2.csd.xml"|href="../examples-xml/ATSadd-2.csd.xml"|g' opcodes/ATSadd.xml
+sed -i '' 's|href="examples-xml/ATSaddnz.csd.xml"|href="../examples-xml/ATSaddnz.csd.xml"|g' opcodes/ATSaddnz.xml
+sed -i '' 's|href="examples-xml/ATSaddnz-2.csd.xml"|href="../examples-xml/ATSaddnz-2.csd.xml"|g' opcodes/ATSaddnz.xml
+sed -i '' 's|href="examples-xml/ATSbufread.csd.xml"|href="../examples-xml/ATSbufread.csd.xml"|g' opcodes/ATSbufread.xml
+sed -i '' 's|href="examples-xml/ATScross.csd.xml"|href="../examples-xml/ATScross.csd.xml"|g' opcodes/ATScross.xml
+sed -i '' 's|href="examples-xml/ATSinfo.csd.xml"|href="../examples-xml/ATSinfo.csd.xml"|g' opcodes/ATSinfo.xml
+sed -i '' 's|href="examples-xml/ATSinfo-2.csd.xml"|href="../examples-xml/ATSinfo-2.csd.xml"|g' opcodes/ATSinfo.xml
+sed -i '' 's|href="examples-xml/ATSinterpread.csd.xml"|href="../examples-xml/ATSinterpread.csd.xml"|g' opcodes/ATSinterpread.xml
+sed -i '' 's|href="examples-xml/ATSpartialtap.csd.xml"|href="../examples-xml/ATSpartialtap.csd.xml"|g' opcodes/ATSpartialtap.xml
+sed -i '' 's|href="examples-xml/ATSread.csd.xml"|href="../examples-xml/ATSread.csd.xml"|g' opcodes/ATSread.xml
+sed -i '' 's|href="examples-xml/ATSread-2.csd.xml"|href="../examples-xml/ATSread-2.csd.xml"|g' opcodes/ATSread.xml
+sed -i '' 's|href="examples-xml/ATSreadnz.csd.xml"|href="../examples-xml/ATSreadnz.csd.xml"|g' opcodes/ATSreadnz.xml
+sed -i '' 's|href="examples-xml/ATSsinnoi.csd.xml"|href="../examples-xml/ATSsinnoi.csd.xml"|g' opcodes/ATSsinnoi.xml
+sed -i '' 's|href="examples-xml/ATSsinnoi-2.csd.xml"|href="../examples-xml/ATSsinnoi-2.csd.xml"|g' opcodes/ATSsinnoi.xml
+sed -i '' 's|href="examples-xml/babo.csd.xml"|href="../examples-xml/babo.csd.xml"|g' opcodes/babo.xml
+sed -i '' 's|href="examples-xml/babo_expert.csd.xml"|href="../examples-xml/babo_expert.csd.xml"|g' opcodes/babo.xml
+sed -i '' 's|href="examples-xml/balance.csd.xml"|href="../examples-xml/balance.csd.xml"|g' opcodes/balance.xml
+sed -i '' 's|href="examples-xml/bamboo.csd.xml"|href="../examples-xml/bamboo.csd.xml"|g' opcodes/bamboo.xml
+sed -i '' 's|href="examples-xml/barmodel.csd.xml"|href="../examples-xml/barmodel.csd.xml"|g' opcodes/barmodel.xml
+sed -i '' 's|href="examples-xml/bbcutm.csd.xml"|href="../examples-xml/bbcutm.csd.xml"|g' opcodes/bbcutm.xml
+sed -i '' 's|href="examples-xml/bbcuts.csd.xml"|href="../examples-xml/bbcuts.csd.xml"|g' opcodes/bbcuts.xml
+sed -i '' 's|href="examples-xml/betarand.csd.xml"|href="../examples-xml/betarand.csd.xml"|g' opcodes/betarand.xml
+sed -i '' 's|href="examples-xml/bexprnd.csd.xml"|href="../examples-xml/bexprnd.csd.xml"|g' opcodes/bexprnd.xml
+sed -i '' 's|href="examples-xml/bformenc.csd.xml"|href="../examples-xml/bformenc.csd.xml"|g' opcodes/bformdec.xml
+sed -i '' 's|href="examples-xml/bformenc1.csd.xml"|href="../examples-xml/bformenc1.csd.xml"|g' opcodes/bformdec1.xml
+sed -i '' 's|href="examples-xml/bformenc.csd.xml"|href="../examples-xml/bformenc.csd.xml"|g' opcodes/bformenc.xml
+sed -i '' 's|href="examples-xml/bformenc1.csd.xml"|href="../examples-xml/bformenc1.csd.xml"|g' opcodes/bformenc1.xml
+sed -i '' 's|href="examples-xml/binit.csd.xml"|href="../examples-xml/binit.csd.xml"|g' opcodes/binit.xml
+sed -i '' 's|href="examples-xml/biquad.csd.xml"|href="../examples-xml/biquad.csd.xml"|g' opcodes/biquad.xml
+sed -i '' 's|href="examples-xml/biquad-2.csd.xml"|href="../examples-xml/biquad-2.csd.xml"|g' opcodes/biquad.xml
+sed -i '' 's|href="examples-xml/birnd.csd.xml"|href="../examples-xml/birnd.csd.xml"|g' opcodes/birnd.xml
+sed -i '' 's|href="examples-xml/bqrez.csd.xml"|href="../examples-xml/bqrez.csd.xml"|g' opcodes/bqrez.xml
+sed -i '' 's|href="examples-xml/butterbp.csd.xml"|href="../examples-xml/butterbp.csd.xml"|g' opcodes/butterbp.xml
+sed -i '' 's|href="examples-xml/butterbr.csd.xml"|href="../examples-xml/butterbr.csd.xml"|g' opcodes/butterbr.xml
+sed -i '' 's|href="examples-xml/butterhp.csd.xml"|href="../examples-xml/butterhp.csd.xml"|g' opcodes/butterhp.xml
+sed -i '' 's|href="examples-xml/butterlp.csd.xml"|href="../examples-xml/butterlp.csd.xml"|g' opcodes/butterlp.xml
+sed -i '' 's|href="examples-xml/buzz.csd.xml"|href="../examples-xml/buzz.csd.xml"|g' opcodes/buzz.xml
+sed -i '' 's|href="examples-xml/c2r.csd.xml"|href="../examples-xml/c2r.csd.xml"|g' opcodes/c2r.xml
+sed -i '' 's|href="examples-xml/cabasa.csd.xml"|href="../examples-xml/cabasa.csd.xml"|g' opcodes/cabasa.xml
+sed -i '' 's|href="examples-xml/cauchy.csd.xml"|href="../examples-xml/cauchy.csd.xml"|g' opcodes/cauchy.xml
+sed -i '' 's|href="examples-xml/cauchyi.csd.xml"|href="../examples-xml/cauchyi.csd.xml"|g' opcodes/cauchyi.xml
+sed -i '' 's|href="examples-xml/ceil.csd.xml"|href="../examples-xml/ceil.csd.xml"|g' opcodes/ceil.xml
+sed -i '' 's|href="examples-xml/cell.csd.xml"|href="../examples-xml/cell.csd.xml"|g' opcodes/cell.xml
+sed -i '' 's|href="examples-xml/cent.csd.xml"|href="../examples-xml/cent.csd.xml"|g' opcodes/cent.xml
+sed -i '' 's|href="examples-xml/centroid.csd.xml"|href="../examples-xml/centroid.csd.xml"|g' opcodes/centroid.xml
+sed -i '' 's|href="examples-xml/cggoto.csd.xml"|href="../examples-xml/cggoto.csd.xml"|g' opcodes/cggoto.xml
+sed -i '' 's|href="examples-xml/chanctrl.csd.xml"|href="../examples-xml/chanctrl.csd.xml"|g' opcodes/chanctrl.xml
+sed -i '' 's|href="examples-xml/changed.csd.xml"|href="../examples-xml/changed.csd.xml"|g' opcodes/changed.xml
+sed -i '' 's|href="examples-xml/chebyshevpoly.csd.xml"|href="../examples-xml/chebyshevpoly.csd.xml"|g' opcodes/chebyshevpoly.xml
+sed -i '' 's|href="examples-xml/checkbox.csd.xml"|href="../examples-xml/checkbox.csd.xml"|g' opcodes/checkbox.xml
+sed -i '' 's|href="examples-xml/chnclear.csd.xml"|href="../examples-xml/chnclear.csd.xml"|g' opcodes/chnclear.xml
+sed -i '' 's|href="examples-xml/chnget.csd.xml"|href="../examples-xml/chnget.csd.xml"|g' opcodes/chnget.xml
+sed -i '' 's|href="examples-xml/chnmix.csd.xml"|href="../examples-xml/chnmix.csd.xml"|g' opcodes/chnmix.xml
+sed -i '' 's|href="examples-xml/chnset.csd.xml"|href="../examples-xml/chnset.csd.xml"|g' opcodes/chnset.xml
+sed -i '' 's|href="examples-xml/chuap.csd.xml"|href="../examples-xml/chuap.csd.xml"|g' opcodes/chuap.xml
+sed -i '' 's|href="examples-xml/cigoto.csd.xml"|href="../examples-xml/cigoto.csd.xml"|g' opcodes/cigoto.xml
+sed -i '' 's|href="examples-xml/ckgoto.csd.xml"|href="../examples-xml/ckgoto.csd.xml"|g' opcodes/ckgoto.xml
+sed -i '' 's|href="examples-xml/clear.csd.xml"|href="../examples-xml/clear.csd.xml"|g' opcodes/clear.xml
+sed -i '' 's|href="examples-xml/clfilt_lowpass.csd.xml"|href="../examples-xml/clfilt_lowpass.csd.xml"|g' opcodes/clfilt.xml
+sed -i '' 's|href="examples-xml/clfilt_highpass.csd.xml"|href="../examples-xml/clfilt_highpass.csd.xml"|g' opcodes/clfilt.xml
+sed -i '' 's|href="examples-xml/clip.csd.xml"|href="../examples-xml/clip.csd.xml"|g' opcodes/clip.xml
+sed -i '' 's|href="examples-xml/clockoff.csd.xml"|href="../examples-xml/clockoff.csd.xml"|g' opcodes/clockoff.xml
+sed -i '' 's|href="examples-xml/clockon.csd.xml"|href="../examples-xml/clockon.csd.xml"|g' opcodes/clockon.xml
+sed -i '' 's|href="examples-xml/cmplxprod.csd.xml"|href="../examples-xml/cmplxprod.csd.xml"|g' opcodes/cmplxprod.xml
+sed -i '' 's|href="examples-xml/cngoto.csd.xml"|href="../examples-xml/cngoto.csd.xml"|g' opcodes/cngoto.xml
+sed -i '' 's|href="examples-xml/comb.csd.xml"|href="../examples-xml/comb.csd.xml"|g' opcodes/comb.xml
+sed -i '' 's|href="examples-xml/combinv.csd.xml"|href="../examples-xml/combinv.csd.xml"|g' opcodes/combinv.xml
+sed -i '' 's|href="examples-xml/compilecsd.csd.xml"|href="../examples-xml/compilecsd.csd.xml"|g' opcodes/compilecsd.xml
+sed -i '' 's|href="examples-xml/compileorc.csd.xml"|href="../examples-xml/compileorc.csd.xml"|g' opcodes/compileorc.xml
+sed -i '' 's|href="examples-xml/compilestr.csd.xml"|href="../examples-xml/compilestr.csd.xml"|g' opcodes/compilestr.xml
+sed -i '' 's|href="examples-xml/compress.csd.xml"|href="../examples-xml/compress.csd.xml"|g' opcodes/compress.xml
+sed -i '' 's|href="examples-xml/connect.csd.xml"|href="../examples-xml/connect.csd.xml"|g' opcodes/connect.xml
+sed -i '' 's|href="examples-xml/convolve.csd.xml"|href="../examples-xml/convolve.csd.xml"|g' opcodes/convolve.xml
+sed -i '' 's|href="examples-xml/copya2ftab.csd.xml"|href="../examples-xml/copya2ftab.csd.xml"|g' opcodes/copya2ftab.xml
+sed -i '' 's|href="examples-xml/copyf2array.csd.xml"|href="../examples-xml/copyf2array.csd.xml"|g' opcodes/copyf2array.xml
+sed -i '' 's|href="examples-xml/cos.csd.xml"|href="../examples-xml/cos.csd.xml"|g' opcodes/cos.xml
+sed -i '' 's|href="examples-xml/cosh.csd.xml"|href="../examples-xml/cosh.csd.xml"|g' opcodes/cosh.xml
+sed -i '' 's|href="examples-xml/cosinv.csd.xml"|href="../examples-xml/cosinv.csd.xml"|g' opcodes/cosinv.xml
+sed -i '' 's|href="examples-xml/cosseg.csd.xml"|href="../examples-xml/cosseg.csd.xml"|g' opcodes/cosseg.xml
+sed -i '' 's|href="examples-xml/cossegb.csd.xml"|href="../examples-xml/cossegb.csd.xml"|g' opcodes/cossegb.xml
+sed -i '' 's|href="examples-xml/cossegr.csd.xml"|href="../examples-xml/cossegr.csd.xml"|g' opcodes/cossegr.xml
+sed -i '' 's|href="examples-xml/cps2pch_19et.csd.xml"|href="../examples-xml/cps2pch_19et.csd.xml"|g' opcodes/cps2pch.xml
+sed -i '' 's|href="examples-xml/cps2pch.csd.xml"|href="../examples-xml/cps2pch.csd.xml"|g' opcodes/cps2pch.xml
+sed -i '' 's|href="examples-xml/cps2pch_ftable.csd.xml"|href="../examples-xml/cps2pch_ftable.csd.xml"|g' opcodes/cps2pch.xml
+sed -i '' 's|href="examples-xml/cpsmidi.csd.xml"|href="../examples-xml/cpsmidi.csd.xml"|g' opcodes/cpsmidi.xml
+sed -i '' 's|href="examples-xml/cpsmidib.csd.xml"|href="../examples-xml/cpsmidib.csd.xml"|g' opcodes/cpsmidib.xml
+sed -i '' 's|href="examples-xml/cpsmidinn.csd.xml"|href="../examples-xml/cpsmidinn.csd.xml"|g' opcodes/cpsmidinn.xml
+sed -i '' 's|href="examples-xml/cpsmidinn2.csd.xml"|href="../examples-xml/cpsmidinn2.csd.xml"|g' opcodes/cpsmidinn.xml
+sed -i '' 's|href="examples-xml/cpsoct.csd.xml"|href="../examples-xml/cpsoct.csd.xml"|g' opcodes/cpsoct.xml
+sed -i '' 's|href="examples-xml/cpspch.csd.xml"|href="../examples-xml/cpspch.csd.xml"|g' opcodes/cpspch.xml
+sed -i '' 's|href="examples-xml/cpstmid.csd.xml"|href="../examples-xml/cpstmid.csd.xml"|g' opcodes/cpstmid.xml
+sed -i '' 's|href="examples-xml/cpstun.csd.xml"|href="../examples-xml/cpstun.csd.xml"|g' opcodes/cpstun.xml
+sed -i '' 's|href="examples-xml/cpstuni.csd.xml"|href="../examples-xml/cpstuni.csd.xml"|g' opcodes/cpstuni.xml
+sed -i '' 's|href="examples-xml/cpsxpch_105et.csd.xml"|href="../examples-xml/cpsxpch_105et.csd.xml"|g' opcodes/cpsxpch.xml
+sed -i '' 's|href="examples-xml/cpsxpch_pierce.csd.xml"|href="../examples-xml/cpsxpch_pierce.csd.xml"|g' opcodes/cpsxpch.xml
+sed -i '' 's|href="examples-xml/cpsxpch.csd.xml"|href="../examples-xml/cpsxpch.csd.xml"|g' opcodes/cpsxpch.xml
+sed -i '' 's|href="examples-xml/cpumeter.csd.xml"|href="../examples-xml/cpumeter.csd.xml"|g' opcodes/cpumeter.xml
+sed -i '' 's|href="examples-xml/cpuprc.csd.xml"|href="../examples-xml/cpuprc.csd.xml"|g' opcodes/cpuprc.xml
+sed -i '' 's|href="examples-xml/cross2.csd.xml"|href="../examples-xml/cross2.csd.xml"|g' opcodes/cross2.xml
+sed -i '' 's|href="examples-xml/crossfm.csd.xml"|href="../examples-xml/crossfm.csd.xml"|g' opcodes/crossfm.xml
+sed -i '' 's|href="examples-xml/crunch.csd.xml"|href="../examples-xml/crunch.csd.xml"|g' opcodes/crunch.xml
+sed -i '' 's|href="examples-xml/ctrl7.csd.xml"|href="../examples-xml/ctrl7.csd.xml"|g' opcodes/ctrl7.xml
+sed -i '' 's|href="examples-xml/cudanal.csd.xml"|href="../examples-xml/cudanal.csd.xml"|g' opcodes/cudanal.xml
+sed -i '' 's|href="examples-xml/cudasliding.csd.xml"|href="../examples-xml/cudasliding.csd.xml"|g' opcodes/cudasliding.xml
+sed -i '' 's|href="examples-xml/cudasynth.csd.xml"|href="../examples-xml/cudasynth.csd.xml"|g' opcodes/cudasynth.xml
+sed -i '' 's|href="examples-xml/cuserrnd.csd.xml"|href="../examples-xml/cuserrnd.csd.xml"|g' opcodes/cuserrnd.xml
+sed -i '' 's|href="examples-xml/dam.csd.xml"|href="../examples-xml/dam.csd.xml"|g' opcodes/dam.xml
+sed -i '' 's|href="examples-xml/dam_expanded.csd.xml"|href="../examples-xml/dam_expanded.csd.xml"|g' opcodes/dam.xml
+sed -i '' 's|href="examples-xml/date.csd.xml"|href="../examples-xml/date.csd.xml"|g' opcodes/date.xml
+sed -i '' 's|href="examples-xml/dates.csd.xml"|href="../examples-xml/dates.csd.xml"|g' opcodes/dates.xml
+sed -i '' 's|href="examples-xml/db.csd.xml"|href="../examples-xml/db.csd.xml"|g' opcodes/db.xml
+sed -i '' 's|href="examples-xml/dbamp.csd.xml"|href="../examples-xml/dbamp.csd.xml"|g' opcodes/dbamp.xml
+sed -i '' 's|href="examples-xml/dbfsamp.csd.xml"|href="../examples-xml/dbfsamp.csd.xml"|g' opcodes/dbfsamp.xml
+sed -i '' 's|href="examples-xml/dcblock.csd.xml"|href="../examples-xml/dcblock.csd.xml"|g' opcodes/dcblock.xml
+sed -i '' 's|href="examples-xml/dcblock2.csd.xml"|href="../examples-xml/dcblock2.csd.xml"|g' opcodes/dcblock2.xml
+sed -i '' 's|href="examples-xml/dconv.csd.xml"|href="../examples-xml/dconv.csd.xml"|g' opcodes/dconv.xml
+sed -i '' 's|href="examples-xml/define.csd.xml"|href="../examples-xml/define.csd.xml"|g' opcodes/define.xml
+sed -i '' 's|href="examples-xml/define_args.csd.xml"|href="../examples-xml/define_args.csd.xml"|g' opcodes/define.xml
+sed -i '' 's|href="examples-xml/delay.csd.xml"|href="../examples-xml/delay.csd.xml"|g' opcodes/delay.xml
+sed -i '' 's|href="examples-xml/delay1.csd.xml"|href="../examples-xml/delay1.csd.xml"|g' opcodes/delay1.xml
+sed -i '' 's|href="examples-xml/delayk.csd.xml"|href="../examples-xml/delayk.csd.xml"|g' opcodes/delayk.xml
+sed -i '' 's|href="examples-xml/delayr.csd.xml"|href="../examples-xml/delayr.csd.xml"|g' opcodes/delayr.xml
+sed -i '' 's|href="examples-xml/delayw.csd.xml"|href="../examples-xml/delayw.csd.xml"|g' opcodes/delayw.xml
+sed -i '' 's|href="examples-xml/deltap.csd.xml"|href="../examples-xml/deltap.csd.xml"|g' opcodes/deltap.xml
+sed -i '' 's|href="examples-xml/deltap3.csd.xml"|href="../examples-xml/deltap3.csd.xml"|g' opcodes/deltap3.xml
+sed -i '' 's|href="examples-xml/deltapi.csd.xml"|href="../examples-xml/deltapi.csd.xml"|g' opcodes/deltapi.xml
+sed -i '' 's|href="examples-xml/deltapn.csd.xml"|href="../examples-xml/deltapn.csd.xml"|g' opcodes/deltapn.xml
+sed -i '' 's|href="examples-xml/deltapx.csd.xml"|href="../examples-xml/deltapx.csd.xml"|g' opcodes/deltapx.xml
+sed -i '' 's|href="examples-xml/deltapxw.csd.xml"|href="../examples-xml/deltapxw.csd.xml"|g' opcodes/deltapxw.xml
+sed -i '' 's|href="examples-xml/denorm.csd.xml"|href="../examples-xml/denorm.csd.xml"|g' opcodes/denorm.xml
+sed -i '' 's|href="examples-xml/diff.csd.xml"|href="../examples-xml/diff.csd.xml"|g' opcodes/diff.xml
+sed -i '' 's|href="examples-xml/diskgrain.csd.xml"|href="../examples-xml/diskgrain.csd.xml"|g' opcodes/diskgrain.xml
+sed -i '' 's|href="examples-xml/diskin.csd.xml"|href="../examples-xml/diskin.csd.xml"|g' opcodes/diskin.xml
+sed -i '' 's|href="examples-xml/diskin2.csd.xml"|href="../examples-xml/diskin2.csd.xml"|g' opcodes/diskin2.xml
+sed -i '' 's|href="examples-xml/dispfft.csd.xml"|href="../examples-xml/dispfft.csd.xml"|g' opcodes/dispfft.xml
+sed -i '' 's|href="examples-xml/display.csd.xml"|href="../examples-xml/display.csd.xml"|g' opcodes/display.xml
+sed -i '' 's|href="examples-xml/distort.csd.xml"|href="../examples-xml/distort.csd.xml"|g' opcodes/distort.xml
+sed -i '' 's|href="examples-xml/distort1.csd.xml"|href="../examples-xml/distort1.csd.xml"|g' opcodes/distort1.xml
+sed -i '' 's|href="examples-xml/divides.csd.xml"|href="../examples-xml/divides.csd.xml"|g' opcodes/divides.xml
+sed -i '' 's|href="examples-xml/divz.csd.xml"|href="../examples-xml/divz.csd.xml"|g' opcodes/divz.xml
+sed -i '' 's|href="examples-xml/define.csd.xml"|href="../examples-xml/define.csd.xml"|g' opcodes/dollar.xml
+sed -i '' 's|href="examples-xml/define_args.csd.xml"|href="../examples-xml/define_args.csd.xml"|g' opcodes/dollar.xml
+sed -i '' 's|href="examples-xml/doppler.csd.xml"|href="../examples-xml/doppler.csd.xml"|g' opcodes/doppler.xml
+sed -i '' 's|href="examples-xml/downsamp.csd.xml"|href="../examples-xml/downsamp.csd.xml"|g' opcodes/downsamp.xml
+sed -i '' 's|href="examples-xml/dripwater.csd.xml"|href="../examples-xml/dripwater.csd.xml"|g' opcodes/dripwater.xml
+sed -i '' 's|href="examples-xml/dssiactivate.csd.xml"|href="../examples-xml/dssiactivate.csd.xml"|g' opcodes/dssiactivate.xml
+sed -i '' 's|href="examples-xml/dssiaudio.csd.xml"|href="../examples-xml/dssiaudio.csd.xml"|g' opcodes/dssiaudio.xml
+sed -i '' 's|href="examples-xml/dssictls.csd.xml"|href="../examples-xml/dssictls.csd.xml"|g' opcodes/dssictls.xml
+sed -i '' 's|href="examples-xml/dssiinit.csd.xml"|href="../examples-xml/dssiinit.csd.xml"|g' opcodes/dssiinit.xml
+sed -i '' 's|href="examples-xml/dssilist.csd.xml"|href="../examples-xml/dssilist.csd.xml"|g' opcodes/dssilist.xml
+sed -i '' 's|href="examples-xml/dumpk.csd.xml"|href="../examples-xml/dumpk.csd.xml"|g' opcodes/dumpk.xml
+sed -i '' 's|href="examples-xml/dumpk-2.csd.xml"|href="../examples-xml/dumpk-2.csd.xml"|g' opcodes/dumpk.xml
+sed -i '' 's|href="examples-xml/dumpk2.csd.xml"|href="../examples-xml/dumpk2.csd.xml"|g' opcodes/dumpk2.xml
+sed -i '' 's|href="examples-xml/dumpk3.csd.xml"|href="../examples-xml/dumpk3.csd.xml"|g' opcodes/dumpk3.xml
+sed -i '' 's|href="examples-xml/dumpk4.csd.xml"|href="../examples-xml/dumpk4.csd.xml"|g' opcodes/dumpk4.xml
+sed -i '' 's|href="examples-xml/duserrnd.csd.xml"|href="../examples-xml/duserrnd.csd.xml"|g' opcodes/duserrnd.xml
+sed -i '' 's|href="examples-xml/dust.csd.xml"|href="../examples-xml/dust.csd.xml"|g' opcodes/dust.xml
+sed -i '' 's|href="examples-xml/dust2.csd.xml"|href="../examples-xml/dust2.csd.xml"|g' opcodes/dust2.xml
+sed -i '' 's|href="examples-xml/else.csd.xml"|href="../examples-xml/else.csd.xml"|g' opcodes/else.xml
+sed -i '' 's|href="examples-xml/elseif.csd.xml"|href="../examples-xml/elseif.csd.xml"|g' opcodes/elseif.xml
+sed -i '' 's|href="examples-xml/endif.csd.xml"|href="../examples-xml/endif.csd.xml"|g' opcodes/endif.xml
+sed -i '' 's|href="examples-xml/endin.csd.xml"|href="../examples-xml/endin.csd.xml"|g' opcodes/endin.xml
+sed -i '' 's|href="examples-xml/endop.csd.xml"|href="../examples-xml/endop.csd.xml"|g' opcodes/endop.xml
+sed -i '' 's|href="examples-xml/envlpx.csd.xml"|href="../examples-xml/envlpx.csd.xml"|g' opcodes/envlpx.xml
+sed -i '' 's|href="examples-xml/envlpxr.csd.xml"|href="../examples-xml/envlpxr.csd.xml"|g' opcodes/envlpxr.xml
+sed -i '' 's|href="examples-xml/ephasor.csd.xml"|href="../examples-xml/ephasor.csd.xml"|g' opcodes/ephasor.xml
+sed -i '' 's|href="examples-xml/eqfil.csd.xml"|href="../examples-xml/eqfil.csd.xml"|g' opcodes/eqfil.xml
+sed -i '' 's|href="examples-xml/equals.csd.xml"|href="../examples-xml/equals.csd.xml"|g' opcodes/equals.xml
+sed -i '' 's|href="examples-xml/event_i.csd.xml"|href="../examples-xml/event_i.csd.xml"|g' opcodes/event_i.xml
+sed -i '' 's|href="examples-xml/event.csd.xml"|href="../examples-xml/event.csd.xml"|g' opcodes/event.xml
+sed -i '' 's|href="examples-xml/event_named.csd.xml"|href="../examples-xml/event_named.csd.xml"|g' opcodes/event.xml
+sed -i '' 's|href="examples-xml/exciter.csd.xml"|href="../examples-xml/exciter.csd.xml"|g' opcodes/exciter.xml
+sed -i '' 's|href="examples-xml/exitnow.csd.xml"|href="../examples-xml/exitnow.csd.xml"|g' opcodes/exitnow.xml
+sed -i '' 's|href="examples-xml/exp.csd.xml"|href="../examples-xml/exp.csd.xml"|g' opcodes/exp.xml
+sed -i '' 's|href="examples-xml/expcurve.csd.xml"|href="../examples-xml/expcurve.csd.xml"|g' opcodes/expcurve.xml
+sed -i '' 's|href="examples-xml/expon.csd.xml"|href="../examples-xml/expon.csd.xml"|g' opcodes/expon.xml
+sed -i '' 's|href="examples-xml/exprand.csd.xml"|href="../examples-xml/exprand.csd.xml"|g' opcodes/exprand.xml
+sed -i '' 's|href="examples-xml/exprandi.csd.xml"|href="../examples-xml/exprandi.csd.xml"|g' opcodes/exprandi.xml
+sed -i '' 's|href="examples-xml/expseg.csd.xml"|href="../examples-xml/expseg.csd.xml"|g' opcodes/expseg.xml
+sed -i '' 's|href="examples-xml/expsega.csd.xml"|href="../examples-xml/expsega.csd.xml"|g' opcodes/expsega.xml
+sed -i '' 's|href="examples-xml/expsegb.csd.xml"|href="../examples-xml/expsegb.csd.xml"|g' opcodes/expsegb.xml
+sed -i '' 's|href="examples-xml/expsegba.csd.xml"|href="../examples-xml/expsegba.csd.xml"|g' opcodes/expsegba.xml
+sed -i '' 's|href="examples-xml/expsegr.csd.xml"|href="../examples-xml/expsegr.csd.xml"|g' opcodes/expsegr.xml
+sed -i '' 's|href="examples-xml/fareyleni.csd.xml"|href="../examples-xml/fareyleni.csd.xml"|g' opcodes/fareyleni.xml
+sed -i '' 's|href="examples-xml/fft.csd.xml"|href="../examples-xml/fft.csd.xml"|g' opcodes/fft.xml
+sed -i '' 's|href="examples-xml/ficlose.csd.xml"|href="../examples-xml/ficlose.csd.xml"|g' opcodes/ficlose.xml
+sed -i '' 's|href="examples-xml/filebit.csd.xml"|href="../examples-xml/filebit.csd.xml"|g' opcodes/filebit.xml
+sed -i '' 's|href="examples-xml/filelen.csd.xml"|href="../examples-xml/filelen.csd.xml"|g' opcodes/filelen.xml
+sed -i '' 's|href="examples-xml/filenchnls.csd.xml"|href="../examples-xml/filenchnls.csd.xml"|g' opcodes/filenchnls.xml
+sed -i '' 's|href="examples-xml/filepeak.csd.xml"|href="../examples-xml/filepeak.csd.xml"|g' opcodes/filepeak.xml
+sed -i '' 's|href="examples-xml/filesr.csd.xml"|href="../examples-xml/filesr.csd.xml"|g' opcodes/filesr.xml
+sed -i '' 's|href="examples-xml/filevalid.csd.xml"|href="../examples-xml/filevalid.csd.xml"|g' opcodes/filevalid.xml
+sed -i '' 's|href="examples-xml/fillarray.csd.xml"|href="../examples-xml/fillarray.csd.xml"|g' opcodes/fillarray.xml
+sed -i '' 's|href="examples-xml/filter2.csd.xml"|href="../examples-xml/filter2.csd.xml"|g' opcodes/filter2.xml
+sed -i '' 's|href="examples-xml/fin.csd.xml"|href="../examples-xml/fin.csd.xml"|g' opcodes/fin.xml
+sed -i '' 's|href="examples-xml/fiopen.csd.xml"|href="../examples-xml/fiopen.csd.xml"|g' opcodes/fiopen.xml
+sed -i '' 's|href="examples-xml/flanger.csd.xml"|href="../examples-xml/flanger.csd.xml"|g' opcodes/flanger.xml
+sed -i '' 's|href="examples-xml/flashtxt.csd.xml"|href="../examples-xml/flashtxt.csd.xml"|g' opcodes/flashtxt.xml
+sed -i '' 's|href="examples-xml/FLbox.csd.xml"|href="../examples-xml/FLbox.csd.xml"|g' opcodes/flbox.xml
+sed -i '' 's|href="examples-xml/FLbutBank.csd.xml"|href="../examples-xml/FLbutBank.csd.xml"|g' opcodes/flbutbank.xml
+sed -i '' 's|href="examples-xml/FLbutton.csd.xml"|href="../examples-xml/FLbutton.csd.xml"|g' opcodes/flbutton.xml
+sed -i '' 's|href="examples-xml/FLcount.csd.xml"|href="../examples-xml/FLcount.csd.xml"|g' opcodes/flcount.xml
+sed -i '' 's|href="examples-xml/FLexecButton.csd.xml"|href="../examples-xml/FLexecButton.csd.xml"|g' opcodes/flexecbutton.xml
+sed -i '' 's|href="examples-xml/FLjoy.csd.xml"|href="../examples-xml/FLjoy.csd.xml"|g' opcodes/fljoy.xml
+sed -i '' 's|href="examples-xml/FLkeyIn.csd.xml"|href="../examples-xml/FLkeyIn.csd.xml"|g' opcodes/flkeyin.xml
+sed -i '' 's|href="examples-xml/FLknob.csd.xml"|href="../examples-xml/FLknob.csd.xml"|g' opcodes/flknob.xml
+sed -i '' 's|href="examples-xml/FLknob-2.csd.xml"|href="../examples-xml/FLknob-2.csd.xml"|g' opcodes/flknob.xml
+sed -i '' 's|href="examples-xml/FLmouse.csd.xml"|href="../examples-xml/FLmouse.csd.xml"|g' opcodes/flmouse.xml
+sed -i '' 's|href="examples-xml/flooper.csd.xml"|href="../examples-xml/flooper.csd.xml"|g' opcodes/flooper.xml
+sed -i '' 's|href="examples-xml/flooper2.csd.xml"|href="../examples-xml/flooper2.csd.xml"|g' opcodes/flooper2.xml
+sed -i '' 's|href="examples-xml/floor.csd.xml"|href="../examples-xml/floor.csd.xml"|g' opcodes/floor.xml
+sed -i '' 's|href="examples-xml/FLpanel.csd.xml"|href="../examples-xml/FLpanel.csd.xml"|g' opcodes/flpanel.xml
+sed -i '' 's|href="examples-xml/FLroller.csd.xml"|href="../examples-xml/FLroller.csd.xml"|g' opcodes/flroller.xml
+sed -i '' 's|href="examples-xml/FLsavesnap_simple.csd.xml"|href="../examples-xml/FLsavesnap_simple.csd.xml"|g' opcodes/flsavesnap.xml
+sed -i '' 's|href="examples-xml/FLsavesnap.csd.xml"|href="../examples-xml/FLsavesnap.csd.xml"|g' opcodes/flsavesnap.xml
+sed -i '' 's|href="examples-xml/FLscroll.csd.xml"|href="../examples-xml/FLscroll.csd.xml"|g' opcodes/flscroll.xml
+sed -i '' 's|href="examples-xml/FLsetcolor.csd.xml"|href="../examples-xml/FLsetcolor.csd.xml"|g' opcodes/flsetcolor.xml
+sed -i '' 's|href="examples-xml/FLsetText.csd.xml"|href="../examples-xml/FLsetText.csd.xml"|g' opcodes/flsettext.xml
+sed -i '' 's|href="examples-xml/FLslidBnk.csd.xml"|href="../examples-xml/FLslidBnk.csd.xml"|g' opcodes/flslidbnk.xml
+sed -i '' 's|href="examples-xml/FLslidBnk2.csd.xml"|href="../examples-xml/FLslidBnk2.csd.xml"|g' opcodes/flslidbnk2.xml
+sed -i '' 's|href="examples-xml/FLslidBnk2Setk.csd.xml"|href="../examples-xml/FLslidBnk2Setk.csd.xml"|g' opcodes/flslidbnk2setk.xml
+sed -i '' 's|href="examples-xml/FLslider.csd.xml"|href="../examples-xml/FLslider.csd.xml"|g' opcodes/flslider.xml
+sed -i '' 's|href="examples-xml/FLslider-2.csd.xml"|href="../examples-xml/FLslider-2.csd.xml"|g' opcodes/flslider.xml
+sed -i '' 's|href="examples-xml/FLtabs.csd.xml"|href="../examples-xml/FLtabs.csd.xml"|g' opcodes/fltabs.xml
+sed -i '' 's|href="examples-xml/FLtext.csd.xml"|href="../examples-xml/FLtext.csd.xml"|g' opcodes/fltext.xml
+sed -i '' 's|href="examples-xml/fluidAllOut.csd.xml"|href="../examples-xml/fluidAllOut.csd.xml"|g' opcodes/fluidAllOut.xml
+sed -i '' 's|href="examples-xml/fluidCCi.csd.xml"|href="../examples-xml/fluidCCi.csd.xml"|g' opcodes/fluidCCi.xml
+sed -i '' 's|href="examples-xml/fluidCCk.csd.xml"|href="../examples-xml/fluidCCk.csd.xml"|g' opcodes/fluidCCk.xml
+sed -i '' 's|href="examples-xml/fluidcomplex.csd.xml"|href="../examples-xml/fluidcomplex.csd.xml"|g' opcodes/fluidControl.xml
+sed -i '' 's|href="examples-xml/fluidEngine.csd.xml"|href="../examples-xml/fluidEngine.csd.xml"|g' opcodes/fluidEngine.xml
+sed -i '' 's|href="examples-xml/fluidLoad.csd.xml"|href="../examples-xml/fluidLoad.csd.xml"|g' opcodes/fluidLoad.xml
+sed -i '' 's|href="examples-xml/fluidNote.csd.xml"|href="../examples-xml/fluidNote.csd.xml"|g' opcodes/fluidNote.xml
+sed -i '' 's|href="examples-xml/fluidOut.csd.xml"|href="../examples-xml/fluidOut.csd.xml"|g' opcodes/fluidOut.xml
+sed -i '' 's|href="examples-xml/fluidProgramSelect.csd.xml"|href="../examples-xml/fluidProgramSelect.csd.xml"|g' opcodes/fluidProgramSelect.xml
+sed -i '' 's|href="examples-xml/fluidcomplex.csd.xml"|href="../examples-xml/fluidcomplex.csd.xml"|g' opcodes/fluidProgramSelect.xml
+sed -i '' 's|href="examples-xml/fluidSetInterpMethod.csd.xml"|href="../examples-xml/fluidSetInterpMethod.csd.xml"|g' opcodes/fluidSetInterpMethod.xml
+sed -i '' 's|href="examples-xml/FLvalue.csd.xml"|href="../examples-xml/FLvalue.csd.xml"|g' opcodes/flvalue.xml
+sed -i '' 's|href="examples-xml/FLvslidBnk.csd.xml"|href="../examples-xml/FLvslidBnk.csd.xml"|g' opcodes/flvslidbnk.xml
+sed -i '' 's|href="examples-xml/FLxyin.csd.xml"|href="../examples-xml/FLxyin.csd.xml"|g' opcodes/flxyin.xml
+sed -i '' 's|href="examples-xml/FLxyin-2.csd.xml"|href="../examples-xml/FLxyin-2.csd.xml"|g' opcodes/flxyin.xml
+sed -i '' 's|href="examples-xml/fmb3.csd.xml"|href="../examples-xml/fmb3.csd.xml"|g' opcodes/fmb3.xml
+sed -i '' 's|href="examples-xml/fmbell.csd.xml"|href="../examples-xml/fmbell.csd.xml"|g' opcodes/fmbell.xml
+sed -i '' 's|href="examples-xml/fmmetal.csd.xml"|href="../examples-xml/fmmetal.csd.xml"|g' opcodes/fmmetal.xml
+sed -i '' 's|href="examples-xml/fmpercfl.csd.xml"|href="../examples-xml/fmpercfl.csd.xml"|g' opcodes/fmpercfl.xml
+sed -i '' 's|href="examples-xml/fmrhode.csd.xml"|href="../examples-xml/fmrhode.csd.xml"|g' opcodes/fmrhode.xml
+sed -i '' 's|href="examples-xml/fmvoice.csd.xml"|href="../examples-xml/fmvoice.csd.xml"|g' opcodes/fmvoice.xml
+sed -i '' 's|href="examples-xml/fmwurlie.csd.xml"|href="../examples-xml/fmwurlie.csd.xml"|g' opcodes/fmwurlie.xml
+sed -i '' 's|href="examples-xml/fof.csd.xml"|href="../examples-xml/fof.csd.xml"|g' opcodes/fof.xml
+sed -i '' 's|href="examples-xml/fof2.csd.xml"|href="../examples-xml/fof2.csd.xml"|g' opcodes/fof2.xml
+sed -i '' 's|href="examples-xml/fof2-2.csd.xml"|href="../examples-xml/fof2-2.csd.xml"|g' opcodes/fof2.xml
+sed -i '' 's|href="examples-xml/fofilter.csd.xml"|href="../examples-xml/fofilter.csd.xml"|g' opcodes/fofilter.xml
+sed -i '' 's|href="examples-xml/fog.csd.xml"|href="../examples-xml/fog.csd.xml"|g' opcodes/fog.xml
+sed -i '' 's|href="examples-xml/fold.csd.xml"|href="../examples-xml/fold.csd.xml"|g' opcodes/fold.xml
+sed -i '' 's|href="examples-xml/follow.csd.xml"|href="../examples-xml/follow.csd.xml"|g' opcodes/follow.xml
+sed -i '' 's|href="examples-xml/follow2.csd.xml"|href="../examples-xml/follow2.csd.xml"|g' opcodes/follow2.xml
+sed -i '' 's|href="examples-xml/foscil.csd.xml"|href="../examples-xml/foscil.csd.xml"|g' opcodes/foscil.xml
+sed -i '' 's|href="examples-xml/foscili.csd.xml"|href="../examples-xml/foscili.csd.xml"|g' opcodes/foscili.xml
+sed -i '' 's|href="examples-xml/fout.csd.xml"|href="../examples-xml/fout.csd.xml"|g' opcodes/fout.xml
+sed -i '' 's|href="examples-xml/fout_ftable.csd.xml"|href="../examples-xml/fout_ftable.csd.xml"|g' opcodes/fout.xml
+sed -i '' 's|href="examples-xml/fouti.csd.xml"|href="../examples-xml/fouti.csd.xml"|g' opcodes/fouti.xml
+sed -i '' 's|href="examples-xml/foutir.csd.xml"|href="../examples-xml/foutir.csd.xml"|g' opcodes/foutir.xml
+sed -i '' 's|href="examples-xml/fprintks.csd.xml"|href="../examples-xml/fprintks.csd.xml"|g' opcodes/fprintks.xml
+sed -i '' 's|href="examples-xml/fprintks-2.csd.xml"|href="../examples-xml/fprintks-2.csd.xml"|g' opcodes/fprintks.xml
+sed -i '' 's|href="examples-xml/scogen.csd.xml"|href="../examples-xml/scogen.csd.xml"|g' opcodes/fprintks.xml
+sed -i '' 's|href="examples-xml/fprints.csd.xml"|href="../examples-xml/fprints.csd.xml"|g' opcodes/fprints.xml
+sed -i '' 's|href="examples-xml/frac.csd.xml"|href="../examples-xml/frac.csd.xml"|g' opcodes/frac.xml
+sed -i '' 's|href="examples-xml/fractalnoise.csd.xml"|href="../examples-xml/fractalnoise.csd.xml"|g' opcodes/fractalnoise.xml
+sed -i '' 's|href="examples-xml/framebuffer.csd.xml"|href="../examples-xml/framebuffer.csd.xml"|g' opcodes/framebuffer.xml
+sed -i '' 's|href="examples-xml/freeverb.csd.xml"|href="../examples-xml/freeverb.csd.xml"|g' opcodes/freeverb.xml
+sed -i '' 's|href="examples-xml/ftchnls.csd.xml"|href="../examples-xml/ftchnls.csd.xml"|g' opcodes/ftchnls.xml
+sed -i '' 's|href="examples-xml/ftconv.csd.xml"|href="../examples-xml/ftconv.csd.xml"|g' opcodes/ftconv.xml
+sed -i '' 's|href="examples-xml/ftcps.csd.xml"|href="../examples-xml/ftcps.csd.xml"|g' opcodes/ftcps.xml
+sed -i '' 's|href="examples-xml/ftfree.csd.xml"|href="../examples-xml/ftfree.csd.xml"|g' opcodes/ftfree.xml
+sed -i '' 's|href="examples-xml/ftgen.csd.xml"|href="../examples-xml/ftgen.csd.xml"|g' opcodes/ftgen.xml
+sed -i '' 's|href="examples-xml/ftgen-2.csd.xml"|href="../examples-xml/ftgen-2.csd.xml"|g' opcodes/ftgen.xml
+sed -i '' 's|href="examples-xml/ftgenonce.csd.xml"|href="../examples-xml/ftgenonce.csd.xml"|g' opcodes/ftgenonce.xml
+sed -i '' 's|href="examples-xml/ftgentmp.csd.xml"|href="../examples-xml/ftgentmp.csd.xml"|g' opcodes/ftgentmp.xml
+sed -i '' 's|href="examples-xml/ftlen.csd.xml"|href="../examples-xml/ftlen.csd.xml"|g' opcodes/ftlen.xml
+sed -i '' 's|href="examples-xml/ftlptim.csd.xml"|href="../examples-xml/ftlptim.csd.xml"|g' opcodes/ftlptim.xml
+sed -i '' 's|href="examples-xml/ftmorf.csd.xml"|href="../examples-xml/ftmorf.csd.xml"|g' opcodes/ftmorf.xml
+sed -i '' 's|href="examples-xml/ftsave.csd.xml"|href="../examples-xml/ftsave.csd.xml"|g' opcodes/ftsave.xml
+sed -i '' 's|href="examples-xml/ftsr.csd.xml"|href="../examples-xml/ftsr.csd.xml"|g' opcodes/ftsr.xml
+sed -i '' 's|href="examples-xml/gain.csd.xml"|href="../examples-xml/gain.csd.xml"|g' opcodes/gain.xml
+sed -i '' 's|href="examples-xml/gainslider.csd.xml"|href="../examples-xml/gainslider.csd.xml"|g' opcodes/gainslider.xml
+sed -i '' 's|href="examples-xml/gauss.csd.xml"|href="../examples-xml/gauss.csd.xml"|g' opcodes/gauss.xml
+sed -i '' 's|href="examples-xml/gaussi.csd.xml"|href="../examples-xml/gaussi.csd.xml"|g' opcodes/gaussi.xml
+sed -i '' 's|href="examples-xml/gausstrig.csd.xml"|href="../examples-xml/gausstrig.csd.xml"|g' opcodes/gausstrig.xml
+sed -i '' 's|href="examples-xml/gausstrig-2.csd.xml"|href="../examples-xml/gausstrig-2.csd.xml"|g' opcodes/gausstrig.xml
+sed -i '' 's|href="examples-xml/gbuzz.csd.xml"|href="../examples-xml/gbuzz.csd.xml"|g' opcodes/gbuzz.xml
+sed -i '' 's|href="examples-xml/genarray_i.csd.xml"|href="../examples-xml/genarray_i.csd.xml"|g' opcodes/genarray_i.xml
+sed -i '' 's|href="examples-xml/genarray.csd.xml"|href="../examples-xml/genarray.csd.xml"|g' opcodes/genarray.xml
+sed -i '' 's|href="examples-xml/gendy.csd.xml"|href="../examples-xml/gendy.csd.xml"|g' opcodes/gendy.xml
+sed -i '' 's|href="examples-xml/gendy-2.csd.xml"|href="../examples-xml/gendy-2.csd.xml"|g' opcodes/gendy.xml
+sed -i '' 's|href="examples-xml/gendyc.csd.xml"|href="../examples-xml/gendyc.csd.xml"|g' opcodes/gendyc.xml
+sed -i '' 's|href="examples-xml/gendyx.csd.xml"|href="../examples-xml/gendyx.csd.xml"|g' opcodes/gendyx.xml
+sed -i '' 's|href="examples-xml/gendyx-2.csd.xml"|href="../examples-xml/gendyx-2.csd.xml"|g' opcodes/gendyx.xml
+sed -i '' 's|href="examples-xml/getcfg.csd.xml"|href="../examples-xml/getcfg.csd.xml"|g' opcodes/getcfg.xml
+sed -i '' 's|href="examples-xml/gogobel.csd.xml"|href="../examples-xml/gogobel.csd.xml"|g' opcodes/gogobel.xml
+sed -i '' 's|href="examples-xml/goto.csd.xml"|href="../examples-xml/goto.csd.xml"|g' opcodes/goto.xml
+sed -i '' 's|href="examples-xml/grain.csd.xml"|href="../examples-xml/grain.csd.xml"|g' opcodes/grain.xml
+sed -i '' 's|href="examples-xml/grain2.csd.xml"|href="../examples-xml/grain2.csd.xml"|g' opcodes/grain2.xml
+sed -i '' 's|href="examples-xml/grain3.csd.xml"|href="../examples-xml/grain3.csd.xml"|g' opcodes/grain3.xml
+sed -i '' 's|href="examples-xml/granule.csd.xml"|href="../examples-xml/granule.csd.xml"|g' opcodes/granule.xml
+sed -i '' 's|href="examples-xml/greaterequal.csd.xml"|href="../examples-xml/greaterequal.csd.xml"|g' opcodes/greaterequal.xml
+sed -i '' 's|href="examples-xml/greaterthan.csd.xml"|href="../examples-xml/greaterthan.csd.xml"|g' opcodes/greaterthan.xml
+sed -i '' 's|href="examples-xml/guiro.csd.xml"|href="../examples-xml/guiro.csd.xml"|g' opcodes/guiro.xml
+sed -i '' 's|href="examples-xml/harmon.csd.xml"|href="../examples-xml/harmon.csd.xml"|g' opcodes/harmon.xml
+sed -i '' 's|href="examples-xml/harmon3.csd.xml"|href="../examples-xml/harmon3.csd.xml"|g' opcodes/harmon234.xml
+sed -i '' 's|href="examples-xml/hdf5read.csd.xml"|href="../examples-xml/hdf5read.csd.xml"|g' opcodes/hdf5read.xml
+sed -i '' 's|href="examples-xml/hdf5write.csd.xml"|href="../examples-xml/hdf5write.csd.xml"|g' opcodes/hdf5write.xml
+sed -i '' 's|href="examples-xml/hilbert.csd.xml"|href="../examples-xml/hilbert.csd.xml"|g' opcodes/hilbert.xml
+sed -i '' 's|href="examples-xml/hilbert_barberpole.csd.xml"|href="../examples-xml/hilbert_barberpole.csd.xml"|g' opcodes/hilbert.xml
+sed -i '' 's|href="examples-xml/hrtfearly.csd.xml"|href="../examples-xml/hrtfearly.csd.xml"|g' opcodes/hrtfearly.xml
+sed -i '' 's|href="examples-xml/hrtfer.csd.xml"|href="../examples-xml/hrtfer.csd.xml"|g' opcodes/hrtfer.xml
+sed -i '' 's|href="examples-xml/hrtfmove.csd.xml"|href="../examples-xml/hrtfmove.csd.xml"|g' opcodes/hrtfmove.xml
+sed -i '' 's|href="examples-xml/hrtfmove2.csd.xml"|href="../examples-xml/hrtfmove2.csd.xml"|g' opcodes/hrtfmove2.xml
+sed -i '' 's|href="examples-xml/hrtfstat.csd.xml"|href="../examples-xml/hrtfstat.csd.xml"|g' opcodes/hrtfstat.xml
+sed -i '' 's|href="examples-xml/hrtfstat-2.csd.xml"|href="../examples-xml/hrtfstat-2.csd.xml"|g' opcodes/hrtfstat.xml
+sed -i '' 's|href="examples-xml/hsboscil_midi.csd.xml"|href="../examples-xml/hsboscil_midi.csd.xml"|g' opcodes/hsboscil.xml
+sed -i '' 's|href="examples-xml/hsboscil.csd.xml"|href="../examples-xml/hsboscil.csd.xml"|g' opcodes/hsboscil.xml
+sed -i '' 's|href="examples-xml/hvs1.csd.xml"|href="../examples-xml/hvs1.csd.xml"|g' opcodes/hvs1.xml
+sed -i '' 's|href="examples-xml/hvs2.csd.xml"|href="../examples-xml/hvs2.csd.xml"|g' opcodes/hvs2.xml
+sed -i '' 's|href="examples-xml/hvs2-2.csd.xml"|href="../examples-xml/hvs2-2.csd.xml"|g' opcodes/hvs2.xml
+sed -i '' 's|href="examples-xml/ifthen.csd.xml"|href="../examples-xml/ifthen.csd.xml"|g' opcodes/if.xml
+sed -i '' 's|href="examples-xml/igoto.csd.xml"|href="../examples-xml/igoto.csd.xml"|g' opcodes/if.xml
+sed -i '' 's|href="examples-xml/kgoto.csd.xml"|href="../examples-xml/kgoto.csd.xml"|g' opcodes/if.xml
+sed -i '' 's|href="examples-xml/ifft.csd.xml"|href="../examples-xml/ifft.csd.xml"|g' opcodes/ifft.xml
+sed -i '' 's|href="examples-xml/igoto.csd.xml"|href="../examples-xml/igoto.csd.xml"|g' opcodes/igoto.xml
+sed -i '' 's|href="examples-xml/ihold.csd.xml"|href="../examples-xml/ihold.csd.xml"|g' opcodes/ihold.xml
+sed -i '' 's|href="examples-xml/imageopcodes.csd.xml"|href="../examples-xml/imageopcodes.csd.xml"|g' opcodes/imagecreate.xml
+sed -i '' 's|href="examples-xml/imageopcodes.csd.xml"|href="../examples-xml/imageopcodes.csd.xml"|g' opcodes/imagefree.xml
+sed -i '' 's|href="examples-xml/imageopcodesdemo2.csd.xml"|href="../examples-xml/imageopcodesdemo2.csd.xml"|g' opcodes/imagegetpixel.xml
+sed -i '' 's|href="examples-xml/imageopcodes.csd.xml"|href="../examples-xml/imageopcodes.csd.xml"|g' opcodes/imageload.xml
+sed -i '' 's|href="examples-xml/imageopcodes.csd.xml"|href="../examples-xml/imageopcodes.csd.xml"|g' opcodes/imagesave.xml
+sed -i '' 's|href="examples-xml/imageopcodes.csd.xml"|href="../examples-xml/imageopcodes.csd.xml"|g' opcodes/imagesetpixel.xml
+sed -i '' 's|href="examples-xml/imageopcodes.csd.xml"|href="../examples-xml/imageopcodes.csd.xml"|g' opcodes/imagesize.xml
+sed -i '' 's|href="examples-xml/in.csd.xml"|href="../examples-xml/in.csd.xml"|g' opcodes/in.xml
+sed -i '' 's|href="examples-xml/inch.csd.xml"|href="../examples-xml/inch.csd.xml"|g' opcodes/inch.xml
+sed -i '' 's|href="examples-xml/table1.inc.xml"|href="../examples-xml/table1.inc.xml"|g' opcodes/include.xml
+sed -i '' 's|href="examples-xml/include.csd.xml"|href="../examples-xml/include.csd.xml"|g' opcodes/include.xml
+sed -i '' 's|href="examples-xml/init.csd.xml"|href="../examples-xml/init.csd.xml"|g' opcodes/init.xml
+sed -i '' 's|href="examples-xml/initc7.csd.xml"|href="../examples-xml/initc7.csd.xml"|g' opcodes/initc7.xml
+sed -i '' 's|href="examples-xml/inleta.csd.xml"|href="../examples-xml/inleta.csd.xml"|g' opcodes/inleta.xml
+sed -i '' 's|href="examples-xml/inletk.csd.xml"|href="../examples-xml/inletk.csd.xml"|g' opcodes/inletk.xml
+sed -i '' 's|href="examples-xml/inq.csd.xml"|href="../examples-xml/inq.csd.xml"|g' opcodes/inq.xml
+sed -i '' 's|href="examples-xml/ins.csd.xml"|href="../examples-xml/ins.csd.xml"|g' opcodes/ins.xml
+sed -i '' 's|href="examples-xml/insremot.csd.xml"|href="../examples-xml/insremot.csd.xml"|g' opcodes/insremot.xml
+sed -i '' 's|href="examples-xml/insremotM.csd.xml"|href="../examples-xml/insremotM.csd.xml"|g' opcodes/insremot.xml
+sed -i '' 's|href="examples-xml/instr.csd.xml"|href="../examples-xml/instr.csd.xml"|g' opcodes/instr.xml
+sed -i '' 's|href="examples-xml/int.csd.xml"|href="../examples-xml/int.csd.xml"|g' opcodes/int.xml
+sed -i '' 's|href="examples-xml/integ.csd.xml"|href="../examples-xml/integ.csd.xml"|g' opcodes/integ.xml
+sed -i '' 's|href="examples-xml/interp.csd.xml"|href="../examples-xml/interp.csd.xml"|g' opcodes/interp.xml
+sed -i '' 's|href="examples-xml/invalue.csd.xml"|href="../examples-xml/invalue.csd.xml"|g' opcodes/invalue.xml
+sed -i '' 's|href="examples-xml/JackoInfo.csd.xml"|href="../examples-xml/JackoInfo.csd.xml"|g' opcodes/JackoInfo.xml
+sed -i '' 's|href="examples-xml/JackoInit.csd.xml"|href="../examples-xml/JackoInit.csd.xml"|g' opcodes/JackoInit.xml
+sed -i '' 's|href="examples-xml/jacktransport.csd.xml"|href="../examples-xml/jacktransport.csd.xml"|g' opcodes/jacktransport.xml
+sed -i '' 's|href="examples-xml/jitter.csd.xml"|href="../examples-xml/jitter.csd.xml"|g' opcodes/jitter.xml
+sed -i '' 's|href="examples-xml/jitter2.csd.xml"|href="../examples-xml/jitter2.csd.xml"|g' opcodes/jitter2.xml
+sed -i '' 's|href="examples-xml/joystick.csd.xml"|href="../examples-xml/joystick.csd.xml"|g' opcodes/joystick.xml
+sed -i '' 's|href="examples-xml/joystick-2.csd.xml"|href="../examples-xml/joystick-2.csd.xml"|g' opcodes/joystick.xml
+sed -i '' 's|href="examples-xml/jspline.csd.xml"|href="../examples-xml/jspline.csd.xml"|g' opcodes/jspline.xml
+sed -i '' 's|href="examples-xml/kgoto.csd.xml"|href="../examples-xml/kgoto.csd.xml"|g' opcodes/kgoto.xml
+sed -i '' 's|href="examples-xml/lenarray.csd.xml"|href="../examples-xml/lenarray.csd.xml"|g' opcodes/lenarray.xml
+sed -i '' 's|href="examples-xml/lessequal.csd.xml"|href="../examples-xml/lessequal.csd.xml"|g' opcodes/lessequal.xml
+sed -i '' 's|href="examples-xml/lessthan.csd.xml"|href="../examples-xml/lessthan.csd.xml"|g' opcodes/lessthan.xml
+sed -i '' 's|href="examples-xml/lfo.csd.xml"|href="../examples-xml/lfo.csd.xml"|g' opcodes/lfo.xml
+sed -i '' 's|href="examples-xml/limit.csd.xml"|href="../examples-xml/limit.csd.xml"|g' opcodes/limit.xml
+sed -i '' 's|href="examples-xml/line.csd.xml"|href="../examples-xml/line.csd.xml"|g' opcodes/line.xml
+sed -i '' 's|href="examples-xml/linen.csd.xml"|href="../examples-xml/linen.csd.xml"|g' opcodes/linen.xml
+sed -i '' 's|href="examples-xml/linenr.csd.xml"|href="../examples-xml/linenr.csd.xml"|g' opcodes/linenr.xml
+sed -i '' 's|href="examples-xml/lineto.csd.xml"|href="../examples-xml/lineto.csd.xml"|g' opcodes/lineto.xml
+sed -i '' 's|href="examples-xml/linrand.csd.xml"|href="../examples-xml/linrand.csd.xml"|g' opcodes/linrand.xml
+sed -i '' 's|href="examples-xml/linseg.csd.xml"|href="../examples-xml/linseg.csd.xml"|g' opcodes/linseg.xml
+sed -i '' 's|href="examples-xml/linsegb.csd.xml"|href="../examples-xml/linsegb.csd.xml"|g' opcodes/linsegb.xml
+sed -i '' 's|href="examples-xml/linsegr.csd.xml"|href="../examples-xml/linsegr.csd.xml"|g' opcodes/linsegr.xml
+sed -i '' 's|href="examples-xml/locsend_stereo.csd.xml"|href="../examples-xml/locsend_stereo.csd.xml"|g' opcodes/locsend.xml
+sed -i '' 's|href="examples-xml/locsig_quad.csd.xml"|href="../examples-xml/locsig_quad.csd.xml"|g' opcodes/locsig.xml
+sed -i '' 's|href="examples-xml/log.csd.xml"|href="../examples-xml/log.csd.xml"|g' opcodes/log.xml
+sed -i '' 's|href="examples-xml/log10.csd.xml"|href="../examples-xml/log10.csd.xml"|g' opcodes/log10.xml
+sed -i '' 's|href="examples-xml/log2.csd.xml"|href="../examples-xml/log2.csd.xml"|g' opcodes/log2.xml
+sed -i '' 's|href="examples-xml/logbtwo.csd.xml"|href="../examples-xml/logbtwo.csd.xml"|g' opcodes/logbtwo.xml
+sed -i '' 's|href="examples-xml/logcurve.csd.xml"|href="../examples-xml/logcurve.csd.xml"|g' opcodes/logcurve.xml
+sed -i '' 's|href="examples-xml/loop_le.csd.xml"|href="../examples-xml/loop_le.csd.xml"|g' opcodes/loop_le.xml
+sed -i '' 's|href="examples-xml/loop_lt.csd.xml"|href="../examples-xml/loop_lt.csd.xml"|g' opcodes/loop_lt.xml
+sed -i '' 's|href="examples-xml/loopseg.csd.xml"|href="../examples-xml/loopseg.csd.xml"|g' opcodes/loopseg.xml
+sed -i '' 's|href="examples-xml/loopsegp.csd.xml"|href="../examples-xml/loopsegp.csd.xml"|g' opcodes/loopsegp.xml
+sed -i '' 's|href="examples-xml/looptseg.csd.xml"|href="../examples-xml/looptseg.csd.xml"|g' opcodes/looptseg.xml
+sed -i '' 's|href="examples-xml/loopxseg.csd.xml"|href="../examples-xml/loopxseg.csd.xml"|g' opcodes/loopxseg.xml
+sed -i '' 's|href="examples-xml/lorenz.csd.xml"|href="../examples-xml/lorenz.csd.xml"|g' opcodes/lorenz.xml
+sed -i '' 's|href="examples-xml/lorismorph.csd.xml"|href="../examples-xml/lorismorph.csd.xml"|g' opcodes/lorismorph.xml
+sed -i '' 's|href="examples-xml/lorisplay.csd.xml"|href="../examples-xml/lorisplay.csd.xml"|g' opcodes/lorisplay.xml
+sed -i '' 's|href="examples-xml/lorisread.csd.xml"|href="../examples-xml/lorisread.csd.xml"|g' opcodes/lorisread.xml
+sed -i '' 's|href="examples-xml/loscil.csd.xml"|href="../examples-xml/loscil.csd.xml"|g' opcodes/loscil.xml
+sed -i '' 's|href="examples-xml/loscil3.csd.xml"|href="../examples-xml/loscil3.csd.xml"|g' opcodes/loscil3.xml
+sed -i '' 's|href="examples-xml/loscilx.csd.xml"|href="../examples-xml/loscilx.csd.xml"|g' opcodes/loscilx.xml
+sed -i '' 's|href="examples-xml/lowpass2.csd.xml"|href="../examples-xml/lowpass2.csd.xml"|g' opcodes/lowpass2.xml
+sed -i '' 's|href="examples-xml/lowres.csd.xml"|href="../examples-xml/lowres.csd.xml"|g' opcodes/lowres.xml
+sed -i '' 's|href="examples-xml/lowresx.csd.xml"|href="../examples-xml/lowresx.csd.xml"|g' opcodes/lowresx.xml
+sed -i '' 's|href="examples-xml/lpf18.csd.xml"|href="../examples-xml/lpf18.csd.xml"|g' opcodes/lpf18.xml
+sed -i '' 's|href="examples-xml/lpfreson.csd.xml"|href="../examples-xml/lpfreson.csd.xml"|g' opcodes/lpfreson.xml
+sed -i '' 's|href="examples-xml/lphasor.csd.xml"|href="../examples-xml/lphasor.csd.xml"|g' opcodes/lphasor.xml
+sed -i '' 's|href="examples-xml/lposcil.csd.xml"|href="../examples-xml/lposcil.csd.xml"|g' opcodes/lposcil.xml
+sed -i '' 's|href="examples-xml/lposcil3.csd.xml"|href="../examples-xml/lposcil3.csd.xml"|g' opcodes/lposcil3.xml
+sed -i '' 's|href="examples-xml/lposcila.csd.xml"|href="../examples-xml/lposcila.csd.xml"|g' opcodes/lposcila.xml
+sed -i '' 's|href="examples-xml/lposcilsa.csd.xml"|href="../examples-xml/lposcilsa.csd.xml"|g' opcodes/lposcilsa.xml
+sed -i '' 's|href="examples-xml/lposcilsa2.csd.xml"|href="../examples-xml/lposcilsa2.csd.xml"|g' opcodes/lposcilsa2.xml
+sed -i '' 's|href="examples-xml/lpread.csd.xml"|href="../examples-xml/lpread.csd.xml"|g' opcodes/lpread.xml
+sed -i '' 's|href="examples-xml/lpreson.csd.xml"|href="../examples-xml/lpreson.csd.xml"|g' opcodes/lpreson.xml
+sed -i '' 's|href="examples-xml/lpreson-2.csd.xml"|href="../examples-xml/lpreson-2.csd.xml"|g' opcodes/lpreson.xml
+sed -i '' 's|href="examples-xml/lpshold.csd.xml"|href="../examples-xml/lpshold.csd.xml"|g' opcodes/lpshold.xml
+sed -i '' 's|href="examples-xml/luaopcode.csd.xml"|href="../examples-xml/luaopcode.csd.xml"|g' opcodes/lua_opcall.xml
+sed -i '' 's|href="examples-xml/luamoog.csd.xml"|href="../examples-xml/luamoog.csd.xml"|g' opcodes/lua_opdef.xml
+sed -i '' 's|href="examples-xml/mac.csd.xml"|href="../examples-xml/mac.csd.xml"|g' opcodes/mac.xml
+sed -i '' 's|href="examples-xml/maca.csd.xml"|href="../examples-xml/maca.csd.xml"|g' opcodes/maca.xml
+sed -i '' 's|href="examples-xml/madsr.csd.xml"|href="../examples-xml/madsr.csd.xml"|g' opcodes/madsr.xml
+sed -i '' 's|href="examples-xml/madsr-2.csd.xml"|href="../examples-xml/madsr-2.csd.xml"|g' opcodes/madsr.xml
+sed -i '' 's|href="examples-xml/mags.csd.xml"|href="../examples-xml/mags.csd.xml"|g' opcodes/mags.xml
+sed -i '' 's|href="examples-xml/mandel.csd.xml"|href="../examples-xml/mandel.csd.xml"|g' opcodes/mandel.xml
+sed -i '' 's|href="examples-xml/mandol.csd.xml"|href="../examples-xml/mandol.csd.xml"|g' opcodes/mandol.xml
+sed -i '' 's|href="examples-xml/maparray.csd.xml"|href="../examples-xml/maparray.csd.xml"|g' opcodes/maparray.xml
+sed -i '' 's|href="examples-xml/marimba.csd.xml"|href="../examples-xml/marimba.csd.xml"|g' opcodes/marimba.xml
+sed -i '' 's|href="examples-xml/massign.csd.xml"|href="../examples-xml/massign.csd.xml"|g' opcodes/massign.xml
+sed -i '' 's|href="examples-xml/max_k.csd.xml"|href="../examples-xml/max_k.csd.xml"|g' opcodes/max_k.xml
+sed -i '' 's|href="examples-xml/max.csd.xml"|href="../examples-xml/max.csd.xml"|g' opcodes/max.xml
+sed -i '' 's|href="examples-xml/maxabs.csd.xml"|href="../examples-xml/maxabs.csd.xml"|g' opcodes/maxabs.xml
+sed -i '' 's|href="examples-xml/maxabsaccum.csd.xml"|href="../examples-xml/maxabsaccum.csd.xml"|g' opcodes/maxabsaccum.xml
+sed -i '' 's|href="examples-xml/maxaccum.csd.xml"|href="../examples-xml/maxaccum.csd.xml"|g' opcodes/maxaccum.xml
+sed -i '' 's|href="examples-xml/maxalloc.csd.xml"|href="../examples-xml/maxalloc.csd.xml"|g' opcodes/maxalloc.xml
+sed -i '' 's|href="examples-xml/maxarray.csd.xml"|href="../examples-xml/maxarray.csd.xml"|g' opcodes/maxarray.xml
+sed -i '' 's|href="examples-xml/mclock.csd.xml"|href="../examples-xml/mclock.csd.xml"|g' opcodes/mclock.xml
+sed -i '' 's|href="examples-xml/mdelay.csd.xml"|href="../examples-xml/mdelay.csd.xml"|g' opcodes/mdelay.xml
+sed -i '' 's|href="examples-xml/median.csd.xml"|href="../examples-xml/median.csd.xml"|g' opcodes/median.xml
+sed -i '' 's|href="examples-xml/mediank.csd.xml"|href="../examples-xml/mediank.csd.xml"|g' opcodes/mediank.xml
+sed -i '' 's|href="examples-xml/metro.csd.xml"|href="../examples-xml/metro.csd.xml"|g' opcodes/metro.xml
+sed -i '' 's|href="examples-xml/metro-2.csd.xml"|href="../examples-xml/metro-2.csd.xml"|g' opcodes/metro.xml
+sed -i '' 's|href="examples-xml/midic7.csd.xml"|href="../examples-xml/midic7.csd.xml"|g' opcodes/midic7.xml
+sed -i '' 's|href="examples-xml/midichannelaftertouch.csd.xml"|href="../examples-xml/midichannelaftertouch.csd.xml"|g' opcodes/midichannelaftertouch.xml
+sed -i '' 's|href="examples-xml/midichn.csd.xml"|href="../examples-xml/midichn.csd.xml"|g' opcodes/midichn.xml
+sed -i '' 's|href="examples-xml/midichn_advanced.csd.xml"|href="../examples-xml/midichn_advanced.csd.xml"|g' opcodes/midichn.xml
+sed -i '' 's|href="examples-xml/midicontrolchange.csd.xml"|href="../examples-xml/midicontrolchange.csd.xml"|g' opcodes/midicontrolchange.xml
+sed -i '' 's|href="examples-xml/midictrl.csd.xml"|href="../examples-xml/midictrl.csd.xml"|g' opcodes/midictrl.xml
+sed -i '' 's|href="examples-xml/mididefault.csd.xml"|href="../examples-xml/mididefault.csd.xml"|g' opcodes/mididefault.xml
+sed -i '' 's|href="examples-xml/midiin.csd.xml"|href="../examples-xml/midiin.csd.xml"|g' opcodes/midiin.xml
+sed -i '' 's|href="examples-xml/midinoteoff.csd.xml"|href="../examples-xml/midinoteoff.csd.xml"|g' opcodes/midinoteoff.xml
+sed -i '' 's|href="examples-xml/midinoteoncps.csd.xml"|href="../examples-xml/midinoteoncps.csd.xml"|g' opcodes/midinoteoncps.xml
+sed -i '' 's|href="examples-xml/midinoteonkey.csd.xml"|href="../examples-xml/midinoteonkey.csd.xml"|g' opcodes/midinoteonkey.xml
+sed -i '' 's|href="examples-xml/midinoteonoct.csd.xml"|href="../examples-xml/midinoteonoct.csd.xml"|g' opcodes/midinoteonoct.xml
+sed -i '' 's|href="examples-xml/midinoteonpch.csd.xml"|href="../examples-xml/midinoteonpch.csd.xml"|g' opcodes/midinoteonpch.xml
+sed -i '' 's|href="examples-xml/midion_simple.csd.xml"|href="../examples-xml/midion_simple.csd.xml"|g' opcodes/midion.xml
+sed -i '' 's|href="examples-xml/midion_scale.csd.xml"|href="../examples-xml/midion_scale.csd.xml"|g' opcodes/midion.xml
+sed -i '' 's|href="examples-xml/midion2.csd.xml"|href="../examples-xml/midion2.csd.xml"|g' opcodes/midion2.xml
+sed -i '' 's|href="examples-xml/midiout.csd.xml"|href="../examples-xml/midiout.csd.xml"|g' opcodes/midiout.xml
+sed -i '' 's|href="examples-xml/midipitchbend.csd.xml"|href="../examples-xml/midipitchbend.csd.xml"|g' opcodes/midipitchbend.xml
+sed -i '' 's|href="examples-xml/midipolyaftertouch.csd.xml"|href="../examples-xml/midipolyaftertouch.csd.xml"|g' opcodes/midipolyaftertouch.xml
+sed -i '' 's|href="examples-xml/midiprogramchange.csd.xml"|href="../examples-xml/midiprogramchange.csd.xml"|g' opcodes/midiprogramchange.xml
+sed -i '' 's|href="examples-xml/miditempo.csd.xml"|href="../examples-xml/miditempo.csd.xml"|g' opcodes/miditempo.xml
+sed -i '' 's|href="examples-xml/midremot.csd.xml"|href="../examples-xml/midremot.csd.xml"|g' opcodes/midremot.xml
+sed -i '' 's|href="examples-xml/min.csd.xml"|href="../examples-xml/min.csd.xml"|g' opcodes/min.xml
+sed -i '' 's|href="examples-xml/minabs.csd.xml"|href="../examples-xml/minabs.csd.xml"|g' opcodes/minabs.xml
+sed -i '' 's|href="examples-xml/minabsaccum.csd.xml"|href="../examples-xml/minabsaccum.csd.xml"|g' opcodes/minabsaccum.xml
+sed -i '' 's|href="examples-xml/minaccum.csd.xml"|href="../examples-xml/minaccum.csd.xml"|g' opcodes/minaccum.xml
+sed -i '' 's|href="examples-xml/minarray.csd.xml"|href="../examples-xml/minarray.csd.xml"|g' opcodes/minarray.xml
+sed -i '' 's|href="examples-xml/mincer.csd.xml"|href="../examples-xml/mincer.csd.xml"|g' opcodes/mincer.xml
+sed -i '' 's|href="examples-xml/mirror.csd.xml"|href="../examples-xml/mirror.csd.xml"|g' opcodes/mirror.xml
+sed -i '' 's|href="examples-xml/Mixer.csd.xml"|href="../examples-xml/Mixer.csd.xml"|g' opcodes/mixerclear.xml
+sed -i '' 's|href="examples-xml/Mixer.csd.xml"|href="../examples-xml/Mixer.csd.xml"|g' opcodes/mixergetlevel.xml
+sed -i '' 's|href="examples-xml/Mixer.csd.xml"|href="../examples-xml/Mixer.csd.xml"|g' opcodes/mixerreceive.xml
+sed -i '' 's|href="examples-xml/Mixer.csd.xml"|href="../examples-xml/Mixer.csd.xml"|g' opcodes/mixersend.xml
+sed -i '' 's|href="examples-xml/Mixer.csd.xml"|href="../examples-xml/Mixer.csd.xml"|g' opcodes/mixersetlevel.xml
+sed -i '' 's|href="examples-xml/mode.csd.xml"|href="../examples-xml/mode.csd.xml"|g' opcodes/mode.xml
+sed -i '' 's|href="examples-xml/modmatrix.csd.xml"|href="../examples-xml/modmatrix.csd.xml"|g' opcodes/modmatrix.xml
+sed -i '' 's|href="examples-xml/modulus.csd.xml"|href="../examples-xml/modulus.csd.xml"|g' opcodes/modulus.xml
+sed -i '' 's|href="examples-xml/monitor.csd.xml"|href="../examples-xml/monitor.csd.xml"|g' opcodes/monitor.xml
+sed -i '' 's|href="examples-xml/moog.csd.xml"|href="../examples-xml/moog.csd.xml"|g' opcodes/moog.xml
+sed -i '' 's|href="examples-xml/moogladder.csd.xml"|href="../examples-xml/moogladder.csd.xml"|g' opcodes/moogladder.xml
+sed -i '' 's|href="examples-xml/moogvcf.csd.xml"|href="../examples-xml/moogvcf.csd.xml"|g' opcodes/moogvcf.xml
+sed -i '' 's|href="examples-xml/moogvcf2.csd.xml"|href="../examples-xml/moogvcf2.csd.xml"|g' opcodes/moogvcf2.xml
+sed -i '' 's|href="examples-xml/moscil.csd.xml"|href="../examples-xml/moscil.csd.xml"|g' opcodes/moscil.xml
+sed -i '' 's|href="examples-xml/mp3in.csd.xml"|href="../examples-xml/mp3in.csd.xml"|g' opcodes/mp3in.xml
+sed -i '' 's|href="examples-xml/mp3len.csd.xml"|href="../examples-xml/mp3len.csd.xml"|g' opcodes/mp3len.xml
+sed -i '' 's|href="examples-xml/mpulse.csd.xml"|href="../examples-xml/mpulse.csd.xml"|g' opcodes/mpulse.xml
+sed -i '' 's|href="examples-xml/multiplies.csd.xml"|href="../examples-xml/multiplies.csd.xml"|g' opcodes/multiplies.xml
+sed -i '' 's|href="examples-xml/multitap.csd.xml"|href="../examples-xml/multitap.csd.xml"|g' opcodes/multitap.xml
+sed -i '' 's|href="examples-xml/mute.csd.xml"|href="../examples-xml/mute.csd.xml"|g' opcodes/mute.xml
+sed -i '' 's|href="examples-xml/mxadsr.csd.xml"|href="../examples-xml/mxadsr.csd.xml"|g' opcodes/mxadsr.xml
+sed -i '' 's|href="examples-xml/nchnls_i.csd.xml"|href="../examples-xml/nchnls_i.csd.xml"|g' opcodes/nchnls_i.xml
+sed -i '' 's|href="examples-xml/nchnls.csd.xml"|href="../examples-xml/nchnls.csd.xml"|g' opcodes/nchnls.xml
+sed -i '' 's|href="examples-xml/nestedap.csd.xml"|href="../examples-xml/nestedap.csd.xml"|g' opcodes/nestedap.xml
+sed -i '' 's|href="examples-xml/nlfilt.csd.xml"|href="../examples-xml/nlfilt.csd.xml"|g' opcodes/nlfilt.xml
+sed -i '' 's|href="examples-xml/nlfilt2.csd.xml"|href="../examples-xml/nlfilt2.csd.xml"|g' opcodes/nlfilt2.xml
+sed -i '' 's|href="examples-xml/noise.csd.xml"|href="../examples-xml/noise.csd.xml"|g' opcodes/noise.xml
+sed -i '' 's|href="examples-xml/noise-2.csd.xml"|href="../examples-xml/noise-2.csd.xml"|g' opcodes/noise.xml
+sed -i '' 's|href="examples-xml/noteondur.csd.xml"|href="../examples-xml/noteondur.csd.xml"|g' opcodes/noteondur.xml
+sed -i '' 's|href="examples-xml/noteondur2.csd.xml"|href="../examples-xml/noteondur2.csd.xml"|g' opcodes/noteondur2.xml
+sed -i '' 's|href="examples-xml/notequal.csd.xml"|href="../examples-xml/notequal.csd.xml"|g' opcodes/notequal.xml
+sed -i '' 's|href="examples-xml/notnum.csd.xml"|href="../examples-xml/notnum.csd.xml"|g' opcodes/notnum.xml
+sed -i '' 's|href="examples-xml/nreverb.csd.xml"|href="../examples-xml/nreverb.csd.xml"|g' opcodes/nreverb.xml
+sed -i '' 's|href="examples-xml/nreverb_ftable.csd.xml"|href="../examples-xml/nreverb_ftable.csd.xml"|g' opcodes/nreverb.xml
+sed -i '' 's|href="examples-xml/nrpn.csd.xml"|href="../examples-xml/nrpn.csd.xml"|g' opcodes/nrpn.xml
+sed -i '' 's|href="examples-xml/nsamp.csd.xml"|href="../examples-xml/nsamp.csd.xml"|g' opcodes/nsamp.xml
+sed -i '' 's|href="examples-xml/nstance.csd.xml"|href="../examples-xml/nstance.csd.xml"|g' opcodes/nstance.xml
+sed -i '' 's|href="examples-xml/ntrpol.csd.xml"|href="../examples-xml/ntrpol.csd.xml"|g' opcodes/ntrpol.xml
+sed -i '' 's|href="examples-xml/octave.csd.xml"|href="../examples-xml/octave.csd.xml"|g' opcodes/octave.xml
+sed -i '' 's|href="examples-xml/octcps.csd.xml"|href="../examples-xml/octcps.csd.xml"|g' opcodes/octcps.xml
+sed -i '' 's|href="examples-xml/octmidi.csd.xml"|href="../examples-xml/octmidi.csd.xml"|g' opcodes/octmidi.xml
+sed -i '' 's|href="examples-xml/octmidib.csd.xml"|href="../examples-xml/octmidib.csd.xml"|g' opcodes/octmidib.xml
+sed -i '' 's|href="examples-xml/cpsmidinn.csd.xml"|href="../examples-xml/cpsmidinn.csd.xml"|g' opcodes/octmidinn.xml
+sed -i '' 's|href="examples-xml/octpch.csd.xml"|href="../examples-xml/octpch.csd.xml"|g' opcodes/octpch.xml
+sed -i '' 's|href="examples-xml/framebuffer.csd.xml"|href="../examples-xml/framebuffer.csd.xml"|g' opcodes/olabuffer.xml
+sed -i '' 's|href="examples-xml/opa.csd.xml"|href="../examples-xml/opa.csd.xml"|g' opcodes/opa.xml
+sed -i '' 's|href="examples-xml/opand.csd.xml"|href="../examples-xml/opand.csd.xml"|g' opcodes/opand.xml
+sed -i '' 's|href="examples-xml/bitwise.csd.xml"|href="../examples-xml/bitwise.csd.xml"|g' opcodes/opbitand.xml
+sed -i '' 's|href="examples-xml/bitshift.csd.xml"|href="../examples-xml/bitshift.csd.xml"|g' opcodes/opbitshl.xml
+sed -i '' 's|href="examples-xml/opcode_example.csd.xml"|href="../examples-xml/opcode_example.csd.xml"|g' opcodes/opcode.xml
+sed -i '' 's|href="examples-xml/logicOR.csd.xml"|href="../examples-xml/logicOR.csd.xml"|g' opcodes/opor.xml
+sed -i '' 's|href="examples-xml/oscbnk.csd.xml"|href="../examples-xml/oscbnk.csd.xml"|g' opcodes/oscbnk.xml
+sed -i '' 's|href="examples-xml/oscil.csd.xml"|href="../examples-xml/oscil.csd.xml"|g' opcodes/oscil.xml
+sed -i '' 's|href="examples-xml/oscil1i.csd.xml"|href="../examples-xml/oscil1i.csd.xml"|g' opcodes/oscil1.xml
+sed -i '' 's|href="examples-xml/oscil1i.csd.xml"|href="../examples-xml/oscil1i.csd.xml"|g' opcodes/oscil1i.xml
+sed -i '' 's|href="examples-xml/oscil3.csd.xml"|href="../examples-xml/oscil3.csd.xml"|g' opcodes/oscil3.xml
+sed -i '' 's|href="examples-xml/oscili.csd.xml"|href="../examples-xml/oscili.csd.xml"|g' opcodes/oscili.xml
+sed -i '' 's|href="examples-xml/oscilikt.csd.xml"|href="../examples-xml/oscilikt.csd.xml"|g' opcodes/oscilikt.xml
+sed -i '' 's|href="examples-xml/osciliktp.csd.xml"|href="../examples-xml/osciliktp.csd.xml"|g' opcodes/osciliktp.xml
+sed -i '' 's|href="examples-xml/oscilikts.csd.xml"|href="../examples-xml/oscilikts.csd.xml"|g' opcodes/oscilikts.xml
+sed -i '' 's|href="examples-xml/osciln.csd.xml"|href="../examples-xml/osciln.csd.xml"|g' opcodes/osciln.xml
+sed -i '' 's|href="examples-xml/oscils.csd.xml"|href="../examples-xml/oscils.csd.xml"|g' opcodes/oscils.xml
+sed -i '' 's|href="examples-xml/OSCmidisend.csd.xml"|href="../examples-xml/OSCmidisend.csd.xml"|g' opcodes/OSClisten.xml
+sed -i '' 's|href="examples-xml/OSCmidircv.csd.xml"|href="../examples-xml/OSCmidircv.csd.xml"|g' opcodes/OSClisten.xml
+sed -i '' 's|href="examples-xml/out.csd.xml"|href="../examples-xml/out.csd.xml"|g' opcodes/out.xml
+sed -i '' 's|href="examples-xml/outc.csd.xml"|href="../examples-xml/outc.csd.xml"|g' opcodes/outc.xml
+sed -i '' 's|href="examples-xml/outch.csd.xml"|href="../examples-xml/outch.csd.xml"|g' opcodes/outch.xml
+sed -i '' 's|href="examples-xml/outch-2.csd.xml"|href="../examples-xml/outch-2.csd.xml"|g' opcodes/outch.xml
+sed -i '' 's|href="examples-xml/outiat.csd.xml"|href="../examples-xml/outiat.csd.xml"|g' opcodes/outiat.xml
+sed -i '' 's|href="examples-xml/outic.csd.xml"|href="../examples-xml/outic.csd.xml"|g' opcodes/outic.xml
+sed -i '' 's|href="examples-xml/outipb.csd.xml"|href="../examples-xml/outipb.csd.xml"|g' opcodes/outipb.xml
+sed -i '' 's|href="examples-xml/outipc.csd.xml"|href="../examples-xml/outipc.csd.xml"|g' opcodes/outipc.xml
+sed -i '' 's|href="examples-xml/outkat.csd.xml"|href="../examples-xml/outkat.csd.xml"|g' opcodes/outkat.xml
+sed -i '' 's|href="examples-xml/outkc.csd.xml"|href="../examples-xml/outkc.csd.xml"|g' opcodes/outkc.xml
+sed -i '' 's|href="examples-xml/outkpb.csd.xml"|href="../examples-xml/outkpb.csd.xml"|g' opcodes/outkpb.xml
+sed -i '' 's|href="examples-xml/outkpc.csd.xml"|href="../examples-xml/outkpc.csd.xml"|g' opcodes/outkpc.xml
+sed -i '' 's|href="examples-xml/outkpc_fltk.csd.xml"|href="../examples-xml/outkpc_fltk.csd.xml"|g' opcodes/outkpc.xml
+sed -i '' 's|href="examples-xml/outleta.csd.xml"|href="../examples-xml/outleta.csd.xml"|g' opcodes/outleta.xml
+sed -i '' 's|href="examples-xml/outletk.csd.xml"|href="../examples-xml/outletk.csd.xml"|g' opcodes/outletk.xml
+sed -i '' 's|href="examples-xml/outq.csd.xml"|href="../examples-xml/outq.csd.xml"|g' opcodes/outq.xml
+sed -i '' 's|href="examples-xml/outq1.csd.xml"|href="../examples-xml/outq1.csd.xml"|g' opcodes/outq1.xml
+sed -i '' 's|href="examples-xml/outq2.csd.xml"|href="../examples-xml/outq2.csd.xml"|g' opcodes/outq2.xml
+sed -i '' 's|href="examples-xml/outq3.csd.xml"|href="../examples-xml/outq3.csd.xml"|g' opcodes/outq3.xml
+sed -i '' 's|href="examples-xml/outq4.csd.xml"|href="../examples-xml/outq4.csd.xml"|g' opcodes/outq4.xml
+sed -i '' 's|href="examples-xml/outrg.csd.xml"|href="../examples-xml/outrg.csd.xml"|g' opcodes/outrg.xml
+sed -i '' 's|href="examples-xml/outs.csd.xml"|href="../examples-xml/outs.csd.xml"|g' opcodes/outs.xml
+sed -i '' 's|href="examples-xml/outs1.csd.xml"|href="../examples-xml/outs1.csd.xml"|g' opcodes/outs1.xml
+sed -i '' 's|href="examples-xml/outs2.csd.xml"|href="../examples-xml/outs2.csd.xml"|g' opcodes/outs2.xml
+sed -i '' 's|href="examples-xml/outvalue.csd.xml"|href="../examples-xml/outvalue.csd.xml"|g' opcodes/outvalue.xml
+sed -i '' 's|href="examples-xml/p.csd.xml"|href="../examples-xml/p.csd.xml"|g' opcodes/p.xml
+sed -i '' 's|href="examples-xml/p5g.csd.xml"|href="../examples-xml/p5g.csd.xml"|g' opcodes/p5gconnect.xml
+sed -i '' 's|href="examples-xml/pan.csd.xml"|href="../examples-xml/pan.csd.xml"|g' opcodes/pan.xml
+sed -i '' 's|href="examples-xml/pan2.csd.xml"|href="../examples-xml/pan2.csd.xml"|g' opcodes/pan2.xml
+sed -i '' 's|href="examples-xml/pareq.csd.xml"|href="../examples-xml/pareq.csd.xml"|g' opcodes/pareq.xml
+sed -i '' 's|href="examples-xml/partials.csd.xml"|href="../examples-xml/partials.csd.xml"|g' opcodes/partials.xml
+sed -i '' 's|href="examples-xml/partikkel.csd.xml"|href="../examples-xml/partikkel.csd.xml"|g' opcodes/partikkel.xml
+sed -i '' 's|href="examples-xml/partikkel-2.csd.xml"|href="../examples-xml/partikkel-2.csd.xml"|g' opcodes/partikkel.xml
+sed -i '' 's|href="examples-xml/partikkelsync.csd.xml"|href="../examples-xml/partikkelsync.csd.xml"|g' opcodes/partikkelsync.xml
+sed -i '' 's|href="examples-xml/passign.csd.xml"|href="../examples-xml/passign.csd.xml"|g' opcodes/passign.xml
+sed -i '' 's|href="examples-xml/pcauchy.csd.xml"|href="../examples-xml/pcauchy.csd.xml"|g' opcodes/pcauchy.xml
+sed -i '' 's|href="examples-xml/pchbend.csd.xml"|href="../examples-xml/pchbend.csd.xml"|g' opcodes/pchbend.xml
+sed -i '' 's|href="examples-xml/pchmidi.csd.xml"|href="../examples-xml/pchmidi.csd.xml"|g' opcodes/pchmidi.xml
+sed -i '' 's|href="examples-xml/pchmidib.csd.xml"|href="../examples-xml/pchmidib.csd.xml"|g' opcodes/pchmidib.xml
+sed -i '' 's|href="examples-xml/cpsmidinn.csd.xml"|href="../examples-xml/cpsmidinn.csd.xml"|g' opcodes/pchmidinn.xml
+sed -i '' 's|href="examples-xml/pchoct.csd.xml"|href="../examples-xml/pchoct.csd.xml"|g' opcodes/pchoct.xml
+sed -i '' 's|href="examples-xml/pconvolve.csd.xml"|href="../examples-xml/pconvolve.csd.xml"|g' opcodes/pconvolve.xml
+sed -i '' 's|href="examples-xml/pcount.csd.xml"|href="../examples-xml/pcount.csd.xml"|g' opcodes/pcount.xml
+sed -i '' 's|href="examples-xml/pdclip.csd.xml"|href="../examples-xml/pdclip.csd.xml"|g' opcodes/pdclip.xml
+sed -i '' 's|href="examples-xml/pdhalf.csd.xml"|href="../examples-xml/pdhalf.csd.xml"|g' opcodes/pdhalf.xml
+sed -i '' 's|href="examples-xml/pdhalfy.csd.xml"|href="../examples-xml/pdhalfy.csd.xml"|g' opcodes/pdhalfy.xml
+sed -i '' 's|href="examples-xml/peak.csd.xml"|href="../examples-xml/peak.csd.xml"|g' opcodes/peak.xml
+sed -i '' 's|href="examples-xml/pgmassign.csd.xml"|href="../examples-xml/pgmassign.csd.xml"|g' opcodes/pgmassign.xml
+sed -i '' 's|href="examples-xml/pgmassign_ignore.csd.xml"|href="../examples-xml/pgmassign_ignore.csd.xml"|g' opcodes/pgmassign.xml
+sed -i '' 's|href="examples-xml/pgmassign_advanced.csd.xml"|href="../examples-xml/pgmassign_advanced.csd.xml"|g' opcodes/pgmassign.xml
+sed -i '' 's|href="examples-xml/phaser1.csd.xml"|href="../examples-xml/phaser1.csd.xml"|g' opcodes/phaser1.xml
+sed -i '' 's|href="examples-xml/phaser2.csd.xml"|href="../examples-xml/phaser2.csd.xml"|g' opcodes/phaser2.xml
+sed -i '' 's|href="examples-xml/phasor.csd.xml"|href="../examples-xml/phasor.csd.xml"|g' opcodes/phasor.xml
+sed -i '' 's|href="examples-xml/phasorbnk.csd.xml"|href="../examples-xml/phasorbnk.csd.xml"|g' opcodes/phasorbnk.xml
+sed -i '' 's|href="examples-xml/phs.csd.xml"|href="../examples-xml/phs.csd.xml"|g' opcodes/phs.xml
+sed -i '' 's|href="examples-xml/pindex.csd.xml"|href="../examples-xml/pindex.csd.xml"|g' opcodes/pindex.xml
+sed -i '' 's|href="examples-xml/pindex-2.csd.xml"|href="../examples-xml/pindex-2.csd.xml"|g' opcodes/pindex.xml
+sed -i '' 's|href="examples-xml/pinker.csd.xml"|href="../examples-xml/pinker.csd.xml"|g' opcodes/pinker.xml
+sed -i '' 's|href="examples-xml/pinkish.csd.xml"|href="../examples-xml/pinkish.csd.xml"|g' opcodes/pinkish.xml
+sed -i '' 's|href="examples-xml/pitch.csd.xml"|href="../examples-xml/pitch.csd.xml"|g' opcodes/pitch.xml
+sed -i '' 's|href="examples-xml/pitchamdf.csd.xml"|href="../examples-xml/pitchamdf.csd.xml"|g' opcodes/pitchamdf.xml
+sed -i '' 's|href="examples-xml/planet.csd.xml"|href="../examples-xml/planet.csd.xml"|g' opcodes/planet.xml
+sed -i '' 's|href="examples-xml/plate.csd.xml"|href="../examples-xml/plate.csd.xml"|g' opcodes/platerev.xml
+sed -i '' 's|href="examples-xml/plltrack.csd.xml"|href="../examples-xml/plltrack.csd.xml"|g' opcodes/plltrack.xml
+sed -i '' 's|href="examples-xml/pluck.csd.xml"|href="../examples-xml/pluck.csd.xml"|g' opcodes/pluck.xml
+sed -i '' 's|href="examples-xml/reverb.csd.xml"|href="../examples-xml/reverb.csd.xml"|g' opcodes/plusbecomes.xml
+sed -i '' 's|href="examples-xml/poisson.csd.xml"|href="../examples-xml/poisson.csd.xml"|g' opcodes/poisson.xml
+sed -i '' 's|href="examples-xml/pol2rect.csd.xml"|href="../examples-xml/pol2rect.csd.xml"|g' opcodes/pol2rect.xml
+sed -i '' 's|href="examples-xml/polyaft.csd.xml"|href="../examples-xml/polyaft.csd.xml"|g' opcodes/polyaft.xml
+sed -i '' 's|href="examples-xml/polynomial.csd.xml"|href="../examples-xml/polynomial.csd.xml"|g' opcodes/polynomial.xml
+sed -i '' 's|href="examples-xml/pop.csd.xml"|href="../examples-xml/pop.csd.xml"|g' opcodes/pop.xml
+sed -i '' 's|href="examples-xml/port.csd.xml"|href="../examples-xml/port.csd.xml"|g' opcodes/port.xml
+sed -i '' 's|href="examples-xml/portk.csd.xml"|href="../examples-xml/portk.csd.xml"|g' opcodes/portk.xml
+sed -i '' 's|href="examples-xml/poscil.csd.xml"|href="../examples-xml/poscil.csd.xml"|g' opcodes/poscil.xml
+sed -i '' 's|href="examples-xml/poscil3.csd.xml"|href="../examples-xml/poscil3.csd.xml"|g' opcodes/poscil3.xml
+sed -i '' 's|href="examples-xml/poscil3-file.csd.xml"|href="../examples-xml/poscil3-file.csd.xml"|g' opcodes/poscil3.xml
+sed -i '' 's|href="examples-xml/pow.csd.xml"|href="../examples-xml/pow.csd.xml"|g' opcodes/pow.xml
+sed -i '' 's|href="examples-xml/powershape.csd.xml"|href="../examples-xml/powershape.csd.xml"|g' opcodes/powershape.xml
+sed -i '' 's|href="examples-xml/powoftwo.csd.xml"|href="../examples-xml/powoftwo.csd.xml"|g' opcodes/powoftwo.xml
+sed -i '' 's|href="examples-xml/prealloc.csd.xml"|href="../examples-xml/prealloc.csd.xml"|g' opcodes/prealloc.xml
+sed -i '' 's|href="examples-xml/prepiano.csd.xml"|href="../examples-xml/prepiano.csd.xml"|g' opcodes/prepiano.xml
+sed -i '' 's|href="examples-xml/print.csd.xml"|href="../examples-xml/print.csd.xml"|g' opcodes/print.xml
+sed -i '' 's|href="examples-xml/printf.csd.xml"|href="../examples-xml/printf.csd.xml"|g' opcodes/printf.xml
+sed -i '' 's|href="examples-xml/printk.csd.xml"|href="../examples-xml/printk.csd.xml"|g' opcodes/printk.xml
+sed -i '' 's|href="examples-xml/printk2.csd.xml"|href="../examples-xml/printk2.csd.xml"|g' opcodes/printk2.xml
+sed -i '' 's|href="examples-xml/printks.csd.xml"|href="../examples-xml/printks.csd.xml"|g' opcodes/printks.xml
+sed -i '' 's|href="examples-xml/printks2.csd.xml"|href="../examples-xml/printks2.csd.xml"|g' opcodes/printks2.xml
+sed -i '' 's|href="examples-xml/prints.csd.xml"|href="../examples-xml/prints.csd.xml"|g' opcodes/prints.xml
+sed -i '' 's|href="examples-xml/product.csd.xml"|href="../examples-xml/product.csd.xml"|g' opcodes/product.xml
+sed -i '' 's|href="examples-xml/pset.csd.xml"|href="../examples-xml/pset.csd.xml"|g' opcodes/pset.xml
+sed -i '' 's|href="examples-xml/pset-midi.csd.xml"|href="../examples-xml/pset-midi.csd.xml"|g' opcodes/pset.xml
+sed -i '' 's|href="examples-xml/ptable.csd.xml"|href="../examples-xml/ptable.csd.xml"|g' opcodes/ptable.xml
+sed -i '' 's|href="examples-xml/ptablei.csd.xml"|href="../examples-xml/ptablei.csd.xml"|g' opcodes/ptablei.xml
+sed -i '' 's|href="examples-xml/ptrack.csd.xml"|href="../examples-xml/ptrack.csd.xml"|g' opcodes/ptrack.xml
+sed -i '' 's|href="examples-xml/push.csd.xml"|href="../examples-xml/push.csd.xml"|g' opcodes/push.xml
+sed -i '' 's|href="examples-xml/puts.csd.xml"|href="../examples-xml/puts.csd.xml"|g' opcodes/puts.xml
+sed -i '' 's|href="examples-xml/pvadd.csd.xml"|href="../examples-xml/pvadd.csd.xml"|g' opcodes/pvadd.xml
+sed -i '' 's|href="examples-xml/pvbufread.csd.xml"|href="../examples-xml/pvbufread.csd.xml"|g' opcodes/pvbufread.xml
+sed -i '' 's|href="examples-xml/pvcross.csd.xml"|href="../examples-xml/pvcross.csd.xml"|g' opcodes/pvcross.xml
+sed -i '' 's|href="examples-xml/pvinterp.csd.xml"|href="../examples-xml/pvinterp.csd.xml"|g' opcodes/pvinterp.xml
+sed -i '' 's|href="examples-xml/pvoc.csd.xml"|href="../examples-xml/pvoc.csd.xml"|g' opcodes/pvoc.xml
+sed -i '' 's|href="examples-xml/pvread.csd.xml"|href="../examples-xml/pvread.csd.xml"|g' opcodes/pvread.xml
+sed -i '' 's|href="examples-xml/pvsadsyn.csd.xml"|href="../examples-xml/pvsadsyn.csd.xml"|g' opcodes/pvsadsyn.xml
+sed -i '' 's|href="examples-xml/pvsanal.csd.xml"|href="../examples-xml/pvsanal.csd.xml"|g' opcodes/pvsanal.xml
+sed -i '' 's|href="examples-xml/pvsarp.csd.xml"|href="../examples-xml/pvsarp.csd.xml"|g' opcodes/pvsarp.xml
+sed -i '' 's|href="examples-xml/pvsarp2.csd.xml"|href="../examples-xml/pvsarp2.csd.xml"|g' opcodes/pvsarp.xml
+sed -i '' 's|href="examples-xml/pvsbandp.csd.xml"|href="../examples-xml/pvsbandp.csd.xml"|g' opcodes/pvsbandp.xml
+sed -i '' 's|href="examples-xml/pvsbandr.csd.xml"|href="../examples-xml/pvsbandr.csd.xml"|g' opcodes/pvsbandr.xml
+sed -i '' 's|href="examples-xml/pvsbin.csd.xml"|href="../examples-xml/pvsbin.csd.xml"|g' opcodes/pvsbin.xml
+sed -i '' 's|href="examples-xml/pvsblur.csd.xml"|href="../examples-xml/pvsblur.csd.xml"|g' opcodes/pvsblur.xml
+sed -i '' 's|href="examples-xml/pvsbufread.csd.xml"|href="../examples-xml/pvsbufread.csd.xml"|g' opcodes/pvsbufread.xml
+sed -i '' 's|href="examples-xml/pvsbufread2.csd.xml"|href="../examples-xml/pvsbufread2.csd.xml"|g' opcodes/pvsbufread2.xml
+sed -i '' 's|href="examples-xml/pvscale.csd.xml"|href="../examples-xml/pvscale.csd.xml"|g' opcodes/pvscale.xml
+sed -i '' 's|href="examples-xml/pvscent.csd.xml"|href="../examples-xml/pvscent.csd.xml"|g' opcodes/pvscent.xml
+sed -i '' 's|href="examples-xml/pvscross.csd.xml"|href="../examples-xml/pvscross.csd.xml"|g' opcodes/pvscross.xml
+sed -i '' 's|href="examples-xml/pvsdiskin.csd.xml"|href="../examples-xml/pvsdiskin.csd.xml"|g' opcodes/pvsdiskin.xml
+sed -i '' 's|href="examples-xml/pvsdisp.csd.xml"|href="../examples-xml/pvsdisp.csd.xml"|g' opcodes/pvsdisp.xml
+sed -i '' 's|href="examples-xml/pvsfilter.csd.xml"|href="../examples-xml/pvsfilter.csd.xml"|g' opcodes/pvsfilter.xml
+sed -i '' 's|href="examples-xml/pvsfread.csd.xml"|href="../examples-xml/pvsfread.csd.xml"|g' opcodes/pvsfread.xml
+sed -i '' 's|href="examples-xml/pvsfreeze.csd.xml"|href="../examples-xml/pvsfreeze.csd.xml"|g' opcodes/pvsfreeze.xml
+sed -i '' 's|href="examples-xml/pvsftr.csd.xml"|href="../examples-xml/pvsftr.csd.xml"|g' opcodes/pvsftr.xml
+sed -i '' 's|href="examples-xml/pvsftw.csd.xml"|href="../examples-xml/pvsftw.csd.xml"|g' opcodes/pvsftw.xml
+sed -i '' 's|href="examples-xml/pvsfwrite.csd.xml"|href="../examples-xml/pvsfwrite.csd.xml"|g' opcodes/pvsfwrite.xml
+sed -i '' 's|href="examples-xml/pvsgain.csd.xml"|href="../examples-xml/pvsgain.csd.xml"|g' opcodes/pvsgain.xml
+sed -i '' 's|href="examples-xml/pvshift.csd.xml"|href="../examples-xml/pvshift.csd.xml"|g' opcodes/pvshift.xml
+sed -i '' 's|href="examples-xml/pvsifd.csd.xml"|href="../examples-xml/pvsifd.csd.xml"|g' opcodes/pvsifd.xml
+sed -i '' 's|href="examples-xml/pvsinfo.csd.xml"|href="../examples-xml/pvsinfo.csd.xml"|g' opcodes/pvsinfo.xml
+sed -i '' 's|href="examples-xml/pvslock.csd.xml"|href="../examples-xml/pvslock.csd.xml"|g' opcodes/pvslock.xml
+sed -i '' 's|href="examples-xml/pvsmaska.csd.xml"|href="../examples-xml/pvsmaska.csd.xml"|g' opcodes/pvsmaska.xml
+sed -i '' 's|href="examples-xml/pvsmix.csd.xml"|href="../examples-xml/pvsmix.csd.xml"|g' opcodes/pvsmix.xml
+sed -i '' 's|href="examples-xml/pvsmooth.csd.xml"|href="../examples-xml/pvsmooth.csd.xml"|g' opcodes/pvsmooth.xml
+sed -i '' 's|href="examples-xml/pvsmorph.csd.xml"|href="../examples-xml/pvsmorph.csd.xml"|g' opcodes/pvsmorph.xml
+sed -i '' 's|href="examples-xml/pvsmorph2.csd.xml"|href="../examples-xml/pvsmorph2.csd.xml"|g' opcodes/pvsmorph.xml
+sed -i '' 's|href="examples-xml/pvsosc.csd.xml"|href="../examples-xml/pvsosc.csd.xml"|g' opcodes/pvsosc.xml
+sed -i '' 's|href="examples-xml/pvspitch.csd.xml"|href="../examples-xml/pvspitch.csd.xml"|g' opcodes/pvspitch.xml
+sed -i '' 's|href="examples-xml/pvstanal.csd.xml"|href="../examples-xml/pvstanal.csd.xml"|g' opcodes/pvstanal.xml
+sed -i '' 's|href="examples-xml/pvsvoc.csd.xml"|href="../examples-xml/pvsvoc.csd.xml"|g' opcodes/pvsvoc.xml
+sed -i '' 's|href="examples-xml/pvswarp.csd.xml"|href="../examples-xml/pvswarp.csd.xml"|g' opcodes/pvswarp.xml
+sed -i '' 's|href="examples-xml/pvsynth.csd.xml"|href="../examples-xml/pvsynth.csd.xml"|g' opcodes/pvsynth.xml
+sed -i '' 's|href="examples-xml/pwd.csd.xml"|href="../examples-xml/pwd.csd.xml"|g' opcodes/pwd.xml
+sed -i '' 's|href="examples-xml/qinf.csd.xml"|href="../examples-xml/qinf.csd.xml"|g' opcodes/qinf.xml
+sed -i '' 's|href="examples-xml/qnan.csd.xml"|href="../examples-xml/qnan.csd.xml"|g' opcodes/qnan.xml
+sed -i '' 's|href="examples-xml/r2c.csd.xml"|href="../examples-xml/r2c.csd.xml"|g' opcodes/r2c.xml
+sed -i '' 's|href="examples-xml/raises.csd.xml"|href="../examples-xml/raises.csd.xml"|g' opcodes/raises.xml
+sed -i '' 's|href="examples-xml/rand.csd.xml"|href="../examples-xml/rand.csd.xml"|g' opcodes/rand.xml
+sed -i '' 's|href="examples-xml/randh.csd.xml"|href="../examples-xml/randh.csd.xml"|g' opcodes/randh.xml
+sed -i '' 's|href="examples-xml/randi.csd.xml"|href="../examples-xml/randi.csd.xml"|g' opcodes/randi.xml
+sed -i '' 's|href="examples-xml/random.csd.xml"|href="../examples-xml/random.csd.xml"|g' opcodes/random.xml
+sed -i '' 's|href="examples-xml/randomh.csd.xml"|href="../examples-xml/randomh.csd.xml"|g' opcodes/randomh.xml
+sed -i '' 's|href="examples-xml/randomi.csd.xml"|href="../examples-xml/randomi.csd.xml"|g' opcodes/randomi.xml
+sed -i '' 's|href="examples-xml/rbjeq.csd.xml"|href="../examples-xml/rbjeq.csd.xml"|g' opcodes/rbjeq.xml
+sed -i '' 's|href="examples-xml/readclock.csd.xml"|href="../examples-xml/readclock.csd.xml"|g' opcodes/readclock.xml
+sed -i '' 's|href="examples-xml/readf.csd.xml"|href="../examples-xml/readf.csd.xml"|g' opcodes/readf.xml
+sed -i '' 's|href="examples-xml/readfi.csd.xml"|href="../examples-xml/readfi.csd.xml"|g' opcodes/readfi.xml
+sed -i '' 's|href="examples-xml/readk-2.csd.xml"|href="../examples-xml/readk-2.csd.xml"|g' opcodes/readk.xml
+sed -i '' 's|href="examples-xml/readk.csd.xml"|href="../examples-xml/readk.csd.xml"|g' opcodes/readk.xml
+sed -i '' 's|href="examples-xml/readk2.csd.xml"|href="../examples-xml/readk2.csd.xml"|g' opcodes/readk2.xml
+sed -i '' 's|href="examples-xml/readk3.csd.xml"|href="../examples-xml/readk3.csd.xml"|g' opcodes/readk3.xml
+sed -i '' 's|href="examples-xml/readk4.csd.xml"|href="../examples-xml/readk4.csd.xml"|g' opcodes/readk4.xml
+sed -i '' 's|href="examples-xml/readscore.csd.xml"|href="../examples-xml/readscore.csd.xml"|g' opcodes/readscore.xml
+sed -i '' 's|href="examples-xml/readscratch.csd.xml"|href="../examples-xml/readscratch.csd.xml"|g' opcodes/readscratch.xml
+sed -i '' 's|href="examples-xml/rect2pol.csd.xml"|href="../examples-xml/rect2pol.csd.xml"|g' opcodes/rect2pol.xml
+sed -i '' 's|href="examples-xml/reinit.csd.xml"|href="../examples-xml/reinit.csd.xml"|g' opcodes/reinit.xml
+sed -i '' 's|href="examples-xml/repluck.csd.xml"|href="../examples-xml/repluck.csd.xml"|g' opcodes/repluck.xml
+sed -i '' 's|href="examples-xml/reson.csd.xml"|href="../examples-xml/reson.csd.xml"|g' opcodes/reson.xml
+sed -i '' 's|href="examples-xml/resonk.csd.xml"|href="../examples-xml/resonk.csd.xml"|g' opcodes/resonk.xml
+sed -i '' 's|href="examples-xml/resonr.csd.xml"|href="../examples-xml/resonr.csd.xml"|g' opcodes/resonr.xml
+sed -i '' 's|href="examples-xml/resonx.csd.xml"|href="../examples-xml/resonx.csd.xml"|g' opcodes/resonx.xml
+sed -i '' 's|href="examples-xml/resonxk.csd.xml"|href="../examples-xml/resonxk.csd.xml"|g' opcodes/resonxk.xml
+sed -i '' 's|href="examples-xml/resony.csd.xml"|href="../examples-xml/resony.csd.xml"|g' opcodes/resony.xml
+sed -i '' 's|href="examples-xml/resonr.csd.xml"|href="../examples-xml/resonr.csd.xml"|g' opcodes/resonz.xml
+sed -i '' 's|href="examples-xml/resyn.csd.xml"|href="../examples-xml/resyn.csd.xml"|g' opcodes/resyn.xml
+sed -i '' 's|href="examples-xml/reverb.csd.xml"|href="../examples-xml/reverb.csd.xml"|g' opcodes/reverb.xml
+sed -i '' 's|href="examples-xml/reverbsc.csd.xml"|href="../examples-xml/reverbsc.csd.xml"|g' opcodes/reverbsc.xml
+sed -i '' 's|href="examples-xml/rewindscore.csd.xml"|href="../examples-xml/rewindscore.csd.xml"|g' opcodes/rewindscore.xml
+sed -i '' 's|href="examples-xml/rezzy.csd.xml"|href="../examples-xml/rezzy.csd.xml"|g' opcodes/rezzy.xml
+sed -i '' 's|href="examples-xml/rfft.csd.xml"|href="../examples-xml/rfft.csd.xml"|g' opcodes/rfft.xml
+sed -i '' 's|href="examples-xml/irfft.csd.xml"|href="../examples-xml/irfft.csd.xml"|g' opcodes/rifft.xml
+sed -i '' 's|href="examples-xml/reinit.csd.xml"|href="../examples-xml/reinit.csd.xml"|g' opcodes/rireturn.xml
+sed -i '' 's|href="examples-xml/rms.csd.xml"|href="../examples-xml/rms.csd.xml"|g' opcodes/rms.xml
+sed -i '' 's|href="examples-xml/rnd.csd.xml"|href="../examples-xml/rnd.csd.xml"|g' opcodes/rnd.xml
+sed -i '' 's|href="examples-xml/rnd31.csd.xml"|href="../examples-xml/rnd31.csd.xml"|g' opcodes/rnd31.xml
+sed -i '' 's|href="examples-xml/rnd31_krate.csd.xml"|href="../examples-xml/rnd31_krate.csd.xml"|g' opcodes/rnd31.xml
+sed -i '' 's|href="examples-xml/rnd31_seed7.csd.xml"|href="../examples-xml/rnd31_seed7.csd.xml"|g' opcodes/rnd31.xml
+sed -i '' 's|href="examples-xml/rnd31_time.csd.xml"|href="../examples-xml/rnd31_time.csd.xml"|g' opcodes/rnd31.xml
+sed -i '' 's|href="examples-xml/round.csd.xml"|href="../examples-xml/round.csd.xml"|g' opcodes/round.xml
+sed -i '' 's|href="examples-xml/rspline.csd.xml"|href="../examples-xml/rspline.csd.xml"|g' opcodes/rspline.xml
+sed -i '' 's|href="examples-xml/rtclock.csd.xml"|href="../examples-xml/rtclock.csd.xml"|g' opcodes/rtclock.xml
+sed -i '' 's|href="examples-xml/samphold.csd.xml"|href="../examples-xml/samphold.csd.xml"|g' opcodes/samphold.xml
+sed -i '' 's|href="examples-xml/sandpaper.csd.xml"|href="../examples-xml/sandpaper.csd.xml"|g' opcodes/sandpaper.xml
+sed -i '' 's|href="examples-xml/scale.csd.xml"|href="../examples-xml/scale.csd.xml"|g' opcodes/scale.xml
+sed -i '' 's|href="examples-xml/scalearray.csd.xml"|href="../examples-xml/scalearray.csd.xml"|g' opcodes/scalearray.xml
+sed -i '' 's|href="examples-xml/scans.csd.xml"|href="../examples-xml/scans.csd.xml"|g' opcodes/scans.xml
+sed -i '' 's|href="examples-xml/scans-2.csd.xml"|href="../examples-xml/scans-2.csd.xml"|g' opcodes/scans.xml
+sed -i '' 's|href="examples-xml/scantable.csd.xml"|href="../examples-xml/scantable.csd.xml"|g' opcodes/scantable.xml
+sed -i '' 's|href="examples-xml/schedkwhen.csd.xml"|href="../examples-xml/schedkwhen.csd.xml"|g' opcodes/schedkwhen.xml
+sed -i '' 's|href="examples-xml/schedkwhennamed.csd.xml"|href="../examples-xml/schedkwhennamed.csd.xml"|g' opcodes/schedkwhennamed.xml
+sed -i '' 's|href="examples-xml/schedule.csd.xml"|href="../examples-xml/schedule.csd.xml"|g' opcodes/schedule.xml
+sed -i '' 's|href="examples-xml/schedwhen.csd.xml"|href="../examples-xml/schedwhen.csd.xml"|g' opcodes/schedwhen.xml
+sed -i '' 's|href="examples-xml/scoreline_i.csd.xml"|href="../examples-xml/scoreline_i.csd.xml"|g' opcodes/scoreline_i.xml
+sed -i '' 's|href="examples-xml/scoreline.csd.xml"|href="../examples-xml/scoreline.csd.xml"|g' opcodes/scoreline.xml
+sed -i '' 's|href="examples-xml/seed.csd.xml"|href="../examples-xml/seed.csd.xml"|g' opcodes/seed.xml
+sed -i '' 's|href="examples-xml/sekere.csd.xml"|href="../examples-xml/sekere.csd.xml"|g' opcodes/sekere.xml
+sed -i '' 's|href="examples-xml/semitone.csd.xml"|href="../examples-xml/semitone.csd.xml"|g' opcodes/semitone.xml
+sed -i '' 's|href="examples-xml/sensekey.csd.xml"|href="../examples-xml/sensekey.csd.xml"|g' opcodes/sensekey.xml
+sed -i '' 's|href="examples-xml/FLpanel-sensekey.csd.xml"|href="../examples-xml/FLpanel-sensekey.csd.xml"|g' opcodes/sensekey.xml
+sed -i '' 's|href="examples-xml/FLpanel-sensekey2.csd.xml"|href="../examples-xml/FLpanel-sensekey2.csd.xml"|g' opcodes/sensekey.xml
+sed -i '' 's|href="examples-xml/seqtime.csd.xml"|href="../examples-xml/seqtime.csd.xml"|g' opcodes/seqtime.xml
+sed -i '' 's|href="examples-xml/seqtime2.csd.xml"|href="../examples-xml/seqtime2.csd.xml"|g' opcodes/seqtime2.xml
+sed -i '' 's|href="examples-xml/serialBegin.csd.xml"|href="../examples-xml/serialBegin.csd.xml"|g' opcodes/serialBegin.xml
+sed -i '' 's|href="examples-xml/serialRead.csd.xml"|href="../examples-xml/serialRead.csd.xml"|g' opcodes/serialRead.xml
+sed -i '' 's|href="examples-xml/serialWrite.csd.xml"|href="../examples-xml/serialWrite.csd.xml"|g' opcodes/serialWrite.xml
+sed -i '' 's|href="examples-xml/setctrl.csd.xml"|href="../examples-xml/setctrl.csd.xml"|g' opcodes/setctrl.xml
+sed -i '' 's|href="examples-xml/setscorepos.csd.xml"|href="../examples-xml/setscorepos.csd.xml"|g' opcodes/setscorepos.xml
+sed -i '' 's|href="examples-xml/sfilist.csd.xml"|href="../examples-xml/sfilist.csd.xml"|g' opcodes/sfilist.xml
+sed -i '' 's|href="examples-xml/sfinstr.csd.xml"|href="../examples-xml/sfinstr.csd.xml"|g' opcodes/sfinstr.xml
+sed -i '' 's|href="examples-xml/sfinstr3.csd.xml"|href="../examples-xml/sfinstr3.csd.xml"|g' opcodes/sfinstr3.xml
+sed -i '' 's|href="examples-xml/sfinstr3m.csd.xml"|href="../examples-xml/sfinstr3m.csd.xml"|g' opcodes/sfinstr3m.xml
+sed -i '' 's|href="examples-xml/sfload.csd.xml"|href="../examples-xml/sfload.csd.xml"|g' opcodes/sfload.xml
+sed -i '' 's|href="examples-xml/sflooper.csd.xml"|href="../examples-xml/sflooper.csd.xml"|g' opcodes/sflooper.xml
+sed -i '' 's|href="examples-xml/sfpassign.csd.xml"|href="../examples-xml/sfpassign.csd.xml"|g' opcodes/sfpassign.xml
+sed -i '' 's|href="examples-xml/sfplay3.csd.xml"|href="../examples-xml/sfplay3.csd.xml"|g' opcodes/sfplay3.xml
+sed -i '' 's|href="examples-xml/sfplay3m.csd.xml"|href="../examples-xml/sfplay3m.csd.xml"|g' opcodes/sfplay3m.xml
+sed -i '' 's|href="examples-xml/sfplaym.csd.xml"|href="../examples-xml/sfplaym.csd.xml"|g' opcodes/sfplaym.xml
+sed -i '' 's|href="examples-xml/sfplist.csd.xml"|href="../examples-xml/sfplist.csd.xml"|g' opcodes/sfplist.xml
+sed -i '' 's|href="examples-xml/sfpreset.csd.xml"|href="../examples-xml/sfpreset.csd.xml"|g' opcodes/sfpreset.xml
+sed -i '' 's|href="examples-xml/shaker.csd.xml"|href="../examples-xml/shaker.csd.xml"|g' opcodes/shaker.xml
+sed -i '' 's|href="examples-xml/shiftin.csd.xml"|href="../examples-xml/shiftin.csd.xml"|g' opcodes/shiftin.xml
+sed -i '' 's|href="examples-xml/shiftout.csd.xml"|href="../examples-xml/shiftout.csd.xml"|g' opcodes/shiftout.xml
+sed -i '' 's|href="examples-xml/signum.csd.xml"|href="../examples-xml/signum.csd.xml"|g' opcodes/signum.xml
+sed -i '' 's|href="examples-xml/sin.csd.xml"|href="../examples-xml/sin.csd.xml"|g' opcodes/sin.xml
+sed -i '' 's|href="examples-xml/sinh.csd.xml"|href="../examples-xml/sinh.csd.xml"|g' opcodes/sinh.xml
+sed -i '' 's|href="examples-xml/sininv.csd.xml"|href="../examples-xml/sininv.csd.xml"|g' opcodes/sininv.xml
+sed -i '' 's|href="examples-xml/sinsyn.csd.xml"|href="../examples-xml/sinsyn.csd.xml"|g' opcodes/sinsyn.xml
+sed -i '' 's|href="examples-xml/sleighbells.csd.xml"|href="../examples-xml/sleighbells.csd.xml"|g' opcodes/sleighbells.xml
+sed -i '' 's|href="examples-xml/slicearray.csd.xml"|href="../examples-xml/slicearray.csd.xml"|g' opcodes/slicearray.xml
+sed -i '' 's|href="examples-xml/sndloop.csd.xml"|href="../examples-xml/sndloop.csd.xml"|g' opcodes/sndloop.xml
+sed -i '' 's|href="examples-xml/sndwarp.csd.xml"|href="../examples-xml/sndwarp.csd.xml"|g' opcodes/sndwarp.xml
+sed -i '' 's|href="examples-xml/sndwarpst.csd.xml"|href="../examples-xml/sndwarpst.csd.xml"|g' opcodes/sndwarpst.xml
+sed -i '' 's|href="examples-xml/soundin.csd.xml"|href="../examples-xml/soundin.csd.xml"|g' opcodes/soundin.xml
+sed -i '' 's|href="examples-xml/space_quad.csd.xml"|href="../examples-xml/space_quad.csd.xml"|g' opcodes/space.xml
+sed -i '' 's|href="examples-xml/space_stereo.csd.xml"|href="../examples-xml/space_stereo.csd.xml"|g' opcodes/space.xml
+sed -i '' 's|href="examples-xml/spat3d_stereo.csd.xml"|href="../examples-xml/spat3d_stereo.csd.xml"|g' opcodes/spat3d.xml
+sed -i '' 's|href="examples-xml/spat3d_UHJ.csd.xml"|href="../examples-xml/spat3d_UHJ.csd.xml"|g' opcodes/spat3d.xml
+sed -i '' 's|href="examples-xml/spat3d_quad.csd.xml"|href="../examples-xml/spat3d_quad.csd.xml"|g' opcodes/spat3d.xml
+sed -i '' 's|href="examples-xml/spat3dt.csd.xml"|href="../examples-xml/spat3dt.csd.xml"|g' opcodes/spat3dt.xml
+sed -i '' 's|href="examples-xml/spdist.csd.xml"|href="../examples-xml/spdist.csd.xml"|g' opcodes/spdist.xml
+sed -i '' 's|href="opcodes/splitrig.txt"|href="../opcodes/splitrig.txt"|g' opcodes/splitrig.xml
+sed -i '' 's|href="examples-xml/sprintf.csd.xml"|href="../examples-xml/sprintf.csd.xml"|g' opcodes/sprintf.xml
+sed -i '' 's|href="examples-xml/sprintfk.csd.xml"|href="../examples-xml/sprintfk.csd.xml"|g' opcodes/sprintfk.xml
+sed -i '' 's|href="examples-xml/spsend.csd.xml"|href="../examples-xml/spsend.csd.xml"|g' opcodes/spsend.xml
+sed -i '' 's|href="examples-xml/sqrt.csd.xml"|href="../examples-xml/sqrt.csd.xml"|g' opcodes/sqrt.xml
+sed -i '' 's|href="examples-xml/sr.csd.xml"|href="../examples-xml/sr.csd.xml"|g' opcodes/sr.xml
+sed -i '' 's|href="examples-xml/stack.csd.xml"|href="../examples-xml/stack.csd.xml"|g' opcodes/stack.xml
+sed -i '' 's|href="examples-xml/statevar.csd.xml"|href="../examples-xml/statevar.csd.xml"|g' opcodes/statevar.xml
+sed -i '' 's|href="examples-xml/stix.csd.xml"|href="../examples-xml/stix.csd.xml"|g' opcodes/stix.xml
+sed -i '' 's|href="examples-xml/STKBandedWG.csd.xml"|href="../examples-xml/STKBandedWG.csd.xml"|g' opcodes/STKBandedWG.xml
+sed -i '' 's|href="examples-xml/STKBeeThree.csd.xml"|href="../examples-xml/STKBeeThree.csd.xml"|g' opcodes/STKBeeThree.xml
+sed -i '' 's|href="examples-xml/STKBlowBotl.csd.xml"|href="../examples-xml/STKBlowBotl.csd.xml"|g' opcodes/STKBlowBotl.xml
+sed -i '' 's|href="examples-xml/STKBlowHole.csd.xml"|href="../examples-xml/STKBlowHole.csd.xml"|g' opcodes/STKBlowHole.xml
+sed -i '' 's|href="examples-xml/STKBowed.csd.xml"|href="../examples-xml/STKBowed.csd.xml"|g' opcodes/STKBowed.xml
+sed -i '' 's|href="examples-xml/STKBrass.csd.xml"|href="../examples-xml/STKBrass.csd.xml"|g' opcodes/STKBrass.xml
+sed -i '' 's|href="examples-xml/STKClarinet.csd.xml"|href="../examples-xml/STKClarinet.csd.xml"|g' opcodes/STKClarinet.xml
+sed -i '' 's|href="examples-xml/STKDrummer.csd.xml"|href="../examples-xml/STKDrummer.csd.xml"|g' opcodes/STKDrummer.xml
+sed -i '' 's|href="examples-xml/STKFlute.csd.xml"|href="../examples-xml/STKFlute.csd.xml"|g' opcodes/STKFlute.xml
+sed -i '' 's|href="examples-xml/STKFMVoices.csd.xml"|href="../examples-xml/STKFMVoices.csd.xml"|g' opcodes/STKFMVoices.xml
+sed -i '' 's|href="examples-xml/STKHevyMetl.csd.xml"|href="../examples-xml/STKHevyMetl.csd.xml"|g' opcodes/STKHevyMetl.xml
+sed -i '' 's|href="examples-xml/STKMandolin.csd.xml"|href="../examples-xml/STKMandolin.csd.xml"|g' opcodes/STKMandolin.xml
+sed -i '' 's|href="examples-xml/STKModalBar.csd.xml"|href="../examples-xml/STKModalBar.csd.xml"|g' opcodes/STKModalBar.xml
+sed -i '' 's|href="examples-xml/STKMoog.csd.xml"|href="../examples-xml/STKMoog.csd.xml"|g' opcodes/STKMoog.xml
+sed -i '' 's|href="examples-xml/STKPercFlut.csd.xml"|href="../examples-xml/STKPercFlut.csd.xml"|g' opcodes/STKPercFlut.xml
+sed -i '' 's|href="examples-xml/STKPlucked.csd.xml"|href="../examples-xml/STKPlucked.csd.xml"|g' opcodes/STKPlucked.xml
+sed -i '' 's|href="examples-xml/STKResonate.csd.xml"|href="../examples-xml/STKResonate.csd.xml"|g' opcodes/STKResonate.xml
+sed -i '' 's|href="examples-xml/STKRhodey.csd.xml"|href="../examples-xml/STKRhodey.csd.xml"|g' opcodes/STKRhodey.xml
+sed -i '' 's|href="examples-xml/STKSaxofony.csd.xml"|href="../examples-xml/STKSaxofony.csd.xml"|g' opcodes/STKSaxofony.xml
+sed -i '' 's|href="examples-xml/STKShakers.csd.xml"|href="../examples-xml/STKShakers.csd.xml"|g' opcodes/STKShakers.xml
+sed -i '' 's|href="examples-xml/STKSimple.csd.xml"|href="../examples-xml/STKSimple.csd.xml"|g' opcodes/STKSimple.xml
+sed -i '' 's|href="examples-xml/STKSitar.csd.xml"|href="../examples-xml/STKSitar.csd.xml"|g' opcodes/STKSitar.xml
+sed -i '' 's|href="examples-xml/STKStifKarp.csd.xml"|href="../examples-xml/STKStifKarp.csd.xml"|g' opcodes/STKStifKarp.xml
+sed -i '' 's|href="examples-xml/STKTubeBell.csd.xml"|href="../examples-xml/STKTubeBell.csd.xml"|g' opcodes/STKTubeBell.xml
+sed -i '' 's|href="examples-xml/STKVoicForm.csd.xml"|href="../examples-xml/STKVoicForm.csd.xml"|g' opcodes/STKVoicForm.xml
+sed -i '' 's|href="examples-xml/STKWhistle.csd.xml"|href="../examples-xml/STKWhistle.csd.xml"|g' opcodes/STKWhistle.xml
+sed -i '' 's|href="examples-xml/STKWurley.csd.xml"|href="../examples-xml/STKWurley.csd.xml"|g' opcodes/STKWurley.xml
+sed -i '' 's|href="examples-xml/strcat.csd.xml"|href="../examples-xml/strcat.csd.xml"|g' opcodes/strcat.xml
+sed -i '' 's|href="examples-xml/strcatk.csd.xml"|href="../examples-xml/strcatk.csd.xml"|g' opcodes/strcatk.xml
+sed -i '' 's|href="examples-xml/strchar.csd.xml"|href="../examples-xml/strchar.csd.xml"|g' opcodes/strchar.xml
+sed -i '' 's|href="examples-xml/strcmp.csd.xml"|href="../examples-xml/strcmp.csd.xml"|g' opcodes/strcmp.xml
+sed -i '' 's|href="examples-xml/strcpyk.csd.xml"|href="../examples-xml/strcpyk.csd.xml"|g' opcodes/strcpyk.xml
+sed -i '' 's|href="examples-xml/streson.csd.xml"|href="../examples-xml/streson.csd.xml"|g' opcodes/streson.xml
+sed -i '' 's|href="examples-xml/strfromurl.csd.xml"|href="../examples-xml/strfromurl.csd.xml"|g' opcodes/strfromurl.xml
+sed -i '' 's|href="examples-xml/strget.csd.xml"|href="../examples-xml/strget.csd.xml"|g' opcodes/strget.xml
+sed -i '' 's|href="examples-xml/strindexk.csd.xml"|href="../examples-xml/strindexk.csd.xml"|g' opcodes/strindexk.xml
+sed -i '' 's|href="examples-xml/strlower.csd.xml"|href="../examples-xml/strlower.csd.xml"|g' opcodes/strlower.xml
+sed -i '' 's|href="examples-xml/strrindex.csd.xml"|href="../examples-xml/strrindex.csd.xml"|g' opcodes/strrindex.xml
+sed -i '' 's|href="examples-xml/strset.csd.xml"|href="../examples-xml/strset.csd.xml"|g' opcodes/strset.xml
+sed -i '' 's|href="examples-xml/strsub.csd.xml"|href="../examples-xml/strsub.csd.xml"|g' opcodes/strsub.xml
+sed -i '' 's|href="examples-xml/subinstr.csd.xml"|href="../examples-xml/subinstr.csd.xml"|g' opcodes/subinstr.xml
+sed -i '' 's|href="examples-xml/subinstr_named.csd.xml"|href="../examples-xml/subinstr_named.csd.xml"|g' opcodes/subinstr.xml
+sed -i '' 's|href="examples-xml/subtracts.csd.xml"|href="../examples-xml/subtracts.csd.xml"|g' opcodes/subtracts.xml
+sed -i '' 's|href="examples-xml/sum.csd.xml"|href="../examples-xml/sum.csd.xml"|g' opcodes/sum.xml
+sed -i '' 's|href="examples-xml/sumarray.csd.xml"|href="../examples-xml/sumarray.csd.xml"|g' opcodes/sumarray.xml
+sed -i '' 's|href="examples-xml/svfilter.csd.xml"|href="../examples-xml/svfilter.csd.xml"|g' opcodes/svfilter.xml
+sed -i '' 's|href="examples-xml/syncgrain.csd.xml"|href="../examples-xml/syncgrain.csd.xml"|g' opcodes/syncgrain.xml
+sed -i '' 's|href="examples-xml/syncloop.csd.xml"|href="../examples-xml/syncloop.csd.xml"|g' opcodes/syncloop.xml
+sed -i '' 's|href="examples-xml/syncphasor.csd.xml"|href="../examples-xml/syncphasor.csd.xml"|g' opcodes/syncphasor.xml
+sed -i '' 's|href="examples-xml/syncphasor-CZresonance.csd.xml"|href="../examples-xml/syncphasor-CZresonance.csd.xml"|g' opcodes/syncphasor.xml
+sed -i '' 's|href="examples-xml/system.csd.xml"|href="../examples-xml/system.csd.xml"|g' opcodes/system.xml
+sed -i '' 's|href="examples-xml/tab.csd.xml"|href="../examples-xml/tab.csd.xml"|g' opcodes/tab.xml
+sed -i '' 's|href="examples-xml/tabifd.csd.xml"|href="../examples-xml/tabifd.csd.xml"|g' opcodes/tabifd.xml
+sed -i '' 's|href="examples-xml/table.csd.xml"|href="../examples-xml/table.csd.xml"|g' opcodes/table.xml
+sed -i '' 's|href="examples-xml/tablecopy.csd.xml"|href="../examples-xml/tablecopy.csd.xml"|g' opcodes/tablecopy.xml
+sed -i '' 's|href="examples-xml/tablefilter.csd.xml"|href="../examples-xml/tablefilter.csd.xml"|g' opcodes/tablefilter.xml
+sed -i '' 's|href="examples-xml/tablefilter.csd.xml"|href="../examples-xml/tablefilter.csd.xml"|g' opcodes/tablefilteri.xml
+sed -i '' 's|href="examples-xml/tablei.csd.xml"|href="../examples-xml/tablei.csd.xml"|g' opcodes/tablei.xml
+sed -i '' 's|href="examples-xml/tableikt.csd.xml"|href="../examples-xml/tableikt.csd.xml"|g' opcodes/tableikt.xml
+sed -i '' 's|href="examples-xml/tableimix.csd.xml"|href="../examples-xml/tableimix.csd.xml"|g' opcodes/tableimix.xml
+sed -i '' 's|href="examples-xml/tableiw.csd.xml"|href="../examples-xml/tableiw.csd.xml"|g' opcodes/tableiw.xml
+sed -i '' 's|href="examples-xml/tablekt.csd.xml"|href="../examples-xml/tablekt.csd.xml"|g' opcodes/tablekt.xml
+sed -i '' 's|href="examples-xml/tablemix.csd.xml"|href="../examples-xml/tablemix.csd.xml"|g' opcodes/tablemix.xml
+sed -i '' 's|href="examples-xml/tableng.csd.xml"|href="../examples-xml/tableng.csd.xml"|g' opcodes/tableng.xml
+sed -i '' 's|href="examples-xml/tableseg.csd.xml"|href="../examples-xml/tableseg.csd.xml"|g' opcodes/tableseg.xml
+sed -i '' 's|href="examples-xml/farey7shuffled.csd.xml"|href="../examples-xml/farey7shuffled.csd.xml"|g' opcodes/tableshuffle.xml
+sed -i '' 's|href="examples-xml/tablexkt.csd.xml"|href="../examples-xml/tablexkt.csd.xml"|g' opcodes/tablexkt.xml
+sed -i '' 's|href="examples-xml/tablexseg.csd.xml"|href="../examples-xml/tablexseg.csd.xml"|g' opcodes/tablexseg.xml
+sed -i '' 's|href="examples-xml/tabmorph.csd.xml"|href="../examples-xml/tabmorph.csd.xml"|g' opcodes/tabmorph.xml
+sed -i '' 's|href="examples-xml/tabmorpha.csd.xml"|href="../examples-xml/tabmorpha.csd.xml"|g' opcodes/tabmorpha.xml
+sed -i '' 's|href="examples-xml/tabmorphak.csd.xml"|href="../examples-xml/tabmorphak.csd.xml"|g' opcodes/tabmorphak.xml
+sed -i '' 's|href="examples-xml/tabmorphi.csd.xml"|href="../examples-xml/tabmorphi.csd.xml"|g' opcodes/tabmorphi.xml
+sed -i '' 's|href="examples-xml/tabsum.csd.xml"|href="../examples-xml/tabsum.csd.xml"|g' opcodes/tabsum.xml
+sed -i '' 's|href="examples-xml/tambourine.csd.xml"|href="../examples-xml/tambourine.csd.xml"|g' opcodes/tambourine.xml
+sed -i '' 's|href="examples-xml/tan.csd.xml"|href="../examples-xml/tan.csd.xml"|g' opcodes/tan.xml
+sed -i '' 's|href="examples-xml/tanh.csd.xml"|href="../examples-xml/tanh.csd.xml"|g' opcodes/tanh.xml
+sed -i '' 's|href="examples-xml/taninv.csd.xml"|href="../examples-xml/taninv.csd.xml"|g' opcodes/taninv.xml
+sed -i '' 's|href="examples-xml/taninv2.csd.xml"|href="../examples-xml/taninv2.csd.xml"|g' opcodes/taninv2.xml
+sed -i '' 's|href="examples-xml/tbvcf.csd.xml"|href="../examples-xml/tbvcf.csd.xml"|g' opcodes/tbvcf.xml
+sed -i '' 's|href="examples-xml/tempest.csd.xml"|href="../examples-xml/tempest.csd.xml"|g' opcodes/tempest.xml
+sed -i '' 's|href="examples-xml/tempo.csd.xml"|href="../examples-xml/tempo.csd.xml"|g' opcodes/tempo.xml
+sed -i '' 's|href="examples-xml/temposcal.csd.xml"|href="../examples-xml/temposcal.csd.xml"|g' opcodes/temposcal.xml
+sed -i '' 's|href="examples-xml/tempoval.csd.xml"|href="../examples-xml/tempoval.csd.xml"|g' opcodes/tempoval.xml
+sed -i '' 's|href="examples-xml/tigoto.csd.xml"|href="../examples-xml/tigoto.csd.xml"|g' opcodes/tigoto.xml
+sed -i '' 's|href="examples-xml/timedseq.csd.xml"|href="../examples-xml/timedseq.csd.xml"|g' opcodes/timedseq.xml
+sed -i '' 's|href="examples-xml/timeinstk.csd.xml"|href="../examples-xml/timeinstk.csd.xml"|g' opcodes/timeinstk.xml
+sed -i '' 's|href="examples-xml/timeinsts.csd.xml"|href="../examples-xml/timeinsts.csd.xml"|g' opcodes/timeinsts.xml
+sed -i '' 's|href="examples-xml/timek.csd.xml"|href="../examples-xml/timek.csd.xml"|g' opcodes/timek.xml
+sed -i '' 's|href="examples-xml/times_complex.csd.xml"|href="../examples-xml/times_complex.csd.xml"|g' opcodes/times.xml
+sed -i '' 's|href="examples-xml/timout.csd.xml"|href="../examples-xml/timout.csd.xml"|g' opcodes/timout.xml
+sed -i '' 's|href="examples-xml/tival.csd.xml"|href="../examples-xml/tival.csd.xml"|g' opcodes/tival.xml
+sed -i '' 's|href="examples-xml/tlineto.csd.xml"|href="../examples-xml/tlineto.csd.xml"|g' opcodes/tlineto.xml
+sed -i '' 's|href="examples-xml/tone.csd.xml"|href="../examples-xml/tone.csd.xml"|g' opcodes/tone.xml
+sed -i '' 's|href="examples-xml/tonek.csd.xml"|href="../examples-xml/tonek.csd.xml"|g' opcodes/tonek.xml
+sed -i '' 's|href="examples-xml/tonex.csd.xml"|href="../examples-xml/tonex.csd.xml"|g' opcodes/tonex.xml
+sed -i '' 's|href="examples-xml/tradsyn.csd.xml"|href="../examples-xml/tradsyn.csd.xml"|g' opcodes/tradsyn.xml
+sed -i '' 's|href="examples-xml/trandom.csd.xml"|href="../examples-xml/trandom.csd.xml"|g' opcodes/trandom.xml
+sed -i '' 's|href="examples-xml/transeg.csd.xml"|href="../examples-xml/transeg.csd.xml"|g' opcodes/transeg.xml
+sed -i '' 's|href="examples-xml/transegb.csd.xml"|href="../examples-xml/transegb.csd.xml"|g' opcodes/transegb.xml
+sed -i '' 's|href="examples-xml/transegr.csd.xml"|href="../examples-xml/transegr.csd.xml"|g' opcodes/transegr.xml
+sed -i '' 's|href="examples-xml/trcross.csd.xml"|href="../examples-xml/trcross.csd.xml"|g' opcodes/trcross.xml
+sed -i '' 's|href="examples-xml/trfilter.csd.xml"|href="../examples-xml/trfilter.csd.xml"|g' opcodes/trfilter.xml
+sed -i '' 's|href="examples-xml/trhighest.csd.xml"|href="../examples-xml/trhighest.csd.xml"|g' opcodes/trhighest.xml
+sed -i '' 's|href="examples-xml/trigger.csd.xml"|href="../examples-xml/trigger.csd.xml"|g' opcodes/trigger.xml
+sed -i '' 's|href="examples-xml/trigseq.csd.xml"|href="../examples-xml/trigseq.csd.xml"|g' opcodes/trigseq.xml
+sed -i '' 's|href="examples-xml/trirand.csd.xml"|href="../examples-xml/trirand.csd.xml"|g' opcodes/trirand.xml
+sed -i '' 's|href="examples-xml/trlowest.csd.xml"|href="../examples-xml/trlowest.csd.xml"|g' opcodes/trlowest.xml
+sed -i '' 's|href="examples-xml/trmix.csd.xml"|href="../examples-xml/trmix.csd.xml"|g' opcodes/trmix.xml
+sed -i '' 's|href="examples-xml/trscale.csd.xml"|href="../examples-xml/trscale.csd.xml"|g' opcodes/trscale.xml
+sed -i '' 's|href="examples-xml/trshift.csd.xml"|href="../examples-xml/trshift.csd.xml"|g' opcodes/trshift.xml
+sed -i '' 's|href="examples-xml/trsplit.csd.xml"|href="../examples-xml/trsplit.csd.xml"|g' opcodes/trsplit.xml
+sed -i '' 's|href="examples-xml/turnoff.csd.xml"|href="../examples-xml/turnoff.csd.xml"|g' opcodes/turnoff.xml
+sed -i '' 's|href="examples-xml/turnoff2.csd.xml"|href="../examples-xml/turnoff2.csd.xml"|g' opcodes/turnoff2.xml
+sed -i '' 's|href="examples-xml/unirand.csd.xml"|href="../examples-xml/unirand.csd.xml"|g' opcodes/unirand.xml
+sed -i '' 's|href="examples-xml/until.csd.xml"|href="../examples-xml/until.csd.xml"|g' opcodes/until.xml
+sed -i '' 's|href="examples-xml/upsamp.csd.xml"|href="../examples-xml/upsamp.csd.xml"|g' opcodes/upsamp.xml
+sed -i '' 's|href="examples-xml/urandom.csd.xml"|href="../examples-xml/urandom.csd.xml"|g' opcodes/urandom.xml
+sed -i '' 's|href="examples-xml/urandom_krate.csd.xml"|href="../examples-xml/urandom_krate.csd.xml"|g' opcodes/urandom.xml
+sed -i '' 's|href="examples-xml/urd.csd.xml"|href="../examples-xml/urd.csd.xml"|g' opcodes/urd.xml
+sed -i '' 's|href="examples-xml/vactrol.csd.xml"|href="../examples-xml/vactrol.csd.xml"|g' opcodes/vactrol.xml
+sed -i '' 's|href="examples-xml/vadd_i.csd.xml"|href="../examples-xml/vadd_i.csd.xml"|g' opcodes/vadd_i.xml
+sed -i '' 's|href="examples-xml/vadd.csd.xml"|href="../examples-xml/vadd.csd.xml"|g' opcodes/vadd.xml
+sed -i '' 's|href="examples-xml/vaddv.csd.xml"|href="../examples-xml/vaddv.csd.xml"|g' opcodes/vaddv.xml
+sed -i '' 's|href="examples-xml/vaget.csd.xml"|href="../examples-xml/vaget.csd.xml"|g' opcodes/vaget.xml
+sed -i '' 's|href="examples-xml/valpass.csd.xml"|href="../examples-xml/valpass.csd.xml"|g' opcodes/valpass.xml
+sed -i '' 's|href="examples-xml/valpass-2.csd.xml"|href="../examples-xml/valpass-2.csd.xml"|g' opcodes/valpass.xml
+sed -i '' 's|href="examples-xml/vaset.csd.xml"|href="../examples-xml/vaset.csd.xml"|g' opcodes/vaset.xml
+sed -i '' 's|href="examples-xml/vbap.csd.xml"|href="../examples-xml/vbap.csd.xml"|g' opcodes/vbap.xml
+sed -i '' 's|href="examples-xml/vbap4.csd.xml"|href="../examples-xml/vbap4.csd.xml"|g' opcodes/vbap4.xml
+sed -i '' 's|href="examples-xml/vbap4move.csd.xml"|href="../examples-xml/vbap4move.csd.xml"|g' opcodes/vbap4move.xml
+sed -i '' 's|href="examples-xml/vbap8.csd.xml"|href="../examples-xml/vbap8.csd.xml"|g' opcodes/vbap8.xml
+sed -i '' 's|href="examples-xml/vbap8move.csd.xml"|href="../examples-xml/vbap8move.csd.xml"|g' opcodes/vbap8move.xml
+sed -i '' 's|href="examples-xml/vbapg.csd.xml"|href="../examples-xml/vbapg.csd.xml"|g' opcodes/vbapg.xml
+sed -i '' 's|href="examples-xml/vbapgmove.csd.xml"|href="../examples-xml/vbapgmove.csd.xml"|g' opcodes/vbapgmove.xml
+sed -i '' 's|href="examples-xml/vbaplsinit.csd.xml"|href="../examples-xml/vbaplsinit.csd.xml"|g' opcodes/vbaplsinit.xml
+sed -i '' 's|href="examples-xml/vbapmove.csd.xml"|href="../examples-xml/vbapmove.csd.xml"|g' opcodes/vbapmove.xml
+sed -i '' 's|href="examples-xml/vcella.csd.xml"|href="../examples-xml/vcella.csd.xml"|g' opcodes/vcella.xml
+sed -i '' 's|href="examples-xml/vco.csd.xml"|href="../examples-xml/vco.csd.xml"|g' opcodes/vco.xml
+sed -i '' 's|href="examples-xml/vco2.csd.xml"|href="../examples-xml/vco2.csd.xml"|g' opcodes/vco2.xml
+sed -i '' 's|href="examples-xml/vco2ift.csd.xml"|href="../examples-xml/vco2ift.csd.xml"|g' opcodes/vco2ift.xml
+sed -i '' 's|href="examples-xml/vco2init.csd.xml"|href="../examples-xml/vco2init.csd.xml"|g' opcodes/vco2init.xml
+sed -i '' 's|href="examples-xml/vcomb.csd.xml"|href="../examples-xml/vcomb.csd.xml"|g' opcodes/vcomb.xml
+sed -i '' 's|href="examples-xml/vcopy.csd.xml"|href="../examples-xml/vcopy.csd.xml"|g' opcodes/vcopy.xml
+sed -i '' 's|href="examples-xml/vdelay.csd.xml"|href="../examples-xml/vdelay.csd.xml"|g' opcodes/vdelay.xml
+sed -i '' 's|href="examples-xml/vdelay3.csd.xml"|href="../examples-xml/vdelay3.csd.xml"|g' opcodes/vdelay3.xml
+sed -i '' 's|href="examples-xml/vdelayx.csd.xml"|href="../examples-xml/vdelayx.csd.xml"|g' opcodes/vdelayx.xml
+sed -i '' 's|href="examples-xml/vdelayxq.csd.xml"|href="../examples-xml/vdelayxq.csd.xml"|g' opcodes/vdelayxq.xml
+sed -i '' 's|href="examples-xml/vdelayxs.csd.xml"|href="../examples-xml/vdelayxs.csd.xml"|g' opcodes/vdelayxs.xml
+sed -i '' 's|href="examples-xml/vdelayxw.csd.xml"|href="../examples-xml/vdelayxw.csd.xml"|g' opcodes/vdelayxw.xml
+sed -i '' 's|href="examples-xml/vdelayxwq.csd.xml"|href="../examples-xml/vdelayxwq.csd.xml"|g' opcodes/vdelayxwq.xml
+sed -i '' 's|href="examples-xml/vdelayxws.csd.xml"|href="../examples-xml/vdelayxws.csd.xml"|g' opcodes/vdelayxws.xml
+sed -i '' 's|href="examples-xml/vdivv.csd.xml"|href="../examples-xml/vdivv.csd.xml"|g' opcodes/vdivv.xml
+sed -i '' 's|href="examples-xml/veloc.csd.xml"|href="../examples-xml/veloc.csd.xml"|g' opcodes/veloc.xml
+sed -i '' 's|href="examples-xml/vexp_i.csd.xml"|href="../examples-xml/vexp_i.csd.xml"|g' opcodes/vexp_i.xml
+sed -i '' 's|href="examples-xml/vexp.csd.xml"|href="../examples-xml/vexp.csd.xml"|g' opcodes/vexp.xml
+sed -i '' 's|href="examples-xml/vexpseg.csd.xml"|href="../examples-xml/vexpseg.csd.xml"|g' opcodes/vexpseg.xml
+sed -i '' 's|href="examples-xml/vexpv.csd.xml"|href="../examples-xml/vexpv.csd.xml"|g' opcodes/vexpv.xml
+sed -i '' 's|href="examples-xml/vibes.csd.xml"|href="../examples-xml/vibes.csd.xml"|g' opcodes/vibes.xml
+sed -i '' 's|href="examples-xml/vibr.csd.xml"|href="../examples-xml/vibr.csd.xml"|g' opcodes/vibr.xml
+sed -i '' 's|href="examples-xml/vibrato.csd.xml"|href="../examples-xml/vibrato.csd.xml"|g' opcodes/vibrato.xml
+sed -i '' 's|href="examples-xml/vincr.csd.xml"|href="../examples-xml/vincr.csd.xml"|g' opcodes/vincr.xml
+sed -i '' 's|href="examples-xml/vincr-complex.csd.xml"|href="../examples-xml/vincr-complex.csd.xml"|g' opcodes/vincr.xml
+sed -i '' 's|href="examples-xml/vlinseg.csd.xml"|href="../examples-xml/vlinseg.csd.xml"|g' opcodes/vlinseg.xml
+sed -i '' 's|href="examples-xml/vlowres.csd.xml"|href="../examples-xml/vlowres.csd.xml"|g' opcodes/vlowres.xml
+sed -i '' 's|href="examples-xml/vmap.csd.xml"|href="../examples-xml/vmap.csd.xml"|g' opcodes/vmap.xml
+sed -i '' 's|href="examples-xml/vmult_i.csd.xml"|href="../examples-xml/vmult_i.csd.xml"|g' opcodes/vmult_i.xml
+sed -i '' 's|href="examples-xml/vmult-2.csd.xml"|href="../examples-xml/vmult-2.csd.xml"|g' opcodes/vmult.xml
+sed -i '' 's|href="examples-xml/vmult.csd.xml"|href="../examples-xml/vmult.csd.xml"|g' opcodes/vmult.xml
+sed -i '' 's|href="examples-xml/vmultv.csd.xml"|href="../examples-xml/vmultv.csd.xml"|g' opcodes/vmultv.xml
+sed -i '' 's|href="examples-xml/voice.csd.xml"|href="../examples-xml/voice.csd.xml"|g' opcodes/voice.xml
+sed -i '' 's|href="examples-xml/vosim.csd.xml"|href="../examples-xml/vosim.csd.xml"|g' opcodes/vosim.xml
+sed -i '' 's|href="examples-xml/vpow_i.csd.xml"|href="../examples-xml/vpow_i.csd.xml"|g' opcodes/vpow_i.xml
+sed -i '' 's|href="examples-xml/vpow_i-2.csd.xml"|href="../examples-xml/vpow_i-2.csd.xml"|g' opcodes/vpow_i.xml
+sed -i '' 's|href="examples-xml/vpow.csd.xml"|href="../examples-xml/vpow.csd.xml"|g' opcodes/vpow.xml
+sed -i '' 's|href="examples-xml/vpow-2.csd.xml"|href="../examples-xml/vpow-2.csd.xml"|g' opcodes/vpow.xml
+sed -i '' 's|href="examples-xml/vpowv.csd.xml"|href="../examples-xml/vpowv.csd.xml"|g' opcodes/vpowv.xml
+sed -i '' 's|href="examples-xml/vpvoc.csd.xml"|href="../examples-xml/vpvoc.csd.xml"|g' opcodes/vpvoc.xml
+sed -i '' 's|href="examples-xml/vrandh.csd.xml"|href="../examples-xml/vrandh.csd.xml"|g' opcodes/vrandh.xml
+sed -i '' 's|href="examples-xml/vrandi.csd.xml"|href="../examples-xml/vrandi.csd.xml"|g' opcodes/vrandi.xml
+sed -i '' 's|href="examples-xml/vst4cs.csd.xml"|href="../examples-xml/vst4cs.csd.xml"|g' opcodes/vstaudio.xml
+sed -i '' 's|href="examples-xml/vst4cs.csd.xml"|href="../examples-xml/vst4cs.csd.xml"|g' opcodes/vstedit.xml
+sed -i '' 's|href="examples-xml/vst4cs.csd.xml"|href="../examples-xml/vst4cs.csd.xml"|g' opcodes/vstinfo.xml
+sed -i '' 's|href="examples-xml/vst4cs.csd.xml"|href="../examples-xml/vst4cs.csd.xml"|g' opcodes/vstinit.xml
+sed -i '' 's|href="examples-xml/vst4cs.csd.xml"|href="../examples-xml/vst4cs.csd.xml"|g' opcodes/vstnote.xml
+sed -i '' 's|href="examples-xml/vst4cs.csd.xml"|href="../examples-xml/vst4cs.csd.xml"|g' opcodes/vstparamset.xml
+sed -i '' 's|href="examples-xml/vsubv.csd.xml"|href="../examples-xml/vsubv.csd.xml"|g' opcodes/vsubv.xml
+sed -i '' 's|href="examples-xml/vtable1k.csd.xml"|href="../examples-xml/vtable1k.csd.xml"|g' opcodes/vtable1k.xml
+sed -i '' 's|href="examples-xml/vtablei.csd.xml"|href="../examples-xml/vtablei.csd.xml"|g' opcodes/vtablei.xml
+sed -i '' 's|href="examples-xml/vtablek.csd.xml"|href="../examples-xml/vtablek.csd.xml"|g' opcodes/vtablek.xml
+sed -i '' 's|href="examples-xml/vtablewa.csd.xml"|href="../examples-xml/vtablewa.csd.xml"|g' opcodes/vtablewa.xml
+sed -i '' 's|href="examples-xml/vtablewk.csd.xml"|href="../examples-xml/vtablewk.csd.xml"|g' opcodes/vtablewk.xml
+sed -i '' 's|href="examples-xml/waveset.csd.xml"|href="../examples-xml/waveset.csd.xml"|g' opcodes/waveset.xml
+sed -i '' 's|href="examples-xml/websocket.csd.xml"|href="../examples-xml/websocket.csd.xml"|g' opcodes/websocket.xml
+sed -i '' 's|href="examples-xml/weibull.csd.xml"|href="../examples-xml/weibull.csd.xml"|g' opcodes/weibull.xml
+sed -i '' 's|href="examples-xml/wgbow.csd.xml"|href="../examples-xml/wgbow.csd.xml"|g' opcodes/wgbow.xml
+sed -i '' 's|href="examples-xml/wgbowedbar.csd.xml"|href="../examples-xml/wgbowedbar.csd.xml"|g' opcodes/wgbowedbar.xml
+sed -i '' 's|href="examples-xml/wgbrass.csd.xml"|href="../examples-xml/wgbrass.csd.xml"|g' opcodes/wgbrass.xml
+sed -i '' 's|href="examples-xml/wgclar.csd.xml"|href="../examples-xml/wgclar.csd.xml"|g' opcodes/wgclar.xml
+sed -i '' 's|href="examples-xml/wgflute.csd.xml"|href="../examples-xml/wgflute.csd.xml"|g' opcodes/wgflute.xml
+sed -i '' 's|href="examples-xml/wgpluck.csd.xml"|href="../examples-xml/wgpluck.csd.xml"|g' opcodes/wgpluck.xml
+sed -i '' 's|href="examples-xml/wgpluck_brighter.csd.xml"|href="../examples-xml/wgpluck_brighter.csd.xml"|g' opcodes/wgpluck.xml
+sed -i '' 's|href="examples-xml/wgpluck2.csd.xml"|href="../examples-xml/wgpluck2.csd.xml"|g' opcodes/wgpluck2.xml
+sed -i '' 's|href="examples-xml/wguide1.csd.xml"|href="../examples-xml/wguide1.csd.xml"|g' opcodes/wguide1.xml
+sed -i '' 's|href="examples-xml/wguide2.csd.xml"|href="../examples-xml/wguide2.csd.xml"|g' opcodes/wguide2.xml
+sed -i '' 's|href="examples-xml/while.csd.xml"|href="../examples-xml/while.csd.xml"|g' opcodes/while.xml
+sed -i '' 's|href="examples-xml/wii.csd.xml"|href="../examples-xml/wii.csd.xml"|g' opcodes/wiiconnect.xml
+sed -i '' 's|href="examples-xml/window.csd.xml"|href="../examples-xml/window.csd.xml"|g' opcodes/window.xml
+sed -i '' 's|href="examples-xml/wrap.csd.xml"|href="../examples-xml/wrap.csd.xml"|g' opcodes/wrap.xml
+sed -i '' 's|href="examples-xml/readscratch.csd.xml"|href="../examples-xml/readscratch.csd.xml"|g' opcodes/writescratch.xml
+sed -i '' 's|href="examples-xml/wterrain.csd.xml"|href="../examples-xml/wterrain.csd.xml"|g' opcodes/wterrain.xml
+sed -i '' 's|href="examples-xml/xadsr.csd.xml"|href="../examples-xml/xadsr.csd.xml"|g' opcodes/xadsr.xml
+sed -i '' 's|href="examples-xml/xscanmap.csd.xml"|href="../examples-xml/xscanmap.csd.xml"|g' opcodes/xscanmap.xml
+sed -i '' 's|href="examples-xml/xscans.csd.xml"|href="../examples-xml/xscans.csd.xml"|g' opcodes/xscans.xml
+sed -i '' 's|href="examples-xml/xscanu.csd.xml"|href="../examples-xml/xscanu.csd.xml"|g' opcodes/xscanu.xml
+sed -i '' 's|href="examples-xml/xtratim.csd.xml"|href="../examples-xml/xtratim.csd.xml"|g' opcodes/xtratim.xml
+sed -i '' 's|href="examples-xml/xtratim-2.csd.xml"|href="../examples-xml/xtratim-2.csd.xml"|g' opcodes/xtratim.xml
+sed -i '' 's|href="examples-xml/xyin.csd.xml"|href="../examples-xml/xyin.csd.xml"|g' opcodes/xyin.xml
+sed -i '' 's|href="examples-xml/zacl.csd.xml"|href="../examples-xml/zacl.csd.xml"|g' opcodes/zacl.xml
+sed -i '' 's|href="examples-xml/zakinit.csd.xml"|href="../examples-xml/zakinit.csd.xml"|g' opcodes/zakinit.xml
+sed -i '' 's|href="examples-xml/zamod.csd.xml"|href="../examples-xml/zamod.csd.xml"|g' opcodes/zamod.xml
+sed -i '' 's|href="examples-xml/zar.csd.xml"|href="../examples-xml/zar.csd.xml"|g' opcodes/zar.xml
+sed -i '' 's|href="examples-xml/zarg.csd.xml"|href="../examples-xml/zarg.csd.xml"|g' opcodes/zarg.xml
+sed -i '' 's|href="examples-xml/zaw.csd.xml"|href="../examples-xml/zaw.csd.xml"|g' opcodes/zaw.xml
+sed -i '' 's|href="examples-xml/zawm.csd.xml"|href="../examples-xml/zawm.csd.xml"|g' opcodes/zawm.xml
+sed -i '' 's|href="examples-xml/zir.csd.xml"|href="../examples-xml/zir.csd.xml"|g' opcodes/zir.xml
+sed -i '' 's|href="examples-xml/ziw.csd.xml"|href="../examples-xml/ziw.csd.xml"|g' opcodes/ziw.xml
+sed -i '' 's|href="examples-xml/ziwm.csd.xml"|href="../examples-xml/ziwm.csd.xml"|g' opcodes/ziwm.xml
+sed -i '' 's|href="examples-xml/zkcl.csd.xml"|href="../examples-xml/zkcl.csd.xml"|g' opcodes/zkcl.xml
+sed -i '' 's|href="examples-xml/zkmod.csd.xml"|href="../examples-xml/zkmod.csd.xml"|g' opcodes/zkmod.xml
+sed -i '' 's|href="examples-xml/zkr.csd.xml"|href="../examples-xml/zkr.csd.xml"|g' opcodes/zkr.xml
+sed -i '' 's|href="examples-xml/zkw.csd.xml"|href="../examples-xml/zkw.csd.xml"|g' opcodes/zkw.xml
+sed -i '' 's|href="examples-xml/zkwm.csd.xml"|href="../examples-xml/zkwm.csd.xml"|g' opcodes/zkwm.xml
+sed -i '' 's|href="examples-xml/oscils.csd.xml"|href="../examples-xml/oscils.csd.xml"|g' preface/gettingstarted.xml
+sed -i '' 's|href="examples-xml/a.csd.xml"|href="../examples-xml/a.csd.xml"|g' scoregens/a.xml
+sed -i '' 's|href="examples-xml/b.csd.xml"|href="../examples-xml/b.csd.xml"|g' scoregens/b.xml
+sed -i '' 's|href="examples-xml/e.csd.xml"|href="../examples-xml/e.csd.xml"|g' scoregens/e.xml
+sed -i '' 's|href="examples-xml/gen01.csd.xml"|href="../examples-xml/gen01.csd.xml"|g' scoregens/gen01.xml
+sed -i '' 's|href="examples-xml/gen02.csd.xml"|href="../examples-xml/gen02.csd.xml"|g' scoregens/gen02.xml
+sed -i '' 's|href="examples-xml/gen03.csd.xml"|href="../examples-xml/gen03.csd.xml"|g' scoregens/gen03.xml
+sed -i '' 's|href="examples-xml/gen04.csd.xml"|href="../examples-xml/gen04.csd.xml"|g' scoregens/gen04.xml
+sed -i '' 's|href="examples-xml/gen05.csd.xml"|href="../examples-xml/gen05.csd.xml"|g' scoregens/gen05.xml
+sed -i '' 's|href="examples-xml/gen06.csd.xml"|href="../examples-xml/gen06.csd.xml"|g' scoregens/gen06.xml
+sed -i '' 's|href="examples-xml/gen07.csd.xml"|href="../examples-xml/gen07.csd.xml"|g' scoregens/gen07.xml
+sed -i '' 's|href="examples-xml/gen08.csd.xml"|href="../examples-xml/gen08.csd.xml"|g' scoregens/gen08.xml
+sed -i '' 's|href="examples-xml/gen09.csd.xml"|href="../examples-xml/gen09.csd.xml"|g' scoregens/gen09.xml
+sed -i '' 's|href="examples-xml/gen10.csd.xml"|href="../examples-xml/gen10.csd.xml"|g' scoregens/gen10.xml
+sed -i '' 's|href="examples-xml/gen11.csd.xml"|href="../examples-xml/gen11.csd.xml"|g' scoregens/gen11.xml
+sed -i '' 's|href="examples-xml/gen12.csd.xml"|href="../examples-xml/gen12.csd.xml"|g' scoregens/gen12.xml
+sed -i '' 's|href="examples-xml/gen13.csd.xml"|href="../examples-xml/gen13.csd.xml"|g' scoregens/gen13.xml
+sed -i '' 's|href="examples-xml/gen14.csd.xml"|href="../examples-xml/gen14.csd.xml"|g' scoregens/gen14.xml
+sed -i '' 's|href="examples-xml/gen15.csd.xml"|href="../examples-xml/gen15.csd.xml"|g' scoregens/gen15.xml
+sed -i '' 's|href="examples-xml/gen16.csd.xml"|href="../examples-xml/gen16.csd.xml"|g' scoregens/gen16.xml
+sed -i '' 's|href="examples-xml/gen17.csd.xml"|href="../examples-xml/gen17.csd.xml"|g' scoregens/gen17.xml
+sed -i '' 's|href="examples-xml/gen18.csd.xml"|href="../examples-xml/gen18.csd.xml"|g' scoregens/gen18.xml
+sed -i '' 's|href="examples-xml/gen19.csd.xml"|href="../examples-xml/gen19.csd.xml"|g' scoregens/gen19.xml
+sed -i '' 's|href="examples-xml/gen20.csd.xml"|href="../examples-xml/gen20.csd.xml"|g' scoregens/gen20.xml
+sed -i '' 's|href="examples-xml/gen21.csd.xml"|href="../examples-xml/gen21.csd.xml"|g' scoregens/gen21.xml
+sed -i '' 's|href="examples-xml/gen23.csd.xml"|href="../examples-xml/gen23.csd.xml"|g' scoregens/gen23.xml
+sed -i '' 's|href="examples-xml/gen24.csd.xml"|href="../examples-xml/gen24.csd.xml"|g' scoregens/gen24.xml
+sed -i '' 's|href="examples-xml/gen25.csd.xml"|href="../examples-xml/gen25.csd.xml"|g' scoregens/gen25.xml
+sed -i '' 's|href="examples-xml/gen27.csd.xml"|href="../examples-xml/gen27.csd.xml"|g' scoregens/gen27.xml
+sed -i '' 's|href="examples-xml/gen28.csd.xml"|href="../examples-xml/gen28.csd.xml"|g' scoregens/gen28.xml
+sed -i '' 's|href="examples-xml/gen30.csd.xml"|href="../examples-xml/gen30.csd.xml"|g' scoregens/gen30.xml
+sed -i '' 's|href="examples-xml/gen32.csd.xml"|href="../examples-xml/gen32.csd.xml"|g' scoregens/gen32.xml
+sed -i '' 's|href="examples-xml/gen33.csd.xml"|href="../examples-xml/gen33.csd.xml"|g' scoregens/gen33.xml
+sed -i '' 's|href="examples-xml/gen34.csd.xml"|href="../examples-xml/gen34.csd.xml"|g' scoregens/gen34.xml
+sed -i '' 's|href="examples-xml/gen40.csd.xml"|href="../examples-xml/gen40.csd.xml"|g' scoregens/gen40.xml
+sed -i '' 's|href="examples-xml/gen41.csd.xml"|href="../examples-xml/gen41.csd.xml"|g' scoregens/gen41.xml
+sed -i '' 's|href="examples-xml/gen42.csd.xml"|href="../examples-xml/gen42.csd.xml"|g' scoregens/gen42.xml
+sed -i '' 's|href="examples-xml/gen49.csd.xml"|href="../examples-xml/gen49.csd.xml"|g' scoregens/gen49.xml
+sed -i '' 's|href="examples-xml/gen51.csd.xml"|href="../examples-xml/gen51.csd.xml"|g' scoregens/gen51.xml
+sed -i '' 's|href="examples-xml/gen52.csd.xml"|href="../examples-xml/gen52.csd.xml"|g' scoregens/gen52.xml
+sed -i '' 's|href="examples-xml/genexp.csd.xml"|href="../examples-xml/genexp.csd.xml"|g' scoregens/genexp.xml
+sed -i '' 's|href="examples-xml/genfarey.csd.xml"|href="../examples-xml/genfarey.csd.xml"|g' scoregens/genfarey.xml
+sed -i '' 's|href="examples-xml/genfarey-2.csd.xml"|href="../examples-xml/genfarey-2.csd.xml"|g' scoregens/genfarey.xml
+sed -i '' 's|href="examples-xml/padsynth_gen.csd.xml"|href="../examples-xml/padsynth_gen.csd.xml"|g' scoregens/genpadsynth.xml
+sed -i '' 's|href="examples-xml/gensone.csd.xml"|href="../examples-xml/gensone.csd.xml"|g' scoregens/gensone.xml
+sed -i '' 's|href="examples-xml/gentanh.csd.xml"|href="../examples-xml/gentanh.csd.xml"|g' scoregens/gentanh.xml
+sed -i '' 's|href="examples-xml/genwave.csd.xml"|href="../examples-xml/genwave.csd.xml"|g' scoregens/genwave.xml
+sed -i '' 's|href="examples-xml/i_statement.csd.xml"|href="../examples-xml/i_statement.csd.xml"|g' scoregens/i.xml
+sed -i '' 's|href="examples-xml/leftbrace.csd.xml"|href="../examples-xml/leftbrace.csd.xml"|g' scoregens/leftbrace.xml
+sed -i '' 's|href="examples-xml/m.csd.xml"|href="../examples-xml/m.csd.xml"|g' scoregens/m.xml
+sed -i '' 's|href="examples-xml/q.csd.xml"|href="../examples-xml/q.csd.xml"|g' scoregens/q.xml
+sed -i '' 's|href="examples-xml/r.csd.xml"|href="../examples-xml/r.csd.xml"|g' scoregens/r.xml
+sed -i '' 's|href="examples-xml/s.csd.xml"|href="../examples-xml/s.csd.xml"|g' scoregens/s.xml
+sed -i '' 's|href="examples-xml/t.csd.xml"|href="../examples-xml/t.csd.xml"|g' scoregens/t.xml
+sed -i '' 's|href="examples-xml/v.csd.xml"|href="../examples-xml/v.csd.xml"|g' scoregens/v.xml
+sed -i '' 's|href="examples-xml/x.csd.xml"|href="../examples-xml/x.csd.xml"|g' scoregens/x.xml
+sed -i '' 's|href="examples-xml/y_statement.csd.xml"|href="../examples-xml/y_statement.csd.xml"|g' scoregens/y.xml
