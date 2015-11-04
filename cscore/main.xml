@@ -1,5 +1,5 @@
-
-<section id="CscoreMain">
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" id="CscoreMain">
   <title>Writing a Cscore Control Program</title>
 
   <para>
@@ -7,7 +7,7 @@
 
     <informalexample>
       <programlisting>
-#include  &quot;cscore.h&quot; 
+#include  "cscore.h" 
 void cscore(CSOUND *cs) 
 { 
  /*  VARIABLE DECLARATIONS  */ 
@@ -27,13 +27,13 @@ void cscore(CSOUND *cs)
   <para>
     <informalexample>
       <programlisting>
-#include  &quot;cscore.h&quot; 
+#include  "cscore.h" 
 void cscore(CSOUND *cs) 
 { 
      EVLIST *a;                    /* a is allowed to point to an event list */ 
      a = cscoreListGetSection(cs); /* read events in, return the list pointer */ 
      cscoreListPut(cs, a);         /* write these events out (unchanged) */ 
-     cscorePutString(cs, &quot;e&quot;);     /* write the string e to output */ 
+     cscorePutString(cs, "e");     /* write the string e to output */ 
 }</programlisting>
     </informalexample>
   </para>
@@ -51,7 +51,7 @@ void cscore(CSOUND *cs)
   <para>
     <informalexample>
       <programlisting>
-#include  &quot;cscore.h&quot; 
+#include  "cscore.h" 
 void cscore(CSOUND *cs) 
 { 
      EVENT  *e;                    /* a pointer to an event   */ 
@@ -60,7 +60,7 @@ void cscore(CSOUND *cs)
      e = a-&gt;e[4];                  /* point to event 4 in event list a  */ 
      e-&gt;p[5] *= 2;                 /* find pfield 5, multiply its value by 2 */ 
      cscoreListPut(cs, a);         /* write out the list of events  */ 
-     cscorePutString(cs, &quot;e&quot;);     /* add a &quot;score end&quot; statement */ 
+     cscorePutString(cs, "e");     /* add a "score end" statement */ 
 }</programlisting>
     </informalexample>
   </para>
@@ -142,23 +142,23 @@ for (index = 1; index &lt;= a-&gt;nevents; index++)
   <para>
     <informalexample>
       <programlisting>
-#include  &quot;cscore.h&quot;
+#include  "cscore.h"
 void cscore(CSOUND *cs)
 {
       EVENT  *e, *f;
       EVLIST *a, *b;
       int n;
       
-      a = cscoreListGetSection(cs);            /* read score into event list &quot;a&quot; */ 
+      a = cscoreListGetSection(cs);            /* read score into event list "a" */ 
       b = cscoreListSeparateF(cs, a);          /* separate f statements */ 
       cscoreListPut(cs, b);                    /* write f statements out to score */ 
       cscoreListFreeEvents(cs, b);             /* and release the spaces used */ 
-      e = cscoreDefineEvent(cs, &quot;t 0 120&quot;);    /* define event for tempo statement */ 
+      e = cscoreDefineEvent(cs, "t 0 120");    /* define event for tempo statement */ 
       cscorePutEvent(cs, e);                   /* write tempo statement to score */ 
       cscoreListPut(cs, a);                    /* write the notes */ 
-      cscorePutString(cs, &quot;s&quot;);                /* section end */ 
+      cscorePutString(cs, "s");                /* section end */ 
       cscorePutEvent(cs, e);                   /* write tempo statement again */ 
-      b = cscoreListCopyEvents(cs, a);         /* make a copy of the notes in &quot;a&quot; */ 
+      b = cscoreListCopyEvents(cs, a);         /* make a copy of the notes in "a" */ 
       for (n = 1; n &lt;= b-&gt;nevents; n++)        /* iterate the following lines nevents times: */
       { 
           f = b-&gt;e[n]; 
@@ -166,7 +166,7 @@ void cscore(CSOUND *cs)
       }
       a = cscoreListAppendList(cs, a, b);      /* now add these notes to original pitches */ 
       cscoreListPut(cs, a); 
-      cscorePutString(cs, &quot;e&quot;);
+      cscorePutString(cs, "e");
 }</programlisting>
     </informalexample>
   </para>
@@ -207,7 +207,7 @@ void cscore(CSOUND *cs)
   <para>
     <informalexample>
       <programlisting>
-#include &quot;cscore.h&quot; 
+#include "cscore.h" 
 void cscore(CSOUND *cs)
 {
       EVENT  *e, *f;
@@ -218,10 +218,10 @@ void cscore(CSOUND *cs)
       b = cscoreListSeparateF(cs, a);
       cscoreListPut(cs, b);
       cscoreListFreeEvents(cs, b);
-      e = cscoreDefineEvent(cs, &quot;t 0 120&quot;);
+      e = cscoreDefineEvent(cs, "t 0 120");
       cscorePutEvent(cs, e);
       cscoreListPut(cs, a);
-      cscorePutString(cs, &quot;s&quot;);
+      cscorePutString(cs, "s");
       cscorePutEvent(cs, e);                   /* write out another tempo statement */
       b = cscoreListCopyEvents(cs, a);
       dim = 0;                                 /* initialize dim to 0 */ 
@@ -234,7 +234,7 @@ void cscore(CSOUND *cs)
       }
       a = cscoreListAppendList(cs, a, b);      /* now add these notes to original pitches */ 
       cscoreListPut(cs, a); 
-      cscorePutString(cs, &quot;e&quot;);
+      cscorePutString(cs, "e");
 }</programlisting>
     </informalexample>
   </para>
@@ -269,7 +269,7 @@ void cscore(CSOUND *cs)
   <para>
     <informalexample>
       <programlisting>
-#include  &quot;cscore.h&quot; 
+#include  "cscore.h" 
 int cue[3] = {0,10,17};                        /* declare an array of 3 integers */ 
 void cscore(CSOUND *cs) 
 {
@@ -281,7 +281,7 @@ void cscore(CSOUND *cs)
       b = cscoreListSeparateF(cs, a);
       cscoreListPut(cs, b);
       cscoreListFreeEvents(cs, b);
-      e = cscoreDefineEvent(cs, &quot;t 0 120&quot;);
+      e = cscoreDefineEvent(cs, "t 0 120");
       cscorePutEvent(cs, e);
       dim = 0; 
       for (cuecount = 0; cuecount &lt;= 2; cuecount++) /* elements of cue are numbered 0, 1, 2 */
@@ -292,11 +292,11 @@ void cscore(CSOUND *cs)
               f-&gt;p[6] -= dim; 
               f-&gt;p[2] += cue[cuecount];        /* add values of cue */ 
           } 
-          printf(&quot;; diagnostic:  cue = %d\n&quot;, cue[cuecount]); 
+          printf("; diagnostic:  cue = %d\n", cue[cuecount]); 
           dim += 2000; 
           cscoreListPut(cs, a);
       } 
-      cscorePutString(cs, &quot;e&quot;);
+      cscorePutString(cs, "e");
 }</programlisting>
     </informalexample>
   </para>

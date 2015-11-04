@@ -1,4 +1,5 @@
-<chapter id="csound5extending">
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" id="csound5extending">
 
 <title>Extending Csound</title>
 
@@ -49,7 +50,7 @@ For earlier versions, all opcode functions omit the first parameter (<literal>CS
 /* newgen.h  -  define a structure */
 
 /* Declares Csound structures and functions. */
-#include &quot;csoundCore.h&quot;
+#include "csoundCore.h"
 
 typedef struct
 {
@@ -62,9 +63,9 @@ typedef struct
 
 /* newgen.c -  init and perf code */
 /* Declares Csound structures and functions. */
-#include &quot;csoundCore.h&quot;
+#include "csoundCore.h"
 /* Declares RMP structure. */
-#include &quot;newgen.h&quot;
+#include "newgen.h"
 
 int rampset (CSOUND *csound, RMP * p)     /* at note initialization: */
 {
@@ -97,13 +98,13 @@ int ramp (CSOUND *csound, RMP * p)        /* during note performance: */
 
 <informalexample>
 <programlisting>
-#include &quot;newgen.h&quot;
+#include "newgen.h"
 
 int rampset(CSOUND *, RMP *), ramp(CSOUND *, RMP *);
 
 /*   opname    dsblksiz  thread    outypes   intypes   iopadr    kopadr    aopadr  */
 
-{ &quot;rampt&quot;,  S(RMP),  5,        &quot;a&quot;,      &quot;iiio&quot;,     (SUBR) rampset, (SUBR) NULL, (SUBR) ramp  },</programlisting>
+{ "rampt",  S(RMP),  5,        "a",      "iiio",     (SUBR) rampset, (SUBR) NULL, (SUBR) ramp  },</programlisting>
 </informalexample>
 </para>
 
@@ -212,7 +213,7 @@ other Csound build, and the new module will be built into your Csound.</para>
     <title>Additional Space</title>
 
     <para>
-      Sometimes the space requirement of a module is too large to be part of a structure (upper limit 65279 bytes, due to the unsigned short dsblksiz parameter and reserved codes >= 0xFF00), or it is dependent on an i-arg value which is not known until initialization. Additional space can be dynamically allocated and properly managed by including the line
+      Sometimes the space requirement of a module is too large to be part of a structure (upper limit 65279 bytes, due to the unsigned short dsblksiz parameter and reserved codes &gt;= 0xFF00), or it is dependent on an i-arg value which is not known until initialization. Additional space can be dynamically allocated and properly managed by including the line
       <informalexample>
         <programlisting>AUXCH      auxch;</programlisting>
       </informalexample>
@@ -490,10 +491,10 @@ for all possible input types):
 <entry><literal>S</literal></entry><entry>String</entry>
 </row>
 <row>
-<entry><literal>B</literal></entry><entry></entry>
+<entry><literal>B</literal></entry><entry/>
 </row>
 <row>
-<entry><literal>l</literal></entry><entry></entry>
+<entry><literal>l</literal></entry><entry/>
 </row>
 <row>
 <entry><literal>m</literal></entry><entry>Begins an indefinite list of <literal>i</literal>-rate arguments
@@ -572,4 +573,3 @@ and <literal>a</literal>-rate arguments (kaka...)
 </section>
 
 </chapter>
-
