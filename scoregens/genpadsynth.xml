@@ -15,47 +15,93 @@
   <refsect1>
     <title>Description</title>
     <para>
-      Creates an ftable for use in an oscillator with values creared
-      by the padsynth algorithm.
-    </para>
+Paul Octavian Nasca's "padsynth algorithm" adds bandwidth to each partial of a
+periodic weaveform. This bandwidth is heard as color, movement, and additional
+richness of sound.
+   </para>
+    <para>
+First, the waveform is defined by the user as a series of harmonic partials.
+Then, bandwidth is added by independently spreading each partial of the
+original waveform from a single frequency across neighboring frequencies,
+according to a "profile" function: a Gaussian curve, a square, or a rising
+and then falling expontential.
+   </para>
+    <para>
+The partials of the original waveform may be considered to be samples in a
+discrete Fourier transform of the waveform. Normally there is not an exact
+one-to-one correspondence between the frequencies of the samples (frequency
+bins) of the discrete Fourier transform with the frequencies of the partials
+of the original waveform, because any frequency in the inverse of the discrete
+Fourier transform might be synthesized by interference between any number of
+bins. However, the padsynth algorithm uses a simple trick to create this
+correspondence. The discrete Fourier transform is simply made so large that
+the frequency of any partial of the original waveform will be very close to
+the frequency of the corresponding bin in the Fourier transform. Once this
+correspondence has been created, the bandwidth profile can be applied by
+centering it over the frequency bin of the original partial, scaling the
+profile by the bandwidth, and simply multiplying the original partial by each
+sample of the profile and adding the product to the corresponding bin of the
+Fourier transform.
+   </para>
+    <para>
+As the frequencies of the partials increase, their bandwidth may optionally
+become wider or (less often) narrower.
+   </para>
+    <para>
+Once each partial has been spread out in this way, the discrete Fourier
+transform may be given random phases, and is then simply inverted to
+synthesize the desired waveform, which may be used as the wavetable for
+a digital oscillator.
+   </para>
+    <para>
+N.B.: The size of the function table does NOT necessarily reflect one periodic
+cycle of the waveform that it contains. The fundamental frequency must be used
+to generate the desired pitch from an oscillator using the function table, e.g.
+   </para>
+    <code>
+    oscillator_hz = desired_hz * (sr / padsynth_size / fundamental_hz)
+    </code>
   </refsect1>
   <refsect1>
-    <title>DRAFT Syntax</title>
-    <synopsis><command>f</command> # time size "padsynth" fundamentalFrq
-    partialBW partial_Scale harmonicStretch hampl1, hampl2, ...</synopsis>
+    <title>Syntax</title>
+    <synopsis><command>f</command> # score_time table_size "padsynth" fundamental_frequency
+    partial_bandwidth partial_scale harmonic_stretch profile_shape profile_shape_parameter
+    partial1_amplitude [partial2_amplitude ...]</synopsis>
   </refsect1>
 
   <refsect1>
-    <title>DRAFT Initialization</title>
+    <title>Initialization</title>
     <para>
-      <emphasis>size</emphasis> -- number of points in the table. Must
-      be a power of 2 or power-of-2 plus 1 (see <link
+      <emphasis>table_size</emphasis> -- Function table size. Should be large,
+            e.g. 2^18 == 262144. Must be a power of 2 or power-of-2 plus 1 (see <link
       linkend="f"><citetitle>f statement</citetitle></link>).
     </para>
 
     <para>
-      <emphasis>fundamentalFrq</emphasis> -- fundamental frequency for
+      <emphasis>fundamental_frequency</emphasis> -- Fundamental frequency for
       the generated table.
     </para>
     <para>
-      <emphasis>partialBW</emphasis> -- bandwidth of each partial in cents.
+      <emphasis>partial_bandwidth</emphasis> -- Bandwidth of each partial in cents.
     </para>
     <para>
-      <emphasis>partialScale</emphasis> -- ration that bandwidth
-      inccreases with harmonic number.
+      <emphasis>partial_scale</emphasis> -- Scaling factor for bandwidth of each partial (log of increase/decrease
+            with partial frequency, 0 is no stretch or shrink).
     </para>
     <para>
-      <emphasis>harmonicStretchScale</emphasis> -- ratio of stretch of
-      thre overtoes.
+      <emphasis>harmonic_stretch</emphasis> -- Harmonic stretch/shrink for all partials (1 is harmonic).
     </para>
     <para>
-      <emphasis>hamp1, hamp2, ...</emphasis> -- relative amplitudes of
-      the partials
+      <emphasis>profile_shape</emphasis> -- Number specifying the shape of the bandwidth profile:
+      1 = Gaussian, 2 = square, and 3 = exponential
+    </para>
+    <para>
+      <emphasis>profile_shape_parameter</emphasis> -- Parameter passed to the function generating the profile shape, e.g. exponent.
+    </para>
+    <para>
+      <emphasis>partial1_amplitude, partial2_amplitude, ...</emphasis> -- Amplitudes for each partial (may be zero).
     </para>
 
-    <para>
-      The table is filled with a sample that can be used in an oscillator
-    </para>
   </refsect1>
 
   <refsect1>
