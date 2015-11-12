@@ -10,6 +10,9 @@
 instr 1
       ii date
       print ii
+      ii,ij date
+      print ii
+      print ij
       Sa dates ii
       prints Sa
       Ss dates -1
