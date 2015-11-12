@@ -8,8 +8,6 @@
 </CsOptions>
 <CsInstruments>
 instr 1
-      ii date
-      print ii
       ii,ij date
       print ii
       print ij
