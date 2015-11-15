@@ -516,6 +516,12 @@ pdfA4: $(XSL_PRINT) manual.xml $(SRCS) Makefile
 	fop.sh -fo $(BASENAME)$(VERSION)_manual_A4.fo -pdf $(BASENAME)$(VERSION)_manual_A4.pdf
 	rm $(BASENAME)$(VERSION)_manual_A4.fo
 
+tex-pdf: manual.xml $(SRCS) Makefile
+	cd tex; xetex -fmt xelatex csound-manual.dtx
+	xsltproc --xinclude --output csound-manual.tex xsl/DocBookToTeX.xsl manual.xml
+	xetex -enable-write18 -fmt=xelatex csound-manual.tex
+	xetex -enable-write18 -fmt=xelatex csound-manual.tex
+
 htmlhelp: ${XSL_HTMLHELP} manual.xml $(SRCS)
 	-mkdir -p ${HTMLHELP_DIR}
 	xsltproc  --xinclude -o ${HTMLHELP_DIR}/ ${XSL_HTMLHELP} manual.xml
