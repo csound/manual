@@ -481,7 +481,6 @@ html: $(XSL_HTML) manual.xml $(SRCS) Makefile
 html-dist:
 	python quickref.py
 	$(MAKE) html
-	python makeframes.py
 
 html-bw: $(XSL_HTML) manual.xml $(SRCS) Makefile
 	-mkdir -p ${HTML_DIR}
