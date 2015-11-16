@@ -173,7 +173,8 @@ class OrchestraTransform(object):
         s = s.replace('LeSsThAn', '&lt;')
         outfn = filename.replace('examples', 'examples-xml')
         fout = open(outfn + '.xml', 'w')
-        fout.write('<programlisting>\n')
+        fout.write('<?xml version="1.0" encoding="UTF-8"?>\n')
+        fout.write('<programlisting xmlns="http://docbook.org/ns/docbook" version="5.0">\n')
         fout.write(s)
         fout.write('</programlisting>')
         fout.close()
@@ -255,7 +256,8 @@ class CsdTransform(object):
         orchestra = csddoc.getElementsByTagName("CsInstruments")[0]
         score = csddoc.getElementsByTagName("CsScore")[0]
         outLines = []
-        outLines.append('<programlisting>')
+        outLines.append('<?xml version="1.0" encoding="UTF-8"?>')
+        outLines.append('<programlisting xmlns="http://docbook.org/ns/docbook" version="5.0">')
         outLines.append(tag("CsoundSynthesizer"))
         if len(options_elem) > 0:
             outLines.append(tag("CsOptions"))
