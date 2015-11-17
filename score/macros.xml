@@ -1,61 +1,61 @@
-
-<section id="ScoreMacros">
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" id="ScoreMacros">
   <title>Score Macros</title>
  
   <simplesect>
     <title>Description</title>
     <para>
-      Macros are textual replacements which are made in the score as it is being presented to the system.  The macro system in Csound is a very simple one, and uses the characters &num; and &dollar; to define and call macros. This can can allow for simpler score writing, and provide an elementary alternative to full score generation systems.The score macro system is similar to, but independent of, the macro system in the orchestra language.
+      Macros are textual replacements which are made in the score as it is being presented to the system.  The macro system in Csound is a very simple one, and uses the characters # and $ to define and call macros. This can can allow for simpler score writing, and provide an elementary alternative to full score generation systems.The score macro system is similar to, but independent of, the macro system in the orchestra language.
 
       <indexterm id="IndexScoreMacros"><primary>score</primary><secondary>macros</secondary></indexterm>
       <indexterm id="IndexMacrosScore"><primary>macros</primary><secondary>score</secondary></indexterm>
     </para>
 
     <para>
-      <emphasis>&num;define</emphasis> NAME -- defines a simple macro. The name of the macro must begin with a letter and can consist of any combination of letters and numbers. Case is significant. This form is limiting, in that the variable names are fixed.  More flexibility can be obtained by using a macro with arguments, described below.
+      <emphasis>#define</emphasis> NAME -- defines a simple macro. The name of the macro must begin with a letter and can consist of any combination of letters and numbers. Case is significant. This form is limiting, in that the variable names are fixed.  More flexibility can be obtained by using a macro with arguments, described below.
 
-    <indexterm id="IndexDefineScore"><primary>&num;define</primary><secondary>score</secondary></indexterm>
-    <indexterm id="IndexNameScore"><primary>&dollar;name</primary><secondary>score</secondary></indexterm>
-    <indexterm id="IndexUndefScore"><primary>&num;undef</primary><secondary>score</secondary></indexterm>
+    <indexterm id="IndexDefineScore"><primary>#define</primary><secondary>score</secondary></indexterm>
+    <indexterm id="IndexNameScore"><primary>$name</primary><secondary>score</secondary></indexterm>
+    <indexterm id="IndexUndefScore"><primary>#undef</primary><secondary>score</secondary></indexterm>
     </para>
 
     <para>
-      <emphasis>&num;define</emphasis> NAME(<emphasis>a&apos; b&apos; c&apos;</emphasis>) -- defines a macro with arguments. This can be used in more complex situations. The name of the macro must begin with a letter and can consist of any combination of letters and numbers. Within the replacement text, the arguments can be substituted by the form: &dollar;A.  In fact, the implementation defines the arguments as simple macros.  There may be up to 5 arguments, and the names may be any choice of letters.  Remember that case is significant in macro names.
+      <emphasis>#define</emphasis> NAME(<emphasis>a' b' c'</emphasis>) -- defines a macro with arguments. This can be used in more complex situations. The name of the macro must begin with a letter and can consist of any combination of letters and numbers. Within the replacement text, the arguments can be substituted by the form: $A.  In fact, the implementation defines the arguments as simple macros.  There may be up to 5 arguments, and the names may be any choice of letters.  Remember that case is significant in macro names.
     </para>
 
     <para>
-      <emphasis>&dollar;NAME.</emphasis> --  calls a defined macro.  To use a macro, the name is used following a &dollar; character.  The name is terminated by the first character which is neither a letter nor a number.  If it is necessary for the name not to terminate with a space, a period, which will be ignored, can be used to terminate the name.  The string, <emphasis>&dollar;NAME</emphasis>., is replaced by the replacement text from the definition.  The replacement text can also include macro calls.
+      <emphasis>$NAME.</emphasis> --  calls a defined macro.  To use a macro, the name is used following a $ character.  The name is terminated by the first character which is neither a letter nor a number.  If it is necessary for the name not to terminate with a space, a period, which will be ignored, can be used to terminate the name.  The string, <emphasis>$NAME</emphasis>., is replaced by the replacement text from the definition.  The replacement text can also include macro calls.
     </para>
 
     <para>
-      <emphasis>&num;undef</emphasis> NAME -- undefines a macro name. If a macro is no longer required, it can be undefined with <emphasis>&num;undef</emphasis> NAME.
+      <emphasis>#undef</emphasis> NAME -- undefines a macro name. If a macro is no longer required, it can be undefined with <emphasis>#undef</emphasis> NAME.
     </para>
   </simplesect>
 
  
   <simplesect>
     <title>Syntax</title>
-    <synopsis><command>&num;define</command> NAME &num; replacement text &num;</synopsis>
+    <synopsis><command>#define</command> NAME # replacement text #</synopsis>
 
-    <synopsis><command>&num;define</command> NAME(a&apos; b&apos; c&apos;) &num; replacement text &num;</synopsis>
+    <synopsis><command>#define</command> NAME(a' b' c') # replacement text #</synopsis>
 
-    <synopsis><command>&dollar;NAME.</command></synopsis>
+    <synopsis><command>$NAME.</command></synopsis>
 
-    <synopsis><command>&num;undef</command>  NAME</synopsis>
+    <synopsis><command>#undef</command>  NAME</synopsis>
   </simplesect>  
 
  
   <simplesect>
     <title>Initialization</title>
     <para>
-      <emphasis>&num; replacement text &num;</emphasis> --  The replacement text is any character string (not containing a &num;) and can extend over mutliple lines. The replacement text is enclosed within the &num; characters, which ensure that additional characters are not inadvertently captured.
+      <emphasis># replacement text #</emphasis> --  The replacement text is any character string (not containing a #) and can extend over mutliple lines. The replacement text is enclosed within the # characters, which ensure that additional characters are not inadvertently captured.
     </para>
   </simplesect>
  
   <simplesect>
     <title>Performance</title>
     <para>
-      Some care is needed with textual replacement macros, as they can sometimes do strange things.  They take no notice of any meaning, so spaces are significant. This is why, unlike the C programming language, the definition has the replacement text surrounded by &num; characters. Used carefully, this simple macro system is a powerful concept, but it can be abused.
+      Some care is needed with textual replacement macros, as they can sometimes do strange things.  They take no notice of any meaning, so spaces are significant. This is why, unlike the C programming language, the definition has the replacement text surrounded by # characters. Used carefully, this simple macro system is a powerful concept, but it can be abused.
     </para>
 
     <formalpara>
@@ -136,7 +136,7 @@
 
   <simplesect>
     <title>Credits</title>
-    <para>Author: &namejohn;</para>
+    <para>Author: John ffitch</para>
     <para>University of Bath/Codemist Ltd.</para>
     <para>Bath, UK</para>
     <para>April, 1998 (New in Csound version 3.48)</para>

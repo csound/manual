@@ -1,5 +1,5 @@
-
-<section id="CscoreAdvancd">
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" id="CscoreAdvancd">
   <title>More Advanced Examples</title>
 
   <para>
@@ -9,30 +9,30 @@
   <para>
     <informalexample>
       <programlisting>
-#include &quot;cscore.h&quot;              /*   CSCORE_SWITCH.C  */ 
+#include "cscore.h"              /*   CSCORE_SWITCH.C  */ 
 cscore(CSOUND* cs)               /* callable from either Csound or standalone cscore */ 
 { 
   EVLIST *a, *b; 
   FILE   *fp1, *fp2;                      /* declare two scorefile stream pointers */ 
   fp1 = cscoreFileGetCurrent(cs);         /* this is the command-line score */ 
-  fp2 = cscoreFileOpen(cs, &quot;score2.srt&quot;); /* this is an additional score file */ 
+  fp2 = cscoreFileOpen(cs, "score2.srt"); /* this is an additional score file */ 
   a = cscoreListGetSection(cs);           /* read section from score 1 */ 
   cscoreListPut(cs, a);                   /* write it out as is */ 
-  cscorePutString(cs, &quot;s&quot;); 
+  cscorePutString(cs, "s"); 
   cscoreFileSetCurrent(cs, fp2); 
   b = cscoreListGetSection(cs);           /* read section from score 2 */ 
   cscoreListPut(cs, b);                   /* write it out as is */ 
-  cscorePutString(cs, &quot;s&quot;); 
+  cscorePutString(cs, "s"); 
   cscoreListFreeEvents(cs, a);            /* optional to reclaim space */ 
   cscoreListFreeEvents(cs, b);
   cscoreFileSetCurrent(cs, fp1); 
   a = cscoreListGetSection(cs);           /* read next section from score 1 */ 
   cscoreListPut(cs, a);                   /* write it out */ 
-  cscorePutString(cs, &quot;s&quot;); 
+  cscorePutString(cs, "s"); 
   cscoreFileSetCurrent(cs, fp2); 
   b = cscoreListGetSection(cs);           /* read next sect from score 2 */ 
   cscoreListPut(cs, b);                   /* write it out */ 
-  cscorePutString(cs, &quot;e&quot;);
+  cscorePutString(cs, "e");
 }</programlisting>
     </informalexample>
   </para>
@@ -44,7 +44,7 @@ cscore(CSOUND* cs)               /* callable from either Csound or standalone cs
   <para>
     <informalexample>
       <programlisting>
-#include &quot;cscore.h&quot;              /*   CSCORE_PULSE.C  */ 
+#include "cscore.h"              /*   CSCORE_PULSE.C  */ 
   
 /* program to apply interpretive durational pulse to     */ 
 /* an existing score in 3/4 time, first beats on 0, 3, 6 ... */
@@ -74,13 +74,13 @@ cscore(CSOUND* cs)            /* This example should be called from Csound  */
    
   
   /* for (p = pulse16, n1 = 48; n1--; p += 4)  /* show vals &amp; diffs */ 
-  /*   printf(&quot;%g %g %g %g %g %g %g %g\n&quot;, *p, *(p+1), *(p+2), *(p+3), 
+  /*   printf("%g %g %g %g %g %g %g %g\n", *p, *(p+1), *(p+2), *(p+3), 
   /*  *(p+1)-*p, *(p+2)-*(p+1), *(p+3)-*(p+2), *(p+4)-*(p+3)); */ 
   
   a = cscoreListGetSection(cs);                /* read sect from tempo-warped score */ 
   b = cscoreListSeparateTWF(cs, a);            /* separate warp &amp; fn statements */ 
   cscoreListPlay(cs, b);                       /* and send these to performance */ 
-  a = cscoreListAppendStringEvent(cs, a, &quot;s&quot;); /* append a sect statement to note list */ 
+  a = cscoreListAppendStringEvent(cs, a, "s"); /* append a sect statement to note list */ 
   cscoreListPlay(cs, a);                       /* play the note-list without interpretation */ 
   for (ep = &amp;a-&gt;e[1], n1 = a-&gt;nevents; n1--; ) { /* now pulse-modifiy it */ 
     e = *ep++; 

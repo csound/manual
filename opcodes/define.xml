@@ -1,15 +1,15 @@
-
-<refentry id="define">
-<indexterm id="IndexDefine"><primary>&num;define</primary></indexterm>
-  <indexterm id="IndexDefineOrch"><primary>&num;define</primary><secondary>orchestra</secondary></indexterm>
+<?xml version="1.0" encoding="UTF-8"?>
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0" id="define">
+<indexterm id="IndexDefine"><primary>#define</primary></indexterm>
+  <indexterm id="IndexDefineOrch"><primary>#define</primary><secondary>orchestra</secondary></indexterm>
   <indexterm id="IndexDefineMacros"><primary>macros</primary><secondary>orchestra</secondary></indexterm>
   <refentryinfo><title>Orchestra Syntax:Macros</title></refentryinfo>
   <refmeta>
-    <refentrytitle>&num;define</refentrytitle>
+    <refentrytitle>#define</refentrytitle>
   </refmeta>
 
   <refnamediv>
-    <refname>&num;define</refname>
+    <refname>#define</refname>
     <refpurpose>
       Defines a macro.
     </refpurpose>
@@ -18,36 +18,36 @@
   <refsect1>
     <title>Description</title>
     <para>
-      Macros are textual replacements which are made in the orchestra as it is being read.  The macro system in Csound is a very simple one, and uses the characters &num; and &dollar; to define and call macros. This can save typing, and can lead to a coherent structure and consistent style.  This is similar to, but independent of, the <link linkend="ScoreMacros"><citetitle>macro system in the score language</citetitle></link>.
+      Macros are textual replacements which are made in the orchestra as it is being read.  The macro system in Csound is a very simple one, and uses the characters # and $ to define and call macros. This can save typing, and can lead to a coherent structure and consistent style.  This is similar to, but independent of, the <link linkend="ScoreMacros"><citetitle>macro system in the score language</citetitle></link>.
     </para>
 
     <para>
-      <emphasis>&num;define NAME</emphasis> -- defines a simple macro. The name of the macro must begin with a letter and can consist of any combination of letters and numbers. Case is significant. This form is limiting, in that the variable names are fixed.  More flexibility can be obtained by using a macro with arguments, described below.
+      <emphasis>#define NAME</emphasis> -- defines a simple macro. The name of the macro must begin with a letter and can consist of any combination of letters and numbers. Case is significant. This form is limiting, in that the variable names are fixed.  More flexibility can be obtained by using a macro with arguments, described below.
     </para>
 
     <para>
-      <emphasis>&num;define NAME</emphasis>(<emphasis>a&apos; b&apos; c&apos;</emphasis>) -- defines a macro with arguments. This can be used in more complex situations. The name of the macro must begin with a letter and can consist of any combination of letters and numbers. Within the replacement text, the arguments can be substituted by the form: &dollar;A.  In fact, the implementation defines the arguments as simple macros.  There may be up to 5 arguments, and the names may be any choice of letters.  Remember that case is significant in macro names.
+      <emphasis>#define NAME</emphasis>(<emphasis>a' b' c'</emphasis>) -- defines a macro with arguments. This can be used in more complex situations. The name of the macro must begin with a letter and can consist of any combination of letters and numbers. Within the replacement text, the arguments can be substituted by the form: $A.  In fact, the implementation defines the arguments as simple macros.  There may be up to 5 arguments, and the names may be any choice of letters.  Remember that case is significant in macro names.
     </para>
   </refsect1>
 
   <refsect1>
     <title>Syntax</title>
-    <synopsis><command>&num;define</command> NAME &num; replacement text &num;</synopsis>
+    <synopsis><command>#define</command> NAME # replacement text #</synopsis>
 
-    <synopsis><command>&num;define</command> NAME(a&apos; b&apos; c&apos;) &num; replacement text &num;</synopsis>
+    <synopsis><command>#define</command> NAME(a' b' c') # replacement text #</synopsis>
   </refsect1>
 
   <refsect1>
     <title>Initialization</title>
     <para>
-      <emphasis>&num; replacement text &num;</emphasis> --  The replacement text is any character string (not containing a &num;) and can extend over mutliple lines. The replacement text is enclosed within the &num; characters, which ensure that additional characters are not inadvertently captured.
+      <emphasis># replacement text #</emphasis> --  The replacement text is any character string (not containing a #) and can extend over mutliple lines. The replacement text is enclosed within the # characters, which ensure that additional characters are not inadvertently captured.
     </para>
   </refsect1>
 
   <refsect1>
     <title>Performance</title>
     <para>
-      Some care is needed with textual replacement macros, as they can sometimes do strange things.  They take no notice of any meaning, so spaces are significant. This is why, unlike the C programming language, the definition has the replacement text surrounded by &num; characters. Used carefully, this simple macro system is a powerful concept, but it can be abused.
+      Some care is needed with textual replacement macros, as they can sometimes do strange things.  They take no notice of any meaning, so spaces are significant. This is why, unlike the C programming language, the definition has the replacement text surrounded by # characters. Used carefully, this simple macro system is a powerful concept, but it can be abused.
     </para>
   </refsect1>
 
@@ -59,7 +59,7 @@
       <example>
         <title>Simple example of the define macro.</title>
         <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
-          <xi:include href="examples-xml/define.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+          <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../examples-xml/define.csd.xml"/>
       </example>
 
       Its output should include lines like this:
@@ -74,7 +74,7 @@ Macro definition for TABLE</screen>
 
       <example>
         <title>Example of the define macro with arguments.</title>
-          <xi:include href="examples-xml/define_args.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+          <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../examples-xml/define_args.csd.xml"/>
       </example>
 
       Its output should include lines like this:
@@ -177,8 +177,8 @@ Macro definition for OSCMACRO</screen>
   <refsect1>
     <title>See Also</title>
     <para>
-      <link linkend="dollar"><citetitle>&dollar;NAME</citetitle></link>,
-      <link linkend="undef"><citetitle>&num;undef</citetitle></link>
+      <link linkend="dollar"><citetitle>$NAME</citetitle></link>,
+      <link linkend="undef"><citetitle>#undef</citetitle></link>
     </para>
   </refsect1>
 
@@ -186,13 +186,13 @@ Macro definition for OSCMACRO</screen>
     <title>Credits</title>
     <para>
       <simplelist>
-        <member>Author: &namejohn;</member>
+        <member>Author: John ffitch</member>
         <member>University of Bath/Codemist Ltd.</member>
         <member>Bath, UK</member>
         <member>April 1998</member>
       </simplelist>
     </para>
-    <para>Examples written by &namekevin;.</para>
+    <para>Examples written by Kevin Conder.</para>
 
     <para>New in Csound version 3.48</para>
   </refsect1>

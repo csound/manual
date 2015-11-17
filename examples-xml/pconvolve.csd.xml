@@ -1,4 +1,5 @@
-<programlisting>
+<?xml version="1.0" encoding="UTF-8"?>
+<programlisting xmlns="http://docbook.org/ns/docbook" version="5.0">
 <emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
 <emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
 <emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
@@ -21,7 +22,7 @@ kvol  <emphasis role="op">=</emphasis> .05<emphasis role="op">*</emphasis>kmix	<
 		<emphasis role="comment">; when wet/dry mix is changed, to avoid clipping.</emphasis>
                      			
 <emphasis role="comment">; do some safety checking to make sure we the parameters a good</emphasis>
-kmix <emphasis role="op">=</emphasis> (kmix <emphasis role="op">&lt;</emphasis> 0 <emphasis role="op">||</emphasis> kmix <emphasis role="op">></emphasis> 1 <emphasis role="op">?</emphasis> .5 <emphasis role="op">:</emphasis> kmix)
+kmix <emphasis role="op">=</emphasis> (kmix <emphasis role="op">&lt;</emphasis> 0 <emphasis role="op">||</emphasis> kmix <emphasis role="op">&gt;</emphasis> 1 <emphasis role="op">?</emphasis> .5 <emphasis role="op">:</emphasis> kmix)
 kvol  <emphasis role="op">=</emphasis> (kvol <emphasis role="op">&lt;</emphasis> 0 <emphasis role="op">?</emphasis> 0 <emphasis role="op">:</emphasis> .5<emphasis role="op">*</emphasis>kvol<emphasis role="op">*</emphasis>kmix)
 
 <emphasis role="comment">; size of each convolution partion -- for best performance, this parameter needs to be tweaked</emphasis>
@@ -58,7 +59,7 @@ kcount	<emphasis role="opc">init</emphasis>	idel<emphasis role="op">*</emphasis>
     awetl, awetr <emphasis role="opc">pconvolve</emphasis> ivol<emphasis role="op">*</emphasis>(asig),"rv_stereo.wav", ipartitionsize
     adry <emphasis role="opc">delay</emphasis>	(1<emphasis role="op">-</emphasis>imix)<emphasis role="op">*</emphasis>asig,idel  <emphasis role="comment">; Delay dry signal, to align it with</emphasis>
     kcount <emphasis role="op">=</emphasis> kcount <emphasis role="op">-</emphasis> 1
- <emphasis role="octrl">if</emphasis> kcount <emphasis role="op">></emphasis> 0 <emphasis role="octrl">kgoto</emphasis> <emphasis role="olabel">loop</emphasis>
+ <emphasis role="octrl">if</emphasis> kcount <emphasis role="op">&gt;</emphasis> 0 <emphasis role="octrl">kgoto</emphasis> <emphasis role="olabel">loop</emphasis>
     <emphasis role="opc">outs</emphasis> awetl<emphasis role="op">+</emphasis>adry, awetr<emphasis role="op">+</emphasis>adry
 		
 <emphasis role="oblock">endin</emphasis>
