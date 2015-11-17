@@ -1,0 +1,115 @@
+% \iffalse
+%<*internal>
+\begingroup
+\input docstrip.tex
+\keepsilent
+\askforoverwritefalse
+\nopreamble\nopostamble
+\generate{\file{csound-manual.cls}{\from{csound-manual.dtx}{fontspec}}}
+\endgroup
+%</internal>
+%
+%<*driver>
+\ProvidesFile{csound-manual.dtx}[2015/11/14 v1.0 Csound Manual document class]
+%</driver>
+%
+%<*driver>
+\documentclass{ltxdoc}
+\usepackage{booktabs}
+\usepackage[no-config]{fontspec}
+\usepackage[colorlinks]{hyperref}
+\usepackage{longtable}
+\usepackage{metalogo}
+\EnableCrossrefs
+\CodelineIndex
+\RecordChanges
+\begin{document}
+  \DocInput{\jobname.dtx}
+\end{document}
+%</driver>
+%
+% \fi
+%
+% \GetFileInfo{LaTeXPreamble.dtx}
+% \makeatletter ^^A% To document @-cmds
+%
+% \title{Document class for \emph{The Canonical Csound Reference Manual}}
+% \author{The Csound Team}
+%
+% \maketitle
+% \tableofcontents
+%
+% \section{Introduction}
+%
+% The \textsf{csound-manual} document class is for typesetting the \emph{The
+% Canonical Csound Reference Manual}.
+%
+% \StopEventually{}
+%
+% \section{Implementation}
+%
+% Load the \textsf{report} document class.
+%    \begin{macrocode}
+\LoadClass{report}
+%    \end{macrocode}
+% Load required packages.
+%    \begin{macrocode}
+\RequirePackage{fancyhdr}
+%    \end{macrocode}
+% Loading the \textsf{fontspec} package runs the commands in the configuration
+% file \textsf{fontspec.cfg}, which is located in the same folder as
+% \textsf{fontspec.sty}. Starting in \textsf{fontspec} version~2.4c (\TeX{} Live
+% 2015), this configuration files contains
+% \begin{verbatim}
+%\defaultfontfeatures
+% [\rmfamily,\sffamily]
+% {Ligatures=TeX}\end{verbatim}
+% This makes all fonts use \TeX{} “ligatures”, which results in straight single
+% quotes~(\XeTeXglyph\XeTeXcharglyph"0027) being replaced by right single
+% quotes~(’), for example. Use the \textsf{no-config} option to prevent this.
+%    \begin{macrocode}
+\RequirePackage[no-config]{fontspec}
+\RequirePackage[left=120bp, right=72bp, top=1in, asymmetric]{geometry}
+\RequirePackage{graphicx}
+\RequirePackage[
+  colorlinks, citecolor=black, linkcolor=black, urlcolor=black]{hyperref}
+\RequirePackage{hyphenat}
+\RequirePackage{minted}
+\RequirePackage{newunicodechar}
+\RequirePackage{parskip}
+\RequirePackage{xcolor}
+%    \end{macrocode}
+% \XeTeX{} adds a line break after a non-breaking hyphen (U+2011). To prevent
+% this, define non-breaking hyphens to expand to |\mbox{-}|, a hyphen (U+002D)
+% in an |\mbox|, which prevents line breaks.
+%    \begin{macrocode}
+\newunicodechar{‑}{\mbox{-}}
+%    \end{macrocode}
+% Eliminate lines in fancy headers and footers.
+%    \begin{macrocode}
+\renewcommand\headrulewidth{\z@}
+\renewcommand\footrulewidth{\z@}
+%    \end{macrocode}
+% Suppress widows and orphans as much as possible by setting |\widowpenalty| and
+% |\clubpenalty| to \the\@M, the value of |\@M|.
+%    \begin{macrocode}
+\widowpenalty\@M
+\clubpenalty\@M
+%    \end{macrocode}
+% Do not add extra space to the top margin. Setting |\topskip| to 0 causes
+% problems in \LaTeX, so set it to the smallest length that can be expressed in
+% \TeX, 1~scaled point (one 65,536th of a point, or about 5~nanometers).
+%    \begin{macrocode}
+\topskip1sp
+%    \end{macrocode}
+%
+% Set up the author and title info for PDFs and set URLs in the same font as the
+% rest of the document.
+%    \begin{macrocode}
+\AtBeginDocument{
+  \frenchspacing
+  \hypersetup{pdfauthor={\@author}, pdfcreator={}, pdftitle={\@title}}
+  \urlstyle{same}
+}
+%    \end{macrocode}
+\endinput

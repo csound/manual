@@ -1,5 +1,5 @@
-
-<section id="CscoreEvents">
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" id="CscoreEvents">
   <title>Events, Lists, and Operations</title>
 
   <para>
@@ -64,23 +64,23 @@ The symbol cs is a pointer to a CSOUND object (CSOUND *);
 The symbols e, f are pointers to events (notes);
 The symbols a, b are pointers to lists (arrays) of such events;
 The symbol n is an integer parameter of type int;
-&quot;...&quot; indicates a string parameter (either a constant or variable of type char *);
+"..." indicates a string parameter (either a constant or variable of type char *);
 The symbol fp is a score input stream file pointer (FILE *);
   
 calling syntax                                  description
 --------------                                  -----------
 /* Functions for working with single events */
 e = cscoreCreateEvent(cs, n);                   create a blank event with n pfields
-e = cscoreDefineEvent(cs, &quot;...&quot;);               defines an event as per the character string ...
+e = cscoreDefineEvent(cs, "...");               defines an event as per the character string ...
 e = cscoreCopyEvent(cs, f);                     make a new copy of event f
 e = cscoreGetEvent(cs);                         read the next event in the score input file
     cscorePutEvent(cs, e);                      write event e to the score output file
-    cscorePutString(cs, &quot;...&quot;);       write the string-defined event to score output
+    cscorePutString(cs, "...");       write the string-defined event to score output
   
 /* Functions for working with event lists */
 a = cscoreListCreate(cs, n);                    create an empty event list with n slots
 a = cscoreListAppendEvent(cs, a, e);            append event e to list a
-a = cscoreListAppendStringEvent(cs, a, &quot;...&quot;);  append a string-defined event to list a;
+a = cscoreListAppendStringEvent(cs, a, "...");  append a string-defined event to list a;
 a = cscoreListCopy(cs, b);                      copy the list b (but not the events)
 a = cscoreListCopyEvents(cs, b);                copy the events of b, making a new list
 a = cscoreListGetSection(cs);                   read all events from score input, up to next s or e
@@ -92,7 +92,7 @@ a = cscoreListAppendList(cs, a, b);             append the list b onto the list 
 a = cscoreListConcatenate(cs, a, b);            concatenate (append) the list b onto the list a (same as previous)
     cscoreListSort(cs, a);                      sort the list a into chronological order by p[2]
 n = cscoreListCount(cs, a);                     returns the number of events in list a
-a = cscoreListExtractInstruments(cs, b, &quot;...&quot;); extract notes of instruments ... (no new events)
+a = cscoreListExtractInstruments(cs, b, "..."); extract notes of instruments ... (no new events)
 a = cscoreListExtractTime(cs, b, from, to);     extract notes of time-span, creating new events (from and to are MYFLT)
     cscoreListPut(cs, a);                       write the events of list a to the score output file
     cscoreListPlay(cs, a);                      send events of list a to the Csound orchestra for
@@ -105,7 +105,7 @@ a = cscoreListExtractTime(cs, b, from, to);     extract notes of time-span, crea
 /* Functions for working with multiple input score files */
 fp = cscoreFileGetCurrent(cs);                  get the currently active input scorefile pointer
                                                 (initially finds the command-line input scorefile pointer)
-fp = cscoreFileOpen(cs, &quot;filename&quot;);            open another input scorefile (maximum of 5)
+fp = cscoreFileOpen(cs, "filename");            open another input scorefile (maximum of 5)
      cscoreFileSetCurrent(cs, fp);              make fp the currently active scorefile pointer
      cscoreFileClose(cs, fp);                   close the scorefile relating to FILE *fp</programlisting>
     </informalexample>
@@ -121,15 +121,15 @@ Under Csound 4, the function names and parameters were as follows:
 calling syntax                          description
 --------------                          -----------
 e = createv(n);          create a blank event with n pfields
-e = defev(&quot;...&quot;);  defines an event as per the character string ...
+e = defev("...");  defines an event as per the character string ...
 e = copyev(f);           make a new copy of event f
 e = getev();             read the next event in the score input file
 putev(e);                write event e to the score output file
-putstr(&quot;...&quot;);           write the string-defined event to score output
+putstr("...");           write the string-defined event to score output
 a = lcreat(n);           create an empty event list with n slots
      int  n;
 a = lappev(a,e);         append event e to list a
-a = lappstrev(a,&quot;...&quot;);  append a string-defined event to list a;
+a = lappstrev(a,"...");  append a string-defined event to list a;
 a = lcopy(b);            copy the list b (but not the events)
 a = lcopyev(b);          copy the events of b, making a new list
 a = lget();              read all events from score input, up to next s or e
@@ -141,7 +141,7 @@ a = lsepf(b);            separate the f statements from list b into list a
 a = lseptwf(b);          separate the t,w &amp; f statements from list b into list a
 a = lcat(a,b);           concatenate (append) the list b onto the list a
 lsort(a);                sort the list a into chronological order by p[2]
-a = lxins(b,&quot;...&quot;);      extract notes of instruments ... (no new events)
+a = lxins(b,"...");      extract notes of instruments ... (no new events)
 a = lxtimev(b,from,to);  extract notes of time-span, creating new events
      float  from, to;
 lput(a);                 write the events of list a to the score output file
@@ -152,7 +152,7 @@ lrel(a);                 release the space of list a (but not the events)
 lrelev(a);               release the events of list a, and the list space
 fp = getcurfp();         get the currently active input scorefile pointer
                          (initially finds the command-line input scorefile pointer)
-fp = filopen(&quot;filename&quot;); open another input scorefile (maximum of 5)
+fp = filopen("filename"); open another input scorefile (maximum of 5)
 setcurfp(fp);            make fp the currently active scorefile pointer
 filclose(fp);            close the scorefile relating to FILE *fp</programlisting>
     </informalexample>
