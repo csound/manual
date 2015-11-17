@@ -481,6 +481,7 @@ html: $(XSL_HTML) manual.xml $(SRCS) Makefile
 html-dist:
 	python quickref.py
 	$(MAKE) html
+	cd html; xsltproc --novalid --output index.html ../makeframes.xsl index.html
 
 html-bw: $(XSL_HTML) manual.xml $(SRCS) Makefile
 	-mkdir -p ${HTML_DIR}
