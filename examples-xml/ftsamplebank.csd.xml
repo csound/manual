@@ -1,0 +1,38 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac<emphasis role="comment">;;RT audio out</emphasis>
+<emphasis role="comment">;-iadc    ;;;uncomment -iadc if RT audio input is needed too</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o diskin.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="ohdr">0dbfs</emphasis> <emphasis role="op">=</emphasis> 1
+
+<emphasis role="comment">;load all samples in a given directory into function tables and play them using instrument 1000</emphasis>
+<emphasis role="oblock">instr</emphasis> 1
+   iFirstTableNumber <emphasis role="op">=</emphasis> 60<emphasis role="comment">;</emphasis>
+   iFileCount <emphasis role="opc">init</emphasis> 0
+   iTrig <emphasis role="op">=</emphasis> 1
+   iNumberOfFiles <emphasis role="opc">ftsamplebank</emphasis> ".<emphasis role="op">/</emphasis>examples<emphasis role="op">/</emphasis>", iFirstTableNumber, iTrig, 0, 4, 1
+
+   until iFileCount<emphasis role="op">>=</emphasis>iNumberOfFiles do
+	<emphasis role="opc">event_i</emphasis> "i", 1000, iFileCount, 1, iFirstTableNumber<emphasis role="op">+</emphasis>iFileCount
+	iFileCount <emphasis role="op">=</emphasis> iFileCount<emphasis role="op">+</emphasis>1
+   enduntil
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 1000
+   iTable <emphasis role="op">=</emphasis> p4
+   aOut <emphasis role="opc">loscil3</emphasis> 1, 1, iTable, 1, 0<emphasis role="comment">;</emphasis>
+   <emphasis role="opc">outs</emphasis> aOut, aOut
+<emphasis role="oblock">endin</emphasis> 
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">i</emphasis>1 0 100
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>
