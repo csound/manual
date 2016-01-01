@@ -1,0 +1,97 @@
+<refentry id="ftsamplebank">
+<indexterm id="Indexftsamplebank"><primary>chnget</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Software Bus</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>chnget</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>chnget</refname>
+    <refpurpose>
+      Reads data from the software bus.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Reads a directory for sound files and loads them to a series of GEN01 function tables. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>iNumberOfFile <command>ftsamplebank</command> SDirectory, iFirstTableNumber, iTrigger, iSkipTime, iFormat, iChannel,</synopsis>
+    <synopsis>kNumberOfFile <command>ftsamplebank</command> SDirectory, kFirstTableNumber, kTrigger, kSkipTime, kFormat, kChannel,</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>directory</emphasis> -- a string that identifies the directory to browse for files
+    </para>
+    <para>
+      <emphasis>firstTableNumber</emphasis> -- this sets the number of the first table into which a soundfile will be loaded 
+    </para>
+    <para>
+      <emphasis>trigger</emphasis> -- updates the tables when kTrigger is 1
+    </para>
+    <para>
+      <emphasis>skiptime</emphasis> -- begin reading at <emphasis>skiptime</emphasis> seconds into the file.
+    </para>
+    <para>
+      <emphasis>channel</emphasis> -- channel number to read in. 0 denotes read all channels.
+    </para>
+
+    <para>
+      <emphasis>format</emphasis> -- specifies the audio data-file format:
+        <literallayout>
+1 - 8-bit signed character    4 - 16-bit short integers 
+2 - 8-bit A-law bytes         5 - 32-bit long integers 
+3 - 8-bit U-law bytes         6 - 32-bit floats
+        </literallayout>
+    </para>
+
+    <para>
+      If <emphasis>format</emphasis> = 0 the sample format is taken from the soundfile header, or by default from the CSound <link linkend="FlagsMinusLowerO"><citetitle>-o</citetitle></link> command-line flag.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>iNumberOfFile</emphasis> -- the number of tables that have been created
+    </para>
+    <para>
+      <emphasis>kNumberOfFile</emphasis> -- the number of tables that have been created
+    </para>
+  </refsect1>
+
+  <note>
+      <title>Note</title>
+      <para>
+      Loading a lot of sound files into function tables at k-rate may cause some audio dropouts.   
+      </para>
+  </note>
+
+  <refsect1>
+    <title>Example</title>
+    <para>
+      This example shows ftsamplebank browsing for samples in a fixed location. It loads all samples it finds into GEN01 function tables and then playsa them back in a sequence, one every second. It uses the file <ulink url="examples/ftsamplebank.csd"><citetitle>ftsamplebank.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the ftsamplebank opcode.</title>
+        <xi:include href="examples-xml/ftsamplebank.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Rory Walsh</member>
+        <member>2015</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>
