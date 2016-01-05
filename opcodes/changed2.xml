@@ -1,0 +1,110 @@
+
+<refentry id="changed2">
+<indexterm id="IndexChanged2"><primary>changed2</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>changed2</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>changed2</refname>
+    <refpurpose>
+     k-rate signal change detector.
+          </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+	This opcode outputs a trigger signal that informs when any one
+        of its k-rate arguments has changed, or a value in an array. Useful with valuator widgets or MIDI controllers.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ktrig <command>changed2</command> kvar1 [, kvar2,..., kvarN]</synopsis>
+    <synopsis>ktrig <command>changed2</command> karr[]</synopsis>
+    <synopsis>ktrig <command>changed2</command> aarr[]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ktrig</emphasis> - Outputs a value of 1 when any of
+      the k-rate signals has changed, or any value in the array, otherwise outputs 0.
+    </para>
+    <para>
+      <emphasis>kvar1 [, kvar2,..., kvarN]</emphasis> - k-rate variables to watch for changes.
+    </para>
+
+    <para>
+      <emphasis>xarray</emphasis> - any array type.
+    </para>
+    <para>
+      Unlike the opcode <emphasis>changed</emphasis> this opcode will
+      ever report the first cycle as a change.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here are two examples of the changed2 opcode. They use the files
+      <ulink
+          url="examples/changed2.csd"><citetitle>changed2.csd</citetitle></ulink>
+      and <ulink url="examples/changed2a.csd"><citetitle>changed2a.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the changed2 opcode.</title>
+        <xi:include href="examples-xml/changed2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+
+      </example>
+            Its output should include lines like:
+            <screen>
+ i   1 time     0.00267:     0.00000
+ i1     0.00000
+ i1     1.00000
+ i1     0.00000
+ i   1 time     0.20267:     1.00000
+ i   1 time     0.40267:     1.00000
+ i1     1.00000
+ i1     0.00000
+ i   1 time     0.60267:     1.00000
+ i   1 time     0.80267:     1.00000
+ i1     1.00000
+ i1     0.00000
+ i   1 time     1.00000:     0.00000
+ i1     1.00000
+ i1     0.00000
+ i   1 time     1.20267:    -1.00000
+ i   1 time     1.40267:    -1.00000
+ i1     1.00000
+ i1     0.00000
+ i   1 time     1.60267:    -1.00000
+ i   1 time     1.80000:    -1.00000
+ i1     1.00000
+ i1     0.00000
+ i   1 time     2.00000:    -0.00000
+ i1     1.00000
+ i1     0.00000
+ .........
+      </screen>
+    </para>
+    <example>
+      <title>Example of the changed2 opcode.</title>
+      <xi:include href="examples-xml/changed2a.csd.xml"
+                  xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </example>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>Written by &namejohn;.</para>
+    <para>Example written by &nameandres;.</para>
+    <para>New in Csound 6.7</para>
+  </refsect1>
+</refentry>
+
