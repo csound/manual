@@ -1,0 +1,97 @@
+
+<refentry id="mvclpf4">
+<indexterm id="IndexMvclpf4"><primary>mvclpf4</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>mvclpf4</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>mvclpf4</refname>
+    <refpurpose>
+      Moog voltage-controlled lowpass filter emulation. 
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+Mvclpf4 is an digital implementation of the 4th-order (24 dB/oct) Moog ladder filter
+originally written by Fons Andriaensen. It is a version of the
+mvclpf3 opcode with four outputs, for 6dB, 12dB, 18dB, and
+24 dB/octave responses.
+
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>asig1,asig2,asig3,asig4 <command>mvclpf4</command> ain, kcf, kres[, istor]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+      <para>
+      <emphasis>istor</emphasis> --initial disposition of internal
+      data space. Since filtering incorporates a feedback loop of
+      previous output, the initial status of the storage space used is
+      significant.  A zero value will clear the space; a non-zero
+      value will allow previous information to remain. The default
+      value is 0.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Performance</title>
+        <para>
+      <emphasis>asig1</emphasis> -- 6dB/oct low-pass response output.
+    </para>
+        <para>
+      <emphasis>asig2</emphasis> -- 12dB/oct low-pass response output.
+	</para>
+	    <para>
+      <emphasis>asig3</emphasis> -- 18dB/oct low-pass response output..
+	    </para>
+	        <para>
+      <emphasis>asig4</emphasis> -- 24dB/oct low-pass response output.
+    </para>
+    <para>
+      <emphasis>ain</emphasis> -- input signal.
+    </para>
+    <para>
+      <emphasis>kcf</emphasis>/<emphasis>acf</emphasis> -- filter
+      cutoff frequency. The useful range is around six octaves below
+      and above middle C (pch 8.00).
+    </para>
+
+    <para>
+      <emphasis>kres</emphasis>/<emphasis>ares</emphasis> --
+      resonance, limited to the interval [0,1].
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the mvclpf4 opcode. It uses the file <ulink url="examples/mvclpf4.csd"><citetitle>mvclpf4.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the mvclpf4 opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/mvclpf4.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Fons Andriaensen, </member>
+	<member> ported to Csoun dby &namevictor;</member>
+        <member>January 2016</member>
+      </simplelist>
+    </para>
+    <para>New in version 6.07</para>
+    <para>January 2016.</para>
+  </refsect1>
+</refentry> 
