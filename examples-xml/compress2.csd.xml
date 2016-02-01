@@ -1,0 +1,51 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+-odac  -iadc    <emphasis role="comment">;;;RT audio out and in</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o compress2.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+
+
+<emphasis role="oblock">instr</emphasis> 1	<emphasis role="comment">; uncompressed signal</emphasis>
+
+asig <emphasis role="opc">diskin2</emphasis> "beats.wav", 1, 0, 1
+     <emphasis role="opc">outs</emphasis> asig, asig
+<emphasis role="oblock">endin</emphasis>
+
+
+<emphasis role="oblock">instr</emphasis> 2	<emphasis role="comment">; compressed signal.</emphasis>
+<emphasis role="comment">; Use the "beats.wav" audio file and a mic</emphasis>
+avoice <emphasis role="opc">in</emphasis>
+asig   <emphasis role="opc">diskin2</emphasis> "beats.wav", 1, 0, 1
+
+<emphasis role="comment">; duck the audio signal "beats.wav" with your voice.</emphasis>
+  kthresh <emphasis role="op">=</emphasis> <emphasis role="op">-</emphasis>90
+  kloknee <emphasis role="op">=</emphasis> <emphasis role="op">-</emphasis>50
+  khiknee <emphasis role="op">=</emphasis> <emphasis role="op">-</emphasis>30
+  kratio  <emphasis role="op">=</emphasis> 3
+  katt    <emphasis role="op">=</emphasis> 0.1
+  krel    <emphasis role="op">=</emphasis> .5
+  ilook   <emphasis role="op">=</emphasis> .02
+asig  compress2 asig, avoice, kthresh, kloknee, khiknee, kratio, katt, krel, ilook	<emphasis role="comment">; voice-activated compressor</emphasis>
+      <emphasis role="opc">outs</emphasis> asig, asig
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+
+<emphasis role="stamnt">i</emphasis> 1 0 5
+
+<emphasis role="stamnt">i</emphasis> 2 6 21
+
+<emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>

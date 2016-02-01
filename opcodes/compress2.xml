@@ -1,13 +1,13 @@
 
-<refentry id="compress">
-<indexterm id="IndexCompress"><primary>compress</primary></indexterm>
+<refentry id="compress2">
+<indexterm id="IndexCompress2"><primary>compress2</primary></indexterm>
   <refentryinfo><title>Signal Modifiers:Amplitude Modifiers</title></refentryinfo>
   <refmeta>
-    <refentrytitle>compress</refentrytitle>
+    <refentrytitle>compress2</refentrytitle>
   </refmeta>
 
   <refnamediv>
-    <refname>compress</refname>
+    <refname>compress2</refname>
     <refpurpose>
       Compress, limit, expand, duck or gate an audio signal.
     </refpurpose>
@@ -24,7 +24,7 @@
     can be modified by a different controlling signal. 
     </para>
     <para>
-    <command>compress</command> first examines the controlling <emphasis>acsig</emphasis>
+    <command>compress2</command> first examines the controlling <emphasis>acsig</emphasis>
     by performing envelope detection.  This is directed by two control
     values <emphasis>katt</emphasis> and <emphasis>krel</emphasis>, defining the attack and release time
     constants (in seconds) of the detector.  The detector rides the
@@ -36,14 +36,13 @@ The running envelope is next converted to decibels, then passed
 through a mapping function to determine what compresser action (if
 any) should be taken.  The mapping function is defined by four decibel
 control values.  These are given as positive values, where 0 db
-corresponds to an amplitude of 0dbfs/32768, and 90 db corresponds to an
-amplitude of 0dbfs.
+corresponds to an amplitude of 0dbfs.
     </para>
   </refsect1>
 
   <refsect1>
     <title>Syntax</title>
-    <synopsis>ar <command>compress</command> aasig, acsig, kthresh, kloknee, khiknee, kratio, katt, krel, ilook</synopsis>
+    <synopsis>ar <command>compress2</command> aasig, acsig, kthresh, kloknee, khiknee, kratio, katt, krel, ilook</synopsis>
   </refsect1>
 
   <refsect1>
@@ -63,16 +62,16 @@ amplitude of 0dbfs.
   <refsect1>
     <title>Performance</title>
     <para>
-      <emphasis>kthresh</emphasis> -- sets the lowest decibel level that will be allowed through.  Normally 0 or less, but if higher the threshold will begin removing low-level signal energy such as background noise.
+      <emphasis>kthresh</emphasis> -- sets the lowest decibel level that will be allowed through.  Normally -90 or less, but if higher the threshold will begin removing low-level signal energy such as background noise.
     </para>
     <para>
-      <emphasis>kloknee</emphasis>, <emphasis>khiknee</emphasis> -- decibel break-points denoting where compression or expansion will begin. These set the boundaries of a soft-knee curve joining the low-amplitude 1:1 line and the higher-amplitude compression ratio line.  Typical values are 48 and 60 db.   If the two breakpoints are equal, a hard-knee (angled) map will result.
+      <emphasis>kloknee</emphasis>, <emphasis>khiknee</emphasis> -- decibel break-points denoting where compression or expansion will begin. These set the boundaries of a soft-knee curve joining the low-amplitude 1:1 line and the higher-amplitude compression ratio line.  Typical values are -52 and -30 db.   If the two breakpoints are equal, a hard-knee (angled) map will result.
     </para>
     <para>
       <emphasis>kratio</emphasis> -- ratio of compression when the signal level is above the knee. The value 2 will advance the output just one decibel for every input gain of two;  3 will advance just one in three; 20 just one in twenty, etc. Inverse ratios will cause signal expansion:  .5 gives two for one, .25 four for one, etc.  The value 1 will result in no change.
 </para>
 <para>
-The actions of compress will depend on the parameter settings given.  A hard-knee compressor-limiter, for instance, is obtained from a near-zero attack time, equal-value break-points, and a very high ratio (say 100).  A noise-gate plus expander is obtained from some positive threshold, and a fractional ratio above the knee.  A voice-activated music compressor (ducker) will result from feeding the music into <emphasis>aasig</emphasis> and the speech into <emphasis>acsig</emphasis>.  A voice de-esser will result from feeding the voice into both, with the <emphasis>acsig</emphasis> version being preceded by a band-pass filter that emphasizes the sibilants. Each application will require some experimentation to find the best parameter settings;  these have been made k-variable to make this practical. 
+The actions of compress2 will depend on the parameter settings given.  A hard-knee compressor-limiter, for instance, is obtained from a near-zero attack time, equal-value break-points, and a very high ratio (say 100).  A noise-gate plus expander is obtained from some positive threshold, and a fractional ratio above the knee.  A voice-activated music compressor (ducker) will result from feeding the music into <emphasis>aasig</emphasis> and the speech into <emphasis>acsig</emphasis>.  A voice de-esser will result from feeding the voice into both, with the <emphasis>acsig</emphasis> version being preceded by a band-pass filter that emphasizes the sibilants. Each application will require some experimentation to find the best parameter settings;  these have been made k-variable to make this practical. 
 </para>
 
   </refsect1>
@@ -80,14 +79,14 @@ The actions of compress will depend on the parameter settings given.  A hard-kne
   <refsect1>
     <title>Examples</title>
     <para>
-      Here is an example of the compress opcode. It uses the file <ulink url="examples/compress.csd"><citetitle>compress.csd</citetitle></ulink>.
+      Here is an example of the compress2 opcode. It uses the file <ulink url="examples/compress2.csd"><citetitle>compress2.csd</citetitle></ulink>.
 
       <example>
-        <title>Example of the compress opcode.</title>
+        <title>Example of the compress2 opcode.</title>
 
         
 
-          <xi:include href="examples-xml/compress.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+          <xi:include href="examples-xml/compress2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
     </para>
     </refsect1>
@@ -98,15 +97,15 @@ The actions of compress will depend on the parameter settings given.  A hard-kne
     <para>
       <link linkend="dam"><citetitle>dam</citetitle></link>
     </para>
-    <para>
-      <link linkend="compress2"><citetitle>compress2</citetitle></link>
+   <para>
+      <link linkend="compress"><citetitle>compress</citetitle></link>
     </para>
   </refsect1>
   
   <refsect1>
     <title>Credits</title>
-    <para>Written by &namebarry; for Extended Csound and released in
-    csound5.02.
+    <para>Written by &namejohn; after &namebarry; from Extended but
+    with more common dB values, new in version 6.07.
 </para>
   </refsect1>
 </refentry>
