@@ -16,7 +16,7 @@ nchnls = 2
 instr 1	; "beats.ats" is created by atsa
 
 ktime	line     0, p3, 2
-asig	ATSaddnz ktime, "beats.ats", 1, 24
+asig	ATSaddnz ktime, "cage.ats", 1, 24
 	outs	asig*10, asig*10	;amplify
 endin
 
