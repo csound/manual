@@ -2,7 +2,7 @@
 <CsOptions>
 ; Select audio/midi flags here according to platform
 ;Load external midi file from manual/examples
--odac -T -F  Anna.mid;;;realtime audio I/O and midifile in
+-odac -T -F  Anna.mid ;;;realtime audio I/O and midifile in
 ;-iadc    ;;;uncomment -iadc if realtime audio input is needed too
 ; For Non-realtime ouput leave only the line below:
 ; -o fluidcomplex.wav -W ;;; for file output any platform
