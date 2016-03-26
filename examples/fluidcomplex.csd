@@ -1,7 +1,7 @@
 <CsoundSynthesizer>
 <CsOptions>
 ; Select audio/midi flags here according to platform
-;Load external midi file from manual/examples
+;Anna.mid is a midi file, a song by The Beatles and can be found on the internet
 -odac -T -F  Anna.mid;;;realtime audio I/O and midifile in
 ;-iadc    ;;;uncomment -iadc if realtime audio input is needed too
 ; For Non-realtime ouput leave only the line below:
