@@ -21,6 +21,10 @@ instr 1
 
   a1 oscil 10000, k2, 1
   outs a1, a1
+  kq button 1
+  if kq = 1 then
+     exitnow
+  endif
 endin
 
 </CsInstruments>
@@ -29,7 +33,7 @@ endin
 ; sine wave.
 f 1 0 32768 10 1
 
-i 1 0 10 
+i 1 0 1000 
 e
 
 </CsScore>
