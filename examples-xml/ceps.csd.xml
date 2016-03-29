@@ -1,0 +1,32 @@
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 1
+
+a1 <emphasis role="opc">diskin</emphasis> "fox.wav",1,0,1
+k1 <emphasis role="opc">randh</emphasis>  80, 2.5
+a2 <emphasis role="opc">vco2</emphasis>  1, 220<emphasis role="op">+</emphasis>k1
+kfsig[] <emphasis role="opc">init</emphasis> 1026
+fsig <emphasis role="opc">pvsanal</emphasis> a1,1024,256,1024,1
+fsig2 <emphasis role="opc">pvsanal</emphasis> a2,1024,256,1024,1
+kf <emphasis role="opc">pvs2tab</emphasis> kfsig,fsig
+keps[] <emphasis role="opc">ceps</emphasis> <emphasis role="opc">c2r</emphasis>(kfsig),30
+kenv[] <emphasis role="opc">cepsinv</emphasis> keps
+fenv <emphasis role="opc">tab2pvs</emphasis> <emphasis role="opc">r2c</emphasis>(kenv)
+fvoc <emphasis role="opc">pvsfilter</emphasis> fsig2, fenv, 1
+asig <emphasis role="opc">pvsynth</emphasis> fvoc
+
+    <emphasis role="opc">out</emphasis> asig
+<emphasis role="oblock">endin</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">i</emphasis>1 0 60
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>
