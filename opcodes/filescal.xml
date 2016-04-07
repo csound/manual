@@ -1,0 +1,95 @@
+﻿<refentry id="filescal">
+<indexterm id="IndexFilescal"><primary>filescal</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Other</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>filescal</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>filescal</refname>
+    <refpurpose>
+      Phase-locked vocoder processing with onset detection/processing, 'tempo-scaling'.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>filescal</emphasis> implements phase-locked vocoder
+      processing from disk files, resampling if necessary.
+    </para>
+    <para>
+      This opcode allows for time and frequency-independent scaling. Time is advanced internally, but controlled by a tempo scaling parameter; when an onset is detected, timescaling is momentarily stopped to avoid smearing of attacks. The quality of the effect is generally improved with phase locking switched on. 
+    </para>
+    <para>
+      <emphasis>filescal</emphasis> will also scale pitch, independently of frequency, using a transposition factor (k-rate).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>asig[,asig2] <command>filescal</command> ktimescal, kamp, kpitch, Sfile, klock [,ifftsize, idecim, ithresh]
+      </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+      <para>
+      <emphasis>Sfile</emphasis> -- source soundfile, mono or stereo
+      files are allowed, but need to match the number of outputs.
+    </para>
+    <para>
+      <emphasis>ifftsize</emphasis> -- FFT size (power-of-two), defaults to 2048.
+    </para>
+    <para>
+      <emphasis>idecim</emphasis> -- decimation, defaults to 4 (meaning hopsize = fftsize/4)
+    </para>
+    <para>
+      <emphasis>idbthresh</emphasis> -- threshold based on dB power spectrum ratio between two successive windows. A detected ratio above it will cancel timescaling momentarily, to avoid smearing (defaults to 1)
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ktimescal</emphasis> -- timescaling ratio, &lt; 1
+      stretch, > 1 contract. Non-negative numbers only.
+    </para>
+    <para>
+      <emphasis>kamp</emphasis> -- amplitude scaling
+    </para>
+    <para>
+      <emphasis>kpitch</emphasis> -- grain pitch scaling (1=normal pitch, &lt; 1 lower, > 1 higher; negative, backwards)
+    </para>
+    <para>
+      <emphasis>klock</emphasis> -- 0 or 1, to switch phase-locking on/off
+    </para>
+
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the filescal opcode. It uses the file <ulink url="examples/filescal.csd"><citetitle>filescal.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the filescal opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/filescal.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>April 2016</member>
+      </simplelist>
+    </para>
+
+    <para>New in version 6.07</para>
+    <para>April 2016.</para>
+  </refsect1>
+</refentry>
+
