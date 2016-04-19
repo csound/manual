@@ -1,0 +1,87 @@
+
+<refentry id="moogladder2">
+<indexterm id="IndexMoogladder2"><primary>moogladder2</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>moogladder2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>moogladder2</refname>
+    <refpurpose>
+      Moog ladder lowpass filter.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+Moogladder2 is an new digital implementation of the Moog ladder filter based on 
+the work of Antti Huovilainen, described in the paper "Non-Linear Digital 
+Implementation of the Moog Ladder Filter" (Proceedings of DaFX04, Univ of Napoli). 
+This implementation usesapproximations to the tah function and so is
+faster but less accurate than <emphasis>moogladder</emphasis>.
+    </para>
+   </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>asig <command>moogladder2</command> ain, kcf, kres[, istor]</synopsis>
+    <synopsis>asig <command>moogladder2</command> ain, acf, kres[, istor]</synopsis>
+    <synopsis>asig <command>moogladder2</command> ain, kcf, ares[, istor]</synopsis>
+    <synopsis>asig <command>moogladder2</command> ain, acf, ares[, istor]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+      <para>
+      <emphasis>istor</emphasis> --initial disposition of internal
+      data space. Since filtering incorporates a feedback loop of
+      previous output, the initial status of the storage space used is
+      significant.  A zero value will clear the space; a non-zero
+      value will allow previous information to remain. The default
+      value is 0.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asig</emphasis> -- input signal.
+    </para>
+    <para>
+      <emphasis>kcf</emphasis>/<emphasis>acf</emphasis> -- filter cutoff frequency
+    </para>
+
+    <para>
+      <emphasis>kres</emphasis>/<emphasis>ares</emphasis> --
+      resonance, generally &lt; 1, but not limited to it.  Higher than
+      1 resonance values might cause aliasing, analogue synths
+      generally allow resonances to be above 1. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the moogladder2 opcode. It uses the file <ulink url="examples/moogladder2.csd"><citetitle>moogladder2.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the moogladder2 opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/moogladder2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>Author: &namejohn;</member>
+        <member>April 2016</member>
+      </simplelist>
+    </para>
+    <para>New in version 6.07</para>
+  </refsect1>
+</refentry> 
