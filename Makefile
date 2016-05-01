@@ -678,7 +678,6 @@ OTHER =         STKopcodes/top.xml \
         vectorial/top.xml \
         vectorial/vectorial.xml \
         vectorial/vectorialrandom.xml \
-        manpages.xml \
         opcodes.xml \
         manual.xml
         
