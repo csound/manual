@@ -11,7 +11,7 @@ nchnls = 2
 giwav ftgen 0, 0, 0, 1, "fox.wav", 0, 0, 1
 
 instr 1
-aout paulstretch 10, 2.0, giwav
+aout paulstretch 10, 0.2, giwav
 outs aout, aout
 endin
 
