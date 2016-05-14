@@ -119,6 +119,40 @@
                 converter from k-rate and i-time number to a string.
               </simpara>
             </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="cepsinv"><citetitle>cepsinv</citetitle></link>
+                opcode to calculate the inverse cepstrum of an array.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="moogladder2"><citetitle>moogladder2</citetitle></link>,
+                is a faster, less accurate implementation of moogladder.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="paulstretch"><citetitle>paulstretch</citetitle></link>
+                opcode is a lightweight implementation of the PaulStretch
+                time-stretching algorithm by Nasca Octavian Paul. It is ideal
+                for timestretching a signal by very large amounts.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="mp3scal"><citetitle>mp3scal</citetitle></link>
+                implements phase-locked vocoder processing from mp3-format disk
+                files, resampling if necessary.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="filescal"><citetitle>filescal</citetitle></link>
+                implements phase-locked vocoder processing from disk files,
+                resampling if necessary.
+              </simpara>
+            </listitem>
           </itemizedlist>
         </para>
       </listitem>
@@ -194,6 +228,12 @@
                 The <link linkend="FlagsCatMinusLowerZ"><citetitle>-z</citetitle></link>
                 option now suppresses deprecated opcodes, unless given
                 a 2 or 3 argument.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                The new option --fftlib controls which real fft library to
+                use internally (FFTLIB = 0, PFFFT = 1, vDSP = 2)
               </simpara>
             </listitem>
           </itemizedlist>
@@ -300,6 +340,21 @@
                 now allows channel names to be changed at perf time.
               </simpara>
             </listitem>
+            <listitem>
+              <simpara>
+                iceps has been renamed cepsinv to avoid name clashes.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                mp3 support improved in a number of minor ways.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                A minor fix to allow a ladspa plugin to be re-loaded by the host.
+              </simpara>
+            </listitem>
           </itemizedlist>
         </para>
       </listitem>
@@ -321,10 +376,10 @@
                 <listitem>
                   <simpara>
                     CsoundQT has its own notes at 
-                    <ulink url="https://github.com/CsoundQt/CsoundQt/blob/master/release_notes/Release%20notes%200.9.2.md">
-                    <citetitle>https://github.com/CsoundQt/CsoundQt/blob/master/release_notes/Release notes 0.9.2.md</citetitle></ulink>.
+                    <ulink url="https://github.com/CsoundQt/CsoundQt/blob/develop/release_notes/Release%20Notes%200.9.2.1.md">
+                    <citetitle>https://github.com/CsoundQt/CsoundQt/blob/develop/release_notes/Release%20Notes%200.9.2.1.md</citetitle></ulink>.
                   </simpara>
-                </listitem>
+                </listitem>                                                                 
               </itemizedlist>
             </listitem>
           </itemizedlist>
@@ -409,7 +464,9 @@
                 <link linkend="expsegr"><citetitle></citetitle>expsegr</link>,
                 <link linkend="linsegr"><citetitle></citetitle>linsegr</link>,
                 <link linkend="cossegr"><citetitle></citetitle>cossegr</link>,
-                <link linkend="transegr"><citetitle></citetitle>transegr</link>.
+                <link linkend="transegr"><citetitle></citetitle>transegr</link>,
+                <link linkend="envlpx"><citetitle></citetitle>envlpx</link>,
+                including new warnings.
               </simpara>
             </listitem>
             <listitem>
@@ -476,7 +533,7 @@
             </listitem>
             <listitem>
               <simpara>
-                vst2cs will now work on 64bit architecture.
+                vst4cs will now work on 64bit architecture.
               </simpara>
             </listitem>
             <listitem>
@@ -494,6 +551,44 @@
             <listitem>
               <simpara>
                 fixed small issues in rtauhal module.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Windows installer for 64 bit CPU architecture now sets
+                environment variables on system level as it should.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                transeg at k-rate with itype non-zero had an initial delay if
+                one cycle.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                log function on arrays fixed.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Rescaling of named GENs fixed.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                A fencepost error in reading ATS files believed fixed; it
+                generated spurious errors about file finishing early.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Initialisation error in pvbandp fixed.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                readfi string allocation fixed.
               </simpara>
             </listitem>
           </itemizedlist>
@@ -533,6 +628,12 @@
           <itemizedlist>
             <listitem>
               <simpara>
+                csoundCompileCsdText: New function to compile a CSD from a
+                string of text.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
                 The function call csound->GetKcounter(csound) now returns an
                 unsigned 64 bit integer.  Previously it returned a long which is
                 unclear.
@@ -540,7 +641,12 @@
             </listitem>
             <listitem>
               <simpara>
-                New wrapper module for Python 2.x and Python 3.x using ctypes: ctcsound.
+                ctcsound.py is a new wrapper file to the Csound API for the
+                Python language.  It is a pure Python file using the FFI
+                (Foreign Function Interface) module ctypes. It does not depend
+                on Swig, and it works with Python2 and Python3 as well. It uses
+                numpy for its data structures, numpy being the fundamental
+                package for scientific computing with Python.
               </simpara>
             </listitem>
           </itemizedlist>
@@ -551,23 +657,41 @@
           Platform Specific:
           <itemizedlist>
             <listitem>
-              <simpara>Android.</simpara>
-              <itemizedlist>
-                <listitem>
-                  <simpara>csoundCompileCsdText: new function to compile strings.</simpara>
-                </listitem>
-              </itemizedlist>
-            </listitem>
-            <listitem>
               <simpara>Windows.</simpara>
               <itemizedlist>
                 <listitem>
                   <simpara>
-                    The Windows installer now provides Csound and all of its
-                    components, interfaces, plugins, utilities, and front ends
-                    compiled for 64 bit CPU architecture, using the
-                    MSYS2/Mingw64-w64 toolchain. CsoundQt and csound.node are
-                    built using MSVC 2013.
+                    The Windows installer for Csound now contains all executables
+                    built for 64 bit CPU architecture.
+                  </simpara>
+                </listitem>
+                <listitem>
+                  <simpara>
+                    The Windows installer for 64 bit CPU architecture now
+                    provides NW.js "out of the box." It runs all features of
+                    Csound, as well as all features of HTML5, in a browser-like
+                    runtime with JavaScript scripting, and includes a Csound
+                    editor implemented in HTML. The editor will run pieces
+                    either as .csd files with embedded &lt;html&gt; or as .html
+                    files calling the csound object, and includes JavaScript
+                    debugging.
+                  </simpara>
+                </listitem>
+                <listitem>
+                  <simpara>
+                    A new simplified build system has been implemented in the
+                    csound/mingw64 directory for building Csound using the
+                    MSYS2/mingw64 toolchain.
+                  </simpara>
+                </listitem>
+                <listitem>
+                  <simpara>
+                    Linking to pthreads and other libraries now static.
+                  </simpara>
+                </listitem>
+                <listitem>
+                  <simpara>
+                    Some limited support for non-ASCII characters in file names.
                   </simpara>
                 </listitem>
               </itemizedlist>
