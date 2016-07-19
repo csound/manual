@@ -19,7 +19,7 @@ kscal = p4
 kshift = p5
 asig  soundin "fox.wav"			; get the signal in
 fsig  pvsanal asig, 1024, 256, 1024, 1	; analyse it
-ftps  pvswarp fsig, kscal, 0		; warp it
+ftps  pvswarp fsig, kscal, kshift		; warp it
 atps  pvsynth ftps			; synthesise it                      
       outs atps/2, atps/2
 
