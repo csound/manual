@@ -1,0 +1,75 @@
+
+<refentry id="getftargs">
+<indexterm id="Indexgetftargs"><primary>getftargs</primary></indexterm>
+  <refentryinfo><title>Table Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>getftargs</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>getftargs</refname>
+    <refpurpose>
+     Fill a string variable with the arguments used to create a function table at k-rate.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>getftargs</emphasis> writes the arguments used to create a function table to a string variable. <emphasis>getftargs</emphasis> runs both at initialization and performance time.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>Sdst <command>getftargs</command> iftno, ktrig</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifno</emphasis> -- Number of the table whose arguments we want to request.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>Sdst</emphasis> -- output string variable.
+    </para>
+    <para>
+      <emphasis>ktrig</emphasis> -- trigger signal, should be valid at i-time. The output string variable is filled at initialization time if ktrig is positive, and at performance time whenever ktrig is both positive and different from the previous value. Use a constant value of 1 to print once at note initialization.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the getftargs opcode. It uses the file <ulink url="examples/getftargs.csd"><citetitle>getftargs.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the getftargs opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/getftargs.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+            Its output should include this line:
+      <screen> 0 0 0.5 200 0.8 450 0.33 600 0.1 800 0.4 1024 0
+	  </screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See also</title>
+    <para>
+      <link linkend="ftgen"><citetitle>ftgen</citetitle></link>,
+      <link linkend="ftlen"><citetitle>ftlen</citetitle></link> and
+      <link linkend="sprintf"><citetitle>sprintf</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Written by Guillermo Senna</para>
+    <para>2016</para>
+  </refsect1>
+</refentry>
