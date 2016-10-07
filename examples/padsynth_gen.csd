@@ -1,5 +1,7 @@
 <CsoundSynthesizer>
-
+<CsOptions>
+-odac
+</CsOptions>
 <CsInstruments>
 sr=44100
 ksmps=1

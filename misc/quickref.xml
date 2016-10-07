@@ -8,6 +8,7 @@
 <para>
 <para/>
 <synopsis><link linkend="Zerodbfs">0dbfs</link> = iarg</synopsis><synopsis><link linkend="Zerodbfs">0dbfs</link> </synopsis><para/>
+<synopsis><link linkend="A4">A4</link> = iarg</synopsis><para/>
 <synopsis><link linkend="kr">kr</link> = iarg</synopsis><para/>
 <synopsis><link linkend="ksmps">ksmps</link> = iarg</synopsis><para/>
 <synopsis><link linkend="nchnls">nchnls</link> = iarg</synopsis><para/>
@@ -283,7 +284,8 @@
 <synopsis>ares <link linkend="gausstrig">gausstrig</link> kamp, kcps, kdev [, imode] [, ifrst1]</synopsis><synopsis>kres <link linkend="gausstrig">gausstrig</link> kamp, kcps, kdev [, imode] [, ifrst1]</synopsis><para/>
 <synopsis>ians<link linkend="getseed"> getseed</link>&#160;</synopsis><synopsis>kans<link linkend="getseed"> getseed</link>&#160;</synopsis><para/>
 <synopsis>kout <link linkend="jitter">jitter</link> kamp, kcpsMin, kcpsMax</synopsis><para/>
-<synopsis>kout <link linkend="jitter2">jitter2</link> ktotamp, kamp1, kcps1, kamp2, kcps2, kamp3, kcps3</synopsis><para/>
+<synopsis>kout <link linkend="jitter2">jitter2</link> ktotamp, kamp1, kcps1,
+    kamp2, kcps2, kamp3, kcps3[ , iopt]</synopsis><para/>
 <synopsis>ares <link linkend="jspline">jspline</link> xamp, kcpsMin, kcpsMax</synopsis><synopsis>kres <link linkend="jspline">jspline</link> kamp, kcpsMin, kcpsMax</synopsis><para/>
 <synopsis>ares <link linkend="linrand">linrand</link> krange</synopsis><synopsis>ires <link linkend="linrand">linrand</link> krange</synopsis><synopsis>kres <link linkend="linrand">linrand</link> krange</synopsis><para/>
 <synopsis>ares <link linkend="noise">noise</link> xamp, kbeta</synopsis><para/>
@@ -437,7 +439,7 @@
 <para/>
 <synopsis>ares <link linkend="pluck">pluck</link> kamp, kcps, icps, ifn, imeth [, iparm1] [, iparm2]</synopsis><para/>
 <synopsis>ares <link linkend="repluck">repluck</link> iplk, kamp, icps, kpick, krefl, axcite</synopsis><para/>
-<synopsis>ares <link linkend="streson">streson</link> asig, kfr, ifdbgain</synopsis><para/>
+<synopsis>ares <link linkend="streson">streson</link> asig, kfr, kfdbgain</synopsis><para/>
 <synopsis>ares <link linkend="wgbow">wgbow</link> kamp, kfreq, kpres, krat, kvibf, kvamp \
     [, ifn] [, iminfreq]</synopsis><para/>
 <synopsis>ares <link linkend="wgbowedbar">wgbowedbar</link> kamp, kfreq, kpos, kbowpres, kgain [, iconst] [, itvel] \
@@ -549,8 +551,7 @@
 <synopsis>gival <link linkend="chnexport">chnexport</link> Sname, imode[, itype, idflt, imin, imax]</synopsis><synopsis>gkval <link linkend="chnexport">chnexport</link> Sname, imode[, itype, idflt, imin, imax]</synopsis><synopsis>gaval <link linkend="chnexport">chnexport</link> Sname, imode</synopsis><synopsis>gSval <link linkend="chnexport">chnexport</link> Sname, imode</synopsis><para/>
 <synopsis>ival <link linkend="chnget">chnget</link> Sname</synopsis><synopsis>kval <link linkend="chnget">chnget</link> Sname</synopsis><synopsis>aval <link linkend="chnget">chnget</link> Sname</synopsis><synopsis>Sval <link linkend="chnget">chnget</link> Sname</synopsis><para/>
 <synopsis><link linkend="chnmix">chnmix</link> aval, Sname</synopsis><para/>
-<synopsis>itype, imode, ictltype, idflt, imin, imax
-    <link linkend="chnparams">chnparams</link> Sname</synopsis><para/>
+<synopsis>itype, imode, ictltype, idflt, imin, imax <link linkend="chnparams">chnparams</link> Sname</synopsis><para/>
 <synopsis><link linkend="chnset">chnset</link> ival, Sname</synopsis><synopsis><link linkend="chnset">chnset</link> kval, Sname</synopsis><synopsis><link linkend="chnset">chnset</link> aval, Sname</synopsis><synopsis><link linkend="chnset">chnset</link> Sval, Sname</synopsis><para/>
 <synopsis><link linkend="setksmps">setksmps</link> iksmps</synopsis><para/>
 <synopsis>xinarg1 [, xinarg2] ... [xinargN] <link linkend="xin">xin</link>&#160;</synopsis><para/>
@@ -1116,6 +1117,7 @@
 <synopsis><link linkend="ftfree">ftfree</link> ifno, iwhen</synopsis><para/>
 <synopsis>gir <link linkend="ftgen">ftgen</link> ifn, itime, isize, igen, iarga [, iargb ] [...]</synopsis><para/>
 <synopsis>ifno <link linkend="ftgentmp">ftgentmp</link> ip1, ip2dummy, isize, igen, iarga, iargb, ...</synopsis><para/>
+<synopsis>Sdst <link linkend="getftargs">getftargs</link> iftno, ktrig</synopsis><para/>
 <synopsis><link linkend="sndload">sndload</link> Sfname[, ifmt[, ichns[, isr[, ibas[, iamp[, istrt   \
       [, ilpmod[, ilps[, ilpe]]]]]]]]]</synopsis><para/>
 </para></formalpara>
@@ -1241,7 +1243,7 @@
 <synopsis><link linkend="FLsetVal_i">FLsetVal_i</link> ivalue, ihandle</synopsis><para/>
 <synopsis><link linkend="FLslidBnk">FLslidBnk</link> &quot;names&quot;, inumsliders [, ioutable] [, iwidth] [, iheight] [, ix] \
       [, iy] [, itypetable] [, iexptable] [, istart_index] [, iminmaxtable]</synopsis><para/>
-<synopsis><link linkend="FLslidBnk2">FLslidBnk2</link> &quot;names&quot;, inumsliders, ioutable, iconfigtable [,iwidth, iheight, ix, iy, istart_index] </synopsis><para/>
+<synopsis><link linkend="FLslidBnk2">FLslidBnk2</link> &quot;names&quot;, inumsliders, ioutable, iconfigtable [,iwidth, iheight, ix, iy, istart_index] </synopsis><synopsis><link linkend="FLslidBnk2">FLslidBnk2</link> istring, inumsliders, ioutable, iconfigtable [,iwidth, iheight, ix, iy, istart_index] </synopsis><para/>
 <synopsis><link linkend="FLslidBnk2Set">FLslidBnk2Set</link> ihandle, ifn [, istartIndex, istartSlid, inumSlid]</synopsis><para/>
 <synopsis><link linkend="FLslidBnk2Setk">FLslidBnk2Setk</link>  ktrig, ihandle, ifn [, istartIndex, istartSlid, inumSlid]</synopsis><para/>
 <synopsis>ihandle <link linkend="FLslidBnkGetHandle">FLslidBnkGetHandle</link>&#160;</synopsis><para/>
@@ -1725,7 +1727,7 @@
       </synopsis><para/>
 <synopsis>asig <link linkend="mincer">mincer</link> atimpt, kamp, kpitch, ktab, klock[,ifftsize,idecim]
       </synopsis><para/>
-<synopsis>asig, asig2 <link linkend="mp3scal">mp3scal</link> Sfile,ktimescal,kpitch, kamp [,iskip,ifftsize, idecim, ilock]
+<synopsis>asig, asig2, ktime <link linkend="mp3scal">mp3scal</link> Sfile,ktimescal,kpitch, kamp [,iskip,ifftsize, idecim, ilock]
       </synopsis><para/>
 <synopsis>asig <link linkend="paulstretch">paulstretch</link> istretch, iwindowsize, ift
     </synopsis><para/>

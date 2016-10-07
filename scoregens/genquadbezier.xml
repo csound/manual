@@ -1,0 +1,114 @@
+
+<refentry id="GENquadbezier">
+      <indexterm id="IndexGENquadbezier"><primary>GENquadbezier</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GENquadbezier</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>"quadbezier"</refname>
+    <refpurpose>
+      Generate a table with values from a quadratic Bézier function.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This subroutine creates an ftable from segments constructed by
+      paths traced by the quadratic Bézier function.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>f</command> # time size "quadbezier" y1 cx1 cy1 x2 y2 [cx2 cy2 x3 y3 ...]
+</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>x2, x3,</emphasis> etc. -- Locations in table at which to attain the following y value. Must be in increasing order. It is assumed that x1 equals 0. If the last value is less than size, then the rest will be set to zero. Should not be negative. 
+    </para>
+    <para>
+      <emphasis>y1, y2, y3,</emphasis> etc. -- Breakpoint values attained at the location specified by the preceding x value. 
+    </para>
+    <para>
+      <emphasis>cx1, cx2, cx3,</emphasis> etc. -- Virtual x coordinates for the different control points. cx[n] can be equal to but not less than x[n] and equal to but not greater than x[n+1]. Should not be negative but can be zero. 
+    </para>
+    <para>
+      <emphasis>cy1, cy2, cy3,</emphasis> etc. -- Virtual y coordinates for the different control points. 
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is a simple example of the GENquadbezier routine. It uses the file <ulink url="examples/genquadbezier.csd"><citetitle>genquadbezier.csd</citetitle></ulink>.
+           <example>
+        <title>Example of the GENquadbezierroutine.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/genquadbezier.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>  
+        <textobject>
+          <phrase>These are the diagrams of the envelopes drawn by the
+          GENquadbezier routine, as used in the example
+          above:</phrase>  
+        </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/genquadbezier_1.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>  f 2 0 1024 "quadbezier" 0 140 0.61 324 0.53 338 0.27 449 0.32 571 0.08 675 0.5 873 0.47 1024 0</phrase>
+        </textobject>
+
+
+        <caption>
+          <para>  f 2 0 1024 "quadbezier" 0 140 0.61 324 0.53 338 0.27 449 0.32 571 0.08 675 0.5 873 0.47 1024 0</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/genquadbezier_2.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>  f 3 0 1024 "quadbezier" 0 92 0.04 94 0.25 177 0.58 373 0.39 537 0.15 675 0.5 910 0.68 1024 0</phrase>
+        </textobject>
+
+        <caption>
+          <para>  f 3 0 1024 "quadbezier" 0 92 0.04 94 0.25 177 0.58 373 0.39 537 0.15 675 0.5 910 0.68 1024 0</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/genquadbezier_3.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>  f 4 0 1024 "quadbezier" 0 196 0.68 537 0.71 873 0.7 1024 0</phrase>
+        </textobject>
+
+        <caption>
+          <para>  f 4 0 1024 "quadbezier" 0 196 0.68 537 0.71 873 0.7 1024 0</para>
+        </caption>
+      </mediaobject>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See also</title>
+       <para> For references, check the comments in the <ulink url="https://github.com/csound/csound/blob/develop/Opcodes/quadbezier.c"><citetitle>source code</citetitle></ulink>.</para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Written by Guillermo Senna</para>
+    <para>2016</para>
+  </refsect1>
+</refentry>

@@ -139,6 +139,7 @@ OPCODES = opcodes/0dbfs.xml	opcodes/ATSadd.xml	opcodes/ATSaddnz.xml \
 	opcodes/dam.xml	opcodes/date.xml	opcodes/dates.xml \
 	opcodes/db.xml	opcodes/dbamp.xml	opcodes/dbfsamp.xml \
 	opcodes/dcblock.xml	opcodes/dcblock2.xml	opcodes/dconv.xml \
+	opcodes/dct.xml		opcodes/dctinv.xml \
 	opcodes/define.xml	opcodes/delay.xml	opcodes/delay1.xml \
 	opcodes/delayk.xml	opcodes/delayr.xml	opcodes/delayw.xml \
 	opcodes/deltap.xml	opcodes/deltap3.xml	opcodes/deltapi.xml \
