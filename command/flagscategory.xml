@@ -1105,32 +1105,32 @@ csound5:output2             (playback right)</screen>
       <term>--expression-opt<indexterm id="IndexCatMinusExpressionOpt"><primary>--expression-opt</primary></indexterm></term>
       <listitem>
         <para>
-                  <emphasis>Note that this option has no affect in
-                  csound6.</emphasis>
+          <emphasis>Note that this option has no affect in
+          csound6.</emphasis>
 
-              <emphasis>In Csound 5 only.</emphasis>
+          <emphasis>In Csound 5 only.</emphasis>
           Turns on some optimizations in expressions:
           <itemizedlist>
             <listitem><para>Redundant assignment operations are eliminated whenever
-                possible. This means that for example this line
-                a1 = a2 + a3
-                will compile as
-                a1 Add a2, a3
-                instead of
-                #a0 Add a2, a3
-                a1 = #a0
-                saving a temporary variable and an opcode call. Less opcode
-                calls result in reduced CPU usage (an average orchestra may
-                compile about 10% faster with --expression-opt, but it
-                depends largely on how many expressions are used, what the
-                control rate is (see also below), etc.; thus, the difference
-                may be less, but also much more).</para></listitem>
-            <listitem><para>number of a- and k-rate temporary variables is significantly
-                reduced. This expression</para>
-              <programlisting>
+            possible. This means that for example this line
+            a1 = a2 + a3
+            will compile as
+            a1 Add a2, a3
+            instead of
+            #a0 Add a2, a3
+            a1 = #a0
+            saving a temporary variable and an opcode call. Less opcode
+            calls result in reduced CPU usage (an average orchestra may
+            compile about 10% faster with --expression-opt, but it
+            depends largely on how many expressions are used, what the
+            control rate is (see also below), etc.; thus, the difference
+            may be less, but also much more).</para></listitem>
+            <listitem><para>number of a- and k-rate temporary
+            variables is significantly reduced. This expression</para>
+            <programlisting>
 (a1 + a2 + a3 + a4)</programlisting>
-              <para>will compile as</para>
-              <programlisting>
+<para>will compile as</para>
+<programlisting>
 #a0 Add a1, a2
 #a0 Add #a0, a3
 #a0 Add #a0, a4       ; (the result is in #a0)</programlisting>
@@ -1160,7 +1160,6 @@ csound5:output2             (playback right)</screen>
               performed on i-rate temporary variables.</para>
             </listitem>
           </itemizedlist>
-
           <warning>
             <title>Warning</title>
             <para>
@@ -1173,7 +1172,17 @@ csound5:output2             (playback right)</screen>
       </listitem>
     </varlistentry>
 
-    
+              
+    <varlistentry id="FlagsCatMinusVersion">
+      <term>--version<indexterm id="IndexCatMinusVersion"><primary>--version</primary></indexterm></term>
+      <listitem>
+        <para>
+          Exits after printing version information.
+        </para>
+      </listitem>
+    </varlistentry>
+
+
     <varlistentry id="CatFlagsMinusMinusGetSR">
       <term>--get-system-sr<indexterm id="IndexCatMinusMinusGetSR"><primary>--get-system-sr</primary></indexterm></term>
       <listitem>
