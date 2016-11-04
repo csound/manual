@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
-# 
+#
 # Copyright (C) 2007 Francois Pinot
-# 
+#
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public License
 # as published by the Free Software Foundation; either version 2.1
 # of the License, or (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 # See the GNU Lesser General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU Lesser General Public
 # License along with this program; if not, write to the
 # Free Software Foundation, Inc.,
@@ -35,10 +35,10 @@ class OrchestraDict(dict):
         self.initSeqCtrl()
         self.initMacros()
         self.labels = []
-    
+
     def initOpcodes(self):
         '''Read the list of csound opcodes from csound 5 API.
-        
+
         Thus we're sure that the opcode list is up to date, however it will be
         complete only if csound has been built with all the plugins.
         It is needed to compile an orchestra and score before calling
@@ -72,25 +72,25 @@ class OrchestraDict(dict):
         lo.Clear()
         csound.Reset()
         os.remove("dummy.csd")
-    
+
     def initHeaderSymbols(self):
         self.update({
             'sr':'ohdr', 'kr':'ohdr', 'ksmps':'ohdr', 'nchnls':'ohdr',
             '0dbfs':'ohdr', 'ctrlinit':'ohdr', 'ftgen':'ohdr', 'massign':'ohdr',
             'pgmassign':'ohdr', 'seed':'ohdr', 'strset':'ohdr'})
-    
+
     def initBlockDelim(self):
         self.update({
             'instr':'oblock', 'endin':'oblock',
             'opcode':'oblock', 'endop':'oblock'})
-    
+
     def initOperators(self):
         self.update({
             '==':'op', '!=':'op', '?':'op', '>':'op', '>=':'op', 'LeSsThAn':'op',
             'LeSsThAn=':'op', '=':'op', '+':'op', '-':'op', '*':'op', '/':'op',
             '%':'op', '^':'op', 'AmPeRsAnDAmPeRsAnD':'op', '||':'op',
             'AmPeRsAnD':'op', '|':'op', '~':'op', ':':'op'})
-    
+
     def initSeqCtrl(self):
         self.update({
             'cggoto':'octrl', 'cigoto':'octrl', 'ckgoto':'octrl', 'cngoto':'octrl',
@@ -98,22 +98,22 @@ class OrchestraDict(dict):
             'if':'octrl', 'igoto':'octrl', 'kgoto':'octrl', 'tigoto':'octrl',
             'timout':'octrl', 'loop_ge':'octrl', 'loop_gt':'octrl',
             'loop_le':'octrl', 'loop_lt':'octrl'})
-    
+
     def initMacros(self):
         self.update({
             '#define':'omacro', '#ifdef':'omacro', '#ifndef':'omacro', '#end':'omacro',
             '#else':'omacro', '#include':'omacro', '#undef':'omacro'})
-    
+
     def addLabel(self, key):
         self[key] = 'olabel'
         self.labels.append(key)
-    
+
     def clearLabels(self):
         for key in self.labels:
             if self.has_key(key):
                 self.pop(key)
         self.labels = []
-        
+
     def get(self, key, x=None):
         if self.has_key(key):
             return  '<emphasis role="' + self[key] +'">' + key + '</emphasis>'
@@ -131,16 +131,16 @@ class OrchestraTransform(object):
         self.pattern = re.compile(motif, re.VERBOSE)
         self.labelPattern = re.compile('[a-zA-Z]\w*:')
         self.orcDict = OrchestraDict()
-    
+
     def detectLabels(self, lines):
         for s in lines:
             c = self.labelPattern.match(s)
             if c:
                 self.orcDict.addLabel(s[:c.end()-1])
-            
+
     def comment(self, s):
         return '<emphasis role="comment">' + s + '</emphasis>'
-    
+
     def orcLine(self, line):
         inTokens = self.pattern.split(line)
         outTokens = []
@@ -148,7 +148,7 @@ class OrchestraTransform(object):
             if len(t) > 0:
                 outTokens.append(self.orcDict.get(t, line))
         return ''.join(outTokens)
-    
+
     def transformLines(self, lines):
         self.orcDict.clearLabels()
         self.detectLabels(lines)
@@ -162,7 +162,7 @@ class OrchestraTransform(object):
             else:
                 outLines.append(self.orcLine(s))
         return outLines
-    
+
     def transform(self, filename):
         f = open(filename, 'r')
         s = f.read()
@@ -185,10 +185,10 @@ class OrchestraTransform(object):
 class ScoreTransform(object):
     def __init__(self):
         self.pattern = re.compile('^\s*[abefimnqrstvx]')
-    
+
     def comment(self, s):
         return '<emphasis role="comment">' + s + '</emphasis>'
-    
+
     def scoLine(self, line):
         r = self.pattern.search(line)
         if r:
@@ -213,7 +213,7 @@ class CsdTransform(object):
         self.orc_t = OrchestraTransform()
         self.sco_t = ScoreTransform()
         self.playable = playable
-    
+
     def text(self, node):
         s = node.childNodes[0].nodeValue
         if s[0] == '\n':
@@ -225,7 +225,7 @@ class CsdTransform(object):
         else:
             end = None
         return s[start:end].split('\n')
-    
+
     def optTransform(self, lines):
         comment = lambda s: '<emphasis role="comment">' + s + '</emphasis>'
         outLines = []
@@ -238,7 +238,7 @@ class CsdTransform(object):
             else:
                 outLines.append(s)
         return outLines
-        
+
     def write_playable_example(self, filename, text):
         try:
             html_filename = filename + '.html'
@@ -255,7 +255,7 @@ class CsdTransform(object):
 <link rel="prev" href="active.html" title="active" />
 <link rel="next" href="adsyn.html" title="adsyn" />
 </head>
-<h1>''' 
+<h1>'''
             fout.write(chunk)
             fout.write(html_filename)
             chunk = '''</h1>
@@ -280,7 +280,7 @@ function handleMessage(message) {
     var messages_textarea = document.getElementById("console");
     var existing = messages_textarea.value;
     messages_textarea.value = existing + message.data;
-    messages_textarea.scrollTop = messages_textarea.scrollHeight;    
+    messages_textarea.scrollTop = messages_textarea.scrollHeight;
 }
 function sleep (time) {
     return new Promise((resolve) => setTimeout(resolve, time));
@@ -290,7 +290,7 @@ function start_onclick() {
     sleep(500).then(() => {
         var csd = document.getElementById('csd').value;
         csound.compileCsdText(csd);
-    })    
+    })
 }
 function stop_onclick () {
     csound.stop();
@@ -302,8 +302,9 @@ function stop_onclick () {
             fout.write(chunk)
             fout.close()
         except:
+            print 'Exception on chunk:', chunk
             traceback.print_exc()
-            
+
     def transform(self, filename):
         tag = lambda s: '<emphasis role="csdtag">&lt;' + s + '&gt;</emphasis>'
         f = open(filename, 'r')
@@ -321,6 +322,7 @@ function stop_onclick () {
         try:
             csddoc = minidom.parseString(s)
         except:
+            print 'Exception on s:', s
             traceback.print_exc()
             return
         optionsPresent = True
@@ -361,7 +363,7 @@ function stop_onclick () {
 
 def main():
     '''Usage: python csd2xml options [filename]
-    
+
     where options are one or more of the following:
         -f filename or --file=filename
             Transform examples/filename to examples-xml/filename.xml
@@ -370,7 +372,7 @@ def main():
             Transform all the csd files of the example directory to
             xml files in the examples-xml directory.
         --pnacl
-            Create a link to a version of each example csd that is 
+            Create a link to a version of each example csd that is
             playable using Csound for PNaCl.'''
     try:
         opts, args = getopt.getopt(sys.argv[1:], "f:a", ["file=", "all", "pnacl"])
