@@ -255,6 +255,7 @@ class CsdTransform(object):
         orchestra = csddoc.getElementsByTagName("CsInstruments")[0]
         score = csddoc.getElementsByTagName("CsScore")[0]
         outLines = []
+        outLines.append('<refsect1>')
         outLines.append('<programlisting>')
         outLines.append(tag("CsoundSynthesizer"))
         if len(options_elem) > 0:
@@ -269,10 +270,12 @@ class CsdTransform(object):
         outLines.append(tag("/CsScore"))
         outLines.append(tag("/CsoundSynthesizer"))
         outLines.append('</programlisting>')
+        outLines.append('</refsect1>')
         csddoc.unlink()
         # We convert back our "pseudo" entities in actual entities
         s = '\n'.join(outLines).replace('AmPeRsAnD', '&amp;')
         s = s.replace('LeSsThAn', '&lt;')
+        s += '\n'
         outfn = filename.replace('examples', 'examples-xml')
         fout = open(outfn + '.xml', 'w')
         fout.write(s)
