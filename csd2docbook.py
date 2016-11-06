@@ -355,6 +355,7 @@ function stop_onclick () {
         # We convert back our "pseudo" entities in actual entities
         s = '\n'.join(outLines).replace('AmPeRsAnD', '&amp;')
         s = s.replace('LeSsThAn', '&lt;')
+        s += '\n'
         outfn = filename.replace('examples', 'examples-xml')
         fout = open(outfn + '.xml', 'w')
         fout.write(s)
