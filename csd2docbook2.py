@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # 
 # Copyright (C) 2007 Francois Pinot
 # 
@@ -19,7 +20,6 @@
 # http://www.fsf.org/licensing/licenses/lgpl.html
 # 
 
-#import csnd
 import getopt, sys, os, glob, re
 from xml.dom import minidom
 
@@ -34,40 +34,13 @@ class OrchestraDict(dict):
         self.labels = []
     
     def initOpcodes(self):
-        '''Read the list of csound opcodes from csound 5 API.
-        
-        Thus we're sure that the opcode list is up to date, however it will be
-        complete only if csound has been built with all the plugins.
-        It is needed to compile an orchestra and score before calling
-        CsoundOpcodeList() in order to get the opcode list. So we use a dummy
-        csd file for that purpose (tricky isn't it?)
-        '''
-        #csound = csnd.CppSound()
-        #dummy = '''<CsoundSynthesizer>
-        #<CsOptions>
-        #-dodac
-        #</CsOptions>
-        #<CsInstruments>
-        #instr 1
-          #print p3
-        #endin
-        #</CsInstruments>
-        #<CsScore>
-        #i1 0 1
-        #e
-        #</CsScore>
-        #</CsoundSynthesizer>'''
+        """Read the list of csound opcodes from the file "opcode_list.txt."""
         f = open("opcode_list.txt", 'r')
         file = f.read()
         f.close()
-        #csound.Compile("dummy.csd")
         lo = file.split()
-        #n = lo.Count()
-        for i in xrange(len(lo)):
+        for i in range(len(lo)):
             self[lo[i]] = 'opc'
-        #lo.Clear()
-        #csound.Reset()
-        #os.remove("dummy.csd")
     
     def initHeaderSymbols(self):
         self.update({
@@ -106,15 +79,14 @@ class OrchestraDict(dict):
     
     def clearLabels(self):
         for key in self.labels:
-            if self.has_key(key):
+            if key in self:
                 self.pop(key)
         self.labels = []
         
     def get(self, key, x=None):
-        if self.has_key(key):
+        if key in self:
             return  '<emphasis role="' + self[key] +'">' + key + '</emphasis>'
         return key
-
 
 class OrchestraTransform(object):
     def __init__(self):
@@ -177,8 +149,7 @@ class OrchestraTransform(object):
         fout.write(s)
         fout.write('</programlisting>')
         fout.close()
-        print filename
-
+        print(filename)
 
 class ScoreTransform(object):
     def __init__(self):
@@ -206,12 +177,12 @@ class ScoreTransform(object):
                 outLines.append(self.scoLine(s))
         return outLines
 
-
 class CsdTransform(object):
-    def __init__(self):
+    def __init__(self, playable=False):
         self.orc_t = OrchestraTransform()
         self.sco_t = ScoreTransform()
-    
+        self.playable = playable
+
     def text(self, node):
         s = node.childNodes[0].nodeValue
         if s[0] == '\n':
@@ -223,7 +194,7 @@ class CsdTransform(object):
         else:
             end = None
         return s[start:end].split('\n')
-    
+
     def optTransform(self, lines):
         comment = lambda s: '<emphasis role="comment">' + s + '</emphasis>'
         outLines = []
@@ -236,11 +207,80 @@ class CsdTransform(object):
             else:
                 outLines.append(s)
         return outLines
-    
+
+    def write_playable_example(self, filename, text):
+        try:
+            html_filename = filename + '.html'
+            print("Writing playable example: {}".format(html_filename))
+            fout = open(html_filename, 'w')
+            chunk = '''<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>adsr</title>
+<link rel="stylesheet" type="text/css" href="csound.css" />
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+<link rel="home" href="index.html" title="The Canonical Csound Reference Manual" />
+<link rel="up" href="OpcodesTop.html" title="Orchestra Opcodes and Operators" />
+<link rel="prev" href="active.html" title="active" />
+<link rel="next" href="adsyn.html" title="adsyn" />
+</head>
+<h1>'''
+            fout.write(chunk)
+            fout.write(html_filename)
+            chunk = '''</h1>
+<p>
+This example will play if your Web browser is a desktop version of Google Chrome with PNaCl enabled. You can edit and replay the code. At this time, most but not all examples will run in PNaCl.
+</p>
+<p>
+<input type="button" value="Play" onclick="start_onclick()"/>
+<input type="button" value="Stop" onclick="stop_onclick()"/>
+<p>
+<textarea id="csd" style="width: 100%; height: 50%;font-size:12px;">'''
+            fout.write(chunk)
+            fout.write(text)
+            chunk = '''</textarea>
+<h3>Csound Messages</h3>
+<textarea id="console" readonly style="width: 100%; height: 25%;font-size:12px;">
+</textarea>
+<script type="text/javascript" src="../../csound.js"></script>
+<script>
+function handleMessage(message) {
+    console.log(message);
+    var messages_textarea = document.getElementById("console");
+    var existing = messages_textarea.value;
+    messages_textarea.value = existing + message.data;
+    messages_textarea.scrollTop = messages_textarea.scrollHeight;
+}
+function sleep (time) {
+    return new Promise((resolve) => setTimeout(resolve, time));
+}
+function start_onclick() {
+    csound.stop();
+    sleep(500).then(() => {
+        var csd = document.getElementById('csd').value;
+        csound.compileCsdText(csd);
+    })
+}
+function stop_onclick () {
+    csound.stop();
+}
+</script>
+ <div id="engine"></div>
+</body>
+</html>'''
+            fout.write(chunk)
+            fout.close()
+        except:
+            print('Exception on chunk: {}'.format(chunk))
+            traceback.print_exc()
+
     def transform(self, filename):
         tag = lambda s: '<emphasis role="csdtag">&lt;' + s + '&gt;</emphasis>'
         f = open(filename, 'r')
+        print(filename)
         s = f.read()
+        if self.playable == True:
+            self.write_playable_example(filename, s)
         f.close()
         # We convert & and < in "pseudo" entities because we don't want that
         # minidom resolves those entities
@@ -248,17 +288,26 @@ class CsdTransform(object):
         s = s.replace('<', 'LeSsThAn')
         s = s.replace('LeSsThAnCs', '<Cs')
         s = s.replace('LeSsThAn/Cs', '</Cs')
-        csddoc = minidom.parseString(s)
-        options_elem = csddoc.getElementsByTagName("CsOptions")
-        if len(options_elem) > 0:
-            options = options_elem[0]
+        try:
+            csddoc = minidom.parseString(s)
+        except:
+            print("Exception on s: {}".format(s))
+            traceback.print_exc()
+            return
+        optionsPresent = True
+        try:
+            options = csddoc.getElementsByTagName("CsOptions")[0]
+        except:
+            optionsPresent = False
         orchestra = csddoc.getElementsByTagName("CsInstruments")[0]
         score = csddoc.getElementsByTagName("CsScore")[0]
         outLines = []
         outLines.append('<refsect1>')
+        if self.playable == True:
+            outLines.append('<ulink url="%s.html">Play</ulink>' % filename);
         outLines.append('<programlisting>')
         outLines.append(tag("CsoundSynthesizer"))
-        if len(options_elem) > 0:
+        if optionsPresent:
             outLines.append(tag("CsOptions"))
             outLines.extend(self.optTransform(self.text(options)))
             outLines.append(tag("/CsOptions"))
@@ -280,24 +329,28 @@ class CsdTransform(object):
         fout = open(outfn + '.xml', 'w')
         fout.write(s)
         fout.close()
-        print filename
 
 
 def main():
-    '''Usage: python csd2xml option [filename]
-    
-    where option is one of the following:
+    """Usage: python csd2xml options [filename]
+
+    where options are one or more of the following:
         -f filename or --file=filename
-            transform examples/filename to examples-xml/filename.xml
+            Transform examples/filename to examples-xml/filename.xml
             where filename is the name of a csd file or orc file
         -a or --all
-            transform all the csd files of the example directory to
-            xml files in the examples-xml directory.'''
+            Transform all the csd files of the example directory to
+            xml files in the examples-xml directory.
+        --pnacl
+            Create a link to a version of each example csd that is
+            playable using Csound for PNaCl."""
     try:
-        opts, args = getopt.getopt(sys.argv[1:], "f:a", ["file=", "all"])
+        opts, args = getopt.getopt(sys.argv[1:], "f:a", ["file=", "all", "pnacl"])
     except getopt.GetoptError:
-        print main.__doc__
+        print(main.__doc__)
         sys.exit(2)
+    playable = '--pnacl' in sys.argv[1:]
+    print("playable: {}".format(playable))
     for o, a in opts:
         if o in ("-f", "--file") and a:
             if a.find('examples') < 0:
@@ -305,22 +358,22 @@ def main():
             if os.path.exists(a):
                 suf = os.path.splitext(a)[1]
                 if suf == '.csd':
-                    CsdTransform().transform(a)
+                    CsdTransform(playable).transform(a)
                 elif suf == '.orc':
                     OrchestraTransform().transform(a)
                 else:
-                    print a + ' is not a csd or orc filename'
+                    print( a + " is not a csd or orc filename")
                 sys.exit(0)
             else:
-                print a + " doesn't exists!"
+                print(a + " doesn't exist!")
                 sys.exit(2)
         if o in ("-a", "--all"):
-            ct = CsdTransform()
+            ct = CsdTransform(playable)
             infiles = glob.glob('examples/*.csd')
             for f in infiles:
                 ct.transform(f)
             sys.exit(0)
-    print main.__doc__
+    print(main.__doc__)
     sys.exit(2)
 
 
