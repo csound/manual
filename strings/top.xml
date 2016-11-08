@@ -30,7 +30,10 @@ a1    <emphasis role="opc">diskin2</emphasis> Sname, 1</programlisting>
     Strings can also be linked to a number using <link linkend="strset"><citetitle>strset</citetitle></link> and <link linkend="strget"><citetitle>strget</citetitle></link>.
   </para>
   <para>
-    Csound 5 also has improvements in parsing string constants. It is possible to specify a multi-line string by enclosing it within {{ and }} instead of the usual double quote characters, and the following escape sequences are automatically converted:
+    Csound 5 also has improvements in parsing string constants. It is possible
+    to specify a multi-line string by enclosing it within {{ and }} instead of
+    the usual double quote characters, and the following escape sequences are
+    automatically converted:
     <itemizedlist>
       <listitem>
         <para><emphasis>\a</emphasis> alert bell</para>
@@ -54,6 +57,24 @@ a1    <emphasis role="opc">diskin2</emphasis> Sname, 1</programlisting>
         <para><emphasis>\nnn</emphasis> the character of which the ASCII code (in octal) is nnn</para>
       </listitem>
     </itemizedlist>
+    <note>
+      <title>Note</title>
+      <para>
+        If the user does not want an escaped sequence to be automatically converted, she has to escape it
+        with an additional '\' character so that Csound knows it does not have to interpret the escaped sequence.
+        For example the string <code>"Not escaped\nline return"</code> will be converted to
+        <programlisting>
+        "Not escaped
+         line return"
+        </programlisting>
+        before being used, while the string <code>"Escaped\\nline return"</code> will be converted to
+        <programlisting>
+        "Escaped\nline return"
+        </programlisting>
+        before being used.
+      </para>
+    </note>
+    
     It can be useful together with the <link linkend="system"><citetitle>system</citetitle></link> opcode:
     <programlisting>
 <emphasis role="oblock">instr</emphasis> 1
