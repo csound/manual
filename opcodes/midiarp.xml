@@ -1,0 +1,74 @@
+<refentry id="midiarp">
+<indexterm id="Indexmidiarp"><primary>midiarp</primary></indexterm>
+  <refentryinfo><title>MIDI</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>midiarp</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>midiarp</refname>
+    <refpurpose>
+      Generates arpeggios based on currently held MIDI notes. 
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      midiarp constructs arpeggios based currently held MIDI notes. The opcode will output notes in the form of MIDI note numbers, and a metronomic signal that can be used to sequence the notes. Users can choose the rate at which the notes are generated, and may also choose from a set of arpeggio patterns. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kMidiNoteNum, kCounter<command>midiarp</command> kRate[, kMode]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>kRate</emphasis> -- sets the rate at which new notes will be generated and controls the frequency of the metronomic pulse signal.  
+    </para>
+    <para>
+      <emphasis>kMode</emphasis> -- Optional. Sets the mode of the arpeggio. 0 for up and down, 1, for up, 2 for down, and 3 for random. If left out, it will default to mode 0, up and down.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kMideNoteNum</emphasis> -- the current note number in the arpeggio pattern. 
+    </para>
+    <para>
+      <emphasis>kCounter</emphasis> -- a metronomic pulse that can be used to trigger playback of the notes in the arpeggio. This signal will output a 1 followed by 0s on each cycle. The frequency is set using the <emphasis>kRate</emphasis> input parameter.   
+    </para>
+  </refsect1>
+
+  <note>
+      <title>Note</title>
+      <para>
+      It is important that the instrument which holds the midiarp opcode is not continuously triggered on each new MIDI note. To prevent this from happening use the massign opcode, as shown in the example below. 
+      </para>
+  </note>
+
+  <refsect1>
+    <title>Example</title>
+    <para>
+      This example shows how midiarp can be used to trigger arpeggios using a secondary instrument for playback. Instrument 100 listens to incoming MIDI notes, and then triggers playback using instrument 200. <emphasis>massign</emphasis> is used to prevent instrument 100 from being triggered each time a new MIDI note is pressed. This examples uses the file <ulink url="examples/midiarp.csd"><citetitle>midiarp.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the midiarp opcode</title>
+        <xi:include href="examples-xml/midiarp.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Rory Walsh</member>
+        <member>2017</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

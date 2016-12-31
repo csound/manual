@@ -1,0 +1,46 @@
+<refsect1>
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Select audio/midi flags here according to platform</emphasis>
+<emphasis role="comment">; Audio out   Audio in    No messages</emphasis>
+-odac 	-d    -m0d     -M0  -+rtmidi=virtual <emphasis role="comment">;;;RT audio I/O with MIDI in</emphasis>
+<emphasis role="comment">; For Non-realtime ouput leave only the line below:</emphasis>
+<emphasis role="comment">; -o midiin.wav -W ;;; for file output any platform</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 32
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis> <emphasis role="op">=</emphasis> 1
+
+<emphasis role="ohdr">massign</emphasis> 1, <emphasis role="op">-</emphasis>1<emphasis role="comment">; prevent triggering of instrument with MIDI</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 100
+kMode <emphasis role="op">=</emphasis> 3
+kTempo <emphasis role="op">=</emphasis> 6
+kNote, kCounter <emphasis role="opc">midiarp</emphasis> kTempo
+
+kFilterFreq <emphasis role="opc">oscil</emphasis> 2000, .05
+<emphasis role="comment">;if kCounter is 1 trigger instrument 2 to play</emphasis>
+<emphasis role="octrl">if</emphasis> kCounter<emphasis role="op">==</emphasis>1 then 	
+	<emphasis role="opc">event</emphasis> "i", 200, 0, 2, kNote, kFilterFreq<emphasis role="op">+</emphasis>2200
+<emphasis role="octrl">endif</emphasis>
+
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="oblock">instr</emphasis> 200
+kEnv <emphasis role="opc">expon</emphasis> .4, p3, .001
+aOut <emphasis role="opc">vco2</emphasis> kEnv, <emphasis role="opc">cpsmidinn</emphasis>(p4)<emphasis role="op">*</emphasis>2		<emphasis role="comment">;convert note number to cps</emphasis>
+aFilter <emphasis role="opc">moogladder</emphasis> aOut, p5, 0
+<emphasis role="opc">outs</emphasis> aFilter, aFilter
+<emphasis role="oblock">endin</emphasis>
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">i</emphasis>100 0 1000
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>
+</refsect1>
