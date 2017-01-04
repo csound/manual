@@ -74,7 +74,7 @@ or
 
 Requires: 
 
-* Apache FOP (http://xml.apache.org/fop/)
+* Apache FOP 0.20.5 (https://archive.apache.org/dist/xml/fop/)
 * Java Advanced Imaging Library (https://jai.dev.java.net/binary-builds.html)
 * A Java Runtime Environment to run the above
 
