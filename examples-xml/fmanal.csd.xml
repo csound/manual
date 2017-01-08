@@ -1,0 +1,32 @@
+<refsect1>
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 64
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+<emphasis role="ohdr">0dbfs</emphasis> <emphasis role="op">=</emphasis> 1
+
+<emphasis role="oblock">instr</emphasis> 1
+
+asig <emphasis role="opc">oscili</emphasis> p4, p5
+a1,a2 <emphasis role="opc">hilbert2</emphasis> asig,1024,256
+am,afm <emphasis role="opc">fmanal</emphasis> a1,a2
+ktrig <emphasis role="opc">metro</emphasis> 2
+<emphasis role="opc">printf</emphasis> "AM<emphasis role="op">=</emphasis><emphasis role="op">%</emphasis>.3f FM<emphasis role="op">=</emphasis><emphasis role="op">%</emphasis>.1f\n",ktrig,k(am),k(afm)
+  <emphasis role="opc">outs</emphasis> a1, a2
+
+<emphasis role="oblock">endin</emphasis>
+
+
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">i</emphasis>1 0 10 0.5 440
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>
+</refsect1>

@@ -1,0 +1,84 @@
+
+<refentry id="fmanal">
+<indexterm id="IndexFmanal"><primary>fmanal</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Specialized Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>fmanal</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>fmanal</refname>
+    <refpurpose>
+      AM/FM analysis from quadrature signal.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This opcode attempts to extract the AM and FM signals off a
+      quadrature signal (e.g. from a Hilbert transform).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>am, af <command>fmanal</command> are, aim</synopsis>
+  </refsect1>
+  
+      <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>are</emphasis> -- real (cosine-phase) input signal
+    </para>
+
+        <para>
+      <emphasis>aim</emphasis> -- imaginary (sine-phase) input signal
+    </para>
+
+    <para>
+      <emphasis>am</emphasis> -- amplitude modulation envelope
+    </para>
+
+    <para>
+      <emphasis>af</emphasis> -- frequency modulation envelope
+    </para>
+
+    <para>
+      <emphasis>fmanal</emphasis> takes a signal in quadrature (real,
+      imag) and outputs the estimate AM and FM signals. The former is
+      the modulus of each input sample pair (|re + j*im|) and the
+      latter the derivative of arg(re + j*im). Each sample of the
+      output is the estimated instantaneous amplitude and frequency of
+      the input signal.
+    </para>
+  </refsect1>
+
+ 
+  <refsect1>
+    <title>Example</title>
+
+    <para>
+      Here is an example of the fmanal opcode. It uses the file <ulink url="examples/fmanal.csd"><citetitle>fmanal.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the fmanal opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/fmanal.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+  </refsect1>
+ 
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Victor Lazzarini</member>
+        <member>2017</member>
+      </simplelist>
+    </para>
+
+  </refsect1>
+</refentry>
