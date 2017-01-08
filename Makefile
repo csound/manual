@@ -737,13 +737,13 @@ html-onechunk: $(XSL_HTML_ONECHUNK) manual.xml $(SRCS) Makefile
 
 pdf: $(XSL_PRINT) manual.xml $(SRCS) Makefile
 	xsltproc  --xinclude -o $(BASENAME)$(VERSION)_manual.fo ${XSL_PRINT} manual.xml
-	fop.sh -fo $(BASENAME)$(VERSION)_manual.fo -pdf $(BASENAME)$(VERSION)_manual.pdf
+	fop -fo $(BASENAME)$(VERSION)_manual.fo -pdf $(BASENAME)$(VERSION)_manual.pdf
 	rm $(BASENAME)$(VERSION)_manual.fo
 
 pdfA4: $(XSL_PRINT) manual.xml $(SRCS) Makefile
 	xsltproc --stringparam paper.type A4  --xinclude \
 		-o $(BASENAME)$(VERSION)_manual_A4.fo ${XSL_PRINT} manual.xml
-	fop.sh -fo $(BASENAME)$(VERSION)_manual_A4.fo -pdf $(BASENAME)$(VERSION)_manual_A4.pdf
+	fop -fo $(BASENAME)$(VERSION)_manual_A4.fo -pdf $(BASENAME)$(VERSION)_manual_A4.pdf
 	rm $(BASENAME)$(VERSION)_manual_A4.fo
 
 htmlhelp: ${XSL_HTMLHELP} manual.xml $(SRCS)
