@@ -187,3 +187,4 @@ as well as give you information on where it is in error.
 Using a dedicated XML editor takes some of the pain out of editing the manual.
 Something like emacs in sgml mode or Kate in XML mode are very helpful.
 
+
