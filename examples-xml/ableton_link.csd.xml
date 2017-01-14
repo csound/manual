@@ -11,7 +11,7 @@
 
 <emphasis role="opc">alwayson</emphasis> "LinkMonitor"
 
-gi_link <emphasis role="opc">link_create</emphasis> 72
+gi_peer <emphasis role="opc">link_create</emphasis> 72
 gk_beat <emphasis role="opc">init</emphasis> 0
 
 <emphasis role="oblock">instr</emphasis> Beep
@@ -20,23 +20,23 @@ asignal <emphasis role="opc">oscils</emphasis> 20000, p4, 0
 <emphasis role="oblock">endin</emphasis>
 
 <emphasis role="oblock">instr</emphasis> TempoChange
-<emphasis role="opc">link_tempo_set</emphasis> gi_link, 80
+<emphasis role="opc">link_tempo_set</emphasis> gi_peer, 80
 <emphasis role="oblock">endin</emphasis>
 
 <emphasis role="oblock">instr</emphasis> LinkEnable
 i_enabled <emphasis role="op">=</emphasis> p4
-<emphasis role="opc">link_enable</emphasis> gi_link, i_enabled
+<emphasis role="opc">link_enable</emphasis> gi_peer, i_enabled
 <emphasis role="oblock">endin</emphasis>
 
 <emphasis role="oblock">instr</emphasis> LinkMonitor
 i_kperiod_seconds <emphasis role="op">=</emphasis> <emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">/</emphasis> <emphasis role="ohdr">sr</emphasis>
 <emphasis role="opc">printf_i</emphasis> "kperiod<emphasis role="op">:</emphasis> <emphasis role="op">%</emphasis>9.6f seconds.\n", 1, i_kperiod_seconds
-<emphasis role="opc">printf_i</emphasis> "gi_link<emphasis role="op">:</emphasis> <emphasis role="op">%</emphasis>g\n", 1, gi_link
-<emphasis role="opc">link_enable</emphasis> gi_link, 1
-k_trigger, gk_beat, k_phase, k_time <emphasis role="opc">link_metro</emphasis> gi_link, 1
-k_peers <emphasis role="opc">link_peers</emphasis> gi_link
-k_tempo <emphasis role="opc">link_tempo_get</emphasis> gi_link
-k_enabled <emphasis role="opc">link_is_enabled</emphasis> gi_link
+<emphasis role="opc">printf_i</emphasis> "gi_peer<emphasis role="op">:</emphasis> <emphasis role="op">%</emphasis>g\n", 1, gi_peer
+<emphasis role="opc">link_enable</emphasis> gi_peer, 1
+k_trigger, gk_beat, k_phase, k_time <emphasis role="opc">link_metro</emphasis> gi_peer, 1
+k_peers <emphasis role="opc">link_peers</emphasis> gi_peer
+k_tempo <emphasis role="opc">link_tempo_get</emphasis> gi_peer
+k_enabled <emphasis role="opc">link_is_enabled</emphasis> gi_peer
 k_hz <emphasis role="op">=</emphasis> 1000
 <emphasis role="octrl">if</emphasis> <emphasis role="opc">floor</emphasis>(gk_beat <emphasis role="op">%</emphasis> 4) <emphasis role="op">==</emphasis> 0 then
 k_hz <emphasis role="op">=</emphasis> 3000
@@ -44,7 +44,7 @@ k_hz <emphasis role="op">=</emphasis> 3000
 k_hz <emphasis role="op">=</emphasis> 2000
 <emphasis role="octrl">endif</emphasis>
 <emphasis role="opc">schedkwhen</emphasis> k_trigger, 0, 1, "Beep", 0, 0.01, k_hz
-<emphasis role="opc">printf</emphasis> "LinkMonitor<emphasis role="op">:</emphasis> gi_link<emphasis role="op">:</emphasis> <emphasis role="op">%</emphasis>g k_enabled<emphasis role="op">:</emphasis> <emphasis role="op">%</emphasis>9.4f k_trigger<emphasis role="op">:</emphasis> <emphasis role="op">%</emphasis>9.4f beat<emphasis role="op">:</emphasis> <emphasis role="op">%</emphasis>9.4f k_phase<emphasis role="op">:</emphasis> <emphasis role="op">%</emphasis>9.4f time<emphasis role="op">:</emphasis> <emphasis role="op">%</emphasis>9.4f <emphasis role="opc">tempo</emphasis><emphasis role="op">:</emphasis> <emphasis role="op">%</emphasis>9.4f peers<emphasis role="op">:</emphasis> <emphasis role="op">%</emphasis>3d\n", k_trigger, gi_link, k_enabled, k_trigger, gk_beat, k_phase, k_time, k_tempo, k_peers
+<emphasis role="opc">printf</emphasis> "LinkMonitor<emphasis role="op">:</emphasis> gi_peer<emphasis role="op">:</emphasis> <emphasis role="op">%</emphasis>g k_enabled<emphasis role="op">:</emphasis> <emphasis role="op">%</emphasis>9.4f k_trigger<emphasis role="op">:</emphasis> <emphasis role="op">%</emphasis>9.4f beat<emphasis role="op">:</emphasis> <emphasis role="op">%</emphasis>9.4f k_phase<emphasis role="op">:</emphasis> <emphasis role="op">%</emphasis>9.4f time<emphasis role="op">:</emphasis> <emphasis role="op">%</emphasis>9.4f <emphasis role="opc">tempo</emphasis><emphasis role="op">:</emphasis> <emphasis role="op">%</emphasis>9.4f peers<emphasis role="op">:</emphasis> <emphasis role="op">%</emphasis>3d\n", k_trigger, gi_peer, k_enabled, k_trigger, gk_beat, k_phase, k_time, k_tempo, k_peers
 <emphasis role="oblock">endin</emphasis>
 <emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
 <emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
