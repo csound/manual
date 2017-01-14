@@ -839,8 +839,10 @@
 <synopsis>ares <link linkend="dcblock2">dcblock2</link> ain [, iorder] [, iskip]</synopsis><para/>
 <synopsis>asig <link linkend="eqfil">eqfil</link> ain, kcf, kbw, kgain[, istor]</synopsis><para/>
 <synopsis>ares <link linkend="filter2">filter2</link> asig, iM, iN, ib0, ib1, ..., ibM, ia1, ia2, ..., iaN</synopsis><synopsis>kres <link linkend="filter2">filter2</link> ksig, iM, iN, ib0, ib1, ..., ibM, ia1, ia2, ..., iaN</synopsis><para/>
+<synopsis>am, af <link linkend="fmanal">fmanal</link> are, aim</synopsis><para/>
 <synopsis>asig <link linkend="fofilter">fofilter</link> ain, xcf, xris, xdec[, istor]</synopsis><para/>
 <synopsis>ar1, ar2 <link linkend="hilbert">hilbert</link> asig</synopsis><para/>
+<synopsis>ar1, ar2 <link linkend="hilbert2">hilbert2</link> asig, ifftsize, ihopsize</synopsis><para/>
 <synopsis>ares <link linkend="nlfilt">nlfilt</link> ain, ka, kb, kd, kC, kL</synopsis><para/>
 <synopsis>ares <link linkend="nlfilt2">nlfilt2</link> ain, ka, kb, kd, kC, kL</synopsis><para/>
 <synopsis>ares <link linkend="pareq">pareq</link> asig, kc, kv, kq [, imode] [, iskip]</synopsis><para/>
@@ -1631,7 +1633,7 @@
 <synopsis>asig <link linkend="cudasliding">cudasliding</link> ain, amod, iwinsize</synopsis><para/>
 <synopsis>asig <link linkend="cudasynth">cudasynth</link> kamp, kfreq, itab, iftab, iatab[, inum]</synopsis><synopsis>asig <link linkend="cudasynth">cudasynth</link> fsig, kamp, kfreq[, inum]</synopsis><synopsis>asig <link linkend="cudasynth">cudasynth</link> fsig</synopsis><para/>
 <synopsis>ftrks <link linkend="partials">partials</link> ffr, fphs, kthresh, kminpts, kmaxgap, imaxtracks</synopsis><para/>
-<synopsis>kframe <link linkend="pvs2tab">pvs2tab</link> tvar|kvar[], fsig</synopsis><para/>
+<synopsis>kframe <link linkend="pvs2tab">pvs2tab</link> tvar|kvar[], fsig</synopsis><synopsis>kframe <link linkend="pvs2tab">pvs2tab</link> kmags[], kfreqs[], fsig</synopsis><para/>
 <synopsis>ares <link linkend="pvsadsyn">pvsadsyn</link> fsrc, inoscs, kfmod [, ibinoffset] [, ibinincr] [, iinit]</synopsis><para/>
 <synopsis>fsig <link linkend="pvsanal">pvsanal</link> ain, ifftsize, ioverlap, iwinsize, iwintype [, iformat] [, iinit]</synopsis><para/>
 <synopsis>fsig <link linkend="pvsarp">pvsarp</link> fsigin, kbin, kdepth, kgain</synopsis><para/>
@@ -1679,7 +1681,7 @@
 <synopsis>ares <link linkend="pvsynth">pvsynth</link> fsrc, [iinit]</synopsis><para/>
 <synopsis>asig <link linkend="resyn">resyn</link> fin, kscal, kpitch, kmaxtracks, ifn</synopsis><para/>
 <synopsis>asig <link linkend="sinsyn">sinsyn</link> fin, kscal, kmaxtracks, ifn</synopsis><para/>
-<synopsis>fsig <link linkend="tab2pvs">tab2pvs</link> tvar|karr[][,ihopsize, iwinsize, iwintype]</synopsis><para/>
+<synopsis>fsig <link linkend="tab2pvs">tab2pvs</link> tvar|karr[][,ihopsize, iwinsize, iwintype]</synopsis><synopsis>fsig <link linkend="tab2pvs">tab2pvs</link> kmags[], kfreqs[][,ihopsize, iwinsize, iwintype]</synopsis><para/>
 <synopsis>ffr,fphs <link linkend="tabifd">tabifd</link> ktimpt, kamp, kpitch, ifftsize, ihopsize, iwintype,ifn</synopsis><para/>
 <synopsis>asig <link linkend="tradsyn">tradsyn</link> fin, kscal, kpitch, kmaxtracks, ifn</synopsis><para/>
 <synopsis>fsig <link linkend="trcross">trcross</link> fin1, fin2, ksearch, kdepth [, kmode] </synopsis><para/>
@@ -1961,6 +1963,21 @@
 <synopsis><link linkend="MixerSend">MixerSend</link> asignal, isend, ibuss, ichannel</synopsis><para/>
 <synopsis><link linkend="MixerSetLevel">MixerSetLevel</link> isend, ibuss, kgain</synopsis><para/>
 <synopsis><link linkend="MixerSetLevel_i">MixerSetLevel_i</link> isend, ibuss, igain</synopsis><para/>
+</para></formalpara>
+<para></para><para></para><formalpara>
+<title>Ableton Link Opcodes</title>
+<para>
+<para/>
+<synopsis><link linkend="opcodeslinkbeatforce">link_beat_force</link>  i_peer, k_beat [, k_at_time_seconds  [, k_quantum ]] </synopsis><para/>
+<synopsis>k_beat_number, k_phase, k_current_time_seconds <link linkend="opcodeslinkbeatget">link_beat_get</link> i_peer [, k_quantum]</synopsis><para/>
+<synopsis><link linkend="opcodeslinkbeatrequest">link_beat_request</link>  i_peer, k_beat [, k_at_time_seconds  [, k_quantum ]] </synopsis><para/>
+<synopsis>i_peer <link linkend="opcodeslinkcreate">link_create</link> [i_bpm]</synopsis><para/>
+<synopsis> <link linkend="opcodeslinkenable">ableton_link_enable</link> i_peer [, k_enable]</synopsis><para/>
+<synopsis>k_is_enabled <link linkend="opcodeslinkisenabled">link_is_enabled</link>i_peer</synopsis><para/>
+<synopsis>k_trigger, k_beat, k_phase, k_current_time_seconds <link linkend="opcodeslinkimetro">link_metro</link> i_peer [, k_quantum]</synopsis><para/>
+<synopsis>k_count <link linkend="opcodeslinkpeers">link_peers</link> i_peer</synopsis><para/>
+<synopsis>k_bpm <link linkend="opcodeslinktempoget">link_tempo_get</link> i_peer</synopsis><para/>
+<synopsis><link linkend="opcodeslinktemposet">link_tempo_set</link> i_peer, k_bpm [, k_at_time_seconds]</synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
 <title>Python Opcodes</title>
