@@ -1,5 +1,7 @@
 # About the Manual 
 
+[![Build status](https://travis-ci.org/csound/manual.svg?branch=master)](https://travis-ci.org/csound/manual)
+
 The Csound Reference Manual is written in Docbook-XML. More information about
 Docbook-XML can be found at the following links:
 
