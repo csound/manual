@@ -15,8 +15,8 @@ pull request](https://guides.github.com/activities/forking/).
 ## General Requirements
 
 In addition to other requirements specific to what you’re building, you need
-DocBook, [Python](https://www.python.org), and [xsltproc]
-(http://xmlsoft.org/XSLT/xsltproc2.html).
+DocBook; [Python](https://www.python.org), with [Pygments](http://pygments.org);
+and [xsltproc](http://xmlsoft.org/XSLT/xsltproc2.html).
 
 ### On Linux
 
@@ -26,15 +26,19 @@ To install DocBook and xsltproc, run
 sudo apt-get install -y docbook xsltproc
 ```
 
-Python is preinstalled on most Linux distributions. If you don’t have Python,
-visit https://docs.python.org/2/using/unix.html to learn how to install Python
-or build it from source.
+Python, with Pygments, is preinstalled on most Linux distributions. If you don’t
+have Python, visit https://docs.python.org/2/using/unix.html to learn how to
+install Python or build it from source.
+
+Visit http://pygments.org/download/ to learn how to install Pygments.
 
 ### On macOS
 
 The easiest way to install DocBook is probably through [Homebrew]
 (http://brew.sh). To install Homebrew, follow the instructions at [brew.sh]
 (http://brew.sh). Then, enter `brew install docbook` in a Terminal.
+
+To install Pygments, enter in Terminal `sudo easy_install pygments`.
 
 Python and xsltproc are preinstalled on macOS.
 
@@ -47,6 +51,8 @@ download and run an installer for the latest release of Cygwin.
 To install Python, visit https://www.python.org/downloads/windows/ and download
 and run an installer for the latest release of Python 2.7. Make sure you add
 python.exe to your Windows Path when you install Python.
+
+Visit http://pygments.org/download/ to learn how to install Pygments.
 
 
 ## Building
