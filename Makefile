@@ -683,7 +683,7 @@ OTHER =         STKopcodes/top.xml \
         manual.xml
         
 SRCS =  $(COMMAND) $(CONTROL) $(XMLS) $(MIDI) $(OPCODES) $(ORCH) $(SCORE) \
-	$(SIGS) $(UTILS) $(MISC) $(OTHER)
+	$(SIGS) $(UTILS) $(MISC) $(OTHER) examples-xml
  
 # Build rules.
 all: html
@@ -693,6 +693,10 @@ $(XSL_HTML) $(XSL_HTMLHELP) $(XSL_PRINT) $(XSL_HTML_ONECHUNK): %: %.in
 	 echo "The XSL_BASE_PATH variable must be set to the XSL stylesheets installation directory" ; \
 	 false )
 	sed -e 's|@xsl_base_path@|$(XSL_BASE_PATH)|' $@.in > $@
+
+examples-xml: examples $(wildcard examples/*)
+	mkdir -p examples-xml
+	python csd2docbook.py
 
 html: $(XSL_HTML) manual.xml $(SRCS) Makefile
 	rm -rf html
@@ -763,17 +767,21 @@ manpages: $(XSL_MANPAGES) manual.xml $(SRCS) Makefile
 	xsltproc  --xinclude -o ${MANPAGES_DIR}/ ${XSL_MANPAGES} manpages.xml
 
 html-clean:
+	rm -rf examples-xml
 	rm -rf html
 	rm -f examples/*.csd~
 
 pdf-clean:
+	rm -rf examples-xml
 	rm -f *.pdf *.fo
 
 htmlhelp-clean:
+	rm -rf examples-xml
 	rm -rf *.chm
 	rm -rf htmlhelp
 
 manpages-clean:
+	rm -rf examples-xml
 	rm -rf manpages
 
 clean: html-clean pdf-clean htmlhelp-clean manpages-clean
