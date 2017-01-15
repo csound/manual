@@ -20,7 +20,7 @@
 import getopt, glob, os, sys
 from pygments import highlight
 from pygments.formatter import Formatter
-from pygments.lexers import CsoundDocumentLexer
+from pygments.lexers import CsoundDocumentLexer, CsoundOrchestraLexer
 from pygments.token import STANDARD_TYPES
 from xml.sax.saxutils import escape
 
@@ -28,7 +28,7 @@ from xml.sax.saxutils import escape
 # See http://pygments.org/docs/formatterdevelopment/.
 class DocBookFormatter(Formatter):
     def format(self, tokensource, outfile):
-        outfile.write('<refsect1>\n<programlisting>\n')
+        outfile.write('<programlisting>\n')
 
         currentTypeString = ''
         currentValue = ''
@@ -43,7 +43,7 @@ class DocBookFormatter(Formatter):
 
         self.writeToken(currentTypeString, currentValue, outfile)
 
-        outfile.write('</programlisting>\n</refsect1>\n')
+        outfile.write('</programlisting>\n')
 
 
     def writeToken(self, typeString, value, outfile):
@@ -55,8 +55,16 @@ class DocBookFormatter(Formatter):
             outfile.write('<emphasis role="' + typeString + '">' + escapedValue + '</emphasis>')
 
 
-for filename in glob.glob('examples/*.csd'):
-	with open(filename, 'r') as file:
+for path in glob.glob('examples/*.csd'):
+	with open(path, 'r') as file:
 		code = file.read()
-	with open(filename.replace('examples/', 'examples-xml/') + '.xml', 'w') as file:
+	with open(path.replace('examples/', 'examples-xml/') + '.xml', 'w') as file:
+		file.write('<refsect1>\n')
 		file.write(highlight(code, CsoundDocumentLexer(), DocBookFormatter()))
+		file.write('</refsect1>\n')
+
+path = 'examples/table1.inc'
+with open(path, 'r') as file:
+	code = file.read()
+with open(path.replace('examples/', 'examples-xml/') + '.xml', 'w') as file:
+	file.write(highlight(code, CsoundOrchestraLexer(), DocBookFormatter()))
