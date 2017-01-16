@@ -199,14 +199,6 @@ categories in [categories.py]
 to your opcode in the appropriate section of the [Opcodes Overview]
 (http://csound.github.io/docs/manual/PartOpcodesOverview.html).
 
-6. To transform an examples/newopcodename.csd example file to
-examples-xml/newopcodename.csd.xml, use [csd2docbook2.py]
-(https://github.com/csound/manual/blob/master/csd2docbook2.py) like:
-
-    ```sh
-    python csd2docbook2.py --file=newopcodename.csd
-    ```
-
 
 ## For Maintainers
 
