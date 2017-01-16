@@ -47,7 +47,7 @@ class DocBookFormatter(Formatter):
 
 
     def writeToken(self, typeString, value, outfile):
-    	escapedValue = escape(value)
+        escapedValue = escape(value)
         # Don’t wrap Text tokens in emphasis elements.
         if typeString == '':
             outfile.write(escapedValue)
@@ -56,15 +56,15 @@ class DocBookFormatter(Formatter):
 
 
 for path in glob.glob('examples/*.csd'):
-	with open(path, 'r') as file:
-		code = file.read()
-	with open(path.replace('examples/', 'examples-xml/') + '.xml', 'w') as file:
-		file.write('<refsect1>\n')
-		file.write(highlight(code, CsoundDocumentLexer(), DocBookFormatter()))
-		file.write('</refsect1>\n')
+    with open(path, 'r') as file:
+        code = file.read()
+    with open(path.replace('examples/', 'examples-xml/') + '.xml', 'w') as file:
+        file.write('<refsect1>\n')
+        file.write(highlight(code, CsoundDocumentLexer(), DocBookFormatter()))
+        file.write('</refsect1>\n')
 
 path = 'examples/table1.inc'
 with open(path, 'r') as file:
-	code = file.read()
+    code = file.read()
 with open(path.replace('examples/', 'examples-xml/') + '.xml', 'w') as file:
-	file.write(highlight(code, CsoundOrchestraLexer(), DocBookFormatter()))
+    file.write(highlight(code, CsoundOrchestraLexer(), DocBookFormatter()))
