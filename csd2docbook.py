@@ -17,11 +17,11 @@
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
-import glob
+import glob, re
 from pygments import highlight
 from pygments.formatter import Formatter
-from pygments.lexers import CsoundDocumentLexer, CsoundOrchestraLexer, _csound_builtins
-from pygments.token import STANDARD_TYPES
+from pygments.lexers import CsoundDocumentLexer, CsoundOrchestraLexer, CsoundScoreLexer, _csound_builtins
+from pygments.token import Token, STANDARD_TYPES
 from xml.sax.saxutils import escape
 
 
@@ -352,6 +352,14 @@ for opcodeName in opcodeNames:
         _csound_builtins.OPCODES.add(opcodeName)
 
 
+# To match the syntax highlighting from
+# https://github.com/csound/manual/tree/c1b097bae66e04c2b11395f12a03f0d67fc1f059
+# as closely as possible, change the token type of score statements from Keyword
+# to Name.Builtin so that they look like opcodes.
+stateTuple = CsoundScoreLexer.tokens['root'][3]
+CsoundScoreLexer.tokens['root'][3] = (stateTuple[0], Token.Name.Builtin, stateTuple[2])
+
+
 # See http://pygments.org/docs/formatterdevelopment/.
 class DocBookFormatter(Formatter):
     def format(self, tokensource, outfile):
@@ -364,6 +372,17 @@ class DocBookFormatter(Formatter):
             if typeString == currentTypeString:
                 currentValue += value
             else:
+                if currentTypeString == 'k' and re.match('end(?:in|op)|instr|opcode', currentValue):
+                    # If the current token is a Keyword and is one of endin,
+                    # endop, instr, or opcode, treat it as a Keyword.Declaration
+                    # token.
+                    currentTypeString = 'kd'
+                elif currentTypeString == 'kt' and re.match('g?[aikSw]', currentValue) and typeString == 'n':
+                    # If the current token is a Keyword.Type, has a value that
+                    # matches a Csound type sigil, and is followed immediately
+                    # by a name, then it’s a type sigil. Treat it as a Text
+                    # token.
+                    currentTypeString = ''
                 self.writeToken(currentTypeString, currentValue, outfile)
                 currentTypeString = typeString
                 currentValue = value

@@ -79,141 +79,69 @@ set       toc,title
   </xsl:element>
 </xsl:template>
 
-<!--
-Rules for syntax highlighting, based on Pygments’ lovelace style:
-https://bitbucket.org/birkenfeld/pygments-main/src/default/pygments/styles/lovelace.py
--->
-<xsl:template match="emphasis[starts-with(@role, 'k')]"> <!-- Keyword -->
-  <fo:inline color="#2838b0"><xsl:apply-templates/></fo:inline>
+<xsl:template match="emphasis[@role = 'k']"> <!-- Keyword -->
+  <fo:inline color="rgb(0,128,0)" font-weight="bold"><xsl:apply-templates/></fo:inline>
+</xsl:template>
+<xsl:template match="emphasis[@role = 'kd']"> <!-- Keyword.Declaration -->
+  <fo:inline color="rgb(128,0,128)" font-weight="bold"><xsl:apply-templates/></fo:inline>
+</xsl:template>
+<xsl:template match="emphasis[starts-with(@role, 'k')]">
+  <fo:inline color="rgb(0,128,0)"><xsl:apply-templates/></fo:inline>
 </xsl:template>
 
 <xsl:template match="emphasis[@role = 'na']"> <!-- Name.Attribute -->
-  <fo:inline color="#388038"><xsl:apply-templates/></fo:inline>
+  <fo:inline color="rgb(0,128,0)"><xsl:apply-templates/></fo:inline>
 </xsl:template>
 <xsl:template match="emphasis[@role = 'nb']"> <!-- Name.Builtin -->
-  <fo:inline color="#388038"><xsl:apply-templates/></fo:inline>
+  <fo:inline color="rgb(0,0,255)" font-weight="bold"><xsl:apply-templates/></fo:inline>
 </xsl:template>
 <xsl:template match="emphasis[@role = 'bp']"> <!-- Name.Builtin.Pseudo -->
-  <fo:inline color="#388038" font-style="italic"><xsl:apply-templates/></fo:inline>
-</xsl:template>
-<xsl:template match="emphasis[@role = 'nc']"> <!-- Name.Class -->
-  <fo:inline color="#287088"><xsl:apply-templates/></fo:inline>
-</xsl:template>
-<xsl:template match="emphasis[@role = 'no']"> <!-- Name.Constant -->
-  <fo:inline color="#b85820"><xsl:apply-templates/></fo:inline>
-</xsl:template>
-<xsl:template match="emphasis[@role = 'nd']"> <!-- Name.Decorator -->
-  <fo:inline color="#287088"><xsl:apply-templates/></fo:inline>
-</xsl:template>
-<xsl:template match="emphasis[@role = 'ni']"> <!-- Name.Entity -->
-  <fo:inline color="#709030"><xsl:apply-templates/></fo:inline>
-</xsl:template>
-<xsl:template match="emphasis[@role = 'ne']"> <!-- Name.Exception -->
-  <fo:inline color="#908828"><xsl:apply-templates/></fo:inline>
-</xsl:template>
-<xsl:template match="emphasis[@role = 'nf']"> <!-- Name.Function -->
-  <fo:inline color="#785840"><xsl:apply-templates/></fo:inline>
-</xsl:template>
-<xsl:template match="emphasis[@role = 'fm']"> <!-- Name.Function.Magic -->
-  <fo:inline color="#b85820"><xsl:apply-templates/></fo:inline>
+  <fo:inline color="rgb(0,0,255)" font-weight="bold"><xsl:apply-templates/></fo:inline>
 </xsl:template>
 <xsl:template match="emphasis[@role = 'nl']"> <!-- Name.Label -->
-  <fo:inline color="#289870"><xsl:apply-templates/></fo:inline>
-</xsl:template>
-<xsl:template match="emphasis[@role = 'nn']"> <!-- Name.Namespace -->
-  <fo:inline color="#289870"><xsl:apply-templates/></fo:inline>
+  <fo:inline color="rgb(205,92,92)" font-weight="bold"><xsl:apply-templates/></fo:inline>
 </xsl:template>
 <xsl:template match="emphasis[@role = 'nt']"> <!-- Name.Tag -->
-  <fo:inline color="#2838b0"><xsl:apply-templates/></fo:inline>
-</xsl:template>
-<xsl:template match="emphasis[@role = 'nv']"> <!-- Name.Variable -->
-  <fo:inline color="#b04040"><xsl:apply-templates/></fo:inline>
+  <fo:inline color="rgb(165,42,42)"><xsl:apply-templates/></fo:inline>
 </xsl:template>
 <xsl:template match="emphasis[@role = 'vg']"> <!-- Name.Variable.Global -->
-  <fo:inline color="#908828"><xsl:apply-templates/></fo:inline>
-</xsl:template>
-<xsl:template match="emphasis[@role = 'vi']"> <!-- Name.Variable.Instance -->
-  <fo:inline color="#b04040"><xsl:apply-templates/></fo:inline>
-</xsl:template>
-<xsl:template match="emphasis[@role = 'vm']"> <!-- Name.Variable.Magic -->
-  <fo:inline color="#b85820"><xsl:apply-templates/></fo:inline>
-</xsl:template>
-
-<xsl:template match="emphasis[@role = 's']"> <!-- String -->
-  <fo:inline color="#b83838"><xsl:apply-templates/></fo:inline>
-</xsl:template>
-<xsl:template match="emphasis[@role = 'sa']"> <!-- String.Affix -->
-  <fo:inline color="#444444"><xsl:apply-templates/></fo:inline>
-</xsl:template>
-<xsl:template match="emphasis[@role = 'sb']"> <!-- String.Backtick -->
-  <fo:inline color="#b83838"><xsl:apply-templates/></fo:inline>
-</xsl:template>
-<xsl:template match="emphasis[@role = 'sc']"> <!-- String.Char -->
-  <fo:inline color="#a848a8"><xsl:apply-templates/></fo:inline>
-</xsl:template>
-<xsl:template match="emphasis[@role = 'dl']"> <!-- String.Delimiter -->
-  <fo:inline color="#b85820"><xsl:apply-templates/></fo:inline>
-</xsl:template>
-<xsl:template match="emphasis[@role = 'sd']"> <!-- String.Doc -->
-  <fo:inline color="#b85820" font-style="italic"><xsl:apply-templates/></fo:inline>
-</xsl:template>
-<xsl:template match="emphasis[@role = 's2']"> <!-- String.Double -->
-  <fo:inline color="#b83838"><xsl:apply-templates/></fo:inline>
-</xsl:template>
-<xsl:template match="emphasis[@role = 'se']"> <!-- String.Escape -->
-  <fo:inline color="#709030"><xsl:apply-templates/></fo:inline>
-</xsl:template>
-<xsl:template match="emphasis[@role = 'sh']"> <!-- String.Heredoc -->
-  <fo:inline color="#b83838"><xsl:apply-templates/></fo:inline>
-</xsl:template>
-<xsl:template match="emphasis[@role = 'si']"> <!-- String.Interpol -->
-  <fo:inline color="#b83838"><xsl:apply-templates/></fo:inline>
-</xsl:template>
-<xsl:template match="emphasis[@role = 'sx']"> <!-- String.Other -->
-  <fo:inline color="#a848a8"><xsl:apply-templates/></fo:inline>
-</xsl:template>
-<xsl:template match="emphasis[@role = 'sr']"> <!-- String.Regex -->
-  <fo:inline color="#a848a8"><xsl:apply-templates/></fo:inline>
-</xsl:template>
-<xsl:template match="emphasis[@role = 's1']"> <!-- String.Single -->
-  <fo:inline color="#b83838"><xsl:apply-templates/></fo:inline>
-</xsl:template>
-<xsl:template match="emphasis[@role = 'ss']"> <!-- String.Symbol -->
-  <fo:inline color="#b83838"><xsl:apply-templates/></fo:inline>
-</xsl:template>
-
-<xsl:template match="emphasis[starts-with(@role, 'm') or @role = 'il']"> <!-- Number -->
-  <fo:inline color="#444444"><xsl:apply-templates/></fo:inline>
-</xsl:template>
-
-<xsl:template match="emphasis[@role = 'o']"> <!-- Operator -->
-  <fo:inline color="#666666"><xsl:apply-templates/></fo:inline>
-</xsl:template>
-<xsl:template match="emphasis[@role = 'ow']"> <!-- Operator.Word -->
-  <fo:inline color="#a848a8"><xsl:apply-templates/></fo:inline>
-</xsl:template>
-
-<xsl:template match="emphasis[@role = 'p']"> <!-- Punctuation -->
-  <fo:inline color="#888888" font-style="italic"><xsl:apply-templates/></fo:inline>
+  <fo:inline color="rgb(139,0,0)" font-weight="bold"><xsl:apply-templates/></fo:inline>
 </xsl:template>
 
 <xsl:template match="emphasis[@role = 'c']"> <!-- Comment -->
-  <fo:inline color="#888888" font-style="italic"><xsl:apply-templates/></fo:inline>
-</xsl:template>
-<xsl:template match="emphasis[@role = 'ch']"> <!-- Comment.Hashbang -->
-  <fo:inline color="#287088" font-style="italic"><xsl:apply-templates/></fo:inline>
+  <fo:inline color="rgb(0,128,0)" font-style="italic"><xsl:apply-templates/></fo:inline>
 </xsl:template>
 <xsl:template match="emphasis[@role = 'cm']"> <!-- Comment.Multiline -->
-  <fo:inline color="#888888" font-style="italic"><xsl:apply-templates/></fo:inline>
+  <fo:inline color="rgb(0,128,0)" font-style="italic"><xsl:apply-templates/></fo:inline>
 </xsl:template>
 <xsl:template match="emphasis[@role = 'cp']"> <!-- Comment.Preproc -->
-  <fo:inline color="#289870"><xsl:apply-templates/></fo:inline>
+  <fo:inline color="rgb(186,85,211)" font-weight="bold"><xsl:apply-templates/></fo:inline>
 </xsl:template>
 <xsl:template match="emphasis[@role = 'c1']"> <!-- Comment.Single -->
-  <fo:inline color="#888888" font-style="italic"><xsl:apply-templates/></fo:inline>
+  <fo:inline color="rgb(0,128,0)" font-style="italic"><xsl:apply-templates/></fo:inline>
 </xsl:template>
 <xsl:template match="emphasis[@role = 'cs']"> <!-- Comment.Special -->
-  <fo:inline color="#888888" font-style="italic"><xsl:apply-templates/></fo:inline>
+  <fo:inline color="rgb(0,128,0)" font-style="italic"><xsl:apply-templates/></fo:inline>
+</xsl:template>
+
+<xsl:template match="emphasis[@role = 'o']"> <!-- Operator -->
+  <fo:inline font-weight="bold"><xsl:apply-templates/></fo:inline>
+</xsl:template>
+<xsl:template match="emphasis[@role = 'ow']"> <!-- Operator.Word -->
+  <fo:inline color="rgb(0,128,0)" font-weight="bold"><xsl:apply-templates/></fo:inline>
+</xsl:template>
+
+<xsl:template match="emphasis[@role = 'sd']"> <!-- String.Doc -->
+  <fo:inline color="rgb(205,133,63)" font-style="italic"><xsl:apply-templates/></fo:inline>
+</xsl:template>
+<xsl:template match="emphasis[@role = 'se']"> <!-- String.Escape -->
+  <fo:inline color="rgb(0,128,0)"><xsl:apply-templates/></fo:inline>
+</xsl:template>
+<xsl:template match="emphasis[@role = 'si']"> <!-- String.Interpol -->
+  <fo:inline color="rgb(205,133,63)" font-weight="bold"><xsl:apply-templates/></fo:inline>
+</xsl:template>
+<xsl:template match="emphasis[starts-with(@role, 's')]">
+  <fo:inline color="rgb(205,133,63)"><xsl:apply-templates/></fo:inline>
 </xsl:template>
 
 </xsl:stylesheet>
