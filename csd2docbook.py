@@ -28,296 +28,298 @@ from xml.sax.saxutils import escape
 # The _csound_builtins.OPCODES set will have these opcodes added to it when
 # https://bitbucket.org/birkenfeld/pygments-main/pull-requests/684/update-for-csound-6080
 # is merged.
-opcodeNames = [
-    'OSCinitM',
-    'S',
-    'cepsinv',
-    'changed2',
-    'compress2',
-    'dct',
-    'dctinv',
-    'directory',
-    'filescal',
-    'framebuffer',
-    'ftsamplebank',
-    'getftargs',
-    'getseed',
-    'lua_exec',
-    'lua_opdef',
-    'mfb',
-    'moogladder2',
-    'mp3scal',
-    'mvchpf',
-    'mvclpf1',
-    'mvclpf2',
-    'mvclpf3',
-    'mvclpf4',
-    'nchnls_hw',
-    'nxtpow2',
-    'olabuffer',
-    'part2txt',
-    'paulstretch',
-    'pows',
-    'pylrun',
-    'pylruni',
-    'pylrunt',
-    'pyrun',
-    'pyruni',
-    'pyrunt',
-    'scoreline',
-    'scoreline_i',
-    'tabifd',
-    'urandom'
-]
+opcodeNames = '''
+OSCinitM
+S
+cepsinv
+changed2
+compress2
+dct
+dctinv
+directory
+filescal
+framebuffer
+ftsamplebank
+getftargs
+getseed
+lua_exec
+lua_opdef
+mfb
+moogladder2
+mp3scal
+mvchpf
+mvclpf1
+mvclpf2
+mvclpf3
+mvclpf4
+nchnls_hw
+nxtpow2
+olabuffer
+part2txt
+paulstretch
+pows
+pylrun
+pylruni
+pylrunt
+pyrun
+pyruni
+pyrunt
+scoreline
+scoreline_i
+tabifd
+urandom
+'''.split()
+
 # The _csound_builtins.OPCODES set does not contain these opcodes, and there’s
 # not yet a pull request to add them.
-opcodeNames.extend([
-    'JackoAudioIn',
-    'JackoAudioInConnect',
-    'JackoAudioOut',
-    'JackoAudioOutConnect',
-    'JackoFreewheel',
-    'JackoInfo',
-    'JackoInit',
-    'JackoMidiInConnect',
-    'JackoMidiOut',
-    'JackoMidiOutConnect',
-    'JackoNoteOut',
-    'JackoOn',
-    'JackoTransport',
-    'STKBandedWG',
-    'STKBeeThree',
-    'STKBlowBotl',
-    'STKBlowHole',
-    'STKBowed',
-    'STKBrass',
-    'STKClarinet',
-    'STKDrummer',
-    'STKFMVoices',
-    'STKFlute',
-    'STKHevyMetl',
-    'STKMandolin',
-    'STKModalBar',
-    'STKMoog',
-    'STKPercFlut',
-    'STKPlucked',
-    'STKResonate',
-    'STKRhodey',
-    'STKSaxofony',
-    'STKShakers',
-    'STKSimple',
-    'STKSitar',
-    'STKStifKarp',
-    'STKTubeBell',
-    'STKVoicForm',
-    'STKWhistle',
-    'STKWurley',
-    'cpumeter',
-    'dssiactivate',
-    'dssiaudio',
-    'dssictls',
-    'dssiinit',
-    'dssilist',
-    'jacktransport',
-    'joystick',
-    'la_i_add_mc',
-    'la_i_add_mr',
-    'la_i_add_vc',
-    'la_i_add_vr',
-    'la_i_assign_mc',
-    'la_i_assign_mr',
-    'la_i_assign_t',
-    'la_i_assign_vc',
-    'la_i_assign_vr',
-    'la_i_conjugate_mc',
-    'la_i_conjugate_mr',
-    'la_i_conjugate_vc',
-    'la_i_conjugate_vr',
-    'la_i_distance_vc',
-    'la_i_distance_vr',
-    'la_i_divide_mc',
-    'la_i_divide_mr',
-    'la_i_divide_vc',
-    'la_i_divide_vr',
-    'la_i_dot_mc',
-    'la_i_dot_mc_vc',
-    'la_i_dot_mr',
-    'la_i_dot_mr_vr',
-    'la_i_dot_vc',
-    'la_i_dot_vr',
-    'la_i_get_mc',
-    'la_i_get_mr',
-    'la_i_get_vc',
-    'la_i_get_vr',
-    'la_i_invert_mc',
-    'la_i_invert_mr',
-    'la_i_lower_solve_mc',
-    'la_i_lower_solve_mr',
-    'la_i_lu_det_mc',
-    'la_i_lu_det_mr',
-    'la_i_lu_factor_mc',
-    'la_i_lu_factor_mr',
-    'la_i_lu_solve_mc',
-    'la_i_lu_solve_mr',
-    'la_i_mc_create',
-    'la_i_mc_set',
-    'la_i_mr_create',
-    'la_i_mr_set',
-    'la_i_multiply_mc',
-    'la_i_multiply_mr',
-    'la_i_multiply_vc',
-    'la_i_multiply_vr',
-    'la_i_norm1_mc',
-    'la_i_norm1_mr',
-    'la_i_norm1_vc',
-    'la_i_norm1_vr',
-    'la_i_norm_euclid_mc',
-    'la_i_norm_euclid_mr',
-    'la_i_norm_euclid_vc',
-    'la_i_norm_euclid_vr',
-    'la_i_norm_inf_mc',
-    'la_i_norm_inf_mr',
-    'la_i_norm_inf_vc',
-    'la_i_norm_inf_vr',
-    'la_i_norm_max_mc',
-    'la_i_norm_max_mr',
-    'la_i_print_mc',
-    'la_i_print_mr',
-    'la_i_print_vc',
-    'la_i_print_vr',
-    'la_i_qr_eigen_mc',
-    'la_i_qr_eigen_mr',
-    'la_i_qr_factor_mc',
-    'la_i_qr_factor_mr',
-    'la_i_qr_sym_eigen_mc',
-    'la_i_qr_sym_eigen_mr',
-    'la_i_random_mc',
-    'la_i_random_mr',
-    'la_i_random_vc',
-    'la_i_random_vr',
-    'la_i_size_mc',
-    'la_i_size_mr',
-    'la_i_size_vc',
-    'la_i_size_vr',
-    'la_i_subtract_mc',
-    'la_i_subtract_mr',
-    'la_i_subtract_vc',
-    'la_i_subtract_vr',
-    'la_i_t_assign',
-    'la_i_trace_mc',
-    'la_i_trace_mr',
-    'la_i_transpose_mc',
-    'la_i_transpose_mr',
-    'la_i_upper_solve_mc',
-    'la_i_upper_solve_mr',
-    'la_i_vc_create',
-    'la_i_vc_set',
-    'la_i_vr_create',
-    'la_i_vr_set',
-    'la_k_a_assign',
-    'la_k_add_mc',
-    'la_k_add_mr',
-    'la_k_add_vc',
-    'la_k_add_vr',
-    'la_k_assign_a',
-    'la_k_assign_f',
-    'la_k_assign_mc',
-    'la_k_assign_mr',
-    'la_k_assign_t',
-    'la_k_assign_vc',
-    'la_k_assign_vr',
-    'la_k_conjugate_mc',
-    'la_k_conjugate_mr',
-    'la_k_conjugate_vc',
-    'la_k_conjugate_vr',
-    'la_k_current_f',
-    'la_k_current_vr',
-    'la_k_distance_vc',
-    'la_k_distance_vr',
-    'la_k_divide_mc',
-    'la_k_divide_mr',
-    'la_k_divide_vc',
-    'la_k_divide_vr',
-    'la_k_dot_mc',
-    'la_k_dot_mc_vc',
-    'la_k_dot_mr',
-    'la_k_dot_mr_vr',
-    'la_k_dot_vc',
-    'la_k_dot_vr',
-    'la_k_f_assign',
-    'la_k_get_mc',
-    'la_k_get_mr',
-    'la_k_get_vc',
-    'la_k_get_vr',
-    'la_k_invert_mc',
-    'la_k_invert_mr',
-    'la_k_lower_solve_mc',
-    'la_k_lower_solve_mr',
-    'la_k_lu_det_mc',
-    'la_k_lu_det_mr',
-    'la_k_lu_factor_mc',
-    'la_k_lu_factor_mr',
-    'la_k_lu_solve_mc',
-    'la_k_lu_solve_mr',
-    'la_k_mc_set',
-    'la_k_mr_set',
-    'la_k_multiply_mc',
-    'la_k_multiply_mr',
-    'la_k_multiply_vc',
-    'la_k_multiply_vr',
-    'la_k_norm1_mc',
-    'la_k_norm1_mr',
-    'la_k_norm1_vc',
-    'la_k_norm1_vr',
-    'la_k_norm_euclid_mc',
-    'la_k_norm_euclid_mr',
-    'la_k_norm_euclid_vc',
-    'la_k_norm_euclid_vr',
-    'la_k_norm_inf_mc',
-    'la_k_norm_inf_mr',
-    'la_k_norm_inf_vc',
-    'la_k_norm_inf_vr',
-    'la_k_norm_max_mc',
-    'la_k_norm_max_mr',
-    'la_k_qr_eigen_mc',
-    'la_k_qr_eigen_mr',
-    'la_k_qr_factor_mc',
-    'la_k_qr_factor_mr',
-    'la_k_qr_sym_eigen_mc',
-    'la_k_qr_sym_eigen_mr',
-    'la_k_random_mc',
-    'la_k_random_mr',
-    'la_k_random_vc',
-    'la_k_random_vr',
-    'la_k_subtract_mc',
-    'la_k_subtract_mr',
-    'la_k_subtract_vc',
-    'la_k_subtract_vr',
-    'la_k_t_assign',
-    'la_k_trace_mc',
-    'la_k_trace_mr',
-    'la_k_upper_solve_mc',
-    'la_k_upper_solve_mr',
-    'la_k_vc_set',
-    'la_k_vr_set',
-    'lua_iaopcall',
-    'lua_iaopcall_off',
-    'lua_ikopcall_off',
-    'lua_iopcall',
-    'lua_iopcall_off',
-    'mp3scal_check',
-    'mp3scal_load',
-    'mp3scal_load2',
-    'mp3scal_play',
-    'mp3scal_play2',
-    'p5gconnect',
-    'p5gdata',
-    'socksend_k',
-    'sumTableFilter',
-    'systime',
-    'vbap1move',
-    'websocket'
-])
+opcodeNames.extend('''
+JackoAudioIn
+JackoAudioInConnect
+JackoAudioOut
+JackoAudioOutConnect
+JackoFreewheel
+JackoInfo
+JackoInit
+JackoMidiInConnect
+JackoMidiOut
+JackoMidiOutConnect
+JackoNoteOut
+JackoOn
+JackoTransport
+STKBandedWG
+STKBeeThree
+STKBlowBotl
+STKBlowHole
+STKBowed
+STKBrass
+STKClarinet
+STKDrummer
+STKFMVoices
+STKFlute
+STKHevyMetl
+STKMandolin
+STKModalBar
+STKMoog
+STKPercFlut
+STKPlucked
+STKResonate
+STKRhodey
+STKSaxofony
+STKShakers
+STKSimple
+STKSitar
+STKStifKarp
+STKTubeBell
+STKVoicForm
+STKWhistle
+STKWurley
+cpumeter
+dssiactivate
+dssiaudio
+dssictls
+dssiinit
+dssilist
+jacktransport
+joystick
+la_i_add_mc
+la_i_add_mr
+la_i_add_vc
+la_i_add_vr
+la_i_assign_mc
+la_i_assign_mr
+la_i_assign_t
+la_i_assign_vc
+la_i_assign_vr
+la_i_conjugate_mc
+la_i_conjugate_mr
+la_i_conjugate_vc
+la_i_conjugate_vr
+la_i_distance_vc
+la_i_distance_vr
+la_i_divide_mc
+la_i_divide_mr
+la_i_divide_vc
+la_i_divide_vr
+la_i_dot_mc
+la_i_dot_mc_vc
+la_i_dot_mr
+la_i_dot_mr_vr
+la_i_dot_vc
+la_i_dot_vr
+la_i_get_mc
+la_i_get_mr
+la_i_get_vc
+la_i_get_vr
+la_i_invert_mc
+la_i_invert_mr
+la_i_lower_solve_mc
+la_i_lower_solve_mr
+la_i_lu_det_mc
+la_i_lu_det_mr
+la_i_lu_factor_mc
+la_i_lu_factor_mr
+la_i_lu_solve_mc
+la_i_lu_solve_mr
+la_i_mc_create
+la_i_mc_set
+la_i_mr_create
+la_i_mr_set
+la_i_multiply_mc
+la_i_multiply_mr
+la_i_multiply_vc
+la_i_multiply_vr
+la_i_norm1_mc
+la_i_norm1_mr
+la_i_norm1_vc
+la_i_norm1_vr
+la_i_norm_euclid_mc
+la_i_norm_euclid_mr
+la_i_norm_euclid_vc
+la_i_norm_euclid_vr
+la_i_norm_inf_mc
+la_i_norm_inf_mr
+la_i_norm_inf_vc
+la_i_norm_inf_vr
+la_i_norm_max_mc
+la_i_norm_max_mr
+la_i_print_mc
+la_i_print_mr
+la_i_print_vc
+la_i_print_vr
+la_i_qr_eigen_mc
+la_i_qr_eigen_mr
+la_i_qr_factor_mc
+la_i_qr_factor_mr
+la_i_qr_sym_eigen_mc
+la_i_qr_sym_eigen_mr
+la_i_random_mc
+la_i_random_mr
+la_i_random_vc
+la_i_random_vr
+la_i_size_mc
+la_i_size_mr
+la_i_size_vc
+la_i_size_vr
+la_i_subtract_mc
+la_i_subtract_mr
+la_i_subtract_vc
+la_i_subtract_vr
+la_i_t_assign
+la_i_trace_mc
+la_i_trace_mr
+la_i_transpose_mc
+la_i_transpose_mr
+la_i_upper_solve_mc
+la_i_upper_solve_mr
+la_i_vc_create
+la_i_vc_set
+la_i_vr_create
+la_i_vr_set
+la_k_a_assign
+la_k_add_mc
+la_k_add_mr
+la_k_add_vc
+la_k_add_vr
+la_k_assign_a
+la_k_assign_f
+la_k_assign_mc
+la_k_assign_mr
+la_k_assign_t
+la_k_assign_vc
+la_k_assign_vr
+la_k_conjugate_mc
+la_k_conjugate_mr
+la_k_conjugate_vc
+la_k_conjugate_vr
+la_k_current_f
+la_k_current_vr
+la_k_distance_vc
+la_k_distance_vr
+la_k_divide_mc
+la_k_divide_mr
+la_k_divide_vc
+la_k_divide_vr
+la_k_dot_mc
+la_k_dot_mc_vc
+la_k_dot_mr
+la_k_dot_mr_vr
+la_k_dot_vc
+la_k_dot_vr
+la_k_f_assign
+la_k_get_mc
+la_k_get_mr
+la_k_get_vc
+la_k_get_vr
+la_k_invert_mc
+la_k_invert_mr
+la_k_lower_solve_mc
+la_k_lower_solve_mr
+la_k_lu_det_mc
+la_k_lu_det_mr
+la_k_lu_factor_mc
+la_k_lu_factor_mr
+la_k_lu_solve_mc
+la_k_lu_solve_mr
+la_k_mc_set
+la_k_mr_set
+la_k_multiply_mc
+la_k_multiply_mr
+la_k_multiply_vc
+la_k_multiply_vr
+la_k_norm1_mc
+la_k_norm1_mr
+la_k_norm1_vc
+la_k_norm1_vr
+la_k_norm_euclid_mc
+la_k_norm_euclid_mr
+la_k_norm_euclid_vc
+la_k_norm_euclid_vr
+la_k_norm_inf_mc
+la_k_norm_inf_mr
+la_k_norm_inf_vc
+la_k_norm_inf_vr
+la_k_norm_max_mc
+la_k_norm_max_mr
+la_k_qr_eigen_mc
+la_k_qr_eigen_mr
+la_k_qr_factor_mc
+la_k_qr_factor_mr
+la_k_qr_sym_eigen_mc
+la_k_qr_sym_eigen_mr
+la_k_random_mc
+la_k_random_mr
+la_k_random_vc
+la_k_random_vr
+la_k_subtract_mc
+la_k_subtract_mr
+la_k_subtract_vc
+la_k_subtract_vr
+la_k_t_assign
+la_k_trace_mc
+la_k_trace_mr
+la_k_upper_solve_mc
+la_k_upper_solve_mr
+la_k_vc_set
+la_k_vr_set
+lua_iaopcall
+lua_iaopcall_off
+lua_ikopcall_off
+lua_iopcall
+lua_iopcall_off
+mp3scal_check
+mp3scal_load
+mp3scal_load2
+mp3scal_play
+mp3scal_play2
+p5gconnect
+p5gdata
+socksend_k
+sumTableFilter
+systime
+vbap1move
+websocket
+'''.split())
+
 # These aren’t in _csound_builtins.OPCODES because CsoundOrchestraLexer treats
 # them as keywords:
 #   cggoto   <https://csound.github.io/docs/manual/cggoto.html>
@@ -342,6 +344,7 @@ opcodeNames.extend([
 #   rireturn <https://csound.github.io/docs/manual/rireturn.html>
 #   tigoto   <https://csound.github.io/docs/manual/tigoto.html>
 #   timout   <https://csound.github.io/docs/manual/timout.html>
+
 for opcodeName in opcodeNames:
     if opcodeName in _csound_builtins.OPCODES:
         print '_csound_builtins.OPCODES already contains ‘' + opcodeName + '’'
