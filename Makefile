@@ -683,7 +683,7 @@ OTHER =         STKopcodes/top.xml \
         manual.xml
         
 SRCS =  $(COMMAND) $(CONTROL) $(XMLS) $(MIDI) $(OPCODES) $(ORCH) $(SCORE) \
-	$(SIGS) $(UTILS) $(MISC) $(OTHER) examples-xml
+	$(SIGS) $(UTILS) $(MISC) $(OTHER) examples-xml/stamp
  
 # Build rules.
 all: html
@@ -694,9 +694,10 @@ $(XSL_HTML) $(XSL_HTMLHELP) $(XSL_PRINT) $(XSL_HTML_ONECHUNK): %: %.in
 	 false )
 	sed -e 's|@xsl_base_path@|$(XSL_BASE_PATH)|' $@.in > $@
 
-examples-xml: examples $(wildcard examples/*)
+examples-xml/stamp: examples $(wildcard examples/*)
 	mkdir -p examples-xml
 	python csd2docbook.py
+	touch examples-xml/stamp
 
 html: $(XSL_HTML) manual.xml $(SRCS) Makefile
 	rm -rf html
