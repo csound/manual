@@ -38,7 +38,7 @@ The easiest way to install DocBook is probably through [Homebrew]
 (http://brew.sh). To install Homebrew, follow the instructions at [brew.sh]
 (http://brew.sh). Then, enter `brew install docbook` in a Terminal.
 
-To install Pygments, enter in Terminal `sudo easy_install pygments`.
+To install Pygments, enter in Terminal `sudo easy_install pygments`. If you have and older version of pygments installed, you might get an error message that CsoundDocumentLexer was not found. If so, you can updated your version of pygments using `easy_install —upgrade pygments`.
 
 Python and xsltproc are preinstalled on macOS.
 
