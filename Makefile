@@ -726,6 +726,7 @@ html-bw: $(XSL_HTML) manual.xml $(SRCS) Makefile
 	cp -R examples ${HTML_DIR}/
 	cp copying.txt ${HTML_DIR}/
 	cp csound-bw.css ${HTML_DIR}/
+	cp syntax-highlighting.css ${HTML_DIR}/
 	rm -rf ${HTML_DIR}/images/CVS
 	rm -rf ${HTML_DIR}/images/callouts/CVS
 	rm -rf ${HTML_DIR}/examples/CVS
