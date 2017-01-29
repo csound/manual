@@ -683,7 +683,7 @@ OTHER =         STKopcodes/top.xml \
         manual.xml
         
 SRCS =  $(COMMAND) $(CONTROL) $(XMLS) $(MIDI) $(OPCODES) $(ORCH) $(SCORE) \
-	$(SIGS) $(UTILS) $(MISC) $(OTHER) examples-xml
+	$(SIGS) $(UTILS) $(MISC) $(OTHER) examples-xml/stamp
  
 # Build rules.
 all: html
@@ -694,9 +694,10 @@ $(XSL_HTML) $(XSL_HTMLHELP) $(XSL_PRINT) $(XSL_HTML_ONECHUNK): %: %.in
 	 false )
 	sed -e 's|@xsl_base_path@|$(XSL_BASE_PATH)|' $@.in > $@
 
-examples-xml: examples $(wildcard examples/*)
+examples-xml/stamp: examples $(wildcard examples/*)
 	mkdir -p examples-xml
 	python csd2docbook.py
+	touch examples-xml/stamp
 
 html: $(XSL_HTML) manual.xml $(SRCS) Makefile
 	rm -rf html
@@ -725,6 +726,7 @@ html-bw: $(XSL_HTML) manual.xml $(SRCS) Makefile
 	cp -R examples ${HTML_DIR}/
 	cp copying.txt ${HTML_DIR}/
 	cp csound-bw.css ${HTML_DIR}/
+	cp syntax-highlighting.css ${HTML_DIR}/
 	rm -rf ${HTML_DIR}/images/CVS
 	rm -rf ${HTML_DIR}/images/callouts/CVS
 	rm -rf ${HTML_DIR}/examples/CVS
@@ -736,6 +738,7 @@ html-onechunk: $(XSL_HTML_ONECHUNK) manual.xml $(SRCS) Makefile
 	cp -R examples ${HTML_ONE_DIR}/
 	cp copying.txt ${HTML_ONE_DIR}/
 	cp csound.css ${HTML_ONE_DIR}/
+	cp syntax-highlighting.css ${HTML_DIR}/
 	rm -rf ${HTML_ONE_DIR}/images/CVS
 	rm -rf ${HTML_ONE_DIR}/images/callouts/CVS
 	rm -rf ${HTML_ONE_DIR}/examples/CVS
@@ -757,6 +760,7 @@ htmlhelp: ${XSL_HTMLHELP} manual.xml $(SRCS)
 	cp images -R ${HTMLHELP_DIR}/
 	cp examples -R ${HTMLHELP_DIR}/
 	cp csound.css ${HTMLHELP_DIR}/
+	cp syntax-highlighting.css ${HTML_DIR}/
 	rm -rf ${HTMLHELP_DIR}/images/CVS
 	rm -rf ${HTMLHELP_DIR}/images/callouts/CVS
 	rm -rf ${HTMLHELP_DIR}/examples/CVS
