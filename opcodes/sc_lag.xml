@@ -1,0 +1,99 @@
+<!--Change refentry id and indexterm id-->
+<refentry id="sc_lag">
+  <indexterm id="IndexSc_lag"><primary>sc_lag</primary></indexterm>
+  <!--Make sure the category below is a valid one! See categories.py-->
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>sc_lag</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>sc_lag</refname>
+    <refpurpose>
+      Exponential Lag
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+	  Exponential lag with 60dB lag time. Port of Supercollider's Lag
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+	<!--    Please keep this below ~70 characters by using backslashes to avoid overflow in the pdf version-->
+    <synopsis>aout <command>sc_lag</command> ain, klagtime [, initialvalue=0]</synopsis>
+	
+	<synopsis>kout <command>sc_lag</command> kin, klagtime [, initialvalue=0]</synopsis>
+	
+  </refsect1>
+
+  <refsect1>
+	<title>Initialization</title>
+	<para>
+	  <emphasis>initialvalue</emphasis> If given, sets the internal
+	  state. Default=0
+	</para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Performance</title>
+	<!--    First list all input and output performance parameters-->
+    <para>
+      <emphasis>ain</emphasis> -- input signal
+    </para>
+    <para>
+      <emphasis>klagtime</emphasis> -- 60 dB lag time in seconds.
+    </para>
+	<para>
+      <emphasis>kladown</emphasis> -- 60 dB lag time in seconds for the downgoing signal.
+    </para>
+	
+    <para>
+	  This is essentially the same as one pole except that instead of
+	  supplying the coefficient directly, it is calculated from a 60
+	  dB lag time. This is the time required for the filter to
+	  converge to within 0.01% of a value. This is useful for
+	  smoothing out control signals. 
+    </para>
+  </refsect1>
+  <refsect1>
+	<!--To add examples, create the csd file in the examples directory, then run:-->
+	<!--python csd2docbook.py -f newopcodename.csd-->
+	<!--to generate the xml highlighted version used below-->
+    <title>Examples</title>
+    <para>
+      Here is an example of the delay opcode. It uses the file <ulink url="examples/sc_lag.csd.csd"><citetitle>sc_lag.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the sc_lag opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+        <xi:include href="examples-xml/sc_lag.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+	<!--    it's always good to include a good See Also list  -->
+    <para>
+      <link linkend="sc_lagud"><citetitle>sc_lagud</citetitle></link>, 
+	  <link linkend="port"><citetitle>port</citetitle></link>, 
+	  <link linkend="portk"><citetitle>portk</citetitle></link>
+	  
+    </para>
+  </refsect1>
+
+  <refsect1>
+	<!--  And put your name and other relevant information here-->
+    <title>Credits</title>
+    <para>By: &nameeduardo; 2017</para>
+  </refsect1>
+
+  <!--Now remember to add a link from the appropriate category in the Opcode Overview.-->
+  <!--Add the entity to manual.xml-->
+  <!--Add the entity reference in the appropriate place in opcodes/top.xml-->
+  <!--And you're set! Maybe delete the comments as well...-->
+
+</refentry>

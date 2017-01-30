@@ -16,7 +16,7 @@
 # You should have received a copy of the GNU Lesser General Public
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-
+from __future__ import print_function
 import glob, re
 from pygments import highlight
 from pygments.formatter import Formatter
@@ -318,6 +318,19 @@ sumTableFilter
 systime
 vbap1move
 websocket
+bpf
+linlin
+xyscale
+cmp
+mtof
+ftom
+mton
+ntom
+pchtom
+sc_trig
+sc_lag
+sc_lagud
+sc_phasor
 '''.split())
 
 # These aren’t in _csound_builtins.OPCODES because CsoundOrchestraLexer treats
@@ -347,7 +360,7 @@ websocket
 
 for opcodeName in opcodeNames:
     if opcodeName in _csound_builtins.OPCODES:
-        print '_csound_builtins.OPCODES already contains ‘' + opcodeName + '’'
+        print('_csound_builtins.OPCODES already contains ‘' + opcodeName + '’')
     else:
         _csound_builtins.OPCODES.add(opcodeName)
 
