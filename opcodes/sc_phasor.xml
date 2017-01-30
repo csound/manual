@@ -1,0 +1,80 @@
+<refentry id="sc_phasor">
+  <indexterm id="IndexSc_phasor"><primary>sc_phasor</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Phasors</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>sc_phasor</refentrytitle>
+  </refmeta>
+  
+  <refnamediv>
+    <refname>sc_phasor</refname>
+    <refpurpose>
+	  A resettable linear ramp between two levels
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+	  A resettable linear ramp between two levels. Port of
+	  Supercollider's Phasor.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>aindex <command>sc_phasor</command> xtrig, xrate, kstart, kend [, kresetPos] </synopsis>
+
+    <synopsis>kindex <command>sc_phasor</command> xtrig, xrate, kstart, kend [, kresetPos] </synopsis>
+
+  </refsect1>
+  
+  <refsect1>
+    <title>Performance</title>
+    <para>
+	  Phasor is a linear ramp between <emphasis>kstart</emphasis> and
+	  <emphasis>kend</emphasis> values. When its
+	  trigger input crosses from non-positive to positive, sc_phasor's
+	  output will jump to its reset position (or to <emphasis>kstart</emphasis>if no
+	  reset value was given). Upon reaching the end of its ramp,
+	  sc_phasor will wrap back to its start. 
+    </para>
+
+    <para>
+	  If <emphasis>kresetPos</emphasis> is specified, this value will
+	  be used to jump to after a trigger. Otherwise, a trigger will
+	  set the position back to <emphasis>kstart</emphasis>
+	</para>
+
+	<para>
+	  If one wants Phasor to output a signal with frequency
+	  <emphasis>freq</emphasis> oscillating between
+	  <emphasis>start</emphasis> and <emphasis>end</emphasis>, then
+	  the <emphasis>rate</emphasis> should be:
+
+	  <synopsis>(end - start) * freq / sr</synopsis>
+
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the sc_phasor opcode. It uses the file <ulink url="examples/sc_phasor.csd"><citetitle>sc_phasor.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the sc_phasor opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+        <xi:include href="examples-xml/sc_phasor.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>See also</title>
+    <para>
+	  <link linkend="phasor"><citetitle>phasor</citetitle></link>
+	</para>
+  </refsect1>
+</refentry>
