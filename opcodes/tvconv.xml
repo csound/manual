@@ -1,0 +1,108 @@
+
+<refentry id="tvconv">
+<indexterm id="IndexTvconv"><primary>tvconv</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Convolution and Morphing</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tvconv</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>tvconv</refname>
+    <refpurpose>
+      A time-varying convolution (FIR filter) opcode. 
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      An opcode that takes two incoming signals and
+      interprets one of them as the coefficients of linear
+      time-variable finite impulse response filter. This is
+      implemented via direct convolution (for partition sizes of
+      1 sample) or DFT-based partitioned convolution.
+      The signals can be 'frozen' (i.e. the filter coefficients are
+      kept the same) at any point in time, at a-rate or k-rate.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>tvconv</command> asig1, asig2, xfreez1,
+    xfreez2, iparts, ifils</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iparts</emphasis> -- partition size, for sizes > 1, a
+      DFT-based partitioned convolution process is used. Otherwise a
+      time-domain delay line FIR is implemented. Partition sizes > 1
+      are rounded to the nearest power-of-two.
+    </para>
+
+        <para>
+      <emphasis>ifils</emphasis> -- filter size. For partition sizes >
+      1, filter sizes are rounded to the nearest power-of-two. With
+      partition size = 1, since direct convolution is used, filters
+      can be of any size.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ares</emphasis> -- audio output.
+    </para>
+
+        <para>
+      <emphasis>asig1, asig2</emphasis> -- audio inputs.
+	</para>
+
+     <para>
+      <emphasis>xfreez1</emphasis> -- freeze switch for
+      asig1. Coefficients are only updated (ie. the signal is passing
+      into the convolution) if xfreez1 > 0. This input can take an
+      audio or a k-rate signal, or a constant.
+     </para>
+
+          <para>
+      <emphasis>xfreez2</emphasis> -- freeze switch for
+      asig2, similar to xfreez1 in operation.
+    </para>
+     
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the tvconv opcode. It uses the file <ulink url="examples/tvconv.csd"><citetitle>tvconv.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the tvconv opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/tvconv.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>See also</title>
+    <para>
+      <link linkend="pconvolve"><citetitle>pconvolve</citetitle></link>,
+      <link linkend="convolve"><citetitle>convolve</citetitle></link>,
+      <link linkend="ftconv"><citetitle>ftconv</citetitle></link>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Victor Lazzarini </member>
+        <member>2017</member>
+      </simplelist>
+    </para>
+
+    <para>New in version 6.09</para>
+  </refsect1>
+</refentry>
