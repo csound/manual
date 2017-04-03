@@ -1,0 +1,104 @@
+<!--Change refentry id and indexterm id-->
+<refentry id="cmp">
+  <indexterm id="IndexCmp"><primary>cmp</primary></indexterm>
+  <!--Make sure the category below is a valid one! See categories.py-->
+  <refentryinfo><title>Signal Modifiers:Comparators and Accumulators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>cmp</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>cmp</refname>
+    <refpurpose>
+      Compares two audio signals
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+	  Compares two audio signals using the standard math operators
+
+	  <programlisting>
+		aout cmp aL, ">", aR
+	  </programlisting>
+	  
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+	<!--    Please keep this below ~70 characters by using backslashes to avoid overflow in the pdf version-->
+    <synopsis>aout <command>cmp</command> aL, S_operator, aR</synopsis>
+
+  </refsect1>
+
+  <refsect1>
+	<title>Initialization</title>
+	<para>
+	  <emphasis>S_operator</emphasis> Math operator, one of ">", ">=", "`&lt;",
+	  "`&lt;=", "=="
+	</para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Performance</title>
+	<!--    First list all input and output performance parameters-->
+    <para>
+      <emphasis>aL</emphasis> -- Left signal
+    </para>
+	<para>
+      <emphasis>aR</emphasis> -- Right signal
+    </para>
+    <para>
+      <emphasis>kdur</emphasis> -- Duration of the trigger in seconds.
+    </para>
+	
+    <para>
+	  <programlisting>
+		aout cmp aL, ">", aR     ; aout = aL > aR for every sample
+		aout cmp aL, ">=", aR
+		aout cmp aL, "`&lt;", aR
+		aout cmp aL, "`&lt;=", aR
+		aout cmp aL, "==", aR
+		
+	  </programlisting>
+	  
+    </para>
+  </refsect1>
+  <refsect1>
+	<!--To add examples, create the csd file in the examples directory, then run:-->
+	<!--python csd2docbook.py -f newopcodename.csd-->
+	<!--to generate the xml highlighted version used below-->
+    <title>Examples</title>
+    <para>
+      Here is an example of the cmp opcode. It uses the file <ulink url="examples/cmp.csd"><citetitle>cmp.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the cmp opcode.</title>
+
+        <xi:include href="examples-xml/cmp.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+	<!--    it's always good to include a good See Also list  -->
+    <para>
+	  <link linkend="max"><citetitle>max</citetitle></link>, 
+	  <link linkend="min"><citetitle>min</citetitle></link>, 
+    </para>
+  </refsect1>
+
+  <refsect1>
+	<!--  And put your name and other relevant information here-->
+    <title>Credits</title>
+    <para>By: &nameeduardo; 2017</para>
+  </refsect1>
+
+  <!--Now remember to add a link from the appropriate category in the Opcode Overview.-->
+  <!--Add the entity to manual.xml-->
+  <!--Add the entity reference in the appropriate place in opcodes/top.xml-->
+  <!--And you're set! Maybe delete the comments as well...-->
+
+</refentry>

@@ -163,6 +163,7 @@
 <title>Signal Generators:Linear and Exponential Generators</title>
 <para>
 <para/>
+<synopsis>ky <link linkend="bpf">bpf</link> kx, kx1, ky1, kx2, ..., kxn, kyn</synopsis><para/>
 <synopsis>ares <link linkend="cosseg">cosseg</link> ia, idur1, ib [, idur2] [, ic] [...]</synopsis><synopsis>kres <link linkend="cosseg">cosseg</link> ia, idur1, ib [, idur2] [, ic] [...]</synopsis><para/>
 <synopsis>ares <link linkend="cossegb">cossegb</link> ia, itim1, ib [, itim2] [, ic] [...]</synopsis><synopsis>kres <link linkend="cossegb">cossegb</link> ia, itim1, ib [, itim2] [, ic] [...]</synopsis><para/>
 <synopsis>ares <link linkend="cossegr">cossegr</link> ia, idur1, ib [, idur2] [, ic] [...], irel, iz</synopsis><synopsis>kres <link linkend="cossegr">cossegr</link> ia, idur1, ib [, idur2] [, ic] [...], irel, iz</synopsis><para/>
@@ -175,6 +176,7 @@
 <synopsis>ares <link linkend="expsegr">expsegr</link> ia, idur1, ib [, idur2] [, ic] [...], irel, iz</synopsis><synopsis>kres <link linkend="expsegr">expsegr</link> ia, idur1, ib [, idur2] [, ic] [...], irel, iz</synopsis><para/>
 <synopsis>kout <link linkend="gainslider">gainslider</link> kindex</synopsis><para/>
 <synopsis>ares <link linkend="line">line</link> ia, idur, ib</synopsis><synopsis>kres <link linkend="line">line</link> ia, idur, ib</synopsis><para/>
+<synopsis>kout <link linkend="linlin">linlin</link> kin, ksrclo, ksrchi, kdstlo, kdsthi</synopsis><para/>
 <synopsis>ares <link linkend="linseg">linseg</link> ia, idur1, ib [, idur2] [, ic] [...]</synopsis><synopsis>kres <link linkend="linseg">linseg</link> ia, idur1, ib [, idur2] [, ic] [...]</synopsis><para/>
 <synopsis>ares <link linkend="linsegb">linsegb</link> ia, itim1, ib [, itim2] [, ic] [...]</synopsis><synopsis>kres <link linkend="linsegb">linsegb</link> ia, itim1, ib [, itim2] [, ic] [...]</synopsis><para/>
 <synopsis>ares <link linkend="linsegr">linsegr</link> ia, idur1, ib [, idur2] [, ic] [...], irel, iz</synopsis><synopsis>kres <link linkend="linsegr">linsegr</link> ia, idur1, ib [, idur2] [, ic] [...], irel, iz</synopsis><para/>
@@ -194,6 +196,7 @@
 <synopsis>ares <link linkend="transeg">transeg</link> ia, idur, itype, ib [, idur2] [, itype] [, ic] ...</synopsis><synopsis>kres <link linkend="transeg">transeg</link> ia, idur, itype, ib [, idur2] [, itype] [, ic] ...</synopsis><para/>
 <synopsis>ares <link linkend="transegb">transegb</link> ia, itim, itype, ib [, itim2] [, itype] [, ic] ...</synopsis><synopsis>kres <link linkend="transegb">transegb</link> ia, itim, itype, ib [, itim2] [, itype] [, ic] ...</synopsis><para/>
 <synopsis>ares <link linkend="transegr">transegr</link> ia, idur, itype, ib [, idur2] [, itype] [, ic] ...</synopsis><synopsis>kres <link linkend="transegr">transegr</link> ia, idur, itype, ib [, idur2] [, itype] [, ic] ...</synopsis><para/>
+<synopsis>kout <link linkend="xyscale">xyscale</link> kx, ky, k00, k10, k01, k11</synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
 <title>Signal Generators:Envelope Generators</title>
@@ -262,6 +265,7 @@
 <para/>
 <synopsis>ares <link linkend="phasor">phasor</link> xcps [, iphs]</synopsis><synopsis>kres <link linkend="phasor">phasor</link> kcps [, iphs]</synopsis><para/>
 <synopsis>ares <link linkend="phasorbnk">phasorbnk</link> xcps, kndx, icnt [, iphs]</synopsis><synopsis>kres <link linkend="phasorbnk">phasorbnk</link> kcps, kndx, icnt [, iphs]</synopsis><para/>
+<synopsis>aindex <link linkend="sc_phasor">sc_phasor</link> xtrig, xrate, kstart, kend [, kresetPos] </synopsis><synopsis>kindex <link linkend="sc_phasor">sc_phasor</link> xtrig, xrate, kstart, kend [, kresetPos] </synopsis><synopsis>(end - start) * freq / sr</synopsis><para/>
 <synopsis>aphase, asyncout <link linkend="syncphasor">syncphasor</link> xcps, asyncin, [, iphs]</synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
@@ -606,6 +610,8 @@
       [, iirlen[, iskipinit]]]</synopsis><para/>
 <synopsis><link linkend="ftmorf">ftmorf</link> kftndx, iftfn, iresfn</synopsis><para/>
 <synopsis>ar1 [, ar2] [, ar3] [, ar4] <link linkend="pconvolve">pconvolve</link> ain, ifilcod [, ipartitionsize, ichannel]</synopsis><para/>
+<synopsis>ares <link linkend="tvconv">tvconv</link> asig1, asig2, xfreez1,
+    xfreez2, iparts, ifils</synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
 <title>Signal Modifiers:Delay</title>
@@ -828,6 +834,9 @@
 <synopsis>kres <link linkend="portk">portk</link> ksig, khtim [, isig]</synopsis><para/>
 <synopsis>kres <link linkend="resonk">resonk</link> ksig, kcf, kbw [, iscl] [, iskip]</synopsis><para/>
 <synopsis>kres <link linkend="resonxk">resonxk</link> ksig, kcf, kbw[, inumlayer, iscl, istor]</synopsis><para/>
+<synopsis>aout <link linkend="sc_lag">sc_lag</link> ain, klagtime [, initialvalue=0]</synopsis><synopsis>kout <link linkend="sc_lag">sc_lag</link> kin, klagtime [, initialvalue=0]</synopsis><para/>
+<synopsis>aout <link linkend="sc_lagud">sc_lagud</link> ain, klagup, klagdown</synopsis><synopsis>kout <link linkend="sc_lagud">sc_lagud</link> kin, klagup, klagdown</synopsis><para/>
+<synopsis>aout <link linkend="sc_trig">sc_trig</link> ain, kdur</synopsis><synopsis>kout <link linkend="sc_trig">sc_trig</link> kin, kdur</synopsis><para/>
 <synopsis>kres <link linkend="tlineto">tlineto</link> ksig, ktime, ktrig</synopsis><para/>
 <synopsis>kres <link linkend="tonek">tonek</link> ksig, khp [, iskip]</synopsis><para/>
 </para></formalpara>
@@ -872,6 +881,7 @@
 <title>Signal Modifiers:Comparators and Accumulators</title>
 <para>
 <para/>
+<synopsis>aout <link linkend="cmp">cmp</link> aL, S_operator, aR</synopsis><para/>
 <synopsis>amax <link linkend="max">max</link> ain1, ain2 [, ain3] [, ain4] [...]</synopsis><synopsis>kmax <link linkend="max">max</link> kin1, kin2 [, kin3] [, kin4] [...]</synopsis><synopsis>imax <link linkend="max">max</link> iin1, iin2 [, iin3] [, iin4] [...]</synopsis><para/>
 <synopsis>knumkout <link linkend="max_k">max_k</link> asig, ktrig, itype</synopsis><para/>
 <synopsis>amax <link linkend="maxabs">maxabs</link> ain1, ain2 [, ain3] [, ain4] [...]</synopsis><synopsis>kmax <link linkend="maxabs">maxabs</link> kin1, kin2 [, kin3] [, kin4] [...]</synopsis><para/>
@@ -1117,7 +1127,7 @@
 <para>
 <para/>
 <synopsis><link linkend="ftfree">ftfree</link> ifno, iwhen</synopsis><para/>
-<synopsis>gir <link linkend="ftgen">ftgen</link> ifn, itime, isize, igen, iarga [, iargb ] [...]</synopsis><para/>
+<synopsis>gir <link linkend="ftgen">ftgen</link> ifn, itime, isize, igen, iarga [, iargb ] [...]</synopsis><synopsis>gir <link linkend="ftgen">ftgen</link> ifn, itime, isize, igen, iarray</synopsis><para/>
 <synopsis>ifno <link linkend="ftgentmp">ftgentmp</link> ip1, ip2dummy, isize, igen, iarga, iargb, ...</synopsis><para/>
 <synopsis>Sdst <link linkend="getftargs">getftargs</link> iftno, ktrig</synopsis><para/>
 <synopsis><link linkend="sndload">sndload</link> Sfname[, ifmt[, ichns[, isr[, ibas[, iamp[, istrt   \
@@ -1321,35 +1331,46 @@
 <title>Mathematical Operations:Mathematical Functions</title>
 <para>
 <para/>
-<synopsis><link linkend="abs">abs</link>(x) (no rate restriction)</synopsis><para/>
-<synopsis><link linkend="ceil">ceil</link>(x) (init-, control-, or audio-rate arg allowed)</synopsis><para/>
-<synopsis><link linkend="exp">exp</link>(x) (no rate restriction)</synopsis><para/>
-<synopsis><link linkend="floor">floor</link>(x) (init-, control-, or audio-rate arg allowed)</synopsis><para/>
-<synopsis><link linkend="frac">frac</link>(x) (init-rate or control-rate args; also works at audio rate in Csound5)</synopsis><para/>
+<synopsis><link linkend="abs">abs</link>(x) (no rate
+    restriction)</synopsis><synopsis><link linkend="abs">abs</link>(k/i[]) (k- or i-arrays )</synopsis><para/>
+<synopsis><link linkend="ceil">ceil</link>(x) (init-, control-, or audio-rate arg allowed)</synopsis><synopsis><link linkend="ceil">ceil</link>(k/i[]) (k- or i-arrays )</synopsis><para/>
+<synopsis><link linkend="exp">exp</link>(x) (no rate
+    restriction)</synopsis><synopsis><link linkend="exp">exp</link>(k/i[]) (k- or i-arrays)</synopsis><para/>
+<synopsis><link linkend="floor">floor</link>(x) (init-, control-, or audio-rate arg allowed)</synopsis><synopsis><link linkend="floor">floor</link>(k/i[]) (k- or i-arrays )</synopsis><para/>
+<synopsis><link linkend="frac">frac</link>(x) (init-rate or control-rate args; also works at audio rate in Csound5)</synopsis><synopsis><link linkend="frac">frac</link>(k/i[]) (k- or i-arrays )</synopsis><para/>
 <synopsis><link linkend="int">int</link>(x)  (init-rate or control-rate; also works at audio rate in Csound5)</synopsis><para/>
-<synopsis><link linkend="log10">log10</link>(x) (no rate restriction)</synopsis><para/>
-<synopsis><link linkend="log2">log2</link>(x) (no rate restriction)</synopsis><para/>
+<synopsis><link linkend="log10">log10</link>(x) (no rate restriction)</synopsis><synopsis><link linkend="log10">log10</link>(k/i[]) (k- or i-arrays )</synopsis><para/>
+<synopsis><link linkend="log2">log2</link>(x) (no rate
+    restriction)</synopsis><synopsis><link linkend="log2">log2</link>(k/i[]) (k- or i-arrays )</synopsis><para/>
 <synopsis><link linkend="logbtwo">logbtwo</link>(x)  (init-rate or control-rate args only)</synopsis><para/>
 <synopsis><link linkend="powoftwo">powoftwo</link>(x)  (init-rate or control-rate args only)</synopsis><para/>
 <synopsis><link linkend="qinf">qinf</link>(x) (no rate restriction)</synopsis><para/>
 <synopsis><link linkend="qnan">qnan</link>(x) (no rate restriction)</synopsis><para/>
-<synopsis><link linkend="round">round</link>(x) (init-, control-, or audio-rate arg allowed)</synopsis><para/>
-<synopsis><link linkend="sqrt">sqrt</link>(x) (no rate restriction)</synopsis><para/>
+<synopsis><link linkend="round">round</link>(x) (init-, control-, or audio-rate arg allowed)</synopsis><synopsis><link linkend="round">round</link>(k/i[]) (k- or i-arrays )</synopsis><para/>
+<synopsis><link linkend="sqrt">sqrt</link>(x) (no rate restriction)</synopsis><synopsis><link linkend="sqrt">sqrt</link>(k/i[]) (k- or i-arrays )</synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
 <title>Mathematical Operations:Trigonometric Functions</title>
 <para>
 <para/>
-<synopsis><link linkend="cos">cos</link>(x) (no rate restriction)</synopsis><para/>
-<synopsis><link linkend="cosh">cosh</link>(x) (no rate restriction)</synopsis><para/>
-<synopsis><link linkend="cosinv">cosinv</link>(x) (no rate restriction)</synopsis><para/>
+<synopsis><link linkend="cos">cos</link>(x) (no rate
+    restriction)</synopsis><synopsis><link linkend="cos">cos</link>(k/i[]) (k- or i-arrays )</synopsis><para/>
+<synopsis><link linkend="cosh">cosh</link>(x) (no rate
+    restriction)</synopsis><synopsis><link linkend="cosh">cosh</link>(k/i[]) (k- or i-arrays )</synopsis><para/>
+<synopsis><link linkend="cosinv">cosinv</link>(x) (no rate
+    restriction)</synopsis><synopsis><link linkend="cosinv">cosinv</link>(k/i[]) (k- or i-arrays )</synopsis><para/>
 <synopsis><link linkend="signum">signum</link>(x) (no rate restriction)</synopsis><para/>
-<synopsis><link linkend="sin">sin</link>(x) (no rate restriction)</synopsis><para/>
-<synopsis><link linkend="sinh">sinh</link>(x) (no rate restriction)</synopsis><para/>
-<synopsis><link linkend="sininv">sininv</link>(x) (no rate restriction)</synopsis><para/>
-<synopsis><link linkend="tan">tan</link>(x) (no rate restriction)</synopsis><para/>
-<synopsis><link linkend="tanh">tanh</link>(x) (no rate restriction)</synopsis><para/>
-<synopsis><link linkend="taninv">taninv</link>(x) (no rate restriction)</synopsis><para/>
+<synopsis><link linkend="sin">sin</link>(x) (no rate restriction)</synopsis><synopsis><link linkend="sin">sin</link>(k/i[]) (k- or i-arrays )</synopsis><para/>
+<synopsis><link linkend="sinh">sinh</link>(x) (no rate
+    restriction)</synopsis><synopsis><link linkend="sinh">sinh</link>(k/i[]) (k- or i-arrays )</synopsis><para/>
+<synopsis><link linkend="sininv">sininv</link>(x) (no rate
+    restriction)</synopsis><synopsis><link linkend="sininv">sininv</link>(k/i[]) (k- or i-arrays)</synopsis><para/>
+<synopsis><link linkend="tan">tan</link>(x) (no rate
+    restriction)</synopsis><synopsis><link linkend="tan">tan</link>(k/i[]) (k- or i-arrays )</synopsis><para/>
+<synopsis><link linkend="tanh">tanh</link>(x) (no rate
+    restriction)</synopsis><synopsis><link linkend="tanh">tanh</link>(k/i[]) (k- or i-arrays )</synopsis><para/>
+<synopsis><link linkend="taninv">taninv</link>(x) (no rate
+    restriction)</synopsis><synopsis><link linkend="taninv">taninv</link>(k/i[]) (k- or i-arrays )</synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
 <title>Mathematical Operations:Amplitude Functions</title>
@@ -1389,12 +1410,17 @@
 <synopsis><link linkend="cpsmidinn">cpsmidinn</link> (MidiNoteNumber)  (init- or control-rate args only)</synopsis><para/>
 <synopsis><link linkend="cpsoct">cpsoct</link> (oct)  (no rate restriction)</synopsis><para/>
 <synopsis><link linkend="cpspch">cpspch</link> (pch)  (init- or control-rate args only)</synopsis><para/>
+<synopsis>imidi <link linkend="ftom">ftom</link> ifreq</synopsis><synopsis>kmidi <link linkend="ftom">ftom</link> kfreq</synopsis><para/>
+<synopsis>ifreq <link linkend="mtof">mtof</link> imidi</synopsis><synopsis>kfreq <link linkend="mtof">mtof</link> kmidi</synopsis><para/>
+<synopsis>Snote <link linkend="mton">mton</link> kmidi</synopsis><synopsis>Snote <link linkend="mton">mton</link> imidi</synopsis><para/>
+<synopsis>kmidi <link linkend="ntom">ntom</link> Snote</synopsis><synopsis>imidi <link linkend="ntom">ntom</link> Snote</synopsis><para/>
 <synopsis><link linkend="octave">octave</link>(x)</synopsis><para/>
 <synopsis><link linkend="octcps">octcps</link> (cps)  (init- or control-rate args only)</synopsis><para/>
 <synopsis><link linkend="octmidinn">octmidinn</link> (MidiNoteNumber)  (init- or control-rate args only)</synopsis><para/>
 <synopsis><link linkend="octpch">octpch</link> (pch)  (init- or control-rate args only)</synopsis><para/>
 <synopsis><link linkend="pchmidinn">pchmidinn</link> (MidiNoteNumber)  (init- or control-rate args only)</synopsis><para/>
 <synopsis><link linkend="pchoct">pchoct</link> (oct)  (init- or control-rate args only)</synopsis><para/>
+<synopsis>imidi <link linkend="pchtom">pchtom</link> ipch</synopsis><synopsis>kmidi <link linkend="pchtom">pchtom</link> kpch</synopsis><para/>
 <synopsis><link linkend="semitone">semitone</link>(x)</synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
@@ -1676,6 +1702,7 @@
 <synopsis>fsig <link linkend="pvstanal">pvstanal</link> ktimescal, kamp, kpitch, ktab, [kdetect, kwrap, ioffset,ifftsize, ihop, idbthresh]
       </synopsis><para/>
 <synopsis>fsig <link linkend="pvstencil">pvstencil</link> fsigin, kgain, klevel, iftable</synopsis><para/>
+<synopsis>fsig <link linkend="pvstrace">pvstrace</link> fsigin, kn </synopsis><para/>
 <synopsis>fsig <link linkend="pvsvoc">pvsvoc</link> famp, fexc, kdepth, kgain [,kcoefs]</synopsis><para/>
 <synopsis>fsig <link linkend="pvswarp">pvswarp</link> fsigin, kscal, kshift[, klowest, kmeth, kgain, kcoefs]</synopsis><para/>
 <synopsis>ares <link linkend="pvsynth">pvsynth</link> fsrc, [iinit]</synopsis><para/>
@@ -1940,7 +1967,7 @@
 <para>
 <para/>
 <synopsis><link linkend="remoteport">remoteport</link> iportnum</synopsis><para/>
-<synopsis>asig <link linkend="sockrecv">sockrecv</link> iport, ilength</synopsis><synopsis>ksig <link linkend="sockrecv">sockrecv</link> iport, ilength</synopsis><synopsis>asigl, asigr <link linkend="sockrecv">sockrecvs</link> iport, ilength</synopsis><synopsis>asig <link linkend="sockrecv">strecv</link> Sipaddr, iport</synopsis><para/>
+<synopsis>asig <link linkend="sockrecv">sockrecv</link> iport, ilength</synopsis><synopsis>ksig <link linkend="sockrecv">sockrecv</link> iport, ilength</synopsis><synopsis>asigl, asigr <link linkend="sockrecv">sockrecvs</link> iport, ilength</synopsis><synopsis>String <link linkend="sockrecv">sockrecv</link> iport, ilength</synopsis><synopsis>asig <link linkend="sockrecv">strecv</link> Sipaddr, iport</synopsis><para/>
 <synopsis><link linkend="socksend">socksend</link> asig, Sipaddr, iport, ilength</synopsis><synopsis><link linkend="socksend">socksend</link> ksig, Sipaddr, iport, ilength</synopsis><synopsis><link linkend="socksend">socksends</link> asigl, asigr, Sipaddr, iport,
     ilength</synopsis><synopsis><link linkend="socksend">stsend</link> asig, Sipaddr, iport</synopsis><para/>
 </para></formalpara>
