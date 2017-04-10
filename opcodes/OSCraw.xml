@@ -1,0 +1,87 @@
+
+<refentry id="OSCraw">
+<indexterm id="IndexOSCraw"><primary>OSCraw</primary></indexterm>
+  <refentryinfo><title>OSC</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>OSCraw</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>OSCraw</refname>
+    <refpurpose>
+      Listen for all OSC messages at a given port.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      On each k-cycle looks to see if an OSC message has been received
+      at a given port.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>Smess[],klen <command>OSCraw</command> iport</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iport</emphasis>
+      -- a port where messages are going to be received from.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>Smess[]</emphasis> -- an array of strings containing
+      the message components: address, types, and data items. If the
+      array does not exist (ie. has not been initialised), it will be
+      created with 32 items. Arrays cannot grow with the size of the
+      message, so if a message with more than 32 items (ie. 30
+      separate data items) is expected, a larger array needs to initialised
+      before it is used. If a message has more items than an array has
+      space for, it is truncated.
+    </para>
+    <para>
+      <emphasis>klen</emphasis> -- number of items placed in the
+      output array. It is 0 if no message has been received, and at
+      least 2 if a message has been received (address, types are the
+      minimum items).
+    </para>
+
+  </refsect1>
+
+  <refsect1>    
+      <example>
+        <title>Example.</title>
+        <para>The following CSD file demonstrates how a message is
+	received by OSCraw:</para>
+          <xi:include href="examples-xml/OSCraw.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+      <para>
+        <link linkend="OSCsend"><citetitle>OSCsend</citetitle></link>,
+        <link linkend="OSCinit"><citetitle>OSCinit</citetitle></link>
+      </para>
+               <para> More information on this opcode: <ulink url="http://www.youtube.com/watch?v=JX1C3TqP_9Y"><citetitle>http://www.youtube.com/watch?v=JX1C3TqP_9Y</citetitle></ulink>  , made by Andrés Cabrera </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Authors: Oeyvind Brandtsegg, Victor Lazzarini</member>
+        <member>2017</member>
+      </simplelist>
+    </para>
+    <para>types aAG are new in Csound 6.07</para>
+    </refsect1>
+</refentry>
