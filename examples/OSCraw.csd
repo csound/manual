@@ -12,8 +12,9 @@ instr	1
 endin
 
 instr 2
+Smess[] init 3
 top:
-Smess[],ka OSCraw 7771
+Smess,ka OSCraw 7771
 kn = 0
 while kn < ka do
   printf ": %s ", kn+1, Smess[kn]
