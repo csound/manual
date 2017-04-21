@@ -6,9 +6,9 @@
 
 instr 1
  kArr[] fillarray 1,3,2,7,4
- kSorted[] sortd kArr[]
+ kSorted[] sortd kArr
  kn = 0
- while kn < lenarrat(kSorted) do
+ while kn < lenarray(kSorted) do
   printk2 kSorted[kn]
   kn += 1
  od
