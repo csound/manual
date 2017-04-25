@@ -531,6 +531,7 @@ OPCODES = opcodes/0dbfs.xml	opcodes/ATSadd.xml	opcodes/ATSaddnz.xml \
 	opcodes/zarg.xml	opcodes/zaw.xml	opcodes/zawm.xml \
 	opcodes/zdf_1pole.xml	 opcodes/zdf_2pole.xml	\
 	opcodes/zdf_1pole_mode.xml	 opcodes/zdf_2pole_mode.xml	\
+	opcodes/zdf_ladder.xml \
 	opcodes/zfilter2.xml	opcodes/zir.xml	opcodes/ziw.xml \
 	opcodes/ziwm.xml	opcodes/zkcl.xml	opcodes/zkmod.xml \
 	opcodes/zkr.xml	opcodes/zkw.xml	opcodes/zkwm.xml
