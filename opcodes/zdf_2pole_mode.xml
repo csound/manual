@@ -1,0 +1,111 @@
+
+<refentry id="zdf_2pole_mode">
+<indexterm id="IndexZdf_2pole_mode"><primary>zdf_2pole_mode</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>zdf_2pole_mode</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>zdf_2pole_mode</refname>
+    <refpurpose>
+      Zero-delay feedback implementation of 2 pole filter. 
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Zero-delay feedback implementation of a 2 pole (12 dB/oct) filter. Offers low-pass (default), band-pass, and high-pass outputs.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>alp, abp, ahp <command>zdf_2pole_mode</command> ain, xcf, Q [, istor]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+      <para>
+      <emphasis>istor</emphasis> --initial disposition of internal data space.
+      Since filtering incorporates a feedback loop of previous output, the
+      initial status of the storage space used is significant.  A zero value
+      will clear the space; a non-zero value will allow previous information to
+      remain. The default value is 0.
+    </para>
+	  
+  </refsect1>
+  
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>alp</emphasis> -- low-pass output signal.
+    </para>
+    <para>
+      <emphasis>abp</emphasis> -- band-pass output signal.
+    </para>
+    <para>
+      <emphasis>ahp</emphasis> -- high-pass output signal.
+    </para>
+    <para>
+      <emphasis>ain</emphasis> -- input signal.
+    </para>
+    <para>
+      <emphasis>xcf</emphasis> -- filter cutoff frequency (i-, k-, or a-rate).
+    </para>
+    <para>
+      <emphasis>Q</emphasis> -- filter Q value (i-, k-, or a-rate). Range 0.5-25.0.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the zdf_2pole_mode opcode. It uses the file <ulink url="examples/zdf_2pole_mode.csd"><citetitle>zdf_2pole_mode.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the zdf_2pole_mode opcode.</title>
+          <xi:include href="examples-xml/zdf_2pole_mode.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>References</title>
+    <para> This filter is based on the work of Will Pirkle that employs Vadim
+      Zavalishin's work with bilinear tranforms to create topology-preserving
+      transform (TPT) implementations of analog filters.</para>
+
+    <para>
+      <orderedlist>
+        <listitem>
+          <para>
+            Pirkle, Will. Designing Software Synthesizer Plug-ins in C++: For 
+            RackAFX, VST3, and Audio Units. CRC Press, 2014.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Pirkle, Will. AN-4: Virtual Analog (VA) Filter Implementation. 2013.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+          Zavalishin, Vadim. "The Art of VA filter design." Native Instruments, 2012.
+          </para>
+        </listitem>
+      </orderedlist>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namesteven;</member>
+        <member>April 2017</member>
+      </simplelist>
+    </para>
+    <para>New in Csound 6.09.0</para>
+  </refsect1>
+</refentry>
