@@ -22,7 +22,7 @@
 
   <refsect1>
     <title>Syntax</title>
-    <synopsis>asig <command>diode_ladder</command> ain, xcf, xk [, istor]</synopsis>
+    <synopsis>asig <command>diode_ladder</command> ain, xcf, xk [, inlp, isaturation, istor]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -51,6 +51,11 @@
     <para>
       <emphasis>xk</emphasis> -- filter feedback value k (i-, k-, or a-rate) that controls resonance. Range 0.0-17.0. Self-oscillation occurs at 17.0.
     </para>
+    <para>
+      <emphasis>knlp</emphasis> (optional, default=0) -- Non-linear processing method. 0 = no processing, 1 = higher-quality NLP, 2 = lower-quality NLP (faster). Method 1 uses (1.0 / tanh(ksaturation)) * tanh(ksaturation * input). Method 2 uses tanh(ksaturation * input). Enabling NLP may increase the overall output of filter above unity and should be compensated for outside of the filter. 
+    </para>
+    <para>
+      <emphasis>ksaturation</emphasis> (optiona, default=1) -- saturation amount to use for non-linear processing.    </para>
   </refsect1>
   
   <refsect1>
