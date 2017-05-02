@@ -1,28 +1,28 @@
 
-<refentry id="diode_ladder">
-<indexterm id="IndexDiode_ladder"><primary>diode_ladder</primary></indexterm>
+<refentry id="k35_hpf">
+<indexterm id="IndexK35_hpf"><primary>k35_hpf</primary></indexterm>
   <refentryinfo><title>Signal Modifiers:Standard Filters</title></refentryinfo>
   <refmeta>
-    <refentrytitle>diode_ladder</refentrytitle>
+    <refentrytitle>k35_hpf</refentrytitle>
   </refmeta>
 
   <refnamediv>
-    <refname>diode_ladder</refname>
+    <refname>k35_hpf</refname>
     <refpurpose>
-      Zero-delay feedback implementation of 4 pole diode ladder filter. 
+      Zero-delay feedback implementation of Korg35 resonant high-pass filter. 
     </refpurpose>
   </refnamediv>
   
   <refsect1>
     <title>Description</title>
     <para>
-      Zero-delay feedback implementation of a 4 pole (24 dB/oct) diode low-pass filter. This filter design was originally used in the EMS VCS3 and was the resonant filter in the Roland TB-303. 
+      Zero-delay feedback implementation of Korg35 resonant high-pass filter. This filter design is found in the Korg MS10 early MS20. 
     </para>
   </refsect1>
 
   <refsect1>
     <title>Syntax</title>
-    <synopsis>asig <command>diode_ladder</command> ain, xcf, xk [, inlp, isaturation, istor]</synopsis>
+    <synopsis>asig <command>k35_hpf</command> ain, xcf, xQ [, inlp, isaturation, istor]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -40,7 +40,7 @@
   <refsect1>
     <title>Performance</title>
 	    <para>
-      <emphasis>asig</emphasis> -- low-pass output signal.
+      <emphasis>asig</emphasis> -- output signal.
     </para>
     <para>
       <emphasis>ain</emphasis> -- input signal.
@@ -49,10 +49,10 @@
       <emphasis>xcf</emphasis> -- filter cutoff frequency (i-, k-, or a-rate).
     </para>
     <para>
-      <emphasis>xk</emphasis> -- filter feedback value k (i-, k-, or a-rate) that controls resonance. Range 0.0-17.0. Self-oscillation occurs at 17.0.
+      <emphasis>xQ</emphasis> -- filter Q value (i-, k-, or a-rate). Range 1.0-10.0 (clamped by opcode). Self-oscillation occurs at 10.0.
     </para>
     <para>
-      <emphasis>knlp</emphasis> (optional, default=0) -- Non-linear processing method. 0 = no processing, 1 = higher-quality NLP, 2 = lower-quality NLP (faster). Method 1 uses (1.0 / tanh(ksaturation)) * tanh(ksaturation * input). Method 2 uses tanh(ksaturation * input). Enabling NLP may increase the overall output of filter above unity and should be compensated for outside of the filter. 
+      <emphasis>knlp</emphasis> (optional, default=0) -- Non-linear processing method. 0 = no processing, 1 = non-linear processing. Method 1 uses tanh(ksaturation * input). Enabling NLP may increase the overall output of filter above unity and should be compensated for outside of the filter. 
     </para>
     <para>
       <emphasis>ksaturation</emphasis> (optional, default=1) -- saturation amount to use for non-linear processing. Values > 1 increase the steepness of the NLP curve.</para>
@@ -61,10 +61,10 @@
   <refsect1>
     <title>Examples</title>
     <para>
-      Here is an example of the diode_ladder opcode. It uses the file <ulink url="examples/diode_ladder.csd"><citetitle>diode_ladder.csd</citetitle></ulink>.
+      Here is an example of the k35_hpf opcode. It uses the file <ulink url="examples/k35.csd"><citetitle>k35.csd</citetitle></ulink>.
       <example>
-        <title>Example of the diode_ladder opcode.</title>
-          <xi:include href="examples-xml/diode_ladder.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <title>Example of the k35_hpf opcode.</title>
+          <xi:include href="examples-xml/k35.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
     </para>
   </refsect1>
@@ -85,7 +85,7 @@
         </listitem>
         <listitem>
           <para>
-            Pirkle, Will. AN-6: Virtual Analog (VA) DiodeLadder Filter. 2013.
+            Pirkle, Will. AN-7A: Virtual Analog (VA) Korg35 Highpass Filter v2.0 Simplified. 2013.
           </para>
         </listitem>
         <listitem>
