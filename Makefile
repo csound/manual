@@ -144,7 +144,8 @@ OPCODES = opcodes/0dbfs.xml	opcodes/ATSadd.xml	opcodes/ATSaddnz.xml \
 	opcodes/delayk.xml	opcodes/delayr.xml	opcodes/delayw.xml \
 	opcodes/deltap.xml	opcodes/deltap3.xml	opcodes/deltapi.xml \
 	opcodes/deltapn.xml	opcodes/deltapx.xml	opcodes/deltapxw.xml \
-	opcodes/denorm.xml	opcodes/diff.xml	opcodes/directory.xml \
+	opcodes/denorm.xml	opcodes/diff.xml	\
+	opcodes/diode_ladder.xml opcodes/directory.xml \
 	opcodes/diskgrain.xml	opcodes/diskin.xml	opcodes/diskin2.xml \
 	opcodes/dispfft.xml	opcodes/display.xml	opcodes/distort.xml \
 	opcodes/distort1.xml	opcodes/divides.xml	opcodes/divz.xml \
