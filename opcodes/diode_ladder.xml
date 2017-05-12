@@ -1,0 +1,110 @@
+
+<refentry id="diode_ladder">
+<indexterm id="IndexDiode_ladder"><primary>diode_ladder</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>diode_ladder</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>diode_ladder</refname>
+    <refpurpose>
+      Zero-delay feedback implementation of 4 pole diode ladder filter. 
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Zero-delay feedback implementation of a 4 pole (24 dB/oct) diode low-pass filter. This filter design was originally used in the EMS VCS3 and was the resonant filter in the Roland TB-303. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>asig <command>diode_ladder</command> ain, xcf, xk [, inlp, isaturation, istor]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+      <para>
+      <emphasis>istor</emphasis> --initial disposition of internal data space.
+      Since filtering incorporates a feedback loop of previous output, the
+      initial status of the storage space used is significant.  A zero value
+      will clear the space; a non-zero value will allow previous information to
+      remain. The default value is 0.
+    </para>
+	  
+  </refsect1>
+  
+  <refsect1>
+    <title>Performance</title>
+	    <para>
+      <emphasis>asig</emphasis> -- low-pass output signal.
+    </para>
+    <para>
+      <emphasis>ain</emphasis> -- input signal.
+    </para>
+    <para>
+      <emphasis>xcf</emphasis> -- filter cutoff frequency (i-, k-, or a-rate).
+    </para>
+    <para>
+      <emphasis>xk</emphasis> -- filter feedback value k (i-, k-, or a-rate) that controls resonance. Range 0.0-17.0. Self-oscillation occurs at 17.0.
+    </para>
+    <para>
+      <emphasis>knlp</emphasis> (optional, default=0) -- Non-linear processing method. 0 = no processing, 1 = higher-quality NLP, 2 = lower-quality NLP (faster). Method 1 uses (1.0 / tanh(ksaturation)) * tanh(ksaturation * input). Method 2 uses tanh(ksaturation * input). Enabling NLP may increase the overall output of filter above unity and should be compensated for outside of the filter. 
+    </para>
+    <para>
+      <emphasis>ksaturation</emphasis> (optional, default=1) -- saturation amount to use for non-linear processing. Values > 1 increase the steepness of the NLP curve.</para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the diode_ladder opcode. It uses the file <ulink url="examples/diode_ladder.csd"><citetitle>diode_ladder.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the diode_ladder opcode.</title>
+          <xi:include href="examples-xml/diode_ladder.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>References</title>
+    <para> This filter is based on the work of Will Pirkle that employs Vadim
+      Zavalishin's work with bilinear tranforms to create topology-preserving
+      transform (TPT) implementations of analog filters.</para>
+
+    <para>
+      <orderedlist>
+        <listitem>
+          <para>
+            Pirkle, Will. Designing Software Synthesizer Plug-ins in C++: For 
+            RackAFX, VST3, and Audio Units. CRC Press, 2014.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Pirkle, Will. AN-6: Virtual Analog (VA) DiodeLadder Filter. 2013.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+          Zavalishin, Vadim. "The Art of VA filter design." Native Instruments, 2012.
+          </para>
+        </listitem>
+      </orderedlist>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namesteven;</member>
+        <member>April 2017</member>
+      </simplelist>
+    </para>
+    <para>New in Csound 6.09.0</para>
+  </refsect1>
+</refentry>

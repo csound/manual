@@ -144,7 +144,8 @@ OPCODES = opcodes/0dbfs.xml	opcodes/ATSadd.xml	opcodes/ATSaddnz.xml \
 	opcodes/delayk.xml	opcodes/delayr.xml	opcodes/delayw.xml \
 	opcodes/deltap.xml	opcodes/deltap3.xml	opcodes/deltapi.xml \
 	opcodes/deltapn.xml	opcodes/deltapx.xml	opcodes/deltapxw.xml \
-	opcodes/denorm.xml	opcodes/diff.xml	opcodes/directory.xml \
+	opcodes/denorm.xml	opcodes/diff.xml	\
+	opcodes/diode_ladder.xml opcodes/directory.xml \
 	opcodes/diskgrain.xml	opcodes/diskin.xml	opcodes/diskin2.xml \
 	opcodes/dispfft.xml	opcodes/display.xml	opcodes/distort.xml \
 	opcodes/distort1.xml	opcodes/divides.xml	opcodes/divz.xml \
@@ -256,6 +257,7 @@ OPCODES = opcodes/0dbfs.xml	opcodes/ATSadd.xml	opcodes/ATSaddnz.xml \
 	opcodes/iweibull.xml	opcodes/jacktransport.xml	opcodes/jitter.xml \
 	opcodes/jitter2.xml	opcodes/joystick.xml	opcodes/jspline.xml \
 	opcodes/kbetarand.xml	opcodes/kbexprnd.xml	opcodes/kcauchy.xml \
+	opcodes/k35_hpf.xml opcodes/k35_lpf.xml \
 	opcodes/kdump.xml	opcodes/kdump2.xml	opcodes/kdump3.xml \
 	opcodes/kdump4.xml	opcodes/kexprand.xml	opcodes/kfilter2.xml \
 	opcodes/kgauss.xml	opcodes/kgoto.xml	opcodes/klinrand.xml \
@@ -529,6 +531,9 @@ OPCODES = opcodes/0dbfs.xml	opcodes/ATSadd.xml	opcodes/ATSaddnz.xml \
 	opcodes/xtratim.xml	opcodes/xyin.xml	opcodes/zacl.xml \
 	opcodes/zakinit.xml	opcodes/zamod.xml	opcodes/zar.xml \
 	opcodes/zarg.xml	opcodes/zaw.xml	opcodes/zawm.xml \
+	opcodes/zdf_1pole.xml	 opcodes/zdf_2pole.xml	\
+	opcodes/zdf_1pole_mode.xml	 opcodes/zdf_2pole_mode.xml	\
+	opcodes/zdf_ladder.xml \
 	opcodes/zfilter2.xml	opcodes/zir.xml	opcodes/ziw.xml \
 	opcodes/ziwm.xml	opcodes/zkcl.xml	opcodes/zkmod.xml \
 	opcodes/zkr.xml	opcodes/zkw.xml	opcodes/zkwm.xml
