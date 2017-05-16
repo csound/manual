@@ -14,7 +14,7 @@ nchnls	=	2
 instr 1	
 
 asig = vco2(0.5, cps2pch(6.00, 12))
-asig = k35_lpf(asig, expseg:a(10000, p3, 30), 9.9, 0, 1)
+asig = K35_lpf(asig, expseg:a(10000, p3, 30), 9.9, 0, 1)
 asig *= 0.25
 asig  = limit(asig, -1.0, 1.0)
 
@@ -26,7 +26,7 @@ endin
 instr 2	
 
 asig = vco2(0.5, cps2pch(6.00, 12))
-asig = k35_lpf(asig, expseg:k(10000, p3, 30), 9.9, 0, 1)
+asig = K35_lpf(asig, expseg:k(10000, p3, 30), 9.9, 0, 1)
 asig *= 0.25
 asig  = limit(asig, -1.0, 1.0)
 
@@ -37,7 +37,7 @@ endin
 instr 3	
 
 asig = vco2(0.5, cps2pch(6.00, 12))
-asig = k35_hpf(asig, expseg:a(10000, p3, 30), 9.9, 0, 1)
+asig = K35_hpf(asig, expseg:a(10000, p3, 30), 9.9, 0, 1)
 asig *= 0.25
 asig  = limit(asig, -1.0, 1.0)
 
@@ -49,7 +49,7 @@ endin
 instr 4	
 
 asig = vco2(0.5, cps2pch(6.00, 12))
-asig = k35_hpf(asig, expseg:k(10000, p3, 30), 9.9, 0, 1)
+asig = K35_hpf(asig, expseg:k(10000, p3, 30), 9.9, 0, 1)
 asig *= 0.25
 asig  = limit(asig, -1.0, 1.0)
 
@@ -66,8 +66,8 @@ instr ms20_drum
   aenv = expseg:a(10000, 0.05, ipch, p3 - .05, ipch)
 
   asig = rand:a(-1.0, 1.0)
-  asig = k35_hpf(asig, 60, 7, 1, 1)
-  asig = k35_lpf(asig, aenv, 9.8, 1, 1)
+  asig = K35_hpf(asig, 60, 7, 1, 1)
+  asig = K35_lpf(asig, aenv, 9.8, 1, 1)
 
   asig = tanh(asig * 16)
 
@@ -83,8 +83,8 @@ instr ms20_bass
   aenv = expseg(1000, 0.1, ipch * 2, p3 - .05, ipch * 2)
 
   asig = vco2(1.0, ipch)
-  asig = k35_hpf(asig, ipch, 5, 0, 1)
-  asig = k35_lpf(asig, aenv, 8, 0, 1)
+  asig = K35_hpf(asig, ipch, 5, 0, 1)
+  asig = K35_lpf(asig, aenv, 8, 0, 1)
 
   asig *= expon:a(iamp, p3, 0.0001) * 0.8
 
