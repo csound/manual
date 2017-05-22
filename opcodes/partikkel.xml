@@ -40,7 +40,8 @@
       each grain is enabled via an auxillary audio input
       (<emphasis>awavfm</emphasis>). Trainlet synthesis is available, and trainlets can be
       mixed with wavetable based grains. Up to 8 separate audio
-      outputs can be used.
+      outputs can be used. Fractional output values will distribute a grain between two outputs 
+      and a "panning law" table can be devised to control the amplitude scaling between output pairs.
     </para>
   </refsect1>
 
@@ -54,7 +55,7 @@
               ichannelmasks, krandommask, kwaveform1, kwaveform2, kwaveform3, \
               kwaveform4, iwaveamptab, asamplepos1, asamplepos2, asamplepos3, \
               asamplepos4, kwavekey1, kwavekey2, kwavekey3, kwavekey4, imax_grains \
-              [, iopcode_id]</synopsis>
+              [, iopcode_id, ipanlaws]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -119,12 +120,15 @@
     <para>
       <emphasis>ichannelmasks</emphasis> -- function table number, see <emphasis>igainmasks</emphasis>
       for a description of how the values in the table are read. Range
-      is 0 to N, where N is the number of output channels minus 1. A
+      is 0 to N, where N is the number of output channels. A
       value of zero will send the grain to audio output 1 from the
       opcode. Fractional values are allowed, e.g. a value of 3.5 will
-      mix the grain equally to outputs 4 and 5. The user is
-      responsible for keeping the values in range, no range checking
-      is done. The opcode will crash with out of range values. A
+      mix the grain equally to outputs 4 and 5. The channelmask value wraps 
+      around from the last to the first output, so that a vaalue of N-0.5 will
+      mix the grain equally between the last and the first output. If another panning law 
+      between outputs is desired, this can be described in the <emphasis>ipanlaws</emphasis> 
+      table. The user is responsible for keeping the values in range, 
+      the opcode will crash with out of range values. A
       default table might be selected by using -1 as the ftable
       number, for <emphasis>ichannelmasks</emphasis> the default disables channel masking
       (all grains are given a channel masking value of 0 and are sent
@@ -182,6 +186,19 @@
       <emphasis>iopcode_id</emphasis> -- the opcode id, linking an
       instance of <emphasis>partikkel</emphasis> to an instance of <link linkend="partikkelsync"><citetitle>partikkelsync</citetitle></link>, the linked <emphasis>partikkelsync</emphasis> will output trigger pulses synchronized to <emphasis>partikkel</emphasis>'s grain maker scheduler. 
       The default value is zero, which means no connection to any <emphasis>partikkelsync</emphasis> instances.
+    </para>
+    <para> 
+      <emphasis>ipanlaws</emphasis> -- function table number. The table describes the panning curve used for fractional channelmask values. 
+      Fractional channelmask values will mix a grain to two neighbouring outputs, with the relative gain set by the fractional value. 
+      By default (if no <emphasis>ipanlaws</emphasis> table is described, a linear gain relationship is used, so that a channelmask value of e.g. 1.5 distributes 
+      the grain with 0.5 gain to output 2 and 0.5 gain to output 3. The <emphasis>ipanlaws</emphasis> table can be used to describe other gain control curves (panning laws).
+      The table should contain 8 such gain control curves, each governing the panning between two neighbouring outputs. 
+      The curves should appear one after another in the table, in a concatenated fashion. GEN 18 can be used to create this table from separate panning curve tables (see example below). 
+      The first curve describes the panning law between output 1 and output 2, the next is for panning between outputs 2 and 3, and so on. 
+      The last curve describes the panning law between the last and the first output. The table is indexed by the channelmask value such that one output 
+      (of an output pair goverened by the panning law) uses the index (tablesize/8*channelmask) while the other of the two outputs reads the value at index 
+      (tablesize/8*(int(channelmask+1)-frac(channelmask))). This means that if the panning law value halfway between these two channel masks is e.g. 0.7 
+      (which would give approximately equal power panning), then each of those two outputs will use 0.7 as the gain value.    
     </para>
   </refsect1>
  
@@ -351,6 +368,13 @@
           <xi:include href="examples-xml/partikkel-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
     </para>
+    <para>
+      Here is an example of using panning laws with channelmasks in partikkel. It uses the file <ulink url="examples/partikkel-panlaws.csd"><citetitle>partikkel-panlaws.csd</citetitle></ulink>.
+      <example>
+        <title>Example with panning laws with channel masks.</title>
+          <xi:include href="examples-xml/partikkel-panlaws.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
   </refsect1>
  
   <refsect1>
@@ -366,6 +390,8 @@
       <link linkend="sndwarpst"><citetitle>sndwarpst</citetitle></link>,
       <link linkend="syncgrain"><citetitle>syncgrain</citetitle></link>,
       <link linkend="syncloop"><citetitle>syncloop</citetitle></link>,
+      <link linkend="partikkelget"><citetitle>partikkelget</citetitle></link>
+      <link linkend="partikkelset"><citetitle>partikkelset</citetitle></link>
       <link linkend="partikkelsync"><citetitle>partikkelsync</citetitle></link>
     </para>
   </refsect1>

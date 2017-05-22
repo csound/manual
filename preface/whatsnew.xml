@@ -66,15 +66,474 @@
     </itemizedlist>
   </para>-->
 
-<bridgehead>Release Notes for Csound 6.09 (2017 May)</bridgehead>
-<para>
- Release notes are found at
-<ulink
-    url="https://github.com/csound/csound/blob/develop/Release_Notes/Version_6.09.md"><citetitle>
-  github repository</citetitle></ulink>.
-</para>
-
-
+  <bridgehead>Release Notes for Csound 6.09 (2017 May)</bridgehead>
+  <para>A mixed bag of new opcodes and many fixes and improvements.</para>
+  <para>
+    Also as usual there are a number of internal changes, including many memory
+    leaks fixed and more robust code.
+  </para>
+  <para>
+    <itemizedlist>
+      <listitem>
+        <para>New opcodes:
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                <link linkend="select"><citetitle>select</citetitle></link> --
+                sample-by-sample comparison of audio selecting the output.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="midiarp"><citetitle>midiarp</citetitle></link> --
+                generates arpeggios based on currently held MIDI notes.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="hilbert2"><citetitle>hilbert2</citetitle></link> --
+                a DFT-based implementation of a Hilbert transformer.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Ableton Link opcodes -- for synchronizing tempo and beat across
+                local area networks.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="pvstrace"><citetitle>pvstrace</citetitle></link> --
+                retain only the N loudest bins.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                several new unary functions/opcodes for k-rate and i-time numeric
+                arrays: ceil, floor, round, int, frac, powoftwo, abs, log2, log10,
+                log, exp, sqrt, cos, sin, tan, acos, asin, atan, sinh, cosh, tanh,
+                cbrt, limit1.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                several new binary functions/opcodes for k-rate and i-time numeric
+                arrays: atan2, pow,hypot, fmod, fmax, fmin.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="limit"><citetitle>limit</citetitle></link> --
+                numeric limiting within a given range (for arrays).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="tvconv"><citetitle>tvconv</citetitle></link> --
+                a time-varying convolution (FIR filter) opcode.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="liveconv"><citetitle>liveconv</citetitle></link> --
+                partitioned convolution with dynamically reloadable impulse
+                response.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="bpf"><citetitle>bpf</citetitle></link>,
+                <link linkend="xyscale"><citetitle>xyscale</citetitle></link>,
+                <link linkend="ntom"><citetitle>ntom</citetitle></link>,
+                <link linkend="mton"><citetitle>mton</citetitle></link> --
+                (from SuperCollider?).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <emphasis>OSCsendA</emphasis> -- asynchronous version of OSCsend.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="OSCsend"><citetitle>OSCsend</citetitle></link> --
+                now implemented directly using system sockets. Old version using
+                liblo has been kept as OSCsend_lo.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <emphasis>OSCraw</emphasis> -- to listen for all OSC messages at
+                a given port.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="sorta"><citetitle>sorta</citetitle></link> and 
+                <link linkend="sortd"><citetitle>sortd</citetitle></link>--
+                sort elements of an array.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="dot"><citetitle>dot</citetitle></link> --
+                calculates the dot product of two arrays.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                zero delay filters -- 
+                <link linkend="zdf_1pole_mode"><citetitle>zdf_1pole_mode</citetitle></link>,
+                <link linkend="zdf_2pole_mode"><citetitle>zdf_2pole_mode</citetitle></link>,
+                <link linkend="zdf_ladder"><citetitle>zdf_ladder</citetitle></link>,
+                <link linkend="zdf_1pole"><citetitle></citetitle>zdf_1pole</link> and
+                <link linkend="zdf_2pole"><citetitle></citetitle>zdf_2pole</link>,
+                <link linkend="diode_ladder"><citetitle></citetitle>diode_ladder</link>,
+                <link linkend="k35_hpf"><citetitle>K35_hpf</citetitle></link> and
+                <link linkend="k35_lpf"><citetitle>K35_lpf</citetitle></link>.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="product"><citetitle>product</citetitle></link> --
+                takes a numeric array (k or i-rate) and calculates its product.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                supercollider ugens -- 
+                <link linkend="sc_phasor"><citetitle>sc_phasor</citetitle></link>,
+                <link linkend="sc_lag"><citetitle>sc_lag</citetitle></link>,
+                <link linkend="sc_lagud"><citetitle>sc_lagud</citetitle></link>,
+                <link linkend="sc_trig"><citetitle>sc_trig</citetitle></link>.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Orchestra:
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Including a directory of UDO files no longer fails if more than
+                about 20 entries.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                It was possible for kr, sr, and ksmps to be inconsistent in one
+                case, no more.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Macro names better policed and bracket matching.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Octal values as \000 can be in strings.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Score:
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Improved line number reporting in r opcode and case with no
+                macro implemented.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>m and n opcodes fixed.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Expansion of [...] corrected and improved.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Strings in scores improved.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                The ) character can be in a macro argument if it is escaped
+                with \.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Use of the characters e or s could lead to errors; now fixed.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Macro names better policed, and bracket matching.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                p2 and p3 are now at higher precision, no longer truncated to
+                6 decimal places.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                new opcode d to switch off infinite notes (denote); same as i
+                with negative p1.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                named instruments can be turned off with i if a - follows the ".
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Options:
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                jack midi module now can report available devices under
+                --midi-devices.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Modified Opcodes and Gens:
+          <itemizedlist>
+            <listitem>
+              <simpara>ftgentmp improved string arguments.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                hdf5read opcode now reads entire data sets when dataset name
+                string is suffixed with an asterisk.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                use of non power-of-two lengths now acceptable where before
+                it was inconsistent.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>ampmidid optionally can be aware of 0dbfs.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                dust and dust2 at k-rate now conform to the manual (NOTE:
+                this is an incompatible change).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>In prints the format %% now prints one %.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>OSClisten can be used with no data outputs.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>GEN18 corrected to write to requested range.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>sockrev now can read strings.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                vbap system can in some cases allow arbitrary number of
+                speakers via arrays (work in progress).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Websocket server can only accept one protocol output, so
+                limiting intype to just a single argument.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>sum opcode will also sum elements of an array.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Overloaded pvs2tab and tab2pvs now can create and use split
+                magnitude and phase arrays.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Utilities:
+          <itemizedlist>
+            <listitem>
+              <simpara>dnoise fixed.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Frontends:
+          <itemizedlist>
+            <listitem>
+              <simpara>Removed HTML5 Csound editor which has quit working.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Emscripten: Emscripten Csound (asm.js) now requires sourcing in
+                CsoundObj.js and FileList.js separately from libcsound.js. This
+                is to accommodate using the same JS API with either asm.js or
+                wasm backends.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                CsoundQT: CsoundQt 0.9.4 is announced:
+                <ulink url="https://github.com/CsoundQt/CsoundQt/blob/develop/release_notes/Release%20notes%200.9.4.md">
+                <citetitle>https://github.com/CsoundQt/CsoundQt/blob/develop/release_notes/Release notes 0.9.4.md</citetitle></ulink>.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Windows installer with CsoundQt includes PythonQt.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Bugs Fixed:
+          <itemizedlist>
+            <listitem>
+              <simpara>pwd works on OSX.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Fencepost error in sensLine fixed.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>OSCsend corrected for caching of host name.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Bug in push/pop opcodes fixed (this opcode is now a plugin and
+                deprecated).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Bug in sprintf removed.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Bug in soundin removed.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>losci/losci3 fixed in case of long tables.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>inrg was broke for a while.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Partikkel channelmask panning laws had an indexing error, now
+                fixed.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                jack audio module now allows for independent numbers of in and
+                out channels.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Bug in string copying fixed.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Bug in hdf5read where if two hdf5read opcodes were placed in
+                series in an instrument, the argument names of the second opcode
+                instance would be incorrect due to directly changing the last
+                string character of the first when reading an entire dataset.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>System Changes:
+          <itemizedlist>
+            <listitem>
+              <simpara>soundin now uses the diskin2 code.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                out family of opcodes reworked to reduce interleaving costs and
+                to take proper regard if nchnls value.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>API:
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                New csound_threaded.hpp header-only facility, obviating need for
+                csPerfThread.cpp object in some projects.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Added GetA4 function.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                New framework for plugin opcode development in C++ using
+                Csound's allocator.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Added StrDup function.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Boost dependencies removed from Csound interfaces, CsoundAC,
+                and CsoundVST.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Platform Specific:
+          <itemizedlist>
+            <listitem>
+              <simpara>iOS.</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>
+                    iPad portrait SplitView fix+animation, info popover
+                    resizing, stop button fix in Soundfile Pitch Shifter.
+                  </simpara>
+                </listitem>
+                <listitem>
+                  <simpara>
+                    Csound-iOS API updates; Examples cleaned up,
+                    enhanced/expanded, and reordered. Manual revised, expanded,
+                    updated. Updates to API and examples support iOS 10 and
+                    Xcode 8.
+                  </simpara>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
 
   <bridgehead>Release Notes for Csound 6.08 (2016 November)</bridgehead>
   <para>
