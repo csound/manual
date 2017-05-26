@@ -743,7 +743,7 @@ html-onechunk: $(XSL_HTML_ONECHUNK) manual.xml $(SRCS) Makefile
 	cp -R examples ${HTML_ONE_DIR}/
 	cp copying.txt ${HTML_ONE_DIR}/
 	cp csound.css ${HTML_ONE_DIR}/
-	cp syntax-highlighting.css ${HTML_DIR}/
+	cp syntax-highlighting.css ${HTML_ONE_DIR}/
 	rm -rf ${HTML_ONE_DIR}/images/CVS
 	rm -rf ${HTML_ONE_DIR}/images/callouts/CVS
 	rm -rf ${HTML_ONE_DIR}/examples/CVS
@@ -765,7 +765,7 @@ htmlhelp: ${XSL_HTMLHELP} manual.xml $(SRCS)
 	cp images -R ${HTMLHELP_DIR}/
 	cp examples -R ${HTMLHELP_DIR}/
 	cp csound.css ${HTMLHELP_DIR}/
-	cp syntax-highlighting.css ${HTML_DIR}/
+	cp syntax-highlighting.css ${HTMLHELP_DIR}/
 	rm -rf ${HTMLHELP_DIR}/images/CVS
 	rm -rf ${HTMLHELP_DIR}/images/callouts/CVS
 	rm -rf ${HTMLHELP_DIR}/examples/CVS
