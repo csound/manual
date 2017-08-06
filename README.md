@@ -14,8 +14,8 @@ make a pull request](https://guides.github.com/activities/forking/).
 ## General Requirements
 
 In addition to other requirements specific to what you’re building, you need
-DocBook; [Python](https://www.python.org), with [Pygments](http://pygments.org);
-and [xsltproc](http://xmlsoft.org/XSLT/xsltproc2.html).
+DocBook; [Python](https://www.python.org), with [Pygments](http://pygments.org)
+v2.1 or later; and [xsltproc](http://xmlsoft.org/XSLT/xsltproc2.html).
 
 ### On Linux
 
@@ -25,13 +25,21 @@ To install DocBook and xsltproc, run
 sudo apt-get install -y docbook xsltproc
 ```
 
-Python, with Pygments, is preinstalled on most Linux distributions. If you don’t
-have Python, visit https://docs.python.org/2/using/unix.html to learn how to
-install Python or build it from source.
+Python is preinstalled on most Linux distributions. If you don’t have Python,
+visit https://docs.python.org/2/using/unix.html to learn how to install Python
+or build it from source.
 
-Visit http://pygments.org/download/ to learn how to install Pygments.
+To install Pygments v2.1 or later, run
 
-To install Pygments, enter in Terminal `sudo easy_install pygments`. If you have an older version of pygments installed, you might get an error message that CsoundDocumentLexer was not found. If so, you can update your version of pygments using `sudo pip install pygments --upgrade`.
+```sh
+sudo pip install 'pygments>=2.1'
+```
+
+or, if you don’t have [pip](https://pip.pypa.io/),
+
+```sh
+sudo easy_install 'pygments>=2.1'
+```
 
 ### On macOS
 
@@ -39,7 +47,11 @@ The easiest way to install DocBook is probably through
 [Homebrew](https://brew.sh). To install Homebrew, follow the instructions at
 https://brew.sh. Then, enter `brew install docbook` in a Terminal.
 
-To install Pygments, enter in Terminal `sudo easy_install pygments`. If you have an older version of pygments installed, you might get an error message that CsoundDocumentLexer was not found. If so, you can update your version of pygments using `easy_install —upgrade pygments`.
+To install Pygments v2.1 or later, enter in Terminal
+
+```sh
+sudo easy_install 'pygments>=2.1'
+```
 
 Python and xsltproc are preinstalled on macOS.
 
@@ -72,6 +84,9 @@ make XSL_BASE_PATH=path/to/docbook/stylesheets ⟨target⟩
 
 instead of `make ⟨target⟩`.
 
+If you see an error message that `CsoundDocumentLexer` isn’t found when you try
+to build a `⟨target⟩`, then you’re probably using Pygments v2.0.2 or earlier,
+and you need [Pygments v2.1 or later](#general-requirements).
 
 ### HTML
 
