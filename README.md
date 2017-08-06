@@ -185,14 +185,14 @@ included.
 4. Optionally, use a [`refentryinfo`
 element](https://github.com/csound/manual/search?q=refentryinfo+path%3Aopcodes+filename%3Atemplate.xml)
 so your opcode will be properly categorized in the [Quick
-Reference](http://csound.github.io/docs/manual/MiscQuickref.html). Use one of the
-categories in [categories.py](categories.py). (If you omit a `refentryinfo`
+Reference](https://csound.github.io/docs/manual/MiscQuickref.html). Use one of
+the categories in [categories.py](categories.py). (If you omit a `refentryinfo`
 element, your opcode will be categorized as
 [Miscellaneous](https://github.com/csound/manual/search?q=Miscellaneous+filename%3Acategories.py).)
 
 5. If possible, add a [`link` element](http://tdg.docbook.org/tdg/4.5/link.html)
 to your opcode in the appropriate section of the [Opcodes
-Overview](http://csound.github.io/docs/manual/PartOpcodesOverview.html).
+Overview](https://csound.github.io/docs/manual/PartOpcodesOverview.html).
 
 
 ## For Maintainers
