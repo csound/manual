@@ -1,0 +1,84 @@
+
+<refentry id="midiout_i">
+<indexterm id="IndexMidiout_I"><primary>midiout_i</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Generic I/O</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>midiout_i</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>midiout_i</refname>
+
+    <refpurpose>
+      Sends a generic MIDI message to the MIDI OUT port.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Sends a generic MIDI message to the MIDI OUT port.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>midiout_i</command> istatus, ichan, idata1, idata2</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>istatus</emphasis> -- the type of MIDI message. Can be:
+      <itemizedlist>
+	<listitem><para>128 (note off)</para></listitem>
+	<listitem><para>144 (note on)</para></listitem>
+	<listitem><para>160 (polyphonic aftertouch)</para></listitem>
+	<listitem><para>176 (control change)</para></listitem>
+	<listitem><para>192 (program change)</para></listitem>
+	<listitem><para>208 (channel aftertouch)</para></listitem>
+	<listitem><para>224 (pitch bend)</para></listitem>
+	<listitem><para>0 when no MIDI messages must be sent to the MIDI OUT port</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>ichan</emphasis> -- MIDI channel (1-16)
+    </para>
+
+    <para>
+      <emphasis>idata1, idata2</emphasis> -- message-dependent data values
+    </para>
+
+    <para>
+      <emphasis>midiout_i</emphasis> has no output arguments, because it sends a message to the MIDI OUT port implicitly. It works at i-time. It sends a MIDI message only when <emphasis>istatus</emphasis> is non-zero.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the midiout_i opcode. It uses the file <ulink url="examples/midiout_i.csd"><citetitle>midiout_i.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the midiout_i opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/midiout_i.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namegabriel;</member>
+        <member>Italy</member>
+        <member>1998</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 6.10</para>
+  </refsect1>
+</refentry>
