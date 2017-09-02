@@ -13,8 +13,7 @@
 instr 1
    iFirstTableNumber = 60;
    iFileCount init 0
-   iTrig = 1
-   iNumberOfFiles ftsamplebank "./examples/", iFirstTableNumber, iTrig, 0, 4, 1
+   iNumberOfFiles ftsamplebank "./examples/", iFirstTableNumber, 0, 4, 1
 
    until iFileCount>=iNumberOfFiles do
 	event_i "i", 1000, iFileCount, 1, iFirstTableNumber+iFileCount

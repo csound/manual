@@ -4,10 +4,10 @@
 <CsInstruments>
 
 sr = 44100
-ksmps = 128
+ksmps = 32
 nchnls = 2
-0dbfs = 1.0
-A4
+0dbfs = 1
+A4 = 440
 
 instr 1
     kfreq = mtof(69)
@@ -32,7 +32,6 @@ endin
 
 </CsInstruments>
 <CsScore>
-i 1 0 10
-
+i 1 0 1
 </CsScore>
 </CsoundSynthesizer>
