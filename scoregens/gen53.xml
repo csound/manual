@@ -1,0 +1,69 @@
+
+<refentry id="GEN53">
+      <indexterm id="IndexGEN53"><primary>GEN53</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN53</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>GEN53</refname>
+    <refpurpose>
+      Creates a linear-phase or minimum-phase impulse response table
+      from a source table containing a frequency response or an
+      impulse response.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      GEN53 creates an impulse response function table with either a
+      linear-phase or a minimum-phase characteristic. The source for
+      this can either be a frequency response or an impulse response,
+      stored in an existing table. Optionally, another function table can be used to
+      window the input and/or the output of the process.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>f</command> # time size 53 fsrc
+    [mode fwin]</synopsis>
+
+    <para>
+    fsrc - source function table. If this is an impulse response, the
+    size must match the created function table size. If a frequency
+    response is used, then the created function size needs to be twice
+    the size of this source. Power-of-two is required.
+    </para>
+
+      <para>
+	mode - optional, the operation mode, a sum of
+	(a) input, frequency response (0) or impulse respone (1); (b)
+	output, linear phase (0) or minimum-phase (2); (c) windowing,
+	none (0), input (4) and/or output (8). The default mode (0) is
+	frequency response input, linear-phase output, no windowing.
+      </para>
+
+     <para>
+      fwin - window function table, power-of-two size is required, but
+      does not need to match the created function table size.
+    </para>
+      
+  </refsect1>
+  <refsect1>
+    <title>Example</title>
+    <para>
+      Here is a complete example of the GEN53 generator. It uses the file <ulink url="examples/gen53.csd"><citetitle>gen53.csd</citetitle></ulink>.
+           <example>
+        <title>Example of the GEN53 generator.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/gen53.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>    
+    </para>
+  </refsect1> 
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &nameistvan;</para>
+  </refsect1>
+</refentry>
