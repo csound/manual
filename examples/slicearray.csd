@@ -31,7 +31,8 @@ kArr3[] init    3
 ;put in first five and last four elements
 kArr1   slicearray kArr, 0, 4
 kArr2   slicearray kArr, 5, 8
-kArr3   slicearray kArr, 1, 5,2
+; and three values from 1, 1+2 and 1+2+3
+kArr3   slicearray kArr, 1, 5, 2
 
 ;print the content
         printf  "%s", 1, "\nkArr1 = slice from index 0 to index 4\n"
