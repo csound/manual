@@ -66,6 +66,193 @@
     </itemizedlist>
   </para>-->
 
+  <bridgehead>Release Notes for Csound 6.10 (2017 September)</bridgehead>
+  <para>
+    This is mostly a bugfix release, including a major bug introduced in loscil
+    recently. New ad improved opcodes and a long orphaned GEN (53) are here, as
+    well as many small internal improvements.
+  </para>
+  <para>
+    <itemizedlist>
+      <listitem>
+        <para>New opcodes:
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                <link linkend="midiout_i"><citetitle>midiout_i</citetitle></link>
+                which is like midiout but works at i-rate.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>New Gen and Macros:
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                <link linkend="GEN53"><citetitle>GEN53</citetitle></link>
+                (which has been in the code but not documented for years) is now
+                acknowledged. It creates a linear-phase or minimum-phase impulse
+                response table from a source table containing a frequency
+                response or an impulse response.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Orchestra:
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Incorrect use of k-rate if..the.. in instrument 0 is now treated
+                as i-rate.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Incorrect use of k-rate operations in instrument 0 are no longer
+                treated as an error but a warning.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                In a csd file commented-out tags were acted upon in some cases,
+                leading to truncated orchestras. This is now fixed.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Arrays can be assigned from i-rate and k-rate to krate and
+                i-rate; previously rates had to match.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Score:
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                In a csd file commented-out tags were acted upon in some cases,
+                leading to truncated scores. This is now fixed.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Options:
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                The --tempo (and -t) option now can be fractional; was
+                previously limited to an integer.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Modified Opcodes and Gens:
+          <itemizedlist>
+            <listitem>
+              <simpara>loscil/loscil3 accept floating point increment.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>OSCraw closes socket after use.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                fout can now generate ogg format, as well as accepting -1 to
+                mean the same format as -o uses.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                bitwise and opcode (&amp;) at a-rate corrected for sample-accurate
+                mode.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                slicearray as an optional additional argument to give a stride
+                to the slice.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Frontends:
+          <itemizedlist>
+            <listitem>
+              <simpara>HTML5: Now available in CsoundQt.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Emscripten: Now compiled as WebAssembly (runs in all major
+                browsers). API now somewhat more conformed to other HTML5 APIs.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>CsoundQT: Now built with HTML5 support.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Bug fixed:
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                The optionality of the last argument in sc_phasor now works.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Freezing in dconv fixed.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                looptseg no longer crashes if presented with too few arguments.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>API:
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                CompileCsdText now always returns a value indicating success/failure.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Platform Specific:
+          <itemizedlist>
+            <listitem>
+              <simpara>Windows</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>Now compiled with MSVC.</simpara>
+                </listitem>
+                <listitem>
+                  <simpara>Continuous integration for Windows with AppVeyor.</simpara>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+
   <bridgehead>Release Notes for Csound 6.09 (2017 May)</bridgehead>
   <para>A mixed bag of new opcodes and many fixes and improvements.</para>
   <para>
