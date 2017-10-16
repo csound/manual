@@ -1,0 +1,75 @@
+<section id="udpserver">
+  <title>UDP Server</title>
+  <para>
+    Csound 6 includes a fully-functional UDP server, which can accept a range of commands and/or
+    orchestra.
+  </para>
+  <bridgehead>Overview</bridgehead>
+  <para>
+      The UDP server can be started with the following option:
+  </para>
+  <literallayout>
+   --port=N
+  </literallayout>
+    <para>
+   where N indicates a port number to listen to UDP messages. Csound does not necessarily need to be
+   given a CSD or orchestra, although it is also possible to do so.
+    </para>
+  <bridgehead>Commands</bridgehead>
+  <para>
+      Commands take the form of an opcode followed by one or more
+      arguments. The following commands are accepted by the server:
+  </para>
+  <literallayout>
+   &amp;[line event]
+  </literallayout>
+<para>
+  Sends in a line event [live event]. Multiple events can be send on multiple
+  lines. Use this command for single or multiple events that do
+  not need preprocessing.
+</para>
+  <literallayout>
+   $[score]
+  </literallayout>
+<para>
+  Sends in a score [score], to which most preprocessing (except for tempo) can
+  be applied. Use this option for larger blocks of score events.
+</para>
+  <literallayout>
+   @[channel_name] [value]
+  </literallayout>
+<para>
+  Set a control channel [channel_name] with the value [value].
+</para>
+  <literallayout>
+   %[channel_name] [string]
+  </literallayout>
+<para>
+  Set a string channel [channel_name] with the string [string].
+  </para>
+  <literallayout>
+   :@[channel_name] [address] [port]
+  </literallayout>
+<para>
+  Request the value of the control channel [channel_name] to be
+  sent as a string via UDP to address [address] port [port]. The
+  string will contain the channel name followed by a colon (:)
+  and its current value.
+</para>
+  <literallayout>
+   :%[channel_name] [address] [port]
+  </literallayout>
+<para>
+  Request the contents of the string channel [channel_name] to be
+  sent as a string via UDP to address [address] port [port]. The
+  string will contain the channel name followed by a colon (:)
+  and its current contents.
+</para>
+  <bridgehead>Orchestra code</bridgehead>
+<para>
+In addition to the above commands, the UDP server also accepts a
+string containing orchestra code, which is compiled immediately.
+The orchestra string is not prefixed with any special command
+opcode.
+</para>
+</section>
