@@ -267,7 +267,7 @@
 <para/>
 <synopsis>ares <link linkend="phasor">phasor</link> xcps [, iphs]</synopsis><synopsis>kres <link linkend="phasor">phasor</link> kcps [, iphs]</synopsis><para/>
 <synopsis>ares <link linkend="phasorbnk">phasorbnk</link> xcps, kndx, icnt [, iphs]</synopsis><synopsis>kres <link linkend="phasorbnk">phasorbnk</link> kcps, kndx, icnt [, iphs]</synopsis><para/>
-<synopsis>aindex <link linkend="sc_phasor">sc_phasor</link> xtrig, xrate, kstart, kend [, kresetPos] </synopsis><synopsis>kindex <link linkend="sc_phasor">sc_phasor</link> xtrig, xrate, kstart, kend [, kresetPos] </synopsis><synopsis>(end - start) * freq / sr</synopsis><para/>
+<synopsis>aindex <link linkend="sc_phasor">sc_phasor</link> xtrig, xrate, kstart, kend [, kresetPos] </synopsis><synopsis>kindex <link linkend="sc_phasor">sc_phasor</link> xtrig, xrate, kstart, kend [, kresetPos] </synopsis><para/>
 <synopsis>aphase, asyncout <link linkend="syncphasor">syncphasor</link> xcps, asyncin, [, iphs]</synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
@@ -1160,7 +1160,7 @@
 <synopsis>ir <link linkend="lenarray">lenarray</link> karray[, iwhich]</synopsis><synopsis>kr <link linkend="lenarray">lenarray</link> karray[, iwhich]</synopsis><para/>
 <synopsis>karray <link linkend="maparray">maparray</link> kinarray, String</synopsis><synopsis>karray <link linkend="maparray">maparray_i</link> kinarray, String</synopsis><para/>
 <synopsis><link linkend="nsamp">nsamp</link>(x) (init-rate args only)</synopsis><para/>
-<synopsis>karray <link linkend="slicearray">slicearray</link> kinarray, istart, iend</synopsis><para/>
+<synopsis>karray <link linkend="slicearray">slicearray</link> kinarray, istart, iend [,istride]</synopsis><para/>
 <synopsis>ires <link linkend="tableng">tableng</link> ifn</synopsis><synopsis>kres <link linkend="tableng">tableng</link> kfn</synopsis><para/>
 <synopsis>kr <link linkend="tabsum">tabsum</link> ifn[[, kmin] [, kmax]]</synopsis><para/>
 <synopsis><link linkend="tb">tb0_init</link> ifn</synopsis><synopsis><link linkend="tb">tb1_init</link> ifn</synopsis><synopsis><link linkend="tb">tb2_init</link> ifn</synopsis><synopsis><link linkend="tb">tb3_init</link> ifn</synopsis><synopsis><link linkend="tb">tb4_init</link> ifn</synopsis><synopsis><link linkend="tb">tb5_init</link> ifn</synopsis><synopsis><link linkend="tb">tb6_init</link> ifn</synopsis><synopsis><link linkend="tb">tb7_init</link> ifn</synopsis><synopsis><link linkend="tb">tb8_init</link> ifn</synopsis><synopsis><link linkend="tb">tb9_init</link> ifn</synopsis><synopsis><link linkend="tb">tb10_init</link> ifn</synopsis><synopsis><link linkend="tb">tb11_init</link> ifn</synopsis><synopsis><link linkend="tb">tb12_init</link> ifn</synopsis><synopsis><link linkend="tb">tb13_init</link> ifn</synopsis><synopsis><link linkend="tb">tb14_init</link> ifn</synopsis><synopsis><link linkend="tb">tb15_init</link> ifn</synopsis><synopsis>iout = <link linkend="tb">tb0</link>(iIndex)</synopsis><synopsis>kout = <link linkend="tb">tb0</link>(kIndex)</synopsis><synopsis>iout = <link linkend="tb">tb1</link>(iIndex)</synopsis><synopsis>kout = <link linkend="tb">tb1</link>(kIndex)</synopsis><synopsis>iout = <link linkend="tb">tb2</link>(iIndex)</synopsis><synopsis>kout = <link linkend="tb">tb2</link>(kIndex)</synopsis><synopsis>iout = <link linkend="tb">tb3</link>(iIndex)</synopsis><synopsis>kout = <link linkend="tb">tb3</link>(kIndex)</synopsis><synopsis>iout = <link linkend="tb">tb4</link>(iIndex)</synopsis><synopsis>kout = <link linkend="tb">tb4</link>(kIndex)</synopsis><synopsis>iout = <link linkend="tb">tb5</link>(iIndex)</synopsis><synopsis>kout = <link linkend="tb">tb5</link>(kIndex)</synopsis><synopsis>iout = <link linkend="tb">tb6</link>(iIndex)</synopsis><synopsis>kout = <link linkend="tb">tb6</link>(kIndex)</synopsis><synopsis>iout = <link linkend="tb">tb7</link>(iIndex)</synopsis><synopsis>kout = <link linkend="tb">tb7</link>(kIndex)</synopsis><synopsis>iout = <link linkend="tb">tb8</link>(iIndex)</synopsis><synopsis>kout = <link linkend="tb">tb8</link>(kIndex)</synopsis><synopsis>iout = <link linkend="tb">tb9</link>(iIndex)</synopsis><synopsis>kout = <link linkend="tb">tb9</link>(kIndex)</synopsis><synopsis>iout = <link linkend="tb">tb10</link>(iIndex)</synopsis><synopsis>kout = <link linkend="tb">tb10</link>(kIndex)</synopsis><synopsis>iout = <link linkend="tb">tb11</link>(iIndex)</synopsis><synopsis>kout = <link linkend="tb">tb11</link>(kIndex)</synopsis><synopsis>iout = <link linkend="tb">tb12</link>(iIndex)</synopsis><synopsis>kout = <link linkend="tb">tb12</link>(kIndex)</synopsis><synopsis>iout = <link linkend="tb">tb13</link>(iIndex)</synopsis><synopsis>kout = <link linkend="tb">tb13</link>(kIndex)</synopsis><synopsis>iout = <link linkend="tb">tb14</link>(iIndex)</synopsis><synopsis>kout = <link linkend="tb">tb14</link>(kIndex)</synopsis><synopsis>iout = <link linkend="tb">tb15</link>(iIndex)</synopsis><synopsis>kout = <link linkend="tb">tb15</link>(kIndex)</synopsis><para/>
@@ -1324,6 +1324,7 @@
 <synopsis>a <link linkend="opbitshl">&lt;&lt;</link> b  (bitshift left)</synopsis><para/>
 <synopsis>a <link linkend="opbitshr">&gt;&gt;</link> b  (bitshift left)</synopsis><para/>
 <synopsis>a <link linkend="opnonequiv">#</link> b  (bitwise NON EQUIVALENCE)</synopsis><para/>
+<synopsis><link linkend="opnot">!</link> a  (logical NOT; not audio-rate)</synopsis><para/>
 <synopsis>a <link linkend="opor">&verbar;&verbar;</link> b  (logical OR; not audio-rate)</synopsis>
 <para/>
 <synopsis>a <link linkend="raises">&circ;</link> b  (b not audio-rate)</synopsis>
@@ -1507,6 +1508,7 @@
 <para/>
 <synopsis>kstatus, kchan, kdata1, kdata2 <link linkend="midiin">midiin</link>&#160;</synopsis><para/>
 <synopsis><link linkend="midiout">midiout</link> kstatus, kchan, kdata1, kdata2</synopsis><para/>
+<synopsis><link linkend="midiout_i">midiout_i</link> istatus, ichan, idata1, idata2</synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
 <title>Real-time MIDI:Event Extenders</title>
@@ -2183,6 +2185,7 @@ inum_parm, kupdate</synopsis><para/>
 <synopsis><link linkend="scaleutility">scale</link> [OPTIONS ... ] infile</synopsis><para/>
 <synopsis><link linkend="sdif2ad">sdif2ad</link> [flags] infilename outfilename</synopsis><para/>
 <synopsis><link linkend="sndinfo">csound -U sndinfo</link> [options] soundfilenames ...</synopsis><synopsis><link linkend="sndinfo">sndinfo</link> [options] soundfilenames ...</synopsis><para/>
+<synopsis><link linkend="src_conv">src_conv</link> [flags] infile</synopsis><para/>
 <synopsis><link linkend="srconv">srconv</link> [flags] infile</synopsis><para/>
 </para></formalpara>
 <para></para></chapter></part>
