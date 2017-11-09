@@ -65,14 +65,25 @@
   string will contain the channel name followed by two colons (::)
   and its current contents.
 </para>
-  <bridgehead>Orchestra code</bridgehead>
+<bridgehead>Orchestra code</bridgehead>
+
 <para>
 In addition to the above commands, the UDP server also accepts a
 string containing orchestra code, which is compiled immediately.
 The orchestra string is not prefixed with any special command
-opcode.
+opcode. This string should be sent in a single UDP message.
 </para>
- <bridgehead>Closing the server</bridgehead>
+
+<para>
+  If the orchestra code length exceeds the number of characters that
+  are possible in a single message, it can be broken in separate
+  messages. For this to work, the whole orchestra code needs to
+  enclosed in brackets ({ }). The open brackets ({) starts the server
+  taking the code in and the close brackets (}) sends the code for
+ compilation. This way the code can be sent in multiple messages.
+</para>
+
+<bridgehead>Closing the server</bridgehead>
 <para>
 The server (and Csound) can be closed with one of the following
 commands:
