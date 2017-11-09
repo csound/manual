@@ -83,6 +83,14 @@
                 which is like midiout, but works at i-rate.
               </simpara>
             </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="chnget"><citetitle>chngetks</citetitle></link> and
+                <link linkend="chnset"><citetitle>chnsetks</citetitle></link> --
+                versions of <emphasis>chnget</emphasis> and <emphasis>chnset</emphasis>
+                for string channels that only run at perf-time.
+              </simpara>
+            </listitem>
           </itemizedlist>
         </para>
       </listitem>
@@ -128,6 +136,13 @@
                 i-rate; previously rates had to match.
               </simpara>
             </listitem>
+            <listitem>
+              <simpara>
+                The use of ! as a Boolean operation (meaning negation) is now
+                supported, where previously the parser accepted it but did not
+                use it.
+              </simpara>
+            </listitem>
           </itemizedlist>
         </para>
       </listitem>
@@ -138,6 +153,20 @@
               <simpara>
                 In a csd file commented-out tags were acted upon in some cases,
                 leading to truncated scores. This is now fixed.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>The evaluation form [..] can now be nested.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                The extract feature (-x from command line) now works.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Use of the score opcode x could cause spurious error messages
+                which are now suppressed.
               </simpara>
             </listitem>
           </itemizedlist>
@@ -182,6 +211,15 @@
                 to the slice.
               </simpara>
             </listitem>
+            <listitem>
+              <simpara>chnset now can have variable channel names.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                a-rate arrays may be added, subtracted, multiplied and scaled.
+                This is a start on a-rate array arithmetic.
+              </simpara>
+            </listitem>
           </itemizedlist>
         </para>
       </listitem>
@@ -216,7 +254,63 @@
                 looptseg no longer crashes if presented with too few arguments.
               </simpara>
             </listitem>
+            <listitem>
+              <simpara>
+                schedule etc now work correctly with double-quoted strings
+                within {{ }} strings.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                problem with CLI frontend interrupt handler fixed.
+              </simpara>
+            </listitem>
           </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>System Changes:
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                The GNU Lesser General Public License, version 2.1, for CsoundVST
+                and the vst4cs opcodes has been modified to grant an exception
+                for compiling and linking with the VST2 SDK, which is available
+                from <ulink url="https://github.com/steinbergmedia/vst3sdk">https://github.com/steinbergmedia/vst3sdk</ulink>.
+                For more information, see <ulink
+                url="https://github.com/csound/csound/blob/develop/Opcodes/vst4cs/licensing_considerations_for_csoundvst_and_vst4cs.md">https://github.com/csound/csound/blob/develop/Opcodes/vst4cs/licensing_considerations_for_csoundvst_and_vst4cs.md</ulink>.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                UDP Server now accepts some new commands, which are prefixed by
+                an opcode. These include support for events (&amp;) and scores ($);
+                setting control channels (@ ); setting string channels (% );
+                getting control channel values via UDP (:@ ) and string channel
+                contents (:% ).
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Translations:
+          <itemizedlist>
+            <listitem>
+              <simpara>As ever the French translations are complete.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                The Italian translations of messages are greatly improved in
+                scope; about a half of error and warning messages are now done.
+              </simpara>
+            </listitem>
+             <listitem>
+              <simpara>
+                Some progress as been made in German translations.
+              </simpara>
+            </listitem>
+           </itemizedlist>
         </para>
       </listitem>
       <listitem>
@@ -225,6 +319,14 @@
             <listitem>
               <simpara>
                 CompileCsdText now always returns a value indicating success/failure.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Eight new asynchronous versions of API functions now available:
+                csoundCompileTreeAsync(), csoundCompileOrcAsync(), csoundReadScoreAsync(),
+                csoundInputMessageAsync(), csoundScoreEventAsync(), csoundScoreEventAbsoluteAsync(),
+                csoundTableCopyOutAsync(), and csoundTableCopyInAsync().
               </simpara>
             </listitem>
           </itemizedlist>
@@ -250,6 +352,17 @@
                     permission of Hermann Seib the original author of the VSTHost
                     code, to permit use with the separately downloaded VST2 SDK
                     from Steinberg.
+                  </simpara>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+            <listitem>
+              <simpara>GNU/Linux</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>
+                    GNU/Linux ALSA MIDI backend now ignores some spurious ENOENT
+                    error codes.
                   </simpara>
                 </listitem>
               </itemizedlist>
