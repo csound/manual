@@ -1,0 +1,171 @@
+
+<refentry id="squinewave">
+<indexterm id="IndexSquinewave"><primary>squinewave</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Dynamic Spectrum Oscillators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>squinewave</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>squinewave</refname>
+    <refpurpose>
+      A mostly bandlimited shape-shifting square-pulse-saw-sinewave oscillator with hardsync.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This oscillator generates a variable shape waveform that can morph freely between classical shapes sine, square, pulse and saw.
+The shape is controlled by two interacting values: clip (squareness) and "skew" (symmetry).
+All shapes use a minimum number of samples per transition (ie, the sharp end of a saw or a pulse uses minimum N samples), this makes output bandlimited.
+At higher frequency, the minimum sweep rate takes over, so over a certain pitch all shapes "degrade" to sinewave. The minimum sweep rate is i-time configurable.
+Hardsync (a very quick sweep to phase=0) is supported, and a sync signal is output once per cycle.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>aout [, asyncout] <command>squinewave</command> acps, aClip, aSkew [, asyncin] [, iMinSweep] [, iphase]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>iMinSweep</emphasis> (optional) -- Range 4 and up. Sample count of the shortest square/pulse edges.  Default: sr/3000 (mostly alias-free).
+    </para>
+    <para>
+      <emphasis>iphase</emphasis> (optional, default=-1) -- initial phase, range 0-2, proportional to the segments of the waveform (see notes). If negative value is given, skip setting phase
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>aout</emphasis> -- audio output, normalized +/-1
+    </para>
+    <para>
+      <emphasis>asyncout</emphasis> -- (optional) - Sync signal: 1 at endpoint of each cycle, else 0.
+    </para>
+    <para>
+      <emphasis>acps</emphasis> -- frequency. Range 0-anything; negative freq not implemented.
+    </para>
+    <para>
+      <emphasis>aClip</emphasis> -- "squareness" of waveform shape. Range 0-1. Clip 0 is sinewave (or saw), clip 1 is squarewave (or pulse).
+    </para>
+    <para>
+      <emphasis>aSkew</emphasis> -- symmetry of waveform shape. Range -1 to +1. Skew = 0 is symmetric like sine or square. Skew +1 or -1 is right/left-facing saw or pulse.
+    </para>
+    <para>
+      <emphasis>asyncin</emphasis> -- (optional, ignored if not a-rate) - when >= 1, waveform quickly sweeps to phase 0. Sweep length is 0 to about 1.5*iMinSweep samples depending on current phase.
+    </para>
+
+    <para>
+      The <emphasis>squinewave</emphasis> opcode is a variable shape oscillator with internally generated waveform.
+      The waveform has two parts:
+      <orderedlist>
+        <listitem><para>cosine sweep down, followed by flat part at -1</para></listitem>
+        <listitem><para>cosine sweep up, followed by flat part at +1</para></listitem>
+      </orderedlist>
+        At the end of (2), sync signal is output.
+
+      <para><literallayout>
+Clip (0-1) controls the proportion of flatness to sweep length in each segment.
+Skew (-1 to +1) controls the proportions of segments (1) and (2) in the waveform cycle. 
+If skew &lt; 0, part (1) is shorter, if skew &gt; 0, (1) is longer than (2)
+      </literallayout></para>
+
+Classic waveforms have simple values:
+      <itemizedlist>
+        <listitem><para>sine: clip=0, skew=0</para></listitem>
+        <listitem><para>saw(like): clip=0, skew=+1 or -1 (left- or right-facing)</para></listitem>
+        <listitem><para>square: clip=1, skew=0</para></listitem>
+        <listitem><para>pulse: clip=1, skew=+1 or -1</para></listitem>
+      </itemizedlist>
+      Fractional values generate intermediate waveforms.
+    </para>
+
+<para><emphasis>asyncin</emphasis>
+Hardsync input (asyncin &gt:= 1) makes the waveform quickly sweep to end by raising frequency to 2 * sr/iMinSweep. 
+Sync pulses are thus sharper than the pulse waveform.
+</para>
+
+<para><emphasis>iMinSweep</emphasis>
+The waveform is bandlimited by always using a minimum number of samples for cosine sweeps, even when clip/skew are at extreme values. This is controlled by <emphasis>iMinSweep</emphasis>.
+Since <emphasis>iMinSweep</emphasis> is counted in samples, the waveform output is dependent on samplerate, but the spectrum will be very similiar independent of sr.
+Default sr/3000 is fairly "soft", the actual values are 14 samples at 44.1K, 16 at 48K, 32 at 96K etc. <emphasis>iMinSweep</emphasis> is counted in integers, although not strictly necessary.
+</para>
+
+  <refsect1>
+    <title>Notes</title>
+    <para>
+    <emphasis>squinewave</emphasis> is based on cosine instead of sine to generate the waveform. (This simplifies the controlling logic.)
+The difference is that cosine cos(0) = 1, whereas sin(0) = 0.
+This means that hardsync occurs when waveform is at peak, just about to enter its down sweep. (Sinewave hardsync would occur at a zero-crossing)
+    </para>
+
+    <para>
+    <emphasis>Pitch stability</emphasis>
+Note that <emphasis>iMinSweep</emphasis> and shape limits the ability of squinewave to match frequency exactly.
+When skew or clip is active, and FM is applied, the <emphasis>squinewave</emphasis> waveform will be longer or shorter than the exact period.
+The differences even out however, so with symmetric FM, <emphasis>squinewave</emphasis> drifts back to match average frequency.
+Sinewave unshaped signal (clip=skew=0) matches poscil output to 7-8 significant digits (also under FM).
+    </para>
+
+
+    <para>
+    <emphasis>Initial phase</emphasis>
+Setting initial phase is useful if squinewave is used as a shaped LFO.
+Init phase is split into 4 segments with symbolic values range 0-2, so it will start at the expected place regardless of skew/clip values.
+0-1 represents the first part, 1-2 the second. Some interesting <emphasis>iphase</emphasis> segment values are:
+      <itemizedlist>
+        <listitem><para>0 - start of 1st sweep down.</para></listitem>
+        <listitem><para>0.5 - end of down sweep (start of "low" flat section),</para></listitem>
+        <listitem><para>1 - midpoint, end of 1st flat section, start 2nd, "up" sweep</para></listitem>
+        <listitem><para>1.5 - end of up sweep, (start of "high" flat section)</para></listitem>
+        <listitem><para>0.25 and 1.25 are 0-crossings at middle of down/up sweep sections.</para></listitem>
+        <listitem><para>0.75 and 1.75 are middle of low/high flat sections.</para></listitem>
+      </itemizedlist>
+
+If <emphasis>iphase</emphasis> &lt; 0 (skip) at first use, initial phase is set to 1.25, ie 0-crossing of the "up" sweep. This makes output look like a sinewave.
+    </para>
+
+    <para>
+    <emphasis>Tips</emphasis>
+If several units of <emphasis>squinewave</emphasis> are run in unison, it is recommend to use different <emphasis>iMinSweep</emphasis> values.
+The min sweep value creates "dips" or quieter areas in the overtone series.
+By using slightly different min sweep settings, spectrum is filled, rather than emphasizing the spectral profile.
+
+The length of hardsync sweeps allows chain syncing several <emphasis>squinewave</emphasis> units, creating staggered hardsync pulses.
+    </para>
+
+    <para>
+      Put inline program lines like this:
+      <programlisting>aout oscil 10000, 440, 1</programlisting>
+      And Csound output like this:
+      <literallayout>Output text</literallayout>
+    </para>
+
+  </refsect1>
+
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the <emphasis>squinewave</emphasis> opcode. It uses the file <ulink url="examples/squinewave.csd"><citetitle>squinewave.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the squinewave opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/squinewave.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+        <member>Author: &namerasmus;</member>
+        <member>November 2017</member>
+    <para>New in version 6.??</para>
+  </refsect1>
+
+</refentry>
