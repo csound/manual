@@ -56,7 +56,7 @@ endin
 <CsScore>
 
 
-; First part instr 1 hardsyncs instr 2 (p14)
+; First part instr 1 hardsyncs instr 2 (p12)
 
 ;          p4=fund   clip     skew 
 i1 0  1.  6.11 6.06  0   1    -1  +1
@@ -66,7 +66,7 @@ i1 +  2.  pp5  8.11  pp7  .2  pp9  1
 i1 +  .5  pp5  6.05  pp7  .5  pp9  -.6
 i1 +  2.5 pp5  6.05  pp7  1   pp9  1
 
-;          p4=fund   clip     skew      p10=FM    p14=sync
+;          p4=fund   clip     skew      p10=FM    p12=sync
 i2 0  .5  1.08 2.06  0   .3   -.5  +.5  0     0   1
 i2 +  .5  pp5  4.03  pp7 .5   pp9  -.6  pp11  .   .
 i2 +  .5  pp5  5.11  pp7 1    pp9   .5  pp11  .   .
@@ -74,7 +74,7 @@ i2 +  .5  pp5  6.01  pp7 .8   pp9  -.5  pp11  .   .
 i2 +  .5  pp5  2.11  pp7 .1   pp9   .3  pp11  .   .
 i2 +  .5  pp5  3.11  pp7 .8   pp9  -.8  pp11  .   .
 i2 +  2.  pp5  4.00  pp7  0   pp9   0   pp11  .   .
-i2 +  3.0001  pp5  3.00  pp7  .3  pp9   1   pp11  .   .
+i2 +  3.  pp5  3.00  pp7  .3  pp9   1   pp11  .   .
 
 
 s  ; End section, reset clock
@@ -90,7 +90,7 @@ i1 +  .5  pp5  6.05  pp7 .5   pp9 -.6
 i1 +  2.5 pp5  6.05  pp7 .4   pp9  .8
 
 
-;          p4=fund   clip     skew      p10=FM    p14=sync
+;          p4=fund   clip     skew      p10=FM    p12=sync
 i2 0  .5  8.08 6.06  0   .3   -.5  +.5  0     3   0
 i2 +  .5  pp5  6.03  pp7 .5   pp9  -.6  pp11  2   .
 i2 +  .5  pp5  5.11  pp7 1    pp9   .5  pp11  <   .
