@@ -34,7 +34,7 @@ Hardsync (a very quick sweep to phase=0) is supported, and a sync signal is outp
       <emphasis>iMinSweep</emphasis> (optional) -- Range 4 and up. Sample count of the shortest square/pulse edges.  Default: sr/3000 (mostly alias-free).
     </para>
     <para>
-      <emphasis>iphase</emphasis> (optional, default=-1) - initial phase, range 0-2, proportional to the segments of the waveform (see notes). If negative value is given, skip setting phase
+      <emphasis>iphase</emphasis> (optional, default=-1) -- initial phase, range 0-2, proportional to the segments of the waveform (see notes). If negative value is given, skip setting phase
     </para>
   </refsect1>
  
@@ -56,10 +56,15 @@ Hardsync (a very quick sweep to phase=0) is supported, and a sync signal is outp
       <emphasis>aSkew</emphasis> -- symmetry of waveform shape. Range -1 to +1. Skew = 0 is symmetric like sine or square. Skew +1 or -1 is right/left-facing saw or pulse.
     </para>
     <para>
-      <emphasis>asyncin</emphasis> -- (optional, ignored if not a-rate) - when >= 1, waveform quickly sweeps to phase 0. Sweep length is 0 to about 1.5*iMinSweep samples depending on current phase.
+      <emphasis>asyncin</emphasis> -- (optional, ignored if not a-rate) - when &gt;= 1, waveform quickly sweeps to phase 0. Sweep length is 0 to about 1.5*iMinSweep samples depending on current phase.
     </para>
 
     <para>
+    <emphasis>Tip</emphasis>
+    <para>
+The length of hardsync sweeps allows chain syncing several <emphasis>squinewave</emphasis> units, creating staggered hardsync pulses.
+    </para>
+
       The <emphasis>squinewave</emphasis> opcode is a variable shape oscillator with internally generated waveform.
       The waveform has two parts:
       <orderedlist>
@@ -67,14 +72,25 @@ Hardsync (a very quick sweep to phase=0) is supported, and a sync signal is outp
         <listitem><para>cosine sweep up, followed by flat part at +1</para></listitem>
       </orderedlist>
         At the end of (2), sync signal is output.
+      <informaltable frame="none" colsep="0">
+        <tgroup cols="2">
+          <tbody>
+            <row>
+              <entry>Clip (0-1)</entry>
+              <entry>controls the proportion of flatness to sweep length in each segment.</entry>
+            </row>
+            <row>
+              <entry>Skew (-1 to +1)</entry>
+              <entry>controls the proportions of segments (1) and (2) in the waveform cycle.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+      If skew &lt; 0, part (1) is shorter, if skew &gt; 0, (1) is longer than (2)
+    </para>
 
-      <para><literallayout>
-Clip (0-1) controls the proportion of flatness to sweep length in each segment.
-Skew (-1 to +1) controls the proportions of segments (1) and (2) in the waveform cycle. 
-If skew &lt; 0, part (1) is shorter, if skew &gt; 0, (1) is longer than (2)
-      </literallayout></para>
-
-Classic waveforms have simple values:
+    <para>
+      Classic waveforms have simple values:
       <itemizedlist>
         <listitem><para>sine: clip=0, skew=0</para></listitem>
         <listitem><para>saw(like): clip=0, skew=+1 or -1 (left- or right-facing)</para></listitem>
@@ -84,12 +100,14 @@ Classic waveforms have simple values:
       Fractional values generate intermediate waveforms.
     </para>
 
-<para><emphasis>asyncin</emphasis>
+    <emphasis>asyncin</emphasis>
+    <para>
 Hardsync input (asyncin &gt;= 1) makes the waveform quickly sweep to end by raising frequency to 2 * sr/iMinSweep. 
 Sync pulses are thus sharper than the pulse waveform.
 </para>
 
-<para><emphasis>iMinSweep</emphasis>
+<emphasis>iMinSweep</emphasis>
+<para>
 The waveform is bandlimited by always using a minimum number of samples for cosine sweeps, even when clip/skew are at extreme values. This is controlled by <emphasis>iMinSweep</emphasis>.
 Since <emphasis>iMinSweep</emphasis> is counted in samples, the waveform output is dependent on samplerate, but the spectrum will be very similiar independent of sr.
 Default sr/3000 is fairly "soft", the actual values are 14 samples at 44.1K, 16 at 48K, 32 at 96K etc. <emphasis>iMinSweep</emphasis> is counted in integers, although not strictly necessary.
@@ -98,6 +116,11 @@ If several units of <emphasis>squinewave</emphasis> are run in unison, it is rec
 The min sweep value creates "dips" or quieter areas in the overtone series.
 By using slightly different min sweep settings, spectrum is filled, rather than emphasizing the spectral profile.
     </para>
+</para>
+    <para>
+If several units of <emphasis>squinewave</emphasis> are run in unison, it is recommend to use different <emphasis>iMinSweep</emphasis> values.
+The min sweep value creates "dips" or quieter areas in the overtone series.
+By using slightly different min sweep settings, spectrum is filled, rather than emphasizing the spectral profile.
 </para>
   </refsect1>
 
@@ -112,8 +135,13 @@ The length of hardsync sweeps allows chain syncing several <emphasis>squinewave<
 </para>
     </para>
 
+    <emphasis>Tip</emphasis>
     <para>
+The length of hardsync sweeps allows chain syncing several <emphasis>squinewave</emphasis> units, creating staggered hardsync pulses.
+    </para>
+
     <emphasis>Pitch stability</emphasis>
+    <para>
 Note that <emphasis>iMinSweep</emphasis> and shape limits the ability of squinewave to match frequency exactly.
 When skew or clip is active, and FM is applied, the <emphasis>squinewave</emphasis> waveform will be longer or shorter than the exact period.
 The differences even out however, so with symmetric FM, <emphasis>squinewave</emphasis> drifts back to match average frequency.
@@ -121,14 +149,14 @@ Sinewave unshaped signal (clip=skew=0) matches poscil output to 7-8 significant 
     </para>
 
 
-    <para>
     <emphasis>Initial phase</emphasis>
+    <para>
 Setting initial phase is useful if squinewave is used as a shaped LFO.
 Init phase is split into 4 segments with symbolic values range 0-2, so it will start at the expected place regardless of skew/clip values.
 0-1 represents the first part, 1-2 the second. Some interesting <emphasis>iphase</emphasis> segment values are:
       <itemizedlist>
         <listitem><para>0 - start of 1st sweep down.</para></listitem>
-        <listitem><para>0.5 - end of down sweep (start of "low" flat section),</para></listitem>
+        <listitem><para>0.5 - end of down sweep (start of "low" flat section).</para></listitem>
         <listitem><para>1 - midpoint, end of 1st flat section, start 2nd, "up" sweep</para></listitem>
         <listitem><para>1.5 - end of up sweep, (start of "high" flat section)</para></listitem>
         <listitem><para>0.25 and 1.25 are 0-crossings at middle of down/up sweep sections.</para></listitem>
@@ -155,9 +183,13 @@ If <emphasis>iphase</emphasis> &lt; 0 (skip) at first use, initial phase is set 
 
   <refsect1>
     <title>Credits</title>
+    <para>
+      <simplelist>
         <member>Author: &namerasmus;</member>
         <member>November 2017</member>
-    <para>New in version 6.??</para>
+      </simplelist>
+    </para>
+    <para>New in version 6.10</para>
   </refsect1>
 
 </refentry>
