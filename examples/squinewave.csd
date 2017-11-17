@@ -42,7 +42,7 @@ instr 2
 ;  ar  squinewave   aFreq, aclip, askew [, asyncin, iMinSweep, iphase]
     aout2  squinewave   afreq , aclip, askew, asyncin
 
-	outs a(0), aout2
+	outs2 aout2
 endin
 
 
