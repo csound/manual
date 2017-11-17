@@ -14,8 +14,8 @@ nchnls = 2
 ksmps = 100
 
 ; aSyncin, FMod for instr 2
-gafmod = 0
-gasync = 0
+gafmod init 0
+gasync init 0
 
 ; Modulator squinewave
 instr 1
