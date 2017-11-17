@@ -93,6 +93,11 @@ Sync pulses are thus sharper than the pulse waveform.
 The waveform is bandlimited by always using a minimum number of samples for cosine sweeps, even when clip/skew are at extreme values. This is controlled by <emphasis>iMinSweep</emphasis>.
 Since <emphasis>iMinSweep</emphasis> is counted in samples, the waveform output is dependent on samplerate, but the spectrum will be very similiar independent of sr.
 Default sr/3000 is fairly "soft", the actual values are 14 samples at 44.1K, 16 at 48K, 32 at 96K etc. <emphasis>iMinSweep</emphasis> is counted in integers, although not strictly necessary.
+    <para>
+If several units of <emphasis>squinewave</emphasis> are run in unison, it is recommend to use different <emphasis>iMinSweep</emphasis> values.
+The min sweep value creates "dips" or quieter areas in the overtone series.
+By using slightly different min sweep settings, spectrum is filled, rather than emphasizing the spectral profile.
+    </para>
 </para>
   </refsect1>
 
@@ -102,6 +107,9 @@ Default sr/3000 is fairly "soft", the actual values are 14 samples at 44.1K, 16 
     <emphasis>squinewave</emphasis> is based on cosine instead of sine to generate the waveform. (This simplifies the controlling logic.)
 The difference is that cosine cos(0) = 1, whereas sin(0) = 0.
 This means that hardsync occurs when waveform is at peak, just about to enter its down sweep. (Sinewave hardsync would occur at a zero-crossing)
+<para><emphasis>Tip:</emphasis>
+The length of hardsync sweeps allows chain syncing several <emphasis>squinewave</emphasis> units, creating staggered hardsync pulses.
+</para>
     </para>
 
     <para>
@@ -128,22 +136,6 @@ Init phase is split into 4 segments with symbolic values range 0-2, so it will s
       </itemizedlist>
 
 If <emphasis>iphase</emphasis> &lt; 0 (skip) at first use, initial phase is set to 1.25, ie 0-crossing of the "up" sweep. This makes output look like a sinewave.
-    </para>
-
-    <para>
-    <emphasis>Tips</emphasis>
-If several units of <emphasis>squinewave</emphasis> are run in unison, it is recommend to use different <emphasis>iMinSweep</emphasis> values.
-The min sweep value creates "dips" or quieter areas in the overtone series.
-By using slightly different min sweep settings, spectrum is filled, rather than emphasizing the spectral profile.
-
-The length of hardsync sweeps allows chain syncing several <emphasis>squinewave</emphasis> units, creating staggered hardsync pulses.
-    </para>
-
-    <para>
-      Put inline program lines like this:
-      <programlisting>aout oscil 10000, 440, 1</programlisting>
-      And Csound output like this:
-      <literallayout>Output text</literallayout>
     </para>
 
   </refsect1>
