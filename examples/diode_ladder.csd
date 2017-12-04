@@ -26,7 +26,7 @@ instr bass
   asig = vco2(0.5, ipch, 0)
 
   acut = expon:a(i(gkcut), p3, 200) 
-  aout = diode_ladder(asig, acut, 17, 1, 4)
+  aout = diode_ladder(asig, acut, 8, 1, 4)
 
   aout *= expseg:a(1.0, p3 - 0.05, 1.0, 0.05, 0.001) 
 
