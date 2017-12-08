@@ -66,11 +66,12 @@
     </itemizedlist>
   </para>-->
 
-  <bridgehead>Release Notes for Csound 6.10 (2017 September)</bridgehead>
+  <bridgehead>Release Notes for Csound 6.10 (2017 December)</bridgehead>
   <para>
     This is mostly a bugfix release, including a major bug introduced in loscil
     recently. New and improved opcodes and a long orphaned GEN (53) are here, as
-    well as many small internal improvements.
+    well as many small internal improvements. Internal changes have removed a
+    number of memory leaks.
   </para>
   <para>
     <itemizedlist>
@@ -150,6 +151,22 @@
                 use it.
               </simpara>
             </listitem>
+            <listitem>
+              <simpara>
+                Constant folding now implemented on a wide range of arithmetic.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Attempts to use an undefined macro produce a syntax error now.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Missing " (or other terminator) in #include is noticed and
+                the #include is ignored.
+              </simpara>
+            </listitem>
           </itemizedlist>
         </para>
       </listitem>
@@ -176,6 +193,22 @@
                 which are now suppressed.
               </simpara>
             </listitem>
+            <listitem>
+              <simpara>
+                After calling a undefined macro the rest of the line is ignored.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                A couple of bugs in repeated sections (r opcode) have been removed.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Missing " (or other terminator) in #include is noticed and the
+                #include is ignored.
+              </simpara>
+            </listitem>
           </itemizedlist>
         </para>
       </listitem>
@@ -186,6 +219,23 @@
               <simpara>
                 The --tempo (and -t) option now can be fractional; was
                 previously limited to an integer.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                new option: --udp-console=address:port redirects console to a
+                remote address:port.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                new option: --udp-mirror-console=address:port mirrors the
+                console to a remote address:port.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                new option: --udp-echo echoes messages sent to the UDP server.
               </simpara>
             </listitem>
           </itemizedlist>
@@ -214,7 +264,7 @@
             </listitem>
             <listitem>
               <simpara>
-                slicearray as an optional additional argument to give a stride
+                slicearray has an optional additional argument to give a stride
                 to the slice.
               </simpara>
             </listitem>
@@ -226,6 +276,15 @@
                 a-rate arrays may be added, subtracted, multiplied and scaled.
                 This is a start on a-rate array arithmetic.
               </simpara>
+            </listitem>
+            <listitem>
+              <simpara>dssiinit improved removing some crashes.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>partials improved to remove a fencepost issue.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>vco2ift fixed when an existing table is used.</simpara>
             </listitem>
           </itemizedlist>
         </para>
@@ -240,7 +299,9 @@
               </simpara>
             </listitem>
             <listitem>
-              <simpara>CsoundQT: Now built with HTML5 support.</simpara>
+              <simpara>
+                CsoundQT: Now built from master branch for improved stability.
+              </simpara>
             </listitem>
           </itemizedlist>
         </para>
@@ -270,6 +331,29 @@
             <listitem>
               <simpara>
                 problem with CLI frontend interrupt handler fixed.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                outs2 was broken (always wrote to channel 1 like outs1).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Various errors in the DSSI/ladspa system fixed.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                vbap was broken in all cases except 4-speakers, now corrected.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Live evalution of Csound Orchestra code code could result in
+                hard to diagnose, odd errors (e.g., crashes, division by zeros,
+                NaNs). This was due to a bug in merging of newly found constants
+                into the global constant pool.
               </simpara>
             </listitem>
           </itemizedlist>
@@ -336,6 +420,12 @@
                 csoundTableCopyOutAsync(), and csoundTableCopyInAsync().
               </simpara>
             </listitem>
+            <listitem>
+              <simpara>
+                For server use, three new API functions: csoundUDPServerStart,
+                csoundUDPServerStatus and csoundUDPServerClose.
+              </simpara>
+            </listitem>
           </itemizedlist>
         </para>
       </listitem>
@@ -346,7 +436,7 @@
               <simpara>Windows</simpara>
               <itemizedlist>
                 <listitem>
-                  <simpara>Now compiled with MSVC.</simpara>
+                  <simpara>Now compiled with Microsoft Visual Studio 2017 or later.</simpara>
                 </listitem>
                 <listitem>
                   <simpara>Continuous integration for Windows with AppVeyor.</simpara>
