@@ -45,7 +45,7 @@ sudo easy_install 'pygments>=2.1'
 
 The easiest way to install DocBook is probably through
 [Homebrew](https://brew.sh). To install Homebrew, follow the instructions at
-https://brew.sh. Then, enter `brew install docbook` in a Terminal.
+https://brew.sh. Then, enter `brew install docbook` in a Terminal, followed by `brew install dockbook-xsl`, to install the DocBook XSL stylesheets. 
 
 To install Pygments v2.1 or later, enter in Terminal
 
@@ -74,9 +74,9 @@ Visit http://pygments.org/download/ to learn how to install Pygments.
 Run `make ⟨target⟩` to build a `⟨target⟩`. For example, to build a collection of
 HTML webpages, run `make html`.
 
-If DocBook is installed in a nonstandard way, you may see this error: “The
+You may see this error: “The
 XSL_BASE_PATH variable must be set to the XSL stylesheets installation
-directory.” To tell `make` where to find DocBook, run
+directory.” To tell `make` where to find DocBook XSL stylesheets, run
 
 ```sh
 make XSL_BASE_PATH=path/to/docbook/stylesheets ⟨target⟩
