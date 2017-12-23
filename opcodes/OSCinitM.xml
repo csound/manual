@@ -1,0 +1,105 @@
+
+<refentry id="OSCinitM">
+<indexterm id="IndexOSCinitM"><primary>OSCinitM</primary></indexterm>
+  <refentryinfo><title>OSC</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>OSCinitM</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>OSCinitM</refname>
+    <refpurpose>
+      Start a listening process for multicast OSC messages to a particular port.
+          </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Starts a multicast listening process, which can be used by OSClisten.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ihandle <command>OSCinitM</command> Sgroup, iport</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>Sgroup</emphasis> -- strig giving the IP address of te
+      multicast group.
+    </para>
+    <para>
+      <emphasis>ihandle</emphasis>
+      -- handle returned that can be passed to any number of OSClisten
+      opcodes to receive messages on this port.
+    </para>
+    <para>
+      <emphasis>iport</emphasis>
+      -- the port on which to listen.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+
+    <para>
+    The listener runs in the background.  See OSClisten for details.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Example</title>
+    <para>
+      The example shows a pair of floating point numbers being received
+      on port 7770.
+    </para>
+
+      <informalexample>
+        <programlisting>
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 100
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+
+gihandle <emphasis role="opc">OSCinitM</emphasis> "225.0.0.1", 7770
+
+  <emphasis role="oblock">instr</emphasis>   1
+    kf1 <emphasis role="opc">init</emphasis> 0
+    kf2 <emphasis role="opc">init</emphasis> 0
+<emphasis role="olabel">nxtmsg</emphasis>:
+    kk  <emphasis role="opc">OSClisten</emphasis> gihandle, &quot;/foo/bar&quot;, &quot;ff&quot;, kf1, kf2
+<emphasis role="octrl">if</emphasis> (kk <emphasis role="op">==</emphasis> 0) <emphasis role="octrl">goto</emphasis> <emphasis role="olabel">ex</emphasis>
+    <emphasis role="opc">printk</emphasis> 0,kf1
+    <emphasis role="opc">printk</emphasis> 0,kf2
+    <emphasis role="opc">kgoto</emphasis> <emphasis role="olabel">nxtmsg</emphasis>
+<emphasis role="olabel">ex</emphasis>:
+  <emphasis role="oblock">endin</emphasis>
+        </programlisting>
+      </informalexample>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+      <para>
+        <link linkend="OSClisten"><citetitle>OSClisten</citetitle></link>,
+        <link linkend="OSCsend"><citetitle>OSCsend</citetitle></link>
+        <link linkend="OSCinit"><citetitle>OSCinit</citetitle></link>
+      </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>2016</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>
