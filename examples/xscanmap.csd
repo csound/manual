@@ -11,6 +11,7 @@
 sr = 44100
 ksmps = 32
 nchnls = 2
+nchnls_i = 1
 0dbfs  = 1
 ;the matrices can be found in /manual/examples
 
