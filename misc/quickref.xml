@@ -266,6 +266,7 @@
 <title>Signal Generators:Phasors</title>
 <para>
 <para/>
+<synopsis>aexp,aph <link linkend="ephasor">ephasor</link> kfreq, kR</synopsis><para/>
 <synopsis>ares <link linkend="phasor">phasor</link> xcps [, iphs]</synopsis><synopsis>kres <link linkend="phasor">phasor</link> kcps [, iphs]</synopsis><para/>
 <synopsis>ares <link linkend="phasorbnk">phasorbnk</link> xcps, kndx, icnt [, iphs]</synopsis><synopsis>kres <link linkend="phasorbnk">phasorbnk</link> kcps, kndx, icnt [, iphs]</synopsis><para/>
 <synopsis>aindex <link linkend="sc_phasor">sc_phasor</link> xtrig, xrate, kstart, kend [, kresetPos] </synopsis><synopsis>kindex <link linkend="sc_phasor">sc_phasor</link> xtrig, xrate, kstart, kend [, kresetPos] </synopsis><para/>
@@ -489,6 +490,7 @@
 <synopsis>kr1, kr2 <link linkend="readk2">readk2</link> ifilname, iformat, iprd</synopsis><para/>
 <synopsis>kr1, kr2, kr3 <link linkend="readk3">readk3</link> ifilname, iformat, iprd</synopsis><para/>
 <synopsis>kr1, kr2, kr3, kr4 <link linkend="readk4">readk4</link> ifilname, iformat, iprd</synopsis><para/>
+<synopsis>xout1[, xout2, xout3, ..., xoutN] <link linkend="websocket">websocket</link> iport, xin</synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
 <title>Signal I/O:Signal Input</title>
@@ -861,6 +863,7 @@
 <synopsis>ares <link linkend="dcblock">dcblock</link> ain [, igain]</synopsis><para/>
 <synopsis>ares <link linkend="dcblock2">dcblock2</link> ain [, iorder] [, iskip]</synopsis><para/>
 <synopsis>asig <link linkend="eqfil">eqfil</link> ain, kcf, kbw, kgain[, istor]</synopsis><para/>
+<synopsis>ares <link linkend="exciter">exciter</link> asig, kfreq, kceil, kharmonics, kblend</synopsis><para/>
 <synopsis>ares <link linkend="filter2">filter2</link> asig, iM, iN, ib0, ib1, ..., ibM, ia1, ia2, ..., iaN</synopsis><synopsis>kres <link linkend="filter2">filter2</link> ksig, iM, iN, ib0, ib1, ..., ibM, ia1, ia2, ..., iaN</synopsis><para/>
 <synopsis>am, af <link linkend="fmanal">fmanal</link> are, aim</synopsis><para/>
 <synopsis>asig <link linkend="fofilter">fofilter</link> ain, xcf, xris, xdec[, istor]</synopsis><para/>
@@ -1337,6 +1340,16 @@
 <para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
+<title>Mathematical Operations:Arrays</title>
+<para>
+<para/>
+<synopsis>ires[] <link linkend="cbrt">cbrt</link> iarg</synopsis><synopsis>kres[] <link linkend="cbrt">cbrt</link> karg</synopsis><para/>
+<synopsis>ires[] <link linkend="fmin">fmin</link> iarg1[], iarg2[] </synopsis><synopsis>kres[] <link linkend="fmin">fmin</link> karg1[], karg2[]</synopsis><synopsis>ires[] <link linkend="fmin">fmin</link> iarg1[], iarg2 </synopsis><synopsis>kres[] <link linkend="fmin">fmin</link> karg[], karg2 </synopsis><para/>
+<synopsis>ires[] <link linkend="fmod">fmod</link> iarg1[], iarg2[] </synopsis><synopsis>kres[] <link linkend="fmod">fmod</link> karg1[], karg2[]</synopsis><synopsis>ires[] <link linkend="fmod">fmod</link> iarg1[], iarg2 </synopsis><synopsis>kres[] <link linkend="fmod">fmod</link> karg[], karg2 </synopsis><para/>
+<synopsis>ires[] <link linkend="hypot">hypot</link> iarg1[], iarg2[] </synopsis><synopsis>kres[] <link linkend="hypot">hypot</link> karg1[], karg2[]</synopsis><para/>
+<synopsis>ires[] <link linkend="limit1">limit1</link> iarg</synopsis><synopsis>kres[] <link linkend="limit1">limit1</link> karg</synopsis><para/>
+</para></formalpara>
+<para></para><para></para><formalpara>
 <title>Mathematical Operations:Comparators and Accumulators</title>
 <para>
 <para/>
@@ -1355,6 +1368,8 @@
 <synopsis><link linkend="floor">floor</link>(x) (init-, control-, or audio-rate arg allowed)</synopsis><synopsis><link linkend="floor">floor</link>(k/i[]) (k- or i-arrays )</synopsis><para/>
 <synopsis><link linkend="frac">frac</link>(x) (init-rate or control-rate args; also works at audio rate in Csound5)</synopsis><synopsis><link linkend="frac">frac</link>(k/i[]) (k- or i-arrays )</synopsis><para/>
 <synopsis><link linkend="int">int</link>(x)  (init-rate or control-rate; also works at audio rate in Csound5)</synopsis><para/>
+<synopsis><link linkend="log">log</link>(x) (no rate
+    restriction)</synopsis><synopsis><link linkend="log">log</link>(k/i[]) (k- or i-arrays )</synopsis><synopsis>kout[]<link linkend="log">log</link> kin[],ibas</synopsis><para/>
 <synopsis><link linkend="log10">log10</link>(x) (no rate restriction)</synopsis><synopsis><link linkend="log10">log10</link>(k/i[]) (k- or i-arrays )</synopsis><para/>
 <synopsis><link linkend="log2">log2</link>(x) (no rate
     restriction)</synopsis><synopsis><link linkend="log2">log2</link>(k/i[]) (k- or i-arrays )</synopsis><para/>
@@ -1413,8 +1428,7 @@
 <synopsis>ares <link linkend="mac">mac</link> ksig1, asig1 [, ksig2] [, asig2] [, ksig3] [, asig3] [...]</synopsis><para/>
 <synopsis>ares <link linkend="maca">maca</link> asig1 , asig2 [, asig3] [, asig4] [, asig5] [...]</synopsis><para/>
 <synopsis>aout <link linkend="polynomial">polynomial</link> ain, k0 [, k1 [, k2 [...]]]</synopsis><para/>
-<synopsis>ares <link linkend="pow">pow</link> aarg, kpow [, inorm]</synopsis><synopsis>ires <link linkend="pow">pow</link> iarg, ipow [, inorm]</synopsis><synopsis>kres <link linkend="pow">pow</link> karg, kpow [,
-    inorm]</synopsis><synopsis>ires[] <link linkend="pow">pow</link> iarg[], ipow[] </synopsis><synopsis>kres[] <link linkend="pow">pow</link> karg[], kpow[]</synopsis><synopsis>ires[] <link linkend="pow">pow</link> iarg[], ipow </synopsis><synopsis>kres[] <link linkend="pow">pow</link> karg[], kpow </synopsis><para/>
+<synopsis>ares <link linkend="pow">pow</link> aarg, kpow [, inorm]</synopsis><synopsis>ires <link linkend="pow">pow</link> iarg, ipow [, inorm]</synopsis><synopsis>kres <link linkend="pow">pow</link> karg, kpow [, inorm]</synopsis><synopsis>ires[] <link linkend="pow">pow</link> iarg[], ipow[] </synopsis><synopsis>kres[] <link linkend="pow">pow</link> karg[], kpow[]</synopsis><synopsis>ires[] <link linkend="pow">pow</link> iarg[], ipow </synopsis><synopsis>kres[] <link linkend="pow">pow</link> karg[], kpow </synopsis><para/>
 <synopsis>ares <link linkend="product">product</link> asig1, asig2 [, asig3] [...]</synopsis><para/>
 <synopsis>ares <link linkend="sum">sum</link> asig1 [, asig2] [, asig3] [...]</synopsis><synopsis>kres <link linkend="sum">sum</link> karr</synopsis><synopsis>ires <link linkend="sum">sum</link> iarr</synopsis><para/>
 <synopsis>ares <link linkend="taninv2">taninv2</link> ay, ax</synopsis><synopsis>ires <link linkend="taninv2">taninv2</link> iy, ix</synopsis><synopsis>kres <link linkend="taninv2">taninv2</link> ky, kx</synopsis><synopsis>...<link linkend="taninv2">taninv2</link>(ky, kx)... (no rate restriction)</synopsis><para/>
@@ -1525,6 +1539,7 @@
 <title>Real-time MIDI:Note Output</title>
 <para>
 <para/>
+<synopsis>kMidiNoteNum, kCounter<link linkend="midiarp">midiarp</link> kRate[, kMode]</synopsis><para/>
 <synopsis><link linkend="midion">midion</link> kchn, knum, kvel</synopsis><para/>
 <synopsis><link linkend="midion2">midion2</link> kchn, knum, kvel, ktrig</synopsis><para/>
 <synopsis><link linkend="moscil">moscil</link> kchn, knum, kvel, kdur, kpause</synopsis><para/>
@@ -2050,15 +2065,75 @@
 <synopsis>iwidth, iheight <link linkend="imagesize">imagesize</link> iimagenum</synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
+<title>Arrays: Cepstrum</title>
+<para>
+<para/>
+<synopsis>keps[] <link linkend="ceps">ceps</link> kmags[][, icoefs]</synopsis><para/>
+<synopsis>kenv <link linkend="cepsinv">cepsinv</link> keps[]</synopsis><para/>
+</para></formalpara>
+<para></para><para></para><formalpara>
 <title>Array Opcodes</title>
 <para>
 <para/>
 <synopsis><link linkend="copya2ftab">copya2ftab</link> kftbl, tab</synopsis><para/>
 <synopsis><link linkend="copyf2array">copyf2array</link> tab, kftbl</synopsis><para/>
+<synopsis>kout[] <link linkend="getcol">getcol</link>kin[],kcol</synopsis><para/>
+<synopsis>kout[] <link linkend="getrow">getrow</link>kin[],krow</synopsis><para/>
 <synopsis>kmax [,kindx] <link linkend="maxarray">maxarray</link> karray</synopsis><para/>
 <synopsis>kmin [,kindx] <link linkend="minarray">minarray</link> karray</synopsis><para/>
+<synopsis>kres/ires<link linkend="productarray">product</link> karr[]/iarr[]  (k- or i-arrays )</synopsis><para/>
 <synopsis><link linkend="scalearray">scalearray</link> tarray, kmin, kmax[, kleft, kright]</synopsis><para/>
+<synopsis>kout[] <link linkend="setcol">setcol</link>kin[],kcol</synopsis><para/>
+<synopsis>kout[] <link linkend="setrow">setrow</link>kin[],krow</synopsis><para/>
+<synopsis>kout[] <link linkend="shiftin">shiftin</link> asig</synopsis><para/>
+<synopsis>asig <link linkend="shiftout">shiftout</link> kIn[][, ioff]</synopsis><para/>
 <synopsis>ksum <link linkend="sumarray">sumarray</link> karray</synopsis><para/>
+</para></formalpara>
+<para></para><para></para><formalpara>
+<title>Array Operations: Fast Fourier Transform</title>
+<para>
+<para/>
+<synopsis>kout[] <link linkend="fft">fft</link> kin[]</synopsis><para/>
+<synopsis>kout[] <link linkend="fftinv">fftinv</link> kin[]</synopsis><para/>
+<synopsis>kout[] <link linkend="unwrap">unwrap</link> kin[] </synopsis><para/>
+</para></formalpara>
+<para></para><para></para><formalpara>
+<title>Array Operations: complex numbers</title>
+<para>
+<para/>
+<synopsis>kout[] <link linkend="c2r">c2r</link> kin[]</synopsis><para/>
+<synopsis>kout[] <link linkend="cmplxprod">cmplxprod</link> kin1[], kin2[]</synopsis><para/>
+<synopsis>kout[] <link linkend="mags">mags</link> kin[]</synopsis><para/>
+<synopsis>kout[] <link linkend="phs">phs</link> kin[]</synopsis><para/>
+<synopsis>kout[] <link linkend="pol2rect">pol2rect</link> kin[]</synopsis><synopsis>kout[] <link linkend="pol2rect">pol2rect</link> kmags[], kphs[]</synopsis><para/>
+<synopsis>kout[] <link linkend="r2c">r2c</link> kin[]</synopsis><para/>
+<synopsis>kout[] <link linkend="rect2pol">rect2pol</link> kin[]</synopsis><para/>
+</para></formalpara>
+<para></para><para></para><formalpara>
+<title>Array Operations: Discrete Cosine Transform</title>
+<para>
+<para/>
+<synopsis>kout[] <link linkend="dct">dct</link> kin[]</synopsis><synopsis>iout[] <link linkend="dct">dct</link> iin[]</synopsis><para/>
+<synopsis>kout[] <link linkend="dctinv">dctinv</link> kin[]</synopsis><synopsis>iout[] <link linkend="dctinv">dctinv</link> iin[]</synopsis><para/>
+</para></formalpara>
+<para></para><para></para><formalpara>
+<title>Array Operations: dot product</title>
+<para>
+<para/>
+<synopsis>kres/ires<link linkend="dot">dot</link> karr1[]/iarr1[], karr2[]/iarr2[]   (k- or i-arrays )</synopsis><para/>
+</para></formalpara>
+<para></para><para></para><formalpara>
+<title>Array Operations: Mel scale filterbank</title>
+<para>
+<para/>
+<synopsis>kout[] <link linkend="mfb">mfb</link> kin[],klow,khigh,ibands</synopsis><para/>
+</para></formalpara>
+<para></para><para></para><formalpara>
+<title>Array Operations: sorting</title>
+<para>
+<para/>
+<synopsis>k/i[]<link linkend="sorta">sorta</link> k/i[]  (k- or i-arrays )</synopsis><para/>
+<synopsis>k/i[]<link linkend="sortd">sortd</link> k/i[]  (k- or i-arrays )</synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
 <title>Miscellaneous</title>
@@ -2087,6 +2162,7 @@
 
 
 
+<synopsis>kout[] <link linkend="framebuffer">framebuffer</link> ain, isize</synopsis><synopsis>aout <link linkend="framebuffer">framebuffer</link> kin, isize</synopsis><para/>
 
 
 
@@ -2157,6 +2233,8 @@
 
 <synopsis><link linkend="modmatrix">modmatrix</link> iresfn, isrcmodfn, isrcparmfn, imodscale, inum_mod, \\
 inum_parm, kupdate</synopsis><para/>
+<synopsis>idacc,iadcc <link linkend="nchnls_hw">nchnls_hw</link>&#160;</synopsis><para/>
+<synopsis>aout <link linkend="olabuffer">olabuffer</link> kin, ioverlap</synopsis><para/>
 
 
 <synopsis>Sres <link linkend="pwd">pwd</link>&#160;</synopsis><para/>
