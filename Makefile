@@ -64,7 +64,7 @@ MIDI = midi/convert.xml midi/extender.xml \
 
 MISC = 	misc/amp.xml misc/csound64.xml misc/formants.xml misc/glossary.xml \
 	misc/pitch.xml misc/quickref.xml misc/sf2.xml misc/top.xml \
-	misc/windows.xml misc/modalfreq.xml misc/examples.xml misc/quickref.xml \
+	misc/windows.xml misc/modalfreq.xml misc/examples.xml \
 	csbeats/example.xml csbeats/syntax.xml csbeats/top.xml deprecated/top.xml \
 	experimental/top.xml imageopcodes/top.xml
 
