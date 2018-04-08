@@ -16,7 +16,7 @@
   <refsect1>
     <title>Description</title>
     <para>
-      On each k-cycle looks to see if an OSC message has been send to
+      On each k-cycle looks to see if an OSC message has been sent to
       a given path of a given type.
     </para>
   </refsect1>
@@ -35,24 +35,25 @@
     </para>
     <para>
       <emphasis>idest</emphasis>
-      -- a string that is the destination address.  This takes the
-      form of a file name with directories.  Csound uses this address
-      to decide if messages are meant for csound.
+      -- a string that is the destination address. This takes the
+      form of a path prefixed with a forward slash, with optional subdirectories
+      separated by forward slashes. Csound processes incoming messages that
+      match this address.
     </para>
 
     <para>
       <emphasis>itype</emphasis>
       -- a string that indicates the types of the optional arguments
-      that are to be read.  The string can contain the characters
+      that are to be read. The string can contain the characters
       "acdfhisAG" which stand for audio, character, double, float, 64-bit integer,
       32-bit integer, string, scalar array and f-table. All types other than 'asA' require a
       k-rate variable; 's' requires a string variable, 'a' an audio
-      variable and 'A' an i- or k- rate array.  Fot type 'G' a variable
+      variable and 'A' an i- or k- rate array. For type 'G', a variable
       or constant can be used.
     </para>
 
     <para> A handler is inserted into the listener (see OSCinit) to
-      intercept messages of this pattern.
+      intercept messages that match this pattern.
     </para>
 
   </refsect1>
@@ -61,7 +62,7 @@
     <title>Performance</title>
     <para>
       <emphasis>kans</emphasis> -- set to 1 if a new message was
-      received, or zero if not. If multiple messages are received in
+      received, or 0 if not. If multiple messages are received in
       a single control period, the messages are buffered, and OSClisten
       can be called again until zero is returned.
     </para>
@@ -71,7 +72,7 @@
       are set to the incoming values, as interpretted by the
       <emphasis>itype</emphasis> parameter.
       Note that although the <emphasis>xdata</emphasis> variables are on
-      the right of an operation they are actually outputs, and so must be
+      the right of an operation, they are actually outputs, and so must be
       variables of type a, ga, k, gk, S, gS, k[] and gk[] and may need to be declared with
       init, or = in the case of string variables, before calling OSClisten.
     </para>
@@ -129,7 +130,7 @@ ex:
       </para>
                <para> More information on this opcode: <ulink url="http://www.youtube.com/watch?v=JX1C3TqP_9Y"><citetitle>http://www.youtube.com/watch?v=JX1C3TqP_9Y</citetitle></ulink>  , made by Andrés Cabrera </para>
   </refsect1>
-  
+
   <refsect1>
     <title>Credits</title>
     <para>
