@@ -1,3 +1,5 @@
+# TESTING BRANCH COMMIT TO MERGE IN PR
+
 # The Csound Canonical Reference Manual
 
 [![Build status](https://travis-ci.org/csound/manual.svg?branch=master)](https://travis-ci.org/csound/manual)
