@@ -45,8 +45,8 @@ endin
 
 <CsScore>
 i1 0 10
-i2 10 10
-i2 12 10
+i2 2 10
+i2 4 10
 e
 
 </CsScore>
