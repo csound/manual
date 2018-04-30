@@ -66,6 +66,202 @@
     </itemizedlist>
   </para>-->
 
+  <bridgehead>Release Notes for Csound 6.11 (2018 May)</bridgehead>
+  <para>
+    There has been a great amount of internal reorganisation, which should not
+    affect most users. Some components are now independently managed and will
+    eventually be installable via a new package manager. The realtime option is
+    now considered stable and has the "experimental" tag removed. There have
+    been more steps towards completing the arithmetic operations involving
+    a-arrays.
+    <note>Note that changes to GEN01 and diskin2 may not be backward compatible
+    if a none zero value is given for the format.</note>
+  </para>
+  <para>
+    <itemizedlist>
+      <listitem>
+        <para>New opcodes:
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                loscilphs, loscil3phs are like loscil but return the phase in
+                addition to the audio.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                More arithmetic between a-rate arrays and a-rate values; this
+                completes the arithmetic where one or more argument is an audio
+                array.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                balance2 is like balance but scales the output at a-rate,
+                rather than k-rate.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Score:
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Characters following a \ in a score string are treated as
+                escaped, so \n is a newline rather than two characters. It
+                handles escaped a, b, f, n, r, t and v. Other characters
+                following a \ ignore the .
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Modified Opcodes and Gens:
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                print, printk2 now take an additional optional argument which
+                if non-zero causes the k-variable name to be printed as well as
+                the value.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                getrow, setrow, getcol, and setcol can now act on i-rate arrays.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                diskin2 was incorrectly described in the manual with respect to
+                the iformat parameter. Now if iformat is zero the file is
+                expected to have an audio header; if in the range 1-10 (rather
+                than 0-9 as before) then it is opened as raw with the specified
+                sample format. THIS MAY BE INCOMPATIBLE. For most users the
+                value of zero will be correct.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                GEN01 now uses format 0 to get the file type from the header;
+                any other value indicates a raw file. THIS MAY BE INCOMPATIBLE.
+                For most users the value of zero will be correct.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                GEN01 was incorrectly documented with respect to the format
+                argument. There are 9 raw formats whereas the earlier manual
+                stated 6.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Small change in slicearray should allow it to be used in
+                fuctional form in most cases.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                The family of opcode tb0 to tb15 and their initialisation
+                opcodes tb0_init to tb15_init are deprecated as multi-argument
+                functions are allowed.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Bugs Fixed:
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                linen was reworked to allow for long durations and overlaps.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Resetting csound caused a crash if Lua opcodes were used; fixed.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                The poscil family of opcodes could give incorrect results if
+                used in multi-core orchestras AND another instrument changed
+                the f-table. This is now corrected.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Use of out with an audio array did not check that the array
+                dimension was not greater than the number of channels, which
+                caused a crash. It is now checked and truncated if too large
+                with a warning.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Bug in stereo versions of loscil introduced distortion;
+                now fixed.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Fencepost error in phs fixed.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                gen49 read deleted memory if the file was not found; fixed.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Loading of LADSPA plugins when relying on search paths was
+                wrong and mangled the name; now fixed.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>System Changes:
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                OPCODE6DIR{64} now can contain a colon-separated list of
+                directories.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                The somewhat curious distinction between k-rate and a-rate
+                perf-time has been removed throughput, so only threads 1, 2
+                and 3 are used, the s-type output is not used, and some x-type
+                inputs have been changed for direct polymorphism. This only
+                matters for opcode writers as the s, and x codes and threads
+                4, 5, 6 and 7 will be removed in a while.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Translations:
+          <itemizedlist>
+            <listitem>
+              <simpara>As ever the French translations are complete.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+
   <bridgehead>Release Notes for Csound 6.10 (2017 December)</bridgehead>
   <para>
     This is mostly a bugfix release, including a major bug introduced in loscil
