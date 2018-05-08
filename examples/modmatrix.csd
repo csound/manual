@@ -106,7 +106,7 @@ kupdate	chnget	"modulatorUpdateFlag"
 ; run the mod matrix 
 inum_mod	= 2
 inum_parm	= 3
-	modmatrix giParam_Out, giModulators, giParam_In, \\
+	modmatrix giParam_Out, giModulators, giParam_In, \
 	giModScale, inum_mod, inum_parm, kupdate
 
 ; and reset the update flag
