@@ -37,7 +37,7 @@ f 1 0 0 1 "mary.wav" 0 0 0
 f 2 0 0 1 "kickroll.wav" 0 0 0
 
 i 1 0 3 1 ;mono file
-i 1 + 2 2 ;stereo file
+i 1 + 4 2 ;stereo file
 e
 </CsScore>
 </CsoundSynthesizer>
