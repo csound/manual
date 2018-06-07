@@ -1,0 +1,168 @@
+
+<refentry id="ftaudio">
+<indexterm id="IndexFtaudio"><primary>ftaudio</primary></indexterm>
+  <refentryinfo><title>Table Control:Read/Write Opreations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ftaudio</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>ftaudio</refname>
+    <refpurpose>
+      Write a previously-allocated table to an audio file.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Write a previously-allocated table to an audio file in a variety
+      of formats.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ians <command>ftaudio</command> ifn, &quot;filename&quot;, iformat</synopsis>
+    <synopsis>kans <command>ftaudio</command> ktrig, kfn,
+    &quot;filename&quot;, kformat [, isync]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifn, kfn</emphasis> -- Number of table to write.
+    </para>
+    <para>
+      <emphasis>&quot;filename&quot;</emphasis> -- A quoted string containing the name of the file to save.
+    </para>
+
+    <para>
+      <emphasis>iformat, kformat</emphasis> -- Format of the file to
+      save.
+      <itemizedlist>
+       <listitem>
+          <para>-1 - format exactly as per global csound output format flags (-A, -W, --format=..., etc).</para>
+        </listitem>
+	
+        <listitem>
+          <para>0 - 32-bit floating point samples without header (binary PCM multichannel file)</para>
+        </listitem>
+
+        <listitem>
+          <para>1 - 16-bit integers without header (binary PCM multichannel file)</para>
+        </listitem>
+
+        <listitem>
+          <para>2 - 16-bit integers with a header. The header type
+          depends on the render (-o) format. For example, if the user
+          chooses the AIFF format (using the <link
+          linkend="FlagsMinusUpperA"><citetitle>-A
+          flag</citetitle></link>), the header format will be AIFF
+          type.</para>
+        </listitem>
+
+        <listitem>
+          <para>3 - u-law samples with a header (see iformat=2).</para>
+        </listitem>
+
+        <listitem>
+          <para>4 - 16-bit integers with a header (see iformat=2).</para>
+        </listitem>
+
+        <listitem>
+          <para>5 - 32-bit integers with a header (see iformat=2).</para>
+        </listitem>
+
+        <listitem>
+          <para>6 - 32-bit floats with a header (see iformat=2).</para>
+        </listitem>
+
+        <listitem>
+          <para>7 - 8-bit unsigned integers with a header (see iformat=2).</para>
+        </listitem>
+
+        <listitem>
+          <para>8 - 24-bit integers with a header (see iformat=2).</para>
+        </listitem>
+
+        <listitem>
+          <para>9 - 64-bit floats with a header (see iformat=2).</para>
+        </listitem>
+
+	 <listitem>
+          <para> 50 - ogg-vorbis format.</para>
+        </listitem>
+
+      </itemizedlist>
+      In addition Csound allows for explicitly
+      selecting a particular header type by specifying the format as
+      10 * fileType + sampleFormat, where fileType may be 1 for WAV, 2
+      for AIFF, 3 for raw (headerless) files, and 4 for IRCAM;
+      sampleFormat is one of the above values in the range 0 to 9,
+      except sample format 0 is taken from the command line (-o),
+      format 1 is 8-bit signed integers, and format 2 is a-law. So,
+      for example, iformat=25 means 32-bit integers with AIFF header. j
+    </para>
+
+    <para>
+      <emphasis>iasync</emphasis> -- if zero the k-rate version waits for the
+      write to finish.  If non-zero (default) the writing of data is
+      delegated to a separate thread which then alows Csound to
+      continue with the rendering.
+    </para>
+
+    <para>
+      <emphasis>ians, kans</emphasis> -- returns zero if the operation
+      fails or 1 on success.  In the asynchonous mode this is updated
+      when the writing finishes.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ktrig</emphasis> -- the k-rate version only happens on
+      a k-cycle when ktrig is non-zero.  While writing it has the
+      value -1.
+    </para>
+
+    <warning>
+      <title>Warning</title>
+      <para>
+        The file's format is not compatible with a WAV-file and is not endian-safe.
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the ftaudio opcode. It uses the file <ulink url="examples/ftaudio.csd"><citetitle>ftaudio.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the ftaudio opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/ftaudio.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="ftloadk"><citetitle>ftloadk</citetitle></link>,
+      <link linkend="ftload"><citetitle>ftload</citetitle></link>,
+      <link linkend="ftsave"><citetitle>ftsave</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: &namejohn;</para>
+    <para>Example written by &namejohn;.</para>
+    <para>New in version 6.12</para>
+  </refsect1>
+</refentry>
