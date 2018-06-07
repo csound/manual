@@ -26,8 +26,7 @@
   <refsect1>
     <title>Syntax</title>
     <synopsis>ians <command>ftaudio</command> ifn, &quot;filename&quot;, iformat</synopsis>
-    <synopsis>kans <command>ftaudio</command> ktrig, kfn,
-    &quot;filename&quot;, kformat [, isync]</synopsis>
+    <synopsis>kans <command>ftaudio</command> ktrig, kfn, &quot;filename&quot;, kformat [, isync]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -104,20 +103,20 @@
       sampleFormat is one of the above values in the range 0 to 9,
       except sample format 0 is taken from the command line (-o),
       format 1 is 8-bit signed integers, and format 2 is a-law. So,
-      for example, iformat=25 means 32-bit integers with AIFF header. j
+      for example, iformat=25 means 32-bit integers with AIFF header.
     </para>
 
     <para>
-      <emphasis>iasync</emphasis> -- if zero the k-rate version waits for the
+      <emphasis>isync</emphasis> -- if zero the k-rate version waits for the
       write to finish.  If non-zero (default) the writing of data is
-      delegated to a separate thread which then alows Csound to
+      delegated to a separate thread which then allows Csound to
       continue with the rendering.
     </para>
 
     <para>
       <emphasis>ians, kans</emphasis> -- returns zero if the operation
       fails or 1 on success.  In the asynchonous mode this is updated
-      when the writing finishes.
+      when the writing finishes, until when it has the value -1
     </para>
   </refsect1>
 
@@ -125,16 +124,9 @@
     <title>Performance</title>
     <para>
       <emphasis>ktrig</emphasis> -- the k-rate version only happens on
-      a k-cycle when ktrig is non-zero.  While writing it has the
-      value -1.
+      a k-cycle when ktrig is non-zero.
     </para>
 
-    <warning>
-      <title>Warning</title>
-      <para>
-        The file's format is not compatible with a WAV-file and is not endian-safe.
-      </para>
-    </warning>
   </refsect1>
 
   <refsect1>
