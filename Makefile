@@ -510,10 +510,7 @@ OPCODES = opcodes/0dbfs.xml	opcodes/ATSadd.xml	opcodes/ATSaddnz.xml \
 	opcodes/vosim.xml	opcodes/vphaseseg.xml	opcodes/vport.xml \
 	opcodes/vpow.xml	opcodes/vpow_i.xml	opcodes/vpowv.xml \
 	opcodes/vpowv_i.xml	opcodes/vpvoc.xml	opcodes/vrandh.xml \
-	opcodes/vrandi.xml	opcodes/vstaudio.xml	opcodes/vstbankload.xml \
-	opcodes/vstedit.xml	opcodes/vstinfo.xml	opcodes/vstinit.xml \
-	opcodes/vstmidiout.xml	opcodes/vstnote.xml	opcodes/vstparamset.xml \
-	opcodes/vstprogset.xml	opcodes/vsubv.xml	opcodes/vsubv_i.xml \
+	opcodes/vrandi.xml	opcodes/vsubv.xml	opcodes/vsubv_i.xml \
 	opcodes/vtaba.xml	opcodes/vtabi.xml	opcodes/vtabk.xml \
 	opcodes/vtable1k.xml	opcodes/vtablea.xml	opcodes/vtablei.xml \
 	opcodes/vtablek.xml	opcodes/vtablewa.xml	opcodes/vtablewi.xml \
@@ -623,7 +620,6 @@ OTHER =         STKopcodes/top.xml \
         overview/realtimelinux.xml \
         plugin/dssi4cs.xml \
         plugin/top.xml \
-        plugin/vst4cs.xml \
         preface/gettingstarted.xml \
         preface/gettingstartedXO.xml \
         preface/history.xml \
