@@ -16,6 +16,9 @@ instr 1
     kmidi = ftom(442)
     printks2 "freq 442  -> %f\n", kmidi
 
+    kmidr = ftom(442,1)
+    printks2 "freq 442  -> %f rounded\n", kmidr
+
     kfreq = mtof(kmidi)
     printks "midi %f -> %f\n", 1, kmidi, kfreq
 
