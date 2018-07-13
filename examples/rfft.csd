@@ -7,6 +7,7 @@
 <CsInstruments>
 ;ksmps needs to be an integer div of hopsize
 ksmps = 64
+0dbfs=1
 
 instr 1
 
@@ -24,7 +25,7 @@ instr 1
 
  a1 diskin2 "fox.wav",1,0,1 ; audio input
  ks  expon  100, p3, 1000
- asw vco2  k(a1), ks
+ asw vco2  0.15, ks
 
  /* every hopsize samples */
  if kcnt == ihopsize then
@@ -36,7 +37,7 @@ instr 1
    kProd[] cmplxprod kSpec, kSpec2
 
    /* IFFT + window */
-   kRow[] rifft kProd
+   kRow[] rifft kProd + kSpec
    kWin window kRow, krow*ihopsize
    /* place it on out buffer */
    kOut setrow kWin, krow
