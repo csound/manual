@@ -23,7 +23,9 @@
 
   <refsect1>
     <title>Syntax</title>
-    <synopsis>kans <command>OSClisten</command> ihandle, idest, itype [, xdata1, xdata2, ...]</synopsis>
+    <synopsis>kans <command>OSClisten</command> ihandle, idest, itype
+    [, xdata1, xdata2, ...]</synopsis>
+    <synopsis>kans kdata[] <command>OSClisten</command> ihandle, idest, itype</synopsis>
   </refsect1>
 
   <refsect1>
@@ -42,12 +44,12 @@
     </para>
 
     <para>
-      <emphasis>itype</emphasis>
-      -- a string that indicates the types of the optional arguments
-      that are to be read. The string can contain the characters
-      "acdfhisAG" which stand for audio, character, double, float, 64-bit integer,
-      32-bit integer, string, scalar array and f-table. All types other than 'asA' require a
-      k-rate variable; 's' requires a string variable, 'a' an audio
+      <emphasis>itype</emphasis> -- a string that indicates the types
+      of the optional arguments that are to be read. The string can
+      contain the characters "acdfhisAG" which stand for audio,
+      character, double, float, 64-bit integer, 32-bit integer,
+      string, scalar array and f-table. All types other than 'asA'
+      require a k-rate variable; 's' requires a string variable, 'a' an audio
       variable and 'A' an i- or k- rate array. For type 'G', a variable
       or constant can be used.
     </para>
@@ -73,16 +75,28 @@
       <emphasis>itype</emphasis> parameter.
       Note that although the <emphasis>xdata</emphasis> variables are on
       the right of an operation, they are actually outputs, and so must be
-      variables of type a, ga, k, gk, S, gS, k[] and gk[] and may need to be declared with
-      init, or = in the case of string variables, before calling OSClisten.
+      variables of type a, ga, k, gk, S, gS, k[] and gk[] and may need
+      to be declared with init, or = in the case of string variables,
+      before calling OSClisten. 
     </para>
 
-  </refsect1>
+    <para>
+      Alternatively, if the message to be received is a series of values all of
+      the same scalar numeric type (e.g., one of "dfhi"), then the
+      return parameter <emphasis>kdata</emphasis> may be used in place of
+      <emphasis>xdata</emphasis> variables. <emphasis>kdata</emphasis> must be an
+      array, it must be declared with init before calling OSClisten,
+      or used with the [] syntax.  It will be created to sufficient
+      size if it is other that a one dimensional array of size greater
+      or equal to length as the format string. If a message is received, this
+      array will be filled with the incoming values. See below for an example of
+      this usage.
+    </para>  </refsect1>
 
   <refsect1>
     <title>Example</title>
     <para>
-      The example shows a pair of floating point numbers being received
+      This example shows a pair of floating point numbers being received
       on port 7770.
     </para>
 
@@ -108,6 +122,32 @@ ex:
         </programlisting>
       </informalexample>
 
+     <para>
+        This example shows use of the alternate form of the opcode, where an
+        array is used to receive a list of scalar values. In this case, the
+        OSC sender is simulating a set of radio buttons (as is done, for
+        example by a Lemur "Switches" object set in this mode), where the
+        button that is set will have value 1.0 and all other buttons will have
+        value 0.0.
+      </para>
+        <informalexample>
+          <programlisting>
+    gihandle <emphasis role="opc">OSCinit</emphasis> 7770
+    <emphasis role="oblock">instr</emphasis>   1
+      ; the UI object behind the OSC sender has 5 buttons arranged as radio buttons
+      kdata[] <emphasis role="opc">init</emphasis> 5
+  nxtmsg:
+      kk, kdata  <emphasis role="opc">OSClisten</emphasis> gihandle, &quot;/foo/bar&quot;, &quot;fffff&quot;
+  if (kk <emphasis role="opc">==</emphasis> 0) goto ex
+      ; the only button with a non-zero value will be the one that is set,
+      ; so maxarray is used to get the index of that element
+      kmax, kidx <emphasis role="opc">maxarray</emphasis> kdata
+      <emphasis role="opc">printks</emphasis> &quot;button %d (zero-based) is set\n&quot;, 0, kidx
+      <emphasis role="opc">kgoto</emphasis> nxtmsg
+  ex:
+    <emphasis role="oblock">endin</emphasis>
+          </programlisting>
+        </informalexample>
     <para>
       Below are two .csd files which demonstrate the usage of the OSC opcodes. They use the files <ulink url="examples/OSCmidisend.csd"><citetitle>OSCmidisend.csd</citetitle></ulink> and <ulink url="examples/OSCmidircv.csd"><citetitle>OSCmidircv.csd</citetitle></ulink>.
 
@@ -140,6 +180,11 @@ ex:
         <member>Examples by: David Akbari, &nameandres; and Jonathan Murphy 2007</member>
       </simplelist>
     </para>
-    <para>types aAG are new in Csound 6.07</para>
-    </refsect1>
+    <para>
+      <simplelist>
+        <member>types aAG are new in Csound 6.07</member>
+        <member>the use an an array for outputs is new in Csound 6.12</member>
+      </simplelist>
+    </para>
+  </refsect1>
 </refentry>
