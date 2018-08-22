@@ -1,0 +1,96 @@
+
+<refentry id="OSCcount">
+<indexterm id="IndexOSCcount"><primary>OSCcount</primary></indexterm>
+  <refentryinfo><title>OSC</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>OSCcount</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>OSCcount</refname>
+    <refpurpose>
+      Gives the Count of OSC messages currently unread.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Gives the Count of OSC messages currently unread but received by
+      the current listeners.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kans <command>OSCcount</command></synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kans</emphasis> -- set to the number of messages
+      accepted by this Csound process to any address but not yet
+      presented to a cal of OSClisten.
+    </para>
+
+    <para>
+      The expected use of ths opcode is when there are a number of
+      listeners and we can elide checking them all if thereare no
+      messsages.
+    </para>
+</refsect1> 
+
+  <refsect1>
+    <title>Example</title>
+    <para>
+      This example shows a pair of floating point numbers being received
+      on port 7770.
+    </para>
+
+      <informalexample>
+        <programlisting>
+  <emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+  <emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 100
+  <emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+
+  gihandle <emphasis role="opc">OSCinit</emphasis> 7770
+
+  <emphasis role="oblock">instr</emphasis>   1
+    kf1 <emphasis role="opc">init</emphasis> 0
+    kf2 <emphasis role="opc">init</emphasis> 0
+    kk  <emphasis role="opc">OSCcount</emphasis>
+nxtmsg:
+
+if (kk <emphasis role="opc">==</emphasis> 0) goto ex
+  kr  <emphasis role="opc">OSClisten</emphasis> gihandle, &quot;/foo/bar&quot;, &quot;ff&quot;, kf1, kf2
+    <emphasis role="opc">printk</emphasis> 0,kf1
+    <emphasis role="opc">printk</emphasis> 0,kf2
+    kk -= 1
+    <emphasis role="opc">kgoto</emphasis> nxtmsg
+ex:
+  <emphasis role="oblock">endin</emphasis>
+        </programlisting>
+      </informalexample>
+  </refsect1>
+  
+  <refsect1>
+    <title>See Also</title>
+      <para>
+        <link linkend="OSCsend"><citetitle>OSCsend</citetitle></link>,
+        <link linkend="OSCinit"><citetitle>OSCinit</citetitle></link>
+        <link linkend="OSClisten"><citetitle>OSClisten</citetitle></link>
+      </para>
+               <para> More information on this opcode: <ulink url="http://www.youtube.com/watch?v=JX1C3TqP_9Y"><citetitle>http://www.youtube.com/watch?v=JX1C3TqP_9Y</citetitle></ulink>  , made by Andrés Cabrera </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member>
+        <member>2018 new ib Csound 6.12</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>
