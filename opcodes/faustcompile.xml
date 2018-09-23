@@ -23,7 +23,7 @@
 
   <refsect1>
     <title>Syntax</title>
-    <synopsis><command>ihandle faustcompile</command> Scode, Sargs </synopsis>
+    <synopsis><command>ihandle faustcompile</command> Scode, Sargs[,iasync, istacksize]  </synopsis>
   </refsect1>
 
   <refsect1>
@@ -33,7 +33,19 @@
 </para>    
     <para>
       <emphasis><quote>Sargs</quote></emphasis> --  a string (in double-quotes or enclosed by {{ }}) containing Faust compiler args.
-</para>  
+    </para>
+        <para>
+      <emphasis><quote>iasync</quote></emphasis> -- run the code
+      asynchronously, non-blocking, (iasync=1), defaults to 1, except when employed
+      in instr 0 (header), when it is forced to run in a blocking
+      way. If two instances of faustcompile are used in the same
+      instrument, then async operation might crash the faust compiler,
+      thus blocking operation is then recommended 
+</para>    
+    <para>
+      <emphasis><quote>istacksize</quote></emphasis> --  size of
+      the compiler thread stack in MB (defaults to 1).
+</para>
   </refsect1>
 
   <refsect1>
