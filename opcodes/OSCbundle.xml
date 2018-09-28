@@ -1,0 +1,116 @@
+
+<refentry id="OSCbundle">
+<indexterm id="IndexOSCbundle"><primary>OSCbundle</primary></indexterm>
+  <refentryinfo><title>OSC</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>OSCbundle</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>OSCbundle</refname>
+    <refpurpose>
+      Sends data to other processes using the OSC protocol by packing
+      messages in a bundle.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Uses the OSC protocol to send one or more messages to other OSC listening
+      processes in a single bundle. Unlike OSCsend, it can be used to
+      send multiple messages at the same time, but only standard OSC numeric types
+      are allowed.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>OSCbundle</command> kwhen, ihost, iport,
+    Sdest[], Stype[],kArgs[][][,isize]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ihost</emphasis>
+      -- a string that is the intended host computer domain name.  An
+    empty string is interpreted as the current computer.
+    </para>
+
+    <para>
+      <emphasis>iport</emphasis>
+      -- the number of the port that is used for the communication.
+    </para>
+
+        <para>
+     <emphasis>isize</emphasis>
+      -- maximum packet size in bytes, defaults to 65536.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kwhen</emphasis> -- a bundle of messages is sent whenever this
+    value changes.  A message will always be sent on the first call.
+    </para>
+
+    <para>
+      <emphasis> Sdest[]</emphasis>
+      -- an array of strings containing the destination address for
+      each message. Length must agree with Stype[].
+    </para>
+
+    <para>
+      <emphasis>Stype[]</emphasis>
+      -- an array of strings containing the types for each
+      message. Only numeric types ('i' for integers and 'f' for
+      floats) are supported. Length must agree with Sdest[].
+    </para>
+
+    <para>
+      <emphasis>kArg[][]</emphasis> -- a two-dimensional array
+      containing the arguments for each message. Its dimension 1
+      (number of rows) must agree with Sdest[] and Stype[]. Each row
+      should contain the arguments for the types of each message. If
+      a row contains fewer arguments, any remaining data items are
+      filled with zeros. Arguments in excess of what each type string
+      requires are ignored.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Example</title>
+        <para>
+      Here is an example of the OSCBundle opcode. It uses the file <ulink url="examples/oscbundle.csd"><citetitle>oscbundle.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the OSCbundle opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/oscbundle.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+      <para>
+        <link linkend="OSClisten"><citetitle>OSClisten</citetitle></link>,
+        <link linkend="OSCinit"><citetitle>OSCinit</citetitle></link>
+      </para>
+  
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>2018</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>
