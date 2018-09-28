@@ -1,0 +1,102 @@
+<!--Change refentry id and indexterm id-->
+<refentry id="ftprint">
+  <indexterm id="IndexFtprint"><primary>ftprint</primary></indexterm>
+  <!--Make sure the category below is a valid one! See categories.py-->
+  <refentryinfo><title>Table Control:Read/Write Operations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ftprint</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ftprint</refname>
+    <refpurpose>
+      Print the contents of a table (for debugging)
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Prints the contents of a table (for debugging).
+      It works at k-time, a trigger controls when to print
+      (use ktrig=1, which is the default, to print only at i-time)
+
+      The format used to print each element can be controlled via printarray_setfmt
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+	<!--    Please keep this below ~70 characters by using backslashes to avoid overflow in the pdf version-->
+    <synopsis><command>ftprint</command> ifn, ktrig=1, kstart=0, kend=0, kstep=1, inumcols=0</synopsis>
+  </refsect1>
+
+  <refsect1>
+	<title>Initialization</title>
+	<para>
+	  <emphasis role="strong">ifn</emphasis> - The table to print
+	</para>
+    <para>
+      <emphasis role="strong">inumcols</emphasis> - The number of elements to print in one column.
+      (defaults to 10)
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Performance</title>
+	<!--    First list all input and output performance parameters-->
+    <para>
+      <emphasis role="strong">ktrig</emphasis> - The table will be printed whenever 
+      this value changes from 0 to possitive. Can be used together 
+      with metro to print at a given time interval. A value of -1
+      indicates to print at each k-cycle
+    </para>
+    <para>
+      <emphasis role="strong">kstart=0</emphasis> - The first index to print 
+    </para>
+    <para>
+      <emphasis role="strong">kend=0</emphasis> - The end index to print (non inclusive)
+    </para>
+    <para>
+      <emphasis role="strong">kstep=1</emphasis> - How many elements to skip (1=print all elements)
+    </para>
+    
+
+  </refsect1>
+  <refsect1>
+	<!--To add examples, create the csd file in the examples directory, then run:-->
+	<!--python csd2docbook.py -f newopcodename.csd-->
+	<!--to generate the xml highlighted version used below-->
+    <title>Examples</title>
+    <para>
+      Here is an example of the ftprint opcode. It uses the file <ulink url="examples/ftprint.csd"><citetitle>ftprint.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the ftprint opcode.</title>
+        <xi:include href="examples-xml/ftprint.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+	<!--    it's always good to include a good See Also list  -->
+    <para>
+      <link linkend="printarray"><citetitle>printarray</citetitle></link>,
+      <link linkend="printarray_setfmt"><citetitle>printarray_setfmt</citetitle></link>, 
+      <link linkend="printf"><citetitle>printf</citetitle></link>
+      
+    </para>
+  </refsect1>
+
+  <refsect1>
+	<!--  And put your name and other relevant information here-->
+    <title>Credits</title>
+    <para>By: &nameeduardo; 2018</para>
+  </refsect1>
+
+  <!--Now remember to add a link from the appropriate category in the Opcode Overview.-->
+  <!--Add the entity to manual.xml-->
+  <!--Add the entity reference in the appropriate place in opcodes/top.xml-->
+  <!--And you're set! Maybe delete the comments as well...-->
+
+</refentry>

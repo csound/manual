@@ -4,10 +4,10 @@
 <CsInstruments>
 
 sr = 44100
-ksmps = 32
+ksmps = 128
 nchnls = 2
-0dbfs = 1
-A4 = 440
+0dbfs = 1.0
+A4
 
 instr 1
     kfreq = mtof(69)
@@ -15,9 +15,6 @@ instr 1
 
     kmidi = ftom(442)
     printks2 "freq 442  -> %f\n", kmidi
-
-    kmidr = ftom(442,1)
-    printks2 "freq 442  -> %f rounded\n", kmidr
 
     kfreq = mtof(kmidi)
     printks "midi %f -> %f\n", 1, kmidi, kfreq
@@ -35,6 +32,7 @@ endin
 
 </CsInstruments>
 <CsScore>
-i 1 0 1
+i 1 0 10
+
 </CsScore>
 </CsoundSynthesizer>

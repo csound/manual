@@ -1,35 +1,32 @@
 <!--Change refentry id and indexterm id-->
-<refentry id="linlin">
-  <indexterm id="IndexLinlin"><primary>linlin</primary></indexterm>
+<refentry id="lincos">
+  <indexterm id="IndexLincos"><primary>lincos</primary></indexterm>
   <!--Make sure the category below is a valid one! See categories.py-->
   <refentryinfo><title>Signal Generators:Linear and Exponential Generators</title></refentryinfo>
   <refmeta>
-    <refentrytitle>linlin</refentrytitle>
+    <refentrytitle>lincos</refentrytitle>
   </refmeta>
 
   <refnamediv>
-    <refname>linlin</refname>
+    <refname>lincos</refname>
     <refpurpose>
-	  Linear to linear interpolation
+	  Linear to cosine interpolation
     </refpurpose>
   </refnamediv>
   
   <refsect1>
     <title>Description</title>
     <para>
-	  Maps a linear range of values to another linear range of values.
-      Supports both scalars and arrays, at i- and k-time
+	  Maps a linear range of values to a cosine (easy-in/easy-out) range of values.
+      At the time it supports only scalars, at i- and k-time (no arrays)
     </para>
   </refsect1>
 
   <refsect1>
     <title>Syntax</title>
 	<!--    Please keep this below ~70 characters by using backslashes to avoid overflow in the pdf version-->
-    <synopsis>ky <command>linlin</command> kx, ky0, ky1, kx0=0, kx1=0</synopsis>
-    <synopsis>iy <command>linlin</command> ix, iy0, iy1, ix0=0, ix1=0</synopsis>
-    <synopsis>kys[] <command>linlin</command> kxs[], ky0, ky1, kx0=0, kx1=0</synopsis>
-    <synopsis>iys[] <command>linlin</command> ixs[], ky0, ky1, kx0=0, kx1=0</synopsis>
-    <synopsis>kC[] <command>linlin</command> kx, kA[], kB[], kx0=0, kx1=0</synopsis>
+    <synopsis>ky <command>lincos</command> kx, ky0, ky1, kx0=0, kx1=0</synopsis>
+    <synopsis>iy <command>lincos</command> ix, iy0, iy1, ix0=0, ix1=0</synopsis>
   </refsect1>
 
   <refsect1>
@@ -58,7 +55,8 @@
 
 	<para>
 	  <programlisting>
-y = (x - x0) / (x1 - x0) * (y1 - y0) + y0
+dx = ((x-x0) / (x1-x0)) * PI + PI
+y  = y0 + ((y1 - y0) * (1 + cos(dx)) / 2.0);
 	  </programlisting>
 	</para>
 	
@@ -69,10 +67,10 @@ y = (x - x0) / (x1 - x0) * (y1 - y0) + y0
 	<!--to generate the xml highlighted version used below-->
     <title>Examples</title>
     <para>
-      Here is an example of the linlin opcode. It uses the file <ulink url="examples/linlin.csd"><citetitle>linlin.csd</citetitle></ulink>.
+      Here is an example of the lincos opcode. It uses the file <ulink url="examples/lincos.csd"><citetitle>lincos.csd</citetitle></ulink>.
       <example>
-        <title>Example of the linlin opcode.</title>
-        <xi:include href="examples-xml/linlin.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <title>Example of the lincos opcode.</title>
+        <xi:include href="examples-xml/lincos.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
     </para>
   </refsect1>
@@ -81,18 +79,19 @@ y = (x - x0) / (x1 - x0) * (y1 - y0) + y0
     <title>See Also</title>
 	<!--    it's always good to include a good See Also list  -->
     <para>
-      <link linkend="lincos"><citetitle>lincos</citetitle></link>, 
-	  <link linkend="bpf"><citetitle>bpf</citetitle></link>
-      <link linkend="bpfcos"><citetitle>bpfcos</citetitle></link>
+      <link linkend="linlin"><citetitle>linlin</citetitle></link>,
+      <link linkend="cosseg"><citetitle>cosseg</citetitle></link>, 
       <link linkend="scale"><citetitle>scale</citetitle></link>, 
 	  <link linkend="ntrpol"><citetitle>ntrpol</citetitle></link>, 
+	  <link linkend="bpf"><citetitle>bpf</citetitle></link>
+      
 	</para>
   </refsect1>
 
   <refsect1>
 	<!--  And put your name and other relevant information here-->
 	<title>Credits</title>
-	<para>By: &nameeduardo; 2017</para>
+	<para>By: &nameeduardo; 2018</para>
   </refsect1>
 
   <!--Now remember to add a link from the appropriate category in the Opcode Overview.-->

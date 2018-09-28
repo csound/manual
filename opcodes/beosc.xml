@@ -1,0 +1,115 @@
+<!--Change refentry id and indexterm id-->
+<refentry id="beosc">
+  <indexterm id="IndexBeosc"><primary>beosc</primary></indexterm>
+  <!--Make sure the category below is a valid one! See categories.py-->
+  <refentryinfo><title>Signal Generators:Additive Synthesis/Resynthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>beosc</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>beosc</refname>
+    <refpurpose>
+      Band-Enhanced Oscillator
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Band-Enhanced oscillator, aport of Loris' oscillator (based on
+      Supercollider's BEOsc).
+      The band-enhanced family of opcodes (beosc, beadsynt) implement
+      sound modeling and synthesis that preserves the elegance and
+      malleability of a sinusoidal model, while accommodating sounds
+      with noisy (non-sinusoidal) components. Analysis is done offline,
+      with an enhanced McAulay-Quatieri (MQ) style analysis that extracts
+      bandwidth information in addition to the sinusoidal parameters for
+      each partial. To produce noisy components, we synthesize with sine
+      wave oscillators that have been modified to allow the introduction
+      of variable bandwidth.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+	<!--    Please keep this below ~70 characters by using backslashes
+         to avoid overflow in the pdf version-->
+    <synopsis>aout <command>beosc</command> xfreq, kbw, ifn=-1, iphs=0, inoisetype=1</synopsis>	
+  </refsect1>
+
+  <refsect1>
+	<title>Initialization</title>
+	<para>
+	  <emphasis>ifn</emphasis> - A table holding a sine wave (-1 to use the
+      builtin sine table)
+	</para>
+    <para>
+	  <emphasis>iphs</emphasis> - The phase of the sine. (default=0)
+	</para>
+    <para>
+	  <emphasis>inoisetype</emphasis> - 0=uniform, 1=gaussian
+    </para>
+    <note><para>
+      The original implementation in loris uses gaussian noise; the Supercollider
+      port uses uniform noise. We implement both. With the current implementation
+      gaussian noise is actually almost as efficient as uniform, so normal noise
+      has been set as default, following loris.
+	</para></note>
+
+  </refsect1>
+  
+  <refsect1>
+    <title>Performance</title>
+	<!--    First list all input and output performance parameters-->
+    <para>
+      <emphasis>aout</emphasis> - The generated sound
+    </para>
+    <para>
+      <emphasis>xfreq</emphasis> - The frequency of the oscillator (k- or a-rate)
+    </para>
+	
+    <para>
+      There is no control for amplitude. The user is expected to scale the
+      output <emphasis>aout</emphasis> by any factor needed
+    </para>
+  </refsect1>
+  <refsect1>
+	<!--To add examples, create the csd file in the examples directory, then run:-->
+	<!--python csd2docbook.py -f newopcodename.csd-->
+	<!--to generate the xml highlighted version used below-->
+    <title>Examples</title>
+    <para>
+      Here is an example of the beosc opcode. It uses the file <ulink url="examples/beosc.csd"><citetitle>beosc.csd</citetitle></ulink>.
+      <figure><mediaobject><imageobject>
+            <imagedata fileref="images/beosc.jpg" format="JPG"/>
+      </imageobject></mediaobject></figure>
+
+      <example>
+        <title>Example of the beosc opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+        <xi:include href="examples-xml/beosc.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+	<!--    it's always good to include a good See Also list  -->
+    <para>
+      <link linkend="beadsynt"><citetitle>beadsynt</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+	<!--  And put your name and other relevant information here-->
+    <title>Credits</title>
+    <para>By: &nameeduardo; 2018</para>
+  </refsect1>
+
+  <!--Now remember to add a link from the appropriate category in the Opcode Overview.-->
+  <!--Add the entity to manual.xml-->
+  <!--Add the entity reference in the appropriate place in opcodes/top.xml-->
+  <!--And you're set! Maybe delete the comments as well...-->
+
+</refentry>

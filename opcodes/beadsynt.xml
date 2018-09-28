@@ -1,0 +1,126 @@
+<!--Change refentry id and indexterm id-->
+<refentry id="beadsynt">
+  <indexterm id="IndexBeadsynt"><primary>beadsynt</primary></indexterm>
+  <!--Make sure the category below is a valid one! See categories.py-->
+  <refentryinfo><title>Signal Generators:Additive Synthesis/Resynthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>beadsynt</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>beadsynt</refname>
+    <refpurpose>
+      Band-Enhanced Oscillator-Bank
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Band-Enhanced oscillator-bank, aport of Loris' oscillator (based on
+      Supercollider's Beadsynt). Can work both with arrays and tables.
+      
+      The band-enhanced family of opcodes (beadsynt, beadsynt) implement
+      sound modeling and synthesis that preserves the elegance and
+      malleability of a sinusoidal model, while accommodating sounds
+      with noisy (non-sinusoidal) components. Analysis is done offline,
+      with an enhanced McAulay-Quatieri (MQ) style analysis that extracts
+      bandwidth information in addition to the sinusoidal parameters for
+      each partial. To produce noisy components, we synthesize with sine
+      wave oscillators that have been modified to allow the introduction
+      of variable bandwidth.
+    </para>
+    <para>
+      The synthesis can be controlled via a set of flags (see iflags),
+      allowing to switch between unifrom or gaussian noise for the
+      noise components, wavetable interpolation (switch off to save cpu),
+      and freq. interpolation between k-cycles (switch off to save cpu)
+    </para>
+    <note>
+      <para>
+        The original implementation (Loris) uses gaussian (normal) noise
+        for the non-sinusoidal components, which if implemented naively,
+        as in loris, is very cpu intensive. The supercollider port uses
+        simple uniform noise. We implement both, with a very efficient
+        implementation of gaussian noise (using a precomputed table),
+        which makes it as efficient as uniform noise.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+	<!--    Please keep this below ~70 characters by using backslashes
+         to avoid overflow in the pdf version-->
+    <synopsis>aout <command>beadsynt</command> kFreqs[], kAmps[], kBws[], inumosc=-1, iflags=1, kfreq=1, kbw=1, ifn=-1, iphs=-1</synopsis>
+    <synopsis>aout <command>beadsynt</command> ifreqft, iampft, ibwft, inumosc, iflags=1, kfreq=1, kbw=1, ifn=-1, iphs=-1</synopsis>	
+  </refsect1>
+
+  <refsect1>
+	<title>Initialization</title>
+	<para><emphasis>ifreqft</emphasis> - A table holding the frequencies for each partial</para>
+    <para><emphasis>iampft</emphasis> - A table holding the amplitudes for each partial</para>
+    <para><emphasis>ibwft</emphasis> - A table holding the bandwidths for each partial</para>
+    <para><emphasis>inumosc</emphasis> - the number of partials to resynthesize. In the array case, it can be left unset</para>
+    <para><emphasis>iflags</emphasis> - 0: uniform noise, 1:gaussian noise, +2: oscil linear interpolation, +4: freq. interpolation</para>
+    <para><emphasis>ifn</emphasis> - A table holding a sine wave (or -1 to use the builtin table)</para>
+    <para><emphasis>iphs</emphasis> - Initial phase. -1: randomized, 0-1: initial phase, >1: table number holding the phases</para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Performance</title>
+	<!--    First list all input and output performance parameters-->
+    <para>
+      <emphasis>aout</emphasis> - The generated sound
+    </para>
+    <para>
+      <emphasis>kFreqs[]</emphasis> - An array holding the frequencies of each partial
+    </para>
+    <para>
+      <emphasis>kAmps[]</emphasis> - An array holding the amplitudes of each partial
+    </para>
+    <para>
+      <emphasis>kBws[]</emphasis> - An array holding the bandwidths of each partial
+    </para>
+    <note><para>
+      <literal>kFres[]</literal>, <literal>kAmps[]</literal> and <literal>kBws[]</literal>
+      must all be the same size (this also holds true) for <literal>ifreqft</literal>,
+      <literal>iampft</literal> and <literal>ibwft</literal>
+    </para></note>
+  </refsect1>
+  <refsect1>
+	<!--To add examples, create the csd file in the examples directory, then run:-->
+	<!--python csd2docbook.py -f newopcodename.csd-->
+	<!--to generate the xml highlighted version used below-->
+    <title>Examples</title>
+    <para>
+      Here is an example of the beadsynt opcode. It uses the file <ulink url="examples/beadsynt.csd"><citetitle>beadsynt.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the beadsynt opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+        <xi:include href="examples-xml/beadsynt.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+	<!--    it's always good to include a good See Also list  -->
+    <para>
+      <link linkend="beosc"><citetitle>beosc</citetitle></link>,
+      <link linkend="adsynt2"><citetitle>adsynt2</citetitle></link>,
+    </para>
+  </refsect1>
+
+  <refsect1>
+	<!--  And put your name and other relevant information here-->
+    <title>Credits</title>
+    <para>By: &nameeduardo; 2018</para>
+  </refsect1>
+
+  <!--Now remember to add a link from the appropriate category in the Opcode Overview.-->
+  <!--Add the entity to manual.xml-->
+  <!--Add the entity reference in the appropriate place in opcodes/top.xml-->
+  <!--And you're set! Maybe delete the comments as well...-->
+
+</refentry>

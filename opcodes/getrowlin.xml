@@ -1,0 +1,109 @@
+<!--Change refentry id and indexterm id-->
+<refentry id="getrowlin">
+  <indexterm id="IndexGetrowlin"><primary>getrowlin</primary></indexterm>
+  <!--Make sure the category below is a valid one! See categories.py-->
+  <refentryinfo><title>>Table Control:Read/Write Operations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>getrowlin</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>getrowlin</refname>
+    <refpurpose>
+      Copy a row from a 2D array or table, with interpolation between rows
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Given a 2D array (i- or k- array), or a table representing a
+      2D matrix, get a row of this matrix (possibly a slice). If krow is
+      not an integer, the values are the result of the interpolation
+      between the two adjacent rows.
+      
+      Assuming such a 2D matrix containing multiple rows of sampled streams
+      (for instance, the amplitudes of a set of oscillators, sampled at a
+      regular interval), this opcode extracts one row of that data with
+      linear interpolation between adjacent rows (if the row is not a round
+      number) and places the result in a 1D array
+	</para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+	<!--    Please keep this below ~70 characters by using backslashes to avoid overflow in the pdf version-->
+    <synopsis>kOut[] <command>getrowlin</command> kMtx[], krow, kstart=0, kend=0, kstep=1</synopsis>
+    <synopsis>kOut[] <command>getrowlin</command> krow, ifn, inumcols, iskip=0, start=0, iend=0, istep=1</synopsis>
+    
+  </refsect1>
+
+  <refsect1>
+	<title>Initialization / Performance</title>
+    <para>
+      <emphasis>kMtrx[]</emphasis> - a 2D array
+    </para>
+    <para>
+      <emphasis>krow</emphasis> - the row to read (can be a fractional number,
+      in which case interpolation with the next row is performed)
+    </para>
+    <para>
+      <emphasis>kstart</emphasis> - start index to read from the row
+    </para>
+    <para>
+      <emphasis>kend</emphasis> - end index to read from the row (not inclusive)
+    </para>
+    <para>
+      <emphasis>kstep</emphasis> - step used to read the along the row
+    </para>
+    <para>
+      <emphasis>iskip</emphasis> - in the case of using a table as input, iskip indicates
+      the start of the sampled data (skipping a possible header in the data)
+    </para>
+    <para>
+      <emphasis>inumcols</emphasis> - in the case of using a table as input, inumcols
+      indicates the number of columns of the 2D matrix.
+    </para>
+    
+  </refsect1>
+
+  <refsect1>
+	<!--To add examples, create the csd file in the examples directory, then run:-->
+	<!--python csd2docbook.py -f newopcodename.csd-->
+	<!--to generate the xml highlighted version used below-->
+    <title>Examples</title>
+    <para>
+      Here is an example of the getrowlin opcode. It uses the file <ulink url="examples/getrowlin.csd"><citetitle>getrowlin.csd</citetitle></ulink>. See also the example for beadsynt: <ulink url="examples/beadsynt.csd"><citetitle>beadsynt.csd</citetitle></ulink>
+      <example>
+        <title>Example of the getrowlin opcode.</title>
+        <xi:include href="examples-xml/getrowlin.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+	<!--    it's always good to include a good See Also list  -->
+    <para>
+      <link linkend="tabrowlin"><citetitle>tabrowlin</citetitle></link>,
+      <link linkend="beadsynt"><citetitle>beadsynt</citetitle></link>,
+      <link linkend="getrow"><citetitle>getrow</citetitle></link>,
+      <link linkend="slicearray"><citetitle>slicearray</citetitle></link>,
+      <link linkend="copyf2array"><citetitle>copyf2array</citetitle></link>,
+	  <link linkend="tab2array"><citetitle>tab2array</citetitle></link>,
+      <link linkend="ftslice"><citetitle>ftslice</citetitle></link>,
+   	</para>
+  </refsect1>
+
+  <refsect1>
+	<!--  And put your name and other relevant information here-->
+	<title>Credits</title>
+	<para>By: &nameeduardo; 2018</para>
+  </refsect1>
+
+  <!--Now remember to add a link from the appropriate category in the Opcode Overview.-->
+  <!--Add the entity to manual.xml-->
+  <!--Add the entity reference in the appropriate place in opcodes/top.xml-->
+  <!--And you're set! Maybe delete the comments as well...-->
+
+</refentry>

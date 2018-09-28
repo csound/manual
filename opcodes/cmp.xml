@@ -10,27 +10,46 @@
   <refnamediv>
     <refname>cmp</refname>
     <refpurpose>
-      Compares two audio signals
+      Compares audio signals or arrays
     </refpurpose>
   </refnamediv>
   
   <refsect1>
     <title>Description</title>
     <para>
-	  Compares two audio signals using the standard math operators
+	  Compares audio signals or arrays, sample by sample or value by value
+      All comparison operations are possible: `&lt; `&lt;=, >, >=, ==, !=
+    </para>
+    <para>
+      An audio signal can be compared against another audio signal, or
+      against a scaler (i- or k-value)
 
 	  <programlisting>
-		aout cmp aL, ">", aR
+		aOut cmp aL, ">", aR
+        aOut cmp aIn, ">=", 0.5
+        aOut cmp aIn, "`&lt;=", kthreshold
 	  </programlisting>
-	  
+    </para>
+    <para>
+      An array can be compared against another array, against a scalar,
+      or checked to be within the range of two scalars. All operations
+      are available for i- and k- arrays
+      <programlisting>
+        kOut[] cmp kIn[], ">=", kx
+        kOut[] cmp kA[], "==", kB[]
+        kOut[] cmp 0.5, "`&lt;", kIn[], "`&lt;=", 1
+      </programlisting>
+      
     </para>
   </refsect1>
 
   <refsect1>
     <title>Syntax</title>
 	<!--    Please keep this below ~70 characters by using backslashes to avoid overflow in the pdf version-->
-    <synopsis>aout <command>cmp</command> aL, S_operator, aR</synopsis>
-
+    <synopsis>aout <command>cmp</command> a1, S_operator, a2</synopsis>
+    <synopsis>aout <command>cmp</command> a1, S_operator, kx</synopsis>
+    <synopsis>kOut[] <command>cmp</command> kA, S_operator, kB</synopsis>
+    <synopsis>kOut[] <command>cmp</command> k1, S_operator1, kIn[], S_operator2, k2</synopsis>
   </refsect1>
 
   <refsect1>
@@ -45,13 +64,10 @@
     <title>Performance</title>
 	<!--    First list all input and output performance parameters-->
     <para>
-      <emphasis>aL</emphasis> -- Left signal
+      <emphasis>a1</emphasis> -- Left signal
     </para>
 	<para>
-      <emphasis>aR</emphasis> -- Right signal
-    </para>
-    <para>
-      <emphasis>kdur</emphasis> -- Duration of the trigger in seconds.
+      <emphasis>a2</emphasis> -- Right signal
     </para>
 	
     <para>
@@ -60,8 +76,7 @@
 		aout cmp aL, ">=", aR
 		aout cmp aL, "`&lt;", aR
 		aout cmp aL, "`&lt;=", aR
-		aout cmp aL, "==", aR
-		
+		aout cmp aL, "==", aR		
 	  </programlisting>
 	  
     </para>

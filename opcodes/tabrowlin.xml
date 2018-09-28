@@ -1,0 +1,110 @@
+<!--Change refentry id and indexterm id-->
+<refentry id="tabrowlin">
+  <indexterm id="IndexTabrowlin"><primary>tabrowlin</primary></indexterm>
+  <!--Make sure the category below is a valid one! See categories.py-->
+  <refentryinfo><title>>Table Control:Read/Write Operations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tabrowlin</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>tabrowlin</refname>
+    <refpurpose>
+      Copy a row from an f-table to another, interpolatin between rows
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      This opcode assumes the use of a table, which is a simple 1D array,
+      to hold a 2D matrix with a given row length.
+      Assuming such a 2D table containing multiple rows of sampled streams
+      (for instance, the amplitudes of a set of oscilators, sampled at a
+      regular interval), this opcode can extract one row (or a slice of a row)
+      of that data with linear interpolation between adjacent rows (if row is
+      not a whole number) and place the result in another table
+	</para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+	<!--    Please keep this below ~70 characters by using backslashes to avoid overflow in the pdf version-->
+    <synopsis><command>tabrowlin</command> krow, ifnsrc, ifndest, inumcols, ioffset=0, istart=0, iend=0, istep=1</synopsis>
+  </refsect1>
+
+  <refsect1>
+	<title>Initialization</title>
+	<para>
+	  <emphasis>ifnsrc</emphasis>: The table index to copy data from
+    </para>
+    <para>
+      <emphasis>ifndest</emphasis>: The table index to copy data to (should be able to hold one row of data)
+	</para>
+    <para>
+      <emphasis>inumcols</emphasis>: the number of columns a row has, in the source table
+	</para>
+    <para>
+      <emphasis>ioffset</emphasis>: an offset to where the 2D data starts (used to skip a header, if present)
+	</para>
+    <para>
+      <emphasis>istart</emphasis>: start index to read from (refers to the row)
+	</para>
+    <para>
+      <emphasis>iend</emphasis>: end index to read from the row (not inclusive, should not exceed inumcols)
+	</para>
+    <para>
+      <emphasis>istep</emphasis>: step used to read along the row
+	</para>
+    
+  </refsect1>
+
+  <refsect1>
+	<title>Performance</title>
+	<!--    First list all input and output performance parameters-->
+    <para>
+	  <emphasis>krow</emphasis> -- the row o read. It can be a fractional number, in which case
+      the row will be linearly interpolated with the next row
+	</para>
+
+  </refsect1>
+  <refsect1>
+	<!--To add examples, create the csd file in the examples directory, then run:-->
+	<!--python csd2docbook.py -f newopcodename.csd-->
+	<!--to generate the xml highlighted version used below-->
+    <title>Examples</title>
+    <para>
+      Here is an example of the tabrowlin opcode. It uses the file <ulink url="examples/tabrowlin.csd"><citetitle>tabrowlin.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the tabrowlin opcode.</title>
+        <xi:include href="examples-xml/tabrowlin.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+	<!--    it's always good to include a good See Also list  -->
+    <para>
+      <link linkend="slicearray"><citetitle>getrowlin</citetitle></link>,
+      <link linkend="slicearray"><citetitle>ftslice</citetitle></link>,
+      <link linkend="slicearray"><citetitle>slicearray</citetitle></link>,
+      <link linkend="copyf2array"><citetitle>copyf2array</citetitle></link>,
+	  <link linkend="tab2array"><citetitle>tab2array</citetitle></link>,
+      <link linkend="tablecopy"><citetitle>tablecopy</citetitle></link>,
+      <link linkend="tableicopy"><citetitle>tableicopy</citetitle></link>,
+   	</para>
+  </refsect1>
+
+  <refsect1>
+	<!--  And put your name and other relevant information here-->
+	<title>Credits</title>
+	<para>By: &nameeduardo; 2018</para>
+  </refsect1>
+
+  <!--Now remember to add a link from the appropriate category in the Opcode Overview.-->
+  <!--Add the entity to manual.xml-->
+  <!--Add the entity reference in the appropriate place in opcodes/top.xml-->
+  <!--And you're set! Maybe delete the comments as well...-->
+
+</refentry>
