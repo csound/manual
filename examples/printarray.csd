@@ -10,11 +10,6 @@ ksmps = 64
 nchnls = 2
 0dbfs  = 1
 
-; you can set some format options globally
-; otherwise it defaults to linewidth=80 and fmt=%.4f
-;                 linewidth fmt
-printarray_setfmt 92,       "%.3f"
-
 instr 1
   ; test i-time, 1D
   ivalues[] fillarray 0, 1, 3, 5, 7, 9

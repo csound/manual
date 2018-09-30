@@ -43,8 +43,6 @@ TODO: implement array operations for multidim. arrays
 ; for audio operations, render this to a soundfile and open in an editor
 ; to check the results
 
-printarray_setfmt 80, "%.2f"
-
 instr 1
   a0 linseg 0, p3, 1
   a1 linseg 1, p3, 0
