@@ -18,52 +18,56 @@
     <title>Description</title>
     <para>Plugin opcode in emugens.</para>
     <para>
-          Maps a linear range of values to another linear range of values.
+	  Maps a linear range of values to another linear range of values.
+      Supports both scalars and arrays, at i- and k-time
     </para>
   </refsect1>
 
   <refsect1>
     <title>Syntax</title>
-        <!--    Please keep this below ~70 characters by using backslashes to avoid overflow in the pdf version-->
-    <synopsis>kout <command>linlin</command> kin, ksrclo, ksrchi, kdstlo, kdsthi</synopsis>
-
+	<!--    Please keep this below ~70 characters by using backslashes to avoid overflow in the pdf version-->
+    <synopsis>ky <command>linlin</command> kx, ky0, ky1 [, kx0, kx1 ]</synopsis>
+    <synopsis>iy <command>linlin</command> ix, iy0, iy1 [, ix0, ix1 ]</synopsis>
+    <synopsis>kys[] <command>linlin</command> kxs[], ky0, ky1 [, kx0, kx1 ]</synopsis>
+    <synopsis>iys[] <command>linlin</command> ixs[], ky0, ky1, [ kx0, kx1 ]</synopsis>
+    <synopsis>kC[] <command>linlin</command> kx, kA[], kB[] [, kx0, kx1 ]</synopsis>
   </refsect1>
 
   <refsect1>
 
     <title>Performance</title>
-        <!--    First list all input and output performance parameters-->
+    <!--    First list all input and output performance parameters-->
     <para>
-          <emphasis>kin   </emphasis> -- Input signal
-        </para>
+      <emphasis role="strong">kx</emphasis> -- Input signal
+	</para>
 
-        <para>
-          <emphasis>ksrclo</emphasis> -- Lower limit of input range
-        </para>
+	<para>
+	  <emphasis role="strong">kx0</emphasis> -- Lower limit of input range. <emphasis>Defaults to 0</emphasis>
+	</para>
 
-        <para>
-          <emphasis>ksrchi</emphasis> -- Higher limit of input range
-        </para>
+	<para>
+	  <emphasis role="strong">kx1</emphasis> -- Higher limit of input range. <emphasis>Defaults to 1</emphasis>
+	</para>
 
-        <para>
-          <emphasis>kdstlo</emphasis> -- Lower limit of output range
-        </para>
+	<para>
+	  <emphasis role="strong">ky0</emphasis> -- Lower limit of output range
+	</para>
 
-        <para>
-          <emphasis>kdsthi</emphasis> -- Higher limit of output range
-        </para>
+	<para>
+	  <emphasis role="strong">ky1</emphasis> -- Higher limit of output range
+	</para>
 
-        <para>
-          <programlisting>
-out = (in - srclo) / (srchi - srclo) * (dsthi - dstlo) + dstlo
-          </programlisting>
-        </para>
-
+	<para>
+	  <programlisting>
+        y = (x - x0) / (x1 - x0) * (y1 - y0) + y0
+	  </programlisting>
+	</para>
+	
   </refsect1>
   <refsect1>
-        <!--To add examples, create the csd file in the examples directory, then run:-->
-        <!--python csd2docbook.py -f newopcodename.csd-->
-        <!--to generate the xml highlighted version used below-->
+    <!--To add examples, create the csd file in the examples directory, then run:-->
+    <!--python csd2docbook.py -f newopcodename.csd-->
+    <!--to generate the xml highlighted version used below-->
     <title>Examples</title>
     <para>
       Here is an example of the linlin opcode. It uses the file <ulink url="examples/linlin.csd"><citetitle>linlin.csd</citetitle></ulink>.
@@ -78,18 +82,19 @@ out = (in - srclo) / (srchi - srclo) * (dsthi - dstlo) + dstlo
     <title>See Also</title>
         <!--    it's always good to include a good See Also list  -->
     <para>
-      <link linkend="scale"><citetitle>scale</citetitle></link>,
-          <link linkend="ntrpol"><citetitle>ntrpol</citetitle></link>,
-          <link linkend="bpf"><citetitle>bpf</citetitle></link>
-
-        </para>
+      <link linkend="lincos"><citetitle>lincos</citetitle></link>, 
+	  <link linkend="bpf"><citetitle>bpf</citetitle></link>
+      <link linkend="bpfcos"><citetitle>bpfcos</citetitle></link>
+      <link linkend="scale"><citetitle>scale</citetitle></link>, 
+	  <link linkend="ntrpol"><citetitle>ntrpol</citetitle></link>, 
+	</para>
   </refsect1>
 
   <refsect1>
-        <!--  And put your name and other relevant information here-->
-        <title>Credits</title>
-        <para>By: &nameeduardo; 2017</para>
-        <para>New in version 6.09</para>
+	<!--  And put your name and other relevant information here-->
+	<title>Credits</title>
+	<para>By: &nameeduardo; 2017</para>
+    <para>New plugin in version 6.11</para>
   </refsect1>
 
   <!--Now remember to add a link from the appropriate category in the Opcode Overview.-->

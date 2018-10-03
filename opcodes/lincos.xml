@@ -1,0 +1,106 @@
+<!--Change refentry id and indexterm id-->
+<refentry id="lincos">
+  <indexterm id="IndexLincos"><primary>lincos</primary></indexterm>
+  <!--Make sure the category below is a valid one! See categories.py-->
+  <refentryinfo><title>Signal Generators:Linear and Exponential Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lincos</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>lincos</refname>
+    <refpurpose>
+	  Linear to cosine interpolation
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>Plugin opcode in emugens.</para>
+    <para>
+	  Maps a linear range of values to a cosine (easy-in/easy-out) range of values.
+      At present it supports only scalars, at i- and k-time (no arrays)
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+	<!--    Please keep this below ~70 characters by using backslashes to avoid overflow in the pdf version-->
+    <synopsis>ky <command>lincos</command> kx, ky0, ky1 [, kx0, kx1 ]</synopsis>
+    <synopsis>iy <command>lincos</command> ix, iy0, iy1 [, ix0, ix1 ]</synopsis>
+  </refsect1>
+
+  <refsect1>
+	
+    <title>Performance</title>
+	<!--    First list all input and output performance parameters-->
+    <para>
+	  <emphasis role="strong">kx</emphasis> -- Input signal
+	</para>
+
+	<para>
+	  <emphasis role="strong">ky0</emphasis> -- Lower limit of output range
+	</para>
+
+	<para>
+	  <emphasis role="strong">ky1</emphasis> -- Higher limit of output range
+	</para>
+
+    <para>
+	  <emphasis role="strong">kx0</emphasis> -- Lower limit of input range (default = 0)
+	</para>
+
+	<para>
+	  <emphasis role="strong">kx1</emphasis> -- Higher limit of input range (default = 1)
+	</para>
+
+
+
+	<para>
+	  <programlisting>
+dx = ((x-x0) / (x1-x0)) * PI + PI
+y  = y0 + ((y1 - y0) * (1 + cos(dx)) / 2.0);
+	  </programlisting>
+	</para>
+	
+  </refsect1>
+  <refsect1>
+	<!--To add examples, create the csd file in the examples directory, then run:-->
+	<!--python csd2docbook.py -f newopcodename.csd-->
+	<!--to generate the xml highlighted version used below-->
+    <title>Examples</title>
+    <para>
+      Here is an example of the lincos opcode. It uses the file <ulink url="examples/lincos.csd"><citetitle>lincos.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the lincos opcode.</title>
+        <xi:include href="examples-xml/lincos.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+	<!--    it's always good to include a good See Also list  -->
+    <para>
+      <link linkend="linlin"><citetitle>linlin</citetitle></link>,
+      <link linkend="cosseg"><citetitle>cosseg</citetitle></link>, 
+      <link linkend="scale"><citetitle>scale</citetitle></link>, 
+	  <link linkend="ntrpol"><citetitle>ntrpol</citetitle></link>, 
+	  <link linkend="bpf"><citetitle>bpf</citetitle></link>
+      
+	</para>
+  </refsect1>
+
+  <refsect1>
+	<!--  And put your name and other relevant information here-->
+	<title>Credits</title>
+	<para>By: &nameeduardo; 2018</para>
+    <para>New plugin in version 6.12</para>
+  </refsect1>
+
+  <!--Now remember to add a link from the appropriate category in the Opcode Overview.-->
+  <!--Add the entity to manual.xml-->
+  <!--Add the entity reference in the appropriate place in opcodes/top.xml-->
+  <!--And you're set! Maybe delete the comments as well...-->
+
+</refentry>

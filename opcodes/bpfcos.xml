@@ -1,0 +1,104 @@
+<!--Change refentry id and indexterm id-->
+<refentry id="bpfcos">
+  <indexterm id="IndexBpfcos"><primary>bpfcos</primary></indexterm>
+  <!--Make sure the category below is a valid one! See categories.py-->
+  <refentryinfo><title>Signal Generators:Linear and Exponential Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>bpfcos</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>bpfcos</refname>
+    <refpurpose>
+	  Break point function with cosine (easy-in/easy-out) interpolation
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>Plugin opcode in emugens.</para>
+    <para>
+	  Break-point function with cosine interpolation. 
+      Given an x value and a series of pairs (x, y), it returns
+      the corresponding y value in the half cosine curve defined
+      by the pairs.
+      It works both at i- and k- time
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+	<!--    Please keep this below ~70 characters by using backslashes to avoid overflow in the pdf version-->
+    <synopsis>ky <command>bpfcos</command> kx, kx1, ky1, kx2, ..., kxn, kyn</synopsis>
+    <synopsis>kys[] <command>bpfcos</command> kxs[], kx1, ky1, kx2, ..., kxn, kyn</synopsis>
+   
+  </refsect1>
+
+  <refsect1>
+  
+    <title>Performance</title>
+	<!--    First list all input and output performance parameters-->
+    <para>
+	  <emphasis role="strong">kx</emphasis> -- Input value. Can also be an array
+	</para>
+	<para>
+      <emphasis role="strong">kxn, kyn</emphasis> -- Defines a breakpoint. Can be
+	  changed at krate, but all <emphasis>kx</emphasis>s must be sorted
+    </para>
+	
+    <para>
+	  The points (kx1, ky1), (kx2, ky2), etc, define a cosine
+	  interpolated function. This function is evaluated at point
+	  <emphasis>kx</emphasis>. This function extends to both -inf
+	  and +inf, so if kx &lt; kx1 then ky = ky1 and the same holds true
+	  the other end.
+	</para>
+
+	<note>
+	  <para>
+		x values need to be sorted. Both x and y values can change but
+		x values must stay sorted.
+	  </para>
+	</note>
+  </refsect1>
+  <refsect1>
+	<!--To add examples, create the csd file in the examples directory, then run:-->
+	<!--python csd2docbook.py -f newopcodename.csd-->
+	<!--to generate the xml highlighted version used below-->
+    <title>Examples</title>
+    <para>
+      Here is an example of the bpfcos opcode. It uses the file <ulink url="examples/bpfcos.csd"><citetitle>bpfcos.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the bpfcos opcode.</title>
+        <xi:include href="examples-xml/bpfcos.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+	<!--    it's always good to include a good See Also list  -->
+    <para>
+      <link linkend="bpf"><citetitle>bpf</citetitle></link>, 
+      <link linkend="lincos"><citetitle>lincos</citetitle></link>,
+      <link linkend="cosseg"><citetitle>cosseg</citetitle></link>
+      <link linkend="linlin"><citetitle>linlin</citetitle></link>,
+      <link linkend="scale"><citetitle>scale</citetitle></link>, 
+	  <link linkend="ntrpol"><citetitle>ntrpol</citetitle></link>, 
+	  <link linkend="xyscale"><citetitle>xyscale</citetitle></link> 
+    </para>
+  </refsect1>
+
+  <refsect1>
+	<!--  And put your name and other relevant information here-->
+    <title>Credits</title>
+    <para>By: &nameeduardo; 2018</para>
+    <para>New plugin in version 6.12</para>
+  </refsect1>
+
+  <!--Now remember to add a link from the appropriate category in the Opcode Overview.-->
+  <!--Add the entity to manual.xml-->
+  <!--Add the entity reference in the appropriate place in opcodes/top.xml-->
+  <!--And you're set! Maybe delete the comments as well...-->
+
+</refentry>
