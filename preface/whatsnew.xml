@@ -66,6 +66,374 @@
     </itemizedlist>
   </para>-->
 
+  <bridgehead>Release Notes for Csound 6.12 ()</bridgehead>
+  <para>
+    Many changes including the removal of vst2cs functionality due to a
+    copyright issue.
+  </para>
+  <para>
+    The changes made in 6.11 to raw format reading have been modified so
+    gen1 and diskin ignore positive file formats and use the file header,
+    unless the format is negative when it uses the absolute value in a raw
+    audio file. This should preserve most compatibility issues.
+  </para>
+  <para>
+   There are a number of new and improved opcodes, new facilities in
+   scores and many bug fixes.
+  </para>
+  <para>
+    <itemizedlist>
+      <listitem>
+        <para>New opcodes:
+          <itemizedlist>
+            <listitem>
+              <simpara><link
+              linkend="fluidInfo"><citetitle>fluidInfo</citetitle></link>
+              </simpara> retrieves program information from a currently loaded
+              soundfont.
+            </listitem>
+          </itemizedlist>
+          <itemizedlist>
+            <listitem>
+              New opcode <simpara><link
+              linkend="ftaudio"><citetitle>ftaudio</citetitle></link></simpara>
+              writes a ftable to an audio file; irate and triggered k-rate
+              version exist and k-rate version supports sync or async writing.
+            </listitem>
+          </itemizedlist>
+          <itemizedlist>
+            <listitem>
+              Version of <simpara><link
+              linkend="OSClisten"><citetitle>OSClisten</citetitle></link>
+              </simpara> that writes the data to a k-rate array now exists.
+            </listitem>
+          </itemizedlist>
+          <itemizedlist>
+            <listitem>
+              <simpara><link linkend="OSCcount"><citetitle>OSCcount</citetitle>
+              </link></simpara> returns the number of OSC incoming messages
+              pending.
+            </listitem>
+          </itemizedlist>
+          <itemizedlist>
+            <listitem>
+              <simpara><link
+              linkend="faustplay"><citetitle>faustplay</citetitle></link>
+              </simpara> and <simpara><link linkend="faustdsp">
+              <citetitle>faustdsp</citetitle></link></simpara> are new opcodes
+              splitting the faust DSP instantiation and performance.
+            </listitem>
+          </itemizedlist>
+          <itemizedlist>
+            <listitem>
+              <simpara><link
+              linkend="OSCbundle"><citetitle>OSCbundle</citetitle></link>
+              </simpara> sends a collection of similar OSC messages as a single
+              packet for efficiency.
+            </listitem>
+          </itemizedlist>
+          <itemizedlist>
+            <listitem>
+              <simpara><link linkend="beosc"><citetitle>beosc</citetitle></link>
+              </simpara> and <simpara><link linkend="beadsynt">
+              <citetitle>beadsynt</citetitle></link></simpara> are band enhanced
+              oscillator and oscillator bank. <simpara><link
+              linkend="bpfcos"><citetitle>bpfcos</citetitle></link></simpara>
+              is for breakpont files with interpolation. Similary <simpara>
+              <link linkend="lincos"><citetitle>lincos</citetitle></link>
+              </simpara> adds cosine interpolation to <simpara><link
+              linkend="linlin"><citetitle>linlin</citetitle></link></simpara>.
+            </listitem>
+          </itemizedlist>
+          <itemizedlist>
+            <listitem>
+              <simpara><link
+              linkend="printarray"><citetitle>printarray</citetitle></link>
+              </simpara> and <simpara><link linkend="reshapearray">
+              <citetitle>reshapearray</citetitle></link></simpara> act on
+              arrays.
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Orchestra:
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                New preprocessor option #includestr.  This is like #include but
+                has macro expansion in the double-quote delimited string.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Use of tied notes in subinstr fixed.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Nesting macro calls more than about 10 caused a crash; now
+                unlimited nesting works.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Runtime error message now (usually) include a line number and a
+                file/macro trace.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Multiple assignments such as ka, kb = 1,2  are again supported
+                by the parser; it had inadvertently got lost.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                The problematic use of i() with an array element directy is now
+                flagged as an error.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Score:
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                New preprocessor option #includestr. This is like #include but
+                has macro expansion in the double-quote delimited string.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                'd' score opcode for real-time performance. This was issue #966.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Bug in np operation fixed.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Use of [] syntax in a score could lead to a loss of precision
+                for numbers over about 1 million; older version restored.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Nesting macro calls more than about 10 caused a crash; now
+                unlimited nesting works.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                The forms for delayed ending of sections (e 5 or s 5) now work
+                with fractional delays; previously only read the integer part.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Modified Opcodes and Gens:
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Add optional argument to ftom for rounding answer to integer.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                flooper2 and syncgrain etc now allow resampling.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                chnclear can now take a list of channels to clear instead of
+                just one.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                printf and printf_i now are like the manual: all arguments
+                beyond the format and trigger are optional.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                prints and printks can take string arguments printed with %s.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                GEN2 can now take a size of zero, which is interpreted as size
+                sufficient for the number of values provided.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                faustcompile now includes a new optional parameter to allow it
+                to be run in a blocking mode. Defaults (as before) to
+                non-blocking.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                fillarray can be run at k-rate if any of the argument/values
+                are k-rate.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Bugs Fixed:
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                A typo in p5glove meant that the command to read the button
+                status as a bitmap only returned state of button A.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                diskin to array fixed and also use with small ksmps.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                In loscil it sometimes failed to deal with the ibas argument;
+                this has now been reworked to be correct.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                madsr could overflow an internal counter when given a negative
+                p3.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Fixed mapping from threads to lua_States (issue #959).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                The time calculation in flooper2, flooper, and syncgrain was
+                corrected.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Resampling and pitch fixed in pvstanal
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Rare buffer overflow case in faust opcodes fixed.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                pvsftw had an incorrect check for fft format which led to
+                incorrect claim of bad format; fixed.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                If ksmps was 1 the opcode linenr at arate failed to work; fixed.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>window opcode fixed.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                The test for compatible subtypes of f-values in a number of pvs
+                opcodes was wrong, causing spurious error messages.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                cosseg was broken for more than one segment; now OK.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                monitor opcode did not work correctly when using multiple
+                processes; fixed.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>System Changes:
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Recompilation of named instruments totally reworked to avoid
+                errors and memory leaks.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                The allocation of instrument names to internal numbers has been
+                rewritten and should now be usable with replacements in live
+                coding.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Printing the number allocated to a named instrument now behaves
+                the manual, not just for debug.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                If liblo version 0.29 is available csound can be built to use
+                it (with a compiler flag LIBLO29) and this fixes some bugs
+                related to heavy/complex use of OSClisten. Unfortunately the
+                older 0.28 version is being distributed by some Linux distros.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                The orchestra compiler has a number of new optimisations,
+                avoiding unnecessary assignments and doing some more expression
+                optimisations.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>API:
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                csound->ReadScore was changed so it behaves the same as a score
+                in a csd or sco file. This could incorrectly give an infinite
+                score or not in unexpected cases.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Platform Specific:
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Bela: allow analog in and out with different channel numbers.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+
   <bridgehead>Release Notes for Csound 6.11 (2018 May)</bridgehead>
   <para>
     There has been a great amount of internal reorganisation, which should not
