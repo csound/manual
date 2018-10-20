@@ -92,30 +92,22 @@
               </simpara> retrieves program information from a currently loaded
               soundfont.
             </listitem>
-          </itemizedlist>
-          <itemizedlist>
             <listitem>
               New opcode <simpara><link
               linkend="ftaudio"><citetitle>ftaudio</citetitle></link></simpara>
               writes a ftable to an audio file; irate and triggered k-rate
               version exist and k-rate version supports sync or async writing.
             </listitem>
-          </itemizedlist>
-          <itemizedlist>
             <listitem>
               Version of <simpara><link
               linkend="OSClisten"><citetitle>OSClisten</citetitle></link>
               </simpara> that writes the data to a k-rate array now exists.
             </listitem>
-          </itemizedlist>
-          <itemizedlist>
             <listitem>
               <simpara><link linkend="OSCcount"><citetitle>OSCcount</citetitle>
               </link></simpara> returns the number of OSC incoming messages
               pending.
             </listitem>
-          </itemizedlist>
-          <itemizedlist>
             <listitem>
               <simpara><link
               linkend="faustplay"><citetitle>faustplay</citetitle></link>
@@ -123,35 +115,37 @@
               <citetitle>faustdsp</citetitle></link></simpara> are new opcodes
               splitting the faust DSP instantiation and performance.
             </listitem>
-          </itemizedlist>
-          <itemizedlist>
             <listitem>
               <simpara><link
               linkend="OSCbundle"><citetitle>OSCbundle</citetitle></link>
               </simpara> sends a collection of similar OSC messages as a single
               packet for efficiency.
             </listitem>
-          </itemizedlist>
-          <itemizedlist>
             <listitem>
               <simpara><link linkend="beosc"><citetitle>beosc</citetitle></link>
               </simpara> and <simpara><link linkend="beadsynt">
               <citetitle>beadsynt</citetitle></link></simpara> are band enhanced
               oscillator and oscillator bank. <simpara><link
               linkend="bpfcos"><citetitle>bpfcos</citetitle></link></simpara>
-              is for breakpont files with interpolation. Similary <simpara>
+              is for breakpoint files with interpolation. Similarly <simpara>
               <link linkend="lincos"><citetitle>lincos</citetitle></link>
               </simpara> adds cosine interpolation to <simpara><link
               linkend="linlin"><citetitle>linlin</citetitle></link></simpara>.
             </listitem>
-          </itemizedlist>
-          <itemizedlist>
             <listitem>
               <simpara><link
               linkend="printarray"><citetitle>printarray</citetitle></link>
               </simpara> and <simpara><link linkend="reshapearray">
               <citetitle>reshapearray</citetitle></link></simpara> act on
               arrays.
+            </listitem>
+            <listitem>
+              <simpara><link
+              linkend="trim"><citetitle>trim</citetitle></link>
+              </simpara> and <simpara><link linkend="trim_i">
+              <citetitle>trim_i</citetitle></link></simpara> adjust the size of
+              a 1 dimensional array, either bigger or smaller, preserving data
+              and/or padding with zeros.
             </listitem>
           </itemizedlist>
         </para>
@@ -197,6 +191,17 @@
               <simpara>
                 If an included file name has a "/" in it then any nested include
                 is relative to that directory. (Issue #973).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Redefinition of UDOs with zero output arguments fixed.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                A very ocscure bug in running sub-instruments, which has been
+                in the code for nearly a year, was fixed.
               </simpara>
             </listitem>
           </itemizedlist>
@@ -295,6 +300,28 @@
                 are k-rate.
               </simpara>
             </listitem>
+            <listitem>
+              <simpara>
+                slicearray for other than i-rate arrays runs at k-rate only.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                pvstrace now has the option also to return an array containing
+                the bin numbers.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Utilities:
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                A coding error in mixer was fixed. It was very broken.
+              </simpara>
+            </listitem>
           </itemizedlist>
         </para>
       </listitem>
@@ -376,12 +403,26 @@
                 processes; fixed.
               </simpara>
             </listitem>
+            <listitem>
+              <simpara>
+                in the linenr opcode if the release stage was entered before
+                the end of the rise the output value jumped to the end value
+                and then decayed, causing a glitch. This is fixed. (#1048)
+              </simpara>
+            </listitem>
           </itemizedlist>
         </para>
       </listitem>
       <listitem>
         <para>System Changes:
           <itemizedlist>
+            <listitem>
+              <simpara>
+                The various -zN options now reports the number of opcodes for
+                the request, so differs with respect to deprecated and
+                polymorphic opcodes.
+              </simpara>
+            </listitem>
             <listitem>
               <simpara>
                 Recompilation of named instruments totally reworked to avoid
