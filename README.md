@@ -19,10 +19,10 @@ v2.1 or later; and [xsltproc](http://xmlsoft.org/XSLT/xsltproc2.html).
 
 ### On Linux
 
-To install DocBook and xsltproc, run
+To install DocBook, the required stylesheets, and xsltproc on a Debian-based system (including Ubuntu), run
 
 ```sh
-sudo apt-get install -y docbook xsltproc
+sudo apt-get install -y docbook docbook-xsl xsltproc
 ```
 
 Python is preinstalled on most Linux distributions. If you don’t have Python,
