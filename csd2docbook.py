@@ -414,12 +414,9 @@ class DocBookFormatter(Formatter):
             outfile.write('<emphasis role="' + typeString + '">' + escapedValue + '</emphasis>')
 
 for path in glob.glob('examples/*.csd'):
-    print("CSD path:" + path)
     with open(path, 'r') as file:
         code = file.read()
-        path_xml = path.replace('examples', 'examples-xml') + '.xml'
-        print("CSD path_xml:" + path_xml)
-        with open(path_xml, 'w') as file2:
+        with open(path.replace('examples', 'examples-xml') + '.xml', 'w') as file2:
             file2.write('<refsect1>\n')
             file2.write(highlight(code, CsoundDocumentLexer(), DocBookFormatter()))
             file2.write('</refsect1>\n')
