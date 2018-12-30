@@ -370,7 +370,7 @@ for opcodeName in opcodeNames:
 # as closely as possible, change the token type of score statements from Keyword
 # to Name.Builtin so that they look like opcodes.
 stateTuple = CsoundScoreLexer.tokens['root'][3]
-CsoundScoreLexer.tokens['root'][3] = (stateTuple[0], Token.Name.Builtin, stateTuple[2])
+CsoundScoreLexer.tokens['root'][3] = stateTuple[:1] + (Token.Name.Builtin,) + stateTuple[2:]
 
 
 # See http://pygments.org/docs/formatterdevelopment/.
