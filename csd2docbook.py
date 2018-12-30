@@ -368,7 +368,11 @@ for opcodeName in opcodeNames:
 # To match the syntax highlighting from
 # https://github.com/csound/manual/tree/c1b097bae66e04c2b11395f12a03f0d67fc1f059
 # as closely as possible, change the token type of score statements from Keyword
-# to Name.Builtin so that they look like opcodes.
+# to Name.Builtin so that they look like opcodes. With Pygments 2.3 and later,
+# this doesn’t apply to m statements (https://csound.com/docs/manual/m.html),
+# n statements (https://csound.com/docs/manual/n.html), or p symbols
+# (https://csound.com/docs/manual/ScoreNextp.html); see
+# https://bitbucket.org/birkenfeld/pygments-main/commits/b60b37f36a03802e0c5ed412268d37bbc55eb9fb#Lpygments/lexers/csound.pyT159
 stateTuple = CsoundScoreLexer.tokens['root'][3]
 CsoundScoreLexer.tokens['root'][3] = stateTuple[:1] + (Token.Name.Builtin,) + stateTuple[2:]
 
@@ -388,7 +392,10 @@ class DocBookFormatter(Formatter):
                 if currentTypeString == 'k' and re.match('end(?:in|op)|instr|opcode', currentValue):
                     # If the current token is a Keyword and is one of endin,
                     # endop, instr, or opcode, treat it as a Keyword.Declaration
-                    # token.
+                    # token. This is only necessary with Pygments 2.1 through
+                    # 2.2. In Pygments 2.3 and later, endin, endop, instr, and
+                    # opcode are Keyword.Declaration tokens; see
+                    # https://bitbucket.org/birkenfeld/pygments-main/commits/b60b37f36a03802e0c5ed412268d37bbc55eb9fb#Lpygments/lexers/csound.pyT249
                     currentTypeString = 'kd'
                 elif currentTypeString == 'kt' and re.match('g?[aikSw]', currentValue) and typeString == 'n':
                     # If the current token is a Keyword.Type, has a value that
