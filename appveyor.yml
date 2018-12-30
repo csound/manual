@@ -8,6 +8,8 @@ install:
   - pip install pygments
   # Install xsltproc.
   - choco install xsltproc
+  # Git on AppVeyor includes a non-functional xsltproc. Remove this.
+  - if exist "%ProgramFiles%\Git\usr\bin\xsltproc.exe" del "%ProgramFiles%\Git\usr\bin\xsltproc.exe"
 
 build_script:
   - set XSL_BASE_PATH=C:/docbook-xsl-nons-1.79.2
