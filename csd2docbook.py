@@ -25,52 +25,6 @@ from pygments.token import Token, STANDARD_TYPES
 from xml.sax.saxutils import escape
 
 
-# The _csound_builtins.OPCODES set does not contain these opcodes, and there’s
-# not yet a pull request to add them.
-opcodeNames = '''
-mp3scal_check
-mp3scal_load
-mp3scal_load2
-mp3scal_play
-mp3scal_play2
-socksend_k
-sumTableFilter
-systime
-vbap1move
-'''.split()
-
-# These aren’t in _csound_builtins.OPCODES because CsoundOrchestraLexer treats
-# them as keywords:
-#   cggoto   https://csound.github.io/docs/manual/cggoto.html
-#   cigoto   https://csound.github.io/docs/manual/cigoto.html
-#   cingoto  (undocumented)
-#   ckgoto   https://csound.github.io/docs/manual/ckgoto.html
-#   cngoto   https://csound.github.io/docs/manual/cngoto.html
-#   cnkgoto  (undocumented)
-#   endin    https://csound.github.io/docs/manual/endin.html
-#   endop    https://csound.github.io/docs/manual/endop.html
-#   goto     https://csound.github.io/docs/manual/goto.html
-#   igoto    https://csound.github.io/docs/manual/igoto.html
-#   instr    https://csound.github.io/docs/manual/instr.html
-#   kgoto    https://csound.github.io/docs/manual/kgoto.html
-#   loop_ge  https://csound.github.io/docs/manual/loop_ge.html
-#   loop_gt  https://csound.github.io/docs/manual/loop_gt.html
-#   loop_le  https://csound.github.io/docs/manual/loop_le.html
-#   loop_lt  https://csound.github.io/docs/manual/loop_lt.html
-#   opcode   https://csound.github.io/docs/manual/opcode.html
-#   return   https://csound.github.io/docs/manual/return.html
-#   rigoto   https://csound.github.io/docs/manual/rigoto.html
-#   rireturn https://csound.github.io/docs/manual/rireturn.html
-#   tigoto   https://csound.github.io/docs/manual/tigoto.html
-#   timout   https://csound.github.io/docs/manual/timout.html
-
-for opcodeName in opcodeNames:
-    if opcodeName in _csound_builtins.OPCODES:
-        print('_csound_builtins.OPCODES already contains ‘' + opcodeName + '’')
-    else:
-        _csound_builtins.OPCODES.add(opcodeName)
-
-
 # To match the syntax highlighting from
 # https://github.com/csound/manual/tree/c1b097bae66e04c2b11395f12a03f0d67fc1f059
 # as closely as possible, change the token type of score statements from Keyword
