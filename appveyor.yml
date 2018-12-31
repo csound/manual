@@ -7,23 +7,13 @@ install:
   # Install Pygments.
   - pip install pygments
   # Install xsltproc.
-  - mkdir C:\xsltproc
-  - cd C:\xsltproc
-  - ps: Invoke-WebRequest ftp://ftp.zlatkovic.com/libxml/iconv-1.9.2.win32.zip -OutFile iconv.zip
-  - 7z e iconv.zip iconv.dll -r
-  - ps: Invoke-WebRequest ftp://ftp.zlatkovic.com/libxml/libxml2-2.7.8.win32.zip -OutFile libxml2.zip
-  - 7z e libxml2.zip libxml2.dll -r
-  - ps: Invoke-WebRequest ftp://ftp.zlatkovic.com/libxml/libxslt-1.1.26.win32.zip -OutFile libxslt.zip
-  - 7z e libxslt.zip libexslt.dll libxslt.dll xsltproc.exe -r
-  - ps: Invoke-WebRequest ftp://ftp.zlatkovic.com/libxml/zlib-1.2.5.win32.zip -OutFile zlib.zip
-  - 7z e zlib.zip zlib1.dll -r
-  - rm *.zip
-  - set PATH=%PATH%;%CD%
-  - cd %APPVEYOR_BUILD_FOLDER%
+  - choco install xsltproc
+  # Git on AppVeyor includes a non-functional xsltproc. Remove this.
+  - if exist "%ProgramFiles%\Git\usr\bin\xsltproc.exe" del "%ProgramFiles%\Git\usr\bin\xsltproc.exe"
 
 build_script:
   - set XSL_BASE_PATH=C:/docbook-xsl-nons-1.79.2
-  # Other make executables are in C:\cygwin\bin and C:\msys64\usr\bin.
-  - C:\cygwin64\bin\make html
+  # Other make executables are in C:\cygwin64\bin and C:\msys64\usr\bin.
+  - C:\cygwin\bin\make html-dist
 
 test: off
