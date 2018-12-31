@@ -15,7 +15,7 @@ make a pull request](https://guides.github.com/activities/forking/).
 
 In addition to other requirements specific to what you’re building, you need
 DocBook; [Python](https://www.python.org), with [Pygments](http://pygments.org)
-v2.1 or later; and [xsltproc](http://xmlsoft.org/XSLT/xsltproc2.html).
+v2.3 or later; and [xsltproc](http://xmlsoft.org/XSLT/xsltproc2.html).
 
 ### On Linux
 
@@ -29,16 +29,16 @@ Python is preinstalled on most Linux distributions. If you don’t have Python,
 visit https://docs.python.org/2/using/unix.html to learn how to install Python
 or build it from source.
 
-To install Pygments v2.1 or later, run
+To install Pygments v2.3 or later, run
 
 ```sh
-sudo pip install 'pygments>=2.1'
+sudo pip install 'pygments>=2.3'
 ```
 
 or, if you don’t have [pip](https://pip.pypa.io/),
 
 ```sh
-sudo easy_install 'pygments>=2.1'
+sudo easy_install 'pygments>=2.3'
 ```
 
 ### On macOS
@@ -50,7 +50,7 @@ https://brew.sh. Then, enter `brew install docbook dockbook-xsl` in a Terminal.
 To install Pygments v2.1 or later, enter in Terminal
 
 ```sh
-sudo easy_install 'pygments>=2.1'
+sudo easy_install 'pygments>=2.3'
 ```
 
 Python and xsltproc are preinstalled on macOS.
@@ -86,7 +86,7 @@ instead of `make ⟨target⟩`.
 
 If you see an error message that `CsoundDocumentLexer` isn’t found when you try
 to build a `⟨target⟩`, then you’re probably using Pygments v2.0.2 or earlier,
-and you need [Pygments v2.1 or later](#general-requirements).
+and you need [Pygments v2.3 or later](#general-requirements).
 
 ### HTML
 
