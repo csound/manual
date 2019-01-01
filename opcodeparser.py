@@ -3,8 +3,10 @@
 # Licensed under the GPL licence version 3 or later
 # modification for empty arg in command and links on opcodes by Francois Pinot February 2007
 
+from __future__ import print_function
+
 from xml.dom import minidom
-import os, glob, sys
+import os, glob
 
 # categories holds the list of valid categories for opcodes
 from categories import categories
@@ -43,7 +45,7 @@ for i,filename in enumerate(files):
     source = open(filename, 'r')
     # Necessary to define entities>
     entryText = source.read().replace("\xef\xbb\xbf","")
-    newfile = headerText + entryText
+    newfile = headerText + '<book id="index" lang="en">' + entryText + '</book>'
     newfile = newfile.replace("\r", "")
 
     source.close()
@@ -117,17 +119,17 @@ for i,filename in enumerate(files):
         category = category[21:-23]
         #print filename, category
     else:
-        print "no refentryinfo tag for file " + filename
+        print("no refentryinfo tag for file " + filename)
         category = "Miscellaneous"
         if (entry!=''):
-            print filename + " sent to Miscellaneous"
+            print(filename + " sent to Miscellaneous")
     desc = xmldoc.getElementsByTagName('refpurpose')
     description = ""
     if (len(desc)!=0 and entry != ''):
         description = desc[0].firstChild.toxml().strip()
         #print filename, category
     else:
-        print "no refpurpose tag for file " + filename
+        print("no refpurpose tag for file " + filename)
     #print category
     match = False
     for j, thiscategory in enumerate(categories):
@@ -135,11 +137,11 @@ for i,filename in enumerate(files):
             entries[j].append([entry, description])
             match = True
     if match == False:
-        print filename + "---- WARNING! No Category Match!"
+        print(filename + "---- WARNING! No Category Match!")
 
 for i in range(len(categories)):
     if (len(entries[i])==0):
-        print "No entries for category: "+categories[i]+"...Skipping"
+        print("No entries for category: "+categories[i]+"...Skipping")
         continue
     #quickref.write("<para></para><formalpara>\n")
     quickref.write("<category name=\"" + categories[i] + "\">\n")
@@ -154,9 +156,9 @@ for i in range(len(categories)):
         count += 1
     #quickref.write("</para></formalpara>\n<para></para>")
     quickref.write("</category>\n")
-    print str(count) + " entries in category: " + categories[i]
+    print(str(count) + " entries in category: " + categories[i])
 
 quickref.write('</opcodes>\n')
 quickref.close()
-print entries
+print(entries)
 
