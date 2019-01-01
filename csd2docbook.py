@@ -25,6 +25,29 @@ from pygments.token import Token, STANDARD_TYPES
 from xml.sax.saxutils import escape
 
 
+# FluidSynth opcodes are not installed with Csound 6.11 and later on macOS, and
+# they were removed from _csound_builtins.OPCODES at
+# https://bitbucket.org/birkenfeld/pygments-main/diff/pygments/lexers/_csound_builtins.py?diff2=1d8eed62b214
+opcodeNames = '''
+fluidAllOut
+fluidCCi
+fluidCCk
+fluidControl
+fluidEngine
+fluidInfo
+fluidLoad
+fluidNote
+fluidOut
+fluidProgramSelect
+fluidSetInterpMethod
+'''.split()
+for opcodeName in opcodeNames:
+    if opcodeName in _csound_builtins.OPCODES:
+        print('_csound_builtins.OPCODES already contains ‘' + opcodeName + '’')
+    else:
+        _csound_builtins.OPCODES.add(opcodeName)
+
+
 # To match the syntax highlighting from
 # https://github.com/csound/manual/tree/c1b097bae66e04c2b11395f12a03f0d67fc1f059
 # as closely as possible, change the token type of score statements from Keyword
@@ -71,7 +94,6 @@ class DocBookFormatter(Formatter):
 
         outfile.write('</programlisting>\n')
 
-
     def writeToken(self, typeString, value, outfile):
         escapedValue = escape(value)
         # Don’t wrap Text tokens in emphasis elements.
@@ -79,6 +101,7 @@ class DocBookFormatter(Formatter):
             outfile.write(escapedValue)
         else:
             outfile.write('<emphasis role="' + typeString + '">' + escapedValue + '</emphasis>')
+
 
 for path in glob.glob('examples/*.csd'):
     with open(path, 'r') as file:
