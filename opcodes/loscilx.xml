@@ -24,7 +24,9 @@
     <title>Syntax</title>
     <synopsis>ar1 [, ar2, ar3, ar4, ar5, ar6, ar7, ar8, ar9, ar10, ar11, ar12, ar13, ar14, \
       ar15, ar16] <command>loscilx</command> xamp, kcps, ifn \
-      [, iwsize, ibas, istrt, imod, ibeg, iend]</synopsis>
+    [, iwsize, ibas, istrt, imod, ibeg, iend]</synopsis>
+    <synopsis>ar[] <command>loscilx</command> xamp, kcps, ifn \
+    [, iwsize, ibas, istrt, imod, ibeg, iend]</synopsis>
   </refsect1>
  
   <refsect1>
@@ -40,27 +42,27 @@
     <para>
       <emphasis>iwsize</emphasis> (optional) -- window size used in interpolation.
       iwsize (optional, defaults to zero) -- interpolation window size, in samples. Can be one of the following:
-   	<itemizedlist>
+      <itemizedlist>
 
-		<listitem>
-			<para>1: round to nearest sample (no interpolation, for <emphasis>kpitch</emphasis>=1)</para>
-		</listitem>
+  <listitem>
+    <para>1: round to nearest sample (no interpolation, for <emphasis>kpitch</emphasis>=1)</para>
+  </listitem>
 
-		<listitem>
-			<para>2: linear interpolation</para>
-		</listitem>
+  <listitem>
+    <para>2: linear interpolation</para>
+  </listitem>
+        
+  <listitem>
+    <para>4: cubic interpolation</para>
+  </listitem>
 
-		<listitem>
-			<para>4: cubic interpolation</para>
-		</listitem>
+  <listitem>
+    <para>&gt;= 8: <emphasis>iwsize</emphasis> point sinc interpolation with anti-aliasing (slow)</para>
+  </listitem>
 
-		<listitem>
-			<para>&gt;= 8: <emphasis>iwsize</emphasis> point sinc interpolation with anti-aliasing (slow)</para>
-		</listitem>
+      </itemizedlist>
 
-	</itemizedlist>
-
-	Zero or negative values select the default, which is cubic interpolation.
+      Zero or negative values select the default, which is cubic interpolation.
     </para>
 
     <para>
@@ -100,7 +102,7 @@
     <title>Performance</title>
 
     <para>
-      <emphasis>ar1, ar2, ...</emphasis> -- the output at audio-rate.
+      <emphasis>ar1, ar2, ... ar[]</emphasis> -- the output at audio-rate.
       The number of outputs must match the number of channels in the
       sample file.
     </para>
@@ -174,5 +176,6 @@
     <para>Written by &nameistvan;.</para>
     <para>2006</para>
     <para>New in Csound 5.03</para>
+    <para>Array version new in Csound 6.13 (February 2019)</para>
   </refsect1>
 </refentry>
