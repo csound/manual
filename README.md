@@ -47,6 +47,9 @@ The easiest way to install DocBook is probably through
 [Homebrew](https://brew.sh). To install Homebrew, follow the instructions at
 https://brew.sh. Then, enter `brew install docbook dockbook-xsl` in a Terminal. 
 
+Make note of the XSL install directory as you might need it to pass it to make to build.
+(As of macOS 10.14.3, brew installs XSL in `/usr/local/Cellar/docbook-xsl/1.79.1/docbook-xsl`).
+
 To install Pygments v2.3 or later, enter in Terminal
 
 ```sh
