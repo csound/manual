@@ -45,7 +45,7 @@ sudo easy_install 'pygments>=2.3'
 
 The easiest way to install DocBook is probably through
 [Homebrew](https://brew.sh). To install Homebrew, follow the instructions at
-https://brew.sh. Then, enter `brew install docbook dockbook-xsl` in a Terminal. 
+https://brew.sh. Then, enter `brew install docbook docbook-xsl` in a Terminal. 
 
 To install Pygments v2.3 or later, enter in Terminal
 
