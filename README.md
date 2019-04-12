@@ -45,10 +45,7 @@ sudo easy_install 'pygments>=2.3'
 
 The easiest way to install DocBook is probably through
 [Homebrew](https://brew.sh). To install Homebrew, follow the instructions at
-https://brew.sh. Then, enter `brew install docbook docbook-xsl` in a Terminal. 
-
-Make note of the XSL install directory as you might need it to pass it to make to build.
-(As of macOS 10.14.3, brew installs XSL in `/usr/local/Cellar/docbook-xsl/1.79.1/docbook-xsl`).
+https://brew.sh. Then, enter `brew install docbook docbook-xsl` in a Terminal.
 
 To install Pygments v2.3 or later, enter in Terminal
 
@@ -77,15 +74,19 @@ Visit http://pygments.org/download/ to learn how to install Pygments.
 Run `make ⟨target⟩` to build a `⟨target⟩`. For example, to build a collection of
 HTML webpages, run `make html`.
 
-You may see this error: “The
-XSL_BASE_PATH variable must be set to the XSL stylesheets installation
-directory.” To tell `make` where to find DocBook XSL stylesheets, run
+You may see this error: “The XSL_BASE_PATH variable must be set to the XSL
+stylesheets installation directory.” To tell `make` where to find DocBook XSL
+stylesheets, run
 
 ```sh
 make XSL_BASE_PATH=path/to/docbook/stylesheets ⟨target⟩
 ```
 
-instead of `make ⟨target⟩`.
+instead of `make ⟨target⟩`. For example, on macOS run
+
+```sh
+make XSL_BASE_PATH="$(brew --prefix docbook-xsl)/docbook-xsl" ⟨target⟩
+```
 
 If you see an error message that `CsoundDocumentLexer` isn’t found when you try
 to build a `⟨target⟩`, then you’re probably using Pygments v2.0.2 or earlier,
