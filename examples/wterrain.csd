@@ -2,7 +2,7 @@
 <CsOptions>
 ; Select audio/midi flags here according to platform
 ; Audio out   Audio in    No messages
--odac     -d     ;;;RT audio I/O
+-odac           -iadc     -d     ;;;RT audio I/O
 ; For Non-realtime ouput leave only the line below:
 ; -o wterrain.wav -W ;;; for file output any platform
 </CsOptions>
