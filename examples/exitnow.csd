@@ -41,7 +41,7 @@ endin
 
 instr 999
 
-exitnow			      ;exit Csound as fast as possible
+exitnow		2	      ;exit Csound as fast as possible
 
 endin
 </CsInstruments>
