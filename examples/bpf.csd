@@ -1,5 +1,6 @@
 <CsoundSynthesizer>
 <CsOptions>
+-odac
 </CsOptions>
 <CsInstruments>
 
@@ -23,9 +24,11 @@
   See also: bpfcos, linlin, lincos
     
 */
-  
+
+sr = 44100
 ksmps = 64
 nchnls = 2
+0dbfs = 1
 
 instr 1
   kx line -1, p3, 2.5
@@ -52,12 +55,26 @@ instr 3
   printarray ky, 1, "", "ky="
   turnoff
 endin
+
+instr 4
+  ; bpf as an envelope generator, like linsegb but driven by external phase
+  ; bpf + rms can also be used as compressor
+
+  atime linseg 0, p3*0.62, p3, p3*0.38, 0
+  aenv = bpf(atime, 0,0, 0.1,1, 0.5, 0.2) ^ 2
+  kbw  = bpf(timeinsts(), 0, 0, p3*0.62, 1) ^ 3
+  asig = (beosc(1000, kbw, -1, rnd(6.28)) + beosc(1012, kbw, -1, rnd(6.28))) * 0.3
+  kratio bpf dbamp(rms:k(asig)), -12, 1, -6, 0.4, -3, 1/100
+  asig *= aenv * interp(sc_lagud(kratio, 0.01, 0.1))
+  outs asig, asig
+endin
     
 </CsInstruments>
 <CsScore>
-i 1 1 3 
-i 2 0 -1
-i 3 0 -1
+; i 1 0 3 
+; i 2 0 -1
+; i 3 0 -1
+i 4 0 3
 
 </CsScore>
 </CsoundSynthesizer>

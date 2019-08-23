@@ -39,8 +39,9 @@ endin
 ; Map an array of values
 instr 2
   kX[] fillarray 0, 0.5, 1, 1.5, 2
+  trim kX, 4
   kY[] linlin kX, 0, 10, 0, 2
-  printarray kY, 1, "", "instr 2, kY"
+  printarray kY
   turnoff
 endin
 
@@ -55,9 +56,9 @@ endin
 
 </CsInstruments>
 <CsScore>
-i 1 0   0.2
+; i 1 0   0.2
 i 2 0.5 0.2
-i 3 1 0.5
+; i 3 1 0.5
 
 </CsScore>
 </CsoundSynthesizer>
