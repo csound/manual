@@ -16,11 +16,12 @@
 </refnamediv>
   <refsect1>
     <title>Syntax</title>
-    <synopsis><command>fluidControl</command> ienginenum, kstatus, kchannel, kdata1, kdata2</synopsis>
+    <synopsis><command>fluidControl</command> ienginenum, kstatus, kchannel, \
+    kdata1, kdata2 [,imsgs]</synopsis>
   </refsect1>
 
   <refsect1>
-    <title>Description</title> 
+    <title>Description</title>
     <para>Plugin opcode in fluidOpcodes.</para>
     <para>The fluid opcodes provide a simple
     Csound opcode wrapper around Peter Hanappe's Fluidsynth SoundFont2
@@ -29,14 +30,17 @@
     k-rate. Maximum polyphony is 4096 simultaneously sounding
     voices. Any number of SoundFonts may be loaded and played
     simultaneously.
-    </para>  
+    </para>
     </refsect1>
 
   <refsect1>
     <title>Initialization</title>
-    
+
  <para><emphasis>ienginenum </emphasis> -- engine number assigned from
-fluidEngine</para>
+ fluidEngine</para>
+
+ <para><emphasis>imsgs</emphasis> -- if zero suppresses printing of
+ messages when commands arrive.  Default value is 1.</para>
 
 </refsect1>
 
@@ -60,7 +64,7 @@ messages, controller number.</para>
 <para><emphasis>kdata2 </emphasis> -- For note on, MIDI key velocity: from 0 (no
 sound) to 127 (loudest). For continous controller messages, controller
 value.</para>
-  
+
 <para>Invoke fluidControl in instrument definitions that actually play
 notes and send control messages. Each instrument definition must
 consistently use one MIDI channel that was assigned to a Fluidsynth
@@ -68,8 +72,9 @@ program using fluidLoad.</para>
 
 <para>In this implementation, SoundFont effects such as chorus or
 reverb are used if and only if they are defaults for the preset. There
-is no means of turning such effects on or off, or of changing their
-parameters, from Csound.</para>
+are some ways of turning effects chorus and reverb on or off using
+fluidEngine, and of changing some of their parameters with fluidCCi and
+fluidCCk.</para>
 
 
 </refsect1>
@@ -81,7 +86,7 @@ parameters, from Csound.</para>
     </para>
     <xi:include href="examples-xml/fluidcomplex.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
   </refsect1>
-  
+
   <refsect1>
     <title>See Also</title>
     <para><link linkend="fluidEngine"><citetitle>fluidEngine</citetitle></link>, <link linkend="fluidNote"><citetitle>fluidNote</citetitle></link>, <link linkend="fluidLoad"><citetitle>fluidLoad</citetitle></link></para>
@@ -96,6 +101,7 @@ parameters, from Csound.</para>
   com). Thanks to Peter Hanappe for Fluidsynth, and to Steven Yi for
   seeing that it is necessary to break up the Fluidsynth into several
   different Csound opcodes.</para>
-    <para>New in Csound5.00</para>
+  <para>New in Csound5.00</para>
+  <para>Optional imsgs parameter introduced in version 6.14.</para>
   </refsect1>
 </refentry>

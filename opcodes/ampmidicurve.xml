@@ -1,0 +1,125 @@
+    <refentry id="ampmidicurve">
+<indexterm id="Indexampmidicurve"><primary>ampmidicurve</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Converters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ampmidicurve</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ampmidicurve</refname>
+    <refpurpose>
+        Maps an input MIDI velocity number to an output gain factor with a
+        maximum value of 1, modifying the output gain by a dynamic range and a
+        shaping exponent.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>Plugin opcode in ampmidid.</para>
+    <para>
+        Maps an input MIDI velocity number to an output gain factor with a
+        maximum value of 1, modifying the output gain by a dynamic range and a
+        shaping exponent. The minimum output gain is 1 minus the dynamic range.
+        A shaping exponent of 1 gives a linear response; increasing the exponent
+        produces an increasingly depressed knee in the gain response curve.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>igain <command>ampmidicurve</command> ivelocity, idynamicrange, iexponent</synopsis>
+    <synopsis>kgain <command>ampmidicurve</command> kvelocity, kdynamicrange, kexponent</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>imidivelocity </emphasis> -- MIDI velocity number, ranging from
+      0 through 127.
+    </para>
+
+    <para>
+      <emphasis>idynamicrange</emphasis> -- Intended dynamic range of gain, from
+      0 through 1.
+    </para>
+
+    <para>
+      <emphasis>iexponent</emphasis> -- Exponent applied to shape the gain
+      response curve, 1 or greater.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kmidivelocity </emphasis> -- MIDI velocity number, ranging from
+      0 through 127.
+    </para>
+
+    <para>
+      <emphasis>kdynamicrange</emphasis> -- Intended dynamic range of gain, from
+      0 through 1.
+    </para>
+
+    <para>
+      <emphasis>kexponent</emphasis> -- Exponent applied to shape the gain
+      response curve, 1 or greater.
+    </para>
+
+    <para>
+        Maps an input MIDI velocity number to an output gain factor with a
+        maximum value of 1, modifying the output gain by a dynamic range and a
+        shaping exponent. The minimum output gain is 1 minus the dynamic range.
+        A shaping exponent of 1 gives a linear response; increasing the exponent
+        produces an increasingly depressed knee in the gain response curve,
+        according to the equation:
+        y = d * (x/127)^h + 1 - d,
+        where y = the gain,
+        x = the input MIDI velocity (from 0 through 127),
+        d = the dynamic range (from p through 1), and
+        h = the shaping exponent (1 or greater).
+        This opcode was suggested by Mauro Giubileo.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the ampmidicurve opcode. It uses the file <ulink url="examples/ampmidicurve.csd"><citetitle>ampmidicurve.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the ampmidicurve opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/ampmidicurve.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="aftouch"><citetitle>aftouch</citetitle></link>,
+      <link linkend="cpsmidi"><citetitle>cpsmidi</citetitle></link>,
+      <link linkend="cpsmidib"><citetitle>cpsmidib</citetitle></link>,
+      <link linkend="midictrl"><citetitle>midictrl</citetitle></link>,
+      <link linkend="notnum"><citetitle>notnum</citetitle></link>,
+      <link linkend="octmidi"><citetitle>octmidi</citetitle></link>,
+      <link linkend="octmidib"><citetitle>octmidib</citetitle></link>,
+      <link linkend="pchbend"><citetitle>pchbend</citetitle></link>,
+      <link linkend="pchmidi"><citetitle>pchmidi</citetitle></link>,
+      <link linkend="pchmidib"><citetitle>pchmidib</citetitle></link>,
+      <link linkend="veloc"><citetitle>veloc</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namemichael;</member>
+        <member>2019</member>
+      </simplelist>
+    </para>
+
+  </refsect1>
+</refentry>

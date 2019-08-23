@@ -6,7 +6,7 @@
 #       on your system.
 # *************************************************************************
 BASENAME=Csound
-VERSION=6.12.0
+VERSION=6.13.0
 
 # export PATH=$PATH:/home/andres/bin/fop-0.20.5/
 # export JAVA_HOME=/usr/lib/jvm/java-6-sun/
@@ -285,7 +285,6 @@ OPCODES = opcodes/0dbfs.xml	opcodes/ATSadd.xml	opcodes/ATSaddnz.xml \
 	opcodes/lposcil3.xml	opcodes/lposcila.xml	opcodes/lposcilsa.xml \
 	opcodes/lposcilsa2.xml	opcodes/lpread.xml	opcodes/lpreson.xml \
 	opcodes/lpshold.xml	opcodes/lpsholdp.xml	opcodes/lpslot.xml \
-	opcodes/lua_exec.xml	opcodes/lua_opcall.xml	opcodes/lua_opdef.xml \
 	opcodes/mac.xml	opcodes/maca.xml	opcodes/madsr.xml \
 	opcodes/mags.xml	opcodes/mandel.xml	opcodes/mandol.xml \
 	opcodes/maparray.xml	opcodes/marimba.xml	opcodes/massign.xml \
@@ -569,7 +568,7 @@ SCORE =	score/eval.xml score/macros.xml score/mult.xml \
 OPCODES5 = csound5/acknowledgments.xml	csound5/cs5opcodes.xml \
 	csound5/extending.xml \
 	csound5/opcodes/fluid.xml csound5/opcodes/Jacko.xml \
-	csound5/opcodes/lua.xml csound5/opcodes/mixer.xml \
+	csound5/opcodes/mixer.xml \
 	csound5/opcodes/py.xml csound5/opcodes/signalflowgraph.xml \
 	csound5/opcodes/top.xml csound5/preface.xml csound5/usersguide.xml \
 
