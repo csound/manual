@@ -80,7 +80,7 @@ class DocBookFormatter(Formatter):
                     # opcode are Keyword.Declaration tokens; see
                     # https://bitbucket.org/birkenfeld/pygments-main/commits/b60b37f36a03802e0c5ed412268d37bbc55eb9fb#Lpygments/lexers/csound.pyT249
                     currentTypeString = 'kd'
-                elif currentTypeString == 'kt' and re.match('g?[aikSw]', currentValue) and typeString == 'n':
+                elif currentTypeString == 'kt' and re.match('g?[afikSw]', currentValue) and typeString == 'n':
                     # If the current token is a Keyword.Type, has a value that
                     # matches a Csound type sigil, and is followed immediately
                     # by a name, then it’s a type sigil. Treat it as a Text
