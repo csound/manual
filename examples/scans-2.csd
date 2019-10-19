@@ -18,7 +18,7 @@ strset 2, "fox.wav"
 
 instr 	2	;show 2 different trajectories, with samples as excitation signal
 
-ismp = p6		
+ismp = p6
 iamp = p7
 itrj = p8
 aout soundin p6				;choose wave file
@@ -26,7 +26,7 @@ aout soundin p6				;choose wave file
 asig scans iamp, cpspch(p5), itrj , 0
      outs asig, asig
 
-endin	
+endin
 </CsInstruments>
 <CsScore>
 f1 0 128 7 0 64 1 64 0			; Initial condition
@@ -36,7 +36,7 @@ f44 0 128 -7 2 4 0 124 2		; Centering force
 f5 0 128 -7 1 128 0			; Damping
 f6 0 128 -7 -.0 128 0			; Initial velocity
 f7 0 128 -5 .001 128 128		; Trajectories
-f77 0 128 -23 "spiral-8,16,128,2,1over2"
+f77 0 128 -23 "128-spiral-8,16,128,2,1over2"
 
 s
 i2 0  5  63 6.00 1 .9 7			;"mary.wav" &
