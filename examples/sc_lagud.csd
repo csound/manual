@@ -15,7 +15,7 @@ instr 1
 endin
 
 instr 2
-  kmidis[] array 60, 65, 60, 65, 60
+  kmidis[] fillarray 60, 65, 60, 65, 60
   ilen = lenarray(kmidis)
   kidx = int(linseg(0, ilen*2, ilen-0.00000001))
   kmidi = mtof(kmidis[kidx])

@@ -5,7 +5,7 @@
 </CsOptions>
 <CsInstruments>
 gkArray[][] init   2,3
-gkArray     array  1,2,3,7,6,5
+gkArray     fillarray  1,2,3,7,6,5
 
 instr 1
 k1 changed2 gkArray
