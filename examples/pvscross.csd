@@ -18,7 +18,7 @@ instr 1
   iwinsize = ifftsize
   iwinshape = 1 ; von-Hann window
   Sfile1 = "fox.wav"
-  Sfile2 = "marmstk1.wav"
+  Sfile2 = "wave.wav"
   ain1 = soundin:a(Sfile1)
   ain2 = soundin:a(Sfile2)
   fftin1 = pvsanal(ain1, ifftsize, ioverlap, iwinsize, iwinshape) ; fft-analysis of file 1
@@ -35,8 +35,8 @@ endin
 
 </CsInstruments>
 <CsScore>
-i 1 0 2.757 0 ; frequencies from fox.wav, amplitudes moving from marmstk1 to fox
-i 1 3 2.757 1 ; frequencies from marmstk1.wav, amplitudes moving from fox to marmstk1
+i 1 0 2.757 0 ; frequencies from fox.wav, amplitudes moving from wave to fox
+i 1 3 2.757 1 ; frequencies from wav.wav, amplitudes moving from fox to wave
 e
 </CsScore>
 </CsoundSynthesizer>
