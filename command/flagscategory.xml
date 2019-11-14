@@ -724,6 +724,7 @@ csound5:output2             (playback right)</screen>
             <listitem><para>2 = samples out of range message</para></listitem>
             <listitem><para>4 = warning messages</para></listitem>
             <listitem><para>128 = print benchmark information</para></listitem>
+            <listitem><para>1024 = suppress deprecated messages</para></listitem>
           </itemizedlist>
           And exactly one of these to select note amplitude format:
           <itemizedlist>
@@ -737,7 +738,7 @@ csound5:output2             (playback right)</screen>
           The default is 135 (128+4+2+1), which means all messages, raw
           amplitude values, and printing elapsed time at the end of
           performance.  The coloring of raw amplitudes was introduced
-          in version 5.04
+          in version 5.04. Suppression of deprecated messages new in 6.14.
         </para>
       </listitem>
     </varlistentry>
@@ -932,7 +933,8 @@ csound5:output2             (playback right)</screen>
         <listitem>
           <para>
             Set UDP port on which to listen for commands and instruments/orchestra code
-            (implies --daemon)
+            (implies --daemon).   See <link
+            linkend="udpserver"><citetitle>UDP Server</citetitle></link>.
           </para>
         </listitem>
       </varlistentry>
@@ -1365,10 +1367,11 @@ b
       </varlistentry>
 
     <varlistentry id="FlagsCatMinusLowerT0">
-      <term>-t0<indexterm id="IndexCatMinusLowerT0"><primary>-t0</primary></indexterm>, --keep-sorted-score<indexterm id="IndexCatMinusKeepsortedscore"><primary>--keep-sorted-score</primary></indexterm></term>
+      <term>--simple-sorted-score<indexterm id="IndexCatMinusSimplesortedscore"><primary>--simple-sorted-score</primary></indexterm></term>
       <listitem>
         <para>
-          Prevents Csound from deleting the sorted score file, score.srt, upon exit.
+          Retains the sorted score file score.srt in a simple readable
+          format upon exit.  (New in version 6.14).
         </para>
       </listitem>
     </varlistentry>
