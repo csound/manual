@@ -10,7 +10,7 @@
   <refnamediv>
     <refname>bpf</refname>
     <refpurpose>
-          Break point function with linear interpolation
+      Break point function with linear interpolation
     </refpurpose>
   </refnamediv>
   
@@ -18,13 +18,13 @@
     <title>Description</title>
     <para>Plugin opcode in emugens.</para>
     <para>
-	  Break-point function with linear interpolation. 
+      Break-point function with linear interpolation. 
     </para>
   </refsect1>
 
   <refsect1>
     <title>Syntax</title>
-        <!--    Please keep this below ~70 characters by using backslashes to avoid overflow in the pdf version-->
+    <!--    Please keep this below ~70 characters by using backslashes to avoid overflow in the pdf version-->
     <synopsis>ky <command>bpf</command> kx, kx1, ky1, kx2, ..., kxn, kyn</synopsis>
     <synopsis>iy <command>bpf</command> ix, ix1, iy1, ix2, ..., ixn, iyn</synopsis>
     <synopsis>kys[] <command>bpf</command> kxs[], kx1, ky1, kx2, ..., kxn, kyn</synopsis>
@@ -40,44 +40,44 @@
   </refsect1>
 
   <refsect1>
-  
+    
     <title>Performance</title>
-        <!--    First list all input and output performance parameters-->
+    <!--    First list all input and output performance parameters-->
     <para>
-          <emphasis role="strong">kx</emphasis> -- Input value
-        </para>
-        <para>
-      <emphasis role="strong">kxn, kyn</emphasis> -- Defines a breakpoint. Can be
-          changed at krate, but all <emphasis>kx</emphasis>s must be sorted
+      <emphasis role="strong">kx</emphasis> -- Input value
     </para>
-        
     <para>
-          The points (kx1, ky1), (kx2, ky2), etc, define a linearly
-          interpolated function. This function is evaluated at point
-          <emphasis>kx</emphasis>. This function extends to both -inf
-          and +inf, so if kx &lt; kx1 then ky = ky1 and the same holds true
-          the other end.
-        </para>
-        <para>These are equivalent:
-        </para>
-        <programlisting>
-          ky bpf kx, 0, 0,  0.5, 10,  1.02, 200
+      <emphasis role="strong">kxn, kyn</emphasis> -- Defines a breakpoint. Can be
+      changed at krate, but all <emphasis>kx</emphasis>s must be sorted
+    </para>
+    
+    <para>
+      The points (kx1, ky1), (kx2, ky2), etc, define a linearly
+      interpolated function. This function is evaluated at point
+      <emphasis>kx</emphasis>. This function extends to both -inf
+      and +inf, so if kx &lt; kx1 then ky = ky1 and the same holds true
+      the other end.
+    </para>
+    <para>These are equivalent:
+    </para>
+    <programlisting>
+      ky bpf kx, 0, 0,  0.5, 10,  1.02, 200
 
-          itab ftgenonce 0, 0, -27, 0, 0, 50, 10, 102, 200
-          ky = tablei(limit(kx, 0, 1.02)*100, itab)
-        </programlisting>
+      itab ftgenonce 0, 0, -27, 0, 0, 50, 10, 102, 200
+      ky = tablei(limit(kx, 0, 1.02)*100, itab)
+    </programlisting>
 
-        <note>
-          <para>
-                x values need to be sorted. Both x and y values can change but
-                x values must stay sorted.
-          </para>
-        </note>
+    <note>
+      <para>
+        x values need to be sorted. Both x and y values can change but
+        x values must stay sorted.
+      </para>
+    </note>
   </refsect1>
   <refsect1>
-        <!--To add examples, create the csd file in the examples directory, then run:-->
-        <!--python csd2docbook.py -f newopcodename.csd-->
-        <!--to generate the xml highlighted version used below-->
+    <!--To add examples, create the csd file in the examples directory, then run:-->
+    <!--python csd2docbook.py -f newopcodename.csd-->
+    <!--to generate the xml highlighted version used below-->
     <title>Examples</title>
     <para>
       Here is an example of the bpf opcode. It uses the file <ulink url="examples/bpf.csd"><citetitle>bpf.csd</citetitle></ulink>.
@@ -90,18 +90,18 @@
 
   <refsect1>
     <title>See Also</title>
-        <!--    it's always good to include a good See Also list  -->
+    <!--    it's always good to include a good See Also list  -->
     <para>
       <link linkend="bpfcos"><citetitle>bpfcos</citetitle></link>, 
-	  <link linkend="linlin"><citetitle>linlin</citetitle></link>
+      <link linkend="linlin"><citetitle>linlin</citetitle></link>
       <link linkend="xyscale"><citetitle>xyscale</citetitle></link>, 
       <link linkend="scale"><citetitle>scale</citetitle></link>, 
-	  <link linkend="ntrpol"><citetitle>ntrpol</citetitle></link>, 
+      <link linkend="ntrpol"><citetitle>ntrpol</citetitle></link>, 
     </para>
   </refsect1>
 
   <refsect1>
-        <!--  And put your name and other relevant information here-->
+    <!--  And put your name and other relevant information here-->
     <title>Credits</title>
     <para>By: &nameeduardo; 2017</para>
   </refsect1>
