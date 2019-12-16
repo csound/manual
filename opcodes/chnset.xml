@@ -29,6 +29,10 @@
     <synopsis><command>chnset</command> aval, Sname</synopsis>
     <synopsis><command>chnset</command> Sval, Sname</synopsis>
     <synopsis><command>chnsetks</command> Sval, Sname</synopsis>
+    <synopsis><command>chnseti</command> ival[], []Sname</synopsis>
+    <synopsis><command>chnsetk</command> kval[], []Sname</synopsis>
+    <synopsis><command>chnseta</command> aval[], []Sname</synopsis>
+    <synopsis><command>chnsets</command> Sval[], []Sname</synopsis>
   </refsect1>
 
   <refsect1>
@@ -38,11 +42,21 @@
       named channel of the software bus to write.
     </para>
     <para>
+      <emphasis>Sname[]</emphasis> -- an array of string that indicates which
+      named channels of the software bus to write to.
+    </para>
+    <para>
       <emphasis>ival</emphasis> -- the control value to write at i-time.
+    </para>
+    <para>
+      <emphasis>ival[]</emphasis> -- an array of control values to write at i-time.
     </para>
     <para>
       <emphasis>Sval</emphasis> -- the string value to write at i-time.
     </para>
+    <para>
+      <emphasis>Sval[]</emphasis> -- an array of string values to write at i-time.
+    </para>    
   </refsect1>
 
   <refsect1>
@@ -61,9 +75,27 @@
       perf-time, whereas chnsetks works only a perf-time. Channel
       contents are only updated if the string variable is modified.
     </para>
-
+    <para>
+      <emphasis>kval[]</emphasis> -- an array of control value to write at performance
+      time.
+    </para>
+    <para>
+      <emphasis>aval[]</emphasis> -- an array of audio vectors to write at performance
+      time.
+    </para>
+    <para>
+      <emphasis>Sval[]</emphasis> -- an array of string values to write at
+      perf-time. 
+    </para>
   </refsect1>
 
+  <note>
+    <para>
+      Although it is possible to loop through channel names from an array with <emphasis>chnget</emphasis> and <emphasis>chnset</emphasis>, 
+      using the array based variants is more efficient.        
+    </para> 
+  </note>
+  
   <refsect1>
     <title>Example</title>
     <para>
