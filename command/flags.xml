@@ -635,10 +635,10 @@
                 number. So, you need to use an option like -M
                 hw:CARD,DEVICE where CARD and DEVICE are the card and
                 device numbers (e.g. -M hw:1,0). In the case of
-                CoreMidi and MME, DEVICE should be a number, and if it
+                CoreMIDI and MME, DEVICE should be a number, and if it
                 is out of range, an error occurs and the valid device
                 numbers are printed.
-                With PortMidi, DEVICE is either a number for single port
+                With PortMIDI, DEVICE is either a number for single port
                 input, 'a' for listening to all input ports, or 'm'
                 for mapping ports to MIDI channels above 16. In this
                 case, device 0 uses 1-16, device 1 uses 17-32, ...
@@ -1072,7 +1072,13 @@
             flag. 
             </para>
             <para>
-              If using ALSA MIDI (-+rtmidi=alsa), devices are selected by name and not number. So, you need to use an option like -Q hw:CARD,DEVICE where CARD and DEVICE are the card and device numbers (e.g. -Q hw:1,0). In the case of PortMidi and MME, DEVICE should be a number, and if it is out of range, an error occurs and the valid device numbers are printed.
+              If using ALSA MIDI (-+rtmidi=alsa), devices are selected
+              by name and not number. So, you need to use an option
+              like -Q hw:CARD,DEVICE where CARD and DEVICE are the
+              card and device numbers (e.g. -Q hw:1,0). In the case of
+              PortMIDI, CoreMIDI and MME, DEVICE should be a number, and if it
+              is out of range, an error occurs and the valid device
+              numbers are printed.
             </para>
           </listitem>
         </varlistentry>
@@ -1140,11 +1146,16 @@
           <listitem>
             <para>
               (max. length = 20 characters) Real time MIDI module name.
-              Defaults to PortMidi, other options (depending on build options): Linux: alsa; Windows: mme, winmm. In addition, null can be used on all platforms, to disable the use of any real time MIDI plugin.
+              Defaults to PortMIDI (if present). Other options
+              (depending on platform and build) are Linux: alsa;
+              MacOS: cmidi; Windows: mme, winmm.
+              In addition, null can be used on all platforms, to disable the use of any real time MIDI plugin.
             </para>
             <para>ALSA MIDI devices are selected by name and not number. So, you
               need to use an option like -M hw:CARD,DEVICE where CARD and
-              DEVICE are the card and device numbers (e.g. -M hw:1,0).
+              DEVICE are the card and device numbers (e.g. -M
+              hw:1,0). PortMIDI allows multiple port inputs with
+              either -Ma or -Mm.
             </para>
           </listitem>
         </varlistentry>
