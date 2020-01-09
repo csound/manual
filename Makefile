@@ -267,7 +267,9 @@ OPCODES = opcodes/0dbfs.xml	opcodes/ATSadd.xml	opcodes/ATSaddnz.xml \
 	opcodes/kpow.xml	opcodes/kr.xml	opcodes/kread.xml \
 	opcodes/kread2.xml	opcodes/kread3.xml	opcodes/kread4.xml \
 	opcodes/ksmps.xml	opcodes/ktableseg.xml	opcodes/ktrirand.xml \
-	opcodes/kunirand.xml	opcodes/kweibull.xml	opcodes/lenarray.xml \
+	opcodes/kunirand.xml	opcodes/kweibull.xml	\
+	opcodes/lastcycle.xml \
+	opcodes/lenarray.xml \
 	opcodes/lessequal.xml	opcodes/lessthan.xml	opcodes/lfo.xml \
 	opcodes/limit.xml	opcodes/line.xml	opcodes/linen.xml \
 	opcodes/linenr.xml	opcodes/lineto.xml	opcodes/linrand.xml \
@@ -451,6 +453,7 @@ OPCODES = opcodes/0dbfs.xml	opcodes/ATSadd.xml	opcodes/ATSaddnz.xml \
 	opcodes/strindex.xml	opcodes/strindexk.xml	opcodes/strlen.xml \
 	opcodes/strlenk.xml	opcodes/strlower.xml	opcodes/strlowerk.xml \
 	opcodes/strrindex.xml	opcodes/strrindexk.xml	opcodes/strset.xml \
+	opcodes/strstrip.xml \
 	opcodes/strsub.xml	opcodes/strsubk.xml	opcodes/strtod.xml \
 	opcodes/strtodk.xml	opcodes/strtol.xml	opcodes/strtolk.xml \
 	opcodes/strupper.xml	opcodes/strupperk.xml	opcodes/subinstr.xml \
@@ -681,10 +684,10 @@ OTHER =         STKopcodes/top.xml \
         vectorial/vectorialrandom.xml \
         opcodes.xml \
         manual.xml
-        
+
 SRCS =  $(COMMAND) $(CONTROL) $(XMLS) $(MIDI) $(OPCODES) $(ORCH) $(SCORE) \
 	$(SIGS) $(UTILS) $(MISC) $(OTHER) examples-xml/stamp
- 
+
 # Build rules.
 all: html
 
