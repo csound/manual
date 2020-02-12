@@ -1080,22 +1080,22 @@ csound5:output2             (playback right)</screen>
       </listitem>
 
     </varlistentry>
-        <varlistentry id="FlagsCatMinusLowerJ">
-          <term>-j NUM<indexterm
-          id="IndexCatMinusLowerJ"><primary>-j</primary></indexterm>,
-          --num-threads=NUM<indexterm id="IndexCatMinusNumthread"><primary>--num-threads=NUM</primary></indexterm></term>
-          <listitem>
-            <para>
-              Make <emphasis>NUM</emphasis> processes available for
-              rendering.  This is only advantageous if the number of
-              processors on the computer is the same or more that the number
-              of requested processes.  It also may slow rendering down
-              if ksmps is too small.
-            </para>
-          </listitem>
-        </varlistentry>
+    <varlistentry id="FlagsCatMinusLowerJ">
+      <term>-j NUM<indexterm
+      id="IndexCatMinusLowerJ"><primary>-j</primary></indexterm>,
+      --num-threads=NUM<indexterm id="IndexCatMinusNumthread"><primary>--num-threads=NUM</primary></indexterm></term>
+      <listitem>
+        <para>
+          Make <emphasis>NUM</emphasis> processes available for
+          rendering.  This is only advantageous if the number of
+          processors on the computer is the same or more that the number
+          of requested processes.  It also may slow rendering down
+          if ksmps is too small.
+        </para>
+      </listitem>
+    </varlistentry>
 
-
+    
   </variablelist>
 
   <variablelist>
@@ -1108,7 +1108,7 @@ csound5:output2             (playback right)</screen>
         </para>
       </listitem>
     </varlistentry>
-
+    
     <varlistentry id="FlagsCatMinusUpperC">
       <term>-C<indexterm id="IndexCatMinusUpperC"><primary>-C</primary></indexterm>, --cscore<indexterm id="IndexCatMinusCscore"><primary>--cscore</primary></indexterm></term>
       <listitem>
@@ -1117,7 +1117,7 @@ csound5:output2             (playback right)</screen>
         </para>
       </listitem>
     </varlistentry>
-
+    
     <varlistentry id="FlagsCatMinusDefaultPaths">
       <term>--default-paths<indexterm id="IndexCatMinusDefaultPaths"><primary>--no-default-paths</primary></indexterm></term>
       <listitem>
@@ -1161,13 +1161,23 @@ csound5:output2             (playback right)</screen>
       </listitem>
     </varlistentry>
 
+    <varlistentry id="FlagsCatMinusMinusSinesize">
+      <term>--sinesize=integer<indexterm id="IndexCatMinusMinusSinesize"><primary>--sinesize</primary></indexterm></term>
+      <listitem>
+        <para>
+          Set size of internal sine wave (table -1).  Should be a
+          power of two, and defaults to 16384.
+        </para>
+      </listitem>
+    </varlistentry>
+
     <varlistentry id="FlagsCatMinusExpressionOpt">
       <term>--expression-opt<indexterm id="IndexCatMinusExpressionOpt"><primary>--expression-opt</primary></indexterm></term>
       <listitem>
         <para>
           <emphasis>Note that this option has no affect in
           csound6.</emphasis>
-
+          
           <emphasis>In Csound 5 only.</emphasis>
           Turns on some optimizations in expressions:
           <itemizedlist>
@@ -1188,35 +1198,35 @@ csound5:output2             (playback right)</screen>
             <listitem><para>number of a- and k-rate temporary
             variables is significantly reduced. This expression</para>
             <programlisting>
-(a1 + a2 + a3 + a4)</programlisting>
-<para>will compile as</para>
-<programlisting>
-#a0 Add a1, a2
-#a0 Add #a0, a3
-#a0 Add #a0, a4       ; (the result is in #a0)</programlisting>
-              <para>instead of</para>
-              <programlisting>
-#a0 Add a1, a2
-#a1 Add #a0, a3
-#a2 Add #a1, a4       ; (the result is in #a2)</programlisting>
-
-              <para>The advantages of less temporary variables are:</para>
-              <itemizedlist>
-                <listitem><simpara>less cache memory is used, which may improve performance
-                  of orchestras with many a-rate expressions and a low
+            (a1 + a2 + a3 + a4)</programlisting>
+            <para>will compile as</para>
+            <programlisting>
+              #a0 Add a1, a2
+              #a0 Add #a0, a3
+            #a0 Add #a0, a4       ; (the result is in #a0)</programlisting>
+            <para>instead of</para>
+            <programlisting>
+              #a0 Add a1, a2
+              #a1 Add #a0, a3
+            #a2 Add #a1, a4       ; (the result is in #a2)</programlisting>
+            
+            <para>The advantages of less temporary variables are:</para>
+            <itemizedlist>
+              <listitem><simpara>less cache memory is used, which may improve performance
+              of orchestras with many a-rate expressions and a low
                   control rate (e.g. ksmps = 100)</simpara></listitem>
-                <listitem><simpara>large orchestras may load faster due to less different
+                  <listitem><simpara>large orchestras may load faster due to less different
                   identifier names</simpara></listitem>
-                <listitem>
-                  <simpara>index overflow errors (i.e. when messages like this
-                  Case2: indx=-56004 (ffff253c); (short)indx = 9532 (253c)
-                  are printed and odd behavior or a Csound crash occurs) may
-                  be fixed, because such errors are triggered by too many
-                  different (especially a-rate) variable names in a single
-                  instrument.</simpara>
-                </listitem>
-              </itemizedlist>
-              <para>Note that this optimization (due to technical reasons) is not
+                  <listitem>
+                    <simpara>index overflow errors (i.e. when messages like this
+                    Case2: indx=-56004 (ffff253c); (short)indx = 9532 (253c)
+                    are printed and odd behavior or a Csound crash occurs) may
+                    be fixed, because such errors are triggered by too many
+                    different (especially a-rate) variable names in a single
+                    instrument.</simpara>
+                  </listitem>
+            </itemizedlist>
+            <para>Note that this optimization (due to technical reasons) is not
               performed on i-rate temporary variables.</para>
             </listitem>
           </itemizedlist>
