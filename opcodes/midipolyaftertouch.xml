@@ -33,7 +33,7 @@ and MIDI, including both MIDI files and real-time MIDI input, without using any 
 
   <refsect1>
     <title>Syntax</title>
-    <synopsis><command>midipolyaftertouch</command> xpolyaftertouch, xcontrollervalue [, ilow] [, ihigh]</synopsis>
+    <synopsis><command>midipolyaftertouch</command> xpolyaftertouch, xkey [, ilow] [, ihigh]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -50,17 +50,16 @@ and MIDI, including both MIDI files and real-time MIDI input, without using any 
   <refsect1>
     <title>Performance</title>
     <para>
-      <emphasis>xpolyaftertouch</emphasis> -- returns MIDI polyphonic aftertouch during MIDI activation, remains unchanged otherwise.
+      <emphasis>xpolyaftertouch</emphasis> -- returns MIDI polyphonic aftertouch of the selected note during MIDI activation, remains unchanged otherwise.
     </para>
 
     <para>
-      <emphasis>xcontrollervalue</emphasis> -- returns the value of the MIDI controller during MIDI activation, remains unchanged otherwise.
+      <emphasis>xkey</emphasis> -- specifies the MIDI key to read from.  It normally should be set to the note number that the instrument instance is playing.
     </para>
 
     <para>
-      If the instrument was activated by MIDI input, the opcode overwrites the values of <emphasis>xpolyaftertouch</emphasis> and <emphasis>xcontrollervalue</emphasis> with the corresponding values from MIDI input. If the instrument was <emphasis>NOT</emphasis> activated by MIDI input, the values of <emphasis>xpolyaftertouch</emphasis> and <emphasis>xcontrollervalue</emphasis> remain unchanged.
+      If the instrument was activated by MIDI input, the opcode overwrites the value of <emphasis>xpolyaftertouch</emphasis>  with the corresponding value from MIDI input. If the instrument was <emphasis>NOT</emphasis> activated by MIDI input, the value remains unchanged.
     </para>
-
     <para>
       This enables score p-fields to receive MIDI input data during MIDI activation, and score values otherwise.
     </para>
