@@ -47,36 +47,40 @@
     <title>Syntax</title>
 	<!--    Please keep this below ~70 characters by using backslashes to avoid overflow in the pdf version-->
     <synopsis>aout <command>cmp</command> a1, S_operator, a2</synopsis>
-    <synopsis>aout <command>cmp</command> a1, S_operator, kx</synopsis>
-    <synopsis>kOut[] <command>cmp</command> kA, S_operator, kB</synopsis>
-    <synopsis>kOut[] <command>cmp</command> k1, S_operator1, kIn[], S_operator2, k2</synopsis>
+    <synopsis>aout <command>cmp</command> a1, S_operator, kb</synopsis>
+    <synopsis>kOut[] <command>cmp</command> kA[], S_operator, kb</synopsis>
+	<synopsis>kOut[] <command>cmp</command> kA[], S_operator, kB[]</synopsis>
+    <synopsis>kOut[] <command>cmp</command> k1, S_operator1, kA[], S_operator2, k2</synopsis>
   </refsect1>
 
   <refsect1>
-        <title>Initialization</title>
-        <para>
+      <title>Initialization</title>
+      <para>
           <emphasis>S_operator</emphasis> Math operator, one of ">", ">=", "`&lt;",
           "`&lt;=", "=="
-        </para>
+      </para>
   </refsect1>
   
   <refsect1>
     <title>Performance</title>
         <!--    First list all input and output performance parameters-->
-    <para>
-      <emphasis>a1</emphasis> -- Left signal
-    </para>
-	<para>
-      <emphasis>a2</emphasis> -- Right signal
-    </para>
+    <para><emphasis>a1</emphasis> -- Left signal  </para>
+    <para><emphasis>a2</emphasis> -- Right signal </para>
+	<para><emphasis>kA[]</emphasis>, <emphasis>kB[]</emphasis>, <emphasis>kIn[]</emphasis>  -- Array input
         
     <para>
 	  <programlisting>
+      Some examples:
+		  
 		aout cmp aL, ">", aR     ; aout = aL > aR for every sample
 		aout cmp aL, ">=", aR
 		aout cmp aL, "`&lt;", aR
 		aout cmp aL, "`&lt;=", aR
-		aout cmp aL, "==", aR		
+		aout cmp aL, "==", aR
+		kOut[] cmp kIn[], "`&lt;", kb
+	    kOut[] cmp kA[], "`&lt;", kB[]
+		kOut[] cmp klow, "`&lt;=", kIn[], "`&lt;", khigh
+	    
 	  </programlisting>
 	</para>
   </refsect1>
