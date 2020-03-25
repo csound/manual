@@ -35,6 +35,7 @@ instr 1
   printarray ivalues
   reshapearray ivalues, 3, 4
   printarray ivalues
+  turnoff
 endin
 
 instr 2
@@ -47,11 +48,23 @@ instr 2
   turnoff
 endin
 
+instr 3
+  kxs[][] init 3, 4
+  kxs fillarray   0,  1,  2,  3, \
+                 10, 11, 12, 13, \
+                 20, 21, 22, 23
+  reshapearray kxs, 12
+  printarray kxs, 1, "", "kxs after"
+  turnoff
+
+endin
+
 </CsInstruments>
 
 <CsScore>
 i 1 0 0.01
-i 2 1 0.05
+i 2 1 0.01
+i 3 2 0.01
 </CsScore>
 
 </CsoundSynthesizer>

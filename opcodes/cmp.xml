@@ -13,23 +13,22 @@
       Compares audio signals or arrays
     </refpurpose>
   </refnamediv>
-  
   <refsect1>
     <title>Description</title>
     <para>Plugin opcode in emugens.</para>
     <para>
-	  Compares audio signals or arrays, sample by sample or value by value
+      Compares audio signals or arrays, sample by sample or value by value
       All comparison operations are possible: `&lt; `&lt;=, >, >=, ==, !=
     </para>
     <para>
       An audio signal can be compared against another audio signal, or
-      against a scalar (i- or k-value)
+      against a scalar (i- or k-value).
 
-	  <programlisting>
-		aOut cmp aL, ">", aR
-        aOut cmp aIn, ">=", 0.5
-        aOut cmp aIn, "`&lt;=", kthreshold
-	  </programlisting>
+      <programlisting>
+aOut cmp aL, ">", aR
+aOut cmp aIn, ">=", 0.5
+aOut cmp aIn, "`&lt;=", kthreshold
+      </programlisting>
     </para>
     <para>
       An array can be compared against another array, against a scalar,
@@ -45,45 +44,48 @@
 
   <refsect1>
     <title>Syntax</title>
-	<!--    Please keep this below ~70 characters by using backslashes to avoid overflow in the pdf version-->
+    <!--    Please keep this below ~70 characters by using backslashes to avoid overflow in the pdf version-->
     <synopsis>aout <command>cmp</command> a1, S_operator, a2</synopsis>
-    <synopsis>aout <command>cmp</command> a1, S_operator, kx</synopsis>
-    <synopsis>kOut[] <command>cmp</command> kA, S_operator, kB</synopsis>
+    <synopsis>aout <command>cmp</command> a1, S_operator, kb</synopsis>
+    <synopsis>kOut[] <command>cmp</command> kA[], S_operator, kb</synopsis>
+    <synopsis>kOut[] <command>cmp</command> kA[], S_operator, kB[]</synopsis>
+
     <synopsis>kOut[] <command>cmp</command> k1, S_operator1, kIn[], S_operator2, k2</synopsis>
   </refsect1>
 
   <refsect1>
-        <title>Initialization</title>
-        <para>
-          <emphasis>S_operator</emphasis> Math operator, one of ">", ">=", "`&lt;",
-          "`&lt;=", "=="
-        </para>
+    <title>Initialization</title>
+    <para>
+      <emphasis>S_operator</emphasis> Math operator, one of ">", ">=", "`&lt;",
+      "`&lt;=", "=="
+    </para>
   </refsect1>
   
   <refsect1>
     <title>Performance</title>
-        <!--    First list all input and output performance parameters-->
+    <!--    First list all input and output performance parameters-->
+    <para><emphasis>a1 / a2</emphasis> -- Input signals</para>
+    <para><emphasis>kb / ib</emphasis> -- Scalar term</para>
+    <para><emphasis>kA[] / kB[]</emphasis> -- array inputs</para>
+    
+    
     <para>
-      <emphasis>a1</emphasis> -- Left signal
+      <programlisting>
+Some example usages:
+
+aout cmp aL, ">", aR      ; aout = aL > aR for every sample
+aout cmp aL, ">=", aR
+aout cmp aL, "`&lt;", aR
+aout cmp aL, "`&lt;=", aR
+aout cmp aL, "==", aR
+kOut[] cmp kA, ">=", kb   ; kA is an array
+      </programlisting>
     </para>
-	<para>
-      <emphasis>a2</emphasis> -- Right signal
-    </para>
-        
-    <para>
-	  <programlisting>
-		aout cmp aL, ">", aR     ; aout = aL > aR for every sample
-		aout cmp aL, ">=", aR
-		aout cmp aL, "`&lt;", aR
-		aout cmp aL, "`&lt;=", aR
-		aout cmp aL, "==", aR		
-	  </programlisting>
-	</para>
   </refsect1>
   <refsect1>
-        <!--To add examples, create the csd file in the examples directory, then run:-->
-        <!--python csd2docbook.py -f newopcodename.csd-->
-        <!--to generate the xml highlighted version used below-->
+    <!--To add examples, create the csd file in the examples directory, then run:-->
+    <!--python csd2docbook.py -f newopcodename.csd-->
+    <!--to generate the xml highlighted version used below-->
     <title>Examples</title>
     <para>
       Here is an example of the cmp opcode. It uses the file <ulink url="examples/cmp.csd"><citetitle>cmp.csd</citetitle></ulink>.
@@ -97,15 +99,15 @@
 
   <refsect1>
     <title>See Also</title>
-        <!--    it's always good to include a good See Also list  -->
+    <!--    it's always good to include a good See Also list  -->
     <para>
-          <link linkend="max"><citetitle>max</citetitle></link>, 
-          <link linkend="min"><citetitle>min</citetitle></link>, 
+      <link linkend="max"><citetitle>max</citetitle></link>, 
+      <link linkend="min"><citetitle>min</citetitle></link>, 
     </para>
   </refsect1>
 
   <refsect1>
-        <!--  And put your name and other relevant information here-->
+    <!--  And put your name and other relevant information here-->
     <title>Credits</title>
     <para>By: &nameeduardo; 2017</para>
   </refsect1>
