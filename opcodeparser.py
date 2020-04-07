@@ -127,10 +127,10 @@ for i,filename in enumerate(files):
     description = ""
     if (len(desc)!=0 and entry != ''):
         description = desc[0].firstChild.toxml().strip()
-        #print filename, category
+        #print(filename, category)
     else:
         print("no refpurpose tag for file " + filename)
-    #print category
+    #print(category)
     match = False
     for j, thiscategory in enumerate(categories):
         if (category == thiscategory):
