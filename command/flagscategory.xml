@@ -26,7 +26,11 @@
   </para>
 
   <para>
-    where the arguments are of 2 types: <emphasis>flags</emphasis> arguments (beginning with a <quote>-</quote>,<quote>--</quote> or <quote>-+</quote>), and <emphasis>name</emphasis> arguments (such as filenames). Certain flag arguments take a following name or numeric argument. Flags that start with <quote>--</quote> and <quote>-+</quote> usually take an argument themselves using <quote>=</quote>.
+    where the arguments are of 2 types: <emphasis>flags</emphasis> arguments (beginning with a
+    <quote>-</quote>,<quote>--</quote> or <quote>-+</quote>), and <emphasis>name</emphasis>
+    arguments (such as filenames). Certain flag arguments take a following name or numeric
+    argument. Flags that start with <quote>--</quote> and <quote>-+</quote> usually take an
+    argument themselves using <quote>=</quote>.
   </para>
 
   <variablelist>
@@ -235,8 +239,8 @@
       <listitem>
         <para>
           Switch on dithering of audio conversion from internal
-          floating point to 32, 16 and 8-bit formats.  The default 
-          form of the dither is triangular. 
+          floating point to 32, 16 and 8-bit formats.  The default
+          form of the dither is triangular.
         </para>
       </listitem>
     </varlistentry>
@@ -364,6 +368,16 @@
       </listitem>
     </varlistentry>
 
+        <varlistentry id="FlagsCatMinusMinussetsr">
+          <term>--set-system-sr<indexterm id="IndexCatMinusMinussetsr"><primary>--get-system-sr</primary></indexterm></term>
+          <listitem>
+            <para>
+              sets sr to the system sr, requires previous -o dac.
+              If the audio does not support this request then -1 is reported.
+            </para>
+          </listitem>
+          </varlistentry>
+
         <varlistentry id="FlagsCatMinusRealtime">
           <term>--realtime<indexterm
           id="IndexCatMinusRealtime"><primary>--realtime</primary></indexterm></term>
@@ -382,7 +396,7 @@
             </para>
           </listitem>
         </varlistentry>
-    
+
     <varlistentry id="FlagsCatMinusPlusServer">
       <term>-+server=string<indexterm id="IndexCatMinusPlusServer"><primary>-+server</primary></indexterm></term>
       <listitem>
@@ -456,7 +470,7 @@ csound5:output2             (playback right)</screen>
         </para>
       </listitem>
     </varlistentry>
-        
+
     <varlistentry id="FlagsCatMinusUpperF">
       <term>-F FILE<indexterm id="IndexCatMinusUpperF"><primary>-F</primary></indexterm>, --midifile=FILE<indexterm id="IndexCatMinusMidifile"><primary>--midifile</primary></indexterm></term>
       <listitem>
@@ -529,7 +543,22 @@ csound5:output2             (playback right)</screen>
       <term>-M DEVICE<indexterm id="IndexCatMinusUpperM"><primary>-M</primary></indexterm>, --midi-device=DEVICE<indexterm id="IndexCatMinusMididevice"><primary>--midi-device</primary></indexterm></term>
       <listitem>
         <para>
-          Read MIDI events from device <emphasis>DEVICE</emphasis>. If using ALSA MIDI (<link linkend="FlagsCatMinusPlusRtmidi"><citetitle>-+rtmidi</citetitle></link>=alsa), devices are selected by name and not number. So, you need to use an option like -M hw:CARD,DEVICE where CARD and DEVICE are the card and device numbers (e.g. -M hw:1,0). In the case of PortMidi and MME, DEVICE should be a number, and if it is out of range, an error occurs and the valid device numbers are printed. When using PortMidi, you can use '-Ma' to enable all devices. This is also convenient when you don't have devices as it will not generate an error.
+          Read MIDI events from device
+          <emphasis>DEVICE</emphasis>. If using ALSA MIDI
+          (-+rtmidi=alsa), devices are selected by name and not
+          number. So, you need to use an option like -M
+          hw:CARD,DEVICE where CARD and DEVICE are the card and
+          device numbers (e.g. -M hw:1,0). In the case of
+          CoreMIDI and MME, DEVICE should be a number, and if it
+          is out of range, an error occurs and the valid device
+          numbers are printed.
+          With PortMIDI, DEVICE is either a number for single port
+          input, 'a' for listening to all input ports, or 'm'
+          for mapping ports to MIDI channels above 16. In this
+          case, device 0 uses 1-16, device 1 uses 17-32, ...
+          device N uses (N+1)*channel.
+          The options 'a' and 'm' are also convenient when you
+          don't have devices as they will not generate an error.
         </para>
       </listitem>
     </varlistentry>
@@ -607,8 +636,9 @@ csound5:output2             (playback right)</screen>
       <term>-+rtmidi=string<indexterm id="IndexCatMinusRtmidi"><primary>-+rtmidi</primary></indexterm></term>
       <listitem>
         <para>
-          (max. length = 20 characters) Real time MIDI module name.
-          Defaults to PortMidi, other options (depending on build options): Linux: alsa; Windows: mme, winmm. In addition, null can be used on all platforms, to disable the use of any real time MIDI plugin.
+          (max. length = 20 characters) Real time MIDI module name. Defaults to PortMidi, other
+          options (depending on build options): Linux: alsa; Windows: mme, winmm. In addition,
+          null can be used on all platforms, to disable the use of any real time MIDI plugin.
         </para>
         <para>ALSA MIDI devices are selected by name and not number. So, you
           need to use an option like -M hw:CARD,DEVICE where CARD and
@@ -621,10 +651,20 @@ csound5:output2             (playback right)</screen>
       <term>-Q DEVICE<indexterm id="IndexCatMinusUpperQ"><primary>-Q</primary></indexterm></term>
       <listitem>
         <para>
-          Enables MIDI OUT operations to device id <emphasis>DEVICE</emphasis>. This flag allows parallel MIDI OUT and DAC performance. Unfortunately the real-time timing implemented in Csound is completely managed by DAC buffer sample flow. So MIDI OUT operations can present some time irregularities. These irregularities can be reduced by using a lower value for the <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> flag.
+          Enables MIDI OUT operations to device id <emphasis>DEVICE</emphasis>. This flag allows
+          parallel MIDI OUT and DAC performance. Unfortunately the real-time timing implemented
+          in Csound is completely managed by DAC buffer sample flow. So MIDI OUT operations can
+          present some time irregularities. These irregularities can be reduced by using a lower
+          value for the <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link>
+          flag.
         </para>
         <para>
-          If using ALSA MIDI (<link linkend="FlagsCatMinusPlusRtmidi"><citetitle>-+rtmidi</citetitle></link>=alsa), devices are selected by name and not number. So, you need to use an option like -Q hw:CARD,DEVICE where CARD and DEVICE are the card and device numbers (e.g. -Q hw:1,0). In the case of PortMidi and MME, DEVICE should be a number, and if it is out of range, an error occurs and the valid device numbers are printed.
+          If using ALSA MIDI (<link
+          linkend="FlagsCatMinusPlusRtmidi"><citetitle>-+rtmidi</citetitle></link>=alsa),
+          devices are selected by name and not number. So, you need to use an option like -Q
+          hw:CARD,DEVICE where CARD and DEVICE are the card and device numbers (e.g. -Q hw:1,0).
+          In the case of PortMidi and MME, DEVICE should be a number, and if it is out of range,
+          an error occurs and the valid device numbers are printed.
         </para>
       </listitem>
     </varlistentry>
@@ -637,7 +677,9 @@ csound5:output2             (playback right)</screen>
         <term>--csd-line-nums=NUM<indexterm id="IndexCatMinusCsdLineNums"><primary>--csd-line-nums</primary></indexterm></term>
         <listitem>
           <para>
-            Determines how line numbers are counted and displayed for error messages when processing a Csound Unified Document file (.csd).  This flag has no effect if separate orchestra and score files are used.  (Csound 5.08 and later).
+            Determines how line numbers are counted and displayed for error messages when
+            processing a Csound Unified Document file (.csd). This flag has no effect if
+            separate orchestra and score files are used. (Csound 5.08 and later).
             <itemizedlist>
               <listitem><para>0 = line numbers are relative to the beginning of the orchestra or score sections of the CSD</para></listitem>
               <listitem><para>1 = line numbers are relative to the beginning of the CSD file.  This is the default as of Csound 5.08.</para></listitem>
@@ -650,13 +692,8 @@ csound5:output2             (playback right)</screen>
       <term>-d<indexterm id="IndexCatMinusLowerD"><primary>-d</primary></indexterm>, --nodisplays<indexterm id="IndexCatMinusNodisplays"><primary>--nodisplays</primary></indexterm></term>
       <listitem>
         <para>
-          Suppress all displays. See <link
-          linkend="FlagsCatMinusUpperO"><citetitle>-O</citetitle></link>
-          if you want to save the log to a file.  <note>This option
-          only works from the command line and not from .csound6rc or
-          a CsOptions section of a  csd file.  It needs to be acted
-          upon before sound proper starts.  It is ignored in .csound6rc
-        and CsOptions.</note>
+          Suppress all displays. See <link linkend="FlagsCatMinusUpperO"><citetitle>-O</citetitle></link>
+          if you want to save the log to a file. <note>This option disables all features depending on the opcodes "display" and "dispfft"</note><note>This option is ignored in .csound6rc.</note> 
         </para>
       </listitem>
     </varlistentry>
@@ -714,6 +751,7 @@ csound5:output2             (playback right)</screen>
             <listitem><para>2 = samples out of range message</para></listitem>
             <listitem><para>4 = warning messages</para></listitem>
             <listitem><para>128 = print benchmark information</para></listitem>
+            <listitem><para>1024 = suppress deprecated messages</para></listitem>
           </itemizedlist>
           And exactly one of these to select note amplitude format:
           <itemizedlist>
@@ -727,7 +765,7 @@ csound5:output2             (playback right)</screen>
           The default is 135 (128+4+2+1), which means all messages, raw
           amplitude values, and printing elapsed time at the end of
           performance.  The coloring of raw amplitudes was introduced
-          in version 5.04
+          in version 5.04. Suppression of deprecated messages new in 6.14.
         </para>
       </listitem>
     </varlistentry>
@@ -736,7 +774,7 @@ csound5:output2             (playback right)</screen>
       <term>--m-amps=NUM<indexterm id="IndexCatMinusLowerMA"></indexterm></term>
       <listitem>
         <para>
-          Message level for amplitudes on standard (terminal) output. 
+          Message level for amplitudes on standard (terminal) output.
           <itemizedlist>
             <listitem><para>0 = no note amplitude messages</para></listitem>
             <listitem><para>1 = note amplitude messages</para></listitem>
@@ -749,7 +787,7 @@ csound5:output2             (playback right)</screen>
       <term>--m-range=NUM<indexterm id="IndexCatMinusLowerMR"></indexterm></term>
       <listitem>
         <para>
-          Message level for out of range messages on standard (terminal) output. 
+          Message level for out of range messages on standard (terminal) output.
           <itemizedlist>
             <listitem><para>0 = no samples out of range message</para></listitem>
             <listitem><para>1 = samples out of range message</para></listitem>
@@ -762,7 +800,7 @@ csound5:output2             (playback right)</screen>
       <term>--m-warnings=NUM<indexterm id="IndexCatMinusLowerMW"></indexterm></term>
       <listitem>
         <para>
-          Message level for warnings on standard (terminal) output. 
+          Message level for warnings on standard (terminal) output.
           <itemizedlist>
             <listitem><para>0 = no warning messages</para></listitem>
             <listitem><para>1 = warning messages</para></listitem>
@@ -775,7 +813,7 @@ csound5:output2             (playback right)</screen>
       <term>--m-dB=NUM<indexterm id="IndexCatMinusLowerMD"></indexterm></term>
       <listitem>
         <para>
-          Message level for amplitude format on standard (terminal) output. 
+          Message level for amplitude format on standard (terminal) output.
           <itemizedlist>
             <listitem><para>0 = absolute amplitude messages</para></listitem>
             <listitem><para>1 = dB amplitude messages</para></listitem>
@@ -788,7 +826,7 @@ csound5:output2             (playback right)</screen>
       <term>--m-colours=NUM<indexterm id="IndexCatMinusLowerMC"></indexterm></term>
       <listitem>
         <para>
-          Message level for amplitude format on standard (terminal) output. 
+          Message level for amplitude format on standard (terminal) output.
           <itemizedlist>
             <listitem><para>0 = no colouring of amplitude messages</para></listitem>
             <listitem><para>1 = colouring of amplitude messages</para></listitem>
@@ -801,7 +839,7 @@ csound5:output2             (playback right)</screen>
       <term>--m-benchmarks=NUM<indexterm id="IndexCatMinusLowerMB"></indexterm></term>
       <listitem>
         <para>
-          Message level for benchmark information on standard (terminal) output. 
+          Message level for benchmark information on standard (terminal) output.
           <itemizedlist>
             <listitem><para>0 = no benchnark numbers</para></listitem>
             <listitem><para>1 = print benchnark numbers</para></listitem>
@@ -918,11 +956,12 @@ csound5:output2             (playback right)</screen>
     </varlistentry>
 
       <varlistentry id="FlagsCatMinusPort">
-        <term>--port=N<indexterm id="IndexCatMinusPprt"><primary>--port</primary></indexterm></term>
+        <term>--port=N<indexterm id="IndexCatMinusPort"><primary>--port</primary></indexterm></term>
         <listitem>
           <para>
             Set UDP port on which to listen for commands and instruments/orchestra code
-            (implies --daemon)
+            (implies --daemon).   See <link
+            linkend="udpserver"><citetitle>UDP Server</citetitle></link>.
           </para>
         </listitem>
       </varlistentry>
@@ -930,7 +969,7 @@ csound5:output2             (playback right)</screen>
 
       <varlistentry id="FlagsCatMinusUdpEcho">
         <term>--udp-echo<indexterm
-        id="IndexCatMinusUdpEcho"><primary>--udp-echo</primary></indexterm></term> 
+        id="IndexCatMinusUdpEcho"><primary>--udp-echo</primary></indexterm></term>
         <listitem>
           <para>
             Switches on printing of UDP commands on the terminal. Any
@@ -939,10 +978,10 @@ csound5:output2             (playback right)</screen>
           </para>
         </listitem>
       </varlistentry>
-      
+
        <varlistentry id="FlagsCatMinusUdpConsole">
         <term>--udp-console=address:port<indexterm
-        id="IndexCatMinusUdpConsole"><primary>--udp-console</primary></indexterm></term> 
+        id="IndexCatMinusUdpConsole"><primary>--udp-console</primary></indexterm></term>
         <listitem>
           <para>
             Redirects the console messages to a remote address:port
@@ -953,7 +992,7 @@ csound5:output2             (playback right)</screen>
 
              <varlistentry id="FlagsCatMinusUdpMirrorConsole">
         <term>--udp-mirror-console=address:port<indexterm
-        id="IndexCatMinusUdpMirrorConsole"><primary>--udp-mirror-console</primary></indexterm></term> 
+        id="IndexCatMinusUdpMirrorConsole"><primary>--udp-mirror-console</primary></indexterm></term>
         <listitem>
           <para>
             Mirrors the console messages to a remote address:port
@@ -961,7 +1000,7 @@ csound5:output2             (playback right)</screen>
           </para>
         </listitem>
        </varlistentry>
-       
+
     <varlistentry id="FlagsCatMinusLowerR">
       <term>-r NUM<indexterm id="IndexCatMinusLowerR"><primary>-r</primary></indexterm>, --sample-rate=NUM<indexterm id="IndexCatMinusSamplerate"><primary>--sample-rate</primary></indexterm></term>
       <listitem>
@@ -1053,22 +1092,22 @@ csound5:output2             (playback right)</screen>
       </listitem>
 
     </varlistentry>
-        <varlistentry id="FlagsCatMinusLowerJ">
-          <term>-j NUM<indexterm
-          id="IndexCatMinusLowerJ"><primary>-j</primary></indexterm>,
-          --num-threads=NUM<indexterm id="IndexCatMinusNumthread"><primary>--num-threads=NUM</primary></indexterm></term>
-          <listitem>
-            <para>
-              Make <emphasis>NUM</emphasis> processes available for
-              rendering.  This is only advantageous if the number of
-              processors on the computer is the same or more that the number
-              of requested processes.  It also may slow rendering down
-              if ksmps is too small. 
-            </para>
-          </listitem>
-        </varlistentry>
-    
+    <varlistentry id="FlagsCatMinusLowerJ">
+      <term>-j NUM<indexterm
+      id="IndexCatMinusLowerJ"><primary>-j</primary></indexterm>,
+      --num-threads=NUM<indexterm id="IndexCatMinusNumthread"><primary>--num-threads=NUM</primary></indexterm></term>
+      <listitem>
+        <para>
+          Make <emphasis>NUM</emphasis> processes available for
+          rendering.  This is only advantageous if the number of
+          processors on the computer is the same or more that the number
+          of requested processes.  It also may slow rendering down
+          if ksmps is too small.
+        </para>
+      </listitem>
+    </varlistentry>
 
+    
   </variablelist>
 
   <variablelist>
@@ -1081,7 +1120,7 @@ csound5:output2             (playback right)</screen>
         </para>
       </listitem>
     </varlistentry>
-
+    
     <varlistentry id="FlagsCatMinusUpperC">
       <term>-C<indexterm id="IndexCatMinusUpperC"><primary>-C</primary></indexterm>, --cscore<indexterm id="IndexCatMinusCscore"><primary>--cscore</primary></indexterm></term>
       <listitem>
@@ -1090,7 +1129,7 @@ csound5:output2             (playback right)</screen>
         </para>
       </listitem>
     </varlistentry>
-
+    
     <varlistentry id="FlagsCatMinusDefaultPaths">
       <term>--default-paths<indexterm id="IndexCatMinusDefaultPaths"><primary>--no-default-paths</primary></indexterm></term>
       <listitem>
@@ -1134,13 +1173,23 @@ csound5:output2             (playback right)</screen>
       </listitem>
     </varlistentry>
 
+    <varlistentry id="FlagsCatMinusMinusSinesize">
+      <term>--sinesize=integer<indexterm id="IndexCatMinusMinusSinesize"><primary>--sinesize</primary></indexterm></term>
+      <listitem>
+        <para>
+          Set size of internal sine wave (table -1).  Should be a
+          power of two, and defaults to 16384.
+        </para>
+      </listitem>
+    </varlistentry>
+
     <varlistentry id="FlagsCatMinusExpressionOpt">
       <term>--expression-opt<indexterm id="IndexCatMinusExpressionOpt"><primary>--expression-opt</primary></indexterm></term>
       <listitem>
         <para>
           <emphasis>Note that this option has no affect in
           csound6.</emphasis>
-
+          
           <emphasis>In Csound 5 only.</emphasis>
           Turns on some optimizations in expressions:
           <itemizedlist>
@@ -1161,35 +1210,35 @@ csound5:output2             (playback right)</screen>
             <listitem><para>number of a- and k-rate temporary
             variables is significantly reduced. This expression</para>
             <programlisting>
-(a1 + a2 + a3 + a4)</programlisting>
-<para>will compile as</para>
-<programlisting>
-#a0 Add a1, a2
-#a0 Add #a0, a3
-#a0 Add #a0, a4       ; (the result is in #a0)</programlisting>
-              <para>instead of</para>
-              <programlisting>
-#a0 Add a1, a2
-#a1 Add #a0, a3
-#a2 Add #a1, a4       ; (the result is in #a2)</programlisting>
-
-              <para>The advantages of less temporary variables are:</para>
-              <itemizedlist>
-                <listitem><simpara>less cache memory is used, which may improve performance
-                  of orchestras with many a-rate expressions and a low
+            (a1 + a2 + a3 + a4)</programlisting>
+            <para>will compile as</para>
+            <programlisting>
+              #a0 Add a1, a2
+              #a0 Add #a0, a3
+            #a0 Add #a0, a4       ; (the result is in #a0)</programlisting>
+            <para>instead of</para>
+            <programlisting>
+              #a0 Add a1, a2
+              #a1 Add #a0, a3
+            #a2 Add #a1, a4       ; (the result is in #a2)</programlisting>
+            
+            <para>The advantages of less temporary variables are:</para>
+            <itemizedlist>
+              <listitem><simpara>less cache memory is used, which may improve performance
+              of orchestras with many a-rate expressions and a low
                   control rate (e.g. ksmps = 100)</simpara></listitem>
-                <listitem><simpara>large orchestras may load faster due to less different
+                  <listitem><simpara>large orchestras may load faster due to less different
                   identifier names</simpara></listitem>
-                <listitem>
-                  <simpara>index overflow errors (i.e. when messages like this
-                  Case2: indx=-56004 (ffff253c); (short)indx = 9532 (253c)
-                  are printed and odd behavior or a Csound crash occurs) may
-                  be fixed, because such errors are triggered by too many
-                  different (especially a-rate) variable names in a single
-                  instrument.</simpara>
-                </listitem>
-              </itemizedlist>
-              <para>Note that this optimization (due to technical reasons) is not
+                  <listitem>
+                    <simpara>index overflow errors (i.e. when messages like this
+                    Case2: indx=-56004 (ffff253c); (short)indx = 9532 (253c)
+                    are printed and odd behavior or a Csound crash occurs) may
+                    be fixed, because such errors are triggered by too many
+                    different (especially a-rate) variable names in a single
+                    instrument.</simpara>
+                  </listitem>
+            </itemizedlist>
+            <para>Note that this optimization (due to technical reasons) is not
               performed on i-rate temporary variables.</para>
             </listitem>
           </itemizedlist>
@@ -1205,7 +1254,7 @@ csound5:output2             (playback right)</screen>
       </listitem>
     </varlistentry>
 
-              
+
     <varlistentry id="FlagsCatMinusVersion">
       <term>--version<indexterm id="IndexCatMinusVersion"><primary>--version</primary></indexterm></term>
       <listitem>
@@ -1339,12 +1388,12 @@ b
 	<term>--orc orcname<indexterm id="IndexCatMinusMinusOrc"><primary>--orc</primary></indexterm></term>
 	<listitem>
 	  <para>
-	    Set the argument as the orchestra file.  Used when not
-            score is required>.  (Csound 5.18 and later).
+	    Set the argument as the orchestra file.  Used when no
+            score is required.  (Csound 5.18 and later).
 	  </para>
 	</listitem>
       </varlistentry>
-      
+
       <varlistentry id="FlagsCatMinusSyntaxCheckOnly">
         <term>--syntax-check-only<indexterm id="IndexCatMinusSyntaxCheckOnly"><primary>--syntax-check-only</primary></indexterm></term>
         <listitem>
@@ -1355,10 +1404,11 @@ b
       </varlistentry>
 
     <varlistentry id="FlagsCatMinusLowerT0">
-      <term>-t0<indexterm id="IndexCatMinusLowerT0"><primary>-t0</primary></indexterm>, --keep-sorted-score<indexterm id="IndexCatMinusKeepsortedscore"><primary>--keep-sorted-score</primary></indexterm></term>
+      <term>--simple-sorted-score<indexterm id="IndexCatMinusSimplesortedscore"><primary>--simple-sorted-score</primary></indexterm></term>
       <listitem>
         <para>
-          Prevents Csound from deleting the sorted score file, score.srt, upon exit.
+          Retains the sorted score file score.srt in a simple readable
+          format upon exit.  (New in version 6.14).
         </para>
       </listitem>
     </varlistentry>

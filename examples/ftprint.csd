@@ -1,14 +1,10 @@
 <CsoundSynthesizer>
 <CsOptions>
-;-odac     ;;;realtime audio out
+
+--nosound
 
 </CsOptions>
 <CsInstruments>
-
-sr = 44100
-ksmps = 64
-nchnls = 2
-0dbfs  = 1
 
 ; This is the example file for ftprint
 
@@ -42,8 +38,23 @@ instr 1
   ; print all elements in columns of 4 elements
   ftprint ifn, 1, 0, 0, 1, 4
 
-  ; print only the first 5 elements
-  ftprint ifn, 1, 0, 5
+  ; assume that a table holds a 2D matrix, print the matrix 
+  imatrix  ftgentmp 0, 0, 0, -2, \
+      00, 01, 02, 03, 04,  \
+      10, 11, 12, 13, 14,  \
+      20, 21, 22, 23, 24,  \
+      30, 31, 32, 33, 34
+
+  ; print the whole matrix, 5 columns per line
+  ftprint imatrix, 1, 0, 0, 1, 5
+
+  ; print one row
+  irow = 2
+  inumcols = 5
+  ftprint imatrix, 1, 2*inumcols, 3*inumcols
+
+  ; print one column
+  ftprint imatrix, 1, 3, 0, inumcols, 1
 
   turnoff
 endin

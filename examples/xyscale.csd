@@ -21,10 +21,10 @@ FLrun
 instr 1
   ; We define four chords for bottom-left, bottom-right, top-left and top-right
   ; Use the mouse to interpolate between them
-  ibl[] array ntom:i("4C"), ntom:i("4Eb"), ntom:i("4G")
-  itl[] array ntom:i("4E"), ntom:i("4G#"), ntom:i("4B")
-  ibr[] array ntom:i("4G"), ntom:i("4A"), ntom:i("4B")
-  itr[] array ntom:i("4Eb"), ntom:i("4Eb+"), ntom:i("4F")
+  ibl[] fillarray ntom:i("4C"), ntom:i("4Eb"), ntom:i("4G")
+  itl[] fillarray ntom:i("4E"), ntom:i("4G#"), ntom:i("4B")
+  ibr[] fillarray ntom:i("4G"), ntom:i("4A"), ntom:i("4B")
+  itr[] fillarray ntom:i("4Eb"), ntom:i("4Eb+"), ntom:i("4F")
  
   kmousex, kmousey, kb1, kb2, kb3    FLmouse 2
   kx = limit(kmousex/giwidth, 0, 1)

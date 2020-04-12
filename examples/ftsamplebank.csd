@@ -12,8 +12,8 @@
 ;load all samples in a given directory into function tables and play them using instrument 1000
 instr 1
    iFirstTableNumber = 60;
-   iFileCount init 0
-   iNumberOfFiles ftsamplebank "./examples/", iFirstTableNumber, 0, 4, 1
+   iFileCount init 1
+   iNumberOfFiles ftsamplebank "../examples/", iFirstTableNumber, 0, 4, 1
 
    until iFileCount>=iNumberOfFiles do
 	event_i "i", 1000, iFileCount, 1, iFirstTableNumber+iFileCount
@@ -30,7 +30,7 @@ endin
 
 </CsInstruments>
 <CsScore>
-i1 0 100
+i1 0 20
 </CsScore>
 </CsoundSynthesizer>
 

@@ -13,6 +13,7 @@ ksmps = 10
 nchnls = 2
  
 instr 1
+  kq init 0
   ; Get the value from the checkbox.
   k1 checkbox 1
 
@@ -22,9 +23,11 @@ instr 1
   a1 oscil 10000, k2, 1
   outs a1, a1
   kq button 1
-  if kq = 1 then
-     exitnow
-  endif
+  schedkwhen kq, 0, 1, 2, 0, 0
+endin
+
+instr 2
+  exitnow
 endin
 
 </CsInstruments>

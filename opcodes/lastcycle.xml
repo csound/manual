@@ -1,0 +1,70 @@
+
+<refentry id="lastcycle">
+  <indexterm id="IndexLastcycle"><primary>lastcycle</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Event Extenders</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lastcycle</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>lastcycle</refname>
+
+    <refpurpose>
+      Indicates whether an event is in its last performance cycle.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Provides a way of knowing if an event is in its last performance cycle. Whether an event has a finite duration (p3 > 0)
+      or a note is extended via a time extending opcode (like <quote>linsegr</quote> or <quote>xtratim</quote>), this opcode returns 1
+      if the event is currently at its last k-cycle. The only sitatuation where <quote>lastcycle</quote> does not detect that the event
+      will not run for another cycle is when the note is turned off by another event (using <quote>turnoff2</quote>) and is not given
+      the possibility of running through its release stage (using <quote>turnoff2 instrnum, imode, 0</quote>)
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kflag <command>lastcycle</command></synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kflag</emphasis> -- indicates whether the note is in its <quote>last cycle</quote>. (1 if this the last cycle, otherwise 0)
+    </para>
+
+    <para>
+      This opcode is useful for performing cleanup actions, signaling to other events that this event is finishing, etc. It works only at performance time.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the lastcycle opcode. It uses the file <ulink url="examples/lastcycle.csd"><citetitle>lastcycle.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the lastcycle opcode.</title>
+        <xi:include href="examples-xml/lastcycle.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="xtratim"><citetitle>xtratim</citetitle></link>, 
+      <link linkend="release"><citetitle>release</citetitle></link>, 
+      <link linkend="linsegr"><citetitle>linsegr</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>By: &nameeduardo; 2020</para>
+    <para>New in Csound version 6.14 (2020)</para>
+  </refsect1>
+</refentry>

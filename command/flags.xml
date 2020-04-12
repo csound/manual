@@ -101,7 +101,7 @@
             </para>
           </listitem>
         </varlistentry>
-        
+
         <varlistentry id="FlagsMinusUpperB">
           <term>-B NUM<indexterm id="IndexMinusUpperB"><primary>-B</primary></indexterm>, --hardwarebufsamps=NUM<indexterm id="IndexMinusHardwarebufsamps"><primary>--hardwarebufsamps</primary></indexterm></term>
           <listitem>
@@ -368,6 +368,16 @@
           </listitem>
           </varlistentry>
 
+        <varlistentry id="FlagsMinusMinussetsr">
+          <term>--set-system-sr<indexterm id="IndexMinusMinussetsr"><primary>--get-system-sr</primary></indexterm></term>
+          <listitem>
+            <para>
+              sets sr to the system sr, requires previous -o dac.
+              If the audio does not support this request then -1 is reported.
+            </para>
+          </listitem>
+          </varlistentry>
+
       <varlistentry id="FlagsMinusUpperH">
           <term>-H#<indexterm id="IndexMinusUpperH"><primary>-H</primary></indexterm>, --heartbeat=NUM<indexterm id="IndexMinusHeartbeat"><primary>--heartbeat</primary></indexterm></term>
           <listitem>
@@ -536,7 +546,7 @@
               rendering.  This is only advantageous if the number of
               processors on the computer is the same or more that the number
               of requested processes.  It also may slow rendering
-              down if ksmps is too small. 
+              down if ksmps is too small.
             </para>
           </listitem>
         </varlistentry>
@@ -573,7 +583,7 @@
             </para>
           </listitem>
         </varlistentry>
-        
+
         <varlistentry id="FlagsMinusUpperK">
           <term>-K<indexterm id="IndexMinusUpperK"><primary>-K</primary></indexterm>, --nopeaks<indexterm id="IndexMinusNopeaks"><primary>--nopeaks</primary></indexterm></term>
           <listitem>
@@ -582,7 +592,7 @@
             </para>
           </listitem>
         </varlistentry>
-        
+
         <varlistentry id="FlagsMinusLowerK">
           <term>-k NUM<indexterm id="IndexMinusLowerK"><primary>-k</primary></indexterm>, --control-rate=NUM<indexterm id="IndexMinusControlrate"><primary>--control-rate</primary></indexterm></term>
           <listitem>
@@ -591,7 +601,7 @@
             </para>
           </listitem>
         </varlistentry>
-        
+
         <varlistentry id="FlagsMinusUpperL">
           <term>-L DEVICE<indexterm id="IndexMinusUpperL"><primary>-L</primary></indexterm>, --score-in=DEVICE<indexterm id="IndexMinusScorein"><primary>--score-in</primary></indexterm></term>
           <listitem>
@@ -605,7 +615,7 @@
   </note>
           </listitem>
         </varlistentry>
-        
+
         <varlistentry id="FlagsMinusLowerL">
           <term>-l<indexterm id="IndexMinusLowerL"><primary>-l</primary></indexterm>, --format=long<indexterm id="IndexMinusFormatLong"><primary>--format=long</primary></indexterm></term>
           <listitem>
@@ -614,31 +624,47 @@
             </para>
           </listitem>
         </varlistentry>
-        
+
         <varlistentry id="FlagsMinusUpperM">
           <term>-M DEVICE<indexterm id="IndexMinusUpperM"><primary>-M</primary></indexterm>, --midi-device=DEVICE<indexterm id="IndexMinusMididevice"><primary>--midi-device</primary></indexterm></term>
           <listitem>
             <para>
-                Read MIDI events from device <emphasis>DEVICE</emphasis>. If using ALSA MIDI (-+rtmidi=alsa), devices are selected by name and not number. So, you need to use an option like -M hw:CARD,DEVICE where CARD and DEVICE are the card and device numbers (e.g. -M hw:1,0). In the case of PortMidi and MME, DEVICE should be a number, and if it is out of range, an error occurs and the valid device numbers are printed.When using PortMidi, you can use '-Ma' to enable all devices. This is also convenient when you don't have devices as it will not generate an error.
+                Read MIDI events from device
+                <emphasis>DEVICE</emphasis>. If using ALSA MIDI
+                (-+rtmidi=alsa), devices are selected by name and not
+                number. So, you need to use an option like -M
+                hw:CARD,DEVICE where CARD and DEVICE are the card and
+                device numbers (e.g. -M hw:1,0). In the case of
+                CoreMIDI and MME, DEVICE should be a number, and if it
+                is out of range, an error occurs and the valid device
+                numbers are printed.
+                With PortMIDI, DEVICE is either a number for single port
+                input, 'a' for listening to all input ports, or 'm'
+                for mapping ports to MIDI channels above 16. In this
+                case, device 0 uses 1-16, device 1 uses 17-32, ...
+                device N uses (N+1)*channel.
+                The options 'a' and 'm' are also convenient when you
+                don't have devices as they will not generate an error.
             </para>
           </listitem>
         </varlistentry>
-        
+
         <varlistentry id="FlagsMinusLowerM">
           <term>-m NUM<indexterm id="IndexMinusLowerM"><primary>-m</primary></indexterm>, --messagelevel=NUM<indexterm id="IndexMinusMessagelevel"><primary>--messagelevel</primary></indexterm></term>
           <listitem>
             <para>
               Message level for standard (terminal) output. Takes the <emphasis>sum</emphasis> of any of the following values:
-              
+
               <itemizedlist>
                 <listitem><para>1 = note amplitude messages</para></listitem>
                 <listitem><para>2 = samples out of range message</para></listitem>
                 <listitem><para>4 = warning messages</para></listitem>
                 <listitem><para>128 = print benchmark information</para></listitem>
+                <listitem><para>1024 = suppress deprecated messages</para></listitem>
               </itemizedlist>
-              
+
               And exactly one of these to select note amplitude format:
-              
+
               <itemizedlist>
                 <listitem><para>0 = raw amplitudes, no colours</para></listitem>
                 <listitem><para>32 = dB, no colors</para></listitem>
@@ -647,22 +673,23 @@
                 <listitem><para>256 = raw, out of range highlighted with red</para></listitem>
                 <listitem><para>512 = raw, all colours</para></listitem>
               </itemizedlist>
-              
+
               The default is 135 (128+4+2+1), which means all messages, raw
               amplitude values, and printing elapsed time at the end of
               performance.  The coloring of raw amplitudes was introduced
-              in version 5.04.
-              
+              in version 5.04. The supression of deprecated messages
+              new in 6.14.
+
             </para>
-            
+
           </listitem>
         </varlistentry>
-        
+
         <varlistentry id="FlagsMinusLowerMA">
           <term>--m-amps=NUM<indexterm id="IndexMinusLowerMA"></indexterm></term>
           <listitem>
             <para>
-              Message level for amplitudes on standard (terminal) output. 
+              Message level for amplitudes on standard (terminal) output.
               <itemizedlist>
                 <listitem><para>0 = no note amplitude messages</para></listitem>
                 <listitem><para>1 = note amplitude messages</para></listitem>
@@ -670,12 +697,12 @@
             </para>
           </listitem>
         </varlistentry>
-        
+
         <varlistentry id="FlagsMinusLowerMR">
           <term>--m-range=NUM<indexterm id="IndexMinusLowerMR"></indexterm></term>
           <listitem>
             <para>
-              Message level for out of range messages on standard (terminal) output. 
+              Message level for out of range messages on standard (terminal) output.
               <itemizedlist>
                 <listitem><para>0 = no samples out of range message</para></listitem>
                 <listitem><para>1 = samples out of range message</para></listitem>
@@ -688,7 +715,7 @@
           <term>--m-warnings=NUM<indexterm id="IndexMinusLowerMW"></indexterm></term>
           <listitem>
             <para>
-              Message level for warnings on standard (terminal) output. 
+              Message level for warnings on standard (terminal) output.
               <itemizedlist>
                 <listitem><para>0 = no warning messages</para></listitem>
                 <listitem><para>1 = warning messages</para></listitem>
@@ -701,7 +728,7 @@
           <term>--m-dB=NUM<indexterm id="IndexMinusLowerMD"></indexterm></term>
           <listitem>
             <para>
-              Message level for amplitude format on standard (terminal) output. 
+              Message level for amplitude format on standard (terminal) output.
               <itemizedlist>
                 <listitem><para>0 = absolute amplitude messages</para></listitem>
                 <listitem><para>1 = dB amplitude messages</para></listitem>
@@ -714,7 +741,7 @@
           <term>--m-colours=NUM<indexterm id="IndexMinusLowerMC"></indexterm></term>
           <listitem>
             <para>
-              Message level for amplitude format on standard (terminal) output. 
+              Message level for amplitude format on standard (terminal) output.
               <itemizedlist>
                 <listitem><para>0 = no colouring of amplitude messages</para></listitem>
                 <listitem><para>1 = colouring of amplitude messages</para></listitem>
@@ -727,7 +754,7 @@
           <term>--m-benchmarks=NUM<indexterm id="IndexMinusLowerMB"></indexterm></term>
           <listitem>
             <para>
-              Message level for benchmark information on standard (terminal) output. 
+              Message level for benchmark information on standard (terminal) output.
               <itemizedlist>
                 <listitem><para>0 = no benchnark numbers</para></listitem>
                 <listitem><para>1 = print benchnark numbers</para></listitem>
@@ -873,12 +900,12 @@
               rendering.  This is only advantageous if the number of
               processors on the computer is more that the number
               of requested processes.  It also may slow rendering
-              down if ksmps is too small. 
+              down if ksmps is too small.
             </para>
           </listitem>
         </varlistentry>
 
-        
+
         <varlistentry id="FlagsMinusNoDefaultPaths">
           <term>--no-default-paths<indexterm id="IndexMinusNoDefaultPaths"><primary>--no-default-paths</primary></indexterm></term>
           <listitem>
@@ -957,8 +984,8 @@
   <term>--orc orcname<indexterm id="IndexMinusMinusOrc"><primary>--orc</primary></indexterm></term>
   <listitem>
     <para>
-      Set the argument as the orchestrra file.  Used when not
-            score is required>.  (Csound 5.18 and later).
+      Set the argument as the orchestra file.  Used when no
+            score is required.  (Csound 5.18 and later).
     </para>
   </listitem>
       </varlistentry>
@@ -971,8 +998,8 @@
             </para>
           </listitem>
         </varlistentry>
-      
-      
+
+
       <varlistentry id="FlagsMinusPlusOutputStream">
         <term>-+output_stream=string<indexterm id="IndexMinusPlusOutputStream"><primary>-+output_stream</primary></indexterm></term>
         <listitem>
@@ -984,11 +1011,12 @@
 
       <varlistentry id="FlagsMinusPort">
         <term>--port=N<indexterm
-        id="IndexMinusPprt"><primary>--port</primary></indexterm></term> 
+        id="IndexMinusPort"><primary>--port</primary></indexterm></term>
         <listitem>
           <para>
             Set UDP port on which to listen for commands and instruments/orchestra code
-            (implies --daemon) 
+            (implies --daemon).  See <link
+            linkend="udpserver"><citetitle>UDP Server</citetitle></link>.
           </para>
         </listitem>
       </varlistentry>
@@ -996,7 +1024,7 @@
 
       <varlistentry id="FlagsMinusUdpEcho">
         <term>--udp-echo<indexterm
-        id="IndexMinusUdpEcho"><primary>--udp-echo</primary></indexterm></term> 
+        id="IndexMinusUdpEcho"><primary>--udp-echo</primary></indexterm></term>
         <listitem>
           <para>
             Switches on printing of UDP commands on the terminal. Any
@@ -1008,7 +1036,7 @@
 
        <varlistentry id="FlagsMinusUdpConsole">
         <term>--udp-console=address:port<indexterm
-        id="IndexFlagsMinusUdpConsole"><primary>--udp-console</primary></indexterm></term> 
+        id="IndexFlagsMinusUdpConsole"><primary>--udp-console</primary></indexterm></term>
         <listitem>
           <para>
             Redirects the console messages to a remote address:port
@@ -1019,7 +1047,7 @@
 
              <varlistentry id="FlagsMinusUdpMirrorConsole">
         <term>--udp-mirror-console=address:port<indexterm
-        id="IndexFlagsMinusUdpMirrorConsole"><primary>--udp-mirror-console</primary></indexterm></term> 
+        id="IndexFlagsMinusUdpMirrorConsole"><primary>--udp-mirror-console</primary></indexterm></term>
         <listitem>
           <para>
             Mirrors the console messages to a remote address:port
@@ -1027,10 +1055,10 @@
           </para>
         </listitem>
        </varlistentry>
-       
+
       <varlistentry id="FlagsMinusUpperQ">
         <term>-Q DEVICE<indexterm
-        id="IndexMinusUpperQ"><primary>-Q</primary></indexterm></term> 
+        id="IndexMinusUpperQ"><primary>-Q</primary></indexterm></term>
         <listitem>
           <para>
             Enables MIDI OUT operations to device id
@@ -1041,10 +1069,16 @@
             some time irregularities. These irregularities can be
             reduced by using a lower value for the <link
             linkend="FlagsMinusLowerB"><citetitle>-b</citetitle></link>
-            flag. 
+            flag.
             </para>
             <para>
-              If using ALSA MIDI (-+rtmidi=alsa), devices are selected by name and not number. So, you need to use an option like -Q hw:CARD,DEVICE where CARD and DEVICE are the card and device numbers (e.g. -Q hw:1,0). In the case of PortMidi and MME, DEVICE should be a number, and if it is out of range, an error occurs and the valid device numbers are printed.
+              If using ALSA MIDI (-+rtmidi=alsa), devices are selected
+              by name and not number. So, you need to use an option
+              like -Q hw:CARD,DEVICE where CARD and DEVICE are the
+              card and device numbers (e.g. -Q hw:1,0). In the case of
+              PortMIDI, CoreMIDI and MME, DEVICE should be a number, and if it
+              is out of range, an error occurs and the valid device
+              numbers are printed.
             </para>
           </listitem>
         </varlistentry>
@@ -1096,7 +1130,7 @@
             </para>
           </listitem>
         </varlistentry>
-           
+
         <varlistentry id="FlagsMinusPlusRtaudio">
           <term>-+rtaudio=string<indexterm id="IndexMinusRtaudio"><primary>-+rtaudio</primary></indexterm></term>
           <listitem>
@@ -1112,11 +1146,16 @@
           <listitem>
             <para>
               (max. length = 20 characters) Real time MIDI module name.
-              Defaults to PortMidi, other options (depending on build options): Linux: alsa; Windows: mme, winmm. In addition, null can be used on all platforms, to disable the use of any real time MIDI plugin.
+              Defaults to PortMIDI (if present). Other options
+              (depending on platform and build) are Linux: alsa;
+              MacOS: cmidi; Windows: mme, winmm.
+              In addition, null can be used on all platforms, to disable the use of any real time MIDI plugin.
             </para>
             <para>ALSA MIDI devices are selected by name and not number. So, you
               need to use an option like -M hw:CARD,DEVICE where CARD and
-              DEVICE are the card and device numbers (e.g. -M hw:1,0).
+              DEVICE are the card and device numbers (e.g. -M
+              hw:1,0). PortMIDI allows multiple port inputs with
+              either -Ma or -Mm.
             </para>
           </listitem>
         </varlistentry>
@@ -1178,12 +1217,22 @@
           </listitem>
         </varlistentry>
 
-        <varlistentry id="FlagsMinusPlusSkipSeconds">
-          <term>-+skip_seconds=float<indexterm id="IndexMinusSkipSecons"><primary>-+skip_seconds</primary></indexterm></term>
+        <varlistentry id="FlagsSimpleScore">
+          <term>--simple-sorted-score<indexterm id="IndexMinusSimplesortedscore"><primary>--keep-sorted-score</primary></indexterm></term>
           <listitem>
             <para>
-              (min: 0) Start playback at the specified time (in seconds),
-              skipping earlier events in the score and MIDI file.
+              Retains the sorted score file score.srt in a simple readable
+              format upon exit.  (New in version 6.14).
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry id="FlagsMinusMinusSinesize">
+          <term>--sinesize=integer<indexterm id="IndexMinusMinusSinesize"><primary>--sinesize</primary></indexterm></term>
+          <listitem>
+            <para>
+              Set size of internal sine wave (table -1).  Should be a
+              power of two, and defaults to 16384.
             </para>
           </listitem>
         </varlistentry>
@@ -1319,7 +1368,7 @@
             <para>
               Switch on dithering of audio conversion from internal
               floating point to 32, 16 and 8-bit formats.  The default
-              form of the dither is triangular.  
+              form of the dither is triangular.
             </para>
           </listitem>
         </varlistentry>

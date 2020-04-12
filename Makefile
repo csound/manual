@@ -6,7 +6,7 @@
 #       on your system.
 # *************************************************************************
 BASENAME=Csound
-VERSION=6.12.0
+VERSION=6.14.0
 
 # export PATH=$PATH:/home/andres/bin/fop-0.20.5/
 # export JAVA_HOME=/usr/lib/jvm/java-6-sun/
@@ -267,7 +267,9 @@ OPCODES = opcodes/0dbfs.xml	opcodes/ATSadd.xml	opcodes/ATSaddnz.xml \
 	opcodes/kpow.xml	opcodes/kr.xml	opcodes/kread.xml \
 	opcodes/kread2.xml	opcodes/kread3.xml	opcodes/kread4.xml \
 	opcodes/ksmps.xml	opcodes/ktableseg.xml	opcodes/ktrirand.xml \
-	opcodes/kunirand.xml	opcodes/kweibull.xml	opcodes/lenarray.xml \
+	opcodes/kunirand.xml	opcodes/kweibull.xml	\
+	opcodes/lastcycle.xml \
+	opcodes/lenarray.xml \
 	opcodes/lessequal.xml	opcodes/lessthan.xml	opcodes/lfo.xml \
 	opcodes/limit.xml	opcodes/line.xml	opcodes/linen.xml \
 	opcodes/linenr.xml	opcodes/lineto.xml	opcodes/linrand.xml \
@@ -285,7 +287,6 @@ OPCODES = opcodes/0dbfs.xml	opcodes/ATSadd.xml	opcodes/ATSaddnz.xml \
 	opcodes/lposcil3.xml	opcodes/lposcila.xml	opcodes/lposcilsa.xml \
 	opcodes/lposcilsa2.xml	opcodes/lpread.xml	opcodes/lpreson.xml \
 	opcodes/lpshold.xml	opcodes/lpsholdp.xml	opcodes/lpslot.xml \
-	opcodes/lua_exec.xml	opcodes/lua_opcall.xml	opcodes/lua_opdef.xml \
 	opcodes/mac.xml	opcodes/maca.xml	opcodes/madsr.xml \
 	opcodes/mags.xml	opcodes/mandel.xml	opcodes/mandol.xml \
 	opcodes/maparray.xml	opcodes/marimba.xml	opcodes/massign.xml \
@@ -452,6 +453,7 @@ OPCODES = opcodes/0dbfs.xml	opcodes/ATSadd.xml	opcodes/ATSaddnz.xml \
 	opcodes/strindex.xml	opcodes/strindexk.xml	opcodes/strlen.xml \
 	opcodes/strlenk.xml	opcodes/strlower.xml	opcodes/strlowerk.xml \
 	opcodes/strrindex.xml	opcodes/strrindexk.xml	opcodes/strset.xml \
+	opcodes/strstrip.xml \
 	opcodes/strsub.xml	opcodes/strsubk.xml	opcodes/strtod.xml \
 	opcodes/strtodk.xml	opcodes/strtol.xml	opcodes/strtolk.xml \
 	opcodes/strupper.xml	opcodes/strupperk.xml	opcodes/subinstr.xml \
@@ -569,7 +571,7 @@ SCORE =	score/eval.xml score/macros.xml score/mult.xml \
 OPCODES5 = csound5/acknowledgments.xml	csound5/cs5opcodes.xml \
 	csound5/extending.xml \
 	csound5/opcodes/fluid.xml csound5/opcodes/Jacko.xml \
-	csound5/opcodes/lua.xml csound5/opcodes/mixer.xml \
+	csound5/opcodes/mixer.xml \
 	csound5/opcodes/py.xml csound5/opcodes/signalflowgraph.xml \
 	csound5/opcodes/top.xml csound5/preface.xml csound5/usersguide.xml \
 
@@ -682,10 +684,10 @@ OTHER =         STKopcodes/top.xml \
         vectorial/vectorialrandom.xml \
         opcodes.xml \
         manual.xml
-        
+
 SRCS =  $(COMMAND) $(CONTROL) $(XMLS) $(MIDI) $(OPCODES) $(ORCH) $(SCORE) \
 	$(SIGS) $(UTILS) $(MISC) $(OTHER) examples-xml/stamp
- 
+
 # Build rules.
 all: html
 
@@ -697,7 +699,7 @@ $(XSL_HTML) $(XSL_HTMLHELP) $(XSL_PRINT) $(XSL_HTML_ONECHUNK): %: %.in
 
 examples-xml/stamp: examples $(wildcard examples/*)
 	mkdir -p examples-xml
-	python csd2docbook.py
+	python3 csd2docbook.py
 	touch examples-xml/stamp
 
 html: $(XSL_HTML) manual.xml $(SRCS) Makefile
@@ -716,9 +718,9 @@ html: $(XSL_HTML) manual.xml $(SRCS) Makefile
 	echo "Remember to use the html-dist target for distribution!"
 
 html-dist:
-	python quickref.py
+	python3 quickref.py
 	$(MAKE) html
-	python makeframes.py
+	#python3 makeframes.py
 
 html-bw: $(XSL_HTML) manual.xml $(SRCS) Makefile
 	-mkdir -p ${HTML_DIR}

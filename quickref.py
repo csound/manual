@@ -4,6 +4,7 @@
 # Licensed under the GPL licence version 3 or later
 # modification for empty arg in command and links on opcodes by Francois Pinot February 2007
 
+from __future__ import print_function
 from xml.dom import minidom
 import os, glob, sys
 
@@ -35,45 +36,45 @@ examples.write('''<appendix id="MiscExamples">
 
 files = glob.glob('opcodes/*.xml')
 try:
-	files.remove('opcodes/template.xml')
+    files.remove('opcodes/template.xml')
 except:
-	pass
+    pass
 files.sort()
 for i,filename in enumerate(files):
     entry = ''
-    #print filename
+    #print(filename)
     source = open(filename, 'r')
     text = source.read()
     source.close()
     cat_text = text[text.find("<refentryinfo><title>") + 21: text.find("</title></refentryinfo>")]
     if categories.count(cat_text) > 0:
       cat = categories.index(cat_text);
-      #print cat_text, cat
+      #print(cat_text, cat)
       while text.find("examples-xml/") != -1:
         file_to_add = text[text.find("examples-xml/"):text.find(".csd",text.find("examples-xml/") )+ 4]
         if len(file_to_add) < 45: #yes, very flaky, I know...
           entries[cat].append(file_to_add)
         else:
-          print file_to_add
+          print(file_to_add)
         text = text[text.find("examples-xml/") + 10:]
 
 for i,catname in enumerate(categories):
-  print catname
-  if len(entries[i]) > 0:
-    title ="<formalpara><title>"
-    title += catname
-    #title += "</title><simpara />\n"
-    title += "</title><simpara />\n"
-    examples.write(title)
-    for j,ex in enumerate(entries[i]):
-      if ex != "":
-	line = '<para><ulink url="'
-	line += ex.replace("-xml", '') + '"><citetitle>' + ex.replace("examples-xml/",'')
-	print line
-	#line += "</citetitle></ulink></para><simpara />\n"
-	line += "</citetitle></ulink></para><simpara />\n"
-	examples.write(line)
-    examples.write("</formalpara>\n")
+    print(catname)
+    if len(entries[i]) > 0:
+        title ="<formalpara><title>"
+        title += catname
+        #title += "</title><simpara />\n"
+        title += "</title><simpara />\n"
+        examples.write(title)
+        for j,ex in enumerate(entries[i]):
+            if ex != "":
+                line = '<para><ulink url="'
+                line += ex.replace("-xml", '') + '"><citetitle>' + ex.replace("examples-xml/",'')
+                print(line)
+                #line += "</citetitle></ulink></para><simpara />\n"
+                line += "</citetitle></ulink></para><simpara />\n"
+                examples.write(line)
+        examples.write("</formalpara>\n")
   
 examples.write('</appendix>\n')
 examples.close()
@@ -101,9 +102,9 @@ manual.close()
 
 files = glob.glob('opcodes/*.xml')
 try:
-	files.remove('opcodes/template.xml')
+    files.remove('opcodes/template.xml')
 except:
-	pass
+    pass
 files[len(files):]=glob.glob('opcodes/*/*.xml')
 files[len(files):]=glob.glob('vectorial/*.xml')
 files[len(files):]=glob.glob('utility/*.xml')
@@ -113,7 +114,7 @@ headerText = text[0:text.find('<book id="index"')]
 
 for i,filename in enumerate(files):
     entry = ''
-    #print file
+    #print(file)
     source = open(filename, 'r')
     newfile = source.read()
     source.close()
@@ -123,17 +124,17 @@ for i,filename in enumerate(files):
     if(refStart < 0):
         continue
     elif(refStart > 0):
-#        print 'Trimming file: ', filename, ' ', refStart
+#        print('Trimming file: ', filename, ' ', refStart)
         newfile = newfile[refStart:]
     
     # Necessary to define entities
     newfile = headerText + newfile
 
-    #print text
+    #print(text)
     try:
         xmldoc = minidom.parseString(newfile)
     except:
-        print '>>> Failed to parse:',filename 
+        print('>>> Failed to parse:', filename)
         continue
     xmldocId = xmldoc.documentElement.getAttribute('id')
     # Some files need special treatment (adds, dollar, divides, modulus, multiplies,
@@ -187,7 +188,7 @@ for i,filename in enumerate(files):
                 else:
                     opcodename = ""
                 if XO and removedopcodes.count(opcodename) == 0:
-                    print "Removed ----------------------", opcodename
+                    print("Removed ----------------------", opcodename)
                 else:
                     if tmp[-21:] == "</command></synopsis>":    # no arg, insert nbsp
                         tmp = tmp[:-11] + "&#160;</synopsis>"
@@ -196,32 +197,32 @@ for i,filename in enumerate(files):
             if entry != '':
                 entry += '<para/>'
         else:
-            #print "no synopsis tag for file: " + file
+            #print("no synopsis tag for file: " + file)
             entry = ''
-    #print "Entry ------ ", entry
+    #print("Entry ------ ", entry)
 
     info = xmldoc.getElementsByTagName('refentryinfo')
     if (len(info)!=0 and entry != ''):
         category = info[0].toxml()
         category = category[21:-23]
-        print category
+        print(category)
     else:
-        print "no refentryinfo tag for file " + filename
+        print("no refentryinfo tag for file " + filename)
         category = "Miscellaneous"
         if (entry!=''):
-            print filename + " sent to Miscellaneous"
-    #print category
+            print(filename + " sent to Miscellaneous")
+    #print(category)
     match = False
     for j, thiscategory in enumerate(categories):
         if (category == thiscategory):
             entries[j].append(entry+ '\n')
             match = True
     if match == False:
-        print filename + "WARNING! No Category Match!"
+        print(filename + "WARNING! No Category Match!")
 
 for i in range(len(categories)):
     if (len(entries[i])==0):
-        print "No entries for category: "+categories[i]+"...Skipping"
+        print("No entries for category: "+categories[i]+"...Skipping")
         continue
     quickref.write("<para></para><formalpara>\n")
     quickref.write("<title>"+ categories[i] + "</title>\n<para>\n<para/>\n")
@@ -230,9 +231,8 @@ for i in range(len(categories)):
         quickref.write(entries[i].pop(0)) # + '\n')
         count += 1
     quickref.write("</para></formalpara>\n<para></para>")
-    print str(count) + " entries in category: " + categories[i]
+    print(str(count) + " entries in category: " + categories[i])
 
 quickref.write('</chapter></part>\n')
 quickref.close()
-print entries
-
+print(entries)

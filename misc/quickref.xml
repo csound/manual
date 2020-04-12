@@ -85,7 +85,7 @@
 <synopsis>ares <link linkend="buzz">buzz</link> xamp, xcps, knh, ifn [, iphs]</synopsis><para/>
 <synopsis>ares <link linkend="gbuzz">gbuzz</link> xamp, xcps, knh, klh, kmul, ifn [, iphs]</synopsis><para/>
 <synopsis>ares <link linkend="mpulse">mpulse</link> kamp, kintvl [, ioffset]</synopsis><para/>
-<synopsis>aout [, asyncout] <link linkend="squinewave">squinewave</link> acps, aClip, aSkew [, asyncin] [, iMinSweep] [, iphase]</synopsis><para/>
+<synopsis>aout [, asyncout] <link linkend="squinewave">squinewave</link> acps, aClip, aSkew, asyncin [, iMinSweep] [, iphase]</synopsis><synopsis>aout [, asyncout] <link linkend="squinewave">squinewave</link> acps, aClip, aSkew [, ksyncin] [, iMinSweep] [, iphase]</synopsis><para/>
 <synopsis>ares <link linkend="vco">vco</link> xamp, xcps, iwave, kpw [, ifn] [, imaxd] [, ileak] [, inyx] \
       [, iphs] [, iskip]</synopsis><para/>
 <synopsis>ares <link linkend="vco2">vco2</link> kamp, kcps [, imode] [, kpw] [, kphs] [, inyx]</synopsis><para/>
@@ -170,8 +170,8 @@
 <title>Signal Generators:Linear and Exponential Generators</title>
 <para>
 <para/>
-<synopsis>ky <link linkend="bpf">bpf</link> kx, kx1, ky1, kx2, ..., kxn, kyn</synopsis><synopsis>iy <link linkend="bpf">bpf</link> ix, ix1, iy1, ix2, ..., ixn, iyn</synopsis><synopsis>kys[] <link linkend="bpf">bpf</link> kxs[], kx1, ky1, kx2, ..., kxn, kyn</synopsis><synopsis>iys[] <link linkend="bpf">bpf</link> ixs[], ix1, iy1, ix2, ..., ixn, iyn</synopsis><para/>
-<synopsis>ky <link linkend="bpfcos">bpfcos</link> kx, kx1, ky1, kx2, ..., kxn, kyn</synopsis><synopsis>kys[] <link linkend="bpfcos">bpfcos</link> kxs[], kx1, ky1, kx2, ..., kxn, kyn</synopsis><para/>
+<synopsis>ky <link linkend="bpf">bpf</link> kx, kx1, ky1, kx2, ..., kxn, kyn</synopsis><synopsis>iy <link linkend="bpf">bpf</link> ix, ix1, iy1, ix2, ..., ixn, iyn</synopsis><synopsis>kys[] <link linkend="bpf">bpf</link> kxs[], kx1, ky1, kx2, ..., kxn, kyn</synopsis><synopsis>iys[] <link linkend="bpf">bpf</link> ixs[], ix1, iy1, ix2, ..., ixn, iyn</synopsis><synopsis>ky <link linkend="bpf">bpf</link> kx, kxs[], kys[]</synopsis><synopsis>iy <link linkend="bpf">bpf</link> ix, ixs[], iys[]</synopsis><synopsis>ay <link linkend="bpf">bpf</link> ax, kx1, ky1, kx2, ..., kxn, kyn</synopsis><synopsis>ay <link linkend="bpf">bpf</link> ax, kxs[], kys[]</synopsis><synopsis>ky, kw <link linkend="bpf">bpf</link> kx, kxs[], kys[], kws[]</synopsis><para/>
+<synopsis>ky <link linkend="bpfcos">bpfcos</link> kx, kx1, ky1, kx2, ..., kxn, kyn</synopsis><synopsis>kys[] <link linkend="bpfcos">bpfcos</link> kxs[], kx1, ky1, kx2, ..., kxn, kyn</synopsis><synopsis>ky <link linkend="bpfcos">bpfcos</link> kx, kxs[], kys[]</synopsis><synopsis>ky <link linkend="bpfcos">bpfcos</link> kx, ixs[], iys[]</synopsis><synopsis>ky, kz <link linkend="bpfcos">bpfcos</link> kx, kxs[], kys[], kzs[] </synopsis><synopsis>ky, kz <link linkend="bpfcos">bpfcos</link> kx, ixs[], iys[], izs[] </synopsis><synopsis>kys[] <link linkend="bpfcos">bpfcos</link> kxs[], kx1, ky1, kx2, ..., kxn, kyn</synopsis><synopsis>ky <link linkend="bpfcos">bpfcos</link> kx, ixs[], iys[]</synopsis><synopsis>ky, kz <link linkend="bpfcos">bpfcos</link> kx, kxs[], kys[], kzs[] </synopsis><para/>
 <synopsis>ares <link linkend="cosseg">cosseg</link> ia, idur1, ib [, idur2] [, ic] [...]</synopsis><synopsis>kres <link linkend="cosseg">cosseg</link> ia, idur1, ib [, idur2] [, ic] [...]</synopsis><para/>
 <synopsis>ares <link linkend="cossegb">cossegb</link> ia, itim1, ib [, itim2] [, ic] [...]</synopsis><synopsis>kres <link linkend="cossegb">cossegb</link> ia, itim1, ib [, itim2] [, ic] [...]</synopsis><para/>
 <synopsis>ares <link linkend="cossegr">cossegr</link> ia, idur1, ib [, idur2] [, ic] [...], irel, iz</synopsis><synopsis>kres <link linkend="cossegr">cossegr</link> ia, idur1, ib [, idur2] [, ic] [...], irel, iz</synopsis><para/>
@@ -337,8 +337,9 @@
 <synopsis>aleft, aright <link linkend="fluidAllOut">fluidAllOut</link>&#160;</synopsis><para/>
 <synopsis><link linkend="fluidCCi">fluidCCi</link> iEngineNumber, iChannelNumber, iControllerNumber, iValue</synopsis><para/>
 <synopsis><link linkend="fluidCCk">fluidCCk</link> iEngineNumber, iChannelNumber, iControllerNumber, kValue</synopsis><para/>
-<synopsis><link linkend="fluidControl">fluidControl</link> ienginenum, kstatus, kchannel, kdata1, kdata2</synopsis><para/>
-<synopsis>ienginenum <link linkend="fluidEngine">fluidEngine</link> [iReverbEnabled] [, iChorusEnabled] [,iNumChannels] [, iPolyphony] </synopsis><para/>
+<synopsis><link linkend="fluidControl">fluidControl</link> ienginenum, kstatus, kchannel, \
+    kdata1, kdata2 [,imsgs]</synopsis><para/>
+<synopsis>ienginenum <link linkend="fluidEngine">fluidEngine</link> [iChorusEnabled] [, iRevervEnabled] [, iNumChannels] [, iPolyphony] </synopsis><para/>
 <synopsis>SPrograms[] <link linkend="fluidInfo">fluidInfo</link> ienginenum</synopsis><para/>
 <synopsis>isfnum <link linkend="fluidLoad">fluidLoad</link> soundfont, ienginenum[, ilistpresets]</synopsis><para/>
 <synopsis><link linkend="fluidNote">fluidNote</link> ienginenum, ichannelnum, imidikey, imidivel</synopsis><para/>
@@ -353,7 +354,8 @@
       [, imod2] [, ibeg2] [, iend2]</synopsis><para/>
 <synopsis>ar1 [, ar2, ar3, ar4, ar5, ar6, ar7, ar8, ar9, ar10, ar11, ar12, ar13, ar14, \
       ar15, ar16] <link linkend="loscilx">loscilx</link> xamp, kcps, ifn \
-      [, iwsize, ibas, istrt, imod, ibeg, iend]</synopsis><para/>
+    [, iwsize, ibas, istrt, imod, ibeg, iend]</synopsis><synopsis>ar[] <link linkend="loscilx">loscilx</link> xamp, kcps, ifn \
+    [, iwsize, ibas, istrt, imod, ibeg, iend]</synopsis><para/>
 <synopsis>ares <link linkend="lphasor">lphasor</link> xtrns [, ilps] [, ilpe] [, imode] [, istrt] [, istor]</synopsis><para/>
 <synopsis>ares <link linkend="lposcil">lposcil</link> kamp, kfreqratio, kloop, kend, ifn [, iphs]</synopsis><para/>
 <synopsis>ares <link linkend="lposcil3">lposcil3</link> kamp, kfreqratio, kloop, kend, ifn [, iphs]</synopsis><para/>
@@ -564,13 +566,14 @@
 <para/>
 <synopsis>kval <link linkend="chani">chani</link> kchan</synopsis><synopsis>aval <link linkend="chani">chani</link> kchan</synopsis><para/>
 <synopsis><link linkend="chano">chano</link> kval, kchan</synopsis><synopsis><link linkend="chano">chano</link> aval, kchan</synopsis><para/>
-<synopsis> <link linkend="chn">chn_k</link> Sname, imode[, itype, idflt, imin, ima, ix, iy, iwidth, iheight, Sattributes]</synopsis><synopsis> <link linkend="chn">chn_a</link> Sname, imode</synopsis><synopsis> <link linkend="chn">chn_S</link> Sname, imode</synopsis><para/>
+<synopsis> <link linkend="chn">chn_k</link> Sname, imode[, itype, idflt, imin, ima, ix, iy,
+      iwidth, iheight, Sattributes]</synopsis><synopsis> <link linkend="chn">chn_a</link> Sname, imode</synopsis><synopsis> <link linkend="chn">chn_S</link> Sname, imode</synopsis><synopsis> <link linkend="chn">chn_S</link> Sname, Smode</synopsis><para/>
 <synopsis><link linkend="chnclear">chnclear</link> Sname1[, Sname2,...]</synopsis><para/>
 <synopsis>gival <link linkend="chnexport">chnexport</link> Sname, imode[, itype, idflt, imin, imax]</synopsis><synopsis>gkval <link linkend="chnexport">chnexport</link> Sname, imode[, itype, idflt, imin, imax]</synopsis><synopsis>gaval <link linkend="chnexport">chnexport</link> Sname, imode</synopsis><synopsis>gSval <link linkend="chnexport">chnexport</link> Sname, imode</synopsis><para/>
-<synopsis>ival <link linkend="chnget">chnget</link> Sname</synopsis><synopsis>kval <link linkend="chnget">chnget</link> Sname</synopsis><synopsis>aval <link linkend="chnget">chnget</link> Sname</synopsis><synopsis>Sval <link linkend="chnget">chnget</link> Sname</synopsis><synopsis>Sval <link linkend="chnget">chngetks</link> Sname</synopsis><para/>
+<synopsis>ival <link linkend="chnget">chnget</link> Sname</synopsis><synopsis>kval <link linkend="chnget">chnget</link> Sname</synopsis><synopsis>aval <link linkend="chnget">chnget</link> Sname</synopsis><synopsis>Sval <link linkend="chnget">chnget</link> Sname</synopsis><synopsis>Sval <link linkend="chnget">chngetks</link> Sname</synopsis><synopsis>ival[] <link linkend="chnget">chngeti</link> Sname[]</synopsis><synopsis>kval[] <link linkend="chnget">chngetk</link> Sname[]</synopsis><synopsis>aval[] <link linkend="chnget">chngeta</link> Sname[]</synopsis><synopsis>Sval[] <link linkend="chnget">chngets</link> Sname[]</synopsis><para/>
 <synopsis><link linkend="chnmix">chnmix</link> aval, Sname</synopsis><para/>
 <synopsis>itype, imode, ictltype, idflt, imin, imax <link linkend="chnparams">chnparams</link> Sname</synopsis><para/>
-<synopsis><link linkend="chnset">chnset</link> ival, Sname</synopsis><synopsis><link linkend="chnset">chnset</link> kval, Sname</synopsis><synopsis><link linkend="chnset">chnset</link> aval, Sname</synopsis><synopsis><link linkend="chnset">chnset</link> Sval, Sname</synopsis><synopsis><link linkend="chnset">chnsetks</link> Sval, Sname</synopsis><para/>
+<synopsis><link linkend="chnset">chnset</link> ival, Sname</synopsis><synopsis><link linkend="chnset">chnset</link> kval, Sname</synopsis><synopsis><link linkend="chnset">chnset</link> aval, Sname</synopsis><synopsis><link linkend="chnset">chnset</link> Sval, Sname</synopsis><synopsis><link linkend="chnset">chnsetks</link> Sval, Sname</synopsis><synopsis><link linkend="chnset">chnseti</link> ival[], []Sname</synopsis><synopsis><link linkend="chnset">chnsetk</link> kval[], []Sname</synopsis><synopsis><link linkend="chnset">chnseta</link> aval[], []Sname</synopsis><synopsis><link linkend="chnset">chnsets</link> Sval[], []Sname</synopsis><para/>
 <synopsis><link linkend="setksmps">setksmps</link> iksmps</synopsis><para/>
 <synopsis>xinarg1 [, xinarg2] ... [xinargN] <link linkend="xin">xin</link>&#160;</synopsis><para/>
 <synopsis><link linkend="xout">xout</link> xoutarg1 [, xoutarg2] ... [, xoutargN]</synopsis><para/>
@@ -875,6 +878,7 @@
 <synopsis>ares <link linkend="filter2">filter2</link> asig, iM, iN, ib0, ib1, ..., ibM, ia1, ia2, ..., iaN</synopsis><synopsis>kres <link linkend="filter2">filter2</link> ksig, iM, iN, ib0, ib1, ..., ibM, ia1, ia2, ..., iaN</synopsis><para/>
 <synopsis>am, af <link linkend="fmanal">fmanal</link> are, aim</synopsis><para/>
 <synopsis>asig <link linkend="fofilter">fofilter</link> ain, xcf, xris, xdec[, istor]</synopsis><para/>
+<synopsis>aout <link linkend="gtf">gtf</link> ain, kfreq, idecay[, iorder, iphase]</synopsis><para/>
 <synopsis>ar1, ar2 <link linkend="hilbert">hilbert</link> asig</synopsis><para/>
 <synopsis>ar1, ar2 <link linkend="hilbert2">hilbert2</link> asig, ifftsize, ihopsize</synopsis><para/>
 <synopsis>ares <link linkend="nlfilt">nlfilt</link> ain, ka, kb, kd, kC, kL</synopsis><para/>
@@ -906,7 +910,7 @@
 <title>Signal Modifiers:Comparators and Accumulators</title>
 <para>
 <para/>
-<synopsis>aout <link linkend="cmp">cmp</link> a1, S_operator, a2</synopsis><synopsis>aout <link linkend="cmp">cmp</link> a1, S_operator, kx</synopsis><synopsis>kOut[] <link linkend="cmp">cmp</link> kA, S_operator, kB</synopsis><synopsis>kOut[] <link linkend="cmp">cmp</link> k1, S_operator1, kIn[], S_operator2, k2</synopsis><para/>
+<synopsis>aout <link linkend="cmp">cmp</link> a1, S_operator, a2</synopsis><synopsis>aout <link linkend="cmp">cmp</link> a1, S_operator, kb</synopsis><synopsis>kOut[] <link linkend="cmp">cmp</link> kA[], S_operator, kb</synopsis><synopsis>kOut[] <link linkend="cmp">cmp</link> kA[], S_operator, kB[]</synopsis><synopsis>kOut[] <link linkend="cmp">cmp</link> k1, S_operator1, kIn[], S_operator2, k2</synopsis><para/>
 <synopsis>amax <link linkend="max">max</link> ain1, ain2 [, ain3] [, ain4] [...]</synopsis><synopsis>kmax <link linkend="max">max</link> kin1, kin2 [, kin3] [, kin4] [...]</synopsis><synopsis>imax <link linkend="max">max</link> iin1, iin2 [, iin3] [, iin4] [...]</synopsis><para/>
 <synopsis>knumkout <link linkend="max_k">max_k</link> asig, ktrig, itype</synopsis><para/>
 <synopsis>amax <link linkend="maxabs">maxabs</link> ain1, ain2 [, ain3] [, ain4] [...]</synopsis><synopsis>kmax <link linkend="maxabs">maxabs</link> kin1, kin2 [, kin3] [, kin4] [...]</synopsis><para/>
@@ -971,6 +975,7 @@
 <synopsis><link linkend="schedkwhennamed">schedkwhennamed</link> ktrigger, kmintim, kmaxnum, &quot;name&quot;, kwhen, kdur \
       [, ip4] [, ip5] [...]</synopsis><para/>
 <synopsis><link linkend="schedule">schedule</link> insnum, iwhen, idur [, ip4] [, ip5] [...]</synopsis><synopsis><link linkend="schedule">schedule</link> &quot;insname&quot;, iwhen, idur [, ip4] [, ip5] [...]</synopsis><para/>
+<synopsis><link linkend="schedulek">schedulek</link> knsnum, kwhen, kdur [, kp4] [, kp5] [...]</synopsis><synopsis><link linkend="schedulek">schedulek</link> &quot;insname&quot;, kwhen, kdur [, kp4] [, kp5] [...]</synopsis><para/>
 <synopsis><link linkend="schedwhen">schedwhen</link> ktrigger, kinsnum, kwhen, kdur [, ip4] [, ip5] [...]</synopsis><synopsis><link linkend="schedwhen">schedwhen</link> ktrigger, &quot;insname&quot;, kwhen, kdur [, ip4] [, ip5] [...]</synopsis><para/>
 <synopsis><link linkend="scoreline">scoreline</link> Sin, ktrig</synopsis><para/>
 <synopsis><link linkend="scoreline_i">scoreline_i</link> Sin</synopsis><para/>
@@ -1020,6 +1025,7 @@
 <synopsis>ares <link linkend="assign">=</link> xarg</synopsis><synopsis>ires <link linkend="assign">=</link> iarg</synopsis><synopsis>kres <link linkend="assign">=</link> karg</synopsis><synopsis>ires, ... <link linkend="assign">=</link> iarg, ...</synopsis><synopsis>kres, ... <link linkend="assign">=</link> karg, ...</synopsis><synopsis>table [ kval] <link linkend="assign">=</link> karg</synopsis><para/>
 <synopsis>ares <link linkend="init">init</link> iarg</synopsis><synopsis>ires <link linkend="init">init</link> iarg</synopsis><synopsis>kres <link linkend="init">init</link> iarg</synopsis><synopsis>ares, ...  <link linkend="init">init</link> iarg, ...</synopsis><synopsis>ires, ... <link linkend="init">init</link> iarg, ...</synopsis><synopsis>kres, ... <link linkend="init">init</link> iarg, ...</synopsis><synopsis>tab <link linkend="init">init</link> isize[, ival]</synopsis><para/>
 <synopsis>insno <link linkend="nstrnum">nstrnum</link> &quot;name&quot;</synopsis><para/>
+<synopsis>Sname <link linkend="nstrstr">nstrstr</link>insno</synopsis><synopsis>Sname <link linkend="nstrstr">nstrstr</link>knsno</synopsis><para/>
 <synopsis><link linkend="p">p</link>(x) </synopsis><para/>
 <synopsis> ivar1, ... <link linkend="passign">passign</link> [istart][, iend</synopsis><synopsis> iarray <link linkend="passign">passign</link> [istart][, iend</synopsis><synopsis> karray <link linkend="passign">passign</link> [istart][, iend</synopsis><para/>
 <synopsis>ares <link linkend="plusbecomes">+=</link> xarg</synopsis><synopsis>ires <link linkend="plusbecomes">+=</link> iarg</synopsis><synopsis>kres <link linkend="plusbecomes">+=</link> karg</synopsis><synopsis>table [ kval] <link linkend="plusbecomes">+=</link> karg</synopsis><para/>
@@ -1043,6 +1049,7 @@
 <synopsis>Svalue <link linkend="getcfg">getcfg</link> iopt</synopsis><para/>
 <synopsis>kres <link linkend="joystick">joystick</link> kdevice ktab</synopsis><para/>
 <synopsis>ktrig  <link linkend="metro">metro</link>  kfreq [, initphase]</synopsis><para/>
+<synopsis>ktrig  <link linkend="metro2">metro2</link>  kfreq, kswing [, iamp, initphase]</synopsis><para/>
 <synopsis>ksig  <link linkend="midifilestatus">midifilestatus</link>&#160;</synopsis><para/>
 <synopsis>ksig  <link linkend="miditempo">miditempo</link>&#160;</synopsis><para/>
 <synopsis><link linkend="p5gconnect">p5gconnect</link>&#160;</synopsis><para/>
@@ -1129,14 +1136,6 @@
 <synopsis><link linkend="JackoTransport">JackoTransport </link> kcommand, [kposition]</synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
-<title>Lua Opcodes</title>
-<para>
-<para/>
-<synopsis><link linkend="lua_exec">lua_exec</link> Sluacode</synopsis><para/>
-<synopsis><link linkend="lua_opcall">lua_iopcall</link> Sname, ...</synopsis><synopsis><link linkend="lua_opcall">lua_ikopcall</link> Sname, ...</synopsis><synopsis><link linkend="lua_opcall">lua_iaopcall</link> Sname, ...</synopsis><synopsis><link linkend="lua_opcall">lua_iopcall_off</link> Sname, ...</synopsis><synopsis><link linkend="lua_opcall">lua_ikopcall_off</link> Sname, ...</synopsis><synopsis><link linkend="lua_opcall">lua_iaopcall_off</link> Sname, ...</synopsis><para/>
-<synopsis><link linkend="lua_opdef">lua_opdef</link> Sname, Sluacode</synopsis><para/>
-</para></formalpara>
-<para></para><para></para><formalpara>
 <title>Serial I/O</title>
 <para>
 <para/>
@@ -1167,6 +1166,7 @@
 <synopsis>karray[] <link linkend="fillarray">fillarray</link> ival1, ival2,.....ivaln</synopsis><synopsis>karray <link linkend="fillarray">fillarray</link> ival1, ival2,.....ivaln</synopsis><synopsis>karray <link linkend="fillarray">fillarray</link> kval1, kval2,.....kvaln</synopsis><para/>
 <synopsis><link linkend="ftchnls">ftchnls</link>(x) (init-rate args only)</synopsis><para/>
 <synopsis><link linkend="ftcps">ftcps</link>(x) (init-rate args only)</synopsis><para/>
+<synopsis>iexists <link linkend="ftexists">ftexists</link> ifn </synopsis><synopsis>kexists <link linkend="ftexists">ftexists</link> kfn / ifn</synopsis><para/>
 <synopsis><link linkend="ftlen">ftlen</link>(x) (init-rate args only)</synopsis><para/>
 <synopsis><link linkend="ftlptim">ftlptim</link>(x) (init-rate args only)</synopsis><para/>
 <synopsis><link linkend="ftsr">ftsr</link>(x) (init-rate args only)</synopsis><para/>
@@ -1192,7 +1192,7 @@
 <title>Table Control:Read/Write Operations</title>
 <para>
 <para/>
-<synopsis>ians <link linkend="ftaudio">ftaudio</link> ifn, &quot;filename&quot;, iformat</synopsis><synopsis>kans <link linkend="ftaudio">ftaudio</link> ktrig, kfn, &quot;filename&quot;, kformat [, isync]</synopsis><para/>
+<synopsis>ians <link linkend="ftaudio">ftaudio</link> ifn, &quot;filename&quot;, iformat[, ibeg, iend]</synopsis><synopsis>kans <link linkend="ftaudio">ftaudio</link> ktrig, kfn, &quot;filename&quot;, kformat [, isync, kbeg, kend]</synopsis><para/>
 <synopsis><link linkend="ftload">ftload</link> Sfilename, iflag, ifn1 [, ifn2] [...]</synopsis><para/>
 <synopsis><link linkend="ftloadk">ftloadk</link> Sfilename, ktrig, iflag, ifn1 [, ifn2] [...]</synopsis><para/>
 <synopsis><link linkend="ftprint">ftprint</link> ifn [, ktrig, kstart, kend, kstep, inumcols ]</synopsis><para/>
@@ -1209,7 +1209,6 @@
 <synopsis><link linkend="tableicopy">tableicopy</link> idft, isft</synopsis><para/>
 <synopsis><link linkend="tableigpw">tableigpw</link> ifn</synopsis><para/>
 <synopsis><link linkend="tableimix">tableimix</link> idft, idoff, ilen, is1ft, is1off, is1g, is2ft, is2off, is2g</synopsis><para/>
-<synopsis><link linkend="tableiw">tableiw</link> isig, indx, ifn [, ixmode] [, ixoff] [, iwgmode]</synopsis><para/>
 <synopsis><link linkend="tablemix">tablemix</link> kdft, kdoff, klen, ks1ft, ks1off, ks1g, ks2ft, ks2off, ks2g</synopsis><para/>
 <synopsis>ares <link linkend="tablera">tablera</link> kfn, kstart, koff</synopsis><para/>
 <synopsis><link linkend="tablew">tablew</link> asig, andx, ifn [, ixmode] [, ixoff] [, iwgmode]</synopsis><synopsis><link linkend="tablew">tablew</link> isig, indx, ifn [, ixmode] [, ixoff] [, iwgmode]</synopsis><synopsis><link linkend="tablew">tablew</link> ksig, kndx, ifn [, ixmode] [, ixoff] [, iwgmode]</synopsis><para/>
@@ -1455,9 +1454,10 @@
 <synopsis><link linkend="cpsmidinn">cpsmidinn</link> (MidiNoteNumber)  (init- or control-rate args only)</synopsis><para/>
 <synopsis><link linkend="cpsoct">cpsoct</link> (oct)  (no rate restriction)</synopsis><para/>
 <synopsis><link linkend="cpspch">cpspch</link> (pch)  (init- or control-rate args only)</synopsis><para/>
-<synopsis>imidi <link linkend="ftom">ftom</link> ifreq [,irnd]</synopsis><synopsis>kmidi <link linkend="ftom">ftom</link> kfreq [,irnd]</synopsis><para/>
-<synopsis>ifreq <link linkend="mtof">mtof</link> imidi</synopsis><synopsis>kfreq <link linkend="mtof">mtof</link> kmidi</synopsis><para/>
+<synopsis>imidi <link linkend="ftom">ftom</link> ifreq [,irnd]</synopsis><synopsis>kmidi <link linkend="ftom">ftom</link> kfreq [,irnd]</synopsis><synopsis>imidis[] <link linkend="ftom">ftom</link> ifreqs[] [,irnd]</synopsis><synopsis>kmidis[] <link linkend="ftom">ftom</link> kfreqs[] [,irnd]</synopsis><para/>
+<synopsis>ifreq <link linkend="mtof">mtof</link> imidi</synopsis><synopsis>kfreq <link linkend="mtof">mtof</link> kmidi</synopsis><synopsis>ifreqs[] <link linkend="mtof">mtof</link> imidis[]</synopsis><synopsis>kfreqs[] <link linkend="mtof">mtof</link> kmidis[]</synopsis><para/>
 <synopsis>Snote <link linkend="mton">mton</link> kmidi</synopsis><synopsis>Snote <link linkend="mton">mton</link> imidi</synopsis><para/>
+<synopsis>kfreq <link linkend="ntof">ntof</link> Snote</synopsis><synopsis>ifreq <link linkend="ntof">ntof</link> Snote</synopsis><para/>
 <synopsis>kmidi <link linkend="ntom">ntom</link> Snote</synopsis><synopsis>imidi <link linkend="ntom">ntom</link> Snote</synopsis><para/>
 <synopsis><link linkend="octave">octave</link>(x)</synopsis><para/>
 <synopsis><link linkend="octcps">octcps</link> (cps)  (init- or control-rate args only)</synopsis><para/>
@@ -1525,6 +1525,7 @@
 <para>
 <para/>
 <synopsis>iamp <link linkend="ampmidi">ampmidi</link> iscal [, ifn]</synopsis><para/>
+<synopsis>igain <link linkend="ampmidicurve">ampmidicurve</link> ivelocity, idynamicrange, iexponent</synopsis><synopsis>kgain <link linkend="ampmidicurve">ampmidicurve</link> kvelocity, kdynamicrange, kexponent</synopsis><para/>
 <synopsis>iamplitude <link linkend="ampmidid">ampmidid</link> ivelocity, idecibels</synopsis><synopsis>kamplitude <link linkend="ampmidid">ampmidid</link> kvelocity, idecibels</synopsis><para/>
 <synopsis>icps <link linkend="cpsmidi">cpsmidi</link>&#160;</synopsis><para/>
 <synopsis>icps <link linkend="cpsmidib">cpsmidib</link> [irange]</synopsis><synopsis>kcps <link linkend="cpsmidib">cpsmidib</link> [irange]</synopsis><para/>
@@ -1546,6 +1547,7 @@
 <title>Real-time MIDI:Event Extenders</title>
 <para>
 <para/>
+<synopsis>kflag <link linkend="lastcycle">lastcycle</link>&#160;</synopsis><para/>
 <synopsis>kflag <link linkend="release">release</link>&#160;</synopsis><para/>
 <synopsis><link linkend="xtratim">xtratim</link> iextradur</synopsis><para/>
 </para></formalpara>
@@ -1576,7 +1578,7 @@
 <synopsis><link linkend="midinoteonoct">midinoteonoct</link> xoct, xvelocity</synopsis><para/>
 <synopsis><link linkend="midinoteonpch">midinoteonpch</link> xpch, xvelocity</synopsis><para/>
 <synopsis><link linkend="midipitchbend">midipitchbend</link> xpitchbend [, ilow] [, ihigh]</synopsis><para/>
-<synopsis><link linkend="midipolyaftertouch">midipolyaftertouch</link> xpolyaftertouch, xcontrollervalue [, ilow] [, ihigh]</synopsis><para/>
+<synopsis><link linkend="midipolyaftertouch">midipolyaftertouch</link> xpolyaftertouch, xkey [, ilow] [, ihigh]</synopsis><para/>
 <synopsis><link linkend="midiprogramchange">midiprogramchange</link> xprogram</synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
@@ -1837,6 +1839,7 @@
 <synopsis>klen <link linkend="strlenk">strlenk</link> Sstr</synopsis><para/>
 <synopsis>ipos <link linkend="strrindex">strrindex</link> S1, S2</synopsis><para/>
 <synopsis>kpos <link linkend="strrindexk">strrindexk</link> S1, S2</synopsis><para/>
+<synopsis>Sout <link linkend="strstrip">strstrip</link> Sin [, Smode]</synopsis><para/>
 <synopsis>Sdst <link linkend="strsub">strsub</link> Ssrc[, istart[, iend]]</synopsis><para/>
 <synopsis>Sdst <link linkend="strsubk">strsubk</link> Ssrc, kstart, kend</synopsis><para/>
 </para></formalpara>
@@ -1951,7 +1954,7 @@
 <title>Zak Patch System</title>
 <para>
 <para/>
-<synopsis><link linkend="zacl">zacl</link> kfirst, klast</synopsis><para/>
+<synopsis><link linkend="zacl">zacl</link> kfirst [, klast]</synopsis><para/>
 <synopsis><link linkend="zakinit">zakinit</link> isizea, isizek</synopsis><para/>
 <synopsis>ares <link linkend="zamod">zamod</link> asig, kzamod</synopsis><para/>
 <synopsis>ares <link linkend="zar">zar</link> kndx</synopsis><para/>
@@ -2006,7 +2009,7 @@
 <para>
 <para/>
 <synopsis><link linkend="remoteport">remoteport</link> iportnum</synopsis><para/>
-<synopsis>asig <link linkend="sockrecv">sockrecv</link> iport, ilength</synopsis><synopsis>ksig <link linkend="sockrecv">sockrecv</link> iport, ilength</synopsis><synopsis>asigl, asigr <link linkend="sockrecv">sockrecvs</link> iport, ilength</synopsis><synopsis>String <link linkend="sockrecv">sockrecv</link> iport, ilength</synopsis><synopsis>asig <link linkend="sockrecv">strecv</link> Sipaddr, iport</synopsis><para/>
+<synopsis>asig <link linkend="sockrecv">sockrecv</link> iport, ilength</synopsis><synopsis>ksig <link linkend="sockrecv">sockrecv</link> iport, ilength</synopsis><synopsis>asigl, asigr <link linkend="sockrecv">sockrecvs</link> iport, ilength</synopsis><synopsis>String <link linkend="sockrecv">sockrecv</link> iport, ilength</synopsis><synopsis>asig[,kstate] <link linkend="sockrecv">strecv</link> Sipaddr, iport</synopsis><para/>
 <synopsis><link linkend="socksend">socksend</link> asig, Sipaddr, iport, ilength</synopsis><synopsis><link linkend="socksend">socksend</link> ksig, Sipaddr, iport, ilength</synopsis><synopsis><link linkend="socksend">socksends</link> asigl, asigr, Sipaddr, iport,
     ilength</synopsis><synopsis><link linkend="socksend">stsend</link> asig, Sipaddr, iport</synopsis><para/>
 </para></formalpara>
@@ -2072,7 +2075,7 @@
 <title>Array Opcodes</title>
 <para>
 <para/>
-<synopsis><link linkend="copya2ftab">copya2ftab</link> kftbl, tab</synopsis><para/>
+<synopsis><link linkend="copya2ftab">copya2ftab</link> kArray[], ktab [, koffset]</synopsis><synopsis><link linkend="copya2ftab">copya2ftab</link> iArray[], itab [, ioffset]</synopsis><para/>
 <synopsis><link linkend="copyf2array">copyf2array</link> tab, kftbl</synopsis><para/>
 <synopsis>kout1[], kout2[] <link linkend="deinterleave">deinterleave</link> kin[]</synopsis><para/>
 <synopsis>i/kout[] <link linkend="getcol">getcol</link>i/kin[],i/kcol</synopsis><para/>
@@ -2147,6 +2150,12 @@
 <para/>
 <synopsis>keps[] <link linkend="ceps">ceps</link> kmags[][, icoefs]</synopsis><para/>
 <synopsis>kenv <link linkend="cepsinv">cepsinv</link> keps[]</synopsis><para/>
+</para></formalpara>
+<para></para><para></para><formalpara>
+<title>Deprecated</title>
+<para>
+<para/>
+<synopsis><link linkend="tableiw">tableiw</link> isig, indx, ifn [, ixmode] [, ixoff] [, iwgmode]</synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
 <title>Miscellaneous</title>
