@@ -1,0 +1,100 @@
+
+<refentry id="printsk">
+  <indexterm id="IndexPrintsk"><primary>printsk</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Printing and Display</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>printsk</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>printks</refname>
+    <refpurpose>
+      Prints at k-rate using a printf() style syntax.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Prints at k-rate using a printf() style syntax. This opcode prints at every cycle,
+      possibly multiple times per cycle. Used inside an if-block it can behave like
+      <command>printf</command>, <command>printks</command> (when used together with metro) or
+      <command>printks2</command> (when used with changed).
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>printsk</command> &quot;string&quot;, [, xval1] [, xval2] [...]</synopsis>
+  </refsect1>
+  
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>&quot;string&quot;</emphasis> -- the text string to be printed. Can be up to
+      8192 characters and must be in double quotes.
+    </para>
+
+  </refsect1>
+  
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>xval1, xval2, ...</emphasis> (optional) -- The k-rate values to be printed.
+      These are specified in <emphasis><quote>string</quote></emphasis> with the standard C
+      value specifier (%f, %d, %s etc.) in the order given.
+    </para>
+
+  </refsect1>
+  
+  <refsect1>
+    <title>Print Output Formatting</title>
+    <para>
+      All standard C language printf() control characters may be used. For example, if
+      <emphasis>kval1</emphasis> = 153.26789 then some common formatting options are:
+
+      <orderedlist>
+        <listitem><para>%f prints with full precision: 153.26789</para></listitem>
+        <listitem><para>%5.2f prints: 153.26</para></listitem>
+        <listitem><para>%d prints integers-only: 153</para></listitem>
+        <listitem><para>%c treats <emphasis>kval1</emphasis> as an ascii character code.
+        </para></listitem>
+      </orderedlist>
+    </para>
+
+    <para>
+      For more information about printf() formatting, consult any C language documentation.
+    </para>
+    
+  </refsect1>
+  
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the printsk opcode. It uses the file <ulink
+      url="examples/printsk.csd"><citetitle>printsk.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the printsk opcode.</title>
+        <xi:include href="examples-xml/printsk.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="printks"><citetitle>printks</citetitle></link>,  
+      <link linkend="printf"><citetitle>printf</citetitle></link>,
+      <link linkend="println"><citetitle>println</citetitle></link>
+      
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>By: &nameeduardo; 2020</para>
+    <para>New plugin in version 6.15</para>
+  </refsect1>
+
+</refentry>
