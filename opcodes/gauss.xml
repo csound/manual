@@ -26,9 +26,17 @@
     <title>Syntax</title>
     <synopsis>ares <command>gauss</command> krange</synopsis>
 
-    <synopsis>ires <command>gauss</command> krange</synopsis>
+    <synopsis>ires <command>gauss</command> irange</synopsis>
 
     <synopsis>kres <command>gauss</command> krange</synopsis>
+
+       <synopsis>ares <command>gauss</command> kmean, ksdev</synopsis>
+
+    <synopsis>ires <command>gauss</command> imean, isdev</synopsis>
+
+    <synopsis>kres <command>gauss</command> kmean, ksdev</synopsis>
+
+    
   </refsect1>
  
   <refsect1>
@@ -36,12 +44,24 @@
     <para>
       <emphasis>krange</emphasis> -- the range of the random numbers (-<emphasis>krange</emphasis> to +<emphasis>krange</emphasis>). Outputs both positive and negative numbers.
     </para>
+       <para>
+      <emphasis>kmean</emphasis> -- normal distribution mean.
+    </para>
+           <para>
+      <emphasis>ksdev</emphasis> -- normal distribution standard deviation.
+    </para>
     <para>
-      <emphasis>gauss</emphasis> returns random numbers following a normal distribution centered around 0.0 (mu = 0.0) with a variance (sigma) of <emphasis>krange</emphasis> / 3.83. Thus more than 99.99%
+      The first version of <emphasis>gauss</emphasis> returns random numbers following a normal distribution centered around 0.0 (mu = 0.0) with a variance (sigma) of <emphasis>krange</emphasis> / 3.83. Thus more than 99.99%
       of the random values generated are in the range -<emphasis>krange</emphasis> to +<emphasis>krange</emphasis>. If a mean value different of 0.0 is desired, this mean value has to
       be added to the generated numbers (see example below).
     </para>
 
+    <para>
+      The second version takes mean and standard deviation as
+      parameters. They use the more mathematically sound Box-Muller
+      algorithm to compute the normal distribution.
+    </para>
+   
     <para>
       For more detailed explanation of these distributions, see:
       <orderedlist>
@@ -96,9 +116,12 @@ mean = 2.700, std = 1.497, samples inside the given range: 100.000%</screen>
     <title>Credits</title>
     <para>
       <simplelist>
-        <member>Author: &nameparis;</member>
+        <member>Author (first version): &nameparis; </member>
         <member>MIT, Cambridge</member>
         <member>1995</member>
+               <member>Author (second version): Victor Lazzarini</member>
+        <member>Maynooth University, Ireland</member>
+        <member>2020</member>
       </simplelist>
     </para>
     <para>Precisions about mu and sigma added by &namepinot; after a discussion with
