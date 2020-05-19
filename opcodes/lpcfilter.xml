@@ -1,0 +1,174 @@
+
+<refentry id="lpcfilter">
+<indexterm id="IndexLpcfilter"><primary>lpcfilter</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:LPC</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lpcfilter</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>lpcfilter</refname>
+    <refpurpose>
+    Streaming linear prediction all-pole filter.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+     This opcode implements an all-pole filter whose coefficients are
+     obtained from streaming linear prediction analysis. Two versions
+     exist, one taking input from an audio signal, and the other from
+     a function table.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>lpcfilter</command> asig, asrc, kflg,
+    kprd, isiz, iord[,iwin] </synopsis>
+    <synopsis>ares <command>lpcfilter</command> asig, koff, kflg,
+    ifn, isiz, iord[,iwin] </synopsis>
+    
+  </refsect1>
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>isiz</emphasis> -- size of lpc input frame in samples.
+    </para>
+
+        <para>
+      <emphasis>iord</emphasis> -- linear predictor order.
+        </para>
+
+       <para>
+      <emphasis>ifn</emphasis> -- streaming LPC analysis source function table
+    </para>
+
+        <para>
+      <emphasis>iwin</emphasis> -- window function table number (optional)
+        </para>
+    
+  </refsect1>
+  
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ares</emphasis> -- output
+    </para>
+
+        <para>
+      <emphasis>asig</emphasis> - audio input
+    </para>
+
+        <para>
+      <emphasis>asrc</emphasis> -- streaming LPC analysis source signal
+        </para>
+
+     <para>
+      <emphasis>kflg</emphasis> -- compute flag, non-zero values
+      switch on linear prediction analysis replacing filter coefficients, zero switch it off,
+      keeping current filter coefficients.
+    </para>
+
+     <para>
+      <emphasis>kprd</emphasis> -- analysis period in samples,
+      determining how often new coefficients are computed.
+     </para>
+
+     <para>
+       <emphasis>koff</emphasis> -- function table position offset, in
+       samples, determining the start position of analysis frame.
+    </para>       
+  </refsect1>
+
+    <refsect1>
+   <para>
+        This opcode is part of a suite of streaming linear prediction
+        opcodes. It analyses an input signal, either as an audio input
+        or stored in a function table and produces a set of
+        coefficients for an all-pole filter that models the signal's
+        spectral envelope. This filter is then applied to an arbitrary
+        input, producing a cross-synthesis result.
+    </para>
+    
+    <para>
+      The fundamental analysis parameters are input frame size and
+      filter order. Longer input frames will produce a more accurate
+      result in terms of frequency resolution, but will also involve
+      more computation. This is due to the computation of the
+      autocorrelation function, which is then used in the coefficient
+      computation. This part is more efficient and depends only
+      on the linear prediction order, which is also the number of
+      coefficients computed. Typical lp orders may range from
+      about 30 to 100 coefficients, but larger values can also
+      be used.
+    </para>
+    
+    <para>
+      If the LPC source signal is derived from an audio input, then
+      the computation of coefficients is dependent on two parameters,
+      kflg and kprd. The first is an on/off switch that determines
+      whether coefficients are replaced by newly-computed ones
+      or the coefficients are kept fixed to their last value. The
+      other determines the frequency of analyses, by setting a
+      time interval (in samples) between new coefficient computation.
+      This ranges from coefficients being replaced every sample,
+      to never replaced (if the period is larger than the synthesis duration).
+      Overlapped analyses will take place if the value of kprd is less
+      than the input size. Decreasng the spacing of analyses will
+      also increase computation demands.
+      </para>
+      <para>
+        If the LPC source signal is derived from a function table,
+        then kflg determines wheter an analysis should be performed
+        or not (1 or 0). The value of koff is then used as an offset
+        (in samples) into the function table determining the position
+        of the analysis frame. For example, if kflg is permanently set
+        to 1 and koff is set to ksmps, then at every kcycle an
+        analysis frame will be taken from successive positions in the
+        function table. Changing koff to fewer samples will produce
+        a timestretched result and increasing it will time compress.
+      </para>
+      <para>
+       Once the signal is extracted from either an audio input or
+       function table then it can be optionally windowed if a function
+       table is provided. While this is optional, it is a recommended
+       procedure (GEN20 can provide the most common windows).
+       The signal is then analysed and coefficients replaced. The
+       all-pole filter is computed as a direct convolution in the
+       time domain.
+      </para>
+      
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the lpcfilter opcode using an audio input
+      signal as lpc source. It uses the file <ulink url="examples/lpcfilter.csd"><citetitle>lpcfilter.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the lpcfilter opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/lpcfilter.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+       <para>
+      Here is another example of the lpcfilter opcode, now using a
+      function table as lpc source. It uses the file <ulink url="examples/lpcfilter-2.csd"><citetitle>lpcfilter-2.csd</citetitle></ulink>.
+      <example>
+        <title>Another example of the lpcfilter opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/lpcfilter-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="lpfreson"><citetitle>lpfreson</citetitle></link>,
+      <link linkend="lpread"><citetitle>lpread</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>
