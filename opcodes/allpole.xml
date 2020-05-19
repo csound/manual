@@ -1,0 +1,101 @@
+
+<refentry id="lpcfilter">
+<indexterm id="IndexAllpole"><primary>allpole</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:LPC</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>allpole</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>allpole</refname>
+    <refpurpose>
+    Allpole filter implementation using direct convolution.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+     This opcode implements an allpole filter using direct
+     convolution.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>allpole</command> asig, kCoef[]</synopsis>
+
+  </refsect1>
+  
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kCoef[]</emphasis> -- all-pole filter coefficients
+      (iord-size array)
+    </para>
+        <para>
+      <emphasis>asig</emphasis> -- audio input
+        </para>
+
+     <para>
+      <emphasis>ares</emphasis> -- audio output
+    </para>
+
+  </refsect1>
+
+    <refsect1>
+   <para>
+        This opcode is part of a suite of streaming linear prediction
+        opcodes. It implements an allpole filter using coefficients
+        passed to it via a k-rate array. The filter length is
+        determined by the array size
+    </para>
+    
+    <para>
+      The typical application is compute the coefficients via some
+      method and then pass these to the opcode. The set of
+      coefficients passed to allpole need to implement a stable
+      filter, since this is an IIR filter and stability is not
+      guaranteed by default.
+    </para>
+
+        <para>
+      The most common method of coefficient derivation is linear
+      prediction analysis, produced for instance  by lpcanal. Other
+      methods may be employed, including direct calculation of
+      coefficients from a known filter recipe (e.g. resonators etc).
+    </para>
+   
+      
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the allpole opcode using an audio input
+      signal as lpc source. It uses the file <ulink url="examples/allpole.csd"><citetitle>allpole.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the allpole opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/allpole.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+       <para>
+      Here is another example of the allpole opcode, now using a
+      function table as lpc source. It uses the file <ulink url="examples/allpole-2.csd"><citetitle>allpole-2.csd</citetitle></ulink>.
+      <example>
+        <title>Another example of the allpole opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/allpole-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="lpcfilter"><citetitle>lpcfilter</citetitle></link>,
+      <link linkend="allpole"><citetitle>allpole</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>
