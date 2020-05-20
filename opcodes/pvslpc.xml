@@ -1,0 +1,124 @@
+
+<refentry id="pvslpc">
+<indexterm id="IndexPvslpc"><primary>pvslpc</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:LPC</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvslpc</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvslpc</refname>
+    <refpurpose>
+    Streaming linear prediction analysis.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+     This opcode implements streaming linear prediction analysis from
+     an input signal and outputs an fsig, which can be used with other
+     pvs opcodes.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>fsig <command>pvslpc</command> asrc, idftsiz, ihop, iord[,iwin] </synopsis>
+  </refsect1>
+  <refsect1>
+    
+    <title>Initialization</title>
+    <para>
+      <emphasis>idftsiz</emphasis> -- size of lpc input frame in samples
+      and fsig analysis frame. It needs to be a power-of-two.
+    </para>
+
+        <para>
+      <emphasis>iord</emphasis> -- linear predictor order.
+        </para>
+
+       <para>
+      <emphasis>ihop</emphasis> -- analysis hop size.
+    </para>
+
+        <para>
+      <emphasis>iwin</emphasis> -- window function table number (optional).
+        </para>
+    
+  </refsect1>
+  
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>fsig</emphasis> -- fsig output
+    </para>
+
+        <para>
+      <emphasis>asrc</emphasis> - source signal for lpc analysis
+        </para>
+
+ 
+  </refsect1>
+    <refsect1>
+   <para>
+        This opcode is part of a suite of streaming linear prediction
+        opcodes. It analyses an input signal and produces a set of
+        LPC coefficients for an all-pole filter that models the signal's
+        spectral envelope. The transfer function for this filter is
+        then computed and its magnitude spectrum is output as
+        a streaming phase vocoder signal.
+    </para>
+    
+    <para>
+      The fundamental analysis parameters are input frame size and
+      filter order. Longer input frames will produce a more accurate
+      result in terms of frequency resolution, but will also involve
+      more computation. This is due to the computation of the
+      autocorrelation function, which is then used in the coefficient
+      computation. This part is more efficient and depends only
+      on the linear prediction order, which is also the number of
+      coefficients computed. Typical lp orders may range from
+      about 30 to 100 coefficients, but larger values can also
+      be used.
+    </para>
+    
+    <para>
+      The analyses are produced every hopsize samples. 
+       Once the signal is extracted from either an audio input or
+       function table then it can be optionally windowed if a function
+       table is provided. While this is optional, it is a recommended
+       procedure (GEN20 can provide the most common windows).
+       The signal is then analysed and coefficients produced.
+       The fsig produced by this opcode is given in AMP-FREQ format.
+       The amplitudes contain the spectral envelope of the input
+       signal, and the frequencies are derived from a fundamental
+       frequency estimation computed from the autocorrelation
+       function. These do not represent the frequencies in the
+       input signal to any level of accuracy; they are only
+       placeholders.   
+      </para>
+      
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the pvslpc opcode using an audio input
+      signal as lpc source. It uses the file <ulink url="examples/pvslpc.csd"><citetitle>pvslpc.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the pvslpc opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/pvslpc.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="lpcfilter"><citetitle>lpcfilter</citetitle></link>,
+      <link linkend="allpole"><citetitle>allpole</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>
