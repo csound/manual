@@ -1,0 +1,102 @@
+<refentry id="trigphasor">
+  <indexterm id="Indextrigphasor"><primary>trigphasor</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Phasors</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>trigphasor</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>trigphasor</refname>
+    <refpurpose>
+      A resettable linear ramp between two levels      
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>Plugin opcode in scugens.</para>
+    <para>
+      A resettable linear ramp between two levels (port of Supercollider's Phasor).
+      <emphasis>trigphasor</emphasis> is a linear ramp between <emphasis>kstart</emphasis> and
+      <emphasis>kend</emphasis> values. When its trigger input crosses from non-positive to
+      positive, trigphasor's output will jump to its reset position (or to
+      <emphasis>kstart</emphasis>if no reset value was given). Upon reaching the end of its
+      ramp, trigphasor will wrap back to its start.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>aindex <command>trigphasor</command> xtrig, xrate, kstart, kend [, kresetPos] </synopsis>
+
+    <synopsis>kindex <command>trigphasor</command> xtrig, xrate, kstart, kend [, kresetPos] </synopsis>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>xtrig</emphasis> -- trigger, whenever this crosses from non-positive to possitive
+    </para>
+    <para>
+      <emphasis>xrate</emphasis> -- value added at each evaluation. When running at k-rate, this
+      value is added at each cycle; at a-rate, this value is added per sample (ksmps per cycle).
+    </para>
+    <para>
+      <emphasis>kstart, kend</emphasis> -- start and end values of the phasor
+    </para>
+    <para>
+      <emphasis>xtrig</emphasis> -- trigger, whenever this crosses from non-positive to possitive
+    </para>
+
+    <para>
+      
+      <emphasis>kresetPos</emphasis> -- if specified, this value will be used to jump to after a
+      trigger. Otherwise, a trigger will set the position back to <emphasis>kstart</emphasis>
+    </para>
+    <para>
+      To generate a phasing signal from kstart to kend with a given period (duration of each
+      cycle), the calculation would be:
+
+      <literallayout>rate = (end - start) / (period * sr)</literallayout>
+
+      In the case of phasor being used at k-rate, use <emphasis>kr</emphasis> instead of
+      <emphasis>sr</emphasis> in the above formula.
+
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the trigphasor opcode. It uses the file <ulink
+      url="examples/trigphasor.csd"><citetitle>trigphasor.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the trigphasor opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+        <xi:include href="examples-xml/trigphasor.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See also</title>
+    <para>
+      <link linkend="phasor"><citetitle>phasor</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <!--  And put your name and other relevant information here-->
+    <title>Credits</title>
+    <para>By: &nameeduardo; 2017</para>
+  </refsect1>
+  <!--Now remember to add a link from the appropriate category in the Opcode Overview.-->
+  <!--Add the entity to manual.xml-->
+  <!--Add the entity reference in the appropriate place in opcodes/top.xml-->
+  <!--And you're set! Maybe delete the comments as well...-->
+
+</refentry>

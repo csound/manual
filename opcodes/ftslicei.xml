@@ -1,16 +1,16 @@
 <!--Change refentry id and indexterm id-->
-<refentry id="ftslice">
-  <indexterm id="IndexFtslice"><primary>ftslice</primary></indexterm>
+<refentry id="ftslicei">
+  <indexterm id="IndexFtslicei"><primary>ftslicei</primary></indexterm>
   <!--Make sure the category below is a valid one! See categories.py-->
   <refentryinfo><title>Table Control:Read/Write Operations</title></refentryinfo>
   <refmeta>
-    <refentrytitle>ftslice</refentrytitle>
+    <refentrytitle>ftslicei</refentrytitle>
   </refmeta>
 
   <refnamediv>
-    <refname>ftslice</refname>
+    <refname>ftslicei</refname>
     <refpurpose>
-      Copy a slice from an f-table to another f-table at performance
+      Copy a slice from an f-table to another f-table at init
     </refpurpose>
   </refnamediv>
   
@@ -18,19 +18,16 @@
     <title>Description</title>
     <para>Plugin opcode in emugens.</para>
     <para>
-      The <emphasis>ftslice</emphasis> opcode takes an f-table and copies a slice to a second
-      f-table (similar to tab2array, but between tables). This action is done at performance
-      (every cycle), so that it can be placed inside a k-time if clause / loop / etc.
-      For an init-only version, see <link linkend="ftslicei"><citetitle>ftslicei</citetitle></link>
+      The <emphasis>ftslicei</emphasis> opcode takes an f-table and copies a slice to a second
+      f-table (similar to tab2array, but between tables). This action is done at init time.
+      For a performance-time version, see <link linkend="ftslice"><citetitle>ftslice</citetitle></link>
 	  </para>
   </refsect1>
 
   <refsect1>
     <title>Syntax</title>
 	  <!--    Please keep this below ~70 characters by using backslashes to avoid overflow in the pdf version-->
-    <synopsis><command>ftslice</command> ifnsource, ifndest [, kstart, kend, kstep ]</synopsis>
-    <synopsis><command>ftslice</command> kfnsource, kfndest [, kstart, kend, kstep ]</synopsis>
-	  
+    <synopsis><command>ftslicei</command> ifnsource, ifndest [, istart, iend, istep ]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -41,24 +38,24 @@
     <para>
       <emphasis>ifndest</emphasis> -- The table number to copy data to
     </para>
+    <para>
+	    <emphasis>istart</emphasis> -- The index to start copying from. <emphasis>Defaults to 0</emphasis>
+	  </para>
+
+	  <para>
+	    <emphasis>iend</emphasis> -- The end index to stop copying.
+      This is NOT inclusive. 0 means copy to the end of the table. <emphasis>Defaults to end of table</emphasis>
+	  </para>
+
+	  <para>
+	    <emphasis>istep</emphasis> -- How many elements to skip. <emphasis>Defaults to 1</emphasis>
+	  </para>
   </refsect1>
 
   <refsect1>
 	  <title>Performance</title>
 	  <!--    First list all input and output performance parameters-->
-    <para>
-	    <emphasis>kstart</emphasis> -- The index to start copying from. <emphasis>Defaults to 0</emphasis>
-	  </para>
-
-	  <para>
-	    <emphasis>kend</emphasis> -- The end index to stop copying.
-      This is NOT inclusive. 0 means copy to the end of the table. <emphasis>Defaults to end of table</emphasis>
-	  </para>
-
-	  <para>
-	    <emphasis>kstep</emphasis> -- How many elements to skip. <emphasis>Defaults to 1</emphasis>
-	  </para>
-
+    
   </refsect1>
   <refsect1>
 	  <!--To add examples, create the csd file in the examples directory, then run:-->
@@ -66,7 +63,7 @@
 	  <!--to generate the xml highlighted version used below-->
     <title>Examples</title>
     <para>
-      Here is an example of the ftslice opcode. It uses the file <ulink url="examples/ftslice.csd"><citetitle>ftslice.csd</citetitle></ulink>.
+      For an example, refer to the ftslice opcode: <ulink url="examples/ftslice.csd"><citetitle>ftslice.csd</citetitle></ulink>.
       <example>
         <title>Example of the ftslice opcode.</title>
         <xi:include href="examples-xml/ftslice.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
@@ -78,7 +75,7 @@
     <title>See Also</title>
 	  <!--    it's always good to include a good See Also list  -->
     <para>
-      <link linkend="ftslicei"><citetitle>ftslicei</citetitle></link>,
+      <link linkend="ftslice"><citetitle>ftslice</citetitle></link>,
       <link linkend="ftset"><citetitle>ftset</citetitle></link>,
       <link linkend="slicearray"><citetitle>slicearray</citetitle></link>,
       <link linkend="copyf2array"><citetitle>copyf2array</citetitle></link>,

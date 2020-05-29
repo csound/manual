@@ -37,14 +37,16 @@ instr 1
          1.01, 10,  \
          2,    0.5, \
          2.5,  -1
-  printks "kx: %f   ky: %f \n", 0.1, kx, ky
+  if metro(10) == 1 then
+    printsk "kx: %f   ky: %f \n", kx, ky
+  endif
 endin
 
 instr 2
   ; test i-time
   ix = 1.2
   iy bpf ix, 0,0, 0.5,5, 1,10, 1.5,15, 2,20, 2.5,25, 3,30
-  print iy
+  prints "iy: %f", iy
   turnoff
 endin
 
@@ -65,7 +67,7 @@ instr 4
   kbw  = bpf(timeinsts(), 0, 0, p3*0.62, 1) ^ 3
   asig = (beosc(1000, kbw, -1, rnd(6.28)) + beosc(1012, kbw, -1, rnd(6.28))) * 0.3
   kratio bpf dbamp(rms:k(asig)), -12, 1, -6, 0.4, -3, 1/100
-  asig *= aenv * interp(sc_lagud(kratio, 0.01, 0.1))
+  asig *= aenv * interp(lagud(kratio, 0.01, 0.1))
   outs asig, asig
 endin
     
