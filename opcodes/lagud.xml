@@ -1,0 +1,104 @@
+<!--Change refentry id and indexterm id-->
+<refentry id="lagud">
+  <indexterm id="Indexlagud"><primary>lagud</primary></indexterm>
+  <!--Make sure the category below is a valid one! See categories.py-->
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lagud</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>lagud</refname>
+    <refpurpose>
+      Exponential Lag
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>Plugin opcode in scugens.</para>
+    <para>
+      Exponential lag with different smoothing time for up- and downgoing signals. Port of
+      Supercollider's LagUD.
+    </para>
+    <para>
+      This is essentially the same as the opcode <emphasis>lag</emphasis> except that you can
+      supply a different 60 dB time for ascending and descending signals. This is useful for
+      smoothing out control signals, where "fade in" should be different from "fade out", or to
+      model the attack/release of a gate, etc.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <!-- Please keep this below ~70 characters by using backslashes to avoid overflow in the pdf
+         version-->
+    <synopsis>aout <command>lagud</command> ain, klagup, klagdown [, initialvalue]</synopsis>
+    <synopsis>kout <command>lagud</command> kin, klagup, klagdown [, initialvalue]</synopsis>
+    
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>initialvalue</emphasis> If given, sets the internal state. Defaults to the first
+      value passed
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Performance</title>
+    <!--    First list all input and output performance parameters-->
+    <para>
+      <emphasis>ain</emphasis> -- input signal
+    </para>
+    <para>
+      <emphasis>klagup</emphasis> -- 60 dB lag time in seconds for the upgoing signal.
+    </para>
+    <para>
+      <emphasis>klagdown</emphasis> -- 60 dB lag time in seconds for the downgoing signal.
+    </para>
+    
+    
+  </refsect1>
+  <refsect1>
+    <!--To add examples, create the csd file in the examples directory, then run:-->
+    <!--python csd2docbook.py -f newopcodename.csd-->
+    <!--to generate the xml highlighted version used below-->
+    <title>Examples</title>
+    <para>
+      Here is an example of the lagud opcode. It uses the file <ulink
+      url="examples/lagud.csd"><citetitle>lagud.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the lagud opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time
+        Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line
+        Flags</citetitle></link> for more information on using command line flags.</para>
+        <xi:include href="examples-xml/lagud.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <!--    it's always good to include a good See Also list  -->
+    <para>
+      <link linkend="lag"><citetitle>lag</citetitle></link>, 
+      <link linkend="port"><citetitle>port</citetitle></link>, 
+      <link linkend="portk"><citetitle>portk</citetitle></link>
+      
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <!--  And put your name and other relevant information here-->
+    <title>Credits</title>
+    <para>By: &nameeduardo; 2017</para>
+  </refsect1>
+
+  <!--Now remember to add a link from the appropriate category in the Opcode Overview.-->
+  <!--Add the entity to manual.xml-->
+  <!--Add the entity reference in the appropriate place in opcodes/top.xml-->
+  <!--And you're set! Maybe delete the comments as well...-->
+
+</refentry>
