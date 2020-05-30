@@ -16,9 +16,10 @@ opcodelist = []
 
 outfilename = 'opcodes.xml'
 quickref = open(outfilename,'w')
-quickref.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!-- Don't modify this file. It is generated automatically by opcodeparser.py\nThis file is distributed under the GNU Free Documentation Licence-->")
-quickref.write('''<opcodes>\n''')
-
+quickref.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!-- "
+               "Don't modify this file. It is generated automatically by opcodeparser.py\n"
+               "This file is distributed under the GNU Free Documentation Licence-->")
+quickref.write("<opcodes>\n")
 
 entries = []
 for i in categories:
@@ -30,73 +31,55 @@ text = manual.read()
 manual.close()
 
 files = glob.glob('opcodes/*.xml')
-files[len(files):]=glob.glob('opcodes/*/*.xml')
-files[len(files):]=glob.glob('vectorial/*.xml')
-files[len(files):]=glob.glob('utility/*.xml')
+files.extend(list(glob.glob('opcodes/*/*.xml')))
+files.extend(list(glob.glob('vectorial/*.xml')))
+files.extend(list(glob.glob('utility/*.xml')))
 files.sort()
+
 if files.index('opcodes/topXO.xml') >= 0:
     files.remove('opcodes/topXO.xml')
 
 headerText = text[0:text.find('<book id="index"')]
 
+special_entries = {
+  'adds.xml': '<synopsis>a <opcodename>+</opcodename> b  (no rate restriction)</synopsis>\n',
+  'dollar.xml': '<synopsis><opcodename>$NAME</opcodename></synopsis>\n<para/>',
+  'divides.xml': '<synopsis>a <opcodename>/</opcodename> b  (no rate restriction)</synopsis>\n',
+  'modulus.xml': '<synopsis>a <opcodename>%</opcodename> b  (no rate restriction)</synopsis>\n',
+  'multiplies.xml': '<synopsis>a <opcodename>*</opcodename> b  (no rate restriction)</synopsis>\n',
+  'opbitor.xml': '<synopsis>a <opcodename>'+'|</opcodename> b  (bitwise OR)</synopsis>\n',
+  'opor.xml': '<synopsis>a <opcodename>'+'||</opcodename> b  (logical OR; not audio-rate)</synopsis>\n',
+  'raises.xml': '<synopsis>a <opcodename>^</opcodename> b  (b not audio-rate)</synopsis>\n',
+  'substracts.xml': '<synopsis>a <opcodename>-</opcodename> b (no rate restriction)</synopsis>\n',
+  'ifdef.xml': ('<synopsis><opcodename>#ifdef</opcodename> NAME</synopsis><synopsis>  ....</synopsis>\n'
+                '<synopsis><opcodename>#else</opcodename></synopsis><synopsis>  ....</synopsis>\n'
+                '<synopsis><opcodename>#end</opcodename></synopsis>\n'),
+  'define.xml': ('<synopsis><opcodename>#define</opcodename> NAME # replacement text #</synopsis>\n'
+                 '<synopsis><opcodename>#define</opcodename> NAME(a&apos; b&apos; c&apos;) # replacement text #</synopsis>\n'),
+  'include.xml': '<synopsis><opcodename>#include</opcodename> &quot;filename&quot;</synopsis>\n',
+  'undef.xml': '<synopsis><opcodename>#undef</opcodename> NAME</synopsis>\n',
+  '0dbfs.xml': '<synopsis><opcodename>0dbfs</opcodename> = iarg</synopsis>\n'
+}
+
 for i,filename in enumerate(files):
-    entry = ''
-    #print filename
     source = open(filename, 'r')
     # Necessary to define entities>
     entryText = source.read().replace("\xef\xbb\xbf","")
     newfile = headerText + '<book id="index" lang="en">' + entryText + '</book>'
     newfile = newfile.replace("\r", "")
-
     source.close()
-    #print text
     xmldoc = minidom.parseString(newfile)
     xmldocId = xmldoc.documentElement.getAttribute('id')
     # Some files need special treatment (adds, dollar, divides, modulus, multiplies,
     # opbitor, opor, raises, subtracts, assign, ifdef, ifndef, define, include, undef)
     # There must be a better way to avoid loosing the entities when parsing the XML
     # file. Anyone???
-    if (filename == 'opcodes' + os.sep + 'adds.xml'):
-        entry = '<synopsis>a <opcodename>+</opcodename> b  (no rate restriction)</synopsis>\n'
-    elif (filename == 'opcodes' + os.sep + 'dollar.xml'):
-        entry = '<synopsis><opcodename>$NAME</opcodename></synopsis>\n<para/>'
-    elif (filename == 'opcodes' + os.sep + 'divides.xml'):
-        entry = '<synopsis>a <opcodename>/</opcodename> b  (no rate restriction)</synopsis>\n'
-    elif (filename == 'opcodes' + os.sep + 'modulus.xml'):
-        entry = '<synopsis>a <opcodename>%</opcodename> b  (no rate restriction)</synopsis>\n'
-    elif (filename == 'opcodes' + os.sep + 'multiplies.xml'):
-        entry = '<synopsis>a <opcodename>*</opcodename> b  (no rate restriction)</synopsis>\n'
-    elif (filename == 'opcodes' + os.sep + 'opbitor.xml'):
-        entry = '<synopsis>a <opcodename>'+'|</opcodename> b  (bitwise OR)</synopsis>\n'
-    elif (filename == 'opcodes' + os.sep + 'opor.xml'):
-        entry = '<synopsis>a <opcodename>'+'||</opcodename> b  (logical OR; not audio-rate)</synopsis>\n'
-    elif (filename == 'opcodes' + os.sep + 'raises.xml'):
-        entry = '<synopsis>a <opcodename>^</opcodename> b  (b not audio-rate)</synopsis>\n'
-    elif (filename == 'opcodes' + os.sep + 'subtracts.xml'):
-        entry = '<synopsis>a <opcodename>-</opcodename> b (no rate restriction)</synopsis>\n'
-#    elif (filename == 'opcodes' + os.sep + 'assign.xml'):
-#        entry = '''<synopsis> <link linkend="'+xmldocId+'">'+'&minus;</link>a  (no rate restriction)</synopsis>
-#        <synopsis> <link linkend="'+xmldocId+'">'+'&plus;</link>a  (no rate restriction)</synopsis>\n'''
-    elif (filename == 'opcodes' + os.sep + 'ifdef.xml'):
-          entry = '<synopsis><opcodename>#ifdef</opcodename> NAME</synopsis><synopsis>  ....</synopsis>' + \
-                  '<synopsis><opcodename>#else</opcodename></synopsis><synopsis>  ....</synopsis>' + \
-                  '<synopsis><opcodename>#end</opcodename></synopsis>\n'
-    elif (filename == 'opcodes' + os.sep + 'ifndef.xml'):
-          entry='<synopsis><opcodename>#ifndef</opcodename> NAME</synopsis><synopsis>  ....</synopsis>' + \
-                '<synopsis><opcodename>#else</opcodename></synopsis><synopsis>  ....</synopsis>' + \
-                '<synopsis><opcodename>#end</opcodename></synopsis>\n'
-    elif (filename == 'opcodes' + os.sep + 'define.xml'):
-          entry='<synopsis><opcodename>#define</opcodename> NAME # replacement text #</synopsis>\n' + \
-    '<synopsis><opcodename>#define</opcodename> NAME(a&apos; b&apos; c&apos;) # replacement text #</synopsis>\n'
-    elif (filename == 'opcodes' + os.sep + 'include.xml'):
-          entry='<synopsis><opcodename>#include</opcodename> &quot;filename&quot;</synopsis>\n'
-    elif (filename == 'opcodes' + os.sep + 'undef.xml'):
-          entry='<synopsis><opcodename>#undef</opcodename> NAME</synopsis>\n'
-    elif (filename == 'opcodes' + os.sep + '0dbfs.xml'):
-        entry = '<synopsis><opcodename>0dbfs</opcodename> = iarg</synopsis>\n'
-    else:
+    folder, base = os.path.split(filename)
+    entry = special_entries.get(base)
+    if entry is None:
         synopsis = xmldoc.getElementsByTagName('synopsis')
-        if (len(synopsis) != 0):
+        entry = ''
+        if synopsis:
             # There can be more than 1 synopsis per file
             for num in range(len(synopsis)):
                 tmp = synopsis[num].toxml()
@@ -106,59 +89,58 @@ for i,filename in enumerate(files):
                     opcodename = ""
                 tmp = tmp.replace('<command>', '<opcodename>')
                 entry += tmp.replace('</command>', '</opcodename>')
-            #if entry != '':
-                #entry += '<para/>'
-        else:
-            #print "no synopsis tag for file: " + file
-            entry = ''
-    #print "Entry ------ ", entry
+
+    # print "Entry ------ ", entry
 
     info = xmldoc.getElementsByTagName('refentryinfo')
-    if (len(info)!=0 and entry != ''):
+    if info and entry:
         category = info[0].toxml()
         category = category[21:-23]
-        #print filename, category
     else:
         print("no refentryinfo tag for file " + filename)
         category = "Miscellaneous"
-        if (entry!=''):
+        if entry:
             print(filename + " sent to Miscellaneous")
     desc = xmldoc.getElementsByTagName('refpurpose')
     description = ""
-    if (len(desc)!=0 and entry != ''):
+    if desc and entry:
         description = desc[0].firstChild.toxml().strip()
-        #print(filename, category)
+        # print(filename, category)
     else:
         print("no refpurpose tag for file " + filename)
-    #print(category)
+    # print(category)
     match = False
     for j, thiscategory in enumerate(categories):
-        if (category == thiscategory):
+        if category == thiscategory:
             entries[j].append([entry, description])
             match = True
-    if match == False:
+    if not match:
         print(filename + "---- WARNING! No Category Match!")
 
-for i in range(len(categories)):
-    if (len(entries[i])==0):
-        print("No entries for category: "+categories[i]+"...Skipping")
+for i, category in enumerate(categories):
+    if not category:
+        print(f"No entries for category: {category} ...Skipping")
         continue
-    #quickref.write("<para></para><formalpara>\n")
     quickref.write("<category name=\"" + categories[i] + "\">\n")
     count = 0
-    for j in range(len(entries[i])):
-        newentry = entries[i].pop(0)
-        #entry = entry.replace("&dollar;", "$")
-        #entry = entry.replace("&#160;", " ")
-        quickref.write("<opcode><desc>" + description) # + '\n')
-        quickref.write(newentry[1] + "</desc>") # + '\n')
-        quickref.write(newentry[0] + "</opcode>\n") # + '\n')
+    for entry in entries[i]:
+        entrydef, description = entry
+        if not entrydef:
+            continue
+        # newentry = entry.pop(0)
+        # entry = entry.replace("&dollar;", "$")
+        # entry = entry.replace("&#160;", " ")
+        quickref.write("<opcode>")
+        if description:
+            quickref.write("<desc>")
+            quickref.write(description)
+            quickref.write("</desc>")
+        quickref.write(entrydef)
+        quickref.write("</opcode>\n")
         count += 1
-    #quickref.write("</para></formalpara>\n<para></para>")
     quickref.write("</category>\n")
     print(str(count) + " entries in category: " + categories[i])
 
 quickref.write('</opcodes>\n')
 quickref.close()
 print(entries)
-
