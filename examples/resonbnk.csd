@@ -10,7 +10,6 @@ nchnls = 1
 0dbfs = 1
 
 gifw ftgen 0,0,1024,20,2,1
-
 instr 1
 a1 diskin "fox.wav",1,0,1
 kcfs[],krms,kerr,kcps lpcanal a1,1,512,1024,50,gifw
