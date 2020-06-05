@@ -25,7 +25,7 @@ nchnls = 2
 	     prints "instr 1 debug called\n"
 	#end
      a1   vco2 .25, iFreq
-     out  a1
+     outs  a1, a1
  endin
 
  instr 2
@@ -36,7 +36,7 @@ nchnls = 2
 	     prints "instr 2 debug called\n"
 	#end
      a1   vco2 .25, iFreq
-     out  a1
+     outs  a1, a1
  endin
 
 </CsInstruments>
