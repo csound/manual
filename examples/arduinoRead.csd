@@ -127,7 +127,7 @@ void setup() {
 void put_val(int senChan, int senVal)
         // Set the Csound receive channel "senChan", and read from
         // the sensor data stream "senVal"
-{       // The packing of the data is ssssvvvv 0vvvvvvv where s is a
+{       // The packing of the data is sssssvvv 0vvvvvvv where s is a
         // senChan bit, v a senVal bit and 0 is zero` bit
   int low = senVal&0x7f;
   int hi = ((senVal>>7)&0x0f) | ((senChan&0x0F)<<4);
