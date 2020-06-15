@@ -1,0 +1,101 @@
+
+<refentry id="pvscfs">
+<indexterm id="IndexPvscfs"><primary>pvscfs</primary></indexterm>
+  <refentryinfo><title>Spectral Processing: lpc</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvscfs</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvscfs</refname>
+    <refpurpose>
+    Cepstrum all-pole coefficient analysis.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+     This opcode takes in a pvs signal in AMP_* format, applies the
+     cepstrum transform and computes the coefficients for a
+     an allpole filter
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kCoef[],krms,kerr  <command>pvscfs</command> fsig, iord[,imod]</synopsis>
+
+    
+  </refsect1>
+  <refsect1>
+    <title>Initialization</title>
+        <para>
+      <emphasis>iord</emphasis> -- all-pole filter order.
+        </para>
+        <para>
+      <emphasis>imod</emphasis> -- filter stabilisation mode (0=no
+      stabilisation; 1= pole reflection; 2 = pole limiting;
+      defaults to 1).
+        </para>
+    
+  </refsect1>
+  
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kCoef[]</emphasis> -- all-pole filter coefficients
+      (iord-size array)
+    </para>
+
+        <para>
+      <emphasis>krms</emphasis> - RMS estimate of source signal.
+        </para>
+
+         <para>
+      <emphasis>kerr</emphasis> -  error (or residual).
+         </para>
+
+
+        <para>
+      <emphasis>fsig</emphasis> -- pvs signal input in PV_AMP_* format.
+        </para>
+     
+  </refsect1>
+
+    <refsect1>
+   <para>
+        This opcode is part of a suite of streaming linear prediction
+        opcodes. It takes an fsig, applies a cepstrum transform,
+        retaining iord coefficients, and computes the coefficient for
+        an all-pole filter. Unlike in the linear prediction case, the
+        resulting filter may be unstable. To resolve this,
+        two stabilisation methods are offered: poles can be
+        reflected inside the unit circle, or limited to it. This is
+        somewhat computationally intensive, so there is also
+        the option of turning it off (if the particular use case allows).
+    </para>
+      
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the pvscfs opcode using an audio input
+      signal as lpc source. It uses the file <ulink url="examples/pvscfs.csd"><citetitle>pvscfs.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the pvscfs opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/pvscfs.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="lpcfilter"><citetitle>lpcfilter</citetitle></link>,
+      <link linkend="allpole"><citetitle>allpole</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

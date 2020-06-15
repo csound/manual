@@ -1,16 +1,16 @@
 <!--Change refentry id and indexterm id-->
-<refentry id="sc_lag">
-  <indexterm id="IndexSc_lag"><primary>sc_lag</primary></indexterm>
+<refentry id="lag">
+  <indexterm id="Indexlag"><primary>lag</primary></indexterm>
   <!--Make sure the category below is a valid one! See categories.py-->
   <refentryinfo><title>Signal Modifiers:Standard Filters:Control</title></refentryinfo>
   <refmeta>
-    <refentrytitle>sc_lag</refentrytitle>
+    <refentrytitle>lag</refentrytitle>
   </refmeta>
 
   <refnamediv>
-    <refname>sc_lag</refname>
+    <refname>lag</refname>
     <refpurpose>
-      Exponential Lag (DEPRECATED)
+      Exponential Lag
     </refpurpose>
   </refnamediv>
   
@@ -18,17 +18,19 @@
     <title>Description</title>
     <para>Plugin opcode in scugens.</para>
     <para>
-	  Exponential lag with 60dB lag time. DEPRECATED (renamed as <link
-	  linkend="lag"><citetitle>lag</citetitle></link>)
+	  Exponential lag with 60dB lag time. Port of Supercollider's Lag. This is essentially a one
+	  pole filter except that instead of supplying the coefficient directly, it is calculated
+	  from a 60 dB lag time. This is the time required for the filter to converge to within
+	  0.01% of a value. This is useful for smoothing out control signals.
     </para>
   </refsect1>
 
   <refsect1>
     <title>Syntax</title>
 	<!--    Please keep this below ~70 characters by using backslashes to avoid overflow in the pdf version-->
-    <synopsis>aout <command>sc_lag</command> ain, klagtime [, initialvalue]</synopsis>
+    <synopsis>aout <command>lag</command> ain, klagtime [, initialvalue]</synopsis>
 	
-	<synopsis>kout <command>sc_lag</command> kin, klagtime [, initialvalue]</synopsis>
+	<synopsis>kout <command>lag</command> kin, klagtime [, initialvalue]</synopsis>
 	
   </refsect1>
 
@@ -53,13 +55,6 @@
       <emphasis>kladown</emphasis> -- 60 dB lag time in seconds for the downgoing signal.
     </para>
 	
-    <para>
-	  This is essentially the same as one pole except that instead of
-	  supplying the coefficient directly, it is calculated from a 60
-	  dB lag time. This is the time required for the filter to
-	  converge to within 0.01% of a value. This is useful for
-	  smoothing out control signals. 
-    </para>
   </refsect1>
   <refsect1>
 	<!--To add examples, create the csd file in the examples directory, then run:-->
@@ -67,11 +62,11 @@
 	<!--to generate the xml highlighted version used below-->
     <title>Examples</title>
     <para>
-      Here is an example of the sc_lag opcode. It uses the file <ulink url="examples/sc_lag.csd"><citetitle>sc_lag.csd</citetitle></ulink>.
+      Here is an example of the lag opcode. It uses the file <ulink url="examples/lag.csd"><citetitle>lag.csd</citetitle></ulink>.
       <example>
-        <title>Example of the sc_lag opcode.</title>
+        <title>Example of the lag opcode.</title>
         <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
-        <xi:include href="examples-xml/sc_lag.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="examples-xml/lag.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
     </para>
   </refsect1>
@@ -80,7 +75,6 @@
     <title>See Also</title>
 	<!--    it's always good to include a good See Also list  -->
     <para>
-      <link linkend="lag"><citetitle>lag</citetitle></link>, 
       <link linkend="lagud"><citetitle>lagud</citetitle></link>, 
 	  <link linkend="port"><citetitle>port</citetitle></link>, 
 	  <link linkend="portk"><citetitle>portk</citetitle></link>

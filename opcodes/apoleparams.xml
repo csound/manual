@@ -1,0 +1,78 @@
+
+<refentry id="apoleparams">
+<indexterm id="IndexApoleparams"><primary>apoleparams</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:LPC</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>apoleparams</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>apoleparams</refname>
+    <refpurpose>
+     Extracts allpole filter parameters from coefficients.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+     This opcode takes an array of allpole filter coefficients and
+     produces an array of allpole filter parameters as frequency and
+     bandwidth pairs.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kPar[]<command>apoleparams</command> kCoef[] </synopsis>
+
+    
+  </refsect1>
+>
+  
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kCoef[]</emphasis> -- all-pole filter coefficients
+      (iord-size array)
+    </para>
+
+        <para>
+      <emphasis>kPar[]</emphasis> - filter parameters in freq-bandwidth pairs.
+        </para>
+
+</refsect1>
+    <refsect1>
+   <para>
+        This opcode is part of a suite of streaming linear prediction
+        opcodes. It takes in an array of allpole filter parameters,
+        converts these to filter poles, sorts these in ascending
+        frequency order, and then outputs these as frequency-bandwidth
+        pairs. Poles at 0Hz and Nyquist frequencies are excluded, and
+        each pole conjugate pair is represented by a single pair of
+        parameters. For a filter of order M, M coefficients are
+        transformed into M/2 pairs of frequencies and bandwidths.
+    </para> 
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the apoleparams opcode using an audio input
+      signal as lpc source. It uses the file <ulink url="examples/apoleparams.csd"><citetitle>apoleparams.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the apoleparams opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/apoleparams.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="lpcanal"><citetitle>lpcanal</citetitle></link>,
+      <link linkend="resonbnk"><citetitle>resonbnk</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

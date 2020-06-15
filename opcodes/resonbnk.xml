@@ -1,0 +1,118 @@
+
+<refentry id="resonbnk">
+<indexterm id="IndexResonbnk"><primary>resonbnk</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:LPC</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>resonbnk</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>resonbnk</refname>
+    <refpurpose>
+     A resonator filter bank.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+     This opcode takes an array of filter paramerers in
+     frequency-bandwidth pairs and construct a bank of second-order
+     resonators, in either parallel or serial connections.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>asig<command>resonbnk</command> ain,
+    kPar[],kmin,kmax,iper[,imode,iscal,iskip] </synopsis>
+
+    
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+
+                                      <para>
+      <emphasis>iper</emphasis> -- filter parameter interpolation
+      period (in samples).
+               </para>  
+    
+    <para>
+      <emphasis>imode</emphasis> -- filter connection mode (0 =
+      serial, 1 = parallel, defaults to 1).
+    </para>
+
+       <para>
+      <emphasis>iscal</emphasis> -- filter scaling mode (0 = no
+      scaling, 1 and 2 modes as in reson, defaults to 0).
+    </para>
+
+        <para>
+      <emphasis>iskip</emphasis> -- skip initialisation if non-zero
+      (defaults to 0).
+        </para>
+
+
+
+
+</refsect1>
+  
+  
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asig</emphasis> -- output signal
+    </para>
+
+       <para>
+      <emphasis>asig</emphasis> -- input signal
+    </para>
+
+        <para>
+      <emphasis>kPar[]</emphasis> -- filter parameters in freq-bandwidth pairs.
+        </para>
+
+               <para>
+      <emphasis>kmin</emphasis> -- minimum filter frequency.
+               </para>
+
+                      <para>
+      <emphasis>kmax</emphasis> -- maximum filter frequency.
+                      </para>
+
+</refsect1>
+    <refsect1>
+   <para>
+        This opcode is part of a suite of streaming linear prediction
+        opcodes. It takes in an array of filter parameters in
+        frequency/bandwidth pairs and creates a bank of filters.
+        The minimum and maximum filter
+        frequencies used in the filterbank are set by kmin and kmax, and any filters
+        whose frequencies are outside this range are excluded from
+        the filterbank. Filter coefficients are computed every iper
+        samples and linearly interpolated throughout.
+    </para> 
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the resonbnk opcode using an audio input
+      signal as lpc source. It uses the file <ulink url="examples/resonbnk.csd"><citetitle>resonbnk.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the resonbnk opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/resonbnk.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="lpcanal"><citetitle>lpcanal</citetitle></link>,
+      <link linkend="lpcanal"><citetitle>resonbnk</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>
