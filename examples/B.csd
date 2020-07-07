@@ -52,7 +52,7 @@ b 5			; set the clock "forward"
 i2 1 2 220		; start time = 6
 i2 2 2 110		; start time = 7
 
-B -6
+B -6			; move clock back
 i3 3   2		; start time = 2
 i3 5.5 1		; start time = 4.5
 
