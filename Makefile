@@ -595,7 +595,7 @@ UTILS = utility/analysis.xml utility/convert.xml utility/cvanal.xml \
 	utility/top.xml utility/scale.xml utility/makecsd.xml \
 	utility/cs.xml utility/mixer.xml utility/extractor.xml \
 	utility/atsa.xml utility/csb64enc.xml utility/envext.xml\
-	utility/het_export.xml utility/het_import.xml utility/mkdb.xml \
+	utility/het_export.xml utility/het_import.xml \
 	utility/other.xml utility/pv_export.xml	utility/pv_import.xml \
 	utility/src_conv.xml
 
