@@ -17,11 +17,17 @@
   <refsect1>
     <title>Description</title>
     <para>
-      Provides a way of knowing if an event is in its last performance cycle. Whether an event has a finite duration (p3 > 0)
-      or a note is extended via a time extending opcode (like <quote>linsegr</quote> or <quote>xtratim</quote>), this opcode returns 1
-      if the event is currently at its last k-cycle. The only sitatuation where <quote>lastcycle</quote> does not detect that the event
-      will not run for another cycle is when the note is turned off by another event (using <quote>turnoff2</quote>) and is not given
-      the possibility of running through its release stage (using <quote>turnoff2 instrnum, imode, 0</quote>)
+      Provides a way of knowing if an event is in its last performance cycle. Whether an event
+      has a finite duration (p3 > 0) or a note is extended via a time extending opcode (like
+      <quote>linsegr</quote> or <quote>xtratim</quote>), this opcode returns 1 if the event is
+      currently at its last k-cycle. The only sitatuation where <quote>lastcycle</quote> does
+      not detect that the event will not run for another cycle is when the note is turned off by
+      another event (using <quote>turnoff2</quote>) and is not given the possibility of running
+      through its release stage (using <quote>turnoff2 instrnum, imode, 0</quote>)
+    </para>
+    <para>
+      NB: <quote>lastcycle</quote> will add an extra cycle if no other time extending opcode has
+      been used. This allows it to catch the last cycle even in the absense of a release time.
     </para>
   </refsect1>
 
@@ -37,7 +43,8 @@
     </para>
 
     <para>
-      This opcode is useful for performing cleanup actions, signaling to other events that this event is finishing, etc. It works only at performance time.
+      This opcode is useful for performing cleanup actions, signaling to other events that this
+      event is finishing, etc. It works only at performance time.
     </para>
   </refsect1>
 
