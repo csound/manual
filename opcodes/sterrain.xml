@@ -1,0 +1,113 @@
+<refentry id="sterrain">
+<indexterm id="IndexSterrain"><primary>sterrain</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Wave Terrain Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>sterrain</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>sterrain</refname>
+    <refpurpose>
+      A wave-terrain synthesis opcode using curves computed with the superformula
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      A wave-terrain synthesis opcode using curves computed with the superformula (see <ulink url="https://en.wikipedia.org/wiki/Superformula"><citetitle>Wikipedia</citetitle></ulink> for more information).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>aout <command>sterrain</command> kamp, kcps, kx, ky, krx, kry, krot, ktab0, ktab1, km1, km2, kn1, kn2, kn3, ka, kb, kperiod
+    </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ktabx, ktaby</emphasis> -- The two tables that define the terrain - they can be changed at krate.
+    </para>
+    <para>
+      The output is the result of drawing the superformula curve with
+      parameters <emphasis>km1, km2, kn1, kn2, kn3, ka, kb</emphasis>
+      (see on wikipedia), scaled with <emphasis>krx</emphasis> and
+      <emphasis>kry</emphasis> and centered at
+      <emphasis>kx</emphasis>, <emphasis>ky</emphasis> on the terrain,
+      rotated around the center with <emphasis>krot</emphasis>
+      radians, and traversing it at frequency
+      <emphasis>kcps/kperiod</emphasis>.<emphasis>km1,km2</emphasis>
+      are converted to integers.
+    </para>
+    <para>
+      As the speed of the point can change considerably for some
+      parameter classes when drawing curve on the terrain some
+      different sounds can be produced compared with other standard
+      curves e.g. it can make triangle like parts in the output wave.
+    </para>
+    <para>
+      The following ranges are supported and useful:
+    </para>
+    <para>
+      <emphasis>kn1, ka, kb</emphasis> -- !=0 and continous.
+    </para>
+    <para>
+      <emphasis>kn2, kn3</emphasis> -- continous.
+    </para>
+    <para>
+      <emphasis>km1, km2</emphasis> -- positive integer > 0: note that the curves are not on all combinations of km1,km2 closed
+       and have poles (closed in infinity) for example if kn1>0 and there exists an n,m in Z with 2*km1/km2 = 2m+1/n
+       i.e curves with (3,2) (5,2) (7,2) etc and (5,4) (6,4) (7,4) (9,4) etc. have a pole which is noticeable when listening.
+       If kn1 &lt; 0 then the curve is reversed and the poles go towards zero in this case.
+       If km1 and km2 are zero silence is produced (a plain circ - same effect occurs with the tuple 2,2,2,2,2,1,1).
+    </para>
+    <para>
+      <emphasis>kperiod</emphasis> -- some km1 and km2 ratios may cause pitch shifts. With the kperiod parameter this can be fixed. If the ratio is 1 then the kperiod value should also be set to km1 to get the incoming pitch out.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the sterrain opcode wich shows the impact of letting kn1 running towards zero. It uses the file <ulink url="examples/sterrain.csd"><citetitle>sterrain.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the sterrain opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/sterrain.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Here is an other example of the sterrain opcode showing overtone building.
+      It uses the file <ulink url="examples/sterrain2.csd"><citetitle>sterrain2.csd</citetitle></ulink>.
+
+      <example>
+        <title>Another Example of the sterrain opcode showing overtone building</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/sterrain2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>See Also</title>
+      <para>
+        <link linkend="wterrain"><citetitle>wterrain</citetitle></link>,
+      </para>
+      <para> More information on this opcode: <ulink url="https://youtu.be/E75xakCueA8"><citetitle>https://youtu.be/E75xakCueA8</citetitle></ulink>  , made by Christian Bacher </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Christian Bacher</member>
+        <member>New in version 6.15</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

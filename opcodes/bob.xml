@@ -1,0 +1,110 @@
+
+<!--Change refentry id and indexterm id-->
+<refentry id="bob">
+<indexterm id="IndexBob"><primary>bob</primary></indexterm>
+<!--Make sure the category below is a valid one! See categories.py-->
+  <refentryinfo><title>Signal Modifiers:Standard Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>bob</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>bob</refname>
+    <refpurpose>
+      Runge-Kutte numerical simulation of the Moog analog resonant filter.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+     <para>
+      Bob is a port of bob~ filter object from PD. The design is based on the papers by Tim Stilson, Timothy E. Stinchcombe, and Antti Huovilainen.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+<!--    Please keep this below ~70 characters by using backslashes to avoid overflow in the pdf version-->
+    <synopsis>asig <command>bob</command> ain, xcf, xres, xsat [, iosamps, istor]</synopsis>
+  </refsect1>
+
+  <refsect1>
+<!--  If applicable list i-time arguments-->
+    <title>Initialization</title>
+    <para>
+      <emphasis>iosamps</emphasis> -- number of times of oversampling used in the filtering process. This will determine the maximum sharpness of the filter resonance (Q). More oversampling allows higher Qs, less oversampling will limit the resonance. The default is 3 times (iosamps=0).
+    </para>
+    <para>
+      <emphasis>istor</emphasis> -- initial disposition of internal data space. Since filtering incorporates a feedback loop of previous output, the initial status of the storage space used is significant. A zero value will clear the space; a non-zero value will allow previous information to remain. The default value is 0.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+<!--    First list all input and output performance parameters-->
+    <para>
+      <emphasis>asig</emphasis> -- input signal
+    </para>
+    <para>
+      <emphasis>xcf</emphasis> -- filter cutoff frequency
+    </para>
+    <para>
+      <emphasis>xres</emphasis> -- filter resonance. Nominally, a value of 4 should be the limit of stability -- above that, the filter oscillates.
+    </para>
+    <para>
+      <emphasis>xsat</emphasis> --  saturation. This parameter determines at what signal level the "transistors" in the model saturate. The maximum output amplitude is about 2/3 of that value.
+    </para>
+    <para>
+      By default bob~ does one step of 4th-order Runge-Kutte integration per audio sample.
+      This works OK for resonant/cutoff frequencies up to about 1/2 Nyquist.
+      To improve accuracy and/or to extend the range of the filter to higher cutoff frequencies you can
+      oversample by any factor - but note that computation time rises accordingly.
+      At high cutoff frequencies/resonance values the RK approximation can go unstable.
+      You can combat this by raising the oversampling factor.
+      The saturation parameter determines at what signal level the "transistors"
+      in the model saturate. The maximum output amplitude is about 2/3 of that value.
+    </para>
+  </refsect1>
+
+  <refsect1>
+<!--To add examples, create the csd file in the examples directory, then run:-->
+<!--python csd2docbook.py -f newopcodename.csd-->
+<!--to generate the xml highlighted version used below-->
+    <title>Examples</title>
+    <para>
+      Here is an example of the bob opcode. It uses the file <ulink url="examples/bob.csd"><citetitle>bob.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the bob opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/bob.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+<!--    it's always good to include a good See Also list  -->
+    <para>
+      <link linkend="moogladder"><citetitle>moogladder</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+<!--  And put your name and other relevant information here-->
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Gleb Rogozinsky</member>
+        <member>June 2020</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 6.15</para>
+  </refsect1>
+
+<!--Now remember to add a link from the appropriate category in the Opcode Overview.-->
+<!--Add the entity to manual.xml-->
+<!--Add the entity reference in the appropriate place in opcodes/top.xml-->
+<!--And you're set! Maybe delete the comments as well...-->
+
+</refentry>

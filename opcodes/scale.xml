@@ -5,56 +5,63 @@
   <refmeta>
     <refentrytitle>scale</refentrytitle>
   </refmeta>
-  
-  
+
   <refnamediv>
     <refname>scale</refname>
     <refpurpose>
       Arbitrary signal scaling.
     </refpurpose>
   </refnamediv>
-  
+
   <refsect1>
     <title>Description</title>
     <para>
       Scales incoming value to user-definable range. Similar to scale object found in popular dataflow languages.
     </para>
   </refsect1>
-  
+
   <refsect1>
     <title>Syntax</title>
-    <synopsis>kscl <command>scale</command> kinput, kmax, kmin</synopsis>
+    <synopsis>kscl <command>scale</command> kinput, kmax, kmin[, kimax, kimin]</synopsis>
   </refsect1>
-  
+
   <refsect1>
     <title>Performance</title>
     <para>
-      <emphasis>kin</emphasis> -- Input value. Can originate from any k-rate source as long as that source's output is in range 0-1. 
+      <emphasis>kin</emphasis> -- Input value. Can originate from any
+      k-rate source as long as that source's output is in range
+      <emphasis>kimin</emphasis> to <emphasis>kimax</emphasis>.
     </para>
     <para>
-      <emphasis>kmin</emphasis> -- Minimum value of the resultant scale operation. 
+      <emphasis>kmin</emphasis> -- Minimum value of the resultant scale operation.
     </para>
     <para>
       <emphasis>kmax</emphasis> -- Maximum value of the resultant scale operation.
     </para>
+    <para>
+      <emphasis>kimin</emphasis> -- Optional; Minimum of the incoming
+      value range, defaulting to zero.
+    </para>
+    <para>
+      <emphasis>kimax</emphasis> -- Optional; Maximum of the incoming
+      value range, defaulting to one.
+    </para>
+    <para><warning> Take care with the order of the arguments which has maximum
+     before minimum</warning></para>
   </refsect1>
-  
+
   <refsect1>
     <title>Examples</title>
     <para>
       Here is an example of the scale opcode. It uses the file <ulink url="examples/scale.csd"><citetitle>scale.csd</citetitle></ulink>.
-      
       <example>
         <title>Example of the scale opcode.</title>
-        
-        
-        
         <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
         <xi:include href="examples-xml/scale.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
     </para>
   </refsect1>
-  
+
   <refsect1>
     <title>See Also</title>
     <para>
@@ -63,7 +70,7 @@
       <link linkend="expcurve"><citetitle>expcurve</citetitle></link>
     </para>
   </refsect1>
-  
+
   <refsect1>
     <title>Credits</title>
     <para>
@@ -71,8 +78,9 @@
         <member>Author: David Akbari</member>
         <member>October</member>
         <member>2006</member>
+        <member>&namejohn;</member>
+        <member>Modified to add input range vaue in 2020</member>
       </simplelist>
     </para>
   </refsect1>
-  
 </refentry>
