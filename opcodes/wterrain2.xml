@@ -1,0 +1,194 @@
+<refentry id="wterrain2">
+<indexterm id="IndexWterrain2"><primary>wterrain2</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Wave Terrain Synthesis with different curves</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>wterrain2</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>wterrain2</refname>
+    <refpurpose>
+      A wave-terrain synthesis opcode using different curves
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      A wave-terrain synthesis opcode the enhances the <link linkend="wterrain"><citetitle>wterrain</citetitle></link> opcode by providing some more curves, krate table parameters and a parameter for rotating the curve. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>aout <command>wterrain2</command> kamp, kcps, kx, ky, krx, kry, krot, ktab0, ktab1, kcurve, kcurveparam
+    </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>ktabx, ktaby</emphasis> -- The two tables that define the terrain - they can be changed at krate.
+    </para>
+    <para>
+      The output is the result of traversing at frequency <emphasis>kcps</emphasis> the curve <emphasis>kcurve</emphasis> with the parameter <emphasis>kcurveparam</emphasis> (see below), scaled with <emphasis>krx</emphasis> and <emphasis>kry</emphasis> and centered at <emphasis>kx</emphasis>, <emphasis>ky</emphasis> on the terrain and rotated around the center with <emphasis>krot</emphasis> radians.
+    </para>
+    <para>
+      <emphasis>kcurve=0: ellipse</emphasis> as in the wterrain opcode but with a special extension. kcurveparam controls a speed change of the traversing point. The formula is:
+      <literallayout>
+         fx(t) = kx + krx * sin( t + kcurveparam * sin(t) )
+         fy(t) = ky + kry * cos( t + kcurveparam * sin(t) )
+      </literallayout>
+    </para>
+    <para>
+      <emphasis>kcurve=1: lemniskate</emphasis> - this is a simple 8. here also the kcurveparam controls a speed change of the traversing point. The formula is:
+      <literallayout>
+         fx(t) = kx + krx * cos( t + kcurveparam * sin(t) )
+         fy(t) = ky + kry * sin( t + kcurveparam * sin(t) )  * cos( t + kcurveparam * sin(t) )
+      </literallayout>
+     </para>
+    <para>
+      <emphasis>kcurve=2: limacon</emphasis>
+      <literallayout>
+        fx(t) = kx + krx * sin(t) * (cos(t) + kcurveparam);
+        fy(t) = ky + kry * cos(t) * (cos(t) + kcurveparam);
+      </literallayout>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/limacon.png" format="PNG"/>
+        </imageobject>
+        <textobject>
+          <phrase>limacon curve with different parameters</phrase>
+        </textobject>
+        <caption>limacon curve with different parameters</caption>
+     </mediaobject>
+    </para>
+    <para>
+      <emphasis>kcurve=3: cornoid</emphasis>
+      <literallayout>
+        fx(t) = kx + krx * sin(t) * (cos(t) + kcurveparam);
+        fy(t) = ky + kry * cos(t) * (cos(t) + kcurveparam);
+      </literallayout>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/cornoid.png" format="PNG"/>
+        </imageobject>
+        <textobject>
+          <phrase>cornoid with different parameters</phrase>
+        </textobject>
+        <caption>a cornoid curve with different parameters</caption>
+     </mediaobject>
+    </para>
+      <emphasis>kcurve=4: trisextic (Ceva)</emphasis>
+      <literallayout>
+       fx(t) = kx + krx * cos(t) * (1+kcurveparam*sin(2*t));
+       fy(t) = ky + kry * sin(t) * (1+kcurveparam*sin(2*t));
+      </literallayout>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/trisextic.png" format="PNG"/>
+        </imageobject>
+        <textobject>
+          <phrase>trisextic curve with different parameters</phrase>
+        </textobject>
+        <caption>a trisextic curve with different parameters</caption>
+     </mediaobject>
+     <para>
+    </para>
+    <para>
+      <emphasis>kcurve=5: scarabeus</emphasis>
+      <literallayout>
+       fx(t) = kx + krx * cos(t) * (1+kcurveparam*sin(2*t));
+       fy(t) = ky + kry * sin(t) * (1+kcurveparam*sin(2*t));
+      </literallayout>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/scarabeus.png" format="PNG"/>
+        </imageobject>
+        <textobject>
+          <phrase>scarabeus curve with different parameters</phrase>
+        </textobject>
+        <caption>a scarabeus curve with different parameters</caption>
+     </mediaobject>
+     </para>
+    <para>
+      <emphasis>kcurve=6: folium</emphasis>
+      <literallayout>
+        fx(t) = kx + krx * cos(t) * cos(t) * (sin(t)*sin(t) - kcurveparam);
+        fy(t) = ky + kry * sin(t) * cos(t) * (sin(t)*sin(t) - kcurveparam);
+      </literallayout>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/folium.png" format="PNG"/>
+        </imageobject>
+        <textobject>
+          <phrase>folium with different parameters</phrase>
+        </textobject>
+        <caption>a folium with different parameters</caption>
+     </mediaobject>
+      </para>
+    <para>
+      <emphasis>kcurve=7: talbot</emphasis>
+      <literallayout>
+        fx(t) = kx + krx * cos(t) * (1 + kcurveparam * sin(t)*sin(t));
+        fy(t) = ky + kry * sin(t) * (1 - kcurveparam - kcurveparam*cos(t)*cos(t)); 
+        
+      </literallayout>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/talbot.png" format="PNG"/>
+        </imageobject>
+        <textobject>
+          <phrase>talbot curve with different parameters</phrase>
+        </textobject>
+        <caption>a talbot curve with different parameters</caption>
+     </mediaobject>
+      </para>
+   
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the wterrain2 opcode <ulink url="examples/wterrain2_1.csd"><citetitle>wterrain2.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the wterrain2 opcode.</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/wterrain2_1.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Here is an other example of the wterrain2 - a sound fugue.
+      It uses the file <ulink url="examples/wterrain2_2.csd"><citetitle>wterrain2_2.csd</citetitle></ulink>.
+
+      <example>
+        <title>Another Example of the wterrain2 opcode - a sound fugue</title>
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/wterrain2_2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>See Also</title>
+      <para>
+        <link linkend="wterrain"><citetitle>wterrain</citetitle></link>,
+        <link linkend="sterrain"><citetitle>sterrain</citetitle></link>
+      </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: Christian Bacher</member>
+        <member>New in version 6.15</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>
+
