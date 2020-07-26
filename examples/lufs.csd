@@ -9,10 +9,11 @@ ksmps=64
 nchnls=2
 
 instr 1
+ktrig init 0
 iamp = ampdbfs(-18.0)
 a1 poscil iamp,1000,1
-kM,kI,kS lufs a1,a1
-printks "M: %f, I: %f, S: %f LUFS\n", 0.3, kM, kI, kS
+kM,kI,kS lufs ktrig,a1,a1
+printks "M: %f, I: %f, S: %f LUFS\n", 0.3, k1, k2, k3
 endin
 
 </CsInstruments>
