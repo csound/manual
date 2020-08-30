@@ -1,0 +1,26 @@
+name: manual_build 
+
+on: push
+
+#on: 
+#  push:
+#    branches:
+#      - develop
+#      - master
+#    pull_request:
+#      branches:
+#        - develop
+#
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+      - name: Install docbook tools
+        run: sudo apt-get install docbook docbook-xsl xsltproc
+      - name: Install pygments
+        run: sudo pip install 'pygments>=2.3' 
+      - name: Build HTML manual
+        run: make html-dist
