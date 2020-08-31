@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>wterrain2</title>
+    <link rel="stylesheet" type="text/css" href="csound.css" />
+    <link rel="stylesheet" type="text/css" href="syntax-highlighting.css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.79.1" />
+    <link rel="home" href="index.html" title="The Canonical Csound Reference Manual" />
+    <link rel="up" href="OpcodesTop.html" title="Orchestra Opcodes and Operators" />
+    <link rel="prev" href="wterrain.html" title="wterrain" />
+    <link rel="next" href="xadsr.html" title="xadsr" />
+  </head>
+  <body>
+    <div class="navheader">
+      <table width="100%" summary="Navigation header">
+        <tr>
+          <th colspan="3" align="center">wterrain2</th>
+        </tr>
+        <tr>
+          <td width="20%" align="left"><a accesskey="p" href="wterrain.html">Prev</a> </td>
+          <th width="60%" align="center">Orchestra Opcodes and Operators</th>
+          <td width="20%" align="right"> <a accesskey="n" href="xadsr.html">Next</a></td>
+        </tr>
+      </table>
+      <hr />
+    </div>
+    <div class="refentry">
+      <a id="wterrain2"></a>
+      <div class="titlepage"></div>
+      <a id="IndexWterrain2" class="indexterm"></a>
+      <div class="refnamediv">
+        <h2>
+          <span class="refentrytitle">wterrain2</span>
+        </h2>
+        <p>wterrain2 — 
+      A wave-terrain synthesis opcode using different curves
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm259674"></a>
+        <h2>Description</h2>
+        <p>
+      A wave-terrain synthesis opcode that enhances the <a class="link" href="wterrain.html" title="wterrain"><em class="citetitle">wterrain</em></a> opcode by providing some more curves, krate table parameters and a parameter for rotating the curve. 
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm259679"></a>
+        <h2>Syntax</h2>
+        <pre class="synopsis">aout <span class="command"><strong>wterrain2</strong></span> kamp, kcps, kx, ky, krx, kry, krot, \
+      ktab0, ktab1, kcurve, kcurveparam
+    </pre>
+      </div>
+      <div class="refsect1">
+        <a id="idm259683"></a>
+        <h2>Performance</h2>
+        <p>
+      <span class="emphasis"><em>ktabx, ktaby</em></span> -- The two tables that define the terrain - they can be changed at krate.
+    </p>
+        <p>
+      The output is the result of traversing at frequency <span class="emphasis"><em>kcps</em></span> the curve <span class="emphasis"><em>kcurve</em></span> with the parameter <span class="emphasis"><em>kcurveparam</em></span> (see below), scaled with <span class="emphasis"><em>krx</em></span> and <span class="emphasis"><em>kry</em></span> and centered at <span class="emphasis"><em>kx</em></span>, <span class="emphasis"><em>ky</em></span> on the terrain and rotated around the center with <span class="emphasis"><em>krot</em></span> radians.
+    </p>
+        <p>
+      <span class="emphasis"><em>kcurve=0: ellipse</em></span> as in the wterrain opcode but with a special extension. kcurveparam controls a speed change of the traversing point. The formula is:
+      </p>
+        <div class="literallayout">
+          <p><br />
+         fx(t) = kx + krx * sin( t + kcurveparam * sin(t) )<br />
+         fy(t) = ky + kry * cos( t + kcurveparam * sin(t) )<br />
+      </p>
+        </div>
+        <p>
+    </p>
+        <p>
+      <span class="emphasis"><em>kcurve=1: lemniskate</em></span> - this is a simple 8. here also the kcurveparam controls a speed change of the traversing point. The formula is:
+      </p>
+        <div class="literallayout">
+          <p><br />
+         fx(t) = kx + krx * cos( t + kcurveparam * sin(t) )<br />
+         fy(t) = ky + kry * sin( t + kcurveparam * sin(t) )  * cos( t + kcurveparam * sin(t) )<br />
+      </p>
+        </div>
+        <p>
+     </p>
+        <p>
+      <span class="emphasis"><em>kcurve=2: limacon</em></span>
+      </p>
+        <div class="literallayout">
+          <p><br />
+        fx(t) = kx + krx * sin(t) * (cos(t) + kcurveparam);<br />
+        fy(t) = ky + kry * cos(t) * (cos(t) + kcurveparam);<br />
+      </p>
+        </div>
+        <p>
+      </p>
+        <div class="mediaobject">
+          <img src="images/limacon.png" alt="limacon curve with different parameters" />
+          <div class="caption">limacon curve with different parameters</div>
+        </div>
+        <p>
+    </p>
+        <p>
+      <span class="emphasis"><em>kcurve=3: cornoid</em></span>
+      </p>
+        <div class="literallayout">
+          <p><br />
+        fx(t) = kx + krx * sin(t) * (cos(t) + kcurveparam);<br />
+        fy(t) = ky + kry * cos(t) * (cos(t) + kcurveparam);<br />
+      </p>
+        </div>
+        <p>
+      </p>
+        <div class="mediaobject">
+          <img src="images/cornoid.png" alt="cornoid with different parameters" />
+          <div class="caption">a cornoid curve with different parameters</div>
+        </div>
+        <p>
+    </p>
+        <span class="emphasis">
+          <em>kcurve=4: trisectrix (Ceva)</em>
+        </span>
+        <div class="literallayout">
+          <p><br />
+       fx(t) = kx + krx * cos(t) * (1+kcurveparam*sin(2*t));<br />
+       fy(t) = ky + kry * sin(t) * (1+kcurveparam*sin(2*t));<br />
+      </p>
+        </div>
+        <div class="mediaobject">
+          <img src="images/trisextic.png" alt="trisectrix curve with different parameters" />
+          <div class="caption">a trisectrix curve with different parameters</div>
+        </div>
+        <p>
+    </p>
+        <p>
+      <span class="emphasis"><em>kcurve=5: scarabeus</em></span>
+      </p>
+        <div class="literallayout">
+          <p><br />
+       fx(t) = kx + krx * cos(t) * (1+kcurveparam*sin(2*t));<br />
+       fy(t) = ky + kry * sin(t) * (1+kcurveparam*sin(2*t));<br />
+      </p>
+        </div>
+        <p>
+      </p>
+        <div class="mediaobject">
+          <img src="images/scarabeus.png" alt="scarabeus curve with different parameters" />
+          <div class="caption">a scarabeus curve with different parameters</div>
+        </div>
+        <p>
+     </p>
+        <p>
+      <span class="emphasis"><em>kcurve=6: folium</em></span>
+      </p>
+        <div class="literallayout">
+          <p><br />
+        fx(t) = kx + krx * cos(t) * cos(t) * (sin(t)*sin(t) - kcurveparam);<br />
+        fy(t) = ky + kry * sin(t) * cos(t) * (sin(t)*sin(t) - kcurveparam);<br />
+      </p>
+        </div>
+        <p>
+      </p>
+        <div class="mediaobject">
+          <img src="images/folium.png" alt="folium with different parameters" />
+          <div class="caption">a folium with different parameters</div>
+        </div>
+        <p>
+      </p>
+        <p>
+      <span class="emphasis"><em>kcurve=7: Talbot curve</em></span>
+      </p>
+        <div class="literallayout">
+          <p><br />
+        fx(t) = kx + krx * cos(t) * (1 + kcurveparam * sin(t)*sin(t));<br />
+        fy(t) = ky + kry * sin(t) * (1 - kcurveparam - kcurveparam*cos(t)*cos(t)); <br />
+        <br />
+      </p>
+        </div>
+        <p>
+      </p>
+        <div class="mediaobject">
+          <img src="images/talbot.png" alt="Talbot curve with different parameters" />
+          <div class="caption">a Talbot curve with different parameters</div>
+        </div>
+        <p>
+      </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm259756"></a>
+        <h2>Examples</h2>
+        <p>
+      Here is an example of the wterrain2 opcode. It uses the file
+      <a class="ulink" href="examples/wterrain2_1.csd" target="_top"><em class="citetitle">wterrain2.csd</em></a>.
+      </p>
+        <div class="example">
+          <a id="idm259761"></a>
+          <p class="title">
+            <strong>Example 1182. Example of the wterrain2 opcode.</strong>
+          </p>
+          <div class="example-contents">
+            <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
+            <div class="refsect1">
+              <a id="idm259768"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+<span class="nt">&lt;CsOptions&gt;</span>
+-odac -d
+<span class="nt">&lt;/CsOptions&gt;</span>
+
+<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="vg">sr</span>     <span class="o">=</span> <span class="mi">48000</span>
+<span class="vg">ksmps</span>  <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+
+gi<span class="n">sine</span> <span class="nb">ftgen</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="o">^</span><span class="mi">12</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span>
+gS<span class="n">curves</span><span class="p">[]</span> <span class="nb">fillarray</span> <span class="s">"ELLIPSE "</span><span class="p">,</span> <span class="s">"LEMNISKATE "</span><span class="p">,</span> <span class="s">"LIMACON "</span><span class="p">,</span><span class="s">"CORNOID "</span><span class="p">,</span><span class="s">"TRISEXTIC "</span><span class="p">,</span><span class="s">"SCARABEUS "</span><span class="p">,</span><span class="s">"FOLIUM "</span><span class="p">,</span><span class="s">"TALBOT "</span>
+
+<span class="kd">instr</span> <span class="nf">1</span> 
+<span class="nb">prints</span> gS<span class="n">curves</span><span class="p">[</span><span class="vi">p4</span><span class="p">]</span>
+k<span class="n">dclk</span> <span class="nb">init</span> <span class="mi">0</span>
+k<span class="n">dclk</span>   <span class="nb">linsegr</span>  <span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="vi">p3</span><span class="o">-</span><span class="mf">0.02</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mi">0</span>
+k<span class="n">param</span> <span class="nb">init</span> <span class="mi">0</span>
+k<span class="n">rot</span> <span class="nb">init</span> <span class="mi">0</span>
+k<span class="n">rot</span> <span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span><span class="vi">p3</span><span class="p">,</span><span class="mf">6.28</span> <span class="c1">; ROTATE THE CURVE SLOWLY</span>
+k<span class="n">param</span> <span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span><span class="vi">p3</span><span class="p">,</span><span class="mi">4</span> <span class="c1">; INCREASE CURVEPARAMETER</span>
+
+a<span class="n">sigL</span> w<span class="n">terrain2</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> k<span class="n">rot</span><span class="p">,</span> gi<span class="n">sine</span><span class="p">,</span> gi<span class="n">sine</span><span class="p">,</span> <span class="vi">p4</span><span class="p">,</span> k<span class="n">param</span>
+<span class="c1">; LET THE POINT FOR RIGHT RUNNING BACKWARDS FOR A LITTLE STEREO EFFECT</span>
+a<span class="n">sigR</span> w<span class="n">terrain2</span> <span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mi">110</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> k<span class="n">rot</span><span class="p">,</span> gi<span class="n">sine</span><span class="p">,</span> gi<span class="n">sine</span><span class="p">,</span> <span class="vi">p4</span><span class="p">,</span> k<span class="n">param</span>
+a<span class="n">sigR</span> <span class="nb">dcblock</span> a<span class="n">sigL</span>
+a<span class="n">sigL</span> <span class="nb">dcblock</span> a<span class="n">sigR</span>
+a<span class="n">sigL</span><span class="o">*=</span>k<span class="n">dclk</span>
+a<span class="n">sigR</span><span class="o">*=</span>k<span class="n">dclk</span>
+a<span class="n">L</span><span class="p">,</span>a<span class="n">R</span> <span class="nb">reverbsc</span> a<span class="n">sigL</span><span class="p">,</span> a<span class="n">sigR</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mi">15000</span><span class="p">,</span> <span class="mi">44100</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span>
+<span class="nb">outs</span> a<span class="n">L</span><span class="p">,</span>a<span class="n">R</span>
+
+<span class="kd">endin</span>
+
+<span class="nt">&lt;/CsInstruments&gt;</span>
+
+<span class="nt">&lt;CsScore&gt;</span>
+
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">40</span> <span class="mi">0</span> <span class="c1">; ELLIPSE</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">41</span> <span class="mi">40</span> <span class="mi">1</span><span class="c1">; LEMNSIKATE</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">82</span> <span class="mi">40</span> <span class="mi">2</span><span class="c1">; LIMACON</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">123</span> <span class="mi">40</span> <span class="mi">3</span><span class="c1">; CORNOID</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">164</span> <span class="mi">40</span> <span class="mi">4</span><span class="c1">; TRISEXTIC</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">205</span> <span class="mi">40</span> <span class="mi">5</span><span class="c1">; SCARABEUS</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">246</span> <span class="mi">40</span> <span class="mi">6</span><span class="c1">; FOLIUM</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">287</span> <span class="mi">40</span> <span class="mi">7</span><span class="c1">; TALBOT</span>
+
+<span class="nb">e</span>
+<span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
+    </p>
+        <p>
+      Here is an other example of the wterrain2 - a sound fugue.
+      It uses the file <a class="ulink" href="examples/wterrain2_2.csd" target="_top"><em class="citetitle">wterrain2_2.csd</em></a>.
+      </p>
+        <div class="example">
+          <a id="idm260004"></a>
+          <p class="title">
+            <strong>Example 1183. Another Example of the wterrain2 opcode - a sound fugue</strong>
+          </p>
+          <div class="example-contents">
+            <div class="refsect1">
+              <a id="idm260006"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+<span class="nt">&lt;CsOptions&gt;</span>
+-odac -d
+<span class="nt">&lt;/CsOptions&gt;</span>
+
+<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="vg">sr</span>     <span class="o">=</span> <span class="mi">48000</span>
+<span class="vg">ksmps</span>  <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+
+gi<span class="n">sine</span> <span class="nb">ftgen</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="o">^</span><span class="mi">12</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span>
+
+<span class="kd">instr</span> <span class="nf">1</span>
+
+k<span class="n">amp</span> <span class="nb">adsr</span> <span class="mf">0.1</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span>
+
+<span class="c1">; THE MODULATION PARAMETERS </span>
+k<span class="n">rot</span> <span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span><span class="vi">p3</span><span class="p">,</span><span class="mf">6.28</span> <span class="c1">; ROTATE</span>
+k<span class="n">param</span> <span class="n">randc</span> <span class="mf">2.5</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.993</span> <span class="c1">; CONTROL CURVEPARAMETER WITH CUBIC RANDOM </span>
+k<span class="n">x</span> <span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span><span class="vi">p3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="vi">p3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span> <span class="c1">; MOVE HORIZONTAL THROUGH THE TERRAIN</span>
+k<span class="n">y</span> <span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span><span class="vi">p3</span><span class="p">,</span><span class="mi">1</span> <span class="c1">; MOVE VERTICAL THROUGH THE TERRAIN</span>
+
+<span class="c1">; TRY THE OTHER CURVES AS WELL </span>
+a<span class="n">sigL</span> w<span class="n">terrain2</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">55</span><span class="o">*</span><span class="vi">p4</span><span class="p">,</span> k<span class="n">x</span><span class="p">,</span> k<span class="n">y</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> k<span class="n">rot</span><span class="p">,</span> gi<span class="n">sine</span><span class="p">,</span> gi<span class="n">sine</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> k<span class="n">param</span>
+a<span class="n">sigR</span> w<span class="n">terrain2</span> <span class="mf">0.2</span><span class="p">,</span> <span class="o">-</span><span class="mi">55</span><span class="o">*</span><span class="vi">p4</span><span class="p">,</span> k<span class="n">x</span><span class="p">,</span> k<span class="n">y</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> k<span class="n">rot</span><span class="p">,</span> gi<span class="n">sine</span><span class="p">,</span> gi<span class="n">sine</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> k<span class="n">param</span>
+
+a<span class="n">sigR</span> <span class="nb">dcblock</span> a<span class="n">sigL</span>
+a<span class="n">sigL</span> <span class="nb">dcblock</span> a<span class="n">sigR</span>
+a<span class="n">sigL</span> <span class="nb">butterlp</span> a<span class="n">sigL</span><span class="p">,</span><span class="mi">9000</span>
+a<span class="n">sigR</span> <span class="nb">butterlp</span> a<span class="n">sigR</span><span class="p">,</span><span class="mi">9000</span>
+a<span class="n">L</span><span class="p">,</span>a<span class="n">R</span> <span class="nb">reverbsc</span> a<span class="n">sigL</span><span class="p">,</span> a<span class="n">sigR</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mi">15000</span><span class="p">,</span> <span class="mi">44100</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span>
+<span class="nb">outs</span> a<span class="n">L</span><span class="o">*</span>k<span class="n">amp</span><span class="o">*</span><span class="vi">p5</span><span class="p">,</span>a<span class="n">R</span><span class="o">*</span>k<span class="n">amp</span><span class="o">*</span><span class="vi">p5</span>
+
+<span class="kd">endin</span>
+
+<span class="nt">&lt;/CsInstruments&gt;</span>
+
+<span class="nt">&lt;CsScore&gt;</span>
+
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">300</span> <span class="mi">1</span> <span class="mi">1</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">300</span> <span class="mi">7</span> <span class="mf">0.4</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">299</span> <span class="p">[</span><span class="mi">9</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span> <span class="mf">0.4</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mf">3.1</span> <span class="mf">296.9</span> <span class="p">[</span><span class="mi">16</span><span class="o">/</span><span class="mi">3</span><span class="p">]</span> <span class="mf">0.45</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mf">4.3</span> <span class="mf">295.7</span> <span class="p">[</span><span class="mi">27</span><span class="o">/</span><span class="mi">4</span><span class="p">]</span> <span class="mf">0.5</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mf">6.9</span> <span class="mf">292.1</span> <span class="mi">6</span> <span class="mf">0.5</span> 
+
+<span class="nb">e</span>
+<span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm260240"></a>
+        <h2>See Also</h2>
+        <p>
+        <a class="link" href="wterrain.html" title="wterrain"><em class="citetitle">wterrain</em></a>,
+        <a class="link" href="sterrain.html" title="sterrain"><em class="citetitle">sterrain</em></a>
+      </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm260247"></a>
+        <h2>Credits</h2>
+        <p>
+      </p>
+        <table border="0" summary="Simple list" class="simplelist">
+          <tr>
+            <td>Author: Christian Bacher</td>
+          </tr>
+          <tr>
+            <td>New in version 6.15</td>
+          </tr>
+        </table>
+        <p>
+    </p>
+      </div>
+    </div>
+    <div class="navfooter">
+      <hr />
+      <table width="100%" summary="Navigation footer">
+        <tr>
+          <td width="40%" align="left"><a accesskey="p" href="wterrain.html">Prev</a> </td>
+          <td width="20%" align="center">
+            <a accesskey="u" href="OpcodesTop.html">Up</a>
+          </td>
+          <td width="40%" align="right"> <a accesskey="n" href="xadsr.html">Next</a></td>
+        </tr>
+        <tr>
+          <td width="40%" align="left" valign="top">wterrain </td>
+          <td width="20%" align="center">
+            <a accesskey="h" href="index.html">Home</a>
+          </td>
+          <td width="40%" align="right" valign="top"> xadsr</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

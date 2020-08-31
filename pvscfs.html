@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>pvscfs</title>
+    <link rel="stylesheet" type="text/css" href="csound.css" />
+    <link rel="stylesheet" type="text/css" href="syntax-highlighting.css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.79.1" />
+    <link rel="home" href="index.html" title="The Canonical Csound Reference Manual" />
+    <link rel="up" href="OpcodesTop.html" title="Orchestra Opcodes and Operators" />
+    <link rel="prev" href="pvsceps.html" title="pvsceps" />
+    <link rel="next" href="pvscross.html" title="pvscross" />
+  </head>
+  <body>
+    <div class="navheader">
+      <table width="100%" summary="Navigation header">
+        <tr>
+          <th colspan="3" align="center">pvscfs</th>
+        </tr>
+        <tr>
+          <td width="20%" align="left"><a accesskey="p" href="pvsceps.html">Prev</a> </td>
+          <th width="60%" align="center">Orchestra Opcodes and Operators</th>
+          <td width="20%" align="right"> <a accesskey="n" href="pvscross.html">Next</a></td>
+        </tr>
+      </table>
+      <hr />
+    </div>
+    <div class="refentry">
+      <a id="pvscfs"></a>
+      <div class="titlepage"></div>
+      <a id="IndexPvscfs" class="indexterm"></a>
+      <div class="refnamediv">
+        <h2>
+          <span class="refentrytitle">pvscfs</span>
+        </h2>
+        <p>pvscfs — 
+    Cepstrum all-pole coefficient analysis.
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm179518"></a>
+        <h2>Description</h2>
+        <p>
+     This opcode takes in a pvs signal in AMP_* format, applies the
+     cepstrum transform and computes the coefficients for a
+     an allpole filter
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm179521"></a>
+        <h2>Syntax</h2>
+        <pre class="synopsis">kCoef[],krms,kerr  <span class="command"><strong>pvscfs</strong></span> fsig, iord[,imod]</pre>
+      </div>
+      <div class="refsect1">
+        <a id="idm179525"></a>
+        <h2>Initialization</h2>
+        <p>
+      <span class="emphasis"><em>iord</em></span> -- all-pole filter order.
+        </p>
+        <p>
+      <span class="emphasis"><em>imod</em></span> -- filter stabilisation mode (0=no
+      stabilisation; 1= pole reflection; 2 = pole limiting;
+      defaults to 1).
+        </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm179531"></a>
+        <h2>Performance</h2>
+        <p>
+      <span class="emphasis"><em>kCoef[]</em></span> -- all-pole filter coefficients
+      (iord-size array)
+    </p>
+        <p>
+      <span class="emphasis"><em>krms</em></span> - RMS estimate of source signal.
+        </p>
+        <p>
+      <span class="emphasis"><em>kerr</em></span> -  error (or residual).
+         </p>
+        <p>
+      <span class="emphasis"><em>fsig</em></span> -- pvs signal input in PV_AMP_* format.
+        </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm179541"></a>
+        <p>
+        This opcode is part of a suite of streaming linear prediction
+        opcodes. It takes an fsig, applies a cepstrum transform,
+        retaining iord coefficients, and computes the coefficient for
+        an all-pole filter. Unlike in the linear prediction case, the
+        resulting filter may be unstable. To resolve this,
+        two stabilisation methods are offered: poles can be
+        reflected inside the unit circle, or limited to it. This is
+        somewhat computationally intensive, so there is also
+        the option of turning it off (if the particular use case allows).
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm179543"></a>
+        <h2>Examples</h2>
+        <p>
+      Here is an example of the pvscfs opcode using an audio input
+      signal as lpc source. It uses the file <a class="ulink" href="examples/pvscfs.csd" target="_top"><em class="citetitle">pvscfs.csd</em></a>.
+      </p>
+        <div class="example">
+          <a id="idm179548"></a>
+          <p class="title">
+            <strong>Example 790. Example of the pvscfs opcode.</strong>
+          </p>
+          <div class="example-contents">
+            <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
+            <div class="refsect1">
+              <a id="idm179555"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+<span class="nt">&lt;CsOptions&gt;</span>
+-odac -d
+<span class="nt">&lt;/CsOptions&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span>
+
+<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">64</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="kd">instr</span> <span class="nf">1</span>
+a<span class="n">1</span> <span class="nb">diskin</span> <span class="s">"fox.wav"</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span>
+a<span class="n">2</span> <span class="nb">diskin</span> <span class="s">"flute.aiff"</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span>
+f<span class="n">env</span> <span class="nb">pvsanal</span> a<span class="n">1</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="mi">256</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="mi">1</span>
+k<span class="n">cfs</span><span class="p">[],</span>k<span class="n">rms</span><span class="p">,</span>k<span class="n">err</span> <span class="n">pvscfs</span> f<span class="n">env</span><span class="p">,</span><span class="mi">30</span>
+a<span class="n">3</span> a<span class="n">llpole</span> a<span class="n">2</span><span class="o">*</span>k<span class="n">rms</span><span class="o">*</span>k<span class="n">err</span><span class="p">,</span>k<span class="n">cfs</span>
+a<span class="n">3</span> <span class="nb">dcblock</span> a<span class="n">3</span>
+<span class="nb">out</span> a<span class="n">3</span>
+<span class="kd">endin</span>
+
+<span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">30</span>
+<span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm179636"></a>
+        <h2>See Also</h2>
+        <p>
+      <a class="link" href="lpcfilter.html" title="lpcfilter"><em class="citetitle">lpcfilter</em></a>,
+      <a class="link" href="allpole.html" title="allpole"><em class="citetitle">allpole</em></a>
+    </p>
+      </div>
+    </div>
+    <div class="navfooter">
+      <hr />
+      <table width="100%" summary="Navigation footer">
+        <tr>
+          <td width="40%" align="left"><a accesskey="p" href="pvsceps.html">Prev</a> </td>
+          <td width="20%" align="center">
+            <a accesskey="u" href="OpcodesTop.html">Up</a>
+          </td>
+          <td width="40%" align="right"> <a accesskey="n" href="pvscross.html">Next</a></td>
+        </tr>
+        <tr>
+          <td width="40%" align="left" valign="top">pvsceps </td>
+          <td width="20%" align="center">
+            <a accesskey="h" href="index.html">Home</a>
+          </td>
+          <td width="40%" align="right" valign="top"> pvscross</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

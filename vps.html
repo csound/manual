@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>vps</title>
+    <link rel="stylesheet" type="text/css" href="csound.css" />
+    <link rel="stylesheet" type="text/css" href="syntax-highlighting.css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.79.1" />
+    <link rel="home" href="index.html" title="The Canonical Csound Reference Manual" />
+    <link rel="up" href="OpcodesTop.html" title="Orchestra Opcodes and Operators" />
+    <link rel="prev" href="vpowv_i.html" title="vpowv_i" />
+    <link rel="next" href="vpvoc.html" title="vpvoc" />
+  </head>
+  <body>
+    <div class="navheader">
+      <table width="100%" summary="Navigation header">
+        <tr>
+          <th colspan="3" align="center">vps</th>
+        </tr>
+        <tr>
+          <td width="20%" align="left"><a accesskey="p" href="vpowv_i.html">Prev</a> </td>
+          <th width="60%" align="center">Orchestra Opcodes and Operators</th>
+          <td width="20%" align="right"> <a accesskey="n" href="vpvoc.html">Next</a></td>
+        </tr>
+      </table>
+      <hr />
+    </div>
+    <div class="refentry">
+      <a id="vps"></a>
+      <div class="titlepage"></div>
+      <a id="IndexVps" class="indexterm"></a>
+      <div class="refnamediv">
+        <h2>
+          <span class="refentrytitle">vps</span>
+        </h2>
+        <p>vps — 
+      Shapes a phase signal according to a two-dimensional vector.
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm253754"></a>
+        <h2>Description</h2>
+        <p>
+     Vector phase shaping modifies a phase input value by mapping an
+     input, in the range [0, 1) according to a non-linear function
+     consisting of two piecewise linear segments joined at an
+     inflection point. This is defined by the vector [kd, kv],
+     where kd is in the range [0, 1) and kv can have any value.
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm253757"></a>
+        <h2>Syntax</h2>
+        <pre class="synopsis">avp <span class="command"><strong>vps</strong></span> aph,kd,kv</pre>
+      </div>
+      <div class="refsect1">
+        <a id="idm253761"></a>
+        <h2>Performance</h2>
+        <p>
+      <span class="emphasis"><em>avp</em></span> -- output phase.
+    </p>
+        <p>
+      <span class="emphasis"><em>aph</em></span> -- input phase (as produced by phasor).
+    </p>
+        <p>
+      <span class="emphasis"><em>kd</em></span> -- horizontal vector component.
+        </p>
+        <p>
+      <span class="emphasis"><em>aph</em></span> -- vertical vector component.
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm253771"></a>
+        <h2>Examples</h2>
+        <p>
+      Here is an example of the use of the <span class="emphasis"><em>vps</em></span> opcode. It uses the file <a class="ulink" href="examples/vps.csd" target="_top"><em class="citetitle">vps.csd</em></a>.
+      </p>
+        <div class="example">
+          <a id="idm253777"></a>
+          <p class="title">
+            <strong>Example 1153. Example of the <span class="emphasis"><em>vps</em></span> opcode.</strong>
+          </p>
+          <div class="example-contents">
+            <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
+            <div class="refsect1">
+              <a id="idm253785"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+<span class="nt">&lt;CsOptions&gt;</span>
+-o dac -d
+<span class="nt">&lt;/CsOptions&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="vg">nchnls</span><span class="o">=</span><span class="mi">1</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="kd">instr</span> <span class="nf">1</span>
+ k<span class="n">d</span> <span class="o">=</span> <span class="nb">oscili</span><span class="p">:</span><span class="kt">k</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span>
+ k<span class="n">v</span> <span class="o">=</span> <span class="nb">oscili</span><span class="p">:</span><span class="kt">k</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">1.5</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span>
+ a<span class="n">ph</span> <span class="o">=</span> <span class="n">vps</span><span class="p">(</span><span class="nb">phasor</span><span class="p">(</span><span class="vi">p5</span><span class="p">),</span>k<span class="n">d</span><span class="p">,</span>k<span class="n">v</span><span class="p">)</span>
+ a<span class="n">sig</span> <span class="o">=</span> <span class="vi">p4</span><span class="o">*</span><span class="nb">tablei</span><span class="p">:</span><span class="kt">a</span><span class="p">(</span>a<span class="n">ph</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+ <span class="nb">out</span><span class="p">(</span><span class="nb">linenr</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.01</span><span class="p">))</span>
+<span class="kd">endin</span>
+
+<span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span>
+
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">10</span> <span class="mf">0.5</span> <span class="mi">110</span> 
+
+
+<span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm253880"></a>
+        <h2>Credits</h2>
+        <p>
+      </p>
+        <table border="0" summary="Simple list" class="simplelist">
+          <tr>
+            <td>Author: Victor Lazzarini</td>
+          </tr>
+          <tr>
+            <td>July  2020</td>
+          </tr>
+        </table>
+        <p>
+    </p>
+      </div>
+    </div>
+    <div class="navfooter">
+      <hr />
+      <table width="100%" summary="Navigation footer">
+        <tr>
+          <td width="40%" align="left"><a accesskey="p" href="vpowv_i.html">Prev</a> </td>
+          <td width="20%" align="center">
+            <a accesskey="u" href="OpcodesTop.html">Up</a>
+          </td>
+          <td width="40%" align="right"> <a accesskey="n" href="vpvoc.html">Next</a></td>
+        </tr>
+        <tr>
+          <td width="40%" align="left" valign="top">vpowv_i </td>
+          <td width="20%" align="center">
+            <a accesskey="h" href="index.html">Home</a>
+          </td>
+          <td width="40%" align="right" valign="top"> vpvoc</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

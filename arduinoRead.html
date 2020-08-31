@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>arduinoRead</title>
+    <link rel="stylesheet" type="text/css" href="csound.css" />
+    <link rel="stylesheet" type="text/css" href="syntax-highlighting.css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.79.1" />
+    <link rel="home" href="index.html" title="The Canonical Csound Reference Manual" />
+    <link rel="up" href="OpcodesTop.html" title="Orchestra Opcodes and Operators" />
+    <link rel="prev" href="apoleparams.html" title="apoleparams" />
+    <link rel="next" href="arduinoStart.html" title="arduinoStart" />
+  </head>
+  <body>
+    <div class="navheader">
+      <table width="100%" summary="Navigation header">
+        <tr>
+          <th colspan="3" align="center">arduinoRead</th>
+        </tr>
+        <tr>
+          <td width="20%" align="left"><a accesskey="p" href="apoleparams.html">Prev</a> </td>
+          <th width="60%" align="center">Orchestra Opcodes and Operators</th>
+          <td width="20%" align="right"> <a accesskey="n" href="arduinoStart.html">Next</a></td>
+        </tr>
+      </table>
+      <hr />
+    </div>
+    <div class="refentry">
+      <a id="arduinoRead"></a>
+      <div class="titlepage"></div>
+      <a id="IndexArduinoRead" class="indexterm"></a>
+      <div class="refnamediv">
+        <h2>
+          <span class="refentrytitle">arduinoRead</span>
+        </h2>
+        <p>arduinoRead — 
+      Read data from an arduino port using the Csound-Arduino protocol.
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm25831"></a>
+        <h2>Description</h2>
+        <p>Plugin opcode in serial.</p>
+        <p>
+      Read data from an arduino port with CsoundArduino protocol.
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm25835"></a>
+        <h2>Syntax</h2>
+        <pre class="synopsis">kval <span class="command"><strong>arduinoRead</strong></span> iPort, iStream[, iSmooth]</pre>
+      </div>
+      <div class="refsect1">
+        <a id="idm25839"></a>
+        <h2>Performance</h2>
+        <p>
+      <span class="emphasis"><em>iPort</em></span> -- port number obtained from a
+      <span class="emphasis"><em>arduinoStart</em></span> opcode.
+    </p>
+        <p>
+      <span class="emphasis"><em>iStream</em></span> -- Number of the data stream in
+      range 0 to 30.
+    </p>
+        <p>
+      <span class="emphasis"><em>iSmooth</em></span> -- halftime of a portamento filter
+      to smooth the stream of data. Defaults to 0 meaning no filtering.
+    </p>
+        <p>
+      <span class="emphasis"><em>kval</em></span> -- data to read in range [0, 1023].
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm25850"></a>
+        <h2>Examples</h2>
+        <p>
+      Here is an example of the arduinoRead opcode. It uses the file <a class="ulink" href="examples/arduinoRead.csd" target="_top"><em class="citetitle">arduinoRead.csd</em></a>.
+      </p>
+        <div class="example">
+          <a id="idm25855"></a>
+          <p class="title">
+            <strong>Example 61. Example of the arduinoRead opcode.</strong>
+          </p>
+          <div class="example-contents">
+            <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
+            <div class="refsect1">
+              <a id="idm25862"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+Arduino-Joystick2Csound1g-fm1-port (version with smoothing)
+
+- Push Joystick button to turn on note
+- Use JoystickX to offset and control the modulation index of
+  the foscil opcode from 0-40 via the scale opcode
+- Use JoystickY to offset and control the Frequency of the foscil
+  opcode up/down two octaves via the scale opcode
+
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+
+<span class="nt">&lt;CsInstruments&gt;</span>
+
+<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">441</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
+
+gi<span class="n">port</span> <span class="nb">init</span> <span class="mi">0</span>
+
+<span class="c1">// NOTE: change USB port "/dev/cu.usbmodem1414301" to correspond</span>
+<span class="c1">//       with USB port used by Arduino on your system</span>
+gi<span class="n">port</span> a<span class="n">rduinoStart</span>  <span class="s">"/dev/cu.usbmodem1414301"</span><span class="p">,</span> <span class="mi">9600</span>
+
+<span class="kd">instr</span> <span class="nf">1</span>
+
+ k<span class="n">Y</span>  a<span class="n">rduinoRead</span> gi<span class="n">port</span><span class="p">,</span> <span class="mi">1</span> <span class="c1">; Joystick Y</span>
+ k<span class="n">X</span>  a<span class="n">rduinoRead</span> gi<span class="n">port</span><span class="p">,</span> <span class="mi">2</span> <span class="c1">; Joystick X</span>
+ k<span class="n">SW</span> a<span class="n">rduinoRead</span> gi<span class="n">port</span><span class="p">,</span> <span class="mi">3</span> <span class="c1">; Joystick Button/Switch</span>
+
+k<span class="n">Amp</span>  <span class="nb">init</span> <span class="mi">0</span>
+k<span class="n">Freq</span> <span class="nb">init</span> <span class="mi">0</span>
+k<span class="n">Indx</span> <span class="nb">init</span> <span class="mi">1</span>
+
+k<span class="n">Xraw</span> <span class="o">=</span> k<span class="n">X</span>
+k<span class="n">X</span> <span class="nb">port</span> k<span class="n">Xraw</span><span class="p">,</span> <span class="mf">.02</span>  <span class="c1">// smoothed kY stream</span>
+k<span class="n">Yraw</span> <span class="o">=</span> k<span class="n">Y</span>
+k<span class="n">Y</span> <span class="nb">port</span> k<span class="n">Yraw</span><span class="p">,</span> <span class="mf">.02</span>  <span class="c1">// smoothed kY stream</span>
+
+k<span class="n">Yscaled</span> <span class="nb">scale</span> k<span class="n">Y</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1023</span><span class="p">,</span> <span class="mi">0</span> <span class="c1">; scaling the raw sensor</span>
+                                     <span class="c1">; data to a user-defined</span>
+                                     <span class="c1">; range of (100-400)</span>
+k<span class="n">Xscaled</span> <span class="nb">scale</span> k<span class="n">X</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1023</span><span class="p">,</span> <span class="mi">0</span>    <span class="c1">; scaling the raw sensor</span>
+                                     <span class="c1">; data to a user-defined</span>
+                                     <span class="c1">; range of (0-40)</span>
+
+	<span class="k">if</span><span class="p">(</span>k<span class="n">SW</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="k">then</span>
+		k<span class="n">Amp</span> <span class="o">=</span> <span class="mf">.333</span>
+	<span class="k">elseif</span><span class="p">(</span>k<span class="n">SW</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
+		k<span class="n">Amp</span> <span class="o">=</span> <span class="mi">0</span>
+	<span class="k">endif</span>
+
+ a<span class="n">Out</span>	<span class="nb">foscil</span> <span class="mi">1</span><span class="p">,</span> k<span class="n">Freq</span> <span class="o">+</span> k<span class="n">Yscaled</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> k<span class="n">Indx</span> <span class="o">+</span> k<span class="n">Xscaled</span><span class="p">,</span> <span class="mi">1</span>
+
+	 		<span class="nb">outs</span>	a<span class="n">Out</span> <span class="o">*</span> k<span class="n">Amp</span><span class="p">,</span> a<span class="n">Out</span> <span class="o">*</span> k<span class="n">Amp</span>
+
+<span class="nb">printks</span> <span class="s">"Button=</span><span class="si">%d</span><span class="s">, RawX=</span><span class="si">%d</span><span class="s">, ScaleX=</span><span class="si">%d</span><span class="s">, RawY=</span><span class="si">%d</span><span class="s">, ScaleY=</span><span class="si">%d</span><span class="s"> </span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span> <span class="w">\</span>
+            <span class="mf">.5</span><span class="p">,</span> k<span class="n">SW</span><span class="p">,</span> k<span class="n">X</span><span class="p">,</span> k<span class="n">Xscaled</span><span class="p">,</span> k<span class="n">Y</span><span class="p">,</span> k<span class="n">Yscaled</span>
+
+ <span class="kd">endin</span>
+
+<span class="nt">&lt;/CsInstruments&gt;</span>
+
+<span class="nt">&lt;CsScore&gt;</span>
+
+<span class="nb">f</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">16384</span> <span class="mi">10</span> <span class="mi">1</span>
+
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="kc">z</span>
+
+<span class="nb">e</span>
+
+<span class="nt">&lt;/CsScore&gt;</span>
+
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+
+<span class="nt">&lt;arduinoSketch&gt;</span>
+<span class="c1">// Joystick Example</span>
+
+<span class="c1">// John ffitch &amp; Richard Boulanger</span>
+<span class="c1">// June 11, 2020</span>
+
+<span class="c1">// BreadBoard &amp; Arduino Setup</span>
+
+<span class="c1">// Insert the Joystick Controller into the breadboard</span>
+<span class="c1">// NOTE:  Joystick Pins (in order from left to right) are:</span>
+           GND, 5V, vrX, vrY, SW
+<span class="c1">// Connect the power rails on breadboard to 5V and GND on Arduino</span>
+<span class="c1">// Connect GND and 5V from Joystick to + and - power rails on</span>
+<span class="c1">//         the breadboard</span>
+<span class="c1">// Connect Joystick vrX on breadboard to Analog In A0 on the Arduino</span>
+<span class="c1">// Connect Joystick vrY on breadboard to Analog In A1 on the Arduino</span>
+<span class="c1">// Connect Joystick SW on breadboard to Digital Pin 2 on Arduino</span>
+
+<span class="c1">// Arduino pin numbers</span>
+<span class="c1">// Note: Because of the way that the Joystick stands up in a</span>
+<span class="c1">//       breadboard, in this example the vrX and vrY have been swapped.</span>
+
+const int SW_pin = 2<span class="c1">; // Joystick switch output connected to</span>
+                      <span class="c1">//   Arduino digital pin 2</span>
+const int Y_pin = 0<span class="c1">;  // Joystick Y output connected to Arduino</span>
+                      <span class="c1">//   analog pin A0</span>
+const int X_pin = 1<span class="c1">;  // Joystick X output connected to Arduino</span>
+                      <span class="c1">//   analog pin A1</span>
+
+int lastState_SW_pin = 1<span class="c1">;</span>
+int currentState_SW_pin<span class="c1">;</span>
+
+void setup() {
+              <span class="c1">// NOTE: Digital pins can be either inputs or outputs.</span>
+  pinMode(SW_pin, INPUT_PULLUP)<span class="c1">; // Setting digital pin to input mode</span>
+                                 <span class="c1">// and using onboard pullup resistor</span>
+                                 <span class="c1">// to reduce noise.</span>
+
+  Serial.begin(9600)<span class="c1">;</span>
+}
+
+<span class="c1">// put_val( ) - a function to send data values to the Csound</span>
+<span class="c1">//              "arduinoRead" opcode</span>
+<span class="c1">// The first argument of the put_val function "int senChan" sets</span>
+<span class="c1">// the software channel number that Csound reads</span>
+<span class="c1">// NOTE: "senChan" does "not" define the input pin that is used on</span>
+<span class="c1">// the Arduino for a specific sensor</span>
+<span class="c1">// The specific Arduino input pin used by any sensor is assigned</span>
+<span class="c1">// and set elsewhere in the Arduino sketch and mapped to a</span>
+<span class="c1">// user-defined put_val "senChan" channel</span>
+
+void put_val(int senChan, int senVal)
+        <span class="c1">// Set the Csound receive channel "senChan", and read from</span>
+        <span class="c1">// the sensor data stream "senVal"</span>
+{       <span class="c1">// The packing of the data is sssssvvv 0vvvvvvv where s is a</span>
+        <span class="c1">// senChan bit, v a senVal bit and 0 is zero` bit</span>
+  int low = senVal&amp;0x7f<span class="c1">;</span>
+  int hi = ((senVal&gt;&gt;7)&amp;0x0f) | ((senChan&amp;0x0F)<span class="err">&lt;</span><span class="nt">&lt;4</span><span class="err">);</span>
+  <span class="err">Serial.write(low);</span> <span class="err">Serial.write(hi);</span>
+<span class="err">}</span>
+
+<span class="err">void</span> <span class="err">loop()</span> <span class="err">{</span>
+
+   <span class="err">Serial.write(0xf0);</span>
+
+   <span class="err">int</span> <span class="na">currentState_SW_pin =</span> <span class="s">digitalRead(SW_pin);</span> <span class="err">//</span> <span class="err">reading</span> <span class="err">digital</span>
+                                                  <span class="err">//</span> <span class="err">input</span> <span class="err">2</span> <span class="err">and</span>
+                                                  <span class="err">//</span> <span class="err">assigning</span> <span class="err">it</span> <span class="err">to</span>
+                                                  <span class="err">//</span> <span class="err">"currentState..."</span>
+
+  <span class="err">if</span> <span class="err">(currentState_SW_pin</span> <span class="err">!=</span> <span class="err">lastState_SW_pin)</span>
+  <span class="err">{</span>                           <span class="err">//</span> <span class="err">checking</span> <span class="err">if</span> <span class="err">the</span> <span class="err">value</span> <span class="err">has</span> <span class="err">changed</span>
+    <span class="err">if</span> <span class="err">(</span><span class="na">currentState_SW_pin =</span><span class="s">=</span> <span class="err">1)</span>
+    <span class="err">{</span>
+      <span class="err">put_val(3,0);</span> <span class="err">//</span> <span class="err">In</span> <span class="err">this</span> <span class="err">sketch,</span> <span class="err">the</span> <span class="err">Joystick</span> <span class="err">button,</span>
+                    <span class="err">//in</span> <span class="err">Arduino</span> <span class="err">digital</span> <span class="err">pin</span> <span class="err">2,</span> <span class="err">is</span> <span class="err">sending</span> <span class="err">a</span> <span class="err">0</span> <span class="err">or</span> <span class="err">1</span>
+                    <span class="err">//</span> <span class="err">to</span> <span class="err">Csound</span> <span class="err">arduinoRead</span> <span class="err">channel</span> <span class="err">3</span>
+    <span class="err">}</span>
+    <span class="err">else</span>
+    <span class="err">{</span>
+      <span class="err">put_val(3,1);</span>
+    <span class="err">}</span>
+  <span class="err">}</span>
+
+  <span class="na">lastState_SW_pin =</span> <span class="s">currentState_SW_pin;</span>
+
+  <span class="err">int</span> <span class="na">X =</span> <span class="s">analogRead(X_pin);</span> <span class="err">//</span> <span class="err">reading</span> <span class="err">the</span> <span class="err">Joystick</span> <span class="err">vrX</span> <span class="err">data</span>
+                             <span class="err">//</span>  <span class="err">(0-1023)</span> <span class="err">and</span> <span class="err">asigning</span> <span class="err">to</span> <span class="err">X</span>
+    <span class="err">put_val(2,X);</span>            <span class="err">//</span> <span class="err">In</span> <span class="err">this</span> <span class="err">sketch,</span> <span class="err">the</span> <span class="err">Joystick</span> <span class="err">vrX,</span>
+                             <span class="err">//</span> <span class="err">in</span> <span class="err">Arduino</span> <span class="err">analog</span> <span class="err">pin</span> <span class="err">A1,</span> <span class="err">is</span> <span class="err">sending</span>
+                             <span class="err">//</span> <span class="err">a</span> <span class="err">0-1023</span> <span class="err">to</span> <span class="err">Csound</span> <span class="err">arduinoRead</span> <span class="err">channel</span> <span class="err">2</span>
+
+  <span class="err">int</span> <span class="na">Y =</span> <span class="s">analogRead(Y_pin);</span> <span class="err">//</span> <span class="err">reading</span> <span class="err">the</span> <span class="err">Joystick</span> <span class="err">vrY</span> <span class="err">data</span>
+                             <span class="err">//</span> <span class="err">(0-1023)</span> <span class="err">and</span> <span class="err">asigning</span> <span class="err">to</span> <span class="err">Y</span>
+    <span class="err">put_val(1,Y);</span>            <span class="err">//</span> <span class="err">In</span> <span class="err">this</span> <span class="err">sketch,</span> <span class="err">the</span> <span class="err">Joystick</span> <span class="err">vrY,</span>
+                             <span class="err">//</span> <span class="err">in</span> <span class="err">Arduino</span> <span class="err">analog</span> <span class="err">pin</span> <span class="err">A0,</span> <span class="err">is</span> <span class="err">sending</span>
+                             <span class="err">//</span> <span class="err">a</span> <span class="err">0-1023</span> <span class="err">to</span> <span class="err">Csound</span> <span class="err">arduinoRead</span> <span class="err">channel</span> <span class="err">1</span>
+
+  <span class="err">delay(10);</span>
+
+<span class="err">}</span>
+
+<span class="err">&lt;/arduinoSketch</span><span class="nt">&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm26255"></a>
+        <h2>See Also</h2>
+        <p>
+      <a class="link" href="arduinoStart.html" title="arduinoStart"><em class="citetitle"></em>arduinoStart</a>,
+      <a class="link" href="arduinoStop.html" title="arduinoStop"><em class="citetitle"></em>arduinoStop</a>,
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm26262"></a>
+        <h2>Credits</h2>
+        <p>
+      </p>
+        <table border="0" summary="Simple list" class="simplelist">
+          <tr>
+            <td>Author: John ffitch</td>
+          </tr>
+          <tr>
+            <td>Author: Richard Boulanger</td>
+          </tr>
+          <tr>
+            <td>2020</td>
+          </tr>
+        </table>
+        <p>
+    </p>
+        <p>New in version 6.15</p>
+      </div>
+    </div>
+    <div class="navfooter">
+      <hr />
+      <table width="100%" summary="Navigation footer">
+        <tr>
+          <td width="40%" align="left"><a accesskey="p" href="apoleparams.html">Prev</a> </td>
+          <td width="20%" align="center">
+            <a accesskey="u" href="OpcodesTop.html">Up</a>
+          </td>
+          <td width="40%" align="right"> <a accesskey="n" href="arduinoStart.html">Next</a></td>
+        </tr>
+        <tr>
+          <td width="40%" align="left" valign="top">apoleparams </td>
+          <td width="20%" align="center">
+            <a accesskey="h" href="index.html">Home</a>
+          </td>
+          <td width="40%" align="right" valign="top"> arduinoStart</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

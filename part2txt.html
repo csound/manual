@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>part2txt</title>
+    <link rel="stylesheet" type="text/css" href="csound.css" />
+    <link rel="stylesheet" type="text/css" href="syntax-highlighting.css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.79.1" />
+    <link rel="home" href="index.html" title="The Canonical Csound Reference Manual" />
+    <link rel="up" href="OpcodesTop.html" title="Orchestra Opcodes and Operators" />
+    <link rel="prev" href="pareq.html" title="pareq" />
+    <link rel="next" href="partials.html" title="partials" />
+  </head>
+  <body>
+    <div class="navheader">
+      <table width="100%" summary="Navigation header">
+        <tr>
+          <th colspan="3" align="center">part2txt</th>
+        </tr>
+        <tr>
+          <td width="20%" align="left"><a accesskey="p" href="pareq.html">Prev</a> </td>
+          <th width="60%" align="center">Orchestra Opcodes and Operators</th>
+          <td width="20%" align="right"> <a accesskey="n" href="partials.html">Next</a></td>
+        </tr>
+      </table>
+      <hr />
+    </div>
+    <div class="refentry">
+      <a id="part2txt"></a>
+      <div class="titlepage"></div>
+      <a id="Indexpart2txt" class="indexterm"></a>
+      <div class="refnamediv">
+        <h2>
+          <span class="refentrytitle">part2txt</span>
+        </h2>
+        <p>part2txt — 
+     Write a text file containing partial tracks data
+          </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm160058"></a>
+        <h2>Description</h2>
+        <p>
+  The part2txt opcode takes a PVS_TRACKS fsig input and writes the
+  data as sequence of track lists, one for each time point, to a
+  line-oriented text file.
+  Each track is placed on a separate line containing the amplitude, frequency, phase, and track
+  ID. A separator line containing four -1.0 values is used to define the end of the track list for a given time point.
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm160061"></a>
+        <h2>Syntax</h2>
+        <pre class="synopsis"><span class="command"><strong>part2txt</strong></span> SFile,ftrks</pre>
+      </div>
+      <div class="refsect1">
+        <a id="idm160065"></a>
+        <h2>Initialization</h2>
+        <p>
+      <span class="emphasis"><em>SFile</em></span> -- output filename 
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm160069"></a>
+        <h2>Performance</h2>
+        <p>
+      <span class="emphasis"><em>ftrks</em></span> -- output pv stream in TRACKS format
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm160073"></a>
+        <h2>Example</h2>
+        <p>
+      Here is an example of the part2txt opcodes. It uses the file <a class="ulink" href="examples/part2txt.csd" target="_top"><em class="citetitle">part2txt.csd</em></a>.
+      </p>
+        <div class="example">
+          <a id="idm160078"></a>
+          <p class="title">
+            <strong>Example 697. Example of the part2txt opcodes.</strong>
+          </p>
+          <div class="example-contents">
+            <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
+            <div class="refsect1">
+              <a id="idm160085"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+<span class="nt">&lt;CsOptions&gt;</span>
+-n
+<span class="nt">&lt;/CsOptions&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span>
+
+<span class="kd">instr</span> <span class="nf">1</span>
+i<span class="n">siz</span> <span class="o">=</span> <span class="mi">2048</span>
+i<span class="n">hsiz</span> <span class="o">=</span> i<span class="n">siz</span><span class="o">/</span><span class="mi">4</span>
+S<span class="n">1</span> <span class="o">=</span> <span class="s">"flutec3.wav"</span>
+<span class="vi">p3</span> <span class="o">=</span> <span class="nb">filelen</span><span class="p">(</span>S<span class="n">1</span><span class="p">)</span>
+a<span class="n">in</span> <span class="nb">diskin2</span> S<span class="n">1</span><span class="p">,</span><span class="mi">1</span>
+f<span class="n">fr</span><span class="p">,</span>f<span class="n">phs</span>  <span class="nb">pvsifd</span>   a<span class="n">in</span><span class="p">,</span> i<span class="n">siz</span><span class="p">,</span> i<span class="n">hsiz</span><span class="p">,</span> <span class="mi">1</span>
+f<span class="n">trk</span>      <span class="nb">partials</span> f<span class="n">fr</span><span class="p">,</span> f<span class="n">phs</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">500</span>
+<span class="nb">part2txt</span> <span class="s">"partialsh.txt"</span><span class="p">,</span>f<span class="n">trk</span>
+<span class="kd">endin</span>
+
+<span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span>
+<span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
+    </p>
+        <p>The example above shows partial tracking of an ifd-analysis signal and cubic-phase additive resynthesis with pitch shifting.</p>
+      </div>
+      <div class="refsect1">
+        <a id="idm160153"></a>
+        <h2>Credits</h2>
+        <p>
+      </p>
+        <table border="0" summary="Simple list" class="simplelist">
+          <tr>
+            <td>Author: Victor Lazzarini</td>
+          </tr>
+          <tr>
+            <td>June 2015 </td>
+          </tr>
+        </table>
+        <p>
+    </p>
+      </div>
+    </div>
+    <div class="navfooter">
+      <hr />
+      <table width="100%" summary="Navigation footer">
+        <tr>
+          <td width="40%" align="left"><a accesskey="p" href="pareq.html">Prev</a> </td>
+          <td width="20%" align="center">
+            <a accesskey="u" href="OpcodesTop.html">Up</a>
+          </td>
+          <td width="40%" align="right"> <a accesskey="n" href="partials.html">Next</a></td>
+        </tr>
+        <tr>
+          <td width="40%" align="left" valign="top">pareq </td>
+          <td width="20%" align="center">
+            <a accesskey="h" href="index.html">Home</a>
+          </td>
+          <td width="40%" align="right" valign="top"> partials</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
