@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>lfsr</title>
+    <link rel="stylesheet" type="text/css" href="csound.css" />
+    <link rel="stylesheet" type="text/css" href="syntax-highlighting.css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.79.1" />
+    <link rel="home" href="index.html" title="The Canonical Csound Reference Manual" />
+    <link rel="up" href="OpcodesTop.html" title="Orchestra Opcodes and Operators" />
+    <link rel="prev" href="lfo.html" title="lfo" />
+    <link rel="next" href="limit.html" title="limit" />
+  </head>
+  <body>
+    <div class="navheader">
+      <table width="100%" summary="Navigation header">
+        <tr>
+          <th colspan="3" align="center">lfsr</th>
+        </tr>
+        <tr>
+          <td width="20%" align="left"><a accesskey="p" href="lfo.html">Prev</a> </td>
+          <th width="60%" align="center">Orchestra Opcodes and Operators</th>
+          <td width="20%" align="right"> <a accesskey="n" href="limit.html">Next</a></td>
+        </tr>
+      </table>
+      <hr />
+    </div>
+    <div class="refentry">
+      <a id="lfsr"></a>
+      <div class="titlepage"></div>
+      <a id="IndexLfsr" class="indexterm"></a>
+      <div class="refnamediv">
+        <h2>
+          <span class="refentrytitle">lfsr</span>
+        </h2>
+        <p>lfsr — 
+      Linear Feedback Shift Register (LFSR).
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm116568"></a>
+        <h2>Description</h2>
+        <p>
+        Output is a series of pseudo-random positive integers. This is the technique
+        used in so-called "Turing machine" synth modules and is usually used to
+        generate melodic sequences. This implementation is adapted from the firmware
+        for the Ornament &amp; Crime module, as used in the Quantermain and Meta-Q apps.
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm116571"></a>
+        <h2>Syntax</h2>
+        <pre class="synopsis">knum <span class="command"><strong>lfsr</strong></span> ilen, iprob [, iseed]</pre>
+      </div>
+      <div class="refsect1">
+        <a id="idm116575"></a>
+        <h2>Initialization</h2>
+        <p>
+      <span class="emphasis"><em>ilen</em></span> -- length of shift register, valid values are 1-31 (inclusive). The
+        larger the length, the larger the resulting integers in the output. You
+        can use this to constrain the output to a suitable range.
+    </p>
+        <p>
+      <span class="emphasis"><em>iprob</em></span> -- probability, valid values 1-255 (inclusive). Controls the spread
+        of the output; larger values result in a wider spread of values.
+    </p>
+        <p>
+      <span class="emphasis"><em>iseed</em></span> (optional, default -1) -- initial state of the shift register, as a
+        pattern of bits. The value is treated as an unsigned integer, so the default
+        of -1 is effectivly all bits on (0b11111111...).
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm116583"></a>
+        <h2>Performance</h2>
+        <p>
+      <span class="emphasis"><em>knum</em></span> -- integer output
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm116587"></a>
+        <h2>Examples</h2>
+        <p>
+      Here is an example of the lfsr opcode. It uses the file <a class="ulink" href="examples/lfsr.csd" target="_top"><em class="citetitle">lfsr.csd</em></a>.
+      </p>
+        <div class="example">
+          <a id="idm116592"></a>
+          <p class="title">
+            <strong>Example 481. Example of the lfsr opcode.</strong>
+          </p>
+          <div class="example-contents">
+            <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
+            <div class="refsect1">
+              <a id="idm116599"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+<span class="nt">&lt;CsOptions&gt;</span>
+-W -o lfsr.wav
+<span class="nt">&lt;/CsOptions&gt;</span>
+
+<span class="nt">&lt;CsInstruments&gt;</span>
+
+<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="c1">; triangle wave</span>
+gi<span class="n">tabsz</span> <span class="nb">init</span> <span class="mi">2</span><span class="o">^</span><span class="mi">13</span>
+gi<span class="n">Tri</span> <span class="nb">ftgen</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> gi<span class="n">tabsz</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> gi<span class="n">tabsz</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> gi<span class="n">tabsz</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> gi<span class="n">tabsz</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span>
+
+<span class="c1">; Grady Centaur scale</span>
+gi<span class="n">Cent</span> <span class="o">=</span> <span class="nb">ftgen</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="o">-</span><span class="mi">51</span><span class="p">,</span>
+               <span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">297.989</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span>
+               <span class="mf">1.0</span><span class="p">,</span> <span class="mi">21</span><span class="o">/</span><span class="mi">20</span><span class="p">,</span> <span class="mi">9</span><span class="o">/</span><span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">14</span><span class="o">/</span><span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="mi">15</span><span class="o">/</span><span class="mi">8</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)</span>
+
+<span class="c1">; just print the values</span>
+<span class="kd">instr</span> <span class="nf">1</span>
+    k<span class="n">n</span> <span class="o">=</span> <span class="n">lfsr</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+    <span class="nb">printk2</span><span class="p">(</span>k<span class="n">n</span><span class="p">)</span>
+<span class="kd">endin</span>
+
+<span class="c1">; play a melodic sequence</span>
+<span class="kd">instr</span> <span class="nf">2</span>
+    i<span class="n">dur</span> <span class="o">=</span> <span class="vi">p3</span>
+    i<span class="n">amp</span> <span class="o">=</span> <span class="vi">p4</span>
+    i<span class="n">wav</span> <span class="o">=</span> <span class="vi">p5</span>
+    i<span class="n">tun</span> <span class="o">=</span> <span class="vi">p6</span>
+
+    <span class="c1">; keep range small and transpose up 2 octaves to ensure audibility</span>
+    <span class="c1">; we're interpreting these number like MIDI notes numbers for easy table lookups</span>
+    k<span class="n">idx</span> <span class="o">=</span> <span class="n">lfsr</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span> <span class="o">+</span> <span class="mi">24</span>
+
+    k<span class="n">trig</span> <span class="o">=</span> <span class="nb">metro</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="nb">schedkwhen</span><span class="p">(</span>k<span class="n">trig</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> i<span class="n">amp</span><span class="p">,</span> i<span class="n">wav</span><span class="p">,</span> i<span class="n">tun</span><span class="p">,</span> k<span class="n">idx</span><span class="p">)</span>
+<span class="kd">endin</span>
+
+<span class="kd">instr</span> <span class="nf">3</span>
+    i<span class="n">dur</span> <span class="o">=</span> <span class="vi">p3</span>
+    i<span class="n">amp</span> <span class="o">=</span> <span class="nb">ampdb</span><span class="p">(</span><span class="vi">p4</span><span class="p">)</span>
+    i<span class="n">wav</span> <span class="o">=</span> <span class="vi">p5</span>
+    i<span class="n">tun</span> <span class="o">=</span> <span class="vi">p6</span>
+    i<span class="n">note</span> <span class="o">=</span> <span class="vi">p7</span>
+
+	k<span class="n">env</span> <span class="o">=</span> <span class="nb">linen</span><span class="p">(</span>i<span class="n">amp</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> i<span class="n">dur</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+	a<span class="n">out</span> <span class="o">=</span> <span class="nb">poscil3</span><span class="p">(</span>k<span class="n">env</span><span class="p">,</span> <span class="nb">tablekt</span><span class="p">(</span>i<span class="n">note</span><span class="p">,</span> i<span class="n">tun</span><span class="p">),</span> i<span class="n">wav</span><span class="p">)</span>
+	<span class="nb">outs</span><span class="p">(</span>a<span class="n">out</span><span class="p">,</span> a<span class="n">out</span><span class="p">)</span>
+<span class="kd">endin</span>
+
+<span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mf">0.25</span>
+<span class="nb">i</span> <span class="mi">2</span> <span class="mi">0</span> <span class="mi">10</span> <span class="o">-</span><span class="mi">6</span> <span class="mi">1</span> <span class="mi">100</span>
+
+<span class="nb">e</span>
+<span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm116865"></a>
+        <h2>Credits</h2>
+        <p>By: Dave Seidel 2020</p>
+        <p>Based on code by Patrick Dowling in the Ornament &amp; Crime firmware.</p>
+        <p>New in version 6.16</p>
+      </div>
+    </div>
+    <div class="navfooter">
+      <hr />
+      <table width="100%" summary="Navigation footer">
+        <tr>
+          <td width="40%" align="left"><a accesskey="p" href="lfo.html">Prev</a> </td>
+          <td width="20%" align="center">
+            <a accesskey="u" href="OpcodesTop.html">Up</a>
+          </td>
+          <td width="40%" align="right"> <a accesskey="n" href="limit.html">Next</a></td>
+        </tr>
+        <tr>
+          <td width="40%" align="left" valign="top">lfo </td>
+          <td width="20%" align="center">
+            <a accesskey="h" href="index.html">Home</a>
+          </td>
+          <td width="40%" align="right" valign="top"> limit</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
