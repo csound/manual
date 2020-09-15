@@ -1,48 +1,76 @@
 <CsoundSynthesizer>
 <CsOptions>
 ; Select audio/midi flags here according to platform
-; Audio out   Audio in    No messages
--odac           -iadc     -d     ;;;RT audio I/O
+-odac     ;;;RT audio out
+;-iadc    ;;;uncomment -iadc if RT audio input is needed too
+; For Non-realtime ouput leave only the line below:
+; -o xyscale.wav -W ;;; for file output any platform
+
+; By Stefano Cucchi 2020
+
 </CsOptions>
 <CsInstruments>
 
-ksmps=128
-nchnls=2
-
-giwidth = 400
-giheight = 300
-FLpanel "FLmouse", giwidth, giheight, 10, 10
-FLpanelEnd
-
-FLrun
-
+sr = 44100
+ksmps = 32
+nchnls = 2
 0dbfs = 1
 
 instr 1
-  ; We define four chords for bottom-left, bottom-right, top-left and top-right
-  ; Use the mouse to interpolate between them
-  ibl[] fillarray ntom:i("4C"), ntom:i("4Eb"), ntom:i("4G")
-  itl[] fillarray ntom:i("4E"), ntom:i("4G#"), ntom:i("4B")
-  ibr[] fillarray ntom:i("4G"), ntom:i("4A"), ntom:i("4B")
-  itr[] fillarray ntom:i("4Eb"), ntom:i("4Eb+"), ntom:i("4F")
- 
-  kmousex, kmousey, kb1, kb2, kb3    FLmouse 2
-  kx = limit(kmousex/giwidth, 0, 1)
-  ky = 1 - limit(kmousey/giheight, 0, 1)
+; In the instr 1  using f1 and f2 you reach the 4 corners (values)
+k00 = p4
+k10 = p5
+k01 = p6
+k11 = p7
 
-  printf "x: %f   y: %f \n", changed(kx, ky), kx, ky
+kx oscil 1, p8, p9
+ky oscil 1, p10, p11
 
-  iamp = 0.1
-  a0 oscili iamp, mtof(xyscale(kx, ky, ibl[0], itl[0], ibr[0], itr[0]))
-  a1 oscili iamp, mtof(xyscale(kx, ky, ibl[1], itl[1], ibr[1], itr[1]))
-  a2 oscili iamp, mtof(xyscale(kx, ky, ibl[2], itl[2], ibr[2], itr[2]))
-  aout = sum(a0, a1, a2)
-  outs aout, aout  
+kout1 xyscale kx, ky, k00, k10, k01, k11 
+kout2 xyscale kx, ky, k00*3/2, k10*4/3, k01*5/4, k11*6/5
+
+a1 buzz 0.2, kout1, 8, 3
+a2 buzz 0.2, kout2, 4, 3
+
+outs a1, a2
+
 endin
+
+instr 2
+; In the instr 2 setting the first value to 0 or 1 (p8 & p9) you can start from the corner  (value) you want
+
+k00 = p4
+k10 = p5
+k01 = p6
+k11 = p7
+
+kx randomh 0, 1, 2, 2, p8 ; p8 is the X starting value
+ky randomh 0, 1, 2, 2, p9 ; p9 is the Y starting value
+
+kout1 xyscale kx, ky, k00, k10, k01, k11 
+kout2 xyscale kx, ky, k00*3/2, k10*4/3, k01*5/4, k11*6/5
+
+a1 buzz 0.2, kout1, 8, 3
+a2 buzz 0.2, kout2, 4, 3
+
+outs a1, a2
+
+endin
+
 
 </CsInstruments>
 <CsScore>
-i 1 0 120
+
+
+f1 0 1024 -7 0 400 0 100 1 400 1 124 0
+f2 0 1024 -7 0 200 0 100 1 400 1 100 0 224 1
+f3 0 1024 10 1 
+
+i1 0 10 300 400 500 600 0.3 1 0.2 2
+i2 10 10 300 410 520 630 0 0
+
+e
+
 
 </CsScore>
 </CsoundSynthesizer>
