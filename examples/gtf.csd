@@ -28,7 +28,7 @@ idecay = p7 ; keep it very small
 afilter1 gtf asig1, kfreq1, idecay ; SOUND - filter 1
 afilter2 gtf asig1, kfreq2, idecay ; SOUND - filter 2
 
-aref oscili 0.5, 440 ; AMPLITUDE reference
+aref oscili 0.25, 440 ; AMPLITUDE reference
 afilter1 balance afilter1, aref ; compare filtered SOUND with reference
 afilter2 balance afilter2, aref ; ; compare filtered SOUND with reference
 
