@@ -73,6 +73,84 @@
               <a id="idm63460"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
+
+<span class="nt">&lt;CsOptions&gt;</span>
+
+<span class="c1">; Select audio/midi flags here according to platform</span>
+-odac     <span class="c1">;;;realtime audio out</span>
+<span class="c1">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</span>
+<span class="c1">; For Non-realtime ouput leave only the line below:</span>
+
+<span class="nt">&lt;/CsOptions&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span>
+
+<span class="c1">; By Stefano Cucchi 2020</span>
+
+<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span> <span class="o">=</span><span class="mi">1</span>
+
+
+<span class="kd">instr</span> <span class="nf">1</span>
+i<span class="n">1</span> <span class="o">=</span> <span class="nb">exp</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> 
+<span class="c1">; BASE = e (2,71828 18284 59045 23536...)</span>
+<span class="c1">; EXPONENT = 2</span>
+<span class="nb">print</span> i<span class="n">1</span>
+<span class="kd">endin</span>
+
+
+
+<span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span>
+<span class="nb">e</span>
+<span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
+
+      Its output should include lines like this:
+      </p>
+        <pre class="screen">
+Generated events per second: 1
+  rtevent:	   T  0.000 TT  0.000 M:  0.00000  0.00000
+new alloc for instr 10:
+  rtevent:	   T  0.811 TT  0.811 M:  0.48906  0.48906
+new alloc for instr 10:
+Generated events per second: 2
+  rtevent:	   T  1.387 TT  1.387 M:  0.48611  0.48611
+  rtevent:	   T  1.833 TT  1.833 M:  0.48421  0.48421
+Generated events per second: 3
+  rtevent:	   T  2.198 TT  2.198 M:  0.47536  0.47536
+  rtevent:	   T  2.506 TT  2.506 M:  0.46530  0.46530
+  rtevent:	   T  2.773 TT  2.773 M:  0.44986  0.44986
+Generated events per second: 4
+  rtevent:	   T  3.009 TT  3.009 M:  0.48096  0.48096
+  .........</pre>
+        <p>
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm63506"></a>
+        <p>
+      Here is another example of the exp opcode. It uses the file <a class="ulink" href="examples/exp-musical.csd" target="_top"><em class="citetitle">exp-musical.csd</em></a>.
+
+      </p>
+        <div class="example">
+          <a id="idm63510"></a>
+          <p class="title">
+            <strong>Example 269. Musical example of the exp opcode.</strong>
+          </p>
+          <div class="example-contents">
+            <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
+            <div class="refsect1">
+              <a id="idm63517"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
 -odac     <span class="c1">;;;realtime audio out</span>
@@ -119,30 +197,10 @@ a<span class="n">sin</span>      <span class="nb">poscil</span>    a<span class=
           </div>
         </div>
         <p><br class="example-break" />
-
-      Its output should include lines like this:
-      </p>
-        <pre class="screen">
-Generated events per second: 1
-  rtevent:	   T  0.000 TT  0.000 M:  0.00000  0.00000
-new alloc for instr 10:
-  rtevent:	   T  0.811 TT  0.811 M:  0.48906  0.48906
-new alloc for instr 10:
-Generated events per second: 2
-  rtevent:	   T  1.387 TT  1.387 M:  0.48611  0.48611
-  rtevent:	   T  1.833 TT  1.833 M:  0.48421  0.48421
-Generated events per second: 3
-  rtevent:	   T  2.198 TT  2.198 M:  0.47536  0.47536
-  rtevent:	   T  2.506 TT  2.506 M:  0.46530  0.46530
-  rtevent:	   T  2.773 TT  2.773 M:  0.44986  0.44986
-Generated events per second: 4
-  rtevent:	   T  3.009 TT  3.009 M:  0.48096  0.48096
-  .........</pre>
-        <p>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm63619"></a>
+        <a id="idm63675"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="abs.html" title="abs"><em class="citetitle">abs</em></a>,
@@ -155,7 +213,7 @@ Generated events per second: 4
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm63636"></a>
+        <a id="idm63692"></a>
         <p>New in version 4.21</p>
       </div>
     </div>

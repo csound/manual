@@ -39,19 +39,19 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm95811"></a>
+        <a id="idm95867"></a>
         <h2>Description</h2>
         <p>
      Apply a gammatone filter of various orders to an audio signal.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm95814"></a>
+        <a id="idm95870"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">aout <span class="command"><strong>gtf</strong></span> ain, kfreq, idecay[, iorder, iphase]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm95818"></a>
+        <a id="idm95874"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>idecay</em></span> -- rate of decay
@@ -66,7 +66,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm95826"></a>
+        <a id="idm95882"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>asig</em></span> -- audio signal to be filtered.
@@ -81,10 +81,89 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm95834"></a>
+        <a id="idm95890"></a>
+        <h2>Examples</h2>
+        <p>
+      Here is an example of the gtf opcode. It uses the file <a class="ulink" href="examples/gtf.csd" target="_top"><em class="citetitle">gtf.csd</em></a>.
+
+      </p>
+        <div class="example">
+          <a id="idm95895"></a>
+          <p class="title">
+            <strong>Example 396. Example of the gtf opcode.</strong>
+          </p>
+          <div class="example-contents">
+            <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
+            <div class="refsect1">
+              <a id="idm95902"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+<span class="nt">&lt;CsOptions&gt;</span>
+<span class="c1">; Select audio/midi flags here according to platform</span>
+-odac   <span class="c1">;;;realtime audio out</span>
+<span class="c1">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</span>
+<span class="c1">; For Non-realtime ouput leave only the line below:</span>
+<span class="c1">; -o gtf.wav -W ;;; for file output any platform</span>
+
+<span class="c1">; By Stefano Cucchi 2020</span>
+
+<span class="nt">&lt;/CsOptions&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span>
+
+<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+
+<span class="kd">instr</span> <span class="nf">1</span>	 
+                                        
+k<span class="n">cps</span>  <span class="nb">init</span> <span class="nb">cpspch</span><span class="p">(</span><span class="vi">p4</span><span class="p">)</span> 
+a<span class="n">sig1</span> <span class="nb">vco2</span> <span class="mf">0.5</span><span class="p">,</span> k<span class="n">cps</span> <span class="c1">; SOUND</span>
+
+k<span class="n">freq1</span> <span class="nb">linseg</span> <span class="vi">p5</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="vi">p6</span> <span class="c1">; frequency filter 1</span>
+k<span class="n">freq2</span> <span class="nb">expseg</span> <span class="vi">p6</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="vi">p5</span> <span class="c1">; frequency filter 2</span>
+i<span class="n">decay</span> <span class="o">=</span> <span class="vi">p7</span> <span class="c1">; keep it very small</span>
+
+a<span class="n">filter1</span> <span class="nb">gtf</span> a<span class="n">sig1</span><span class="p">,</span> k<span class="n">freq1</span><span class="p">,</span> i<span class="n">decay</span> <span class="c1">; SOUND - filter 1</span>
+a<span class="n">filter2</span> <span class="nb">gtf</span> a<span class="n">sig1</span><span class="p">,</span> k<span class="n">freq2</span><span class="p">,</span> i<span class="n">decay</span> <span class="c1">; SOUND - filter 2</span>
+
+a<span class="n">ref</span> <span class="nb">oscili</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">440</span> <span class="c1">; AMPLITUDE reference</span>
+a<span class="n">filter1</span> <span class="nb">balance</span> a<span class="n">filter1</span><span class="p">,</span> a<span class="n">ref</span> <span class="c1">; compare filtered SOUND with reference</span>
+a<span class="n">filter2</span> <span class="nb">balance</span> a<span class="n">filter2</span><span class="p">,</span> a<span class="n">ref</span> <span class="c1">; ; compare filtered SOUND with reference</span>
+
+<span class="nb">outs</span> a<span class="n">filter1</span><span class="p">,</span> a<span class="n">filter2</span>
+
+<span class="kd">endin</span>
+
+<span class="nt">&lt;/CsInstruments&gt;</span>
+
+
+<span class="nt">&lt;CsScore&gt;</span>
+
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">5</span> <span class="mf">6.00</span> <span class="mi">200</span> <span class="mi">12000</span> <span class="mf">0.1</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">5</span> <span class="mi">5</span> <span class="mf">6.00</span> <span class="mi">200</span> <span class="mi">12000</span> <span class="mf">0.01</span>		
+
+
+<span class="nb">e</span>
+<span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
+
+      Its output should include a line like this:
+      </p>
+        <pre class="screen">instr 1:  i1 = 0.464</pre>
+        <p>
+    </p>
       </div>
       <div class="refsect1">
-        <a id="idm95835"></a>
+        <a id="idm96021"></a>
+      </div>
+      <div class="refsect1">
+        <a id="idm96022"></a>
         <h2>Credits</h2>
         <p>By: John ffitch 2019</p>
       </div>
