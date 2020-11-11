@@ -1,36 +1,37 @@
 <CsoundSynthesizer>
 <CsOptions>
 ; Select audio/midi flags here according to platform
--odac      ;;;realtime audio out
+-odac    ;;;realtime audio out
 ;-iadc    ;;;uncomment -iadc if realtime audio input is needed too
 ; For Non-realtime ouput leave only the line below:
-; -o outch-2.wav -W ;;; for file output any platform
+; -o outch.wav -W ;;; for file output any platform
 </CsOptions>
 <CsInstruments>
 
 sr = 44100
 ksmps = 32
-nchnls = 4
+nchnls = 5
 0dbfs  = 1
 
-seed     0
+instr 1
 
-instr 1 ;random movements between 4 speakers with outch
+asig vco2 .05, 100	; sawtooth waveform at low volume
 
-ichn1     random    1, 4.999 ;channel to start
-ichn2     random    1, 4.999 ;channel to end
-          prints    "Moving from speaker %d to speaker %d%n", int(ichn1), int(ichn2)
-asamp     soundin   "fox.wav"
-kmov      linseg    0, p3, 1
-a1, a2    pan2      asamp, kmov
-          outch     int(ichn1), a1, int(ichn2), a2
+kcut line 100, p3, 30	; Vary cutoff frequency
+kresonance = .7
+inumlayer = 3
+asig lowresx asig, kcut, kresonance, inumlayer
+
+klfo lfo 4, .5, 4	
+klfo = klfo+1		; offset of 1
+printks "signal is sent to channel %d\\n", .1, klfo
+      outch klfo,asig
+
 endin
-
 </CsInstruments>
 <CsScore>
-r 5
-i 1 0 3
+
+i 1 0 30
 e
 </CsScore>
 </CsoundSynthesizer>
-
