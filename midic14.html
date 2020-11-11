@@ -39,20 +39,20 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm135724"></a>
+        <a id="idm136061"></a>
         <h2>Description</h2>
         <p>
       Allows a floating-point 14-bit MIDI signal scaled with a minimum and a maximum range.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm135727"></a>
+        <a id="idm136064"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">idest <span class="command"><strong>midic14</strong></span> ictlno1, ictlno2, imin, imax [, ifn]</pre>
         <pre class="synopsis">kdest <span class="command"><strong>midic14</strong></span> ictlno1, ictlno2, kmin, kmax [, ifn]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm135733"></a>
+        <a id="idm136070"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>idest</em></span> -- output signal
@@ -74,7 +74,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm135749"></a>
+        <a id="idm136086"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>kdest</em></span> -- output signal
@@ -105,7 +105,75 @@
         </div>
       </div>
       <div class="refsect1">
-        <a id="idm135764"></a>
+        <a id="idm136101"></a>
+        <h2>Examples</h2>
+        <p>
+      Here is an example of the midic14 opcode. It uses the file <a class="ulink" href="examples/midic14.csd" target="_top"><em class="citetitle">midic14.csd</em></a>.
+
+      </p>
+        <div class="example">
+          <a id="idm136106"></a>
+          <p class="title">
+            <strong>Example 573. Example of the midic14 opcode.</strong>
+          </p>
+          <div class="example-contents">
+            <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
+            <div class="refsect1">
+              <a id="idm136113"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+<span class="nt">&lt;CsOptions&gt;</span>
+<span class="c1">; Select audio/midi flags here according to platform</span>
+-odac -M0 --midi-key-cps=4 --midi-velocity-amp=5   <span class="c1">;;;realtime audio out and realtime midi in, midi key cps is routed to p4 and velocity to p5</span>
+<span class="c1">; For Non-realtime ouput leave only the line below:</span>
+<span class="c1">; -o midic14.wav -W ;;; for file output any platform</span>
+<span class="nt">&lt;/CsOptions&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span>
+
+<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+
+<span class="kd">instr</span> <span class="nf">1</span>
+	<span class="c1">; This example expects MIDI controller input on channel 1</span>
+	<span class="c1">; run, play a note and move your midi controllers 1 and 7 to see results</span>
+	i<span class="n">ctlno1</span><span class="o">=</span> <span class="mi">1</span> 	<span class="c1">; = cc #1 midi mod wheel (course tuning)</span>
+	i<span class="n">ctlno2</span><span class="o">=</span> <span class="mi">7</span> 	<span class="c1">; = cc #7 midi volume (fine tuning)</span>
+
+	<span class="c1">; max range is 3 octaves: (2^3) = 8</span>
+	i<span class="n">max</span>  <span class="o">=</span> <span class="mi">8</span>
+
+	<span class="c1">; read both controllers, scaling them between 1 and imax</span>
+	k<span class="n">Tune</span> <span class="nb">midic14</span> i<span class="n">ctlno1</span><span class="p">,</span> i<span class="n">ctlno2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> i<span class="n">max</span>	
+	<span class="nb">printk2</span>	k<span class="n">Tune</span>
+
+	<span class="c1">; generate tones</span>
+	a<span class="n">sig</span> <span class="nb">oscili</span> <span class="vi">p5</span><span class="p">,</span> <span class="vi">p4</span><span class="o">*</span>k<span class="n">Tune</span>
+	a<span class="n">ref</span> <span class="nb">oscili</span> <span class="vi">p5</span><span class="p">,</span> <span class="vi">p4</span>
+
+	<span class="c1">; combine detuned tone and reference tone</span>
+	<span class="c1">; creates a beat effect from the detune</span>
+	a<span class="n">sig</span><span class="o">=</span><span class="p">(</span>a<span class="n">sig</span><span class="o">+</span>a<span class="n">ref</span><span class="p">)</span><span class="o">*</span><span class="mf">.5</span>
+
+	<span class="nb">outs</span> a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
+<span class="kd">endin</span>
+<span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span>
+<span class="c1">; run for 60 seconds</span>
+<span class="nb">f</span><span class="mi">0</span> <span class="mi">60</span>
+<span class="nb">e</span>
+<span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm136201"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="ctrl7.html" title="ctrl7"><em class="citetitle">ctrl7</em></a>,
@@ -119,7 +187,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm135783"></a>
+        <a id="idm136220"></a>
         <h2>Credits</h2>
         <p>
       </p>

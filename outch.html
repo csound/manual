@@ -39,19 +39,19 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm155782"></a>
+        <a id="idm156325"></a>
         <h2>Description</h2>
         <p>
       Writes multi-channel audio data, with user-controllable channels, to an external device or stream.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm155785"></a>
+        <a id="idm156328"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>outch</strong></span> kchan1, asig1 [, kchan2] [, asig2] [...]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm155789"></a>
+        <a id="idm156332"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>outch</em></span> outputs <span class="emphasis"><em>asig1</em></span> on the channel determined by <span class="emphasis"><em>kchan1</em></span>, <span class="emphasis"><em>asig2</em></span> on the channel determined by <span class="emphasis"><em>kchan2</em></span>, etc.
@@ -75,20 +75,74 @@
         </div>
       </div>
       <div class="refsect1">
-        <a id="idm155807"></a>
+        <a id="idm156350"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the outch opcode. It uses the file <a class="ulink" href="examples/outch.csd" target="_top"><em class="citetitle">outch.csd</em></a>.
+
       </p>
         <div class="example">
-          <a id="idm155812"></a>
+          <a id="idm156355"></a>
           <p class="title">
-            <strong>Example 673. Example of the outch opcode.</strong>
+            <strong>Example 677. Example of the outch opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm155819"></a>
+              <a id="idm156362"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+<span class="nt">&lt;CsOptions&gt;</span>
+<span class="c1">; Select audio/midi flags here according to platform</span>
+-odac    <span class="c1">;;;realtime audio out</span>
+<span class="c1">; For Non-realtime ouput leave only the line below:</span>
+<span class="c1">; -o outch.wav -W ;;; for file output any platform</span>
+
+<span class="c1">; By  Stefano Cucchi - 2020</span>
+
+<span class="nt">&lt;/CsOptions&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span>
+
+<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+
+<span class="kd">instr</span> <span class="nf">1</span>
+
+a<span class="n">sig</span> <span class="nb">vco2</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">100</span>  <span class="c1">; Audio signal.   	</span>
+k<span class="n">out</span> <span class="nb">randomh</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span>  <span class="c1">; Extracts random number between 1 &amp; 2 - 5 times per second.</span>
+
+    <span class="nb">outch</span> k<span class="n">out</span><span class="p">,</span>a<span class="n">sig</span> <span class="c1">; Sends the signal to the channel according to "kout".</span>
+
+<span class="nb">printks</span> <span class="s">"signal is sent to channel </span><span class="si">%d</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span> <span class="mf">.2</span><span class="p">,</span> k<span class="n">out</span> <span class="c1">; Prints the channel where you hear the sound.</span>
+<span class="kd">endin</span>
+
+<span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span>
+
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">15</span>
+<span class="nb">e</span>
+<span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
+    </p>
+        <p>
+      Here is another example of the outch opcode. It uses the file <a class="ulink" href="examples/outch-2.csd" target="_top"><em class="citetitle">outch-2.csd</em></a>.
+      </p>
+        <div class="example">
+          <a id="idm156429"></a>
+          <p class="title">
+            <strong>Example 678. Example of the outch opcode.</strong>
+          </p>
+          <div class="example-contents">
+            <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
+            <div class="refsect1">
+              <a id="idm156436"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -145,16 +199,16 @@ signal is sent to channel 5
         <p>
     </p>
         <p>
-      Here is another example of the outch opcode. It uses the file <a class="ulink" href="examples/outch.csd" target="_top"><em class="citetitle">outch-2.csd</em></a>.
+      Here is another example of the outch opcode. It uses the file <a class="ulink" href="examples/outch-3.csd" target="_top"><em class="citetitle">outch-3.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm155913"></a>
+          <a id="idm156530"></a>
           <p class="title">
-            <strong>Example 674. Another example of the outch opcode.</strong>
+            <strong>Example 679. Another example of the outch opcode.</strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
-              <a id="idm155915"></a>
+              <a id="idm156532"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -199,7 +253,7 @@ a<span class="n">1</span><span class="p">,</span> a<span class="n">2</span>    <
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm156012"></a>
+        <a id="idm156629"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="out32.html" title="out32"><em class="citetitle">out32</em></a>,
@@ -210,7 +264,7 @@ a<span class="n">1</span><span class="p">,</span> a<span class="n">2</span>    <
         <p> More information on this opcode: <a class="ulink" href="http://www.csoundjournal.com/issue16/audiorouting.html" target="_top"><em class="citetitle">http://www.csoundjournal.com/issue16/audiorouting.html</em></a>  , written by Andreas Russo </p>
       </div>
       <div class="refsect1">
-        <a id="idm156026"></a>
+        <a id="idm156643"></a>
         <h2>Credits</h2>
         <p>
       </p>
