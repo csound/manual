@@ -1,53 +1,43 @@
 <CsoundSynthesizer>
 <CsOptions>
 ; Select audio/midi flags here according to platform
--n     ;;;no sound
-;-iadc    ;;;uncomment -iadc if realtime audio input is needed too
+-odac     ;;;realtime audio out
 ; For Non-realtime ouput leave only the line below:
 ; -o exitnow.wav -W ;;; for file output any platform
 </CsOptions>
 <CsInstruments>
 
-;after an example by Iain McCurdy
-
 sr = 44100
 ksmps = 32
 nchnls = 2
-0dbfs  = 1
+0dbfs = 1
 
-FLcolor	200, 200, 200, 0, 0, 0
-;	LABEL     | WIDTH | HEIGHT | X | Y
-FLpanel	"rtclock",   500,    130,    0,  0
-;                                  ON,OFF,TYPE,WIDTH, HEIGHT, X, Y, OPCODE, INS,START,IDUR
-gkOnOff,ihOnOff	FLbutton "On/Off", 1,  0,  22,  150,   25,    5, 5,    0,   1,   0,   3600
-gkExit,ihExit	FLbutton "exitnow",1,  0,  21,  150,   25,  345, 5,    0,  999,  0,   0.001
-FLsetColor2 255, 0, 50, ihOnOff	;reddish color
+; plays a sine wav, forces a stop after 2 seconds
+instr 1
+	; generate a line from 0 to 1 over 2 seconds
+	kStop line 0, 2, 1
 
-;VALUE DISPLAY BOXES	 WIDTH,HEIGHT,X, Y
-gidclock FLvalue "clock", 100, 25, 200, 60
-FLsetVal_i 1, ihOnOff	
-FLpanel_end
-FLrun
+	; launch instrument 2 once kStop signal is greater than 1
+	if(kStop>=1) then
+		schedulek 2, 0, 1
+	endif
 
-instr 1	
+	; print kStop signal every .1 seconds
+	printk .1, kStop
 
-if gkOnOff !=0 kgoto CONTINUE ;sense if FLTK on/off switch is not off (in which case skip the next line)  
-turnoff			      ;turn this instr. off now
-CONTINUE:
-ktime rtclock                 ;clock continues to run even 
-FLprintk2 ktime, gidclock     ;after the on/off button was used to stop
-
+	; make some noise
+	aSig oscil 1, 440
+	outs aSig, aSig
 endin
 
-instr 999
-
-exitnow		2	      ;exit Csound as fast as possible
-
+; forces an instant exit of csound
+instr 2
+	exitnow
 endin
+
 </CsInstruments>
 <CsScore>
-
-f 0 60	;runs 60 seconds
-e
+; play oscil instrument infinitely
+i 1 0 z
 </CsScore>
 </CsoundSynthesizer>
