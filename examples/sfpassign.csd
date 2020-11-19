@@ -18,7 +18,7 @@ gisf	sfload	"07AcousticGuitar.sf2"
 gir	sfload	"01hpschd.sf2"
 	sfplist gisf
 	sfplist gir
-	sfpassign	0, gisf	
+	sfpassign	0, gisf
 	sfpassign	1, gir
 
 instr 1	; play guitar from score and midi keyboard - preset index = 0
