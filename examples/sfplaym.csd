@@ -8,10 +8,10 @@
 </CsOptions>
 <CsInstruments>
 
-sr = 44100 
+sr = 44100
 ksmps = 32
 nchnls = 2
-0dbfs  = 1 
+0dbfs  = 1
 
 
 gisf	sfload	"07AcousticGuitar.sf2"
@@ -30,9 +30,9 @@ kamp	= kamp/7000						;scale amplitude
 kfreq	init	1						;do not change freq from sf
 aout	sfplaym ivel, inum, kamp*ivel, kfreq, 100		;preset index = 100
 	outs	aout, aout
-	
+
 endin
-	
+
 </CsInstruments>
 <CsScore>
 f0  60	; stay active for 1 minute
