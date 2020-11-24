@@ -1,4 +1,3 @@
-</CsoundSynthesizer>
 Arduino-Joystick2Csound1g-fm1-port (version with smoothing)
 
 - Push Joystick button to turn on note
@@ -20,7 +19,7 @@ giport init 0
 
 // NOTE: change USB port "/dev/cu.usbmodem1414301" to correspond
 //       with USB port used by Arduino on your system
-giport arduinoStart  "/dev/cu.usbmodem1414301", 9600
+giport arduinoStart  "//dev/ttyACM0", 9600
 
 instr 1
 
@@ -37,10 +36,10 @@ kX port kXraw, .02  // smoothed kY stream
 kYraw = kY
 kY port kYraw, .02  // smoothed kY stream
 
-kYscaled scale kY, 400, 100, 1023, 0 ; scaling the raw sensor
+kYscaled scale kY, 400, 100, 2047, 0 ; scaling the raw sensor
                                      ; data to a user-defined
                                      ; range of (100-400)
-kXscaled scale kX, 40, 0, 1023, 0    ; scaling the raw sensor
+kXscaled scale kX, 40, 0, 2047, 0    ; scaling the raw sensor
                                      ; data to a user-defined
                                      ; range of (0-40)
 
