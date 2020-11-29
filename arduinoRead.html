@@ -86,7 +86,6 @@
             <div class="refsect1">
               <a id="idm25895"></a>
               <pre class="programlisting">
-<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 Arduino-Joystick2Csound1g-fm1-port (version with smoothing)
 
 - Push Joystick button to turn on note
@@ -108,7 +107,7 @@ gi<span class="n">port</span> <span class="nb">init</span> <span class="mi">0</s
 
 <span class="c1">// NOTE: change USB port "/dev/cu.usbmodem1414301" to correspond</span>
 <span class="c1">//       with USB port used by Arduino on your system</span>
-gi<span class="n">port</span> a<span class="n">rduinoStart</span>  <span class="s">"/dev/cu.usbmodem1414301"</span><span class="p">,</span> <span class="mi">9600</span>
+gi<span class="n">port</span> a<span class="n">rduinoStart</span>  <span class="s">"//dev/ttyACM0"</span><span class="p">,</span> <span class="mi">9600</span>    <span class="c1">// for GNULinux</span>
 
 <span class="kd">instr</span> <span class="nf">1</span>
 
@@ -218,13 +217,13 @@ void put_val(int senChan, int senVal)
 {       <span class="c1">// The packing of the data is sssssvvv 0vvvvvvv where s is a</span>
         <span class="c1">// senChan bit, v a senVal bit and 0 is zero` bit</span>
   int low = senVal&amp;0x7f<span class="c1">;</span>
-  int hi = ((senVal&gt;&gt;7)&amp;0x0f) | ((senChan&amp;0x0F)<span class="err">&lt;</span><span class="nt">&lt;4</span><span class="err">);</span>
+  int hi = ((senVal&gt;&gt;7)&amp;0x0f) | ((senChan&amp;0x0f)<span class="err">&lt;</span><span class="nt">&lt;4</span><span class="err">);</span>
   <span class="err">Serial.write(low);</span> <span class="err">Serial.write(hi);</span>
 <span class="err">}</span>
 
 <span class="err">void</span> <span class="err">loop()</span> <span class="err">{</span>
 
-   <span class="err">Serial.write(0xf0);</span>
+   <span class="err">Serial.write(0xf8);</span>
 
    <span class="err">int</span> <span class="na">currentState_SW_pin =</span> <span class="s">digitalRead(SW_pin);</span> <span class="err">//</span> <span class="err">reading</span> <span class="err">digital</span>
                                                   <span class="err">//</span> <span class="err">input</span> <span class="err">2</span> <span class="err">and</span>
