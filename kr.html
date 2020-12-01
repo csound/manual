@@ -87,6 +87,84 @@ itranspose <span class="op">=</span> <span class="opc">octpch</span>(.0l)</pre>
       </div>
       <div class="refsect1">
         <a id="idm116188"></a>
+        <h2>Examples</h2>
+        <p>
+      Here is an example of the kr opcode. It uses the file <a class="ulink" href="examples/kr.csd" target="_top"><em class="citetitle">kr.csd</em></a>.
+
+      </p>
+        <div class="example">
+          <a id="idm116193"></a>
+          <p class="title">
+            <strong>Example 481. Example of the kr opcode.</strong>
+          </p>
+          <div class="example-contents">
+            <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
+            <div class="refsect1">
+              <a id="idm116200"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+<span class="nt">&lt;CsOptions&gt;</span>
+
+<span class="c1">; Select audio/midi flags here according to platform</span>
+<span class="c1">; Audio out   Audio in</span>
+-odac         <span class="c1">;;  -iadc    ;;;RT audio I/O</span>
+<span class="c1">; For Non-realtime ouput leave only the line below:</span>
+<span class="c1">; -o kr_example.wav -W ;;; for file output any platform</span>
+
+<span class="c1">; By Stefano Cucchi 2020</span>
+
+<span class="nt">&lt;/CsOptions&gt;</span>
+
+<span class="nt">&lt;CsInstruments&gt;</span>
+
+<span class="vg">sr</span>     <span class="o">=</span>        <span class="mi">44100</span>
+
+<span class="vg">kr</span> <span class="o">=</span> <span class="mi">4410</span> <span class="c1">; NO glitch</span>
+<span class="c1">;kr = 10 ; Some GLITCH in kFreqMod</span>
+<span class="c1">;kr = 2 ; Lots of GLITCH in kFreqMod</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="kd">instr</span> <span class="nf">1</span>
+
+k<span class="n">envelopemod</span> <span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="vi">p4</span><span class="p">,</span> <span class="vi">p3</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="vi">p4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span>
+
+k<span class="n">FreqMod</span> <span class="nb">expseg</span> <span class="mi">200</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">800</span>
+a<span class="n">modulator</span> <span class="nb">oscil</span> k<span class="n">envelopemod</span><span class="p">,</span> k<span class="n">FreqMod</span><span class="p">,</span> <span class="mi">2</span>
+
+a<span class="n">carf</span> <span class="nb">phasor</span> <span class="mi">440</span>
+i<span class="n">fn</span> <span class="o">=</span> <span class="mi">1</span>
+i<span class="n">xmode</span> <span class="o">=</span> <span class="mi">1</span>
+i<span class="n">xoff</span> <span class="o">=</span> <span class="mi">0</span>
+i<span class="n">wrap</span> <span class="o">=</span> <span class="mi">1</span>
+a<span class="n">carrier</span> <span class="nb">tablei</span> a<span class="n">carf</span><span class="o">+</span>a<span class="n">modulator</span><span class="p">,</span> i<span class="n">fn</span><span class="p">,</span> i<span class="n">xmode</span><span class="p">,</span> i<span class="n">xoff</span><span class="p">,</span> i<span class="n">wrap</span>
+
+k<span class="n">genenvelop</span> <span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="vi">p3</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span>
+<span class="nb">out</span> a<span class="n">carrier</span> <span class="o">*</span> k<span class="n">genenvelop</span>
+
+<span class="kd">endin</span>
+
+<span class="nt">&lt;/CsInstruments&gt;</span>
+
+<span class="nt">&lt;CsScore&gt;</span>
+
+<span class="nb">f</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">4096</span> <span class="mi">10</span> <span class="mi">1</span>
+<span class="nb">f</span><span class="mi">2</span> <span class="mi">0</span> <span class="mi">4096</span> <span class="mi">10</span> <span class="mi">1</span> <span class="mf">0.3</span> <span class="mf">0.5</span> <span class="mf">0.24</span> <span class="mf">0.56</span> <span class="mf">0.367</span>
+
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">5</span> <span class="mf">0.2</span> 
+<span class="nb">e</span>
+<span class="nt">&lt;/CsScore&gt;</span>
+
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm116337"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="ksmps.html" title="ksmps"><em class="citetitle">ksmps</em></a>,
