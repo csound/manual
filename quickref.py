@@ -108,6 +108,10 @@ except:
 files[len(files):]=glob.glob('opcodes/*/*.xml')
 files[len(files):]=glob.glob('vectorial/*.xml')
 files[len(files):]=glob.glob('utility/*.xml')
+try:
+    files.remove('utility/mkdb.xml')
+except:
+    pass
 files.sort()
 
 headerText = text[0:text.find('<book id="index"')]

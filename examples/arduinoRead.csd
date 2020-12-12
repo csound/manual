@@ -1,4 +1,3 @@
-</CsoundSynthesizer>
 Arduino-Joystick2Csound1g-fm1-port (version with smoothing)
 
 - Push Joystick button to turn on note
@@ -20,7 +19,7 @@ giport init 0
 
 // NOTE: change USB port "/dev/cu.usbmodem1414301" to correspond
 //       with USB port used by Arduino on your system
-giport arduinoStart  "/dev/cu.usbmodem1414301", 9600
+giport arduinoStart  "//dev/ttyACM0", 9600    // for GNULinux
 
 instr 1
 
@@ -130,13 +129,13 @@ void put_val(int senChan, int senVal)
 {       // The packing of the data is sssssvvv 0vvvvvvv where s is a
         // senChan bit, v a senVal bit and 0 is zero` bit
   int low = senVal&0x7f;
-  int hi = ((senVal>>7)&0x0f) | ((senChan&0x0F)<<4);
+  int hi = ((senVal>>7)&0x0f) | ((senChan&0x0f)<<4);
   Serial.write(low); Serial.write(hi);
 }
 
 void loop() {
 
-   Serial.write(0xf0);
+   Serial.write(0xf8);
 
    int currentState_SW_pin = digitalRead(SW_pin); // reading digital
                                                   // input 2 and

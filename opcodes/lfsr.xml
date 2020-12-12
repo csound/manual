@@ -1,0 +1,75 @@
+
+<refentry id="lfsr">
+<indexterm id="IndexLfsr"><primary>lfsr</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Random (Noise) Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lfsr</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>lfsr</refname>
+    <refpurpose>
+      Linear Feedback Shift Register (LFSR).
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+        Output is a series of pseudo-random positive integers. This is the technique
+        used in so-called "Turing machine" synth modules and is usually used to
+        generate melodic sequences. This implementation is adapted from the firmware
+        for the Ornament &amp; Crime module, as used in the Quantermain and Meta-Q apps.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>knum <command>lfsr</command> ilen, iprob [, iseed]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ilen</emphasis> -- length of shift register, valid values are 1-31 (inclusive). The
+        larger the length, the larger the resulting integers in the output. You
+        can use this to constrain the output to a suitable range.
+    </para>
+    <para>
+      <emphasis>iprob</emphasis> -- probability, valid values 1-255 (inclusive). Controls the spread
+        of the output; larger values result in a wider spread of values.
+    </para>
+    <para>
+      <emphasis>iseed</emphasis> (optional, default -1) -- initial state of the shift register, as a
+        pattern of bits. The value is treated as an unsigned integer, so the default
+        of -1 is effectivly all bits on (0b11111111...).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>knum</emphasis> -- integer output
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the lfsr opcode. It uses the file <ulink url="examples/lfsr.csd"><citetitle>lfsr.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the lfsr opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/lfsr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>By: &namedave; 2020</para>
+    <para>Based on code by Patrick Dowling in the Ornament &amp; Crime firmware.</para>
+    <para>New in version 6.16</para>
+  </refsect1>
+
+</refentry>

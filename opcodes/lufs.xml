@@ -1,0 +1,105 @@
+
+<!--Change refentry id and indexterm id-->
+<refentry id="lufs">
+<indexterm id="IndexLufs"><primary>lufs</primary></indexterm>
+<!--Make sure the category below is a valid one! See categories.py-->
+  <refentryinfo><title>Utilities</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lufs</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>lufs</refname>
+    <refpurpose>
+      Momentary, Integrated and Short-Term Loudness meter in LUFS
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+     <para>
+      The opcodes performs an analysis of input audio according to ITU-R BS.1770-4 recommendation. The outputs are Momentary, Integrated and Short-Term loudnesses.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+<!--    Please keep this below ~70 characters by using backslashes to avoid overflow in the pdf version-->
+    <synopsis>kmom, kint, kshort <command>lufs</command> kreset, ain1 [, ain2]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+<!--    First list all input and output performance parameters-->
+    <para>
+      <emphasis>kreset</emphasis> -- reset input. It resets the value of the integrated loudness if kreset is not 0.
+    </para>
+    <para>
+      <emphasis>ain1, ain2</emphasis> -- input audio signal(s). Only mono and stereo are supported (see below)
+    </para>
+    <para>
+      <emphasis>kmom</emphasis> -- momentary loudness in LUFS
+    </para>
+    <para>
+      <emphasis>kint</emphasis> -- integrated loudness in LUFS
+    </para>
+    <para>
+      <emphasis>kshort</emphasis> -- short-term loudness in LUFS
+    </para>
+
+    <para>
+      The Momentary Loudness is calculated over 400 ms period and Short-Term Loudness is for 3 s period. Integrated Loudness is obtained by averaging the whole programm.
+      The calculation algorithm is based on formulae from <ulink url="https://www.mathworks.com/help/audio/ref/integratedloudness.html"><citetitle>Matlab integratedLoudness code</citetitle></ulink>
+
+
+      <ulink url="https://www.itu.int/dms_pubrec/itu-r/rec/bs/R-REC-BS.1770-4-201510-I!!PDF-E.pdf"><citetitle>ITU-R BS.1770-4</citetitle></ulink> gives K-weigthing filters coefficients only for 48000 Hz, thus other sampling frequencies coefficients are calculated according to <ulink url="https://github.com/BrechtDeMan/loudness.py/blob/master/loudness.py"><citetitle>Brecht De Man code</citetitle></ulink>
+      Only mono and stereo formats are supported due to rare usage of 5.1 format in the field of computer music. ITU-R BS.1770-4 standardizes only 1, 2 and 5.1 channels.
+    </para>
+
+    <note>
+      <title>Warning!</title>
+      <para>
+        <emphasis>ksmps</emphasis> should not be set to values higher than <emphasis>sr</emphasis>/10, i.e. 4410 @ sr = 44100 and higher.
+      </para>
+    </note>
+
+
+  </refsect1>
+
+
+  <refsect1>
+<!--To add examples, create the csd file in the examples directory, then run:-->
+<!--python csd2docbook.py -f newopcodename.csd-->
+<!--to generate the xml highlighted version used below-->
+    <title>Examples</title>
+    <para>
+      Here is an example of the lufs opcode. It uses the file <ulink url="examples/lufs.csd"><citetitle>lufs.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the lufs opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/lufs.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+<!--    it's always good to include a good See Also list  -->
+    <para>
+      <link linkend="rms"><citetitle>rms</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+<!--  And put your name and other relevant information here-->
+    <title>Credits</title>
+    <para>By: Gleb Rogozinsky, Summer 2020</para>
+    <para>New in version 6.15</para>
+  </refsect1>
+
+<!--Now remember to add a link from the appropriate category in the Opcode Overview.-->
+<!--Add the entity to manual.xml-->
+<!--Add the entity reference in the appropriate place in opcodes/top.xml-->
+<!--And you're set! Maybe delete the comments as well...-->
+
+</refentry>

@@ -35,7 +35,7 @@ asig STKBandedWG ifrequency, iamplitude
 endin
 </CsInstruments>
 <CsScore>
-f 0 60	; runs 69 seconds
+f 0 60	; runs 60 seconds
 e
 </CsScore>
 </CsoundSynthesizer>

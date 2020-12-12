@@ -198,7 +198,7 @@
       [, kvalue2] [,ktype2] [, ktime2] [...] [, kvalueN] [,ktypeN] [, ktimeN]</synopsis><para/>
 <synopsis>ksig <link linkend="loopxseg">loopxseg</link> kfreq, ktrig, iphase, ktime0, kvalue0 [, ktime1] [, kvalue1] \
       [, ktime2] [, kvalue2] [...]</synopsis><para/>
-<synopsis>ksig <link linkend="lpshold">lpshold</link> kfreq, ktrig, iphase, ktime0, kvalue0  [, kvalue1] [, ktime1] [, kvalue2] [, ktime2] [...]</synopsis><para/>
+<synopsis>ksig <link linkend="lpshold">lpshold</link> kfreq, ktrig, iphase, kvalue0, ktime0  [, kvalue1] [, ktime1] [, kvalue2] [, ktime2] [...]</synopsis><para/>
 <synopsis>ksig <link linkend="lpsholdp">lpsholdp</link>  kphase, kvalue0, ktime0  [, kvalue1] [, ktime1] \
       [, kvalue2] [, ktime2] [...]</synopsis><para/>
 <synopsis>kscl <link linkend="scale">scale</link> kinput, kmax, kmin[, kimax, kimin]</synopsis><para/>
@@ -302,6 +302,7 @@
 <synopsis>kout <link linkend="jitter2">jitter2</link> ktotamp, kamp1, kcps1,
     kamp2, kcps2, kamp3, kcps3[ , iopt]</synopsis><para/>
 <synopsis>ares <link linkend="jspline">jspline</link> xamp, kcpsMin, kcpsMax</synopsis><synopsis>kres <link linkend="jspline">jspline</link> kamp, kcpsMin, kcpsMax</synopsis><para/>
+<synopsis>knum <link linkend="lfsr">lfsr</link> ilen, iprob [, iseed]</synopsis><para/>
 <synopsis>ares <link linkend="linrand">linrand</link> krange</synopsis><synopsis>ires <link linkend="linrand">linrand</link> krange</synopsis><synopsis>kres <link linkend="linrand">linrand</link> krange</synopsis><para/>
 <synopsis>ares <link linkend="noise">noise</link> xamp, kbeta</synopsis><para/>
 <synopsis>ares <link linkend="pcauchy">pcauchy</link> kalpha</synopsis><synopsis>ires <link linkend="pcauchy">pcauchy</link> kalpha</synopsis><synopsis>kres <link linkend="pcauchy">pcauchy</link> kalpha</synopsis><para/>
@@ -315,7 +316,7 @@
 <synopsis>ares <link linkend="randomh">randomh</link> kmin, kmax, xcps [,imode] [,ifirstval]</synopsis><synopsis>kres <link linkend="randomh">randomh</link> kmin, kmax, kcps [,imode] [,ifirstval]</synopsis><para/>
 <synopsis>ares <link linkend="randomi">randomi</link> kmin, kmax, xcps [,imode] [,ifirstval]</synopsis><synopsis>kres <link linkend="randomi">randomi</link> kmin, kmax, kcps [,imode] [,ifirstval]</synopsis><para/>
 <synopsis>ax <link linkend="rnd31">rnd31</link> kscl, krpow [, iseed]</synopsis><synopsis>ix <link linkend="rnd31">rnd31</link> iscl, irpow [, iseed]</synopsis><synopsis>kx <link linkend="rnd31">rnd31</link> kscl, krpow [, iseed]</synopsis><para/>
-<synopsis><link linkend="rndseed">seed</link> ival</synopsis><para/>
+<synopsis><link linkend="rndseed">rndseed</link> ival</synopsis><para/>
 <synopsis>ares <link linkend="rspline">rspline</link> xrangeMin, xrangeMax, kcpsMin, kcpsMax</synopsis><synopsis>kres <link linkend="rspline">rspline</link> krangeMin, krangeMax, kcpsMin, kcpsMax</synopsis><para/>
 <synopsis><link linkend="seed">seed</link> ival</synopsis><para/>
 <synopsis>kout <link linkend="trandom">trandom</link> ktrig, kmin, kmax</synopsis><para/>
@@ -457,6 +458,9 @@
     </synopsis><para/>
 <synopsis>aout <link linkend="wterrain">wterrain</link> kamp, kpch, k_xcenter, k_ycenter, k_xradius, k_yradius, \
       itabx, itaby</synopsis><para/>
+<synopsis>aout <link linkend="wterrain2">wterrain2</link> kamp, kcps, kx, ky, krx, kry, krot, \
+      ktab0, ktab1, kcurve, kcurveparam
+    </synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
 <title>Signal Generators:Waveguide Physical Modeling</title>
@@ -546,6 +550,7 @@
       asig11, asig12, asig13, asig14, asig15, asig16, asig17, asig18, \
       asig19, asig20, asig21, asig22, asig23, asig24, asig25, asig26, \
       asig27, asig28, asig29, asig30, asig31, asig32</synopsis><para/>
+<synopsis><link linkend="outall">outall</link> asig</synopsis><para/>
 <synopsis><link linkend="outc">outc</link> asig1 [, asig2] [...]</synopsis><para/>
 <synopsis><link linkend="outch">outch</link> kchan1, asig1 [, kchan2] [, asig2] [...]</synopsis><para/>
 <synopsis><link linkend="outh">outh</link> asig1, asig2, asig3, asig4, asig5, asig6</synopsis><para/>
@@ -986,8 +991,10 @@
       [, ip4] [, ip5] [...]</synopsis><para/>
 <synopsis><link linkend="schedkwhennamed">schedkwhennamed</link> ktrigger, kmintim, kmaxnum, &quot;name&quot;, kwhen, kdur \
       [, ip4] [, ip5] [...]</synopsis><para/>
-<synopsis><link linkend="schedule">schedule</link> insnum, iwhen, idur [, ip4] [, ip5] [...]</synopsis><synopsis><link linkend="schedule">schedule</link> &quot;insname&quot;, iwhen, idur [, ip4] [, ip5] [...]</synopsis><para/>
-<synopsis><link linkend="schedulek">schedulek</link> knsnum, kwhen, kdur [, kp4] [, kp5] [...]</synopsis><synopsis><link linkend="schedulek">schedulek</link> &quot;insname&quot;, kwhen, kdur [, kp4] [, kp5] [...]</synopsis><para/>
+<synopsis><link linkend="schedule">schedule</link> insnum, iwhen, idur [, ip4] [, ip5] [...]</synopsis><synopsis><link linkend="schedule">schedule</link> &quot;insname&quot;, iwhen,
+    idur [, ip4] [, ip5] [...]</synopsis><synopsis><link linkend="schedule">schedule</link> iPar[]</synopsis><para/>
+<synopsis><link linkend="schedulek">schedulek</link> knsnum, kwhen, kdur [, kp4] [, kp5] [...]</synopsis><synopsis><link linkend="schedulek">schedulek</link> &quot;insname&quot;, kwhen,
+    kdur [, kp4] [, kp5] [...]</synopsis><synopsis><link linkend="schedulek">schedule</link> kPar[]</synopsis><para/>
 <synopsis><link linkend="schedwhen">schedwhen</link> ktrigger, kinsnum, kwhen, kdur [, ip4] [, ip5] [...]</synopsis><synopsis><link linkend="schedwhen">schedwhen</link> ktrigger, &quot;insname&quot;, kwhen, kdur [, ip4] [, ip5] [...]</synopsis><para/>
 <synopsis><link linkend="scoreline">scoreline</link> Sin, ktrig</synopsis><para/>
 <synopsis><link linkend="scoreline_i">scoreline_i</link> Sin</synopsis><para/>
@@ -1055,8 +1062,13 @@
 <synopsis>ktrig <link linkend="changed">changed</link> kvar1 [, kvar2,..., kvarN]</synopsis><para/>
 <synopsis>ktrig <link linkend="changed2">changed2</link> kvar1 [, kvar2,..., kvarN]</synopsis><synopsis>ktrig <link linkend="changed2">changed2</link> karr[]</synopsis><synopsis>ktrig <link linkend="changed2">changed2</link> aarr[]</synopsis><para/>
 <synopsis>kres <link linkend="checkbox">checkbox</link> knum</synopsis><para/>
+<synopsis>kval <link linkend="cntDelete">cntDelete</link> icnt</synopsis><para/>
+<synopsis>ival <link linkend="cntDelete_i">cntDelete_i</link> icnt</synopsis><para/>
 <synopsis>icnt <link linkend="cntCreate">cntCreate</link> [imax, imin, inc]</synopsis><para/>
 <synopsis>kval <link linkend="cntCycles">cntCycles</link> icnt</synopsis><para/>
+<synopsis>kval <link linkend="cntRead">cntRead</link>icnt</synopsis><para/>
+<synopsis><link linkend="cntReset">cntReset</link>icnt</synopsis><para/>
+<synopsis>kmax, kmin, kinc <link linkend="cntState">cntState</link>icnt</synopsis><para/>
 <synopsis>kres <link linkend="control">control</link> knum</synopsis><para/>
 <synopsis>kval <link linkend="count">count</link> icnt</synopsis><para/>
 <synopsis>ival <link linkend="count_i">count_i</link> icnt</synopsis><para/>
@@ -1576,7 +1588,7 @@
 <title>Real-time MIDI:Note Output</title>
 <para>
 <para/>
-<synopsis>kMidiNoteNum, kCounter<link linkend="midiarp">midiarp</link> kRate[, kMode]</synopsis><para/>
+<synopsis>kMidiNoteNum, kCounter <link linkend="midiarp">midiarp</link> kRate[, kMode]</synopsis><para/>
 <synopsis><link linkend="midion">midion</link> kchn, knum, kvel</synopsis><para/>
 <synopsis><link linkend="midion2">midion2</link> kchn, knum, kvel, ktrig</synopsis><para/>
 <synopsis><link linkend="moscil">moscil</link> kchn, knum, kvel, kdur, kpause</synopsis><para/>
@@ -1740,6 +1752,7 @@
 <synopsis>fsig <link linkend="cudanal">cudanal</link> ain, ifftsize, ioverlap, iwinsize, iwintype [, iformat] [, iinit]</synopsis><para/>
 <synopsis>asig <link linkend="cudasliding">cudasliding</link> ain, amod, iwinsize</synopsis><para/>
 <synopsis>asig <link linkend="cudasynth">cudasynth</link> kamp, kfreq, itab, iftab, iatab[, inum]</synopsis><synopsis>asig <link linkend="cudasynth">cudasynth</link> fsig, kamp, kfreq[, inum]</synopsis><synopsis>asig <link linkend="cudasynth">cudasynth</link> fsig</synopsis><para/>
+<synopsis><link linkend="part2txt">part2txt</link> SFile,ftrks</synopsis><para/>
 <synopsis>ftrks <link linkend="partials">partials</link> ffr, fphs, kthresh, kminpts, kmaxgap, imaxtracks</synopsis><para/>
 <synopsis>kframe <link linkend="pvs2tab">pvs2tab</link> tvar|kvar[], fsig</synopsis><synopsis>kframe <link linkend="pvs2tab">pvs2tab</link> kmags[], kfreqs[], fsig</synopsis><para/>
 <synopsis>ares <link linkend="pvsadsyn">pvsadsyn</link> fsrc, inoscs, kfmod [, ibinoffset] [, ibinincr] [, iinit]</synopsis><para/>
@@ -1749,6 +1762,7 @@
       xhighfull, xhighcut[, ktype]</synopsis><para/>
 <synopsis>fsig <link linkend="pvsbandr">pvsbandr</link> fsigin, xlowcut, xlowfull, \
       xhighfull, xhighcut[, ktype]</synopsis><para/>
+<synopsis>kbnd <link linkend="pvsbandwidth">pvsbandwidth</link> fsig</synopsis><para/>
 <synopsis>kamp, kfr <link linkend="pvsbin">pvsbin</link> fsig, kbin</synopsis><para/>
 <synopsis>fsig <link linkend="pvsblur">pvsblur</link> fsigin, kblurtime, imaxdel</synopsis><para/>
 <synopsis>ihandle, ktime  <link linkend="pvsbuffer">pvsbuffer</link> fsig, ilen </synopsis><para/>
@@ -1784,7 +1798,8 @@
 <synopsis>fsig <link linkend="pvstanal">pvstanal</link> ktimescal, kamp, kpitch, ktab, [kdetect, kwrap, ioffset,ifftsize, ihop, idbthresh]
       </synopsis><para/>
 <synopsis>fsig <link linkend="pvstencil">pvstencil</link> fsigin, kgain, klevel, iftable</synopsis><para/>
-<synopsis>fsig <link linkend="pvstrace">pvstrace</link> fsigin, kn </synopsis><synopsis>fsig, kBins[] <link linkend="pvstrace">pvstrace</link> fsigin, kn[, isort] </synopsis><para/>
+<synopsis>fsig <link linkend="pvstrace">pvstrace</link> fsigin, kn </synopsis><synopsis>fsig, kBins[] <link linkend="pvstrace">pvstrace</link> fsigin, kn[,
+     isort, imin, imax] </synopsis><para/>
 <synopsis>fsig <link linkend="pvsvoc">pvsvoc</link> famp, fexc, kdepth, kgain [,kcoefs]</synopsis><para/>
 <synopsis>fsig <link linkend="pvswarp">pvswarp</link> fsigin, kscal, kshift[, klowest, kmeth, kgain, kcoefs]</synopsis><para/>
 <synopsis>ares <link linkend="pvsynth">pvsynth</link> fsrc, [iinit]</synopsis><para/>
@@ -2117,11 +2132,11 @@
 <synopsis>kmax [,kindx] <link linkend="maxarray">maxarray</link> karray</synopsis><para/>
 <synopsis>kmin [,kindx] <link linkend="minarray">minarray</link> karray</synopsis><para/>
 <synopsis><link linkend="printarray">printarray</link> ixs[] [, Smft, Slabel ]</synopsis><synopsis><link linkend="printarray">printarray</link> kxs[] [, ktrig, Sfmt, Slabel ]</synopsis><para/>
-<synopsis>kres/ires<link linkend="productarray">product</link> karr[]/iarr[]  (k- or i-arrays )</synopsis><para/>
+<synopsis>kres/ires <link linkend="productarray">product</link> karr[]/iarr[]  (k- or i-arrays )</synopsis><para/>
 <synopsis><link linkend="reshapearray">reshapearray</link> array[], isize0 [, isize1 ]</synopsis><para/>
 <synopsis><link linkend="scalearray">scalearray</link> tarray, kmin, kmax[, kleft, kright]</synopsis><para/>
 <synopsis>i/kout[] <link linkend="setcol">setcol</link>i/kin[],i/kcol</synopsis><para/>
-<synopsis>i/kout[] <link linkend="setrow">setrow</link>i/kin[],i/krow</synopsis><para/>
+<synopsis>i/kout[] <link linkend="setrow">setrow</link> i/kin[],i/krow</synopsis><para/>
 <synopsis>kout[] <link linkend="shiftin">shiftin</link> asig</synopsis><para/>
 <synopsis>asig <link linkend="shiftout">shiftout</link> kIn[][, ioff]</synopsis><para/>
 <synopsis>ksum <link linkend="sumarray">sumarray</link> karray</synopsis><para/>
@@ -2162,7 +2177,7 @@
 <title>Array Operations: dot product</title>
 <para>
 <para/>
-<synopsis>kres/ires<link linkend="dot">dot</link> karr1[]/iarr1[], karr2[]/iarr2[]   (k- or i-arrays )</synopsis><para/>
+<synopsis>kres/ires <link linkend="dot">dot</link> karr1[]/iarr1[], karr2[]/iarr2[]   (k- or i-arrays )</synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
 <title>Array Operations: Mel scale filterbank</title>
@@ -2304,6 +2319,7 @@ inum_parm, kupdate</synopsis><para/>
 <title>Utilities</title>
 <para>
 <para/>
+<synopsis>kmom, kint, kshort <link linkend="lufs">lufs</link> kreset, ain1 [, ain2]</synopsis><para/>
 <synopsis><link linkend="UtilityAtsa">csound -U atsa</link> [flags] infilename outfilename</synopsis><para/>
 <synopsis><link linkend="cs">cs</link> [-OPTIONS] &lt;name&gt; [CSOUND OPTIONS ... ]</synopsis><para/>
 <synopsis><link linkend="csb64enc">csb64enc</link> [OPTIONS ... ] infile1 [ infile2 [ ... ]]</synopsis><para/>
@@ -2317,7 +2333,6 @@ inum_parm, kupdate</synopsis><para/>
 <synopsis><link linkend="lpanal">csound -U lpanal</link> [flags] infilename outfilename</synopsis><synopsis><link linkend="lpanal">lpanal</link> [flags] infilename outfilename</synopsis><para/>
 <synopsis><link linkend="makecsd">makecsd</link> [OPTIONS ... ] infile1 [ infile2 [ ... ]]</synopsis><para/>
 <synopsis><link linkend="mixer">mixer</link> [OPTIONS ... ] infile [[OPTIONS... ] infile] ...</synopsis><para/>
-<synopsis><link linkend="mkdb">mkdb</link> [-m] [base_directory]</synopsis><para/>
 <synopsis><link linkend="pv_export">pv_export</link> pv_file cstext_file</synopsis><synopsis>csound -U <link linkend="pv_export">pv_export</link> pv_file cstext_file</synopsis><para/>
 <synopsis><link linkend="pv_import">pv_import</link> cstext_file pv_file</synopsis><synopsis>csound -U <link linkend="pv_import">pv_import</link> cstext_file pv_file</synopsis><para/>
 <synopsis><link linkend="pvanal">csound -U pvanal</link> [flags] infilename outfilename</synopsis><synopsis><link linkend="pvanal">pvanal</link> [flags] infilename outfilename</synopsis><para/>
