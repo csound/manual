@@ -39,13 +39,13 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm63647"></a>
+        <a id="idm63837"></a>
         <h2>Description</h2>
         <p>
       Generates an exponential curve in range 0 to 1 of arbitrary steepness.
-      Steepness index equal to or lower than 1.0 will result in Not-a-Number
-      errors and cause unstable behavior.
-    </p>
+      Steepness index less than 1.0 would result in Not-a-Number
+      errors and cause unstable behavior so is treated as if it were 1.
+      </p>
         <p>
       The formula used to calculate the curve is:
 </p>
@@ -57,12 +57,12 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm63654"></a>
+        <a id="idm63844"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">kout <span class="command"><strong>expcurve</strong></span> kindex, ksteepness</pre>
       </div>
       <div class="refsect1">
-        <a id="idm63658"></a>
+        <a id="idm63848"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>kindex</em></span> -- Index value. Expected range 0 to 1.
@@ -77,31 +77,31 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm63666"></a>
+        <a id="idm63856"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the expcurve opcode. It uses the file <a class="ulink" href="examples/expcurve.csd" target="_top"><em class="citetitle">expcurve.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm63671"></a>
+          <a id="idm63861"></a>
           <p class="title">
-            <strong>Example 270. Example of the expcurve opcode.</strong>
+            <strong>Example 271. Example of the expcurve opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm63678"></a>
+              <a id="idm63868"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
 <span class="c1">; Audio out   Audio in    Silent</span>
--odac           -iadc     -d    <span class="c1">;;;realtime output</span>
+-odac           -iadc     -n    <span class="c1">;;;realtime output</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span>
 
-<span class="vg">sr</span>	<span class="o">=</span>	<span class="mi">48000</span>
+<span class="vg">sr</span>	<span class="o">=</span>	<span class="mi">44100</span>
 <span class="vg">ksmps</span>	<span class="o">=</span>	<span class="mi">1000</span>
 <span class="vg">nchnls</span>	<span class="o">=</span>	<span class="mi">2</span>
 
@@ -134,7 +134,7 @@ k<span class="n">out</span>	<span class="nb">expcurve</span> k<span class="n">mo
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm63749"></a>
+        <a id="idm63939"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="scale.html" title="scale"><em class="citetitle">scale</em></a>,
@@ -143,7 +143,7 @@ k<span class="n">out</span>	<span class="nb">expcurve</span> k<span class="n">mo
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm63758"></a>
+        <a id="idm63948"></a>
         <h2>Credits</h2>
         <p>
       </p>
@@ -156,6 +156,9 @@ k<span class="n">out</span>	<span class="nb">expcurve</span> k<span class="n">mo
           </tr>
           <tr>
             <td>2006</td>
+          </tr>
+          <tr>
+            <td>Range check introduced in 6.16 by John ffitch</td>
           </tr>
         </table>
         <p>

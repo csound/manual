@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>arduinoReadF</title>
+    <link rel="stylesheet" type="text/css" href="csound.css" />
+    <link rel="stylesheet" type="text/css" href="syntax-highlighting.css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.79.1" />
+    <link rel="home" href="index.html" title="The Canonical Csound Reference Manual" />
+    <link rel="up" href="OpcodesTop.html" title="Orchestra Opcodes and Operators" />
+    <link rel="prev" href="arduinoRead.html" title="arduinoRead" />
+    <link rel="next" href="arduinoStart.html" title="arduinoStart" />
+  </head>
+  <body>
+    <div class="navheader">
+      <table width="100%" summary="Navigation header">
+        <tr>
+          <th colspan="3" align="center">arduinoReadF</th>
+        </tr>
+        <tr>
+          <td width="20%" align="left"><a accesskey="p" href="arduinoRead.html">Prev</a> </td>
+          <th width="60%" align="center">Orchestra Opcodes and Operators</th>
+          <td width="20%" align="right"> <a accesskey="n" href="arduinoStart.html">Next</a></td>
+        </tr>
+      </table>
+      <hr />
+    </div>
+    <div class="refentry">
+      <a id="arduinoReadF"></a>
+      <div class="titlepage"></div>
+      <a id="IndexArduinoReadF" class="indexterm"></a>
+      <div class="refnamediv">
+        <h2>
+          <span class="refentrytitle">arduinoReadF</span>
+        </h2>
+        <p>arduinoReadF — 
+      Read data from an arduino port using the Csound-Arduino protocol.
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm26323"></a>
+        <h2>Description</h2>
+        <p>Plugin opcode in serial.</p>
+        <p>
+      Read integer data from an arduino port with CsoundArduino protocol.
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm26327"></a>
+        <h2>Syntax</h2>
+        <pre class="synopsis">kval <span class="command"><strong>arduinoReadF</strong></span> iPort, iStream1,
+      iStream2, iStream3</pre>
+      </div>
+      <div class="refsect1">
+        <a id="idm26331"></a>
+        <h2>Performance</h2>
+        <p>
+      <span class="emphasis"><em>iPort</em></span> -- port number obtained from a
+      <span class="emphasis"><em>arduinoStart</em></span> opcode.
+    </p>
+        <p>
+      <span class="emphasis"><em>iStream1, iStream2, iStream3</em></span> -- Numbers of
+      the three data streams in the range 0 to 30.  Eacj stream
+      carries 10 its of the3 30 bit floating point result. hedivision
+      is created in te Arduino sketch encapsulated in the put_float function.
+    </p>
+        <p>
+      <span class="emphasis"><em>kval</em></span> -- floatin point value read.
+    </p>
+        <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+          <table border="0" summary="Note">
+            <tr>
+              <td rowspan="2" align="center" valign="top" width="25">
+                <img alt="[Note]" src="images/note.png" />
+              </td>
+              <th align="left">Note</th>
+            </tr>
+            <tr>
+              <td align="left" valign="top">The value transmidded is two bits shorter in the mantissa
+    than produced on the Arduino so there is a little error introduced.</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="refsect1">
+        <a id="idm26341"></a>
+        <h2>Examples</h2>
+        <p>
+      Here is an example of the arduinoReadF opcode. It uses the file <a class="ulink" href="examples/arduinoReadF.csd" target="_top"><em class="citetitle">arduinoReadF.csd</em></a>.
+      </p>
+        <div class="example">
+          <a id="idm26346"></a>
+          <p class="title">
+            <strong>Example 62. Example of the arduinoReadF opcode.</strong>
+          </p>
+          <div class="example-contents">
+            <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
+            <div class="refsect1">
+              <a id="idm26353"></a>
+              <pre class="programlisting">
+Arduino-Joystick2Csound1g-fm1-port (version with smoothing)
+
+- Push Joystick button to turn on note
+- Use JoystickX to offset and control the modulation index of
+  the foscil opcode from 0-40 via the scale opcode
+- Use JoystickY to offset and control the Frequency of the foscil
+  opcode up/down two octaves via the scale opcode
+
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+
+<span class="nt">&lt;CsInstruments&gt;</span>
+
+<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">441</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
+
+gi<span class="n">port</span> <span class="nb">init</span> <span class="mi">0</span>
+
+<span class="c1">// NOTE: change USB port "/dev/cu.usbmodem1414301" to correspond</span>
+<span class="c1">//       with USB port used by Arduino on your system</span>
+gi<span class="n">port</span> a<span class="n">rduinoStart</span>  <span class="s">"//dev/ttyACM0"</span><span class="p">,</span> <span class="mi">9600</span>    <span class="c1">// for GNULinux</span>
+
+<span class="kd">instr</span> <span class="nf">1</span>
+
+k<span class="n">k</span>  a<span class="n">rduinoReadF</span>  gi<span class="n">port</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
+<span class="nb">printks</span> <span class="s">"kk=</span><span class="si">%f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> k<span class="n">k</span>
+ <span class="kd">endin</span>
+
+<span class="nt">&lt;/CsInstruments&gt;</span>
+
+<span class="nt">&lt;CsScore&gt;</span>
+
+<span class="nb">f</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">16384</span> <span class="mi">10</span> <span class="mi">1</span>
+
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span>
+
+<span class="nb">e</span>
+
+<span class="nt">&lt;/CsScore&gt;</span>
+
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+
+<span class="nt">&lt;arduinoSketch&gt;</span>
+<span class="c1">// Float Example</span>
+
+<span class="c1">// John ffitch &amp; Richard Boulanger</span>
+<span class="c1">// December 7, 2020</span>
+
+<span class="c1">// BreadBoard &amp; Arduino Setup</span>
+
+void setup() {
+              <span class="c1">// NOTE: Digital pins can be either inputs or outputs.</span>
+
+  Serial.begin(9600)<span class="c1">;</span>
+}
+
+<span class="c1">// put_val( ) - a function to send data values to the Csound</span>
+<span class="c1">//              "arduinoRead" opcode</span>
+<span class="c1">// The first argument of the put_val function "int senChan" sets</span>
+<span class="c1">// the software channel number that Csound reads</span>
+<span class="c1">// NOTE: "senChan" does "not" define the input pin that is used on</span>
+<span class="c1">// the Arduino for a specific sensor</span>
+<span class="c1">// The specific Arduino input pin used by any sensor is assigned</span>
+<span class="c1">// and set elsewhere in the Arduino sketch and mapped to a</span>
+<span class="c1">// user-defined put_val "senChan" channel</span>
+
+void put_val(int senChan, int senVal)
+        <span class="c1">// Set the Csound receive channel "senChan", and read from</span>
+        <span class="c1">// the sensor data stream "senVal"</span>
+{       <span class="c1">// The packing of the data is sssssvvv 0vvvvvvv where s is a</span>
+        <span class="c1">// senChan bit, v a senVal bit and 0 is zero` bit</span>
+  int low = senVal&amp;0x7f<span class="c1">;</span>
+  int hi = ((senVal&gt;&gt;7)&amp;0x0f) | ((senChan&amp;0x0f)<span class="err">&lt;</span><span class="nt">&lt;4</span><span class="err">);</span>
+  <span class="err">Serial.write(low);</span> <span class="err">Serial.write(hi);</span>
+<span class="err">}</span>
+
+<span class="err">void</span> <span class="err">put_float(int</span> <span class="err">senChan1,</span> <span class="err">int</span> <span class="err">senChan2,</span> <span class="err">int</span> <span class="err">senChan3,</span> <span class="err">float</span> <span class="err">senVal)</span>
+<span class="err">{</span>
+  <span class="err">typedef</span> <span class="err">union</span> <span class="err">{</span>
+    <span class="err">float</span> <span class="err">f;</span>
+    <span class="err">long</span> <span class="err">i;</span>
+  <span class="err">}</span> <span class="err">JOINT;</span>
+  <span class="err">JOINT</span> <span class="err">x;</span>
+  <span class="na">x.f =</span> <span class="s">senVal;</span>
+  <span class="err">put_val(senChan1,</span> <span class="err">(x.i</span><span class="nt">&gt;</span>&gt; 2)&amp; 0x3ff)<span class="c1">;</span>
+  put_val(senChan2, (x.i&gt;&gt;12)&amp; 0x3ff)<span class="c1">;</span>
+  put_val(senChan3, (x.i&gt;&gt;22)&amp; 0x3ff)<span class="c1">;</span>
+}
+
+void loop() {
+
+   Serial.write(0xf8)<span class="c1">;   // Synchronization Byte - (essential!) marks beginning of new serial frame</span>
+
+  put_float(1,2,3,1.23456789)<span class="c1">;</span>
+
+  delay(10)<span class="c1">;</span>
+
+}
+
+<span class="nt">&lt;/arduinoSketch&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm26476"></a>
+        <h2>See Also</h2>
+        <p>
+      <a class="link" href="arduinoStart.html" title="arduinoStart"><em class="citetitle"></em>arduinoStart</a>,
+      <a class="link" href="arduinoStop.html" title="arduinoStop"><em class="citetitle"></em>arduinoStop</a>,
+      <a class="link" href="arduinoRead.html" title="arduinoRead"><em class="citetitle"></em>arduinoRead</a>,
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm26485"></a>
+        <h2>Credits</h2>
+        <p>
+      </p>
+        <table border="0" summary="Simple list" class="simplelist">
+          <tr>
+            <td>Author: John ffitch</td>
+          </tr>
+          <tr>
+            <td>Author: Richard Boulanger</td>
+          </tr>
+          <tr>
+            <td>2020</td>
+          </tr>
+        </table>
+        <p>
+    </p>
+        <p>New in version 6.15</p>
+      </div>
+    </div>
+    <div class="navfooter">
+      <hr />
+      <table width="100%" summary="Navigation footer">
+        <tr>
+          <td width="40%" align="left"><a accesskey="p" href="arduinoRead.html">Prev</a> </td>
+          <td width="20%" align="center">
+            <a accesskey="u" href="OpcodesTop.html">Up</a>
+          </td>
+          <td width="40%" align="right"> <a accesskey="n" href="arduinoStart.html">Next</a></td>
+        </tr>
+        <tr>
+          <td width="40%" align="left" valign="top">arduinoRead </td>
+          <td width="20%" align="center">
+            <a accesskey="h" href="index.html">Home</a>
+          </td>
+          <td width="40%" align="right" valign="top"> arduinoStart</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
