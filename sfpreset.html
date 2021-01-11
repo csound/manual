@@ -101,10 +101,10 @@
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
--odac <span class="c1">;;;realtime audio out, virtual midi in</span>
+-odac  <span class="c1">;;;realtime audio out</span>
 <span class="c1">;-iadc    ;;;uncomment -iadc if RT audio input is needed too</span>
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
-<span class="c1">; -o sfpassign.wav -W ;;; for file output any platform</span>
+<span class="c1">; -o sfpreset.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span>
 
@@ -115,57 +115,38 @@
 <span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
-<span class="c1">;load three soundfonts</span>
-gi<span class="n">sf</span>	<span class="nb">sfload</span>	<span class="s">"sf_GMbank.sf2"</span>
-gi<span class="n">r</span>	<span class="nb">sfload</span>	<span class="s">"01hpschd.sf2"</span>
-gi<span class="n">v</span>	<span class="nb">sfload</span>	<span class="s">"07AcousticGuitar.sf2"</span>
-	<span class="nb">sfplist</span> gi<span class="n">sf</span>
-	<span class="nb">sfplist</span> gi<span class="n">r</span>
-        <span class="nb">sfplist</span> gi<span class="n">v</span>
+gi<span class="n">sf1</span>	<span class="nb">sfload</span>	 <span class="s">"sf_GMbank.sf2"</span>
+	<span class="nb">sfplist</span>	 gi<span class="n">sf1</span>						<span class="c1">;list presets of first soundfont</span>
+gi<span class="n">sf2</span>	<span class="nb">sfload</span>	 <span class="s">"07AcousticGuitar.sf2"</span>
+	<span class="nb">sfplist</span>	 gi<span class="n">sf2</span>						<span class="c1">;list presets of second soundfont</span>
+gi<span class="n">r</span>	<span class="nb">sfpreset</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> gi<span class="n">sf1</span><span class="p">,</span> <span class="mi">0</span> 				<span class="c1">;assign Synth Strings2 (#51)to index 0</span>
+gi<span class="n">v</span>	<span class="nb">sfpreset</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> gi<span class="n">sf2</span><span class="p">,</span> <span class="mi">1</span>					<span class="c1">;assign AcousticGuitar (#0) to index 1</span>
+<span class="nb">print</span> gi<span class="n">r</span>
+<span class="nb">print</span> gi<span class="n">v</span>
 
-<span class="c1">; first, sf_GMbank.sf2 is loaded and assigned to start at 0 and counting up to 328</span>
-<span class="c1">; as there are 329 presets in sf_GMbank.sf2.</span>
-<span class="c1">; then 01hpschd.sf2 is loaded and assigned to replace the 100th preset of sf_GMbank.sf2</span>
-<span class="c1">; then 07AcousticGuitar.sf2 is loaded and assigned to replace the 20th preset of sf_GMbank.sf2</span>
-
-	<span class="nb">sfpassign</span>	<span class="mi">0</span><span class="p">,</span> gi<span class="n">sf</span>	
-	<span class="nb">sfpassign</span>	<span class="mi">100</span><span class="p">,</span> gi<span class="n">r</span>
-        <span class="nb">sfpassign</span>	<span class="mi">20</span><span class="p">,</span> gi<span class="n">v</span>
-
-<span class="kd">instr</span> <span class="nf">1</span>	
+<span class="kd">instr</span> <span class="nf">1</span>
 
 i<span class="n">num</span>	<span class="o">=</span>	<span class="vi">p4</span>
 i<span class="n">vel</span>	<span class="o">=</span>	<span class="vi">p5</span>
 k<span class="n">amp</span>	<span class="nb">linsegr</span>	<span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> <span class="mi">0</span>
-k<span class="n">amp</span>	<span class="o">=</span> k<span class="n">amp</span><span class="o">/</span><span class="mi">600000</span> <span class="o">*</span> i<span class="n">vel</span>					<span class="c1">;scale amplitude and velocity dependent</span>
-k<span class="n">freq</span>	<span class="o">=</span>	<span class="mi">1</span>						<span class="c1">;do not change freq from sf</span>
-a<span class="n">1</span><span class="p">,</span>a<span class="n">2</span>	<span class="nb">sfplay3</span>	i<span class="n">vel</span><span class="p">,</span> i<span class="n">num</span><span class="p">,</span> k<span class="n">amp</span><span class="p">,</span> k<span class="n">freq</span><span class="p">,</span> <span class="vi">p6</span>			<span class="c1">;preset index starts at 0, counting up</span>
+k<span class="n">amp</span>	<span class="o">=</span> k<span class="n">amp</span><span class="o">/</span><span class="mi">600000</span>						<span class="c1">;scale amplitude, small value due to 0dbfs = 1</span>
+k<span class="n">freq</span>	<span class="o">=</span>	<span class="mi">1</span>						<span class="c1">;do not change freq </span>
+a<span class="n">1</span><span class="p">,</span>a<span class="n">2</span>	<span class="nb">sfplay3</span>	i<span class="n">vel</span><span class="p">,</span> i<span class="n">num</span><span class="p">,</span> k<span class="n">amp</span><span class="o">*</span>i<span class="n">vel</span><span class="p">,</span> k<span class="n">freq</span><span class="p">,</span> <span class="vi">p6</span>
 	<span class="nb">outs</span>	a<span class="n">1</span><span class="p">,</span> a<span class="n">2</span>
-	
-	<span class="kd">endin</span>
+<span class="kd">endin</span>
 	
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
 
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">60</span> <span class="mi">100</span>   <span class="mi">0</span>   <span class="c1">; Piano 1 from sf_GMbank.sf2</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="mi">62</span> <span class="o">&lt;</span>     <span class="o">.</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="mi">65</span> <span class="o">&lt;</span>     <span class="o">.</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="mi">69</span> <span class="mi">10</span>    <span class="o">.</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">60</span> <span class="mi">127</span> <span class="mi">0</span>	<span class="c1">;= Synth Strings I from first soundfont</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="mi">62</span> <span class="o">&lt;</span>   <span class="o">.</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="mi">65</span> <span class="o">&lt;</span>   <span class="o">.</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="mi">69</span> <span class="mi">10</span>  <span class="o">.</span>
 
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">5</span> <span class="mi">1</span> <span class="mi">60</span> <span class="mi">100</span>   <span class="mi">100</span> <span class="c1">; harpsichord from 01hpschd.sf2</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="mi">62</span> <span class="o">&lt;</span>     <span class="o">.</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="mi">65</span> <span class="o">&lt;</span>     <span class="o">.</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="mi">69</span> <span class="mi">10</span>    <span class="o">.</span>
-
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">10</span> <span class="mi">1</span> <span class="mi">60</span> <span class="mi">100</span>   <span class="mi">20</span> <span class="c1">; guitar from 07AcousticGuitar.sf2</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="mi">62</span> <span class="o">&lt;</span>     <span class="o">.</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="mi">65</span> <span class="o">&lt;</span>     <span class="o">.</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="mi">69</span> <span class="mi">10</span>    <span class="o">.</span>
-
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">15</span> <span class="mi">1</span> <span class="mi">60</span> <span class="mi">100</span>   <span class="mi">101</span> <span class="c1">; Goblin from sf_GMbank.sf2</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="mi">62</span> <span class="o">&lt;</span>     <span class="o">.</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="mi">65</span> <span class="o">&lt;</span>     <span class="o">.</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="mi">69</span> <span class="mi">10</span>    <span class="o">.</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">5</span> <span class="mi">1</span> <span class="mi">60</span> <span class="mi">127</span> <span class="mi">1</span>	<span class="c1">;= AcousticGuitar from second soundfont</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="mi">62</span> <span class="o">&lt;</span>   <span class="o">.</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="mi">65</span> <span class="o">&lt;</span>   <span class="o">.</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="mi">69</span> <span class="mi">10</span>  <span class="o">.</span>
 <span class="nb">e</span>
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
@@ -177,7 +158,7 @@ a<span class="n">1</span><span class="p">,</span>a<span class="n">2</span>	<span
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm207039"></a>
+        <a id="idm206984"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="sfilist.html" title="sfilist"><em class="citetitle">sfilist</em></a>,
@@ -191,7 +172,7 @@ a<span class="n">1</span><span class="p">,</span>a<span class="n">2</span>	<span
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm207058"></a>
+        <a id="idm207003"></a>
         <h2>Credits</h2>
         <p>
       </p>
