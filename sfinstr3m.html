@@ -118,7 +118,7 @@ a multiplier.
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
--odac -+rtmidi=virtual -M0 <span class="c1">;;;realtime audio out</span>
+-odac <span class="c1">;;;realtime audio out</span>
 <span class="c1">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</span>
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o sfinstr3m.wav -W ;;; for file output any platform</span>
@@ -130,28 +130,24 @@ a multiplier.
 <span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span> 
 
+<span class="c1">; By  Menno Knevel - 2020</span>
 
 gi<span class="n">sf</span>	<span class="nb">sfload</span>	<span class="s">"07AcousticGuitar.sf2"</span>
-	<span class="nb">sfilist</span>	i<span class="n">sf</span>
+	<span class="nb">sfilist</span>	gi<span class="n">sf</span>
 
-<span class="kd">instr</span> <span class="nf">1</span>	<span class="c1">; play from score and midi keyboard</span>
+<span class="kd">instr</span> <span class="nf">1</span>	
 
-	<span class="nb">mididefault</span>	<span class="mi">60</span><span class="p">,</span> <span class="vi">p3</span>
-	<span class="nb">midinoteonkey</span>	<span class="vi">p4</span><span class="p">,</span> <span class="vi">p5</span>
-i<span class="n">num</span>	<span class="nb">init</span>	<span class="vi">p4</span>
-i<span class="n">vel</span>	<span class="nb">init</span>	<span class="vi">p5</span>
-i<span class="n">vel</span>	<span class="nb">init</span>	i<span class="n">vel</span><span class="o">/</span><span class="mi">127</span>					<span class="c1">;make velocity dependent</span>
+i<span class="n">num</span>	<span class="o">=</span>	<span class="vi">p4</span>
+i<span class="n">vel</span>	<span class="o">=</span>	<span class="vi">p5</span>
 k<span class="n">amp</span>	<span class="nb">linsegr</span>	<span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> <span class="mi">0</span>
-k<span class="n">amp</span>	<span class="o">=</span> k<span class="n">amp</span><span class="o">/</span><span class="mi">7000</span>						<span class="c1">;scale amplitude</span>
-k<span class="n">freq</span>	<span class="nb">init</span>	<span class="mi">1</span>						<span class="c1">;do not change freq from sf</span>
+k<span class="n">amp</span>	<span class="o">=</span> k<span class="n">amp</span><span class="o">/</span><span class="mi">900000</span>						<span class="c1">;scale amplitude, small value because of 0dbfs  = 1 </span>
+k<span class="n">freq</span>	<span class="o">=</span>	<span class="mi">1</span>						<span class="c1">;do not change freq from sf</span>
 a<span class="n">out</span>	<span class="nb">sfinstr3m</span> i<span class="n">vel</span><span class="p">,</span> i<span class="n">num</span><span class="p">,</span> k<span class="n">amp</span><span class="o">*</span>i<span class="n">vel</span><span class="p">,</span> k<span class="n">freq</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> gi<span class="n">sf</span>
 	<span class="nb">outs</span>	a<span class="n">out</span><span class="p">,</span> a<span class="n">out</span>
-	
 	<span class="kd">endin</span>
 	
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">f</span><span class="mi">0</span>  <span class="mi">60</span>				<span class="c1">; stay active for 1 minute</span>
 
 <span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">60</span> <span class="mi">127</span>
 <span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="mi">62</span> <span class="o">&lt;</span>
@@ -169,7 +165,7 @@ a<span class="n">out</span>	<span class="nb">sfinstr3m</span> i<span class="n">v
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm204366"></a>
+        <a id="idm204348"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="sfilist.html" title="sfilist"><em class="citetitle">sfilist</em></a>,
@@ -187,7 +183,7 @@ a<span class="n">out</span>	<span class="nb">sfinstr3m</span> i<span class="n">v
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm204393"></a>
+        <a id="idm204375"></a>
         <h2>Credits</h2>
         <p>
       </p>
