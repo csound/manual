@@ -137,7 +137,7 @@ If however the soundfont has a sample for each key, than there will be no transp
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
 <span class="c1">; Audio out   Audio in    No messages</span>
--odac   <span class="c1">;;;realtime audio in</span>
+-odac -+rtmidi=virtual  -M0     <span class="c1">;;;realtime audio in, midi in</span>
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o sflooper.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
@@ -148,28 +148,33 @@ If however the soundfont has a sample for each key, than there will be no transp
 <span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
-<span class="c1">; By  Menno Knevel - 2020</span>
 
 i<span class="n">sf</span>   <span class="nb">sfload</span> <span class="s">"07AcousticGuitar.sf2"</span>
       <span class="nb">sfpassign</span> <span class="mi">0</span><span class="p">,</span> i<span class="n">sf</span>
 
-<span class="kd">instr</span> <span class="nf">1</span>	
+<span class="kd">instr</span> <span class="nf">1</span>	<span class="c1">; play from score and midi keyboard</span>
 
-i<span class="n">num</span>  <span class="o">=</span> <span class="vi">p4</span>
-i<span class="n">vel</span>  <span class="o">=</span> <span class="vi">p5</span>
-k<span class="n">amp</span>  <span class="nb">linsegr</span> <span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">.1</span><span class="p">,</span><span class="mi">0</span>	<span class="c1">; declick envelope</span>
-k<span class="n">amp</span>  <span class="o">=</span> k<span class="n">amp</span> <span class="o">*</span> <span class="mf">.0000015</span>		<span class="c1">;scale amplitude (= kamp/5000)</span>
-k<span class="n">freq</span> <span class="o">=</span> <span class="mi">1</span>			<span class="c1">;do not change freq from sf</span>
+      <span class="nb">mididefault</span>   <span class="mi">60</span><span class="p">,</span> <span class="vi">p3</span>
+      <span class="nb">midinoteonkey</span> <span class="vi">p4</span><span class="p">,</span> <span class="vi">p5</span>
+i<span class="n">num</span>  <span class="nb">init</span> <span class="vi">p4</span>
+i<span class="n">vel</span>  <span class="nb">init</span> <span class="vi">p5</span>
+<span class="nb">print</span> i<span class="n">vel</span>
+
+i<span class="n">vel</span>  <span class="nb">init</span>    i<span class="n">vel</span><span class="o">/</span><span class="mi">127</span>		<span class="c1">;velocity dependent</span>
+k<span class="n">amp</span>  <span class="nb">linsegr</span> <span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">.1</span><span class="p">,</span><span class="mi">0</span>	<span class="c1">;envelope</span>
+k<span class="n">amp</span>  <span class="o">=</span> k<span class="n">amp</span> <span class="o">*</span> <span class="mf">.0002</span>		<span class="c1">;scale amplitude (= kamp/5000)</span>
+k<span class="n">freq</span> <span class="nb">init</span> <span class="mi">1</span>			<span class="c1">;do not change freq from sf</span>
 <span class="c1">;"07AcousticGuitar.sf2" contains 2 samples, on notes E1 and C#4</span>
 <span class="c1">;start loop from beginning, loop .2 seconds - on the root key of these samples</span>
-a<span class="n">L</span><span class="p">,</span>a<span class="n">R</span> <span class="nb">sflooper</span> i<span class="n">vel</span><span class="p">,</span> i<span class="n">num</span><span class="p">,</span> k<span class="n">amp</span><span class="o">*</span>i<span class="n">vel</span><span class="p">,</span> k<span class="n">freq</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">.2</span><span class="p">,</span> <span class="mf">.05</span>  <span class="c1">; make amp velocity dependent</span>
+a<span class="n">L</span><span class="p">,</span>a<span class="n">R</span> <span class="nb">sflooper</span> i<span class="n">vel</span><span class="p">,</span> i<span class="n">num</span><span class="p">,</span> k<span class="n">amp</span><span class="o">*</span>i<span class="n">vel</span><span class="p">,</span> k<span class="n">freq</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">.2</span><span class="p">,</span> <span class="mf">.05</span>
       <span class="nb">outs</span> a<span class="n">L</span><span class="p">,</span> a<span class="n">R</span>
-
+	
 <span class="kd">endin</span>
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
+<span class="nb">f</span><span class="mi">0</span>  <span class="mi">60</span>		<span class="c1">; stay active for 1 minute</span>
 
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">60</span> <span class="mi">120</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">60</span> <span class="mi">100</span>
 <span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="mi">62</span> <span class="o">&lt;</span>
 <span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="mi">65</span> <span class="o">&lt;</span>
 <span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="mi">69</span> <span class="mi">10</span>
@@ -184,7 +189,7 @@ a<span class="n">L</span><span class="p">,</span>a<span class="n">R</span> <span
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm205218"></a>
+        <a id="idm205237"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="sfilist.html" title="sfilist"><em class="citetitle">sfilist</em></a>,
@@ -198,7 +203,7 @@ a<span class="n">L</span><span class="p">,</span>a<span class="n">R</span> <span
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm205237"></a>
+        <a id="idm205256"></a>
         <h2>Credits</h2>
         <p>
       </p>
