@@ -252,158 +252,55 @@
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
 <span class="c1">; Audio out   Audio in    No messages</span>
--odac           -iadc     -d     <span class="c1">;;;RT audio I/O</span>
+-odac       <span class="c1">;;    -iadc     -d     ;;;RT audio I/O</span>
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o oscbnk.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span>
 
-<span class="cm">/* Written by Istvan Varga */</span>
-<span class="vg">sr</span>	<span class="o">=</span>  <span class="mi">48000</span>
-<span class="vg">kr</span>	<span class="o">=</span>  <span class="mi">750</span>
-<span class="vg">ksmps</span>	<span class="o">=</span>  <span class="mi">64</span>
-<span class="vg">nchnls</span>	<span class="o">=</span>  <span class="mi">2</span>
+<span class="vg">sr</span>     <span class="o">=</span>   <span class="mi">44100</span>
+<span class="vg">ksmps</span>  <span class="o">=</span>   <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span>   <span class="mi">2</span>
+<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
 
-ga<span class="n">01</span>	<span class="nb">init</span> <span class="mi">0</span>
-ga<span class="n">02</span>	<span class="nb">init</span> <span class="mi">0</span>
-
-<span class="cm">/* sawtooth wave */</span>
-i<span class="n">_</span>	<span class="nb">ftgen</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">16384</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">16384</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span>
-<span class="cm">/* FM waveform */</span>
-i<span class="n">_</span>	<span class="nb">ftgen</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4096</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span>	<span class="w">\</span>
-			     <span class="mi">0</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">0</span>
-<span class="cm">/* AM waveform */</span>
-i<span class="n">_</span>	<span class="nb">ftgen</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4096</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4096</span><span class="p">,</span> <span class="mf">0.01</span>
-<span class="cm">/* FM to EQ */</span>
-i<span class="n">_</span>	<span class="nb">ftgen</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">1</span>
-<span class="cm">/* sine wave */</span>
-i<span class="n">_</span>	<span class="nb">ftgen</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>
-<span class="cm">/* room parameters */</span>
-i<span class="n">_</span>	<span class="nb">ftgen</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span>			<span class="w">\</span>
-			    <span class="mi">1</span><span class="p">,</span> <span class="mf">26.833</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span>	<span class="w">\</span>
-			    <span class="mi">1</span><span class="p">,</span>  <span class="mf">1.753</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span>  <span class="mi">5000</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span>	<span class="w">\</span>
-			    <span class="mi">1</span><span class="p">,</span> <span class="mf">39.451</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span>  <span class="mi">7000</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span>	<span class="w">\</span>
-			    <span class="mi">1</span><span class="p">,</span> <span class="mf">33.503</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span>  <span class="mi">7000</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span>	<span class="w">\</span>
-			    <span class="mi">1</span><span class="p">,</span> <span class="mf">36.151</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span>  <span class="mi">7000</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span>	<span class="w">\</span>
-			    <span class="mi">1</span><span class="p">,</span> <span class="mf">29.633</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span>  <span class="mi">7000</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span>
-
-<span class="cm">/* generate bandlimited sawtooth waves */</span>
-
-i<span class="n">0</span>	<span class="o">=</span>  <span class="mi">0</span>
-<span class="nl">loop1</span><span class="p">:</span>
-i<span class="n">maxh</span>	<span class="o">=</span>  <span class="vg">sr</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="mf">440.0</span> <span class="o">*</span> <span class="nb">exp</span><span class="p">(</span><span class="nb">log</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span>i<span class="n">0</span> <span class="o">-</span> <span class="mi">69</span><span class="p">)</span> <span class="o">/</span> <span class="mi">12</span><span class="p">))</span>
-i<span class="n">_</span>	<span class="nb">ftgen</span> i<span class="n">0</span> <span class="o">+</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4096</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> i<span class="n">maxh</span>
-i<span class="n">0</span>	<span class="o">=</span>  i<span class="n">0</span> <span class="o">+</span> <span class="mi">1</span>
-	<span class="k">if</span> <span class="p">(</span>i<span class="n">0</span> <span class="o">&lt;</span> <span class="mf">127.5</span><span class="p">)</span> <span class="k">igoto</span> <span class="nl">loop1</span>
-
-	<span class="kd">instr</span> <span class="nf">1</span>
-
-<span class="vi">p3</span>	<span class="o">=</span>  <span class="vi">p3</span> <span class="o">+</span> <span class="mf">0.4</span>
-
-<span class="c1">; note frequency</span>
-k<span class="n">cps</span>	<span class="o">=</span>  <span class="mf">440.0</span> <span class="o">*</span> <span class="nb">exp</span><span class="p">(</span><span class="nb">log</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="vi">p4</span> <span class="o">-</span> <span class="mi">69</span><span class="p">)</span> <span class="o">/</span> <span class="mi">12</span><span class="p">)</span>
-<span class="c1">; lowpass max. frequency</span>
-k<span class="n">lpmaxf</span>	<span class="nb">limit</span> <span class="mi">64</span> <span class="o">*</span> k<span class="n">cps</span><span class="p">,</span> <span class="mf">1000.0</span><span class="p">,</span> <span class="mf">12000.0</span>
-<span class="c1">; FM depth in Hz</span>
-k<span class="n">fmd1</span>	<span class="o">=</span>  <span class="mf">0.02</span> <span class="o">*</span> k<span class="n">cps</span>
-<span class="c1">; AM frequency</span>
-k<span class="n">amfr</span>	<span class="o">=</span>  k<span class="n">cps</span> <span class="o">*</span> <span class="mf">0.02</span>
-k<span class="n">amfr2</span>	<span class="o">=</span>  k<span class="n">cps</span> <span class="o">*</span> <span class="mf">0.1</span>
-<span class="c1">; table number</span>
-k<span class="n">fnum</span>	<span class="o">=</span>  <span class="p">(</span><span class="mi">256</span> <span class="o">+</span> <span class="mi">69</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">+</span> <span class="mi">12</span> <span class="o">*</span> <span class="nb">log</span><span class="p">(</span>k<span class="n">cps</span> <span class="o">/</span> <span class="mf">440.0</span><span class="p">)</span> <span class="o">/</span> <span class="nb">log</span><span class="p">(</span><span class="mf">2.0</span><span class="p">))</span>
-<span class="c1">; amp. envelope</span>
-a<span class="n">env</span>	<span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="vi">p3</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">0</span>
-
-<span class="cm">/* oscillator / left */</span>
-
-a<span class="n">1</span>	<span class="nb">oscbnk</span> k<span class="n">cps</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> k<span class="n">fmd1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">144</span><span class="p">,</span>	      <span class="w">\</span>
-		<span class="mf">0.0</span><span class="p">,</span> k<span class="n">lpmaxf</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span>			      <span class="w">\</span>
-		k<span class="n">fnum</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span>
-a<span class="n">2</span>	<span class="nb">oscbnk</span> k<span class="n">cps</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> k<span class="n">fmd1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">201</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> k<span class="n">amfr</span><span class="p">,</span> k<span class="n">amfr2</span><span class="p">,</span> <span class="mi">148</span><span class="p">,</span>  <span class="w">\</span>
-		<span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>					      <span class="w">\</span>
-		k<span class="n">fnum</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span>
-a<span class="n">2</span>	<span class="nb">pareq</span> a<span class="n">2</span><span class="p">,</span> k<span class="n">cps</span> <span class="o">*</span> <span class="mi">8</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.7071</span><span class="p">,</span> <span class="mi">2</span>
-a<span class="n">0</span>	<span class="o">=</span>  a<span class="n">1</span> <span class="o">+</span> a<span class="n">2</span> <span class="o">*</span> <span class="mf">0.12</span>
-<span class="cm">/* delay */</span>
-a<span class="n">del</span>	<span class="o">=</span>  <span class="mf">0.001</span>
-a<span class="n">01</span>	<span class="nb">vdelayx</span> a<span class="n">0</span><span class="p">,</span> a<span class="n">del</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mi">16</span>
-a<span class="n">_</span>	<span class="nb">oscili</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mf">0.0</span>
-a<span class="n">del</span>	<span class="o">=</span>  a<span class="n">del</span> <span class="o">+</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="nb">exp</span><span class="p">(</span><span class="nb">log</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span> <span class="o">*</span> a<span class="n">_</span><span class="p">)</span> <span class="o">*</span> <span class="mi">8000</span><span class="p">)</span>
-a<span class="n">02</span>	<span class="nb">vdelayx</span> a<span class="n">0</span><span class="p">,</span> a<span class="n">del</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mi">16</span>
-a<span class="n">0</span>	<span class="o">=</span>  a<span class="n">01</span> <span class="o">+</span> a<span class="n">02</span>
-
-ga<span class="n">01</span>	<span class="o">=</span>  ga<span class="n">01</span> <span class="o">+</span> a<span class="n">0</span> <span class="o">*</span> a<span class="n">env</span> <span class="o">*</span> <span class="mi">2500</span>
-
-<span class="cm">/* oscillator / right */</span>
-
-<span class="c1">; lowpass max. frequency</span>
-
-a<span class="n">1</span>	<span class="nb">oscbnk</span> k<span class="n">cps</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> k<span class="n">fmd1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">202</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">144</span><span class="p">,</span>	      <span class="w">\</span>
-		<span class="mf">0.0</span><span class="p">,</span> k<span class="n">lpmaxf</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span>			      <span class="w">\</span>
-		k<span class="n">fnum</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span>
-a<span class="n">2</span>	<span class="nb">oscbnk</span> k<span class="n">cps</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> k<span class="n">fmd1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">203</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> k<span class="n">amfr</span><span class="p">,</span> k<span class="n">amfr2</span><span class="p">,</span> <span class="mi">148</span><span class="p">,</span>  <span class="w">\</span>
-		<span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>					      <span class="w">\</span>
-		k<span class="n">fnum</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span>
-a<span class="n">2</span>	<span class="nb">pareq</span> a<span class="n">2</span><span class="p">,</span> k<span class="n">cps</span> <span class="o">*</span> <span class="mi">8</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.7071</span><span class="p">,</span> <span class="mi">2</span>
-a<span class="n">0</span>	<span class="o">=</span>  a<span class="n">1</span> <span class="o">+</span> a<span class="n">2</span> <span class="o">*</span> <span class="mf">0.12</span>
-<span class="cm">/* delay */</span>
-a<span class="n">del</span>	<span class="o">=</span>  <span class="mf">0.001</span>
-a<span class="n">01</span>	<span class="nb">vdelayx</span> a<span class="n">0</span><span class="p">,</span> a<span class="n">del</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mi">16</span>
-a<span class="n">_</span>	<span class="nb">oscili</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mf">0.25</span>
-a<span class="n">del</span>	<span class="o">=</span>  a<span class="n">del</span> <span class="o">+</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="nb">exp</span><span class="p">(</span><span class="nb">log</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span> <span class="o">*</span> a<span class="n">_</span><span class="p">)</span> <span class="o">*</span> <span class="mi">8000</span><span class="p">)</span>
-a<span class="n">02</span>	<span class="nb">vdelayx</span> a<span class="n">0</span><span class="p">,</span> a<span class="n">del</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mi">16</span>
-a<span class="n">0</span>	<span class="o">=</span>  a<span class="n">01</span> <span class="o">+</span> a<span class="n">02</span>
-
-ga<span class="n">02</span>	<span class="o">=</span>  ga<span class="n">02</span> <span class="o">+</span> a<span class="n">0</span> <span class="o">*</span> a<span class="n">env</span> <span class="o">*</span> <span class="mi">2500</span>
+<span class="c1">; By Stefano Cucchi 2020</span>
 
 
-	<span class="kd">endin</span>
+<span class="kd">instr</span> <span class="nf">1</span>
 
-<span class="cm">/* output / left */</span>
+k<span class="n">cps</span> <span class="o">=</span> <span class="mi">300</span>
+k<span class="n">amd</span> <span class="o">=</span> <span class="mi">3</span>
+k<span class="n">fmd</span> <span class="o">=</span> <span class="mi">2</span>
+k<span class="n">pmd</span> <span class="o">=</span> <span class="mf">2.3</span>
+i<span class="n">ovrlap</span> <span class="o">=</span> <span class="vi">p4</span>
+i<span class="n">seed</span> <span class="o">=</span> <span class="mf">0.2</span>
+k<span class="n">l1minf</span> <span class="o">=</span> <span class="mf">1.1</span>
+k<span class="n">l1maxf</span> <span class="o">=</span> <span class="mf">2.3</span>
+k<span class="n">l2minf</span> <span class="o">=</span> <span class="mf">0.2</span>
+k<span class="n">l2maxf</span> <span class="o">=</span> <span class="mf">1.5</span>
+i<span class="n">lfomode</span> <span class="o">=</span> <span class="mi">64</span> <span class="o">+</span> <span class="mi">16</span> <span class="o">+</span> <span class="mi">8</span> <span class="o">+</span> <span class="mi">2</span> <span class="c1">; LFO1 to amplitude + LFO1 to EQ + LFO2 to frequency + LFO2 to phase </span>
+k<span class="n">eqminf</span> <span class="o">=</span> <span class="mi">20</span>
+k<span class="n">eqmaxf</span> <span class="o">=</span> <span class="mi">12000</span>
+k<span class="n">eqminl</span> <span class="o">=</span> <span class="mf">0.1</span>
+k<span class="n">eqmaxl</span> <span class="o">=</span> <span class="mi">23</span>
+k<span class="n">eqminq</span> <span class="o">=</span> <span class="mf">0.2</span>
+k<span class="n">eqmaxq</span> <span class="o">=</span> <span class="mi">2</span>
+i<span class="n">eqmode</span> <span class="o">=</span> <span class="mi">1</span>
+k<span class="n">fn</span> <span class="o">=</span> <span class="mi">1</span>
 
-	<span class="kd">instr</span> <span class="nf">81</span>
-
-i<span class="n">1</span>	<span class="o">=</span>  <span class="mf">0.000001</span>
-a<span class="n">Ll</span><span class="p">,</span> a<span class="n">Lh</span><span class="p">,</span> a<span class="n">Rl</span><span class="p">,</span> a<span class="n">Rh</span>	<span class="nb">spat3di</span> ga<span class="n">01</span> <span class="o">+</span> i<span class="n">1</span><span class="o">*</span>i<span class="n">1</span><span class="o">*</span>i<span class="n">1</span><span class="o">*</span>i<span class="n">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">8.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span>
-ga<span class="n">01</span>	<span class="o">=</span>  <span class="mi">0</span>
-a<span class="n">Ll</span>	<span class="nb">butterlp</span> a<span class="n">Ll</span><span class="p">,</span> <span class="mf">800.0</span>
-a<span class="n">Rl</span>	<span class="nb">butterlp</span> a<span class="n">Rl</span><span class="p">,</span> <span class="mf">800.0</span>
-
-	<span class="nb">outs</span> a<span class="n">Ll</span> <span class="o">+</span> a<span class="n">Lh</span><span class="p">,</span> a<span class="n">Rl</span> <span class="o">+</span> a<span class="n">Rh</span>
-
-	<span class="kd">endin</span>
-
-<span class="cm">/* output / right */</span>
-
-	<span class="kd">instr</span> <span class="nf">82</span>
-
-i<span class="n">1</span>	<span class="o">=</span>  <span class="mf">0.000001</span>
-a<span class="n">Ll</span><span class="p">,</span> a<span class="n">Lh</span><span class="p">,</span> a<span class="n">Rl</span><span class="p">,</span> a<span class="n">Rh</span>	<span class="nb">spat3di</span> ga<span class="n">02</span> <span class="o">+</span> i<span class="n">1</span><span class="o">*</span>i<span class="n">1</span><span class="o">*</span>i<span class="n">1</span><span class="o">*</span>i<span class="n">1</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span>
-ga<span class="n">02</span>	<span class="o">=</span>  <span class="mi">0</span>
-a<span class="n">Ll</span>	<span class="nb">butterlp</span> a<span class="n">Ll</span><span class="p">,</span> <span class="mf">800.0</span>
-a<span class="n">Rl</span>	<span class="nb">butterlp</span> a<span class="n">Rl</span><span class="p">,</span> <span class="mf">800.0</span>
-
-	<span class="nb">outs</span> a<span class="n">Ll</span> <span class="o">+</span> a<span class="n">Lh</span><span class="p">,</span> a<span class="n">Rl</span> <span class="o">+</span> a<span class="n">Rh</span>
-
-	<span class="kd">endin</span>
-
+a<span class="n">1</span> <span class="nb">oscbnk</span> k<span class="n">cps</span><span class="p">,</span> k<span class="n">amd</span><span class="p">,</span> k<span class="n">fmd</span><span class="p">,</span> k<span class="n">pmd</span><span class="p">,</span> i<span class="n">ovrlap</span><span class="p">,</span> i<span class="n">seed</span><span class="p">,</span> k<span class="n">l1minf</span><span class="p">,</span> k<span class="n">l1maxf</span><span class="p">,</span> k<span class="n">l2minf</span><span class="p">,</span> k<span class="n">l2maxf</span><span class="p">,</span> i<span class="n">lfomode</span><span class="p">,</span> k<span class="n">eqminf</span><span class="p">,</span> k<span class="n">eqmaxf</span><span class="p">,</span> k<span class="n">eqminl</span><span class="p">,</span> k<span class="n">eqmaxl</span><span class="p">,</span> k<span class="n">eqminq</span><span class="p">,</span> k<span class="n">eqmaxq</span><span class="p">,</span> i<span class="n">eqmode</span><span class="p">,</span> k<span class="n">fn</span><span class="p">,</span> <span class="mi">2</span> <span class="p">,</span><span class="mi">2</span> <span class="p">,</span><span class="mi">2</span> <span class="p">,</span><span class="mi">2</span> <span class="p">,</span><span class="mi">2</span> 
+k<span class="n">declick</span> <span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="vi">p3</span><span class="o">-</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mi">0</span>
+<span class="nb">outs</span> a<span class="n">1</span><span class="o">*</span><span class="mf">0.003</span><span class="o">*</span>k<span class="n">declick</span><span class="p">,</span> a<span class="n">1</span><span class="o">*</span><span class="mf">0.003</span><span class="o">*</span>k<span class="n">declick</span>
+<span class="kd">endin</span>
 
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
+<span class="nb">f</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">4096</span> <span class="mi">10</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span>
+<span class="nb">f</span><span class="mi">2</span> <span class="mi">0</span> <span class="mi">4096</span> <span class="mi">10</span> <span class="mi">1</span> 
 
-<span class="cm">/* Written by Istvan Varga */</span>
-<span class="nb">t</span> <span class="mi">0</span> <span class="mi">60</span>
-
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">4</span> <span class="mi">41</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">4</span> <span class="mi">60</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">4</span> <span class="mi">65</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">4</span> <span class="mi">69</span>
-
-<span class="nb">i</span> <span class="mi">81</span> <span class="mi">0</span> <span class="mf">5.5</span>
-<span class="nb">i</span> <span class="mi">82</span> <span class="mi">0</span> <span class="mf">5.5</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">4</span> <span class="mi">3</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">5</span> <span class="mi">4</span> <span class="mi">32</span>
 <span class="nb">e</span>
-
-
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
@@ -414,7 +311,7 @@ a<span class="n">Rl</span>	<span class="nb">butterlp</span> a<span class="n">Rl<
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm153162"></a>
+        <a id="idm152421"></a>
         <h2>Credits</h2>
         <p>
       </p>
