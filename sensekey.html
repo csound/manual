@@ -100,34 +100,49 @@
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
-<span class="c1">; Audio out   Audio in</span>
--odac           -iadc    <span class="c1">;;;RT audio I/O</span>
-<span class="c1">; For Non-realtime ouput leave only the line below:</span>
-<span class="c1">; -o sensekey.wav -W ;;; for file output any platform</span>
+-odac -d   <span class="c1">;;;realtime audio out</span>
+<span class="c1">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span>
 
+<span class="c1">; By Stefano Cucchi - 2020</span>
+
 <span class="c1">; Initialize the global variables.</span>
 <span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">kr</span> <span class="o">=</span> <span class="mi">4410</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
 
-<span class="c1">; Instrument #1.</span>
+
 <span class="kd">instr</span> <span class="nf">1</span>
-  k<span class="n">1</span> <span class="nb">sensekey</span>
-  <span class="nb">printk2</span> k<span class="n">1</span>
+
+<span class="c1">; Instr 1 trigger instr 2: every time you press any key, instr 2 produce a note.</span>
+<span class="c1">; The pitch of the tone produced by instr 2 is equal to the ASCII code of the key pressed.</span>
+
+gk<span class="n">Number</span><span class="p">,</span> gk<span class="n">Press</span> <span class="nb">sensekey</span> 
+ 
+<span class="k">if</span> <span class="nb">changed</span><span class="p">(</span>gk<span class="n">Press</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">then</span>
+      <span class="k">if</span> <span class="p">(</span>gk<span class="n">Press</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="k">then</span>
+          <span class="nb">event</span> <span class="s">"i"</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.3</span>
+      <span class="k">endif</span> 
+<span class="k">endif</span>      
 <span class="kd">endin</span>
 
+<span class="kd">instr</span> <span class="nf">2</span>
+  
+i<span class="n">Cps</span> <span class="nb">init</span> <span class="nb">i</span><span class="p">(</span>gk<span class="n">Number</span><span class="p">)</span>
+<span class="nb">print</span> i<span class="n">Cps</span>
+a<span class="n">sig</span> <span class="nb">oscili</span> <span class="mf">0.2</span><span class="p">,</span> i<span class="n">Cps</span><span class="p">,</span> <span class="mi">1</span> 
+k<span class="n">envelope</span> <span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span>
+<span class="nb">outs</span> a<span class="n">sig</span><span class="o">*</span>k<span class="n">envelope</span><span class="p">,</span> a<span class="n">sig</span><span class="o">*</span>k<span class="n">envelope</span>
+<span class="kd">endin</span>
 
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
+<span class="nb">f</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">4096</span> <span class="mi">10</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mf">0.3</span> <span class="mi">0</span> <span class="mf">0.2</span> <span class="mf">0.3</span> <span class="mf">0.5</span>
 
-<span class="c1">; Play Instrument #1 for thirty seconds.</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">30</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">2000</span>
 <span class="nb">e</span>
-
-
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
@@ -148,13 +163,13 @@ q i1   113.00000
 
       </p>
         <div class="example">
-          <a id="idm201417"></a>
+          <a id="idm201494"></a>
           <p class="title">
             <strong>Example 930. Example of the sensekey opcode using keyboard capture from an FLpanel.</strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
-              <a id="idm201419"></a>
+              <a id="idm201496"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 
@@ -211,13 +226,13 @@ q i1   113.00000
 
       </p>
         <div class="example">
-          <a id="idm201508"></a>
+          <a id="idm201585"></a>
           <p class="title">
             <strong>Example 931. Example of the sensekey opcode using keyboard capture from an FLpanel.</strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
-              <a id="idm201510"></a>
+              <a id="idm201587"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -294,7 +309,7 @@ Key code = 61, state = 0<br />
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm201662"></a>
+        <a id="idm201739"></a>
         <h2>See also</h2>
         <p>
       <a class="link" href="FLpanel.html" title="FLpanel"><em class="citetitle">FLpanel</em></a>,
@@ -302,7 +317,7 @@ Key code = 61, state = 0<br />
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm201669"></a>
+        <a id="idm201746"></a>
         <h2>Credits</h2>
         <p>
       </p>
