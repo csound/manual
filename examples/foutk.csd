@@ -4,7 +4,7 @@
 -odac     ;;;realtime audio out
 -iadc    ;;;uncomment -iadc if real audio input is needed too
 ; For Non-realtime ouput leave only the line below:
-; -o foutk_02.wav -W ;;; for file output any platform
+; -o foutk.wav -W ;;; for file output any platform
 </CsOptions>
 <CsInstruments>
 
