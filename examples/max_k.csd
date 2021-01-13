@@ -1,12 +1,14 @@
 <CsoundSynthesizer>
 <CsOptions>
 ; Select audio/midi flags here according to platform
--odac  -Ma   ;;;realtime audio out and midi in (on all inputs)
+-odac  ;-Ma   ;;;realtime audio out and midi in (on all inputs)
 ;-iadc    ;;;uncomment -iadc if RT audio input is needed too
 ; For Non-realtime ouput leave only the line below:
 ; -o max_k.wav -W ;;; for file output any platform
 </CsOptions>
 <CsInstruments>
+
+; by Stefano Cucchi 2020
 
 sr = 44100
 ksmps = 32
@@ -14,41 +16,35 @@ nchnls = 2
 0dbfs  = 1
 
 
-	FLpanel	"This Panel contains VU-meter",300,100
-gk1,gih1 FLslider "VU-meter", 0,1,0,1, -1, 250,30, 30,30
-	FLsetColor2 50, 50, 255,  gih1
-	FLpanel_end
-	FLrun
-
-ga1 init 0
-	
 instr 1
 
-kenv	linsegr	0,.5,.7,.5,.5,.2,0
-ifreq	cpsmidi
-a1	poscil	0dbfs*kenv, ifreq, 1
-ga1	=	ga1+a1
+anoise noise 0.1, 0.1 ; generate some noise
+arandom randomi 400, 12000, 4 ; generate random numbers from 400 to 1200 
 
-endin
+ktrig metro 3 ; trigger signal
 
-instr 2
+kmin max_k arandom, ktrig, 3 ; minumum value 
+kmax max_k arandom, ktrig, 2 ; maximum value 
 
-	outs	ga1, ga1
-ktrig	metro	25					;refresh 25 times per second
-kval	max_k	ga1, ktrig, 1
-	FLsetVal ktrig, kval, gih1
-ga1	=	0
+printk 0.2, kmin
+printk 0.2, kmax
+
+anoisehp butterhp anoise, kmin ; hipass filter at kmin frequency
+anoiselp butterlp anoise, kmax*0.5 ; lopass filter at kmin/2 frequency
+
+acomp oscil 0.1, 440 ; comparator signal for consistent amplitude
+
+anoisehp balance anoisehp, acomp ; adjusting the volume
+anoiselp balance anoiselp, acomp ; adjusting the volume
+
+outs anoisehp, anoiselp
 
 endin
 
 </CsInstruments>
 <CsScore>
-f1 0 1024 10 1
 
-i2 0 3600
-f0 3600
-
+i1 0 10
 e
 </CsScore>
 </CsoundSynthesizer>
-
