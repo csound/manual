@@ -17,7 +17,7 @@ nchnls	=	2
 kmod	ctrl7	1, 1, 0, 1
 	printk2	kmod
 
-kout	scale	kmod, 0, -127
+kout	scale2	kmod, -127, 0
 	printk2	kout
 
 	endin

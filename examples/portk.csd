@@ -1,40 +1,42 @@
 <CsoundSynthesizer>
 <CsOptions>
 ; Select audio/midi flags here according to platform
-; Audio out   Audio in
--odac         ;  -iadc    ;;;RT audio I/O
+-odac   ;;;realtime audio out
+;-iadc    ;;;uncomment -iadc if realtime audio input is needed too
 ; For Non-realtime ouput leave only the line below:
 ; -o portk.wav -W ;;; for file output any platform
 </CsOptions>
 <CsInstruments>
 
-sr = 44100
-ksmps = 128
-nchnls = 1
+; by Stefano Cucchi 2020
 
-;Example by Andres Cabrera 2007
-
-FLpanel "Slider", 650, 140, 50, 50
-    gkval1, gislider1 FLslider "Watch me", 0, 127, 0, 5, -1, 580, 30, 25, 20
-    gkval2, gislider2 FLslider "Move me", 0, 127, 0, 5, -1, 580, 30, 25, 80
-    gkhtim, gislider3 FLslider "khtim", 0.1, 1, 0, 6, -1, 30, 100, 610, 10
-FLpanelEnd
-FLrun
-
-FLsetVal_i 0.1, gislider3 ;set initial time to 0.1
+sr = 44100 
+ksmps = 32 
+0dbfs  = 1 
+nchnls = 2
 
 instr 1
-kval portk gkval2, gkhtim  ; take the value of slider 2 and apply portamento
-FLsetVal 1, kval, gislider1  ;set the value of slider 1 to kval
+
+kFreq randomh 400, 1300, 4, 2, 550 ; random frequency to oscillators.
+
+khtim linseg 0.001, p3*0.3, 0.001, p3*0.7, 0.125 ; portamento-function: start with NO portamento - then portamento.
+kPort portk kFreq, khtim ; pitch with portamento.
+
+asigL oscili 0.4, kFreq, 1 ; channel left - NO portamento.
+asigR oscili 0.4, kPort, 2 ; channel right - PORTAMENTO.
+
+outch 1, asigL   ; channel left
+outch 2, asigR   ; channel right
+
 endin
 
 </CsInstruments>
 <CsScore>
 
-; Play Instrument #1 for one minute.
-i 1 0 60
+f 1 0 4096 10 1 0 1 0 1 0 1 0 1
+f 2 0 4096 10 1 1 0 1 0 1 0 1 0 1
+
+i 1 0 10
 e
-
-
 </CsScore>
 </CsoundSynthesizer>

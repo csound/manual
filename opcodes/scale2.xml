@@ -1,15 +1,15 @@
 
-<refentry id="scale">
-<indexterm id="IndexScale"><primary>scale</primary></indexterm>
+<refentry id="scale2">
+<indexterm id="IndexScale2"><primary>scale2</primary></indexterm>
   <refentryinfo><title>Signal Generators:Linear and Exponential Generators</title></refentryinfo>
   <refmeta>
-    <refentrytitle>scale</refentrytitle>
+    <refentrytitle>scale2</refentrytitle>
   </refmeta>
 
   <refnamediv>
-    <refname>scale</refname>
+    <refname>scale2</refname>
     <refpurpose>
-      Arbitrary signal scaling.
+      Arbitrary signal scaling with optional smoothing.
     </refpurpose>
   </refnamediv>
 
@@ -22,15 +22,24 @@
 
   <refsect1>
     <title>Syntax</title>
-    <synopsis>kscl <command>scale</command> kinput, kmax, kmin[, kimax, kimin]</synopsis>
-  </refsect1>
+    <synopsis>kscl <command>scale2</command> kinput, kmin, kmax[, kimin, kimax][ihtime]</synopsis>
+    </refsect1>
 
+    <refsect1>
+      <title>Initialisation</title>
+      <para><emphasis>ihtime</emphasis> -- Optional; Half time value
+      for internal port filter for smoothing.  Default is no smoothing.
+      </para>
+    </refsect1>
+      
   <refsect1>
     <title>Performance</title>
     <para>
       <emphasis>kin</emphasis> -- Input value. Can originate from any
-      k-rate source as long as that source's output is in range
-      <emphasis>kimin</emphasis> to <emphasis>kimax</emphasis>.
+      k-rate source and should be in the range
+      <emphasis>kimin</emphasis> to <emphasis>kimax</emphasis>.  If it
+      is larger than kimax it is treated as kimax, and if less than
+      kimin then it is treated as kimin. 
     </para>
     <para>
       <emphasis>kmin</emphasis> -- Minimum value of the resultant scale operation.
@@ -46,18 +55,20 @@
       <emphasis>kimax</emphasis> -- Optional; Maximum of the incoming
       value range, defaulting to one.
     </para>
-    <para><warning> Take care with the order of the arguments which has maximum
-     before minimum</warning></para>
+    <para><warning>The argument order is minimum before maximum, which
+    differs from <command>scale</command> but it consistent with other opcodes that use a
+    range.</warning></para>
   </refsect1>
 
+  
   <refsect1>
     <title>Examples</title>
     <para>
-      Here is an example of the scale opcode. It uses the file <ulink url="examples/scale.csd"><citetitle>scale.csd</citetitle></ulink>.
+      Here is an example of the scale2 opcode. It uses the file <ulink url="examples/scale2.csd"><citetitle>scale2.csd</citetitle></ulink>.
       <example>
-        <title>Example of the scale opcode.</title>
+        <title>Example of the scale2 opcode.</title>
         <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
-        <xi:include href="examples-xml/scale.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="examples-xml/scale2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
     </para>
   </refsect1>
@@ -68,6 +79,7 @@
       <link linkend="gainslider"><citetitle>gainslider</citetitle></link>,
       <link linkend="logcurve"><citetitle>logcurve</citetitle></link>,
       <link linkend="expcurve"><citetitle>expcurve</citetitle></link>
+      <link linkend="scale"><citetitle>scale</citetitle></link>
     </para>
   </refsect1>
 
@@ -75,11 +87,9 @@
     <title>Credits</title>
     <para>
       <simplelist>
-        <member>Author: David Akbari</member>
-        <member>October</member>
-        <member>2006</member>
-        <member>&namejohn;</member>
-        <member>Modified to add input range values in 2020</member>
+        <member>Author: &namejohn; after David Akbari</member>
+        <member>December</member>
+        <member>2020</member>
       </simplelist>
     </para>
   </refsect1>
