@@ -8,7 +8,7 @@
 </CsOptions>
 <CsInstruments>
 
-; by Stefano Cucchi 2020
+; by Stefano Cucchi 2020 and Richard Boulanger
 
 sr = 44100
 ksmps = 32
