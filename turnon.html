@@ -69,6 +69,197 @@
       </div>
       <div class="refsect1">
         <a id="idm240208"></a>
+        <h2>Examples</h2>
+        <p>
+      Here is an example of the turnon opcode. It uses the files <a class="ulink" href="examples/turnon.csd" target="_top"><em class="citetitle">turnon.csd</em></a>.
+      </p>
+        <div class="example">
+          <a id="idm240213"></a>
+          <p class="title">
+            <strong>Example 1105. Example of the turnon opcode.</strong>
+          </p>
+          <div class="example-contents">
+            <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
+            <div class="refsect1">
+              <a id="idm240220"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+<span class="nt">&lt;CsOptions&gt;</span>
+<span class="c1">; Select audio/midi flags here according to platform</span>
+-odac <span class="c1">;;;realtime audio out</span>
+<span class="c1">;-iadc ;;;uncomment -iadc if realtime audio input is needed too</span>
+<span class="c1">; For Non-realtime ouput leave only the line below:</span>
+<span class="c1">; -o turnon.wav -W ;;; for file output any platform</span>
+<span class="nt">&lt;/CsOptions&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span>
+
+<span class="c1">; by Stefano Cucchi 2020</span>
+
+<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
+
+ga<span class="n">send1</span> <span class="nb">init</span> <span class="mi">0</span>
+ga<span class="n">send2</span> <span class="nb">init</span> <span class="mi">0</span>
+
+<span class="nb">turnon</span> <span class="mi">100</span>
+<span class="nb">turnon</span> <span class="mi">101</span>
+
+<span class="kd">instr</span> <span class="nf">1</span>
+
+a<span class="n">bar</span> <span class="nb">barmodel</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="vi">p4</span><span class="p">,</span> <span class="mf">0.000001</span><span class="p">,</span> <span class="mf">0.0103</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="vi">p6</span><span class="p">,</span> <span class="vi">p7</span>
+k<span class="n">envelope</span> <span class="nb">expseg</span> <span class="mi">1</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mf">.01</span>
+a<span class="n">bar</span> <span class="o">=</span> a<span class="n">bar</span> <span class="o">*</span> k<span class="n">envelope</span> <span class="o">*</span> <span class="vi">p8</span>
+<span class="c1">; NO local output</span>
+
+ga<span class="n">send1</span> <span class="o">=</span> ga<span class="n">send1</span> <span class="o">+</span> a<span class="n">bar</span><span class="o">*</span><span class="vi">p8</span>
+ga<span class="n">send2</span> <span class="o">=</span> ga<span class="n">send2</span> <span class="o">+</span> a<span class="n">bar</span><span class="o">*</span><span class="vi">p8</span>
+
+<span class="kd">endin</span>
+
+
+<span class="kd">instr</span> <span class="nf">2</span>
+
+i<span class="n">denStart</span> <span class="o">=</span> <span class="vi">p4</span>
+k<span class="n">density</span> <span class="nb">expseg</span> <span class="vi">p4</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mf">0.001</span>
+a<span class="n">pulse</span> <span class="nb">mpulse</span> <span class="mi">1</span><span class="p">,</span> k<span class="n">density</span>
+k<span class="n">envelope</span> <span class="nb">expseg</span> <span class="mi">1</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mf">.001</span>
+a<span class="n">pulse</span> <span class="o">=</span> a<span class="n">pulse</span> <span class="o">*</span> k<span class="n">envelope</span> <span class="o">*</span> <span class="vi">p5</span>
+<span class="c1">; NO local output</span>
+
+ga<span class="n">send1</span> <span class="o">=</span> ga<span class="n">send1</span> <span class="o">+</span> a<span class="n">pulse</span>
+ga<span class="n">send2</span> <span class="o">=</span> ga<span class="n">send2</span> <span class="o">+</span> a<span class="n">pulse</span>
+
+<span class="kd">endin</span>
+
+
+<span class="kd">instr</span> <span class="nf">dry</span>
+
+i<span class="n">dryLeft</span> <span class="o">=</span> <span class="vi">p4</span>
+i<span class="n">dryRight</span> <span class="o">=</span> <span class="vi">p5</span>
+k<span class="n">gate</span> <span class="nb">adsr</span> <span class="mf">.01</span><span class="p">,</span><span class="mf">.01</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span>
+<span class="nb">outs</span> <span class="p">(</span>ga<span class="n">send1</span><span class="o">*</span>k<span class="n">gate</span><span class="p">)</span> <span class="o">*</span> <span class="vi">p4</span><span class="p">,</span> <span class="p">(</span>ga<span class="n">send2</span><span class="o">*</span>k<span class="n">gate</span><span class="p">)</span> <span class="o">*</span> <span class="vi">p5</span>
+
+<span class="kd">endin</span>
+
+
+<span class="kd">instr</span> <span class="nf">100</span>
+
+a<span class="n">phaser</span> <span class="nb">phaser1</span> ga<span class="n">send1</span><span class="p">,</span> <span class="mi">4700</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.8</span>
+a<span class="n">revphaser</span> <span class="nb">reverb</span> a<span class="n">phaser</span><span class="p">,</span> <span class="mf">1.618</span>
+<span class="nb">outs</span> a<span class="n">revphaser</span> <span class="o">*</span> <span class="mf">0.2</span><span class="p">,</span> a<span class="n">revphaser</span> <span class="o">*</span> <span class="mf">0.2</span>
+<span class="nb">clear</span> ga<span class="n">send1</span>
+
+<span class="kd">endin</span>
+
+
+<span class="kd">instr</span> <span class="nf">101</span>
+
+a<span class="n">fold</span> <span class="nb">fold</span> ga<span class="n">send2</span><span class="p">,</span> <span class="mi">26</span>
+a<span class="n">delfoldL</span> <span class="nb">multitap</span> a<span class="n">fold</span><span class="p">,</span> <span class="mf">0.62</span><span class="p">,</span> <span class="mf">0.52</span><span class="p">,</span> <span class="mf">1.19</span><span class="p">,</span> <span class="mf">0.44</span>
+a<span class="n">delfoldR</span> <span class="nb">multitap</span> a<span class="n">fold</span><span class="p">,</span> <span class="mf">0.94</span><span class="p">,</span> <span class="mf">0.64</span><span class="p">,</span> <span class="mf">1.42</span><span class="p">,</span> <span class="mf">0.54</span>
+<span class="nb">outs</span> a<span class="n">delfoldL</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">,</span> a<span class="n">delfoldR</span> <span class="o">*</span> <span class="mf">0.5</span>
+<span class="nb">clear</span> ga<span class="n">send2</span>
+
+<span class="kd">endin</span>
+
+<span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span>
+
+
+
+<span class="nb">i</span><span class="mi">2</span> <span class="mi">0</span> <span class="mi">6</span> <span class="mf">.07</span>  <span class="mi">1</span>
+
+<span class="nb">i</span> <span class="s">"dry"</span> <span class="mi">0</span> <span class="mi">2</span> <span class="mf">.87</span> <span class="mf">.2</span>
+
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">10</span> <span class="mf">0.13</span> <span class="mi">300</span> <span class="mf">0.3</span> <span class="mf">0.8</span>
+
+<span class="nb">i</span><span class="mi">2</span> <span class="mi">7</span> <span class="mi">5</span> <span class="mf">.007</span>  <span class="mi">1</span>
+
+<span class="nb">i</span> <span class="s">"dry"</span> <span class="mi">7</span> <span class="mi">3</span> <span class="mf">.12</span> <span class="mf">.86</span>
+
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">11</span> <span class="mi">9</span> <span class="mi">09</span> <span class="mf">0.09</span> <span class="mi">400</span> <span class="mf">0.23</span> <span class="mf">0.78</span>
+
+<span class="nb">i</span><span class="mi">2</span> <span class="mi">15</span> <span class="mi">9</span> <span class="mf">.01</span> <span class="mi">1</span>
+
+
+<span class="nb">i</span> <span class="s">"dry"</span> <span class="mi">15</span> <span class="mi">12</span> <span class="mf">.94</span> <span class="mf">.09</span>
+
+
+<span class="nb">s</span>
+
+
+<span class="nb">i</span> <span class="s">"dry"</span> <span class="mi">0</span> <span class="mf">26.9</span> <span class="mf">.68</span> <span class="mf">.48</span> <span class="c1">; lowered</span>
+
+<span class="nb">i</span> <span class="mi">2</span> <span class="mf">0.0</span> <span class="mi">4</span> <span class="mf">.07</span>  <span class="mi">1</span>
+<span class="nb">i</span> <span class="mi">2</span> <span class="mf">0.1</span> <span class="mi">4</span> <span class="mf">.02</span>  <span class="mi">1</span>
+
+<span class="nb">i</span> <span class="mi">1</span> <span class="mf">0.21</span> <span class="mi">1</span> <span class="mi">08</span> <span class="mf">0.13</span> <span class="mi">300</span> <span class="mf">0.3</span> <span class="mf">0.8</span> 
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">14</span> <span class="mf">0.02</span> <span class="mi">500</span> <span class="mf">0.2</span> <span class="mf">0.7</span> 
+
+<span class="nb">i</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">5</span> <span class="mf">.06</span>  <span class="mf">0.8</span> <span class="c1">; lowered</span>
+<span class="nb">i</span> <span class="mi">2</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mf">.05</span>  <span class="mf">0.7</span> <span class="c1">; lowered</span>
+<span class="nb">i</span> <span class="mi">2</span> <span class="mi">4</span> <span class="mi">6</span> <span class="mf">.01</span>  <span class="mf">0.6</span> <span class="c1">; lowered</span>
+
+
+<span class="nb">i</span> <span class="mi">1</span> <span class="mf">4.3</span> <span class="mi">3</span> <span class="mi">9</span> <span class="mf">0.08</span> <span class="mi">1145</span> <span class="mf">0.1</span> <span class="mf">0.5</span> <span class="c1">; lowered</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mf">4.5</span> <span class="mi">3</span> <span class="mi">11</span> <span class="mf">0.10</span> <span class="mi">245</span> <span class="mf">0.2</span> <span class="mf">0.4</span> <span class="c1">; lowered</span>
+
+<span class="nb">i</span> <span class="mi">1</span> <span class="mf">8.00</span> <span class="mi">7</span> <span class="mi">08</span> <span class="mf">0.11</span> <span class="mi">125</span> <span class="mf">0.1</span> <span class="mf">0.6</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mf">8.01</span> <span class="mi">6</span> <span class="mi">28</span> <span class="mf">0.13</span> <span class="mi">280</span> <span class="mf">0.3</span> <span class="mf">0.8</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mf">8.02</span> <span class="mi">5</span> <span class="mi">39</span> <span class="mf">0.02</span> <span class="mi">600</span> <span class="mf">0.2</span> <span class="mf">0.7</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mf">8.03</span> <span class="mi">4</span> <span class="mi">39</span> <span class="mf">0.02</span> <span class="mi">600</span> <span class="mf">0.2</span> <span class="mf">0.7</span>
+
+<span class="nb">i</span> <span class="mi">2</span> <span class="mf">8.24</span> <span class="mi">18</span> <span class="mf">.09</span> <span class="mi">1</span>
+<span class="nb">i</span> <span class="mi">2</span> <span class="mf">8.75</span> <span class="mi">11</span> <span class="mf">.05</span> <span class="mi">1</span>
+<span class="nb">i</span> <span class="mi">2</span> <span class="mf">8.99</span> <span class="mi">4</span> <span class="mf">.01</span> <span class="mi">1</span>
+
+
+
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">18</span> <span class="mi">9</span> <span class="mf">8.1</span> <span class="mf">0.12</span> <span class="mi">105</span> <span class="mf">0.12</span> <span class="mf">0.56</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mf">18.01</span> <span class="mi">8</span> <span class="mf">8.8</span> <span class="mf">0.13</span> <span class="mi">205</span> <span class="mf">0.52</span> <span class="mf">0.46</span>
+
+<span class="nb">i</span> <span class="mi">1</span> <span class="mf">18.02</span> <span class="mi">7</span> <span class="mf">8.2</span> <span class="mf">0.15</span> <span class="mi">745</span> <span class="mf">0.42</span> <span class="mf">0.26</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mf">18.03</span> <span class="mi">11</span> <span class="mf">8.3</span> <span class="mf">0.14</span> <span class="mi">905</span> <span class="mf">0.62</span> <span class="mf">0.36</span>
+
+<span class="nb">i</span> <span class="s">"dry"</span> <span class="mi">25</span> <span class="mf">.85</span> <span class="mf">.32</span> <span class="mf">.38</span>
+
+<span class="nb">i</span> <span class="mi">2</span> <span class="mi">25</span> <span class="mi">5</span> <span class="mf">.71</span> <span class="mi">1</span>
+
+<span class="nb">i</span> <span class="s">"dry"</span> <span class="mi">27</span> <span class="mf">.74</span> <span class="mf">.62</span> <span class="mf">.68</span>
+
+<span class="nb">i</span> <span class="mi">2</span> <span class="mi">27</span> <span class="mi">6</span> <span class="mf">.11</span> <span class="mi">1</span>
+
+<span class="nb">i</span> <span class="s">"dry"</span> <span class="mf">32.3</span> <span class="mf">.42</span> <span class="mf">.32</span> <span class="mf">.38</span>
+
+<span class="nb">i</span> <span class="mi">2</span> <span class="mf">32.3</span> <span class="mi">14</span> <span class="mf">.005</span>  <span class="mi">1</span>
+
+
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">36</span> <span class="mi">13</span> <span class="mf">9.9</span> <span class="mf">0.233</span> <span class="mi">333</span> <span class="mf">0.23</span> <span class="mf">0.63</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">39</span> <span class="mi">12</span> <span class="mf">8.9</span> <span class="mf">0.323</span> <span class="mi">403</span> <span class="mf">0.34</span> <span class="mf">0.53</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">42</span> <span class="mi">10</span> <span class="mf">7.8</span> <span class="mf">0.123</span> <span class="mi">283</span> <span class="mf">0.42</span> <span class="mf">0.73</span>
+
+<span class="nb">i</span> <span class="mi">1</span> <span class="mf">48.01</span> <span class="mi">9</span> <span class="mf">8.11</span> <span class="mf">0.122</span> <span class="mi">108</span> <span class="mf">0.13</span> <span class="mf">0.54</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mf">48.03</span> <span class="mi">8</span> <span class="mf">8.82</span> <span class="mf">0.135</span> <span class="mi">208</span> <span class="mf">0.50</span> <span class="mf">0.44</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mf">48.05</span> <span class="mi">7</span> <span class="mf">8.23</span> <span class="mf">0.158</span> <span class="mi">748</span> <span class="mf">0.40</span> <span class="mf">0.24</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mf">48.08</span> <span class="mi">11</span> <span class="mf">8.35</span> <span class="mf">0.147</span> <span class="mi">908</span> <span class="mf">0.60</span> <span class="mf">0.34</span>
+
+<span class="nb">e</span> <span class="mi">60</span> <span class="c1">; score extended to allow for reverb and multitap tails to ring out</span>
+
+<span class="c1">; keeping instr 100 and instr 101 "turned on" for 60 seconds</span>
+
+<span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm240780"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="turnoff.html" title="turnoff"><em class="citetitle">turnoff</em></a>,
