@@ -60,7 +60,7 @@
       <p>
 So, to create a standalone program, write a control program as shown in the previous section.  Let's assume that you saved this program in a file named <span class="quote">“<span class="quote"><span class="emphasis"><em>mycscore.c</em></span></span>”</span>.  Next, you need to compile and link this program with the Csound library and <span class="emphasis"><em>cscoremain.c</em></span> in order to create an exectuable by following the set of directions below that apply to your operating system. It will be helpful to already have some familiarity with the C compiler on your computer since the information below cannot be complete for all possible systems.
   </p>
-      <h3><a id="idm299828"></a>Linux and Unix</h3>
+      <h3><a id="idm299776"></a>Linux and Unix</h3>
       <p>
 The following commands assume that you have copied your file <span class="emphasis"><em>mycscore.c</em></span> into the same directory as <span class="emphasis"><em>cscoremain.c</em></span>, that you have opened a terminal to that same directory, and that you have previously installed a binary distribution of Csound that placed a library <span class="emphasis"><em>libcsound.a</em></span> or <span class="emphasis"><em>libcsound.so</em></span> into <span class="emphasis"><em>/usr/local/lib</em></span> and the header files for the Csound API into <span class="emphasis"><em>/usr/local/include/csound</em></span>.
   </p>
@@ -80,14 +80,14 @@ To run (sending the results to standard output):
       <p>
 It is possible that on some Unix systems, the C compiler will be named <span class="emphasis"><em>cc</em></span> or something else other than <span class="emphasis"><em>gcc</em></span>.
   </p>
-      <h3><a id="idm299845"></a>Windows</h3>
+      <h3><a id="idm299793"></a>Windows</h3>
       <p>
 Csound is usually compiled on Windows using the MinGW environment that makes GCC -- the same compiler used on Linux -- available using a Unix-like command shell (MSYS).  Since pre-compiled libraries for Csound on Windows are built in this way, you may need to use MinGW as well to link to them.  If you have built Csound using another compiler, then you should be able to build <span class="emphasis"><em>Cscore</em></span> with that compiler as well.
   </p>
       <p>
 Compiling standalone <span class="emphasis"><em>Cscore</em></span> programs using MinGW should be similar to the procedure for Linux above with library and header paths changed appropriately for where Csound is installed on the Windows system.  <span class="emphasis"><em>(Please feel free to contribute more detailed instructions here as the editor has been unable to test Cscore on a Windows machine).</em></span>
   </p>
-      <h3><a id="idm299851"></a>OS X</h3>
+      <h3><a id="idm299799"></a>OS X</h3>
       <p>
 The following commands assume that you have copied your file <span class="emphasis"><em>mycscore.c</em></span> into the same directory as <span class="emphasis"><em>cscoremain.c</em></span> and that you have opened a terminal to that same directory.  In addition, the Apple-supplied developer tools (including the GCC compiler) should be installed on your system and you should have previously installed a binary distribution of Csound that placed the CsoundLib framework into <span class="emphasis"><em>/Library/Frameworks</em></span>.
   </p>
@@ -104,7 +104,7 @@ To run (sending the results to standard output):
       <div class="informalexample">
         <pre class="screen">./cscore test.sco</pre>
       </div>
-      <h3><a id="idm299862"></a>MacOS 9</h3>
+      <h3><a id="idm299810"></a>MacOS 9</h3>
       <p>
     You will need CodeWarrior or some other development environment installed on your computer (MPW may work).  Download the source code distribution for OS 9 (it will have a name like <span class="emphasis"><em>Csound5.05_OS9_src.smi.bin</em></span>).
   </p>
@@ -114,7 +114,7 @@ To run (sending the results to standard output):
       <p>
 Once you have the proper files included in the project window, click the "Make" button and CodeWarrior should produce an application named <span class="quote">“<span class="quote"><span class="emphasis"><em>Cscore</em></span></span>”</span>.  When you run this application, it first displays a window allowing you to type in the arguments to the main function.  You only need to type in the filename or pathname to the input score -- do not type in "cscore".  The input file should be in the same folder as the application or else you will need to type a full or relative pathname to the file.  Output will be displayed in the console window.  You can use the <span class="emphasis"><em>Save</em></span> command from the <span class="emphasis"><em>File</em></span> menu before quitting if you wish.  Alternatively, in the commandline dialog, you can choose to redirect the output to a file by clicking on the <span class="emphasis"><em>File</em></span> button on the right side of the dialog.  (Note that the console window can only display about 32,000 characters, so writing to a file is necessary for long scores).
   </p>
-      <h3><a id="idm299877"></a>Making Cscore usable from within Csound</h3>
+      <h3><a id="idm299825"></a>Making Cscore usable from within Csound</h3>
       <p>
     To operate from Csound, first follow the instructions for compiling Csound (see <a class="link" href="BuildingCsound.html" title="Building Csound"><em class="citetitle">Building Csound</em></a>) according to the operating system that you are using.  Once you have successfully built an unmodified Csound system, then substitute your own <span class="emphasis"><em>cscore()</em></span> function for the one in the file <span class="emphasis"><em>Top/cscore_internal.c</em></span>, and rebuild Csound.
   </p>
@@ -127,7 +127,7 @@ Once you have the proper files included in the project window, click the "Make" 
       <p>
    A simple approach to using a <span class="emphasis"><em>Cscore</em></span> callback via the API would be to modify the standard Csound main program -- which is a simple Csound host -- contained in the file <span class="emphasis"><em>frontends/csound/csound_main.c</em></span>.  Adding a call to <span class="emphasis"><em>csoundSetCscoreCallback()</em></span> after the call to <span class="emphasis"><em>csoundCreate()</em></span> but before the call to <span class="emphasis"><em>csoundCompile()</em></span> should do the job.  Recompiling this file and linking to an existing Csound library will make a commandline version of Csound that works similarly to the one described above.  Don't forget to use the -C flag.
   </p>
-      <h3><a id="idm299901"></a>Notes about score formats and run-time behavior</h3>
+      <h3><a id="idm299849"></a>Notes about score formats and run-time behavior</h3>
       <p>
     As stated previously, the input files to <span class="emphasis"><em>Cscore</em></span> may be in original or time-warped and pre-sorted form; this modality will be preserved (section by section) in reading, processing, and writing scores. Standalone processing will most often use unwarped sources and create unwarped new files. When running from within Csound, the input score will arrive already warped and sorted, and can thus be sent directly (normally section by section) to the orchestra. One advantage of this method of using <span class="emphasis"><em>Cscore</em></span> is that all of the syntactical conveniences of the full Csound score language may be used -- macros, arithmetic expressions, carry, ramp, etc. -- since the score will go through the "Carry, Tempo, Sort" phases of score processing before being passed to the user-supplied <span class="emphasis"><em>Cscore</em></span> program.
   </p>
