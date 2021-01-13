@@ -105,16 +105,77 @@ a1 <span class="opc">zfilter2</span> asig, kdamp, kfreq, 1, 2, 1, ia1, ia2 <span
         </div>
         <p>
     </p>
+        <p>
+      Here is an example of the zfilter2 opcode. It uses the files <a class="ulink" href="examples/zfilter2.csd" target="_top"><em class="citetitle">zfilter2.csd</em></a>.
+      </p>
+        <div class="example">
+          <a id="idm268868"></a>
+          <p class="title">
+            <strong>Example 1223. Example of the zfilter2 opcode.</strong>
+          </p>
+          <div class="example-contents">
+            <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
+            <div class="refsect1">
+              <a id="idm268875"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+<span class="nt">&lt;CsOptions&gt;</span>
+<span class="c1">; Select audio/midi flags here according to platform</span>
+-odac   <span class="c1">;;;realtime audio out</span>
+<span class="c1">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</span>
+<span class="c1">; For Non-realtime ouput leave only the line below:</span>
+<span class="c1">; -o zfilter2.wav -W ;;; for file output any platform</span>
+<span class="nt">&lt;/CsOptions&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span>
+
+<span class="c1">; By Stefano Cucchi 2020</span>
+
+<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+
+<span class="kd">instr</span> <span class="nf">1</span>	
+ 
+k<span class="n">damp</span> <span class="nb">linseg</span> <span class="vi">p5</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="vi">p6</span> 
+k<span class="n">freq</span> <span class="nb">linseg</span> <span class="vi">p7</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="vi">p8</span>				                                            
+k<span class="n">cps</span>  <span class="nb">init</span> <span class="nb">cpspch</span><span class="p">(</span><span class="vi">p4</span><span class="p">)</span>
+a<span class="n">sig1</span> <span class="nb">vco2</span> <span class="mf">.2</span><span class="p">,</span> k<span class="n">cps</span>			
+a<span class="n">saw</span> <span class="nb">zfilter2</span> a<span class="n">sig1</span><span class="p">,</span> k<span class="n">damp</span><span class="p">,</span> k<span class="n">freq</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.81</span><span class="p">,</span> <span class="mf">0.713</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.99</span>	
+
+a<span class="n">compare</span> <span class="nb">oscil</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">440</span> <span class="c1">; signal comparator for volume </span>
+a<span class="n">saw</span> <span class="nb">balance</span> a<span class="n">saw</span><span class="p">,</span> a<span class="n">compare</span> <span class="c1">; adjust the volume. Volume can have big variation due to filter.</span>
+      <span class="nb">outs</span> a<span class="n">saw</span><span class="p">,</span> a<span class="n">saw</span>
+
+<span class="kd">endin</span>
+<span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span>
+
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">5</span> <span class="mf">6.00</span> <span class="mf">0.6</span> <span class="mf">0.99</span> <span class="mf">0.006</span> <span class="mf">0.006</span> <span class="c1">; varying ringing time (from 0.6 to 0.99)</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">6</span> <span class="mi">5</span> <span class="mf">6.00</span> <span class="mf">0.3</span> <span class="mf">0.3</span> <span class="mf">0.01</span> <span class="o">-</span><span class="mf">0.8</span>    <span class="c1">; varying frequency warp factor (from 0.01 to -0.8)</span>
+<span class="nb">e</span>
+<span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
+    </p>
       </div>
       <div class="refsect1">
-        <a id="idm268865"></a>
+        <a id="idm268988"></a>
+        <h2>Examples</h2>
+      </div>
+      <div class="refsect1">
+        <a id="idm268990"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="filter2.html" title="filter2"><em class="citetitle">filter2</em></a>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm268870"></a>
+        <a id="idm268995"></a>
         <h2>Credits</h2>
         <p>
       </p>
