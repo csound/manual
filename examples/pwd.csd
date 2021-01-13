@@ -7,7 +7,7 @@
 </CsOptions>
 <CsInstruments>
 
-; By tgrey - 2020
+; by tgrey - 2020
 
 sr = 44100
 ksmps = 32
