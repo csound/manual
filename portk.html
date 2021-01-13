@@ -93,41 +93,43 @@
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
-<span class="c1">; Audio out   Audio in</span>
--odac         <span class="c1">;  -iadc    ;;;RT audio I/O</span>
+-odac   <span class="c1">;;;realtime audio out</span>
+<span class="c1">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</span>
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o portk.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span>
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">128</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="c1">; by Stefano Cucchi 2020</span>
 
-<span class="c1">;Example by Andres Cabrera 2007</span>
-
-<span class="nb">FLpanel</span> <span class="s">"Slider"</span><span class="p">,</span> <span class="mi">650</span><span class="p">,</span> <span class="mi">140</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span>
-    gk<span class="n">val1</span><span class="p">,</span> gi<span class="n">slider1</span> <span class="nb">FLslider</span> <span class="s">"Watch me"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">127</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">580</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">20</span>
-    gk<span class="n">val2</span><span class="p">,</span> gi<span class="n">slider2</span> <span class="nb">FLslider</span> <span class="s">"Move me"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">127</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">580</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">80</span>
-    gk<span class="n">htim</span><span class="p">,</span> gi<span class="n">slider3</span> <span class="nb">FLslider</span> <span class="s">"khtim"</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">610</span><span class="p">,</span> <span class="mi">10</span>
-<span class="nb">FLpanelEnd</span>
-<span class="nb">FLrun</span>
-
-<span class="nb">FLsetVal_i</span> <span class="mf">0.1</span><span class="p">,</span> gi<span class="n">slider3</span> <span class="c1">;set initial time to 0.1</span>
+<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span> 
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span> 
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span> 
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
 
 <span class="kd">instr</span> <span class="nf">1</span>
-k<span class="n">val</span> <span class="nb">portk</span> gk<span class="n">val2</span><span class="p">,</span> gk<span class="n">htim</span>  <span class="c1">; take the value of slider 2 and apply portamento</span>
-<span class="nb">FLsetVal</span> <span class="mi">1</span><span class="p">,</span> k<span class="n">val</span><span class="p">,</span> gi<span class="n">slider1</span>  <span class="c1">;set the value of slider 1 to kval</span>
+
+k<span class="n">Freq</span> <span class="nb">randomh</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">1300</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">550</span> <span class="c1">; random frequency to oscillators.</span>
+
+k<span class="n">htim</span> <span class="nb">linseg</span> <span class="mf">0.001</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.125</span> <span class="c1">; portamento-function: start with NO portamento - then portamento.</span>
+k<span class="n">Port</span> <span class="nb">portk</span> k<span class="n">Freq</span><span class="p">,</span> k<span class="n">htim</span> <span class="c1">; pitch with portamento.</span>
+
+a<span class="n">sigL</span> <span class="nb">oscili</span> <span class="mf">0.4</span><span class="p">,</span> k<span class="n">Freq</span><span class="p">,</span> <span class="mi">1</span> <span class="c1">; channel left - NO portamento.</span>
+a<span class="n">sigR</span> <span class="nb">oscili</span> <span class="mf">0.4</span><span class="p">,</span> k<span class="n">Port</span><span class="p">,</span> <span class="mi">2</span> <span class="c1">; channel right - PORTAMENTO.</span>
+
+<span class="nb">outch</span> <span class="mi">1</span><span class="p">,</span> a<span class="n">sigL</span>   <span class="c1">; channel left</span>
+<span class="nb">outch</span> <span class="mi">2</span><span class="p">,</span> a<span class="n">sigR</span>   <span class="c1">; channel right</span>
+
 <span class="kd">endin</span>
 
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
 
-<span class="c1">; Play Instrument #1 for one minute.</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">60</span>
+<span class="nb">f</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">4096</span> <span class="mi">10</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span>
+<span class="nb">f</span> <span class="mi">2</span> <span class="mi">0</span> <span class="mi">4096</span> <span class="mi">10</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span>
+
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">10</span>
 <span class="nb">e</span>
-
-
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
@@ -138,7 +140,7 @@ k<span class="n">val</span> <span class="nb">portk</span> gk<span class="n">val2
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm179846"></a>
+        <a id="idm179835"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="areson.html" title="areson"><em class="citetitle">areson</em></a>,
@@ -153,7 +155,7 @@ k<span class="n">val</span> <span class="nb">portk</span> gk<span class="n">val2
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm179867"></a>
+        <a id="idm179856"></a>
         <h2>Credits</h2>
         <p>
       </p>
