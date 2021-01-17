@@ -7,8 +7,6 @@
 </CsOptions>
 <CsInstruments>
 
-; by tgrey - 2020
-
 sr = 44100
 ksmps = 32
 nchnls = 2
