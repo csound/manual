@@ -1,0 +1,103 @@
+
+<refentry id="trigexpseg">
+<indexterm id="Indextrigexpseg"><primary>trigexpseg</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Linear and Exponential Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>trigexpseg</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>trigexpseg</refname>
+    <refpurpose>
+      Triggers a series of exponential segments between specified points.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Triggers a series of exponential segments between specified points.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ares <command>trigexpseg</command> kTrig, ia, idur1, ib [, idur2] [, ic] [...]</synopsis>
+
+    <synopsis>kres <command>trigexpseg</command> kTrig, ia, idur1, ib [, idur2] [, ic] [...]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ia</emphasis> -- starting value. Zero is illegal for exponentials.
+    </para>
+
+    <para>
+      <emphasis>ib, ic</emphasis>, etc. -- value after <emphasis>dur1</emphasis> seconds, etc. For exponentials, must be non-zero and must agree in sign with <emphasis>ia</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>idur1</emphasis> -- duration in seconds of first segment
+    </para>
+
+    <para>
+      <emphasis>idur2, idur3</emphasis>, etc. -- duration in seconds of subsequent segments. 
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    
+    <para>
+      <emphasis>kTrig</emphasis> -- trigger value. Will trigger playback of envelop when kTrig is equal 1
+    </para>
+
+    <para>
+      These units generate control or audio signals whose values can pass through 2 or more specified points. The sum of <emphasis>dur</emphasis> values may or may not equal the instrument's performance time: a shorter performance will truncate the specified pattern. Triggering the envelop while it is already playing will cause the envelop to jump to the start and play again. This might cause a pop or a click. It is best to wait till the envelope has ended before retriggering it.   
+    </para>
+
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the trigexpseg opcode. It uses the file <ulink url="examples/trigexpseg.csd"><citetitle>trigexpseg.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the trigexpseg opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/trigexpseg.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="expon"><citetitle>expon</citetitle></link>,
+      <link linkend="expsega"><citetitle>trigexpsega</citetitle></link>,
+      <link linkend="expsegr"><citetitle>trigexpsegr</citetitle></link>,
+      <link linkend="line"><citetitle>line</citetitle></link>,
+      <link linkend="linseg"><citetitle>linseg</citetitle></link>,
+      <link linkend="triglinseg"><citetitle>linseg</citetitle></link>,
+      <link linkend="linsegr"><citetitle>linsegr</citetitle></link>
+      <link linkend="transeg"><citetitle>transeg</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+       <simplelist>
+        <member>Author: Rory Walsh</member>
+        <member>2021</member>
+       </simplelist>
+    </para>
+  </refsect1>
+</refentry>
