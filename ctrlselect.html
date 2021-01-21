@@ -3,99 +3,84 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>ctrlreset</title>
+    <title>ctrlselect</title>
     <link rel="stylesheet" type="text/css" href="csound.css" />
     <link rel="stylesheet" type="text/css" href="syntax-highlighting.css" />
     <meta name="generator" content="DocBook XSL Stylesheets V1.79.1" />
     <link rel="home" href="index.html" title="The Canonical Csound Reference Manual" />
     <link rel="up" href="OpcodesTop.html" title="Orchestra Opcodes and Operators" />
-    <link rel="prev" href="ctrlinit.html" title="ctrlinit" />
-    <link rel="next" href="ctrlprint.html" title="ctrlprint" />
+    <link rel="prev" href="ctrlsave.html" title="ctrlsave" />
+    <link rel="next" href="cuserrnd.html" title="cuserrnd" />
   </head>
   <body>
     <div class="navheader">
       <table width="100%" summary="Navigation header">
         <tr>
-          <th colspan="3" align="center">ctrlreset</th>
+          <th colspan="3" align="center">ctrlselect</th>
         </tr>
         <tr>
-          <td width="20%" align="left"><a accesskey="p" href="ctrlinit.html">Prev</a> </td>
+          <td width="20%" align="left"><a accesskey="p" href="ctrlsave.html">Prev</a> </td>
           <th width="60%" align="center">Orchestra Opcodes and Operators</th>
-          <td width="20%" align="right"> <a accesskey="n" href="ctrlprint.html">Next</a></td>
+          <td width="20%" align="right"> <a accesskey="n" href="cuserrnd.html">Next</a></td>
         </tr>
       </table>
       <hr />
     </div>
     <div class="refentry">
-      <a id="ctrlreset"></a>
+      <a id="ctrlselect"></a>
       <div class="titlepage"></div>
-      <a id="IndexCtrlreset" class="indexterm"></a>
+      <a id="IndexCtrlselect" class="indexterm"></a>
       <div class="refnamediv">
         <h2>
-          <span class="refentrytitle">ctrlreset</span>
+          <span class="refentrytitle">ctrlselect</span>
         </h2>
-        <p>ctrlreset — 
-      Defines a preset for MIDI controllers.
+        <p>ctrlselect — 
+      Loads a preset of values for MIDI controllers.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm51322"></a>
+        <a id="idm52816"></a>
         <h2>Description</h2>
         <p>
-      Defines a preset like a ctrlinit for MIDI controllers.
+      Loads a preset of values for MIDI controllers from a previous
+      ctrlpreset call.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm51325"></a>
+        <a id="idm52819"></a>
         <h2>Syntax</h2>
-        <pre class="synopsis">kpreset <span class="command"><strong>ctrlreset</strong></span> ktag, kchnl, kctlno1, [kctlno2] [, kctlno3] ...</pre>
+        <pre class="synopsis"> <span class="command"><strong>ctrlselect</strong></span> kpre</pre>
       </div>
       <div class="refsect1">
-        <a id="idm51329"></a>
+        <a id="idm52823"></a>
         <h2>Initialization</h2>
         <p>
-      At initialisation time an internal data structure is created to
-      save the preset, ensuring it is sufficiently large.
+      At initialisation time the existence of the internal data structure is cchecked.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm51332"></a>
+        <a id="idm52826"></a>
         <h2>Performance</h2>
         <p>
-      <span class="emphasis"><em>kpreset</em></span> -- the numeric tag for where the
-      preset it stored.  If ktag is not zero kpreset will be the same
-      as ktag.
-    </p>
-        <p>
-      <span class="emphasis"><em>ktag</em></span> -- the tag for this preset; either a
-      strictly positive integer or zero if the system is to allocate
-      an unused preset.
-    </p>
-        <p>
-      <span class="emphasis"><em>kchanl</em></span> -- the MIDI channel to which te
-      preset refers.
-    </p>
-        <p>
-      <span class="emphasis"><em>kctlno1</em></span>, <span class="emphasis"><em>kctlno1</em></span>,
-      etc. -- MIDI controller numbers and values (0-127).  up to 16
-      initialisation values are permitted.
+      <span class="emphasis"><em>kpre</em></span> -- the numeric tag for the preset, as
+      returned by ctrlpreset.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm51343"></a>
+        <a id="idm52830"></a>
         <h2>Examples</h2>
         <p>
-      Here is an example of the ctrlreset opcode. It uses the file <a class="ulink" href="examples/ctrls.csd" target="_top"><em class="citetitle">ctrlreset.csd</em></a>.
+      Here is an example of the ctrlselect opcode. It uses the file <a class="ulink" href="examples/ctrls.csd" target="_top"><em class="citetitle">ctrlreset.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm51348"></a>
+          <a id="idm52835"></a>
           <p class="title">
-            <strong>Example 190. Example of the ctrlreset opcode.</strong>
+            <strong>Example 193. Example of the ctrlselect opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm51355"></a>
+              <a id="idm52842"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 
@@ -188,16 +173,17 @@ k<span class="n">char</span>  <span class="nb">sensekey</span> <span class="c1">
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm51800"></a>
+        <a id="idm53287"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="ctrlinit.html" title="ctrlinit"><em class="citetitle">ctrlinit</em></a>
       <a class="link" href="ctrlsave.html" title="ctrlsave"><em class="citetitle">ctrlsave</em></a>
       <a class="link" href="ctrlprint.html" title="ctrlprint"><em class="citetitle">ctrlprint</em></a>
+      <a class="link" href="ctrlpreset.html" title="ctrlpreset"><em class="citetitle">ctrlpreset</em></a>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm51809"></a>
+        <a id="idm53298"></a>
         <h2>Credits</h2>
         <p>
       </p>
@@ -215,18 +201,18 @@ k<span class="n">char</span>  <span class="nb">sensekey</span> <span class="c1">
       <hr />
       <table width="100%" summary="Navigation footer">
         <tr>
-          <td width="40%" align="left"><a accesskey="p" href="ctrlinit.html">Prev</a> </td>
+          <td width="40%" align="left"><a accesskey="p" href="ctrlsave.html">Prev</a> </td>
           <td width="20%" align="center">
             <a accesskey="u" href="OpcodesTop.html">Up</a>
           </td>
-          <td width="40%" align="right"> <a accesskey="n" href="ctrlprint.html">Next</a></td>
+          <td width="40%" align="right"> <a accesskey="n" href="cuserrnd.html">Next</a></td>
         </tr>
         <tr>
-          <td width="40%" align="left" valign="top">ctrlinit </td>
+          <td width="40%" align="left" valign="top">ctrlsave </td>
           <td width="20%" align="center">
             <a accesskey="h" href="index.html">Home</a>
           </td>
-          <td width="40%" align="right" valign="top"> ctrlprint</td>
+          <td width="40%" align="right" valign="top"> cuserrnd</td>
         </tr>
       </table>
     </div>
