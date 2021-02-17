@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>vcf</title>
+    <link rel="stylesheet" type="text/css" href="csound.css" />
+    <link rel="stylesheet" type="text/css" href="syntax-highlighting.css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.79.1" />
+    <link rel="home" href="index.html" title="The Canonical Csound Reference Manual" />
+    <link rel="up" href="OpcodesTop.html" title="Orchestra Opcodes and Operators" />
+    <link rel="prev" href="vcella.html" title="vcella" />
+    <link rel="next" href="vco.html" title="vco" />
+  </head>
+  <body>
+    <div class="navheader">
+      <table width="100%" summary="Navigation header">
+        <tr>
+          <th colspan="3" align="center">vcf</th>
+        </tr>
+        <tr>
+          <td width="20%" align="left"><a accesskey="p" href="vcella.html">Prev</a> </td>
+          <th width="60%" align="center">Orchestra Opcodes and Operators</th>
+          <td width="20%" align="right"> <a accesskey="n" href="vco.html">Next</a></td>
+        </tr>
+      </table>
+      <hr />
+    </div>
+    <div class="refentry">
+      <a id="vcf"></a>
+      <div class="titlepage"></div>
+      <a id="IndexVcf" class="indexterm"></a>
+      <div class="refnamediv">
+        <h2>
+          <span class="refentrytitle">vcf</span>
+        </h2>
+        <p>vcf — 
+      Moog ladder lowpass filter.
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm248472"></a>
+        <h2>Description</h2>
+        <p>
+      Vcf is an digital implementation of a standard 4-pole linear
+      analogue filter, similar to the Moog, Arp, and SSM2040 filters,
+      consisting of four identical 1-pole filters with a feedback
+      (resonance or regeneration) path. Unlike the moogladder opcode,
+      this filter does not have any non-linearities, but its
+      implementation preserves the analogue filter topology.
+      
+      The code is based on the work of Federico Fontana, described in
+      the paper "PRESERVING THE STRUCTURE OF THE MOOG VCF IN THE
+      DIGITAL DOMAIN" (Proceedings of ICMC 2007). 
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm248475"></a>
+        <h2>Syntax</h2>
+        <pre class="synopsis">asig <span class="command"><strong>vcf</strong></span> ain, xcf, xres[, istor]</pre>
+      </div>
+      <div class="refsect1">
+        <a id="idm248479"></a>
+        <h2>Initialization</h2>
+        <p>
+      <span class="emphasis"><em>istor</em></span> --initial disposition of internal
+      data space. Since filtering incorporates a feedback loop of
+      previous output, the initial status of the storage space used is
+      significant.  A zero value will clear the space; a non-zero
+      value will allow previous information to remain. The default
+      value is 0.
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm248483"></a>
+        <h2>Performance</h2>
+        <p>
+      <span class="emphasis"><em>asig</em></span> -- input signal.
+    </p>
+        <p>
+      <span class="emphasis"><em>xcf</em></span> -- filter
+      cutoff frequency (a- or k-rate) 
+    </p>
+        <p>
+      <span class="emphasis"><em>xres</em></span> --
+      resonance, between 0 and 1. Higher values will make the filter
+      self-oscillate (a- or k-rate).
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm248491"></a>
+        <h2>Examples</h2>
+        <p>
+      Here is an example of the vcf opcode. It uses the file <a class="ulink" href="examples/vcf.csd" target="_top"><em class="citetitle">vcf.csd</em></a>.
+      </p>
+        <div class="example">
+          <a id="idm248496"></a>
+          <p class="title">
+            <strong>Example 1132. Example of the vcf opcode.</strong>
+          </p>
+          <div class="example-contents">
+            <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
+            <div class="refsect1">
+              <a id="idm248503"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+<span class="nt">&lt;CsOptions&gt;</span>
+-odac -d
+<span class="nt">&lt;/CsOptions&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span>
+
+<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="kd">instr</span> <span class="nf">1</span>
+
+a<span class="n">1</span> <span class="nb">rand</span> <span class="vi">p4</span>
+a<span class="n">f</span> <span class="nb">expon</span> <span class="mi">20</span><span class="p">,</span><span class="vi">p3</span><span class="p">,</span><span class="mi">20000</span>
+a<span class="n">2</span> <span class="n">vcf</span> a<span class="n">1</span><span class="p">,</span>a<span class="n">f</span><span class="p">,</span> <span class="mf">0.7</span>
+ <span class="nb">out</span> a<span class="n">2</span>
+
+<span class="kd">endin</span>
+
+<span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">5</span> <span class="mf">0.1</span>
+<span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm248543"></a>
+        <h2>Credits</h2>
+        <p>
+      </p>
+        <table border="0" summary="Simple list" class="simplelist">
+          <tr>
+            <td>Author: Victor Lazzarini</td>
+          </tr>
+          <tr>
+            <td>Feb 2021</td>
+          </tr>
+        </table>
+        <p>
+    </p>
+      </div>
+    </div>
+    <div class="navfooter">
+      <hr />
+      <table width="100%" summary="Navigation footer">
+        <tr>
+          <td width="40%" align="left"><a accesskey="p" href="vcella.html">Prev</a> </td>
+          <td width="20%" align="center">
+            <a accesskey="u" href="OpcodesTop.html">Up</a>
+          </td>
+          <td width="40%" align="right"> <a accesskey="n" href="vco.html">Next</a></td>
+        </tr>
+        <tr>
+          <td width="40%" align="left" valign="top">vcella </td>
+          <td width="20%" align="center">
+            <a accesskey="h" href="index.html">Home</a>
+          </td>
+          <td width="40%" align="right" valign="top"> vco</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
