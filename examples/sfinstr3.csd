@@ -1,12 +1,14 @@
 <CsoundSynthesizer> 
 <CsOptions> 
 ; Select audio/midi flags here according to platform
--odac -+rtmidi=virtual -M0 ;;;realtime audio out
+-odac ;;;realtime audio out
 ;-iadc    ;;;uncomment -iadc if realtime audio input is needed too
 ; For Non-realtime ouput leave only the line below:
 ; -o sfinstr3.wav -W ;;; for file output any platform
 </CsOptions> 
 <CsInstruments> 
+
+; By  Menno Knevel - 2020
 
 sr = 44100 
 ksmps = 32
@@ -22,14 +24,12 @@ giSF	sfload	"sf_GMbank.sf2"
 
 instr 1 
 
-	mididefault	60, p3
-	midinoteonkey	p4, p5
 ikey	= p4
 ivel	= p5
 aenv    linsegr	1, 1, 1, 1, 0			;envelope
 icps    cpstuni ikey, 1				;24 tones per octave
 iamp    = 0.0002				;scale amplitude
-iamp    = iamp * ivel * 1/128 			;make velocity-dependent
+iamp    = iamp * ivel * 1/128 			;make velocity-dependent, small value due to 0dbfs = 1
 aL, aR	sfinstr3 ivel, ikey, iamp, icps, 180, giSF, 1 ;= Slap Bass 3
 aL      = aL * aenv 
 aR      = aR * aenv 
@@ -38,12 +38,16 @@ aR      = aR * aenv
 endin 
 </CsInstruments> 
 <CsScore> 
-f0 60	;play for 60 seconds
 
 i1 0 1 60 100 1	;using ftable 1
 i1 + 1 62 <   .
 i1 + 1 65 <   .
-i1 + 1 69 40  .
+i1 + 1 69 20  .
+
+i1 5 1 60 100 1	;using ftable 1
+i1 + 1 61 <   .
+i1 + 1 62 <   .
+i1 + 1 63 20  .
 
 e 
 </CsScore> 

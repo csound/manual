@@ -6,7 +6,7 @@
 #       on your system.
 # *************************************************************************
 BASENAME=Csound
-VERSION=6.14.0
+VERSION=6.15.0
 
 # export PATH=$PATH:/home/andres/bin/fop-0.20.5/
 # export JAVA_HOME=/usr/lib/jvm/java-6-sun/
@@ -279,8 +279,7 @@ OPCODES = opcodes/0dbfs.xml	opcodes/ATSadd.xml	opcodes/ATSaddnz.xml \
 	opcodes/logcurve.xml	opcodes/loop_ge.xml	opcodes/loop_gt.xml \
 	opcodes/loop_le.xml	opcodes/loop_lt.xml	opcodes/loopseg.xml \
 	opcodes/loopsegp.xml	opcodes/looptseg.xml	opcodes/loopxseg.xml \
-	opcodes/lorenz.xml	opcodes/lorismorph.xml	opcodes/lorisplay.xml \
-	opcodes/lorisread.xml	opcodes/loscil.xml	opcodes/loscil3.xml \
+	opcodes/lorenz.xml	opcodes/loscil.xml	opcodes/loscil3.xml \
 	opcodes/loscilx.xml	opcodes/lowpass2.xml	opcodes/lowres.xml \
 	opcodes/lowresx.xml	opcodes/lpf18.xml	opcodes/lpfreson.xml \
 	opcodes/lphasor.xml	opcodes/lpinterp.xml	opcodes/lposcil.xml \
@@ -667,7 +666,6 @@ OTHER =         STKopcodes/top.xml \
         sigmod/standard.xml \
         spectral/ATS.xml \
         spectral/arrays.xml \
-        spectral/loris.xml \
         spectral/lpcresyn.xml \
         spectral/stft.xml \
         spectral/top.xml \
