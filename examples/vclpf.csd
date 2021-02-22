@@ -10,7 +10,7 @@ instr 1
 
 a1 rand p4
 af expon 20,p3,20000
-a2 vcf a1,af, 0.7
+a2 vclpf a1,af, 0.7
  out a2
 
 endin
