@@ -1,0 +1,87 @@
+
+<refentry id="spf">
+<indexterm id="IndexSpf"><primary>spf</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>spf</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>spf</refname>
+    <refpurpose>
+   Steiner-Parker filter.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+<title>Description</title>
+    <para>
+      Spf is an digital implementation of a linear Steiner-Parker
+      analogue filter, which is a second-order multimode filter with three separate
+      inputs for lowpass, highpass, and bandpass and one output.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>asig <command>spf</command> alp,ahp,abp, xcf, xR[, istor]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+      <para>
+      <emphasis>istor</emphasis> --initial disposition of internal
+      data space. Since filtering incorporates a feedback loop of
+      previous output, the initial status of the storage space used is
+      significant.  A zero value will clear the space; a non-zero
+      value will allow previous information to remain. The default
+      value is 0.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>alp, ahp, abp</emphasis> -- lowpass, highpass and
+      bandpass input signals. Different signals can be used as inputs;
+      if the same signal is placed at the lowpass and highpass
+      inputs, the result is a band-reject output for that signal. If
+      the same signal is used for all inputs, an allpass filter results.
+    </para>
+    <para>
+      <emphasis>xcf</emphasis> -- filter
+      cutoff frequency (a- or k-rate) 
+    </para>
+
+    <para>
+      <emphasis>xR</emphasis> -- filter damping factor, which
+      controls peaking (for bandpass, R = 1/Q, where Q is the ratio of centre
+      frequency and  bandwidth). A value of sqrt(2) (approx 0.707)
+      gives no peaking (Butterworth response), and lower values will
+      make the filter peak and ring. A value of 0 turns the
+      filter into a sinusoidal oscillator. Valid values in the range
+      of 0 - 2. At 2, the filter has real poles and so it is
+      equivalent to two first-order filters in series.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the spf opcode. It uses the file <ulink url="examples/spf.csd"><citetitle>spf.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the spf opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/spf.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>Feb 2021</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry> 
