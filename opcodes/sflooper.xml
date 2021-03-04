@@ -20,14 +20,15 @@
       Plays a SoundFont2 (SF2) sample preset, generating a stereo sound, similarly to <emphasis>sfplay</emphasis>. Unlike that opcode, though,
 	  it ignores the looping points set in the SF2 file and substitutes them for a user-defined crossfade loop. It is
 	  a cross between <link linkend="sfplay"><citetitle>sfplay</citetitle></link> and
-      <link linkend="flooper2"><citetitle>flooper2</citetitle></link>.
+      <link linkend="flooper2"><citetitle>flooper2</citetitle></link>. 
+	    In order to understand the usage of these opcodes, the user must have some knowledge of the SF2 format, so a brief description of this format can be found in the SoundFont2 File Format Appendix.
     </para>
   </refsect1>
  
   <refsect1>
     <title>Syntax</title>
     <synopsis>ar1, ar2 <command>sflooper</command> ivel, inotenum, kamp, kpitch, ipreindex, kloopstart, kloopend, kcrossfade \
-      [, istart, imode, ifenv, iskip] </synopsis>
+      [, istart, imode, ifenv, iskip, iflag] </synopsis>
   </refsect1>
  
   <refsect1>
@@ -59,7 +60,10 @@ the crossfade to linear.
 continues from the position in the loop where the previous note stopped. The default, 0, does not skip
 initialisation
     </para>
-	
+	  <para>
+      <emphasis>iflag</emphasis> -- flag regarding the behavior of <emphasis>kpitch</emphasis> and <emphasis>inotenum</emphasis>
+    </para>
+	  
   </refsect1>
  
   <refsect1>
@@ -68,7 +72,10 @@ initialisation
 	 <para>
       <emphasis>kamp</emphasis> -- amplitude scaling </para>
     <para>
-      <emphasis>kpitch</emphasis> -- pitch control (transposition ratio); negative values are not allowed.
+      <emphasis>kpitch</emphasis> -- pitch control (transposition ratio) or frequency multiplier, depending by iflag. When iflag = 0, xfreq is a multiplier of a the default frequency, assigned by SF2 preset to the inotenum value. When iflag = 1, xfreq is the absolute frequency of the output sound, in Hz. Default is 0.
+Negative values are not allowed.	    
+
+When iflag = 0, inotenum sets the frequency of the output according to the MIDI note number used, and xfreq is used as a multiplier. When iflag = 1, the frequency of the output, is set directly by xfreq. This allows the user to use any kind of micro-tuning based scales. However, this method is designed to work correctly only with presets tuned to the default equal temperament. Attempts to use this method with a preset already having non-standard tunings, or with drum-kit-based presets, could give unexpected results.
     </para>
 <para>
       <emphasis>kloopstart</emphasis> -- loop start point (secs). Note that although k-rate, loop parameters
