@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>svn</title>
+    <link rel="stylesheet" type="text/css" href="csound.css" />
+    <link rel="stylesheet" type="text/css" href="syntax-highlighting.css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.79.1" />
+    <link rel="home" href="index.html" title="The Canonical Csound Reference Manual" />
+    <link rel="up" href="OpcodesTop.html" title="Orchestra Opcodes and Operators" />
+    <link rel="prev" href="svfilter.html" title="svfilter" />
+    <link rel="next" href="syncgrain.html" title="syncgrain" />
+  </head>
+  <body>
+    <div class="navheader">
+      <table width="100%" summary="Navigation header">
+        <tr>
+          <th colspan="3" align="center">svn</th>
+        </tr>
+        <tr>
+          <td width="20%" align="left"><a accesskey="p" href="svfilter.html">Prev</a> </td>
+          <th width="60%" align="center">Orchestra Opcodes and Operators</th>
+          <td width="20%" align="right"> <a accesskey="n" href="syncgrain.html">Next</a></td>
+        </tr>
+      </table>
+      <hr />
+    </div>
+    <div class="refentry">
+      <a id="svn"></a>
+      <div class="titlepage"></div>
+      <a id="IndexSvn" class="indexterm"></a>
+      <div class="refnamediv">
+        <h2>
+          <span class="refentrytitle">svn</span>
+        </h2>
+        <p>svn — 
+     Non-linear state variable filter
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm226947"></a>
+        <h2>Description</h2>
+        <p>
+     This opcode implements a non-linear state variable filter with
+     overdrive control and optional user-defined non-linear transfer function.
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm226950"></a>
+        <h2>Syntax</h2>
+        <pre class="synopsis">ahp,alp,abp,abr <span class="command"><strong>svn</strong></span> asig, xcf, xQ,
+    kdrive[, ifn, imx, istor]</pre>
+      </div>
+      <div class="refsect1">
+        <a id="idm226954"></a>
+        <h2>Initialization</h2>
+        <p>
+      <span class="emphasis"><em>ifn</em></span> -- if non-zero, a function table number
+      containing the transfer function for the filter non-linearity. This
+      should be mid-point centered and defined in the interval -imx to
+      imx. If zero, the filter employs an internal non-linea map
+      based on a hyperbolic tangent. Defaults to 0.  
+      </p>
+        <p>
+        <span class="emphasis"><em>imx</em></span> -- The absolute max of the function
+        table domain, which is defined as  -imx to imx. Defaults to 1.
+      </p>
+        <p>
+      <span class="emphasis"><em>istor</em></span> --initial disposition of internal
+      data space. Since filtering incorporates a feedback loop of
+      previous output, the initial status of the storage space used is
+      significant.  A zero value will clear the space; a non-zero
+      value will allow previous information to remain. The default
+      value is 0.
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm226962"></a>
+        <h2>Performance</h2>
+        <p>
+      <span class="emphasis"><em>ahp,alp,abp,abr</em></span> -- highpass, lowpass,
+      bandpass and bandreject ouputs.
+    </p>
+        <p>
+      <span class="emphasis"><em>asig</em></span> -- input
+    </p>
+        <p>
+      <span class="emphasis"><em>xcf</em></span> -- filter
+      cutoff frequency (a- or k-rate) 
+    </p>
+        <p>
+      <span class="emphasis"><em>xQ</em></span> -- filter Q (min 0.5) (a- or k-rate). 
+    </p>
+        <p>
+      <span class="emphasis"><em>kdrive</em></span> -- overdrive factor. With the
+      internal non-linear map, values above
+      0.5 will introduce progressively more non-linearities in the
+      filter signal. When using a user-supplied transfer function, the
+      amount of distortion introduced by this parameter will depend on
+      the function employed. A value of 0 makes the filter linear.
+      The amount of drive is also dependent on the level of the input
+      signal. If this signal is significantly less than 0dbfs, then proportionally
+      more drive is needed to introduce non-linearities in the signal.
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm226974"></a>
+        <h2>Examples</h2>
+        <p>
+      Here is an example of the svn opcode. It uses the file <a class="ulink" href="examples/svn.csd" target="_top"><em class="citetitle">svn.csd</em></a>.
+      </p>
+        <div class="example">
+          <a id="idm226979"></a>
+          <p class="title">
+            <strong>Example 1034. Example of the svn opcode.</strong>
+          </p>
+          <div class="example-contents">
+            <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
+            <div class="refsect1">
+              <a id="idm226986"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+<span class="nt">&lt;CsOptions&gt;</span>
+-odac
+<span class="nt">&lt;/CsOptions&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span>
+
+<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="kd">instr</span> <span class="nf">1</span>
+ a<span class="n">s</span> <span class="nb">vco2</span> <span class="vg">0dbfs</span><span class="p">,</span><span class="mi">100</span>
+ k<span class="n">cf</span> <span class="nb">expseg</span> <span class="mi">20</span><span class="p">,</span><span class="vi">p3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">20000</span><span class="p">,</span><span class="vi">p3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">20</span>
+ a<span class="n">hp</span><span class="p">,</span>a<span class="n">lp</span><span class="p">,</span>a<span class="n">bp</span><span class="p">,</span>a<span class="n">br</span> <span class="n">svn</span> a<span class="n">s</span><span class="p">,</span>k<span class="n">cf</span><span class="p">,</span><span class="vi">p5</span><span class="p">,</span><span class="vi">p6</span><span class="p">,</span><span class="vi">p7</span>
+    <span class="nb">out</span> a<span class="n">lp</span><span class="o">*</span><span class="vi">p4</span>
+<span class="kd">endin</span>
+
+<span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span>
+<span class="c1">// x + .2x^3 + .3x^5 + .1x^7</span>
+<span class="nb">f</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">16384</span> <span class="mi">3</span> <span class="o">-</span><span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mf">.2</span> <span class="mi">0</span> <span class="mf">.3</span> <span class="mi">0</span> <span class="mf">.1</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">10</span> <span class="mf">0.1</span> <span class="mi">20</span> <span class="mi">0</span> <span class="mi">0</span>  <span class="c1">; linear</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">10</span> <span class="mf">0.1</span> <span class="mi">20</span> <span class="mf">0.5</span> <span class="mi">0</span> <span class="c1">; 0.5 drive</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">10</span> <span class="mf">0.1</span> <span class="mi">20</span> <span class="mf">0.75</span> <span class="mi">0</span> <span class="c1">; 0.75 drive</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">10</span> <span class="mf">0.1</span> <span class="mi">20</span> <span class="mi">1</span> <span class="mi">0</span> <span class="c1">; 1.0 drive</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">10</span> <span class="mf">0.1</span> <span class="mi">20</span> <span class="mf">0.5</span> <span class="mi">1</span>  <span class="c1">; table 1  0.5 drive </span>
+<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">10</span> <span class="mf">0.1</span> <span class="mi">20</span> <span class="mf">0.75</span> <span class="mi">1</span> <span class="c1">; table 1   0.75</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">10</span> <span class="mf">0.1</span> <span class="mi">20</span> <span class="mi">1</span> <span class="mi">1</span> <span class="c1">; table 1   1.0</span>
+<span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm227123"></a>
+        <h2>Credits</h2>
+        <p>
+      </p>
+        <table border="0" summary="Simple list" class="simplelist">
+          <tr>
+            <td>Author: Victor Lazzarini</td>
+          </tr>
+          <tr>
+            <td>Feb 2021</td>
+          </tr>
+        </table>
+        <p>
+    </p>
+      </div>
+    </div>
+    <div class="navfooter">
+      <hr />
+      <table width="100%" summary="Navigation footer">
+        <tr>
+          <td width="40%" align="left"><a accesskey="p" href="svfilter.html">Prev</a> </td>
+          <td width="20%" align="center">
+            <a accesskey="u" href="OpcodesTop.html">Up</a>
+          </td>
+          <td width="40%" align="right"> <a accesskey="n" href="syncgrain.html">Next</a></td>
+        </tr>
+        <tr>
+          <td width="40%" align="left" valign="top">svfilter </td>
+          <td width="20%" align="center">
+            <a accesskey="h" href="index.html">Home</a>
+          </td>
+          <td width="40%" align="right" valign="top"> syncgrain</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
