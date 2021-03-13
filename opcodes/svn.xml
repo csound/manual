@@ -1,0 +1,101 @@
+<refentry id="svn">
+<indexterm id="IndexSvn"><primary>svn</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>svn</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>svn</refname>
+    <refpurpose>
+     Non-linear state variable filter
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+<title>Description</title>
+    <para>
+     This opcode implements a non-linear state variable filter with
+     overdrive control and optional user-defined non-linear transfer function.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ahp,alp,abp,abr <command>svn</command> asig, xcf, xQ,
+    kdrive[, ifn, imx, istor]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+      <para>
+      <emphasis>ifn</emphasis> -- if non-zero, a function table number
+      containing the non-linear transfer function for the filter. This
+      should be mid-point centered and defined in the interval -imx to
+      imx. If zero, the filter employs an internal non-linear transfer
+      function based on a hyperbolic tangent. Defaults to 0.  
+      </para>
+      <para>
+        <emphasis>imx</emphasis> -- The absolute max of the function
+        table domain, which is defined as  -imx to imx. Defaults to 1.
+      </para>
+      <para>
+      <emphasis>istor</emphasis> --initial disposition of internal
+      data space. Since filtering incorporates a feedback loop of
+      previous output, the initial status of the storage space used is
+      significant.  A zero value will clear the space; a non-zero
+      value will allow previous information to remain. The default
+      value is 0.
+    </para>
+      
+  </refsect1>
+  
+  <refsect1>
+    <title>Performance</title>
+      <para>
+      <emphasis>ahp,alp,abp,abr</emphasis> -- highpass, lowpass,
+      bandpass and bandreject ouputs.
+    </para>
+    <para>
+      <emphasis>asig</emphasis> -- input
+    </para>
+    <para>
+      <emphasis>xcf</emphasis> -- filter
+      cutoff frequency (a- or k-rate) 
+    </para>
+    <para>
+      <emphasis>xQ</emphasis> -- filter Q (min 0.5) (a- or k-rate). 
+    </para>
+       <para>
+      <emphasis>kdrive</emphasis> -- overdrive factor. With the
+      internal non-linear map, values above
+      0.5 will introduce progressively more non-linearities in the
+      filter signal. When using a user-supplied transfer function, the
+      amount of distortion introduced by this parameter will depend on
+      the function employed. A value of 0 makes the filter linear.
+      The amount of drive is also dependent on the level of the input
+      signal. If this signal is significantly less than 0dbfs, then proportionally
+      more drive is needed to introduce non-linearities in the signal.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the svn opcode. It uses the file <ulink url="examples/svn.csd"><citetitle>svn.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the svn opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/svn.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>Feb 2021</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry> 
