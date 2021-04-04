@@ -74,11 +74,12 @@ instr 1
 endin
 
 ; simplified example taken from beadsynt, to show a practical use case
-; this uses the file fox.mtx.wav, which is not a real soundfile, but
-; a 2D matrix saved as a soundfile, generated with loristrck_pack
+; this uses the file fox.mtx (previously called fox.mtx.wav), which is 
+; not a real soundfile, but a 2D matrix saved as a soundfile,
+; generated with loristrck_pack
 ; (see https://github.com/gesellkammer/loristrck)      
 instr 2
-  ifn ftgentmp 0,0,0,-1, "fox.mtx.wav", 0, 0, 0
+  ifn ftgentmp 0,0,0,-1, "fox.mtx", 0, 0, 0
   ; ifn is organized as follow:
   ; header: iskip, idt, inumcols, inumrows, itimestart
   ; multiple rows of the form f0, a0, bw0, f1, a1, bw1, ...    
