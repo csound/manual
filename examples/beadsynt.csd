@@ -55,8 +55,10 @@ iphs: initial phase of the oscillators.
 NB: kFreqs, kAmps and kBws must all be the same size (this also holds true for
     ifreqft, iampfr and ibwft)
 
-This example uses the analysis file fox.mtx.wav which was produced with
+This example uses the analysis file fox.mtx which was produced with 
 loristrck_pack, see https://github.com/gesellkammer/loristrck
+The file is in fact a wav file, with the difference that the wav format is used 
+as a binary exchange format, thus avoiding more brittle solutions.
 
 */
 
@@ -65,7 +67,7 @@ ksmps = 128
 nchnls = 2
 0dbfs = 1.0
 
-gispectrum ftgen 0, 0, 0, -1, "fox.mtx.wav", 0, 0, 0
+gispectrum ftgen 0, 0, 0, -1, "fox.mtx", 0, 0, 0
 
 instr 1
   ifn = gispectrum
