@@ -4,7 +4,7 @@
 -odac     ;;;RT audio out
 ;-iadc    ;;;uncomment -iadc if RT audio input is needed too
 ; For Non-realtime ouput leave only the line below:
-; -o chuas_oscillator.wav.wav -W ;;; for file output any platform
+; -o chuap.wav -W ;;; for file output any platform
 </CsOptions>
 <CsInstruments>
 
