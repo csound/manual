@@ -22,7 +22,7 @@
   <refsect1>
     <title>Syntax</title>
     <synopsis>ahp,alp,abp,abr <command>svn</command> asig, xcf, xQ,
-    kdrive[, ifn, imx, istor]</synopsis>
+    kdrive[, ifn,inm,imx, istor]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -31,8 +31,13 @@
       <emphasis>ifn</emphasis> -- if non-zero, a function table number
       containing the transfer function for the filter non-linearity. This
       should be mid-point centered and defined in the interval -imx to
-      imx. If zero, the filter employs an internal non-linea map
+      imx. If zero, the filter employs an internal non-linear map
       based on a hyperbolic tangent. Defaults to 0.  
+      </para>
+            <para>
+      <emphasis>inm</emphasis> -- if non-zero, a function table number
+      containing a normalising transfer function, generated from ifn
+      (using GEN 4). Defaults to 0.    
       </para>
       <para>
         <emphasis>imx</emphasis> -- The absolute max of the function
@@ -68,13 +73,16 @@
        <para>
       <emphasis>kdrive</emphasis> -- overdrive factor. With the
       internal non-linear map, values above
-      0.5 will introduce progressively more non-linearities in the
+      0.125 will introduce progressively more non-linearities in the
       filter signal. When using a user-supplied transfer function, the
       amount of distortion introduced by this parameter will depend on
-      the function employed. A value of 0 makes the filter linear.
+      the function employed. A value of 0 makes the filter completely linear.
       The amount of drive is also dependent on the level of the input
-      signal. If this signal is significantly less than 0dbfs, then proportionally
-      more drive is needed to introduce non-linearities in the signal.
+      signal. If this signal is significantly less than 0dBFS, then proportionally
+      more drive is needed to introduce non-linearities in the
+      signal. With a 0dBFS-level input, 100% drive is achieved with
+      kdrive=1. With hotter input levels, kdrive can be used to
+      moderate the non-linear distortion in the filter.
     </para>
   </refsect1>
   <refsect1>
