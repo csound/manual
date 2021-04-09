@@ -1,0 +1,85 @@
+
+<refentry id="skf">
+<indexterm id="IndexSkf"><primary>skf</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>skf</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>skf</refname>
+    <refpurpose>
+  Sallen-Key filter.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+<title>Description</title>
+    <para>
+      Skf is an digital implementation of a linear Sallen-Key 
+      analogue filter, which is a second-order filter with either
+      lowpass or highpass responses.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>asig <command>skf</command> asig, xcf, xK[, ihp, istor]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+      <para>
+      <emphasis>ihp</emphasis> -- if non-zero, select highpass
+      response. Defaults to 0 (lowpass).
+      </para>
+      <para>
+      <emphasis>istor</emphasis> --initial disposition of internal
+      data space. Since filtering incorporates a feedback loop of
+      previous output, the initial status of the storage space used is
+      significant.  A zero value will clear the space; a non-zero
+      value will allow previous information to remain. The default
+      value is 0.
+    </para>
+      
+  </refsect1>
+  
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asig</emphasis> -- input
+    </para>
+    <para>
+      <emphasis>xcf</emphasis> -- filter
+      cutoff frequency (a- or k-rate) 
+    </para>
+
+    <para>
+      <emphasis>xK</emphasis> -- Sallen-Key opamp gain, in the range 1
+      to 3. At 3 the filter self-oscillates. K=1.586 gives a
+      Butterworth response,  higher values are equivalent to Chebyshev
+      responses (with peaking). At K=1 the filter is critically damped
+      and the poles are real-valued.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the skf opcode. It uses the file <ulink url="examples/skf.csd"><citetitle>skf.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the skf opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/skf.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>Feb 2021</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry> 

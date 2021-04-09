@@ -1,0 +1,87 @@
+
+<refentry id="vclpf">
+<indexterm id="IndexVclpf"><primary>vclpf</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vclpf</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vclpf</refname>
+    <refpurpose>
+      Resonant 4pole linear lowpass filter
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+<title>Description</title>
+    <para>
+      Vclpf is an digital implementation of a standard 4-pole linear
+      analogue filter, similar to the Moog, Arp, and SSM2040/2044 filters,
+      consisting of four identical 1-pole filters with a feedback
+      (resonance or regeneration) path. Unlike the moogladder opcode,
+      this filter does not have any non-linearities, but its
+      implementation preserves the analogue filter topology.
+      
+      The code is based on the work of Federico Fontana, described in
+      the paper "PRESERVING THE STRUCTURE OF THE MOOG VCF IN THE
+      DIGITAL DOMAIN" (Proceedings of ICMC 2007). 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>asig <command>vclpf</command> ain, xcf, xres[, istor]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+      <para>
+      <emphasis>istor</emphasis> --initial disposition of internal
+      data space. Since filtering incorporates a feedback loop of
+      previous output, the initial status of the storage space used is
+      significant.  A zero value will clear the space; a non-zero
+      value will allow previous information to remain. The default
+      value is 0.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>asig</emphasis> -- input signal.
+    </para>
+    <para>
+      <emphasis>xcf</emphasis> -- filter
+      cutoff frequency (a- or k-rate) 
+    </para>
+
+    <para>
+      <emphasis>xres</emphasis> --
+      resonance, between 0 and 1. Higher values will make the filter
+      self-oscillate (a- or k-rate).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the vclpf opcode. It uses the file <ulink url="examples/vclpf.csd"><citetitle>vclpf.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the vclpf opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/vclpf.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namevictor;</member>
+        <member>Feb 2021</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry> 
