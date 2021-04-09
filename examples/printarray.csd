@@ -6,6 +6,7 @@
 </CsOptions>
 <CsInstruments>
 
+
 instr 1
   ; test i-time, 1D
   ivalues[] fillarray 0, 1, 3, 5, 7, 9
@@ -39,7 +40,7 @@ endin
 instr 2
   ; k-time, 1D, print every cycle
   kxs[] fillarray 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
-  printarray kxs, -1, "", "instr 2"
+  printarray kxs, "", "instr 2"
   kxs += 1
 endin
 
@@ -50,7 +51,7 @@ instr 3
   if kxs[0] > 1000 then
     turnoff
   endif
-  endin
+endin
 
 instr 4
   ; k-time, 2D, print with a trigger
