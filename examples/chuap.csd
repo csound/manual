@@ -4,7 +4,7 @@
 -odac     ;;;RT audio out
 ;-iadc    ;;;uncomment -iadc if RT audio input is needed too
 ; For Non-realtime ouput leave only the line below:
-; -o chuas_oscillator.wav.wav -W ;;; for file output any platform
+; -o chuap.wav -W ;;; for file output any platform
 </CsOptions>
 <CsInstruments>
 
@@ -40,12 +40,12 @@ instr 1
     aI3, aV2, aV1 chuap   iL, iR0, iC2, iG, iGa, iGb, iE, iC1, iI3, iV2, iV1, istep_size 
     asignal       balance aV2, aguide
 
-    outs asignal, asignal
+    outs asignal*adamping, asignal*adamping
 endin
 
 </CsInstruments>
-; ==============================================
 <CsScore> 
+;        Adapted from ABC++ MATLAB example data.
 //             time_step      kL           kR0         kC2              kG            kGa           kGb          kE          kC1           iI3                     iV2                     iV1
 ; torus attractor ( gallery of attractors ) 
 i 1 0 20       .1            -0.00707925   0.00001647  100              1             -.99955324    -1.00028375  1          -.00222159     -2.36201596260071       3.08917625807226e-03    3.87075614929199   
