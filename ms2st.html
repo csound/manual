@@ -104,19 +104,38 @@
 <span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
-<span class="kd">instr</span> <span class="nf">1</span> 
+<span class="c1">; by  Menno Knevel - 2021</span>
+<span class="c1">; sample = ambient sound of waterfall + animals (monkey, birds)</span>
 
-a<span class="n">m</span><span class="p">,</span> a<span class="n">s</span>    <span class="nb">diskin2</span>    <span class="s">"MSsample4.wav"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
-k<span class="n">width</span> <span class="nb">line</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">1</span>                       <span class="c1">; from M to S</span>
-<span class="c1">;kwidth = .5                                   ; original balance</span>
-a<span class="n">l</span><span class="p">,</span> a<span class="n">r</span> <span class="n">ms2st</span>  a<span class="n">m</span><span class="p">,</span>a<span class="n">s</span><span class="p">,</span>k<span class="n">width</span>
+<span class="kd">instr</span> <span class="nf">1</span> <span class="c1">; MS sample is interleaved</span>
+
+a<span class="n">m</span><span class="p">,</span> a<span class="n">s</span>    <span class="nb">diskin2</span>    <span class="s">"MSjungle_interleaved.wav"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span> <span class="c1">; interleaved stereo, MS encoded</span>
+k<span class="n">width</span> <span class="o">=</span> <span class="vi">p4</span>                                              <span class="c1">; left = M, right = S</span>
+a<span class="n">l</span><span class="p">,</span> a<span class="n">r</span> <span class="n">ms2st</span>  a<span class="n">m</span><span class="p">,</span> a<span class="n">s</span><span class="p">,</span> k<span class="n">width</span>
+<span class="nb">outs</span> a<span class="n">l</span><span class="p">,</span> a<span class="n">r</span>
+<span class="kd">endin</span>
+
+<span class="kd">instr</span> <span class="nf">2</span> <span class="c1">; 2 separate samples </span>
+
+a<span class="n">m</span>    <span class="nb">diskin2</span>    <span class="s">"MSjungleMid.wav"</span><span class="p">,</span> <span class="mi">1</span>        <span class="c1">; M sound as a separate mono sound</span>
+a<span class="n">s</span>    <span class="nb">diskin2</span>    <span class="s">"MSjungleSide.wav"</span><span class="p">,</span> <span class="mi">1</span>       <span class="c1">; S sound as a separate mono sound</span>
+k<span class="n">width</span> <span class="o">=</span> <span class="vi">p4</span>     
+a<span class="n">l</span><span class="p">,</span> a<span class="n">r</span> <span class="n">ms2st</span>  a<span class="n">m</span><span class="p">,</span> a<span class="n">s</span><span class="p">,</span> k<span class="n">width</span>
 <span class="nb">outs</span> a<span class="n">l</span><span class="p">,</span> a<span class="n">r</span>
 
 <span class="kd">endin</span>
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
 
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mf">21.5</span> 
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mf">6.7</span> <span class="mi">0</span>          <span class="c1">; M only</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mf">6.7</span> <span class="mf">.3</span>         <span class="c1">; M and a bit of S</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mf">6.7</span> <span class="mf">.5</span>         <span class="c1">; M + S equal volume</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mf">6.7</span> <span class="mi">1</span>          <span class="c1">; S only </span>
+
+<span class="nb">i</span><span class="mi">2</span> <span class="mi">28</span> <span class="mf">6.7</span> <span class="mi">0</span>         <span class="c1">; M only</span>
+<span class="nb">i</span><span class="mi">2</span> <span class="o">+</span>  <span class="mf">6.7</span> <span class="mf">.3</span>        <span class="c1">; M and a bit of S</span>
+<span class="nb">i</span><span class="mi">2</span> <span class="o">+</span>  <span class="mf">6.7</span> <span class="mf">.5</span>        <span class="c1">; M + S equal volume</span>
+<span class="nb">i</span><span class="mi">2</span> <span class="o">+</span>  <span class="mf">6.7</span> <span class="mi">1</span>         <span class="c1">; S only</span>
 <span class="nb">e</span>
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
@@ -128,7 +147,7 @@ a<span class="n">l</span><span class="p">,</span> a<span class="n">r</span> <spa
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm147542"></a>
+        <a id="idm147617"></a>
         <h2>Credits</h2>
         <p>
       </p>
