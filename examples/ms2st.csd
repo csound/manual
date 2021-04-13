@@ -13,19 +13,38 @@ ksmps = 32
 nchnls = 2
 0dbfs  = 1
 
-instr 1 
+; by  Menno Knevel - 2021
+; sample = ambient sound of waterfall + animals (monkey, birds)
 
-am, as    diskin2    "MSsample4.wav", 1, 0, 1
-kwidth line 0, p3, 1                       ; from M to S
-;kwidth = .5                                   ; original balance
-al, ar ms2st  am,as,kwidth
+instr 1 ; MS sample is interleaved
+
+am, as    diskin2    "MSjungle_interleaved.wav", 1, 0, 1 ; interleaved stereo, MS encoded
+kwidth = p4                                              ; left = M, right = S
+al, ar ms2st  am, as, kwidth
+outs al, ar
+endin
+
+instr 2 ; 2 separate samples 
+
+am    diskin2    "MSjungleMid.wav", 1        ; M sound as a separate mono sound
+as    diskin2    "MSjungleSide.wav", 1       ; S sound as a separate mono sound
+kwidth = p4     
+al, ar ms2st  am, as, kwidth
 outs al, ar
 
 endin
 </CsInstruments>
 <CsScore>
 
-i1 0 21.5 
+i1 0 6.7 0          ; M only
+i1 + 6.7 .3         ; M and a bit of S
+i1 + 6.7 .5         ; M + S equal volume
+i1 + 6.7 1          ; S only 
+
+i2 28 6.7 0         ; M only
+i2 +  6.7 .3        ; M and a bit of S
+i2 +  6.7 .5        ; M + S equal volume
+i2 +  6.7 1         ; S only
 e
 </CsScore>
 </CsoundSynthesizer>
