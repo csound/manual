@@ -13,17 +13,32 @@ ksmps = 32
 nchnls = 2
 0dbfs  = 1
 
-instr 1 
+; by  Menno Knevel - 2021
+; sample = ambient sound of waterfall + animals (monkey)
 
-al, ar    diskin2    "stereo.wav", 1, 0, 1
+instr 1 
+al, ar    diskin2    "stereoJungle.wav", 1          ; stereo sample
 am, as st2ms  al,ar
-outs am, as
+fout "MSJungleEncoded.wav", -1, am *.6, as *.6      ; write MS encoded audio file to disk
+outs am *.6, as *.6                                 ; & reduce volume a bit
 
 endin
+
+instr 2 
+al, ar    diskin2    "MSJungleEncoded.wav", 1       ; get back in the MS encoded sample
+am, as ms2st  al,ar, p4
+outs am, as                               
+
+endin
+
 </CsInstruments>
 <CsScore>
 
-i1 0 21.5 
+i1 0 6.7          ; encode signal, write to disk
+
+i2 10 6.7 .5      ; read encoded file from disk and decode 1:1
+i2 17 6.7 .7      ; decode but with more width
+
 e
 </CsScore>
 </CsoundSynthesizer>
