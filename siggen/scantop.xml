@@ -3,11 +3,59 @@
   <title>Scanned Synthesis</title>
 
   <para>
-    Scanned synthesis is a variant of physical modeling, where a network of masses connected by springs is used to generate a dynamic waveform. The opcode <link linkend="scanu"><citetitle>scanu</citetitle></link> defines the mass/spring network and sets it in motion. The opcode <link linkend="scans"><citetitle>scans</citetitle></link> follows a predefined path (trajectory) around the network and outputs the detected waveform. Several <emphasis>scans</emphasis> instances may follow different paths around the same network.
+    Scanned synthesis is a variant of physical modeling, where a network of masses connected by springs is used to generate a dynamic waveform. Developed by Bill Verplank, Rob Shaw, and Max Mathews between 1998 and 1999 at Interval Research, Inc. it is based on the psychoacoustics of how we hear and appreciate timbres and on our motor control (haptic) abilities to manipulate timbres during live performance.
   </para>
-
+  
   <para>
-    These are highly efficient mechanical modelling algorithms for both synthesis and sonic animation via algorithmic processing. They should run in real-time. Thus, the output is useful either directly as audio, or as controller values for other parameters.
+    Scanned Synthesis involves a slow dynamic system whose frequencies of vibration are below about 15 Hz. The ear cannot hear the low frequencies of the dynamic system. So, to make audible frequencies, the "shape" of the dynamic system, along a closed path, is scanned periodically. The "shape" is converted to a sound wave whose pitch is determined by the speed of the scanning function. Pitch control is completely separate from the dynamic system control. Thus timbre and pitch are independent.
+  </para>
+  
+  <para>
+    This system can be looked upon as a dynamic wave table. The model can be compared to a slowly vibrating string, or a two dimensional surface obeying the wave equation.
+  </para> 
+   
+  <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/ScannedHaptic.png" format="PNG"/>
+        </imageobject>
+  </mediaobject>
+  
+  <para>  
+    Verplank, Shaw and Mathews studied scanned synthesis chiefly with a finite element model of a generalized string — a collection of masses connected by springs and dampers that can be analyzed with Newton's laws. From there, they generalized a traditional string by adding dampers and springs to each mass.
+  </para>  
+     
+  <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/ScannedFinite.png" format="PNG"/>
+        </imageobject>
+  </mediaobject>
+  
+  <para>
+    All parameters — mass, damping, earth-spring strength, and string tension can vary along the "string." The model is manipulated by pushing or hitting different masses (the individual samples in a very short wavetable) and by manipulating parameters. What is unique here is that the wavetable itself is a dynamic model.
+  </para>
+     
+  <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/ScannedHammers.png" format="PNG"/>
+        </imageobject>
+  </mediaobject>
+  
+  <para>
+    You are manipulating the mechanical model at haptic rates 0-10 Hz, and independent to this, you are scanning out the wavetable at the pitch frequency. Although, the table has its own dynamics, there are no discontinuities because the model is implemented as a circular string, so you end up with a 128 point looping oscillator with a constantly evolving loop. It is hard to believe, but true, that what results is a short sample that is animated and harmonically rich because of the complex interactive nature of the elements in the underlying system — the mechanics of the model.
+  </para>
+       
+  <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/ScannedCircular.png" format="PNG"/>
+        </imageobject>
+  </mediaobject>
+  
+  <para>
+    In fact, even enveloping can come directly from the model. It turns out that the specific setting of the centering springs can affect the damping of the system — low values allowing the rich timbre to ring, high values causing the tone to die away quickly.
+  </para>
+  
+    <para>
+    The opcode <link linkend="scanu"><citetitle>scanu</citetitle></link> defines the mass/spring network and sets it in motion. The opcode <link linkend="scans"><citetitle>scans</citetitle></link> follows a predefined path (trajectory) around the network and outputs the detected waveform. Several <emphasis>scans</emphasis> instances may follow different paths around the same network. These are highly efficient mechanical modelling algorithms for both synthesis and sonic animation via algorithmic processing. They should run in real-time. Thus, the output is useful either directly as audio, or as controller values for other parameters.
   </para>
 
   <para>
