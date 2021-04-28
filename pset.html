@@ -126,37 +126,46 @@ a<span class="n">sig</span> <span class="nb">poscil</span> <span class="vi">p5</
             <div class="refsect1">
               <a id="idm179001"></a>
               <pre class="programlisting">
-<span class="nt">&lt;CsoundSynthesizer&gt;</span>
-<span class="nt">&lt;CsOptions&gt;</span>
+<span class="nt">&lt;CsoundSynthesizer&gt;</span> 
+<span class="nt">&lt;CsOptions&gt;</span> 
 <span class="c1">; Select audio/midi flags here according to platform</span>
--odac 	-d    -m0d --midi-key-cps=4  -F midiChords.mid
+-odac    -m0d --midi-key-oct=4 --midi-velocity=5   -F midiChords.mid 
 <span class="c1">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</span>
-<span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="c1">; For Non-realtime ouput leave only the line below:</span>
+<span class="c1">; -o pset-midi.wav -W ;;; for file output any platform</span>
+<span class="nt">&lt;/CsOptions&gt;</span> 
+<span class="nt">&lt;CsInstruments&gt;</span> 
 
 <span class="c1">; by Menno Knevel - 2021</span>
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
+<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span> 
 <span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span> 
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span> 
 
-<span class="c1">; takes midiChords.mid from examples folder</span>
+<span class="c1">; midiChords.mid can be found in examples folder</span>
 
 <span class="kd">instr</span> <span class="nf">1</span>
 
-i<span class="n">vel</span> <span class="nb">veloc</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>			<span class="c1">;re-scale velocity to 0 - 1</span>
-<span class="nb">print</span> i<span class="n">vel</span>				<span class="c1">;print velocity</span>
-a<span class="n">sig</span> <span class="nb">vco2</span> <span class="mf">.1</span><span class="o">*</span>i<span class="n">vel</span><span class="p">,</span> <span class="vi">p4</span>   
+            <span class="nb">pset</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">.1</span>
+
+i<span class="n">starttime</span>  <span class="o">=</span> <span class="vi">p2</span>
+i<span class="n">attack</span>     <span class="o">=</span> <span class="mf">0.005</span>
+i<span class="n">sustain</span>    <span class="o">=</span> <span class="vi">p3</span>
+i<span class="n">release</span>    <span class="o">=</span> <span class="mf">0.06</span>
+<span class="vi">p3</span>          <span class="o">=</span> i<span class="n">sustain</span> <span class="o">+</span> i<span class="n">attack</span> <span class="o">+</span> i<span class="n">release</span>
+
+i<span class="n">frequency</span> <span class="nb">cpsmidi</span>
+i<span class="n">amplitude</span>  <span class="o">=</span> <span class="vi">p5</span><span class="o">*</span><span class="mf">.2</span>			<span class="c1">;lower volume</span>
+
+<span class="nb">print</span> <span class="vi">p1</span><span class="p">,</span> <span class="vi">p2</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="vi">p4</span><span class="p">,</span> <span class="vi">p5</span>
+a<span class="n">sig</span> <span class="nb">STKBandedWG</span> i<span class="n">frequency</span><span class="p">,</span> i<span class="n">amplitude</span>
      <span class="nb">outs</span> a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
-       
+
 <span class="kd">endin</span>
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
-
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">35</span>     <span class="c1">;midi file = 35 seconds</span>
-
-<span class="nb">e</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">60</span>  <span class="c1">; runs for 1 minute, midifile time lasts for 35 seconds</span>
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
@@ -167,7 +176,7 @@ a<span class="n">sig</span> <span class="nb">vco2</span> <span class="mf">.1</sp
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm179056"></a>
+        <a id="idm179089"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="strset.html" title="strset"><em class="citetitle">strset</em></a>
