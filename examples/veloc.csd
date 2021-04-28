@@ -1,32 +1,33 @@
 <CsoundSynthesizer>
 <CsOptions>
 ; Select audio/midi flags here according to platform
--odac -+rtmidi=virtual  -M0  ;;;realtime audio I/O with MIDI in
+-odac  -m0d --midi-key-cps=4  -F midiChords.mid
 ;-iadc    ;;;uncomment -iadc if realtime audio input is needed too
 </CsOptions>
 <CsInstruments>
+
+; by Menno Knevel - 2021
 
 sr = 44100
 ksmps = 32
 nchnls = 2
 0dbfs  = 1
 
-gisine	ftgen 0, 0, 1024, 10, 1
+; midiChords.mid can be found in examples folder
 
 instr 1
 
-ivel veloc 0, 1				;scale 0 - 1
+ivel veloc 0, 1			;re-scale velocity to 0 - 1
 print ivel				;print velocity
-asig poscil .5*ivel, 220, gisine	;and use it as amplitude
+asig vco2 .1*ivel, p4   ;
      outs asig, asig
        
 endin
 </CsInstruments>
 <CsScore>
 
-f 0 30     ;runs 30 seconds
+i1 0 35     ;midi file = 35 seconds
 
 e
 </CsScore>
 </CsoundSynthesizer>
-

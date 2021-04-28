@@ -83,30 +83,32 @@
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
--odac -+rtmidi=virtual  -M0  <span class="c1">;;;realtime audio I/O with MIDI in</span>
+-odac  -m0d --midi-key-cps=4  -F midiChords.mid
 <span class="c1">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span>
+
+<span class="c1">; by Menno Knevel - 2021</span>
 
 <span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
 <span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
 <span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
-gi<span class="n">sine</span>	<span class="nb">ftgen</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>
+<span class="c1">; midiChords.mid can be found in examples folder</span>
 
 <span class="kd">instr</span> <span class="nf">1</span>
 
-i<span class="n">vel</span> <span class="nb">veloc</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>				<span class="c1">;scale 0 - 1</span>
+i<span class="n">vel</span> <span class="nb">veloc</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>			<span class="c1">;re-scale velocity to 0 - 1</span>
 <span class="nb">print</span> i<span class="n">vel</span>				<span class="c1">;print velocity</span>
-a<span class="n">sig</span> <span class="nb">poscil</span> <span class="mf">.5</span><span class="o">*</span>i<span class="n">vel</span><span class="p">,</span> <span class="mi">220</span><span class="p">,</span> gi<span class="n">sine</span>	<span class="c1">;and use it as amplitude</span>
+a<span class="n">sig</span> <span class="nb">vco2</span> <span class="mf">.1</span><span class="o">*</span>i<span class="n">vel</span><span class="p">,</span> <span class="vi">p4</span>   <span class="c1">;</span>
      <span class="nb">outs</span> a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
        
 <span class="kd">endin</span>
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
 
-<span class="nb">f</span> <span class="mi">0</span> <span class="mi">30</span>     <span class="c1">;runs 30 seconds</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">35</span>     <span class="c1">;midi file = 35 seconds</span>
 
 <span class="nb">e</span>
 <span class="nt">&lt;/CsScore&gt;</span>
@@ -119,7 +121,7 @@ a<span class="n">sig</span> <span class="nb">poscil</span> <span class="mf">.5</
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm254083"></a>
+        <a id="idm254072"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="aftouch.html" title="aftouch"><em class="citetitle">aftouch</em></a>,
@@ -136,7 +138,7 @@ a<span class="n">sig</span> <span class="nb">poscil</span> <span class="mf">.5</
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm254108"></a>
+        <a id="idm254097"></a>
         <h2>Credits</h2>
         <p>
       </p>
