@@ -1,33 +1,42 @@
-<CsoundSynthesizer>
-<CsOptions>
+<CsoundSynthesizer> 
+<CsOptions> 
 ; Select audio/midi flags here according to platform
--odac 	-d    -m0d --midi-key-cps=4  -F midiChords.mid
+-odac    -m0d --midi-key-oct=4 --midi-velocity=5   -F midiChords.mid 
 ;-iadc    ;;;uncomment -iadc if realtime audio input is needed too
-</CsOptions>
-<CsInstruments>
+; For Non-realtime ouput leave only the line below:
+; -o pset-midi.wav -W ;;; for file output any platform
+</CsOptions> 
+<CsInstruments> 
 
 ; by Menno Knevel - 2021
 
-sr = 44100
+sr = 44100 
 ksmps = 32
-nchnls = 2
-0dbfs  = 1
+0dbfs  = 1 
+nchnls = 2 
 
-; takes midiChords.mid from examples folder
+; midiChords.mid can be found in examples folder
 
 instr 1
 
-ivel veloc 0, 1			;re-scale velocity to 0 - 1
-print ivel				;print velocity
-asig vco2 .1*ivel, p4   
+            pset 1, 0, .1
+
+istarttime  = p2
+iattack     = 0.005
+isustain    = p3
+irelease    = 0.06
+p3          = isustain + iattack + irelease
+
+ifrequency cpsmidi
+iamplitude  = p5*.2			;lower volume
+
+print p1, p2, p3, p4, p5
+asig STKBandedWG ifrequency, iamplitude
      outs asig, asig
-       
+
 endin
 </CsInstruments>
 <CsScore>
-
-i1 0 35     ;midi file = 35 seconds
-
-e
+i1 0 60  ; runs for 1 minute, midifile time lasts for 35 seconds
 </CsScore>
 </CsoundSynthesizer>
