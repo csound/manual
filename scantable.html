@@ -98,7 +98,7 @@
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
--odac -+rtmidi=virtual -M0 <span class="c1">;;;realtime audio out and midi in</span>
+-odac <span class="c1">;;;realtime audio out</span>
 <span class="c1">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</span>
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o scantable.wav -W ;;; for file output any platform</span>
@@ -110,28 +110,42 @@
 <span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
-gi<span class="n">1</span> <span class="nb">ftgen</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">0</span>		<span class="c1">; initial position</span>
-gi<span class="n">2</span> <span class="nb">ftgen</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">1</span>		<span class="c1">; masses</span>
-gi<span class="n">3</span> <span class="nb">ftgen</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">0</span>	<span class="c1">; stiffness</span>
-gi<span class="n">4</span> <span class="nb">ftgen</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">1</span>		<span class="c1">; damping</span>
-gi<span class="n">5</span> <span class="nb">ftgen</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mf">0.5</span>		<span class="c1">; initial velocity</span>
+<span class="c1">; by Menno Knevel 2021</span>
 
+<span class="kd">instr</span> <span class="nf">1</span>	
 
-<span class="kd">instr</span> <span class="nf">1</span>
+i<span class="n">nitial</span> <span class="nb">ftgen</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>                         <span class="c1">; initial position = sine wave</span>
+i<span class="n">mass</span>   <span class="nb">ftgen</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="mi">1</span>                 <span class="c1">; masses</span>
+i<span class="n">stiff</span>  <span class="nb">ftgen</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p5</span><span class="o">*</span><span class="mf">.3</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="vi">p5</span><span class="o">*</span><span class="mf">.7</span><span class="p">,</span> <span class="mi">0</span>   <span class="c1">; stiffness</span>
+i<span class="n">damp</span>   <span class="nb">ftgen</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="mi">1</span>                  <span class="c1">; damping</span>
+i<span class="n">velo</span>   <span class="nb">ftgen</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="mf">0.5</span>                <span class="c1">; initial velocity</span>
 
-i<span class="n">amp</span> <span class="nb">ampmidi</span> <span class="mf">.5</span>
-i<span class="n">pch</span> <span class="nb">cpsmidi</span> 
-k<span class="n">env</span> <span class="nb">madsr</span> <span class="mf">.1</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> <span class="mf">.8</span><span class="p">,</span> <span class="mf">.3</span>
-
+i<span class="n">amp</span> <span class="o">=</span> <span class="mf">.15</span>
+i<span class="n">pch</span>  <span class="o">=</span> <span class="nb">cpsmidinn</span><span class="p">(</span><span class="vi">p4</span><span class="p">)</span> 
 a<span class="n">sig</span> <span class="nb">scantable</span> i<span class="n">amp</span><span class="p">,</span> i<span class="n">pch</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span>
 a<span class="n">sig</span> <span class="nb">dcblock</span> a<span class="n">sig</span>
-     <span class="nb">outs</span> a<span class="n">sig</span><span class="o">*</span>k<span class="n">env</span><span class="p">,</span> a<span class="n">sig</span><span class="o">*</span>k<span class="n">env</span>
+<span class="nb">outs</span> a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span><span class="c1">;</span>
 
 <span class="kd">endin</span>
+
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
-
-<span class="nb">f</span><span class="mi">0</span> <span class="mi">60</span>	<span class="c1">; play for 60 seconds</span>
+<span class="nb">s</span>
+<span class="nb">i</span><span class="mi">1</span>	<span class="mi">0</span>	<span class="mi">20</span>	<span class="mi">50</span>  <span class="mi">128</span>
+<span class="nb">i</span><span class="mi">1</span>	<span class="mi">10</span>	<span class="mi">10</span>	<span class="mi">70</span>  <span class="o">.</span>
+<span class="nb">i</span><span class="mi">1</span>	<span class="mi">15</span>	<span class="mi">3</span>	<span class="mi">40</span>  <span class="o">.</span>
+<span class="nb">s</span>
+<span class="nb">i</span><span class="mi">1</span>	<span class="mi">0</span>	<span class="mi">20</span>	<span class="mi">50</span>  <span class="mi">4096</span>    <span class="c1">; f-tables now bigger tables</span>
+<span class="nb">i</span><span class="mi">1</span>	<span class="mi">10</span>	<span class="mi">10</span>	<span class="mi">70</span>  <span class="o">.</span>       <span class="c1">; sounds different </span>
+<span class="nb">i</span><span class="mi">1</span>	<span class="mi">15</span>	<span class="mi">3</span>	<span class="mi">40</span>  <span class="o">.</span>
+<span class="nb">s</span>
+<span class="nb">i</span><span class="mi">1</span>	<span class="mi">0</span>	<span class="mi">20</span>	<span class="mi">50</span>  <span class="mi">1000</span>    <span class="c1">; still big tables</span>
+<span class="nb">i</span><span class="mi">1</span>	<span class="mi">10</span>	<span class="mi">10</span>	<span class="mi">70</span>  <span class="o">.</span>       <span class="c1">; but non-power of 2</span>
+<span class="nb">i</span><span class="mi">1</span>	<span class="mi">15</span>	<span class="mi">3</span>	<span class="mi">40</span>  <span class="o">.</span>
+<span class="nb">s</span>
+<span class="nb">i</span><span class="mi">1</span>	<span class="mi">0</span>	<span class="mi">20</span>	<span class="mi">50</span>  <span class="mi">20</span>      <span class="c1">; small tables</span>
+<span class="nb">i</span><span class="mi">1</span>	<span class="mi">10</span>	<span class="mi">10</span>	<span class="mi">70</span>  <span class="o">.</span>       <span class="c1">; &amp; non-power of 2</span>
+<span class="nb">i</span><span class="mi">1</span>	<span class="mi">15</span>	<span class="mi">3</span>	<span class="mi">40</span>  <span class="o">.</span>
 <span class="nb">e</span>
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
@@ -143,7 +157,7 @@ a<span class="n">sig</span> <span class="nb">dcblock</span> a<span class="n">sig
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm200136"></a>
+        <a id="idm200203"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="scanhammer.html" title="scanhammer"><em class="citetitle">scanhammer</em></a>
@@ -151,7 +165,7 @@ a<span class="n">sig</span> <span class="nb">dcblock</span> a<span class="n">sig
         <p> More information on this opcode: <a class="ulink" href="http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html" target="_top"><em class="citetitle">http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html</em></a>  , written by Steven Yi </p>
       </div>
       <div class="refsect1">
-        <a id="idm200144"></a>
+        <a id="idm200211"></a>
         <h2>Credits</h2>
         <p>
       </p>
