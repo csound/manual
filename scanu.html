@@ -118,16 +118,78 @@
         <a id="idm200288"></a>
         <h2>Examples</h2>
         <p>
-      For an example, see the documentation on <a class="link" href="scans.html" title="scans"><em class="citetitle">scans</em></a>.
+      Here is an example of the scanu opcode. It uses the files <a class="ulink" href="examples/scanu-musical.csd" target="_top"><em class="citetitle">scanu-musical.csd</em></a> and <a class="ulink" href="examples/MIDIpad.mid" target="_top"><em class="citetitle">MIDIpad.mid</em></a>.
+      </p>
+        <div class="example">
+          <a id="idm200295"></a>
+          <p class="title">
+            <strong>Example 913. Example of the scanu opcode.</strong>
+          </p>
+          <div class="example-contents">
+            <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
+            <div class="refsect1">
+              <a id="idm200302"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+<span class="nt">&lt;CsOptions&gt;</span>
+<span class="c1">; Select audio/midi flags here according to platform</span>
+-odac   -+rtmidi=virtual  -M0    <span class="c1">;;;realtime audio out and realtime midi in</span>
+<span class="c1">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</span>
+<span class="c1">; For Non-realtime ouput leave only the line below:</span>
+<span class="c1">;-o fluidNote.wav -W ;;; for file output any platform</span>
+<span class="nt">&lt;/CsOptions&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span>
+
+<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
+
+gi<span class="n">engine</span> <span class="nb">fluidEngine</span>
+<span class="c1">; soundfont path to manual/examples</span>
+i<span class="n">sfnum</span>	 <span class="nb">fluidLoad</span> <span class="s">"19Trumpet.sf2"</span><span class="p">,</span> gi<span class="n">engine</span><span class="p">,</span> <span class="mi">1</span>
+	 <span class="nb">fluidProgramSelect</span> gi<span class="n">engine</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> i<span class="n">sfnum</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">56</span>
+
+<span class="kd">instr</span> <span class="nf">1</span>
+
+	<span class="nb">mididefault</span>   <span class="mi">60</span><span class="p">,</span> <span class="vi">p3</span>
+	<span class="nb">midinoteonkey</span> <span class="vi">p4</span><span class="p">,</span> <span class="vi">p5</span>
+i<span class="n">key</span>	<span class="nb">init</span> <span class="vi">p4</span>
+i<span class="n">vel</span>	<span class="nb">init</span> <span class="vi">p5</span>
+	<span class="nb">fluidNote</span> gi<span class="n">engine</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> i<span class="n">key</span><span class="p">,</span> i<span class="n">vel</span>
+
+<span class="kd">endin</span>
+
+<span class="kd">instr</span> <span class="nf">99</span>
+
+i<span class="n">mvol</span>  <span class="nb">init</span> <span class="mi">7</span>
+a<span class="n">sigl</span><span class="p">,</span> a<span class="n">sigr</span> <span class="nb">fluidOut</span> gi<span class="n">engine</span>
+       <span class="nb">outs</span> a<span class="n">sigl</span><span class="o">*</span>i<span class="n">mvol</span><span class="p">,</span> a<span class="n">sigr</span><span class="o">*</span>i<span class="n">mvol</span>
+
+<span class="kd">endin</span>
+<span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span>
+
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">2</span> <span class="mi">60</span> <span class="mi">100</span> <span class="c1">;play one note from score and...</span>
+<span class="nb">i</span> <span class="mi">99</span> <span class="mi">0</span> <span class="mi">60</span>      <span class="c1">;play virtual keyboard for 60 sec.</span>
+<span class="nb">e</span>
+
+<span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm200293"></a>
+        <a id="idm200406"></a>
         <h2>See Also</h2>
         <p> More information on this opcode: <a class="ulink" href="http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html" target="_top"><em class="citetitle">http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html</em></a>  , written by Steven Yi </p>
       </div>
       <div class="refsect1">
-        <a id="idm200298"></a>
+        <a id="idm200411"></a>
         <h2>Credits</h2>
         <p>
       </p>
