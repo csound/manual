@@ -127,10 +127,66 @@ instr 1:  iceil = 0.000
 instr 1:  iceil = 0.000
       </pre>
         <p>
+      Here is another example of the ceil opcode. It uses the file <a class="ulink" href="examples/ceil-2.csd" target="_top"><em class="citetitle">ceil.csd</em></a>. 
+      </p>
+        <div class="example">
+          <a id="idm38275"></a>
+          <p class="title">
+            <strong>Example 119. A second example of the ceil opcode.</strong>
+          </p>
+          <div class="example-contents">
+            <div class="refsect1">
+              <a id="idm38277"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+<span class="nt">&lt;CsOptions&gt;</span>
+<span class="c1">; Select audio/midi flags here according to platform</span>
+-odac      <span class="c1">;;;realtime audio out</span>
+<span class="c1">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</span>
+<span class="c1">; For Non-realtime ouput leave only the line below:</span>
+<span class="c1">; -o ceil-2.wav -W ;;; for file output any platform</span>
+
+<span class="c1">; By Stefano Cucchi - 2020</span>
+
+<span class="nt">&lt;/CsOptions&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span>
+
+<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+
+<span class="kd">instr</span> <span class="nf">1</span>
+
+k<span class="n">cps</span> <span class="o">=</span> <span class="mi">100</span>
+k<span class="n">car</span> <span class="o">=</span> <span class="mi">1</span>
+k<span class="n">mod</span> <span class="o">=</span> <span class="vi">p4</span>
+
+k<span class="n">ndx</span> <span class="nb">oscil</span> <span class="mi">30</span><span class="p">,</span> <span class="mf">.25</span><span class="o">/</span><span class="vi">p3</span><span class="p">,</span> <span class="mi">1</span>
+k<span class="n">ndx</span> <span class="nb">ceil</span> k<span class="n">ndx</span>
+
+a<span class="n">sig</span> <span class="nb">foscili</span> <span class="mf">.5</span><span class="p">,</span> k<span class="n">cps</span><span class="p">,</span> k<span class="n">car</span><span class="p">,</span> k<span class="n">mod</span><span class="p">,</span> k<span class="n">ndx</span><span class="p">,</span> <span class="mi">1</span>
+     <span class="nb">outs</span> a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
+
+<span class="kd">endin</span>
+<span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span>
+
+<span class="nb">f</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">16384</span> <span class="mi">10</span> <span class="mi">1</span>
+
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">10</span> <span class="mf">1.5</span>	
+<span class="nb">e</span>
+<span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm38273"></a>
+        <a id="idm38358"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="abs.html" title="abs"><em class="citetitle">abs</em></a>,
@@ -143,7 +199,7 @@ instr 1:  iceil = 0.000
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm38290"></a>
+        <a id="idm38375"></a>
         <h2>Credits</h2>
         <p>
       </p>
