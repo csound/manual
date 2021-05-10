@@ -100,7 +100,7 @@
 -odac      <span class="c1">;;;realtime audio out</span>
 <span class="c1">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</span>
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
-<span class="c1">; -o oscil1i.wav -W ;;; for file output any platform</span>
+<span class="c1">; -o oscil1.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span>
 
@@ -109,26 +109,21 @@
 <span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
+gi<span class="n">Pan</span> <span class="nb">ftgen</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.2</span><span class="p">,</span> <span class="mf">.8</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> <span class="mf">.9</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">.5</span>
+
 <span class="kd">instr</span>     <span class="nf">1</span>   
 
-i<span class="n">panfn</span> <span class="o">=</span> <span class="vi">p4</span>
+i<span class="n">stay</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1">;how many seconds to stay on the first table value</span>
 a<span class="n">sig</span>   <span class="nb">vco2</span> <span class="mf">.3</span><span class="p">,</span> <span class="mi">220</span>
-k<span class="n">pan</span>   <span class="nb">oscil1i</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> i<span class="n">panfn</span>	<span class="c1">;create panning &amp;</span>
-k<span class="n">left</span>  <span class="o">=</span> <span class="nb">sqrt</span><span class="p">(</span>k<span class="n">pan</span><span class="p">)</span>		<span class="c1">;start right away</span>
-k<span class="n">right</span> <span class="o">=</span> <span class="nb">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span>k<span class="n">pan</span><span class="p">)</span>     
-       <span class="nb">outs</span> k<span class="n">left</span><span class="o">*</span>a<span class="n">sig</span><span class="p">,</span> k<span class="n">right</span><span class="o">*</span>a<span class="n">sig</span>
+k<span class="n">pan</span>   <span class="nb">oscil1</span> i<span class="n">stay</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="vi">p3</span><span class="o">-</span>i<span class="n">stay</span><span class="p">,</span> gi<span class="n">Pan</span> <span class="c1">;create panning </span>
+       <span class="nb">printk2</span> k<span class="n">pan</span> <span class="c1">;print when new value</span>
+a<span class="n">L</span><span class="p">,</span> a<span class="n">R</span> <span class="nb">pan2</span> a<span class="n">sig</span><span class="p">,</span> k<span class="n">pan</span> <span class="c1">;apply panning</span>
+       <span class="nb">outs</span> a<span class="n">L</span><span class="p">,</span> a<span class="n">R</span>
 
 <span class="kd">endin</span>
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>                                                                                  
-<span class="nb">f</span> <span class="mi">1</span> <span class="mi">0</span>  <span class="mi">3</span> <span class="o">-</span><span class="mi">7</span> <span class="mf">.5</span>  <span class="mi">3</span>  <span class="mf">.5</span>		<span class="c1">;remain in center (.5 CONSTANT)                                                                          </span>
-<span class="nb">f</span> <span class="mi">2</span> <span class="mi">0</span> <span class="mi">129</span> <span class="mi">7</span>  <span class="mi">1</span> <span class="mi">129</span> <span class="mi">0</span> 		<span class="c1">;left--&gt;right                                                                                                     </span>
-<span class="nb">f</span> <span class="mi">3</span> <span class="mi">0</span> <span class="mi">129</span> <span class="mi">7</span> <span class="mf">.5</span>  <span class="mi">32</span> <span class="mi">1</span> <span class="mi">64</span> <span class="mi">0</span> <span class="mi">33</span> <span class="mf">.5</span> <span class="c1">;center--&gt;left--&gt;right--&gt;center    </span>
-
-<span class="nb">i</span> <span class="mi">1</span>  <span class="mi">0</span>  <span class="mi">2</span>  <span class="mi">1</span>			<span class="c1">;use table 1</span>
-<span class="nb">i</span> <span class="mi">1</span>  <span class="mi">3</span>  <span class="mi">2</span>  <span class="mi">2</span>			<span class="c1">;use table 2</span>
-<span class="nb">i</span> <span class="mi">1</span>  <span class="mi">6</span>  <span class="mi">2</span>  <span class="mi">3</span>			<span class="c1">;use table 3</span>
-
+<span class="nb">i</span> <span class="mi">1</span>  <span class="mi">0</span>  <span class="mi">10</span>
 <span class="nb">e</span>
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
@@ -155,7 +150,7 @@ k<span class="n">right</span> <span class="o">=</span> <span class="nb">sqrt</sp
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm155709"></a>
+        <a id="idm155684"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="table.html" title="table"><em class="citetitle">table</em></a>,
