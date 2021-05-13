@@ -39,14 +39,14 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm114891"></a>
+        <a id="idm115061"></a>
         <h2>Description</h2>
         <p>
       Returns the integer part of <span class="emphasis"><em>x</em></span>.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm114895"></a>
+        <a id="idm115065"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>int</strong></span>(x)  (init-rate or control-rate; also works at audio rate in Csound5)</pre>
         <p>
@@ -54,21 +54,21 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm114900"></a>
+        <a id="idm115070"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the int opcode. It uses the file <a class="ulink" href="examples/int.csd" target="_top"><em class="citetitle">int.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm114905"></a>
+          <a id="idm115075"></a>
           <p class="title">
-            <strong>Example 471. Example of the int opcode.</strong>
+            <strong>Example 472. Example of the int opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm114912"></a>
+              <a id="idm115082"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -122,10 +122,75 @@ integer (8.000000/3) = 2.000000
 integer (9.000000/3) = 3.000000
       </pre>
         <p>
+           Here is an example for the rounding-group, comparing the different rounding opcodes. It uses the file <a class="ulink" href="examples/rounding-group.csd" target="_top"><em class="citetitle">rounding-group.csd</em></a>.
+      </p>
+        <div class="example">
+          <a id="idm115155"></a>
+          <p class="title">
+            <strong>Example 473. Example of the rounding group.</strong>
+          </p>
+          <div class="example-contents">
+            <div class="refsect1">
+              <a id="idm115157"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+<span class="nt">&lt;CsOptions&gt;</span>
+-odac       <span class="c1">;   </span>
+<span class="nt">&lt;/CsOptions&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span>
+
+<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+
+<span class="c1">; by tgrey 2020</span>
+<span class="kd">instr</span> <span class="nf">1</span>
+
+i<span class="n">LoopStart</span> <span class="o">=</span> <span class="vi">p4</span>
+i<span class="n">LoopEnd</span>   <span class="o">=</span> <span class="vi">p5</span>
+i<span class="n">Offset</span>    <span class="o">=</span> <span class="vi">p6</span>
+
+i<span class="n">Count</span> <span class="nb">init</span> i<span class="n">LoopStart</span>
+
+	
+<span class="k">if</span><span class="p">(</span>i<span class="n">LoopStart</span><span class="o">&lt;</span>i<span class="n">LoopEnd</span><span class="p">)</span> <span class="k">then</span>		<span class="c1">; loop going up</span>
+	<span class="k">while</span> i<span class="n">Count</span> <span class="o">&lt;=</span> i<span class="n">LoopEnd</span> <span class="k">do</span>
+		i<span class="n">Val</span> <span class="o">=</span> i<span class="n">Count</span><span class="o">+</span>i<span class="n">Offset</span>
+		i<span class="n">Round</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span>i<span class="n">Val</span><span class="p">)</span>
+		i<span class="n">Int</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span>i<span class="n">Val</span><span class="p">)</span>
+		i<span class="n">Floor</span> <span class="o">=</span> <span class="nb">floor</span><span class="p">(</span>i<span class="n">Val</span><span class="p">)</span>
+		i<span class="n">Ceil</span> <span class="o">=</span> <span class="nb">ceil</span><span class="p">(</span>i<span class="n">Val</span><span class="p">)</span>
+		<span class="nb">print</span> i<span class="n">Val</span><span class="p">,</span> i<span class="n">Round</span><span class="p">,</span> i<span class="n">Int</span><span class="p">,</span> i<span class="n">Floor</span><span class="p">,</span> i<span class="n">Ceil</span>
+		i<span class="n">Count</span> <span class="o">=</span> i<span class="n">Count</span> <span class="o">+</span> <span class="mi">1</span>		
+	<span class="k">od</span>
+	
+<span class="k">elseif</span><span class="p">(</span>i<span class="n">LoopEnd</span><span class="o">&lt;</span>i<span class="n">LoopStart</span><span class="p">)</span> <span class="k">then</span>	<span class="c1">; loop going down</span>
+	<span class="k">while</span> i<span class="n">Count</span> <span class="o">&gt;=</span> i<span class="n">LoopEnd</span> <span class="k">do</span>
+		i<span class="n">Val</span> <span class="o">=</span> i<span class="n">Count</span><span class="o">+</span>i<span class="n">Offset</span>
+		i<span class="n">Round</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span>i<span class="n">Val</span><span class="p">)</span>
+		i<span class="n">Int</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span>i<span class="n">Val</span><span class="p">)</span>
+		i<span class="n">Floor</span> <span class="o">=</span> <span class="nb">floor</span><span class="p">(</span>i<span class="n">Val</span><span class="p">)</span>
+		i<span class="n">Ceil</span> <span class="o">=</span> <span class="nb">ceil</span><span class="p">(</span>i<span class="n">Val</span><span class="p">)</span>
+		<span class="nb">print</span> i<span class="n">Val</span><span class="p">,</span> i<span class="n">Round</span><span class="p">,</span> i<span class="n">Int</span><span class="p">,</span> i<span class="n">Floor</span><span class="p">,</span> i<span class="n">Ceil</span>
+		i<span class="n">Count</span> <span class="o">=</span> i<span class="n">Count</span> <span class="o">-</span> <span class="mi">1</span>		
+	<span class="k">od</span>
+<span class="k">endif</span>
+<span class="kd">endin</span>
+<span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mf">.1</span> <span class="mi">0</span> <span class="mi">10</span> <span class="mf">.5</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="mf">.2</span> <span class="mf">.1</span> <span class="mi">0</span> <span class="o">-</span><span class="mi">10</span> <span class="mf">.5</span>
+<span class="nb">e</span>
+<span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm114983"></a>
+        <a id="idm115323"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="abs.html" title="abs"><em class="citetitle">abs</em></a>,
@@ -138,7 +203,7 @@ integer (9.000000/3) = 3.000000
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm115000"></a>
+        <a id="idm115340"></a>
         <h2>Credits</h2>
       </div>
     </div>
