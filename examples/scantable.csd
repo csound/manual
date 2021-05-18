@@ -1,7 +1,7 @@
 <CsoundSynthesizer>
 <CsOptions>
 ; Select audio/midi flags here according to platform
--odac -+rtmidi=virtual -M0 ;;;realtime audio out and midi in
+-odac ;;;realtime audio out
 ;-iadc    ;;;uncomment -iadc if realtime audio input is needed too
 ; For Non-realtime ouput leave only the line below:
 ; -o scantable.wav -W ;;; for file output any platform
@@ -13,28 +13,42 @@ ksmps = 32
 nchnls = 2
 0dbfs  = 1
 
-gi1 ftgen 1, 0, 128, 7, 0, 64, 1, 64, 0		; initial position
-gi2 ftgen 2, 0, 128, -7, 1, 128, 1		; masses
-gi3 ftgen 3, 0, 128, -7, 0, 64, 100, 64, 0	; stiffness
-gi4 ftgen 4, 0, 128, -7, 1, 128, 1		; damping
-gi5 ftgen 5, 0, 128, -7, 0, 128, 0.5		; initial velocity
+; by Menno Knevel 2021
 
+instr 1	
 
-instr 1
+initial ftgen 1, 0, p5, 10, 1                         ; initial position = sine wave
+imass   ftgen 2, 0, p5, -7, .1, p5, 1                 ; masses
+istiff  ftgen 3, 0, p5, -7, 0, p5*.3, 100, p5*.7, 0   ; stiffness
+idamp   ftgen 4, 0, p5, -7, 1, p5, 1                  ; damping
+ivelo   ftgen 5, 0, p5, -7, 0, p5, 0.5                ; initial velocity
 
-iamp ampmidi .5
-ipch cpsmidi 
-kenv madsr .1, .1, .8, .3
-
+iamp = .15
+ipch  = cpsmidinn(p4) 
 asig scantable iamp, ipch, 1, 2, 3, 4, 5
 asig dcblock asig
-     outs asig*kenv, asig*kenv
+outs asig, asig;
 
 endin
+
 </CsInstruments>
 <CsScore>
-
-f0 60	; play for 60 seconds
+s
+i1	0	20	50  128
+i1	10	10	70  .
+i1	15	3	40  .
+s
+i1	0	20	50  4096    ; f-tables now bigger tables
+i1	10	10	70  .       ; sounds different 
+i1	15	3	40  .
+s
+i1	0	20	50  1000    ; still big tables
+i1	10	10	70  .       ; but non-power of 2
+i1	15	3	40  .
+s
+i1	0	20	50  20      ; small tables
+i1	10	10	70  .       ; & non-power of 2
+i1	15	3	40  .
 e
 </CsScore>
 </CsoundSynthesizer>

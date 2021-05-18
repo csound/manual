@@ -11,7 +11,7 @@
 sr = 44100
 ksmps = 32
 nchnls = 2
-0dbfs = 1
+0dbfs  = 1
 
 massign 1, -1; prevent triggering of instrument with MIDI
 
@@ -19,11 +19,11 @@ instr 200
 
     kMode = 0
     kTempo = 8
-    kNote, kCounter midiarp kTempo
+    kNote, kTrigger midiarp kTempo
     kFilterFreq lfo 2000, .05, 1
 
-    ;if kCounter is 1 trigger instrument 300 to play
-    if kCounter==1 then 	
+    ;if kTrigger is 1 trigger instrument 300 to play
+    if kTrigger==1 then 	
         event "i", 300, 0, .5, .5, kNote, abs(kFilterFreq)+200
     endif
 
