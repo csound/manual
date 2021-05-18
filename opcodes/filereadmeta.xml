@@ -1,0 +1,118 @@
+<!--Change refentry id and indexterm id-->
+<refentry id="filereadmeta">
+  <indexterm id="Indexfilereadmeta"><primary>filereadmeta</primary></indexterm>
+  <!--Make sure the category below is a valid one! See categories.py-->
+  <refentryinfo><title>Signal I/O:Soundfile Queries</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>filereadmeta</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>filereadmeta</refname>
+    <refpurpose>
+      Read metadata from a soundfile
+    </refpurpose>
+  </refnamediv>
+  <section xml:id="description">
+    <title>Description</title>
+    <para>
+      Reads metadata from a soundfile via libsndfile. Only a subset of
+      keys, standardized across different fileformats, is supported:
+    </para>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          title
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          comment
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          artist
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          album
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          tracknumber
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          software
+        </para>
+      </listitem>
+    </itemizedlist>
+    <para>
+      The opcode has two forms: 1) a specific key is queried, in which
+      case the opcode returns the string for that key, or an empty
+      string if that key is not present; 2) no key is given and all the
+      metadata is returned in two string arrays, one with all the keys
+      and second with their corresponding values.
+    </para>
+  </section>
+  
+  <refsect1>
+    <title>Syntax</title>
+	  <!--Keep this < ~70 chars to avoid overflow in the pdf version-->
+    <synopsis>Svalue <command>filereadmeta</command> Ssndfile, Skey</synopsis>
+    <synopsis>Skeys[], Svalues[] <command>filereadmeta</command> Ssndfile</synopsis>
+	  
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+	    <emphasis>Ssndfile</emphasis> The path to a soundfile
+	  </para>
+    <para>
+	    <emphasis>Skey</emphasis> The metadata key to query
+	  </para>
+    
+  </refsect1>
+  
+  <refsect1>
+	  <!--To add examples, create the csd file in the examples directory, then run:-->
+	  <!--python csd2docbook.py -f newopcodename.csd-->
+	  <!--to generate the xml highlighted version used below-->
+    <title>Examples</title>
+    <para>
+      Here is an example of the filereadmeta opcode. It uses the
+      file <ulink
+      url="examples/filereadmeta.csd"><citetitle>filereadmeta.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the filereadmeta opcode.</title>
+        <xi:include href="examples-xml/filereadmeta.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+	  <!--    it's always good to include a good See Also list  -->
+    <para>
+      <link linkend="filesr"><citetitle>filesr</citetitle></link>, 
+      <link linkend="filenchnls"><citetitle>filenchnls</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+	  <!--  And put your name and other relevant information here-->
+    <title>Credits</title>
+    <para>By: &nameeduardo; 2021</para>
+  </refsect1>
+
+  <!--Now remember to add a link from the appropriate category in the Opcode Overview.-->
+  <!--Add the entity to manual.xml-->
+  <!--Add the entity reference in the appropriate place in opcodes/top.xml-->
+  <!--And you're set! Maybe delete the comments as well...-->
+
+</refentry>
