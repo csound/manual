@@ -16,7 +16,7 @@ nchnls = 2
 
 instr 1
 
-fsource pvsdiskin “fox.pvx”, 1, 0.2
+fsource pvsdiskin "fox.pvx", 1, 0.2
 kgain1  randomh p4, p5, p6
 fstencil1  pvstencil fsource, kgain1, 1, 1
 aout1   pvsynth   fstencil1
