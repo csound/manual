@@ -97,6 +97,76 @@ for each PV bin.
       <div class="refsect1">
         <a id="idm287925"></a>
         <h2>Examples</h2>
+        <div class="mediaobject">
+          <img src="images/reverbnoise_selection.png" />
+        </div>
+        <span class="phrase">This is a selection of some reverb and noise of the sound file. The selection has a duration of 0.8 seconds. We need this duration for pvanal to analyze and create the pvocex file.</span>
+        <p>
+	    Here is an example of the GEN43 routine. It uses the files <a class="ulink" href="examples/gen43.csd" target="_top"><em class="citetitle">gen43.csd</em></a>.
+      </p>
+        <div class="example">
+          <a id="idm287935"></a>
+          <p class="title">
+            <strong>Example 1303. An example of the GEN43 routine.</strong>
+          </p>
+          <div class="example-contents">
+            <div class="refsect1">
+              <a id="idm287937"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+<span class="nt">&lt;CsOptions&gt;</span>
+<span class="c1">; Select audio/midi flags here according to platform</span>
+-odac      <span class="c1">;;;realtime audio out</span>
+<span class="c1">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</span>
+<span class="c1">; For Non-realtime ouput leave only the line below:</span>
+<span class="c1">; -o GEN43.wav -W ;;; for file output any platform</span>
+<span class="nt">&lt;/CsOptions&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span>
+
+<span class="c1">; by Menno Knevel 2021</span>
+
+<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1">; Audacity shows the selection of reverb and noise- see image above</span>
+
+<span class="kd">instr</span> <span class="nf">1</span> <span class="c1">; analyze this selection and output result to pvx file</span>
+i<span class="n">res</span> <span class="nb">system_i</span> <span class="mi">1</span><span class="p">,</span><span class="s">{{     
+    pvanal -b1.04 -d0.8 finneganswake1.flac reverbnoise.pvx
+        }}</span>
+<span class="kd">endin</span>
+
+<span class="kd">instr</span> <span class="nf">2</span> <span class="c1">; untreated signal, contains some reverb and noise</span>
+a<span class="n">sig</span>    <span class="nb">diskin2</span>   <span class="s">"finneganswake1.flac"</span><span class="p">,</span> <span class="mi">1</span>
+<span class="nb">outs</span>    a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
+<span class="kd">endin</span>
+
+<span class="kd">instr</span> <span class="nf">3</span> <span class="c1">; use .pvx file from instr. 1 to remove reverb and noise</span>
+<span class="c1">; pvanal created 1 frame of size 1024, so size of table for GEN 43 = 512 (fftsize/2)</span>
+i<span class="n">pvx</span>    <span class="nb">ftgen</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="o">-</span><span class="mi">43</span><span class="p">,</span> <span class="s">"reverbnoise.pvx"</span><span class="p">,</span> <span class="mi">0</span>    <span class="c1">; can be found in examples folder</span>
+a<span class="n">sig</span>    <span class="nb">diskin2</span>   <span class="s">"finneganswake1.flac"</span><span class="p">,</span> <span class="mi">1</span>  
+f<span class="n">sig</span>    <span class="nb">pvsanal</span>   a<span class="n">sig</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="mi">1</span>
+f<span class="n">clean</span>  <span class="nb">pvstencil</span> f<span class="n">sig</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> i<span class="n">pvx</span> <span class="c1">; maximum cleaning</span>
+a<span class="n">clean</span>  <span class="nb">pvsynth</span>   f<span class="n">clean</span>
+<span class="nb">outs</span>    a<span class="n">clean</span><span class="p">,</span> a<span class="n">clean</span>
+<span class="kd">endin</span>
+
+<span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span>   <span class="mi">2</span>       <span class="c1">; first analyze</span>
+<span class="nb">i</span><span class="mi">2</span> <span class="mi">5</span>  <span class="mf">12.7</span>     <span class="c1">; untreated signal</span>
+<span class="nb">i</span><span class="mi">3</span> <span class="mi">20</span> <span class="mf">12.7</span>     <span class="c1">; denoised gignal</span>
+<span class="nb">e</span>
+<span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
+   </p>
         <p>
        </p>
         <pre class="programlisting"><span class="stamnt">f</span>1 0 512   43  "viola.pvx" 1
@@ -112,7 +182,7 @@ pvstencil, it is easiest to skip table normalisation (negative GEN code).
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm287932"></a>
+        <a id="idm288062"></a>
         <h2>Credits</h2>
         <p>Author: Victor Lazzarini</p>
       </div>
