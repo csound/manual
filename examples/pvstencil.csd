@@ -33,4 +33,3 @@ i1 0 10 4 70 4.2 12 95 3.8
 e
 </CsScore>
 </CsoundSynthesizer>
-
