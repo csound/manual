@@ -1,87 +1,404 @@
-<section id="CommandEnvironment">
+<section xml:id="CommandEnvironment">
   <title>Csound Environment Variables</title>
-  <para> The following environment variables can be used by Csound:
-  <itemizedlist>
-	  <listitem><simpara>SFDIR: Default directory for sound files. Used if no full path is given for sound files.</simpara></listitem>
-	  <listitem><simpara>SSDIR: Default directory for input (source) audio and MIDI files. Used if no full path is given for sound files. May be used in conjunction with SFDIR to set separate input and output directories. Please note that MIDI files as well as audio files are also sought inside SSDIR.</simpara></listitem>
-	  <listitem><simpara>SADIR: Default directory for analysis files. Used if no full path is given for analysis files. </simpara></listitem>
-	  <listitem><simpara>SFOUTYP: Sets the default output file type. Currently only 'WAV', 'AIFF' and 'IRCAM' are valid. This flag is checked by the csound executable and the utilities and is used if no file output type is specified.</simpara></listitem>
-	  <listitem><simpara>INCDIR: Include directory. Specifies the location of files used by <link linkend="include"><citetitle>#include</citetitle></link> statements.</simpara></listitem> 
-	  <listitem><simpara>OPCODE6DIR: Defines the location of csound opcode plugins for the single precision float (32-bit) version.</simpara></listitem>
-	  <listitem><simpara>OPCODE6DIR64: Defines the location of csound opcode plugins for the double precision float (64-bit) version.</simpara></listitem>
-	  <listitem><simpara>SNAPDIR: Is used by the FLTK widget opcodes when loading and saving snapshots. </simpara></listitem>
-	  <listitem><simpara>CSOUND6RC: Defines the csound resource (or configuration) file. A full path and filename containing csound flags must be specified. This variable defaults to .csound6rc if not present.</simpara></listitem>
-	  <listitem><simpara>CSSTRNGS: In Csound 5.00 and later versions, the localisation of messages is controlled by two environment variables CSSTRNGS and CS_LANG, both of which are optional. CSSTRNGS points to a directory containing .xmg files.</simpara></listitem>
-	  <listitem><simpara>CS_LANG: Selects a language for csound messages.</simpara></listitem>
-	  <listitem><simpara>RAWWAVE_PATH: Is used by the STK opcodes to find the raw wave files. Only relevant if you are using STK wrapper opcodes like STKBowed or STKBrass.</simpara></listitem>
-	  <listitem><simpara>CSNOSTOP: If this environment variable is set to
-  "yes", then any graph displays are closed automatically at the end
-  of performance (meaning that you possibly will not see much of them
-  in the case of a short non-realtime render). Otherwise, you need to
-  click "Quit" in the FLTK display window to exit, allowing for
-  viewing the graphs even after the end of score is
-  reached.</simpara></listitem>
-	  <listitem><simpara>MFDIR: Default directory for MIDI files. Used if
-  no full path is given for MIDI files.  Please note that MIDI files
-  are sought in SSDIR and SFDIR as well.</simpara></listitem>
-	  <listitem><simpara>CS_OMIT_LIBS: Allows defining a list of plugin libraries that should be skipped. Libraries can be separated with commas, and don't require the "lib" prefix.</simpara></listitem>
-  </itemizedlist>
-  For more information about SFDIR, SSDIR, SADIR, MFDIR and INCDIR see <link linkend="OrchDirFiles"><citetitle>Directories and files</citetitle></link>.
+  <para>
+    The following environment variables can be used by Csound:
+  </para>
+  <variablelist>
+    <varlistentry>
+      <term>
+        <literal>SFDIR</literal>:
+      </term>
+      <listitem>
+        <para>
+          Default directory for sound files. Used if no full path is
+          given for sound files.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <literal>SSDIR</literal>:
+      </term>
+      <listitem>
+        <para>
+          Default directory for input (source) audio and MIDI files.
+          Used if no full path is given for sound files. May be used in
+          conjunction with <literal>SFDIR</literal> to set separate
+          input and output directories. Please note that MIDI files as
+          well as audio files are also sought inside
+          <literal>SSDIR</literal>. If this variable does not exist, it
+          is internally set to the current directory.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <literal>SADIR</literal>:
+      </term>
+      <listitem>
+        <para>
+          Default directory for analysis files. Used if no full path is
+          given for analysis files.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <literal>SFOUTYP</literal>:
+      </term>
+      <listitem>
+        <para>
+          Sets the default output file type. Currently only 'WAV',
+          'AIFF' and 'IRCAM' are valid. This flag is checked by the
+          csound executable and the utilities and is used if no file
+          output type is specified.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <literal>INCDIR</literal>:
+      </term>
+      <listitem>
+        <para>
+          Include directory. Specifies the location of files used by
+          <link linkend="include">#include</link> statements.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <literal>OPCODE6DIR</literal>:
+      </term>
+      <listitem>
+        <para>
+          Defines the location of csound opcode plugins for the single
+          precision float (32-bit) version. Overrides any default search
+          path for csound opcode plugins. If set, it must include the
+          path where csound's own plugins are placed or many features,
+          like real-time audio, will not be available. It can include
+          multiple paths, separated by &quot;:&quot; in unix/linux or
+          &quot;;&quot; in windows
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <literal>OPCODE6DIR64</literal>:
+      </term>
+      <listitem>
+        <para>
+          Defines the location of csound opcode plugins for the double
+          precision float (64-bit) version. Overrides any default search
+          path for csound opcode plugins. If set, it must include the
+          path where csound's own plugins are placed or many features,
+          like real-time audio, will not be available. It can include
+          multiple paths, separated by &quot;:&quot; in unix/linux or
+          &quot;;&quot; in windows
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <literal>CS_USER_PLUGINDIR</literal>:
+      </term>
+      <listitem>
+        <para>
+          Overrides the location/locations where external csound plugins
+          are searched. By default, external plugins are searched in
+          <literal>~/.local/lib/csound/6.0/plugins64</literal> (linux),
+          <literal>~/Library/csound/6.0/plugins64</literal> (macOS) or
+          <literal>C:\Users\&lt;User&gt;\AppData\Local\csound\6.0\plugins64</literal>
+          (windows). If this variable is set, the path given overrides
+          the default path. It can include multiple paths, separated by
+          &quot;:&quot; in unix/linux or &quot;;&quot; in windows
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <literal>SNAPDIR</literal>:
+      </term>
+      <listitem>
+        <para>
+          Is used by the FLTK widget opcodes when loading and saving
+          snapshots.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <literal>CSOUND6RC</literal>:
+      </term>
+      <listitem>
+        <para>
+          Defines the csound resource (or configuration) file. A full
+          path and filename containing csound flags must be specified.
+          This variable defaults to .csound6rc if not present.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <literal>CSSTRNGS</literal>:
+      </term>
+      <listitem>
+        <para>
+          In Csound 5.00 and later versions, the localisation of
+          messages is controlled by two environment variables CSSTRNGS
+          and CS_LANG, both of which are optional. CSSTRNGS points to a
+          directory containing .xmg files.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <literal>CS_LANG</literal>:
+      </term>
+      <listitem>
+        <para>
+          Selects a language for csound messages.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <literal>RAWWAVE_PATH</literal>:
+      </term>
+      <listitem>
+        <para>
+          Is used by the STK opcodes to find the raw wave files. Only
+          relevant if you are using STK wrapper opcodes like STKBowed or
+          STKBrass.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <literal>CSNOSTOP</literal>:
+      </term>
+      <listitem>
+        <para>
+          If this environment variable is set to &quot;yes&quot;, then
+          any graph displays are closed automatically at the end of
+          performance (meaning that you possibly will not see much of
+          them in the case of a short non-realtime render). Otherwise,
+          you need to click &quot;Quit&quot; in the FLTK display window
+          to exit, allowing for viewing the graphs even after the end of
+          score is reached.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <literal>MFDIR</literal>:
+      </term>
+      <listitem>
+        <para>
+          Default directory for MIDI files. Used if no full path is
+          given for MIDI files. Please note that MIDI files are sought
+          in SSDIR and SFDIR as well.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <literal>CS_OMIT_LIBS</literal>:
+      </term>
+      <listitem>
+        <para>
+          Allows defining a list of plugin libraries that should be
+          skipped. Libraries can be separated with commas, and don't
+          require the &quot;lib&quot; prefix.
+        </para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+  <para>
+    For more information about SFDIR, SSDIR, SADIR, MFDIR and INCDIR see
+    <link linkend="OrchDirFiles">Directories and files</link>.
   </para>
   <para>
-	  The only mandatory environment variables are OPCODE6DIR and OPCODE6DIR64. It is very important to set them correctly, otherwise most of the opcodes will not be available. Make sure you set the path correctly depending on the precision of your binary. if you run csound on a command line without any arguments you should see some text like : Csound version 6.03.1 (double samples) May 10 2014. This text refers to the double precision version.
+    If the environment variable <literal>OPCODE6DIR64</literal>
+    (<literal>OPCODE6DIR</literal> in a 32-bit build) are set, it is
+    very important to set them correctly, otherwise most of the opcodes
+    will not be available. Make sure you set the path correctly
+    depending on the precision of your binary (32-bit or 64-bit). if you
+    run csound on a command line without any arguments you should see
+    some text like : &quot;Csound version 6.03.1 (double samples) May 10
+    2014&quot;. This text refers to the double precision version.
   </para>
   <para>
-  CSSTRNGS and CS_LANG currently have very limited use since Csound has not yet been completely translated into other languages.</para>
-  <para>
-  Other environment variables which are not exclusive to Csound but which might be of importance are:
-  <itemizedlist>
-	  <listitem><simpara><emphasis>PATH</emphasis>: The directory containing csound executables should be listed in this variable.</simpara></listitem>
-	  <!-- <listitem><simpara><emphasis>PYTHONPATH</emphasis>: If you intend to use CsoundVST and python, the directory containing the _CsoundVST shared library and the CsoundVST.py file must be in your <emphasis>PYTHONPATH</emphasis> environment variable (or the default path python searches in), so that the Python runtime knows how to load these files.</simpara></listitem> -->
-	  <listitem><simpara><emphasis>LADSPA_PATH and DSSI_PATH</emphasis>: These environment variables are required if you are using the <emphasis>dssi4cs</emphasis> (LADSPA and DSSI host) plug-in opcodes.</simpara></listitem>
-	  <listitem><simpara><emphasis>CSDOCDIR</emphasis>: Specifies the directory where the html help files are located. Though not used by Csound directly, this environment variable can help front-ends and editors (which implement it) to find the csound manual.</simpara></listitem>
-  </itemizedlist>
+    CSSTRNGS and CS_LANG currently have very limited use since Csound
+    has not yet been completely translated into other languages.
   </para>
-  <simplesect>
+  <para>
+    Other environment variables which are not exclusive to Csound but
+    which might be of importance are:
+  </para>
+  <variablelist>
+    <varlistentry>
+      <term>
+        <literal>PATH</literal>:
+      </term>
+      <listitem>
+        <para>
+          The directory containing csound executables should be listed
+          in this variable.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <literal>LADSPA_PATH</literal>, <literal>DSSI_PATH</literal>:
+      </term>
+      <listitem>
+        <para>
+          These environment variables are required if you are using the
+          <emphasis>dssi4cs</emphasis> (LADSPA and DSSI host) plug-in
+          opcodes.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <literal>CSDOCDIR</literal>:
+      </term>
+      <listitem>
+        <para>
+          Specifies the directory where the html help files are located.
+          Though not used by Csound directly, this environment variable
+          can help front-ends and editors (which implement it) to find
+          manual pages. It can include multiple paths, separated by
+          &quot;:&quot; or &quot;;&quot;
+        </para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+  <section xml:id="setting-environment-variables">
     <title>Setting environment variables</title>
-    <bridgehead>On the command line</bridgehead>
-    <para>You can set environment variables on the command line or the configuration file .csound6rc by using the command line flag --env:NAME=VALUE or --env:NAME+=VALUE, where NAME is the environment variable name, and VALUE is its value. See <link linkend="CommandFlags"><citetitle>Command-line Flags</citetitle></link>
+    <para>
+      <emphasis role="strong">On the command line</emphasis>
     </para>
-    <note>
-      <para>Please note that this method of setting environment variables will not work for variables which are parsed before the command line arguments. SADIR, SSDIR, SFDIR, INCDIR, SNAPDIR, RAWWAVE_PATH, CSNOSTOP, SFOUTYP should work, but the following environment variables must be set on the system prior to running csound: OPCODE6DIR, OPCODE6DIR64, CSSTRINGS, and CS_LANG. CSOUNDRC can currently (v. 5.02) be set using --env, but this behavior is not guaranteed for future versions.</para>
-    </note>
-    <bridgehead>Windows</bridgehead>
-    <para>To set a csound environment on Windows XP and 2000 go to Control Panel->System->Advanced and click on the button 'Environment Variables'. On other versions of Windows earlier than Windows XP and Windows 2000 you set environment variables in the autoexec.bat file. Go to 'My Computer', select C: drive, right click on autoexec.bat, and select 'Edit'. The statement format is: SET NAME=VALUE .
+    <para>
+      You can set environment variables on the command line or the
+      configuration file .csound6rc by using the command line flag
+      <literal>--env:NAME=VALUE</literal> or
+      <literal>--env:NAME+=VALUE</literal>, where
+      <emphasis>NAME</emphasis> is the environment variable name, and
+      <emphasis>VALUE</emphasis> is its value. See
+      <link linkend="CommandFlags">Command-line Flags</link>
     </para>
-    <bridgehead>Linux</bridgehead>
-    <para>You can set environment variables on Linux in many ways. You can set them using the <emphasis>export</emphasis> shell command, by setting them on .bashrc or similar files or by adding them to the /etc/profile file.</para>
-    <bridgehead>Mac</bridgehead>
-    
-    <screen>~$ export OPCODE6DIR64=/Users/you/your/Csound6/build</screen>
-    <para>in addition if the bash shell is the default, then it is usually easier to edit your .bashrc or /etc/profile.</para>
-    
-    <para>	  Note that if users choose one of the above methods, ie editing the .bashrc file then the environment variables are executed when a new shell is created. This can be problematic if your application implements a Quartz or Aqua interface and does not use the commandline.</para>
-    
-    <para>	  If this is the case, then the standard solution (up to OS 10.3.9 and unless the application uses the csoundAPI and sets the environ variables directly) is to create an XML property list file (called a .plist file by the OS). This file should nominally be located at ~/.MacOSX/Environment.plist. This has been a solution specifically for the [csoundapi~] object for Pd on OS X. Since Pd uses an OS X native .app style packaging, and runs off of the Aqua interface, the standard means of supplying environment variables to Csound do not work. The solution is to set Csound's environment variables for the Aqua environment.</para>
-    
-    <para>	  Likely, most users will not have the hidden folder .MacOSX located in their $HOME directory (aka ~/) This folder must first be created and the Environment.plist added to this folder. The contents of the Environment.plist file should be something like:</para>
+    <para>
+      Note
+    </para>
+    <para>
+      Please note that this method of setting environment variables will
+      not work for variables which are parsed before the command line
+      arguments. <literal>SADIR</literal>, <literal>SSDIR</literal>,
+      <literal>SFDIR</literal>, <literal>INCDIR</literal>,
+      <literal>SNAPDIR</literal>, <literal>RAWWAVE_PATH</literal>,
+      <literal>CSNOSTOP</literal>, <literal>SFOUTYP</literal> should
+      work, but the following environment variables must be set on the
+      system prior to running csound: <literal>OPCODE6DIR</literal>,
+      <literal>OPCODE6DIR64</literal>, <literal>CSSTRINGS</literal>, and
+      <literal>CS_LANG</literal>. <literal>CSOUNDRC</literal> can
+      currently (v. 5.02) be set using --env, but this behavior is not
+      guaranteed for future versions.
+    </para>
+    <para>
+      <emphasis role="strong">Windows</emphasis>
+    </para>
+    <para>
+      To set a csound environment variable in windows:
+    </para>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Open the Start Search, type in “env”, and choose “Edit the
+          system environment variables”
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Click the “Environment Variables…” button.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Set the environment variables as needed. The New button adds
+          an additional variable.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Dismiss all of the dialogs by choosing “OK”. Your changes are
+          saved!
+        </para>
+      </listitem>
+    </itemizedlist>
+    <para>
+      <emphasis role="strong">Linux</emphasis>
+    </para>
+    <para>
+      You can set environment variables on Linux in many ways. You can
+      set them using the <emphasis>export</emphasis> shell command, by
+      setting them on .bashrc or similar files or by adding them to the
+      <literal>/etc/profile</literal> file.
+    </para>
+    <para>
+      <emphasis role="strong">Mac</emphasis>
+    </para>
     <programlisting>
-&lt;?xml version="1.0" encoding='UTF-8"?>
-&lt;!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN"
-    "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-&lt;plist version="1.0">
-&lt;dict>
-&lt;key>OPCODEDIR&lt;/key>
-&lt;string>/Library/Frameworks/CsoundLib.framework/Versions/5.1/Resources/Opcodes&lt;/string>
-&lt;key>OPCODEDIR64&lt;/key>
-&lt;string>/Volumes/ExternalHD/devel/csound5/lib64&lt;/string>
-&lt;key>INCDIR&lt;/key>
-&lt;string>/Volumes/ExternalHD/CSOUND/include&lt;/string>
-&lt;key>SFDIR&lt;/key>
-&lt;string>/Volumes/ExternalHD/iTunes/csoundaudio&lt;/string>
-&lt;/dict>
-&lt;/plist></programlisting>
-    <para>and so on, using the XML &lt;key> tag for each environment variable required by the API and the &lt;string> tag for it's corresponding path on the system.</para>
-    <para>Please note that you must login out and login in for these changes to take effect.</para>
-  </simplesect>
+export OPCODE6DIR64=/Users/you/your/Csound6/build
+</programlisting>
+    <para>
+      in addition if the bash shell is the default, then it is usually
+      easier to edit your <literal>.bashrc</literal> or
+      <literal>/etc/profile</literal>.
+    </para>
+    <para>
+      Note that if users choose one of the above methods, ie editing the
+      <literal>.bashrc</literal> file then the environment variables are
+      executed when a new shell is created. This can be problematic if
+      your application does not use the commandline.
+    </para>
+    <para>
+      If this is the case, create an
+      <literal>environment.plist</literal> file in
+      <literal>~/Library/LaunchAgents/</literal> with this content:
+    </para>
+    <programlisting language="xml">
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;
+&lt;plist version=&quot;1.0&quot;&gt;
+&lt;dict&gt;
+  &lt;key&gt;Label&lt;/key&gt;
+  &lt;string&gt;my.startup&lt;/string&gt;
+  &lt;key&gt;ProgramArguments&lt;/key&gt;
+  &lt;array&gt;
+    &lt;string&gt;sh&lt;/string&gt;
+    &lt;string&gt;-c&lt;/string&gt;
+    &lt;string&gt;
+    launchctl setenv CS_USER_PLUGINDIR /Users/mortimer/csound/opcodes64
+    launchctl setenv INCDIR /Users/mortimer/csound/udos
+    &lt;/string&gt;
+
+  &lt;/array&gt;
+  &lt;key&gt;RunAtLoad&lt;/key&gt;
+  &lt;true/&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+</programlisting>
+    <para>
+      You can add many <literal>launchctl</literal> commands inside the
+      <literal>&lt;string&gt;&lt;/string&gt;</literal> block.
+    </para>
+    <para>
+      The <literal>plist</literal> will activate after system reboot.
+      You can also use <literal>launchctl</literal> load
+      <literal>~/Library/LaunchAgents/environment.plist</literal> to
+      launch it immediately.
+    </para>
+  </section>
 </section>

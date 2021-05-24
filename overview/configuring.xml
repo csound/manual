@@ -1,42 +1,152 @@
-
 <chapter id="Configuring">
-
   <title>Configuring</title>
-  <para>Once you have either unpacked a binary distribution, or built
-    Csound from sources, you will need to configure Csound so that it will run properly on your system. Installers usually perform these steps for you automatically.
+  <para>
+    Once you have either installed csound via an installer or package
+    manager, or built Csound from sources, you might need to configure
+    Csound so that it will run properly on your system. Installers
+    usually perform these steps for you automatically.
   </para>
-  <para>On all platforms, make sure the directory or directories
-  containing Csound's plugin libraries are in an
-  <literal>OPCODE6DIR</literal> or <literal>OPCODE6DIR64</literal>
-  environment variable depending on the precision of the compiled
-  binary.
-  (Note that for csound5 these environment variables were
-  <literal>OPCODEDIR</literal> and <literal>OPCODEDIR64</literal>.)
+  <para>
+    It might be necessary to set the environment variable
+    <literal>OPCODE6DIR64</literal> to the directory or directories
+    containing Csound's plugin libraries.
   </para>
-  <para>The Python opcodes currently require at least Python 2.4, which can be downloaded from <ulink url="http://www.python.org">www.python.org</ulink> if it is not already on your system. You can check if it is available by typing 'python' on a command prompt or DOS window.
+  <para>
+    (Note that for csound5 these environment variables were
+    <literal>OPCODEDIR</literal> and <literal>OPCODEDIR64</literal>,
+    depending on the precision of the compiled binary)
   </para>
-  <bridgehead>Windows</bridgehead>
-    <para>On Windows, make sure the directory or directories (normally the <filename>C:\Program Files\Csound</filename> directory) containing the Csound executables directory are in your <literal>PATH</literal> variable, or else copy all the executable files to your Windows <filename>system32</filename> directory. Depending on your installation method, you might also need to set the <literal>OPCODE6DIR</literal> and <literal>OPCODE6DIR64</literal> environment variables. Assuming that Csound is installed to the default location of <filename>C:\Program Files\Csound</filename> you can use (otherwise set the paths accordingly):
+  <para>
+    <emphasis role="strong">Windows</emphasis>
+  </para>
+  <para>
+    On Windows, make sure the directory or directories (normally the
+    <literal>C:\Program Files\Csound6_x64</literal> directory)
+    containing the Csound executables directory are in your
+    <literal>PATH</literal> variable. Depending on your installation
+    method, you might also need to set the <literal>OPCODE6DIR</literal>
+    and <literal>OPCODE6DIR64</literal> environment variables. Assuming
+    that Csound is installed to the default location of
+    <literal>C:\Program Files\Csound6_x64</literal> you can use
+    (otherwise set the paths accordingly):
+  </para>
+  <programlisting>
+set OPCODE6DIR=C:\Program Files\Csound6_x64\plugins
+set OPCODE6DIR64=C:\Program Files\Csound6_x64\plugins64
+set PATH=%PATH%;C:\Program Files\Csound6_x64\bin
+</programlisting>
+  <para>
+    Note
+  </para>
+  <para>
+    If you get an error message about the missing Python library
+    (<literal>pythonXX.dll</literal>) and don't need the python opcodes,
+    just delete
+    <literal>C:\Program Files\Csound6_x64\plugins64\py.dll</literal>,
+    and the error message about the missing Python library should be
+    gone.
+  </para>
+  <para>
+    <emphasis role="strong">Unix and Linux</emphasis>
+  </para>
+  <para>
+    If csound is installed through a package manager, the binaries will
+    be placed in <literal>/usr/bin</literal> and the plugin shared
+    libraries in <literal>/usr/lib/csound/plugins64-6.0</literal>. When
+    installing from source, the cmake build system will place the
+    binaries in <literal>/usr/local/bin</literal> and the plugin shared
+    libraries in <literal>/usr/local/lib/csound/plugins64-6.0</literal>
+    (for a 32-bit version:
+    <literal>/usr/local/lib/csound/plugins-6.0</literal>).
+  </para>
+  <para>
+    If the shared libraries are not found it might be necessary to set
+    the env variable <literal>OPCODE6DIR64</literal> (or
+    <literal>OPCODE6DIR</literal> for a 32-bit build) to point to the
+    directory containing the <literal>.so</literal> files
+    (&quot;librtalsa.so&quot;, &quot;librtjack.so&quot;, etc).
+  </para>
+  <para>
+    <emphasis role="strong">macOS</emphasis>
+  </para>
+  <para>
+    On macOS, plugin libraries are installed by default in
+    <literal>/Library/Frameworks/CsoundLib64.framework/Versions/6.0/Resources/Opcodes64</literal>
+    when csound is installed via the <literal>.dmg</literal> installer,
+    and in
+    <literal>~/Library/Frameworks/CsoundLib64.framework/Versions/6.0/Resources/Opcodes64</literal>
+    if csound is installed from source.
+  </para>
+  <para>
+    If the shared libraries are not found it might be necessary to set
+    the env variable <literal>OPCODE6DIR64</literal> (or
+    <literal>OPCODE6DIR</literal> for a 32-bit build) to point to the
+    directory containing these plugins (<literal>.dylib</literal> files
+    like &quot;libmixer.dylib&quot;, &quot;librtauhal.dylib&quot;, etc).
+  </para>
+  <section xml:id="plugins">
+    <title>Plugins</title>
+    <para>
+      Starting in csound 6.16 the recommended method to install external
+      plugins is to place them in the user plugins folder, which is:
     </para>
-  <screen>set OPCODE6DIR=C:\Program Files\Csound\plugins
-set OPCODE6DIR64=C:\Program Files\Csound\plugins64
-set PATH=%PATH%;C:\Program Files\Csound\bin</screen>
-
-  <note>
-    <title>Missing python24.dll or python25.dll</title>
-    <para>If you get a pop-up about the missing Python library (python24.dll or python25.dll) and don't need the python opcodes, just delete <filename>C:\Program Files\Csound\plugins\py.dll</filename> and <filename>C:\Program Files\Csound\plugins64\py.dll</filename>, and the pop-up about the missing Python library should be gone.</para>
-  </note>
-  <bridgehead>Unix and Linux</bridgehead>
-  <para>On Unix and Linux, either install the Csound program in one of the system <filename>bin</filename> directories, typically <filename>/usr/local/bin</filename>, and the Csound and plugin shared libraries in places like <filename>/usr/local/lib/csound/plugins</filename> or <filename>/usr/local/lib/csound/plugins64</filename> and make sure that <literal>OPCODE6DIR</literal> and <literal>OPCODE6DIR64</literal> environment variable are set correctly.
-  </para>
-
-  <bridgehead>CsoundAC</bridgehead>
-
-    <para>CsoundAC requires some additional configuration. On all
-      platforms, CsoundAC requires that you have Python installed on your
-      computer. The directory containing the <filename>_csoundAC</filename> shared
-      library and the <filename>CsoundAC.py</filename> file must be in your
-      <literal>PYTHONPATH</literal> environment variable, so that the Python runtime
-      knows how to load these files.</para>
-
+    <informaltable>
+      <tgroup cols="2">
+        <colspec align="left" />
+        <colspec align="left" />
+        <thead>
+          <row>
+            <entry>
+              Platform
+            </entry>
+            <entry>
+              Folder
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              Windows
+            </entry>
+            <entry>
+              <blockquote>
+                <para>
+                  <literal>C:\Users\&lt;User&gt;\AppData\Local\csound\6.0\plugins64</literal>
+                </para>
+              </blockquote>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              macOS
+            </entry>
+            <entry>
+              <blockquote>
+                <para>
+                  <literal>~/Library/csound/6.0/plugins64</literal>
+                </para>
+              </blockquote>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              Linux
+            </entry>
+            <entry>
+              <blockquote>
+                <para>
+                  <literal>~/.local/lib/csound/6.0/plugins64</literal>
+                </para>
+              </blockquote>
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+    <para>
+      The default location can be further customized by setting the
+      environment variable <literal>CS_USER_PLUGINDIR</literal>
+    </para>
+  </section>
 </chapter>
