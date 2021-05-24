@@ -1,10 +1,14 @@
 <CsoundSynthesizer>
 <CsOptions>
-
+; Select audio/midi flags here according to platform
+-odac     ;;;real-time audio out
+;-iadc    ;;;uncomment -iadc if RT audio input is needed too
+; For Non-realtime ouput leave only the line below:
+; -o mvmfilter.wav -W ;;; for file output any platform
 </CsOptions>
 <CsInstruments>
 
-sr=48000
+sr=44100
 ksmps=32
 0dbfs=1
 nchnls=2
