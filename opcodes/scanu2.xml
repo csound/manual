@@ -1,0 +1,151 @@
+
+<refentry id="scanu2">
+<indexterm id="IndexScanu2"><primary>scanu2</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Scanned Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>scanu2</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>scanu2</refname>
+    <refpurpose>
+      Compute the waveform and the wavetable for use in scanned synthesis.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>Plugin opcode in scansyn.</para>
+    <para>
+      Compute the waveform and the wavetable for use in scanned synthesis.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>scanu2</command> init, irate, ifnvel, ifnmass, ifnstif, ifncentr, ifndamp, kmass, \
+      kstif, kcentr, kdamp, ileft, iright, kpos, kstrngth, ain, idisp, id</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>init</emphasis> -- the initial position of the masses.
+      If this is a negative number, then the absolute of
+      <emphasis>init</emphasis> signifies the table to use as a hammer
+      shape.  If <emphasis>init</emphasis> &gt; 0, the length of it
+      should be the same as the intended mass number, otherwise it can
+      be anything.  If <emphasis>init</emphasis> is not an integer the
+      initial state is white noise.
+    </para>
+    <para>
+      <emphasis>irate</emphasis> -- the amount of time between successive updates of the mass state. Kind of like the sample period of the system. If the number is big, the string will update at a slow rate showing little timbral variability; otherwise it will change rapidly resulting in a more dynamic sound.
+    </para>
+    <para>
+      <emphasis>ifnvel</emphasis> -- the ftable that contains the initial velocity for each mass.  It should have the same size as the intended mass number.
+    </para>
+
+    <para>
+      <emphasis>ifnmass</emphasis> -- ftable that contains the mass of each mass.  It should have the same size as the intended mass number.
+    </para>
+
+    <para>
+      <emphasis>ifnstif</emphasis> -- ftable that contains the spring stiffness of each connection. It should have the same size as the square of the intended mass number.  The data ordering is a row after row dump of the connection matrix of the system.
+    </para>
+
+    <para>
+      <emphasis>ifncentr</emphasis> -- ftable that contains the centering force of each mass. It should have the same size as the intended mass number.
+    </para>
+
+    <para>
+      <emphasis>ifndamp</emphasis> -- the ftable that contains the damping factor of each mass. It should have the same size as the intended mass number.
+    </para>
+
+    <para>
+      <emphasis>ileft</emphasis> -- If <emphasis>init</emphasis> &lt;
+      0, the position of the positve pluck in the range 0 to 1.
+    </para>
+
+    <para>
+      <emphasis>iright</emphasis> -- If <emphasis>init</emphasis> &lt;
+      0, the position of the negative pluck in the range 0 to 1.
+      at rightmost). s
+    </para>
+    <para>If <emphasis>ileft</emphasis> is the same as
+    <emphasis>iright</emphasis> a single positive pluck is used as initial state.
+    </para>
+
+    <para>
+      <emphasis>idisp</emphasis> -- If 0, no display of the masses is provided.
+    </para>
+
+    <para>
+      <emphasis>id</emphasis> --  If positive, the ID of the opcode.  This will be used to point the scanning opcode to the proper waveform maker.  If this value is negative, the absolute of this value is the wavetable on which to write the waveshape. That wavetable can be used later from an other opcode to generate sound.  The initial contents of this table will be destroyed.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kmass</emphasis> -- scales the masses
+    </para>
+
+    <para>
+      <emphasis>kstif</emphasis> -- scales the spring stiffness.  Note
+      that this larer numbers slow the evolution of the vibration,
+      which is the reciprocal of the coresponding parameter in scanu.
+    </para>
+
+    <para>
+      <emphasis>kcentr</emphasis> -- scales the centering force
+    </para>
+
+    <para>
+      <emphasis>kdamp</emphasis> -- scales the damping
+    </para>
+
+    <para>
+      <emphasis>kpos</emphasis> -- position of an active hammer along the string (<emphasis>kpos</emphasis> = 0 is leftmost, <emphasis>kpos</emphasis> = 1 is rightmost).  The shape of the hammer is determined by <emphasis>init</emphasis> and the power it pushes with is <emphasis>kstrngth</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>kstrngth</emphasis> -- power that the active hammer uses
+    </para>
+
+    <para>
+      <emphasis>ain</emphasis> -- audio input that adds to the velocity of the masses. Amplitude should not be too great.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the scanu2 opcode. It uses the files <ulink url="examples/scanu2-musical.csd"><citetitle>scanu2-musical.csd</citetitle></ulink> and <ulink url="examples/MIDIpad.mid"><citetitle>MIDIpad.mid</citetitle></ulink>.
+      <example>
+        <title>Example of the scanu2 opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/scanu2-musical.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>See Also</title>
+    <para>scanu</para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &namejohn;</member> after &nameparis;</member> 
+        <member>May 2021</member>
+      </simplelist>
+    </para>
+
+    <para>New in Csound version 6.16</para>
+  </refsect1>
+</refentry>
