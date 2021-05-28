@@ -72,15 +72,16 @@ gispectrum ftgen 0, 0, 0, -1, "fox.mtx", 0, 0, 0
 instr 1
   ifn = gispectrum
   iskip      tab_i 0, ifn
-  idt        tab_i 1, ifn
+  inumrows   tab_i 1, ifn
   inumcols   tab_i 2, ifn
-  inumrows   tab_i 3, ifn
-  itimestart tab_i 4, ifn
-  inumpartials = inumcols / 3 
+  it0 = tab_i(iskip, ifn)
+  it1 = tab_i(iskip+inumcols, ifn)
+  idt = it1 - it0
+  inumpartials = (inumcols-1) / 3 
   imaxrow = inumrows - 2
   it = ksmps / sr
   igain init 1
-  ispeed init 1
+  ispeed init 0.3
   idur = imaxrow * idt / ispeed
   kGains[] init inumpartials
   kfilter init 0
@@ -89,16 +90,21 @@ instr 1
   kt timeinsts
   kplayhead = phasor:k(ispeed/idur)*idur
   krow = kplayhead / idt
-  kF[] getrowlin krow, ifn, inumcols, iskip, 0, 0, 3
-  kA[] getrowlin krow, ifn, inumcols, iskip, 1, 0, 3
-  kB[] getrowlin krow, ifn, inumcols, iskip, 2, 0, 3
+  ; each row has the format frametime, freq0, amp0, bandwidth0, freq1, amp1, bandwidth1, ...
+  kF[] getrowlin krow, ifn, inumcols, iskip, 1, 0, 3
+  kA[] getrowlin krow, ifn, inumcols, iskip, 2, 0, 3
+  kB[] getrowlin krow, ifn, inumcols, iskip, 3, 0, 3
 
-  if(kt > idur*0.5) then
+  if(kt > idur*0.6) then
+    if metro(0) == 1 then
+      println "Applying filter: bandpass between 1000-1500 Hz"
+    endif
     kfilter = 1
   endif
-
+  
+  ifilterGain = 3    
   if (kfilter == 1) then
-    kGains bpf kF, 300, 0.001, 400, 1, 1000, 1, 1100, 0.001
+    kGains bpf kF, 990, 0.001, 1000, ifilterGain, 1500, ifilterGain, 1510, 0.01
     kA *= kGains
   endif 
    
