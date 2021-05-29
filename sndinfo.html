@@ -111,6 +111,59 @@ util  SNDINFO:
             couldn't find</pre>
         <p>
 
+   </p>
+        <p>
+      Here is an example of the sndinfo utility. It uses the file <a class="ulink" href="examples/sndinfo.csd" target="_top"><em class="citetitle">sndinfo.csd</em></a>. 
+      </p>
+        <div class="example">
+          <a id="idm299913"></a>
+          <p class="title">
+            <strong>Example 1338. Example of the sndinfo opcode.</strong>
+          </p>
+          <div class="example-contents">
+            <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
+            <div class="refsect1">
+              <a id="idm299920"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+<span class="nt">&lt;CsOptions&gt;</span>
+<span class="c1">; Select audio/midi flags here according to platform</span>
+-odac   
+<span class="c1">; For Non-realtime ouput leave only the line below:</span>
+<span class="c1">; -o sndinfo.wav -W ;;; for file output any platform</span>
+<span class="nt">&lt;/CsOptions&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span>
+
+<span class="vg">sr</span> <span class="o">=</span> <span class="mi">48000</span>  <span class="c1">; sample rate of beats.wav = 44100</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>  <span class="c1">; and will be resampled to 48000</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1">; by Menno Knevel 2021</span>
+
+<span class="c1">; resample in the highest qualty, name the new sample 'beats48.wav'</span>
+gi<span class="n">res</span> <span class="nb">system_i</span> <span class="mi">1</span><span class="p">,</span><span class="s">{{ src_conv -r48000 -Q5 beats.wav -o beats48.wav }}</span>
+
+<span class="kd">instr</span> <span class="nf">1</span>
+i<span class="n">res</span> <span class="nb">system_i</span> <span class="mi">1</span><span class="p">,</span><span class="s">{{ sndinfo -i beats48.wav }}</span> <span class="c1">; check sample rate</span>
+a<span class="n">out</span>    <span class="nb">diskin2</span> <span class="s">"beats48.wav"</span><span class="p">,</span> <span class="mi">1</span>
+<span class="nb">outs</span>    a<span class="n">out</span><span class="p">,</span> a<span class="n">out</span>  
+<span class="kd">endin</span>
+
+<span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">2</span>              
+
+<span class="nb">e</span>
+<span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
+    </p>
+        <p>
     </p>
       </div>
     </div>
