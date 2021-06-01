@@ -15,53 +15,53 @@ ksmps = 32
 nchnls = 2
 0dbfs  = 1
 
-instr 1
- 	 	 	 
-kenv	adsr	p4, .5, .5, 0.3    	; linear envelope 
-asig	pluck	kenv, 220, 220, 2, 1	; A+D+S+R = p3 	 
-	outs	asig, asig
-	 
+; both amplitude and filter use same ADSR curves 
+instr 1		 	 
+kenv	adsr	.01, .5, .5, p4    	; linear envelope 
+asig	vco2	kenv, 110			; A+D+S+R = p3 	
+asig	rezzy	asig, 500+(kenv*1000), 10	; same curve but scaled 
+		outs	asig, asig	 
 endin
-instr 2
- 	 	 	 
-kenv	xadsr	p4, .5 , .5, 0.3        ; exponential envelope
-asig	pluck	kenv, 220, 220, 2, 1	; A+D+S+R = p3 	 
-	outs	asig, asig
-	 
+
+instr 2	; midi behavior	 	 	 
+kenv	madsr	.01, .5, .5, p4		; linear envelope
+asig	vco2	kenv, 110			; A+D+S = p3, then go into Release stage 		
+asig	rezzy	asig, 500+(kenv*1000), 10	; same curve but scaled  
+		outs	asig, asig			
 endin
-instr 3
- 	 	 	 
-kenv	madsr	p4, .5, .5, 0.3	        ; linear envelope
-asig	pluck	kenv, 220, 220, 2, 1	; A+D+S = p3		 
-	outs	asig, asig	        ; then go into Release stage
-	 
+
+instr 3 	 	 
+kenv	xadsr	.01, .5 , .5, p4    ; exponential envelope
+asig	vco2	kenv, 110			; A+D+S+R = p3 	 
+asig	rezzy	asig, 500+(kenv*1000), 10	; same curve but scaled 
+		outs	asig, asig
 endin
-instr 4
- 	 	 	 
-kenv	mxadsr	p4, .5 , .5, 0.3	; exponential envelope
-asig	pluck	kenv, 220, 220, 2, 1	; A+D+S = p3	 
-	outs	asig, asig		; then go into Release stage
-	 
+
+instr 4	; midi behavior 	 
+kenv	mxadsr	.01, .5 , .5, p4	; exponential envelope
+asig	vco2	kenv, 110			; A+D+S = p3, then go into Release stage 	 
+asig	rezzy	asig, 500+(kenv*1000), 10	; same curve but scaled 
+		outs	asig, asig			
 endin
+
 </CsInstruments>
 <CsScore>
-f 2 0 4096 10 1	
 s
-i1 0 2 .01
-i1 4 . .5
-i1 8 . .9
+i1 1 2 .01	; same notes for everyone!
+i1 5 . .5
+i1 9 . 1.5
 s
-i2 0 2 .01
-i2 4 . .5
-i2 8 . .9
+i2 1 2 .01
+i2 5 . .5
+i2 9 . 1.5
 s
-i3 0 2 .01
-i3 4 . .5
-i3 8 . .9
+i3 1 2 .01
+i3 5 . .5
+i3 9 . 1.5
 s
-i4 0 2 .01
-i4 4 . .5
-i4 8 . .9
+i4 1 2 .01
+i4 5 . .5
+i4 9 . 1.5
 e
 </CsScore>
 </CsoundSynthesizer>
