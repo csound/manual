@@ -77,13 +77,21 @@
         <pre class="programlisting">
   ktime   <span class="opc">line</span>      2.5, p3, 0
   kenergy	<span class="opc">ATSreadnz</span> ktime, "clarinet.ats", 5</pre>
-        <p>Here we are extracting the noise energy from band 5 in the 'clarinet.ats' ATS analysis file. We're actually reading backwards from 2.5 seconds to the beginning of the analysis file. We could use this to synthesize noise like this:
+        <p>Here we are extracting the noise energy from band 5 in the
+    'clarinet.ats' ATS analysis file. We are actually reading backwards from 2.5 seconds to the beginning of the analysis file. We could use this to synthesize noise like this:
     </p>
         <pre class="programlisting">
   anoise  <span class="opc">randi</span>     <span class="opc">sqrt</span>(kenergy), 55
   aout    <span class="opc">oscili</span>    4000000000000000000000000, 455, 2
   aout    <span class="op">=</span>         aout <span class="op">*</span> anoise</pre>
-        <p>Function table 2 used in the oscillator is a cosine, which is needed to shift the band limited noise into the correct place in the frequency spectrum. The <span class="emphasis"><em>randi</em></span> function creates a band of noise centered about 0 Hz that has a bandwidth of about 110 Hz; multiplying it by a cosine will shift it to be centered at 455 Hz, which is the center frequency of the 5th critical noise band. This is only an example, for synthesizing the noise you'd be better off just using <a class="link" href="ATSaddnz.html" title="ATSaddnz"><em class="citetitle">ATSaddnz</em></a> unless you want to use your own noise synthesis algorithm. Maybe you could use the noise energy for something else like applying a small amount of jitter to specific partials or for controlling something totally unrelated to the source sound?
+        <p>Function table 2 used in the oscillator is a cosine,
+        which is needed to shift the band limited noise into the
+        correct place in the frequency spectrum. The
+        <span class="emphasis"><em>randi</em></span> function creates a band of noise
+        centered about 0 Hz that has a bandwidth of about 110 Hz;
+        multiplying it by a cosine will shift it to be centered at 455
+        Hz, which is the center frequency of the 5th critical noise
+        band. This is only an example, for synthesizing the noise you would be better off just using <a class="link" href="ATSaddnz.html" title="ATSaddnz"><em class="citetitle">ATSaddnz</em></a> unless you want to use your own noise synthesis algorithm. Maybe you could use the noise energy for something else like applying a small amount of jitter to specific partials or for controlling something totally unrelated to the source sound?
         </p>
       </div>
       <div class="refsect1">
