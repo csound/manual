@@ -157,18 +157,102 @@
         <a id="idm202416"></a>
         <h2>Examples</h2>
         <p>
-      Here is an example of the scanu2 opcode. It uses the files
+      Here is an example of the scanu2 opcode. It uses the files <a class="ulink" href="examples/scanu2.csd" target="_top"><em class="citetitle">scanu2.csd</em></a>.
     </p>
+        <div class="example">
+          <a id="idm202421"></a>
+          <p class="title">
+            <strong>Example 921. Example of the scanu2 opcode.</strong>
+          </p>
+          <div class="example-contents">
+            <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
+            <div class="refsect1">
+              <a id="idm202428"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+
+<span class="nt">&lt;CsOptions&gt;</span>
+
+<span class="nt">&lt;/CsOptions&gt;</span>
+
+<span class="nt">&lt;CsInstruments&gt;</span>
+
+<span class="vg">sr</span> <span class="o">=</span> <span class="mi">48000</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="kd">instr</span> <span class="nf">scan</span>
+a<span class="n">0</span> <span class="nb">init</span> <span class="mi">0</span>
+
+i<span class="n">rate</span> <span class="o">=</span> <span class="mf">.01</span>
+
+k<span class="n">pos</span> <span class="nb">line</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">128</span>
+<span class="c1">;kpos randh abs(128), 3</span>
+
+<span class="c1">; scanu init, irate, ifnvel, ifnmass, ifnstif, ifncentr, ifndamp, kmass, kstif,</span>
+<span class="c1">;       kcentr, kdamp, ileft, iright, kpos, kstrngth, ain, idisp, id</span>
+<span class="n">scanu2</span> <span class="mi">1</span><span class="p">,</span> i<span class="n">rate</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mf">.01</span><span class="p">,</span> <span class="mf">.01</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> <span class="mf">.9</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> a<span class="n">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>
+
+<span class="c1">;ar scans kamp, kfreq, ifntraj, id</span>
+a<span class="n">1</span> <span class="nb">scans</span> <span class="nb">ampdb</span><span class="p">(</span><span class="vi">p4</span><span class="p">),</span> <span class="nb">cpspch</span><span class="p">(</span><span class="vi">p5</span><span class="p">),</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span>
+<span class="nb">out</span> a<span class="n">1</span>
+<span class="kd">endin</span>
+
+<span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span>
+<span class="c1">; Initial displacement condition</span>
+<span class="c1">;f1 0 128 -7 0 64 1 64 0 ; ramp</span>
+<span class="nb">f</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">128</span> <span class="mi">10</span> <span class="mi">1</span> <span class="c1">; sine hammer</span>
+<span class="c1">;f1 0 128 -7 0 28 0 2 1 2 0 96 0 ; a pluck that is 10 points wide on the surface</span>
+
+<span class="c1">; Masses</span>
+<span class="nb">f</span><span class="mi">2</span> <span class="mi">0</span> <span class="mi">128</span> <span class="o">-</span><span class="mi">7</span> <span class="mi">1</span> <span class="mi">128</span> <span class="mi">1</span>
+
+<span class="c1">; Spring matrices</span>
+<span class="nb">f</span><span class="mi">3</span> <span class="mi">0</span> <span class="mi">16384</span> <span class="o">-</span><span class="mi">23</span> <span class="s">"string-128.matrix"</span>
+
+<span class="c1">; Centering force</span>
+<span class="nb">f</span><span class="mi">4</span> <span class="mi">0</span> <span class="mi">128</span> <span class="o">-</span><span class="mi">7</span> <span class="mi">1</span> <span class="mi">128</span> <span class="mi">1</span> <span class="c1">; uniform initial centering</span>
+<span class="c1">;f4 0 128 -7 .001 128 1 ; ramped centering</span>
+
+<span class="c1">; Damping</span>
+<span class="nb">f</span><span class="mi">5</span> <span class="mi">0</span> <span class="mi">128</span> <span class="o">-</span><span class="mi">7</span> <span class="mi">1</span> <span class="mi">128</span> <span class="mi">1</span> <span class="c1">; uniform damping</span>
+<span class="c1">;f5 0 128 -7 .1 128 1 ; ramped damping</span>
+
+<span class="c1">; Initial velocity - (displacement, vel, and acceleration</span>
+<span class="c1">; Acceleration is from stiffness matrix pos effect - increases acceleration</span>
+<span class="c1">;</span>
+
+<span class="nb">f</span><span class="mi">6</span> <span class="mi">0</span> <span class="mi">128</span> <span class="o">-</span><span class="mi">7</span> <span class="mf">.01</span> <span class="mi">128</span> <span class="mf">.01</span> <span class="c1">; uniform initial velocity</span>
+
+<span class="c1">; Trajectories</span>
+<span class="nb">f</span><span class="mi">7</span> <span class="mi">0</span> <span class="mi">128</span> <span class="o">-</span><span class="mi">5</span> <span class="mf">.001</span> <span class="mi">128</span> <span class="mi">128</span>
+
+<span class="nb">i</span><span class="s">"scan"</span> <span class="mi">2</span> <span class="mi">12</span> <span class="mi">86</span> <span class="mf">7.00</span>
+<span class="nb">i</span><span class="s">"scan"</span> <span class="mi">14</span> <span class="mi">2</span> <span class="mi">86</span> <span class="mf">5.00</span>
+<span class="nb">i</span><span class="s">"scan"</span> <span class="mi">16</span> <span class="mi">2</span> <span class="mi">86</span> <span class="mf">6.00</span>
+<span class="nb">i</span><span class="s">"scan"</span> <span class="mi">18</span> <span class="mi">2</span> <span class="mi">86</span> <span class="mf">8.00</span>
+<span class="nb">i</span><span class="s">"scan"</span> <span class="mi">20</span> <span class="mi">2</span> <span class="mi">98</span> <span class="mf">10.00</span>
+
+<span class="nb">e</span>
+
+<span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <br class="example-break" />
       </div>
       <div class="refsect1">
-        <a id="idm202419"></a>
+        <a id="idm202624"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="scanu.html" title="scanu"><em class="citetitle">scanu</em></a>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm202424"></a>
+        <a id="idm202629"></a>
         <h2>Credits</h2>
         <p>
       </p>
