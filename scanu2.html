@@ -49,8 +49,9 @@
       <div class="refsect1">
         <a id="idm202360"></a>
         <h2>Syntax</h2>
-        <pre class="synopsis"><span class="command"><strong>scanu2</strong></span> init, irate, ifnvel, ifnmass, ifnstif, ifncentr, ifndamp, kmass, \
-      kstif, kcentr, kdamp, ileft, iright, kpos, kstrngth, ain, idisp, id</pre>
+        <pre class="synopsis"><span class="command"><strong>scanu2</strong></span> init, irate, ifndisplace,
+    ifnmass, ifnmatrix, ifncentr, ifndamp, kmass, kmtrxstiff, kcentr,
+    kdamp, ileft, iright, kpos, kdisplace, ain, idisp, id</pre>
       </div>
       <div class="refsect1">
         <a id="idm202364"></a>
@@ -73,7 +74,7 @@
       sound. 
     </p>
         <p>
-      <span class="emphasis"><em>ifnvel</em></span> -- the ftable that contains the
+      <span class="emphasis"><em>ifndisplaceifnvel</em></span> -- the ftable that contains the
       initial velocity for each mass.  It should have the same size as
       the intended mass number. 
     </p>
@@ -83,7 +84,7 @@
       number. 
     </p>
         <p>
-      <span class="emphasis"><em>ifnstif</em></span> -- ftable that contains the spring
+      <span class="emphasis"><em>ifnmatrix</em></span> -- ftable that contains the spring
       stiffness of each connection. It should have the same size as
       the square of the intended mass number.  The data ordering is a
       row after row dump of the connection matrix of the system. 
@@ -128,7 +129,7 @@
       <span class="emphasis"><em>kmass</em></span> -- scales the masses
     </p>
         <p>
-      <span class="emphasis"><em>kstif</em></span> -- scales the spring stiffness.  Note
+      <span class="emphasis"><em>kmtrxstiff</em></span> -- scales the spring stiffness.  Note
       that larger numbers slow the evolution of the vibration,
       which is the reciprocal of the coresponding parameter in scanu.
     </p>
@@ -146,7 +147,7 @@
       it pushes with is <span class="emphasis"><em>kstrngth</em></span>. 
     </p>
         <p>
-      <span class="emphasis"><em>kstrngth</em></span> -- power that the active hammer uses
+      <span class="emphasis"><em>kdisplace</em></span> -- power that the active hammer uses.
     </p>
         <p>
       <span class="emphasis"><em>ain</em></span> -- audio input that adds to the
@@ -189,8 +190,8 @@ i<span class="n">rate</span> <span class="o">=</span> <span class="mf">.01</span
 k<span class="n">pos</span> <span class="nb">line</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">128</span>
 <span class="c1">;kpos randh abs(128), 3</span>
 
-<span class="c1">; scanu init, irate, ifnvel, ifnmass, ifnstif, ifncentr, ifndamp, kmass, kstif,</span>
-<span class="c1">;       kcentr, kdamp, ileft, iright, kpos, kstrngth, ain, idisp, id</span>
+<span class="c1">; scanu init, irate, ifndisplace, ifnmass, ifnmatrix, ifncentr, ifndamp, kmass,</span>
+<span class="c1">;       kmtrxstiff, kcentr, kdamp, ileft, iright, kpos, kdisplace, ain, idisp, id</span>
 <span class="n">scanu2</span> <span class="mi">1</span><span class="p">,</span> i<span class="n">rate</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mf">.01</span><span class="p">,</span> <span class="mf">.01</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> <span class="mf">.9</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> a<span class="n">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>
 
 <span class="c1">;ar scans kamp, kfreq, ifntraj, id</span>

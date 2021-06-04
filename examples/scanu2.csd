@@ -18,8 +18,8 @@ irate = .01
 kpos line 0, p3, 128
 ;kpos randh abs(128), 3
 
-; scanu init, irate, ifnvel, ifnmass, ifnstif, ifncentr, ifndamp, kmass, kstif,
-;       kcentr, kdamp, ileft, iright, kpos, kstrngth, ain, idisp, id
+; scanu init, irate, ifndisplace, ifnmass, ifnmatrix, ifncentr, ifndamp, kmass,
+;       kmtrxstiff, kcentr, kdamp, ileft, iright, kpos, kdisplace, ain, idisp, id
 scanu2 1, irate, 6, 2, 3, 4, 5, 2, 9, .01, .01, .1, .9, 0, 0, a0, 1, 2
 
 ;ar scans kamp, kfreq, ifntraj, id
