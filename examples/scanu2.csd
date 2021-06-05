@@ -38,7 +38,7 @@ f1 0 128 10 1 ; sine hammer
 f2 0 128 -7 1 128 1
 
 ; Spring matrices
-f3 0 16384 -23 "string-128.matrix"
+f3 0 16384 -23 "string-128.matrxB"
 
 ; Centering force
 f4 0 128 -7 1 128 1 ; uniform initial centering
