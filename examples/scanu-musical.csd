@@ -15,7 +15,7 @@ nchnls = 2
 
 itmp  ftgen 1, 0, 128, 7, 0, 64, 1,64, 0      ; generating all bunch of tables needed
 itmp  ftgen 2, 0, 128, -7, 1, 128, 1
-itmp  ftgen 3, 0, 16384, -23, "string-128.matrix"
+itmp  ftgen 3, 0, 16384, -23, "string-128.matrxB"
 itmp  ftgen 4, 0, 128,-7 ,0.5 ,128, 0
 itmp  ftgen 5, 0, 128, -7, 1, 128, 1
 itmp  ftgen 6, 0, 128, -7, 0, 128, 0
