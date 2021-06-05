@@ -49,8 +49,9 @@
       <div class="refsect1">
         <a id="idm201818"></a>
         <h2>Syntax</h2>
-        <pre class="synopsis"><span class="command"><strong>scanu</strong></span> init, irate, ifnvel, ifnmass, ifnstif, ifncentr, ifndamp, kmass, \
-      kstif, kcentr, kdamp, ileft, iright, kpos, kstrngth, ain, idisp, id</pre>
+        <pre class="synopsis"><span class="command"><strong>scanu</strong></span> init, irate, ifndisplace,
+    ifnmass, ifnmatrix, ifncentr, ifndamp, kmass, kmtrxstiff, kcentr,
+    kdamp, ileft, iright, kpos, kdisplace, ain, idisp, id</pre>
       </div>
       <div class="refsect1">
         <a id="idm201822"></a>
@@ -62,13 +63,18 @@
       <span class="emphasis"><em>irate</em></span> -- the amount of time between successive updates of the mass state. Kind of like the sample period of the system. If the number is big, the string will update at a slow rate showing little timbral variability; otherwise it will change rapidly resulting in a more dynamic sound.
     </p>
         <p>
-      <span class="emphasis"><em>ifnvel</em></span> -- the ftable that contains the initial velocity for each mass.  It should have the same size as the intended mass number.
+      <span class="emphasis"><em>ifndisplaceifnvel</em></span> -- the ftable that contains the
+      initial velocity for each mass.  It should have the same size as
+      the intended mass number. 
     </p>
         <p>
       <span class="emphasis"><em>ifnmass</em></span> -- ftable that contains the mass of each mass.  It should have the same size as the intended mass number.
     </p>
         <p>
-      <span class="emphasis"><em>ifnstif</em></span> -- ftable that contains the spring stiffness of each connection. It should have the same size as the square of the intended mass number.  The data ordering is a row after row dump of the connection matrix of the system.
+      <span class="emphasis"><em>ifnmatrix</em></span> -- ftable that contains the spring
+      stiffness of each connection. It should have the same size as
+      the square of the intended mass number.  The data ordering is a
+      row after row dump of the connection matrix of the system. 
     </p>
         <p>
       <span class="emphasis"><em>ifncentr</em></span> -- ftable that contains the centering force of each mass. It should have the same size as the intended mass number.
@@ -96,7 +102,7 @@
       <span class="emphasis"><em>kmass</em></span> -- scales the masses
     </p>
         <p>
-      <span class="emphasis"><em>kstif</em></span> -- scales the spring stiffness
+      <span class="emphasis"><em>kmtrxstiff</em></span> -- scales the spring stiffness.
     </p>
         <p>
       <span class="emphasis"><em>kcentr</em></span> -- scales the centering force
@@ -108,7 +114,7 @@
       <span class="emphasis"><em>kpos</em></span> -- position of an active hammer along the string (<span class="emphasis"><em>kpos</em></span> = 0 is leftmost, <span class="emphasis"><em>kpos</em></span> = 1 is rightmost).  The shape of the hammer is determined by <span class="emphasis"><em>init</em></span> and the power it pushes with is <span class="emphasis"><em>kstrngth</em></span>.
     </p>
         <p>
-      <span class="emphasis"><em>kstrngth</em></span> -- power that the active hammer uses
+      <span class="emphasis"><em>kdisplace</em></span> -- power that the active hammer uses.
     </p>
         <p>
       <span class="emphasis"><em>ain</em></span> -- audio input that adds to the velocity of the masses. Amplitude should not be too great.
