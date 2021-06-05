@@ -55,8 +55,8 @@
         <a id="idm288272"></a>
         <h2>Performance</h2>
         <p>
-The file named in version 1 or the file stiff.num in the second case
-    is read to create the matrix.</p>
+      The file named in version 1 or the file stiff.num in the second case
+      is read to create the matrix.</p>
         <p>
       The first line of the file should be
       <span class="quote">“<span class="quote">
@@ -72,9 +72,104 @@ The file named in version 1 or the file stiff.num in the second case
     </span>”</span>
     line or end of file.
     </p>
+        <p>can be given as zero in which case a size*size table is
+    created. If the size in the gen statememt is too small for the
+    matrix then space is re-allocated to the required size.
+    </p>
       </div>
       <div class="refsect1">
-        <a id="idm288278"></a>
+        <a id="idm288279"></a>
+        <h2>Examples</h2>
+        <p>
+      Here is an example of the GEN44 generator. It uses the file <a class="ulink" href="examples/gen44.csd" target="_top"><em class="citetitle">gen44.csd</em></a>.
+      </p>
+        <div class="example">
+          <a id="idm288284"></a>
+          <p class="title">
+            <strong>Example 1302. Example of the GEN44 generator.</strong>
+          </p>
+          <div class="example-contents">
+            <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
+            <div class="refsect1">
+              <a id="idm288291"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+<span class="nt">&lt;CsOptions&gt;</span>
+<span class="nt">&lt;/CsOptions&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span>
+
+<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="kd">instr</span> <span class="nf">scan</span>
+
+a<span class="n">0</span> <span class="nb">init</span> <span class="mi">0</span>
+
+i<span class="n">rate</span> <span class="o">=</span> <span class="mf">.01</span>
+
+k<span class="n">mass</span> <span class="nb">line</span> <span class="mi">2</span><span class="p">,</span><span class="vi">p3</span><span class="p">,</span><span class="mi">5</span>
+k<span class="n">stiff</span> <span class="nb">line</span> <span class="mi">30</span><span class="p">,</span><span class="vi">p3</span><span class="p">,</span><span class="mi">45</span>
+k<span class="n">center</span> <span class="nb">line</span> <span class="mf">.08</span><span class="p">,</span><span class="vi">p3</span><span class="p">,</span><span class="mf">.01</span>
+k<span class="n">damp</span> <span class="nb">line</span> <span class="mf">.01</span><span class="p">,</span><span class="vi">p3</span><span class="p">,</span><span class="mf">.08</span>
+k<span class="n">pos</span> <span class="nb">line</span> <span class="mi">0</span><span class="p">,</span><span class="vi">p3</span><span class="p">,</span><span class="mi">16</span>
+k<span class="n">displace</span> <span class="nb">line</span> <span class="mi">0</span><span class="p">,</span><span class="vi">p3</span><span class="p">,</span><span class="mf">.5</span>
+
+<span class="c1">;scanu2 init,irate,ifndisplace,ifnmass,ifnmatrix,ifncentr,ifndamp,kmass,kmtrxstiff,</span>
+<span class="c1">; kcentr, kdamp, ileft, iright, kpos, kdisplace, ain, idisp, id</span>
+<span class="n">scanu2</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> i<span class="n">rate</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> k<span class="n">mass</span><span class="p">,</span> k<span class="n">stiff</span><span class="p">,</span> k<span class="n">center</span><span class="p">,</span> k<span class="n">damp</span><span class="p">,</span> <span class="mf">.2</span><span class="p">,</span> <span class="mf">.7</span><span class="p">,</span> k<span class="n">pos</span><span class="p">,</span>
+k<span class="n">displace</span><span class="p">,</span> a<span class="n">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>
+
+<span class="c1">;ar scans kamp, kfreq, ifntraj, id</span>
+a<span class="n">1</span> <span class="nb">scans</span> <span class="nb">ampdbfs</span><span class="p">(</span><span class="vi">p4</span><span class="p">),</span> <span class="nb">cpspch</span><span class="p">(</span><span class="vi">p5</span><span class="p">),</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span>
+a<span class="n">1</span> <span class="nb">dcblock2</span> a<span class="n">1</span>
+<span class="nb">out</span> a<span class="n">1</span>
+<span class="kd">endin</span>
+
+<span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span>
+<span class="c1">; Initial displacement condition</span>
+<span class="nb">f</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">16</span> <span class="mi">10</span> <span class="mi">1</span> <span class="c1">; sine hammer</span>
+
+<span class="c1">; Masses</span>
+<span class="nb">f</span><span class="mi">2</span> <span class="mi">0</span> <span class="mi">16</span> <span class="o">-</span><span class="mi">7</span> <span class="mi">1</span> <span class="mi">16</span> <span class="mi">1</span>
+
+<span class="c1">; Spring matrices</span>
+<span class="nb">f</span><span class="mi">3</span> <span class="mi">0</span> <span class="mi">0</span> <span class="o">-</span><span class="mi">44</span> <span class="s">"string_with_extras-16.matrxT"</span>
+
+<span class="c1">; Centering force</span>
+<span class="nb">f</span><span class="mi">4</span> <span class="mi">0</span> <span class="mi">16</span> <span class="o">-</span><span class="mi">7</span> <span class="mi">1</span> <span class="mi">16</span> <span class="mi">1</span> <span class="c1">; uniform initial centering</span>
+
+<span class="c1">; Damping</span>
+<span class="nb">f</span><span class="mi">5</span> <span class="mi">0</span> <span class="mi">16</span> <span class="o">-</span><span class="mi">7</span> <span class="mi">1</span> <span class="mi">16</span> <span class="mi">1</span> <span class="c1">; uniform damping</span>
+
+<span class="c1">; Initial displacement - (displacement, vel, and acceleration</span>
+<span class="c1">; Acceleration is from stiffness matrix pos effect - increases acceleration</span>
+<span class="nb">f</span><span class="mi">6</span> <span class="mi">0</span> <span class="mi">16</span> <span class="o">-</span><span class="mi">7</span> <span class="mf">.01</span> <span class="mi">16</span> <span class="mf">.01</span> <span class="c1">; uniform initial velocity-displacement</span>
+
+<span class="c1">; Trajectories</span>
+<span class="nb">f</span><span class="mi">7</span> <span class="mi">0</span> <span class="mi">16</span> <span class="o">-</span><span class="mi">5</span> <span class="mf">.001</span> <span class="mi">16</span> <span class="mi">16</span>
+
+<span class="nb">i</span><span class="s">"scan"</span> <span class="mi">0</span> <span class="mi">2</span> <span class="o">-</span><span class="mi">6</span> <span class="mf">7.00</span>
+<span class="nb">i</span><span class="s">"scan"</span> <span class="mi">2</span> <span class="mi">2</span> <span class="o">-</span><span class="mi">6</span> <span class="mf">5.00</span>
+<span class="nb">i</span><span class="s">"scan"</span> <span class="mi">4</span> <span class="mi">2</span> <span class="o">-</span><span class="mi">6</span> <span class="mf">6.00</span>
+<span class="nb">i</span><span class="s">"scan"</span> <span class="mi">6</span> <span class="mi">2</span> <span class="o">-</span><span class="mi">6</span> <span class="mf">8.00</span>
+<span class="nb">i</span><span class="s">"scan"</span> <span class="mi">8</span> <span class="mi">2</span> <span class="o">-</span><span class="mi">6</span> <span class="mf">10.00</span>
+
+<span class="nb">e</span>
+
+<span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm288528"></a>
         <h2>Credits</h2>
         <p>Author: John ffitch</p>
         <p>New in Version 6.16 June 2021</p>
