@@ -18,7 +18,7 @@ nchnls_i = 1
 instr 1	; Plain scanned syntnesis
 	; note - scanu display is turned off
 a0    = 0							
-      xscanu   1, .01, 6, 2, "128-stringcircularX", 4, 5, 2, .1, .1, -.01, .1, .5, 0, 0, a0, 0, 0  		
+      xscanu   1, .01, 6, 2, "128-stringcircular.XmatrxT", 4, 5, 2, .1, .1, -.01, .1, .5, 0, 0, a0, 0, 0  		
   a1  xscans   p4, cpspch(p5), 7, 0, 3
 k1,k2 xscanmap 0, 1000, 1000, 64
       display  k1, .25 ; note - display is updated every second
@@ -30,7 +30,7 @@ instr 2	; Scan synthesis with audio injection and dual scan paths
 ain   diskin2 "fox.wav",1,0,1	
 ain   in
 a0    = ain/10000 						
-      xscanu   1, .01, 6, 2, "128,8-gridX", 14, 5, 2, .01, .05, -.05, .1, .5, 0, 0, a0, 0, 0 		
+      xscanu   1, .01, 6, 2, "128,8-grid.XmatrxT", 14, 5, 2, .01, .05, -.05, .1, .5, 0, 0, a0, 0, 0 		
 a1    xscans   p4, cpspch(p5), 7, 0, 2
 a2    xscans   p4, cpspch(p6), 77, 0, 3
 k1,k2 xscanmap 0, 1000, 1000, 127
