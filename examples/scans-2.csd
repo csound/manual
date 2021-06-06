@@ -1,7 +1,7 @@
 <CsoundSynthesizer>
 <CsOptions>
 ; Select audio/midi flags here according to platform
--odac   ;;;realtime audio out
+-odac  --limiter=0.9 ;;;realtime audio out & and limit loud sounds
 ;-iadc    ;;;uncomment -iadc if realtime audio input is needed too
 ; For Non-realtime ouput leave only the line below:
 ; -o scans-2.wav -W ;;; for file output any platform
@@ -39,7 +39,7 @@ f7 0 128 -5 .001 128 128		; Trajectories
 f77 0 128 -23 "128-spiral-8,16,128,2,1over2.traj"
 
 s
-i2 0  5  63 6.00 1 .9 7			;"mary.wav" &
+i2 0  5  63 6.00 1 .15 7			;"mary.wav" &
 i2 6  5  60 7.00			;trajectory table 7
 i2 10 5  60 8.00
 
@@ -49,7 +49,7 @@ i2 6  5  60 7.00
 i2 10 5  60 8.00
 
 s
-i2 0  5  63 6.00 1 .9 77		;"mary.wav" &
+i2 0  5  63 6.00 1 .2 77		;"mary.wav" &
 i2 6  5  60 7.00			;trajectory table 77
 i2 10 5  60 8.00
 
