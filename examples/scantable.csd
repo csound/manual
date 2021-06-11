@@ -19,7 +19,7 @@ instr 1
 
 initial ftgen 1, 0, p5, 10, 1                         ; initial position = sine wave
 imass   ftgen 2, 0, p5, -7, .1, p5, 1                 ; masses
-istiff  ftgen 3, 0, p5, -7, 0, p5*.3, 100, p5*.7, 0   ; stiffness
+istiff  ftgen 3, 0, p5, -7, 0, p5*.3, 0.8*p5, p5*.7, 0   ; stiffness
 idamp   ftgen 4, 0, p5, -7, 1, p5, 1                  ; damping
 ivelo   ftgen 5, 0, p5, -7, 0, p5, 0.5                ; initial velocity
 
