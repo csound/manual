@@ -1,7 +1,7 @@
 <CsoundSynthesizer>
 <CsOptions>
 ; Select audio/midi flags here according to platform
--odac ;;;realtime audio out
+-odac --limiter=0.95;;;realtime audio out & limiter
 ;-iadc    ;;;uncomment -iadc if realtime audio input is needed too
 ; For Non-realtime ouput leave only the line below:
 ; -o scantable.wav -W ;;; for file output any platform
@@ -27,6 +27,7 @@ iamp = .15
 ipch  = cpsmidinn(p4) 
 asig scantable iamp, ipch, 1, 2, 3, 4, 5
 asig dcblock asig
+asig   butlp  asig, 5000                              ; lowpass filter
 outs asig, asig;
 
 endin
