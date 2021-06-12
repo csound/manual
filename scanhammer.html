@@ -68,13 +68,85 @@
       </div>
       <div class="refsect1">
         <a id="idm201209"></a>
+        <h2>Examples</h2>
+        <p>
+      Here is an example of the scanhammer opcode. It uses the file <a class="ulink" href="examples/scanhammer.csd" target="_top"><em class="citetitle">scanhammer.csd</em></a>.
+      </p>
+        <div class="example">
+          <a id="idm201214"></a>
+          <p class="title">
+            <strong>Example 917. Example of the scanhammer opcode.</strong>
+          </p>
+          <div class="example-contents">
+            <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
+            <div class="refsect1">
+              <a id="idm201221"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+<span class="nt">&lt;CsOptions&gt;</span>
+<span class="c1">; Select audio/midi flags here according to platform</span>
+-odac --limiter=0.9 <span class="c1">;;;realtime audio out and limiter</span>
+<span class="c1">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</span>
+<span class="c1">; For Non-realtime ouput leave only the line below:</span>
+<span class="c1">; -o scanhammer.wav -W ;;; for file output any platform</span>
+<span class="nt">&lt;/CsOptions&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span>
+
+<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1">; by Menno Knevel 2021</span>
+
+<span class="kd">instr</span> <span class="nf">1</span>	
+
+i<span class="n">nitial</span> <span class="nb">ftgen</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>                         <span class="c1">; initial position = sine wave</span>
+i<span class="n">mass</span>   <span class="nb">ftgen</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="mi">1</span>                 <span class="c1">; masses</span>
+i<span class="n">stiff</span>  <span class="nb">ftgen</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p5</span><span class="o">*</span><span class="mf">.3</span><span class="p">,</span> <span class="mf">0.8</span><span class="o">*</span><span class="vi">p5</span><span class="p">,</span> <span class="vi">p5</span><span class="o">*</span><span class="mf">.7</span><span class="p">,</span> <span class="mi">0</span>   <span class="c1">; stiffness</span>
+i<span class="n">damp</span>   <span class="nb">ftgen</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="mi">1</span>                  <span class="c1">; damping</span>
+i<span class="n">velo</span>   <span class="nb">ftgen</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="mf">0.5</span>                <span class="c1">; initial velocity</span>
+
+i<span class="n">amp</span> <span class="o">=</span> <span class="mf">.20</span>
+i<span class="n">pch</span>  <span class="o">=</span> <span class="nb">cpsmidinn</span><span class="p">(</span><span class="vi">p4</span><span class="p">)</span> 
+<span class="nb">scanhammer</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p6</span>                                <span class="c1">; scale initial position wave </span>
+a<span class="n">sig3</span> <span class="nb">scantable</span> i<span class="n">amp</span><span class="p">,</span> i<span class="n">pch</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span>             <span class="c1">; set ftables in motion</span>
+a<span class="n">sig</span>  <span class="nb">foscili</span> i<span class="n">amp</span><span class="p">,</span> i<span class="n">pch</span><span class="p">,</span> <span class="mf">1.414</span><span class="p">,</span> <span class="mf">.03</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>            <span class="c1">; but use FM sound, with slow vibrato</span>
+a<span class="n">sig</span>  <span class="nb">butlp</span>  a<span class="n">sig</span><span class="p">,</span> <span class="mi">2000</span>                               <span class="c1">; lowpass filter</span>
+a<span class="n">sig</span> <span class="nb">dcblock</span> a<span class="n">sig</span>
+<span class="nb">outs</span> a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
+
+<span class="kd">endin</span>
+
+<span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span>
+<span class="nb">s</span>   <span class="c1">;                  note    seize    hit</span>
+<span class="nb">i</span><span class="mi">1</span>	<span class="mi">0</span>	<span class="mi">10</span>	<span class="mi">50</span>      <span class="mi">128</span>     <span class="mi">2</span>   <span class="c1">; hit very hard</span>
+<span class="nb">i</span><span class="mi">1</span>	<span class="mi">11</span>	<span class="mi">10</span>	<span class="mi">50</span>      <span class="o">.</span>       <span class="mi">1</span>   <span class="c1">; hit normally</span>
+<span class="nb">i</span><span class="mi">1</span>	<span class="mi">22</span>	<span class="mi">10</span>	<span class="mi">50</span>      <span class="o">.</span>       <span class="mf">.3</span>  <span class="c1">; hit soft</span>
+<span class="nb">s</span>
+<span class="nb">i</span><span class="mi">1</span>	<span class="mi">1</span>	<span class="mi">10</span>	<span class="mi">50</span>      <span class="mi">32</span>      <span class="mi">2</span>   <span class="c1">; different table seize </span>
+<span class="nb">i</span><span class="mi">1</span>	<span class="mi">12</span>	<span class="mi">10</span>	<span class="mi">50</span>      <span class="o">.</span>       <span class="mi">1</span>
+<span class="nb">i</span><span class="mi">1</span>	<span class="mi">23</span>	<span class="mi">20</span>	<span class="mi">50</span>      <span class="o">.</span>       <span class="mf">.3</span>
+<span class="nb">e</span>
+<span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm201453"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="scantable.html" title="scantable"><em class="citetitle">scantable</em></a>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm201214"></a>
+        <a id="idm201458"></a>
         <h2>Credits</h2>
         <p>
       </p>

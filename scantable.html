@@ -39,19 +39,19 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm201754"></a>
+        <a id="idm201998"></a>
         <h2>Description</h2>
         <p>
       A simpler scanned synthesis implementation. This is an implementation of a circular string scanned using external tables. This opcode will allow direct modification and reading of values with the table opcodes.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm201757"></a>
+        <a id="idm202001"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">aout <span class="command"><strong>scantable</strong></span> kamp, kpch, ipos, imass, istiff, idamp, ivel</pre>
       </div>
       <div class="refsect1">
-        <a id="idm201761"></a>
+        <a id="idm202005"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>ipos</em></span> -- table containing position array.
@@ -70,7 +70,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm201773"></a>
+        <a id="idm202017"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>kamp</em></span> -- amplitude (gain) of the string.
@@ -80,25 +80,25 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm201779"></a>
+        <a id="idm202023"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the scantable opcode. It uses the file <a class="ulink" href="examples/scantable.csd" target="_top"><em class="citetitle">scantable.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm201784"></a>
+          <a id="idm202028"></a>
           <p class="title">
-            <strong>Example 919. Example of the scantable opcode.</strong>
+            <strong>Example 920. Example of the scantable opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm201791"></a>
+              <a id="idm202035"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
--odac <span class="c1">;;;realtime audio out</span>
+-odac --limiter=0.95<span class="c1">;;;realtime audio out &amp; limiter</span>
 <span class="c1">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</span>
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o scantable.wav -W ;;; for file output any platform</span>
@@ -116,7 +116,7 @@
 
 i<span class="n">nitial</span> <span class="nb">ftgen</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>                         <span class="c1">; initial position = sine wave</span>
 i<span class="n">mass</span>   <span class="nb">ftgen</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="mi">1</span>                 <span class="c1">; masses</span>
-i<span class="n">stiff</span>  <span class="nb">ftgen</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p5</span><span class="o">*</span><span class="mf">.3</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="vi">p5</span><span class="o">*</span><span class="mf">.7</span><span class="p">,</span> <span class="mi">0</span>   <span class="c1">; stiffness</span>
+i<span class="n">stiff</span>  <span class="nb">ftgen</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p5</span><span class="o">*</span><span class="mf">.3</span><span class="p">,</span> <span class="mf">0.8</span><span class="o">*</span><span class="vi">p5</span><span class="p">,</span> <span class="vi">p5</span><span class="o">*</span><span class="mf">.7</span><span class="p">,</span> <span class="mi">0</span>   <span class="c1">; stiffness</span>
 i<span class="n">damp</span>   <span class="nb">ftgen</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="mi">1</span>                  <span class="c1">; damping</span>
 i<span class="n">velo</span>   <span class="nb">ftgen</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="mf">0.5</span>                <span class="c1">; initial velocity</span>
 
@@ -124,6 +124,7 @@ i<span class="n">amp</span> <span class="o">=</span> <span class="mf">.15</span>
 i<span class="n">pch</span>  <span class="o">=</span> <span class="nb">cpsmidinn</span><span class="p">(</span><span class="vi">p4</span><span class="p">)</span> 
 a<span class="n">sig</span> <span class="nb">scantable</span> i<span class="n">amp</span><span class="p">,</span> i<span class="n">pch</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span>
 a<span class="n">sig</span> <span class="nb">dcblock</span> a<span class="n">sig</span>
+a<span class="n">sig</span>   <span class="nb">butlp</span>  a<span class="n">sig</span><span class="p">,</span> <span class="mi">5000</span>                              <span class="c1">; lowpass filter</span>
 <span class="nb">outs</span> a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span><span class="c1">;</span>
 
 <span class="kd">endin</span>
@@ -157,7 +158,7 @@ a<span class="n">sig</span> <span class="nb">dcblock</span> a<span class="n">sig
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm202025"></a>
+        <a id="idm202277"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="scanhammer.html" title="scanhammer"><em class="citetitle">scanhammer</em></a>
@@ -165,7 +166,7 @@ a<span class="n">sig</span> <span class="nb">dcblock</span> a<span class="n">sig
         <p> More information on this opcode: <a class="ulink" href="http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html" target="_top"><em class="citetitle">http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html</em></a>  , written by Steven Yi </p>
       </div>
       <div class="refsect1">
-        <a id="idm202033"></a>
+        <a id="idm202285"></a>
         <h2>Credits</h2>
         <p>
       </p>
