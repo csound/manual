@@ -1,7 +1,7 @@
 <CsoundSynthesizer>
 <CsOptions>
 ; Select audio/midi flags here according to platform
--odac    ;;;realtime audio out
+-odac  --limiter=0.95  ;;;realtime audio out & limit loud sounds
 ;-iadc    ;;;uncomment -iadc if realtime audio input is needed too
 ; For Non-realtime ouput leave only the line below:
 ; -o xscanu.wav -W ;;; for file output any platform
