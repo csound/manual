@@ -1,10 +1,10 @@
 <CsoundSynthesizer>
 <CsOptions>
 ; Select audio/midi flags here according to platform
--odac --limiter=0.95;;;realtime audio out & limiter
+-odac --limiter=0.9 ;;;realtime audio out and limiter
 ;-iadc    ;;;uncomment -iadc if realtime audio input is needed too
 ; For Non-realtime ouput leave only the line below:
-; -o scantable.wav -W ;;; for file output any platform
+; -o scanhammer.wav -W ;;; for file output any platform
 </CsOptions>
 <CsInstruments>
 
@@ -23,33 +23,27 @@ istiff  ftgen 3, 0, p5, -7, 0, p5*.3, 0.8*p5, p5*.7, 0   ; stiffness
 idamp   ftgen 4, 0, p5, -7, 1, p5, 1                  ; damping
 ivelo   ftgen 5, 0, p5, -7, 0, p5, 0.5                ; initial velocity
 
-iamp = .15
+iamp = .20
 ipch  = cpsmidinn(p4) 
-asig scantable iamp, ipch, 1, 2, 3, 4, 5
+scanhammer 1, 1, 0, p6                                ; scale initial position wave 
+asig3 scantable iamp, ipch, 1, 2, 3, 4, 5             ; set ftables in motion
+asig  foscili iamp, ipch, 1.414, .03, 1, 1            ; but use FM sound, with slow vibrato
+asig  butlp  asig, 2000                               ; lowpass filter
 asig dcblock asig
-asig   butlp  asig, 5000                              ; lowpass filter
-outs asig, asig;
+outs asig, asig
 
 endin
 
 </CsInstruments>
 <CsScore>
+s   ;                  note    size    hit
+i1	0	10	50      128     2   ; hit very hard
+i1	11	10	50      .       1   ; hit normally
+i1	22	10	50      .       .3  ; hit soft
 s
-i1	0	20	50  128
-i1	10	10	70  .
-i1	15	3	40  .
-s
-i1	0	20	50  4096    ; f-tables now bigger tables
-i1	10	10	70  .       ; sounds different 
-i1	15	3	40  .
-s
-i1	0	20	50  1000    ; still big tables
-i1	10	10	70  .       ; but non-power of 2
-i1	15	3	40  .
-s
-i1	0	20	50  20      ; small tables
-i1	10	10	70  .       ; & non-power of 2
-i1	15	3	40  .
+i1	1	10	50      32      2   ; different table size 
+i1	12	10	50      .       1
+i1	23	20	50      .       .3
 e
 </CsScore>
 </CsoundSynthesizer>
