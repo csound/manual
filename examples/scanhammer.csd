@@ -36,12 +36,12 @@ endin
 
 </CsInstruments>
 <CsScore>
-s   ;                  note    seize    hit
+s   ;                  note    size    hit
 i1	0	10	50      128     2   ; hit very hard
 i1	11	10	50      .       1   ; hit normally
 i1	22	10	50      .       .3  ; hit soft
 s
-i1	1	10	50      32      2   ; different table seize 
+i1	1	10	50      32      2   ; different table size 
 i1	12	10	50      .       1
 i1	23	20	50      .       .3
 e
