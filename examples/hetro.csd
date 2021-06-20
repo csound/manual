@@ -37,7 +37,7 @@ endin
 </CsInstruments>
 <CsScore>
 
-i1 2 2.76               ; original sample
+i1 0 2.76               ; original sample
 
 i2 5 2.76  "fox1.het"	; whole sentence
 i2 10 2.76 "fox2.het"	; whole sentence, but analyzed with different settings
