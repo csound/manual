@@ -74,8 +74,32 @@
       analysis file.
     </p>
       </div>
-      <div class="refsect1">
+      <div class="refsect2">
         <a id="idm299844"></a>
+        <h3>Files</h3>
+        <p>
+        The output file has a special <span class="emphasis"><em>convolve</em></span> header, containing details of the source audio file. The analysis data is stored as <span class="quote">“<span class="quote">float</span>”</span>, in rectangular (real/imaginary) form.
+      </p>
+        <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+          <table border="0" summary="Note: Note">
+            <tr>
+              <td rowspan="2" align="center" valign="top" width="25">
+                <img alt="[Note]" src="images/note.png" />
+              </td>
+              <th align="left">Note</th>
+            </tr>
+            <tr>
+              <td align="left" valign="top">
+                <p>
+          The analysis file is <span class="emphasis"><em>not</em></span> system independent! Ensure that the original impulse recording/data is retained. If/when required, the analysis file can be recreated.
+        </p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="refsect1">
+        <a id="idm299853"></a>
         <h2>Examples</h2>
         <p>
 
@@ -89,33 +113,82 @@
         <p>
       To use data that is not already contained in a soundfile, a soundfile converter that accepts text files may be used to create a standard audio file, e.g., the .DAT format for SOX. This is useful for implementing FIR filters.
     </p>
-        <div class="refsect2">
-          <a id="idm299852"></a>
-          <h3>Files</h3>
-          <p>
-        The output file has a special <span class="emphasis"><em>convolve</em></span> header, containing details of the source audio file. The analysis data is stored as <span class="quote">“<span class="quote">float</span>”</span>, in rectangular (real/imaginary) form.
+        <p>
+      Here is an example of the cvanal utility. It uses the file <a class="ulink" href="examples/cvanal.csd" target="_top"><em class="citetitle">cvanal.csd</em></a>.
       </p>
-          <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
-            <table border="0" summary="Note: Note">
-              <tr>
-                <td rowspan="2" align="center" valign="top" width="25">
-                  <img alt="[Note]" src="images/note.png" />
-                </td>
-                <th align="left">Note</th>
-              </tr>
-              <tr>
-                <td align="left" valign="top">
-                  <p>
-          The analysis file is <span class="emphasis"><em>not</em></span> system independent! Ensure that the original impulse recording/data is retained. If/when required, the analysis file can be recreated.
-        </p>
-                </td>
-              </tr>
-            </table>
+        <div class="example">
+          <a id="idm299864"></a>
+          <p class="title">
+            <strong>Example 1338. Example of the cvanal utility.</strong>
+          </p>
+          <div class="example-contents">
+            <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
+            <div class="refsect1">
+              <a id="idm299871"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+<span class="nt">&lt;CsOptions&gt;</span>
+<span class="c1">; Select audio/midi flags here according to platform</span>
+-odac   -m0  --limiter=.99 <span class="c1">;;;realtime audio out, with limiter protection</span>
+<span class="c1">; For Non-realtime ouput leave only the line below:</span>
+<span class="c1">; -o cvanal.wav -W ;;; for file output any platform</span>
+<span class="nt">&lt;/CsOptions&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span>
+
+<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1">; by Menno Knevel 2021</span>
+
+gi<span class="n">len</span>  <span class="nb">filelen</span> <span class="s">"rv_stereo.wav"</span>	    <span class="c1">; get length of impulse soundfile</span>
+
+<span class="c1">; analyze sound file and output result to 3 convolve files</span>
+i<span class="n">res1</span> <span class="nb">system_i</span> <span class="mi">1</span><span class="p">,</span><span class="s">{{ cvanal rv_stereo.wav rv_stereo1.con }}</span>                  <span class="c1">; default settings</span>
+i<span class="n">res2</span> <span class="nb">system_i</span> <span class="mi">1</span><span class="p">,</span><span class="s">{{ cvanal -d.15 rv_stereo.wav rv_stereo2.con }}</span>            <span class="c1">; use only first portion</span>
+i<span class="n">res3</span> <span class="nb">system_i</span> <span class="mi">1</span><span class="p">,</span><span class="s">{{ cvanal -b.25 -d.001 rv_stereo.wav rv_stereo3.con }}</span>    <span class="c1">; take very short portion from the end</span>
+
+
+<span class="kd">instr</span> <span class="nf">1</span> <span class="c1">; untreated signal</span>
+a<span class="n">sig</span>    <span class="nb">diskin2</span>   <span class="s">"beats.wav"</span><span class="p">,</span> <span class="mi">1</span>
+<span class="nb">prints</span>  <span class="s">"</span><span class="se">\n</span><span class="s">---***YOU NOW HEAR THE UNTREATED SOUND SAMPLE***---</span><span class="se">\n</span><span class="s">"</span>
+<span class="nb">outs</span>    a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
+<span class="kd">endin</span>
+
+<span class="kd">instr</span> <span class="nf">2</span>
+
+<span class="nb">prints</span>  <span class="s">"</span><span class="se">\n</span><span class="s">---***YOU NOW HEAR THE RESULT OF THIS ANALYZED FILE:***---</span><span class="se">\n</span><span class="s">"</span>
+<span class="nb">prints</span> <span class="s">"--**used duration of impulse file = </span><span class="si">%5.3f</span><span class="s"> seconds (total =</span><span class="si">%5.2f</span><span class="s">)**--</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> gi<span class="n">len</span>
+
+a<span class="n">dry</span>    <span class="nb">diskin2</span> <span class="s">"beats.wav"</span>                 <span class="c1">; input (dry) audio</span>
+a<span class="n">wet1</span><span class="p">,</span> a<span class="n">wet2</span> <span class="nb">convolve</span> a<span class="n">dry</span><span class="o">*</span><span class="mf">.8</span><span class="p">,</span> <span class="vi">p4</span>           <span class="c1">; stereo convolved (wet) audio</span>
+a<span class="n">wet1</span>  <span class="o">*=</span>  <span class="vi">p6</span>                               <span class="c1">; scale amplitude of impulse sound, Left</span>
+a<span class="n">wet2</span>  <span class="o">*=</span>  <span class="vi">p6</span>                               <span class="c1">; &amp; Right channel</span>
+a<span class="n">drydel</span> <span class="nb">delay</span>   a<span class="n">dry</span><span class="p">,</span> <span class="vi">p5</span>                    <span class="c1">; delay dry signal to align it with convolved signal</span>
+<span class="nb">outs</span>    <span class="p">(</span>a<span class="n">drydel</span><span class="o">+</span>a<span class="n">wet1</span><span class="p">)</span><span class="o">*</span><span class="mf">.8</span><span class="p">,(</span>a<span class="n">drydel</span><span class="o">+</span>a<span class="n">wet2</span><span class="p">)</span><span class="o">*</span><span class="mf">.8</span> <span class="c1">; mix wet &amp; dry signals </span>
+<span class="kd">endin</span>
+
+<span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span>
+
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">1</span> <span class="mi">2</span>          <span class="c1">; untreated signal</span>
+
+<span class="nb">i</span><span class="mi">2</span> <span class="mi">4</span> <span class="mi">3</span>  <span class="s">"rv_stereo1.con"</span>    <span class="mf">0.39</span>    <span class="mf">.01</span>	<span class="c1">; use total impulse</span>
+<span class="nb">i</span><span class="mi">2</span> <span class="mi">8</span> <span class="mi">3</span>  <span class="s">"rv_stereo2.con"</span>    <span class="mf">0.15</span>    <span class="mf">.01</span>	<span class="c1">; first portion of impulse</span>
+<span class="nb">i</span><span class="mi">2</span> <span class="mi">12</span> <span class="mi">3</span> <span class="s">"rv_stereo3.con"</span>    <span class="mf">0.001</span>    <span class="mi">1</span>	<span class="c1">; very short portion of impulse, starting from 0.25 sec, &amp; scale amp</span>
+<span class="nb">e</span>
+<span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
           </div>
         </div>
+        <p><br class="example-break" />
+    </p>
       </div>
       <div class="refsect1">
-        <a id="idm299861"></a>
+        <a id="idm300035"></a>
         <h2>Credits</h2>
         <p>Author: Greg Sullivan</p>
         <p>Based on algorithm given in <span class="emphasis"><em>Elements Of Computer Music</em></span>, by F. Richard Moore.</p>
