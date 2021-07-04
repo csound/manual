@@ -26,11 +26,11 @@ ixmode =    1
 ixoff =     0
 iwrap =     1
 aphasor1 phasor knoteleft        ; the values in table 10 become the frequency of the oscillator
-asig1 tablei aphasor1, gisqre, ixmode, ixoff, iwrap ; oscillator generating sound in the left channel (table 10 every 2 seconds)
+asig1    tablei aphasor1, gisqre, ixmode, ixoff, iwrap ; oscillator generating sound in the left channel (table 10 every 2 seconds)
 aphasor2 phasor knoteright       ; the values in table 10 become the frequency of the oscillator
-asig2 tablei aphasor2, gisqre, ixmode, ixoff, iwrap ; oscillator generating sound in the right channel (table 10 every second)
-kgenenv linseg 0, 0.3, 0.4, p3-0.6, 0.4, 0.3, 0     ; envelope
-outs asig1 * kgenenv, asig2 * kgenenv
+asig2    tablei aphasor2, gisqre, ixmode, ixoff, iwrap ; oscillator generating sound in the right channel (table 10 every second)
+kgenenv  linseg 0, 0.3, 0.4, p3-0.6, 0.4, 0.3, 0     ; envelope
+         outs asig1 * kgenenv, asig2 * kgenenv
 endin
 
 </CsInstruments>
