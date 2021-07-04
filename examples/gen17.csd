@@ -1,40 +1,44 @@
 <CsoundSynthesizer>
 <CsOptions>
 ; Select audio/midi flags here according to platform
--odac  -M0 -+rtmidi=virtual    ;;;realtime audio out
+-odac   ;;;realtime audio out
 ;-iadc    ;;;uncomment -iadc if realtime audio input is needed too
 ; For Non-realtime ouput leave only the line below:
 ; -o gen17.wav -W ;;; for file output any platform
+; By Stefano Cucchi & Menno Knevel - 2021
 </CsOptions>
 <CsInstruments>
 
-sr = 44100 
-ksmps = 32 
-nchnls = 2 
-0dbfs  = 1 
+sr     =    44100
+ksmps  =    32
+nchnls =    2
+0dbfs =     1
 
- instr 1
- 
-inote  cpsmidi	 
-iveloc ampmidi .5
-ictl   midictrl 5				;move slider of controller 5 to change ftable
-itab   table ictl, 2
-aout   poscil iveloc, inote, itab
-       outs aout, aout
+instr 1 
+gisqre ftgen 2, 0, 16384, 10, 1, 0 , .33, 0, .2 , 0, .14, 0 , .11, 0, .09 ;odd harmonics
 
-endin	 
+knoteleft oscil 1, 0.5, 10       ; index to table 10 - gen 17 - every 2 seconds reads all the values in the table n. 10
+printks2 "note left  = %d\n", knoteleft
+knoteright oscil 1, 1, 10        ; index to table 10 - gen 17 - every  second reads all the values in the table n. 10
+printks2 "note right = %d\n", knoteright
+
+ixmode =    1
+ixoff =     0
+iwrap =     1
+aphasor1 phasor knoteleft        ; the values in table 10 become the frequency of the oscillator
+asig1 tablei aphasor1, gisqre, ixmode, ixoff, iwrap ; oscillator generating sound in the left channel (table 10 every 2 seconds)
+aphasor2 phasor knoteright       ; the values in table 10 become the frequency of the oscillator
+asig2 tablei aphasor2, gisqre, ixmode, ixoff, iwrap ; oscillator generating sound in the right channel (table 10 every second)
+kgenenv linseg 0, 0.3, 0.4, p3-0.6, 0.4, 0.3, 0     ; envelope
+         outs asig1 * kgenenv, asig2 * kgenenv
+endin
+
 </CsInstruments>
 <CsScore>
-f 1 0 8193 10 1
-f 2 0 128 -17 0 10 32 20 64 30 96 40			;inhibit rescaling
+; table with gen17 - At point 0 pitch 300 Hz, at point 12 pitch 350 Hz, etc...
+f  10  0  128  -17   0  300   12  350   20  400   41  434   48  563  67  589   72  632   79  678  100 712 120 789
 
-f 10 0 16384 10 1                                       ; Sine
-f 20 0 16384 10 1 0.5 0.3 0.25 0.2 0.167 0.14 0.125 .111; Sawtooth
-f 30 0 16384 10 1 0   0.3 0    0.2 0     0.14 0     .111; Square
-f 40 0 16384 10 1 1   1   1    0.7 0.5   0.3  0.1       ; Pulse
-
-f 0 30	;run for 30 seconds
+i1 0 10 
 e
 </CsScore>
 </CsoundSynthesizer>
-
