@@ -9,7 +9,7 @@
 ; By Stefano Cucchi - 2021
 
 </CsOptions>
-<CsInstruments>ì
+<CsInstruments>
 
 sr = 44100
 ksmps = 32
