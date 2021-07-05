@@ -125,16 +125,18 @@
 <span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
+i<span class="n">res</span> <span class="nb">system_i</span> <span class="mi">1</span><span class="p">,</span> <span class="s">{{ lpanal -a -P70 -Q5000 -v1 fox.wav fox_poles.lpc }}</span>    <span class="c1">; create pole file</span>
+
 <span class="kd">instr</span> <span class="nf">1</span>
 <span class="c1">; works with or without -a option when analyzing "fox.wav" from the manual</span>
-i<span class="n">len</span>  <span class="nb">filelen</span> <span class="s">"fox.wav"</span>	<span class="c1">; length of soundfile</span>
+i<span class="n">len</span>  <span class="nb">filelen</span> <span class="s">"fox.wav"</span>	    <span class="c1">; length of soundfile</span>
 <span class="nb">prints</span> <span class="s">"fox.wav = </span><span class="si">%f</span><span class="s"> seconds</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span>i<span class="n">len</span>
 
 k<span class="n">time</span> <span class="nb">line</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="vi">p4</span>
 k<span class="n">rmsr</span><span class="p">,</span>k<span class="n">rmso</span><span class="p">,</span>k<span class="n">err</span><span class="p">,</span>k<span class="n">cps</span> <span class="nb">lpread</span> k<span class="n">time</span><span class="p">,</span><span class="s">"fox_poles.lpc"</span>
-k<span class="n">rmso</span> <span class="o">=</span> k<span class="n">rmso</span><span class="o">*</span><span class="mf">.00007</span>			<span class="c1">; low volume</span>
+k<span class="n">rmso</span> <span class="o">=</span> k<span class="n">rmso</span><span class="o">*</span><span class="mf">.00005</span>		<span class="c1">; low volume</span>
 a<span class="n">out</span>  <span class="nb">buzz</span> k<span class="n">rmso</span><span class="p">,</span> k<span class="n">cps</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">1</span>
-k<span class="n">rmsr</span> <span class="o">=</span> k<span class="n">rmsr</span><span class="o">*</span><span class="mf">.0001</span>			<span class="c1">; low volume</span>
+k<span class="n">rmsr</span> <span class="o">=</span> k<span class="n">rmsr</span><span class="o">*</span><span class="mf">.0001</span>		<span class="c1">; low volume</span>
 a<span class="n">sig</span>  <span class="nb">rand</span> k<span class="n">rmsr</span>
       <span class="nb">outs</span> <span class="p">(</span>a<span class="n">out</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span>a<span class="n">sig</span><span class="p">,</span> <span class="p">(</span>a<span class="n">out</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span>a<span class="n">sig</span>	<span class="c1">; mix buzz and rand</span>
 
@@ -144,9 +146,9 @@ a<span class="n">sig</span>  <span class="nb">rand</span> k<span class="n">rmsr<
 <span class="c1">; sine</span>
 <span class="nb">f</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">4096</span> <span class="mi">10</span> <span class="mi">1</span> 
 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mf">2.8</span> <span class="mi">1</span>	<span class="c1">; first words only</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mf">2.8</span> <span class="mi">1</span>     <span class="c1">; first words only</span>
 <span class="nb">i</span> <span class="mi">1</span> <span class="mi">4</span> <span class="mf">2.8</span> <span class="mf">2.8</span>	<span class="c1">; whole sentence</span>
-<span class="nb">e</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">8</span> <span class="mi">10</span> <span class="mi">10</span>    <span class="c1">; last analyses frame gets repeated until note end</span>
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
@@ -163,7 +165,7 @@ fox.wav = 2.756667 seconds
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm131778"></a>
+        <a id="idm131789"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="lpfreson.html" title="lpfreson"><em class="citetitle">lpfreson</em></a>, 
