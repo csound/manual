@@ -6,7 +6,7 @@
 </CsOptions>
 <CsInstruments>
 
-; by Shengzheng Zhang
+; by Shengzheng Zhang (aka John Towse)
 
 sr = 44100
 ksmps = 32
