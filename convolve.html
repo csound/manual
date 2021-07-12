@@ -39,7 +39,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm45466"></a>
+        <a id="idm45499"></a>
         <h2>Description</h2>
         <p>
       Output is the convolution of signal <span class="emphasis"><em>ain</em></span> and the impulse response contained in <span class="emphasis"><em>ifilcod</em></span>. If more than one output signal is supplied, each will be convolved with the same impulse response. Note that it is considerably more efficient to use one instance of the operator when processing a mono input to create stereo, or quad, outputs. 
@@ -49,12 +49,12 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm45474"></a>
+        <a id="idm45507"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ar1 [, ar2] [, ar3] [, ar4] <span class="command"><strong>convolve</strong></span> ain, ifilcod [, ichannel]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm45478"></a>
+        <a id="idm45511"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>ifilcod</em></span> -- integer or character-string denoting an impulse response data file. An integer denotes the suffix of a file <span class="emphasis"><em>convolve.m</em></span>; a character string (in double quotes) gives a filename, optionally a full pathname. If not a fullpath, the file is sought first in the current directory, then in the one given by the environment variable SADIR (if defined). The data file contains the Fourier transform of an impulse response. Memory usage depends on the size of the data file, which is read and held entirely in memory during computation, but which is shared by multiple calls.
@@ -64,7 +64,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm45485"></a>
+        <a id="idm45518"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>ain</em></span> -- input audio signal.
@@ -96,7 +96,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm45496"></a>
+        <a id="idm45529"></a>
         <h2>Examples</h2>
         <p>
       Create frequency domain impulse response file using the <a class="link" href="cvanal.html" title="cvanal"><em class="citetitle">cvanal utility</em></a>:
@@ -168,67 +168,60 @@ Duration = 60822/44100 = 1.379s.</p>
 
       </p>
         <div class="example">
-          <a id="idm45516"></a>
+          <a id="idm45549"></a>
           <p class="title">
             <strong>Example 156. Example of the convolve opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm45523"></a>
+              <a id="idm45556"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
-<span class="c1">;-odac     ;;;RT audio out</span>
--iadc    <span class="c1">;;;uncomment -iadc if RT audio input is needed too</span>
+-odac     <span class="c1">;;;RT audio out</span>
+<span class="c1">;-iadc    ;;;uncomment -iadc if RT audio input is needed too</span>
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">;-o convolve.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span>
-<span class="c1">; NB: 'Small' reverbs often require a much higher</span>
-<span class="c1">; percentage of wet signal to sound interesting. 'Large'</span>
-<span class="c1">; reverbs seem require less. Experiment! The wet/dry mix is</span>
-<span class="c1">; very important - a small change can make a large difference.</span>
+<span class="c1">; NB: 'Small' reverbs often require a much higher percentage of wet signal to sound interesting. 'Large'</span>
+<span class="c1">; reverbs seem require less. Experiment! The wet/dry mix is very important - a small change can make a large difference.</span>
 
 <span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
 <span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
 <span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="c1">;The analysis file is not system independent! </span>
-<span class="c1">; create "rv_mono.wav" and "rv_stereo.wav" with cvanal first!</span>
+
+<span class="c1">; by Menno Knevel - 2021</span>
+
+i<span class="n">res1</span> <span class="nb">system_i</span> <span class="mi">1</span><span class="p">,</span><span class="s">{{ cvanal rv_mono.wav rv_mono.con }}</span>  <span class="c1">; analyze mono spring reverb</span>
+i<span class="n">res2</span> <span class="nb">system_i</span> <span class="mi">1</span><span class="p">,</span><span class="s">{{ cvanal rv_stereo.wav rv_stereo.con }}</span> <span class="c1">; analyze stereo spring reverb</span>
 
 <span class="kd">instr</span> <span class="nf">1</span> 
 
 i<span class="n">mix</span> <span class="o">=</span> <span class="mf">0.25</span>	<span class="c1">;wet/dry mix. Vary as desired.</span>
-i<span class="n">vol</span> <span class="o">=</span> <span class="mi">1</span> 	<span class="c1">;Overall volume level of reverb. May need to adjust</span>
-<span class="c1">;when wet/dry mix is changed, to avoid clipping.</span>
+i<span class="n">vol</span> <span class="o">=</span> <span class="mf">.8</span> 	<span class="c1">;Overall volume level of reverb. Adjust to avoid clipping.</span>
 
 i<span class="n">del</span>   <span class="nb">filelen</span> <span class="vi">p4</span>			<span class="c1">;calculate length and number of channels of soundfile</span>
-<span class="nb">print</span>  i<span class="n">del</span>
 i<span class="n">chnls</span> <span class="nb">filenchnls</span>  <span class="vi">p4</span>
-<span class="nb">print</span>  i<span class="n">chnls</span>
+<span class="nb">prints</span>	<span class="s">"</span><span class="se">\n</span><span class="s">**this reverb file = </span><span class="si">%f</span><span class="s"> seconds and has </span><span class="si">%d</span><span class="s"> channel(s)**</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> i<span class="n">del</span><span class="p">,</span> i<span class="n">chnls</span>
 
-<span class="k">if</span> <span class="p">(</span>i<span class="n">chnls</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="k">then</span>
-
-a<span class="n">dry</span>    <span class="nb">soundin</span> <span class="s">"fox.wav"</span>               <span class="c1">; input (dry) audio</span>
-a<span class="n">wet</span>    <span class="nb">convolve</span> a<span class="n">dry</span><span class="p">,</span><span class="s">"rv_mono.cva"</span>	<span class="c1">; mono convolved (wet) audio</span>
-a<span class="n">wet</span>    <span class="nb">diff</span>    a<span class="n">wet</span>                    <span class="c1">; brighten</span>
-a<span class="n">drydel</span> <span class="nb">delay</span>   <span class="p">(</span><span class="mi">1</span><span class="o">-</span>i<span class="n">mix</span><span class="p">)</span><span class="o">*</span>a<span class="n">dry</span><span class="p">,</span> i<span class="n">del</span>	<span class="c1">; Delay dry signal to align it with convolved signal</span>
-					<span class="c1">; Apply level adjustment here too.</span>
-<span class="nb">outs</span>    i<span class="n">vol</span><span class="o">*</span><span class="p">(</span>a<span class="n">drydel</span><span class="o">+</span>i<span class="n">mix</span><span class="o">*</span>a<span class="n">wet</span><span class="p">),</span>i<span class="n">vol</span><span class="o">*</span><span class="p">(</span>a<span class="n">drydel</span><span class="o">+</span>i<span class="n">mix</span><span class="o">*</span>a<span class="n">wet</span><span class="p">)</span> <span class="c1">; Mix wet &amp; dry</span>
-
-<span class="k">else</span>
-
-a<span class="n">dry</span>    <span class="nb">soundin</span> <span class="s">"fox.wav"</span>               <span class="c1">; input (dry) audio</span>
-a<span class="n">wet1</span><span class="p">,</span> a<span class="n">wet2</span> <span class="nb">convolve</span> a<span class="n">dry</span><span class="p">,</span><span class="s">"rv_stereo.cva"</span> <span class="c1">; stereo convolved (wet) audio</span>
-a<span class="n">wet1</span>   <span class="nb">diff</span>    a<span class="n">wet1</span>                   <span class="c1">; brighten left</span>
-a<span class="n">wet2</span>   <span class="nb">diff</span>    a<span class="n">wet2</span>                   <span class="c1">; and brighten right</span>
-a<span class="n">drydel</span> <span class="nb">delay</span>   <span class="p">(</span><span class="mi">1</span><span class="o">-</span>i<span class="n">mix</span><span class="p">)</span><span class="o">*</span>a<span class="n">dry</span><span class="p">,</span> i<span class="n">del</span>     <span class="c1">; Delay dry signal to align it with convolved signal</span>
-					<span class="c1">; Apply level adjustment here too.</span>
-<span class="nb">outs</span>    i<span class="n">vol</span><span class="o">*</span><span class="p">(</span>a<span class="n">drydel</span><span class="o">+</span>i<span class="n">mix</span><span class="o">*</span>a<span class="n">wet1</span><span class="p">),</span>i<span class="n">vol</span><span class="o">*</span><span class="p">(</span>a<span class="n">drydel</span><span class="o">+</span>i<span class="n">mix</span><span class="o">*</span>a<span class="n">wet2</span><span class="p">)</span> <span class="c1">; Mix wet &amp; dry signals</span>
-
+<span class="k">if</span> <span class="p">(</span>i<span class="n">chnls</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="k">then</span>					<span class="c1">; if mono</span>
+	a<span class="n">dry</span>    <span class="nb">soundin</span> <span class="s">"fox.wav"</span>               <span class="c1">; input (dry) audio</span>
+	a<span class="n">wet</span>    <span class="nb">convolve</span> a<span class="n">dry</span><span class="p">,</span><span class="s">"rv_mono.con"</span>	<span class="c1">; mono convolved (wet) audio</span>
+	a<span class="n">wet1</span>   <span class="nb">diff</span>    a<span class="n">wet</span>                    <span class="c1">; brighten sound</span>
+	a<span class="n">wet2</span>	<span class="o">=</span>	a<span class="n">wet1</span>						<span class="c1">; as it is a mono file played stereo</span>
+	a<span class="n">drydel</span> <span class="nb">delay</span>   <span class="p">(</span><span class="mi">1</span><span class="o">-</span>i<span class="n">mix</span><span class="p">)</span><span class="o">*</span>a<span class="n">dry</span><span class="p">,</span> i<span class="n">del</span>	<span class="c1">; Delay dry signal to align it with convolved signal</span>
+<span class="k">else</span>									<span class="c1">; if stereo</span>
+	a<span class="n">dry</span>    <span class="nb">soundin</span> <span class="s">"fox.wav"</span>               <span class="c1">; input (dry) audio</span>
+	a<span class="n">wet1</span><span class="p">,</span> a<span class="n">wet2</span> <span class="nb">convolve</span> a<span class="n">dry</span><span class="p">,</span><span class="s">"rv_stereo.con"</span> <span class="c1">; stereo convolved (wet) audio</span>
+	a<span class="n">wet1</span>   <span class="nb">diff</span>    a<span class="n">wet1</span>                   <span class="c1">; brighten left sound</span>
+	a<span class="n">wet2</span>   <span class="nb">diff</span>    a<span class="n">wet2</span>                   <span class="c1">; and brighten right sound</span>
+	a<span class="n">drydel</span> <span class="nb">delay</span>   <span class="p">(</span><span class="mi">1</span><span class="o">-</span>i<span class="n">mix</span><span class="p">)</span><span class="o">*</span>a<span class="n">dry</span><span class="p">,</span> i<span class="n">del</span>     <span class="c1">; Delay dry signal to align it with convolved signal</span>
 <span class="k">endif</span>
+<span class="nb">outs</span>    i<span class="n">vol</span><span class="o">*</span><span class="p">(</span>a<span class="n">drydel</span><span class="o">+</span>i<span class="n">mix</span><span class="o">*</span>a<span class="n">wet1</span><span class="p">),</span>i<span class="n">vol</span><span class="o">*</span><span class="p">(</span>a<span class="n">drydel</span><span class="o">+</span>i<span class="n">mix</span><span class="o">*</span>a<span class="n">wet2</span><span class="p">)</span> <span class="c1">; Mix wet &amp; dry signals</span>
 
 <span class="kd">endin</span>
 
@@ -237,7 +230,6 @@ a<span class="n">drydel</span> <span class="nb">delay</span>   <span class="p">(
 
 <span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">4</span> <span class="s">"rv_mono.wav"</span>
 <span class="nb">i</span> <span class="mi">1</span> <span class="mi">5</span> <span class="mi">4</span> <span class="s">"rv_stereo.wav"</span>
-
 <span class="nb">e</span>
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
@@ -249,14 +241,14 @@ a<span class="n">drydel</span> <span class="nb">delay</span>   <span class="p">(
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm45699"></a>
+        <a id="idm45734"></a>
         <h2>See also</h2>
         <p>
       <a class="link" href="pconvolve.html" title="pconvolve"><em class="citetitle">pconvolve</em></a>, <a class="link" href="dconv.html" title="dconv"><em class="citetitle">dconv</em></a>, <a class="link" href="cvanal.html" title="cvanal"><em class="citetitle">cvanal</em></a>.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm45708"></a>
+        <a id="idm45743"></a>
         <h2>Credits</h2>
         <p>Author: Greg Sullivan</p>
         <p>1996</p>

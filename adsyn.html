@@ -118,26 +118,35 @@
 <span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
 <span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
 <span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="vg">0dbfs</span> <span class="o">=</span>  <span class="mi">1</span>
 
-<span class="kd">instr</span> <span class="nf">1</span>
-<span class="c1">; analyze the file "kickroll.wav" first</span>
-k<span class="n">amod</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="c1">; by Menno Knevel - 2021</span>
+
+i<span class="n">res</span> <span class="nb">system_i</span> <span class="mi">1</span><span class="p">,</span><span class="s">{{ hetro -f100 -h100 stereoJungle.wav Jungle.het }}</span> <span class="c1">; start at 100 Hz, harmonics up to 10kHz</span>
+
+<span class="kd">instr</span> <span class="nf">1</span>         <span class="c1">; play original sample</span>
+a<span class="n">L</span><span class="p">,</span>a<span class="n">R</span>    <span class="nb">diskin</span>  <span class="s">"stereoJungle.wav"</span><span class="p">,</span> <span class="mi">1</span>
+        <span class="nb">outs</span>    a<span class="n">L</span><span class="p">,</span> a<span class="n">R</span>
+<span class="kd">endin</span>
+
+<span class="kd">instr</span> <span class="nf">2</span>
+k<span class="n">amod</span> <span class="o">=</span> <span class="mi">3</span>       <span class="c1">; scale amplitude</span>
 k<span class="n">fmod</span> <span class="o">=</span> <span class="vi">p4</span>
 k<span class="n">smod</span> <span class="o">=</span> <span class="vi">p5</span>
-
-a<span class="n">sig</span>	<span class="nb">adsyn</span>	k<span class="n">amod</span><span class="p">,</span> k<span class="n">fmod</span><span class="p">,</span> k<span class="n">smod</span><span class="p">,</span> <span class="s">"kickroll.het"</span>
-	<span class="nb">outs</span>	a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
+a<span class="n">sig</span>	<span class="nb">adsyn</span>	k<span class="n">amod</span><span class="p">,</span> k<span class="n">fmod</span><span class="p">,</span> k<span class="n">smod</span><span class="p">,</span> <span class="s">"Jungle.het"</span>
+        <span class="nb">outs</span>	a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
 <span class="kd">endin</span>
 
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
-
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">4</span>  <span class="mi">1</span> <span class="mf">.2</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span>  <span class="mi">2</span>  <span class="mi">1</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="mf">.3</span> <span class="mf">1.5</span>
+<span class="nb">s</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">7</span>                  <span class="c1">; original sample</span>
+<span class="nb">s</span>
+<span class="c1">;           frqmod speed</span>
+<span class="nb">i</span><span class="mi">2</span> <span class="mi">0</span>  <span class="mi">20</span>      <span class="mi">1</span>    <span class="mf">.2</span>   <span class="c1">; 5 x slower</span>
+<span class="nb">i</span><span class="mi">2</span> <span class="mi">20</span> <span class="mi">5</span>       <span class="mi">2</span>     <span class="mi">1</span>   <span class="c1">; 2 x higher</span>
+<span class="nb">i</span><span class="mi">2</span> <span class="mi">25</span> <span class="mi">15</span>     <span class="mf">.3</span>    <span class="mf">1.5</span>  <span class="c1">; lower &amp; faster</span>
 <span class="nb">e</span>
-
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>

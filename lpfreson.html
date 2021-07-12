@@ -39,19 +39,19 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm130540"></a>
+        <a id="idm130575"></a>
         <h2>Description</h2>
         <p>
       Resynthesises a signal from the data passed internally by a previous <span class="emphasis"><em>lpread</em></span>, applying formant shifting.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm130544"></a>
+        <a id="idm130579"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ares <span class="command"><strong>lpfreson</strong></span> asig, kfrqratio</pre>
       </div>
       <div class="refsect1">
-        <a id="idm130548"></a>
+        <a id="idm130583"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>asig</em></span> -- an audio driving function for resynthesis.
@@ -70,25 +70,25 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm130586"></a>
+        <a id="idm130621"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the lpfreson opcode. It uses the file <a class="ulink" href="examples/lpfreson.csd" target="_top"><em class="citetitle">lpfreson.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm130591"></a>
+          <a id="idm130626"></a>
           <p class="title">
             <strong>Example 540. Example of the lpfreson opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm130598"></a>
+              <a id="idm130633"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
--odac     <span class="c1">;;;realtime audio out</span>
+-odac  --limiter=0.95   <span class="c1">;;;realtime audio out, limit loud pops</span>
 <span class="c1">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</span>
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o lpfreson.wav -W ;;; for file output any platform</span>
@@ -99,29 +99,37 @@
 <span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
 <span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
-<span class="c1">;do not use -a option when analyzing "fox.wav" with lpfreson,</span>
+
+<span class="c1">; by Menno Knevel - 2021</span>
+<span class="c1">;do not use -a option when analyzing "fox.wav" with lpfreson as</span>
 <span class="c1">;it needs a filter coefficient type of file</span>
+i<span class="n">res</span>  <span class="nb">system_i</span> <span class="mi">1</span><span class="p">,</span><span class="s">{{ lpanal -p50 -h200 -P50  -Q15000 -v1 fox.wav fox_coef.lpc }}</span>
+
 <span class="kd">instr</span> <span class="nf">1</span>
 
-i<span class="n">len</span>  <span class="nb">filelen</span> <span class="s">"fox.wav"</span>	<span class="c1">; length of soundfile</span>
+i<span class="n">len</span>  <span class="nb">filelen</span> <span class="s">"fox.wav"</span>	                  <span class="c1">; length of soundfile</span>
 <span class="nb">prints</span> <span class="s">"fox.wav = </span><span class="si">%f</span><span class="s"> seconds</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span>i<span class="n">len</span>
+a<span class="n">ref</span>  <span class="nb">diskin</span> <span class="s">"fox.wav"</span><span class="p">,</span> <span class="mi">1</span>                 <span class="c1">; don't play this, but use this as an amplitude reference</span>
 
 k<span class="n">time</span> <span class="nb">line</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="vi">p4</span>
-k<span class="n">rmsr</span><span class="p">,</span>k<span class="n">rmso</span><span class="p">,</span>k<span class="n">err</span><span class="p">,</span>k<span class="n">cps</span> <span class="nb">lpread</span> k<span class="n">time</span><span class="p">,</span><span class="s">"fox_nopoles.lpc"</span>
-k<span class="n">rmso</span> <span class="o">=</span> k<span class="n">rmso</span><span class="o">*</span><span class="mf">.00001</span>			<span class="c1">; low volume</span>
+k<span class="n">rmsr</span><span class="p">,</span>k<span class="n">rmso</span><span class="p">,</span>k<span class="n">err</span><span class="p">,</span>k<span class="n">cps</span> <span class="nb">lpread</span> k<span class="n">time</span><span class="p">,</span><span class="s">"fox_coef.lpc"</span>
+k<span class="n">rmso</span> <span class="o">*=</span> <span class="mf">.000007</span>			              <span class="c1">; scale amplitude</span>
 a<span class="n">sig</span>  <span class="nb">buzz</span> k<span class="n">rmso</span><span class="p">,</span> k<span class="n">cps</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="vg">sr</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span>k<span class="n">cps</span><span class="p">),</span> <span class="mi">1</span> <span class="c1">; max harmonics without aliasing</span>
-a<span class="n">out</span>  <span class="nb">lpfreson</span> a<span class="n">sig</span><span class="p">,</span> <span class="mf">1.2</span>
-a<span class="n">sig</span>  <span class="nb">clip</span> a<span class="n">out</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>			<span class="c1">; prevents distortion</span>
-      <span class="nb">outs</span> a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
+a<span class="n">out</span>  <span class="nb">lpfreson</span> a<span class="n">sig</span><span class="p">,</span> <span class="vi">p5</span>                   <span class="c1">; Pole file not supported!!</span>
+a<span class="n">bal</span>  <span class="nb">balance2</span> a<span class="n">out</span><span class="p">,</span> a<span class="n">ref</span>                 <span class="c1">; use amplitude of diskin as reference       </span>
+      <span class="nb">outs</span> a<span class="n">bal</span><span class="p">,</span> a<span class="n">bal</span>
 
 <span class="kd">endin</span>
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
 <span class="c1">; sine</span>
 <span class="nb">f</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">4096</span> <span class="mi">10</span> <span class="mi">1</span>
+<span class="c1">;          dur    ratio</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mf">2.8</span>   <span class="mi">1</span>       <span class="mi">1</span>   <span class="c1">; first words   </span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">4</span> <span class="mf">2.8</span>   <span class="mi">1</span>       <span class="mf">.5</span>  <span class="c1">; same, but lower ratio</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">8</span> <span class="mf">2.8</span>   <span class="mf">2.756</span>   <span class="mi">1</span>   <span class="c1">; whole sentence</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">12</span> <span class="mf">2.8</span>  <span class="mf">2.756</span>   <span class="mi">2</span>   <span class="c1">; same, but higher ratio</span>
 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mf">2.8</span> <span class="mi">1</span>	<span class="c1">; first words only</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">4</span> <span class="mf">2.8</span> <span class="mf">2.8</span>	<span class="c1">; whole sentence</span>
 <span class="nb">e</span>
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
@@ -130,16 +138,10 @@ a<span class="n">sig</span>  <span class="nb">clip</span> a<span class="n">out</
           </div>
         </div>
         <p><br class="example-break" />
-      The audio file <span class="quote">“<span class="quote">fox.wav</span>”</span> is 2.8 seconds long. So <span class="emphasis"><em>filelen</em></span>'s output should be a line like this:
-      </p>
-        <pre class="screen">
-fox.wav = 2.756667 seconds
-      </pre>
-        <p>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm130722"></a>
+        <a id="idm130780"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="lpread.html" title="lpread"><em class="citetitle">lpread</em></a>,
