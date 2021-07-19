@@ -3,11 +3,14 @@
 -odac -d -m1
 </CsOptions>
 <CsInstruments>
-;example by joachim heintz
+;example by joachim heintz (& Menno Knevel)
 sr = 44100
 ksmps = 32
 nchnls = 2
-0dbfs = 1
+0dbfs  = 1
+
+;ATSA wants a mono file!
+ires system_i 1,{{ atsa -h.1 -c1 fox.wav fox.ats }} ; only 1 cycle and small hop size
 
 instr AllTheNoise
 Sfile    =        "fox.ats"
