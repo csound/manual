@@ -3,11 +3,14 @@
 -odac -d -m1
 </CsOptions>
 <CsInstruments>
-;example by joachim heintz
+;example by joachim heintz (& Menno Knevel)
 sr = 44100
 ksmps = 32
 nchnls = 2
 0dbfs = 1
+
+;ATSA wants a mono file!
+ires system_i 1,{{ atsa -h.1 -c2 fox.wav fox.ats }} ; only 2 cycles and small hop size
 
 giSine    ftgen     0, 0, 1024, 10, 1
 
