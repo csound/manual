@@ -8,23 +8,26 @@
 </CsOptions>
 <CsInstruments>
 
+; by Menno Knevel - 2021
+
 sr = 44100
 ksmps = 32
 nchnls = 2
-0dbfs = 1
+0dbfs  = 1
 
-instr 1	; "beats.ats" is created by atsa
+;ATSA wants a mono file!
+ires system_i 1,{{ atsa beats.wav beats.ats }} ; default size
 
-ktime	line     0, p3, 2
-asig	ATSaddnz ktime, "cage.ats", 1, 24
-	outs	asig*10, asig*10	;amplify
+instr 1	
+
+ktime	line     0, p3, p3
+asig	ATSaddnz ktime, "beats.ats", 1, 4   ; only 1 noise band, the 4th noise band
+	outs	asig*6, asig*6	;amplify
 endin
 
 </CsInstruments>
 <CsScore>
-
-i 1 0 2 
+i1 0 2 
 e
-
 </CsScore>
 </CsoundSynthesizer>
