@@ -38,38 +38,38 @@
                     </p>
       </div>
       <div class="refsect1">
-        <a id="idm29277"></a>
+        <a id="idm29330"></a>
         <h2>Description</h2>
         <p>
             <span class="emphasis"><em>ATSinterpread</em></span> allows a user to determine the frequency envelope of any <a class="link" href="ATSbufread.html" title="ATSbufread"><em class="citetitle">ATSbufread</em></a>.
         </p>
       </div>
       <div class="refsect1">
-        <a id="idm29283"></a>
+        <a id="idm29336"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">kamp <span class="command"><strong>ATSinterpread</strong></span> kfreq</pre>
       </div>
       <div class="refsect1">
-        <a id="idm29287"></a>
+        <a id="idm29340"></a>
         <h2>Performance</h2>
         <p><span class="emphasis"><em>kfreq</em></span> - a frequency value (given in Hertz) used by <span class="emphasis"><em>ATSinterpread</em></span> as in index into the table produced by an <a class="link" href="ATSbufread.html" title="ATSbufread"><em class="citetitle">ATSbufread</em></a>.</p>
         <p><span class="emphasis"><em>ATSinterpread</em></span> takes a frequency value (<span class="emphasis"><em>kfreq</em></span> in Hz). This frequency is used to index the data of an <a class="link" href="ATSbufread.html" title="ATSbufread"><em class="citetitle">ATSbufread</em></a>. The return value is an amplitude gained from the <a class="link" href="ATSbufread.html" title="ATSbufread"><em class="citetitle">ATSbufread</em></a>  after interpolation. <span class="emphasis"><em>ATSinterpread</em></span> allows a user to determine the frequency envelope of any <a class="link" href="ATSbufread.html" title="ATSbufread"><em class="citetitle">ATSbufread</em></a>. This data could be useful for an number of reasons, one might be performing cross synthesis of data from an ATS file and non ATS data.</p>
       </div>
       <div class="refsect1">
-        <a id="idm29304"></a>
+        <a id="idm29357"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the ATSinterpread opcode. It uses the file <a class="ulink" href="examples/ATSinterpread.csd" target="_top"><em class="citetitle">ATSinterpread.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm29309"></a>
+          <a id="idm29362"></a>
           <p class="title">
             <strong>Example 72. Example of the ATSinterpread opcode.</strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
-              <a id="idm29311"></a>
+              <a id="idm29364"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -84,26 +84,34 @@
 <span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
 <span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
 <span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
-<span class="kd">instr</span> <span class="nf">1</span>	<span class="c1">; "beats.ats" is created by atsa</span>
+<span class="c1">; by Menno Knevel - 2021</span>
 
-k<span class="n">time</span>	<span class="nb">line</span>	<span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mf">1.8</span>
-	<span class="nb">ATSbufread</span> k<span class="n">time</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"beats.ats"</span><span class="p">,</span> <span class="mi">42</span>
-k<span class="n">amp</span>	<span class="nb">ATSinterpread</span> 	<span class="vi">p4</span>
-a<span class="n">osc</span>	<span class="nb">oscili</span>	k<span class="n">amp</span><span class="p">,</span> <span class="vi">p4</span><span class="p">,</span> <span class="mi">1</span>
-	<span class="nb">outs</span>	a<span class="n">osc</span> <span class="o">*</span> <span class="mi">25</span><span class="p">,</span> a<span class="n">osc</span> <span class="o">*</span><span class="mi">25</span>
+i<span class="n">res</span> <span class="nb">system_i</span> <span class="mi">1</span><span class="p">,</span><span class="s">{{ atsa fox.wav fox.ats }}</span> <span class="c1">; ATSA wants a mono file!</span>
+
+<span class="kd">instr</span> <span class="nf">1</span>	
+
+k<span class="n">time</span>	<span class="nb">line</span>	<span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mf">2.65</span>
+	<span class="nb">ATSbufread</span> k<span class="n">time</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"fox.ats"</span><span class="p">,</span> <span class="vi">p4</span>
+k<span class="n">amp</span>	<span class="nb">ATSinterpread</span> 	<span class="vi">p5</span>  <span class="c1">; get envelope from partial</span>
+a<span class="n">osc</span>	<span class="nb">poscil3</span>	k<span class="n">amp</span><span class="p">,</span> <span class="vi">p5</span>
+	<span class="nb">outs</span>	a<span class="n">osc</span> <span class="o">*</span> <span class="mi">8</span><span class="p">,</span> a<span class="n">osc</span> <span class="o">*</span> <span class="mi">8</span>
 
 <span class="kd">endin</span>
 
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
-<span class="c1">; sine wave.</span>
-<span class="nb">f</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">16384</span> <span class="mi">10</span> <span class="mi">1</span>
-
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">2</span> <span class="mi">100</span>
+<span class="c1">;              partial     index         </span>
+<span class="nb">s</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mf">2.65</span>      <span class="mi">12</span>          <span class="mi">1000</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">3</span> <span class="mf">2.65</span>      <span class="mi">12</span>          <span class="mi">150</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">6</span> <span class="mf">2.65</span>      <span class="mi">12</span>          <span class="mi">10000</span>
+<span class="nb">s</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mf">2.65</span>      <span class="mi">72</span>          <span class="mi">1000</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">3</span> <span class="mf">2.65</span>      <span class="mi">72</span>          <span class="mi">150</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">6</span> <span class="mf">2.65</span>      <span class="mi">72</span>          <span class="mi">10000</span>
 <span class="nb">e</span>
-
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
@@ -113,11 +121,11 @@ a<span class="n">osc</span>	<span class="nb">oscili</span>	k<span class="n">amp<
         <p><br class="example-break" />
     </p>
         <p>
-            This example shows how to use <span class="emphasis"><em>ATSinterpread</em></span>. Here a frequency is given by the score (p4) and this frequency is given to an <span class="emphasis"><em>ATSinterpread</em></span> (with a corresponding <a class="link" href="ATSbufread.html" title="ATSbufread"><em class="citetitle">ATSbufread</em></a>). The <span class="emphasis"><em>ATSinterpread</em></span> uses this frequency to output a corresponding amplitude value, based on the atsfile given by the <a class="link" href="ATSbufread.html" title="ATSbufread"><em class="citetitle">ATSbufread</em></a> (beats.ats in this case). We then use that amplitude to scale a sine-wave that is synthesized with the same frequency (p4). You could extend this to include multiple sine-waves. This way you could synthesize any reasonable frequency (within the low and high frequencies of the indicated ATS file), and maintain the shape (in frequency) of the indicated atsfile (given by the <a class="link" href="ATSbufread.html" title="ATSbufread"><em class="citetitle">ATSbufread</em></a>).
+            This example shows how to use <span class="emphasis"><em>ATSinterpread</em></span>. Here a frequency is given by the score (p5) and this frequency is given to an <span class="emphasis"><em>ATSinterpread</em></span> (with a corresponding <a class="link" href="ATSbufread.html" title="ATSbufread"><em class="citetitle">ATSbufread</em></a>). The <span class="emphasis"><em>ATSinterpread</em></span> uses this frequency to output a corresponding amplitude value, based on the atsfile given by the <a class="link" href="ATSbufread.html" title="ATSbufread"><em class="citetitle">ATSbufread</em></a> (beats.ats in this case). We then use that amplitude to scale a sine-wave that is synthesized with the same frequency (p5). You could extend this to include multiple sine-waves. This way you could synthesize any reasonable frequency (within the low and high frequencies of the indicated ATS file), and maintain the shape (in frequency) of the indicated atsfile (given by the <a class="link" href="ATSbufread.html" title="ATSbufread"><em class="citetitle">ATSbufread</em></a>).
         </p>
       </div>
       <div class="refsect1">
-        <a id="idm29398"></a>
+        <a id="idm29483"></a>
         <h2>See also</h2>
         <p><a class="link" href="ATSread.html" title="ATSread"><em class="citetitle">ATSread</em></a>, 
             <a class="link" href="ATSreadnz.html" title="ATSreadnz"><em class="citetitle">ATSreadnz</em></a>, 
@@ -130,7 +138,7 @@ a<span class="n">osc</span>	<span class="nb">oscili</span>	k<span class="n">amp<
             <a class="link" href="ATSaddnz.html" title="ATSaddnz"><em class="citetitle">ATSaddnz</em></a></p>
       </div>
       <div class="refsect1">
-        <a id="idm29419"></a>
+        <a id="idm29504"></a>
         <h2>Credits</h2>
         <p>
             </p>

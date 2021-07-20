@@ -38,19 +38,19 @@
         </p>
       </div>
       <div class="refsect1">
-        <a id="idm29436"></a>
+        <a id="idm29521"></a>
         <h2>Description</h2>
         <p>
             <span class="emphasis"><em>ATSread</em></span> returns the amplitude (<span class="emphasis"><em>kamp</em></span>) and frequency (<span class="emphasis"><em>kfreq</em></span>) information of a user specified partial contained in the ATS analysis file at the time indicated by the time pointer <span class="emphasis"><em>ktimepnt</em></span>.
         </p>
       </div>
       <div class="refsect1">
-        <a id="idm29443"></a>
+        <a id="idm29528"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">kfreq, kamp <span class="command"><strong>ATSread</strong></span> ktimepnt, iatsfile, ipartial</pre>
       </div>
       <div class="refsect1">
-        <a id="idm29447"></a>
+        <a id="idm29532"></a>
         <h2>Initialization</h2>
         <p>
             <span class="emphasis"><em>iatsfile</em></span> – the ATS number (n in ats.n) or the name in quotes of the analysis file made using <a class="ulink" href="http://www-ccrma.stanford.edu/~juan/ATS.html" target="_top"><em class="citetitle">ATS</em></a>.
@@ -60,7 +60,7 @@
         </p>
       </div>
       <div class="refsect1">
-        <a id="idm29455"></a>
+        <a id="idm29540"></a>
         <h2>Performance</h2>
         <p>
             <span class="emphasis"><em>kfreq, kamp</em></span> - outputs of the <span class="emphasis"><em>ATSread</em></span> unit. These values represent the frequency and amplitude of a specific partial selected by the user using <span class="emphasis"><em>ipartial</em></span>. The partials' informations are derived from an ATS analysis. <span class="emphasis"><em>ATSread</em></span> linearly interpolates the frequency and amplitude between frames in the ATS analysis file at k-rate. The output is dependent on the data in the analysis file and the pointer <span class="emphasis"><em>ktimepnt</em></span>.
@@ -68,20 +68,19 @@
         <p><span class="emphasis"><em>ktimepnt</em></span> – The time pointer in seconds used to index the ATS file. Used for <span class="emphasis"><em>ATSread</em></span> exactly the same as for <a class="link" href="pvoc.html" title="pvoc"><em class="citetitle">pvoc</em></a> and <a class="link" href="ATSadd.html" title="ATSadd"><em class="citetitle">ATSadd</em></a>.</p>
       </div>
       <div class="refsect1">
-        <a id="idm29470"></a>
+        <a id="idm29555"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the ATSread opcode. It uses the file <a class="ulink" href="examples/ATSread.csd" target="_top"><em class="citetitle">ATSread.csd</em></a>.
-
       </p>
         <div class="example">
-          <a id="idm29475"></a>
+          <a id="idm29560"></a>
           <p class="title">
             <strong>Example 73. Example of the ATSread opcode.</strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
-              <a id="idm29477"></a>
+              <a id="idm29562"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -96,25 +95,30 @@
 <span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
 <span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
 <span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
-<span class="kd">instr</span> <span class="nf">1</span>	<span class="c1">; "beats.ats" is created by atsa</span>
+<span class="c1">; by Menno Knevel - 2021</span>
+
+i<span class="n">res</span> <span class="nb">system_i</span> <span class="mi">1</span><span class="p">,</span><span class="s">{{ atsa fox.wav fox.ats }}</span> <span class="c1">; default settings</span>
+
+<span class="kd">instr</span> <span class="nf">1</span>	
 
 k<span class="n">time</span>	<span class="nb">line</span>    <span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">2</span>
-k<span class="n">freq</span><span class="p">,</span> k<span class="n">amp</span>	<span class="nb">ATSread</span>  k<span class="n">time</span><span class="p">,</span> <span class="s">"beats.ats"</span><span class="p">,</span> <span class="mi">100</span>
+k<span class="n">freq</span><span class="p">,</span> k<span class="n">amp</span>	<span class="nb">ATSread</span>  k<span class="n">time</span><span class="p">,</span> <span class="s">"beats.ats"</span><span class="p">,</span> <span class="mi">10</span> <span class="c1">; take the 10th partial</span>
+a<span class="n">env</span>    <span class="nb">linen</span>   <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mf">.1</span>    <span class="c1">; envelope to avoid clicks</span>
 a<span class="n">out</span>	<span class="nb">oscili</span>  <span class="mf">0.8</span><span class="p">,</span> k<span class="n">freq</span><span class="p">,</span> <span class="mi">1</span>
-	<span class="nb">outs</span>	a<span class="n">out</span><span class="p">,</span> a<span class="n">out</span>
+	<span class="nb">outs</span>	a<span class="n">out</span> <span class="o">*</span> a<span class="n">env</span><span class="p">,</span> a<span class="n">out</span> <span class="o">*</span> a<span class="n">env</span>
  
 <span class="kd">endin</span>
 
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
-<span class="c1">;sine wave.</span>
-<span class="nb">f</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">16384</span> <span class="mi">10</span> <span class="mi">1</span>
+<span class="nb">f</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">16384</span> <span class="mi">10</span> <span class="mi">1</span> <span class="c1">;sine wave.</span>
 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">2</span> 
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span>         <span class="c1">; fast speed</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">2</span>         <span class="c1">; normal</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">5</span> <span class="mi">10</span>        <span class="c1">; 5x slower </span>
 <span class="nb">e</span>
-
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
@@ -124,20 +128,20 @@ a<span class="n">out</span>	<span class="nb">oscili</span>  <span class="mf">0.8
         <p><br class="example-break" />
     </p>
         <p>Here we are using <span class="emphasis"><em>ATSread</em></span> to get the
-      100th partial's frequency and amplitude data out of the
+      10th partial's frequency and amplitude data out of the
       'beats.ats' ATS analysis file. We are using that data to drive an oscillator, but we could use it for anything else that can take a k-rate input, like the bandwidth and resonance of a filter etc.
       </p>
         <p>
-      Here is another example of the ATSread opcode. It uses the file <a class="ulink" href="examples/ATSread-2.csd" target="_top"><em class="citetitle">ATSread-2.csd</em></a>.
+      Here is a musical example of the ATSread opcode. It uses the file <a class="ulink" href="examples/ATSread-musical.csd" target="_top"><em class="citetitle">ATSread-musical.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm29552"></a>
+          <a id="idm29669"></a>
           <p class="title">
             <strong>Example 74. Example 2 of the ATSread opcode.</strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
-              <a id="idm29554"></a>
+              <a id="idm29671"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -148,7 +152,9 @@ a<span class="n">out</span>	<span class="nb">oscili</span>  <span class="mf">0.8
 <span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
 <span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
 <span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+
+i<span class="n">res1</span> <span class="nb">system_i</span> <span class="mi">1</span><span class="p">,</span><span class="s">{{ atsa fox.wav fox.ats }}</span> <span class="c1">; default settings</span>
 
 gi<span class="n">Sine</span>    <span class="nb">ftgen</span>     <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>
 gS<span class="n">file</span>    <span class="o">=</span>         <span class="s">"fox.ats"</span>
@@ -265,7 +271,7 @@ k<span class="n">Count</span>    <span class="o">=</span>         <span class="m
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm30056"></a>
+        <a id="idm30179"></a>
         <h2>See also</h2>
         <p><a class="link" href="ATSreadnz.html" title="ATSreadnz"><em class="citetitle">ATSreadnz</em></a>, 
             <a class="link" href="ATSinfo.html" title="ATSinfo"><em class="citetitle">ATSinfo</em></a>, 
@@ -278,7 +284,7 @@ k<span class="n">Count</span>    <span class="o">=</span>         <span class="m
             <a class="link" href="ATSsinnoi.html" title="ATSsinnoi"><em class="citetitle">ATSsinnoi</em></a></p>
       </div>
       <div class="refsect1">
-        <a id="idm30077"></a>
+        <a id="idm30200"></a>
         <h2>Credits</h2>
         <p>
             </p>
