@@ -7,7 +7,9 @@
 sr = 44100
 ksmps = 32
 nchnls = 2
-0dbfs = 1
+0dbfs  = 1
+
+ires1 system_i 1,{{ atsa fox.wav fox.ats }} ; default settings
 
 giSine    ftgen     0, 0, 1024, 10, 1
 gSfile    =         "fox.ats"
