@@ -690,7 +690,7 @@ SRCS =  $(COMMAND) $(CONTROL) $(XMLS) $(MIDI) $(OPCODES) $(ORCH) $(SCORE) \
 all: html
 
 $(XSL_HTML) $(XSL_HTMLHELP) $(XSL_PRINT) $(XSL_HTML_ONECHUNK): %: %.in
-	[ -d "$(XSL_BASE_PATH)" ] || (  \
+	@ [ -d "$(XSL_BASE_PATH)" ] || (  \
 	 echo "The XSL_BASE_PATH variable must be set to the XSL stylesheets installation directory" ; \
 	 false )
 	sed -e 's|@xsl_base_path@|$(XSL_BASE_PATH)|' $@.in > $@
@@ -702,7 +702,7 @@ examples-xml/stamp: examples $(wildcard examples/*)
 
 html: $(XSL_HTML) manual.xml $(SRCS) Makefile
 	rm -rf html
-	echo "Remember to use the html-dist target for distribution!"
+	@ echo "Remember to use the html-dist target for distribution!"
 	-mkdir -p ${HTML_DIR}
 	xsltproc  --xinclude -o ${HTML_DIR}/ ${XSL_HTML} manual.xml
 	cp -R images ${HTML_DIR}/
@@ -713,7 +713,7 @@ html: $(XSL_HTML) manual.xml $(SRCS) Makefile
 	rm -rf ${HTML_DIR}/images/CVS
 	rm -rf ${HTML_DIR}/images/callouts/CVS
 	rm -rf ${HTML_DIR}/examples/CVS
-	echo "Remember to use the html-dist target for distribution!"
+	@ echo "Remember to use the html-dist target for distribution!"
 
 html-dist:
 	python quickref.py
