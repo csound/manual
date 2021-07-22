@@ -13,22 +13,24 @@ ksmps = 32
 nchnls = 2
 0dbfs = 1
 
-instr 1	; "beats.ats" is created by atsa
+; by Menno Knevel - 2021
+
+ires system_i 1,{{ atsa beats.wav beats.ats }} ; default settings
+
+instr 1	
 
 ktime	line	0, p3, 2
-kenergy	ATSreadnz ktime, "beats.ats", 2
-anoise	randi	kenergy, 500
-aout	oscili	0.005, 455, 1
-aout	=	aout * anoise
-	outs	aout, aout 
+kenergy	ATSreadnz ktime, "beats.ats", p4 ; return energy from band p4
+anoise	randi	kenergy, 1500          
+	outs	anoise *.7, anoise *.7
 endin
 
 </CsInstruments>
 <CsScore>
-; cosine wave
-f 1 0 16384 11 1 1
-
-i 1 0 2 
+;           band
+i 1 0 2      6  ; 3 different energy bands
+i 1 3 2      12 
+i 1 6 2      17 
 e
 
 </CsScore>
