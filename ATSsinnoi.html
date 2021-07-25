@@ -87,7 +87,7 @@
         <p>Here we synthesize both the noise and the sinewaves (all 42 partials) contained in "beats.ats" together. The relative volumes of the noise and the partials are unaltered (each set to 1).
         </p>
         <p>
-      Here is another example of the ATSsinnoi opcode. It uses the file <a class="ulink" href="examples/ATSsinnoi.csd" target="_top"><em class="citetitle">ATSsinnoi.csd</em></a>.
+      Here is a complete example of the ATSsinnoi opcode. It uses the file <a class="ulink" href="examples/ATSsinnoi.csd" target="_top"><em class="citetitle">ATSsinnoi.csd</em></a>.
       </p>
         <div class="example">
           <a id="idm30670"></a>
@@ -108,25 +108,39 @@
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span>
 
+<span class="c1">; by Menno Knevel - 2021</span>
+
 <span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
 <span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
 <span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
-<span class="kd">instr</span> <span class="nf">1</span>	<span class="c1">; "beats.ats" is created by atsa</span>
+i<span class="n">res1</span> <span class="nb">system_i</span> <span class="mi">1</span><span class="p">,</span><span class="s">{{ atsa -h.5 -c1 beats.wav beats1.ats }}</span>
+i<span class="n">res2</span> <span class="nb">system_i</span> <span class="mi">1</span><span class="p">,</span><span class="s">{{ atsa  beats.wav beats2.ats }}</span> <span class="c1">; default settings -h.25 -c4</span>
+ 
+
+<span class="kd">instr</span> <span class="nf">1</span>	
 
 k<span class="n">time</span>	<span class="nb">line</span>	<span class="mi">0</span><span class="p">,</span>  <span class="vi">p3</span><span class="p">,</span> <span class="mi">2</span>
-k<span class="n">nzfade</span>	<span class="nb">expon</span>	<span class="mf">0.001</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">2</span>
-a<span class="n">out</span>	<span class="nb">ATSsinnoi</span> 	k<span class="n">time</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> k<span class="n">nzfade</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"beats.ats"</span><span class="p">,</span> <span class="mi">150</span>
-	<span class="nb">outs</span>	a<span class="n">out</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> a<span class="n">out</span><span class="o">*</span><span class="mi">2</span>		<span class="c1">;amplify some more</span>
+
+a<span class="n">out</span>	<span class="nb">ATSsinnoi</span> 	k<span class="n">time</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="vi">p4</span><span class="p">,</span> <span class="vi">p5</span>
+	<span class="nb">outs</span>	a<span class="n">out</span><span class="o">*</span><span class="mf">.4</span><span class="p">,</span> a<span class="n">out</span><span class="o">*</span><span class="mf">.4</span>		
 <span class="kd">endin</span>
 
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
+<span class="nb">s</span>
+<span class="c1">;			atsfile		partial</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">2</span> <span class="s">"beats1.ats"</span>		<span class="mi">3</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">3</span> <span class="mi">2</span> <span class="s">"beats2.ats"</span>		<span class="mi">3</span>
+<span class="nb">s</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">2</span> <span class="s">"beats1.ats"</span>		<span class="mi">13</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">3</span> <span class="mi">2</span> <span class="s">"beats2.ats"</span>		<span class="mi">13</span>
+<span class="nb">s</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">2</span> <span class="s">"beats1.ats"</span>		<span class="mi">30</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">3</span> <span class="mi">2</span> <span class="s">"beats2.ats"</span>		<span class="mi">30</span>
 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">2</span> 
 <span class="nb">e</span>
-
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
@@ -134,30 +148,30 @@ a<span class="n">out</span>	<span class="nb">ATSsinnoi</span> 	k<span class="n">
           </div>
         </div>
         <br class="example-break" />
-        <p>This example here is like the other example except that we use an envelope to control <span class="emphasis"><em>knzlev</em></span> (the noise level). The result of this will be the "beats.wav" sound that has its noise component fade in over the duration of the note.
-        </p>
         <p>
-      Here is another example of the ATSsinnoi opcode. It uses the file <a class="ulink" href="examples/ATSsinnoi-2.csd" target="_top"><em class="citetitle">ATSsinnoi-2.csd</em></a>.
+      Here is another complete example of the ATSsinnoi opcode. It uses the file <a class="ulink" href="examples/ATSsinnoi-2.csd" target="_top"><em class="citetitle">ATSsinnoi-2.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm30749"></a>
+          <a id="idm30786"></a>
           <p class="title">
             <strong>Example 78. Example 2 of the ATSsinnoi opcode.</strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
-              <a id="idm30751"></a>
+              <a id="idm30788"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 -odac -d -m128
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span>
-<span class="c1">;example by joachim heintz</span>
+<span class="c1">;example by joachim heintz (&amp; Menno Knevel)</span>
 <span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
 <span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
 <span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
+
+i<span class="n">res</span> <span class="nb">system_i</span> <span class="mi">1</span><span class="p">,</span><span class="s">{{ atsa fox.wav fox.ats }}</span> <span class="c1">; default settings</span>
 
 gi<span class="n">Sine</span>    <span class="nb">ftgen</span>     <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>
 gS<span class="n">file</span>    <span class="o">=</span>         <span class="s">"fox.ats"</span>
@@ -189,8 +203,8 @@ i<span class="n">Speed</span>    <span class="o">=</span>         <span class="v
 <span class="vi">p3</span>        <span class="o">=</span>         gi<span class="n">Dur</span><span class="o">/</span>i<span class="n">Speed</span>
 k<span class="n">time</span>     <span class="nb">line</span>      <span class="mi">0</span><span class="p">,</span> gi<span class="n">Dur</span><span class="o">/</span>i<span class="n">Speed</span><span class="p">,</span> gi<span class="n">Dur</span>
           <span class="nb">prints</span>    <span class="s">"Resynthesizing partials </span><span class="si">%d</span><span class="s"> to </span><span class="si">%d</span><span class="s"> with related noise.</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> i<span class="n">Offset</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> i<span class="n">Offset</span><span class="o">+</span><span class="mi">10</span>
-a<span class="n">Out</span>      <span class="nb">ATSsinnoi</span> k<span class="n">time</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> gS<span class="n">file</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> i<span class="n">Offset</span><span class="p">,</span> <span class="mi">1</span>
-          <span class="nb">outs</span>      a<span class="n">Out</span><span class="p">,</span> a<span class="n">Out</span>
+a<span class="n">Out</span>      <span class="nb">ATSsinnoi</span> k<span class="n">time</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">.3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> gS<span class="n">file</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> i<span class="n">Offset</span><span class="p">,</span> <span class="mi">1</span> <span class="c1">; a bit less noise (.3)</span>
+          <span class="nb">outs</span>      a<span class="n">Out</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> a<span class="n">Out</span>    <span class="c1">; left channel a bit louder</span>
 <span class="c1">;call itself again</span>
  <span class="k">if</span> i<span class="n">Offset</span> <span class="o">&lt;</span> gi<span class="n">NumParts</span> <span class="o">-</span> <span class="mi">20</span> <span class="k">then</span>
           <span class="nb">event_i</span>   <span class="s">"i"</span><span class="p">,</span> <span class="s">"PlayBand"</span><span class="p">,</span> gi<span class="n">Dur</span><span class="o">/</span>i<span class="n">Speed</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> i<span class="n">Offset</span><span class="o">+</span><span class="mi">10</span><span class="p">,</span> i<span class="n">Speed</span>
@@ -208,17 +222,13 @@ k<span class="n">Trig</span>     <span class="nb">metro</span>     <span class="
 k<span class="n">End</span>      <span class="nb">max_k</span>     a<span class="n">End</span><span class="p">,</span> k<span class="n">Trig</span><span class="p">,</span> <span class="mi">1</span> <span class="c1">;1 if phasor signal crosses zero</span>
 k<span class="n">time</span>     <span class="nb">downsamp</span>  a<span class="n">time</span>
 a<span class="n">Out</span>      <span class="nb">ATSsinnoi</span> k<span class="n">time</span><span class="o">*</span>gi<span class="n">Dur</span><span class="p">,</span> k<span class="n">SinAmnt</span><span class="p">,</span> k<span class="n">NzAmnt</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> gS<span class="n">file</span><span class="p">,</span> gi<span class="n">NumParts</span>
-          <span class="nb">outs</span>      a<span class="n">Out</span><span class="p">,</span> a<span class="n">Out</span>
+          <span class="nb">outs</span>      a<span class="n">Out</span><span class="o">*</span><span class="mf">.6</span><span class="p">,</span> a<span class="n">Out</span>   <span class="c1">; pan a bit to the right</span>
   <span class="c1">;exit if file is at the end </span>
-  <span class="k">if</span> k<span class="n">End</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">then</span>
-          <span class="nb">event</span>     <span class="s">"i"</span><span class="p">,</span> <span class="s">"End"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
-  <span class="k">endif</span>
-  <span class="kd">endin</span>
+<span class="k">if</span> k<span class="n">End</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">then</span>
+           <span class="nb">event</span>     <span class="s">"e"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+<span class="k">endif</span>
 
-  <span class="kd">instr</span> <span class="nf">End</span>
-          <span class="nb">exitnow</span>
-  <span class="kd">endin</span>
-
+<span class="kd">endin</span>
 
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
@@ -235,7 +245,7 @@ a<span class="n">Out</span>      <span class="nb">ATSsinnoi</span> k<span class=
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm31110"></a>
+        <a id="idm31154"></a>
         <h2>See also</h2>
         <p><a class="link" href="ATSread.html" title="ATSread"><em class="citetitle">ATSread</em></a>, 
             <a class="link" href="ATSreadnz.html" title="ATSreadnz"><em class="citetitle">ATSreadnz</em></a>, 
@@ -248,7 +258,7 @@ a<span class="n">Out</span>      <span class="nb">ATSsinnoi</span> k<span class=
             <a class="link" href="ATSaddnz.html" title="ATSaddnz"><em class="citetitle">ATSaddnz</em></a></p>
       </div>
       <div class="refsect1">
-        <a id="idm31131"></a>
+        <a id="idm31175"></a>
         <h2>Credits</h2>
         <p>
             </p>
