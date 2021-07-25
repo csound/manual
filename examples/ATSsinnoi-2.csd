@@ -3,11 +3,13 @@
 -odac -d -m128
 </CsOptions>
 <CsInstruments>
-;example by joachim heintz
+;example by joachim heintz (& Menno Knevel)
 sr = 44100
 ksmps = 32
 nchnls = 2
 0dbfs = 1
+
+ires system_i 1,{{ atsa fox.wav fox.ats }} ; default settings
 
 giSine    ftgen     0, 0, 1024, 10, 1
 gSfile    =         "fox.ats"
@@ -39,8 +41,8 @@ iSpeed    =         p5 ;speed
 p3        =         giDur/iSpeed
 ktime     line      0, giDur/iSpeed, giDur
           prints    "Resynthesizing partials %d to %d with related noise.\n", iOffset+1, iOffset+10
-aOut      ATSsinnoi ktime, 1, 1, 1, gSfile, 10, iOffset, 1
-          outs      aOut, aOut
+aOut      ATSsinnoi ktime, 1, .3, 1, gSfile, 10, iOffset, 1 ; a bit less noise (.3)
+          outs      aOut*2, aOut    ; left channel a bit louder
 ;call itself again
  if iOffset < giNumParts - 20 then
           event_i   "i", "PlayBand", giDur/iSpeed+1, 1, iOffset+10, iSpeed
@@ -58,17 +60,13 @@ kTrig     metro     100
 kEnd      max_k     aEnd, kTrig, 1 ;1 if phasor signal crosses zero
 ktime     downsamp  atime
 aOut      ATSsinnoi ktime*giDur, kSinAmnt, kNzAmnt, 1, gSfile, giNumParts
-          outs      aOut, aOut
+          outs      aOut*.6, aOut   ; pan a bit to the right
   ;exit if file is at the end 
-  if kEnd == 1 then
-          event     "i", "End", 0, 1
-  endif
-  endin
+if kEnd == 1 then
+           event     "e", 0, 0
+endif
 
-  instr End
-          exitnow
-  endin
-
+endin
 
 </CsInstruments>
 <CsScore>
