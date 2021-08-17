@@ -13,6 +13,8 @@ ksmps   = 32
 nchnls  = 2
 0dbfs   = 1
 
+; example by Lou Cohen
+
 gisine    ftgen    1, 0, 131073, 9, 1, 1, 0                ;single sine tone
 
 ;-----------------------------------------
