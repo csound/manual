@@ -39,19 +39,19 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm235650"></a>
+        <a id="idm235935"></a>
         <h2>Description</h2>
         <p>
       <span class="emphasis"><em>tableseg</em></span> is like <a class="link" href="linseg.html" title="linseg"><em class="citetitle">linseg</em></a> but interpolate between values in a stored function tables. The result is a new function table passed internally to any following <a class="link" href="vpvoc.html" title="vpvoc"><em class="citetitle">vpvoc</em></a> which occurs before a subsequent <span class="emphasis"><em>tableseg</em></span> (much like <a class="link" href="lpread.html" title="lpread"><em class="citetitle">lpread</em></a>/<a class="link" href="lpreson.html" title="lpreson"><em class="citetitle">lpreson</em></a> pairs work). The uses of these are described below under <span class="emphasis"><em>vpvoc</em></span>.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm235664"></a>
+        <a id="idm235949"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>tableseg</strong></span> ifn1, idur1, ifn2 [, idur2] [, ifn3] [...]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm235668"></a>
+        <a id="idm235953"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>ifn1</em></span>, <span class="emphasis"><em>ifn2</em></span>, <span class="emphasis"><em>ifn3</em></span>, etc. -- function table numbers. <span class="emphasis"><em>ifn1</em></span>, <span class="emphasis"><em>ifn2</em></span>, and so on, must be the same size.
@@ -61,28 +61,27 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm235679"></a>
+        <a id="idm235964"></a>
         <h2>Examples</h2>
         <p>
-      Here is an example of the tableseg opcode. It uses the file <a class="ulink" href="examples/tableseg.csd" target="_top"><em class="citetitle">tableseg.csd</em></a>.
+      Here is an example of the tableseg opcode. It uses the file <a class="ulink" href="examples/tableseg_tablexseg.csd" target="_top"><em class="citetitle">tableseg_tablexseg.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm235684"></a>
+          <a id="idm235969"></a>
           <p class="title">
             <strong>Example 1067. Example of the tableseg opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm235691"></a>
+              <a id="idm235976"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
--odac     <span class="c1">;;;realtime audio out</span>
-<span class="c1">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</span>
+-odac   -m0   <span class="c1">;;;realtime audio out</span>
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
-<span class="c1">; -o tableseg.wav -W ;;; for file output any platform</span>
+<span class="c1">; -o tableseg_tablexseg.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span>
 
@@ -91,21 +90,51 @@
 <span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
-<span class="kd">instr</span> <span class="nf">1</span>
-<span class="c1">; analyze "fox.wav" with PVANAL first</span>
-i<span class="n">end</span>  <span class="o">=</span> <span class="vi">p4</span>
-k<span class="n">time</span> <span class="nb">line</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> i<span class="n">end</span>
-      <span class="nb">tableseg</span> <span class="vi">p5</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="vi">p6</span>		<span class="c1">;morph from table 1</span>
-a<span class="n">sig</span>  <span class="nb">vpvoc</span> k<span class="n">time</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"fox.pvx"</span>		<span class="c1">;to table 2</span>
-      <span class="nb">outs</span> a<span class="n">sig</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span> a<span class="n">sig</span><span class="o">*</span><span class="mi">3</span>
+<span class="c1">; by Menno Knevel 2021</span>
 
-<span class="kd">endin</span>      
+gi<span class="n">len</span>  <span class="nb">filelen</span> <span class="s">"fox.wav"</span>	    <span class="c1">; get length of impulse soundfile</span>
+
+<span class="c1">; analyze sound file and output result to pvoc-ex file</span>
+i<span class="n">res</span> <span class="nb">system_i</span> <span class="mi">1</span><span class="p">,</span><span class="s">{{ pvanal fox.wav fox1.pvx }}</span>          <span class="c1">; default settings</span>
+
+<span class="kd">instr</span> <span class="nf">1</span> <span class="c1">; untreated signal</span>
+a<span class="n">sig</span>    <span class="nb">diskin2</span>   <span class="s">"fox.wav"</span><span class="p">,</span> <span class="mi">1</span>
+<span class="nb">prints</span>  <span class="s">"</span><span class="se">\n</span><span class="s">---***YOU NOW HEAR THE UNTREATED SOUND SAMPLE***---</span><span class="se">\n</span><span class="s">"</span>
+<span class="nb">outs</span>    a<span class="n">sig</span><span class="o">*</span><span class="mf">.8</span><span class="p">,</span> a<span class="n">sig</span><span class="o">*</span><span class="mf">.8</span>
+<span class="kd">endin</span>
+
+<span class="kd">instr</span> <span class="nf">2</span>
+
+<span class="nb">prints</span>  <span class="s">"</span><span class="se">\n</span><span class="s">---***YOU NOW HEAR THE RESULT OF THIS ANALYZED FILE:***---</span><span class="se">\n</span><span class="s">"</span>
+k<span class="n">time</span> <span class="nb">line</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> gi<span class="n">len</span>     <span class="c1">; timepointer over the entire sample</span>
+
+<span class="k">if</span> <span class="vi">p5</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">then</span>        <span class="c1">; make a choice</span>
+        <span class="nb">tablexseg</span> <span class="mi">1</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">2</span>	<span class="c1">; morph from table 1 to table 2</span>
+        <span class="nb">prints</span>  <span class="s">"2 tables morph exponentially (tables 1 &amp; 2)</span><span class="se">\n</span><span class="s">"</span>
+    <span class="k">else</span> 
+        <span class="nb">tableseg</span> <span class="mi">1</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">2</span>	<span class="c1">; morph from table 1 to table 2</span>
+        <span class="nb">prints</span>  <span class="s">"2 tables morph in a linear way (tables 1 &amp; 2)</span><span class="se">\n</span><span class="s">"</span>
+<span class="k">endif</span>
+
+a<span class="n">sig</span>  <span class="nb">vpvoc</span> k<span class="n">time</span><span class="p">,</span> <span class="vi">p4</span><span class="p">,</span> <span class="s">"fox1.pvx"</span>
+      <span class="nb">outs</span> a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
+<span class="kd">endin</span>
+
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
 <span class="nb">f</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">512</span> <span class="mi">9</span> <span class="mf">.5</span> <span class="mi">1</span> <span class="mi">0</span>
-<span class="nb">f</span> <span class="mi">2</span> <span class="mi">0</span> <span class="mi">512</span> <span class="mi">7</span> <span class="mi">0</span> <span class="mi">20</span> <span class="mi">1</span> <span class="mi">30</span> <span class="mi">0</span> <span class="mi">230</span> <span class="mi">0</span> <span class="mi">232</span> <span class="mi">1</span>
+<span class="nb">f</span> <span class="mi">2</span> <span class="mi">0</span> <span class="mi">512</span> <span class="mi">7</span> <span class="mi">1</span> <span class="mi">512</span> <span class="mi">0</span>
 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">10</span> <span class="mf">2.7</span> <span class="mi">1</span> <span class="mi">2</span>
+<span class="nb">i</span><span class="mi">1</span>  <span class="mi">0</span> <span class="mf">2.76</span>          <span class="c1">; original sample</span>
+
+<span class="nb">i</span><span class="mi">2</span>  <span class="mi">5</span> <span class="mf">2.76</span>  <span class="mi">1</span>    <span class="mi">0</span>  <span class="c1">; linear morph </span>
+<span class="nb">i</span><span class="mi">2</span>  <span class="mi">8</span> <span class="mf">2.76</span>  <span class="mi">1</span>    <span class="mi">1</span>  <span class="c1">; exponential morph of filter</span>
+
+<span class="nb">i</span><span class="mi">2</span>  <span class="mi">10</span> <span class="mi">10</span>   <span class="mi">1</span>    <span class="mi">0</span>  <span class="c1">; linear morph</span>
+<span class="nb">i</span><span class="mi">2</span>  <span class="mi">10</span> <span class="mi">10</span>   <span class="mf">1.7</span>  <span class="mi">0</span>   
+<span class="nb">i</span><span class="mi">2</span>  <span class="mi">20</span> <span class="mi">10</span>   <span class="mi">1</span>    <span class="mi">1</span>  <span class="c1">; exponential morph</span>
+<span class="nb">i</span><span class="mi">2</span>  <span class="mi">20</span> <span class="mi">10</span>   <span class="mf">1.7</span>  <span class="mi">1</span>  
+
 <span class="nb">e</span>
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
@@ -117,7 +146,7 @@ a<span class="n">sig</span>  <span class="nb">vpvoc</span> k<span class="n">time
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm235785"></a>
+        <a id="idm236157"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="pvbufread.html" title="pvbufread"><em class="citetitle">pvbufread</em></a>,
@@ -128,7 +157,7 @@ a<span class="n">sig</span>  <span class="nb">vpvoc</span> k<span class="n">time
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm235798"></a>
+        <a id="idm236170"></a>
         <h2>Credits</h2>
         <p>
       </p>
