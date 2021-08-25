@@ -1,9 +1,9 @@
 <CsoundSynthesizer>
 <CsOptions>
 ; Select audio/midi flags here according to platform
--odac   -m0  --limiter=.95 ;;;realtime audio out, with limiter protection
+-odac   -m0   ;;;realtime audio out
 ; For Non-realtime ouput leave only the line below:
-; -o pvoc.wav -W ;;; for file output any platform
+; -o tableseg_tablexseg.wav -W ;;; for file output any platform
 </CsOptions>
 <CsInstruments>
 
@@ -29,20 +29,33 @@ instr 2
 
 prints  "\n---***YOU NOW HEAR THE RESULT OF THIS ANALYZED FILE:***---\n"
 ktime line 0, p3, gilen     ; timepointer over the entire sample
-asig  pvoc ktime, p4, "fox1.pvx", 1 
-      outs asig*.6, asig*.6
+
+if p5 == 1 then        ; make a choice
+        tablexseg 1, p3, 2	; morph from table 1 to table 2
+        prints  "2 tables morph exponentially (tables 1 & 2)\n"
+    else 
+        tableseg 1, p3, 2	; morph from table 1 to table 2
+        prints  "2 tables morph in a linear way (tables 1 & 2)\n"
+endif
+
+asig  vpvoc ktime, p4, "fox1.pvx"
+      outs asig, asig
 endin
 
 </CsInstruments>
 <CsScore>
+f 1 0 512 9 .5 1 0
+f 2 0 512 7 1 512 0
 
-i1 0 2.76      ; original sample
+i1  0 2.76          ; original sample
 
-i2  5 2.76  1  ; no change so original sample is played
-i2  10 2    1  ; played faster
+i2  5 2.76  1    0  ; linear morph 
+i2  8 2.76  1    1  ; exponential morph of filter
 
-i2  15 10   1  ; slowed down, same pitch &
-i2  25 10   1.2; slowed down and higher pitch
+i2  10 10   1    0  ; linear morph
+i2  10 10   1.7  0   
+i2  20 10   1    1  ; exponential morph
+i2  20 10   1.7  1  
 
 e
 </CsScore>
