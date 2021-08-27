@@ -66,6 +66,80 @@
       </div>
       <div class="refsect1">
         <a id="idm22803"></a>
+        <h2>Examples</h2>
+        <p>
+      Here is an example for the bitwise-group, comparing the different adsr opcodes. It uses the file <a class="ulink" href="examples/bitwise-group.csd" target="_top"><em class="citetitle">bitwise-group.csd</em></a>.
+      </p>
+        <div class="example">
+          <a id="idm22808"></a>
+          <p class="title">
+            <strong>Example 40. Example of the bitwise group.</strong>
+          </p>
+          <div class="example-contents">
+            <div class="refsect1">
+              <a id="idm22810"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+<span class="nt">&lt;CsOptions&gt;</span>
+--nosound
+<span class="nt">&lt;/CsOptions&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span>
+
+<span class="vg">sr</span>     <span class="o">=</span>    <span class="mi">44100</span>
+<span class="vg">ksmps</span>  <span class="o">=</span>    <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span>    <span class="mi">2</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span>    <span class="mi">1</span>
+
+<span class="c1">; By Daniele Cucchi - 2020</span>
+
+<span class="c1">;a &amp; b: bitwise AND</span>
+<span class="c1">;a | b: bitwise OR</span>
+<span class="c1">;a # b: bitwise NON EQUIVALENCE - XOR</span>
+<span class="c1">; ~ a: bitwise NOT</span>
+
+<span class="kd">instr</span> <span class="nf">1</span>
+
+k<span class="n">ArrayA</span><span class="p">[]</span> <span class="nb">fillarray</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>  <span class="c1">; Fill array "A" with 4 values: 0, 0, 1, 1</span>
+i<span class="n">0A</span> <span class="o">=</span> <span class="nb">i</span><span class="p">(</span>k<span class="n">ArrayA</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+i<span class="n">1A</span> <span class="o">=</span> <span class="nb">i</span><span class="p">(</span>k<span class="n">ArrayA</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+i<span class="n">2A</span> <span class="o">=</span> <span class="nb">i</span><span class="p">(</span>k<span class="n">ArrayA</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+i<span class="n">3A</span> <span class="o">=</span> <span class="nb">i</span><span class="p">(</span>k<span class="n">ArrayA</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+k<span class="n">ArrayB</span><span class="p">[]</span> <span class="nb">fillarray</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>  <span class="c1">; Fill array "B" with 4 values: 0, 1, 0, 1</span>
+i<span class="n">0B</span> <span class="o">=</span> <span class="nb">i</span><span class="p">(</span>k<span class="n">ArrayB</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+i<span class="n">1B</span> <span class="o">=</span> <span class="nb">i</span><span class="p">(</span>k<span class="n">ArrayB</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+i<span class="n">2B</span> <span class="o">=</span> <span class="nb">i</span><span class="p">(</span>k<span class="n">ArrayB</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+i<span class="n">3B</span> <span class="o">=</span> <span class="nb">i</span><span class="p">(</span>k<span class="n">ArrayB</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="c1">; Bitwise operations &amp; fill arrays</span>
+k<span class="n">AND</span><span class="p">[]</span> <span class="o">=</span> k<span class="n">ArrayA</span> <span class="o">&amp;</span> k<span class="n">ArrayB</span>
+k<span class="n">OR</span><span class="p">[]</span> <span class="o">=</span> k<span class="n">ArrayA</span> <span class="o">|</span> k<span class="n">ArrayB</span>
+k<span class="n">NON</span><span class="p">[]</span> <span class="nb">fillarray</span> i<span class="n">0B</span> <span class="o">#</span> i<span class="n">0A</span><span class="p">,</span> i<span class="n">1B</span> <span class="o">#</span> i<span class="n">1A</span><span class="p">,</span> i<span class="n">2B</span> <span class="o">#</span> i<span class="n">2A</span><span class="p">,</span> i<span class="n">3B</span> <span class="o">#</span> i<span class="n">3A</span>
+k<span class="n">NOT</span><span class="p">[]</span> <span class="nb">fillarray</span>  <span class="o">~</span> i<span class="n">0A</span><span class="p">,</span> <span class="o">~</span> i<span class="n">1A</span><span class="p">,</span> <span class="o">~</span> i<span class="n">2A</span><span class="p">,</span> <span class="o">~</span> i<span class="n">3A</span>
+
+<span class="c1">; Print values </span>
+<span class="nb">printarray</span> k<span class="n">AND</span><span class="p">,</span> <span class="s">"</span><span class="si">%d</span><span class="s">"</span><span class="p">,</span> <span class="s">"= bitwise AND"</span>
+<span class="nb">printarray</span> k<span class="n">OR</span><span class="p">,</span> <span class="s">"</span><span class="si">%d</span><span class="s">"</span><span class="p">,</span> <span class="s">"= bitwise OR"</span>
+<span class="nb">printarray</span> k<span class="n">NON</span><span class="p">,</span> <span class="s">"</span><span class="si">%d</span><span class="s">"</span><span class="p">,</span> <span class="s">"= bitwise NON"</span>
+<span class="nb">printarray</span> k<span class="n">NOT</span><span class="p">,</span> <span class="s">"</span><span class="si">%d</span><span class="s">"</span><span class="p">,</span> <span class="s">"= bitwise NOT</span><span class="se">\n</span><span class="s">"</span>
+
+<span class="kd">endin</span>
+
+<span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span>
+<span class="nb">e</span>
+<span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm23011"></a>
         <h2>See Also</h2>
         <p>
        <a class="link" href="opbitand.html" title="&amp;"><em class="citetitle">&amp;</em></a>, 
