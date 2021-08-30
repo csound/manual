@@ -20,7 +20,7 @@ endin
 
 instr 2
 kTrig metro 1
-aEnv trigExpseg kTrig, 0.0001, .2, 1, .2, .5, .2, .7, .2, 0.0001
+aEnv trigexpseg kTrig, 0.0001, .2, 1, .2, .5, .2, .7, .2, 0.0001
 a1 oscili aEnv, 400
 outs a1, a1
 endin
