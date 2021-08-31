@@ -7,34 +7,49 @@
 ; -o pvsarp.wav -W ;;; for file output any platform
 </CsOptions>
 <CsInstruments>
-
-; Initialize the global variables.
+; additions by Menno Knevel 2021
 sr = 44100
-ksmps = 100
-nchnls = 1
+ksmps = 32
+nchnls = 2
 0dbfs = 1
+nchnls_i = 1  ; number of input channels
 
 instr 1
-asig  in                                 ; get the signal in
-idepth = p4
 
+asig  in                                 ; get the (microphone?) signal in
+idepth = p4
+prints "\n--**please use microphone**--\n"
+prints "--**if no input is given, there will be only silence...\n"
 fsig  pvsanal   asig, 1024, 256, 1024, 1 ; analyse it
 kbin  oscili   0.1, 0.5, 1               ; ftable 1 in the 0-1 range
-ftps  pvsarp   fsig, kbin+0.01, idepth, 2   ; arpeggiate it (range 220.5 - 2425.5)
+ftps  pvsarp   fsig, kbin+0.01, idepth, 7   ; arpeggiate it (range 220.5 - 2425.5)
 atps  pvsynth  ftps                      ; synthesise it
 
-       out atps
+       outs atps, atps
 endin
 
+instr 2
+
+asig  diskin2   "flute.aiff", 1, 0, 1      ; get the sample in
+idepth = p4
+prints "\n--**here the sample is used**--\n"
+fsig  pvsanal   asig, 1024, 256, 1024, 1 ; analyse it
+kbin  oscili   0.1, 0.05, 1               ; ftable 1 in the 0-1 range
+ftps  pvsarp   fsig, kbin+0.01, idepth, 7   ; arpeggiate it (range 220.5 - 2425.5)
+atps  pvsynth  ftps                      ; synthesise it
+
+       outs atps, atps
+endin
 
 </CsInstruments>
 <CsScore>
 f 1 0 4096 10 1 ;sine wave
-
-i 1 0 10 0.9
+s
+i 1 0 10 0.9    ; notes for the microphone
 i 1 + 10 0.5
+s
+i 2 0 10 0.5    ; notes for the flute sample
+i 2 + 10 1
 e
-
-
 </CsScore>
 </CsoundSynthesizer>
