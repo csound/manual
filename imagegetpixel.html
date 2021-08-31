@@ -169,10 +169,123 @@ a<span class="n">sig</span> <span class="nb">adsynt</span> k<span class="n">env<
           </div>
         </div>
         <p><br class="example-break" />
+      Here is a musical example of the imagegetpixel opcode. It uses the files <a class="ulink" href="examples/imagegetpixel-musical.csd" target="_top"><em class="citetitle">imagegetpixel-musical.csd</em></a> and <a class="ulink" href="images/imageOpcode001.png" target="_top"><em class="citetitle">imageOpcode001.png</em></a>.
+      </p>
+        <div class="example">
+          <a id="idm112483"></a>
+          <p class="title">
+            <strong>Example 460. Example of the imagegetpixel opcode.</strong>
+          </p>
+          <div class="example-contents">
+            <div class="refsect1">
+              <a id="idm112485"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+<span class="nt">&lt;CsOptions&gt;</span>
+<span class="c1">; Select audio/midi flags here according to platform</span>
+-odac  <span class="c1">;;;realtime audio out </span>
+<span class="c1">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</span>
+<span class="c1">; For Non-realtime ouput leave only the line below:</span>
+<span class="c1">; -o imagegetpixel-musical.wav -W ;;; for file output any platform</span>
+<span class="nt">&lt;/CsOptions&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span>
+
+<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="cp">#define</span> <span class="cp">TABLEN</span><span class="p">#</span><span class="cp"> 64</span><span class="p">#</span>
+gi<span class="n">Rtab</span> <span class="nb">ftgen</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="cp">$TABLEN</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>
+gi<span class="n">Gtab</span> <span class="nb">ftgen</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="cp">$TABLEN</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>
+gi<span class="n">Btab</span> <span class="nb">ftgen</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="cp">$TABLEN</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>
+
+gi<span class="n">sin</span> <span class="nb">ftgen</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>
+
+gi<span class="n">img</span> <span class="nb">imageload</span> <span class="s">"imageOpcode001.png"</span>
+gi<span class="n">imgH</span><span class="p">,</span> gi<span class="n">imgW</span> <span class="nb">imagesize</span> gi<span class="n">img</span>
+
+<span class="kd">instr</span> <span class="nf">1</span>
+k<span class="n">ndx</span> <span class="o">=</span> <span class="mi">0</span>
+
+k<span class="n">yR</span> <span class="nb">oscili</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.15</span><span class="p">,</span> <span class="mi">11</span>
+k<span class="n">yR</span> <span class="o">=</span> <span class="p">(</span>k<span class="n">yR</span> <span class="o">+</span> <span class="mf">.5</span><span class="p">)</span> <span class="o">*</span> <span class="mf">.999</span>
+
+k<span class="n">yG</span> <span class="nb">oscili</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.25</span><span class="p">,</span> <span class="mi">11</span>
+k<span class="n">yG</span> <span class="o">=</span> <span class="p">(</span>k<span class="n">yG</span> <span class="o">+</span> <span class="mf">.5</span><span class="p">)</span> <span class="o">*</span> <span class="mf">.999</span>
+
+k<span class="n">yB</span> <span class="nb">oscili</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.4</span><span class="p">,</span> <span class="mi">11</span>
+k<span class="n">yB</span> <span class="o">=</span> <span class="p">(</span>k<span class="n">yB</span> <span class="o">+</span> <span class="mf">.5</span><span class="p">)</span> <span class="o">*</span> <span class="mf">.999</span>
+
+i<span class="n">len</span> <span class="o">=</span> <span class="mi">64</span>
+<span class="nl">loop</span><span class="p">:</span>
+k<span class="n">R</span><span class="p">,</span> k<span class="n">0</span><span class="p">,</span> k<span class="n">1</span> <span class="nb">imagegetpixel</span> gi<span class="n">img</span><span class="p">,</span> k<span class="n">ndx</span> <span class="o">/</span> <span class="p">(</span>i<span class="n">len</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> k<span class="n">yR</span>
+k<span class="n">2</span><span class="p">,</span> k<span class="n">G</span><span class="p">,</span> k<span class="n">3</span> <span class="nb">imagegetpixel</span> gi<span class="n">img</span><span class="p">,</span> k<span class="n">ndx</span> <span class="o">/</span> <span class="p">(</span>i<span class="n">len</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> k<span class="n">yG</span>
+k<span class="n">4</span><span class="p">,</span> k<span class="n">5</span><span class="p">,</span> k<span class="n">B</span> <span class="nb">imagegetpixel</span> gi<span class="n">img</span><span class="p">,</span> k<span class="n">ndx</span> <span class="o">/</span> <span class="p">(</span>i<span class="n">len</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> k<span class="n">yB</span>
+
+k<span class="n">Rval</span> <span class="o">=</span> k<span class="n">R</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="nb">tabw</span> k<span class="n">Rval</span><span class="p">,</span> k<span class="n">ndx</span><span class="p">,</span> gi<span class="n">Rtab</span>
+
+k<span class="n">Gval</span> <span class="o">=</span> k<span class="n">G</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="nb">tabw</span> k<span class="n">Gval</span><span class="p">,</span> k<span class="n">ndx</span><span class="p">,</span> gi<span class="n">Gtab</span>
+
+k<span class="n">Bval</span> <span class="o">=</span> k<span class="n">B</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="nb">tabw</span> k<span class="n">Bval</span><span class="p">,</span> k<span class="n">ndx</span><span class="p">,</span> gi<span class="n">Btab</span>
+
+<span class="k">if</span> k<span class="n">ndx</span> <span class="o">&lt;</span> i<span class="n">len</span> <span class="k">then</span>
+k<span class="n">ndx</span> <span class="o">=</span> k<span class="n">ndx</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="k">kgoto</span> <span class="nl">loop</span>
+<span class="k">endif</span>
+
+i<span class="n">ampgain</span> <span class="o">=</span> <span class="mf">.3</span>
+k<span class="n">amp</span> <span class="nb">madsr</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span>
+k<span class="n">amp</span> <span class="o">=</span> k<span class="n">amp</span> <span class="o">*</span> i<span class="n">ampgain</span>
+i<span class="n">frq</span> <span class="o">=</span> <span class="nb">cpspch</span><span class="p">(</span><span class="vi">p4</span><span class="p">)</span>
+
+a<span class="n">R</span> <span class="nb">oscil3</span> k<span class="n">amp</span> <span class="o">*</span> k<span class="n">yG</span><span class="p">,</span> i<span class="n">frq</span><span class="p">,</span> gi<span class="n">Rtab</span>
+a<span class="n">G</span> <span class="nb">oscil3</span> k<span class="n">amp</span> <span class="o">*</span> k<span class="n">yB</span> <span class="o">*</span> <span class="mf">.8</span><span class="p">,</span> i<span class="n">frq</span> <span class="o">*</span> <span class="mf">2.01</span><span class="p">,</span> gi<span class="n">Gtab</span>
+a<span class="n">B</span> <span class="nb">oscil3</span> k<span class="n">amp</span> <span class="o">*</span> k<span class="n">yR</span> <span class="o">*</span> <span class="mf">.8</span><span class="p">,</span> i<span class="n">frq</span> <span class="o">*</span> <span class="mf">1.99</span><span class="p">,</span> gi<span class="n">Btab</span>
+
+a<span class="n">R</span> <span class="nb">butlp</span> a<span class="n">R</span><span class="p">,</span> <span class="mi">5000</span>
+a<span class="n">G</span> <span class="nb">butlp</span> a<span class="n">G</span><span class="p">,</span> <span class="mi">10000</span>
+a<span class="n">B</span> <span class="nb">butlp</span> a<span class="n">B</span><span class="p">,</span> <span class="mi">10000</span>
+
+a<span class="n">sigL</span> <span class="o">=</span> <span class="p">(</span>a<span class="n">R</span> <span class="o">+</span> a<span class="n">G</span><span class="p">)</span><span class="o">*</span><span class="mf">.9</span>     <span class="c1">; green Left channel</span>
+a<span class="n">sigR</span> <span class="o">=</span> <span class="p">(</span>a<span class="n">R</span> <span class="o">+</span> a<span class="n">B</span><span class="p">)</span><span class="o">*</span><span class="mf">.9</span>     <span class="c1">; blue Right channel &amp; red in the middle</span>
+
+a<span class="n">delL</span> <span class="nb">comb</span> a<span class="n">sigL</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">.25</span>
+a<span class="n">sigL</span> <span class="o">=</span> a<span class="n">sigL</span> <span class="o">+</span> a<span class="n">delL</span> <span class="o">*</span> <span class="mf">.5</span>
+a<span class="n">sigL</span> <span class="nb">dcblock</span> a<span class="n">sigL</span>
+
+a<span class="n">delR</span> <span class="nb">comb</span> a<span class="n">sigR</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">.3</span>
+a<span class="n">sigR</span> <span class="o">=</span> a<span class="n">sigR</span> <span class="o">+</span> a<span class="n">delR</span> <span class="o">*</span> <span class="mf">.5</span>
+a<span class="n">sigR</span> <span class="nb">dcblock</span> a<span class="n">sigR</span>
+
+<span class="nb">outs</span> a<span class="n">sigL</span><span class="p">,</span> a<span class="n">sigR</span>
+
+<span class="kd">endin</span>
+
+<span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">25</span> <span class="mf">8.00</span>
+<span class="nb">i</span><span class="o">.</span> <span class="mi">5</span> <span class="mi">20</span> <span class="mf">8.02</span>
+<span class="nb">i</span><span class="o">.</span> <span class="mi">10</span> <span class="mi">10</span> <span class="mf">8.07</span>
+<span class="nb">i</span><span class="o">.</span> <span class="mi">15</span> <span class="mi">10</span> <span class="mf">8.09</span>
+<span class="nb">i</span><span class="o">.</span> <span class="mi">20</span> <span class="mi">5</span> <span class="mf">8.11</span>
+
+<span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
+
+        <img src="images/imageOpcode001.png" />
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm112479"></a>
+        <a id="idm112886"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="imageload.html" title="imageload"><em class="citetitle">imageload</em></a>,
@@ -184,7 +297,7 @@ a<span class="n">sig</span> <span class="nb">adsynt</span> k<span class="n">env<
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm112494"></a>
+        <a id="idm112901"></a>
         <h2>Credits</h2>
         <p>
       </p>
