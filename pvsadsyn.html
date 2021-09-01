@@ -107,11 +107,11 @@
 
 <span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
 <span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">16</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
 
 <span class="c1">;; example written by joachim heintz 2009</span>
-
+<span class="c1">; (additions by Menno Knevel 2021)</span>
 <span class="kd">opcode</span> <span class="nf">FileToPvsBuf</span><span class="p">,</span> <span class="kt">iik</span><span class="p">,</span> <span class="kt">Siiii</span>
 <span class="c1">;;writes an audio file at the first k-cycle to a fft-buffer (via pvsbuffer)</span>
 S<span class="n">file</span><span class="p">,</span> i<span class="n">fftsize</span><span class="p">,</span> i<span class="n">overlap</span><span class="p">,</span> i<span class="n">winsize</span><span class="p">,</span> i<span class="n">winshape</span> <span class="nb">xin</span>
@@ -138,15 +138,19 @@ i<span class="n">winsize</span>	<span class="o">=</span>		i<span class="n">fftsi
 i<span class="n">winshape</span>	<span class="o">=</span>		<span class="mi">1</span><span class="c1">; von-Hann window</span>
 i<span class="n">buffer</span><span class="p">,</span> i<span class="n">len</span><span class="p">,</span> k<span class="n">0</span>		<span class="nf">FileToPvsBuf</span>	<span class="s">"fox.wav"</span><span class="p">,</span> i<span class="n">fftsize</span><span class="p">,</span> i<span class="n">overlap</span><span class="p">,</span> i<span class="n">winsize</span><span class="p">,</span> i<span class="n">winshape</span>
 <span class="vi">p3</span>		<span class="o">=</span>		i<span class="n">stretch</span> <span class="o">*</span> i<span class="n">len</span><span class="c1">; set p3 to the correct value</span>
+<span class="nb">prints</span>  <span class="s">"--**new duration of note = </span><span class="si">%f</span><span class="s"> seconds**--</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="vi">p3</span>
 k<span class="n">tmpnt</span>		<span class="nb">linseg</span>		<span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> i<span class="n">len</span><span class="c1">; time pointer</span>
 f<span class="n">read</span> 		<span class="nb">pvsbufread</span>  	k<span class="n">tmpnt</span><span class="p">,</span> i<span class="n">buffer</span><span class="c1">; read the buffer</span>
-a<span class="n">out</span>		<span class="nb">pvsadsyn</span>	f<span class="n">read</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="c1">; resynthesis with the first 10 bins</span>
-		<span class="nb">out</span>		a<span class="n">out</span>
+a<span class="n">out</span>		<span class="nb">pvsadsyn</span>	f<span class="n">read</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="vi">p5</span><span class="c1">; resynthesis of 50 bins, with offset p5</span>
+a<span class="n">out</span>        <span class="o">*=</span>  <span class="mf">.7</span>      <span class="c1">; scale amplitude</span>
+		<span class="nb">outs</span>		a<span class="n">out</span><span class="p">,</span> a<span class="n">out</span>
 <span class="kd">endin</span>
 
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">20</span>
+<span class="c1">;         stretch   offset  </span>
+<span class="nb">i</span> <span class="mi">1</span>  <span class="mi">0</span> <span class="mi">1</span>    <span class="mi">10</span>        <span class="mi">0</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">28</span> <span class="mi">1</span>    <span class="mi">5</span>        <span class="mi">30</span>
 <span class="nb">e</span>
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
@@ -158,7 +162,7 @@ a<span class="n">out</span>		<span class="nb">pvsadsyn</span>	f<span class="n">r
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm185030"></a>
+        <a id="idm185055"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="pvsanal.html" title="pvsanal"><em class="citetitle">pvsanal</em></a>,
@@ -167,7 +171,7 @@ a<span class="n">out</span>		<span class="nb">pvsadsyn</span>	f<span class="n">r
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm185039"></a>
+        <a id="idm185064"></a>
         <h2>Credits</h2>
         <p>
       </p>
