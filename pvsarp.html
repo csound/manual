@@ -179,51 +179,51 @@ a<span class="n">tps</span>  <span class="nb">pvsynth</span>  f<span class="n">t
               <a id="idm185534"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
-<span class="nt">&lt;CsOptions&gt;</span>
-<span class="c1">; Select audio/midi flags here according to platform</span>
-<span class="c1">; Audio out   Audio in</span>
--odac    <span class="c1">;;;RT audio I/O</span>
-<span class="c1">; For Non-realtime ouput leave only the line below:</span>
-<span class="c1">; -o pvsarp2.wav -W ;;; for file output any platform</span>
-<span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+ <span class="nt">&lt;CsOptions&gt;</span>
+ <span class="c1">; Select audio/midi flags here according to platform</span>
+ <span class="c1">; Audio out   Audio in</span>
+ -odac    <span class="c1">;;;RT audio I/O</span>
+ <span class="c1">; For Non-realtime ouput leave only the line below:</span>
+ <span class="c1">; -o pvsarp2.wav -W ;;; for file output any platform</span>
+ <span class="nt">&lt;/CsOptions&gt;</span>
+ <span class="nt">&lt;CsInstruments&gt;</span>
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">16</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
+ <span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
+ <span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+ <span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+ <span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
-<span class="c1">;; example written by joachim heintz 2009</span>
+ <span class="c1">;; example written by joachim heintz 2009</span>
+ <span class="c1">; additions by Menno Knevel 2021</span>
+ <span class="kd">instr</span> <span class="nf">1</span>
+ i<span class="n">fftsize</span>	<span class="o">=</span> <span class="mi">1024</span>
+ i<span class="n">overlap</span>	<span class="o">=</span> i<span class="n">fftsize</span> <span class="o">/</span> <span class="mi">4</span>
+ i<span class="n">winsize</span>	<span class="o">=</span> i<span class="n">fftsize</span>
+ i<span class="n">winshape</span>	<span class="o">=</span> <span class="mi">1</span>	<span class="c1">; von-Hann window</span>
+ S<span class="n">file1</span>		<span class="o">=</span> <span class="s">"fox.wav"</span>
+ a<span class="n">in1</span>		<span class="nb">soundin</span>	S<span class="n">file1</span>
+ f<span class="n">ftin</span>		<span class="nb">pvsanal</span>	a<span class="n">in1</span><span class="p">,</span> i<span class="n">fftsize</span><span class="p">,</span> i<span class="n">overlap</span><span class="p">,</span> i<span class="n">winsize</span><span class="p">,</span> i<span class="n">winshape</span>
+   <span class="c1">;make 3 independently moving accentuations in the spectrum</span>
+ k<span class="n">bin1</span>		<span class="nb">linseg</span>		<span class="mf">0.05</span><span class="p">,</span> <span class="vi">p3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mf">.05</span><span class="p">,</span> <span class="vi">p3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mf">.05</span>
+ f<span class="n">arp1</span>		<span class="nb">pvsarp</span>		f<span class="n">ftin</span><span class="p">,</span> k<span class="n">bin1</span><span class="p">,</span> <span class="mf">.9</span><span class="p">,</span> <span class="mi">10</span>
+ k<span class="n">bin2</span>		<span class="nb">linseg</span>		<span class="mf">0.075</span><span class="p">,</span> <span class="vi">p3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> <span class="vi">p3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mf">.075</span>
+ f<span class="n">arp2</span>		<span class="nb">pvsarp</span>		f<span class="n">ftin</span><span class="p">,</span> k<span class="n">bin2</span><span class="p">,</span> <span class="mf">.9</span><span class="p">,</span> <span class="mi">10</span>
+ k<span class="n">bin3</span>		<span class="nb">linseg</span>		<span class="mf">0.02</span><span class="p">,</span> <span class="vi">p3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mf">.03</span><span class="p">,</span> <span class="vi">p3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mf">.04</span>
+ f<span class="n">arp3</span>		<span class="nb">pvsarp</span>		f<span class="n">ftin</span><span class="p">,</span> k<span class="n">bin3</span><span class="p">,</span> <span class="mf">.9</span><span class="p">,</span> <span class="mi">10</span>
+   <span class="c1">;resynthesize and add them</span>
+ a<span class="n">out1</span>		<span class="nb">pvsynth</span>	f<span class="n">arp1</span>
+ a<span class="n">out2</span>		<span class="nb">pvsynth</span>	f<span class="n">arp2</span>
+ a<span class="n">out3</span>		<span class="nb">pvsynth</span>	f<span class="n">arp3</span>
+ <span class="c1">;aout		=		aout1*.3 + aout2*.3 + aout3*.3</span>
+ 		<span class="nb">outs</span>		a<span class="n">out1</span><span class="o">*</span><span class="mi">1</span> <span class="o">+</span> a<span class="n">out2</span><span class="o">*</span><span class="mf">.5</span><span class="p">,</span> a<span class="n">out2</span><span class="o">*</span><span class="mf">.5</span> <span class="o">+</span> a<span class="n">out3</span><span class="o">*</span><span class="mf">.3</span>
+ <span class="kd">endin</span>
 
-<span class="kd">instr</span> <span class="nf">1</span>
-i<span class="n">fftsize</span>	<span class="o">=</span>		<span class="mi">1024</span>
-i<span class="n">overlap</span>	<span class="o">=</span>		i<span class="n">fftsize</span> <span class="o">/</span> <span class="mi">4</span>
-i<span class="n">winsize</span>	<span class="o">=</span>		i<span class="n">fftsize</span>
-i<span class="n">winshape</span>	<span class="o">=</span>		<span class="mi">1</span><span class="c1">; von-Hann window</span>
-S<span class="n">file1</span>		<span class="o">=</span>		<span class="s">"fox.wav"</span>
-a<span class="n">in1</span>		<span class="nb">soundin</span>	S<span class="n">file1</span>
-f<span class="n">ftin</span>		<span class="nb">pvsanal</span>	a<span class="n">in1</span><span class="p">,</span> i<span class="n">fftsize</span><span class="p">,</span> i<span class="n">overlap</span><span class="p">,</span> i<span class="n">winsize</span><span class="p">,</span> i<span class="n">winshape</span>
-  <span class="c1">;make 3 independently moving accentuations in the spectrum</span>
-k<span class="n">bin1</span>		<span class="nb">linseg</span>		<span class="mf">0.05</span><span class="p">,</span> <span class="vi">p3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mf">.05</span><span class="p">,</span> <span class="vi">p3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mf">.05</span>
-f<span class="n">arp1</span>		<span class="nb">pvsarp</span>		f<span class="n">ftin</span><span class="p">,</span> k<span class="n">bin1</span><span class="p">,</span> <span class="mf">.9</span><span class="p">,</span> <span class="mi">10</span>
-k<span class="n">bin2</span>		<span class="nb">linseg</span>		<span class="mf">0.075</span><span class="p">,</span> <span class="vi">p3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> <span class="vi">p3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mf">.075</span>
-f<span class="n">arp2</span>		<span class="nb">pvsarp</span>		f<span class="n">ftin</span><span class="p">,</span> k<span class="n">bin2</span><span class="p">,</span> <span class="mf">.9</span><span class="p">,</span> <span class="mi">10</span>
-k<span class="n">bin3</span>		<span class="nb">linseg</span>		<span class="mf">0.02</span><span class="p">,</span> <span class="vi">p3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mf">.03</span><span class="p">,</span> <span class="vi">p3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mf">.04</span>
-f<span class="n">arp3</span>		<span class="nb">pvsarp</span>		f<span class="n">ftin</span><span class="p">,</span> k<span class="n">bin3</span><span class="p">,</span> <span class="mf">.9</span><span class="p">,</span> <span class="mi">10</span>
-  <span class="c1">;resynthesize and add them</span>
-a<span class="n">out1</span>		<span class="nb">pvsynth</span>	f<span class="n">arp1</span>
-a<span class="n">out2</span>		<span class="nb">pvsynth</span>	f<span class="n">arp2</span>
-a<span class="n">out3</span>		<span class="nb">pvsynth</span>	f<span class="n">arp3</span>
-a<span class="n">out</span>		<span class="o">=</span>		a<span class="n">out1</span><span class="o">*</span><span class="mf">.3</span> <span class="o">+</span> a<span class="n">out2</span><span class="o">*</span><span class="mf">.3</span> <span class="o">+</span> a<span class="n">out3</span><span class="o">*</span><span class="mf">.3</span>
-		<span class="nb">out</span>		a<span class="n">out</span>
-<span class="kd">endin</span>
-
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">3</span> 
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
-<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+ <span class="nt">&lt;/CsInstruments&gt;</span>
+ <span class="nt">&lt;CsScore&gt;</span>
+ <span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">3</span>
+ <span class="nb">e</span>
+ <span class="nt">&lt;/CsScore&gt;</span>
+ <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
           </div>
@@ -232,7 +232,7 @@ a<span class="n">out</span>		<span class="o">=</span>		a<span class="n">out1</sp
         </p>
       </div>
       <div class="refsect1">
-        <a id="idm185700"></a>
+        <a id="idm185703"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="pvsanal.html" title="pvsanal"><em class="citetitle">pvsanal</em></a>,
@@ -241,7 +241,7 @@ a<span class="n">out</span>		<span class="o">=</span>		a<span class="n">out1</sp
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm185709"></a>
+        <a id="idm185712"></a>
         <h2>Credits</h2>
         <p>
       </p>

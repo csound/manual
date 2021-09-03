@@ -39,19 +39,19 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm187405"></a>
+        <a id="idm187440"></a>
         <h2>Description</h2>
         <p>
 
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm187408"></a>
+        <a id="idm187443"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">keps[] <span class="command"><strong>pvsceps</strong></span> fsig[, icoefs]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm187412"></a>
+        <a id="idm187447"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>icoefs</em></span> -- the number of retained
@@ -60,7 +60,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm187416"></a>
+        <a id="idm187451"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>keps[]</em></span> -- the cepstrum output, an array of
@@ -71,48 +71,58 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm187422"></a>
+        <a id="idm187457"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the use of the <span class="emphasis"><em>pvsceps</em></span> opcode. It uses the file <a class="ulink" href="examples/pvsceps.csd" target="_top"><em class="citetitle">pvsceps.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm187428"></a>
+          <a id="idm187463"></a>
           <p class="title">
             <strong>Example 815. Example of the <span class="emphasis"><em>pvsceps</em></span> opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm187436"></a>
+              <a id="idm187471"></a>
               <pre class="programlisting">
-<span class="nt">&lt;CsoundSynthesizer&gt;</span>
-<span class="nt">&lt;CsOptions&gt;</span>
-<span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+ <span class="nt">&lt;CsoundSynthesizer&gt;</span>
+ <span class="nt">&lt;CsOptions&gt;</span>
+ <span class="c1">; Select audio/midi flags here according to platform</span>
+ <span class="c1">; Audio out   Audio in</span>
+ -odac       <span class="c1">;;;RT audio out</span>
+ <span class="c1">; For Non-realtime ouput leave only the line below:</span>
+ <span class="c1">; -o pvsceps.wav -W ;;; for file output any platform</span>
+ <span class="nt">&lt;/CsOptions&gt;</span>
+ <span class="nt">&lt;CsInstruments&gt;</span>
 
-<span class="kd">instr</span> <span class="nf">1</span>
+ <span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
+ <span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+ <span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+ <span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
-a<span class="n">1</span> <span class="nb">diskin</span> <span class="s">"fox.wav"</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span>
-k<span class="n">1</span> <span class="nb">randh</span>  <span class="mi">80</span><span class="p">,</span> <span class="mf">2.5</span>
-a<span class="n">2</span> <span class="nb">vco2</span>  <span class="mi">8</span><span class="p">,</span> <span class="mi">220</span><span class="o">+</span>k<span class="n">1</span>
-f<span class="n">sig</span> <span class="nb">pvsanal</span> a<span class="n">1</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="mi">256</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="mi">1</span>
-f<span class="n">sig2</span> <span class="nb">pvsanal</span> a<span class="n">2</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="mi">256</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="mi">1</span>
-k<span class="n">eps</span><span class="p">[]</span> <span class="nb">pvsceps</span> f<span class="n">sig</span><span class="p">,</span><span class="mi">30</span>
-k<span class="n">env</span><span class="p">[]</span> <span class="nb">cepsinv</span> k<span class="n">eps</span>
-f<span class="n">env</span> <span class="nb">tab2pvs</span> <span class="nb">r2c</span><span class="p">(</span>k<span class="n">env</span><span class="p">)</span>
-f<span class="n">voc</span> <span class="nb">pvsfilter</span> f<span class="n">sig2</span><span class="p">,</span> f<span class="n">env</span><span class="p">,</span> <span class="mi">1</span>
-a<span class="n">sig</span> <span class="nb">pvsynth</span> f<span class="n">voc</span>
+ <span class="kd">instr</span> <span class="nf">1</span>
 
-    <span class="nb">out</span> a<span class="n">sig</span>
-<span class="kd">endin</span>
+ a<span class="n">1</span>      <span class="nb">diskin</span> <span class="s">"fox.wav"</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span>
+ k<span class="n">1</span>      <span class="nb">randh</span>  <span class="mi">80</span><span class="p">,</span> <span class="mf">2.5</span>
+ a<span class="n">2</span>      <span class="nb">vco2</span>  <span class="mi">8</span><span class="p">,</span> <span class="mi">220</span><span class="o">+</span>k<span class="n">1</span>
+ f<span class="n">sig</span>    <span class="nb">pvsanal</span> a<span class="n">1</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="mi">256</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="mi">1</span>
+ f<span class="n">sig2</span>   <span class="nb">pvsanal</span> a<span class="n">2</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="mi">256</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="mi">1</span>
+ k<span class="n">eps</span><span class="p">[]</span>  <span class="nb">pvsceps</span> f<span class="n">sig</span><span class="p">,</span> <span class="vi">p4</span>
+ k<span class="n">env</span><span class="p">[]</span>  <span class="nb">cepsinv</span> k<span class="n">eps</span>
+ f<span class="n">env</span>    <span class="nb">tab2pvs</span> <span class="nb">r2c</span><span class="p">(</span>k<span class="n">env</span><span class="p">)</span>
+ f<span class="n">voc</span>    <span class="nb">pvsfilter</span> f<span class="n">sig2</span><span class="p">,</span> f<span class="n">env</span><span class="p">,</span> <span class="mi">1</span>
+ a<span class="n">sig</span>    <span class="nb">pvsynth</span> f<span class="n">voc</span>
+         <span class="nb">outs</span> a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
+ <span class="kd">endin</span>
 
-
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">60</span>
-<span class="nt">&lt;/CsScore&gt;</span>
-<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+ <span class="nt">&lt;/CsInstruments&gt;</span>
+ <span class="nt">&lt;CsScore&gt;</span>
+ <span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">30</span> <span class="mi">30</span>  <span class="c1">; p4 -= the number of retained coefficients</span>
+ <span class="nb">i</span><span class="mi">1</span> <span class="mi">31</span> <span class="mi">10</span> <span class="mi">5</span>
+ <span class="nb">e</span>
+ <span class="nt">&lt;/CsScore&gt;</span>
+ <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
           </div>
@@ -121,7 +131,7 @@ a<span class="n">sig</span> <span class="nb">pvsynth</span> f<span class="n">voc
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm187524"></a>
+        <a id="idm187586"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="pvsanal.html" title="pvsanal"><em class="citetitle">pvsanal</em></a>,
@@ -131,7 +141,7 @@ a<span class="n">sig</span> <span class="nb">pvsynth</span> f<span class="n">voc
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm187535"></a>
+        <a id="idm187597"></a>
         <h2>Credits</h2>
         <p>
       </p>
