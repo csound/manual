@@ -39,27 +39,27 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm112244"></a>
+        <a id="idm112294"></a>
         <h2>Description</h2>
         <p>Plugin opcode in image.</p>
         <p>Return the RGB pixel values of a previously opened or created image. An image can be loaded with <a class="link" href="imageload.html" title="imageload"><em class="citetitle">imageload</em></a>. An empty image can be created with <a class="link" href="imagecreate.html" title="imagecreate"><em class="citetitle">imagecreate</em></a>.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm112252"></a>
+        <a id="idm112302"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ared, agreen, ablue <span class="command"><strong>imagegetpixel</strong></span> iimagenum, ax, ay</pre>
         <pre class="synopsis">kred, kgreen, kblue <span class="command"><strong>imagegetpixel</strong></span> iimagenum, kx, ky</pre>
       </div>
       <div class="refsect1">
-        <a id="idm112258"></a>
+        <a id="idm112308"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>iimagenum</em></span> -- the reference of the image.. It should be a value returned by <a class="link" href="imageload.html" title="imageload"><em class="citetitle">imageload</em></a> or <a class="link" href="imagecreate.html" title="imagecreate"><em class="citetitle">imagecreate</em></a>.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm112266"></a>
+        <a id="idm112316"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>ax (kx)</em></span> -- horizontal pixel position (must be a float from 0 to 1).
@@ -78,90 +78,99 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm112278"></a>
+        <a id="idm112328"></a>
         <h2>Examples</h2>
         <p>
-      Here is an example of the imagegetpixel opcode. It uses the files <a class="ulink" href="examples/imageopcodesdemo2.csd" target="_top"><em class="citetitle">imageopcodesdemo2.csd</em></a> <a class="ulink" href="examples/test1.png" target="_top"><em class="citetitle">test1.png</em></a> and <a class="ulink" href="examples/test2.png" target="_top"><em class="citetitle">test2.png</em></a>.
+      Here is an example of the imagegetpixel opcode. It uses the files <a class="ulink" href="examples/imagegetpixel.csd" target="_top"><em class="citetitle">imagegetpixel.csd</em></a>, <a class="ulink" href="examples/imageOpcode01.png" target="_top"><em class="citetitle">imageOpcode01.png</em></a> and <a class="ulink" href="examples/imageOpcode02.png" target="_top"><em class="citetitle">imageOpcode02.png</em></a>.
       </p>
         <div class="example">
-          <a id="idm112287"></a>
+          <a id="idm112337"></a>
           <p class="title">
             <strong>Example 459. Example of the imagegetpixel opcode.</strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
-              <a id="idm112289"></a>
+              <a id="idm112339"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span> 
- 
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
-<span class="c1">; Audio out   Audio in</span>
--odac           -iadc    <span class="c1">;;;RT audio I/O</span>
+-odac  --limiter=.95 <span class="c1">;;;realtime audio out and limiter</span>
+<span class="c1">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</span>
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
-<span class="c1">; -o imageopcodesdemo2.wav -W ;;; for file output any platform</span>
+<span class="c1">; -o imagegetpixel.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span> 
-
 <span class="nt">&lt;CsInstruments&gt;</span> 
-<span class="vg">sr</span>      <span class="o">=</span>      	<span class="mi">48000</span> 
-<span class="vg">ksmps</span>  	<span class="o">=</span>     	<span class="mi">100</span>
-<span class="vg">nchnls</span>	<span class="o">=</span>	<span class="mi">2</span>
 
-<span class="c1">;By Cesare Marilungo 2008</span>
-<span class="nb">zakinit</span> <span class="mi">10</span><span class="p">,</span><span class="mi">1</span>
+<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span> 
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span> 
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span> 
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
 
-<span class="c1">;Load the image - should be 512x512 pixels</span>
-gi<span class="n">image</span> <span class="nb">imageload</span> <span class="s">"test1.png"</span>
-<span class="c1">;giimage imageload "test2.png" ;--try this too</span>
-gi<span class="n">imagew</span><span class="p">,</span> gi<span class="n">imageh</span> <span class="nb">imagesize</span> gi<span class="n">image</span>
+<span class="c1">; by Cesare Marilungo 2008</span>
+<span class="c1">; additions by Menno Knevel 2021</span>
 
-gi<span class="n">wave</span> <span class="nb">ftgen</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>
-gi<span class="n">frqs</span> <span class="nb">ftgen</span> <span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">512</span><span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">512</span><span class="p">,</span><span class="mi">10</span>
-gi<span class="n">amps</span> <span class="nb">ftgen</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>
+gi<span class="n">image01</span> <span class="nb">imageload</span> <span class="s">"imageOpcode01.png"</span>                     <span class="c1">; load 2 images - should be 512x512 pixels</span>
+gi<span class="n">imagew01</span><span class="p">,</span> gi<span class="n">imageh01</span>  <span class="nb">imagesize</span>   gi<span class="n">image01</span>
+gi<span class="n">image02</span> <span class="nb">imageload</span> <span class="s">"imageOpcode02.png"</span>
+gi<span class="n">imagew02</span><span class="p">,</span> gi<span class="n">imageh02</span>  <span class="nb">imagesize</span>   gi<span class="n">image02</span>
 
-	<span class="kd">instr</span> <span class="nf">100</span>
+gi<span class="n">sine</span> <span class="nb">ftgen</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8192</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>                              <span class="c1">; sine wave</span>
+gi<span class="n">frqs</span> <span class="nb">ftgen</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">10</span>                      <span class="c1">; will hold the frequencies</span>
+gi<span class="n">amps</span> <span class="nb">ftgen</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>                               <span class="c1">; ready for amplitude data</span>
+
+<span class="kd">instr</span> <span class="nf">1</span>
 
 k<span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
-i<span class="n">cnt</span> <span class="o">=</span> gi<span class="n">imageh</span>
-k<span class="n">x_</span> <span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">1</span>
-k<span class="n">env</span> <span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">.2</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="vi">p3</span> <span class="o">-</span> <span class="mf">.4</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mf">.2</span><span class="p">,</span> <span class="mi">0</span>
+i<span class="n">cnt</span> <span class="o">=</span> gi<span class="n">imageh01</span>                                           <span class="c1">; height of image imageOpcode01.png</span>
+k<span class="n">x_</span> <span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">1</span>                                         <span class="c1">; scans x-axis</span>
+k<span class="n">env</span> <span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">.8</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">.1</span><span class="p">,</span> <span class="mi">0</span>               <span class="c1">; amplitude envelope </span>
 
-<span class="c1">; Read a column of pixels and store the red values</span>
-<span class="c1">; inside the table 'giamps'</span>
+<span class="c1">; Read a column of pixels and store the red values inside the table 'giamps'</span>
 <span class="nl">loop</span><span class="p">:</span>
-    k<span class="n">y_</span> <span class="o">=</span> k<span class="n">index</span><span class="o">/</span>gi<span class="n">imageh</span>
-
-    <span class="c1">;Get the pixel color values at kx_, ky_</span>
-    k<span class="n">red</span><span class="p">,</span> k<span class="n">green</span><span class="p">,</span> k<span class="n">blue</span> <span class="nb">imagegetpixel</span> gi<span class="n">image</span><span class="p">,</span> k<span class="n">x_</span><span class="p">,</span> k<span class="n">y_</span>
-
-    <span class="c1">;Write the red values inside the table 'giamps'</span>
-    <span class="nb">tablew</span> k<span class="n">red</span><span class="p">,</span> k<span class="n">index</span><span class="p">,</span> gi<span class="n">amps</span>
+    k<span class="n">y_</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="p">(</span>k<span class="n">index</span><span class="o">/</span>gi<span class="n">imageh01</span><span class="p">)</span>                             <span class="c1">; reverses direction of reading</span>
+    k<span class="n">red</span><span class="p">,</span> k<span class="n">green</span><span class="p">,</span> k<span class="n">blue</span> <span class="nb">imagegetpixel</span> gi<span class="n">image01</span><span class="p">,</span> k<span class="n">x_</span><span class="p">,</span> k<span class="n">y_</span>   <span class="c1">; get the pixel color values at kx_, ky_ </span>
+    <span class="nb">tablew</span> k<span class="n">red</span><span class="p">,</span> k<span class="n">index</span><span class="p">,</span> gi<span class="n">amps</span>                             <span class="c1">; write the red values inside the table 'giamps'</span>
     k<span class="n">index</span> <span class="o">=</span> k<span class="n">index</span><span class="o">+</span><span class="mi">1</span>
+<span class="k">if</span> <span class="p">(</span>k<span class="n">index</span> <span class="o">&lt;</span> i<span class="n">cnt</span><span class="p">)</span> <span class="k">kgoto</span> <span class="nl">loop</span>
+<span class="c1">; setting amplitudes for each partial according to the image</span>
+a<span class="n">sig</span> <span class="nb">adsynt</span> k<span class="n">env</span><span class="p">,</span> <span class="mi">220</span><span class="p">,</span> gi<span class="n">sine</span><span class="p">,</span> gi<span class="n">frqs</span><span class="p">,</span> gi<span class="n">amps</span><span class="p">,</span> i<span class="n">cnt</span><span class="p">,</span> <span class="mi">2</span>      <span class="c1">; oscillator bank (additive synthesis)</span>
+<span class="nb">outs</span> a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
+<span class="kd">endin</span>
 
+<span class="kd">instr</span> <span class="nf">2</span>   <span class="c1">; Free memory used by imageOpcode01.png</span>
+<span class="nb">imagefree</span> gi<span class="n">image01</span>
+<span class="kd">endin</span>
+
+<span class="kd">instr</span> <span class="nf">3</span>
+
+k<span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+i<span class="n">cnt</span> <span class="o">=</span> gi<span class="n">imageh02</span>                                           <span class="c1">; height of image imageOpcode02.png</span>
+k<span class="n">x_</span> <span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">1</span>                                         <span class="c1">; scans x-axis</span>
+k<span class="n">env</span> <span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">.2</span><span class="p">,</span> <span class="mf">.02</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">.4</span><span class="p">,</span> <span class="mf">.02</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">.2</span><span class="p">,</span> <span class="mi">0</span>             <span class="c1">; amplitude envelope </span>
+
+<span class="nl">loop</span><span class="p">:</span>
+    k<span class="n">y_</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="p">(</span>k<span class="n">index</span><span class="o">/</span>gi<span class="n">imageh02</span><span class="p">)</span>                             <span class="c1">; reverses direction of reading</span>
+    k<span class="n">red</span><span class="p">,</span> k<span class="n">green</span><span class="p">,</span> k<span class="n">blue</span> <span class="nb">imagegetpixel</span> gi<span class="n">image02</span><span class="p">,</span> k<span class="n">x_</span><span class="p">,</span> k<span class="n">y_</span>   <span class="c1">; get the pixel color values at kx_, ky_ </span>
+    <span class="nb">tablew</span> k<span class="n">blue</span><span class="p">,</span> k<span class="n">index</span><span class="p">,</span> gi<span class="n">amps</span>                            <span class="c1">; write the blue values inside the table 'giamps'</span>
+    k<span class="n">index</span> <span class="o">=</span> k<span class="n">index</span><span class="o">+</span><span class="mi">1</span>
 <span class="k">if</span> <span class="p">(</span>k<span class="n">index</span> <span class="o">&lt;</span> i<span class="n">cnt</span><span class="p">)</span> <span class="k">kgoto</span> <span class="nl">loop</span>
 
-<span class="c1">; Use an oscillator bank (additive synthesis) to generate sound</span>
-<span class="c1">; setting amplitudes for each partial according to the image</span>
-a<span class="n">sig</span> <span class="nb">adsynt</span> k<span class="n">env</span><span class="p">,</span> <span class="mi">220</span><span class="p">,</span> gi<span class="n">wave</span><span class="p">,</span> gi<span class="n">frqs</span><span class="p">,</span> gi<span class="n">amps</span><span class="p">,</span> i<span class="n">cnt</span><span class="p">,</span> <span class="mi">2</span>
+a<span class="n">sig</span> <span class="nb">adsynt</span> k<span class="n">env</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> gi<span class="n">sine</span><span class="p">,</span> gi<span class="n">frqs</span><span class="p">,</span> gi<span class="n">amps</span><span class="p">,</span> i<span class="n">cnt</span><span class="p">,</span> <span class="mi">2</span>      <span class="c1">; oscillator bank (additive synthesis)</span>
 <span class="nb">outs</span> a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
+<span class="kd">endin</span>
 
-	<span class="kd">endin</span>
-
-	<span class="kd">instr</span> <span class="nf">101</span>
-<span class="c1">; Free memory used by the image</span>
-<span class="nb">imagefree</span> gi<span class="n">image</span>
-	<span class="kd">endin</span>
+<span class="kd">instr</span> <span class="nf">4</span>   <span class="c1">; Free memory used by imageOpcode02.png</span>
+<span class="nb">imagefree</span> gi<span class="n">image02</span>
+<span class="kd">endin</span>
 
 <span class="nt">&lt;/CsInstruments&gt;</span> 
 <span class="nt">&lt;CsScore&gt;</span>
-
-<span class="nb">t</span> <span class="mi">0</span> <span class="mi">60</span>
-
-<span class="nb">i</span><span class="mi">100</span> <span class="mi">1</span> <span class="mi">20</span> 
-<span class="nb">i</span><span class="mi">101</span> <span class="mi">21</span> <span class="mi">1</span>
-
+<span class="nb">i</span><span class="mi">1</span>  <span class="mi">1</span>  <span class="mi">3</span>    <span class="c1">; play first image           </span>
+<span class="nb">i</span><span class="mi">2</span>  <span class="mi">4</span> <span class="mf">.1</span>    <span class="c1">; then unload first image </span>
+<span class="nb">i</span><span class="mi">3</span>  <span class="mi">5</span>  <span class="mi">5</span>    <span class="c1">; play second image</span>
+<span class="nb">i</span><span class="mi">4</span> <span class="mi">11</span> <span class="mf">.1</span>    <span class="c1">; and unload that one     </span>
 <span class="nb">e</span>
-
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
@@ -169,16 +178,27 @@ a<span class="n">sig</span> <span class="nb">adsynt</span> k<span class="n">env<
           </div>
         </div>
         <p><br class="example-break" />
-      Here is a musical example of the imagegetpixel opcode. It uses the files <a class="ulink" href="examples/imagegetpixel-musical.csd" target="_top"><em class="citetitle">imagegetpixel-musical.csd</em></a> and <a class="ulink" href="images/imageOpcode001.png" target="_top"><em class="citetitle">imageOpcode001.png</em></a>.
-      </p>
+    </p>
+        <p>
+      Here is what the images <em class="citetitle">imageOpcode01.png</em> and <em class="citetitle">imageOpcode02.png</em>for the <em class="citetitle">imagegetpixel</em> example look like:
+    </p>
+        <p>
+        <img src="images/imageOpcode01small.png" />
+        <img src="images/imageOpcode02small.png" />
+    </p>
+        <p>
+      Here is a musical example of the imagegetpixel opcode. It uses the files <a class="ulink" href="examples/imagegetpixel-musical.csd" target="_top"><em class="citetitle">imagegetpixel-musical.csd</em></a> and <a class="ulink" href="examples/imageOpcode03.png" target="_top"><em class="citetitle">imageOpcode03.png</em></a>.
+    </p>
+        <p>     
+        </p>
         <div class="example">
-          <a id="idm112483"></a>
+          <a id="idm112682"></a>
           <p class="title">
             <strong>Example 460. Example of the imagegetpixel opcode.</strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
-              <a id="idm112485"></a>
+              <a id="idm112684"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -202,7 +222,7 @@ gi<span class="n">Btab</span> <span class="nb">ftgen</span> <span class="mi">3</
 
 gi<span class="n">sin</span> <span class="nb">ftgen</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>
 
-gi<span class="n">img</span> <span class="nb">imageload</span> <span class="s">"imageOpcode001.png"</span>
+gi<span class="n">img</span> <span class="nb">imageload</span> <span class="s">"imageOpcode003.png"</span>
 gi<span class="n">imgH</span><span class="p">,</span> gi<span class="n">imgW</span> <span class="nb">imagesize</span> gi<span class="n">img</span>
 
 <span class="kd">instr</span> <span class="nf">1</span>
@@ -280,12 +300,16 @@ a<span class="n">sigR</span> <span class="nb">dcblock</span> a<span class="n">si
           </div>
         </div>
         <p><br class="example-break" />
-
-        <img src="images/imageOpcode001.png" />
+       </p>
+        <p>
+      This is what the image <em class="citetitle">imageOpcode03.png</em> for the <em class="citetitle">imagegetpixel-musical</em> example looks like:
+    </p>
+        <p>
+        <img src="examples/imageOpcode03.png" />
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm112886"></a>
+        <a id="idm113088"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="imageload.html" title="imageload"><em class="citetitle">imageload</em></a>,
@@ -297,7 +321,7 @@ a<span class="n">sigR</span> <span class="nb">dcblock</span> a<span class="n">si
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm112901"></a>
+        <a id="idm113103"></a>
         <h2>Credits</h2>
         <p>
       </p>
