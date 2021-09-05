@@ -11,7 +11,7 @@
 sr = 44100
 ksmps = 32
 nchnls = 2
-0dbfs = 1.0
+0dbfs  = 1
 
 #define TABLEN# 64#
 giRtab ftgen 1, 0, $TABLEN, 10, 1
@@ -20,7 +20,7 @@ giBtab ftgen 3, 0, $TABLEN, 10, 1
 
 gisin ftgen 11, 0, 1024, 10, 1
 
-giimg imageload "imageOpcode003.png"
+giimg imageload "imageOpcode03.png"
 giimgH, giimgW imagesize giimg
 
 instr 1
