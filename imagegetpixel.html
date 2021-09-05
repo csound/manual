@@ -134,7 +134,7 @@ k<span class="n">env</span> <span class="nb">linseg</span> <span class="mi">0</s
     k<span class="n">index</span> <span class="o">=</span> k<span class="n">index</span><span class="o">+</span><span class="mi">1</span>
 <span class="k">if</span> <span class="p">(</span>k<span class="n">index</span> <span class="o">&lt;</span> i<span class="n">cnt</span><span class="p">)</span> <span class="k">kgoto</span> <span class="nl">loop</span>
 <span class="c1">; setting amplitudes for each partial according to the image</span>
-a<span class="n">sig</span> <span class="nb">adsynt</span> k<span class="n">env</span><span class="p">,</span> <span class="mi">220</span><span class="p">,</span> gi<span class="n">sine</span><span class="p">,</span> gi<span class="n">frqs</span><span class="p">,</span> gi<span class="n">amps</span><span class="p">,</span> i<span class="n">cnt</span><span class="p">,</span> <span class="mi">2</span>      <span class="c1">; oscillator bank (additive synthesis)</span>
+a<span class="n">sig</span> <span class="nb">adsynt2</span> k<span class="n">env</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> gi<span class="n">sine</span><span class="p">,</span> gi<span class="n">frqs</span><span class="p">,</span> gi<span class="n">amps</span><span class="p">,</span> i<span class="n">cnt</span><span class="p">,</span> <span class="mi">2</span>     <span class="c1">; oscillator bank (additive synthesis)</span>
 <span class="nb">outs</span> a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
 <span class="kd">endin</span>
 
@@ -148,7 +148,7 @@ k<span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
 i<span class="n">cnt</span> <span class="o">=</span> gi<span class="n">imageh02</span>                                           <span class="c1">; height of image imageOpcode02.png</span>
 k<span class="n">x_</span> <span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">1</span>                                         <span class="c1">; scans x-axis</span>
 k<span class="n">env</span> <span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">.2</span><span class="p">,</span> <span class="mf">.02</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">.4</span><span class="p">,</span> <span class="mf">.02</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">.2</span><span class="p">,</span> <span class="mi">0</span>             <span class="c1">; amplitude envelope </span>
-
+<span class="c1">; Read a column of pixels and store the blue values inside the table 'giamps'</span>
 <span class="nl">loop</span><span class="p">:</span>
     k<span class="n">y_</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="p">(</span>k<span class="n">index</span><span class="o">/</span>gi<span class="n">imageh02</span><span class="p">)</span>                             <span class="c1">; reverses direction of reading</span>
     k<span class="n">red</span><span class="p">,</span> k<span class="n">green</span><span class="p">,</span> k<span class="n">blue</span> <span class="nb">imagegetpixel</span> gi<span class="n">image02</span><span class="p">,</span> k<span class="n">x_</span><span class="p">,</span> k<span class="n">y_</span>   <span class="c1">; get the pixel color values at kx_, ky_ </span>
@@ -156,7 +156,7 @@ k<span class="n">env</span> <span class="nb">linseg</span> <span class="mi">0</s
     k<span class="n">index</span> <span class="o">=</span> k<span class="n">index</span><span class="o">+</span><span class="mi">1</span>
 <span class="k">if</span> <span class="p">(</span>k<span class="n">index</span> <span class="o">&lt;</span> i<span class="n">cnt</span><span class="p">)</span> <span class="k">kgoto</span> <span class="nl">loop</span>
 
-a<span class="n">sig</span> <span class="nb">adsynt</span> k<span class="n">env</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> gi<span class="n">sine</span><span class="p">,</span> gi<span class="n">frqs</span><span class="p">,</span> gi<span class="n">amps</span><span class="p">,</span> i<span class="n">cnt</span><span class="p">,</span> <span class="mi">2</span>      <span class="c1">; oscillator bank (additive synthesis)</span>
+a<span class="n">sig</span> <span class="nb">adsynt2</span> k<span class="n">env</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> gi<span class="n">sine</span><span class="p">,</span> gi<span class="n">frqs</span><span class="p">,</span> gi<span class="n">amps</span><span class="p">,</span> i<span class="n">cnt</span><span class="p">,</span> <span class="mi">2</span>     <span class="c1">; oscillator bank (additive synthesis)</span>
 <span class="nb">outs</span> a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
 <span class="kd">endin</span>
 
@@ -192,13 +192,13 @@ a<span class="n">sig</span> <span class="nb">adsynt</span> k<span class="n">env<
         <p>     
         </p>
         <div class="example">
-          <a id="idm112682"></a>
+          <a id="idm112683"></a>
           <p class="title">
             <strong>Example 460. Example of the imagegetpixel opcode.</strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
-              <a id="idm112684"></a>
+              <a id="idm112685"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -309,7 +309,7 @@ a<span class="n">sigR</span> <span class="nb">dcblock</span> a<span class="n">si
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm113088"></a>
+        <a id="idm113089"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="imageload.html" title="imageload"><em class="citetitle">imageload</em></a>,
@@ -321,7 +321,7 @@ a<span class="n">sigR</span> <span class="nb">dcblock</span> a<span class="n">si
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm113103"></a>
+        <a id="idm113104"></a>
         <h2>Credits</h2>
         <p>
       </p>

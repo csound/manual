@@ -40,7 +40,7 @@ loop:
     kindex = kindex+1
 if (kindex < icnt) kgoto loop
 ; setting amplitudes for each partial according to the image
-asig adsynt kenv, 220, gisine, gifrqs, giamps, icnt, 2      ; oscillator bank (additive synthesis)
+asig adsynt2 kenv, 110, gisine, gifrqs, giamps, icnt, 2     ; oscillator bank (additive synthesis)
 outs asig, asig
 endin
 
@@ -54,7 +54,7 @@ kindex = 0
 icnt = giimageh02                                           ; height of image imageOpcode02.png
 kx_ linseg 0, p3, 1                                         ; scans x-axis
 kenv linseg 0, p3*.2, .02, p3*.4, .02, p3*.2, 0             ; amplitude envelope 
-
+; Read a column of pixels and store the blue values inside the table 'giamps'
 loop:
     ky_ = 1-(kindex/giimageh02)                             ; reverses direction of reading
     kred, kgreen, kblue imagegetpixel giimage02, kx_, ky_   ; get the pixel color values at kx_, ky_ 
@@ -62,7 +62,7 @@ loop:
     kindex = kindex+1
 if (kindex < icnt) kgoto loop
 
-asig adsynt kenv, 100, gisine, gifrqs, giamps, icnt, 2      ; oscillator bank (additive synthesis)
+asig adsynt2 kenv, 100, gisine, gifrqs, giamps, icnt, 2     ; oscillator bank (additive synthesis)
 outs asig, asig
 endin
 
