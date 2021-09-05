@@ -20,7 +20,7 @@ giBtab ftgen 3, 0, $TABLEN, 10, 1
 
 gisin ftgen 11, 0, 1024, 10, 1
 
-giimg imageload "imageOpcode001.png"
+giimg imageload "imageOpcode003.png"
 giimgH, giimgW imagesize giimg
 
 instr 1
