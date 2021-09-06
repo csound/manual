@@ -102,48 +102,58 @@
 <span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span> 
 <span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span> 
 <span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span> 
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>                                          <span class="c1">; doesn't matter because there is no sound output</span>
 
-<span class="c1">; by Cesare Marilungo 2008</span>
-<span class="c1">; additions by Menno Knevel 2021</span>
+<span class="c1">; by Menno Knevel 2021</span>
 <span class="c1">; image opcodes need a black canvas- black = no sound!</span>
 
-gi<span class="n">image1</span> <span class="nb">imageload</span> <span class="s">"imageOpcode01.png"</span>              <span class="c1">; load this image</span>
-gi<span class="n">imagew</span><span class="p">,</span> gi<span class="n">imageh</span> <span class="nb">imagesize</span> gi<span class="n">image1</span>               <span class="c1">; get dimensions of imageOpcode01.png</span>
-gi<span class="n">imageNEW</span> <span class="nb">imagecreate</span> gi<span class="n">imagew</span><span class="p">,</span>gi<span class="n">imageh</span>            <span class="c1">; and use those same dimensions for the new image            </span>
+gi<span class="n">imageOLD</span> <span class="nb">imageload</span> <span class="s">"imageOpcode02.png"</span>            <span class="c1">; load this image</span>
+gi<span class="n">imagew</span><span class="p">,</span> gi<span class="n">imageh</span> <span class="nb">imagesize</span> gi<span class="n">imageOLD</span>             <span class="c1">; get dimensions of imageOpcode02.png</span>
+gi<span class="n">imageNEW1</span> <span class="nb">imagecreate</span> gi<span class="n">imagew</span><span class="p">,</span>gi<span class="n">imageh</span>           <span class="c1">; and use those same dimensions     </span>
+gi<span class="n">imageNEW2</span> <span class="nb">imagecreate</span> gi<span class="n">imagew</span><span class="p">,</span>gi<span class="n">imageh</span>           <span class="c1">; for 3 new images </span>
+gi<span class="n">imageNEW3</span> <span class="nb">imagecreate</span> gi<span class="n">imagew</span><span class="p">,</span>gi<span class="n">imageh</span>           <span class="c1">;    </span>
 
-<span class="kd">instr</span> <span class="nf">1</span> <span class="c1">; copies imageOpcode01.png and changes it</span>
+<span class="kd">instr</span> <span class="nf">1</span>                                             <span class="c1">; copies imageOpcode02.png and transforms it</span>
 
 k<span class="n">ndx</span> <span class="o">=</span> <span class="mi">0</span>
-k<span class="n">x</span> <span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">1</span>
+k<span class="n">x</span> <span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">1</span>                                  <span class="c1">; scans x-axis</span>
 <span class="nb">prints</span> <span class="s">"</span><span class="se">\n</span><span class="s">width = </span><span class="si">%d</span><span class="s"> pixels, heigth = </span><span class="si">%d</span><span class="s"> pixels</span><span class="se">\n\n</span><span class="s">"</span><span class="p">,</span> gi<span class="n">imagew</span><span class="p">,</span> gi<span class="n">imageh</span>
 
 <span class="nl">myloop</span><span class="p">:</span>
 k<span class="n">y</span> <span class="o">=</span> k<span class="n">ndx</span><span class="o">/</span><span class="p">(</span>gi<span class="n">imageh</span><span class="p">)</span>                                <span class="c1">; y-axis</span>
-k<span class="n">rd</span><span class="p">,</span> k<span class="n">gn</span><span class="p">,</span> k<span class="n">bl</span> <span class="nb">imagegetpixel</span> gi<span class="n">image1</span><span class="p">,</span> k<span class="n">x</span><span class="p">,</span> k<span class="n">y</span>        <span class="c1">; get pixels from 'old' image</span>
-<span class="nb">imagesetpixel</span> gi<span class="n">imageNEW</span><span class="p">,</span> k<span class="n">x</span><span class="o">*</span><span class="mf">.9</span><span class="p">,</span> k<span class="n">y</span><span class="o">*</span><span class="mf">.5</span><span class="p">,</span> k<span class="n">rd</span><span class="p">,</span> k<span class="n">gn</span><span class="p">,</span> k<span class="n">bl</span><span class="c1">; redesign the image</span>
+k<span class="n">rd</span><span class="p">,</span> k<span class="n">gn</span><span class="p">,</span> k<span class="n">bl</span> <span class="nb">imagegetpixel</span> gi<span class="n">imageOLD</span><span class="p">,</span> k<span class="n">x</span><span class="p">,</span> k<span class="n">y</span>      <span class="c1">; get pixels from 'old' image</span>
+<span class="nb">prints</span> <span class="s">"</span><span class="se">\n</span><span class="s">--**giimageNEW1 zooms out**--</span><span class="se">\n</span><span class="s">"</span>
+<span class="nb">imagesetpixel</span> gi<span class="n">imageNEW1</span><span class="p">,</span> k<span class="n">x</span><span class="o">*</span><span class="mf">.9</span><span class="p">,</span> k<span class="n">y</span><span class="o">*</span><span class="mf">.5</span><span class="p">,</span> k<span class="n">rd</span><span class="p">,</span> k<span class="n">gn</span><span class="p">,</span> k<span class="n">bl</span>
+<span class="nb">prints</span> <span class="s">"</span><span class="se">\n</span><span class="s">--**giimageNEW2 zooms in**--</span><span class="se">\n</span><span class="s">"</span>
+<span class="nb">imagesetpixel</span> gi<span class="n">imageNEW2</span><span class="p">,</span> k<span class="n">x</span><span class="o">*</span><span class="nb">rnd</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> k<span class="n">y</span><span class="o">*</span><span class="nb">rnd</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> k<span class="n">rd</span><span class="p">,</span> k<span class="n">gn</span><span class="p">,</span> k<span class="n">bl</span> 
+<span class="nb">prints</span> <span class="s">"</span><span class="se">\n</span><span class="s">--**giimageNEW3 zooms in and applies offset on y-axis**--</span><span class="se">\n\n</span><span class="s">"</span>
+<span class="nb">imagesetpixel</span> gi<span class="n">imageNEW3</span><span class="p">,</span> k<span class="n">x</span><span class="o">*</span><span class="nb">rnd</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="p">(</span>k<span class="n">y</span><span class="o">*</span><span class="nb">rnd</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">+</span><span class="mf">.2</span><span class="p">),</span> k<span class="n">rd</span><span class="p">,</span> k<span class="n">gn</span><span class="p">,</span> k<span class="n">bl</span>
 <span class="kp">loop_lt</span> k<span class="n">ndx</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> gi<span class="n">imageh</span><span class="p">,</span> <span class="nl">myloop</span>
+
 <span class="kd">endin</span>
 
 <span class="kd">instr</span> <span class="nf">2</span>
-<span class="nb">imagesave</span> gi<span class="n">imageNEW</span><span class="p">,</span> <span class="s">"imageOUT.png"</span>                <span class="c1">; save this new image</span>
+<span class="nb">imagesave</span> gi<span class="n">imageNEW1</span><span class="p">,</span> <span class="s">"imageNEW1.png"</span>              <span class="c1">; save those 3 new images</span>
+<span class="nb">imagesave</span> gi<span class="n">imageNEW2</span><span class="p">,</span> <span class="s">"imageNEW2.png"</span>
+<span class="nb">imagesave</span> gi<span class="n">imageNEW3</span><span class="p">,</span> <span class="s">"imageNEW3.png"</span>
 <span class="kd">endin</span>
 
 <span class="kd">instr</span> <span class="nf">3</span>
-<span class="nb">imagefree</span> gi<span class="n">image1</span>                                  <span class="c1">; unload images</span>
-<span class="nb">imagefree</span> gi<span class="n">imageNEW</span>
+<span class="nb">imagefree</span> gi<span class="n">imageOLD</span>                                <span class="c1">; unload all images</span>
+<span class="nb">imagefree</span> gi<span class="n">imageNEW1</span>
+<span class="nb">imagefree</span> gi<span class="n">imageNEW2</span>
+<span class="nb">imagefree</span> gi<span class="n">imageNEW3</span>
 <span class="kd">endin</span>
 
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
 
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">1</span> <span class="mi">2</span>
 <span class="nb">i</span><span class="mi">2</span> <span class="mi">2</span> <span class="mi">1</span>
-<span class="nb">i</span><span class="mi">3</span> <span class="mi">3</span> <span class="mf">.1</span>
+<span class="nb">i</span><span class="mi">3</span> <span class="mi">4</span> <span class="mf">.1</span>
 <span class="nb">e</span>
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
- 
 </pre>
             </div>
           </div>
@@ -166,7 +176,7 @@ k<span class="n">rd</span><span class="p">,</span> k<span class="n">gn</span><sp
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm114981"></a>
+        <a id="idm115067"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="imageload.html" title="imageload"><em class="citetitle">imageload</em></a>,
@@ -178,7 +188,7 @@ k<span class="n">rd</span><span class="p">,</span> k<span class="n">gn</span><sp
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm114996"></a>
+        <a id="idm115082"></a>
         <h2>Credits</h2>
         <p>
       </p>
