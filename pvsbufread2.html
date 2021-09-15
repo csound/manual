@@ -134,12 +134,18 @@
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
+<span class="c1">; Select audio/midi flags here according to platform</span>
+<span class="c1">; Audio out   Audio in</span>
+-odac    <span class="c1">;;;RT audio I/O</span>
+<span class="c1">; For Non-realtime ouput leave only the line below:</span>
+<span class="c1">; -o pvsbufread2.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-
 <span class="nt">&lt;CsInstruments&gt;</span>
-<span class="vg">ksmps</span>  <span class="o">=</span> <span class="mi">64</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+
+<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
 <span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
 <span class="kd">instr</span> <span class="nf">1</span>
 k<span class="n">cnt</span>     <span class="nb">init</span>         <span class="mi">0</span>
@@ -147,16 +153,14 @@ i<span class="n">fftsize</span> <span class="o">=</span>            <span class=
 i<span class="n">hop</span>     <span class="o">=</span>            i<span class="n">fftsize</span><span class="o">/</span><span class="mi">4</span>
 
 a<span class="n">1</span>       <span class="nb">diskin2</span>      <span class="s">"beats.wav"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
-a<span class="n">1</span>       <span class="o">=</span>            a<span class="n">1</span><span class="o">*</span><span class="mf">0.5</span>
-f<span class="n">sig1</span>    <span class="nb">pvsanal</span>      a<span class="n">1</span><span class="p">,</span> i<span class="n">fftsize</span><span class="p">,</span> i<span class="n">hop</span><span class="p">,</span> i<span class="n">fftsize</span><span class="p">,</span> <span class="mi">1</span>
-i<span class="n">h</span><span class="p">,</span> k<span class="n">t</span>   <span class="nb">pvsbuffer</span>    f<span class="n">sig1</span><span class="p">,</span> <span class="mi">10</span>
+f<span class="n">sig1</span>    <span class="nb">pvsanal</span>      a<span class="n">1</span><span class="o">*</span><span class="mf">.5</span><span class="p">,</span> i<span class="n">fftsize</span><span class="p">,</span> i<span class="n">hop</span><span class="p">,</span> i<span class="n">fftsize</span><span class="p">,</span> <span class="mi">1</span>
+i<span class="n">h</span><span class="p">,</span> k<span class="n">t</span>   <span class="nb">pvsbuffer</span>    f<span class="n">sig1</span><span class="p">,</span> <span class="mi">2</span>
 
 f<span class="n">sig2</span>    <span class="nb">pvsbufread2</span>  k<span class="n">t</span><span class="p">,</span> i<span class="n">h</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
 f<span class="n">sig3</span>    <span class="nb">pvsbufread2</span>  k<span class="n">t</span><span class="p">,</span> i<span class="n">h</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span>
 
 a<span class="n">2</span>       <span class="nb">pvsynth</span>      f<span class="n">sig3</span>
 a<span class="n">3</span>       <span class="nb">pvsynth</span>      f<span class="n">sig2</span>
-
          <span class="nb">outs</span>         a<span class="n">2</span><span class="p">,</span> a<span class="n">3</span>
 <span class="kd">endin</span>
 <span class="nt">&lt;/CsInstruments&gt;</span>
@@ -165,7 +169,7 @@ a<span class="n">3</span>       <span class="nb">pvsynth</span>      f<span clas
 <span class="nb">f</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">2048</span> <span class="o">-</span><span class="mi">7</span> <span class="mi">0</span> <span class="mi">128</span> <span class="mf">1.1</span> <span class="mi">128</span> <span class="mf">0.5</span>  <span class="mi">256</span> <span class="mf">1.8</span> <span class="mi">512</span> <span class="mf">1.1</span> <span class="mi">1024</span> <span class="mf">0.1</span>
 <span class="nb">f</span><span class="mi">2</span> <span class="mi">0</span> <span class="mi">2048</span> <span class="o">-</span><span class="mi">7</span> <span class="mi">1</span> <span class="mi">128</span> <span class="mf">0.2</span> <span class="mi">128</span> <span class="mf">0.05</span> <span class="mi">256</span> <span class="mf">0.5</span> <span class="mi">512</span> <span class="mf">0.9</span> <span class="mi">1024</span> <span class="mf">0.1</span>
 
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">60</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">30</span>
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
@@ -176,7 +180,7 @@ a<span class="n">3</span>       <span class="nb">pvsynth</span>      f<span clas
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm188984"></a>
+        <a id="idm188989"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="pvsanal.html" title="pvsanal"><em class="citetitle">pvsanal</em></a>,
@@ -186,7 +190,7 @@ a<span class="n">3</span>       <span class="nb">pvsynth</span>      f<span clas
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm188995"></a>
+        <a id="idm189000"></a>
         <h2>Credits</h2>
         <p>
       </p>
