@@ -141,14 +141,18 @@ it will be equivalent to a narrowband band-pass filter.</p>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
--odac
+<span class="c1">; Select audio/midi flags here according to platform</span>
+-odac    <span class="c1">;;;realtime audio out</span>
+<span class="c1">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</span>
+<span class="c1">; For Non-realtime ouput leave only the line below:</span>
+<span class="c1">;-o pvsfilter.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span>
 
 <span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">16</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
 <span class="c1">;; example written by joachim heintz 2009</span>
 
@@ -156,15 +160,15 @@ gi<span class="n">Sine</span>		<span class="nb">ftgen</span>		<span class="mi">0
 gi<span class="n">Bell</span>		<span class="nb">ftgen</span>		<span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4096</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mf">.56</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">.57</span><span class="p">,</span> <span class="mf">.67</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">.92</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">.93</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.19</span><span class="p">,</span> <span class="mf">2.67</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">,</span> <span class="mf">1.67</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">1.46</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">2.74</span><span class="p">,</span> <span class="mf">1.33</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">1.33</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">3.76</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">4.07</span><span class="p">,</span> <span class="mf">1.33</span><span class="p">,</span> <span class="mi">0</span><span class="c1">; bell-like (after Risset)</span>
 
 <span class="kd">instr</span> <span class="nf">1</span>
-i<span class="n">permut</span>	<span class="o">=</span>		<span class="vi">p4</span><span class="c1">; 1 = change order of soundfiles </span>
-i<span class="n">fftsize</span>	<span class="o">=</span>		<span class="mi">1024</span>
-i<span class="n">overlap</span>	<span class="o">=</span>		i<span class="n">fftsize</span> <span class="o">/</span> <span class="mi">4</span>
-i<span class="n">winsize</span>	<span class="o">=</span>		i<span class="n">fftsize</span>
-i<span class="n">winshape</span>	<span class="o">=</span>		<span class="mi">1</span><span class="c1">; von-Hann window</span>
-S<span class="n">file1</span>		<span class="o">=</span>		<span class="s">"fox.wav"</span>
+i<span class="n">permut</span>     <span class="o">=</span> <span class="vi">p4</span>            <span class="c1">; 1 = change order of soundfiles </span>
+i<span class="n">fftsize</span>	<span class="o">=</span> <span class="mi">1024</span>
+i<span class="n">overlap</span>	<span class="o">=</span> i<span class="n">fftsize</span> <span class="o">/</span> <span class="mi">4</span>
+i<span class="n">winsize</span>	<span class="o">=</span> i<span class="n">fftsize</span>
+i<span class="n">winshape</span>	<span class="o">=</span> <span class="mi">1</span>             <span class="c1">; von-Hann window</span>
+S<span class="n">file1</span>		<span class="o">=</span> <span class="s">"fox.wav"</span>
 a<span class="n">in1</span>		<span class="nb">soundin</span>	S<span class="n">file1</span>
 k<span class="n">freq</span>		<span class="nb">randomi</span>	<span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">3</span>
-a<span class="n">in2</span>		<span class="nb">oscili</span>		<span class="mf">.2</span><span class="p">,</span> k<span class="n">freq</span><span class="p">,</span> gi<span class="n">Bell</span>
+a<span class="n">in2</span>		<span class="nb">oscili</span> <span class="mf">.2</span><span class="p">,</span> k<span class="n">freq</span><span class="p">,</span> gi<span class="n">Bell</span>
 <span class="c1">;ain2		oscili		.2, kfreq, giSine; try also this </span>
 f<span class="n">ftin1</span>		<span class="nb">pvsanal</span>	a<span class="n">in1</span><span class="p">,</span> i<span class="n">fftsize</span><span class="p">,</span> i<span class="n">overlap</span><span class="p">,</span> i<span class="n">winsize</span><span class="p">,</span> i<span class="n">winshape</span><span class="c1">; fft-analysis of file 1</span>
 f<span class="n">ftin2</span>		<span class="nb">pvsanal</span>	a<span class="n">in2</span><span class="p">,</span> i<span class="n">fftsize</span><span class="p">,</span> i<span class="n">overlap</span><span class="p">,</span> i<span class="n">winsize</span><span class="p">,</span> i<span class="n">winshape</span><span class="c1">; fft-analysis of file 2</span>
@@ -174,7 +178,7 @@ f<span class="n">cross</span>		<span class="nb">pvsfilter</span>	f<span class="n
 f<span class="n">cross</span>		<span class="nb">pvsfilter</span>	f<span class="n">ftin1</span><span class="p">,</span> f<span class="n">ftin2</span><span class="p">,</span> <span class="mi">1</span>
 <span class="k">endif</span>
 a<span class="n">out</span>		<span class="nb">pvsynth</span>	f<span class="n">cross</span>
-		<span class="nb">out</span>		a<span class="n">out</span> <span class="o">*</span> <span class="mi">20</span>
+		<span class="nb">outs</span>		a<span class="n">out</span> <span class="o">*</span> <span class="mi">30</span><span class="p">,</span> a<span class="n">out</span> <span class="o">*</span> <span class="mi">30</span>
 <span class="kd">endin</span>
 
 <span class="nt">&lt;/CsInstruments&gt;</span>
@@ -192,7 +196,7 @@ a<span class="n">out</span>		<span class="nb">pvsynth</span>	f<span class="n">cr
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm190502"></a>
+        <a id="idm190511"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="pvsanal.html" title="pvsanal"><em class="citetitle">pvsanal</em></a>,
@@ -201,7 +205,7 @@ a<span class="n">out</span>		<span class="nb">pvsynth</span>	f<span class="n">cr
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm190511"></a>
+        <a id="idm190520"></a>
         <h2>Credits</h2>
         <p>
       </p>
