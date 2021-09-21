@@ -39,19 +39,19 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm194929"></a>
+        <a id="idm194963"></a>
         <h2>Description</h2>
         <p>
       Resynthesise phase vocoder data (f-signal) using a FFT overlap-add.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm194932"></a>
+        <a id="idm194966"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ares <span class="command"><strong>pvsynth</strong></span> fsrc, [iinit]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm194936"></a>
+        <a id="idm194970"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>ares</em></span> -- output audio signal
@@ -64,12 +64,12 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm194944"></a>
+        <a id="idm194978"></a>
         <h2>Examples</h2>
         <p>
       </p>
         <div class="example">
-          <a id="idm194947"></a>
+          <a id="idm194981"></a>
           <p class="title">
             <strong>Example 851. Example (using score-supplied f-table, assuming fsig <span class="emphasis"><em>fftsize = 1024</em></span>)</strong>
           </p>
@@ -94,14 +94,14 @@ aout    <span class="opc">pvsynth</span>  fsigout                   <span class=
 
       </p>
         <div class="example">
-          <a id="idm194968"></a>
+          <a id="idm195002"></a>
           <p class="title">
             <strong>Example 852. Example of the pvsynth opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm194975"></a>
+              <a id="idm195009"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -114,22 +114,22 @@ aout    <span class="opc">pvsynth</span>  fsigout                   <span class=
 <span class="nt">&lt;CsInstruments&gt;</span>
 
 <span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">16</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
 <span class="c1">;; example written by joachim heintz 2009</span>
 
 <span class="kd">instr</span> <span class="nf">1</span>
-i<span class="n">fftsize</span>	<span class="o">=</span>		<span class="mi">1024</span>
-i<span class="n">overlap</span>	<span class="o">=</span>		i<span class="n">fftsize</span> <span class="o">/</span> <span class="mi">4</span>
-i<span class="n">winsize</span>	<span class="o">=</span>		i<span class="n">fftsize</span>
-i<span class="n">winshape</span>	<span class="o">=</span>		<span class="mi">1</span>  <span class="c1">; von-Hann window</span>
-S<span class="n">file</span>		<span class="o">=</span>		<span class="s">"fox.wav"</span>
+i<span class="n">fftsize</span>	<span class="o">=</span> <span class="mi">1024</span>
+i<span class="n">overlap</span>	<span class="o">=</span> i<span class="n">fftsize</span> <span class="o">/</span> <span class="mi">4</span>
+i<span class="n">winsize</span>	<span class="o">=</span> i<span class="n">fftsize</span>
+i<span class="n">winshape</span>	<span class="o">=</span> <span class="mi">1</span>  <span class="c1">; von-Hann window</span>
+S<span class="n">file</span>		<span class="o">=</span> <span class="s">"fox.wav"</span>
 a<span class="n">in</span>		<span class="nb">soundin</span>	S<span class="n">file</span>
 f<span class="n">ftin</span>		<span class="nb">pvsanal</span>	a<span class="n">in</span><span class="p">,</span> i<span class="n">fftsize</span><span class="p">,</span> i<span class="n">overlap</span><span class="p">,</span> i<span class="n">winsize</span><span class="p">,</span> i<span class="n">winshape</span><span class="c1">; fft-analysis of the audio-signal</span>
 a<span class="n">out</span>		<span class="nb">pvsynth</span>	f<span class="n">ftin</span><span class="c1">; resynthesis</span>
-		<span class="nb">out</span>		a<span class="n">out</span>
+<span class="nb">outs</span>		a<span class="n">out</span><span class="p">,</span> a<span class="n">out</span>
 <span class="kd">endin</span>
 
 <span class="nt">&lt;/CsInstruments&gt;</span>
@@ -146,7 +146,7 @@ a<span class="n">out</span>		<span class="nb">pvsynth</span>	f<span class="n">ft
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm195050"></a>
+        <a id="idm195086"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="pvsanal.html" title="pvsanal"><em class="citetitle">pvsanal</em></a>,
@@ -154,7 +154,7 @@ a<span class="n">out</span>		<span class="nb">pvsynth</span>	f<span class="n">ft
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm195057"></a>
+        <a id="idm195093"></a>
         <h2>Credits</h2>
         <p>
       </p>

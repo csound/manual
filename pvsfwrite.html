@@ -77,40 +77,43 @@
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
-<span class="c1">; Audio out   Audio in</span>
--odac           -iadc    <span class="c1">;;;RT audio I/O</span>
+-odac  <span class="c1">;;;realtime audio out</span>
+<span class="c1">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</span>
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o pvsfwrite.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span>
 
 <span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">kr</span> <span class="o">=</span> <span class="mi">4410</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
 <span class="c1">;By Victor Lazzarini 2008</span>
 
 <span class="kd">instr</span> <span class="nf">1</span>
-a<span class="n">sig</span> <span class="nb">oscili</span> <span class="mi">10000</span><span class="p">,</span> <span class="mi">440</span><span class="p">,</span> <span class="mi">1</span>
-f<span class="n">ss</span> <span class="nb">pvsanal</span>  a<span class="n">sig</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span><span class="mi">256</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="mi">0</span>
+
+a<span class="n">sig</span> <span class="nb">oscili</span> <span class="mf">.5</span><span class="p">,</span> <span class="mi">440</span><span class="p">,</span> <span class="mi">1</span>
+f<span class="n">ss</span>  <span class="nb">pvsanal</span> a<span class="n">sig</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span><span class="mi">256</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="mi">0</span>
 <span class="nb">pvsfwrite</span> f<span class="n">ss</span><span class="p">,</span> <span class="s">"mypvs.pvx"</span>
-a<span class="n">se</span> <span class="nb">pvsynth</span> f<span class="n">ss</span>
-           <span class="nb">out</span> a<span class="n">se</span>
+a<span class="n">se</span>  <span class="nb">pvsynth</span> f<span class="n">ss</span>
+<span class="nb">outs</span> a<span class="n">se</span><span class="p">,</span>a<span class="n">se</span>
 <span class="kd">endin</span>
 
 <span class="kd">instr</span> <span class="nf">2</span> <span class="c1">; must be called after instr 1 finishes</span>
+
 k<span class="n">tim</span> <span class="nb">timeinsts</span>
 f<span class="n">ss</span>  <span class="nb">pvsfread</span> k<span class="n">tim</span><span class="p">,</span> <span class="s">"mypvs.pvx"</span>
 a<span class="n">sig</span> <span class="nb">pvsynth</span> f<span class="n">ss</span>
-  <span class="nb">out</span> a<span class="n">sig</span>
-<span class="kd">endin</span>
+<span class="nb">outs</span> a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
 
+<span class="kd">endin</span>
 <span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span> 
 <span class="nb">f</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">16384</span> <span class="mi">10</span> <span class="mi">1</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span>   <span class="mi">1</span>
-<span class="nb">i</span><span class="mi">2</span> <span class="mi">1</span>   <span class="mi">1</span>
+
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span>
+<span class="nb">i</span><span class="mi">2</span> <span class="mi">1</span> <span class="mi">1</span>
 <span class="nb">e</span>
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
@@ -122,7 +125,7 @@ a<span class="n">sig</span> <span class="nb">pvsynth</span> f<span class="n">ss<
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm191545"></a>
+        <a id="idm191549"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="pvsanal.html" title="pvsanal"><em class="citetitle">pvsanal</em></a>,
@@ -131,7 +134,7 @@ a<span class="n">sig</span> <span class="nb">pvsynth</span> f<span class="n">ss<
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm191554"></a>
+        <a id="idm191558"></a>
         <h2>Credits</h2>
         <p>
       </p>
