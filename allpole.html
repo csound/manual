@@ -119,12 +119,12 @@ gi<span class="n">fw</span> <span class="nb">ftgen</span> <span class="mi">0</sp
 
 <span class="kd">instr</span> <span class="nf">1</span>
 a<span class="n">1</span> <span class="nb">diskin</span> <span class="s">"fox.wav"</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span>
-k<span class="n">cfs</span><span class="p">[],</span>k<span class="n">rms</span><span class="p">,</span>k<span class="n">err</span><span class="p">,</span>k<span class="n">cps</span> <span class="n">lpcanal</span> a<span class="n">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="mi">64</span><span class="p">,</span>gi<span class="n">fw</span>
+k<span class="n">cfs</span><span class="p">[],</span>k<span class="n">rms</span><span class="p">,</span>k<span class="n">err</span><span class="p">,</span>k<span class="n">cps</span> <span class="nb">lpcanal</span> a<span class="n">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="mi">64</span><span class="p">,</span>gi<span class="n">fw</span>
 <span class="k">if</span> k<span class="n">cps</span> <span class="o">&gt;</span> <span class="mi">180</span> <span class="k">then</span>
   k<span class="n">cps</span> <span class="o">=</span> <span class="mi">180</span>
 <span class="k">endif</span>
 a<span class="n">2</span> <span class="nb">buzz</span> <span class="vg">0dbfs</span><span class="p">,</span> k<span class="n">cps</span><span class="p">,</span> <span class="vg">sr</span><span class="o">/</span><span class="p">(</span>k<span class="n">cps</span><span class="o">*</span><span class="mi">2</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span>
-a<span class="n">3</span> a<span class="n">llpole</span> a<span class="n">2</span><span class="o">*</span>k<span class="n">rms</span><span class="o">*</span>k<span class="n">err</span><span class="p">,</span>k<span class="n">cfs</span>
+a<span class="n">3</span> <span class="nb">allpole</span> a<span class="n">2</span><span class="o">*</span>k<span class="n">rms</span><span class="o">*</span>k<span class="n">err</span><span class="p">,</span>k<span class="n">cfs</span>
 a<span class="n">3</span> <span class="nb">dcblock</span> a<span class="n">3</span>
 <span class="nb">out</span> a<span class="n">3</span>
 <span class="kd">endin</span>
@@ -171,12 +171,12 @@ gi<span class="n">fw</span> <span class="nb">ftgen</span> <span class="mi">0</sp
 <span class="kd">instr</span> <span class="nf">1</span>
 k<span class="n">1</span> <span class="nb">init</span> <span class="mi">0</span>
 k<span class="n">ts</span> <span class="o">=</span> <span class="vi">p4</span>
-k<span class="n">cfs</span><span class="p">[],</span>k<span class="n">rms</span><span class="p">,</span>k<span class="n">err</span><span class="p">,</span>k<span class="n">cps</span> <span class="n">lpcanal</span> k<span class="n">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>gi<span class="n">fn</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="vg">ksmps</span><span class="p">,</span>gi<span class="n">fw</span>
+k<span class="n">cfs</span><span class="p">[],</span>k<span class="n">rms</span><span class="p">,</span>k<span class="n">err</span><span class="p">,</span>k<span class="n">cps</span> <span class="nb">lpcanal</span> k<span class="n">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>gi<span class="n">fn</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="vg">ksmps</span><span class="p">,</span>gi<span class="n">fw</span>
 <span class="k">if</span> k<span class="n">cps</span> <span class="o">&gt;</span> <span class="mi">180</span> <span class="k">then</span>
   k<span class="n">cps</span> <span class="o">=</span> <span class="mi">180</span>
 <span class="k">endif</span>
 a<span class="n">1</span> <span class="nb">buzz</span> <span class="vg">0dbfs</span><span class="p">,</span> k<span class="n">cps</span><span class="p">,</span> <span class="vg">sr</span><span class="o">/</span><span class="p">(</span>k<span class="n">cps</span><span class="o">*</span><span class="mi">2</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span>
-a<span class="n">3</span> a<span class="n">llpole</span> a<span class="n">1</span><span class="o">*</span>k<span class="n">rms</span><span class="o">*</span>k<span class="n">err</span><span class="p">,</span>k<span class="n">cfs</span>
+a<span class="n">3</span> <span class="nb">allpole</span> a<span class="n">1</span><span class="o">*</span>k<span class="n">rms</span><span class="o">*</span>k<span class="n">err</span><span class="p">,</span>k<span class="n">cfs</span>
 k<span class="n">1</span> <span class="o">+=</span> <span class="vg">ksmps</span><span class="o">*</span>k<span class="n">ts</span>
 <span class="k">if</span> k<span class="n">1</span> <span class="o">&gt;</span> <span class="nb">ftlen</span><span class="p">(</span>gi<span class="n">fn</span><span class="p">)</span> <span class="k">then</span>
  k<span class="n">1</span> <span class="o">=</span> <span class="mi">0</span>
