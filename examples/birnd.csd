@@ -4,7 +4,7 @@
 -odac    ;;;realtime audio out
 ;-iadc    ;;;uncomment -iadc if realtime audio input is needed too
 ; For Non-realtime ouput leave only the line below:
-;-o vco.wav -W ;;; for file output any platform
+;-o birnd.wav -W ;;; for file output any platform
 </CsOptions>
 <CsInstruments>
 
