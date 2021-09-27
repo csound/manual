@@ -8,7 +8,7 @@
 </CsOptions>
 <CsInstruments>
 
-; by Kevin Conder & Menno Knevel, adapted for new args by François Pinot.
+; by Kevin Conder & Menno Knevel, adapted for new args by Francois Pinot.
 
 sr = 44100
 ksmps = 32
