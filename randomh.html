@@ -117,45 +117,43 @@
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
 <span class="c1">; Audio out   Audio in</span>
--odac           -iadc    <span class="c1">;;;RT audio I/O</span>
+-odac    <span class="c1">;;;realtime audio out</span>
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o randomh.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span>
 
-<span class="c1">; Initialize the global variables.</span>
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">kr</span> <span class="o">=</span> <span class="mi">4410</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="c1">; by Kevin Conder &amp; Menno Knevel, adapted for new args by François Pinot.</span>
 
-     <span class="nb">seed</span> <span class="mi">0</span>
-     
-<span class="c1">; Instrument #1.</span>
+<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+
+<span class="nb">seed</span> <span class="mi">0</span>
+
 <span class="kd">instr</span> <span class="nf">1</span>
-  <span class="c1">; Choose a random frequency between 220 and 440 Hz.</span>
-  <span class="c1">; Generate new random numbers at 10 Hz.</span>
-  k<span class="n">min</span>    <span class="nb">init</span> <span class="mi">220</span>
-  k<span class="n">max</span>    <span class="nb">init</span> <span class="mi">440</span>
-  k<span class="n">cps</span>    <span class="nb">init</span> <span class="mi">10</span>
-  i<span class="n">mode</span>   <span class="o">=</span>    <span class="vi">p4</span>
-  i<span class="n">fstval</span> <span class="o">=</span>    <span class="vi">p5</span>
+
+k<span class="n">min</span>    <span class="nb">init</span> <span class="mi">220</span><span class="c1">; Choose a random frequency between 220 and 440 Hz.</span>
+k<span class="n">max</span>    <span class="nb">init</span> <span class="mi">440</span>
+k<span class="n">cps</span>    <span class="nb">init</span> <span class="mi">10</span><span class="c1">; Generate new random numbers at 10 Hz.</span>
+i<span class="n">mode</span>   <span class="o">=</span>    <span class="vi">p4</span>
+i<span class="n">fstval</span> <span class="o">=</span>    <span class="vi">p5</span>
   
-     <span class="nb">printf_i</span> <span class="s">"</span><span class="se">\n</span><span class="s">Mode: </span><span class="si">%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> i<span class="n">mode</span>
-  k<span class="n">1</span> <span class="nb">randomh</span> k<span class="n">min</span><span class="p">,</span> k<span class="n">max</span><span class="p">,</span> k<span class="n">cps</span><span class="p">,</span> i<span class="n">mode</span><span class="p">,</span> i<span class="n">fstval</span>
-     <span class="nb">printk2</span> k<span class="n">1</span>
+<span class="nb">printf_i</span> <span class="s">"</span><span class="se">\n</span><span class="s">Mode: </span><span class="si">%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> i<span class="n">mode</span>
+k<span class="n">1</span> <span class="nb">randomh</span> k<span class="n">min</span><span class="p">,</span> k<span class="n">max</span><span class="p">,</span> k<span class="n">cps</span><span class="p">,</span> i<span class="n">mode</span><span class="p">,</span> i<span class="n">fstval</span>
+<span class="nb">printk2</span> k<span class="n">1</span>
+a<span class="n">sig</span>    <span class="nb">poscil</span>  <span class="mi">1</span><span class="p">,</span> k<span class="n">1</span>
+<span class="nb">outs</span>    a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
 <span class="kd">endin</span>
 
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
-
-<span class="c1">; Play Instrument #1 for one second,</span>
 <span class="c1">; each time with a different mode.</span>
 <span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">330</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">1</span> <span class="mi">3</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">330</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">4</span> <span class="mi">1</span> <span class="mi">3</span>
 <span class="nb">e</span>
-
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
@@ -191,7 +189,7 @@ Mode: 3
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm197255"></a>
+        <a id="idm197262"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="randh.html" title="randh"><em class="citetitle">randh</em></a>,
@@ -200,13 +198,12 @@ Mode: 3
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm197264"></a>
+        <a id="idm197271"></a>
         <h2>Credits</h2>
         <p>Author: Gabriel Maldonado</p>
         <p>Arguments <span class="emphasis"><em>imode</em></span> and <span class="emphasis"><em>ifirstval</em></span>
     added by François Pinot, Jan. 2011, after a discussion with Peiman Khosravi on
     the csnd list.</p>
-        <p>Example written by Kevin Conder, adapted for new args by François Pinot.</p>
       </div>
     </div>
     <div class="navfooter">

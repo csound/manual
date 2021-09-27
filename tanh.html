@@ -39,28 +39,28 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm243326"></a>
+        <a id="idm243325"></a>
         <h2>Description</h2>
         <p>
       Returns the hyperbolic tangent of <span class="emphasis"><em>x</em></span>. 
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm243330"></a>
+        <a id="idm243329"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>tanh</strong></span>(x) (no rate
     restriction)</pre>
         <pre class="synopsis"><span class="command"><strong>tanh</strong></span>(k/i[]) (k- or i-arrays )</pre>
       </div>
       <div class="refsect1">
-        <a id="idm243336"></a>
+        <a id="idm243335"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the tanh opcode. It uses the file <a class="ulink" href="examples/tanh.csd" target="_top"><em class="citetitle">tanh.csd</em></a>. 
 
       </p>
         <div class="example">
-          <a id="idm243341"></a>
+          <a id="idm243340"></a>
           <p class="title">
             <strong>Example 1087. Example of the tanh opcode.</strong>
           </p>
@@ -70,43 +70,38 @@
         Flags</em></a> for more information on using command
         line flags.</p>
             <div class="refsect1">
-              <a id="idm243348"></a>
+              <a id="idm243347"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
 <span class="c1">; Audio out   Audio in</span>
--odac           -iadc    <span class="c1">;;;RT audio I/O</span>
+-odac    <span class="c1">;;;realtime audio out</span>
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o tanh.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span>
 
-<span class="c1">; Initialize the global variables.</span>
 <span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">kr</span> <span class="o">=</span> <span class="mi">4410</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
-<span class="c1">; Instrument #1.</span>
 <span class="kd">instr</span> <span class="nf">1</span>
-  a<span class="n">sig1</span> <span class="nb">vco</span>  <span class="mi">1</span><span class="p">,</span> <span class="mi">440</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mi">1</span>
-  a<span class="n">sig2</span> <span class="nb">vco</span>  <span class="mi">1</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span>
-  a<span class="n">sig</span>  <span class="o">=</span>    a<span class="n">sig1</span><span class="o">+</span>a<span class="n">sig2</span>       <span class="c1">;; will go out of range</span>
-        <span class="nb">out</span>  <span class="nb">tanh</span><span class="p">(</span>a<span class="n">sig</span><span class="p">)</span>        <span class="c1">;; but tanh is a limiter</span>
-<span class="kd">endin</span>
 
+a<span class="n">sig1</span> <span class="nb">vco</span>  <span class="mi">1</span><span class="p">,</span> <span class="mi">440</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mi">1</span>
+a<span class="n">sig2</span> <span class="nb">vco</span>  <span class="mi">1</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span>
+a<span class="n">sig</span>  <span class="o">=</span>    a<span class="n">sig1</span><span class="o">+</span>a<span class="n">sig2</span>              <span class="c1">; will go out of range</span>
+<span class="nb">outs</span>  <span class="nb">tanh</span><span class="p">(</span>a<span class="n">sig</span><span class="p">),</span> <span class="nb">tanh</span><span class="p">(</span>a<span class="n">sig</span><span class="p">)</span>        <span class="c1">; but tanh is a limiter</span>
+
+<span class="kd">endin</span>
 
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
+<span class="nb">f</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">65536</span> <span class="mi">10</span> <span class="mi">1</span> <span class="c1">; sine</span>
 
-<span class="nb">f</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">65536</span> <span class="mi">10</span> <span class="mi">1</span>
-<span class="c1">; Play Instrument #1 for one second.</span>
 <span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span>
 <span class="nb">e</span>
-
-
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
@@ -117,7 +112,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm243429"></a>
+        <a id="idm243427"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="cos.html" title="cos"><em class="citetitle">cos</em></a>,
@@ -131,7 +126,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm243448"></a>
+        <a id="idm243446"></a>
         <h2>Credits</h2>
         <p>Author: John ffitch</p>
         <p>New in version 3.47</p>
