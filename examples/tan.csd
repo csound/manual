@@ -8,6 +8,8 @@
 </CsOptions>
 <CsInstruments>
 
+; by Kevin Conder
+
 sr = 44100
 ksmps = 32
 nchnls = 2
