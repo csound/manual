@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>bformdec2</title>
+    <link rel="stylesheet" type="text/css" href="csound.css" />
+    <link rel="stylesheet" type="text/css" href="syntax-highlighting.css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.79.1" />
+    <link rel="home" href="index.html" title="The Canonical Csound Reference Manual" />
+    <link rel="up" href="OpcodesTop.html" title="Orchestra Opcodes and Operators" />
+    <link rel="prev" href="bformdec1.html" title="bformdec1" />
+    <link rel="next" href="binit.html" title="binit" />
+  </head>
+  <body>
+    <div class="navheader">
+      <table width="100%" summary="Navigation header">
+        <tr>
+          <th colspan="3" align="center">bformdec2</th>
+        </tr>
+        <tr>
+          <td width="20%" align="left"><a accesskey="p" href="bformdec1.html">Prev</a> </td>
+          <th width="60%" align="center">Orchestra Opcodes and Operators</th>
+          <td width="20%" align="right"> <a accesskey="n" href="binit.html">Next</a></td>
+        </tr>
+      </table>
+      <hr />
+    </div>
+    <div class="refentry">
+      <a id="bformdec2"></a>
+      <div class="titlepage"></div>
+      <a id="IndexBformdec2" class="indexterm"></a>
+      <div class="refnamediv">
+        <h2>
+          <span class="refentrytitle">bformdec2</span>
+        </h2>
+        <p>bformdec2 — 
+      Decodes an Ambisonics B format signal.
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm34905"></a>
+        <h2>Description</h2>
+        <p>
+    	Decodes an Ambisonics B format signal into loudspeaker specific signals, with dual--band decoding and near--field compensation. 
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm34908"></a>
+        <h2>Syntax</h2>
+        <pre class="synopsis">aout[] <span class="command"><strong>bformdec2</strong></span> isetup, abform[], [idecoder, idistance, ifreq, \
+		imix, ifilel, ifiler]</pre>
+      </div>
+      <div class="refsect1">
+        <a id="idm34912"></a>
+        <h2>Initialization</h2>
+        <p>
+      <span class="emphasis"><em>isetup</em></span> -- loudspeaker setup.
+	There are currently 8 supported setups, the first five are backwards compatible with <a class="link" href="bformdec1.html" title="bformdec1"><em class="citetitle">bformdec1</em></a>:
+
+	</p>
+        <p>(Note that horizontal angles are measured anticlockwise in this description.)</p>
+        <p>
+	
+      </p>
+        <div class="itemizedlist">
+          <ul class="itemizedlist" style="list-style-type: disc; ">
+            <li class="listitem">
+                1. Stereo -- L(90), R(-90); this is an M+S style stereo decode.
+        </li>
+            <li class="listitem">
+                2. Quad -- FL(45), BL(135), BR(-135), FR(-45). This is a
+                first-order decode.
+        </li>
+            <li class="listitem">
+                3. 5.0 -- L(30), R(-30), C(0), BL(110), BR(-110). This is the
+                configuration suggested by the International Telecommunication
+                Union for 5.1 surround systems for music listening. This is a
+                first- or second- order decode.
+        </li>
+            <li class="listitem">
+                4. Octagon -- FFL(22.5), FLL(67.5), BLL(112.5), BBL(157.5),
+                BBR(-157.5), BRR(-112.5), FRR(-67.5), FFR(-22.5). This is a
+                first-, second- or third-order decode, depending on the number
+                of input channels.
+        </li>
+            <li class="listitem">
+                5. Cube -- FLD(45,-35.26), FLU(45,35.26), BLD(135,-35.26),
+                BLU(135,35.26), BRD(-135,-35.26), BRU(-135,35.26),
+                FRD(-45,-35.26), FRU(-45,35.26). This is a first-order decode.
+        </li>
+            <li class="listitem">
+                6. Hexagon -- FL(30), L(90) BL(150), BR(-150), R(-90),
+                FR(-30). This is a first- or second- order decode.
+        </li>
+            <li class="listitem">
+                21. 2D binaural configuration. This first decodes to a
+                octagon configuration and then applies HRTF filters.
+        </li>
+            <li class="listitem">
+                31. 3D binaural configuration. This first decodes to a
+                dodecahedron configuration and then applies HRTF
+                filters.
+        </li>
+          </ul>
+        </div>
+        <p>
+    </p>
+        <p>
+      <span class="emphasis"><em>idecoder</em></span> -- optional (default 0), select the type of decoder
+        </p>
+        <div class="itemizedlist">
+          <ul class="itemizedlist" style="list-style-type: disc; ">
+            <li class="listitem">
+                0. Dual decoder (velocity and energy decoders using dual-band splitting).
+        </li>
+            <li class="listitem">
+                1. Velocity decoder.
+        </li>
+            <li class="listitem">
+                2. Energy decoder.
+        </li>
+          </ul>
+        </div>
+        <p>
+    </p>
+        <p>
+      <span class="emphasis"><em>idistance</em></span> -- optional (default 1 meter), select the distance (in meters) to the loudspeaker (radius if regular configuration)
+    </p>
+        <p>
+	<span class="emphasis"><em>ifreq</em></span> -- optional (default 400 Hz),
+	frequency cut (Hz) of the band splitting filter (only has an
+	effect if <span class="emphasis"><em>idecoder</em></span>=0)
+    </p>
+        <p>
+      <span class="emphasis"><em>imix</em></span> -- optional (default 0), type of mix
+      of the velocity and energy decoders' outputs 
+        </p>
+        <div class="itemizedlist">
+          <ul class="itemizedlist" style="list-style-type: disc; ">
+            <li class="listitem">
+                0. Energy
+        </li>
+            <li class="listitem">
+                1. RMS
+        </li>
+            <li class="listitem">
+                2. Amplitude
+        </li>
+          </ul>
+        </div>
+        <p>
+    </p>
+        <p>
+      <span class="emphasis"><em>ifilel</em></span> -- left HRTF spectral data file
+    </p>
+        <p>
+      <span class="emphasis"><em>ifiler</em></span> -- right HRTF spectral data file
+    </p>
+        <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+          <table border="0" summary="Note">
+            <tr>
+              <td rowspan="2" align="center" valign="top" width="25">
+                <img alt="[Note]" src="images/note.png" />
+              </td>
+              <th align="left">Note</th>
+            </tr>
+            <tr>
+              <td align="left" valign="top">
+                <p>
+	Spectral datafiles (based on the MIT HRTF database) should be
+        in the current directory or the SADIR (see the <a class="link" href="hrtfstat.html" title="hrtfstat"><em class="citetitle">hrtfstat
+        documentation</em></a>). 
+      </p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="refsect1">
+        <a id="idm34953"></a>
+        <h2>Performance</h2>
+        <p>
+      <span class="emphasis"><em>abform</em></span> -- input signal array in the B format
+    </p>
+        <p>
+      <span class="emphasis"><em>aout[]</em></span> -- loudspeaker specific output signals
+    </p>
+        <p>
+      The opcode receives as input an audio type array with an
+      Ambisonics signal, and outputs another array with a multichannel
+      audio signal decoded according to the given setup. 
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm34960"></a>
+        <h2>See Also</h2>
+        <p>
+      <a class="link" href="bformenc.html" title="bformenc"><em class="citetitle">bformenc</em></a>
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm34965"></a>
+        <h2>Credits</h2>
+        <p>By: Pablo Zinemanas, Mart??n Rocamora and Luis Jure,
+    2019. Adapted by John ffitch</p>
+        <p>Based on code from the <a class="ulink" href="https://bitbucket.org/ambidecodertoolbox/adt/" target="_top"><em class="citetitle">Ambisonics Decoder Toolbox</em></a> by Aaron J. Heller.</p>
+        <p>For more information about the opcode and technical details
+    see: Pablo Zinemanas, Mart??n Rocamora and Luis Jure. Improving
+    Csound's Ambisonics decoders. Fifth International Csound
+    Conference -- ICSC2019. Italy, 2019 -- <a class="ulink" href="https://csound.com/icsc2019/proceedings/7.pdf" target="_top"><em class="citetitle">PDF</em></a>.</p>
+        <p>New in version 6.17</p>
+      </div>
+    </div>
+    <div class="navfooter">
+      <hr />
+      <table width="100%" summary="Navigation footer">
+        <tr>
+          <td width="40%" align="left"><a accesskey="p" href="bformdec1.html">Prev</a> </td>
+          <td width="20%" align="center">
+            <a accesskey="u" href="OpcodesTop.html">Up</a>
+          </td>
+          <td width="40%" align="right"> <a accesskey="n" href="binit.html">Next</a></td>
+        </tr>
+        <tr>
+          <td width="40%" align="left" valign="top">bformdec1 </td>
+          <td width="20%" align="center">
+            <a accesskey="h" href="index.html">Home</a>
+          </td>
+          <td width="40%" align="right" valign="top"> binit</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
