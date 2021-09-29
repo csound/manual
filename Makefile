@@ -384,7 +384,7 @@ OPCODES = opcodes/0dbfs.xml	opcodes/ATSadd.xml	opcodes/ATSaddnz.xml \
 	opcodes/pvsftr.xml	opcodes/pvsftw.xml	opcodes/pvsfwrite.xml \
 	opcodes/pvsgain.xml	opcodes/pvshift.xml	opcodes/pvsifd.xml \
 	opcodes/pvsin.xml	opcodes/pvsinfo.xml	opcodes/pvsinit.xml \
-	opcodes/pvslock.xml	opcodes/pvsmaska.xml	opcodes/pvsmix.xml \
+	opcodes/pvsmaska.xml	opcodes/pvsmix.xml \
 	opcodes/pvsmooth.xml	opcodes/pvsmorph.xml	opcodes/pvsosc.xml \
 	opcodes/pvsout.xml	opcodes/pvspitch.xml	opcodes/pvstanal.xml \
 	opcodes/pvstencil.xml	opcodes/pvsvoc.xml	opcodes/pvswarp.xml \
