@@ -39,19 +39,19 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm71703"></a>
+        <a id="idm71683"></a>
         <h2>Description</h2>
         <p>
       Returns the number of bits in each sample in a sound file.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm71706"></a>
+        <a id="idm71686"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ir <span class="command"><strong>filebit</strong></span> ifilcod [, iallowraw]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm71710"></a>
+        <a id="idm71690"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>ifilcod</em></span> -- sound file to be queried
@@ -61,7 +61,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm71716"></a>
+        <a id="idm71696"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>filebit</em></span> returns the number of bits in each
@@ -72,7 +72,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm71721"></a>
+        <a id="idm71701"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the filebit opcode. It uses the file <a class="ulink" href="examples/filebit.csd" target="_top"><em class="citetitle">filebit.csd</em></a>,
@@ -80,48 +80,42 @@ and <a class="ulink" href="examples/mary.wav" target="_top"><em class="citetitle
 
       </p>
         <div class="example">
-          <a id="idm71728"></a>
+          <a id="idm71708"></a>
           <p class="title">
             <strong>Example 295. Example of the filebit opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm71735"></a>
+              <a id="idm71715"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
 <span class="c1">; Audio out   Audio in</span>
--odac           -iadc    <span class="c1">;;;RT audio I/O</span>
+-n   <span class="c1">; no sound</span>
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o filebit.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span>
 
-<span class="c1">; Initialize the global variables.</span>
 <span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">kr</span> <span class="o">=</span> <span class="mi">4410</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
-<span class="c1">; Instrument #1.</span>
 <span class="kd">instr</span> <span class="nf">1</span>
-  <span class="c1">; Print out the number of channels in the </span>
-  <span class="c1">; audio file "mary.wav".</span>
-  i<span class="n">bits</span> <span class="nb">filebit</span> <span class="s">"mary.wav"</span>
-  <span class="nb">print</span> i<span class="n">bits</span>
+
+i<span class="n">bits</span> <span class="nb">filebit</span> <span class="s">"stereoJungle.wav"</span>
+<span class="nb">prints</span>  <span class="s">"</span><span class="se">\n</span><span class="s">bit depth = </span><span class="si">%d</span><span class="s"> bit</span><span class="se">\n\n</span><span class="s">"</span><span class="p">,</span> i<span class="n">bits</span>
+
 <span class="kd">endin</span>
 
 
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
-
-<span class="c1">; Play Instrument #1 for 1 second.</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span>
 <span class="nb">e</span>
-
-
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
@@ -133,13 +127,13 @@ and <a class="ulink" href="examples/mary.wav" target="_top"><em class="citetitle
       The audio file <span class="quote">“<span class="quote">mary.wav</span>”</span> is in monoaural CD format, so <span class="emphasis"><em>filebit</em></span>'s output should include a line like this:
       </p>
         <pre class="screen">
-instr 1:  ibits = 16.000
+bit depth = 16 bit
       </pre>
         <p>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm71783"></a>
+        <a id="idm71766"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="filelen.html" title="filelen"><em class="citetitle">filelen</em></a>,
@@ -149,7 +143,7 @@ instr 1:  ibits = 16.000
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm71794"></a>
+        <a id="idm71777"></a>
         <h2>Credits</h2>
         <p>
       </p>

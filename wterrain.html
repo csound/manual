@@ -39,79 +39,79 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm273761"></a>
+        <a id="idm273745"></a>
         <h2>Description</h2>
         <p>
       A simple wave-terrain synthesis opcode.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm273764"></a>
+        <a id="idm273748"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">aout <span class="command"><strong>wterrain</strong></span> kamp, kpch, k_xcenter, k_ycenter, k_xradius, k_yradius, \
       itabx, itaby</pre>
       </div>
       <div class="refsect1">
-        <a id="idm273768"></a>
+        <a id="idm273752"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>itabx, itaby</em></span> -- The two tables that define the terrain.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm273772"></a>
+        <a id="idm273756"></a>
         <h2>Performance</h2>
         <p>
       The output is the result of drawing an ellipse with axes <span class="emphasis"><em>k_xradius</em></span> and <span class="emphasis"><em>k_yradius</em></span> centered at (<span class="emphasis"><em>k_xcenter</em></span>, <span class="emphasis"><em>k_ycenter</em></span>), and traversing it at frequency <span class="emphasis"><em>kpch</em></span>.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm273780"></a>
+        <a id="idm273764"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the wterrain opcode. It uses the file <a class="ulink" href="examples/wterrain.csd" target="_top"><em class="citetitle">wterrain.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm273785"></a>
+          <a id="idm273769"></a>
           <p class="title">
             <strong>Example 1225. Example of the wterrain opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm273792"></a>
+              <a id="idm273776"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
 <span class="c1">; Audio out   No messages</span>
--odac           -d     <span class="c1">;;;RT audio I/O</span>
+-odac           -d     <span class="c1">;;;RT audio out</span>
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o wterrain.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span>
 
-<span class="c1">; Initialize the global variables.</span>
 <span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">kr</span> <span class="o">=</span> <span class="mi">4410</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
 <span class="kd">instr</span> <span class="nf">1</span>
+
 k<span class="n">dclk</span>   <span class="nb">linseg</span>  <span class="mi">0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="vi">p3</span><span class="o">-</span><span class="mf">0.02</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mi">0</span>
 k<span class="n">cx</span>     <span class="nb">line</span>    <span class="mf">0.1</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mf">1.9</span>
 k<span class="n">rx</span>     <span class="nb">linseg</span>  <span class="mf">0.1</span><span class="p">,</span> <span class="vi">p3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="vi">p3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.1</span>
 k<span class="n">pch</span>    <span class="nb">line</span>    <span class="nb">cpspch</span><span class="p">(</span><span class="vi">p4</span><span class="p">),</span> <span class="vi">p3</span><span class="p">,</span> <span class="vi">p5</span> <span class="o">*</span> <span class="nb">cpspch</span><span class="p">(</span><span class="vi">p4</span><span class="p">)</span>
-a<span class="n">1</span>      <span class="nb">wterrain</span>    <span class="mi">10000</span><span class="p">,</span> k<span class="n">pch</span><span class="p">,</span> k<span class="n">cx</span><span class="p">,</span> k<span class="n">cx</span><span class="p">,</span> <span class="o">-</span>k<span class="n">rx</span><span class="p">,</span> k<span class="n">rx</span><span class="p">,</span> <span class="vi">p6</span><span class="p">,</span> <span class="vi">p7</span>
+a<span class="n">1</span>      <span class="nb">wterrain</span>    <span class="mf">.5</span><span class="p">,</span> k<span class="n">pch</span><span class="p">,</span> k<span class="n">cx</span><span class="p">,</span> k<span class="n">cx</span><span class="p">,</span> <span class="o">-</span>k<span class="n">rx</span><span class="p">,</span> k<span class="n">rx</span><span class="p">,</span> <span class="vi">p6</span><span class="p">,</span> <span class="vi">p7</span>
 a<span class="n">1</span>      <span class="nb">dcblock</span> a<span class="n">1</span>
-        <span class="nb">out</span>     a<span class="n">1</span><span class="o">*</span>k<span class="n">dclk</span>
+<span class="nb">outs</span>    a<span class="n">1</span><span class="o">*</span>k<span class="n">dclk</span><span class="p">,</span> a<span class="n">1</span><span class="o">*</span>k<span class="n">dclk</span>
+
 <span class="kd">endin</span>
 
 
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
-
 <span class="nb">f</span><span class="mi">1</span>      <span class="mi">0</span>       <span class="mi">8192</span>    <span class="mi">10</span>      <span class="mi">1</span> <span class="mi">0</span> <span class="mf">0.33</span> <span class="mi">0</span> <span class="mf">0.2</span> <span class="mi">0</span> <span class="mf">0.14</span> <span class="mi">0</span> <span class="mf">0.11</span>
 <span class="nb">f</span><span class="mi">2</span>      <span class="mi">0</span>       <span class="mi">4096</span>    <span class="mi">10</span>      <span class="mi">1</span>
 
@@ -119,8 +119,6 @@ a<span class="n">1</span>      <span class="nb">dcblock</span> a<span class="n">
 <span class="nb">i</span><span class="mi">1</span>      <span class="mi">4</span>       <span class="mi">4</span>       <span class="mf">6.07</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">2</span>
 <span class="nb">i</span><span class="mi">1</span>      <span class="mi">8</span>       <span class="mi">8</span>       <span class="mf">6.00</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">2</span>
 <span class="nb">e</span>
-
-
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
@@ -131,7 +129,7 @@ a<span class="n">1</span>      <span class="nb">dcblock</span> a<span class="n">
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm273946"></a>
+        <a id="idm273933"></a>
         <h2>Credits</h2>
         <p>
       </p>
