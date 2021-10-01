@@ -35,8 +35,8 @@ endin
 <CsScore>
 f 1 0 16384 10 1        ; sine wave.
 
-i 1 0 8     10      1000
-i 1 + 8     30      10
+i 1 0 8     10      1000  ; long note with rapidly decaying upper partials
+i 1 + 8     30      10    ; a shorter, brighter note
 e
 </CsScore>
 </CsoundSynthesizer>

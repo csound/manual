@@ -145,43 +145,30 @@
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
 <span class="c1">; Audio out   Audio in</span>
--odac           -iadc    <span class="c1">;;;RT audio I/O</span>
+-odac             <span class="c1">;;;RT audio out</span>
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o rnd31.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span>
 
-<span class="c1">; Initialize the global variables.</span>
 <span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">kr</span> <span class="o">=</span> <span class="mi">4410</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
-<span class="c1">; Instrument #1.</span>
 <span class="kd">instr</span> <span class="nf">1</span>
-  <span class="c1">; Create random numbers at a-rate in the range -2 to 2 with </span>
-  <span class="c1">; a triangular distribution, seed from the current time.</span>
-  a<span class="n">31</span> <span class="nb">rnd31</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span>
+                            <span class="c1">; Create random numbers at a-rate in the range -2 to 2 with</span>
+a<span class="n">31</span> <span class="nb">rnd31</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span>           <span class="c1">; a triangular distribution, seed from the current time.</span>
+a<span class="n">freq</span> <span class="o">=</span> a<span class="n">31</span> <span class="o">*</span> <span class="mi">500</span> <span class="o">+</span> <span class="mi">100</span>     <span class="c1">; Use the random numbers to choose a frequency.</span>
+a<span class="n">1</span> <span class="nb">oscili</span> <span class="mf">.5</span><span class="p">,</span> a<span class="n">freq</span>         <span class="c1">; uses sine</span>
+<span class="nb">outs</span> a<span class="n">1</span><span class="p">,</span> a<span class="n">1</span>
 
-  <span class="c1">; Use the random numbers to choose a frequency.</span>
-  a<span class="n">freq</span> <span class="o">=</span> a<span class="n">31</span> <span class="o">*</span> <span class="mi">500</span> <span class="o">+</span> <span class="mi">100</span>
-
-  a<span class="n">1</span> <span class="nb">oscil</span> <span class="mi">30000</span><span class="p">,</span> a<span class="n">freq</span><span class="p">,</span> <span class="mi">1</span>
-  <span class="nb">out</span> a<span class="n">1</span>
 <span class="kd">endin</span>
-
 
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
-
-<span class="c1">; Table #1, a sine wave.</span>
-<span class="nb">f</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">16384</span> <span class="mi">10</span> <span class="mi">1</span>
-
-<span class="c1">; Play Instrument #1 for one second.</span>
 <span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span>
 <span class="nb">e</span>
-
-
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
@@ -195,48 +182,41 @@
 
       </p>
         <div class="example">
-          <a id="idm204799"></a>
+          <a id="idm204790"></a>
           <p class="title">
             <strong>Example 913. An example of the rnd31 opcode at k-rate.</strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
-              <a id="idm204801"></a>
+              <a id="idm204792"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
 <span class="c1">; Audio out   Audio in</span>
--odac           -iadc    <span class="c1">;;;RT audio I/O</span>
+-n      <span class="c1">; no sound   </span>
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o rnd31_krate.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span>
 
-<span class="c1">; Initialize the global variables.</span>
 <span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">kr</span> <span class="o">=</span> <span class="mi">4410</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
-<span class="c1">; Instrument #1.</span>
-<span class="kd">instr</span> <span class="nf">1</span>
-  <span class="c1">; Create random numbers at k-rate in the range -1 to 1 </span>
-  <span class="c1">; with a uniform distribution, seed=10.</span>
-  k<span class="n">1</span> <span class="nb">rnd31</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span>
-        
-  <span class="nb">printks</span> <span class="s">"k1=</span><span class="si">%f</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> k<span class="n">1</span>
+<span class="kd">instr</span> <span class="nf">1</span> 
+  
+k<span class="n">1</span> <span class="nb">rnd31</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span>           <span class="c1">; Create random numbers at k-rate in the range -1 to 1 </span>
+<span class="nb">printks</span> <span class="s">"k1=</span><span class="si">%f</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> k<span class="n">1</span> <span class="c1">; with a uniform distribution, seed=10.</span>
+
 <span class="kd">endin</span>
-
 
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
 
-<span class="c1">; Play Instrument #1 for one second.</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mf">.3</span>
 <span class="nb">e</span>
-
-
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
@@ -259,52 +239,46 @@ k1=0.403933
 
       </p>
         <div class="example">
-          <a id="idm204861"></a>
+          <a id="idm204849"></a>
           <p class="title">
             <strong>Example 914. An example of the rnd31 opcode that uses the number 7 as a seed value.</strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
-              <a id="idm204863"></a>
+              <a id="idm204851"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
 <span class="c1">; Audio out   Audio in</span>
--odac           -iadc    <span class="c1">;;;RT audio I/O</span>
+-n      <span class="c1">; no sound</span>
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o rnd31_seed7.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span>
 
-<span class="c1">; Initialize the global variables.</span>
 <span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">kr</span> <span class="o">=</span> <span class="mi">4410</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
-<span class="c1">; Instrument #1.</span>
 <span class="kd">instr</span> <span class="nf">1</span>
-  <span class="c1">; i-rate random numbers with linear distribution, seed=7. </span>
-  <span class="c1">; (Note that the seed was used only in the first call.)</span>
-  i<span class="n">1</span> <span class="nb">rnd31</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">7</span>
-  i<span class="n">2</span> <span class="nb">rnd31</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span>
-  i<span class="n">3</span> <span class="nb">rnd31</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span>
+ 
+i<span class="n">1</span> <span class="nb">rnd31</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">7</span>      <span class="c1">; i-rate random numbers with linear distribution, seed=7.</span>
+i<span class="n">2</span> <span class="nb">rnd31</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span>         <span class="c1">; (Note that the seed was used only in the first call.)</span>
+i<span class="n">3</span> <span class="nb">rnd31</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span>
         
-  <span class="nb">print</span> i<span class="n">1</span>
-  <span class="nb">print</span> i<span class="n">2</span>
-  <span class="nb">print</span> i<span class="n">3</span>
-<span class="kd">endin</span>
+<span class="nb">print</span> i<span class="n">1</span>
+<span class="nb">print</span> i<span class="n">2</span>
+<span class="nb">print</span> i<span class="n">3</span>
 
+<span class="kd">endin</span>
 
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
 
-<span class="c1">; Play Instrument #1 for one second.</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span>
 <span class="nb">e</span>
-
-
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
@@ -327,54 +301,48 @@ instr 1:  i3 = 0.677
 
       </p>
         <div class="example">
-          <a id="idm204930"></a>
+          <a id="idm204915"></a>
           <p class="title">
             <strong>Example 915. An example of the rnd31 opcode that uses the current time as a seed value.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm204937"></a>
+              <a id="idm204922"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
 <span class="c1">; Audio out   Audio in</span>
--odac           -iadc    <span class="c1">;;;RT audio I/O</span>
+-n      <span class="c1">; no sound</span>
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o rnd31_time.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span>
 
-<span class="c1">; Initialize the global variables.</span>
 <span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">kr</span> <span class="o">=</span> <span class="mi">4410</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
-<span class="c1">; Instrument #1.</span>
+
 <span class="kd">instr</span> <span class="nf">1</span>
-  <span class="c1">; i-rate random numbers with linear distribution,</span>
-  <span class="c1">; seeding from the current time. (Note that the seed </span>
-  <span class="c1">; was used only in the first call.)</span>
-  i<span class="n">1</span> <span class="nb">rnd31</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span>
-  i<span class="n">2</span> <span class="nb">rnd31</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span>
-  i<span class="n">3</span> <span class="nb">rnd31</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span>
+  
+i<span class="n">1</span> <span class="nb">rnd31</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span>      <span class="c1">; i-rate random numbers with linear distribution,</span>
+i<span class="n">2</span> <span class="nb">rnd31</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span>         <span class="c1">; seeding from the current time. (Note that the seed</span>
+i<span class="n">3</span> <span class="nb">rnd31</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span>         <span class="c1">; was used only in the first call.)</span>
 
-  <span class="nb">print</span> i<span class="n">1</span>
-  <span class="nb">print</span> i<span class="n">2</span>
-  <span class="nb">print</span> i<span class="n">3</span>
+<span class="nb">print</span> i<span class="n">1</span>
+<span class="nb">print</span> i<span class="n">2</span>
+<span class="nb">print</span> i<span class="n">3</span>
+
 <span class="kd">endin</span>
-
 
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
 
-<span class="c1">; Play Instrument #1 for one second.</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span>
 <span class="nb">e</span>
-
-
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
@@ -394,7 +362,7 @@ instr 1:  i3 = -0.358
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm205002"></a>
+        <a id="idm204984"></a>
         <h2>Credits</h2>
         <p>Author: Istvan Varga</p>
         <p>New in version 4.16</p>
