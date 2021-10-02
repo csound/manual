@@ -93,42 +93,37 @@
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
 <span class="c1">; Audio out   Audio in</span>
--odac           -iadc    <span class="c1">;;;RT audio I/O</span>
+-n          <span class="c1">; no sound       </span>
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o fprintks.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span>
 
-<span class="cm">/* Written by Matt Ingalls, edited by Kevin Conder. */</span>
-<span class="c1">; Initialize the global variables.</span>
+<span class="c1">; by Matt Ingalls, edited by Kevin Conder &amp; Menno Knevel 2021</span>
+
 <span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">kr</span> <span class="o">=</span> <span class="mi">4410</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
-<span class="c1">; Instrument #1 - a score generator example.</span>
-<span class="kd">instr</span> <span class="nf">1</span>
-  <span class="c1">; K-rate stuff.</span>
-  k<span class="n">start</span> <span class="nb">init</span> <span class="mi">0</span>
-  k<span class="n">dur</span> <span class="nb">linrand</span> <span class="mi">10</span>
-  k<span class="n">pitch</span> <span class="nb">linrand</span> <span class="mi">8</span>
+<span class="kd">instr</span> <span class="nf">1</span>     <span class="c1">; a score generator</span>
 
-  <span class="c1">; Printing to to a file called "my.sco".</span>
-  <span class="nb">fprintks</span> <span class="s">"my.sco"</span><span class="p">,</span> <span class="s">"i1</span><span class="se">\\</span><span class="s">t</span><span class="si">%2.2f</span><span class="se">\\</span><span class="s">t</span><span class="si">%2.2f</span><span class="se">\\</span><span class="s">t</span><span class="si">%2.2f</span><span class="se">\\</span><span class="s">n"</span><span class="p">,</span> k<span class="n">start</span><span class="p">,</span> k<span class="n">dur</span><span class="p">,</span> <span class="mi">4</span><span class="o">+</span>k<span class="n">pitch</span>
+k<span class="n">start</span> <span class="nb">init</span> <span class="mi">0</span>
+k<span class="n">dur</span> <span class="nb">linrand</span> <span class="mi">10</span>
+k<span class="n">pitch</span> <span class="nb">linrand</span> <span class="mi">8</span>
+k<span class="n">pitch</span>  <span class="o">*=</span>  <span class="mi">100</span>
+<span class="c1">; Printing to a file called "my.sco".</span>
+<span class="nb">fprintks</span> <span class="s">"my.sco"</span><span class="p">,</span> <span class="s">"i1</span><span class="se">\\</span><span class="s">t</span><span class="si">%2.2f</span><span class="se">\\</span><span class="s">t</span><span class="si">%2.2f</span><span class="se">\\</span><span class="s">t</span><span class="si">%2.2f</span><span class="se">\\</span><span class="s">n"</span><span class="p">,</span> k<span class="n">start</span><span class="p">,</span> k<span class="n">dur</span><span class="p">,</span> k<span class="n">pitch</span>
 
-  k<span class="n">next</span> <span class="nb">linrand</span> <span class="mi">1</span>
-  k<span class="n">start</span> <span class="o">=</span> k<span class="n">start</span> <span class="o">+</span> k<span class="n">next</span>
+k<span class="n">next</span> <span class="nb">linrand</span> <span class="mi">1</span>
+k<span class="n">start</span> <span class="o">=</span> k<span class="n">start</span> <span class="o">+</span> k<span class="n">next</span>
+
 <span class="kd">endin</span>
-
 
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
-
-<span class="cm">/* Written by Matt Ingalls, edited by Kevin Conder. */</span>
-<span class="c1">; Play Instrument #1.</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mf">0.001</span>
-
-
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mf">0.003</span>
+<span class="nb">e</span>
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
@@ -141,10 +136,10 @@
 
       </p>
         <pre class="screen">
-i1      0.00    3.94    10.26
-i1      0.20    3.35    6.22
-i1      0.67    3.65    11.33
-i1      1.31    1.42    4.13
+i1	0.00	1.35	668.01
+i1	0.13	2.21	246.53
+i1	0.22	1.88	437.51
+i1	1.18	9.65	126.09
       </pre>
         <p>
     </p>
@@ -153,13 +148,13 @@ i1      1.31    1.42    4.13
 
       </p>
         <div class="example">
-          <a id="idm96163"></a>
+          <a id="idm96161"></a>
           <p class="title">
             <strong>Example 376. Example of the fprintks opcode to convert a MIDI file to a csound score.</strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
-              <a id="idm96165"></a>
+              <a id="idm96163"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -215,13 +210,13 @@ i1      1.31    1.42    4.13
 
       </p>
         <div class="example">
-          <a id="idm96268"></a>
+          <a id="idm96266"></a>
           <p class="title">
             <strong>Example 377. Example of the fprintks opcode to create a Csound score file generator using Csound.</strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
-              <a id="idm96270"></a>
+              <a id="idm96268"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -249,7 +244,7 @@ i1      1.31    1.42    4.13
 <span class="c1">;===========================================================</span>
 
 
-gS<span class="n">coName</span> <span class="o">=</span> <span class="s">"/Users/matt/Desktop/schottstaedt.sco"</span>     <span class="c1">; the name of the file to be generated</span>
+gS<span class="n">coName</span> <span class="o">=</span> <span class="s">"schottstaedt.sco"</span>     <span class="c1">; the name of the file to be generated</span>
 
     <span class="vg">sr</span>    <span class="o">=</span>    <span class="mi">100</span>     <span class="c1">; this defines our temporal resolution,</span>
                 <span class="c1">; an sr of 100 means we will generate p2 and p3 values</span>
@@ -452,14 +447,14 @@ gS<span class="n">coName</span> <span class="o">=</span> <span class="s">"/Users
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm96840"></a>
+        <a id="idm96838"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="printks.html" title="printks"><em class="citetitle">printks</em></a>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm96845"></a>
+        <a id="idm96843"></a>
         <h2>Credits</h2>
         <p>
       </p>
