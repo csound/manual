@@ -23,9 +23,15 @@ kpick = 0.5
 iplk = 0
 idamp = p4
 ifilt = p5
+ichoice = p6
 
-axcite oscili 1, 1, 1                ; use this to excite the pluck
-;axcite mpulse 1, p3                 ; or use this one
+if ichoice == 1 then
+    axcite =    0                   ; no exciter signal
+else
+    axcite diskin2  "fox.wav", 1    ; use the fox as exciter
+    axcite *=   .15                 ; but lower amplitude
+endif
+
 apluck wgpluck icps, iamp, kpick, iplk, idamp, ifilt, axcite
 apluck  dcblock2    apluck          ; gets rid of DC offset
 outs apluck, apluck
@@ -35,9 +41,13 @@ endin
 </CsInstruments>
 <CsScore>
 f 1 0 16384 10 1        ; sine wave.
-
-i 1 0 8     10      1000  ; long note with rapidly decaying upper partials
-i 1 + 8     30      10    ; a shorter, brighter note
+s
+;          damp     filter  choice           
+i 1 0 8     10      1000      1
+i 1 + 8     30      10        1
+s
+i 1 0 8     10      1000      2
+i 1 + 8     30      10        2
 e
 </CsScore>
 </CsoundSynthesizer>
