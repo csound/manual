@@ -125,50 +125,47 @@
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
 <span class="c1">; Audio out   Audio in    No messages</span>
--odac           -iadc     -d     <span class="c1">;;;RT audio I/O</span>
+-odac             <span class="c1">;;;RT audio out</span>
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o bbcutm.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span>
 
-<span class="c1">; Initialize the global variables.</span>
+<span class="c1">; additions by Menno Knevel 2021</span>
+
 <span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">kr</span> <span class="o">=</span> <span class="mi">4410</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
-<span class="c1">; Instrument #1 - Play an audio file normally.</span>
-<span class="kd">instr</span> <span class="nf">1</span>
-  a<span class="n">source</span> <span class="nb">soundin</span> <span class="s">"beats.wav"</span>
-  <span class="nb">out</span> a<span class="n">source</span>
+<span class="kd">instr</span> <span class="nf">1</span>     <span class="c1">; Play an audio file normally.</span>
+
+a<span class="n">source</span> <span class="nb">soundin</span> <span class="s">"beats.wav"</span>
+<span class="nb">outs</span> a<span class="n">source</span><span class="p">,</span> a<span class="n">source</span>
+
 <span class="kd">endin</span>
 
-<span class="c1">; Instrument #2 - Cut-up an audio file.</span>
-<span class="kd">instr</span> <span class="nf">2</span>
-  a<span class="n">source</span> <span class="nb">soundin</span> <span class="s">"beats.wav"</span>
+<span class="kd">instr</span> <span class="nf">2</span>     <span class="c1">; Cut-up an audio file</span>
 
-  i<span class="n">bps</span> <span class="o">=</span> <span class="mi">4</span>
-  i<span class="n">subdiv</span> <span class="o">=</span> <span class="mi">8</span>
-  i<span class="n">barlength</span> <span class="o">=</span> <span class="mi">4</span>
-  i<span class="n">phrasebars</span> <span class="o">=</span> <span class="mi">1</span>
-  i<span class="n">numrepeats</span> <span class="o">=</span> <span class="mi">2</span>
+i<span class="n">bps</span> <span class="o">=</span> <span class="mi">4</span>
+i<span class="n">subdiv</span> <span class="o">=</span> <span class="mi">8</span>
+i<span class="n">barlength</span> <span class="o">=</span> <span class="mi">4</span>
+i<span class="n">phrasebars</span> <span class="o">=</span> <span class="mi">1</span>
+i<span class="n">numrepeats</span> <span class="o">=</span> <span class="vi">p4</span>
+a<span class="n">source</span> <span class="nb">diskin2</span> <span class="s">"beats.wav"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span> <span class="p">,</span><span class="mi">1</span>
+a<span class="n">1</span> <span class="nb">bbcutm</span> a<span class="n">source</span><span class="p">,</span> i<span class="n">bps</span><span class="p">,</span> i<span class="n">subdiv</span><span class="p">,</span> i<span class="n">barlength</span><span class="p">,</span> i<span class="n">phrasebars</span><span class="p">,</span> i<span class="n">numrepeats</span>
+<span class="nb">outs</span> a<span class="n">1</span><span class="p">,</span> a<span class="n">1</span>
 
-  a<span class="n">1</span> <span class="nb">bbcutm</span> a<span class="n">source</span><span class="p">,</span> i<span class="n">bps</span><span class="p">,</span> i<span class="n">subdiv</span><span class="p">,</span> i<span class="n">barlength</span><span class="p">,</span> i<span class="n">phrasebars</span><span class="p">,</span> i<span class="n">numrepeats</span>
-
-  <span class="nb">out</span> a<span class="n">1</span>
 <span class="kd">endin</span>
-
 
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
 
-<span class="c1">; Play Instrument #1 for two seconds.</span>
 <span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">2</span>
-<span class="c1">; Play Instrument #2 for two seconds.</span>
-<span class="nb">i</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">2</span>
+<span class="c1">;       repeats</span>
+<span class="nb">i</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">8</span>     <span class="mi">2</span>
+<span class="nb">i</span> <span class="mi">2</span> <span class="mi">12</span> <span class="mi">8</span>    <span class="mi">6</span>
 <span class="nb">e</span>
-
-
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
@@ -182,7 +179,7 @@
 
       </p>
         <div class="example">
-          <a id="idm33686"></a>
+          <a id="idm33701"></a>
           <p class="title">
             <strong>Example 92. First steps- mono and stereo versions</strong>
           </p>
@@ -231,7 +228,7 @@
         <p>
       </p>
         <div class="example">
-          <a id="idm33726"></a>
+          <a id="idm33741"></a>
           <p class="title">
             <strong>Example 93. Multiple simultaneous synchronised breaks</strong>
           </p>
@@ -271,7 +268,7 @@
         <p>
       </p>
         <div class="example">
-          <a id="idm33758"></a>
+          <a id="idm33773"></a>
           <p class="title">
             <strong>Example 94. Cutting up any old audio- much more interesting noises than this should be possible!</strong>
           </p>
@@ -306,7 +303,7 @@
         <p>
       </p>
         <div class="example">
-          <a id="idm33786"></a>
+          <a id="idm33801"></a>
           <p class="title">
             <strong>Example 95. Constant stuttering- faked, not possible since can only stutter in last half bar could make extra stuttering option parameter</strong>
           </p>
@@ -342,14 +339,14 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm33813"></a>
+        <a id="idm33828"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="bbcuts.html" title="bbcuts"><em class="citetitle">bbcuts</em></a>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm33818"></a>
+        <a id="idm33833"></a>
         <h2>Credits</h2>
         <p>
       </p>

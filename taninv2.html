@@ -39,14 +39,14 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm243618"></a>
+        <a id="idm243616"></a>
         <h2>Description</h2>
         <p>
       Returns the arctangent of <span class="emphasis"><em>iy/ix</em></span>, <span class="emphasis"><em>ky/kx</em></span>, or <span class="emphasis"><em>ay/ax</em></span>.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm243624"></a>
+        <a id="idm243622"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ares <span class="command"><strong>taninv2</strong></span> ay, ax</pre>
         <pre class="synopsis">ires <span class="command"><strong>taninv2</strong></span> iy, ix</pre>
@@ -72,14 +72,14 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm243655"></a>
+        <a id="idm243653"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>iy, ix</em></span> -- values to be converted
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm243659"></a>
+        <a id="idm243657"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>ky, kx</em></span> -- control rate signals to be converted
@@ -89,55 +89,50 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm243665"></a>
+        <a id="idm243663"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the taninv2 opcode. It uses the file <a class="ulink" href="examples/taninv2.csd" target="_top"><em class="citetitle">taninv2.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm243670"></a>
+          <a id="idm243668"></a>
           <p class="title">
             <strong>Example 1089. Example of the taninv2 opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm243677"></a>
+              <a id="idm243675"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
 <span class="c1">; Audio out   Audio in</span>
--odac           -iadc    <span class="c1">;;;RT audio I/O</span>
+-n   <span class="c1">; no sound</span>
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
-<span class="c1">; -o taninv2.wav -W ;;; for file output any platform</span>
+<span class="c1">; -o system.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span> 
 
-<span class="c1">; Initialize the global variables.</span>
+<span class="c1">;  by Kevin Conder</span>
+
 <span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">kr</span> <span class="o">=</span> <span class="mi">4410</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
-<span class="c1">; Instrument #1.</span>
 <span class="kd">instr</span> <span class="nf">1</span>
-  <span class="c1">; Returns the arctangent for 1/2.</span>
-  i<span class="n">1</span> <span class="nb">taninv2</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>
+  
+i<span class="n">1</span> <span class="nb">taninv2</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>     <span class="c1">; Returns the arctangent for 1/2.</span>
+<span class="nb">print</span> i<span class="n">1</span>
 
-  <span class="nb">print</span> i<span class="n">1</span>
 <span class="kd">endin</span>
-
 
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
-
-<span class="c1">; Play Instrument #1 for one second.</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span>
 <span class="nb">e</span>
-
-
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
@@ -153,20 +148,20 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm243724"></a>
+        <a id="idm243720"></a>
         <p>
       Here is another example of the taninv2 opcode. It uses the file <a class="ulink" href="examples/taninv2-advanced.csd" target="_top"><em class="citetitle">taninv2-advanced.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm243728"></a>
+          <a id="idm243724"></a>
           <p class="title">
             <strong>Example 1090. Advanced example of the taninv2 opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm243735"></a>
+              <a id="idm243731"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -218,14 +213,14 @@ k<span class="n">declick</span> <span class="nb">linseg</span> <span class="mi">
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm243875"></a>
+        <a id="idm243871"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="taninv.html" title="taninv"><em class="citetitle">taninv</em></a>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm243880"></a>
+        <a id="idm243876"></a>
         <h2>Credits</h2>
         <p>
       </p>
@@ -245,7 +240,6 @@ k<span class="n">declick</span> <span class="nb">linseg</span> <span class="mi">
         </table>
         <p>
     </p>
-        <p>Example written by Kevin Conder.</p>
         <p>New in Csound version 3.48</p>
         <p>Corrected on May 2002, thanks to Istvan Varga.</p>
         <p>Available as a function in version 6.00</p>
