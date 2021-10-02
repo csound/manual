@@ -136,9 +136,15 @@ k<span class="n">pick</span> <span class="o">=</span> <span class="mf">0.5</span
 i<span class="n">plk</span> <span class="o">=</span> <span class="mi">0</span>
 i<span class="n">damp</span> <span class="o">=</span> <span class="vi">p4</span>
 i<span class="n">filt</span> <span class="o">=</span> <span class="vi">p5</span>
+i<span class="n">choice</span> <span class="o">=</span> <span class="vi">p6</span>
 
-a<span class="n">xcite</span> <span class="nb">oscili</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>                <span class="c1">; use this to excite the pluck</span>
-<span class="c1">;axcite mpulse 1, p3                 ; or use this one</span>
+<span class="k">if</span> i<span class="n">choice</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">then</span>
+    a<span class="n">xcite</span> <span class="o">=</span>    <span class="mi">0</span>                   <span class="c1">; no exciter signal</span>
+<span class="k">else</span>
+    a<span class="n">xcite</span> <span class="nb">diskin2</span>  <span class="s">"fox.wav"</span><span class="p">,</span> <span class="mi">1</span>    <span class="c1">; use the fox as exciter</span>
+    a<span class="n">xcite</span> <span class="o">*=</span>   <span class="mf">.15</span>                 <span class="c1">; but lower amplitude</span>
+<span class="k">endif</span>
+
 a<span class="n">pluck</span> <span class="nb">wgpluck</span> i<span class="n">cps</span><span class="p">,</span> i<span class="n">amp</span><span class="p">,</span> k<span class="n">pick</span><span class="p">,</span> i<span class="n">plk</span><span class="p">,</span> i<span class="n">damp</span><span class="p">,</span> i<span class="n">filt</span><span class="p">,</span> a<span class="n">xcite</span>
 a<span class="n">pluck</span>  <span class="nb">dcblock2</span>    a<span class="n">pluck</span>          <span class="c1">; gets rid of DC offset</span>
 <span class="nb">outs</span> a<span class="n">pluck</span><span class="p">,</span> a<span class="n">pluck</span>
@@ -148,9 +154,13 @@ a<span class="n">pluck</span>  <span class="nb">dcblock2</span>    a<span class=
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
 <span class="nb">f</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">16384</span> <span class="mi">10</span> <span class="mi">1</span>        <span class="c1">; sine wave.</span>
-
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">8</span>     <span class="mi">10</span>      <span class="mi">1000</span>  <span class="c1">; long note with rapidly decaying upper partials</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">8</span>     <span class="mi">30</span>      <span class="mi">10</span>    <span class="c1">; a shorter, brighter note</span>
+<span class="nb">s</span>
+<span class="c1">;          damp     filter  choice           </span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">8</span>     <span class="mi">10</span>      <span class="mi">1000</span>      <span class="mi">1</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">8</span>     <span class="mi">30</span>      <span class="mi">10</span>        <span class="mi">1</span>
+<span class="nb">s</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">8</span>     <span class="mi">10</span>      <span class="mi">1000</span>      <span class="mi">2</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">8</span>     <span class="mi">30</span>      <span class="mi">10</span>        <span class="mi">2</span>
 <span class="nb">e</span>
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
@@ -162,7 +172,7 @@ a<span class="n">pluck</span>  <span class="nb">dcblock2</span>    a<span class=
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm272040"></a>
+        <a id="idm272072"></a>
         <h2>Credits</h2>
         <p>
       </p>
