@@ -24,7 +24,8 @@ iplk = 0
 idamp = p4
 ifilt = p5
 
-axcite oscil 1, 1, 1                ; used to excite the pluck
+axcite oscili 1, 1, 1                ; use this to excite the pluck
+;axcite mpulse 1, p3                 ; or use this one
 apluck wgpluck icps, iamp, kpick, iplk, idamp, ifilt, axcite
 apluck  dcblock2    apluck          ; gets rid of DC offset
 outs apluck, apluck
