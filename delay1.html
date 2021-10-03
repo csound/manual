@@ -83,39 +83,37 @@
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
+<span class="c1">; Select audio/midi flags here according to platform</span>
+<span class="c1">; Audio out   Audio in</span>
+-odac             <span class="c1">;;;RT audio out</span>
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
--o delay.wav -W <span class="c1">;;; for file output any platform</span>
+<span class="c1">;-o delay1.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span>
 
-<span class="c1">; Initialize the global variables.</span>
+<span class="c1">; by John ffitch and Menno Knevel 2021</span>
+
 <span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">kr</span> <span class="o">=</span> <span class="mi">4410</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
 <span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
 <span class="kd">instr</span> <span class="nf">1</span>
-  <span class="c1">; Make white noise.</span>
-  a<span class="n">0</span>    <span class="nb">random</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+k<span class="n">freq</span> <span class="nb">line</span> <span class="mi">1000</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="vg">sr</span><span class="o">/</span><span class="mi">2</span>
+a<span class="n">0</span>    <span class="nb">oscili</span> <span class="mi">1</span><span class="p">,</span> k<span class="n">freq</span>       <span class="c1">; frequency sweep</span>
+a<span class="n">1</span>    <span class="nb">delay1</span>  a<span class="n">0</span>            <span class="c1">; simple Lowpass filter</span>
+<span class="c1">; ...mix direct &amp; delayed signal...</span>
+a<span class="n">out</span>  <span class="o">=</span> <span class="p">(</span>a<span class="n">0</span><span class="o">+</span><span class="mf">0.99</span><span class="o">*</span>a<span class="n">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>      <span class="c1">; aout and a0 output are used to create the screenshot below...</span>
+a<span class="n">out</span>  <span class="o">*=</span> <span class="mf">.1</span>                 <span class="c1">; but here amplitude is lowered  a lot...</span>
+a<span class="n">0</span>    <span class="o">*=</span> <span class="mf">.1</span>                 <span class="c1">; ...just to demonstrate the sounding result.</span>
+<span class="nb">outs</span>  a<span class="n">out</span><span class="p">,</span> a<span class="n">0</span>              <span class="c1">; output direct signal on right channel and the filtered signal on left channel</span>
 
-  <span class="c1">; Simple Lowpass filter</span>
-  a<span class="n">1</span>    <span class="nb">delay1</span>  a<span class="n">0</span>
-  a<span class="n">out</span>  <span class="o">=</span>       <span class="p">(</span>a<span class="n">0</span><span class="o">+</span><span class="mf">0.99</span><span class="o">*</span>a<span class="n">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
-
-  <span class="c1">; output white and filtered</span>
-        <span class="nb">outs</span>    a<span class="n">out</span><span class="p">,</span> a<span class="n">0</span>
 <span class="kd">endin</span>
-
 
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
-<span class="c1">; Play Instrument #1.</span>
 <span class="nb">i</span> <span class="mi">1</span> <span class="mf">0.0</span> <span class="mi">3</span>
-
 <span class="nb">e</span>
-
-
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
@@ -125,8 +123,14 @@
         <p><br class="example-break" />
     </p>
       </div>
+      <p>
+     This shows the result of the example: the left channel shows the filtered sound, the right channel is the original sweep.    
+    </p>
+      <div class="mediaobject">
+        <img src="images/sweep.png" />
+      </div>
       <div class="refsect1">
-        <a id="idm59080"></a>
+        <a id="idm59101"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="delay.html" title="delay"><em class="citetitle">delay</em></a>,
@@ -135,10 +139,9 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm59089"></a>
+        <a id="idm59110"></a>
         <h2>Credits</h2>
         <p>Author: Barry Vercoe</p>
-        <p>Example written by John ffitch.</p>
       </div>
     </div>
     <div class="navfooter">
