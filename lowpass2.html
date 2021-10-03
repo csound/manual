@@ -93,53 +93,41 @@
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
-<span class="c1">; Audio out   Audio in    No messages</span>
--odac           -iadc     -d     <span class="c1">;;;RT audio I/O</span>
+<span class="c1">; Audio out   Audio in</span>
+-odac             <span class="c1">;;;RT audio out</span>
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
-<span class="c1">; -o lowpass2.wav -W ;;; for file output any platform</span>
+<span class="c1">;-o lpf18.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span>
 
-<span class="cm">/* Written by Sean Costello */</span>
-<span class="c1">; Orchestra file for resonant filter sweep of a sawtooth-like waveform.</span>
-  <span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-  <span class="vg">kr</span> <span class="o">=</span> <span class="mi">2205</span>
-  <span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">20</span>
-  <span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="c1">; by Sean Costello</span>
 
-          <span class="kd">instr</span> <span class="nf">1</span>
+<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
-  i<span class="n">dur</span>    <span class="o">=</span>          <span class="vi">p3</span>
-  i<span class="n">freq</span>   <span class="o">=</span>          <span class="vi">p4</span>
-  i<span class="n">amp</span>    <span class="o">=</span>          <span class="vi">p5</span> <span class="o">*</span> <span class="mf">.5</span>
-  i<span class="n">harms</span>  <span class="o">=</span>          <span class="p">(</span><span class="vg">sr</span><span class="o">*</span><span class="mf">.4</span><span class="p">)</span> <span class="o">/</span> i<span class="n">freq</span>
+<span class="kd">instr</span> <span class="nf">1</span>
 
-<span class="c1">; Sawtooth-like waveform</span>
-  a<span class="n">sig</span>    <span class="nb">gbuzz</span> <span class="mi">1</span><span class="p">,</span> i<span class="n">freq</span><span class="p">,</span> i<span class="n">harms</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">.9</span><span class="p">,</span> <span class="mi">1</span>
+i<span class="n">dur</span>    <span class="o">=</span> <span class="vi">p3</span>
+i<span class="n">freq</span>   <span class="o">=</span> <span class="vi">p4</span>
+i<span class="n">amp</span>    <span class="o">=</span> <span class="vi">p5</span> 
+i<span class="n">harms</span>  <span class="o">=</span> <span class="p">(</span><span class="vg">sr</span><span class="o">*</span><span class="mf">.4</span><span class="p">)</span> <span class="o">/</span> i<span class="n">freq</span>
+a<span class="n">sig</span>    <span class="nb">gbuzz</span> <span class="mf">.3</span><span class="p">,</span> i<span class="n">freq</span><span class="p">,</span> i<span class="n">harms</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">.9</span><span class="p">,</span> <span class="mi">1</span>           <span class="c1">; Sawtooth-like waveform</span>
+k<span class="n">freq</span>   <span class="nb">linseg</span> <span class="mi">1</span><span class="p">,</span> i<span class="n">dur</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> i<span class="n">dur</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span>   <span class="c1">; Envelope to control filter cutoff</span>
+a<span class="n">filt</span>   <span class="nb">lowpass2</span> a<span class="n">sig</span><span class="p">,</span>k<span class="n">freq</span><span class="p">,</span> <span class="mi">30</span>
+k<span class="n">env</span>    <span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> i<span class="n">amp</span><span class="p">,</span> i<span class="n">dur</span> <span class="o">-</span><span class="mf">.2</span><span class="p">,</span> i<span class="n">amp</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> <span class="mi">0</span>   <span class="c1">; Simple amplitude envelope</span>
+<span class="nb">outs</span>    a<span class="n">filt</span> <span class="o">*</span> k<span class="n">env</span><span class="p">,</span> a<span class="n">filt</span> <span class="o">*</span> k<span class="n">env</span>
 
-<span class="c1">; Envelope to control filter cutoff </span>
-  k<span class="n">freq</span>   <span class="nb">linseg</span> <span class="mi">1</span><span class="p">,</span> i<span class="n">dur</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> i<span class="n">dur</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span>
-
-  a<span class="n">filt</span>   <span class="nb">lowpass2</span> a<span class="n">sig</span><span class="p">,</span>k<span class="n">freq</span><span class="p">,</span> <span class="mi">30</span>
-
-<span class="c1">; Simple amplitude envelope</span>
-  k<span class="n">env</span>    <span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> i<span class="n">amp</span><span class="p">,</span> i<span class="n">dur</span> <span class="o">-</span><span class="mf">.2</span><span class="p">,</span> i<span class="n">amp</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> <span class="mi">0</span> 
-          <span class="nb">out</span> a<span class="n">filt</span> <span class="o">*</span> k<span class="n">env</span>
-
-          <span class="kd">endin</span>
-
+<span class="kd">endin</span>
 
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
-
-<span class="cm">/* Written by Sean Costello */</span>
 <span class="nb">f</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">8192</span> <span class="mi">9</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mf">.25</span>
-
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">5</span> <span class="mi">100</span> <span class="mi">1000</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">5</span> <span class="mi">5</span> <span class="mi">200</span> <span class="mi">1000</span>
+<span class="c1">;       frq     amp</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">5</span>  <span class="mi">100</span>     <span class="mf">.15</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">5</span> <span class="mi">5</span>  <span class="mi">200</span>     <span class="mf">.12</span>
 <span class="nb">e</span>
-
-
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
@@ -150,7 +138,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm133033"></a>
+        <a id="idm133034"></a>
         <h2>Credits</h2>
         <p>
       </p>

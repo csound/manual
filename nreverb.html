@@ -39,20 +39,20 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm156602"></a>
+        <a id="idm156605"></a>
         <h2>Description</h2>
         <p>
       This is a reverberator consisting of 6 parallel comb-lowpass filters being fed into a series of 5 allpass filters. <span class="emphasis"><em>nreverb</em></span> replaces <a class="link" href="reverb2.html" title="reverb2"><em class="citetitle">reverb2</em></a> (version 3.48) and so both opcodes are identical.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm156608"></a>
+        <a id="idm156611"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ares <span class="command"><strong>nreverb</strong></span> asig, ktime, khdif [, iskip] [,inumCombs] [, ifnCombs] \
       [, inumAlpas] [, ifnAlpas]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm156612"></a>
+        <a id="idm156615"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>iskip</em></span> (optional, default=0) -- Skip initialization if present and non-zero.
@@ -68,7 +68,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm156625"></a>
+        <a id="idm156628"></a>
         <h2>Performance</h2>
         <p>
       The input signal asig is reverberated for <span class="emphasis"><em>ktime</em></span> seconds. The parameter <span class="emphasis"><em>khdif</em></span> controls the high frequency diffusion amount. The values of <span class="emphasis"><em>khdif</em></span> should be from 0 to 1. If <span class="emphasis"><em>khdif</em></span> is set to 0 the all the frequencies decay with the same speed. If <span class="emphasis"><em>khdif</em></span> is 1, high frequencies decay faster than lower ones. If <span class="emphasis"><em>ktime</em></span> is inadvertently set to a non-positive number, <span class="emphasis"><em>ktime</em></span> will be reset automatically to 0.01. (New in Csound version 4.07.)
@@ -78,43 +78,42 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm156637"></a>
+        <a id="idm156640"></a>
         <h2>Examples</h2>
         <p>
       Here is a simple example of the nreverb opcode. It uses the file <a class="ulink" href="examples/nreverb.csd" target="_top"><em class="citetitle">nreverb.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm156642"></a>
+          <a id="idm156645"></a>
           <p class="title">
             <strong>Example 658. Simple example of the nreverb opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm156649"></a>
+              <a id="idm156652"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
-<span class="c1">; Audio out   Audio in    No messages</span>
--odac           -iadc     -d     <span class="c1">;;;RT audio I/O</span>
+<span class="c1">; Audio out   Audio in</span>
+-odac             <span class="c1">;;;RT audio out</span>
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
-<span class="c1">; -o nreverb.wav -W ;;; for file output any platform</span>
+<span class="c1">;-o nreverb.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span>
 
-<span class="c1">; Initialize the global variables.</span>
 <span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">kr</span> <span class="o">=</span> <span class="mi">4410</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
 ga<span class="n">out</span> <span class="nb">init</span>  <span class="mi">0</span>
 
 <span class="kd">instr</span> <span class="nf">1</span>
-a<span class="n">1</span>	<span class="nb">oscil</span>	<span class="mi">15000</span><span class="p">,</span> <span class="mi">440</span><span class="p">,</span> <span class="mi">1</span>
-	<span class="nb">out</span>	a<span class="n">1</span>
+a<span class="n">1</span>	<span class="nb">oscili</span>	<span class="mf">.5</span><span class="p">,</span> <span class="mi">440</span>
+<span class="nb">outs</span>	a<span class="n">1</span><span class="p">,</span> a<span class="n">1</span>
  
 ga<span class="n">out</span> <span class="o">=</span> ga<span class="n">out</span><span class="o">+</span>a<span class="n">1</span>
 <span class="kd">endin</span>
@@ -122,7 +121,7 @@ ga<span class="n">out</span> <span class="o">=</span> ga<span class="n">out</spa
 <span class="kd">instr</span> <span class="nf">99</span>
 
 a<span class="n">2</span>	<span class="nb">nreverb</span>	ga<span class="n">out</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">.3</span>
-	<span class="nb">out</span>	a<span class="n">2</span><span class="o">*</span><span class="mf">.15</span>		<span class="c1">;volume of reverb		</span>
+<span class="nb">outs</span>	a<span class="n">2</span><span class="o">*</span><span class="mf">.15</span><span class="p">,</span> a<span class="n">2</span><span class="o">*</span><span class="mf">.15</span>		<span class="c1">;volume of reverb		</span>
 	 
 ga<span class="n">out</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="kd">endin</span>
@@ -130,9 +129,6 @@ ga<span class="n">out</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
 
-<span class="c1">; Table 1: an ordinary sine wave.</span>
-<span class="nb">f</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">32768</span> <span class="mi">10</span> <span class="mi">1</span> 
-         
 <span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mf">.5</span>
 <span class="nb">i</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mf">.5</span>
 <span class="nb">i</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mf">.5</span>
@@ -140,8 +136,6 @@ ga<span class="n">out</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="nb">i</span> <span class="mi">1</span> <span class="mi">4</span> <span class="mf">.5</span>
 <span class="nb">i</span> <span class="mi">99</span> <span class="mi">0</span> <span class="mi">9</span> 
 <span class="nb">e</span>
-
-
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
@@ -154,49 +148,45 @@ ga<span class="n">out</span> <span class="o">=</span> <span class="mi">0</span>
       Here is an example of the nreverb opcode using an ftable for filter constants. It uses the file <a class="ulink" href="examples/nreverb_ftable.csd" target="_top"><em class="citetitle">nreverb_ftable.csd</em></a>, and <a class="ulink" href="examples/beats.wav" target="_top"><em class="citetitle">beats.wav</em></a>.
       </p>
         <div class="example">
-          <a id="idm156752"></a>
+          <a id="idm156751"></a>
           <p class="title">
             <strong>Example 659. An example of the nreverb opcode using an ftable for filter constants.</strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
-              <a id="idm156754"></a>
+              <a id="idm156753"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
-<span class="c1">; Audio out   Audio in    No messages</span>
--odac           -iadc     -d     <span class="c1">;;;RT audio I/O</span>
+<span class="c1">; Audio out   Audio in</span>
+-odac             <span class="c1">;;;RT audio out</span>
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
-<span class="c1">; -o nreverb_ftable.wav -W ;;; for file output any platform</span>
+<span class="c1">;-o nreverb_ftable.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span>
 
-<span class="c1">; Initialize the global variables.</span>
 <span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">kr</span> <span class="o">=</span> <span class="mi">4410</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
 <span class="kd">instr</span> <span class="nf">1</span>
-  a<span class="n">1</span>  <span class="nb">soundin</span> <span class="s">"beats.wav"</span>
-  a<span class="n">2</span>  <span class="nb">nreverb</span> a<span class="n">1</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">.75</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">71</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">72</span>
-  <span class="nb">out</span> a<span class="n">1</span> <span class="o">+</span> a<span class="n">2</span> <span class="o">*</span> <span class="mf">.4</span>
-<span class="kd">endin</span>
 
+a<span class="n">1</span>  <span class="nb">soundin</span> <span class="s">"beats.wav"</span>
+a<span class="n">2</span>  <span class="nb">nreverb</span> a<span class="n">1</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">.75</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">71</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">72</span>
+<span class="nb">outs</span> a<span class="n">1</span> <span class="o">+</span> a<span class="n">2</span> <span class="o">*</span> <span class="mf">.4</span><span class="p">,</span> a<span class="n">1</span> <span class="o">+</span> a<span class="n">2</span> <span class="o">*</span> <span class="mf">.4</span>
+
+<span class="kd">endin</span>
 
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
-
 <span class="c1">; freeverb time constants, as direct (negative) sample, with arbitrary gains</span>
 <span class="nb">f</span><span class="mi">71</span> <span class="mi">0</span> <span class="mi">16</span>   <span class="o">-</span><span class="mi">2</span>  <span class="o">-</span><span class="mi">1116</span> <span class="o">-</span><span class="mi">1188</span> <span class="o">-</span><span class="mi">1277</span> <span class="o">-</span><span class="mi">1356</span> <span class="o">-</span><span class="mi">1422</span> <span class="o">-</span><span class="mi">1491</span> <span class="o">-</span><span class="mi">1557</span> <span class="o">-</span><span class="mi">1617</span>  <span class="mf">0.8</span>  <span class="mf">0.79</span>  <span class="mf">0.78</span>  <span class="mf">0.77</span>  <span class="mf">0.76</span>  <span class="mf">0.75</span>  <span class="mf">0.74</span>  <span class="mf">0.73</span>
-
 <span class="nb">f</span><span class="mi">72</span> <span class="mi">0</span> <span class="mi">16</span>   <span class="o">-</span><span class="mi">2</span>  <span class="o">-</span><span class="mi">556</span> <span class="o">-</span><span class="mi">441</span> <span class="o">-</span><span class="mi">341</span> <span class="o">-</span><span class="mi">225</span>  <span class="mf">0.7</span>  <span class="mf">0.72</span>  <span class="mf">0.74</span>  <span class="mf">0.76</span>
 
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">3</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">5</span>
 <span class="nb">e</span>
-
-
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
@@ -207,7 +197,7 @@ ga<span class="n">out</span> <span class="o">=</span> <span class="mi">0</span>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm156865"></a>
+        <a id="idm156869"></a>
         <h2>Credits</h2>
         <p>
       </p>
