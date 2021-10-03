@@ -81,43 +81,31 @@
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
 <span class="c1">; Audio out   Audio in</span>
--odac           -iadc    <span class="c1">;;;RT audio I/O</span>
+-n   <span class="c1">; no sound</span>
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o divz.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span>
 
-<span class="c1">; Initialize the global variables.</span>
 <span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">kr</span> <span class="o">=</span> <span class="mi">4410</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
-<span class="c1">; Instrument #1.</span>
 <span class="kd">instr</span> <span class="nf">1</span>
-  <span class="c1">; Define the numbers to be divided.</span>
-  k<span class="n">a</span> <span class="nb">init</span> <span class="mi">200</span>
-  <span class="c1">; Linearly change the value of kb from 200 to 0.</span>
-  k<span class="n">b</span> <span class="nb">line</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">200</span>
-  <span class="c1">; If a "divide by zero" error occurs, substitute -1.</span>
-  k<span class="n">subst</span> <span class="nb">init</span> <span class="o">-</span><span class="mi">1</span>
   
-  <span class="c1">; Safely divide the numbers.</span>
-  k<span class="n">results</span> <span class="nb">divz</span> k<span class="n">a</span><span class="p">,</span> k<span class="n">b</span><span class="p">,</span> k<span class="n">subst</span>
+k<span class="n">a</span> <span class="nb">init</span> <span class="mi">200</span>                                         <span class="c1">; Define the numbers to be divided.</span>
+k<span class="n">b</span> <span class="nb">line</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">200</span>                                  <span class="c1">; Linearly change the value of kb from 200 to 0.</span>
+k<span class="n">subst</span> <span class="nb">init</span> <span class="o">-</span><span class="mi">1</span>                                      <span class="c1">; If a "divide by zero" error occurs, substitute -1.</span>
+k<span class="n">results</span> <span class="nb">divz</span> k<span class="n">a</span><span class="p">,</span> k<span class="n">b</span><span class="p">,</span> k<span class="n">subst</span>                        <span class="c1">; Safely divide the numbers.</span>
+<span class="nb">printks</span> <span class="s">"</span><span class="si">%f</span><span class="s"> / </span><span class="si">%f</span><span class="s"> = </span><span class="si">%f</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> k<span class="n">a</span><span class="p">,</span> k<span class="n">b</span><span class="p">,</span> k<span class="n">results</span>    <span class="c1">; Print out the results.</span>
 
-  <span class="c1">; Print out the results.</span>
-  <span class="nb">printks</span> <span class="s">"</span><span class="si">%f</span><span class="s"> / </span><span class="si">%f</span><span class="s"> = </span><span class="si">%f</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> k<span class="n">a</span><span class="p">,</span> k<span class="n">b</span><span class="p">,</span> k<span class="n">results</span>
 <span class="kd">endin</span>
-
 
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
-
-<span class="c1">; Play Instrument #1 for one second.</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mf">.3</span>
 <span class="nb">e</span>
-
-
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
@@ -136,7 +124,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm63205"></a>
+        <a id="idm63202"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="assign.html" title="="><em class="citetitle">=</em></a>,
@@ -145,7 +133,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm63214"></a>
+        <a id="idm63211"></a>
         <h2>Credits</h2>
         <p>Author: John ffitch after an idea by Barry L. Vercoe</p>
         <p>Example written by Kevin Conder.</p>
