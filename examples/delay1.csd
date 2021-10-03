@@ -19,7 +19,10 @@ instr 1
 kfreq line 1000, p3, sr/2
 a0    oscili 1, kfreq       ; frequency sweep
 a1    delay1  a0            ; simple Lowpass filter
-aout  = (a0+0.99*a1)/2      ; mix direct & delayed signal
+; ...mix direct & delayed signal...
+aout  = (a0+0.99*a1)/2      ; aout and a0 output are used to create the screenshot below...
+aout  *= .1                 ; but here amplitude is lowered  a lot...
+a0    *= .1                 ; ...just to demonstrate the sounding result.
 outs  aout, a0              ; output direct signal on right channel and the filtered signal on left channel
 
 endin
