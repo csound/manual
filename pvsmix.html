@@ -39,7 +39,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm193121"></a>
+        <a id="idm193486"></a>
         <h2>Description</h2>
         <p>
       Mix 'seamlessly' two pv signals.  This opcode combines the
@@ -48,12 +48,12 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm193124"></a>
+        <a id="idm193489"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">fsig <span class="command"><strong>pvsmix</strong></span> fsigin1, fsigin2</pre>
       </div>
       <div class="refsect1">
-        <a id="idm193128"></a>
+        <a id="idm193493"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>fsig</em></span> -- output pv stream
@@ -84,20 +84,20 @@
         </div>
       </div>
       <div class="refsect1">
-        <a id="idm193139"></a>
+        <a id="idm193504"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the pvsmix opcode. It uses the file <a class="ulink" href="examples/pvsmix.csd" target="_top"><em class="citetitle">pvsmix.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm193144"></a>
+          <a id="idm193509"></a>
           <p class="title">
-            <strong>Example 840. Example of the pvsmix opcode.</strong>
+            <strong>Example 841. Example of the pvsmix opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm193151"></a>
+              <a id="idm193516"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -109,28 +109,28 @@
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span>
 
+<span class="c1">; by Menno Knevel 2021</span>
+
 <span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
 <span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
 <span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
-gi<span class="n">sin</span>	<span class="nb">ftgen</span>	<span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2048</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>
-
 <span class="kd">instr</span> <span class="nf">1</span>
 
-a<span class="n">sig1</span> <span class="nb">diskin2</span> <span class="s">"fox.wav"</span><span class="p">,</span> <span class="mi">1</span>		<span class="c1">;signal in 1</span>
-a<span class="n">sig2</span> <span class="nb">oscil</span>   <span class="mf">.3</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> gi<span class="n">sin</span>		<span class="c1">;signal in 2</span>
-f<span class="n">sig1</span> <span class="nb">pvsanal</span> a<span class="n">sig1</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="mi">256</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="mi">0</span>	<span class="c1">;pvoc analysis </span>
-f<span class="n">sig2</span> <span class="nb">pvsanal</span> a<span class="n">sig2</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="mi">256</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="mi">0</span>	<span class="c1">;of both signals</span>
+a<span class="n">sig1</span> <span class="nb">diskin2</span> <span class="s">"beats.wav"</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span>		<span class="c1">;signal in 1 at half speed</span>
+a<span class="n">sig2</span> <span class="nb">diskin2</span> <span class="s">"beats.wav"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span>		<span class="c1">;signal in 2</span>
+f<span class="n">sig1</span> <span class="nb">pvsanal</span> a<span class="n">sig1</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="mi">256</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="mi">0</span>	      <span class="c1">;pvoc analysis </span>
+f<span class="n">sig2</span> <span class="nb">pvsanal</span> a<span class="n">sig2</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="mi">256</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="mi">0</span>	      <span class="c1">;of both signals</span>
 f<span class="n">sall</span> <span class="nb">pvsmix</span>  f<span class="n">sig1</span><span class="p">,</span> f<span class="n">sig2</span> 
 a<span class="n">sig</span>  <span class="nb">pvsynth</span> f<span class="n">sall</span>
-      <span class="nb">outs</span> a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span> 
+<span class="nb">outs</span> a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span> 
 
 <span class="kd">endin</span> 
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">3</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">8</span>
 <span class="nb">e</span>
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
@@ -142,7 +142,7 @@ a<span class="n">sig</span>  <span class="nb">pvsynth</span> f<span class="n">sa
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm193247"></a>
+        <a id="idm193608"></a>
         <h2>Credits</h2>
         <p>
       </p>
