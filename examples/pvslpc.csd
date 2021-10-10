@@ -1,29 +1,48 @@
 <CsoundSynthesizer>
 <CsOptions>
--odac -d
+; Select audio/midi flags here according to platform
+-odac  ;;;realtime audio out
+;-iadc    ;;;uncomment -iadc if realtime audio input is needed too
+; For Non-realtime ouput leave only the line below:
+; -o pvslpc.wav -W ;;; for file output any platform
 </CsOptions>
 <CsInstruments>
 
 sr = 44100
-ksmps = 64
-nchnls = 1
-0dbfs = 1
+ksmps = 32
+nchnls = 2
+0dbfs  = 1
 
-gifw ftgen 0,0,1024,20,2,1
+gifw ftgen 0, 0, 1024, 20, 2, 1             ; Hanning window
 
 instr 1
-a1 diskin "fox.wav",1,0,1
-a2 diskin "beats.wav",1,0,1
-fenv pvslpc a1,1024,128,64,gifw
-fexc pvsanal a2,1024,128,1024,1
-fsig pvsfilter fexc,fenv, 1, 0.5
-a3 pvsynth fsig
-a3 dcblock a3
-out a3
+
+iswap   =   p4                              ; decide which sample goes to pvslpc
+if iswap == 1 then
+    a1 diskin "MSjungleMid.wav", 1, 0, 1    ; first the jungle
+    a2 diskin "fox.wav", 1, 0, 1
+    prints "\n--**the jungle...**--\n"
+else
+    a1 diskin "fox.wav", 1, 0, 1            ; then the fox
+    a2 diskin "MSjungleMid.wav", 1, 0, 1
+    prints "\n--**and the fox...**--\n"
+endif
+iorder  =   p5
+fenv    pvslpc  a1, 1024, 128, p5, gifw
+fsig    pvscale fenv, 1.5                   ; convert lpc to pvs, for
+a3      pvsynth fsig                        ; scaling basic frequency 1.5 times
+a3      dcblock a3
+outs    a3*.1, a3*.1
 endin
 
 </CsInstruments>
 <CsScore>
-i1 0 30
+;         jungle   order
+i1  0  10   1       10
+i1  11 10   1       150
+s
+i1  2  10   0       10
+i1  13 10   0       150
+e
 </CsScore>
 </CsoundSynthesizer>
