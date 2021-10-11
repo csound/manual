@@ -39,19 +39,19 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm193626"></a>
+        <a id="idm193678"></a>
         <h2>Description</h2>
         <p>
       Performs morphing (or interpolation)  between two source fsigs.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm193629"></a>
+        <a id="idm193681"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">fsig <span class="command"><strong>pvsmorph</strong></span> fsig1, fsig2, kampint, kfrqint</pre>
       </div>
       <div class="refsect1">
-        <a id="idm193633"></a>
+        <a id="idm193685"></a>
         <h2>Performance</h2>
         <p>
       The operation of this opcode is similar to that of <a class="link" href="pvcross.html" title="pvcross"><em class="citetitle">pvinterp</em></a> (q.v.), 
@@ -85,21 +85,21 @@
         </div>
       </div>
       <div class="refsect1">
-        <a id="idm193652"></a>
+        <a id="idm193704"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the pvsmorph opcode. It uses the file <a class="ulink" href="examples/pvsmorph.csd" target="_top"><em class="citetitle">pvsmorph.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm193657"></a>
+          <a id="idm193709"></a>
           <p class="title">
             <strong>Example 842. Example of the pvsmorph opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm193664"></a>
+              <a id="idm193716"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -112,40 +112,43 @@
 <span class="nt">&lt;CsInstruments&gt;</span>
 
 <span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">16</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
 <span class="c1">;; example written by joachim heintz 2009</span>
+<span class="c1">; additions by Menno Knevel 2021</span>
 
 gi<span class="n">Sine</span>		<span class="nb">ftgen</span>		<span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4096</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>
 
 <span class="kd">instr</span> <span class="nf">1</span>
-i<span class="n">ampint1</span>	<span class="o">=</span>		<span class="vi">p4</span>
-i<span class="n">ampint2</span>	<span class="o">=</span>		<span class="vi">p5</span>
-i<span class="n">frqint1</span>	<span class="o">=</span>		<span class="vi">p6</span>
-i<span class="n">frqint2</span>	<span class="o">=</span>		<span class="vi">p7</span>
-k<span class="n">ampint</span>	<span class="nb">linseg</span>		i<span class="n">ampint1</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> i<span class="n">ampint2</span>
-k<span class="n">frqint</span>	<span class="nb">linseg</span>		i<span class="n">frqint1</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> i<span class="n">frqint2</span>
-i<span class="n">fftsize</span>	<span class="o">=</span>		<span class="mi">1024</span>
-i<span class="n">overlap</span>	<span class="o">=</span>		i<span class="n">fftsize</span> <span class="o">/</span> <span class="mi">4</span>
-i<span class="n">winsize</span>	<span class="o">=</span>		i<span class="n">fftsize</span>
-i<span class="n">winshape</span>	<span class="o">=</span>		<span class="mi">1</span><span class="c1">; von-Hann window</span>
-S<span class="n">file1</span>		<span class="o">=</span>		<span class="s">"fox.wav"</span>
-a<span class="n">in1</span>		<span class="nb">soundin</span>	S<span class="n">file1</span>
-a<span class="n">in2</span>		<span class="nb">buzz</span>		<span class="mf">.2</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> gi<span class="n">Sine</span>
+i<span class="n">ampint1</span>    <span class="o">=</span> <span class="vi">p4</span>
+i<span class="n">ampint2</span>	<span class="o">=</span> <span class="vi">p5</span>
+i<span class="n">frqint1</span>	<span class="o">=</span> <span class="vi">p6</span>
+i<span class="n">frqint2</span>	<span class="o">=</span> <span class="vi">p7</span>
+k<span class="n">ampint</span>	    <span class="nb">linseg</span>	i<span class="n">ampint1</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">.2</span><span class="p">,</span> i<span class="n">ampint1</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">.6</span><span class="p">,</span> i<span class="n">ampint2</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">.2</span><span class="p">,</span> i<span class="n">ampint2</span>
+k<span class="n">frqint</span>	    <span class="nb">linseg</span>	i<span class="n">frqint1</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">.2</span><span class="p">,</span> i<span class="n">frqint1</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">.6</span><span class="p">,</span> i<span class="n">frqint2</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">.2</span><span class="p">,</span> i<span class="n">frqint2</span>
+i<span class="n">fftsize</span>	<span class="o">=</span> <span class="mi">1024</span>
+i<span class="n">overlap</span>	<span class="o">=</span> i<span class="n">fftsize</span> <span class="o">/</span> <span class="mi">4</span>
+i<span class="n">winsize</span>	<span class="o">=</span> i<span class="n">fftsize</span>
+i<span class="n">winshape</span>	<span class="o">=</span> <span class="mi">1</span>                                     <span class="c1">; von-Hann window</span>
+S<span class="n">file1</span>		<span class="o">=</span> <span class="s">"fox.wav"</span>
+a<span class="n">in1</span>		<span class="nb">diskin2</span>	S<span class="n">file1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+k<span class="n">freq</span>       <span class="nb">line</span>    <span class="mi">30</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">500</span>
+a<span class="n">in2</span>		<span class="nb">buzz</span>	<span class="mf">.8</span><span class="p">,</span> k<span class="n">freq</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> gi<span class="n">Sine</span>
 f<span class="n">ftin1</span>		<span class="nb">pvsanal</span>	a<span class="n">in1</span><span class="p">,</span> i<span class="n">fftsize</span><span class="p">,</span> i<span class="n">overlap</span><span class="p">,</span> i<span class="n">winsize</span><span class="p">,</span> i<span class="n">winshape</span>
 f<span class="n">ftin2</span>		<span class="nb">pvsanal</span>	a<span class="n">in2</span><span class="p">,</span> i<span class="n">fftsize</span><span class="p">,</span> i<span class="n">overlap</span><span class="p">,</span> i<span class="n">winsize</span><span class="p">,</span> i<span class="n">winshape</span>
-f<span class="n">morph</span>		<span class="nb">pvsmorph</span>	f<span class="n">ftin1</span><span class="p">,</span> f<span class="n">ftin2</span><span class="p">,</span> k<span class="n">ampint</span><span class="p">,</span> k<span class="n">frqint</span>
+f<span class="n">morph</span>		<span class="nb">pvsmorph</span> f<span class="n">ftin1</span><span class="p">,</span> f<span class="n">ftin2</span><span class="p">,</span> k<span class="n">ampint</span><span class="p">,</span> k<span class="n">frqint</span>
 a<span class="n">out</span>		<span class="nb">pvsynth</span>	f<span class="n">morph</span>
-		<span class="nb">out</span>		a<span class="n">out</span> <span class="o">*</span> <span class="mf">.5</span>
+<span class="nb">outs</span>		a<span class="n">out</span> <span class="o">*</span> <span class="mf">.6</span><span class="p">,</span> a<span class="n">out</span> <span class="o">*</span> <span class="mf">.6</span>
 <span class="kd">endin</span>
 
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">3</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">6</span> <span class="mi">3</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span>
+<span class="c1">;         iampint1  iampint2    ifrqint1    ifrqint2    </span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span>  <span class="mf">12.2</span>     <span class="mi">0</span>         <span class="mi">0</span>           <span class="mi">1</span>           <span class="mi">1</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">14</span> <span class="mf">12.2</span>     <span class="mi">1</span>         <span class="mi">0</span>           <span class="mi">1</span>           <span class="mi">0</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">28</span> <span class="mf">12.2</span>     <span class="mi">0</span>         <span class="mi">1</span>           <span class="mi">0</span>           <span class="mi">1</span>
 <span class="nb">e</span>
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
@@ -160,14 +163,14 @@ a<span class="n">out</span>		<span class="nb">pvsynth</span>	f<span class="n">mo
 
       </p>
         <div class="example">
-          <a id="idm193828"></a>
+          <a id="idm193927"></a>
           <p class="title">
             <strong>Example 843. Example of the pvsmorph opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm193835"></a>
+              <a id="idm193934"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -253,7 +256,7 @@ a<span class="n">out</span>		<span class="nb">pvsynth</span>	f<span class="n">mo
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm194112"></a>
+        <a id="idm194211"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="pvsanal.html" title="pvsanal"><em class="citetitle">pvsanal</em></a>,
@@ -262,7 +265,7 @@ a<span class="n">out</span>		<span class="nb">pvsynth</span>	f<span class="n">mo
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm194121"></a>
+        <a id="idm194220"></a>
         <h2>Credits</h2>
         <p>
       </p>

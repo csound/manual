@@ -95,43 +95,51 @@
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
--odac
+<span class="c1">; Select audio/midi flags here according to platform</span>
+-odac    <span class="c1">;;;realtime audio out</span>
+<span class="c1">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</span>
+<span class="c1">; For Non-realtime ouput leave only the line below:</span>
+<span class="c1">;-o pvscross.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span>
 
 <span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">16</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
-<span class="c1">;; example written by joachim heintz 2009</span>
+<span class="c1">; by Menno Knevel 2021, after an example by joachim heintz 2009</span>
 
 <span class="kd">instr</span> <span class="nf">1</span>
-  i<span class="n">permut</span> <span class="o">=</span> <span class="vi">p4</span> <span class="c1">; 1 = change order of soundfiles</span>
+  i<span class="n">permut</span>  <span class="o">=</span> <span class="vi">p4</span>                                                  <span class="c1">; 1 = change order of soundfiles</span>
   i<span class="n">fftsize</span> <span class="o">=</span> <span class="mi">1024</span>
   i<span class="n">overlap</span> <span class="o">=</span> i<span class="n">fftsize</span> <span class="o">/</span> <span class="mi">4</span>
   i<span class="n">winsize</span> <span class="o">=</span> i<span class="n">fftsize</span>
-  i<span class="n">winshape</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">; von-Hann window</span>
-  S<span class="n">file1</span> <span class="o">=</span> <span class="s">"fox.wav"</span>
-  S<span class="n">file2</span> <span class="o">=</span> <span class="s">"wave.wav"</span>
-  a<span class="n">in1</span> <span class="o">=</span> <span class="nb">soundin</span><span class="p">:</span><span class="kt">a</span><span class="p">(</span>S<span class="n">file1</span><span class="p">)</span>
-  a<span class="n">in2</span> <span class="o">=</span> <span class="nb">soundin</span><span class="p">:</span><span class="kt">a</span><span class="p">(</span>S<span class="n">file2</span><span class="p">)</span>
+  i<span class="n">winshape</span> <span class="o">=</span> <span class="mi">1</span>                                                  <span class="c1">; von-Hann window</span>
+  S<span class="n">file1</span> <span class="o">=</span> <span class="s">"oboe.aiff"</span>
+  S<span class="n">file2</span> <span class="o">=</span> <span class="s">"finneganswake1.flac"</span>
+  a<span class="n">in1</span>   <span class="o">=</span> <span class="nb">diskin2</span><span class="p">:</span><span class="kt">a</span><span class="p">(</span>S<span class="n">file1</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+  a<span class="n">in2</span>   <span class="o">=</span> <span class="nb">diskin2</span><span class="p">:</span><span class="kt">a</span><span class="p">(</span>S<span class="n">file2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>                             <span class="c1">; the wave plays 4 x faster and higher</span>
   f<span class="n">ftin1</span> <span class="o">=</span> <span class="nb">pvsanal</span><span class="p">(</span>a<span class="n">in1</span><span class="p">,</span> i<span class="n">fftsize</span><span class="p">,</span> i<span class="n">overlap</span><span class="p">,</span> i<span class="n">winsize</span><span class="p">,</span> i<span class="n">winshape</span><span class="p">)</span> <span class="c1">; fft-analysis of file 1</span>
   f<span class="n">ftin2</span> <span class="o">=</span> <span class="nb">pvsanal</span><span class="p">(</span>a<span class="n">in2</span><span class="p">,</span> i<span class="n">fftsize</span><span class="p">,</span> i<span class="n">overlap</span><span class="p">,</span> i<span class="n">winsize</span><span class="p">,</span> i<span class="n">winshape</span><span class="p">)</span> <span class="c1">; fft-analysis of file 2</span>
-  k<span class="n">trans</span> <span class="o">=</span> <span class="nb">linseg</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">; linear transition</span>
+  k<span class="n">trans</span> <span class="o">=</span> <span class="nb">linseg</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">.6</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">.2</span><span class="p">,</span> <span class="vi">p5</span><span class="p">)</span>              <span class="c1">; transitions</span>
   <span class="k">if</span> i<span class="n">permut</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">then</span>
     f<span class="n">cross</span> <span class="o">=</span> <span class="nb">pvscross</span><span class="p">(</span>f<span class="n">ftin2</span><span class="p">,</span> f<span class="n">ftin1</span><span class="p">,</span> k<span class="n">trans</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> k<span class="n">trans</span><span class="p">)</span>
   <span class="k">else</span>
     f<span class="n">cross</span> <span class="o">=</span> <span class="nb">pvscross</span><span class="p">(</span>f<span class="n">ftin1</span><span class="p">,</span> f<span class="n">ftin2</span><span class="p">,</span> k<span class="n">trans</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> k<span class="n">trans</span><span class="p">)</span>
   <span class="k">endif</span>
   a<span class="n">out</span> <span class="o">=</span> <span class="nb">pvsynth</span><span class="p">(</span>f<span class="n">cross</span><span class="p">)</span>
-  <span class="nb">out</span><span class="p">(</span>a<span class="n">out</span><span class="p">)</span>
+  <span class="nb">outs</span><span class="p">(</span>a<span class="n">out</span><span class="p">,</span> a<span class="n">out</span><span class="p">)</span>
 <span class="kd">endin</span>
 
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mf">2.757</span> <span class="mi">0</span> <span class="c1">; frequencies from fox.wav, amplitudes moving from wave to fox</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">3</span> <span class="mf">2.757</span> <span class="mi">1</span> <span class="c1">; frequencies from wav.wav, amplitudes moving from fox to wave</span>
+<span class="c1">; use only first portion of sample (=p5)</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mf">12.7</span>   <span class="mi">0</span>    <span class="mi">0</span>     <span class="c1">; frequencies from the oboe, no transition</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">14</span> <span class="mf">12.7</span>  <span class="mi">1</span>    <span class="mi">0</span>     <span class="c1">; frequencies from the voice, no transition</span>
+<span class="c1">; transition over total sample (=p5)</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">28</span> <span class="mf">12.7</span>  <span class="mi">0</span>    <span class="mi">1</span>    <span class="c1">; frequencies from the oboe, amplitude transition from voice to oboe</span>
+<span class="nb">i</span> <span class="mi">1</span> <span class="mi">42</span> <span class="mf">12.7</span>  <span class="mi">1</span>    <span class="mi">1</span>    <span class="c1">; frequencies from the voice, amplitude transition from oboe to voice</span>
 <span class="nb">e</span>
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
@@ -143,7 +151,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm190290"></a>
+        <a id="idm190342"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="pvsanal.html" title="pvsanal"><em class="citetitle">pvsanal</em></a>,
@@ -152,7 +160,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm190299"></a>
+        <a id="idm190351"></a>
         <h2>Credits</h2>
         <p>
       </p>
