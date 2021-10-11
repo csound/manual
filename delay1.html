@@ -87,32 +87,120 @@
 <span class="c1">; Audio out   Audio in</span>
 -odac             <span class="c1">;;;RT audio out</span>
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
-<span class="c1">;-o delay1.wav -W ;;; for file output any platform</span>
+<span class="c1">; -o delay1.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span>
 
-<span class="c1">; by John ffitch and Menno Knevel 2021</span>
+<span class="c1">; by Menno Knevel 2021, after Russel Pinkston</span>
 
 <span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
 <span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
 <span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
 
-<span class="kd">instr</span> <span class="nf">1</span>
-k<span class="n">freq</span> <span class="nb">line</span> <span class="mi">1000</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="vg">sr</span><span class="o">/</span><span class="mi">2</span>
-a<span class="n">0</span>    <span class="nb">oscili</span> <span class="mi">1</span><span class="p">,</span> k<span class="n">freq</span>       <span class="c1">; frequency sweep</span>
-a<span class="n">1</span>    <span class="nb">delay1</span>  a<span class="n">0</span>            <span class="c1">; simple Lowpass filter</span>
-<span class="c1">; ...mix direct &amp; delayed signal...</span>
-a<span class="n">out</span>  <span class="o">=</span> <span class="p">(</span>a<span class="n">0</span><span class="o">+</span><span class="mf">0.99</span><span class="o">*</span>a<span class="n">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>      <span class="c1">; aout and a0 output are used to create the screenshot below...</span>
-a<span class="n">out</span>  <span class="o">*=</span> <span class="mf">.1</span>                 <span class="c1">; but here amplitude is lowered  a lot...</span>
-a<span class="n">0</span>    <span class="o">*=</span> <span class="mf">.1</span>                 <span class="c1">; ...just to demonstrate the sounding result.</span>
-<span class="nb">outs</span>  a<span class="n">out</span><span class="p">,</span> a<span class="n">0</span>              <span class="c1">; output direct signal on right channel and the filtered signal on left channel</span>
+
+<span class="kd">instr</span> <span class="nf">1</span>                             <span class="c1">; original sounds</span>
+
+i<span class="n">choice</span> <span class="o">=</span>   <span class="vi">p4</span>
+<span class="k">if</span> i<span class="n">choice</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">then</span>
+        <span class="nb">prints</span>  <span class="s">"</span><span class="se">\n</span><span class="s">--**original beats**--</span><span class="se">\n\n</span><span class="s">"</span>
+    a<span class="n">out</span>    <span class="nb">diskin2</span> <span class="s">"beats.wav"</span>
+<span class="k">else</span>
+        <span class="nb">prints</span>  <span class="s">"</span><span class="se">\n</span><span class="s">--**original noise**--</span><span class="se">\n\n</span><span class="s">"</span>
+    a<span class="n">out</span>    <span class="nb">rand</span> <span class="mf">.2</span>
+<span class="k">endif</span>
+<span class="nb">outs</span>    a<span class="n">out</span><span class="p">,</span> a<span class="n">out</span>
+
+<span class="kd">endin</span>
+
+<span class="kd">instr</span> <span class="nf">2</span>                             <span class="c1">; Finite Impulse Response (FIR) Filter</span>
+                                    
+i<span class="n">choice</span> <span class="o">=</span>   <span class="vi">p4</span>
+<span class="k">if</span> i<span class="n">choice</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">then</span>
+    <span class="nb">prints</span>  <span class="s">"</span><span class="se">\n</span><span class="s">--**FIRST-ORDER LOW-PASS on the beats**--</span><span class="se">\n\n</span><span class="s">"</span>
+    a<span class="n">out</span>    <span class="nb">diskin2</span> <span class="s">"beats.wav"</span>
+<span class="k">else</span>
+    <span class="nb">prints</span>  <span class="s">"</span><span class="se">\n</span><span class="s">--**FIRST-ORDER LOW-PASS on the noise**--</span><span class="se">\n\n</span><span class="s">"</span>
+    a<span class="n">out</span>    <span class="nb">rand</span> <span class="mf">.2</span>
+<span class="k">endif</span>
+
+a<span class="n">del1</span>   <span class="nb">delay1</span>  a<span class="n">out</span>                <span class="c1">; delay 1 sample        			</span>
+a<span class="n">sig</span>    <span class="o">=</span>   <span class="p">(</span><span class="mf">.5</span><span class="o">*</span> a<span class="n">out</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="mf">.5</span><span class="o">*</span> a<span class="n">del1</span><span class="p">)</span>	<span class="c1">; average 2 succesive inputs</span>
+<span class="nb">outs</span>    a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
+
+<span class="kd">endin</span>
+
+
+<span class="kd">instr</span> <span class="nf">3</span>                             <span class="c1">; Finite Impulse Response (FIR) Filter        </span>
+                                    
+i<span class="n">choice</span> <span class="o">=</span>   <span class="vi">p4</span>
+<span class="k">if</span> i<span class="n">choice</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">then</span>
+    <span class="nb">prints</span>  <span class="s">"</span><span class="se">\n</span><span class="s">--**FIRST-ORDER HIGH-PASS on the beats**--</span><span class="se">\n\n</span><span class="s">"</span>
+    a<span class="n">out</span>    <span class="nb">diskin2</span> <span class="s">"beats.wav"</span>
+<span class="k">else</span>
+    <span class="nb">prints</span>  <span class="s">"</span><span class="se">\n</span><span class="s">--**FIRST-ORDER HIGH-PASS on the noise**--</span><span class="se">\n\n</span><span class="s">"</span>
+    a<span class="n">out</span>    <span class="nb">rand</span> <span class="mf">.2</span>
+<span class="k">endif</span>
+
+a<span class="n">del1</span>   <span class="nb">delay1</span>  a<span class="n">out</span>                <span class="c1">; delay 1 sample</span>
+a<span class="n">sig</span>    <span class="o">=</span>   <span class="p">(</span><span class="mf">.5</span><span class="o">*</span>a<span class="n">out</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mf">.5</span><span class="o">*</span>a<span class="n">del1</span><span class="p">)</span>   	<span class="c1">; difference of 2 inputs</span>
+<span class="nb">outs</span>    a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
+
+<span class="kd">endin</span>
+
+<span class="kd">instr</span> <span class="nf">4</span>                             <span class="c1">; Finite Impulse Response (FIR) Filter        </span>
+                                    
+i<span class="n">choice</span> <span class="o">=</span>   <span class="vi">p4</span>
+<span class="k">if</span> i<span class="n">choice</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">then</span>
+    <span class="nb">prints</span>  <span class="s">"</span><span class="se">\n</span><span class="s">--**SECOND-ORDER NOTCH on the beats**--</span><span class="se">\n\n</span><span class="s">"</span>
+    a<span class="n">out</span>    <span class="nb">diskin2</span> <span class="s">"beats.wav"</span>
+<span class="k">else</span>
+    <span class="nb">prints</span>  <span class="s">"</span><span class="se">\n</span><span class="s">--**SECOND-ORDER NOTCH on the noise**--</span><span class="se">\n\n</span><span class="s">"</span>
+    a<span class="n">out</span>    <span class="nb">rand</span> <span class="mf">.2</span>
+<span class="k">endif</span>
+
+a<span class="n">del1</span>   <span class="nb">delay1</span>  a<span class="n">out</span>                <span class="c1">; x(n - 1)</span>
+a<span class="n">del2</span>   <span class="nb">delay1</span>  a<span class="n">del1</span>               <span class="c1">; x(n - 2)</span>
+a<span class="n">sig</span>   	<span class="o">=</span>   <span class="p">(</span><span class="mf">.5</span><span class="o">*</span>a<span class="n">out</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="mf">.5</span><span class="o">*</span>a<span class="n">del2</span><span class="p">)</span>  	<span class="c1">; y(n) = .5x(n) + .5x(n - 2)</span>
+<span class="nb">outs</span>    a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
+
+<span class="kd">endin</span>
+
+<span class="kd">instr</span> <span class="nf">5</span>                             <span class="c1">; Finite Impulse Response (FIR) Filter        </span>
+                                    
+i<span class="n">choice</span> <span class="o">=</span>   <span class="vi">p4</span>
+<span class="k">if</span> i<span class="n">choice</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">then</span>
+    <span class="nb">prints</span>  <span class="s">"</span><span class="se">\n</span><span class="s">--**SECOND-ORDER BAND-PASS on the beats**--</span><span class="se">\n\n</span><span class="s">"</span>
+    a<span class="n">out</span>    <span class="nb">diskin2</span> <span class="s">"beats.wav"</span>
+<span class="k">else</span>
+    <span class="nb">prints</span>  <span class="s">"</span><span class="se">\n</span><span class="s">--**SECOND-ORDER BAND-PASS on the noise**--</span><span class="se">\n\n</span><span class="s">"</span>
+    a<span class="n">out</span>    <span class="nb">rand</span> <span class="mf">.2</span>
+<span class="k">endif</span>
+
+a<span class="n">del1</span>   <span class="nb">delay1</span>  a<span class="n">out</span>                <span class="c1">; x(n - 1)</span>
+a<span class="n">del2</span>   <span class="nb">delay1</span>  a<span class="n">del1</span>               <span class="c1">; x(n - 2)</span>
+a<span class="n">sig</span>   	<span class="o">=</span>   <span class="p">(</span><span class="mf">.5</span><span class="o">*</span>a<span class="n">out</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mf">.5</span><span class="o">*</span>a<span class="n">del2</span><span class="p">)</span>  	<span class="c1">; y(n) = .5x(n) - .5x(n - 2)</span>
+<span class="nb">outs</span>    a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
 
 <span class="kd">endin</span>
 
 <span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mf">0.0</span> <span class="mi">3</span>
+
+<span class="nb">i</span><span class="mi">1</span>   <span class="mi">0</span>     <span class="mi">2</span>    <span class="mi">0</span>   
+<span class="nb">i</span><span class="mi">1</span>   <span class="mi">3</span>     <span class="mi">2</span>    <span class="mi">1</span> 
+<span class="nb">s</span>
+<span class="nb">i</span><span class="mi">2</span>   <span class="mi">1</span>     <span class="mi">2</span>    <span class="mi">0</span> 
+<span class="nb">i</span><span class="mi">2</span>   <span class="mi">4</span>     <span class="mi">2</span>    <span class="mi">1</span>   
+<span class="nb">s</span>
+<span class="nb">i</span><span class="mi">3</span>   <span class="mi">1</span>     <span class="mi">2</span>    <span class="mi">0</span> 
+<span class="nb">i</span><span class="mi">3</span>   <span class="mi">4</span>     <span class="mi">2</span>    <span class="mi">1</span> 
+<span class="nb">s</span>
+<span class="nb">i</span><span class="mi">4</span>   <span class="mi">1</span>     <span class="mi">2</span>    <span class="mi">0</span> 
+<span class="nb">i</span><span class="mi">4</span>   <span class="mi">4</span>     <span class="mi">2</span>    <span class="mi">1</span> 
+<span class="nb">s</span>
+<span class="nb">i</span><span class="mi">5</span>   <span class="mi">1</span>     <span class="mi">2</span>    <span class="mi">0</span> 
+<span class="nb">i</span><span class="mi">5</span>   <span class="mi">4</span>     <span class="mi">2</span>    <span class="mi">1</span> 
 <span class="nb">e</span>
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
@@ -124,13 +212,13 @@ a<span class="n">0</span>    <span class="o">*=</span> <span class="mf">.1</span
     </p>
       </div>
       <p>
-     This shows the result of the example: the left channel shows the filtered sound, the right channel is the original sweep.    
+     This shows the result of the example: 5 times the beats and the noise. 1.Original samples, 2.first-order lowpass, 3.first-order highpass, 4.second-order notch and 5.second-order bandpass.    
     </p>
       <div class="mediaobject">
-        <img src="images/sweep.png" />
+        <img src="images/delay1.png" />
       </div>
       <div class="refsect1">
-        <a id="idm59101"></a>
+        <a id="idm59363"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="delay.html" title="delay"><em class="citetitle">delay</em></a>,
@@ -139,7 +227,7 @@ a<span class="n">0</span>    <span class="o">*=</span> <span class="mf">.1</span
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm59110"></a>
+        <a id="idm59372"></a>
         <h2>Credits</h2>
         <p>Author: Barry Vercoe</p>
       </div>
