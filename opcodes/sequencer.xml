@@ -1,0 +1,118 @@
+<refentry id="sequ">
+<indexterm id="IndexSequ"><primary>sequ</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>sequ</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>sequ</refname>
+    <refpurpose>
+      A software variant of a sequencer unit
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Generates a seqence of events with controls on forward or
+      backward, anf optional mutation or random choise.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>kres  <command>sequ</command>  initriff[], iinstr[], idata[], kbpm, klen [, kmode] [, kverbos]
+    </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>initriff</emphasis>  - array of lengths of the
+      underlyig riff in beats.  The array length is the maximum length of
+      the sequence and shouk be less than 65.
+    </para>
+    <para>
+     <emphasis>iinstr</emphasis>  -  array of instrument numbers to
+     schedule when the sequencer triggers an evemnt.  An instrument of
+     zero means do nothing.
+    </para>
+    <para>
+      <emphasis>idata</emphasis>  -  array of p4 parameters to the
+      iinstr calls.  This can be pitch information, in cps or midinote
+      number or oher use.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>kbpm</emphasis> - speed of looping in beats per minute.
+    </para>
+    <para>
+      <emphasis>klen</emphasis> - length of the active part of the sequence,
+    </para>
+    <para>
+      <emphasis>kmode</emphasis> - control for the sequencer. A value
+      of 0 (default) loops forward through the riff, calling the
+      associated instrument on triggering.
+    </para>
+    <para>
+      <emphasis>kverbose</emphasis> - if non zero prints messages
+      about the internal state changes.  Default is zero
+    </para>
+    <para>
+      <emphasis>kres</emphasis> - gives the index of the event created
+      for the current k-cycle, or -1 if no event happened.
+    </para>
+    <para>
+      <emphasis>sequ</emphasis> is a complex opcode that generates a
+      sequence of instrument events in various orders, controlled by
+      kmode.
+    </para>
+
+    <note>
+      <para>
+        values of <emphasis>kmode</emphasis> currently implemented are:
+
+        <itemizedlist>
+          <listitem><para>0 - forward loop</para></listitem>
+          <listitem><para>n&gt;0 - forward loop with a mutation every n   events</para></listitem>
+          <listitem><para>-1 - backward loop</para></listitem>
+          <listitem><para>-2 - pause</para></listitem>
+          <listitem><para>-3 - random events</para></listitem>
+          <listitem><para>-5 - reset</para></listitem>
+        </itemizedlist>
+        
+        Note also that while the arrays are i-time the values of the
+        entris are read a k-rate wen used.  This means that using global
+        i-rate vectors and it is possible with care to change note
+        details at performance time. 
+      </para>
+    </note>
+  </refsect1>
+
+  <!-- <refsect1> -->
+  <!--   <title>Example</title> -->
+  <!--   <para> -->
+  <!--     Here is an example of the sequ opcode. It uses the file <ulink url="examples/sequ.csd"><citetitle>sequ.csd</citetitle></ulink> -->
+  <!--     <example> -->
+  <!--       <title>Example of the sequ opcode.</title> -->
+  <!--       <xi:include href="examples-xml/sequ.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/> -->
+a  <!--     </example> -->
+  <!--   </para> -->
+  <!-- </refsect1> -->
+  
+   <!-- <refsect1> -->
+   <!--   <title>See Also</title> -->
+   <!--   <para> -->
+   <!--    <link linkend="foobar"><citetitle>foobarmetro</citetitle></link>, -->
+   <!--   </para> -->
+   <!--  </refsect1> -->
+    
+  <refsect1>
+    <title>Credits</title>
+    <para>Written by &namejohn;</para>
+    <para>New in Csound 6.17</para>
+  </refsect1>
+</refentry>
