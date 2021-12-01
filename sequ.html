@@ -46,7 +46,7 @@
       with variable tempo that can be played in forward, reverse, back
       and forth, and random directions. The max length of the arrays
       is 128, and it can be scaled dynamically. Permutational playback
-      modes feature randomization, probability and other algorithms.
+      modes feature randomisation, probability and other algorithms.
     </p>
       </div>
       <div class="refsect1">
@@ -54,9 +54,11 @@
         <h2>Syntax</h2>
         <pre class="synopsis">kres  <span class="command"><strong>sequ</strong></span>  irhythm[], iinstr[], idata[], kbpm, klen [, kmode] [, kstep] [, kverbose]
     </pre>
+        <pre class="synopsis">kres  <span class="command"><strong>sequ</strong></span>  irhythm[], iinstr[], idata[][], kbpm, klen [, kmode] [, kstep] [, kverbose]
+    </pre>
       </div>
       <div class="refsect1">
-        <a id="idm212243"></a>
+        <a id="idm212245"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>irhythm</em></span>  - array of durations in
@@ -69,115 +71,62 @@
      associated with the step and produces a silence for that note's duration.
     </p>
         <p>
-      <span class="emphasis"><em>idata</em></span>  -  array of p4 values to the
-      associated iinstr step. Typically, one would specify pitch
+      <span class="emphasis"><em>idata</em></span>  -  Either a vector of p4 values to the
+      associated iinstr step or a two dimenional array of p4, p5,
+      p6...values.  Typically, one would specify pitch
       information in cps, or MIDI note number; but the arbitrary list
       of p4 data values could have other uses in the called iinstr.
     </p>
       </div>
-      <div class="refsect1">
-        <a id="idm212251"></a>
-        <h2>Performance</h2>
-        <p>
+      <div class="refsect1"><a id="idm212253"></a><h2>Performance</h2><p>
       <span class="emphasis"><em>kbpm</em></span> - speed of looping in beats per minute.
-    </p>
-        <p>
+    </p><p>
       <span class="emphasis"><em>klen</em></span> - length of the active part of the
       sequence (starting from step 0).
-    </p>
-        <p>
+    </p><p>
       <span class="emphasis"><em>kmode</em></span> - control the sequencer playback. A value
       of 0 (default) loops forward through the sequence, calling the
       associated instrument on each step. Other modes are
       supported. (See below).
-    </p>
-        <p>
+    </p>oo
+    <p>
         Current playback options for <span class="emphasis"><em>kmode</em></span> are:
 
-        </p>
-        <div class="itemizedlist">
-          <ul class="itemizedlist" style="list-style-type: disc; ">
-            <li class="listitem">
-              <p>0 - forward loop</p>
-            </li>
-            <li class="listitem">
-              <p>n&gt;0 - forward loop with a mutation every n
-events</p>
-            </li>
-            <li class="listitem">
-              <p>-1 - backward loop</p>
-            </li>
-            <li class="listitem">
-              <p>-2 - back and forth</p>
-            </li>
-            <li class="listitem">
-              <p>-3 - random events</p>
-            </li>
-            <li class="listitem">
-              <p>-4 - play the entire sequence forward one time
-and stop</p>
-            </li>
-            <li class="listitem">
-              <p>-5 - play the entire sequence backward one time
-          and stop</p>
-            </li>
-            <li class="listitem">
-              <p>-6 - shuffle the event</p>
-            </li>
-            <li class="listitem">
-              <p>-7 - reset</p>
-            </li>
-          </ul>
-        </div>
-        <p>
-    </p>
-        <p>
-      <span class="emphasis"><em>kstep</em></span> - if non zero replace the irhythm array
-with k-rate triggers. These could be from a MIDI keyboard or any other
-krate controller.
-      Default is zero.
-    </p>
-        <p>
+        </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>0 - forward loop</p></li><li class="listitem"><p>n&gt;0 - forward loop with a mutation every n
+events</p></li><li class="listitem"><p>-1 - backward loop</p></li><li class="listitem"><p>-2 - back and forth</p></li><li class="listitem"><p>-3 - random events</p></li><li class="listitem"><p>-4 - play the entire sequence forward one time
+and stop</p></li><li class="listitem"><p>-5 - play the entire sequence backward one time
+          and stop</p></li><li class="listitem"><p>-6 - shuffle the events</p></li><li class="listitem"><p>-7 - reset to the initial state</p></li></ul></div><p>
+    </p><p>
+      <span class="emphasis"><em>kstep</em></span> - if non zero replace the irhythm
+      array with k-rate triggers. These could be from a MIDI keyboard
+      or any other krate controller.  An event is scheduled if this
+      argment is positive, and just waits if it is negative.  Default
+      is zero.
+    </p><p>
       <span class="emphasis"><em>kverbose</em></span> - if non zero prints messages
       about the internal state changes.  Default is zero.
-    </p>
-        <p>
+    </p><p>
       <span class="emphasis"><em>kres</em></span> - gives the index of the event created
       for the current k-cycle, or -1 if no event happened.
-    </p>
-        <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
-          <table border="0" summary="Note">
-            <tr>
-              <td rowspan="2" align="center" valign="top" width="25">
-                <img alt="[Note]" src="images/note.png" />
-              </td>
-              <th align="left">Note</th>
-            </tr>
-            <tr>
-              <td align="left" valign="top">
-                <p>
-        While the irhythm, iinstr, and idata, arrays are i-time, the values of the
-        entries are read at k-rate when used.  This means that by
-        using global i-rate vectors, it is possible (with care) to
-        change the specific values and other details at performance time.
-      </p>
-              </td>
-            </tr>
-          </table>
-        </div>
-      </div>
+    </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png" /></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>
+        While the irhythm, iinstr, and idata, arrays are i-time, the
+        values of the entries are read at k-rate when used.  This
+        means that by using global i-rate vectors, it is possible
+        (with care) to change the specific values and other details at
+        performance time.
+      </p></td></tr></table></div></div>
       <div class="refsect1">
-        <a id="idm212288"></a>
+        <a id="idm212290"></a>
         <h2>Example</h2>
         <p>
       Here is an example of the sequ opcode. It uses the file <a class="ulink" href="examples/sequ1.csd" target="_top"><em class="citetitle">sequ1.csd</em></a>
       </p>
         <div class="example">
-          <a id="idm212293"></a>
+          <a id="idm212295"></a>
           <p class="title">
             <strong>Example 948. Example of the sequ opcode.</strong>
           </p>
-          <div class="example-contents"><div class="refsect1"><a id="idm212295"></a><pre class="programlisting">
+          <div class="example-contents"><div class="refsect1"><a id="idm212297"></a><pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 
 <span class="nt">&lt;CsInstruments&gt;</span>
@@ -231,7 +180,7 @@ a      </div>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm212517"></a>
+        <a id="idm212519"></a>
         <h2>Credits</h2>
         <p>Written by John ffitch</p>
         <p>New in Csound 6.17</p>
