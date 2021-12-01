@@ -20,12 +20,14 @@ Control</title></refentryinfo>
       with variable tempo that can be played in forward, reverse, back
       and forth, and random directions. The max length of the arrays
       is 128, and it can be scaled dynamically. Permutational playback
-      modes feature randomization, probability and other algorithms.
+      modes feature randomisation, probability and other algorithms.
     </para>
   </refsect1>
   <refsect1>
     <title>Syntax</title>
     <synopsis>kres  <command>sequ</command>  irhythm[], iinstr[], idata[], kbpm, klen [, kmode] [, kstep] [, kverbose]
+    </synopsis>
+    <synopsis>kres  <command>sequ</command>  irhythm[], iinstr[], idata[][], kbpm, klen [, kmode] [, kstep] [, kverbose]
     </synopsis>
   </refsect1>
 
@@ -42,8 +44,9 @@ Control</title></refentryinfo>
      associated with the step and produces a silence for that note's duration.
     </para>
     <para>
-      <emphasis>idata</emphasis>  -  array of p4 values to the
-      associated iinstr step. Typically, one would specify pitch
+      <emphasis>idata</emphasis>  -  Either a vector of p4 values to the
+      associated iinstr step or a two dimenional array of p4, p5,
+      p6...values.  Typically, one would specify pitch
       information in cps, or MIDI note number; but the arbitrary list
       of p4 data values could have other uses in the called iinstr.
     </para>
@@ -63,7 +66,7 @@ Control</title></refentryinfo>
       of 0 (default) loops forward through the sequence, calling the
       associated instrument on each step. Other modes are
       supported. (See below).
-    </para>
+    </para>oo
     <para>
         Current playback options for <emphasis>kmode</emphasis> are:
 
@@ -78,15 +81,16 @@ events</para></listitem>
 and stop</para></listitem>
           <listitem><para>-5 - play the entire sequence backward one time
           and stop</para></listitem>
-          <listitem><para>-6 - shuffle the event</para></listitem>
-          <listitem><para>-7 - reset</para></listitem>
+          <listitem><para>-6 - shuffle the events</para></listitem>
+          <listitem><para>-7 - reset to the initial state</para></listitem>
         </itemizedlist>
     </para>
    <para>
-      <emphasis>kstep</emphasis> - if non zero replace the irhythm array
-with k-rate triggers. These could be from a MIDI keyboard or any other
-krate controller.
-      Default is zero.
+      <emphasis>kstep</emphasis> - if non zero replace the irhythm
+      array with k-rate triggers. These could be from a MIDI keyboard
+      or any other krate controller.  An event is scheduled if this
+      argment is positive, and just waits if it is negative.  Default
+      is zero.
     </para>
     <para>
       <emphasis>kverbose</emphasis> - if non zero prints messages
@@ -99,10 +103,11 @@ krate controller.
 
     <note>
       <para>
-        While the irhythm, iinstr, and idata, arrays are i-time, the values of the
-        entries are read at k-rate when used.  This means that by
-        using global i-rate vectors, it is possible (with care) to
-        change the specific values and other details at performance time.
+        While the irhythm, iinstr, and idata, arrays are i-time, the
+        values of the entries are read at k-rate when used.  This
+        means that by using global i-rate vectors, it is possible
+        (with care) to change the specific values and other details at
+        performance time.
       </para>
     </note>
   </refsect1>
