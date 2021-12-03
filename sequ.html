@@ -117,7 +117,7 @@ and stop</p></li><li class="listitem"><p>-5 - play the entire sequence backward 
       </p></td></tr></table></div></div>
       <div class="refsect1">
         <a id="idm212290"></a>
-        <h2>Example</h2>
+        <h2>Examples</h2>
         <p>
       Here is an example of the sequ opcode. It uses the file <a class="ulink" href="examples/sequ1.csd" target="_top"><em class="citetitle">sequ1.csd</em></a>
       </p>
@@ -126,7 +126,10 @@ and stop</p></li><li class="listitem"><p>-5 - play the entire sequence backward 
           <p class="title">
             <strong>Example 948. Example of the sequ opcode.</strong>
           </p>
-          <div class="example-contents"><div class="refsect1"><a id="idm212297"></a><pre class="programlisting">
+          <div class="example-contents">
+            <div class="refsect1">
+              <a id="idm212297"></a>
+              <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 
 <span class="nt">&lt;CsInstruments&gt;</span>
@@ -173,14 +176,101 @@ a<span class="n">1</span> <span class="nb">oscil</span> <span class="mf">0.9</sp
 <span class="nb">e</span>
 <span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
-</pre></div>
-a      </div>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
+      Here is another example of the sequ opcode showing the various
+      modes. It uses the file <a class="ulink" href="examples/sequ2.csd" target="_top"><em class="citetitle">sequ2.csd</em></a>
+      </p>
+        <div class="example">
+          <a id="idm212521"></a>
+          <p class="title">
+            <strong>Example 949. Example of the sequ opcode.</strong>
+          </p>
+          <div class="example-contents">
+            <div class="refsect1">
+              <a id="idm212523"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+
+<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="kd">instr</span> <span class="nf">1</span>
+<span class="c1">;; rhythm array - these values are multiplied by tempo (ticks) in BPM</span>
+i<span class="n">rhythm0</span><span class="p">[]</span> <span class="nb">fillarray</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">1</span>
+<span class="c1">;; instrument array - instrument number to render for each step</span>
+i<span class="n">insts0</span><span class="p">[]</span> <span class="nb">fillarray</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">18</span>
+<span class="c1">;; note array - here in cpsmidinn and amplitudes - esentially the 'p4' and 'p5' output from sequ</span>
+i<span class="n">notes</span><span class="p">[][]</span> <span class="nb">init</span> <span class="mi">2</span><span class="p">,</span><span class="mi">8</span>
+i<span class="n">notes</span> <span class="nb">fillarray</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">61</span><span class="p">,</span> <span class="mi">62</span><span class="p">,</span> <span class="mi">63</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">66</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="w">\</span>
+                 <span class="mf">0.9</span><span class="p">,</span><span class="mf">0.7</span><span class="p">,</span><span class="mf">0.6</span><span class="p">,</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">0.9</span><span class="p">,</span><span class="mf">0.6</span><span class="p">,</span><span class="mf">0.7</span><span class="p">,</span><span class="mf">0.6</span>
+<span class="c1">;; NOTE: this can be any sequence of values</span>
+<span class="c1">;; variable tempo</span>
+k<span class="n">speed</span> <span class="nb">linseg</span> <span class="mi">85</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">.7</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">.3</span><span class="p">,</span> <span class="mi">240</span>
+<span class="c1">;; rhythms, insts, notes, bpm, length, mode, verbose</span>
+k<span class="n">Seq</span> <span class="n">sequ</span> i<span class="n">rhythm0</span><span class="p">,</span> i<span class="n">insts0</span><span class="p">,</span> i<span class="n">notes0</span><span class="p">,</span> k<span class="n">speed</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="vi">p4</span><span class="p">,</span> <span class="mi">0</span>
+<span class="kd">endin</span>
+
+<span class="kd">instr</span> <span class="nf">11</span><span class="p">,</span> <span class="nf">12</span><span class="p">,</span> <span class="nf">13</span><span class="p">,</span> <span class="nf">14</span><span class="p">,</span> <span class="nf">15</span><span class="p">,</span> <span class="nf">16</span><span class="p">,</span> <span class="nf">17</span><span class="p">,</span> <span class="nf">18</span>
+k<span class="n">env</span> <span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">0.01</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">.99</span><span class="p">,</span> <span class="mi">0</span>
+a<span class="n">sig</span> <span class="nb">oscil</span> <span class="vi">p5</span><span class="p">,</span> <span class="nb">cpsmidinn</span><span class="p">(</span><span class="vi">p4</span><span class="p">)</span>
+<span class="nb">outall</span> a<span class="n">sig</span> <span class="o">*</span> k<span class="n">env</span>
+<span class="kd">endin</span>
+
+<span class="nt">&lt;/CsInstruments&gt;</span>
+
+<span class="nt">&lt;CsScore&gt;</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">15</span> <span class="mi">0</span> <span class="c1">;; forward mode</span>
+<span class="nb">s</span>
+<span class="nb">f</span><span class="mi">0</span> <span class="mi">1</span>
+<span class="nb">s</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">15</span> <span class="o">-</span><span class="mi">1</span> <span class="c1">;; backward mode</span>
+<span class="nb">s</span>
+<span class="nb">f</span><span class="mi">0</span> <span class="mi">1</span>
+<span class="nb">s</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">15</span> <span class="o">-</span><span class="mi">2</span> <span class="c1">;; forward and backward mode</span>
+<span class="nb">s</span>
+<span class="nb">f</span><span class="mi">0</span> <span class="mi">1</span>
+<span class="nb">s</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">15</span> <span class="o">-</span><span class="mi">3</span> <span class="c1">;; random</span>
+<span class="nb">s</span>
+<span class="nb">f</span><span class="mi">0</span> <span class="mi">1</span>
+<span class="nb">s</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">6</span> <span class="o">-</span><span class="mi">4</span> <span class="c1">;; play forward once and stop</span>
+<span class="nb">s</span>
+<span class="nb">f</span><span class="mi">0</span> <span class="mi">1</span>
+<span class="nb">s</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">6</span> <span class="o">-</span><span class="mi">5</span> <span class="c1">;; play backward once and stop</span>
+<span class="nb">s</span>
+<span class="nb">f</span><span class="mi">0</span> <span class="mi">1</span>
+<span class="nb">s</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">30</span> <span class="mi">1</span> <span class="c1">;; mutate after each step</span>
+<span class="nb">s</span>
+<span class="nb">f</span><span class="mi">0</span> <span class="mi">1</span>
+<span class="nb">s</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">30</span> <span class="mi">2</span> <span class="c1">;; mutate each second step</span>
+<span class="nb">s</span>
+<span class="nb">f</span><span class="mi">0</span> <span class="mi">1</span>    
+<span class="nb">s</span>
+<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">30</span> <span class="mi">4</span> <span class="c1">;; mutate every four steps</span>
+<span class="nb">e</span>
+<span class="nb">e</span>
+<span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
         </div>
         <p><br class="example-break" />
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm212519"></a>
+        <a id="idm212800"></a>
         <h2>Credits</h2>
         <p>Written by John ffitch</p>
         <p>New in Csound 6.17</p>
