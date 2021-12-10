@@ -24,9 +24,10 @@
   </refsect1>
   <refsect1>
     <title>Syntax</title>
-    <synopsis>kres  <command>sequ</command>  irhythm[], iinstr[], idata[], kbpm, klen [, kmode] [, kstep] [, kverbose]
+    <synopsis>kres  <command>sequ</command>  irhythm[], iinstr[], idata[], kbpm, klen [, kmode] [, kstep] [, kreset] [, kverbose]
     </synopsis>
-    <synopsis>kres  <command>sequ</command>  irhythm[], iinstr[], idata[][], kbpm, klen [, kmode] [, kstep] [, kverbose]
+    <synopsis>kres  <command>sequ</command>  irhythm[], iinstr[],
+    idata[][], kbpm, klen [, kmode] [, kstep] [, kreset] [, kverbose]
     </synopsis>
   </refsect1>
 
@@ -34,7 +35,7 @@
     <title>Initialization</title>
     <para>
       <emphasis>irhythm</emphasis>  - array of durations in
-      in beats.  The actual duration is determined by these values divided
+      beats.  The actual duration is determined by these values divided
       by the current BPM.
     </para>
     <para>
@@ -44,7 +45,7 @@
     </para>
     <para>
       <emphasis>idata</emphasis>  -  Either a vector of p4 values to the
-      associated iinstr step or a two dimenional array of p4, p5,
+      associated iinstr step or a two dimensional array of p4, p5,
       p6...values.  Typically, one would specify pitch
       information in cps, or MIDI note number; but the arbitrary list
       of p4 data values could have other uses in the called iinstr.
@@ -90,44 +91,48 @@ and stop</para></listitem>
       or any other krate controller.  An event is scheduled if this
       argument is positive, and just waits if it is negative.  Default
       is zero.
-    </para>
-    <para>
-      <emphasis>kverbose</emphasis> - if non zero prints messages
-      about the internal state changes.  Default is zero.
-    </para>
-    <para>
-      <emphasis>kres</emphasis> - gives the index of the event created
-      for the current k-cycle, or -1 if no event happened.
-    </para>
+   </para>
+   <para>
+     <empasis>reset</emphasis> - if non zer esets te sequencer (like
+     mode -7). Defalt is zero.
+   </para>
+   <para>
+     <emphasis>kverbose</emphasis> - if non zero prints messages
+     about the internal state changes.  Default is zero.
+   </para>
+   <para>
+     <emphasis>kres</emphasis> - gives the index of the event created
+     for the current k-cycle, or -1 if no event happened.
+   </para>
 
-    <note>
-      <para>
-        While the irhythm, iinstr, and idata, arrays are i-time, the
-        values of the entries are read at k-rate when used.  This
-        means that by using global i-rate vectors, it is possible
-        (with care) to change the specific values and other details at
-        performance time.
-      </para>
-    </note>
-  </refsect1>
+   <note>
+     <para>
+       While the irhythm, iinstr, and idata, arrays are i-time, the
+       values of the entries are read at k-rate when used.  This
+       means that by using global i-rate vectors, it is possible
+       (with care) to change the specific values and other details at
+       performance time.
+     </para>
+   </note>
+ </refsect1>
 
-  <refsect1>
-    <title>Examples</title>
-    <para>
-      Here is an example of the sequ opcode. It uses the file <ulink url="examples/sequ1.csd"><citetitle>sequ1.csd</citetitle></ulink>
-      <example>
-        <title>Example of the sequ opcode.</title>
-        <xi:include href="examples-xml/sequ1.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-      </example>
-      Here is another example of the sequ opcode showing the various
-      modes. It uses the file <ulink
-      url="examples/sequ2.csd"><citetitle>sequ2.csd</citetitle></ulink>
-      <example>
-        <title>Example of the sequ opcode.</title>
-        <xi:include href="examples-xml/sequ2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-      </example>
-    </para>
-  </refsect1>
+ <refsect1>
+   <title>Examples</title>
+   <para>
+     Here is an example of the sequ opcode. It uses the file <ulink url="examples/sequ1.csd"><citetitle>sequ1.csd</citetitle></ulink>
+     <example>
+       <title>Example of the sequ opcode.</title>
+       <xi:include href="examples-xml/sequ1.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+     </example>
+     Here is another example of the sequ opcode showing the various
+     modes. It uses the file <ulink
+     url="examples/sequ2.csd"><citetitle>sequ2.csd</citetitle></ulink>
+     <example>
+       <title>Example of the sequ opcode.</title>
+       <xi:include href="examples-xml/sequ2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+     </example>
+   </para>
+ </refsect1>
 
   
    <!-- <refsect1> -->
@@ -137,9 +142,9 @@ and stop</para></listitem>
    <!--   </para> -->
    <!--  </refsect1> -->
 
-  <refsect1>
-    <title>Credits</title>
-    <para>Written by &namejohn;</para>
-    <para>New in Csound 6.17</para>
-  </refsect1>
-</refentry>
+   <refsect1>
+     <title>Credits</title>
+     <para>Written by &namejohn;</para>
+     <para>New in Csound 6.17</para>
+   </refsect1>
+ </refentry>
