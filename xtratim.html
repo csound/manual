@@ -39,26 +39,26 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm276807"></a>
+        <a id="idm391711"></a>
         <h2>Description</h2>
         <p>
       Extend the duration of real-time generated events and handle their extra life (Usually for usage along with <a class="link" href="release.html" title="release"><em class="citetitle">release</em></a> instead of <a class="link" href="linenr.html" title="linenr"><em class="citetitle">linenr</em></a>, <a class="link" href="linsegr.html" title="linsegr"><em class="citetitle">linsegr</em></a>, etc).
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm276816"></a>
+        <a id="idm391720"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>xtratim</strong></span> iextradur</pre>
       </div>
       <div class="refsect1">
-        <a id="idm276820"></a>
+        <a id="idm391724"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>iextradur</em></span> -- additional duration of current instrument instance
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm276824"></a>
+        <a id="idm391728"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>xtratim</em></span> extends current MIDI-activated note duration by <span class="emphasis"><em>iextradur</em></span> seconds after the corresponding noteoff message has deactivated the current note itself. It is usually used in conjunction with <a class="link" href="release.html" title="release"><em class="citetitle">release</em></a>. This opcode has no output arguments.
@@ -68,22 +68,22 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm276832"></a>
+        <a id="idm391736"></a>
         <h2>Examples</h2>
         <p>
       Here is a simple example of the xtratim opcode. It uses the file <a class="ulink" href="examples/xtratim.csd" target="_top"><em class="citetitle">xtratim.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm276837"></a>
+          <a id="idm391741"></a>
           <p class="title">
-            <strong>Example 1233. Example of the xtratim opcode.</strong>
+            <strong>Example 1234. Example of the xtratim opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <p>This example shows how to generate a release segment for an ADSR envelope after a MIDI noteoff is received, extending the duration with <span class="emphasis"><em>xtratim</em></span> and using <a class="link" href="release.html" title="release"><em class="citetitle">release</em></a> to check whether the note is on the release phase.</p>
             <div class="refsect1">
-              <a id="idm276848"></a>
+              <a id="idm391752"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 
@@ -93,48 +93,48 @@
 -odac           -iadc     -d       -M0  <span class="c1">;;;realtime I/O</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 
-<span class="nt">&lt;CsInstruments&gt;</span>
-<span class="c1">;Simple usage of the xtratim opcode</span>
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
+</span><span class="c1">;Simple usage of the xtratim opcode</span><span class="w">
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
 
-<span class="c1">; sine wave for oscillators</span>
-gi<span class="n">sin</span>	    <span class="nb">ftgen</span>     <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4096</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>
+</span><span class="c1">; sine wave for oscillators</span><span class="w">
+</span>gi<span class="n">sin</span><span class="w">	    </span><span class="nb">ftgen</span><span class="w">     </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">4096</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
 
-  i<span class="n">num</span> <span class="nb">notnum</span>
-  i<span class="n">cps</span> <span class="nb">cpsmidi</span>
-  i<span class="n">amp</span> <span class="nb">ampmidi</span> <span class="mi">4000</span>
- <span class="c1">;</span>
- <span class="c1">;------- complex envelope block ------</span>
-  <span class="nb">xtratim</span> <span class="mi">1</span> <span class="c1">;extra-time, i.e. release dur</span>
-  k<span class="n">rel</span> <span class="nb">init</span> <span class="mi">0</span>
-  k<span class="n">rel</span> <span class="nb">release</span> <span class="c1">;outputs release-stage flag (0 or 1 values)</span>
-  <span class="k">if</span> <span class="p">(</span>k<span class="n">rel</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="k">kgoto</span> <span class="nl">rel</span> <span class="c1">;if in release-stage goto release section</span>
- <span class="c1">;</span>
- <span class="c1">;************ attack and sustain section ***********</span>
-  k<span class="n">mp1</span> <span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">.03</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">.07</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">.08</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">1</span>
-  k<span class="n">mp</span> <span class="o">=</span> k<span class="n">mp1</span><span class="o">*</span>i<span class="n">amp</span>
-   <span class="k">kgoto</span> <span class="nl">done</span>
- <span class="c1">;</span>
- <span class="c1">;--------- release section --------</span>
-   <span class="nl">rel</span><span class="p">:</span>
-  k<span class="n">mp2</span> <span class="nb">linseg</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">.3</span><span class="p">,</span> <span class="mf">.2</span><span class="p">,</span> <span class="mf">.7</span><span class="p">,</span> <span class="mi">0</span>
-  k<span class="n">mp</span> <span class="o">=</span> k<span class="n">mp1</span><span class="o">*</span>k<span class="n">mp2</span><span class="o">*</span>i<span class="n">amp</span>
-  <span class="nl">done</span><span class="p">:</span>
- <span class="c1">;------</span>
-  a<span class="n">1</span> <span class="nb">oscili</span> k<span class="n">mp</span><span class="p">,</span> i<span class="n">cps</span><span class="p">,</span> gi<span class="n">sin</span>
-  <span class="nb">outs</span> a<span class="n">1</span><span class="p">,</span> a<span class="n">1</span>
- <span class="kd">endin</span>
+  </span>i<span class="n">num</span><span class="w"> </span><span class="nb">notnum</span><span class="w">
+  </span>i<span class="n">cps</span><span class="w"> </span><span class="nb">cpsmidi</span><span class="w">
+  </span>i<span class="n">amp</span><span class="w"> </span><span class="nb">ampmidi</span><span class="w"> </span><span class="mi">4000</span><span class="w">
+ </span><span class="c1">;</span><span class="w">
+ </span><span class="c1">;------- complex envelope block ------</span><span class="w">
+  </span><span class="nb">xtratim</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="c1">;extra-time, i.e. release dur</span><span class="w">
+  </span>k<span class="n">rel</span><span class="w"> </span><span class="nb">init</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span>k<span class="n">rel</span><span class="w"> </span><span class="nb">release</span><span class="w"> </span><span class="c1">;outputs release-stage flag (0 or 1 values)</span><span class="w">
+  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span>k<span class="n">rel</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">kgoto</span><span class="w"> </span><span class="nl">rel</span><span class="w"> </span><span class="c1">;if in release-stage goto release section</span><span class="w">
+ </span><span class="c1">;</span><span class="w">
+ </span><span class="c1">;************ attack and sustain section ***********</span><span class="w">
+  </span>k<span class="n">mp1</span><span class="w"> </span><span class="nb">linseg</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">.03</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">.05</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">.07</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">.08</span><span class="p">,</span><span class="w"> </span><span class="mf">.5</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span>k<span class="n">mp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>k<span class="n">mp1</span><span class="o">*</span>i<span class="n">amp</span><span class="w">
+   </span><span class="k">kgoto</span><span class="w"> </span><span class="nl">done</span><span class="w">
+ </span><span class="c1">;</span><span class="w">
+ </span><span class="c1">;--------- release section --------</span><span class="w">
+   </span><span class="nl">rel</span><span class="p">:</span><span class="w">
+  </span>k<span class="n">mp2</span><span class="w"> </span><span class="nb">linseg</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">.3</span><span class="p">,</span><span class="w"> </span><span class="mf">.2</span><span class="p">,</span><span class="w"> </span><span class="mf">.7</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span>k<span class="n">mp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>k<span class="n">mp1</span><span class="o">*</span>k<span class="n">mp2</span><span class="o">*</span>i<span class="n">amp</span><span class="w">
+  </span><span class="nl">done</span><span class="p">:</span><span class="w">
+ </span><span class="c1">;------</span><span class="w">
+  </span>a<span class="n">1</span><span class="w"> </span><span class="nb">oscili</span><span class="w"> </span>k<span class="n">mp</span><span class="p">,</span><span class="w"> </span>i<span class="n">cps</span><span class="p">,</span><span class="w"> </span>gi<span class="n">sin</span><span class="w">
+  </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">1</span><span class="p">,</span><span class="w"> </span>a<span class="n">1</span><span class="w">
+ </span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
 
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">f</span> <span class="mi">0</span> <span class="mi">3600</span> <span class="c1">;dummy table to wait for realtime MIDI events</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">3600</span><span class="w"> </span><span class="c1">;dummy table to wait for realtime MIDI events</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span> 
 </pre>
@@ -148,14 +148,14 @@ gi<span class="n">sin</span>	    <span class="nb">ftgen</span>     <span class="
 
       </p>
         <div class="example">
-          <a id="idm276993"></a>
+          <a id="idm391995"></a>
           <p class="title">
-            <strong>Example 1234. More complex example of the xtratim opcode.</strong>
+            <strong>Example 1235. More complex example of the xtratim opcode.</strong>
           </p>
           <div class="example-contents">
             <p>This example shows how to generate a release segment for an ADSR envelope after a MIDI noteoff is received, extending the duration with <span class="emphasis"><em>xtratim</em></span> and using <a class="link" href="release.html" title="release"><em class="citetitle">release</em></a> to check whether the note is on the release phase. Two envelopes are generated simultaneously for the left and right channels.</p>
             <div class="refsect1">
-              <a id="idm276999"></a>
+              <a id="idm392001"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 
@@ -165,83 +165,83 @@ gi<span class="n">sin</span>	    <span class="nb">ftgen</span>     <span class="
 -odac           -iadc     -d       -M0  <span class="c1">;;;realtime I/O</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 
-<span class="nt">&lt;CsInstruments&gt;</span>
-<span class="c1">;xtratim example by Jonathan Murphy Dec. 2006</span>
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
+</span><span class="c1">;xtratim example by Jonathan Murphy Dec. 2006</span><span class="w">
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
 
-	    <span class="c1">; sine wave for oscillators</span>
-gi<span class="n">sin</span>	    <span class="nb">ftgen</span>     <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4096</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>
-	    <span class="c1">; set volume initially to midpoint</span>
-	    <span class="nb">ctrlinit</span>  <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span><span class="mi">64</span>
+	    </span><span class="c1">; sine wave for oscillators</span><span class="w">
+</span>gi<span class="n">sin</span><span class="w">	    </span><span class="nb">ftgen</span><span class="w">     </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">4096</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+	    </span><span class="c1">; set volume initially to midpoint</span><span class="w">
+	    </span><span class="nb">ctrlinit</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="mi">64</span><span class="w">
 
-<span class="c1">;;; simple two oscil, two envelope synth</span>
-    <span class="kd">instr</span> <span class="nf">1</span>
+</span><span class="c1">;;; simple two oscil, two envelope synth</span><span class="w">
+    </span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
 
-	    <span class="c1">; frequency</span>
-  k<span class="n">cps</span>	    <span class="nb">cpsmidib</span>
-	    <span class="c1">; initial velocity (noteon)</span>
-  i<span class="n">vel</span>	    <span class="nb">veloc</span>
+	    </span><span class="c1">; frequency</span><span class="w">
+  </span>k<span class="n">cps</span><span class="w">	    </span><span class="nb">cpsmidib</span><span class="w">
+	    </span><span class="c1">; initial velocity (noteon)</span><span class="w">
+  </span>i<span class="n">vel</span><span class="w">	    </span><span class="nb">veloc</span><span class="w">
 
-	    <span class="c1">; master volume</span>
-  k<span class="n">amp</span>	    <span class="nb">ctrl7</span>     <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">127</span>
-  k<span class="n">amp</span>	    <span class="o">=</span>  k<span class="n">amp</span> <span class="o">*</span> i<span class="n">vel</span>
+	    </span><span class="c1">; master volume</span><span class="w">
+  </span>k<span class="n">amp</span><span class="w">	    </span><span class="nb">ctrl7</span><span class="w">     </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">127</span><span class="w">
+  </span>k<span class="n">amp</span><span class="w">	    </span><span class="o">=</span><span class="w">  </span>k<span class="n">amp</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>i<span class="n">vel</span><span class="w">
 
-	    <span class="c1">; parameters for aenv1</span>
-  i<span class="n">att1</span>	    <span class="o">=</span>  <span class="mf">0.03</span>	
-  i<span class="n">dec1</span>	    <span class="o">=</span>  <span class="mi">1</span>
-  i<span class="n">sus1</span>	    <span class="o">=</span>  <span class="mf">0.25</span>	
-  i<span class="n">rel1</span>	    <span class="o">=</span>  <span class="mi">1</span>
-	    <span class="c1">; parameters for aenv2</span>
-  i<span class="n">att2</span>	    <span class="o">=</span>  <span class="mf">0.06</span>	
-  i<span class="n">dec2</span>	    <span class="o">=</span>  <span class="mi">2</span>	
-  i<span class="n">sus2</span>	    <span class="o">=</span>  <span class="mf">0.5</span>
-  i<span class="n">rel2</span>	    <span class="o">=</span>  <span class="mi">2</span>
+	    </span><span class="c1">; parameters for aenv1</span><span class="w">
+  </span>i<span class="n">att1</span><span class="w">	    </span><span class="o">=</span><span class="w">  </span><span class="mf">0.03</span><span class="w">	
+  </span>i<span class="n">dec1</span><span class="w">	    </span><span class="o">=</span><span class="w">  </span><span class="mi">1</span><span class="w">
+  </span>i<span class="n">sus1</span><span class="w">	    </span><span class="o">=</span><span class="w">  </span><span class="mf">0.25</span><span class="w">	
+  </span>i<span class="n">rel1</span><span class="w">	    </span><span class="o">=</span><span class="w">  </span><span class="mi">1</span><span class="w">
+	    </span><span class="c1">; parameters for aenv2</span><span class="w">
+  </span>i<span class="n">att2</span><span class="w">	    </span><span class="o">=</span><span class="w">  </span><span class="mf">0.06</span><span class="w">	
+  </span>i<span class="n">dec2</span><span class="w">	    </span><span class="o">=</span><span class="w">  </span><span class="mi">2</span><span class="w">	
+  </span>i<span class="n">sus2</span><span class="w">	    </span><span class="o">=</span><span class="w">  </span><span class="mf">0.5</span><span class="w">
+  </span>i<span class="n">rel2</span><span class="w">	    </span><span class="o">=</span><span class="w">  </span><span class="mi">2</span><span class="w">
 
-	    <span class="c1">; extra (release) time allocated</span>
-	    <span class="nb">xtratim</span>   <span class="p">(</span>i<span class="n">rel1</span><span class="o">&gt;</span>i<span class="n">rel2</span> <span class="o">?</span> i<span class="n">rel1</span> <span class="o">:</span> i<span class="n">rel2</span><span class="p">)</span>
-            <span class="c1">; krel is used to trigger envelope release</span>
-  k<span class="n">rel</span>	    <span class="nb">init</span>      <span class="mi">0</span>
-  k<span class="n">rel</span>	    <span class="nb">release</span>
-	    <span class="c1">; if noteoff received, krel == 1, otherwise krel == 0</span>
-<span class="k">if</span> <span class="p">(</span>k<span class="n">rel</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="k">kgoto</span> <span class="nl">rel</span>
+	    </span><span class="c1">; extra (release) time allocated</span><span class="w">
+	    </span><span class="nb">xtratim</span><span class="w">   </span><span class="p">(</span>i<span class="n">rel1</span><span class="o">&gt;</span>i<span class="n">rel2</span><span class="w"> </span><span class="o">?</span><span class="w"> </span>i<span class="n">rel1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span>i<span class="n">rel2</span><span class="p">)</span><span class="w">
+            </span><span class="c1">; krel is used to trigger envelope release</span><span class="w">
+  </span>k<span class="n">rel</span><span class="w">	    </span><span class="nb">init</span><span class="w">      </span><span class="mi">0</span><span class="w">
+  </span>k<span class="n">rel</span><span class="w">	    </span><span class="nb">release</span><span class="w">
+	    </span><span class="c1">; if noteoff received, krel == 1, otherwise krel == 0</span><span class="w">
+</span><span class="k">if</span><span class="w"> </span><span class="p">(</span>k<span class="n">rel</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">kgoto</span><span class="w"> </span><span class="nl">rel</span><span class="w">
 
-	    <span class="c1">; attack, decay, sustain segments</span>
-  a<span class="n">tmp1</span>	    <span class="nb">linseg</span>    <span class="mi">0</span><span class="p">,</span> i<span class="n">att1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> i<span class="n">dec1</span><span class="p">,</span> i<span class="n">sus1</span>	<span class="p">,</span> <span class="mi">1</span><span class="p">,</span> i<span class="n">sus1</span>
-  a<span class="n">tmp2</span>	    <span class="nb">linseg</span>    <span class="mi">0</span><span class="p">,</span> i<span class="n">att2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> i<span class="n">dec2</span><span class="p">,</span> i<span class="n">sus2</span>	<span class="p">,</span> <span class="mi">1</span><span class="p">,</span> i<span class="n">sus2</span>
-  a<span class="n">env1</span>	    <span class="o">=</span>  a<span class="n">tmp1</span>
-  a<span class="n">env2</span>	    <span class="o">=</span>  a<span class="n">tmp2</span>
-	    <span class="k">kgoto</span>     <span class="nl">done</span>
+	    </span><span class="c1">; attack, decay, sustain segments</span><span class="w">
+  </span>a<span class="n">tmp1</span><span class="w">	    </span><span class="nb">linseg</span><span class="w">    </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span>i<span class="n">att1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>i<span class="n">dec1</span><span class="p">,</span><span class="w"> </span>i<span class="n">sus1</span><span class="w">	</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>i<span class="n">sus1</span><span class="w">
+  </span>a<span class="n">tmp2</span><span class="w">	    </span><span class="nb">linseg</span><span class="w">    </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span>i<span class="n">att2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>i<span class="n">dec2</span><span class="p">,</span><span class="w"> </span>i<span class="n">sus2</span><span class="w">	</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>i<span class="n">sus2</span><span class="w">
+  </span>a<span class="n">env1</span><span class="w">	    </span><span class="o">=</span><span class="w">  </span>a<span class="n">tmp1</span><span class="w">
+  </span>a<span class="n">env2</span><span class="w">	    </span><span class="o">=</span><span class="w">  </span>a<span class="n">tmp2</span><span class="w">
+	    </span><span class="k">kgoto</span><span class="w">     </span><span class="nl">done</span><span class="w">
 
-	    <span class="c1">; release segment</span>
-<span class="nl">rel</span><span class="p">:</span>
-  a<span class="n">tmp3</span>	    <span class="nb">linseg</span>    <span class="mi">1</span><span class="p">,</span> i<span class="n">rel1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span>
-  a<span class="n">tmp4</span>	    <span class="nb">linseg</span>    <span class="mi">1</span><span class="p">,</span> i<span class="n">rel2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span>
-  a<span class="n">env1</span>	    <span class="o">=</span>  a<span class="n">tmp1</span> <span class="o">*</span> a<span class="n">tmp3</span>  <span class="c1">;to go from the current value (in case</span>
-  a<span class="n">env2</span>	    <span class="o">=</span>  a<span class="n">tmp2</span> <span class="o">*</span> a<span class="n">tmp4</span>  <span class="c1">;the attack hasn't finished) to the release.</span>
+	    </span><span class="c1">; release segment</span><span class="w">
+</span><span class="nl">rel</span><span class="p">:</span><span class="w">
+  </span>a<span class="n">tmp3</span><span class="w">	    </span><span class="nb">linseg</span><span class="w">    </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>i<span class="n">rel1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span>a<span class="n">tmp4</span><span class="w">	    </span><span class="nb">linseg</span><span class="w">    </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>i<span class="n">rel2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span>a<span class="n">env1</span><span class="w">	    </span><span class="o">=</span><span class="w">  </span>a<span class="n">tmp1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>a<span class="n">tmp3</span><span class="w">  </span><span class="c1">;to go from the current value (in case</span><span class="w">
+  </span>a<span class="n">env2</span><span class="w">	    </span><span class="o">=</span><span class="w">  </span>a<span class="n">tmp2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>a<span class="n">tmp4</span><span class="w">  </span><span class="c1">;the attack hasn't finished) to the release.</span><span class="w">
 
-	    <span class="c1">; control oscillator amplitude using envelopes</span>
-<span class="nl">done</span><span class="p">:</span>
-  a<span class="n">osc1</span>	    <span class="nb">oscil</span>     a<span class="n">env1</span><span class="p">,</span> k<span class="n">cps</span><span class="p">,</span> gi<span class="n">sin</span>
-  a<span class="n">osc2</span>	    <span class="nb">oscil</span>     a<span class="n">env2</span><span class="p">,</span> k<span class="n">cps</span> <span class="o">*</span> <span class="mf">1.5</span><span class="p">,</span> gi<span class="n">sin</span>
-  a<span class="n">osc1</span>	    <span class="o">=</span>  a<span class="n">osc1</span> <span class="o">*</span> k<span class="n">amp</span>
-  a<span class="n">osc2</span>	    <span class="o">=</span>  a<span class="n">osc2</span> <span class="o">*</span> k<span class="n">amp</span>
+	    </span><span class="c1">; control oscillator amplitude using envelopes</span><span class="w">
+</span><span class="nl">done</span><span class="p">:</span><span class="w">
+  </span>a<span class="n">osc1</span><span class="w">	    </span><span class="nb">oscil</span><span class="w">     </span>a<span class="n">env1</span><span class="p">,</span><span class="w"> </span>k<span class="n">cps</span><span class="p">,</span><span class="w"> </span>gi<span class="n">sin</span><span class="w">
+  </span>a<span class="n">osc2</span><span class="w">	    </span><span class="nb">oscil</span><span class="w">     </span>a<span class="n">env2</span><span class="p">,</span><span class="w"> </span>k<span class="n">cps</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span><span class="w"> </span>gi<span class="n">sin</span><span class="w">
+  </span>a<span class="n">osc1</span><span class="w">	    </span><span class="o">=</span><span class="w">  </span>a<span class="n">osc1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>k<span class="n">amp</span><span class="w">
+  </span>a<span class="n">osc2</span><span class="w">	    </span><span class="o">=</span><span class="w">  </span>a<span class="n">osc2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>k<span class="n">amp</span><span class="w">
 
-	    <span class="c1">; send aosc1 to left channel, aosc2 to right,</span>
-	    <span class="c1">; release times are noticably different</span>
+	    </span><span class="c1">; send aosc1 to left channel, aosc2 to right,</span><span class="w">
+	    </span><span class="c1">; release times are noticably different</span><span class="w">
  
-	    <span class="nb">outs</span>      a<span class="n">osc1</span><span class="p">,</span> a<span class="n">osc2</span>
+	    </span><span class="nb">outs</span><span class="w">      </span>a<span class="n">osc1</span><span class="p">,</span><span class="w"> </span>a<span class="n">osc2</span><span class="w">
 
-    <span class="kd">endin</span>
+    </span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
 
-<span class="nt">&lt;CsScore&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
 
-<span class="nb">f</span> <span class="mi">0</span> <span class="mi">3600</span> <span class="c1">;dummy table to wait for realtime MIDI events</span>
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">3600</span><span class="w"> </span><span class="c1">;dummy table to wait for realtime MIDI events</span><span class="w">
 
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsScore&gt;</span>
 
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
@@ -252,7 +252,7 @@ gi<span class="n">sin</span>	    <span class="nb">ftgen</span>     <span class="
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm277233"></a>
+        <a id="idm392417"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="linenr.html" title="linenr"><em class="citetitle">linenr</em></a>, 
@@ -260,7 +260,7 @@ gi<span class="n">sin</span>	    <span class="nb">ftgen</span>     <span class="
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm277240"></a>
+        <a id="idm392424"></a>
         <h2>Credits</h2>
         <p>Author: Gabriel Maldonado</p>
         <p>Italy</p>

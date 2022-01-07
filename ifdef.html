@@ -40,7 +40,7 @@
                 </p>
       </div>
       <div class="refsect1">
-        <a id="idm18141"></a>
+        <a id="idm19310"></a>
         <h2>Description</h2>
         <p>
       Macros are textual replacements which are made in the orchestra as it is being read.  The <a class="link" href="OrchMacros.html" title="Orchestra Macros"><em class="citetitle">orchestra macro system</em></a> in Csound is a very simple one, and uses the characters # and $ to define and call macros. This can save typing, and can lead to a coherent structure and consistent style.  This is similar to, but independent of, the <a class="link" href="ScoreMacros.html" title="Score Macros"><em class="citetitle">macro system in the score language</em></a>.
@@ -52,7 +52,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm18151"></a>
+        <a id="idm19320"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>#ifdef</strong></span> NAME</pre>
         <pre class="synopsis">....</pre>
@@ -61,21 +61,21 @@
         <pre class="synopsis"><span class="command"><strong>#end</strong></span> </pre>
       </div>
       <div class="refsect1">
-        <a id="idm18161"></a>
+        <a id="idm19330"></a>
         <h2>Performance</h2>
         <p>
       Note that the <span class="emphasis"><em>#ifdef</em></span> can be nested, like in the C preprocessor language.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm18165"></a>
+        <a id="idm19334"></a>
         <h2>Examples</h2>
         <p>
       Here is a simple example of the conditional.
 
       </p>
         <div class="example">
-          <a id="idm18168"></a>
+          <a id="idm19337"></a>
           <p class="title">
             <strong>Example 12. Simple example of the #ifdef form.</strong>
           </p>
@@ -96,20 +96,20 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm18179"></a>
+        <a id="idm19348"></a>
         <p>
       Here is another example of the #ifdef conditional. It uses the file <a class="ulink" href="examples/ifdef.csd" target="_top"><em class="citetitle">ifdef.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm18183"></a>
+          <a id="idm19352"></a>
           <p class="title">
             <strong>Example 13. Detailed example of the #ifdef form.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm18190"></a>
+              <a id="idm19359"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -119,44 +119,44 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o oscil.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="c1">; Determines which instrument outputs debug statements with defines:</span>
-<span class="c1">; Change which one is commented out to alter behavior before execution</span>
-<span class="cp">#define</span> <span class="cp">debug1</span> <span class="p">##</span>
-<span class="c1">; #define debug2 ##</span>
+</span><span class="c1">; Determines which instrument outputs debug statements with defines:</span><span class="w">
+</span><span class="c1">; Change which one is commented out to alter behavior before execution</span><span class="w">
+</span><span class="cp">#define</span><span class="w"> </span><span class="cp">debug1</span><span class="w"> </span><span class="p">##</span><span class="w">
+</span><span class="c1">; #define debug2 ##</span><span class="w">
 
- <span class="kd">instr</span> <span class="nf">1</span>
- 	i<span class="n">Freq</span> <span class="o">=</span> <span class="vi">p4</span>
-	<span class="c1">; Outputs text if debug1 is defined</span>
-	<span class="c1">; This one should print by default</span>
-	<span class="cp">#ifdef</span> <span class="cp">debug1</span>
-	     <span class="nb">prints</span> <span class="s">"instr 1 debug called</span><span class="se">\n</span><span class="s">"</span>
-	<span class="cp">#end</span>
-     a<span class="n">1</span>   <span class="nb">vco2</span> <span class="mf">.25</span><span class="p">,</span> i<span class="n">Freq</span>
-     <span class="nb">outs</span>  a<span class="n">1</span><span class="p">,</span> a<span class="n">1</span>
- <span class="kd">endin</span>
+ </span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+ 	</span>i<span class="n">Freq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">p4</span><span class="w">
+	</span><span class="c1">; Outputs text if debug1 is defined</span><span class="w">
+	</span><span class="c1">; This one should print by default</span><span class="w">
+	</span><span class="cp">#ifdef</span><span class="w"> </span><span class="cp">debug1</span><span class="w">
+	     </span><span class="nb">prints</span><span class="w"> </span><span class="s">"instr 1 debug called</span><span class="se">\n</span><span class="s">"</span><span class="w">
+	</span><span class="cp">#end</span><span class="w">
+     </span>a<span class="n">1</span><span class="w">   </span><span class="nb">vco2</span><span class="w"> </span><span class="mf">.25</span><span class="p">,</span><span class="w"> </span>i<span class="n">Freq</span><span class="w">
+     </span><span class="nb">outs</span><span class="w">  </span>a<span class="n">1</span><span class="p">,</span><span class="w"> </span>a<span class="n">1</span><span class="w">
+ </span><span class="kd">endin</span><span class="w">
 
- <span class="kd">instr</span> <span class="nf">2</span>
- 	i<span class="n">Freq</span> <span class="o">=</span> <span class="vi">p4</span>
-	<span class="c1">; Outputs text if debug2 is defined</span>
-	<span class="c1">; This one should not print by default</span>
-	<span class="cp">#ifdef</span> <span class="cp">debug2</span>
-	     <span class="nb">prints</span> <span class="s">"instr 2 debug called</span><span class="se">\n</span><span class="s">"</span>
-	<span class="cp">#end</span>
-     a<span class="n">1</span>   <span class="nb">vco2</span> <span class="mf">.25</span><span class="p">,</span> i<span class="n">Freq</span>
-     <span class="nb">outs</span>  a<span class="n">1</span><span class="p">,</span> a<span class="n">1</span>
- <span class="kd">endin</span>
+ </span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">
+ 	</span>i<span class="n">Freq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">p4</span><span class="w">
+	</span><span class="c1">; Outputs text if debug2 is defined</span><span class="w">
+	</span><span class="c1">; This one should not print by default</span><span class="w">
+	</span><span class="cp">#ifdef</span><span class="w"> </span><span class="cp">debug2</span><span class="w">
+	     </span><span class="nb">prints</span><span class="w"> </span><span class="s">"instr 2 debug called</span><span class="se">\n</span><span class="s">"</span><span class="w">
+	</span><span class="cp">#end</span><span class="w">
+     </span>a<span class="n">1</span><span class="w">   </span><span class="nb">vco2</span><span class="w"> </span><span class="mf">.25</span><span class="p">,</span><span class="w"> </span>i<span class="n">Freq</span><span class="w">
+     </span><span class="nb">outs</span><span class="w">  </span>a<span class="n">1</span><span class="p">,</span><span class="w"> </span>a<span class="n">1</span><span class="w">
+ </span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">2</span> <span class="mi">440</span>
-<span class="nb">i</span><span class="mi">2</span> <span class="mi">0</span> <span class="mi">2</span> <span class="mi">660</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">440</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">660</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -166,7 +166,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm18281"></a>
+        <a id="idm19518"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="define.html" title="#define"><em class="citetitle">#define</em></a>,
@@ -177,7 +177,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm18294"></a>
+        <a id="idm19531"></a>
         <h2>Credits</h2>
         <p>
       </p>

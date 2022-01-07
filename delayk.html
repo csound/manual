@@ -39,20 +39,20 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm59464"></a>
+        <a id="idm79825"></a>
         <h2>Description</h2>
         <p>
       k-rate delay opcodes
    </p>
       </div>
       <div class="refsect1">
-        <a id="idm59467"></a>
+        <a id="idm79828"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">kr <span class="command"><strong>delayk </strong></span>  ksig, idel[, imode]</pre>
         <pre class="synopsis">kr <span class="command"><strong>vdel_k </strong></span>  ksig, kdel, imdel[, imode]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm59473"></a>
+        <a id="idm79834"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>idel</em></span> -- delay time (in seconds) for
@@ -77,7 +77,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm59485"></a>
+        <a id="idm79846"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>kr</em></span> -- the output signal. Note: neither of the
@@ -93,21 +93,21 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm59493"></a>
+        <a id="idm79854"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the delayk opcode. It uses the file <a class="ulink" href="examples/delayk.csd" target="_top"><em class="citetitle">delayk.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm59498"></a>
+          <a id="idm79859"></a>
           <p class="title">
             <strong>Example 217. Example of the delayk opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm59505"></a>
+              <a id="idm79866"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -117,39 +117,39 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o delayk.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
-<span class="c1">;example shows "delayk" for fm index and </span>
-<span class="c1">;a second "delayk" for panning</span>
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
+</span><span class="c1">;example shows "delayk" for fm index and </span><span class="w">
+</span><span class="c1">;a second "delayk" for panning</span><span class="w">
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-gi<span class="n">sin</span> <span class="nb">ftgen</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">^</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>
+</span>gi<span class="n">sin</span><span class="w"> </span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">^</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
 
-k<span class="n">env1</span> <span class="nb">transeg</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">.02</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">3.98</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">0</span> <span class="c1">;envelope</span>
-k<span class="n">env2</span> <span class="nb">delayk</span> k<span class="n">env1</span><span class="p">,</span> <span class="mi">2</span>			<span class="c1">;delayed by two seconds</span>
-k<span class="n">indx</span> <span class="nb">expon</span> <span class="mi">5</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">1</span>			<span class="c1">;fm index decreasing over p3</span>
-a<span class="n">sig</span>  <span class="nb">foscili</span> <span class="mf">.6</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> k<span class="n">indx</span><span class="p">,</span> gi<span class="n">sin</span>
-k<span class="n">pan1</span> <span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span>			<span class="c1">;panning for first sound</span>
-k<span class="n">pan2</span> <span class="nb">linseg</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span>			<span class="c1">;panning for second sound ...</span>
-k<span class="n">pan2</span> <span class="nb">delayk</span> k<span class="n">pan2</span><span class="p">,</span> <span class="mi">2</span>			<span class="c1">;delayed by two seconds</span>
-a<span class="n">1</span> <span class="o">=</span> a<span class="n">sig</span> <span class="o">*</span> k<span class="n">env1</span>
-a<span class="n">2</span> <span class="o">=</span> a<span class="n">sig</span> <span class="o">*</span> k<span class="n">env2</span>
+</span>k<span class="n">env1</span><span class="w"> </span><span class="nb">transeg</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">.02</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">3.98</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="c1">;envelope</span><span class="w">
+</span>k<span class="n">env2</span><span class="w"> </span><span class="nb">delayk</span><span class="w"> </span>k<span class="n">env1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">			</span><span class="c1">;delayed by two seconds</span><span class="w">
+</span>k<span class="n">indx</span><span class="w"> </span><span class="nb">expon</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">			</span><span class="c1">;fm index decreasing over p3</span><span class="w">
+</span>a<span class="n">sig</span><span class="w">  </span><span class="nb">foscili</span><span class="w"> </span><span class="mf">.6</span><span class="p">,</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span>k<span class="n">indx</span><span class="p">,</span><span class="w"> </span>gi<span class="n">sin</span><span class="w">
+</span>k<span class="n">pan1</span><span class="w"> </span><span class="nb">linseg</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">			</span><span class="c1">;panning for first sound</span><span class="w">
+</span>k<span class="n">pan2</span><span class="w"> </span><span class="nb">linseg</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">			</span><span class="c1">;panning for second sound ...</span><span class="w">
+</span>k<span class="n">pan2</span><span class="w"> </span><span class="nb">delayk</span><span class="w"> </span>k<span class="n">pan2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">			</span><span class="c1">;delayed by two seconds</span><span class="w">
+</span>a<span class="n">1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>a<span class="n">sig</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>k<span class="n">env1</span><span class="w">
+</span>a<span class="n">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>a<span class="n">sig</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>k<span class="n">env2</span><span class="w">
 
-a<span class="n">L1</span><span class="p">,</span>a<span class="n">R1</span> <span class="nb">pan2</span> a<span class="n">1</span><span class="p">,</span> k<span class="n">pan1</span>
-a<span class="n">L2</span><span class="p">,</span>a<span class="n">R2</span> <span class="nb">pan2</span> a<span class="n">2</span><span class="p">,</span> k<span class="n">pan2</span>
-        <span class="nb">outs</span> a<span class="n">L1</span><span class="o">+</span>a<span class="n">L2</span><span class="p">,</span> a<span class="n">R1</span><span class="o">+</span>a<span class="n">R2</span>
+</span>a<span class="n">L1</span><span class="p">,</span>a<span class="n">R1</span><span class="w"> </span><span class="nb">pan2</span><span class="w"> </span>a<span class="n">1</span><span class="p">,</span><span class="w"> </span>k<span class="n">pan1</span><span class="w">
+</span>a<span class="n">L2</span><span class="p">,</span>a<span class="n">R2</span><span class="w"> </span><span class="nb">pan2</span><span class="w"> </span>a<span class="n">2</span><span class="p">,</span><span class="w"> </span>k<span class="n">pan2</span><span class="w">
+        </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">L1</span><span class="o">+</span>a<span class="n">L2</span><span class="p">,</span><span class="w"> </span>a<span class="n">R1</span><span class="o">+</span>a<span class="n">R2</span><span class="w">
 
-<span class="kd">endin</span>
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
+</span><span class="kd">endin</span><span class="w">
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">6</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">6</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -159,7 +159,7 @@ a<span class="n">L2</span><span class="p">,</span>a<span class="n">R2</span> <sp
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm59655"></a>
+        <a id="idm80114"></a>
         <h2>Credits</h2>
         <p>Istvan Varga.</p>
       </div>

@@ -39,7 +39,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm211604"></a>
+        <a id="idm299013"></a>
         <h2>Description</h2>
         <p>Plugin opcode in scugens.</p>
         <p>
@@ -52,13 +52,13 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm211612"></a>
+        <a id="idm299021"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">aindex <span class="command"><strong>trigphasor</strong></span> xtrig, xrate, kstart, kend [, kresetPos] </pre>
         <pre class="synopsis">kindex <span class="command"><strong>trigphasor</strong></span> xtrig, xrate, kstart, kend [, kresetPos] </pre>
       </div>
       <div class="refsect1">
-        <a id="idm211618"></a>
+        <a id="idm299027"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>xtrig</em></span> -- trigger, whenever this crosses from non-positive to possitive
@@ -94,52 +94,52 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm211635"></a>
+        <a id="idm299044"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the trigphasor opcode. It uses the file <a class="ulink" href="examples/trigphasor.csd" target="_top"><em class="citetitle">trigphasor.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm211640"></a>
+          <a id="idm299049"></a>
           <p class="title">
-            <strong>Example 944. Example of the trigphasor opcode.</strong>
+            <strong>Example 945. Example of the trigphasor opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm211647"></a>
+              <a id="idm299056"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 -odac
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">64</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mf">1.0</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">64</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="w">
 
-gi<span class="n">snd</span> <span class="nb">ftgen</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s">"finneganswake1.flac"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+</span>gi<span class="n">snd</span><span class="w"> </span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">"finneganswake1.flac"</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>
-  <span class="c1">; use trigphasor to read a soundfile</span>
-  i<span class="n">numsamps</span> <span class="o">=</span> <span class="nb">nsamp</span><span class="p">(</span>gi<span class="n">snd</span><span class="p">)</span>
-  i<span class="n">rate</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1">; play at original speed</span>
-  k<span class="n">trig</span> <span class="nb">metro</span> <span class="mf">0.25</span>
-  a<span class="n">phase</span> <span class="nb">trigphasor</span> k<span class="n">trig</span><span class="p">,</span> i<span class="n">rate</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> i<span class="n">numsamps</span>
-  a<span class="n">sig</span> <span class="nb">table3</span> a<span class="n">phase</span><span class="p">,</span> gi<span class="n">snd</span>
-  a<span class="n">sig</span> <span class="o">*=</span> <span class="nb">linsegr</span><span class="p">:</span><span class="kt">a</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-  <span class="nb">outch</span> <span class="mi">1</span><span class="p">,</span> a<span class="n">sig</span>
-<span class="kd">endin</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+  </span><span class="c1">; use trigphasor to read a soundfile</span><span class="w">
+  </span>i<span class="n">numsamps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">nsamp</span><span class="p">(</span>gi<span class="n">snd</span><span class="p">)</span><span class="w">
+  </span>i<span class="n">rate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="c1">; play at original speed</span><span class="w">
+  </span>k<span class="n">trig</span><span class="w"> </span><span class="nb">metro</span><span class="w"> </span><span class="mf">0.25</span><span class="w">
+  </span>a<span class="n">phase</span><span class="w"> </span><span class="nb">trigphasor</span><span class="w"> </span>k<span class="n">trig</span><span class="p">,</span><span class="w"> </span>i<span class="n">rate</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span>i<span class="n">numsamps</span><span class="w">
+  </span>a<span class="n">sig</span><span class="w"> </span><span class="nb">table3</span><span class="w"> </span>a<span class="n">phase</span><span class="p">,</span><span class="w"> </span>gi<span class="n">snd</span><span class="w">
+  </span>a<span class="n">sig</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="nb">linsegr</span><span class="p">:</span><span class="kt">a</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">
+  </span><span class="nb">outch</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 	
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">20</span>
-<span class="nb">f</span><span class="mi">0</span> <span class="mi">3600</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">20</span><span class="w">
+</span><span class="nb">f</span><span class="mi">0</span><span class="w"> </span><span class="mi">3600</span><span class="w">
 
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -149,14 +149,14 @@ gi<span class="n">snd</span> <span class="nb">ftgen</span> <span class="mi">0</s
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm211745"></a>
+        <a id="idm299218"></a>
         <h2>See also</h2>
         <p>
       <a class="link" href="phasor.html" title="phasor"><em class="citetitle">phasor</em></a>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm211750"></a>
+        <a id="idm299223"></a>
         <h2>Credits</h2>
         <p>By: Eduardo Moguillansky 2017</p>
       </div>

@@ -39,19 +39,19 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm280676"></a>
+        <a id="idm397431"></a>
         <h2>Description</h2>
         <p>
       Writes to a zk variable at i-rate without mixing.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm280679"></a>
+        <a id="idm397434"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>ziw</strong></span> isig, indx</pre>
       </div>
       <div class="refsect1">
-        <a id="idm280683"></a>
+        <a id="idm397438"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>isig</em></span> -- initializes the value of the zk location.
@@ -61,7 +61,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm280689"></a>
+        <a id="idm397444"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>ziw</em></span> writes <span class="emphasis"><em>isig</em></span> into the zk variable specified by <span class="emphasis"><em>indx</em></span>.
@@ -71,21 +71,21 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm280696"></a>
+        <a id="idm397451"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the ziw opcode. It uses the file <a class="ulink" href="examples/ziw.csd" target="_top"><em class="citetitle">ziw.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm280701"></a>
+          <a id="idm397456"></a>
           <p class="title">
-            <strong>Example 1252. Example of the ziw opcode.</strong>
+            <strong>Example 1253. Example of the ziw opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm280708"></a>
+              <a id="idm397463"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -95,45 +95,45 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o ziw.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="c1">; Initialize the global variables.</span>
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">kr</span> <span class="o">=</span> <span class="mi">4410</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class="c1">; Initialize the global variables.</span><span class="w">
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">kr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4410</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="c1">; Initialize the ZAK space.</span>
-<span class="c1">; Create 1 a-rate variable and 1 k-rate variable.</span>
-<span class="nb">zakinit</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+</span><span class="c1">; Initialize the ZAK space.</span><span class="w">
+</span><span class="c1">; Create 1 a-rate variable and 1 k-rate variable.</span><span class="w">
+</span><span class="nb">zakinit</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="c1">; Instrument #1 -- a simple instrument.</span>
-<span class="kd">instr</span> <span class="nf">1</span>
-  <span class="c1">; Set zk variable #1 to 64.182.</span>
-  <span class="nb">ziw</span> <span class="mf">64.182</span><span class="p">,</span> <span class="mi">1</span>
-<span class="kd">endin</span>
+</span><span class="c1">; Instrument #1 -- a simple instrument.</span><span class="w">
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+  </span><span class="c1">; Set zk variable #1 to 64.182.</span><span class="w">
+  </span><span class="nb">ziw</span><span class="w"> </span><span class="mf">64.182</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="c1">; Instrument #2 -- prints out zk variable #1.</span>
-<span class="kd">instr</span> <span class="nf">2</span>
-  <span class="c1">; Read zk variable #1 at i-rate.</span>
-  i<span class="n">1</span> <span class="nb">zir</span> <span class="mi">1</span>
+</span><span class="c1">; Instrument #2 -- prints out zk variable #1.</span><span class="w">
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">
+  </span><span class="c1">; Read zk variable #1 at i-rate.</span><span class="w">
+  </span>i<span class="n">1</span><span class="w"> </span><span class="nb">zir</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-  <span class="c1">; Print out the value of zk variable #1.</span>
-  <span class="nb">print</span> i<span class="n">1</span>
-<span class="kd">endin</span>
-
-
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-
-<span class="c1">; Play Instrument #1 for one second.</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span>
-<span class="c1">; Play Instrument #2 for one second.</span>
-<span class="nb">i</span> <span class="mi">2</span> <span class="mi">0</span> <span class="mi">1</span>
-<span class="nb">e</span>
+  </span><span class="c1">; Print out the value of zk variable #1.</span><span class="w">
+  </span><span class="nb">print</span><span class="w"> </span>i<span class="n">1</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
 
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+
+</span><span class="c1">; Play Instrument #1 for one second.</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="c1">; Play Instrument #2 for one second.</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+
+
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -143,7 +143,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm280773"></a>
+        <a id="idm397578"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="zaw.html" title="zaw"><em class="citetitle">zaw</em></a>,
@@ -154,7 +154,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm280786"></a>
+        <a id="idm397591"></a>
         <h2>Credits</h2>
         <p>
       </p>

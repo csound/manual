@@ -39,19 +39,19 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm202489"></a>
+        <a id="idm285293"></a>
         <h2>Description</h2>
         <p>
       <span class="emphasis"><em>resonx</em></span> is equivalent to a filters consisting of more layers of <a class="link" href="reson.html" title="reson"><em class="citetitle">reson</em></a> with the same arguments, serially connected. Using a stack of a larger number of filters allows a sharper cutoff. They are faster than using a larger number instances in a Csound orchestra of the old opcodes, because only one initialization and k- cycle are needed at time and the audio loop falls entirely inside the cache memory of processor.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm202495"></a>
+        <a id="idm285299"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ares <span class="command"><strong>resonx</strong></span> asig, xcf, xbw [, inumlayer] [, iscl] [, iskip]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm202499"></a>
+        <a id="idm285303"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>inumlayer</em></span> (optional) -- number of elements in the filter stack. Default value is 4.
@@ -64,7 +64,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm202509"></a>
+        <a id="idm285313"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>asig</em></span> -- input signal
@@ -77,20 +77,20 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm202517"></a>
+        <a id="idm285321"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the resonx opcodes. It uses the file <a class="ulink" href="examples/resonx.csd" target="_top"><em class="citetitle">resonx.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm202522"></a>
+          <a id="idm285326"></a>
           <p class="title">
             <strong>Example 896. Example of the resonx opcodes.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm202529"></a>
+              <a id="idm285333"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -100,39 +100,39 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o resonx.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>	<span class="c1">; unfiltered noise</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">	</span><span class="c1">; unfiltered noise</span><span class="w">
 
-k<span class="n">env</span>	<span class="nb">linseg</span>	<span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">.5</span><span class="p">,</span> <span class="mi">0</span>	<span class="c1">;envelope</span>
-a<span class="n">sig</span>	<span class="nb">rand</span>	<span class="mf">0.7</span>			<span class="c1">;white noise</span>
-	<span class="nb">outs</span>	a<span class="n">sig</span><span class="o">*</span>k<span class="n">env</span><span class="p">,</span> a<span class="n">sig</span><span class="o">*</span>k<span class="n">env</span>
+</span>k<span class="n">env</span><span class="w">	</span><span class="nb">linseg</span><span class="w">	</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="o">*</span><span class="mf">.5</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="o">*</span><span class="mf">.5</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">	</span><span class="c1">;envelope</span><span class="w">
+</span>a<span class="n">sig</span><span class="w">	</span><span class="nb">rand</span><span class="w">	</span><span class="mf">0.7</span><span class="w">			</span><span class="c1">;white noise</span><span class="w">
+	</span><span class="nb">outs</span><span class="w">	</span>a<span class="n">sig</span><span class="o">*</span>k<span class="n">env</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="o">*</span>k<span class="n">env</span><span class="w">
 
-<span class="kd">endin</span>
+</span><span class="kd">endin</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">2</span>	<span class="c1">; filtered noise</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">	</span><span class="c1">; filtered noise</span><span class="w">
 
-k<span class="n">env</span>	<span class="nb">linseg</span>	<span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">.5</span><span class="p">,</span> <span class="mi">0</span>	<span class="c1">;envelope</span>
-a<span class="n">sig</span>	<span class="nb">rand</span>	<span class="mf">0.7</span>
-k<span class="n">cf</span>	<span class="nb">line</span>	<span class="mi">300</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">2000</span>
-a<span class="n">filt</span>	<span class="nb">resonx</span>	a<span class="n">sig</span><span class="p">,</span> k<span class="n">cf</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">4</span>
-a<span class="n">sig</span>	<span class="nb">balance</span> a<span class="n">filt</span><span class="p">,</span> a<span class="n">sig</span>
-	<span class="nb">outs</span>	a<span class="n">sig</span><span class="o">*</span>k<span class="n">env</span><span class="p">,</span> a<span class="n">sig</span><span class="o">*</span>k<span class="n">env</span>
+</span>k<span class="n">env</span><span class="w">	</span><span class="nb">linseg</span><span class="w">	</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="o">*</span><span class="mf">.5</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="o">*</span><span class="mf">.5</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">	</span><span class="c1">;envelope</span><span class="w">
+</span>a<span class="n">sig</span><span class="w">	</span><span class="nb">rand</span><span class="w">	</span><span class="mf">0.7</span><span class="w">
+</span>k<span class="n">cf</span><span class="w">	</span><span class="nb">line</span><span class="w">	</span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mi">2000</span><span class="w">
+</span>a<span class="n">filt</span><span class="w">	</span><span class="nb">resonx</span><span class="w">	</span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>k<span class="n">cf</span><span class="p">,</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="w">
+</span>a<span class="n">sig</span><span class="w">	</span><span class="nb">balance</span><span class="w"> </span>a<span class="n">filt</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
+	</span><span class="nb">outs</span><span class="w">	</span>a<span class="n">sig</span><span class="o">*</span>k<span class="n">env</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="o">*</span>k<span class="n">env</span><span class="w">
 
-<span class="kd">endin</span>
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
+</span><span class="kd">endin</span><span class="w">
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">2</span>
-<span class="nb">i</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">2</span>
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">2</span><span class="w">
 
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -142,7 +142,7 @@ a<span class="n">sig</span>	<span class="nb">balance</span> a<span class="n">fil
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm202649"></a>
+        <a id="idm285528"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="atonex.html" title="atonex"><em class="citetitle">atonex</em></a>,
@@ -150,7 +150,7 @@ a<span class="n">sig</span>	<span class="nb">balance</span> a<span class="n">fil
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm202656"></a>
+        <a id="idm285535"></a>
         <h2>Credits</h2>
         <p>
       </p>

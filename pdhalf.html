@@ -39,19 +39,19 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm175683"></a>
+        <a id="idm246137"></a>
         <h2>Description</h2>
         <p>
       The <span class="emphasis"><em>pdhalf</em></span> opcode is designed to emulate the "classic" phase distortion synthesis method of the Casio CZ-series of synthesizers from the mid-1980's.  This technique reads the first and second halves of a function table at different rates in order to warp the waveform.  For example, <span class="emphasis"><em>pdhalf</em></span> can smoothly transform a sine wave into something approximating the shape of a saw wave.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm175688"></a>
+        <a id="idm246142"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">aout <span class="command"><strong>pdhalf</strong></span> ain, kShapeAmount [, ibipolar [, ifullscale]]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm175692"></a>
+        <a id="idm246146"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>ibipolar</em></span> -- an optional parameter specifying either unipolar (0) or bipolar (1) mode.  Defaults to unipolar mode.
@@ -61,7 +61,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm175700"></a>
+        <a id="idm246154"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>ain</em></span> --  the input signal to be distorted.
@@ -104,20 +104,20 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm175734"></a>
+        <a id="idm246188"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the pdhalf opcode. It uses the file <a class="ulink" href="examples/pdhalf.csd" target="_top"><em class="citetitle">pdhalf.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm175739"></a>
+          <a id="idm246193"></a>
           <p class="title">
             <strong>Example 743. Example of the pdhalf opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm175746"></a>
+              <a id="idm246200"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -127,69 +127,69 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o pdhalf.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">4</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">4</span><span class="w">
 
-    i<span class="n">dur</span>        <span class="o">=</span> <span class="vi">p3</span>
-    i<span class="n">amp</span>        <span class="o">=</span> <span class="vi">p4</span>
-    i<span class="n">freq</span>       <span class="o">=</span> <span class="vi">p5</span>
-    i<span class="n">table</span>      <span class="o">=</span> <span class="vi">p6</span>
+    </span>i<span class="n">dur</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="vi">p3</span><span class="w">
+    </span>i<span class="n">amp</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="vi">p4</span><span class="w">
+    </span>i<span class="n">freq</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="vi">p5</span><span class="w">
+    </span>i<span class="n">table</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="vi">p6</span><span class="w">
     
-    a<span class="n">env</span>        <span class="nb">linseg</span>      <span class="mi">0</span><span class="p">,</span> <span class="mf">.001</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> i<span class="n">dur</span> <span class="o">-</span> <span class="mf">.051</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">.05</span><span class="p">,</span> <span class="mi">0</span>
-    a<span class="n">osc</span>        <span class="nb">phasor</span>      i<span class="n">freq</span>
-    k<span class="n">amount</span>     <span class="nb">linseg</span>      <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.99</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.9</span><span class="p">,</span> i<span class="n">dur</span><span class="o">-</span><span class="mf">0.06</span><span class="p">,</span> <span class="mf">0.0</span>
-    a<span class="n">pd</span>         <span class="nb">pdhalf</span>      a<span class="n">osc</span><span class="p">,</span> k<span class="n">amount</span>
-    a<span class="n">out</span>        <span class="nb">tablei</span>      a<span class="n">pd</span><span class="p">,</span> i<span class="n">table</span><span class="p">,</span> <span class="mi">1</span>
+    </span>a<span class="n">env</span><span class="w">        </span><span class="nb">linseg</span><span class="w">      </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">.001</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span>i<span class="n">dur</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">.051</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">.05</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span>a<span class="n">osc</span><span class="w">        </span><span class="nb">phasor</span><span class="w">      </span>i<span class="n">freq</span><span class="w">
+    </span>k<span class="n">amount</span><span class="w">     </span><span class="nb">linseg</span><span class="w">      </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.02</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.99</span><span class="p">,</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.9</span><span class="p">,</span><span class="w"> </span>i<span class="n">dur</span><span class="o">-</span><span class="mf">0.06</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="w">
+    </span>a<span class="n">pd</span><span class="w">         </span><span class="nb">pdhalf</span><span class="w">      </span>a<span class="n">osc</span><span class="p">,</span><span class="w"> </span>k<span class="n">amount</span><span class="w">
+    </span>a<span class="n">out</span><span class="w">        </span><span class="nb">tablei</span><span class="w">      </span>a<span class="n">pd</span><span class="p">,</span><span class="w"> </span>i<span class="n">table</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
     
-                <span class="nb">outs</span>         a<span class="n">env</span><span class="o">*</span>a<span class="n">out</span><span class="o">*</span>i<span class="n">amp</span><span class="p">,</span> a<span class="n">env</span><span class="o">*</span>a<span class="n">out</span><span class="o">*</span>i<span class="n">amp</span>     
-<span class="kd">endin</span>
+                </span><span class="nb">outs</span><span class="w">         </span>a<span class="n">env</span><span class="o">*</span>a<span class="n">out</span><span class="o">*</span>i<span class="n">amp</span><span class="p">,</span><span class="w"> </span>a<span class="n">env</span><span class="o">*</span>a<span class="n">out</span><span class="o">*</span>i<span class="n">amp</span><span class="w">     
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">f</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">16385</span> <span class="mi">10</span> <span class="mi">1</span>
-<span class="nb">f</span><span class="mi">2</span> <span class="mi">0</span> <span class="mi">16385</span> <span class="mi">10</span> <span class="mi">1</span> <span class="mf">.5</span> <span class="mf">.3333</span> <span class="mf">.25</span> <span class="mf">.5</span>
-<span class="nb">f</span><span class="mi">3</span> <span class="mi">0</span> <span class="mi">16385</span>  <span class="mi">9</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">270</span>           <span class="c1">; inverted cosine</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">f</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">16385</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="nb">f</span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">16385</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mf">.5</span><span class="w"> </span><span class="mf">.3333</span><span class="w"> </span><span class="mf">.25</span><span class="w"> </span><span class="mf">.5</span><span class="w">
+</span><span class="nb">f</span><span class="mi">3</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">16385</span><span class="w">  </span><span class="mi">9</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">270</span><span class="w">           </span><span class="c1">; inverted cosine</span><span class="w">
 
-<span class="c1">; descending "just blues" scale</span>
+</span><span class="c1">; descending "just blues" scale</span><span class="w">
 
-<span class="c1">; pdhalf with cosine table</span>
-<span class="c1">; (imitates the CZ-101 "sawtooth waveform")</span>
-<span class="nb">t</span> <span class="mi">0</span> <span class="mi">100</span>
-<span class="nb">i</span><span class="mi">4</span> <span class="mi">0</span> <span class="mi">3</span>   <span class="mf">.6</span>     <span class="mi">512</span>     <span class="mi">3</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="o">.</span>     <span class="mi">448</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="o">.</span>     <span class="mi">384</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="o">.</span>     <span class="mf">358.4</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="o">.</span>     <span class="mf">341.33</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="o">.</span>     <span class="mf">298.67</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="mi">5</span>    <span class="o">.</span>     <span class="mi">256</span>
-<span class="nb">s</span>
-<span class="c1">; pdhalf with a sine table</span>
-<span class="nb">t</span> <span class="mi">0</span> <span class="mi">120</span>
-<span class="nb">i</span><span class="mi">4</span> <span class="mi">0</span> <span class="mi">3</span>   <span class="mf">.6</span>     <span class="mi">512</span>     <span class="mi">1</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="o">.</span>     <span class="mi">448</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="o">.</span>     <span class="mi">384</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="o">.</span>     <span class="mf">358.4</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="o">.</span>     <span class="mf">341.33</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="o">.</span>     <span class="mf">298.67</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="mi">5</span>    <span class="o">.</span>     <span class="mi">256</span>
-<span class="nb">s</span>
-<span class="c1">; pdhalf with a sawtooth-like table</span>
-<span class="nb">t</span> <span class="mi">0</span> <span class="mi">150</span>
-<span class="nb">i</span><span class="mi">4</span> <span class="mi">0</span> <span class="mi">3</span>   <span class="mf">.6</span>     <span class="mi">512</span>     <span class="mi">2</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="o">.</span>     <span class="mi">448</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="o">.</span>     <span class="mi">384</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="o">.</span>     <span class="mf">358.4</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="o">.</span>     <span class="mf">341.33</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="o">.</span>     <span class="mf">298.67</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="mi">5</span>    <span class="o">.</span>     <span class="mi">256</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="c1">; pdhalf with cosine table</span><span class="w">
+</span><span class="c1">; (imitates the CZ-101 "sawtooth waveform")</span><span class="w">
+</span><span class="nb">t</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">100</span><span class="w">
+</span><span class="nb">i</span><span class="mi">4</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">3</span><span class="w">   </span><span class="mf">.6</span><span class="w">     </span><span class="mi">512</span><span class="w">     </span><span class="mi">3</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="o">.</span><span class="w">     </span><span class="mi">448</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="o">.</span><span class="w">     </span><span class="mi">384</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="o">.</span><span class="w">     </span><span class="mf">358.4</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="o">.</span><span class="w">     </span><span class="mf">341.33</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="o">.</span><span class="w">     </span><span class="mf">298.67</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">5</span><span class="w">    </span><span class="o">.</span><span class="w">     </span><span class="mi">256</span><span class="w">
+</span><span class="nb">s</span><span class="w">
+</span><span class="c1">; pdhalf with a sine table</span><span class="w">
+</span><span class="nb">t</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">120</span><span class="w">
+</span><span class="nb">i</span><span class="mi">4</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">3</span><span class="w">   </span><span class="mf">.6</span><span class="w">     </span><span class="mi">512</span><span class="w">     </span><span class="mi">1</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="o">.</span><span class="w">     </span><span class="mi">448</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="o">.</span><span class="w">     </span><span class="mi">384</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="o">.</span><span class="w">     </span><span class="mf">358.4</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="o">.</span><span class="w">     </span><span class="mf">341.33</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="o">.</span><span class="w">     </span><span class="mf">298.67</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">5</span><span class="w">    </span><span class="o">.</span><span class="w">     </span><span class="mi">256</span><span class="w">
+</span><span class="nb">s</span><span class="w">
+</span><span class="c1">; pdhalf with a sawtooth-like table</span><span class="w">
+</span><span class="nb">t</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">150</span><span class="w">
+</span><span class="nb">i</span><span class="mi">4</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">3</span><span class="w">   </span><span class="mf">.6</span><span class="w">     </span><span class="mi">512</span><span class="w">     </span><span class="mi">2</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="o">.</span><span class="w">     </span><span class="mi">448</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="o">.</span><span class="w">     </span><span class="mi">384</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="o">.</span><span class="w">     </span><span class="mf">358.4</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="o">.</span><span class="w">     </span><span class="mf">341.33</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="o">.</span><span class="w">     </span><span class="mf">298.67</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">5</span><span class="w">    </span><span class="o">.</span><span class="w">     </span><span class="mi">256</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -199,7 +199,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm176022"></a>
+        <a id="idm246687"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="pdhalfy.html" title="pdhalfy"><em class="citetitle">pdhalfy</em></a>,
@@ -208,7 +208,7 @@
         <p> More information about phase distortion on Wikipedia: <a class="ulink" href="http://en.wikipedia.org/wiki/Phase_distortion_synthesis" target="_top"><em class="citetitle">http://en.wikipedia.org/wiki/Phase_distortion_synthesis</em></a></p>
       </div>
       <div class="refsect1">
-        <a id="idm176032"></a>
+        <a id="idm246697"></a>
         <h2>Credits</h2>
         <p>
       </p>

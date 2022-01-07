@@ -39,19 +39,19 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm141735"></a>
+        <a id="idm197712"></a>
         <h2>Description</h2>
         <p>
       A MIDI delay opcode.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm141738"></a>
+        <a id="idm197715"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>mdelay</strong></span> kstatus, kchan, kd1, kd2, kdelay</pre>
       </div>
       <div class="refsect1">
-        <a id="idm141742"></a>
+        <a id="idm197719"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>kstatus</em></span> -- status byte of MIDI message to be delayed
@@ -73,21 +73,21 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm141759"></a>
+        <a id="idm197736"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the mdelay opcode. It uses the file <a class="ulink" href="examples/mdelay.csd" target="_top"><em class="citetitle">mdelay.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm141764"></a>
+          <a id="idm197741"></a>
           <p class="title">
             <strong>Example 578. Example of the mdelay opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm141771"></a>
+              <a id="idm197748"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span> 
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -95,44 +95,44 @@
 <span class="c1">; Audio out   Audio in    No messages</span>
 -odac           -iadc     -d         -M0  -Q0 
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">kr</span> <span class="o">=</span> <span class="mi">4410</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">kr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4410</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
 
-<span class="c1">; Example by Giorgio Zucco 2007</span>
+</span><span class="c1">; Example by Giorgio Zucco 2007</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>  <span class="c1">;Triggered by MIDI notes on channel 1</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">  </span><span class="c1">;Triggered by MIDI notes on channel 1</span><span class="w">
 
-  k<span class="n">status</span> <span class="nb">init</span> <span class="mi">0</span>
-  i<span class="n">fund</span>   <span class="nb">notnum</span> 	 
-  i<span class="n">vel</span> 	<span class="nb">veloc</span> 
+  </span>k<span class="n">status</span><span class="w"> </span><span class="nb">init</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span>i<span class="n">fund</span><span class="w">   </span><span class="nb">notnum</span><span class="w"> 	 
+  </span>i<span class="n">vel</span><span class="w"> 	</span><span class="nb">veloc</span><span class="w"> 
 
-  <span class="nb">noteondur</span>  <span class="mi">1</span><span class="p">,</span> i<span class="n">fund</span><span class="p">,</span> i<span class="n">vel</span><span class="p">,</span> <span class="mi">1</span>
+  </span><span class="nb">noteondur</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>i<span class="n">fund</span><span class="p">,</span><span class="w"> </span>i<span class="n">vel</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-  k<span class="n">status</span> <span class="o">=</span> k<span class="n">status</span> <span class="o">+</span> <span class="mi">1</span> 
+  </span>k<span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>k<span class="n">status</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> 
 
-  i<span class="n">del1</span> <span class="o">=</span> <span class="mf">.2</span>
-  i<span class="n">del2</span> <span class="o">=</span> <span class="mf">.4</span>
-  i<span class="n">del3</span> <span class="o">=</span> <span class="mf">.6</span>
-  i<span class="n">del4</span> <span class="o">=</span> <span class="mf">.8</span>
+  </span>i<span class="n">del1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">.2</span><span class="w">
+  </span>i<span class="n">del2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">.4</span><span class="w">
+  </span>i<span class="n">del3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">.6</span><span class="w">
+  </span>i<span class="n">del4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">.8</span><span class="w">
 
-  <span class="c1">;make four delay lines</span>
+  </span><span class="c1">;make four delay lines</span><span class="w">
 
-  <span class="nb">mdelay</span> 	k<span class="n">status</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>i<span class="n">fund</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> i<span class="n">vel</span><span class="p">,</span>i<span class="n">del1</span>
-  <span class="nb">mdelay</span> 	k<span class="n">status</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>i<span class="n">fund</span><span class="o">+</span><span class="mi">4</span><span class="p">,</span> i<span class="n">vel</span><span class="p">,</span>i<span class="n">del2</span>
-  <span class="nb">mdelay</span> 	k<span class="n">status</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>i<span class="n">fund</span><span class="o">+</span><span class="mi">6</span><span class="p">,</span> i<span class="n">vel</span><span class="p">,</span>i<span class="n">del3</span>
-  <span class="nb">mdelay</span> 	k<span class="n">status</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>i<span class="n">fund</span><span class="o">+</span><span class="mi">8</span><span class="p">,</span> i<span class="n">vel</span><span class="p">,</span>i<span class="n">del4</span>
+  </span><span class="nb">mdelay</span><span class="w"> 	</span>k<span class="n">status</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>i<span class="n">fund</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span>i<span class="n">vel</span><span class="p">,</span>i<span class="n">del1</span><span class="w">
+  </span><span class="nb">mdelay</span><span class="w"> 	</span>k<span class="n">status</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>i<span class="n">fund</span><span class="o">+</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span>i<span class="n">vel</span><span class="p">,</span>i<span class="n">del2</span><span class="w">
+  </span><span class="nb">mdelay</span><span class="w"> 	</span>k<span class="n">status</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>i<span class="n">fund</span><span class="o">+</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span>i<span class="n">vel</span><span class="p">,</span>i<span class="n">del3</span><span class="w">
+  </span><span class="nb">mdelay</span><span class="w"> 	</span>k<span class="n">status</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>i<span class="n">fund</span><span class="o">+</span><span class="mi">8</span><span class="p">,</span><span class="w"> </span>i<span class="n">vel</span><span class="p">,</span>i<span class="n">del4</span><span class="w">
 
-<span class="kd">endin</span>
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="c1">; Dummy ftable</span>
-<span class="nb">f</span> <span class="mi">0</span> <span class="mi">60</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="c1">; Dummy ftable</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">60</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -142,7 +142,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm141885"></a>
+        <a id="idm197927"></a>
         <h2>Credits</h2>
         <p>
       </p>

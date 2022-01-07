@@ -39,19 +39,19 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm43957"></a>
+        <a id="idm57214"></a>
         <h2>Description</h2>
         <p>
        Implements the classical standard analog filter types: low-pass and high-pass. They are implemented with the four classical kinds of filters: Butterworth, Chebyshev Type I, Chebyshev Type II, and Elliptical.  The number of poles may be any even number from 2 to 80.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm43960"></a>
+        <a id="idm57217"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ares <span class="command"><strong>clfilt</strong></span> asig, kfreq, itype, inpol [, ikind] [, ipbr] [, isba] [, iskip]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm43964"></a>
+        <a id="idm57221"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>itype</em></span> -- 0 for low-pass, 1 for high-pass.
@@ -73,7 +73,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm43978"></a>
+        <a id="idm57235"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>asig</em></span> -- The input audio signal.
@@ -83,21 +83,21 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm43984"></a>
+        <a id="idm57241"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the clfilt opcode as a low-pass filter. It uses the file <a class="ulink" href="examples/clfilt_lowpass.csd" target="_top"><em class="citetitle">clfilt_lowpass.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm43989"></a>
+          <a id="idm57246"></a>
           <p class="title">
             <strong>Example 144. Example of the clfilt opcode as a low-pass filter.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm43996"></a>
+              <a id="idm57253"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -107,38 +107,38 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o clfilt_lowpass.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>	<span class="c1">; white noise</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">	</span><span class="c1">; white noise</span><span class="w">
 
-a<span class="n">sig</span> <span class="nb">rand</span> <span class="mf">0.5</span>
-<span class="nb">outs</span> a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
+</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">rand</span><span class="w"> </span><span class="mf">0.5</span><span class="w">
+</span><span class="nb">outs</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
 
-<span class="kd">endin</span>
+</span><span class="kd">endin</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">2</span>	<span class="c1">; filtered noise </span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">	</span><span class="c1">; filtered noise </span><span class="w">
 
-a<span class="n">sig</span> <span class="nb">rand</span> <span class="mf">0.9</span>
-<span class="c1">; Lowpass filter signal asig with a </span>
-<span class="c1">; 10-pole Butterworth at 500 Hz.</span>
-a<span class="n">1</span> <span class="nb">clfilt</span> a<span class="n">sig</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span>
-   <span class="nb">outs</span> a<span class="n">1</span><span class="p">,</span> a<span class="n">1</span>
+</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">rand</span><span class="w"> </span><span class="mf">0.9</span><span class="w">
+</span><span class="c1">; Lowpass filter signal asig with a </span><span class="w">
+</span><span class="c1">; 10-pole Butterworth at 500 Hz.</span><span class="w">
+</span>a<span class="n">1</span><span class="w"> </span><span class="nb">clfilt</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="w">
+   </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">1</span><span class="p">,</span><span class="w"> </span>a<span class="n">1</span><span class="w">
 
-<span class="kd">endin</span>
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">2</span>
-<span class="nb">i</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span>
-<span class="nb">e</span>
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="nb">e</span><span class="w">
 
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -151,14 +151,14 @@ a<span class="n">1</span> <span class="nb">clfilt</span> a<span class="n">sig</s
 
       </p>
         <div class="example">
-          <a id="idm44068"></a>
+          <a id="idm57376"></a>
           <p class="title">
             <strong>Example 145. Example of the clfilt opcode as a high-pass filter.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm44075"></a>
+              <a id="idm57383"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -168,38 +168,38 @@ a<span class="n">1</span> <span class="nb">clfilt</span> a<span class="n">sig</s
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o clfilt_highpass.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>	<span class="c1">; white noise</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">	</span><span class="c1">; white noise</span><span class="w">
 
-a<span class="n">sig</span> <span class="nb">rand</span> <span class="mf">0.6</span>
-     <span class="nb">outs</span> a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
+</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">rand</span><span class="w"> </span><span class="mf">0.6</span><span class="w">
+     </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
 
-<span class="kd">endin</span>
+</span><span class="kd">endin</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">2</span>	<span class="c1">;filtered noise</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">	</span><span class="c1">;filtered noise</span><span class="w">
 
-a<span class="n">sig</span> <span class="nb">rand</span> <span class="mf">0.7</span>
-<span class="c1">; Highpass filter signal asig with a 6-pole Chebyshev</span>
-<span class="c1">; Type I at 20 Hz with 3 dB of passband ripple.</span>
-a<span class="n">1</span> <span class="nb">clfilt</span> a<span class="n">sig</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span>
-   <span class="nb">outs</span> a<span class="n">1</span><span class="p">,</span> a<span class="n">1</span>
+</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">rand</span><span class="w"> </span><span class="mf">0.7</span><span class="w">
+</span><span class="c1">; Highpass filter signal asig with a 6-pole Chebyshev</span><span class="w">
+</span><span class="c1">; Type I at 20 Hz with 3 dB of passband ripple.</span><span class="w">
+</span>a<span class="n">1</span><span class="w"> </span><span class="nb">clfilt</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w">
+   </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">1</span><span class="p">,</span><span class="w"> </span>a<span class="n">1</span><span class="w">
 
-<span class="kd">endin</span>
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">2</span>
-<span class="nb">i</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span>
-<span class="nb">e</span>
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="nb">e</span><span class="w">
 
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -209,7 +209,7 @@ a<span class="n">1</span> <span class="nb">clfilt</span> a<span class="n">sig</s
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm44148"></a>
+        <a id="idm57509"></a>
         <h2>Credits</h2>
         <p>Author: Erik Spjut</p>
         <p>New in version 4.20</p>

@@ -39,19 +39,19 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm136359"></a>
+        <a id="idm189500"></a>
         <h2>Description</h2>
         <p>
       Generate control signal consisting of held segments delimited by two or more specified points. The entire envelope is looped at <span class="emphasis"><em>kfreq</em></span> rate. Each parameter can be varied at k-rate.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm136363"></a>
+        <a id="idm189504"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ksig <span class="command"><strong>lpshold</strong></span> kfreq, ktrig, iphase, kvalue0, ktime0  [, kvalue1] [, ktime1] [, kvalue2] [, ktime2] [...]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm136367"></a>
+        <a id="idm189508"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>ksig</em></span> -- Output signal
@@ -78,21 +78,21 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm136389"></a>
+        <a id="idm189530"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the lpshold opcode. It uses the file <a class="ulink" href="examples/lpshold.csd" target="_top"><em class="citetitle">lpshold.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm136394"></a>
+          <a id="idm189535"></a>
           <p class="title">
             <strong>Example 555. Example of the lpshold opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm136401"></a>
+              <a id="idm189542"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -102,40 +102,40 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o lpshold.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>
-k<span class="n">frq</span>  <span class="nb">init</span>    <span class="vi">p4</span>  <span class="c1">; frequency of the loop </span>
-i<span class="n">frac</span> <span class="o">=</span>       <span class="vi">p5</span>  <span class="c1">; fraction of frequency at which to force retrigger</span>
-i<span class="n">pan</span>  <span class="o">=</span>       <span class="vi">p6</span>  <span class="c1">; pan position</span>
-k<span class="n">trig</span> <span class="nb">metro</span>   k<span class="n">frq</span> <span class="o">*</span> i<span class="n">frac</span>  <span class="c1">; trigger to force restart the loop</span>
-i<span class="n">phs</span>  <span class="o">=</span>       <span class="mi">0</span>   <span class="c1">; initial phase of the loop</span>
-<span class="c1">; a loop of midi note numbers:   note duration etc...</span>
-k<span class="n">note</span> <span class="nb">lpshold</span> k<span class="n">frq</span><span class="p">,</span> k<span class="n">trig</span><span class="p">,</span> i<span class="n">phs</span><span class="p">,</span> <span class="mi">61</span><span class="p">,</span>  <span class="mf">0.0625</span><span class="p">,</span>  <span class="mi">60</span><span class="p">,</span> <span class="mf">0.9375</span><span class="p">,</span>   <span class="mi">61</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">58</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="w">\</span>
-<span class="mi">63</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">3</span>
-a<span class="n">env</span>  <span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="vi">p3</span><span class="o">-</span><span class="mf">0.11</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mi">0</span>   <span class="c1">; amplitude envelope</span>
-k<span class="n">rnd</span>  <span class="nb">rspline</span> <span class="o">-</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">1</span> <span class="c1">; random detune</span>
-a<span class="n">sig</span>  <span class="nb">gbuzz</span>   <span class="mf">0.2</span><span class="o">*</span>a<span class="n">env</span><span class="p">,</span> <span class="nb">cpsmidinn</span><span class="p">(</span>k<span class="n">note</span><span class="o">+</span>k<span class="n">rnd</span><span class="p">),</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span> 
-      <span class="nb">outs</span>    a<span class="n">sig</span><span class="o">*</span>i<span class="n">pan</span><span class="p">,</span> a<span class="n">sig</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span>i<span class="n">pan</span><span class="p">)</span>
-<span class="kd">endin</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+</span>k<span class="n">frq</span><span class="w">  </span><span class="nb">init</span><span class="w">    </span><span class="vi">p4</span><span class="w">  </span><span class="c1">; frequency of the loop </span><span class="w">
+</span>i<span class="n">frac</span><span class="w"> </span><span class="o">=</span><span class="w">       </span><span class="vi">p5</span><span class="w">  </span><span class="c1">; fraction of frequency at which to force retrigger</span><span class="w">
+</span>i<span class="n">pan</span><span class="w">  </span><span class="o">=</span><span class="w">       </span><span class="vi">p6</span><span class="w">  </span><span class="c1">; pan position</span><span class="w">
+</span>k<span class="n">trig</span><span class="w"> </span><span class="nb">metro</span><span class="w">   </span>k<span class="n">frq</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>i<span class="n">frac</span><span class="w">  </span><span class="c1">; trigger to force restart the loop</span><span class="w">
+</span>i<span class="n">phs</span><span class="w">  </span><span class="o">=</span><span class="w">       </span><span class="mi">0</span><span class="w">   </span><span class="c1">; initial phase of the loop</span><span class="w">
+</span><span class="c1">; a loop of midi note numbers:   note duration etc...</span><span class="w">
+</span>k<span class="n">note</span><span class="w"> </span><span class="nb">lpshold</span><span class="w"> </span>k<span class="n">frq</span><span class="p">,</span><span class="w"> </span>k<span class="n">trig</span><span class="p">,</span><span class="w"> </span>i<span class="n">phs</span><span class="p">,</span><span class="w"> </span><span class="mi">61</span><span class="p">,</span><span class="w">  </span><span class="mf">0.0625</span><span class="p">,</span><span class="w">  </span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="mf">0.9375</span><span class="p">,</span><span class="w">   </span><span class="mi">61</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">58</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>\<span class="w">
+</span><span class="mi">63</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">65</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w">
+</span>a<span class="n">env</span><span class="w">  </span><span class="nb">linseg</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="vi">p3</span><span class="o">-</span><span class="mf">0.11</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mi">0</span><span class="w">   </span><span class="c1">; amplitude envelope</span><span class="w">
+</span>k<span class="n">rnd</span><span class="w">  </span><span class="nb">rspline</span><span class="w"> </span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">1</span><span class="w"> </span><span class="c1">; random detune</span><span class="w">
+</span>a<span class="n">sig</span><span class="w">  </span><span class="nb">gbuzz</span><span class="w">   </span><span class="mf">0.2</span><span class="o">*</span>a<span class="n">env</span><span class="p">,</span><span class="w"> </span><span class="nb">cpsmidinn</span><span class="p">(</span>k<span class="n">note</span><span class="o">+</span>k<span class="n">rnd</span><span class="p">),</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> 
+      </span><span class="nb">outs</span><span class="w">    </span>a<span class="n">sig</span><span class="o">*</span>i<span class="n">pan</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span>i<span class="n">pan</span><span class="p">)</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="c1">; cosine wave.</span>
-<span class="nb">f</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">16384</span> <span class="mi">11</span> <span class="mi">1</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="c1">; cosine wave.</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">16384</span><span class="w"> </span><span class="mi">11</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="c1">; 3 layers of the loop are played, each at a different speed, </span>
-<span class="c1">; - with different retriggering rate, and pan location.</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">60</span> <span class="mf">0.5</span>   <span class="p">[</span><span class="mi">8</span><span class="o">/</span><span class="mi">10</span><span class="p">]</span> <span class="mf">0.5</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">60</span> <span class="mf">0.375</span> <span class="p">[</span><span class="mi">8</span><span class="o">/</span><span class="mi">11</span><span class="p">]</span> <span class="mf">0.1</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">60</span> <span class="mf">0.25</span>  <span class="p">[</span><span class="mi">8</span><span class="o">/</span><span class="mi">13</span><span class="p">]</span> <span class="mf">0.9</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="c1">; 3 layers of the loop are played, each at a different speed, </span><span class="w">
+</span><span class="c1">; - with different retriggering rate, and pan location.</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="mf">0.5</span><span class="w">   </span><span class="p">[</span><span class="mi">8</span><span class="o">/</span><span class="mi">10</span><span class="p">]</span><span class="w"> </span><span class="mf">0.5</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="mf">0.375</span><span class="w"> </span><span class="p">[</span><span class="mi">8</span><span class="o">/</span><span class="mi">11</span><span class="p">]</span><span class="w"> </span><span class="mf">0.1</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="mf">0.25</span><span class="w">  </span><span class="p">[</span><span class="mi">8</span><span class="o">/</span><span class="mi">13</span><span class="p">]</span><span class="w"> </span><span class="mf">0.9</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -145,14 +145,14 @@ a<span class="n">sig</span>  <span class="nb">gbuzz</span>   <span class="mf">0.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm136589"></a>
+        <a id="idm189837"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="loopseg.html" title="loopseg"><em class="citetitle">loopseg</em></a>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm136594"></a>
+        <a id="idm189842"></a>
         <h2>Credits</h2>
         <p>Author: Gabriel Maldonado</p>
         <p>New in Version 4.13</p>

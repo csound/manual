@@ -39,19 +39,19 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm122354"></a>
+        <a id="idm169300"></a>
         <h2>Description</h2>
         <p>
       Zero-delay feedback implementation of Korg35 resonant low-pass filter. This filter design is found in the Korg MS10, early MS20, and Monotron series. 
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm122357"></a>
+        <a id="idm169303"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">asig <span class="command"><strong>K35_lpf</strong></span> ain, xcf, xQ [, inlp, isaturation, istor]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm122361"></a>
+        <a id="idm169307"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>istor</em></span> --initial disposition of internal data space.
@@ -62,7 +62,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm122365"></a>
+        <a id="idm169311"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>asig</em></span> -- output signal.
@@ -83,171 +83,171 @@
       <span class="emphasis"><em>ksaturation</em></span> (optional, default=1) -- saturation amount to use for non-linear processing. Values &gt; 1 increase the steepness of the NLP curve.</p>
       </div>
       <div class="refsect1">
-        <a id="idm122379"></a>
+        <a id="idm169325"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the K35_lpf opcode. It uses the file <a class="ulink" href="examples/k35.csd" target="_top"><em class="citetitle">k35.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm122384"></a>
+          <a id="idm169330"></a>
           <p class="title">
             <strong>Example 491. Example of the K35_lpf opcode.</strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
-              <a id="idm122386"></a>
+              <a id="idm169332"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="c1">; ==============================================</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span>	<span class="o">=</span>	<span class="mi">48000</span>
-<span class="vg">ksmps</span>	<span class="o">=</span>	<span class="mi">1</span>
-<span class="vg">nchnls</span>	<span class="o">=</span>	<span class="mi">2</span>
-<span class="vg">0dbfs</span>	<span class="o">=</span>	<span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w">	</span><span class="o">=</span><span class="w">	</span><span class="mi">48000</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w">	</span><span class="o">=</span><span class="w">	</span><span class="mi">1</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w">	</span><span class="o">=</span><span class="w">	</span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">	</span><span class="o">=</span><span class="w">	</span><span class="mi">1</span><span class="w">
 
-<span class="c1">;; test instruments to demo filter cutoff sweep with high resonance</span>
+</span><span class="c1">;; test instruments to demo filter cutoff sweep with high resonance</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>	
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">	
 
-a<span class="n">sig</span> <span class="o">=</span> <span class="nb">vco2</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">cps2pch</span><span class="p">(</span><span class="mf">6.00</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
-a<span class="n">sig</span> <span class="o">=</span> <span class="nb">K35_lpf</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span> <span class="nb">expseg</span><span class="p">:</span><span class="kt">a</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="mf">9.9</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-a<span class="n">sig</span> <span class="o">*=</span> <span class="mf">0.25</span>
-a<span class="n">sig</span>  <span class="o">=</span> <span class="nb">limit</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+</span>a<span class="n">sig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">vco2</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="nb">cps2pch</span><span class="p">(</span><span class="mf">6.00</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">))</span><span class="w">
+</span>a<span class="n">sig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">K35_lpf</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span><span class="nb">expseg</span><span class="p">:</span><span class="kt">a</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">),</span><span class="w"> </span><span class="mf">9.9</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w">
+</span>a<span class="n">sig</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="mf">0.25</span><span class="w">
+</span>a<span class="n">sig</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">limit</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">)</span><span class="w">
 
-<span class="nb">outc</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span><span class="p">)</span>
+</span><span class="nb">outc</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="p">)</span><span class="w">
 
-<span class="kd">endin</span>
-
-
-<span class="kd">instr</span> <span class="nf">2</span>	
-
-a<span class="n">sig</span> <span class="o">=</span> <span class="nb">vco2</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">cps2pch</span><span class="p">(</span><span class="mf">6.00</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
-a<span class="n">sig</span> <span class="o">=</span> <span class="nb">K35_lpf</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span> <span class="nb">expseg</span><span class="p">:</span><span class="kt">k</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="mf">9.9</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-a<span class="n">sig</span> <span class="o">*=</span> <span class="mf">0.25</span>
-a<span class="n">sig</span>  <span class="o">=</span> <span class="nb">limit</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
-
-<span class="nb">outc</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span><span class="p">)</span>
-
-<span class="kd">endin</span>
-
-<span class="kd">instr</span> <span class="nf">3</span>	
-
-a<span class="n">sig</span> <span class="o">=</span> <span class="nb">vco2</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">cps2pch</span><span class="p">(</span><span class="mf">6.00</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
-a<span class="n">sig</span> <span class="o">=</span> <span class="nb">K35_hpf</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span> <span class="nb">expseg</span><span class="p">:</span><span class="kt">a</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="mf">9.9</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-a<span class="n">sig</span> <span class="o">*=</span> <span class="mf">0.25</span>
-a<span class="n">sig</span>  <span class="o">=</span> <span class="nb">limit</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
-
-<span class="nb">outc</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span><span class="p">)</span>
-
-<span class="kd">endin</span>
+</span><span class="kd">endin</span><span class="w">
 
 
-<span class="kd">instr</span> <span class="nf">4</span>	
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">	
 
-a<span class="n">sig</span> <span class="o">=</span> <span class="nb">vco2</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">cps2pch</span><span class="p">(</span><span class="mf">6.00</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
-a<span class="n">sig</span> <span class="o">=</span> <span class="nb">K35_hpf</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span> <span class="nb">expseg</span><span class="p">:</span><span class="kt">k</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="mf">9.9</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-a<span class="n">sig</span> <span class="o">*=</span> <span class="mf">0.25</span>
-a<span class="n">sig</span>  <span class="o">=</span> <span class="nb">limit</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+</span>a<span class="n">sig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">vco2</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="nb">cps2pch</span><span class="p">(</span><span class="mf">6.00</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">))</span><span class="w">
+</span>a<span class="n">sig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">K35_lpf</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span><span class="nb">expseg</span><span class="p">:</span><span class="kt">k</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">),</span><span class="w"> </span><span class="mf">9.9</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w">
+</span>a<span class="n">sig</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="mf">0.25</span><span class="w">
+</span>a<span class="n">sig</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">limit</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">)</span><span class="w">
 
-<span class="nb">outc</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span><span class="p">)</span>
+</span><span class="nb">outc</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="p">)</span><span class="w">
 
-<span class="kd">endin</span>
+</span><span class="kd">endin</span><span class="w">
 
-<span class="c1">;; beat instruments</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">3</span><span class="w">	
 
-<span class="kd">instr</span> <span class="nf">ms20_drum</span>
+</span>a<span class="n">sig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">vco2</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="nb">cps2pch</span><span class="p">(</span><span class="mf">6.00</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">))</span><span class="w">
+</span>a<span class="n">sig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">K35_hpf</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span><span class="nb">expseg</span><span class="p">:</span><span class="kt">a</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">),</span><span class="w"> </span><span class="mf">9.9</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w">
+</span>a<span class="n">sig</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="mf">0.25</span><span class="w">
+</span>a<span class="n">sig</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">limit</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">)</span><span class="w">
 
-  i<span class="n">pch</span> <span class="o">=</span> <span class="nb">cps2pch</span><span class="p">(</span><span class="vi">p4</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
-  i<span class="n">amp</span> <span class="o">=</span> <span class="nb">ampdbfs</span><span class="p">(</span><span class="vi">p5</span><span class="p">)</span>
-  a<span class="n">env</span> <span class="o">=</span> <span class="nb">expseg</span><span class="p">:</span><span class="kt">a</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> i<span class="n">pch</span><span class="p">,</span> <span class="vi">p3</span> <span class="o">-</span> <span class="mf">.05</span><span class="p">,</span> i<span class="n">pch</span><span class="p">)</span>
+</span><span class="nb">outc</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="p">)</span><span class="w">
 
-  a<span class="n">sig</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">:</span><span class="kt">a</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
-  a<span class="n">sig</span> <span class="o">=</span> <span class="nb">K35_hpf</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-  a<span class="n">sig</span> <span class="o">=</span> <span class="nb">K35_lpf</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span> a<span class="n">env</span><span class="p">,</span> <span class="mf">9.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-
-  a<span class="n">sig</span> <span class="o">=</span> <span class="nb">tanh</span><span class="p">(</span>a<span class="n">sig</span> <span class="o">*</span> <span class="mi">16</span><span class="p">)</span>
-
-  a<span class="n">sig</span> <span class="o">*=</span> <span class="nb">expon</span><span class="p">(</span>i<span class="n">amp</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">)</span>
-
-  <span class="nb">outc</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span><span class="p">)</span>
-
-<span class="kd">endin</span>
-
-<span class="kd">instr</span> <span class="nf">ms20_bass</span> 
-  i<span class="n">pch</span> <span class="o">=</span> <span class="nb">cps2pch</span><span class="p">(</span><span class="vi">p4</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
-  i<span class="n">amp</span> <span class="o">=</span> <span class="nb">ampdbfs</span><span class="p">(</span><span class="vi">p5</span><span class="p">)</span>
-  a<span class="n">env</span> <span class="o">=</span> <span class="nb">expseg</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> i<span class="n">pch</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="vi">p3</span> <span class="o">-</span> <span class="mf">.05</span><span class="p">,</span> i<span class="n">pch</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
-
-  a<span class="n">sig</span> <span class="o">=</span> <span class="nb">vco2</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> i<span class="n">pch</span><span class="p">)</span>
-  a<span class="n">sig</span> <span class="o">=</span> <span class="nb">K35_hpf</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span> i<span class="n">pch</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-  a<span class="n">sig</span> <span class="o">=</span> <span class="nb">K35_lpf</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span> a<span class="n">env</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-
-  a<span class="n">sig</span> <span class="o">*=</span> <span class="nb">expon</span><span class="p">:</span><span class="kt">a</span><span class="p">(</span>i<span class="n">amp</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.8</span>
-
-  <span class="nb">outc</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span><span class="p">)</span>
-<span class="kd">endin</span>
-
-<span class="c1">;; perf code</span>
-
-gk<span class="n">tempo</span> <span class="nb">init</span> <span class="mi">122</span>
-
-<span class="kd">opcode</span> <span class="nf">beat_dur</span><span class="p">,</span><span class="kt">i</span><span class="p">,</span><span class="kt">0</span>
-  <span class="nb">xout</span> <span class="mi">60</span> <span class="o">/</span> <span class="nb">i</span><span class="p">(</span>gk<span class="n">tempo</span><span class="p">)</span> 
-<span class="kd">endop</span>
-
-<span class="kd">instr</span> <span class="nf">bass_player</span>
-  i<span class="n">dur</span> <span class="o">=</span> <span class="nf">beat_dur</span><span class="p">()</span> <span class="o">/</span> <span class="nb">int</span><span class="p">(</span><span class="nb">random</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span> 
-  i<span class="n">pch</span> <span class="o">=</span> <span class="mf">6.00</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="nb">random</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="nb">random</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span> <span class="o">/</span> <span class="mi">100</span>
-
-  <span class="nb">schedule</span><span class="p">(</span><span class="s">"ms20_bass"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> i<span class="n">dur</span><span class="p">,</span> i<span class="n">pch</span><span class="p">,</span> <span class="o">-</span><span class="mi">11</span><span class="p">)</span> 
-
-  <span class="k">if</span><span class="p">(</span><span class="vi">p2</span> <span class="o">&lt;</span> <span class="mf">37.5</span><span class="p">)</span> <span class="k">then</span>
-    <span class="nb">schedule</span><span class="p">(</span><span class="s">"bass_player"</span><span class="p">,</span> i<span class="n">dur</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
-  <span class="k">endif</span>
-  <span class="nb">turnoff</span>
-<span class="kd">endin</span>
-
-<span class="kd">instr</span> <span class="nf">beat_player</span> 
-  i<span class="n">step_total</span> <span class="o">=</span> <span class="vi">p4</span> 
-  i<span class="n">step</span> <span class="o">=</span> i<span class="n">step_total</span> <span class="o">%</span> <span class="mi">16</span>
-
-  <span class="k">if</span><span class="p">(</span>i<span class="n">step</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
-    i<span class="n">pch</span> <span class="o">=</span> <span class="p">((</span>i<span class="n">step_total</span> <span class="o">%</span> <span class="mi">128</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">112</span><span class="p">)</span> <span class="o">?</span> <span class="mf">4.00</span> <span class="o">:</span> <span class="mf">8.00</span>
-    i<span class="n">amp</span> <span class="o">=</span> <span class="p">(</span>i<span class="n">step</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>  <span class="o">?</span> <span class="o">-</span><span class="mi">9</span> <span class="o">:</span> <span class="o">-</span><span class="mi">12</span>
-    <span class="nb">schedule</span><span class="p">(</span><span class="s">"ms20_drum"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> i<span class="n">pch</span><span class="p">,</span> i<span class="n">amp</span><span class="p">)</span>
-  <span class="k">endif</span>
-
-  <span class="nb">schedule</span><span class="p">(</span><span class="s">"ms20_drum"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.125</span><span class="p">,</span> <span class="mf">14.00</span><span class="p">,</span> 
-           <span class="p">(</span>i<span class="n">step</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">?</span> <span class="o">-</span><span class="mi">12</span> <span class="o">:</span> <span class="o">-</span><span class="mi">18</span><span class="p">)</span>
-
-  <span class="k">if</span><span class="p">(</span><span class="vi">p2</span> <span class="o">&lt;</span> <span class="mf">37.5</span><span class="p">)</span> <span class="k">then</span>
-    <span class="nb">schedule</span><span class="p">(</span><span class="s">"beat_player"</span><span class="p">,</span> <span class="nf">beat_dur</span><span class="p">()</span> <span class="o">/</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> i<span class="n">step_total</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-  <span class="k">endif</span>
-  <span class="nb">turnoff</span>
-<span class="kd">endin</span>
-
-<span class="c1">;; start play of beats</span>
-
-<span class="kd">instr</span> <span class="nf">start_beats</span>
-  <span class="nb">schedule</span><span class="p">(</span><span class="s">"beat_player"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-  <span class="nb">schedule</span><span class="p">(</span><span class="s">"bass_player"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
-<span class="kd">endin</span>
+</span><span class="kd">endin</span><span class="w">
 
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">4</span><span class="w">	
+
+</span>a<span class="n">sig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">vco2</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="nb">cps2pch</span><span class="p">(</span><span class="mf">6.00</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">))</span><span class="w">
+</span>a<span class="n">sig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">K35_hpf</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span><span class="nb">expseg</span><span class="p">:</span><span class="kt">k</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">),</span><span class="w"> </span><span class="mf">9.9</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w">
+</span>a<span class="n">sig</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="mf">0.25</span><span class="w">
+</span>a<span class="n">sig</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">limit</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">)</span><span class="w">
+
+</span><span class="nb">outc</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="p">)</span><span class="w">
+
+</span><span class="kd">endin</span><span class="w">
+
+</span><span class="c1">;; beat instruments</span><span class="w">
+
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">ms20_drum</span><span class="w">
+
+  </span>i<span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">cps2pch</span><span class="p">(</span><span class="vi">p4</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span><span class="w">
+  </span>i<span class="n">amp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">ampdbfs</span><span class="p">(</span><span class="vi">p5</span><span class="p">)</span><span class="w">
+  </span>a<span class="n">env</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">expseg</span><span class="p">:</span><span class="kt">a</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w"> </span>i<span class="n">pch</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">.05</span><span class="p">,</span><span class="w"> </span>i<span class="n">pch</span><span class="p">)</span><span class="w">
+
+  </span>a<span class="n">sig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">rand</span><span class="p">:</span><span class="kt">a</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">)</span><span class="w">
+  </span>a<span class="n">sig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">K35_hpf</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w">
+  </span>a<span class="n">sig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">K35_lpf</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">env</span><span class="p">,</span><span class="w"> </span><span class="mf">9.8</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w">
+
+  </span>a<span class="n">sig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">tanh</span><span class="p">(</span>a<span class="n">sig</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">16</span><span class="p">)</span><span class="w">
+
+  </span>a<span class="n">sig</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="nb">expon</span><span class="p">(</span>i<span class="n">amp</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0001</span><span class="p">)</span><span class="w">
+
+  </span><span class="nb">outc</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="p">)</span><span class="w">
+
+</span><span class="kd">endin</span><span class="w">
+
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">ms20_bass</span><span class="w"> 
+  </span>i<span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">cps2pch</span><span class="p">(</span><span class="vi">p4</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span><span class="w">
+  </span>i<span class="n">amp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">ampdbfs</span><span class="p">(</span><span class="vi">p5</span><span class="p">)</span><span class="w">
+  </span>a<span class="n">env</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">expseg</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span>i<span class="n">pch</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">.05</span><span class="p">,</span><span class="w"> </span>i<span class="n">pch</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w">
+
+  </span>a<span class="n">sig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">vco2</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span>i<span class="n">pch</span><span class="p">)</span><span class="w">
+  </span>a<span class="n">sig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">K35_hpf</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>i<span class="n">pch</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w">
+  </span>a<span class="n">sig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">K35_lpf</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">env</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w">
+
+  </span>a<span class="n">sig</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="nb">expon</span><span class="p">:</span><span class="kt">a</span><span class="p">(</span>i<span class="n">amp</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0001</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.8</span><span class="w">
+
+  </span><span class="nb">outc</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="p">)</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
+
+</span><span class="c1">;; perf code</span><span class="w">
+
+</span>gk<span class="n">tempo</span><span class="w"> </span><span class="nb">init</span><span class="w"> </span><span class="mi">122</span><span class="w">
+
+</span><span class="kd">opcode</span><span class="w"> </span><span class="nf">beat_dur</span><span class="p">,</span><span class="kt">i</span><span class="p">,</span><span class="kt">0</span><span class="w">
+  </span><span class="nb">xout</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">i</span><span class="p">(</span>gk<span class="n">tempo</span><span class="p">)</span><span class="w"> 
+</span><span class="kd">endop</span><span class="w">
+
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">bass_player</span><span class="w">
+  </span>i<span class="n">dur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">beat_dur</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="nb">random</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span><span class="w"> 
+  </span>i<span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">6.00</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="nb">random</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="nb">random</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">100</span><span class="w">
+
+  </span><span class="nb">schedule</span><span class="p">(</span><span class="s">"ms20_bass"</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span>i<span class="n">dur</span><span class="p">,</span><span class="w"> </span>i<span class="n">pch</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">11</span><span class="p">)</span><span class="w"> 
+
+  </span><span class="k">if</span><span class="p">(</span><span class="vi">p2</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">37.5</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w">
+    </span><span class="nb">schedule</span><span class="p">(</span><span class="s">"bass_player"</span><span class="p">,</span><span class="w"> </span>i<span class="n">dur</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">)</span><span class="w">
+  </span><span class="k">endif</span><span class="w">
+  </span><span class="nb">turnoff</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
+
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">beat_player</span><span class="w"> 
+  </span>i<span class="n">step_total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">p4</span><span class="w"> 
+  </span>i<span class="n">step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>i<span class="n">step_total</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">16</span><span class="w">
+
+  </span><span class="k">if</span><span class="p">(</span>i<span class="n">step</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w">
+    </span>i<span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span>i<span class="n">step_total</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">128</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">112</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">4.00</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mf">8.00</span><span class="w">
+    </span>i<span class="n">amp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span>i<span class="n">step</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">  </span><span class="o">?</span><span class="w"> </span><span class="o">-</span><span class="mi">9</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mi">12</span><span class="w">
+    </span><span class="nb">schedule</span><span class="p">(</span><span class="s">"ms20_drum"</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span>i<span class="n">pch</span><span class="p">,</span><span class="w"> </span>i<span class="n">amp</span><span class="p">)</span><span class="w">
+  </span><span class="k">endif</span><span class="w">
+
+  </span><span class="nb">schedule</span><span class="p">(</span><span class="s">"ms20_drum"</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.125</span><span class="p">,</span><span class="w"> </span><span class="mf">14.00</span><span class="p">,</span><span class="w"> 
+           </span><span class="p">(</span>i<span class="n">step</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="o">-</span><span class="mi">12</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mi">18</span><span class="p">)</span><span class="w">
+
+  </span><span class="k">if</span><span class="p">(</span><span class="vi">p2</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">37.5</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w">
+    </span><span class="nb">schedule</span><span class="p">(</span><span class="s">"beat_player"</span><span class="p">,</span><span class="w"> </span><span class="nf">beat_dur</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span>i<span class="n">step_total</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w">
+  </span><span class="k">endif</span><span class="w">
+  </span><span class="nb">turnoff</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
+
+</span><span class="c1">;; start play of beats</span><span class="w">
+
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">start_beats</span><span class="w">
+  </span><span class="nb">schedule</span><span class="p">(</span><span class="s">"beat_player"</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">
+  </span><span class="nb">schedule</span><span class="p">(</span><span class="s">"bass_player"</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">)</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
+
+
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="c1">; ==============================================</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mf">5.0</span>
-<span class="nb">i</span><span class="mi">2</span> <span class="mi">5</span> <span class="mf">5.0</span>
-<span class="nb">i</span><span class="mi">3</span> <span class="mi">10</span> <span class="mf">5.0</span>
-<span class="nb">i</span><span class="mi">4</span> <span class="mi">15</span> <span class="mf">5.0</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">5.0</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mf">5.0</span><span class="w">
+</span><span class="nb">i</span><span class="mi">3</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mf">5.0</span><span class="w">
+</span><span class="nb">i</span><span class="mi">4</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="mf">5.0</span><span class="w">
 
-<span class="nb">i</span> <span class="s">"start_beats"</span> <span class="mi">22</span> <span class="mf">0.5</span> <span class="mi">0</span>
+</span><span class="nb">i</span><span class="w"> </span><span class="s">"start_beats"</span><span class="w"> </span><span class="mi">22</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="mi">0</span><span class="w">
 
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -257,7 +257,7 @@ gk<span class="n">tempo</span> <span class="nb">init</span> <span class="mi">122
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm123069"></a>
+        <a id="idm170378"></a>
         <h2>References</h2>
         <p> This filter is based on the work of Will Pirkle that employs Vadim
       Zavalishin's work with bilinear tranforms to create topology-preserving
@@ -288,7 +288,7 @@ gk<span class="n">tempo</span> <span class="nb">init</span> <span class="mi">122
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm123080"></a>
+        <a id="idm170389"></a>
         <h2>Credits</h2>
         <p>
       </p>

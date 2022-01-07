@@ -39,19 +39,19 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm198741"></a>
+        <a id="idm279875"></a>
         <h2>Description</h2>
         <p>
       Reads the value of an internal clock.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm198744"></a>
+        <a id="idm279878"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ir <span class="command"><strong>readclock</strong></span> inum</pre>
       </div>
       <div class="refsect1">
-        <a id="idm198748"></a>
+        <a id="idm279882"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>inum</em></span> -- the number of a clock.  There are 32 clocks numbered 0 through 31. All other values are mapped to clock number 32.
@@ -61,28 +61,28 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm198755"></a>
+        <a id="idm279889"></a>
         <h2>Performance</h2>
         <p>
       Between a <a class="link" href="clockon.html" title="clockon"><em class="citetitle">clockon</em></a> and a <a class="link" href="clockoff.html" title="clockoff"><em class="citetitle">clockoff</em></a> opcode, the CPU time used is accumulated in the clock. The precision is machine dependent but is the millisecond range on UNIX and Windows systems. The <span class="emphasis"><em>readclock</em></span> opcde reads the current value of a clock at initialization time.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm198763"></a>
+        <a id="idm279897"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the readclock opcode. It uses the file <a class="ulink" href="examples/readclock.csd" target="_top"><em class="citetitle">readclock.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm198768"></a>
+          <a id="idm279902"></a>
           <p class="title">
             <strong>Example 877. Example of the readclock opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm198775"></a>
+              <a id="idm279909"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -92,46 +92,46 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o readclock.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="c1">; Initialize the global variables.</span>
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">kr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class="c1">; Initialize the global variables.</span><span class="w">
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">kr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="c1">; Instrument #1.</span>
-<span class="kd">instr</span> <span class="nf">1</span>
-  <span class="c1">; Start clock #1.</span>
-  <span class="nb">clockon</span> <span class="mi">1</span>
-  <span class="c1">; Do something that keeps Csound busy.</span>
-  a<span class="n">1</span> <span class="nb">oscili</span> <span class="mi">10000</span><span class="p">,</span> <span class="mi">440</span><span class="p">,</span> <span class="mi">1</span>
-  <span class="nb">out</span> a<span class="n">1</span>
-  <span class="c1">; Stop clock #1.</span>
-  <span class="nb">clockoff</span> <span class="mi">1</span>
-  <span class="c1">; Print the time accumulated in clock #1.</span>
-  i<span class="n">1</span> <span class="nb">readclock</span> <span class="mi">1</span>
-  <span class="nb">print</span> i<span class="n">1</span>
-<span class="kd">endin</span>
-
-
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-
-<span class="c1">; Initialize the function tables.</span>
-<span class="c1">; Table 1: an ordinary sine wave.</span>
-<span class="nb">f</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">32768</span> <span class="mi">10</span> <span class="mi">1</span>
-
-<span class="c1">; Play Instrument #1 for one second starting at 0:00.</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span>
-<span class="c1">; Play Instrument #1 for one second starting at 0:01.</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span>
-<span class="c1">; Play Instrument #1 for one second starting at 0:02.</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">1</span>
-<span class="nb">e</span>
+</span><span class="c1">; Instrument #1.</span><span class="w">
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+  </span><span class="c1">; Start clock #1.</span><span class="w">
+  </span><span class="nb">clockon</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="c1">; Do something that keeps Csound busy.</span><span class="w">
+  </span>a<span class="n">1</span><span class="w"> </span><span class="nb">oscili</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w"> </span><span class="mi">440</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="nb">out</span><span class="w"> </span>a<span class="n">1</span><span class="w">
+  </span><span class="c1">; Stop clock #1.</span><span class="w">
+  </span><span class="nb">clockoff</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="c1">; Print the time accumulated in clock #1.</span><span class="w">
+  </span>i<span class="n">1</span><span class="w"> </span><span class="nb">readclock</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="nb">print</span><span class="w"> </span>i<span class="n">1</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
 
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+
+</span><span class="c1">; Initialize the function tables.</span><span class="w">
+</span><span class="c1">; Table 1: an ordinary sine wave.</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">32768</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w">
+
+</span><span class="c1">; Play Instrument #1 for one second starting at 0:00.</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="c1">; Play Instrument #1 for one second starting at 0:01.</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="c1">; Play Instrument #1 for one second starting at 0:02.</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+
+
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -150,14 +150,14 @@ instr 1:  i1 = 180.000
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm198854"></a>
+        <a id="idm280051"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="clockoff.html" title="clockoff"><em class="citetitle">clockoff</em></a>, <a class="link" href="clockon.html" title="clockon"><em class="citetitle">clockon</em></a>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm198861"></a>
+        <a id="idm280058"></a>
         <h2>Credits</h2>
         <p>
       </p>

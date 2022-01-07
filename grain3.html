@@ -39,20 +39,20 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm106553"></a>
+        <a id="idm146998"></a>
         <h2>Description</h2>
         <p>
       Generate granular synthesis textures. <a class="link" href="grain2.html" title="grain2"><em class="citetitle">grain2</em></a> is simpler to use but <span class="emphasis"><em>grain3</em></span> offers more control.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm106559"></a>
+        <a id="idm147004"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ares <span class="command"><strong>grain3</strong></span> kcps, kphs, kfmd, kpmd, kgdur, kdens, imaxovr, kfn, iwfn, \
       kfrpow, kprpow [, iseed] [, imode]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm106563"></a>
+        <a id="idm147008"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>imaxovr</em></span> -- maximum number of overlapping grains. The number of overlaps can be calculated by (<span class="emphasis"><em>kdens</em></span> * <span class="emphasis"><em>kgdur</em></span>); however, it can be overestimated at no cost in rendering time, and a single overlap uses (depending on system) 16 to 32 bytes of memory.
@@ -105,7 +105,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm106612"></a>
+        <a id="idm147057"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>ares</em></span> -- output signal.
@@ -175,21 +175,21 @@ as a fraction (between 0 to 1) of the table length.
         </div>
       </div>
       <div class="refsect1">
-        <a id="idm106666"></a>
+        <a id="idm147111"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the grain3 opcode. It uses the file <a class="ulink" href="examples/grain3.csd" target="_top"><em class="citetitle">grain3.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm106671"></a>
+          <a id="idm147116"></a>
           <p class="title">
             <strong>Example 428. Example of the grain3 opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm106678"></a>
+              <a id="idm147123"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -199,117 +199,117 @@ as a fraction (between 0 to 1) of the table length.
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o grain3.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span>	<span class="o">=</span>  <span class="mi">48000</span>
-<span class="vg">kr</span>	<span class="o">=</span>  <span class="mi">1000</span>
-<span class="vg">ksmps</span>   <span class="o">=</span>  <span class="mi">48</span>
-<span class="vg">nchnls</span>	<span class="o">=</span>  <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w">	</span><span class="o">=</span><span class="w">  </span><span class="mi">48000</span><span class="w">
+</span><span class="vg">kr</span><span class="w">	</span><span class="o">=</span><span class="w">  </span><span class="mi">1000</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w">   </span><span class="o">=</span><span class="w">  </span><span class="mi">48</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w">	</span><span class="o">=</span><span class="w">  </span><span class="mi">1</span><span class="w">
 
-<span class="cm">/* Bartlett window */</span>
-i<span class="n">tmp</span>	<span class="nb">ftgen</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">16384</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span>
-<span class="cm">/* sawtooth wave */</span>
-i<span class="n">tmp</span>	<span class="nb">ftgen</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">16384</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">16384</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span>
-<span class="cm">/* sine */</span>
-i<span class="n">tmp</span>	<span class="nb">ftgen</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>
-<span class="cm">/* window for "soft sync" with 1/32 overlap */</span>
-i<span class="n">tmp</span>	<span class="nb">ftgen</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">16384</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7936</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">7936</span><span class="p">,</span> <span class="mi">0</span>
-<span class="cm">/* generate bandlimited sawtooth waves */</span>
-i<span class="n">tmp</span>	<span class="nb">ftgen</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4096</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2048</span>
-i<span class="n">cnt</span>	<span class="o">=</span>  <span class="mi">0</span>
-<span class="nl">loop01</span><span class="p">:</span>
-<span class="c1">; 100 tables for 8 octaves from 30 Hz</span>
-i<span class="n">frq</span>	<span class="o">=</span>  <span class="mi">30</span> <span class="o">*</span> <span class="nb">exp</span><span class="p">(</span><span class="nb">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">*</span> i<span class="n">cnt</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span>
-i<span class="n">tmp</span>	<span class="nb">ftgen</span> i<span class="n">cnt</span> <span class="o">+</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4096</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="vg">sr</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> i<span class="n">frq</span><span class="p">)</span>
-i<span class="n">cnt</span>	<span class="o">=</span>  i<span class="n">cnt</span> <span class="o">+</span> <span class="mi">1</span>
-	<span class="k">if</span> <span class="p">(</span>i<span class="n">cnt</span> <span class="o">&lt;</span> <span class="mf">99.5</span><span class="p">)</span> <span class="k">igoto</span> <span class="nl">loop01</span>
-<span class="cm">/* convert frequency to table number */</span>
-<span class="cp">#define</span> <span class="cp">FRQ2FNUM</span><span class="p">(</span><span class="cp">xout</span><span class="p">'</span><span class="cp">xcps</span><span class="p">'</span><span class="cp">xbsfn</span><span class="p">)</span> <span class="p">#</span><span class="cp">
+</span><span class="cm">/* Bartlett window */</span><span class="w">
+</span>i<span class="n">tmp</span><span class="w">	</span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">16384</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="cm">/* sawtooth wave */</span><span class="w">
+</span>i<span class="n">tmp</span><span class="w">	</span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">16384</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">16384</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w">
+</span><span class="cm">/* sine */</span><span class="w">
+</span>i<span class="n">tmp</span><span class="w">	</span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="cm">/* window for "soft sync" with 1/32 overlap */</span><span class="w">
+</span>i<span class="n">tmp</span><span class="w">	</span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">16384</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">256</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">7936</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">256</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">7936</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="cm">/* generate bandlimited sawtooth waves */</span><span class="w">
+</span>i<span class="n">tmp</span><span class="w">	</span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">4096</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2048</span><span class="w">
+</span>i<span class="n">cnt</span><span class="w">	</span><span class="o">=</span><span class="w">  </span><span class="mi">0</span><span class="w">
+</span><span class="nl">loop01</span><span class="p">:</span><span class="w">
+</span><span class="c1">; 100 tables for 8 octaves from 30 Hz</span><span class="w">
+</span>i<span class="n">frq</span><span class="w">	</span><span class="o">=</span><span class="w">  </span><span class="mi">30</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="nb">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>i<span class="n">cnt</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span><span class="w">
+</span>i<span class="n">tmp</span><span class="w">	</span><span class="nb">ftgen</span><span class="w"> </span>i<span class="n">cnt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">4096</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="vg">sr</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>i<span class="n">frq</span><span class="p">)</span><span class="w">
+</span>i<span class="n">cnt</span><span class="w">	</span><span class="o">=</span><span class="w">  </span>i<span class="n">cnt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w">
+	</span><span class="k">if</span><span class="w"> </span><span class="p">(</span>i<span class="n">cnt</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">99.5</span><span class="p">)</span><span class="w"> </span><span class="k">igoto</span><span class="w"> </span><span class="nl">loop01</span><span class="w">
+</span><span class="cm">/* convert frequency to table number */</span><span class="w">
+</span><span class="cp">#define</span><span class="w"> </span><span class="cp">FRQ2FNUM</span><span class="p">(</span><span class="cp">xout</span><span class="p">'</span><span class="cp">xcps</span><span class="p">'</span><span class="cp">xbsfn</span><span class="p">)</span><span class="w"> </span><span class="p">#</span><span class="cp">
 
 $xout	=  int(($xbsfn) + 0.5 + (100 / 8) * log(($xcps) / 30) / log(2))
 $xout	limit $xout, $xbsfn, $xbsfn + 99
 
-</span><span class="p">#</span>
+</span><span class="p">#</span><span class="w">
 
-<span class="cm">/* instr 1: pulse width modulated grains */</span>
+</span><span class="cm">/* instr 1: pulse width modulated grains */</span><span class="w">
 
-	<span class="kd">instr</span> <span class="nf">1</span>
+	</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
 
-k<span class="n">frq</span>	<span class="o">=</span>  <span class="mf">523.25</span>		<span class="c1">; frequency</span>
-<span class="cp">$FRQ2FNUM</span><span class="p">(</span><span class="cp">kfnum</span><span class="p">'</span><span class="cp">kfrq</span><span class="p">'</span><span class="cp">100</span><span class="p">)</span>	<span class="c1">; table number</span>
-k<span class="n">fmd</span>	<span class="o">=</span>  k<span class="n">frq</span> <span class="o">*</span> <span class="mf">0.02</span>		<span class="c1">; random variation in frequency</span>
-k<span class="n">gdur</span>	<span class="o">=</span>  <span class="mf">0.2</span>			<span class="c1">; grain duration</span>
-k<span class="n">dens</span>	<span class="o">=</span>  <span class="mi">200</span>			<span class="c1">; density</span>
-i<span class="n">seed</span>	<span class="o">=</span>  <span class="mi">1</span>			<span class="c1">; random seed</span>
+</span>k<span class="n">frq</span><span class="w">	</span><span class="o">=</span><span class="w">  </span><span class="mf">523.25</span><span class="w">		</span><span class="c1">; frequency</span><span class="w">
+</span><span class="cp">$FRQ2FNUM</span><span class="p">(</span><span class="cp">kfnum</span><span class="p">'</span><span class="cp">kfrq</span><span class="p">'</span><span class="cp">100</span><span class="p">)</span><span class="w">	</span><span class="c1">; table number</span><span class="w">
+</span>k<span class="n">fmd</span><span class="w">	</span><span class="o">=</span><span class="w">  </span>k<span class="n">frq</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.02</span><span class="w">		</span><span class="c1">; random variation in frequency</span><span class="w">
+</span>k<span class="n">gdur</span><span class="w">	</span><span class="o">=</span><span class="w">  </span><span class="mf">0.2</span><span class="w">			</span><span class="c1">; grain duration</span><span class="w">
+</span>k<span class="n">dens</span><span class="w">	</span><span class="o">=</span><span class="w">  </span><span class="mi">200</span><span class="w">			</span><span class="c1">; density</span><span class="w">
+</span>i<span class="n">seed</span><span class="w">	</span><span class="o">=</span><span class="w">  </span><span class="mi">1</span><span class="w">			</span><span class="c1">; random seed</span><span class="w">
 
-k<span class="n">phs</span>	<span class="nb">oscili</span> <span class="mf">0.45</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span>	<span class="c1">; phase</span>
+</span>k<span class="n">phs</span><span class="w">	</span><span class="nb">oscili</span><span class="w"> </span><span class="mf">0.45</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="w">	</span><span class="c1">; phase</span><span class="w">
 
-a<span class="n">1</span>	<span class="nb">grain3</span>	k<span class="n">frq</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> k<span class="n">fmd</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> k<span class="n">gdur</span><span class="p">,</span> k<span class="n">dens</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span>		<span class="w">\</span>
-		k<span class="n">fnum</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> i<span class="n">seed</span><span class="p">,</span> <span class="mi">2</span>
-a<span class="n">2</span>	<span class="nb">grain3</span>	k<span class="n">frq</span><span class="p">,</span> <span class="mf">0.5</span> <span class="o">+</span> k<span class="n">phs</span><span class="p">,</span> k<span class="n">fmd</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> k<span class="n">gdur</span><span class="p">,</span> k<span class="n">dens</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span>	<span class="w">\</span>
-		k<span class="n">fnum</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> i<span class="n">seed</span><span class="p">,</span> <span class="mi">2</span>
+</span>a<span class="n">1</span><span class="w">	</span><span class="nb">grain3</span><span class="w">	</span>k<span class="n">frq</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span>k<span class="n">fmd</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span>k<span class="n">gdur</span><span class="p">,</span><span class="w"> </span>k<span class="n">dens</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">		</span>\<span class="w">
+		</span>k<span class="n">fnum</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span>i<span class="n">seed</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span>a<span class="n">2</span><span class="w">	</span><span class="nb">grain3</span><span class="w">	</span>k<span class="n">frq</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>k<span class="n">phs</span><span class="p">,</span><span class="w"> </span>k<span class="n">fmd</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span>k<span class="n">gdur</span><span class="p">,</span><span class="w"> </span>k<span class="n">dens</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">	</span>\<span class="w">
+		</span>k<span class="n">fnum</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span>i<span class="n">seed</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">
 
-<span class="c1">; de-click</span>
-a<span class="n">env</span>	<span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="vi">p3</span> <span class="o">-</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span>
+</span><span class="c1">; de-click</span><span class="w">
+</span>a<span class="n">env</span><span class="w">	</span><span class="nb">linseg</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.04</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">
 
-	<span class="nb">out</span> a<span class="n">env</span> <span class="o">*</span> <span class="mi">2250</span> <span class="o">*</span> <span class="p">(</span>a<span class="n">1</span> <span class="o">-</span> a<span class="n">2</span><span class="p">)</span>
+	</span><span class="nb">out</span><span class="w"> </span>a<span class="n">env</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2250</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span>a<span class="n">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span>a<span class="n">2</span><span class="p">)</span><span class="w">
 
-	<span class="kd">endin</span>
+	</span><span class="kd">endin</span><span class="w">
 
-<span class="cm">/* instr 2: phase variation */</span>
+</span><span class="cm">/* instr 2: phase variation */</span><span class="w">
 
-	<span class="kd">instr</span> <span class="nf">2</span>
+	</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">
 
-k<span class="n">frq</span>	<span class="o">=</span>  <span class="mi">220</span>			<span class="c1">; frequency</span>
-<span class="cp">$FRQ2FNUM</span><span class="p">(</span><span class="cp">kfnum</span><span class="p">'</span><span class="cp">kfrq</span><span class="p">'</span><span class="cp">100</span><span class="p">)</span>	<span class="c1">; table number</span>
-k<span class="n">gdur</span>	<span class="o">=</span>  <span class="mf">0.2</span>			<span class="c1">; grain duration</span>
-k<span class="n">dens</span>	<span class="o">=</span>  <span class="mi">200</span>			<span class="c1">; density</span>
-i<span class="n">seed</span>	<span class="o">=</span>  <span class="mi">2</span>			<span class="c1">; random seed</span>
+</span>k<span class="n">frq</span><span class="w">	</span><span class="o">=</span><span class="w">  </span><span class="mi">220</span><span class="w">			</span><span class="c1">; frequency</span><span class="w">
+</span><span class="cp">$FRQ2FNUM</span><span class="p">(</span><span class="cp">kfnum</span><span class="p">'</span><span class="cp">kfrq</span><span class="p">'</span><span class="cp">100</span><span class="p">)</span><span class="w">	</span><span class="c1">; table number</span><span class="w">
+</span>k<span class="n">gdur</span><span class="w">	</span><span class="o">=</span><span class="w">  </span><span class="mf">0.2</span><span class="w">			</span><span class="c1">; grain duration</span><span class="w">
+</span>k<span class="n">dens</span><span class="w">	</span><span class="o">=</span><span class="w">  </span><span class="mi">200</span><span class="w">			</span><span class="c1">; density</span><span class="w">
+</span>i<span class="n">seed</span><span class="w">	</span><span class="o">=</span><span class="w">  </span><span class="mi">2</span><span class="w">			</span><span class="c1">; random seed</span><span class="w">
 
-k<span class="n">prdst</span>	<span class="nb">expon</span> <span class="mf">0.5</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mf">0.02</span>	<span class="c1">; distribution</span>
+</span>k<span class="n">prdst</span><span class="w">	</span><span class="nb">expon</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mf">0.02</span><span class="w">	</span><span class="c1">; distribution</span><span class="w">
 
-a<span class="n">1</span>	<span class="nb">grain3</span>	k<span class="n">frq</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> k<span class="n">gdur</span><span class="p">,</span> k<span class="n">dens</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span>		<span class="w">\</span>
-		k<span class="n">fnum</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span>k<span class="n">prdst</span><span class="p">,</span> i<span class="n">seed</span><span class="p">,</span> <span class="mi">64</span>
+</span>a<span class="n">1</span><span class="w">	</span><span class="nb">grain3</span><span class="w">	</span>k<span class="n">frq</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span>k<span class="n">gdur</span><span class="p">,</span><span class="w"> </span>k<span class="n">dens</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">		</span>\<span class="w">
+		</span>k<span class="n">fnum</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span>k<span class="n">prdst</span><span class="p">,</span><span class="w"> </span>i<span class="n">seed</span><span class="p">,</span><span class="w"> </span><span class="mi">64</span><span class="w">
 
-<span class="c1">; de-click</span>
-a<span class="n">env</span>	<span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="vi">p3</span> <span class="o">-</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span>
+</span><span class="c1">; de-click</span><span class="w">
+</span>a<span class="n">env</span><span class="w">	</span><span class="nb">linseg</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.04</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">
 
-	<span class="nb">out</span> a<span class="n">env</span> <span class="o">*</span> <span class="mi">1500</span> <span class="o">*</span> a<span class="n">1</span>
+	</span><span class="nb">out</span><span class="w"> </span>a<span class="n">env</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1500</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>a<span class="n">1</span><span class="w">
 
-	<span class="kd">endin</span>
+	</span><span class="kd">endin</span><span class="w">
 
-<span class="cm">/* instr 3: "soft sync" */</span>
+</span><span class="cm">/* instr 3: "soft sync" */</span><span class="w">
 
-	<span class="kd">instr</span> <span class="nf">3</span>
+	</span><span class="kd">instr</span><span class="w"> </span><span class="nf">3</span><span class="w">
 
-k<span class="n">dens</span>	<span class="o">=</span>  <span class="mf">130.8</span>		<span class="c1">; base frequency</span>
-k<span class="n">gdur</span>	<span class="o">=</span>  <span class="mi">2</span> <span class="o">/</span> k<span class="n">dens</span>		<span class="c1">; grain duration</span>
+</span>k<span class="n">dens</span><span class="w">	</span><span class="o">=</span><span class="w">  </span><span class="mf">130.8</span><span class="w">		</span><span class="c1">; base frequency</span><span class="w">
+</span>k<span class="n">gdur</span><span class="w">	</span><span class="o">=</span><span class="w">  </span><span class="mi">2</span><span class="w"> </span><span class="o">/</span><span class="w"> </span>k<span class="n">dens</span><span class="w">		</span><span class="c1">; grain duration</span><span class="w">
 
-k<span class="n">frq</span>	<span class="nb">expon</span> <span class="mi">880</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">220</span>	<span class="c1">; oscillator frequency</span>
-<span class="cp">$FRQ2FNUM</span><span class="p">(</span><span class="cp">kfnum</span><span class="p">'</span><span class="cp">kfrq</span><span class="p">'</span><span class="cp">100</span><span class="p">)</span>	<span class="c1">; table number</span>
+</span>k<span class="n">frq</span><span class="w">	</span><span class="nb">expon</span><span class="w"> </span><span class="mi">880</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mi">220</span><span class="w">	</span><span class="c1">; oscillator frequency</span><span class="w">
+</span><span class="cp">$FRQ2FNUM</span><span class="p">(</span><span class="cp">kfnum</span><span class="p">'</span><span class="cp">kfrq</span><span class="p">'</span><span class="cp">100</span><span class="p">)</span><span class="w">	</span><span class="c1">; table number</span><span class="w">
 
-a<span class="n">1</span>	<span class="nb">grain3</span> k<span class="n">frq</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> k<span class="n">gdur</span><span class="p">,</span> k<span class="n">dens</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> k<span class="n">fnum</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span>
-a<span class="n">2</span>	<span class="nb">grain3</span> k<span class="n">frq</span><span class="p">,</span> <span class="mf">0.667</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> k<span class="n">gdur</span><span class="p">,</span> k<span class="n">dens</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> k<span class="n">fnum</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span>
+</span>a<span class="n">1</span><span class="w">	</span><span class="nb">grain3</span><span class="w"> </span>k<span class="n">frq</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span>k<span class="n">gdur</span><span class="p">,</span><span class="w"> </span>k<span class="n">dens</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span>k<span class="n">fnum</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span>a<span class="n">2</span><span class="w">	</span><span class="nb">grain3</span><span class="w"> </span>k<span class="n">frq</span><span class="p">,</span><span class="w"> </span><span class="mf">0.667</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span>k<span class="n">gdur</span><span class="p">,</span><span class="w"> </span>k<span class="n">dens</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span>k<span class="n">fnum</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">
 
-<span class="c1">; de-click</span>
-a<span class="n">env</span>	<span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="vi">p3</span> <span class="o">-</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span>
+</span><span class="c1">; de-click</span><span class="w">
+</span>a<span class="n">env</span><span class="w">	</span><span class="nb">linseg</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.04</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">
 
-	<span class="nb">out</span> a<span class="n">env</span> <span class="o">*</span> <span class="mi">10000</span> <span class="o">*</span> <span class="p">(</span>a<span class="n">1</span> <span class="o">-</span> a<span class="n">2</span><span class="p">)</span>
+	</span><span class="nb">out</span><span class="w"> </span>a<span class="n">env</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">10000</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span>a<span class="n">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span>a<span class="n">2</span><span class="p">)</span><span class="w">
 
-	<span class="kd">endin</span>
-
-
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-
-<span class="nb">t</span> <span class="mi">0</span> <span class="mi">60</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">3</span>
-<span class="nb">i</span> <span class="mi">2</span> <span class="mi">4</span> <span class="mi">3</span>
-<span class="nb">i</span> <span class="mi">3</span> <span class="mi">8</span> <span class="mi">3</span>
-<span class="nb">e</span>
+	</span><span class="kd">endin</span><span class="w">
 
 
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+
+</span><span class="nb">t</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">60</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">3</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">3</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="mi">3</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+
+
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -319,14 +319,14 @@ a<span class="n">env</span>	<span class="nb">linseg</span> <span class="mi">0</s
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm107228"></a>
+        <a id="idm148027"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="grain2.html" title="grain2"><em class="citetitle">grain2</em></a>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm107233"></a>
+        <a id="idm148032"></a>
         <h2>Credits</h2>
         <p>
       </p>

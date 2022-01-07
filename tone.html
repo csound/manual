@@ -39,7 +39,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm248573"></a>
+        <a id="idm351298"></a>
         <h2>Description</h2>
         <p>
       A first-order recursive low-pass filter with variable frequency response.
@@ -80,19 +80,19 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm248593"></a>
+        <a id="idm351318"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ares <span class="command"><strong>tone</strong></span> asig, khp [, iskip]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm248597"></a>
+        <a id="idm351322"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>iskip</em></span> (optional, default=0) -- initial disposition of internal data space. Since filtering incorporates a feedback loop of previous output, the initial status of the storage space used is significant. A zero value will clear the space; a non-zero value will allow previous information to remain. The default value is 0.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm248601"></a>
+        <a id="idm351326"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>ares</em></span> -- the output audio signal.
@@ -108,20 +108,20 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm248612"></a>
+        <a id="idm351337"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the tone opcode. It uses the file <a class="ulink" href="examples/tone.csd" target="_top"><em class="citetitle">tone.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm248617"></a>
+          <a id="idm351342"></a>
           <p class="title">
-            <strong>Example 1109. Example of the tone opcode.</strong>
+            <strong>Example 1110. Example of the tone opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm248624"></a>
+              <a id="idm351349"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -131,36 +131,36 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o tone.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span> 
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span> 
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span> 
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w"> 
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w"> 
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> 
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
 
-a<span class="n">sig</span> <span class="nb">diskin2</span> <span class="s">"beats.wav"</span><span class="p">,</span> <span class="mi">1</span>
-     <span class="nb">outs</span> a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
-<span class="kd">endin</span>
+</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">diskin2</span><span class="w"> </span><span class="s">"beats.wav"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+     </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">2</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">
 
-k<span class="n">ton</span> <span class="nb">line</span> <span class="mi">10000</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">0</span>		<span class="c1">;all the way down to 0 Hz</span>
-a<span class="n">sig</span> <span class="nb">diskin2</span> <span class="s">"beats.wav"</span><span class="p">,</span> <span class="mi">1</span>
-a<span class="n">sig</span> <span class="nb">tone</span> a<span class="n">sig</span><span class="p">,</span> k<span class="n">ton</span>		<span class="c1">;half-power point at 500 Hz</span>
-     <span class="nb">outs</span> a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
-<span class="kd">endin</span>
+</span>k<span class="n">ton</span><span class="w"> </span><span class="nb">line</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">		</span><span class="c1">;all the way down to 0 Hz</span><span class="w">
+</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">diskin2</span><span class="w"> </span><span class="s">"beats.wav"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">tone</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>k<span class="n">ton</span><span class="w">		</span><span class="c1">;half-power point at 500 Hz</span><span class="w">
+     </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">2</span>
-<span class="nb">i</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span>
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="w">
 
-<span class="nb">e</span>
+</span><span class="nb">e</span><span class="w">
 
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -170,7 +170,7 @@ a<span class="n">sig</span> <span class="nb">tone</span> a<span class="n">sig</s
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm248698"></a>
+        <a id="idm351477"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="areson.html" title="areson"><em class="citetitle">areson</em></a>,

@@ -39,26 +39,26 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm24337"></a>
+        <a id="idm28359"></a>
         <h2>Description</h2>
         <p>
       Output is an additive set of individually controlled sinusoids, using an oscillator bank.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm24340"></a>
+        <a id="idm28362"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ares <span class="command"><strong>adsyn</strong></span> kamod, kfmod, ksmod, ifilcod</pre>
       </div>
       <div class="refsect1">
-        <a id="idm24344"></a>
+        <a id="idm28366"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>ifilcod</em></span> --  integer or character-string denoting a control-file derived from analysis of an audio signal. An integer denotes the suffix of a file <span class="emphasis"><em>adsyn.m</em></span> or <span class="emphasis"><em>pvoc.m</em></span>; a character-string (in double quotes) gives a filename, optionally a full pathname. If not fullpath, the file is sought first in the current directory, then in the one given by the environment variable <a class="link" href="OrchDirFiles.html" title="Directories and Files"><em class="citetitle">SADIR</em></a> (if defined). <span class="emphasis"><em>adsyn</em></span> control contains breakpoint amplitude- and frequency-envelope values organized for oscillator resynthesis, while <span class="emphasis"><em>pvoc</em></span> control contains similar data organized for fft resynthesis. Memory usage depends on the size of the files involved, which are read and held entirely in memory during computation but are shared by multiple calls (see also <a class="link" href="lpread.html" title="lpread"><em class="citetitle">lpread</em></a>).
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm24356"></a>
+        <a id="idm28378"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>kamod</em></span> -- amplitude factor of the contributing partials.
@@ -89,21 +89,21 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm24379"></a>
+        <a id="idm28401"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the adsyn opcode. It uses the file <a class="ulink" href="examples/adsyn.csd" target="_top"><em class="citetitle">adsyn.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm24384"></a>
+          <a id="idm28406"></a>
           <p class="title">
             <strong>Example 49. Example of the adsyn opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm24391"></a>
+              <a id="idm28413"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -113,41 +113,41 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o adsyn.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span> <span class="o">=</span>  <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="mi">1</span><span class="w">
 
-<span class="c1">; by Menno Knevel - 2021</span>
+</span><span class="c1">; by Menno Knevel - 2021</span><span class="w">
 
-i<span class="n">res</span> <span class="nb">system_i</span> <span class="mi">1</span><span class="p">,</span><span class="s">{{ hetro -f100 -h100 stereoJungle.wav Jungle.het }}</span> <span class="c1">; start at 100 Hz, harmonics up to 10kHz</span>
+</span>i<span class="n">res</span><span class="w"> </span><span class="nb">system_i</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="s">{{ hetro -f100 -h100 stereoJungle.wav Jungle.het }}</span><span class="w"> </span><span class="c1">; start at 100 Hz, harmonics up to 10kHz</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>         <span class="c1">; play original sample</span>
-a<span class="n">L</span><span class="p">,</span>a<span class="n">R</span>    <span class="nb">diskin</span>  <span class="s">"stereoJungle.wav"</span><span class="p">,</span> <span class="mi">1</span>
-        <span class="nb">outs</span>    a<span class="n">L</span><span class="p">,</span> a<span class="n">R</span>
-<span class="kd">endin</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">         </span><span class="c1">; play original sample</span><span class="w">
+</span>a<span class="n">L</span><span class="p">,</span>a<span class="n">R</span><span class="w">    </span><span class="nb">diskin</span><span class="w">  </span><span class="s">"stereoJungle.wav"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="nb">outs</span><span class="w">    </span>a<span class="n">L</span><span class="p">,</span><span class="w"> </span>a<span class="n">R</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">2</span>
-k<span class="n">amod</span> <span class="o">=</span> <span class="mi">3</span>       <span class="c1">; scale amplitude</span>
-k<span class="n">fmod</span> <span class="o">=</span> <span class="vi">p4</span>
-k<span class="n">smod</span> <span class="o">=</span> <span class="vi">p5</span>
-a<span class="n">sig</span>	<span class="nb">adsyn</span>	k<span class="n">amod</span><span class="p">,</span> k<span class="n">fmod</span><span class="p">,</span> k<span class="n">smod</span><span class="p">,</span> <span class="s">"Jungle.het"</span>
-        <span class="nb">outs</span>	a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
-<span class="kd">endin</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">
+</span>k<span class="n">amod</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w">       </span><span class="c1">; scale amplitude</span><span class="w">
+</span>k<span class="n">fmod</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">p4</span><span class="w">
+</span>k<span class="n">smod</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">p5</span><span class="w">
+</span>a<span class="n">sig</span><span class="w">	</span><span class="nb">adsyn</span><span class="w">	</span>k<span class="n">amod</span><span class="p">,</span><span class="w"> </span>k<span class="n">fmod</span><span class="p">,</span><span class="w"> </span>k<span class="n">smod</span><span class="p">,</span><span class="w"> </span><span class="s">"Jungle.het"</span><span class="w">
+        </span><span class="nb">outs</span><span class="w">	</span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">s</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">7</span>                  <span class="c1">; original sample</span>
-<span class="nb">s</span>
-<span class="c1">;           frqmod speed</span>
-<span class="nb">i</span><span class="mi">2</span> <span class="mi">0</span>  <span class="mi">20</span>      <span class="mi">1</span>    <span class="mf">.2</span>   <span class="c1">; 5 x slower</span>
-<span class="nb">i</span><span class="mi">2</span> <span class="mi">20</span> <span class="mi">5</span>       <span class="mi">2</span>     <span class="mi">1</span>   <span class="c1">; 2 x higher</span>
-<span class="nb">i</span><span class="mi">2</span> <span class="mi">25</span> <span class="mi">15</span>     <span class="mf">.3</span>    <span class="mf">1.5</span>  <span class="c1">; lower &amp; faster</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">s</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">7</span><span class="w">                  </span><span class="c1">; original sample</span><span class="w">
+</span><span class="nb">s</span><span class="w">
+</span><span class="c1">;           frqmod speed</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w">  </span><span class="mi">20</span><span class="w">      </span><span class="mi">1</span><span class="w">    </span><span class="mf">.2</span><span class="w">   </span><span class="c1">; 5 x slower</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mi">5</span><span class="w">       </span><span class="mi">2</span><span class="w">     </span><span class="mi">1</span><span class="w">   </span><span class="c1">; 2 x higher</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">25</span><span class="w"> </span><span class="mi">15</span><span class="w">     </span><span class="mf">.3</span><span class="w">    </span><span class="mf">1.5</span><span class="w">  </span><span class="c1">; lower &amp; faster</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>

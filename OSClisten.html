@@ -39,7 +39,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm163584"></a>
+        <a id="idm228955"></a>
         <h2>Description</h2>
         <p>Plugin opcode in osc.</p>
         <p>
@@ -48,13 +48,13 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm163588"></a>
+        <a id="idm228959"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">kans <span class="command"><strong>OSClisten</strong></span> ihandle, idest, itype [, xdata1, xdata2, ...]</pre>
         <pre class="synopsis">kans, kdata[] <span class="command"><strong>OSClisten</strong></span> ihandle, idest, itype</pre>
       </div>
       <div class="refsect1">
-        <a id="idm163594"></a>
+        <a id="idm228965"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>ihandle</em></span>
@@ -83,7 +83,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm163603"></a>
+        <a id="idm228974"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>kans</em></span> -- set to 1 if a new message was
@@ -115,7 +115,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm163615"></a>
+        <a id="idm228986"></a>
         <h2>Example</h2>
         <p>
       This example shows a pair of floating point numbers being received
@@ -173,7 +173,7 @@ ex:
 
       </p>
         <div class="example">
-          <a id="idm163653"></a>
+          <a id="idm229024"></a>
           <p class="title">
             <strong>Example 689. Example of the OSC opcodes.</strong>
           </p>
@@ -181,7 +181,7 @@ ex:
             <p>The following two .csd files demonstrate the usage of the OSC opcodes in csound. The first file, <a class="ulink" href="examples/OSCmidisend.csd" target="_top"><em class="citetitle">OSCmidisend.csd</em></a>, transforms received real-time MIDI messages into OSC data. The second file, <a class="ulink" href="examples/OSCmidircv.csd" target="_top"><em class="citetitle">OSCmidircv.csd</em></a>, can take these OSC messages, and intrepret them to generate sound from note messages, and store controller values. It will use controller number 7 to control volume. Note that these files are designed to be on the same machine, but if a different host address (in the IPADDRESS macro) is used, they can be separate machines on a network, or connected through the internet.</p>
             <p>CSD file to send OSC messages:</p>
             <div class="refsect1">
-              <a id="idm163661"></a>
+              <a id="idm229032"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -189,42 +189,42 @@ ex:
 <span class="c1">; Audio out   Audio in</span>
 -odac           -iadc    <span class="c1">;;;RT audio I/O</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-  <span class="vg">sr</span>	    <span class="o">=</span>  <span class="mi">44100</span>
-  <span class="vg">ksmps</span>	    <span class="o">=</span>  <span class="mi">128</span>
-  <span class="vg">nchnls</span>    <span class="o">=</span>  <span class="mi">1</span>
+  </span><span class="vg">sr</span><span class="w">	    </span><span class="o">=</span><span class="w">  </span><span class="mi">44100</span><span class="w">
+  </span><span class="vg">ksmps</span><span class="w">	    </span><span class="o">=</span><span class="w">  </span><span class="mi">128</span><span class="w">
+  </span><span class="vg">nchnls</span><span class="w">    </span><span class="o">=</span><span class="w">  </span><span class="mi">1</span><span class="w">
 
-<span class="c1">; Example by David Akbari 2007</span>
-<span class="c1">; Modified by Jonathan Murphy</span>
-<span class="c1">; Use this file to generate OSC events for OSCmidircv.csd</span>
+</span><span class="c1">; Example by David Akbari 2007</span><span class="w">
+</span><span class="c1">; Modified by Jonathan Murphy</span><span class="w">
+</span><span class="c1">; Use this file to generate OSC events for OSCmidircv.csd</span><span class="w">
 
-<span class="cp">#define</span> <span class="cp">IPADDRESS</span>	<span class="p">#</span><span class="cp"> "localhost" </span><span class="p">#</span>
-<span class="cp">#define</span> <span class="cp">PORT</span> 		<span class="p">#</span><span class="cp"> 47120 </span><span class="p">#</span>
+</span><span class="cp">#define</span><span class="w"> </span><span class="cp">IPADDRESS</span><span class="w">	</span><span class="p">#</span><span class="cp"> "localhost" </span><span class="p">#</span><span class="w">
+</span><span class="cp">#define</span><span class="w"> </span><span class="cp">PORT</span><span class="w"> 		</span><span class="p">#</span><span class="cp"> 47120 </span><span class="p">#</span><span class="w">
 
-<span class="nb">turnon</span> <span class="mi">1000</span>
-
-
-    <span class="kd">instr</span>	<span class="nf">1000</span>
-
-  k<span class="n">st</span><span class="p">,</span> k<span class="n">ch</span><span class="p">,</span> k<span class="n">d1</span><span class="p">,</span> k<span class="n">d2</span>  <span class="nb">midiin</span>
-
-  <span class="nb">OSCsend</span>   k<span class="n">st</span><span class="o">+</span>k<span class="n">ch</span><span class="o">+</span>k<span class="n">d1</span><span class="o">+</span>k<span class="n">d2</span><span class="p">,</span> <span class="cp">$IPADDRESS</span><span class="p">,</span> <span class="cp">$PORT</span><span class="p">,</span> <span class="s">"/midi"</span><span class="p">,</span> <span class="s">"iiii"</span><span class="p">,</span> k<span class="n">st</span><span class="p">,</span> k<span class="n">ch</span><span class="p">,</span> k<span class="n">d1</span><span class="p">,</span> k<span class="n">d2</span>
-
-    <span class="kd">endin</span>
+</span><span class="nb">turnon</span><span class="w"> </span><span class="mi">1000</span><span class="w">
 
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">f</span> <span class="mi">0</span> <span class="mi">3600</span>  <span class="c1">;Dummy f-table</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+    </span><span class="kd">instr</span><span class="w">	</span><span class="nf">1000</span><span class="w">
+
+  </span>k<span class="n">st</span><span class="p">,</span><span class="w"> </span>k<span class="n">ch</span><span class="p">,</span><span class="w"> </span>k<span class="n">d1</span><span class="p">,</span><span class="w"> </span>k<span class="n">d2</span><span class="w">  </span><span class="nb">midiin</span><span class="w">
+
+  </span><span class="nb">OSCsend</span><span class="w">   </span>k<span class="n">st</span><span class="o">+</span>k<span class="n">ch</span><span class="o">+</span>k<span class="n">d1</span><span class="o">+</span>k<span class="n">d2</span><span class="p">,</span><span class="w"> </span><span class="cp">$IPADDRESS</span><span class="p">,</span><span class="w"> </span><span class="cp">$PORT</span><span class="p">,</span><span class="w"> </span><span class="s">"/midi"</span><span class="p">,</span><span class="w"> </span><span class="s">"iiii"</span><span class="p">,</span><span class="w"> </span>k<span class="n">st</span><span class="p">,</span><span class="w"> </span>k<span class="n">ch</span><span class="p">,</span><span class="w"> </span>k<span class="n">d1</span><span class="p">,</span><span class="w"> </span>k<span class="n">d2</span><span class="w">
+
+    </span><span class="kd">endin</span><span class="w">
+
+
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">3600</span><span class="w">  </span><span class="c1">;Dummy f-table</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
             <p>CSD file to receive OSC messages:</p>
             <div class="refsect1">
-              <a id="idm163739"></a>
+              <a id="idm229155"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="c1">; network_recv.csd</span>
@@ -233,94 +233,94 @@ ex:
 <span class="c1">; Audio out   Audio in</span>
 -odac           -iadc    <span class="c1">;;;RT audio I/O</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-  <span class="vg">sr</span>	    <span class="o">=</span>  <span class="mi">44100</span>
-  <span class="vg">ksmps</span>	    <span class="o">=</span>  <span class="mi">128</span>
-  <span class="vg">nchnls</span>    <span class="o">=</span>  <span class="mi">1</span>
+  </span><span class="vg">sr</span><span class="w">	    </span><span class="o">=</span><span class="w">  </span><span class="mi">44100</span><span class="w">
+  </span><span class="vg">ksmps</span><span class="w">	    </span><span class="o">=</span><span class="w">  </span><span class="mi">128</span><span class="w">
+  </span><span class="vg">nchnls</span><span class="w">    </span><span class="o">=</span><span class="w">  </span><span class="mi">1</span><span class="w">
 
-<span class="c1">; Example by Jonathan Murphy and Andres Cabrera 2007</span>
-<span class="c1">; Use file OSCmidisend.csd to generate OSC events for this file</span>
+</span><span class="c1">; Example by Jonathan Murphy and Andres Cabrera 2007</span><span class="w">
+</span><span class="c1">; Use file OSCmidisend.csd to generate OSC events for this file</span><span class="w">
 
-  <span class="vg">0dbfs</span>	    <span class="o">=</span>  <span class="mi">1</span>
+  </span><span class="vg">0dbfs</span><span class="w">	    </span><span class="o">=</span><span class="w">  </span><span class="mi">1</span><span class="w">
 
-  gi<span class="n">listen</span>  <span class="nb">OSCinit</span>   <span class="mi">47120</span>
+  </span>gi<span class="n">listen</span><span class="w">  </span><span class="nb">OSCinit</span><span class="w">   </span><span class="mi">47120</span><span class="w">
 
-  gi<span class="n">sin</span>	    <span class="nb">ftgen</span>     <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">16384</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>
-  gi<span class="n">vel</span>	    <span class="nb">ftgen</span>     <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span>
-  gi<span class="n">cc</span>	    <span class="nb">ftgen</span>     <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">100</span>  <span class="c1">;Default all controllers to 100</span>
+  </span>gi<span class="n">sin</span><span class="w">	    </span><span class="nb">ftgen</span><span class="w">     </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">16384</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span>gi<span class="n">vel</span><span class="w">	    </span><span class="nb">ftgen</span><span class="w">     </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span>gi<span class="n">cc</span><span class="w">	    </span><span class="nb">ftgen</span><span class="w">     </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="w">  </span><span class="c1">;Default all controllers to 100</span><span class="w">
  
-<span class="c1">;Define scale tuning</span>
-  gi<span class="n">ji_12</span>   <span class="nb">ftgen</span>     <span class="mi">202</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">16</span><span class="o">/</span><span class="mi">15</span><span class="p">,</span> <span class="mi">9</span><span class="o">/</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span> <span class="w">\</span>
-                               <span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="o">/</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span>
+</span><span class="c1">;Define scale tuning</span><span class="w">
+  </span>gi<span class="n">ji_12</span><span class="w">   </span><span class="nb">ftgen</span><span class="w">     </span><span class="mi">202</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">256</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="o">/</span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="o">/</span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span>\<span class="w">
+                               </span><span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="o">/</span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">
 
-<span class="cp">#define</span> <span class="cp">DEST</span> <span class="p">#</span><span class="cp">"/midi"</span><span class="p">#</span>
-<span class="c1">; Use controller number 7 for volume</span>
-<span class="cp">#define</span> <span class="cp">VOL</span> <span class="p">#</span><span class="cp">7</span><span class="p">#</span>
+</span><span class="cp">#define</span><span class="w"> </span><span class="cp">DEST</span><span class="w"> </span><span class="p">#</span><span class="cp">"/midi"</span><span class="p">#</span><span class="w">
+</span><span class="c1">; Use controller number 7 for volume</span><span class="w">
+</span><span class="cp">#define</span><span class="w"> </span><span class="cp">VOL</span><span class="w"> </span><span class="p">#</span><span class="cp">7</span><span class="p">#</span><span class="w">
 
-<span class="nb">turnon</span> <span class="mi">1000</span>
-
-
-    <span class="kd">instr</span>   <span class="nf">1000</span>
-
-  k<span class="n">st</span>	    <span class="nb">init</span>      <span class="mi">0</span>
-  k<span class="n">ch</span>	    <span class="nb">init</span>      <span class="mi">0</span>
-  k<span class="n">d1</span>	    <span class="nb">init</span>      <span class="mi">0</span>
-  k<span class="n">d2</span>	    <span class="nb">init</span>      <span class="mi">0</span>
-
-<span class="nl">next</span><span class="p">:</span>
-
-  k<span class="n">k</span>	    <span class="nb">OSClisten</span>	gi<span class="n">listen</span><span class="p">,</span> <span class="cp">$DEST</span><span class="p">,</span> <span class="s">"iiii"</span><span class="p">,</span> k<span class="n">st</span><span class="p">,</span> k<span class="n">ch</span><span class="p">,</span> k<span class="n">d1</span><span class="p">,</span> k<span class="n">d2</span>
-
-<span class="k">if</span> <span class="p">(</span>k<span class="n">k</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">goto</span> <span class="nl">done</span>
-
-<span class="nb">printks</span> <span class="s">"kst = </span><span class="si">%i</span><span class="s">, kch = </span><span class="si">%i</span><span class="s">, kd1 = </span><span class="si">%i</span><span class="s">, kd2 = </span><span class="si">%i</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span> <span class="w">\</span>
-         <span class="mi">0</span><span class="p">,</span> k<span class="n">st</span><span class="p">,</span> k<span class="n">ch</span><span class="p">,</span> k<span class="n">d1</span><span class="p">,</span> k<span class="n">d2</span>
-
-<span class="k">if</span> <span class="p">(</span>k<span class="n">st</span> <span class="o">==</span> <span class="mi">176</span><span class="p">)</span> <span class="k">then</span>
-<span class="c1">;Store controller information in a table</span>
-	    <span class="nb">tablew</span>    k<span class="n">d2</span><span class="p">,</span> k<span class="n">d1</span><span class="p">,</span> gi<span class="n">cc</span>
-<span class="k">endif</span>  
-
-<span class="k">if</span> <span class="p">(</span>k<span class="n">st</span> <span class="o">==</span> <span class="mi">144</span><span class="p">)</span> <span class="k">then</span>
-<span class="c1">;Process noteon and noteoff messages.</span>
-  k<span class="n">key</span>	    <span class="o">=</span>  k<span class="n">d1</span>
-  k<span class="n">vel</span>	    <span class="o">=</span>  k<span class="n">d2</span>
-  k<span class="n">cps</span>	    <span class="nb">cpstun</span>    k<span class="n">vel</span><span class="p">,</span> k<span class="n">key</span><span class="p">,</span> gi<span class="n">ji_12</span>
-  k<span class="n">amp</span>	    <span class="o">=</span>  k<span class="n">vel</span><span class="o">/</span><span class="mi">127</span>
-
-<span class="k">if</span> <span class="p">(</span>k<span class="n">vel</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
-	    <span class="nb">turnoff2</span>  <span class="mi">1001</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span>
-<span class="k">elseif</span> <span class="p">(</span>k<span class="n">vel</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
-	    <span class="nb">event</span>     <span class="s">"i"</span><span class="p">,</span> <span class="mi">1001</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> k<span class="n">cps</span><span class="p">,</span> k<span class="n">amp</span>
-<span class="k">endif</span>
-<span class="k">endif</span>
-
-	<span class="k">kgoto</span>	<span class="nl">next</span>  <span class="c1">;Process all events in queue</span>
-
-<span class="nl">done</span><span class="p">:</span>
-    <span class="kd">endin</span>
+</span><span class="nb">turnon</span><span class="w"> </span><span class="mi">1000</span><span class="w">
 
 
+    </span><span class="kd">instr</span><span class="w">   </span><span class="nf">1000</span><span class="w">
 
-    <span class="kd">instr</span> <span class="nf">1001</span>   <span class="c1">;Simple instrument</span>
+  </span>k<span class="n">st</span><span class="w">	    </span><span class="nb">init</span><span class="w">      </span><span class="mi">0</span><span class="w">
+  </span>k<span class="n">ch</span><span class="w">	    </span><span class="nb">init</span><span class="w">      </span><span class="mi">0</span><span class="w">
+  </span>k<span class="n">d1</span><span class="w">	    </span><span class="nb">init</span><span class="w">      </span><span class="mi">0</span><span class="w">
+  </span>k<span class="n">d2</span><span class="w">	    </span><span class="nb">init</span><span class="w">      </span><span class="mi">0</span><span class="w">
 
-  i<span class="n">cps</span>	    <span class="nb">init</span>      <span class="vi">p4</span>
-  k<span class="n">vol</span>	    <span class="nb">table</span>     <span class="cp">$VOL</span><span class="p">,</span> gi<span class="n">cc</span>  <span class="c1">;Read MIDI volume from controller table</span>
-  k<span class="n">vol</span>	    <span class="o">=</span>  k<span class="n">vol</span><span class="o">/</span><span class="mi">127</span>
+</span><span class="nl">next</span><span class="p">:</span><span class="w">
 
-  a<span class="n">env</span>     <span class="nb">linsegr</span>    <span class="mi">0</span><span class="p">,</span> <span class="mf">.003</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="vi">p5</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mi">0</span>
-  a<span class="n">osc</span>	    <span class="nb">oscil</span>     a<span class="n">env</span><span class="p">,</span> i<span class="n">cps</span><span class="p">,</span> gi<span class="n">sin</span>
+  </span>k<span class="n">k</span><span class="w">	    </span><span class="nb">OSClisten</span><span class="w">	</span>gi<span class="n">listen</span><span class="p">,</span><span class="w"> </span><span class="cp">$DEST</span><span class="p">,</span><span class="w"> </span><span class="s">"iiii"</span><span class="p">,</span><span class="w"> </span>k<span class="n">st</span><span class="p">,</span><span class="w"> </span>k<span class="n">ch</span><span class="p">,</span><span class="w"> </span>k<span class="n">d1</span><span class="p">,</span><span class="w"> </span>k<span class="n">d2</span><span class="w">
 
-	    <span class="nb">out</span>	      a<span class="n">osc</span> <span class="o">*</span> k<span class="n">vol</span>
-    <span class="kd">endin</span>
+</span><span class="k">if</span><span class="w"> </span><span class="p">(</span>k<span class="n">k</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="nl">done</span><span class="w">
+
+</span><span class="nb">printks</span><span class="w"> </span><span class="s">"kst = </span><span class="si">%i</span><span class="s">, kch = </span><span class="si">%i</span><span class="s">, kd1 = </span><span class="si">%i</span><span class="s">, kd2 = </span><span class="si">%i</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span>\<span class="w">
+         </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span>k<span class="n">st</span><span class="p">,</span><span class="w"> </span>k<span class="n">ch</span><span class="p">,</span><span class="w"> </span>k<span class="n">d1</span><span class="p">,</span><span class="w"> </span>k<span class="n">d2</span><span class="w">
+
+</span><span class="k">if</span><span class="w"> </span><span class="p">(</span>k<span class="n">st</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">176</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w">
+</span><span class="c1">;Store controller information in a table</span><span class="w">
+	    </span><span class="nb">tablew</span><span class="w">    </span>k<span class="n">d2</span><span class="p">,</span><span class="w"> </span>k<span class="n">d1</span><span class="p">,</span><span class="w"> </span>gi<span class="n">cc</span><span class="w">
+</span><span class="k">endif</span><span class="w">  
+
+</span><span class="k">if</span><span class="w"> </span><span class="p">(</span>k<span class="n">st</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">144</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w">
+</span><span class="c1">;Process noteon and noteoff messages.</span><span class="w">
+  </span>k<span class="n">key</span><span class="w">	    </span><span class="o">=</span><span class="w">  </span>k<span class="n">d1</span><span class="w">
+  </span>k<span class="n">vel</span><span class="w">	    </span><span class="o">=</span><span class="w">  </span>k<span class="n">d2</span><span class="w">
+  </span>k<span class="n">cps</span><span class="w">	    </span><span class="nb">cpstun</span><span class="w">    </span>k<span class="n">vel</span><span class="p">,</span><span class="w"> </span>k<span class="n">key</span><span class="p">,</span><span class="w"> </span>gi<span class="n">ji_12</span><span class="w">
+  </span>k<span class="n">amp</span><span class="w">	    </span><span class="o">=</span><span class="w">  </span>k<span class="n">vel</span><span class="o">/</span><span class="mi">127</span><span class="w">
+
+</span><span class="k">if</span><span class="w"> </span><span class="p">(</span>k<span class="n">vel</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w">
+	    </span><span class="nb">turnoff2</span><span class="w">  </span><span class="mi">1001</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="k">elseif</span><span class="w"> </span><span class="p">(</span>k<span class="n">vel</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w">
+	    </span><span class="nb">event</span><span class="w">     </span><span class="s">"i"</span><span class="p">,</span><span class="w"> </span><span class="mi">1001</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>k<span class="n">cps</span><span class="p">,</span><span class="w"> </span>k<span class="n">amp</span><span class="w">
+</span><span class="k">endif</span><span class="w">
+</span><span class="k">endif</span><span class="w">
+
+	</span><span class="k">kgoto</span><span class="w">	</span><span class="nl">next</span><span class="w">  </span><span class="c1">;Process all events in queue</span><span class="w">
+
+</span><span class="nl">done</span><span class="p">:</span><span class="w">
+    </span><span class="kd">endin</span><span class="w">
 
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">f</span> <span class="mi">0</span> <span class="mi">3600</span>  <span class="c1">;Dummy f-table</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+
+    </span><span class="kd">instr</span><span class="w"> </span><span class="nf">1001</span><span class="w">   </span><span class="c1">;Simple instrument</span><span class="w">
+
+  </span>i<span class="n">cps</span><span class="w">	    </span><span class="nb">init</span><span class="w">      </span><span class="vi">p4</span><span class="w">
+  </span>k<span class="n">vol</span><span class="w">	    </span><span class="nb">table</span><span class="w">     </span><span class="cp">$VOL</span><span class="p">,</span><span class="w"> </span>gi<span class="n">cc</span><span class="w">  </span><span class="c1">;Read MIDI volume from controller table</span><span class="w">
+  </span>k<span class="n">vol</span><span class="w">	    </span><span class="o">=</span><span class="w">  </span>k<span class="n">vol</span><span class="o">/</span><span class="mi">127</span><span class="w">
+
+  </span>a<span class="n">env</span><span class="w">     </span><span class="nb">linsegr</span><span class="w">    </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">.003</span><span class="p">,</span><span class="w"> </span><span class="vi">p5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.03</span><span class="p">,</span><span class="w"> </span><span class="vi">p5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span>a<span class="n">osc</span><span class="w">	    </span><span class="nb">oscil</span><span class="w">     </span>a<span class="n">env</span><span class="p">,</span><span class="w"> </span>i<span class="n">cps</span><span class="p">,</span><span class="w"> </span>gi<span class="n">sin</span><span class="w">
+
+	    </span><span class="nb">out</span><span class="w">	      </span>a<span class="n">osc</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>k<span class="n">vol</span><span class="w">
+    </span><span class="kd">endin</span><span class="w">
+
+
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">3600</span><span class="w">  </span><span class="c1">;Dummy f-table</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -330,7 +330,7 @@ ex:
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm164085"></a>
+        <a id="idm229713"></a>
         <h2>See Also</h2>
         <p>
         <a class="link" href="OSCsend.html" title="OSCsend"><em class="citetitle">OSCsend</em></a>,
@@ -339,7 +339,7 @@ ex:
         <p> More information on this opcode: <a class="ulink" href="http://www.youtube.com/watch?v=JX1C3TqP_9Y" target="_top"><em class="citetitle">http://www.youtube.com/watch?v=JX1C3TqP_9Y</em></a>  , made by Andrés Cabrera </p>
       </div>
       <div class="refsect1">
-        <a id="idm164095"></a>
+        <a id="idm229723"></a>
         <h2>Credits</h2>
         <p>
       </p>

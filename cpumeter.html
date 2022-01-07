@@ -39,7 +39,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm51429"></a>
+        <a id="idm67868"></a>
         <h2>Description</h2>
         <p>
       Reports the usage of cpu either total or per core to monitor how
@@ -51,12 +51,12 @@
      </p>
       </div>
       <div class="refsect1">
-        <a id="idm51433"></a>
+        <a id="idm67872"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ktot[,kcpu1, kcpu2,...]<span class="command"><strong>cpumeter</strong></span> ifreq</pre>
       </div>
       <div class="refsect1">
-        <a id="idm51437"></a>
+        <a id="idm67876"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>ifreq</em></span> is the time in seconds that the meter
@@ -65,7 +65,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm51441"></a>
+        <a id="idm67880"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>cpumeter</em></span> reads the total idle time in the
@@ -75,21 +75,21 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm51447"></a>
+        <a id="idm67886"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the cpumeter opcode. It uses the file <a class="ulink" href="examples/cpumeter.csd" target="_top"><em class="citetitle">cpumeter.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm51452"></a>
+          <a id="idm67891"></a>
           <p class="title">
             <strong>Example 187. Example of the cpumeter opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm51459"></a>
+              <a id="idm67898"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -99,39 +99,39 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o cpumeter.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
 
-<span class="kd">instr</span> <span class="nf">1</span> <span class="c1">;cpu metering; stop when too large</span>
-k<span class="n">0</span>   <span class="nb">cpumeter</span>   <span class="mf">0.1</span>
-     <span class="nb">printk2</span> k<span class="n">0</span>
-     <span class="k">if</span> k<span class="n">0</span><span class="o">&gt;</span><span class="mi">70</span> <span class="k">then</span>
-       <span class="nb">event</span> <span class="s">"i"</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span>
-     <span class="k">endif</span>
-<span class="kd">endin</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w"> </span><span class="c1">;cpu metering; stop when too large</span><span class="w">
+</span>k<span class="n">0</span><span class="w">   </span><span class="nb">cpumeter</span><span class="w">   </span><span class="mf">0.1</span><span class="w">
+     </span><span class="nb">printk2</span><span class="w"> </span>k<span class="n">0</span><span class="w">
+     </span><span class="k">if</span><span class="w"> </span>k<span class="n">0</span><span class="o">&gt;</span><span class="mi">70</span><span class="w"> </span><span class="k">then</span><span class="w">
+       </span><span class="nb">event</span><span class="w"> </span><span class="s">"i"</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+     </span><span class="k">endif</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">2</span>
-     <span class="nb">event_i</span>    <span class="s">"i"</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span>
-     a<span class="n">sig</span> <span class="nb">oscil</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">440</span><span class="p">,</span> <span class="mi">1</span>
-     <span class="nb">out</span> a<span class="n">sig</span>
-<span class="kd">endin</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">
+     </span><span class="nb">event_i</span><span class="w">    </span><span class="s">"i"</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="w">
+     </span>a<span class="n">sig</span><span class="w"> </span><span class="nb">oscil</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w"> </span><span class="mi">440</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+     </span><span class="nb">out</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
  
-<span class="kd">instr</span> <span class="nf">3</span>
-     <span class="nb">exitnow</span>
-<span class="kd">endin</span>
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">f</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">32768</span> <span class="mi">10</span> <span class="mi">1</span>	<span class="c1">; sine wave</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">3</span><span class="w">
+     </span><span class="nb">exitnow</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">32768</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w">	</span><span class="c1">; sine wave</span><span class="w">
 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1000</span>
-<span class="nb">i</span> <span class="mi">2</span> <span class="mi">0</span> <span class="mi">1000</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1000</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1000</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -141,7 +141,7 @@ k<span class="n">0</span>   <span class="nb">cpumeter</span>   <span class="mf">
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm51549"></a>
+        <a id="idm68055"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="maxalloc.html" title="maxalloc"><em class="citetitle">maxalloc</em></a>, <a class="link" href="prealloc.html" title="prealloc"><em class="citetitle">prealloc</em></a>,
@@ -149,7 +149,7 @@ k<span class="n">0</span>   <span class="nb">cpumeter</span>   <span class="mf">
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm51558"></a>
+        <a id="idm68064"></a>
         <h2>Credits</h2>
         <p>
       </p>

@@ -39,19 +39,19 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm96104"></a>
+        <a id="idm131840"></a>
         <h2>Description</h2>
         <p>
       <span class="emphasis"><em>foutk</em></span> outputs <span class="emphasis"><em>N</em></span> k-rate signals to a specified file of <span class="emphasis"><em>N</em></span> channels.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm96110"></a>
+        <a id="idm131846"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>foutk</strong></span> ifilename, iformat, kout1 [, kout2, kout3,....,koutN]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm96114"></a>
+        <a id="idm131850"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>ifilename</em></span> -- the output file's name (in double-quotes).
@@ -97,7 +97,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm96141"></a>
+        <a id="idm131877"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>kout1,...koutN</em></span> -- control-rate signals to be written to the file. The expected range of the signals is determined by the selected sample format.
@@ -110,20 +110,20 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm96160"></a>
+        <a id="idm131896"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the foutk opcode. It uses the file <a class="ulink" href="examples/foutk.csd" target="_top"><em class="citetitle">foutk.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm96165"></a>
+          <a id="idm131901"></a>
           <p class="title">
             <strong>Example 374. Example of the foutk opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm96172"></a>
+              <a id="idm131908"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -133,63 +133,63 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o foutk.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="c1">; by Stefano Cucchi - 2020</span>
+</span><span class="c1">; by Stefano Cucchi - 2020</span><span class="w">
 
-<span class="c1">; Sing in your microphone for 10''</span>
-<span class="c1">; Estimated pitch &amp; amplitude are written on 2 files "amp" 6 "pitch"</span>
-<span class="c1">; After 10'' a sawtooth is played with these values</span>
-
-
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="c1">; Sing in your microphone for 10''</span><span class="w">
+</span><span class="c1">; Estimated pitch &amp; amplitude are written on 2 files "amp" 6 "pitch"</span><span class="w">
+</span><span class="c1">; After 10'' a sawtooth is played with these values</span><span class="w">
 
 
-<span class="kd">instr</span> <span class="nf">1</span>	<span class="c1">;use pitch</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-i<span class="n">updte</span> <span class="o">=</span> <span class="mf">0.001</span>
-i<span class="n">lo</span> <span class="o">=</span> <span class="mi">6</span>
-i<span class="n">hi</span> <span class="o">=</span> <span class="mi">10</span>
-i<span class="n">dbthresh</span> <span class="o">=</span> <span class="mi">10</span>
-i<span class="n">frqs</span> <span class="o">=</span> <span class="mi">24</span>
-i<span class="n">conf</span> <span class="o">=</span> <span class="mi">10</span>
-i<span class="n">strt</span> <span class="o">=</span> <span class="mi">8</span>
 
-a<span class="n">sig1</span><span class="p">,</span> a<span class="n">sig2</span> <span class="nb">inch</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>
-k<span class="n">oct</span><span class="p">,</span> k<span class="n">amp</span> <span class="nb">pitch</span> a<span class="n">sig1</span><span class="p">,</span> i<span class="n">updte</span><span class="p">,</span> i<span class="n">lo</span><span class="p">,</span> i<span class="n">hi</span><span class="p">,</span> i<span class="n">dbthresh</span><span class="p">,</span> i<span class="n">frqs</span><span class="p">,</span> i<span class="n">conf</span><span class="p">,</span> i<span class="n">strt</span> <span class="c1">; pitch &amp; amplitude tracking</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">	</span><span class="c1">;use pitch</span><span class="w">
 
-k<span class="n">cps</span> <span class="o">=</span> <span class="nb">cpsoct</span><span class="p">(</span>k<span class="n">oct</span><span class="p">)</span>
-k<span class="n">amp</span> <span class="o">=</span> k<span class="n">amp</span><span class="o">*</span><span class="mf">0.00002</span>
-<span class="nb">foutk</span> <span class="s">"amp"</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> k<span class="n">amp</span> <span class="c1">; write amplitude values on a file - 32-bit floats without header</span>
-<span class="nb">foutk</span> <span class="s">"pitch"</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> k<span class="n">cps</span> <span class="c1">;  write pitch values on a file - 32-bit floats without header</span>
+</span>i<span class="n">updte</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.001</span><span class="w">
+</span>i<span class="n">lo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="w">
+</span>i<span class="n">hi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span>i<span class="n">dbthresh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span>i<span class="n">frqs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">24</span><span class="w">
+</span>i<span class="n">conf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span>i<span class="n">strt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w">
 
-<span class="kd">endin</span>
+</span>a<span class="n">sig1</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig2</span><span class="w"> </span><span class="nb">inch</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span>k<span class="n">oct</span><span class="p">,</span><span class="w"> </span>k<span class="n">amp</span><span class="w"> </span><span class="nb">pitch</span><span class="w"> </span>a<span class="n">sig1</span><span class="p">,</span><span class="w"> </span>i<span class="n">updte</span><span class="p">,</span><span class="w"> </span>i<span class="n">lo</span><span class="p">,</span><span class="w"> </span>i<span class="n">hi</span><span class="p">,</span><span class="w"> </span>i<span class="n">dbthresh</span><span class="p">,</span><span class="w"> </span>i<span class="n">frqs</span><span class="p">,</span><span class="w"> </span>i<span class="n">conf</span><span class="p">,</span><span class="w"> </span>i<span class="n">strt</span><span class="w"> </span><span class="c1">; pitch &amp; amplitude tracking</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">2</span>
+</span>k<span class="n">cps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">cpsoct</span><span class="p">(</span>k<span class="n">oct</span><span class="p">)</span><span class="w">
+</span>k<span class="n">amp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>k<span class="n">amp</span><span class="o">*</span><span class="mf">0.00002</span><span class="w">
+</span><span class="nb">foutk</span><span class="w"> </span><span class="s">"amp"</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span>k<span class="n">amp</span><span class="w"> </span><span class="c1">; write amplitude values on a file - 32-bit floats without header</span><span class="w">
+</span><span class="nb">foutk</span><span class="w"> </span><span class="s">"pitch"</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span>k<span class="n">cps</span><span class="w"> </span><span class="c1">;  write pitch values on a file - 32-bit floats without header</span><span class="w">
 
-k<span class="n">amp</span> <span class="nb">readk</span> <span class="s">"amp"</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="vi">p4</span> <span class="c1">; read amplitude values fro the file</span>
-k<span class="n">cps</span> <span class="nb">readk</span> <span class="s">"pitch"</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="vi">p4</span> <span class="c1">; read pitchvalues fro the file</span>
+</span><span class="kd">endin</span><span class="w">
 
-k<span class="n">cps</span> <span class="nb">portk</span> k<span class="n">cps</span><span class="p">,</span> <span class="mf">0.008</span>
-a<span class="n">sig</span> <span class="nb">oscili</span> k<span class="n">amp</span><span class="p">,</span> k<span class="n">cps</span><span class="o">*</span><span class="vi">p5</span><span class="p">,</span> <span class="mi">1</span> <span class="c1">; use amplitude &amp; pitch to play a sawtooth</span>
-k<span class="n">declick</span> <span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="vi">p3</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">
 
-<span class="nb">outs</span> a<span class="n">sig</span><span class="o">*</span>k<span class="n">declick</span><span class="p">,</span> a<span class="n">sig</span><span class="o">*</span>k<span class="n">declick</span>
+</span>k<span class="n">amp</span><span class="w"> </span><span class="nb">readk</span><span class="w"> </span><span class="s">"amp"</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="vi">p4</span><span class="w"> </span><span class="c1">; read amplitude values fro the file</span><span class="w">
+</span>k<span class="n">cps</span><span class="w"> </span><span class="nb">readk</span><span class="w"> </span><span class="s">"pitch"</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="vi">p4</span><span class="w"> </span><span class="c1">; read pitchvalues fro the file</span><span class="w">
 
-<span class="kd">endin</span>
+</span>k<span class="n">cps</span><span class="w"> </span><span class="nb">portk</span><span class="w"> </span>k<span class="n">cps</span><span class="p">,</span><span class="w"> </span><span class="mf">0.008</span><span class="w">
+</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">oscili</span><span class="w"> </span>k<span class="n">amp</span><span class="p">,</span><span class="w"> </span>k<span class="n">cps</span><span class="o">*</span><span class="vi">p5</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="c1">; use amplitude &amp; pitch to play a sawtooth</span><span class="w">
+</span>k<span class="n">declick</span><span class="w"> </span><span class="nb">linseg</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="w"> </span><span class="o">-</span><span class="mf">0.4</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
+</span><span class="nb">outs</span><span class="w"> </span>a<span class="n">sig</span><span class="o">*</span>k<span class="n">declick</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="o">*</span>k<span class="n">declick</span><span class="w">
 
-<span class="nb">f</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">16384</span> <span class="mi">10</span> <span class="mi">1</span> <span class="mf">0.5</span> <span class="mf">0.3</span> <span class="mf">0.25</span> <span class="mf">0.2</span> <span class="mf">0.167</span> <span class="mf">0.14</span> <span class="mf">0.125</span> <span class="mf">.111</span>   <span class="c1">;sawtooth</span>
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">10</span> 
-<span class="nb">i</span> <span class="mi">2</span> <span class="mi">10</span> <span class="mi">10</span> <span class="mf">0.001</span> <span class="mi">1</span> <span class="c1">;</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+
+</span><span class="nb">f</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">16384</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="mf">0.3</span><span class="w"> </span><span class="mf">0.25</span><span class="w"> </span><span class="mf">0.2</span><span class="w"> </span><span class="mf">0.167</span><span class="w"> </span><span class="mf">0.14</span><span class="w"> </span><span class="mf">0.125</span><span class="w"> </span><span class="mf">.111</span><span class="w">   </span><span class="c1">;sawtooth</span><span class="w">
+
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">10</span><span class="w"> 
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mf">0.001</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="c1">;</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -202,7 +202,7 @@ k<span class="n">declick</span> <span class="nb">linseg</span> <span class="mi">
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm96367"></a>
+        <a id="idm132243"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="fiopen.html" title="fiopen"><em class="citetitle">fiopen</em></a>,
@@ -212,7 +212,7 @@ k<span class="n">declick</span> <span class="nb">linseg</span> <span class="mi">
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm96378"></a>
+        <a id="idm132254"></a>
         <h2>Credits</h2>
         <p>
       </p>

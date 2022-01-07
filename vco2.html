@@ -39,19 +39,19 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm260256"></a>
+        <a id="idm368082"></a>
         <h2>Description</h2>
         <p>
       <span class="emphasis"><em>vco2</em></span> is similar to <a class="link" href="vco.html" title="vco"><em class="citetitle">vco</em></a>. But the implementation uses pre-calculated tables of band-limited waveforms (see also <a class="link" href="GEN30.html" title="GEN30"><em class="citetitle">GEN30</em></a>) rather than integrating impulses. This opcode can be faster than <span class="emphasis"><em>vco</em></span> (especially if a low control-rate is used) and also allows better sound quality. Additionally, there are more waveforms and oscillator phase can be modulated at k-rate. The disadvantage is increased memory usage. For more details about vco2 tables, see also <a class="link" href="vco2init.html" title="vco2init"><em class="citetitle">vco2init</em></a> and <a class="link" href="vco2ft.html" title="vco2ft"><em class="citetitle">vco2ft</em></a>.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm260269"></a>
+        <a id="idm368095"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ares <span class="command"><strong>vco2</strong></span> kamp, kcps [, imode] [, kpw] [, kphs] [, inyx]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm260273"></a>
+        <a id="idm368099"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>imode</em></span> (optional, default=0) -- a sum of values representing the waveform and its control values.
@@ -115,7 +115,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm260317"></a>
+        <a id="idm368143"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>ares </em></span> -- the output audio signal.
@@ -188,20 +188,20 @@
         </div>
       </div>
       <div class="refsect1">
-        <a id="idm260361"></a>
+        <a id="idm368187"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the vco2 opcode. It uses the file <a class="ulink" href="examples/vco2.csd" target="_top"><em class="citetitle">vco2.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm260366"></a>
+          <a id="idm368192"></a>
           <p class="title">
-            <strong>Example 1163. Example of the vco2 opcode.</strong>
+            <strong>Example 1164. Example of the vco2 opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm260373"></a>
+              <a id="idm368199"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -211,63 +211,63 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o vco2.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span>      <span class="o">=</span>  <span class="mi">44100</span>
-<span class="vg">ksmps</span>   <span class="o">=</span>  <span class="mi">10</span>
-<span class="vg">nchnls</span>  <span class="o">=</span>  <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w">      </span><span class="o">=</span><span class="w">  </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w">   </span><span class="o">=</span><span class="w">  </span><span class="mi">10</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w">  </span><span class="o">=</span><span class="w">  </span><span class="mi">1</span><span class="w">
 
-<span class="c1">; user defined waveform -1: trapezoid wave with default parameters (can be</span>
-<span class="c1">; accessed at ftables starting from 10000)</span>
-i<span class="n">tmp</span>    <span class="nb">ftgen</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">16384</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2048</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4096</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4096</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4096</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2048</span><span class="p">,</span> <span class="mi">0</span>
-i<span class="n">ft</span>     <span class="nb">vco2init</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
-<span class="c1">; user defined waveform -2: fixed table size (4096), number of partials</span>
-<span class="c1">; multiplier is 1.02 (~238 tables)</span>
-i<span class="n">tmp</span>    <span class="nb">ftgen</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">16384</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4095</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4095</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8192</span><span class="p">,</span> <span class="mi">0</span>
-i<span class="n">ft</span>     <span class="nb">vco2init</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> i<span class="n">ft</span><span class="p">,</span> <span class="mf">1.02</span><span class="p">,</span> <span class="mi">4096</span><span class="p">,</span> <span class="mi">4096</span><span class="p">,</span> <span class="mi">2</span>
+</span><span class="c1">; user defined waveform -1: trapezoid wave with default parameters (can be</span><span class="w">
+</span><span class="c1">; accessed at ftables starting from 10000)</span><span class="w">
+</span>i<span class="n">tmp</span><span class="w">    </span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">16384</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2048</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">4096</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">4096</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">4096</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2048</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span>i<span class="n">ft</span><span class="w">     </span><span class="nb">vco2init</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="c1">; user defined waveform -2: fixed table size (4096), number of partials</span><span class="w">
+</span><span class="c1">; multiplier is 1.02 (~238 tables)</span><span class="w">
+</span>i<span class="n">tmp</span><span class="w">    </span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">16384</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">4095</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">4095</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">8192</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span>i<span class="n">ft</span><span class="w">     </span><span class="nb">vco2init</span><span class="w"> </span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span>i<span class="n">ft</span><span class="p">,</span><span class="w"> </span><span class="mf">1.02</span><span class="p">,</span><span class="w"> </span><span class="mi">4096</span><span class="p">,</span><span class="w"> </span><span class="mi">4096</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">
 
-        <span class="kd">instr</span> <span class="nf">1</span>
-k<span class="n">cps</span>    <span class="nb">expon</span> <span class="vi">p4</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="vi">p5</span>                <span class="c1">; instr 1: basic vco2 example</span>
-a<span class="n">1</span>      <span class="nb">vco2</span> <span class="mi">12000</span><span class="p">,</span> k<span class="n">cps</span>                <span class="c1">; (sawtooth wave with default</span>
-        <span class="nb">out</span> a<span class="n">1</span>                          <span class="c1">; parameters)</span>
-        <span class="kd">endin</span>
+        </span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+</span>k<span class="n">cps</span><span class="w">    </span><span class="nb">expon</span><span class="w"> </span><span class="vi">p4</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="vi">p5</span><span class="w">                </span><span class="c1">; instr 1: basic vco2 example</span><span class="w">
+</span>a<span class="n">1</span><span class="w">      </span><span class="nb">vco2</span><span class="w"> </span><span class="mi">12000</span><span class="p">,</span><span class="w"> </span>k<span class="n">cps</span><span class="w">                </span><span class="c1">; (sawtooth wave with default</span><span class="w">
+        </span><span class="nb">out</span><span class="w"> </span>a<span class="n">1</span><span class="w">                          </span><span class="c1">; parameters)</span><span class="w">
+        </span><span class="kd">endin</span><span class="w">
 
-        <span class="kd">instr</span> <span class="nf">2</span>
-k<span class="n">cps</span>    <span class="nb">expon</span> <span class="vi">p4</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="vi">p5</span>                        <span class="c1">; instr 2:</span>
-k<span class="n">pw</span>     <span class="nb">linseg</span> <span class="mf">0.1</span><span class="p">,</span> <span class="vi">p3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="vi">p3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.1</span>        <span class="c1">; PWM example</span>
-a<span class="n">1</span>      <span class="nb">vco2</span> <span class="mi">10000</span><span class="p">,</span> k<span class="n">cps</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> k<span class="n">pw</span>
-        <span class="nb">out</span> a<span class="n">1</span>
-        <span class="kd">endin</span>
+        </span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">
+</span>k<span class="n">cps</span><span class="w">    </span><span class="nb">expon</span><span class="w"> </span><span class="vi">p4</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="vi">p5</span><span class="w">                        </span><span class="c1">; instr 2:</span><span class="w">
+</span>k<span class="n">pw</span><span class="w">     </span><span class="nb">linseg</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.9</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="w">        </span><span class="c1">; PWM example</span><span class="w">
+</span>a<span class="n">1</span><span class="w">      </span><span class="nb">vco2</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w"> </span>k<span class="n">cps</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span>k<span class="n">pw</span><span class="w">
+        </span><span class="nb">out</span><span class="w"> </span>a<span class="n">1</span><span class="w">
+        </span><span class="kd">endin</span><span class="w">
 
-        <span class="kd">instr</span> <span class="nf">3</span>
-k<span class="n">cps</span>    <span class="nb">expon</span> <span class="vi">p4</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="vi">p5</span>                <span class="c1">; instr 3: vco2 with user</span>
-a<span class="n">1</span>      <span class="nb">vco2</span> <span class="mi">14000</span><span class="p">,</span> k<span class="n">cps</span><span class="p">,</span> <span class="mi">14</span>            <span class="c1">; defined waveform (-1)</span>
-a<span class="n">env</span>    <span class="nb">linseg</span> <span class="mi">1</span><span class="p">,</span> <span class="vi">p3</span> <span class="o">-</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span>   <span class="c1">; de-click envelope</span>
-        <span class="nb">out</span> a<span class="n">1</span> <span class="o">*</span> a<span class="n">env</span>
-        <span class="kd">endin</span>
+        </span><span class="kd">instr</span><span class="w"> </span><span class="nf">3</span><span class="w">
+</span>k<span class="n">cps</span><span class="w">    </span><span class="nb">expon</span><span class="w"> </span><span class="vi">p4</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="vi">p5</span><span class="w">                </span><span class="c1">; instr 3: vco2 with user</span><span class="w">
+</span>a<span class="n">1</span><span class="w">      </span><span class="nb">vco2</span><span class="w"> </span><span class="mi">14000</span><span class="p">,</span><span class="w"> </span>k<span class="n">cps</span><span class="p">,</span><span class="w"> </span><span class="mi">14</span><span class="w">            </span><span class="c1">; defined waveform (-1)</span><span class="w">
+</span>a<span class="n">env</span><span class="w">    </span><span class="nb">linseg</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">   </span><span class="c1">; de-click envelope</span><span class="w">
+        </span><span class="nb">out</span><span class="w"> </span>a<span class="n">1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>a<span class="n">env</span><span class="w">
+        </span><span class="kd">endin</span><span class="w">
 
-        <span class="kd">instr</span> <span class="nf">4</span>
-k<span class="n">cps</span>    <span class="nb">expon</span> <span class="vi">p4</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="vi">p5</span>                <span class="c1">; instr 4: vco2ft example,</span>
-k<span class="n">fn</span>     <span class="nb">vco2ft</span> k<span class="n">cps</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.25</span>           <span class="c1">; with user defined waveform</span>
-a<span class="n">1</span>      <span class="nb">oscilikt</span> <span class="mi">12000</span><span class="p">,</span> k<span class="n">cps</span><span class="p">,</span> k<span class="n">fn</span>       <span class="c1">; (-2), and sr/4 bandwidth</span>
-        <span class="nb">out</span> a<span class="n">1</span>
-        <span class="kd">endin</span>
-
-
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-
-<span class="nb">i</span> <span class="mi">1</span>  <span class="mi">0</span> <span class="mi">3</span> <span class="mi">20</span> <span class="mi">2000</span>
-<span class="nb">i</span> <span class="mi">2</span>  <span class="mi">4</span> <span class="mi">2</span> <span class="mi">200</span> <span class="mi">400</span>
-<span class="nb">i</span> <span class="mi">3</span>  <span class="mi">7</span> <span class="mi">3</span> <span class="mi">400</span> <span class="mi">20</span>
-<span class="nb">i</span> <span class="mi">4</span> <span class="mi">11</span> <span class="mi">2</span> <span class="mi">100</span> <span class="mi">200</span>
-
-<span class="nb">f</span> <span class="mi">0</span> <span class="mi">14</span>
-
-<span class="nb">e</span>
+        </span><span class="kd">instr</span><span class="w"> </span><span class="nf">4</span><span class="w">
+</span>k<span class="n">cps</span><span class="w">    </span><span class="nb">expon</span><span class="w"> </span><span class="vi">p4</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="vi">p5</span><span class="w">                </span><span class="c1">; instr 4: vco2ft example,</span><span class="w">
+</span>k<span class="n">fn</span><span class="w">     </span><span class="nb">vco2ft</span><span class="w"> </span>k<span class="n">cps</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.25</span><span class="w">           </span><span class="c1">; with user defined waveform</span><span class="w">
+</span>a<span class="n">1</span><span class="w">      </span><span class="nb">oscilikt</span><span class="w"> </span><span class="mi">12000</span><span class="p">,</span><span class="w"> </span>k<span class="n">cps</span><span class="p">,</span><span class="w"> </span>k<span class="n">fn</span><span class="w">       </span><span class="c1">; (-2), and sr/4 bandwidth</span><span class="w">
+        </span><span class="nb">out</span><span class="w"> </span>a<span class="n">1</span><span class="w">
+        </span><span class="kd">endin</span><span class="w">
 
 
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="mi">0</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mi">2000</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">2</span><span class="w">  </span><span class="mi">4</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="mi">400</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">3</span><span class="w">  </span><span class="mi">7</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">400</span><span class="w"> </span><span class="mi">20</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">11</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="mi">200</span><span class="w">
+
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">14</span><span class="w">
+
+</span><span class="nb">e</span><span class="w">
+
+
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -277,7 +277,7 @@ a<span class="n">1</span>      <span class="nb">oscilikt</span> <span class="mi"
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm260648"></a>
+        <a id="idm368661"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="vco.html" title="vco"><em class="citetitle">vco</em></a>,
@@ -287,7 +287,7 @@ a<span class="n">1</span>      <span class="nb">oscilikt</span> <span class="mi"
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm260659"></a>
+        <a id="idm368672"></a>
         <h2>Credits</h2>
         <p>Author: Istvan Varga</p>
         <p>New in version 4.22</p>

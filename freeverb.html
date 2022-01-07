@@ -39,7 +39,7 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm97695"></a>
+        <a id="idm134234"></a>
         <h2>Description</h2>
         <p>
 		freeverb is a stereo reverb unit based on Jezar's public domain
@@ -50,12 +50,12 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm97698"></a>
+        <a id="idm134237"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">aoutL, aoutR <span class="command"><strong>freeverb</strong></span> ainL, ainR, kRoomSize, kHFDamp[, iSRate[, iSkip]] </pre>
       </div>
       <div class="refsect1">
-        <a id="idm97702"></a>
+        <a id="idm134241"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>iSRate</em></span>
@@ -76,7 +76,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm97708"></a>
+        <a id="idm134247"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>ainL, ainR</em></span>
@@ -123,20 +123,20 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm97721"></a>
+        <a id="idm134260"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the <span class="emphasis"><em>freeverb</em></span> opcode. It uses the file <a class="ulink" href="examples/freeverb.csd" target="_top"><em class="citetitle">freeverb.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm97727"></a>
+          <a id="idm134266"></a>
           <p class="title">
             <strong>Example 382. An example of the freeverb opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm97734"></a>
+              <a id="idm134273"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -146,29 +146,29 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o freeverb.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
-<span class="vg">sr</span>      <span class="o">=</span>  <span class="mi">44100</span>
-<span class="vg">ksmps</span>   <span class="o">=</span>  <span class="mi">32</span>
-<span class="vg">nchnls</span>  <span class="o">=</span>  <span class="mi">2</span>
-<span class="vg">0dbfs</span>   <span class="o">=</span>  <span class="mi">1</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
+</span><span class="vg">sr</span><span class="w">      </span><span class="o">=</span><span class="w">  </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w">   </span><span class="o">=</span><span class="w">  </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w">  </span><span class="o">=</span><span class="w">  </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">   </span><span class="o">=</span><span class="w">  </span><span class="mi">1</span><span class="w">
 
-        <span class="kd">instr</span> <span class="nf">1</span>
-a<span class="n">1</span>      <span class="nb">vco2</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mi">440</span><span class="p">,</span> <span class="mi">10</span>
-k<span class="n">frq</span>    <span class="nb">port</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">0.008</span><span class="p">,</span> <span class="mi">20000</span>
-a<span class="n">1</span>      <span class="nb">butterlp</span> a<span class="n">1</span><span class="p">,</span> k<span class="n">frq</span>
-a<span class="n">2</span>      <span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.003</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span>
-a<span class="n">1</span>      <span class="o">=</span>  a<span class="n">1</span> <span class="o">*</span> a<span class="n">2</span>
-        <span class="nb">denorm</span> a<span class="n">1</span>
-a<span class="n">L</span><span class="p">,</span> a<span class="n">R</span>  <span class="nb">freeverb</span> a<span class="n">1</span><span class="p">,</span> a<span class="n">1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="vg">sr</span><span class="p">,</span> <span class="mi">0</span>
-        <span class="nb">outs</span> a<span class="n">1</span> <span class="o">+</span> a<span class="n">L</span><span class="p">,</span> a<span class="n">1</span> <span class="o">+</span> a<span class="n">R</span>
-        <span class="kd">endin</span>
+        </span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+</span>a<span class="n">1</span><span class="w">      </span><span class="nb">vco2</span><span class="w"> </span><span class="mf">0.75</span><span class="p">,</span><span class="w"> </span><span class="mi">440</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span>k<span class="n">frq</span><span class="w">    </span><span class="nb">port</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mf">0.008</span><span class="p">,</span><span class="w"> </span><span class="mi">20000</span><span class="w">
+</span>a<span class="n">1</span><span class="w">      </span><span class="nb">butterlp</span><span class="w"> </span>a<span class="n">1</span><span class="p">,</span><span class="w"> </span>k<span class="n">frq</span><span class="w">
+</span>a<span class="n">2</span><span class="w">      </span><span class="nb">linseg</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.003</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span><span class="w"> </span><span class="mf">0.7</span><span class="p">,</span><span class="w"> </span><span class="mf">0.005</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span>a<span class="n">1</span><span class="w">      </span><span class="o">=</span><span class="w">  </span>a<span class="n">1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>a<span class="n">2</span><span class="w">
+        </span><span class="nb">denorm</span><span class="w"> </span>a<span class="n">1</span><span class="w">
+</span>a<span class="n">L</span><span class="p">,</span><span class="w"> </span>a<span class="n">R</span><span class="w">  </span><span class="nb">freeverb</span><span class="w"> </span>a<span class="n">1</span><span class="p">,</span><span class="w"> </span>a<span class="n">1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.9</span><span class="p">,</span><span class="w"> </span><span class="mf">0.35</span><span class="p">,</span><span class="w"> </span><span class="vg">sr</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>a<span class="n">L</span><span class="p">,</span><span class="w"> </span>a<span class="n">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>a<span class="n">R</span><span class="w">
+        </span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">5</span>
-<span class="nb">e</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="nb">e</span><span class="w">
 
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -178,7 +178,7 @@ a<span class="n">L</span><span class="p">,</span> a<span class="n">R</span>  <sp
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm97837"></a>
+        <a id="idm134446"></a>
         <h2>Credits</h2>
         <p>
       </p>

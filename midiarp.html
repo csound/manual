@@ -39,19 +39,19 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm142945"></a>
+        <a id="idm199446"></a>
         <h2>Description</h2>
         <p>
       midiarp constructs arpeggios based currently held MIDI notes. The opcode will output notes in the form of MIDI note numbers, and a metronomic signal that can be used to sequence the notes. Users can choose the rate at which the notes are generated, and may also choose from a set of arpeggio patterns. 
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm142948"></a>
+        <a id="idm199449"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">kMidiNoteNum, kTrigger <span class="command"><strong>midiarp</strong></span> kRate[, kMode]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm142952"></a>
+        <a id="idm199453"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>kRate</em></span> -- sets the rate in cycles per second at which new notes will be generated.  
@@ -84,19 +84,19 @@
         </table>
       </div>
       <div class="refsect1">
-        <a id="idm142966"></a>
+        <a id="idm199467"></a>
         <h2>Example</h2>
         <p>
       This example shows how midiarp can be used to trigger arpeggios using a secondary instrument for playback. Instrument 100 listens to incoming MIDI notes, and then triggers playback using instrument 200. <span class="emphasis"><em>massign</em></span> is used to prevent instrument 100 from being triggered each time a new MIDI note is pressed. This examples uses the file <a class="ulink" href="examples/midiarp.csd" target="_top"><em class="citetitle">midiarp.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm142972"></a>
+          <a id="idm199473"></a>
           <p class="title">
             <strong>Example 585. Example of the midiarp opcode</strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
-              <a id="idm142974"></a>
+              <a id="idm199475"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -106,42 +106,42 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o midiin.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
-<span class="c1">; Initialize the global variables. </span>
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
+</span><span class="c1">; Initialize the global variables. </span><span class="w">
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="nb">massign</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="c1">; prevent triggering of instrument with MIDI</span>
+</span><span class="nb">massign</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="c1">; prevent triggering of instrument with MIDI</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">200</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">200</span><span class="w">
 
-    k<span class="n">Mode</span> <span class="o">=</span> <span class="mi">0</span>
-    k<span class="n">Tempo</span> <span class="o">=</span> <span class="mi">8</span>
-    k<span class="n">Note</span><span class="p">,</span> k<span class="n">Trigger</span> <span class="nb">midiarp</span> k<span class="n">Tempo</span>
-    k<span class="n">FilterFreq</span> <span class="nb">lfo</span> <span class="mi">2000</span><span class="p">,</span> <span class="mf">.05</span><span class="p">,</span> <span class="mi">1</span>
+    </span>k<span class="n">Mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span>k<span class="n">Tempo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w">
+    </span>k<span class="n">Note</span><span class="p">,</span><span class="w"> </span>k<span class="n">Trigger</span><span class="w"> </span><span class="nb">midiarp</span><span class="w"> </span>k<span class="n">Tempo</span><span class="w">
+    </span>k<span class="n">FilterFreq</span><span class="w"> </span><span class="nb">lfo</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w"> </span><span class="mf">.05</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-    <span class="c1">;if kTrigger is 1 trigger instrument 300 to play</span>
-    <span class="k">if</span> k<span class="n">Trigger</span><span class="o">==</span><span class="mi">1</span> <span class="k">then</span> 	
-        <span class="nb">event</span> <span class="s">"i"</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> k<span class="n">Note</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span>k<span class="n">FilterFreq</span><span class="p">)</span><span class="o">+</span><span class="mi">200</span>
-    <span class="k">endif</span>
+    </span><span class="c1">;if kTrigger is 1 trigger instrument 300 to play</span><span class="w">
+    </span><span class="k">if</span><span class="w"> </span>k<span class="n">Trigger</span><span class="o">==</span><span class="mi">1</span><span class="w"> </span><span class="k">then</span><span class="w"> 	
+        </span><span class="nb">event</span><span class="w"> </span><span class="s">"i"</span><span class="p">,</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">.5</span><span class="p">,</span><span class="w"> </span><span class="mf">.5</span><span class="p">,</span><span class="w"> </span>k<span class="n">Note</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span>k<span class="n">FilterFreq</span><span class="p">)</span><span class="o">+</span><span class="mi">200</span><span class="w">
+    </span><span class="k">endif</span><span class="w">
 
-<span class="kd">endin</span>
+</span><span class="kd">endin</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">300</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">300</span><span class="w">
 
-    k<span class="n">Env</span> <span class="nb">expon</span> <span class="vi">p4</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mf">.001</span>
-    a<span class="n">Out</span> <span class="nb">vco2</span> k<span class="n">Env</span><span class="p">,</span> <span class="nb">cpsmidinn</span><span class="p">(</span><span class="vi">p5</span><span class="p">)</span>		<span class="c1">;convert note number to cps</span>
-    a<span class="n">Filter</span> <span class="nb">moogladder</span> a<span class="n">Out</span><span class="p">,</span> <span class="vi">p6</span><span class="p">,</span> <span class="mf">.2</span>
-    <span class="nb">outs</span> a<span class="n">Filter</span><span class="p">,</span> a<span class="n">Filter</span>
+    </span>k<span class="n">Env</span><span class="w"> </span><span class="nb">expon</span><span class="w"> </span><span class="vi">p4</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mf">.001</span><span class="w">
+    </span>a<span class="n">Out</span><span class="w"> </span><span class="nb">vco2</span><span class="w"> </span>k<span class="n">Env</span><span class="p">,</span><span class="w"> </span><span class="nb">cpsmidinn</span><span class="p">(</span><span class="vi">p5</span><span class="p">)</span><span class="w">		</span><span class="c1">;convert note number to cps</span><span class="w">
+    </span>a<span class="n">Filter</span><span class="w"> </span><span class="nb">moogladder</span><span class="w"> </span>a<span class="n">Out</span><span class="p">,</span><span class="w"> </span><span class="vi">p6</span><span class="p">,</span><span class="w"> </span><span class="mf">.2</span><span class="w">
+    </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">Filter</span><span class="p">,</span><span class="w"> </span>a<span class="n">Filter</span><span class="w">
     
-<span class="kd">endin</span>
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">i</span><span class="mi">200</span> <span class="mi">0</span> <span class="mi">60</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="mi">200</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">60</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -151,7 +151,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm143088"></a>
+        <a id="idm199662"></a>
         <h2>Credits</h2>
         <p>
       </p>

@@ -39,26 +39,26 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm237974"></a>
+        <a id="idm336144"></a>
         <h2>Description</h2>
         <p>
       Produces a moving phase value between zero and one and an extra impulse output ("sync out") whenever its phase value crosses or is reset to zero. The phase can be reset at any time by an impulse on the "sync in" parameter.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm237977"></a>
+        <a id="idm336147"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">aphase, asyncout <span class="command"><strong>syncphasor</strong></span> xcps, asyncin, [, iphs]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm237981"></a>
+        <a id="idm336151"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>iphs</em></span> (optional) -- initial phase, expressed as a fraction of a cycle (0 to 1). A negative value will cause phase initialization to be skipped. The default value is zero.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm237985"></a>
+        <a id="idm336155"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>aphase</em></span> -- the output phase value; always between 0 and 1.
@@ -80,21 +80,21 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm238008"></a>
+        <a id="idm336178"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the syncphasor opcode. It uses the file <a class="ulink" href="examples/syncphasor.csd" target="_top"><em class="citetitle">syncphasor.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm238013"></a>
+          <a id="idm336183"></a>
           <p class="title">
-            <strong>Example 1062. Example of the syncphasor opcode.</strong>
+            <strong>Example 1063. Example of the syncphasor opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm238020"></a>
+              <a id="idm336190"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -104,49 +104,49 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o abs.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>
-    <span class="c1">; Use two syncphasors - one is the "master",</span>
-    <span class="c1">; the other the "slave"</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+    </span><span class="c1">; Use two syncphasors - one is the "master",</span><span class="w">
+    </span><span class="c1">; the other the "slave"</span><span class="w">
     
-    <span class="c1">; master's frequency determines pitch</span>
-    i<span class="n">mastercps</span>  <span class="o">=</span>           <span class="nb">cpspch</span><span class="p">(</span><span class="vi">p4</span><span class="p">)</span>
-    i<span class="n">maxamp</span>     <span class="o">=</span>           <span class="mi">10000</span>
+    </span><span class="c1">; master's frequency determines pitch</span><span class="w">
+    </span>i<span class="n">mastercps</span><span class="w">  </span><span class="o">=</span><span class="w">           </span><span class="nb">cpspch</span><span class="p">(</span><span class="vi">p4</span><span class="p">)</span><span class="w">
+    </span>i<span class="n">maxamp</span><span class="w">     </span><span class="o">=</span><span class="w">           </span><span class="mi">10000</span><span class="w">
 
-    <span class="c1">; the slave's frequency affects the timbre </span>
-    k<span class="n">slavecps</span>   <span class="nb">line</span>        i<span class="n">mastercps</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> i<span class="n">mastercps</span> <span class="o">*</span> <span class="mi">3</span>
+    </span><span class="c1">; the slave's frequency affects the timbre </span><span class="w">
+    </span>k<span class="n">slavecps</span><span class="w">   </span><span class="nb">line</span><span class="w">        </span>i<span class="n">mastercps</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span>i<span class="n">mastercps</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">3</span><span class="w">
     
-    <span class="c1">; the master "oscillator"</span>
-    <span class="c1">; the master has no sync input </span>
-    a<span class="n">nosync</span>     <span class="nb">init</span>        <span class="mf">0.0</span>
-    a<span class="n">m</span><span class="p">,</span> a<span class="n">sync</span>   <span class="nb">syncphasor</span>  i<span class="n">mastercps</span><span class="p">,</span> a<span class="n">nosync</span>
+    </span><span class="c1">; the master "oscillator"</span><span class="w">
+    </span><span class="c1">; the master has no sync input </span><span class="w">
+    </span>a<span class="n">nosync</span><span class="w">     </span><span class="nb">init</span><span class="w">        </span><span class="mf">0.0</span><span class="w">
+    </span>a<span class="n">m</span><span class="p">,</span><span class="w"> </span>a<span class="n">sync</span><span class="w">   </span><span class="nb">syncphasor</span><span class="w">  </span>i<span class="n">mastercps</span><span class="p">,</span><span class="w"> </span>a<span class="n">nosync</span><span class="w">
     
-    <span class="c1">; the slave "oscillator"</span>
-    a<span class="n">out</span><span class="p">,</span> a<span class="n">s</span>    <span class="nb">syncphasor</span>  k<span class="n">slavecps</span><span class="p">,</span> a<span class="n">sync</span>
+    </span><span class="c1">; the slave "oscillator"</span><span class="w">
+    </span>a<span class="n">out</span><span class="p">,</span><span class="w"> </span>a<span class="n">s</span><span class="w">    </span><span class="nb">syncphasor</span><span class="w">  </span>k<span class="n">slavecps</span><span class="p">,</span><span class="w"> </span>a<span class="n">sync</span><span class="w">
     
-    a<span class="n">declick</span>    <span class="nb">linseg</span>      <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="vi">p3</span> <span class="o">-</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.0</span>
+    </span>a<span class="n">declick</span><span class="w">    </span><span class="nb">linseg</span><span class="w">      </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="w">
     
-    <span class="c1">; Output the slave's phase value which is a rising</span>
-    <span class="c1">; sawtooth wave.  This produces aliasing, but hey, this</span>
-    <span class="c1">; this is just an example ;)</span>
+    </span><span class="c1">; Output the slave's phase value which is a rising</span><span class="w">
+    </span><span class="c1">; sawtooth wave.  This produces aliasing, but hey, this</span><span class="w">
+    </span><span class="c1">; this is just an example ;)</span><span class="w">
     
-              <span class="nb">out</span>         a<span class="n">out</span> <span class="o">*</span> a<span class="n">declick</span> <span class="o">*</span> i<span class="n">maxamp</span>
-<span class="kd">endin</span>
+              </span><span class="nb">out</span><span class="w">         </span>a<span class="n">out</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>a<span class="n">declick</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>i<span class="n">maxamp</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
 
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span>    <span class="mf">7.00</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mf">0.5</span>  <span class="mf">7.02</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="o">.</span>    <span class="mf">7.05</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="o">.</span>    <span class="mf">7.07</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="o">.</span>    <span class="mf">7.09</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span>    <span class="mf">7.06</span>
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w">    </span><span class="mf">7.00</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5</span><span class="w">  </span><span class="mf">7.02</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="mf">7.05</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="mf">7.07</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="mf">7.09</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w">    </span><span class="mf">7.06</span><span class="w">
 
-<span class="nb">e</span>
+</span><span class="nb">e</span><span class="w">
 
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -158,13 +158,13 @@
       Here is another example of the syncphasor opcode. It uses the file <a class="ulink" href="examples/syncphasor-CZresonance.csd" target="_top"><em class="citetitle">syncphasor-CZresonance.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm238140"></a>
+          <a id="idm336393"></a>
           <p class="title">
-            <strong>Example 1063. Another example of the syncphasor opcode.</strong>
+            <strong>Example 1064. Another example of the syncphasor opcode.</strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
-              <a id="idm238142"></a>
+              <a id="idm336395"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -174,119 +174,119 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o syncphasor-CZresonance.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
-<span class="c1">; by Anthony Kozar. February 2008</span>
-<span class="c1">; http://www.anthonykozar.net/</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
+</span><span class="c1">; by Anthony Kozar. February 2008</span><span class="w">
+</span><span class="c1">; http://www.anthonykozar.net/</span><span class="w">
 
-<span class="c1">; Imitation of the Casio CZ-series synthesizer's "Resonance" waveforms</span>
-<span class="c1">; using a synced phasor to read a sinusoid table.  The jumps at the sync </span>
-<span class="c1">; points are smoothed by multiplying with a windowing function controlled</span>
-<span class="c1">; by the master phasor.</span>
+</span><span class="c1">; Imitation of the Casio CZ-series synthesizer's "Resonance" waveforms</span><span class="w">
+</span><span class="c1">; using a synced phasor to read a sinusoid table.  The jumps at the sync </span><span class="w">
+</span><span class="c1">; points are smoothed by multiplying with a windowing function controlled</span><span class="w">
+</span><span class="c1">; by the master phasor.</span><span class="w">
 
-<span class="c1">; Based on information from the Wikipedia article on phase distortion:</span>
-<span class="c1">; http://en.wikipedia.org/wiki/Phase_distortion_synthesis</span>
+</span><span class="c1">; Based on information from the Wikipedia article on phase distortion:</span><span class="w">
+</span><span class="c1">; http://en.wikipedia.org/wiki/Phase_distortion_synthesis</span><span class="w">
 
-<span class="c1">; Sawtooth Resonance waveform. Smoothing function is just the inverted</span>
-<span class="c1">; master phasor.</span>
+</span><span class="c1">; Sawtooth Resonance waveform. Smoothing function is just the inverted</span><span class="w">
+</span><span class="c1">; master phasor.</span><span class="w">
 
-<span class="c1">; The Wikipedia article shows an inverted cosine as the stored waveform,</span>
-<span class="c1">; which implies that it must be unipolar for the smoothing to work.</span>
-<span class="c1">; I have substituted a sine wave in the first phrase to keep the output</span>
-<span class="c1">; bipolar.  The second phrase demonstrates the much "rezzier" sound of the</span>
-<span class="c1">; bipolar cosine due to discontinuities.</span>
+</span><span class="c1">; The Wikipedia article shows an inverted cosine as the stored waveform,</span><span class="w">
+</span><span class="c1">; which implies that it must be unipolar for the smoothing to work.</span><span class="w">
+</span><span class="c1">; I have substituted a sine wave in the first phrase to keep the output</span><span class="w">
+</span><span class="c1">; bipolar.  The second phrase demonstrates the much "rezzier" sound of the</span><span class="w">
+</span><span class="c1">; bipolar cosine due to discontinuities.</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>
-  i<span class="n">freq</span>      <span class="o">=</span>           <span class="nb">cpspch</span><span class="p">(</span><span class="vi">p4</span><span class="p">)</span>
-  i<span class="n">nitReson</span>  <span class="o">=</span>           <span class="vi">p5</span>
-  i<span class="n">table</span>     <span class="o">=</span>           <span class="vi">p6</span>
-  i<span class="n">maxamp</span>    <span class="o">=</span>           <span class="mi">10000</span>
-  a<span class="n">nosync</span>    <span class="nb">init</span>        <span class="mf">0.0</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+  </span>i<span class="n">freq</span><span class="w">      </span><span class="o">=</span><span class="w">           </span><span class="nb">cpspch</span><span class="p">(</span><span class="vi">p4</span><span class="p">)</span><span class="w">
+  </span>i<span class="n">nitReson</span><span class="w">  </span><span class="o">=</span><span class="w">           </span><span class="vi">p5</span><span class="w">
+  </span>i<span class="n">table</span><span class="w">     </span><span class="o">=</span><span class="w">           </span><span class="vi">p6</span><span class="w">
+  </span>i<span class="n">maxamp</span><span class="w">    </span><span class="o">=</span><span class="w">           </span><span class="mi">10000</span><span class="w">
+  </span>a<span class="n">nosync</span><span class="w">    </span><span class="nb">init</span><span class="w">        </span><span class="mf">0.0</span><span class="w">
 
-  k<span class="n">slavecps</span>       <span class="nb">line</span>        i<span class="n">freq</span> <span class="o">*</span> i<span class="n">nitReson</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> i<span class="n">freq</span>
-  a<span class="n">master</span><span class="p">,</span> a<span class="n">sync</span>  <span class="nb">syncphasor</span>  i<span class="n">freq</span><span class="p">,</span> a<span class="n">nosync</span>		<span class="c1">; pair of phasors</span>
-  a<span class="n">slave</span><span class="p">,</span> a<span class="n">sync2</span>  <span class="nb">syncphasor</span>  k<span class="n">slavecps</span><span class="p">,</span> a<span class="n">sync</span>		<span class="c1">; slave synced to master</span>
-  a<span class="n">osc</span>            <span class="nb">tablei</span>      a<span class="n">slave</span><span class="p">,</span> i<span class="n">table</span><span class="p">,</span> <span class="mi">1</span>		<span class="c1">; use slave phasor to read a (co)sine table</span>
-  a<span class="n">out</span>            <span class="o">=</span>           a<span class="n">osc</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> a<span class="n">master</span><span class="p">)</span>	<span class="c1">; inverted master smoothes jumps </span>
-  a<span class="n">declick</span>        <span class="nb">linseg</span>      <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="vi">p3</span> <span class="o">-</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.0</span>
+  </span>k<span class="n">slavecps</span><span class="w">       </span><span class="nb">line</span><span class="w">        </span>i<span class="n">freq</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>i<span class="n">nitReson</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span>i<span class="n">freq</span><span class="w">
+  </span>a<span class="n">master</span><span class="p">,</span><span class="w"> </span>a<span class="n">sync</span><span class="w">  </span><span class="nb">syncphasor</span><span class="w">  </span>i<span class="n">freq</span><span class="p">,</span><span class="w"> </span>a<span class="n">nosync</span><span class="w">		</span><span class="c1">; pair of phasors</span><span class="w">
+  </span>a<span class="n">slave</span><span class="p">,</span><span class="w"> </span>a<span class="n">sync2</span><span class="w">  </span><span class="nb">syncphasor</span><span class="w">  </span>k<span class="n">slavecps</span><span class="p">,</span><span class="w"> </span>a<span class="n">sync</span><span class="w">		</span><span class="c1">; slave synced to master</span><span class="w">
+  </span>a<span class="n">osc</span><span class="w">            </span><span class="nb">tablei</span><span class="w">      </span>a<span class="n">slave</span><span class="p">,</span><span class="w"> </span>i<span class="n">table</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">		</span><span class="c1">; use slave phasor to read a (co)sine table</span><span class="w">
+  </span>a<span class="n">out</span><span class="w">            </span><span class="o">=</span><span class="w">           </span>a<span class="n">osc</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mf">1.0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span>a<span class="n">master</span><span class="p">)</span><span class="w">	</span><span class="c1">; inverted master smoothes jumps </span><span class="w">
+  </span>a<span class="n">declick</span><span class="w">        </span><span class="nb">linseg</span><span class="w">      </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="w">
 
-                    <span class="nb">out</span>         a<span class="n">out</span> <span class="o">*</span> a<span class="n">declick</span> <span class="o">*</span> i<span class="n">maxamp</span>
-<span class="kd">endin</span>
+                    </span><span class="nb">out</span><span class="w">         </span>a<span class="n">out</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>a<span class="n">declick</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>i<span class="n">maxamp</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="c1">; Triangle or Trapezoidal Resonance waveform. Uses a second table to change</span>
-<span class="c1">; the shape of the smoothing function.  (This is my best guess so far as to</span>
-<span class="c1">; how these worked). The cosine table works fine with the triangular smoothing</span>
-<span class="c1">; but we once again need to use a sine table with the trapezoidal smoothing.</span>
+</span><span class="c1">; Triangle or Trapezoidal Resonance waveform. Uses a second table to change</span><span class="w">
+</span><span class="c1">; the shape of the smoothing function.  (This is my best guess so far as to</span><span class="w">
+</span><span class="c1">; how these worked). The cosine table works fine with the triangular smoothing</span><span class="w">
+</span><span class="c1">; but we once again need to use a sine table with the trapezoidal smoothing.</span><span class="w">
 
-<span class="c1">; (It might be interesting to be able to vary the "width" of the trapezoid.</span>
-<span class="c1">; This could be done with the pdhalf opcode).</span>
+</span><span class="c1">; (It might be interesting to be able to vary the "width" of the trapezoid.</span><span class="w">
+</span><span class="c1">; This could be done with the pdhalf opcode).</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">2</span>
-  i<span class="n">freq</span>      <span class="o">=</span>           <span class="nb">cpspch</span><span class="p">(</span><span class="vi">p4</span><span class="p">)</span>
-  i<span class="n">nitReson</span>  <span class="o">=</span>           <span class="vi">p5</span>
-  i<span class="n">table</span>     <span class="o">=</span>           <span class="vi">p6</span>
-  i<span class="n">smoothtbl</span> <span class="o">=</span>           <span class="vi">p7</span>
-  i<span class="n">maxamp</span>    <span class="o">=</span>           <span class="mi">10000</span>
-  a<span class="n">nosync</span>    <span class="nb">init</span>        <span class="mf">0.0</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">
+  </span>i<span class="n">freq</span><span class="w">      </span><span class="o">=</span><span class="w">           </span><span class="nb">cpspch</span><span class="p">(</span><span class="vi">p4</span><span class="p">)</span><span class="w">
+  </span>i<span class="n">nitReson</span><span class="w">  </span><span class="o">=</span><span class="w">           </span><span class="vi">p5</span><span class="w">
+  </span>i<span class="n">table</span><span class="w">     </span><span class="o">=</span><span class="w">           </span><span class="vi">p6</span><span class="w">
+  </span>i<span class="n">smoothtbl</span><span class="w"> </span><span class="o">=</span><span class="w">           </span><span class="vi">p7</span><span class="w">
+  </span>i<span class="n">maxamp</span><span class="w">    </span><span class="o">=</span><span class="w">           </span><span class="mi">10000</span><span class="w">
+  </span>a<span class="n">nosync</span><span class="w">    </span><span class="nb">init</span><span class="w">        </span><span class="mf">0.0</span><span class="w">
 
-  k<span class="n">slavecps</span>       <span class="nb">line</span>        i<span class="n">freq</span> <span class="o">*</span> i<span class="n">nitReson</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> i<span class="n">freq</span>
-  a<span class="n">master</span><span class="p">,</span> a<span class="n">sync</span>  <span class="nb">syncphasor</span>  i<span class="n">freq</span><span class="p">,</span> a<span class="n">nosync</span>		<span class="c1">; pair of phasors</span>
-  a<span class="n">slave</span><span class="p">,</span> a<span class="n">sync2</span>  <span class="nb">syncphasor</span>  k<span class="n">slavecps</span><span class="p">,</span> a<span class="n">sync</span>		<span class="c1">; slave synced to master</span>
-  a<span class="n">osc</span>            <span class="nb">tablei</span>      a<span class="n">slave</span><span class="p">,</span> i<span class="n">table</span><span class="p">,</span> <span class="mi">1</span>		<span class="c1">; use slave phasor to read a (co)sine table</span>
-  a<span class="n">smooth</span>         <span class="nb">tablei</span>      a<span class="n">master</span><span class="p">,</span> i<span class="n">smoothtbl</span><span class="p">,</span> <span class="mi">1</span>	<span class="c1">; use master phasor to read smoothing table</span>
-  a<span class="n">out</span>            <span class="o">=</span>           a<span class="n">osc</span> <span class="o">*</span> a<span class="n">smooth</span>
-  a<span class="n">declick</span>        <span class="nb">linseg</span>      <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="vi">p3</span> <span class="o">-</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.0</span>
+  </span>k<span class="n">slavecps</span><span class="w">       </span><span class="nb">line</span><span class="w">        </span>i<span class="n">freq</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>i<span class="n">nitReson</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span>i<span class="n">freq</span><span class="w">
+  </span>a<span class="n">master</span><span class="p">,</span><span class="w"> </span>a<span class="n">sync</span><span class="w">  </span><span class="nb">syncphasor</span><span class="w">  </span>i<span class="n">freq</span><span class="p">,</span><span class="w"> </span>a<span class="n">nosync</span><span class="w">		</span><span class="c1">; pair of phasors</span><span class="w">
+  </span>a<span class="n">slave</span><span class="p">,</span><span class="w"> </span>a<span class="n">sync2</span><span class="w">  </span><span class="nb">syncphasor</span><span class="w">  </span>k<span class="n">slavecps</span><span class="p">,</span><span class="w"> </span>a<span class="n">sync</span><span class="w">		</span><span class="c1">; slave synced to master</span><span class="w">
+  </span>a<span class="n">osc</span><span class="w">            </span><span class="nb">tablei</span><span class="w">      </span>a<span class="n">slave</span><span class="p">,</span><span class="w"> </span>i<span class="n">table</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">		</span><span class="c1">; use slave phasor to read a (co)sine table</span><span class="w">
+  </span>a<span class="n">smooth</span><span class="w">         </span><span class="nb">tablei</span><span class="w">      </span>a<span class="n">master</span><span class="p">,</span><span class="w"> </span>i<span class="n">smoothtbl</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">	</span><span class="c1">; use master phasor to read smoothing table</span><span class="w">
+  </span>a<span class="n">out</span><span class="w">            </span><span class="o">=</span><span class="w">           </span>a<span class="n">osc</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>a<span class="n">smooth</span><span class="w">
+  </span>a<span class="n">declick</span><span class="w">        </span><span class="nb">linseg</span><span class="w">      </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="w">
 
-  <span class="nb">out</span>         a<span class="n">out</span> <span class="o">*</span> a<span class="n">declick</span> <span class="o">*</span> i<span class="n">maxamp</span>
-<span class="kd">endin</span>
+  </span><span class="nb">out</span><span class="w">         </span>a<span class="n">out</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>a<span class="n">declick</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>i<span class="n">maxamp</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">f</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">16385</span> <span class="mi">10</span>  <span class="mi">1</span>
-<span class="nb">f</span><span class="mi">3</span> <span class="mi">0</span> <span class="mi">16385</span>  <span class="mi">9</span>  <span class="mi">1</span> <span class="mi">1</span> <span class="mi">270</span>			<span class="c1">; inverted cosine</span>
-<span class="nb">f</span><span class="mi">5</span> <span class="mi">0</span> <span class="mi">4097</span>   <span class="mi">7</span>  <span class="mf">0.0</span> <span class="mi">2048</span> <span class="mf">1.0</span> <span class="mi">2049</span> <span class="mf">0.0</span>	<span class="c1">; unipolar triangle</span>
-<span class="nb">f</span><span class="mi">6</span> <span class="mi">0</span> <span class="mi">4097</span>   <span class="mi">7</span>  <span class="mf">1.0</span> <span class="mi">2048</span> <span class="mf">1.0</span> <span class="mi">2049</span> <span class="mf">0.0</span>    <span class="c1">; "trapezoid"</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">f</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">16385</span><span class="w"> </span><span class="mi">10</span><span class="w">  </span><span class="mi">1</span><span class="w">
+</span><span class="nb">f</span><span class="mi">3</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">16385</span><span class="w">  </span><span class="mi">9</span><span class="w">  </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">270</span><span class="w">			</span><span class="c1">; inverted cosine</span><span class="w">
+</span><span class="nb">f</span><span class="mi">5</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">4097</span><span class="w">   </span><span class="mi">7</span><span class="w">  </span><span class="mf">0.0</span><span class="w"> </span><span class="mi">2048</span><span class="w"> </span><span class="mf">1.0</span><span class="w"> </span><span class="mi">2049</span><span class="w"> </span><span class="mf">0.0</span><span class="w">	</span><span class="c1">; unipolar triangle</span><span class="w">
+</span><span class="nb">f</span><span class="mi">6</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">4097</span><span class="w">   </span><span class="mi">7</span><span class="w">  </span><span class="mf">1.0</span><span class="w"> </span><span class="mi">2048</span><span class="w"> </span><span class="mf">1.0</span><span class="w"> </span><span class="mi">2049</span><span class="w"> </span><span class="mf">0.0</span><span class="w">    </span><span class="c1">; "trapezoid"</span><span class="w">
 
-<span class="c1">; Sawtooth resonance with a sine table</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span>    <span class="mf">7.00</span>  <span class="mf">5.0</span>  <span class="mi">1</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="mf">0.5</span>  <span class="mf">7.02</span>  <span class="mf">4.0</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="mf">7.05</span>  <span class="mf">3.0</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="mf">7.07</span>  <span class="mf">2.0</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="mf">7.09</span>  <span class="mf">1.0</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="mi">2</span>    <span class="mf">7.06</span>  <span class="mf">12.0</span>
-<span class="nb">f</span><span class="mi">0</span> <span class="mi">6</span>
-<span class="nb">s</span>
+</span><span class="c1">; Sawtooth resonance with a sine table</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w">    </span><span class="mf">7.00</span><span class="w">  </span><span class="mf">5.0</span><span class="w">  </span><span class="mi">1</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5</span><span class="w">  </span><span class="mf">7.02</span><span class="w">  </span><span class="mf">4.0</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="mf">7.05</span><span class="w">  </span><span class="mf">3.0</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="mf">7.07</span><span class="w">  </span><span class="mf">2.0</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="mf">7.09</span><span class="w">  </span><span class="mf">1.0</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w">    </span><span class="mf">7.06</span><span class="w">  </span><span class="mf">12.0</span><span class="w">
+</span><span class="nb">f</span><span class="mi">0</span><span class="w"> </span><span class="mi">6</span><span class="w">
+</span><span class="nb">s</span><span class="w">
 
-<span class="c1">; Sawtooth resonance with a cosine table</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span>    <span class="mf">7.00</span>  <span class="mf">5.0</span>  <span class="mi">3</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="mf">0.5</span>  <span class="mf">7.02</span>  <span class="mf">4.0</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="mf">7.05</span>  <span class="mf">3.0</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="mf">7.07</span>  <span class="mf">2.0</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="mf">7.09</span>  <span class="mf">1.0</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="mi">2</span>    <span class="mf">7.06</span>  <span class="mf">12.0</span>
-<span class="nb">f</span><span class="mi">0</span> <span class="mi">6</span>
-<span class="nb">s</span>
+</span><span class="c1">; Sawtooth resonance with a cosine table</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w">    </span><span class="mf">7.00</span><span class="w">  </span><span class="mf">5.0</span><span class="w">  </span><span class="mi">3</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5</span><span class="w">  </span><span class="mf">7.02</span><span class="w">  </span><span class="mf">4.0</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="mf">7.05</span><span class="w">  </span><span class="mf">3.0</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="mf">7.07</span><span class="w">  </span><span class="mf">2.0</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="mf">7.09</span><span class="w">  </span><span class="mf">1.0</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w">    </span><span class="mf">7.06</span><span class="w">  </span><span class="mf">12.0</span><span class="w">
+</span><span class="nb">f</span><span class="mi">0</span><span class="w"> </span><span class="mi">6</span><span class="w">
+</span><span class="nb">s</span><span class="w">
 
-<span class="c1">; Triangle resonance with a cosine table</span>
-<span class="nb">i</span><span class="mi">2</span> <span class="mi">0</span> <span class="mi">1</span>    <span class="mf">7.00</span>  <span class="mf">5.0</span>  <span class="mi">3</span>  <span class="mi">5</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="mf">0.5</span>  <span class="mf">7.02</span>  <span class="mf">4.0</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="mf">7.05</span>  <span class="mf">3.0</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="mf">7.07</span>  <span class="mf">2.0</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="mf">7.09</span>  <span class="mf">1.0</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="mi">2</span>    <span class="mf">7.06</span>  <span class="mf">12.0</span>
-<span class="nb">f</span><span class="mi">0</span> <span class="mi">6</span>
-<span class="nb">s</span>
+</span><span class="c1">; Triangle resonance with a cosine table</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w">    </span><span class="mf">7.00</span><span class="w">  </span><span class="mf">5.0</span><span class="w">  </span><span class="mi">3</span><span class="w">  </span><span class="mi">5</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5</span><span class="w">  </span><span class="mf">7.02</span><span class="w">  </span><span class="mf">4.0</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="mf">7.05</span><span class="w">  </span><span class="mf">3.0</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="mf">7.07</span><span class="w">  </span><span class="mf">2.0</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="mf">7.09</span><span class="w">  </span><span class="mf">1.0</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w">    </span><span class="mf">7.06</span><span class="w">  </span><span class="mf">12.0</span><span class="w">
+</span><span class="nb">f</span><span class="mi">0</span><span class="w"> </span><span class="mi">6</span><span class="w">
+</span><span class="nb">s</span><span class="w">
 
-<span class="c1">; Trapezoidal resonance with a sine table</span>
-<span class="nb">i</span><span class="mi">2</span> <span class="mi">0</span> <span class="mi">1</span>    <span class="mf">7.00</span>  <span class="mf">5.0</span>  <span class="mi">1</span>  <span class="mi">6</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="mf">0.5</span>  <span class="mf">7.02</span>  <span class="mf">4.0</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="mf">7.05</span>  <span class="mf">3.0</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="mf">7.07</span>  <span class="mf">2.0</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="mf">7.09</span>  <span class="mf">1.0</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="mi">2</span>    <span class="mf">7.06</span>  <span class="mf">12.0</span>
+</span><span class="c1">; Trapezoidal resonance with a sine table</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w">    </span><span class="mf">7.00</span><span class="w">  </span><span class="mf">5.0</span><span class="w">  </span><span class="mi">1</span><span class="w">  </span><span class="mi">6</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5</span><span class="w">  </span><span class="mf">7.02</span><span class="w">  </span><span class="mf">4.0</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="mf">7.05</span><span class="w">  </span><span class="mf">3.0</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="mf">7.07</span><span class="w">  </span><span class="mf">2.0</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="mf">7.09</span><span class="w">  </span><span class="mf">1.0</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w">    </span><span class="mf">7.06</span><span class="w">  </span><span class="mf">12.0</span><span class="w">
 
-<span class="nb">e</span>
+</span><span class="nb">e</span><span class="w">
 
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -296,7 +296,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm238562"></a>
+        <a id="idm337153"></a>
         <h2>See also</h2>
         <p>
       <a class="link" href="phasor.html" title="phasor"><em class="citetitle">phasor</em></a>.
@@ -306,7 +306,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm238578"></a>
+        <a id="idm337169"></a>
         <h2>Credits</h2>
         <p>
       </p>

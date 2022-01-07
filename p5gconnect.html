@@ -39,7 +39,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm168972"></a>
+        <a id="idm236156"></a>
         <h2>Description</h2>
         <p>Plugin opcode in p5g. This opcode is part of the plugin repository and has to be installed separately. 
     The plugin repository can be found here: <a class="ulink" href="https://github.com/csound/plugins" target="_top"><em class="citetitle">https://github.com/csound/plugins</em></a></p>
@@ -48,7 +48,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm168978"></a>
+        <a id="idm236162"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">
           <span class="command">
@@ -57,7 +57,7 @@
         </pre>
       </div>
       <div class="refsect1">
-        <a id="idm168982"></a>
+        <a id="idm236166"></a>
         <h2>Initialization</h2>
         <p>
      The opcode locates a P5 Glove attached to the computer by USB,
@@ -65,7 +65,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm168985"></a>
+        <a id="idm236169"></a>
         <h2>Performance</h2>
         <p>
       Every control cycle the glove is polled for its position, and
@@ -74,90 +74,90 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm168989"></a>
+        <a id="idm236173"></a>
         <h2>Example</h2>
         <p>
       Here is an example of the p5g opcodes. It uses the file <a class="ulink" href="examples/p5g.csd" target="_top"><em class="citetitle">p5g.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm168994"></a>
+          <a id="idm236178"></a>
           <p class="title">
             <strong>Example 718. Example of the p5g opcodes.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm169001"></a>
+              <a id="idm236185"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 -+rtaudio=alsa -o dac:hw:0
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000</span><span class="w">
 
-<span class="cp">#define</span> <span class="cp">P5G_BUTTONS</span>     <span class="p">#</span><span class="cp">0</span><span class="p">#</span>
-<span class="cp">#define</span> <span class="cp">P5G_BUTTON_A</span>    <span class="p">#</span><span class="cp">1</span><span class="p">#</span>
-<span class="cp">#define</span> <span class="cp">P5G_BUTTON_B</span>    <span class="p">#</span><span class="cp">2</span><span class="p">#</span>
-<span class="cp">#define</span> <span class="cp">P5G_BUTTON_C</span>    <span class="p">#</span><span class="cp">4</span><span class="p">#</span>
-<span class="cp">#define</span> <span class="cp">P5G_JUSTPUSH</span>    <span class="p">#</span><span class="cp">8</span><span class="p">#</span>
-<span class="cp">#define</span> <span class="cp">P5G_JUSTPU_A</span>    <span class="p">#</span><span class="cp">9</span><span class="p">#</span>
-<span class="cp">#define</span> <span class="cp">P5G_JUSTPU_B</span>    <span class="p">#</span><span class="cp">10</span><span class="p">#</span>
-<span class="cp">#define</span> <span class="cp">P5G_JUSTPU_C</span>    <span class="p">#</span><span class="cp">12</span><span class="p">#</span>
-<span class="cp">#define</span> <span class="cp">P5G_RELEASED</span>    <span class="p">#</span><span class="cp">16</span><span class="p">#</span>
-<span class="cp">#define</span> <span class="cp">P5G_RELSED_A</span>    <span class="p">#</span><span class="cp">17</span><span class="p">#</span>
-<span class="cp">#define</span> <span class="cp">P5G_RELSED_B</span>    <span class="p">#</span><span class="cp">18</span><span class="p">#</span>
-<span class="cp">#define</span> <span class="cp">P5G_RELSED_C</span>    <span class="p">#</span><span class="cp">20</span><span class="p">#</span>
-<span class="cp">#define</span> <span class="cp">P5G_FINGER_INDEX</span> <span class="p">#</span><span class="cp">32</span><span class="p">#</span>
-<span class="cp">#define</span> <span class="cp">P5G_FINGER_MIDDLE</span> <span class="p">#</span><span class="cp">33</span><span class="p">#</span>
-<span class="cp">#define</span> <span class="cp">P5G_FINGER_RING</span>	 <span class="p">#</span><span class="cp">34</span><span class="p">#</span>
-<span class="cp">#define</span> <span class="cp">P5G_FINGER_PINKY</span> <span class="p">#</span><span class="cp">35</span><span class="p">#</span>
-<span class="cp">#define</span> <span class="cp">P5G_FINGER_THUMB</span> <span class="p">#</span><span class="cp">36</span><span class="p">#</span>
-<span class="cp">#define</span> <span class="cp">P5G_DELTA_X</span>     <span class="p">#</span><span class="cp">37</span><span class="p">#</span>
-<span class="cp">#define</span> <span class="cp">P5G_DELTA_Y</span>     <span class="p">#</span><span class="cp">38</span><span class="p">#</span>
-<span class="cp">#define</span> <span class="cp">P5G_DELTA_Z</span>     <span class="p">#</span><span class="cp">39</span><span class="p">#</span>
-<span class="cp">#define</span> <span class="cp">P5G_DELTA_XR</span>    <span class="p">#</span><span class="cp">40</span><span class="p">#</span>
-<span class="cp">#define</span> <span class="cp">P5G_DELTA_YR</span>    <span class="p">#</span><span class="cp">41</span><span class="p">#</span>
-<span class="cp">#define</span> <span class="cp">P5G_DELTA_ZR</span>    <span class="p">#</span><span class="cp">42</span><span class="p">#</span>
-<span class="cp">#define</span> <span class="cp">P5G_ANGLES</span>      <span class="p">#</span><span class="cp">43</span><span class="p">#</span>
+</span><span class="cp">#define</span><span class="w"> </span><span class="cp">P5G_BUTTONS</span><span class="w">     </span><span class="p">#</span><span class="cp">0</span><span class="p">#</span><span class="w">
+</span><span class="cp">#define</span><span class="w"> </span><span class="cp">P5G_BUTTON_A</span><span class="w">    </span><span class="p">#</span><span class="cp">1</span><span class="p">#</span><span class="w">
+</span><span class="cp">#define</span><span class="w"> </span><span class="cp">P5G_BUTTON_B</span><span class="w">    </span><span class="p">#</span><span class="cp">2</span><span class="p">#</span><span class="w">
+</span><span class="cp">#define</span><span class="w"> </span><span class="cp">P5G_BUTTON_C</span><span class="w">    </span><span class="p">#</span><span class="cp">4</span><span class="p">#</span><span class="w">
+</span><span class="cp">#define</span><span class="w"> </span><span class="cp">P5G_JUSTPUSH</span><span class="w">    </span><span class="p">#</span><span class="cp">8</span><span class="p">#</span><span class="w">
+</span><span class="cp">#define</span><span class="w"> </span><span class="cp">P5G_JUSTPU_A</span><span class="w">    </span><span class="p">#</span><span class="cp">9</span><span class="p">#</span><span class="w">
+</span><span class="cp">#define</span><span class="w"> </span><span class="cp">P5G_JUSTPU_B</span><span class="w">    </span><span class="p">#</span><span class="cp">10</span><span class="p">#</span><span class="w">
+</span><span class="cp">#define</span><span class="w"> </span><span class="cp">P5G_JUSTPU_C</span><span class="w">    </span><span class="p">#</span><span class="cp">12</span><span class="p">#</span><span class="w">
+</span><span class="cp">#define</span><span class="w"> </span><span class="cp">P5G_RELEASED</span><span class="w">    </span><span class="p">#</span><span class="cp">16</span><span class="p">#</span><span class="w">
+</span><span class="cp">#define</span><span class="w"> </span><span class="cp">P5G_RELSED_A</span><span class="w">    </span><span class="p">#</span><span class="cp">17</span><span class="p">#</span><span class="w">
+</span><span class="cp">#define</span><span class="w"> </span><span class="cp">P5G_RELSED_B</span><span class="w">    </span><span class="p">#</span><span class="cp">18</span><span class="p">#</span><span class="w">
+</span><span class="cp">#define</span><span class="w"> </span><span class="cp">P5G_RELSED_C</span><span class="w">    </span><span class="p">#</span><span class="cp">20</span><span class="p">#</span><span class="w">
+</span><span class="cp">#define</span><span class="w"> </span><span class="cp">P5G_FINGER_INDEX</span><span class="w"> </span><span class="p">#</span><span class="cp">32</span><span class="p">#</span><span class="w">
+</span><span class="cp">#define</span><span class="w"> </span><span class="cp">P5G_FINGER_MIDDLE</span><span class="w"> </span><span class="p">#</span><span class="cp">33</span><span class="p">#</span><span class="w">
+</span><span class="cp">#define</span><span class="w"> </span><span class="cp">P5G_FINGER_RING</span><span class="w">	 </span><span class="p">#</span><span class="cp">34</span><span class="p">#</span><span class="w">
+</span><span class="cp">#define</span><span class="w"> </span><span class="cp">P5G_FINGER_PINKY</span><span class="w"> </span><span class="p">#</span><span class="cp">35</span><span class="p">#</span><span class="w">
+</span><span class="cp">#define</span><span class="w"> </span><span class="cp">P5G_FINGER_THUMB</span><span class="w"> </span><span class="p">#</span><span class="cp">36</span><span class="p">#</span><span class="w">
+</span><span class="cp">#define</span><span class="w"> </span><span class="cp">P5G_DELTA_X</span><span class="w">     </span><span class="p">#</span><span class="cp">37</span><span class="p">#</span><span class="w">
+</span><span class="cp">#define</span><span class="w"> </span><span class="cp">P5G_DELTA_Y</span><span class="w">     </span><span class="p">#</span><span class="cp">38</span><span class="p">#</span><span class="w">
+</span><span class="cp">#define</span><span class="w"> </span><span class="cp">P5G_DELTA_Z</span><span class="w">     </span><span class="p">#</span><span class="cp">39</span><span class="p">#</span><span class="w">
+</span><span class="cp">#define</span><span class="w"> </span><span class="cp">P5G_DELTA_XR</span><span class="w">    </span><span class="p">#</span><span class="cp">40</span><span class="p">#</span><span class="w">
+</span><span class="cp">#define</span><span class="w"> </span><span class="cp">P5G_DELTA_YR</span><span class="w">    </span><span class="p">#</span><span class="cp">41</span><span class="p">#</span><span class="w">
+</span><span class="cp">#define</span><span class="w"> </span><span class="cp">P5G_DELTA_ZR</span><span class="w">    </span><span class="p">#</span><span class="cp">42</span><span class="p">#</span><span class="w">
+</span><span class="cp">#define</span><span class="w"> </span><span class="cp">P5G_ANGLES</span><span class="w">      </span><span class="p">#</span><span class="cp">43</span><span class="p">#</span><span class="w">
 
-gk<span class="n">a</span>   <span class="nb">init</span> <span class="mi">0</span>
-gk<span class="n">p</span>   <span class="nb">init</span> <span class="mi">0</span>
+</span>gk<span class="n">a</span><span class="w">   </span><span class="nb">init</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span>gk<span class="n">p</span><span class="w">   </span><span class="nb">init</span><span class="w"> </span><span class="mi">0</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>  
-      <span class="nb">p5gconnect</span>
-  k<span class="n">a</span>  <span class="nb">p5gdata</span>    <span class="cp">$P5G_JUSTPU_A.</span>
-  k<span class="n">c</span>  <span class="nb">p5gdata</span>    <span class="cp">$P5G_BUTTON_C.</span>
-<span class="c1">; If the A button is just pressed then activate a note</span>
-  <span class="k">if</span>  <span class="p">(</span>k<span class="n">a</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span>    <span class="k">goto</span> <span class="nl">ee</span>
-  <span class="nb">event</span>          <span class="s">"i"</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">  
+      </span><span class="nb">p5gconnect</span><span class="w">
+  </span>k<span class="n">a</span><span class="w">  </span><span class="nb">p5gdata</span><span class="w">    </span><span class="cp">$P5G_JUSTPU_A.</span><span class="w">
+  </span>k<span class="n">c</span><span class="w">  </span><span class="nb">p5gdata</span><span class="w">    </span><span class="cp">$P5G_BUTTON_C.</span><span class="w">
+</span><span class="c1">; If the A button is just pressed then activate a note</span><span class="w">
+  </span><span class="k">if</span><span class="w">  </span><span class="p">(</span>k<span class="n">a</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span><span class="w">    </span><span class="k">goto</span><span class="w"> </span><span class="nl">ee</span><span class="w">
+  </span><span class="nb">event</span><span class="w">          </span><span class="s">"i"</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">
 
-<span class="nl">ee</span><span class="p">:</span>
-  gk<span class="n">a</span> <span class="nb">p5gdata</span>    <span class="cp">$P5G_DELTA_X.</span>
-  gk<span class="n">p</span> <span class="nb">p5gdata</span>    <span class="cp">$P5G_DELTA_Y.</span>
-  <span class="nb">printk2</span> gk<span class="n">a</span>
-  <span class="nb">printk2</span> gk<span class="n">p</span>
-  <span class="k">if</span>  <span class="p">(</span>k<span class="n">c</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span>    <span class="k">goto</span> <span class="nl">ff</span>
-  <span class="nb">printks</span> <span class="s">"turning off (</span><span class="si">%d</span><span class="s">)</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> k<span class="n">c</span> 
-  <span class="nb">turnoff</span>
-<span class="nl">ff</span><span class="p">:</span>
-<span class="kd">endin</span>
+</span><span class="nl">ee</span><span class="p">:</span><span class="w">
+  </span>gk<span class="n">a</span><span class="w"> </span><span class="nb">p5gdata</span><span class="w">    </span><span class="cp">$P5G_DELTA_X.</span><span class="w">
+  </span>gk<span class="n">p</span><span class="w"> </span><span class="nb">p5gdata</span><span class="w">    </span><span class="cp">$P5G_DELTA_Y.</span><span class="w">
+  </span><span class="nb">printk2</span><span class="w"> </span>gk<span class="n">a</span><span class="w">
+  </span><span class="nb">printk2</span><span class="w"> </span>gk<span class="n">p</span><span class="w">
+  </span><span class="k">if</span><span class="w">  </span><span class="p">(</span>k<span class="n">c</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span><span class="w">    </span><span class="k">goto</span><span class="w"> </span><span class="nl">ff</span><span class="w">
+  </span><span class="nb">printks</span><span class="w"> </span><span class="s">"turning off (</span><span class="si">%d</span><span class="s">)</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span>k<span class="n">c</span><span class="w"> 
+  </span><span class="nb">turnoff</span><span class="w">
+</span><span class="nl">ff</span><span class="p">:</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">2</span>
-  a<span class="n">1</span> <span class="nb">oscil</span>  <span class="nb">ampdbfs</span><span class="p">(</span>gk<span class="n">p</span><span class="p">),</span> <span class="mi">440</span><span class="o">+</span><span class="mi">100</span><span class="o">*</span>gk<span class="n">a</span><span class="p">,</span> <span class="mi">1</span>
-<span class="c1">;;  a1 oscil  10000, 440, 1</span>
-     <span class="nb">out</span>   a<span class="n">1</span>
-<span class="kd">endin</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">
+  </span>a<span class="n">1</span><span class="w"> </span><span class="nb">oscil</span><span class="w">  </span><span class="nb">ampdbfs</span><span class="p">(</span>gk<span class="n">p</span><span class="p">),</span><span class="w"> </span><span class="mi">440</span><span class="o">+</span><span class="mi">100</span><span class="o">*</span>gk<span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="c1">;;  a1 oscil  10000, 440, 1</span><span class="w">
+     </span><span class="nb">out</span><span class="w">   </span>a<span class="n">1</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
 
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">f</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">4096</span> <span class="mi">10</span> <span class="mi">1</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">300</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">f</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">4096</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">300</span><span class="w">
 
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsScore&gt;</span>
 
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
@@ -168,14 +168,14 @@ gk<span class="n">p</span>   <span class="nb">init</span> <span class="mi">0</sp
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm169232"></a>
+        <a id="idm236562"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="p5gdata.html" title="p5gdata"><em class="citetitle">p5gdata</em></a>,
      </p>
       </div>
       <div class="refsect1">
-        <a id="idm169237"></a>
+        <a id="idm236567"></a>
         <h2>Credits</h2>
         <p>
       </p>

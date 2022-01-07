@@ -39,19 +39,19 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm191532"></a>
+        <a id="idm269498"></a>
         <h2>Description</h2>
         <p>
       Create an fsig stream by reading a selected channel from a PVOC-EX analysis file loaded into memory, with frame interpolation. Only format 0 files (amplitude+frequency) are currently supported. The operation of this opcode mirrors that of pvoc, but outputs an fsig instead of a resynthesized signal.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm191535"></a>
+        <a id="idm269501"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">fsig <span class="command"><strong>pvsfread</strong></span> ktimpt, ifn [, ichan]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm191539"></a>
+        <a id="idm269505"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>ifn</em></span> -- Name of the analysis file. This must have the .pvx file extension.
@@ -64,7 +64,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm191548"></a>
+        <a id="idm269514"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>ktimpt</em></span> -- Time pointer into analysis file, in seconds. See the description of the same parameter of <a class="link" href="pvoc.html" title="pvoc"><em class="citetitle">pvoc</em></a> for usage.
@@ -74,20 +74,20 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm191555"></a>
+        <a id="idm269521"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the pvsfread opcode. It uses the file <a class="ulink" href="examples/pvsfread.csd" target="_top"><em class="citetitle">pvsfread.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm191560"></a>
+          <a id="idm269526"></a>
           <p class="title">
             <strong>Example 825. Example of the pvsfread opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm191567"></a>
+              <a id="idm269533"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -97,32 +97,32 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o pvsfread.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span> 
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span> 
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span> 
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w"> 
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w"> 
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> 
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
 
-<span class="c1">; analyze sound file, creating a PVOC-EX file</span>
-i<span class="n">res1</span> <span class="nb">system_i</span> <span class="mi">1</span><span class="p">,</span><span class="s">{{ pvanal stereoJungle.wav stereoJungle.pvx }}</span> <span class="c1">; default settings</span>
+</span><span class="c1">; analyze sound file, creating a PVOC-EX file</span><span class="w">
+</span>i<span class="n">res1</span><span class="w"> </span><span class="nb">system_i</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="s">{{ pvanal stereoJungle.wav stereoJungle.pvx }}</span><span class="w"> </span><span class="c1">; default settings</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>
-<span class="c1">; create a PVOC-EX (*.pvx) file with PVANAL first</span>
-i<span class="n">dur</span>  <span class="nb">filelen</span>   <span class="s">"stereoJungle.pvx"</span>      <span class="c1">;find duration of (stereo) analysis file</span>
-k<span class="n">pos</span>  <span class="nb">line</span>      <span class="mi">0</span><span class="p">,</span><span class="vi">p3</span><span class="p">,</span>i<span class="n">dur</span>               <span class="c1">;to ensure we process whole file</span>
-f<span class="n">sigr</span> <span class="nb">pvsfread</span>  k<span class="n">pos</span><span class="p">,</span><span class="s">"stereoJungle.pvx"</span><span class="p">,</span> <span class="mi">1</span>  <span class="c1">;create fsig from right channel</span>
-a<span class="n">out</span>  <span class="nb">pvsynth</span>   f<span class="n">sigr</span>                   <span class="c1">;resynthesise it</span>
-      <span class="nb">outs</span>  a<span class="n">out</span><span class="p">,</span> a<span class="n">out</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+</span><span class="c1">; create a PVOC-EX (*.pvx) file with PVANAL first</span><span class="w">
+</span>i<span class="n">dur</span><span class="w">  </span><span class="nb">filelen</span><span class="w">   </span><span class="s">"stereoJungle.pvx"</span><span class="w">      </span><span class="c1">;find duration of (stereo) analysis file</span><span class="w">
+</span>k<span class="n">pos</span><span class="w">  </span><span class="nb">line</span><span class="w">      </span><span class="mi">0</span><span class="p">,</span><span class="vi">p3</span><span class="p">,</span>i<span class="n">dur</span><span class="w">               </span><span class="c1">;to ensure we process whole file</span><span class="w">
+</span>f<span class="n">sigr</span><span class="w"> </span><span class="nb">pvsfread</span><span class="w">  </span>k<span class="n">pos</span><span class="p">,</span><span class="s">"stereoJungle.pvx"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="c1">;create fsig from right channel</span><span class="w">
+</span>a<span class="n">out</span><span class="w">  </span><span class="nb">pvsynth</span><span class="w">   </span>f<span class="n">sigr</span><span class="w">                   </span><span class="c1">;resynthesise it</span><span class="w">
+      </span><span class="nb">outs</span><span class="w">  </span>a<span class="n">out</span><span class="p">,</span><span class="w"> </span>a<span class="n">out</span><span class="w">
 
-<span class="kd">endin</span>
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
+</span><span class="kd">endin</span><span class="w">
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">20</span>    <span class="c1">; slow down</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">21</span> <span class="mi">1</span>    <span class="c1">; speed up</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">20</span><span class="w">    </span><span class="c1">; slow down</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">21</span><span class="w"> </span><span class="mi">1</span><span class="w">    </span><span class="c1">; speed up</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -132,18 +132,18 @@ a<span class="n">out</span>  <span class="nb">pvsynth</span>   f<span class="n">
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm191644"></a>
+        <a id="idm269664"></a>
         <p>
       Here is another example of the pvsfread opcode. It uses the file <a class="ulink" href="examples/pvsfread-2.csd" target="_top"><em class="citetitle">pvsfread-2.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm191648"></a>
+          <a id="idm269668"></a>
           <p class="title">
             <strong>Example 826. Another example of the pvsfread opcode.</strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
-              <a id="idm191650"></a>
+              <a id="idm269670"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -153,47 +153,47 @@ a<span class="n">out</span>  <span class="nb">pvsynth</span>   f<span class="n">
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o pvsfread-2.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span> 
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span> 
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span> 
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w"> 
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w"> 
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> 
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span> <span class="c1">; play and analyze sound file, but one channel only</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w"> </span><span class="c1">; play and analyze sound file, but one channel only</span><span class="w">
 
-i<span class="n">dur</span>    <span class="nb">filelen</span>   <span class="s">"stereoJungle.wav"</span>        <span class="c1">; check duration of sample  </span>
-<span class="nb">prints</span>  <span class="s">"</span><span class="se">\n</span><span class="s">sound file duration = </span><span class="si">%f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> i<span class="n">dur</span>
-i<span class="n">chn</span>    <span class="nb">filenchnls</span>  <span class="s">"stereoJungle.wav"</span>      <span class="c1">; check channels- a stereo sound!</span>
-<span class="nb">prints</span>  <span class="s">"number of channels = </span><span class="si">%f</span><span class="se">\n\n</span><span class="s">"</span><span class="p">,</span> i<span class="n">chn</span>
+</span>i<span class="n">dur</span><span class="w">    </span><span class="nb">filelen</span><span class="w">   </span><span class="s">"stereoJungle.wav"</span><span class="w">        </span><span class="c1">; check duration of sample  </span><span class="w">
+</span><span class="nb">prints</span><span class="w">  </span><span class="s">"</span><span class="se">\n</span><span class="s">sound file duration = </span><span class="si">%f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span>i<span class="n">dur</span><span class="w">
+</span>i<span class="n">chn</span><span class="w">    </span><span class="nb">filenchnls</span><span class="w">  </span><span class="s">"stereoJungle.wav"</span><span class="w">      </span><span class="c1">; check channels- a stereo sound!</span><span class="w">
+</span><span class="nb">prints</span><span class="w">  </span><span class="s">"number of channels = </span><span class="si">%f</span><span class="se">\n\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span>i<span class="n">chn</span><span class="w">
 
-a<span class="n">sigL</span><span class="p">,</span> a<span class="n">sigR</span> <span class="nb">diskin2</span> <span class="s">"stereoJungle.wav"</span>     <span class="c1">; stereo sound file</span>
-f<span class="n">ss</span> <span class="nb">pvsanal</span>  a<span class="n">sigR</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="mi">0</span>      <span class="c1">; choose which channel- here the Right channel</span>
-<span class="nb">pvsfwrite</span> f<span class="n">ss</span><span class="p">,</span> <span class="s">"stereoJungle.pvx"</span>           <span class="c1">; write that analyzed channel to pvocex file</span>
-a<span class="n">se</span> <span class="nb">pvsynth</span> f<span class="n">ss</span>                             <span class="c1">; lets hear it</span>
-<span class="nb">outs</span> a<span class="n">se</span><span class="p">,</span> a<span class="n">se</span>
+</span>a<span class="n">sigL</span><span class="p">,</span><span class="w"> </span>a<span class="n">sigR</span><span class="w"> </span><span class="nb">diskin2</span><span class="w"> </span><span class="s">"stereoJungle.wav"</span><span class="w">     </span><span class="c1">; stereo sound file</span><span class="w">
+</span>f<span class="n">ss</span><span class="w"> </span><span class="nb">pvsanal</span><span class="w">  </span>a<span class="n">sigR</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">256</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">      </span><span class="c1">; choose which channel- here the Right channel</span><span class="w">
+</span><span class="nb">pvsfwrite</span><span class="w"> </span>f<span class="n">ss</span><span class="p">,</span><span class="w"> </span><span class="s">"stereoJungle.pvx"</span><span class="w">           </span><span class="c1">; write that analyzed channel to pvocex file</span><span class="w">
+</span>a<span class="n">se</span><span class="w"> </span><span class="nb">pvsynth</span><span class="w"> </span>f<span class="n">ss</span><span class="w">                             </span><span class="c1">; lets hear it</span><span class="w">
+</span><span class="nb">outs</span><span class="w"> </span>a<span class="n">se</span><span class="p">,</span><span class="w"> </span>a<span class="n">se</span><span class="w">
 
-<span class="kd">endin</span>
+</span><span class="kd">endin</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">2</span> <span class="c1">; must be called after instr 1 finishes</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w"> </span><span class="c1">; must be called after instr 1 finishes</span><span class="w">
 
-<span class="nb">prints</span>  <span class="s">"</span><span class="se">\n</span><span class="s">--**analyzed file is played back**--</span><span class="se">\n\n</span><span class="s">"</span>
-i<span class="n">dur</span>    <span class="nb">filelen</span>   <span class="s">"stereoJungle.pvx"</span>        <span class="c1">; find duration of (stereo) analysis file</span>
-k<span class="n">pos</span>  <span class="nb">line</span>      <span class="mi">0</span><span class="p">,</span><span class="vi">p3</span><span class="p">,</span>i<span class="n">dur</span>                   <span class="c1">; to ensure we process whole file</span>
-f<span class="n">sigr</span> <span class="nb">pvsfread</span>  k<span class="n">pos</span><span class="p">,</span><span class="s">"stereoJungle.pvx"</span><span class="p">,</span> <span class="mi">0</span>  <span class="c1">; read the fsig from this (= Right) channel</span>
-a<span class="n">out</span>  <span class="nb">pvsynth</span>   f<span class="n">sigr</span>                       <span class="c1">; resynthesise it</span>
-<span class="nb">outs</span>    a<span class="n">out</span><span class="p">,</span> a<span class="n">out</span>
+</span><span class="nb">prints</span><span class="w">  </span><span class="s">"</span><span class="se">\n</span><span class="s">--**analyzed file is played back**--</span><span class="se">\n\n</span><span class="s">"</span><span class="w">
+</span>i<span class="n">dur</span><span class="w">    </span><span class="nb">filelen</span><span class="w">   </span><span class="s">"stereoJungle.pvx"</span><span class="w">        </span><span class="c1">; find duration of (stereo) analysis file</span><span class="w">
+</span>k<span class="n">pos</span><span class="w">  </span><span class="nb">line</span><span class="w">      </span><span class="mi">0</span><span class="p">,</span><span class="vi">p3</span><span class="p">,</span>i<span class="n">dur</span><span class="w">                   </span><span class="c1">; to ensure we process whole file</span><span class="w">
+</span>f<span class="n">sigr</span><span class="w"> </span><span class="nb">pvsfread</span><span class="w">  </span>k<span class="n">pos</span><span class="p">,</span><span class="s">"stereoJungle.pvx"</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">  </span><span class="c1">; read the fsig from this (= Right) channel</span><span class="w">
+</span>a<span class="n">out</span><span class="w">  </span><span class="nb">pvsynth</span><span class="w">   </span>f<span class="n">sigr</span><span class="w">                       </span><span class="c1">; resynthesise it</span><span class="w">
+</span><span class="nb">outs</span><span class="w">    </span>a<span class="n">out</span><span class="p">,</span><span class="w"> </span>a<span class="n">out</span><span class="w">
 
-<span class="kd">endin</span>
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">s</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">7</span>
-<span class="nb">s</span>
-<span class="nb">i</span> <span class="mi">2</span> <span class="mi">0</span> <span class="mi">7</span>
-<span class="nb">i</span> <span class="mi">2</span> <span class="mi">8</span> <span class="mi">4</span>     <span class="c1">; faster</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="kd">endin</span><span class="w">
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">s</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">7</span><span class="w">
+</span><span class="nb">s</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">7</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="mi">4</span><span class="w">     </span><span class="c1">; faster</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -203,7 +203,7 @@ a<span class="n">out</span>  <span class="nb">pvsynth</span>   f<span class="n">
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm191790"></a>
+        <a id="idm269908"></a>
         <h2>Credits</h2>
         <p>
       </p>

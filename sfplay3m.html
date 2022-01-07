@@ -39,19 +39,19 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm217967"></a>
+        <a id="idm308083"></a>
         <h2>Description</h2>
         <p>
       Plays a SoundFont2 (SF2) sample preset, generating a mono sound with cubic interpolation. These opcodes allow management the sample-structure of SF2 files. In order to understand the usage of these opcodes, the user must have some knowledge of the SF2 format, so a brief description of this format can be found in the <a class="link" href="SiggenSample.html" title="Sample Playback"><em class="citetitle">SoundFont2 File Format</em></a> section.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm217972"></a>
+        <a id="idm308088"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ares <span class="command"><strong>sfplay3m</strong></span> ivel, inotenum, xamp, xfreq, ipreindex [, iflag] [, ioffset] [, ienv]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm217976"></a>
+        <a id="idm308092"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>ivel</em></span> -- velocity value
@@ -73,7 +73,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm217992"></a>
+        <a id="idm308108"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>xamp</em></span> -- amplitude correction factor
@@ -107,20 +107,20 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm218032"></a>
+        <a id="idm308148"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the sfplay3m opcode. It uses the file <a class="ulink" href="examples/sfplay3m.csd" target="_top"><em class="citetitle">sfplay3m.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm218037"></a>
+          <a id="idm308153"></a>
           <p class="title">
-            <strong>Example 971. Example of the sfplay3m opcode.</strong>
+            <strong>Example 972. Example of the sfplay3m opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm218044"></a>
+              <a id="idm308160"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -130,42 +130,42 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o sfplay3m.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="c1">; By  Menno Knevel - 2020</span>
+</span><span class="c1">; By  Menno Knevel - 2020</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span> 
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span> 
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w"> 
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> 
 
 
-gi<span class="n">sf</span>	<span class="nb">sfload</span>	<span class="s">"07AcousticGuitar.sf2"</span>
-	<span class="nb">sfplist</span>	gi<span class="n">sf</span>
-	<span class="nb">sfpassign</span> <span class="mi">0</span><span class="p">,</span> gi<span class="n">sf</span>    <span class="c1">; assign the preset to number 00 </span>
+</span>gi<span class="n">sf</span><span class="w">	</span><span class="nb">sfload</span><span class="w">	</span><span class="s">"07AcousticGuitar.sf2"</span><span class="w">
+	</span><span class="nb">sfplist</span><span class="w">	</span>gi<span class="n">sf</span><span class="w">
+	</span><span class="nb">sfpassign</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span>gi<span class="n">sf</span><span class="w">    </span><span class="c1">; assign the preset to number 00 </span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>	
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">	
 
-i<span class="n">num</span>    <span class="o">=</span>   <span class="vi">p4</span>
-i<span class="n">vel</span>    <span class="o">=</span>   <span class="vi">p5</span>
-k<span class="n">amp</span>	<span class="nb">linsegr</span>	<span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> <span class="mi">0</span>
-k<span class="n">amp</span>	<span class="o">=</span> k<span class="n">amp</span><span class="o">/</span><span class="mi">900000</span> <span class="o">*</span> i<span class="n">vel</span>			<span class="c1">;scale amplitude and make velocity dependent</span>
-k<span class="n">freq</span>	<span class="o">=</span>	<span class="mi">1</span>						<span class="c1">;do not change freq from sf</span>
-a<span class="n">out</span>	<span class="nb">sfplay3m</span> i<span class="n">vel</span><span class="p">,</span> i<span class="n">num</span><span class="p">,</span> k<span class="n">amp</span><span class="p">,</span> <span class="vi">p6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>	   <span class="c1">;preset index = 0, set flag to frequency instead of midi pitch</span>
-	<span class="nb">outs</span>	a<span class="n">out</span><span class="p">,</span> a<span class="n">out</span>
+</span>i<span class="n">num</span><span class="w">    </span><span class="o">=</span><span class="w">   </span><span class="vi">p4</span><span class="w">
+</span>i<span class="n">vel</span><span class="w">    </span><span class="o">=</span><span class="w">   </span><span class="vi">p5</span><span class="w">
+</span>k<span class="n">amp</span><span class="w">	</span><span class="nb">linsegr</span><span class="w">	</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">.1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span>k<span class="n">amp</span><span class="w">	</span><span class="o">=</span><span class="w"> </span>k<span class="n">amp</span><span class="o">/</span><span class="mi">900000</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>i<span class="n">vel</span><span class="w">			</span><span class="c1">;scale amplitude and make velocity dependent</span><span class="w">
+</span>k<span class="n">freq</span><span class="w">	</span><span class="o">=</span><span class="w">	</span><span class="mi">1</span><span class="w">						</span><span class="c1">;do not change freq from sf</span><span class="w">
+</span>a<span class="n">out</span><span class="w">	</span><span class="nb">sfplay3m</span><span class="w"> </span>i<span class="n">vel</span><span class="p">,</span><span class="w"> </span>i<span class="n">num</span><span class="p">,</span><span class="w"> </span>k<span class="n">amp</span><span class="p">,</span><span class="w"> </span><span class="vi">p6</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">	   </span><span class="c1">;preset index = 0, set flag to frequency instead of midi pitch</span><span class="w">
+	</span><span class="nb">outs</span><span class="w">	</span>a<span class="n">out</span><span class="p">,</span><span class="w"> </span>a<span class="n">out</span><span class="w">
 	
-<span class="kd">endin</span>
+</span><span class="kd">endin</span><span class="w">
 	
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
 
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">60</span> <span class="mi">127</span> <span class="mi">400</span>   <span class="c1">; take the samples from key 60 and set new frequency</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="mi">60</span> <span class="mi">90</span>   <span class="o">&lt;</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="mi">60</span> <span class="mi">60</span>   <span class="o">&lt;</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="mi">60</span> <span class="mi">10</span>  <span class="mi">200</span>
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="mi">127</span><span class="w"> </span><span class="mi">400</span><span class="w">   </span><span class="c1">; take the samples from key 60 and set new frequency</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="mi">90</span><span class="w">   </span><span class="o">&lt;</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="mi">60</span><span class="w">   </span><span class="o">&lt;</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="mi">10</span><span class="w">  </span><span class="mi">200</span><span class="w">
 
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -175,7 +175,7 @@ a<span class="n">out</span>	<span class="nb">sfplay3m</span> i<span class="n">ve
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm218162"></a>
+        <a id="idm308366"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="sfilist.html" title="sfilist"><em class="citetitle">sfilist</em></a>,
@@ -193,7 +193,7 @@ a<span class="n">out</span>	<span class="nb">sfplay3m</span> i<span class="n">ve
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm218189"></a>
+        <a id="idm308393"></a>
         <h2>Credits</h2>
         <p>
       </p>

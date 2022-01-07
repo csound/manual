@@ -39,7 +39,7 @@ Phase vocoder analysis processing with onset detection/processing.
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm195292"></a>
+        <a id="idm275076"></a>
         <h2>Description</h2>
         <p>
 <span class="emphasis"><em>pvstanal</em></span> implements phase vocoder analysis by reading function tables
@@ -54,13 +54,13 @@ This opcode allows for time and frequency-independent scaling. Time is advanced 
   </p>
       </div>
       <div class="refsect1">
-        <a id="idm195302"></a>
+        <a id="idm275086"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">fsig <span class="command"><strong>pvstanal</strong></span> ktimescal, kamp, kpitch, ktab, [kdetect, kwrap, ioffset,ifftsize, ihop, idbthresh]
       </pre>
       </div>
       <div class="refsect1">
-        <a id="idm195306"></a>
+        <a id="idm275090"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>ifftsize</em></span> -- FFT size (power-of-two), defaults to 2048.
@@ -77,7 +77,7 @@ This opcode allows for time and frequency-independent scaling. Time is advanced 
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm195316"></a>
+        <a id="idm275100"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>ktimescal</em></span> -- timescaling ratio, &lt; 1 stretch, &gt; 1 contract.
@@ -102,20 +102,20 @@ It suspends timescaling momentarily so the onsets are not modified. The default 
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm195332"></a>
+        <a id="idm275116"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the pvstanal opcode. It uses the file <a class="ulink" href="examples/pvstanal.csd" target="_top"><em class="citetitle">pvstanal.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm195337"></a>
+          <a id="idm275121"></a>
           <p class="title">
             <strong>Example 848. Example of the pvstanal opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm195344"></a>
+              <a id="idm275128"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -125,41 +125,41 @@ It suspends timescaling momentarily so the onsets are not modified. The default 
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o pvstanal.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-gi<span class="n">fil</span>     <span class="nb">ftgen</span>     <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"fox.wav"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+</span>gi<span class="n">fil</span><span class="w">     </span><span class="nb">ftgen</span><span class="w">     </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">"fox.wav"</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
 
-f<span class="n">sig</span>      <span class="nb">pvstanal</span>  <span class="vi">p4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> gi<span class="n">fil</span><span class="p">,</span> <span class="vi">p6</span><span class="p">,</span> <span class="vi">p7</span>
-a<span class="n">out</span>      <span class="nb">pvsynth</span>   f<span class="n">sig</span>
-          <span class="nb">outs</span>      a<span class="n">out</span><span class="p">,</span> a<span class="n">out</span>
-<span class="kd">endin</span>
+</span>f<span class="n">sig</span><span class="w">      </span><span class="nb">pvstanal</span><span class="w">  </span><span class="vi">p4</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="vi">p5</span><span class="p">,</span><span class="w"> </span>gi<span class="n">fil</span><span class="p">,</span><span class="w"> </span><span class="vi">p6</span><span class="p">,</span><span class="w"> </span><span class="vi">p7</span><span class="w">
+</span>a<span class="n">out</span><span class="w">      </span><span class="nb">pvsynth</span><span class="w">   </span>f<span class="n">sig</span><span class="w">
+          </span><span class="nb">outs</span><span class="w">      </span>a<span class="n">out</span><span class="p">,</span><span class="w"> </span>a<span class="n">out</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">2</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">
 
-k<span class="n">speed</span>    <span class="nb">randi</span>     <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span> <span class="c1">;speed randomly between -2 and 2</span>
-k<span class="n">pitch</span>    <span class="nb">randi</span>     <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span> <span class="c1">;pitch between 2 octaves lower or higher</span>
-f<span class="n">sig</span>      <span class="nb">pvstanal</span>  k<span class="n">speed</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">octave</span><span class="p">(</span>k<span class="n">pitch</span><span class="p">),</span> gi<span class="n">fil</span>
-a<span class="n">out</span>      <span class="nb">pvsynth</span>   f<span class="n">sig</span>
-          <span class="nb">outs</span>      a<span class="n">out</span><span class="p">,</span> a<span class="n">out</span>
-<span class="kd">endin</span>
+</span>k<span class="n">speed</span><span class="w">    </span><span class="nb">randi</span><span class="w">     </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="c1">;speed randomly between -2 and 2</span><span class="w">
+</span>k<span class="n">pitch</span><span class="w">    </span><span class="nb">randi</span><span class="w">     </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="c1">;pitch between 2 octaves lower or higher</span><span class="w">
+</span>f<span class="n">sig</span><span class="w">      </span><span class="nb">pvstanal</span><span class="w">  </span>k<span class="n">speed</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">octave</span><span class="p">(</span>k<span class="n">pitch</span><span class="p">),</span><span class="w"> </span>gi<span class="n">fil</span><span class="w">
+</span>a<span class="n">out</span><span class="w">      </span><span class="nb">pvsynth</span><span class="w">   </span>f<span class="n">sig</span><span class="w">
+          </span><span class="nb">outs</span><span class="w">      </span>a<span class="n">out</span><span class="p">,</span><span class="w"> </span>a<span class="n">out</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="c1">;           speed pch det wrap</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mf">2.757</span> <span class="mi">1</span>     <span class="mi">1</span>   <span class="mi">0</span>   <span class="mi">0</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">3</span> <span class="o">.</span>     <span class="mi">2</span>     <span class="mi">1</span>   <span class="mi">0</span>   <span class="mi">0</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">6</span> <span class="o">.</span>     <span class="mi">2</span>     <span class="mi">1</span>   <span class="mi">0</span>   <span class="mi">1</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">9</span> <span class="o">.</span>     <span class="mi">1</span>     <span class="mf">.75</span>
-<span class="nb">i</span> <span class="mi">2</span> <span class="mi">12</span> <span class="mi">10</span> <span class="c1">;random scratching</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="c1">;           speed pch det wrap</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">2.757</span><span class="w"> </span><span class="mi">1</span><span class="w">     </span><span class="mi">1</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">.</span><span class="w">     </span><span class="mi">2</span><span class="w">     </span><span class="mi">1</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="o">.</span><span class="w">     </span><span class="mi">2</span><span class="w">     </span><span class="mi">1</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="mi">1</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="o">.</span><span class="w">     </span><span class="mi">1</span><span class="w">     </span><span class="mf">.75</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="c1">;random scratching</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -169,7 +169,7 @@ a<span class="n">out</span>      <span class="nb">pvsynth</span>   f<span class=
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm195485"></a>
+        <a id="idm275374"></a>
         <h2>Credits</h2>
         <p>
       </p>

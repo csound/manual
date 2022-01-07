@@ -51,19 +51,19 @@
         </table>
       </div>
       <div class="refsect1">
-        <a id="idm64851"></a>
+        <a id="idm87606"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ihandle <span class="command"><strong>dssiinit</strong></span> ilibraryname, iplugindex [, iverbose] </pre>
       </div>
       <div class="refsect1">
-        <a id="idm64855"></a>
+        <a id="idm87610"></a>
         <h2>Description</h2>
         <p>Plugin opcode in dssi4cs.</p>
         <p><span class="emphasis"><em>dssiinit</em></span> is used to load a DSSI or LADSPA plugin into memory for use with
       the other dssi4cs opcodes. Both LADSPA effects and DSSI instruments can be used.</p>
       </div>
       <div class="refsect1">
-        <a id="idm64860"></a>
+        <a id="idm87615"></a>
         <h2>Initialization</h2>
         <p><span class="emphasis"><em>ihandle</em></span> - the number which identifies the
       plugin, to be passed to other dssi4cs opcodes.</p>
@@ -83,19 +83,19 @@
       <span class="emphasis"><em>dssiinit</em></span> may cause audio stream breakups when used in realtime, so it is recommended to load all plugins to be used before playing.</p>
       </div>
       <div class="refsect1">
-        <a id="idm64888"></a>
+        <a id="idm87643"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the dssinit opcode. It uses the file <a class="ulink" href="examples/dssiinit.csd" target="_top"><em class="citetitle">dssiinit.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm64893"></a>
+          <a id="idm87648"></a>
           <p class="title">
             <strong>Example 251. Example of the dssiinit opcode. (Remember to change the Library name)</strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
-              <a id="idm64895"></a>
+              <a id="idm87650"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -105,53 +105,53 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o dssiinit.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
 
-gi<span class="n">handle</span> <span class="nb">dssiinit</span> <span class="s">"g2reverb.so"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
-ga<span class="n">out</span>    <span class="nb">init</span>  <span class="mi">0</span>
+</span>gi<span class="n">handle</span><span class="w"> </span><span class="nb">dssiinit</span><span class="w"> </span><span class="s">"g2reverb.so"</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span>ga<span class="n">out</span><span class="w">    </span><span class="nb">init</span><span class="w">  </span><span class="mi">0</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>	<span class="c1">; activate DSSI</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">	</span><span class="c1">; activate DSSI</span><span class="w">
 
-<span class="nb">dssiactivate</span> gi<span class="n">handle</span><span class="p">,</span> <span class="mi">1</span>
-<span class="kd">endin</span>
+</span><span class="nb">dssiactivate</span><span class="w"> </span>gi<span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">2</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">
 
-a<span class="n">in1</span>	<span class="nb">diskin2</span> <span class="s">"beats.wav"</span><span class="p">,</span> <span class="mi">1</span>
+</span>a<span class="n">in1</span><span class="w">	</span><span class="nb">diskin2</span><span class="w"> </span><span class="s">"beats.wav"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-ga<span class="n">out</span> <span class="o">=</span> ga<span class="n">out</span><span class="o">+</span><span class="p">(</span>a<span class="n">in1</span><span class="o">*</span><span class="mf">.3</span><span class="p">)</span>
-<span class="kd">endin</span>
+</span>ga<span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>ga<span class="n">out</span><span class="o">+</span><span class="p">(</span>a<span class="n">in1</span><span class="o">*</span><span class="mf">.3</span><span class="p">)</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">3</span> 
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">3</span><span class="w"> 
 	
-<span class="nb">dssictls</span> gi<span class="n">handle</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1</span>	<span class="c1">; room 10 to 150 </span>
-<span class="nb">dssictls</span> gi<span class="n">handle</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>	<span class="c1">; reverb time 1 to 20</span>
-<span class="nb">dssictls</span> gi<span class="n">handle</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mi">1</span>	<span class="c1">; input bandwith 0 to 1</span>
-<span class="nb">dssictls</span> gi<span class="n">handle</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mf">.25</span><span class="p">,</span> <span class="mi">1</span>	<span class="c1">; damping 0 to 1</span>
-<span class="nb">dssictls</span> gi<span class="n">handle</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>	<span class="c1">; dry -80 to 0</span>
-<span class="nb">dssictls</span> gi<span class="n">handle</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>	<span class="c1">; reflections -80 to 0</span>
-<span class="nb">dssictls</span> gi<span class="n">handle</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">1</span>	<span class="c1">; rev. tail -80 to 0</span>
-<span class="kd">endin</span>
+</span><span class="nb">dssictls</span><span class="w"> </span>gi<span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">	</span><span class="c1">; room 10 to 150 </span><span class="w">
+</span><span class="nb">dssictls</span><span class="w"> </span>gi<span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">	</span><span class="c1">; reverb time 1 to 20</span><span class="w">
+</span><span class="nb">dssictls</span><span class="w"> </span>gi<span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mf">.5</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">	</span><span class="c1">; input bandwith 0 to 1</span><span class="w">
+</span><span class="nb">dssictls</span><span class="w"> </span>gi<span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mf">.25</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">	</span><span class="c1">; damping 0 to 1</span><span class="w">
+</span><span class="nb">dssictls</span><span class="w"> </span>gi<span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">	</span><span class="c1">; dry -80 to 0</span><span class="w">
+</span><span class="nb">dssictls</span><span class="w"> </span>gi<span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">	</span><span class="c1">; reflections -80 to 0</span><span class="w">
+</span><span class="nb">dssictls</span><span class="w"> </span>gi<span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">	</span><span class="c1">; rev. tail -80 to 0</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">4</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">4</span><span class="w">
 
-a<span class="n">out1</span><span class="p">,</span> a<span class="n">out2</span> <span class="nb">dssiaudio</span> gi<span class="n">handle</span><span class="p">,</span> ga<span class="n">out</span><span class="p">,</span> ga<span class="n">out</span>	<span class="c1">;get beats.wav and</span>
-	     <span class="nb">outs</span> a<span class="n">out1</span><span class="p">,</span>a<span class="n">out2</span>	 		<span class="c1">; stereo DSSI plugin</span>
+</span>a<span class="n">out1</span><span class="p">,</span><span class="w"> </span>a<span class="n">out2</span><span class="w"> </span><span class="nb">dssiaudio</span><span class="w"> </span>gi<span class="n">handle</span><span class="p">,</span><span class="w"> </span>ga<span class="n">out</span><span class="p">,</span><span class="w"> </span>ga<span class="n">out</span><span class="w">	</span><span class="c1">;get beats.wav and</span><span class="w">
+	     </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">out1</span><span class="p">,</span>a<span class="n">out2</span><span class="w">	 		</span><span class="c1">; stereo DSSI plugin</span><span class="w">
 
-ga<span class="n">out</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="kd">endin</span>
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">2</span> 
-<span class="nb">i</span> <span class="mi">2</span> <span class="mi">1</span> <span class="mi">10</span>
-<span class="nb">i</span> <span class="mi">3</span> <span class="mi">1</span> <span class="mi">10</span>
-<span class="nb">i</span> <span class="mi">4</span> <span class="mi">0</span> <span class="mi">10</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span>ga<span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">2</span><span class="w"> 
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -161,7 +161,7 @@ ga<span class="n">out</span> <span class="o">=</span> <span class="mi">0</span>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm65060"></a>
+        <a id="idm87929"></a>
         <h2>Credits</h2>
         <p>2005</p>
         <p>By: Andrés Cabrera</p>

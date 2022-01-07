@@ -40,7 +40,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm242111"></a>
+        <a id="idm342069"></a>
         <h2>Description</h2>
         <p>
       This opcode can be used in order to shuffle the content of
@@ -52,13 +52,13 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm242114"></a>
+        <a id="idm342072"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>tableshuffle</strong></span> ktablenum</pre>
         <pre class="synopsis"><span class="command"><strong>tableshufflei</strong></span> itablenum</pre>
       </div>
       <div class="refsect1">
-        <a id="idm242120"></a>
+        <a id="idm342078"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>ktablenum</em></span> or <span class="emphasis"><em>itablenum</em></span>
@@ -66,21 +66,21 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm242125"></a>
+        <a id="idm342083"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the tableshuffle opcode. It uses the file <a class="ulink" href="examples/tableshuffle.csd" target="_top"><em class="citetitle">tableshuffle.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm242130"></a>
+          <a id="idm342088"></a>
           <p class="title">
-            <strong>Example 1078. Example of the tableshuffle opcode.</strong>
+            <strong>Example 1079. Example of the tableshuffle opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm242137"></a>
+              <a id="idm342095"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -92,38 +92,38 @@
 <span class="c1">; By Stefano Cucchi 2020</span>
 
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span> 
-k<span class="n">Index</span> <span class="nb">phasor</span> <span class="mi">1</span><span class="o">/</span><span class="vi">p3</span>
-k<span class="n">Index</span> <span class="o">=</span> k<span class="n">Index</span> <span class="o">*</span> <span class="mi">16</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w"> 
+</span>k<span class="n">Index</span><span class="w"> </span><span class="nb">phasor</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="vi">p3</span><span class="w">
+</span>k<span class="n">Index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>k<span class="n">Index</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">16</span><span class="w">
 
-<span class="k">if</span> k<span class="n">Index</span> <span class="o">&gt;=</span> <span class="mf">15.99</span> <span class="k">then</span> 
-<span class="nb">tableshuffle</span> <span class="mi">1</span><span class="c1">; shuffle table 1</span>
-<span class="k">endif</span>
+</span><span class="k">if</span><span class="w"> </span>k<span class="n">Index</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">15.99</span><span class="w"> </span><span class="k">then</span><span class="w"> 
+</span><span class="nb">tableshuffle</span><span class="w"> </span><span class="mi">1</span><span class="c1">; shuffle table 1</span><span class="w">
+</span><span class="k">endif</span><span class="w">
 
-k<span class="n">Freq</span> <span class="nb">table</span> k<span class="n">Index</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span>
-a<span class="n">sound</span> <span class="nb">oscili</span> <span class="mf">0.3</span><span class="p">,</span> k<span class="n">Freq</span>
-<span class="nb">outch</span> <span class="mi">1</span><span class="p">,</span> a<span class="n">sound</span>
-<span class="nb">outch</span> <span class="mi">2</span><span class="p">,</span> a<span class="n">sound</span>
+</span>k<span class="n">Freq</span><span class="w"> </span><span class="nb">table</span><span class="w"> </span>k<span class="n">Index</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span>a<span class="n">sound</span><span class="w"> </span><span class="nb">oscili</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span><span class="w"> </span>k<span class="n">Freq</span><span class="w">
+</span><span class="nb">outch</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>a<span class="n">sound</span><span class="w">
+</span><span class="nb">outch</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span>a<span class="n">sound</span><span class="w">
 
-<span class="kd">endin</span>
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
 
-<span class="nb">f</span> <span class="mi">1</span> <span class="mi">0</span>	<span class="mi">16</span>	<span class="o">-</span><span class="mi">2</span>	<span class="mi">200</span> <span class="mi">250</span> <span class="mi">300</span> <span class="mi">350</span> <span class="mi">400</span> <span class="mi">450</span> <span class="mi">500</span> <span class="mi">550</span> <span class="mi">600</span> <span class="mi">650</span> <span class="mi">700</span> <span class="mi">750</span> <span class="mi">800</span> <span class="mi">850</span> <span class="mi">900</span> <span class="mi">950</span>
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w">	</span><span class="mi">16</span><span class="w">	</span><span class="o">-</span><span class="mi">2</span><span class="w">	</span><span class="mi">200</span><span class="w"> </span><span class="mi">250</span><span class="w"> </span><span class="mi">300</span><span class="w"> </span><span class="mi">350</span><span class="w"> </span><span class="mi">400</span><span class="w"> </span><span class="mi">450</span><span class="w"> </span><span class="mi">500</span><span class="w"> </span><span class="mi">550</span><span class="w"> </span><span class="mi">600</span><span class="w"> </span><span class="mi">650</span><span class="w"> </span><span class="mi">700</span><span class="w"> </span><span class="mi">750</span><span class="w"> </span><span class="mi">800</span><span class="w"> </span><span class="mi">850</span><span class="w"> </span><span class="mi">900</span><span class="w"> </span><span class="mi">950</span><span class="w">
 
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">4</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">5</span> <span class="mi">4</span>
-<span class="nb">e</span>
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">4</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">4</span><span class="w">
+</span><span class="nb">e</span><span class="w">
 
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -133,7 +133,7 @@ a<span class="n">sound</span> <span class="nb">oscili</span> <span class="mf">0.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm242237"></a>
+        <a id="idm342271"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="tablefilter.html" title="tablefilter"><em class="citetitle">tablefilter</em></a>,
@@ -141,7 +141,7 @@ a<span class="n">sound</span> <span class="nb">oscili</span> <span class="mf">0.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm242244"></a>
+        <a id="idm342278"></a>
         <h2>Credits</h2>
         <p>
       </p>

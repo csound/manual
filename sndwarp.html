@@ -39,7 +39,7 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm222398"></a>
+        <a id="idm313643"></a>
         <h2>Description</h2>
         <p>
       <span class="emphasis"><em>sndwarp</em></span> reads sound samples from a table and applies time-stretching and/or pitch modification. Time and frequency modification are independent from one another. For example, a sound can be stretched in time while raising the pitch!
@@ -49,13 +49,13 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm222408"></a>
+        <a id="idm313653"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ares [, ac] <span class="command"><strong>sndwarp</strong></span> xamp, xtimewarp, xresample, ifn1, ibeg, iwsize, \
       irandw, ioverlap, ifn2, itimemode</pre>
       </div>
       <div class="refsect1">
-        <a id="idm222412"></a>
+        <a id="idm313657"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>ifn1</em></span> -- the number of the table holding the sound samples which will be subjected to the <span class="emphasis"><em>sndwarp</em></span> processing. <a class="link" href="GEN01.html" title="GEN01"><em class="citetitle">GEN01</em></a> is the appropriate function generator to use to store the sound samples from a pre-existing soundfile.
@@ -77,7 +77,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm222433"></a>
+        <a id="idm313678"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>ares</em></span> -- the single channel of output from the <span class="emphasis"><em>sndwarp</em></span> unit generator. <span class="emphasis"><em>sndwarp</em></span> assumes that the function table holding the sampled signal is a mono one. This simply means that <span class="emphasis"><em>sndwarp</em></span> will index the table by single-sample frame increments. The user must be aware then that if a stereo signal is used with <span class="emphasis"><em>sndwarp</em></span>, time and pitch will be altered accordingly.
@@ -96,20 +96,20 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm222466"></a>
+        <a id="idm313711"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the sndwarp opcode. It uses the file <a class="ulink" href="examples/sndwarp.csd" target="_top"><em class="citetitle">sndwarp.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm222471"></a>
+          <a id="idm313716"></a>
           <p class="title">
-            <strong>Example 987. Example of the sndwarp opcode.</strong>
+            <strong>Example 988. Example of the sndwarp opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm222478"></a>
+              <a id="idm313723"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -119,40 +119,40 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o sndwarp.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span> 
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span> 
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span> 
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w"> 
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w"> 
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> 
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
 
-k<span class="n">timewarp</span> <span class="nb">line</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mf">2.7</span>	<span class="c1">;length of "fox.wav"</span>
-k<span class="n">resample</span> <span class="nb">init</span> <span class="mi">1</span>		<span class="c1">;do not change pitch</span>
-i<span class="n">beg</span> <span class="o">=</span> <span class="mi">0</span>			<span class="c1">;start at beginning</span>
-k<span class="n">wsize</span>  <span class="nb">line</span> <span class="mi">4410</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">2000</span>
-i<span class="n">wsize</span> <span class="o">=</span> <span class="mi">4410</span>			<span class="c1">;window size in samples with</span>
-i<span class="n">randw</span> <span class="o">=</span> <span class="mi">882</span>			<span class="c1">;bandwidth of a random number generator</span>
-i<span class="n">timemode</span> <span class="o">=</span> <span class="mi">1</span>			<span class="c1">;ktimewarp is "time" pointer</span>
-i<span class="n">overlap</span> <span class="o">=</span> <span class="vi">p4</span>
+</span>k<span class="n">timewarp</span><span class="w"> </span><span class="nb">line</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mf">2.7</span><span class="w">	</span><span class="c1">;length of "fox.wav"</span><span class="w">
+</span>k<span class="n">resample</span><span class="w"> </span><span class="nb">init</span><span class="w"> </span><span class="mi">1</span><span class="w">		</span><span class="c1">;do not change pitch</span><span class="w">
+</span>i<span class="n">beg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">			</span><span class="c1">;start at beginning</span><span class="w">
+</span>k<span class="n">wsize</span><span class="w">  </span><span class="nb">line</span><span class="w"> </span><span class="mi">4410</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mi">2000</span><span class="w">
+</span>i<span class="n">wsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4410</span><span class="w">			</span><span class="c1">;window size in samples with</span><span class="w">
+</span>i<span class="n">randw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">882</span><span class="w">			</span><span class="c1">;bandwidth of a random number generator</span><span class="w">
+</span>i<span class="n">timemode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">			</span><span class="c1">;ktimewarp is "time" pointer</span><span class="w">
+</span>i<span class="n">overlap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">p4</span><span class="w">
 
-a<span class="n">sig</span>  <span class="nb">sndwarp</span>  <span class="mf">.5</span><span class="p">,</span> k<span class="n">timewarp</span><span class="p">,</span> k<span class="n">resample</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> i<span class="n">beg</span><span class="p">,</span> i<span class="n">wsize</span><span class="p">,</span> i<span class="n">randw</span><span class="p">,</span> i<span class="n">overlap</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> i<span class="n">timemode</span>
-a<span class="n">sig2</span> <span class="n">sndwarp2</span> <span class="mf">.5</span><span class="p">,</span> k<span class="n">timewarp</span><span class="p">,</span> k<span class="n">resample</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> i<span class="n">beg</span><span class="p">,</span> k<span class="n">wsize</span><span class="p">,</span> i<span class="n">randw</span><span class="p">,</span> i<span class="n">overlap</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> i<span class="n">timemode</span>
-     <span class="nb">outs</span> a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig2</span>
+</span>a<span class="n">sig</span><span class="w">  </span><span class="nb">sndwarp</span><span class="w">  </span><span class="mf">.5</span><span class="p">,</span><span class="w"> </span>k<span class="n">timewarp</span><span class="p">,</span><span class="w"> </span>k<span class="n">resample</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>i<span class="n">beg</span><span class="p">,</span><span class="w"> </span>i<span class="n">wsize</span><span class="p">,</span><span class="w"> </span>i<span class="n">randw</span><span class="p">,</span><span class="w"> </span>i<span class="n">overlap</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span>i<span class="n">timemode</span><span class="w">
+</span>a<span class="n">sig2</span><span class="w"> </span><span class="n">sndwarp2</span><span class="w"> </span><span class="mf">.5</span><span class="p">,</span><span class="w"> </span>k<span class="n">timewarp</span><span class="p">,</span><span class="w"> </span>k<span class="n">resample</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>i<span class="n">beg</span><span class="p">,</span><span class="w"> </span>k<span class="n">wsize</span><span class="p">,</span><span class="w"> </span>i<span class="n">randw</span><span class="p">,</span><span class="w"> </span>i<span class="n">overlap</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span>i<span class="n">timemode</span><span class="w">
+     </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig2</span><span class="w">
 
-<span class="kd">endin</span>
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">f</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">131072</span> <span class="mi">1</span> <span class="s">"fox.wav"</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>	<span class="c1">; audio file</span>
-<span class="nb">f</span> <span class="mi">2</span> <span class="mi">0</span> <span class="mi">1024</span> <span class="mi">9</span> <span class="mf">0.5</span> <span class="mi">1</span> <span class="mi">0</span>		<span class="c1">; half of a sine wave</span>
+</span><span class="kd">endin</span><span class="w">
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">131072</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="s">"fox.wav"</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w">	</span><span class="c1">; audio file</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w">		</span><span class="c1">; half of a sine wave</span><span class="w">
 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">7</span> <span class="mi">2</span>			<span class="c1">;different overlaps</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">7</span> <span class="mi">5</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">7</span> <span class="mi">15</span>
-<span class="nb">e</span>
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">2</span><span class="w">			</span><span class="c1">;different overlaps</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">15</span><span class="w">
+</span><span class="nb">e</span><span class="w">
 
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -230,14 +230,14 @@ abal2       <span class="opc">balance</span> asig2, acmp2</pre>
         </div>
       </div>
       <div class="refsect1">
-        <a id="idm222681"></a>
+        <a id="idm314040"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="sndwarpst.html" title="sndwarpst"><em class="citetitle">sndwarpst</em></a>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm222686"></a>
+        <a id="idm314045"></a>
         <h2>Credits</h2>
         <p>
       </p>

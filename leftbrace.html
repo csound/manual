@@ -39,19 +39,19 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm284430"></a>
+        <a id="idm402930"></a>
         <h2>Description</h2>
         <p>
       The <span class="emphasis"><em>{</em></span> and <span class="emphasis"><em>} statements</em></span> can be used to repeat a group of score statements.  These loops do not constitute independent score sections and thus may repeat events within the same section.  Multiple loops may overlap in time or be nested within each other.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm284435"></a>
+        <a id="idm402935"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>{</strong></span> p1 p2</pre>
       </div>
       <div class="refsect1">
-        <a id="idm284439"></a>
+        <a id="idm402939"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>p1</em></span> -- Number of times to repeat the loop.
@@ -61,7 +61,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm284445"></a>
+        <a id="idm402945"></a>
         <h2>Performance</h2>
         <p>
       The <span class="emphasis"><em>{ statement</em></span> is used in conjunction with the <a class="link" href="rightbrace.html" title="} Statement"><em class="citetitle">} statement</em></a> to define repeating groups of other score events.  A score loop begins with the <span class="emphasis"><em>{ statement</em></span> which defines the number of repetitions and a unique macro name that will contain the current loop counter.  The body of a loop can contain any number of other events (including sectional breaks) and is terminated by a <span class="emphasis"><em>} statement</em></span> on its own line.  The <span class="emphasis"><em>} statement</em></span> takes no parameters.
@@ -91,16 +91,16 @@
         </div>
       </div>
       <div class="refsect1">
-        <a id="idm284464"></a>
+        <a id="idm402964"></a>
         <h2>Examples</h2>
         <p>
       Here are some examples of the <span class="emphasis"><em>{</em></span> and <span class="emphasis"><em>} statements</em></span>.
 
       </p>
         <div class="example">
-          <a id="idm284469"></a>
+          <a id="idm402969"></a>
           <p class="title">
-            <strong>Example 1273. Sequentially repeat a three-note phrase four times.</strong>
+            <strong>Example 1274. Sequentially repeat a three-note phrase four times.</strong>
           </p>
           <div class="example-contents"><pre class="programlisting">
 <span class="stamnt">{</span> 4 CNT
@@ -135,9 +135,9 @@
         <p>
       </p>
         <div class="example">
-          <a id="idm284491"></a>
+          <a id="idm402991"></a>
           <p class="title">
-            <strong>Example 1274. Create a group of simultaneous harmonic partials.</strong>
+            <strong>Example 1275. Create a group of simultaneous harmonic partials.</strong>
           </p>
           <div class="example-contents">
         In this example, <span class="emphasis"><em>p4</em></span> is assumed to be the frequency of the note event.
@@ -166,13 +166,13 @@
 
      </p>
         <div class="example">
-          <a id="idm284512"></a>
+          <a id="idm403012"></a>
           <p class="title">
-            <strong>Example 1275. An example of nested loops to create several inharmonic sine clusters.</strong>
+            <strong>Example 1276. An example of nested loops to create several inharmonic sine clusters.</strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
-              <a id="idm284514"></a>
+              <a id="idm403014"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -182,44 +182,44 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o abs.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
 
-ga<span class="n">ReverbSend</span> <span class="nb">init</span> <span class="mi">0</span>
+</span>ga<span class="n">ReverbSend</span><span class="w"> </span><span class="nb">init</span><span class="w"> </span><span class="mi">0</span><span class="w">
 
-<span class="c1">; a simple sine wave partial</span>
-<span class="kd">instr</span> <span class="nf">1</span>
-    i<span class="n">dur</span>   <span class="o">=</span>       <span class="vi">p3</span>
-    i<span class="n">amp</span>   <span class="o">=</span>       <span class="vi">p4</span>
-    i<span class="n">freq</span>  <span class="o">=</span>       <span class="vi">p5</span>
-    a<span class="n">env</span>   <span class="nb">linseg</span>  <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="o">*</span>i<span class="n">dur</span><span class="p">,</span> i<span class="n">amp</span><span class="p">,</span> <span class="mf">0.6</span><span class="o">*</span>i<span class="n">dur</span><span class="p">,</span> i<span class="n">amp</span><span class="p">,</span> <span class="mf">0.3</span><span class="o">*</span>i<span class="n">dur</span><span class="p">,</span> <span class="mf">0.0</span>
-    a<span class="n">osc</span>   <span class="nb">oscili</span>  a<span class="n">env</span><span class="p">,</span> i<span class="n">freq</span><span class="p">,</span> <span class="mi">1</span>
-           <span class="nb">vincr</span>   ga<span class="n">ReverbSend</span><span class="p">,</span> a<span class="n">osc</span>
-<span class="kd">endin</span>
+</span><span class="c1">; a simple sine wave partial</span><span class="w">
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+    </span>i<span class="n">dur</span><span class="w">   </span><span class="o">=</span><span class="w">       </span><span class="vi">p3</span><span class="w">
+    </span>i<span class="n">amp</span><span class="w">   </span><span class="o">=</span><span class="w">       </span><span class="vi">p4</span><span class="w">
+    </span>i<span class="n">freq</span><span class="w">  </span><span class="o">=</span><span class="w">       </span><span class="vi">p5</span><span class="w">
+    </span>a<span class="n">env</span><span class="w">   </span><span class="nb">linseg</span><span class="w">  </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="o">*</span>i<span class="n">dur</span><span class="p">,</span><span class="w"> </span>i<span class="n">amp</span><span class="p">,</span><span class="w"> </span><span class="mf">0.6</span><span class="o">*</span>i<span class="n">dur</span><span class="p">,</span><span class="w"> </span>i<span class="n">amp</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3</span><span class="o">*</span>i<span class="n">dur</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="w">
+    </span>a<span class="n">osc</span><span class="w">   </span><span class="nb">oscili</span><span class="w">  </span>a<span class="n">env</span><span class="p">,</span><span class="w"> </span>i<span class="n">freq</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+           </span><span class="nb">vincr</span><span class="w">   </span>ga<span class="n">ReverbSend</span><span class="p">,</span><span class="w"> </span>a<span class="n">osc</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="c1">; global reverb instrument</span>
-<span class="kd">instr</span> <span class="nf">2</span>
-    a<span class="n">l</span><span class="p">,</span> a<span class="n">r</span> <span class="nb">reverbsc</span> ga<span class="n">ReverbSend</span><span class="p">,</span> ga<span class="n">ReverbSend</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="mi">12000</span>
-           <span class="nb">outs</span>     ga<span class="n">ReverbSend</span><span class="o">+</span>a<span class="n">l</span><span class="p">,</span> ga<span class="n">ReverbSend</span><span class="o">+</span>a<span class="n">r</span>
-           <span class="nb">clear</span>    ga<span class="n">ReverbSend</span>
-<span class="kd">endin</span>
+</span><span class="c1">; global reverb instrument</span><span class="w">
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">
+    </span>a<span class="n">l</span><span class="p">,</span><span class="w"> </span>a<span class="n">r</span><span class="w"> </span><span class="nb">reverbsc</span><span class="w"> </span>ga<span class="n">ReverbSend</span><span class="p">,</span><span class="w"> </span>ga<span class="n">ReverbSend</span><span class="p">,</span><span class="w"> </span><span class="mf">0.85</span><span class="p">,</span><span class="w"> </span><span class="mi">12000</span><span class="w">
+           </span><span class="nb">outs</span><span class="w">     </span>ga<span class="n">ReverbSend</span><span class="o">+</span>a<span class="n">l</span><span class="p">,</span><span class="w"> </span>ga<span class="n">ReverbSend</span><span class="o">+</span>a<span class="n">r</span><span class="w">
+           </span><span class="nb">clear</span><span class="w">    </span>ga<span class="n">ReverbSend</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">f</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">4096</span> <span class="mi">10</span> <span class="mi">1</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">f</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">4096</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="cp">{</span> <span class="mi">4</span> <span class="cp">CNT</span>
-  <span class="cp">{</span> <span class="mi">8</span> <span class="cp">PARTIAL</span>
-      <span class="c1">;   start time     duration            amplitude          frequency</span>
+</span><span class="cp">{</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="cp">CNT</span><span class="w">
+  </span><span class="cp">{</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="cp">PARTIAL</span><span class="w">
+      </span><span class="c1">;   start time     duration            amplitude          frequency</span><span class="w">
       
-      <span class="nb">i</span><span class="mi">1</span>  <span class="p">[</span><span class="mf">0.5</span> <span class="o">*</span> <span class="cp">$CNT.</span><span class="p">]</span>  <span class="p">[</span><span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="cp">$CNT</span> <span class="o">*</span> <span class="mf">0.2</span><span class="p">)]</span>  <span class="p">[</span><span class="mi">500</span> <span class="o">+</span> <span class="p">(</span><span class="o">~</span> <span class="o">*</span> <span class="mi">200</span><span class="p">)]</span>  <span class="p">[</span><span class="mi">800</span> <span class="o">+</span> <span class="p">(</span><span class="mi">200</span> <span class="o">*</span> <span class="cp">$CNT.</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="cp">$PARTIAL.</span> <span class="o">*</span> <span class="mi">20</span><span class="p">)]</span>
-  <span class="cp">}</span>
-<span class="cp">}</span>
+      </span><span class="nb">i</span><span class="mi">1</span><span class="w">  </span><span class="p">[</span><span class="mf">0.5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="cp">$CNT.</span><span class="p">]</span><span class="w">  </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="cp">$CNT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.2</span><span class="p">)]</span><span class="w">  </span><span class="p">[</span><span class="mi">500</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="o">~</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">200</span><span class="p">)]</span><span class="w">  </span><span class="p">[</span><span class="mi">800</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="mi">200</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="cp">$CNT.</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="cp">$PARTIAL.</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">20</span><span class="p">)]</span><span class="w">
+  </span><span class="cp">}</span><span class="w">
+</span><span class="cp">}</span><span class="w">
 
-<span class="nb">i</span><span class="mi">2</span> <span class="mi">0</span> <span class="mi">6</span>
-<span class="nb">e</span>
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">6</span><span class="w">
+</span><span class="nb">e</span><span class="w">
 
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -229,7 +229,7 @@ ga<span class="n">ReverbSend</span> <span class="nb">init</span> <span class="mi
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm284662"></a>
+        <a id="idm403257"></a>
         <h2>Credits</h2>
         <p>
       </p>

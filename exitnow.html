@@ -39,7 +39,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm69050"></a>
+        <a id="idm93649"></a>
         <h2>Description</h2>
         <p>
     In Csound4 calls an exit function to leave Csound as fast as
@@ -47,12 +47,12 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm69053"></a>
+        <a id="idm93652"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>exitnow</strong></span> [ivalue]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm69057"></a>
+        <a id="idm93656"></a>
         <h2>Initialisation</h2>
         <p>
     Stops Csound on the <span class="emphasis"><em>initialisation</em></span> cycle,
@@ -61,20 +61,20 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm69061"></a>
+        <a id="idm93660"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the exitnow opcode. It uses the file <a class="ulink" href="examples/exitnow.csd" target="_top"><em class="citetitle">exitnow.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm69066"></a>
+          <a id="idm93665"></a>
           <p class="title">
             <strong>Example 275. Example of the exitnow opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm69073"></a>
+              <a id="idm93672"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -83,41 +83,41 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o exitnow.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="c1">; plays a sine wav, forces a stop after 2 seconds</span>
-<span class="kd">instr</span> <span class="nf">1</span>
-	<span class="c1">; generate a line from 0 to 1 over 2 seconds</span>
-	k<span class="n">Stop</span> <span class="nb">line</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span>
+</span><span class="c1">; plays a sine wav, forces a stop after 2 seconds</span><span class="w">
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+	</span><span class="c1">; generate a line from 0 to 1 over 2 seconds</span><span class="w">
+	</span>k<span class="n">Stop</span><span class="w"> </span><span class="nb">line</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-	<span class="c1">; launch instrument 2 once kStop signal is greater than 1</span>
-	<span class="k">if</span><span class="p">(</span>k<span class="n">Stop</span><span class="o">&gt;=</span><span class="mi">1</span><span class="p">)</span> <span class="k">then</span>
-		<span class="nb">schedulek</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
-	<span class="k">endif</span>
+	</span><span class="c1">; launch instrument 2 once kStop signal is greater than 1</span><span class="w">
+	</span><span class="k">if</span><span class="p">(</span>k<span class="n">Stop</span><span class="o">&gt;=</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w">
+		</span><span class="nb">schedulek</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+	</span><span class="k">endif</span><span class="w">
 
-	<span class="c1">; print kStop signal every .1 seconds</span>
-	<span class="nb">printk</span> <span class="mf">.1</span><span class="p">,</span> k<span class="n">Stop</span>
+	</span><span class="c1">; print kStop signal every .1 seconds</span><span class="w">
+	</span><span class="nb">printk</span><span class="w"> </span><span class="mf">.1</span><span class="p">,</span><span class="w"> </span>k<span class="n">Stop</span><span class="w">
 
-	<span class="c1">; make some noise</span>
-	a<span class="n">Sig</span> <span class="nb">oscil</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">440</span>
-	<span class="nb">outs</span> a<span class="n">Sig</span><span class="p">,</span> a<span class="n">Sig</span>
-<span class="kd">endin</span>
+	</span><span class="c1">; make some noise</span><span class="w">
+	</span>a<span class="n">Sig</span><span class="w"> </span><span class="nb">oscil</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">440</span><span class="w">
+	</span><span class="nb">outs</span><span class="w"> </span>a<span class="n">Sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">Sig</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="c1">; forces an instant exit of csound</span>
-<span class="kd">instr</span> <span class="nf">2</span>
-	<span class="nb">exitnow</span>
-<span class="kd">endin</span>
+</span><span class="c1">; forces an instant exit of csound</span><span class="w">
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">
+	</span><span class="nb">exitnow</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="c1">; play oscil instrument infinitely</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="kc">z</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="c1">; play oscil instrument infinitely</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="kc">z</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>

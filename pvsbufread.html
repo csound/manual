@@ -39,7 +39,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm189227"></a>
+        <a id="idm266151"></a>
         <h2>Description</h2>
         <p>
       This opcode reads from a circular buffer of length ilen (secs),
@@ -50,12 +50,12 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm189231"></a>
+        <a id="idm266155"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">fsig <span class="command"><strong>pvsbufread</strong></span>  ktime, khandle[, ilo, ihi, iclear] </pre>
       </div>
       <div class="refsect1">
-        <a id="idm189235"></a>
+        <a id="idm266159"></a>
         <h2>Initialisation</h2>
         <p>
       <span class="emphasis"><em>ilo, ihi</em></span> -- set the lowest and highest freqs to be read from the buffer (defaults to 0, Nyquist).
@@ -66,7 +66,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm189243"></a>
+        <a id="idm266167"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>fsig</em></span> -- output pv stream
@@ -115,13 +115,13 @@
         </div>
       </div>
       <div class="refsect1">
-        <a id="idm189266"></a>
+        <a id="idm266190"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the pvsbufread opcode. It does 'brassage' by switching between two buffers.
       </p>
         <div class="example">
-          <a id="idm189269"></a>
+          <a id="idm266193"></a>
           <p class="title">
             <strong>Example 810. Example of the pvsbufread opcode</strong>
           </p>
@@ -152,14 +152,14 @@ fsb         <span class="opc">pvsbufread</span>  kt1, khan   <span class="commen
       Here is an example of the pvsbufread opcode. It uses the file <a class="ulink" href="examples/pvsbufread.csd" target="_top"><em class="citetitle">pvsbufread.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm189298"></a>
+          <a id="idm266222"></a>
           <p class="title">
             <strong>Example 811. Example of the pvsbufread opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm189305"></a>
+              <a id="idm266229"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -169,56 +169,56 @@ fsb         <span class="opc">pvsbufread</span>  kt1, khan   <span class="commen
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o pvsbufread.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="c1">;; example written by joachim heintz 2009</span>
-<span class="c1">; additions by Menno Knevel 2021</span>
+</span><span class="c1">;; example written by joachim heintz 2009</span><span class="w">
+</span><span class="c1">; additions by Menno Knevel 2021</span><span class="w">
 
-<span class="kd">opcode</span> <span class="nf">FileToPvsBuf</span><span class="p">,</span> <span class="kt">iik</span><span class="p">,</span> <span class="kt">Siiiii</span>
-<span class="c1">;;writes an audio file at the first k-cycle to a fft-buffer (via pvsbuffer)</span>
-S<span class="n">file</span><span class="p">,</span> i<span class="n">fftsize</span><span class="p">,</span> i<span class="n">overlap</span><span class="p">,</span> i<span class="n">winsize</span><span class="p">,</span> i<span class="n">winshape</span><span class="p">,</span> i<span class="n">length</span> <span class="nb">xin</span>
-k<span class="n">timek</span>		<span class="nb">timeinstk</span>
-<span class="k">if</span> k<span class="n">timek</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">then</span>
-i<span class="n">len</span>		<span class="nb">filelen</span>	S<span class="n">file</span>
-k<span class="n">cycles</span>		<span class="o">=</span> i<span class="n">len</span> <span class="o">*</span> <span class="vg">kr</span><span class="c1">; number of k-cycles to write the fft-buffer</span>
-k<span class="n">count</span>		<span class="nb">init</span>		<span class="mi">0</span>
-<span class="nl">loop</span><span class="p">:</span>
-a<span class="n">in</span>		<span class="nb">soundin</span>	S<span class="n">file</span>
-f<span class="n">ftin</span>		<span class="nb">pvsanal</span>	a<span class="n">in</span><span class="p">,</span> i<span class="n">fftsize</span><span class="p">,</span> i<span class="n">overlap</span><span class="p">,</span> i<span class="n">winsize</span><span class="p">,</span> i<span class="n">winshape</span>
-i<span class="n">bufln</span>      <span class="o">=</span>   i<span class="n">len</span> <span class="o">+</span> <span class="p">(</span>i<span class="n">fftsize</span> <span class="o">/</span> <span class="vg">sr</span><span class="p">)</span>    
-i<span class="n">buf</span><span class="p">,</span> k<span class="n">tim</span>	<span class="nb">pvsbuffer</span>	f<span class="n">ftin</span><span class="p">,</span> i<span class="n">bufln</span>
-		<span class="kp">loop_lt</span>	k<span class="n">count</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> k<span class="n">cycles</span><span class="p">,</span> <span class="nl">loop</span>
-		<span class="nb">xout</span>		i<span class="n">buf</span><span class="p">,</span> i<span class="n">len</span><span class="p">,</span> k<span class="n">tim</span>
-<span class="k">endif</span>
-<span class="kd">endop</span>
+</span><span class="kd">opcode</span><span class="w"> </span><span class="nf">FileToPvsBuf</span><span class="p">,</span><span class="w"> </span><span class="kt">iik</span><span class="p">,</span><span class="w"> </span><span class="kt">Siiiii</span><span class="w">
+</span><span class="c1">;;writes an audio file at the first k-cycle to a fft-buffer (via pvsbuffer)</span><span class="w">
+</span>S<span class="n">file</span><span class="p">,</span><span class="w"> </span>i<span class="n">fftsize</span><span class="p">,</span><span class="w"> </span>i<span class="n">overlap</span><span class="p">,</span><span class="w"> </span>i<span class="n">winsize</span><span class="p">,</span><span class="w"> </span>i<span class="n">winshape</span><span class="p">,</span><span class="w"> </span>i<span class="n">length</span><span class="w"> </span><span class="nb">xin</span><span class="w">
+</span>k<span class="n">timek</span><span class="w">		</span><span class="nb">timeinstk</span><span class="w">
+</span><span class="k">if</span><span class="w"> </span>k<span class="n">timek</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">then</span><span class="w">
+</span>i<span class="n">len</span><span class="w">		</span><span class="nb">filelen</span><span class="w">	</span>S<span class="n">file</span><span class="w">
+</span>k<span class="n">cycles</span><span class="w">		</span><span class="o">=</span><span class="w"> </span>i<span class="n">len</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="vg">kr</span><span class="c1">; number of k-cycles to write the fft-buffer</span><span class="w">
+</span>k<span class="n">count</span><span class="w">		</span><span class="nb">init</span><span class="w">		</span><span class="mi">0</span><span class="w">
+</span><span class="nl">loop</span><span class="p">:</span><span class="w">
+</span>a<span class="n">in</span><span class="w">		</span><span class="nb">soundin</span><span class="w">	</span>S<span class="n">file</span><span class="w">
+</span>f<span class="n">ftin</span><span class="w">		</span><span class="nb">pvsanal</span><span class="w">	</span>a<span class="n">in</span><span class="p">,</span><span class="w"> </span>i<span class="n">fftsize</span><span class="p">,</span><span class="w"> </span>i<span class="n">overlap</span><span class="p">,</span><span class="w"> </span>i<span class="n">winsize</span><span class="p">,</span><span class="w"> </span>i<span class="n">winshape</span><span class="w">
+</span>i<span class="n">bufln</span><span class="w">      </span><span class="o">=</span><span class="w">   </span>i<span class="n">len</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span>i<span class="n">fftsize</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="vg">sr</span><span class="p">)</span><span class="w">    
+</span>i<span class="n">buf</span><span class="p">,</span><span class="w"> </span>k<span class="n">tim</span><span class="w">	</span><span class="nb">pvsbuffer</span><span class="w">	</span>f<span class="n">ftin</span><span class="p">,</span><span class="w"> </span>i<span class="n">bufln</span><span class="w">
+		</span><span class="kp">loop_lt</span><span class="w">	</span>k<span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>k<span class="n">cycles</span><span class="p">,</span><span class="w"> </span><span class="nl">loop</span><span class="w">
+		</span><span class="nb">xout</span><span class="w">		</span>i<span class="n">buf</span><span class="p">,</span><span class="w"> </span>i<span class="n">len</span><span class="p">,</span><span class="w"> </span>k<span class="n">tim</span><span class="w">
+</span><span class="k">endif</span><span class="w">
+</span><span class="kd">endop</span><span class="w">
 
 
-<span class="kd">instr</span> <span class="nf">1</span>
-i<span class="n">fftsize</span>	<span class="o">=</span>	<span class="mi">1024</span>
-i<span class="n">overlap</span>	<span class="o">=</span>	i<span class="n">fftsize</span> <span class="o">/</span> <span class="mi">4</span>
-i<span class="n">winsize</span>	<span class="o">=</span>	i<span class="n">fftsize</span>
-i<span class="n">winshape</span>	<span class="o">=</span>	<span class="mi">1</span><span class="c1">; von-Hann window</span>
-i<span class="n">length</span>     <span class="o">=</span>   <span class="vi">p4</span>
-i<span class="n">buffer</span><span class="p">,</span> i<span class="n">len</span><span class="p">,</span> k<span class="n">0</span>	<span class="nf">FileToPvsBuf</span> <span class="s">"beats.wav"</span><span class="p">,</span> i<span class="n">fftsize</span><span class="p">,</span> i<span class="n">overlap</span><span class="p">,</span> i<span class="n">winsize</span><span class="p">,</span> i<span class="n">winshape</span><span class="p">,</span> i<span class="n">length</span>
-k<span class="n">tmpnt</span>		<span class="nb">linseg</span>	i<span class="n">len</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">0</span>							<span class="c1">; reads the buffer backwards in p3 seconds</span>
-f<span class="n">read</span> 		<span class="nb">pvsbufread</span>  k<span class="n">tmpnt</span><span class="p">,</span> i<span class="n">buffer</span><span class="p">,</span> <span class="vi">p4</span><span class="p">,</span> <span class="vi">p5</span>			<span class="c1">; use the filter options</span>
-a<span class="n">out</span>		<span class="nb">pvsynth</span>	f<span class="n">read</span>
-<span class="nb">outs</span>    a<span class="n">out</span><span class="p">,</span> a<span class="n">out</span>
-<span class="kd">endin</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+</span>i<span class="n">fftsize</span><span class="w">	</span><span class="o">=</span><span class="w">	</span><span class="mi">1024</span><span class="w">
+</span>i<span class="n">overlap</span><span class="w">	</span><span class="o">=</span><span class="w">	</span>i<span class="n">fftsize</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">4</span><span class="w">
+</span>i<span class="n">winsize</span><span class="w">	</span><span class="o">=</span><span class="w">	</span>i<span class="n">fftsize</span><span class="w">
+</span>i<span class="n">winshape</span><span class="w">	</span><span class="o">=</span><span class="w">	</span><span class="mi">1</span><span class="c1">; von-Hann window</span><span class="w">
+</span>i<span class="n">length</span><span class="w">     </span><span class="o">=</span><span class="w">   </span><span class="vi">p4</span><span class="w">
+</span>i<span class="n">buffer</span><span class="p">,</span><span class="w"> </span>i<span class="n">len</span><span class="p">,</span><span class="w"> </span>k<span class="n">0</span><span class="w">	</span><span class="nf">FileToPvsBuf</span><span class="w"> </span><span class="s">"beats.wav"</span><span class="p">,</span><span class="w"> </span>i<span class="n">fftsize</span><span class="p">,</span><span class="w"> </span>i<span class="n">overlap</span><span class="p">,</span><span class="w"> </span>i<span class="n">winsize</span><span class="p">,</span><span class="w"> </span>i<span class="n">winshape</span><span class="p">,</span><span class="w"> </span>i<span class="n">length</span><span class="w">
+</span>k<span class="n">tmpnt</span><span class="w">		</span><span class="nb">linseg</span><span class="w">	</span>i<span class="n">len</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">							</span><span class="c1">; reads the buffer backwards in p3 seconds</span><span class="w">
+</span>f<span class="n">read</span><span class="w"> 		</span><span class="nb">pvsbufread</span><span class="w">  </span>k<span class="n">tmpnt</span><span class="p">,</span><span class="w"> </span>i<span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="vi">p4</span><span class="p">,</span><span class="w"> </span><span class="vi">p5</span><span class="w">			</span><span class="c1">; use the filter options</span><span class="w">
+</span>a<span class="n">out</span><span class="w">		</span><span class="nb">pvsynth</span><span class="w">	</span>f<span class="n">read</span><span class="w">
+</span><span class="nb">outs</span><span class="w">    </span>a<span class="n">out</span><span class="p">,</span><span class="w"> </span>a<span class="n">out</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="c1">;			low		high</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">5</span>		<span class="mi">100</span>		<span class="mi">1000</span> 	<span class="c1">; filter to this range</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">5</span> <span class="mi">5</span>		<span class="mi">1000</span>	<span class="mi">10000</span> 	<span class="c1">; ...and to this range</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">10</span> <span class="mi">5</span>	<span class="mi">0</span>		<span class="mi">0</span>		<span class="c1">; no filtering, equal to not using ilo and ihi at all!</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="c1">;			low		high</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">5</span><span class="w">		</span><span class="mi">100</span><span class="w">		</span><span class="mi">1000</span><span class="w"> 	</span><span class="c1">; filter to this range</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">5</span><span class="w">		</span><span class="mi">1000</span><span class="w">	</span><span class="mi">10000</span><span class="w"> 	</span><span class="c1">; ...and to this range</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">5</span><span class="w">	</span><span class="mi">0</span><span class="w">		</span><span class="mi">0</span><span class="w">		</span><span class="c1">; no filtering, equal to not using ilo and ihi at all!</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -228,7 +228,7 @@ a<span class="n">out</span>		<span class="nb">pvsynth</span>	f<span class="n">re
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm189506"></a>
+        <a id="idm266582"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="pvsanal.html" title="pvsanal"><em class="citetitle">pvsanal</em></a>,
@@ -238,7 +238,7 @@ a<span class="n">out</span>		<span class="nb">pvsynth</span>	f<span class="n">re
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm189517"></a>
+        <a id="idm266593"></a>
         <h2>Credits</h2>
         <p>
       </p>

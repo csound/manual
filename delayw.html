@@ -39,40 +39,40 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm59861"></a>
+        <a id="idm80433"></a>
         <h2>Description</h2>
         <p>
       Writes the audio signal to a digital delay line.
    </p>
       </div>
       <div class="refsect1">
-        <a id="idm59864"></a>
+        <a id="idm80436"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>delayw</strong></span> asig</pre>
       </div>
       <div class="refsect1">
-        <a id="idm59868"></a>
+        <a id="idm80440"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>delayw</em></span> writes <span class="emphasis"><em>asig</em></span> into the delay area established by the preceding <a class="link" href="delayr.html" title="delayr"><em class="citetitle">delayr</em></a> unit. Viewed as a pair, these two units permit the formation of modified feedback loops, etc. However, there is a lower bound on the value of <span class="emphasis"><em>idlt</em></span>, which must be at least 1 control period (or 1/<span class="emphasis"><em>kr</em></span>).
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm59877"></a>
+        <a id="idm80449"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the delayw opcode. It uses the file <a class="ulink" href="examples/delayw.csd" target="_top"><em class="citetitle">delayw.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm59882"></a>
+          <a id="idm80454"></a>
           <p class="title">
             <strong>Example 219. Example of the delayw opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm59889"></a>
+              <a id="idm80461"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -82,52 +82,52 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o delayw.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>   
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">   
 
-ga<span class="n">sig</span>  <span class="nb">init</span> <span class="mi">0</span>   
-gi<span class="n">del</span>  <span class="o">=</span> <span class="mi">1</span>		<span class="c1">;delay time in seconds</span>
+</span>ga<span class="n">sig</span><span class="w">  </span><span class="nb">init</span><span class="w"> </span><span class="mi">0</span><span class="w">   
+</span>gi<span class="n">del</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">		</span><span class="c1">;delay time in seconds</span><span class="w">
                                                              
-<span class="kd">instr</span> <span class="nf">1</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
 	
-a<span class="n">in</span>  <span class="nb">pluck</span> <span class="mf">.7</span><span class="p">,</span> <span class="mi">440</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
-     <span class="nb">outs</span> a<span class="n">in</span><span class="p">,</span> a<span class="n">in</span>
+</span>a<span class="n">in</span><span class="w">  </span><span class="nb">pluck</span><span class="w"> </span><span class="mf">.7</span><span class="p">,</span><span class="w"> </span><span class="mi">440</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+     </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">in</span><span class="p">,</span><span class="w"> </span>a<span class="n">in</span><span class="w">
 
-<span class="nb">vincr</span> ga<span class="n">sig</span><span class="p">,</span> a<span class="n">in</span>	<span class="c1">;send to global delay</span>
-<span class="kd">endin</span>
+</span><span class="nb">vincr</span><span class="w"> </span>ga<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">in</span><span class="w">	</span><span class="c1">;send to global delay</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">2</span>	
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">	
 
-i<span class="n">feedback</span> <span class="o">=</span> <span class="vi">p4</span>	
+</span>i<span class="n">feedback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">p4</span><span class="w">	
 
-a<span class="n">buf2</span>	<span class="nb">delayr</span>	gi<span class="n">del</span>
-a<span class="n">delL</span> 	<span class="nb">deltap</span>	<span class="mf">.4</span>		<span class="c1">;first tap (on left channel)</span>
-a<span class="n">delM</span> 	<span class="nb">deltap</span>	<span class="mi">1</span>		<span class="c1">;second tap (on middle channel)</span>
-	<span class="nb">delayw</span>	ga<span class="n">sig</span> <span class="o">+</span> <span class="p">(</span>a<span class="n">delL</span> <span class="o">*</span> i<span class="n">feedback</span><span class="p">)</span>
+</span>a<span class="n">buf2</span><span class="w">	</span><span class="nb">delayr</span><span class="w">	</span>gi<span class="n">del</span><span class="w">
+</span>a<span class="n">delL</span><span class="w"> 	</span><span class="nb">deltap</span><span class="w">	</span><span class="mf">.4</span><span class="w">		</span><span class="c1">;first tap (on left channel)</span><span class="w">
+</span>a<span class="n">delM</span><span class="w"> 	</span><span class="nb">deltap</span><span class="w">	</span><span class="mi">1</span><span class="w">		</span><span class="c1">;second tap (on middle channel)</span><span class="w">
+	</span><span class="nb">delayw</span><span class="w">	</span>ga<span class="n">sig</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span>a<span class="n">delL</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>i<span class="n">feedback</span><span class="p">)</span><span class="w">
 
-a<span class="n">buf3</span>	<span class="nb">delayr</span>	gi<span class="n">del</span>
-k<span class="n">del</span>	<span class="nb">line</span>    <span class="mi">1</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mf">.01</span>	<span class="c1">;vary delay time</span>
-a<span class="n">delR</span> 	<span class="nb">deltap</span>  <span class="mf">.65</span> <span class="o">*</span> k<span class="n">del</span>	<span class="c1">;one pitch changing tap (on the right chn.)</span>
-	<span class="nb">delayw</span>	ga<span class="n">sig</span> <span class="o">+</span> <span class="p">(</span>a<span class="n">delR</span> <span class="o">*</span> i<span class="n">feedback</span><span class="p">)</span>
-<span class="c1">;make a mix of all deayed signals	</span>
-	<span class="nb">outs</span>	a<span class="n">delL</span> <span class="o">+</span> a<span class="n">delM</span><span class="p">,</span> a<span class="n">delR</span> <span class="o">+</span> a<span class="n">delM</span>
+</span>a<span class="n">buf3</span><span class="w">	</span><span class="nb">delayr</span><span class="w">	</span>gi<span class="n">del</span><span class="w">
+</span>k<span class="n">del</span><span class="w">	</span><span class="nb">line</span><span class="w">    </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mf">.01</span><span class="w">	</span><span class="c1">;vary delay time</span><span class="w">
+</span>a<span class="n">delR</span><span class="w"> 	</span><span class="nb">deltap</span><span class="w">  </span><span class="mf">.65</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>k<span class="n">del</span><span class="w">	</span><span class="c1">;one pitch changing tap (on the right chn.)</span><span class="w">
+	</span><span class="nb">delayw</span><span class="w">	</span>ga<span class="n">sig</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span>a<span class="n">delR</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>i<span class="n">feedback</span><span class="p">)</span><span class="w">
+</span><span class="c1">;make a mix of all deayed signals	</span><span class="w">
+	</span><span class="nb">outs</span><span class="w">	</span>a<span class="n">delL</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>a<span class="n">delM</span><span class="p">,</span><span class="w"> </span>a<span class="n">delR</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>a<span class="n">delM</span><span class="w">
 
-<span class="nb">clear</span>	ga<span class="n">sig</span>
-<span class="kd">endin</span>
+</span><span class="nb">clear</span><span class="w">	</span>ga<span class="n">sig</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">3</span> <span class="mi">1</span>
-<span class="nb">i</span> <span class="mi">2</span> <span class="mi">0</span> <span class="mi">3</span>  <span class="mi">0</span>	<span class="c1">;no feedback</span>
-<span class="nb">i</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">8</span> <span class="mf">.8</span>	<span class="c1">;lots of feedback</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">3</span><span class="w">  </span><span class="mi">0</span><span class="w">	</span><span class="c1">;no feedback</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="mf">.8</span><span class="w">	</span><span class="c1">;lots of feedback</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -137,7 +137,7 @@ a<span class="n">delR</span> 	<span class="nb">deltap</span>  <span class="mf">.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm60028"></a>
+        <a id="idm80713"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="delay.html" title="delay"><em class="citetitle">delay</em></a>,

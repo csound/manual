@@ -39,20 +39,20 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm185506"></a>
+        <a id="idm260640"></a>
         <h2>Description</h2>
         <p>
       <span class="emphasis"><em>pvadd</em></span> reads from a <a class="link" href="pvoc.html" title="pvoc"><em class="citetitle">pvoc</em></a> file and uses the data to perform additive synthesis using an internal array of interpolating oscillators. The user supplies the wave table (usually one period of a sine wave), and can choose which analysis bins will be used in the re-synthesis.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm185512"></a>
+        <a id="idm260646"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ares <span class="command"><strong>pvadd</strong></span> ktimpnt, kfmod, ifilcod, ifn, ibins [, ibinoffset] \
       [, ibinincr] [, iextractmode] [, ifreqlim] [, igatefn]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm185516"></a>
+        <a id="idm260650"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>ifilcod</em></span> -- integer or character-string denoting a control-file derived from <a class="link" href="pvanal.html" title="pvanal"><em class="citetitle">pvanal</em></a> analysis of an audio signal. An integer denotes the suffix of a file <span class="emphasis"><em>pvoc.m</em></span>; a character-string (in double quotes) gives a filename, optionally a full pathname. If not fullpath, the file is sought first in the current directory, then in the one given by the environment variable <a class="link" href="OrchDirFiles.html" title="Directories and Files"><em class="citetitle">SADIR</em></a> (if defined). <span class="emphasis"><em>pvoc</em></span> control files contain data organized for fft resynthesis. Memory usage depends on the size of the files involved, which are read and held entirely in memory during computation but are shared by multiple calls (see also <a class="link" href="lpread.html" title="lpread"><em class="citetitle">lpread</em></a>).
@@ -77,14 +77,14 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm185556"></a>
+        <a id="idm260690"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>ktimpnt</em></span> and <span class="emphasis"><em>kfmod</em></span> are used in the same way as in <a class="link" href="pvoc.html" title="pvoc"><em class="citetitle">pvoc</em></a>.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm185563"></a>
+        <a id="idm260697"></a>
         <h2>Examples</h2>
         <p>
       </p>
@@ -199,14 +199,14 @@ asig  <span class="opc">pvadd</span> ktime, 1, <span class="quote">“<span clas
       Here is a complete example of the pvadd opcode. It uses the file <a class="ulink" href="examples/pvadd.csd" target="_top"><em class="citetitle">pvadd.csd</em></a>
       </p>
         <div class="example">
-          <a id="idm185638"></a>
+          <a id="idm260772"></a>
           <p class="title">
             <strong>Example 794. Example of the pvadd opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm185645"></a>
+              <a id="idm260779"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -216,56 +216,56 @@ asig  <span class="opc">pvadd</span> ktime, 1, <span class="quote">“<span clas
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o pvadd.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span> 
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span> 
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span> 
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w"> 
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w"> 
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> 
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
 
-<span class="c1">; by Menno Knevel 2021</span>
+</span><span class="c1">; by Menno Knevel 2021</span><span class="w">
 
-gi<span class="n">len</span>  <span class="nb">filelen</span> <span class="s">"fox.wav"</span>	    <span class="c1">; get length of impulse soundfile</span>
+</span>gi<span class="n">len</span><span class="w">  </span><span class="nb">filelen</span><span class="w"> </span><span class="s">"fox.wav"</span><span class="w">	    </span><span class="c1">; get length of impulse soundfile</span><span class="w">
 
-<span class="c1">; analyze sound file and output result to pvoc-ex file</span>
-i<span class="n">res</span> <span class="nb">system_i</span> <span class="mi">1</span><span class="p">,</span><span class="s">{{ pvanal fox.wav fox1.pvx }}</span>          <span class="c1">; default settings</span>
+</span><span class="c1">; analyze sound file and output result to pvoc-ex file</span><span class="w">
+</span>i<span class="n">res</span><span class="w"> </span><span class="nb">system_i</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="s">{{ pvanal fox.wav fox1.pvx }}</span><span class="w">          </span><span class="c1">; default settings</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span> <span class="c1">; untreated signal</span>
-a<span class="n">sig</span>    <span class="nb">diskin2</span>   <span class="s">"fox.wav"</span><span class="p">,</span> <span class="mi">1</span>
-<span class="nb">prints</span>  <span class="s">"</span><span class="se">\n</span><span class="s">---***YOU NOW HEAR THE UNTREATED SOUND SAMPLE***---</span><span class="se">\n</span><span class="s">"</span>
-<span class="nb">outs</span>    a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
-<span class="kd">endin</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w"> </span><span class="c1">; untreated signal</span><span class="w">
+</span>a<span class="n">sig</span><span class="w">    </span><span class="nb">diskin2</span><span class="w">   </span><span class="s">"fox.wav"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="nb">prints</span><span class="w">  </span><span class="s">"</span><span class="se">\n</span><span class="s">---***YOU NOW HEAR THE UNTREATED SOUND SAMPLE***---</span><span class="se">\n</span><span class="s">"</span><span class="w">
+</span><span class="nb">outs</span><span class="w">    </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">2</span>
-<span class="nb">prints</span>  <span class="s">"</span><span class="se">\n</span><span class="s">---***YOU NOW HEAR THE RESULT OF THIS ANALYZED FILE:***---</span><span class="se">\n</span><span class="s">"</span>
-i<span class="n">bins</span>   <span class="o">=</span>  <span class="vi">p4</span>
-i<span class="n">gatefn</span> <span class="o">=</span>  <span class="vi">p5</span>
-k<span class="n">time</span> <span class="nb">line</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="vi">p3</span>
-a<span class="n">sig</span>  <span class="nb">pvadd</span> k<span class="n">time</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"fox1.pvx"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> i<span class="n">bins</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> i<span class="n">gatefn</span>
-<span class="nb">outs</span> a<span class="n">sig</span><span class="o">*</span><span class="mf">.7</span><span class="p">,</span> a<span class="n">sig</span><span class="o">*</span><span class="mf">.7</span>
-<span class="kd">endin</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">
+</span><span class="nb">prints</span><span class="w">  </span><span class="s">"</span><span class="se">\n</span><span class="s">---***YOU NOW HEAR THE RESULT OF THIS ANALYZED FILE:***---</span><span class="se">\n</span><span class="s">"</span><span class="w">
+</span>i<span class="n">bins</span><span class="w">   </span><span class="o">=</span><span class="w">  </span><span class="vi">p4</span><span class="w">
+</span>i<span class="n">gatefn</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="vi">p5</span><span class="w">
+</span>k<span class="n">time</span><span class="w"> </span><span class="nb">line</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="w">
+</span>a<span class="n">sig</span><span class="w">  </span><span class="nb">pvadd</span><span class="w"> </span>k<span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">"fox1.pvx"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>i<span class="n">bins</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span>i<span class="n">gatefn</span><span class="w">
+</span><span class="nb">outs</span><span class="w"> </span>a<span class="n">sig</span><span class="o">*</span><span class="mf">.7</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="o">*</span><span class="mf">.7</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">f</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">16384</span> <span class="mi">10</span> <span class="mi">1</span>	<span class="c1">; sine wave</span>
-<span class="nb">f</span> <span class="mi">2</span> <span class="mi">0</span> <span class="mi">512</span> <span class="mi">7</span> <span class="mi">1</span> <span class="mi">512</span> <span class="mi">1</span> <span class="c1">; 3 different tables for scaling of the gate</span>
-<span class="nb">f</span> <span class="mi">3</span> <span class="mi">0</span> <span class="mi">512</span> <span class="mi">5</span> <span class="mi">1</span> <span class="mi">256</span> <span class="mf">.001</span>
-<span class="nb">f</span> <span class="mi">4</span> <span class="mi">0</span> <span class="mi">512</span> <span class="mi">7</span> <span class="mi">0</span> <span class="mi">256</span> <span class="mi">1</span> <span class="mi">256</span> <span class="mi">1</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">16384</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w">	</span><span class="c1">; sine wave</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">512</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">512</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="c1">; 3 different tables for scaling of the gate</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">512</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">256</span><span class="w"> </span><span class="mf">.001</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">512</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">256</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">256</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
 
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mf">2.76</span>          <span class="c1">; original sample</span>
-<span class="nb">s</span>
-<span class="c1">;          bins   table</span>
-<span class="nb">i</span><span class="mi">2</span> <span class="mi">0</span> <span class="mf">2.76</span>   <span class="mi">300</span>     <span class="mi">2</span>    <span class="c1">; lots of bins &amp; table 2 scales amplitudes (= no change)  </span>
-<span class="nb">i</span><span class="mi">2</span> <span class="mi">3</span> <span class="mf">2.76</span>   <span class="mi">300</span>     <span class="mi">3</span>    <span class="c1">; table 3 scales amplitudes</span>
-<span class="nb">i</span><span class="mi">2</span> <span class="mi">6</span> <span class="mf">2.76</span>   <span class="mi">300</span>     <span class="mi">4</span>    <span class="c1">; table 4 scales amplitudes</span>
-<span class="nb">s</span>
-<span class="c1">;          bins   table</span>
-<span class="nb">i</span><span class="mi">2</span> <span class="mi">0</span> <span class="mf">2.76</span>   <span class="mi">30</span>      <span class="mi">2</span>    <span class="c1">; a few bins &amp; table 2 scales amplitudes (= no change)  </span>
-<span class="nb">i</span><span class="mi">2</span> <span class="mi">3</span> <span class="mf">2.76</span>   <span class="mi">30</span>      <span class="mi">3</span>    <span class="c1">; table 3 scales amplitudes</span>
-<span class="nb">i</span><span class="mi">2</span> <span class="mi">6</span> <span class="mf">2.76</span>   <span class="mi">30</span>      <span class="mi">4</span>    <span class="c1">; table 4 scales amplitudes</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">2.76</span><span class="w">          </span><span class="c1">; original sample</span><span class="w">
+</span><span class="nb">s</span><span class="w">
+</span><span class="c1">;          bins   table</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">2.76</span><span class="w">   </span><span class="mi">300</span><span class="w">     </span><span class="mi">2</span><span class="w">    </span><span class="c1">; lots of bins &amp; table 2 scales amplitudes (= no change)  </span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mf">2.76</span><span class="w">   </span><span class="mi">300</span><span class="w">     </span><span class="mi">3</span><span class="w">    </span><span class="c1">; table 3 scales amplitudes</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="mf">2.76</span><span class="w">   </span><span class="mi">300</span><span class="w">     </span><span class="mi">4</span><span class="w">    </span><span class="c1">; table 4 scales amplitudes</span><span class="w">
+</span><span class="nb">s</span><span class="w">
+</span><span class="c1">;          bins   table</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">2.76</span><span class="w">   </span><span class="mi">30</span><span class="w">      </span><span class="mi">2</span><span class="w">    </span><span class="c1">; a few bins &amp; table 2 scales amplitudes (= no change)  </span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mf">2.76</span><span class="w">   </span><span class="mi">30</span><span class="w">      </span><span class="mi">3</span><span class="w">    </span><span class="c1">; table 3 scales amplitudes</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="mf">2.76</span><span class="w">   </span><span class="mi">30</span><span class="w">      </span><span class="mi">4</span><span class="w">    </span><span class="c1">; table 4 scales amplitudes</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -275,7 +275,7 @@ a<span class="n">sig</span>  <span class="nb">pvadd</span> k<span class="n">time
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm185840"></a>
+        <a id="idm261121"></a>
         <h2>Credits</h2>
         <p>
       </p>

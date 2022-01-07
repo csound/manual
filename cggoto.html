@@ -39,14 +39,14 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm40566"></a>
+        <a id="idm52255"></a>
         <h2>Description</h2>
         <p>
       Transfer control to <span class="emphasis"><em>label</em></span> on every pass. (Combination of <a class="link" href="cigoto.html" title="cigoto"><em class="citetitle">cigoto</em></a> and <a class="link" href="ckgoto.html" title="ckgoto"><em class="citetitle">ckgoto</em></a>) 
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm40574"></a>
+        <a id="idm52263"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>cggoto</strong></span> condition, label</pre>
         <p>
@@ -54,21 +54,21 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm40589"></a>
+        <a id="idm52278"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the cggoto opcode. It uses the file <a class="ulink" href="examples/cggoto.csd" target="_top"><em class="citetitle">cggoto.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm40594"></a>
+          <a id="idm52283"></a>
           <p class="title">
             <strong>Example 128. Example of the cggoto opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm40601"></a>
+              <a id="idm52290"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -76,47 +76,47 @@
 -odac           -iadc     -d     <span class="c1">;;;RT audio I/O</span>
 <span class="c1">; -o cggoto.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="c1">; Initialize the global variables.</span>
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class="c1">; Initialize the global variables.</span><span class="w">
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="c1">; Instrument #1.</span>
-<span class="kd">instr</span> <span class="nf">1</span>
-  i<span class="n">1</span> <span class="o">=</span> <span class="vi">p4</span>
+</span><span class="c1">; Instrument #1.</span><span class="w">
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+  </span>i<span class="n">1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">p4</span><span class="w">
 
-  <span class="c1">; If i1 is equal to one, play a high note.</span>
-  <span class="c1">; Otherwise play a low note.</span>
-  <span class="kp">cggoto</span> <span class="p">(</span>i<span class="n">1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">),</span> <span class="nl">highnote</span>
+  </span><span class="c1">; If i1 is equal to one, play a high note.</span><span class="w">
+  </span><span class="c1">; Otherwise play a low note.</span><span class="w">
+  </span><span class="kp">cggoto</span><span class="w"> </span><span class="p">(</span>i<span class="n">1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="nl">highnote</span><span class="w">
 
-<span class="nl">lownote</span><span class="p">:</span>
-  a<span class="n">1</span> <span class="nb">oscil</span> <span class="mi">10000</span><span class="p">,</span> <span class="mi">220</span><span class="p">,</span> <span class="mi">1</span>
-  <span class="k">goto</span> <span class="nl">playit</span>
+</span><span class="nl">lownote</span><span class="p">:</span><span class="w">
+  </span>a<span class="n">1</span><span class="w"> </span><span class="nb">oscil</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w"> </span><span class="mi">220</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="k">goto</span><span class="w"> </span><span class="nl">playit</span><span class="w">
   
-<span class="nl">highnote</span><span class="p">:</span>
-  a<span class="n">1</span> <span class="nb">oscil</span> <span class="mi">10000</span><span class="p">,</span> <span class="mi">440</span><span class="p">,</span> <span class="mi">1</span>
-  <span class="k">goto</span> <span class="nl">playit</span>
+</span><span class="nl">highnote</span><span class="p">:</span><span class="w">
+  </span>a<span class="n">1</span><span class="w"> </span><span class="nb">oscil</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w"> </span><span class="mi">440</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="k">goto</span><span class="w"> </span><span class="nl">playit</span><span class="w">
 
-<span class="nl">playit</span><span class="p">:</span>
-  <span class="nb">out</span> a<span class="n">1</span>
-<span class="kd">endin</span>
+</span><span class="nl">playit</span><span class="p">:</span><span class="w">
+  </span><span class="nb">out</span><span class="w"> </span>a<span class="n">1</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
 
-<span class="c1">; Table #1: a simple sine wave.</span>
-<span class="nb">f</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">32768</span> <span class="mi">10</span> <span class="mi">1</span>
+</span><span class="c1">; Table #1: a simple sine wave.</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">32768</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="c1">; Play lownote for one second.</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span>
-<span class="c1">; Play highnote for one second.</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">2</span>
-<span class="nb">e</span>
+</span><span class="c1">; Play lownote for one second.</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="c1">; Play highnote for one second.</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="nb">e</span><span class="w">
 
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -126,7 +126,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm40686"></a>
+        <a id="idm52440"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="cigoto.html" title="cigoto"><em class="citetitle">cigoto</em></a>, 
@@ -140,7 +140,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm40705"></a>
+        <a id="idm52459"></a>
         <h2>Credits</h2>
         <p>Example written by Kevin Conder.</p>
       </div>

@@ -39,19 +39,19 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm287991"></a>
+        <a id="idm408169"></a>
         <h2>Description</h2>
         <p>
       Uses Chebyshev coefficients to generate stored polynomial functions which, under waveshaping, can be used to split a sinusoid into harmonic partials having a pre-definable spectrum.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm287994"></a>
+        <a id="idm408172"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>f</strong></span> # time size 13 xint xamp h0 h1 h2 ...</pre>
       </div>
       <div class="refsect1">
-        <a id="idm287998"></a>
+        <a id="idm408176"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>size</em></span> -- number of points in the table. Must be a power of 2 or a power-of-2 plus 1 (see <a class="link" href="f.html" title="f Statement (or Function Table Statement)"><em class="citetitle">f statement</em></a>). The normal value is power-of-2 plus 1.
@@ -80,20 +80,20 @@ xamp * int(size/2)/xint<br />
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm288025"></a>
+        <a id="idm408203"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the GEN13 generator. It uses the file <a class="ulink" href="examples/gen13.csd" target="_top"><em class="citetitle">gen13.csd</em></a>.
            </p>
         <div class="example">
-          <a id="idm288030"></a>
+          <a id="idm408208"></a>
           <p class="title">
-            <strong>Example 1288. Example of the GEN13 generator.</strong>
+            <strong>Example 1289. Example of the GEN13 generator.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm288037"></a>
+              <a id="idm408215"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -103,110 +103,110 @@ xamp * int(size/2)/xint<br />
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o gen13.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span> 
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span> 
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span> 
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span> 
-<span class="c1">;example by Russell Pinkston - Univ. of Texas  (but slightly modified)</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w"> 
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w"> 
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> 
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> 
+</span><span class="c1">;example by Russell Pinkston - Univ. of Texas  (but slightly modified)</span><span class="w">
 
-gi<span class="n">sine</span>   <span class="nb">ftgen</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">16384</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>							<span class="c1">;sine wave</span>
+</span>gi<span class="n">sine</span><span class="w">   </span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">16384</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">							</span><span class="c1">;sine wave</span><span class="w">
 
-<span class="kd">instr</span>   <span class="nf">1</span>
+</span><span class="kd">instr</span><span class="w">   </span><span class="nf">1</span><span class="w">
 
-i<span class="n">hertz</span> <span class="o">=</span> <span class="nb">cpspch</span><span class="p">(</span><span class="vi">p4</span><span class="p">)</span>
-i<span class="n">pkamp</span> <span class="o">=</span> <span class="vi">p5</span>
-i<span class="n">wsfn</span>  <span class="o">=</span> <span class="vi">p6</span>										<span class="c1">;waveshaping function</span>
-i<span class="n">nmfn</span>  <span class="o">=</span> <span class="vi">p7</span>										<span class="c1">;normalization function</span>
-a<span class="n">gate</span>   <span class="nb">linen</span>  <span class="mi">1</span><span class="p">,</span> <span class="mf">.01</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mf">.1</span>            					 	<span class="c1">;overall amp envelope</span>
-k<span class="n">ctrl</span>   <span class="nb">linen</span>  <span class="mf">.99</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">2</span>								<span class="c1">;waveshaping index control</span>
-a<span class="n">index</span>  <span class="nb">poscil</span> k<span class="n">ctrl</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> i<span class="n">hertz</span><span class="p">,</span> gi<span class="n">sine</span>							<span class="c1">;sine wave to be distorted</span>
-a<span class="n">signal</span> <span class="nb">tablei</span> <span class="mf">.5</span><span class="o">+</span>a<span class="n">index</span><span class="p">,</span> i<span class="n">wsfn</span><span class="p">,</span> <span class="mi">1</span>							<span class="c1">;waveshaping</span>
-k<span class="n">normal</span> <span class="nb">tablei</span> k<span class="n">ctrl</span><span class="p">,</span> i<span class="n">nmfn</span><span class="p">,</span> <span class="mi">1</span>								<span class="c1">;amplitude normalization</span>
-a<span class="n">sig</span>    <span class="o">=</span>      a<span class="n">signal</span><span class="o">*</span>k<span class="n">normal</span><span class="o">*</span>i<span class="n">pkamp</span><span class="o">*</span>a<span class="n">gate</span>
-        <span class="nb">outs</span>   a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
+</span>i<span class="n">hertz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">cpspch</span><span class="p">(</span><span class="vi">p4</span><span class="p">)</span><span class="w">
+</span>i<span class="n">pkamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">p5</span><span class="w">
+</span>i<span class="n">wsfn</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="vi">p6</span><span class="w">										</span><span class="c1">;waveshaping function</span><span class="w">
+</span>i<span class="n">nmfn</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="vi">p7</span><span class="w">										</span><span class="c1">;normalization function</span><span class="w">
+</span>a<span class="n">gate</span><span class="w">   </span><span class="nb">linen</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">.01</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mf">.1</span><span class="w">            					 	</span><span class="c1">;overall amp envelope</span><span class="w">
+</span>k<span class="n">ctrl</span><span class="w">   </span><span class="nb">linen</span><span class="w">  </span><span class="mf">.99</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">								</span><span class="c1">;waveshaping index control</span><span class="w">
+</span>a<span class="n">index</span><span class="w">  </span><span class="nb">poscil</span><span class="w"> </span>k<span class="n">ctrl</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span>i<span class="n">hertz</span><span class="p">,</span><span class="w"> </span>gi<span class="n">sine</span><span class="w">							</span><span class="c1">;sine wave to be distorted</span><span class="w">
+</span>a<span class="n">signal</span><span class="w"> </span><span class="nb">tablei</span><span class="w"> </span><span class="mf">.5</span><span class="o">+</span>a<span class="n">index</span><span class="p">,</span><span class="w"> </span>i<span class="n">wsfn</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">							</span><span class="c1">;waveshaping</span><span class="w">
+</span>k<span class="n">normal</span><span class="w"> </span><span class="nb">tablei</span><span class="w"> </span>k<span class="n">ctrl</span><span class="p">,</span><span class="w"> </span>i<span class="n">nmfn</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">								</span><span class="c1">;amplitude normalization</span><span class="w">
+</span>a<span class="n">sig</span><span class="w">    </span><span class="o">=</span><span class="w">      </span>a<span class="n">signal</span><span class="o">*</span>k<span class="n">normal</span><span class="o">*</span>i<span class="n">pkamp</span><span class="o">*</span>a<span class="n">gate</span><span class="w">
+        </span><span class="nb">outs</span><span class="w">   </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
            
-<span class="kd">endin</span>
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="c1">; This proves the statement in Dodge (p. 147) that Chebyshev polynomials</span>
-<span class="c1">; of order K have "only the kth harmonic." This is only true when the </span>
-<span class="c1">; waveshaping index is at the maximum - i.e., when the entire transfer</span>
-<span class="c1">; function is being accessed. RP.</span>
-<span class="c1">;--------------------------------------------------------------------------------------------------------------------------------------------</span>
-<span class="c1">; quasi sawtooth transfer function: </span>
-<span class="c1">;		 h0   h1   h2   h3   h4   h5   h6    h7   h8   h9   h10   h11 	h12   h13    h14    h15    h16    h17    h18    h19    h20</span>
-<span class="nb">f</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">513</span> <span class="mi">13</span> <span class="mi">1</span> <span class="mi">1</span>  <span class="mi">0</span>   <span class="mi">100</span>  <span class="o">-</span><span class="mi">50</span>  <span class="o">-</span><span class="mi">33</span>   <span class="mi">25</span>   <span class="mi">20</span> <span class="o">-</span><span class="mf">16.7</span> <span class="o">-</span><span class="mf">14.2</span> <span class="mf">12.5</span> <span class="mf">11.1</span> <span class="o">-</span><span class="mi">10</span>  <span class="o">-</span><span class="mf">9.09</span>  <span class="mf">8.333</span>  <span class="mf">7.69</span>  <span class="o">-</span><span class="mf">7.14</span>  <span class="o">-</span><span class="mf">6.67</span>  <span class="mf">6.25</span>	  <span class="mf">5.88</span>	<span class="o">-</span><span class="mf">5.55</span>  <span class="o">-</span><span class="mf">5.26</span>    <span class="mi">5</span>		
-<span class="nb">f</span><span class="mi">2</span> <span class="mi">0</span> <span class="mi">257</span> <span class="mi">4</span> <span class="mi">1</span> <span class="mi">1</span>	 <span class="c1">; normalizing function with midpoint bipolar offset</span>
+</span><span class="kd">endin</span><span class="w">
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="c1">; This proves the statement in Dodge (p. 147) that Chebyshev polynomials</span><span class="w">
+</span><span class="c1">; of order K have "only the kth harmonic." This is only true when the </span><span class="w">
+</span><span class="c1">; waveshaping index is at the maximum - i.e., when the entire transfer</span><span class="w">
+</span><span class="c1">; function is being accessed. RP.</span><span class="w">
+</span><span class="c1">;--------------------------------------------------------------------------------------------------------------------------------------------</span><span class="w">
+</span><span class="c1">; quasi sawtooth transfer function: </span><span class="w">
+</span><span class="c1">;		 h0   h1   h2   h3   h4   h5   h6    h7   h8   h9   h10   h11 	h12   h13    h14    h15    h16    h17    h18    h19    h20</span><span class="w">
+</span><span class="nb">f</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">513</span><span class="w"> </span><span class="mi">13</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="mi">0</span><span class="w">   </span><span class="mi">100</span><span class="w">  </span><span class="o">-</span><span class="mi">50</span><span class="w">  </span><span class="o">-</span><span class="mi">33</span><span class="w">   </span><span class="mi">25</span><span class="w">   </span><span class="mi">20</span><span class="w"> </span><span class="o">-</span><span class="mf">16.7</span><span class="w"> </span><span class="o">-</span><span class="mf">14.2</span><span class="w"> </span><span class="mf">12.5</span><span class="w"> </span><span class="mf">11.1</span><span class="w"> </span><span class="o">-</span><span class="mi">10</span><span class="w">  </span><span class="o">-</span><span class="mf">9.09</span><span class="w">  </span><span class="mf">8.333</span><span class="w">  </span><span class="mf">7.69</span><span class="w">  </span><span class="o">-</span><span class="mf">7.14</span><span class="w">  </span><span class="o">-</span><span class="mf">6.67</span><span class="w">  </span><span class="mf">6.25</span><span class="w">	  </span><span class="mf">5.88</span><span class="w">	</span><span class="o">-</span><span class="mf">5.55</span><span class="w">  </span><span class="o">-</span><span class="mf">5.26</span><span class="w">    </span><span class="mi">5</span><span class="w">		
+</span><span class="nb">f</span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">257</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w">	 </span><span class="c1">; normalizing function with midpoint bipolar offset</span><span class="w">
 
-<span class="c1">;	st	dur	pch	amp	wsfn	nmfn</span>
-<span class="nb">i</span><span class="mi">1</span>      <span class="mi">0</span>       <span class="mi">4</span>      <span class="mf">6.00</span>    <span class="mf">.7</span> 	 <span class="mi">1</span>	 <span class="mi">2</span>
-<span class="nb">i</span><span class="mi">1</span>      <span class="mi">4</span>       <span class="o">.</span>      <span class="mf">7.00</span>    <span class="o">.</span>
-<span class="nb">i</span><span class="mi">1</span>      <span class="mi">8</span>       <span class="o">.</span>      <span class="mf">8.00</span>    <span class="o">.</span>
-<span class="c1">;--------------------------------------------------------------------------------------------------------------------------------------------	</span>
-<span class="c1">; quasi square wave transfer function: </span>
-<span class="c1">;		 h0   h1   h2   h3   h4   h5   h6    h7   h8   h9   h10   h11 	h12   h13    h14    h15    h16    h17    h18    h19</span>
-<span class="nb">f</span><span class="mi">3</span> <span class="mi">0</span> <span class="mi">513</span> <span class="mi">13</span> <span class="mi">1</span> <span class="mi">1</span>  <span class="mi">0</span>   <span class="mi">100</span>   <span class="mi">0</span>   <span class="o">-</span><span class="mi">33</span>   <span class="mi">0</span>    <span class="mi">20</span>   <span class="mi">0</span>   <span class="o">-</span><span class="mf">14.2</span>  <span class="mi">0</span>   <span class="mf">11.1</span>   <span class="mi">0</span>  <span class="o">-</span><span class="mf">9.09</span>	 <span class="mi">0</span>   <span class="mf">7.69</span>     <span class="mi">0</span>    <span class="o">-</span><span class="mf">6.67</span>    <span class="mi">0</span>    <span class="mf">5.88</span>     <span class="mi">0</span>    <span class="o">-</span><span class="mf">5.26</span>
-<span class="nb">f</span><span class="mi">4</span> <span class="mi">0</span> <span class="mi">257</span> <span class="mi">4</span> <span class="mi">3</span> <span class="mi">1</span>	 <span class="c1">; normalizing function with midpoint bipolar offset</span>
+</span><span class="c1">;	st	dur	pch	amp	wsfn	nmfn</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">      </span><span class="mi">0</span><span class="w">       </span><span class="mi">4</span><span class="w">      </span><span class="mf">6.00</span><span class="w">    </span><span class="mf">.7</span><span class="w"> 	 </span><span class="mi">1</span><span class="w">	 </span><span class="mi">2</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">      </span><span class="mi">4</span><span class="w">       </span><span class="o">.</span><span class="w">      </span><span class="mf">7.00</span><span class="w">    </span><span class="o">.</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">      </span><span class="mi">8</span><span class="w">       </span><span class="o">.</span><span class="w">      </span><span class="mf">8.00</span><span class="w">    </span><span class="o">.</span><span class="w">
+</span><span class="c1">;--------------------------------------------------------------------------------------------------------------------------------------------	</span><span class="w">
+</span><span class="c1">; quasi square wave transfer function: </span><span class="w">
+</span><span class="c1">;		 h0   h1   h2   h3   h4   h5   h6    h7   h8   h9   h10   h11 	h12   h13    h14    h15    h16    h17    h18    h19</span><span class="w">
+</span><span class="nb">f</span><span class="mi">3</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">513</span><span class="w"> </span><span class="mi">13</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="mi">0</span><span class="w">   </span><span class="mi">100</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="o">-</span><span class="mi">33</span><span class="w">   </span><span class="mi">0</span><span class="w">    </span><span class="mi">20</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="o">-</span><span class="mf">14.2</span><span class="w">  </span><span class="mi">0</span><span class="w">   </span><span class="mf">11.1</span><span class="w">   </span><span class="mi">0</span><span class="w">  </span><span class="o">-</span><span class="mf">9.09</span><span class="w">	 </span><span class="mi">0</span><span class="w">   </span><span class="mf">7.69</span><span class="w">     </span><span class="mi">0</span><span class="w">    </span><span class="o">-</span><span class="mf">6.67</span><span class="w">    </span><span class="mi">0</span><span class="w">    </span><span class="mf">5.88</span><span class="w">     </span><span class="mi">0</span><span class="w">    </span><span class="o">-</span><span class="mf">5.26</span><span class="w">
+</span><span class="nb">f</span><span class="mi">4</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">257</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">1</span><span class="w">	 </span><span class="c1">; normalizing function with midpoint bipolar offset</span><span class="w">
 
-<span class="c1">;	st	dur	pch	amp	wsfn	nmfn</span>
-<span class="nb">i</span><span class="mi">1</span>      <span class="mi">16</span>       <span class="mi">4</span>     <span class="mf">6.00</span>     <span class="mf">.7</span>	 <span class="mi">3</span>	 <span class="mi">4</span>
-<span class="nb">i</span><span class="mi">1</span>      <span class="mi">20</span>       <span class="o">.</span>     <span class="mf">7.00</span>     <span class="o">.</span>
-<span class="nb">i</span><span class="mi">1</span>      <span class="mi">24</span>       <span class="o">.</span>     <span class="mf">8.00</span>     <span class="o">.</span>
-<span class="c1">;--------------------------------------------------------------------------------------------------------------------------------------------	</span>
-<span class="c1">; quasi triangle wave transfer function: </span>
-<span class="c1">;		 h0   h1   h2   h3   h4   h5   h6    h7   h8   h9   h10   h11 	h12   h13    h14    h15    h16    h17    h18    h19</span>
-<span class="nb">f</span><span class="mi">5</span> <span class="mi">0</span> <span class="mi">513</span> <span class="mi">13</span> <span class="mi">1</span> <span class="mi">1</span>  <span class="mi">0</span>   <span class="mi">100</span>   <span class="mi">0</span>  <span class="o">-</span><span class="mf">11.11</span> <span class="mi">0</span>    <span class="mi">4</span>    <span class="mi">0</span>   <span class="o">-</span><span class="mf">2.04</span>  <span class="mi">0</span>   <span class="mf">1.23</span>  <span class="mi">0</span>   <span class="o">-</span><span class="mf">.826</span>	<span class="mi">0</span>    <span class="mf">.59</span>      <span class="mi">0</span>    <span class="o">-</span><span class="mf">.444</span>    <span class="mi">0</span>    <span class="mf">.346</span>     <span class="mi">0</span>   <span class="o">-</span><span class="mf">.277</span>	
-<span class="nb">f</span><span class="mi">6</span> <span class="mi">0</span> <span class="mi">257</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">1</span>	 <span class="c1">; normalizing function with midpoint bipolar offset</span>
-<span class="c1">;	st	dur	pch	amp	wsfn	nmfn</span>
-<span class="nb">i</span><span class="mi">1</span>      <span class="mi">32</span>       <span class="mi">4</span>     <span class="mf">6.00</span>     <span class="mf">.7</span>	 <span class="mi">5</span>	 <span class="mi">6</span>
-<span class="nb">i</span><span class="mi">1</span>      <span class="mi">36</span>       <span class="o">.</span>     <span class="mf">7.00</span>     <span class="o">.</span>
-<span class="nb">i</span><span class="mi">1</span>      <span class="mi">40</span>       <span class="o">.</span>     <span class="mf">8.00</span>     <span class="o">.</span>
-<span class="c1">;--------------------------------------------------------------------------------------------------------------------------------------------</span>
-<span class="c1">; transfer function1:  h0 h1 h2 h3 h4 h5 h6 h7 h8 h9 h10 h11 h12 h13 h14 h15 h16</span>
-<span class="nb">f</span><span class="mi">7</span> <span class="mi">0</span> <span class="mi">513</span> <span class="mi">13</span> <span class="mi">1</span> <span class="mi">1</span>        <span class="mi">0</span>  <span class="mi">1</span> <span class="o">-</span><span class="mf">.8</span> <span class="mi">0</span> <span class="mf">.6</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span> <span class="mf">.4</span>  <span class="mi">0</span>  <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mf">.1</span> <span class="o">-</span><span class="mf">.2</span> <span class="o">-</span><span class="mf">.3</span>  <span class="mf">.5</span>
-<span class="nb">f</span><span class="mi">8</span> <span class="mi">0</span> <span class="mi">257</span> <span class="mi">4</span> <span class="mi">7</span> <span class="mi">1</span>	       <span class="c1">; normalizing function with midpoint bipolar offset</span>
-<span class="c1">;	st	dur	pch	amp	wsfn	nmfn</span>
-<span class="nb">i</span><span class="mi">1</span>      <span class="mi">48</span>       <span class="mi">4</span>     <span class="mf">5.00</span>     <span class="mf">.7</span>	 <span class="mi">7</span>	 <span class="mi">8</span>
-<span class="nb">i</span><span class="mi">1</span>      <span class="mi">52</span>       <span class="o">.</span>     <span class="mf">6.00</span>     <span class="o">.</span>
-<span class="nb">i</span><span class="mi">1</span>      <span class="mi">56</span>       <span class="o">.</span>     <span class="mf">7.00</span>     <span class="o">.</span>
-<span class="c1">;--------------------------------------------------------------------------------------------------------------------------------------------</span>
-<span class="c1">;=========================================================================;</span>
-<span class="c1">; This demonstrates the use of high partials, sometimes without a         ;</span>
-<span class="c1">; fundamental, to get quasi-inharmonic spectra from waveshaping.          ;</span>
-<span class="c1">;=========================================================================;</span>
-<span class="c1">; transfer function2:  h0 h1 h2 h3 h4 h5 h6 h7 h8 h9 h10 h11 h12 h13 h14 h15 h16</span>
-<span class="nb">f</span><span class="mi">9</span> <span class="mi">0</span> <span class="mi">513</span> <span class="mi">13</span> <span class="mi">1</span> <span class="mi">1</span>        <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span> <span class="o">-</span><span class="mf">.1</span>  <span class="mi">0</span> <span class="mf">.3</span>  <span class="mi">0</span> <span class="o">-</span><span class="mf">.5</span> <span class="mi">0</span> <span class="mf">.7</span>  <span class="mi">0</span> <span class="o">-</span><span class="mf">.9</span>  <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">0</span>  <span class="o">-</span><span class="mi">1</span>   <span class="mi">0</span>
-<span class="nb">f</span><span class="mi">10</span> <span class="mi">0</span> <span class="mi">257</span> <span class="mi">4</span> <span class="mi">9</span> <span class="mi">1</span>	       <span class="c1">; normalizing function with midpoint bipolar offset</span>
-<span class="c1">;	st	dur	pch	amp	wsfn	nmfn</span>
-<span class="nb">i</span><span class="mi">1</span>      <span class="mi">64</span>       <span class="mi">4</span>       <span class="mf">5.00</span>   <span class="mf">.7</span>	 <span class="mi">9</span>	<span class="mi">10</span>
-<span class="nb">i</span><span class="mi">1</span>      <span class="mi">68</span>       <span class="o">.</span>       <span class="mf">6.00</span>    <span class="o">.</span>
-<span class="nb">i</span><span class="mi">1</span>      <span class="mi">72</span>       <span class="o">.</span>       <span class="mf">7.00</span>    <span class="o">.</span>
-<span class="c1">;--------------------------------------------------------------------------------------------------------------------------------------------</span>
-<span class="c1">; transfer function3: h0   h1   h2   h3   h4   h5   h6    h7   h8   h9   h10   h11 	h12   h13    h14    h15    h16    h17    h18    h19    h17   h18   h19   h20</span>
-<span class="nb">f</span><span class="mi">11</span> <span class="mi">0</span> <span class="mi">513</span> <span class="mi">13</span> <span class="mi">1</span> <span class="mi">1</span>      <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>    <span class="mi">0</span>     <span class="o">-</span><span class="mi">1</span>   <span class="mi">0</span>    <span class="mi">1</span>     <span class="mi">0</span>     <span class="mi">0</span>       <span class="o">-</span><span class="mf">.1</span>    <span class="mi">0</span>     <span class="mf">.1</span>      <span class="mi">0</span>     <span class="o">-</span><span class="mf">.2</span>    <span class="mf">.3</span>      <span class="mi">0</span>     <span class="o">-</span><span class="mf">.7</span>     <span class="mi">0</span>    <span class="mf">.2</span>     <span class="mi">0</span>    <span class="o">-</span><span class="mf">.1</span>                        
-<span class="nb">f</span><span class="mi">12</span> <span class="mi">0</span> <span class="mi">257</span> <span class="mi">4</span> <span class="mi">11</span> <span class="mi">1</span>      <span class="c1">; normalizing function with midpoint bipolar offset</span>
+</span><span class="c1">;	st	dur	pch	amp	wsfn	nmfn</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">      </span><span class="mi">16</span><span class="w">       </span><span class="mi">4</span><span class="w">     </span><span class="mf">6.00</span><span class="w">     </span><span class="mf">.7</span><span class="w">	 </span><span class="mi">3</span><span class="w">	 </span><span class="mi">4</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">      </span><span class="mi">20</span><span class="w">       </span><span class="o">.</span><span class="w">     </span><span class="mf">7.00</span><span class="w">     </span><span class="o">.</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">      </span><span class="mi">24</span><span class="w">       </span><span class="o">.</span><span class="w">     </span><span class="mf">8.00</span><span class="w">     </span><span class="o">.</span><span class="w">
+</span><span class="c1">;--------------------------------------------------------------------------------------------------------------------------------------------	</span><span class="w">
+</span><span class="c1">; quasi triangle wave transfer function: </span><span class="w">
+</span><span class="c1">;		 h0   h1   h2   h3   h4   h5   h6    h7   h8   h9   h10   h11 	h12   h13    h14    h15    h16    h17    h18    h19</span><span class="w">
+</span><span class="nb">f</span><span class="mi">5</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">513</span><span class="w"> </span><span class="mi">13</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="mi">0</span><span class="w">   </span><span class="mi">100</span><span class="w">   </span><span class="mi">0</span><span class="w">  </span><span class="o">-</span><span class="mf">11.11</span><span class="w"> </span><span class="mi">0</span><span class="w">    </span><span class="mi">4</span><span class="w">    </span><span class="mi">0</span><span class="w">   </span><span class="o">-</span><span class="mf">2.04</span><span class="w">  </span><span class="mi">0</span><span class="w">   </span><span class="mf">1.23</span><span class="w">  </span><span class="mi">0</span><span class="w">   </span><span class="o">-</span><span class="mf">.826</span><span class="w">	</span><span class="mi">0</span><span class="w">    </span><span class="mf">.59</span><span class="w">      </span><span class="mi">0</span><span class="w">    </span><span class="o">-</span><span class="mf">.444</span><span class="w">    </span><span class="mi">0</span><span class="w">    </span><span class="mf">.346</span><span class="w">     </span><span class="mi">0</span><span class="w">   </span><span class="o">-</span><span class="mf">.277</span><span class="w">	
+</span><span class="nb">f</span><span class="mi">6</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">257</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">1</span><span class="w">	 </span><span class="c1">; normalizing function with midpoint bipolar offset</span><span class="w">
+</span><span class="c1">;	st	dur	pch	amp	wsfn	nmfn</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">      </span><span class="mi">32</span><span class="w">       </span><span class="mi">4</span><span class="w">     </span><span class="mf">6.00</span><span class="w">     </span><span class="mf">.7</span><span class="w">	 </span><span class="mi">5</span><span class="w">	 </span><span class="mi">6</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">      </span><span class="mi">36</span><span class="w">       </span><span class="o">.</span><span class="w">     </span><span class="mf">7.00</span><span class="w">     </span><span class="o">.</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">      </span><span class="mi">40</span><span class="w">       </span><span class="o">.</span><span class="w">     </span><span class="mf">8.00</span><span class="w">     </span><span class="o">.</span><span class="w">
+</span><span class="c1">;--------------------------------------------------------------------------------------------------------------------------------------------</span><span class="w">
+</span><span class="c1">; transfer function1:  h0 h1 h2 h3 h4 h5 h6 h7 h8 h9 h10 h11 h12 h13 h14 h15 h16</span><span class="w">
+</span><span class="nb">f</span><span class="mi">7</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">513</span><span class="w"> </span><span class="mi">13</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w">        </span><span class="mi">0</span><span class="w">  </span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="mf">.8</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">.6</span><span class="w">  </span><span class="mi">0</span><span class="w">  </span><span class="mi">0</span><span class="w">  </span><span class="mi">0</span><span class="w"> </span><span class="mf">.4</span><span class="w">  </span><span class="mi">0</span><span class="w">  </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="mf">.1</span><span class="w"> </span><span class="o">-</span><span class="mf">.2</span><span class="w"> </span><span class="o">-</span><span class="mf">.3</span><span class="w">  </span><span class="mf">.5</span><span class="w">
+</span><span class="nb">f</span><span class="mi">8</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">257</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">1</span><span class="w">	       </span><span class="c1">; normalizing function with midpoint bipolar offset</span><span class="w">
+</span><span class="c1">;	st	dur	pch	amp	wsfn	nmfn</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">      </span><span class="mi">48</span><span class="w">       </span><span class="mi">4</span><span class="w">     </span><span class="mf">5.00</span><span class="w">     </span><span class="mf">.7</span><span class="w">	 </span><span class="mi">7</span><span class="w">	 </span><span class="mi">8</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">      </span><span class="mi">52</span><span class="w">       </span><span class="o">.</span><span class="w">     </span><span class="mf">6.00</span><span class="w">     </span><span class="o">.</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">      </span><span class="mi">56</span><span class="w">       </span><span class="o">.</span><span class="w">     </span><span class="mf">7.00</span><span class="w">     </span><span class="o">.</span><span class="w">
+</span><span class="c1">;--------------------------------------------------------------------------------------------------------------------------------------------</span><span class="w">
+</span><span class="c1">;=========================================================================;</span><span class="w">
+</span><span class="c1">; This demonstrates the use of high partials, sometimes without a         ;</span><span class="w">
+</span><span class="c1">; fundamental, to get quasi-inharmonic spectra from waveshaping.          ;</span><span class="w">
+</span><span class="c1">;=========================================================================;</span><span class="w">
+</span><span class="c1">; transfer function2:  h0 h1 h2 h3 h4 h5 h6 h7 h8 h9 h10 h11 h12 h13 h14 h15 h16</span><span class="w">
+</span><span class="nb">f</span><span class="mi">9</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">513</span><span class="w"> </span><span class="mi">13</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w">        </span><span class="mi">0</span><span class="w">  </span><span class="mi">0</span><span class="w">  </span><span class="mi">0</span><span class="w"> </span><span class="o">-</span><span class="mf">.1</span><span class="w">  </span><span class="mi">0</span><span class="w"> </span><span class="mf">.3</span><span class="w">  </span><span class="mi">0</span><span class="w"> </span><span class="o">-</span><span class="mf">.5</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">.7</span><span class="w">  </span><span class="mi">0</span><span class="w"> </span><span class="o">-</span><span class="mf">.9</span><span class="w">  </span><span class="mi">0</span><span class="w">   </span><span class="mi">1</span><span class="w">   </span><span class="mi">0</span><span class="w">  </span><span class="o">-</span><span class="mi">1</span><span class="w">   </span><span class="mi">0</span><span class="w">
+</span><span class="nb">f</span><span class="mi">10</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">257</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="mi">1</span><span class="w">	       </span><span class="c1">; normalizing function with midpoint bipolar offset</span><span class="w">
+</span><span class="c1">;	st	dur	pch	amp	wsfn	nmfn</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">      </span><span class="mi">64</span><span class="w">       </span><span class="mi">4</span><span class="w">       </span><span class="mf">5.00</span><span class="w">   </span><span class="mf">.7</span><span class="w">	 </span><span class="mi">9</span><span class="w">	</span><span class="mi">10</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">      </span><span class="mi">68</span><span class="w">       </span><span class="o">.</span><span class="w">       </span><span class="mf">6.00</span><span class="w">    </span><span class="o">.</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">      </span><span class="mi">72</span><span class="w">       </span><span class="o">.</span><span class="w">       </span><span class="mf">7.00</span><span class="w">    </span><span class="o">.</span><span class="w">
+</span><span class="c1">;--------------------------------------------------------------------------------------------------------------------------------------------</span><span class="w">
+</span><span class="c1">; transfer function3: h0   h1   h2   h3   h4   h5   h6    h7   h8   h9   h10   h11 	h12   h13    h14    h15    h16    h17    h18    h19    h17   h18   h19   h20</span><span class="w">
+</span><span class="nb">f</span><span class="mi">11</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">513</span><span class="w"> </span><span class="mi">13</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w">      </span><span class="mi">0</span><span class="w">    </span><span class="mi">0</span><span class="w">    </span><span class="mi">0</span><span class="w">    </span><span class="mi">0</span><span class="w">    </span><span class="mi">0</span><span class="w">    </span><span class="mi">0</span><span class="w">    </span><span class="mi">0</span><span class="w">     </span><span class="o">-</span><span class="mi">1</span><span class="w">   </span><span class="mi">0</span><span class="w">    </span><span class="mi">1</span><span class="w">     </span><span class="mi">0</span><span class="w">     </span><span class="mi">0</span><span class="w">       </span><span class="o">-</span><span class="mf">.1</span><span class="w">    </span><span class="mi">0</span><span class="w">     </span><span class="mf">.1</span><span class="w">      </span><span class="mi">0</span><span class="w">     </span><span class="o">-</span><span class="mf">.2</span><span class="w">    </span><span class="mf">.3</span><span class="w">      </span><span class="mi">0</span><span class="w">     </span><span class="o">-</span><span class="mf">.7</span><span class="w">     </span><span class="mi">0</span><span class="w">    </span><span class="mf">.2</span><span class="w">     </span><span class="mi">0</span><span class="w">    </span><span class="o">-</span><span class="mf">.1</span><span class="w">                        
+</span><span class="nb">f</span><span class="mi">12</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">257</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">11</span><span class="w"> </span><span class="mi">1</span><span class="w">      </span><span class="c1">; normalizing function with midpoint bipolar offset</span><span class="w">
 
-<span class="c1">;	st	dur	pch	amp	wsfn	nmfn</span>
-<span class="nb">i</span><span class="mi">1</span>      <span class="mi">80</span>       <span class="mi">4</span>     <span class="mf">5.00</span>     <span class="mf">.7</span>	 <span class="mi">11</span>	<span class="mi">12</span>
-<span class="nb">i</span><span class="mi">1</span>      <span class="mi">84</span>       <span class="o">.</span>     <span class="mf">5.06</span>     <span class="o">.</span>
-<span class="nb">i</span><span class="mi">1</span>      <span class="mi">88</span>       <span class="o">.</span>     <span class="mf">6.00</span>     <span class="o">.</span>
-<span class="c1">;--------------------------------------------------------------------------------------------------------------------------------------------</span>
-<span class="c1">;=========================================================================;</span>
-<span class="c1">; split a sinusoid into 3 odd-harmonic partials of relative strength 5:3:1</span>
-<span class="c1">;=========================================================================;</span>
-<span class="c1">;--------------------------------------------------------------------------------------------------------------------------------------------</span>
-<span class="c1">; transfer function4: h0   h1   h2   h3   h4   h5</span>
-<span class="nb">f</span><span class="mi">13</span> <span class="mi">0</span> <span class="mi">513</span> <span class="mi">13</span> <span class="mi">1</span> <span class="mi">1</span>      <span class="mi">0</span>    <span class="mi">5</span>    <span class="mi">0</span>    <span class="mi">3</span>    <span class="mi">0</span>    <span class="mi">1</span>	
-<span class="nb">f</span><span class="mi">14</span> <span class="mi">0</span> <span class="mi">257</span> <span class="mi">4</span> <span class="mi">13</span> <span class="mi">1</span>      <span class="c1">; normalizing function with midpoint bipolar offset</span>
+</span><span class="c1">;	st	dur	pch	amp	wsfn	nmfn</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">      </span><span class="mi">80</span><span class="w">       </span><span class="mi">4</span><span class="w">     </span><span class="mf">5.00</span><span class="w">     </span><span class="mf">.7</span><span class="w">	 </span><span class="mi">11</span><span class="w">	</span><span class="mi">12</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">      </span><span class="mi">84</span><span class="w">       </span><span class="o">.</span><span class="w">     </span><span class="mf">5.06</span><span class="w">     </span><span class="o">.</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">      </span><span class="mi">88</span><span class="w">       </span><span class="o">.</span><span class="w">     </span><span class="mf">6.00</span><span class="w">     </span><span class="o">.</span><span class="w">
+</span><span class="c1">;--------------------------------------------------------------------------------------------------------------------------------------------</span><span class="w">
+</span><span class="c1">;=========================================================================;</span><span class="w">
+</span><span class="c1">; split a sinusoid into 3 odd-harmonic partials of relative strength 5:3:1</span><span class="w">
+</span><span class="c1">;=========================================================================;</span><span class="w">
+</span><span class="c1">;--------------------------------------------------------------------------------------------------------------------------------------------</span><span class="w">
+</span><span class="c1">; transfer function4: h0   h1   h2   h3   h4   h5</span><span class="w">
+</span><span class="nb">f</span><span class="mi">13</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">513</span><span class="w"> </span><span class="mi">13</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w">      </span><span class="mi">0</span><span class="w">    </span><span class="mi">5</span><span class="w">    </span><span class="mi">0</span><span class="w">    </span><span class="mi">3</span><span class="w">    </span><span class="mi">0</span><span class="w">    </span><span class="mi">1</span><span class="w">	
+</span><span class="nb">f</span><span class="mi">14</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">257</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">13</span><span class="w"> </span><span class="mi">1</span><span class="w">      </span><span class="c1">; normalizing function with midpoint bipolar offset</span><span class="w">
 
-<span class="c1">;	st	dur	pch	amp	wsfn	nmfn</span>
-<span class="nb">i</span><span class="mi">1</span>      <span class="mi">96</span>      <span class="mi">4</span>     <span class="mf">5.00</span>     <span class="mf">.7</span>	 <span class="mi">13</span>	<span class="mi">14</span>
-<span class="nb">i</span><span class="mi">1</span>      <span class="mi">100</span>     <span class="o">.</span>     <span class="mf">5.06</span>     <span class="o">.</span>
-<span class="nb">i</span><span class="mi">1</span>      <span class="mi">104</span>     <span class="o">.</span>     <span class="mf">6.00</span>     <span class="o">.</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="c1">;	st	dur	pch	amp	wsfn	nmfn</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">      </span><span class="mi">96</span><span class="w">      </span><span class="mi">4</span><span class="w">     </span><span class="mf">5.00</span><span class="w">     </span><span class="mf">.7</span><span class="w">	 </span><span class="mi">13</span><span class="w">	</span><span class="mi">14</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">      </span><span class="mi">100</span><span class="w">     </span><span class="o">.</span><span class="w">     </span><span class="mf">5.06</span><span class="w">     </span><span class="o">.</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">      </span><span class="mi">104</span><span class="w">     </span><span class="o">.</span><span class="w">     </span><span class="mf">6.00</span><span class="w">     </span><span class="o">.</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -281,7 +281,7 @@ a<span class="n">sig</span>    <span class="o">=</span>      a<span class="n">si
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm288648"></a>
+        <a id="idm409276"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="GEN03.html" title="GEN03"><em class="citetitle">GEN03</em></a>,

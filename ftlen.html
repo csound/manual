@@ -39,19 +39,19 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm99741"></a>
+        <a id="idm137271"></a>
         <h2>Description</h2>
         <p>
       Returns the size of a stored function table.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm99744"></a>
+        <a id="idm137274"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>ftlen</strong></span>(x) (init-rate args only)</pre>
       </div>
       <div class="refsect1">
-        <a id="idm99748"></a>
+        <a id="idm137278"></a>
         <h2>Performance</h2>
         <p>
       Returns the size (number of points, excluding guard point) of stored function table, number <span class="emphasis"><em>x</em></span>. While most units referencing a stored table will automatically take its size into account (so tables can be of arbitrary length), this function reports the actual size if that is needed. Note that <span class="emphasis"><em>ftlen</em></span> will always return a power-of-2 value, i.e. the function table guard point (see <a class="link" href="f.html" title="f Statement (or Function Table Statement)"><em class="citetitle">f Statement</em></a>) is not included.As of Csound version 3.53, <span class="emphasis"><em>ftlen</em></span> works with deferred function tables (see <a class="link" href="GEN01.html" title="GEN01"><em class="citetitle">GEN01</em></a>).
@@ -61,21 +61,21 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm99763"></a>
+        <a id="idm137293"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the ftlen opcode. It uses the file <a class="ulink" href="examples/ftlen.csd" target="_top"><em class="citetitle">ftlen.csd</em></a>, <a class="ulink" href="examples/fox.wav" target="_top"><em class="citetitle">fox.wav</em></a> and <a class="ulink" href="examples/beats.wav" target="_top"><em class="citetitle">beats.wav</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm99772"></a>
+          <a id="idm137302"></a>
           <p class="title">
             <strong>Example 393. Example of the ftlen opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm99779"></a>
+              <a id="idm137309"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -85,31 +85,31 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o ftlen.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>   <span class="o">=</span><span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">   </span><span class="o">=</span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
 
-i<span class="n">ft</span>  <span class="o">=</span> <span class="nb">ftlen</span><span class="p">(</span><span class="vi">p4</span><span class="p">)</span>
-     <span class="nb">print</span> i<span class="n">ft</span>
-a<span class="n">out</span> <span class="nb">loscil3</span> <span class="mf">.8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="vi">p4</span>
-     <span class="nb">outs</span> a<span class="n">out</span><span class="p">,</span> a<span class="n">out</span>
+</span>i<span class="n">ft</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">ftlen</span><span class="p">(</span><span class="vi">p4</span><span class="p">)</span><span class="w">
+     </span><span class="nb">print</span><span class="w"> </span>i<span class="n">ft</span><span class="w">
+</span>a<span class="n">out</span><span class="w"> </span><span class="nb">loscil3</span><span class="w"> </span><span class="mf">.8</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="vi">p4</span><span class="w">
+     </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">out</span><span class="p">,</span><span class="w"> </span>a<span class="n">out</span><span class="w">
 
-<span class="kd">endin</span> 
-<span class="nt">&lt;/CsInstruments&gt;</span> 
-<span class="nt">&lt;CsScore&gt;</span> 
-<span class="nb">f</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="s">"fox.wav"</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="c1">;Csound computes tablesize</span>
-<span class="nb">f</span> <span class="mi">2</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="s">"beats.wav"</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="c1">;Csound computes tablesize</span>
+</span><span class="kd">endin</span><span class="w"> 
+</span><span class="nt">&lt;/CsInstruments&gt;</span> 
+<span class="nt">&lt;CsScore&gt;</span><span class="w"> 
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="s">"fox.wav"</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="c1">;Csound computes tablesize</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="s">"beats.wav"</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="c1">;Csound computes tablesize</span><span class="w">
 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">3</span> <span class="mi">1</span> <span class="c1">;"fox.wav"</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">2</span> <span class="c1">;"beats.wav"</span>
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="c1">;"fox.wav"</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="c1">;"beats.wav"</span><span class="w">
 
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -127,7 +127,7 @@ instr 1:  ift = 88199.000
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm99864"></a>
+        <a id="idm137456"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="ftchnls.html" title="ftchnls"><em class="citetitle">ftchnls</em></a>, 
@@ -139,7 +139,7 @@ instr 1:  ift = 88199.000
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm99877"></a>
+        <a id="idm137469"></a>
         <h2>Credits</h2>
         <p>
       </p>

@@ -39,19 +39,19 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm142270"></a>
+        <a id="idm198468"></a>
         <h2>Description</h2>
         <p>
       Generates a metronomic signal with controllable swinging.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm142273"></a>
+        <a id="idm198471"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ktrig  <span class="command"><strong>metro2</strong></span>  kfreq, kswing [, iamp, initphase]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm142277"></a>
+        <a id="idm198475"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>iamp</em></span>  -  off-beat click amplitude
@@ -61,7 +61,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm142283"></a>
+        <a id="idm198481"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>ktrig</em></span> - output trigger signal
@@ -100,93 +100,93 @@
         </div>
       </div>
       <div class="refsect1">
-        <a id="idm142298"></a>
+        <a id="idm198496"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the metro2 opcode. It uses the file <a class="ulink" href="examples/metro2.csd" target="_top"><em class="citetitle">metro2.csd</em></a>
       </p>
         <div class="example">
-          <a id="idm142303"></a>
+          <a id="idm198501"></a>
           <p class="title">
             <strong>Example 583. Example of the metro2 opcode.</strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
-              <a id="idm142305"></a>
+              <a id="idm198503"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 -odac <span class="c1">; for RT audio</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-        <span class="nt">&lt;CsInstruments&gt;</span>
+        <span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">16</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mf">1.0</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="w">
 
-ga<span class="n">1</span> <span class="nb">init</span> <span class="mi">0</span>   <span class="c1">; delay aux</span>
+</span>ga<span class="n">1</span><span class="w"> </span><span class="nb">init</span><span class="w"> </span><span class="mi">0</span><span class="w">   </span><span class="c1">; delay aux</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span> <span class="c1">; main triggering instrument</span>
-k<span class="n">ndx</span> <span class="nb">init</span> <span class="mi">0</span>
-k<span class="n">ndx2</span> <span class="nb">init</span> <span class="o">-</span><span class="mi">1</span>
-<span class="c1">; the clicks are 1/16th notes @ 137 BPM</span>
-k<span class="n">T</span> <span class="nb">metro2</span> <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="mi">137</span><span class="o">/</span><span class="mi">60</span><span class="p">),</span> <span class="vi">p4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span>
-<span class="k">if</span> <span class="p">(</span>k<span class="n">T</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">goto</span> <span class="nl">Halt</span>
-	k<span class="n">1</span> <span class="nb">table</span> k<span class="n">ndx</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
-	k<span class="n">ndx</span> <span class="o">+=</span> <span class="mi">1</span>
-	<span class="k">if</span> <span class="p">(</span>k<span class="n">1</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">goto</span> <span class="nl">Next</span>
-		<span class="nb">event</span> <span class="s">"i"</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> k<span class="n">1</span>
-<span class="nl">Next</span><span class="p">:</span> 
-<span class="c1">; positive amplitude values of down-beat clicks </span>
-<span class="c1">; are used to trigger kick (instr 3)</span>
-<span class="k">if</span> <span class="p">(</span>k<span class="n">T</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="k">goto</span> <span class="nl">Halt</span>
-	k<span class="n">ndx2</span> <span class="o">+=</span> <span class="mi">1</span>
-	k<span class="n">ndx2</span> <span class="nb">wrap</span> k<span class="n">ndx2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> 
- 	<span class="k">if</span> k<span class="n">ndx2</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">goto</span> <span class="nl">Halt</span>
-	<span class="nb">event</span> <span class="s">"i"</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span>
-<span class="nl">Halt</span><span class="p">:</span>
-<span class="kd">endin</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w"> </span><span class="c1">; main triggering instrument</span><span class="w">
+</span>k<span class="n">ndx</span><span class="w"> </span><span class="nb">init</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span>k<span class="n">ndx2</span><span class="w"> </span><span class="nb">init</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w">
+</span><span class="c1">; the clicks are 1/16th notes @ 137 BPM</span><span class="w">
+</span>k<span class="n">T</span><span class="w"> </span><span class="nb">metro2</span><span class="w"> </span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="mi">137</span><span class="o">/</span><span class="mi">60</span><span class="p">),</span><span class="w"> </span><span class="vi">p4</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w">
+</span><span class="k">if</span><span class="w"> </span><span class="p">(</span>k<span class="n">T</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="nl">Halt</span><span class="w">
+	</span>k<span class="n">1</span><span class="w"> </span><span class="nb">table</span><span class="w"> </span>k<span class="n">ndx</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+	</span>k<span class="n">ndx</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+	</span><span class="k">if</span><span class="w"> </span><span class="p">(</span>k<span class="n">1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="nl">Next</span><span class="w">
+		</span><span class="nb">event</span><span class="w"> </span><span class="s">"i"</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.35</span><span class="p">,</span><span class="w"> </span>k<span class="n">1</span><span class="w">
+</span><span class="nl">Next</span><span class="p">:</span><span class="w"> 
+</span><span class="c1">; positive amplitude values of down-beat clicks </span><span class="w">
+</span><span class="c1">; are used to trigger kick (instr 3)</span><span class="w">
+</span><span class="k">if</span><span class="w"> </span><span class="p">(</span>k<span class="n">T</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="nl">Halt</span><span class="w">
+	</span>k<span class="n">ndx2</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+	</span>k<span class="n">ndx2</span><span class="w"> </span><span class="nb">wrap</span><span class="w"> </span>k<span class="n">ndx2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"> 
+ 	</span><span class="k">if</span><span class="w"> </span>k<span class="n">ndx2</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="nl">Halt</span><span class="w">
+	</span><span class="nb">event</span><span class="w"> </span><span class="s">"i"</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2</span><span class="w">
+</span><span class="nl">Halt</span><span class="p">:</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">2</span>  <span class="c1">; simple subtractive bass</span>
-k<span class="n">AE</span> <span class="nb">linsegr</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="vi">p3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mf">.7</span><span class="p">,</span> <span class="mf">.04</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">.04</span><span class="p">,</span> <span class="mi">0</span>
-k<span class="n">FE</span> <span class="nb">linsegr</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="vi">p3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mf">.7</span><span class="p">,</span> <span class="mf">.04</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> <span class="mf">.04</span><span class="p">,</span> <span class="mf">.1</span>
-i<span class="n">fr</span> <span class="o">=</span> <span class="nb">cpspch</span><span class="p">(</span><span class="vi">p4</span><span class="p">)</span>
-a<span class="n">1</span> <span class="nb">vco2</span> <span class="mi">1</span><span class="p">,</span> i<span class="n">fr</span>
-a<span class="n">2</span> <span class="nb">vco2</span> <span class="mi">1</span><span class="p">,</span> i<span class="n">fr</span> <span class="o">*</span> <span class="mf">1.005</span>
-a<span class="n">3</span> <span class="nb">vco2</span> <span class="mi">1</span><span class="p">,</span> i<span class="n">fr</span> <span class="o">*</span> <span class="mf">0.993</span>
-a<span class="n">M</span> <span class="o">=</span> <span class="p">(</span>a<span class="n">1</span><span class="o">+</span>a<span class="n">2</span><span class="o">+</span>a<span class="n">3</span><span class="p">)</span><span class="o">/</span><span class="mi">3</span>
-a<span class="n">M</span> <span class="nb">moogvcf</span> a<span class="n">M</span><span class="o">*</span>k<span class="n">AE</span><span class="p">,</span> <span class="mi">1000</span> <span class="o">*</span> k<span class="n">FE</span><span class="p">,</span> <span class="mf">0.5</span>
-<span class="nb">outs</span> a<span class="n">M</span><span class="p">,</span> a<span class="n">M</span>
-ga<span class="n">1</span> <span class="o">+=</span> a<span class="n">M</span> <span class="o">*</span> <span class="mf">0.25</span>
-<span class="kd">endin</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">  </span><span class="c1">; simple subtractive bass</span><span class="w">
+</span>k<span class="n">AE</span><span class="w"> </span><span class="nb">linsegr</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.005</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mf">.7</span><span class="p">,</span><span class="w"> </span><span class="mf">.04</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">.04</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span>k<span class="n">FE</span><span class="w"> </span><span class="nb">linsegr</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.005</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mf">.7</span><span class="p">,</span><span class="w"> </span><span class="mf">.04</span><span class="p">,</span><span class="w"> </span><span class="mf">.1</span><span class="p">,</span><span class="w"> </span><span class="mf">.04</span><span class="p">,</span><span class="w"> </span><span class="mf">.1</span><span class="w">
+</span>i<span class="n">fr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">cpspch</span><span class="p">(</span><span class="vi">p4</span><span class="p">)</span><span class="w">
+</span>a<span class="n">1</span><span class="w"> </span><span class="nb">vco2</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>i<span class="n">fr</span><span class="w">
+</span>a<span class="n">2</span><span class="w"> </span><span class="nb">vco2</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>i<span class="n">fr</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1.005</span><span class="w">
+</span>a<span class="n">3</span><span class="w"> </span><span class="nb">vco2</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>i<span class="n">fr</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.993</span><span class="w">
+</span>a<span class="n">M</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span>a<span class="n">1</span><span class="o">+</span>a<span class="n">2</span><span class="o">+</span>a<span class="n">3</span><span class="p">)</span><span class="o">/</span><span class="mi">3</span><span class="w">
+</span>a<span class="n">M</span><span class="w"> </span><span class="nb">moogvcf</span><span class="w"> </span>a<span class="n">M</span><span class="o">*</span>k<span class="n">AE</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>k<span class="n">FE</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="w">
+</span><span class="nb">outs</span><span class="w"> </span>a<span class="n">M</span><span class="p">,</span><span class="w"> </span>a<span class="n">M</span><span class="w">
+</span>ga<span class="n">1</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span>a<span class="n">M</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.25</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">3</span> <span class="c1">; simple techno kick</span>
-k<span class="n">1</span> <span class="nb">linseg</span> <span class="mi">200</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">10</span>
-k<span class="n">2</span> <span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="mi">0</span>
-a<span class="n">1</span> <span class="nb">oscil</span> <span class="mf">0.3</span><span class="o">*</span>k<span class="n">2</span><span class="p">,</span> k<span class="n">1</span>
-<span class="nb">outs</span> a<span class="n">1</span><span class="p">,</span>a<span class="n">1</span>
-<span class="kd">endin</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">3</span><span class="w"> </span><span class="c1">; simple techno kick</span><span class="w">
+</span>k<span class="n">1</span><span class="w"> </span><span class="nb">linseg</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span>k<span class="n">2</span><span class="w"> </span><span class="nb">linseg</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="mi">0</span><span class="w">
+</span>a<span class="n">1</span><span class="w"> </span><span class="nb">oscil</span><span class="w"> </span><span class="mf">0.3</span><span class="o">*</span>k<span class="n">2</span><span class="p">,</span><span class="w"> </span>k<span class="n">1</span><span class="w">
+</span><span class="nb">outs</span><span class="w"> </span>a<span class="n">1</span><span class="p">,</span>a<span class="n">1</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">99</span> <span class="c1">; feedback delay for bass</span>
-a<span class="n">1</span> <span class="nb">delayr</span> <span class="mf">0.5</span>
-a<span class="n">b</span> <span class="nb">deltap</span> <span class="mf">0.33</span>
-   <span class="nb">delayw</span> ga<span class="n">1</span> <span class="o">+</span> a<span class="n">b</span><span class="o">*</span><span class="mf">0.3</span>
-<span class="nb">outs</span> a<span class="n">b</span><span class="p">,</span>a<span class="n">b</span>
-ga<span class="n">1</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="kd">endin</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">99</span><span class="w"> </span><span class="c1">; feedback delay for bass</span><span class="w">
+</span>a<span class="n">1</span><span class="w"> </span><span class="nb">delayr</span><span class="w"> </span><span class="mf">0.5</span><span class="w">
+</span>a<span class="n">b</span><span class="w"> </span><span class="nb">deltap</span><span class="w"> </span><span class="mf">0.33</span><span class="w">
+   </span><span class="nb">delayw</span><span class="w"> </span>ga<span class="n">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>a<span class="n">b</span><span class="o">*</span><span class="mf">0.3</span><span class="w">
+</span><span class="nb">outs</span><span class="w"> </span>a<span class="n">b</span><span class="p">,</span>a<span class="n">b</span><span class="w">
+</span>ga<span class="n">1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">t</span> <span class="mi">0</span> <span class="mi">137</span> 
-<span class="c1">; ftable1 is the bass sequence to played with various swings</span>
-<span class="nb">f</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">16</span> <span class="o">-</span><span class="mi">2</span> <span class="mf">6.00</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mf">7.00</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mf">6.00</span> <span class="mi">0</span> <span class="mf">6.00</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mf">7.00</span> <span class="mi">0</span> <span class="mf">7.01</span> <span class="mf">6.00</span> <span class="mi">0</span>
-<span class="c1">; 4 measure pattern of different swinging </span>
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">16</span> <span class="mf">0.5</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="o">.</span>  <span class="mf">0.65</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="o">+</span> <span class="o">.</span>  <span class="mf">0.4</span>
-<span class="nb">i</span><span class="mi">99</span> <span class="mi">0</span> <span class="mi">46</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">t</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">137</span><span class="w"> 
+</span><span class="c1">; ftable1 is the bass sequence to played with various swings</span><span class="w">
+</span><span class="nb">f</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="o">-</span><span class="mi">2</span><span class="w"> </span><span class="mf">6.00</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">7.00</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">6.00</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">6.00</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">7.00</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">7.01</span><span class="w"> </span><span class="mf">6.00</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="c1">; 4 measure pattern of different swinging </span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="mf">0.5</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">  </span><span class="mf">0.65</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">  </span><span class="mf">0.4</span><span class="w">
+</span><span class="nb">i</span><span class="mi">99</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">46</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -196,14 +196,14 @@ ga<span class="n">1</span> <span class="o">=</span> <span class="mi">0</span>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm142639"></a>
+        <a id="idm199068"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="metro.html" title="metro"><em class="citetitle">metro</em></a>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm142644"></a>
+        <a id="idm199073"></a>
         <h2>Credits</h2>
         <p>
       </p>

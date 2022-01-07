@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>scanmap</title>
+    <link rel="stylesheet" type="text/css" href="csound.css" />
+    <link rel="stylesheet" type="text/css" href="syntax-highlighting.css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.79.1" />
+    <link rel="home" href="index.html" title="The Canonical Csound Reference Manual" />
+    <link rel="up" href="OpcodesTop.html" title="Orchestra Opcodes and Operators" />
+    <link rel="prev" href="scanhammer.html" title="scanhammer" />
+    <link rel="next" href="scans.html" title="scans" />
+  </head>
+  <body>
+    <div class="navheader">
+      <table width="100%" summary="Navigation header">
+        <tr>
+          <th colspan="3" align="center">scanmap</th>
+        </tr>
+        <tr>
+          <td width="20%" align="left"><a accesskey="p" href="scanhammer.html">Prev</a> </td>
+          <th width="60%" align="center">Orchestra Opcodes and Operators</th>
+          <td width="20%" align="right"> <a accesskey="n" href="scans.html">Next</a></td>
+        </tr>
+      </table>
+      <hr />
+    </div>
+    <div class="refentry">
+      <a id="scanmap"></a>
+      <div class="titlepage"></div>
+      <a id="IndexScanmap" class="indexterm"></a>
+      <div class="refnamediv">
+        <h2>
+          <span class="refentrytitle">scanmap</span>
+        </h2>
+        <p>scanmap — 
+      Allows the position and velocity of a node in a scanned process to be read.
+          </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm293147"></a>
+        <h2>Description</h2>
+        <p>Plugin opcode in scansyn.</p>
+        <p>
+      Allows the position and velocity of a node in a scanned process to be read.
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm293151"></a>
+        <h2>Syntax</h2>
+        <pre class="synopsis">kpos, kvel <span class="command"><strong>scanmap</strong></span> iscan, kamp, kvamp [, iwhich]</pre>
+      </div>
+      <div class="refsect1">
+        <a id="idm293155"></a>
+        <h2>Initialization</h2>
+        <p>
+      <span class="emphasis"><em>iscan</em></span> -- which scan process to read
+    </p>
+        <p>
+      <span class="emphasis"><em>iwhich</em></span> (optional) -- which node to sense. The default is 0.
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm293161"></a>
+        <h2>Performance</h2>
+        <p>
+      <span class="emphasis"><em>kamp</em></span> -- amount to amplify the <span class="emphasis"><em>kpos</em></span> value.
+    </p>
+        <p>
+      <span class="emphasis"><em>kvamp</em></span> -- amount to amplify the <span class="emphasis"><em>kvel</em></span> value.
+    </p>
+        <p>
+      The internal state of a node is read. This includes its position and velocity. They are amplified by the <span class="emphasis"><em>kamp</em></span> and <span class="emphasis"><em>kvamp</em></span> values.
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm293172"></a>
+        <h2>Examples</h2>
+        <p>
+      Here is an example of the scanmap opcode. It uses the file <a class="ulink" href="examples/scanmap.csd" target="_top"><em class="citetitle">scanmap.csd</em></a>.
+      </p>
+        <div class="example">
+          <a id="idm293177"></a>
+          <p class="title">
+            <strong>Example 928. Example of the scanmap opcode.</strong>
+          </p>
+          <div class="example-contents">
+            <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
+            <div class="refsect1">
+              <a id="idm293184"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+
+<span class="nt">&lt;CsOptions&gt;</span>
+
+<span class="nt">&lt;/CsOptions&gt;</span>
+
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
+
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">48000</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">scan</span><span class="w">
+</span>a<span class="n">0</span><span class="w"> </span><span class="nb">init</span><span class="w"> </span><span class="mi">0</span><span class="w">
+
+</span>i<span class="n">rate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">.01</span><span class="w">
+
+</span>k<span class="n">pos</span><span class="w"> </span><span class="nb">line</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mi">128</span><span class="w">
+</span><span class="c1">;kpos randh abs(128), 3</span><span class="w">
+
+</span><span class="c1">; scanu init, irate, ifndisplace, ifnmass, ifnmatrix, ifncentr, ifndamp, kmass,</span><span class="w">
+</span><span class="c1">;       kmtrxstiff, kcentr, kdamp, ileft, iright, kpos, kdisplace, ain, idisp, id</span><span class="w">
+</span><span class="nb">scanu2</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>i<span class="n">rate</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mf">.01</span><span class="p">,</span><span class="w"> </span><span class="mf">.01</span><span class="p">,</span><span class="w"> </span><span class="mf">.1</span><span class="p">,</span><span class="w"> </span><span class="mf">.9</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span>a<span class="n">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">
+
+</span><span class="c1">;ar scans kamp, kfreq, ifntraj, id</span><span class="w">
+ </span>k<span class="n">1</span><span class="p">,</span>k<span class="n">2</span><span class="w"> </span><span class="n">scanmap</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="mi">64</span><span class="w">
+      </span><span class="nb">display</span><span class="w">  </span>k<span class="n">1</span><span class="p">,</span><span class="w"> </span><span class="mf">.25</span><span class="w"> </span><span class="c1">; note - display is updated every second</span><span class="w">
+</span>a<span class="n">1</span><span class="w"> </span><span class="nb">scans</span><span class="w"> </span><span class="nb">ampdb</span><span class="p">(</span><span class="vi">p4</span><span class="p">),</span><span class="w"> </span><span class="nb">cpspch</span><span class="p">(</span><span class="vi">p5</span><span class="p">),</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="nb">out</span><span class="w"> </span>a<span class="n">1</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
+
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="c1">; Initial displacement condition</span><span class="w">
+</span><span class="c1">;f1 0 128 -7 0 64 1 64 0 ; ramp</span><span class="w">
+</span><span class="nb">f</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="c1">; sine hammer</span><span class="w">
+</span><span class="c1">;f1 0 128 -7 0 28 0 2 1 2 0 96 0 ; a pluck that is 10 points wide on the surface</span><span class="w">
+
+</span><span class="c1">; Masses</span><span class="w">
+</span><span class="nb">f</span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="o">-</span><span class="mi">7</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="mi">1</span><span class="w">
+
+</span><span class="c1">; Spring matrices</span><span class="w">
+</span><span class="nb">f</span><span class="mi">3</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">16384</span><span class="w"> </span><span class="o">-</span><span class="mi">23</span><span class="w"> </span><span class="s">"string-128.matrxB"</span><span class="w">
+
+</span><span class="c1">; Centering force</span><span class="w">
+</span><span class="nb">f</span><span class="mi">4</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="o">-</span><span class="mi">7</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="c1">; uniform initial centering</span><span class="w">
+</span><span class="c1">;f4 0 128 -7 .001 128 1 ; ramped centering</span><span class="w">
+
+</span><span class="c1">; Damping</span><span class="w">
+</span><span class="nb">f</span><span class="mi">5</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="o">-</span><span class="mi">7</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="c1">; uniform damping</span><span class="w">
+</span><span class="c1">;f5 0 128 -7 .1 128 1 ; ramped damping</span><span class="w">
+
+</span><span class="c1">; Initial velocity - (displacement, vel, and acceleration</span><span class="w">
+</span><span class="c1">; Acceleration is from stiffness matrix pos effect - increases acceleration</span><span class="w">
+</span><span class="c1">;</span><span class="w">
+
+</span><span class="nb">f</span><span class="mi">6</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="o">-</span><span class="mi">7</span><span class="w"> </span><span class="mf">.01</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="mf">.01</span><span class="w"> </span><span class="c1">; uniform initial velocity</span><span class="w">
+
+</span><span class="c1">; Trajectories</span><span class="w">
+</span><span class="nb">f</span><span class="mi">7</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="o">-</span><span class="mi">5</span><span class="w"> </span><span class="mf">.001</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="mi">128</span><span class="w">
+
+</span><span class="nb">i</span><span class="s">"scan"</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="mi">86</span><span class="w"> </span><span class="mf">7.00</span><span class="w">
+</span><span class="nb">i</span><span class="s">"scan"</span><span class="w"> </span><span class="mi">14</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">86</span><span class="w"> </span><span class="mf">5.00</span><span class="w">
+</span><span class="nb">i</span><span class="s">"scan"</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">86</span><span class="w"> </span><span class="mf">6.00</span><span class="w">
+</span><span class="nb">i</span><span class="s">"scan"</span><span class="w"> </span><span class="mi">18</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">86</span><span class="w"> </span><span class="mf">8.00</span><span class="w">
+</span><span class="nb">i</span><span class="s">"scan"</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">98</span><span class="w"> </span><span class="mf">10.00</span><span class="w">
+
+</span><span class="nb">e</span><span class="w">
+
+</span><span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm293550"></a>
+        <h2>See Also</h2>
+        <p>
+More information on Scanned Synthesis (as well as several other matrices) is available on the <a class="ulink" href="http://www.csounds.com/scanned/" target="_top"><em class="citetitle">Scanned Synthesis page</em></a> at cSounds.com.
+    </p>
+        <p> Also an article on these opcodes: <a class="ulink" href="http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html" target="_top"><em class="citetitle">http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html</em></a>  , written by Steven Yi </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm293558"></a>
+        <h2>Credits</h2>
+        <p>Author: John ffitch</p>
+        <p>New in version 4.20</p>
+      </div>
+    </div>
+    <div class="navfooter">
+      <hr />
+      <table width="100%" summary="Navigation footer">
+        <tr>
+          <td width="40%" align="left"><a accesskey="p" href="scanhammer.html">Prev</a> </td>
+          <td width="20%" align="center">
+            <a accesskey="u" href="OpcodesTop.html">Up</a>
+          </td>
+          <td width="40%" align="right"> <a accesskey="n" href="scans.html">Next</a></td>
+        </tr>
+        <tr>
+          <td width="40%" align="left" valign="top">scanhammer </td>
+          <td width="20%" align="center">
+            <a accesskey="h" href="index.html">Home</a>
+          </td>
+          <td width="40%" align="right" valign="top"> scans</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

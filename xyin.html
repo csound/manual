@@ -39,19 +39,19 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm277256"></a>
+        <a id="idm392440"></a>
         <h2>Description</h2>
         <p>
       Sense the cursor position in an output window. When <span class="emphasis"><em>xyin</em></span> is called the position of the mouse within the output window is used to reply to the request.  This simple mechanism does mean that only one <span class="emphasis"><em>xyin</em></span> can be used accurately at once.  The position of the mouse is reported in the output window.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm277261"></a>
+        <a id="idm392445"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">kx, ky <span class="command"><strong>xyin</strong></span> iprd, ixmin, ixmax, iymin, iymax [, ixinit] [, iyinit]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm277265"></a>
+        <a id="idm392449"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>iprd</em></span> -- period of cursor sensing (in seconds). Typically .1 seconds.
@@ -64,7 +64,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm277273"></a>
+        <a id="idm392457"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>xyin</em></span> samples the cursor x-y position in an input window every <span class="emphasis"><em>iprd</em></span> seconds. Output values are repeated (not interpolated) at the k-rate, and remain fixed until a new change is registered in the window. There may be any number of input windows. This unit is useful for real-time control, but continuous motion should be avoided if <span class="emphasis"><em>iprd</em></span> is unusually small.
@@ -88,21 +88,21 @@
         </div>
       </div>
       <div class="refsect1">
-        <a id="idm277282"></a>
+        <a id="idm392466"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the xyin opcode. It uses the file <a class="ulink" href="examples/xyin.csd" target="_top"><em class="citetitle">xyin.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm277287"></a>
+          <a id="idm392471"></a>
           <p class="title">
-            <strong>Example 1235. Example of the xyin opcode.</strong>
+            <strong>Example 1236. Example of the xyin opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm277294"></a>
+              <a id="idm392478"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -112,55 +112,55 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o xyin.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="c1">; Initialize the global variables.</span>
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span class="c1">; Initialize the global variables.</span><span class="w">
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
 
-<span class="c1">; Instrument #1.</span>
-<span class="kd">instr</span> <span class="nf">1</span>
-  <span class="c1">; Print and capture values every 0.1 seconds.</span>
-  i<span class="n">prd</span> <span class="o">=</span> <span class="mf">0.1</span>
-  <span class="c1">; The x values are from 1 to 30.</span>
-  i<span class="n">xmin</span> <span class="o">=</span> <span class="mi">1</span>
-  i<span class="n">xmax</span> <span class="o">=</span> <span class="mi">30</span>
-  <span class="c1">; The y values are from 1 to 30.</span>
-  i<span class="n">ymin</span> <span class="o">=</span> <span class="mi">1</span>
-  i<span class="n">ymax</span> <span class="o">=</span> <span class="mi">30</span>
-  <span class="c1">; The initial values for X and Y are both 15.</span>
-  i<span class="n">xinit</span> <span class="o">=</span> <span class="mi">15</span>
-  i<span class="n">yinit</span> <span class="o">=</span> <span class="mi">15</span>
+</span><span class="c1">; Instrument #1.</span><span class="w">
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+  </span><span class="c1">; Print and capture values every 0.1 seconds.</span><span class="w">
+  </span>i<span class="n">prd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span><span class="w">
+  </span><span class="c1">; The x values are from 1 to 30.</span><span class="w">
+  </span>i<span class="n">xmin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span>i<span class="n">xmax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30</span><span class="w">
+  </span><span class="c1">; The y values are from 1 to 30.</span><span class="w">
+  </span>i<span class="n">ymin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span>i<span class="n">ymax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30</span><span class="w">
+  </span><span class="c1">; The initial values for X and Y are both 15.</span><span class="w">
+  </span>i<span class="n">xinit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15</span><span class="w">
+  </span>i<span class="n">yinit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15</span><span class="w">
 
-  <span class="c1">; Get the values kx and ky using the xyin opcode.</span>
-  k<span class="n">x</span><span class="p">,</span> k<span class="n">y</span> <span class="nb">xyin</span> i<span class="n">prd</span><span class="p">,</span> i<span class="n">xmin</span><span class="p">,</span> i<span class="n">xmax</span><span class="p">,</span> i<span class="n">ymin</span><span class="p">,</span> i<span class="n">ymax</span><span class="p">,</span> i<span class="n">xinit</span><span class="p">,</span> i<span class="n">yinit</span>
+  </span><span class="c1">; Get the values kx and ky using the xyin opcode.</span><span class="w">
+  </span>k<span class="n">x</span><span class="p">,</span><span class="w"> </span>k<span class="n">y</span><span class="w"> </span><span class="nb">xyin</span><span class="w"> </span>i<span class="n">prd</span><span class="p">,</span><span class="w"> </span>i<span class="n">xmin</span><span class="p">,</span><span class="w"> </span>i<span class="n">xmax</span><span class="p">,</span><span class="w"> </span>i<span class="n">ymin</span><span class="p">,</span><span class="w"> </span>i<span class="n">ymax</span><span class="p">,</span><span class="w"> </span>i<span class="n">xinit</span><span class="p">,</span><span class="w"> </span>i<span class="n">yinit</span><span class="w">
 
-  <span class="c1">; Print out the values of kx and ky.</span>
-  <span class="nb">printks</span> <span class="s">"kx=</span><span class="si">%f</span><span class="s">, ky=</span><span class="si">%f</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span> i<span class="n">prd</span><span class="p">,</span> k<span class="n">x</span><span class="p">,</span> k<span class="n">y</span>
+  </span><span class="c1">; Print out the values of kx and ky.</span><span class="w">
+  </span><span class="nb">printks</span><span class="w"> </span><span class="s">"kx=</span><span class="si">%f</span><span class="s">, ky=</span><span class="si">%f</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span>i<span class="n">prd</span><span class="p">,</span><span class="w"> </span>k<span class="n">x</span><span class="p">,</span><span class="w"> </span>k<span class="n">y</span><span class="w">
 
-  <span class="c1">; Play an oscillator, use the x values for amplitude and</span>
-  <span class="c1">; the y values for frequency.</span>
-  k<span class="n">amp</span> <span class="o">=</span> k<span class="n">x</span> <span class="o">*</span> <span class="mi">1000</span>
-  k<span class="n">cps</span> <span class="o">=</span> k<span class="n">y</span> <span class="o">*</span> <span class="mi">220</span>
-  a<span class="n">1</span> <span class="nb">poscil</span> k<span class="n">amp</span><span class="p">,</span> k<span class="n">cps</span><span class="p">,</span> <span class="mi">1</span>
+  </span><span class="c1">; Play an oscillator, use the x values for amplitude and</span><span class="w">
+  </span><span class="c1">; the y values for frequency.</span><span class="w">
+  </span>k<span class="n">amp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>k<span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000</span><span class="w">
+  </span>k<span class="n">cps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>k<span class="n">y</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">220</span><span class="w">
+  </span>a<span class="n">1</span><span class="w"> </span><span class="nb">poscil</span><span class="w"> </span>k<span class="n">amp</span><span class="p">,</span><span class="w"> </span>k<span class="n">cps</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-  <span class="nb">outs</span> a<span class="n">1</span><span class="p">,</span> a<span class="n">1</span>
-<span class="kd">endin</span>
-
-
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-
-<span class="c1">; Table #1, a sine wave.</span>
-<span class="nb">f</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">16384</span> <span class="mi">10</span> <span class="mi">1</span>
-
-<span class="c1">; Play Instrument #1 for 30 seconds.</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">30</span>
-<span class="nb">e</span>
+  </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">1</span><span class="p">,</span><span class="w"> </span>a<span class="n">1</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
 
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+
+</span><span class="c1">; Table #1, a sine wave.</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">16384</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w">
+
+</span><span class="c1">; Play Instrument #1 for 30 seconds.</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">30</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+
+
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -178,7 +178,7 @@ kx=10.765685, ky=15.644135
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm277417"></a>
+        <a id="idm392692"></a>
         <h2>Credits</h2>
         <p>Example written by Kevin Conder.</p>
       </div>

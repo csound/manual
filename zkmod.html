@@ -39,19 +39,19 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm281115"></a>
+        <a id="idm398059"></a>
         <h2>Description</h2>
         <p>
       Facilitates the modulation of one signal by another.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm281118"></a>
+        <a id="idm398062"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">kres <span class="command"><strong>zkmod</strong></span> ksig, kzkmod</pre>
       </div>
       <div class="refsect1">
-        <a id="idm281122"></a>
+        <a id="idm398066"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>ksig</em></span> -- the input signal
@@ -64,21 +64,21 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm281132"></a>
+        <a id="idm398076"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the zkmod opcode. It uses the file <a class="ulink" href="examples/zkmod.csd" target="_top"><em class="citetitle">zkmod.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm281137"></a>
+          <a id="idm398081"></a>
           <p class="title">
-            <strong>Example 1255. Example of the zkmod opcode.</strong>
+            <strong>Example 1256. Example of the zkmod opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm281144"></a>
+              <a id="idm398088"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -88,69 +88,69 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o zkmod.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="c1">; Initialize the global variables.</span>
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">kr</span> <span class="o">=</span> <span class="mi">4410</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span class="c1">; Initialize the global variables.</span><span class="w">
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">kr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4410</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
 
-<span class="c1">; Initialize the ZAK space.</span>
-<span class="c1">; Create 2 a-rate variables and 2 k-rate variables.</span>
-<span class="nb">zakinit</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span>
+</span><span class="c1">; Initialize the ZAK space.</span><span class="w">
+</span><span class="c1">; Create 2 a-rate variables and 2 k-rate variables.</span><span class="w">
+</span><span class="nb">zakinit</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">
 
-<span class="c1">; Instrument #1 -- a signal with jitter.</span>
-<span class="kd">instr</span> <span class="nf">1</span>
-  <span class="c1">; Generate a k-rate signal goes from 30 to 2,000.</span>
-  k<span class="n">line</span> <span class="nb">line</span> <span class="mi">30</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">2000</span>
+</span><span class="c1">; Instrument #1 -- a signal with jitter.</span><span class="w">
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+  </span><span class="c1">; Generate a k-rate signal goes from 30 to 2,000.</span><span class="w">
+  </span>k<span class="n">line</span><span class="w"> </span><span class="nb">line</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mi">2000</span><span class="w">
 
-  <span class="c1">; Add the signal into zk variable #1.</span>
-  <span class="nb">zkw</span> k<span class="n">line</span><span class="p">,</span> <span class="mi">1</span>
-<span class="kd">endin</span>
+  </span><span class="c1">; Add the signal into zk variable #1.</span><span class="w">
+  </span><span class="nb">zkw</span><span class="w"> </span>k<span class="n">line</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="c1">; Instrument #2 -- generates audio output.</span>
-<span class="kd">instr</span> <span class="nf">2</span>
-  <span class="c1">; Create a k-rate signal modulated the jitter opcode.</span>
-  k<span class="n">amp</span> <span class="nb">init</span> <span class="mi">20</span>
-  k<span class="n">cpsmin</span> <span class="nb">init</span> <span class="mi">40</span>
-  k<span class="n">cpsmax</span> <span class="nb">init</span> <span class="mi">60</span>
-  k<span class="n">jtr</span> <span class="nb">jitter</span> k<span class="n">amp</span><span class="p">,</span> k<span class="n">cpsmin</span><span class="p">,</span> k<span class="n">cpsmax</span>
+</span><span class="c1">; Instrument #2 -- generates audio output.</span><span class="w">
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">
+  </span><span class="c1">; Create a k-rate signal modulated the jitter opcode.</span><span class="w">
+  </span>k<span class="n">amp</span><span class="w"> </span><span class="nb">init</span><span class="w"> </span><span class="mi">20</span><span class="w">
+  </span>k<span class="n">cpsmin</span><span class="w"> </span><span class="nb">init</span><span class="w"> </span><span class="mi">40</span><span class="w">
+  </span>k<span class="n">cpsmax</span><span class="w"> </span><span class="nb">init</span><span class="w"> </span><span class="mi">60</span><span class="w">
+  </span>k<span class="n">jtr</span><span class="w"> </span><span class="nb">jitter</span><span class="w"> </span>k<span class="n">amp</span><span class="p">,</span><span class="w"> </span>k<span class="n">cpsmin</span><span class="p">,</span><span class="w"> </span>k<span class="n">cpsmax</span><span class="w">
   
-  <span class="c1">; Get the frequency values from zk variable #1.</span>
-  k<span class="n">freq</span> <span class="nb">zkr</span> <span class="mi">1</span>
-  <span class="c1">; Add the the frequency values in zk variable #1 to </span>
-  <span class="c1">; the jitter signal.</span>
-  k<span class="n">jfreq</span> <span class="nb">zkmod</span> k<span class="n">jtr</span><span class="p">,</span> <span class="mi">1</span>
+  </span><span class="c1">; Get the frequency values from zk variable #1.</span><span class="w">
+  </span>k<span class="n">freq</span><span class="w"> </span><span class="nb">zkr</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="c1">; Add the the frequency values in zk variable #1 to </span><span class="w">
+  </span><span class="c1">; the jitter signal.</span><span class="w">
+  </span>k<span class="n">jfreq</span><span class="w"> </span><span class="nb">zkmod</span><span class="w"> </span>k<span class="n">jtr</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-  <span class="c1">; Use a simple sine waveform for the left speaker.</span>
-  a<span class="n">left</span> <span class="nb">oscil</span> <span class="mi">20000</span><span class="p">,</span> k<span class="n">freq</span><span class="p">,</span> <span class="mi">1</span>
-  <span class="c1">; Use a sine waveform with jitter for the right speaker.</span>
-  a<span class="n">right</span> <span class="nb">oscil</span> <span class="mi">20000</span><span class="p">,</span> k<span class="n">jfreq</span><span class="p">,</span> <span class="mi">1</span>
+  </span><span class="c1">; Use a simple sine waveform for the left speaker.</span><span class="w">
+  </span>a<span class="n">left</span><span class="w"> </span><span class="nb">oscil</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w"> </span>k<span class="n">freq</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="c1">; Use a sine waveform with jitter for the right speaker.</span><span class="w">
+  </span>a<span class="n">right</span><span class="w"> </span><span class="nb">oscil</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w"> </span>k<span class="n">jfreq</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-  <span class="c1">; Generate the audio output.</span>
-  <span class="nb">outs</span> a<span class="n">left</span><span class="p">,</span> a<span class="n">right</span>
+  </span><span class="c1">; Generate the audio output.</span><span class="w">
+  </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">left</span><span class="p">,</span><span class="w"> </span>a<span class="n">right</span><span class="w">
 
-  <span class="c1">; Clear the zk variables, prepare them for </span>
-  <span class="c1">; another pass.</span>
-  <span class="nb">zkcl</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span>
-<span class="kd">endin</span>
-
-
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-
-<span class="c1">; Table #1, a sine wave.</span>
-<span class="nb">f</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">16384</span> <span class="mi">10</span> <span class="mi">1</span>
-
-<span class="c1">; Play Instrument #1 for 2 seconds.</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">2</span>
-<span class="c1">; Play Instrument #2 for 2 seconds.</span>
-<span class="nb">i</span> <span class="mi">2</span> <span class="mi">0</span> <span class="mi">2</span>
-<span class="nb">e</span>
+  </span><span class="c1">; Clear the zk variables, prepare them for </span><span class="w">
+  </span><span class="c1">; another pass.</span><span class="w">
+  </span><span class="nb">zkcl</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
 
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+
+</span><span class="c1">; Table #1, a sine wave.</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">16384</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w">
+
+</span><span class="c1">; Play Instrument #1 for 2 seconds.</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="c1">; Play Instrument #2 for 2 seconds.</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+
+
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -160,7 +160,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm281272"></a>
+        <a id="idm398318"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="zamod.html" title="zamod"><em class="citetitle">zamod</em></a>,
@@ -171,7 +171,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm281285"></a>
+        <a id="idm398331"></a>
         <h2>Credits</h2>
         <p>
       </p>

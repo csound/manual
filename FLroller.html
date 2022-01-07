@@ -39,7 +39,7 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm79249"></a>
+        <a id="idm107445"></a>
         <h2>Description</h2>
         <p>
     Plugin opcode in widgets. This opcode is part of the plugin repository and has to be installed separately. These FLTK widgets do not work on the Mac. 
@@ -49,13 +49,13 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm79256"></a>
+        <a id="idm107452"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">kout, ihandle <span class="command"><strong>FLroller</strong></span> "label", imin, imax, istep, iexp, itype, idisp, \
       iwidth, iheight, ix, iy</pre>
       </div>
       <div class="refsect1">
-        <a id="idm79260"></a>
+        <a id="idm107456"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>ihandle</em></span> -- a handle value (an integer number) that unequivocally references a corresponding widget. This is used by other opcodes that modify a widget's properties (see <a class="link" href="ControlFltkAppearance.html" title="Modifying FLTK Widget Appearance"><em class="citetitle">Modifying FLTK Widget Appearance</em></a>). It is automatically output by <span class="emphasis"><em>FLroller</em></span> and must not be set by the user label. (The user label is a double-quoted string containing some user-provided text placed near the widget.)
@@ -147,7 +147,7 @@ in the score. In fact, tables placed in the score are created later than the ini
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm79313"></a>
+        <a id="idm107509"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>kout</em></span> -- output value
@@ -166,21 +166,21 @@ in the score. In fact, tables placed in the score are created later than the ini
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm79326"></a>
+        <a id="idm107522"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the FLroller opcode. It uses the file <a class="ulink" href="examples/FLroller.csd" target="_top"><em class="citetitle">FLroller.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm79331"></a>
+          <a id="idm107527"></a>
           <p class="title">
             <strong>Example 327. Example of the FLroller opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm79338"></a>
+              <a id="idm107534"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -190,65 +190,65 @@ in the score. In fact, tables placed in the score are created later than the ini
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o FLroller.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="c1">; A sine with oscillator with flroller controlled frequency</span>
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">kr</span> <span class="o">=</span> <span class="mi">441</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class="c1">; A sine with oscillator with flroller controlled frequency</span><span class="w">
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">kr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">441</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="nb">FLpanel</span> <span class="s">"Frequency Roller"</span><span class="p">,</span> <span class="mi">900</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span>
-    <span class="c1">; Minimum value output by the roller</span>
-    i<span class="n">min</span> <span class="o">=</span> <span class="mi">200</span>
-    <span class="c1">; Maximum value output by the roller</span>
-    i<span class="n">max</span> <span class="o">=</span> <span class="mi">5000</span>
-    <span class="c1">; Increment with each pixel</span>
-    i<span class="n">step</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="c1">; Logarithmic type roller selected</span>
-    i<span class="n">exp</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> 
-    <span class="c1">; Roller graphic type (1=horizontal)</span>
-    i<span class="n">type</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="c1">; Display handle (-1=not used)</span>
-    i<span class="n">disp</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-    <span class="c1">; Width of the roller in pixels</span>
-    i<span class="n">width</span> <span class="o">=</span> <span class="mi">300</span>
-    <span class="c1">; Height of the roller in pixels</span>
-    i<span class="n">height</span> <span class="o">=</span> <span class="mi">50</span> 
-    <span class="c1">; Distance of the left edge of the knob</span>
-    <span class="c1">; from the left edge of the panel </span>
-    i<span class="n">x</span> <span class="o">=</span> <span class="mi">300</span>
-    <span class="c1">; Distance of the top edge of the knob</span>
-    <span class="c1">; from the top edge of the panel</span>
-    i<span class="n">y</span> <span class="o">=</span> <span class="mi">50</span>
+</span><span class="nb">FLpanel</span><span class="w"> </span><span class="s">"Frequency Roller"</span><span class="p">,</span><span class="w"> </span><span class="mi">900</span><span class="p">,</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="w">
+    </span><span class="c1">; Minimum value output by the roller</span><span class="w">
+    </span>i<span class="n">min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">200</span><span class="w">
+    </span><span class="c1">; Maximum value output by the roller</span><span class="w">
+    </span>i<span class="n">max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5000</span><span class="w">
+    </span><span class="c1">; Increment with each pixel</span><span class="w">
+    </span>i<span class="n">step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="c1">; Logarithmic type roller selected</span><span class="w">
+    </span>i<span class="n">exp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> 
+    </span><span class="c1">; Roller graphic type (1=horizontal)</span><span class="w">
+    </span>i<span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="c1">; Display handle (-1=not used)</span><span class="w">
+    </span>i<span class="n">disp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w">
+    </span><span class="c1">; Width of the roller in pixels</span><span class="w">
+    </span>i<span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">300</span><span class="w">
+    </span><span class="c1">; Height of the roller in pixels</span><span class="w">
+    </span>i<span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">50</span><span class="w"> 
+    </span><span class="c1">; Distance of the left edge of the knob</span><span class="w">
+    </span><span class="c1">; from the left edge of the panel </span><span class="w">
+    </span>i<span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">300</span><span class="w">
+    </span><span class="c1">; Distance of the top edge of the knob</span><span class="w">
+    </span><span class="c1">; from the top edge of the panel</span><span class="w">
+    </span>i<span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">50</span><span class="w">
 
-    gk<span class="n">freq</span><span class="p">,</span> i<span class="n">handle</span> <span class="nb">FLroller</span> <span class="s">"Frequency"</span><span class="p">,</span> i<span class="n">min</span><span class="p">,</span> i<span class="n">max</span><span class="p">,</span> i<span class="n">step</span><span class="p">,</span> i<span class="n">exp</span><span class="p">,</span> i<span class="n">type</span><span class="p">,</span> i<span class="n">disp</span><span class="p">,</span> i<span class="n">width</span><span class="p">,</span> i<span class="n">height</span><span class="p">,</span> i<span class="n">x</span><span class="p">,</span> i<span class="n">y</span>
-<span class="c1">; End of panel contents</span>
-<span class="nb">FLpanelEnd</span>
-<span class="c1">; Run the widget thread!</span>
-<span class="nb">FLrun</span>
+    </span>gk<span class="n">freq</span><span class="p">,</span><span class="w"> </span>i<span class="n">handle</span><span class="w"> </span><span class="nb">FLroller</span><span class="w"> </span><span class="s">"Frequency"</span><span class="p">,</span><span class="w"> </span>i<span class="n">min</span><span class="p">,</span><span class="w"> </span>i<span class="n">max</span><span class="p">,</span><span class="w"> </span>i<span class="n">step</span><span class="p">,</span><span class="w"> </span>i<span class="n">exp</span><span class="p">,</span><span class="w"> </span>i<span class="n">type</span><span class="p">,</span><span class="w"> </span>i<span class="n">disp</span><span class="p">,</span><span class="w"> </span>i<span class="n">width</span><span class="p">,</span><span class="w"> </span>i<span class="n">height</span><span class="p">,</span><span class="w"> </span>i<span class="n">x</span><span class="p">,</span><span class="w"> </span>i<span class="n">y</span><span class="w">
+</span><span class="c1">; End of panel contents</span><span class="w">
+</span><span class="nb">FLpanelEnd</span><span class="w">
+</span><span class="c1">; Run the widget thread!</span><span class="w">
+</span><span class="nb">FLrun</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>
-    i<span class="n">amp</span> <span class="o">=</span> <span class="mi">15000</span>
-    i<span class="n">fn</span> <span class="o">=</span> <span class="mi">1</span>
-    a<span class="n">sig</span> <span class="nb">oscili</span> i<span class="n">amp</span><span class="p">,</span> gk<span class="n">freq</span><span class="p">,</span> i<span class="n">fn</span>
-    <span class="nb">out</span> a<span class="n">sig</span>
-<span class="kd">endin</span>
-
-
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-
-<span class="c1">; Function table that defines a single cycle</span>
-<span class="c1">; of a sine wave.</span>
-<span class="nb">f</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1024</span> <span class="mi">10</span> <span class="mi">1</span>
-
-<span class="c1">; Instrument 1 will play a note for 1 hour.</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">3600</span>
-<span class="nb">e</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+    </span>i<span class="n">amp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15000</span><span class="w">
+    </span>i<span class="n">fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span>a<span class="n">sig</span><span class="w"> </span><span class="nb">oscili</span><span class="w"> </span>i<span class="n">amp</span><span class="p">,</span><span class="w"> </span>gk<span class="n">freq</span><span class="p">,</span><span class="w"> </span>i<span class="n">fn</span><span class="w">
+    </span><span class="nb">out</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
 
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+
+</span><span class="c1">; Function table that defines a single cycle</span><span class="w">
+</span><span class="c1">; of a sine wave.</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w">
+
+</span><span class="c1">; Instrument 1 will play a note for 1 hour.</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">3600</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+
+
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -258,7 +258,7 @@ in the score. In fact, tables placed in the score are created later than the ini
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm79481"></a>
+        <a id="idm107788"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="FLcount.html" title="FLcount"><em class="citetitle">FLcount</em></a>,
@@ -269,7 +269,7 @@ in the score. In fact, tables placed in the score are created later than the ini
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm79494"></a>
+        <a id="idm107801"></a>
         <h2>Credits</h2>
         <p>Author: Gabriel Maldonado</p>
         <p>New in version 4.22</p>

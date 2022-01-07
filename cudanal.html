@@ -41,7 +41,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm298601"></a>
+        <a id="idm424415"></a>
         <h2>Description</h2>
         <p>
     Plugin opcode in cuda. This opcode is part of the plugin repository and has to be installed separately. 
@@ -51,12 +51,12 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm298607"></a>
+        <a id="idm424421"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">fsig <span class="command"><strong>cudanal</strong></span> ain, ifftsize, ioverlap, iwinsize, iwintype [, iformat] [, iinit]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm298611"></a>
+        <a id="idm424425"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>ifftsize</em></span> -- The FFT size in samples. Need not be a power of two (though these are especially efficient), but must be even. Odd numbers are rounded up internally. <span class="emphasis"><em>ifftsize</em></span> determines the number of analysis bins in <span class="emphasis"><em>fsig</em></span>, as <span class="emphasis"><em>ifftsize/2 + 1</em></span>. For example, where <span class="emphasis"><em>ifftsize</em></span> = 1024, <span class="emphasis"><em>fsig</em></span> will contain 513 analysis bins, ordered linearly from the fundamental to Nyquist. The fundamental of analysis (which in principle gives the lowest resolvable frequency) is determined as <span class="emphasis"><em>sr/ifftsize</em></span>. Thus, for the example just given and assuming <span class="emphasis"><em>sr</em></span> = 44100, the fundamental of analysis is 43.07Hz. In practice, due to the phase-preserving nature of the phase vocoder, the frequency of any bin can deviate bilaterally, so that DC components are recorded. Given a strongly pitched signal, frequencies in adjacent bins can bunch very closely together, around partials in the source, and the lowest bins may even have negative frequencies.
@@ -147,20 +147,20 @@
         </div>
       </div>
       <div class="refsect1">
-        <a id="idm298675"></a>
+        <a id="idm424489"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the cudanal opcode. It uses the file <a class="ulink" href="examples/cudanal.csd" target="_top"><em class="citetitle">cudanal.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm298680"></a>
+          <a id="idm424494"></a>
           <p class="title">
-            <strong>Example 1324. Example of the cudanal opcode.</strong>
+            <strong>Example 1325. Example of the cudanal opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm298687"></a>
+              <a id="idm424501"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -170,41 +170,41 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o cudanal.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>	<span class="c1">;cudanal has no influence when there is no transformation of original sound</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">	</span><span class="c1">;cudanal has no influence when there is no transformation of original sound</span><span class="w">
 
-i<span class="n">fftsize</span>  <span class="o">=</span> <span class="vi">p4</span>
-i<span class="n">overlap</span>  <span class="o">=</span> i<span class="n">fftsize</span> <span class="o">/</span> <span class="mi">4</span>
-i<span class="n">winsize</span>  <span class="o">=</span> i<span class="n">fftsize</span>
-i<span class="n">winshape</span> <span class="o">=</span> <span class="mi">1</span>							<span class="c1">;von-Hann window</span>
-S<span class="n">file</span>     <span class="o">=</span> <span class="s">"fox.wav"</span>
-a<span class="n">in</span>       <span class="nb">soundin</span> S<span class="n">file</span>
-f<span class="n">ftin</span>     <span class="n">cudanal</span> a<span class="n">in</span><span class="p">,</span> i<span class="n">fftsize</span><span class="p">,</span> i<span class="n">overlap</span><span class="p">,</span> i<span class="n">winsize</span><span class="p">,</span> i<span class="n">winshape</span>	<span class="c1">;fft-analysis of the audio-signal</span>
-f<span class="n">ftblur</span>   <span class="nb">pvscale</span> f<span class="n">ftin</span><span class="p">,</span> <span class="vi">p5</span>					<span class="c1">;scale</span>
-a<span class="n">out</span>      <span class="n">cudasynth</span> f<span class="n">ftblur</span>					<span class="c1">;resynthesis</span>
-          <span class="nb">outs</span>	  a<span class="n">out</span><span class="p">,</span> a<span class="n">out</span>
-<span class="kd">endin</span>
+</span>i<span class="n">fftsize</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="vi">p4</span><span class="w">
+</span>i<span class="n">overlap</span><span class="w">  </span><span class="o">=</span><span class="w"> </span>i<span class="n">fftsize</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">4</span><span class="w">
+</span>i<span class="n">winsize</span><span class="w">  </span><span class="o">=</span><span class="w"> </span>i<span class="n">fftsize</span><span class="w">
+</span>i<span class="n">winshape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">							</span><span class="c1">;von-Hann window</span><span class="w">
+</span>S<span class="n">file</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s">"fox.wav"</span><span class="w">
+</span>a<span class="n">in</span><span class="w">       </span><span class="nb">soundin</span><span class="w"> </span>S<span class="n">file</span><span class="w">
+</span>f<span class="n">ftin</span><span class="w">     </span><span class="n">cudanal</span><span class="w"> </span>a<span class="n">in</span><span class="p">,</span><span class="w"> </span>i<span class="n">fftsize</span><span class="p">,</span><span class="w"> </span>i<span class="n">overlap</span><span class="p">,</span><span class="w"> </span>i<span class="n">winsize</span><span class="p">,</span><span class="w"> </span>i<span class="n">winshape</span><span class="w">	</span><span class="c1">;fft-analysis of the audio-signal</span><span class="w">
+</span>f<span class="n">ftblur</span><span class="w">   </span><span class="nb">pvscale</span><span class="w"> </span>f<span class="n">ftin</span><span class="p">,</span><span class="w"> </span><span class="vi">p5</span><span class="w">					</span><span class="c1">;scale</span><span class="w">
+</span>a<span class="n">out</span><span class="w">      </span><span class="n">cudasynth</span><span class="w"> </span>f<span class="n">ftblur</span><span class="w">					</span><span class="c1">;resynthesis</span><span class="w">
+          </span><span class="nb">outs</span><span class="w">	  </span>a<span class="n">out</span><span class="p">,</span><span class="w"> </span>a<span class="n">out</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">s</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">3</span> <span class="mi">512</span> <span class="mi">1</span>		<span class="c1">;original sound - ifftsize of pvsanal does not have any influence</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">1024</span> <span class="mi">1</span>		<span class="c1">;even with different</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">6</span> <span class="mi">3</span> <span class="mi">2048</span> <span class="mi">1</span>		<span class="c1">;settings</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">s</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">512</span><span class="w"> </span><span class="mi">1</span><span class="w">		</span><span class="c1">;original sound - ifftsize of pvsanal does not have any influence</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="mi">1</span><span class="w">		</span><span class="c1">;even with different</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">2048</span><span class="w"> </span><span class="mi">1</span><span class="w">		</span><span class="c1">;settings</span><span class="w">
 
-<span class="nb">s</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">3</span> <span class="mi">512</span> <span class="mf">1.5</span>		<span class="c1">;but transformation - here a fifth higher</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">1024</span> <span class="mf">1.5</span>	<span class="c1">;but with different settings</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">6</span> <span class="mi">3</span> <span class="mi">2048</span> <span class="mf">1.5</span>	<span class="c1">;for ifftsize of pvsanal</span>
+</span><span class="nb">s</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">512</span><span class="w"> </span><span class="mf">1.5</span><span class="w">		</span><span class="c1">;but transformation - here a fifth higher</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="mf">1.5</span><span class="w">	</span><span class="c1">;but with different settings</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">2048</span><span class="w"> </span><span class="mf">1.5</span><span class="w">	</span><span class="c1">;for ifftsize of pvsanal</span><span class="w">
 
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -214,7 +214,7 @@ a<span class="n">out</span>      <span class="n">cudasynth</span> f<span class="
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm298810"></a>
+        <a id="idm424728"></a>
         <h2>Credits</h2>
         <p>
       </p>

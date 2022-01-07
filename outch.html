@@ -39,19 +39,19 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm164855"></a>
+        <a id="idm230779"></a>
         <h2>Description</h2>
         <p>
       Writes multi-channel audio data, with user-controllable channels, to an external device or stream.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm164858"></a>
+        <a id="idm230782"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>outch</strong></span> kchan1, asig1 [, kchan2] [, asig2] [...]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm164862"></a>
+        <a id="idm230786"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>outch</em></span> outputs <span class="emphasis"><em>asig1</em></span> on the channel determined by <span class="emphasis"><em>kchan1</em></span>, <span class="emphasis"><em>asig2</em></span> on the channel determined by <span class="emphasis"><em>kchan2</em></span>, etc.
@@ -75,21 +75,21 @@
         </div>
       </div>
       <div class="refsect1">
-        <a id="idm164880"></a>
+        <a id="idm230804"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the outch opcode. It uses the file <a class="ulink" href="examples/outch.csd" target="_top"><em class="citetitle">outch.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm164885"></a>
+          <a id="idm230809"></a>
           <p class="title">
             <strong>Example 694. Example of the outch opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm164892"></a>
+              <a id="idm230816"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -101,29 +101,29 @@
 <span class="c1">; By  Stefano Cucchi - 2020</span>
 
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
 
-a<span class="n">sig</span> <span class="nb">vco2</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">100</span>  <span class="c1">; Audio signal.   	</span>
-k<span class="n">out</span> <span class="nb">randomh</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span>  <span class="c1">; Extracts random number between 1 &amp; 2 - 5 times per second.</span>
+</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">vco2</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="w">  </span><span class="c1">; Audio signal.   	</span><span class="w">
+</span>k<span class="n">out</span><span class="w"> </span><span class="nb">randomh</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="w">  </span><span class="c1">; Extracts random number between 1 &amp; 2 - 5 times per second.</span><span class="w">
 
-    <span class="nb">outch</span> k<span class="n">out</span><span class="p">,</span>a<span class="n">sig</span> <span class="c1">; Sends the signal to the channel according to "kout".</span>
+    </span><span class="nb">outch</span><span class="w"> </span>k<span class="n">out</span><span class="p">,</span>a<span class="n">sig</span><span class="w"> </span><span class="c1">; Sends the signal to the channel according to "kout".</span><span class="w">
 
-<span class="nb">printks</span> <span class="s">"signal is sent to channel </span><span class="si">%d</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span> <span class="mf">.2</span><span class="p">,</span> k<span class="n">out</span> <span class="c1">; Prints the channel where you hear the sound.</span>
-<span class="kd">endin</span>
+</span><span class="nb">printks</span><span class="w"> </span><span class="s">"signal is sent to channel </span><span class="si">%d</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="mf">.2</span><span class="p">,</span><span class="w"> </span>k<span class="n">out</span><span class="w"> </span><span class="c1">; Prints the channel where you hear the sound.</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">15</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">15</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -135,14 +135,14 @@ k<span class="n">out</span> <span class="nb">randomh</span> <span class="mi">1</
       Here is another example of the outch opcode. It uses the file <a class="ulink" href="examples/outch-2.csd" target="_top"><em class="citetitle">outch-2.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm164959"></a>
+          <a id="idm230924"></a>
           <p class="title">
             <strong>Example 695. Example of the outch opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm164966"></a>
+              <a id="idm230931"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -152,34 +152,34 @@ k<span class="n">out</span> <span class="nb">randomh</span> <span class="mi">1</
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o outch.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
 
-a<span class="n">sig</span> <span class="nb">vco2</span> <span class="mf">.05</span><span class="p">,</span> <span class="mi">100</span>	<span class="c1">; sawtooth waveform at low volume</span>
+</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">vco2</span><span class="w"> </span><span class="mf">.05</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="w">	</span><span class="c1">; sawtooth waveform at low volume</span><span class="w">
 
-k<span class="n">cut</span> <span class="nb">line</span> <span class="mi">100</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">30</span>	<span class="c1">; Vary cutoff frequency</span>
-k<span class="n">resonance</span> <span class="o">=</span> <span class="mf">.7</span>
-i<span class="n">numlayer</span> <span class="o">=</span> <span class="mi">3</span>
-a<span class="n">sig</span> <span class="nb">lowresx</span> a<span class="n">sig</span><span class="p">,</span> k<span class="n">cut</span><span class="p">,</span> k<span class="n">resonance</span><span class="p">,</span> i<span class="n">numlayer</span>
+</span>k<span class="n">cut</span><span class="w"> </span><span class="nb">line</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="w">	</span><span class="c1">; Vary cutoff frequency</span><span class="w">
+</span>k<span class="n">resonance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">.7</span><span class="w">
+</span>i<span class="n">numlayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w">
+</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">lowresx</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>k<span class="n">cut</span><span class="p">,</span><span class="w"> </span>k<span class="n">resonance</span><span class="p">,</span><span class="w"> </span>i<span class="n">numlayer</span><span class="w">
 
-k<span class="n">lfo</span> <span class="nb">lfo</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mi">4</span>	
-k<span class="n">lfo</span> <span class="o">=</span> k<span class="n">lfo</span><span class="o">+</span><span class="mi">1</span>		<span class="c1">; offset of 1</span>
-<span class="nb">printks</span> <span class="s">"signal is sent to channel </span><span class="si">%d</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> k<span class="n">lfo</span>
-      <span class="nb">outch</span> k<span class="n">lfo</span><span class="p">,</span>a<span class="n">sig</span>
+</span>k<span class="n">lfo</span><span class="w"> </span><span class="nb">lfo</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mf">.5</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="w">	
+</span>k<span class="n">lfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>k<span class="n">lfo</span><span class="o">+</span><span class="mi">1</span><span class="w">		</span><span class="c1">; offset of 1</span><span class="w">
+</span><span class="nb">printks</span><span class="w"> </span><span class="s">"signal is sent to channel </span><span class="si">%d</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="mf">.1</span><span class="p">,</span><span class="w"> </span>k<span class="n">lfo</span><span class="w">
+      </span><span class="nb">outch</span><span class="w"> </span>k<span class="n">lfo</span><span class="p">,</span>a<span class="n">sig</span><span class="w">
 
-<span class="kd">endin</span>
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
+</span><span class="kd">endin</span><span class="w">
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">30</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">30</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -202,13 +202,13 @@ signal is sent to channel 5
       Here is another example of the outch opcode. It uses the file <a class="ulink" href="examples/outch-3.csd" target="_top"><em class="citetitle">outch-3.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm165060"></a>
+          <a id="idm231085"></a>
           <p class="title">
             <strong>Example 696. Another example of the outch opcode.</strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
-              <a id="idm165062"></a>
+              <a id="idm231087"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -218,32 +218,32 @@ signal is sent to channel 5
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o outch-2.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="nb">seed</span>     <span class="mi">0</span>
+</span><span class="nb">seed</span><span class="w">     </span><span class="mi">0</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span> <span class="c1">;random movements between 4 speakers with outch</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w"> </span><span class="c1">;random movements between 4 speakers with outch</span><span class="w">
 
-i<span class="n">chn1</span>     <span class="nb">random</span>    <span class="mi">1</span><span class="p">,</span> <span class="mf">4.999</span> <span class="c1">;channel to start</span>
-i<span class="n">chn2</span>     <span class="nb">random</span>    <span class="mi">1</span><span class="p">,</span> <span class="mf">4.999</span> <span class="c1">;channel to end</span>
-          <span class="nb">prints</span>    <span class="s">"Moving from speaker </span><span class="si">%d</span><span class="s"> to speaker </span><span class="si">%d</span><span class="se">%n</span><span class="s">"</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span>i<span class="n">chn1</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span>i<span class="n">chn2</span><span class="p">)</span>
-a<span class="n">samp</span>     <span class="nb">soundin</span>   <span class="s">"fox.wav"</span>
-k<span class="n">mov</span>      <span class="nb">linseg</span>    <span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">1</span>
-a<span class="n">1</span><span class="p">,</span> a<span class="n">2</span>    <span class="nb">pan2</span>      a<span class="n">samp</span><span class="p">,</span> k<span class="n">mov</span>
-          <span class="nb">outch</span>     <span class="nb">int</span><span class="p">(</span>i<span class="n">chn1</span><span class="p">),</span> a<span class="n">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span>i<span class="n">chn2</span><span class="p">),</span> a<span class="n">2</span>
-<span class="kd">endin</span>
+</span>i<span class="n">chn1</span><span class="w">     </span><span class="nb">random</span><span class="w">    </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">4.999</span><span class="w"> </span><span class="c1">;channel to start</span><span class="w">
+</span>i<span class="n">chn2</span><span class="w">     </span><span class="nb">random</span><span class="w">    </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">4.999</span><span class="w"> </span><span class="c1">;channel to end</span><span class="w">
+          </span><span class="nb">prints</span><span class="w">    </span><span class="s">"Moving from speaker </span><span class="si">%d</span><span class="s"> to speaker </span><span class="si">%d</span><span class="se">%n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span>i<span class="n">chn1</span><span class="p">),</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span>i<span class="n">chn2</span><span class="p">)</span><span class="w">
+</span>a<span class="n">samp</span><span class="w">     </span><span class="nb">soundin</span><span class="w">   </span><span class="s">"fox.wav"</span><span class="w">
+</span>k<span class="n">mov</span><span class="w">      </span><span class="nb">linseg</span><span class="w">    </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span>a<span class="n">1</span><span class="p">,</span><span class="w"> </span>a<span class="n">2</span><span class="w">    </span><span class="nb">pan2</span><span class="w">      </span>a<span class="n">samp</span><span class="p">,</span><span class="w"> </span>k<span class="n">mov</span><span class="w">
+          </span><span class="nb">outch</span><span class="w">     </span><span class="nb">int</span><span class="p">(</span>i<span class="n">chn1</span><span class="p">),</span><span class="w"> </span>a<span class="n">1</span><span class="p">,</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span>i<span class="n">chn2</span><span class="p">),</span><span class="w"> </span>a<span class="n">2</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="err">r</span> <span class="mi">5</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">3</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="err">r</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">3</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -253,7 +253,7 @@ a<span class="n">1</span><span class="p">,</span> a<span class="n">2</span>    <
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm165159"></a>
+        <a id="idm231243"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="out32.html" title="out32"><em class="citetitle">out32</em></a>,
@@ -264,7 +264,7 @@ a<span class="n">1</span><span class="p">,</span> a<span class="n">2</span>    <
         <p> More information on this opcode: <a class="ulink" href="http://www.csoundjournal.com/issue16/audiorouting.html" target="_top"><em class="citetitle">http://www.csoundjournal.com/issue16/audiorouting.html</em></a>  , written by Andreas Russo </p>
       </div>
       <div class="refsect1">
-        <a id="idm165173"></a>
+        <a id="idm231257"></a>
         <h2>Credits</h2>
         <p>
       </p>

@@ -39,20 +39,20 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm179242"></a>
+        <a id="idm251586"></a>
         <h2>Description</h2>
         <p>
       Follows the pitch of a signal based on the AMDF method (Average Magnitude Difference Function). Outputs pitch and amplitude tracking signals. The method is quite fast and should run in realtime. This technique usually works best for monophonic signals.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm179245"></a>
+        <a id="idm251589"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">kcps, krms <span class="command"><strong>pitchamdf</strong></span> asig, imincps, imaxcps [, icps] [, imedi] \
       [, idowns] [, iexcps] [, irmsmedi]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm179249"></a>
+        <a id="idm251593"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>imincps</em></span> -- estimated minimum frequency (expressed in Hz) present in the signal
@@ -77,7 +77,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm179275"></a>
+        <a id="idm251619"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>kcps</em></span> -- pitch tracking output
@@ -99,21 +99,21 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm179293"></a>
+        <a id="idm251637"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the pitchamdf opcode. It uses the file <a class="ulink" href="examples/pitchamdf.csd" target="_top"><em class="citetitle">pitchamdf.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm179298"></a>
+          <a id="idm251642"></a>
           <p class="title">
             <strong>Example 759. Example of the pitchamdf opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm179305"></a>
+              <a id="idm251649"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -123,40 +123,40 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o pitchamdf.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>	<span class="c1">;clean audio</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">	</span><span class="c1">;clean audio</span><span class="w">
 
-a<span class="n">sig</span> <span class="nb">soundin</span> <span class="vi">p4</span>
-     <span class="nb">outs</span> a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
-<span class="kd">endin</span>
+</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">soundin</span><span class="w"> </span><span class="vi">p4</span><span class="w">
+     </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">2</span>	<span class="c1">;use pitch</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">	</span><span class="c1">;use pitch</span><span class="w">
 
-a<span class="n">sig</span> <span class="nb">soundin</span> <span class="vi">p4</span>
-a<span class="n">sig</span> <span class="nb">tone</span> a<span class="n">sig</span><span class="p">,</span> <span class="mi">1000</span>		<span class="c1">;lowpass-filter</span>
-k<span class="n">cps</span><span class="p">,</span> k<span class="n">rms</span> <span class="nb">pitchamdf</span> a<span class="n">sig</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">200</span>
-a<span class="n">sig</span> <span class="nb">poscil</span> k<span class="n">rms</span><span class="p">,</span> k<span class="n">cps</span><span class="p">,</span> <span class="mi">1</span>	<span class="c1">;re-synthesize with sawtooth</span>
-     <span class="nb">outs</span> a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
+</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">soundin</span><span class="w"> </span><span class="vi">p4</span><span class="w">
+</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">tone</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="w">		</span><span class="c1">;lowpass-filter</span><span class="w">
+</span>k<span class="n">cps</span><span class="p">,</span><span class="w"> </span>k<span class="n">rms</span><span class="w"> </span><span class="nb">pitchamdf</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="w">
+</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">poscil</span><span class="w"> </span>k<span class="n">rms</span><span class="p">,</span><span class="w"> </span>k<span class="n">cps</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">	</span><span class="c1">;re-synthesize with sawtooth</span><span class="w">
+     </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
 
-<span class="kd">endin</span>
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">f</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">16384</span> <span class="mi">10</span> <span class="mi">1</span> <span class="mf">0.5</span> <span class="mf">0.3</span> <span class="mf">0.25</span> <span class="mf">0.2</span> <span class="mf">0.167</span> <span class="mf">0.14</span> <span class="mf">0.125</span> <span class="mf">.111</span>   <span class="c1">;sawtooth</span>
+</span><span class="kd">endin</span><span class="w">
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">f</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">16384</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="mf">0.3</span><span class="w"> </span><span class="mf">0.25</span><span class="w"> </span><span class="mf">0.2</span><span class="w"> </span><span class="mf">0.167</span><span class="w"> </span><span class="mf">0.14</span><span class="w"> </span><span class="mf">0.125</span><span class="w"> </span><span class="mf">.111</span><span class="w">   </span><span class="c1">;sawtooth</span><span class="w">
 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span>  <span class="mi">3</span> <span class="s">"fox.wav"</span>
-<span class="nb">i</span> <span class="mi">2</span> <span class="mi">3</span>  <span class="mi">3</span> <span class="s">"fox.wav"</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">6</span>  <span class="mi">3</span> <span class="s">"mary.wav"</span>
-<span class="nb">i</span> <span class="mi">2</span> <span class="mi">9</span>  <span class="mi">3</span> <span class="s">"mary.wav"</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">12</span> <span class="mi">3</span> <span class="s">"beats.wav"</span>
-<span class="nb">i</span> <span class="mi">2</span> <span class="mi">15</span> <span class="mi">3</span> <span class="s">"beats.wav"</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w">  </span><span class="mi">3</span><span class="w"> </span><span class="s">"fox.wav"</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w">  </span><span class="mi">3</span><span class="w"> </span><span class="s">"fox.wav"</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">6</span><span class="w">  </span><span class="mi">3</span><span class="w"> </span><span class="s">"mary.wav"</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">9</span><span class="w">  </span><span class="mi">3</span><span class="w"> </span><span class="s">"mary.wav"</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="s">"beats.wav"</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="s">"beats.wav"</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -166,7 +166,7 @@ a<span class="n">sig</span> <span class="nb">poscil</span> k<span class="n">rms<
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm179425"></a>
+        <a id="idm251866"></a>
         <h2>Credits</h2>
         <p>
       </p>

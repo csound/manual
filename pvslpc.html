@@ -39,7 +39,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm193489"></a>
+        <a id="idm272334"></a>
         <h2>Description</h2>
         <p>
      This opcode implements streaming linear prediction analysis from
@@ -48,12 +48,12 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm193492"></a>
+        <a id="idm272337"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">fsig <span class="command"><strong>pvslpc</strong></span> asrc, idftsiz, ihop, iord[,iwin] </pre>
       </div>
       <div class="refsect1">
-        <a id="idm193496"></a>
+        <a id="idm272341"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>idftsiz</em></span> -- size of lpc input frame in samples
@@ -70,7 +70,7 @@
         </p>
       </div>
       <div class="refsect1">
-        <a id="idm193506"></a>
+        <a id="idm272351"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>fsig</em></span> -- fsig output
@@ -80,7 +80,7 @@
         </p>
       </div>
       <div class="refsect1">
-        <a id="idm193512"></a>
+        <a id="idm272357"></a>
         <p>
         This opcode is part of a suite of streaming linear prediction
         opcodes. It analyses an input signal and produces a set of
@@ -118,21 +118,21 @@
       </p>
       </div>
       <div class="refsect1">
-        <a id="idm193516"></a>
+        <a id="idm272361"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the pvslpc opcode using an audio input
       signal as lpc source. It uses the file <a class="ulink" href="examples/pvslpc.csd" target="_top"><em class="citetitle">pvslpc.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm193521"></a>
+          <a id="idm272366"></a>
           <p class="title">
             <strong>Example 839. Example of the pvslpc opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm193528"></a>
+              <a id="idm272373"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -142,47 +142,47 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o pvslpc.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="c1">; by Menno Knevel 2021</span>
+</span><span class="c1">; by Menno Knevel 2021</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-gi<span class="n">fw</span> <span class="nb">ftgen</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span>             <span class="c1">; Hanning window</span>
+</span>gi<span class="n">fw</span><span class="w"> </span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">             </span><span class="c1">; Hanning window</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
 
-i<span class="n">swap</span>   <span class="o">=</span>   <span class="vi">p4</span>                              <span class="c1">; decide which sample goes to pvslpc</span>
-<span class="k">if</span> i<span class="n">swap</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">then</span>
-    a<span class="n">1</span> <span class="nb">diskin</span> <span class="s">"MSjungleMid.wav"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>    <span class="c1">; first the jungle</span>
-    a<span class="n">2</span> <span class="nb">diskin</span> <span class="s">"fox.wav"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
-    <span class="nb">prints</span> <span class="s">"</span><span class="se">\n</span><span class="s">--**the jungle...**--</span><span class="se">\n</span><span class="s">"</span>
-<span class="k">else</span>
-    a<span class="n">1</span> <span class="nb">diskin</span> <span class="s">"fox.wav"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>            <span class="c1">; then the fox</span>
-    a<span class="n">2</span> <span class="nb">diskin</span> <span class="s">"MSjungleMid.wav"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
-    <span class="nb">prints</span> <span class="s">"</span><span class="se">\n</span><span class="s">--**and the fox...**--</span><span class="se">\n</span><span class="s">"</span>
-<span class="k">endif</span>
-i<span class="n">order</span>  <span class="o">=</span>   <span class="vi">p5</span>
-f<span class="n">env</span>    <span class="nb">pvslpc</span>  a<span class="n">1</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> gi<span class="n">fw</span>
-f<span class="n">sig</span>    <span class="nb">pvscale</span> f<span class="n">env</span><span class="p">,</span> <span class="mf">1.5</span>                   <span class="c1">; convert lpc to pvs, for</span>
-a<span class="n">3</span>      <span class="nb">pvsynth</span> f<span class="n">sig</span>                        <span class="c1">; scaling basic frequency 1.5 times</span>
-a<span class="n">3</span>      <span class="nb">dcblock</span> a<span class="n">3</span>
-<span class="nb">outs</span>    a<span class="n">3</span><span class="o">*</span><span class="mf">.1</span><span class="p">,</span> a<span class="n">3</span><span class="o">*</span><span class="mf">.1</span>
-<span class="kd">endin</span>
+</span>i<span class="n">swap</span><span class="w">   </span><span class="o">=</span><span class="w">   </span><span class="vi">p4</span><span class="w">                              </span><span class="c1">; decide which sample goes to pvslpc</span><span class="w">
+</span><span class="k">if</span><span class="w"> </span>i<span class="n">swap</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">then</span><span class="w">
+    </span>a<span class="n">1</span><span class="w"> </span><span class="nb">diskin</span><span class="w"> </span><span class="s">"MSjungleMid.wav"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">    </span><span class="c1">; first the jungle</span><span class="w">
+    </span>a<span class="n">2</span><span class="w"> </span><span class="nb">diskin</span><span class="w"> </span><span class="s">"fox.wav"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="nb">prints</span><span class="w"> </span><span class="s">"</span><span class="se">\n</span><span class="s">--**the jungle...**--</span><span class="se">\n</span><span class="s">"</span><span class="w">
+</span><span class="k">else</span><span class="w">
+    </span>a<span class="n">1</span><span class="w"> </span><span class="nb">diskin</span><span class="w"> </span><span class="s">"fox.wav"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">            </span><span class="c1">; then the fox</span><span class="w">
+    </span>a<span class="n">2</span><span class="w"> </span><span class="nb">diskin</span><span class="w"> </span><span class="s">"MSjungleMid.wav"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="nb">prints</span><span class="w"> </span><span class="s">"</span><span class="se">\n</span><span class="s">--**and the fox...**--</span><span class="se">\n</span><span class="s">"</span><span class="w">
+</span><span class="k">endif</span><span class="w">
+</span>i<span class="n">order</span><span class="w">  </span><span class="o">=</span><span class="w">   </span><span class="vi">p5</span><span class="w">
+</span>f<span class="n">env</span><span class="w">    </span><span class="nb">pvslpc</span><span class="w">  </span>a<span class="n">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span><span class="w"> </span><span class="vi">p5</span><span class="p">,</span><span class="w"> </span>gi<span class="n">fw</span><span class="w">
+</span>f<span class="n">sig</span><span class="w">    </span><span class="nb">pvscale</span><span class="w"> </span>f<span class="n">env</span><span class="p">,</span><span class="w"> </span><span class="mf">1.5</span><span class="w">                   </span><span class="c1">; convert lpc to pvs, for</span><span class="w">
+</span>a<span class="n">3</span><span class="w">      </span><span class="nb">pvsynth</span><span class="w"> </span>f<span class="n">sig</span><span class="w">                        </span><span class="c1">; scaling basic frequency 1.5 times</span><span class="w">
+</span>a<span class="n">3</span><span class="w">      </span><span class="nb">dcblock</span><span class="w"> </span>a<span class="n">3</span><span class="w">
+</span><span class="nb">outs</span><span class="w">    </span>a<span class="n">3</span><span class="o">*</span><span class="mf">.1</span><span class="p">,</span><span class="w"> </span>a<span class="n">3</span><span class="o">*</span><span class="mf">.1</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="c1">;         jungle   order</span>
-<span class="nb">i</span><span class="mi">1</span>  <span class="mi">0</span>  <span class="mi">10</span>   <span class="mi">1</span>       <span class="mi">10</span>
-<span class="nb">i</span><span class="mi">1</span>  <span class="mi">11</span> <span class="mi">10</span>   <span class="mi">1</span>       <span class="mi">150</span>
-<span class="nb">s</span>
-<span class="nb">i</span><span class="mi">1</span>  <span class="mi">2</span>  <span class="mi">10</span>   <span class="mi">0</span>       <span class="mi">10</span>
-<span class="nb">i</span><span class="mi">1</span>  <span class="mi">13</span> <span class="mi">10</span>   <span class="mi">0</span>       <span class="mi">150</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="c1">;         jungle   order</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">  </span><span class="mi">0</span><span class="w">  </span><span class="mi">10</span><span class="w">   </span><span class="mi">1</span><span class="w">       </span><span class="mi">10</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">  </span><span class="mi">11</span><span class="w"> </span><span class="mi">10</span><span class="w">   </span><span class="mi">1</span><span class="w">       </span><span class="mi">150</span><span class="w">
+</span><span class="nb">s</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">  </span><span class="mi">2</span><span class="w">  </span><span class="mi">10</span><span class="w">   </span><span class="mi">0</span><span class="w">       </span><span class="mi">10</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">  </span><span class="mi">13</span><span class="w"> </span><span class="mi">10</span><span class="w">   </span><span class="mi">0</span><span class="w">       </span><span class="mi">150</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -192,7 +192,7 @@ a<span class="n">3</span>      <span class="nb">dcblock</span> a<span class="n">
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm193696"></a>
+        <a id="idm272657"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="lpcfilter.html" title="lpcfilter"><em class="citetitle">lpcfilter</em></a>,

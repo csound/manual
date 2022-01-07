@@ -39,7 +39,7 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm144126"></a>
+        <a id="idm201132"></a>
         <h2>Description</h2>
         <p>
       <span class="emphasis"><em>midicontrolchange</em></span> is designed to simplify writing instruments that can be used interchangeably for either score or MIDI input, and to make it easier to adapt instruments originally written for score input to work with MIDI input.
@@ -53,12 +53,12 @@ and MIDI, including both MIDI files and real-time MIDI input, without using any 
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm144134"></a>
+        <a id="idm201140"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>midicontrolchange</strong></span> xcontroller, xcontrollervalue [, ilow] [, ihigh]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm144138"></a>
+        <a id="idm201144"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>ilow</em></span> (optional) -- optional low value after rescaling, defaults to 0.
@@ -68,7 +68,7 @@ and MIDI, including both MIDI files and real-time MIDI input, without using any 
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm144144"></a>
+        <a id="idm201150"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>xcontroller</em></span> -- specifies the MIDI controller number (0-127) to read from.
@@ -99,20 +99,20 @@ and MIDI, including both MIDI files and real-time MIDI input, without using any 
         </div>
       </div>
       <div class="refsect1">
-        <a id="idm144160"></a>
+        <a id="idm201166"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the midicontrolchange opcode. It uses the file <a class="ulink" href="examples/midicontrolchange.csd" target="_top"><em class="citetitle">midicontrolchange.csd</em></a>
 
       </p>
         <div class="example">
-          <a id="idm144165"></a>
+          <a id="idm201171"></a>
           <p class="title">
             <strong>Example 592. Example of the midicontrolchange opcode.</strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
-              <a id="idm144167"></a>
+              <a id="idm201173"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -122,33 +122,33 @@ and MIDI, including both MIDI files and real-time MIDI input, without using any 
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o midicontrolchange.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>
-<span class="c1">; use slider of contr. 7 of virtual keyboard</span>
-k<span class="n">cont</span> <span class="nb">init</span> <span class="mi">1</span>	<span class="c1">; max. volume</span>
-<span class="nb">midicontrolchange</span> <span class="mi">7</span><span class="p">,</span> k<span class="n">cont</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="c1">; use controller 7, scaled between 0 and 1	</span>
-<span class="nb">printk2</span> k<span class="n">cont</span>	<span class="c1">; Display the key value when it changes and key is pressed</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+</span><span class="c1">; use slider of contr. 7 of virtual keyboard</span><span class="w">
+</span>k<span class="n">cont</span><span class="w"> </span><span class="nb">init</span><span class="w"> </span><span class="mi">1</span><span class="w">	</span><span class="c1">; max. volume</span><span class="w">
+</span><span class="nb">midicontrolchange</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span>k<span class="n">cont</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="c1">; use controller 7, scaled between 0 and 1	</span><span class="w">
+</span><span class="nb">printk2</span><span class="w"> </span>k<span class="n">cont</span><span class="w">	</span><span class="c1">; Display the key value when it changes and key is pressed</span><span class="w">
 
-k<span class="n">env</span> <span class="nb">madsr</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.5</span>		<span class="c1">; envelope multiplied by</span>
-a<span class="n">sig</span> <span class="nb">pluck</span> k<span class="n">env</span><span class="o">*</span>k<span class="n">cont</span><span class="p">,</span> <span class="mi">220</span><span class="p">,</span> <span class="mi">220</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span>	<span class="c1">; value of controller 7	 </span>
-     <span class="nb">outs</span>  a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
+</span>k<span class="n">env</span><span class="w"> </span><span class="nb">madsr</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="w">		</span><span class="c1">; envelope multiplied by</span><span class="w">
+</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">pluck</span><span class="w"> </span>k<span class="n">env</span><span class="o">*</span>k<span class="n">cont</span><span class="p">,</span><span class="w"> </span><span class="mi">220</span><span class="p">,</span><span class="w"> </span><span class="mi">220</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">	</span><span class="c1">; value of controller 7	 </span><span class="w">
+     </span><span class="nb">outs</span><span class="w">  </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
 
-<span class="kd">endin</span>
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">f</span> <span class="mi">0</span> <span class="mi">30</span>
-<span class="nb">f</span> <span class="mi">2</span> <span class="mi">0</span> <span class="mi">4096</span> <span class="mi">10</span> <span class="mi">1</span>	
+</span><span class="kd">endin</span><span class="w">
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">30</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">4096</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w">	
 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">10</span> <span class="mi">2</span>	<span class="c1">; play a note from score as well</span>
-<span class="nb">e</span>
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">2</span><span class="w">	</span><span class="c1">; play a note from score as well</span><span class="w">
+</span><span class="nb">e</span><span class="w">
 
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -158,7 +158,7 @@ a<span class="n">sig</span> <span class="nb">pluck</span> k<span class="n">env</
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm144257"></a>
+        <a id="idm201326"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="midichannelaftertouch.html" title="midichannelaftertouch"><em class="citetitle">midichannelaftertouch</em></a>, 
@@ -174,7 +174,7 @@ a<span class="n">sig</span> <span class="nb">pluck</span> k<span class="n">env</
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm144280"></a>
+        <a id="idm201349"></a>
         <h2>Credits</h2>
         <p>Author: Michael Gogins</p>
         <p>New in version 4.20</p>

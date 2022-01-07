@@ -39,19 +39,19 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm166558"></a>
+        <a id="idm232921"></a>
         <h2>Description</h2>
         <p>
       Sends MIDI program change messages at k-rate.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm166561"></a>
+        <a id="idm232924"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>outkpc</strong></span> kchn, kprog, kmin, kmax</pre>
       </div>
       <div class="refsect1">
-        <a id="idm166565"></a>
+        <a id="idm232928"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>kchn</em></span> -- MIDI channel number (1-16)
@@ -74,14 +74,14 @@ When the <span class="emphasis"><em>kvalue</em></span> argument receives a 2.0 v
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm166585"></a>
+        <a id="idm232948"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the outkpc opcode. It uses the file <a class="ulink" href="examples/outkpc.csd" target="_top"><em class="citetitle">outkpc.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm166590"></a>
+          <a id="idm232953"></a>
           <p class="title">
             <strong>Example 704. Example of the outkpc opcode.</strong>
           </p>
@@ -89,7 +89,7 @@ When the <span class="emphasis"><em>kvalue</em></span> argument receives a 2.0 v
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <p>This example generates a program change and a note on Csound's MIDI output port whenever a note is received on channel 1. Be sure to have something connected to Csound's MIDI out port to hear the result.</p>
             <div class="refsect1">
-              <a id="idm166598"></a>
+              <a id="idm232961"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span> 
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -97,36 +97,36 @@ When the <span class="emphasis"><em>kvalue</em></span> argument receives a 2.0 v
 <span class="c1">; Audio out   Audio in    No messages</span>
 -odac           -iadc     -d         -M0  -Q1 <span class="c1">;;;RT audio I/O with MIDI in</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">kr</span> <span class="o">=</span> <span class="mi">4410</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">kr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4410</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
 
-<span class="c1">; Example by Giorgio Zucco 2007</span>
+</span><span class="c1">; Example by Giorgio Zucco 2007</span><span class="w">
 
-k<span class="n">program</span> <span class="nb">init</span> <span class="mi">0</span>
+</span>k<span class="n">program</span><span class="w"> </span><span class="nb">init</span><span class="w"> </span><span class="mi">0</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span> <span class="c1">;Triggered by MIDI notes on channel 1</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w"> </span><span class="c1">;Triggered by MIDI notes on channel 1</span><span class="w">
 
-  i<span class="n">fund</span>   <span class="nb">notnum</span>
-  i<span class="n">vel</span> 	<span class="nb">veloc</span>
-  i<span class="n">dur</span> <span class="o">=</span> <span class="mi">1</span>
+  </span>i<span class="n">fund</span><span class="w">   </span><span class="nb">notnum</span><span class="w">
+  </span>i<span class="n">vel</span><span class="w"> 	</span><span class="nb">veloc</span><span class="w">
+  </span>i<span class="n">dur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="c1">; Sends a MIDI program change message according to</span>
-<span class="c1">; the triggering note's velocity</span>
-<span class="nb">outkpc</span>     <span class="mi">1</span> <span class="p">,</span>i<span class="n">vel</span> <span class="p">,</span><span class="mi">0</span> <span class="p">,</span><span class="mi">127</span>
+</span><span class="c1">; Sends a MIDI program change message according to</span><span class="w">
+</span><span class="c1">; the triggering note's velocity</span><span class="w">
+</span><span class="nb">outkpc</span><span class="w">     </span><span class="mi">1</span><span class="w"> </span><span class="p">,</span>i<span class="n">vel</span><span class="w"> </span><span class="p">,</span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="mi">127</span><span class="w">
 
-<span class="nb">noteondur</span>  <span class="mi">1</span> <span class="p">,</span>i<span class="n">fund</span> <span class="p">,</span>i<span class="n">vel</span> <span class="p">,</span>i<span class="n">dur</span>
+</span><span class="nb">noteondur</span><span class="w">  </span><span class="mi">1</span><span class="w"> </span><span class="p">,</span>i<span class="n">fund</span><span class="w"> </span><span class="p">,</span>i<span class="n">vel</span><span class="w"> </span><span class="p">,</span>i<span class="n">dur</span><span class="w">
 
-<span class="kd">endin</span>
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="c1">; Dummy ftable</span>
-<span class="nb">f</span> <span class="mi">0</span> <span class="mi">60</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="c1">; Dummy ftable</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">60</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -137,14 +137,14 @@ k<span class="n">program</span> <span class="nb">init</span> <span class="mi">0<
 
       </p>
         <div class="example">
-          <a id="idm166662"></a>
+          <a id="idm233070"></a>
           <p class="title">
             <strong>Example 705. Example of the outkpc opcode using FLTK.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm166669"></a>
+              <a id="idm233077"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -152,34 +152,34 @@ k<span class="n">program</span> <span class="nb">init</span> <span class="mi">0<
 <span class="c1">; Audio out   Audio in    No messages</span>
 -odac           -iadc     -d         -M0  -Q1<span class="c1">;;;RT audio I/O with MIDI in</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">kr</span> <span class="o">=</span> <span class="mi">4410</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">kr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4410</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
 
-<span class="c1">; Example by Giorgio Zucco 2007</span>
+</span><span class="c1">; Example by Giorgio Zucco 2007</span><span class="w">
 
-<span class="nb">FLpanel</span> <span class="s">"outkpc"</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">90</span><span class="c1">;start of container</span>
-gk<span class="n">pg</span><span class="p">,</span> gi<span class="n">handle</span> <span class="nb">FLcount</span> <span class="s">"Midi-Program change"</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">127</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">152</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span>
-<span class="nb">FLpanelEnd</span>
+</span><span class="nb">FLpanel</span><span class="w"> </span><span class="s">"outkpc"</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">90</span><span class="c1">;start of container</span><span class="w">
+</span>gk<span class="n">pg</span><span class="p">,</span><span class="w"> </span>gi<span class="n">handle</span><span class="w"> </span><span class="nb">FLcount</span><span class="w"> </span><span class="s">"Midi-Program change"</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">127</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">152</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="w">
+</span><span class="nb">FLpanelEnd</span><span class="w">
 
-<span class="nb">FLrun</span>
+</span><span class="nb">FLrun</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
 
-k<span class="n">trig</span> <span class="nb">changed</span> gk<span class="n">pg</span>
-<span class="nb">outkpc</span>     k<span class="n">trig</span><span class="p">,</span>gk<span class="n">pg</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">127</span>
+</span>k<span class="n">trig</span><span class="w"> </span><span class="nb">changed</span><span class="w"> </span>gk<span class="n">pg</span><span class="w">
+</span><span class="nb">outkpc</span><span class="w">     </span>k<span class="n">trig</span><span class="p">,</span>gk<span class="n">pg</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">127</span><span class="w">
 
-<span class="kd">endin</span>
+</span><span class="kd">endin</span><span class="w">
 
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="c1">; Run instrument 1 for 60 seconds</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span>  <span class="mi">60</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="c1">; Run instrument 1 for 60 seconds</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w">  </span><span class="mi">60</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -189,7 +189,7 @@ k<span class="n">trig</span> <span class="nb">changed</span> gk<span class="n">p
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm166753"></a>
+        <a id="idm233197"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="outiat.html" title="outiat"><em class="citetitle">outiat</em></a>,
@@ -206,7 +206,7 @@ k<span class="n">trig</span> <span class="nb">changed</span> gk<span class="n">p
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm166778"></a>
+        <a id="idm233222"></a>
         <h2>Credits</h2>
         <p>
       </p>

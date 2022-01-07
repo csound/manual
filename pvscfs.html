@@ -39,7 +39,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm190310"></a>
+        <a id="idm267738"></a>
         <h2>Description</h2>
         <p>
      This opcode takes in a pvs signal in AMP_* format, applies the
@@ -48,12 +48,12 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm190313"></a>
+        <a id="idm267741"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">kCoef[],krms,kerr  <span class="command"><strong>pvscfs</strong></span> fsig, iord[,imod]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm190317"></a>
+        <a id="idm267745"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>iord</em></span> -- all-pole filter order.
@@ -65,7 +65,7 @@
         </p>
       </div>
       <div class="refsect1">
-        <a id="idm190323"></a>
+        <a id="idm267751"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>kCoef[]</em></span> -- all-pole filter coefficients
@@ -82,7 +82,7 @@
         </p>
       </div>
       <div class="refsect1">
-        <a id="idm190333"></a>
+        <a id="idm267761"></a>
         <p>
         This opcode is part of a suite of streaming linear prediction
         opcodes. It takes an fsig, applies a cepstrum transform,
@@ -96,21 +96,21 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm190335"></a>
+        <a id="idm267763"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the pvscfs opcode using an audio input
       signal as lpc source. It uses the file <a class="ulink" href="examples/pvscfs.csd" target="_top"><em class="citetitle">pvscfs.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm190340"></a>
+          <a id="idm267768"></a>
           <p class="title">
             <strong>Example 817. Example of the pvscfs opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm190347"></a>
+              <a id="idm267775"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -120,31 +120,31 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">;-o pvscfs.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
 
-a<span class="n">1</span>   <span class="nb">diskin</span> <span class="s">"fox.wav"</span><span class="p">,</span> <span class="mi">1</span> 
-a<span class="n">2</span>   <span class="nb">diskin</span> <span class="s">"wave.wav"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>         <span class="c1">; uses noisy wave</span>
-f<span class="n">env</span> <span class="nb">pvsanal</span> a<span class="n">1</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="mi">1</span>
-k<span class="n">cfs</span><span class="p">[],</span>k<span class="n">rms</span><span class="p">,</span>k<span class="n">err</span> <span class="nb">pvscfs</span> f<span class="n">env</span><span class="p">,</span> <span class="vi">p4</span>
-a<span class="n">3</span> <span class="nb">allpole</span> a<span class="n">2</span><span class="o">*</span>k<span class="n">rms</span><span class="o">*</span>k<span class="n">err</span><span class="p">,</span> k<span class="n">cfs</span>
-a<span class="n">3</span> <span class="nb">dcblock</span> a<span class="n">3</span>
-<span class="nb">outs</span> a<span class="n">3</span><span class="o">*</span><span class="mi">8</span><span class="p">,</span> a<span class="n">3</span><span class="o">*</span><span class="mi">8</span>
-<span class="kd">endin</span>
+</span>a<span class="n">1</span><span class="w">   </span><span class="nb">diskin</span><span class="w"> </span><span class="s">"fox.wav"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> 
+</span>a<span class="n">2</span><span class="w">   </span><span class="nb">diskin</span><span class="w"> </span><span class="s">"wave.wav"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">         </span><span class="c1">; uses noisy wave</span><span class="w">
+</span>f<span class="n">env</span><span class="w"> </span><span class="nb">pvsanal</span><span class="w"> </span>a<span class="n">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">256</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span>k<span class="n">cfs</span><span class="p">[],</span>k<span class="n">rms</span><span class="p">,</span>k<span class="n">err</span><span class="w"> </span><span class="nb">pvscfs</span><span class="w"> </span>f<span class="n">env</span><span class="p">,</span><span class="w"> </span><span class="vi">p4</span><span class="w">
+</span>a<span class="n">3</span><span class="w"> </span><span class="nb">allpole</span><span class="w"> </span>a<span class="n">2</span><span class="o">*</span>k<span class="n">rms</span><span class="o">*</span>k<span class="n">err</span><span class="p">,</span><span class="w"> </span>k<span class="n">cfs</span><span class="w">
+</span>a<span class="n">3</span><span class="w"> </span><span class="nb">dcblock</span><span class="w"> </span>a<span class="n">3</span><span class="w">
+</span><span class="nb">outs</span><span class="w"> </span>a<span class="n">3</span><span class="o">*</span><span class="mi">8</span><span class="p">,</span><span class="w"> </span>a<span class="n">3</span><span class="o">*</span><span class="mi">8</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="c1">;           order</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mf">2.7</span>      <span class="mi">3</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">3</span> <span class="mf">2.7</span>      <span class="mi">30</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">6</span> <span class="mf">2.7</span>      <span class="mi">70</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="c1">;           order</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">2.7</span><span class="w">      </span><span class="mi">3</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mf">2.7</span><span class="w">      </span><span class="mi">30</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="mf">2.7</span><span class="w">      </span><span class="mi">70</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -154,7 +154,7 @@ a<span class="n">3</span> <span class="nb">dcblock</span> a<span class="n">3</sp
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm190448"></a>
+        <a id="idm267938"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="lpcfilter.html" title="lpcfilter"><em class="citetitle">lpcfilter</em></a>,

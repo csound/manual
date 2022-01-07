@@ -39,47 +39,47 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm63838"></a>
+        <a id="idm86090"></a>
         <h2>Description</h2>
         <p>
       Modify a signal by down-sampling.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm63841"></a>
+        <a id="idm86093"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">kres <span class="command"><strong>downsamp</strong></span> asig [, iwlen]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm63845"></a>
+        <a id="idm86097"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>iwlen</em></span> (optional) -- window length in samples over which the audio signal is averaged to determine a downsampled value. Maximum length is <span class="emphasis"><em>ksmps</em></span>; 0 and 1 imply no window averaging. The default value is 0.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm63850"></a>
+        <a id="idm86102"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>downsamp</em></span> converts an audio signal to a control signal by downsampling. It produces one kval for each audio control period. The optional window invokes a simple averaging process to suppress foldover.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm63854"></a>
+        <a id="idm86106"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the downsamp opcode. It uses the file <a class="ulink" href="examples/downsamp.csd" target="_top"><em class="citetitle">downsamp.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm63859"></a>
+          <a id="idm86111"></a>
           <p class="title">
             <strong>Example 246. Example of the downsamp opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm63866"></a>
+              <a id="idm86118"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -89,33 +89,33 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o downsamp.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span>	<span class="nf">1</span>
+</span><span class="kd">instr</span><span class="w">	</span><span class="nf">1</span><span class="w">
 
-i<span class="n">frq</span>	<span class="o">=</span> <span class="nb">cpspch</span><span class="p">(</span><span class="vi">p4</span><span class="p">)</span>
-a<span class="n">in</span>	<span class="nb">diskin2</span> <span class="s">"beats.wav"</span><span class="p">,</span> <span class="mi">1</span>
-a<span class="n">env</span>	<span class="nb">follow</span>	a<span class="n">in</span><span class="p">,</span> <span class="mf">.001</span>	<span class="c1">;take the amplitude every 1/1000th of a second</span>
-a<span class="n">low</span>	<span class="nb">tone</span>	a<span class="n">env</span><span class="p">,</span> <span class="mi">25</span>	<span class="c1">;lowpass-filter (25 Hz) for a clean signal</span>
-k<span class="n">env</span>	<span class="nb">downsamp</span> a<span class="n">low</span>
-a<span class="n">sig</span>    <span class="nb">pluck</span>   k<span class="n">env</span><span class="p">,</span> i<span class="n">frq</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
-	<span class="nb">outs</span>	a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
-	<span class="kd">endin</span>
+</span>i<span class="n">frq</span><span class="w">	</span><span class="o">=</span><span class="w"> </span><span class="nb">cpspch</span><span class="p">(</span><span class="vi">p4</span><span class="p">)</span><span class="w">
+</span>a<span class="n">in</span><span class="w">	</span><span class="nb">diskin2</span><span class="w"> </span><span class="s">"beats.wav"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span>a<span class="n">env</span><span class="w">	</span><span class="nb">follow</span><span class="w">	</span>a<span class="n">in</span><span class="p">,</span><span class="w"> </span><span class="mf">.001</span><span class="w">	</span><span class="c1">;take the amplitude every 1/1000th of a second</span><span class="w">
+</span>a<span class="n">low</span><span class="w">	</span><span class="nb">tone</span><span class="w">	</span>a<span class="n">env</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="w">	</span><span class="c1">;lowpass-filter (25 Hz) for a clean signal</span><span class="w">
+</span>k<span class="n">env</span><span class="w">	</span><span class="nb">downsamp</span><span class="w"> </span>a<span class="n">low</span><span class="w">
+</span>a<span class="n">sig</span><span class="w">    </span><span class="nb">pluck</span><span class="w">   </span>k<span class="n">env</span><span class="p">,</span><span class="w"> </span>i<span class="n">frq</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+	</span><span class="nb">outs</span><span class="w">	</span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
+	</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">2</span>	 <span class="mi">9</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="o">+</span> <span class="o">.</span>	 <span class="mi">7</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="o">+</span> <span class="o">.</span>	 <span class="mi">5</span>
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">2</span><span class="w">	 </span><span class="mi">9</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">	 </span><span class="mi">7</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">	 </span><span class="mi">5</span><span class="w">
 
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -125,7 +125,7 @@ a<span class="n">sig</span>    <span class="nb">pluck</span>   k<span class="n">
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm63953"></a>
+        <a id="idm86268"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="diff.html" title="diff"><em class="citetitle">diff</em></a>,

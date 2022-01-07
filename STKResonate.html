@@ -39,7 +39,7 @@
       </p>
       </div>
       <div class="refsect1">
-        <a id="idm232231"></a>
+        <a id="idm327916"></a>
         <h2>Description</h2>
         <p>Plugin opcode in stkopd. This opcode is part of the plugin repository and has to be installed separately. 
     The plugin repository can be found here: <a class="ulink" href="https://github.com/csound/plugins" target="_top"><em class="citetitle">https://github.com/csound/plugins</em></a></p>
@@ -48,12 +48,12 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm232237"></a>
+        <a id="idm327922"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">asignal <span class="command"><strong>STKResonate</strong></span> ifrequency, iamplitude, [kfreq, kv1[, kpole, kv2[, knotch, kv3[, kzero, kv4[, kenv, kv5]]]]]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm232241"></a>
+        <a id="idm327926"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>ifrequency</em></span> -- Frequency of note played, in Hertz.
@@ -63,7 +63,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm232247"></a>
+        <a id="idm327932"></a>
         <h2>Performance</h2>
         <p><span class="emphasis"><em>kfreq</em></span> -- controller 2, frequency of resonance. Value range of kv1 is 0-127.</p>
         <p><span class="emphasis"><em>kpole</em></span> -- controller 4, pole radii. Value range of kv2 is 0-127.</p>
@@ -72,7 +72,7 @@
         <p><span class="emphasis"><em>kenv</em></span> -- controller 128, gain of envelope. Value range of kv5 is 0-127.</p>
       </div>
       <div class="refsect1">
-        <a id="idm232259"></a>
+        <a id="idm327944"></a>
         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
           <table border="0" summary="Note: Note">
             <tr>
@@ -98,20 +98,20 @@ The order of the controller pair is arbitrary, as long as they are after <span c
         </div>
       </div>
       <div class="refsect1">
-        <a id="idm232268"></a>
+        <a id="idm327953"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the STKResonate opcode. It uses the file <a class="ulink" href="examples/STKResonate.csd" target="_top"><em class="citetitle">STKResonate.csd</em></a>.
      
       </p>
         <div class="example">
-          <a id="idm232273"></a>
+          <a id="idm327958"></a>
           <p class="title">
-            <strong>Example 1028. Example of the STKResonate opcode.</strong>
+            <strong>Example 1029. Example of the STKResonate opcode.</strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
-              <a id="idm232275"></a>
+              <a id="idm327960"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -121,33 +121,33 @@ The order of the controller pair is arbitrary, as long as they are after <span c
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o STKResonate.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span> <span class="c1">; frequency and amplitude of STKResonate have no effect</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w"> </span><span class="c1">; frequency and amplitude of STKResonate have no effect</span><span class="w">
 
-k<span class="n">v2</span>	<span class="o">=</span>	<span class="vi">p4</span>				<span class="c1">;pole radii</span>
-k<span class="n">v1</span>	<span class="nb">line</span>	<span class="mi">100</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">0</span>			<span class="c1">;resonance freq + notch freq</span>
-k<span class="n">v3</span>	<span class="o">=</span>	k<span class="n">v1</span>
-a<span class="n">sig</span>	<span class="nb">STKResonate</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> k<span class="n">v1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> k<span class="n">v2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> k<span class="n">v3</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">100</span>
-a<span class="n">sig</span>	<span class="o">=</span>	a<span class="n">sig</span> <span class="o">*</span> <span class="mf">.3</span>			<span class="c1">;too loud</span>
-	<span class="nb">outs</span> a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
-<span class="kd">endin</span>
+</span>k<span class="n">v2</span><span class="w">	</span><span class="o">=</span><span class="w">	</span><span class="vi">p4</span><span class="w">				</span><span class="c1">;pole radii</span><span class="w">
+</span>k<span class="n">v1</span><span class="w">	</span><span class="nb">line</span><span class="w">	</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">			</span><span class="c1">;resonance freq + notch freq</span><span class="w">
+</span>k<span class="n">v3</span><span class="w">	</span><span class="o">=</span><span class="w">	</span>k<span class="n">v1</span><span class="w">
+</span>a<span class="n">sig</span><span class="w">	</span><span class="nb">STKResonate</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span>k<span class="n">v1</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span>k<span class="n">v2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w"> </span>k<span class="n">v3</span><span class="p">,</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="w">
+</span>a<span class="n">sig</span><span class="w">	</span><span class="o">=</span><span class="w">	</span>a<span class="n">sig</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">.3</span><span class="w">			</span><span class="c1">;too loud</span><span class="w">
+	</span><span class="nb">outs</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> 
-<span class="nb">i</span> <span class="mi">1</span> <span class="o">+</span> <span class="o">.</span> <span class="o">&gt;</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="o">+</span> <span class="o">.</span> <span class="o">&gt;</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="o">+</span> <span class="o">.</span> <span class="o">&gt;</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="o">+</span> <span class="o">.</span> <span class="mi">120</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> 
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="o">&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="o">&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="o">&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">120</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -157,7 +157,7 @@ a<span class="n">sig</span>	<span class="o">=</span>	a<span class="n">sig</span>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm232382"></a>
+        <a id="idm328147"></a>
         <h2>Credits</h2>
         <p>
       </p>

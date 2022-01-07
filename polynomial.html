@@ -39,19 +39,19 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm180800"></a>
+        <a id="idm253865"></a>
         <h2>Description</h2>
         <p>
       The <span class="emphasis"><em>polynomial</em></span> opcode calculates a polynomial with a single a-rate input variable.  The polynomial is a sum of any number of terms in the form <span class="emphasis"><em>kn*x^n</em></span> where <span class="emphasis"><em>kn</em></span> is the nth coefficient of the expression.  These coefficients are k-rate values.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm180806"></a>
+        <a id="idm253871"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">aout <span class="command"><strong>polynomial</strong></span> ain, k0 [, k1 [, k2 [...]]]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm180810"></a>
+        <a id="idm253875"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>ain</em></span> --  the input signal used as the independent variable of the polynomial ("x").
@@ -74,20 +74,20 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm180823"></a>
+        <a id="idm253888"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the polynomial opcode. It uses the file <a class="ulink" href="examples/polynomial.csd" target="_top"><em class="citetitle">polynomial.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm180828"></a>
+          <a id="idm253893"></a>
           <p class="title">
             <strong>Example 767. Example of the polynomial opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm180835"></a>
+              <a id="idm253900"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -97,105 +97,105 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o polynomial.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="c1">; The polynomial y=x^n where n is odd always produces a curve</span>
-<span class="c1">; that traverses the range [-1, 1] when the input is within</span>
-<span class="c1">; the same range.  Therefore, we can use one of these curves</span>
-<span class="c1">; to make a nonlinear phasor that repeatedly reads a table </span>
-<span class="c1">; from beginning to end like a linear phasor (maintaining </span>
-<span class="c1">; continuity) but that distorts the waveform in the table.</span>
+</span><span class="c1">; The polynomial y=x^n where n is odd always produces a curve</span><span class="w">
+</span><span class="c1">; that traverses the range [-1, 1] when the input is within</span><span class="w">
+</span><span class="c1">; the same range.  Therefore, we can use one of these curves</span><span class="w">
+</span><span class="c1">; to make a nonlinear phasor that repeatedly reads a table </span><span class="w">
+</span><span class="c1">; from beginning to end like a linear phasor (maintaining </span><span class="w">
+</span><span class="c1">; continuity) but that distorts the waveform in the table.</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">4</span>	<span class="c1">; This instrument demonstrates phase distortion with x^3</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">4</span><span class="w">	</span><span class="c1">; This instrument demonstrates phase distortion with x^3</span><span class="w">
 
-i<span class="n">dur</span>   <span class="o">=</span> <span class="vi">p3</span>
-i<span class="n">amp</span>   <span class="o">=</span> <span class="vi">p4</span>
-i<span class="n">freq</span>  <span class="o">=</span> <span class="vi">p5</span>
-i<span class="n">table</span> <span class="o">=</span> <span class="vi">p6</span>
+</span>i<span class="n">dur</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="vi">p3</span><span class="w">
+</span>i<span class="n">amp</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="vi">p4</span><span class="w">
+</span>i<span class="n">freq</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="vi">p5</span><span class="w">
+</span>i<span class="n">table</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">p6</span><span class="w">
 	
-a<span class="n">env</span> <span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">.001</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> i<span class="n">dur</span> <span class="o">-</span> <span class="mf">.051</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">.05</span><span class="p">,</span> <span class="mi">0</span>	<span class="c1">; declicking envelope</span>
-a<span class="n">osc</span> <span class="nb">phasor</span> i<span class="n">freq</span>					<span class="c1">; create a linear phasor</span>
-a<span class="n">pd</span>  <span class="nb">polynomial</span> a<span class="n">osc</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>			<span class="c1">; distort the phasor with x^3</span>
-a<span class="n">out</span> <span class="nb">tablei</span> a<span class="n">pd</span><span class="p">,</span> i<span class="n">table</span><span class="p">,</span> <span class="mi">1</span>				<span class="c1">; read a sine table with the nonlinear phasor</span>
-     <span class="nb">outs</span> a<span class="n">env</span><span class="o">*</span>a<span class="n">out</span><span class="o">*</span>i<span class="n">amp</span><span class="p">,</span> a<span class="n">env</span><span class="o">*</span>a<span class="n">out</span><span class="o">*</span>i<span class="n">amp</span>
+</span>a<span class="n">env</span><span class="w"> </span><span class="nb">linseg</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">.001</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span>i<span class="n">dur</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">.051</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">.05</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">	</span><span class="c1">; declicking envelope</span><span class="w">
+</span>a<span class="n">osc</span><span class="w"> </span><span class="nb">phasor</span><span class="w"> </span>i<span class="n">freq</span><span class="w">					</span><span class="c1">; create a linear phasor</span><span class="w">
+</span>a<span class="n">pd</span><span class="w">  </span><span class="nb">polynomial</span><span class="w"> </span>a<span class="n">osc</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">			</span><span class="c1">; distort the phasor with x^3</span><span class="w">
+</span>a<span class="n">out</span><span class="w"> </span><span class="nb">tablei</span><span class="w"> </span>a<span class="n">pd</span><span class="p">,</span><span class="w"> </span>i<span class="n">table</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">				</span><span class="c1">; read a sine table with the nonlinear phasor</span><span class="w">
+     </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">env</span><span class="o">*</span>a<span class="n">out</span><span class="o">*</span>i<span class="n">amp</span><span class="p">,</span><span class="w"> </span>a<span class="n">env</span><span class="o">*</span>a<span class="n">out</span><span class="o">*</span>i<span class="n">amp</span><span class="w">
 		
-<span class="kd">endin</span>
+</span><span class="kd">endin</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">5</span>	<span class="c1">; This instrument demonstrates phase distortion with x^11</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">5</span><span class="w">	</span><span class="c1">; This instrument demonstrates phase distortion with x^11</span><span class="w">
 
-i<span class="n">dur</span>   <span class="o">=</span> <span class="vi">p3</span>
-i<span class="n">amp</span>   <span class="o">=</span> <span class="vi">p4</span>
-i<span class="n">freq</span>  <span class="o">=</span> <span class="vi">p5</span>
-i<span class="n">table</span> <span class="o">=</span> <span class="vi">p6</span>
+</span>i<span class="n">dur</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="vi">p3</span><span class="w">
+</span>i<span class="n">amp</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="vi">p4</span><span class="w">
+</span>i<span class="n">freq</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="vi">p5</span><span class="w">
+</span>i<span class="n">table</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">p6</span><span class="w">
 
-a<span class="n">env</span> <span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">.001</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> i<span class="n">dur</span> <span class="o">-</span> <span class="mf">.051</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">.05</span><span class="p">,</span> <span class="mi">0</span>	<span class="c1">; declicking envelope</span>
-a<span class="n">osc</span> <span class="nb">phasor</span> i<span class="n">freq</span>					<span class="c1">; create a linear phasor</span>
-a<span class="n">pd</span>  <span class="nb">polynomial</span> a<span class="n">osc</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span> <span class="c1">; distort the phasor with x^11</span>
-a<span class="n">out</span> <span class="nb">tablei</span> a<span class="n">pd</span><span class="p">,</span> i<span class="n">table</span><span class="p">,</span> <span class="mi">1</span>				<span class="c1">; read a sine table with the nonlinear phasor</span>
-     <span class="nb">outs</span> a<span class="n">env</span><span class="o">*</span>a<span class="n">out</span><span class="o">*</span>i<span class="n">amp</span><span class="p">,</span> a<span class="n">env</span><span class="o">*</span>a<span class="n">out</span><span class="o">*</span>i<span class="n">amp</span>
+</span>a<span class="n">env</span><span class="w"> </span><span class="nb">linseg</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">.001</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span>i<span class="n">dur</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">.051</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">.05</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">	</span><span class="c1">; declicking envelope</span><span class="w">
+</span>a<span class="n">osc</span><span class="w"> </span><span class="nb">phasor</span><span class="w"> </span>i<span class="n">freq</span><span class="w">					</span><span class="c1">; create a linear phasor</span><span class="w">
+</span>a<span class="n">pd</span><span class="w">  </span><span class="nb">polynomial</span><span class="w"> </span>a<span class="n">osc</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="c1">; distort the phasor with x^11</span><span class="w">
+</span>a<span class="n">out</span><span class="w"> </span><span class="nb">tablei</span><span class="w"> </span>a<span class="n">pd</span><span class="p">,</span><span class="w"> </span>i<span class="n">table</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">				</span><span class="c1">; read a sine table with the nonlinear phasor</span><span class="w">
+     </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">env</span><span class="o">*</span>a<span class="n">out</span><span class="o">*</span>i<span class="n">amp</span><span class="p">,</span><span class="w"> </span>a<span class="n">env</span><span class="o">*</span>a<span class="n">out</span><span class="o">*</span>i<span class="n">amp</span><span class="w">
 		
-<span class="kd">endin</span>
+</span><span class="kd">endin</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">6</span> <span class="c1">; This instrument crossfades between a pure sine and one distorted with x^11</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">6</span><span class="w"> </span><span class="c1">; This instrument crossfades between a pure sine and one distorted with x^11</span><span class="w">
 
-i<span class="n">dur</span>   <span class="o">=</span> <span class="vi">p3</span>
-i<span class="n">amp</span>   <span class="o">=</span> <span class="vi">p4</span>
-i<span class="n">freq</span>  <span class="o">=</span> <span class="vi">p5</span>
-i<span class="n">table</span> <span class="o">=</span> <span class="vi">p6</span>
+</span>i<span class="n">dur</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="vi">p3</span><span class="w">
+</span>i<span class="n">amp</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="vi">p4</span><span class="w">
+</span>i<span class="n">freq</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="vi">p5</span><span class="w">
+</span>i<span class="n">table</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">p6</span><span class="w">
 	
-a<span class="n">env</span>	<span class="nb">linseg</span>	<span class="mi">0</span><span class="p">,</span> <span class="mf">.001</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> i<span class="n">dur</span> <span class="o">-</span> <span class="mf">.051</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">.05</span><span class="p">,</span> <span class="mi">0</span>	<span class="c1">; declicking envelope</span>
-a<span class="n">osc</span>	<span class="nb">phasor</span>	i<span class="n">freq</span>					<span class="c1">; create a linear phasor</span>
-a<span class="n">out3</span>	<span class="nb">tablei</span>	a<span class="n">osc</span><span class="p">,</span> i<span class="n">table</span><span class="p">,</span> <span class="mi">1</span>				<span class="c1">; read a sine table without the linear phasor</span>
-a<span class="n">pd11</span>	<span class="nb">polynomial</span> a<span class="n">osc</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span> <span class="c1">; distort the phasor with x^11</span>
-a<span class="n">out11</span>	<span class="nb">tablei</span>	a<span class="n">pd11</span><span class="p">,</span> i<span class="n">table</span><span class="p">,</span> <span class="mi">1</span>			<span class="c1">; read a sine table with the nonlinear phasor</span>
-k<span class="n">amount</span>	<span class="nb">linseg</span>	<span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span>		<span class="c1">; crossfade between two outputs</span>
-a<span class="n">out</span>	<span class="o">=</span> a<span class="n">out3</span><span class="o">*</span>k<span class="n">amount</span> <span class="o">+</span> a<span class="n">out11</span><span class="o">*</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> k<span class="n">amount</span><span class="p">)</span>
-        <span class="nb">outs</span> a<span class="n">env</span><span class="o">*</span>a<span class="n">out</span><span class="o">*</span>i<span class="n">amp</span><span class="p">,</span> a<span class="n">env</span><span class="o">*</span>a<span class="n">out</span><span class="o">*</span>i<span class="n">amp</span>	
+</span>a<span class="n">env</span><span class="w">	</span><span class="nb">linseg</span><span class="w">	</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">.001</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span>i<span class="n">dur</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">.051</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">.05</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">	</span><span class="c1">; declicking envelope</span><span class="w">
+</span>a<span class="n">osc</span><span class="w">	</span><span class="nb">phasor</span><span class="w">	</span>i<span class="n">freq</span><span class="w">					</span><span class="c1">; create a linear phasor</span><span class="w">
+</span>a<span class="n">out3</span><span class="w">	</span><span class="nb">tablei</span><span class="w">	</span>a<span class="n">osc</span><span class="p">,</span><span class="w"> </span>i<span class="n">table</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">				</span><span class="c1">; read a sine table without the linear phasor</span><span class="w">
+</span>a<span class="n">pd11</span><span class="w">	</span><span class="nb">polynomial</span><span class="w"> </span>a<span class="n">osc</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="c1">; distort the phasor with x^11</span><span class="w">
+</span>a<span class="n">out11</span><span class="w">	</span><span class="nb">tablei</span><span class="w">	</span>a<span class="n">pd11</span><span class="p">,</span><span class="w"> </span>i<span class="n">table</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">			</span><span class="c1">; read a sine table with the nonlinear phasor</span><span class="w">
+</span>k<span class="n">amount</span><span class="w">	</span><span class="nb">linseg</span><span class="w">	</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w"> </span><span class="mf">0.9</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="w">		</span><span class="c1">; crossfade between two outputs</span><span class="w">
+</span>a<span class="n">out</span><span class="w">	</span><span class="o">=</span><span class="w"> </span>a<span class="n">out3</span><span class="o">*</span>k<span class="n">amount</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>a<span class="n">out11</span><span class="o">*</span><span class="p">(</span><span class="mf">1.0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span>k<span class="n">amount</span><span class="p">)</span><span class="w">
+        </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">env</span><span class="o">*</span>a<span class="n">out</span><span class="o">*</span>i<span class="n">amp</span><span class="p">,</span><span class="w"> </span>a<span class="n">env</span><span class="o">*</span>a<span class="n">out</span><span class="o">*</span>i<span class="n">amp</span><span class="w">	
 	
-<span class="kd">endin</span>
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">f</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">16385</span> <span class="mi">10</span> <span class="mi">1</span>	<span class="c1">; sine wave</span>
+</span><span class="kd">endin</span><span class="w">
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">f</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">16385</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w">	</span><span class="c1">; sine wave</span><span class="w">
 
-<span class="c1">; descending "just blues" scale</span>
+</span><span class="c1">; descending "just blues" scale</span><span class="w">
 
-<span class="nb">t</span> <span class="mi">0</span> <span class="mi">100</span>
-<span class="nb">i</span><span class="mi">4</span> <span class="mi">0</span> <span class="mf">.333</span> <span class="mf">.7</span> <span class="mi">512</span>     <span class="mi">1</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="o">.</span>  <span class="mi">448</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="o">.</span>  <span class="mi">384</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="o">.</span>  <span class="mi">360</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="o">.</span>  <span class="mf">341.33</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="o">.</span>  <span class="mf">298.67</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="mi">2</span>    <span class="o">.</span>  <span class="mi">256</span>
-<span class="nb">s</span>
+</span><span class="nb">t</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">100</span><span class="w">
+</span><span class="nb">i</span><span class="mi">4</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">.333</span><span class="w"> </span><span class="mf">.7</span><span class="w"> </span><span class="mi">512</span><span class="w">     </span><span class="mi">1</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="o">.</span><span class="w">  </span><span class="mi">448</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="o">.</span><span class="w">  </span><span class="mi">384</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="o">.</span><span class="w">  </span><span class="mi">360</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="o">.</span><span class="w">  </span><span class="mf">341.33</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="o">.</span><span class="w">  </span><span class="mf">298.67</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w">    </span><span class="o">.</span><span class="w">  </span><span class="mi">256</span><span class="w">
+</span><span class="nb">s</span><span class="w">
 
-<span class="nb">t</span> <span class="mi">0</span> <span class="mi">100</span>
-<span class="nb">i</span><span class="mi">5</span> <span class="mi">0</span> <span class="mf">.333</span> <span class="mf">.7</span> <span class="mi">512</span>     <span class="mi">1</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="o">.</span>  <span class="mi">448</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="o">.</span>  <span class="mi">384</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="o">.</span>  <span class="mi">360</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="o">.</span>  <span class="mf">341.33</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="o">.</span>  <span class="mf">298.67</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="mi">2</span>    <span class="o">.</span>  <span class="mi">256</span>
-<span class="nb">s</span>
+</span><span class="nb">t</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">100</span><span class="w">
+</span><span class="nb">i</span><span class="mi">5</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">.333</span><span class="w"> </span><span class="mf">.7</span><span class="w"> </span><span class="mi">512</span><span class="w">     </span><span class="mi">1</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="o">.</span><span class="w">  </span><span class="mi">448</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="o">.</span><span class="w">  </span><span class="mi">384</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="o">.</span><span class="w">  </span><span class="mi">360</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="o">.</span><span class="w">  </span><span class="mf">341.33</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="o">.</span><span class="w">  </span><span class="mf">298.67</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w">    </span><span class="o">.</span><span class="w">  </span><span class="mi">256</span><span class="w">
+</span><span class="nb">s</span><span class="w">
 
-<span class="nb">t</span> <span class="mi">0</span> <span class="mi">100</span>
-<span class="nb">i</span><span class="mi">6</span> <span class="mi">0</span> <span class="mf">.333</span> <span class="mf">.7</span> <span class="mi">512</span>     <span class="mi">1</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="o">.</span>  <span class="mi">448</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="o">.</span>  <span class="mi">384</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="o">.</span>  <span class="mi">360</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="o">.</span>  <span class="mf">341.33</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="o">.</span>    <span class="o">.</span>  <span class="mf">298.67</span>
-<span class="nb">i</span><span class="o">.</span> <span class="o">+</span> <span class="mi">2</span>    <span class="o">.</span>  <span class="mi">256</span>
+</span><span class="nb">t</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">100</span><span class="w">
+</span><span class="nb">i</span><span class="mi">6</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">.333</span><span class="w"> </span><span class="mf">.7</span><span class="w"> </span><span class="mi">512</span><span class="w">     </span><span class="mi">1</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="o">.</span><span class="w">  </span><span class="mi">448</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="o">.</span><span class="w">  </span><span class="mi">384</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="o">.</span><span class="w">  </span><span class="mi">360</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="o">.</span><span class="w">  </span><span class="mf">341.33</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w">    </span><span class="o">.</span><span class="w">  </span><span class="mf">298.67</span><span class="w">
+</span><span class="nb">i</span><span class="o">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w">    </span><span class="o">.</span><span class="w">  </span><span class="mi">256</span><span class="w">
 
-<span class="nb">e</span>
+</span><span class="nb">e</span><span class="w">
 
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -205,7 +205,7 @@ a<span class="n">out</span>	<span class="o">=</span> a<span class="n">out3</span
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm181292"></a>
+        <a id="idm254688"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="chebyshevpoly.html" title="chebyshevpoly"><em class="citetitle">chebyshevpoly</em></a>, 
@@ -214,7 +214,7 @@ a<span class="n">out</span>	<span class="o">=</span> a<span class="n">out3</span
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm181301"></a>
+        <a id="idm254697"></a>
         <h2>Credits</h2>
         <p>
       </p>

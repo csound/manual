@@ -39,7 +39,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm293356"></a>
+        <a id="idm416491"></a>
         <h2>Description</h2>
         <p>
       These routines generate composite waveforms by mixing simple sinusoids, similarly to <a class="link" href="GEN09.html" title="GEN09"><em class="citetitle">GEN09</em></a>, but the parameters of the partials are specified in an already existing table, which makes it possible to calculate any number of partials in the orchestra.
@@ -49,12 +49,12 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm293372"></a>
+        <a id="idm416507"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>f</strong></span> # time size  34  src nh scl [fmode]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm293376"></a>
+        <a id="idm416511"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>size</em></span> -- number of points in the table. Must be power of two or a power of two plus 1.
@@ -100,20 +100,20 @@ stra, pna, phsa, strb, pnb, phsb, ...<br />
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm293396"></a>
+        <a id="idm416531"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the GEN34 routine. It uses the file <a class="ulink" href="examples/gen34.csd" target="_top"><em class="citetitle">gen34.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm293401"></a>
+          <a id="idm416536"></a>
           <p class="title">
-            <strong>Example 1306. Example of the gen34 generator.</strong>
+            <strong>Example 1307. Example of the gen34 generator.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm293408"></a>
+              <a id="idm416543"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -123,43 +123,43 @@ stra, pna, phsa, strb, pnb, phsb, ...<br />
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o gen34.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>	<span class="c1">; partials 1, 4, 7, 10, 13, 16, etc. with base frequency of 400 Hz</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">	</span><span class="c1">; partials 1, 4, 7, 10, 13, 16, etc. with base frequency of 400 Hz</span><span class="w">
 
-i<span class="n">bsfrq</span>  <span class="o">=</span>  <span class="mi">400</span>										
-i<span class="n">numh</span>   <span class="o">=</span>  <span class="nb">int</span><span class="p">(</span><span class="mf">1.5</span> <span class="o">+</span> <span class="vg">sr</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">/</span> <span class="p">(</span><span class="mi">3</span> <span class="o">*</span> i<span class="n">bsfrq</span><span class="p">))</span>					<span class="c1">; estimate number of partials			</span>
-i<span class="n">srcln</span>  <span class="o">=</span>  <span class="nb">int</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">+</span> <span class="nb">exp</span><span class="p">(</span><span class="nb">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1.01</span> <span class="o">+</span> <span class="nb">log</span><span class="p">(</span>i<span class="n">numh</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span> <span class="o">/</span> <span class="nb">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))))</span>		<span class="c1">; source table length</span>
-i<span class="n">tmp</span>    <span class="nb">ftgen</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> i<span class="n">srcln</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span>						<span class="c1">; create empty source table</span>
-i<span class="n">fpos</span>   <span class="o">=</span>  <span class="mi">0</span>
-i<span class="n">frq</span>    <span class="o">=</span>  i<span class="n">bsfrq</span>
-i<span class="n">numh</span>   <span class="o">=</span>  <span class="mi">0</span>
-<span class="nl">l1</span><span class="p">:</span>
-        <span class="nb">tableiw</span> i<span class="n">bsfrq</span> <span class="o">/</span> i<span class="n">frq</span><span class="p">,</span> i<span class="n">fpos</span><span class="p">,</span> <span class="mi">1</span>						<span class="c1">; amplitude</span>
-        <span class="nb">tableiw</span> i<span class="n">frq</span><span class="p">,</span> i<span class="n">fpos</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>						<span class="c1">; frequency</span>
-        <span class="nb">tableiw</span> <span class="mi">0</span><span class="p">,</span> i<span class="n">fpos</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span>							<span class="c1">; phase</span>
-i<span class="n">fpos</span>   <span class="o">=</span>  i<span class="n">fpos</span> <span class="o">+</span> <span class="mi">3</span>
-i<span class="n">frq</span>    <span class="o">=</span>  i<span class="n">frq</span> <span class="o">+</span> i<span class="n">bsfrq</span> <span class="o">*</span> <span class="mi">3</span>
-i<span class="n">numh</span>   <span class="o">=</span>  i<span class="n">numh</span> <span class="o">+</span> <span class="mi">1</span>
-        <span class="k">if</span> <span class="p">(</span>i<span class="n">frq</span> <span class="o">&lt;</span> <span class="p">(</span><span class="vg">sr</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">))</span> <span class="k">igoto</span> <span class="nl">l1</span>
+</span>i<span class="n">bsfrq</span><span class="w">  </span><span class="o">=</span><span class="w">  </span><span class="mi">400</span><span class="w">										
+</span>i<span class="n">numh</span><span class="w">   </span><span class="o">=</span><span class="w">  </span><span class="nb">int</span><span class="p">(</span><span class="mf">1.5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="vg">sr</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>i<span class="n">bsfrq</span><span class="p">))</span><span class="w">					</span><span class="c1">; estimate number of partials			</span><span class="w">
+</span>i<span class="n">srcln</span><span class="w">  </span><span class="o">=</span><span class="w">  </span><span class="nb">int</span><span class="p">(</span><span class="mf">0.5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="nb">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="mf">1.01</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">log</span><span class="p">(</span>i<span class="n">numh</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))))</span><span class="w">		</span><span class="c1">; source table length</span><span class="w">
+</span>i<span class="n">tmp</span><span class="w">    </span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span>i<span class="n">srcln</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">						</span><span class="c1">; create empty source table</span><span class="w">
+</span>i<span class="n">fpos</span><span class="w">   </span><span class="o">=</span><span class="w">  </span><span class="mi">0</span><span class="w">
+</span>i<span class="n">frq</span><span class="w">    </span><span class="o">=</span><span class="w">  </span>i<span class="n">bsfrq</span><span class="w">
+</span>i<span class="n">numh</span><span class="w">   </span><span class="o">=</span><span class="w">  </span><span class="mi">0</span><span class="w">
+</span><span class="nl">l1</span><span class="p">:</span><span class="w">
+        </span><span class="nb">tableiw</span><span class="w"> </span>i<span class="n">bsfrq</span><span class="w"> </span><span class="o">/</span><span class="w"> </span>i<span class="n">frq</span><span class="p">,</span><span class="w"> </span>i<span class="n">fpos</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">						</span><span class="c1">; amplitude</span><span class="w">
+        </span><span class="nb">tableiw</span><span class="w"> </span>i<span class="n">frq</span><span class="p">,</span><span class="w"> </span>i<span class="n">fpos</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">						</span><span class="c1">; frequency</span><span class="w">
+        </span><span class="nb">tableiw</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span>i<span class="n">fpos</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">							</span><span class="c1">; phase</span><span class="w">
+</span>i<span class="n">fpos</span><span class="w">   </span><span class="o">=</span><span class="w">  </span>i<span class="n">fpos</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="w">
+</span>i<span class="n">frq</span><span class="w">    </span><span class="o">=</span><span class="w">  </span>i<span class="n">frq</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>i<span class="n">bsfrq</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">3</span><span class="w">
+</span>i<span class="n">numh</span><span class="w">   </span><span class="o">=</span><span class="w">  </span>i<span class="n">numh</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span>i<span class="n">frq</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="vg">sr</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.5</span><span class="p">))</span><span class="w"> </span><span class="k">igoto</span><span class="w"> </span><span class="nl">l1</span><span class="w">
 
-i<span class="n">tmp</span>    <span class="nb">ftgen</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">262144</span><span class="p">,</span> <span class="o">-</span><span class="mi">34</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> i<span class="n">numh</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span>				<span class="c1">; store output in ftable 2 (size = 262144)</span>
-a<span class="n">sig</span>    <span class="nb">poscil</span> <span class="mf">.5</span><span class="p">,</span> i<span class="n">bsfrq</span><span class="p">,</span> i<span class="n">tmp</span>
-        <span class="nb">outs</span> a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span> 
+</span>i<span class="n">tmp</span><span class="w">    </span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">262144</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">34</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>i<span class="n">numh</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w">				</span><span class="c1">; store output in ftable 2 (size = 262144)</span><span class="w">
+</span>a<span class="n">sig</span><span class="w">    </span><span class="nb">poscil</span><span class="w"> </span><span class="mf">.5</span><span class="p">,</span><span class="w"> </span>i<span class="n">bsfrq</span><span class="p">,</span><span class="w"> </span>i<span class="n">tmp</span><span class="w">
+        </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w"> 
    
-<span class="kd">endin</span>
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
+</span><span class="kd">endin</span><span class="w">
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">2</span> 
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">2</span><span class="w"> 
 
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -184,7 +184,7 @@ a<span class="n">sig</span>    <span class="nb">poscil</span> <span class="mf">.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm293612"></a>
+        <a id="idm416882"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="GEN09.html" title="GEN09"><em class="citetitle">GEN09</em></a>,
@@ -192,7 +192,7 @@ a<span class="n">sig</span>    <span class="nb">poscil</span> <span class="mf">.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm293619"></a>
+        <a id="idm416889"></a>
         <h2>Credits</h2>
         <p>
       </p>

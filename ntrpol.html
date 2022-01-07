@@ -39,21 +39,21 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm158321"></a>
+        <a id="idm221429"></a>
         <h2>Description</h2>
         <p>
       Calculates the weighted mean value (i.e. linear interpolation) of two input signals
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm158324"></a>
+        <a id="idm221432"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ares <span class="command"><strong>ntrpol</strong></span> asig1, asig2, kpoint [, imin] [, imax]</pre>
         <pre class="synopsis">ires <span class="command"><strong>ntrpol</strong></span> isig1, isig2, ipoint [, imin] [, imax]</pre>
         <pre class="synopsis">kres <span class="command"><strong>ntrpol</strong></span> ksig1, ksig2, kpoint [, imin] [, imax]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm158332"></a>
+        <a id="idm221440"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>imin</em></span> -- minimum xpoint value (optional, default 0)
@@ -63,7 +63,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm158338"></a>
+        <a id="idm221446"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>xsig1</em></span>, <span class="emphasis"><em>xsig2</em></span> -- input signals
@@ -79,20 +79,20 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm158357"></a>
+        <a id="idm221465"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the ntrpol opcode. It uses the file <a class="ulink" href="examples/ntrpol.csd" target="_top"><em class="citetitle">ntrpol.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm158362"></a>
+          <a id="idm221470"></a>
           <p class="title">
             <strong>Example 667. Example of the ntrpol opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm158369"></a>
+              <a id="idm221477"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -102,30 +102,30 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o ntrpol.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-gi<span class="n">Sin</span> <span class="nb">ftgen</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>
+</span>gi<span class="n">Sin</span><span class="w"> </span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
 
-a<span class="n">vco</span> <span class="nb">vco2</span>   <span class="mf">.5</span><span class="p">,</span> <span class="mi">110</span>			<span class="c1">;sawtootyh wave</span>
-a<span class="n">sin</span> <span class="nb">poscil</span> <span class="mf">.5</span><span class="p">,</span> <span class="mi">220</span><span class="p">,</span> gi<span class="n">Sin</span>		<span class="c1">;sine wave but octave higher</span>
-k<span class="n">x</span>   <span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">.4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">.6</span><span class="p">,</span> <span class="mi">1</span>	<span class="c1">;crossfade between saw and sine</span>
-a<span class="n">sig</span> <span class="nb">ntrpol</span> a<span class="n">vco</span><span class="p">,</span> a<span class="n">sin</span><span class="p">,</span> k<span class="n">x</span>
-     <span class="nb">outs</span>   a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
+</span>a<span class="n">vco</span><span class="w"> </span><span class="nb">vco2</span><span class="w">   </span><span class="mf">.5</span><span class="p">,</span><span class="w"> </span><span class="mi">110</span><span class="w">			</span><span class="c1">;sawtootyh wave</span><span class="w">
+</span>a<span class="n">sin</span><span class="w"> </span><span class="nb">poscil</span><span class="w"> </span><span class="mf">.5</span><span class="p">,</span><span class="w"> </span><span class="mi">220</span><span class="p">,</span><span class="w"> </span>gi<span class="n">Sin</span><span class="w">		</span><span class="c1">;sine wave but octave higher</span><span class="w">
+</span>k<span class="n">x</span><span class="w">   </span><span class="nb">linseg</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="o">*</span><span class="mf">.4</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="o">*</span><span class="mf">.6</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">	</span><span class="c1">;crossfade between saw and sine</span><span class="w">
+</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">ntrpol</span><span class="w"> </span>a<span class="n">vco</span><span class="p">,</span><span class="w"> </span>a<span class="n">sin</span><span class="p">,</span><span class="w"> </span>k<span class="n">x</span><span class="w">
+     </span><span class="nb">outs</span><span class="w">   </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
 
-<span class="kd">endin</span>
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
+</span><span class="kd">endin</span><span class="w">
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">5</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -135,7 +135,7 @@ a<span class="n">sig</span> <span class="nb">ntrpol</span> a<span class="n">vco<
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm158456"></a>
+        <a id="idm221620"></a>
         <h2>Credits</h2>
         <p>
       </p>

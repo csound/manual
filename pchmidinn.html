@@ -39,14 +39,14 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm174252"></a>
+        <a id="idm244025"></a>
         <h2>Description</h2>
         <p>
       Converts a Midi note number value to octave point pitch-class units.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm174255"></a>
+        <a id="idm244028"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>pchmidinn</strong></span> (MidiNoteNumber)  (init- or control-rate args only)</pre>
         <p>
@@ -54,7 +54,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm174260"></a>
+        <a id="idm244033"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>pchmidinn</em></span> is a function that takes an i-rate or k-rate value representing a Midi note number and returns the equivalent pitch value in Csound's octave point pitch-class format. This conversion assumes that Middle C (8.00 in <span class="emphasis"><em>pch</em></span>) is Midi note number 60. Midi note number values are typically integers in the range from 0 to 127 but fractional values or values outside of this range will be interpreted consistently.
@@ -83,7 +83,7 @@
       Data concerning pitch and frequency can exist in any of the following forms:
     </p>
         <div class="table">
-          <a id="idm174280"></a>
+          <a id="idm244053"></a>
           <p class="title">
             <strong>Table 19. Pitch and Frequency Values</strong>
           </p>
@@ -149,21 +149,21 @@
         </div>
       </div>
       <div class="refsect1">
-        <a id="idm174322"></a>
+        <a id="idm244095"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the pchmidinn opcode. It uses the file <a class="ulink" href="examples/cpsmidinn.csd" target="_top"><em class="citetitle">cpsmidinn.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm174327"></a>
+          <a id="idm244100"></a>
           <p class="title">
             <strong>Example 737. Example of the pchmidinn opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm174334"></a>
+              <a id="idm244107"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="c1">; Prints a table showing the equivalents of all Midi</span>
@@ -176,39 +176,39 @@
 <span class="c1">; non-realtime and turn off sound to disk:</span>
 -n
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>
-  <span class="c1">; i-time loop to print conversion table</span>
-  i<span class="n">midiNN</span> <span class="o">=</span>   <span class="mi">0</span>
-  <span class="nl">loop1</span><span class="p">:</span>
-    i<span class="n">cps</span>  <span class="o">=</span> <span class="nb">cpsmidinn</span><span class="p">(</span>i<span class="n">midiNN</span><span class="p">)</span>
-    i<span class="n">oct</span>  <span class="o">=</span> <span class="nb">octmidinn</span><span class="p">(</span>i<span class="n">midiNN</span><span class="p">)</span>
-    i<span class="n">pch</span>  <span class="o">=</span> <span class="nb">pchmidinn</span><span class="p">(</span>i<span class="n">midiNN</span><span class="p">)</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+  </span><span class="c1">; i-time loop to print conversion table</span><span class="w">
+  </span>i<span class="n">midiNN</span><span class="w"> </span><span class="o">=</span><span class="w">   </span><span class="mi">0</span><span class="w">
+  </span><span class="nl">loop1</span><span class="p">:</span><span class="w">
+    </span>i<span class="n">cps</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">cpsmidinn</span><span class="p">(</span>i<span class="n">midiNN</span><span class="p">)</span><span class="w">
+    </span>i<span class="n">oct</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">octmidinn</span><span class="p">(</span>i<span class="n">midiNN</span><span class="p">)</span><span class="w">
+    </span>i<span class="n">pch</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">pchmidinn</span><span class="p">(</span>i<span class="n">midiNN</span><span class="p">)</span><span class="w">
             
-    <span class="nb">print</span>   i<span class="n">midiNN</span><span class="p">,</span> i<span class="n">cps</span><span class="p">,</span> i<span class="n">oct</span><span class="p">,</span> i<span class="n">pch</span>
+    </span><span class="nb">print</span><span class="w">   </span>i<span class="n">midiNN</span><span class="p">,</span><span class="w"> </span>i<span class="n">cps</span><span class="p">,</span><span class="w"> </span>i<span class="n">oct</span><span class="p">,</span><span class="w"> </span>i<span class="n">pch</span><span class="w">
       
-    i<span class="n">midiNN</span> <span class="o">=</span> i<span class="n">midiNN</span> <span class="o">+</span> <span class="mi">1</span>
-  <span class="k">if</span> <span class="p">(</span>i<span class="n">midiNN</span> <span class="o">&lt;</span> <span class="mi">128</span><span class="p">)</span> <span class="k">igoto</span> <span class="nl">loop1</span>
-<span class="kd">endin</span>
+    </span>i<span class="n">midiNN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>i<span class="n">midiNN</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span>i<span class="n">midiNN</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">128</span><span class="p">)</span><span class="w"> </span><span class="k">igoto</span><span class="w"> </span><span class="nl">loop1</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">2</span>
-  <span class="c1">; test k-rate converters</span>
-  k<span class="n">MiddleC</span>  <span class="o">=</span>   <span class="mi">60</span>
-  k<span class="n">cps</span>  <span class="o">=</span> <span class="nb">cpsmidinn</span><span class="p">(</span>k<span class="n">MiddleC</span><span class="p">)</span>
-  k<span class="n">oct</span>  <span class="o">=</span> <span class="nb">octmidinn</span><span class="p">(</span>k<span class="n">MiddleC</span><span class="p">)</span>
-  k<span class="n">pch</span>  <span class="o">=</span> <span class="nb">pchmidinn</span><span class="p">(</span>k<span class="n">MiddleC</span><span class="p">)</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">
+  </span><span class="c1">; test k-rate converters</span><span class="w">
+  </span>k<span class="n">MiddleC</span><span class="w">  </span><span class="o">=</span><span class="w">   </span><span class="mi">60</span><span class="w">
+  </span>k<span class="n">cps</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">cpsmidinn</span><span class="p">(</span>k<span class="n">MiddleC</span><span class="p">)</span><span class="w">
+  </span>k<span class="n">oct</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">octmidinn</span><span class="p">(</span>k<span class="n">MiddleC</span><span class="p">)</span><span class="w">
+  </span>k<span class="n">pch</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">pchmidinn</span><span class="p">(</span>k<span class="n">MiddleC</span><span class="p">)</span><span class="w">
             
-  <span class="nb">printks</span> <span class="s">"</span><span class="si">%d</span><span class="s"> </span><span class="si">%f</span><span class="s"> </span><span class="si">%f</span><span class="s"> </span><span class="si">%f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> k<span class="n">MiddleC</span><span class="p">,</span> k<span class="n">cps</span><span class="p">,</span> k<span class="n">oct</span><span class="p">,</span> k<span class="n">pch</span>
-<span class="kd">endin</span>
+  </span><span class="nb">printks</span><span class="w"> </span><span class="s">"</span><span class="si">%d</span><span class="s"> </span><span class="si">%f</span><span class="s"> </span><span class="si">%f</span><span class="s"> </span><span class="si">%f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span>k<span class="n">MiddleC</span><span class="p">,</span><span class="w"> </span>k<span class="n">cps</span><span class="p">,</span><span class="w"> </span>k<span class="n">oct</span><span class="p">,</span><span class="w"> </span>k<span class="n">pch</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span>
-<span class="nb">i</span><span class="mi">2</span> <span class="mi">0</span> <span class="mf">0.1</span>
-<span class="nb">e</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">0.1</span><span class="w">
+</span><span class="nb">e</span><span class="w">
 
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -218,7 +218,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm174453"></a>
+        <a id="idm244291"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="cpsmidinn.html" title="cpsmidinn"><em class="citetitle">cpsmidinn</em></a>,
@@ -233,7 +233,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm174474"></a>
+        <a id="idm244312"></a>
         <h2>Credits</h2>
         <p>Derived from original value converters by Barry Vercoe.</p>
         <p>New in version 5.07</p>

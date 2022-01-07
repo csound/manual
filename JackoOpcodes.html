@@ -107,121 +107,121 @@
     A typical scenario for the use of the Jacko opcodes would be something like this.
   </p>
       <div class="refsect1">
-        <a id="idm17021"></a>
+        <a id="idm17802"></a>
         <h2>Example</h2>
         <p>
       Here is an example of the Jacko opcodes. It uses the file <a class="ulink" href="examples/jacko.csd" target="_top"><em class="citetitle">jacko.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm17026"></a>
+          <a id="idm17807"></a>
           <p class="title">
             <strong>Example 7. Example of the Jacko opcodes.</strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
-              <a id="idm17028"></a>
+              <a id="idm17809"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 csound -m255 -M0 -+rtmidi=null -RWf --midi-key=4 --midi-velocity=5 -o jacko_test.wav
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="c1">;;;;</span>
-<span class="c1">;;;; NOTE: this csd must be run after starting "aeolus -t".</span>
-<span class="c1">;;;;</span>
+</span><span class="c1">;;;;</span><span class="w">
+</span><span class="c1">;;;; NOTE: this csd must be run after starting "aeolus -t".</span><span class="w">
+</span><span class="c1">;;;;</span><span class="w">
 
-<span class="vg">sr</span>    	   <span class="o">=</span> <span class="mi">48000</span>
-	   <span class="c1">; The control rate must be BOTH a power of 2 (for Jack)</span>
-	   <span class="c1">; AND go evenly into sr. This is about the only one that works!</span>
-<span class="vg">ksmps</span> 	   <span class="o">=</span> <span class="mi">128</span>
-<span class="vg">nchnls</span> 	   <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span> 	   <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w">    	   </span><span class="o">=</span><span class="w"> </span><span class="mi">48000</span><span class="w">
+	   </span><span class="c1">; The control rate must be BOTH a power of 2 (for Jack)</span><span class="w">
+	   </span><span class="c1">; AND go evenly into sr. This is about the only one that works!</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> 	   </span><span class="o">=</span><span class="w"> </span><span class="mi">128</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> 	   </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w"> 	   </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-	   <span class="nb">JackoInit</span>		<span class="s">"default"</span><span class="p">,</span> <span class="s">"csound"</span>
+	   </span><span class="nb">JackoInit</span><span class="w">		</span><span class="s">"default"</span><span class="p">,</span><span class="w"> </span><span class="s">"csound"</span><span class="w">
 
-	   <span class="c1">; To use ALSA midi ports, use "jackd -Xseq"</span>
-	   <span class="c1">; and use "jack_lsp -A -c" or aliases from JackInfo,</span>
-	   <span class="c1">; probably together with information from the sequencer,</span>
-	   <span class="c1">; to figure out the damn port names.</span>
+	   </span><span class="c1">; To use ALSA midi ports, use "jackd -Xseq"</span><span class="w">
+	   </span><span class="c1">; and use "jack_lsp -A -c" or aliases from JackInfo,</span><span class="w">
+	   </span><span class="c1">; probably together with information from the sequencer,</span><span class="w">
+	   </span><span class="c1">; to figure out the damn port names.</span><span class="w">
 
-	   <span class="c1">; JackoMidiInConnect   "alsa_pcm:in-131-0-Master", "midiin"</span>
-	   <span class="nb">JackoAudioInConnect</span> 	<span class="s">"aeolus:out.L"</span><span class="p">,</span> <span class="s">"leftin"</span>
-	   <span class="nb">JackoAudioInConnect</span> 	<span class="s">"aeolus:out.R"</span><span class="p">,</span> <span class="s">"rightin"</span>
-	   <span class="nb">JackoMidiOutConnect</span> 	<span class="s">"midiout"</span><span class="p">,</span> <span class="s">"aeolus:Midi/in"</span>
+	   </span><span class="c1">; JackoMidiInConnect   "alsa_pcm:in-131-0-Master", "midiin"</span><span class="w">
+	   </span><span class="nb">JackoAudioInConnect</span><span class="w"> 	</span><span class="s">"aeolus:out.L"</span><span class="p">,</span><span class="w"> </span><span class="s">"leftin"</span><span class="w">
+	   </span><span class="nb">JackoAudioInConnect</span><span class="w"> 	</span><span class="s">"aeolus:out.R"</span><span class="p">,</span><span class="w"> </span><span class="s">"rightin"</span><span class="w">
+	   </span><span class="nb">JackoMidiOutConnect</span><span class="w"> 	</span><span class="s">"midiout"</span><span class="p">,</span><span class="w"> </span><span class="s">"aeolus:Midi/in"</span><span class="w">
 
-           <span class="c1">; Note that Jack enables audio to be output to a regular</span>
- 	   <span class="c1">; Csound soundfile and, at the same time, to a sound </span>
-	   <span class="c1">; card in real time to the system client via Jack. </span>
+           </span><span class="c1">; Note that Jack enables audio to be output to a regular</span><span class="w">
+ 	   </span><span class="c1">; Csound soundfile and, at the same time, to a sound </span><span class="w">
+	   </span><span class="c1">; card in real time to the system client via Jack. </span><span class="w">
 
-       	   <span class="nb">JackoAudioOutConnect</span> <span class="s">"leftout"</span><span class="p">,</span> <span class="s">"system:playback_1"</span>
-	   <span class="nb">JackoAudioOutConnect</span> <span class="s">"rightout"</span><span class="p">,</span> <span class="s">"system:playback_2"</span>
-	   <span class="nb">JackoInfo</span>
+       	   </span><span class="nb">JackoAudioOutConnect</span><span class="w"> </span><span class="s">"leftout"</span><span class="p">,</span><span class="w"> </span><span class="s">"system:playback_1"</span><span class="w">
+	   </span><span class="nb">JackoAudioOutConnect</span><span class="w"> </span><span class="s">"rightout"</span><span class="p">,</span><span class="w"> </span><span class="s">"system:playback_2"</span><span class="w">
+	   </span><span class="nb">JackoInfo</span><span class="w">
 
-	   <span class="c1">; Turning freewheeling on seems automatically </span>
-           <span class="c1">; to turn system playback off. This is good!</span>
+	   </span><span class="c1">; Turning freewheeling on seems automatically </span><span class="w">
+           </span><span class="c1">; to turn system playback off. This is good!</span><span class="w">
 
-	   <span class="nb">JackoFreewheel</span>	<span class="mi">1</span>
-	   <span class="nb">JackoOn</span>
+	   </span><span class="nb">JackoFreewheel</span><span class="w">	</span><span class="mi">1</span><span class="w">
+	   </span><span class="nb">JackoOn</span><span class="w">
 
-	   <span class="nb">alwayson</span>		<span class="s">"jackin"</span>
+	   </span><span class="nb">alwayson</span><span class="w">		</span><span class="s">"jackin"</span><span class="w">
 
-	   <span class="kd">instr</span> <span class="nf">1</span>
-	   <span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
-i<span class="n">channel</span>   <span class="o">=</span>			<span class="vi">p1</span> <span class="o">-</span> <span class="mi">1</span>
-i<span class="n">time</span> 	   <span class="o">=</span> 			<span class="vi">p2</span>
-i<span class="n">duration</span>  <span class="o">=</span> 			<span class="vi">p3</span>
-i<span class="n">key</span> 	   <span class="o">=</span> 			<span class="vi">p4</span>
-i<span class="n">velocity</span>  <span class="o">=</span> 			<span class="vi">p5</span>
-	   <span class="nb">JackoNoteOut</span> 	<span class="s">"midiout"</span><span class="p">,</span> i<span class="n">channel</span><span class="p">,</span> i<span class="n">key</span><span class="p">,</span> i<span class="n">velocity</span>
-	   <span class="nb">print</span> 		i<span class="n">time</span><span class="p">,</span> i<span class="n">duration</span><span class="p">,</span> i<span class="n">channel</span><span class="p">,</span> i<span class="n">key</span><span class="p">,</span> i<span class="n">velocity</span>
-	   <span class="kd">endin</span>
+	   </span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+	   </span><span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="w">
+</span>i<span class="n">channel</span><span class="w">   </span><span class="o">=</span><span class="w">			</span><span class="vi">p1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span>i<span class="n">time</span><span class="w"> 	   </span><span class="o">=</span><span class="w"> 			</span><span class="vi">p2</span><span class="w">
+</span>i<span class="n">duration</span><span class="w">  </span><span class="o">=</span><span class="w"> 			</span><span class="vi">p3</span><span class="w">
+</span>i<span class="n">key</span><span class="w"> 	   </span><span class="o">=</span><span class="w"> 			</span><span class="vi">p4</span><span class="w">
+</span>i<span class="n">velocity</span><span class="w">  </span><span class="o">=</span><span class="w"> 			</span><span class="vi">p5</span><span class="w">
+	   </span><span class="nb">JackoNoteOut</span><span class="w"> 	</span><span class="s">"midiout"</span><span class="p">,</span><span class="w"> </span>i<span class="n">channel</span><span class="p">,</span><span class="w"> </span>i<span class="n">key</span><span class="p">,</span><span class="w"> </span>i<span class="n">velocity</span><span class="w">
+	   </span><span class="nb">print</span><span class="w"> 		</span>i<span class="n">time</span><span class="p">,</span><span class="w"> </span>i<span class="n">duration</span><span class="p">,</span><span class="w"> </span>i<span class="n">channel</span><span class="p">,</span><span class="w"> </span>i<span class="n">key</span><span class="p">,</span><span class="w"> </span>i<span class="n">velocity</span><span class="w">
+	   </span><span class="kd">endin</span><span class="w">
 
-	   <span class="kd">instr</span> <span class="nf">jackin</span>
-	   <span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
-	   <span class="nb">JackoTransport</span>	<span class="mi">3</span><span class="p">,</span> <span class="mf">1.0</span>
-a<span class="n">left</span> 	   <span class="nb">JackoAudioIn</span>		<span class="s">"leftin"</span>
-a<span class="n">right</span> 	   <span class="nb">JackoAudioIn</span> 	<span class="s">"rightin"</span>
+	   </span><span class="kd">instr</span><span class="w"> </span><span class="nf">jackin</span><span class="w">
+	   </span><span class="c1">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="w">
+	   </span><span class="nb">JackoTransport</span><span class="w">	</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="w">
+</span>a<span class="n">left</span><span class="w"> 	   </span><span class="nb">JackoAudioIn</span><span class="w">		</span><span class="s">"leftin"</span><span class="w">
+</span>a<span class="n">right</span><span class="w"> 	   </span><span class="nb">JackoAudioIn</span><span class="w"> 	</span><span class="s">"rightin"</span><span class="w">
 
-	   <span class="c1">; Aeolus uses MIDI controller 98 to control stops. </span>
-           <span class="c1">; Only 1 data value byte is used, not the 2 data </span>
-	   <span class="c1">; bytes often used  with NRPNs. </span>
-           <span class="c1">; The format for control mode is 01mm0ggg:</span>
-	   <span class="c1">; mm 10 to set stops, 0, ggg group (or Division, 0 based).</span>
-	   <span class="c1">; The format for stop selection is 000bbbbb:   </span>
-	   <span class="c1">; bbbbb for button number (0 based).</span>
+	   </span><span class="c1">; Aeolus uses MIDI controller 98 to control stops. </span><span class="w">
+           </span><span class="c1">; Only 1 data value byte is used, not the 2 data </span><span class="w">
+	   </span><span class="c1">; bytes often used  with NRPNs. </span><span class="w">
+           </span><span class="c1">; The format for control mode is 01mm0ggg:</span><span class="w">
+	   </span><span class="c1">; mm 10 to set stops, 0, ggg group (or Division, 0 based).</span><span class="w">
+	   </span><span class="c1">; The format for stop selection is 000bbbbb:   </span><span class="w">
+	   </span><span class="c1">; bbbbb for button number (0 based).</span><span class="w">
 
-	   <span class="c1">; Mode to enable stops for Divison I: b1100010 (98 </span>
-           <span class="c1">; [this controller VALUE is a pure coincidence]).</span>
+	   </span><span class="c1">; Mode to enable stops for Divison I: b1100010 (98 </span><span class="w">
+           </span><span class="c1">; [this controller VALUE is a pure coincidence]).</span><span class="w">
 
-	   <span class="nb">JackoMidiOut</span>          <span class="s">"midiout"</span><span class="p">,</span> <span class="mi">176</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">98</span> 
+	   </span><span class="nb">JackoMidiOut</span><span class="w">          </span><span class="s">"midiout"</span><span class="p">,</span><span class="w"> </span><span class="mi">176</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">98</span><span class="p">,</span><span class="w"> </span><span class="mi">98</span><span class="w"> 
 
-	   <span class="c1">; Stops: Principal 8 (0), Principal 4 (1) , Flote 8 (8) , Flote 2 (10)</span>
+	   </span><span class="c1">; Stops: Principal 8 (0), Principal 4 (1) , Flote 8 (8) , Flote 2 (10)</span><span class="w">
 
-	   <span class="nb">JackoMidiOut</span>          <span class="s">"midiout"</span><span class="p">,</span> <span class="mi">176</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">0</span>
-	   <span class="nb">JackoMidiOut</span>          <span class="s">"midiout"</span><span class="p">,</span> <span class="mi">176</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">1</span>
-	   <span class="nb">JackoMidiOut</span>          <span class="s">"midiout"</span><span class="p">,</span> <span class="mi">176</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">8</span>
-	   <span class="nb">JackoMidiOut</span>          <span class="s">"midiout"</span><span class="p">,</span> <span class="mi">176</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">10</span>
+	   </span><span class="nb">JackoMidiOut</span><span class="w">          </span><span class="s">"midiout"</span><span class="p">,</span><span class="w"> </span><span class="mi">176</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">98</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">
+	   </span><span class="nb">JackoMidiOut</span><span class="w">          </span><span class="s">"midiout"</span><span class="p">,</span><span class="w"> </span><span class="mi">176</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">98</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+	   </span><span class="nb">JackoMidiOut</span><span class="w">          </span><span class="s">"midiout"</span><span class="p">,</span><span class="w"> </span><span class="mi">176</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">98</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w">
+	   </span><span class="nb">JackoMidiOut</span><span class="w">          </span><span class="s">"midiout"</span><span class="p">,</span><span class="w"> </span><span class="mi">176</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">98</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="w">
 
-	   <span class="c1">; Sends audio coming in from Aeolus out</span>
-	   <span class="c1">; not only to the Jack system out (sound card),</span>
-	   <span class="c1">; but also to the output soundfile.</span>
-           <span class="c1">; Note that in freewheeling mode, "leftout"</span>
-           <span class="c1">; and "rightout" simply go silent.</span>
+	   </span><span class="c1">; Sends audio coming in from Aeolus out</span><span class="w">
+	   </span><span class="c1">; not only to the Jack system out (sound card),</span><span class="w">
+	   </span><span class="c1">; but also to the output soundfile.</span><span class="w">
+           </span><span class="c1">; Note that in freewheeling mode, "leftout"</span><span class="w">
+           </span><span class="c1">; and "rightout" simply go silent.</span><span class="w">
 
- 	   <span class="nb">JackoAudioOut</span> 	<span class="s">"leftout"</span><span class="p">,</span> a<span class="n">left</span>
-	   <span class="nb">JackoAudioOut</span> 	<span class="s">"rightout"</span><span class="p">,</span> a<span class="n">right</span>
-	   <span class="nb">outs</span>  		a<span class="n">right</span><span class="p">,</span> a<span class="n">left</span>
-	   <span class="kd">endin</span>
+ 	   </span><span class="nb">JackoAudioOut</span><span class="w"> 	</span><span class="s">"leftout"</span><span class="p">,</span><span class="w"> </span>a<span class="n">left</span><span class="w">
+	   </span><span class="nb">JackoAudioOut</span><span class="w"> 	</span><span class="s">"rightout"</span><span class="p">,</span><span class="w"> </span>a<span class="n">right</span><span class="w">
+	   </span><span class="nb">outs</span><span class="w">  		</span>a<span class="n">right</span><span class="p">,</span><span class="w"> </span>a<span class="n">left</span><span class="w">
+	   </span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">f</span> <span class="mi">0</span> <span class="mi">30</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">30</span> <span class="mi">60</span> <span class="mi">60</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">30</span> <span class="mi">64</span> <span class="mi">60</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">3</span> <span class="mi">30</span> <span class="mi">71</span> <span class="mi">60</span>
-<span class="nb">e</span> <span class="mi">2</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">30</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="mi">60</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="mi">60</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="mi">71</span><span class="w"> </span><span class="mi">60</span><span class="w">
+</span><span class="nb">e</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -231,7 +231,7 @@ a<span class="n">right</span> 	   <span class="nb">JackoAudioIn</span> 	<span cl
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm17248"></a>
+        <a id="idm18204"></a>
         <h2>Credits</h2>
         <p>By: Michael Gogins 2010</p>
       </div>

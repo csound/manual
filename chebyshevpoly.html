@@ -39,19 +39,19 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm41304"></a>
+        <a id="idm53254"></a>
         <h2>Description</h2>
         <p>
       The <span class="emphasis"><em>chebyshevpoly</em></span> opcode calculates the value of a polynomial expression with a single a-rate input variable that is made up of a linear combination of the first N Chebyshev polynomials of the first kind.  Each Chebyshev polynomial, Tn(x), is weighted by a k-rate coefficient, <span class="emphasis"><em>kn</em></span>, so that the opcode is calculating a sum of any number of terms in the form <span class="emphasis"><em>kn*Tn(x)</em></span>.  Thus, the <span class="emphasis"><em>chebyshevpoly</em></span> opcode allows for the waveshaping of an audio signal with a <span class="emphasis"><em>dynamic</em></span> transfer function that gives precise control over the harmonic content of the output.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm41312"></a>
+        <a id="idm53262"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">aout <span class="command"><strong>chebyshevpoly</strong></span> ain, k0 [, k1 [, k2 [...]]]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm41316"></a>
+        <a id="idm53266"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>ain</em></span> --  the input signal used as the independent variable of the Chebyshev polynomials ("x").
@@ -98,7 +98,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm41340"></a>
+        <a id="idm53290"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="polynomial.html" title="polynomial"><em class="citetitle">polynomial</em></a>, 
@@ -107,20 +107,20 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm41349"></a>
+        <a id="idm53299"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the chebyshevpoly opcode. It uses the file <a class="ulink" href="examples/chebyshevpoly.csd" target="_top"><em class="citetitle">chebyshevpoly.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm41354"></a>
+          <a id="idm53304"></a>
           <p class="title">
             <strong>Example 134. Example of the chebyshevpoly opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm41361"></a>
+              <a id="idm53311"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -130,45 +130,45 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o chebyshevpoly.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
 
-<span class="c1">; time-varying mixture of first six harmonics</span>
-<span class="kd">instr</span> <span class="nf">1</span>
-	<span class="c1">; According to the GEN13 manual entry,</span>
-	<span class="c1">; the pattern + - - + + - - for the signs of </span>
-	<span class="c1">; the chebyshev coefficients has nice properties.</span>
+</span><span class="c1">; time-varying mixture of first six harmonics</span><span class="w">
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+	</span><span class="c1">; According to the GEN13 manual entry,</span><span class="w">
+	</span><span class="c1">; the pattern + - - + + - - for the signs of </span><span class="w">
+	</span><span class="c1">; the chebyshev coefficients has nice properties.</span><span class="w">
 	
-	<span class="c1">; these six lines control the relative powers of the harmonics</span>
-	k<span class="n">1</span>         <span class="nb">line</span>           <span class="mf">1.0</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mf">0.0</span>
-	k<span class="n">2</span>         <span class="nb">line</span>           <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mf">0.0</span>
-	k<span class="n">3</span>         <span class="nb">line</span>           <span class="o">-</span><span class="mf">0.333</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span>
-	k<span class="n">4</span>         <span class="nb">line</span>           <span class="mf">0.0</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mf">0.5</span>
-	k<span class="n">5</span>         <span class="nb">line</span>           <span class="mf">0.0</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mf">0.7</span>
-	k<span class="n">6</span>         <span class="nb">line</span>           <span class="mf">0.0</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span>
+	</span><span class="c1">; these six lines control the relative powers of the harmonics</span><span class="w">
+	</span>k<span class="n">1</span><span class="w">         </span><span class="nb">line</span><span class="w">           </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="w">
+	</span>k<span class="n">2</span><span class="w">         </span><span class="nb">line</span><span class="w">           </span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="w">
+	</span>k<span class="n">3</span><span class="w">         </span><span class="nb">line</span><span class="w">           </span><span class="o">-</span><span class="mf">0.333</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1.0</span><span class="w">
+	</span>k<span class="n">4</span><span class="w">         </span><span class="nb">line</span><span class="w">           </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="w">
+	</span>k<span class="n">5</span><span class="w">         </span><span class="nb">line</span><span class="w">           </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mf">0.7</span><span class="w">
+	</span>k<span class="n">6</span><span class="w">         </span><span class="nb">line</span><span class="w">           </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1.0</span><span class="w">
 	
-	<span class="c1">; play the sine wave at a frequency of 256 Hz with amplitude = 1.0</span>
-	a<span class="n">x</span>         <span class="nb">oscili</span>         <span class="mi">1</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">1</span>
+	</span><span class="c1">; play the sine wave at a frequency of 256 Hz with amplitude = 1.0</span><span class="w">
+	</span>a<span class="n">x</span><span class="w">         </span><span class="nb">oscili</span><span class="w">         </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">256</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
 	
-	<span class="c1">; waveshape it</span>
-	a<span class="n">y</span>         <span class="nb">chebyshevpoly</span>  a<span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> k<span class="n">1</span><span class="p">,</span> k<span class="n">2</span><span class="p">,</span> k<span class="n">3</span><span class="p">,</span> k<span class="n">4</span><span class="p">,</span> k<span class="n">5</span><span class="p">,</span> k<span class="n">6</span>
+	</span><span class="c1">; waveshape it</span><span class="w">
+	</span>a<span class="n">y</span><span class="w">         </span><span class="nb">chebyshevpoly</span><span class="w">  </span>a<span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span>k<span class="n">1</span><span class="p">,</span><span class="w"> </span>k<span class="n">2</span><span class="p">,</span><span class="w"> </span>k<span class="n">3</span><span class="p">,</span><span class="w"> </span>k<span class="n">4</span><span class="p">,</span><span class="w"> </span>k<span class="n">5</span><span class="p">,</span><span class="w"> </span>k<span class="n">6</span><span class="w">
 	
-	<span class="c1">; avoid clicks, scale final amplitude, and output</span>
-	a<span class="n">declick</span>   <span class="nb">linseg</span>         <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="vi">p3</span> <span class="o">-</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.0</span>
-	           <span class="nb">outs</span>           a<span class="n">y</span> <span class="o">*</span> a<span class="n">declick</span> <span class="o">*</span> <span class="mi">10000</span><span class="p">,</span> a<span class="n">y</span> <span class="o">*</span> a<span class="n">declick</span> <span class="o">*</span> <span class="mi">10000</span>
-<span class="kd">endin</span>
+	</span><span class="c1">; avoid clicks, scale final amplitude, and output</span><span class="w">
+	</span>a<span class="n">declick</span><span class="w">   </span><span class="nb">linseg</span><span class="w">         </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="w">
+	           </span><span class="nb">outs</span><span class="w">           </span>a<span class="n">y</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>a<span class="n">declick</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w"> </span>a<span class="n">y</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>a<span class="n">declick</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">10000</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">f</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">32768</span> <span class="mi">10</span> <span class="mi">1</span>	<span class="c1">; a sine wave</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">f</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">32768</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w">	</span><span class="c1">; a sine wave</span><span class="w">
 
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">5</span>
-<span class="nb">e</span>
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="nb">e</span><span class="w">
 
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -178,7 +178,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm41507"></a>
+        <a id="idm53556"></a>
         <h2>Credits</h2>
         <p>
       </p>

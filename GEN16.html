@@ -39,19 +39,19 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm289617"></a>
+        <a id="idm410878"></a>
         <h2>Description</h2>
         <p>
       Creates a table from <span class="emphasis"><em>beg</em></span> value to <span class="emphasis"><em>end</em></span> value of <span class="emphasis"><em>dur</em></span> steps.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm289623"></a>
+        <a id="idm410884"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>f</strong></span> # time size 16 val1 dur1 type1 val2 [dur2 type2 val3 ... typeX valN]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm289627"></a>
+        <a id="idm410888"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>size</em></span> -- number of points in the table. Must
@@ -125,15 +125,15 @@ beg + (end - beg) * (1 - exp( i*type/(dur-1) )) / (1 - exp(type))<
         </div>
       </div>
       <div class="refsect1">
-        <a id="idm289662"></a>
+        <a id="idm410923"></a>
         <div class="example">
-          <a id="idm289663"></a>
+          <a id="idm410924"></a>
           <p class="title">
-            <strong>Example 1291. A simple example of the GEN16 routine.</strong>
+            <strong>Example 1292. A simple example of the GEN16 routine.</strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
-              <a id="idm289665"></a>
+              <a id="idm410926"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -143,51 +143,51 @@ beg + (end - beg) * (1 - exp( i*type/(dur-1) )) / (1 - exp(type))<
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o gen16.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">128</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">128</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>
-  k<span class="n">cps</span> <span class="nb">init</span> <span class="mi">1</span><span class="o">/</span><span class="vi">p3</span>
-  k<span class="n">ndx</span> <span class="nb">phasor</span> k<span class="n">cps</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+  </span>k<span class="n">cps</span><span class="w"> </span><span class="nb">init</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="vi">p3</span><span class="w">
+  </span>k<span class="n">ndx</span><span class="w"> </span><span class="nb">phasor</span><span class="w"> </span>k<span class="n">cps</span><span class="w">
 
-  i<span class="n">fn</span> <span class="o">=</span> <span class="vi">p4</span>
-  i<span class="n">xmode</span> <span class="o">=</span> <span class="mi">1</span>
-  k<span class="n">val</span> <span class="nb">table</span> k<span class="n">ndx</span><span class="p">,</span> i<span class="n">fn</span><span class="p">,</span> i<span class="n">xmode</span>
+  </span>i<span class="n">fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">p4</span><span class="w">
+  </span>i<span class="n">xmode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span>k<span class="n">val</span><span class="w"> </span><span class="nb">table</span><span class="w"> </span>k<span class="n">ndx</span><span class="p">,</span><span class="w"> </span>i<span class="n">fn</span><span class="p">,</span><span class="w"> </span>i<span class="n">xmode</span><span class="w">
 
-  i<span class="n">basefreq</span> <span class="o">=</span> <span class="mi">440</span>
-  k<span class="n">freq</span> <span class="o">=</span> k<span class="n">val</span> <span class="o">*</span> i<span class="n">basefreq</span>
-  a<span class="n">1</span> <span class="nb">oscil</span> <span class="mi">20000</span><span class="p">,</span> i<span class="n">basefreq</span> <span class="o">+</span> k<span class="n">freq</span><span class="p">,</span> <span class="mi">1</span>
-  <span class="nb">out</span> a<span class="n">1</span>
-<span class="kd">endin</span>
-
-
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
+  </span>i<span class="n">basefreq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">440</span><span class="w">
+  </span>k<span class="n">freq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>k<span class="n">val</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>i<span class="n">basefreq</span><span class="w">
+  </span>a<span class="n">1</span><span class="w"> </span><span class="nb">oscil</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w"> </span>i<span class="n">basefreq</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>k<span class="n">freq</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="nb">out</span><span class="w"> </span>a<span class="n">1</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
 
-<span class="nb">f</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">16384</span> <span class="mi">10</span> <span class="mi">1</span>
-
-<span class="nb">f</span> <span class="mi">2</span> <span class="mi">0</span> <span class="mi">1024</span> <span class="mi">16</span> <span class="mi">1</span> <span class="mi">1024</span> <span class="mi">1</span> <span class="mi">0</span>
-<span class="nb">f</span> <span class="mi">3</span> <span class="mi">0</span> <span class="mi">1024</span> <span class="mi">16</span> <span class="mi">1</span> <span class="mi">1024</span> <span class="mi">2</span> <span class="mi">0</span>
-<span class="nb">f</span> <span class="mi">4</span> <span class="mi">0</span> <span class="mi">1024</span> <span class="mi">16</span> <span class="mi">1</span> <span class="mi">1024</span> <span class="mi">10</span> <span class="mi">0</span>
-<span class="nb">f</span> <span class="mi">5</span> <span class="mi">0</span> <span class="mi">1024</span> <span class="mi">16</span> <span class="mi">1</span> <span class="mi">1024</span> <span class="o">-</span><span class="mi">1</span> <span class="mi">0</span>
-<span class="nb">f</span> <span class="mi">6</span> <span class="mi">0</span> <span class="mi">1024</span> <span class="mi">16</span> <span class="mi">1</span> <span class="mi">1024</span> <span class="o">-</span><span class="mi">2</span> <span class="mi">0</span>
-<span class="nb">f</span> <span class="mi">7</span> <span class="mi">0</span> <span class="mi">1024</span> <span class="mi">16</span> <span class="mi">1</span> <span class="mi">1024</span> <span class="o">-</span><span class="mi">10</span> <span class="mi">0</span>
-
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">2</span> <span class="mi">2</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="o">+</span> <span class="o">.</span> <span class="mi">3</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="o">+</span> <span class="o">.</span> <span class="mi">4</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="o">+</span> <span class="o">.</span> <span class="mi">5</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="o">+</span> <span class="o">.</span> <span class="mi">6</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="o">+</span> <span class="o">.</span> <span class="mi">7</span>
-
-<span class="nb">e</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
 
 
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">16384</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w">
+
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="o">-</span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="o">-</span><span class="mi">10</span><span class="w"> </span><span class="mi">0</span><span class="w">
+
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">3</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">4</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">6</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">7</span><span class="w">
+
+</span><span class="nb">e</span><span class="w">
+
+
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -196,7 +196,7 @@ beg + (end - beg) * (1 - exp( i*type/(dur-1) )) / (1 - exp(type))<
         <br class="example-break" />
       </div>
       <div class="refsect1">
-        <a id="idm289826"></a>
+        <a id="idm411226"></a>
         <h2>Credits</h2>
         <p>
       </p>

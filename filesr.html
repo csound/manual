@@ -39,19 +39,19 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm72789"></a>
+        <a id="idm98805"></a>
         <h2>Description</h2>
         <p>
       Returns the sample rate of a sound file.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm72792"></a>
+        <a id="idm98808"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ir <span class="command"><strong>filesr</strong></span> ifilcod [, iallowraw]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm72796"></a>
+        <a id="idm98812"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>ifilcod</em></span> -- sound file to be queried
@@ -61,14 +61,14 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm72802"></a>
+        <a id="idm98818"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>filesr</em></span> returns the sample rate of the sound file <span class="emphasis"><em>ifilcod</em></span>. <span class="emphasis"><em>filesr</em></span> can return the sample rate of convolve and PVOC files if the <span class="emphasis"><em>iallowraw</em></span> flag is not zero (it is non-zero by default).
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm72809"></a>
+        <a id="idm98825"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the filesr opcode. It uses the file <a class="ulink" href="examples/filesr.csd" target="_top"><em class="citetitle">filesr.csd</em></a>,
@@ -76,14 +76,14 @@ and <a class="ulink" href="examples/beats.wav" target="_top"><em class="citetitl
 
       </p>
         <div class="example">
-          <a id="idm72816"></a>
+          <a id="idm98832"></a>
           <p class="title">
             <strong>Example 300. Example of the filesr opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm72823"></a>
+              <a id="idm98839"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span> 
 <span class="nt">&lt;CsOptions&gt;</span> 
@@ -93,36 +93,36 @@ and <a class="ulink" href="examples/beats.wav" target="_top"><em class="citetitl
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o filesr.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="c1">;after an example from Jonathan Murphy</span>
+</span><span class="c1">;after an example from Jonathan Murphy</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span> 
-<span class="c1">;load sound into an ftable</span>
-  S<span class="n">file</span>	    <span class="nb">strcpy</span>    <span class="s">"beats.wav"</span> 
-  i<span class="n">len</span>	    <span class="nb">filelen</span>   S<span class="n">file</span> 
-  i<span class="n">sr</span>	    <span class="nb">filesr</span>    S<span class="n">file</span> 
-  i<span class="n">samps</span>    <span class="o">=</span>  i<span class="n">len</span> <span class="o">*</span> i<span class="n">sr</span> 
-<span class="c1">;adjust the length of the table to be a power of two closest</span>
-<span class="c1">;to the actual size of the sound </span>
-  i<span class="n">size</span>	    <span class="nb">init</span>      <span class="mi">1</span> 
-<span class="nl">loop</span><span class="p">:</span> 
-  i<span class="n">size</span>	    <span class="o">=</span>  i<span class="n">size</span> <span class="o">*</span> <span class="mi">2</span> 
-  <span class="k">if</span> <span class="p">(</span>i<span class="n">size</span> <span class="o">&lt;</span> i<span class="n">samps</span><span class="p">)</span> <span class="k">igoto</span> <span class="nl">loop</span> 
-  i<span class="n">tab</span>	    <span class="nb">ftgen</span>     <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> i<span class="n">size</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> S<span class="n">file</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> 
-<span class="nb">prints</span>  <span class="s">"sample rate = </span><span class="si">%f</span><span class="s">, size = </span><span class="si">%f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> i<span class="n">sr</span><span class="p">,</span> i<span class="n">size</span> <span class="c1">;prints them</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w"> 
+</span><span class="c1">;load sound into an ftable</span><span class="w">
+  </span>S<span class="n">file</span><span class="w">	    </span><span class="nb">strcpy</span><span class="w">    </span><span class="s">"beats.wav"</span><span class="w"> 
+  </span>i<span class="n">len</span><span class="w">	    </span><span class="nb">filelen</span><span class="w">   </span>S<span class="n">file</span><span class="w"> 
+  </span>i<span class="n">sr</span><span class="w">	    </span><span class="nb">filesr</span><span class="w">    </span>S<span class="n">file</span><span class="w"> 
+  </span>i<span class="n">samps</span><span class="w">    </span><span class="o">=</span><span class="w">  </span>i<span class="n">len</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>i<span class="n">sr</span><span class="w"> 
+</span><span class="c1">;adjust the length of the table to be a power of two closest</span><span class="w">
+</span><span class="c1">;to the actual size of the sound </span><span class="w">
+  </span>i<span class="n">size</span><span class="w">	    </span><span class="nb">init</span><span class="w">      </span><span class="mi">1</span><span class="w"> 
+</span><span class="nl">loop</span><span class="p">:</span><span class="w"> 
+  </span>i<span class="n">size</span><span class="w">	    </span><span class="o">=</span><span class="w">  </span>i<span class="n">size</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="w"> 
+  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span>i<span class="n">size</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span>i<span class="n">samps</span><span class="p">)</span><span class="w"> </span><span class="k">igoto</span><span class="w"> </span><span class="nl">loop</span><span class="w"> 
+  </span>i<span class="n">tab</span><span class="w">	    </span><span class="nb">ftgen</span><span class="w">     </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span>i<span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>S<span class="n">file</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> 
+</span><span class="nb">prints</span><span class="w">  </span><span class="s">"sample rate = </span><span class="si">%f</span><span class="s">, size = </span><span class="si">%f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span>i<span class="n">sr</span><span class="p">,</span><span class="w"> </span>i<span class="n">size</span><span class="w"> </span><span class="c1">;prints them</span><span class="w">
 
-<span class="kd">endin</span> 
-<span class="nt">&lt;/CsInstruments&gt;</span> 
-<span class="nt">&lt;CsScore&gt;</span> 
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">2</span>
-<span class="nb">e</span> 
-<span class="nt">&lt;/CsScore&gt;</span> 
+</span><span class="kd">endin</span><span class="w"> 
+</span><span class="nt">&lt;/CsInstruments&gt;</span> 
+<span class="nt">&lt;CsScore&gt;</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="nb">e</span><span class="w"> 
+</span><span class="nt">&lt;/CsScore&gt;</span> 
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span> 
 </pre>
             </div>
@@ -139,7 +139,7 @@ sample rate = 44100.000000, size = 131072.000000
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm72926"></a>
+        <a id="idm99011"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="filebit.html" title="filebit"><em class="citetitle">filebit</em></a>,
@@ -149,7 +149,7 @@ sample rate = 44100.000000, size = 131072.000000
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm72937"></a>
+        <a id="idm99022"></a>
         <h2>Credits</h2>
         <p>
       </p>

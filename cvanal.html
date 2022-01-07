@@ -39,20 +39,20 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm308455"></a>
+        <a id="idm437793"></a>
         <h2>Description</h2>
         <p>
       Impulse Response Fourier Analysis for <a class="link" href="convolve.html" title="convolve"><em class="citetitle">convolve</em></a> operator
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm308460"></a>
+        <a id="idm437798"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>csound -U cvanal</strong></span> [flags] infilename outfilename</pre>
         <pre class="synopsis"><span class="command"><strong>cvanal</strong></span> [flags] infilename outfilename</pre>
       </div>
       <div class="refsect1">
-        <a id="idm308466"></a>
+        <a id="idm437804"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>cvanal</em></span> -- converts a soundfile into a single Fourier transform frame. The output file can be used by the <span class="emphasis"><em>convolve</em></span> operator to perform Fast Convolution between an input signal and the original impulse response. Analysis is conditioned by the flags below. A space is optional between the flag and its argument.
@@ -75,7 +75,7 @@
     </p>
       </div>
       <div class="refsect2">
-        <a id="idm308481"></a>
+        <a id="idm437819"></a>
         <h3>Files</h3>
         <p>
         The output file has a special <span class="emphasis"><em>convolve</em></span> header, containing details of the source audio file. The analysis data is stored as <span class="quote">“<span class="quote">float</span>”</span>, in rectangular (real/imaginary) form.
@@ -99,7 +99,7 @@
         </div>
       </div>
       <div class="refsect1">
-        <a id="idm308490"></a>
+        <a id="idm437828"></a>
         <h2>Examples</h2>
         <p>
 
@@ -117,14 +117,14 @@
       Here is an example of the cvanal utility. It uses the file <a class="ulink" href="examples/cvanal.csd" target="_top"><em class="citetitle">cvanal.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm308501"></a>
+          <a id="idm437839"></a>
           <p class="title">
-            <strong>Example 1349. Example of the cvanal utility.</strong>
+            <strong>Example 1350. Example of the cvanal utility.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm308508"></a>
+              <a id="idm437846"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -133,52 +133,52 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o cvanal.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="c1">; by Menno Knevel 2021</span>
+</span><span class="c1">; by Menno Knevel 2021</span><span class="w">
 
-gi<span class="n">len</span>  <span class="nb">filelen</span> <span class="s">"rv_stereo.wav"</span>	    <span class="c1">; get length of impulse soundfile</span>
+</span>gi<span class="n">len</span><span class="w">  </span><span class="nb">filelen</span><span class="w"> </span><span class="s">"rv_stereo.wav"</span><span class="w">	    </span><span class="c1">; get length of impulse soundfile</span><span class="w">
 
-<span class="c1">; analyze sound file and output result to 3 convolve files</span>
-i<span class="n">res1</span> <span class="nb">system_i</span> <span class="mi">1</span><span class="p">,</span><span class="s">{{ cvanal rv_stereo.wav rv_stereo1.con }}</span>                  <span class="c1">; default settings</span>
-i<span class="n">res2</span> <span class="nb">system_i</span> <span class="mi">1</span><span class="p">,</span><span class="s">{{ cvanal -d.15 rv_stereo.wav rv_stereo2.con }}</span>            <span class="c1">; use only first portion</span>
-i<span class="n">res3</span> <span class="nb">system_i</span> <span class="mi">1</span><span class="p">,</span><span class="s">{{ cvanal -b.25 -d.001 rv_stereo.wav rv_stereo3.con }}</span>    <span class="c1">; take very short portion from the end</span>
+</span><span class="c1">; analyze sound file and output result to 3 convolve files</span><span class="w">
+</span>i<span class="n">res1</span><span class="w"> </span><span class="nb">system_i</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="s">{{ cvanal rv_stereo.wav rv_stereo1.con }}</span><span class="w">                  </span><span class="c1">; default settings</span><span class="w">
+</span>i<span class="n">res2</span><span class="w"> </span><span class="nb">system_i</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="s">{{ cvanal -d.15 rv_stereo.wav rv_stereo2.con }}</span><span class="w">            </span><span class="c1">; use only first portion</span><span class="w">
+</span>i<span class="n">res3</span><span class="w"> </span><span class="nb">system_i</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="s">{{ cvanal -b.25 -d.001 rv_stereo.wav rv_stereo3.con }}</span><span class="w">    </span><span class="c1">; take very short portion from the end</span><span class="w">
 
 
-<span class="kd">instr</span> <span class="nf">1</span> <span class="c1">; untreated signal</span>
-a<span class="n">sig</span>    <span class="nb">diskin2</span>   <span class="s">"beats.wav"</span><span class="p">,</span> <span class="mi">1</span>
-<span class="nb">prints</span>  <span class="s">"</span><span class="se">\n</span><span class="s">---***YOU NOW HEAR THE UNTREATED SOUND SAMPLE***---</span><span class="se">\n</span><span class="s">"</span>
-<span class="nb">outs</span>    a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
-<span class="kd">endin</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w"> </span><span class="c1">; untreated signal</span><span class="w">
+</span>a<span class="n">sig</span><span class="w">    </span><span class="nb">diskin2</span><span class="w">   </span><span class="s">"beats.wav"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="nb">prints</span><span class="w">  </span><span class="s">"</span><span class="se">\n</span><span class="s">---***YOU NOW HEAR THE UNTREATED SOUND SAMPLE***---</span><span class="se">\n</span><span class="s">"</span><span class="w">
+</span><span class="nb">outs</span><span class="w">    </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">2</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">
 
-<span class="nb">prints</span>  <span class="s">"</span><span class="se">\n</span><span class="s">---***YOU NOW HEAR THE RESULT OF THIS ANALYZED FILE:***---</span><span class="se">\n</span><span class="s">"</span>
-<span class="nb">prints</span> <span class="s">"--**used duration of impulse file = </span><span class="si">%5.3f</span><span class="s"> seconds (total =</span><span class="si">%5.2f</span><span class="s">)**--</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> gi<span class="n">len</span>
+</span><span class="nb">prints</span><span class="w">  </span><span class="s">"</span><span class="se">\n</span><span class="s">---***YOU NOW HEAR THE RESULT OF THIS ANALYZED FILE:***---</span><span class="se">\n</span><span class="s">"</span><span class="w">
+</span><span class="nb">prints</span><span class="w"> </span><span class="s">"--**used duration of impulse file = </span><span class="si">%5.3f</span><span class="s"> seconds (total =</span><span class="si">%5.2f</span><span class="s">)**--</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="vi">p5</span><span class="p">,</span><span class="w"> </span>gi<span class="n">len</span><span class="w">
 
-a<span class="n">dry</span>    <span class="nb">diskin2</span> <span class="s">"beats.wav"</span>                 <span class="c1">; input (dry) audio</span>
-a<span class="n">wet1</span><span class="p">,</span> a<span class="n">wet2</span> <span class="nb">convolve</span> a<span class="n">dry</span><span class="o">*</span><span class="mf">.8</span><span class="p">,</span> <span class="vi">p4</span>           <span class="c1">; stereo convolved (wet) audio</span>
-a<span class="n">wet1</span>  <span class="o">*=</span>  <span class="vi">p6</span>                               <span class="c1">; scale amplitude of impulse sound, Left</span>
-a<span class="n">wet2</span>  <span class="o">*=</span>  <span class="vi">p6</span>                               <span class="c1">; &amp; Right channel</span>
-a<span class="n">drydel</span> <span class="nb">delay</span>   a<span class="n">dry</span><span class="p">,</span> <span class="vi">p5</span>                    <span class="c1">; delay dry signal to align it with convolved signal</span>
-<span class="nb">outs</span>    <span class="p">(</span>a<span class="n">drydel</span><span class="o">+</span>a<span class="n">wet1</span><span class="p">)</span><span class="o">*</span><span class="mf">.8</span><span class="p">,(</span>a<span class="n">drydel</span><span class="o">+</span>a<span class="n">wet2</span><span class="p">)</span><span class="o">*</span><span class="mf">.8</span> <span class="c1">; mix wet &amp; dry signals </span>
-<span class="kd">endin</span>
+</span>a<span class="n">dry</span><span class="w">    </span><span class="nb">diskin2</span><span class="w"> </span><span class="s">"beats.wav"</span><span class="w">                 </span><span class="c1">; input (dry) audio</span><span class="w">
+</span>a<span class="n">wet1</span><span class="p">,</span><span class="w"> </span>a<span class="n">wet2</span><span class="w"> </span><span class="nb">convolve</span><span class="w"> </span>a<span class="n">dry</span><span class="o">*</span><span class="mf">.8</span><span class="p">,</span><span class="w"> </span><span class="vi">p4</span><span class="w">           </span><span class="c1">; stereo convolved (wet) audio</span><span class="w">
+</span>a<span class="n">wet1</span><span class="w">  </span><span class="o">*=</span><span class="w">  </span><span class="vi">p6</span><span class="w">                               </span><span class="c1">; scale amplitude of impulse sound, Left</span><span class="w">
+</span>a<span class="n">wet2</span><span class="w">  </span><span class="o">*=</span><span class="w">  </span><span class="vi">p6</span><span class="w">                               </span><span class="c1">; &amp; Right channel</span><span class="w">
+</span>a<span class="n">drydel</span><span class="w"> </span><span class="nb">delay</span><span class="w">   </span>a<span class="n">dry</span><span class="p">,</span><span class="w"> </span><span class="vi">p5</span><span class="w">                    </span><span class="c1">; delay dry signal to align it with convolved signal</span><span class="w">
+</span><span class="nb">outs</span><span class="w">    </span><span class="p">(</span>a<span class="n">drydel</span><span class="o">+</span>a<span class="n">wet1</span><span class="p">)</span><span class="o">*</span><span class="mf">.8</span><span class="p">,(</span>a<span class="n">drydel</span><span class="o">+</span>a<span class="n">wet2</span><span class="p">)</span><span class="o">*</span><span class="mf">.8</span><span class="w"> </span><span class="c1">; mix wet &amp; dry signals </span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
 
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">1</span> <span class="mi">2</span>          <span class="c1">; untreated signal</span>
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w">          </span><span class="c1">; untreated signal</span><span class="w">
 
-<span class="nb">i</span><span class="mi">2</span> <span class="mi">4</span> <span class="mi">3</span>  <span class="s">"rv_stereo1.con"</span>    <span class="mf">0.39</span>    <span class="mf">.01</span>	<span class="c1">; use total impulse</span>
-<span class="nb">i</span><span class="mi">2</span> <span class="mi">8</span> <span class="mi">3</span>  <span class="s">"rv_stereo2.con"</span>    <span class="mf">0.15</span>    <span class="mf">.01</span>	<span class="c1">; first portion of impulse</span>
-<span class="nb">i</span><span class="mi">2</span> <span class="mi">12</span> <span class="mi">3</span> <span class="s">"rv_stereo3.con"</span>    <span class="mf">0.001</span>    <span class="mi">1</span>	<span class="c1">; very short portion of impulse, starting from 0.25 sec, &amp; scale amp</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">3</span><span class="w">  </span><span class="s">"rv_stereo1.con"</span><span class="w">    </span><span class="mf">0.39</span><span class="w">    </span><span class="mf">.01</span><span class="w">	</span><span class="c1">; use total impulse</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="mi">3</span><span class="w">  </span><span class="s">"rv_stereo2.con"</span><span class="w">    </span><span class="mf">0.15</span><span class="w">    </span><span class="mf">.01</span><span class="w">	</span><span class="c1">; first portion of impulse</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="s">"rv_stereo3.con"</span><span class="w">    </span><span class="mf">0.001</span><span class="w">    </span><span class="mi">1</span><span class="w">	</span><span class="c1">; very short portion of impulse, starting from 0.25 sec, &amp; scale amp</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -188,7 +188,7 @@ a<span class="n">drydel</span> <span class="nb">delay</span>   a<span class="n">
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm308672"></a>
+        <a id="idm438116"></a>
         <h2>Credits</h2>
         <p>Author: Greg Sullivan</p>
         <p>Based on algorithm given in <span class="emphasis"><em>Elements Of Computer Music</em></span>, by F. Richard Moore.</p>

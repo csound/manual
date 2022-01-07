@@ -39,7 +39,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm47376"></a>
+        <a id="idm62264"></a>
         <h2>Description</h2>
         <p>
       The <span class="emphasis"><em>copyf2array</em></span> opcode takes an f-table and
@@ -47,12 +47,12 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm47380"></a>
+        <a id="idm62268"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>copyf2array</strong></span> tab, kftbl</pre>
       </div>
       <div class="refsect1">
-        <a id="idm47384"></a>
+        <a id="idm62272"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>tab</em></span> --  tables for destination.
@@ -62,60 +62,60 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm47390"></a>
+        <a id="idm62278"></a>
         <h2>Example</h2>
         <p>
       Here is an example of the copyf2array opcode. It uses the file
       <a class="ulink" href="examples/copyf2array.csd" target="_top"><em class="citetitle">copyf2array.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm47395"></a>
+          <a id="idm62283"></a>
           <p class="title">
             <strong>Example 162. Example of the copyf2array opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm47402"></a>
+              <a id="idm62290"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
 -n
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="c1">;8 points sine wave function table</span>
-gi<span class="n">Sine</span>  <span class="nb">ftgen</span>   <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>
+</span><span class="c1">;8 points sine wave function table</span><span class="w">
+</span>gi<span class="n">Sine</span><span class="w">  </span><span class="nb">ftgen</span><span class="w">   </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
 
-  <span class="kd">instr</span> <span class="nf">1</span>
-<span class="c1">;create array</span>
-k<span class="n">Arr</span><span class="p">[]</span>  <span class="nb">init</span>    <span class="mi">8</span>
+  </span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+</span><span class="c1">;create array</span><span class="w">
+</span>k<span class="n">Arr</span><span class="p">[]</span><span class="w">  </span><span class="nb">init</span><span class="w">    </span><span class="mi">8</span><span class="w">
 
-<span class="c1">;copy table values in it</span>
-        <span class="nb">copyf2array</span> k<span class="n">Arr</span><span class="p">,</span> gi<span class="n">Sine</span>
+</span><span class="c1">;copy table values in it</span><span class="w">
+        </span><span class="nb">copyf2array</span><span class="w"> </span>k<span class="n">Arr</span><span class="p">,</span><span class="w"> </span>gi<span class="n">Sine</span><span class="w">
         
-<span class="c1">;print values</span>
-k<span class="n">ndx</span>    <span class="o">=</span>       <span class="mi">0</span>
-  <span class="k">until</span> k<span class="n">ndx</span> <span class="o">==</span> <span class="nb">lenarray</span><span class="p">(</span>k<span class="n">Arr</span><span class="p">)</span> <span class="k">do</span>
-        <span class="nb">printf</span>  <span class="s">"kArr[</span><span class="si">%d</span><span class="s">] = </span><span class="si">%f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> k<span class="n">ndx</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> k<span class="n">ndx</span><span class="p">,</span> k<span class="n">Arr</span><span class="p">[</span>k<span class="n">ndx</span><span class="p">]</span>
-k<span class="n">ndx</span>    <span class="o">+=</span>      <span class="mi">1</span>
-  <span class="k">od</span>
+</span><span class="c1">;print values</span><span class="w">
+</span>k<span class="n">ndx</span><span class="w">    </span><span class="o">=</span><span class="w">       </span><span class="mi">0</span><span class="w">
+  </span><span class="k">until</span><span class="w"> </span>k<span class="n">ndx</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">lenarray</span><span class="p">(</span>k<span class="n">Arr</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w">
+        </span><span class="nb">printf</span><span class="w">  </span><span class="s">"kArr[</span><span class="si">%d</span><span class="s">] = </span><span class="si">%f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span>k<span class="n">ndx</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>k<span class="n">ndx</span><span class="p">,</span><span class="w"> </span>k<span class="n">Arr</span><span class="p">[</span>k<span class="n">ndx</span><span class="p">]</span><span class="w">
+</span>k<span class="n">ndx</span><span class="w">    </span><span class="o">+=</span><span class="w">      </span><span class="mi">1</span><span class="w">
+  </span><span class="k">od</span><span class="w">
 
-<span class="c1">;turn instrument off</span>
-        <span class="nb">turnoff</span>
-  <span class="kd">endin</span>
+</span><span class="c1">;turn instrument off</span><span class="w">
+        </span><span class="nb">turnoff</span><span class="w">
+  </span><span class="kd">endin</span><span class="w">
   
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mf">0.1</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">0.1</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -125,14 +125,14 @@ k<span class="n">ndx</span>    <span class="o">+=</span>      <span class="mi">1
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm47490"></a>
+        <a id="idm62435"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="copya2ftab.html" title="copya2ftab"><em class="citetitle">copya2ftab</em></a>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm47495"></a>
+        <a id="idm62440"></a>
         <h2>Credits</h2>
         <p>
       </p>

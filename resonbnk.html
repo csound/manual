@@ -39,7 +39,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm201741"></a>
+        <a id="idm284217"></a>
         <h2>Description</h2>
         <p>
      This opcode takes an array of filter paramerers in
@@ -48,13 +48,13 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm201744"></a>
+        <a id="idm284220"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">asig<span class="command"><strong>resonbnk</strong></span> ain,
     kPar[],kmin,kmax,iper[,imode,iscal,iskip] </pre>
       </div>
       <div class="refsect1">
-        <a id="idm201748"></a>
+        <a id="idm284224"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>iper</em></span> -- filter parameter interpolation
@@ -74,7 +74,7 @@
         </p>
       </div>
       <div class="refsect1">
-        <a id="idm201758"></a>
+        <a id="idm284234"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>asig</em></span> -- output signal
@@ -93,7 +93,7 @@
                       </p>
       </div>
       <div class="refsect1">
-        <a id="idm201770"></a>
+        <a id="idm284246"></a>
         <p>
         This opcode is part of a suite of streaming linear prediction
         opcodes. It takes in an array of filter parameters in
@@ -106,51 +106,51 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm201772"></a>
+        <a id="idm284248"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the resonbnk opcode using an audio input
       signal as lpc source. It uses the file <a class="ulink" href="examples/resonbnk.csd" target="_top"><em class="citetitle">resonbnk.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm201777"></a>
+          <a id="idm284253"></a>
           <p class="title">
             <strong>Example 893. Example of the resonbnk opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm201784"></a>
+              <a id="idm284260"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 -odac -d
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">64</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">64</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-gi<span class="n">fw</span> <span class="nb">ftgen</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span>
-<span class="kd">instr</span> <span class="nf">1</span>
-a<span class="n">1</span> <span class="nb">diskin</span> <span class="s">"fox.wav"</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span>
-k<span class="n">cfs</span><span class="p">[],</span>k<span class="n">rms</span><span class="p">,</span>k<span class="n">err</span><span class="p">,</span>k<span class="n">cps</span> <span class="nb">lpcanal</span> a<span class="n">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">512</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span>gi<span class="n">fw</span>
-a<span class="n">2</span> <span class="nb">rand</span> <span class="vg">0dbfs</span>
-k<span class="n">par</span><span class="p">[]</span> <span class="nb">apoleparams</span> k<span class="n">cfs</span>
-k<span class="n">min</span> <span class="nb">expseg</span> <span class="mi">8000</span><span class="p">,</span><span class="vi">p3</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">3</span><span class="o">*</span><span class="vi">p3</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span><span class="mi">600</span>
-a<span class="n">3</span> <span class="nb">resonbnk</span> a<span class="n">2</span><span class="o">*</span>k<span class="n">rms</span><span class="o">*</span>k<span class="n">err</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span>k<span class="n">par</span><span class="p">,</span>k<span class="n">min</span><span class="p">,</span><span class="mi">16000</span><span class="o">-</span>k<span class="n">min</span><span class="p">,</span><span class="mi">512</span><span class="p">,</span><span class="mi">1</span>
-  <span class="nb">out</span> a<span class="n">3</span>
-<span class="kd">endin</span>
+</span>gi<span class="n">fw</span><span class="w"> </span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="w">
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+</span>a<span class="n">1</span><span class="w"> </span><span class="nb">diskin</span><span class="w"> </span><span class="s">"fox.wav"</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="w">
+</span>k<span class="n">cfs</span><span class="p">[],</span>k<span class="n">rms</span><span class="p">,</span>k<span class="n">err</span><span class="p">,</span>k<span class="n">cps</span><span class="w"> </span><span class="nb">lpcanal</span><span class="w"> </span>a<span class="n">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">512</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span>gi<span class="n">fw</span><span class="w">
+</span>a<span class="n">2</span><span class="w"> </span><span class="nb">rand</span><span class="w"> </span><span class="vg">0dbfs</span><span class="w">
+</span>k<span class="n">par</span><span class="p">[]</span><span class="w"> </span><span class="nb">apoleparams</span><span class="w"> </span>k<span class="n">cfs</span><span class="w">
+</span>k<span class="n">min</span><span class="w"> </span><span class="nb">expseg</span><span class="w"> </span><span class="mi">8000</span><span class="p">,</span><span class="vi">p3</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">3</span><span class="o">*</span><span class="vi">p3</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span><span class="mi">600</span><span class="w">
+</span>a<span class="n">3</span><span class="w"> </span><span class="nb">resonbnk</span><span class="w"> </span>a<span class="n">2</span><span class="o">*</span>k<span class="n">rms</span><span class="o">*</span>k<span class="n">err</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span>k<span class="n">par</span><span class="p">,</span>k<span class="n">min</span><span class="p">,</span><span class="mi">16000</span><span class="o">-</span>k<span class="n">min</span><span class="p">,</span><span class="mi">512</span><span class="p">,</span><span class="mi">1</span><span class="w">
+  </span><span class="nb">out</span><span class="w"> </span>a<span class="n">3</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
 
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
 
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">32</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -160,7 +160,7 @@ a<span class="n">3</span> <span class="nb">resonbnk</span> a<span class="n">2</s
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm201901"></a>
+        <a id="idm284420"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="lpcanal.html" title="lpcanal"><em class="citetitle">lpcanal</em></a>,

@@ -39,19 +39,19 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm285741"></a>
+        <a id="idm404751"></a>
         <h2>Description</h2>
         <p>
       This subroutine generates a normalizing function by examining the contents of an existing table.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm285744"></a>
+        <a id="idm404754"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>f</strong></span>  #  time  size  4  source#  sourcemode</pre>
       </div>
       <div class="refsect1">
-        <a id="idm285748"></a>
+        <a id="idm404758"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>size</em></span> -- number of points in the table. Should be power-of-2 plus 1. Must not exceed (except by 1) the size of the source table being examined; limited to just half that size if the sourcemode is of type offset (see below).
@@ -101,19 +101,19 @@
         </div>
       </div>
       <div class="refsect1">
-        <a id="idm285768"></a>
+        <a id="idm404778"></a>
         <h2>Examples</h2>
         <p>
       Here is a simple example of the GEN04 routine. It uses the files <a class="ulink" href="examples/gen04.csd" target="_top"><em class="citetitle">gen04.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm285773"></a>
+          <a id="idm404783"></a>
           <p class="title">
-            <strong>Example 1279. An example of the GEN04 routine.</strong>
+            <strong>Example 1280. An example of the GEN04 routine.</strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
-              <a id="idm285775"></a>
+              <a id="idm404785"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -123,49 +123,49 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o gen04.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span> 
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span> 
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span> 
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span> 
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w"> 
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w"> 
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> 
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> 
 
-gi<span class="n">sine</span>   <span class="nb">ftgen</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">16384</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>						<span class="c1">;sine wave</span>
+</span>gi<span class="n">sine</span><span class="w">   </span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">16384</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">						</span><span class="c1">;sine wave</span><span class="w">
 
-<span class="kd">instr</span>   <span class="nf">1</span>
+</span><span class="kd">instr</span><span class="w">   </span><span class="nf">1</span><span class="w">
 
-i<span class="n">hertz</span> <span class="o">=</span> <span class="nb">cpspch</span><span class="p">(</span><span class="vi">p4</span><span class="p">)</span>
-i<span class="n">pkamp</span> <span class="o">=</span> <span class="vi">p5</span>
-i<span class="n">wsfn</span>  <span class="o">=</span> <span class="vi">p6</span>									<span class="c1">;waveshaping function	</span>
-i<span class="n">nmfn</span>  <span class="o">=</span> <span class="vi">p7</span>									<span class="c1">;normalization function 								</span>
-a<span class="n">gate</span>   <span class="nb">linen</span>   <span class="mi">1</span><span class="p">,</span> <span class="mf">.01</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mf">.1</span>            					<span class="c1">;overall amp envelope</span>
-k<span class="n">ctrl</span>   <span class="nb">linen</span>  	<span class="mf">.9</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">2</span>							<span class="c1">;waveshaping index control</span>
-a<span class="n">index</span>  <span class="nb">poscil</span>  k<span class="n">ctrl</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> i<span class="n">hertz</span><span class="p">,</span> gi<span class="n">sine</span>						<span class="c1">;sine wave to be distorted</span>
-a<span class="n">signal</span> <span class="nb">tablei</span>  <span class="mf">.5</span><span class="o">+</span>a<span class="n">index</span><span class="p">,</span> i<span class="n">wsfn</span><span class="p">,</span> <span class="mi">1</span>						<span class="c1">;waveshaping</span>
-k<span class="n">normal</span> <span class="nb">tablei</span>  <span class="mi">1</span><span class="o">/</span>k<span class="n">ctrl</span><span class="p">,</span> i<span class="n">nmfn</span> <span class="p">,</span> <span class="mi">1</span>						<span class="c1">;amplitude normalization</span>
-        <span class="nb">outs</span>    a<span class="n">signal</span><span class="o">*</span>k<span class="n">normal</span><span class="o">*</span>i<span class="n">pkamp</span><span class="o">*</span>a<span class="n">gate</span><span class="p">,</span> a<span class="n">signal</span><span class="o">*</span>k<span class="n">normal</span><span class="o">*</span>i<span class="n">pkamp</span><span class="o">*</span>a<span class="n">gate</span>
+</span>i<span class="n">hertz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">cpspch</span><span class="p">(</span><span class="vi">p4</span><span class="p">)</span><span class="w">
+</span>i<span class="n">pkamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">p5</span><span class="w">
+</span>i<span class="n">wsfn</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="vi">p6</span><span class="w">									</span><span class="c1">;waveshaping function	</span><span class="w">
+</span>i<span class="n">nmfn</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="vi">p7</span><span class="w">									</span><span class="c1">;normalization function 								</span><span class="w">
+</span>a<span class="n">gate</span><span class="w">   </span><span class="nb">linen</span><span class="w">   </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">.01</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mf">.1</span><span class="w">            					</span><span class="c1">;overall amp envelope</span><span class="w">
+</span>k<span class="n">ctrl</span><span class="w">   </span><span class="nb">linen</span><span class="w">  	</span><span class="mf">.9</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">							</span><span class="c1">;waveshaping index control</span><span class="w">
+</span>a<span class="n">index</span><span class="w">  </span><span class="nb">poscil</span><span class="w">  </span>k<span class="n">ctrl</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span>i<span class="n">hertz</span><span class="p">,</span><span class="w"> </span>gi<span class="n">sine</span><span class="w">						</span><span class="c1">;sine wave to be distorted</span><span class="w">
+</span>a<span class="n">signal</span><span class="w"> </span><span class="nb">tablei</span><span class="w">  </span><span class="mf">.5</span><span class="o">+</span>a<span class="n">index</span><span class="p">,</span><span class="w"> </span>i<span class="n">wsfn</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">						</span><span class="c1">;waveshaping</span><span class="w">
+</span>k<span class="n">normal</span><span class="w"> </span><span class="nb">tablei</span><span class="w">  </span><span class="mi">1</span><span class="o">/</span>k<span class="n">ctrl</span><span class="p">,</span><span class="w"> </span>i<span class="n">nmfn</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">						</span><span class="c1">;amplitude normalization</span><span class="w">
+        </span><span class="nb">outs</span><span class="w">    </span>a<span class="n">signal</span><span class="o">*</span>k<span class="n">normal</span><span class="o">*</span>i<span class="n">pkamp</span><span class="o">*</span>a<span class="n">gate</span><span class="p">,</span><span class="w"> </span>a<span class="n">signal</span><span class="o">*</span>k<span class="n">normal</span><span class="o">*</span>i<span class="n">pkamp</span><span class="o">*</span>a<span class="n">gate</span><span class="w">
            
-<span class="kd">endin</span>
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">f</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">64</span> <span class="mi">21</span> <span class="mi">6</span>	<span class="c1">;Gaussian (random) distribution</span>
-<span class="nb">f</span><span class="mi">2</span> <span class="mi">0</span> <span class="mi">33</span> <span class="mi">4</span> <span class="mi">1</span> <span class="mi">1</span>	<span class="c1">;normalizing function with midpoint bipolar offset</span>
+</span><span class="kd">endin</span><span class="w">
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">f</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="mi">21</span><span class="w"> </span><span class="mi">6</span><span class="w">	</span><span class="c1">;Gaussian (random) distribution</span><span class="w">
+</span><span class="nb">f</span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">33</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w">	</span><span class="c1">;normalizing function with midpoint bipolar offset</span><span class="w">
 
-<span class="nb">s</span>
-<span class="c1">;	st	dur	pch	amp   wsfn inmfn</span>
-<span class="nb">i</span><span class="mi">1</span>      <span class="mi">0</span>       <span class="mi">4</span>      <span class="mf">6.00</span>    <span class="mf">.7</span>      <span class="mi">1</span>     <span class="mi">2</span>
-<span class="nb">i</span><span class="mi">1</span>      <span class="mi">4</span>       <span class="o">.</span>      <span class="mf">7.00</span>    <span class="o">.</span>
-<span class="nb">i</span><span class="mi">1</span>      <span class="mi">8</span>       <span class="o">.</span>      <span class="mf">8.00</span>    <span class="o">.</span>
-<span class="c1">;-------------------------------------------------------------------------------------</span>
-<span class="nb">f</span><span class="mi">3</span> <span class="mi">0</span> <span class="mi">1025</span> <span class="mi">13</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">5</span> <span class="mi">0</span> <span class="mi">5</span> <span class="mi">0</span> <span class="mi">10</span>	<span class="c1">;Chebyshev algorithm</span>
-<span class="nb">f</span><span class="mi">4</span> <span class="mi">0</span> <span class="mi">513</span> <span class="mi">4</span> <span class="mi">3</span> <span class="mi">1</span>			<span class="c1">;normalizing function with midpoint bipolar offset</span>
-<span class="nb">s</span>
-<span class="c1">;	st	dur	pch	amp   wsfn inmfn</span>
-<span class="nb">i</span><span class="mi">1</span>      <span class="mi">0</span>       <span class="mi">4</span>      <span class="mf">6.00</span>    <span class="mf">.9</span>      <span class="mi">3</span>     <span class="mi">4</span>
-<span class="nb">i</span><span class="mi">1</span>      <span class="mi">4</span>       <span class="o">.</span>      <span class="mf">7.00</span>    <span class="o">.</span>
-<span class="nb">i</span><span class="mi">1</span>      <span class="mi">8</span>       <span class="o">.</span>      <span class="mf">8.00</span>    <span class="o">.</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nb">s</span><span class="w">
+</span><span class="c1">;	st	dur	pch	amp   wsfn inmfn</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">      </span><span class="mi">0</span><span class="w">       </span><span class="mi">4</span><span class="w">      </span><span class="mf">6.00</span><span class="w">    </span><span class="mf">.7</span><span class="w">      </span><span class="mi">1</span><span class="w">     </span><span class="mi">2</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">      </span><span class="mi">4</span><span class="w">       </span><span class="o">.</span><span class="w">      </span><span class="mf">7.00</span><span class="w">    </span><span class="o">.</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">      </span><span class="mi">8</span><span class="w">       </span><span class="o">.</span><span class="w">      </span><span class="mf">8.00</span><span class="w">    </span><span class="o">.</span><span class="w">
+</span><span class="c1">;-------------------------------------------------------------------------------------</span><span class="w">
+</span><span class="nb">f</span><span class="mi">3</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1025</span><span class="w"> </span><span class="mi">13</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">10</span><span class="w">	</span><span class="c1">;Chebyshev algorithm</span><span class="w">
+</span><span class="nb">f</span><span class="mi">4</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">513</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">1</span><span class="w">			</span><span class="c1">;normalizing function with midpoint bipolar offset</span><span class="w">
+</span><span class="nb">s</span><span class="w">
+</span><span class="c1">;	st	dur	pch	amp   wsfn inmfn</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">      </span><span class="mi">0</span><span class="w">       </span><span class="mi">4</span><span class="w">      </span><span class="mf">6.00</span><span class="w">    </span><span class="mf">.9</span><span class="w">      </span><span class="mi">3</span><span class="w">     </span><span class="mi">4</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">      </span><span class="mi">4</span><span class="w">       </span><span class="o">.</span><span class="w">      </span><span class="mf">7.00</span><span class="w">    </span><span class="o">.</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">      </span><span class="mi">8</span><span class="w">       </span><span class="o">.</span><span class="w">      </span><span class="mf">8.00</span><span class="w">    </span><span class="o">.</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>

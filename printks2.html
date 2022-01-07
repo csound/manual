@@ -40,7 +40,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm183785"></a>
+        <a id="idm258153"></a>
         <h2>Description</h2>
         <p>
       Prints a new value every time a control variable changes using a
@@ -48,12 +48,12 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm183788"></a>
+        <a id="idm258156"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>printks2</strong></span> "string", kval</pre>
       </div>
       <div class="refsect1">
-        <a id="idm183792"></a>
+        <a id="idm258160"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>"string"</em></span> -- the text string to be
@@ -61,7 +61,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm183796"></a>
+        <a id="idm258164"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>kval</em></span> -- signal to be printed. The style of
@@ -71,7 +71,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm183802"></a>
+        <a id="idm258170"></a>
         <h2>Print Output Formatting</h2>
         <p>
       All standard C language printf() control characters may be used. For example, if <span class="emphasis"><em>kval1</em></span> = 153.26789 then some common formatting options are:
@@ -156,21 +156,21 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm183850"></a>
+        <a id="idm258218"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the printks2 opcode. It uses the file <a class="ulink" href="examples/printks2.csd" target="_top"><em class="citetitle">printks2.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm183855"></a>
+          <a id="idm258223"></a>
           <p class="title">
             <strong>Example 783. Example of the printks2 opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm183862"></a>
+              <a id="idm258230"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -179,34 +179,34 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o printk.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="c1">; Initialize the global variables.</span>
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">kr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class="c1">; Initialize the global variables.</span><span class="w">
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">kr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="c1">; Instrument #1.</span>
-<span class="kd">instr</span> <span class="nf">1</span>
-  <span class="c1">; Change a value linearly from 0 to 100,</span>
-  <span class="c1">; over the period defined by p3.</span>
-  k<span class="n">val</span> <span class="nb">line</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">100</span>
+</span><span class="c1">; Instrument #1.</span><span class="w">
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+  </span><span class="c1">; Change a value linearly from 0 to 100,</span><span class="w">
+  </span><span class="c1">; over the period defined by p3.</span><span class="w">
+  </span>k<span class="n">val</span><span class="w"> </span><span class="nb">line</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="w">
 
-  <span class="c1">; Print the value of kval when it changes.</span>
-  <span class="nb">printks2</span> <span class="s">"value now </span><span class="si">%f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span>k<span class="n">val</span><span class="p">)</span>
-<span class="kd">endin</span>
-
-
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-
-<span class="c1">; Play Instrument #1 for 5 seconds.</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">5</span>
-<span class="nb">e</span>
+  </span><span class="c1">; Print the value of kval when it changes.</span><span class="w">
+  </span><span class="nb">printks2</span><span class="w"> </span><span class="s">"value now </span><span class="si">%f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span>k<span class="n">val</span><span class="p">)</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
 
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+
+</span><span class="c1">; Play Instrument #1 for 5 seconds.</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+
+
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -216,7 +216,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm183919"></a>
+        <a id="idm258323"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="printk2.html" title="printk2"><em class="citetitle">printk2</em></a> and 
@@ -225,7 +225,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm183928"></a>
+        <a id="idm258332"></a>
         <h2>Credits</h2>
         <p>
       </p>

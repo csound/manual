@@ -39,19 +39,19 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm194064"></a>
+        <a id="idm273179"></a>
         <h2>Description</h2>
         <p>
       Performs morphing (or interpolation)  between two source fsigs.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm194067"></a>
+        <a id="idm273182"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">fsig <span class="command"><strong>pvsmorph</strong></span> fsig1, fsig2, kampint, kfrqint</pre>
       </div>
       <div class="refsect1">
-        <a id="idm194071"></a>
+        <a id="idm273186"></a>
         <h2>Performance</h2>
         <p>
       The operation of this opcode is similar to that of <a class="link" href="pvcross.html" title="pvcross"><em class="citetitle">pvinterp</em></a> (q.v.), 
@@ -85,21 +85,21 @@
         </div>
       </div>
       <div class="refsect1">
-        <a id="idm194090"></a>
+        <a id="idm273205"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the pvsmorph opcode. It uses the file <a class="ulink" href="examples/pvsmorph.csd" target="_top"><em class="citetitle">pvsmorph.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm194095"></a>
+          <a id="idm273210"></a>
           <p class="title">
             <strong>Example 842. Example of the pvsmorph opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm194102"></a>
+              <a id="idm273217"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -109,48 +109,48 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o pvsmorph.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="c1">;; example written by joachim heintz 2009</span>
-<span class="c1">; additions by Menno Knevel 2021</span>
+</span><span class="c1">;; example written by joachim heintz 2009</span><span class="w">
+</span><span class="c1">; additions by Menno Knevel 2021</span><span class="w">
 
-gi<span class="n">Sine</span>		<span class="nb">ftgen</span>		<span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4096</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>
+</span>gi<span class="n">Sine</span><span class="w">		</span><span class="nb">ftgen</span><span class="w">		</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">4096</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>
-i<span class="n">ampint1</span>    <span class="o">=</span> <span class="vi">p4</span>
-i<span class="n">ampint2</span>	<span class="o">=</span> <span class="vi">p5</span>
-i<span class="n">frqint1</span>	<span class="o">=</span> <span class="vi">p6</span>
-i<span class="n">frqint2</span>	<span class="o">=</span> <span class="vi">p7</span>
-k<span class="n">ampint</span>	    <span class="nb">linseg</span>	i<span class="n">ampint1</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">.2</span><span class="p">,</span> i<span class="n">ampint1</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">.6</span><span class="p">,</span> i<span class="n">ampint2</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">.2</span><span class="p">,</span> i<span class="n">ampint2</span>
-k<span class="n">frqint</span>	    <span class="nb">linseg</span>	i<span class="n">frqint1</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">.2</span><span class="p">,</span> i<span class="n">frqint1</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">.6</span><span class="p">,</span> i<span class="n">frqint2</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span><span class="mf">.2</span><span class="p">,</span> i<span class="n">frqint2</span>
-i<span class="n">fftsize</span>	<span class="o">=</span> <span class="mi">1024</span>
-i<span class="n">overlap</span>	<span class="o">=</span> i<span class="n">fftsize</span> <span class="o">/</span> <span class="mi">4</span>
-i<span class="n">winsize</span>	<span class="o">=</span> i<span class="n">fftsize</span>
-i<span class="n">winshape</span>	<span class="o">=</span> <span class="mi">1</span>                                     <span class="c1">; von-Hann window</span>
-S<span class="n">file1</span>		<span class="o">=</span> <span class="s">"fox.wav"</span>
-a<span class="n">in1</span>		<span class="nb">diskin2</span>	S<span class="n">file1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
-k<span class="n">freq</span>       <span class="nb">line</span>    <span class="mi">30</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">500</span>
-a<span class="n">in2</span>		<span class="nb">buzz</span>	<span class="mf">.8</span><span class="p">,</span> k<span class="n">freq</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> gi<span class="n">Sine</span>
-f<span class="n">ftin1</span>		<span class="nb">pvsanal</span>	a<span class="n">in1</span><span class="p">,</span> i<span class="n">fftsize</span><span class="p">,</span> i<span class="n">overlap</span><span class="p">,</span> i<span class="n">winsize</span><span class="p">,</span> i<span class="n">winshape</span>
-f<span class="n">ftin2</span>		<span class="nb">pvsanal</span>	a<span class="n">in2</span><span class="p">,</span> i<span class="n">fftsize</span><span class="p">,</span> i<span class="n">overlap</span><span class="p">,</span> i<span class="n">winsize</span><span class="p">,</span> i<span class="n">winshape</span>
-f<span class="n">morph</span>		<span class="nb">pvsmorph</span> f<span class="n">ftin1</span><span class="p">,</span> f<span class="n">ftin2</span><span class="p">,</span> k<span class="n">ampint</span><span class="p">,</span> k<span class="n">frqint</span>
-a<span class="n">out</span>		<span class="nb">pvsynth</span>	f<span class="n">morph</span>
-<span class="nb">outs</span>		a<span class="n">out</span> <span class="o">*</span> <span class="mf">.6</span><span class="p">,</span> a<span class="n">out</span> <span class="o">*</span> <span class="mf">.6</span>
-<span class="kd">endin</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+</span>i<span class="n">ampint1</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="vi">p4</span><span class="w">
+</span>i<span class="n">ampint2</span><span class="w">	</span><span class="o">=</span><span class="w"> </span><span class="vi">p5</span><span class="w">
+</span>i<span class="n">frqint1</span><span class="w">	</span><span class="o">=</span><span class="w"> </span><span class="vi">p6</span><span class="w">
+</span>i<span class="n">frqint2</span><span class="w">	</span><span class="o">=</span><span class="w"> </span><span class="vi">p7</span><span class="w">
+</span>k<span class="n">ampint</span><span class="w">	    </span><span class="nb">linseg</span><span class="w">	</span>i<span class="n">ampint1</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="o">*</span><span class="mf">.2</span><span class="p">,</span><span class="w"> </span>i<span class="n">ampint1</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="o">*</span><span class="mf">.6</span><span class="p">,</span><span class="w"> </span>i<span class="n">ampint2</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="o">*</span><span class="mf">.2</span><span class="p">,</span><span class="w"> </span>i<span class="n">ampint2</span><span class="w">
+</span>k<span class="n">frqint</span><span class="w">	    </span><span class="nb">linseg</span><span class="w">	</span>i<span class="n">frqint1</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="o">*</span><span class="mf">.2</span><span class="p">,</span><span class="w"> </span>i<span class="n">frqint1</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="o">*</span><span class="mf">.6</span><span class="p">,</span><span class="w"> </span>i<span class="n">frqint2</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="o">*</span><span class="mf">.2</span><span class="p">,</span><span class="w"> </span>i<span class="n">frqint2</span><span class="w">
+</span>i<span class="n">fftsize</span><span class="w">	</span><span class="o">=</span><span class="w"> </span><span class="mi">1024</span><span class="w">
+</span>i<span class="n">overlap</span><span class="w">	</span><span class="o">=</span><span class="w"> </span>i<span class="n">fftsize</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">4</span><span class="w">
+</span>i<span class="n">winsize</span><span class="w">	</span><span class="o">=</span><span class="w"> </span>i<span class="n">fftsize</span><span class="w">
+</span>i<span class="n">winshape</span><span class="w">	</span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">                                     </span><span class="c1">; von-Hann window</span><span class="w">
+</span>S<span class="n">file1</span><span class="w">		</span><span class="o">=</span><span class="w"> </span><span class="s">"fox.wav"</span><span class="w">
+</span>a<span class="n">in1</span><span class="w">		</span><span class="nb">diskin2</span><span class="w">	</span>S<span class="n">file1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span>k<span class="n">freq</span><span class="w">       </span><span class="nb">line</span><span class="w">    </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="w">
+</span>a<span class="n">in2</span><span class="w">		</span><span class="nb">buzz</span><span class="w">	</span><span class="mf">.8</span><span class="p">,</span><span class="w"> </span>k<span class="n">freq</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span>gi<span class="n">Sine</span><span class="w">
+</span>f<span class="n">ftin1</span><span class="w">		</span><span class="nb">pvsanal</span><span class="w">	</span>a<span class="n">in1</span><span class="p">,</span><span class="w"> </span>i<span class="n">fftsize</span><span class="p">,</span><span class="w"> </span>i<span class="n">overlap</span><span class="p">,</span><span class="w"> </span>i<span class="n">winsize</span><span class="p">,</span><span class="w"> </span>i<span class="n">winshape</span><span class="w">
+</span>f<span class="n">ftin2</span><span class="w">		</span><span class="nb">pvsanal</span><span class="w">	</span>a<span class="n">in2</span><span class="p">,</span><span class="w"> </span>i<span class="n">fftsize</span><span class="p">,</span><span class="w"> </span>i<span class="n">overlap</span><span class="p">,</span><span class="w"> </span>i<span class="n">winsize</span><span class="p">,</span><span class="w"> </span>i<span class="n">winshape</span><span class="w">
+</span>f<span class="n">morph</span><span class="w">		</span><span class="nb">pvsmorph</span><span class="w"> </span>f<span class="n">ftin1</span><span class="p">,</span><span class="w"> </span>f<span class="n">ftin2</span><span class="p">,</span><span class="w"> </span>k<span class="n">ampint</span><span class="p">,</span><span class="w"> </span>k<span class="n">frqint</span><span class="w">
+</span>a<span class="n">out</span><span class="w">		</span><span class="nb">pvsynth</span><span class="w">	</span>f<span class="n">morph</span><span class="w">
+</span><span class="nb">outs</span><span class="w">		</span>a<span class="n">out</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">.6</span><span class="p">,</span><span class="w"> </span>a<span class="n">out</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">.6</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="c1">;         iampint1  iampint2    ifrqint1    ifrqint2    </span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span>  <span class="mf">12.2</span>     <span class="mi">0</span>         <span class="mi">0</span>           <span class="mi">1</span>           <span class="mi">1</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">14</span> <span class="mf">12.2</span>     <span class="mi">1</span>         <span class="mi">0</span>           <span class="mi">1</span>           <span class="mi">0</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">28</span> <span class="mf">12.2</span>     <span class="mi">0</span>         <span class="mi">1</span>           <span class="mi">0</span>           <span class="mi">1</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="c1">;         iampint1  iampint2    ifrqint1    ifrqint2    </span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w">  </span><span class="mf">12.2</span><span class="w">     </span><span class="mi">0</span><span class="w">         </span><span class="mi">0</span><span class="w">           </span><span class="mi">1</span><span class="w">           </span><span class="mi">1</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">14</span><span class="w"> </span><span class="mf">12.2</span><span class="w">     </span><span class="mi">1</span><span class="w">         </span><span class="mi">0</span><span class="w">           </span><span class="mi">1</span><span class="w">           </span><span class="mi">0</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">28</span><span class="w"> </span><span class="mf">12.2</span><span class="w">     </span><span class="mi">0</span><span class="w">         </span><span class="mi">1</span><span class="w">           </span><span class="mi">0</span><span class="w">           </span><span class="mi">1</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -163,14 +163,14 @@ a<span class="n">out</span>		<span class="nb">pvsynth</span>	f<span class="n">mo
 
       </p>
         <div class="example">
-          <a id="idm194313"></a>
+          <a id="idm273575"></a>
           <p class="title">
             <strong>Example 843. Example of the pvsmorph opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm194320"></a>
+              <a id="idm273582"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -180,73 +180,73 @@ a<span class="n">out</span>		<span class="nb">pvsynth</span>	f<span class="n">mo
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o pvsmorph-2.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="c1">;; example written by joachim heintz 2009, additions by Menno Knevel 2021</span>
-<span class="c1">; this example uses the files "flute.aiff" and "saxophone-alto-C-octave0.wav"</span>
+</span><span class="c1">;; example written by joachim heintz 2009, additions by Menno Knevel 2021</span><span class="w">
+</span><span class="c1">; this example uses the files "flute.aiff" and "saxophone-alto-C-octave0.wav"</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
 
-i<span class="n">ampint1</span>	<span class="o">=</span>	<span class="vi">p4</span>                                  <span class="c1">; value for interpolating the amplitudes at the beginning ...</span>
-i<span class="n">ampint2</span>	<span class="o">=</span>	<span class="vi">p5</span>                                  <span class="c1">; ... and at the end</span>
-i<span class="n">frqint1</span>	<span class="o">=</span>	<span class="vi">p6</span>                                  <span class="c1">; value for unterpolating the frequencies at the beginning ...</span>
-i<span class="n">frqint2</span>	<span class="o">=</span>	<span class="vi">p7</span>                                  <span class="c1">; ... and at the end</span>
-k<span class="n">ampint</span>	<span class="nb">linseg</span>	i<span class="n">ampint1</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> i<span class="n">ampint2</span>
-k<span class="n">frqint</span>	<span class="nb">linseg</span>	i<span class="n">frqint1</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> i<span class="n">frqint2</span>
-i<span class="n">fftsize</span>	<span class="o">=</span>	<span class="mi">1024</span>
-i<span class="n">overlap</span>	<span class="o">=</span>	i<span class="n">fftsize</span> <span class="o">/</span> <span class="mi">4</span>
-i<span class="n">winsize</span>	<span class="o">=</span>	i<span class="n">fftsize</span>
-i<span class="n">winshape</span>	<span class="o">=</span>	<span class="mi">1</span>                                   <span class="c1">; von-Hann window</span>
-S<span class="n">file1</span>		<span class="o">=</span>	<span class="s">"flute.aiff"</span>
-S<span class="n">file2</span>		<span class="o">=</span>	<span class="s">"saxophone-alto-C-octave0.wav"</span>
-a<span class="n">in1</span>		<span class="nb">soundin</span>	S<span class="n">file1</span>
-a<span class="n">in2</span>		<span class="nb">soundin</span>	S<span class="n">file2</span>
-f<span class="n">ftin1</span>		<span class="nb">pvsanal</span>	a<span class="n">in1</span><span class="p">,</span> i<span class="n">fftsize</span><span class="p">,</span> i<span class="n">overlap</span><span class="p">,</span> i<span class="n">winsize</span><span class="p">,</span> i<span class="n">winshape</span>
-f<span class="n">ftin2</span>		<span class="nb">pvsanal</span>	a<span class="n">in2</span><span class="p">,</span> i<span class="n">fftsize</span><span class="p">,</span> i<span class="n">overlap</span><span class="p">,</span> i<span class="n">winsize</span><span class="p">,</span> i<span class="n">winshape</span>
-f<span class="n">morph</span>		<span class="nb">pvsmorph</span> f<span class="n">ftin1</span><span class="p">,</span> f<span class="n">ftin2</span><span class="p">,</span> k<span class="n">ampint</span><span class="p">,</span> k<span class="n">frqint</span>
-a<span class="n">out</span>		<span class="nb">pvsynth</span>	f<span class="n">morph</span>
-<span class="nb">outs</span>		a<span class="n">out</span> <span class="p">,</span> a<span class="n">out</span>
-<span class="kd">endin</span>
+</span>i<span class="n">ampint1</span><span class="w">	</span><span class="o">=</span><span class="w">	</span><span class="vi">p4</span><span class="w">                                  </span><span class="c1">; value for interpolating the amplitudes at the beginning ...</span><span class="w">
+</span>i<span class="n">ampint2</span><span class="w">	</span><span class="o">=</span><span class="w">	</span><span class="vi">p5</span><span class="w">                                  </span><span class="c1">; ... and at the end</span><span class="w">
+</span>i<span class="n">frqint1</span><span class="w">	</span><span class="o">=</span><span class="w">	</span><span class="vi">p6</span><span class="w">                                  </span><span class="c1">; value for unterpolating the frequencies at the beginning ...</span><span class="w">
+</span>i<span class="n">frqint2</span><span class="w">	</span><span class="o">=</span><span class="w">	</span><span class="vi">p7</span><span class="w">                                  </span><span class="c1">; ... and at the end</span><span class="w">
+</span>k<span class="n">ampint</span><span class="w">	</span><span class="nb">linseg</span><span class="w">	</span>i<span class="n">ampint1</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span>i<span class="n">ampint2</span><span class="w">
+</span>k<span class="n">frqint</span><span class="w">	</span><span class="nb">linseg</span><span class="w">	</span>i<span class="n">frqint1</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span>i<span class="n">frqint2</span><span class="w">
+</span>i<span class="n">fftsize</span><span class="w">	</span><span class="o">=</span><span class="w">	</span><span class="mi">1024</span><span class="w">
+</span>i<span class="n">overlap</span><span class="w">	</span><span class="o">=</span><span class="w">	</span>i<span class="n">fftsize</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">4</span><span class="w">
+</span>i<span class="n">winsize</span><span class="w">	</span><span class="o">=</span><span class="w">	</span>i<span class="n">fftsize</span><span class="w">
+</span>i<span class="n">winshape</span><span class="w">	</span><span class="o">=</span><span class="w">	</span><span class="mi">1</span><span class="w">                                   </span><span class="c1">; von-Hann window</span><span class="w">
+</span>S<span class="n">file1</span><span class="w">		</span><span class="o">=</span><span class="w">	</span><span class="s">"flute.aiff"</span><span class="w">
+</span>S<span class="n">file2</span><span class="w">		</span><span class="o">=</span><span class="w">	</span><span class="s">"saxophone-alto-C-octave0.wav"</span><span class="w">
+</span>a<span class="n">in1</span><span class="w">		</span><span class="nb">soundin</span><span class="w">	</span>S<span class="n">file1</span><span class="w">
+</span>a<span class="n">in2</span><span class="w">		</span><span class="nb">soundin</span><span class="w">	</span>S<span class="n">file2</span><span class="w">
+</span>f<span class="n">ftin1</span><span class="w">		</span><span class="nb">pvsanal</span><span class="w">	</span>a<span class="n">in1</span><span class="p">,</span><span class="w"> </span>i<span class="n">fftsize</span><span class="p">,</span><span class="w"> </span>i<span class="n">overlap</span><span class="p">,</span><span class="w"> </span>i<span class="n">winsize</span><span class="p">,</span><span class="w"> </span>i<span class="n">winshape</span><span class="w">
+</span>f<span class="n">ftin2</span><span class="w">		</span><span class="nb">pvsanal</span><span class="w">	</span>a<span class="n">in2</span><span class="p">,</span><span class="w"> </span>i<span class="n">fftsize</span><span class="p">,</span><span class="w"> </span>i<span class="n">overlap</span><span class="p">,</span><span class="w"> </span>i<span class="n">winsize</span><span class="p">,</span><span class="w"> </span>i<span class="n">winshape</span><span class="w">
+</span>f<span class="n">morph</span><span class="w">		</span><span class="nb">pvsmorph</span><span class="w"> </span>f<span class="n">ftin1</span><span class="p">,</span><span class="w"> </span>f<span class="n">ftin2</span><span class="p">,</span><span class="w"> </span>k<span class="n">ampint</span><span class="p">,</span><span class="w"> </span>k<span class="n">frqint</span><span class="w">
+</span>a<span class="n">out</span><span class="w">		</span><span class="nb">pvsynth</span><span class="w">	</span>f<span class="n">morph</span><span class="w">
+</span><span class="nb">outs</span><span class="w">		</span>a<span class="n">out</span><span class="w"> </span><span class="p">,</span><span class="w"> </span>a<span class="n">out</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">2</span> <span class="c1">; moving randomly in certain borders between two spectra</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w"> </span><span class="c1">; moving randomly in certain borders between two spectra</span><span class="w">
 
-i<span class="n">ampintmin</span>	<span class="o">=</span>	<span class="vi">p4</span>                                  <span class="c1">; minimum value for amplitudes</span>
-i<span class="n">ampintmax</span>	<span class="o">=</span>	<span class="vi">p5</span>                                  <span class="c1">; maximum value for amplitudes</span>
-i<span class="n">frqintmin</span>	<span class="o">=</span>	<span class="vi">p6</span>                                  <span class="c1">; minimum value for frequencies</span>
-i<span class="n">frqintmax</span>	<span class="o">=</span>	<span class="vi">p7</span>                                  <span class="c1">; maximum value for frequencies</span>
-i<span class="n">movefreq</span>	<span class="o">=</span>	<span class="vi">p8</span>                                  <span class="c1">; frequency for generating new random values</span>
-k<span class="n">ampint</span>	<span class="nb">randomi</span>	i<span class="n">ampintmin</span><span class="p">,</span> i<span class="n">ampintmax</span><span class="p">,</span> i<span class="n">movefreq</span>
-k<span class="n">frqint</span>	<span class="nb">randomi</span>	i<span class="n">frqintmin</span><span class="p">,</span> i<span class="n">frqintmax</span><span class="p">,</span> i<span class="n">movefreq</span>
-i<span class="n">fftsize</span>	<span class="o">=</span>	<span class="mi">1024</span>
-i<span class="n">overlap</span>	<span class="o">=</span>	i<span class="n">fftsize</span> <span class="o">/</span> <span class="mi">4</span>
-i<span class="n">winsize</span>	<span class="o">=</span>	i<span class="n">fftsize</span>
-i<span class="n">winshape</span>	<span class="o">=</span>	<span class="mi">1</span>                                   <span class="c1">; von-Hann window</span>
-S<span class="n">file1</span>		<span class="o">=</span>	<span class="s">"flute.aiff"</span>
-S<span class="n">file2</span>		<span class="o">=</span>	<span class="s">"saxophone-alto-C-octave0.wav"</span>
-a<span class="n">in1</span>		<span class="nb">soundin</span>	S<span class="n">file1</span>
-a<span class="n">in2</span>		<span class="nb">soundin</span>	S<span class="n">file2</span>
-f<span class="n">ftin1</span>		<span class="nb">pvsanal</span>	a<span class="n">in1</span><span class="p">,</span> i<span class="n">fftsize</span><span class="p">,</span> i<span class="n">overlap</span><span class="p">,</span> i<span class="n">winsize</span><span class="p">,</span> i<span class="n">winshape</span>
-f<span class="n">ftin2</span>		<span class="nb">pvsanal</span>	a<span class="n">in2</span><span class="p">,</span> i<span class="n">fftsize</span><span class="p">,</span> i<span class="n">overlap</span><span class="p">,</span> i<span class="n">winsize</span><span class="p">,</span> i<span class="n">winshape</span>
-f<span class="n">morph</span>		<span class="nb">pvsmorph</span> f<span class="n">ftin1</span><span class="p">,</span> f<span class="n">ftin2</span><span class="p">,</span> k<span class="n">ampint</span><span class="p">,</span> k<span class="n">frqint</span>
-a<span class="n">out</span>		<span class="nb">pvsynth</span>	f<span class="n">morph</span>
-<span class="nb">outs</span>		a<span class="n">out</span><span class="p">,</span> a<span class="n">out</span>
-<span class="kd">endin</span>
+</span>i<span class="n">ampintmin</span><span class="w">	</span><span class="o">=</span><span class="w">	</span><span class="vi">p4</span><span class="w">                                  </span><span class="c1">; minimum value for amplitudes</span><span class="w">
+</span>i<span class="n">ampintmax</span><span class="w">	</span><span class="o">=</span><span class="w">	</span><span class="vi">p5</span><span class="w">                                  </span><span class="c1">; maximum value for amplitudes</span><span class="w">
+</span>i<span class="n">frqintmin</span><span class="w">	</span><span class="o">=</span><span class="w">	</span><span class="vi">p6</span><span class="w">                                  </span><span class="c1">; minimum value for frequencies</span><span class="w">
+</span>i<span class="n">frqintmax</span><span class="w">	</span><span class="o">=</span><span class="w">	</span><span class="vi">p7</span><span class="w">                                  </span><span class="c1">; maximum value for frequencies</span><span class="w">
+</span>i<span class="n">movefreq</span><span class="w">	</span><span class="o">=</span><span class="w">	</span><span class="vi">p8</span><span class="w">                                  </span><span class="c1">; frequency for generating new random values</span><span class="w">
+</span>k<span class="n">ampint</span><span class="w">	</span><span class="nb">randomi</span><span class="w">	</span>i<span class="n">ampintmin</span><span class="p">,</span><span class="w"> </span>i<span class="n">ampintmax</span><span class="p">,</span><span class="w"> </span>i<span class="n">movefreq</span><span class="w">
+</span>k<span class="n">frqint</span><span class="w">	</span><span class="nb">randomi</span><span class="w">	</span>i<span class="n">frqintmin</span><span class="p">,</span><span class="w"> </span>i<span class="n">frqintmax</span><span class="p">,</span><span class="w"> </span>i<span class="n">movefreq</span><span class="w">
+</span>i<span class="n">fftsize</span><span class="w">	</span><span class="o">=</span><span class="w">	</span><span class="mi">1024</span><span class="w">
+</span>i<span class="n">overlap</span><span class="w">	</span><span class="o">=</span><span class="w">	</span>i<span class="n">fftsize</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">4</span><span class="w">
+</span>i<span class="n">winsize</span><span class="w">	</span><span class="o">=</span><span class="w">	</span>i<span class="n">fftsize</span><span class="w">
+</span>i<span class="n">winshape</span><span class="w">	</span><span class="o">=</span><span class="w">	</span><span class="mi">1</span><span class="w">                                   </span><span class="c1">; von-Hann window</span><span class="w">
+</span>S<span class="n">file1</span><span class="w">		</span><span class="o">=</span><span class="w">	</span><span class="s">"flute.aiff"</span><span class="w">
+</span>S<span class="n">file2</span><span class="w">		</span><span class="o">=</span><span class="w">	</span><span class="s">"saxophone-alto-C-octave0.wav"</span><span class="w">
+</span>a<span class="n">in1</span><span class="w">		</span><span class="nb">soundin</span><span class="w">	</span>S<span class="n">file1</span><span class="w">
+</span>a<span class="n">in2</span><span class="w">		</span><span class="nb">soundin</span><span class="w">	</span>S<span class="n">file2</span><span class="w">
+</span>f<span class="n">ftin1</span><span class="w">		</span><span class="nb">pvsanal</span><span class="w">	</span>a<span class="n">in1</span><span class="p">,</span><span class="w"> </span>i<span class="n">fftsize</span><span class="p">,</span><span class="w"> </span>i<span class="n">overlap</span><span class="p">,</span><span class="w"> </span>i<span class="n">winsize</span><span class="p">,</span><span class="w"> </span>i<span class="n">winshape</span><span class="w">
+</span>f<span class="n">ftin2</span><span class="w">		</span><span class="nb">pvsanal</span><span class="w">	</span>a<span class="n">in2</span><span class="p">,</span><span class="w"> </span>i<span class="n">fftsize</span><span class="p">,</span><span class="w"> </span>i<span class="n">overlap</span><span class="p">,</span><span class="w"> </span>i<span class="n">winsize</span><span class="p">,</span><span class="w"> </span>i<span class="n">winshape</span><span class="w">
+</span>f<span class="n">morph</span><span class="w">		</span><span class="nb">pvsmorph</span><span class="w"> </span>f<span class="n">ftin1</span><span class="p">,</span><span class="w"> </span>f<span class="n">ftin2</span><span class="p">,</span><span class="w"> </span>k<span class="n">ampint</span><span class="p">,</span><span class="w"> </span>k<span class="n">frqint</span><span class="w">
+</span>a<span class="n">out</span><span class="w">		</span><span class="nb">pvsynth</span><span class="w">	</span>f<span class="n">morph</span><span class="w">
+</span><span class="nb">outs</span><span class="w">		</span>a<span class="n">out</span><span class="p">,</span><span class="w"> </span>a<span class="n">out</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span>  <span class="mi">3</span>  <span class="mi">0</span>  <span class="mi">0</span>   <span class="mi">1</span>  <span class="mi">1</span>         <span class="c1">; amplitudes from flute, frequencies from saxophone</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">3</span>  <span class="mi">3</span>  <span class="mi">1</span>  <span class="mi">1</span>   <span class="mi">0</span>  <span class="mi">0</span>         <span class="c1">; amplitudes from saxophone, frequencies from flute</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">6</span>  <span class="mi">3</span>  <span class="mi">0</span>  <span class="mi">1</span>   <span class="mi">0</span>  <span class="mi">1</span>         <span class="c1">; amplitudes and frequencies moving from flute to saxophone </span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">9</span>  <span class="mi">3</span>  <span class="mi">1</span>  <span class="mi">0</span>   <span class="mi">1</span>  <span class="mi">0</span>         <span class="c1">; amplitudes and frequencies moving from saxophone to flute</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w">  </span><span class="mi">3</span><span class="w">  </span><span class="mi">0</span><span class="w">  </span><span class="mi">0</span><span class="w">   </span><span class="mi">1</span><span class="w">  </span><span class="mi">1</span><span class="w">         </span><span class="c1">; amplitudes from flute, frequencies from saxophone</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="w">  </span><span class="mi">3</span><span class="w">  </span><span class="mi">1</span><span class="w">  </span><span class="mi">1</span><span class="w">   </span><span class="mi">0</span><span class="w">  </span><span class="mi">0</span><span class="w">         </span><span class="c1">; amplitudes from saxophone, frequencies from flute</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">6</span><span class="w">  </span><span class="mi">3</span><span class="w">  </span><span class="mi">0</span><span class="w">  </span><span class="mi">1</span><span class="w">   </span><span class="mi">0</span><span class="w">  </span><span class="mi">1</span><span class="w">         </span><span class="c1">; amplitudes and frequencies moving from flute to saxophone </span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">9</span><span class="w">  </span><span class="mi">3</span><span class="w">  </span><span class="mi">1</span><span class="w">  </span><span class="mi">0</span><span class="w">   </span><span class="mi">1</span><span class="w">  </span><span class="mi">0</span><span class="w">         </span><span class="c1">; amplitudes and frequencies moving from saxophone to flute</span><span class="w">
 
-<span class="nb">i</span> <span class="mi">2</span> <span class="mi">13</span> <span class="mi">3</span> <span class="mf">.2</span>  <span class="mf">.8</span> <span class="mf">.2</span> <span class="mf">.8</span>  <span class="mi">10</span>      <span class="c1">; amps and freqs moving randomly between the two spectra</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">13</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mf">.2</span><span class="w">  </span><span class="mf">.8</span><span class="w"> </span><span class="mf">.2</span><span class="w"> </span><span class="mf">.8</span><span class="w">  </span><span class="mi">10</span><span class="w">      </span><span class="c1">; amps and freqs moving randomly between the two spectra</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -256,7 +256,7 @@ a<span class="n">out</span>		<span class="nb">pvsynth</span>	f<span class="n">mo
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm194597"></a>
+        <a id="idm274092"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="pvsanal.html" title="pvsanal"><em class="citetitle">pvsanal</em></a>,
@@ -265,7 +265,7 @@ a<span class="n">out</span>		<span class="nb">pvsynth</span>	f<span class="n">mo
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm194606"></a>
+        <a id="idm274101"></a>
         <h2>Credits</h2>
         <p>
       </p>

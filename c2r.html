@@ -39,19 +39,19 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm38755"></a>
+        <a id="idm49596"></a>
         <h2>Description</h2>
         <p>
       Converts a complex-valued input array into a real-valued array, by removing its imaginary part. The output array will be halt the size of the input. This is a utility operation to facilitate complex-valued operations where the result is purely real.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm38758"></a>
+        <a id="idm49599"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">kout[] <span class="command"><strong>c2r</strong></span> kin[]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm38762"></a>
+        <a id="idm49603"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>kout[]</em></span> -- output array containing the real-valued output. It will be created if it does not exist.
@@ -61,52 +61,52 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm38768"></a>
+        <a id="idm49609"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the c2r opcode. It uses the file <a class="ulink" href="examples/c2r.csd" target="_top"><em class="citetitle">c2r.csd</em></a>.</p>
         <div class="example">
-          <a id="idm38773"></a>
+          <a id="idm49614"></a>
           <p class="title">
             <strong>Example 116. Example of the c2r opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm38780"></a>
+              <a id="idm49621"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 -d -o dac
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">64</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">64</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>
-i<span class="n">fftsize</span> <span class="o">=</span> <span class="mi">1024</span>
-k<span class="n">cnt</span> <span class="nb">init</span> <span class="mi">0</span>
-k<span class="n">In</span><span class="p">[]</span> <span class="nb">init</span>  i<span class="n">fftsize</span>
-k<span class="n">Out</span><span class="p">[]</span> <span class="nb">init</span> i<span class="n">fftsize</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+</span>i<span class="n">fftsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1024</span><span class="w">
+</span>k<span class="n">cnt</span><span class="w"> </span><span class="nb">init</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span>k<span class="n">In</span><span class="p">[]</span><span class="w"> </span><span class="nb">init</span><span class="w">  </span>i<span class="n">fftsize</span><span class="w">
+</span>k<span class="n">Out</span><span class="p">[]</span><span class="w"> </span><span class="nb">init</span><span class="w"> </span>i<span class="n">fftsize</span><span class="w">
 
-a<span class="n">1</span> <span class="nb">oscili</span> <span class="vg">0dbfs</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">440</span>
+</span>a<span class="n">1</span><span class="w"> </span><span class="nb">oscili</span><span class="w"> </span><span class="vg">0dbfs</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">440</span><span class="w">
 
-<span class="k">if</span> k<span class="n">cnt</span> <span class="o">&gt;=</span> i<span class="n">fftsize</span> <span class="k">then</span>
- k<span class="n">Cmplx</span><span class="p">[]</span> <span class="nb">r2c</span> k<span class="n">In</span>
- k<span class="n">Spec</span><span class="p">[]</span> <span class="nb">fft</span> k<span class="n">Cmplx</span>
- k<span class="n">Cmplx</span> <span class="nb">fftinv</span> k<span class="n">Spec</span>
- k<span class="n">Out</span> <span class="nb">c2r</span> k<span class="n">Cmplx</span>
- k<span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span> 
-<span class="k">endif</span>
+</span><span class="k">if</span><span class="w"> </span>k<span class="n">cnt</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span>i<span class="n">fftsize</span><span class="w"> </span><span class="k">then</span><span class="w">
+ </span>k<span class="n">Cmplx</span><span class="p">[]</span><span class="w"> </span><span class="nb">r2c</span><span class="w"> </span>k<span class="n">In</span><span class="w">
+ </span>k<span class="n">Spec</span><span class="p">[]</span><span class="w"> </span><span class="nb">fft</span><span class="w"> </span>k<span class="n">Cmplx</span><span class="w">
+ </span>k<span class="n">Cmplx</span><span class="w"> </span><span class="nb">fftinv</span><span class="w"> </span>k<span class="n">Spec</span><span class="w">
+ </span>k<span class="n">Out</span><span class="w"> </span><span class="nb">c2r</span><span class="w"> </span>k<span class="n">Cmplx</span><span class="w">
+ </span>k<span class="n">cnt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> 
+</span><span class="k">endif</span><span class="w">
 
-k<span class="n">In</span><span class="p">[]</span> <span class="nb">shiftin</span> a<span class="n">1</span>
-a<span class="n">2</span> <span class="nb">shiftout</span> k<span class="n">Out</span>
-k<span class="n">cnt</span> <span class="o">+=</span> <span class="vg">ksmps</span>
-   <span class="nb">out</span> a<span class="n">2</span>
-<span class="kd">endin</span>
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">10</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span>k<span class="n">In</span><span class="p">[]</span><span class="w"> </span><span class="nb">shiftin</span><span class="w"> </span>a<span class="n">1</span><span class="w">
+</span>a<span class="n">2</span><span class="w"> </span><span class="nb">shiftout</span><span class="w"> </span>k<span class="n">Out</span><span class="w">
+</span>k<span class="n">cnt</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="vg">ksmps</span><span class="w">
+   </span><span class="nb">out</span><span class="w"> </span>a<span class="n">2</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -115,7 +115,7 @@ k<span class="n">cnt</span> <span class="o">+=</span> <span class="vg">ksmps</sp
         <br class="example-break" />
       </div>
       <div class="refsect1">
-        <a id="idm38856"></a>
+        <a id="idm49756"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="vectorial.html" title="Vectorial Opcodes"><em class="citetitle"></em>Vectorial opcodes</a>,
@@ -123,7 +123,7 @@ k<span class="n">cnt</span> <span class="o">+=</span> <span class="vg">ksmps</sp
 </p>
       </div>
       <div class="refsect1">
-        <a id="idm38863"></a>
+        <a id="idm49763"></a>
         <h2>Credits</h2>
         <p>
       </p>

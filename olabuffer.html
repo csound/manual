@@ -39,7 +39,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm159382"></a>
+        <a id="idm222800"></a>
         <h2>Description</h2>
         <p>Plugin opcode in framebuffer.</p>
         <p>
@@ -47,19 +47,19 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm159387"></a>
+        <a id="idm222805"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">aout <span class="command"><strong>olabuffer</strong></span> kin, ioverlap</pre>
       </div>
       <div class="refsect1">
-        <a id="idm159391"></a>
+        <a id="idm222809"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>ioverlap</em></span> -- The amount of overlaps per k-array input frame sample size. For example for an input window size of 1024, and a hop size of 256 the overlap factor would be 4. The overlap factor must be larger than or equal to ksmps and must also be an integer multiple of the input k-rate array sample count.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm159395"></a>
+        <a id="idm222813"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>aout</em></span> -- The resulting audio signal from the added input frames.
@@ -67,50 +67,50 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm159400"></a>
+        <a id="idm222818"></a>
         <h2>Examples</h2>
         <p>
       Here is a simple example of the olabuffer opcode. It uses the file <a class="ulink" href="examples/framebuffer.csd" target="_top"><em class="citetitle">framebuffer.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm159405"></a>
+          <a id="idm222823"></a>
           <p class="title">
             <strong>Example 674. Example of the olabuffer opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm159412"></a>
+              <a id="idm222830"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 -odac
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">128</span>
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">128</span><span class="w">
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>
-    i<span class="n">size</span> <span class="nb">init</span> <span class="mi">1024</span>
-    i<span class="n">overlaps</span> <span class="nb">init</span> <span class="mi">4</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+    </span>i<span class="n">size</span><span class="w"> </span><span class="nb">init</span><span class="w"> </span><span class="mi">1024</span><span class="w">
+    </span>i<span class="n">overlaps</span><span class="w"> </span><span class="nb">init</span><span class="w"> </span><span class="mi">4</span><span class="w">
 
-    a<span class="n">sig</span> <span class="nb">diskin2</span> <span class="s">"fox.wav"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
-    k<span class="n">frame</span><span class="p">[]</span> <span class="nb">framebuffer</span> a<span class="n">sig</span><span class="p">,</span> i<span class="n">size</span>
-    k<span class="n">windowedFrame</span><span class="p">[]</span> <span class="nb">window</span> k<span class="n">frame</span><span class="p">,</span> i<span class="n">size</span>
+    </span>a<span class="n">sig</span><span class="w"> </span><span class="nb">diskin2</span><span class="w"> </span><span class="s">"fox.wav"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span>k<span class="n">frame</span><span class="p">[]</span><span class="w"> </span><span class="nb">framebuffer</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>i<span class="n">size</span><span class="w">
+    </span>k<span class="n">windowedFrame</span><span class="p">[]</span><span class="w"> </span><span class="nb">window</span><span class="w"> </span>k<span class="n">frame</span><span class="p">,</span><span class="w"> </span>i<span class="n">size</span><span class="w">
 
-    a<span class="n">out</span> <span class="nb">olabuffer</span> k<span class="n">windowedFrame</span><span class="p">,</span> i<span class="n">overlaps</span>
-    a<span class="n">out</span> <span class="o">=</span> a<span class="n">out</span> <span class="o">/</span> <span class="mi">2</span>
+    </span>a<span class="n">out</span><span class="w"> </span><span class="nb">olabuffer</span><span class="w"> </span>k<span class="n">windowedFrame</span><span class="p">,</span><span class="w"> </span>i<span class="n">overlaps</span><span class="w">
+    </span>a<span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>a<span class="n">out</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="w">
 
-    <span class="nb">outs</span> a<span class="n">out</span><span class="p">,</span> a<span class="n">out</span>
-<span class="kd">endin</span>
+    </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">out</span><span class="p">,</span><span class="w"> </span>a<span class="n">out</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">400</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">400</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -120,7 +120,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm159482"></a>
+        <a id="idm222953"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="olabuffer.html" title="olabuffer"><em class="citetitle">olabuffer</em></a>
@@ -129,7 +129,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm159491"></a>
+        <a id="idm222962"></a>
         <h2>Credits</h2>
         <p>
       </p>

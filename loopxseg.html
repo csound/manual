@@ -39,20 +39,20 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm131947"></a>
+        <a id="idm183127"></a>
         <h2>Description</h2>
         <p>
       Generate control signal consisting of exponential segments delimited by two or more specified points. The entire envelope is looped at <span class="emphasis"><em>kfreq</em></span> rate. Each parameter can be varied at k-rate.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm131951"></a>
+        <a id="idm183131"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ksig <span class="command"><strong>loopxseg</strong></span> kfreq, ktrig, iphase, kvalue0, ktime0  [, kvalue1] [, ktime1] \
       [, kvalue2] [, ktime2] [...]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm131955"></a>
+        <a id="idm183135"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>ksig</em></span> -- Output signal.
@@ -88,21 +88,21 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm131982"></a>
+        <a id="idm183162"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the loopxseg opcode. It uses the file <a class="ulink" href="examples/loopxseg.csd" target="_top"><em class="citetitle">loopxseg.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm131987"></a>
+          <a id="idm183167"></a>
           <p class="title">
             <strong>Example 532. Example of the loopxseg opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm131994"></a>
+              <a id="idm183174"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -112,33 +112,33 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o loopxseg.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>
-k<span class="n">freq</span>  <span class="nb">rspline</span>  <span class="mf">0.01</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mi">1</span>   <span class="c1">; freq. of loop repetition created by random spline</span>
-k<span class="n">trig</span>  <span class="nb">init</span>     <span class="mi">0</span>   <span class="c1">; loop restart trigger (not used)</span>
-i<span class="n">phase</span> <span class="o">=</span>        <span class="mi">0</span>   <span class="c1">; initial phase</span>
-<span class="c1">; loop of filter cutoff values (oct format). Rescaled further down.</span>
-k<span class="n">cfoct</span> <span class="nb">loopxseg</span>  k<span class="n">freq</span><span class="p">,</span> k<span class="n">trig</span><span class="p">,</span> i<span class="n">phase</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
-k<span class="n">env</span>  <span class="nb">linseg</span>   <span class="mi">0</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="vi">p3</span><span class="o">-</span><span class="mf">5.01</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span>
-a<span class="n">sig</span>  <span class="nb">vco2</span>     <span class="mf">0.2</span><span class="o">*</span>k<span class="n">env</span><span class="p">,</span><span class="nb">cpsmidinn</span><span class="p">(</span><span class="mi">48</span><span class="p">),</span><span class="mi">0</span>
-k<span class="n">dep</span>  <span class="nb">rspline</span>  <span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mi">1</span>  <span class="c1">; filter depth created by a random spline</span>
-k<span class="n">cf</span>   <span class="nb">port</span>     <span class="nb">cpsoct</span><span class="p">((</span>k<span class="n">cfoct</span><span class="o">*</span>k<span class="n">dep</span><span class="p">)</span><span class="o">+</span><span class="mi">4</span><span class="p">),</span> <span class="mf">0.001</span>  <span class="c1">; smooth filter changes</span>
-a<span class="n">sig</span>  <span class="nb">moogladder</span>  a<span class="n">sig</span><span class="p">,</span>k<span class="n">cf</span><span class="p">,</span><span class="nb">rnd</span><span class="p">(</span><span class="mf">0.6</span><span class="p">)</span>
-a<span class="n">L</span><span class="p">,</span>a<span class="n">R</span> <span class="nb">pan2</span>     a<span class="n">sig</span><span class="p">,</span><span class="nb">rnd</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-      <span class="nb">outs</span>     a<span class="n">L</span><span class="p">,</span> a<span class="n">R</span>
-<span class="kd">endin</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+</span>k<span class="n">freq</span><span class="w">  </span><span class="nb">rspline</span><span class="w">  </span><span class="mf">0.01</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mi">1</span><span class="w">   </span><span class="c1">; freq. of loop repetition created by random spline</span><span class="w">
+</span>k<span class="n">trig</span><span class="w">  </span><span class="nb">init</span><span class="w">     </span><span class="mi">0</span><span class="w">   </span><span class="c1">; loop restart trigger (not used)</span><span class="w">
+</span>i<span class="n">phase</span><span class="w"> </span><span class="o">=</span><span class="w">        </span><span class="mi">0</span><span class="w">   </span><span class="c1">; initial phase</span><span class="w">
+</span><span class="c1">; loop of filter cutoff values (oct format). Rescaled further down.</span><span class="w">
+</span>k<span class="n">cfoct</span><span class="w"> </span><span class="nb">loopxseg</span><span class="w">  </span>k<span class="n">freq</span><span class="p">,</span><span class="w"> </span>k<span class="n">trig</span><span class="p">,</span><span class="w"> </span>i<span class="n">phase</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="w">
+</span>k<span class="n">env</span><span class="w">  </span><span class="nb">linseg</span><span class="w">   </span><span class="mi">0</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="vi">p3</span><span class="o">-</span><span class="mf">5.01</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="w">
+</span>a<span class="n">sig</span><span class="w">  </span><span class="nb">vco2</span><span class="w">     </span><span class="mf">0.2</span><span class="o">*</span>k<span class="n">env</span><span class="p">,</span><span class="nb">cpsmidinn</span><span class="p">(</span><span class="mi">48</span><span class="p">),</span><span class="mi">0</span><span class="w">
+</span>k<span class="n">dep</span><span class="w">  </span><span class="nb">rspline</span><span class="w">  </span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mi">1</span><span class="w">  </span><span class="c1">; filter depth created by a random spline</span><span class="w">
+</span>k<span class="n">cf</span><span class="w">   </span><span class="nb">port</span><span class="w">     </span><span class="nb">cpsoct</span><span class="p">((</span>k<span class="n">cfoct</span><span class="o">*</span>k<span class="n">dep</span><span class="p">)</span><span class="o">+</span><span class="mi">4</span><span class="p">),</span><span class="w"> </span><span class="mf">0.001</span><span class="w">  </span><span class="c1">; smooth filter changes</span><span class="w">
+</span>a<span class="n">sig</span><span class="w">  </span><span class="nb">moogladder</span><span class="w">  </span>a<span class="n">sig</span><span class="p">,</span>k<span class="n">cf</span><span class="p">,</span><span class="nb">rnd</span><span class="p">(</span><span class="mf">0.6</span><span class="p">)</span><span class="w">
+</span>a<span class="n">L</span><span class="p">,</span>a<span class="n">R</span><span class="w"> </span><span class="nb">pan2</span><span class="w">     </span>a<span class="n">sig</span><span class="p">,</span><span class="nb">rnd</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w">
+      </span><span class="nb">outs</span><span class="w">     </span>a<span class="n">L</span><span class="p">,</span><span class="w"> </span>a<span class="n">R</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">i</span> <span class="mi">1</span>  <span class="mi">0</span> <span class="mi">60</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="mi">0</span><span class="w"> </span><span class="mi">60</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -148,7 +148,7 @@ a<span class="n">L</span><span class="p">,</span>a<span class="n">R</span> <span
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm132138"></a>
+        <a id="idm183383"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="lpshold.html" title="lpshold"><em class="citetitle">lpshold</em></a>
@@ -156,7 +156,7 @@ a<span class="n">L</span><span class="p">,</span>a<span class="n">R</span> <span
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm132145"></a>
+        <a id="idm183390"></a>
         <h2>Credits</h2>
         <p>Author: John ffitch</p>
         <p>New in Version 5.12</p>

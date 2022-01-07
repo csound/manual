@@ -39,19 +39,19 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm199624"></a>
+        <a id="idm281121"></a>
         <h2>Description</h2>
         <p>
       Periodically reads three orchestra control-signal values from an external file.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm199627"></a>
+        <a id="idm281124"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">kr1, kr2, kr3 <span class="command"><strong>readk3</strong></span> ifilname, iformat, iprd</pre>
       </div>
       <div class="refsect1">
-        <a id="idm199631"></a>
+        <a id="idm281128"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>ifilname</em></span> -- an integer N denoting a file named "readk.N" or a character string (in double quotes, spaces permitted) denoting the external file name. For a string, it may either be a full path name with directory specified or a simple filename.  In the later case, the file is sought first in the current directory, then in <a class="link" href="CommandEnvironment.html" title="Csound Environment Variables"><em class="citetitle">SSDIR</em></a>, and finally in <a class="link" href="CommandEnvironment.html" title="Csound Environment Variables"><em class="citetitle">SFDIR</em></a>.
@@ -92,7 +92,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm199657"></a>
+        <a id="idm281154"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>kr1, kr2, kr3</em></span> -- output of the signals read from <span class="emphasis"><em>ifilname</em></span>.
@@ -102,21 +102,21 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm199664"></a>
+        <a id="idm281161"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the readk3 opcode. It uses the file <a class="ulink" href="examples/readk3.csd" target="_top"><em class="citetitle">readk3.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm199669"></a>
+          <a id="idm281166"></a>
           <p class="title">
             <strong>Example 883. Example of the readk3 opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm199676"></a>
+              <a id="idm281173"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -126,41 +126,41 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o readk3.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-gi<span class="n">Sine</span> <span class="nb">ftgen</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">^</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>
+</span>gi<span class="n">Sine</span><span class="w"> </span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">^</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span> <span class="c1">;writes three control signals to a file</span>
-k<span class="n">freq</span>     <span class="nb">randh</span>     <span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">500</span> <span class="c1">;generates one random number between 400 and 600 per second</span>
-k<span class="n">db</span>       <span class="nb">randh</span>     <span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span> <span class="c1">;amplitudes in dB between -24 and 0</span>
-k<span class="n">pan</span>      <span class="nb">randh</span>     <span class="mf">.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">.5</span> <span class="c1">;panning between 0 and 1</span>
-          <span class="nb">dumpk3</span>    k<span class="n">freq</span><span class="p">,</span> k<span class="n">db</span><span class="p">,</span> k<span class="n">pan</span><span class="p">,</span> <span class="s">"dumpk3.txt"</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span> <span class="c1">;writes the control signals</span>
-          <span class="nb">prints</span>    <span class="s">"WRITING:</span><span class="se">\n</span><span class="s">"</span>
-          <span class="nb">printks</span>   <span class="s">"kfreq = </span><span class="si">%f</span><span class="s">, kdb = </span><span class="si">%f</span><span class="s">, kpan = </span><span class="si">%f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> k<span class="n">freq</span><span class="p">,</span> k<span class="n">db</span><span class="p">,</span> k<span class="n">pan</span>  <span class="c1">;prints them</span>
-<span class="kd">endin</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w"> </span><span class="c1">;writes three control signals to a file</span><span class="w">
+</span>k<span class="n">freq</span><span class="w">     </span><span class="nb">randh</span><span class="w">     </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="w"> </span><span class="c1">;generates one random number between 400 and 600 per second</span><span class="w">
+</span>k<span class="n">db</span><span class="w">       </span><span class="nb">randh</span><span class="w">     </span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">12</span><span class="w"> </span><span class="c1">;amplitudes in dB between -24 and 0</span><span class="w">
+</span>k<span class="n">pan</span><span class="w">      </span><span class="nb">randh</span><span class="w">     </span><span class="mf">.5</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">.5</span><span class="w"> </span><span class="c1">;panning between 0 and 1</span><span class="w">
+          </span><span class="nb">dumpk3</span><span class="w">    </span>k<span class="n">freq</span><span class="p">,</span><span class="w"> </span>k<span class="n">db</span><span class="p">,</span><span class="w"> </span>k<span class="n">pan</span><span class="p">,</span><span class="w"> </span><span class="s">"dumpk3.txt"</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="c1">;writes the control signals</span><span class="w">
+          </span><span class="nb">prints</span><span class="w">    </span><span class="s">"WRITING:</span><span class="se">\n</span><span class="s">"</span><span class="w">
+          </span><span class="nb">printks</span><span class="w">   </span><span class="s">"kfreq = </span><span class="si">%f</span><span class="s">, kdb = </span><span class="si">%f</span><span class="s">, kpan = </span><span class="si">%f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>k<span class="n">freq</span><span class="p">,</span><span class="w"> </span>k<span class="n">db</span><span class="p">,</span><span class="w"> </span>k<span class="n">pan</span><span class="w">  </span><span class="c1">;prints them</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">2</span> <span class="c1">;reads the file written by instr 1</span>
-k<span class="n">f</span><span class="p">,</span>k<span class="n">db</span><span class="p">,</span>k<span class="n">p</span> <span class="nb">readk3</span>    <span class="s">"dumpk3.txt"</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span>
-          <span class="nb">prints</span>    <span class="s">"READING:</span><span class="se">\n</span><span class="s">"</span>
-          <span class="nb">printks</span>   <span class="s">"kfreq = </span><span class="si">%f</span><span class="s">, kdb = </span><span class="si">%f</span><span class="s">, kpan = </span><span class="si">%f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> k<span class="n">f</span><span class="p">,</span> k<span class="n">db</span><span class="p">,</span> k<span class="n">p</span>  <span class="c1">;prints again</span>
-k<span class="n">db</span>       <span class="nb">lineto</span>    k<span class="n">db</span><span class="p">,</span> <span class="mf">.1</span> <span class="c1">;smoothing amp transition</span>
-k<span class="n">p</span>        <span class="nb">lineto</span>    k<span class="n">p</span><span class="p">,</span> <span class="mf">.1</span> <span class="c1">;smoothing pan transition</span>
-a<span class="n">out</span>      <span class="nb">poscil</span>    <span class="nb">ampdb</span><span class="p">(</span>k<span class="n">db</span><span class="p">),</span> k<span class="n">f</span><span class="p">,</span> gi<span class="n">Sine</span>
-a<span class="n">L</span><span class="p">,</span> a<span class="n">R</span>    <span class="nb">pan2</span>      a<span class="n">out</span><span class="p">,</span> k<span class="n">p</span>
-          <span class="nb">outs</span>      a<span class="n">L</span><span class="p">,</span> a<span class="n">R</span>
-<span class="kd">endin</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w"> </span><span class="c1">;reads the file written by instr 1</span><span class="w">
+</span>k<span class="n">f</span><span class="p">,</span>k<span class="n">db</span><span class="p">,</span>k<span class="n">p</span><span class="w"> </span><span class="nb">readk3</span><span class="w">    </span><span class="s">"dumpk3.txt"</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+          </span><span class="nb">prints</span><span class="w">    </span><span class="s">"READING:</span><span class="se">\n</span><span class="s">"</span><span class="w">
+          </span><span class="nb">printks</span><span class="w">   </span><span class="s">"kfreq = </span><span class="si">%f</span><span class="s">, kdb = </span><span class="si">%f</span><span class="s">, kpan = </span><span class="si">%f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>k<span class="n">f</span><span class="p">,</span><span class="w"> </span>k<span class="n">db</span><span class="p">,</span><span class="w"> </span>k<span class="n">p</span><span class="w">  </span><span class="c1">;prints again</span><span class="w">
+</span>k<span class="n">db</span><span class="w">       </span><span class="nb">lineto</span><span class="w">    </span>k<span class="n">db</span><span class="p">,</span><span class="w"> </span><span class="mf">.1</span><span class="w"> </span><span class="c1">;smoothing amp transition</span><span class="w">
+</span>k<span class="n">p</span><span class="w">        </span><span class="nb">lineto</span><span class="w">    </span>k<span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="mf">.1</span><span class="w"> </span><span class="c1">;smoothing pan transition</span><span class="w">
+</span>a<span class="n">out</span><span class="w">      </span><span class="nb">poscil</span><span class="w">    </span><span class="nb">ampdb</span><span class="p">(</span>k<span class="n">db</span><span class="p">),</span><span class="w"> </span>k<span class="n">f</span><span class="p">,</span><span class="w"> </span>gi<span class="n">Sine</span><span class="w">
+</span>a<span class="n">L</span><span class="p">,</span><span class="w"> </span>a<span class="n">R</span><span class="w">    </span><span class="nb">pan2</span><span class="w">      </span>a<span class="n">out</span><span class="p">,</span><span class="w"> </span>k<span class="n">p</span><span class="w">
+          </span><span class="nb">outs</span><span class="w">      </span>a<span class="n">L</span><span class="p">,</span><span class="w"> </span>a<span class="n">R</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">5</span>
-<span class="nb">i</span> <span class="mi">2</span> <span class="mi">5</span> <span class="mi">5</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -191,7 +191,7 @@ kfreq = 482.056800, kdb = -4.046700, kpan = 0.876500
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm199871"></a>
+        <a id="idm281484"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="dumpk.html" title="dumpk"><em class="citetitle">dumpk</em></a>,
@@ -204,7 +204,7 @@ kfreq = 482.056800, kdb = -4.046700, kpan = 0.876500
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm199888"></a>
+        <a id="idm281501"></a>
         <h2>Credits</h2>
         <p>By: John ffitch and Barry L. Vercoe</p>
         <p>1999 or earlier</p>

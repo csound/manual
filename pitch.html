@@ -39,20 +39,20 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm179006"></a>
+        <a id="idm251225"></a>
         <h2>Description</h2>
         <p>
       Using the same techniques as <a class="link" href="spectrum.html" title="spectrum"><em class="citetitle">spectrum</em></a> and <a class="link" href="specptrk.html" title="specptrk"><em class="citetitle">specptrk</em></a>, pitch tracks the pitch of the signal in octave point decimal form, and amplitude in dB.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm179013"></a>
+        <a id="idm251232"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">koct, kamp <span class="command"><strong>pitch</strong></span> asig, iupdte, ilo, ihi, idbthresh [, ifrqs] [, iconf] \
       [, istrt] [, iocts] [, iq] [, inptls] [, irolloff] [, iskip]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm179017"></a>
+        <a id="idm251236"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>iupdte</em></span> -- length of period, in seconds, that outputs are updated
@@ -89,7 +89,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm179044"></a>
+        <a id="idm251263"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>koct</em></span> -- The pitch output, given in the octave point decimal format.
@@ -105,21 +105,21 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm179055"></a>
+        <a id="idm251274"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the pitch opcode. It uses the file <a class="ulink" href="examples/pitch.csd" target="_top"><em class="citetitle">pitch.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm179060"></a>
+          <a id="idm251279"></a>
           <p class="title">
             <strong>Example 758. Example of the pitch opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm179067"></a>
+              <a id="idm251286"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -129,49 +129,49 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o pitch.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>	<span class="c1">;clean audio</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">	</span><span class="c1">;clean audio</span><span class="w">
 
-a<span class="n">sig</span> <span class="nb">soundin</span> <span class="vi">p4</span>
-     <span class="nb">outs</span> a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
-<span class="kd">endin</span>
+</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">soundin</span><span class="w"> </span><span class="vi">p4</span><span class="w">
+     </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">2</span>	<span class="c1">;use pitch</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">	</span><span class="c1">;use pitch</span><span class="w">
 
-i<span class="n">updte</span> <span class="o">=</span> <span class="mf">0.001</span>	<span class="c1">;high definition</span>
-i<span class="n">lo</span> <span class="o">=</span> <span class="mi">6</span>
-i<span class="n">hi</span> <span class="o">=</span> <span class="mi">10</span>
-i<span class="n">dbthresh</span> <span class="o">=</span> <span class="mi">10</span>
-i<span class="n">frqs</span> <span class="o">=</span> <span class="mi">12</span>
-i<span class="n">conf</span> <span class="o">=</span> <span class="mi">10</span>
-i<span class="n">strt</span> <span class="o">=</span> <span class="mi">8</span>
+</span>i<span class="n">updte</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.001</span><span class="w">	</span><span class="c1">;high definition</span><span class="w">
+</span>i<span class="n">lo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="w">
+</span>i<span class="n">hi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span>i<span class="n">dbthresh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span>i<span class="n">frqs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">12</span><span class="w">
+</span>i<span class="n">conf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span>i<span class="n">strt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w">
 
-a<span class="n">sig</span> <span class="nb">soundin</span> <span class="vi">p4</span>
-k<span class="n">oct</span><span class="p">,</span> k<span class="n">amp</span> <span class="nb">pitch</span> a<span class="n">sig</span><span class="p">,</span> i<span class="n">updte</span><span class="p">,</span> i<span class="n">lo</span><span class="p">,</span> i<span class="n">hi</span><span class="p">,</span> i<span class="n">dbthresh</span><span class="p">,</span> i<span class="n">frqs</span><span class="p">,</span> i<span class="n">conf</span><span class="p">,</span> i<span class="n">strt</span>
-k<span class="n">amp</span> <span class="o">=</span> k<span class="n">amp</span><span class="o">*</span><span class="mf">.00005</span>		<span class="c1">;lower volume</span>
-k<span class="n">cps</span> <span class="o">=</span> <span class="nb">cpsoct</span><span class="p">(</span>k<span class="n">oct</span><span class="p">)</span>
-a<span class="n">sig</span> <span class="nb">poscil</span> k<span class="n">amp</span><span class="p">,</span> k<span class="n">cps</span><span class="p">,</span> <span class="mi">1</span>	<span class="c1">;re-synthesize with sawtooth</span>
-     <span class="nb">outs</span> a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
+</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">soundin</span><span class="w"> </span><span class="vi">p4</span><span class="w">
+</span>k<span class="n">oct</span><span class="p">,</span><span class="w"> </span>k<span class="n">amp</span><span class="w"> </span><span class="nb">pitch</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>i<span class="n">updte</span><span class="p">,</span><span class="w"> </span>i<span class="n">lo</span><span class="p">,</span><span class="w"> </span>i<span class="n">hi</span><span class="p">,</span><span class="w"> </span>i<span class="n">dbthresh</span><span class="p">,</span><span class="w"> </span>i<span class="n">frqs</span><span class="p">,</span><span class="w"> </span>i<span class="n">conf</span><span class="p">,</span><span class="w"> </span>i<span class="n">strt</span><span class="w">
+</span>k<span class="n">amp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>k<span class="n">amp</span><span class="o">*</span><span class="mf">.00005</span><span class="w">		</span><span class="c1">;lower volume</span><span class="w">
+</span>k<span class="n">cps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">cpsoct</span><span class="p">(</span>k<span class="n">oct</span><span class="p">)</span><span class="w">
+</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">poscil</span><span class="w"> </span>k<span class="n">amp</span><span class="p">,</span><span class="w"> </span>k<span class="n">cps</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">	</span><span class="c1">;re-synthesize with sawtooth</span><span class="w">
+     </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
 
-<span class="kd">endin</span>
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">f</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">16384</span> <span class="mi">10</span> <span class="mi">1</span> <span class="mf">0.5</span> <span class="mf">0.3</span> <span class="mf">0.25</span> <span class="mf">0.2</span> <span class="mf">0.167</span> <span class="mf">0.14</span> <span class="mf">0.125</span> <span class="mf">.111</span>   <span class="c1">;sawtooth</span>
+</span><span class="kd">endin</span><span class="w">
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">f</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">16384</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="mf">0.3</span><span class="w"> </span><span class="mf">0.25</span><span class="w"> </span><span class="mf">0.2</span><span class="w"> </span><span class="mf">0.167</span><span class="w"> </span><span class="mf">0.14</span><span class="w"> </span><span class="mf">0.125</span><span class="w"> </span><span class="mf">.111</span><span class="w">   </span><span class="c1">;sawtooth</span><span class="w">
 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span>  <span class="mi">3</span> <span class="s">"fox.wav"</span>
-<span class="nb">i</span> <span class="mi">2</span> <span class="mi">3</span>  <span class="mi">3</span> <span class="s">"fox.wav"</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">6</span>  <span class="mi">3</span> <span class="s">"mary.wav"</span>
-<span class="nb">i</span> <span class="mi">2</span> <span class="mi">9</span>  <span class="mi">3</span> <span class="s">"mary.wav"</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">12</span> <span class="mi">3</span> <span class="s">"beats.wav"</span>
-<span class="nb">i</span> <span class="mi">2</span> <span class="mi">15</span> <span class="mi">3</span> <span class="s">"beats.wav"</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w">  </span><span class="mi">3</span><span class="w"> </span><span class="s">"fox.wav"</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w">  </span><span class="mi">3</span><span class="w"> </span><span class="s">"fox.wav"</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">6</span><span class="w">  </span><span class="mi">3</span><span class="w"> </span><span class="s">"mary.wav"</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">9</span><span class="w">  </span><span class="mi">3</span><span class="w"> </span><span class="s">"mary.wav"</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="s">"beats.wav"</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="s">"beats.wav"</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -181,7 +181,7 @@ a<span class="n">sig</span> <span class="nb">poscil</span> k<span class="n">amp<
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm179223"></a>
+        <a id="idm251567"></a>
         <h2>Credits</h2>
         <p>
       </p>

@@ -39,20 +39,20 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm247665"></a>
+        <a id="idm349916"></a>
         <h2>Description</h2>
         <p>
       Read absolute time, in seconds, since the start of the performance.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm247668"></a>
+        <a id="idm349919"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ires <span class="command"><strong>times</strong></span></pre>
         <pre class="synopsis">kres <span class="command"><strong>times</strong></span></pre>
       </div>
       <div class="refsect1">
-        <a id="idm247674"></a>
+        <a id="idm349925"></a>
         <h2>Performance</h2>
         <p>
       Time in seconds is available with <span class="emphasis"><em>times</em></span>. This would return 0.5 after half a second. 
@@ -65,21 +65,21 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm247684"></a>
+        <a id="idm349935"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the times opcode. It uses the file <a class="ulink" href="examples/times_complex.csd" target="_top"><em class="citetitle">times_complex.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm247689"></a>
+          <a id="idm349940"></a>
           <p class="title">
-            <strong>Example 1105. Example of the times opcode.</strong>
+            <strong>Example 1106. Example of the times opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm247696"></a>
+              <a id="idm349947"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span> 
 <span class="nt">&lt;CsOptions&gt;</span> 
@@ -89,65 +89,65 @@
 <span class="c1">; For Non-realtime ouput leave only the line below: </span>
 <span class="c1">; -o times_complex.wav -W ;;; for file output any platform </span>
 <span class="nt">&lt;/CsOptions&gt;</span> 
-<span class="nt">&lt;CsInstruments&gt;</span> 
-<span class="c1">;by joachim heintz and rory walsh </span>
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span> 
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span> 
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span> 
-<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span> 
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w"> 
+</span><span class="c1">;by joachim heintz and rory walsh </span><span class="w">
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w"> 
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w"> 
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> 
+</span><span class="vg">0dbfs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> 
 
-gi<span class="n">Wave</span>   <span class="nb">ftgen</span>      <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.25</span> 
+</span>gi<span class="n">Wave</span><span class="w">   </span><span class="nb">ftgen</span><span class="w">      </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">.5</span><span class="p">,</span><span class="w"> </span><span class="mf">.25</span><span class="w"> 
 
-<span class="kd">instr</span> <span class="nf">again</span> 
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">again</span><span class="w"> 
 
-i<span class="n">nstance</span> <span class="o">=</span>          <span class="vi">p4</span> 
- <span class="c1">;reset the duration of this instance </span>
-i<span class="n">Dur</span>     <span class="nb">rnd31</span>      <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span>				<span class="c1">;shorter values are more probable </span>
-i<span class="n">Dur</span>     <span class="o">=</span>          <span class="nb">abs</span><span class="p">(</span>i<span class="n">Dur</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.2</span> 
-<span class="vi">p3</span>       <span class="o">=</span>          i<span class="n">Dur</span> 
- <span class="c1">;trigger the effect instrument of this instance </span>
-         <span class="nb">event_i</span>    <span class="s">"i"</span><span class="p">,</span> <span class="s">"fx_processor"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> i<span class="n">Dur</span><span class="p">,</span> i<span class="n">nstance</span> 
- <span class="c1">;print the status quo </span>
-k<span class="n">Time</span>    <span class="nb">times</span> 
-         <span class="nb">prints</span>     <span class="s">"instance = </span><span class="si">%d</span><span class="s">, start = </span><span class="si">%f</span><span class="s">, duration = </span><span class="si">%f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> i<span class="n">nstance</span><span class="p">,</span> <span class="nb">i</span><span class="p">(</span>k<span class="n">Time</span><span class="p">),</span> i<span class="n">Dur</span> 
- <span class="c1">;make sound </span>
-i<span class="n">amp</span>     <span class="nb">active</span>     <span class="mi">1</span>					<span class="c1">;scale amplitudes </span>
-i<span class="n">Oct</span>     <span class="nb">random</span>     <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span>				<span class="c1">;find pitch </span>
-a<span class="n">Env</span>     <span class="nb">transeg</span>    <span class="mi">0</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span>i<span class="n">amp</span><span class="p">,</span> <span class="vi">p3</span><span class="o">-</span><span class="mf">0.02</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">0</span>	<span class="c1">;output envelope </span>
-a<span class="n">Send</span>    <span class="nb">poscil</span>     a<span class="n">Env</span><span class="p">,</span> <span class="nb">cpsoct</span><span class="p">(</span>i<span class="n">Oct</span><span class="p">),</span> gi<span class="n">Wave</span>		<span class="c1">;audio signal </span>
- <span class="c1">;send signal to effect instrument </span>
-S<span class="n">bus</span>     <span class="nb">sprintf</span>    <span class="s">"audio_</span><span class="si">%d</span><span class="s">"</span><span class="p">,</span> i<span class="n">nstance</span>		<span class="c1">;create unique software bus </span>
-         <span class="nb">chnset</span>     a<span class="n">Send</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> S<span class="n">bus</span>			<span class="c1">;send audio on this bus </span>
- <span class="c1">;get the last k-cycle of this instance and trigger the successor in it </span>
-k<span class="n">Last</span>    <span class="nb">release</span> 
-         <span class="nb">schedkwhen</span> k<span class="n">Last</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s">"again"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> i<span class="n">nstance</span><span class="o">+</span><span class="mi">1</span> 
-<span class="kd">endin</span> 
+</span>i<span class="n">nstance</span><span class="w"> </span><span class="o">=</span><span class="w">          </span><span class="vi">p4</span><span class="w"> 
+ </span><span class="c1">;reset the duration of this instance </span><span class="w">
+</span>i<span class="n">Dur</span><span class="w">     </span><span class="nb">rnd31</span><span class="w">      </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w">				</span><span class="c1">;shorter values are more probable </span><span class="w">
+</span>i<span class="n">Dur</span><span class="w">     </span><span class="o">=</span><span class="w">          </span><span class="nb">abs</span><span class="p">(</span>i<span class="n">Dur</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.2</span><span class="w"> 
+</span><span class="vi">p3</span><span class="w">       </span><span class="o">=</span><span class="w">          </span>i<span class="n">Dur</span><span class="w"> 
+ </span><span class="c1">;trigger the effect instrument of this instance </span><span class="w">
+         </span><span class="nb">event_i</span><span class="w">    </span><span class="s">"i"</span><span class="p">,</span><span class="w"> </span><span class="s">"fx_processor"</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span>i<span class="n">Dur</span><span class="p">,</span><span class="w"> </span>i<span class="n">nstance</span><span class="w"> 
+ </span><span class="c1">;print the status quo </span><span class="w">
+</span>k<span class="n">Time</span><span class="w">    </span><span class="nb">times</span><span class="w"> 
+         </span><span class="nb">prints</span><span class="w">     </span><span class="s">"instance = </span><span class="si">%d</span><span class="s">, start = </span><span class="si">%f</span><span class="s">, duration = </span><span class="si">%f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span>i<span class="n">nstance</span><span class="p">,</span><span class="w"> </span><span class="nb">i</span><span class="p">(</span>k<span class="n">Time</span><span class="p">),</span><span class="w"> </span>i<span class="n">Dur</span><span class="w"> 
+ </span><span class="c1">;make sound </span><span class="w">
+</span>i<span class="n">amp</span><span class="w">     </span><span class="nb">active</span><span class="w">     </span><span class="mi">1</span><span class="w">					</span><span class="c1">;scale amplitudes </span><span class="w">
+</span>i<span class="n">Oct</span><span class="w">     </span><span class="nb">random</span><span class="w">     </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="w">				</span><span class="c1">;find pitch </span><span class="w">
+</span>a<span class="n">Env</span><span class="w">     </span><span class="nb">transeg</span><span class="w">    </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.02</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span>i<span class="n">amp</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="o">-</span><span class="mf">0.02</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">	</span><span class="c1">;output envelope </span><span class="w">
+</span>a<span class="n">Send</span><span class="w">    </span><span class="nb">poscil</span><span class="w">     </span>a<span class="n">Env</span><span class="p">,</span><span class="w"> </span><span class="nb">cpsoct</span><span class="p">(</span>i<span class="n">Oct</span><span class="p">),</span><span class="w"> </span>gi<span class="n">Wave</span><span class="w">		</span><span class="c1">;audio signal </span><span class="w">
+ </span><span class="c1">;send signal to effect instrument </span><span class="w">
+</span>S<span class="n">bus</span><span class="w">     </span><span class="nb">sprintf</span><span class="w">    </span><span class="s">"audio_</span><span class="si">%d</span><span class="s">"</span><span class="p">,</span><span class="w"> </span>i<span class="n">nstance</span><span class="w">		</span><span class="c1">;create unique software bus </span><span class="w">
+         </span><span class="nb">chnset</span><span class="w">     </span>a<span class="n">Send</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span>S<span class="n">bus</span><span class="w">			</span><span class="c1">;send audio on this bus </span><span class="w">
+ </span><span class="c1">;get the last k-cycle of this instance and trigger the successor in it </span><span class="w">
+</span>k<span class="n">Last</span><span class="w">    </span><span class="nb">release</span><span class="w"> 
+         </span><span class="nb">schedkwhen</span><span class="w"> </span>k<span class="n">Last</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">"again"</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>i<span class="n">nstance</span><span class="o">+</span><span class="mi">1</span><span class="w"> 
+</span><span class="kd">endin</span><span class="w"> 
 
-<span class="kd">instr</span> <span class="nf">fx_processor</span> 
- <span class="c1">;apply feedback delay to the above instrument </span>
-i<span class="n">which</span>    <span class="o">=</span>         <span class="vi">p4</span>					<span class="c1">;receive instance number ... </span>
-S<span class="n">bus</span>      <span class="nb">sprintf</span>   <span class="s">"audio_</span><span class="si">%d</span><span class="s">"</span><span class="p">,</span> i<span class="n">which</span>			<span class="c1">; ... and related software bus </span>
-a<span class="n">udio</span>     <span class="nb">chnget</span>    S<span class="n">bus</span>				<span class="c1">;receive audio on this bus </span>
-i<span class="n">rvbtim</span>   <span class="nb">random</span>    <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span>				<span class="c1">;find reverb time </span>
-<span class="vi">p3</span>        <span class="o">=</span>         <span class="vi">p3</span><span class="o">+</span>i<span class="n">rvbtim</span>				<span class="c1">;adjust instrument duration </span>
-i<span class="n">ltptmL</span>   <span class="nb">random</span>    <span class="mf">.1</span><span class="p">,</span> <span class="mf">.5</span>				<span class="c1">;find looptime left ... </span>
-i<span class="n">ltptmR</span>   <span class="nb">random</span>    <span class="mf">.1</span><span class="p">,</span> <span class="mf">.5</span>				<span class="c1">;...and right </span>
-i<span class="n">pan</span>      <span class="nb">random</span>    <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>				<span class="c1">; pan and ... </span>
-i<span class="n">mix</span>      <span class="nb">random</span>    <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>				<span class="c1">;... mix audio </span>
-a<span class="n">L</span><span class="p">,</span>a<span class="n">R</span>     <span class="nb">pan2</span>      a<span class="n">udio</span><span class="p">,</span> i<span class="n">pan</span>				<span class="c1">;create stereo </span>
-a<span class="n">wetL</span>     <span class="nb">comb</span>      a<span class="n">L</span><span class="p">,</span> i<span class="n">rvbtim</span><span class="p">,</span> i<span class="n">ltptmL</span>		<span class="c1">;comb filter </span>
-a<span class="n">wetR</span>     <span class="nb">comb</span>      a<span class="n">R</span><span class="p">,</span> i<span class="n">rvbtim</span><span class="p">,</span> i<span class="n">ltptmR</span> 
-a<span class="n">outL</span>     <span class="nb">ntrpol</span>    a<span class="n">L</span><span class="p">,</span> a<span class="n">wetL</span><span class="p">,</span> i<span class="n">mix</span>			<span class="c1">;wet-dry mix </span>
-a<span class="n">outR</span>     <span class="nb">ntrpol</span>    a<span class="n">R</span><span class="p">,</span> a<span class="n">wetR</span><span class="p">,</span> i<span class="n">mix</span> 
-          <span class="nb">outs</span>      a<span class="n">outL</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> a<span class="n">outR</span><span class="o">/</span><span class="mi">2</span> 
-<span class="kd">endin</span> 
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">fx_processor</span><span class="w"> 
+ </span><span class="c1">;apply feedback delay to the above instrument </span><span class="w">
+</span>i<span class="n">which</span><span class="w">    </span><span class="o">=</span><span class="w">         </span><span class="vi">p4</span><span class="w">					</span><span class="c1">;receive instance number ... </span><span class="w">
+</span>S<span class="n">bus</span><span class="w">      </span><span class="nb">sprintf</span><span class="w">   </span><span class="s">"audio_</span><span class="si">%d</span><span class="s">"</span><span class="p">,</span><span class="w"> </span>i<span class="n">which</span><span class="w">			</span><span class="c1">; ... and related software bus </span><span class="w">
+</span>a<span class="n">udio</span><span class="w">     </span><span class="nb">chnget</span><span class="w">    </span>S<span class="n">bus</span><span class="w">				</span><span class="c1">;receive audio on this bus </span><span class="w">
+</span>i<span class="n">rvbtim</span><span class="w">   </span><span class="nb">random</span><span class="w">    </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="w">				</span><span class="c1">;find reverb time </span><span class="w">
+</span><span class="vi">p3</span><span class="w">        </span><span class="o">=</span><span class="w">         </span><span class="vi">p3</span><span class="o">+</span>i<span class="n">rvbtim</span><span class="w">				</span><span class="c1">;adjust instrument duration </span><span class="w">
+</span>i<span class="n">ltptmL</span><span class="w">   </span><span class="nb">random</span><span class="w">    </span><span class="mf">.1</span><span class="p">,</span><span class="w"> </span><span class="mf">.5</span><span class="w">				</span><span class="c1">;find looptime left ... </span><span class="w">
+</span>i<span class="n">ltptmR</span><span class="w">   </span><span class="nb">random</span><span class="w">    </span><span class="mf">.1</span><span class="p">,</span><span class="w"> </span><span class="mf">.5</span><span class="w">				</span><span class="c1">;...and right </span><span class="w">
+</span>i<span class="n">pan</span><span class="w">      </span><span class="nb">random</span><span class="w">    </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">				</span><span class="c1">; pan and ... </span><span class="w">
+</span>i<span class="n">mix</span><span class="w">      </span><span class="nb">random</span><span class="w">    </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">				</span><span class="c1">;... mix audio </span><span class="w">
+</span>a<span class="n">L</span><span class="p">,</span>a<span class="n">R</span><span class="w">     </span><span class="nb">pan2</span><span class="w">      </span>a<span class="n">udio</span><span class="p">,</span><span class="w"> </span>i<span class="n">pan</span><span class="w">				</span><span class="c1">;create stereo </span><span class="w">
+</span>a<span class="n">wetL</span><span class="w">     </span><span class="nb">comb</span><span class="w">      </span>a<span class="n">L</span><span class="p">,</span><span class="w"> </span>i<span class="n">rvbtim</span><span class="p">,</span><span class="w"> </span>i<span class="n">ltptmL</span><span class="w">		</span><span class="c1">;comb filter </span><span class="w">
+</span>a<span class="n">wetR</span><span class="w">     </span><span class="nb">comb</span><span class="w">      </span>a<span class="n">R</span><span class="p">,</span><span class="w"> </span>i<span class="n">rvbtim</span><span class="p">,</span><span class="w"> </span>i<span class="n">ltptmR</span><span class="w"> 
+</span>a<span class="n">outL</span><span class="w">     </span><span class="nb">ntrpol</span><span class="w">    </span>a<span class="n">L</span><span class="p">,</span><span class="w"> </span>a<span class="n">wetL</span><span class="p">,</span><span class="w"> </span>i<span class="n">mix</span><span class="w">			</span><span class="c1">;wet-dry mix </span><span class="w">
+</span>a<span class="n">outR</span><span class="w">     </span><span class="nb">ntrpol</span><span class="w">    </span>a<span class="n">R</span><span class="p">,</span><span class="w"> </span>a<span class="n">wetR</span><span class="p">,</span><span class="w"> </span>i<span class="n">mix</span><span class="w"> 
+          </span><span class="nb">outs</span><span class="w">      </span>a<span class="n">outL</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span>a<span class="n">outR</span><span class="o">/</span><span class="mi">2</span><span class="w"> 
+</span><span class="kd">endin</span><span class="w"> 
 
-<span class="nt">&lt;/CsInstruments&gt;</span> 
-<span class="nt">&lt;CsScore&gt;</span> 
-<span class="nb">i</span> <span class="s">"again"</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> 
+</span><span class="nt">&lt;/CsInstruments&gt;</span> 
+<span class="nt">&lt;CsScore&gt;</span><span class="w"> 
+</span><span class="nb">i</span><span class="w"> </span><span class="s">"again"</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w"> 
 
-<span class="nb">e</span> <span class="mi">3600</span> 
-<span class="nt">&lt;/CsScore&gt;</span> 
+</span><span class="nb">e</span><span class="w"> </span><span class="mi">3600</span><span class="w"> 
+</span><span class="nt">&lt;/CsScore&gt;</span> 
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -173,14 +173,14 @@ instance = 5, start = 1.835828, duration = 1.777097
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm247981"></a>
+        <a id="idm350421"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="timeinstk.html" title="timeinstk"><em class="citetitle">timeinstk</em></a>, <a class="link" href="timeinsts.html" title="timeinsts"><em class="citetitle">timeinsts</em></a>, <a class="link" href="timek.html" title="timek"><em class="citetitle">timek</em></a>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm247990"></a>
+        <a id="idm350430"></a>
         <h2>Credits</h2>
         <p>
       </p>

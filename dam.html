@@ -39,19 +39,19 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm56969"></a>
+        <a id="idm76297"></a>
         <h2>Description</h2>
         <p>
       This opcode dynamically modifies a gain value applied to the input sound <span class="emphasis"><em>ain</em></span> by comparing its power level to a given threshold level. The signal will be compressed/expanded with different factors regarding that it is over or under the threshold.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm56973"></a>
+        <a id="idm76301"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ares <span class="command"><strong>dam</strong></span> asig, kthreshold, icomp1, icomp2, irtime, iftime</pre>
       </div>
       <div class="refsect1">
-        <a id="idm56977"></a>
+        <a id="idm76305"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>icomp1</em></span> -- compression ratio for upper zone.
@@ -67,7 +67,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm56987"></a>
+        <a id="idm76315"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>asig</em></span> -- input signal to be modified
@@ -80,7 +80,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm56994"></a>
+        <a id="idm76322"></a>
         <h2>Examples</h2>
         <p>
       Because the results of the <span class="emphasis"><em>dam</em></span> opcode can be subtle, I recommend looking at them in a graphical audio editor program like <span class="emphasis"><em>audacity</em></span>. <span class="emphasis"><em>audacity</em></span> is available for Linux, Windows, and the MacOS and may be downloaded from <a class="ulink" href="http://audacity.sourceforge.net/" target="_top"><em class="citetitle">http://audacity.sourceforge.net</em></a>.
@@ -89,14 +89,14 @@
       Here is an example of the dam opcode. It uses the file <a class="ulink" href="examples/dam.csd" target="_top"><em class="citetitle">dam.csd</em></a>, and <a class="ulink" href="examples/beats.wav" target="_top"><em class="citetitle">beats.wav</em></a>.
       </p>
         <div class="example">
-          <a id="idm57007"></a>
+          <a id="idm76335"></a>
           <p class="title">
             <strong>Example 202. An example of the dam opcode compressing an audio signal.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm57014"></a>
+              <a id="idm76342"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -106,41 +106,41 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o dam.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>	<span class="c1">;normal audio</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">	</span><span class="c1">;normal audio</span><span class="w">
 
-a<span class="n">sig</span> <span class="nb">diskin2</span> <span class="s">"beats.wav"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
-     <span class="nb">outs</span> a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
+</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">diskin2</span><span class="w"> </span><span class="s">"beats.wav"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+     </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
 
-<span class="kd">endin</span>
+</span><span class="kd">endin</span><span class="w">
 
 
-<span class="kd">instr</span> <span class="nf">2</span>	<span class="c1">; compressed audio</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">	</span><span class="c1">; compressed audio</span><span class="w">
 
-k<span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.2</span>
-i<span class="n">comp1</span> <span class="o">=</span> <span class="mf">0.8</span>
-i<span class="n">comp2</span> <span class="o">=</span> <span class="mf">0.2</span>
-i<span class="n">rtime</span> <span class="o">=</span> <span class="mf">0.01</span>
-i<span class="n">ftime</span> <span class="o">=</span> <span class="mf">0.5</span>
-a<span class="n">sig</span> <span class="nb">diskin2</span> <span class="s">"beats.wav"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
-a<span class="n">sig</span> <span class="nb">dam</span> a<span class="n">sig</span><span class="p">,</span> k<span class="n">threshold</span><span class="p">,</span> i<span class="n">comp1</span><span class="p">,</span> i<span class="n">comp2</span><span class="p">,</span> i<span class="n">rtime</span><span class="p">,</span> i<span class="n">ftime</span>
-    <span class="nb">outs</span> a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
-<span class="kd">endin</span>
+</span>k<span class="n">threshold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.2</span><span class="w">
+</span>i<span class="n">comp1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.8</span><span class="w">
+</span>i<span class="n">comp2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.2</span><span class="w">
+</span>i<span class="n">rtime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.01</span><span class="w">
+</span>i<span class="n">ftime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span><span class="w">
+</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">diskin2</span><span class="w"> </span><span class="s">"beats.wav"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">dam</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>k<span class="n">threshold</span><span class="p">,</span><span class="w"> </span>i<span class="n">comp1</span><span class="p">,</span><span class="w"> </span>i<span class="n">comp2</span><span class="p">,</span><span class="w"> </span>i<span class="n">rtime</span><span class="p">,</span><span class="w"> </span>i<span class="n">ftime</span><span class="w">
+    </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">2</span>
-<span class="nb">i</span> <span class="mi">2</span> <span class="mf">2.5</span> <span class="mf">8.5</span>
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mf">2.5</span><span class="w"> </span><span class="mf">8.5</span><span class="w">
 
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -155,13 +155,13 @@ a<span class="n">sig</span> <span class="nb">dam</span> a<span class="n">sig</sp
 
       </p>
         <div class="example">
-          <a id="idm57118"></a>
+          <a id="idm76518"></a>
           <p class="title">
             <strong>Example 203. An example of the dam opcode expanding an audio signal.</strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
-              <a id="idm57120"></a>
+              <a id="idm76520"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -171,42 +171,42 @@ a<span class="n">sig</span> <span class="nb">dam</span> a<span class="n">sig</sp
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o dam_expanded.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>	
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">	
 
-a<span class="n">sig</span> <span class="nb">diskin2</span> <span class="s">"beats.wav"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
-     <span class="nb">outs</span> a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
+</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">diskin2</span><span class="w"> </span><span class="s">"beats.wav"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+     </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
 
-<span class="kd">endin</span>
+</span><span class="kd">endin</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">2</span>	<span class="c1">;expanded audio</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">	</span><span class="c1">;expanded audio</span><span class="w">
 
-k<span class="n">threshold</span> <span class="o">=</span> <span class="mf">.5</span>
-i<span class="n">comp1</span> <span class="o">=</span> <span class="mi">2</span>
-i<span class="n">comp2</span> <span class="o">=</span> <span class="mi">3</span>
-i<span class="n">rtime</span> <span class="o">=</span> <span class="mf">0.01</span>
-i<span class="n">ftime</span> <span class="o">=</span> <span class="mf">0.1</span>
+</span>k<span class="n">threshold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">.5</span><span class="w">
+</span>i<span class="n">comp1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span>i<span class="n">comp2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w">
+</span>i<span class="n">rtime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.01</span><span class="w">
+</span>i<span class="n">ftime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span><span class="w">
 
-a<span class="n">sig</span> <span class="nb">diskin2</span> <span class="s">"beats.wav"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
-a<span class="n">sig</span> <span class="nb">dam</span> a<span class="n">sig</span><span class="p">,</span> k<span class="n">threshold</span><span class="p">,</span> i<span class="n">comp1</span><span class="p">,</span> i<span class="n">comp2</span><span class="p">,</span> i<span class="n">rtime</span><span class="p">,</span> i<span class="n">ftime</span>
-     <span class="nb">outs</span> a<span class="n">sig</span><span class="o">*</span><span class="mf">.2</span><span class="p">,</span> a<span class="n">sig</span><span class="o">*</span><span class="mf">.2</span>	<span class="c1">;adjust volume of expanded beat</span>
+</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">diskin2</span><span class="w"> </span><span class="s">"beats.wav"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">dam</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>k<span class="n">threshold</span><span class="p">,</span><span class="w"> </span>i<span class="n">comp1</span><span class="p">,</span><span class="w"> </span>i<span class="n">comp2</span><span class="p">,</span><span class="w"> </span>i<span class="n">rtime</span><span class="p">,</span><span class="w"> </span>i<span class="n">ftime</span><span class="w">
+     </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">sig</span><span class="o">*</span><span class="mf">.2</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="o">*</span><span class="mf">.2</span><span class="w">	</span><span class="c1">;adjust volume of expanded beat</span><span class="w">
 
-<span class="kd">endin</span>
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">2</span>
-<span class="nb">i</span> <span class="mi">2</span> <span class="mf">2.5</span> <span class="mf">6.5</span>
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mf">2.5</span><span class="w"> </span><span class="mf">6.5</span><span class="w">
 
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -218,14 +218,14 @@ a<span class="n">sig</span> <span class="nb">dam</span> a<span class="n">sig</sp
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm57223"></a>
+        <a id="idm76695"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="compress.html" title="compress"><em class="citetitle">compress</em></a>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm57228"></a>
+        <a id="idm76700"></a>
         <h2>Credits</h2>
         <p>
       </p>

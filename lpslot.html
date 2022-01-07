@@ -39,47 +39,47 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm136824"></a>
+        <a id="idm190174"></a>
         <h2>Description</h2>
         <p>
       Selects the slot to be use by further lp opcodes.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm136827"></a>
+        <a id="idm190177"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>lpslot</strong></span> islot</pre>
       </div>
       <div class="refsect1">
-        <a id="idm136831"></a>
+        <a id="idm190181"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>islot</em></span> -- number of slot to be selected.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm136835"></a>
+        <a id="idm190185"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>lpslot</em></span> selects the slot to be use by further lp opcodes. This is the way to load and reference several analyses at the same time.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm136839"></a>
+        <a id="idm190189"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the lpslot opcode. It uses the file <a class="ulink" href="examples/lpslot.csd" target="_top"><em class="citetitle">lpslot.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm136844"></a>
+          <a id="idm190194"></a>
           <p class="title">
             <strong>Example 557. Example of the lpslot opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm136851"></a>
+              <a id="idm190201"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -89,48 +89,48 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o lpslot.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="c1">; by Menno Knevel 2021</span>
+</span><span class="c1">; by Menno Knevel 2021</span><span class="w">
 
-i<span class="n">res1</span> <span class="nb">system_i</span> <span class="mi">1</span><span class="p">,</span><span class="s">{{ lpanal -a -p40 -h200 -P50  -Q5000 -v1 fox.wav fox.lpc }}</span>
-i<span class="n">res2</span> <span class="nb">system_i</span> <span class="mi">1</span><span class="p">,</span><span class="s">{{ lpanal -a -p40 -h200 -P50  -Q5000 -v1 stereoJungle.wav stereoJungle.lpc }}</span>
+</span>i<span class="n">res1</span><span class="w"> </span><span class="nb">system_i</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="s">{{ lpanal -a -p40 -h200 -P50  -Q5000 -v1 fox.wav fox.lpc }}</span><span class="w">
+</span>i<span class="n">res2</span><span class="w"> </span><span class="nb">system_i</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="s">{{ lpanal -a -p40 -h200 -P50  -Q5000 -v1 stereoJungle.wav stereoJungle.lpc }}</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span> <span class="c1">; lpinterp works only with poles files.</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w"> </span><span class="c1">; lpinterp works only with poles files.</span><span class="w">
 
-i<span class="n">sine</span>  <span class="nb">ftgen</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>     <span class="c1">; sine wave</span>
-i<span class="n">len1</span>  <span class="nb">filelen</span> <span class="s">"fox.wav"</span>            <span class="c1">; get length of soundfiles</span>
-i<span class="n">len2</span>  <span class="nb">filelen</span> <span class="s">"stereoJungle.wav"</span>  
-<span class="nb">prints</span> <span class="s">"fox.wav = </span><span class="si">%f</span><span class="s"> seconds and stereoJungle.wav = </span><span class="si">%f</span><span class="s"> seconds</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span>i<span class="n">len1</span><span class="p">,</span> i<span class="n">len2</span>
-a<span class="n">src</span>   <span class="nb">buzz</span> <span class="mf">.5</span><span class="p">,</span> <span class="mi">440</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1</span>
+</span>i<span class="n">sine</span><span class="w">  </span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">     </span><span class="c1">; sine wave</span><span class="w">
+</span>i<span class="n">len1</span><span class="w">  </span><span class="nb">filelen</span><span class="w"> </span><span class="s">"fox.wav"</span><span class="w">            </span><span class="c1">; get length of soundfiles</span><span class="w">
+</span>i<span class="n">len2</span><span class="w">  </span><span class="nb">filelen</span><span class="w"> </span><span class="s">"stereoJungle.wav"</span><span class="w">  
+</span><span class="nb">prints</span><span class="w"> </span><span class="s">"fox.wav = </span><span class="si">%f</span><span class="s"> seconds and stereoJungle.wav = </span><span class="si">%f</span><span class="s"> seconds</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span>i<span class="n">len1</span><span class="p">,</span><span class="w"> </span>i<span class="n">len2</span><span class="w">
+</span>a<span class="n">src</span><span class="w">   </span><span class="nb">buzz</span><span class="w"> </span><span class="mf">.5</span><span class="p">,</span><span class="w"> </span><span class="mi">440</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
   
-k<span class="n">time</span>  <span class="nb">line</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="vi">p3</span>              <span class="c1">; from start to end for fox.wav</span>
-       <span class="nb">lpslot</span> <span class="mi">0</span>                    <span class="c1">; Read data poles</span>
-k<span class="n">rmsr</span><span class="p">,</span> k<span class="n">rmso</span><span class="p">,</span> k<span class="n">err</span><span class="p">,</span> k<span class="n">cps</span> <span class="nb">lpread</span> k<span class="n">time</span><span class="p">,</span><span class="s">"fox.lpc"</span>                     
-       <span class="nb">lpslot</span> <span class="mi">1</span>                    <span class="c1">; Read data poles</span>
-k<span class="n">rmsr</span><span class="p">,</span> k<span class="n">rmso</span><span class="p">,</span> k<span class="n">err</span><span class="p">,</span> k<span class="n">cps</span> <span class="nb">lpread</span> k<span class="n">time</span><span class="p">,</span><span class="s">"stereoJungle.lpc"</span>
-k<span class="n">mix</span>   <span class="nb">line</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">1</span>               <span class="c1">; mixing the 2 lpc files</span>
-       <span class="nb">lpinterp</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> k<span class="n">mix</span>         <span class="c1">; move from jungle (slot 1) to fox (slot 0)</span>
-a<span class="n">res</span>   <span class="nb">lpreson</span> a<span class="n">src</span>
-a<span class="n">out</span>   <span class="nb">balance</span> a<span class="n">res</span><span class="p">,</span> a<span class="n">src</span>
-       <span class="nb">outs</span> a<span class="n">out</span><span class="p">,</span> a<span class="n">out</span>
+</span>k<span class="n">time</span><span class="w">  </span><span class="nb">line</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="w">              </span><span class="c1">; from start to end for fox.wav</span><span class="w">
+       </span><span class="nb">lpslot</span><span class="w"> </span><span class="mi">0</span><span class="w">                    </span><span class="c1">; Read data poles</span><span class="w">
+</span>k<span class="n">rmsr</span><span class="p">,</span><span class="w"> </span>k<span class="n">rmso</span><span class="p">,</span><span class="w"> </span>k<span class="n">err</span><span class="p">,</span><span class="w"> </span>k<span class="n">cps</span><span class="w"> </span><span class="nb">lpread</span><span class="w"> </span>k<span class="n">time</span><span class="p">,</span><span class="s">"fox.lpc"</span><span class="w">                     
+       </span><span class="nb">lpslot</span><span class="w"> </span><span class="mi">1</span><span class="w">                    </span><span class="c1">; Read data poles</span><span class="w">
+</span>k<span class="n">rmsr</span><span class="p">,</span><span class="w"> </span>k<span class="n">rmso</span><span class="p">,</span><span class="w"> </span>k<span class="n">err</span><span class="p">,</span><span class="w"> </span>k<span class="n">cps</span><span class="w"> </span><span class="nb">lpread</span><span class="w"> </span>k<span class="n">time</span><span class="p">,</span><span class="s">"stereoJungle.lpc"</span><span class="w">
+</span>k<span class="n">mix</span><span class="w">   </span><span class="nb">line</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">               </span><span class="c1">; mixing the 2 lpc files</span><span class="w">
+       </span><span class="nb">lpinterp</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span>k<span class="n">mix</span><span class="w">         </span><span class="c1">; move from jungle (slot 1) to fox (slot 0)</span><span class="w">
+</span>a<span class="n">res</span><span class="w">   </span><span class="nb">lpreson</span><span class="w"> </span>a<span class="n">src</span><span class="w">
+</span>a<span class="n">out</span><span class="w">   </span><span class="nb">balance</span><span class="w"> </span>a<span class="n">res</span><span class="p">,</span><span class="w"> </span>a<span class="n">src</span><span class="w">
+       </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">out</span><span class="p">,</span><span class="w"> </span>a<span class="n">out</span><span class="w">
 
-<span class="kd">endin</span>
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">s</span> 
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mf">2.8</span>        	
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">5</span> <span class="mf">6.75</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">15</span> <span class="mi">8</span>        <span class="c1">; last frame freezes until note end (6.75-8 secs)</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">s</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">2.8</span><span class="w">        	
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mf">6.75</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="mi">8</span><span class="w">        </span><span class="c1">; last frame freezes until note end (6.75-8 secs)</span><span class="w">
 
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -140,14 +140,14 @@ a<span class="n">out</span>   <span class="nb">balance</span> a<span class="n">r
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm137011"></a>
+        <a id="idm190467"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="lpinterp.html" title="lpinterp"><em class="citetitle">lpinterp</em></a>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm137016"></a>
+        <a id="idm190472"></a>
         <h2>Credits</h2>
         <p>
       </p>

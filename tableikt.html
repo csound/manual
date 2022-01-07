@@ -39,7 +39,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm240583"></a>
+        <a id="idm339931"></a>
         <h2>Description</h2>
         <p>
       k-rate control over table numbers. Function tables are read with linear interpolation.
@@ -49,13 +49,13 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm240590"></a>
+        <a id="idm339938"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ares <span class="command"><strong>tableikt</strong></span> xndx, kfn [, ixmode] [, ixoff] [, iwrap]</pre>
         <pre class="synopsis">kres <span class="command"><strong>tableikt</strong></span> kndx, kfn [, ixmode] [, ixoff] [, iwrap]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm240596"></a>
+        <a id="idm339944"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>ixmode</em></span> -- if 0, <span class="emphasis"><em>xndx</em></span> and <span class="emphasis"><em>ixoff</em></span> ranges match the length of the table. if non-zero <span class="emphasis"><em>xndx</em></span> and <span class="emphasis"><em>ixoff</em></span> have a 0 to 1 range. Default is 0
@@ -68,7 +68,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm240617"></a>
+        <a id="idm339965"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>kndx</em></span> -- Index into table, either a positive number range matching the table length (<span class="emphasis"><em>ixmode</em></span> = 0) or a 0 to 1 range (<span class="emphasis"><em>ixmode</em></span> not equal to 0).
@@ -98,21 +98,21 @@
         </div>
       </div>
       <div class="refsect1">
-        <a id="idm240638"></a>
+        <a id="idm339986"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the tableikt opcode. It uses the file <a class="ulink" href="examples/tableikt.csd" target="_top"><em class="citetitle">tableikt.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm240643"></a>
+          <a id="idm339991"></a>
           <p class="title">
-            <strong>Example 1072. Example of the tableikt opcode.</strong>
+            <strong>Example 1073. Example of the tableikt opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm240650"></a>
+              <a id="idm339998"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -122,48 +122,48 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o tableikt.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
 
-i<span class="n">lowfn</span>	<span class="o">=</span> <span class="vi">p4</span>					<span class="c1">;lowest ftable wave</span>
-i<span class="n">highfn</span>	<span class="o">=</span> <span class="vi">p5</span>					<span class="c1">;highest ftable wave</span>
+</span>i<span class="n">lowfn</span><span class="w">	</span><span class="o">=</span><span class="w"> </span><span class="vi">p4</span><span class="w">					</span><span class="c1">;lowest ftable wave</span><span class="w">
+</span>i<span class="n">highfn</span><span class="w">	</span><span class="o">=</span><span class="w"> </span><span class="vi">p5</span><span class="w">					</span><span class="c1">;highest ftable wave</span><span class="w">
 
-k<span class="n">swpenv</span>	<span class="nb">line</span> <span class="mi">1</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">0</span>				<span class="c1">;sweep envelope, calculate current table pair and interpolation amount</span>
-i<span class="n">numtables</span> <span class="o">=</span> i<span class="n">highfn</span> <span class="o">-</span> i<span class="n">lowfn</span>			<span class="c1">;1 less than number of tables</span>
-k<span class="n">fn1</span>	<span class="o">=</span> <span class="nb">int</span><span class="p">(</span>k<span class="n">swpenv</span><span class="o">*</span>i<span class="n">numtables</span><span class="p">)</span> <span class="o">+</span> i<span class="n">lowfn</span>
-        <span class="nb">printks</span> <span class="s">"play table no: </span><span class="si">%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> k<span class="n">fn1</span>
-k<span class="n">fn2</span>	<span class="o">=</span> k<span class="n">fn1</span> <span class="o">+</span> <span class="mi">1</span>
-k<span class="n">interp</span>	<span class="o">=</span> <span class="nb">frac</span><span class="p">(</span>k<span class="n">swpenv</span><span class="o">*</span>i<span class="n">numtables</span><span class="p">)</span>		
-i<span class="n">xmode</span>  <span class="o">=</span> <span class="mi">1</span>					<span class="c1">;read tables with phasor</span>
-a<span class="n">phase</span>	<span class="nb">phasor</span>	<span class="mi">40</span>	
-a<span class="n">sig</span>	<span class="nb">tableikt</span> a<span class="n">phase</span><span class="p">,</span> k<span class="n">fn1</span><span class="p">,</span> i<span class="n">xmode</span>		<span class="c1">;normalized index</span>
-   <span class="k">if</span> k<span class="n">swpenv</span> <span class="o">==</span> <span class="mf">1.0</span> <span class="k">kgoto</span> <span class="nl">skipfn2</span>		<span class="c1">;if kfn1 is last table, there is no kfn2</span>
-	a<span class="n">sig2</span>	<span class="nb">tableikt</span> a<span class="n">phase</span><span class="p">,</span> k<span class="n">fn2</span><span class="p">,</span> i<span class="n">xmode</span>
-   <span class="nl">skipfn2</span><span class="p">:</span>
-   a<span class="n">mix</span>	<span class="nb">ntrpol</span>	a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig2</span><span class="p">,</span> k<span class="n">interp</span>		<span class="c1">;interpolate between tables and output</span>
-	<span class="nb">outs</span>	a<span class="n">mix</span><span class="o">*</span><span class="mf">.5</span><span class="p">,</span> a<span class="n">mix</span><span class="o">*</span><span class="mf">.5</span>
+</span>k<span class="n">swpenv</span><span class="w">	</span><span class="nb">line</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">				</span><span class="c1">;sweep envelope, calculate current table pair and interpolation amount</span><span class="w">
+</span>i<span class="n">numtables</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>i<span class="n">highfn</span><span class="w"> </span><span class="o">-</span><span class="w"> </span>i<span class="n">lowfn</span><span class="w">			</span><span class="c1">;1 less than number of tables</span><span class="w">
+</span>k<span class="n">fn1</span><span class="w">	</span><span class="o">=</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span>k<span class="n">swpenv</span><span class="o">*</span>i<span class="n">numtables</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>i<span class="n">lowfn</span><span class="w">
+        </span><span class="nb">printks</span><span class="w"> </span><span class="s">"play table no: </span><span class="si">%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>k<span class="n">fn1</span><span class="w">
+</span>k<span class="n">fn2</span><span class="w">	</span><span class="o">=</span><span class="w"> </span>k<span class="n">fn1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span>k<span class="n">interp</span><span class="w">	</span><span class="o">=</span><span class="w"> </span><span class="nb">frac</span><span class="p">(</span>k<span class="n">swpenv</span><span class="o">*</span>i<span class="n">numtables</span><span class="p">)</span><span class="w">		
+</span>i<span class="n">xmode</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">					</span><span class="c1">;read tables with phasor</span><span class="w">
+</span>a<span class="n">phase</span><span class="w">	</span><span class="nb">phasor</span><span class="w">	</span><span class="mi">40</span><span class="w">	
+</span>a<span class="n">sig</span><span class="w">	</span><span class="nb">tableikt</span><span class="w"> </span>a<span class="n">phase</span><span class="p">,</span><span class="w"> </span>k<span class="n">fn1</span><span class="p">,</span><span class="w"> </span>i<span class="n">xmode</span><span class="w">		</span><span class="c1">;normalized index</span><span class="w">
+   </span><span class="k">if</span><span class="w"> </span>k<span class="n">swpenv</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">1.0</span><span class="w"> </span><span class="k">kgoto</span><span class="w"> </span><span class="nl">skipfn2</span><span class="w">		</span><span class="c1">;if kfn1 is last table, there is no kfn2</span><span class="w">
+	</span>a<span class="n">sig2</span><span class="w">	</span><span class="nb">tableikt</span><span class="w"> </span>a<span class="n">phase</span><span class="p">,</span><span class="w"> </span>k<span class="n">fn2</span><span class="p">,</span><span class="w"> </span>i<span class="n">xmode</span><span class="w">
+   </span><span class="nl">skipfn2</span><span class="p">:</span><span class="w">
+   </span>a<span class="n">mix</span><span class="w">	</span><span class="nb">ntrpol</span><span class="w">	</span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig2</span><span class="p">,</span><span class="w"> </span>k<span class="n">interp</span><span class="w">		</span><span class="c1">;interpolate between tables and output</span><span class="w">
+	</span><span class="nb">outs</span><span class="w">	</span>a<span class="n">mix</span><span class="o">*</span><span class="mf">.5</span><span class="p">,</span><span class="w"> </span>a<span class="n">mix</span><span class="o">*</span><span class="mf">.5</span><span class="w">
 	
-<span class="kd">endin</span>
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">f</span> <span class="mi">1</span>  <span class="mi">0</span> <span class="mi">16384</span> <span class="mi">10</span> <span class="mi">1</span>  
-<span class="nb">f</span> <span class="mi">2</span>  <span class="mi">0</span> <span class="mi">16384</span> <span class="mi">10</span> <span class="mi">1</span> <span class="mf">.5</span>  
-<span class="nb">f</span> <span class="mi">3</span>  <span class="mi">0</span> <span class="mi">16384</span> <span class="mi">1</span> <span class="s">"fox.wav"</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>				<span class="c1">;a sample</span>
-<span class="nb">f</span> <span class="mi">4</span>  <span class="mi">0</span> <span class="mi">16384</span> <span class="mi">10</span> <span class="mi">1</span> <span class="mf">.5</span> <span class="mf">.3</span> <span class="mf">.25</span> <span class="mf">.2</span> <span class="mf">.16</span> <span class="mf">.14</span> <span class="mf">.125</span> <span class="mf">.111</span>	<span class="c1">;sawtooth </span>
-<span class="nb">f</span> <span class="mi">5</span>  <span class="mi">0</span> <span class="mi">16384</span> <span class="mi">10</span> <span class="mi">1</span> <span class="mf">.4</span> <span class="mf">.3</span> <span class="mf">.25</span> <span class="mf">.2</span>
-<span class="nb">f</span> <span class="mi">6</span>  <span class="mi">0</span> <span class="mi">16384</span> <span class="mi">10</span> <span class="mi">1</span> <span class="mf">.3</span> <span class="mf">.3</span> <span class="mf">.25</span> <span class="mf">.2</span> <span class="mf">.16</span> 
-<span class="nb">f</span> <span class="mi">7</span>  <span class="mi">0</span> <span class="mi">16384</span> <span class="mi">10</span> <span class="mi">1</span>  <span class="mi">1</span>  <span class="mi">1</span>  <span class="mi">1</span>  <span class="mf">.7</span> <span class="mf">.5</span>  <span class="mf">.3</span>  <span class="mf">.1</span>		<span class="c1">;pulse</span>
-<span class="nb">f</span> <span class="mi">8</span>  <span class="mi">0</span> <span class="mi">16384</span> <span class="mi">1</span> <span class="s">"beats.wav"</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>			<span class="c1">;a sample</span>
+</span><span class="kd">endin</span><span class="w">
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="mi">0</span><span class="w"> </span><span class="mi">16384</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w">  
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">2</span><span class="w">  </span><span class="mi">0</span><span class="w"> </span><span class="mi">16384</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mf">.5</span><span class="w">  
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">3</span><span class="w">  </span><span class="mi">0</span><span class="w"> </span><span class="mi">16384</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="s">"fox.wav"</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w">				</span><span class="c1">;a sample</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">4</span><span class="w">  </span><span class="mi">0</span><span class="w"> </span><span class="mi">16384</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mf">.5</span><span class="w"> </span><span class="mf">.3</span><span class="w"> </span><span class="mf">.25</span><span class="w"> </span><span class="mf">.2</span><span class="w"> </span><span class="mf">.16</span><span class="w"> </span><span class="mf">.14</span><span class="w"> </span><span class="mf">.125</span><span class="w"> </span><span class="mf">.111</span><span class="w">	</span><span class="c1">;sawtooth </span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">5</span><span class="w">  </span><span class="mi">0</span><span class="w"> </span><span class="mi">16384</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mf">.4</span><span class="w"> </span><span class="mf">.3</span><span class="w"> </span><span class="mf">.25</span><span class="w"> </span><span class="mf">.2</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">6</span><span class="w">  </span><span class="mi">0</span><span class="w"> </span><span class="mi">16384</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mf">.3</span><span class="w"> </span><span class="mf">.3</span><span class="w"> </span><span class="mf">.25</span><span class="w"> </span><span class="mf">.2</span><span class="w"> </span><span class="mf">.16</span><span class="w"> 
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">7</span><span class="w">  </span><span class="mi">0</span><span class="w"> </span><span class="mi">16384</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="mi">1</span><span class="w">  </span><span class="mi">1</span><span class="w">  </span><span class="mi">1</span><span class="w">  </span><span class="mf">.7</span><span class="w"> </span><span class="mf">.5</span><span class="w">  </span><span class="mf">.3</span><span class="w">  </span><span class="mf">.1</span><span class="w">		</span><span class="c1">;pulse</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">8</span><span class="w">  </span><span class="mi">0</span><span class="w"> </span><span class="mi">16384</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="s">"beats.wav"</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w">			</span><span class="c1">;a sample</span><span class="w">
 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">10</span> <span class="mi">1</span> <span class="mi">8</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">8</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -183,14 +183,14 @@ play table no: 1</pre>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm240872"></a>
+        <a id="idm340399"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="tablekt.html" title="tablekt"><em class="citetitle">tablekt</em></a>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm240877"></a>
+        <a id="idm340404"></a>
         <h2>Credits</h2>
         <p>
       </p>

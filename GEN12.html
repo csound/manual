@@ -39,19 +39,19 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm287510"></a>
+        <a id="idm407358"></a>
         <h2>Description</h2>
         <p>
       This generates the log of a modified Bessel function of the second kind, order 0, suitable for use in amplitude-modulated FM.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm287513"></a>
+        <a id="idm407361"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>f</strong></span> # time size 12 xint</pre>
       </div>
       <div class="refsect1">
-        <a id="idm287517"></a>
+        <a id="idm407365"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>size </em></span> -- number of points in the table. Must be a power of 2 or a power-of-2 plus 1 (see <a class="link" href="f.html" title="f Statement (or Function Table Statement)"><em class="citetitle">f statement</em></a>). The normal value is power-of-2 plus 1.
@@ -93,20 +93,20 @@
         </div>
       </div>
       <div class="refsect1">
-        <a id="idm287541"></a>
+        <a id="idm407389"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the GEN12 generator. It uses the file <a class="ulink" href="examples/gen12.csd" target="_top"><em class="citetitle">gen12.csd</em></a>.
            </p>
         <div class="example">
-          <a id="idm287546"></a>
+          <a id="idm407394"></a>
           <p class="title">
-            <strong>Example 1287. Example of the GEN12 generator.</strong>
+            <strong>Example 1288. Example of the GEN12 generator.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm287553"></a>
+              <a id="idm407401"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -116,66 +116,66 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o gen12.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
-<span class="c1">;example from the Csound Book, page 87</span>
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
+</span><span class="c1">;example from the Csound Book, page 87</span><span class="w">
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
 
-i<span class="n">dur</span>    <span class="o">=</span>       <span class="vi">p3</span>
-i<span class="n">amp</span>    <span class="o">=</span>       <span class="vi">p4</span>
-i<span class="n">carfrq</span> <span class="o">=</span>       <span class="vi">p5</span>
-i<span class="n">modfrq</span> <span class="o">=</span>       <span class="vi">p6</span>          
-a<span class="n">env</span>    <span class="nb">expseg</span>  <span class="mf">.01</span><span class="p">,</span> i<span class="n">dur</span><span class="o">*</span><span class="mf">.1</span><span class="p">,</span> i<span class="n">amp</span><span class="p">,</span> i<span class="n">dur</span><span class="o">*</span><span class="mf">.8</span><span class="p">,</span> i<span class="n">amp</span><span class="o">*</span><span class="mf">.75</span><span class="p">,</span> i<span class="n">dur</span><span class="o">*</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">.01</span>
-i<span class="n">1</span>      <span class="o">=</span>       <span class="vi">p7</span><span class="o">*</span>i<span class="n">modfrq</span>			<span class="c1">;p7=modulation index start</span>
-i<span class="n">2</span>      <span class="o">=</span>       <span class="vi">p8</span><span class="o">*</span>i<span class="n">modfrq</span>			<span class="c1">;p8=modulation index end</span>
-a<span class="n">dev</span>    <span class="nb">line</span>    i<span class="n">1</span><span class="p">,</span> i<span class="n">dur</span><span class="p">,</span> i<span class="n">2</span>			<span class="c1">;modulation frequency</span>
-a<span class="n">index</span>  <span class="nb">line</span>    <span class="vi">p7</span><span class="p">,</span> i<span class="n">dur</span><span class="p">,</span> <span class="vi">p8</span>			<span class="c1">;modulation index</span>
+</span>i<span class="n">dur</span><span class="w">    </span><span class="o">=</span><span class="w">       </span><span class="vi">p3</span><span class="w">
+</span>i<span class="n">amp</span><span class="w">    </span><span class="o">=</span><span class="w">       </span><span class="vi">p4</span><span class="w">
+</span>i<span class="n">carfrq</span><span class="w"> </span><span class="o">=</span><span class="w">       </span><span class="vi">p5</span><span class="w">
+</span>i<span class="n">modfrq</span><span class="w"> </span><span class="o">=</span><span class="w">       </span><span class="vi">p6</span><span class="w">          
+</span>a<span class="n">env</span><span class="w">    </span><span class="nb">expseg</span><span class="w">  </span><span class="mf">.01</span><span class="p">,</span><span class="w"> </span>i<span class="n">dur</span><span class="o">*</span><span class="mf">.1</span><span class="p">,</span><span class="w"> </span>i<span class="n">amp</span><span class="p">,</span><span class="w"> </span>i<span class="n">dur</span><span class="o">*</span><span class="mf">.8</span><span class="p">,</span><span class="w"> </span>i<span class="n">amp</span><span class="o">*</span><span class="mf">.75</span><span class="p">,</span><span class="w"> </span>i<span class="n">dur</span><span class="o">*</span><span class="mf">.1</span><span class="p">,</span><span class="w"> </span><span class="mf">.01</span><span class="w">
+</span>i<span class="n">1</span><span class="w">      </span><span class="o">=</span><span class="w">       </span><span class="vi">p7</span><span class="o">*</span>i<span class="n">modfrq</span><span class="w">			</span><span class="c1">;p7=modulation index start</span><span class="w">
+</span>i<span class="n">2</span><span class="w">      </span><span class="o">=</span><span class="w">       </span><span class="vi">p8</span><span class="o">*</span>i<span class="n">modfrq</span><span class="w">			</span><span class="c1">;p8=modulation index end</span><span class="w">
+</span>a<span class="n">dev</span><span class="w">    </span><span class="nb">line</span><span class="w">    </span>i<span class="n">1</span><span class="p">,</span><span class="w"> </span>i<span class="n">dur</span><span class="p">,</span><span class="w"> </span>i<span class="n">2</span><span class="w">			</span><span class="c1">;modulation frequency</span><span class="w">
+</span>a<span class="n">index</span><span class="w">  </span><span class="nb">line</span><span class="w">    </span><span class="vi">p7</span><span class="p">,</span><span class="w"> </span>i<span class="n">dur</span><span class="p">,</span><span class="w"> </span><span class="vi">p8</span><span class="w">			</span><span class="c1">;modulation index</span><span class="w">
 
-a<span class="n">r</span>      <span class="nb">linseg</span>  <span class="mi">1</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> <span class="vi">p9</span><span class="p">,</span> <span class="vi">p3</span><span class="o">-</span><span class="mf">.2</span><span class="p">,</span> <span class="vi">p10</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> <span class="mi">1</span>	<span class="c1">; r value envelope: p9-p10 =exp. partial strength parameter start and end</span>
-a<span class="n">mp1</span>    <span class="o">=</span>       <span class="p">(</span>a<span class="n">index</span><span class="o">*</span><span class="p">(</span>a<span class="n">r</span><span class="o">+</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span>a<span class="n">r</span><span class="p">)))</span><span class="o">/</span><span class="mi">2</span>
-a<span class="n">fmod</span>   <span class="nb">oscili</span>  a<span class="n">mp1</span><span class="p">,</span> i<span class="n">modfrq</span><span class="p">,</span> <span class="mi">1</span>		<span class="c1">;FM modulator (sine)</span>
-a<span class="n">tab</span>    <span class="o">=</span>       <span class="p">(</span>a<span class="n">index</span><span class="o">*</span><span class="p">(</span>a<span class="n">r</span><span class="o">-</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span>a<span class="n">r</span><span class="p">)))</span><span class="o">/</span><span class="mi">2</span>		<span class="c1">;index to table</span>
-a<span class="n">look</span>   <span class="nb">tablei</span>  a<span class="n">tab</span><span class="p">,</span> <span class="mi">37</span>			<span class="c1">;table lookup to GEN12</span>
-a<span class="n">amod</span>   <span class="nb">oscili</span>  a<span class="n">tab</span><span class="p">,</span> a<span class="n">dev</span><span class="p">,</span> <span class="mi">2</span>			<span class="c1">;am modulator (cosine)</span>
-a<span class="n">amod</span>   <span class="o">=</span>       <span class="p">(</span><span class="nb">exp</span><span class="p">(</span>a<span class="n">look</span><span class="o">+</span>a<span class="n">amod</span><span class="p">))</span><span class="o">*</span>a<span class="n">env</span>
-a<span class="n">car</span>    <span class="nb">oscili</span>  a<span class="n">amod</span><span class="p">,</span> a<span class="n">fmod</span><span class="o">+</span>i<span class="n">carfrq</span><span class="p">,</span> <span class="mi">1</span>		<span class="c1">;AFM (carrier)</span>
-a<span class="n">sig</span>    <span class="nb">balance</span> a<span class="n">car</span><span class="p">,</span> a<span class="n">env</span>
-        <span class="nb">outs</span>    a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
+</span>a<span class="n">r</span><span class="w">      </span><span class="nb">linseg</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">.1</span><span class="p">,</span><span class="w"> </span><span class="vi">p9</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="o">-</span><span class="mf">.2</span><span class="p">,</span><span class="w"> </span><span class="vi">p10</span><span class="p">,</span><span class="w"> </span><span class="mf">.1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">	</span><span class="c1">; r value envelope: p9-p10 =exp. partial strength parameter start and end</span><span class="w">
+</span>a<span class="n">mp1</span><span class="w">    </span><span class="o">=</span><span class="w">       </span><span class="p">(</span>a<span class="n">index</span><span class="o">*</span><span class="p">(</span>a<span class="n">r</span><span class="o">+</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span>a<span class="n">r</span><span class="p">)))</span><span class="o">/</span><span class="mi">2</span><span class="w">
+</span>a<span class="n">fmod</span><span class="w">   </span><span class="nb">oscili</span><span class="w">  </span>a<span class="n">mp1</span><span class="p">,</span><span class="w"> </span>i<span class="n">modfrq</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">		</span><span class="c1">;FM modulator (sine)</span><span class="w">
+</span>a<span class="n">tab</span><span class="w">    </span><span class="o">=</span><span class="w">       </span><span class="p">(</span>a<span class="n">index</span><span class="o">*</span><span class="p">(</span>a<span class="n">r</span><span class="o">-</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span>a<span class="n">r</span><span class="p">)))</span><span class="o">/</span><span class="mi">2</span><span class="w">		</span><span class="c1">;index to table</span><span class="w">
+</span>a<span class="n">look</span><span class="w">   </span><span class="nb">tablei</span><span class="w">  </span>a<span class="n">tab</span><span class="p">,</span><span class="w"> </span><span class="mi">37</span><span class="w">			</span><span class="c1">;table lookup to GEN12</span><span class="w">
+</span>a<span class="n">amod</span><span class="w">   </span><span class="nb">oscili</span><span class="w">  </span>a<span class="n">tab</span><span class="p">,</span><span class="w"> </span>a<span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">			</span><span class="c1">;am modulator (cosine)</span><span class="w">
+</span>a<span class="n">amod</span><span class="w">   </span><span class="o">=</span><span class="w">       </span><span class="p">(</span><span class="nb">exp</span><span class="p">(</span>a<span class="n">look</span><span class="o">+</span>a<span class="n">amod</span><span class="p">))</span><span class="o">*</span>a<span class="n">env</span><span class="w">
+</span>a<span class="n">car</span><span class="w">    </span><span class="nb">oscili</span><span class="w">  </span>a<span class="n">amod</span><span class="p">,</span><span class="w"> </span>a<span class="n">fmod</span><span class="o">+</span>i<span class="n">carfrq</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">		</span><span class="c1">;AFM (carrier)</span><span class="w">
+</span>a<span class="n">sig</span><span class="w">    </span><span class="nb">balance</span><span class="w"> </span>a<span class="n">car</span><span class="p">,</span><span class="w"> </span>a<span class="n">env</span><span class="w">
+        </span><span class="nb">outs</span><span class="w">    </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
         
-<span class="kd">endin</span>       
+</span><span class="kd">endin</span><span class="w">       
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">f</span> <span class="mi">1</span>     <span class="mi">0</span>   <span class="mi">8192</span>    <span class="mi">10</span>  <span class="mi">1</span>               
-<span class="nb">f</span> <span class="mi">2</span>     <span class="mi">0</span>   <span class="mi">8192</span>    <span class="mi">9</span>   <span class="mi">1</span> <span class="mi">1</span> <span class="mi">90</span>          
-<span class="nb">f</span><span class="mi">37</span> <span class="mi">0</span>   <span class="mi">1024</span>    <span class="o">-</span><span class="mi">12</span> <span class="mi">40</span>		<span class="c1">;Bessel function-defined from 0 to 40</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">1</span><span class="w">     </span><span class="mi">0</span><span class="w">   </span><span class="mi">8192</span><span class="w">    </span><span class="mi">10</span><span class="w">  </span><span class="mi">1</span><span class="w">               
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">2</span><span class="w">     </span><span class="mi">0</span><span class="w">   </span><span class="mi">8192</span><span class="w">    </span><span class="mi">9</span><span class="w">   </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">90</span><span class="w">          
+</span><span class="nb">f</span><span class="mi">37</span><span class="w"> </span><span class="mi">0</span><span class="w">   </span><span class="mi">1024</span><span class="w">    </span><span class="o">-</span><span class="mi">12</span><span class="w"> </span><span class="mi">40</span><span class="w">		</span><span class="c1">;Bessel function-defined from 0 to 40</span><span class="w">
 
-<span class="nb">i</span> <span class="mi">1</span>  <span class="mi">0</span>  <span class="mi">2</span>  <span class="mf">.2</span>  <span class="mi">800</span>  <span class="mi">800</span>    <span class="mi">1</span>    <span class="mi">6</span>   <span class="mf">.1</span>   <span class="mi">2</span>
-<span class="nb">i</span> <span class="mi">1</span>  <span class="o">+</span>  <span class="o">.</span>  <span class="o">.</span>   <span class="mi">1900</span> <span class="mi">147</span>    <span class="mi">8</span>    <span class="mi">1</span>    <span class="mi">4</span>   <span class="mf">.2</span>
-<span class="nb">i</span> <span class="mi">1</span>  <span class="o">.</span>  <span class="o">.</span>  <span class="o">.</span>   <span class="mi">1100</span> <span class="mi">380</span>    <span class="mi">2</span>    <span class="mi">9</span>   <span class="mf">.5</span>   <span class="mi">2</span>
-<span class="nb">i</span> <span class="mi">1</span>  <span class="o">.</span>  <span class="mi">10</span> <span class="o">.</span>   <span class="mi">100</span>  <span class="mi">100</span>    <span class="mi">11</span>   <span class="mi">3</span>   <span class="mf">.2</span>   <span class="mi">5</span>
-<span class="nb">s</span>
-<span class="nb">i</span> <span class="mi">1</span>  <span class="mi">0</span>  <span class="mi">1</span> <span class="mf">.1</span>   <span class="mi">200</span> <span class="mi">100</span>     <span class="mi">1</span>    <span class="mi">6</span>   <span class="mf">.1</span>   <span class="mi">2</span>
-<span class="nb">i</span> <span class="mi">1</span>  <span class="o">+</span>  <span class="o">.</span>  <span class="o">&lt;</span>   <span class="o">&lt;</span>    <span class="o">&lt;</span>      <span class="o">&lt;</span>    <span class="o">&lt;</span>   <span class="o">&lt;</span>    <span class="o">&lt;</span>
-<span class="nb">i</span> <span class="mi">1</span>  <span class="o">+</span>  <span class="o">.</span>  <span class="o">.</span>   <span class="o">&lt;</span>    <span class="o">&lt;</span>      <span class="o">&lt;</span>    <span class="o">&lt;</span>   <span class="o">&lt;</span>    <span class="o">&lt;</span>
-<span class="nb">i</span> <span class="mi">1</span>  <span class="o">+</span>  <span class="o">.</span>  <span class="o">.</span>   <span class="o">&lt;</span>    <span class="o">&lt;</span>      <span class="o">&lt;</span>    <span class="o">&lt;</span>   <span class="o">&lt;</span>    <span class="o">&lt;</span>
-<span class="nb">i</span> <span class="mi">1</span>  <span class="o">+</span>  <span class="o">.</span>  <span class="o">.</span>   <span class="o">&lt;</span>    <span class="o">&lt;</span>      <span class="o">&lt;</span>    <span class="o">&lt;</span>   <span class="o">&lt;</span>    <span class="o">&lt;</span>
-<span class="nb">i</span> <span class="mi">1</span>  <span class="o">+</span>  <span class="o">.</span>  <span class="o">.</span>   <span class="o">&lt;</span>    <span class="o">&lt;</span>      <span class="o">&lt;</span>    <span class="o">&lt;</span>   <span class="o">&lt;</span>    <span class="o">&lt;</span>
-<span class="nb">i</span> <span class="mi">1</span>  <span class="o">+</span>  <span class="o">.</span>  <span class="o">.</span>   <span class="o">&lt;</span>    <span class="o">&lt;</span>      <span class="o">&lt;</span>    <span class="o">&lt;</span>   <span class="o">&lt;</span>    <span class="o">&lt;</span>
-<span class="nb">i</span> <span class="mi">1</span>  <span class="o">+</span>  <span class="mi">10</span> <span class="mf">.2</span>  <span class="mi">800</span>  <span class="mi">800</span>    <span class="mi">9</span>    <span class="mi">1</span>   <span class="mf">.9</span>   <span class="mi">6</span>
-<span class="nb">s</span>
-<span class="nb">i</span> <span class="mi">1</span>  <span class="mi">0</span>  <span class="mi">11</span> <span class="mf">.25</span> <span class="mi">50</span>   <span class="mi">51</span>     <span class="mi">1</span>    <span class="mi">6</span>   <span class="mf">.1</span>   <span class="mi">2</span>
-<span class="nb">i</span> <span class="mi">1</span>  <span class="mi">1</span>  <span class="mi">9</span>  <span class="mf">.05</span> <span class="mi">700</span>  <span class="mi">401</span>    <span class="mi">1</span>    <span class="mi">6</span>   <span class="mf">.1</span>   <span class="mi">2</span>
-<span class="nb">i</span> <span class="mi">1</span>  <span class="mi">2</span>  <span class="mi">8</span>  <span class="o">.</span>   <span class="mi">900</span>  <span class="mi">147</span>    <span class="mi">8</span>    <span class="mi">1</span>    <span class="mi">4</span>   <span class="mf">.2</span>
-<span class="nb">i</span> <span class="mi">1</span>  <span class="mi">3</span>  <span class="mi">7</span>  <span class="o">.</span>   <span class="mi">1100</span> <span class="mi">381</span>    <span class="mi">2</span>    <span class="mi">9</span>   <span class="mf">.5</span>   <span class="mi">2</span>
-<span class="nb">i</span> <span class="mi">1</span>  <span class="mi">4</span>  <span class="mi">6</span>  <span class="o">.</span>   <span class="mi">200</span>  <span class="mi">102</span>    <span class="mi">11</span>   <span class="mi">3</span>   <span class="mf">.2</span>   <span class="mi">5</span>
-<span class="nb">i</span> <span class="mi">1</span>  <span class="mi">5</span>  <span class="mi">6</span>  <span class="o">.</span>   <span class="mi">800</span>  <span class="mi">803</span>    <span class="mi">9</span>    <span class="mi">1</span>   <span class="mf">.9</span>   <span class="mi">6</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="mi">0</span><span class="w">  </span><span class="mi">2</span><span class="w">  </span><span class="mf">.2</span><span class="w">  </span><span class="mi">800</span><span class="w">  </span><span class="mi">800</span><span class="w">    </span><span class="mi">1</span><span class="w">    </span><span class="mi">6</span><span class="w">   </span><span class="mf">.1</span><span class="w">   </span><span class="mi">2</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="o">+</span><span class="w">  </span><span class="o">.</span><span class="w">  </span><span class="o">.</span><span class="w">   </span><span class="mi">1900</span><span class="w"> </span><span class="mi">147</span><span class="w">    </span><span class="mi">8</span><span class="w">    </span><span class="mi">1</span><span class="w">    </span><span class="mi">4</span><span class="w">   </span><span class="mf">.2</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="o">.</span><span class="w">  </span><span class="o">.</span><span class="w">  </span><span class="o">.</span><span class="w">   </span><span class="mi">1100</span><span class="w"> </span><span class="mi">380</span><span class="w">    </span><span class="mi">2</span><span class="w">    </span><span class="mi">9</span><span class="w">   </span><span class="mf">.5</span><span class="w">   </span><span class="mi">2</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="o">.</span><span class="w">  </span><span class="mi">10</span><span class="w"> </span><span class="o">.</span><span class="w">   </span><span class="mi">100</span><span class="w">  </span><span class="mi">100</span><span class="w">    </span><span class="mi">11</span><span class="w">   </span><span class="mi">3</span><span class="w">   </span><span class="mf">.2</span><span class="w">   </span><span class="mi">5</span><span class="w">
+</span><span class="nb">s</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="mi">0</span><span class="w">  </span><span class="mi">1</span><span class="w"> </span><span class="mf">.1</span><span class="w">   </span><span class="mi">200</span><span class="w"> </span><span class="mi">100</span><span class="w">     </span><span class="mi">1</span><span class="w">    </span><span class="mi">6</span><span class="w">   </span><span class="mf">.1</span><span class="w">   </span><span class="mi">2</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="o">+</span><span class="w">  </span><span class="o">.</span><span class="w">  </span><span class="o">&lt;</span><span class="w">   </span><span class="o">&lt;</span><span class="w">    </span><span class="o">&lt;</span><span class="w">      </span><span class="o">&lt;</span><span class="w">    </span><span class="o">&lt;</span><span class="w">   </span><span class="o">&lt;</span><span class="w">    </span><span class="o">&lt;</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="o">+</span><span class="w">  </span><span class="o">.</span><span class="w">  </span><span class="o">.</span><span class="w">   </span><span class="o">&lt;</span><span class="w">    </span><span class="o">&lt;</span><span class="w">      </span><span class="o">&lt;</span><span class="w">    </span><span class="o">&lt;</span><span class="w">   </span><span class="o">&lt;</span><span class="w">    </span><span class="o">&lt;</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="o">+</span><span class="w">  </span><span class="o">.</span><span class="w">  </span><span class="o">.</span><span class="w">   </span><span class="o">&lt;</span><span class="w">    </span><span class="o">&lt;</span><span class="w">      </span><span class="o">&lt;</span><span class="w">    </span><span class="o">&lt;</span><span class="w">   </span><span class="o">&lt;</span><span class="w">    </span><span class="o">&lt;</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="o">+</span><span class="w">  </span><span class="o">.</span><span class="w">  </span><span class="o">.</span><span class="w">   </span><span class="o">&lt;</span><span class="w">    </span><span class="o">&lt;</span><span class="w">      </span><span class="o">&lt;</span><span class="w">    </span><span class="o">&lt;</span><span class="w">   </span><span class="o">&lt;</span><span class="w">    </span><span class="o">&lt;</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="o">+</span><span class="w">  </span><span class="o">.</span><span class="w">  </span><span class="o">.</span><span class="w">   </span><span class="o">&lt;</span><span class="w">    </span><span class="o">&lt;</span><span class="w">      </span><span class="o">&lt;</span><span class="w">    </span><span class="o">&lt;</span><span class="w">   </span><span class="o">&lt;</span><span class="w">    </span><span class="o">&lt;</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="o">+</span><span class="w">  </span><span class="o">.</span><span class="w">  </span><span class="o">.</span><span class="w">   </span><span class="o">&lt;</span><span class="w">    </span><span class="o">&lt;</span><span class="w">      </span><span class="o">&lt;</span><span class="w">    </span><span class="o">&lt;</span><span class="w">   </span><span class="o">&lt;</span><span class="w">    </span><span class="o">&lt;</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="o">+</span><span class="w">  </span><span class="mi">10</span><span class="w"> </span><span class="mf">.2</span><span class="w">  </span><span class="mi">800</span><span class="w">  </span><span class="mi">800</span><span class="w">    </span><span class="mi">9</span><span class="w">    </span><span class="mi">1</span><span class="w">   </span><span class="mf">.9</span><span class="w">   </span><span class="mi">6</span><span class="w">
+</span><span class="nb">s</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="mi">0</span><span class="w">  </span><span class="mi">11</span><span class="w"> </span><span class="mf">.25</span><span class="w"> </span><span class="mi">50</span><span class="w">   </span><span class="mi">51</span><span class="w">     </span><span class="mi">1</span><span class="w">    </span><span class="mi">6</span><span class="w">   </span><span class="mf">.1</span><span class="w">   </span><span class="mi">2</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="mi">1</span><span class="w">  </span><span class="mi">9</span><span class="w">  </span><span class="mf">.05</span><span class="w"> </span><span class="mi">700</span><span class="w">  </span><span class="mi">401</span><span class="w">    </span><span class="mi">1</span><span class="w">    </span><span class="mi">6</span><span class="w">   </span><span class="mf">.1</span><span class="w">   </span><span class="mi">2</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="mi">2</span><span class="w">  </span><span class="mi">8</span><span class="w">  </span><span class="o">.</span><span class="w">   </span><span class="mi">900</span><span class="w">  </span><span class="mi">147</span><span class="w">    </span><span class="mi">8</span><span class="w">    </span><span class="mi">1</span><span class="w">    </span><span class="mi">4</span><span class="w">   </span><span class="mf">.2</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="mi">3</span><span class="w">  </span><span class="mi">7</span><span class="w">  </span><span class="o">.</span><span class="w">   </span><span class="mi">1100</span><span class="w"> </span><span class="mi">381</span><span class="w">    </span><span class="mi">2</span><span class="w">    </span><span class="mi">9</span><span class="w">   </span><span class="mf">.5</span><span class="w">   </span><span class="mi">2</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="mi">4</span><span class="w">  </span><span class="mi">6</span><span class="w">  </span><span class="o">.</span><span class="w">   </span><span class="mi">200</span><span class="w">  </span><span class="mi">102</span><span class="w">    </span><span class="mi">11</span><span class="w">   </span><span class="mi">3</span><span class="w">   </span><span class="mf">.2</span><span class="w">   </span><span class="mi">5</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="mi">5</span><span class="w">  </span><span class="mi">6</span><span class="w">  </span><span class="o">.</span><span class="w">   </span><span class="mi">800</span><span class="w">  </span><span class="mi">803</span><span class="w">    </span><span class="mi">9</span><span class="w">    </span><span class="mi">1</span><span class="w">   </span><span class="mf">.9</span><span class="w">   </span><span class="mi">6</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -196,7 +196,7 @@ a<span class="n">sig</span>    <span class="nb">balance</span> a<span class="n">
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm287980"></a>
+        <a id="idm408158"></a>
         <h2>Credits</h2>
         <p>
       Example is, with minor modifications, taken from The Csound Book (page 87).

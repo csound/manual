@@ -39,19 +39,19 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm186986"></a>
+        <a id="idm262753"></a>
         <h2>Description</h2>
         <p>
       <span class="emphasis"><em>pvread</em></span> reads from a <a class="link" href="pvoc.html" title="pvoc"><em class="citetitle">pvoc</em></a> file and returns the frequency and amplitude from a single analysis channel or bin. The returned values can be used anywhere else in the Csound instrument. For example, one can use them as arguments to an oscillator to synthesize a single component from an analyzed signal or a bank of <span class="emphasis"><em>pvreads</em></span> can be used to resynthesize the analyzed sound using additive synthesis by passing the frequency and magnitude values to a bank of oscillators.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm186993"></a>
+        <a id="idm262760"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">kfreq, kamp <span class="command"><strong>pvread</strong></span> ktimpnt, ifile, ibin</pre>
       </div>
       <div class="refsect1">
-        <a id="idm186997"></a>
+        <a id="idm262764"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>ifile</em></span> -- the <span class="emphasis"><em>pvoc</em></span> number (n in pvoc.n) or the name in quotes of the analysis file made using <span class="emphasis"><em>pvanal</em></span>. (See <a class="link" href="pvoc.html" title="pvoc"><em class="citetitle">pvoc</em></a>.)
@@ -61,7 +61,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm187007"></a>
+        <a id="idm262774"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>kfreq, kamp</em></span> -- outputs of the <span class="emphasis"><em>pvread</em></span> unit. These values, retrieved from a phase vocoder analysis file, represent the values of frequency and amplitude from a single analysis channel specified in the <span class="emphasis"><em>ibin</em></span> argument. Interpolation between analysis frames is performed at k-rate resolution and dependent of course upon the rate and direction of <span class="emphasis"><em>ktimpnt</em></span>. 
@@ -71,20 +71,20 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm187017"></a>
+        <a id="idm262784"></a>
         <h2>Examples</h2>
         <p>
       The example below shows the use <span class="emphasis"><em>pvread</em></span> to synthesize a single component at a time from a phase vocoder analysis file. It should be noted that the <span class="emphasis"><em>kfreq</em></span> and <span class="emphasis"><em>kamp</em></span> outputs can be used for any kind of synthesis, filtering, processing, and so on.
       </p>
         <div class="example">
-          <a id="idm187023"></a>
+          <a id="idm262790"></a>
           <p class="title">
             <strong>Example 799. Example of the pvread opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm187030"></a>
+              <a id="idm262797"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -94,50 +94,50 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o pvread.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span> 
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span> 
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span> 
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w"> 
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w"> 
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> 
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
 
-<span class="c1">; by Menno Knevel 2021</span>
+</span><span class="c1">; by Menno Knevel 2021</span><span class="w">
 
-gi<span class="n">len</span>  <span class="nb">filelen</span> <span class="s">"fox.wav"</span>	    <span class="c1">; get length of impulse soundfile</span>
+</span>gi<span class="n">len</span><span class="w">  </span><span class="nb">filelen</span><span class="w"> </span><span class="s">"fox.wav"</span><span class="w">	    </span><span class="c1">; get length of impulse soundfile</span><span class="w">
 
-<span class="c1">; analyze sound file and output result to pvoc-ex file</span>
-i<span class="n">res</span> <span class="nb">system_i</span> <span class="mi">1</span><span class="p">,</span><span class="s">{{ pvanal fox.wav fox1.pvx }}</span>          <span class="c1">; default settings</span>
+</span><span class="c1">; analyze sound file and output result to pvoc-ex file</span><span class="w">
+</span>i<span class="n">res</span><span class="w"> </span><span class="nb">system_i</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="s">{{ pvanal fox.wav fox1.pvx }}</span><span class="w">          </span><span class="c1">; default settings</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span> <span class="c1">; untreated signal</span>
-a<span class="n">sig</span>    <span class="nb">diskin2</span>   <span class="s">"fox.wav"</span><span class="p">,</span> <span class="mi">1</span>
-<span class="nb">prints</span>  <span class="s">"</span><span class="se">\n</span><span class="s">---***YOU NOW HEAR THE UNTREATED SOUND SAMPLE***---</span><span class="se">\n</span><span class="s">"</span>
-<span class="nb">outs</span>    a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
-<span class="kd">endin</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w"> </span><span class="c1">; untreated signal</span><span class="w">
+</span>a<span class="n">sig</span><span class="w">    </span><span class="nb">diskin2</span><span class="w">   </span><span class="s">"fox.wav"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="nb">prints</span><span class="w">  </span><span class="s">"</span><span class="se">\n</span><span class="s">---***YOU NOW HEAR THE UNTREATED SOUND SAMPLE***---</span><span class="se">\n</span><span class="s">"</span><span class="w">
+</span><span class="nb">outs</span><span class="w">    </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">2</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">
 
-<span class="nb">prints</span>  <span class="s">"</span><span class="se">\n</span><span class="s">---***YOU NOW HEAR THE RESULT OF THIS ANALYZED FILE:***---</span><span class="se">\n</span><span class="s">"</span>
-i<span class="n">bin</span>  <span class="o">=</span> <span class="vi">p4</span>
-k<span class="n">time</span> <span class="nb">line</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mf">2.8</span>
-k<span class="n">freq</span><span class="p">,</span> k<span class="n">amp</span> <span class="nb">pvread</span> k<span class="n">time</span><span class="p">,</span> <span class="s">"fox1.pvx"</span><span class="p">,</span> i<span class="n">bin</span>	<span class="c1">;read data from 7th analysis bin.</span>
-a<span class="n">sig</span>  <span class="nb">poscil</span> k<span class="n">amp</span><span class="p">,</span> k<span class="n">freq</span>
-      <span class="nb">outs</span> a<span class="n">sig</span><span class="o">*</span><span class="mi">5</span><span class="p">,</span> a<span class="n">sig</span><span class="o">*</span><span class="mi">5</span>			        <span class="c1">;compensate loss of volume</span>
+</span><span class="nb">prints</span><span class="w">  </span><span class="s">"</span><span class="se">\n</span><span class="s">---***YOU NOW HEAR THE RESULT OF THIS ANALYZED FILE:***---</span><span class="se">\n</span><span class="s">"</span><span class="w">
+</span>i<span class="n">bin</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="vi">p4</span><span class="w">
+</span>k<span class="n">time</span><span class="w"> </span><span class="nb">line</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mf">2.8</span><span class="w">
+</span>k<span class="n">freq</span><span class="p">,</span><span class="w"> </span>k<span class="n">amp</span><span class="w"> </span><span class="nb">pvread</span><span class="w"> </span>k<span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="s">"fox1.pvx"</span><span class="p">,</span><span class="w"> </span>i<span class="n">bin</span><span class="w">	</span><span class="c1">;read data from 7th analysis bin.</span><span class="w">
+</span>a<span class="n">sig</span><span class="w">  </span><span class="nb">poscil</span><span class="w"> </span>k<span class="n">amp</span><span class="p">,</span><span class="w"> </span>k<span class="n">freq</span><span class="w">
+      </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">sig</span><span class="o">*</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="o">*</span><span class="mi">5</span><span class="w">			        </span><span class="c1">;compensate loss of volume</span><span class="w">
 
-<span class="kd">endin</span>
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
+</span><span class="kd">endin</span><span class="w">
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
 
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mf">2.76</span>           <span class="c1">; original sample</span>
-<span class="nb">s</span>
-<span class="nb">i</span><span class="mi">2</span> <span class="mi">0</span> <span class="mf">2.76</span>   <span class="mi">7</span>       <span class="c1">; 3 different bins</span>
-<span class="nb">i</span><span class="mi">2</span> <span class="o">+</span> <span class="mf">2.76</span>   <span class="mi">15</span>
-<span class="nb">i</span><span class="mi">2</span> <span class="o">+</span> <span class="mf">2.76</span>   <span class="mi">25</span>
-<span class="nb">s</span>
-<span class="nb">i</span><span class="mi">2</span> <span class="mi">2</span> <span class="mi">6</span>      <span class="mi">7</span>       <span class="c1">; slow chord</span>
-<span class="nb">i</span><span class="mi">2</span> <span class="mi">2</span> <span class="mi">6</span>      <span class="mi">50</span>
-<span class="nb">i</span><span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span>      <span class="mi">75</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">2.76</span><span class="w">           </span><span class="c1">; original sample</span><span class="w">
+</span><span class="nb">s</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">2.76</span><span class="w">   </span><span class="mi">7</span><span class="w">       </span><span class="c1">; 3 different bins</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">2.76</span><span class="w">   </span><span class="mi">15</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">2.76</span><span class="w">   </span><span class="mi">25</span><span class="w">
+</span><span class="nb">s</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">6</span><span class="w">      </span><span class="mi">7</span><span class="w">       </span><span class="c1">; slow chord</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">6</span><span class="w">      </span><span class="mi">50</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="w">      </span><span class="mi">75</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -147,7 +147,7 @@ a<span class="n">sig</span>  <span class="nb">poscil</span> k<span class="n">amp
      </p>
       </div>
       <div class="refsect1">
-        <a id="idm187171"></a>
+        <a id="idm263036"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="pvbufread.html" title="pvbufread"><em class="citetitle">pvbufread</em></a>, 
@@ -158,7 +158,7 @@ a<span class="n">sig</span>  <span class="nb">poscil</span> k<span class="n">amp
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm187184"></a>
+        <a id="idm263049"></a>
         <h2>Credits</h2>
         <p>
       </p>

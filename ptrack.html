@@ -39,19 +39,19 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm185224"></a>
+        <a id="idm260233"></a>
         <h2>Description</h2>
         <p>
       <span class="emphasis"><em>ptrack</em></span> takes an input signal, splits it into <span class="emphasis"><em>ihopsize</em></span> blocks and using a STFT method, extracts an estimated pitch for its fundamental frequency as well as estimating the total amplitude of the signal in dB, relative to full-scale (0dB). The method implies an analysis window size of 2*<span class="emphasis"><em>ihopsize</em></span> samples (overlaping by 1/2 window), which has to be a power-of-two, between 128 and 8192 (hopsizes between 64 and 4096). Smaller windows will give better time precision, but worse frequency accuracy (esp. in low fundamentals).This opcode is based on an original algorithm by M. Puckette.
       </p>
       </div>
       <div class="refsect1">
-        <a id="idm185230"></a>
+        <a id="idm260239"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">kcps, kamp <span class="command"><strong>ptrack</strong></span> asig, ihopsize[,ipeaks]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm185234"></a>
+        <a id="idm260243"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>ihopsize</em></span> -- size of the analysis 'hop', in samples, required to be power-of-two (min 64, max 4096). 
@@ -62,7 +62,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm185241"></a>
+        <a id="idm260250"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>kcps</em></span> -- estimated pitch in Hz.
@@ -77,13 +77,13 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm185251"></a>
+        <a id="idm260260"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the ptrack opcode. This example uses the files <a class="ulink" href="examples/ptrack.csd" target="_top"><em class="citetitle">ptrack.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm185256"></a>
+          <a id="idm260265"></a>
           <p class="title">
             <strong>Example 792. Example of the ptrack opcode.</strong>
           </p>
@@ -91,7 +91,7 @@
 
             See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> 
             and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.
-            <div class="refsect1"><a id="idm185262"></a><pre class="programlisting">
+            <div class="refsect1"><a id="idm260271"></a><pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
@@ -100,35 +100,35 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o ptrack.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span> 
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span> 
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span> 
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w"> 
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w"> 
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> 
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
 
-i<span class="n">hop</span>  <span class="o">=</span> <span class="vi">p4</span>
-a<span class="n">out</span>  <span class="nb">diskin2</span> <span class="s">"fox.wav"</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
-k<span class="n">f</span><span class="p">,</span>k<span class="n">a</span> <span class="nb">ptrack</span> a<span class="n">out</span><span class="p">,</span> i<span class="n">hop</span>	<span class="c1">; pitch track with different hopsizes</span>
-k<span class="n">cps</span>  <span class="nb">port</span> k<span class="n">f</span><span class="p">,</span> <span class="mf">0.01</span>	<span class="c1">; smooth freq</span>
-k<span class="n">amp</span>  <span class="nb">port</span> k<span class="n">a</span><span class="p">,</span> <span class="mf">0.01</span>	<span class="c1">; smooth amp</span>
-<span class="c1">; drive an oscillator</span>
-a<span class="n">sig</span>  <span class="nb">poscil</span> <span class="nb">ampdb</span><span class="p">(</span>k<span class="n">amp</span><span class="p">)</span><span class="o">*</span><span class="vg">0dbfs</span><span class="p">,</span> k<span class="n">cps</span><span class="p">,</span> <span class="mi">1</span>
-      <span class="nb">outs</span>  a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
+</span>i<span class="n">hop</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="vi">p4</span><span class="w">
+</span>a<span class="n">out</span><span class="w">  </span><span class="nb">diskin2</span><span class="w"> </span><span class="s">"fox.wav"</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span>k<span class="n">f</span><span class="p">,</span>k<span class="n">a</span><span class="w"> </span><span class="nb">ptrack</span><span class="w"> </span>a<span class="n">out</span><span class="p">,</span><span class="w"> </span>i<span class="n">hop</span><span class="w">	</span><span class="c1">; pitch track with different hopsizes</span><span class="w">
+</span>k<span class="n">cps</span><span class="w">  </span><span class="nb">port</span><span class="w"> </span>k<span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.01</span><span class="w">	</span><span class="c1">; smooth freq</span><span class="w">
+</span>k<span class="n">amp</span><span class="w">  </span><span class="nb">port</span><span class="w"> </span>k<span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="mf">0.01</span><span class="w">	</span><span class="c1">; smooth amp</span><span class="w">
+</span><span class="c1">; drive an oscillator</span><span class="w">
+</span>a<span class="n">sig</span><span class="w">  </span><span class="nb">poscil</span><span class="w"> </span><span class="nb">ampdb</span><span class="p">(</span>k<span class="n">amp</span><span class="p">)</span><span class="o">*</span><span class="vg">0dbfs</span><span class="p">,</span><span class="w"> </span>k<span class="n">cps</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="nb">outs</span><span class="w">  </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
 
-<span class="kd">endin</span>
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="c1">; simple sine wave</span>
-<span class="nb">f</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">4096</span> <span class="mi">10</span> <span class="mi">1</span>
+</span><span class="kd">endin</span><span class="w">
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="c1">; simple sine wave</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">4096</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span>  <span class="mi">5</span> <span class="mi">128</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">6</span>  <span class="mi">5</span> <span class="mi">512</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">12</span> <span class="mi">5</span> <span class="mi">1024</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w">  </span><span class="mi">5</span><span class="w"> </span><span class="mi">128</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">6</span><span class="w">  </span><span class="mi">5</span><span class="w"> </span><span class="mi">512</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">1024</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre></div></div>
         </div>
@@ -136,7 +136,7 @@ a<span class="n">sig</span>  <span class="nb">poscil</span> <span class="nb">amp
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm185364"></a>
+        <a id="idm260445"></a>
         <h2>Credits</h2>
         <p>
       </p>

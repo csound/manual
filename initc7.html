@@ -39,19 +39,19 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm116654"></a>
+        <a id="idm161483"></a>
         <h2>Description</h2>
         <p>
       Initializes MIDI controller <span class="emphasis"><em>ictlno</em></span> with <span class="emphasis"><em>ivalue</em></span>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm116659"></a>
+        <a id="idm161488"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>initc7</strong></span> ichan, ictlno, ivalue</pre>
       </div>
       <div class="refsect1">
-        <a id="idm116663"></a>
+        <a id="idm161492"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>ichan</em></span> -- MIDI channel (1-16)
@@ -64,7 +64,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm116671"></a>
+        <a id="idm161500"></a>
         <h2>Performance</h2>
         <p>
      <span class="emphasis"><em>initc7</em></span> can be used together with both <a class="link" href="midic7.html" title="midic7"><em class="citetitle">midic7</em></a> and  <a class="link" href="ctrl7.html" title="ctrl7"><em class="citetitle">ctrl7</em></a> opcodes for initializing the first controller's value. <span class="emphasis"><em>ivalue</em></span> argument must be set with a number within 0 to 1. An error occurs if it is not. Use the following formula to set <span class="emphasis"><em>ivalue</em></span> according with <span class="emphasis"><em>midic7</em></span> and <span class="emphasis"><em>ctrl7</em></span> min and max range:
@@ -79,20 +79,20 @@ ivalue = (initial_value - min) / (max - min)<br />
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm116684"></a>
+        <a id="idm161513"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the initc7 opcode. It uses the file <a class="ulink" href="examples/initc7.csd" target="_top"><em class="citetitle">initc7.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm116689"></a>
+          <a id="idm161518"></a>
           <p class="title">
             <strong>Example 468. Example of the initc7 opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm116696"></a>
+              <a id="idm161525"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -100,37 +100,37 @@ ivalue = (initial_value - min) / (max - min)<br />
 -odac   -M0  <span class="c1">;;;realtime audio I/O with MIDI in</span>
 <span class="c1">;-iadc    ;;;uncomment -iadc if RT audio input is needed too</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>	<span class="c1">; expects MIDI controller input on channel 1</span>
-<span class="c1">; run and move your midi controller to see result</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">	</span><span class="c1">; expects MIDI controller input on channel 1</span><span class="w">
+</span><span class="c1">; run and move your midi controller to see result</span><span class="w">
 
-i<span class="n">max</span> <span class="o">=</span> <span class="mi">1</span>
-i<span class="n">min</span> <span class="o">=</span> <span class="mi">0</span>
-i<span class="n">chan</span> <span class="o">=</span> <span class="mi">1</span> 
-i<span class="n">ctlno</span> <span class="o">=</span> <span class="mi">7</span>
+</span>i<span class="n">max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span>i<span class="n">min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span>i<span class="n">chan</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> 
+</span>i<span class="n">ctlno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span><span class="w">
  
-	<span class="nb">initc7</span>	<span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span>			<span class="c1">; start at max. volume</span>
-k<span class="n">amp</span>	<span class="nb">ctrl7</span>	i<span class="n">chan</span><span class="p">,</span> i<span class="n">ctlno</span><span class="p">,</span> i<span class="n">min</span><span class="p">,</span> i<span class="n">max</span>	<span class="c1">; controller 7</span>
-	<span class="nb">printk2</span>	k<span class="n">amp</span>
-a<span class="n">sig</span>	<span class="nb">oscil</span>	k<span class="n">amp</span><span class="p">,</span> <span class="mi">220</span><span class="p">,</span> <span class="mi">1</span>
-	<span class="nb">outs</span>	a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
+	</span><span class="nb">initc7</span><span class="w">	</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">			</span><span class="c1">; start at max. volume</span><span class="w">
+</span>k<span class="n">amp</span><span class="w">	</span><span class="nb">ctrl7</span><span class="w">	</span>i<span class="n">chan</span><span class="p">,</span><span class="w"> </span>i<span class="n">ctlno</span><span class="p">,</span><span class="w"> </span>i<span class="n">min</span><span class="p">,</span><span class="w"> </span>i<span class="n">max</span><span class="w">	</span><span class="c1">; controller 7</span><span class="w">
+	</span><span class="nb">printk2</span><span class="w">	</span>k<span class="n">amp</span><span class="w">
+</span>a<span class="n">sig</span><span class="w">	</span><span class="nb">oscil</span><span class="w">	</span>k<span class="n">amp</span><span class="p">,</span><span class="w"> </span><span class="mi">220</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+	</span><span class="nb">outs</span><span class="w">	</span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
 
-<span class="kd">endin</span>
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">f</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">4096</span> <span class="mi">10</span> <span class="mi">1</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">4096</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">20</span>
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">20</span><span class="w">
 
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -140,7 +140,7 @@ a<span class="n">sig</span>	<span class="nb">oscil</span>	k<span class="n">amp</
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm116779"></a>
+        <a id="idm161671"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="ctrl7.html" title="ctrl7"><em class="citetitle">ctrl7</em></a>,
@@ -155,7 +155,7 @@ a<span class="n">sig</span>	<span class="nb">oscil</span>	k<span class="n">amp</
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm116800"></a>
+        <a id="idm161692"></a>
         <h2>Credits</h2>
         <p>
       </p>

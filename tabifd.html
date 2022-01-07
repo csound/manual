@@ -39,7 +39,7 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm238989"></a>
+        <a id="idm337682"></a>
         <h2>Description</h2>
         <p>
   The tabifd opcode takes an input function table and performs an Instantaneous Frequency,
@@ -51,12 +51,12 @@
 	      </p>
       </div>
       <div class="refsect1">
-        <a id="idm238992"></a>
+        <a id="idm337685"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ffr,fphs <span class="command"><strong>tabifd</strong></span> ktimpt, kamp, kpitch, ifftsize, ihopsize, iwintype,ifn</pre>
       </div>
       <div class="refsect1">
-        <a id="idm238996"></a>
+        <a id="idm337689"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>ifftsize</em></span> -- FFT analysis size, must be power-of-two and integer multiple of the hopsize.
@@ -72,7 +72,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm239006"></a>
+        <a id="idm337699"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>ffr</em></span> -- output pv stream in AMP_FREQ format
@@ -92,20 +92,20 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm239018"></a>
+        <a id="idm337711"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the tabifd opcode. It uses the file <a class="ulink" href="examples/tabifd.csd" target="_top"><em class="citetitle">tabifd.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm239023"></a>
+          <a id="idm337716"></a>
           <p class="title">
-            <strong>Example 1066. Example of the tabifd opcode.</strong>
+            <strong>Example 1067. Example of the tabifd opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm239030"></a>
+              <a id="idm337723"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -115,31 +115,31 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o tabifd.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
-<span class="vg">sr</span><span class="o">=</span><span class="mi">44100</span>
-<span class="vg">ksmps</span><span class="o">=</span><span class="mi">1</span>
-<span class="vg">nchnls</span><span class="o">=</span><span class="mi">1</span>
-<span class="kd">opcode</span> <span class="nf">TrackPlay</span><span class="p">,</span> <span class="kt">a</span><span class="p">,</span> <span class="kt">kkiiii</span>
- k<span class="n">time</span><span class="p">,</span>k<span class="n">thr</span><span class="p">,</span>i<span class="n">siz</span><span class="p">,</span>i<span class="n">hsiz</span><span class="p">,</span>i<span class="n">fcos</span><span class="p">,</span>i<span class="n">fn</span>  <span class="nb">xin</span> 
- i<span class="n">del</span> <span class="o">=</span> i<span class="n">siz</span><span class="o">-</span>i<span class="n">hsiz</span><span class="o">*</span><span class="p">(</span>i<span class="n">siz</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span>i<span class="n">hsiz</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
- f<span class="n">fr</span><span class="p">,</span>f<span class="n">phs</span> <span class="nb">tabifd</span> k<span class="n">time</span><span class="p">,</span><span class="mi">10000</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> i<span class="n">siz</span><span class="p">,</span> i<span class="n">hsiz</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> i<span class="n">fn</span>
- f<span class="n">trk</span> <span class="nb">partials</span> f<span class="n">fr</span><span class="p">,</span> f<span class="n">phs</span><span class="p">,</span>k<span class="n">thr</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">500</span>
- a<span class="n">out</span> <span class="nb">tradsyn</span>   f<span class="n">trk</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> i<span class="n">fcos</span> 
- <span class="nb">xout</span> a<span class="n">out</span>
-<span class="kd">endop</span>
-<span class="kd">instr</span> <span class="nf">1</span>
-<span class="vi">p3</span> <span class="o">=</span> <span class="nb">ftlen</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="vg">sr</span>
-k<span class="n">time</span> <span class="nb">line</span> <span class="mi">0</span><span class="p">,</span><span class="vi">p3</span><span class="p">,</span><span class="vi">p3</span>
-a<span class="n">res</span> <span class="nf">TrackPlay</span> k<span class="n">time</span><span class="p">,</span> <span class="mf">0.003</span><span class="p">,</span><span class="mi">2048</span><span class="p">,</span><span class="mi">256</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span>
-     <span class="nb">outs</span> a<span class="n">res</span>
-<span class="kd">endin</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
+</span><span class="vg">sr</span><span class="o">=</span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="o">=</span><span class="mi">1</span><span class="w">
+</span><span class="vg">nchnls</span><span class="o">=</span><span class="mi">1</span><span class="w">
+</span><span class="kd">opcode</span><span class="w"> </span><span class="nf">TrackPlay</span><span class="p">,</span><span class="w"> </span><span class="kt">a</span><span class="p">,</span><span class="w"> </span><span class="kt">kkiiii</span><span class="w">
+ </span>k<span class="n">time</span><span class="p">,</span>k<span class="n">thr</span><span class="p">,</span>i<span class="n">siz</span><span class="p">,</span>i<span class="n">hsiz</span><span class="p">,</span>i<span class="n">fcos</span><span class="p">,</span>i<span class="n">fn</span><span class="w">  </span><span class="nb">xin</span><span class="w"> 
+ </span>i<span class="n">del</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>i<span class="n">siz</span><span class="o">-</span>i<span class="n">hsiz</span><span class="o">*</span><span class="p">(</span>i<span class="n">siz</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span>i<span class="n">hsiz</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w">
+ </span>f<span class="n">fr</span><span class="p">,</span>f<span class="n">phs</span><span class="w"> </span><span class="nb">tabifd</span><span class="w"> </span>k<span class="n">time</span><span class="p">,</span><span class="mi">10000</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>i<span class="n">siz</span><span class="p">,</span><span class="w"> </span>i<span class="n">hsiz</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>i<span class="n">fn</span><span class="w">
+ </span>f<span class="n">trk</span><span class="w"> </span><span class="nb">partials</span><span class="w"> </span>f<span class="n">fr</span><span class="p">,</span><span class="w"> </span>f<span class="n">phs</span><span class="p">,</span>k<span class="n">thr</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="w">
+ </span>a<span class="n">out</span><span class="w"> </span><span class="nb">tradsyn</span><span class="w">   </span>f<span class="n">trk</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w"> </span>i<span class="n">fcos</span><span class="w"> 
+ </span><span class="nb">xout</span><span class="w"> </span>a<span class="n">out</span><span class="w">
+</span><span class="kd">endop</span><span class="w">
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+</span><span class="vi">p3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">ftlen</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="vg">sr</span><span class="w">
+</span>k<span class="n">time</span><span class="w"> </span><span class="nb">line</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="vi">p3</span><span class="p">,</span><span class="vi">p3</span><span class="w">
+</span>a<span class="n">res</span><span class="w"> </span><span class="nf">TrackPlay</span><span class="w"> </span>k<span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="mf">0.003</span><span class="p">,</span><span class="mi">2048</span><span class="p">,</span><span class="mi">256</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="w">
+     </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">res</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">f</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">16384</span> <span class="mi">9</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">90</span>
-<span class="nb">f</span><span class="mi">2</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="s">"fox.wav"</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span>
-<span class="nb">i</span><span class="mi">1</span>	<span class="mi">0</span> <span class="mi">1</span> 
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">f</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">16384</span><span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">90</span><span class="w">
+</span><span class="nb">f</span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="s">"fox.wav"</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">	</span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w"> 
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -150,7 +150,7 @@ a<span class="n">res</span> <span class="nf">TrackPlay</span> k<span class="n">t
         <p>The example above shows the tabifd analysis feeding into partial tracking andcubic-phase additive resynthesis with pitch shifting.</p>
       </div>
       <div class="refsect1">
-        <a id="idm239188"></a>
+        <a id="idm337951"></a>
         <h2>Credits</h2>
         <p>
       </p>

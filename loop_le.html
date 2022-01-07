@@ -39,20 +39,20 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm130600"></a>
+        <a id="idm181308"></a>
         <h2>Description</h2>
         <p>
       Construction of looping operations.
    </p>
       </div>
       <div class="refsect1">
-        <a id="idm130603"></a>
+        <a id="idm181311"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>loop_le</strong></span>  indx, incr, imax, label</pre>
         <pre class="synopsis"><span class="command"><strong>loop_le</strong></span>  kndx, kncr, kmax, label</pre>
       </div>
       <div class="refsect1">
-        <a id="idm130609"></a>
+        <a id="idm181317"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>indx</em></span> -- i-rate variable to count loop.
@@ -65,7 +65,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm130617"></a>
+        <a id="idm181325"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>kndx</em></span> -- k-rate variable to count loop.
@@ -93,20 +93,20 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm130639"></a>
+        <a id="idm181347"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the loop_le opcode. It uses the file <a class="ulink" href="examples/loop_le.csd" target="_top"><em class="citetitle">loop_le.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm130644"></a>
+          <a id="idm181352"></a>
           <p class="title">
             <strong>Example 527. Example of the loop_le opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm130651"></a>
+              <a id="idm181359"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -116,45 +116,45 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o loop_le.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="nb">seed</span> <span class="mi">0</span>
-gi<span class="n">sine</span> <span class="nb">ftgen</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">^</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>
+</span><span class="nb">seed</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span>gi<span class="n">sine</span><span class="w"> </span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">^</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span> <span class="c1">;master instrument</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w"> </span><span class="c1">;master instrument</span><span class="w">
 
-i<span class="n">ninstr</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1">;number of called instances</span>
-i<span class="n">ndx</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="nl">loop</span><span class="p">:</span>
-      <span class="nb">prints</span> <span class="s">"play instance </span><span class="si">%d</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span> i<span class="n">ndx</span>
-i<span class="n">pan</span>  <span class="nb">random</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
-i<span class="n">freq</span> <span class="nb">random</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span>
-i<span class="n">amp</span>  <span class="o">=</span> <span class="mi">1</span><span class="o">/</span>i<span class="n">ninstr</span>
-<span class="nb">event_i</span> <span class="s">"i"</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> i<span class="n">amp</span><span class="p">,</span> i<span class="n">freq</span><span class="p">,</span> i<span class="n">pan</span>
-<span class="kp">loop_le</span> i<span class="n">ndx</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> i<span class="n">ninstr</span><span class="p">,</span> <span class="nl">loop</span>
+</span>i<span class="n">ninstr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="c1">;number of called instances</span><span class="w">
+</span>i<span class="n">ndx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="nl">loop</span><span class="p">:</span><span class="w">
+      </span><span class="nb">prints</span><span class="w"> </span><span class="s">"play instance </span><span class="si">%d</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span>i<span class="n">ndx</span><span class="w">
+</span>i<span class="n">pan</span><span class="w">  </span><span class="nb">random</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span>i<span class="n">freq</span><span class="w"> </span><span class="nb">random</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="w">
+</span>i<span class="n">amp</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span>i<span class="n">ninstr</span><span class="w">
+</span><span class="nb">event_i</span><span class="w"> </span><span class="s">"i"</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span>i<span class="n">amp</span><span class="p">,</span><span class="w"> </span>i<span class="n">freq</span><span class="p">,</span><span class="w"> </span>i<span class="n">pan</span><span class="w">
+</span><span class="kp">loop_le</span><span class="w"> </span>i<span class="n">ndx</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>i<span class="n">ninstr</span><span class="p">,</span><span class="w"> </span><span class="nl">loop</span><span class="w">
 
-<span class="kd">endin</span>
+</span><span class="kd">endin</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">10</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">10</span><span class="w">
 
-i<span class="n">peak</span> <span class="nb">random</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span> <span class="c1">;where is the envelope peak</span>
-a<span class="n">sig</span>  <span class="nb">poscil3</span> <span class="vi">p4</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> gi<span class="n">sine</span>
-a<span class="n">env</span>  <span class="nb">transeg</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="o">*</span>i<span class="n">peak</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="vi">p3</span><span class="o">-</span><span class="vi">p3</span><span class="o">*</span>i<span class="n">peak</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">0</span>
-a<span class="n">L</span><span class="p">,</span>a<span class="n">R</span> <span class="nb">pan2</span> a<span class="n">sig</span><span class="o">*</span>a<span class="n">env</span><span class="p">,</span> <span class="vi">p6</span>
-      <span class="nb">outs</span> a<span class="n">L</span><span class="p">,</span> a<span class="n">R</span>
+</span>i<span class="n">peak</span><span class="w"> </span><span class="nb">random</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="c1">;where is the envelope peak</span><span class="w">
+</span>a<span class="n">sig</span><span class="w">  </span><span class="nb">poscil3</span><span class="w"> </span><span class="vi">p4</span><span class="p">,</span><span class="w"> </span><span class="vi">p5</span><span class="p">,</span><span class="w"> </span>gi<span class="n">sine</span><span class="w">
+</span>a<span class="n">env</span><span class="w">  </span><span class="nb">transeg</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="o">*</span>i<span class="n">peak</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="o">-</span><span class="vi">p3</span><span class="o">*</span>i<span class="n">peak</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span>a<span class="n">L</span><span class="p">,</span>a<span class="n">R</span><span class="w"> </span><span class="nb">pan2</span><span class="w"> </span>a<span class="n">sig</span><span class="o">*</span>a<span class="n">env</span><span class="p">,</span><span class="w"> </span><span class="vi">p6</span><span class="w">
+      </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">L</span><span class="p">,</span><span class="w"> </span>a<span class="n">R</span><span class="w">
 
-<span class="kd">endin</span>
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">10</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -175,7 +175,7 @@ play instance 5
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm130807"></a>
+        <a id="idm181610"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="loop_ge.html" title="loop_ge"><em class="citetitle">loop_ge</em></a>,
@@ -187,7 +187,7 @@ play instance 5
  and in the Floss Manuals: <a class="ulink" href="https://flossmanual.csound.com/csound-language/control-structures" target="_top"><em class="citetitle"> https://flossmanual.csound.com/csound-language/control-structures</em></a></p>
       </div>
       <div class="refsect1">
-        <a id="idm130821"></a>
+        <a id="idm181624"></a>
         <h2>Credits</h2>
         <p>Istvan Varga.</p>
         <p>New in Csound version 5.01</p>

@@ -39,27 +39,27 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm206881"></a>
+        <a id="idm291764"></a>
         <h2>Description</h2>
         <p>
       Performs a sample-and-hold operation on its input.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm206884"></a>
+        <a id="idm291767"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ares <span class="command"><strong>samphold</strong></span> asig, agate [, ival] [, ivstor]</pre>
         <pre class="synopsis">kres <span class="command"><strong>samphold</strong></span> ksig, kgate [, ival] [, ivstor]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm206890"></a>
+        <a id="idm291773"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>ival, ivstor</em></span> (optional) -- controls initial disposition of internal save space. If <span class="emphasis"><em>ivstor</em></span> is zero the internal <span class="quote">“<span class="quote">hold</span>”</span> value is set to <span class="emphasis"><em>ival</em></span> ; else it retains its previous value. Defaults are 0,0 (i.e. init to zero)
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm206897"></a>
+        <a id="idm291780"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>kgate, xgate</em></span> -- controls whether to hold the signal.
@@ -69,7 +69,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm206907"></a>
+        <a id="idm291790"></a>
         <h2>Examples</h2>
         <p>
       </p>
@@ -88,14 +88,14 @@ aout  <span class="opc">tone</span>      asamp, 100            <span class="comm
       Here is another example of the samphold opcode. It uses the file <a class="ulink" href="examples/samphold.csd" target="_top"><em class="citetitle">samphold.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm206927"></a>
+          <a id="idm291810"></a>
           <p class="title">
             <strong>Example 922. Example of the samphold opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm206934"></a>
+              <a id="idm291817"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -105,29 +105,29 @@ aout  <span class="opc">tone</span>      asamp, 100            <span class="comm
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o samphold.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
 
-k<span class="n">x</span>	<span class="nb">line</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">1</span>   	<span class="c1">; between -1 and +1 </span>
-k<span class="n">trig</span>	<span class="nb">metro</span> <span class="mi">1</span>	 		<span class="c1">; triggers 1 time per second </span>
-k<span class="n">val</span>	<span class="nb">samphold</span> k<span class="n">x</span><span class="p">,</span> k<span class="n">trig</span>	<span class="c1">; change value whenever ktrig = 1 </span>
-        <span class="nb">printk2</span> k<span class="n">val</span>		<span class="c1">; will print every time kval changes </span>
-a<span class="n">sig</span>	<span class="nb">diskin2</span>	<span class="s">"flute.aiff"</span><span class="p">,</span> <span class="mi">1</span><span class="o">+</span>k<span class="n">val</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
-	<span class="nb">outs</span> a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
+</span>k<span class="n">x</span><span class="w">	</span><span class="nb">line</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">   	</span><span class="c1">; between -1 and +1 </span><span class="w">
+</span>k<span class="n">trig</span><span class="w">	</span><span class="nb">metro</span><span class="w"> </span><span class="mi">1</span><span class="w">	 		</span><span class="c1">; triggers 1 time per second </span><span class="w">
+</span>k<span class="n">val</span><span class="w">	</span><span class="nb">samphold</span><span class="w"> </span>k<span class="n">x</span><span class="p">,</span><span class="w"> </span>k<span class="n">trig</span><span class="w">	</span><span class="c1">; change value whenever ktrig = 1 </span><span class="w">
+        </span><span class="nb">printk2</span><span class="w"> </span>k<span class="n">val</span><span class="w">		</span><span class="c1">; will print every time kval changes </span><span class="w">
+</span>a<span class="n">sig</span><span class="w">	</span><span class="nb">diskin2</span><span class="w">	</span><span class="s">"flute.aiff"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">+</span>k<span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+	</span><span class="nb">outs</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
 
-<span class="kd">endin</span> 
-<span class="nt">&lt;/CsInstruments&gt;</span> 
-<span class="nt">&lt;CsScore&gt;</span> 
+</span><span class="kd">endin</span><span class="w"> 
+</span><span class="nt">&lt;/CsInstruments&gt;</span> 
+<span class="nt">&lt;CsScore&gt;</span><span class="w"> 
 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">11</span> 
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span> 
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">11</span><span class="w"> 
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span> 
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span> 
 </pre>
             </div>
@@ -137,7 +137,7 @@ a<span class="n">sig</span>	<span class="nb">diskin2</span>	<span class="s">"flu
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm207006"></a>
+        <a id="idm291938"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="diff.html" title="diff"><em class="citetitle">diff</em></a>,

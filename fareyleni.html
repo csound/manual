@@ -39,7 +39,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm71519"></a>
+        <a id="idm97028"></a>
         <h2>Description</h2>
         <p>
 This opcode can be used in conjunction with <a class="link" href="GENfarey.html" title="GENfarey"><em class="citetitle">GENfarey</em></a>.
@@ -150,12 +150,12 @@ where phi(m) is Euler's totient function, which gives the number of integers ≤
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm71596"></a>
+        <a id="idm97105"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ifl <span class="command"><strong>fareyleni</strong></span> ifn</pre>
       </div>
       <div class="refsect1">
-        <a id="idm71600"></a>
+        <a id="idm97109"></a>
         <h2>Initialisation</h2>
         <p>
       The length of the identified Farey sequence is returned.
@@ -165,20 +165,20 @@ where phi(m) is Euler's totient function, which gives the number of integers ≤
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm71605"></a>
+        <a id="idm97114"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the fareyleni opcode. It uses the file <a class="ulink" href="examples/fareyleni.csd" target="_top"><em class="citetitle">fareyleni.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm71610"></a>
+          <a id="idm97119"></a>
           <p class="title">
             <strong>Example 293. Example of the fareyleni opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm71617"></a>
+              <a id="idm97126"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -188,85 +188,85 @@ where phi(m) is Euler's totient function, which gives the number of integers ≤
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o fareyleni.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-      <span class="c1">; initialise integer n for Farey Sequence F_8</span>
-      gi<span class="n">farn</span> <span class="nb">init</span> <span class="mi">8</span>	
+      </span><span class="c1">; initialise integer n for Farey Sequence F_8</span><span class="w">
+      </span>gi<span class="n">farn</span><span class="w"> </span><span class="nb">init</span><span class="w"> </span><span class="mi">8</span><span class="w">	
 
-      <span class="c1">; calculate length of F_8, it should return 23 for |F_8|</span>
-      gi<span class="n">res</span> <span class="nb">fareyleni</span> gi<span class="n">farn</span>  
+      </span><span class="c1">; calculate length of F_8, it should return 23 for |F_8|</span><span class="w">
+      </span>gi<span class="n">res</span><span class="w"> </span><span class="nb">fareyleni</span><span class="w"> </span>gi<span class="n">farn</span><span class="w">  
 
-      <span class="c1">; convert to negative number for the GEN routine because</span>
-      <span class="c1">; the table length won't be a power of 2 </span>
-      <span class="c1">; (The length of a Farey Sequence of n &gt; 1 is always an odd number)</span>
-      gi<span class="n">len</span> <span class="nb">init</span> gi<span class="n">res</span> <span class="o">*</span> <span class="o">-</span><span class="mi">1</span> 
+      </span><span class="c1">; convert to negative number for the GEN routine because</span><span class="w">
+      </span><span class="c1">; the table length won't be a power of 2 </span><span class="w">
+      </span><span class="c1">; (The length of a Farey Sequence of n &gt; 1 is always an odd number)</span><span class="w">
+      </span>gi<span class="n">len</span><span class="w"> </span><span class="nb">init</span><span class="w"> </span>gi<span class="n">res</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> 
       	   	       	               
-      <span class="c1">; create F_8 with GENfarey, the negative table number prevents </span>
-      <span class="c1">; unnecessary normalisation (F_8 IS already normalised)</span>
-      <span class="c1">; 	         	    n  	   mode: </span>
-      gi<span class="n">farey</span> <span class="nb">ftgen</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> gi<span class="n">len</span><span class="p">,</span> <span class="s">"farey"</span><span class="p">,</span> gi<span class="n">farn</span><span class="p">,</span> <span class="mi">4</span>
-      <span class="c1">; if mode=4 then 1 is added to each element of F_n.</span>
-      <span class="c1">; Useful for creating just tuning tables that can be read by the cps2pch opcode.</span>
+      </span><span class="c1">; create F_8 with GENfarey, the negative table number prevents </span><span class="w">
+      </span><span class="c1">; unnecessary normalisation (F_8 IS already normalised)</span><span class="w">
+      </span><span class="c1">; 	         	    n  	   mode: </span><span class="w">
+      </span>gi<span class="n">farey</span><span class="w"> </span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span>gi<span class="n">len</span><span class="p">,</span><span class="w"> </span><span class="s">"farey"</span><span class="p">,</span><span class="w"> </span>gi<span class="n">farn</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="w">
+      </span><span class="c1">; if mode=4 then 1 is added to each element of F_n.</span><span class="w">
+      </span><span class="c1">; Useful for creating just tuning tables that can be read by the cps2pch opcode.</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>
-      <span class="c1">; the very last element of F_n is not needed in the case of tuning tables</span>
-      i<span class="n">res</span> <span class="o">=</span> gi<span class="n">res</span> <span class="o">-</span> <span class="mi">1</span> 
-      <span class="c1">; read out and print to file</span>
-      k<span class="n">ndx</span> <span class="nb">init</span> <span class="mi">0</span> 
-      <span class="k">if</span> <span class="p">(</span>k<span class="n">ndx</span> <span class="o">&lt;</span> i<span class="n">res</span><span class="p">)</span> <span class="k">then</span>    
-      	 k<span class="n">elem</span> <span class="nb">tab</span> k<span class="n">ndx</span><span class="p">,</span> gi<span class="n">farey</span>
-      	 <span class="nb">fprintks</span> <span class="s">"farey8_tuning.txt"</span><span class="p">,</span> <span class="s">"</span><span class="si">%2.6f</span><span class="se">\\</span><span class="s">n"</span><span class="p">,</span> k<span class="n">elem</span>
-      	 k<span class="n">ndx</span> <span class="o">=</span> k<span class="n">ndx</span><span class="o">+</span><span class="mi">1</span>
-      <span class="k">endif</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+      </span><span class="c1">; the very last element of F_n is not needed in the case of tuning tables</span><span class="w">
+      </span>i<span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>gi<span class="n">res</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> 
+      </span><span class="c1">; read out and print to file</span><span class="w">
+      </span>k<span class="n">ndx</span><span class="w"> </span><span class="nb">init</span><span class="w"> </span><span class="mi">0</span><span class="w"> 
+      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span>k<span class="n">ndx</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span>i<span class="n">res</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w">    
+      	 </span>k<span class="n">elem</span><span class="w"> </span><span class="nb">tab</span><span class="w"> </span>k<span class="n">ndx</span><span class="p">,</span><span class="w"> </span>gi<span class="n">farey</span><span class="w">
+      	 </span><span class="nb">fprintks</span><span class="w"> </span><span class="s">"farey8_tuning.txt"</span><span class="p">,</span><span class="w"> </span><span class="s">"</span><span class="si">%2.6f</span><span class="se">\\</span><span class="s">n"</span><span class="p">,</span><span class="w"> </span>k<span class="n">elem</span><span class="w">
+      	 </span>k<span class="n">ndx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>k<span class="n">ndx</span><span class="o">+</span><span class="mi">1</span><span class="w">
+      </span><span class="k">endif</span><span class="w">
       
-<span class="kd">endin</span>
+</span><span class="kd">endin</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">2</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">
 
-i<span class="n">p</span>   <span class="nb">cps2pch</span> <span class="vi">p4</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span>
-a<span class="n">sig</span> <span class="nb">poscil</span> <span class="mf">.5</span><span class="p">,</span> i<span class="n">p</span><span class="p">,</span> <span class="mi">1</span>
-a<span class="n">env</span> <span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="vi">p3</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span>
-     <span class="nb">outs</span> a<span class="n">sig</span> <span class="o">*</span> a<span class="n">env</span><span class="p">,</span> a<span class="n">sig</span> <span class="o">*</span> a<span class="n">env</span>
+</span>i<span class="n">p</span><span class="w">   </span><span class="nb">cps2pch</span><span class="w"> </span><span class="vi">p4</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">100</span><span class="w">
+</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">poscil</span><span class="w"> </span><span class="mf">.5</span><span class="p">,</span><span class="w"> </span>i<span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span>a<span class="n">env</span><span class="w"> </span><span class="nb">linseg</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">
+     </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">sig</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>a<span class="n">env</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>a<span class="n">env</span><span class="w">
 
-<span class="kd">endin</span>
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">f</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">8192</span> <span class="mi">10</span> <span class="mi">1</span>	<span class="c1">;sine wave</span>
+</span><span class="kd">endin</span><span class="w">
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">f</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">8192</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w">	</span><span class="c1">;sine wave</span><span class="w">
 
-<span class="nb">i</span><span class="mi">1</span>	<span class="mi">0</span>     <span class="mf">.1</span>
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">	</span><span class="mi">0</span><span class="w">     </span><span class="mf">.1</span><span class="w">
 
-<span class="nb">i</span><span class="mi">2</span>	<span class="mi">1</span>	<span class="mf">.5</span>	<span class="mf">8.00</span>
-<span class="nb">i</span><span class="mi">2</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="o">&gt;</span>
-<span class="nb">i</span><span class="mi">2</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="o">&gt;</span>
-<span class="nb">i</span><span class="mi">2</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="o">&gt;</span>
-<span class="nb">i</span><span class="mi">2</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="o">&gt;</span>
-<span class="nb">i</span><span class="mi">2</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="o">&gt;</span>
-<span class="nb">i</span><span class="mi">2</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="o">&gt;</span>
-<span class="nb">i</span><span class="mi">2</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="o">&gt;</span>
-<span class="nb">i</span><span class="mi">2</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="o">&gt;</span>
-<span class="nb">i</span><span class="mi">2</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="o">&gt;</span>
-<span class="nb">i</span><span class="mi">2</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="o">&gt;</span>
-<span class="nb">i</span><span class="mi">2</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="o">&gt;</span>
-<span class="nb">i</span><span class="mi">2</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="o">&gt;</span>
-<span class="nb">i</span><span class="mi">2</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="o">&gt;</span>
-<span class="nb">i</span><span class="mi">2</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="o">&gt;</span>
-<span class="nb">i</span><span class="mi">2</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="o">&gt;</span>
-<span class="nb">i</span><span class="mi">2</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="o">&gt;</span>
-<span class="nb">i</span><span class="mi">2</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="o">&gt;</span>
-<span class="nb">i</span><span class="mi">2</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="o">&gt;</span>
-<span class="nb">i</span><span class="mi">2</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="o">&gt;</span>
-<span class="nb">i</span><span class="mi">2</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="o">&gt;</span>
-<span class="nb">i</span><span class="mi">2</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="o">&gt;</span>
-<span class="nb">i</span><span class="mi">2</span>	<span class="o">+</span>	<span class="mi">1</span>	<span class="mf">8.22</span>
+</span><span class="nb">i</span><span class="mi">2</span><span class="w">	</span><span class="mi">1</span><span class="w">	</span><span class="mf">.5</span><span class="w">	</span><span class="mf">8.00</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w">	</span><span class="o">+</span><span class="w">	</span><span class="o">.</span><span class="w">	</span><span class="o">&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w">	</span><span class="o">+</span><span class="w">	</span><span class="o">.</span><span class="w">	</span><span class="o">&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w">	</span><span class="o">+</span><span class="w">	</span><span class="o">.</span><span class="w">	</span><span class="o">&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w">	</span><span class="o">+</span><span class="w">	</span><span class="o">.</span><span class="w">	</span><span class="o">&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w">	</span><span class="o">+</span><span class="w">	</span><span class="o">.</span><span class="w">	</span><span class="o">&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w">	</span><span class="o">+</span><span class="w">	</span><span class="o">.</span><span class="w">	</span><span class="o">&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w">	</span><span class="o">+</span><span class="w">	</span><span class="o">.</span><span class="w">	</span><span class="o">&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w">	</span><span class="o">+</span><span class="w">	</span><span class="o">.</span><span class="w">	</span><span class="o">&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w">	</span><span class="o">+</span><span class="w">	</span><span class="o">.</span><span class="w">	</span><span class="o">&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w">	</span><span class="o">+</span><span class="w">	</span><span class="o">.</span><span class="w">	</span><span class="o">&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w">	</span><span class="o">+</span><span class="w">	</span><span class="o">.</span><span class="w">	</span><span class="o">&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w">	</span><span class="o">+</span><span class="w">	</span><span class="o">.</span><span class="w">	</span><span class="o">&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w">	</span><span class="o">+</span><span class="w">	</span><span class="o">.</span><span class="w">	</span><span class="o">&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w">	</span><span class="o">+</span><span class="w">	</span><span class="o">.</span><span class="w">	</span><span class="o">&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w">	</span><span class="o">+</span><span class="w">	</span><span class="o">.</span><span class="w">	</span><span class="o">&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w">	</span><span class="o">+</span><span class="w">	</span><span class="o">.</span><span class="w">	</span><span class="o">&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w">	</span><span class="o">+</span><span class="w">	</span><span class="o">.</span><span class="w">	</span><span class="o">&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w">	</span><span class="o">+</span><span class="w">	</span><span class="o">.</span><span class="w">	</span><span class="o">&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w">	</span><span class="o">+</span><span class="w">	</span><span class="o">.</span><span class="w">	</span><span class="o">&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w">	</span><span class="o">+</span><span class="w">	</span><span class="o">.</span><span class="w">	</span><span class="o">&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w">	</span><span class="o">+</span><span class="w">	</span><span class="o">.</span><span class="w">	</span><span class="o">&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w">	</span><span class="o">+</span><span class="w">	</span><span class="mi">1</span><span class="w">	</span><span class="mf">8.22</span><span class="w">
 
 
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
  
 </pre>
@@ -277,7 +277,7 @@ a<span class="n">env</span> <span class="nb">linseg</span> <span class="mi">0</s
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm71887"></a>
+        <a id="idm97599"></a>
         <h2>Credits</h2>
         <p>
       </p>

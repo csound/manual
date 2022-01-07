@@ -39,20 +39,20 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm176419"></a>
+        <a id="idm247296"></a>
         <h2>Description</h2>
         <p>
       These opcodes maintain the output k-rate variable as the peak absolute level so far received.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm176422"></a>
+        <a id="idm247299"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">kres <span class="command"><strong>peak</strong></span> asig</pre>
         <pre class="synopsis">kres <span class="command"><strong>peak</strong></span> ksig</pre>
       </div>
       <div class="refsect1">
-        <a id="idm176428"></a>
+        <a id="idm247305"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>kres</em></span> -- Output equal to the highest absolute value received so far. This is effectively an input to the opcode as well, since it reads <span class="emphasis"><em>kres</em></span> in order to decide whether to write something higher into it.
@@ -65,20 +65,20 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm176437"></a>
+        <a id="idm247314"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the peak opcode. It uses the file <a class="ulink" href="examples/peak.csd" target="_top"><em class="citetitle">peak.csd</em></a>, and <a class="ulink" href="examples/beats.wav" target="_top"><em class="citetitle">beats.wav</em></a>.
       </p>
         <div class="example">
-          <a id="idm176444"></a>
+          <a id="idm247321"></a>
           <p class="title">
             <strong>Example 745. Example of the peak opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm176451"></a>
+              <a id="idm247328"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -88,36 +88,36 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o peak.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="c1">; Initialize the global variables.</span>
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">kr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class="c1">; Initialize the global variables.</span><span class="w">
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">kr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="c1">; Instrument #1 - play an audio file.</span>
-<span class="kd">instr</span> <span class="nf">1</span>
-  <span class="c1">; Capture the highest amplitude in the "beats.wav" file.</span>
-  a<span class="n">sig</span> <span class="nb">soundin</span> <span class="s">"beats.wav"</span>
-  k<span class="n">p</span> <span class="nb">peak</span> a<span class="n">sig</span>
+</span><span class="c1">; Instrument #1 - play an audio file.</span><span class="w">
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+  </span><span class="c1">; Capture the highest amplitude in the "beats.wav" file.</span><span class="w">
+  </span>a<span class="n">sig</span><span class="w"> </span><span class="nb">soundin</span><span class="w"> </span><span class="s">"beats.wav"</span><span class="w">
+  </span>k<span class="n">p</span><span class="w"> </span><span class="nb">peak</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
 
-  <span class="c1">; Print out the peak value once per second.</span>
-  <span class="nb">printk</span> <span class="mi">1</span><span class="p">,</span> k<span class="n">p</span>
+  </span><span class="c1">; Print out the peak value once per second.</span><span class="w">
+  </span><span class="nb">printk</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>k<span class="n">p</span><span class="w">
   
-  <span class="nb">out</span> a<span class="n">sig</span>
-<span class="kd">endin</span>
+  </span><span class="nb">out</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
 
-<span class="c1">; Play Instrument #1, the audio file, for three seconds.</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">3</span>
-<span class="nb">e</span>
+</span><span class="c1">; Play Instrument #1, the audio file, for three seconds.</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">3</span><span class="w">
+</span><span class="nb">e</span><span class="w">
 
 
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -136,7 +136,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm176504"></a>
+        <a id="idm247419"></a>
         <h2>Credits</h2>
         <p>
       </p>

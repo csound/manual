@@ -39,19 +39,19 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm157277"></a>
+        <a id="idm219977"></a>
         <h2>Description</h2>
         <p>
       Sends a NPRN (Non-Registered Parameter Number) message to the MIDI OUT port each time one of the input arguments changes.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm157280"></a>
+        <a id="idm219980"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>nrpn</strong></span> kchan, kparmnum, kparmvalue</pre>
       </div>
       <div class="refsect1">
-        <a id="idm157284"></a>
+        <a id="idm219984"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>kchan</em></span> -- MIDI channel (1-16)
@@ -67,13 +67,13 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm157293"></a>
+        <a id="idm219993"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the nrpn opcode. It uses the file <a class="ulink" href="examples/nrpn.csd" target="_top"><em class="citetitle">nrpn.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm157298"></a>
+          <a id="idm219998"></a>
           <p class="title">
             <strong>Example 660. Example of the nrpn opcode.</strong>
           </p>
@@ -81,7 +81,7 @@
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <p>This example generates notes for every note received on the MIDI input. It generates MIDI notes on csound's MIDI output, so be sure to connect something.</p>
             <div class="refsect1">
-              <a id="idm157306"></a>
+              <a id="idm220006"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span> 
 <span class="nt">&lt;CsOptions&gt;</span> 
@@ -89,29 +89,29 @@
 -odac  -Q1   <span class="c1">;;;realtime audio out with MIDI out</span>
 <span class="c1">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>	<span class="c1">; change attack time of external synth</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">	</span><span class="c1">; change attack time of external synth</span><span class="w">
 
-<span class="nb">initc7</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span>		<span class="c1">; set controller 6 to 0</span>
-<span class="nb">nrpn</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">1</span>		<span class="c1">; set MSB</span>
-<span class="nb">nrpn</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">99</span>		<span class="c1">; set LSB</span>
-k<span class="n">att</span> <span class="nb">ctrl7</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">127</span>	<span class="c1">; DataEntMSB</span>
-i<span class="n">dur</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="nb">noteondur2</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> i<span class="n">dur</span> <span class="c1">; play note on synth</span>
+</span><span class="nb">initc7</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">		</span><span class="c1">; set controller 6 to 0</span><span class="w">
+</span><span class="nb">nrpn</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">99</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">		</span><span class="c1">; set MSB</span><span class="w">
+</span><span class="nb">nrpn</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">98</span><span class="p">,</span><span class="w"> </span><span class="mi">99</span><span class="w">		</span><span class="c1">; set LSB</span><span class="w">
+</span>k<span class="n">att</span><span class="w"> </span><span class="nb">ctrl7</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">127</span><span class="w">	</span><span class="c1">; DataEntMSB</span><span class="w">
+</span>i<span class="n">dur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="nb">noteondur2</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span>i<span class="n">dur</span><span class="w"> </span><span class="c1">; play note on synth</span><span class="w">
 
-<span class="kd">endin</span>
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
+</span><span class="kd">endin</span><span class="w">
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">3</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">3</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -121,7 +121,7 @@ i<span class="n">dur</span> <span class="o">=</span> <span class="mi">2</span>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm157383"></a>
+        <a id="idm220137"></a>
         <h2>Credits</h2>
         <p>
       </p>

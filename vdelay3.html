@@ -39,19 +39,19 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm261973"></a>
+        <a id="idm370441"></a>
         <h2>Description</h2>
         <p>
       <span class="emphasis"><em>vdelay3</em></span> is experimental. It is the same as <a class="link" href="vdelay.html" title="vdelay"><em class="citetitle">vdelay</em></a> except that it uses cubic interpolation. (New in Version 3.50.)
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm261979"></a>
+        <a id="idm370447"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ares <span class="command"><strong>vdelay3</strong></span> asig, adel, imaxdel [, iskip]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm261983"></a>
+        <a id="idm370451"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>imaxdel</em></span> -- Maximum value of delay in milliseconds. If <span class="emphasis"><em>adel</em></span> gains a value greater than <span class="emphasis"><em>imaxdel</em></span> it is folded around <span class="emphasis"><em>imaxdel</em></span>. This should not happen.
@@ -61,7 +61,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm261992"></a>
+        <a id="idm370460"></a>
         <h2>Performance</h2>
         <p>
       With this unit generator it is possible to do Doppler effects or chorusing and flanging.
@@ -74,20 +74,20 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm262000"></a>
+        <a id="idm370468"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the vdelay3 opcode. It uses the file <a class="ulink" href="examples/vdelay3.csd" target="_top"><em class="citetitle">vdelay3.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm262005"></a>
+          <a id="idm370473"></a>
           <p class="title">
-            <strong>Example 1169. Example of the vdelay3 opcode.</strong>
+            <strong>Example 1170. Example of the vdelay3 opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm262012"></a>
+              <a id="idm370480"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -97,33 +97,33 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o vdelay3.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span> 
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w"> 
 
-i<span class="n">ms</span>  <span class="o">=</span> <span class="mi">100</span>			<span class="c1">;maximum delay time in msec</span>
-a<span class="n">out</span> <span class="nb">poscil</span> <span class="mf">.8</span><span class="p">,</span> <span class="mi">220</span><span class="p">,</span> <span class="mi">1</span>		<span class="c1">;make a signal</span>
-a<span class="n">2</span>   <span class="nb">poscil</span> i<span class="n">ms</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="vi">p3</span><span class="p">,</span> <span class="mi">1</span>	<span class="c1">;make an LFO</span>
-a<span class="n">2</span>   <span class="o">=</span> a<span class="n">2</span> <span class="o">+</span> i<span class="n">ms</span><span class="o">/</span><span class="mi">2</span>		<span class="c1">;offset the LFO so that it is positive</span>
-a<span class="n">sig</span> <span class="nb">vdelay3</span> a<span class="n">out</span><span class="p">,</span> a<span class="n">2</span><span class="p">,</span> i<span class="n">ms</span>	<span class="c1">;use the LFO to control delay time</span>
-     <span class="nb">outs</span>  a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
+</span>i<span class="n">ms</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="w">			</span><span class="c1">;maximum delay time in msec</span><span class="w">
+</span>a<span class="n">out</span><span class="w"> </span><span class="nb">poscil</span><span class="w"> </span><span class="mf">.8</span><span class="p">,</span><span class="w"> </span><span class="mi">220</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">		</span><span class="c1">;make a signal</span><span class="w">
+</span>a<span class="n">2</span><span class="w">   </span><span class="nb">poscil</span><span class="w"> </span>i<span class="n">ms</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">	</span><span class="c1">;make an LFO</span><span class="w">
+</span>a<span class="n">2</span><span class="w">   </span><span class="o">=</span><span class="w"> </span>a<span class="n">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>i<span class="n">ms</span><span class="o">/</span><span class="mi">2</span><span class="w">		</span><span class="c1">;offset the LFO so that it is positive</span><span class="w">
+</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">vdelay3</span><span class="w"> </span>a<span class="n">out</span><span class="p">,</span><span class="w"> </span>a<span class="n">2</span><span class="p">,</span><span class="w"> </span>i<span class="n">ms</span><span class="w">	</span><span class="c1">;use the LFO to control delay time</span><span class="w">
+     </span><span class="nb">outs</span><span class="w">  </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
 
-<span class="kd">endin</span>
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">f</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">8192</span> <span class="mi">10</span> <span class="mi">1</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">f</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">8192</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">5</span> 
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">5</span><span class="w"> 
 
-<span class="nb">e</span>
+</span><span class="nb">e</span><span class="w">
 
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span> 
 </pre>
             </div>
@@ -134,14 +134,14 @@ a<span class="n">sig</span> <span class="nb">vdelay3</span> a<span class="n">out
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm262097"></a>
+        <a id="idm370623"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="vdelay.html" title="vdelay"><em class="citetitle">vdelay</em></a>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm262102"></a>
+        <a id="idm370628"></a>
         <h2>Credits</h2>
         <p>
       </p>

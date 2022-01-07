@@ -39,19 +39,19 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm225543"></a>
+        <a id="idm318114"></a>
         <h2>Description</h2>
         <p>
       This opcode positions the input sound in a 3D space, with optional simulation of room acoustics, in various output formats. <span class="emphasis"><em>spat3dt</em></span> can be used to render the impulse response at i-time, storing output in a function table, suitable for convolution.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm225547"></a>
+        <a id="idm318118"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>spat3dt</strong></span> ioutft, iX, iY, iZ, idist, ift, imode, irlen [, iftnocl]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm225551"></a>
+        <a id="idm318122"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>ioutft</em></span> -- Output ftable number for spat3dt. W, X, Y, and Z outputs are written interleaved to this table. If the table is too short, output will be truncated.
@@ -282,20 +282,20 @@ aright  =  aY + aZ<br />
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm225658"></a>
+        <a id="idm318229"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the spat3dt opcode. It uses the file <a class="ulink" href="examples/spat3dt.csd" target="_top"><em class="citetitle">spat3dt.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm225663"></a>
+          <a id="idm318234"></a>
           <p class="title">
-            <strong>Example 997. Example of the spat3dt opcode.</strong>
+            <strong>Example 998. Example of the spat3dt opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm225670"></a>
+              <a id="idm318241"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span> 
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -305,87 +305,87 @@ aright  =  aY + aZ<br />
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o spat3dt.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span> 
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w"> 
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>  
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">  
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-ga<span class="n">rvb</span>   <span class="nb">init</span> <span class="mi">0</span> 
-ga<span class="n">W</span>     <span class="nb">init</span> <span class="mi">0</span> 
-ga<span class="n">X</span>     <span class="nb">init</span> <span class="mi">0</span> 
-ga<span class="n">Y</span>     <span class="nb">init</span> <span class="mi">0</span> 
+</span>ga<span class="n">rvb</span><span class="w">   </span><span class="nb">init</span><span class="w"> </span><span class="mi">0</span><span class="w"> 
+</span>ga<span class="n">W</span><span class="w">     </span><span class="nb">init</span><span class="w"> </span><span class="mi">0</span><span class="w"> 
+</span>ga<span class="n">X</span><span class="w">     </span><span class="nb">init</span><span class="w"> </span><span class="mi">0</span><span class="w"> 
+</span>ga<span class="n">Y</span><span class="w">     </span><span class="nb">init</span><span class="w"> </span><span class="mi">0</span><span class="w"> 
 
-i<span class="n">tmp</span> <span class="nb">ftgen</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">123</span><span class="p">,</span>          <span class="err">\</span> 
-           <span class="mi">1</span><span class="p">,</span> <span class="mf">13.000</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="mf">20000.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span>   <span class="err">\</span> 
-           <span class="mi">1</span><span class="p">,</span>  <span class="mf">2.000</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="mf">20000.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span>   <span class="err">\</span> 
-           <span class="mi">1</span><span class="p">,</span> <span class="mf">16.000</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="mf">20000.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span>   <span class="err">\</span> 
-           <span class="mi">1</span><span class="p">,</span>  <span class="mf">9.000</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="mf">20000.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span>   <span class="err">\</span> 
-           <span class="mi">1</span><span class="p">,</span> <span class="mf">12.000</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="mf">20000.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span>   <span class="err">\</span> 
-           <span class="mi">1</span><span class="p">,</span>  <span class="mf">8.000</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="mf">20000.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mi">2</span> 
+</span>i<span class="n">tmp</span><span class="w"> </span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">          </span><span class="err">\</span><span class="w"> 
+           </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">13.000</span><span class="p">,</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w"> </span><span class="mf">0.85</span><span class="p">,</span><span class="w"> </span><span class="mf">20000.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.50</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">   </span><span class="err">\</span><span class="w"> 
+           </span><span class="mi">1</span><span class="p">,</span><span class="w">  </span><span class="mf">2.000</span><span class="p">,</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w"> </span><span class="mf">0.85</span><span class="p">,</span><span class="w"> </span><span class="mf">20000.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.25</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">   </span><span class="err">\</span><span class="w"> 
+           </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">16.000</span><span class="p">,</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w"> </span><span class="mf">0.85</span><span class="p">,</span><span class="w"> </span><span class="mf">20000.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.35</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">   </span><span class="err">\</span><span class="w"> 
+           </span><span class="mi">1</span><span class="p">,</span><span class="w">  </span><span class="mf">9.000</span><span class="p">,</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w"> </span><span class="mf">0.85</span><span class="p">,</span><span class="w"> </span><span class="mf">20000.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.35</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">   </span><span class="err">\</span><span class="w"> 
+           </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">12.000</span><span class="p">,</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w"> </span><span class="mf">0.85</span><span class="p">,</span><span class="w"> </span><span class="mf">20000.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.35</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">   </span><span class="err">\</span><span class="w"> 
+           </span><span class="mi">1</span><span class="p">,</span><span class="w">  </span><span class="mf">8.000</span><span class="p">,</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w"> </span><span class="mf">0.85</span><span class="p">,</span><span class="w"> </span><span class="mf">20000.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.35</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"> 
 
-i<span class="n">tmp</span> <span class="nb">ftgen</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">262144</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span> 
-     <span class="nb">spat3dt</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.005</span> 
+</span>i<span class="n">tmp</span><span class="w"> </span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">262144</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> 
+     </span><span class="nb">spat3dt</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.005</span><span class="w"> 
 
-i<span class="n">tmp</span> <span class="nb">ftgen</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">262144</span><span class="p">,</span> <span class="o">-</span><span class="mi">52</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span> 
+</span>i<span class="n">tmp</span><span class="w"> </span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">262144</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">52</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="w"> 
 
-<span class="kd">instr</span> <span class="nf">1</span> 
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w"> 
 
-a<span class="n">1</span>   <span class="nb">vco2</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">440</span><span class="p">,</span> <span class="mi">10</span> 
-k<span class="n">frq</span> <span class="nb">port</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">0.008</span><span class="p">,</span> <span class="mi">20000</span> 
-a<span class="n">1</span>   <span class="nb">butterlp</span> a<span class="n">1</span><span class="p">,</span> k<span class="n">frq</span> 
-a<span class="n">2</span>   <span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.003</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span> 
-a<span class="n">1</span>   <span class="o">=</span>  a<span class="n">1</span> <span class="o">*</span> a<span class="n">2</span> <span class="o">*</span> <span class="mi">2</span> 
-     <span class="nb">denorm</span> a<span class="n">1</span> 
-     <span class="nb">vincr</span> ga<span class="n">rvb</span><span class="p">,</span> a<span class="n">1</span> 
-a<span class="n">w</span><span class="p">,</span> a<span class="n">x</span><span class="p">,</span> a<span class="n">y</span><span class="p">,</span> a<span class="n">z</span> <span class="nb">spat3di</span> a<span class="n">1</span><span class="p">,</span> <span class="vi">p4</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="vi">p6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> 
-     <span class="nb">vincr</span> ga<span class="n">W</span><span class="p">,</span> a<span class="n">w</span> 
-     <span class="nb">vincr</span> ga<span class="n">X</span><span class="p">,</span> a<span class="n">x</span> 
-     <span class="nb">vincr</span> ga<span class="n">Y</span><span class="p">,</span> a<span class="n">y</span> 
+</span>a<span class="n">1</span><span class="w">   </span><span class="nb">vco2</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">440</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="w"> 
+</span>k<span class="n">frq</span><span class="w"> </span><span class="nb">port</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mf">0.008</span><span class="p">,</span><span class="w"> </span><span class="mi">20000</span><span class="w"> 
+</span>a<span class="n">1</span><span class="w">   </span><span class="nb">butterlp</span><span class="w"> </span>a<span class="n">1</span><span class="p">,</span><span class="w"> </span>k<span class="n">frq</span><span class="w"> 
+</span>a<span class="n">2</span><span class="w">   </span><span class="nb">linseg</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.003</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span><span class="w"> </span><span class="mf">0.7</span><span class="p">,</span><span class="w"> </span><span class="mf">0.005</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> 
+</span>a<span class="n">1</span><span class="w">   </span><span class="o">=</span><span class="w">  </span>a<span class="n">1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>a<span class="n">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="w"> 
+     </span><span class="nb">denorm</span><span class="w"> </span>a<span class="n">1</span><span class="w"> 
+     </span><span class="nb">vincr</span><span class="w"> </span>ga<span class="n">rvb</span><span class="p">,</span><span class="w"> </span>a<span class="n">1</span><span class="w"> 
+</span>a<span class="n">w</span><span class="p">,</span><span class="w"> </span>a<span class="n">x</span><span class="p">,</span><span class="w"> </span>a<span class="n">y</span><span class="p">,</span><span class="w"> </span>a<span class="n">z</span><span class="w"> </span><span class="nb">spat3di</span><span class="w"> </span>a<span class="n">1</span><span class="p">,</span><span class="w"> </span><span class="vi">p4</span><span class="p">,</span><span class="w"> </span><span class="vi">p5</span><span class="p">,</span><span class="w"> </span><span class="vi">p6</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"> 
+     </span><span class="nb">vincr</span><span class="w"> </span>ga<span class="n">W</span><span class="p">,</span><span class="w"> </span>a<span class="n">w</span><span class="w"> 
+     </span><span class="nb">vincr</span><span class="w"> </span>ga<span class="n">X</span><span class="p">,</span><span class="w"> </span>a<span class="n">x</span><span class="w"> 
+     </span><span class="nb">vincr</span><span class="w"> </span>ga<span class="n">Y</span><span class="p">,</span><span class="w"> </span>a<span class="n">y</span><span class="w"> 
 
-<span class="kd">endin</span> 
+</span><span class="kd">endin</span><span class="w"> 
 
-<span class="kd">instr</span> <span class="nf">2</span> 
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w"> 
 
-<span class="nb">denorm</span> ga<span class="n">rvb</span> 
-<span class="c1">; skip as many samples as possible without truncating the IR </span>
-a<span class="n">rW</span><span class="p">,</span> a<span class="n">rX</span><span class="p">,</span> a<span class="n">rY</span> <span class="nb">ftconv</span> ga<span class="n">rvb</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2048</span><span class="p">,</span> <span class="mi">2048</span><span class="p">,</span> <span class="p">(</span><span class="mi">65536</span> <span class="o">-</span> <span class="mi">2048</span><span class="p">)</span> 
-a<span class="n">W</span>     <span class="o">=</span>  ga<span class="n">W</span> <span class="o">+</span> a<span class="n">rW</span> 
-a<span class="n">X</span>     <span class="o">=</span>  ga<span class="n">X</span> <span class="o">+</span> a<span class="n">rX</span> 
-a<span class="n">Y</span>     <span class="o">=</span>  ga<span class="n">Y</span> <span class="o">+</span> a<span class="n">rY</span> 
-ga<span class="n">rvb</span>  <span class="o">=</span>  <span class="mi">0</span> 
-ga<span class="n">W</span>    <span class="o">=</span>  <span class="mi">0</span> 
-ga<span class="n">X</span>    <span class="o">=</span>  <span class="mi">0</span> 
-ga<span class="n">Y</span>    <span class="o">=</span>  <span class="mi">0</span> 
+</span><span class="nb">denorm</span><span class="w"> </span>ga<span class="n">rvb</span><span class="w"> 
+</span><span class="c1">; skip as many samples as possible without truncating the IR </span><span class="w">
+</span>a<span class="n">rW</span><span class="p">,</span><span class="w"> </span>a<span class="n">rX</span><span class="p">,</span><span class="w"> </span>a<span class="n">rY</span><span class="w"> </span><span class="nb">ftconv</span><span class="w"> </span>ga<span class="n">rvb</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2048</span><span class="p">,</span><span class="w"> </span><span class="mi">2048</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="mi">65536</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2048</span><span class="p">)</span><span class="w"> 
+</span>a<span class="n">W</span><span class="w">     </span><span class="o">=</span><span class="w">  </span>ga<span class="n">W</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>a<span class="n">rW</span><span class="w"> 
+</span>a<span class="n">X</span><span class="w">     </span><span class="o">=</span><span class="w">  </span>ga<span class="n">X</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>a<span class="n">rX</span><span class="w"> 
+</span>a<span class="n">Y</span><span class="w">     </span><span class="o">=</span><span class="w">  </span>ga<span class="n">Y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>a<span class="n">rY</span><span class="w"> 
+</span>ga<span class="n">rvb</span><span class="w">  </span><span class="o">=</span><span class="w">  </span><span class="mi">0</span><span class="w"> 
+</span>ga<span class="n">W</span><span class="w">    </span><span class="o">=</span><span class="w">  </span><span class="mi">0</span><span class="w"> 
+</span>ga<span class="n">X</span><span class="w">    </span><span class="o">=</span><span class="w">  </span><span class="mi">0</span><span class="w"> 
+</span>ga<span class="n">Y</span><span class="w">    </span><span class="o">=</span><span class="w">  </span><span class="mi">0</span><span class="w"> 
 
-a<span class="n">Wre</span><span class="p">,</span> a<span class="n">Wim</span> <span class="nb">hilbert</span> a<span class="n">W</span> 
-a<span class="n">Xre</span><span class="p">,</span> a<span class="n">Xim</span> <span class="nb">hilbert</span> a<span class="n">X</span> 
-a<span class="n">Yre</span><span class="p">,</span> a<span class="n">Yim</span> <span class="nb">hilbert</span> a<span class="n">Y</span> 
-a<span class="n">WXr</span>    <span class="o">=</span>  <span class="mf">0.0928</span><span class="o">*</span>a<span class="n">Xre</span> <span class="o">+</span> <span class="mf">0.4699</span><span class="o">*</span>a<span class="n">Wre</span> 
-a<span class="n">WXiYr</span>  <span class="o">=</span>  <span class="mf">0.2550</span><span class="o">*</span>a<span class="n">Xim</span> <span class="o">-</span> <span class="mf">0.1710</span><span class="o">*</span>a<span class="n">Wim</span> <span class="o">+</span> <span class="mf">0.3277</span><span class="o">*</span>a<span class="n">Yre</span> 
-a<span class="n">L</span>      <span class="o">=</span>  a<span class="n">WXr</span> <span class="o">+</span> a<span class="n">WXiYr</span> 
-a<span class="n">R</span>      <span class="o">=</span>  a<span class="n">WXr</span> <span class="o">-</span> a<span class="n">WXiYr</span> 
-        <span class="nb">outs</span> a<span class="n">L</span><span class="p">,</span> a<span class="n">R</span> 
+</span>a<span class="n">Wre</span><span class="p">,</span><span class="w"> </span>a<span class="n">Wim</span><span class="w"> </span><span class="nb">hilbert</span><span class="w"> </span>a<span class="n">W</span><span class="w"> 
+</span>a<span class="n">Xre</span><span class="p">,</span><span class="w"> </span>a<span class="n">Xim</span><span class="w"> </span><span class="nb">hilbert</span><span class="w"> </span>a<span class="n">X</span><span class="w"> 
+</span>a<span class="n">Yre</span><span class="p">,</span><span class="w"> </span>a<span class="n">Yim</span><span class="w"> </span><span class="nb">hilbert</span><span class="w"> </span>a<span class="n">Y</span><span class="w"> 
+</span>a<span class="n">WXr</span><span class="w">    </span><span class="o">=</span><span class="w">  </span><span class="mf">0.0928</span><span class="o">*</span>a<span class="n">Xre</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.4699</span><span class="o">*</span>a<span class="n">Wre</span><span class="w"> 
+</span>a<span class="n">WXiYr</span><span class="w">  </span><span class="o">=</span><span class="w">  </span><span class="mf">0.2550</span><span class="o">*</span>a<span class="n">Xim</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">0.1710</span><span class="o">*</span>a<span class="n">Wim</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.3277</span><span class="o">*</span>a<span class="n">Yre</span><span class="w"> 
+</span>a<span class="n">L</span><span class="w">      </span><span class="o">=</span><span class="w">  </span>a<span class="n">WXr</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>a<span class="n">WXiYr</span><span class="w"> 
+</span>a<span class="n">R</span><span class="w">      </span><span class="o">=</span><span class="w">  </span>a<span class="n">WXr</span><span class="w"> </span><span class="o">-</span><span class="w"> </span>a<span class="n">WXiYr</span><span class="w"> 
+        </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">L</span><span class="p">,</span><span class="w"> </span>a<span class="n">R</span><span class="w"> 
 
-<span class="kd">endin</span> 
+</span><span class="kd">endin</span><span class="w"> 
 
-<span class="nt">&lt;/CsInstruments&gt;</span> 
-<span class="nt">&lt;CsScore&gt;</span> 
+</span><span class="nt">&lt;/CsInstruments&gt;</span> 
+<span class="nt">&lt;CsScore&gt;</span><span class="w"> 
 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mf">0.5</span>  <span class="mf">0.0</span>  <span class="mf">2.0</span> <span class="o">-</span><span class="mf">0.8</span> 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mf">0.5</span>  <span class="mf">1.4</span>  <span class="mf">1.4</span> <span class="o">-</span><span class="mf">0.6</span> 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mf">0.5</span>  <span class="mf">2.0</span>  <span class="mf">0.0</span> <span class="o">-</span><span class="mf">0.4</span> 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">3</span> <span class="mf">0.5</span>  <span class="mf">1.4</span> <span class="o">-</span><span class="mf">1.4</span> <span class="o">-</span><span class="mf">0.2</span> 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">4</span> <span class="mf">0.5</span>  <span class="mf">0.0</span> <span class="o">-</span><span class="mf">2.0</span>  <span class="mf">0.0</span> 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">5</span> <span class="mf">0.5</span> <span class="o">-</span><span class="mf">1.4</span> <span class="o">-</span><span class="mf">1.4</span>  <span class="mf">0.2</span> 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">6</span> <span class="mf">0.5</span> <span class="o">-</span><span class="mf">2.0</span>  <span class="mf">0.0</span>  <span class="mf">0.4</span> 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">7</span> <span class="mf">0.5</span> <span class="o">-</span><span class="mf">1.4</span>  <span class="mf">1.4</span>  <span class="mf">0.6</span> 
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">8</span> <span class="mf">0.5</span>  <span class="mf">0.0</span>  <span class="mf">2.0</span>  <span class="mf">0.8</span> 
-<span class="nb">i</span> <span class="mi">2</span> <span class="mi">0</span> <span class="mi">10</span> 
-<span class="nb">e</span> 
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">0.5</span><span class="w">  </span><span class="mf">0.0</span><span class="w">  </span><span class="mf">2.0</span><span class="w"> </span><span class="o">-</span><span class="mf">0.8</span><span class="w"> 
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mf">0.5</span><span class="w">  </span><span class="mf">1.4</span><span class="w">  </span><span class="mf">1.4</span><span class="w"> </span><span class="o">-</span><span class="mf">0.6</span><span class="w"> 
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mf">0.5</span><span class="w">  </span><span class="mf">2.0</span><span class="w">  </span><span class="mf">0.0</span><span class="w"> </span><span class="o">-</span><span class="mf">0.4</span><span class="w"> 
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mf">0.5</span><span class="w">  </span><span class="mf">1.4</span><span class="w"> </span><span class="o">-</span><span class="mf">1.4</span><span class="w"> </span><span class="o">-</span><span class="mf">0.2</span><span class="w"> 
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mf">0.5</span><span class="w">  </span><span class="mf">0.0</span><span class="w"> </span><span class="o">-</span><span class="mf">2.0</span><span class="w">  </span><span class="mf">0.0</span><span class="w"> 
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">-</span><span class="mf">1.4</span><span class="w"> </span><span class="o">-</span><span class="mf">1.4</span><span class="w">  </span><span class="mf">0.2</span><span class="w"> 
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">-</span><span class="mf">2.0</span><span class="w">  </span><span class="mf">0.0</span><span class="w">  </span><span class="mf">0.4</span><span class="w"> 
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">-</span><span class="mf">1.4</span><span class="w">  </span><span class="mf">1.4</span><span class="w">  </span><span class="mf">0.6</span><span class="w"> 
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="mf">0.5</span><span class="w">  </span><span class="mf">0.0</span><span class="w">  </span><span class="mf">2.0</span><span class="w">  </span><span class="mf">0.8</span><span class="w"> 
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">10</span><span class="w"> 
+</span><span class="nb">e</span><span class="w"> 
 
-<span class="nt">&lt;/CsScore&gt;</span> 
+</span><span class="nt">&lt;/CsScore&gt;</span> 
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span> 
 </pre>
             </div>
@@ -395,7 +395,7 @@ a<span class="n">R</span>      <span class="o">=</span>  a<span class="n">WXr</s
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm226163"></a>
+        <a id="idm319068"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="spat3d.html" title="spat3d"><em class="citetitle">spat3d</em></a>,
@@ -403,7 +403,7 @@ a<span class="n">R</span>      <span class="o">=</span>  a<span class="n">WXr</s
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm226170"></a>
+        <a id="idm319075"></a>
         <h2>Credits</h2>
         <p>
       </p>

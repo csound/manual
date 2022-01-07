@@ -39,7 +39,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm71313"></a>
+        <a id="idm96793"></a>
         <h2>Description</h2>
         <p>Plugin opcode in faustcsound. This opcode is part of the plugin repository and has to be installed separately. 
     The plugin repository can be found here: <a class="ulink" href="https://github.com/csound/plugins" target="_top"><em class="citetitle">https://github.com/csound/plugins</em></a></p>
@@ -48,12 +48,12 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm71319"></a>
+        <a id="idm96799"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>a1[, a2,...] faustplay</strong></span> ihandle[, ain1,...]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm71323"></a>
+        <a id="idm96803"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em><span class="quote">“<span class="quote">ihandle</span>”</span></em></span> -- a handle to the
@@ -61,7 +61,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm71328"></a>
+        <a id="idm96808"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em><span class="quote">“<span class="quote">ain1,...</span>”</span></em></span> -- input signals
@@ -71,29 +71,29 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm71336"></a>
+        <a id="idm96816"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the faustplay opcode. It uses the file <a class="ulink" href="examples/faustplay.csd" target="_top"><em class="citetitle">faustplay.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm71341"></a>
+          <a id="idm96821"></a>
           <p class="title">
             <strong>Example 292. Example of the faustplay opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm71348"></a>
+              <a id="idm96828"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 -d -odac
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
-<span class="vg">nchnls</span><span class="o">=</span> <span class="mi">1</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
+</span><span class="vg">nchnls</span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-gi<span class="n">ph</span> <span class="nb">faustcompile</span> <span class="s">{{
+</span>gi<span class="n">ph</span><span class="w"> </span><span class="nb">faustcompile</span><span class="w"> </span><span class="s">{{
 SR = 44100;
 decimal(a) = a - floor(a);
 freq = hslider("freq", 0, -20000, 20000, 1);
@@ -101,21 +101,21 @@ incr(fr) =  fr / float(SR);
 phasor(fr,ph) =  incr(fr) : (+ : decimal) ~ _ :
 +(ph) : decimal;
 process = phasor(freq,0);
-}}</span><span class="p">,</span> <span class="s">"-vec -lv 1"</span>
+}}</span><span class="p">,</span><span class="w"> </span><span class="s">"-vec -lv 1"</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>
-k<span class="n">b1</span> <span class="o">=</span> <span class="vi">p5</span>
-i<span class="n">b</span> <span class="nb">faustdsp</span> gi<span class="n">ph</span>
-<span class="nb">faustctl</span> i<span class="n">b</span><span class="p">,</span><span class="s">"freq"</span><span class="p">,</span>k<span class="n">b1</span>
-a<span class="n">sig</span> <span class="nb">faustplay</span> i<span class="n">b</span>
-<span class="nb">out</span> <span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="cp">$M_PI</span><span class="o">*</span>a<span class="n">sig</span><span class="p">)</span><span class="o">*</span><span class="vi">p4</span><span class="o">*</span><span class="vg">0dbfs</span>
-<span class="kd">endin</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+</span>k<span class="n">b1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">p5</span><span class="w">
+</span>i<span class="n">b</span><span class="w"> </span><span class="nb">faustdsp</span><span class="w"> </span>gi<span class="n">ph</span><span class="w">
+</span><span class="nb">faustctl</span><span class="w"> </span>i<span class="n">b</span><span class="p">,</span><span class="s">"freq"</span><span class="p">,</span>k<span class="n">b1</span><span class="w">
+</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">faustplay</span><span class="w"> </span>i<span class="n">b</span><span class="w">
+</span><span class="nb">out</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="cp">$M_PI</span><span class="o">*</span>a<span class="n">sig</span><span class="p">)</span><span class="o">*</span><span class="vi">p4</span><span class="o">*</span><span class="vg">0dbfs</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mf">0.5</span> <span class="mi">150</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="mi">150</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -125,7 +125,7 @@ a<span class="n">sig</span> <span class="nb">faustplay</span> i<span class="n">b
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm71403"></a>
+        <a id="idm96912"></a>
         <h2>Credits</h2>
         <p>Author: Victor Lazzarini, 2018 </p>
       </div>

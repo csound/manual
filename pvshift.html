@@ -40,7 +40,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm192685"></a>
+        <a id="idm271175"></a>
         <h2>Description</h2>
         <p>
       Shift the frequency components of a pv stream, stretching/compressing
@@ -48,12 +48,12 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm192688"></a>
+        <a id="idm271178"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">fsig <span class="command"><strong>pvshift</strong></span> fsigin, kshift, klowest[, kkeepform, igain, kcoefs]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm192692"></a>
+        <a id="idm271182"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>fsig</em></span> -- output pv stream
@@ -106,12 +106,12 @@
         </div>
       </div>
       <div class="refsect1">
-        <a id="idm192712"></a>
+        <a id="idm271202"></a>
         <h2>Examples</h2>
         <p>
       </p>
         <div class="example">
-          <a id="idm192715"></a>
+          <a id="idm271205"></a>
           <p class="title">
             <strong>Example 833. Example</strong>
           </p>
@@ -134,14 +134,14 @@ atps  <span class="opc">pvsynth</span>   ftps                     <span class="c
       Here is an example of the use of the <span class="emphasis"><em>pvshift</em></span> opcode. It uses the file <a class="ulink" href="examples/pvshift.csd" target="_top"><em class="citetitle">pvshift.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm192731"></a>
+          <a id="idm271221"></a>
           <p class="title">
             <strong>Example 834. Example of the <span class="emphasis"><em>pvshift</em></span> opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm192739"></a>
+              <a id="idm271229"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -151,43 +151,43 @@ atps  <span class="opc">pvsynth</span>   ftps                     <span class="c
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o pvshift.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="c1">;; example written by joachim heintz 2009</span>
+</span><span class="c1">;; example written by joachim heintz 2009</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>
-i<span class="n">shift</span>		<span class="o">=</span> <span class="vi">p4</span>    <span class="c1">; shift amount in Hz</span>
-i<span class="n">lowest</span>         <span class="o">=</span> <span class="vi">p5</span>    <span class="c1">; lowest frequency to be shifted</span>
-i<span class="n">keepform</span>	<span class="o">=</span> <span class="vi">p6</span>    <span class="c1">; 0=no formant keeping, 1=keep by amps, 2=keep by spectral envelope</span>
-i<span class="n">fftsize</span>	<span class="o">=</span> <span class="mi">1024</span>
-i<span class="n">overlap</span>	<span class="o">=</span> i<span class="n">fftsize</span> <span class="o">/</span> <span class="mi">4</span>
-i<span class="n">winsize</span>	<span class="o">=</span> i<span class="n">fftsize</span>
-i<span class="n">winshape</span>	<span class="o">=</span> <span class="mi">1</span>     <span class="c1">; von-Hann window</span>
-S<span class="n">file</span>		<span class="o">=</span> <span class="s">"fox.wav"</span>
-a<span class="n">in</span>		    <span class="nb">soundin</span>	S<span class="n">file</span>
-f<span class="n">ftin</span>		<span class="nb">pvsanal</span>	a<span class="n">in</span><span class="p">,</span> i<span class="n">fftsize</span><span class="p">,</span> i<span class="n">overlap</span><span class="p">,</span> i<span class="n">winsize</span><span class="p">,</span> i<span class="n">winshape</span><span class="c1">; fft-analysis of file</span>
-f<span class="n">shift</span>		<span class="nb">pvshift</span>  	f<span class="n">ftin</span><span class="p">,</span> i<span class="n">shift</span><span class="p">,</span> i<span class="n">lowest</span><span class="p">,</span> i<span class="n">keepform</span><span class="c1">; shift frequencies</span>
-a<span class="n">out</span>		<span class="nb">pvsynth</span>	f<span class="n">shift</span><span class="c1">; resynthesize</span>
-		<span class="nb">outs</span>	a<span class="n">out</span><span class="p">,</span> a<span class="n">out</span>
-<span class="kd">endin</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+</span>i<span class="n">shift</span><span class="w">		</span><span class="o">=</span><span class="w"> </span><span class="vi">p4</span><span class="w">    </span><span class="c1">; shift amount in Hz</span><span class="w">
+</span>i<span class="n">lowest</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="vi">p5</span><span class="w">    </span><span class="c1">; lowest frequency to be shifted</span><span class="w">
+</span>i<span class="n">keepform</span><span class="w">	</span><span class="o">=</span><span class="w"> </span><span class="vi">p6</span><span class="w">    </span><span class="c1">; 0=no formant keeping, 1=keep by amps, 2=keep by spectral envelope</span><span class="w">
+</span>i<span class="n">fftsize</span><span class="w">	</span><span class="o">=</span><span class="w"> </span><span class="mi">1024</span><span class="w">
+</span>i<span class="n">overlap</span><span class="w">	</span><span class="o">=</span><span class="w"> </span>i<span class="n">fftsize</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">4</span><span class="w">
+</span>i<span class="n">winsize</span><span class="w">	</span><span class="o">=</span><span class="w"> </span>i<span class="n">fftsize</span><span class="w">
+</span>i<span class="n">winshape</span><span class="w">	</span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">     </span><span class="c1">; von-Hann window</span><span class="w">
+</span>S<span class="n">file</span><span class="w">		</span><span class="o">=</span><span class="w"> </span><span class="s">"fox.wav"</span><span class="w">
+</span>a<span class="n">in</span><span class="w">		    </span><span class="nb">soundin</span><span class="w">	</span>S<span class="n">file</span><span class="w">
+</span>f<span class="n">ftin</span><span class="w">		</span><span class="nb">pvsanal</span><span class="w">	</span>a<span class="n">in</span><span class="p">,</span><span class="w"> </span>i<span class="n">fftsize</span><span class="p">,</span><span class="w"> </span>i<span class="n">overlap</span><span class="p">,</span><span class="w"> </span>i<span class="n">winsize</span><span class="p">,</span><span class="w"> </span>i<span class="n">winshape</span><span class="c1">; fft-analysis of file</span><span class="w">
+</span>f<span class="n">shift</span><span class="w">		</span><span class="nb">pvshift</span><span class="w">  	</span>f<span class="n">ftin</span><span class="p">,</span><span class="w"> </span>i<span class="n">shift</span><span class="p">,</span><span class="w"> </span>i<span class="n">lowest</span><span class="p">,</span><span class="w"> </span>i<span class="n">keepform</span><span class="c1">; shift frequencies</span><span class="w">
+</span>a<span class="n">out</span><span class="w">		</span><span class="nb">pvsynth</span><span class="w">	</span>f<span class="n">shift</span><span class="c1">; resynthesize</span><span class="w">
+		</span><span class="nb">outs</span><span class="w">	</span>a<span class="n">out</span><span class="p">,</span><span class="w"> </span>a<span class="n">out</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mf">2.757</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="c1">; no shift at all</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">3</span> <span class="mf">2.757</span> <span class="mi">100</span> <span class="mi">0</span> <span class="mi">0</span><span class="c1">; shift all frequencies by 100 Hz</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">6</span> <span class="mf">2.757</span> <span class="mi">200</span> <span class="mi">0</span> <span class="mi">0</span><span class="c1">; by 200 Hz</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">9</span> <span class="mf">2.757</span> <span class="mi">200</span> <span class="mi">0</span> <span class="mi">1</span><span class="c1">; keep formants by method 1</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">12</span> <span class="mf">2.757</span> <span class="mi">200</span> <span class="mi">0</span> <span class="mi">2</span><span class="c1">; by method 2</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">15</span> <span class="mf">2.757</span> <span class="mi">200</span> <span class="mi">1000</span> <span class="mi">0</span><span class="c1">; shift by 200 Hz but just above 1000 Hz</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">18</span> <span class="mf">2.757</span> <span class="mi">1000</span> <span class="mi">500</span> <span class="mi">0</span><span class="c1">; shift by 1000 Hz above 500 Hz</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">21</span> <span class="mf">2.757</span> <span class="mi">1000</span> <span class="mi">300</span> <span class="mi">0</span><span class="c1">; above 300 Hz</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">2.757</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="c1">; no shift at all</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mf">2.757</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="c1">; shift all frequencies by 100 Hz</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="mf">2.757</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="c1">; by 200 Hz</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="mf">2.757</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="c1">; keep formants by method 1</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="mf">2.757</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">2</span><span class="c1">; by method 2</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="mf">2.757</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="mi">0</span><span class="c1">; shift by 200 Hz but just above 1000 Hz</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">18</span><span class="w"> </span><span class="mf">2.757</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="mi">500</span><span class="w"> </span><span class="mi">0</span><span class="c1">; shift by 1000 Hz above 500 Hz</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">21</span><span class="w"> </span><span class="mf">2.757</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="mi">300</span><span class="w"> </span><span class="mi">0</span><span class="c1">; above 300 Hz</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -197,7 +197,7 @@ a<span class="n">out</span>		<span class="nb">pvsynth</span>	f<span class="n">sh
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm192898"></a>
+        <a id="idm271515"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="pvsanal.html" title="pvsanal"><em class="citetitle">pvsanal</em></a>,
@@ -206,7 +206,7 @@ a<span class="n">out</span>		<span class="nb">pvsynth</span>	f<span class="n">sh
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm192907"></a>
+        <a id="idm271524"></a>
         <h2>Credits</h2>
         <p>
       </p>

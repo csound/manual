@@ -39,7 +39,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm164116"></a>
+        <a id="idm229744"></a>
         <h2>Description</h2>
         <p>
       On each k-cycle looks to see if an OSC message has been received
@@ -49,12 +49,12 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm164119"></a>
+        <a id="idm229747"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">Smess[],klen <span class="command"><strong>OSCraw</strong></span> iport</pre>
       </div>
       <div class="refsect1">
-        <a id="idm164123"></a>
+        <a id="idm229751"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>iport</em></span>
@@ -62,7 +62,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm164127"></a>
+        <a id="idm229755"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>Smess[]</em></span> -- an array of strings containing
@@ -82,9 +82,9 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm164133"></a>
+        <a id="idm229761"></a>
         <div class="example">
-          <a id="idm164134"></a>
+          <a id="idm229762"></a>
           <p class="title">
             <strong>Example 690. Example.</strong>
           </p>
@@ -92,39 +92,39 @@
             <p>The following CSD file demonstrates how a message is
 	received by OSCraw:</p>
             <div class="refsect1">
-              <a id="idm164137"></a>
+              <a id="idm229765"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 -o dac
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="kd">instr</span>	<span class="nf">1</span>
- k<span class="n">when</span>  <span class="nb">init</span> <span class="mi">0</span>
- k<span class="n">metro</span> <span class="nb">metro</span> <span class="mi">1</span>
- k<span class="n">when</span> <span class="o">+=</span> k<span class="n">metro</span>
- <span class="nb">OSCsend</span> k<span class="n">when</span><span class="p">,</span> <span class="s">"127.0.0.1"</span><span class="p">,</span><span class="mi">7771</span><span class="p">,</span> <span class="s">"/foo/bar"</span><span class="p">,</span> <span class="s">"f"</span><span class="p">,</span> k<span class="n">when</span>
-<span class="kd">endin</span>
+</span><span class="kd">instr</span><span class="w">	</span><span class="nf">1</span><span class="w">
+ </span>k<span class="n">when</span><span class="w">  </span><span class="nb">init</span><span class="w"> </span><span class="mi">0</span><span class="w">
+ </span>k<span class="n">metro</span><span class="w"> </span><span class="nb">metro</span><span class="w"> </span><span class="mi">1</span><span class="w">
+ </span>k<span class="n">when</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span>k<span class="n">metro</span><span class="w">
+ </span><span class="nb">OSCsend</span><span class="w"> </span>k<span class="n">when</span><span class="p">,</span><span class="w"> </span><span class="s">"127.0.0.1"</span><span class="p">,</span><span class="mi">7771</span><span class="p">,</span><span class="w"> </span><span class="s">"/foo/bar"</span><span class="p">,</span><span class="w"> </span><span class="s">"f"</span><span class="p">,</span><span class="w"> </span>k<span class="n">when</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">2</span>
-S<span class="n">mess</span><span class="p">[]</span> <span class="nb">init</span> <span class="mi">3</span>
-<span class="nl">top</span><span class="p">:</span>
-S<span class="n">mess</span><span class="p">,</span>k<span class="n">a</span> <span class="nb">OSCraw</span> <span class="mi">7771</span>
-k<span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">while</span> k<span class="n">n</span> <span class="o">&lt;</span> k<span class="n">a</span> <span class="k">do</span>
-  <span class="nb">printf</span> <span class="s">": </span><span class="si">%s</span><span class="s"> "</span><span class="p">,</span> k<span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> S<span class="n">mess</span><span class="p">[</span>k<span class="n">n</span><span class="p">]</span>
-  k<span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="k">od</span>
-<span class="nb">printf</span> <span class="s">"</span><span class="si">%d</span><span class="s"> items</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> k<span class="n">a</span><span class="p">,</span> k<span class="n">n</span>
-<span class="k">if</span> k<span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">kgoto</span> <span class="nl">top</span>
-<span class="kd">endin</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">
+</span>S<span class="n">mess</span><span class="p">[]</span><span class="w"> </span><span class="nb">init</span><span class="w"> </span><span class="mi">3</span><span class="w">
+</span><span class="nl">top</span><span class="p">:</span><span class="w">
+</span>S<span class="n">mess</span><span class="p">,</span>k<span class="n">a</span><span class="w"> </span><span class="nb">OSCraw</span><span class="w"> </span><span class="mi">7771</span><span class="w">
+</span>k<span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="k">while</span><span class="w"> </span>k<span class="n">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span>k<span class="n">a</span><span class="w"> </span><span class="k">do</span><span class="w">
+  </span><span class="nb">printf</span><span class="w"> </span><span class="s">": </span><span class="si">%s</span><span class="s"> "</span><span class="p">,</span><span class="w"> </span>k<span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>S<span class="n">mess</span><span class="p">[</span>k<span class="n">n</span><span class="p">]</span><span class="w">
+  </span>k<span class="n">n</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="k">od</span><span class="w">
+</span><span class="nb">printf</span><span class="w"> </span><span class="s">"</span><span class="si">%d</span><span class="s"> items</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span>k<span class="n">a</span><span class="p">,</span><span class="w"> </span>k<span class="n">n</span><span class="w">
+</span><span class="k">if</span><span class="w"> </span>k<span class="n">a</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">kgoto</span><span class="w"> </span><span class="nl">top</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">10</span>
-<span class="nb">i</span><span class="mi">2</span> <span class="mi">0</span> <span class="mi">10</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -133,7 +133,7 @@ k<span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
         <br class="example-break" />
       </div>
       <div class="refsect1">
-        <a id="idm164234"></a>
+        <a id="idm229924"></a>
         <h2>See Also</h2>
         <p>
         <a class="link" href="OSCsend.html" title="OSCsend"><em class="citetitle">OSCsend</em></a>,
@@ -142,7 +142,7 @@ k<span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
       </p>
       </div>
       <div class="refsect1">
-        <a id="idm164243"></a>
+        <a id="idm229933"></a>
         <h2>Credits</h2>
         <p>
       </p>

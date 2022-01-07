@@ -39,19 +39,19 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm144627"></a>
+        <a id="idm201824"></a>
         <h2>Description</h2>
         <p>
       Returns a generic MIDI message received by the MIDI IN port
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm144630"></a>
+        <a id="idm201827"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">kstatus, kchan, kdata1, kdata2 <span class="command"><strong>midiin</strong></span></pre>
       </div>
       <div class="refsect1">
-        <a id="idm144634"></a>
+        <a id="idm201831"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>kstatus</em></span> -- the type of MIDI message. Can be:
@@ -114,21 +114,21 @@
         </div>
       </div>
       <div class="refsect1">
-        <a id="idm144668"></a>
+        <a id="idm201865"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the midiin opcode. It uses the file <a class="ulink" href="examples/midiin.csd" target="_top"><em class="citetitle">midiin.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm144673"></a>
+          <a id="idm201870"></a>
           <p class="title">
             <strong>Example 595. Example of the midiin opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm144680"></a>
+              <a id="idm201877"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 
@@ -140,60 +140,60 @@
 <span class="c1">; -o midiin.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span>        <span class="o">=</span>  <span class="mi">44100</span>
-<span class="vg">ksmps</span>     <span class="o">=</span>  <span class="mi">10</span>
-<span class="vg">nchnls</span>    <span class="o">=</span>  <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w">        </span><span class="o">=</span><span class="w">  </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w">     </span><span class="o">=</span><span class="w">  </span><span class="mi">10</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w">    </span><span class="o">=</span><span class="w">  </span><span class="mi">1</span><span class="w">
 
-<span class="c1">; Example by schwaahed 2006</span>
+</span><span class="c1">; Example by schwaahed 2006</span><span class="w">
 
-      <span class="nb">massign</span>         <span class="mi">0</span><span class="p">,</span> <span class="mi">130</span>  <span class="c1">; make sure that all channels</span>
-      <span class="nb">pgmassign</span>       <span class="mi">0</span><span class="p">,</span> <span class="mi">130</span>  <span class="c1">; and programs are assigned to test instr</span>
-
-
-  <span class="kd">instr</span>   <span class="nf">130</span>
-
-k<span class="n">notelength</span>    <span class="nb">init</span>    <span class="mi">0</span>
-k<span class="n">noteontime</span>    <span class="nb">init</span>    <span class="mi">0</span>
-
-k<span class="n">status</span><span class="p">,</span> k<span class="n">chan</span><span class="p">,</span> k<span class="n">data1</span><span class="p">,</span> k<span class="n">data2</span>                  <span class="nb">midiin</span>
-
-<span class="k">if</span> <span class="p">(</span>k<span class="n">status</span> <span class="o">==</span> <span class="mi">128</span><span class="p">)</span> <span class="k">then</span>
-k<span class="n">noteofftime</span>    <span class="nb">times</span>
-k<span class="n">notelength</span>    <span class="o">=</span>    k<span class="n">noteofftime</span> <span class="o">-</span> k<span class="n">noteontime</span>
-<span class="nb">printks</span> <span class="s">"kstatus= </span><span class="si">%d</span><span class="s">, kchan = </span><span class="si">%d</span><span class="s">, </span><span class="se">\\t</span><span class="s">note#  = </span><span class="si">%d</span><span class="s">, velocity = </span><span class="si">%d</span><span class="s"> </span><span class="se">\\t</span><span class="s">Note OFF</span><span class="se">\\t</span><span class="si">%f</span><span class="s"> </span><span class="si">%f</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> k<span class="n">status</span><span class="p">,</span> k<span class="n">chan</span><span class="p">,</span> k<span class="n">data1</span><span class="p">,</span>k<span class="n">data2</span><span class="p">,</span> k<span class="n">noteofftime</span><span class="p">,</span> k<span class="n">notelength</span>
-
-<span class="k">elseif</span> <span class="p">(</span>k<span class="n">status</span> <span class="o">==</span> <span class="mi">144</span><span class="p">)</span> <span class="k">then</span>
-k<span class="n">noteontime</span>    <span class="nb">times</span>
-<span class="nb">printks</span> <span class="s">"kstatus= </span><span class="si">%d</span><span class="s">, kchan = </span><span class="si">%d</span><span class="s">, </span><span class="se">\\t</span><span class="s">note#  = </span><span class="si">%d</span><span class="s">, velocity = </span><span class="si">%d</span><span class="s"> </span><span class="se">\\t</span><span class="s">Note ON</span><span class="se">\\t</span><span class="si">%f</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> k<span class="n">status</span><span class="p">,</span> k<span class="n">chan</span><span class="p">,</span> k<span class="n">data1</span><span class="p">,</span> k<span class="n">data2</span><span class="p">,</span> k<span class="n">noteontime</span>
+      </span><span class="nb">massign</span><span class="w">         </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">130</span><span class="w">  </span><span class="c1">; make sure that all channels</span><span class="w">
+      </span><span class="nb">pgmassign</span><span class="w">       </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">130</span><span class="w">  </span><span class="c1">; and programs are assigned to test instr</span><span class="w">
 
 
-<span class="k">elseif</span> <span class="p">(</span>k<span class="n">status</span> <span class="o">==</span> <span class="mi">160</span><span class="p">)</span> <span class="k">then</span>
-<span class="nb">printks</span> <span class="s">"kstatus= </span><span class="si">%d</span><span class="s">, kchan = </span><span class="si">%d</span><span class="s">, </span><span class="se">\\t</span><span class="s">kdata1 = </span><span class="si">%d</span><span class="s">, kdata2 = </span><span class="si">%d</span><span class="s"> </span><span class="se">\\t</span><span class="s">Polyphonic Aftertouch</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> k<span class="n">status</span><span class="p">,</span> k<span class="n">chan</span><span class="p">,</span> k<span class="n">data1</span><span class="p">,</span> k<span class="n">data2</span>
+  </span><span class="kd">instr</span><span class="w">   </span><span class="nf">130</span><span class="w">
 
-<span class="k">elseif</span> <span class="p">(</span>k<span class="n">status</span> <span class="o">==</span> <span class="mi">176</span><span class="p">)</span> <span class="k">then</span>
-<span class="nb">printks</span> <span class="s">"kstatus= </span><span class="si">%d</span><span class="s">, kchan = </span><span class="si">%d</span><span class="s">, </span><span class="se">\\t</span><span class="s"> CC = </span><span class="si">%d</span><span class="s">, value = </span><span class="si">%d</span><span class="s"> </span><span class="se">\\t</span><span class="s">Control Change</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> k<span class="n">status</span><span class="p">,</span> k<span class="n">chan</span><span class="p">,</span> k<span class="n">data1</span><span class="p">,</span> k<span class="n">data2</span>
+</span>k<span class="n">notelength</span><span class="w">    </span><span class="nb">init</span><span class="w">    </span><span class="mi">0</span><span class="w">
+</span>k<span class="n">noteontime</span><span class="w">    </span><span class="nb">init</span><span class="w">    </span><span class="mi">0</span><span class="w">
 
-<span class="k">elseif</span> <span class="p">(</span>k<span class="n">status</span> <span class="o">==</span> <span class="mi">192</span><span class="p">)</span> <span class="k">then</span>
-<span class="nb">printks</span> <span class="s">"kstatus= </span><span class="si">%d</span><span class="s">, kchan = </span><span class="si">%d</span><span class="s">, </span><span class="se">\\t</span><span class="s">kdata1 = </span><span class="si">%d</span><span class="s">, kdata2 = </span><span class="si">%d</span><span class="s"> </span><span class="se">\\t</span><span class="s">Program Change</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> k<span class="n">status</span><span class="p">,</span> k<span class="n">chan</span><span class="p">,</span> k<span class="n">data1</span><span class="p">,</span> k<span class="n">data2</span>
+</span>k<span class="n">status</span><span class="p">,</span><span class="w"> </span>k<span class="n">chan</span><span class="p">,</span><span class="w"> </span>k<span class="n">data1</span><span class="p">,</span><span class="w"> </span>k<span class="n">data2</span><span class="w">                  </span><span class="nb">midiin</span><span class="w">
 
-<span class="k">elseif</span> <span class="p">(</span>k<span class="n">status</span> <span class="o">==</span> <span class="mi">208</span><span class="p">)</span> <span class="k">then</span>
-<span class="nb">printks</span>  <span class="s">"kstatus= </span><span class="si">%d</span><span class="s">, kchan = </span><span class="si">%d</span><span class="s">, </span><span class="se">\\t</span><span class="s">kdata1 = </span><span class="si">%d</span><span class="s">, kdata2 = </span><span class="si">%d</span><span class="s"> </span><span class="se">\\t</span><span class="s">Channel Aftertouch</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> k<span class="n">status</span><span class="p">,</span> k<span class="n">chan</span><span class="p">,</span> k<span class="n">data1</span><span class="p">,</span> k<span class="n">data2</span>
+</span><span class="k">if</span><span class="w"> </span><span class="p">(</span>k<span class="n">status</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">128</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w">
+</span>k<span class="n">noteofftime</span><span class="w">    </span><span class="nb">times</span><span class="w">
+</span>k<span class="n">notelength</span><span class="w">    </span><span class="o">=</span><span class="w">    </span>k<span class="n">noteofftime</span><span class="w"> </span><span class="o">-</span><span class="w"> </span>k<span class="n">noteontime</span><span class="w">
+</span><span class="nb">printks</span><span class="w"> </span><span class="s">"kstatus= </span><span class="si">%d</span><span class="s">, kchan = </span><span class="si">%d</span><span class="s">, </span><span class="se">\\t</span><span class="s">note#  = </span><span class="si">%d</span><span class="s">, velocity = </span><span class="si">%d</span><span class="s"> </span><span class="se">\\t</span><span class="s">Note OFF</span><span class="se">\\t</span><span class="si">%f</span><span class="s"> </span><span class="si">%f</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span>k<span class="n">status</span><span class="p">,</span><span class="w"> </span>k<span class="n">chan</span><span class="p">,</span><span class="w"> </span>k<span class="n">data1</span><span class="p">,</span>k<span class="n">data2</span><span class="p">,</span><span class="w"> </span>k<span class="n">noteofftime</span><span class="p">,</span><span class="w"> </span>k<span class="n">notelength</span><span class="w">
 
-<span class="k">elseif</span> <span class="p">(</span>k<span class="n">status</span> <span class="o">==</span> <span class="mi">224</span><span class="p">)</span> <span class="k">then</span>
-<span class="nb">printks</span> <span class="s">"kstatus= </span><span class="si">%d</span><span class="s">, kchan = </span><span class="si">%d</span><span class="s">, </span><span class="se">\\t</span><span class="s"> ( data1 , kdata2 ) = ( </span><span class="si">%d</span><span class="s">, </span><span class="si">%d</span><span class="s"> )</span><span class="se">\\t</span><span class="s">Pitch Bend</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> k<span class="n">status</span><span class="p">,</span> k<span class="n">chan</span><span class="p">,</span> k<span class="n">data1</span><span class="p">,</span> k<span class="n">data2</span>
+</span><span class="k">elseif</span><span class="w"> </span><span class="p">(</span>k<span class="n">status</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">144</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w">
+</span>k<span class="n">noteontime</span><span class="w">    </span><span class="nb">times</span><span class="w">
+</span><span class="nb">printks</span><span class="w"> </span><span class="s">"kstatus= </span><span class="si">%d</span><span class="s">, kchan = </span><span class="si">%d</span><span class="s">, </span><span class="se">\\t</span><span class="s">note#  = </span><span class="si">%d</span><span class="s">, velocity = </span><span class="si">%d</span><span class="s"> </span><span class="se">\\t</span><span class="s">Note ON</span><span class="se">\\t</span><span class="si">%f</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span>k<span class="n">status</span><span class="p">,</span><span class="w"> </span>k<span class="n">chan</span><span class="p">,</span><span class="w"> </span>k<span class="n">data1</span><span class="p">,</span><span class="w"> </span>k<span class="n">data2</span><span class="p">,</span><span class="w"> </span>k<span class="n">noteontime</span><span class="w">
 
-<span class="k">endif</span>
 
-  <span class="kd">endin</span>
+</span><span class="k">elseif</span><span class="w"> </span><span class="p">(</span>k<span class="n">status</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">160</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w">
+</span><span class="nb">printks</span><span class="w"> </span><span class="s">"kstatus= </span><span class="si">%d</span><span class="s">, kchan = </span><span class="si">%d</span><span class="s">, </span><span class="se">\\t</span><span class="s">kdata1 = </span><span class="si">%d</span><span class="s">, kdata2 = </span><span class="si">%d</span><span class="s"> </span><span class="se">\\t</span><span class="s">Polyphonic Aftertouch</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span>k<span class="n">status</span><span class="p">,</span><span class="w"> </span>k<span class="n">chan</span><span class="p">,</span><span class="w"> </span>k<span class="n">data1</span><span class="p">,</span><span class="w"> </span>k<span class="n">data2</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
+</span><span class="k">elseif</span><span class="w"> </span><span class="p">(</span>k<span class="n">status</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">176</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w">
+</span><span class="nb">printks</span><span class="w"> </span><span class="s">"kstatus= </span><span class="si">%d</span><span class="s">, kchan = </span><span class="si">%d</span><span class="s">, </span><span class="se">\\t</span><span class="s"> CC = </span><span class="si">%d</span><span class="s">, value = </span><span class="si">%d</span><span class="s"> </span><span class="se">\\t</span><span class="s">Control Change</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span>k<span class="n">status</span><span class="p">,</span><span class="w"> </span>k<span class="n">chan</span><span class="p">,</span><span class="w"> </span>k<span class="n">data1</span><span class="p">,</span><span class="w"> </span>k<span class="n">data2</span><span class="w">
 
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">i</span><span class="mi">130</span> <span class="mi">0</span> <span class="mi">3600</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="k">elseif</span><span class="w"> </span><span class="p">(</span>k<span class="n">status</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">192</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w">
+</span><span class="nb">printks</span><span class="w"> </span><span class="s">"kstatus= </span><span class="si">%d</span><span class="s">, kchan = </span><span class="si">%d</span><span class="s">, </span><span class="se">\\t</span><span class="s">kdata1 = </span><span class="si">%d</span><span class="s">, kdata2 = </span><span class="si">%d</span><span class="s"> </span><span class="se">\\t</span><span class="s">Program Change</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span>k<span class="n">status</span><span class="p">,</span><span class="w"> </span>k<span class="n">chan</span><span class="p">,</span><span class="w"> </span>k<span class="n">data1</span><span class="p">,</span><span class="w"> </span>k<span class="n">data2</span><span class="w">
+
+</span><span class="k">elseif</span><span class="w"> </span><span class="p">(</span>k<span class="n">status</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">208</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w">
+</span><span class="nb">printks</span><span class="w">  </span><span class="s">"kstatus= </span><span class="si">%d</span><span class="s">, kchan = </span><span class="si">%d</span><span class="s">, </span><span class="se">\\t</span><span class="s">kdata1 = </span><span class="si">%d</span><span class="s">, kdata2 = </span><span class="si">%d</span><span class="s"> </span><span class="se">\\t</span><span class="s">Channel Aftertouch</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span>k<span class="n">status</span><span class="p">,</span><span class="w"> </span>k<span class="n">chan</span><span class="p">,</span><span class="w"> </span>k<span class="n">data1</span><span class="p">,</span><span class="w"> </span>k<span class="n">data2</span><span class="w">
+
+</span><span class="k">elseif</span><span class="w"> </span><span class="p">(</span>k<span class="n">status</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">224</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w">
+</span><span class="nb">printks</span><span class="w"> </span><span class="s">"kstatus= </span><span class="si">%d</span><span class="s">, kchan = </span><span class="si">%d</span><span class="s">, </span><span class="se">\\t</span><span class="s"> ( data1 , kdata2 ) = ( </span><span class="si">%d</span><span class="s">, </span><span class="si">%d</span><span class="s"> )</span><span class="se">\\t</span><span class="s">Pitch Bend</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span>k<span class="n">status</span><span class="p">,</span><span class="w"> </span>k<span class="n">chan</span><span class="p">,</span><span class="w"> </span>k<span class="n">data1</span><span class="p">,</span><span class="w"> </span>k<span class="n">data2</span><span class="w">
+
+</span><span class="k">endif</span><span class="w">
+
+  </span><span class="kd">endin</span><span class="w">
+
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="mi">130</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">3600</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span> 
 </pre>
@@ -204,7 +204,7 @@ k<span class="n">noteontime</span>    <span class="nb">times</span>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm144990"></a>
+        <a id="idm202321"></a>
         <h2>Credits</h2>
         <p>
       </p>

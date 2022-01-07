@@ -39,7 +39,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm113998"></a>
+        <a id="idm157636"></a>
         <h2>Description</h2>
         <p>Plugin opcode in image. This opcode is part of the plugin repository and has to be installed separately. 
     The plugin repository can be found here: <a class="ulink" href="https://github.com/csound/plugins" target="_top"><em class="citetitle">https://github.com/csound/plugins</em></a></p>
@@ -48,83 +48,83 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm114004"></a>
+        <a id="idm157642"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>imagefree</strong></span> iimagenum</pre>
       </div>
       <div class="refsect1">
-        <a id="idm114008"></a>
+        <a id="idm157646"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>iimagenum</em></span> -- reference of the image to free.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm114012"></a>
+        <a id="idm157650"></a>
         <h2>Examples</h2>
         <p>
 	    Here is an example of the imagefree opcode. It uses the file <a class="ulink" href="examples/imageopcodes.csd" target="_top"><em class="citetitle">imageopcodes.csd</em></a> and <a class="ulink" href="examples/imageOpcode01.png" target="_top"><em class="citetitle">imageOpcode01.png</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm114019"></a>
+          <a id="idm157657"></a>
           <p class="title">
             <strong>Example 458. Example of the imagefree opcode.</strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
-              <a id="idm114021"></a>
+              <a id="idm157659"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
 -n <span class="c1">;no sound output</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span> 
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span> 
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span> 
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w"> 
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w"> 
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> 
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
 
-<span class="c1">; by Cesare Marilungo 2008</span>
-<span class="c1">; additions by Menno Knevel 2021</span>
-<span class="c1">; image opcodes need a black canvas- black = no sound!</span>
+</span><span class="c1">; by Cesare Marilungo 2008</span><span class="w">
+</span><span class="c1">; additions by Menno Knevel 2021</span><span class="w">
+</span><span class="c1">; image opcodes need a black canvas- black = no sound!</span><span class="w">
 
-gi<span class="n">image1</span> <span class="nb">imageload</span> <span class="s">"imageOpcode01.png"</span>              <span class="c1">; load this image</span>
-gi<span class="n">imagew</span><span class="p">,</span> gi<span class="n">imageh</span> <span class="nb">imagesize</span> gi<span class="n">image1</span>               <span class="c1">; get dimensions of imageOpcode01.png</span>
-gi<span class="n">imageNEW</span> <span class="nb">imagecreate</span> gi<span class="n">imagew</span><span class="p">,</span>gi<span class="n">imageh</span>            <span class="c1">; and use those same dimensions for the new image            </span>
+</span>gi<span class="n">image1</span><span class="w"> </span><span class="nb">imageload</span><span class="w"> </span><span class="s">"imageOpcode01.png"</span><span class="w">              </span><span class="c1">; load this image</span><span class="w">
+</span>gi<span class="n">imagew</span><span class="p">,</span><span class="w"> </span>gi<span class="n">imageh</span><span class="w"> </span><span class="nb">imagesize</span><span class="w"> </span>gi<span class="n">image1</span><span class="w">               </span><span class="c1">; get dimensions of imageOpcode01.png</span><span class="w">
+</span>gi<span class="n">imageNEW</span><span class="w"> </span><span class="nb">imagecreate</span><span class="w"> </span>gi<span class="n">imagew</span><span class="p">,</span>gi<span class="n">imageh</span><span class="w">            </span><span class="c1">; and use those same dimensions for the new image            </span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span> <span class="c1">; copies imageOpcode01.png and changes it</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w"> </span><span class="c1">; copies imageOpcode01.png and changes it</span><span class="w">
 
-k<span class="n">ndx</span> <span class="o">=</span> <span class="mi">0</span>
-k<span class="n">x</span> <span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="mi">1</span>
-<span class="nb">prints</span> <span class="s">"</span><span class="se">\n</span><span class="s">width = </span><span class="si">%d</span><span class="s"> pixels, heigth = </span><span class="si">%d</span><span class="s"> pixels</span><span class="se">\n\n</span><span class="s">"</span><span class="p">,</span> gi<span class="n">imagew</span><span class="p">,</span> gi<span class="n">imageh</span>
+</span>k<span class="n">ndx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span>k<span class="n">x</span><span class="w"> </span><span class="nb">linseg</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="nb">prints</span><span class="w"> </span><span class="s">"</span><span class="se">\n</span><span class="s">width = </span><span class="si">%d</span><span class="s"> pixels, heigth = </span><span class="si">%d</span><span class="s"> pixels</span><span class="se">\n\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span>gi<span class="n">imagew</span><span class="p">,</span><span class="w"> </span>gi<span class="n">imageh</span><span class="w">
 
-<span class="nl">myloop</span><span class="p">:</span>
-k<span class="n">y</span> <span class="o">=</span> k<span class="n">ndx</span><span class="o">/</span><span class="p">(</span>gi<span class="n">imageh</span><span class="p">)</span>                                <span class="c1">; y-axis</span>
-k<span class="n">rd</span><span class="p">,</span> k<span class="n">gn</span><span class="p">,</span> k<span class="n">bl</span> <span class="nb">imagegetpixel</span> gi<span class="n">image1</span><span class="p">,</span> k<span class="n">x</span><span class="p">,</span> k<span class="n">y</span>        <span class="c1">; get pixels from 'old' image</span>
-<span class="nb">imagesetpixel</span> gi<span class="n">imageNEW</span><span class="p">,</span> k<span class="n">x</span><span class="o">*</span><span class="mf">.9</span><span class="p">,</span> k<span class="n">y</span><span class="o">*</span><span class="mf">.5</span><span class="p">,</span> k<span class="n">rd</span><span class="p">,</span> k<span class="n">gn</span><span class="p">,</span> k<span class="n">bl</span><span class="c1">; redesign the image</span>
-<span class="kp">loop_lt</span> k<span class="n">ndx</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> gi<span class="n">imageh</span><span class="p">,</span> <span class="nl">myloop</span>
-<span class="kd">endin</span>
+</span><span class="nl">myloop</span><span class="p">:</span><span class="w">
+</span>k<span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>k<span class="n">ndx</span><span class="o">/</span><span class="p">(</span>gi<span class="n">imageh</span><span class="p">)</span><span class="w">                                </span><span class="c1">; y-axis</span><span class="w">
+</span>k<span class="n">rd</span><span class="p">,</span><span class="w"> </span>k<span class="n">gn</span><span class="p">,</span><span class="w"> </span>k<span class="n">bl</span><span class="w"> </span><span class="nb">imagegetpixel</span><span class="w"> </span>gi<span class="n">image1</span><span class="p">,</span><span class="w"> </span>k<span class="n">x</span><span class="p">,</span><span class="w"> </span>k<span class="n">y</span><span class="w">        </span><span class="c1">; get pixels from 'old' image</span><span class="w">
+</span><span class="nb">imagesetpixel</span><span class="w"> </span>gi<span class="n">imageNEW</span><span class="p">,</span><span class="w"> </span>k<span class="n">x</span><span class="o">*</span><span class="mf">.9</span><span class="p">,</span><span class="w"> </span>k<span class="n">y</span><span class="o">*</span><span class="mf">.5</span><span class="p">,</span><span class="w"> </span>k<span class="n">rd</span><span class="p">,</span><span class="w"> </span>k<span class="n">gn</span><span class="p">,</span><span class="w"> </span>k<span class="n">bl</span><span class="c1">; redesign the image</span><span class="w">
+</span><span class="kp">loop_lt</span><span class="w"> </span>k<span class="n">ndx</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span>gi<span class="n">imageh</span><span class="p">,</span><span class="w"> </span><span class="nl">myloop</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">2</span>
-<span class="nb">imagesave</span> gi<span class="n">imageNEW</span><span class="p">,</span> <span class="s">"imageOUT.png"</span>                <span class="c1">; save this new image</span>
-<span class="kd">endin</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">
+</span><span class="nb">imagesave</span><span class="w"> </span>gi<span class="n">imageNEW</span><span class="p">,</span><span class="w"> </span><span class="s">"imageOUT.png"</span><span class="w">                </span><span class="c1">; save this new image</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">3</span>
-<span class="nb">imagefree</span> gi<span class="n">image1</span>                                  <span class="c1">; unload images</span>
-<span class="nb">imagefree</span> gi<span class="n">imageNEW</span>
-<span class="kd">endin</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">3</span><span class="w">
+</span><span class="nb">imagefree</span><span class="w"> </span>gi<span class="n">image1</span><span class="w">                                  </span><span class="c1">; unload images</span><span class="w">
+</span><span class="nb">imagefree</span><span class="w"> </span>gi<span class="n">imageNEW</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
 
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span>
-<span class="nb">i</span><span class="mi">2</span> <span class="mi">2</span> <span class="mi">1</span>
-<span class="nb">i</span><span class="mi">3</span> <span class="mi">3</span> <span class="mf">.1</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="nb">i</span><span class="mi">3</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mf">.1</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
  
 </pre>
@@ -135,7 +135,7 @@ k<span class="n">rd</span><span class="p">,</span> k<span class="n">gn</span><sp
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm114168"></a>
+        <a id="idm157902"></a>
         <h2>See Also</h2>
         <p>
 		  <a class="link" href="imageload.html" title="imageload"><em class="citetitle">imageload</em></a>,
@@ -147,7 +147,7 @@ k<span class="n">rd</span><span class="p">,</span> k<span class="n">gn</span><sp
 	  </p>
       </div>
       <div class="refsect1">
-        <a id="idm114183"></a>
+        <a id="idm157917"></a>
         <h2>Credits</h2>
         <p>
       </p>

@@ -39,19 +39,19 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm177176"></a>
+        <a id="idm248442"></a>
         <h2>Description</h2>
         <p>
       An implementation of <span class="emphasis"><em>iord</em></span> number of second-order allpass filters in series.
    </p>
       </div>
       <div class="refsect1">
-        <a id="idm177180"></a>
+        <a id="idm248446"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ares <span class="command"><strong>phaser2</strong></span> asig, kfreq, kq, kord, kmode, ksep, kfeedback</pre>
       </div>
       <div class="refsect1">
-        <a id="idm177184"></a>
+        <a id="idm248450"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>kfreq</em></span> -- frequency (in Hz) of the filter(s). This is the center frequency of the notch of the first allpass filter in the series. This frequency is used as the base frequency from which the frequencies of the other notches are derived.
@@ -119,21 +119,21 @@ aout    <span class="emphasis"><em>=</em></span>          ain + 
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm177237"></a>
+        <a id="idm248503"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the phaser2 opcode. It uses the file <a class="ulink" href="examples/phaser2.csd" target="_top"><em class="citetitle">phaser2.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm177242"></a>
+          <a id="idm248508"></a>
           <p class="title">
             <strong>Example 750. Example of the phaser2 opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm177249"></a>
+              <a id="idm248515"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -143,52 +143,52 @@ aout    <span class="emphasis"><em>=</em></span>          ain + 
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o phaser2.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">kr</span> <span class="o">=</span> <span class="mi">4410</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">kr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4410</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">2</span>              <span class="c1">; demonstration of phase shifting abilities of phaser2. </span>
-  <span class="c1">; Input mixed with output of phaser2 to generate notches. </span>
-  <span class="c1">; Demonstrates the interaction of imode and ksep.</span>
-  i<span class="n">dur</span>   <span class="o">=</span> <span class="vi">p3</span> 
-  i<span class="n">amp</span>   <span class="o">=</span> <span class="vi">p4</span> <span class="o">*</span> <span class="mf">.04</span>
-  i<span class="n">order</span> <span class="o">=</span> <span class="vi">p5</span>        <span class="c1">; number of 2nd-order stages in phaser2 network</span>
-  i<span class="n">freq</span>  <span class="o">=</span> <span class="vi">p6</span>        <span class="c1">; not used</span>
-  i<span class="n">feed</span>  <span class="o">=</span> <span class="vi">p7</span>        <span class="c1">; amount of feedback for phaser2</span>
-  i<span class="n">mode</span>  <span class="o">=</span> <span class="vi">p8</span>        <span class="c1">; mode for frequency scaling</span>
-  i<span class="n">sep</span>   <span class="o">=</span> <span class="vi">p9</span>        <span class="c1">; used with imode to determine notch frequencies</span>
-  k<span class="n">amp</span>   <span class="nb">linseg</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">.2</span><span class="p">,</span> i<span class="n">amp</span><span class="p">,</span> i<span class="n">dur</span> <span class="o">-</span> <span class="mf">.2</span><span class="p">,</span> i<span class="n">amp</span><span class="p">,</span> <span class="mf">.2</span><span class="p">,</span> <span class="mi">0</span>
-  i<span class="n">harms</span> <span class="o">=</span> <span class="p">(</span><span class="vg">sr</span><span class="o">*</span><span class="mf">.4</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">              </span><span class="c1">; demonstration of phase shifting abilities of phaser2. </span><span class="w">
+  </span><span class="c1">; Input mixed with output of phaser2 to generate notches. </span><span class="w">
+  </span><span class="c1">; Demonstrates the interaction of imode and ksep.</span><span class="w">
+  </span>i<span class="n">dur</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="vi">p3</span><span class="w"> 
+  </span>i<span class="n">amp</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="vi">p4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">.04</span><span class="w">
+  </span>i<span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">p5</span><span class="w">        </span><span class="c1">; number of 2nd-order stages in phaser2 network</span><span class="w">
+  </span>i<span class="n">freq</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="vi">p6</span><span class="w">        </span><span class="c1">; not used</span><span class="w">
+  </span>i<span class="n">feed</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="vi">p7</span><span class="w">        </span><span class="c1">; amount of feedback for phaser2</span><span class="w">
+  </span>i<span class="n">mode</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="vi">p8</span><span class="w">        </span><span class="c1">; mode for frequency scaling</span><span class="w">
+  </span>i<span class="n">sep</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="vi">p9</span><span class="w">        </span><span class="c1">; used with imode to determine notch frequencies</span><span class="w">
+  </span>k<span class="n">amp</span><span class="w">   </span><span class="nb">linseg</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">.2</span><span class="p">,</span><span class="w"> </span>i<span class="n">amp</span><span class="p">,</span><span class="w"> </span>i<span class="n">dur</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">.2</span><span class="p">,</span><span class="w"> </span>i<span class="n">amp</span><span class="p">,</span><span class="w"> </span><span class="mf">.2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span>i<span class="n">harms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="vg">sr</span><span class="o">*</span><span class="mf">.4</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">100</span><span class="w">
 
-  <span class="c1">; "Sawtooth" waveform exponentially decaying function, to control notch frequencies</span>
-  a<span class="n">sig</span>   <span class="nb">gbuzz</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> i<span class="n">harms</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">.95</span><span class="p">,</span> <span class="mi">2</span>  
-  k<span class="n">line</span>  <span class="nb">expseg</span> <span class="mi">1</span><span class="p">,</span> i<span class="n">dur</span><span class="p">,</span> <span class="mf">.005</span>
-  a<span class="n">phs</span>   <span class="nb">phaser2</span> a<span class="n">sig</span><span class="p">,</span> k<span class="n">line</span> <span class="o">*</span> <span class="mi">2000</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> i<span class="n">order</span><span class="p">,</span> i<span class="n">mode</span><span class="p">,</span> i<span class="n">sep</span><span class="p">,</span> i<span class="n">feed</span>
+  </span><span class="c1">; "Sawtooth" waveform exponentially decaying function, to control notch frequencies</span><span class="w">
+  </span>a<span class="n">sig</span><span class="w">   </span><span class="nb">gbuzz</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span>i<span class="n">harms</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">.95</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">  
+  </span>k<span class="n">line</span><span class="w">  </span><span class="nb">expseg</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>i<span class="n">dur</span><span class="p">,</span><span class="w"> </span><span class="mf">.005</span><span class="w">
+  </span>a<span class="n">phs</span><span class="w">   </span><span class="nb">phaser2</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>k<span class="n">line</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w"> </span><span class="mf">.5</span><span class="p">,</span><span class="w"> </span>i<span class="n">order</span><span class="p">,</span><span class="w"> </span>i<span class="n">mode</span><span class="p">,</span><span class="w"> </span>i<span class="n">sep</span><span class="p">,</span><span class="w"> </span>i<span class="n">feed</span><span class="w">
 
-  <span class="nb">out</span> <span class="p">(</span>a<span class="n">sig</span> <span class="o">+</span> a<span class="n">phs</span><span class="p">)</span> <span class="o">*</span> i<span class="n">amp</span>
-<span class="kd">endin</span>
-
-
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-
-<span class="c1">; cosine wave for gbuzz</span>
-<span class="nb">f</span><span class="mi">2</span> <span class="mi">0</span>  <span class="mi">8192</span> <span class="mi">9</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mf">.25</span>     
-
-<span class="c1">; phaser2, imode=1</span>
-<span class="nb">i</span><span class="mi">2</span> <span class="mi">00</span> <span class="mi">10</span> <span class="mi">7000</span> <span class="mi">8</span> <span class="mf">.2</span> <span class="mf">.9</span> <span class="mi">1</span> <span class="mf">.33</span>
-<span class="nb">i</span><span class="mi">2</span> <span class="mi">11</span> <span class="mi">10</span> <span class="mi">7000</span> <span class="mi">8</span> <span class="mf">.2</span> <span class="mf">.9</span> <span class="mi">1</span> <span class="mi">2</span> 
-
-<span class="c1">; phaser2, imode=2</span>
-<span class="nb">i</span><span class="mi">2</span> <span class="mi">22</span> <span class="mi">10</span> <span class="mi">7000</span> <span class="mi">8</span> <span class="mf">.2</span> <span class="mf">.9</span> <span class="mi">2</span> <span class="mf">.33</span>
-<span class="nb">i</span><span class="mi">2</span> <span class="mi">33</span> <span class="mi">10</span> <span class="mi">7000</span> <span class="mi">8</span> <span class="mf">.2</span> <span class="mf">.9</span> <span class="mi">2</span> <span class="mi">2</span>
-<span class="nb">e</span>
+  </span><span class="nb">out</span><span class="w"> </span><span class="p">(</span>a<span class="n">sig</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>a<span class="n">phs</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>i<span class="n">amp</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
 
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+
+</span><span class="c1">; cosine wave for gbuzz</span><span class="w">
+</span><span class="nb">f</span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w">  </span><span class="mi">8192</span><span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mf">.25</span><span class="w">     
+
+</span><span class="c1">; phaser2, imode=1</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">7000</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="mf">.2</span><span class="w"> </span><span class="mf">.9</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mf">.33</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">11</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">7000</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="mf">.2</span><span class="w"> </span><span class="mf">.9</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> 
+
+</span><span class="c1">; phaser2, imode=2</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">22</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">7000</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="mf">.2</span><span class="w"> </span><span class="mf">.9</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mf">.33</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">33</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">7000</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="mf">.2</span><span class="w"> </span><span class="mf">.9</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+
+
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -198,14 +198,14 @@ aout    <span class="emphasis"><em>=</em></span>          ain + 
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm177434"></a>
+        <a id="idm248842"></a>
         <h2>Technical History</h2>
         <p>
       A general description of the differences between flanging and phasing can be found in Hartmann [1]. An early implementation of first-order allpass filters connected in series can be found in Beigel [2], where the bilinear z-transform is used for determining the phase shift frequency of each stage. Cronin [3] presents a similar implementation for a four-stage phase shifting network. Chamberlin [4] and Smith [5] both discuss using second-order allpass sections for greater control over notch depth, width, and frequency.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm177437"></a>
+        <a id="idm248845"></a>
         <h2>References</h2>
         <p>
       </p>
@@ -242,7 +242,7 @@ aout    <span class="emphasis"><em>=</em></span>          ain + 
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm177451"></a>
+        <a id="idm248859"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="phaser1.html" title="phaser1"><em class="citetitle">phaser1</em></a>
@@ -252,7 +252,7 @@ aout    <span class="emphasis"><em>=</em></span>          ain + 
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm177459"></a>
+        <a id="idm248867"></a>
         <h2>Credits</h2>
         <p>
       </p>

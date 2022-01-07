@@ -39,19 +39,19 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm291178"></a>
+        <a id="idm413221"></a>
         <h2>Description</h2>
         <p>
       This subroutine reads numeric values from an external ASCII file.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm291181"></a>
+        <a id="idm413224"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>f</strong></span> # time size -23 "filename.txt"</pre>
       </div>
       <div class="refsect1">
-        <a id="idm291185"></a>
+        <a id="idm413228"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>"filename.txt"</em></span> -- numeric values contained in "filename.txt" (which indicates the complete pathname of the character file to be read), can be separated by spaces, tabs, newline characters or commas.
@@ -79,20 +79,20 @@
         </div>
       </div>
       <div class="refsect1">
-        <a id="idm291196"></a>
+        <a id="idm413239"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the GEN23 generator. It uses the file <a class="ulink" href="examples/gen23.csd" target="_top"><em class="citetitle">gen23.csd</em></a> and <a class="ulink" href="examples/spectrum.txt" target="_top"> <em class="citetitle">spectrum.txt</em></a>.
            </p>
         <div class="example">
-          <a id="idm291203"></a>
+          <a id="idm413246"></a>
           <p class="title">
-            <strong>Example 1297. Example of the GEN23 generator.</strong>
+            <strong>Example 1298. Example of the GEN23 generator.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm291210"></a>
+              <a id="idm413253"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -102,43 +102,43 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o gen23.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
-<span class="c1">;"spectrum.txt" is created by the spectrum plotter of Audacity (set at size 128), using "fox.wav".</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="c1">;"spectrum.txt" is created by the spectrum plotter of Audacity (set at size 128), using "fox.wav".</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>	<span class="c1">;performs additive synthesis based on spectrum.txt</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">	</span><span class="c1">;performs additive synthesis based on spectrum.txt</span><span class="w">
 
-i<span class="n">ndx</span> <span class="o">=</span><span class="mi">0</span>						<span class="c1">;start reading at first value</span>
-<span class="nl">loop</span><span class="p">:</span>
-i<span class="n">freq</span> <span class="nb">tab_i</span> i<span class="n">ndx</span><span class="p">,</span> <span class="mi">2</span>				<span class="c1">;take odd values of list (= frequency)</span>
-i<span class="n">amp</span> <span class="nb">tab_i</span> i<span class="n">ndx</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>				<span class="c1">;take even values of list (= amplitude)</span>
-<span class="nb">event_i</span> <span class="s">"i"</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> i<span class="n">amp</span><span class="p">,</span> i<span class="n">freq</span>   		<span class="c1">;use "event_i" to trigger instr. 10 </span>
-    <span class="kp">loop_lt</span> i<span class="n">ndx</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">126</span><span class="p">,</span> <span class="nl">loop</span>			<span class="c1">;use all 126 frequency and amplitude values</span>
+</span>i<span class="n">ndx</span><span class="w"> </span><span class="o">=</span><span class="mi">0</span><span class="w">						</span><span class="c1">;start reading at first value</span><span class="w">
+</span><span class="nl">loop</span><span class="p">:</span><span class="w">
+</span>i<span class="n">freq</span><span class="w"> </span><span class="nb">tab_i</span><span class="w"> </span>i<span class="n">ndx</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">				</span><span class="c1">;take odd values of list (= frequency)</span><span class="w">
+</span>i<span class="n">amp</span><span class="w"> </span><span class="nb">tab_i</span><span class="w"> </span>i<span class="n">ndx</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">				</span><span class="c1">;take even values of list (= amplitude)</span><span class="w">
+</span><span class="nb">event_i</span><span class="w"> </span><span class="s">"i"</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span>i<span class="n">amp</span><span class="p">,</span><span class="w"> </span>i<span class="n">freq</span><span class="w">   		</span><span class="c1">;use "event_i" to trigger instr. 10 </span><span class="w">
+    </span><span class="kp">loop_lt</span><span class="w"> </span>i<span class="n">ndx</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">126</span><span class="p">,</span><span class="w"> </span><span class="nl">loop</span><span class="w">			</span><span class="c1">;use all 126 frequency and amplitude values</span><span class="w">
 
-<span class="kd">endin</span>
+</span><span class="kd">endin</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">10</span> <span class="c1">;generate sound</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">10</span><span class="w"> </span><span class="c1">;generate sound</span><span class="w">
 
-i<span class="n">amp</span>  <span class="o">=</span> <span class="vi">p4</span>
-i<span class="n">freq</span> <span class="o">=</span> <span class="vi">p5</span>
-a<span class="n">sig</span>  <span class="nb">poscil</span> <span class="nb">ampdb</span><span class="p">(</span>i<span class="n">amp</span><span class="p">),</span> i<span class="n">freq</span><span class="p">,</span> <span class="mi">1</span>
-a<span class="n">sig</span>  <span class="nb">linen</span> a<span class="n">sig</span><span class="p">,</span> <span class="mf">.01</span><span class="p">,</span> <span class="vi">p3</span><span class="p">,</span> <span class="vi">p2</span>
-      <span class="nb">outs</span>  a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
+</span>i<span class="n">amp</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="vi">p4</span><span class="w">
+</span>i<span class="n">freq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">p5</span><span class="w">
+</span>a<span class="n">sig</span><span class="w">  </span><span class="nb">poscil</span><span class="w"> </span><span class="nb">ampdb</span><span class="p">(</span>i<span class="n">amp</span><span class="p">),</span><span class="w"> </span>i<span class="n">freq</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span>a<span class="n">sig</span><span class="w">  </span><span class="nb">linen</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span><span class="mf">.01</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="vi">p2</span><span class="w">
+      </span><span class="nb">outs</span><span class="w">  </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
 
-<span class="kd">endin</span>
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">f</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">16384</span> <span class="mi">10</span> <span class="mi">1</span>		<span class="c1">;sine wave</span>
-<span class="nb">f</span> <span class="mi">2</span> <span class="mi">0</span> <span class="mi">128</span> <span class="o">-</span><span class="mi">23</span> <span class="s">"spectrum.txt"</span>	<span class="c1">;"spectrum.txt" can be found in /manual/examples</span>
+</span><span class="kd">endin</span><span class="w">
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">16384</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w">		</span><span class="c1">;sine wave</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="o">-</span><span class="mi">23</span><span class="w"> </span><span class="s">"spectrum.txt"</span><span class="w">	</span><span class="c1">;"spectrum.txt" can be found in /manual/examples</span><span class="w">
 
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">2</span>
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">2</span><span class="w">
 
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -159,7 +159,7 @@ a<span class="n">sig</span>  <span class="nb">linen</span> a<span class="n">sig<
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm291345"></a>
+        <a id="idm413477"></a>
         <h2>Credits</h2>
         <p>
       </p>

@@ -39,7 +39,7 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm214887"></a>
+        <a id="idm303611"></a>
         <h2>Description</h2>
         <p>Plugin opcode in control.</p>
         <p>
@@ -47,12 +47,12 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm214892"></a>
+        <a id="idm303616"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>setctrl</strong></span> inum, ival, itype</pre>
       </div>
       <div class="refsect1">
-        <a id="idm214896"></a>
+        <a id="idm303620"></a>
         <h2>Initialization</h2>
         <p>
       Note that this opcode is not available on Windows due to the implimentation of pipes on that system 
@@ -86,28 +86,28 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm214914"></a>
+        <a id="idm303638"></a>
         <h2>Performance</h2>
         <p>
       Calling <span class="emphasis"><em>setctrl</em></span> will create a new slider on the screen. There is no theoretical limit to the number of sliders. Windows and TCL/TK use only integers for slider values, so the values may need rescaling. GUIs usually pass values at a fairly slow rate, so it may be advisable to pass the output of control through <span class="emphasis"><em>port</em></span>.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm214919"></a>
+        <a id="idm303643"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the setctrl opcode. It uses the file <a class="ulink" href="examples/setctrl.csd" target="_top"><em class="citetitle">setctrl.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm214924"></a>
+          <a id="idm303648"></a>
           <p class="title">
-            <strong>Example 960. Example of the setctrl opcode.</strong>
+            <strong>Example 961. Example of the setctrl opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm214931"></a>
+              <a id="idm303655"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -117,45 +117,45 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o setctrl.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="c1">; Initialize the global variables.</span>
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">kr</span> <span class="o">=</span> <span class="mi">4410</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class="c1">; Initialize the global variables.</span><span class="w">
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">kr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4410</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="c1">; Instrument #1.</span>
-<span class="kd">instr</span> <span class="nf">1</span>
-  <span class="c1">; Display the label "Volume" on Slider #1.</span>
-  <span class="nb">setctrl</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"Volume"</span><span class="p">,</span> <span class="mi">4</span>
-  <span class="c1">; Set Slider #1's initial value to 20.</span>
-  <span class="nb">setctrl</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1</span>
+</span><span class="c1">; Instrument #1.</span><span class="w">
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+  </span><span class="c1">; Display the label "Volume" on Slider #1.</span><span class="w">
+  </span><span class="nb">setctrl</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">"Volume"</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="w">
+  </span><span class="c1">; Set Slider #1's initial value to 20.</span><span class="w">
+  </span><span class="nb">setctrl</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
   
-  <span class="c1">; Capture and display the values for Slider #1.</span>
-  k<span class="n">1</span> <span class="nb">control</span> <span class="mi">1</span>
-  <span class="nb">printk2</span> k<span class="n">1</span>
+  </span><span class="c1">; Capture and display the values for Slider #1.</span><span class="w">
+  </span>k<span class="n">1</span><span class="w"> </span><span class="nb">control</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="nb">printk2</span><span class="w"> </span>k<span class="n">1</span><span class="w">
 
-  <span class="c1">; Play a simple oscillator.</span>
-  <span class="c1">; Use the values from Slider #1 for amplitude.</span>
-  k<span class="n">amp</span> <span class="o">=</span> k<span class="n">1</span> <span class="o">*</span> <span class="mi">128</span>
-  a<span class="n">1</span> <span class="nb">oscil</span> k<span class="n">amp</span><span class="p">,</span> <span class="mi">440</span><span class="p">,</span> <span class="mi">1</span>
-  <span class="nb">out</span> a<span class="n">1</span>
-<span class="kd">endin</span>
-
-
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-
-<span class="c1">; Table #1, a sine wave.</span>
-<span class="nb">f</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">16384</span> <span class="mi">10</span> <span class="mi">1</span>
-
-<span class="c1">; Play Instrument #1 for thirty seconds.</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">30</span>
-<span class="nb">e</span>
+  </span><span class="c1">; Play a simple oscillator.</span><span class="w">
+  </span><span class="c1">; Use the values from Slider #1 for amplitude.</span><span class="w">
+  </span>k<span class="n">amp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>k<span class="n">1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">128</span><span class="w">
+  </span>a<span class="n">1</span><span class="w"> </span><span class="nb">oscil</span><span class="w"> </span>k<span class="n">amp</span><span class="p">,</span><span class="w"> </span><span class="mi">440</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="nb">out</span><span class="w"> </span>a<span class="n">1</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
 
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+
+</span><span class="c1">; Table #1, a sine wave.</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">16384</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w">
+
+</span><span class="c1">; Play Instrument #1 for thirty seconds.</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">30</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+
+
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -174,14 +174,14 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm215013"></a>
+        <a id="idm303799"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="control.html" title="control"><em class="citetitle">control</em></a>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm215018"></a>
+        <a id="idm303804"></a>
         <h2>Credits</h2>
         <p>
       </p>

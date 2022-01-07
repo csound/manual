@@ -28,19 +28,19 @@
     </div>
     <div class="refentry"><a id="apoleparams"></a><div class="titlepage"></div><a id="IndexApoleparams" class="indexterm"></a><div class="refnamediv"><h2><span class="refentrytitle">apoleparams</span></h2><p>apoleparams — 
      Extracts allpole filter parameters from coefficients.
-    </p></div><div class="refsect1"><a id="idm27232"></a><h2>Description</h2><p>
+    </p></div><div class="refsect1"><a id="idm32750"></a><h2>Description</h2><p>
      This opcode takes an array of allpole filter coefficients and
      produces an array of allpole filter parameters as frequency and
      bandwidth pairs.
-    </p></div><div class="refsect1"><a id="idm27235"></a><h2>Syntax</h2><pre class="synopsis">kPar[]<span class="command"><strong>apoleparams</strong></span> kCoef[] </pre></div>
+    </p></div><div class="refsect1"><a id="idm32753"></a><h2>Syntax</h2><pre class="synopsis">kPar[]<span class="command"><strong>apoleparams</strong></span> kCoef[] </pre></div>
 &gt;
   
-  <div class="refsect1"><a id="idm27239"></a><h2>Performance</h2><p>
+  <div class="refsect1"><a id="idm32757"></a><h2>Performance</h2><p>
       <span class="emphasis"><em>kCoef[]</em></span> -- all-pole filter coefficients
       (iord-size array)
     </p><p>
       <span class="emphasis"><em>kPar[]</em></span> - filter parameters in freq-bandwidth pairs.
-        </p></div><div class="refsect1"><a id="idm27245"></a><p>
+        </p></div><div class="refsect1"><a id="idm32763"></a><p>
         This opcode is part of a suite of streaming linear prediction
         opcodes. It takes in an array of allpole filter parameters,
         converts these to filter poles, sorts these in ascending
@@ -49,47 +49,47 @@
         each pole conjugate pair is represented by a single pair of
         parameters. For a filter of order M, M coefficients are
         transformed into M/2 pairs of frequencies and bandwidths.
-    </p></div><div class="refsect1"><a id="idm27247"></a><h2>Examples</h2><p>
+    </p></div><div class="refsect1"><a id="idm32765"></a><h2>Examples</h2><p>
       Here is an example of the apoleparams opcode using an audio input
       signal as lpc source. It uses the file <a class="ulink" href="examples/apoleparams.csd" target="_top"><em class="citetitle">apoleparams.csd</em></a>.
-      </p><div class="example"><a id="idm27252"></a><p class="title"><strong>Example 62. Example of the apoleparams opcode.</strong></p><div class="example-contents"><p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p><div class="refsect1"><a id="idm27259"></a><pre class="programlisting">
+      </p><div class="example"><a id="idm32770"></a><p class="title"><strong>Example 62. Example of the apoleparams opcode.</strong></p><div class="example-contents"><p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p><div class="refsect1"><a id="idm32777"></a><pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 -odac -d
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">64</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="vg">0dbfs</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">64</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-gi<span class="n">fw</span> <span class="nb">ftgen</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span>
+</span>gi<span class="n">fw</span><span class="w"> </span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>
-k<span class="n">per</span> <span class="nb">init</span> <span class="vg">sr</span>
-a<span class="n">1</span> <span class="nb">diskin</span> <span class="s">"flute.aiff"</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span>
-k<span class="n">cfs</span><span class="p">[],</span>k<span class="n">rms</span><span class="p">,</span>k<span class="n">err</span><span class="p">,</span>k<span class="n">cps</span> <span class="nb">lpcanal</span> a<span class="n">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">512</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span>gi<span class="n">fw</span>
-k<span class="n">par</span><span class="p">[]</span> <span class="nb">apoleparams</span> k<span class="n">cfs</span>
-<span class="k">if</span> k<span class="n">per</span> <span class="o">&gt;=</span> <span class="vg">sr</span> <span class="k">then</span>
-k<span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span>
-k<span class="n">per</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">endif</span>
-k<span class="n">per</span> <span class="o">+=</span> <span class="vg">ksmps</span>
-<span class="k">while</span> k<span class="n">cnt</span> <span class="o">&lt;</span> <span class="mi">5</span> <span class="k">do</span>
-  <span class="nb">printf</span> <span class="s">"t:</span><span class="si">%.1f</span><span class="s"> filter </span><span class="si">%d</span><span class="s"> freq: </span><span class="si">%.1f</span><span class="s"> bw: </span><span class="si">%.1f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> k<span class="n">cnt</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">times</span><span class="p">:</span><span class="kt">k</span><span class="p">(),</span> k<span class="n">cnt</span><span class="p">,</span> k<span class="n">par</span><span class="p">[</span>k<span class="n">cnt</span><span class="p">],</span> k<span class="n">par</span><span class="p">[</span>k<span class="n">cnt</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
-  k<span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="k">od</span>
-<span class="nb">out</span> a<span class="n">1</span>
-<span class="kd">endin</span>
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+</span>k<span class="n">per</span><span class="w"> </span><span class="nb">init</span><span class="w"> </span><span class="vg">sr</span><span class="w">
+</span>a<span class="n">1</span><span class="w"> </span><span class="nb">diskin</span><span class="w"> </span><span class="s">"flute.aiff"</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="w">
+</span>k<span class="n">cfs</span><span class="p">[],</span>k<span class="n">rms</span><span class="p">,</span>k<span class="n">err</span><span class="p">,</span>k<span class="n">cps</span><span class="w"> </span><span class="nb">lpcanal</span><span class="w"> </span>a<span class="n">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">512</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span>gi<span class="n">fw</span><span class="w">
+</span>k<span class="n">par</span><span class="p">[]</span><span class="w"> </span><span class="nb">apoleparams</span><span class="w"> </span>k<span class="n">cfs</span><span class="w">
+</span><span class="k">if</span><span class="w"> </span>k<span class="n">per</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="vg">sr</span><span class="w"> </span><span class="k">then</span><span class="w">
+</span>k<span class="n">cnt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span>k<span class="n">per</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="k">endif</span><span class="w">
+</span>k<span class="n">per</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="vg">ksmps</span><span class="w">
+</span><span class="k">while</span><span class="w"> </span>k<span class="n">cnt</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="k">do</span><span class="w">
+  </span><span class="nb">printf</span><span class="w"> </span><span class="s">"t:</span><span class="si">%.1f</span><span class="s"> filter </span><span class="si">%d</span><span class="s"> freq: </span><span class="si">%.1f</span><span class="s"> bw: </span><span class="si">%.1f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span>k<span class="n">cnt</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">times</span><span class="p">:</span><span class="kt">k</span><span class="p">(),</span><span class="w"> </span>k<span class="n">cnt</span><span class="p">,</span><span class="w"> </span>k<span class="n">par</span><span class="p">[</span>k<span class="n">cnt</span><span class="p">],</span><span class="w"> </span>k<span class="n">par</span><span class="p">[</span>k<span class="n">cnt</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="w">
+  </span>k<span class="n">cnt</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="k">od</span><span class="w">
+</span><span class="nb">out</span><span class="w"> </span>a<span class="n">1</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">i</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">20</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">20</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre></div></div></div><p><br class="example-break" />
-    </p></div><div class="refsect1"><a id="idm27394"></a><h2>See Also</h2><p>
+    </p></div><div class="refsect1"><a id="idm32980"></a><h2>See Also</h2><p>
       <a class="link" href="lpcanal.html" title="lpcanal"><em class="citetitle">lpcanal</em></a>,
       <a class="link" href="resonbnk.html" title="resonbnk"><em class="citetitle">resonbnk</em></a>
     </p></div></div>

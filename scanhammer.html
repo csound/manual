@@ -10,7 +10,7 @@
     <link rel="home" href="index.html" title="The Canonical Csound Reference Manual" />
     <link rel="up" href="OpcodesTop.html" title="Orchestra Opcodes and Operators" />
     <link rel="prev" href="scalearray.html" title="scalearray" />
-    <link rel="next" href="scans.html" title="scans" />
+    <link rel="next" href="scanmap.html" title="scanmap" />
   </head>
   <body>
     <div class="navheader">
@@ -21,7 +21,7 @@
         <tr>
           <td width="20%" align="left"><a accesskey="p" href="scalearray.html">Prev</a> </td>
           <th width="60%" align="center">Orchestra Opcodes and Operators</th>
-          <td width="20%" align="right"> <a accesskey="n" href="scans.html">Next</a></td>
+          <td width="20%" align="right"> <a accesskey="n" href="scanmap.html">Next</a></td>
         </tr>
       </table>
       <hr />
@@ -39,19 +39,19 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm207582"></a>
+        <a id="idm292706"></a>
         <h2>Description</h2>
         <p>
       This is is a variant of <a class="link" href="tablecopy.html" title="tablecopy"><em class="citetitle">tablecopy</em></a>, copying from one table to another, starting at <span class="emphasis"><em>ipos</em></span>, and with a gain control. The number of points copied is determined by the length of the source. Other points are not changed. This opcode can be used to <span class="quote">“<span class="quote">hit</span>”</span> a string in the scanned synthesis code.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm207589"></a>
+        <a id="idm292713"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>scanhammer</strong></span> isrc, idst, ipos, imult</pre>
       </div>
       <div class="refsect1">
-        <a id="idm207593"></a>
+        <a id="idm292717"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>isrc</em></span> -- source function table.
@@ -67,20 +67,20 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm207603"></a>
+        <a id="idm292727"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the scanhammer opcode. It uses the file <a class="ulink" href="examples/scanhammer.csd" target="_top"><em class="citetitle">scanhammer.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm207608"></a>
+          <a id="idm292732"></a>
           <p class="title">
             <strong>Example 927. Example of the scanhammer opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm207615"></a>
+              <a id="idm292739"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -90,46 +90,46 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o scanhammer.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="vg">0dbfs</span>  <span class="o">=</span> <span class="mi">1</span>
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="c1">; by Menno Knevel 2021</span>
+</span><span class="c1">; by Menno Knevel 2021</span><span class="w">
 
-<span class="kd">instr</span> <span class="nf">1</span>	
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">	
 
-i<span class="n">nitial</span> <span class="nb">ftgen</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>                         <span class="c1">; initial position = sine wave</span>
-i<span class="n">mass</span>   <span class="nb">ftgen</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="mi">1</span>                 <span class="c1">; masses</span>
-i<span class="n">stiff</span>  <span class="nb">ftgen</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p5</span><span class="o">*</span><span class="mf">.3</span><span class="p">,</span> <span class="mf">0.8</span><span class="o">*</span><span class="vi">p5</span><span class="p">,</span> <span class="vi">p5</span><span class="o">*</span><span class="mf">.7</span><span class="p">,</span> <span class="mi">0</span>   <span class="c1">; stiffness</span>
-i<span class="n">damp</span>   <span class="nb">ftgen</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="mi">1</span>                  <span class="c1">; damping</span>
-i<span class="n">velo</span>   <span class="nb">ftgen</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p5</span><span class="p">,</span> <span class="mf">0.5</span>                <span class="c1">; initial velocity</span>
+</span>i<span class="n">nitial</span><span class="w"> </span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="vi">p5</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">                         </span><span class="c1">; initial position = sine wave</span><span class="w">
+</span>i<span class="n">mass</span><span class="w">   </span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="vi">p5</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mf">.1</span><span class="p">,</span><span class="w"> </span><span class="vi">p5</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">                 </span><span class="c1">; masses</span><span class="w">
+</span>i<span class="n">stiff</span><span class="w">  </span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="vi">p5</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="vi">p5</span><span class="o">*</span><span class="mf">.3</span><span class="p">,</span><span class="w"> </span><span class="mf">0.8</span><span class="o">*</span><span class="vi">p5</span><span class="p">,</span><span class="w"> </span><span class="vi">p5</span><span class="o">*</span><span class="mf">.7</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">   </span><span class="c1">; stiffness</span><span class="w">
+</span>i<span class="n">damp</span><span class="w">   </span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="vi">p5</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="vi">p5</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">                  </span><span class="c1">; damping</span><span class="w">
+</span>i<span class="n">velo</span><span class="w">   </span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="vi">p5</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="vi">p5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="w">                </span><span class="c1">; initial velocity</span><span class="w">
 
-i<span class="n">amp</span> <span class="o">=</span> <span class="mf">.20</span>
-i<span class="n">pch</span>  <span class="o">=</span> <span class="nb">cpsmidinn</span><span class="p">(</span><span class="vi">p4</span><span class="p">)</span> 
-<span class="nb">scanhammer</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">p6</span>                                <span class="c1">; scale initial position wave </span>
-a<span class="n">sig3</span> <span class="nb">scantable</span> i<span class="n">amp</span><span class="p">,</span> i<span class="n">pch</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span>             <span class="c1">; set ftables in motion</span>
-a<span class="n">sig</span>  <span class="nb">foscili</span> i<span class="n">amp</span><span class="p">,</span> i<span class="n">pch</span><span class="p">,</span> <span class="mf">1.414</span><span class="p">,</span> <span class="mf">.03</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>            <span class="c1">; but use FM sound, with slow vibrato</span>
-a<span class="n">sig</span>  <span class="nb">butlp</span>  a<span class="n">sig</span><span class="p">,</span> <span class="mi">2000</span>                               <span class="c1">; lowpass filter</span>
-a<span class="n">sig</span> <span class="nb">dcblock</span> a<span class="n">sig</span>
-<span class="nb">outs</span> a<span class="n">sig</span><span class="p">,</span> a<span class="n">sig</span>
+</span>i<span class="n">amp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">.20</span><span class="w">
+</span>i<span class="n">pch</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">cpsmidinn</span><span class="p">(</span><span class="vi">p4</span><span class="p">)</span><span class="w"> 
+</span><span class="nb">scanhammer</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="vi">p6</span><span class="w">                                </span><span class="c1">; scale initial position wave </span><span class="w">
+</span>a<span class="n">sig3</span><span class="w"> </span><span class="nb">scantable</span><span class="w"> </span>i<span class="n">amp</span><span class="p">,</span><span class="w"> </span>i<span class="n">pch</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="w">             </span><span class="c1">; set ftables in motion</span><span class="w">
+</span>a<span class="n">sig</span><span class="w">  </span><span class="nb">foscili</span><span class="w"> </span>i<span class="n">amp</span><span class="p">,</span><span class="w"> </span>i<span class="n">pch</span><span class="p">,</span><span class="w"> </span><span class="mf">1.414</span><span class="p">,</span><span class="w"> </span><span class="mf">.03</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">            </span><span class="c1">; but use FM sound, with slow vibrato</span><span class="w">
+</span>a<span class="n">sig</span><span class="w">  </span><span class="nb">butlp</span><span class="w">  </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span><span class="mi">2000</span><span class="w">                               </span><span class="c1">; lowpass filter</span><span class="w">
+</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">dcblock</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
+</span><span class="nb">outs</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
 
-<span class="kd">endin</span>
+</span><span class="kd">endin</span><span class="w">
 
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-<span class="nb">s</span>   <span class="c1">;                  note    size    hit</span>
-<span class="nb">i</span><span class="mi">1</span>	<span class="mi">0</span>	<span class="mi">10</span>	<span class="mi">50</span>      <span class="mi">128</span>     <span class="mi">2</span>   <span class="c1">; hit very hard</span>
-<span class="nb">i</span><span class="mi">1</span>	<span class="mi">11</span>	<span class="mi">10</span>	<span class="mi">50</span>      <span class="o">.</span>       <span class="mi">1</span>   <span class="c1">; hit normally</span>
-<span class="nb">i</span><span class="mi">1</span>	<span class="mi">22</span>	<span class="mi">10</span>	<span class="mi">50</span>      <span class="o">.</span>       <span class="mf">.3</span>  <span class="c1">; hit soft</span>
-<span class="nb">s</span>
-<span class="nb">i</span><span class="mi">1</span>	<span class="mi">1</span>	<span class="mi">10</span>	<span class="mi">50</span>      <span class="mi">32</span>      <span class="mi">2</span>   <span class="c1">; different table size </span>
-<span class="nb">i</span><span class="mi">1</span>	<span class="mi">12</span>	<span class="mi">10</span>	<span class="mi">50</span>      <span class="o">.</span>       <span class="mi">1</span>
-<span class="nb">i</span><span class="mi">1</span>	<span class="mi">23</span>	<span class="mi">20</span>	<span class="mi">50</span>      <span class="o">.</span>       <span class="mf">.3</span>
-<span class="nb">e</span>
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">s</span><span class="w">   </span><span class="c1">;                  note    size    hit</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">	</span><span class="mi">0</span><span class="w">	</span><span class="mi">10</span><span class="w">	</span><span class="mi">50</span><span class="w">      </span><span class="mi">128</span><span class="w">     </span><span class="mi">2</span><span class="w">   </span><span class="c1">; hit very hard</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">	</span><span class="mi">11</span><span class="w">	</span><span class="mi">10</span><span class="w">	</span><span class="mi">50</span><span class="w">      </span><span class="o">.</span><span class="w">       </span><span class="mi">1</span><span class="w">   </span><span class="c1">; hit normally</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">	</span><span class="mi">22</span><span class="w">	</span><span class="mi">10</span><span class="w">	</span><span class="mi">50</span><span class="w">      </span><span class="o">.</span><span class="w">       </span><span class="mf">.3</span><span class="w">  </span><span class="c1">; hit soft</span><span class="w">
+</span><span class="nb">s</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">	</span><span class="mi">1</span><span class="w">	</span><span class="mi">10</span><span class="w">	</span><span class="mi">50</span><span class="w">      </span><span class="mi">32</span><span class="w">      </span><span class="mi">2</span><span class="w">   </span><span class="c1">; different table size </span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">	</span><span class="mi">12</span><span class="w">	</span><span class="mi">10</span><span class="w">	</span><span class="mi">50</span><span class="w">      </span><span class="o">.</span><span class="w">       </span><span class="mi">1</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">	</span><span class="mi">23</span><span class="w">	</span><span class="mi">20</span><span class="w">	</span><span class="mi">50</span><span class="w">      </span><span class="o">.</span><span class="w">       </span><span class="mf">.3</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -139,14 +139,14 @@ a<span class="n">sig</span> <span class="nb">dcblock</span> a<span class="n">sig
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm207847"></a>
+        <a id="idm293125"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="scantable.html" title="scantable"><em class="citetitle">scantable</em></a>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm207852"></a>
+        <a id="idm293130"></a>
         <h2>Credits</h2>
         <p>
       </p>
@@ -171,14 +171,14 @@ a<span class="n">sig</span> <span class="nb">dcblock</span> a<span class="n">sig
           <td width="20%" align="center">
             <a accesskey="u" href="OpcodesTop.html">Up</a>
           </td>
-          <td width="40%" align="right"> <a accesskey="n" href="scans.html">Next</a></td>
+          <td width="40%" align="right"> <a accesskey="n" href="scanmap.html">Next</a></td>
         </tr>
         <tr>
           <td width="40%" align="left" valign="top">scalearray </td>
           <td width="20%" align="center">
             <a accesskey="h" href="index.html">Home</a>
           </td>
-          <td width="40%" align="right" valign="top"> scans</td>
+          <td width="40%" align="right" valign="top"> scanmap</td>
         </tr>
       </table>
     </div>

@@ -39,7 +39,7 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm178866"></a>
+        <a id="idm251040"></a>
         <h2>Description</h2>
         <p>
       Generates approximate pink noise (-3dB/oct response) by one of two different methods:
@@ -58,12 +58,12 @@
    </p>
       </div>
       <div class="refsect1">
-        <a id="idm178874"></a>
+        <a id="idm251048"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ares <span class="command"><strong>pinkish</strong></span> xin [, imethod] [, inumbands] [, iseed] [, iskip]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm178878"></a>
+        <a id="idm251052"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>imethod</em></span> (optional, default=0) -- selects filter method: 
@@ -94,7 +94,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm178895"></a>
+        <a id="idm251069"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>xin</em></span> -- for Gardner method: k- or a-rate amplitude. For Kellet filters: normally a-rate uniform random noise from rand (31-bit) or unirand, but can be any a-rate signal. The output peak value varies widely (±15%) even over long runs, and will usually be well below the input amplitude. Peak values may also occasionally overshoot input amplitude or noise.
@@ -113,21 +113,21 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm178905"></a>
+        <a id="idm251079"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the pinkish opcode. It uses the file <a class="ulink" href="examples/pinkish.csd" target="_top"><em class="citetitle">pinkish.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm178910"></a>
+          <a id="idm251084"></a>
           <p class="title">
             <strong>Example 757. Example of the pinkish opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm178917"></a>
+              <a id="idm251091"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -137,36 +137,36 @@
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o pinkish.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-<span class="c1">; Initialize the global variables.</span>
-<span class="vg">sr</span> <span class="o">=</span> <span class="mi">44100</span>
-<span class="vg">kr</span> <span class="o">=</span> <span class="mi">4410</span>
-<span class="vg">ksmps</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="vg">nchnls</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class="c1">; Initialize the global variables.</span><span class="w">
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">kr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4410</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<span class="c1">; Instrument #1.</span>
-<span class="kd">instr</span> <span class="nf">1</span>
-  a<span class="n">white</span> <span class="nb">unirand</span> <span class="mf">2.0</span>
+</span><span class="c1">; Instrument #1.</span><span class="w">
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+  </span>a<span class="n">white</span><span class="w"> </span><span class="nb">unirand</span><span class="w"> </span><span class="mf">2.0</span><span class="w">
 
-  <span class="c1">; Normalize to +/-1.0</span>
-  a<span class="n">white</span> <span class="o">=</span> a<span class="n">white</span> <span class="o">-</span> <span class="mf">1.0</span>  
+  </span><span class="c1">; Normalize to +/-1.0</span><span class="w">
+  </span>a<span class="n">white</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>a<span class="n">white</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1.0</span><span class="w">  
 
-  a<span class="n">pink</span>  <span class="nb">pinkish</span> a<span class="n">white</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+  </span>a<span class="n">pink</span><span class="w">  </span><span class="nb">pinkish</span><span class="w"> </span>a<span class="n">white</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-  <span class="nb">out</span> a<span class="n">pink</span> <span class="o">*</span> <span class="mi">30000</span>
-<span class="kd">endin</span>
-
-
-<span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span>
-
-<span class="c1">; Play Instrument #1 for one second.</span>
-<span class="nb">i</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span>
-<span class="nb">e</span>
+  </span><span class="nb">out</span><span class="w"> </span>a<span class="n">pink</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">30000</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
 
 
-<span class="nt">&lt;/CsScore&gt;</span>
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+
+</span><span class="c1">; Play Instrument #1 for one second.</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+
+
+</span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
             </div>
@@ -178,7 +178,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm178980"></a>
+        <a id="idm251199"></a>
         <h2>Credits</h2>
         <p>
       </p>
