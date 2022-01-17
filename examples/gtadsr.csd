@@ -18,7 +18,7 @@ endin
 
 instr 2
  a1 oscili gkamp,gkfr
- a2 gadsr  a1,gkatt,gkdec,gksus,gkrel,gkgate
+ a2 gtadsr  a1,gkatt,gkdec,gksus,gkrel,gkgate
  out a2
  gkgate = 0;
 endin
