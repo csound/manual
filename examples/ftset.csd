@@ -1,4 +1,4 @@
-<CsoundSynthesizer>
+csdo<CsoundSynthesizer>
 <CsOptions>
 </CsOptions>
 <CsInstruments>
