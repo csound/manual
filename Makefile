@@ -374,13 +374,13 @@ OPCODES = opcodes/0dbfs.xml	opcodes/ATSadd.xml	opcodes/ATSaddnz.xml \
 	opcodes/push.xml	opcodes/push_f.xml	opcodes/puts.xml \
 	opcodes/pvadd.xml	opcodes/pvbufread.xml	opcodes/pvcross.xml \
 	opcodes/pvinterp.xml	opcodes/pvoc.xml	opcodes/pvread.xml \
-	opcodes/pvs2tab.xml	opcodes/pvsadsyn.xml	opcodes/pvsanal.xml \
+	opcodes/pvs2tab.xml	opcodes/pvs2array.xml	 opcodes/pvsadsyn.xml	opcodes/pvsanal.xml \
 	opcodes/pvsarp.xml	opcodes/pvsbandp.xml	opcodes/pvsbandr.xml \
 	opcodes/pvsbin.xml	opcodes/pvsblur.xml	opcodes/pvsbuffer.xml \
 	opcodes/pvsbufread.xml	opcodes/pvsbufread2.xml	opcodes/pvscale.xml \
 	opcodes/pvscent.xml	opcodes/pvsceps.xml	opcodes/pvscross.xml \
 	opcodes/pvsdemix.xml	opcodes/pvsdiskin.xml	opcodes/pvsdisp.xml \
-	opcodes/pvsfilter.xml	opcodes/pvsfread.xml	opcodes/pvsfreeze.xml \
+	opcodes/pvsfilter.xml	opcodes/pvsfread.xml	opcodes/pvsfreeze.xml opcodes/pvsfromarray.xml \
 	opcodes/pvsftr.xml	opcodes/pvsftw.xml	opcodes/pvsfwrite.xml \
 	opcodes/pvsgain.xml	opcodes/pvshift.xml	opcodes/pvsifd.xml \
 	opcodes/pvsin.xml	opcodes/pvsinfo.xml	opcodes/pvsinit.xml \
