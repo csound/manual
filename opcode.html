@@ -153,7 +153,7 @@
       <span class="emphasis"><em>name</em></span> -- name of the opcode. It may consist of any combination of letters, digits, and underscore but should not begin with a digit. If an opcode with the specified name already exists, it is redefined (a warning is printed in such cases). Some reserved words (like <span class="emphasis"><em>instr</em></span> and <span class="emphasis"><em>endin</em></span>) cannot be redefined.
     </p>
         <p>
-      <span class="emphasis"><em>intypes</em></span> -- list of input types, any combination of the characters: a,f, k, O, P, V, K, i, o, p, and j. A single 0 character can be used if there are no input arguments. Double quotes and delimiter characters (e.g. comma) are <span class="emphasis"><em>not</em></span> needed.
+      <span class="emphasis"><em>intypes</em></span> -- list of input types, any combination of the characters: a, f, k, O, P, V, K, i, o, p, and j. A single 0 character can be used if there are no input arguments. Double quotes and delimiter characters (e.g. comma) are <span class="emphasis"><em>not</em></span> needed.
     </p>
         <p>
       The meaning of the various <span class="emphasis"><em>intypes</em></span> is shown in the following table:
@@ -596,9 +596,66 @@ xinarg1 [, xinarg2] [, xinarg3] ... [xinargN]  <span class="opc">xin</span>
         </div>
         <p><br class="example-break" />
     </p>
+        <p>
+      Here is another example of a user-defined opcode. It uses the file
+      <a class="ulink" href="examples/opcode_f.csd" target="_top"><em class="citetitle">opcode_f.csd</em></a>.
+      </p>
+        <div class="example">
+          <a id="idm223950"></a>
+          <p class="title">
+            <strong>Example 677. Second example of a user-defined opcode.</strong>
+          </p>
+          <div class="example-contents">
+            <div class="refsect1">
+              <a id="idm223952"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+<span class="nt">&lt;CsOptions&gt;</span>
+<span class="c1">; Select audio/midi flags here according to platform</span>
+-odac    <span class="c1">;;;realtime audio out</span>
+<span class="c1">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</span>
+<span class="c1">; For Non-realtime ouput leave only the line below:</span>
+<span class="c1">; -o opcode_f.wav -W ;;; for file output any platform</span>
+<span class="nt">&lt;/CsOptions&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
+
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="mi">1</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+
+</span><span class="c1">; example by Luis Salgueiro</span><span class="w">
+
+</span><span class="kd">opcode</span><span class="w"> </span><span class="nf">Transpose</span><span class="p">,</span><span class="w"> </span><span class="kt">a</span><span class="p">,</span><span class="w"> </span><span class="kt">afk</span><span class="w">    </span><span class="c1">; transpose a monophonic input signal through FFT.</span><span class="w">
+ </span>a<span class="n">in</span><span class="p">,</span><span class="w"> </span>f<span class="n">sig</span><span class="p">,</span><span class="w"> </span>k<span class="n">Interval</span><span class="w"> </span><span class="nb">xin</span><span class="w">
+ </span>f<span class="n">Scaled</span><span class="w"> </span><span class="nb">pvscale</span><span class="w"> </span>f<span class="n">sig</span><span class="p">,</span><span class="w"> </span><span class="nb">semitone</span><span class="p">(</span>k<span class="n">Interval</span><span class="p">)</span><span class="w">
+ </span>a<span class="n">Transposed</span><span class="w"> </span><span class="nb">pvsynth</span><span class="w"> </span>f<span class="n">Scaled</span><span class="w">
+ </span><span class="nb">xout</span><span class="w"> </span>a<span class="n">Transposed</span><span class="w"> 
+</span><span class="kd">endop</span><span class="w">
+
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+ </span>a<span class="n">1</span><span class="w"> </span><span class="nb">diskin2</span><span class="w"> </span><span class="s">"fox.wav"</span><span class="w">
+ </span>f<span class="n">sig</span><span class="w"> </span><span class="nb">pvsanal</span><span class="w"> </span>a<span class="n">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">256</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+ </span>a<span class="n">Transposed</span><span class="w"> </span><span class="nf">Transpose</span><span class="w"> </span>a<span class="n">1</span><span class="p">,</span><span class="w"> </span>f<span class="n">sig</span><span class="p">,</span><span class="w"> </span><span class="vi">p4</span><span class="w">   </span><span class="c1">; p4 = transposition in semitones</span><span class="w">
+ </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">Transposed</span><span class="p">,</span><span class="w"> </span>a<span class="n">Transposed</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
+
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">7</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">12</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
+    </p>
       </div>
       <div class="refsect1">
-        <a id="idm223947"></a>
+        <a id="idm224119"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="endop.html" title="endop"><em class="citetitle">endop</em></a>,
@@ -608,7 +665,7 @@ xinarg1 [, xinarg2] [, xinarg3] ... [xinargN]  <span class="opc">xin</span>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm223958"></a>
+        <a id="idm224130"></a>
         <h2>Credits</h2>
         <p>Author: Istvan Varga, 2002; based on code by Matt J. Ingalls</p>
         <p>New in version 4.22</p>
