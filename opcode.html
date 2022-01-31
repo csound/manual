@@ -624,20 +624,34 @@ xinarg1 [, xinarg2] [, xinarg3] ... [xinargN]  <span class="opc">xin</span>
 </span><span class="vg">0dbfs</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="mi">1</span><span class="w">
 </span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
 
-</span><span class="c1">; example by Luis Salgueiro</span><span class="w">
+</span><span class="c1">; example by Luis Salgueiro and joachim heintz</span><span class="w">
 
-</span><span class="kd">opcode</span><span class="w"> </span><span class="nf">Transpose</span><span class="p">,</span><span class="w"> </span><span class="kt">a</span><span class="p">,</span><span class="w"> </span><span class="kt">afk</span><span class="w">    </span><span class="c1">; transpose a monophonic input signal through FFT.</span><span class="w">
- </span>a<span class="n">in</span><span class="p">,</span><span class="w"> </span>f<span class="n">sig</span><span class="p">,</span><span class="w"> </span>k<span class="n">Interval</span><span class="w"> </span><span class="nb">xin</span><span class="w">
- </span>f<span class="n">Scaled</span><span class="w"> </span><span class="nb">pvscale</span><span class="w"> </span>f<span class="n">sig</span><span class="p">,</span><span class="w"> </span><span class="nb">semitone</span><span class="p">(</span>k<span class="n">Interval</span><span class="p">)</span><span class="w">
- </span>a<span class="n">Transposed</span><span class="w"> </span><span class="nb">pvsynth</span><span class="w"> </span>f<span class="n">Scaled</span><span class="w">
- </span><span class="nb">xout</span><span class="w"> </span>a<span class="n">Transposed</span><span class="w"> 
+</span><span class="kd">opcode</span><span class="w"> </span><span class="nf">Transpose</span><span class="p">,</span><span class="w"> </span><span class="kt">a</span><span class="p">,</span><span class="w"> </span><span class="kt">fk</span><span class="w">    </span><span class="c1">; transpose a monophonic input signal through FFT.</span><span class="w">
+  </span>f<span class="n">sig</span><span class="p">,</span><span class="w"> </span>k<span class="n">Interval</span><span class="w"> </span><span class="nb">xin</span><span class="w">
+  </span>f<span class="n">Scaled</span><span class="w"> </span><span class="nb">pvscale</span><span class="w"> </span>f<span class="n">sig</span><span class="p">,</span><span class="w"> </span><span class="nb">semitone</span><span class="p">(</span>k<span class="n">Interval</span><span class="p">)</span><span class="w">
+  </span>a<span class="n">Transposed</span><span class="w"> </span><span class="nb">pvsynth</span><span class="w"> </span>f<span class="n">Scaled</span><span class="w">
+  </span><span class="nb">xout</span><span class="w"> </span>a<span class="n">Transposed</span><span class="w">
 </span><span class="kd">endop</span><span class="w">
 
+</span><span class="kd">opcode</span><span class="w"> </span><span class="nf">Stretch</span><span class="p">,</span><span class="kt">f</span><span class="p">,</span><span class="kt">ik</span><span class="w">
+  </span>i<span class="n">Tab</span><span class="p">,</span><span class="w"> </span>k<span class="n">Speed</span><span class="w"> </span><span class="nb">xin</span><span class="w">
+  </span>f<span class="n">Stretch</span><span class="w"> </span><span class="nb">pvstanal</span><span class="w"> </span>k<span class="n">Speed</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>i<span class="n">Tab</span><span class="w">
+  </span><span class="nb">xout</span><span class="w"> </span>f<span class="n">Stretch</span><span class="w">
+</span><span class="kd">endop</span><span class="w">
+
+</span>gi<span class="n">Fox</span><span class="w"> </span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">"fox.wav"</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">
+
 </span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
- </span>a<span class="n">1</span><span class="w"> </span><span class="nb">diskin2</span><span class="w"> </span><span class="s">"fox.wav"</span><span class="w">
- </span>f<span class="n">sig</span><span class="w"> </span><span class="nb">pvsanal</span><span class="w"> </span>a<span class="n">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">256</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
- </span>a<span class="n">Transposed</span><span class="w"> </span><span class="nf">Transpose</span><span class="w"> </span>a<span class="n">1</span><span class="p">,</span><span class="w"> </span>f<span class="n">sig</span><span class="p">,</span><span class="w"> </span><span class="vi">p4</span><span class="w">   </span><span class="c1">; p4 = transposition in semitones</span><span class="w">
- </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">Transposed</span><span class="p">,</span><span class="w"> </span>a<span class="n">Transposed</span><span class="w">
+  </span>a<span class="n">Snd</span><span class="w"> </span><span class="nb">diskin2</span><span class="w"> </span><span class="s">"fox.wav"</span><span class="w">
+  </span>f<span class="n">Snd</span><span class="w"> </span><span class="nb">pvsanal</span><span class="w"> </span>a<span class="n">Snd</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">256</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span>a<span class="n">Transposed</span><span class="w"> </span><span class="nf">Transpose</span><span class="w"> </span>f<span class="n">Snd</span><span class="p">,</span><span class="w"> </span><span class="vi">p4</span><span class="w">   </span><span class="c1">; p4 = transposition in semitones</span><span class="w">
+  </span><span class="nb">outall</span><span class="w"> </span>a<span class="n">Transposed</span><span class="o">/</span><span class="mi">2</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
+
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">
+  </span>f<span class="n">Stretch</span><span class="w"> </span><span class="nf">Stretch</span><span class="w"> </span>gi<span class="n">Fox</span><span class="p">,</span><span class="w"> </span><span class="nb">transeg</span><span class="p">:</span><span class="kt">k</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="vi">p3</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="w">
+  </span>a<span class="n">Stretch</span><span class="w"> </span><span class="nb">pvsynth</span><span class="w"> </span>f<span class="n">Stretch</span><span class="w">
+  </span><span class="nb">outall</span><span class="w"> </span>a<span class="n">Stretch</span><span class="w">
 </span><span class="kd">endin</span><span class="w">
 
 </span><span class="nt">&lt;/CsInstruments&gt;</span>
@@ -645,6 +659,8 @@ xinarg1 [, xinarg2] [, xinarg3] ... [xinargN]  <span class="opc">xin</span>
 </span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">7</span><span class="w">
 </span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">12</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">8</span><span class="w">
+</span><span class="nb">e</span><span class="w">
 </span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
@@ -655,7 +671,7 @@ xinarg1 [, xinarg2] [, xinarg3] ... [xinargN]  <span class="opc">xin</span>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm224119"></a>
+        <a id="idm224221"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="endop.html" title="endop"><em class="citetitle">endop</em></a>,
@@ -665,7 +681,7 @@ xinarg1 [, xinarg2] [, xinarg3] ... [xinargN]  <span class="opc">xin</span>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm224130"></a>
+        <a id="idm224232"></a>
         <h2>Credits</h2>
         <p>Author: Istvan Varga, 2002; based on code by Matt J. Ingalls</p>
         <p>New in version 4.22</p>
