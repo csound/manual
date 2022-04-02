@@ -23,7 +23,7 @@ $ cd manual
 $ make html # This assumes that the Makefile will work. If it doesn't, you wll need to edit it and re-run this line.
 ```
 
-Note: if you are on Ubuntu, the `Makefile` will _not_ work, because it calls Python with `python` and not `python3`. You will need to edit the Makefile so that you call `python3` (the executable name for Python on Ubuntu).
+Note: if you are on Ubuntu, the Makefile will probably not work, because it calls Python with python and not python3. You will need to either (1) edit the Makefile so that you call python3 (the executable name for Python on Ubuntu) or (2) install something like python-is-python3, a convenience package for Debian and Ubuntu that creates a symlink from python to python3.
 
 If you followed the above instructions, you will be able to open the manual locally in any web browser with a link like `file:///home/(username)/csound/manual/html/index.html`. 
 
