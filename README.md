@@ -10,8 +10,24 @@ If you find problems or have suggestions, [open an
 issue](https://github.com/csound/manual/issues), or [fork this repository and
 make a pull request](https://guides.github.com/activities/forking/).
 
+## Specific Instructions for the Csound Manual
 
-## General Requirements
+The instructions in the following sections pertain to DocBook generally, not to the Csound manual in particular. To build the Csound manual from source, you will need to adapt the general instructions. Specifically, after making sure that you have installed the necessary tooling and dependencies (as discussed in the following sections), you will need to get the source files for the Csound manual and then run `make` to generate a version of the manual from those source files. The source files include a `Makefile` that you may need to adapt to your configuration. 
+
+If you have installed Csound in `~/csound/csound` and would like to (1) install the Csound manual source in `~/csound/manual` and (2) build an html version in `~/csound/manual/html`, do the following:
+
+```sh
+$ cd ~/csound
+$ git clone https://github.com/csound/manual.git manual
+$ cd manual
+$ make html # This assumes that the Makefile will work. If it doesn't, you wll need to edit it and re-run this line.
+```
+
+Note: if you are on Ubuntu, the `Makefile` will _not_ work, because it calls Python with `python` and not `python3`. You will need to edit the Makefile so that you call `python3` (the executable name for Python on Ubuntu).
+
+If you followed the above instructions, you will be able to open the manual locally in any web browser with a link like `file:///home/(username)/csound/manual/html/index.html`. 
+
+## General Instructions for Docbook and Related Programs
 
 In addition to other requirements specific to what you’re building, you need
 DocBook; [Python](https://www.python.org), with [Pygments](http://pygments.org)
@@ -26,8 +42,8 @@ sudo apt-get install -y docbook docbook-xsl xsltproc
 ```
 
 Python is preinstalled on most Linux distributions. If you don’t have Python,
-visit https://docs.python.org/2/using/unix.html to learn how to install Python
-or build it from source.
+visit https://www.python.org/downloads/ to find instructions for installing Python
+or building it from source.
 
 To install Pygments v2.3 or later, run
 
