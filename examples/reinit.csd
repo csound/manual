@@ -9,18 +9,18 @@
 <CsInstruments>
 
 sr = 44100
-ksmps  = 1
+ksmps = 32
 nchnls = 2
 0dbfs  = 1
 
 instr 1
 
 reset:
-        timout 0, p3/10, contin
+        timout 0, p3/p4, contin         
         reinit reset
 
 contin:
-        kLine expon 440, p3/10, 880
+        kLine expon 440, p3/p4, 880
         aSig poscil 1, kLine
         outs aSig, aSig
         rireturn
@@ -30,7 +30,8 @@ endin
 </CsInstruments>
 <CsScore>
 
-i1 0 10
+i1 0 10 10
+i1 + 10 50      
 e
 </CsScore>
 </CsoundSynthesizer>
