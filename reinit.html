@@ -39,7 +39,7 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm284054"></a>
+        <a id="idm284070"></a>
         <h2>Description</h2>
         <p>
       Suspends a performance while a special initialization pass is executed.
@@ -49,66 +49,61 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm284061"></a>
+        <a id="idm284077"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>reinit</strong></span> label</pre>
       </div>
       <div class="refsect1">
-        <a id="idm284065"></a>
+        <a id="idm284081"></a>
         <h2>Examples</h2>
         <p>
       The following statements will generate an exponential control signal whose value moves from 440 to 880 exactly ten times over the duration p3. They use the file <a class="ulink" href="examples/reinit.csd" target="_top"><em class="citetitle">reinit.csd</em></a>.
-
       </p>
         <div class="example">
-          <a id="idm284070"></a>
+          <a id="idm284086"></a>
           <p class="title">
             <strong>Example 893. Example of the reinit opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm284077"></a>
+              <a id="idm284093"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
 <span class="c1">; Audio out   Audio in</span>
--odac           -iadc    <span class="c1">;;;RT audio I/O</span>
+-odac      <span class="c1">;;;RT audio out</span>
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o reinit.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
 </span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
-</span><span class="vg">kr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
-</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
-</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
 </span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
 
 </span><span class="nl">reset</span><span class="p">:</span><span class="w">
-        </span><span class="kp">timout</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="nl">contin</span><span class="w">
+        </span><span class="kp">timout</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="o">/</span><span class="vi">p4</span><span class="p">,</span><span class="w"> </span><span class="nl">contin</span><span class="w">         
         </span><span class="kp">reinit</span><span class="w"> </span><span class="nl">reset</span><span class="w">
 
 </span><span class="nl">contin</span><span class="p">:</span><span class="w">
-        </span>k<span class="n">Line</span><span class="w"> </span><span class="nb">expon</span><span class="w"> </span><span class="mi">440</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">880</span><span class="w">
-        </span>a<span class="n">Sig</span><span class="w"> </span><span class="nb">oscil</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w"> </span>k<span class="n">Line</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
-        </span><span class="nb">out</span><span class="w"> </span>a<span class="n">Sig</span><span class="w">
+        </span>k<span class="n">Line</span><span class="w"> </span><span class="nb">expon</span><span class="w"> </span><span class="mi">440</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="o">/</span><span class="vi">p4</span><span class="p">,</span><span class="w"> </span><span class="mi">880</span><span class="w">
+        </span>a<span class="n">Sig</span><span class="w"> </span><span class="nb">poscil</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>k<span class="n">Line</span><span class="w">
+        </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">Sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">Sig</span><span class="w">
         </span><span class="kp">rireturn</span><span class="w">
 
 </span><span class="kd">endin</span><span class="w">
 
-
 </span><span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span><span class="w">
 
-</span><span class="nb">f</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">4096</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w">
-
-</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">50</span><span class="w">      
 </span><span class="nb">e</span><span class="w">
-
-
 </span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
@@ -119,7 +114,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm284198"></a>
+        <a id="idm284214"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="rigoto.html" title="rigoto"><em class="citetitle">rigoto</em></a>, 

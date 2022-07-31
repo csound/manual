@@ -121,49 +121,41 @@ stop the given instrument instance via the turnoff opcode. Note that the instanc
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
 <span class="c1">; Audio out   Audio in</span>
--odac           -iadc    <span class="c1">;;;RT audio I/O</span>
+-odac         <span class="c1">;;;RT audio out</span>
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o nstance.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
-</span><span class="c1">; Initialize the global variables.</span><span class="w">
 </span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
-</span><span class="vg">kr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4410</span><span class="w">
-</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-</span><span class="c1">; Instrument #1 - oscillator with a high note.</span><span class="w">
-</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
-  </span><span class="c1">; Play Instrument #2 at the same time.</span><span class="w">
-  </span>i<span class="n">Handle</span><span class="w"> </span><span class="nb">nstance</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="w">
 
-  </span><span class="c1">; Play a high note.</span><span class="w">
-  </span>a<span class="n">1</span><span class="w"> </span><span class="nb">oscils</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w"> </span><span class="mi">880</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
-  </span><span class="nb">out</span><span class="w"> </span>a<span class="n">1</span><span class="w">
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w"> </span><span class="c1">; Instrument #1 - oscillator with a high note.</span><span class="w">
+  
+  </span>i<span class="n">Handle</span><span class="w"> </span><span class="nb">nstance</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mf">.3</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="w">     </span><span class="c1">; Play Instrument #2 0.3 seconds later</span><span class="w">
+  </span>a<span class="n">1</span><span class="w"> </span><span class="nb">oscils</span><span class="w"> </span><span class="mf">.5</span><span class="p">,</span><span class="w"> </span><span class="mi">880</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">          </span><span class="c1">; a high note</span><span class="w">
+  </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">.5</span><span class="p">,</span><span class="w"> </span>a<span class="n">1</span><span class="w">              </span><span class="c1">; ... a bit to the right</span><span class="w">
+  </span><span class="nb">print</span><span class="w"> </span>i<span class="n">Handle</span><span class="w">
 </span><span class="kd">endin</span><span class="w">
 
-</span><span class="c1">; Instrument #2 - oscillator with a low note.</span><span class="w">
-</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">
-  </span><span class="c1">; Play a low note.</span><span class="w">
-  </span>a<span class="n">1</span><span class="w"> </span><span class="nb">oscils</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w"> </span><span class="mi">220</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
-  </span><span class="nb">out</span><span class="w"> </span>a<span class="n">1</span><span class="w">
+
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w"> </span><span class="c1">; Instrument #2 - oscillator with a low note.</span><span class="w">
+  
+  </span>a<span class="n">1</span><span class="w"> </span><span class="nb">oscils</span><span class="w"> </span><span class="mf">.5</span><span class="p">,</span><span class="w"> </span><span class="mi">110</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">          </span><span class="c1">; a low note</span><span class="w">
+  </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">1</span><span class="p">,</span><span class="w"> </span>a<span class="n">1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">.5</span><span class="w">              </span><span class="c1">; ... a bit to the left</span><span class="w">
 </span><span class="kd">endin</span><span class="w">
 
 
 </span><span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">16384</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w">    </span><span class="c1">; a sine wave.</span><span class="w">
 
-</span><span class="c1">; Table #1, a sine wave.</span><span class="w">
-</span><span class="nb">f</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">16384</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w">
-
-</span><span class="c1">; Play Instrument #1 for half a second.</span><span class="w">
-</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">0.5</span><span class="w">
-</span><span class="c1">; Play Instrument #1 for half a second.</span><span class="w">
-</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mf">0.5</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mf">.5</span><span class="w">
 </span><span class="nb">e</span><span class="w">
-
-
 </span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
@@ -174,14 +166,14 @@ stop the given instrument instance via the turnoff opcode. Note that the instanc
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm221426"></a>
+        <a id="idm221442"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="schedwhen.html" title="schedwhen"><em class="citetitle">schedwhen</em></a>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm221431"></a>
+        <a id="idm221447"></a>
         <h2>See also</h2>
         <p><a class="link" href="event.html" title="event"><em class="citetitle">event</em></a>,
     <a class="link" href="event_i.html" title="event_i"><em class="citetitle">event_i</em></a>,
@@ -193,7 +185,7 @@ stop the given instrument instance via the turnoff opcode. Note that the instanc
         <p> More information on this opcode: <a class="ulink" href="http://www.csoundjournal.com/issue15/phrase_loops.html" target="_top"><em class="citetitle">http://www.csoundjournal.com/issue15/phrase_loops.html</em></a>  , written by Jim Aikin </p>
       </div>
       <div class="refsect1">
-        <a id="idm221451"></a>
+        <a id="idm221467"></a>
         <h2>Credits</h2>
         <p>
       </p>
