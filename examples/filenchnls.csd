@@ -17,14 +17,14 @@ nchnls = 2
 
 instr 1 ; choose between mono or stereo file
 
-ichn filenchnls  p4	;check number of channels
+ichn filenchnls  p4	            ; check number of channels
 prints  "\nnumber of channels = %d\n\n", ichn
 
 if (ichn == 1) then
-    asig diskin2 p4, 1              ;mono signal	
+    asig diskin2 p4, 1              ; mono signal	
     outs    asig, asig
 else
-    aL, aR diskin2 p4, 1            ;stereo signal
+    aL, aR diskin2 p4, 1            ; stereo signal
     outs    aL, aR
 endif
 
@@ -33,7 +33,7 @@ endin
 </CsInstruments>
 <CsScore>
 
-i 1 0 3 "fox.wav"	    ;mono signal
+i 1 0 3 "fox.wav"	;mono signal
 i 1 5 4 "drumsSlp.wav"	;stereo signal
 e
 </CsScore>
