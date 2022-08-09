@@ -16,15 +16,15 @@ nchnls = 2
 
 instr 1 ; choose between mono or stereo file
 
-ilen   filelen p4	;calculate length of soundfile
+ilen   filelen p4	      ; calculate length of soundfile
 prints "\nlenght of sample = %2.3f seconds\n\n", ilen
-ichn filenchnls  p4	;check number of channels
+ichn filenchnls  p4	      ; check number of channels
 
-if (ichn == 1) then           ;mono signal
+if (ichn == 1) then           ; mono signal
      asig diskin2 p4, 1	
      outs    asig, asig
 else
-     aL, aR diskin2 p4, 1     ;stereo signal 
+     aL, aR diskin2 p4, 1     ; stereo signal 
      outs    aL, aR
 endif
 endin
@@ -32,8 +32,8 @@ endin
 </CsInstruments>
 <CsScore>
 
-i 1 0 3 "fox.wav"	     ;mono signal
-i 1 5 4 "drumsSlp.wav"	;stereo signal
+i 1 0 3 "fox.wav"	; mono signal
+i 1 5 4 "drumsSlp.wav"	; stereo signal
 e
 </CsScore>
 </CsoundSynthesizer>
