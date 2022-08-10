@@ -8,6 +8,8 @@
 </CsOptions>
 <CsInstruments>
 
+; additions by Menno Knevel 2022
+
 sr = 44100
 ksmps = 32
 nchnls = 2
@@ -28,11 +30,11 @@ ipartitionsize = p4
 
 ; calculate latency of pconvolve opcode
 idel = (ksmps < ipartitionsize ? ipartitionsize + ksmps : ipartitionsize)/sr
-prints "Convolving with a latency of %f seconds%n", idel
+prints "\nConvolving with a latency of %f seconds\n", idel
+prints "***if no live input is given, nothing will be heard...***\n\n"
 
-; actual processing
 al, ar ins	;get live input
-awetl, awetr pconvolve kvol*(al+ar), "kickroll.wav", ipartitionsize
+awetl, awetr pconvolve kvol*(al+ar), "drumsSlp.wav", ipartitionsize
 ; Delay dry signal, to align it with the convoled sig
 adryl delay (1-kmix)*al, idel
 adryr delay (1-kmix)*al, idel
