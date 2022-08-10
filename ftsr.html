@@ -39,49 +39,50 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm140122"></a>
+        <a id="idm140160"></a>
         <h2>Description</h2>
         <p>
       Returns the sampling-rate of a stored function table.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm140125"></a>
+        <a id="idm140163"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>ftsr</strong></span>(x) (init-rate args only)</pre>
       </div>
       <div class="refsect1">
-        <a id="idm140129"></a>
+        <a id="idm140167"></a>
         <h2>Performance</h2>
         <p>
       Returns the sampling-rate of a <a class="link" href="GEN01.html" title="GEN01"><em class="citetitle">GEN01</em></a> generated table. The sampling-rate is determined from the header of the original file. If the original file has no header or the table was not created by these GEN01, <span class="emphasis"><em>ftsr</em></span> returns 0. New in Csound version 3.49.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm140135"></a>
+        <a id="idm140173"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the ftsr opcode. It uses the file <a class="ulink" href="examples/ftsr.csd" target="_top"><em class="citetitle">ftsr.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm140140"></a>
+          <a id="idm140178"></a>
           <p class="title">
             <strong>Example 403. Example of the ftsr opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm140147"></a>
+              <a id="idm140185"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span> 
 <span class="nt">&lt;CsOptions&gt;</span> 
 <span class="c1">; Select audio/midi flags here according to platform </span>
 -odac     <span class="c1">;;;realtime audio out </span>
-<span class="c1">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too </span>
 <span class="c1">; For Non-realtime ouput leave only the line below: </span>
 <span class="c1">; -o ftsr.wav -W ;;; for file output any platform </span>
 <span class="nt">&lt;/CsOptions&gt;</span> 
 <span class="nt">&lt;CsInstruments&gt;</span><span class="w"> 
+
+</span><span class="c1">; by Menno Knevel 2022</span><span class="w">
 
 </span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w"> 
 </span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w"> 
@@ -92,12 +93,12 @@
 
 </span>i<span class="n">tab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">p4</span><span class="w">
 </span>i<span class="n">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">ftsr</span><span class="p">(</span>i<span class="n">tab</span><span class="p">)</span><span class="w">
-</span><span class="nb">prints</span><span class="w"> </span><span class="s">"sampling-rate of table number </span><span class="si">%d</span><span class="s"> = </span><span class="si">%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span>i<span class="n">tab</span><span class="p">,</span><span class="w"> </span>i<span class="n">sr</span><span class="w">
+</span><span class="nb">prints</span><span class="w"> </span><span class="s">"</span><span class="se">\n</span><span class="s">sampling-rate of table number </span><span class="si">%d</span><span class="s"> = </span><span class="si">%d</span><span class="se">\n\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span>i<span class="n">tab</span><span class="p">,</span><span class="w"> </span>i<span class="n">sr</span><span class="w">
     
 </span><span class="kd">endin</span><span class="w">
 </span><span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span><span class="w">
-</span><span class="nb">f</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="s">"kickroll.wav"</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w">	</span><span class="c1">;stereo file</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="s">"drumsSlp.wav"</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w">	</span><span class="c1">;stereo file</span><span class="w">
 </span><span class="nb">f</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="s">"ahh.aiff"</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w">	</span><span class="c1">;&amp; different formats</span><span class="w">
 </span><span class="nb">f</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="s">"beats.mp3"</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="nb">f</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="s">"beats.ogg"</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w">
@@ -114,7 +115,7 @@
           </div>
         </div>
         <p><br class="example-break" />
-its output should a line like these:
+its output should lines like these:
       </p>
         <pre class="screen">
 sampling-rate of table number 1 = 44100
@@ -126,7 +127,7 @@ sampling-rate of table number 4 = 44100
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm140343"></a>
+        <a id="idm140384"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="ftchnls.html" title="ftchnls"><em class="citetitle">ftchnls</em></a>,
@@ -136,7 +137,7 @@ sampling-rate of table number 4 = 44100
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm140354"></a>
+        <a id="idm140395"></a>
         <h2>Credits</h2>
         <p>
       </p>

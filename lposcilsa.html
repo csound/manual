@@ -39,19 +39,19 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm188886"></a>
+        <a id="idm188961"></a>
         <h2>Description</h2>
         <p>
       <span class="emphasis"><em>lposcilsa</em></span> reads stereo sampled sound from a table with looping and high precision.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm188890"></a>
+        <a id="idm188965"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ar1, ar2 <span class="command"><strong>lposcilsa</strong></span> aamp, kfreqratio, kloop, kend, ift [,iphs] </pre>
       </div>
       <div class="refsect1">
-        <a id="idm188894"></a>
+        <a id="idm188969"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>ift</em></span> -- function table number
@@ -61,7 +61,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm188900"></a>
+        <a id="idm188975"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>ar1, ar2</em></span> -- output signal
@@ -83,20 +83,20 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm188918"></a>
+        <a id="idm188993"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the lposcilsa opcode. It uses the file <a class="ulink" href="examples/lposcilsa.csd" target="_top"><em class="citetitle">lposcilsa.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm188923"></a>
+          <a id="idm188998"></a>
           <p class="title">
             <strong>Example 553. Example of the lposcilsa opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm188930"></a>
+              <a id="idm189005"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -108,6 +108,8 @@
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
+</span><span class="c1">; additions by Menno Knevel 2022</span><span class="w">
+
 </span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
 </span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
 </span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
@@ -117,9 +119,9 @@
 
 </span>k<span class="n">cps</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mf">1.3</span><span class="w">					</span><span class="c1">;a 3th up</span><span class="w">
 </span>k<span class="n">loop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">					</span><span class="c1">;loop start time in samples</span><span class="w">
-</span>k<span class="n">end</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">45000</span><span class="w">					</span><span class="c1">;loop end time in samples</span><span class="w">
+</span>k<span class="n">end</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="vi">p4</span><span class="w">					</span><span class="c1">;loop end time in samples</span><span class="w">
 
-</span>a<span class="n">env</span><span class="w"> </span><span class="nb">expsega</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.01</span><span class="w">	</span><span class="c1">;envelope with fast and short segment</span><span class="w">
+</span>a<span class="n">env</span><span class="w"> </span><span class="nb">expsega</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">.8</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">.3</span><span class="p">,</span><span class="w"> </span><span class="mf">1.1</span><span class="p">,</span><span class="w"> </span><span class="mf">.42</span><span class="w">	</span><span class="c1">;envelope with fast and short segment</span><span class="w">
 </span>a<span class="n">L</span><span class="p">,</span><span class="w"> </span>a<span class="n">R</span><span class="w"> </span><span class="nb">lposcilsa</span><span class="w"> </span>a<span class="n">env</span><span class="p">,</span><span class="w"> </span>k<span class="n">cps</span><span class="p">,</span><span class="w"> </span>k<span class="n">loop</span><span class="p">,</span><span class="w"> </span>k<span class="n">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">	</span><span class="c1">;use it for amplitude</span><span class="w">
      </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">L</span><span class="p">,</span><span class="w"> </span>a<span class="n">R</span><span class="w">
 
@@ -128,12 +130,10 @@
 <span class="nt">&lt;CsScore&gt;</span><span class="w">
 </span><span class="c1">; table size of stereo file is deferred,</span><span class="w">
 </span><span class="c1">; and format taken from the soundfile header.</span><span class="w">
-</span><span class="nb">f</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="s">"kickroll.wav"</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="s">"drumsSlp.wav"</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w">
 
-</span><span class="c1">; Play Instrument #1 for 6 seconds.</span><span class="w">
-</span><span class="c1">; This will loop the drum pattern several times.</span><span class="w">
-</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">2</span><span class="w">
-
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">45000</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">15000</span><span class="w">
 </span><span class="nb">e</span><span class="w">
 </span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
@@ -145,7 +145,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm189093"></a>
+        <a id="idm189178"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="lposcil.html" title="lposcil"><em class="citetitle">lposcil</em></a>,
@@ -154,7 +154,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm189102"></a>
+        <a id="idm189187"></a>
         <h2>Credits</h2>
         <p>Author: Gabriel Maldonado</p>
         <p>New in version 5.06</p>
