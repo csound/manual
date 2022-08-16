@@ -39,7 +39,7 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm331924"></a>
+        <a id="idm332156"></a>
         <h2>Description</h2>
         <p>
       Return the position of the first occurence of S2 in S1, or -1 if not
@@ -48,25 +48,25 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm331927"></a>
+        <a id="idm332159"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">kpos <span class="command"><strong>strindexk</strong></span> S1, S2</pre>
       </div>
       <div class="refsect1">
-        <a id="idm331931"></a>
+        <a id="idm332163"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the strindexk opcode. It uses the file <a class="ulink" href="examples/strindexk.csd" target="_top"><em class="citetitle">strindexk.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm331936"></a>
+          <a id="idm332168"></a>
           <p class="title">
             <strong>Example 1045. Example of the strindexk opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm331943"></a>
+              <a id="idm332175"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -92,48 +92,34 @@
 </span>S<span class="n">member</span><span class="w">   </span><span class="nb">strget</span><span class="w">    </span><span class="vi">p4</span><span class="w">
 </span>i<span class="n">strlen</span><span class="w">   </span><span class="nb">strlen</span><span class="w">    </span>S<span class="n">member</span><span class="w">
 </span>k<span class="n">print</span><span class="w">    </span><span class="nb">init</span><span class="w">      </span><span class="mi">0</span><span class="w">
-</span>k<span class="n">trig</span><span class="w">     </span><span class="nb">metro</span><span class="w">     </span><span class="mf">.5</span><span class="w"> 
+</span>k<span class="n">trig</span><span class="w">     </span><span class="nb">metro</span><span class="w">     </span><span class="mf">.6</span><span class="w"> 
 
- </span><span class="c1">;whenever the trigger gives signal</span><span class="w">
- </span><span class="k">if</span><span class="w"> </span>k<span class="n">trig</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">then</span><span class="w">
-  </span><span class="c1">;choose a random element (0, 1 or 2)</span><span class="w">
-</span>k<span class="n">el</span><span class="w">       </span><span class="nb">random</span><span class="w">    </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.9999</span><span class="w">
-</span>k<span class="n">el</span><span class="w">       </span><span class="o">=</span><span class="w">         </span><span class="nb">int</span><span class="p">(</span>k<span class="n">el</span><span class="p">)</span><span class="w">
- </span><span class="c1">;make a copy for leaving Smember intact</span><span class="w">
-</span>S<span class="n">copy</span><span class="w">     </span><span class="nb">strcpyk</span><span class="w">   </span>S<span class="n">member</span><span class="w"> 
- </span><span class="c1">;set the initial index for reading substrings</span><span class="w">
-</span>k<span class="n">ndx</span><span class="w">      </span><span class="o">=</span><span class="w">         </span><span class="mi">0</span><span class="w"> 
- </span><span class="c1">;set counter for searching the element</span><span class="w">
-</span>k<span class="n">count</span><span class="w">    </span><span class="o">=</span><span class="w">         </span><span class="mi">0</span><span class="w">
- </span><span class="c1">;start looping over the elements in Smember</span><span class="w">
-</span><span class="nl">loop</span><span class="p">:</span><span class="w">
-</span>k<span class="n">delim</span><span class="w">    </span><span class="nb">strindexk</span><span class="w"> </span>S<span class="n">copy</span><span class="p">,</span><span class="w"> </span><span class="s">":"</span><span class="w">
-  </span><span class="c1">;as long as ":" occurs in Scopy, do:</span><span class="w">
-  </span><span class="k">if</span><span class="w"> </span>k<span class="n">delim</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">then</span><span class="w">
-   </span><span class="c1">;if this is the element to get</span><span class="w">
-   </span><span class="k">if</span><span class="w"> </span>k<span class="n">el</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>k<span class="n">count</span><span class="w"> </span><span class="k">then</span><span class="w">
-    </span><span class="c1">;read it as substring</span><span class="w">
-</span>S<span class="n">file</span><span class="w">     </span><span class="nb">strsubk</span><span class="w">   </span>S<span class="n">copy</span><span class="p">,</span><span class="w"> </span>k<span class="n">ndx</span><span class="p">,</span><span class="w"> </span>k<span class="n">delim</span><span class="w">
-</span>k<span class="n">print</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>k<span class="n">print</span><span class="o">+</span><span class="mi">1</span><span class="w">
-    </span><span class="c1">;and jump out</span><span class="w">
-          </span><span class="k">kgoto</span><span class="w">     </span><span class="nl">call</span><span class="w">
-   </span><span class="c1">;if not</span><span class="w">
-   </span><span class="k">else</span><span class="w">
-    </span><span class="c1">;cut off this element from Scopy</span><span class="w">
-</span>S<span class="n">copy</span><span class="w">     </span><span class="nb">strsubk</span><span class="w">   </span>S<span class="n">copy</span><span class="p">,</span><span class="w"> </span>k<span class="n">delim</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>i<span class="n">strlen</span><span class="w">
-   </span><span class="k">endif</span><span class="w">
-   </span><span class="c1">;if no element has been found,go back to loop </span><span class="w">
-   </span><span class="c1">;and look for the next element</span><span class="w">
-</span>k<span class="n">count</span><span class="w">    </span><span class="o">=</span><span class="w">         </span>k<span class="n">count</span><span class="o">+</span><span class="mi">1</span><span class="w">
-          </span><span class="k">kgoto</span><span class="w">     </span><span class="nl">loop</span><span class="w">
-  </span><span class="c1">;if there is no delimiter left, the rest is the searched element</span><span class="w">
-  </span><span class="k">else</span><span class="w">
-</span>S<span class="n">file</span><span class="w">     </span><span class="nb">strcpyk</span><span class="w">   </span>S<span class="n">copy</span><span class="w">
+</span><span class="k">if</span><span class="w"> </span>k<span class="n">trig</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">then</span><span class="w">                              </span><span class="c1">;whenever the trigger gives signal</span><span class="w">
+ </span>k<span class="n">el</span><span class="w">       </span><span class="nb">random</span><span class="w">    </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">3.9999</span><span class="w">                  </span><span class="c1">;choose a random element (0, 1 or 2)</span><span class="w">
+ </span>k<span class="n">el</span><span class="w">       </span><span class="o">=</span><span class="w">         </span><span class="nb">int</span><span class="p">(</span>k<span class="n">el</span><span class="p">)</span><span class="w">
+ </span>S<span class="n">copy</span><span class="w">     </span><span class="nb">strcpyk</span><span class="w">   </span>S<span class="n">member</span><span class="w">                    </span><span class="c1">;make a copy for leaving Smember intact </span><span class="w">
+ </span>k<span class="n">ndx</span><span class="w">      </span><span class="o">=</span><span class="w">         </span><span class="mi">0</span><span class="w">                          </span><span class="c1">;set the initial index for reading substrings</span><span class="w">
+ </span>k<span class="n">count</span><span class="w">    </span><span class="o">=</span><span class="w">         </span><span class="mi">0</span><span class="w">                          </span><span class="c1">;set counter for searching the element</span><span class="w">
+ 
+ </span><span class="nl">loop</span><span class="p">:</span><span class="w">                                          </span><span class="c1">;start looping over the elements in Smember</span><span class="w">
+ </span>k<span class="n">delim</span><span class="w">    </span><span class="nb">strindexk</span><span class="w"> </span>S<span class="n">copy</span><span class="p">,</span><span class="w"> </span><span class="s">":"</span><span class="w">
+  
+  </span><span class="k">if</span><span class="w"> </span>k<span class="n">delim</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">then</span><span class="w">                            </span><span class="c1">;as long as ":" occurs in Scopy, do:</span><span class="w">
+   </span><span class="k">if</span><span class="w"> </span>k<span class="n">el</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>k<span class="n">count</span><span class="w"> </span><span class="k">then</span><span class="w">                        </span><span class="c1">;if this is the element to get</span><span class="w">
+     </span>S<span class="n">file</span><span class="w">     </span><span class="nb">strsubk</span><span class="w">   </span>S<span class="n">copy</span><span class="p">,</span><span class="w"> </span>k<span class="n">ndx</span><span class="p">,</span><span class="w"> </span>k<span class="n">delim</span><span class="w">    </span><span class="c1">;read it as substring</span><span class="w">
+     </span>k<span class="n">print</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>k<span class="n">print</span><span class="o">+</span><span class="mi">1</span><span class="w">
+          </span><span class="k">kgoto</span><span class="w">     </span><span class="nl">call</span><span class="w">                        </span><span class="c1">;and jump out</span><span class="w">
+   </span><span class="k">else</span><span class="w">                                         </span><span class="c1">;if not</span><span class="w">
+    </span>S<span class="n">copy</span><span class="w">     </span><span class="nb">strsubk</span><span class="w">   </span>S<span class="n">copy</span><span class="p">,</span><span class="w"> </span>k<span class="n">delim</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>i<span class="n">strlen</span><span class="w"> </span><span class="c1">;cut off this element from Scopy</span><span class="w">
+   </span><span class="k">endif</span><span class="w"> 
+    </span>k<span class="n">count</span><span class="w">   </span><span class="o">=</span><span class="w">  </span>k<span class="n">count</span><span class="o">+</span><span class="mi">1</span><span class="w">                        </span><span class="c1">;if no element has been found,go back to loop </span><span class="w">
+          </span><span class="k">kgoto</span><span class="w">     </span><span class="nl">loop</span><span class="w">                        </span><span class="c1">;and look for the next element</span><span class="w">
+  </span><span class="k">else</span><span class="w">                                          </span><span class="c1">;if there is no delimiter left, the rest is the searched element</span><span class="w">
+   </span>S<span class="n">file</span><span class="w">     </span><span class="nb">strcpyk</span><span class="w">   </span>S<span class="n">copy</span><span class="w">
   </span><span class="k">endif</span><span class="w">
-</span><span class="nl">call</span><span class="p">:</span><span class="w">
- </span><span class="c1">;print the result, call the subinstrument and play the file</span><span class="w">
+ </span><span class="nl">call</span><span class="p">:</span><span class="w">                                          </span><span class="c1">;print the result, call the subinstrument and play the file</span><span class="w">
           </span><span class="nb">printf</span><span class="w">    </span><span class="s">"kel = </span><span class="si">%d</span><span class="s">, file = '</span><span class="si">%s</span><span class="s">'</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span>k<span class="n">trig</span><span class="o">+</span>k<span class="n">print</span><span class="p">,</span><span class="w"> </span>k<span class="n">el</span><span class="p">,</span><span class="w"> </span>S<span class="n">file</span><span class="w">
-</span>S<span class="n">_call</span><span class="w">    </span><span class="nb">sprintfk</span><span class="w">  </span><span class="s">{{i 2 0 1 "</span><span class="si">%s</span><span class="s">"}}</span><span class="p">,</span><span class="w"> </span>S<span class="n">file</span><span class="w">
+ </span>S<span class="n">_call</span><span class="w">   </span><span class="nb">sprintfk</span><span class="w">  </span><span class="s">{{i 2 0 1 "</span><span class="si">%s</span><span class="s">"}}</span><span class="p">,</span><span class="w"> </span>S<span class="n">file</span><span class="w">
           </span><span class="nb">scoreline</span><span class="w"> </span><span class="err">S_call,</span><span class="w"> </span><span class="err">ktrig</span><span class="w">
  </span><span class="k">endif</span><span class="w">
 
@@ -149,7 +135,7 @@
 </span><span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span><span class="w">
 
-</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="s">"mary.wav:fox.wav:beats.wav"</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="s">"marimba.aif:fox.wav:beats.wav:flute.aiff"</span><span class="w">
 </span><span class="nb">e</span><span class="w">
 </span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
@@ -161,7 +147,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm332290"></a>
+        <a id="idm332522"></a>
         <h2>See also</h2>
         <p>
           <a class="link" href="strindex.html" title="strindex">
@@ -170,7 +156,7 @@
         </p>
       </div>
       <div class="refsect1">
-        <a id="idm332295"></a>
+        <a id="idm332527"></a>
         <h2>Credits</h2>
         <p>
       </p>
