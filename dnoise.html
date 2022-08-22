@@ -48,7 +48,7 @@
       <div class="refsect1">
         <a id="idm440474"></a>
         <h2>Syntax</h2>
-        <pre class="synopsis"><span class="command"><strong>dnoise</strong></span> [flags] -i noise_ref_file  -o output_soundfile  input_soundfile</pre>
+        <pre class="synopsis"><span class="command"><strong>dnoise</strong></span> [flags] -i noise_ref_file  -o output_soundfile  soundfile_format  input_soundfile</pre>
       </div>
       <div class="refsect1">
         <a id="idm440478"></a>
@@ -225,6 +225,87 @@ gain = g0 + (1-g0) * [avg / (avg + th*th*nref)] ^ sh<br />
       </div>
       <div class="refsect1">
         <a id="idm440600"></a>
+        <h2>Examples</h2>
+        <p>
+      Here is an example of the dnoise utility. It uses the file <a class="ulink" href="examples/dnoise.csd" target="_top"><em class="citetitle">dnoise.csd</em></a>, <a class="ulink" href="examples/MathewsNoise.wav" target="_top"><em class="citetitle">MathewsNoise.wav</em></a> and <a class="ulink" href="examples/MathewsN.wav" target="_top"><em class="citetitle">MathewsN.wav</em></a>.
+      </p>
+        <div class="example">
+          <a id="idm440609"></a>
+          <p class="title">
+            <strong>Example 1358. Example of the dnoise utility.</strong>
+          </p>
+          <div class="example-contents">
+            <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
+            <div class="refsect1">
+              <a id="idm440616"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+<span class="nt">&lt;CsOptions&gt;</span>
+<span class="c1">; Select audio/midi flags here according to platform</span>
+-odac   -m0  <span class="c1">;;;realtime audio out, with limiter protection</span>
+<span class="c1">; For Non-realtime ouput leave only the line below:</span>
+<span class="c1">; -o dnoise.wav -W ;;; for file output any platform</span>
+<span class="nt">&lt;/CsOptions&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
+
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+
+</span><span class="c1">; by Menno Knevel 2022</span><span class="w">
+
+</span><span class="c1">; analyze sound file and output result, and be verbose </span><span class="w">
+</span>i<span class="n">res1</span><span class="w"> </span><span class="nb">system_i</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="s">{{ dnoise -V -W        -i MathewsNoise.wav -o outfile01.wav MathewsN.wav }}</span><span class="w">                  </span><span class="c1">; default settings (1024 bandoass filters)</span><span class="w">
+</span>i<span class="n">res2</span><span class="w"> </span><span class="nb">system_i</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="s">{{ dnoise -V -W -N8    -i MathewsNoise.wav -o outfile02.wav MathewsN.wav }}</span><span class="w">                  </span><span class="c1">; LoFi, only 8 bandpass filters</span><span class="w">
+</span>i<span class="n">res3</span><span class="w"> </span><span class="nb">system_i</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="s">{{ dnoise -V -W -N4096 -i MathewsNoise.wav -o outfile03.wav MathewsN.wav }}</span><span class="w">                  </span><span class="c1">; 4096 bandpass filters used</span><span class="w">
+
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w"> </span><span class="c1">; untreated signal</span><span class="w">
+</span>a<span class="n">sig</span><span class="w">    </span><span class="nb">diskin2</span><span class="w">   </span><span class="s">"MathewsN.wav"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">                                         </span><span class="c1">; sample = 17.6 secs</span><span class="w">
+</span><span class="nb">prints</span><span class="w">  </span><span class="s">"</span><span class="se">\n</span><span class="s">---***YOU NOW HEAR THE UNTREATED SOUND SAMPLE***---</span><span class="se">\n</span><span class="s">"</span><span class="w">
+</span><span class="nb">outs</span><span class="w">    </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
+
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">
+
+</span><span class="nb">prints</span><span class="w">  </span><span class="s">"</span><span class="se">\n</span><span class="s">---***YOU NOW HEAR THE DENOISED FILE WITH DEFAULT SETTINGS:***---</span><span class="se">\n</span><span class="s">"</span><span class="w">
+</span>a<span class="n">dnoise</span><span class="w"> </span><span class="nb">diskin2</span><span class="w"> </span><span class="vi">p4</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">                 
+</span><span class="nb">outs</span><span class="w">    </span>a<span class="n">dnoise</span><span class="p">,</span><span class="w"> </span>a<span class="n">dnoise</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
+
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">3</span><span class="w">
+
+</span><span class="nb">prints</span><span class="w">  </span><span class="s">"</span><span class="se">\n</span><span class="s">---***YOU NOW HEAR THE LoFi FILE:***---</span><span class="se">\n</span><span class="s">"</span><span class="w">
+</span>a<span class="n">dnoise</span><span class="w"> </span><span class="nb">diskin2</span><span class="w"> </span><span class="vi">p4</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">                 
+</span><span class="nb">outs</span><span class="w">    </span>a<span class="n">dnoise</span><span class="p">,</span><span class="w"> </span>a<span class="n">dnoise</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
+
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">4</span><span class="w">
+
+</span><span class="nb">prints</span><span class="w">  </span><span class="s">"</span><span class="se">\n</span><span class="s">---***YOU NOW HEAR THE DENOISED FILE WITH MANY BANDS, CREATING SOME ECHOES:***---</span><span class="se">\n</span><span class="s">"</span><span class="w">
+</span>a<span class="n">dnoise</span><span class="w"> </span><span class="nb">diskin2</span><span class="w"> </span><span class="vi">p4</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">                 
+</span><span class="nb">outs</span><span class="w">    </span>a<span class="n">dnoise</span><span class="p">,</span><span class="w"> </span>a<span class="n">dnoise</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mf">17.6</span><span class="w">                   </span><span class="c1">; untreated signal</span><span class="w">
+
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mf">17.6</span><span class="w"> </span><span class="s">"outfile01.wav"</span><span class="w">  </span><span class="c1">; default settings </span><span class="w">
+</span><span class="nb">i</span><span class="mi">3</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="mf">17.6</span><span class="w"> </span><span class="s">"outfile02.wav"</span><span class="w">  </span><span class="c1">; LoFi</span><span class="w">
+</span><span class="nb">i</span><span class="mi">4</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="mf">17.6</span><span class="w"> </span><span class="s">"outfile03.wav"</span><span class="w">  </span><span class="c1">; echo-y</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm440858"></a>
         <h2>Credits</h2>
         <p>Author: Mark Dolson</p>
         <p>August 26, 1989</p>
