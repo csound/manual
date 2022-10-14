@@ -1,0 +1,84 @@
+
+<refentry id="elapsedcycles">
+<indexterm id="IndexElapsedcycles"><primary>elapsedcycles</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Time Reading</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>elapsedcycles</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>elapsedcycles</refname>
+    <refpurpose>
+      Read absolute time in k-rate cycles.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Read absolute time, in k-rate cycles, since the start of the performance.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis>ires <command>elapsedcycles</command></synopsis>
+
+    <synopsis>kres <command>elapsedcycles</command></synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Performance</title>
+    <para>
+      <emphasis>elapsedcycles</emphasis> is for time in k-rate cycles. So with:
+
+      <informalexample>
+        <programlisting>
+  <emphasis role="opc">sr</emphasis>    <emphasis role="op">=</emphasis> 44100
+  <emphasis role="opc">kr</emphasis>    <emphasis role="op">=</emphasis> 6300
+  <emphasis role="opc">ksmps</emphasis> <emphasis role="op">=</emphasis> 7</programlisting>
+      </informalexample>
+
+      then after half a second, the <emphasis>elapsedcycles</emphasis> opcode
+      would report 3150. It will always report an integer.
+    </para>
+
+    <para>
+      <emphasis>elapsedcycles</emphasis> can produce a k-rate variable for
+      output. There are no input parameters.
+    </para>
+
+    <para>
+      <emphasis>elapsedcycles</emphasis> can also operate only at the start of
+      the instance of the instrument. It produces an i-rate variable (starting
+      with <emphasis>i</emphasis> or <emphasis>gi</emphasis>) as its output.
+    </para>
+    
+    <note>
+      <para>
+        <emphasis>elapsedcycles</emphasis> acts like
+        <link linkend="timek"><citetitle>timek</citetitle></link> but it
+        returns the correct values instead of being one cycle late.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="eventcycles"><citetitle>eventcycles</citetitle></link>, 
+      <link linkend="eventtime"><citetitle>eventtime</citetitle></link>, 
+      <link linkend="elapsedtime"><citetitle>elapsedtime</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Author: &nameeduardo;</member>
+        <member>August 2022</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>
