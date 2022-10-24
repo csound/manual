@@ -4,7 +4,7 @@
 -odac     ;;;realtime audio out
 ;-iadc    ;;;uncomment -iadc if realtime audio input is needed too
 ; For Non-realtime ouput leave only the line below:
-;-o buzz_fof.wav -W ;;; for file output any platform
+;-o BuzzFof_Cucchi.wav -W ;;; for file output any platform
 
 
 ; By Stefano Cucchi - 2022
