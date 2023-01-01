@@ -6,7 +6,7 @@
     <title>envext</title>
     <link rel="stylesheet" type="text/css" href="csound.css" />
     <link rel="stylesheet" type="text/css" href="syntax-highlighting.css" />
-    <meta name="generator" content="DocBook XSL Stylesheets V1.79.1" />
+    <meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" />
     <link rel="home" href="index.html" title="The Canonical Csound Reference Manual" />
     <link rel="up" href="UtilityOther.html" title="Other Csound Utilities (CS, CSB64ENC, DNOISE, ENVEXT, EXTRACTOR, MAKECSD, MIXER, SCALE)" />
     <link rel="prev" href="csb64enc.html" title="csb64enc" />
@@ -71,32 +71,76 @@
       </div>
       <div class="refsect1">
         <a id="idm441670"></a>
-        <h2>Example</h2>
+        <h2>Examples</h2>
         <p>
-      Using the command (while in the manual directory):
+      Here is an example of the envext utility. It uses the file <a class="ulink" href="examples/envext.csd" target="_top"><em class="citetitle">envext.csd</em></a>.
       </p>
-        <pre class="screen">csound -U envext examples/mary.wav</pre>
+        <div class="example">
+          <a id="idm441675"></a>
+          <p class="title">
+            <strong>Example 1360. Example of the envext utility.</strong>
+          </p>
+          <div class="example-contents">
+            <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
+            <div class="refsect1">
+              <a id="idm441682"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+<span class="nt">&lt;CsOptions&gt;</span>
+<span class="c1">; Select audio/midi flags here according to platform</span>
+-odac   -m0  <span class="c1">;;;realtime audio out, with limiter protection</span>
+<span class="c1">; For Non-realtime ouput leave only the line below:</span>
+<span class="c1">; -o envext.wav -W ;;; for file output any platform</span>
+<span class="nt">&lt;/CsOptions&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
+
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+
+</span><span class="c1">; by Menno Knevel 2022</span><span class="w">
+
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+</span><span class="c1">; analyzes sound file and outputs result to a file called "newenv"</span><span class="w">
+</span>i<span class="n">res1</span><span class="w"> </span><span class="nb">system_i</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="s">{{ envext -w .05 Mathews.wav }}</span><span class="w">               
+</span><span class="kd">endin</span><span class="w">
+
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w">  
+
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
+    </p>
         <p>
-      will produce the a text file containing the following:
+      This example will produce a text file containing the following:
 </p>
         <div class="literallayout">
           <p><br />
-  0.000   0.000<br />
-  0.000   0.000<br />
-  0.250   0.000<br />
-  0.500   0.000<br />
-  0.750   0.000<br />
-  1.249   0.170<br />
-  1.499   0.269<br />
-  1.530   0.307<br />
-  1.872   0.263<br />
-  2.056   0.304<br />
-  2.294   0.241<br />
-  2.570   0.216<br />
-  2.761   0.178<br />
-  3.077   0.011<br />
-  3.251   0.001<br />
-  3.500   0.000<br />
+0.000	0.000<br />
+0.039	0.426<br />
+0.053	0.606<br />
+0.108	0.494<br />
+0.163	0.333<br />
+0.208	0.301<br />
+0.297	0.587<br />
+0.309	0.622<br />
+0.399	0.624<br />
+0.414	0.676<br />
+.........<br />
+.........<br />
+15.411	0.293<br />
+15.452	0.123<br />
+15.502	0.014<br />
+15.551	0.000<br />
 </p>
         </div>
         <p>
@@ -104,7 +148,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm441675"></a>
+        <a id="idm441751"></a>
         <h2>Credits</h2>
         <p>Author: John ffitch</p>
         <p>1995</p>
