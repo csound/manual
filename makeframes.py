@@ -7,6 +7,7 @@
 
 import sys
 from xml.dom import minidom
+from __future__ import print_function
 
 version = sys.argv[1:]
 if (len(version)==0):
