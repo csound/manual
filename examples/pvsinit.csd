@@ -34,7 +34,7 @@ endin
 </CsInstruments>
 <CsScore>
 i1 0 4 "fox.wav"
-i1 0 4  "beats.wav"
+i1 0 4  "drumsMlp.wav"
 i2 0 4
 </CsScore>
 </CsoundSynthesizer>

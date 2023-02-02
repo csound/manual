@@ -23,7 +23,7 @@ ires3 system_i 1,{{ cvanal -b.25 -d.001 rv_stereo.wav rv_stereo3.con }}    ; tak
 
 
 instr 1 ; untreated signal
-asig    diskin2   "beats.wav", 1
+asig    diskin2   "drumsMlp.wav", 1
 prints  "\n---***YOU NOW HEAR THE UNTREATED SOUND SAMPLE***---\n"
 outs    asig, asig
 endin
@@ -33,7 +33,7 @@ instr 2
 prints  "\n---***YOU NOW HEAR THE RESULT OF THIS ANALYZED FILE:***---\n"
 prints "--**used duration of impulse file = %5.3f seconds (total =%5.2f)**--\\n", p5, gilen
 
-adry    diskin2 "beats.wav"                 ; input (dry) audio
+adry    diskin2 "drumsMlp.wav"                 ; input (dry) audio
 awet1, awet2 convolve adry*.8, p4           ; stereo convolved (wet) audio
 awet1  *=  p6                               ; scale amplitude of impulse sound, Left
 awet2  *=  p6                               ; & Right channel

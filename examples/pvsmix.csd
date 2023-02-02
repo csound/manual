@@ -17,8 +17,8 @@ nchnls = 2
 
 instr 1
 
-asig1 diskin2 "beats.wav", .5,0,1		;signal in 1 at half speed
-asig2 diskin2 "beats.wav", 1,0,1		;signal in 2
+asig1 diskin2 "drumsMlp.wav", .5,0,1		;signal in 1 at half speed
+asig2 diskin2 "drumsMlp.wav", 1,0,1		;signal in 2
 fsig1 pvsanal asig1,1024,256,1024,0	      ;pvoc analysis 
 fsig2 pvsanal asig2,1024,256,1024,0	      ;of both signals
 fsall pvsmix  fsig1, fsig2 

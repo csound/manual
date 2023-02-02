@@ -41,7 +41,7 @@ ioverlap	=	ifftsize / 4
 iwinsize	=	ifftsize
 iwinshape	=	1; von-Hann window
 ilength     =   p4
-ibuffer, ilen, k0	FileToPvsBuf "beats.wav", ifftsize, ioverlap, iwinsize, iwinshape, ilength
+ibuffer, ilen, k0	FileToPvsBuf "drumsMlp.wav", ifftsize, ioverlap, iwinsize, iwinshape, ilength
 ktmpnt		linseg	ilen, p3, 0							; reads the buffer backwards in p3 seconds
 fread 		pvsbufread  ktmpnt, ibuffer, p4, p5			; use the filter options
 aout		pvsynth	fread

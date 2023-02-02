@@ -31,7 +31,7 @@ endin
 
 </CsInstruments>
 <CsScore>
-f100 0 0 -1 "beats.wav" 0 0 0
+f100 0 0 -1 "drumsMlp.wav" 0 0 0
 i 1 0 2
 i 2 0 1 11025 33075; 0.5 seconds cut
 e
