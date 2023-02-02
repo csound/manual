@@ -35,7 +35,7 @@ endin
 ; The convolver
 instr 14
 
-ain 	diskin2	"beats.wav", 1, 0, 1
+ain 	diskin2	"drumsMlp.wav", 1, 0, 1
 kupdate chnget	"conv_update"
 aconv 	liveconv ain, giIR_record, 2048, kupdate, 0
 		outch	2, aconv*0.009	; output the convolution response
