@@ -17,7 +17,7 @@ instr 1
 
 ifftsize    =   p4
 ihopsize    =   p5
-ain	diskin2  "beats.wav", 1, 0, 1                  
+ain	diskin2  "drumsMlp.wav", 1, 0, 1                  
 fs1,fsi2 pvsifd  ain, ifftsize, ihopsize, 1		; pvsifd analysis
 fst	partials fs1, fsi2, .1, 1,3, 500	; partial tracking
 aout	resyn    fst, 1, 1.5, 500, 1		; resynthesis (up a 5th)
