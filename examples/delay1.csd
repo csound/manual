@@ -21,7 +21,7 @@ instr 1                             ; original sounds
 ichoice =   p4
 if ichoice == 0 then
         prints  "\n--**original beats**--\n\n"
-    aout    diskin2 "beats.wav"
+    aout    diskin2 "drumsMlp.wav"
 else
         prints  "\n--**original noise**--\n\n"
     aout    rand .2
@@ -35,7 +35,7 @@ instr 2                             ; Finite Impulse Response (FIR) Filter
 ichoice =   p4
 if ichoice == 0 then
     prints  "\n--**FIRST-ORDER LOW-PASS on the beats**--\n\n"
-    aout    diskin2 "beats.wav"
+    aout    diskin2 "drumsMlp.wav"
 else
     prints  "\n--**FIRST-ORDER LOW-PASS on the noise**--\n\n"
     aout    rand .2
@@ -53,7 +53,7 @@ instr 3                             ; Finite Impulse Response (FIR) Filter
 ichoice =   p4
 if ichoice == 0 then
     prints  "\n--**FIRST-ORDER HIGH-PASS on the beats**--\n\n"
-    aout    diskin2 "beats.wav"
+    aout    diskin2 "drumsMlp.wav"
 else
     prints  "\n--**FIRST-ORDER HIGH-PASS on the noise**--\n\n"
     aout    rand .2
@@ -70,7 +70,7 @@ instr 4                             ; Finite Impulse Response (FIR) Filter
 ichoice =   p4
 if ichoice == 0 then
     prints  "\n--**SECOND-ORDER NOTCH on the beats**--\n\n"
-    aout    diskin2 "beats.wav"
+    aout    diskin2 "drumsMlp.wav"
 else
     prints  "\n--**SECOND-ORDER NOTCH on the noise**--\n\n"
     aout    rand .2
@@ -88,7 +88,7 @@ instr 5                             ; Finite Impulse Response (FIR) Filter
 ichoice =   p4
 if ichoice == 0 then
     prints  "\n--**SECOND-ORDER BAND-PASS on the beats**--\n\n"
-    aout    diskin2 "beats.wav"
+    aout    diskin2 "drumsMlp.wav"
 else
     prints  "\n--**SECOND-ORDER BAND-PASS on the noise**--\n\n"
     aout    rand .2
