@@ -65,7 +65,7 @@ endin
 </CsInstruments>
 <CsScore>
 
-i 1 0 30 "marimba.aif:fox.wav:beats.wav:flute.aiff"
+i 1 0 30 "marimba.aif:fox.wav:drumsMlp.wav:flute.aiff"
 e
 </CsScore>
 </CsoundSynthesizer>

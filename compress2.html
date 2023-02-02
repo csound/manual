@@ -39,7 +39,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm60611"></a>
+        <a id="idm60831"></a>
         <h2>Description</h2>
         <p> This unit functions as an audio
     compressor, limiter, expander, or noise gate, using either
@@ -66,12 +66,12 @@ corresponds to an amplitude of 0dbfs.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm60623"></a>
+        <a id="idm60843"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ar <span class="command"><strong>compress2</strong></span> aasig, acsig, kthresh, kloknee, khiknee, kratio, katt, krel, ilook</pre>
       </div>
       <div class="refsect1">
-        <a id="idm60627"></a>
+        <a id="idm60847"></a>
         <h2>Initialization</h2>
         <p>
 
@@ -85,7 +85,7 @@ corresponds to an amplitude of 0dbfs.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm60632"></a>
+        <a id="idm60852"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>kthresh</em></span> -- sets the lowest decibel level that will be allowed through.  Normally -90 or less, but if higher the threshold will begin removing low-level signal energy such as background noise.
@@ -101,20 +101,20 @@ The actions of compress2 will depend on the parameter settings given.  A hard-kn
 </p>
       </div>
       <div class="refsect1">
-        <a id="idm60645"></a>
+        <a id="idm60865"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the compress2 opcode. It uses the file <a class="ulink" href="examples/compress2.csd" target="_top"><em class="citetitle">compress2.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm60650"></a>
+          <a id="idm60870"></a>
           <p class="title">
             <strong>Example 158. Example of the compress2 opcode.</strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
-              <a id="idm60652"></a>
+              <a id="idm60872"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -128,39 +128,56 @@ The actions of compress2 will depend on the parameter settings given.  A hard-kn
 </span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
 </span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
 </span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
-
+</span><span class="vg">nchnls_i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">    </span><span class="c1">; assume only one mono signal for audio input!</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
 </span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">	</span><span class="c1">; uncompressed signal</span><span class="w">
 
-</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">diskin2</span><span class="w"> </span><span class="s">"beats.wav"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">diskin2</span><span class="w"> </span><span class="s">"drumsMlp.wav"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
      </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
 </span><span class="kd">endin</span><span class="w">
 
 
-</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">	</span><span class="c1">; compressed signal.</span><span class="w">
-</span><span class="c1">; Use the "beats.wav" audio file and a mic</span><span class="w">
-</span>a<span class="n">voice</span><span class="w"> </span><span class="nb">in</span><span class="w">
-</span>a<span class="n">sig</span><span class="w">   </span><span class="nb">diskin2</span><span class="w"> </span><span class="s">"beats.wav"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">	</span><span class="c1">; compressed signal, use the "drumsMlp.wav" audio file and a soundfile</span><span class="w">
 
-</span><span class="c1">; duck the audio signal "beats.wav" with your voice.</span><span class="w">
+</span>a<span class="n">voice</span><span class="w">  </span><span class="nb">diskin2</span><span class="w"> </span><span class="s">"Mathews.wav"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span>a<span class="n">sig</span><span class="w">   </span><span class="nb">diskin2</span><span class="w"> </span><span class="s">"drumsMlp.wav"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="nb">prints</span><span class="w"> </span><span class="s">"***compressing according to Mathews.wav***</span><span class="se">\n\n</span><span class="s">"</span><span class="w">
   </span>k<span class="n">thresh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">90</span><span class="w">
   </span>k<span class="n">loknee</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">50</span><span class="w">
   </span>k<span class="n">hiknee</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">30</span><span class="w">
-  </span>k<span class="n">ratio</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w">
+  </span>k<span class="n">ratio</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="w">
+  </span>k<span class="n">att</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mf">0.01</span><span class="w">
+  </span>k<span class="n">rel</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mf">.1</span><span class="w">
+  </span>i<span class="n">look</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mf">.02</span><span class="w">
+</span>a<span class="n">sig</span><span class="w">  </span><span class="nb">compress2</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">voice</span><span class="p">,</span><span class="w"> </span>k<span class="n">thresh</span><span class="p">,</span><span class="w"> </span>k<span class="n">loknee</span><span class="p">,</span><span class="w"> </span>k<span class="n">hiknee</span><span class="p">,</span><span class="w"> </span>k<span class="n">ratio</span><span class="p">,</span><span class="w"> </span>k<span class="n">att</span><span class="p">,</span><span class="w"> </span>k<span class="n">rel</span><span class="p">,</span><span class="w"> </span>i<span class="n">look</span><span class="w">	</span><span class="c1">; voice-activated compressor</span><span class="w">
+      </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
+
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">3</span><span class="w">	</span><span class="c1">; compressed signal, use the "drumsMlp.wav" audio file and a mic</span><span class="w">
+
+</span>a<span class="n">voice</span><span class="w"> </span><span class="nb">in</span><span class="w">                                     </span><span class="c1">; duck the audio signal "drumsMlp.wav" with your voice.</span><span class="w">
+</span>a<span class="n">sig</span><span class="w">   </span><span class="nb">diskin2</span><span class="w"> </span><span class="s">"drumsMlp.wav"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="nb">prints</span><span class="w"> </span><span class="s">"***compressing according to your mic -- if present***</span><span class="se">\n\n</span><span class="s">"</span><span class="w">
+  </span>k<span class="n">thresh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">90</span><span class="w">
+  </span>k<span class="n">loknee</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">50</span><span class="w">
+  </span>k<span class="n">hiknee</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">30</span><span class="w">
+  </span>k<span class="n">ratio</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="w">
   </span>k<span class="n">att</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span><span class="w">
   </span>k<span class="n">rel</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mf">.5</span><span class="w">
   </span>i<span class="n">look</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mf">.02</span><span class="w">
 </span>a<span class="n">sig</span><span class="w">  </span><span class="nb">compress2</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">voice</span><span class="p">,</span><span class="w"> </span>k<span class="n">thresh</span><span class="p">,</span><span class="w"> </span>k<span class="n">loknee</span><span class="p">,</span><span class="w"> </span>k<span class="n">hiknee</span><span class="p">,</span><span class="w"> </span>k<span class="n">ratio</span><span class="p">,</span><span class="w"> </span>k<span class="n">att</span><span class="p">,</span><span class="w"> </span>k<span class="n">rel</span><span class="p">,</span><span class="w"> </span>i<span class="n">look</span><span class="w">	</span><span class="c1">; voice-activated compressor</span><span class="w">
       </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
-
 </span><span class="kd">endin</span><span class="w">
 
 </span><span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span><span class="w">
-
-</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">5</span><span class="w">
-
-</span><span class="nb">i</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="mi">21</span><span class="w">
+</span><span class="nb">s</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">4</span><span class="w">
+</span><span class="nb">s</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">16</span><span class="w">
+</span><span class="nb">s</span><span class="w">
+</span><span class="nb">i</span><span class="mi">3</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">30</span><span class="w">
 
 </span><span class="nb">e</span><span class="w">
 </span><span class="nt">&lt;/CsScore&gt;</span>
@@ -173,7 +190,7 @@ The actions of compress2 will depend on the parameter settings given.  A hard-kn
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm60849"></a>
+        <a id="idm61226"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="dam.html" title="dam"><em class="citetitle">dam</em></a>
@@ -183,7 +200,7 @@ The actions of compress2 will depend on the parameter settings given.  A hard-kn
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm60857"></a>
+        <a id="idm61234"></a>
         <h2>Credits</h2>
         <p>Written by John ffitch after Barry L. Vercoe from Extended but
     with more common dB values, new in version 6.07.

@@ -27,8 +27,8 @@
 ;;; set FLexecButton colour
 	    FLcolor   255, 255, 0
 ;;; when this button is pressed, fourier analysis is performed on the file
-;;; "beats.wav", producing the analysis file "beats.pvx"
-  gipvoc    FLexecButton  "csound -U pvanal beats.wav beats.pvx", 60, 20, 20, 20
+;;; "drumsMlp.wav", producing the analysis file "beats.pvx"
+  gipvoc    FLexecButton  "csound -U pvanal drumsMlp.wav beats.pvx", 60, 20, 20, 20
 ;;; set FLexecButton text
 	    FLsetText	"PVOC", gipvoc
 ;;; when this button is pressed, instr 10000 is called, exiting
