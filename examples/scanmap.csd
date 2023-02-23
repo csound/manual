@@ -1,71 +1,55 @@
 <CsoundSynthesizer>
-
 <CsOptions>
-
+; Select audio/midi flags here according to platform
+-odac     ;;;RT audio out
+;-iadc    ;;;uncomment -iadc for RT audio input is needed too
+; For Non-realtime ouput leave only the line below:
+; -o scanmap.wav -W ;;; for file output any platform
 </CsOptions>
-
 <CsInstruments>
 
-sr = 48000
+sr = 44100
 ksmps = 32
-nchnls = 1
+nchnls = 2
+0dbfs  = 1
 
-instr scan
+instr scannode
+
 a0 init 0
-
-irate = .01
-
-kpos line 0, p3, 128
-;kpos randh abs(128), 3
-
-; scanu init, irate, ifndisplace, ifnmass, ifnmatrix, ifncentr, ifndamp, kmass,
+irate = .001
+; scanu2 init, irate, ifndisplace, ifnmass, ifnmatrix, ifncentr, ifndamp, kmass,
 ;       kmtrxstiff, kcentr, kdamp, ileft, iright, kpos, kdisplace, ain, idisp, id
-scanu2 1, irate, 6, 2, 3, 4, 5, 2, 9, .01, .01, .1, .9, 0, 0, a0, 0, 2
-
-;ar scans kamp, kfreq, ifntraj, id
- k1,k2 scanmap 2, 1000, 1000, 64
-      display  k1, .25 ; note - display is updated every second
-a1 scans ampdb(p4), cpspch(p5), 7, 2
-out a1
+scanu2 1, irate, 6, 2, 3, p5, 5, 2, 9, .01, .01, .1, .9, 0, 0, a0, 0, 2
+kpos,kvel scanmap 2, 100,1, p4     ; amplify the kpos value 100 times
+display  kpos, .25                  ; display is updated every .25 of a second
+asig poscil .5+kvel, 150+kpos       ; use moving velocity and position of the node 
+outs asig, asig
 endin
 
 </CsInstruments>
 <CsScore>
-; Initial displacement condition
-;f1 0 128 -7 0 64 1 64 0 ; ramp
-f1 0 128 10 1 ; sine hammer
-;f1 0 128 -7 0 28 0 2 1 2 0 96 0 ; a pluck that is 10 points wide on the surface
+f1 0 128 10 1                       ; Initial displacement condition: sine
+f2 0 128 -7 1 128 1                 ; Masses
+f3 0 16384 -23 "string-128.matrxB"  ; Spring matrices
 
-; Masses
-f2 0 128 -7 1 128 1
+;-------------------------------------
+; 2 different Centering forces
+f44 0 128 -7 1 128 1                ; uniform initial centering
+f4 0 128 -7 .001 128 1              ; ramped centering
+;-------------------------------------
+f5 0 128 -7 1 128 1                 ; uniform damping
+f6 0 128 -7 .01 128 .01             ; uniform initial velocity
+f7 0 128 -5 .001 128 128            ; Trajectory
 
-; Spring matrices
-f3 0 16384 -23 "string-128.matrxB"
-
-; Centering force
-f4 0 128 -7 1 128 1 ; uniform initial centering
-;f4 0 128 -7 .001 128 1 ; ramped centering
-
-; Damping
-f5 0 128 -7 1 128 1 ; uniform damping
-;f5 0 128 -7 .1 128 1 ; ramped damping
-
-; Initial velocity - (displacement, vel, and acceleration
-; Acceleration is from stiffness matrix pos effect - increases acceleration
-;
-
-f6 0 128 -7 .01 128 .01 ; uniform initial velocity
-
-; Trajectories
-f7 0 128 -5 .001 128 128
-
-i"scan" 2 12 86 7.00
-i"scan" 14 2 86 5.00
-i"scan" 16 2 86 6.00
-i"scan" 18 2 86 8.00
-i"scan" 20 2 98 10.00
+s;                node
+i"scannode" 0 10   0    4           ; uniform initial centering ramped centering
+i"scannode" 11 10  64   4           ; reading 3 nodes
+i"scannode" 22 10 127   4           ; 0 - 64 - 127
+s;                node
+i"scannode" 0 10   0    44          ; uniform initial centering          
+i"scannode" 11 10  64   44          ; reading 3 nodes
+i"scannode" 22 10 127   44          ; 0 - 64 - 127
 
 e
-
 </CsScore>
 </CsoundSynthesizer>
