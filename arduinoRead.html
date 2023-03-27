@@ -216,8 +216,8 @@ void put_val(int senChan, int senVal)
         <span class="c1">// the sensor data stream "senVal"</span>
 {       <span class="c1">// The packing of the data is sssssvvv 0vvvvvvv where s is a</span>
         <span class="c1">// senChan bit, v a senVal bit and 0 is zero` bit</span>
-  int low = senVal&amp;0x7f<span class="c1">;</span>
-  int hi = ((senVal&gt;&gt;7)&amp;0x0f) | ((senChan&amp;0x0f)<span class="err">&lt;</span><span class="nt">&lt;4</span><span class="err">);</span><span class="w">
+  int   low = senVal&amp;0x7f<span class="c1">;</span>
+  int hi = ((senVal&gt;&gt;7)&amp;0x07) | ((senChan&amp;0x1f)<span class="err">&lt;</span><span class="nt">&lt;3</span><span class="err">);</span><span class="w">
   </span><span class="err">Serial.write(low);</span><span class="w"> </span><span class="err">Serial.write(hi);</span><span class="w">
 </span><span class="err">}</span><span class="w">
 
