@@ -39,7 +39,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm167677"></a>
+        <a id="idm167862"></a>
         <h2>Description</h2>
         <p>
     Plugin opcode in jacko. This opcode is part of the plugin repository and has to be installed separately. 
@@ -51,12 +51,12 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm167683"></a>
+        <a id="idm167868"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>JackoMidiOut </strong></span> ScsoundPortName, kstatus, kchannel, kdata1[, kdata2]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm167687"></a>
+        <a id="idm167872"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>ScsoundPortName</em></span> -- The short name ("portname") 
@@ -64,7 +64,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm167691"></a>
+        <a id="idm167876"></a>
         <h2>Performance</h2>
         <p> 
       <span class="emphasis"><em>kstatus</em></span> -- MIDI status byte; must indicate a MIDI channel
@@ -94,15 +94,69 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm167704"></a>
+        <a id="idm167889"></a>
         <h2>Examples</h2>
         <p>
-      Here is an example of the JackoMidiOut opcode. It uses the file <a class="ulink" href="examples/jacko.csd" target="_top"><em class="citetitle">jacko.csd</em></a>.
+      Here is an example of the JackoMidiOut opcode. It uses the file <a class="ulink" href="examples/JackoMidiOut.csd" target="_top"><em class="citetitle">JackoMidiOut.csd</em></a>.
+          </p>
+        <div class="example">
+          <a id="idm167894"></a>
+          <p class="title">
+            <strong>Example 488. Example of the JackoMidiOut opcode.</strong>
+          </p>
+          <div class="example-contents">
+            <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
+            <div class="refsect1">
+              <a id="idm167901"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+<span class="nt">&lt;CsOptions&gt;</span>
+-n <span class="c1">; no sound</span>
+<span class="nt">&lt;/CsOptions&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
+
+</span><span class="vg">sr</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mi">48000</span><span class="w"> </span><span class="c1">; one possible Jack setting</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mi">128</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+
+</span><span class="c1">; by Menno Knevel - 2023</span><span class="w">
+</span><span class="c1">; The example shows how Control Changes and Program Change </span><span class="w">
+</span><span class="c1">; to drive an external synthesizer</span><span class="w">
+
+</span><span class="nb">JackoInit</span><span class="w">   </span><span class="s">"default"</span><span class="p">,</span><span class="w"> </span><span class="s">"csound6"</span><span class="w">                        </span><span class="c1">; Csound as a Jack client</span><span class="w">
+</span><span class="nb">JackoMidiOutConnect</span><span class="w"> </span><span class="s">"midioutMAUDIO"</span><span class="p">,</span><span class="w"> </span><span class="s">"M-Audio-Delta-1010:midi/capture_1"</span><span class="w">
+</span><span class="nb">JackoOn</span><span class="w">                                                 </span><span class="c1">; turn Jacko system on</span><span class="w">
+
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">	
+
+</span>i<span class="n">random</span><span class="w">     </span><span class="nb">random</span><span class="w">      </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="mi">80</span><span class="w">
+</span><span class="nb">JackoMidiOut</span><span class="w">  </span><span class="s">"midioutMAUDIO"</span><span class="p">,</span><span class="w"> </span><span class="mi">192</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">21</span><span class="w">             </span><span class="c1">; Program Change (GM Musette)</span><span class="w">
+</span><span class="nb">JackoMidiOut</span><span class="w">  </span><span class="s">"midioutMAUDIO"</span><span class="p">,</span><span class="w"> </span><span class="mi">176</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">74</span><span class="p">,</span><span class="w"> </span><span class="vi">p4</span><span class="w">         </span><span class="c1">; Control Change Brightness</span><span class="w">
+</span><span class="nb">JackoNoteOut</span><span class="w">  </span><span class="s">"midioutMAUDIO"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>i<span class="n">random</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="w">        </span><span class="c1">; channel range 0-15</span><span class="w">
+
+</span><span class="kd">endin</span><span class="w">
+
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">100</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">50</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">30</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">127</span><span class="w">
+</span><span class="nb">e</span><span class="w"> 
+</span><span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm167709"></a>
+        <a id="idm168067"></a>
         <h2>See Also</h2>
+        <p> More information on MIDI Status Codes: <a class="ulink" href="http://www.opensound.com/pguide/midi/midi5.html" target="_top"><em class="citetitle">http://www.opensound.com/pguide/midi/midi5.html</em></a></p>
         <p>
       <a class="link" href="JackoInit.html" title="JackoInit"><em class="citetitle">JackoInfo</em></a>, 
       <a class="link" href="JackoInfo.html" title="JackoInfo"><em class="citetitle">JackoInfo</em></a>, 
@@ -117,7 +171,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm167732"></a>
+        <a id="idm168093"></a>
         <h2>Credits</h2>
         <p>By: Michael Gogins 2010</p>
       </div>
