@@ -39,7 +39,7 @@
      </p>
       </div>
       <div class="refsect1">
-        <a id="idm167385"></a>
+        <a id="idm167507"></a>
         <h2>Description</h2>
         <p>
     Plugin opcode in jacko. This opcode is part of the plugin repository and has to be installed separately. 
@@ -51,12 +51,12 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm167391"></a>
+        <a id="idm167513"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>JackoAudioOutConnect </strong></span>ScsoundPortName, SexternalPortName</pre>
       </div>
       <div class="refsect1">
-        <a id="idm167395"></a>
+        <a id="idm167517"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>ScsoundPortName</em></span> -- The short name ("portname") 
@@ -68,7 +68,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm167401"></a>
+        <a id="idm167523"></a>
         <h2>Performance</h2>
         <p>
       The actual audio must be written with the JackoAudioOut 
@@ -76,14 +76,65 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm167404"></a>
+        <a id="idm167526"></a>
         <h2>Examples</h2>
         <p>
-      Here is an example of the JackoAudioOutConnect opcode. It uses the file <a class="ulink" href="examples/jacko.csd" target="_top"><em class="citetitle">jacko.csd</em></a>.
+      Here is an example of the JackoAudioOutConnect opcode. It uses the file <a class="ulink" href="examples/JackoAudioOut.csd" target="_top"><em class="citetitle">JackoAudioOut.csd</em></a>.
+      </p>
+        <div class="example">
+          <a id="idm167531"></a>
+          <p class="title">
+            <strong>Example 488. Example of the JackoAudioOutConnect opcode.</strong>
+          </p>
+          <div class="example-contents">
+            <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
+            <div class="refsect1">
+              <a id="idm167538"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+<span class="nt">&lt;CsOptions&gt;</span>
+<span class="c1">; Select audio/midi flags here according to platform</span>
+-odac    <span class="c1">;;;realtime audio out</span>
+<span class="c1">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</span>
+<span class="c1">; For Non-realtime ouput leave only the line below:</span>
+<span class="c1">; -o JackoAudioOut.wav -W ;;; for file output any platform</span>
+<span class="nt">&lt;/CsOptions&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
+
+</span><span class="vg">sr</span><span class="w">    	   </span><span class="o">=</span><span class="w"> </span><span class="mi">48000</span><span class="w"> </span><span class="c1">; The control rate must be BOTH a power of 2 (for Jack)</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> 	   </span><span class="o">=</span><span class="w"> </span><span class="mi">128</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> 	   </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w"> 	   </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+
+</span><span class="c1">; by Menno Knevel - 2023</span><span class="w">
+
+</span><span class="nb">JackoInit</span><span class="w"> </span><span class="s">"default"</span><span class="p">,</span><span class="w"> </span><span class="s">"csound"</span><span class="w">
+</span><span class="nb">JackoAudioOutConnect</span><span class="w">  </span><span class="s">"audioout"</span><span class="p">,</span><span class="w"> </span><span class="s">"system:playback_4"</span><span class="w">   </span><span class="c1">; create 1 Audio output &amp; connect to soundcard </span><span class="w">
+</span><span class="nb">JackoOn</span><span class="w"> 
+
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">     
+</span>a<span class="n">sig</span><span class="w">    </span><span class="nb">vco2</span><span class="w"> </span><span class="mf">.2</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="w">
+</span><span class="nb">JackoAudioOut</span><span class="w"> </span><span class="s">"audioout"</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">      </span><span class="c1">; signal is send to the 4th audio channel of the soundcard</span><span class="w">
+</span>a<span class="n">sig2</span><span class="w">   </span><span class="nb">vco2</span><span class="w"> </span><span class="mf">.2</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="w">
+</span><span class="nb">outs</span><span class="w"> </span>a<span class="n">sig2</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig2</span><span class="w">                   </span><span class="c1">; while asig2 is send to channel 1&amp;2 of the soundcard</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
+
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm167409"></a>
+        <a id="idm167653"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="JackoOpcodes.html" title="Jacko Opcodes"><em class="citetitle">The Jacko Opcodes</em></a>, 
@@ -102,7 +153,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm167438"></a>
+        <a id="idm167682"></a>
         <h2>Credits</h2>
         <p>By: Michael Gogins 2010</p>
       </div>
