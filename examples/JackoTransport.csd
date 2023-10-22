@@ -8,6 +8,8 @@ ksmps = 128
 nchnls  = 2
 0dbfs   = 1
 
+; by Menno Knevel - 2023
+
 JackoInit   "default", "csound6"                                        ; Csound as a Jack client
 JackoOn                                                                 ; activate the Jacko system
 
@@ -22,7 +24,7 @@ endin
 
 </CsInstruments>
 <CsScore>
-i1	5	.1
+i1  5	.1
 i2  20  .1
 e
 </CsScore>

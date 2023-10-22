@@ -53,7 +53,10 @@
     Csound pieces either faster or, even more importantly, slower
     than real time. This is extremely useful for rendering complex
     pieces without dropouts using instruments, such as Aeolus, 
-    that may not be available except through Jack.
+    that may not be available except through Jack (see example below).
+    A second example shows midi connections to external synthesizers
+    and a midi connection from an external keyboard.
+    
   </p>
       <p>
     The Jacko opcodes include: 
@@ -107,19 +110,19 @@
     A typical scenario for the use of the Jacko opcodes would be something like this.
   </p>
       <div class="refsect1">
-        <a id="idm17889"></a>
+        <a id="idm17894"></a>
         <h2>Example</h2>
         <p>
       Here is an example of the Jacko opcodes. It uses the file <a class="ulink" href="examples/jacko.csd" target="_top"><em class="citetitle">jacko.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm17894"></a>
+          <a id="idm17899"></a>
           <p class="title">
             <strong>Example 7. Example of the Jacko opcodes.</strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
-              <a id="idm17896"></a>
+              <a id="idm17901"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -229,9 +232,85 @@ csound -m255 -M0 -+rtmidi=null -RWf --midi-key=4 --midi-velocity=5 -o jacko_test
         </div>
         <p><br class="example-break" />
     </p>
+        <p>
+      Here is a second example of the Jacko opcodes. It uses the file <a class="ulink" href="examples/jacko_extSynths.csd" target="_top"><em class="citetitle">jacko_extSynths.csd</em></a>.
+      </p>
+        <div class="example">
+          <a id="idm18299"></a>
+          <p class="title">
+            <strong>Example 8. Another example of the Jacko opcodes.</strong>
+          </p>
+          <div class="example-contents">
+            <div class="refsect1">
+              <a id="idm18301"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+<span class="nt">&lt;CsOptions&gt;</span>
+-+rtaudio=jack -o dac -+rtmidi=null -Ma<span class="c1">; </span>
+<span class="nt">&lt;/CsOptions&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
+
+</span><span class="vg">sr</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">48000</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">128</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+
+</span><span class="c1">; by Menno Knevel - 2023</span><span class="w">
+
+</span><span class="nb">JackoInit</span><span class="w">   </span><span class="s">"default"</span><span class="p">,</span><span class="w"> </span><span class="s">"csound6"</span><span class="w">						</span><span class="c1">; Csound as a Jack client</span><span class="w">
+</span><span class="nb">JackoMidiInConnect</span><span class="w"> </span><span class="s">"UM-3:midi/playback_2"</span><span class="p">,</span><span class="w"> </span><span class="s">"midiinEDIROL"</span><span class="w"> 	                </span><span class="c1">; create 1 Midi in port </span><span class="w">
+</span><span class="nb">JackoMidiOutConnect</span><span class="w"> </span><span class="s">"midioutMAUDIO"</span><span class="p">,</span><span class="w"> </span><span class="s">"M-Audio-Delta-1010:midi/capture_1"</span><span class="w">	</span><span class="c1">; create 1 Midi output port</span><span class="w">
+</span><span class="nb">JackoMidiOutConnect</span><span class="w"> </span><span class="s">"midioutEDIROL"</span><span class="p">,</span><span class="w"> </span><span class="s">"UM-3:midi/capture_1"</span><span class="w">			</span><span class="c1">; create 2nd Midi output port</span><span class="w">
+</span><span class="nb">JackoOn</span><span class="w">
+
+
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">	</span><span class="c1">; get notes from score AND from the EDIROL Midi port "midiinEDIROL"</span><span class="w">
+
+</span><span class="nb">midinoteoncps</span><span class="w"> </span><span class="vi">p4</span><span class="p">,</span><span class="w"> </span><span class="vi">p5</span><span class="w">				            </span><span class="c1">;Gets a MIDI note number as a cycles-per-second frequency</span><span class="w">
+</span>i<span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">p4</span><span class="w">
+</span>i<span class="n">vel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">p5</span><span class="o">/</span><span class="mi">127</span><span class="w">
+</span>k<span class="n">env</span><span class="w"> </span><span class="nb">madsr</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="w">		
+</span>a<span class="n">out</span><span class="w"> </span><span class="nb">pluck</span><span class="w"> </span>k<span class="n">env</span><span class="o">*</span>i<span class="n">vel</span><span class="p">,</span><span class="w"> </span>i<span class="n">key</span><span class="p">,</span><span class="w"> </span>i<span class="n">key</span><span class="o">*</span><span class="mf">.2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">	
+</span><span class="nb">outs</span><span class="w"> </span>a<span class="n">out</span><span class="p">,</span><span class="w"> </span>a<span class="n">out</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
+
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">	</span><span class="c1">; send notes to the M-Audio Midi port (external synth #1)	</span><span class="w">
+</span>i<span class="n">random</span><span class="w">     </span><span class="nb">random</span><span class="w">      </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="w">
+</span><span class="nb">JackoNoteOut</span><span class="w"> </span><span class="s">"midioutMAUDIO"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>i<span class="n">random</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="w">		    </span><span class="c1">; channel range = 0-15</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
+
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">3</span><span class="w"> </span><span class="c1">; send notes to Edirol Midi port (external synth #2)	</span><span class="w">
+</span>i<span class="n">random</span><span class="w">     </span><span class="nb">random</span><span class="w">      </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="mi">80</span><span class="w">
+</span><span class="nb">JackoNoteOut</span><span class="w"> </span><span class="s">"midioutEDIROL"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>i<span class="n">random</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
+
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="c1">; run for 20 seconds, allows playing instr 1 on keyboard</span><span class="w">
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">4096</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w">	
+
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="mi">100</span><span class="w">    </span><span class="c1">; score notes for instr 1</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">1200</span><span class="w"> </span><span class="mi">100</span><span class="w">
+
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mf">.1</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">2</span><span class="w">
+
+</span><span class="nb">i</span><span class="mi">3</span><span class="w"> </span><span class="mi">11</span><span class="w"> </span><span class="mf">.1</span><span class="w">
+</span><span class="nb">i</span><span class="mi">3</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="nb">i</span><span class="mi">3</span><span class="w"> </span><span class="mi">14</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="nb">e</span><span class="w"> 
+</span><span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
+    </p>
       </div>
       <div class="refsect1">
-        <a id="idm18291"></a>
+        <a id="idm18607"></a>
         <h2>Credits</h2>
         <p>By: Michael Gogins 2010</p>
       </div>
