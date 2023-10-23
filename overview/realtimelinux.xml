@@ -9,6 +9,16 @@
     interface to the ALSA drivers, in a manner which is in some respects
     similar but fundamentally different from that provided by JACK.
   </para>
+    
+  <bridgehead>Scheduling</bridgehead>
+    <para>If you are able to run Csound as the root user, using the "--sched"
+      flag will dramatically improve realtime performance, when using ALSA,
+      however you may hang your system if you do something stupid. DO NOT
+      use "--sched" if you are using JACK for audio output. JACK controls
+      scheduling for the audio applications connected to it, and also tries
+      to run at the highest possible priority. If the "--sched" flag is
+      used, Csound and JACK will be competing rather than cooperating,
+      resulting in extremely poor performance. </para>
   
   <bridgehead>Using ALSA</bridgehead>
   <para>
@@ -338,15 +348,5 @@ ALSASEQ: created input port 'Csound' 130:0
 ALSASEQ: connected from 20:0
 .............. 
     </literallayout>
-    
-  <bridgehead>Scheduling</bridgehead>
-    <para>If you are able to run Csound as the root user, using the "--sched"
-      flag will dramatically improve realtime performance, when using ALSA,
-      however you may hang your system if you do something stupid. DO NOT
-      use "--sched" if you are using JACK for audio output. JACK controls
-      scheduling for the audio applications connected to it, and also tries
-      to run at the highest possible priority. If the "--sched" flag is
-      used, Csound and JACK will be competing rather than cooperating,
-      resulting in extremely poor performance. </para>
 
 </section>
