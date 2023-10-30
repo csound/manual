@@ -612,7 +612,6 @@ OTHER =         STKopcodes/top.xml \
         overview/functional.xml \
         overview/introduction.xml \
         overview/links.xml \
-        overview/optimizinglatency.xml \
         overview/realtimemac.xml \
         overview/realtimewindows.xml \
         overview/recentdev.xml \
