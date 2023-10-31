@@ -161,13 +161,84 @@ B  0.000 ..  2.000 T  2.000 TT  2.000 M:  10000.0  10000.0</programlisting>
     <para>
       Some settings differ according to platform. See further below for information for each platform.
     </para>
+
+<section id="UsingOptimizing">
+  <title>Optimizing Audio I/O Latency</title>
+<!--    Written by Jonathan Murphy-->
+  <para>
+    To achieve the lowest latency possible without audio break ups, a combination of variables needs to be tweaked. The final values will be platform and system dependent, and will also depend on the complexity of the audio calculations performed. You need to adjust <link linkend="ksmps"><citetitle>ksmps</citetitle></link> in the orchestra, as well as the software (<link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link>) and harware buffer (<link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link>) sizes.
+  </para>
+  <para>
+    Usually the simplest solution is the following:
+  </para>
+    <orderedlist>
+      <listitem>
+        <para>Set <link linkend="ksmps"><citetitle>ksmps</citetitle></link> to a value with a good tradeoff between quality and performance, without adjusting <link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link> at all.</para>
+      </listitem>
+      <listitem>
+        <para>Set <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> to a negative power of two of this value.</para>
+        <para>
+          To get the optimal values, start with something you think is going to be too low, ie -1, and then continue "upwards", -2, -4 and so on, until you stop getting x-runs (glitches). The real value of <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> will be the absolute value of <emphasis>-b * ksmps</emphasis>.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Reduce the hardware buffer (<link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link>). Bring it down from the default (1024 on Linux, 4096 on Mac OS X, 16384 on Windows), halving it each time, until you start to get x-runs (glitches) again. Then take it back up again until performance is continuous.
+        </para>
+      </listitem>
+    </orderedlist>
+    <para>
+      This process assumes you have a 16-bit soundcard. If you have a 24-bit
+      soundcard, then
+      <link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link>
+      should be 3/2, or 3 times
+      <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link>,
+      rather than 2 or 4 times. Csound works with 32-bit floats, or 64-bit
+      doubles whereas most soundcards are 16 or 24-bit integer.
+      <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> is
+      the internal buffer, so it's dealing with the 32 or 64-bit side of things,
+      whereas <link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link>
+      is the hardware buffer, so it's dealing with the 16 or 24-bit side. The
+      csound default for floats is <emphasis>-B = 4 * -b</emphasis>. This is a
+      sane value for a 16 bit card. You can usually get away with
+      <emphasis>-B = 2 * -b</emphasis>, but this is the absolute minimum. For
+      example, if you set <emphasis>-b1024 -B2048</emphasis>, csound will tell
+      you that:
+      <screen>audio buffered in 1024 sample-frame blocks
+      writing 4096-byte blocks to dac</screen>
+    </para>
+    <para>
+      4096 bytes is 32768 bits. 32768/32 = 1024, our sample-frame size, 1024 * 32/16 = 2048, our buffer size. Were we to reduce the value of <link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link>, we would need to reduce the value of <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> by a corresponding amount in order to continue to write 16-bit integers to dac. The minimum size of <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> is <emphasis>(-B * bitrate)/32</emphasis>. That is to say that the minimum ratio of <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> to <link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link> should be:
+      <itemizedlist>
+        <listitem>
+          <simpara>16-bit: 1:2</simpara>
+        </listitem>
+        <listitem>
+          <simpara>24-bit: 2:3</simpara>
+        </listitem>
+        <listitem>
+          <simpara>32-bit: 1:1</simpara>
+        </listitem>
+      </itemizedlist>
+    </para>
+    <para>
+      While there is no theoretical maximum ratio, it makes no sense to have a very high ratio here, as the software buffer has to fill the hardware buffer before returning. If the ratio is high, it will take a long time, defeating the purpose of setting a small value for <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link>.
+    </para>
+    <para>
+      The value of <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> is something that will need to be varied depending on the complexity of the instrument you're working with, but because it's intimately related to the value of ksmps, it's better to synchronise it with <link linkend="ksmps"><citetitle>ksmps</citetitle></link> and go from there. One way to do it is to decide how long the release on your envelopes might need to be at maximum (for desired effect), set the release on all envelopes to maximum, give yourself a generous value for <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link>,  and then play. If it breaks up, double ksmps, repeat until smooth, then bring the value of <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> down as far as possible.
+    </para>
+    <para>
+      The value of <link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link> is primarily determined by operating system and soundcard. Figure out (using above method) how low you can go, and use that value (or one higher for safety). If you
+      have problems you'll know that it's probably because of an inappropriate value for ksmps, too low a value for <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link>, or denormals (see <link linkend="denorm"><citetitle>denorm</citetitle></link>).
+    </para>
+</section>
+
   </section>
 
   &oviewrealtimelinux;
   &oviewrealtimemac;
   &oviewrealtimewindows;
   &oviewrealtimejack;
- &oviewoptimizinglatency;
 
 </chapter>
 
