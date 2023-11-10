@@ -19,7 +19,13 @@
     To enable Real-time MIDI on Windows, you can use the <link linkend="FlagsCatMinusUpperM"><citetitle>-M</citetitle></link> flag for MIDI input and the <link linkend="FlagsCatMinusUpperM"><citetitle>-Q</citetitle></link> flag for MIDI output. You might need to specify the device number after the flag (e.g. -M2), and again, you can find the available devices by giving an out of range number.
   </para>
   <para>
-    Csound will use PortMidi as the default MIDI module, but there's also a native winmme module, which can be activated with the flag:
+    Csound will use PortMidi as the default MIDI module. With PortMIDI, DEVICE is either a number for single port input, 'a' for listening to all input ports, or 'm' for mapping ports to MIDI channels above 16. In this case, device 0 uses 1-16, device 1 uses 17-32, ... device N uses (N+1)*channel. The options 'a' and 'm' are also convenient when you don't have devices as they will not generate an error. 
+  </para>
+    <screen>
+          -+rtmidi=PortMIDI -Ma -Q 1</screen>
+
+  <para>
+ There's also a native winmme module, which can be activated with the flag:
   </para>
   <literallayout>
     -+rtmidi=winmme

@@ -1,6 +1,6 @@
 <CsoundSynthesizer>
 <CsOptions>
-;-+rtaudio=JACK -o dac:system:playback_ 
+-n
 </CsOptions>
 <CsInstruments>
 sr  = 48000
@@ -11,7 +11,6 @@ nchnls  = 2
 ; by Menno Knevel - 2023
 
 JackoInit   "default", "csound6"                                        ; Csound as a Jack client
-JackoOn                                                                 ; activate the Jacko system
 
 instr 1	; position & start external DAW
 JackoTransport  3, 10                                                   ; set playbackhead of DAW to zero in 10 seconds                                                    

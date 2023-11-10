@@ -17,7 +17,6 @@ nchnls 	   = 2
 
 JackoInit "default", "csound"
 JackoAudioInConnect "system:capture_1", "audioin"   ; create 1 Audio input & connect from soundcard
-JackoOn 
 
 instr 1     ; use Csound as an effect processor
 asig    JackoAudioIn "audioin"

@@ -1,6 +1,6 @@
 <CsoundSynthesizer>
 <CsOptions>
--+rtaudio=jack -o dac -+rtmidi=null -Ma; 
+-o dac -+rtmidi=null -Ma; 
 </CsOptions>
 <CsInstruments>
 
@@ -15,8 +15,6 @@ JackoInit   "default", "csound6"						; Csound as a Jack client
 JackoMidiInConnect "UM-3:midi/playback_2", "midiinEDIROL" 	                ; create 1 Midi in port 
 JackoMidiOutConnect "midioutMAUDIO", "M-Audio-Delta-1010:midi/capture_1"	; create 1 Midi output port
 JackoMidiOutConnect "midioutEDIROL", "UM-3:midi/capture_1"			; create 2nd Midi output port
-JackoOn
-
 
 instr 1	; get notes from score AND from the EDIROL Midi port "midiinEDIROL"
 

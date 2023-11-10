@@ -14,7 +14,6 @@ nchnls = 2
 
 JackoInit   "default", "csound6"		       	        ; Csound as a Jack client
 JackoMidiInConnect "UM-3:midi/playback_2", "midiinEDIROL" 	; create 1 Midi in port
-JackoOn
 
 instr 1	; get notes to the EDIROL Midi port	
 ifreq   cpsmidi
