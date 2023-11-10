@@ -17,7 +17,6 @@ nchnls 	   = 2
 
 JackoInit "default", "csound"
 JackoAudioOutConnect  "audioout", "system:playback_4"   ; create 1 Audio output & connect to soundcard 
-JackoOn 
 
 instr 1     
 asig    vco2 .2, 100

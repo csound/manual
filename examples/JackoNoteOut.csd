@@ -13,7 +13,6 @@ nchnls  = 2
 JackoInit   "default", "csound6"						; Csound as a Jack client
 JackoMidiOutConnect "midioutMAUDIO", "M-Audio-Delta-1010:midi/capture_1"	; create 1 Midi port
 JackoMidiOutConnect "midioutEDIROL", "UM-3:midi/capture_1"			; create 2nd Midi port
-JackoOn
 
 	instr 1	; send notes to the M-Audio Midi port	
 

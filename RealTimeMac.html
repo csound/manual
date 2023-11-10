@@ -34,7 +34,7 @@
           </div>
         </div>
       </div>
-      <h3><a id="idm8364"></a>Real-time Audio</h3>
+      <h3><a id="idm8359"></a>Real-time Audio</h3>
       <p>
     OSX users can use either the  <span class="emphasis"><em>PortAudio</em></span>
     (default),<span class="emphasis"><em>auhal</em></span>(or coreaudio), or the
@@ -66,12 +66,17 @@
     which makes csound listen to the realtime audio inputs. You can
     again select the device by its number (or name), and check for available devices using an out of range number. Note that for input you use 'adc' instead of 'dac'. Make sure you have the appropriate input selected in your soundcard's control panel.
   </p>
-      <h3><a id="idm8383"></a>Real-time MIDI</h3>
+      <h3><a id="idm8378"></a>Real-time MIDI</h3>
       <p>
     To enable Real-time MIDI on OSX, you can use the <a class="link" href="CommandFlagsCategory.html#FlagsCatMinusUpperM"><em class="citetitle">-M</em></a> flag for MIDI input and the <a class="link" href="CommandFlagsCategory.html#FlagsCatMinusUpperQ"><em class="citetitle">-Q</em></a> flag for MIDI output. You might need to specify the device number after the flag (e.g. -M2), and again, you can find the available devices by giving an out of range number.
   </p>
       <p>
-    Csound will use PortMidi as the default MIDI module, but there's also a native coremidi module, which can be activated with the flag:
+    Csound will use PortMidi as the default MIDI module. With PortMIDI, DEVICE is either a number for single port input, 'a' for listening to all input ports, or 'm' for mapping ports to MIDI channels above 16. In this case, device 0 uses 1-16, device 1 uses 17-32, ... device N uses (N+1)*channel. The options 'a' and 'm' are also convenient when you don't have devices as they will not generate an error. 
+  </p>
+      <pre class="screen">
+          -+rtmidi=PortMIDI -Ma -Q 1</pre>
+      <p>
+There's also a native coremidi module, which can be activated with the flag:
   </p>
       <div class="literallayout">
         <p><br />
