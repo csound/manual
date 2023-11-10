@@ -14,7 +14,6 @@ nchnls  = 2
 
 JackoInit   "default", "csound6"                        ; Csound as a Jack client
 JackoMidiOutConnect "midioutMAUDIO", "M-Audio-Delta-1010:midi/capture_1"
-JackoOn                                                 ; turn Jacko system on
 
 instr 1	
 

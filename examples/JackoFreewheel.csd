@@ -25,7 +25,6 @@ JackoAudioOutConnect "rightout", "system:playback_2"
 JackoInfo
 
 JackoFreewheel	1    ; Turning freewheeling on seems automatically to turn system playback off. This is good!
-JackoOn
 
 alwayson		"jackin"
 
