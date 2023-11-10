@@ -10,15 +10,15 @@
     similar but fundamentally different from that provided by JACK.
   </para>
     
-  <bridgehead>Scheduling</bridgehead>
-    <para>If you are able to run Csound as the root user, using the "--sched"
+  <note>If you are able to run Csound as the root user, using the "--sched"
       flag will dramatically improve realtime performance, when using ALSA,
       however you may hang your system if you do something stupid. DO NOT
       use "--sched" if you are using JACK for audio output. JACK controls
       scheduling for the audio applications connected to it, and also tries
       to run at the highest possible priority. If the "--sched" flag is
       used, Csound and JACK will be competing rather than cooperating,
-      resulting in extremely poor performance. </para>
+      resulting in extremely poor performance.   
+    </note>
   
   <bridgehead>Using ALSA</bridgehead>
   <para>
@@ -27,6 +27,7 @@
      flag. Using <link linkend="IndexCatMinusSched"><citetitle>--sched</citetitle></link> requires that Csound be run as the root user, which may be impossible or undesirable in some
     circumstances.
   </para>
+
   <para>
     The ALSA plugins require the "name" of a "card" and a "device". Unless
     you have named your "cards" in ~/.asoundrc (or /etc/asound.conf), the
@@ -196,18 +197,13 @@ pcm.!default {
   
 
   <bridgehead>MIDI</bridgehead>
-    <para>2 Midi drivers are available:
-<itemizedlist>
-    <listitem>
-       <simpara>Raw Midi.</simpara>
-    </listitem>
-</itemizedlist>
-<itemizedlist>
-    <listitem>
-       <simpara>Alsa Sequencer (since version 5.18).</simpara>
-    </listitem>
-</itemizedlist>
+    <para>3 Midi drivers are available: PortMidi, Raw Midi and Alsa Sequencer (since version 5.18).
     </para>
+    <para>Csound will use PortMidi as the default MIDI module. With PortMIDI, DEVICE is either a number for single port input, 'a' for listening to all input ports, or 'm' for mapping ports to MIDI channels above 16. In this case, device 0 uses 1-16, device 1 uses 17-32, ... device N uses (N+1)*channel. The options 'a' and 'm' are also convenient when you don't have devices as they will not generate an error.
+    </para>
+    <screen>
+          -+rtmidi=PortMIDI -Ma -Q 1</screen>
+
   <bridgehead>MIDI Input (Raw Midi driver)</bridgehead>
     <para>In order to enable your orchestra to receive MIDI input you can use VirMIDI or MIDIThru, whichever you prefer. Setting up these
       virtual MIDI ports is a topic that has been covered extensively
