@@ -25,7 +25,7 @@ out asig,asig
 
 </CsInstruments>
 <CsScore>
-f1  0 262144   -1 "beats.wav" 0 4 0
+f1  0 262144   -1 "drumsMlp.wav" 0 4 0
 f2  0 262144   2  0
 f3  0 1024  10 1
 

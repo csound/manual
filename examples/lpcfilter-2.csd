@@ -15,7 +15,7 @@ gifw ftgen 0,0,1024,20,2,1
 instr 1
 koff init 0
 kts = p4 // timescale
-a1 diskin "beats.wav",1,0,1
+a1 diskin "drumsMlp.wav",1,0,1
 a3 lpcfilter a1,koff,1,gifn,1024,ksmps,gifw
 koff += ksmps*kts
 if koff > ftlen(gifn) then
