@@ -1,0 +1,69 @@
+
+<refentry id="oversample">
+<indexterm id="IndexOversample"><primary>oversample</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Software Bus</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>oversample</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>oversample</refname>
+    <refpurpose>
+      Sets a local sampling rate based on an oversampling factor.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Sets the local ksmps value in an instrument or user-defined opcode block.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax</title>
+    <synopsis><command>oversample</command> ifactor[,imode] </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+    <para>
+      <emphasis>ifactor</emphasis> -- sets the oversampling factor. It
+      needs to be a positive integer > 1. A factor of 1 is a non-op,
+      zero or negative factors are illegal.
+    </para>
+    <para>
+      <emphasis>imode</emphasis> -- oversampling mode: if Secret
+      Rabbit Code is used, then 0 - best quality sync (default); 1 - medium
+      quality sync; 2 - fast sync; 3 - zero-order hold; and  4 - linear.
+    </para>
+    <para>
+      If <emphasis>iksmps</emphasis> is set to zero, the <emphasis>ksmps</emphasis> of the caller instrument or opcode is used (this is the default behavior).
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        Oversampling is not allowed with local ksmps. The opcode can
+        only be used in UDOs. Audio or control rate array arguments
+        are not allowed. Global variables or bus channels should not be used.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="endop"><citetitle>endop</citetitle></link>, 
+      <link linkend="opcode"><citetitle>opcode</citetitle></link>, 
+      <link linkend="xin"><citetitle>xin</citetitle></link>, 
+      <link linkend="xout"><citetitle>xout</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>Author: Victor Lazzarini</para>
+    <para>New in version 7.0</para>
+  </refsect1>
+</refentry>
