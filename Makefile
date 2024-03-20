@@ -715,7 +715,7 @@ html: $(XSL_HTML) manual.xml $(SRCS) Makefile
 	@ echo "Remember to use the html-dist target for distribution!"
 
 html-dist:
-	python3 quickref.py
+	python quickref.py
 	$(MAKE) html
 	#python makeframes.py
 
