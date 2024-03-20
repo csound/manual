@@ -1,15 +1,15 @@
 
-<refentry id="oversample">
-<indexterm id="IndexOversample"><primary>oversample</primary></indexterm>
+<refentry id="undersample">
+<indexterm id="IndexUndersample"><primary>undersample</primary></indexterm>
   <refentryinfo><title>Signal I/O:Software Bus</title></refentryinfo>
   <refmeta>
-    <refentrytitle>oversample</refentrytitle>
+    <refentrytitle>undersample</refentrytitle>
   </refmeta>
 
   <refnamediv>
-    <refname>oversample</refname>
+    <refname>undersample</refname>
     <refpurpose>
-      Sets a higher local sampling rate based on an oversampling factor.
+      Sets a lower local sampling rate based on an undersampling factor.
     </refpurpose>
   </refnamediv>
 
@@ -22,21 +22,20 @@
 
   <refsect1>
     <title>Syntax</title>
-    <synopsis><command>oversample</command> ifactor[,imode] </synopsis>
+    <synopsis><command>undersample</command> ifactor[,imode] </synopsis>
   </refsect1>
 
   <refsect1>
     <title>Initialization</title>
     <para>
-      <emphasis>ifactor</emphasis> -- sets the oversampling factor. It
+      <emphasis>ifactor</emphasis> -- sets the undersampling factor. It
       needs to be a positive integer > 1. A factor of 1 is a non-op,
       zero or negative factors are illegal. The local sampling rate is
-      set as ifactor * sr. The value of the sr variable is then
-      changed locally. Local kr is also changed accordingly, local
-      ksmps remains unchanged.
+      set as (1/ifactor) * sr. The value of the sr variable is then
+      changed locally. Local ksmps is also changed accordingly.
     </para>
     <para>
-      <emphasis>imode</emphasis> -- oversampling mode: if Secret
+      <emphasis>imode</emphasis> -- resampling mode: if Secret
       Rabbit Code is used, then 0 - best quality sync (default); 1 - medium
       quality sync; 2 - fast sync; 3 - zero-order hold; and  4 - linear.
     </para>
@@ -45,9 +44,9 @@
       <title>Note</title>
       <para>
         Calling this opcode in the same UDO as setksmps is not
-        allowed. The opcode can only be used in UDOs. Audio or control rate array arguments
-        are not allowed. Global variables or bus channels should not
-        be used. 
+        allowed.
+        The opcode can only be used in UDOs. Audio or control rate array arguments
+        are not allowed. Global variables or bus channels should not be used.
       </para>
     </note>
   </refsect1>
