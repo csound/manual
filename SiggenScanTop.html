@@ -74,7 +74,10 @@
     The Csound implementation adds support for a scanning path or matrix.  Essentially, this offers the possibility of reconnecting the masses in different orders, causing the signal to propagate quite differently. They do not necessarily need to be connected to their direct neighbors. Essentially, the matrix has the effect of <span class="quote">“<span class="quote">molding</span>”</span> this surface into a radically different shape.
   </p>
       <p>
-    To produce the matrices, the table format is straightforward. For example, for 4 masses we have the following grid describing the possible connections:
+    Two different matrix formats are available: a binary matrix and a text matrix. It is good practise to give the binary matrix name the extension .matrxB and the text matrix .matrxT. To produce the matrices, the table formats are straightforward. 
+  </p>
+      <p>
+As an example for the binary matrix, for 4 masses we have the following grid describing the possible connections:
   </p>
       <div class="informaltable">
         <table class="informaltable" border="1">
@@ -186,10 +189,29 @@
       <p>
   </p>
       <p>
-    This matrix example is very small and simple. In practice, most scanned synthesis instruments will use many more masses than four, so their matrices will be much larger and more complex. See the example in the <a class="link" href="scans.html" title="scans"><em class="citetitle">scans</em></a> documentation.
+    As an example of a text matrix (see <a class="link" href="GEN44.html" title="GEN44"><em class="citetitle">GEN44</em></a>), for 4 masses we have the following grid describing the possible connections:
+  </p>
+      <div class="informalexample">
+        <pre class="programlisting">
+&lt;MATRIX size=4&gt;
+0   0   4 
+1   1   2 
+2   2   4 
+3   3   3 
+&lt;/MATRIX&gt;
+        </pre>
+      </div>
+      <p>
+      Here, the first two values in the row denote a connection from the first to the second.
+      The third number is a weight; a weight of 2 is like having two links so more
+      information gets distributed, while a zero weight means no link. If this third 
+      number is omitted it is taken as value 1. 
   </p>
       <p>
-    Please note that the generated dynamic wavetables are very unstable. Certain values for masses, centering, and damping can cause the system to <span class="quote">“<span class="quote">blow up</span>”</span> and the most interesting sounds to emerge from your loudspeakers!
+    Both these matrix examples are very small and simple. In practice, most scanned synthesis instruments will use many more masses than four, so their matrices will be much larger and more complex. See the example in the <a class="link" href="scans.html" title="scans"><em class="citetitle">scans</em></a> documentation.
+  </p>
+      <p>
+    Please note that the generated dynamic wavetables can be very unstable. Certain values for masses, centering, and damping can cause the system to <span class="quote">“<span class="quote">blow up</span>”</span> and the most interesting sounds to emerge from your loudspeakers!
   </p>
       <p>
     A tutorial, examples, and other information on scanned synthesis is available from the Scanned Synthesis page at <a class="ulink" href="http://www.csounds.com/scanned/toot/index.html" target="_top"><em class="citetitle">cSounds.com</em></a>.
