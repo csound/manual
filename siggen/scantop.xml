@@ -63,9 +63,12 @@
   </para>
 
   <para>
-    To produce the matrices, the table format is straightforward. For example, for 4 masses we have the following grid describing the possible connections:
+    Two different matrix formats are available: a binary matrix and a text matrix. It is good practise to give the binary matrix name the extension .matrxB and the text matrix .matrxT. To produce the matrices, the table formats are straightforward. 
   </para>
 
+  <para>
+As an example for the binary matrix, for 4 masses we have the following grid describing the possible connections:
+  </para>
   <informaltable frame="all" colsep="0">
     <tgroup cols="5">
       <tbody>
@@ -170,11 +173,31 @@
   </para>
 
   <para>
-    This matrix example is very small and simple. In practice, most scanned synthesis instruments will use many more masses than four, so their matrices will be much larger and more complex. See the example in the <link linkend="scans"><citetitle>scans</citetitle></link> documentation.
+    As an example of a text matrix (see <link linkend="GEN44"><citetitle>GEN44</citetitle></link>), for 4 masses we have the following grid describing the possible connections:
+  </para>
+      <informalexample>
+        <programlisting>
+&lt;MATRIX size=4&gt;
+0   0   4 
+1   1   2 
+2   2   4 
+3   3   3 
+&lt;/MATRIX&gt;
+        </programlisting>
+      </informalexample>
+  <para>
+      Here, the first two values in the row denote a connection from the first to the second.
+      The third number is a weight; a weight of 2 is like having two links so more
+      information gets distributed, while a zero weight means no link. If this third 
+      number is omitted it is taken as value 1. 
   </para>
 
   <para>
-    Please note that the generated dynamic wavetables are very unstable. Certain values for masses, centering, and damping can cause the system to <quote>blow up</quote> and the most interesting sounds to emerge from your loudspeakers!
+    Both these matrix examples are very small and simple. In practice, most scanned synthesis instruments will use many more masses than four, so their matrices will be much larger and more complex. See the example in the <link linkend="scans"><citetitle>scans</citetitle></link> documentation.
+  </para>
+
+  <para>
+    Please note that the generated dynamic wavetables can be very unstable. Certain values for masses, centering, and damping can cause the system to <quote>blow up</quote> and the most interesting sounds to emerge from your loudspeakers!
   </para>
 
   <para>
