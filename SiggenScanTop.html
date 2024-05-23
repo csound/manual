@@ -53,13 +53,13 @@
         <img src="images/ScannedFinite.png" />
       </div>
       <p>
-    All parameters — mass, damping, earth-spring strength, and string tension can vary along the "string." The model is manipulated by pushing or hitting different masses (the individual samples in a very short wavetable) and by manipulating parameters. What is unique here is that the wavetable itself is a dynamic model.
+    All parameters — mass (in the drawing above: M), damping (D), earth-spring strength (C), and string tension (T) can vary along the "string." The model is manipulated by pushing or hitting different masses (the individual samples in a very short wavetable) and by manipulating parameters. What is unique here is that the wavetable itself is a dynamic model.
   </p>
       <div class="mediaobject">
         <img src="images/ScannedHammers.png" />
       </div>
       <p>
-    You are manipulating the mechanical model at haptic rates 0-10 Hz, and independent to this, you are scanning out the wavetable at the pitch frequency. Although, the table has its own dynamics, there are no discontinuities because the model is implemented as a circular string, so you end up with a 128 point looping oscillator with a constantly evolving loop. It is hard to believe, but true, that what results is a short sample that is animated and harmonically rich because of the complex interactive nature of the elements in the underlying system — the mechanics of the model.
+    You are manipulating the mechanical model at haptic rates 0-10 Hz, and independent to this, you are scanning out the wavetable at the pitch frequency. Although, the table has its own dynamics, there are no discontinuities because the model is implemented as a circular string, so you end up with a looping oscillator (for example of 128 points) with a constantly evolving loop. It is hard to believe, but true, that what results is a short sample that is animated and harmonically rich because of the complex interactive nature of the elements in the underlying system — the mechanics of the model.
   </p>
       <div class="mediaobject">
         <img src="images/ScannedCircular.png" />
@@ -68,13 +68,16 @@
     In fact, even enveloping can come directly from the model. It turns out that the specific setting of the centering springs can affect the damping of the system — low values allowing the rich timbre to ring, high values causing the tone to die away quickly.
   </p>
       <p>
-    The opcode <a class="link" href="scanu.html" title="scanu"><em class="citetitle">scanu</em></a> defines the mass/spring network and sets it in motion. The opcode <a class="link" href="scans.html" title="scans"><em class="citetitle">scans</em></a> follows a predefined path (trajectory) around the network and outputs the detected waveform. Several <span class="emphasis"><em>scans</em></span> instances may follow different paths around the same network. These are highly efficient mechanical modelling algorithms for both synthesis and sonic animation via algorithmic processing. They should run in real-time. Thus, the output is useful either directly as audio, or as controller values for other parameters.
+    The opcodes <a class="link" href="scanu.html" title="scanu"><em class="citetitle">scanu</em></a> / <a class="link" href="scanu2.html" title="scanu2"><em class="citetitle">scanu2</em></a> define the mass/spring network and sets it in motion. The opcode <a class="link" href="scans.html" title="scans"><em class="citetitle">scans</em></a> follows a predefined path (trajectory) around the network and outputs the detected waveform. Several <span class="emphasis"><em>scans</em></span> instances may follow different paths around the same network. These are highly efficient mechanical modelling algorithms for both synthesis and sonic animation via algorithmic processing. They should run in real-time. Thus, the output is useful either directly as audio, or as controller values for other parameters.
   </p>
       <p>
     The Csound implementation adds support for a scanning path or matrix.  Essentially, this offers the possibility of reconnecting the masses in different orders, causing the signal to propagate quite differently. They do not necessarily need to be connected to their direct neighbors. Essentially, the matrix has the effect of <span class="quote">“<span class="quote">molding</span>”</span> this surface into a radically different shape.
   </p>
       <p>
-    To produce the matrices, the table format is straightforward. For example, for 4 masses we have the following grid describing the possible connections:
+    Two different matrix formats are available: a binary matrix and a text matrix. It is good practise to give the binary matrix name the extension .matrxB and the text matrix .matrxT. To produce the matrices, the table formats are straightforward. 
+  </p>
+      <p>
+As an example for the binary matrix, for 4 masses we have the following grid describing the possible connections:
   </p>
       <div class="informaltable">
         <table class="informaltable" border="1">
@@ -186,13 +189,32 @@
       <p>
   </p>
       <p>
-    This matrix example is very small and simple. In practice, most scanned synthesis instruments will use many more masses than four, so their matrices will be much larger and more complex. See the example in the <a class="link" href="scans.html" title="scans"><em class="citetitle">scans</em></a> documentation.
+    As an example of a text matrix (see <a class="link" href="GEN44.html" title="GEN44"><em class="citetitle">GEN44</em></a>), for 4 masses we have the following grid describing the possible connections:
+  </p>
+      <div class="informalexample">
+        <pre class="programlisting">
+&lt;MATRIX size=4&gt;
+0   0   4 
+1   1   2 
+2   2   4 
+3   3   3 
+&lt;/MATRIX&gt;
+        </pre>
+      </div>
+      <p>
+      Here, the first two values in the row denote a connection from the first to the second.
+      The third number is a weight; a weight of 2 is like having two links so more
+      information gets distributed, while a zero weight means no link. If this third 
+      number is omitted it is taken as value 1. 
   </p>
       <p>
-    Please note that the generated dynamic wavetables are very unstable. Certain values for masses, centering, and damping can cause the system to <span class="quote">“<span class="quote">blow up</span>”</span> and the most interesting sounds to emerge from your loudspeakers!
+    Both these matrix examples are very small and simple. In practice, most scanned synthesis instruments will use many more masses than four, so their matrices will be much larger and more complex. See the example in the <a class="link" href="scans.html" title="scans"><em class="citetitle">scans</em></a> documentation.
   </p>
       <p>
-    The supplement to this manual contains a tutorial on scanned synthesis. The tutorial, examples, and other information on scanned synthesis is available from the Scanned Synthesis page at <a class="ulink" href="http://www.csounds.com/scanned/toot/index.html" target="_top"><em class="citetitle">cSounds.com</em></a>.
+    Please note that the generated dynamic wavetables can be very unstable. Certain values for masses, centering, and damping can cause the system to <span class="quote">“<span class="quote">blow up</span>”</span> and the most interesting sounds to emerge from your loudspeakers!
+  </p>
+      <p>
+    A tutorial, examples, and other information on scanned synthesis is available from the Scanned Synthesis page at <a class="ulink" href="http://www.csounds.com/scanned/toot/index.html" target="_top"><em class="citetitle">cSounds.com</em></a>.
   </p>
       <p>
     Opcodes that implement scanned synthesis are:
