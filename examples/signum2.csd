@@ -4,32 +4,36 @@
 -odac     ;;;realtime audio out
 ;-iadc    ;;;uncomment -iadc if realtime audio input is needed too
 ; For Non-realtime ouput leave only the line below:
-; -o signum.wav -W ;;; for file output any platform
+; -o signum2.wav -W ;;; for file output any platform
 </CsOptions>
 <CsInstruments>
 
-; by tgrey - 2020
-
 sr     =    44100
+kr     =    4410
 ksmps  =    10
 nchnls =    2
 0dbfs  =    1
 
+gaArr[]  init  2
+
 instr 1
-	iinput = p4
-	isignum = signum(iinput)
-	print iinput
-	print isignum
+kEnv transeg    1, p3, -3, 0
+
+a_pi = 4 * taninv(1.0);
+a1   phasor 440;
+a2   = sin(2 * a_pi * 1/ksmps * a1);
+a3   dcblock2 a2
+asig = signum(a3)
+
+gaArr[0] = a2   * 0.6 * kEnv 
+gaArr[1] = asig * 0.6 * kEnv 
+
+outs  gaArr[0], gaArr[1]
 endin
 
 </CsInstruments>
 <CsScore>
-i1 0 .1 100
-i1 + . 50
-i1 + . .25
-i1 + . 0
-i1 + . -.25
-i1 + . -50
-i1 + . -100
+i 1 0 3
+
 </CsScore>
 </CsoundSynthesizer>
