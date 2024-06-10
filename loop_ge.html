@@ -39,20 +39,20 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm183554"></a>
+        <a id="idm183871"></a>
         <h2>Description</h2>
         <p>
       Construction of looping operations.
    </p>
       </div>
       <div class="refsect1">
-        <a id="idm183557"></a>
+        <a id="idm183874"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>loop_ge</strong></span>  indx, idecr, imin, label</pre>
         <pre class="synopsis"><span class="command"><strong>loop_ge</strong></span>  kndx, kdecr, kmin, label</pre>
       </div>
       <div class="refsect1">
-        <a id="idm183563"></a>
+        <a id="idm183880"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>indx</em></span> -- i-rate variable to count loop.
@@ -65,7 +65,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm183571"></a>
+        <a id="idm183888"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>kndx</em></span> -- k-rate variable to count loop.
@@ -91,9 +91,99 @@
          <span class="opc">if</span> (kndx <span class="op">&gt;=</span> kmin) <span class="opc">kgoto</span> label</pre>
         <p>
     </p>
+        <p> </p>
+        <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+          <table border="0" summary="Note">
+            <tr>
+              <td rowspan="2" align="center" valign="top" width="25">
+                <img alt="[Note]" src="images/note.png" />
+              </td>
+              <th align="left">Note</th>
+            </tr>
+            <tr>
+              <td align="left" valign="top">  Adviced is to use the 'modern' while or until opcodes for looping constructions.</td>
+            </tr>
+          </table>
+        </div>
+        <p>
+    </p>
       </div>
       <div class="refsect1">
-        <a id="idm183593"></a>
+        <a id="idm183912"></a>
+        <h2>Examples</h2>
+        <p>
+      Here is a group example for all loop_xx opcodes, comparing the different loop_ opcodes. It uses the file <a class="ulink" href="examples/loop_-group.csd" target="_top"><em class="citetitle">loop_-group.csd</em></a>.
+      </p>
+        <div class="example">
+          <a id="idm183917"></a>
+          <p class="title">
+            <strong>Example 544. Group example of the loop_xx opcodes.</strong>
+          </p>
+          <div class="example-contents">
+            <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
+            <div class="refsect1">
+              <a id="idm183924"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+<span class="nt">&lt;CsOptions&gt;</span>
+-n
+<span class="nt">&lt;/CsOptions&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
+</span><span class="c1">;example by joachim heintz</span><span class="w">
+</span><span class="vg">sr</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+
+  </span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w"> </span><span class="c1">;loop_lt: counts from 1 upwards and checks if &lt; 10</span><span class="w">
+</span>i<span class="n">count</span><span class="w">    </span><span class="o">=</span><span class="w">         </span><span class="mi">1</span><span class="w">
+</span><span class="nl">loop</span><span class="p">:</span><span class="w">
+          </span><span class="nb">print</span><span class="w">     </span>i<span class="n">count</span><span class="w">
+          </span><span class="kp">loop_lt</span><span class="w">   </span>i<span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="nl">loop</span><span class="w">
+          </span><span class="nb">prints</span><span class="w">    </span><span class="s">"Instr 1 terminated!</span><span class="se">%n</span><span class="s">"</span><span class="w">
+  </span><span class="kd">endin</span><span class="w">
+
+  </span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w"> </span><span class="c1">;loop_le: counts from 1 upwards and checks if &lt;= 10</span><span class="w">
+</span>i<span class="n">count</span><span class="w">    </span><span class="o">=</span><span class="w">         </span><span class="mi">1</span><span class="w">
+</span><span class="nl">loop</span><span class="p">:</span><span class="w">
+          </span><span class="nb">print</span><span class="w">     </span>i<span class="n">count</span><span class="w">
+          </span><span class="kp">loop_le</span><span class="w">   </span>i<span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="nl">loop</span><span class="w">
+          </span><span class="nb">prints</span><span class="w">    </span><span class="s">"Instr 2 terminated!</span><span class="se">%n</span><span class="s">"</span><span class="w">
+  </span><span class="kd">endin</span><span class="w">
+
+  </span><span class="kd">instr</span><span class="w"> </span><span class="nf">3</span><span class="w"> </span><span class="c1">;loop_gt: counts from 10 downwards and checks if &gt; 0</span><span class="w">
+</span>i<span class="n">count</span><span class="w">    </span><span class="o">=</span><span class="w">         </span><span class="mi">10</span><span class="w">
+</span><span class="nl">loop</span><span class="p">:</span><span class="w">
+          </span><span class="nb">print</span><span class="w">     </span>i<span class="n">count</span><span class="w">
+          </span><span class="kp">loop_gt</span><span class="w">   </span>i<span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">loop</span><span class="w">
+          </span><span class="nb">prints</span><span class="w">    </span><span class="s">"Instr 3 terminated!</span><span class="se">%n</span><span class="s">"</span><span class="w">
+  </span><span class="kd">endin</span><span class="w">
+
+  </span><span class="kd">instr</span><span class="w"> </span><span class="nf">4</span><span class="w"> </span><span class="c1">;loop_ge: counts from 10 downwards and checks if &gt;= 0</span><span class="w">
+</span>i<span class="n">count</span><span class="w">    </span><span class="o">=</span><span class="w">         </span><span class="mi">10</span><span class="w">
+</span><span class="nl">loop</span><span class="p">:</span><span class="w">
+          </span><span class="nb">print</span><span class="w">     </span>i<span class="n">count</span><span class="w">
+          </span><span class="kp">loop_ge</span><span class="w">   </span>i<span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">loop</span><span class="w">
+          </span><span class="nb">prints</span><span class="w">    </span><span class="s">"Instr 4 terminated!</span><span class="se">%n</span><span class="s">"</span><span class="w">
+  </span><span class="kd">endin</span><span class="w">
+
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
+    </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm184154"></a>
         <h2>See also</h2>
         <p>
           <a class="link" href="ControlPgmctl.html" title="Program Flow Control">
@@ -104,7 +194,7 @@
  and in the Floss Manuals: <a class="ulink" href="https://flossmanual.csound.com/csound-language/control-structures" target="_top"><em class="citetitle"> https://flossmanual.csound.com/csound-language/control-structures</em></a></p>
       </div>
       <div class="refsect1">
-        <a id="idm183603"></a>
+        <a id="idm184164"></a>
         <h2>Credits</h2>
         <p>Istvan Varga. 2006</p>
         <p>New in Csound version 5.01</p>
