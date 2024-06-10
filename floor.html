@@ -134,16 +134,103 @@ instr 1:  inumber = 9.000  idiv = 9.000  ifl = 1.000
 instr 1:  inumber = 9.000  idiv = 10.000  ifl = 0.000
       </pre>
         <p>
-	Here is an example for the rounding-group, comparing the different rounding opcodes. It uses the file <a class="ulink" href="examples/rounding-group.csd" target="_top"><em class="citetitle">rounding-group.csd</em></a>.
-      </p>
+		     </p>
+        <p>
+      Here is another example of the floor opcode. It uses the file <a class="ulink" href="examples/floor2.csd" target="_top"><em class="citetitle">floor2.csd</em></a>.
+            </p>
         <div class="example">
-          <a id="idm107162"></a>
+          <a id="idm107163"></a>
           <p class="title">
-            <strong>Example 327. Example of the rounding group.</strong>
+            <strong>Example 327. </strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
               <a id="idm107164"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+<span class="nt">&lt;CsOptions&gt;</span>
+<span class="c1">; Select audio/midi flags here according to platform</span>
+-odac     <span class="c1">;;;RT audio out</span>
+<span class="c1">;-iadc    ;;;uncomment -iadc if RT audio input is needed too</span>
+<span class="c1">; For Non-realtime ouput leave only the line below:</span>
+<span class="c1">; -o floor.wav -W ;;; for file output any platform</span>
+
+<span class="c1">; By Stefano Cucchi 2024</span>
+<span class="nt">&lt;/CsOptions&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
+
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+
+</span>gk<span class="n">random</span><span class="w"> </span><span class="nb">randomh</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">  </span><span class="mi">3</span><span class="w"> </span><span class="c1">; generate some random numbers</span><span class="w">
+</span>gk<span class="n">randomFLOOR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">floor</span><span class="w"> </span><span class="p">(</span>gk<span class="n">random</span><span class="p">)</span><span class="w">   </span><span class="c1">; take the integer part</span><span class="w">
+</span>gk<span class="n">randomFRAC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">frac</span><span class="w"> </span><span class="p">(</span>gk<span class="n">random</span><span class="p">)</span><span class="w">     </span><span class="c1">; take the fractional part</span><span class="w">
+
+</span><span class="kd">endin</span><span class="w">
+
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">10</span><span class="w">
+
+  </span>k<span class="n">trigger</span><span class="w"> </span><span class="nb">metro</span><span class="w"> </span><span class="mi">4</span><span class="w">
+  </span>k<span class="n">mintim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span>k<span class="n">maxnum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span>k<span class="n">insnum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="w">
+  </span>k<span class="n">when</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span>k<span class="n">dur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>k<span class="n">trigger</span><span class="o">*</span><span class="mf">0.25</span><span class="w">
+  </span><span class="nb">schedkwhen</span><span class="w"> </span>k<span class="n">trigger</span><span class="p">,</span><span class="w"> </span>k<span class="n">mintim</span><span class="p">,</span><span class="w"> </span>k<span class="n">maxnum</span><span class="p">,</span><span class="w"> </span>k<span class="n">insnum</span><span class="p">,</span><span class="w"> </span>k<span class="n">when</span><span class="p">,</span><span class="w"> </span>k<span class="n">dur</span><span class="w">
+  
+</span><span class="kd">endin</span><span class="w">
+
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">20</span><span class="w">
+
+  </span>i<span class="n">randomFLOOR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">i</span><span class="p">(</span>gk<span class="n">randomFLOOR</span><span class="p">)</span><span class="w"> 
+  </span>i<span class="n">randomFRAC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">i</span><span class="p">(</span>gk<span class="n">randomFRAC</span><span class="p">)</span><span class="w">
+
+  </span><span class="c1">; Use the integer part to control the number of harmonics of every note</span><span class="w">
+  </span><span class="c1">; after converting (k) value to (i)</span><span class="w">
+  </span><span class="nb">prints</span><span class="w"> </span><span class="s">"generated value = </span><span class="si">%f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="nb">i</span><span class="p">(</span>gk<span class="n">random</span><span class="p">)</span><span class="w">
+  </span><span class="nb">prints</span><span class="w"> </span><span class="s">"--&gt; floor value = </span><span class="si">%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span>i<span class="n">randomFLOOR</span><span class="w">
+  </span>a<span class="n">1</span><span class="w"> </span><span class="nb">buzz</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span>i<span class="n">randomFLOOR</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> 
+                            
+  </span>k<span class="n">envelope</span><span class="w"> </span><span class="nb">linseg</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="o">*</span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="o">*</span><span class="mf">0.8</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="o">*</span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">
+
+  </span>a<span class="n">1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>a<span class="n">1</span><span class="o">*</span>k<span class="n">envelope</span><span class="w">
+
+  </span>a<span class="n">L</span><span class="p">,</span><span class="w"> </span>a<span class="n">R</span><span class="w"> </span><span class="nb">pan2</span><span class="w"> </span>a<span class="n">1</span><span class="p">,</span><span class="w"> </span>i<span class="n">randomFRAC</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="c1">; use the fractional part to control the pan position </span><span class="w">
+  </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">L</span><span class="p">,</span><span class="w"> </span>a<span class="n">R</span><span class="w">
+  
+</span><span class="kd">endin</span><span class="w">
+
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+
+</span><span class="nb">f</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">16384</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w">
+
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">10</span><span class="w"> 
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
+    </p>
+        <p>
+	Here is an example for the rounding-group, comparing the different rounding opcodes. It uses the file <a class="ulink" href="examples/rounding-group.csd" target="_top"><em class="citetitle">rounding-group.csd</em></a>.
+      </p>
+        <div class="example">
+          <a id="idm107479"></a>
+          <p class="title">
+            <strong>Example 328. Example of the rounding group.</strong>
+          </p>
+          <div class="example-contents">
+            <div class="refsect1">
+              <a id="idm107481"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -202,7 +289,7 @@ instr 1:  inumber = 9.000  idiv = 10.000  ifl = 0.000
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm107438"></a>
+        <a id="idm107755"></a>
         <h2>See also</h2>
         <p>
           <a class="link" href="MathMatfunc.html" title="Mathematical Functions">
@@ -211,7 +298,7 @@ instr 1:  inumber = 9.000  idiv = 10.000  ifl = 0.000
         </p>
       </div>
       <div class="refsect1">
-        <a id="idm107443"></a>
+        <a id="idm107760"></a>
         <h2>Credits</h2>
         <p>
       </p>
