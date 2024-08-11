@@ -1,7 +1,7 @@
 <CsoundSynthesizer>
 <CsOptions>
 ; Select audio/midi flags here according to platform
--odac  -idac ;;;realtime audio I/O
+-odac  -iadc ;;;realtime audio I/O
 ; For Non-realtime ouput leave only the line below:
 ; inq.wav -W ;;; for file output any platform
 </CsOptions>
