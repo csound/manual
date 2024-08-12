@@ -39,13 +39,13 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm226454"></a>
+        <a id="idm225680"></a>
         <h2>Defining opcodes</h2>
         <p>
       The <span class="emphasis"><em>opcode</em></span> and <span class="emphasis"><em>endop</em></span> statements allow defining a new opcode that can be used the same way as any of the built-in Csound opcodes. These opcode blocks are very similar to instruments (and are, in fact, implemented as special instruments), but cannot be called as a normal instrument e.g. with the <a class="link" href="i.html" title="i Statement (Instrument or Note Statement)"><em class="citetitle">i statements</em></a>.
     </p>
         <p>
-      A user-defined opcode block must precede the instrument (or other opcode) from which it is used. But it is possible to call the opcode from itself. This allows recursion of any depth that is limited only by available memory. Additionally, there is an experimental feature that allows running the opcode definition at a higher control rate than the <a class="link" href="kr.html" title="kr"><em class="citetitle">kr</em></a> value specified in the orchestra header.
+      A user-defined opcode block must precede the instrument (or other opcode) from which it is used. But it is possible to call the opcode from itself. This allows recursion of any depth that is limited only by available memory. 
     </p>
         <p>
       Similarly to instruments, the variables and labels of a user-defined opcode block are local and cannot be accessed from the caller instrument (and the opcode cannot access variables of the caller, either).
@@ -142,12 +142,12 @@
         </div>
       </div>
       <div class="refsect1">
-        <a id="idm226529"></a>
+        <a id="idm225753"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>opcode</strong></span> name, outtypes, intypes</pre>
       </div>
       <div class="refsect1">
-        <a id="idm226533"></a>
+        <a id="idm225757"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>name</em></span> -- name of the opcode. It may consist of any combination of letters, digits, and underscore but should not begin with a digit. If an opcode with the specified name already exists, it is redefined (a warning is printed in such cases). Some reserved words (like <span class="emphasis"><em>instr</em></span> and <span class="emphasis"><em>endin</em></span>) cannot be redefined.
@@ -260,9 +260,6 @@
         <p>
     </p>
         <p>
-      The maximum allowed number of input arguments is 256.
-    </p>
-        <p>
       <span class="emphasis"><em>outtypes</em></span> -- list of output types. The format is the same as in the case of <span class="emphasis"><em>intypes</em></span>.
     </p>
         <p>
@@ -331,99 +328,6 @@
       The maximum allowed number of output arguments is 256.
     </p>
         <p>
-      <span class="emphasis"><em>iksmps</em></span> (optional, default=0) -- sets the local
-      <span class="emphasis"><em>ksmps</em></span> value. Must be a positive integer, and also
-      the <span class="emphasis"><em>ksmps</em></span> of the
-      calling instrument or opcode must be an integer multiple of this value.
-      For example, if <span class="emphasis"><em>ksmps</em></span> is 10 in the instrument from which
-      the opcode was called, the allowed values for <span class="emphasis"><em>iksmps</em></span>
-      are 1, 2, 5, and 10.
-    </p>
-        <p>
-      If <span class="emphasis"><em>iksmps</em></span> is set to zero, the
-      <span class="emphasis"><em>ksmps</em></span> of the caller instrument or opcode is used
-      (this is the default behavior).
-    </p>
-        <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
-          <table border="0" summary="Note: Note">
-            <tr>
-              <td rowspan="2" align="center" valign="top" width="25">
-                <img alt="[Note]" src="images/note.png" />
-              </td>
-              <th align="left">Note</th>
-            </tr>
-            <tr>
-              <td align="left" valign="top">
-                <p>
-        The local <span class="emphasis"><em>ksmps</em></span> is implemented by splitting up
-        a control period into smaller sub-kperiods and temporarily modifying
-        internal Csound global variables. This also requires converting the
-        rate of k-rate input and output arguments (input variables receive
-        the same value in all sub-kperiods, while outputs are written only
-        in the last one).
-      </p>
-              </td>
-            </tr>
-          </table>
-        </div>
-        <div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
-          <table border="0" summary="Warning: Warning about local ksmps">
-            <tr>
-              <td rowspan="2" align="center" valign="top" width="25">
-                <img alt="[Warning]" src="images/warning.png" />
-              </td>
-              <th align="left">Warning about local <span class="emphasis"><em>ksmps</em></span></th>
-            </tr>
-            <tr>
-              <td align="left" valign="top">
-                <p>
-        When the local <span class="emphasis"><em>ksmps</em></span> is not the same as the
-        orchestra level <span class="emphasis"><em>ksmps</em></span> value (as specified in the
-        orchestra header), global a-rate operations must not be used in the
-        user-defined opcode block.
-      </p>
-                <p>
-        These include:
-
-        </p>
-                <div class="itemizedlist">
-                  <ul class="itemizedlist" style="list-style-type: disc; ">
-                    <li class="listitem">
-                      <p>any access to <span class="quote">“<span class="quote">ga</span>”</span> variables</p>
-                    </li>
-                    <li class="listitem">
-                      <p>a-rate zak opcodes (<a class="link" href="zar.html" title="zar"><em class="citetitle">zar</em></a>, <a class="link" href="zaw.html" title="zaw"><em class="citetitle">zaw</em></a>, etc.)</p>
-                    </li>
-                    <li class="listitem">
-                      <p><a class="link" href="tablera.html" title="tablera"><em class="citetitle">tablera</em></a> and <a class="link" href="tablewa.html" title="tablewa"><em class="citetitle">tablewa</em></a> (these two opcodes may in fact work, but caution is needed)</p>
-                    </li>
-                    <li class="listitem">
-                      <p>The <span class="emphasis"><em>in</em></span> and <span class="emphasis"><em>out</em></span> opcode family (these read from, and write to global a-rate buffers)</p>
-                    </li>
-                  </ul>
-                </div>
-                <p>
-      </p>
-                <p>
-        In general, the local <span class="emphasis"><em>ksmps</em></span> should be used with
-        care as it is an experimental feature, although it works correctly in
-        most cases.
-      </p>
-              </td>
-            </tr>
-          </table>
-        </div>
-        <p>
-      The <a class="link" href="setksmps.html" title="setksmps"><em class="citetitle">setksmps</em></a>
-      statement can be used to set the local <span class="emphasis"><em>ksmps</em></span> value
-      of the user-defined opcode block. It has one i-time parameter specifying
-      the new <span class="emphasis"><em>ksmps</em></span> value (which is left unchanged if zero
-      is used, see also the notes about <span class="emphasis"><em>iksmps</em></span> above).
-      <span class="emphasis"><em>setksmps</em></span> should be used before any other opcodes
-      (but allowed after <span class="emphasis"><em>xin</em></span>), otherwise unpredictable
-      results may occur.
-    </p>
-        <p>
       The input parameters can be read with <span class="emphasis"><em>xin</em></span>, and the
       output is written by <span class="emphasis"><em>xout</em></span> opcode. Only one instance
       of these units should be used, as <span class="emphasis"><em>xout</em></span> overwrites
@@ -431,16 +335,9 @@
       <span class="emphasis"><em>xin</em></span> and <span class="emphasis"><em>xout</em></span> must be the same
       as in the declaration of the user-defined opcode block (see tables above).
     </p>
-        <p>
-      The input and output arguments must agree with the definition both in
-      number (except if the optional i-time input is used) and type.
-      An optional i-time input parameter (<span class="emphasis"><em>iksmps</em></span>) is
-      automatically added to the <span class="emphasis"><em>intypes</em></span> list, and
-      (similarly to setksmps) sets the local <span class="emphasis"><em>ksmps</em></span> value.
-    </p>
       </div>
       <div class="refsect1">
-        <a id="idm226724"></a>
+        <a id="idm225893"></a>
         <h2>Performance</h2>
         <p>
       The syntax of a user-defined opcode block is as follows:
@@ -460,7 +357,7 @@ xinarg1 [, xinarg2] [, xinarg3] ... [xinargN]  <span class="opc">xin</span>
 
       </p>
         <pre class="programlisting">
-  [xoutarg1] [, xoutarg2] ... [xoutargN] <span class="command"><strong>name</strong></span>  [xinarg1] [, xinarg2] ... [xinargN] [, iksmps]</pre>
+[xoutarg1] [, xoutarg2] ... [xoutargN] <span class="command"><strong>name</strong></span>  [xinarg1] [, xinarg2] ... [xinargN]</pre>
         <p>
     </p>
         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
@@ -487,7 +384,7 @@ xinarg1 [, xinarg2] [, xinarg3] ... [xinargN]  <span class="opc">xin</span>
         </div>
       </div>
       <div class="refsect1">
-        <a id="idm226742"></a>
+        <a id="idm225911"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of a user-defined opcode. It uses the file
@@ -495,9 +392,9 @@ xinarg1 [, xinarg2] [, xinarg3] ... [xinargN]  <span class="opc">xin</span>
 
       </p>
         <div class="example">
-          <a id="idm226747"></a>
+          <a id="idm225916"></a>
           <p class="title">
-            <strong>Example 689. Example of a user-defined opcode.</strong>
+            <strong>Example 696. Example of a user-defined opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time
@@ -505,7 +402,7 @@ xinarg1 [, xinarg2] [, xinarg3] ... [xinargN]  <span class="opc">xin</span>
         Flags</em></a> for more information on using command
         line flags.</p>
             <div class="refsect1">
-              <a id="idm226754"></a>
+              <a id="idm225923"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -601,13 +498,13 @@ xinarg1 [, xinarg2] [, xinarg3] ... [xinargN]  <span class="opc">xin</span>
       <a class="ulink" href="examples/opcode_f.csd" target="_top"><em class="citetitle">opcode_f.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm227169"></a>
+          <a id="idm226338"></a>
           <p class="title">
-            <strong>Example 690. Second example of a user-defined opcode.</strong>
+            <strong>Example 697. Second example of a user-defined opcode.</strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
-              <a id="idm227171"></a>
+              <a id="idm226340"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -671,17 +568,14 @@ xinarg1 [, xinarg2] [, xinarg3] ... [xinargN]  <span class="opc">xin</span>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm227440"></a>
+        <a id="idm226609"></a>
         <h2>See Also</h2>
         <p>
-      <a class="link" href="endop.html" title="endop"><em class="citetitle">endop</em></a>,
-      <a class="link" href="setksmps.html" title="setksmps"><em class="citetitle">setksmps</em></a>,
-      <a class="link" href="xin.html" title="xin"><em class="citetitle">xin</em></a>,
-      <a class="link" href="xout.html" title="xout"><em class="citetitle">xout</em></a>
+      <a class="link" href="OrchUDO.html" title="User Defined Opcodes (UDO)"><em class="citetitle">User Defined Opcodes (UDO)</em></a>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm227451"></a>
+        <a id="idm226614"></a>
         <h2>Credits</h2>
         <p>Author: Istvan Varga, 2002; based on code by Matt J. Ingalls</p>
         <p>New in version 4.22</p>

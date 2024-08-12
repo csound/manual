@@ -39,7 +39,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm42677"></a>
+        <a id="idm42817"></a>
         <h2>Description</h2>
         <p>
       The BreakBeat Cutter automatically generates cut-ups of a source audio stream in the style of drum and bass/jungle breakbeat manipulations.  There are two versions, for mono (<span class="emphasis"><em>bbcutm</em></span>) or stereo (<span class="emphasis"><em>bbcuts</em></span>) sources.  Whilst originally based on breakbeat cutting, the opcode can be applied to any type of source audio.
@@ -65,13 +65,13 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm42686"></a>
+        <a id="idm42826"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">a1 <span class="command"><strong>bbcutm</strong></span> asource, ibps, isubdiv, ibarlength, iphrasebars, inumrepeats \
       [, istutterspeed] [, istutterchance] [, ienvchoice ]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm42690"></a>
+        <a id="idm42830"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>ibps</em></span> -- Tempo to cut at, in beats per second.
@@ -99,27 +99,27 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm42708"></a>
+        <a id="idm42848"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>asource</em></span> -- The audio signal to be cut up. This version runs in real-time without knowledge of future audio.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm42712"></a>
+        <a id="idm42852"></a>
         <h2>Examples</h2>
         <p>
       Here is a simple example of the bbcutm opcode. It uses the file <a class="ulink" href="examples/bbcutm.csd" target="_top"><em class="citetitle">bbcutm.csd</em></a>, and <a class="ulink" href="examples/drumsMlp.wav" target="_top"><em class="citetitle">drumsMlp.wav</em></a>.
       </p>
         <div class="example">
-          <a id="idm42719"></a>
+          <a id="idm42859"></a>
           <p class="title">
             <strong>Example 92. A simple example of the bbcutm opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm42726"></a>
+              <a id="idm42866"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -179,7 +179,7 @@
 
       </p>
         <div class="example">
-          <a id="idm42904"></a>
+          <a id="idm43044"></a>
           <p class="title">
             <strong>Example 93. First steps- mono and stereo versions</strong>
           </p>
@@ -193,7 +193,7 @@
 <span class="ohdr">nchnls</span>    <span class="op">=</span>         2
  
 <span class="oblock">instr</span> 1
-    asource <span class="opc">diskin</span> "break7.wav",1,0,1 <span class="comment">; a source breakbeat sample, wraparound lest it stop!</span>
+    asource <span class="opc">diskin</span> "drumsMlp.wav",1,0,1 <span class="comment">; a source breakbeat sample, wraparound lest it stop!</span>
  
     <span class="comment">; cuts in eighth notes per 4/4 bar, up to 4 bar phrases, up to 1</span>
     <span class="comment">; repeat in total (standard use) rare stuttering at 16 note speed,</span>
@@ -204,7 +204,7 @@
 <span class="oblock">endin</span>
  
 <span class="oblock">instr</span> 2 <span class="comment">;stereo version</span>
-   asource1,asource2 <span class="opc">diskin</span> "break7stereo.wav", 1, 0, 1    <span class="comment">; a source breakbeat sample, wraparound lest it stop!</span>
+   asource1,asource2 <span class="opc">diskin</span> "drumsSlp.wav", 1, 0, 1    <span class="comment">; a source breakbeat sample, wraparound lest it stop!</span>
  
   <span class="comment">; cuts in eighth notes per 4/4 bar, up to 4 bar phrases, up to 1</span>
   <span class="comment">; repeat in total (standard use) rare stuttering at 16 note speed,</span>
@@ -228,7 +228,7 @@
         <p>
       </p>
         <div class="example">
-          <a id="idm42944"></a>
+          <a id="idm43084"></a>
           <p class="title">
             <strong>Example 94. Multiple simultaneous synchronised breaks</strong>
           </p>
@@ -248,16 +248,16 @@
  
   asig <span class="opc">bbcutm</span> asource, 2.6937, p6, 4, 4, p7, 2, 0.1, 1
  
-  <span class="opc">out</span>   asig
+  <span class="opc">outs</span>   asig, asig
 <span class="oblock">endin</span>
  
 <span class="csdtag">&lt;/CsInstruments&gt;</span>
 <span class="csdtag">&lt;CsScore&gt;</span>
  
 <span class="comment">;   source      bps cut repeats</span>
-<span class="stamnt">i</span>1 0 10 "break1.wav" 2.3 8   2  <span class="Ccomment">//2.3 is the source original tempo</span>
-<span class="stamnt">i</span>1 0 10 "break2.wav" 2.4 8   3
-<span class="stamnt">i</span>1 0 10 "break3.wav" 2.5 16  4
+<span class="stamnt">i</span>1 0 10 "drumsMlp.wav" 2.3 8   2  <span class="Ccomment">//2.3 is the source original tempo</span>
+<span class="stamnt">i</span>1 0 10 "beats.wav" 2.4 8   3
+<span class="stamnt">i</span>1 0 10 "fox.wav" 2.5 16  4
 <span class="stamnt">e</span>
 <span class="csdtag">&lt;/CsScore&gt;</span>
 <span class="csdtag">&lt;/CsoundSynthesizer&gt;</span></pre>
@@ -268,7 +268,7 @@
         <p>
       </p>
         <div class="example">
-          <a id="idm42976"></a>
+          <a id="idm43116"></a>
           <p class="title">
             <strong>Example 95. Cutting up any old audio- much more interesting noises than this should be possible!</strong>
           </p>
@@ -286,7 +286,7 @@
   <span class="comment">; ain, bps, subdiv, barlength, phrasebars, numrepeats,</span>
   <span class="comment">;stutterspeed, stutterchance, envelopingon</span>
   asig <span class="opc">bbcutm</span> asource, 2, 32, 1, 1, 2, 4, 0.6, 1
-  <span class="opc">outs</span>  asig
+  <span class="opc">outs</span>  asig, asig
 <span class="oblock">endin</span>
  
 <span class="csdtag">&lt;/CsInstruments&gt;</span>
@@ -303,7 +303,7 @@
         <p>
       </p>
         <div class="example">
-          <a id="idm43004"></a>
+          <a id="idm43144"></a>
           <p class="title">
             <strong>Example 96. Constant stuttering- faked, not possible since can only stutter in last half bar could make extra stuttering option parameter</strong>
           </p>
@@ -317,14 +317,14 @@
 <span class="ohdr">nchnls</span>    <span class="op">=</span>         2
  
 <span class="oblock">instr</span> 1
-  asource <span class="opc">diskin</span> "break7.wav", 1, 0, 1
+  asource <span class="opc">diskin</span> "drumsMlp.wav", 1, 0, 1
  
   <span class="comment">;16th note cuts- but cut size 2 over half a beat.</span>
   <span class="comment">;each half beat will either survive intact or be turned into</span>
   <span class="comment">;the first sixteenth played twice in succession</span>
  
-  asig <span class="opc">bbcutm</span> asource, 2.6937, 2, 0.5, 1, 2, 2, 1.0, 0
-  <span class="opc">outs</span>  asig
+  asig <span class="opc">bbcutm</span> asource, 2, 2, 0.5, 1, 2, 2, 1.0, 0
+  <span class="opc">outs</span>  asig, asig
 <span class="oblock">endin</span>
  
 <span class="csdtag">&lt;/CsInstruments&gt;</span>
@@ -339,14 +339,16 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm43031"></a>
-        <h2>See Also</h2>
+        <a id="idm43171"></a>
+        <h2>See also</h2>
         <p>
-      <a class="link" href="bbcuts.html" title="bbcuts"><em class="citetitle">bbcuts</em></a>
-    </p>
+          <a class="link" href="SiggenSample.html" title="Sample Playback">
+            <em class="citetitle">Sample Playback</em>
+          </a>
+        </p>
       </div>
       <div class="refsect1">
-        <a id="idm43036"></a>
+        <a id="idm43176"></a>
         <h2>Credits</h2>
         <p>
       </p>
