@@ -39,14 +39,14 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm300226"></a>
+        <a id="idm301571"></a>
         <h2>Description</h2>
         <p>
       Adds a new score event.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm300229"></a>
+        <a id="idm301574"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>schedulek</strong></span> knsnum, kwhen, kdur [, kp4] [, kp5] [...]</pre>
         <pre class="synopsis"><span class="command"><strong>schedulek</strong></span> "insname", kwhen,
@@ -54,7 +54,7 @@
         <pre class="synopsis"><span class="command"><strong>schedule</strong></span> kPar[]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm300237"></a>
+        <a id="idm301582"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>knsnum</em></span> -- instrument number. Equivalent to p1 in a score <a class="link" href="i.html" title="i Statement (Instrument or Note Statement)"><em class="citetitle">i statement</em></a>. <span class="emphasis"><em>knsnum</em></span> must be a number greater than the number of the calling instrument.
@@ -92,86 +92,19 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm300268"></a>
-        <h2>Examples</h2>
-        <p>
-      Here is an example of the schedulek opcode. It uses the file <a class="ulink" href="examples/schedulek.csd" target="_top"><em class="citetitle">schedulek.csd</em></a>.
-      </p>
-        <div class="example">
-          <a id="idm300273"></a>
-          <p class="title">
-            <strong>Example 963. Example of the schedule opcode.</strong>
-          </p>
-          <div class="example-contents">
-            <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
-            <div class="refsect1">
-              <a id="idm300280"></a>
-              <pre class="programlisting">
-<span class="nt">&lt;CsoundSynthesizer&gt;</span>
-<span class="nt">&lt;CsOptions&gt;</span>
-<span class="c1">; Select audio/midi flags here according to platform</span>
--odac      <span class="c1">;;;realtime audio out</span>
-<span class="c1">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</span>
-<span class="c1">; For Non-realtime ouput leave only the line below:</span>
-<span class="c1">; -o schedulek.wav -W ;;; for file output any platform</span>
-<span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
-
-</span><span class="c1">; By Stefano Cucchi 2024</span><span class="w">
-</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">	
-</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">	
-</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">		
-</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">		
-
-</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
-
-</span>k<span class="n">freqnote</span><span class="w"> </span><span class="nb">randomh</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">6.3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">
-</span>k<span class="n">Trigger</span><span class="w">  </span><span class="nb">metro</span><span class="w">   </span>k<span class="n">freqnote</span><span class="w"> 
-</span><span class="k">if</span><span class="w"> </span>k<span class="n">Trigger</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="c1">;</span><span class="w">
-
-</span><span class="nb">schedulek</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="w"> </span><span class="c1">;call the instrument</span><span class="w">
-</span><span class="k">endif</span><span class="w">
-
-</span><span class="kd">endin</span><span class="w">
-
-</span><span class="kd">instr</span><span class="w"> </span><span class="nf">10</span><span class="w">
-
-</span>a<span class="n">1</span><span class="w"> </span><span class="nb">oscili</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w"> </span><span class="mi">440</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">
-</span><span class="nb">outs</span><span class="w"> </span>a<span class="n">1</span><span class="p">,</span><span class="w"> </span>a<span class="n">1</span><span class="w">
-
-</span><span class="kd">endin</span><span class="w">
-
-</span><span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span><span class="w">
-</span><span class="nb">f</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">4096</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mf">0.9</span><span class="w"> </span><span class="mf">0.8</span><span class="w"> </span><span class="mf">0.7</span><span class="w"> </span><span class="mf">0.6</span><span class="w">
-
-</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="nb">e</span><span class="w">
-</span><span class="nt">&lt;/CsScore&gt;</span>
-<span class="nt">&lt;/CsoundSynthesizer&gt;</span> 
-</pre>
-            </div>
-          </div>
-        </div>
-        <p><br class="example-break" />
-               </p>
-        <p>
-     A musical example featuring the schedulek opcode: <a class="ulink" href="examples/musical/Schedulek_Heintz.csd" target="_top"><em class="citetitle">Schedulek_Heintz.csd</em></a> by Joachim Heintz.
-    </p>
-        <p>
-    </p>
-      </div>
-      <div class="refsect1">
-        <a id="idm300431"></a>
+        <a id="idm301613"></a>
         <h2>See also</h2>
-        <p>
-          <a class="link" href="ControlInvocat.html" title="Instrument Invocation">
-            <em class="citetitle">Instrument Invocation</em>
-          </a>
-        </p>
+        <p><a class="link" href="event.html" title="event"><em class="citetitle">event</em></a>,
+    <a class="link" href="event_i.html" title="event_i"><em class="citetitle">event_i</em></a>,
+    <a class="link" href="schedule.html" title="schedule"><em class="citetitle">schedule</em></a>,
+    <a class="link" href="schedwhen.html" title="schedwhen"><em class="citetitle">schedwhen</em></a>,
+    <a class="link" href="schedkwhen.html" title="schedkwhen"><em class="citetitle">schedkwhen</em></a>,
+    <a class="link" href="schedkwhennamed.html" title="schedkwhennamed"><em class="citetitle">schedkwhennamed</em></a>,
+    <a class="link" href="scoreline.html" title="scoreline"><em class="citetitle">scoreline</em></a>,
+    <a class="link" href="scoreline_i.html" title="scoreline_i"><em class="citetitle">scoreline_i</em></a></p>
       </div>
       <div class="refsect1">
-        <a id="idm300436"></a>
+        <a id="idm301632"></a>
         <h2>Credits</h2>
         <p>
       </p>

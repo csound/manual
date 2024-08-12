@@ -39,19 +39,19 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm173634"></a>
+        <a id="idm174214"></a>
         <h2>Description</h2>
         <p> 
       These statements are global value <a class="link" href="assign.html" title="="><em class="citetitle">assignments</em></a>, made at the beginning of an orchestra, before any instrument block is defined. Their function is to set certain <a class="link" href="OrchKvar.html#VariableTypes" title="Table 3. Types of Variables"><em class="citetitle">reserved symbol variables</em></a> that are required for performance. Once set, these reserved symbols can be used in expressions anywhere in the orchestra.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm173641"></a>
+        <a id="idm174221"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>ksmps</strong></span> = iarg</pre>
       </div>
       <div class="refsect1">
-        <a id="idm173645"></a>
+        <a id="idm174225"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>ksmps</em></span> = (optional) -- set the number of samples in a control period. This value must equal<span class="emphasis"><em> sr/kr</em></span>. The default value is 10.
@@ -81,76 +81,34 @@
         </div>
       </div>
       <div class="refsect1">
-        <a id="idm173665"></a>
+        <a id="idm174245"></a>
         <h2>Examples</h2>
         <p>
-      Here is an example of the ksmps opcode. It uses the file <a class="ulink" href="examples/ksmps.csd" target="_top"><em class="citetitle">ksmps.csd</em></a>.
       </p>
-        <div class="example">
-          <a id="idm173670"></a>
-          <p class="title">
-            <strong>Example 510. Example of the ksmps opcode.</strong>
-          </p>
-          <div class="example-contents">
-            <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
-            <div class="refsect1">
-              <a id="idm173677"></a>
-              <pre class="programlisting">
-<span class="nt">&lt;CsoundSynthesizer&gt;</span>
-<span class="nt">&lt;CsOptions&gt;</span>
-<span class="c1">; Select audio/midi flags here according to platform</span>
--odac      <span class="c1">;;;realtime audio out</span>
-
-<span class="c1">; By Stefano Cucchi - 2024</span>
-
-<span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
-
-</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">48000</span><span class="w"> 
-
-</span><span class="c1">; If you set ksmps = 24000, then kr = 2, so you hear 2 step every sec.</span><span class="w">
-</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">24000</span><span class="w">
-
-</span><span class="c1">; If you set ksmps = 32, then kr = 1500. You can hear a smooth glissando</span><span class="w">
-</span><span class="c1">;ksmps = 32 </span><span class="w">
-
-</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
-</span><span class="vg">0dbfs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
-
-</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
-  </span>k<span class="n">amp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.4</span><span class="w">
-  </span>k<span class="n">freq</span><span class="w"> </span><span class="nb">expseg</span><span class="w"> </span><span class="vi">p4</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="vi">p5</span><span class="w">
-  </span>a<span class="n">1</span><span class="w"> </span><span class="nb">oscil3</span><span class="w"> </span>k<span class="n">amp</span><span class="p">,</span><span class="w"> </span>k<span class="n">freq</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
-  </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">1</span><span class="p">,</span><span class="w"> </span>a<span class="n">1</span><span class="w">
-</span><span class="kd">endin</span><span class="w">
-
-</span><span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span><span class="w">
-
-</span><span class="nb">f</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">524288</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w">
-
-</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="mi">100</span><span class="w">  </span><span class="mi">13000</span><span class="w">
-</span><span class="nb">e</span><span class="w">
-</span><span class="nt">&lt;/CsScore&gt;</span>
-<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
-</pre>
-            </div>
-          </div>
+        <div class="informalexample">
+          <pre class="programlisting">
+<span class="ohdr">sr</span> <span class="op">=</span> 10000
+<span class="ohdr">kr</span> <span class="op">=</span> 500
+<span class="ohdr">ksmps</span> <span class="op">=</span> 20
+gi1 <span class="op">=</span> <span class="ohdr">sr</span><span class="op">/</span>2.
+ga <span class="opc">init</span> 0
+itranspose <span class="op">=</span> <span class="opc">octpch</span>(.0l)</pre>
         </div>
-        <p><br class="example-break" />
+        <p>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm173791"></a>
-        <h2>See also</h2>
+        <a id="idm174262"></a>
+        <h2>See Also</h2>
         <p>
-          <a class="link" href="OrchTop.html#OrchHeader" title="Orchestra Header Statements">
-            <em class="citetitle">Orchestra Header Statements</em>
-          </a>
-        </p>
+      <a class="link" href="kr.html" title="kr"><em class="citetitle">kr</em></a>,
+      <a class="link" href="nchnls.html" title="nchnls"><em class="citetitle">nchnls</em></a>,
+      <a class="link" href="nchnls_i.html" title="nchnls_i"><em class="citetitle">nchnls_i</em></a>,
+      <a class="link" href="sr.html" title="sr"><em class="citetitle">sr</em></a>
+    </p>
       </div>
       <div class="refsect1">
-        <a id="idm173796"></a>
+        <a id="idm174273"></a>
         <h2>Credits</h2>
         <p>Thanks to a note from Gabriel Maldonado, added a warning about integer values.</p>
       </div>

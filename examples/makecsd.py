@@ -15,7 +15,7 @@ for file in files:
 <CsOptions>
 ; Select audio/midi flags here according to platform
 ; Audio out   Audio in    Silent  MIDI in
--odac           -idac     -d       -M0  ;;;realtime output
+-odac           -iadc     -d       -M0  ;;;realtime output
 ; For Non-realtime ouput leave only the line below:
 ; -o ''' + file[:file.index('.orc')] + '''.wav -W ;;; for file output any platform
 </CsOptions>

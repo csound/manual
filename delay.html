@@ -39,19 +39,19 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm79373"></a>
+        <a id="idm79760"></a>
         <h2>Description</h2>
         <p>
       A signal can be read from or written into a delay path, or it can be automatically delayed by some time interval.
    </p>
       </div>
       <div class="refsect1">
-        <a id="idm79376"></a>
+        <a id="idm79763"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ares <span class="command"><strong>delay</strong></span> asig, idlt [, iskip]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm79380"></a>
+        <a id="idm79767"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>idlt</em></span> -- requested delay time in seconds. This can be as large as available memory will permit. The space required for n seconds of delay is 4n * <span class="emphasis"><em>sr</em></span> bytes. It is allocated at the time the instrument is first initialized, and returned to the pool at the end of a score section.
@@ -61,7 +61,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm79389"></a>
+        <a id="idm79776"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>asig</em></span> -- audio signal
@@ -71,21 +71,21 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm79399"></a>
+        <a id="idm79786"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the delay opcode. It uses the file <a class="ulink" href="examples/delay.csd" target="_top"><em class="citetitle">delay.csd</em></a>.
 
       </p>
         <div class="example">
-          <a id="idm79404"></a>
+          <a id="idm79791"></a>
           <p class="title">
             <strong>Example 216. Example of the delay opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm79411"></a>
+              <a id="idm79798"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -109,7 +109,7 @@
 </span>i<span class="n">delay</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="vi">p5</span><span class="w"> </span><span class="o">*</span><span class="mf">.001</span><span class="w">			</span><span class="c1">;Delay in ms</span><span class="w">
 </span>i<span class="n">fd</span><span class="w">	</span><span class="o">=</span><span class="w"> </span><span class="vi">p6</span><span class="w">				</span><span class="c1">;feedback</span><span class="w">
 
-</span>a<span class="n">in</span><span class="w">	</span><span class="nb">diskin2</span><span class="w"> </span><span class="s">"Mathews.wav"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span>a<span class="n">in</span><span class="w">	</span><span class="nb">diskin2</span><span class="w"> </span><span class="s">"fox.wav"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span>a<span class="n">del</span><span class="w">	</span><span class="nb">delay</span><span class="w">   </span>a<span class="n">in</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span>a<span class="n">del</span><span class="o">*</span>i<span class="n">fd</span><span class="p">),</span><span class="w"> </span>i<span class="n">delay</span><span class="c1">;ifd = amount of feedback</span><span class="w">
 </span>a<span class="n">sig</span><span class="w">	</span><span class="nb">moogvcf</span><span class="w">	</span>a<span class="n">del</span><span class="p">,</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w"> </span><span class="mf">.6</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">	</span><span class="c1">;color feedback</span><span class="w">
 	</span><span class="nb">outs</span><span class="w">    </span>a<span class="n">sig</span><span class="o">*</span>i<span class="n">lev</span><span class="p">,</span><span class="w"> </span>a<span class="n">in</span><span class="w">
@@ -119,10 +119,10 @@
 </span><span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span><span class="w">
 </span><span class="c1">;Delay is in ms</span><span class="w">
-</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="mi">0</span><span class="w">  </span><span class="mi">5</span><span class="w">  </span><span class="mf">1.5</span><span class="w">  </span><span class="mi">200</span><span class="w"> </span><span class="mf">.95</span><span class="w">	</span><span class="c1">;with feedback</span><span class="w">
-</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="o">+</span><span class="w">  </span><span class="mi">5</span><span class="w">  </span><span class="mf">1.5</span><span class="w">  </span><span class="mi">20</span><span class="w">  </span><span class="mf">.95</span><span class="w">
-</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="o">+</span><span class="w">  </span><span class="mi">3</span><span class="w">  </span><span class="mf">1.5</span><span class="w">  </span><span class="mi">5</span><span class="w">   </span><span class="mf">.95</span><span class="w">
-</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="o">+</span><span class="w">  </span><span class="mi">7</span><span class="w">  </span><span class="mi">2</span><span class="w">    </span><span class="mi">5</span><span class="w">    </span><span class="mi">0</span><span class="w">	</span><span class="c1">;no feedback</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="mi">0</span><span class="w">  </span><span class="mi">15</span><span class="w"> </span><span class="mi">2</span><span class="w">  </span><span class="mi">200</span><span class="w"> </span><span class="mf">.95</span><span class="w">	</span><span class="c1">;with feedback</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="mi">4</span><span class="w">  </span><span class="mi">5</span><span class="w">  </span><span class="mi">2</span><span class="w">  </span><span class="mi">20</span><span class="w">  </span><span class="mf">.95</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="o">+</span><span class="w">  </span><span class="mi">3</span><span class="w">  </span><span class="mi">2</span><span class="w">  </span><span class="mi">5</span><span class="w">   </span><span class="mf">.95</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="o">+</span><span class="w">  </span><span class="mi">3</span><span class="w">  </span><span class="mi">3</span><span class="w">  </span><span class="mi">5</span><span class="w">   </span><span class="mi">0</span><span class="w">	</span><span class="c1">;no feedback</span><span class="w">
 
 </span><span class="nb">e</span><span class="w">
 </span><span class="nt">&lt;/CsScore&gt;</span>
@@ -135,13 +135,13 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm79610"></a>
-        <h2>See also</h2>
+        <a id="idm79997"></a>
+        <h2>See Also</h2>
         <p>
-          <a class="link" href="SigmodDelay.html" title="Delay">
-            <em class="citetitle">Delay</em>
-          </a>
-        </p>
+      <a class="link" href="delay1.html" title="delay1"><em class="citetitle">delay1</em></a>, 
+      <a class="link" href="delayr.html" title="delayr"><em class="citetitle">delayr</em></a>, 
+      <a class="link" href="delayw.html" title="delayw"><em class="citetitle">delayw</em></a>
+    </p>
       </div>
     </div>
     <div class="navfooter">
