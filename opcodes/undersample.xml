@@ -22,7 +22,7 @@
 
   <refsect1>
     <title>Syntax</title>
-    <synopsis><command>undersample</command> ifactor[,imode] </synopsis>
+    <synopsis><command>undersample</command> ifactor[,icvt_in, icvt_out] </synopsis>
   </refsect1>
 
   <refsect1>
@@ -35,13 +35,22 @@
       changed locally. Local ksmps is also changed accordingly.
     </para>
     <para>
-      <emphasis>imode</emphasis> -- resampling mode: if Secret
+      <emphasis>icvt_in</emphasis> -- converter used for input: if Secret
       Rabbit Code is used, then 0 - best quality sync (default); 1 - medium
-      quality sync; 2 - fast sync; 3 - zero-order hold; and  4 - linear.
+      quality sync; 2 - fast sync; 3 - zero-order hold; and  4 -
+      linear.
+    </para>
+     <para>
+      <emphasis>icvt_out</emphasis> -- converter used for output,
+      defaults to the input converter, but can be different.
     </para>
 
     <note>
       <title>Note</title>
+        <para>
+        Higher-quality sync converters add a small amount of latency to
+        the signal (0, 1, 2, increasing with quality). Converters 3 and 4 are latency-free.
+      </para>     
       <para>
         Calling this opcode in the same UDO as setksmps is not
         allowed.
