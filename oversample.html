@@ -48,7 +48,7 @@
       <div class="refsect1">
         <a id="idm238601"></a>
         <h2>Syntax</h2>
-        <pre class="synopsis"><span class="command"><strong>oversample</strong></span> ifactor[,imode] </pre>
+        <pre class="synopsis"><span class="command"><strong>oversample</strong></span> ifactor[,icvt_in, icvt_out] </pre>
       </div>
       <div class="refsect1">
         <a id="idm238605"></a>
@@ -62,9 +62,14 @@
       ksmps remains unchanged.
     </p>
         <p>
-      <span class="emphasis"><em>imode</em></span> -- oversampling mode: if Secret
+      <span class="emphasis"><em>icvt_in</em></span> -- converter used for input: if Secret
       Rabbit Code is used, then 0 - best quality sync (default); 1 - medium
-      quality sync; 2 - fast sync; 3 - zero-order hold; and  4 - linear.
+      quality sync; 2 - fast sync; 3 - zero-order hold; and  4 -
+      linear.
+    </p>
+        <p>
+      <span class="emphasis"><em>icvt_out</em></span> -- converter used for output,
+      defaults to the input converter, but can be different.
     </p>
         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
           <table border="0" summary="Note: Note">
@@ -77,6 +82,10 @@
             <tr>
               <td align="left" valign="top">
                 <p>
+        Higher-quality sync converters add a small amount of latency to
+        the signal (0, 1, 2, increasing with quality). Converters 3 and 4 are latency-free.
+      </p>
+                <p>
         Calling this opcode in the same UDO as setksmps is not
         allowed. The opcode can only be used in UDOs. Audio or control rate array arguments
         are not allowed. Global variables or bus channels should not
@@ -88,14 +97,14 @@
         </div>
       </div>
       <div class="refsect1">
-        <a id="idm238614"></a>
+        <a id="idm238617"></a>
         <h2>See Also</h2>
         <p>
       <a class="link" href="OrchUDO.html" title="User Defined Opcodes (UDO)"><em class="citetitle">User Defined Opcodes (UDO)</em></a>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm238619"></a>
+        <a id="idm238622"></a>
         <h2>Credits</h2>
         <p>Author: Victor Lazzarini</p>
         <p>New in version 7.0</p>
