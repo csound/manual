@@ -38,8 +38,8 @@ endin
 </CsInstruments>
 <CsScore>
 ; both matrices are to be found in the examples forlder of the manual
-f50 0 16384 -23  "/home/tjingboem/string-128.matrxB"    ; binary matrix
-f100 0 128  -44  "/home/tjingboem/string-128.matrxT"    ; text matrix
+f50 0 16384 -23  "string-128.matrxB"    ; binary matrix
+f100 0 128  -44  "string-128.matrxT"    ; text matrix
 
 i1 0 10     50
 i1 12 10    100
