@@ -37,7 +37,7 @@ endin
 
 </CsInstruments>
 <CsScore>
-
+; both matrices are to be found in the examples forlder of the manual
 f50 0 16384 -23  "/home/tjingboem/string-128.matrxB"    ; binary matrix
 f100 0 128  -44  "/home/tjingboem/string-128.matrxT"    ; text matrix
 
