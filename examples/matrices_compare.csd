@@ -16,7 +16,7 @@ idispl  ftgen 2, 0, 128, -7, .01, 128, .01             ; displace
 imass   ftgen 3, 0, 128, -7, 5, 128, 5                 ; masses
 icent   ftgen 4, 0, 128, -7, 1, 128, 1                 ; centering
 idamp   ftgen 5, 0, 128, -7, -.1, 128, -.1             ; damping
-itraj   ftgen 6, 0, 128, -7, 0, 128, 127               ; damping
+itraj   ftgen 6, 0, 128, -7, 0, 128, 127               ; trajectory
 
 a0 init 0
 irate = .01
