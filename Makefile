@@ -72,13 +72,7 @@ MISC = 	misc/amp.xml misc/csound64.xml misc/formants.xml misc/glossary.xml \
 OPCODES = opcodes/0dbfs.xml	opcodes/ATSadd.xml	opcodes/ATSaddnz.xml \
 	opcodes/ATSbufread.xml	opcodes/ATScross.xml	opcodes/ATSinfo.xml \
 	opcodes/ATSinterpread.xml  opcodes/ATSpartialtap.xml opcodes/ATSread.xml \
-	opcodes/ATSreadnz.xml	opcodes/ATSsinnoi.xml opcodes/JackoAudioIn.xml \
-	opcodes/JackoAudioInConnect.xml	opcodes/JackoAudioOut.xml \
-	opcodes/JackoAudioOutConnect.xml	opcodes/JackoFreewheel.xml \
-	opcodes/JackoInfo.xml	opcodes/JackoInit.xml \
-	opcodes/JackoMidiInConnect.xml	opcodes/JackoMidiOut.xml \
-	opcodes/JackoMidiOutConnect.xml	opcodes/JackoNoteOut.xml \
-	opcodes/JackoOn.xml	opcodes/JackoTransport.xml \
+	opcodes/ATSreadnz.xml	opcodes/ATSsinnoi.xml \
 	opcodes/OSCinit.xml	opcodes/OSClisten.xml	opcodes/OSCsend.xml \
 	opcodes/STKBandedWG.xml \
 	opcodes/STKBeeThree.xml	opcodes/STKBlowBotl.xml	opcodes/STKBlowHole.xml \
@@ -254,7 +248,7 @@ OPCODES = opcodes/0dbfs.xml	opcodes/ATSadd.xml	opcodes/ATSaddnz.xml \
 	opcodes/islider32.xml	opcodes/islider64.xml	opcodes/islider8.xml \
 	opcodes/itablecopy.xml	opcodes/itablegpw.xml	opcodes/itablemix.xml \
 	opcodes/itablew.xml	opcodes/itrirand.xml	opcodes/iunirand.xml \
-	opcodes/iweibull.xml	opcodes/jacktransport.xml	opcodes/jitter.xml \
+	opcodes/iweibull.xml		opcodes/jitter.xml \
 	opcodes/jitter2.xml	opcodes/joystick.xml	opcodes/jspline.xml \
 	opcodes/kbetarand.xml	opcodes/kbexprnd.xml	opcodes/kcauchy.xml \
 	opcodes/k35_hpf.xml opcodes/k35_lpf.xml \
