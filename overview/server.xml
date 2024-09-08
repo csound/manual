@@ -1,7 +1,8 @@
 <section id="udpserver">
   <title>UDP Server</title>
   <para>
-    Csound 6 includes a fully-functional UDP server, which can accept a range of commands and/or
+    Csound includes a fully-functional UDP server, which can accept a
+    range of commands, including Open Sound Control, and/or
     orchestra.
   </para>
   <bridgehead>Overview</bridgehead>
@@ -40,8 +41,7 @@
   </literallayout>
 <para>
   Set a control channel [channel_name] with the value [value].
-  Example:   if the csd contains the line ' chn_k "freq", 440' then send '@freq 330' sets "freq" to 330.
-
+  Example:   if the csd contains the line ' chn_k "freq", 440' then send '@freq 330' sets "freq" to 330
 </para>
   <literallayout>
    %[channel_name] [string]
@@ -67,6 +67,15 @@
   string will contain the channel name followed by two colons (::)
   and its current contents.
 </para>
+  <literallayout>
+   /[OSC message]
+  </literallayout>
+<para>
+A command starting with a slash "/" is interpreted as an Open Sound
+Control (OSC) Message. The data contents of the command are expected
+to adhere to the OSC format. See the section below on OSC for more details.
+</para>
+
 <bridgehead>Orchestra code</bridgehead>
 
 <para>
@@ -99,5 +108,118 @@ or
 </para>
     <literallayout>
    !!close!!
-  </literallayout>
+    </literallayout>
+
+<bridgehead>Open Sound Control</bridgehead>
+
+<para>
+The UDP server can work as an OSC server as it can parse OSC messages
+sent in from remote clients. Any incoming data block starting with a slash ("/")
+is expected to be an OSC message. The server parses messages in two
+groups: system and user-defined. 
+</para>
+
+<para> System messages: these are defined by addresses starting with
+"/csound" and used for global engine commands. The following are the
+currently-defined system messages:
+</para>
+
+<literallayout>
+/csound/compile "s" [string]
+ </literallayout>
+<para>
+Compiles the string passed as the message data.
+</para>
+
+<literallayout>
+/csound/compile "s" [string]
+ </literallayout>
+<para>
+Compiles the string passed as the message data.
+</para>
+
+<literallayout>
+/csound/event "s" [string]
+ </literallayout>
+<para>
+Sends an event defined by the string passed as the message data.
+ </para>
+
+ <literallayout>
+/csound/event/instr "fff..." [float data]
+ </literallayout>
+<para>
+Instantiates an instrument with p-fields as defined in the message
+type and data. Only float types are accepted.
+</para>
+
+<literallayout>
+/csound/channel/a[/b/c...] "..." [float data]
+ </literallayout>
+<para>
+  Sets software bus channels a[, b, c, ...] according to the message
+  type and data. Floats and strings are allowed, one datum per channel.
+</para>
+
+<literallayout>
+  /csound/event/end
+  /csound/exit
+  /csound/close
+  /csound/stop
+ </literallayout>
+<para>
+ Stops the performance and UDP server 
+ </para>
+
+<para> User-defined: these are defined by any other addresses chosen
+by the user. They are stored in a list and can be retrieved using the
+OSClisten opcode.
+</para>
+
+<para>
+Code example:
+</para> 
+
+<programlisting>
+<emphasis role="nt">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="nt">&lt;CsOptions&gt;</emphasis>
+-odac  --port=7000  <emphasis role="c1">;;;RT audio out and
+server port</emphasis>
+<emphasis role="nt">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="nt">&lt;CsInstruments&gt;</emphasis>
+
+0dbfs = 1
+
+instr 1
+ freq:k chnget "freq"
+ amp:k  chnget "amp"
+    out oscili(0dbfs*amp, p4*freq)
+ status:k, f:k, mess:S, n:k OSClisten "/in", "fsi"
+ puts mess, status
+ printk2 n
+ printk2 f
+ status, nums:k[] OSClisten "/ina", "fi"
+ printk2 nums[0]
+ printk2 nums[1] 
+endin
+
+instr 2
+ OSCsend 0, "localhost", 7000, "/csound/event/instr", "ffff", 1, 0, 1, 300
+ OSCsend 1, "localhost", 7000, "/csound/channel/freq/amp", "ff", p4, p5
+ OSCsend 2, "localhost", 7000, "/in", "fsi", p5, "hello", p4
+ OSCsend 3, "localhost", 7000, "/ina", "fi", p5, p4
+ OSCsend 4, "localhost", 7000, "/csound/event", "s", "i3 4 1"
+ OSCsend 5, "localhost", 7000, "/csound/compile", "s", "schedule 1,2,2,500"
+endin
+
+instr 3
+ OSCsend 0, "localhost", 7000, "/csound/stop"
+endin
+
+<emphasis role="nt">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="nt">&lt;CsScore&gt;</emphasis>
+i2 0 2 1 0.2
+<emphasis role="nt">&lt;/CsScore&gt;</emphasis>
+<emphasis role="nt">&lt;/CsoundSynthesizer&gt;</emphasis>
+</programlisting>
 </section>
