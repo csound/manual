@@ -1,11 +1,13 @@
-# This script generates the opcode.json file. It reads the XML files in 
-# the opcodes directory and generates a JSON file with the opcodes and 
-# their descriptions. Licensed under the GPL licence version 3 or later
-# It is based on the opcodeparser.py 
+# This script generates the opcode.json file with functionalSynopsis
+# by Andres Cabrera June 2006-2010
+# Licensed under the GPL licence version 3 or later
+# modification for empty arg in command and links on opcodes by Francois Pinot February 2007
 
 from __future__ import print_function
 
-import os, glob, json
+import os
+import glob
+import json
 from xml.dom import minidom
 
 # categories holds the list of valid categories for opcodes
@@ -87,6 +89,38 @@ def clean_synopsis(synopsis_list):
     # Join the cleaned synopsis with line breaks
     return '\n'.join(synopsis_texts), opcode_name
 
+# Function to create functional-style synopsis
+def create_functional_synopsis(synopsis_text):
+    functional_texts = []
+    lines = synopsis_text.split('\n')
+
+    for line in lines:
+        if '**' in line:
+            parts = line.split(' ')
+            result_var = parts[0]  # First part is the variable (e.g., ares)
+            opcode = None
+
+            # Check if there's an opcode after the variable
+            if len(parts) > 1 and '**' in parts[1]:
+                opcode = parts[1].replace('**', '')  # Extract opcode name
+
+            params = ' '.join(parts[2:]) if len(parts) > 2 else ''  # Join remaining parts as parameters
+
+            # Determine type based on first letter of result_var
+            if result_var.startswith('a'):
+                opcode_type = 'a'
+            elif result_var.startswith('k'):
+                opcode_type = 'k'
+            else:
+                opcode_type = 'unknown'
+
+            if opcode:  # Only add if opcode is not None
+                # Reformat to functional style
+                functional_line = f"{result_var} = **{opcode}:{opcode_type}**({params})"
+                functional_texts.append(functional_line)
+
+    return '\n'.join(functional_texts)
+
 # Process each opcode XML file
 for i, filename in enumerate(files):
     source = open(filename, 'r')
@@ -108,10 +142,16 @@ for i, filename in enumerate(files):
 
         if not opcode_name:
             opcode_name = ""  # Fallback in case no <opcodename> or <command> tag is found
+        functional_synopsis = create_functional_synopsis(cleaned_synopsis)
+
         entry = {
             'synopsis': cleaned_synopsis,
-            'opcodeName': opcode_name
+            'opcodeName': opcode_name,
+            'functionalSynopsis': functional_synopsis
         }
+    else:
+        # If using special entries, make sure to initialize functionalSynopsis
+        entry['functionalSynopsis'] = ''  # Initialize to empty string
 
     info = xmldoc.getElementsByTagName('refentryinfo')
     if info and entry:
@@ -149,7 +189,8 @@ for i, category in enumerate(categories):
         opcode_entry = {
             'description': description if description else '',
             'synopsis': entrydef['synopsis'],
-            'opcodeName': entrydef['opcodeName']
+            'opcodeName': entrydef['opcodeName'],
+            'functionalSynopsis': entrydef.get('functionalSynopsis', '')  # Use .get() to avoid KeyError
         }
         category_entry['opcodes'].append(opcode_entry)
     json_data['opcodes'].append(category_entry)
