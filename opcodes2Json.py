@@ -4,7 +4,6 @@
 # modification for empty arg in command and links on opcodes by Francois Pinot February 2007
 
 from __future__ import print_function
-
 import os
 import glob
 import json
@@ -123,13 +122,18 @@ def create_functional_synopsis(synopsis_text):
 
 # Process each opcode XML file
 for i, filename in enumerate(files):
-    source = open(filename, 'r')
+    source = open(filename, 'r', encoding='utf-8')
     entryText = source.read().replace("\xef\xbb\xbf", "")
     newfile = headerText + '<book id="index" lang="en">' + entryText + '</book>'
-    newfile = newfile.replace("\r", "")
+    newfile = newfile.replace("\r", "").strip()  # Remove any trailing whitespace/newlines
     source.close()
 
-    xmldoc = minidom.parseString(newfile)
+    try:
+        xmldoc = minidom.parseString(newfile)
+    except Exception as e:
+        print(f"Error parsing XML from file {filename}: {e}")
+        continue  # Skip this file and continue to the next one
+
     xmldocId = xmldoc.documentElement.getAttribute('id')
 
     # Some files need special treatment (adds, dollar, divides, etc.)
@@ -138,6 +142,7 @@ for i, filename in enumerate(files):
 
     if entry is None:
         synopsis = xmldoc.getElementsByTagName('synopsis')
+        
         cleaned_synopsis, opcode_name = clean_synopsis(synopsis)
 
         if not opcode_name:
