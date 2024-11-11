@@ -44,9 +44,9 @@ instr 1
   ; Both sum and difference frequencies can be 
   ; output at once.
   ; aupshift corresponds to the sum frequencies.
-  aupshift = (amod1 - amod2) * 0.7
+  aupshift = (amod1 + amod2) * 0.7
   ; adownshift corresponds to the difference frequencies. 
-  adownshift = (amod1 + amod2) * 0.7
+  adownshift = (amod1 - amod2) * 0.7
 
   ; Notice that the adding of the two together is
   ; identical to the output of ring modulation.
