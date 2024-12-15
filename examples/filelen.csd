@@ -32,8 +32,8 @@ endin
 </CsInstruments>
 <CsScore>
 
-i 1 0 3 "fox.wav"	; mono signal
-i 1 5 4 "drumsSlp.wav"	; stereo signal
+i 1 0 8 "Mathews.wav"	; mono signal
+i 1 8 4 "drumsSlp.wav"	; stereo signal
 e
 </CsScore>
 </CsoundSynthesizer>
