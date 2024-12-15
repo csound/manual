@@ -35,38 +35,31 @@
           <span class="refentrytitle">OSClisten</span>
         </h2>
         <p>OSClisten — 
-      Listen for OSC messages to a particular path, either from a custom-defined
-       OSC server or from the Csound UDP server.
+      Listen for OSC messages to a particular path.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm224114"></a>
+        <a id="idm232720"></a>
         <h2>Description</h2>
-        <p>Plugin opcode in osc; internal opcode (for UDP server)</p>
+        <p>Plugin opcode in osc.</p>
         <p>
       On each k-cycle looks to see if an OSC message has been sent to
       a given path of a given type.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm224118"></a>
+        <a id="idm232724"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">kans <span class="command"><strong>OSClisten</strong></span> ihandle, idest, itype [, xdata1, xdata2, ...]</pre>
-        <pre class="synopsis">kans, kdata[] <span class="command"><strong>OSClisten</strong></span> ihandle,
-    idest, itype</pre>
-        <pre class="synopsis">kans, ... <span class="command"><strong>OSClisten</strong></span> idest, itype</pre>
+        <pre class="synopsis">kans, kdata[] <span class="command"><strong>OSClisten</strong></span> ihandle, idest, itype</pre>
       </div>
       <div class="refsect1">
-        <a id="idm224126"></a>
+        <a id="idm232730"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>ihandle</em></span>
-      -- In the first two versions (overloads) of the opcode, a handle
-      returned by an earlier call to OSCinit,
-      to associate
-      OSClisten with a particular port number. The third overload does
-      not take a handle as it will listen for messages
-      sent to the Csound <a class="link" href="udpserver.html" title="UDP Server"><em class="citetitle">UDP server</em></a>. 
+      -- a handle returned by an earlier call to OSCinit, to associate
+      OSClisten with a particular port number.
     </p>
         <p>
       <span class="emphasis"><em>idest</em></span>
@@ -90,7 +83,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm224137"></a>
+        <a id="idm232739"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>kans</em></span> -- set to 1 if a new message was
@@ -120,15 +113,9 @@
       array will be filled with the incoming values. See below for an example of
       this usage.
     </p>
-        <p>
-     The third overload uses a different number of outputs of
-     different types (k or S) to store messages matching address and
-     type, which are coming into the UDP server. It only accepts
-     scalar values ("dfhi")  or strings ("s"). 
-    </p>
       </div>
       <div class="refsect1">
-        <a id="idm224150"></a>
+        <a id="idm232751"></a>
         <h2>Example</h2>
         <p>
       This example shows a pair of floating point numbers being received
@@ -186,15 +173,15 @@ ex:
 
       </p>
         <div class="example">
-          <a id="idm224188"></a>
+          <a id="idm232789"></a>
           <p class="title">
-            <strong>Example 697. Example of the OSC opcodes.</strong>
+            <strong>Example 704. Example of the OSC opcodes.</strong>
           </p>
           <div class="example-contents">
             <p>The following two .csd files demonstrate the usage of the OSC opcodes in csound. The first file, <a class="ulink" href="examples/OSCmidisend.csd" target="_top"><em class="citetitle">OSCmidisend.csd</em></a>, transforms received real-time MIDI messages into OSC data. The second file, <a class="ulink" href="examples/OSCmidircv.csd" target="_top"><em class="citetitle">OSCmidircv.csd</em></a>, can take these OSC messages, and intrepret them to generate sound from note messages, and store controller values. It will use controller number 7 to control volume. Note that these files are designed to be on the same machine, but if a different host address (in the IPADDRESS macro) is used, they can be separate machines on a network, or connected through the internet.</p>
             <p>CSD file to send OSC messages:</p>
             <div class="refsect1">
-              <a id="idm224196"></a>
+              <a id="idm232797"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -237,7 +224,7 @@ ex:
             </div>
             <p>CSD file to receive OSC messages:</p>
             <div class="refsect1">
-              <a id="idm224319"></a>
+              <a id="idm232920"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="c1">; network_recv.csd</span>
@@ -341,80 +328,30 @@ ex:
         </div>
         <p><br class="example-break" />
     </p>
-        <p>
-      The next example demonstrates the usage of the third overload of
-      the OSClisten opcode. It uses the fils <a class="ulink" href="examples/OSClistenex2.csd" target="_top"><em class="citetitle">OSClistenex2.csd</em></a>.
-    </p>
-        <div class="refsect1">
-          <a id="idm224880"></a>
-          <pre class="programlisting">
-<span class="nt">&lt;CsoundSynthesizer&gt;</span>
-<span class="nt">&lt;CsOptions&gt;</span>
--odac --port=7000
-<span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
-
-</span><span class="vg">0dbfs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
-
-</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
- </span>f<span class="n">req</span><span class="p">:</span><span class="n">k</span><span class="w"> </span><span class="nb">chnget</span><span class="w"> </span><span class="s">"freq"</span><span class="w">
- </span>a<span class="n">mp</span><span class="p">:</span><span class="n">k</span><span class="w">  </span><span class="nb">chnget</span><span class="w"> </span><span class="s">"amp"</span><span class="w">
-    </span><span class="nb">out</span><span class="w"> </span><span class="nb">oscili</span><span class="p">(</span><span class="vg">0dbfs</span><span class="o">*</span>a<span class="n">mp</span><span class="p">,</span><span class="w"> </span><span class="vi">p4</span><span class="o">*</span>f<span class="n">req</span><span class="p">)</span><span class="w">
- </span><span class="n">status</span><span class="p">:</span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">:</span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">mess</span><span class="p">:</span><span class="n">S</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">:</span><span class="n">k</span><span class="w"> </span><span class="nb">OSClisten</span><span class="w"> </span><span class="s">"/in"</span><span class="p">,</span><span class="w"> </span><span class="s">"fsi"</span><span class="w">
- </span><span class="nb">puts</span><span class="w"> </span><span class="n">mess</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="w">
- </span><span class="nb">printk2</span><span class="w"> </span><span class="n">n</span><span class="w">
- </span><span class="nb">printk2</span><span class="w"> </span><span class="n">f</span><span class="w">
- </span><span class="n">status</span><span class="p">,</span><span class="w"> </span><span class="n">nums</span><span class="p">:</span><span class="n">k</span><span class="p">[]</span><span class="w"> </span><span class="nb">OSClisten</span><span class="w"> </span><span class="s">"/ina"</span><span class="p">,</span><span class="w"> </span><span class="s">"fi"</span><span class="w">
- </span><span class="nb">printk2</span><span class="w"> </span><span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w">
- </span><span class="nb">printk2</span><span class="w"> </span><span class="n">nums</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> 
-</span><span class="kd">endin</span><span class="w">
-
-</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">
- </span><span class="nb">OSCsend</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">"localhost"</span><span class="p">,</span><span class="w"> </span><span class="mi">7000</span><span class="p">,</span><span class="w"> </span><span class="s">"/csound/event/instr"</span><span class="p">,</span><span class="w"> </span><span class="s">"ffff"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">300</span><span class="w">
- </span><span class="nb">OSCsend</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">"localhost"</span><span class="p">,</span><span class="w"> </span><span class="mi">7000</span><span class="p">,</span><span class="w"> </span><span class="s">"/csound/channel/freq/amp"</span><span class="p">,</span><span class="w"> </span><span class="s">"ff"</span><span class="p">,</span><span class="w"> </span><span class="vi">p4</span><span class="p">,</span><span class="w"> </span><span class="vi">p5</span><span class="w">
- </span><span class="nb">OSCsend</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">"localhost"</span><span class="p">,</span><span class="w"> </span><span class="mi">7000</span><span class="p">,</span><span class="w"> </span><span class="s">"/in"</span><span class="p">,</span><span class="w"> </span><span class="s">"fsi"</span><span class="p">,</span><span class="w"> </span><span class="vi">p5</span><span class="p">,</span><span class="w"> </span><span class="s">"hello"</span><span class="p">,</span><span class="w"> </span><span class="vi">p4</span><span class="w">
- </span><span class="nb">OSCsend</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s">"localhost"</span><span class="p">,</span><span class="w"> </span><span class="mi">7000</span><span class="p">,</span><span class="w"> </span><span class="s">"/ina"</span><span class="p">,</span><span class="w"> </span><span class="s">"fi"</span><span class="p">,</span><span class="w"> </span><span class="vi">p5</span><span class="p">,</span><span class="w"> </span><span class="vi">p4</span><span class="w">
- </span><span class="nb">OSCsend</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="s">"localhost"</span><span class="p">,</span><span class="w"> </span><span class="mi">7000</span><span class="p">,</span><span class="w"> </span><span class="s">"/csound/event"</span><span class="p">,</span><span class="w"> </span><span class="s">"s"</span><span class="p">,</span><span class="w"> </span><span class="s">"i3 4 1"</span><span class="w">
- </span><span class="nb">OSCsend</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="s">"localhost"</span><span class="p">,</span><span class="w"> </span><span class="mi">7000</span><span class="p">,</span><span class="w"> </span><span class="s">"/csound/compile"</span><span class="p">,</span><span class="w"> </span><span class="s">"s"</span><span class="p">,</span><span class="w"> </span><span class="s">"schedule 1,2,2,500"</span><span class="w">
-</span><span class="kd">endin</span><span class="w">
-
-</span><span class="kd">instr</span><span class="w"> </span><span class="nf">3</span><span class="w">
- </span><span class="nb">OSCsend</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">"localhost"</span><span class="p">,</span><span class="w"> </span><span class="mi">7000</span><span class="p">,</span><span class="w"> </span><span class="s">"/csound/stop"</span><span class="w">
-</span><span class="kd">endin</span><span class="w">
-
-</span><span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span><span class="w">
-</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mf">0.2</span><span class="w">
-</span><span class="nt">&lt;/CsScore&gt;</span>
-<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
-</pre>
-        </div>
       </div>
       <div class="refsect1">
-        <a id="idm225175"></a>
-        <h2>See also</h2>
+        <a id="idm233478"></a>
+        <h2>See Also</h2>
         <p>
-          <a class="link" href="OSCNetwork.html#OSC" title="OSC">
-            <em class="citetitle">OSC (Open Sound Control)</em>
-          </a>
-        </p>
+        <a class="link" href="OSCsend.html" title="OSCsend"><em class="citetitle">OSCsend</em></a>,
+        <a class="link" href="OSCinit.html" title="OSCinit"><em class="citetitle">OSCinit</em></a>
+      </p>
         <p> More information on this opcode: <a class="ulink" href="http://www.youtube.com/watch?v=JX1C3TqP_9Y" target="_top"><em class="citetitle">http://www.youtube.com/watch?v=JX1C3TqP_9Y</em></a>  , made by Andrés Cabrera </p>
       </div>
       <div class="refsect1">
-        <a id="idm225183"></a>
+        <a id="idm233488"></a>
         <h2>Credits</h2>
         <p>
       </p>
         <table border="0" summary="Simple list" class="simplelist">
           <tr>
-            <td>Author: John ffitch Victor Lazzarini</td>
+            <td>Author: John ffitch</td>
           </tr>
           <tr>
-            <td>2005, 2024</td>
+            <td>2005</td>
           </tr>
           <tr>
-            <td>Examples by: David Akbari, Andrés Cabrera and Jonathan
-        Murphy 2007; Victor Lazzarini 2024</td>
+            <td>Examples by: David Akbari, Andrés Cabrera and Jonathan Murphy 2007</td>
           </tr>
         </table>
         <p>
@@ -426,11 +363,7 @@ ex:
             <td>types aAG are new in Csound 6.07</td>
           </tr>
           <tr>
-            <td>the use an an array for outputs is new in Csound
-        6.12</td>
-          </tr>
-          <tr>
-            <td>UDP server support new in Csound 7.0</td>
+            <td>the use an an array for outputs is new in Csound 6.12</td>
           </tr>
         </table>
         <p>

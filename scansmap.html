@@ -39,7 +39,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm290438"></a>
+        <a id="idm298995"></a>
         <h2>Description</h2>
         <p>Plugin opcode in scansyn.</p>
         <p>
@@ -47,12 +47,12 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm290442"></a>
+        <a id="idm298999"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>scansmap</strong></span> kpos, kvel, iscan, kamp, kvamp [, iwhich]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm290446"></a>
+        <a id="idm299003"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>iscan</em></span> -- which scan process to write
@@ -62,7 +62,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm290452"></a>
+        <a id="idm299009"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>kpos</em></span> -- the node's position.
@@ -81,101 +81,15 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm290467"></a>
-        <h2>Examples</h2>
+        <a id="idm299024"></a>
+        <h2>See Also</h2>
         <p>
-      Here is an example of the scansmap opcode. It uses the file <a class="ulink" href="examples/scansmap.csd" target="_top"><em class="citetitle">scansmap.csd</em></a>.
-      </p>
-        <div class="example">
-          <a id="idm290472"></a>
-          <p class="title">
-            <strong>Example 943. Example of the scansmap opcode.</strong>
-          </p>
-          <div class="example-contents">
-            <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
-            <div class="refsect1">
-              <a id="idm290479"></a>
-              <pre class="programlisting">
-<span class="nt">&lt;CsoundSynthesizer&gt;</span>
-<span class="nt">&lt;CsOptions&gt;</span>
-<span class="c1">; Select audio/midi flags here according to platform</span>
--odac  --limiter=0.95 <span class="c1">;;;realtime audio out &amp; and limit loud sounds</span>
-<span class="c1">; For Non-realtime ouput leave only the line below:</span>
-<span class="c1">; -o scansmao.wav -W ;;; for file output any platform</span>
-<span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
-
-</span><span class="vg">sr</span><span class="o">=</span><span class="mi">44100</span><span class="w">
-</span><span class="vg">ksmps</span><span class="o">=</span><span class="mi">32</span><span class="w">
-</span><span class="vg">nchnls</span><span class="o">=</span><span class="mi">2</span><span class="w">
-</span><span class="vg">0dbfs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
-
-</span><span class="c1">; by Menno Knevel - 2024</span><span class="w">
-</span><span class="c1">; listen carefully: changes are subtle as only one node of the 128 is replaced each time!</span><span class="w">
-
-</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">	</span><span class="c1">;replace 2 nodes- first 5 then 89</span><span class="w">
-
-</span>a<span class="n">0</span><span class="w"> </span><span class="nb">init</span><span class="w"> </span><span class="mi">0</span><span class="w">
-</span>i<span class="n">rate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">.002</span><span class="w">                              </span><span class="c1">; rather fast scanning rate</span><span class="w">
-</span><span class="c1">; scanu2 init, irate, ifndisplace, ifnmass, ifnmatrix, ifncentr, ifndamp, kmass,</span><span class="w">
-</span><span class="nb">scanu2</span><span class="w">     </span><span class="mi">1</span><span class="p">,</span><span class="w">  </span>i<span class="n">rate</span><span class="p">,</span><span class="w">      </span><span class="mi">6</span><span class="p">,</span><span class="w">         </span><span class="mi">2</span><span class="p">,</span><span class="w">         </span><span class="mi">3</span><span class="p">,</span><span class="w">        </span><span class="mi">4</span><span class="p">,</span><span class="w">        </span><span class="mi">5</span><span class="p">,</span><span class="w">     </span><span class="mi">2</span><span class="p">,</span>\<span class="w">
-           </span><span class="mi">9</span><span class="p">,</span><span class="w">      </span><span class="mf">.01</span><span class="p">,</span><span class="w">    </span><span class="mf">.01</span><span class="p">,</span><span class="w">   </span><span class="mf">.1</span><span class="p">,</span><span class="w">    </span><span class="mf">.9</span><span class="p">,</span><span class="w">    </span><span class="mi">0</span><span class="p">,</span><span class="w">     </span><span class="mi">0</span><span class="p">,</span><span class="w">     </span>a<span class="n">0</span><span class="p">,</span><span class="w">    </span><span class="mi">0</span><span class="p">,</span><span class="w">   </span><span class="mi">1</span><span class="w">
- </span><span class="c1">;    kmtrxstiff, kcentr, kdamp, ileft, iright, kpos, kdisplace, ain, idisp, id</span><span class="w">
-</span>k<span class="n">pos</span><span class="p">,</span>k<span class="n">vel</span><span class="w">   </span><span class="n">scanmap</span><span class="w">     </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="vi">p4</span><span class="w">              </span><span class="c1">; just read what is going on with node </span><span class="w">
-            </span><span class="n">scansmap</span><span class="w">    </span><span class="vi">p5</span><span class="p">,</span><span class="w"> </span><span class="vi">p6</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="vi">p4</span><span class="w">      </span><span class="c1">; set new parameters for this node     </span><span class="w">
-  
-</span><span class="nb">prints</span><span class="w"> </span><span class="s">"</span><span class="se">\n</span><span class="s">node </span><span class="si">%d</span><span class="s">: set position to </span><span class="si">%0.1f</span><span class="s">, set velocity to </span><span class="si">%0.1f</span><span class="s"> </span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="vi">p4</span><span class="p">,</span><span class="w"> </span><span class="vi">p5</span><span class="p">,</span><span class="w"> </span><span class="vi">p6</span><span class="w">
-</span><span class="nb">printks</span><span class="w"> </span><span class="s">"         present  amplitude = </span><span class="si">%f</span><span class="s">, position = </span><span class="si">%f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="mf">.2</span><span class="p">,</span><span class="w"> </span>k<span class="n">vel</span><span class="p">,</span><span class="w"> </span>k<span class="n">pos</span><span class="w">
-
-</span>a<span class="n">1</span><span class="w">  </span><span class="nb">scans</span><span class="w"> </span><span class="nb">ampdb</span><span class="p">(</span><span class="mi">87</span><span class="p">),</span><span class="w"> </span><span class="nb">cpspch</span><span class="p">(</span><span class="mf">7.00</span><span class="p">),</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">    </span><span class="mi">1</span><span class="w">
-</span>a<span class="n">1</span><span class="w">  </span><span class="nb">butlp</span><span class="w">   </span>a<span class="n">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1500</span><span class="w">                             </span><span class="c1">; low pass filter   </span><span class="w">
-</span>a<span class="n">sig</span><span class="w">  </span><span class="nb">dcblock</span><span class="w"> </span>a<span class="n">1</span><span class="w">
-</span><span class="nb">outs</span><span class="w"> </span>a<span class="n">sig</span><span class="o">*</span><span class="mf">.00002</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="o">*</span><span class="mf">.00002</span><span class="w">                   
-
-</span><span class="kd">endin</span><span class="w">
-
-</span><span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span><span class="w">
-
-</span><span class="nb">f</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="o">-</span><span class="mi">7</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">28</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">96</span><span class="w"> </span><span class="mi">0</span><span class="w">     </span><span class="c1">; a pluck that is 10 points wide on the surface</span><span class="w">
-</span><span class="nb">f</span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="o">-</span><span class="mi">7</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="mi">1</span><span class="w">                 </span><span class="c1">; Masses</span><span class="w">
-</span><span class="nb">f</span><span class="mi">3</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">16384</span><span class="w"> </span><span class="o">-</span><span class="mi">23</span><span class="w"> </span><span class="s">"string-128.matrxB"</span><span class="w">  </span><span class="c1">; Spring matrix</span><span class="w">
-</span><span class="nb">f</span><span class="mi">4</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="o">-</span><span class="mi">7</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="c1">; uniform initial centering</span><span class="w">
-</span><span class="nb">f</span><span class="mi">5</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="o">-</span><span class="mi">7</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="mi">1</span><span class="w">                 </span><span class="c1">; uniform damping</span><span class="w">
-</span><span class="nb">f</span><span class="mi">6</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="o">-</span><span class="mi">7</span><span class="w"> </span><span class="mf">.01</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="mf">.01</span><span class="w">             </span><span class="c1">; uniform initial velocity</span><span class="w">
-</span><span class="nb">f</span><span class="mi">7</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="o">-</span><span class="mi">7</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="mi">128</span><span class="w">              </span><span class="c1">; trajectory</span><span class="w">
-
-</span><span class="nb">i</span><span class="mi">1</span><span class="w">	</span><span class="mf">0.0</span><span class="w">	</span><span class="mi">5</span><span class="w">	</span><span class="mi">5</span><span class="w">	</span><span class="mi">0</span><span class="w">	</span><span class="mi">0</span><span class="w">
-</span><span class="nb">i</span><span class="mi">1</span><span class="w">	</span><span class="mf">5.0</span><span class="w">	</span><span class="mi">5</span><span class="w">	</span><span class="mi">89</span><span class="w">	</span><span class="mi">0</span><span class="w">	</span><span class="mi">0</span><span class="w">
-</span><span class="nb">i</span><span class="mi">1</span><span class="w">	</span><span class="mf">11.0</span><span class="w">	</span><span class="mi">5</span><span class="w">	</span><span class="mi">5</span><span class="w">	</span><span class="mi">0</span><span class="w">	</span><span class="mi">1</span><span class="w">
-</span><span class="nb">i</span><span class="mi">1</span><span class="w">	</span><span class="mf">16.0</span><span class="w">	</span><span class="mi">5</span><span class="w">	</span><span class="mi">89</span><span class="w">	</span><span class="mi">0</span><span class="w">	</span><span class="mi">1</span><span class="w">
-</span><span class="nb">i</span><span class="mi">1</span><span class="w">	</span><span class="mf">22.0</span><span class="w">	</span><span class="mi">5</span><span class="w">	</span><span class="mi">5</span><span class="w">	</span><span class="mi">1</span><span class="w">	</span><span class="mi">0</span><span class="w">
-</span><span class="nb">i</span><span class="mi">1</span><span class="w">	</span><span class="mf">27.0</span><span class="w">	</span><span class="mi">5</span><span class="w">	</span><span class="mi">89</span><span class="w">	</span><span class="mi">1</span><span class="w">	</span><span class="mi">0</span><span class="w">
-</span><span class="nb">i</span><span class="mi">1</span><span class="w">	</span><span class="mf">33.0</span><span class="w">	</span><span class="mi">5</span><span class="w">	</span><span class="mi">5</span><span class="w">	</span><span class="mi">1</span><span class="w">	</span><span class="mi">1</span><span class="w">
-</span><span class="nb">i</span><span class="mi">1</span><span class="w">	</span><span class="mf">38.0</span><span class="w">	</span><span class="mi">5</span><span class="w">	</span><span class="mi">89</span><span class="w">	</span><span class="mi">1</span><span class="w">	</span><span class="mi">1</span><span class="w">
-</span><span class="nb">e</span><span class="w">
-
-</span><span class="nt">&lt;/CsScore&gt;</span>
-<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
-</pre>
-            </div>
-          </div>
-        </div>
-        <p><br class="example-break" />
+More information on Scanned Synthesis (as well as several other matrices) is available on the <a class="ulink" href="http://www.csounds.com/scanned/" target="_top"><em class="citetitle">Scanned Synthesis page</em></a> at cSounds.com.
     </p>
+        <p> Also an article on these opcodes: <a class="ulink" href="http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html" target="_top"><em class="citetitle">http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html</em></a>  , written by Steven Yi </p>
       </div>
       <div class="refsect1">
-        <a id="idm290966"></a>
-        <h2>See also</h2>
-        <p>
-          <a class="link" href="SiggenScanTop.html" title="Scanned Synthesis">
-            <em class="citetitle">Scanned Synthesis</em>
-          </a>
-        </p>
-        <p> More information on the Scanned Synthesis opcodes: <a class="ulink" href="http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html" target="_top"><em class="citetitle">Working with Scanned Synthesis</em></a>, written by Steven Yi, and some <a class="ulink" href="http://www.csounds.com/scanned/" target="_top"><em class="citetitle">tutorials</em></a> by Richard Boulanger.</p>
-      </div>
-      <div class="refsect1">
-        <a id="idm290976"></a>
+        <a id="idm299032"></a>
         <h2>Credits</h2>
         <p>Author: John ffitch</p>
         <p>New in version 6.17</p>
