@@ -18,7 +18,7 @@ kcnt     init         0
 ifftsize =            2048
 ihop     =            ifftsize/4
 
-a1       diskin2      "drumsMlp.wav", 1, 0, 1
+a1       diskin2      "beats.wav", 1, 0, 1
 fsig1    pvsanal      a1*.5, ifftsize, ihop, ifftsize, 1
 ih, kt   pvsbuffer    fsig1, 2
 

@@ -18,7 +18,7 @@
 
     instr 1
 
-  Sfile	    =    "drumsMlp.wav"
+  Sfile	    =    "beats.wav"
 
   ilen	    filelen   Sfile  ; Find length
   isr	    filesr    Sfile  ; Find sample rate

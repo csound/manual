@@ -16,11 +16,11 @@ nchnls = 2
 ; by Menno Knevel 2021
 
 gilen1  filelen "flute.aiff"    ; get length of soundfiles
-gilen2  filelen "drumsMlp.wav"
+gilen2  filelen "beats.wav"
 
 ; analyze sound files and output results to pvoc-ex files
 ires1 system_i 1,{{ pvanal flute.aiff flute.pvx }} ; use default settings
-ires2 system_i 1,{{ pvanal drumsMlp.wav beats.pvx }}  
+ires2 system_i 1,{{ pvanal beats.wav beats.pvx }}  
 
 instr 1 ; untreated signals
 
@@ -46,7 +46,7 @@ endin
 <CsScore>
 s
 i1 0 2.62   "flute.aiff"
-i1 3 2      "drumsMlp.wav"
+i1 3 2      "beats.wav"
 s
 i2 1 3
 i2 5 10

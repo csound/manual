@@ -7,7 +7,7 @@
 ;browse for text files in current directory
 instr 1
 iCnt init 0
-SFilenames[] directory ".", ".wav"
+SFilenames[] directory ".", ".txt"
 iNumberOfFiles lenarray SFilenames
 
 until iCnt>=iNumberOfFiles do

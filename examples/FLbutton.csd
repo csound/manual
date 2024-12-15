@@ -61,7 +61,7 @@ icount = 1
 maxalloc insnum, icount
 
 instr 1
-    asig diskin2 "drumsMlp.wav", p4, 0, 1
+    asig diskin2 "beats.wav", p4, 0, 1
     outs asig, asig
 endin
 

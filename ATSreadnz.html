@@ -38,19 +38,19 @@
         </p>
       </div>
       <div class="refsect1">
-        <a id="idm33983"></a>
+        <a id="idm38760"></a>
         <h2>Description</h2>
         <p>
             <span class="emphasis"><em>ATSreadnz</em></span> returns the energy (<span class="emphasis"><em>kenergy</em></span>) of a user specified noise band (1-25 bands) at the time indicated by the time pointer <span class="emphasis"><em>ktimepnt</em></span>.
         </p>
       </div>
       <div class="refsect1">
-        <a id="idm33989"></a>
+        <a id="idm38766"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">kenergy <span class="command"><strong>ATSreadnz</strong></span> ktimepnt, iatsfile, iband</pre>
       </div>
       <div class="refsect1">
-        <a id="idm33993"></a>
+        <a id="idm38770"></a>
         <h2>Initialization</h2>
         <p>
             <span class="emphasis"><em>iatsfile</em></span> – the ATS number (n in ats.n) or the name in quotes of the analysis file made using <a class="link" href="UtilityAtsa.html" title="atsa"><em class="citetitle">ATSA</em></a>.
@@ -60,7 +60,7 @@
         </p>
       </div>
       <div class="refsect1">
-        <a id="idm34001"></a>
+        <a id="idm38778"></a>
         <h2>Performance</h2>
         <p>
             <span class="emphasis"><em>kenergy</em></span> outputs the linearly interpolated energy of the noise band indicated in <span class="emphasis"><em>iband</em></span>. The output is dependent on the data in the analysis file and the <span class="emphasis"><em>ktimepnt</em></span>.
@@ -72,7 +72,7 @@
         </p>
       </div>
       <div class="refsect1">
-        <a id="idm34019"></a>
+        <a id="idm38796"></a>
         <h2>Examples</h2>
         <pre class="programlisting">
   ktime   <span class="opc">line</span>      2.5, p3, 0
@@ -97,13 +97,13 @@
       Here is a complete example of the ATSreadnz opcode. It uses the file <a class="ulink" href="examples/ATSreadnz.csd" target="_top"><em class="citetitle">ATSreadnz.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm34038"></a>
+          <a id="idm38815"></a>
           <p class="title">
             <strong>Example 80. Another example of the ATSreadnz opcode.</strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
-              <a id="idm34040"></a>
+              <a id="idm38817"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -118,26 +118,26 @@
 </span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
 </span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
 </span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
-</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-</span><span class="c1">; by Menno Knevel - 2023</span><span class="w">
+</span><span class="c1">; by Menno Knevel - 2021</span><span class="w">
 
-</span>i<span class="n">res</span><span class="w"> </span><span class="nb">system_i</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="s">{{ atsa Mathews.wav Mathews.ats }}</span><span class="w"> </span><span class="c1">; default settings</span><span class="w">
+</span>i<span class="n">res</span><span class="w"> </span><span class="nb">system_i</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="s">{{ atsa beats.wav beats.ats }}</span><span class="w"> </span><span class="c1">; default settings</span><span class="w">
 
 </span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">	
 
 </span>k<span class="n">time</span><span class="w">	</span><span class="nb">line</span><span class="w">	</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">
-</span>k<span class="n">energy</span><span class="w">	</span><span class="nb">ATSreadnz</span><span class="w"> </span>k<span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="s">"Mathews.ats"</span><span class="p">,</span><span class="w"> </span><span class="vi">p4</span><span class="w"> </span><span class="c1">; return energy from band p4</span><span class="w">
-</span>a<span class="n">noise</span><span class="w">	</span><span class="nb">randi</span><span class="w">	</span>k<span class="n">energy</span><span class="p">,</span><span class="w"> </span><span class="mi">5000</span><span class="w">          
-	</span><span class="nb">outs</span><span class="w">	</span>a<span class="n">noise</span><span class="w"> </span><span class="o">*</span><span class="vi">p5</span><span class="p">,</span><span class="w"> </span>a<span class="n">noise</span><span class="w"> </span><span class="o">*</span><span class="vi">p5</span><span class="w">		</span><span class="c1">; compensate amplitude differences!</span><span class="w">
+</span>k<span class="n">energy</span><span class="w">	</span><span class="nb">ATSreadnz</span><span class="w"> </span>k<span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="s">"beats.ats"</span><span class="p">,</span><span class="w"> </span><span class="vi">p4</span><span class="w"> </span><span class="c1">; return energy from band p4</span><span class="w">
+</span>a<span class="n">noise</span><span class="w">	</span><span class="nb">randi</span><span class="w">	</span>k<span class="n">energy</span><span class="p">,</span><span class="w"> </span><span class="mi">1500</span><span class="w">          
+	</span><span class="nb">outs</span><span class="w">	</span>a<span class="n">noise</span><span class="w"> </span><span class="o">*</span><span class="mf">.7</span><span class="p">,</span><span class="w"> </span>a<span class="n">noise</span><span class="w"> </span><span class="o">*</span><span class="mf">.7</span><span class="w">
 </span><span class="kd">endin</span><span class="w">
 
 </span><span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span><span class="w">
-</span><span class="c1">; 3 different energy bands, compensated by different amplitude values</span><span class="w">
-</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w">  </span><span class="mi">10</span><span class="w">      </span><span class="mi">6</span><span class="w">	</span><span class="mf">.015</span><span class="w">	</span><span class="c1">; loud!!</span><span class="w">
-</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">11</span><span class="w"> </span><span class="mi">10</span><span class="w">      </span><span class="mi">12</span><span class="w"> 	</span><span class="mf">.4</span><span class="w">	</span><span class="c1">; less energy in this band		</span><span class="w">
-</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">22</span><span class="w"> </span><span class="mi">10</span><span class="w">      </span><span class="mi">17</span><span class="w"> 	</span><span class="mi">1</span><span class="w">	</span><span class="c1">; and even less...</span><span class="w">
+</span><span class="c1">;           band</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">2</span><span class="w">      </span><span class="mi">6</span><span class="w">  </span><span class="c1">; 3 different energy bands</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">2</span><span class="w">      </span><span class="mi">12</span><span class="w"> 
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="mi">2</span><span class="w">      </span><span class="mi">17</span><span class="w"> 
 </span><span class="nb">e</span><span class="w">
 
 </span><span class="nt">&lt;/CsScore&gt;</span>
@@ -150,16 +150,20 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm34195"></a>
+        <a id="idm38960"></a>
         <h2>See also</h2>
-        <p>
-          <a class="link" href="SpectralATS.html" title="ATS Spectral Processing">
-            <em class="citetitle">ATS Spectral Processing</em>
-          </a>
-        </p>
+        <p><a class="link" href="ATSread.html" title="ATSread"><em class="citetitle">ATSread</em></a>, 
+            <a class="link" href="ATSinfo.html" title="ATSinfo"><em class="citetitle">ATSinfo</em></a>, 
+            <a class="link" href="ATSbufread.html" title="ATSbufread"><em class="citetitle">ATSbufread</em></a>, 
+            <a class="link" href="ATScross.html" title="ATScross"><em class="citetitle">ATScross</em></a>, 
+            <a class="link" href="ATSinterpread.html" title="ATSinterpread"><em class="citetitle">ATSinterpread</em></a>, 
+            <a class="link" href="ATSpartialtap.html" title="ATSpartialtap"><em class="citetitle">ATSpartialtap</em></a>, 
+            <a class="link" href="ATSadd.html" title="ATSadd"><em class="citetitle">ATSadd</em></a>, 
+            <a class="link" href="ATSaddnz.html" title="ATSaddnz"><em class="citetitle">ATSaddnz</em></a>, 
+            <a class="link" href="ATSsinnoi.html" title="ATSsinnoi"><em class="citetitle">ATSsinnoi</em></a></p>
       </div>
       <div class="refsect1">
-        <a id="idm34200"></a>
+        <a id="idm38981"></a>
         <h2>Credits</h2>
         <p>
             </p>

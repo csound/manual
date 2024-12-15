@@ -19,7 +19,7 @@ iwtype   = 1
 kpos  = p4
 
 asig1 diskin2 "fox.wav",1,0,1
-asig2 diskin2 "drumsMlp.wav",1,0,1
+asig2 diskin2 "beats.wav",1,0,1
 aL, aR pan2 asig1,0.25
 aL1, aR1 pan2 asig2,0.75
 

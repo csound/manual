@@ -128,8 +128,8 @@ void put_val(int senChan, int senVal)
         // the sensor data stream "senVal"
 {       // The packing of the data is sssssvvv 0vvvvvvv where s is a
         // senChan bit, v a senVal bit and 0 is zero` bit
-  int   low = senVal&0x7f;
-  int hi = ((senVal>>7)&0x07) | ((senChan&0x1f)<<3);
+  int low = senVal&0x7f;
+  int hi = ((senVal>>7)&0x0f) | ((senChan&0x0f)<<4);
   Serial.write(low); Serial.write(hi);
 }
 

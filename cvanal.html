@@ -39,20 +39,20 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm434501"></a>
+        <a id="idm439511"></a>
         <h2>Description</h2>
         <p>
       Impulse Response Fourier Analysis for <a class="link" href="convolve.html" title="convolve"><em class="citetitle">convolve</em></a> operator
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm434506"></a>
+        <a id="idm439516"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>csound -U cvanal</strong></span> [flags] infilename outfilename</pre>
         <pre class="synopsis"><span class="command"><strong>cvanal</strong></span> [flags] infilename outfilename</pre>
       </div>
       <div class="refsect1">
-        <a id="idm434512"></a>
+        <a id="idm439522"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>cvanal</em></span> -- converts a soundfile into a single Fourier transform frame. The output file can be used by the <span class="emphasis"><em>convolve</em></span> operator to perform Fast Convolution between an input signal and the original impulse response. Analysis is conditioned by the flags below. A space is optional between the flag and its argument.
@@ -75,7 +75,7 @@
     </p>
       </div>
       <div class="refsect2">
-        <a id="idm434527"></a>
+        <a id="idm439537"></a>
         <h3>Files</h3>
         <p>
         The output file has a special <span class="emphasis"><em>convolve</em></span> header, containing details of the source audio file. The analysis data is stored as <span class="quote">“<span class="quote">float</span>”</span>, in rectangular (real/imaginary) form.
@@ -99,7 +99,7 @@
         </div>
       </div>
       <div class="refsect1">
-        <a id="idm434536"></a>
+        <a id="idm439546"></a>
         <h2>Examples</h2>
         <p>
 
@@ -117,14 +117,14 @@
       Here is an example of the cvanal utility. It uses the file <a class="ulink" href="examples/cvanal.csd" target="_top"><em class="citetitle">cvanal.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm434547"></a>
+          <a id="idm439557"></a>
           <p class="title">
-            <strong>Example 1369. Example of the cvanal utility.</strong>
+            <strong>Example 1353. Example of the cvanal utility.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm434554"></a>
+              <a id="idm439564"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -151,7 +151,7 @@
 
 
 </span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w"> </span><span class="c1">; untreated signal</span><span class="w">
-</span>a<span class="n">sig</span><span class="w">    </span><span class="nb">diskin2</span><span class="w">   </span><span class="s">"drumsMlp.wav"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span>a<span class="n">sig</span><span class="w">    </span><span class="nb">diskin2</span><span class="w">   </span><span class="s">"beats.wav"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="nb">prints</span><span class="w">  </span><span class="s">"</span><span class="se">\n</span><span class="s">---***YOU NOW HEAR THE UNTREATED SOUND SAMPLE***---</span><span class="se">\n</span><span class="s">"</span><span class="w">
 </span><span class="nb">outs</span><span class="w">    </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
 </span><span class="kd">endin</span><span class="w">
@@ -161,7 +161,7 @@
 </span><span class="nb">prints</span><span class="w">  </span><span class="s">"</span><span class="se">\n</span><span class="s">---***YOU NOW HEAR THE RESULT OF THIS ANALYZED FILE:***---</span><span class="se">\n</span><span class="s">"</span><span class="w">
 </span><span class="nb">prints</span><span class="w"> </span><span class="s">"--**used duration of impulse file = </span><span class="si">%5.3f</span><span class="s"> seconds (total =</span><span class="si">%5.2f</span><span class="s">)**--</span><span class="se">\\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="vi">p5</span><span class="p">,</span><span class="w"> </span>gi<span class="n">len</span><span class="w">
 
-</span>a<span class="n">dry</span><span class="w">    </span><span class="nb">diskin2</span><span class="w"> </span><span class="s">"drumsMlp.wav"</span><span class="w">                 </span><span class="c1">; input (dry) audio</span><span class="w">
+</span>a<span class="n">dry</span><span class="w">    </span><span class="nb">diskin2</span><span class="w"> </span><span class="s">"beats.wav"</span><span class="w">                 </span><span class="c1">; input (dry) audio</span><span class="w">
 </span>a<span class="n">wet1</span><span class="p">,</span><span class="w"> </span>a<span class="n">wet2</span><span class="w"> </span><span class="nb">convolve</span><span class="w"> </span>a<span class="n">dry</span><span class="o">*</span><span class="mf">.8</span><span class="p">,</span><span class="w"> </span><span class="vi">p4</span><span class="w">           </span><span class="c1">; stereo convolved (wet) audio</span><span class="w">
 </span>a<span class="n">wet1</span><span class="w">  </span><span class="o">*=</span><span class="w">  </span><span class="vi">p6</span><span class="w">                               </span><span class="c1">; scale amplitude of impulse sound, Left</span><span class="w">
 </span>a<span class="n">wet2</span><span class="w">  </span><span class="o">*=</span><span class="w">  </span><span class="vi">p6</span><span class="w">                               </span><span class="c1">; &amp; Right channel</span><span class="w">
@@ -188,7 +188,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm434824"></a>
+        <a id="idm439834"></a>
         <h2>Credits</h2>
         <p>Author: Greg Sullivan</p>
         <p>Based on algorithm given in <span class="emphasis"><em>Elements Of Computer Music</em></span>, by F. Richard Moore.</p>

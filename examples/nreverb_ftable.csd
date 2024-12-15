@@ -15,7 +15,7 @@ nchnls = 2
 
 instr 1
 
-a1  soundin "drumsMlp.wav"
+a1  soundin "beats.wav"
 a2  nreverb a1, 1.5, .75, 0, 8, 71, 4, 72
 outs a1 + a2 * .4, a1 + a2 * .4
 

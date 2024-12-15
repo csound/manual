@@ -39,19 +39,19 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm188970"></a>
+        <a id="idm194875"></a>
         <h2>Description</h2>
         <p>
 	Returns the number of iterations corresponding to a given point of complex plane by applying the Mandelbrot set formula.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm188973"></a>
+        <a id="idm194878"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">kiter, koutrig <span class="command"><strong>mandel</strong></span>  ktrig, kx, ky, kmaxIter</pre>
       </div>
       <div class="refsect1">
-        <a id="idm188977"></a>
+        <a id="idm194882"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>kiter</em></span> - number of iterations
@@ -71,27 +71,22 @@
         <p>
      <span class="emphasis"><em>mandel</em></span> is an opcode that allows the use of the Mandelbrot set formula to generate an output that can be applied to any musical (or non-musical) parameter. It has two output arguments: <span class="emphasis"><em>kiter</em></span>, that contains the iteration number of a given point, and <span class="emphasis"><em>koutrig</em></span>, that generates a trigger 'bang' each time <span class="emphasis"><em>kiter</em></span> changes. A new number of iterations is evaluated only when <span class="emphasis"><em>ktrig</em></span> is set to a non-zero value. The coordinates of the complex plane are set in <span class="emphasis"><em>kx</em></span> and <span class="emphasis"><em>ky</em></span>, while <span class="emphasis"><em>kmaxIter</em></span> contains the maximum number of iterations. Output values, which are integer numbers, can be mapped in any sorts of ways by the composer.
      </p>
-        <div class="mediaobject">
-          <img src="images/Mandelbrot.png" />
-        </div>
-        <p>
-     </p>
       </div>
       <div class="refsect1">
-        <a id="idm189001"></a>
+        <a id="idm194903"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the mandel opcode. It uses the file <a class="ulink" href="examples/mandel.csd" target="_top"><em class="citetitle">mandel.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm189006"></a>
+          <a id="idm194908"></a>
           <p class="title">
-            <strong>Example 571. Example of the mandel opcode.</strong>
+            <strong>Example 568. Example of the mandel opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm189013"></a>
+              <a id="idm194915"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -102,69 +97,95 @@
 <span class="c1">; -o mandel.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span><span class="w">
-
-</span><span class="c1">; By Stefano Cucchi 2021</span><span class="w">
-
+</span><span class="c1">;example by Brian Evans</span><span class="w">
 </span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
 </span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
 </span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
-</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">     </span><span class="c1">; FM instrument</span><span class="w">
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
 
-</span>k<span class="n">sig</span><span class="w"> </span><span class="nb">oscil</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="w">                                 </span><span class="c1">; create a trigger signal</span><span class="w">
-</span>k<span class="n">trig</span><span class="w"> </span><span class="nb">trigger</span><span class="w"> </span>k<span class="n">sig</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">
-
-</span>k<span class="n">x</span><span class="w"> </span><span class="nb">linseg</span><span class="w"> </span><span class="vi">p8</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="vi">p9</span><span class="w">                            </span><span class="c1">; in the range -1 1</span><span class="w">
-</span>k<span class="n">y</span><span class="w"> </span><span class="nb">linseg</span><span class="w"> </span><span class="vi">p6</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="vi">p7</span><span class="w">                            </span><span class="c1">; in the range -1 1</span><span class="w">
-</span>k<span class="n">maxIter</span><span class="w"> </span><span class="nb">linseg</span><span class="w"> </span><span class="vi">p4</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="o">*</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="vi">p5</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="o">*</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="vi">p4</span><span class="w">
-
-</span>k<span class="n">iter</span><span class="p">,</span><span class="w"> </span>k<span class="n">outrig</span><span class="w"> </span><span class="nb">mandel</span><span class="w">  </span>k<span class="n">trig</span><span class="p">,</span><span class="w"> </span>k<span class="n">x</span><span class="p">,</span><span class="w"> </span>k<span class="n">y</span><span class="p">,</span><span class="w"> </span>k<span class="n">maxIter</span><span class="w">
-</span><span class="nb">printks2</span><span class="w"> </span><span class="s">"maximum iterations =  </span><span class="si">%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span>k<span class="n">iter</span><span class="w">    </span><span class="c1">; show them</span><span class="w">
-
-</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">foscili</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">440</span><span class="p">,</span><span class="w"> </span>k<span class="n">iter</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">          </span><span class="c1">; use number of iterations to modulate</span><span class="w">
-</span><span class="nb">outs</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
-
+</span>i<span class="n">pitchtable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">						</span><span class="c1">; pitch table in score      </span><span class="w">
+</span>i<span class="n">pitchndx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">p5</span><span class="w">						</span><span class="c1">; p5=pitch index from table</span><span class="w">
+    
+</span>i<span class="n">pitch</span><span class="w"> </span><span class="nb">table</span><span class="w">  </span>i<span class="n">pitchndx</span><span class="p">,</span><span class="w"> </span>i<span class="n">pitchtable</span><span class="w">   
+</span>k<span class="n">env</span><span class="w">   </span><span class="nb">expseg</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">11.5</span><span class="p">,</span><span class="w"> </span><span class="mf">.0001</span><span class="w">              
+</span>a<span class="n">sig</span><span class="w">   </span><span class="nb">pluck</span><span class="w">  </span><span class="nb">ampdb</span><span class="p">(</span><span class="vi">p4</span><span class="p">)</span><span class="o">*</span>k<span class="n">env</span><span class="p">,</span><span class="w"> </span><span class="nb">cpspch</span><span class="p">(</span>i<span class="n">pitch</span><span class="p">),</span><span class="w"> </span><span class="nb">cpspch</span><span class="p">(</span>i<span class="n">pitch</span><span class="p">),</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
+       </span><span class="nb">outs</span><span class="w">   </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
+       
 </span><span class="kd">endin</span><span class="w">
-
-</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">     </span><span class="c1">; grain instrument</span><span class="w">
-
-</span>k<span class="n">sig</span><span class="w"> </span><span class="nb">oscil</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="w">                               </span><span class="c1">; create a trigger signal</span><span class="w">
-</span>k<span class="n">trig</span><span class="w"> </span><span class="nb">trigger</span><span class="w"> </span>k<span class="n">sig</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">
-
-</span>k<span class="n">x</span><span class="w"> </span><span class="nb">linseg</span><span class="w"> </span><span class="vi">p8</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="vi">p9</span><span class="w">                            </span><span class="c1">; in the range -1 1</span><span class="w">
-</span>k<span class="n">y</span><span class="w"> </span><span class="nb">linseg</span><span class="w"> </span><span class="vi">p6</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="vi">p7</span><span class="w">                            </span><span class="c1">; in the range -1 1</span><span class="w">
-</span>k<span class="n">maxIter</span><span class="w"> </span><span class="nb">linseg</span><span class="w"> </span><span class="vi">p4</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="o">*</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="vi">p5</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="o">*</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="vi">p4</span><span class="w">
-
-</span>k<span class="n">iter</span><span class="p">,</span><span class="w"> </span>k<span class="n">outrig</span><span class="w"> </span><span class="nb">mandel</span><span class="w">  </span>k<span class="n">trig</span><span class="p">,</span><span class="w"> </span>k<span class="n">x</span><span class="p">,</span><span class="w"> </span>k<span class="n">y</span><span class="p">,</span><span class="w"> </span>k<span class="n">maxIter</span><span class="w">
-</span><span class="nb">printks2</span><span class="w"> </span><span class="s">"maximum iterations =  </span><span class="si">%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span>k<span class="n">iter</span><span class="w">    </span><span class="c1">; show them</span><span class="w">
-
-</span>i<span class="n">nsnd</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> 
-</span>i<span class="n">basfrq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">ftlen</span><span class="p">(</span>i<span class="n">nsnd</span><span class="p">)</span><span class="w">                  </span><span class="c1">; use original sample rate of insnd file </span><span class="w">
-
-</span>k<span class="n">amp</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mf">.8</span><span class="w">
-</span>k<span class="n">pitch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
-</span>k<span class="n">dens</span><span class="w">  </span><span class="o">=</span><span class="w"> </span>k<span class="n">iter</span><span class="w">
-</span>k<span class="n">aoff</span><span class="w">  </span><span class="nb">line</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mf">.1</span><span class="w">
-</span>k<span class="n">poff</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">
-</span>k<span class="n">gdur</span><span class="w">  </span><span class="o">=</span><span class="mf">.002</span><span class="w">
-</span>i<span class="n">maxgdur</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="mf">.5</span><span class="w"> 
-
-</span>a<span class="n">sig</span><span class="w">  </span><span class="nb">grain</span><span class="w"> </span>k<span class="n">amp</span><span class="p">,</span><span class="w"> </span>k<span class="n">pitch</span><span class="p">,</span><span class="w"> </span>k<span class="n">dens</span><span class="p">,</span><span class="w"> </span>k<span class="n">aoff</span><span class="p">,</span><span class="w"> </span>k<span class="n">poff</span><span class="p">,</span><span class="w"> </span>k<span class="n">gdur</span><span class="p">,</span><span class="w"> </span>i<span class="n">nsnd</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>i<span class="n">maxgdur</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="w"> 
-</span><span class="nb">outs</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
-
-</span><span class="kd">endin</span><span class="w">
-
 </span><span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span><span class="w">
-</span><span class="nb">f</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">4096</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w">   </span><span class="c1">; sinoid wave (instr 1)</span><span class="w">
-</span><span class="nb">f</span><span class="mi">5</span><span class="w">  </span><span class="mi">0</span><span class="w"> </span><span class="mi">512</span><span class="w">  </span><span class="mi">20</span><span class="w"> </span><span class="mi">2</span><span class="w">         </span><span class="c1">; Hanning window (instr 2)</span><span class="w">
 
-</span><span class="c1">;           start   end     X1  X2  Y1  Y2 </span><span class="w">
-</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">10</span><span class="w">    </span><span class="mi">110</span><span class="w">     </span><span class="mi">2000</span><span class="w">    </span><span class="o">-</span><span class="mi">1</span><span class="w">  </span><span class="mi">1</span><span class="w">   </span><span class="o">-</span><span class="mi">1</span><span class="w">  </span><span class="mi">1</span><span class="w">
+</span><span class="nb">f</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">32</span><span class="w"> </span><span class="o">-</span><span class="mi">2</span><span class="w"> </span><span class="mf">6.00</span><span class="w"> </span><span class="mf">6.02</span><span class="w"> </span><span class="mf">6.04</span><span class="w"> </span><span class="mf">6.05</span><span class="w"> </span><span class="mf">6.07</span><span class="w"> </span><span class="mf">6.09</span><span class="w"> </span><span class="mf">6.11</span><span class="w">		</span><span class="c1">; f1 is a pitch table defining a four octave C major scale starting </span><span class="w">
+           </span><span class="mf">7.00</span><span class="w"> </span><span class="mf">7.02</span><span class="w"> </span><span class="mf">7.04</span><span class="w"> </span><span class="mf">7.05</span><span class="w"> </span><span class="mf">7.07</span><span class="w"> </span><span class="mf">7.09</span><span class="w"> </span><span class="mf">7.11</span><span class="w">		</span><span class="c1">; on C two octaves below middle C</span><span class="w">
+           </span><span class="mf">8.00</span><span class="w"> </span><span class="mf">8.02</span><span class="w"> </span><span class="mf">8.04</span><span class="w"> </span><span class="mf">8.05</span><span class="w"> </span><span class="mf">8.07</span><span class="w"> </span><span class="mf">8.09</span><span class="w"> </span><span class="mf">8.11</span><span class="w">
+           </span><span class="mf">9.00</span><span class="w"> </span><span class="mf">9.02</span><span class="w"> </span><span class="mf">9.04</span><span class="w"> </span><span class="mf">9.05</span><span class="w"> </span><span class="mf">9.07</span><span class="w"> </span><span class="mf">9.09</span><span class="w"> </span><span class="mf">9.11</span><span class="w">
 
-</span><span class="c1">;           start   end     X1  X2  Y1  Y2    </span><span class="w">
-</span><span class="nb">i</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">11</span><span class="w"> </span><span class="mi">10</span><span class="w">   </span><span class="mi">120</span><span class="w">      </span><span class="mi">1</span><span class="w">       </span><span class="mi">0</span><span class="w">  </span><span class="mi">1</span><span class="w">   </span><span class="o">-</span><span class="mi">1</span><span class="w">  </span><span class="mi">0</span><span class="w">     
+</span><span class="c1">;ins start   dur ampdb(p4) pitchndx(p5)</span><span class="w">
+
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mi">0</span><span class="w">       </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">3</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">1.5999</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">4</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">3.4000</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">5</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">4.2000</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">6</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">4.4000</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">7</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">4.6000</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">9</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">4.8000</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">10</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">5.0000</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">5</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">5.2000</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">27</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">5.4000</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">5</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">5.6000</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">20</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">6.0000</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">24</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">6.2000</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">2</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">6.4000</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">27</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">6.6000</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">20</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">6.8000</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">15</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">7.0000</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">3</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">7.2000</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">3</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">7.4000</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">23</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">7.6000</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">9</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">7.8000</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">17</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">8.0000</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">18</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">8.2000</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">3</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">8.4000</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">26</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">8.6000</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">15</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">8.8</span><span class="w">     </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">2</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mi">9</span><span class="w">       </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">26</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">9.2</span><span class="w">     </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">8</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">9.3999</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">22</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">9.5999</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">22</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">9.7999</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">20</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">9.9999</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">19</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">10.399</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">20</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">10.799</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">22</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">10.999</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">27</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">11.199</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">25</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">11.399</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">20</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">11.599</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">21</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">11.799</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">24</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">11.999</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">24</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">12.199</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">4</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">12.399</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">13</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">12.599</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">15</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">12.799</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">14</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">12.999</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">3</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">13.199</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">21</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">13.399</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">6</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">13.599</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">3</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">13.799</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">10</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">13.999</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">25</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">14.199</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">21</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">14.399</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">20</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">14.599</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">19</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">14.799</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">18</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">15.199</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">17</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">15.599</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">16</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">15.999</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">15</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">16.599</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">14</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">17.199</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">13</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">18.399</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">12</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">18.599</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">11</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">19.199</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">10</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">   </span><span class="mf">19.799</span><span class="w">  </span><span class="mf">12.0</span><span class="w">   </span><span class="mi">75</span><span class="w">     </span><span class="mi">9</span><span class="w"> 
 </span><span class="nb">e</span><span class="w">
 </span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
@@ -173,22 +194,17 @@
           </div>
         </div>
         <p><br class="example-break" />
-	</p>
-        <p>
-      Two musical examples featuring the mandel opcode: <a class="ulink" href="examples/musical/Mandel_Daughtrey.csd" target="_top"><em class="citetitle">Mandel_Daughtrey.csd</em></a> by Scott Daughtrey, and <a class="ulink" href="examples/musical/Mandel_Gogins.csd" target="_top"><em class="citetitle">Mandel_Gogins.csd</em></a> by Michael Gogins.
-    </p>
-        <p>
      </p>
       </div>
       <div class="refsect1">
-        <a id="idm189503"></a>
+        <a id="idm195802"></a>
         <h2>See Also</h2>
         <p>
-      <a class="link" href="SiggenModels.html" title="Models and Emulations"><em class="citetitle">Models and Emulations</em></a>
+      More information on this opcode: <a class="ulink" href="http://mymbs.mbs.net/~pfisher/FOV2-0010016C/FOV2-0010016E/FOV2-001001A3/chapters/35evans/intro.html" target="_top"><em class="citetitle">Composing Fractal Music with Csound</em></a>, by Brian Evans
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm189508"></a>
+        <a id="idm195807"></a>
         <h2>Credits</h2>
         <p>Written by Gabriel Maldonado.</p>
         <p>New in Csound 5 (Previously available only on CsoundAV)</p>

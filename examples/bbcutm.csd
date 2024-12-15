@@ -17,7 +17,7 @@ nchnls = 2
 
 instr 1     ; Play an audio file normally.
 
-asource soundin "drumsMlp.wav"
+asource soundin "beats.wav"
 outs asource, asource
 
 endin
@@ -29,7 +29,7 @@ isubdiv = 8
 ibarlength = 4
 iphrasebars = 1
 inumrepeats = p4
-asource diskin2 "drumsMlp.wav", 1, 0 ,1
+asource diskin2 "beats.wav", 1, 0 ,1
 a1 bbcutm asource, ibps, isubdiv, ibarlength, iphrasebars, inumrepeats
 outs a1, a1
 

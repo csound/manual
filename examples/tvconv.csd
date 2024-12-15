@@ -11,7 +11,7 @@ nchnls = 2
 instr 1
 
  asig diskin "fox.wav",1,0,1
- air diskin "drumsMlp.wav",1,0,1
+ air diskin "beats.wav",1,0,1
  air buthp air/0dbfs,1000
  k1 linseg 0,p3/3,0,0,1,2*p3/3,1
  a1 oscili k1, 0.5, 1

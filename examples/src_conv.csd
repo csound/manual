@@ -7,7 +7,7 @@
 </CsOptions>
 <CsInstruments>
 
-sr = 48000  ; sample rate of drumsMlp.wav = 44100
+sr = 48000  ; sample rate of beats.wav = 44100
 ksmps = 32  ; and will be resampled to 48000
 nchnls = 2
 0dbfs  = 1
@@ -15,7 +15,7 @@ nchnls = 2
 ; by Menno Knevel 2021
 
 ; resample in the highest qualty, name the new sample 'beats48.wav'
-gires system_i 1,{{ src_conv -r48000 -Q5 drumsMlp.wav -o beats48.wav }}
+gires system_i 1,{{ src_conv -r48000 -Q5 beats.wav -o beats48.wav }}
 
 instr 1
 ires system_i 1,{{ sndinfo -i beats48.wav }} ; check sample rate

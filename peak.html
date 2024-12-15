@@ -39,20 +39,20 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm242323"></a>
+        <a id="idm249430"></a>
         <h2>Description</h2>
         <p>
       These opcodes maintain the output k-rate variable as the peak absolute level so far received.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm242326"></a>
+        <a id="idm249433"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">kres <span class="command"><strong>peak</strong></span> asig</pre>
         <pre class="synopsis">kres <span class="command"><strong>peak</strong></span> ksig</pre>
       </div>
       <div class="refsect1">
-        <a id="idm242332"></a>
+        <a id="idm249439"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>kres</em></span> -- Output equal to the highest absolute value received so far. This is effectively an input to the opcode as well, since it reads <span class="emphasis"><em>kres</em></span> in order to decide whether to write something higher into it.
@@ -65,48 +65,58 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm242341"></a>
+        <a id="idm249448"></a>
         <h2>Examples</h2>
         <p>
-      Here is an example of the peak opcode. It uses the file <a class="ulink" href="examples/peak.csd" target="_top"><em class="citetitle">peak.csd</em></a>, and <a class="ulink" href="examples/drumsMlp.wav" target="_top"><em class="citetitle">drumsMlp.wav</em></a>.
+      Here is an example of the peak opcode. It uses the file <a class="ulink" href="examples/peak.csd" target="_top"><em class="citetitle">peak.csd</em></a>, and <a class="ulink" href="examples/beats.wav" target="_top"><em class="citetitle">beats.wav</em></a>.
       </p>
         <div class="example">
-          <a id="idm242348"></a>
+          <a id="idm249455"></a>
           <p class="title">
-            <strong>Example 754. Example of the peak opcode.</strong>
+            <strong>Example 750. Example of the peak opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm242355"></a>
+              <a id="idm249462"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
 <span class="c1">; Select audio/midi flags here according to platform</span>
 <span class="c1">; Audio out   Audio in</span>
--odac      <span class="c1">;;;RT audio out</span>
+-odac           -iadc    <span class="c1">;;;RT audio I/O</span>
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
 <span class="c1">; -o peak.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span><span class="w">
 
+</span><span class="c1">; Initialize the global variables.</span><span class="w">
 </span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
-</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
-</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
-</span><span class="vg">0dbfs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="vg">kr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w"> </span><span class="c1">; Capture the highest amplitude in the "drumsMlp.wav" file.</span><span class="w">
+</span><span class="c1">; Instrument #1 - play an audio file.</span><span class="w">
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+  </span><span class="c1">; Capture the highest amplitude in the "beats.wav" file.</span><span class="w">
+  </span>a<span class="n">sig</span><span class="w"> </span><span class="nb">soundin</span><span class="w"> </span><span class="s">"beats.wav"</span><span class="w">
+  </span>k<span class="n">p</span><span class="w"> </span><span class="nb">peak</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
 
-</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">soundin</span><span class="w"> </span><span class="s">"drumsMlp.wav"</span><span class="w">
-</span>k<span class="n">p</span><span class="w"> </span><span class="nb">peak</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
-</span><span class="nb">printk</span><span class="w"> </span><span class="mf">.5</span><span class="p">,</span><span class="w"> </span>k<span class="n">p</span><span class="w">    </span><span class="c1">; Print out the peak value once per second.</span><span class="w">
-</span><span class="nb">outs</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
+  </span><span class="c1">; Print out the peak value once per second.</span><span class="w">
+  </span><span class="nb">printk</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>k<span class="n">p</span><span class="w">
+  
+  </span><span class="nb">out</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
 </span><span class="kd">endin</span><span class="w">
+
 
 </span><span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span><span class="w">
+
+</span><span class="c1">; Play Instrument #1, the audio file, for three seconds.</span><span class="w">
 </span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">3</span><span class="w">
 </span><span class="nb">e</span><span class="w">
+
+
 </span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
 </pre>
@@ -118,27 +128,15 @@
       Its output should include lines like this:
       </p>
         <pre class="screen">
- i   1 time     0.00000:     0.00118
- i   1 time     0.50068:     0.71418
- i   1 time     1.00136:     0.80155
- i   1 time     1.50204:     0.89209
- i   1 time     2.00272:     0.89209
- i   1 time     2.50340:     0.89209
+ i   1 time     0.00002:  4835.00000
+ i   1 time     1.00002: 29312.00000
+ i   1 time     2.00002: 32767.00000
       </pre>
         <p>
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm242443"></a>
-        <h2>See also</h2>
-        <p>
-          <a class="link" href="ControlSensing.html" title="Sensing and Control">
-            <em class="citetitle">Sensing and Control: Envelope followers</em>
-          </a>
-        </p>
-      </div>
-      <div class="refsect1">
-        <a id="idm242448"></a>
+        <a id="idm249553"></a>
         <h2>Credits</h2>
         <p>
       </p>

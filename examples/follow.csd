@@ -15,19 +15,19 @@ nchnls = 2
 
 instr 1
 
-asig soundin "drumsMlp.wav"
+asig soundin "beats.wav"
      outs asig, asig
 
 endin
 
 instr 2	;envelope follower
 
-as   soundin "drumsMlp.wav"
+as   soundin "beats.wav"
 as   = as*.7		;reduce volume a bit
 at   tone    as, 500	;smooth estimated envelope
 af   follow  at, p4
 asin poscil3 .5, 440, 1
-; "drumsMlp.wav" provides amplitude for poscil
+; "beats.wav" provides amplitude for poscil
 asig balance asin, af
      outs    asig, asig
 

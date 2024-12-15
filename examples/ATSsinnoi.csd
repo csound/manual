@@ -15,8 +15,8 @@ ksmps = 32
 nchnls = 2
 0dbfs  = 1
 
-ires1 system_i 1,{{ atsa -h.5 -c1 drumsMlp.wav drumsMlp1.ats }}
-ires2 system_i 1,{{ atsa  drumsMlp.wav drumsMlp2.ats }} ; default settings -h.25 -c4
+ires1 system_i 1,{{ atsa -h.5 -c1 beats.wav beats1.ats }}
+ires2 system_i 1,{{ atsa  beats.wav beats2.ats }} ; default settings -h.25 -c4
  
 
 instr 1	
@@ -31,14 +31,14 @@ endin
 <CsScore>
 s
 ;			atsfile		partial
-i 1 0 2 "drumsMlp1.ats"		3
-i 1 3 2 "drumsMlp2.ats"		3
+i 1 0 2 "beats1.ats"		3
+i 1 3 2 "beats2.ats"		3
 s
-i 1 0 2 "drumsMlp1.ats"		13
-i 1 3 2 "drumsMlp2.ats"		13
+i 1 0 2 "beats1.ats"		13
+i 1 3 2 "beats2.ats"		13
 s
-i 1 0 2 "drumsMlp1.ats"		30
-i 1 3 2 "drumsMlp2.ats"		30
+i 1 0 2 "beats1.ats"		30
+i 1 3 2 "beats2.ats"		30
 
 e
 </CsScore>

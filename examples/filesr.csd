@@ -17,7 +17,7 @@ nchnls = 2
 
 instr 1 
 ;load sound into an ftable
-  Sfile	    strcpy    "drumsMlp.wav" 
+  Sfile	    strcpy    "beats.wav" 
   ilen	    filelen   Sfile 
   isr	    filesr    Sfile 
   isamps    =  ilen * isr 

@@ -40,7 +40,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm437115"></a>
+        <a id="idm442049"></a>
         <h2>Description</h2>
         <p>
         Extract a section of audio, by time or sample, from an
@@ -48,12 +48,12 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm437118"></a>
+        <a id="idm442052"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>extractor</strong></span> [OPTIONS ... ] infile</pre>
       </div>
       <div class="refsect1">
-        <a id="idm437122"></a>
+        <a id="idm442056"></a>
         <h2>Initialization</h2>
         <p>
       Flags:
@@ -141,7 +141,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm437162"></a>
+        <a id="idm442096"></a>
         <h2>Examples</h2>
         <p>
 
@@ -161,79 +161,9 @@
   		This creates a new sound file taken from sample 10234
   		and lasting 2.13 seconds.
   	</p>
-        <p>
-      Here is a complete example of the extractor utility. It uses the file <a class="ulink" href="examples/extractor.csd" target="_top"><em class="citetitle">extractor.csd</em></a>.
-      </p>
-        <div class="example">
-          <a id="idm437172"></a>
-          <p class="title">
-            <strong>Example 1377. Example of the extractor utility.</strong>
-          </p>
-          <div class="example-contents">
-            <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
-            <div class="refsect1">
-              <a id="idm437179"></a>
-              <pre class="programlisting">
-<span class="nt">&lt;CsoundSynthesizer&gt;</span>
-<span class="nt">&lt;CsOptions&gt;</span>
-<span class="c1">; Select audio/midi flags here according to platform</span>
--odac   -m0  <span class="c1">;;;realtime audio out, with limiter protection</span>
-<span class="c1">; For Non-realtime ouput leave only the line below:</span>
-<span class="c1">; -o extractor.wav -W ;;; for file output any platform</span>
-<span class="nt">&lt;/CsOptions&gt;</span>
-<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
-
-</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
-</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
-</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
-</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
-
-</span><span class="c1">; by Menno Knevel 2022</span><span class="w">
-
-</span><span class="c1">; cuts a piece of a sound file and outputs result to SFDIR</span><span class="w">
-</span>i<span class="n">res1</span><span class="w"> </span><span class="nb">system_i</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="s">{{ extractor -S 0 -Z 40000 -v Mathews.wav -o ext1.wav  }}</span><span class="w"> </span><span class="c1">; in samples </span><span class="w">
-</span>i<span class="n">res2</span><span class="w"> </span><span class="nb">system_i</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="s">{{ extractor -T 10 -E 13 -v   Mathews.wav -o ext2.wav  }}</span><span class="w"> </span><span class="c1">; in seconds</span><span class="w">
-
-</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
-
-</span>a<span class="n">sig</span><span class="w">    </span><span class="nb">diskin2</span><span class="w"> </span><span class="vi">p4</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
-</span><span class="nb">outs</span><span class="w">    </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
-</span><span class="kd">endin</span><span class="w">
-
-</span><span class="nt">&lt;/CsInstruments&gt;</span>
-<span class="nt">&lt;CsScore&gt;</span><span class="w">
-
-</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="s">"ext1.wav"</span><span class="w">  
-</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="s">"ext2.wav"</span><span class="w"> 
-</span><span class="nb">e</span><span class="w">
-</span><span class="nt">&lt;/CsScore&gt;</span>
-<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
-</pre>
-            </div>
-          </div>
-        </div>
-        <p><br class="example-break" />
-    </p>
-        <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
-          <table border="0" summary="Note: NOTE">
-            <tr>
-              <td rowspan="2" align="center" valign="top" width="25">
-                <img alt="[Note]" src="images/note.png" />
-              </td>
-              <th align="left">NOTE</th>
-            </tr>
-            <tr>
-              <td align="left" valign="top">
-                <p>
-          This utility was added before we had waveform editors and DAWs.
-        </p>
-              </td>
-            </tr>
-          </table>
-        </div>
       </div>
       <div class="refsect1">
-        <a id="idm437288"></a>
+        <a id="idm442103"></a>
         <h2>Credits</h2>
         <p>Author: John ffitch</p>
         <p>1994</p>

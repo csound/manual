@@ -4,7 +4,7 @@
 ; Audio out  
 -odac           ;;;RT audio 
 ; For Non-realtime ouput leave only the line below:
-; -o partikkel-2.wav -W ;;; for file output any platform
+; -o partikkel.wav -W ;;; for file output any platform
 </CsOptions>
 <CsInstruments>
 
@@ -16,7 +16,7 @@ nchnls = 2
 
 giCosine	ftgen	0, 0, 8193, 9, 1, 1, 90		; cosine
 giDisttab	ftgen	0, 0, 32768, 7, 0, 32768, 1	; for kdistribution
-giFile		ftgen	0, 0, 0, 1, "Mathews.wav", 0, 0, 0	; soundfile for source waveform
+giFile		ftgen	0, 0, 0, 1, "fox.wav", 0, 0, 0	; soundfile for source waveform
 giWin		ftgen	0, 0, 4096, 20, 9, 1		; grain envelope
 giPan		ftgen	0, 0, 32768, -21, 1		; for panning (random values between 0 and 1)
 
@@ -131,19 +131,21 @@ endin
 </CsInstruments>
 <CsScore>
 ;i1	st	dur	speed	grate	gsize	cent	posrnd	cntrnd	pan	dist
-i1	0	 3	 1	 200	15	0	0	0	0	0
+i1	0	2.757	1	200	15	0	0	0	0	0
 s
-i1	0	 3	 1	 200	15	400	0	0	0	0
+i1	0	2.757	1	200	15	400	0	0	0	0
 s
-i1	0	 3	 1	 15	450	400	0	0	0	0
+i1	0	2.757	1	15	450	400	0	0	0	0
 s
-i1	0	 3	 1	 15	450	400	0	0	0	0.4
+i1	0	2.757	1	15	450	400	0	0	0	0.4
 s
-i1	0	 3	 1	 200	15	0	400	0	0	1
+i1	0	2.757	1	200	15	0	400	0	0	1
 s
-i1	0	 6	.5	 200	20	0	0	600	.5	1
+i1	0	5.514	.5	200	20	0	0	600	.5	1
 s
-i1	0	12	.25	 200	15	0	1000	400	1	1
-e
+i1	0	11.028	.25	200	15	0	1000	400	1	1
+
+
 </CsScore>
+
 </CsoundSynthesizer>
