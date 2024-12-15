@@ -36,7 +36,14 @@
     </para>
 
     <para>
-       <emphasis>p3</emphasis> -- Size of function table (i.e.  number of points) Must be a power of 2, or a power-of-2 plus 1 if this number is positive. Maximum table size is 16777216 (2<superscript>24</superscript>) points. 
+       <emphasis>p3</emphasis> -- Size of function table (i.e.  number
+       of points). Some GEN routines allow the table size to be set
+       dynamically according to routine inputs (e.g. file size), in a
+       process called deferred-size allocation. In
+       this case, we can set the table size to 0 to take advantage of
+       this mechanism. Maximum fixed table size is 16777216
+       (2<superscript>24</superscript>) points, but larger tables can
+       be created with deferred-size allocation. 
     </para>
 
     <para>
@@ -56,16 +63,42 @@
         This table uses <link linkend="GEN10"><citetitle>GEN10</citetitle></link> to fill the table.
       </para>
       <para>
-        Historically, due to older platform constraints, Csound could only accept tables whose size was a power of two. This limitation has been removed in recent versions, and you can freely create tables of any size. However, to create a table whose size is not a power of two (or power of two plus one), you must specify the size as a negative number.
+        Historically, due to older platform constraints, Csound could only accept tables whose size was a power of two. This limitation has been removed in recent versions, and you can freely create tables of any size. 
       </para>
-      <note><para>Not all opcodes accept tables whose size is not a power of two, since they may depend on this for internal optimization.</para>
+      <note><para>All opcodes will accept tables whose size is not a
+      power of two; however some of them will use a more optimised
+      phase update code if a power-of-two size is used. So we would
+      recommend using power-of-two sizes if possible.</para>
       </note>
-      <para>For arrays whose length is a power of 2, space allocation always provides for 2<superscript>n</superscript> points plus an additional <emphasis>guard point</emphasis>. The guard point value, used during interpolated lookup, can be automatically set to reflect the table's purpose: If <emphasis>size</emphasis> is an exact power of 2, the guard point will be a copy of the first point; this is appropriate for <emphasis>interpolated wrap-around lookup</emphasis> as in <emphasis>oscili</emphasis>, etc., and should even be used for non-interpolating <emphasis>oscil</emphasis> for safe consistency. If <emphasis>size</emphasis> is set to 2 <superscript>n</superscript> + 1, the guard point value automatically extends the contour of table values; this is appropriate for single-scan functions such in <emphasis>envplx</emphasis>, <emphasis>oscil1</emphasis>, <emphasis>oscil1i</emphasis>, etc.
-      
+      <para>Space allocation always provides for the set number of
+      points plus an additional <emphasis>guard point</emphasis>, used
+      for linear interpolation. By default, this point contains a
+      copy of the first position on the table, which is the expected
+      for wrap-around (looping) lookup (e.g. an oscillator reading a
+      function table).
       </para>
       <para>
-	The size of the table is used as a code to tell Csound how to fill this guard-point. If the size is exactly power-of-two, then the guard point contains a copy of the first point on the table. If the size is power-of-two plus one, Csound will extend the contour of the function stored in the table for one extra point.
-      </para>
+      For situations where the lookup is expected to
+      end at the last point of the table (e.g. envelope segments),
+      then the correct guard point setting should be to extend the
+      table for one more point (according to the GEN employed). This
+      is called an <emphasis>extended guard point</emphasis>. To
+      request this, special codes are used:
+       </para>
+            <para>
+              - <emphasis>Power-of-two size tables</emphasis>: users should set the size to the
+                 required size + 1. For example, a 1024-size table
+                 should be set to 1025. To bypass this request and
+                 instead create a non-power-of-two size, use a
+                 negative size: -1025 produces a 1025-size table with
+                 default guard point.
+            </para>
+            <para>
+             - <emphasis> Non power-of-two size tables</emphasis>: users should set the size
+             to the required size + 0.1 (or any other fractional value
+             between 0 and 1). For example, a 1000-size
+             table should be set as 1000.1. 
+            </para>
       <para>
         Table space is allocated in primary memory, along with instrument data space. The maximum table number used to be 200. This has been changed to be limited by memory only. (Currently there is an internal soft limit of 300, this is automatically extended as required.)
       </para>
@@ -103,17 +136,21 @@
       </para>
     </refsect2>
   </refsect1>
+	
   <refsect1>
     <title>See also</title>
     <para>
       <link linkend="ScoreGenRef"><citetitle>GEN ROUTINES</citetitle></link>
     </para>
+    <para>
+      <link linkend="ScoreStatements"><citetitle>Score Statements</citetitle></link>
+    </para>
   </refsect1>
-
+	
   <refsect1>
     <title>Credits</title>
     <para>
-      Updated August 2002 thanks to a note from &namerasmus;. There is no longer a hard limit of 200 function tables.
+      Updated August 2024 for Csound 7.
     </para>
   </refsect1>
 </refentry>

@@ -18,7 +18,7 @@
     </para>
 
     <para>
-      A user-defined opcode block must precede the instrument (or other opcode) from which it is used. But it is possible to call the opcode from itself. This allows recursion of any depth that is limited only by available memory. Additionally, there is an experimental feature that allows running the opcode definition at a higher control rate than the <link linkend="kr"><citetitle>kr</citetitle></link> value specified in the orchestra header.
+      A user-defined opcode block must precede the instrument (or other opcode) from which it is used. But it is possible to call the opcode from itself. This allows recursion of any depth that is limited only by available memory. 
     </para>
 
     <para>
@@ -204,10 +204,6 @@
     </para>
 
     <para>
-      The maximum allowed number of input arguments is 256.
-    </para>
-
-    <para>
       <emphasis>outtypes</emphasis> -- list of output types. The format is the same as in the case of <emphasis>intypes</emphasis>.
     </para>
 
@@ -275,72 +271,7 @@
       The maximum allowed number of output arguments is 256.
     </para>
 
-    <para>
-      <emphasis>iksmps</emphasis> (optional, default=0) -- sets the local
-      <emphasis>ksmps</emphasis> value. Must be a positive integer, and also
-      the <emphasis>ksmps</emphasis> of the
-      calling instrument or opcode must be an integer multiple of this value.
-      For example, if <emphasis>ksmps</emphasis> is 10 in the instrument from which
-      the opcode was called, the allowed values for <emphasis>iksmps</emphasis>
-      are 1, 2, 5, and 10.
-    </para>
-
-    <para>
-      If <emphasis>iksmps</emphasis> is set to zero, the
-      <emphasis>ksmps</emphasis> of the caller instrument or opcode is used
-      (this is the default behavior).
-    </para>
-
-    <note>
-      <title>Note</title>
-      <para>
-        The local <emphasis>ksmps</emphasis> is implemented by splitting up
-        a control period into smaller sub-kperiods and temporarily modifying
-        internal Csound global variables. This also requires converting the
-        rate of k-rate input and output arguments (input variables receive
-        the same value in all sub-kperiods, while outputs are written only
-        in the last one).
-      </para>
-    </note>
-
-    <warning>
-      <title>Warning about local <emphasis>ksmps</emphasis></title>
-      <para>
-        When the local <emphasis>ksmps</emphasis> is not the same as the
-        orchestra level <emphasis>ksmps</emphasis> value (as specified in the
-        orchestra header), global a-rate operations must not be used in the
-        user-defined opcode block.
-      </para>
-
-      <para>
-        These include:
-
-        <itemizedlist>
-          <listitem><para>any access to <quote>ga</quote> variables</para></listitem>
-          <listitem><para>a-rate zak opcodes (<link linkend="zar"><citetitle>zar</citetitle></link>, <link linkend="zaw"><citetitle>zaw</citetitle></link>, etc.)</para></listitem>
-          <listitem><para><link linkend="tablera"><citetitle>tablera</citetitle></link> and <link linkend="tablewa"><citetitle>tablewa</citetitle></link> (these two opcodes may in fact work, but caution is needed)</para></listitem>
-          <listitem><para>The <emphasis>in</emphasis> and <emphasis>out</emphasis> opcode family (these read from, and write to global a-rate buffers)</para></listitem>
-        </itemizedlist>
-      </para>
-
-      <para>
-        In general, the local <emphasis>ksmps</emphasis> should be used with
-        care as it is an experimental feature, although it works correctly in
-        most cases.
-      </para>
-    </warning>
-
-    <para>
-      The <link linkend="setksmps"><citetitle>setksmps</citetitle></link>
-      statement can be used to set the local <emphasis>ksmps</emphasis> value
-      of the user-defined opcode block. It has one i-time parameter specifying
-      the new <emphasis>ksmps</emphasis> value (which is left unchanged if zero
-      is used, see also the notes about <emphasis>iksmps</emphasis> above).
-      <emphasis>setksmps</emphasis> should be used before any other opcodes
-      (but allowed after <emphasis>xin</emphasis>), otherwise unpredictable
-      results may occur.
-    </para>
-
+  
     <para>
       The input parameters can be read with <emphasis>xin</emphasis>, and the
       output is written by <emphasis>xout</emphasis> opcode. Only one instance
@@ -350,13 +281,6 @@
       as in the declaration of the user-defined opcode block (see tables above).
     </para>
 
-    <para>
-      The input and output arguments must agree with the definition both in
-      number (except if the optional i-time input is used) and type.
-      An optional i-time input parameter (<emphasis>iksmps</emphasis>) is
-      automatically added to the <emphasis>intypes</emphasis> list, and
-      (similarly to setksmps) sets the local <emphasis>ksmps</emphasis> value.
-    </para>
   </refsect1>
 
   <refsect1>
@@ -377,7 +301,7 @@ xinarg1 [, xinarg2] [, xinarg3] ... [xinargN]  <emphasis role="opc">xin</emphasi
       The new opcode can then be used with the usual syntax:
 
       <programlisting>
-  [xoutarg1] [, xoutarg2] ... [xoutargN] <command>name</command>  [xinarg1] [, xinarg2] ... [xinargN] [, iksmps]</programlisting>
+[xoutarg1] [, xoutarg2] ... [xoutargN] <command>name</command>  [xinarg1] [, xinarg2] ... [xinargN]</programlisting>
     </para>
 
     <note>
@@ -427,10 +351,7 @@ xinarg1 [, xinarg2] [, xinarg3] ... [xinargN]  <emphasis role="opc">xin</emphasi
   <refsect1>
     <title>See Also</title>
     <para>
-      <link linkend="endop"><citetitle>endop</citetitle></link>,
-      <link linkend="setksmps"><citetitle>setksmps</citetitle></link>,
-      <link linkend="xin"><citetitle>xin</citetitle></link>,
-      <link linkend="xout"><citetitle>xout</citetitle></link>
+      <link linkend="OrchUDO"><citetitle>User Defined Opcodes (UDO)</citetitle></link>
     </para>
   </refsect1>
 

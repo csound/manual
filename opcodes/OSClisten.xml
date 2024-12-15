@@ -9,13 +9,14 @@
   <refnamediv>
     <refname>OSClisten</refname>
     <refpurpose>
-      Listen for OSC messages to a particular path.
+      Listen for OSC messages to a particular path, either from a custom-defined
+       OSC server or from the Csound UDP server.
     </refpurpose>
   </refnamediv>
 
   <refsect1>
     <title>Description</title>
-    <para>Plugin opcode in osc.</para>
+    <para>Plugin opcode in osc; internal opcode (for UDP server)</para>
     <para>
       On each k-cycle looks to see if an OSC message has been sent to
       a given path of a given type.
@@ -25,15 +26,23 @@
   <refsect1>
     <title>Syntax</title>
     <synopsis>kans <command>OSClisten</command> ihandle, idest, itype [, xdata1, xdata2, ...]</synopsis>
-    <synopsis>kans, kdata[] <command>OSClisten</command> ihandle, idest, itype</synopsis>
+    <synopsis>kans, kdata[] <command>OSClisten</command> ihandle,
+    idest, itype</synopsis>
+
+    <synopsis>kans, ... <command>OSClisten</command> idest, itype</synopsis>
+   
   </refsect1>
 
   <refsect1>
     <title>Initialization</title>
     <para>
       <emphasis>ihandle</emphasis>
-      -- a handle returned by an earlier call to OSCinit, to associate
-      OSClisten with a particular port number.
+      -- In the first two versions (overloads) of the opcode, a handle
+      returned by an earlier call to OSCinit,
+      to associate
+      OSClisten with a particular port number. The third overload does
+      not take a handle as it will listen for messages
+      sent to the Csound <link linkend="udpserver"><citetitle>UDP server</citetitle></link>. 
     </para>
     <para>
       <emphasis>idest</emphasis>
@@ -91,7 +100,16 @@
       or equal to length as the format string. If a message is received, this
       array will be filled with the incoming values. See below for an example of
       this usage.
-    </para>  </refsect1>
+    </para>
+
+    <para>
+     The third overload uses a different number of outputs of
+     different types (k or S) to store messages matching address and
+     type, which are coming into the UDP server. It only accepts
+     scalar values ("dfhi")  or strings ("s"). 
+    </para>
+
+  </refsect1>
 
   <refsect1>
     <title>Example</title>
@@ -160,30 +178,38 @@ ex:
           <xi:include href="examples-xml/OSCmidircv.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
     </para>
-  </refsect1>
 
-  <refsect1>
-    <title>See Also</title>
-      <para>
-        <link linkend="OSCsend"><citetitle>OSCsend</citetitle></link>,
-        <link linkend="OSCinit"><citetitle>OSCinit</citetitle></link>
-      </para>
-               <para> More information on this opcode: <ulink url="http://www.youtube.com/watch?v=JX1C3TqP_9Y"><citetitle>http://www.youtube.com/watch?v=JX1C3TqP_9Y</citetitle></ulink>  , made by Andrés Cabrera </para>
+    <para>
+      The next example demonstrates the usage of the third overload of
+      the OSClisten opcode. It uses the fils <ulink url="examples/OSClistenex2.csd"><citetitle>OSClistenex2.csd</citetitle></ulink>.
+    </para>
+
+          <xi:include href="examples-xml/OSClistenex2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    
+  </refsect1>
+  
+     <refsect1>
+        <title>See also</title>
+        <para><link linkend="OSC"><citetitle>OSC (Open Sound Control)</citetitle></link></para>
+        <para> More information on this opcode: <ulink url="http://www.youtube.com/watch?v=JX1C3TqP_9Y"><citetitle>http://www.youtube.com/watch?v=JX1C3TqP_9Y</citetitle></ulink>  , made by Andrés Cabrera </para>
   </refsect1>
 
   <refsect1>
     <title>Credits</title>
     <para>
       <simplelist>
-        <member>Author: &namejohn;</member>
-        <member>2005</member>
-        <member>Examples by: David Akbari, &nameandres; and Jonathan Murphy 2007</member>
+        <member>Author: &namejohn; Victor Lazzarini</member>
+        <member>2005, 2024</member>
+        <member>Examples by: David Akbari, &nameandres; and Jonathan
+        Murphy 2007; Victor Lazzarini 2024</member>
       </simplelist>
     </para>
     <para>
       <simplelist>
         <member>types aAG are new in Csound 6.07</member>
-        <member>the use an an array for outputs is new in Csound 6.12</member>
+        <member>the use an an array for outputs is new in Csound
+        6.12</member>
+        <member>UDP server support new in Csound 7.0</member>
       </simplelist>
     </para>
   </refsect1>
