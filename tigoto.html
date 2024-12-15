@@ -39,14 +39,14 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm351253"></a>
+        <a id="idm344722"></a>
         <h2>Description</h2>
         <p>
       Similar to <a class="link" href="igoto.html" title="igoto"><em class="citetitle">igoto</em></a> but effective only during an i-time pass at which a new note is being <span class="quote">“<span class="quote">tied</span>”</span> onto a previously held note. (See <a class="link" href="i.html" title="i Statement (Instrument or Note Statement)"><em class="citetitle">i Statement</em></a>) It does not work when a tie has not taken place. Allows an instrument to skip initialization of units according to whether a proposed tie was in fact successful. (See also <a class="link" href="tival.html" title="tival"><em class="citetitle">tival</em></a>).
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm351263"></a>
+        <a id="idm344732"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>tigoto</strong></span> label</pre>
         <p>
@@ -54,20 +54,20 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm351269"></a>
+        <a id="idm344738"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the tigoto opcode. It uses the file <a class="ulink" href="examples/tigoto.csd" target="_top"><em class="citetitle">tigoto.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm351274"></a>
+          <a id="idm344743"></a>
           <p class="title">
-            <strong>Example 1110. Example of the tigoto opcode.</strong>
+            <strong>Example 1112. Example of the tigoto opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm351281"></a>
+              <a id="idm344750"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -120,21 +120,82 @@
         </div>
         <p><br class="example-break" />
     </p>
+        <p>
+      Here is another example of the tigoto opcode. It uses the file <a class="ulink" href="examples/tigoto2.csd" target="_top"><em class="citetitle">tigoto2.csd</em></a>.
+      </p>
+        <div class="example">
+          <a id="idm344980"></a>
+          <p class="title">
+            <strong>Example 1113. Second example of the tigoto opcode.</strong>
+          </p>
+          <div class="example-contents">
+            <div class="refsect1">
+              <a id="idm344982"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+<span class="nt">&lt;CsOptions&gt;</span>
+<span class="c1">; Select audio/midi flags here according to platform</span>
+-odac     <span class="c1">;;;RT audio out</span>
+<span class="c1">;-iadc    ;;;uncomment -iadc if RT audio input is needed too</span>
+<span class="c1">; For Non-realtime ouput leave only the line below:</span>
+<span class="c1">; -o tigoto2.wav -W ;;; for file output any platform</span>
+<span class="nt">&lt;/CsOptions&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
+
+</span><span class="c1">; by Steven Yi 2024</span><span class="w">
+
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w"> 
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w"> 
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> 
+
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+
+</span>i<span class="n">amp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">ampdbfs</span><span class="p">(</span><span class="vi">p5</span><span class="p">)</span><span class="w">
+</span>i<span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">cps2pch</span><span class="p">(</span><span class="vi">p4</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span><span class="w">
+  
+</span><span class="nb">xtratim</span><span class="w"> </span><span class="mi">4</span><span class="w">              </span><span class="c1">; extend the duration of the note</span><span class="w">
+</span><span class="kp">tigoto</span><span class="w"> </span><span class="nl">skipInit</span><span class="w">        </span><span class="c1">; csound "jumps" to the label, skipping initialization for the code in between</span><span class="w">
+                       </span><span class="c1">; but only if this is a "tied" note  </span><span class="w">
+</span>k<span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">port</span><span class="p">(</span>i<span class="n">pch</span><span class="p">,</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w"> </span>i<span class="n">pch</span><span class="p">)</span><span class="w">
+</span>a<span class="n">sig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">vco2</span><span class="p">(</span>i<span class="n">amp</span><span class="p">,</span><span class="w"> </span>k<span class="n">pch</span><span class="p">)</span><span class="w">
+</span><span class="c1">;asig = zdf_2pole(asig, min:k(10000, kpch * 16), 4)  ; uncomment to use filter</span><span class="w">
+</span>a<span class="n">sig</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="nb">linsegr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">
+</span><span class="nb">out</span><span class="p">(</span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="p">)</span><span class="w">
+  
+</span><span class="nl">skipInit</span><span class="p">:</span><span class="w">
+  
+</span><span class="kd">endin</span><span class="w">
+
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">-</span><span class="mf">.5</span><span class="w"> </span><span class="mf">8.00</span><span class="w"> </span><span class="o">-</span><span class="mi">12</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">-</span><span class="mf">.5</span><span class="w"> </span><span class="mf">9.00</span><span class="w"> </span><span class="o">-</span><span class="mi">12</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mf">6.00</span><span class="w"> </span><span class="o">-</span><span class="mi">12</span><span class="w">
+
+</span><span class="nb">i</span><span class="mf">1.1</span><span class="w"> </span><span class="mf">.25</span><span class="w"> </span><span class="o">-</span><span class="mf">.5</span><span class="w"> </span><span class="mf">9.00</span><span class="w"> </span><span class="o">-</span><span class="mi">12</span><span class="w">
+</span><span class="nb">i</span><span class="mf">1.1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">-</span><span class="mf">.5</span><span class="w"> </span><span class="mf">10.00</span><span class="w"> </span><span class="o">-</span><span class="mi">12</span><span class="w">
+</span><span class="nb">i</span><span class="mf">1.1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mf">7.00</span><span class="w"> </span><span class="o">-</span><span class="mi">12</span><span class="w">
+
+</span><span class="nb">i</span><span class="mf">1.2</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="mf">.25</span><span class="w"> </span><span class="mf">7.00</span><span class="w"> </span><span class="o">.</span><span class="w">
+</span><span class="nb">i</span><span class="mf">1.2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mf">8.00</span><span class="w"> </span><span class="o">.</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
+    </p>
       </div>
       <div class="refsect1">
-        <a id="idm351508"></a>
-        <h2>See Also</h2>
+        <a id="idm345225"></a>
+        <h2>See also</h2>
         <p>
-      <a class="link" href="cigoto.html" title="cigoto"><em class="citetitle">cigoto</em></a>,
-      <a class="link" href="goto.html" title="goto"><em class="citetitle">goto</em></a>,
-      <a class="link" href="if.html" title="if"><em class="citetitle">if</em></a>,
-      <a class="link" href="igoto.html" title="igoto"><em class="citetitle">igoto</em></a>,
-      <a class="link" href="kgoto.html" title="kgoto"><em class="citetitle">kgoto</em></a>,
-      <a class="link" href="timout.html" title="timout"><em class="citetitle">timout</em></a>
-      </p>
-        <p> More on this opcode: <a class="ulink" href="http://www.csoundjournal.com/2005fall/tiedNotes.html" target="_top"><em class="citetitle">http://www.csoundjournal.com/2005fall/tiedNotes.html</em></a>  , written by Steven Yi </p>
-        <p> 
-    </p>
+          <a class="link" href="ControlPgmctl.html" title="Program Flow Control">
+            <em class="citetitle">Program Flow Control</em>
+          </a>
+        </p>
       </div>
     </div>
     <div class="navfooter">
