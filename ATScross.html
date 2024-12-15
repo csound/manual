@@ -38,20 +38,20 @@
         </p>
       </div>
       <div class="refsect1">
-        <a id="idm36694"></a>
+        <a id="idm31957"></a>
         <h2>Description</h2>
         <p>
             <span class="emphasis"><em>ATScross</em></span> uses data from an ATS analysis file and data from an <a class="link" href="ATSbufread.html" title="ATSbufread"><em class="citetitle">ATSbufread</em></a> to perform cross synthesis.
         </p>
       </div>
       <div class="refsect1">
-        <a id="idm36700"></a>
+        <a id="idm31963"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ar <span class="command"><strong>ATScross</strong></span> ktimepnt, kfmod, iatsfile, ifn, kmylev, kbuflev, ipartials \
           [, ipartialoffset, ipartialincr]</pre>
       </div>
       <div class="refsect1">
-        <a id="idm36704"></a>
+        <a id="idm31967"></a>
         <h2>Initialization</h2>
         <p>
             <span class="emphasis"><em>iatsfile</em></span> – integer or character-string denoting a control-file derived from ATS analysis of an audio signal. An integer denotes the suffix of a file ATS.m; a character-string (in double quotes) gives a filename, optionally a full pathname. If not full-path, the file is sought first in the current directory, then in the one given by the environment variable SADIR (if defined).
@@ -65,7 +65,7 @@
         </p>
       </div>
       <div class="refsect1">
-        <a id="idm36717"></a>
+        <a id="idm31980"></a>
         <h2>Performance</h2>
         <p><span class="emphasis"><em>ktimepnt</em></span> – The time pointer in seconds used to index the ATS file. Used for <span class="emphasis"><em>ATScross</em></span> exactly the same as for <a class="link" href="pvoc.html" title="pvoc"><em class="citetitle">pvoc</em></a>.</p>
         <p>
@@ -79,19 +79,19 @@
         </p>
       </div>
       <div class="refsect1">
-        <a id="idm36780"></a>
+        <a id="idm32043"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the ATScross opcode. It uses the file <a class="ulink" href="examples/ATScross.csd" target="_top"><em class="citetitle">ATScross.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm36785"></a>
+          <a id="idm32048"></a>
           <p class="title">
             <strong>Example 75. Example of the ATScross opcode.</strong>
           </p>
           <div class="example-contents">
             <div class="refsect1">
-              <a id="idm36787"></a>
+              <a id="idm32050"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -108,25 +108,28 @@
 </span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
 </span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-</span><span class="c1">; by Menno Knevel - 2021</span><span class="w">
+</span><span class="c1">; by Menno Knevel - 2023</span><span class="w">
 
 </span><span class="c1">;ATSA wants a mono file!</span><span class="w">
 </span><span class="c1">;it takes a while to analyze these files...</span><span class="w">
 </span>i<span class="n">res1</span><span class="w"> </span><span class="nb">system_i</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="s">{{ atsa finneganswake1.flac finneganswake.ats }}</span><span class="w"> 
 </span><span class="nb">prints</span><span class="w"> </span><span class="s">"</span><span class="se">\n</span><span class="s">***1st analyzed file is ready***</span><span class="se">\n\n</span><span class="s">"</span><span class="w">
-</span>i<span class="n">res2</span><span class="w"> </span><span class="nb">system_i</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="s">{{ atsa beats.wav beats.ats }}</span><span class="w"> 
+
+</span>i<span class="n">res2</span><span class="w"> </span><span class="nb">system_i</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="s">{{ atsa drumsMlp.wav drumsMlp.ats }}</span><span class="w"> 
 </span><span class="nb">prints</span><span class="w"> </span><span class="s">"</span><span class="se">\n</span><span class="s">***2nd analyzed file is ready***</span><span class="se">\n\n</span><span class="s">"</span><span class="w">
 
-</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
-</span>i<span class="n">pr</span><span class="w"> </span><span class="nb">ATSinfo</span><span class="w"> </span><span class="s">"finneganswake.ats"</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w">                  </span><span class="c1">; get number of partials</span><span class="w">
-</span><span class="nb">prints</span><span class="w"> </span><span class="s">"</span><span class="se">\n</span><span class="s">***number of partials = </span><span class="si">%d</span><span class="s">***</span><span class="se">\n\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span>i<span class="n">pr</span><span class="w">
 
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
+</span>i<span class="n">res1</span><span class="w"> </span><span class="nb">ATSinfo</span><span class="w"> </span><span class="s">"finneganswake.ats"</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w">                  </span><span class="c1">; get number of partials</span><span class="w">
+</span>i<span class="n">res2</span><span class="w"> </span><span class="nb">ATSinfo</span><span class="w"> </span><span class="s">"drumsMlp.ats"</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w">                  </span><span class="c1">; get number of partials</span><span class="w">
+</span><span class="nb">prints</span><span class="w"> </span><span class="s">"</span><span class="se">\n</span><span class="s">***number of partials of finneganswake.ats = </span><span class="si">%d</span><span class="s">***</span><span class="se">\n\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span>i<span class="n">res1</span><span class="w">
+</span><span class="nb">prints</span><span class="w"> </span><span class="s">"</span><span class="se">\n</span><span class="s">***number of partials of drumsMlp.ats = </span><span class="si">%d</span><span class="s">***</span><span class="se">\n\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span>i<span class="n">res2</span><span class="w">
 </span>k<span class="n">time1</span><span class="w">	</span><span class="nb">line</span><span class="w">	</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mf">12.67</span><span class="w">
 </span>k<span class="n">time2</span><span class="w">	</span><span class="nb">line</span><span class="w">	</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">
 </span>k<span class="n">line</span><span class="w">	</span><span class="nb">line</span><span class="w">    </span><span class="vi">p4</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="p">,</span><span class="w"> </span><span class="vi">p5</span><span class="w">                            
-        </span><span class="nb">ATSbufread</span><span class="w"> </span>k<span class="n">time1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">"finneganswake.ats"</span><span class="p">,</span><span class="w"> </span>i<span class="n">pr</span><span class="w">
-</span>a<span class="n">out</span><span class="w">	</span><span class="nb">ATScross</span><span class="w">   </span>k<span class="n">time2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">"beats.ats"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>k<span class="n">line</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>i<span class="n">pr</span><span class="w"> </span><span class="c1">; cross from p4 to p5</span><span class="w">
-	</span><span class="nb">outs</span><span class="w"> </span>a<span class="n">out</span><span class="o">*</span><span class="mf">1.7</span><span class="p">,</span><span class="w"> </span>a<span class="n">out</span><span class="o">*</span><span class="mf">1.7</span><span class="w">
+        </span><span class="nb">ATSbufread</span><span class="w"> </span>k<span class="n">time1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">"finneganswake.ats"</span><span class="p">,</span><span class="w"> </span>i<span class="n">res1</span><span class="w">
+</span>a<span class="n">out</span><span class="w">	</span><span class="nb">ATScross</span><span class="w">   </span>k<span class="n">time2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">"drumsMlp.ats"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>k<span class="n">line</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">68</span><span class="w"> </span><span class="c1">; cross from p4 to p5</span><span class="w">
+	</span><span class="nb">outs</span><span class="w"> </span>a<span class="n">out</span><span class="o">*</span><span class="mf">2.5</span><span class="p">,</span><span class="w"> </span>a<span class="n">out</span><span class="o">*</span><span class="mf">2.5</span><span class="w">
 
 </span><span class="kd">endin</span><span class="w">
 
@@ -135,8 +138,8 @@
 </span><span class="c1">; sine wave.</span><span class="w">
 </span><span class="nb">f</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">16384</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="c1">;          start    end</span><span class="w">
-</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">12.7</span><span class="w">   </span><span class="mi">0</span><span class="w">       </span><span class="mi">1</span><span class="w"> </span><span class="c1">; voice --&gt; beats</span><span class="w">
-</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="mf">12.7</span><span class="w">  </span><span class="mi">1</span><span class="w">       </span><span class="mi">0</span><span class="w"> </span><span class="c1">; beats --&gt; voice</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">12.7</span><span class="w">   </span><span class="mi">0</span><span class="w">       </span><span class="mi">1</span><span class="w"> </span><span class="c1">; voice --&gt; drums</span><span class="w">
+</span><span class="nb">i</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="mf">12.7</span><span class="w">  </span><span class="mi">1</span><span class="w">       </span><span class="mi">0</span><span class="w"> </span><span class="c1">; drums --&gt; voice</span><span class="w">
 </span><span class="nb">e</span><span class="w">
 </span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
@@ -148,20 +151,16 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm37028"></a>
+        <a id="idm32315"></a>
         <h2>See also</h2>
-        <p><a class="link" href="ATSread.html" title="ATSread"><em class="citetitle">ATSread</em></a>, 
-            <a class="link" href="ATSreadnz.html" title="ATSreadnz"><em class="citetitle">ATSreadnz</em></a>, 
-            <a class="link" href="ATSinfo.html" title="ATSinfo"><em class="citetitle">ATSinfo</em></a>, 
-            <a class="link" href="ATSsinnoi.html" title="ATSsinnoi"><em class="citetitle">ATSsinnoi</em></a>, 
-            <a class="link" href="ATSbufread.html" title="ATSbufread"><em class="citetitle">ATSbufread</em></a>, 
-            <a class="link" href="ATSinterpread.html" title="ATSinterpread"><em class="citetitle">ATSinterpread</em></a>, 
-            <a class="link" href="ATSpartialtap.html" title="ATSpartialtap"><em class="citetitle">ATSpartialtap</em></a>, 
-            <a class="link" href="ATSadd.html" title="ATSadd"><em class="citetitle">ATSadd</em></a>, 
-            <a class="link" href="ATSaddnz.html" title="ATSaddnz"><em class="citetitle">ATSaddnz</em></a></p>
+        <p>
+          <a class="link" href="SpectralATS.html" title="ATS Spectral Processing">
+            <em class="citetitle">ATS Spectral Processing</em>
+          </a>
+        </p>
       </div>
       <div class="refsect1">
-        <a id="idm37049"></a>
+        <a id="idm32320"></a>
         <h2>Credits</h2>
         <p>
             </p>

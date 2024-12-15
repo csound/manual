@@ -16,7 +16,7 @@ nchnls = 2
 instr 1
 
 kn = p4
-asig  diskin2	"beats.wav", 1
+asig  diskin2	"drumsMlp.wav", 1
 fsig  pvsanal   asig, 1024, 256, 1024, 1; analyse it
 ftps  pvstrace   fsig, kn		; keep kn bins
 atps  pvsynth   ftps			; synthesise it

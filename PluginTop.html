@@ -3,25 +3,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Plugin Hosting</title>
+    <title>External Plugin Opcodes</title>
     <link rel="stylesheet" type="text/css" href="csound.css" />
     <link rel="stylesheet" type="text/css" href="syntax-highlighting.css" />
     <meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" />
     <link rel="home" href="index.html" title="The Canonical Csound Reference Manual" />
     <link rel="up" href="PartOpcodesOverview.html" title="Part II. Opcodes Overview" />
-    <link rel="prev" href="ZakTop.html" title="Zak Patch System" />
-    <link rel="next" href="OSCNetwork.html" title="OSC and Network" />
+    <link rel="prev" href="MixerOpcodes.html" title="Mixer Opcodes" />
+    <link rel="next" href="py.html" title="Python Opcodes" />
   </head>
   <body>
     <div class="navheader">
       <table width="100%" summary="Navigation header">
         <tr>
-          <th colspan="3" align="center">Plugin Hosting</th>
+          <th colspan="3" align="center">External Plugin Opcodes</th>
         </tr>
         <tr>
-          <td width="20%" align="left"><a accesskey="p" href="ZakTop.html">Prev</a> </td>
+          <td width="20%" align="left"><a accesskey="p" href="MixerOpcodes.html">Prev</a> </td>
           <th width="60%" align="center">Part II. Opcodes Overview</th>
-          <td width="20%" align="right"> <a accesskey="n" href="OSCNetwork.html">Next</a></td>
+          <td width="20%" align="right"> <a accesskey="n" href="py.html">Next</a></td>
         </tr>
       </table>
       <hr />
@@ -30,65 +30,759 @@
       <div class="titlepage">
         <div>
           <div>
-            <h2 class="title"><a id="PluginTop"></a>Plugin Hosting</h2>
+            <h2 class="title"><a id="PluginTop"></a>External Plugin Opcodes</h2>
           </div>
         </div>
       </div>
       <p>
-    Csound currently hosts external plugins using <span class="emphasis"><em>dssi4cs</em></span> (for LADSPA plugins) on Linux.
+    A number of external plugin opcodes are documented in this
+    manual, but they are not maintained as part of the main Csound system
+    code. These are instead available externally from a separate
+    repository.
   </p>
+      <p> Available for 6.x and 7.x: </p>
+      <p> Available for 6.x only: </p>
       <div class="section">
         <div class="titlepage">
           <div>
             <div>
-              <h2 class="title" style="clear: both"><a id="dssi4cs"></a>DSSI and LADSPA for Csound</h2>
+              <h3 class="title"><a id="ControlFltkIntro"></a>FLTK Widgets and GUI controllers</h3>
             </div>
           </div>
         </div>
-        <p><span class="emphasis"><em>dssi4cs</em></span> enables the use of DSSI and LADSPA plugin
-    effects and synthesizers within Csound on Linux. The following opcodes are
-    available:</p>
+        <p>
+    Widgets allow the design of a custom Graphical User Interface (GUI) to control an orchestra in real-time.
+    They are derived from the open-source library FLTK (Fast Light Tool Kit). This library is one of the
+    fastest graphic libraries available, supports OpenGL and should be source compatible with different
+    platforms (Windows, Linux, Unix and Mac OS). The subset of FLTK implemented in Csound provides the
+    following types of objects:
+    </p>
+        <div class="variablelist">
+          <dl class="variablelist">
+            <dt>
+              <span class="term">Containers</span>
+            </dt>
+            <dd>
+              <p>
+            <a class="link" href="PluginTop.html#ControlFltkContainers" title="FLTK Containers"><em class="citetitle">FLTK Containers</em></a>  are widgets
+            that contain other widgets such as panels, windows, etc. Csound provides the following container
+            objects:
+            </p>
+              <div class="itemizedlist">
+                <ul class="itemizedlist" style="list-style-type: disc; ">
+                  <li class="listitem">Panels</li>
+                  <li class="listitem">Scroll areas</li>
+                  <li class="listitem">Pack</li>
+                  <li class="listitem">Tabs</li>
+                  <li class="listitem">Groups</li>
+                </ul>
+              </div>
+              <p>
+          </p>
+            </dd>
+            <dt>
+              <span class="term">Valuators</span>
+            </dt>
+            <dd>
+              <p>
+            The most useful objects are named
+            <a class="link" href="PluginTop.html#ControlFltkValuators" title="FLTK Valuators"><em class="citetitle">FLTK Valuators</em></a>. These objects
+            allow the user to vary synthesis parameter values in real-time. Csound provides the following
+            valuator objects:
+            </p>
+              <div class="itemizedlist">
+                <ul class="itemizedlist" style="list-style-type: disc; ">
+                  <li class="listitem">Sliders</li>
+                  <li class="listitem">Knobs</li>
+                  <li class="listitem">Rollers</li>
+                  <li class="listitem">Text fields</li>
+                  <li class="listitem">Joysticks</li>
+                  <li class="listitem">Counters</li>
+                </ul>
+              </div>
+              <p>
+          </p>
+            </dd>
+            <dt>
+              <span class="term">Other widgets</span>
+            </dt>
+            <dd>
+              <p>
+            There are <a class="link" href="PluginTop.html#ControlFltkOther" title="Other FLTK Widgets"><em class="citetitle">other FTLK widgets</em></a>
+            that are not valuators nor containers:
+            </p>
+              <div class="itemizedlist">
+                <ul class="itemizedlist" style="list-style-type: disc; ">
+                  <li class="listitem">Buttons</li>
+                  <li class="listitem">Button banks</li>
+                  <li class="listitem">Labels</li>
+                  <li class="listitem">Keyboard and Mouse sensing</li>
+                </ul>
+              </div>
+              <p>
+          </p>
+            </dd>
+          </dl>
+        </div>
+        <p>
+  </p>
+        <p>
+    Also there are some other opcodes useful to modify the
+    <a class="link" href="PluginTop.html#ControlFltkAppearance" title="Modifying FLTK Widget Appearance"><em class="citetitle">widget appearance</em></a>:
+    </p>
         <div class="itemizedlist">
           <ul class="itemizedlist" style="list-style-type: disc; ">
-            <li class="listitem">
-              <p>
-      <a class="link" href="dssiinit.html" title="dssiinit"><em class="citetitle">dssiinit</em></a> - Loads a plugin.</p>
-            </li>
-            <li class="listitem">
-              <p>
-      <a class="link" href="dssiactivate.html" title="dssiactivate"><em class="citetitle">dssiactivate</em></a> - Activates or deactivates a plugin if it has this facility</p>
-            </li>
-            <li class="listitem">
-              <p>
-      <a class="link" href="dssilist.html" title="dssilist"><em class="citetitle">dssilist</em></a> - Lists all available plugins found in the LADSPA_PATH and DSSI_PATH global variables.</p>
-            </li>
-            <li class="listitem">
-              <p>
-      <a class="link" href="dssiaudio.html" title="dssiaudio"><em class="citetitle">dssiaudio</em></a> - Process audio using a Plugin.</p>
-            </li>
-            <li class="listitem">
-              <p>
-      <a class="link" href="dssictls.html" title="dssictls"><em class="citetitle">dssictls</em></a> - Send control information to a plugin's control port.</p>
-            </li>
+            <li class="listitem">Updating widget value.</li>
+            <li class="listitem">Setting primary and selection colors of a widget.</li>
+            <li class="listitem">Setting font type, size and color of widgets.</li>
+            <li class="listitem">Resizing a widget.</li>
+            <li class="listitem">Hiding and showing a widget.</li>
           </ul>
         </div>
         <p>
-    See the entry for <a class="link" href="dssiinit.html" title="dssiinit"><em class="citetitle">dssiinit</em></a> for a usage example. 
   </p>
-        <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
-          <table border="0" summary="Note">
-            <tr>
-              <td rowspan="2" align="center" valign="top" width="25">
-                <img alt="[Note]" src="images/note.png" />
-              </td>
-              <th align="left">Note</th>
-            </tr>
-            <tr>
-              <td align="left" valign="top">
-                <p>Currently only LADSPA plugins are supported, but DSSI support is planned.</p>
-              </td>
-            </tr>
-          </table>
+        <p>
+    There are also these <a class="link" href="PluginTop.html#ControlFltkGeneral" title="General FLTK Widget-related Opcodes"><em class="citetitle">general opcodes</em></a> that allow the following actions:
+    </p>
+        <div class="itemizedlist">
+          <ul class="itemizedlist" style="list-style-type: disc; ">
+            <li class="listitem">Running the widget thread:
+        <a class="link" href="FLrun.html" title="FLrun"><em class="citetitle">FLrun</em></a></li>
+            <li class="listitem">Loading snapshots containing the status of all valuators of an orchestra:
+      <a class="link" href="FLgetsnap.html" title="FLgetsnap"><em class="citetitle">FLgetsnap</em></a> and 
+      <a class="link" href="FLloadsnap.html" title="FLloadsnap"><em class="citetitle">FLloadsnap</em></a>.</li>
+            <li class="listitem">Saving snapshots containing the status of all valuators of an orchestra:
+      <a class="link" href="FLsavesnap.html" title="FLsavesnap"><em class="citetitle">FLsavesnap</em></a> and 
+      <a class="link" href="FLsetsnap.html" title="FLsetsnap"><em class="citetitle">FLsetsnap</em></a></li>
+            <li class="listitem">Setting the snapshot group of a declared valuator:
+      <a class="link" href="FLsetSnapGroup.html" title="FLsetSnapGroup"><em class="citetitle">FLsetSnapGroup</em></a></li>
+          </ul>
+        </div>
+        <p>
+  </p>
+        <p>
+    Below is a simple example of Csound code to create a window. Notice that all opcodes are init-rate and
+    must be called only once per session. The best way to use them is to place them in the header section of
+    an orchestra, before any instrument. Even though placing them inside an instrument is not prohibited,
+    unpredictable results can occur if that instrument is called more than once.
+  </p>
+        <p>
+    Each container is made up of a couple of opcodes: the first indicating the start of the container block and the last indicating the end of that container block. Some container blocks can be nested but they must not be crossed. After defining all containers, a widget thread must be run by using the special FLrun opcode that takes no arguments.
+  </p>
+        <p>
+    </p>
+        <div class="informalexample">
+          <pre class="programlisting">
+<span class="csdtag">&lt;CsoundSynthesizer&gt;</span>
+<span class="csdtag">&lt;CsOptions&gt;</span>
+<span class="comment">; Select audio/midi flags here according to platform</span>
+<span class="comment">; Audio out   Audio in    No messages</span>
+-odac           -iadc     -d     <span class="comment">;;;RT audio I/O</span>
+<span class="comment">; For Non-realtime ouput leave only the line below:</span>
+<span class="comment">; -o linseg.wav -W ;;; for file output any platform</span>
+<span class="csdtag">&lt;/CsOptions&gt;</span>
+<span class="csdtag">&lt;CsInstruments&gt;</span>
+<span class="comment">;*******************************</span>
+<span class="ohdr">sr</span><span class="op">=</span>48000
+<span class="ohdr">kr</span><span class="op">=</span>480
+<span class="ohdr">ksmps</span><span class="op">=</span>100
+<span class="ohdr">nchnls</span><span class="op">=</span>1
+
+<span class="comment">;*** It is recommended to put almost all GUI code in the</span>
+<span class="comment">;*** header section of an orchestra</span>
+
+        <span class="opc">FLpanel</span>         "Panel1",450,550 <span class="comment">;***** start of container</span>
+<span class="comment">; some widgets should contained here</span>
+        <span class="opc">FLpanelEnd</span>      <span class="comment">;***** end of container</span>
+
+        <span class="opc">FLrun</span>           <span class="comment">;***** runs the widget thread, it is always required!</span>
+<span class="oblock">instr</span> 1
+<span class="comment">;put some synthesis code here</span>
+<span class="oblock">endin</span>
+<span class="comment">;*******************************</span>
+<span class="csdtag">&lt;/CsInstruments&gt;</span>
+<span class="csdtag">&lt;CsScore&gt;</span>
+<span class="stamnt">f</span> 0 3600 <span class="comment">;dummy table for realtime input</span>
+<span class="stamnt">e</span>
+
+<span class="csdtag">&lt;/CsScore&gt;</span>
+<span class="csdtag">&lt;/CsoundSynthesizer&gt;</span></pre>
+        </div>
+        <p>
+
+    The previous code simply creates a panel (an empty window because no widgets are defined inside the container).
+
+  </p>
+        <p>
+    The following example creates two panels and inserts a slider inside each of them:
+
+    </p>
+        <div class="informalexample">
+          <pre class="programlisting">
+<span class="csdtag">&lt;CsoundSynthesizer&gt;</span>
+<span class="csdtag">&lt;CsOptions&gt;</span>
+<span class="comment">; Select audio/midi flags here according to platform</span>
+<span class="comment">; Audio out   Audio in    No messages</span>
+-odac           -iadc    <span class="comment">; -d     ;;;RT audio I/O</span>
+<span class="comment">; For Non-realtime ouput leave only the line below:</span>
+<span class="comment">; -o linseg.wav -W ;;; for file output any platform</span>
+<span class="csdtag">&lt;/CsOptions&gt;</span>
+<span class="csdtag">&lt;CsInstruments&gt;</span>
+<span class="comment">;*******************************</span>
+<span class="ohdr">sr</span><span class="op">=</span>48000
+<span class="ohdr">kr</span><span class="op">=</span>480
+<span class="ohdr">ksmps</span><span class="op">=</span>100
+<span class="ohdr">nchnls</span><span class="op">=</span>1
+
+        <span class="opc">FLpanel</span>         "Panel1",450,550,100,100 <span class="comment">;***** start of container</span>
+gk1,iha <span class="opc">FLslider</span>        "FLslider 1", 500, 1000, 0 ,1, -1, 300,15, 20,50
+        <span class="opc">FLpanelEnd</span>      <span class="comment">;***** end of container</span>
+
+        <span class="opc">FLpanel</span>         "Panel2",450,550,100,100 <span class="comment">;***** start of container</span>
+gk2,ihb <span class="opc">FLslider</span>        "FLslider 2", 100, 200, 0 ,1, -1, 300,15, 20,50
+        <span class="opc">FLpanelEnd</span>      <span class="comment">;***** end of container</span>
+
+        <span class="opc">FLrun</span>           <span class="comment">;***** runs the widget thread, it is always required!</span>
+
+<span class="oblock">instr 1</span>
+<span class="comment">; gk1 and gk2 variables that contain the output of valuator</span>
+<span class="comment">; widgets previously defined, can be used inside any instrument</span>
+<span class="opc">printk2</span> gk1
+<span class="opc">printk2</span> gk2   <span class="comment">;print the values of the valuators whenever they change</span>
+<span class="oblock">endin</span>
+<span class="comment">;*******************************</span>
+<span class="csdtag">&lt;/CsInstruments&gt;</span>
+<span class="csdtag">&lt;CsScore&gt;</span>
+<span class="stamnt">f</span> 0 3600 <span class="comment">;dummy table for realtime input</span>
+<span class="stamnt">e</span>
+
+<span class="csdtag">&lt;/CsScore&gt;</span>
+<span class="csdtag">&lt;/CsoundSynthesizer&gt;</span></pre>
+        </div>
+        <p>
+  </p>
+        <p>
+    All widget opcodes are init-rate opcodes, even if valuators output k-rate variables. This happens because an independent thread is run based on a callback mechanism. It consumes very few processing resources since there is no need of polling. (This differs from other MIDI based controller opcodes.) So you can use any number of windows and valuators without degrading the real-time performance.
+  </p>
+        <div class="section">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h4 class="title"><a id="ControlFltkContainers"></a>FLTK Containers</h4>
+              </div>
+            </div>
+          </div>
+          <p>
+    The opcodes for FLTK containers are:
+    </p>
+          <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLgroup.html" title="FLgroup">
+                    <em class="citetitle">FLgroup</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLgroupEnd.html" title="FLgroupEnd">
+                    <em class="citetitle">FLgroupEnd</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLpack.html" title="FLpack">
+                    <em class="citetitle">FLpack</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLpackEnd.html" title="FLpackEnd">
+                    <em class="citetitle">FLpackEnd</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLpanel.html" title="FLpanel">
+                    <em class="citetitle">FLpanel</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLpanelEnd.html" title="FLpanelEnd">
+                    <em class="citetitle">FLpanelEnd</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLscroll.html" title="FLscroll">
+                    <em class="citetitle">FLscroll</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLscrollEnd.html" title="FLscrollEnd">
+                    <em class="citetitle">FLscrollEnd</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLtabs.html" title="FLtabs">
+                    <em class="citetitle">FLtabs</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLtabsEnd.html" title="FLtabsEnd">
+                    <em class="citetitle">FLtabsEnd</em>
+                  </a>
+                </p>
+              </li>
+            </ul>
+          </div>
+          <p>
+  </p>
+        </div>
+        <div class="section">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h4 class="title"><a id="ControlFltkValuators"></a>FLTK Valuators</h4>
+              </div>
+            </div>
+          </div>
+          <p>
+    The opcodes for FLTK valuators are:
+    </p>
+          <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLcount.html" title="FLcount">
+                    <em class="citetitle">FLcount</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLjoy.html" title="FLjoy">
+                    <em class="citetitle">FLjoy</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLknob.html" title="FLknob">
+                    <em class="citetitle">FLknob</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLroller.html" title="FLroller">
+                    <em class="citetitle">FLroller</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLslider.html" title="FLslider">
+                    <em class="citetitle">FLslider</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLtext.html" title="FLtext">
+                    <em class="citetitle">FLtext</em>
+                  </a>
+                </p>
+              </li>
+            </ul>
+          </div>
+          <p>
+  </p>
+        </div>
+        <div class="section">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h4 class="title"><a id="ControlFltkOther"></a>Other FLTK Widgets</h4>
+              </div>
+            </div>
+          </div>
+          <p>
+    Other FLTK widget opcodes are:
+      </p>
+          <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLbox.html" title="FLbox">
+                    <em class="citetitle">FLbox</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLbutBank.html" title="FLbutBank">
+                    <em class="citetitle">FLbutBank</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLbutton.html" title="FLbutton">
+                    <em class="citetitle">FLbutton</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLexecButton.html" title="FLexecButton">
+                    <em class="citetitle">FLexecButton</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLkeyIn.html" title="FLkeyIn">
+                    <em class="citetitle">FLkeyIn</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLhvsBox.html" title="FLhvsBox">
+                    <em class="citetitle">FLhvsBox</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLhvsBoxSetValue.html" title="FLhvsBoxSetValue">
+                    <em class="citetitle">FLhvsBoxSetValue</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLmouse.html" title="FLmouse">
+                    <em class="citetitle">FLmouse</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLprintk.html" title="FLprintk">
+                    <em class="citetitle">FLprintk</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLprintk2.html" title="FLprintk2">
+                    <em class="citetitle">FLprintk2</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLslidBnk.html" title="FLslidBnk">
+                    <em class="citetitle">FLslidBnk</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLslidBnk2.html" title="FLslidBnk2">
+                    <em class="citetitle">FLslidBnk2</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLslidBnkGetHandle.html" title="FLslidBnkGetHandle">
+                    <em class="citetitle">FLslidBnkGetHandle</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLslidBnkSet.html" title="FLslidBnkSet">
+                    <em class="citetitle">FLslidBnkSet</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLslidBnk2Set.html" title="FLslidBnk2Set">
+                    <em class="citetitle">FLslidBnk2Set</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLslidBnk2Setk.html" title="FLslidBnk2Setk">
+                    <em class="citetitle">FLslidBnk2Setk</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLvalue.html" title="FLvalue">
+                    <em class="citetitle">FLvalue</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLvkeybd.html" title="FLvkeybd">
+                    <em class="citetitle">FLvkeybd</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLvslidBnk.html" title="FLvslidBnk">
+                    <em class="citetitle">FLvslidBnk</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLvslidBnk2.html" title="FLvslidBnk2">
+                    <em class="citetitle">FLvslidBnk2</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLxyin.html" title="FLxyin">
+                    <em class="citetitle">FLxyin</em>
+                  </a>
+                </p>
+              </li>
+            </ul>
+          </div>
+          <p>
+  </p>
+        </div>
+        <div class="section">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h4 class="title"><a id="ControlFltkAppearance"></a>Modifying FLTK Widget Appearance</h4>
+              </div>
+            </div>
+          </div>
+          <p>The following opcodes modify FLTK widget appearance:</p>
+          <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLcolor.html" title="FLcolor">
+                    <em class="citetitle">FLcolor</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLcolor2.html" title="FLcolor2">
+                    <em class="citetitle">FLcolor2</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLhide.html" title="FLhide">
+                    <em class="citetitle">FLhide</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLlabel.html" title="FLlabel">
+                    <em class="citetitle">FLlabel</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLsetAlign.html" title="FLsetAlign">
+                    <em class="citetitle">FLsetAlign</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLsetBox.html" title="FLsetBox">
+                    <em class="citetitle">FLsetBox</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLsetColor.html" title="FLsetColor">
+                    <em class="citetitle">FLsetColor</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLsetColor2.html" title="FLsetColor2">
+                    <em class="citetitle">FLsetColor2</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLsetFont.html" title="FLsetFont">
+                    <em class="citetitle">FLsetFont</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLsetPosition.html" title="FLsetPosition">
+                    <em class="citetitle">FLsetPosition</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLsetSize.html" title="FLsetSize">
+                    <em class="citetitle">FLsetSize</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLsetText.html" title="FLsetText">
+                    <em class="citetitle">FLsetText</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLsetTextColor.html" title="FLsetTextColor">
+                    <em class="citetitle">FLsetTextColor</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLsetTextSize.html" title="FLsetTextSize">
+                    <em class="citetitle">FLsetTextSize</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLsetTextType.html" title="FLsetTextType">
+                    <em class="citetitle">FLsetTextType</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLsetVal_i.html" title="FLsetVal_i">
+                    <em class="citetitle">FLsetVal_i</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLsetVal.html" title="FLsetVal">
+                    <em class="citetitle">FLsetVal</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLshow.html" title="FLshow">
+                    <em class="citetitle">FLshow</em>
+                  </a>
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="section">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h4 class="title"><a id="ControlFltkGeneral"></a>General FLTK Widget-related Opcodes</h4>
+              </div>
+            </div>
+          </div>
+          <p>
+    The general FLTK widget-related opcodes are:
+    </p>
+          <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLgetsnap.html" title="FLgetsnap">
+                    <em class="citetitle">FLgetsnap</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLloadsnap.html" title="FLloadsnap">
+                    <em class="citetitle">FLloadsnap</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLrun.html" title="FLrun">
+                    <em class="citetitle">FLrun</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLsavesnap.html" title="FLsavesnap">
+                    <em class="citetitle">FLsavesnap</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLsetsnap.html" title="FLsetsnap">
+                    <em class="citetitle">FLsetsnap</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLupdate.html" title="FLupdate">
+                    <em class="citetitle">FLupdate</em>
+                  </a>
+                </p>
+              </li>
+              <li class="listitem">
+                <p>
+                  <a class="link" href="FLsetSnapGroup.html" title="FLsetSnapGroup">
+                    <em class="citetitle">FLsetSnapGroup</em>
+                  </a>
+                </p>
+              </li>
+            </ul>
+          </div>
+          <p>
+  </p>
         </div>
       </div>
     </div>
@@ -96,18 +790,18 @@
       <hr />
       <table width="100%" summary="Navigation footer">
         <tr>
-          <td width="40%" align="left"><a accesskey="p" href="ZakTop.html">Prev</a> </td>
+          <td width="40%" align="left"><a accesskey="p" href="MixerOpcodes.html">Prev</a> </td>
           <td width="20%" align="center">
             <a accesskey="u" href="PartOpcodesOverview.html">Up</a>
           </td>
-          <td width="40%" align="right"> <a accesskey="n" href="OSCNetwork.html">Next</a></td>
+          <td width="40%" align="right"> <a accesskey="n" href="py.html">Next</a></td>
         </tr>
         <tr>
-          <td width="40%" align="left" valign="top">Zak Patch System </td>
+          <td width="40%" align="left" valign="top">Mixer Opcodes </td>
           <td width="20%" align="center">
             <a accesskey="h" href="index.html">Home</a>
           </td>
-          <td width="40%" align="right" valign="top"> OSC and Network</td>
+          <td width="40%" align="right" valign="top"> Python Opcodes</td>
         </tr>
       </table>
     </div>

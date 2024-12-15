@@ -39,7 +39,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm33814"></a>
+        <a id="idm29160"></a>
         <h2>Description</h2>
         <p>Plugin opcode in serial.</p>
         <p>
@@ -47,13 +47,13 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm33818"></a>
+        <a id="idm29164"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">kval <span class="command"><strong>arduinoReadF</strong></span> iPort, iStream1,
       iStream2, iStream3</pre>
       </div>
       <div class="refsect1">
-        <a id="idm33822"></a>
+        <a id="idm29168"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>iPort</em></span> -- port number obtained from a
@@ -84,20 +84,20 @@
         </div>
       </div>
       <div class="refsect1">
-        <a id="idm33832"></a>
+        <a id="idm29178"></a>
         <h2>Examples</h2>
         <p>
       Here is an example of the arduinoReadF opcode. It uses the file <a class="ulink" href="examples/arduinoReadF.csd" target="_top"><em class="citetitle">arduinoReadF.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm33837"></a>
+          <a id="idm29183"></a>
           <p class="title">
             <strong>Example 64. Example of the arduinoReadF opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm33844"></a>
+              <a id="idm29190"></a>
               <pre class="programlisting">
 Arduino-Joystick2Csound1g-fm1-port (version with smoothing)
 
@@ -156,7 +156,7 @@ void setup() {
   Serial.begin(9600)<span class="c1">;</span>
 }
 
-<span class="c1">// put_val( ) - a function to send data values to the Csound</span>
+val<span class="c1">// put_val( ) - a function to send data values to the Csound</span>
 <span class="c1">//              "arduinoRead" opcode</span>
 <span class="c1">// The first argument of the put_val function "int senChan" sets</span>
 <span class="c1">// the software channel number that Csound reads</span>
@@ -172,7 +172,7 @@ void put_val(int senChan, int senVal)
 {       <span class="c1">// The packing of the data is sssssvvv 0vvvvvvv where s is a</span>
         <span class="c1">// senChan bit, v a senVal bit and 0 is zero` bit</span>
   int low = senVal&amp;0x7f<span class="c1">;</span>
-  int hi = ((senVal&gt;&gt;7)&amp;0x0f) | ((senChan&amp;0x0f)<span class="err">&lt;</span><span class="nt">&lt;4</span><span class="err">);</span><span class="w">
+  int hi = ((senVal&gt;&gt;7)&amp;0x07) | ((senChan&amp;0x1f)<span class="err">&lt;</span><span class="nt">&lt;3</span><span class="err">);</span><span class="w">
   </span><span class="err">Serial.write(low);</span><span class="w"> </span><span class="err">Serial.write(hi);</span><span class="w">
 </span><span class="err">}</span><span class="w">
 
@@ -208,16 +208,17 @@ void loop() {
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm34043"></a>
+        <a id="idm29389"></a>
         <h2>See Also</h2>
         <p>
-      <a class="link" href="arduinoStart.html" title="arduinoStart"><em class="citetitle"></em>arduinoStart</a>,
-      <a class="link" href="arduinoStop.html" title="arduinoStop"><em class="citetitle"></em>arduinoStop</a>,
-      <a class="link" href="arduinoRead.html" title="arduinoRead"><em class="citetitle"></em>arduinoRead</a>,
-    </p>
+          <a class="link" href="nonMIDIdevices.html" title="non-MIDI Devices">
+            <em class="citetitle">non-MIDI Devices</em>
+          </a>
+        </p>
+        <p> More information: <a class="ulink" href="https://csound.com/icsc2022/proceedings/New%20Arduino%20Opcodes%20to%20Simplify%20the%20Streaming%20of%20Sensor%20and%20Controller%20Data%20to%20Csound.pdf" target="_top"><em class="citetitle">New Arduino Opcodes to Simplify the Streaming of Sensor and Controller Data to Csound</em></a></p>
       </div>
       <div class="refsect1">
-        <a id="idm34052"></a>
+        <a id="idm29397"></a>
         <h2>Credits</h2>
         <p>
       </p>

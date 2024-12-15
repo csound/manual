@@ -39,46 +39,46 @@
           </p>
       </div>
       <div class="refsect1">
-        <a id="idm130482"></a>
+        <a id="idm125697"></a>
         <h2>Description</h2>
         <p>
       Envelope follower unit generator.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm130485"></a>
+        <a id="idm125700"></a>
         <h2>Syntax</h2>
         <pre class="synopsis">ares <span class="command"><strong>follow</strong></span> asig, idt</pre>
       </div>
       <div class="refsect1">
-        <a id="idm130489"></a>
+        <a id="idm125704"></a>
         <h2>Initialization</h2>
         <p>
 <span class="emphasis"><em>idt</em></span> -- This is the period, in seconds, that the average amplitude of <span class="emphasis"><em>asig</em></span> is reported. If the frequency of <span class="emphasis"><em>asig</em></span> is low then <span class="emphasis"><em>idt</em></span> must be large (more than half the period of <span class="emphasis"><em>asig</em></span> )
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm130497"></a>
+        <a id="idm125712"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>asig</em></span> -- This is the signal from which to extract the envelope.
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm130501"></a>
+        <a id="idm125716"></a>
         <h2>Examples</h2>
         <p>
-      Here is an example of the follow opcode. It uses the file <a class="ulink" href="examples/follow.csd" target="_top"><em class="citetitle">follow.csd</em></a>, and <a class="ulink" href="examples/beats.wav" target="_top"><em class="citetitle">beats.wav</em></a>.
+      Here is an example of the follow opcode. It uses the file <a class="ulink" href="examples/follow.csd" target="_top"><em class="citetitle">follow.csd</em></a>, and <a class="ulink" href="examples/drumsMlp.wav" target="_top"><em class="citetitle">drumsMlp.wav</em></a>.
       </p>
         <div class="example">
-          <a id="idm130508"></a>
+          <a id="idm125723"></a>
           <p class="title">
-            <strong>Example 366. Example of the follow opcode.</strong>
+            <strong>Example 369. Example of the follow opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm130515"></a>
+              <a id="idm125730"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
@@ -97,19 +97,19 @@
 
 </span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
 
-</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">soundin</span><span class="w"> </span><span class="s">"beats.wav"</span><span class="w">
+</span>a<span class="n">sig</span><span class="w"> </span><span class="nb">soundin</span><span class="w"> </span><span class="s">"drumsMlp.wav"</span><span class="w">
      </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
 
 </span><span class="kd">endin</span><span class="w">
 
 </span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">	</span><span class="c1">;envelope follower</span><span class="w">
 
-</span>a<span class="n">s</span><span class="w">   </span><span class="nb">soundin</span><span class="w"> </span><span class="s">"beats.wav"</span><span class="w">
+</span>a<span class="n">s</span><span class="w">   </span><span class="nb">soundin</span><span class="w"> </span><span class="s">"drumsMlp.wav"</span><span class="w">
 </span>a<span class="n">s</span><span class="w">   </span><span class="o">=</span><span class="w"> </span>a<span class="n">s</span><span class="o">*</span><span class="mf">.7</span><span class="w">		</span><span class="c1">;reduce volume a bit</span><span class="w">
 </span>a<span class="n">t</span><span class="w">   </span><span class="nb">tone</span><span class="w">    </span>a<span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="w">	</span><span class="c1">;smooth estimated envelope</span><span class="w">
 </span>a<span class="n">f</span><span class="w">   </span><span class="nb">follow</span><span class="w">  </span>a<span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="vi">p4</span><span class="w">
 </span>a<span class="n">sin</span><span class="w"> </span><span class="nb">poscil3</span><span class="w"> </span><span class="mf">.5</span><span class="p">,</span><span class="w"> </span><span class="mi">440</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
-</span><span class="c1">; "beats.wav" provides amplitude for poscil</span><span class="w">
+</span><span class="c1">; "drumsMlp.wav" provides amplitude for poscil</span><span class="w">
 </span>a<span class="n">sig</span><span class="w"> </span><span class="nb">balance</span><span class="w"> </span>a<span class="n">sin</span><span class="p">,</span><span class="w"> </span>a<span class="n">f</span><span class="w">
      </span><span class="nb">outs</span><span class="w">    </span>a<span class="n">sig</span><span class="p">,</span><span class="w"> </span>a<span class="n">sig</span><span class="w">
 
@@ -136,7 +136,16 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm130698"></a>
+        <a id="idm125913"></a>
+        <h2>See also</h2>
+        <p>
+          <a class="link" href="ControlSensing.html" title="Sensing and Control">
+            <em class="citetitle">Sensing and Control: Envelope followers</em>
+          </a>
+        </p>
+      </div>
+      <div class="refsect1">
+        <a id="idm125918"></a>
         <h2>Credits</h2>
         <p>
       </p>

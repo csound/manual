@@ -39,7 +39,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm297162"></a>
+        <a id="idm291457"></a>
         <h2>Description</h2>
         <p>Plugin opcode in scansyn.</p>
         <p>
@@ -47,14 +47,14 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm297166"></a>
+        <a id="idm291461"></a>
         <h2>Syntax</h2>
         <pre class="synopsis"><span class="command"><strong>scanu</strong></span> init, irate, ifndisplace,
     ifnmass, ifnmatrix, ifncentr, ifndamp, kmass, kmtrxstiff, kcentr,
     kdamp, ileft, iright, kpos, kdisplace, ain, idisp, id</pre>
       </div>
       <div class="refsect1">
-        <a id="idm297170"></a>
+        <a id="idm291465"></a>
         <h2>Initialization</h2>
         <p>
       <span class="emphasis"><em>init</em></span> -- the initial position of the masses.  If this is a negative number, then the absolute of <span class="emphasis"><em>init</em></span> signifies the table to use as a hammer shape.  If <span class="emphasis"><em>init</em></span> &gt; 0, the length of it should be the same as the intended mass number, otherwise it can be anything.
@@ -83,10 +83,10 @@
       <span class="emphasis"><em>ifndamp</em></span> -- the ftable that contains the damping factor of each mass. It should have the same size as the intended mass number.
     </p>
         <p>
-      <span class="emphasis"><em>ileft</em></span> -- If <span class="emphasis"><em>init</em></span> &lt; 0, the position of the left hammer (<span class="emphasis"><em>ileft</em></span> = 0 is hit at leftmost, <span class="emphasis"><em>ileft</em></span> = 1 is hit at rightmost).
+      <span class="emphasis"><em>ileft</em></span> -- If <span class="emphasis"><em>init</em></span> &lt; 0, the position of the left hammer (<span class="emphasis"><em>ileft</em></span> = 0 is hit at leftmost, <span class="emphasis"><em>ileft</em></span> = 1 is hit at rightmost). Ignored when <span class="emphasis"><em>init</em></span> &gt; 0.
     </p>
         <p>
-      <span class="emphasis"><em>iright</em></span> -- If <span class="emphasis"><em>init</em></span> &lt; 0, the position of the right hammer (<span class="emphasis"><em>iright</em></span> = 0 is hit at leftmost, <span class="emphasis"><em>iright</em></span> = 1 is hit at rightmost).
+      <span class="emphasis"><em>iright</em></span> -- If <span class="emphasis"><em>init</em></span> &lt; 0, the position of the right hammer (<span class="emphasis"><em>iright</em></span> = 0 is hit at leftmost, <span class="emphasis"><em>iright</em></span> = 1 is hit at rightmost). Ignored when <span class="emphasis"><em>init</em></span> &gt; 0.
     </p>
         <p>
       <span class="emphasis"><em>idisp</em></span> -- If 0, no display of the masses is provided.
@@ -96,7 +96,7 @@
     </p>
       </div>
       <div class="refsect1">
-        <a id="idm297202"></a>
+        <a id="idm291499"></a>
         <h2>Performance</h2>
         <p>
       <span class="emphasis"><em>kmass</em></span> -- scales the masses
@@ -111,7 +111,7 @@
       <span class="emphasis"><em>kdamp</em></span> -- scales the damping
     </p>
         <p>
-      <span class="emphasis"><em>kpos</em></span> -- position of an active hammer along the string (<span class="emphasis"><em>kpos</em></span> = 0 is leftmost, <span class="emphasis"><em>kpos</em></span> = 1 is rightmost).  The shape of the hammer is determined by <span class="emphasis"><em>init</em></span> and the power it pushes with is <span class="emphasis"><em>kstrngth</em></span>.
+      <span class="emphasis"><em>kpos</em></span> -- position of an active hammer along the string (<span class="emphasis"><em>kpos</em></span> = 0 is leftmost, <span class="emphasis"><em>kpos</em></span> = 1 is rightmost).  The shape of the hammer is determined by <span class="emphasis"><em>init</em></span> and the power it pushes with is <span class="emphasis"><em>kdisplace</em></span>.
     </p>
         <p>
       <span class="emphasis"><em>kdisplace</em></span> -- power that the active hammer uses.
@@ -119,148 +119,95 @@
         <p>
       <span class="emphasis"><em>ain</em></span> -- audio input that adds to the velocity of the masses. Amplitude should not be too great.
     </p>
-      </div>
-      <div class="refsect1">
-        <a id="idm297222"></a>
-        <h2>Matrix Format</h2>
-        <p>
-      The scanu matrix format is a binary list of connections. There is no weight given to the link; it is assumed to be unity.
-    </p>
-        <p>
-      For example, a circular string of 4 would be coded as
-
+        <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+          <table border="0" summary="Note: Note">
+            <tr>
+              <td rowspan="2" align="center" valign="top" width="25">
+                <img alt="[Note]" src="images/note.png" />
+              </td>
+              <th align="left">Note</th>
+            </tr>
+            <tr>
+              <td align="left" valign="top">
+                <p>Both scanu and scanu2 are capable of reading the binary (.matrxB) and text (.matrxT) matrix format. However, using scanu2 is to be preferred because of its accuracy and better sound quality.
       </p>
-        <div class="informalexample">
-          <pre class="programlisting">
-0
-1
-0
-0
-1
-0
-1
-0
-0
-1
-0
-1
-0
-0
-1
-0
-        </pre>
+              </td>
+            </tr>
+          </table>
         </div>
-        <p>
-      Note: to avoid confusion with other matrix formats, it is best to save this matrix format file using the extension <em class="citetitle">file.matrxB.</em>
-    </p>
       </div>
       <div class="refsect1">
-        <a id="idm297229"></a>
+        <a id="idm291522"></a>
         <h2>Examples</h2>
         <p>
-      Here is an example of the scanu opcode. It uses the files <a class="ulink" href="examples/scanu-musical.csd" target="_top"><em class="citetitle">scanu-musical.csd</em></a> and <a class="ulink" href="examples/MIDIpad.mid" target="_top"><em class="citetitle">MIDIpad.mid</em></a>.
+      Here is an example of the scanu opcode. It uses the file <a class="ulink" href="examples/scanu.csd" target="_top"><em class="citetitle">scanu.csd</em></a>.
       </p>
         <div class="example">
-          <a id="idm297236"></a>
+          <a id="idm291527"></a>
           <p class="title">
-            <strong>Example 937. Example of the scanu opcode.</strong>
+            <strong>Example 945. Example of the scanu opcode.</strong>
           </p>
           <div class="example-contents">
             <p>See the sections <a class="link" href="UsingRealTime.html" title="Real-Time Audio"><em class="citetitle">Real-time Audio</em></a> and <a class="link" href="CommandFlags.html" title="Csound command line"><em class="citetitle">Command Line Flags</em></a> for more information on using command line flags.</p>
             <div class="refsect1">
-              <a id="idm297243"></a>
+              <a id="idm291534"></a>
               <pre class="programlisting">
 <span class="nt">&lt;CsoundSynthesizer&gt;</span>
 <span class="nt">&lt;CsOptions&gt;</span>
--odac -d -F "MIDIpad.mid"
+<span class="c1">; Select audio/midi flags here according to platform</span>
+-odac  --limiter=0.95 <span class="c1">;;;realtime audio out &amp; and limit loud sounds</span>
+<span class="c1">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</span>
 <span class="c1">; For Non-realtime ouput leave only the line below:</span>
-<span class="c1">; -o scanu-musical.wav -W ;;; for file output any platform</span>
+<span class="c1">; -o scanu.wav -W ;;; for file output any platform</span>
 <span class="nt">&lt;/CsOptions&gt;</span>
 <span class="nt">&lt;CsInstruments&gt;</span><span class="w">
-
-</span><span class="c1">; by Shengzheng Zhang (aka John Towse)</span><span class="w">
 
 </span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
 </span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
 </span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
 </span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-</span>i<span class="n">tmp</span><span class="w">  </span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">64</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">      </span><span class="c1">; generating all bunch of tables needed</span><span class="w">
-</span>i<span class="n">tmp</span><span class="w">  </span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
-</span>i<span class="n">tmp</span><span class="w">  </span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">16384</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">23</span><span class="p">,</span><span class="w"> </span><span class="s">"string-128.matrxB"</span><span class="w">
-</span>i<span class="n">tmp</span><span class="w">  </span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span><span class="o">-</span><span class="mi">7</span><span class="w"> </span><span class="p">,</span><span class="mf">0.5</span><span class="w"> </span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">
-</span>i<span class="n">tmp</span><span class="w">  </span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
-</span>i<span class="n">tmp</span><span class="w">  </span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">
-</span>i<span class="n">tmp</span><span class="w">  </span><span class="nb">ftgen</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mf">.001</span><span class="p">,</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="w">
+</span><span class="c1">; by Menno Knevel 2024</span><span class="w">
 
-</span>ga<span class="n">l</span><span class="w">   </span><span class="nb">init</span><span class="w"> </span><span class="mi">0</span><span class="w">                                 </span><span class="c1">; getting reverb and delay ready</span><span class="w">
-</span>ga<span class="n">r</span><span class="w">   </span><span class="nb">init</span><span class="w"> </span><span class="mi">0</span><span class="w">
-</span>ga<span class="n">vl</span><span class="w">  </span><span class="nb">init</span><span class="w"> </span><span class="mi">0</span><span class="w">
-</span>ga<span class="n">vr</span><span class="w">  </span><span class="nb">init</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">	
 
-</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w">
-</span>k<span class="n">pan</span><span class="w">    </span><span class="nb">randh</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w">                           </span><span class="c1">; random panning</span><span class="w">
-</span>k<span class="n">pan</span><span class="w">    </span><span class="nb">port</span><span class="w"> </span>k<span class="n">pan</span><span class="p">,</span><span class="w"> </span><span class="mf">0.05</span><span class="w"> </span><span class="c1">;make the panning change not so quick</span><span class="w">
-</span>k<span class="n">pitch</span><span class="w">  </span><span class="nb">cpsmidib</span><span class="w"> </span><span class="mi">12</span><span class="w">
-</span>i<span class="n">pitch</span><span class="w">  </span><span class="nb">cpsmidi</span><span class="w">
-</span>k<span class="n">envm</span><span class="w">   </span><span class="nb">madsr</span><span class="w"> </span><span class="mf">0.02</span><span class="p">,</span><span class="w"> </span><span class="mf">0.6</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
-</span>k<span class="n">env2</span><span class="w">   </span><span class="nb">madsr</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.6</span><span class="p">,</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
-</span>k<span class="n">env3</span><span class="w">   </span><span class="nb">madsr</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span><span class="w"> </span><span class="mf">0.6</span><span class="p">,</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
-</span>k<span class="n">vib</span><span class="w">    </span><span class="nb">lfo</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="w">
-</span>i<span class="n">fnvel</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
-</span>i<span class="n">fnmass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
-</span>i<span class="n">fnstif</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w">
-</span>i<span class="n">fncentr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w">
-</span>i<span class="n">fndamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="w">
-</span>k<span class="n">stif</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mf">0.3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.1</span><span class="o">*</span>k<span class="n">vib</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>k<span class="n">env3</span><span class="w">
-</span>k<span class="n">mass</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="o">-</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span>k<span class="n">envm</span><span class="p">)</span><span class="w">                      </span><span class="c1">; modulated mass</span><span class="w">
-</span>k<span class="n">centr</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span><span class="w">
-</span>k<span class="n">damp</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mf">0.02</span><span class="w">
-</span>i<span class="n">left</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mf">0.2</span><span class="w">
-</span>i<span class="n">right</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mf">0.8</span><span class="w">
-</span>k<span class="n">pos</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mf">0.2</span><span class="w">
-</span>k<span class="n">strngth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.005</span><span class="w">
-</span><span class="c1">;setups for scan synthesis</span><span class="w">
-</span>a<span class="n">2</span><span class="w">      </span><span class="nb">madsr</span><span class="w"> </span><span class="mf">0.002</span><span class="p">,</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="c1">;get a initial pick, but seemed like not working </span><span class="w">
-</span><span class="nb">scanu</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span>i<span class="n">fnvel</span><span class="p">,</span><span class="w"> </span>i<span class="n">fnmass</span><span class="p">,</span>i<span class="n">fnstif</span><span class="p">,</span>i<span class="n">fncentr</span><span class="p">,</span><span class="w"> </span>i<span class="n">fndamp</span><span class="p">,</span>k<span class="n">mass</span><span class="p">,</span><span class="w"> </span>k<span class="n">stif</span><span class="p">,</span><span class="w"> </span>k<span class="n">centr</span><span class="p">,</span><span class="w"> </span>k<span class="n">damp</span><span class="p">,</span><span class="w"> </span>i<span class="n">left</span><span class="p">,</span><span class="w"> </span>i<span class="n">right</span><span class="p">,</span>k<span class="n">pos</span><span class="p">,</span>k<span class="n">strngth</span><span class="p">,</span><span class="w"> </span>a<span class="n">2</span><span class="o">*</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
-</span>a<span class="n">1</span><span class="w">      </span><span class="nb">scans</span><span class="w"> </span><span class="mf">.01</span><span class="o">*</span>k<span class="n">env2</span><span class="p">,</span><span class="w"> </span>k<span class="n">pitch</span><span class="o">+</span>k<span class="n">pitch</span><span class="o">*</span>k<span class="n">vib</span><span class="o">*</span>k<span class="n">env3</span><span class="o">*</span><span class="mf">0.01</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">
-</span>a<span class="n">1</span><span class="w">      </span><span class="nb">dcblock</span><span class="w"> </span>a<span class="n">1</span><span class="w">
-</span>a<span class="n">1</span><span class="w">      </span><span class="nb">butterlp</span><span class="w">	</span>a<span class="n">1</span><span class="p">,</span><span class="w"> </span>k<span class="n">pitch</span><span class="o">*</span><span class="mi">8</span><span class="w">
-</span>a<span class="n">1</span><span class="w">      </span><span class="nb">butterlp</span><span class="w">	</span>a<span class="n">1</span><span class="p">,</span><span class="w"> </span>k<span class="n">pitch</span><span class="o">*</span><span class="mi">12</span><span class="w">
-</span>a<span class="n">l</span><span class="w">      </span><span class="o">=</span><span class="w"> </span>a<span class="n">1</span><span class="o">*</span>k<span class="n">pan</span><span class="w">
-</span>a<span class="n">r</span><span class="w">      </span><span class="o">=</span><span class="w"> </span>a<span class="n">1</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span>k<span class="n">pan</span><span class="p">)</span><span class="w">
-        </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">l</span><span class="p">,</span><span class="w"> </span>a<span class="n">r</span><span class="w">
-        </span><span class="nb">vincr</span><span class="w"> </span>ga<span class="n">l</span><span class="p">,</span><span class="w"> </span>a<span class="n">l</span><span class="w">
-        </span><span class="nb">vincr</span><span class="w"> </span>ga<span class="n">r</span><span class="p">,</span><span class="w"> </span>a<span class="n">r</span><span class="w">
-        </span><span class="nb">vincr</span><span class="w"> </span>ga<span class="n">vl</span><span class="p">,</span><span class="w"> </span>a<span class="n">l</span><span class="w">
-        </span><span class="nb">vincr</span><span class="w"> </span>ga<span class="n">vr</span><span class="p">,</span><span class="w"> </span>a<span class="n">r</span><span class="w">
-</span><span class="kd">endin</span><span class="w">
+</span>a<span class="n">0</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">     </span><span class="c1">; no external input</span><span class="w">
+</span><span class="c1">;   scanu init, irate, ifnvel, ifnmass, ifnmatrix, ifncentr, ifndamp, kmass, kstif, kcentr, kdamp, ileft, iright, kpos, kstrngth, ain, idisp, id</span><span class="w">
+    </span><span class="nb">scanu</span><span class="w"> </span><span class="vi">p7</span><span class="p">,</span><span class="w">     </span><span class="vi">p6</span><span class="p">,</span><span class="w">    </span><span class="mi">6</span><span class="p">,</span><span class="w">       </span><span class="mi">2</span><span class="p">,</span><span class="w">       </span><span class="mi">3</span><span class="p">,</span><span class="w">        </span><span class="mi">4</span><span class="p">,</span><span class="w">        </span><span class="mi">5</span><span class="p">,</span><span class="w">       </span><span class="mi">2</span><span class="p">,</span><span class="w">     </span><span class="mf">.1</span><span class="p">,</span><span class="w">    </span><span class="mf">.1</span><span class="p">,</span><span class="w">     </span><span class="o">-</span><span class="mf">.02</span><span class="p">,</span><span class="w">  </span><span class="mf">.1</span><span class="p">,</span><span class="w">    </span><span class="mf">.5</span><span class="p">,</span><span class="w">     </span><span class="mi">0</span><span class="p">,</span><span class="w">     </span><span class="mi">0</span><span class="p">,</span><span class="w">     </span>a<span class="n">0</span><span class="p">,</span><span class="w">  </span><span class="mi">0</span><span class="p">,</span><span class="w">     </span><span class="mi">2</span><span class="w">
 
-</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">
-</span>a<span class="n">buf</span><span class="w">    </span><span class="nb">delayr</span><span class="w"> </span><span class="mi">5</span><span class="w">
-</span>a<span class="n">dl</span><span class="w">     </span><span class="nb">deltap</span><span class="w"> </span><span class="mf">0.3</span><span class="w">
-        </span><span class="nb">delayw</span><span class="w"> </span>ga<span class="n">l</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span>a<span class="n">dl</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.2</span><span class="p">)</span><span class="w">
+</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="vi">p7</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w">
+    </span><span class="nb">prints</span><span class="w"> </span><span class="s">"</span><span class="se">\n</span><span class="s">the hammer option!</span><span class="se">\n</span><span class="s">"</span><span class="w">
+</span><span class="k">else</span><span class="w">
+    </span><span class="nb">prints</span><span class="w">  </span><span class="s">"</span><span class="se">\n</span><span class="s">initial position of the masses...</span><span class="se">\n</span><span class="s">"</span><span class="w">
+</span><span class="k">endif</span><span class="w">
+</span><span class="c1">;ar scans kamp,      kfreq,      ifntraj, id</span><span class="w">
+</span>a<span class="n">1</span><span class="w">  </span><span class="nb">scans</span><span class="w"> </span><span class="nb">ampdb</span><span class="p">(</span><span class="vi">p4</span><span class="p">),</span><span class="w"> </span><span class="nb">cpspch</span><span class="p">(</span><span class="vi">p5</span><span class="p">),</span><span class="w">    </span><span class="mi">7</span><span class="p">,</span><span class="w">    </span><span class="mi">2</span><span class="w">
+</span>a<span class="n">2</span><span class="w">  </span><span class="nb">scans</span><span class="w"> </span><span class="nb">ampdb</span><span class="p">(</span><span class="vi">p4</span><span class="p">),</span><span class="w"> </span><span class="nb">cpspch</span><span class="p">(</span><span class="vi">p5</span><span class="p">)</span><span class="o">*</span><span class="mf">1.01</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">  </span><span class="mi">2</span><span class="w">           </span><span class="c1">; slightly out of tune</span><span class="w">
+</span>a<span class="n">1</span><span class="w">  </span><span class="o">*=</span><span class="w"> </span><span class="mf">0.00006</span><span class="w">                                        </span><span class="c1">; lower amplitude due to 0dbfs  = 1</span><span class="w">
+</span>a<span class="n">2</span><span class="w">  </span><span class="o">*=</span><span class="w"> </span><span class="mf">0.00006</span><span class="w">                                      
+</span>a<span class="n">1</span><span class="w">  </span><span class="nb">dcblock2</span><span class="w">  </span>a<span class="n">1</span><span class="w">                                      </span><span class="c1">; remove DC offset</span><span class="w">
+</span>a<span class="n">2</span><span class="w">  </span><span class="nb">dcblock2</span><span class="w">  </span>a<span class="n">2</span><span class="w">                                     
+</span><span class="nb">outs</span><span class="w"> </span>a<span class="n">1</span><span class="p">,</span><span class="w"> </span>a<span class="n">2</span><span class="w">
 
-</span>a<span class="n">buf</span><span class="w">    </span><span class="nb">delayr</span><span class="w"> </span><span class="mi">5</span><span class="w">
-</span>a<span class="n">dr</span><span class="w">     </span><span class="nb">deltap</span><span class="w"> </span><span class="mf">0.4</span><span class="w">
-        </span><span class="nb">delayw</span><span class="w"> </span>ga<span class="n">l</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span>a<span class="n">dr</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.2</span><span class="p">)</span><span class="w">
-        
-        </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">dl</span><span class="p">,</span><span class="w"> </span>a<span class="n">dr</span><span class="w">
-        </span><span class="nb">clear</span><span class="w"> </span>ga<span class="n">l</span><span class="w">
-        </span><span class="nb">clear</span><span class="w"> </span>ga<span class="n">r</span><span class="w">
-</span><span class="kd">endin</span><span class="w">
-
-</span><span class="kd">instr</span><span class="w"> </span><span class="nf">3</span><span class="w">
-</span>a<span class="n">dl</span><span class="p">,</span><span class="w"> </span>a<span class="n">dr</span><span class="w"> </span><span class="nb">reverbsc</span><span class="w"> </span>ga<span class="n">vl</span><span class="p">,</span><span class="w"> </span>ga<span class="n">vr</span><span class="p">,</span><span class="w"> </span><span class="mf">0.85</span><span class="p">,</span><span class="w"> </span><span class="mi">12000</span><span class="w">
-        </span><span class="nb">outs</span><span class="w"> </span>a<span class="n">dl</span><span class="p">,</span><span class="w"> </span>a<span class="n">dr</span><span class="w">
-        </span><span class="nb">clear</span><span class="w"> </span>ga<span class="n">vl</span><span class="w">
-        </span><span class="nb">clear</span><span class="w"> </span>ga<span class="n">vr</span><span class="w">
 </span><span class="kd">endin</span><span class="w">
 
 </span><span class="nt">&lt;/CsInstruments&gt;</span>
 <span class="nt">&lt;CsScore&gt;</span><span class="w">
-</span><span class="nb">i</span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">70</span><span class="w">
-</span><span class="nb">i</span><span class="mi">3</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">70</span><span class="w">
+
+</span><span class="nb">f</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="mi">0</span><span class="w">     </span><span class="c1">; Initial condition</span><span class="w">
+</span><span class="nb">f</span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="o">-</span><span class="mi">7</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="mf">.45</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="c1">; Masses</span><span class="w">
+</span><span class="nb">f</span><span class="mi">3</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">16384</span><span class="w"> </span><span class="o">-</span><span class="mi">23</span><span class="w"> </span><span class="s">"string-128.matrxB"</span><span class="w"> </span><span class="c1">; Matrix, a binary one. Can be found in manual/examples</span><span class="w">
+</span><span class="nb">f</span><span class="mi">4</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="o">-</span><span class="mi">7</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="mi">0</span><span class="w">    </span><span class="c1">; Centering force</span><span class="w">
+</span><span class="nb">f</span><span class="mi">5</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="o">-</span><span class="mi">7</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="mi">0</span><span class="w">    </span><span class="c1">; Damping</span><span class="w">
+</span><span class="nb">f</span><span class="mi">6</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="o">-</span><span class="mi">7</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="mi">0</span><span class="w">        </span><span class="c1">; Initial velocity</span><span class="w">
+</span><span class="nb">f</span><span class="mi">7</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="o">-</span><span class="mi">7</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="mi">127</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="mi">0</span><span class="w">  </span><span class="c1">; Trajectory</span><span class="w">
+
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">	</span><span class="mf">0.0</span><span class="w">     </span><span class="mi">8</span><span class="w">	</span><span class="mi">86</span><span class="w">	</span><span class="mf">6.00</span><span class="w">	</span><span class="mf">0.001</span><span class="w">   </span><span class="mi">1</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">	</span><span class="mf">8.0</span><span class="w">     </span><span class="mi">8</span><span class="w">	</span><span class="mi">89</span><span class="w">	</span><span class="mf">6.01</span><span class="w">	</span><span class="mf">0.001</span><span class="w">   </span><span class="o">-</span><span class="mi">1</span><span class="w"> 
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">	</span><span class="mf">17.0</span><span class="w">	</span><span class="mi">10</span><span class="w">	</span><span class="mi">86</span><span class="w">	</span><span class="mf">6.00</span><span class="w">	</span><span class="mf">0.005</span><span class="w">   </span><span class="mi">1</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">	</span><span class="mf">27.0</span><span class="w">	</span><span class="mi">10</span><span class="w">	</span><span class="mi">89</span><span class="w">	</span><span class="mf">6.01</span><span class="w">	</span><span class="mf">0.005</span><span class="w">   </span><span class="o">-</span><span class="mi">1</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">	</span><span class="mf">38.0</span><span class="w">	</span><span class="mi">120</span><span class="w">	</span><span class="mi">86</span><span class="w">	</span><span class="mf">6.00</span><span class="w">	</span><span class="mf">0.1</span><span class="w">     </span><span class="mi">1</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">	</span><span class="mf">159.0</span><span class="w">	</span><span class="mi">120</span><span class="w">	</span><span class="mi">89</span><span class="w">	</span><span class="mf">6.01</span><span class="w">	</span><span class="mf">0.1</span><span class="w">     </span><span class="o">-</span><span class="mi">1</span><span class="w">
 </span><span class="nb">e</span><span class="w">
 </span><span class="nt">&lt;/CsScore&gt;</span>
 <span class="nt">&lt;/CsoundSynthesizer&gt;</span>
@@ -270,14 +217,105 @@
         </div>
         <p><br class="example-break" />
     </p>
+        <p>
+      Here is another example of the scanu opcode. It uses the file <a class="ulink" href="examples/scanu-2.csd" target="_top"><em class="citetitle">scanu-2.csd</em></a>.
+      </p>
+        <div class="example">
+          <a id="idm292001"></a>
+          <p class="title">
+            <strong>Example 946. Second example of the scanu opcode.</strong>
+          </p>
+          <div class="example-contents">
+            <div class="refsect1">
+              <a id="idm292003"></a>
+              <pre class="programlisting">
+<span class="nt">&lt;CsoundSynthesizer&gt;</span>
+<span class="nt">&lt;CsOptions&gt;</span>
+<span class="c1">; Select audio/midi flags here according to platform</span>
+-odac  --limiter=0.95 <span class="c1">;;;realtime audio out &amp; and limit loud sounds</span>
+<span class="c1">;-iadc    ;;;uncomment -iadc if realtime audio input is needed too</span>
+<span class="c1">; For Non-realtime ouput leave only the line below:</span>
+<span class="c1">; -o scanu-2.wav -W ;;; for file output any platform</span>
+<span class="nt">&lt;/CsOptions&gt;</span>
+<span class="nt">&lt;CsInstruments&gt;</span><span class="w">
+
+</span><span class="vg">sr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44100</span><span class="w">
+</span><span class="vg">ksmps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="vg">nchnls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="vg">0dbfs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+
+</span><span class="c1">; by Menno Knevel 2024</span><span class="w">
+
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">1</span><span class="w"> </span><span class="c1">; play sample</span><span class="w">
+
+</span>a<span class="n">0</span><span class="w">  	</span><span class="nb">loscil</span><span class="w">	 </span><span class="mf">.8</span><span class="p">,</span><span class="w"> </span><span class="vi">p4</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="w">                                                    </span><span class="c1">; audio sample with loop points</span><span class="w">
+</span><span class="nb">prints</span><span class="w"> </span><span class="s">"</span><span class="se">\n</span><span class="s">the drum sample has an frequency of </span><span class="si">%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="vi">p4</span><span class="w">
+</span><span class="nb">outs</span><span class="w"> </span>a<span class="n">0</span><span class="p">,</span><span class="w"> </span>a<span class="n">0</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
+
+</span><span class="kd">instr</span><span class="w"> </span><span class="nf">2</span><span class="w">	</span><span class="c1">; inject sample</span><span class="w">
+
+</span>a<span class="n">0</span><span class="w">  	</span><span class="nb">loscil</span><span class="w">	 </span><span class="mf">.5</span><span class="p">,</span><span class="w"> </span><span class="vi">p6</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="w">                                                    </span><span class="c1">; audio injection </span><span class="w">
+</span><span class="nb">prints</span><span class="w"> </span><span class="s">"...and is injected into the system..."</span><span class="w">
+</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="vi">p6</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w">
+    </span><span class="nb">prints</span><span class="w">  </span><span class="s">"sample injection has no effect!"</span><span class="w">
+</span><span class="k">endif</span><span class="w">
+
+</span>k<span class="n">env</span><span class="w">    </span><span class="nb">linseg</span><span class="w">    </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="o">*</span><span class="mf">.8</span><span class="p">,</span><span class="w"> </span><span class="mf">.1</span><span class="p">,</span><span class="w"> </span><span class="vi">p3</span><span class="o">*</span><span class="mf">.2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">                                        </span><span class="c1">; simple envelope</span><span class="w">
+</span><span class="c1">;scanu init, irate, ifnvel, ifnmass, ifnmatrix, ifncentr, ifndamp, kmass, kstif, kcentr, kdamp, ileft, iright, kpos, kstrngth, ain, idisp, id</span><span class="w">
+ </span><span class="nb">scanu</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w">   </span><span class="mf">.01</span><span class="p">,</span><span class="w">    </span><span class="mi">6</span><span class="p">,</span><span class="w">       </span><span class="mi">2</span><span class="p">,</span><span class="w">       </span><span class="mi">3</span><span class="p">,</span><span class="w">          </span><span class="mi">4</span><span class="p">,</span><span class="w">        </span><span class="mi">5</span><span class="p">,</span><span class="w">     </span><span class="mi">2</span><span class="p">,</span><span class="w">     </span><span class="mf">.1</span><span class="p">,</span><span class="w">    </span><span class="mf">.1</span><span class="p">,</span><span class="w">     </span><span class="o">-</span><span class="mf">.02</span><span class="p">,</span><span class="w">   </span><span class="mf">.1</span><span class="p">,</span><span class="w">    </span><span class="mf">.5</span><span class="p">,</span><span class="w">     </span><span class="mi">0</span><span class="p">,</span><span class="w">      </span><span class="mi">0</span><span class="p">,</span><span class="w">    </span>a<span class="n">0</span><span class="p">,</span><span class="w">  </span><span class="mi">0</span><span class="p">,</span><span class="w">     </span><span class="mi">2</span><span class="w">
+</span><span class="c1">;ar scans kamp,      kfreq,      ifntraj, id</span><span class="w">
+</span>a<span class="n">1</span><span class="w">  </span><span class="nb">scans</span><span class="w"> </span><span class="nb">ampdb</span><span class="p">(</span><span class="vi">p4</span><span class="p">)</span><span class="o">*</span>k<span class="n">env</span><span class="p">,</span><span class="w"> </span><span class="nb">cpspch</span><span class="p">(</span><span class="vi">p5</span><span class="p">),</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">       </span><span class="mi">2</span><span class="w">
+</span>a<span class="n">2</span><span class="w">  </span><span class="nb">scans</span><span class="w"> </span><span class="nb">ampdb</span><span class="p">(</span><span class="vi">p4</span><span class="p">)</span><span class="o">*</span>k<span class="n">env</span><span class="p">,</span><span class="w"> </span><span class="nb">cpspch</span><span class="p">(</span><span class="vi">p5</span><span class="p">)</span><span class="o">*</span><span class="mf">1.01</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">       </span><span class="mi">2</span><span class="w">                           </span><span class="c1">; slightly out of tune (stereo)</span><span class="w">
+</span>a<span class="n">1</span><span class="w">  </span><span class="o">*=</span><span class="w"> </span><span class="mf">0.00005</span><span class="w">                                                                  </span><span class="c1">; lower amplitude due to 0dbfs  = 1</span><span class="w">
+</span>a<span class="n">2</span><span class="w">  </span><span class="o">*=</span><span class="w"> </span><span class="mf">0.00005</span><span class="w">                                      
+</span>a<span class="n">1</span><span class="w">  </span><span class="nb">dcblock2</span><span class="w">  </span>a<span class="n">1</span><span class="w">                                                                </span><span class="c1">; remove DC offset</span><span class="w">
+</span>a<span class="n">2</span><span class="w">  </span><span class="nb">dcblock2</span><span class="w">  </span>a<span class="n">2</span><span class="w">                                     
+</span><span class="nb">outs</span><span class="w"> </span>a<span class="n">1</span><span class="p">,</span><span class="w"> </span>a<span class="n">2</span><span class="w">
+</span><span class="kd">endin</span><span class="w">
+
+</span><span class="nt">&lt;/CsInstruments&gt;</span>
+<span class="nt">&lt;CsScore&gt;</span><span class="w">
+</span><span class="nb">f</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="mi">0</span><span class="w">                               </span><span class="c1">; Initial condition</span><span class="w">
+</span><span class="nb">f</span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="o">-</span><span class="mi">7</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="mf">.45</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="mi">1</span><span class="w">                            </span><span class="c1">; Masses</span><span class="w">
+</span><span class="nb">f</span><span class="mi">3</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">16384</span><span class="w"> </span><span class="o">-</span><span class="mi">23</span><span class="w"> </span><span class="s">"manual/example/string-128.matrxB"</span><span class="w">    </span><span class="c1">; Spring matrix</span><span class="w">
+</span><span class="nb">f</span><span class="mi">4</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="o">-</span><span class="mi">7</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="mi">0</span><span class="w">                              </span><span class="c1">; Centering force</span><span class="w">
+</span><span class="nb">f</span><span class="mi">5</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="o">-</span><span class="mi">7</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="o">-</span><span class="mf">0.01</span><span class="w">                          </span><span class="c1">; Damping</span><span class="w">
+</span><span class="nb">f</span><span class="mi">6</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="o">-</span><span class="mi">7</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="mi">0</span><span class="w">                                  </span><span class="c1">; Initial velocity</span><span class="w">
+</span><span class="nb">f</span><span class="mi">7</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="o">-</span><span class="mi">7</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="mi">127</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="mi">0</span><span class="w">                            </span><span class="c1">; Trajectory</span><span class="w">
+</span><span class="nb">f</span><span class="mi">200</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="s">"drumsMlp.wav"</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w">  
+
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">	</span><span class="mf">0.0</span><span class="w">	</span><span class="mi">4</span><span class="w">	</span><span class="mi">0</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">	</span><span class="mf">34.0</span><span class="w">	</span><span class="mi">4</span><span class="w">	</span><span class="mi">4</span><span class="w">
+</span><span class="nb">i</span><span class="mi">1</span><span class="w">	</span><span class="mf">68.0</span><span class="w">	</span><span class="mi">4</span><span class="w">	</span><span class="mi">18</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w">	</span><span class="mf">4.0</span><span class="w">	</span><span class="mi">30</span><span class="w">	</span><span class="mi">88</span><span class="w">	</span><span class="mf">6.00</span><span class="w">	</span><span class="mi">0</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w">	</span><span class="mf">38.0</span><span class="w">	</span><span class="mi">30</span><span class="w">	</span><span class="mi">70</span><span class="w">	</span><span class="mf">6.00</span><span class="w">	</span><span class="mi">4</span><span class="w">
+</span><span class="nb">i</span><span class="mi">2</span><span class="w">	</span><span class="mf">72.0</span><span class="w">	</span><span class="mi">30</span><span class="w">	</span><span class="mi">65</span><span class="w">	</span><span class="mf">6.00</span><span class="w">	</span><span class="mi">18</span><span class="w">
+</span><span class="nb">e</span><span class="w">
+</span><span class="nt">&lt;/CsScore&gt;</span>
+<span class="nt">&lt;/CsoundSynthesizer&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <p><br class="example-break" />
+    </p>
+        <p>
+      A musical example featuring the scanu opcode: <a class="ulink" href="examples/musical/Scanu_Shengzheng_Zhang.csd" target="_top"><em class="citetitle">Scanu_Shengzheng_Zhang.csd</em></a> by Shengzheng Zhang. This musical example also needs <a class="ulink" href="examples/MIDIpad.mid" target="_top"><em class="citetitle">MIDIpad.mid</em></a>. 
+    </p>
       </div>
       <div class="refsect1">
-        <a id="idm297977"></a>
-        <h2>See Also</h2>
-        <p> More information on this opcode: <a class="ulink" href="http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html" target="_top"><em class="citetitle">http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html</em></a>  , written by Steven Yi </p>
+        <a id="idm292531"></a>
+        <h2>See also</h2>
+        <p>
+          <a class="link" href="SiggenScanTop.html" title="Scanned Synthesis">
+            <em class="citetitle">Scanned Synthesis</em>
+          </a>
+        </p>
+        <p> More information on the Scanned Synthesis opcodes: <a class="ulink" href="http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html" target="_top"><em class="citetitle">Working with Scanned Synthesis</em></a>, written by Steven Yi, and some <a class="ulink" href="http://www.csounds.com/scanned/" target="_top"><em class="citetitle">tutorials</em></a> by Richard Boulanger.</p>
       </div>
       <div class="refsect1">
-        <a id="idm297982"></a>
+        <a id="idm292541"></a>
         <h2>Credits</h2>
         <p>
       </p>
