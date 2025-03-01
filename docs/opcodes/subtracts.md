@@ -2,7 +2,7 @@
 id:subtracts
 category:Mathematical Operations:Arithmetic and Logic Operations
 -->
-# $-$
+# -
 Subtraction operator.
 
 Arithmetic operators perform operations of change-sign (negate), don't-change-sign, logical AND logical OR, add, subtract, multiply and divide. Note that a value or an expression may fall between two of these operators, either of which could take it as its left or right argument, as in
