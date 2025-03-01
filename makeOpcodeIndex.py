@@ -14,7 +14,7 @@ files = os.listdir(".")
 
 opcodes = {}
 for fn in files:
-    opcodes[find_opcode_name(fn)] = "../../opcodes/" + fn[:-3]
+    opcodes[find_opcode_name(fn)] = "../opcodes/" + fn[:-3]
 
 opcnames = list(opcodes.keys())
 opcnames.sort()
