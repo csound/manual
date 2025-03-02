@@ -44,7 +44,7 @@ Here is an example of the ftgenonce opcode. It uses the file [ftgenonce.csd](../
 
 ## See also
 
-[Signal Flow Graph Opcodes](../../csound5/opcodes/signalflowgraph)
+[Signal Flow Graph Opcodes](../../signalflowgraph)
 
 ## Credits
 

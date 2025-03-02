@@ -11,8 +11,8 @@ _system_ and _system_i_ call any external command understood by the operating sy
 
 ## Syntax
 ``` csound-orc
-ires system_i itrig, Scmd [, inowait]
-kres system ktrig, Scmd [, knowait]
+ires system_i itrig, Scmd, [inowait]
+kres system ktrig, Scmd, [knowait]
 ```
 
 ### Initialization
@@ -35,7 +35,7 @@ More than one system command (a script) can be executed with a single _system_ o
 >
 > This opcode is very system dependant, so should be used with extreme care (or not used) if platform neutrality is desired.
 
-### Examples
+## Examples
 
 Here is an example of the system_i opcode. It uses the file [system.csd](../../examples/system.csd).
 
@@ -45,7 +45,7 @@ Here is an example of the system_i opcode. It uses the file [system.csd](../../e
 
 ## See also
 
-[Miscellaneous opcodes](../../miscopcodes/top)
+[Miscellaneous opcodes](../../miscopcodes)
 
 ## Credits
 
