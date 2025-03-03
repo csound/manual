@@ -9,4 +9,4 @@ The following miscellaneous utilities are available:
 * [EXTRACTOR](../extractor): Extract a section of audio from an audio file.
 * [MAKECSD](../makecsd): Creates a CSD file from the specified input files.
 * [MIXER](../mixer): Mixes together a number of soundfiles.
-* [SCALE](../scaleutility): Scale the amplitude of a sound file.
+* [SCALE](../scale): Scale the amplitude of a sound file.
