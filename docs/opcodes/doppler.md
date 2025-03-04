@@ -1,6 +1,6 @@
 <!--
 id:doppler
-category:Signal Modifiers: Special Effects
+category:Signal Modifiers:Special Effects
 -->
 # doppler
 A fast and robust method for approximating sound propagation, achieving convincing Doppler shifts without having to solve equations.

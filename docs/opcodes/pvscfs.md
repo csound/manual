@@ -1,6 +1,6 @@
 <!--
 id:pvscfs
-category:Spectral Processing: lpc
+category:Spectral Processing:LPC
 -->
 # pvscfs
 Cepstrum all-pole coefficient analysis.

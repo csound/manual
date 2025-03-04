@@ -1,6 +1,6 @@
 <!--
 id:midifilestatus
-category:MIDI input and Initialization
+category:MIDI files:MIDI input and Initialization
 -->
 # midifilestatus
 Returns the playback status of MIDI file input.

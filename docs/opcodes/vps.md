@@ -1,6 +1,6 @@
 <!--
 id:vps
-category:Signal Modifiers: Phase Shaping
+category:Signal Modifiers:Phase Shaping
 -->
 # vps
 Shapes a phase signal according to a two-dimensional vector.
