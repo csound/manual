@@ -71,7 +71,7 @@ class OpcodeInfo:
         self.link = ""
         i = filename.find('docs/')
         if i != -1:
-            self.link = "../../" + filename[i+5:-3]
+            self.link = filename[i+5:-3]
 
 def find_bad_categories(opcodes, categories):
     cats = []
@@ -94,7 +94,7 @@ def find_bad_categories(opcodes, categories):
 def write_opcodes_index(opcodes, filename, ncol=5):
     entries = []
     for opc in opcodes:
-        entries.append("| [{}]({}) ".format(opc.name, opc.link))
+        entries.append("| [{}]({}) ".format(opc.name, "../"+opc.link))
     entries.sort()
 
     f = open(filename, 'w')
