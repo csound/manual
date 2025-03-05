@@ -3,10 +3,7 @@ id:nstrstr
 category:Instrument Control:Initialization and Reinitialization
 -->
 # nstrstr
-Returns the string of a named instr from its number.
-
-Returns the string of a named instr from its number or an empty
-string if no such association exists.
+Returns the string of a named instr from its number or an empty string if no such association exists.
 
 ## Syntax
 ``` csound-orc
@@ -24,8 +21,7 @@ _knsno_ -- the named instrument's number.
 
 _Sname_ -- the named instrument's name.
 
-If an instrument with the specified name does not exist an empty
-string is returned.
+If an instrument with the specified name does not exist an empty string is returned.
 
 ## Examples
 

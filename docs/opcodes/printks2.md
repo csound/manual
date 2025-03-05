@@ -31,9 +31,9 @@ In addition to all the printf() codes, printks2 supports these useful character 
 
 | printks Code            | Character Code          |
 |-------------------------|-------------------------|
-| \\\\r, \\\\R, %r, or %R | return character (\r)   |
-| \\\\n, \\\\N, %n, %N    | newline character (\n)  |
-| \\\\t, \\\\T, %t, or %T | tab character (\t)      |
+| &#92;&#92;r, &#92;&#92;R, %r, or %R | return character (\r)   |
+| &#92;&#92;n, &#92;&#92;N, %n, %N    | newline character (\n)  |
+| &#92;&#92;t, &#92;&#92;T, %t, or %T | tab character (\t)      |
 | %!                      | semicolon character (;) This was needed because a “;” is interpreted as a comment. |
 | ^                       | escape character (0x1B) |
 | ^ ^                     | caret character (^)     |

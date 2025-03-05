@@ -41,16 +41,16 @@ All standard C language printf() control characters may be used. For example, if
 
 In addition to all the printf() codes, printks supports these useful character codes:
 
-| printks Code            | Character Code          |
-|-------------------------|-------------------------|
-| \\\\r, \\\\R, %r, or %R | return character (\r)   |
-| \\\\n, \\\\N, %n, %N    | newline character (\n)  |
-| \\\\t, \\\\T, %t, or %T | tab character (\t)      |
-| %!                      | semicolon character (;) This was needed because a “;” is interpreted as a comment. |
-| ^                       | escape character (0x1B) |
-| ^ ^                     | caret character (^)     |
-| ~                       | ESC[ (escape+[ is the escape sequence for ANSI consoles) |
-| ~~                      | tilde (~)               |
+| printks Code | Character Code |
+|---|---|
+| &#92;&#92;r, &#92;&#92;R, %r, or %R | return character (\r) |
+| &#92;&#92;n, &#92;&#92;N, %n, %N | newline character (\n) |
+| &#92;&#92;t, &#92;&#92;T, %t, or %T | tab character (\t) |
+| %! | semicolon character (;) This was needed because a “;” is interpreted as an comment. |
+| ^ | escape character (0x1B) |
+| ^ ^ | caret character (^) |
+| ~ | ESC[ (escape+[ is the escape sequence for ANSI consoles) |
+| ~~ | tilde (~) |
 
 For more information about printf() formatting, consult any C language documentation.
 
