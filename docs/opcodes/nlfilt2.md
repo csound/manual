@@ -1,21 +1,21 @@
 <!--
-id:nlfilt
+id:nlfilt2
 category:Signal Modifiers:Specialized Filters
 -->
-# nlfilt
-A filter with a non-linear effect.
+# nlfilt2
+A filter with a non-linear effect and blowup protection.
 
 Implements the filter:
 
 $$
-Y[n] = a \; Y[n-1] + b \; Y[n-2] + d \; Y^2[n-L] + X[n] - C
+Y[n] = tanh(a \; Y[n-1] + b \; Y[n-2] + d \; Y^2[n-L] + X[n] - C)
 $$
 
-described in Dobson and Fitch (ICMC'96)
+described in Dobson and Fitch (ICMC'96) as modified by Risto Holopainen.
 
 ## Syntax
 ``` csound-orc
-ares nlfilt ain, ka, kb, kd, kC, kL
+ares nlfilt2 ain, ka, kb, kd, kC, kL
 ```
 
 ### Performance
@@ -45,7 +45,6 @@ d = 0.95
 C = 0,2, ... 0.4
 L = 200
 ```
-
 4.   High Pass with non-linear. The range of parameters are:
 ```
 a = 0.7
@@ -54,6 +53,7 @@ d = 0.9
 C = 0.12, ... 0.24
 L = 500, 10
 ```
+
 The high pass version is less likely to oscillate. It adds scintillation to medium-high registers. With a large delay _L_ it is a little like a reverberation, while with small values there appear to be formant-like regions. There are arbitrary color changes and resonances as the pitch changes. Works well with individual notes.
 
 > :warning: **Warning**
@@ -62,10 +62,10 @@ The high pass version is less likely to oscillate. It adds scintillation to medi
 
 ## Examples
 
-Here is an example of the nlfilt opcode. It uses the file [nlfilt.csd](../../examples/nlfilt.csd).
+Here is an example of the nlfilt2 opcode. It uses the file [nlfilt2.csd](../../examples/nlfilt2.csd).
 
-``` csound-csd title="Example of the nlfilt opcode." linenums="1"
---8<-- "examples/nlfilt.csd"
+``` csound-csd title="Example of the nlfilt2 opcode." linenums="1"
+--8<-- "examples/nlfilt2.csd"
 ```
 
 ## See also
@@ -77,6 +77,6 @@ Here is an example of the nlfilt opcode. It uses the file [nlfilt.csd](../../exa
 Author: John ffitch<br>
 University of Bath/Codemist Ltd.<br>
 Bath, UK<br>
-1997<br>
+2012<br>
 
-New in version 3.44
+New in version 5.19

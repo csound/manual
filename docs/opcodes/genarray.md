@@ -7,8 +7,8 @@ Generate a vector (one-dimensional k-rate or i-rate array) with an arithmetic se
 
 ## Syntax
 ``` csound-orc
-karray genarray kstart, kens[, inc]
-iarray genarray istart, iens[, inc]
+karray genarray kstart, kens [, inc]
+iarray genarray istart, iens [, inc]
 ```
 
 ### Initialization
@@ -17,8 +17,7 @@ _istart_ -- value to place in first element.
 
 _iend_ -- last value to place in array.
 
-_inc_ -- amount to add to previous value
-(default 1).
+_inc_ -- amount to add to previous value (default 1).
 
 ## Examples
 

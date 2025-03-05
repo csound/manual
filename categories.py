@@ -1,6 +1,8 @@
 #categories and their order are defined here:
 
 categories = ['Orchestra Syntax:Header',
+'Orchestra Syntax:Block Statements',
+'Orchestra Syntax:Macros',
 'Signal Generators:Additive Synthesis/Resynthesis',
 'Signal Generators:Basic Oscillators',
 'Signal Generators:Dynamic Spectrum Oscillators',
@@ -106,6 +108,9 @@ categories = ['Orchestra Syntax:Header',
 'Array Operations: dot product',
 'Array Operations: sorting',
 'Array Operations: Cepstrum',
+'Array Operations: Autocorrelation',
+'Array Operations: Discrete Cosine Transform',
+'Array Operations: Mel scale filterbank',
 'Deprecated',
 'Miscellaneous',
 'Utilities']
