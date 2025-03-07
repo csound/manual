@@ -184,8 +184,9 @@ def write_examples_list(opc_by_cat, filename):
         print("### {}".format(cat), file=f)
         for o in opc_by_cat[cat]:
             if len(o.examples) > 0:
+                link = "(../../" + o.link + "/#examples)"
                 for ex in o.examples:
-                    print("[**" + ex + "**](../../" + o.link + ")<br>", file=f)
+                    print("[**" + ex + "**]" + link + "<br>", file=f)
         print(file=f)
     f.close()
 
@@ -206,6 +207,6 @@ for opc in opcodes:
 for cat, opc_list in opc_by_cat.items():
     opc_list.sort(key=lambda x: x.name)
 
-#write_opcodes_index(opcodes, "./docs/opcodesIndex.md", ncol=5)
-#write_opcodes_ref(opc_by_cat, "./docs/opcodesRef.md")
+write_opcodes_index(opcodes, "./docs/opcodesIndex.md", ncol=5)
+write_opcodes_ref(opc_by_cat, "./docs/opcodesRef.md")
 write_examples_list(opc_by_cat, "./docs/misc/examples.md")

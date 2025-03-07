@@ -996,7 +996,6 @@
 ### Signal Generators:Wave Terrain Synthesis
 `aout `[**`sterrain `**](../opcodes/sterrain)`kamp, kcps, kx, ky, krx, kry, krot, ktab0, ktab1, km1, km2, \`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`kn1, kn2, kn3, ka, kb, kperiod`<br>
-``<br>
 
 
 `aout `[**`wterrain `**](../opcodes/wterrain)`kamp, kpch, k_xcenter, k_ycenter, k_xradius, k_yradius, \`<br>
@@ -1005,7 +1004,6 @@
 
 `aout `[**`wterrain2 `**](../opcodes/wterrain2)`kamp, kcps, kx, ky, krx, kry, krot, ktab0, ktab1, \`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`kcurve, kcurveparam`<br>
-``<br>
 
 
 ### Signal Generators:Waveguide Physical Modeling
