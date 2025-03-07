@@ -11,10 +11,8 @@ The _ftslice_ opcode takes an f-table and copies a slice to a second f-table (si
 
 ## Syntax
 ``` csound-orc
-
 ftslice ifnsource, ifndest [, kstart, kend, kstep ]
 ftslice kfnsource, kfndest [, kstart, kend, kstep ]
-
 ```
 
 ### Initialization

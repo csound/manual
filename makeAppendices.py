@@ -1,12 +1,22 @@
+# -*- coding: utf-8 -*-
+# This script generates the opcodes index and ref files
+# and the Appendix A, List of examples file
+# by François Pinot, March 2025
+# Licensed under the GPL licence version 3 or later
+
 import os
 import sys
 from categories import categories
+from diffopnames import diff_opcnames
 
 class OpcodeInfo:
     def __init__(self, filename):
         f = open(filename, 'r')
         self.data = f.read()
         f.close()
+
+        fn = os.path.split(filename)[1]
+        self.filename = os.path.splitext(fn)[0]
         self.find_name()
         self.find_syntax()
         self.find_category()
@@ -31,8 +41,7 @@ class OpcodeInfo:
                 i += j
                 j = self.data[i:].find('```\n')
                 if j != -1:
-                    j += i
-                    i += 15
+                    j += i + 4
                     self.syntax = self.data[i:j]
 
     def find_category(self):
@@ -126,22 +135,58 @@ def write_opcodes_ref(opc_by_cat, filename):
     for cat in categories:
         print("### {}".format(cat), file=f)
         for o in opc_by_cat[cat]:
+            cmd = o.name + " "
+            if o.filename in diff_opcnames:
+                cmd = diff_opcnames[o.filename] + " "
             s = o.syntax
             lines = s[:-1].split('\n')
-            for i in range(len(lines)):
-                l = lines[i]
-                l = l.replace(o.name, "[**`{}`**]({})".format(o.name, o.link))
-                k = l.find("[**")
-                if k > 0:
-                    l = "`" + l[:k] + "`" + l[k:]
-                    k = l.find(o.link) + len(o.link) + 2
+            sout = ""
+            linked = cmd_flag = False
+            for l in (lines[1:-1]):
+                if not linked:
+                    i = l.find(cmd)
+                    if i != -1:
+                        cmd_flag = True
+                    else:
+                        cmd = cmd[:-1] + "("
+                        i = l.find(cmd)
+                        if i != -1:
+                            cmd_flag = True
+                        else:
+                            cmd = cmd[:-1]
+                            if len(l) >= len(cmd) and l[len(l)-len(cmd):] == cmd:
+                                cmd_flag = True
+                if not linked and cmd_flag:
+                    link = "../" + o.link
+                    l = l.replace(cmd, "[**`{}`**]({})".format(cmd, link))
+                    k = l.find("[**")
+                    if k > 0:
+                        l = "`" + l[:k] + "`" + l[k:]
+                    k = l.find(link) + len(link) + 1
                     if k < len(l):
-                        l = l[:k] + "`" + l[k:-1] + "`"
+                        l = l[:k] + "`" + l[k:] + "`"
+                    linked = True
                 else:
-                     l = "`" + l + "`"
-                lines[i] = l
-            s = "<br>\n".join(lines)
-            print(s + '\n', file=f)
+                    if l[:1] == " ":
+                        l = "&nbsp;&nbsp;&nbsp;&nbsp;`" + l.strip() + "`"
+                    else:
+                        l = "`" + l + "`"
+                sout += l + "<br>\n"
+            print(sout + '\n', file=f)
+    f.close()
+
+def write_examples_list(opc_by_cat, filename):
+    f = open(filename, 'w')
+    print("<!-- Don't modify this file.", file=f)
+    print(" It is generated automatically by makeAppendices.py-->", file=f)
+    print("# **Opcode Quick Reference**\n", file=f)
+    for cat in categories:
+        print("### {}".format(cat), file=f)
+        for o in opc_by_cat[cat]:
+            if len(o.examples) > 0:
+                for ex in o.examples:
+                    print("[**" + ex + "**](../../" + o.link + ")<br>", file=f)
+        print(file=f)
     f.close()
 
 dir = './docs/opcodes/'
@@ -158,8 +203,9 @@ for opc in opcodes:
         opc_by_cat[opc.category].append(opc)
     else:
         opc_by_cat[opc.category] = [opc]
+for cat, opc_list in opc_by_cat.items():
+    opc_list.sort(key=lambda x: x.name)
 
-
-
-write_opcodes_index(opcodes, "./docs/opcodesIndex.md", ncol=5)
+#write_opcodes_index(opcodes, "./docs/opcodesIndex.md", ncol=5)
 #write_opcodes_ref(opc_by_cat, "./docs/opcodesRef.md")
+write_examples_list(opc_by_cat, "./docs/misc/examples.md")

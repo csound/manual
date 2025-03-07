@@ -11,7 +11,6 @@ See [Wikipedia](https://en.wikipedia.org/wiki/Superformula) for more information
 ``` csound-orc
 aout sterrain kamp, kcps, kx, ky, krx, kry, krot, ktab0, ktab1, km1, km2, \
               kn1, kn2, kn3, ka, kb, kperiod
-
 ```
 
 ### Performance

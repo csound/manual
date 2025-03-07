@@ -11,7 +11,6 @@ It enhances the [wterrain](../../opcodes/wterrain) opcode by providing some more
 ``` csound-orc
 aout wterrain2 kamp, kcps, kx, ky, krx, kry, krot, ktab0, ktab1, \
                kcurve, kcurveparam
-
 ```
 
 ### Performance

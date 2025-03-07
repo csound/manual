@@ -15,7 +15,6 @@ kres gauss krange
 ares gauss kmean, ksdev
 ires gauss imean, isdev
 kres gauss kmean, ksdev
-
 ```
 
 ### Performance

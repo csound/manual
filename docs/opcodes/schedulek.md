@@ -9,7 +9,7 @@ Adds a new score event.
 ``` csound-orc
 schedulek knsnum, kwhen, kdur [, kp4] [, kp5] [...]
 schedulek "insname", kwhen, kdur [, kp4] [, kp5] [...]
-schedule kPar[]
+schedulek kPar[]
 ```
 
 ### Performance
