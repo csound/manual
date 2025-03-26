@@ -16,7 +16,7 @@ _ain1, ..._ - input audio signals
 
 _kchan1,..._ - channel numbers
 
-_inch_ reads from numbered channels determined by the corresponding _kchan_ into the associated _ain_. If the command-line [-i](../../) flag is set, sound is read continuously from the audio input stream (e.g. _stdin_ or a soundfile). _inch_ can also be used to receive audio in realtime from the audio interface using _-iadc_.
+_inch_ reads from numbered channels determined by the corresponding _kchan_ into the associated _ain_. If the command-line [-i](../../invoke/cs-options-alphabetically#-i-file-inputfile) flag is set, sound is read continuously from the audio input stream (e.g. _stdin_ or a soundfile). _inch_ can also be used to receive audio in realtime from the audio interface using _-iadc_.
 
 > :memo: **Note**
 >

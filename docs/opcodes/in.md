@@ -19,7 +19,7 @@ aarray in
 
 ### Performance
 
-Form 1 reads mono audio data from an external device or stream. If the command-line [-i](../../) flag is set, sound is read continuously from the audio input stream (e.g. _stdin_ or a soundfile) into an internal buffer. Any number of these opcodes can read freely from this buffer.
+Form 1 reads mono audio data from an external device or stream. If the command-line [-i](../../invoke/cs-options-alphabetically#-i-file-inputfile) flag is set, sound is read continuously from the audio input stream (e.g. _stdin_ or a soundfile) into an internal buffer. Any number of these opcodes can read freely from this buffer.
 
 The second format will read upto ichnls of audio into an audio array, which must be initialised.
 

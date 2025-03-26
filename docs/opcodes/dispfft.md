@@ -5,7 +5,7 @@ category:Signal I/O:Printing and Display
 # dispfft
 Displays the Fourier Transform of an audio or control signal.
 
-These units will print orchestra init-values, or produce graphic display of orchestra control signals and audio signals. Uses X11 windows if enabled, else (or if [-g](../../) flag is set) displays are approximated in ASCII characters.
+These units will print orchestra init-values, or produce graphic display of orchestra control signals and audio signals. Uses X11 windows if enabled, else (or if [-g](../../invoke/cs-options-alphabetically#-g-asciidisplay) flag is set) displays are approximated in ASCII characters.
 
 ## Syntax
 ``` csound-orc

@@ -26,7 +26,7 @@ Here is a simple example of the midichn opcode. It uses the file [midichn.csd](.
 
 Here is an advanced example of the midichn opcode. It uses the file [midichn_advanced.csd](../../examples/midichn_advanced.csd).
 
-Do not forget that you must include the [-F flag](../../) when using an external MIDI file like &#8220;midichn_advanced.mid&#8221;.
+Do not forget that you must include the [-F flag](../../invoke/cs-options-alphabetically#-f-file-midifilefile) when using an external MIDI file like &#8220;midichn_advanced.mid&#8221;.
 
 ``` csound-csd title="An advanced example of the midichn opcode." linenums="1"
 --8<-- "examples/midichn_advanced.csd"

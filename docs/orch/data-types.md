@@ -20,7 +20,7 @@ Data types in Csound 6 and earlier were declared one of the characters *i, k, a,
 
 In Csound 7 the data type can be given explicitely, without being bound to the name. 
 
-```
+``` csound-orc
 nchnls	=	2
 0dbfs	=	1
 
@@ -45,7 +45,7 @@ schedule(2,0,3)
 
 Constants are available continuously and do not change in value. Usually they are connected with reserved symbols and written in the orchestra header:
 
-```
+``` csound-orc
 sr = 44100
 ksmps = 64
 0dbfs = 1

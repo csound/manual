@@ -13,7 +13,7 @@ ar1 mp3in ifilcod[, iskptim, iformat, iskipinit, ibufsize]
 
 ### Initialization
 
-_ifilcod_ -- integer or character-string denoting the source soundfile name. An integer denotes the file soundin.filcod ; a character-string (in double quotes, spaces permitted) gives the filename itself, optionally a full pathname. If not a full path, the named file is sought first in the current directory, then in that given by the environment variable [SSDIR](../../command/environment) (if defined) then by [SFDIR](../../command/environment).
+_ifilcod_ -- integer or character-string denoting the source soundfile name. An integer denotes the file soundin.filcod ; a character-string (in double quotes, spaces permitted) gives the filename itself, optionally a full pathname. If not a full path, the named file is sought first in the current directory, then in that given by the environment variable [SSDIR](../../invoke/environment-variables) (if defined) then by [SFDIR](../../invoke/environment-variables).
 
 _iskptim_ (optional) -- time in seconds of input sound to be skipped. The default value is 0.
 

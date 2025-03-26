@@ -12,7 +12,7 @@ ares adsyn kamod, kfmod, ksmod, ifilcod
 
 ### Initialization
 
-_ifilcod_ --  integer or character-string denoting a control-file derived from analysis of an audio signal. An integer denotes the suffix of a file _adsyn.m_ or _pvoc.m_; a character-string (in double quotes) gives a filename, optionally a full pathname. If not fullpath, the file is sought first in the current directory, then in the one given by the environment variable [SADIR](../../orch/dirfiles) (if defined). _adsyn_ control contains breakpoint amplitude- and frequency-envelope values organized for oscillator resynthesis, while _pvoc_ control contains similar data organized for fft resynthesis. Memory usage depends on the size of the files involved, which are read and held entirely in memory during computation but are shared by multiple calls (see also [lpread](../../opcodes/lpread)).
+_ifilcod_ --  integer or character-string denoting a control-file derived from analysis of an audio signal. An integer denotes the suffix of a file _adsyn.m_ or _pvoc.m_; a character-string (in double quotes) gives a filename, optionally a full pathname. If not fullpath, the file is sought first in the current directory, then in the one given by the environment variable [SADIR](../../invoke/environment-variables) (if defined). _adsyn_ control contains breakpoint amplitude- and frequency-envelope values organized for oscillator resynthesis, while _pvoc_ control contains similar data organized for fft resynthesis. Memory usage depends on the size of the files involved, which are read and held entirely in memory during computation but are shared by multiple calls (see also [lpread](../../opcodes/lpread)).
 
 ### Performance
 

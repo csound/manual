@@ -16,7 +16,7 @@ ar1, ar2 ins
 
 ### Performance
 
-Reads stereo audio data from an external device or stream. If the command-line [-i](../../) flag is set, sound is read continuously from the audio input stream (e.g. _stdin_ or a soundfile) into an internal buffer. Any number of these opcodes can read freely from this buffer.
+Reads stereo audio data from an external device or stream. If the command-line [-i](../../invoke/cs-options-alphabetically#-i-file-inputfile) flag is set, sound is read continuously from the audio input stream (e.g. _stdin_ or a soundfile) into an internal buffer. Any number of these opcodes can read freely from this buffer.
 
 ## Examples
 

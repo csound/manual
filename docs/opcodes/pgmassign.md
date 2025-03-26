@@ -46,7 +46,7 @@ Here is an example of the pgmassign opcode that will ignore program change event
 
 Here is an advanced example of the pgmassign opcode. It uses the file [pgmassign_advanced.csd](../../examples/pgmassign_advanced.csd).
 
-Do not forget that you must include the [-F flag](../../) when using an external MIDI file like &#8220;pgmassign_advanced.mid&#8221;.
+Do not forget that you must include the [-F flag](../../invoke/cs-options-alphabetically#-f-file-midifilefile) when using an external MIDI file like &#8220;pgmassign_advanced.mid&#8221;.
 
 ``` csound-csd title="An advanced example of the pgmassign opcode." linenums="1"
 --8<-- "examples/pgmassign_advanced.csd"

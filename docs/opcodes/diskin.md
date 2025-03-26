@@ -18,7 +18,7 @@ ar1[] diskin ifilcod[, kpitch[, iskiptim [, iwraparound[, iformat[, iskipinit]]]
 
 ### Initialization
 
-_ifilcod_ -- integer or character-string denoting the source soundfile name. An integer denotes the file soundin.filcod ; a character-string (in double quotes, spaces permitted) gives the filename itself, optionally a full pathname. If not a full path, the named file is sought first in the current directory, then in that given by the environment variable [SSDIR](../../command/environment) (if defined) then by [SFDIR](../../command/environment). See also [GEN01](../../scoregens/gen01).
+_ifilcod_ -- integer or character-string denoting the source soundfile name. An integer denotes the file soundin.filcod ; a character-string (in double quotes, spaces permitted) gives the filename itself, optionally a full pathname. If not a full path, the named file is sought first in the current directory, then in that given by the environment variable [SSDIR](../../invoke/environment-variables) (if defined) then by [SFDIR](../../invoke/environment-variables). See also [GEN01](../../scoregens/gen01).
 
 _iskptim_ (optional) -- time in seconds of input sound to be skipped. The default value is 0.
 
@@ -38,7 +38,7 @@ _iwraparound_ -- 1 = on, 0 = off (wraps around to end of file either direction, 
 
 _iskipinit_ switches off all initialisation if non zero (default =0).  This was introduced in 4_23f13 and csound5.
 
-If _iformat_ = 0 it is taken from the soundfile header, and if no header from the Csound [-o](../../) command-line flag. The default value is 0.
+If _iformat_ = 0 it is taken from the soundfile header, and if no header from the Csound [-o](../../invoke/cs-options-alphabetically#-o-file-outputfile) command-line flag. The default value is 0.
 
 ### Performance
 

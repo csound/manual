@@ -20,7 +20,7 @@ ar1[] diskin2 ifilcod[, kpitch[, iskiptim \
 
 ### Initialization
 
-_ifilcod_ -- integer or character-string denoting the source soundfile name. An integer denotes the file soundin.ifilcod; a character-string (in double quotes, spaces permitted) gives the filename itself, optionally a full pathname. If not a full path, the named file is sought first in the current directory, then in those given by the environment variable [SSDIR](../../command/environment) (if defined) then by [SFDIR](../../command/environment). See also [GEN01](../../scoregens/gen01). Note: files longer than 2<sup>31</sup>-1 sample frames may not be played correctly on 32-bit platforms; this means a maximum length about 3 hours with a sample rate of 192000 Hz.
+_ifilcod_ -- integer or character-string denoting the source soundfile name. An integer denotes the file soundin.ifilcod; a character-string (in double quotes, spaces permitted) gives the filename itself, optionally a full pathname. If not a full path, the named file is sought first in the current directory, then in those given by the environment variable [SSDIR](../../invoke/environment-variables) (if defined) then by [SFDIR](../../invoke/environment-variables). See also [GEN01](../../scoregens/gen01). Note: files longer than 2<sup>31</sup>-1 sample frames may not be played correctly on 32-bit platforms; this means a maximum length about 3 hours with a sample rate of 192000 Hz.
 
 _iskiptim_ (optional, defaults to zero) -- time in seconds of input sound to be skipped, assuming _kpitch_=1. Can be negative, to add -_iskiptim_/_kpitch_ seconds of delay instead of skipping sound.
 

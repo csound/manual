@@ -20,7 +20,7 @@ _iformat_ -- a flag to choose output file format (note: Csound versions older th
 *  -1 - format exactly as per global csound output format flags (-A, -W, --format=..., etc).
 *  0 - 32-bit floating point samples without header (binary PCM multichannel file)
 *  1 - 16-bit integers without header (binary PCM multichannel file)
-*  2 - 16-bit integers with a header. The header type depends on the render (-o) format. For example, if the user chooses the AIFF format (using the [-A flag](../../)), the header format will be AIFF type.
+*  2 - 16-bit integers with a header. The header type depends on the render (-o) format. For example, if the user chooses the AIFF format (using the [-A flag](../../invoke/cs-options-alphabetically#-a-aiff-formataiff)), the header format will be AIFF type.
 *  3 - u-law samples with a header (see iformat=2).
 *  4 - 16-bit integers with a header (see iformat=2).
 *  5 - 32-bit integers with a header (see iformat=2).

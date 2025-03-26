@@ -16,7 +16,7 @@ soundout  asig1, ifilcod [, iformat]
 
 ### Initialization
 
-_ifilcod_ -- integer or character-string denoting the destination soundfile name. An integer denotes the file soundin.filcod; a character-string (in double quotes, spaces permitted) gives the filename itself, optionally a full pathname. If not a full path, the named file is sought first in the current directory, then in that given by the environment variable [SSDIR](../../command/environment) (if defined) then by [SFDIR](../../command/environment). See also [GEN01](../../scoregens/gen01).
+_ifilcod_ -- integer or character-string denoting the destination soundfile name. An integer denotes the file soundin.filcod; a character-string (in double quotes, spaces permitted) gives the filename itself, optionally a full pathname. If not a full path, the named file is sought first in the current directory, then in that given by the environment variable [SSDIR](../../invoke/environment-variables) (if defined) then by [SFDIR](../../invoke/environment-variables). See also [GEN01](../../scoregens/gen01).
 
 _iformat_ (optional, default=0) -- specifies the audio data file format:
 
@@ -27,7 +27,7 @@ _iformat_ (optional, default=0) -- specifies the audio data file format:
 *  5 = 32-bit long integers
 *  6 = 32-bit floats
 
-If _iformat_ = 0 it is taken from the soundfile header, and if no header from the Csound [-o](../../) command-line flag. The default value is 0.
+If _iformat_ = 0 it is taken from the soundfile header, and if no header from the Csound [-o](../../invoke/cs-options-alphabetically#-o-file-outputfile) command-line flag. The default value is 0.
 
 ### Performance
 

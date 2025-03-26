@@ -19,7 +19,7 @@ kans, ... OSClisten idest, itype
 
 ### Initialization
 
-_ihandle_ -- In the first two versions (overloads) of the opcode, a handle returned by an earlier call to OSCinit, to associate OSClisten with a particular port number. The third overload does not take a handle as it will listen for messages sent to the Csound [UDP server](../../overview/server).
+_ihandle_ -- In the first two versions (overloads) of the opcode, a handle returned by an earlier call to OSCinit, to associate OSClisten with a particular port number. The third overload does not take a handle as it will listen for messages sent to the Csound [UDP server](../../overview/udp-server).
 
 _idest_ -- a string that is the destination address. This takes the form of a path prefixed with a forward slash, with optional subdirectories separated by forward slashes. Csound processes incoming messages that match this address.
 

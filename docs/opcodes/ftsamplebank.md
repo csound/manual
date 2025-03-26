@@ -35,7 +35,7 @@ _Format_ -- specifies the audio data-file format:
 
 _Channel_ -- channel number to read in. 0 denotes read all channels.
 
-If _format_ = 0 the sample format is taken from the soundfile header, or by default from the CSound [-o](../../) command-line flag.
+If _format_ = 0 the sample format is taken from the soundfile header, or by default from the CSound [-o](../../invoke/cs-options-alphabetically#-o-file-outputfile) command-line flag.
 
 ### Performance
 

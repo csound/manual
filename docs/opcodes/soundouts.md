@@ -26,7 +26,7 @@ _iformat_ (optional, default=0) -- specifies the audio data file format:
 *  5 = 32-bit long integers
 *  6 = 32-bit floats
 
-If _iformat_ = 0 it is taken from the Csound [-o](../../) command-line flag. The default value is 0.
+If _iformat_ = 0 it is taken from the Csound [-o](../../invoke/cs-options-alphabetically#-o-file-outputfile) command-line flag. The default value is 0.
 
 ### Performance
 

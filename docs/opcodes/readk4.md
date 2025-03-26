@@ -12,7 +12,7 @@ kr1, kr2, kr3, kr4 readk4 ifilname, iformat, iprd
 
 ### Initialization
 
-_ifilname_ -- an integer N denoting a file named "readk.N" or a character string (in double quotes, spaces permitted) denoting the external file name. For a string, it may either be a full path name with directory specified or a simple filename.  In the later case, the file is sought first in the current directory, then in [SSDIR](../../command/environment), and finally in [SFDIR](../../command/environment).
+_ifilname_ -- an integer N denoting a file named "readk.N" or a character string (in double quotes, spaces permitted) denoting the external file name. For a string, it may either be a full path name with directory specified or a simple filename.  In the later case, the file is sought first in the current directory, then in [SSDIR](../../invoke/environment-variables), and finally in [SFDIR](../../invoke/environment-variables).
 
 _iformat_ -- specifies the input data format:
 
