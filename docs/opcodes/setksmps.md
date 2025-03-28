@@ -60,7 +60,7 @@ See the example for the [opcode](../../opcodes/opcode) opcode.
 
 ## See Also
 
-[User Defined Opcodes (UDO)](../../orch/UDO)
+[User Defined Opcodes (UDO)](../../orch/user-defined-opcodes)
 
 ## Credits
 

@@ -40,7 +40,7 @@ Here is an example of the endop opcode. It uses the file [endop.csd](../../examp
 
 ## See Also
 
-[User Defined Opcodes (UDO)](../../orch/UDO)
+[User Defined Opcodes (UDO)](../../orch/user-defined-opcodes)
 
 More information on this opcode: [http://www.csoundjournal.com/2006summer/controlFlow_part2.html](http://www.csoundjournal.com/2006summer/controlFlow_part2.html)  , written by Steven Yi
 

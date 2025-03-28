@@ -17,7 +17,9 @@ Csound command line flags are put in the *Options* element. This section is deli
 
 If the *Options* element is missing, the default options will be used:
 
-`-s -otest -b1024 -B1024 -m7 -P128`
+```
+-s -otest -b1024 -B1024 -m7 -P128
+```
 
 ### Orchestra `<CsInstruments>`
 

@@ -125,7 +125,7 @@ Here is another example of a user-defined opcode. It uses the file
 
 ## See Also
 
-[User Defined Opcodes (UDO)](../../orch/UDO)
+[User Defined Opcodes (UDO)](../../orch/user-defined-opcodes)
 
 ## Credits
 

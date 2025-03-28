@@ -183,7 +183,7 @@ The audio coming in using *-i* can be received using opcodes like [inch](../../o
 (max. length = 200 characters) Title tag in output soundfile (no spaces)
 
 #### -+ignore_csopts=integer
-If set to 1, Csound will ignore all options specified in the csd file's CsOptions section. See [Unified File Format for Orchestras and Scores](../../)
+If set to 1, Csound will ignore all options specified in the csd file's CsOptions section. See [Unified File Format for Orchestras and Scores](../../invoke/the-csd-file-format)
 
 #### -+input_stream=string
 Pulseaudio input stream name.
@@ -191,7 +191,7 @@ Pulseaudio input stream name.
 #### -J, --ircam, --format=ircam
 Write an IRCAM format soundfile.
 
-#### -j NUM
+#### -j NUM, --num-threads=NUM
 Make *NUM* processes available for rendering.  This is only advantageous if the number of processors on the computer is the same or more that the number of requested processes.  It also may slow rendering down if ksmps is too small.
 
 #### -+jack_client=[client_name]
@@ -293,7 +293,7 @@ Message level for benchmark information on standard (terminal) output.
 (min: 10, max: 10000) Maximum length of string variables + 1; defaults to 256 allowing a length of 255 characters. The length of string constants is not limited by this parameter.
 
 #### --midi-devices[=x]
-Llist midi devices (x=out, output devices only; x=in, input; else input and output) and exit.
+List midi devices (x=out, output devices only; x=in, input; else input and output) and exit.
 
 #### --midi-key=N
 Route MIDI note on message key number to pfield N as MIDI value [0-127].
@@ -327,9 +327,6 @@ Notify (ring the bell) when score or MIDI track is done.
 
 #### -n, --nosound
 No sound. Do all processing, but bypass writing of sound to disk. This flag does not change the execution in any other way.
-
-#### --num-threads=NUM
-Make *NUM* processes available for rendering.  This is only advantageous if the number of processors on the computer is more that the number of requested processes.  It also may slow rendering down if ksmps is too small.
 
 #### --no-default-paths
 Disables adding of directory of CSD/ORC/SCO to search paths.
@@ -428,7 +425,7 @@ Pulseaudio server name.
 #### --simple-sorted-score
 Retains the sorted score file score.srt in a simple readable format upon exit.  (New in version 6.14).
 
-An alternative form is to follow immediately with an = and a file name , to select where to write the score.
+An alternative form is to follow immediately with an = and a file name, to select where to write the score.
 
 #### --sinesize=integer
 Set size of internal sine wave (table -1).  Should be a power of two, and defaults to 16384.
