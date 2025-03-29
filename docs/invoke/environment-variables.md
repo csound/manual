@@ -28,4 +28,4 @@ Other environment variables which are not exclusive to Csound but which might be
 
 Environment variables can be set as options by using the command line flag `--env:NAME=VALUE` or `--env:NAME+=VALUE`, where NAME is the environment variable name, and VALUE is its value. They can also be set in the configuration file *.csound7rc*.
 
-Note that this method of setting environment variables will not work for variables which are parsed before the command line arguments. SADIR, SSDIR, SFDIR, INCDIR, SNAPDIR, RAWWAVE_PATH, CSNOSTOP, SFOUTYP should work, but the following environment variables must be set on the system prior to running csound: OPCODE6DIR, OPCODE6DIR64, CSSTRINGS, and CS_LANG.
+Note that this method of setting environment variables will not work for variables which are parsed before the command line arguments. SADIR, SSDIR, SFDIR, INCDIR, SNAPDIR, RAWWAVE_PATH, CSNOSTOP, SFOUTYP should work, but the following environment variables must be set on the system prior to running csound: OPCODE7DIR, OPCODE7DIR64, CSSTRINGS, and CS_LANG.

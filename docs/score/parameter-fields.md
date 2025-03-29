@@ -21,19 +21,19 @@ For each instrument event, the first three parameters are mandatory and carry a 
 - *p2* is the time to start the instrument instance  
 - *p3* is the duration of the instrument instance to run
 
-The meaning of the optional parameters *p4, p5, ...* is given by the instrument definition. All score parameters are accessible in the instrument definition as `p1`, `p2` etc.
+The meaning of the optional parameters `p4`, `p5`, ... is given by the instrument definition. All score parameters are accessible in the instrument definition as `p1`, `p2` etc.
 
-```
+``` csound-orc
 <CsoundSynthesizer> 
 <CsOptions> 
--odac
+  -odac
 </CsOptions> 
 <CsInstruments> 
 instr 1
-  print(p1,p2,p3)
+  print(p1, p2, p3)
   amp:i = p4*0dbfs
   freq:i = p5
-  aSig = poscil:a(amp,freq)
+  aSig = poscil:a(amp, freq)
   outall(aSig)
 endin
 </CsInstruments> 

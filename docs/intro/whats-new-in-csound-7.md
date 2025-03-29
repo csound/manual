@@ -6,7 +6,7 @@ Csound 7 brings major changes which offer new possibilities for users and modern
 
 Variable names no longer have to start with `i`, `k`, `a` etc. to declare their data type implicitely. Instead any name (except existing opcodes or keywords) can be used, and the type declared explicitely:
 
-```csound-orc title="Explicit Varaible Types" linenums="1"
+```csound-orc title="Explicit Variable Types"
 maxamp@global:i = 0dbfs / 5
 
 instr 1
@@ -28,17 +28,17 @@ opcode myop(inval:i):(i)
 endop
 
 opcode empty():void
-  puts("empty!",1)
+  puts("empty!", 1)
 endop
 
 instr 1
   print(myop(17))
   empty()
 endin
-schedule(1,0,0)
+schedule(1, 0, 0)
 ```
 
-Give example for pass-by-reference ...
+<span style="color:red">Give example for pass-by-reference ...</span>
 
 ## Removed Limitations for Functional Style
 
@@ -48,15 +48,15 @@ Multiple output arguments can now be used in functional style, e.g.
 nchnls = 2
 instr 1
   sig:a = rand(0dbfs/10)
-  aL,aR = pan2(sig,3/4)
-  out(aL,aR)
+  aL,aR = pan2(sig, 3/4)
+  out(aL, aR)
 endin
-schedule(1,0,1)
+schedule(1, 0, 1)
 ```
 
 ## For-Loop
 
-Is it going to happen??
+<span style="color:red">Is it going to happen??</span>
 
 ## User-Defined Types
 
@@ -68,5 +68,5 @@ testVal:MyType init 8, 88
 print(testVal.val0)
 print(testVal.val1)
 endin
-schedule(1,0,0)
+schedule(1, 0, 0)
 ```

@@ -25,7 +25,7 @@ If the *Options* element is missing, the default options will be used:
 
 The instrument definitions (orchestra) are put into the *Instruments* element. The statements and syntax in this section are identical to the Csound orchestra file, and have the same requirements. This Instruments Element is delimited with the start tag `<CsInstruments>` and the end tag `</CsInstruments>`.
 
-Usually the `CsInstruments` tag starts with a declaration of the fundamental constants `sr` (sample rate, default 44100), `ksmps` (number of samples per control cycle, default 10, recommended 32 or 64), `nchnls` (number of channels, default 10) and `0dbfs` (amplitude value equal to zero dB full scale, default 32767, recommended 1). 
+Usually the `CsInstruments` tag starts with a declaration of the fundamental constants `sr` (sample rate, default 44100), `ksmps` (number of samples per control cycle, default 10, recommended 32 or 64), `nchnls` (number of channels, default 1) and `0dbfs` (amplitude value equal to zero dB full scale, default 32767, recommended 1). 
 
 ### Score `<CsScore>`
 
@@ -84,7 +84,7 @@ From version 6.05 licencing details can be also included in between the start ta
 
 ### Embedded HTML `<html>`
 
-Any valid HTML code can be embedded in the CSD file. This code should be structured exactly like an ordinary Web page. This code can contain any valid HTML, JavaScript, Cascading Style Sheet, WebGL, etc., etc. code.
+Any valid HTML code can be embedded in the CSD file. This code should be structured exactly like an ordinary Web page. This code can contain any valid HTML, JavaScript, Cascading Style Sheet, WebGL, etc. code.
 
 In some Csound front ends and programming environments, including at least CsoundQt or Csound for Android, this page will be parsed, executed, and displayed by a Web browser embedded in the environment. JavaScript code in this page will have access to a global csound object that implements the following functions, which are a selected subset of the Csound API. The names, data types, and uses of these functions are exactly the same as detailed in the Csound API Reference Manual.
 

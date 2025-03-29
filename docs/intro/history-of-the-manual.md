@@ -12,7 +12,7 @@ When Csound was licenced as LGPL by MIT in 2003, the manual was licenced GFDL an
 
 In the winter of 2004, the Canonical Manual was converted to DocBook/XML by Steven Yi to allow for more people to be able to compile and maintain the manual.
 
-The manual is currently maintained by François Pinot, Menno Knevel, Joachim Heintz and the core developers, with continuous contributions from the Csound Community. The French version of the manual is maintained by François Pinot.
+The manual is currently maintained by François Pinot, Menno Knevel, Joachim Heintz and the core developers, with continuous contributions from the Csound Community.
 
 The manual continues to be a community run project that depends on the contributions of developers and users to help refine the coverage and accuracy of its contents. All contributions are welcome and appreciated.
 

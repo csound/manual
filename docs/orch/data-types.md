@@ -48,7 +48,7 @@ Constants are available continuously and do not change in value. Usually they ar
 ``` csound-orc
 sr = 44100
 ksmps = 64
-0dbfs = 1
+0dbfs =  1
 nchnls = 2
 ```
 

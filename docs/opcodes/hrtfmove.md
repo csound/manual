@@ -20,7 +20,7 @@ _ifiler_ -- right HRTF spectral data file
 
 > :memo: **Note**
 >
-> Spectral datafiles (based on the MIT HRTF database) are available in 3 different sampling rates: 44.1, 48 and 96 khz and are labelled accordingly. Input and processing _sr_ should match datafile _sr_. Files should be in the current directory or the SADIR (see [Environment Variables](../../command/environment)).
+> Spectral datafiles (based on the MIT HRTF database) are available in 3 different sampling rates: 44.1, 48 and 96 khz and are labelled accordingly. Input and processing _sr_ should match datafile _sr_. Files should be in the current directory or the SADIR (see [Environment Variables](../../invoke/environment-variables)).
 
 > :memo: **Note**
 >

@@ -18,7 +18,7 @@ A standard Csound header may look like this:
 sr = 48000
 ksmps = 32
 nchnls = 2
-0dbfs = 1
+0dbfs =  1
 ```
 
 Other common header statements:

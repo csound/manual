@@ -2,13 +2,13 @@
 
 Instruments are the main building blocks in Csound. An instrument definition starts with the keyword `instr`, followed by a space, and a number or name. In case the numbers or names are separated by comma, the same instrument definition applies to different instrument numbers or names. The instrument definition ends with the keywor `endin`.
 
-```
+``` csound-orc
 instr 10
-  puts("instrument 10",1)
+  puts("instrument 10", 1)
 endin
 
 instr printme
-  puts("instrument 'printme'",1)
+  puts("instrument 'printme'", 1)
 endin
 
 instr Multiple, 2, 3
@@ -20,7 +20,9 @@ endin
 
 An instrument name may consist of any number of letters, digits, and the underscore (_) character, however, the first character must not be a digit. Optionally, the instrument name may be prefixed with the '+' character (see below), for example:
 
-`instr +Reverb`
+``` csound-orc
+instr +Reverb
+```
 
 For all instrument names, a number is automatically assigned (note: if the message level (-m) is not zero, these numbers are printed to the console during orchestra compilation), following these rules:
 
@@ -32,7 +34,7 @@ Using '+' is mainly useful for global output or effect instruments, that must be
 
 An example for instrument numbers:
 
-```
+``` csound-orc
 instr 1, 2
 endin
 
@@ -59,11 +61,15 @@ Instr4:  7
 
 Named instruments can be called by using the name in double quotes (note: the '+' character should be omitted), e.g.
 
-`i "Effect1" 0 60`
+``` csound-sco
+i "Effect1" 0 60
+```
 
 in the score, or
 
-`schedule("Effect1",0,60)`
+``` csound-orc
+schedule("Effect1", 0, 60)
+```
 
 in the orchestra code.
 
@@ -73,31 +79,31 @@ in the orchestra code.
 
 Initializing the instrument code follows the order as written in the text, regardless any instrument number. This is an example which increments a global i-variable:
 
-```
+``` csound-orc
 giVal = 0
 
 instr 10
   giVal += 1
   print(giVal)
 endin
-schedule(10,0,1)
+schedule(10, 0, 1)
 
 instr printme
   giVal += 1
   print(giVal)
 endin
-schedule("printme",0,1)
+schedule("printme", 0, 1)
 
 instr Multiple, 2, 3
   giVal += 1
   print(giVal)
 endin
-schedule("Multiple",0,1)
-schedule(2,0,1)
-schedule(3,0,1)
+schedule("Multiple", 0, 1)
+schedule(2, 0, 1)
+schedule(3, 0, 1)
 ```
 
-This returns (in assigning instrument number 1 to 'printme' and instrument number 4 to 'Multiple'):
+This returns (in assigning instrument number 1 to `printme` and instrument number 4 to `Multiple`):
 
 ```
 instr 10:	giVal = 1.000
@@ -111,31 +117,31 @@ instr 3:	giVal = 5.000
 
 During performance the instruments are executed following their numbers (from low to high). This is an example which increments a global k-Variable:
 
-```
+``` csound-orc
 gkVal init 0
 
 instr 10
   gkVal += 1
-  printk(0,gkVal)
+  printk(0, gkVal)
   turnoff
 endin
-schedule(10,0,1)
+schedule(10, 0, 1)
 
 instr printme
   gkVal += 1
-  printk(0,gkVal)
+  printk(0, gkVal)
   turnoff
 endin
-schedule("printme",0,1)
+schedule("printme", 0, 1)
 
 instr Multiple, 2, 3
   gkVal += 1
-  printk(0,gkVal)
+  printk(0, gkVal)
   turnoff
 endin
-schedule("Multiple",0,1)
-schedule(2,0,1)
-schedule(3,0,1)
+schedule("Multiple", 0, 1)
+schedule(2, 0, 1)
+schedule(3, 0, 1)
 ```
 
 This returns (in assigning instrument number 1 to 'printme' and instrument number 4 to 'Multiple'):
@@ -160,15 +166,15 @@ Instances are called by *events*. These *instrument events* can originate from d
 
 Note that a new instrument instance tries to re-use the memory allocation of an old instance. This might result in unexpected behaviour as the second instance continues where the first instance left:
 
-```
+``` csound-orc
 instr 1
-  kVal = random:k(0,10)
-  prints("kVal initialized as %f\n",i(kVal))
-  printks("kVal rendered as %f\n",0,kVal)
+  kVal = random:k(0, 10)
+  prints("kVal initialized as %f\n", i(kVal))
+  printks("kVal rendered as %f\n", 0, kVal)
   turnoff
 endin
-schedule(1,0,1)
-schedule(1,1,1)
+schedule(1, 0, 1)
+schedule(1, 1, 1)
 ```
 
 ```
@@ -182,28 +188,28 @@ kVal rendered as 2.913418
 
 If an instrument is called with a fractional number, this number indicates a certain instance. This feature allows to treat different instances in a different way.
 
-```
+``` csound-orc
 instr 1
   print(p1)
   if (p1 == 1.001) then
-    puts("hu",1)
+    puts("hu", 1)
   else
-    puts("ha",1)  
+    puts("ha", 1)  
   endif
 endin
-schedule(1.001,0,1)
-schedule(1.002,1,1)
+schedule(1.001, 0, 1)
+schedule(1.002, 1, 1)
 
 instr Two
   print(p1)
   if (p1 == 2.001) then
-    puts("ho",1)
+    puts("ho", 1)
   else
-    puts("hi",1)  
+    puts("hi", 1)  
   endif
 endin
-schedule("Two.001",2,1)
-schedule("Two.002",3,1)
+schedule("Two.001", 2, 1)
+schedule("Two.002", 3, 1)
 ```
 
 This returns:

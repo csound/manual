@@ -228,7 +228,7 @@ Determines how line numbers are counted and displayed for error messages when pr
 Suppress all displays. See [-O](#-o-file-logfilefile) if you want to save the log to a file.
 > :memo: **Note**
 >
->This option only works from the command line and not from .csound6rc or a CsOptions section of a  csd file.  It needs to be acted upon before sound proper starts.  It is ignored in .csound6rc and CsOptions.
+>This option only works from the command line and not from .csound7rc or a CsOptions section of a  csd file.  It needs to be acted upon before sound proper starts.  It is ignored in .csound7rc and CsOptions.
 
 #### --displays
 Enables displays, reverting the effect of any previous -d flag.
@@ -395,7 +395,7 @@ Provide an extended command-line in file &ldquo;FILE&rdquo;
 Use Cscore processing of the scorefile.
 
 #### --default-paths
-Reenables adding of directory of CSD/ORC/SCO to search paths, if it has been disabled by a previous [--no-default-paths](#-no-default-paths) (e.g. in [.csound6rc](../../)).
+Reenables adding of directory of CSD/ORC/SCO to search paths, if it has been disabled by a previous [--no-default-paths](#-no-default-paths) (e.g. in [.csound7rc](../order-of-precedence)).
 
 #### -D, --defer-gen1
 Defer GEN01 soundfile loads until performance time.
@@ -488,7 +488,7 @@ Log output to file *FILE*. If *FILE* is null (i.e. *-O null* or *--logfile=null*
 
 > :memo: **Note**
 >
-> This option only works from the command line and not from .csound6rc or a CsOptions section of a csd file.  It needs to be acted upon before sound proper starts.  It is ignored in .csound6rc and CsOptions.
+> This option only works from the command line and not from .csound7rc or a CsOptions section of a csd file.  It needs to be acted upon before sound proper starts.  It is ignored in .csound7rc and CsOptions.
 
 #### --opcode-lib=LIBNAME
 Load plugin library *LIBNAME*.
