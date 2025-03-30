@@ -115,8 +115,7 @@ User-defined: these are defined by any other addresses chosen by the user. They 
 ``` csound-orc title="Code example" linenums="1"
 <CsoundSynthesizer>
 <CsOptions>
--odac  --port=7000  ;;;RT audio out and
-server port
+-odac  --port=7000  ;;;RT audio out and server port
 </CsOptions>
 <CsInstruments>
 
