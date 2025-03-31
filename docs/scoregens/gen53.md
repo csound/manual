@@ -5,7 +5,7 @@ category:
 # GEN53
 Creates a linear-phase or minimum-phase impulse response table from a source table containing a frequency response or an impulse response.
 
-The source for this can either be a frequency response or an impulse response, stored in an existing table. Optionally, another function table can be used to window the input and/or the output of the process.
+Optionally, another function table can be used to window the input and/or the output of the process.
 
 ## Syntax
 ``` csound-orc
