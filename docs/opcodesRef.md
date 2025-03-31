@@ -3673,6 +3673,10 @@
 `ftrks `[**`partials `**](../opcodes/partials)`ffr, fphs, kthresh, kminpts, kmaxgap, imaxtracks`<br>
 
 
+`kframe `[**`pvs2array `**](../opcodes/pvs2array)`kvar[], fsig`<br>
+`kframe pvs2array kmags[], kfreqs[], fsig`<br>
+
+
 `kframe `[**`pvs2tab `**](../opcodes/pvs2tab)`tvar|kvar[], fsig`<br>
 `kframe pvs2tab kmags[], kfreqs[], fsig`<br>
 
