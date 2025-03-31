@@ -1347,9 +1347,6 @@
 [**`printks `**](../opcodes/printks)`"string", itime [, xval1] [, xval2] [...]`<br>
 
 
-`printsk "string", [, xval1] [, xval2] [...]`<br>
-
-
 [**`printks2 `**](../opcodes/printks2)`"string", kval`<br>
 
 
@@ -1357,6 +1354,9 @@
 
 
 [**`prints `**](../opcodes/prints)`"string" [, xval1] [, xval2] [...]`<br>
+
+
+[**`printsk `**](../opcodes/printsk)`"string", [, xval1] [, xval2] [...]`<br>
 
 
 ### Signal I/O:Soundfile Queries
