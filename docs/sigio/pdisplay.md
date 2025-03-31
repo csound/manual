@@ -15,4 +15,5 @@ Opcodes for printing and displaying values are:
 * [printks2](../../opcodes/printks2)
 * [println](../../opcodes/println)
 * [prints](../../opcodes/prints)
+* [printsk](../../opcodes/printsk)
 * [printarray](../../opcodes/printarray)

@@ -404,6 +404,7 @@
 [**printk.csd**](../../opcodes/printk/#examples)<br>
 [**printk2.csd**](../../opcodes/printk2/#examples)<br>
 [**printks.csd**](../../opcodes/printks/#examples)<br>
+[**printsk.csd**](../../opcodes/printsk/#examples)<br>
 [**printks2.csd**](../../opcodes/printks2/#examples)<br>
 [**println.csd**](../../opcodes/println/#examples)<br>
 [**prints.csd**](../../opcodes/prints/#examples)<br>
