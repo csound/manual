@@ -3745,6 +3745,10 @@
 `fsig `[**`pvsfreeze `**](../opcodes/pvsfreeze)`fsigin, kfreeza, kfreezf`<br>
 
 
+`fsig `[**`pvsfromarray `**](../opcodes/pvsfromarray)`karr[] [,ihopsize, iwinsize, iwintype]`<br>
+`fsig pvsfromarray kmags[], kfreqs[] [,ihopsize, iwinsize, iwintype]`<br>
+
+
 [**`pvsftr `**](../opcodes/pvsftr)`fsrc, ifna [, ifnf]`<br>
 
 

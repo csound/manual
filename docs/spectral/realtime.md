@@ -66,6 +66,7 @@ In addition there are a number of opcodes available as plugins in Csound5, and i
  [pvs2tab](../../opcodes/pvs2tab),
  [pvstrace](../../opcodes/pvstrace),
  [pvsceps](../../opcodes/pvsceps),
+ [pvsfromarray](../../opcodes/pvsfromarray)
  [tab2pvs](../../opcodes/tab2pvs)
      
 A number of opcodes are designed to generate and process streaming partials tracks data. these are
