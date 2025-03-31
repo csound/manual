@@ -24,51 +24,54 @@ GEN routines are used as data generators for function tables. When a function ta
 
 ## File Access GEN Routines:
 
-* [GEN01](../../scoregens/gen01) -  Transfers data from a soundfile into a function table.
+* [GEN01](../../scoregens/gen01) - Transfers data from a soundfile into a function table.
 * [GEN23](../../scoregens/gen23) - Reads numeric values from a text file.
-* [GEN28](../../scoregens/gen28) -  Reads a text file which contains a time-tagged trajectory.
+* [GEN28](../../scoregens/gen28) - Reads a text file which contains a time-tagged trajectory.
 * [GEN43](../../scoregens/gen43) - Loads a PVOCEX file containing a PV analysis.
 * [GEN49](../../scoregens/gen49) - Transfers data from an MP3 soundfile into a function table.
 
 ## Numeric Value Access GEN Routines
 
-* [GEN02](../../scoregens/gen02) -  Transfers data from immediate pfields into a function table.
+* [GEN02](../../scoregens/gen02) - Transfers data from immediate pfields into a function table.
 * [GEN17](../../scoregens/gen17) - Creates a step function from given x-y pairs.
 * [GEN44](../../scoregens/gen44) - Creates a stifness matrix for scan/scanu.
 * [GEN52](../../scoregens/gen52) - Creates an interleaved multichannel table from the specified source tables, in the format expected by the _ftconv_ opcode.
 
 ## Window Function GEN Routines
 
-* [GEN20](../../scoregens/gen20) -  Generates functions of different windows.
+* [GEN20](../../scoregens/gen20) - Generates functions of different windows.
 
 ## Random Function GEN Routines
 
-* [GEN21](../../scoregens/gen21) -  Generates tables of different random distributions.
+* [GEN21](../../scoregens/gen21) - Generates tables of different random distributions.
 * [GEN40](../../scoregens/gen40) - Generates a random distribution using a distribution histogram.
-* [GEN41](../../scoregens/gen41) -  Generates a random list of numerical pairs.
+* [GEN41](../../scoregens/gen41) - Generates a random list of numerical pairs.
 * [GEN42](../../scoregens/gen42) - Generates a random distribution of discrete ranges of values.
 
 ## Waveshaping GEN Routines
 
-* [GEN03](../../scoregens/gen03) -  Generates a stored function table by evaluating a polynomial.
+* [GEN03](../../scoregens/gen03) - Generates a stored function table by evaluating a polynomial.
 * [GEN13](../../scoregens/gen13) - Stores a polynomial whose coefficients derive from the Chebyshev polynomials of the first kind.
-* [GEN14](../../scoregens/gen14) -  Stores a polynomial whose coefficients derive from Chebyshevs of the second kind.
+* [GEN14](../../scoregens/gen14) - Stores a polynomial whose coefficients derive from Chebyshevs of the second kind.
 * [GEN15](../../scoregens/gen15) - Creates two tables of stored polynomial functions.
 
 ## Amplitude Scaling GEN Routines
 
-* [GEN04](../../scoregens/gen04) -  Generates a normalizing function.
+* [GEN04](../../scoregens/gen04) - Generates a normalizing function.
 * [GEN12](../../scoregens/gen12) - Generates the log of a modified Bessel function of the second kind.
-* [GEN24](../../scoregens/gen24) -  Reads numeric values from another allocated function-table and rescales them.
+* [GEN24](../../scoregens/gen24) - Reads numeric values from another allocated function-table and rescales them.
 
 ## Mixing GEN Routines
 
-* [GEN18](../../scoregens/gen18) -  Writes composite waveforms made up of pre-existing waveforms.
+* [GEN18](../../scoregens/gen18) - Writes composite waveforms made up of pre-existing waveforms.
 * [GEN31](../../scoregens/gen31) - Mixes any waveform specified in an existing table.
-* [GEN32](../../scoregens/gen32) -   Mixes any waveform, resampled with either FFT or linear interpolation.
+* [GEN32](../../scoregens/gen32) -  Mixes any waveform, resampled with either FFT or linear interpolation.
 
 ## Pitch and Tuning GEN Routines
 * [GEN51](../../scoregens/gen51) - fills a table with a fully customized micro-tuning scale, in the manner of Csound opcodes _cpstun_, _cpstuni_ and _cpstmid_.
+
+## Impulse Response Routine
+* [GEN53](../../scoregens/gen53) - creates a linear-phase or minimum-phase impulse response table from a source table containing a frequency response or an impulse response.
 
 ## Named GEN Routines
 

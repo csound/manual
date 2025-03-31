@@ -19,7 +19,7 @@ f # time size 52 nchannels fsrc1 offset1 srcchnls1 \
                 [fsrc2 offset2 srcchnls2 ... fsrcN offsetN srcchnlsN]
 ```
 
-Example
+## Examples
 
 ``` csound-sco
 ; source tables
