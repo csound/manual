@@ -150,8 +150,8 @@
 | [polynomial](../opcodes/polynomial) | [pop](../opcodes/pop) | [pop_f](../opcodes/pop_f) | [port](../opcodes/port) | [portk](../opcodes/portk) |
 | [poscil3](../opcodes/poscil3) | [poscil](../opcodes/poscil) | [pow](../opcodes/pow) | [powershape](../opcodes/powershape) | [powoftwo](../opcodes/powoftwo) |
 | [prealloc](../opcodes/prealloc) | [prepiano](../opcodes/prepiano) | [print](../opcodes/print) | [printarray](../opcodes/printarray) | [printf](../opcodes/printf) |
-| [printk2](../opcodes/printk2) | [printk](../opcodes/printk) | [printks2](../opcodes/printks2) | [printks](../opcodes/printks) | [printks](../opcodes/printsk) |
-| [println](../opcodes/println) | [prints](../opcodes/prints) | [product](../opcodes/product) | [product](../opcodes/productarray) | [pset](../opcodes/pset) |
+| [printk2](../opcodes/printk2) | [printk](../opcodes/printk) | [printks2](../opcodes/printks2) | [printks](../opcodes/printks) | [println](../opcodes/println) |
+| [prints](../opcodes/prints) | [printsk](../opcodes/printsk) | [product](../opcodes/product) | [product](../opcodes/productarray) | [pset](../opcodes/pset) |
 | [ptrack](../opcodes/ptrack) | [push](../opcodes/push) | [push_f](../opcodes/push_f) | [puts](../opcodes/puts) | [pvadd](../opcodes/pvadd) |
 | [pvbufread](../opcodes/pvbufread) | [pvcross](../opcodes/pvcross) | [pvinterp](../opcodes/pvinterp) | [pvoc](../opcodes/pvoc) | [pvread](../opcodes/pvread) |
 | [pvs2tab](../opcodes/pvs2tab) | [pvsadsyn](../opcodes/pvsadsyn) | [pvsanal](../opcodes/pvsanal) | [pvsarp](../opcodes/pvsarp) | [pvsbandp](../opcodes/pvsbandp) |
