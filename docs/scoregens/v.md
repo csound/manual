@@ -32,7 +32,7 @@ In this example, the second note occurs two beats after the first note, and is t
 
 Although the _v statement_ is similar to the [t statement](../../scoregens/t), the _v statement_ is local in operation. That is, _v_ affects only the following notes, and its effect may be cancelled or changed by another _v statement_.
 
-Carried values are unaffected by the _v statement_ (see [Carry](../../)).
+Carried values are unaffected by the _v statement_ (see [Carry](../../score/preproc#carry)).
 
 ``` csound-sco
 i1   0 1

@@ -24,7 +24,7 @@ _p4 ..._ -- Parameters whose significance is determined by the instrument.
 
 ### Performance
 
-Beats are evaluated as seconds, unless there is a [t statement](../../scoregens/t) in this score section or a [-t flag](../../) in the command-line.
+Beats are evaluated as seconds, unless there is a [t statement](../../scoregens/t) in this score section or a [-t flag](../../invoke/cs-options-by-category#-t-num-temponum) in the command-line.
 
 Starting or action times are relative to the beginning of a section ( see [s statement](../../scoregens/s)), which is assigned time 0.
 

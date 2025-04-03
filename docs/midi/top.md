@@ -1,6 +1,6 @@
 # **Real-time MIDI Support**
 
-Csound supports realtime MIDI input and output, as well as input    from MIDI files. Realtime MIDI input is activated using the [-M](../command/environment) (or    _--midi-device_=DEVICE) command line flag. For    single port input, you    must specify the device number or name after the _-M_. For multiport input (currently    implemented only in the PortMIDI module),  use 'a' or 'm'.    For example to use device number 2, you would use something like:
+Csound supports realtime MIDI input and output, as well as input    from MIDI files. Realtime MIDI input is activated using the [-M](../../invoke/cs-options-by-category#-m-device-midi-devicedevice) (or    _--midi-device_=DEVICE) command line flag. For    single port input, you    must specify the device number or name after the _-M_. For multiport input (currently    implemented only in the PortMIDI module),  use 'a' or 'm'.    For example to use device number 2, you would use something like:
   
 ```
 csound -M2 myrtmidi.csd
@@ -14,9 +14,9 @@ csound --midi-devices
  
 Starting from version 6.14, the PortMIDI module (see below for a listof all modules) allows multiple ports to be mapped to higher-orderchannels. By using the 'm' device name, Csound will take inputs fromany existing MIDI device in the system and map it according to(N+1)*channel, where N is the device number as listed by PortMIDI andchannel is the original device input channel. Alternatively, the 'a'device name listens to all inputs but does not map to higher-orderchannels.
   
-Realtime MIDI output is activated using [-Q](../command/environment), using device number or names as shown above.
+Realtime MIDI output is activated using [-Q](../../invoke/cs-options-by-category#-q-device), using device number or names as shown above.
   
-You can also load a MIDI file using the [-F](../command/environment) or _--midifile_=FILE command line flag. The MIDI file is read in realtime, and behaves as if it was being performed or received in realtime. So the csound program is not aware if MIDI input comes from a MIDI file or directly from a MIDI interface.
+You can also load a MIDI file using the [-F](../../invoke/cs-options-by-category#-f-file-midifilefile) or _--midifile_=FILE command line flag. The MIDI file is read in realtime, and behaves as if it was being performed or received in realtime. So the csound program is not aware if MIDI input comes from a MIDI file or directly from a MIDI interface.
 
 Once realtime MIDI input and/or output has been activated, opcodes like [MIDI Input](../input) and [MIDI Output](../output) will have effect.
 
@@ -24,7 +24,7 @@ When MIDI input is enabled (with -M or -F), each incoming _noteon_ message will 
 
 See the [MIDI/Score Interoperability](../interop) opcodes for information on designing instruments which can be used from the score or driven by MIDI.
 
-There are several realtime MIDI modules available, you must use the _-+rtmidi_ flag (See [-+rtmidi](../command/environment)), to specify the module. The default module is portmidi which provides adequate MIDI I/O on all platforms, however for improved performance and reliability some platform specific modules are also provided.
+There are several realtime MIDI modules available, you must use the _-+rtmidi_ flag (See [-+rtmidi](../../invoke/cs-options-by-category#-rtmidistring)), to specify the module. The default module is portmidi which provides adequate MIDI I/O on all platforms, however for improved performance and reliability some platform specific modules are also provided.
 Currently the midi modules available are:
 
 * _portmidi_ - To use thePortMIDI system (all platforms). This is the default setting andit allows multiple-port inputs (with 'm' or 'a' device names).

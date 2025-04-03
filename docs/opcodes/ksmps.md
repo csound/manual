@@ -5,7 +5,7 @@ category:Orchestra Syntax:Header
 # ksmps
 Sets the number of samples in a control period.
 
-These statements are global value [assignments](../../opcodes/assign), made at the beginning of an orchestra, before any instrument block is defined. Their function is to set certain [reserved symbol variables](../../) that are required for performance. Once set, these reserved symbols can be used in expressions anywhere in the orchestra.
+These statements are global value [assignments](../../opcodes/assign), made at the beginning of an orchestra, before any instrument block is defined. Their function is to set certain [reserved symbol variables](../../orch/data-types#constants-and-reserved-symbols) that are required for performance. Once set, these reserved symbols can be used in expressions anywhere in the orchestra.
 
 ## Syntax
 ``` csound-orc
@@ -16,7 +16,7 @@ ksmps = iarg
 
 _ksmps_ = (optional) -- set the number of samples in a control period. This value must equal_ sr/kr_. The default value is 10.
 
-In addition, any [global variable](../../) can be initialized by an _init-time assignment_ anywhere before the first [instr statement](../../opcodes/instr).  All of the above assignments are run as instrument 0 (i-pass only) at the start of real performance.
+In addition, any [global variable](../../orch/data-types) can be initialized by an _init-time assignment_ anywhere before the first [instr statement](../../opcodes/instr).  All of the above assignments are run as instrument 0 (i-pass only) at the start of real performance.
 
 Beginning with Csound version 3.46, either _ksmps_ may be omitted. Csound will attempt to calculate the omitted value from the specified [sr](../../opcodes/sr) and [kr](../../opcodes/kr)values, but it should evaluate to an integer.
 

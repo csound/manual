@@ -22,7 +22,7 @@ _p3_ -- ignored but required.  Usually zero.
 
 ### Performance
 
-Beats are evaluated as seconds, unless there is a [t statement](../../scoregens/t) in this score section or a [-t flag](../../) in the command-line.
+Beats are evaluated as seconds, unless there is a [t statement](../../scoregens/t) in this score section or a [-t flag](../../invoke/cs-options-by-category#-t-num-temponum) in the command-line.
 
 Action times are relative to the beginning of a section ( see [s statement](../../scoregens/s)), which is assigned time 0.
 

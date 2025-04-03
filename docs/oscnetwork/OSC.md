@@ -2,7 +2,7 @@
 
 _OSC_ enables interaction between different audio processes, and in particular between Csound and other synthesis engines.
 
-Multiple OSC servers can be set up, separately or together with the Csound ([UDP server](../../overview/server)).
+Multiple OSC servers can be set up, separately or together with the Csound ([UDP server](../../overview/udp-server)).
 
 The following opcodes are available:
 

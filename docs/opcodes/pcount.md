@@ -16,7 +16,7 @@ _icount_ - stores the number of pfields for the current note event.
 
 > :memo: **Note**
 >
-> Note that the reported number of pfields is not necessarily what is explicitly written in the score, but the pfields available to the instrument through mechanisms like [pfield carry](../../).
+> Note that the reported number of pfields is not necessarily what is explicitly written in the score, but the pfields available to the instrument through mechanisms like [pfield carry](../../score/preproc#carry).
 
 ## Examples
 

@@ -34,7 +34,7 @@ A tempo, once assigned, will remain in effect from that time-point unless influe
 
 A _t statement_ applies only to the score section in which it appears. Only one _t statement_ is meaningful in a section; it can be placed anywhere within that section. If a score section contains no _t statement_, then beats are interpreted as seconds (i.e. with an implicit _t 0 60_ statement).
 
-N.B. If the CSound command includes a [-t flag](../../), the interpreted tempo of all score _t statements_ will be overridden by the command-line tempo.
+N.B. If the CSound command includes a [-t flag](../../invoke/cs-options-by-category#-t-num-temponum), the interpreted tempo of all score _t statements_ will be overridden by the command-line tempo.
 
 ## Examples
 

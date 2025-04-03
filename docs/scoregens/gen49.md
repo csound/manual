@@ -14,7 +14,7 @@ f#  time  size  49  filcod  skiptime  format
 
 _size_ -- number of points in the table. Ordinarily a power of 2 or a power-of-2 plus 1 (see [f statement](../../scoregens/f)); the maximum tablesize is 16777216 (2<sup>24</sup>) points. The allocation of table memory can be _deferred_ by setting this parameter to 0; the size allocated is then the number of points in the file (probably not a power-of-2), and the table is not usable by normal oscillators, but it is usable by a [loscil](../../opcodes/loscil) unit. The soundfile can also be mono or stereo.
 
-_filcod_ -- integer or character-string denoting the source soundfile name. An integer denotes the file _soundin_._filcod_ ; a character-string (in double quotes, spaces permitted) gives the filename itself, optionally a full pathname. If not a full path, the file is sought first in the current directory, then in that given by the environment variable [SSDIR](../../command/environment) (if defined) then by [SFDIR](../../command/environment). See also [soundin](../../opcodes/soundin).
+_filcod_ -- integer or character-string denoting the source soundfile name. An integer denotes the file _soundin_._filcod_ ; a character-string (in double quotes, spaces permitted) gives the filename itself, optionally a full pathname. If not a full path, the file is sought first in the current directory, then in that given by the environment variable [SSDIR](../../invoke/environment-variables) (if defined) then by [SFDIR](../../invoke/environment-variables). See also [soundin](../../opcodes/soundin).
 
 _skiptime_ -- begin reading at _skiptime_ seconds into the file.
 

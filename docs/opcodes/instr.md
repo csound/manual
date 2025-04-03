@@ -22,7 +22,7 @@ _i, j_, ... must be numbers or names, not expressions. Any positive integer is l
 
 Instruments can be defined in any order (but they will always be both initialized and performed in ascending instrument number order, with the exception of notes triggered by real time events that are initialized in the order of being received but still performed in ascending instrument number order).  Instrument blocks cannot be nested (i.e. one block cannot contain another).
 
-For more information on named instruments, see [Named Instruments](../../orch/namedInstruments).
+For more information on named instruments, see [Named Instruments](../../orch/instruments#named-instruments).
 
 ## Examples
 
@@ -34,7 +34,7 @@ Here is an example of the instr opcode. It uses the file [instr.csd](../../examp
 
 ## See also
 
-[Instrument and Opcode Block Statements](../../orch/iblock)
+[Instrument Statements](../../orch/instruments)
 
 ## Credits
 

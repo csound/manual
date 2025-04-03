@@ -34,4 +34,4 @@ The following opcodes can be used to design instruments that work interchangably
 
 > :memo: **MIDI Realtime Input/Ouput command line options**
 >
-> New [MIDI I/O flags](../../command) in Csound 5.02, can replace most uses of these MIDI interop opcodes, and make usage easier.
+> New [MIDI I/O flags](../../invoke/cs-options-by-category#-m-device-midi-devicedevice) in Csound 5.02, can replace most uses of these MIDI interop opcodes, and make usage easier.

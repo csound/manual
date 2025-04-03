@@ -28,7 +28,7 @@ Here is an example of the endin opcode. It uses the file [endin.csd](../../examp
 
 ## See also
 
-[Instrument and Opcode Block Statements](../../orch/iblock)
+[Instrument Statements](../../orch/instruments)
 
 ## Credits
 
