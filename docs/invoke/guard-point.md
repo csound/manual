@@ -1,8 +1,4 @@
-# **Glossary**
-
-### G
-
-**Guard Point**
+# **Guard Point in Tables**
 
 A guard point is the last position on a function table. If the length is, say 1024, the table will have 1024+1 (1025) points: the extra point is the guard point. 
 
