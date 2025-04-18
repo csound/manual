@@ -1,9 +1,5 @@
 # Csound options (flags) by category
 
-Listed below are the command line available in Csound7 organized by categories. Various platform implementations may not react the same way to different flags! You can view the command line flags organized alphabetically in [Csound options (flags) alphabetically](cs-options-alphabetically.md).
-
-The command line arguments are of 2 types: *flags* arguments (beginning with a &ldquo;-&rdquo;,&ldquo;--&rdquo; or &ldquo;-+&rdquo;) and *name* arguments (such as filenames). Certain flag arguments take a following name or numeric argument. Flags that start with &ldquo;--&rdquo; and &ldquo;-+&rdquo; usually take an argument themselves using &ldquo;=&rdquo;.
-
 ## Audio File Ouput
 
 #### -3, --format=24bit
