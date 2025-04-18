@@ -32,7 +32,7 @@ _kamp_ -- Amplitude of output.  Note: As these instruments are stochastic, this 
 
 ## Examples
 
-Here is an example of the guiro opcode. It uses the file [guiro.csd](../../examples/guiro.csd).
+Here is an example of the guiro opcode. It uses the file [guiro.csd](../examples/guiro.csd).
 
 ``` csound-orc title="Example of the guiro opcode." linenums="1"
 --8<-- "examples/guiro.csd"
@@ -40,7 +40,7 @@ Here is an example of the guiro opcode. It uses the file [guiro.csd](../../examp
 
 ## See Also
 
-[Models and Emulations](../../siggen/models)
+[Models and Emulations](../siggen/models.md)
 
 ## Credits
 

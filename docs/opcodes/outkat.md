@@ -26,7 +26,7 @@ It can scale the k-value floating-point argument according to the _kmin_ and _km
 
 ## Examples
 
-Here is an example of the outkat opcode. It uses the file [outkat.csd](../../examples/outkat.csd).
+Here is an example of the outkat opcode. It uses the file [outkat.csd](../examples/outkat.csd).
 
 ``` csound-csd title="Example of the outkat opcode." linenums="1"
 --8<-- "examples/outkat.csd"
@@ -34,7 +34,7 @@ Here is an example of the outkat opcode. It uses the file [outkat.csd](../../exa
 
 ## See also
 
-[MIDI Message Output](../../midi/output)
+[MIDI Message Output](../midi/output.md)
 
 ## Credits
 

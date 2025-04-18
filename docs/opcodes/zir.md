@@ -20,7 +20,7 @@ _zir_ reads the signal at _indx_ location in zk space.
 
 ## Examples
 
-Here is an example of the zir opcode. It uses the file [zir.csd](../../examples/zir.csd).
+Here is an example of the zir opcode. It uses the file [zir.csd](../examples/zir.csd).
 
 ``` csound-csd title="Example of the zir opcode." linenums="1"
 --8<-- "examples/zir.csd"
@@ -28,7 +28,7 @@ Here is an example of the zir opcode. It uses the file [zir.csd](../../examples/
 
 ## See also
 
-[Zak Patch System](../../zak/top)
+[Zak Patch System](../zak/top.md)
 
 ## Credits
 

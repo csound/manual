@@ -5,7 +5,7 @@ category:Orchestra Syntax:Macros
 # &num;undef
 Un-defines a macro.
 
-Macros are textual replacements which are made in the orchestra as it is being read.  The [orchestra macro system](../../orch/macros) in Csound is a very simple one, and uses the characters &num; and &dollar; to define and call macros. This can save typing, and can lead to a coherent structure and consistent style.  This is similar to, but independent of, the [macro system in the score language](../../score/macros).
+Macros are textual replacements which are made in the orchestra as it is being read.  The [orchestra macro system](../orch/macros.md) in Csound is a very simple one, and uses the characters &num; and &dollar; to define and call macros. This can save typing, and can lead to a coherent structure and consistent style.  This is similar to, but independent of, the [macro system in the score language](../score/macros.md).
 
 _&num;undef NAME_ -- undefines a macro name. If a macro is no longer required, it can be undefined with _&num;undef NAME_.
 
@@ -20,7 +20,7 @@ Some care is needed with textual replacement macros, as they can sometimes do st
 
 ## See also
 
-[Orchestra Macros](../../orch/macros)
+[Orchestra Macros](../orch/macros.md)
 
 ## Credits
 

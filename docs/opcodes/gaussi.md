@@ -31,7 +31,7 @@ _xcps_ -- the frequency which new random numbers are generated.
 
 ## Examples
 
-Here is an example of the gaussi opcode. It uses the file [gaussi.csd](../../examples/gaussi.csd).
+Here is an example of the gaussi opcode. It uses the file [gaussi.csd](../examples/gaussi.csd).
 
 ``` csound-csd title="Example of the gaussi opcode." linenums="1"
 --8<-- "examples/gaussi.csd"
@@ -39,7 +39,7 @@ Here is an example of the gaussi opcode. It uses the file [gaussi.csd](../../exa
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
 ## Credits
 

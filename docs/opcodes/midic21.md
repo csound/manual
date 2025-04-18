@@ -39,11 +39,11 @@ _midic21_ (i- and k-rate 21 bit MIDI control) allows a floating-point 21-bit MID
 
 > :memo: **Note**
 >
-> Please note that the _midic_ family of opcodes are designed for MIDI triggered events, and do not require a channel number since they will respond to the same channel as the one that triggered the instrument (see [massign](../../opcodes/massign)). However they will crash if called from a score driven event.
+> Please note that the _midic_ family of opcodes are designed for MIDI triggered events, and do not require a channel number since they will respond to the same channel as the one that triggered the instrument (see [massign](../opcodes/massign.md)). However they will crash if called from a score driven event.
 
 ## Examples
 
-Here is an example of the midic21 opcode. It uses the file [midic21.csd](../../examples/midic21.csd).
+Here is an example of the midic21 opcode. It uses the file [midic21.csd](../examples/midic21.csd).
 
 ``` csound-csd title="Example of the midic21 opcode." linenums="1"
 --8<-- "examples/midic21.csd"
@@ -51,7 +51,7 @@ Here is an example of the midic21 opcode. It uses the file [midic21.csd](../../e
 
 ## See also
 
-[MIDI input and Initialization](../../midi/input)
+[MIDI input and Initialization](../midi/input.md)
 
 ## Credits
 

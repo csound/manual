@@ -35,7 +35,7 @@ This opcode allows four generated control signal values to be saved in a named e
 
 ## Examples
 
-Here is an example of the dumpk4 opcode. It uses the file [dumpk4.csd](../../examples/dumpk4.csd). Note that the example must be run from a directory for which the
+Here is an example of the dumpk4 opcode. It uses the file [dumpk4.csd](../examples/dumpk4.csd). Note that the example must be run from a directory for which the
 user has write access.
 
 ``` csound-csd title="Example of the dumpk4 opcode." linenums="1"
@@ -66,7 +66,7 @@ kcf = 497.430100, kq = 13.605500, kdb = -21.586600, kpan = 0.179200
 
 ## See also
 
-[File Input and Output](../../sigio/fileio)
+[File Input and Output](../sigio/fileio.md)
 
 ## Credits
 

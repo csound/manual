@@ -20,7 +20,7 @@ _knum_ -- the number of the button. If it does not exist, it is made on-screen a
 
 ## Examples
 
-Here is a simple example of the checkbox opcode. It uses the file [checkbox.csd](../../examples/checkbox.csd).
+Here is a simple example of the checkbox opcode. It uses the file [checkbox.csd](../examples/checkbox.csd).
 
 ``` csound-csd title="Simple example of the checkbox opcode." linenums="1"
 --8<-- "examples/checkbox.csd"
@@ -28,7 +28,7 @@ Here is a simple example of the checkbox opcode. It uses the file [checkbox.csd]
 
 ## See also
 
-[Sensing and Control: TCL/TK widgets](../../control/sensing)
+[Sensing and Control: TCL/TK widgets](../control/sensing.md)
 
 ## Credits
 

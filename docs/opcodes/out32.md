@@ -19,7 +19,7 @@ _out32_ outputs 32 channels of audio.
 
 ## See also
 
-[Signal Output](../../sigio/output)
+[Signal Output](../sigio/output.md)
 
 ## Credits
 

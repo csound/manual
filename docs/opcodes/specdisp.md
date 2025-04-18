@@ -36,4 +36,4 @@ contin:
 
 ## See Also
 
-[specsum](../../opcodes/specsum)
+[specsum](../opcodes/specsum.md)

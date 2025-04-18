@@ -23,7 +23,7 @@ _iscl_ -- output scale. The generated random numbers are in the range -iscl to i
 _irpow_ -- controls the distribution of random numbers. If irpow is positive, the random distribution (x is in the range -1 to 1) is _abs(x) &circ; ((1 / irpow) - 1)_; for negative irpow values, it is _(1 - abs(x)) &circ; ((-1 / irpow) - 1)_. Setting _irpow_ to -1, 0, or 1 will result in uniform distribution (this is also faster to calculate).
 
 <figure markdown="span">
-![[A graph of distributions for different values of irpow.]](../../images/rnd31_rand.png)
+![[A graph of distributions for different values of irpow.]](../images/rnd31_rand.png)
 <figcaption>A graph of distributions for different values of irpow.</figcaption>
 </figure>
 
@@ -49,13 +49,13 @@ _krpow_ -- controls the distribution of random numbers. It is the same as _irpow
 
 ## Examples
 
-Here is an example of the rnd31 opcode at a-rate. It uses the file [rnd31.csd](../../examples/rnd31.csd).
+Here is an example of the rnd31 opcode at a-rate. It uses the file [rnd31.csd](../examples/rnd31.csd).
 
 ``` csound-orc title="An example of the rnd31 opcode at a-rate." linenums="1"
 --8<-- "examples/rnd31.csd"
 ```
 
-Here is an example of the rnd31 opcode at k-rate. It uses the file [rnd31_krate.csd](../../examples/rnd31_krate.csd).
+Here is an example of the rnd31 opcode at k-rate. It uses the file [rnd31_krate.csd](../examples/rnd31_krate.csd).
 
 ``` csound-orc title="An example of the rnd31 opcode at k-rate." linenums="1"
 --8<-- "examples/rnd31_krate.csd"
@@ -69,7 +69,7 @@ k1=-0.274665
 k1=0.403933
 ```
 
-Here is an example of the rnd31 opcode that uses the number 7 as a seed value. It uses the file [rnd31_seed7.csd](../../examples/rnd31_seed7.csd).
+Here is an example of the rnd31 opcode that uses the number 7 as a seed value. It uses the file [rnd31_seed7.csd](../examples/rnd31_seed7.csd).
 
 ``` csound-orc title="An example of the rnd31 opcode that uses the number 7 as a seed value." linenums="1"
 --8<-- "examples/rnd31_seed7.csd"
@@ -83,7 +83,7 @@ instr 1:  i2 = -0.761
 instr 1:  i3 = 0.677
 ```
 
-Here is an example of the rnd31 opcode that uses the current time as a seed value. It uses the file [rnd31_time.csd](../../examples/rnd31_time.csd).
+Here is an example of the rnd31 opcode that uses the current time as a seed value. It uses the file [rnd31_time.csd](../examples/rnd31_time.csd).
 
 ``` csound-orc title="An example of the rnd31 opcode that uses the current time as a seed value." linenums="1"
 --8<-- "examples/rnd31_time.csd"
@@ -99,7 +99,7 @@ instr 1:  i3 = -0.358
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
 ## Credits
 

@@ -5,7 +5,7 @@ category:Signal Generators:Linear and Exponential Generators
 # expsegba
 An exponential segment generator operating at a-rate with absolute times.
 
-This unit is almost identical to [expsegb](../../opcodes/expsegb), but more precise when defining segments with very short durations (i.e., in a percussive attack phase) at audio rate.
+This unit is almost identical to [expsegb](../opcodes/expsegb.md), but more precise when defining segments with very short durations (i.e., in a percussive attack phase) at audio rate.
 
 ## Syntax
 ``` csound-orc
@@ -29,7 +29,7 @@ This unit generate audio signals whose values can pass through two or more speci
 
 ## Examples
 
-Here is an example of the expsegba opcode. It uses the file [expsegba.csd](../../examples/expsegba.csd).
+Here is an example of the expsegba opcode. It uses the file [expsegba.csd](../examples/expsegba.csd).
 
 ``` csound-orc title="Example of the expsegba opcode." linenums="1"
 --8<-- "examples/expsegba.csd"
@@ -37,7 +37,7 @@ Here is an example of the expsegba opcode. It uses the file [expsegba.csd](../..
 
 ## See also
 
-[Linear and Exponential Generators](../../siggen/lineexp)
+[Linear and Exponential Generators](../siggen/lineexp.md)
 
 ## Credits
 

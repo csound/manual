@@ -28,7 +28,7 @@ To run _zakinit_ only once, put it outside any instrument definition, in the orc
 
 ## Examples
 
-Here is an example of the zakinit opcode. It uses the file [zakinit.csd](../../examples/zakinit.csd).
+Here is an example of the zakinit opcode. It uses the file [zakinit.csd](../examples/zakinit.csd).
 
 ``` csound-csd title="Example of the zakinit opcode." linenums="1"
 --8<-- "examples/zakinit.csd"
@@ -36,7 +36,7 @@ Here is an example of the zakinit opcode. It uses the file [zakinit.csd](../../e
 
 ## See also
 
-[Zak Patch System](../../zak/top)
+[Zak Patch System](../zak/top.md)
 
 ## Credits
 

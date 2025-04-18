@@ -2,17 +2,17 @@
 
 _OSC_ enables interaction between different audio processes, and in particular between Csound and other synthesis engines.
 
-Multiple OSC servers can be set up, separately or together with the Csound ([UDP server](../../overview/udp-server)).
+Multiple OSC servers can be set up, separately or together with the Csound ([UDP server](../overview/udp-server.md)).
 
 The following opcodes are available:
 
-* [OSCinit](../../opcodes/OSCinit) - Start an OSC listener thread.
-* [OSClisten](../../opcodes/OSClisten) - Receive OSC messages.
-* [OSCsend](../../opcodes/OSCsend) - Send an OSC message.
-* [OSCinitM](../../opcodes/OSCinitM) - Start to list for multicast OSC messages.
-* [OSCraw](../../opcodes/OSCraw) - Listen for all OSC messages.
-* [OSCcount](../../opcodes/OSCcount) - Count of OSC messages currently unread.
-* [OSCbundle](../../opcodes/OSCbundle) - Sends data by packing messages in a bundle.
+* [OSCinit](../opcodes/OSCinit.md) - Start an OSC listener thread.
+* [OSClisten](../opcodes/OSClisten.md) - Receive OSC messages.
+* [OSCsend](../opcodes/OSCsend.md) - Send an OSC message.
+* [OSCinitM](../opcodes/OSCinitM.md) - Start to list for multicast OSC messages.
+* [OSCraw](../opcodes/OSCraw.md) - Listen for all OSC messages.
+* [OSCcount](../opcodes/OSCcount.md) - Count of OSC messages currently unread.
+* [OSCbundle](../opcodes/OSCbundle.md) - Sends data by packing messages in a bundle.
 
 ## Credits
 

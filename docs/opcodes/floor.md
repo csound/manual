@@ -15,7 +15,7 @@ where the argument within the parentheses may be an expression. Value converters
 
 ## Examples
 
-Here is an example of the floor opcode. It uses the file [floor.csd](../../examples/floor.csd).
+Here is an example of the floor opcode. It uses the file [floor.csd](../examples/floor.csd).
 
 ``` csound-csd title="Example of the floor opcode." linenums="1"
 --8<-- "examples/floor.csd"
@@ -36,13 +36,13 @@ instr 1:  inumber = 9.000  idiv = 9.000  ifl = 1.000
 instr 1:  inumber = 9.000  idiv = 10.000  ifl = 0.000
 ```
 
-Here is another example of the floor opcode. It uses the file [floor2.csd](../../examples/floor2.csd).
+Here is another example of the floor opcode. It uses the file [floor2.csd](../examples/floor2.csd).
 
 ``` csound-csd linenums="1"
 --8<-- "examples/floor2.csd"
 ```
 
-Here is an example for the rounding-group, comparing the different rounding opcodes. It uses the file [rounding-group.csd](../../examples/rounding-group.csd).
+Here is an example for the rounding-group, comparing the different rounding opcodes. It uses the file [rounding-group.csd](../examples/rounding-group.csd).
 
 ``` csound-csd title="Example of the rounding group." linenums="1"
 --8<-- "examples/rounding-group.csd"
@@ -50,7 +50,7 @@ Here is an example for the rounding-group, comparing the different rounding opco
 
 ## See also
 
-[Mathematical Functions](../../math/mathfunc)
+[Mathematical Functions](../math/mathfunc.md)
 
 ## Credits
 

@@ -35,7 +35,7 @@ Calling _setctrl_ will create a new slider on the screen. There is no theoretica
 
 ## Examples
 
-Here is an example of the setctrl opcode. It uses the file [setctrl.csd](../../examples/setctrl.csd).
+Here is an example of the setctrl opcode. It uses the file [setctrl.csd](../examples/setctrl.csd).
 
 ``` csound-csd title="Example of the setctrl opcode." linenums="1"
 --8<-- "examples/setctrl.csd"
@@ -51,7 +51,7 @@ i1    43.00000
 
 ## See also
 
-[Sensing and Control: TCL/TK widgets](../../control/sensing)
+[Sensing and Control: TCL/TK widgets](../control/sensing.md)
 
 ## Credits
 

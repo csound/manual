@@ -20,7 +20,7 @@ Get the note number of the current MIDI event, expressed in octave-point-decimal
 
 ## Examples
 
-Here is an example of the octmidi opcode. It uses the file [octmidi.csd](../../examples/octmidi.csd).
+Here is an example of the octmidi opcode. It uses the file [octmidi.csd](../examples/octmidi.csd).
 
 ``` csound-csd title="Example of the octmidi opcode." linenums="1"
 --8<-- "examples/octmidi.csd"
@@ -28,7 +28,7 @@ Here is an example of the octmidi opcode. It uses the file [octmidi.csd](../../e
 
 ## See also
 
-[Midi Converters](../../midi/convert)
+[Midi Converters](../midi/convert.md)
 
 ## Credits
 

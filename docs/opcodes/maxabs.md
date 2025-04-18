@@ -21,7 +21,7 @@ _kin1, kin2, ..._ --  k-rate signals to be compared.
 
 ## Examples
 
-Here is an example of the maxabs opcode. It uses the file [maxabs.csd](../../examples/maxabs.csd).
+Here is an example of the maxabs opcode. It uses the file [maxabs.csd](../examples/maxabs.csd).
 
 ``` csound-csd title="Example of the maxabs opcode." linenums="1"
 --8<-- "examples/maxabs.csd"
@@ -29,7 +29,7 @@ Here is an example of the maxabs opcode. It uses the file [maxabs.csd](../../exa
 
 ## See also
 
-[Comparators and Accumulators](../../sigmod/compaccum)
+[Comparators and Accumulators](../sigmod/compaccum.md)
 
 ## Credits
 

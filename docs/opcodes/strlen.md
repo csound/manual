@@ -12,7 +12,7 @@ ilen strlen Sstr
 
 ## See Also
 
-[String Manipulation Opcodes](../../strings/manipulate)
+[String Manipulation Opcodes](../strings/manipulate.md)
 
 ## Credits
 

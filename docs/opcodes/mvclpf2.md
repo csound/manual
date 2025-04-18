@@ -26,7 +26,7 @@ _xres_  -- resonance, limited to the interval [0,1].
 
 ## Examples
 
-Here is an example of the mvclpf2 opcode. It uses the file [mvclpf2.csd](../../examples/mvclpf2.csd).
+Here is an example of the mvclpf2 opcode. It uses the file [mvclpf2.csd](../examples/mvclpf2.csd).
 
 ``` csound-csd title="Example of the mvclpf2 opcode." linenums="1"
 --8<-- "examples/mvclpf2.csd"
@@ -34,7 +34,7 @@ Here is an example of the mvclpf2 opcode. It uses the file [mvclpf2.csd](../../e
 
 ## See also
 
-[Standard Filters: Resonant Low-pass filters](../../sigmod/standard)
+[Standard Filters: Resonant Low-pass filters](../sigmod/standard.md)
 
 ## Credits
 

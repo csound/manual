@@ -24,7 +24,7 @@ These are _operators_ not _opcodes_. Therefore, they can be used within orchestr
 
 ## Examples
 
-Here is an example of the &lt;= operator. It uses the file [lessequal.csd](../../examples/lessequal.csd).
+Here is an example of the &lt;= operator. It uses the file [lessequal.csd](../examples/lessequal.csd).
 
 ``` csound-csd title="Example of the &lt;= operator." linenums="1"
 --8<-- "examples/lessequal.csd"
@@ -45,4 +45,4 @@ random number = 0.676154, result = 2.000000
 
 ## See also
 
-[Conditional Values](../../control/conditional)
+[Conditional Values](../control/conditional.md)

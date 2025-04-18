@@ -18,7 +18,7 @@ Returns a random number in the bipolar range -_x_ to _x_. _rnd_ and _birnd_ obta
 
 ## Examples
 
-Here is an example of the birnd opcode. It uses the file [birnd.csd](../../examples/birnd.csd).
+Here is an example of the birnd opcode. It uses the file [birnd.csd](../examples/birnd.csd).
 
 ``` csound-orc title="Example of the birnd opcode." linenums="1"
 --8<-- "examples/birnd.csd"
@@ -38,7 +38,7 @@ instr 1:  i1 = 0.43364
 
 ## See also
 
-[Random Functions](../../math/rndfunc)
+[Random Functions](../math/rndfunc.md)
 
 ## Credits
 

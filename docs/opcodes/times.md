@@ -21,7 +21,7 @@ _times_ can also operate at the start of the instance of the instrument. It prod
 
 ## Examples
 
-Here is an example of the times opcode. It uses the file [times_complex.csd](../../examples/times_complex.csd).
+Here is an example of the times opcode. It uses the file [times_complex.csd](../examples/times_complex.csd).
 
 ``` csound-csd title="Example of the times opcode." linenums="1"
 --8<-- "examples/times_complex.csd"
@@ -44,7 +44,7 @@ instance = 5, start = 1.835828, duration = 1.777097
 
 ## See also
 
-[Time Reading](../../control/timeread)
+[Time Reading](../control/timeread.md)
 
 ## Credits
 

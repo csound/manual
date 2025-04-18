@@ -19,10 +19,10 @@ _ktab_ --  f-table for destination.
 
 _koffset_ --  offset into the f-table (defaults to 0).
 
-## Example
+## Examples
 
 Here is an example of the copya2ftab opcode. It uses the file
-[copya2ftab.csd](../../examples/copya2ftab.csd).
+[copya2ftab.csd](../examples/copya2ftab.csd).
 
 ``` csound-csd title="Example of the copya2ftab opcode." linenums="1"
 --8<-- "examples/copya2ftab.csd"
@@ -30,7 +30,7 @@ Here is an example of the copya2ftab opcode. It uses the file
 
 ## See also
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

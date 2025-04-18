@@ -18,7 +18,7 @@ _kin1[], kin2[]_ -- input arrays containing the complex inputs.
 
 ## Examples
 
-Here is an example of the cmplxprod opcode. It uses the file [cmplxprod.csd](../../examples/cmplxprod.csd).
+Here is an example of the cmplxprod opcode. It uses the file [cmplxprod.csd](../examples/cmplxprod.csd).
 
 ``` csound-csd title="Example of the cmplxprod opcode." linenums="1"
 --8<-- "examples/cmplxprod.csd"
@@ -26,11 +26,11 @@ Here is an example of the cmplxprod opcode. It uses the file [cmplxprod.csd](../
 
 ## See Also
 
-[Vectorial opcodes](../../vectorial/top)
+[Vectorial opcodes](../vectorial/top.md)
 
-[array opcodes](../../math/array)
+[array opcodes](../math/array.md)
 
-[Array-based spectral opcodes](../../spectral/arrays)
+[Array-based spectral opcodes](../spectral/arrays.md)
 
 ## Credits
 

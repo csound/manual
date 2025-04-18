@@ -73,7 +73,7 @@ And again a complaint about the invalid score file:
 cannot open scorefile /tmp/csound-NbMTfJ.sco
 ```
 
-As an alternative to the classical Csound score, [CsBeats](../../csbeats) is included with Csound. This is a domain specific language tailored to the concepts of beats, rhythm and standard western notation. To use *Csbeat*, specify “csbeats” as the CsScore bin option in a Csound unified score file.
+As an alternative to the classical Csound score, [CsBeats](../csbeats.md) is included with Csound. This is a domain specific language tailored to the concepts of beats, rhythm and standard western notation. To use *Csbeat*, specify “csbeats” as the CsScore bin option in a Csound unified score file.
 
 ``` csound-csd
 <CsScore bin="csbeats">

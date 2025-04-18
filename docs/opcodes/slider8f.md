@@ -37,7 +37,7 @@ When no function table translation is required, set the _ifnN_ value to 0, else 
 
 _slider8f_ allows a bank of 8 different MIDI control message numbers. It filters the signal before output. This eliminates discontinuities due to the low resolution of the MIDI (7 bit). The cutoff frequency can be set separately for each controller (suggested range: .1 to 5 Hz).
 
-As the input and output arguments are many, you can split the line using '\' (backslash) character (new in 3.47 version) to improve the readability. Using these opcodes is considerably more efficient than using the separate ones ([ctrl7](../../opcodes/ctrl7) and [tonek](../../opcodes/tonek)) when more controllers are required.
+As the input and output arguments are many, you can split the line using '\' (backslash) character (new in 3.47 version) to improve the readability. Using these opcodes is considerably more efficient than using the separate ones ([ctrl7](../opcodes/ctrl7.md) and [tonek](../opcodes/tonek.md)) when more controllers are required.
 
 > :warning: **Warning**
 >
@@ -45,7 +45,7 @@ As the input and output arguments are many, you can split the line using '\' (ba
 
 ## See Also
 
-[Slider Banks](../../midi/sliderbk)
+[Slider Banks](../midi/sliderbk.md)
 
 ## Credits
 

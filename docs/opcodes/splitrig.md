@@ -64,7 +64,7 @@ This opcode can be useful in several situations, for example to implement a vu-m
 
 ## Examples
 
-Here is an example of splitrig opcode. It uses the file [splitrig.csd](../../examples/splitrig.csd).
+Here is an example of splitrig opcode. It uses the file [splitrig.csd](../examples/splitrig.csd).
 
 ``` csound-csd title="Example of the splitrig opcode." linenums="1"
 --8<-- "examples/splitrig.csd"
@@ -72,7 +72,7 @@ Here is an example of splitrig opcode. It uses the file [splitrig.csd](../../exa
 
 ## See also
 
-[Sensing and Control: Tempo and Sequencing](../../control/sensing)
+[Sensing and Control: Tempo and Sequencing](../control/sensing.md)
 
 ## Credits
 

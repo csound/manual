@@ -24,7 +24,7 @@ These are _operators_ not _opcodes_. Therefore, they can be used within orchestr
 
 ## Examples
 
-Here is an example of the &lt; operator. It uses the file [lessthan.csd](../../examples/lessthan.csd).
+Here is an example of the &lt; operator. It uses the file [lessthan.csd](../examples/lessthan.csd).
 
 ``` csound-csd title="Example of the &lt; operator." linenums="1"
 --8<-- "examples/lessthan.csd"
@@ -39,4 +39,4 @@ ipitch = 800.00
 
 ## See also
 
-[Conditional Values](../../control/conditional)
+[Conditional Values](../control/conditional.md)

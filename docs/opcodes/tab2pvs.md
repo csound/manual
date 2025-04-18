@@ -39,9 +39,9 @@ aout pvsynth fsig1
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
-[Array-based spectral opcodes](../../spectral/arrays)
+[Array-based spectral opcodes](../spectral/arrays.md)
 
 ## Credits
 

@@ -22,7 +22,7 @@ The value returned by the _octave_ function is a factor. You can multiply a freq
 
 ## Examples
 
-Here is an example of the octave opcode. It uses the file [octave.csd](../../examples/octave.csd).
+Here is an example of the octave opcode. It uses the file [octave.csd](../examples/octave.csd).
 
 ``` csound-csd title="Example of the octave opcode." linenums="1"
 --8<-- "examples/octave.csd"
@@ -45,7 +45,7 @@ i1   440.00000
 
 ## See also
 
-[Pitch Converters: Functions](../../pitch/funcs)
+[Pitch Converters: Functions](../pitch/funcs.md)
 
 ## Credits
 

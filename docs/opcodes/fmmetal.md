@@ -20,8 +20,8 @@ All these opcodes take 5 tables for initialization. The first 4 are the basic in
 The initial waves should be:
 
 * _ifn1_ -- sine wave
-* _ifn2_ -- [twopeaks.aiff](../../examples/twopeaks.aiff)
-* _ifn3_ -- [twopeaks.aiff](../../examples/twopeaks.aiff)
+* _ifn2_ -- [twopeaks.aiff](../examples/twopeaks.aiff)
+* _ifn3_ -- [twopeaks.aiff](../examples/twopeaks.aiff)
 * _ifn4_ -- sine wave
 
 > :memo: **Note**
@@ -46,7 +46,7 @@ _kvrate_ -- Vibrator rate
 
 ## Examples
 
-Here is an example of the fmmetal opcode. It uses the file [fmmetal.csd](../../examples/fmmetal.csd), and [twopeaks.aiff](../../examples/twopeaks.aiff).
+Here is an example of the fmmetal opcode. It uses the file [fmmetal.csd](../examples/fmmetal.csd), and [twopeaks.aiff](../examples/twopeaks.aiff).
 
 ``` csound-orc title="Example of the fmmetal opcode." linenums="1"
 --8<-- "examples/fmmetal.csd"
@@ -54,7 +54,7 @@ Here is an example of the fmmetal opcode. It uses the file [fmmetal.csd](../../e
 
 ## See Also
 
-[FM Synthesis](../../siggen/fmsynth)
+[FM Synthesis](../siggen/fmsynth.md)
 
 More information about frequency modulation on Wikipedia: [http://en.wikipedia.org/wiki/Frequency_modulation_synthesis](http://en.wikipedia.org/wiki/Frequency_modulation_synthesis)
 

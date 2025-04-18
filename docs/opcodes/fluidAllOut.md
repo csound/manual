@@ -24,14 +24,14 @@ In this implementation, SoundFont effects such as chorus or reverb are used if a
 
 ## Examples
 
-Here is an example of the fluidAllOut opcodes. It uses the file [fluidAllOut.csd](../../examples/fluidAllOut.csd).
+Here is an example of the fluidAllOut opcodes. It uses the file [fluidAllOut.csd](../examples/fluidAllOut.csd).
 ``` csound-csd title="Example of the fluidAllOut opcode." linenums="1"
 --8<-- "examples/fluidAllOut.csd"
 ```
 
 ## See also
 
-[Soundfonts](../../siggen/sample)
+[Soundfonts](../siggen/sample.md)
 
 More information on soundfonts is in the Floss Manuals: [https://flossmanual.csound.com/midi/reading-midi-files](https://flossmanual.csound.com/midi/reading-midi-files)
 

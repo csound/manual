@@ -20,7 +20,7 @@ _kout_ -- Scaled output.
 
 ## Examples
 
-Here is an example of the gainslider opcode. It uses the file [gainslider.csd](../../examples/gainslider.csd).
+Here is an example of the gainslider opcode. It uses the file [gainslider.csd](../examples/gainslider.csd).
 
 ``` csound-orc title="Example of the gainslider opcode." linenums="1"
 --8<-- "examples/gainslider.csd"
@@ -28,7 +28,7 @@ Here is an example of the gainslider opcode. It uses the file [gainslider.csd](.
 
 ## See also
 
-[Linear and Exponential Generators](../../siggen/lineexp)
+[Linear and Exponential Generators](../siggen/lineexp.md)
 
 ## Credits
 

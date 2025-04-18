@@ -34,7 +34,7 @@ _kimax_ -- Optional; Maximum of the incoming value range, defaulting to one.
 
 ## Examples
 
-Here is an example of the scale2 opcode. It uses the file [scale2.csd](../../examples/scale2.csd).
+Here is an example of the scale2 opcode. It uses the file [scale2.csd](../examples/scale2.csd).
 
 ``` csound-orc title="Example of the scale2 opcode." linenums="1"
 --8<-- "examples/scale2.csd"
@@ -42,7 +42,7 @@ Here is an example of the scale2 opcode. It uses the file [scale2.csd](../../exa
 
 ## See also
 
-[Linear and Exponential Generators](../../siggen/lineexp)
+[Linear and Exponential Generators](../siggen/lineexp.md)
 
 ## Credits
 

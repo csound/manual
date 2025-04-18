@@ -26,7 +26,7 @@ _kin_ -- A k-rate array containing sequential frames of audio.
 
 ## Examples
 
-Here is a simple example of the olabuffer opcode. It uses the file [framebuffer.csd](../../examples/framebuffer.csd).
+Here is a simple example of the olabuffer opcode. It uses the file [framebuffer.csd](../examples/framebuffer.csd).
 
 ``` csound-csd title="Example of the olabuffer opcode." linenums="1"
 --8<-- "examples/framebuffer.csd"
@@ -34,7 +34,7 @@ Here is a simple example of the olabuffer opcode. It uses the file [framebuffer.
 
 ## See Also
 
-[Array-based spectral opcodes](../../spectral/arrays)
+[Array-based spectral opcodes](../spectral/arrays.md)
 
 ## Credits
 

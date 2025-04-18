@@ -2,16 +2,16 @@
 
 ## The FM synthesis opcodes are:
 
-* [foscil](../../opcodes/foscil)
-* [foscili](../../opcodes/foscili)
-* [crossfm](../../opcodes/crossfm), [crossfmi](../../opcodes/crossfm), [crosspm](../../opcodes/crossfm), [crosspmi](../../opcodes/crossfm), [crossfmpm](../../opcodes/crossfm), and [crossfmpmi](../../opcodes/crossfm).
+* [foscil](../opcodes/foscil.md)
+* [foscili](../opcodes/foscili.md)
+* [crossfm](../opcodes/crossfm.md), [crossfmi](../opcodes/crossfm.md), [crosspm](../opcodes/crossfm.md), [crosspmi](../opcodes/crossfm.md), [crossfmpm](../opcodes/crossfm.md), and [crossfmpmi](../opcodes/crossfm.md).
 
 ## FM instrument models
 
-* [fmb3](../../opcodes/fmb3)
-* [fmbell](../../opcodes/fmbell)
-* [fmmetal](../../opcodes/fmmetal)
-* [fmpercfl](../../opcodes/fmpercfl)
-* [fmrhode](../../opcodes/fmrhode)
-* [fmvoice](../../opcodes/fmvoice)
-* [fmwurlie](../../opcodes/fmwurlie)
+* [fmb3](../opcodes/fmb3.md)
+* [fmbell](../opcodes/fmbell.md)
+* [fmmetal](../opcodes/fmmetal.md)
+* [fmpercfl](../opcodes/fmpercfl.md)
+* [fmrhode](../opcodes/fmrhode.md)
+* [fmvoice](../opcodes/fmvoice.md)
+* [fmwurlie](../opcodes/fmwurlie.md)

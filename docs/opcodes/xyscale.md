@@ -37,13 +37,13 @@ Given 4 values placed at the corners of a square, find the interpolated value at
 
 ## Examples
 
-Here is an example of the xyscale opcode. It uses the file [xyscale.csd](../../examples/xyscale.csd).
+Here is an example of the xyscale opcode. It uses the file [xyscale.csd](../examples/xyscale.csd).
 
 ``` csound-orc title="Example of the xyscale opcode." linenums="1"
 --8<-- "examples/xyscale.csd"
 ```
 
-Here is another example of the xyscale opcode. It uses the file [xyscale-FLTK.csd](../../examples/xyscale-FLTK.csd).
+Here is another example of the xyscale opcode. It uses the file [xyscale-FLTK.csd](../examples/xyscale-FLTK.csd).
 
 ``` csound-orc title="Advanced example of the xyscale opcode." linenums="1"
 --8<-- "examples/xyscale-FLTK.csd"
@@ -51,7 +51,7 @@ Here is another example of the xyscale opcode. It uses the file [xyscale-FLTK.cs
 
 ## See also
 
-[Linear and Exponential Generators](../../siggen/lineexp)
+[Linear and Exponential Generators](../siggen/lineexp.md)
 
 ## Credits
 

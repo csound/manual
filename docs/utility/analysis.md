@@ -2,8 +2,8 @@
 
 The following utilities exist for Soundfile analysis:
 
-* [ATSA](../atsa): ATS analysis for use with the Csound [ATS Resynthesis](../../spectral/ATS) opcodes.
-* [CVANAL](../cvanal): Impulse Response Fourier Analysis for [convolve](../../opcodes/convolve) operator.
-* [HETRO](../hetro): Heterodyne analysis for the Csound [adsyn](../../opcodes/adsyn) generator.
-* [LPANAL](../lpanal): Linear predicitive coding analysis for the Csound [Linear Predictive Coding (LPC) Resynthesis](../../spectral/lpcresyn) opcodes.
-* [PVANAL](../pvanal): Phase vocoder analysis for the Csound [pvoc](../../opcodes/pvoc) generator.
+* [ATSA](atsa.md): ATS analysis for use with the Csound [ATS Resynthesis](../spectral/ATS.md) opcodes.
+* [CVANAL](cvanal.md): Impulse Response Fourier Analysis for [convolve](../opcodes/convolve.md) operator.
+* [HETRO](hetro.md): Heterodyne analysis for the Csound [adsyn](../opcodes/adsyn.md) generator.
+* [LPANAL](lpanal.md): Linear predicitive coding analysis for the Csound [Linear Predictive Coding (LPC) Resynthesis](../spectral/lpcresyn.md) opcodes.
+* [PVANAL](pvanal.md): Phase vocoder analysis for the Csound [pvoc](../opcodes/pvoc.md) generator.

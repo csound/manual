@@ -14,7 +14,7 @@ Sdst strcatk Ssrc1, Ssrc2
 
 ## Examples
 
-Here is an example of the strcatk opcode. It uses the file [strcatk.csd](../../examples/strcatk.csd).
+Here is an example of the strcatk opcode. It uses the file [strcatk.csd](../examples/strcatk.csd).
 
 ``` csound-csd title="Example of the strcatk opcode." linenums="1"
 --8<-- "examples/strcatk.csd"
@@ -38,7 +38,7 @@ Its output should include lines like this:
 
 ## See Also
 
-[String Manipulation Opcodes](../../strings/manipulate)
+[String Manipulation Opcodes](../strings/manipulate.md)
 
 ## Credits
 

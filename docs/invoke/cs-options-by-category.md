@@ -1,6 +1,6 @@
 # Csound options (flags) by category
 
-Listed below are the command line available in Csound7 organized by categories. Various platform implementations may not react the same way to different flags! You can view the command line flags organized alphabetically in [Csound options (flags) alphabetically](../cs-options-alphabetically).
+Listed below are the command line available in Csound7 organized by categories. Various platform implementations may not react the same way to different flags! You can view the command line flags organized alphabetically in [Csound options (flags) alphabetically](cs-options-alphabetically.md).
 
 The command line arguments are of 2 types: *flags* arguments (beginning with a &ldquo;-&rdquo;,&ldquo;--&rdquo; or &ldquo;-+&rdquo;) and *name* arguments (such as filenames). Certain flag arguments take a following name or numeric argument. Flags that start with &ldquo;--&rdquo; and &ldquo;-+&rdquo; usually take an argument themselves using &ldquo;=&rdquo;.
 
@@ -22,7 +22,7 @@ Use a-law audio samples.
 Use 8-bit signed character audio samples.
 
 #### -f, --format=float
-Use single-format float audio samples (not playable on some systems, but can be read by [-i](#-i-file-inputfile), [soundin](../../opcodes/soundin) and [GEN01](../../scoregens/gen01))
+Use single-format float audio samples (not playable on some systems, but can be read by [-i](#-i-file-inputfile), [soundin](../opcodes/soundin.md) and [GEN01](../scoregens/gen01.md))
 
 #### --format=*type*
 Set the audio file output format to one of the formats available in libsndfile.  At present the list is aiff, au, avr, caf, flac, htk, ircam, mat4, mat5, MPC, nist, ogg, paf, pvf, raw, sd2, sds, svx, voc, w64, W64, wav, wavex, WVE, xi. Can also be used as --format=type:format or --format=format:type to set both the file type (wav, aiff, etc.) and sample format (short, long, float, etc.) at the same time.
@@ -31,11 +31,11 @@ Set the audio file output format to one of the formats available in libsndfile. 
 No header on output soundfile. Don't write a file header, just binary samples.
 
 #### -i FILE, --input=FILE
-Input soundfile name. If not a full pathname, the file will be sought first in the current directory, then in that given by the environment variable [SSDIR](../environment-variables) (if defined), then by [SFDIR](../environment-variables). The name *stdin* will cause audio to be read from standard input.
+Input soundfile name. If not a full pathname, the file will be sought first in the current directory, then in that given by the environment variable [SSDIR](environment-variables.md) (if defined), then by [SFDIR](environment-variables.md). The name *stdin* will cause audio to be read from standard input.
 
 The name *devaudio* or *adc* will request sound from the host audio input device. It is possible to select a device number by appending an integer value in the range 0 to 1023, or a device name separated by a : character (e.g. -iadc3, -iadc:hw:1,1). It depends on the host audio interface whether a device number or a name should be used. In the first case, an out of range number usually results in an error and listing the valid device numbers.
 
-The audio coming in using *-i* can be received using opcodes like [inch](../../opcodes/inch).
+The audio coming in using *-i* can be received using opcodes like [inch](../opcodes/inch.md).
 
 #### -J, --ircam, --format=ircam
 Write an IRCAM format soundfile.
@@ -50,7 +50,7 @@ Use long integer audio samples.
 No sound. Do all processing, but bypass writing of sound to disk. This flag does not change the execution in any other way.
 
 #### -o FILE, --output=FILE
-Output soundfile name. If not a full pathname, the soundfile will be placed in the directory given by the environment variable [SFDIR](../environment-variables) (if defined), else in the current directory. The name *stdout* will cause audio to be written to standard output, while *null* results in no sound output similarly to the -n flag. If no name is given, the default name will be *test*.
+Output soundfile name. If not a full pathname, the soundfile will be placed in the directory given by the environment variable [SFDIR](environment-variables.md) (if defined), else in the current directory. The name *stdout* will cause audio to be written to standard output, while *null* results in no sound output similarly to the -n flag. If no name is given, the default name will be *test*.
 
 The name *devaudio* or *dac* (you can use *-odac* or *-o dac*) will request writing sound to the host audio output device. It is possible to select a device number by appending an integer value in the range 0 to 1023, or a device name separated by a : character (e.g. -odac3, -odac:hw:1,1). It depends on the host audio interface whether a device number or a name should be used. In the first case, an out of range number usually results in an error and listing the valid device numbers.
 
@@ -335,7 +335,7 @@ Note: if both -iadc and -odac are used at the same time (full duplex real time a
 Run in daemon mode: do not exit if CSD/orchestra is not given, is empty or does not compile.
 
 #### -k NUM, --control-rate=NUM
-Override the control rate ([kr](../../opcodes/kr)) supplied by the orchestra.
+Override the control rate ([kr](../opcodes/kr.md)) supplied by the orchestra.
 
 #### -L DEVICE, --score-in=DEVICE
 Read line-oriented real-time score events from device *DEVICE*. The name *stdin* will permit score events to be typed at your terminal, or piped from another process. Each line-event is terminated by a carriage-return. Events are coded just like those in a *standard numeric score*, except that an event with p2=0 will be performed immediately, and an event with p2=T will be performed T seconds after arrival. Events can arrive at any time, and in any order. The score *carry* feature is legal here, as are held notes (p3 negative) and string arguments, but ramps and *pp* or *np* references are not.
@@ -348,7 +348,7 @@ Read line-oriented real-time score events from device *DEVICE*. The name *stdin*
 Set orchestra macro XXX to value YYY
 
 #### --port=N
-Set UDP port on which to listen for commands and instruments/orchestra code (implies --daemon).  See [UDP Server](../../overview/udp-server).
+Set UDP port on which to listen for commands and instruments/orchestra code (implies --daemon).  See [UDP Server](../overview/udp-server.md).
 
 #### --udp-echo
 Switches on printing of UDP commands on the terminal. Any messages received by the UDP server are echoed (whether they are valid commands or not).
@@ -360,7 +360,7 @@ Redirects the console messages to a remote address:port via UDP.
 Mirrors the console messages to a remote address:port via UDP.
 
 #### -r NUM, --sample-rate=NUM
-Override the sampling rate ([sr](../../opcodes/sr)) supplied by the orchestra.
+Override the sampling rate ([sr](../opcodes/sr.md)) supplied by the orchestra.
 
 #### --sample-accurate
 Start and stop instances of instruments at the nearest sample to the requested time. This is in contrast to traditional Csound which rounds the times to the nearest k-cycle.  Note that this does not work with tied notes, nor does it change the Midi timing (as this is only affected by ksmps size (control rate)).
@@ -395,16 +395,16 @@ Provide an extended command-line in file &ldquo;FILE&rdquo;
 Use Cscore processing of the scorefile.
 
 #### --default-paths
-Reenables adding of directory of CSD/ORC/SCO to search paths, if it has been disabled by a previous [--no-default-paths](#-no-default-paths) (e.g. in [.csound7rc](../order-of-precedence)).
+Reenables adding of directory of CSD/ORC/SCO to search paths, if it has been disabled by a previous [--no-default-paths](#-no-default-paths) (e.g. in [.csound7rc](order-of-precedence.md)).
 
 #### -D, --defer-gen1
 Defer GEN01 soundfile loads until performance time.
 
 #### --env:NAME=VALUE
-Set environment variable NAME to VALUE. Note: not all environment variables can be set this way, because some are read before parsing the command line. [INCDIR, SADIR, SFDIR, and SSDIR](../environment-variables) are known to work.
+Set environment variable NAME to VALUE. Note: not all environment variables can be set this way, because some are read before parsing the command line. [INCDIR, SADIR, SFDIR, and SSDIR](environment-variables.md) are known to work.
 
 #### --env:NAME+=VALUE
-Append VALUE to ';' separated list of search paths in environment variable NAME (should be [INCDIR, SADIR, SFDIR, or SSDIR](../environment-variables)). If a file is found in multiple directories, the last will be used.
+Append VALUE to ';' separated list of search paths in environment variable NAME (should be [INCDIR, SADIR, SFDIR, or SSDIR](environment-variables.md)). If a file is found in multiple directories, the last will be used.
 
 #### --sinesize=integer
 Set size of internal sine wave (table -1).  Should be a power of two, and defaults to 16384.
@@ -466,7 +466,7 @@ List midi devices (x=out, output devices only; x=in, input; else input and outpu
 *i-time only.* Allocate and initialize all instruments as per the score, but skip all p-time processing (no k-signals or a-signals, and thus no amplitudes and no sound). Provides a fast validity check of the score pfields and orchestra i-variables.  This option is exclusive of the --syntax-check-only flag.
 
 #### -+ignore_csopts=integer
-If set to 1, Csound will ignore all options specified in the csd file's CsOptions section. See [Unified File Format for Orchestras and Scores](../../invoke/the-csd-file-format)
+If set to 1, Csound will ignore all options specified in the csd file's CsOptions section. See [Unified File Format for Orchestras and Scores](the-csd-file-format.md)
 
 #### --ksmps=N
 Set ksmps override to N (6.05 and later).

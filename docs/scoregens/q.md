@@ -22,7 +22,7 @@ Note that this does not affect instruments that are already running at time _p2_
 
 ## Examples
 
-Here is an example of the q statement. It uses the file [q.csd](../../examples/q.csd).
+Here is an example of the q statement. It uses the file [q.csd](../examples/q.csd).
 
 ``` csound-csd title="Example of the q statement." linenums="1"
 --8<-- "examples/q.csd"
@@ -30,4 +30,4 @@ Here is an example of the q statement. It uses the file [q.csd](../../examples/q
 
 ## See Also
 
-[Score Statements](../../score/statemnt)
+[Score Statements](../score/statemnt.md)

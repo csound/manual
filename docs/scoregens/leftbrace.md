@@ -20,11 +20,11 @@ _p2_ -- A macro name that is automatically defined at the beginning of the loop 
 
 ### Performance
 
-The _{ statement_ is used in conjunction with the [} statement](../../scoregens/rightbrace) to define repeating groups of other score events.  A score loop begins with the _{ statement_ which defines the number of repetitions and a unique macro name that will contain the current loop counter.  The body of a loop can contain any number of other events (including sectional breaks) and is terminated by a _} statement_ on its own line. The _} statement_ takes no parameters.
+The _{ statement_ is used in conjunction with the [} statement](../scoregens/rightbrace.md) to define repeating groups of other score events.  A score loop begins with the _{ statement_ which defines the number of repetitions and a unique macro name that will contain the current loop counter.  The body of a loop can contain any number of other events (including sectional breaks) and is terminated by a _} statement_ on its own line. The _} statement_ takes no parameters.
 
-The use of the term "loop" here does not imply any sort of temporal succession to the loop iterations.  In other words, the p2 values of the events inside of the loop are not automatically incremented by the length of the loop in each repetition.  This is actually an advantage since it allows groups of simulataneous events to be easily defined as well. The loop macro can be used along with [ score expressions](../../score/eval) to increase the start times of events or to vary the events in any other way desired for each iteration.  The macro is incremented by one for each repetition.  Note that unlike the _r statement_, the value of the macro the first time through the loop is zero (0), not one (1).  Therefore the final value is one less than the number of repetitions.
+The use of the term "loop" here does not imply any sort of temporal succession to the loop iterations.  In other words, the p2 values of the events inside of the loop are not automatically incremented by the length of the loop in each repetition.  This is actually an advantage since it allows groups of simulataneous events to be easily defined as well. The loop macro can be used along with [ score expressions](../score/eval.md) to increase the start times of events or to vary the events in any other way desired for each iteration.  The macro is incremented by one for each repetition.  Note that unlike the _r statement_, the value of the macro the first time through the loop is zero (0), not one (1).  Therefore the final value is one less than the number of repetitions.
 
-Score loops are a very powerful tool. While similar to the section repeat facility (the [r statement](../../scoregens/r)), their chief advantage is that the score events in successive iterations of the loop are not separated by a section termination. Thus, it is possible to create multiple loops that overlap in time. Loops also can be nested within each other to a depth of 39 levels.
+Score loops are a very powerful tool. While similar to the section repeat facility (the [r statement](../scoregens/r.md)), their chief advantage is that the score events in successive iterations of the loop are not separated by a section termination. Thus, it is possible to create multiple loops that overlap in time. Loops also can be nested within each other to a depth of 39 levels.
 
 > :warning: **Warning**
 >
@@ -87,7 +87,7 @@ i1  0  1   700
 i1  0  1   800
 ```
 
-Here is a full example of the _{_ and _} statements_. It uses the file [leftbrace.csd](../../examples/leftbrace.csd).
+Here is a full example of the _{_ and _} statements_. It uses the file [leftbrace.csd](../examples/leftbrace.csd).
 
 ``` csound-csd title="An example of nested loops to create several inharmonic sine clusters." linenums="1"
 --8<-- "examples/leftbrace.csd"
@@ -95,7 +95,7 @@ Here is a full example of the _{_ and _} statements_. It uses the file [leftbrac
 
 ## See Also
 
-[Score Statements](../../score/statemnt)
+[Score Statements](../score/statemnt.md)
 
 ## Credits
 

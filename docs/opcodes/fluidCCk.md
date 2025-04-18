@@ -28,7 +28,7 @@ _kValue_ -- value to set for controller (usually 0-127)
 
 ## Examples
 
-Here is an example of the fluidCCk opcode. It uses the file [fluidCCk.csd](../../examples/fluidCCk.csd).
+Here is an example of the fluidCCk opcode. It uses the file [fluidCCk.csd](../examples/fluidCCk.csd).
 
 ``` csound-csd title="Example of the fluidCCk opcode." linenums="1"
 --8<-- "examples/fluidCCk.csd"
@@ -36,7 +36,7 @@ Here is an example of the fluidCCk opcode. It uses the file [fluidCCk.csd](../..
 
 ## See also
 
-[Soundfonts](../../siggen/sample)
+[Soundfonts](../siggen/sample.md)
 
 More information on soundfonts is in the Floss Manuals: [https://flossmanual.csound.com/midi/reading-midi-files](https://flossmanual.csound.com/midi/reading-midi-files)
 

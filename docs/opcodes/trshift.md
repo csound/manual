@@ -24,7 +24,7 @@ _kgain_ -- amplitude scaling (default 1)
 
 ## Examples
 
-Here is an example of the trshift opcode. It uses the file [trshift.csd](../../examples/trshift.csd).
+Here is an example of the trshift opcode. It uses the file [trshift.csd](../examples/trshift.csd).
 
 ``` csound-csd title="Example of the trshift opcode." linenums="1"
 --8<-- "examples/trshift.csd"
@@ -34,7 +34,7 @@ The example above shows partial tracking of an ifd-analysis signal and linear ad
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

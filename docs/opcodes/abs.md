@@ -15,7 +15,7 @@ where the argument within the parentheses may be an expression. Value converters
 
 ## Examples
 
-Here is an example of the abs opcode. It uses the file [abs.csd](../../examples/abs.csd).
+Here is an example of the abs opcode. It uses the file [abs.csd](../examples/abs.csd).
 
 ``` csound-csd title="Example of the abs opcode." linenums="1"
 --8<-- "examples/abs.csd"
@@ -31,4 +31,4 @@ instr 1:  iabs = 13.000
 
 ## See also
 
-[Mathematical Functions](../../math/mathfunc)
+[Mathematical Functions](../math/mathfunc.md)

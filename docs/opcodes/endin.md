@@ -20,7 +20,7 @@ Instruments can be defined in any order (but they will always be both initialize
 
 ## Examples
 
-Here is an example of the endin opcode. It uses the file [endin.csd](../../examples/endin.csd).
+Here is an example of the endin opcode. It uses the file [endin.csd](../examples/endin.csd).
 
 ``` csound-csd title="Example of the endin opcode." linenums="1"
 --8<-- "examples/endin.csd"
@@ -28,7 +28,7 @@ Here is an example of the endin opcode. It uses the file [endin.csd](../../examp
 
 ## See also
 
-[Instrument Statements](../../orch/instruments)
+[Instrument Statements](../orch/instruments.md)
 
 ## Credits
 

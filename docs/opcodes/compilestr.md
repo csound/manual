@@ -20,7 +20,7 @@ _ires_ --  returns 0 if compilation was successful, or -1 if not.
 
 ## Examples
 
-Here is an example of the compilestr opcode. It uses the file [compilestr.csd](../../examples/compilestr.csd).
+Here is an example of the compilestr opcode. It uses the file [compilestr.csd](../examples/compilestr.csd).
 
 ``` csound-csd title="Example of the compilestr opcode." linenums="1"
 --8<-- "examples/compilestr.csd"
@@ -28,7 +28,7 @@ Here is an example of the compilestr opcode. It uses the file [compilestr.csd](.
 
 ## See also
 
-[Instrument Invocation](../../control/invocat)
+[Instrument Invocation](../control/invocat.md)
 
 ## Credits
 

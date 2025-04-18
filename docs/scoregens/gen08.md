@@ -12,7 +12,7 @@ f # time size 8 a n1 b n2 c n3 d ...
 
 ### Initialization
 
-_size_ -- number of points in the table. Must be a power of 2 or power-of-2 plus 1 (see [f statement](../../scoregens/f)).
+_size_ -- number of points in the table. Must be a power of 2 or power-of-2 plus 1 (see [f statement](../scoregens/f.md)).
 
 _a, b, c,_ etc. -- ordinate values of the function.
 
@@ -25,7 +25,7 @@ _n1, n2, n3 ... _ -- length of each segment measured in stored values. May not b
 
 ## Examples
 
-Here is an example of the GEN08 routine. It uses the files [gen08.csd](../../examples/gen08.csd).
+Here is an example of the GEN08 routine. It uses the files [gen08.csd](../examples/gen08.csd).
 
 ``` csound-csd title="An example of the GEN08 routine." linenums="1"
 --8<-- "examples/gen08.csd"
@@ -34,15 +34,15 @@ Here is an example of the GEN08 routine. It uses the files [gen08.csd](../../exa
 These are the diagrams of the waveforms of the GEN08 routines, as used in the example:
 
 <figure markdown="span">
-![f 2 0 65 8 0 16 1 16 1 16 0 17 0 - a curve with a smooth hump in the middle, going briefly negative outside the hump then flat at its ends](../../images/gen08_1.png)
+![f 2 0 65 8 0 16 1 16 1 16 0 17 0 - a curve with a smooth hump in the middle, going briefly negative outside the hump then flat at its ends](../images/gen08_1.png)
 <figcaption>f 2 0 65 8 0 16 1 16 1 16 0 17 0 - a curve with a smooth hump in the middle, going briefly negative outside the hump then flat at its ends</figcaption>
 </figure>
 
 <figure markdown="span">
-![f 3 0 65 8 -1 32 1 2 0 14 0 17 0 - from a negative value,a curve with a smooth hump, going negative creating a small hump then flat at its ends](../../images/gen08_2.png)
+![f 3 0 65 8 -1 32 1 2 0 14 0 17 0 - from a negative value,a curve with a smooth hump, going negative creating a small hump then flat at its ends](../images/gen08_2.png)
 <figcaption>f 3 0 65 8 -1 32 1 2 0 14 0 17 0 - from a negative value,a curve with a smooth hump, going negative creating a small hump then flat at its ends</figcaption>
 </figure>
 
 ## See Also
 
-[GEN05](../../scoregens/gen05), [GEN06](../../scoregens/gen06), and [GEN07](../../scoregens/gen07)
+[GEN05](../scoregens/gen05.md), [GEN06](../scoregens/gen06.md), and [GEN07](../scoregens/gen07.md)

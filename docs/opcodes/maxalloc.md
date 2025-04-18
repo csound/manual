@@ -27,7 +27,7 @@ All instances of _maxalloc_ must be defined in the header section, not in the in
 
 ## Examples
 
-Here is an example of the maxalloc opcode. It uses the file [maxalloc.csd](../../examples/maxalloc.csd).
+Here is an example of the maxalloc opcode. It uses the file [maxalloc.csd](../examples/maxalloc.csd).
 
 ``` csound-csd title="Example of the maxalloc opcode." linenums="1"
 --8<-- "examples/maxalloc.csd"
@@ -41,7 +41,7 @@ WARNING: cannot allocate last note because it exceeds instr maxalloc
 
 ## See also
 
-[Real-time Performance Control](../../control/realtime)
+[Real-time Performance Control](../control/realtime.md)
 
 ## Credits
 

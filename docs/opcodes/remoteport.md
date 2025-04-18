@@ -16,7 +16,7 @@ _iportnum_ -- number of the port to be used. If zero or negative the default por
 
 ## See also
 
-[Remote Opcodes](../../oscnetwork/Remote)
+[Remote Opcodes](../oscnetwork/Remote.md)
 
 ## Credits
 

@@ -78,7 +78,7 @@ The _avg_ values are computed over a rectangular window of m FFT frames looking 
 
 ## Examples
 
-Here is an example of the dnoise utility. It uses the file [dnoise.csd](../../examples/dnoise.csd), [MathewsNoise.wav](../../examples/MathewsNoise.wav) and [MathewsN.wav](../../examples/MathewsN.wav).
+Here is an example of the dnoise utility. It uses the file [dnoise.csd](../examples/dnoise.csd), [MathewsNoise.wav](../examples/MathewsNoise.wav) and [MathewsN.wav](../examples/MathewsN.wav).
 
 ``` csound-csd title="Example of the dnoise utility." linenums="1"
 --8<-- "examples/dnoise.csd"

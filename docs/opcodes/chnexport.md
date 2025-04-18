@@ -5,7 +5,7 @@ category:Signal I/O:Software Bus
 # chnexport
 Export a global variable as a channel of the bus.
 
-The channel should not already exist, otherwise an init error occurs. This opcode is normally called from the orchestra header, and allows the host application to read or write orchestra variables directly, without having to use [chnget](../../opcodes/chnget) or [chnset](../../opcodes/chnset) to copy data.
+The channel should not already exist, otherwise an init error occurs. This opcode is normally called from the orchestra header, and allows the host application to read or write orchestra variables directly, without having to use [chnget](../opcodes/chnget.md) or [chnset](../opcodes/chnset.md) to copy data.
 
 ## Syntax
 ``` csound-orc
@@ -38,7 +38,7 @@ The channel parameters (_imode_, _itype_, _idflt_, _imin_, and _imax_) are only 
 
 While the global variable is used as output argument, _chnexport_ does not actually change it, and always runs at i-time only. If the variable is not previously declared, it is created by Csound with an initial value of zero or empty string.
 
-## Example
+## Examples
 
 The example shows the software bus being used as an asynchronous control signal to select a filter cutoff.  It assumes that an external program that has access to the API is feeding the values.
 
@@ -59,7 +59,7 @@ endin
 
 ## See also
 
-[Software Bus](../../sigio/softbus)
+[Software Bus](../sigio/softbus.md)
 
 ## Credits
 

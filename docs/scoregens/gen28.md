@@ -52,7 +52,7 @@ The file &quot;move&quot; should look like:
 
 Since _GEN28_ creates values to 10 milliseconds of resolution, there will be 500 values created by interpolating X1 to X2 to X3 and so on, and Y1 to Y2 to Y3 and so on, over the appropriate number of values that are stored in the function table. The sound will begin in the left front, over 1 second it will move to the right front, over another second it move further into the distance but still in the right front, then in just 1/10th of a second it moves to the left rear, a bit distant. Finally over the last .9 seconds the sound will move to the right rear, moderately distant, and it comes to rest between the two left channels (due west!), quite distant.
 
-Here is an example of the GEN28 routine. It uses the file [gen28.csd](../../examples/gen28.csd).
+Here is an example of the GEN28 routine. It uses the file [gen28.csd](../examples/gen28.csd).
 
 ``` csound-csd title="Example of the gen28 generator." linenums="1"
 --8<-- "examples/gen28.csd"

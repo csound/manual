@@ -20,7 +20,7 @@ _kcont_ -- the array of controls as saved by _ctrlsave_.
 
 ## Examples
 
-Here is an example of the ctrlprint opcode. It uses the file [ctrls.csd](../../examples/ctrls.csd).
+Here is an example of the ctrlprint opcode. It uses the file [ctrls.csd](../examples/ctrls.csd).
 
 ``` csound-csd title="Example of the ctrlprint opcode." linenums="1"
 --8<-- "examples/ctrls.csd"
@@ -28,7 +28,7 @@ Here is an example of the ctrlprint opcode. It uses the file [ctrls.csd](../../e
 
 ## See also
 
-[MIDI input and Initialization](../../midi/input)
+[MIDI input and Initialization](../midi/input.md)
 
 ## Credits
 

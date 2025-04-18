@@ -33,7 +33,7 @@ For more information about printf() formatting, consult any C language documenta
 
 ## Examples
 
-Here is an example of the printsk opcode. It uses the file [printsk.csd](../../examples/printsk.csd).
+Here is an example of the printsk opcode. It uses the file [printsk.csd](../examples/printsk.csd).
 
 ``` csound-csd title="Example of the printsk opcode." linenums="1"
 --8<-- "examples/printsk.csd"
@@ -41,7 +41,7 @@ Here is an example of the printsk opcode. It uses the file [printsk.csd](../../e
 
 ## See also
 
-[Printing and Display](../../sigio/pdisplay)
+[Printing and Display](../sigio/pdisplay.md)
 
 ## Credits
 

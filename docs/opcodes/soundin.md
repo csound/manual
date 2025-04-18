@@ -15,7 +15,7 @@ ar1[, ar2[, ar3[, ... a24]]] soundin ifilcod [, iskptim] [, iformat] \
 
 ### Initialization
 
-_ifilcod_ -- integer or character-string denoting the source soundfile name. An integer denotes the file soundin.filcod; a character-string (in double quotes, spaces permitted) gives the filename itself, optionally a full pathname. If not a full path, the named file is sought first in the current directory, then in that given by the environment variable [SSDIR](../../invoke/environment-variables) (if defined) then by [SFDIR](../../invoke/environment-variables). See also [GEN01](../../scoregens/gen01).
+_ifilcod_ -- integer or character-string denoting the source soundfile name. An integer denotes the file soundin.filcod; a character-string (in double quotes, spaces permitted) gives the filename itself, optionally a full pathname. If not a full path, the named file is sought first in the current directory, then in that given by the environment variable [SSDIR](../invoke/environment-variables.md) (if defined) then by [SFDIR](../invoke/environment-variables.md). See also [GEN01](../scoregens/gen01.md).
 
 _iskptim_ (optional, default=0) -- time in seconds of input sound to be skipped. The default value is 0. In csound 5.00 and later, this may be negative to add a delay instead of skipping time.
 
@@ -35,7 +35,7 @@ _iskipinit_ -- switches off all initialisation if non zero (default=0). This was
 
 _ibufsize_ -- buffer size in mono samples (not sample frames). Not available in Csound versions older than 5.00. The default buffer size is 2048.
 
-If _iformat_ = 0 it is taken from the soundfile header, and if no header from the Csound [-o](../../invoke/cs-options-alphabetically#-o-file-outputfile) command-line flag. The default value is 0.
+If _iformat_ = 0 it is taken from the soundfile header, and if no header from the Csound [-o](../invoke/cs-options-alphabetically.md#-o-file-outputfile) command-line flag. The default value is 0.
 
 ### Performance
 
@@ -54,7 +54,7 @@ There can be any number of _soundin_ opcodes within a single instrument or orche
 
 ## Examples
 
-Here is an example of the soundin opcode. It uses the file [soundin.csd](../../examples/soundin.csd), [fox.wav](../../examples/fox.wav) and [drumsSlp.wav](../../examples/drumsSlp.wav).
+Here is an example of the soundin opcode. It uses the file [soundin.csd](../examples/soundin.csd), [fox.wav](../examples/fox.wav) and [drumsSlp.wav](../examples/drumsSlp.wav).
 
 ``` csound-csd title="Example of the soundin opcode." linenums="1"
 --8<-- "examples/soundin.csd"
@@ -62,7 +62,7 @@ Here is an example of the soundin opcode. It uses the file [soundin.csd](../../e
 
 ## See also
 
-[Signal Input](../../sigio/input)
+[Signal Input](../sigio/input.md)
 
 ## Credits
 

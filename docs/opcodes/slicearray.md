@@ -20,7 +20,7 @@ _istride_ -- increment for source elements (optional), defaults to 1.
 
 ## Examples
 
-Here is an example of the slicearray opcode. It uses the file [slicearray.csd](../../examples/slicearray.csd).
+Here is an example of the slicearray opcode. It uses the file [slicearray.csd](../examples/slicearray.csd).
 
 ``` csound-csd title="Example of the slicearray opcode." linenums="1"
 --8<-- "examples/slicearray.csd"
@@ -28,7 +28,7 @@ Here is an example of the slicearray opcode. It uses the file [slicearray.csd](.
 
 ## See Also
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

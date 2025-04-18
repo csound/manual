@@ -26,7 +26,7 @@ _knum_ -- integer output
 
 ## Examples
 
-Here is an example of the lfsr opcode. It uses the file [lfsr.csd](../../examples/lfsr.csd).
+Here is an example of the lfsr opcode. It uses the file [lfsr.csd](../examples/lfsr.csd).
 
 ``` csound-orc title="Example of the lfsr opcode." linenums="1"
 --8<-- "examples/lfsr.csd"
@@ -34,7 +34,7 @@ Here is an example of the lfsr opcode. It uses the file [lfsr.csd](../../example
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
 ## Credits
 

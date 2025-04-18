@@ -13,7 +13,7 @@ sndinfo [options] soundfilenames ...
 
 ### Initialization
 
-_sndinfo_ will attempt to find each named file, open it for reading, read in the soundfile header, then print a report on the basic information it finds. The order of search across soundfile directories is as described [above](../top.md).  If the file is of type AIFF, some further details are listed first.
+_sndinfo_ will attempt to find each named file, open it for reading, read in the soundfile header, then print a report on the basic information it finds. The order of search across soundfile directories is as described [above](top.md).  If the file is of type AIFF, some further details are listed first.
 
  There are two option types:
 
@@ -48,7 +48,7 @@ util  SNDINFO:
             couldn't find
 ```
 
-Here is an example of the sndinfo utility. It uses the file [sndinfo.csd](../../examples/sndinfo.csd).
+Here is an example of the sndinfo utility. It uses the file [sndinfo.csd](../examples/sndinfo.csd).
 
 ``` csound-csd title="Example of the sndinfo utility." linenums="1"
 --8<-- "examples/sndinfo.csd"

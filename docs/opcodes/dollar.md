@@ -5,7 +5,7 @@ category:Orchestra Syntax:Macros
 # &dollar;NAME
 Calls a defined macro.
 
-Macros are textual replacements which are made in the orchestra as it is being read.  The [orchestra macro system](../../orch/macros) in Csound is a very simple one, and uses the characters &num; and &dollar; to define and call macros. This can save typing, and can lead to a coherent structure and consistent style.  This is similar to, but independent of, the [macro system in the score language](../../score/macros).
+Macros are textual replacements which are made in the orchestra as it is being read.  The [orchestra macro system](../orch/macros.md) in Csound is a very simple one, and uses the characters &num; and &dollar; to define and call macros. This can save typing, and can lead to a coherent structure and consistent style.  This is similar to, but independent of, the [macro system in the score language](../score/macros.md).
 
 _&dollar;NAME_<br>
 _&dollar;NAME._  -- calls a defined macro. To use a macro, the name is used following a &dollar; character. The name is terminated by the first character which is neither a letter nor a number. If it is necessary for the name to be followed by a letter or number, a period, which will be ignored, can be used to terminate the name. The string, _&dollar;NAME_., is replaced by the replacement text from the definition. The replacement text can also include macro calls.
@@ -25,7 +25,7 @@ Some care is needed with textual replacement macros, as they can sometimes do st
 
 ## Examples
 
-Here is an example of the calling a macro. It uses the file [define.csd](../../examples/define.csd).
+Here is an example of the calling a macro. It uses the file [define.csd](../examples/define.csd).
 
 ``` csound-csd title="An example of the calling a macro." linenums="1"
 --8<-- "examples/define.csd"
@@ -39,7 +39,7 @@ Macro definition for CPS
 Macro definition for TABLE
 ```
 
-Here is an example of the calling a macro with arguments. It uses the file [define_args.csd](../../examples/define_args.csd).
+Here is an example of the calling a macro with arguments. It uses the file [define_args.csd](../examples/define_args.csd).
 
 ``` csound-csd title="An example of the calling a macro with arguments." linenums="1"
 --8<-- "examples/define_args.csd"
@@ -53,7 +53,7 @@ Macro definition for OSCMACRO
 
 ## See also
 
-[Orchestra Macros](../../orch/macros)
+[Orchestra Macros](../orch/macros.md)
 
 ## Credits
 

@@ -37,7 +37,7 @@ More than one system command (a script) can be executed with a single _system_ o
 
 ## Examples
 
-Here is an example of the system_i opcode. It uses the file [system.csd](../../examples/system.csd).
+Here is an example of the system_i opcode. It uses the file [system.csd](../examples/system.csd).
 
 ``` csound-csd title="Example of the system opcode." linenums="1"
 --8<-- "examples/system.csd"
@@ -45,7 +45,7 @@ Here is an example of the system_i opcode. It uses the file [system.csd](../../e
 
 ## See also
 
-[Miscellaneous opcodes](../../miscopcodes)
+[Miscellaneous opcodes](../miscopcodes.md)
 
 ## Credits
 

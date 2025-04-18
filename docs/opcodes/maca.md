@@ -22,7 +22,7 @@ ares = asig1*asig2 + asig3*asig4 + asig5*asig6 + ...
 
 ## Examples
 
-Here is an example of the maca opcode. It uses the file [maca.csd](../../examples/maca.csd). It is written for *NIX systems, and will generate errors on Windows.
+Here is an example of the maca opcode. It uses the file [maca.csd](../examples/maca.csd). It is written for *NIX systems, and will generate errors on Windows.
 
 ``` csound-csd title="Example of the maca opcode." linenums="1"
 --8<-- "examples/maca.csd"
@@ -30,7 +30,7 @@ Here is an example of the maca opcode. It uses the file [maca.csd](../../example
 
 ## See also
 
-[Opcode Equivalents of Functions](../../math/opeqfunc)
+[Opcode Equivalents of Functions](../math/opeqfunc.md)
 
 ## Credits
 

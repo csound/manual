@@ -45,7 +45,7 @@ aout  pvsynth  fou                   ; pvoc synthesis
 
 In the example above the filter curve will depend on the spectral envelope of afil; in the simple case of a sinusoid, it will be equivalent to a narrowband band-pass filter.
 
-Here is an example of the use of the _pvsfilter_ opcode. It uses the file [pvsfilter.csd](../../examples/pvsfilter.csd).
+Here is an example of the use of the _pvsfilter_ opcode. It uses the file [pvsfilter.csd](../examples/pvsfilter.csd).
 
 ``` csound-csd title="Example of the _pvsfilter_ opcode." linenums="1"
 --8<-- "examples/pvsfilter.csd"
@@ -53,7 +53,7 @@ Here is an example of the use of the _pvsfilter_ opcode. It uses the file [pvsfi
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

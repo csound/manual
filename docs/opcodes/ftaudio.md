@@ -22,7 +22,7 @@ _iformat, kformat_ -- Format of the file to save.
 *  -1 - format exactly as per global csound output format flags (-A, -W, --format=..., etc).
 *  0 - 32-bit floating point samples without header (binary PCM multichannel file)
 *  1 - 16-bit integers without header (binary PCM multichannel file)
-*  2 - 16-bit integers with a header. The header type depends on the render (-o) format. For example, if the user chooses the AIFF format (using the [-A flag](../../invoke/cs-options-alphabetically#-a-aiff-formataiff)), the header format will be AIFF type.
+*  2 - 16-bit integers with a header. The header type depends on the render (-o) format. For example, if the user chooses the AIFF format (using the [-A flag](../invoke/cs-options-alphabetically.md#-a-aiff-formataiff)), the header format will be AIFF type.
 *  3 - u-law samples with a header (see iformat=2).
 *  4 - 16-bit integers with a header (see iformat=2).
 *  5 - 32-bit integers with a header (see iformat=2).
@@ -46,7 +46,7 @@ _ktrig_ -- the k-rate version only happens on a k-cycle when ktrig is non-zero.
 
 ## Examples
 
-Here is an example of the ftaudio opcode. It uses the file [ftaudio.csd](../../examples/ftaudio.csd).
+Here is an example of the ftaudio opcode. It uses the file [ftaudio.csd](../examples/ftaudio.csd).
 
 ``` csound-csd title="Example of the ftaudio opcode." linenums="1"
 --8<-- "examples/ftaudio.csd"
@@ -54,7 +54,7 @@ Here is an example of the ftaudio opcode. It uses the file [ftaudio.csd](../../e
 
 ## See also
 
-[Read/Write Operations](../../table/readwrit)
+[Read/Write Operations](../table/readwrit.md)
 
 ## Credits
 

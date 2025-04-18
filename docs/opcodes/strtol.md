@@ -27,7 +27,7 @@ _ir_ -- Value of string as signed integer.
 
 ## See Also
 
-[String Conversion Opcodes](../../strings/convert)
+[String Conversion Opcodes](../strings/convert.md)
 
 ## Credits
 

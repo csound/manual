@@ -44,7 +44,7 @@ ky = tablei(limit(kx, 0, 1.02)*100, itab)
 
 ## Examples
 
-Here is an example of the bpf opcode. It uses the file [bpf.csd](../../examples/bpf.csd).
+Here is an example of the bpf opcode. It uses the file [bpf.csd](../examples/bpf.csd).
 
 ``` csound-orc title="Example of the bpf opcode." linenums="1"
 --8<-- "examples/bpf.csd"
@@ -52,7 +52,7 @@ Here is an example of the bpf opcode. It uses the file [bpf.csd](../../examples/
 
 ## See also
 
-[Linear and Exponential Generators](../../siggen/lineexp)
+[Linear and Exponential Generators](../siggen/lineexp.md)
 
 ## Credits
 

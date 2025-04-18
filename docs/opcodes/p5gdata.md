@@ -74,11 +74,11 @@ On each access a particular data item of the P5 glove is read. The currently imp
 
 ## Examples
 
-See the example for [p5gconnect](../../opcodes/p5gconnect).
+See the example for [p5gconnect](../opcodes/p5gconnect.md).
 
 ## See Also
 
-[non-MIDI Devices](../../oscnetwork/nonMIDIdevices)
+[non-MIDI Devices](../oscnetwork/nonMIDIdevices.md)
 
 ## Credits
 

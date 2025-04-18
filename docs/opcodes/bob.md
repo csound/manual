@@ -33,7 +33,7 @@ The saturation parameter determines at what signal level the "transistors" in th
 
 ## Examples
 
-Here is an example of the bob opcode. It uses the file [bob.csd](../../examples/bob.csd).
+Here is an example of the bob opcode. It uses the file [bob.csd](../examples/bob.csd).
 
 ``` csound-csd title="Example of the bob opcode." linenums="1"
 --8<-- "examples/bob.csd"
@@ -41,7 +41,7 @@ Here is an example of the bob opcode. It uses the file [bob.csd](../../examples/
 
 ## See also
 
-[Standard Filters: Resonant Low-pass filters](../../sigmod/standard)
+[Standard Filters: Resonant Low-pass filters](../sigmod/standard.md)
 
 ## Credits
 

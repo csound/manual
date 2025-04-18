@@ -20,9 +20,9 @@ _SFile_ -- output filename
 
 _ftrks_ -- output pv stream in TRACKS format
 
-Example
+## Examples
 
-Here is an example of the part2txt opcodes. It uses the file [part2txt.csd](../../examples/part2txt.csd).
+Here is an example of the part2txt opcodes. It uses the file [part2txt.csd](../examples/part2txt.csd).
 
 ``` csound-csd title="Example of the part2txt opcodes." linenums="1"
 --8<-- "examples/part2txt.csd"
@@ -32,7 +32,7 @@ The example above shows partial tracking of an ifd-analysis signal and cubic-pha
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

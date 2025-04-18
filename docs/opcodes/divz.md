@@ -19,7 +19,7 @@ Whenever _b_ is not zero, set the result to the value _a / b_; when _b_ is zero,
 
 ## Examples
 
-Here is an example of the divz opcode. It uses the file [divz.csd](../../examples/divz.csd).
+Here is an example of the divz opcode. It uses the file [divz.csd](../examples/divz.csd).
 
 ``` csound-csd title="Example of the divz opcode." linenums="1"
 --8<-- "examples/divz.csd"
@@ -35,7 +35,7 @@ Its output should include lines like:
 
 ## See also
 
-[Opcode Equivalents of Functions](../../math/opeqfunc)
+[Opcode Equivalents of Functions](../math/opeqfunc.md)
 
 ## Credits
 

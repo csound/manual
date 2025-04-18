@@ -38,7 +38,7 @@ The arguments of $-$ can be scalar values or k-rate one dimensional arrays (vect
 
 ## Examples
 
-Here is an example of the - operator. It uses the file [subtracts.csd](../../examples/subtracts.csd).
+Here is an example of the - operator. It uses the file [subtracts.csd](../examples/subtracts.csd).
 
 ``` csound-csd title="Example of the - operator." linenums="1"
 --8<-- "examples/subtracts.csd"
@@ -54,7 +54,7 @@ sutain time= note duration - attack - decay --> 5.0-4.0-0.5 = 0.5
 
 ## See also
 
-[Arithmetic and Logic Operations](../../math/artlogic)
+[Arithmetic and Logic Operations](../math/artlogic.md)
 
 ## Credits
 

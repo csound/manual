@@ -12,7 +12,7 @@ The types of input and output variables are defined by the parameters _intypes_ 
 > :memo: **Notes**
 >
 > * _xin_ and _xout_ should be called only once, and _xin_ should precede _xout_, otherwise an init error and deactivation of the current instrument may occur.
-> * These opcodes actually run only at i-time. Performance time copying is done by the user opcode call. This means that skipping _xin_ or _xout_ with [kgoto](../../opcodes/kgoto) has no effect, while skipping with [igoto](../../opcodes/igoto) affects both init and performance time operation.
+> * These opcodes actually run only at i-time. Performance time copying is done by the user opcode call. This means that skipping _xin_ or _xout_ with [kgoto](../opcodes/kgoto.md) has no effect, while skipping with [igoto](../opcodes/igoto.md) affects both init and performance time operation.
 
 ## Syntax
 ``` csound-orc
@@ -43,11 +43,11 @@ The new opcode can then be used with the usual syntax:
 
 ## Examples
 
-See the example for the [opcode](../../opcodes/opcode) opcode.
+See the example for the [opcode](../opcodes/opcode.md) opcode.
 
 ## See Also
 
-[User Defined Opcodes (UDO)](../../orch/user-defined-opcodes)
+[User Defined Opcodes (UDO)](../orch/user-defined-opcodes.md)
 
 ## Credits
 

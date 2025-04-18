@@ -24,7 +24,7 @@ The _envext_ utility generates a text file containing time and amplitude pairs b
 
 ## Examples
 
-Here is an example of the envext utility. It uses the file [envext.csd](../../examples/envext.csd).
+Here is an example of the envext utility. It uses the file [envext.csd](../examples/envext.csd).
 
 ``` csound-csd title="Example of the envext utility." linenums="1"
 --8<-- "examples/envext.csd"

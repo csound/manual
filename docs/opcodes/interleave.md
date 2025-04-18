@@ -18,7 +18,7 @@ _kin1[], kin2[]_ -- input arrays containing the values to be interleaved.
 
 ## Examples
 
-Here is an example of the interleave opcode. It uses the file [interleave.csd](../../examples/interleave.csd).
+Here is an example of the interleave opcode. It uses the file [interleave.csd](../examples/interleave.csd).
 
 ``` csound-csd title="Example of the interleave opcode." linenums="1"
 --8<-- "examples/interleave.csd"
@@ -26,7 +26,7 @@ Here is an example of the interleave opcode. It uses the file [interleave.csd](.
 
 ## See also
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

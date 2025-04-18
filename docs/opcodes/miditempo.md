@@ -13,7 +13,7 @@ ksig  miditempo
 
 ## Examples
 
-Here is an example of the miditempo opcode. It uses the files [miditempo.csd](../../examples/miditempo.csd).
+Here is an example of the miditempo opcode. It uses the files [miditempo.csd](../examples/miditempo.csd).
 
 ``` csound-csd title="Example of the miditempo opcode." linenums="1"
 --8<-- "examples/miditempo.csd"
@@ -27,7 +27,7 @@ miditempo = 96
 
 ## See also
 
-[Sensing and Control: Tempo and Sequencing](../../control/sensing)
+[Sensing and Control: Tempo and Sequencing](../control/sensing.md)
 
 ## Credits
 

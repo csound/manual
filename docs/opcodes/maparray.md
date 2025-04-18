@@ -23,7 +23,7 @@ _kinarray_ --  array for arguments to the function.
 
 ## Examples
 
-Here is an example of the maparray opcode. It uses the file [maparray.csd](../../examples/maparray.csd).
+Here is an example of the maparray opcode. It uses the file [maparray.csd](../examples/maparray.csd).
 
 ``` csound-csd title="Example of the maparray opcode." linenums="1"
 --8<-- "examples/maparray.csd"
@@ -31,7 +31,7 @@ Here is an example of the maparray opcode. It uses the file [maparray.csd](../..
 
 ## See Also
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

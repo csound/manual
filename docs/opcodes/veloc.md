@@ -20,7 +20,7 @@ Get the MIDI byte value (0 - 127) denoting the velocity of the current event.
 
 ## Examples
 
-Here is an example of the veloc opcode. It uses the files [veloc.csd](../../examples/veloc.csd) and [midiChords.mid](../../examples/midiChords.mid).
+Here is an example of the veloc opcode. It uses the files [veloc.csd](../examples/veloc.csd) and [midiChords.mid](../examples/midiChords.mid).
 
 ``` csound-csd title="Example of the veloc opcode." linenums="1"
 --8<-- "examples/veloc.csd"
@@ -28,7 +28,7 @@ Here is an example of the veloc opcode. It uses the files [veloc.csd](../../exam
 
 ## See also
 
-[MIDI input and Initialization](../../midi/input)
+[MIDI input and Initialization](../midi/input.md)
 
 ## Credits
 

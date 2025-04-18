@@ -5,7 +5,7 @@ category:Utilities
 # cvanal
 Converts a soundfile into a single Fourier transform frame.
 
-Impulse Response Fourier Analysis for [convolve](../../opcodes/convolve) operator
+Impulse Response Fourier Analysis for [convolve](../opcodes/convolve.md) operator
 
 ## Syntax
 ```
@@ -41,11 +41,11 @@ The output file has a special _convolve_ header, containing details of the sourc
 cvanal asound cvfile
 ```
 
-will analyze the soundfile "asound" to produce the file "cvfile" for the use with [convolve](../../opcodes/convolve).
+will analyze the soundfile "asound" to produce the file "cvfile" for the use with [convolve](../opcodes/convolve.md).
 
 To use data that is not already contained in a soundfile, a soundfile converter that accepts text files may be used to create a standard audio file, e.g., the .DAT format for SOX. This is useful for implementing FIR filters.
 
-Here is an example of the cvanal utility. It uses the file [cvanal.csd](../../examples/cvanal.csd).
+Here is an example of the cvanal utility. It uses the file [cvanal.csd](../examples/cvanal.csd).
 
 ``` csound-csd title="Example of the cvanal utility." linenums="1"
 --8<-- "examples/cvanal.csd"

@@ -41,7 +41,7 @@ _kvamp_ -- amplitude of the vibrato
 
 ## Examples
 
-Here is an example of the wgbrass opcode. It uses the file [wgbrass.csd](../../examples/wgbrass.csd).
+Here is an example of the wgbrass opcode. It uses the file [wgbrass.csd](../examples/wgbrass.csd).
 
 ``` csound-csd title="Example of the wgbrass opcode." linenums="1"
 --8<-- "examples/wgbrass.csd"
@@ -49,7 +49,7 @@ Here is an example of the wgbrass opcode. It uses the file [wgbrass.csd](../../e
 
 ## See also
 
-[Waveguide Physical Modeling](../../siggen/wavguide)
+[Waveguide Physical Modeling](../siggen/wavguide.md)
 
 ## Credits
 

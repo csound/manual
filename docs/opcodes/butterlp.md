@@ -5,7 +5,7 @@ category:Signal Modifiers:Standard Filters
 # butterlp
 A low-pass Butterworth filter.
 
-Implementation of a second-order low-pass Butterworth filter. This opcode can also be written as [butlp](../../opcodes/butlp).
+Implementation of a second-order low-pass Butterworth filter. This opcode can also be written as [butlp](../opcodes/butlp.md).
 
 ## Syntax
 ``` csound-orc
@@ -27,7 +27,7 @@ _kfreq_/_afreq_ -- Cutoff or center frequency for each of the filters.
 
 ## Examples
 
-Here is an example of the butterlp opcode. It uses the file [butterlp.csd](../../examples/butterlp.csd).
+Here is an example of the butterlp opcode. It uses the file [butterlp.csd](../examples/butterlp.csd).
 
 ``` csound-csd title="Example of the butterlp opcode." linenums="1"
 --8<-- "examples/butterlp.csd"
@@ -35,7 +35,7 @@ Here is an example of the butterlp opcode. It uses the file [butterlp.csd](../..
 
 ## See also
 
-[Standard filters: Butterworth filters](../../sigmod/standard)
+[Standard filters: Butterworth filters](../sigmod/standard.md)
 
 ## Credits
 

@@ -40,13 +40,13 @@ _ksrcx, ksrcy, ksrcz_ -- the virtual coordinates of the source of sound (the inp
 
 ## Examples
 
-Here is a simple example of the babo opcode. It uses the file [babo.csd](../../examples/babo.csd), and [drumsMlp.wav](../../examples/drumsMlp.wav).
+Here is a simple example of the babo opcode. It uses the file [babo.csd](../examples/babo.csd), and [drumsMlp.wav](../examples/drumsMlp.wav).
 
 ``` csound-csd title="A simple example of the babo opcode." linenums="1"
 --8<-- "examples/babo.csd"
 ```
 
-Here is an advanced example of the babo opcode. It uses the file [babo_expert.csd](../../examples/babo_expert.csd), and [drumsMlp.wav](../../examples/drumsMlp.wav).
+Here is an advanced example of the babo opcode. It uses the file [babo_expert.csd](../examples/babo_expert.csd), and [drumsMlp.wav](../examples/drumsMlp.wav).
 
 ``` csound-csd title="An advanced example of the babo opcode." linenums="1"
 --8<-- "examples/babo_expert.csd"
@@ -54,7 +54,7 @@ Here is an advanced example of the babo opcode. It uses the file [babo_expert.cs
 
 ## See also
 
-[Reverberation](../../sigmod/reverbtn)
+[Reverberation](../sigmod/reverbtn.md)
 
 ## Credits
 

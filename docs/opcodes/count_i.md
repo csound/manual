@@ -26,7 +26,7 @@ _ival_ -- returned value.
 
 ## Examples
 
-Here is an example of the count_i opcode. It uses the file [counter.csd](../../examples/counter.csd).
+Here is an example of the count_i opcode. It uses the file [counter.csd](../examples/counter.csd).
 
 ``` csound-csd title="Example of the count_i opcode." linenums="1"
 --8<-- "examples/counter.csd"
@@ -34,7 +34,7 @@ Here is an example of the count_i opcode. It uses the file [counter.csd](../../e
 
 ## See also
 
-[Program Flow Control: Counter](../../control/pgmctl)
+[Program Flow Control: Counter](../control/pgmctl.md)
 
 ## Credits
 

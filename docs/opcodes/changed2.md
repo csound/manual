@@ -26,7 +26,7 @@ Unlike the opcode _changed_ this opcode will never report the first cycle as a c
 
 ## Examples
 
-Here are two examples of the changed2 opcode. They use the files [changed2.csd](../../examples/changed2.csd) and [changed2a.csd](../../examples/changed2a.csd).
+Here are two examples of the changed2 opcode. They use the files [changed2.csd](../examples/changed2.csd) and [changed2a.csd](../examples/changed2a.csd).
 
 ``` csound-csd title="Example of the changed2 opcode." linenums="1"
 --8<-- "examples/changed2.csd"
@@ -70,7 +70,7 @@ i1     0.00000
 
 ## See also
 
-[Sensing and Control: Tempo and Sequencing](../../control/sensing)
+[Sensing and Control: Tempo and Sequencing](../control/sensing.md)
 
 ## Credits
 

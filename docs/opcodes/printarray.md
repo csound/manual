@@ -25,7 +25,7 @@ _ktrig_ - The array will be printed whenever this value changes from 0 to possit
 
 ## Examples
 
-Here is an example of the printarray opcode. It uses the file [printarray.csd](../../examples/printarray.csd).
+Here is an example of the printarray opcode. It uses the file [printarray.csd](../examples/printarray.csd).
 
 ``` csound-csd title="Example of the printarray opcode." linenums="1"
 --8<-- "examples/printarray.csd"
@@ -33,9 +33,9 @@ Here is an example of the printarray opcode. It uses the file [printarray.csd](.
 
 ## See also
 
-[Printing and Display](../../sigio/pdisplay)
+[Printing and Display](../sigio/pdisplay.md)
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

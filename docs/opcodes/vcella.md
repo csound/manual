@@ -33,9 +33,9 @@ _ktrig_ - trigger signal. Each time it is non-zero, a new generation of cells is
 
 _kreinit_ - trigger signal. Each time it is non-zero, state of all cells is forced to be that of _initStateFunc_.
 
-_vcella_ supports unidimensional cellular automata, where the state of each cell is stored in _ioutFunc_. So _ioutFunc_ is a vector containing current state of each cell. This variant vector can be used together with any other vector-based opcode, such as [adsynt](../../opcodes/adsynt), [vmap](../../opcodes/vmap), [vpowv](../../opcodes/vpowv) etc.
+_vcella_ supports unidimensional cellular automata, where the state of each cell is stored in _ioutFunc_. So _ioutFunc_ is a vector containing current state of each cell. This variant vector can be used together with any other vector-based opcode, such as [adsynt](../opcodes/adsynt.md), [vmap](../opcodes/vmap.md), [vpowv](../opcodes/vpowv.md) etc.
 
-_initStateFunc_ is an input vector containing the inital value of the row of cells, while _iRuleFunc_ is an input vector containing the rules in the form of a lookup table. Notice that _initStateFunc_ and _iRuleFunc_ can be updated during the performance by means of other vector-based opcodes (for example [vcopy](../../opcodes/vcopy)) in order to force to change rules and status at performance time.
+_initStateFunc_ is an input vector containing the inital value of the row of cells, while _iRuleFunc_ is an input vector containing the rules in the form of a lookup table. Notice that _initStateFunc_ and _iRuleFunc_ can be updated during the performance by means of other vector-based opcodes (for example [vcopy](../opcodes/vcopy.md)) in order to force to change rules and status at performance time.
 
 A new generation of cells is evaluated each time _ktrig_ contains a non-zero value. Also the status of all cells can be forced to assume the status corresponding to the contents of _initStateFunc_ each time _kreinit_ contains a non-zero value.
 
@@ -43,7 +43,7 @@ Radius of CA algorithm can be 1 or 2 (optional _iradius_ arguement).
 
 ## Examples
 
-Here is an example of the vcella opcode. It uses the file [vcella.csd](../../examples/vcella.csd).
+Here is an example of the vcella opcode. It uses the file [vcella.csd](../examples/vcella.csd).
 
 The following example uses _vcella_
 
@@ -53,9 +53,9 @@ The following example uses _vcella_
 
 ## See also
 
-[Vectorial:Cellular Automata](../../vectorial/vectorial)
+[Vectorial:Cellular Automata](../vectorial/vectorial.md)
 
-[Models and Emulations](../../siggen/models)
+[Models and Emulations](../siggen/models.md)
 
 ## Credits
 

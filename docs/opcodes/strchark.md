@@ -14,7 +14,7 @@ kchr strchark Sstr [, kpos]
 
 ## See Also
 
-[String Conversion Opcodes](../../strings/convert)
+[String Conversion Opcodes](../strings/convert.md)
 
 ## Credits
 

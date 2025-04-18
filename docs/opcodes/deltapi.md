@@ -16,7 +16,7 @@ _xdlt_ -- specifies the tapped delay time in seconds. Each can range from 1 cont
 
 _deltapi_ extracts sound by interpolated readout. By interpolating between adjacent stored samples _deltapi_ represents a particular delay time with more accuracy, but it will take about twice as long to run.
 
-This opcode can tap into a [delayr](../../opcodes/delayr)/[delayw](../../opcodes/delayw) pair, extracting delayed audio from the _idlt_ seconds of stored sound. There can be any number of [deltap](../../opcodes/deltap) and/or _deltapi_ units between a read/write pair. Each receives an audio tap with no change of original amplitude.
+This opcode can tap into a [delayr](../opcodes/delayr.md)/[delayw](../opcodes/delayw.md) pair, extracting delayed audio from the _idlt_ seconds of stored sound. There can be any number of [deltap](../opcodes/deltap.md) and/or _deltapi_ units between a read/write pair. Each receives an audio tap with no change of original amplitude.
 
 This opcode can provide multiple delay taps for arbitrary delay path and feedback networks. They can deliver either constant-time or time-varying taps, and are useful for building chorus effects, harmonizers, and Doppler shifts. Constant-time delay taps (and some slowly changing ones) do not need interpolated readout; they are well served by _deltap_. Medium-paced or fast varying dlt's, however, will need the extra services of _deltapi_.
 
@@ -62,7 +62,7 @@ amove    deltapi   atime                 ; move sound source past
           outs    adly1, adly2
 ```
 
-Here is yet another example of the deltapi opcode. It uses the file [deltapi.csd](../../examples/deltapi.csd).
+Here is yet another example of the deltapi opcode. It uses the file [deltapi.csd](../examples/deltapi.csd).
 
 ``` csound-csd title="Example of the deltapi opcode." linenums="1"
 --8<-- "examples/deltapi.csd"
@@ -70,4 +70,4 @@ Here is yet another example of the deltapi opcode. It uses the file [deltapi.csd
 
 ## See also
 
-[Delay](../../sigmod/delayops)
+[Delay](../sigmod/delayops.md)

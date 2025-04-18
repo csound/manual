@@ -5,7 +5,7 @@ category:Signal Generators:Granular Synthesis
 # partikkelget
 Get mask index for a specific mask parameter of a running _partikkel_ instance.
 
-_partikkelget_ is an opcode for outputting [partikkel](../../opcodes/partikkel) mask index for a specific parameter. Used together with _partikkelset_, it can be used to synchronize partikkel masking between several running instances of the _ partikkel_ opcode. It can also be used to control other processes based on the internal mask index, for example to create more complex masking patterns than is available with the regular grain masking system.
+_partikkelget_ is an opcode for outputting [partikkel](../opcodes/partikkel.md) mask index for a specific parameter. Used together with _partikkelset_, it can be used to synchronize partikkel masking between several running instances of the _ partikkel_ opcode. It can also be used to control other processes based on the internal mask index, for example to create more complex masking patterns than is available with the regular grain masking system.
 
 ## Syntax
 ``` csound-orc
@@ -14,7 +14,7 @@ kindex partikkelget kparameterindex, iopcode_id
 
 ### Initialization
 
-_iopcode_id_ -- the opcode id, linking an instance of [partikkel](../../opcodes/partikkel) to an instance of _partikkelsync_.
+_iopcode_id_ -- the opcode id, linking an instance of [partikkel](../opcodes/partikkel.md) to an instance of _partikkelsync_.
 
 ### Performance
 
@@ -31,7 +31,7 @@ _kparameterindex_ -- mask parameter. Selection of the masking parameter for whic
 
 ## Examples
 
-Here is an example of the partikkelget and partikkelset opcodes. It uses the file [partikkelgetset.csd](../../examples/partikkelgetset.csd).
+Here is an example of the partikkelget and partikkelset opcodes. It uses the file [partikkelgetset.csd](../examples/partikkelgetset.csd).
 
 ``` csound-csd title="Example of manipulating the internal mask index of partikkel, based on the value of other mask indices in the same partikkel instance." linenums="1"
 --8<-- "examples/partikkelgetset.csd"
@@ -39,7 +39,7 @@ Here is an example of the partikkelget and partikkelset opcodes. It uses the fil
 
 ## See Also
 
-[partikkel](../../opcodes/partikkel)
+[partikkel](../opcodes/partikkel.md)
 
 ## Credits
 

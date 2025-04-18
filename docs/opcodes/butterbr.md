@@ -5,7 +5,7 @@ category:Signal Modifiers:Standard Filters
 # butterbr
 A band-reject Butterworth filter.
 
-Implementation of a second-order band-reject Butterworth filter. This opcode can also be written as [butbr](../../opcodes/butbr).
+Implementation of a second-order band-reject Butterworth filter. This opcode can also be written as [butbr](../opcodes/butbr.md).
 
 ## Syntax
 ``` csound-orc
@@ -28,7 +28,7 @@ _xband_ -- Bandwidth of the bandpass and bandreject filters.
 
 ## Examples
 
-Here is an example of the butterbr opcode. It uses the file [butterbr.csd](../../examples/butterbr.csd).
+Here is an example of the butterbr opcode. It uses the file [butterbr.csd](../examples/butterbr.csd).
 
 ``` csound-csd title="Example of the butterbr opcode." linenums="1"
 --8<-- "examples/butterbr.csd"
@@ -36,7 +36,7 @@ Here is an example of the butterbr opcode. It uses the file [butterbr.csd](../..
 
 ## See also
 
-[Standard filters: Butterworth filters](../../sigmod/standard)
+[Standard filters: Butterworth filters](../sigmod/standard.md)
 
 ## Credits
 

@@ -7,7 +7,7 @@ Defines the start of user-defined opcode block.
 
 ## Defining opcodes
 
-The _opcode_ and _endop_ statements allow defining a new opcode that can be used the same way as any of the built-in Csound opcodes. These opcode blocks are very similar to instruments (and are, in fact, implemented as special instruments), but cannot be called as a normal instrument e.g. with the [i statements](../../scoregens/i).
+The _opcode_ and _endop_ statements allow defining a new opcode that can be used the same way as any of the built-in Csound opcodes. These opcode blocks are very similar to instruments (and are, in fact, implemented as special instruments), but cannot be called as a normal instrument e.g. with the [i statements](../scoregens/i.md).
 
 A user-defined opcode block must precede the instrument (or other opcode) from which it is used. But it is possible to call the opcode from itself. This allows recursion of any depth that is limited only by available memory.
 
@@ -16,16 +16,16 @@ Similarly to instruments, the variables and labels of a user-defined opcode bloc
 Some parameters are automatically copied at initialization, however:
 
 * all p-fields up to and including the highest-numbered one referenced in the calling instrument
-* extra time (see also [xtratim](../../opcodes/xtratim), [linsegr](../../opcodes/linsegr), and related opcodes). This may affect the operation of _linsegr_/_expsegr_/_linenr_/_envlpxr_ in the user-defined opcode block.
+* extra time (see also [xtratim](../opcodes/xtratim.md), [linsegr](../opcodes/linsegr.md), and related opcodes). This may affect the operation of _linsegr_/_expsegr_/_linenr_/_envlpxr_ in the user-defined opcode block.
 * MIDI parameters, if there are any.
 
-Also, the release flag (see the [release](../../opcodes/release) opcode) is copied at performance time.
+Also, the release flag (see the [release](../opcodes/release.md) opcode) is copied at performance time.
 
-Modifying the note duration in the opcode definition by assigning to _p3_, or using [ihold](../../opcodes/ihold), [turnoff](../../opcodes/turnoff), [xtratim](../../opcodes/xtratim), [linsegr](../../opcodes/linsegr), or similar opcodes will also affect the caller instrument. Changes to MIDI controllers (for example with [ctrlinit](../../opcodes/ctrlinit)) will also apply to the instrument from which the opcode was called.
+Modifying the note duration in the opcode definition by assigning to _p3_, or using [ihold](../opcodes/ihold.md), [turnoff](../opcodes/turnoff.md), [xtratim](../opcodes/xtratim.md), [linsegr](../opcodes/linsegr.md), or similar opcodes will also affect the caller instrument. Changes to MIDI controllers (for example with [ctrlinit](../opcodes/ctrlinit.md)) will also apply to the instrument from which the opcode was called.
 
-Use the [setksmps](../../opcodes/setksmps) opcode to set the local [ksmps](../../opcodes/ksmps) value.
+Use the [setksmps](../opcodes/setksmps.md) opcode to set the local [ksmps](../opcodes/ksmps.md) value.
 
-The [xin](../../opcodes/xin) and [xout](../../opcodes/xout) opcodes copy variables to and from the opcode definition, allowing communication with the calling instrument.
+The [xin](../opcodes/xin.md) and [xout](../opcodes/xout.md) opcodes copy variables to and from the opcode definition, allowing communication with the calling instrument.
 
 The types of input and output variables are defined by the parameters _intypes_ and _outtypes_.
 
@@ -36,7 +36,7 @@ The types of input and output variables are defined by the parameters _intypes_ 
 > :memo: **Notes**
 >
 > * _xin_ and _xout_ should be called only once, and _xin_ should precede _xout_, otherwise an init error and deactivation of the current instrument may occur.
-> * These opcodes actually run only at i-time. Performance time copying is done by the user opcode call. This means that skipping _xin_ or _xout_ with [kgoto](../../opcodes/kgoto) has no effect, while skipping with [igoto](../../opcodes/igoto) affects both init and performance time operation.
+> * These opcodes actually run only at i-time. Performance time copying is done by the user opcode call. This means that skipping _xin_ or _xout_ with [kgoto](../opcodes/kgoto.md) has no effect, while skipping with [igoto](../opcodes/igoto.md) affects both init and performance time operation.
 
 ## Syntax
 ``` csound-orc
@@ -105,19 +105,19 @@ The new opcode can then be used with the usual syntax:
 
 > :memo: **Note**
 >
-> The opcode call is always executed both at initialization and performance time, even if there are no a- or k-rate arguments. If there are many user opcode calls that are known to have no effect at performance time in an instrument, then it may save some CPU time to jump over groups of such opcodes with [kgoto](../../opcodes/kgoto).
+> The opcode call is always executed both at initialization and performance time, even if there are no a- or k-rate arguments. If there are many user opcode calls that are known to have no effect at performance time in an instrument, then it may save some CPU time to jump over groups of such opcodes with [kgoto](../opcodes/kgoto.md).
 
 ## Examples
 
 Here is an example of a user-defined opcode. It uses the file
-[opcode.csd](../../examples/opcode.csd).
+[opcode.csd](../examples/opcode.csd).
 
 ``` csound-csd title="Example of a user-defined opcode." linenums="1"
 --8<-- "examples/opcode.csd"
 ```
 
 Here is another example of a user-defined opcode. It uses the file
-[opcode_f.csd](../../examples/opcode_f.csd).
+[opcode_f.csd](../examples/opcode_f.csd).
 
 ``` csound-csd title="Second example of a user-defined opcode." linenums="1"
 --8<-- "examples/opcode_f.csd"
@@ -125,7 +125,7 @@ Here is another example of a user-defined opcode. It uses the file
 
 ## See Also
 
-[User Defined Opcodes (UDO)](../../orch/user-defined-opcodes)
+[User Defined Opcodes (UDO)](../orch/user-defined-opcodes.md)
 
 ## Credits
 

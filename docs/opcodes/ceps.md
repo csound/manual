@@ -22,7 +22,7 @@ _kmags[]_ -- an input array containing N+1 magnitudes.
 
 ## Examples
 
-Here is an example of the use of the _ceps_ opcode. It uses the file [ceps.csd](../../examples/ceps.csd).
+Here is an example of the use of the _ceps_ opcode. It uses the file [ceps.csd](../examples/ceps.csd).
 
 ``` csound-csd title="Example of the _ceps_ opcode." linenums="1"
 --8<-- "examples/ceps.csd"
@@ -30,7 +30,7 @@ Here is an example of the use of the _ceps_ opcode. It uses the file [ceps.csd](
 
 ## See Also
 
-[Array-based spectral opcodes](../../spectral/arrays)
+[Array-based spectral opcodes](../spectral/arrays.md)
 
 ## Credits
 

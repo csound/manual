@@ -20,7 +20,7 @@ _kend_ -- end position in Ssrc, counting from 0. A negative value means the end 
 
 ## See Also
 
-[String Manipulation Opcodes](../../strings/manipulate)
+[String Manipulation Opcodes](../strings/manipulate.md)
 
 ## Credits
 

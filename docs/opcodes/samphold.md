@@ -32,7 +32,7 @@ asamp samphold  anew, agate           ;   to gate the new audiosig
 aout  tone      asamp, 100            ; smooth out the rough edges
 ```
 
-Here is another example of the samphold opcode. It uses the file [samphold.csd](../../examples/samphold.csd).
+Here is another example of the samphold opcode. It uses the file [samphold.csd](../examples/samphold.csd).
 
 ``` csound-csd title="Example of the samphold opcode." linenums="1"
 --8<-- "examples/samphold.csd"
@@ -40,4 +40,4 @@ Here is another example of the samphold opcode. It uses the file [samphold.csd](
 
 ## See also
 
-[Sample Level Operators](../../sigmod/sample)
+[Sample Level Operators](../sigmod/sample.md)

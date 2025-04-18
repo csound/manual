@@ -26,7 +26,7 @@ _kctlno1_, _kctlno1_, etc. -- MIDI controller numbers and values (0-127).  up to
 
 ## Examples
 
-Here is an example of the ctrlpreset opcode. It uses the file [ctrls.csd](../../examples/ctrls.csd).
+Here is an example of the ctrlpreset opcode. It uses the file [ctrls.csd](../examples/ctrls.csd).
 
 ``` csound-csd title="Example of the ctrlpreset opcode." linenums="1"
 --8<-- "examples/ctrls.csd"
@@ -34,7 +34,7 @@ Here is an example of the ctrlpreset opcode. It uses the file [ctrls.csd](../../
 
 ## See also
 
-[MIDI input and Initialization](../../midi/input)
+[MIDI input and Initialization](../midi/input.md)
 
 ## Credits
 

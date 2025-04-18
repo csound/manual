@@ -22,7 +22,7 @@ _Smode_ -- If not given, whitespace is stripped from both sides. If "l", strip w
 
 ## Examples
 
-Here is an example of the strstrip opcode. It uses the file [strstrip.csd](../../examples/strstrip.csd).
+Here is an example of the strstrip opcode. It uses the file [strstrip.csd](../examples/strstrip.csd).
 
 ``` csound-csd title="Example of the strstrip opcode." linenums="1"
 --8<-- "examples/strstrip.csd"
@@ -30,7 +30,7 @@ Here is an example of the strstrip opcode. It uses the file [strstrip.csd](../..
 
 ## See Also
 
-[String Manipulation Opcodes](../../strings/manipulate)
+[String Manipulation Opcodes](../strings/manipulate.md)
 
 ## Credits
 

@@ -25,7 +25,7 @@ _xout1,... xoutN_ -- The specified types of variables that the hdf5 datasets are
 
 ## Examples
 
-Here is a simple example of the hdf5read opcode. It uses the file [hdf5read.csd](../../examples/hdf5read.csd).
+Here is a simple example of the hdf5read opcode. It uses the file [hdf5read.csd](../examples/hdf5read.csd).
 
 ``` csound-csd title="Example of the hdf5read opcode." linenums="1"
 --8<-- "examples/hdf5read.csd"
@@ -33,7 +33,7 @@ Here is a simple example of the hdf5read opcode. It uses the file [hdf5read.csd]
 
 ## See also
 
-[Signal Input](../../sigio/input)
+[Signal Input](../sigio/input.md)
 
 ## Credits
 

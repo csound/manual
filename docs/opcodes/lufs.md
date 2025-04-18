@@ -35,7 +35,7 @@ Only mono and stereo formats are supported due to rare usage of 5.1 format in th
 
 ## Examples
 
-Here is an example of the lufs opcode. It uses the file [lufs.csd](../../examples/lufs.csd).
+Here is an example of the lufs opcode. It uses the file [lufs.csd](../examples/lufs.csd).
 
 ``` csound-csd title="Example of the lufs opcode." linenums="1"
 --8<-- "examples/lufs.csd"
@@ -43,7 +43,7 @@ Here is an example of the lufs opcode. It uses the file [lufs.csd](../../example
 
 ## See also
 
-[Sensing and Control: Envelope followers](../../control/sensing)
+[Sensing and Control: Envelope followers](../control/sensing.md)
 
 ## Credits
 

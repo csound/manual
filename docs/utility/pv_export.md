@@ -17,7 +17,7 @@ _pv_file_ - Name of the input .pvx file.
 
 _cstext_file_ - Name of the output comma-separated text file.
 
-The _pv_export_ utility generates a comma-separated text file for manual editing of a .pvx file produced by the [PVANAL](../../utility/pvanal) utility. It can be used in combination with [pv_import](../../utility/pv_import) to produce data for the [pvoc](../../opcodes/pvoc) generator.
+The _pv_export_ utility generates a comma-separated text file for manual editing of a .pvx file produced by the [PVANAL](../utility/pvanal.md) utility. It can be used in combination with [pv_import](../utility/pv_import.md) to produce data for the [pvoc](../opcodes/pvoc.md) generator.
 
 ## Credits
 

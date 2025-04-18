@@ -26,7 +26,7 @@ _Sdst_ -- output string variable
 
 ## Examples
 
-Here is an example of the sprintfk opcode. It uses the file [sprintfk.csd](../../examples/sprintfk.csd).
+Here is an example of the sprintfk opcode. It uses the file [sprintfk.csd](../examples/sprintfk.csd).
 
 ``` csound-csd title="Example of the sprintfk opcode." linenums="1"
 --8<-- "examples/sprintfk.csd"
@@ -50,7 +50,7 @@ Its output should include lines like this:
 
 ## See Also
 
-[String Manipulation Opcodes](../../strings/manipulate)
+[String Manipulation Opcodes](../strings/manipulate.md)
 
 ## Credits
 

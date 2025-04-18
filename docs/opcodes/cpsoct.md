@@ -37,7 +37,7 @@ By contrast, the conversion _cpsoct_(8.75 + k1) which gives the value of A440 tr
 
 ## Examples
 
-Here is an example of the cpsoct opcode. It uses the file [cpsoct.csd](../../examples/cpsoct.csd).
+Here is an example of the cpsoct opcode. It uses the file [cpsoct.csd](../examples/cpsoct.csd).
 
 ``` csound-csd title="Example of the cpsoct opcode." linenums="1"
 --8<-- "examples/cpsoct.csd"
@@ -54,4 +54,4 @@ instr 1:  icps = 80.521
 
 ## See also
 
-[Pitch Converters: Functions](../../pitch/funcs)
+[Pitch Converters: Functions](../pitch/funcs.md)

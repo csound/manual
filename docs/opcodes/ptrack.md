@@ -28,7 +28,7 @@ _ptrack_ analyzes the input signal, _asig_, to give a pitch/amplitude pair of ou
 
 ## Examples
 
-Here is an example of the ptrack opcode. This example uses the files [ptrack.csd](../../examples/ptrack.csd).
+Here is an example of the ptrack opcode. This example uses the files [ptrack.csd](../examples/ptrack.csd).
 
 ``` csound-csd title="Example of the ptrack opcode." linenums="1"
 --8<-- "examples/ptrack.csd"
@@ -36,7 +36,7 @@ Here is an example of the ptrack opcode. This example uses the files [ptrack.csd
 
 ## See also
 
-[Sensing and Control: Tempo and Pitch estimation](../../control/sensing)
+[Sensing and Control: Tempo and Pitch estimation](../control/sensing.md)
 
 ## Credits
 

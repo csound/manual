@@ -38,7 +38,7 @@ The arguments of $+$ can be scalar values or k-rate one dimensional arrays (vect
 
 ## Examples
 
-Here is an example of the &plus; operator. It uses the file [adds.csd](../../examples/adds.csd).
+Here is an example of the &plus; operator. It uses the file [adds.csd](../examples/adds.csd).
 
 ``` csound-csd title="Example of the &plus; operator." linenums="1"
 --8<-- "examples/adds.csd"
@@ -46,7 +46,7 @@ Here is an example of the &plus; operator. It uses the file [adds.csd](../../exa
 
 ## See also
 
-[Arithmetic and Logic Operations](../../math/artlogic)
+[Arithmetic and Logic Operations](../math/artlogic.md)
 
 ## Credits
 

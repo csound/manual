@@ -24,7 +24,7 @@ _ifn_ -- function table number. This will contain an amplitude response curve, f
 
 ## Examples
 
-Here is an example of the trfilter opcode. It uses the file [trfilter.csd](../../examples/trfilter.csd).
+Here is an example of the trfilter opcode. It uses the file [trfilter.csd](../examples/trfilter.csd).
 
 ``` csound-csd title="Example of the trfilter opcode." linenums="1"
 --8<-- "examples/trfilter.csd"
@@ -34,7 +34,7 @@ The example above shows partial tracking of an ifd-analysis signal and linear ad
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

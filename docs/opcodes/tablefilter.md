@@ -29,7 +29,7 @@ _kparam_ -- integer threshold parameter for the filter. It means that denominato
 
 ## Examples
 
-Here is an example of the tablefilter opcode. It uses the file [tablefilter.csd](../../examples/tablefilter.csd).
+Here is an example of the tablefilter opcode. It uses the file [tablefilter.csd](../examples/tablefilter.csd).
 
 ``` csound-csd title="Example of the tablefilter opcode." linenums="1"
 --8<-- "examples/tablefilter.csd"
@@ -37,7 +37,7 @@ Here is an example of the tablefilter opcode. It uses the file [tablefilter.csd]
 
 ## See also
 
-[Read/Write Operations](../../table/readwrit)
+[Read/Write Operations](../table/readwrit.md)
 
 ## Credits
 

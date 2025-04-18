@@ -34,7 +34,7 @@ This opcode can be useful in several situations, for example to implement a vu-m
 
 ## Examples
 
-Here is an example of the max_k opcode. It uses the file [max_k.csd](../../examples/max_k.csd).
+Here is an example of the max_k opcode. It uses the file [max_k.csd](../examples/max_k.csd).
 
 ``` csound-csd title="Example of the max_k opcode." linenums="1"
 --8<-- "examples/max_k.csd"
@@ -42,7 +42,7 @@ Here is an example of the max_k opcode. It uses the file [max_k.csd](../../examp
 
 ## See also
 
-[Comparators and Accumulators](../../sigmod/compaccum)
+[Comparators and Accumulators](../sigmod/compaccum.md)
 
 ## Credits
 

@@ -55,7 +55,7 @@ The same as the variant above, but for multidimensional points. Given two curves
 
 ## Examples
 
-Here is an example of the bpfcos opcode. It uses the file [bpfcos.csd](../../examples/bpfcos.csd).
+Here is an example of the bpfcos opcode. It uses the file [bpfcos.csd](../examples/bpfcos.csd).
 
 ``` csound-orc title="Example of the bpfcos opcode." linenums="1"
 --8<-- "examples/bpfcos.csd"
@@ -63,7 +63,7 @@ Here is an example of the bpfcos opcode. It uses the file [bpfcos.csd](../../exa
 
 ## See also
 
-[Linear and Exponential Generators](../../siggen/lineexp)
+[Linear and Exponential Generators](../siggen/lineexp.md)
 
 ## Credits
 

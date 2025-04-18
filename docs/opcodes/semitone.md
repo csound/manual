@@ -22,7 +22,7 @@ The value returned by the _semitone_ function is a factor. You can multiply a fr
 
 ## Examples
 
-Here is an example of the semitone opcode. It uses the file [semitone.csd](../../examples/semitone.csd).
+Here is an example of the semitone opcode. It uses the file [semitone.csd](../examples/semitone.csd).
 
 ``` csound-csd title="Example of the semitone opcode." linenums="1"
 --8<-- "examples/semitone.csd"
@@ -62,7 +62,7 @@ i1     1.00000
 
 ## See also
 
-[Pitch Converters: Functions](../../pitch/funcs)
+[Pitch Converters: Functions](../pitch/funcs.md)
 
 ## Credits
 

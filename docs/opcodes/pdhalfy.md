@@ -5,7 +5,7 @@ category:Signal Modifiers:Waveshaping
 # pdhalfy
 Distorts a phasor for reading two unequal portions of a table in equal periods.
 
-The _pdhalfy_ opcode is a variation on the phase distortion synthesis method of the [pdhalf](../../opcodes/pdhalf) opcode.  It is useful for distorting a phasor in order to read two unequal portions of a table in the same number of samples.
+The _pdhalfy_ opcode is a variation on the phase distortion synthesis method of the [pdhalf](../opcodes/pdhalf.md) opcode.  It is useful for distorting a phasor in order to read two unequal portions of a table in the same number of samples.
 
 ## Syntax
 ``` csound-orc
@@ -27,11 +27,11 @@ _aout_ --  the output signal.
 _kShapeAmount_ --  the amount of distortion applied to the input.  Must be between negative one and one (-1 to 1). An amount of zero means no distortion.
 
 <figure markdown="span">
-![Transfer function created by pdhalfy and a negative kShapeAmount.](../../images/pdhalfy.png)
+![Transfer function created by pdhalfy and a negative kShapeAmount.](../images/pdhalfy.png)
 <figcaption>Transfer function created by pdhalfy and a negative kShapeAmount.</figcaption>
 </figure>
 
-The _pdhalfy_ opcode calculates a transfer function that is composed of two linear segments (see the graph).  These segments meet at a "pivot point" which always lies on the same vertical axis.  (In unipolar mode, the axis is x = 0.5, and for bipolar mode it is the y axis).  So, _pdhalfy_ is a variation of the [pdhalf](../../opcodes/pdhalf) opcode that places the pivot point of the phase distortion pattern on a vertical axis instead of a horizontal axis.
+The _pdhalfy_ opcode calculates a transfer function that is composed of two linear segments (see the graph).  These segments meet at a "pivot point" which always lies on the same vertical axis.  (In unipolar mode, the axis is x = 0.5, and for bipolar mode it is the y axis).  So, _pdhalfy_ is a variation of the [pdhalf](../opcodes/pdhalf.md) opcode that places the pivot point of the phase distortion pattern on a vertical axis instead of a horizontal axis.
 
 The _kShapeAmount_ parameter specifies where on the vertical axis this point falls.  When _kShapeAmount_ is zero, the pivot point is in the middle of the output range, forming a straight line for the transfer function and thus causing no change in the input signal.  As _kShapeAmount_ changes from zero (0) to negative one (-1), the pivot point downward towards the bottom of the graph.  As it changes from zero (0) to positive one (1), the pivot point moves upward, producing an inverted pattern.
 
@@ -49,7 +49,7 @@ apd       pdhalfy    aphase, kamount
 aout      tablei     apd, 1, 1
 ```
 
-Here is an example of the pdhalfy opcode. It uses the file [pdhalfy.csd](../../examples/pdhalfy.csd).
+Here is an example of the pdhalfy opcode. It uses the file [pdhalfy.csd](../examples/pdhalfy.csd).
 
 ``` csound-csd title="Example of the pdhalfy opcode." linenums="1"
 --8<-- "examples/pdhalfy.csd"
@@ -57,7 +57,7 @@ Here is an example of the pdhalfy opcode. It uses the file [pdhalfy.csd](../../e
 
 ## See also
 
-[Phase Distortion](../../sigmod/wavshape)
+[Phase Distortion](../sigmod/wavshape.md)
 
 More information about phase distortion on Wikipedia: [http://en.wikipedia.org/wiki/Phase_distortion_synthesis](http://en.wikipedia.org/wiki/Phase_distortion_synthesis)
 

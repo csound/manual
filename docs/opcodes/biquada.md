@@ -35,7 +35,7 @@ This type of filter is often encountered in digital signal processing literature
 ## Examples
 
 Here is an example of the biquada opcode. It uses the file
-[biquada.csd](../../examples/biquada.csd).
+[biquada.csd](../examples/biquada.csd).
 
 ``` csound-csd title="Example of the biquada opcode." linenums="1"
 --8<-- "examples/biquada.csd"
@@ -43,7 +43,7 @@ Here is an example of the biquada opcode. It uses the file
 
 ## See also
 
-[Standard filters: Biquad filters](../../sigmod/standard)
+[Standard filters: Biquad filters](../sigmod/standard.md)
 
 ## Credits
 

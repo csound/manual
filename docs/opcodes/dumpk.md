@@ -35,14 +35,14 @@ This opcode allows a generated control signal value to be saved in a named exter
 
 ## Examples
 
-Here is an example of the dumpk opcode. It uses the file [dumpk.csd](../../examples/dumpk.csd). Note that the example must be run from a directory for which the
+Here is an example of the dumpk opcode. It uses the file [dumpk.csd](../examples/dumpk.csd). Note that the example must be run from a directory for which the
 user has write access.
 
 ``` csound-csd title="Example of the dumpk opcode." linenums="1"
 --8<-- "examples/dumpk.csd"
 ```
 
-Here is another example of the dumpk opcode. It uses the file [dumpk-2.csd](../../examples/dumpk-2.csd).
+Here is another example of the dumpk opcode. It uses the file [dumpk-2.csd](../examples/dumpk-2.csd).
 
 ``` csound-csd title="Example 2 of the dumpk opcode." linenums="1"
 --8<-- "examples/dumpk-2.csd"
@@ -70,7 +70,7 @@ i   2 time    11.00000:   460.66550
 
 ## See also
 
-[File Input and Output](../../sigio/fileio)
+[File Input and Output](../sigio/fileio.md)
 
 ## Credits
 

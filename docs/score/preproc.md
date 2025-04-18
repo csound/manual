@@ -2,10 +2,10 @@
 
 ## Preprocessing of Standard Scores
 
-A *Score* (a collection of score statements) is divided into time-ordered sections by the [s statement](../../scoregens/s). Before being read by the orchestra, a score is preprocessed one section at a time. Each section is normally processed by 3 routines:  [Carry](#carry), [Tempo](#tempo), and [Sort](#sort).
+A *Score* (a collection of score statements) is divided into time-ordered sections by the [s statement](../scoregens/s.md). Before being read by the orchestra, a score is preprocessed one section at a time. Each section is normally processed by 3 routines:  [Carry](#carry), [Tempo](#tempo), and [Sort](#sort).
 
 ### Carry
-Within a group of consecutive [i statements](../../scoregens/i) whose *p1* whole numbers correspond, any pfield left empty will take its value from the same pfield of the preceding statement. An empty pfield can be denoted by a single point (.) delimited by spaces. No point is required after the last nonempty pfield. The output of Carry preprocessing will show the carried values explicitly. The Carry Feature is not affected by intervening comments or blank lines; it is turned off only by a non-*i statement* or by an *i statement* with unlike *p1* whole number.
+Within a group of consecutive [i statements](../scoregens/i.md) whose *p1* whole numbers correspond, any pfield left empty will take its value from the same pfield of the preceding statement. An empty pfield can be denoted by a single point (.) delimited by spaces. No point is required after the last nonempty pfield. The output of Carry preprocessing will show the carried values explicitly. The Carry Feature is not affected by intervening comments or blank lines; it is turned off only by a non-*i statement* or by an *i statement* with unlike *p1* whole number.
 
 > :memo: **Note**
 >
@@ -68,7 +68,7 @@ An alternative to using `!` is to switch automatic carrying off apart from *p1*,
 
 ### Tempo
 
-This operation time warps a score section according to the information in a [t statement](../../scoregens/t). The tempo operation converts *p2* (and, for [i statements](../../scoregens/i), *p3*) from original beats into real seconds, since those are the units required by the orchestra. After time warping, score files will be seen to have orchestra-readable format demonstrated by the following:
+This operation time warps a score section according to the information in a [t statement](../scoregens/t.md). The tempo operation converts *p2* (and, for [i statements](../scoregens/i.md), *p3*) from original beats into real seconds, since those are the units required by the orchestra. After time warping, score files will be seen to have orchestra-readable format demonstrated by the following:
 
 ``` csound-sco
 i p1 p2beats p2seconds
@@ -77,7 +77,7 @@ i p1 p2beats p2seconds
 
 ### Sort
 
-This routine sorts all action-time statements into chronological order by *p2* value. It also sorts coincident events into precedence order. Whenever an [f statement](../../scoregens/f) and an [i statement](../../scoregens/i) have the same *p2* value, the *f statement* will precede. Whenever two or more *i statements* have the same *p2* value, they will be sorted into ascending *p1* value order. If they also have the same *p1* value, they will be sorted into ascending *p3* value order. Score sorting is done section by section (see [s statement](../../scoregens/s)). Automatic sorting implies that score statements may appear in any order within a section.
+This routine sorts all action-time statements into chronological order by *p2* value. It also sorts coincident events into precedence order. Whenever an [f statement](../scoregens/f.md) and an [i statement](../scoregens/i.md) have the same *p2* value, the *f statement* will precede. Whenever two or more *i statements* have the same *p2* value, they will be sorted into ascending *p1* value order. If they also have the same *p1* value, they will be sorted into ascending *p3* value order. Score sorting is done section by section (see [s statement](../scoregens/s.md)). Automatic sorting implies that score statements may appear in any order within a section.
 
 > :memo: **Note**
 >
@@ -87,7 +87,7 @@ This routine sorts all action-time statements into chronological order by *p2* v
 
 At the close of any of the operations [Carry](#carry), [Tempo](#tempo), and [Sort](#sort), three additional score features are interpreted during file writeout: next-p, previous-p, and ramping.
 
-[i statement](../../scoregens/i) pfields containing the symbols `np`*x* or `pp`*x* (where *x* is some integer) will be replaced by the appropriate pfield value found on the next *i statement* (or previous *i statement*) that has the same *p1*. For example, the symbol `np7` will be replaced by the value found in *p7* of the next note that is to be played by this instrument. `np` and `pp` symbols are recursive and can reference other `np` and `pp` symbols which can reference others, etc. References must eventually terminate in a real number or a ramp symbol. Closed loop references should be avoided. `np` and `pp` symbols are illegal in *p1*, *p2* and *p3* (although they may reference these). `np` and `pp` symbols may be Carried. `np` and `pp` references cannot cross a Section boundary. Any forward or backward reference to a non-existent note-statement will be given the value zero.
+[i statement](../scoregens/i.md) pfields containing the symbols `np`*x* or `pp`*x* (where *x* is some integer) will be replaced by the appropriate pfield value found on the next *i statement* (or previous *i statement*) that has the same *p1*. For example, the symbol `np7` will be replaced by the value found in *p7* of the next note that is to be played by this instrument. `np` and `pp` symbols are recursive and can reference other `np` and `pp` symbols which can reference others, etc. References must eventually terminate in a real number or a ramp symbol. Closed loop references should be avoided. `np` and `pp` symbols are illegal in *p1*, *p2* and *p3* (although they may reference these). `np` and `pp` symbols may be Carried. `np` and `pp` references cannot cross a Section boundary. Any forward or backward reference to a non-existent note-statement will be given the value zero.
 
 E.g.: the statements
 
@@ -109,7 +109,7 @@ i1   2    1    30   0    30
 
 ### Ramping
 
-[i statement](../../scoregens/i) pfields containing the symbol `<` will be replaced by values derived from linear interpolation of a time-based ramp. Ramps are anchored at each end by the first real number found in the same pfield of a preceding and following note played by the same instrument. E.g.: the statements
+[i statement](../scoregens/i.md) pfields containing the symbol `<` will be replaced by values derived from linear interpolation of a time-based ramp. Ramps are anchored at each end by the first real number found in the same pfield of a preceding and following note played by the same instrument. E.g.: the statements
 
 ``` csound-sco
 i1   0    1    100
@@ -133,4 +133,4 @@ i1   5    1    0
 
 Ramps cannot cross a Section boundary. Ramps cannot be anchored by an `np` or `pp` symbol (although they may be referenced by these). Ramp symbols are illegal in *p1*, *p2* and *p3*. Ramp symbols may be Carried. Note, however, that while the Carry feature will propagate ramp symbols through unsorted statements, the operation that interprets these symbols is acting on a time-warped and fully sorted version of the score. In fact, time-based linear interpolation is based on warped score-time, so that a ramp which spans a group of accelerating notes will remain linear with respect to strict chronological time.
 
-Starting with Csound version 3.52, using the symbols `(` or `)` will result in an exponential interpolation ramp, similar to [expon](../../opcodes/expon). Using the symbol `˜` (a tilde) will result in uniform, random distribution between the first and last values of the ramp. Use of these functions must follow the same rules as the linear ramp function. 
+Starting with Csound version 3.52, using the symbols `(` or `)` will result in an exponential interpolation ramp, similar to [expon](../opcodes/expon.md). Using the symbol `˜` (a tilde) will result in uniform, random distribution between the first and last values of the ramp. Use of these functions must follow the same rules as the linear ramp function. 

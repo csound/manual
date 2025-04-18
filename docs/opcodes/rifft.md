@@ -20,7 +20,7 @@ _kin[]_ -- input array containing the complex input.
 
 ## Examples
 
-Here is an example of the rifft opcode. It uses the file [irfft.csd](../../examples/irfft.csd).
+Here is an example of the rifft opcode. It uses the file [irfft.csd](../examples/irfft.csd).
 
 ``` csound-csd title="Example of the rifft opcode." linenums="1"
 --8<-- "examples/irfft.csd"
@@ -28,11 +28,11 @@ Here is an example of the rifft opcode. It uses the file [irfft.csd](../../examp
 
 ## See Also
 
-[Vectorial opcodes](../../vectorial/top)
+[Vectorial opcodes](../vectorial/top.md)
 
-[array opcodes](../../math/array)
+[array opcodes](../math/array.md)
 
-[Array-based spectral opcodes](../../spectral/arrays)
+[Array-based spectral opcodes](../spectral/arrays.md)
 
 ## Credits
 

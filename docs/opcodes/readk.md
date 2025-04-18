@@ -35,13 +35,13 @@ This opcode allows a generated control signal value to be read from a named exte
 
 ## Examples
 
-Here is an example of the readk opcode. It uses the file [readk.csd](../../examples/readk.csd).
+Here is an example of the readk opcode. It uses the file [readk.csd](../examples/readk.csd).
 
 ``` csound-csd title="Example of the readk opcode." linenums="1"
 --8<-- "examples/readk.csd"
 ```
 
-Here is another example of the readk opcode. It uses the file [readk-2.csd](../../examples/readk-2.csd).
+Here is another example of the readk opcode. It uses the file [readk-2.csd](../examples/readk-2.csd).
 
 ``` csound-csd title="Example 2 of the readk opcode." linenums="1"
 --8<-- "examples/readk-2.csd"
@@ -69,7 +69,7 @@ i   2 time    11.00000:   460.66550
 
 ## See also
 
-[File Input and Output](../../sigio/fileio)
+[File Input and Output](../sigio/fileio.md)
 
 ## Credits
 

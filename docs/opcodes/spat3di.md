@@ -123,9 +123,9 @@ _aW, aX, aY, aZ_ -- Output signals
 | aY | 0      | Y out  | Y out  | Y out  | right chn / low freq.  |
 | aZ | 0      | 0      | 0      | Z out  | right chn / high freq. |
 
-If you encounter very slow performance (up to 100 times slower), it may be caused by denormals (this is also true of many other IIR opcodes, including [butterlp](../../opcodes/butterlp), [pareq](../../opcodes/pareq), [hilbert](../../opcodes/hilbert), and many others). Underflows can be avoided by:
+If you encounter very slow performance (up to 100 times slower), it may be caused by denormals (this is also true of many other IIR opcodes, including [butterlp](../opcodes/butterlp.md), [pareq](../opcodes/pareq.md), [hilbert](../opcodes/hilbert.md), and many others). Underflows can be avoided by:
 
-* Using the [denorm](../../opcodes/denorm) opcode on _ain_ before _spat3di_.
+* Using the [denorm](../opcodes/denorm.md) opcode on _ain_ before _spat3di_.
 * mixing low level DC or noise to the input signal, e.g.
 ``` csound-orc
 atmp rnd31 1/1e24, 0, 0
@@ -141,11 +141,11 @@ aW, aX, aY, aZ spa3di ain + 1/1e24, ...
 
 ## Examples
 
-See the examples for [spat3d](../../opcodes/spat3d).
+See the examples for [spat3d](../opcodes/spat3d.md).
 
 ## See also
 
-[Panning and Spatialization: Simulation of room acoustics](../../sigmod/panspatl)
+[Panning and Spatialization: Simulation of room acoustics](../sigmod/panspatl.md)
 
 ## Credits
 

@@ -18,7 +18,7 @@ _Sdst_ -- destination string variable
 
 ## Examples
 
-Here is an example of the strfromurl opcode. It uses the file [strfromurl.csd](../../examples/strfromurl.csd).
+Here is an example of the strfromurl opcode. It uses the file [strfromurl.csd](../examples/strfromurl.csd).
 
 ``` csound-csd title="Example of the strfromurl opcode." linenums="1"
 --8<-- "examples/strfromurl.csd"
@@ -26,7 +26,7 @@ Here is an example of the strfromurl opcode. It uses the file [strfromurl.csd](.
 
 ## See Also
 
-[String Manipulation Opcodes](../../strings/manipulate)
+[String Manipulation Opcodes](../strings/manipulate.md)
 
 ## Credits
 

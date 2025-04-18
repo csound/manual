@@ -20,9 +20,11 @@ _Sname_ -- String name of the inlet port. The name of the inlet is implicitly qu
 
 _asignal_ -- audio input signal
 
-During performance, the arate inlet signal is received from each instance of an instrument containing an outlet port to which this inlet has been connected using the [Examples](../../opcodes/connect)e>
+During performance, the arate inlet signal is received from each instance of an instrument containing an outlet port to which this inlet has been connected using the connect opcode. The signals of all the outlets connected to an inlet are summed in the inlet.
 
-Here is an example of the inleta opcode. It uses the file [inleta.csd](../../examples/inleta.csd).
+## Examples
+
+Here is an example of the inleta opcode. It uses the file [inleta.csd](../examples/inleta.csd).
 
 ``` csound-csd title="Example of the inleta opcode." linenums="1"
 --8<-- "examples/inleta.csd"
@@ -30,7 +32,7 @@ Here is an example of the inleta opcode. It uses the file [inleta.csd](../../exa
 
 ## See also
 
-[Signal Flow Graph Opcodes](../../signalflowgraph)
+[Signal Flow Graph Opcodes](../signalflowgraph.md)
 
 More information on this opcode: [http://www.csoundjournal.com/issue13/signalFlowGraphOpcodes.html](http://www.csoundjournal.com/issue13/signalFlowGraphOpcodes.html), written by Michael Gogins
 

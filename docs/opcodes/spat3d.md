@@ -133,9 +133,9 @@ _ain_ -- Input signal
 
 _kX, kY, kZ_ -- Sound source coordinates (in meters)
 
-If you encounter very slow performance (up to 100 times slower), it may be caused by denormals (this is also true of many other IIR opcodes, including [butterlp](../../opcodes/butterlp), [pareq](../../opcodes/pareq), [hilbert](../../opcodes/hilbert), and many others). Underflows can be avoided by:
+If you encounter very slow performance (up to 100 times slower), it may be caused by denormals (this is also true of many other IIR opcodes, including [butterlp](../opcodes/butterlp.md), [pareq](../opcodes/pareq.md), [hilbert](../opcodes/hilbert.md), and many others). Underflows can be avoided by:
 
-* Using the [denorm](../../opcodes/denorm) opcode on _ain_ before _spat3d_.
+* Using the [denorm](../opcodes/denorm.md) opcode on _ain_ before _spat3d_.
 * mixing low level DC or noise to the input signal, e.g.
 
 ``` csound-orc
@@ -152,19 +152,19 @@ aW, aX, aY, aZ spa3di ain + 1/1e24, ...
 
 ## Examples
 
-Here is an example of the spat3d opcode that outputs a stereo file. It uses the file [spat3d_stereo.csd](../../examples/spat3d_stereo.csd).
+Here is an example of the spat3d opcode that outputs a stereo file. It uses the file [spat3d_stereo.csd](../examples/spat3d_stereo.csd).
 
 ``` csound-csd title="Stereo example of the spat3d opcode." linenums="1"
 --8<-- "examples/spat3d_stereo.csd"
 ```
 
-Here is an example of the spat3d opcode that outputs a UHJ file. It uses the file [spat3d_UHJ.csd](../../examples/spat3d_UHJ.csd).
+Here is an example of the spat3d opcode that outputs a UHJ file. It uses the file [spat3d_UHJ.csd](../examples/spat3d_UHJ.csd).
 
 ``` csound-csd title="UHJ example of the spat3d opcode." linenums="1"
 --8<-- "examples/spat3d_UHJ.csd"
 ```
 
-Here is an example of the spat3d opcode that outputs a quadrophonic file. It uses the file [spat3d_quad.csd](../../examples/spat3d_quad.csd).
+Here is an example of the spat3d opcode that outputs a quadrophonic file. It uses the file [spat3d_quad.csd](../examples/spat3d_quad.csd).
 
 ``` csound-csd title="Quadrophonic example of the spat3d opcode." linenums="1"
 --8<-- "examples/spat3d_quad.csd"
@@ -172,7 +172,7 @@ Here is an example of the spat3d opcode that outputs a quadrophonic file. It use
 
 ## See also
 
-[Panning and Spatialization: Simulation of room acoustics](../../sigmod/panspatl)
+[Panning and Spatialization: Simulation of room acoustics](../sigmod/panspatl.md)
 
 ## Credits
 

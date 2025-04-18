@@ -20,7 +20,7 @@ _kin[]_ -- input array containing the complex-valued real-imaginary input.
 
 ## Examples
 
-Here is an example of the mags opcode. It uses the file [mags.csd](../../examples/mags.csd).
+Here is an example of the mags opcode. It uses the file [mags.csd](../examples/mags.csd).
 
 ``` csound-csd title="Example of the mags opcode." linenums="1"
 --8<-- "examples/mags.csd"
@@ -28,11 +28,11 @@ Here is an example of the mags opcode. It uses the file [mags.csd](../../example
 
 ## See Also
 
-[Vectorial opcodes](../../vectorial/top)
+[Vectorial opcodes](../vectorial/top.md)
 
-[array opcodes](../../math/array)
+[array opcodes](../math/array.md)
 
-[Array-based spectral opcodes](../../spectral/arrays)
+[Array-based spectral opcodes](../spectral/arrays.md)
 
 ## Credits
 

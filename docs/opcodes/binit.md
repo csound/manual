@@ -22,7 +22,7 @@ _isize_ -- FFT size of output (N).
 
 ## Examples
 
-Here is an example of the binit opcode. It uses the file [binit.csd](../../examples/binit.csd).
+Here is an example of the binit opcode. It uses the file [binit.csd](../examples/binit.csd).
 
 ``` csound-csd title="Example of the binit opcode." linenums="1"
 --8<-- "examples/binit.csd"
@@ -32,7 +32,7 @@ The example above shows partial tracking of an ifd-analysis signal, conversion t
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

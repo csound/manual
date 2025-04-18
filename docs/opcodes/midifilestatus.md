@@ -14,7 +14,7 @@ ksig  midifilestatus
 
 ## See also
 
-[MIDI input and Initialization](../../midi/input)
+[MIDI input and Initialization](../midi/input.md)
 
 ## Credits
 

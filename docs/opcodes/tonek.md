@@ -22,11 +22,11 @@ _ksig_ -- the input signal at control-rate.
 
 _khp_ --  the response curve's half-power point, in Hertz. Half power is defined as peak power / root 2.
 
-_tonek_ is like [tone](../../opcodes/tone) except its output is at control-rate rather than audio rate.
+_tonek_ is like [tone](../opcodes/tone.md) except its output is at control-rate rather than audio rate.
 
 ## Examples
 
-Here is an example of the tonek opcode. It uses the file [tonek.csd](../../examples/tonek.csd).
+Here is an example of the tonek opcode. It uses the file [tonek.csd](../examples/tonek.csd).
 
 ``` csound-csd title="Example of the tonek opcode." linenums="1"
 --8<-- "examples/tonek.csd"
@@ -34,7 +34,7 @@ Here is an example of the tonek opcode. It uses the file [tonek.csd](../../examp
 
 ## See also
 
-[Standard Filters: Control signal filters](../../sigmod/standard)
+[Standard Filters: Control signal filters](../sigmod/standard.md)
 
 ## Credits
 

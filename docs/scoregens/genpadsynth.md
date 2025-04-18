@@ -32,7 +32,7 @@ f # score_time table_size "padsynth" fundamental_frequency \
 
 ### Initialization
 
-_table_size_ -- Function table size. Should be large, e.g. 2^18 == 262144. Must be a power of 2 or power-of-2 plus 1 (see [f statement](../../scoregens/f)).
+_table_size_ -- Function table size. Should be large, e.g. 2^18 == 262144. Must be a power of 2 or power-of-2 plus 1 (see [f statement](../scoregens/f.md)).
 
 _fundamental_frequency_ -- Fundamental frequency for the generated table.
 
@@ -50,7 +50,7 @@ _partial1_amplitude, partial2_amplitude, ..._ -- Amplitudes for each partial (ma
 
 ## Examples
 
-Here is an example of the GENpadsynth routine. It uses the files [padsynth_gen.csd](../../examples/padsynth_gen.csd).
+Here is an example of the GENpadsynth routine. It uses the files [padsynth_gen.csd](../examples/padsynth_gen.csd).
 
 ``` csound-csd title="An example of the GENpadsynth routine." linenums="1"
 --8<-- "examples/padsynth_gen.csd"

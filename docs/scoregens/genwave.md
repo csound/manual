@@ -18,7 +18,7 @@ f # time size "wave" fnsf seq rescale
 
 ### Initialization
 
-_size_ -- number of points in the table. Must be a power of 2 or power-of-2 plus 1 (see [f statement](../../scoregens/f)).
+_size_ -- number of points in the table. Must be a power of 2 or power-of-2 plus 1 (see [f statement](../scoregens/f.md)).
 
 _fnsf_ -- pre-existing table with scaling function coefficients.
 
@@ -28,7 +28,7 @@ _rescale_ -- if not zero the table is not rescaled
 
 ## Examples
 
-Here is an example of the GENwave routine. It uses the file [genwave.csd](../../examples/genwave.csd).
+Here is an example of the GENwave routine. It uses the file [genwave.csd](../examples/genwave.csd).
 
 ``` csound-csd title="Example of the GENwave routine." linenums="1"
 --8<-- "examples/genwave.csd"

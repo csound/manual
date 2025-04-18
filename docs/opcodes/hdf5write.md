@@ -22,7 +22,7 @@ _xout1,... xoutN_ -- signals or arrays to be written to the hdf5 file. This opco
 
 ## Examples
 
-Here is a simple example of the hdf5write opcode. It uses the file [hdf5write.csd](../../examples/hdf5write.csd).
+Here is a simple example of the hdf5write opcode. It uses the file [hdf5write.csd](../examples/hdf5write.csd).
 
 ``` csound-csd title="Example of the hdf5write opcode." linenums="1"
 --8<-- "examples/hdf5write.csd"
@@ -30,7 +30,7 @@ Here is a simple example of the hdf5write opcode. It uses the file [hdf5write.cs
 
 ## See also
 
-[File Input and Output](../../sigio/fileio)
+[File Input and Output](../sigio/fileio.md)
 
 ## Credits
 

@@ -12,7 +12,7 @@ ar ATSaddnz ktimepnt, iatsfile, ibands [, ibandoffset, ibandincr]
 
 ### Initialization
 
-_iatsfile_ – the ATS number (n in ats.n) or the name in quotes of the analysis file made using [ATSA](../../utility/atsa).
+_iatsfile_ – the ATS number (n in ats.n) or the name in quotes of the analysis file made using [ATSA](../utility/atsa.md).
 
 _ibands_ – number of noise bands that will be used in the resynthesis (the noise has a maximum of 25 bands)
 
@@ -22,9 +22,9 @@ _ibandincr_ (optional) – sets an increment by which these synthesis opcodes co
 
 ### Performance
 
-_ktimepnt_ – The time pointer in seconds used to index the ATS file. Used for _ATSaddnz_ exactly the same as for [pvoc](../../opcodes/pvoc) and [ATSadd](../../opcodes/ATSadd).
+_ktimepnt_ – The time pointer in seconds used to index the ATS file. Used for _ATSaddnz_ exactly the same as for [pvoc](../opcodes/pvoc.md) and [ATSadd](../opcodes/ATSadd.md).
 
-_ATSaddnz_ and [ATSadd](../../opcodes/ATSadd) are based on [pvadd](../../opcodes/pvadd) by Richard Karpen and use files created by Juan Pampin's ATS ([Analysis - Transformation - Synthesis](https://ccrma.stanford.edu/~juan/ATS_manual.html)).
+_ATSaddnz_ and [ATSadd](../opcodes/ATSadd.md) are based on [pvadd](../opcodes/pvadd.md) by Richard Karpen and use files created by Juan Pampin's ATS ([Analysis - Transformation - Synthesis](https://ccrma.stanford.edu/~juan/ATS_manual.html)).
 
 _ATSaddnz_ also reads from an ATS file but it resynthesizes the noise from noise energy data contained in the ATS file. It uses a modified randi function to create band limited noise and modulates that with a cosine wave, to synthesize a user specified selection of frequency bands. Modulating the noise is required to put the band limited noise in the correct place in the frequency spectrum.
 
@@ -37,13 +37,13 @@ _ATSaddnz_ also reads from an ATS file but it resynthesizes the noise from noise
 
 In the example above we are synthesizing all 25 noise bands from the data contained in the ATS analysis file called "clarinet.ats".
 
-Here is a complete example of the ATSaddnz opcode. It uses the file [ATSaddnz.csd](../../examples/ATSaddnz.csd).
+Here is a complete example of the ATSaddnz opcode. It uses the file [ATSaddnz.csd](../examples/ATSaddnz.csd).
 
 ``` csound-csd title="Example of the ATSaddnz opcode." linenums="1"
 --8<-- "examples/ATSaddnz.csd"
 ```
 
-Here is another example of the ATSaddnz opcode. It uses the file [ATSaddnz-2.csd](../../examples/ATSaddnz-2.csd).
+Here is another example of the ATSaddnz opcode. It uses the file [ATSaddnz-2.csd](../examples/ATSaddnz-2.csd).
 
 ``` csound-csd title="Example 2 of the ATSaddnz opcode." linenums="1"
 --8<-- "examples/ATSaddnz-2.csd"
@@ -51,7 +51,7 @@ Here is another example of the ATSaddnz opcode. It uses the file [ATSaddnz-2.csd
 
 ## See also
 
-[ATS Spectral Processing](../../spectral/ATS)
+[ATS Spectral Processing](../spectral/ATS.md)
 
 ## Credits
 

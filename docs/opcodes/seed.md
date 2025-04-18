@@ -3,11 +3,11 @@ id:seed
 category:Signal Generators:Random (Noise) Generators
 -->
 # seed
-Sets the global seed value for all _x-class noise generators_, as well as other opcodes that use a random call, such as [grain](../../opcodes/grain).
+Sets the global seed value for all _x-class noise generators_, as well as other opcodes that use a random call, such as [grain](../opcodes/grain.md).
 
 > :memo: **Please Note**
 >
-> [rand](../../opcodes/rand), [randh](../../opcodes/randh), [randi](../../opcodes/randi), [rnd(x)](../../opcodes/rnd) and [birnd(x)](../../opcodes/birnd) are not affected by seed.
+> [rand](../opcodes/rand.md), [randh](../opcodes/randh.md), [randi](../opcodes/randi.md), [rnd(x)](../opcodes/rnd.md) and [birnd(x)](../opcodes/birnd.md) are not affected by seed.
 
 ## Syntax
 ``` csound-orc
@@ -22,7 +22,7 @@ When specifying a seed value, _ival_ should be an integer between 0 and 2<sup>32
 
 ## Examples
 
-Here is an example of the seed opcode. It uses the file [seed.csd](../../examples/seed.csd).
+Here is an example of the seed opcode. It uses the file [seed.csd](../examples/seed.csd).
 
 ``` csound-orc title="Example of the seed opcode." linenums="1"
 --8<-- "examples/seed.csd"
@@ -44,6 +44,6 @@ i   2 time     3.00000:   188.69525
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
-[Orchestra Header Statements](../../orch/header)
+[Orchestra Header Statements](../orch/header.md)

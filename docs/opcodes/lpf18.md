@@ -22,7 +22,7 @@ _xres_ -- the amount of resonance. Self-oscillation occurs when _xres_ is approx
 
 _xdist_ -- amount of distortion. _kdist_ = 0 gives a clean output. _xdist_ &gt; 0 adds _tanh_() distortion controlled by the filter parameters, in such a way that both low cutoff and high resonance increase the distortion amount. Some experimentation is encouraged.
 
-_lpf18_ is a digital emulation of a 3 pole (18 dB/oct.) lowpass filter capable of self-oscillation with a built-in distortion unit. It is really a 3-pole version of [moogvcf](../../opcodes/moogvcf), retuned, recalibrated and with some performance improvements. The tuning and feedback tables use no more than 6 adds and 6 multiplies per control rate. The distortion unit, itself, is based on a modified [tanh](../../opcodes/tanh) function driven by the filter controls.
+_lpf18_ is a digital emulation of a 3 pole (18 dB/oct.) lowpass filter capable of self-oscillation with a built-in distortion unit. It is really a 3-pole version of [moogvcf](../opcodes/moogvcf.md), retuned, recalibrated and with some performance improvements. The tuning and feedback tables use no more than 6 adds and 6 multiplies per control rate. The distortion unit, itself, is based on a modified [tanh](../opcodes/tanh.md) function driven by the filter controls.
 
 > :memo: **Note**
 >
@@ -30,7 +30,7 @@ _lpf18_ is a digital emulation of a 3 pole (18 dB/oct.) lowpass filter capable o
 
 ## Examples
 
-Here is an example of the lpf18 opcode. It uses the file [lpf18.csd](../../examples/lpf18.csd).
+Here is an example of the lpf18 opcode. It uses the file [lpf18.csd](../examples/lpf18.csd).
 
 ``` csound-csd title="Example of the lpf18 opcode." linenums="1"
 --8<-- "examples/lpf18.csd"
@@ -38,7 +38,7 @@ Here is an example of the lpf18 opcode. It uses the file [lpf18.csd](../../examp
 
 ## See also
 
-[Standard Filters: Resonant Low-pass filters](../../sigmod/standard)
+[Standard Filters: Resonant Low-pass filters](../sigmod/standard.md)
 
 ## Credits
 

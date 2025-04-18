@@ -24,7 +24,7 @@ This opcode allows a line of text to be read from a named external file.  There 
 
 ## Examples
 
-Here is an example of the readfi opcode. It uses the file [readfi.csd](../../examples/readfi.csd).
+Here is an example of the readfi opcode. It uses the file [readfi.csd](../examples/readfi.csd).
 
 ``` csound-csd title="Example of the readfi opcode." linenums="1"
 --8<-- "examples/readfi.csd"
@@ -32,7 +32,7 @@ Here is an example of the readfi opcode. It uses the file [readfi.csd](../../exa
 
 ## See also
 
-[File Input and Output](../../sigio/fileio)
+[File Input and Output](../sigio/fileio.md)
 
 ## Credits
 

@@ -62,7 +62,7 @@ The high pass version is less likely to oscillate. It adds scintillation to medi
 
 ## Examples
 
-Here is an example of the nlfilt2 opcode. It uses the file [nlfilt2.csd](../../examples/nlfilt2.csd).
+Here is an example of the nlfilt2 opcode. It uses the file [nlfilt2.csd](../examples/nlfilt2.csd).
 
 ``` csound-csd title="Example of the nlfilt2 opcode." linenums="1"
 --8<-- "examples/nlfilt2.csd"
@@ -70,7 +70,7 @@ Here is an example of the nlfilt2 opcode. It uses the file [nlfilt2.csd](../../e
 
 ## See also
 
-[Specialized Filters: Other filters](../../sigmod/speciali)
+[Specialized Filters: Other filters](../sigmod/speciali.md)
 
 ## Credits
 

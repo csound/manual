@@ -26,11 +26,11 @@ _xres_ -- amount of resonance. Self-oscillation occurs when _xres_ is approximat
 
 _moogvcf2_ is a digital emulation of the Moog diode ladder filter configuration. This emulation is based loosely on the paper &#8220;Analyzing the Moog VCF with Considerations for Digital Implementation&#8221; by Stilson and Smith (CCRMA). This version was originally coded in Csound by Josep Comajuncosas. Some modifications and conversion to C were done by Hans Mikelson and then adjusted.
 
-_moogvcf2_ is identical to [moogvcf](../../opcodes/moogvcf), except that the _iscale_ parameter defaults to [0dbfs](../../opcodes/0dbfs) instead of 0, guaranteeing that amplitude will usually be OK.
+_moogvcf2_ is identical to [moogvcf](../opcodes/moogvcf.md), except that the _iscale_ parameter defaults to [0dbfs](../opcodes/0dbfs.md) instead of 0, guaranteeing that amplitude will usually be OK.
 
 ## Examples
 
-Here is an example of the moogvcf2 opcode. It uses the file [moogvcf2.csd](../../examples/moogvcf2.csd).
+Here is an example of the moogvcf2 opcode. It uses the file [moogvcf2.csd](../examples/moogvcf2.csd).
 
 ``` csound-csd title="Example of the moogvcf2 opcode." linenums="1"
 --8<-- "examples/moogvcf2.csd"
@@ -38,7 +38,7 @@ Here is an example of the moogvcf2 opcode. It uses the file [moogvcf2.csd](../..
 
 ## See also
 
-[Standard Filters: Resonant Low-pass filters](../../sigmod/standard)
+[Standard Filters: Resonant Low-pass filters](../sigmod/standard.md)
 
 ## Credits
 

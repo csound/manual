@@ -26,7 +26,7 @@ _iformat_ -- pvsdata format, defaults to 0:PVS_AMP_FREQ.
 
 ## Examples
 
-Here is an example of the pvsinit opcode. It uses the file [pvsinit.csd](../../examples/pvsinit.csd).
+Here is an example of the pvsinit opcode. It uses the file [pvsinit.csd](../examples/pvsinit.csd).
 
 ``` csound-csd title="Example of the pvsinit opcode." linenums="1"
 --8<-- "examples/pvsinit.csd"
@@ -34,7 +34,7 @@ Here is an example of the pvsinit opcode. It uses the file [pvsinit.csd](../../e
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

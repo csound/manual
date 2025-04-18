@@ -34,13 +34,13 @@ This type of filter is often encountered in digital signal processing literature
 
 ## Examples
 
-Here is an example of the biquad opcode. It uses the file [biquad.csd](../../examples/biquad.csd).
+Here is an example of the biquad opcode. It uses the file [biquad.csd](../examples/biquad.csd).
 
 ``` csound-csd title="Example of the biquad opcode." linenums="1"
 --8<-- "examples/biquad.csd"
 ```
 
-Here is another example of the biquad opcode used for modal synthesis. It uses the file [biquad-2.csd](../../examples/biquad-2.csd). See the [Modal Frequency Ratios](../../misc/modalfreq) appendix for other frequency ratios.
+Here is another example of the biquad opcode used for modal synthesis. It uses the file [biquad-2.csd](../examples/biquad-2.csd). See the [Modal Frequency Ratios](../misc/modalfreq.md) appendix for other frequency ratios.
 
 ``` csound-csd title="Example of the biquad opcode for modal synthesis." linenums="1"
 --8<-- "examples/biquad-2.csd"
@@ -48,7 +48,7 @@ Here is another example of the biquad opcode used for modal synthesis. It uses t
 
 ## See also
 
-[Standard filters: Biquad filters](../../sigmod/standard)
+[Standard filters: Biquad filters](../sigmod/standard.md)
 
 ## Credits
 

@@ -35,7 +35,7 @@ _aexciten_ -- excitation signal to be inserted into the plate.
 
 ## Examples
 
-Here is an example of the platerev opcode. It uses the file [plate.csd](../../examples/plate.csd).
+Here is an example of the platerev opcode. It uses the file [plate.csd](../examples/plate.csd).
 
 ``` csound-csd title="Example of the platerev opcode." linenums="1"
 --8<-- "examples/plate.csd"
@@ -43,7 +43,7 @@ Here is an example of the platerev opcode. It uses the file [plate.csd](../../ex
 
 ## See also
 
-[Reverberation](../../sigmod/reverbtn)
+[Reverberation](../sigmod/reverbtn.md)
 
 ## Credits
 

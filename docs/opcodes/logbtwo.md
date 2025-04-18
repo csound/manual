@@ -18,7 +18,7 @@ These functions are fast, because they read values stored in tables. Also they a
 
 ## Examples
 
-Here is an example of the logbtwo opcode. It uses the file [logbtwo.csd](../../examples/logbtwo.csd).
+Here is an example of the logbtwo opcode. It uses the file [logbtwo.csd](../examples/logbtwo.csd).
 
 ``` csound-csd title="Example of the logbtwo opcode." linenums="1"
 --8<-- "examples/logbtwo.csd"
@@ -32,7 +32,7 @@ instr 1:  i1 = 1.585
 
 ## See also
 
-[Mathematical Functions](../../math/mathfunc)
+[Mathematical Functions](../math/mathfunc.md)
 
 ## Credits
 

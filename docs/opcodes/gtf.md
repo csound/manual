@@ -28,7 +28,7 @@ The gammatone filter is commonly used in models of the auditory system. The algo
 
 ## Examples
 
-Here is an example of the gtf opcode. It uses the file [gtf.csd](../../examples/gtf.csd).
+Here is an example of the gtf opcode. It uses the file [gtf.csd](../examples/gtf.csd).
 
 ``` csound-csd title="Example of the gtf opcode." linenums="1"
 --8<-- "examples/gtf.csd"
@@ -36,7 +36,7 @@ Here is an example of the gtf opcode. It uses the file [gtf.csd](../../examples/
 
 ## See also
 
-[Specialized Filters: Other filters](../../sigmod/speciali)
+[Specialized Filters: Other filters](../sigmod/speciali.md)
 
 ## Credits
 

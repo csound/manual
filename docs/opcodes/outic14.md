@@ -34,7 +34,7 @@ It can scale an i-value floating-point argument according to the _imin_ and _ima
 
 ## See also
 
-[MIDI Message Output](../../midi/output)
+[MIDI Message Output](../midi/output.md)
 
 ## Credits
 

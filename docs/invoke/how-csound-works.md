@@ -2,7 +2,7 @@
 
 Csound processes and generates output using "unit generators" (ugens) called opcodes. These opcodes are used to define instruments in the orchestra. When you run Csound, the engine loads the base Opcodes, and the opcodes contained in separate loadable "opcode libraries" . It then interprets the orchestra (through the orchestra reader). The engine sets up an instrument processing chain, which then receives events from the score or in real-time. The processing chain uses the input/output modules to generate output. There are modules that can write to file, or generate real-time audio and/or midi output.
 
-![The Csound5 Modular structure.](../../img/engine.png)
+![The Csound5 Modular structure.](../img/engine.png)
 
 
 ## Csound's processing buffers

@@ -5,7 +5,7 @@ category:Utilities
 # hetro
 Decomposes an input soundfile into component sinusoids.
 
-Hetrodyne filter analysis for the Csound [adsyn](../../opcodes/adsyn) generator.
+Hetrodyne filter analysis for the Csound [adsyn](../opcodes/adsyn.md) generator.
 
 ## Syntax
 ```
@@ -39,13 +39,13 @@ _-l cutfreq_ -- substitute a 3rd order Butterworth low-pass filter with cutoff f
 
 ### Performance
 
-As of Csound 4.08, _hetro_ can write SDIF output files if the output file name ends with ".sdif" or ".SDIF". See the [sdif2ad utility](../../utility/sdif2ad) for more information about the Csound's SDIF support.
+As of Csound 4.08, _hetro_ can write SDIF output files if the output file name ends with ".sdif" or ".SDIF". See the [sdif2ad utility](../utility/sdif2ad.md) for more information about the Csound's SDIF support.
 
 #### File Format
 
 The output file contains time-sequenced amplitude and frequency values for each partial of an additive complex audio source. The information is in the form of breakpoints (time, value, time, value, ....) using 16-bit integers in the range 0 - 32767. Time is given in milliseconds, and frequency in Hertz (cps). The breakpoint data is exclusively non-negative, and the values -1 and -2 uniquely signify the start of new amplitude and frequency tracks. A track is terminated by the value 32767. Before being written out, each track is data-reduced by amplitude thresholding and linear breakpoint consolidation.
 
-A component partial is defined by two breakpoint sets: an amplitude set, and a frequency set. Within a composite file these sets may appear in any order (amplitude, frequency, amplitude ....; or amplitude, amplitude..., then frequency, frequency,...). During [adsyn](../../opcodes/adsyn) resynthesis the sets are automatically paired (amplitude, frequency) from the order in which they were found. There should be an equal number of each.
+A component partial is defined by two breakpoint sets: an amplitude set, and a frequency set. Within a composite file these sets may appear in any order (amplitude, frequency, amplitude ....; or amplitude, amplitude..., then frequency, frequency,...). During [adsyn](../opcodes/adsyn.md) resynthesis the sets are automatically paired (amplitude, frequency) from the order in which they were found. There should be an equal number of each.
 
 A legal _adsyn_ control file could have following format:
 
@@ -70,7 +70,7 @@ This will analyze 2.5 seconds of channel 1 of a file "audiofile.test", recorded 
 
 The Butterworth LPF is not enabled.
 
-Here is an example of the hetro utility. It uses the file [hetro.csd](../../examples/hetro.csd).
+Here is an example of the hetro utility. It uses the file [hetro.csd](../examples/hetro.csd).
 
 ``` csound-csd title="Example of the hetro utility." linenums="1"
 --8<-- "examples/hetro.csd"

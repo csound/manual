@@ -43,7 +43,7 @@ _kvamp_ -- amplitude of the vibrato
 
 ## Examples
 
-Here is an example of the wgflute opcode. It uses the file [wgflute.csd](../../examples/wgflute.csd).
+Here is an example of the wgflute opcode. It uses the file [wgflute.csd](../examples/wgflute.csd).
 
 ``` csound-csd title="Example of the wgflute opcode." linenums="1"
 --8<-- "examples/wgflute.csd"
@@ -51,7 +51,7 @@ Here is an example of the wgflute opcode. It uses the file [wgflute.csd](../../e
 
 ## See also
 
-[Waveguide Physical Modeling](../../siggen/wavguide)
+[Waveguide Physical Modeling](../siggen/wavguide.md)
 
 ## Credits
 

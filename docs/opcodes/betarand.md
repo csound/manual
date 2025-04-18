@@ -31,7 +31,7 @@ For more detailed explanation of these distributions, see:
 
 ## Examples
 
-Here is an example of the betarand opcode. It uses the file [betarand.csd](../../examples/betarand.csd).
+Here is an example of the betarand opcode. It uses the file [betarand.csd](../examples/betarand.csd).
 
 ``` csound-orc title="Example of the betarand opcode." linenums="1"
 --8<-- "examples/betarand.csd"
@@ -67,7 +67,7 @@ i   2 time     5.00000:    56.38914
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
 ## Credits
 

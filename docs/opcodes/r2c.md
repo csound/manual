@@ -20,7 +20,7 @@ _kin[]_ -- input array containing the real-valued input.
 
 ## Examples
 
-Here is an example of the r2c opcode. It uses the file [r2c.csd](../../examplesr2c.csd).
+Here is an example of the r2c opcode. It uses the file [r2c.csd](../examples/r2c.csd).
 
 ``` csound-csd title="Example of the r2c opcode." linenums="1"
 --8<-- "examples/r2c.csd"
@@ -28,11 +28,11 @@ Here is an example of the r2c opcode. It uses the file [r2c.csd](../../examplesr
 
 ## See Also
 
-[Vectorial opcodes](../../vectorial/top)
+[Vectorial opcodes](../vectorial/top.md)
 
-[array opcodes](../../math/array)
+[array opcodes](../math/array.md)
 
-[Array-based spectral opcodes](../../spectral/arrays)
+[Array-based spectral opcodes](../spectral/arrays.md)
 
 ## Credits
 

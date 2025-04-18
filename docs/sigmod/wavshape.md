@@ -4,16 +4,16 @@ These opcodes can perform dynamic waveshaping or phaseshaping (a.k.a. phase dist
 
 These opcodes are good for waveshaping:
 
-* [chebyshevpoly](../../opcodes/chebyshevpoly)
-* [clip](../../opcodes/clip)
-* [distort](../../opcodes/distort)
-* [distort1](../../opcodes/distort1)
-* [polynomial](../../opcodes/polynomial)
-* [powershape](../../opcodes/powershape)
+* [chebyshevpoly](../opcodes/chebyshevpoly.md)
+* [clip](../opcodes/clip.md)
+* [distort](../opcodes/distort.md)
+* [distort1](../opcodes/distort1.md)
+* [polynomial](../opcodes/polynomial.md)
+* [powershape](../opcodes/powershape.md)
 
 These opcodes are good for phaseshaping:
 
-* [pdclip](../../opcodes/pdclip)
-* [pdhalf](../../opcodes/pdhalf)
-* [pdhalfy](../../opcodes/pdhalfy)
-* [vps](../../opcodes/vps)
+* [pdclip](../opcodes/pdclip.md)
+* [pdhalf](../opcodes/pdhalf.md)
+* [pdhalfy](../opcodes/pdhalfy.md)
+* [vps](../opcodes/vps.md)

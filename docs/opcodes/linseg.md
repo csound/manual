@@ -27,7 +27,7 @@ These units generate control or audio signals whose values can pass through 2 or
 
 ## Examples
 
-Here is an example of the linseg opcode. It uses the file [linseg.csd](../../examples/linseg.csd).
+Here is an example of the linseg opcode. It uses the file [linseg.csd](../examples/linseg.csd).
 
 ``` csound-orc title="Example of the linseg opcode." linenums="1"
 --8<-- "examples/linseg.csd"
@@ -35,7 +35,7 @@ Here is an example of the linseg opcode. It uses the file [linseg.csd](../../exa
 
 ## See also
 
-[Linear and Exponential Generators](../../siggen/lineexp)
+[Linear and Exponential Generators](../siggen/lineexp.md)
 
 ## Credits
 

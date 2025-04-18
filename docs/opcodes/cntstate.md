@@ -22,7 +22,7 @@ kmax, kmin, kinc -- arguments to the original creation
 
 ## See also
 
-[Program Flow Control: Counter](../../control/pgmctl)
+[Program Flow Control: Counter](../control/pgmctl.md)
 
 ## Credits
 

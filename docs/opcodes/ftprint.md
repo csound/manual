@@ -33,7 +33,7 @@ _kstep_ - How many elements to skip (default = 1)
 
 ## Examples
 
-Here is an example of the ftprint opcode. It uses the file [ftprint.csd](../../examples/ftprint.csd).
+Here is an example of the ftprint opcode. It uses the file [ftprint.csd](../examples/ftprint.csd).
 
 ``` csound-csd title="Example of the ftprint opcode." linenums="1"
 --8<-- "examples/ftprint.csd"
@@ -41,9 +41,9 @@ Here is an example of the ftprint opcode. It uses the file [ftprint.csd](../../e
 
 ## See also
 
-[Printing and Display](../../sigio/pdisplay)
+[Printing and Display](../sigio/pdisplay.md)
 
-[Read/Write Operations](../../table/readwrit)
+[Read/Write Operations](../table/readwrit.md)
 
 ## Credits
 

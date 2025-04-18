@@ -21,7 +21,7 @@ Get the current pitch-bend value for this channel. Note that this access to pitc
 
 ## Examples
 
-Here is an example of the pchbend opcode. It uses the file [pchbend.csd](../../examples/pchbend.csd).
+Here is an example of the pchbend opcode. It uses the file [pchbend.csd](../examples/pchbend.csd).
 
 ``` csound-csd title="Example of the pchbend opcode." linenums="1"
 --8<-- "examples/pchbend.csd"
@@ -29,7 +29,7 @@ Here is an example of the pchbend opcode. It uses the file [pchbend.csd](../../e
 
 ## See also
 
-[MIDI input and Initialization](../../midi/input)
+[MIDI input and Initialization](../midi/input.md)
 
 ## Credits
 

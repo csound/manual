@@ -30,7 +30,7 @@ _kasym_ -- asymmetry of resonance. Typically in the range 0 to 1.
 
 ## Examples
 
-Here is an example of the tbvcf opcode. It uses the file [tbvcf.csd](../../examples/tbvcf.csd).
+Here is an example of the tbvcf opcode. It uses the file [tbvcf.csd](../examples/tbvcf.csd).
 
 ``` csound-csd title="Example of the tbvcf opcode." linenums="1"
 --8<-- "examples/tbvcf.csd"
@@ -38,7 +38,7 @@ Here is an example of the tbvcf opcode. It uses the file [tbvcf.csd](../../examp
 
 ## See also
 
-[Standard Filters: Resonant Low-pass filters](../../sigmod/standard)
+[Standard Filters: Resonant Low-pass filters](../sigmod/standard.md)
 
 ## Credits
 

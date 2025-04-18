@@ -20,7 +20,7 @@ _ivalue_ -- floating point value (must be within 0 to 1)
 
 ### Performance
 
-_initc7_ can be used together with both [midic7](../../opcodes/midic7) and  [ctrl7](../../opcodes/ctrl7) opcodes for initializing the first controller's value. _ivalue_ argument must be set with a number within 0 to 1. An error occurs if it is not. Use the following formula to set _ivalue_ according with _midic7_ and _ctrl7_ min and max range:
+_initc7_ can be used together with both [midic7](../opcodes/midic7.md) and  [ctrl7](../opcodes/ctrl7.md) opcodes for initializing the first controller's value. _ivalue_ argument must be set with a number within 0 to 1. An error occurs if it is not. Use the following formula to set _ivalue_ according with _midic7_ and _ctrl7_ min and max range:
 
 ```
 ivalue = (initial_value - min) / (max - min)
@@ -28,7 +28,7 @@ ivalue = (initial_value - min) / (max - min)
 
 ## Examples
 
-Here is an example of the initc7 opcode. It uses the file [initc7.csd](../../examples/initc7.csd).
+Here is an example of the initc7 opcode. It uses the file [initc7.csd](../examples/initc7.csd).
 
 ``` csound-csd title="Example of the initc7 opcode." linenums="1"
 --8<-- "examples/initc7.csd"
@@ -36,7 +36,7 @@ Here is an example of the initc7 opcode. It uses the file [initc7.csd](../../exa
 
 ## See also
 
-[MIDI input and Initialization](../../midi/input)
+[MIDI input and Initialization](../midi/input.md)
 
 ## Credits
 

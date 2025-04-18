@@ -36,7 +36,7 @@ _kpitch_ -- pitch scaling (transposition)
 
 ## Examples
 
-Here is an example of the tabifd opcode. It uses the file [tabifd.csd](../../examples/tabifd.csd).
+Here is an example of the tabifd opcode. It uses the file [tabifd.csd](../examples/tabifd.csd).
 
 ``` csound-csd title="Example of the tabifd opcode." linenums="1"
 --8<-- "examples/tabifd.csd"
@@ -46,7 +46,7 @@ The example above shows the tabifd analysis feeding into partial tracking andcub
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

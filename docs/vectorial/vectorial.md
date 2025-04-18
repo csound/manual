@@ -4,20 +4,20 @@ These opcodes perform operations between two vectors, that is, each element of t
 
 Operations Between two  Vectorial Signals:
 
-* [vaddv](../../opcodes/vaddv)
-* [vsubv](../../opcodes/vsubv)
-* [vmultv](../../opcodes/vmultv)
-* [vdivv](../../opcodes/vdivv)
-* [vpowv](../../opcodes/vpowv)
-* [vexpv](../../opcodes/vexpv)
-* [vcopy](../../opcodes/vcopy)
-* [vmap](../../opcodes/vmap)
-* [vaddv_i](../../opcodes/vaddv_i)
-* [vsubv_i](../../opcodes/vsubv_i)
-* [vmultv_i](../../opcodes/vmultv_i)
-* [vdivv_i](../../opcodes/vdivv_i)
-* [vpowv_i](../../opcodes/vpowv_i)
-* [vexpv_i](../../opcodes/vexpv_i)
-* [vcopy_i](../../opcodes/vcopy_i)
+* [vaddv](../opcodes/vaddv.md)
+* [vsubv](../opcodes/vsubv.md)
+* [vmultv](../opcodes/vmultv.md)
+* [vdivv](../opcodes/vdivv.md)
+* [vpowv](../opcodes/vpowv.md)
+* [vexpv](../opcodes/vexpv.md)
+* [vcopy](../opcodes/vcopy.md)
+* [vmap](../opcodes/vmap.md)
+* [vaddv_i](../opcodes/vaddv_i.md)
+* [vsubv_i](../opcodes/vsubv_i.md)
+* [vmultv_i](../opcodes/vmultv_i.md)
+* [vdivv_i](../opcodes/vdivv_i.md)
+* [vpowv_i](../opcodes/vpowv_i.md)
+* [vexpv_i](../opcodes/vexpv_i.md)
+* [vcopy_i](../opcodes/vcopy_i.md)
 
-All these operators are designed to be used together with other opcodes that operate with vectorial signals such as [vcella](../../opcodes/vcella), [adsynt](../../opcodes/adsynt), [adsynt2](../../opcodes/adsynt2), etc.
+All these operators are designed to be used together with other opcodes that operate with vectorial signals such as [vcella](../opcodes/vcella.md), [adsynt](../opcodes/adsynt.md), [adsynt2](../opcodes/adsynt2.md), etc.

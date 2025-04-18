@@ -44,7 +44,7 @@ The _vdelayxw_ opcodes change the position of the write tap in the delay line (u
 
 ## Examples
 
-Here is an example of the use of the _vdelayxw_ opcode. It uses the file [vdelayxw.csd](../../examples/vdelayxw.csd).
+Here is an example of the use of the _vdelayxw_ opcode. It uses the file [vdelayxw.csd](../examples/vdelayxw.csd).
 
 ``` csound-csd title="Example of the _vdelayxw_ opcode." linenums="1"
 --8<-- "examples/vdelayxw.csd"
@@ -52,4 +52,4 @@ Here is an example of the use of the _vdelayxw_ opcode. It uses the file [vdelay
 
 ## See also
 
-[Delay](../../sigmod/delayops)
+[Delay](../sigmod/delayops.md)

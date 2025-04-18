@@ -24,7 +24,7 @@ _kvar1 [, kvar2,..., kvarN]_ - k-rate variables to watch for changes.
 
 ## Examples
 
-Here is an example of the changed opcode. It uses the file [changed.csd](../../examples/changed.csd).
+Here is an example of the changed opcode. It uses the file [changed.csd](../examples/changed.csd).
 
 ``` csound-csd title="Example of the changed opcode." linenums="1"
 --8<-- "examples/changed.csd"
@@ -64,7 +64,7 @@ i1     0.00000
 
 ## See also
 
-[Sensing and Control: Tempo and Sequencing](../../control/sensing)
+[Sensing and Control: Tempo and Sequencing](../control/sensing.md)
 
 ## Credits
 

@@ -22,7 +22,7 @@ _ival_ -- the handle deleted or a negative number if there was no such counter.
 
 ## See also
 
-[Program Flow Control: Counter](../../control/pgmctl)
+[Program Flow Control: Counter](../control/pgmctl.md)
 
 ## Credits
 

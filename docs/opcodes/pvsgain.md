@@ -24,7 +24,7 @@ _kgain_ -- amplitude scaling (defaults to 1).
 
 ## Examples
 
-Here is an example of the use of the _pvsgain_ opcode. It uses the file [pvsgain.csd](../../examples/pvsgain.csd).
+Here is an example of the use of the _pvsgain_ opcode. It uses the file [pvsgain.csd](../examples/pvsgain.csd).
 
 ``` csound-csd title="Example of the _pvsgain_ opcode." linenums="1"
 --8<-- "examples/pvsgain.csd"
@@ -32,7 +32,7 @@ Here is an example of the use of the _pvsgain_ opcode. It uses the file [pvsgain
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

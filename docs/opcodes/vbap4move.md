@@ -31,17 +31,17 @@ If _ifldnum_ is negative, the fields represent angular velocities and equal time
 > :warning: **Warning**
 >
 > 
-Please note that all _vbap_ panning opcodes require the _vbap_ system to be initialized using [vbaplsinit](../../opcodes/vbaplsinit).
+Please note that all _vbap_ panning opcodes require the _vbap_ system to be initialized using [vbaplsinit](../opcodes/vbaplsinit.md).
 
 ### Reference
 
 Ville Pulkki: &#8220;Virtual Sound Source Positioning Using Vector Base Amplitude Panning&#8221; _Journal of the Audio Engineering Society_, 1997 June, Vol. 45/6, p. 456.
 
 ## Examples
-See the entry for [vbap8move](../../opcodes/vbap8move) for an example of usage of the _vbapXmove_ opcodes.
+See the entry for [vbap8move](../opcodes/vbap8move.md) for an example of usage of the _vbapXmove_ opcodes.
 
 
-Here is an example of the vbap4move opcode. It uses the file [vbap4move.csd](../../examples/vbap4move.csd).
+Here is an example of the vbap4move opcode. It uses the file [vbap4move.csd](../examples/vbap4move.csd).
 
 ``` csound-csd title="Example of the vbap4move opcode." linenums="1"
 --8<-- "examples/vbap4move.csd"
@@ -49,7 +49,7 @@ Here is an example of the vbap4move opcode. It uses the file [vbap4move.csd](../
 
 ## See also
 
-[Panning and Spatialization: Vector Base Amplitude Panning](../../sigmod/panspatl)
+[Panning and Spatialization: Vector Base Amplitude Panning](../sigmod/panspatl.md)
 
 ## Credits
 

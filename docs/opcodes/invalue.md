@@ -22,7 +22,7 @@ _"channel name"_ -- An integer, string (in double-quotes), or string variable id
 
 ## Examples
 
-Here is an example of the invalue opcode. It uses the file [invalue.csd](../../examples/invalue.csd).
+Here is an example of the invalue opcode. It uses the file [invalue.csd](../examples/invalue.csd).
 
 ``` csound-csd title="Example of the invalue opcode." linenums="1"
 --8<-- "examples/invalue.csd"
@@ -30,7 +30,7 @@ Here is an example of the invalue opcode. It uses the file [invalue.csd](../../e
 
 ## See also
 
-[Signal Input](../../sigio/input)
+[Signal Input](../sigio/input.md)
 
 ## Credits
 

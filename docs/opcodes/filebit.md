@@ -22,7 +22,7 @@ _filebit_ returns the number of bits in each sample in the sound file _ifilcod_.
 
 ## Examples
 
-Here is an example of the filebit opcode. It uses the file [filebit.csd](../../examples/filebit.csd), and [stereoJungle.wav](../../examples/stereoJungle.wav).
+Here is an example of the filebit opcode. It uses the file [filebit.csd](../examples/filebit.csd), and [stereoJungle.wav](../examples/stereoJungle.wav).
 
 ``` csound-csd title="Example of the filebit opcode." linenums="1"
 --8<-- "examples/filebit.csd"
@@ -36,7 +36,7 @@ bit depth = 16 bit
 
 ## See also
 
-[Sound File Queries](../../sigio/queries)
+[Sound File Queries](../sigio/queries.md)
 
 ## Credits
 

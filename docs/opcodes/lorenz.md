@@ -48,11 +48,11 @@ kb = 8/3
 
 > :memo: **Note**
 >
-> This algorithm uses internal non linear feedback loops which causes audio result to depend on the orchestra sampling rate. For example, if you develop a project with _sr_=48000Hz and if you want to produce an audio CD from it, you should record a file with _sr_=48000Hz and then downsample the file to 44100Hz using the [src_conv](../../utility/src_conv) utility.
+> This algorithm uses internal non linear feedback loops which causes audio result to depend on the orchestra sampling rate. For example, if you develop a project with _sr_=48000Hz and if you want to produce an audio CD from it, you should record a file with _sr_=48000Hz and then downsample the file to 44100Hz using the [src_conv](../utility/src_conv.md) utility.
 
 ## Examples
 
-Here is an example of the lorenz opcode. It uses the file [lorenz.csd](../../examples/lorenz.csd).
+Here is an example of the lorenz opcode. It uses the file [lorenz.csd](../examples/lorenz.csd).
 
 ``` csound-orc title="Example of the lorenz opcode." linenums="1"
 --8<-- "examples/lorenz.csd"
@@ -60,7 +60,7 @@ Here is an example of the lorenz opcode. It uses the file [lorenz.csd](../../exa
 
 ## See Also
 
-[Models and Emulations](../../siggen/models)
+[Models and Emulations](../siggen/models.md)
 
 ## Credits
 

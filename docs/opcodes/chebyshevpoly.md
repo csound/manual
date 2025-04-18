@@ -42,7 +42,7 @@ More information about Chebyshev polynomials can be found on Wikipedia at [http:
 
 ## Examples
 
-Here is an example of the chebyshevpoly opcode. It uses the file [chebyshevpoly.csd](../../examples/chebyshevpoly.csd).
+Here is an example of the chebyshevpoly opcode. It uses the file [chebyshevpoly.csd](../examples/chebyshevpoly.csd).
 
 ``` csound-csd title="Example of the chebyshevpoly opcode." linenums="1"
 --8<-- "examples/chebyshevpoly.csd"
@@ -50,9 +50,9 @@ Here is an example of the chebyshevpoly opcode. It uses the file [chebyshevpoly.
 
 ## See also
 
-[Waveshaping](../../sigmod/wavshape)
+[Waveshaping](../sigmod/wavshape.md)
 
-[Opcode Equivalents of Functions](../../math/opeqfunc)
+[Opcode Equivalents of Functions](../math/opeqfunc.md)
 
 ## Credits
 

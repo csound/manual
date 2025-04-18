@@ -22,7 +22,7 @@ _iByte_ -- a byte of data to write.
 
 ## Examples
 
-Here is an example of the serialWrite opcode. It uses the file [serialWrite.csd](../../examples/serialWrite.csd).
+Here is an example of the serialWrite opcode. It uses the file [serialWrite.csd](../examples/serialWrite.csd).
 
 ``` csound-csd title="Example of the serialWrite opcode." linenums="1"
 --8<-- "examples/serialWrite.csd"
@@ -56,7 +56,7 @@ void loop() {
 
 ## See Also
 
-[non-MIDI Devices](../../oscnetwork/nonMIDIdevices)
+[non-MIDI Devices](../oscnetwork/nonMIDIdevices.md)
 
 ## Credits
 

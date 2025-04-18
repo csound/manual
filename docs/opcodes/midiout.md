@@ -35,7 +35,7 @@ _midiout_ has no output arguments, because it sends a message to the MIDI OUT po
 
 ## Examples
 
-Here is an example of the midiout opcode. It uses the file [midiout.csd](../../examples/midiout.csd).
+Here is an example of the midiout opcode. It uses the file [midiout.csd](../examples/midiout.csd).
 
 ``` csound-csd title="Example of the midiout opcode." linenums="1"
 --8<-- "examples/midiout.csd"
@@ -43,9 +43,9 @@ Here is an example of the midiout opcode. It uses the file [midiout.csd](../../e
 
 ## See also
 
-[MIDI Message Output](../../midi/output)
+[MIDI Message Output](../midi/output.md)
 
-[Generic Input and Output](../../midi/generic)
+[Generic Input and Output](../midi/generic.md)
 
 ## Credits
 

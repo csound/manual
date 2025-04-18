@@ -15,7 +15,7 @@ kpos strindexk S1, S2
 
 ## Examples
 
-Here is an example of the strindexk opcode. It uses the file [strindexk.csd](../../examples/strindexk.csd).
+Here is an example of the strindexk opcode. It uses the file [strindexk.csd](../examples/strindexk.csd).
 
 ``` csound-csd title="Example of the strindexk opcode." linenums="1"
 --8<-- "examples/strindexk.csd"
@@ -23,7 +23,7 @@ Here is an example of the strindexk opcode. It uses the file [strindexk.csd](../
 
 ## See Also
 
-[String Manipulation Opcodes](../../strings/manipulate)
+[String Manipulation Opcodes](../strings/manipulate.md)
 
 ## Credits
 

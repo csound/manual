@@ -24,7 +24,7 @@ The comparison is made sample by sample.
 
 ## Examples
 
-Here is an example of the select opcode. It uses the file [select.csd](../../examples/select.csd).
+Here is an example of the select opcode. It uses the file [select.csd](../examples/select.csd).
 
 ``` csound-csd title="Example of the select opcode." linenums="1"
 --8<-- "examples/select.csd"
@@ -32,7 +32,7 @@ Here is an example of the select opcode. It uses the file [select.csd](../../exa
 
 ## See also
 
-[Miscellaneous opcodes](../../miscopcodes)
+[Miscellaneous opcodes](../miscopcodes.md)
 
 ## Credits
 

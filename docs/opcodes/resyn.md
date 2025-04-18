@@ -28,7 +28,7 @@ _ifn_ -- function table containing one cycle of a sinusoid (sine or cosine)
 
 ## Examples
 
-Here is an example of the resyn opcode. It uses the file [resyn.csd](../../examples/resyn.csd).
+Here is an example of the resyn opcode. It uses the file [resyn.csd](../examples/resyn.csd).
 
 ``` csound-csd title="Example of the resyn opcode." linenums="1"
 --8<-- "examples/resyn.csd"
@@ -38,7 +38,7 @@ The example above shows partial tracking of an ifd-analysis signal and cubic-pha
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

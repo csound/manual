@@ -29,7 +29,7 @@ _kladown_ -- 60 dB lag time in seconds for the downgoing signal.
 
 ## Examples
 
-Here is an example of the lag opcode. It uses the file [lag.csd](../../examples/lag.csd).
+Here is an example of the lag opcode. It uses the file [lag.csd](../examples/lag.csd).
 
 ``` csound-csd title="Example of the lag opcode." linenums="1"
 --8<-- "examples/lag.csd"
@@ -37,7 +37,7 @@ Here is an example of the lag opcode. It uses the file [lag.csd](../../examples/
 
 ## See also
 
-[Standard Filters: Control signal filters](../../sigmod/standard)
+[Standard Filters: Control signal filters](../sigmod/standard.md)
 
 ## Credits
 

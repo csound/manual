@@ -39,11 +39,11 @@ _kmax_ -- user-defined maximum floating-point value of output
 
 _ctrl21_ (i- and k-rate 21 bit MIDI control) allows a floating-point 21-bit MIDI signal scaled with a minimum and a maximum range. Minimum and maximum values can be varied at k-rate. It can use optional interpolated table indexing. It requires three MIDI controllers as input.
 
-_ctrl21_ differs from [midic21](../../opcodes/midic21) because it can be included in score oriented instruments without Csound crashes. It needs the additional parameter _ichan_ containing the MIDI channel of the controller. MIDI channel is the same for all the controllers used in a single _ctrl21_ opcode.
+_ctrl21_ differs from [midic21](../opcodes/midic21.md) because it can be included in score oriented instruments without Csound crashes. It needs the additional parameter _ichan_ containing the MIDI channel of the controller. MIDI channel is the same for all the controllers used in a single _ctrl21_ opcode.
 
 ## Examples
 
-Here is an example of the ctrl21 opcode. It uses the file [ctrl21.csd](../../examples/ctrl21.csd).
+Here is an example of the ctrl21 opcode. It uses the file [ctrl21.csd](../examples/ctrl21.csd).
 
 ``` csound-csd title="Example of the ctrl21 opcode." linenums="1"
 --8<-- "examples/ctrl21.csd"
@@ -51,7 +51,7 @@ Here is an example of the ctrl21 opcode. It uses the file [ctrl21.csd](../../exa
 
 ## See also
 
-[MIDI input and Initialization](../../midi/input)
+[MIDI input and Initialization](../midi/input.md)
 
 ## Credits
 

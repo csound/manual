@@ -25,7 +25,7 @@ For more detailed explanation of these distributions, see:
 
 ## Examples
 
-Here is an example of the pcauchy opcode. It uses the file [pcauchy.csd](../../examples/pcauchy.csd).
+Here is an example of the pcauchy opcode. It uses the file [pcauchy.csd](../examples/pcauchy.csd).
 
 ``` csound-orc title="Example of the pcauchy opcode." linenums="1"
 --8<-- "examples/pcauchy.csd"
@@ -61,7 +61,7 @@ i   2 time     5.00000:    11.05428
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
 ## Credits
 

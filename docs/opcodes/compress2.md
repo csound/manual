@@ -32,7 +32,7 @@ The actions of compress2 will depend on the parameter settings given.  A hard-kn
 
 ## Examples
 
-Here is an example of the compress2 opcode. It uses the file [compress2.csd](../../examples/compress2.csd).
+Here is an example of the compress2 opcode. It uses the file [compress2.csd](../examples/compress2.csd).
 
 ``` csound-csd title="Example of the compress2 opcode." linenums="1"
 --8<-- "examples/compress2.csd"
@@ -40,7 +40,7 @@ Here is an example of the compress2 opcode. It uses the file [compress2.csd](../
 
 ## See also
 
-[Amplitude Modifiers and Dynamic processing](../../sigmod/ampmod)
+[Amplitude Modifiers and Dynamic processing](../sigmod/ampmod.md)
 
 ## Credits
 

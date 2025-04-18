@@ -22,7 +22,7 @@ The output tracks the amplitude envelope of the input signal. The rate at which 
 
 ## Examples
 
-Here is an example of the follow2 opcode. It uses the file [follow2.csd](../../examples/follow2.csd), and [drumsMlp.wav](../../examples/drumsMlp.wav).
+Here is an example of the follow2 opcode. It uses the file [follow2.csd](../examples/follow2.csd), and [drumsMlp.wav](../examples/drumsMlp.wav).
 
 ``` csound-csd title="Example of the follow2 opcode." linenums="1"
 --8<-- "examples/follow2.csd"
@@ -30,7 +30,7 @@ Here is an example of the follow2 opcode. It uses the file [follow2.csd](../../e
 
 ## See also
 
-[Sensing and Control: Envelope followers](../../control/sensing)
+[Sensing and Control: Envelope followers](../control/sensing.md)
 
 ## Credits
 

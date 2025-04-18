@@ -43,7 +43,7 @@ _Diskgrain_ will generate any number of parallel grain streams (which will depen
 
 _Diskgrain_ can simulate FOF-like formant synthesis, provided that a suitable shape is used as grain envelope and a sinewave as the grain wave. For this use, grain sizes of around 0.04 secs can be used. The formant centre frequency is determined by the grain pitch.  Since this is a sampling increment, in order to use a frequency in Hz, that value has to be scaled by tablesize/sr. Grain frequency will determine the fundamental.
 
-This opcode is a variation on the [syncgrain](../../opcodes/syncgrain) opcode.
+This opcode is a variation on the [syncgrain](../opcodes/syncgrain.md) opcode.
 
 > :memo: **Note**
 > 
@@ -51,7 +51,7 @@ This opcode is a variation on the [syncgrain](../../opcodes/syncgrain) opcode.
 
 ## Examples
 
-Here is an example of the diskgrain opcode. It uses the file [diskgrain.csd](../../examples/diskgrain.csd).
+Here is an example of the diskgrain opcode. It uses the file [diskgrain.csd](../examples/diskgrain.csd).
 
 ``` csound-orc title="Example of the diskgrain opcode." linenums="1"
 --8<-- "examples/diskgrain.csd"
@@ -59,7 +59,7 @@ Here is an example of the diskgrain opcode. It uses the file [diskgrain.csd](../
 
 ## See Also
 
-[Granular Synthesis](../../siggen/granular)
+[Granular Synthesis](../siggen/granular.md)
 
 ## Credits
 

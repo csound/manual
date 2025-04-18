@@ -32,7 +32,7 @@ The internal state of a node to write. This includes its position and velocity. 
 
 ## Examples
 
-Here is an example of the scansmap opcode. It uses the file [scansmap.csd](../../examples/scansmap.csd).
+Here is an example of the scansmap opcode. It uses the file [scansmap.csd](../examples/scansmap.csd).
 
 ``` csound-csd title="Example of the scansmap opcode." linenums="1"
 --8<-- "examples/scansmap.csd"
@@ -40,7 +40,7 @@ Here is an example of the scansmap opcode. It uses the file [scansmap.csd](../..
 
 ## See also
 
-[Scanned Synthesis](../../siggen/scantop)
+[Scanned Synthesis](../siggen/scantop.md)
 
 More information on the Scanned Synthesis opcodes: [Working with Scanned Synthesis](http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html), written by Steven Yi, and some [tutorials](http://www.csounds.com/scanned/) by Richard Boulanger.
 

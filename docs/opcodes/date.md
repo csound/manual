@@ -31,7 +31,7 @@ The optional answer and resolution including fractions of a second introduced in
 
 ## Examples
 
-Here is an example of the date opcode. It uses the file [date.csd](../../examples/date.csd).
+Here is an example of the date opcode. It uses the file [date.csd](../examples/date.csd).
 
 ``` csound-csd title="Example of the date opcode." linenums="1"
 --8<-- "examples/date.csd"
@@ -49,7 +49,7 @@ Thu Jan  1 01:00:01 1970
 
 ## See also
 
-[Time Reading](../../control/timeread)
+[Time Reading](../control/timeread.md)
 
 ## Credits
 

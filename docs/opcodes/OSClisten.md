@@ -19,7 +19,7 @@ kans, ... OSClisten idest, itype
 
 ### Initialization
 
-_ihandle_ -- In the first two versions (overloads) of the opcode, a handle returned by an earlier call to OSCinit, to associate OSClisten with a particular port number. The third overload does not take a handle as it will listen for messages sent to the Csound [UDP server](../../overview/udp-server).
+_ihandle_ -- In the first two versions (overloads) of the opcode, a handle returned by an earlier call to OSCinit, to associate OSClisten with a particular port number. The third overload does not take a handle as it will listen for messages sent to the Csound [UDP server](../overview/udp-server.md).
 
 _idest_ -- a string that is the destination address. This takes the form of a path prefixed with a forward slash, with optional subdirectories separated by forward slashes. Csound processes incoming messages that match this address.
 
@@ -80,7 +80,7 @@ This example shows use of the alternate form of the opcode, where an array is us
     endin
 ```
 
-The following two .csd files demonstrate the usage of the OSC opcodes in csound. The first file, [OSCmidisend.csd](../../examples/OSCmidisend.csd), transforms received real-time MIDI messages into OSC data. The second file, [OSCmidircv.csd](../../examples/OSCmidircv.csd), can take these OSC messages, and intrepret them to generate sound from note messages, and store controller values. It will use controller number 7 to control volume. Note that these files are designed to be on the same machine, but if a different host address (in the IPADDRESS macro) is used, they can be separate machines on a network, or connected through the internet.
+The following two .csd files demonstrate the usage of the OSC opcodes in csound. The first file, [OSCmidisend.csd](../examples/OSCmidisend.csd), transforms received real-time MIDI messages into OSC data. The second file, [OSCmidircv.csd](../examples/OSCmidircv.csd), can take these OSC messages, and intrepret them to generate sound from note messages, and store controller values. It will use controller number 7 to control volume. Note that these files are designed to be on the same machine, but if a different host address (in the IPADDRESS macro) is used, they can be separate machines on a network, or connected through the internet.
 
 ``` csound-csd title="OSCmidisend.csd" linenums="1"
 --8<-- "examples/OSCmidisend.csd"
@@ -90,7 +90,7 @@ The following two .csd files demonstrate the usage of the OSC opcodes in csound.
 --8<-- "examples/OSCmidircv.csd"
 ```
 
-The next example demonstrates the usage of the third overload of the OSClisten opcode. It uses the file [OSClistenex2.csd](../../examples/OSClistenex2.csd).
+The next example demonstrates the usage of the third overload of the OSClisten opcode. It uses the file [OSClistenex2.csd](../examples/OSClistenex2.csd).
 
 ``` csound-csd title="OSClistenex2.csd" linenums="1"
 --8<-- "examples/OSClistenex2.csd"
@@ -98,7 +98,7 @@ The next example demonstrates the usage of the third overload of the OSClisten o
 
 ## See also
 
-[OSC (Open Sound Control)](../../oscnetwork/OSC)
+[OSC (Open Sound Control)](../oscnetwork/OSC.md)
 
 More information on this opcode: [http://www.youtube.com/watch?v=JX1C3TqP_9Y](http://www.youtube.com/watch?v=JX1C3TqP_9Y), made by Andrés Cabrera
 

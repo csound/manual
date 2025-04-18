@@ -36,7 +36,7 @@ _iarga, iargb, ..._ -- function table arguments. Correspond to p5 through p_n_ o
 
 ## Examples
 
-Here is an example of the ftgenonce opcode. It uses the file [ftgenonce.csd](../../examples/ftgenonce.csd).
+Here is an example of the ftgenonce opcode. It uses the file [ftgenonce.csd](../examples/ftgenonce.csd).
 
 ``` csound-csd title="Example of the ftgenonce opcode." linenums="1"
 --8<-- "examples/ftgenonce.csd"
@@ -44,7 +44,7 @@ Here is an example of the ftgenonce opcode. It uses the file [ftgenonce.csd](../
 
 ## See also
 
-[Signal Flow Graph Opcodes](../../signalflowgraph)
+[Signal Flow Graph Opcodes](../signalflowgraph.md)
 
 ## Credits
 

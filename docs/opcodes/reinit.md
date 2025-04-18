@@ -14,14 +14,14 @@ reinit label
 
 ## Examples
 
-The following statements will generate an exponential control signal whose value moves from 440 to 880 exactly ten times over the duration p3. They use the file [reinit.csd](../../examples/reinit.csd).
+The following statements will generate an exponential control signal whose value moves from 440 to 880 exactly ten times over the duration p3. They use the file [reinit.csd](../examples/reinit.csd).
 
 ``` csound-csd title="Example of the reinit opcode." linenums="1"
 --8<-- "examples/reinit.csd"
 ```
 
-A musical example featuring the reinit opcode: [Reinit_Giordani.csd](../../examples/musical/Reinit_Giordani.csd) by Eugenio Giordani.
+A musical example featuring the reinit opcode: [Reinit_Giordani.csd](../examples/musical/Reinit_Giordani.csd) by Eugenio Giordani.
 
 ## See also
 
-[Initialization and Reinitialization](../../control/reinitn)
+[Initialization and Reinitialization](../control/reinitn.md)

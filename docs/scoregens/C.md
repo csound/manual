@@ -16,7 +16,7 @@ _p1_ -- Specifies whether to switch off (value 0) or on (non-zero).
 
 ## Examples
 
-Here is an example of the C statement. It uses the file [C.csd](../../examples/b.csd).
+Here is an example of the C statement. It uses the file [C.csd](../examples/b.csd).
 
 ``` csound-csd title="Example of the C statement." linenums="1"
 --8<-- "examples/C.csd"
@@ -24,7 +24,7 @@ Here is an example of the C statement. It uses the file [C.csd](../../examples/b
 
 ## See Also
 
-[Score Statements](../../score/statemnt)
+[Score Statements](../score/statemnt.md)
 
 ## Credits
 

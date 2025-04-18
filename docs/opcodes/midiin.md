@@ -31,11 +31,11 @@ _midiin_ has no input arguments, because it reads at the MIDI in port implicitly
 
 > :memo: **Note**
 >
-> Be careful when using _midiin_ in low numbered instruments, since a MIDI note will launch additional instances of the instrument, resulting in duplicate events and weird behaviour. Use [massign](../../opcodes/massign) to direct MIDI note on messages to a different instrument or to disable triggering of instruments from MIDI.
+> Be careful when using _midiin_ in low numbered instruments, since a MIDI note will launch additional instances of the instrument, resulting in duplicate events and weird behaviour. Use [massign](../opcodes/massign.md) to direct MIDI note on messages to a different instrument or to disable triggering of instruments from MIDI.
 
 ## Examples
 
-Here is an example of the midiin opcode. It uses the file [midiin.csd](../../examples/midiin.csd).
+Here is an example of the midiin opcode. It uses the file [midiin.csd](../examples/midiin.csd).
 
 ``` csound-csd title="Example of the midiin opcode." linenums="1"
 --8<-- "examples/midiin.csd"
@@ -43,9 +43,9 @@ Here is an example of the midiin opcode. It uses the file [midiin.csd](../../exa
 
 ## See also
 
-[MIDI input and Initialization](../../midi/input)
+[MIDI input and Initialization](../midi/input.md)
 
-[Generic Input and Output](../../midi/generic)
+[Generic Input and Output](../midi/generic.md)
 
 ## Credits
 

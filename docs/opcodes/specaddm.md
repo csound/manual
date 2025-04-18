@@ -30,4 +30,4 @@ The operation is performed whenever the input _wsig1_ is sensed to be new. This 
 
 ## See Also
 
-[specdiff](../../opcodes/specdiff), [specfilt](../../opcodes/specfilt), [spechist](../../opcodes/spechist), [specscal](../../opcodes/specscal)
+[specdiff](../opcodes/specdiff.md), [specfilt](../opcodes/specfilt.md), [spechist](../opcodes/spechist.md), [specscal](../opcodes/specscal.md)

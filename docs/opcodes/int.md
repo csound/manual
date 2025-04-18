@@ -14,7 +14,7 @@ where the argument within the parentheses may be an expression. Value converters
 
 ## Examples
 
-Here is an example of the int opcode. It uses the file [int.csd](../../examples/int.csd).
+Here is an example of the int opcode. It uses the file [int.csd](../examples/int.csd).
 
 ``` csound-csd title="Example of the int opcode." linenums="1"
 --8<-- "examples/int.csd"
@@ -35,7 +35,7 @@ integer (8.000000/3) = 2.000000
 integer (9.000000/3) = 3.000000
 ```
 
-Here is an example for the rounding-group, comparing the different rounding opcodes. It uses the file [rounding-group.csd](../../examples/rounding-group.csd).
+Here is an example for the rounding-group, comparing the different rounding opcodes. It uses the file [rounding-group.csd](../examples/rounding-group.csd).
 
 ``` csound-csd title="Example of the rounding group." linenums="1"
 --8<-- "examples/rounding-group.csd"
@@ -43,4 +43,4 @@ Here is an example for the rounding-group, comparing the different rounding opco
 
 ## See also
 
-[Mathematical Functions](../../math/mathfunc)
+[Mathematical Functions](../math/mathfunc.md)

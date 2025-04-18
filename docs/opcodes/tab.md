@@ -5,7 +5,7 @@ category:Signal Generators:Table Access
 # tab
 Fast table opcode.
 
-Faster than [table](../../opcodes/table) because it does not allow wrap-around and limit. Has been implemented in order to provide fast access to arrays.
+Faster than [table](../opcodes/table.md) because it does not allow wrap-around and limit. Has been implemented in order to provide fast access to arrays.
 
 ## Syntax
 ``` csound-orc
@@ -29,7 +29,7 @@ _tab_ and _tabw_ opcodes are similar to _table_ but are faster, and use rounding
 
 ## Examples
 
-Here is an example of the tab opcode. It uses the file [tab.csd](../../examples/tab.csd).
+Here is an example of the tab opcode. It uses the file [tab.csd](../examples/tab.csd).
 
 ``` csound-orc title="Example of the tab opcode." linenums="1"
 --8<-- "examples/tab.csd"
@@ -37,7 +37,7 @@ Here is an example of the tab opcode. It uses the file [tab.csd](../../examples/
 
 ## See Also
 
-[Table Access](../../siggen/tableacc)
+[Table Access](../siggen/tableacc.md)
 
 ## Credits
 

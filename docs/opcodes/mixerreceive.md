@@ -20,7 +20,7 @@ _ichannel_ -- The number of the channel. Each buss has _nchnls_ channels.
 
 _asignal_ -- The signal that has been mixed onto the indicated channel of the buss.
 
-Use of the mixer requires that instruments setting gains have smaller numbers than instruments sending signals, and that instruments sending signals have smaller numbers than instruments receiving those signals. However, an instrument may have any number of sends or receives. After the final signal is received, [MixerClear](../../opcodes/mixerclear) must be invoked to reset the busses to 0 before the next kperiod.
+Use of the mixer requires that instruments setting gains have smaller numbers than instruments sending signals, and that instruments sending signals have smaller numbers than instruments receiving those signals. However, an instrument may have any number of sends or receives. After the final signal is received, [MixerClear](../opcodes/mixerclear.md) must be invoked to reset the busses to 0 before the next kperiod.
 
 ## Examples
 
@@ -55,7 +55,7 @@ instr 220 ; Master output
 endin
 ```
 
-Here is a complete example of the MixerReceive opcode. It uses the file [Mixer.csd](../../examples/Mixer.csd)
+Here is a complete example of the MixerReceive opcode. It uses the file [Mixer.csd](../examples/Mixer.csd)
 
 ``` csound-csd title="Complete example of the MixerReceive opcode." linenums="1"
 --8<-- "examples/Mixer.csd"
@@ -63,7 +63,7 @@ Here is a complete example of the MixerReceive opcode. It uses the file [Mixer.c
 
 ## See also
 
-[Mixer Opcodes](../../mixer)
+[Mixer Opcodes](../mixer.md)
 
 ## Credits
 

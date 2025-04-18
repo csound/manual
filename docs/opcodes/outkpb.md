@@ -27,7 +27,7 @@ When the _kvalue_ argument receives a 2.0 value, the opcode will send a 127 valu
 
 ## Examples
 
-Here is an example of the outkpb opcode. It uses the file [outkpb.csd](../../examples/outkpb.csd).
+Here is an example of the outkpb opcode. It uses the file [outkpb.csd](../examples/outkpb.csd).
 
 ``` csound-csd title="Example of the outkpb opcode." linenums="1"
 --8<-- "examples/outkpb.csd"
@@ -35,7 +35,7 @@ Here is an example of the outkpb opcode. It uses the file [outkpb.csd](../../exa
 
 ## See also
 
-[MIDI Message Output](../../midi/output)
+[MIDI Message Output](../midi/output.md)
 
 ## Credits
 

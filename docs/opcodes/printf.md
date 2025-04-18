@@ -31,7 +31,7 @@ _xarg1, xarg2, ..._ -- input arguments (max. 30) for format.  Integer formats li
 
 ## Examples
 
-Here is an example of the printf opcode. It uses the file [printf.csd](../../examples/printf.csd).
+Here is an example of the printf opcode. It uses the file [printf.csd](../examples/printf.csd).
 
 ``` csound-csd title="Example of the printf opcode." linenums="1"
 --8<-- "examples/printf.csd"
@@ -45,7 +45,7 @@ Audiofile 'frox.wav' does not exist!
 
 ## See also
 
-[Printing and Display](../../sigio/pdisplay)
+[Printing and Display](../sigio/pdisplay.md)
 
 More information about printf: [http://www.cplusplus.com/reference/clibrary/cstdio/printf/](http://www.cplusplus.com/reference/clibrary/cstdio/printf/)
 

@@ -22,7 +22,7 @@ _string_ -- The string or string variable that is sent to the channel.
 
 ## Examples
 
-Here is an example of the outvalue opcode. It uses the file [outvalue.csd](../../examples/outvalue.csd).
+Here is an example of the outvalue opcode. It uses the file [outvalue.csd](../examples/outvalue.csd).
 
 ``` csound-csd title="Example of the outvalue opcode." linenums="1"
 --8<-- "examples/outvalue.csd"
@@ -30,7 +30,7 @@ Here is an example of the outvalue opcode. It uses the file [outvalue.csd](../..
 
 ## See also
 
-[Signal Output](../../sigio/output)
+[Signal Output](../sigio/output.md)
 
 ## Credits
 

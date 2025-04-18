@@ -44,7 +44,7 @@ For more information about printf() formatting, consult any C language documenta
 
 ## Examples
 
-Here is an example of the printks2 opcode. It uses the file [printks2.csd](../../examples/printks2.csd).
+Here is an example of the printks2 opcode. It uses the file [printks2.csd](../examples/printks2.csd).
 
 ``` csound-csd title="Example of the printks2 opcode." linenums="1"
 --8<-- "examples/printks2.csd"
@@ -52,7 +52,7 @@ Here is an example of the printks2 opcode. It uses the file [printks2.csd](../..
 
 ## See also
 
-[Printing and Display](../../sigio/pdisplay)
+[Printing and Display](../sigio/pdisplay.md)
 
 ## Credits
 

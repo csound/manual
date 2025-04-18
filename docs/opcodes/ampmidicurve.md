@@ -35,7 +35,7 @@ Maps an input MIDI velocity number to an output gain factor with a maximum value
 
 ## Examples
 
-Here is an example of the ampmidicurve opcode. It uses the file [ampmidicurve.csd](../../examples/ampmidicurve.csd).
+Here is an example of the ampmidicurve opcode. It uses the file [ampmidicurve.csd](../examples/ampmidicurve.csd).
 
 ``` csound-csd title="Example of the ampmidicurve opcode." linenums="1"
 --8<-- "examples/ampmidicurve.csd"
@@ -43,7 +43,7 @@ Here is an example of the ampmidicurve opcode. It uses the file [ampmidicurve.cs
 
 ## See also
 
-[Midi Converters](../../midi/convert)
+[Midi Converters](../midi/convert.md)
 
 ## Credits
 

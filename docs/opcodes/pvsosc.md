@@ -47,7 +47,7 @@ _ktype_ -- wave type: 1. sawtooh-like, 2.square-like, 3.pulse and any other valu
 
 ## Examples
 
-Here is an example of the pvsosc opcode. It uses the file [pvsosc.csd](../../examples/pvsosc.csd).
+Here is an example of the pvsosc opcode. It uses the file [pvsosc.csd](../examples/pvsosc.csd).
 
 ``` csound-csd title="Example of the pvsosc opcode" linenums="1"
 --8<-- "examples/pvsosc.csd"
@@ -55,7 +55,7 @@ Here is an example of the pvsosc opcode. It uses the file [pvsosc.csd](../../exa
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

@@ -29,7 +29,7 @@ When the _kvalue_ argument receives a 2.0 value, the opcode will send a 127 valu
 
 ## See also
 
-[MIDI Message Output](../../midi/output)
+[MIDI Message Output](../midi/output.md)
 
 ## Credits
 

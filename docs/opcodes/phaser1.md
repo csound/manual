@@ -22,7 +22,7 @@ _kord_ -- the number of allpass stages in series. These are first-order filters 
 
 > :memo: **Note**
 >
-> Although _kord_ is listed as k-rate, it is in fact accessed only at init-time. So if you are using a k-rate argument, it must be assigned with [init](../../opcodes/init).
+> Although _kord_ is listed as k-rate, it is in fact accessed only at init-time. So if you are using a k-rate argument, it must be assigned with [init](../opcodes/init.md).
 
 _kfeedback_ -- amount of the output which is fed back into the input of the allpass chain. With larger amounts of feedback, more prominent notches appear in the spectrum of the output. _kfeedback_ must be between -1 and +1. for stability.
 
@@ -38,7 +38,7 @@ By slowly varying _kfreq_, and mixing the output of the allpass chain with the i
 
 ## Examples
 
-Here is an example of the phaser1 opcode. It uses the file [phaser1.csd](../../examples/phaser1.csd).
+Here is an example of the phaser1 opcode. It uses the file [phaser1.csd](../examples/phaser1.csd).
 
 ``` csound-csd title="Example of the phaser1 opcode." linenums="1"
 --8<-- "examples/phaser1.csd"
@@ -58,7 +58,7 @@ A general description of the differences between flanging and phasing can be fou
 
 ## See also
 
-[Special Effects](../../sigmod/speciale)
+[Special Effects](../sigmod/speciale.md)
 
 ## Credits
 

@@ -37,7 +37,7 @@ _kHFDamp_ (range: 0 to 1): high frequency attenuation; a value of zero means all
 
 ## Examples
 
-Here is an example of the _freeverb_ opcode. It uses the file [freeverb.csd](../../examples/freeverb.csd).
+Here is an example of the _freeverb_ opcode. It uses the file [freeverb.csd](../examples/freeverb.csd).
 
 ``` csound-csd title="An example of the freeverb opcode." linenums="1"
 --8<-- "examples/freeverb.csd"
@@ -45,7 +45,7 @@ Here is an example of the _freeverb_ opcode. It uses the file [freeverb.csd](../
 
 ## See also
 
-[Reverberation](../../sigmod/reverbtn)
+[Reverberation](../sigmod/reverbtn.md)
 
 ## Credits
 

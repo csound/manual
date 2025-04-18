@@ -26,9 +26,9 @@ _ar2_ -- imag output of _asig_
 
 _hilbert2_ is a DFT-based implementation of the Hilbert Transform producing two outputs in quadrature (90 degree phase difference across the spectrum). Unlike the IIR-based _hilbert_ opcode, _hilbert2_ has a linear frequency response. Given that it employs a streaming algorithm, a delay of fftsize samples will be imposed between input and output.
 
-Example
+## Examples
 
-Here is an example of the hilbert2 opcode. It uses the file [hilbert2.csd](../../examples/hilbert2.csd).
+Here is an example of the hilbert2 opcode. It uses the file [hilbert2.csd](../examples/hilbert2.csd).
 
 ``` csound-csd title="Example of the hilbert2 opcode." linenums="1"
 --8<-- "examples/hilbert2.csd"
@@ -36,7 +36,7 @@ Here is an example of the hilbert2 opcode. It uses the file [hilbert2.csd](../..
 
 ## See also
 
-[Specialized Filters: Other filters](../../sigmod/speciali)
+[Specialized Filters: Other filters](../sigmod/speciali.md)
 
 ## Credits
 

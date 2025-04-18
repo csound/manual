@@ -33,7 +33,7 @@ _kn_ -- number of bins to be retained
 
 ## Examples
 
-Here is an example of the use of the _pvstrace_ opcode. It uses the file [pvstrace.csd](../../examples/pvstrace.csd).
+Here is an example of the use of the _pvstrace_ opcode. It uses the file [pvstrace.csd](../examples/pvstrace.csd).
 
 ``` csound-csd title="Example of the _pvstrace_ opcode." linenums="1"
 --8<-- "examples/pvstrace.csd"
@@ -41,7 +41,7 @@ Here is an example of the use of the _pvstrace_ opcode. It uses the file [pvstra
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

@@ -29,7 +29,7 @@ _timek_ can also operate only at the start of the instance of the instrument. It
 
 ## Examples
 
-Here is an example of the timek opcode. It uses the file [timek.csd](../../examples/timek.csd).
+Here is an example of the timek opcode. It uses the file [timek.csd](../examples/timek.csd).
 
 ``` csound-csd title="Example of the timek opcode." linenums="1"
 --8<-- "examples/timek.csd"
@@ -47,7 +47,7 @@ k1 = 8820.000000 samples
 
 ## See also
 
-[Time Reading](../../control/timeread)
+[Time Reading](../control/timeread.md)
 
 ## Credits
 

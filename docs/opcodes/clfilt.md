@@ -34,13 +34,13 @@ _kfreq_ -- The corner frequency for low-pass or high-pass.
 
 ## Examples
 
-Here is an example of the clfilt opcode as a low-pass filter. It uses the file [clfilt_lowpass.csd](../../examples/clfilt_lowpass.csd).
+Here is an example of the clfilt opcode as a low-pass filter. It uses the file [clfilt_lowpass.csd](../examples/clfilt_lowpass.csd).
 
 ``` csound-csd title="Example of the clfilt opcode as a low-pass filter." linenums="1"
 --8<-- "examples/clfilt_lowpass.csd"
 ```
 
-Here is an example of the clfilt opcode as a high-pass filter. It uses the file [clfilt_highpass.csd](../../examples/clfilt_highpass.csd).
+Here is an example of the clfilt opcode as a high-pass filter. It uses the file [clfilt_highpass.csd](../examples/clfilt_highpass.csd).
 
 ``` csound-csd title="Example of the clfilt opcode as a high-pass filter." linenums="1"
 --8<-- "examples/clfilt_highpass.csd"
@@ -48,7 +48,7 @@ Here is an example of the clfilt opcode as a high-pass filter. It uses the file 
 
 ## See also
 
-[Standard filters: General filters](../../sigmod/standard)
+[Standard filters: General filters](../sigmod/standard.md)
 
 ## Credits
 

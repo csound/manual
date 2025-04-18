@@ -28,7 +28,7 @@ _kverbose_ - Selects whether or not warnings are printed (Default=0)
 
 _vexpv_ elevates each element of _ifn2_ to the corresponding element of _ifn1_. Each vectorial signal is hosted by a table (_ifn1_ and _ifn2_). The number of elements contained in both vectors must be the same.
 
-The result is a new vectorial control signal that overrides old values of _ifn1_. If you want to keep the old _ifn1_ vector, use [vcopy_i](../../opcodes/vcopy_i) opcode to copy it in another table. You can use _kdstoffset_ and _ksrcoffset_ to specify vectors in any location of the tables.
+The result is a new vectorial control signal that overrides old values of _ifn1_. If you want to keep the old _ifn1_ vector, use [vcopy_i](../opcodes/vcopy_i.md) opcode to copy it in another table. You can use _kdstoffset_ and _ksrcoffset_ to specify vectors in any location of the tables.
 
 Negative values for _kdstoffset_ and _ksrcoffset_ are acceptable. If _kdstoffset_ is negative, the out of range section of the vector will be discarded. If _ksrcoffset_ is negative, the out of range elements will be assumed to be 0 (i.e. the destination elements will be set to 1). If elements for the destination vector are beyond the size of the table (including guard point), these elements are discarded (i.e. elements do not wrap around the tables). If elements for the source vector are beyond the table length, these elements are taken as 0 (i.e. the destination elements will be set to 1).
 
@@ -39,7 +39,7 @@ If the optional _kverbose_ argument is different to 0, the opcode will print war
 > Using the same table as source and destination table in versions earlier than 5.04, might produce unexpected behavior, so use with care.
 
 This opcode works at k-rate (this means that every k-pass the
-vectors are processed). There is an i-rate version of this opcode called [vexpv_i](../../opcodes/vexpv_i).
+vectors are processed). There is an i-rate version of this opcode called [vexpv_i](../opcodes/vexpv_i.md).
 
 > :memo: **Note**
 >
@@ -55,11 +55,11 @@ vectors are processed). There is an i-rate version of this opcode called [vexpv_
       endin
 > ```
 
-All these operators ([vaddv](../../opcodes/vaddv), [vsubv](../../opcodes/vsubv), [vmultv](../../opcodes/vmultv), [vdivv](../../opcodes/vdivv), [vpowv](../../opcodes/vpowv), [vexpv](../../opcodes/vexpv), [vcopy](../../opcodes/vcopy) and [vmap](../../opcodes/vmap)) are designed to be used together with other opcodes that operate with vectorial signals such as [vcella](../../opcodes/vcella), [adsynt](../../opcodes/adsynt), [adsynt2](../../opcodes/adsynt2) etc.
+All these operators ([vaddv](../opcodes/vaddv.md), [vsubv](../opcodes/vsubv.md), [vmultv](../opcodes/vmultv.md), [vdivv](../opcodes/vdivv.md), [vpowv](../opcodes/vpowv.md), [vexpv](../opcodes/vexpv.md), [vcopy](../opcodes/vcopy.md) and [vmap](../opcodes/vmap.md)) are designed to be used together with other opcodes that operate with vectorial signals such as [vcella](../opcodes/vcella.md), [adsynt](../opcodes/adsynt.md), [adsynt2](../opcodes/adsynt2.md) etc.
 
 ## Examples
 
-Here is an example of the vexpv opcode. It uses the file [vexpv.csd](../../examples/vexpv.csd).
+Here is an example of the vexpv opcode. It uses the file [vexpv.csd](../examples/vexpv.csd).
 
 ``` csound-csd title="Example of the vexpv opcode." linenums="1"
 --8<-- "examples/vexpv.csd"
@@ -67,7 +67,7 @@ Here is an example of the vexpv opcode. It uses the file [vexpv.csd](../../examp
 
 ## See also
 
-[Operations Between two  Vectorial Signals](../../vectorial/vectorial)
+[Operations Between two  Vectorial Signals](../vectorial/vectorial.md)
 
 ## Credits
 

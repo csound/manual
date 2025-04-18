@@ -30,7 +30,7 @@ _exciter_ is a reimplementation of the calf exciter plugin.
 
 ## Examples
 
-Here is an example of the exciter opcode. It uses the file [exciter.csd](../../examples/exciter.csd).
+Here is an example of the exciter opcode. It uses the file [exciter.csd](../examples/exciter.csd).
 
 ``` csound-csd title="Example of the exciter opcode." linenums="1"
 --8<-- "examples/exciter.csd"
@@ -38,7 +38,7 @@ Here is an example of the exciter opcode. It uses the file [exciter.csd](../../e
 
 ## See also
 
-[Special Effects](../../sigmod/speciale)
+[Special Effects](../sigmod/speciale.md)
 
 ## Credits
 

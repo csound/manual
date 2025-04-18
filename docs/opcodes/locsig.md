@@ -23,7 +23,7 @@ _kreverbsend_ -- the percentage of the direct signal that will be factored along
 
 ## Examples
 
-Here is an example of the locsig opcode. It uses the file [locsig_quad.csd](../../examples/locsig_quad.csd).
+Here is an example of the locsig opcode. It uses the file [locsig_quad.csd](../examples/locsig_quad.csd).
 
 ``` csound-csd title="Example of the locsig opcode." linenums="1"
 --8<-- "examples/locsig_quad.csd"
@@ -73,7 +73,7 @@ ar1, ar2, ar3, ar4 locsend
 
 ## See also
 
-[Panning and Spatialization: Amplitude spatialization](../../sigmod/panspatl)
+[Panning and Spatialization: Amplitude spatialization](../sigmod/panspatl.md)
 
 ## Credits
 

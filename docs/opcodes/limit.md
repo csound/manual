@@ -37,7 +37,7 @@ This opcode is useful in several situations, such as table indexing or for clipp
 
 ## Examples
 
-Here is an example of the limit opcode. It uses the file [limit.csd](../../examples/limit.csd).
+Here is an example of the limit opcode. It uses the file [limit.csd](../examples/limit.csd).
 
 ``` csound-csd title="Example of the limit opcode." linenums="1"
 --8<-- "examples/limit.csd"
@@ -45,9 +45,9 @@ Here is an example of the limit opcode. It uses the file [limit.csd](../../examp
 
 ## See also
 
-[Signal Limiters](../../sigmod/siglimit)
+[Signal Limiters](../sigmod/siglimit.md)
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

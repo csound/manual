@@ -32,7 +32,7 @@ _iscal_ -- amplitude scaling (defaults to 1).
 
 ## Examples
 
-Here is an example of the pvsifd opcode. It uses the file [pvsifd.csd](../../examples/pvsifd.csd).
+Here is an example of the pvsifd opcode. It uses the file [pvsifd.csd](../examples/pvsifd.csd).
 
 ``` csound-csd title="Example of the pvsifd opcode." linenums="1"
 --8<-- "examples/pvsifd.csd"
@@ -42,7 +42,7 @@ The example above shows the pvsifd analysis feeding into partial tracking and cu
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

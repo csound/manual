@@ -24,7 +24,7 @@ _asig_ -- output audio
 
 ## Examples
 
-Here is an example of the shiftout opcode. It uses the file [shiftout.csd](../../examples/shiftout.csd).
+Here is an example of the shiftout opcode. It uses the file [shiftout.csd](../examples/shiftout.csd).
 
 ``` csound-csd title="Example of the shiftout opcode." linenums="1"
 --8<-- "examples/shiftout.csd"
@@ -32,7 +32,7 @@ Here is an example of the shiftout opcode. It uses the file [shiftout.csd](../..
 
 ## See Also
 
-[Vectorial opcodes](../../vectorial/top), [array opcodes](../../math/array)
+[Vectorial opcodes](../vectorial/top.md), [array opcodes](../math/array.md)
 
 ## Credits
 

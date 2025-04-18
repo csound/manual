@@ -32,7 +32,7 @@ _kgain_ -- peak/notch gain.
 
 ## Examples
 
-Here is an example of the eqfil opcode. It uses the file [eqfil.csd](../../examples/eqfil.csd).
+Here is an example of the eqfil opcode. It uses the file [eqfil.csd](../examples/eqfil.csd).
 
 ``` csound-csd title="Example of the eqfil opcode." linenums="1"
 --8<-- "examples/eqfil.csd"
@@ -40,7 +40,7 @@ Here is an example of the eqfil opcode. It uses the file [eqfil.csd](../../examp
 
 ## See also
 
-[Specialized Filters: Parametric EQ](../../sigmod/speciali)
+[Specialized Filters: Parametric EQ](../sigmod/speciali.md)
 
 ## Credits
 

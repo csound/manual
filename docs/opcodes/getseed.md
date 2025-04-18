@@ -19,7 +19,7 @@ Reads the global seed value of the internal pseudo-random number generator.
 
 ## Examples
 
-Here is an example of the getseed opcode. It uses the file [getseed.csd](../../examples/getseed.csd).
+Here is an example of the getseed opcode. It uses the file [getseed.csd](../examples/getseed.csd).
 
 ``` csound-orc title="Example of the getseed opcode." linenums="1"
 --8<-- "examples/getseed.csd"
@@ -27,7 +27,7 @@ Here is an example of the getseed opcode. It uses the file [getseed.csd](../../e
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
 ## Credits
 

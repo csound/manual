@@ -45,7 +45,7 @@ _ktime_step_ -- Delta time in the difference equation, can be used to more or le
 _Chua's oscillator_ is a simple LRC oscillator with an active resistor. The oscillator can be driven into period bifurcation, and thus to chaos, because of the nonlinear response of the active resistor.
 
 <figure markdown="span">
-![](../../images/Chua_circuit.png)
+![](../images/Chua_circuit.png)
 <figcaption>Diagram of Chua's Oscillator Circuit</figcaption>
 </figure>
 
@@ -75,7 +75,7 @@ A solution of these equations (I3,V2,V1)(t) starting from an initial state (I3,V
 
 > :memo: **Note**
 >
-> This algorithm uses internal non linear feedback loops which causes audio result to depend on the orchestra sampling rate. For example, if you develop a project with _sr_=48000Hz and if you want to produce an audio CD from it, you should record a file with _sr_=48000Hz and then downsample the file to 44100Hz using the [src_conv](../../utility/src_conv) utility.
+> This algorithm uses internal non linear feedback loops which causes audio result to depend on the orchestra sampling rate. For example, if you develop a project with _sr_=48000Hz and if you want to produce an audio CD from it, you should record a file with _sr_=48000Hz and then downsample the file to 44100Hz using the [src_conv](../utility/src_conv.md) utility.
 
 > :warning: **Warning**
 > 
@@ -83,7 +83,7 @@ A solution of these equations (I3,V2,V1)(t) starting from an initial state (I3,V
 
 ## Examples
 
-Here is an example of the chuap opcode. It uses the file [chuap.csd](../../examples/chuap.csd).
+Here is an example of the chuap opcode. It uses the file [chuap.csd](../examples/chuap.csd).
 
 ``` csound-orc title="Example of the chuap opcode." linenums="1"
 --8<-- "examples/chuap.csd"
@@ -91,7 +91,7 @@ Here is an example of the chuap opcode. It uses the file [chuap.csd](../../examp
 
 ## See Also
 
-[Models and Emulations](../../siggen/models)
+[Models and Emulations](../siggen/models.md)
 
 ## Credits
 

@@ -31,7 +31,7 @@ The remaining units produce band-limited noise: the _kcps_ and _xcps_ parameters
 
 ## Examples
 
-Here is an example of the randh opcode. It uses the file [randh.csd](../../examples/randh.csd).
+Here is an example of the randh opcode. It uses the file [randh.csd](../examples/randh.csd).
 
 ``` csound-orc title="Example of the randh opcode." linenums="1"
 --8<-- "examples/randh.csd"
@@ -67,4 +67,4 @@ i2     5.89294
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random), [rand](../../opcodes/rand), [randi](../../opcodes/randi)
+[Random (Noise) Generators](../siggen/random.md), [rand](../opcodes/rand.md), [randi](../opcodes/randi.md)

@@ -22,7 +22,7 @@ These opcodes are fast, and always check that the index is within the range of z
 
 ## Examples
 
-Here is an example of the zaw opcode. It uses the file [zaw.csd](../../examples/zaw.csd).
+Here is an example of the zaw opcode. It uses the file [zaw.csd](../examples/zaw.csd).
 
 ``` csound-csd title="Example of the zaw opcode." linenums="1"
 --8<-- "examples/zaw.csd"
@@ -30,7 +30,7 @@ Here is an example of the zaw opcode. It uses the file [zaw.csd](../../examples/
 
 ## See also
 
-[Zak Patch System](../../zak/top)
+[Zak Patch System](../zak/top.md)
 
 ## Credits
 

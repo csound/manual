@@ -18,4 +18,4 @@ This command will execute the file "bla.csd" in the parent directory and render 
 
 `csound -o bla.wav -f ../bla.csd`
 
-All options are listed in [Options Alphabetically](../cs-options-alphabetically) or [Options by Category](../cs-options-by-category).
+All options are listed in [Options Alphabetically](cs-options-alphabetically.md) or [Options by Category](cs-options-by-category.md).

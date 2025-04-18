@@ -28,7 +28,7 @@ fsig     pvsanal asig, 1024, 256, 1024, 1  ; analysis
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

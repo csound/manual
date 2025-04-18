@@ -44,7 +44,7 @@ The multichannel opcodes (eg. _vdelayxq_) allow delaying 2 or 4 variables at onc
 
 ## Examples
 
-Here is an example of the vdelayxq opcode. It uses the file [vdelayxq.csd](../../examples/vdelayxq.csd).
+Here is an example of the vdelayxq opcode. It uses the file [vdelayxq.csd](../examples/vdelayxq.csd).
 
 ``` csound-csd title="Example of the vdelayxq opcode." linenums="1"
 --8<-- "examples/vdelayxq.csd"
@@ -54,4 +54,4 @@ Two important points here. First, the delay time must be always positive. And se
 
 ## See also
 
-[Delay](../../sigmod/delayops)
+[Delay](../sigmod/delayops.md)

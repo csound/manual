@@ -32,7 +32,7 @@ The new opcode can then be used with the usual syntax:
 
 ## Examples
 
-Here is an example of the endop opcode. It uses the file [endop.csd](../../examples/endop.csd).
+Here is an example of the endop opcode. It uses the file [endop.csd](../examples/endop.csd).
 
 ``` csound-csd title="Example of the endop opcode." linenums="1"
 --8<-- "examples/endop.csd"
@@ -40,7 +40,7 @@ Here is an example of the endop opcode. It uses the file [endop.csd](../../examp
 
 ## See Also
 
-[User Defined Opcodes (UDO)](../../orch/user-defined-opcodes)
+[User Defined Opcodes (UDO)](../orch/user-defined-opcodes.md)
 
 More information on this opcode: [http://www.csoundjournal.com/2006summer/controlFlow_part2.html](http://www.csoundjournal.com/2006summer/controlFlow_part2.html)  , written by Steven Yi
 

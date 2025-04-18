@@ -24,7 +24,7 @@ _kval_ -- returned value.
 
 ## See also
 
-[Program Flow Control: Counter](../../control/pgmctl)
+[Program Flow Control: Counter](../control/pgmctl.md)
 
 ## Credits
 

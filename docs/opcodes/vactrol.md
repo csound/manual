@@ -25,7 +25,7 @@ _asig_ -- The signal from which to extract the envelope.
 
 ## Examples
 
-Here is an example of the vactrol opcode. It uses the file [vactrol.csd](../../examples/vactrol.csd).
+Here is an example of the vactrol opcode. It uses the file [vactrol.csd](../examples/vactrol.csd).
 
 ``` csound-csd title="Example of the vactrol opcode." linenums="1"
 --8<-- "examples/vactrol.csd"
@@ -35,7 +35,7 @@ This opcode can reduce zipper noise produced from complex envelope tracking as i
 
 ## See also
 
-[Sensing and Control: Envelope followers](../../control/sensing)
+[Sensing and Control: Envelope followers](../control/sensing.md)
 
 ## Credits
 

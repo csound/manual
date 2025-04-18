@@ -36,7 +36,7 @@ _kvamp_ -- amplitude of the vibrato
 
 ## Examples
 
-Here is an example of the wgbow opcode. It uses the file [wgbow.csd](../../examples/wgbow.csd).
+Here is an example of the wgbow opcode. It uses the file [wgbow.csd](../examples/wgbow.csd).
 
 ``` csound-csd title="Example of the wgbow opcode." linenums="1"
 --8<-- "examples/wgbow.csd"
@@ -44,7 +44,7 @@ Here is an example of the wgbow opcode. It uses the file [wgbow.csd](../../examp
 
 ## See also
 
-[Waveguide Physical Modeling](../../siggen/wavguide)
+[Waveguide Physical Modeling](../siggen/wavguide.md)
 
 ## Credits
 

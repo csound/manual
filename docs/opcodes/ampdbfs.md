@@ -14,7 +14,7 @@ ampdbfs(x)  (no rate restriction)
 
 ## Examples
 
-Here is an example of the ampdbfs opcode. It uses the file [ampdbfs.csd](../../examples/ampdbfs.csd).
+Here is an example of the ampdbfs opcode. It uses the file [ampdbfs.csd](../examples/ampdbfs.csd).
 
 ``` csound-csd title="Example of the ampdbfs opcode." linenums="1"
 --8<-- "examples/ampdbfs.csd"
@@ -31,6 +31,6 @@ instr 1:  iamp = 3276.800
 
 ## See also
 
-[Amplitude Converters](../../math/amp)
+[Amplitude Converters](../math/amp.md)
 
 New in Csound version 4.10

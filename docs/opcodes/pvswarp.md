@@ -34,7 +34,7 @@ _kcoefs_ -- number of cepstrum coefs used in formant preservation (defaults to 8
 
 ## Examples
 
-Here is an example of the pvswarp opcode. It uses the file [pvswarp.csd](../../examples/pvswarp.csd).
+Here is an example of the pvswarp opcode. It uses the file [pvswarp.csd](../examples/pvswarp.csd).
 
 ``` csound-csd title="Example of the pvswarp opcode." linenums="1"
 --8<-- "examples/pvswarp.csd"
@@ -44,7 +44,7 @@ Used with vocal sounds, it will shift the formants and result in a changed vowel
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

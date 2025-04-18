@@ -12,23 +12,23 @@ signum(x) (no rate restriction)
 
 ## Examples
 
-Here is an example of the signum opcode. It uses the file [signum.csd](../../examples/signum.csd).
+Here is an example of the signum opcode. It uses the file [signum.csd](../examples/signum.csd).
 
 ``` csound-csd title="Example of the signum opcode." linenums="1"
 --8<-- "examples/signum.csd"
 ```
 
-Here is another example of the signum opcode. It uses the file [signum2.csd](../../examples/signum2.csd).
+Here is another example of the signum opcode. It uses the file [signum2.csd](../examples/signum2.csd).
 
 ``` csound-csd linenums="1"
 --8<-- "examples/signum2.csd"
 ```
 
-A musical example featuring the signum opcode: [Signum_Welsh.csd](../../examples/musical/Signum_Welsh.csd) by Kevin Welsh.
+A musical example featuring the signum opcode: [Signum_Welsh.csd](../examples/musical/Signum_Welsh.csd) by Kevin Welsh.
 
 ## See also
 
-[Trigonometric Functions](../../math/trig)
+[Trigonometric Functions](../math/trig.md)
 
 ## Credits
 

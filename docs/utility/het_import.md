@@ -17,7 +17,7 @@ _cstext_file_ - Name of the input comma-separated text file.
 
 _het_file_ - Name of the output .het file.
 
-The _het_import_ utility generates a _.het_ file usable with the [adsyn](../../opcodes/adsyn) generator. It can be used in combination with [het_export](../../utility/het_export) to modify sound analysis made by the [HETRO](../../utility/hetro) utility.
+The _het_import_ utility generates a _.het_ file usable with the [adsyn](../opcodes/adsyn.md) generator. It can be used in combination with [het_export](../utility/het_export.md) to modify sound analysis made by the [HETRO](../utility/hetro.md) utility.
 
 ## Credits
 

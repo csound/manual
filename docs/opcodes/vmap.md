@@ -28,11 +28,11 @@ _vmap_ maps elements of _ifn2_ according to the values of table _ifn1_. Elements
 
 In practice, what happens is that the elements of _ifn1_ are used as indexes to _ifn2_, and then are replaced by the corresponding elements from _ifn2_. _ifn1_ must be different from _ifn2_, otherwise the results are unpredictable. Csound will produce an init error if they are not.
 
-All these operators ([vaddv](../../opcodes/vaddv), [vsubv](../../opcodes/vsubv), [vmultv](../../opcodes/vmultv), [vdivv](../../opcodes/vdivv), [vpowv](../../opcodes/vpowv), [vexpv](../../opcodes/vexpv), [vcopy](../../opcodes/vcopy) and [vmap](../../opcodes/vmap)) are designed to be used together with other opcodes that operate with vectorial signals such as, [vcella](../../opcodes/vcella), [adsynt](../../opcodes/adsynt), [adsynt2](../../opcodes/adsynt2), etc.
+All these operators ([vaddv](../opcodes/vaddv.md), [vsubv](../opcodes/vsubv.md), [vmultv](../opcodes/vmultv.md), [vdivv](../opcodes/vdivv.md), [vpowv](../opcodes/vpowv.md), [vexpv](../opcodes/vexpv.md), [vcopy](../opcodes/vcopy.md) and [vmap](../opcodes/vmap.md)) are designed to be used together with other opcodes that operate with vectorial signals such as, [vcella](../opcodes/vcella.md), [adsynt](../opcodes/adsynt.md), [adsynt2](../opcodes/adsynt2.md), etc.
 
 ## Examples
 
-Here is an example of the vmap opcode. It uses the file [vmap.csd](../../examples/vmap.csd).
+Here is an example of the vmap opcode. It uses the file [vmap.csd](../examples/vmap.csd).
 
 ``` csound-csd title="Example of the vmap opcode." linenums="1"
 --8<-- "examples/vmap.csd"
@@ -40,7 +40,7 @@ Here is an example of the vmap opcode. It uses the file [vmap.csd](../../example
 
 ## See also
 
-[Operations Between two  Vectorial Signals](../../vectorial/vectorial)
+[Operations Between two  Vectorial Signals](../vectorial/vectorial.md)
 
 ## Credits
 

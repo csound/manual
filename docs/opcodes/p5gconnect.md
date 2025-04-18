@@ -24,7 +24,7 @@ Every control cycle the glove is polled for its position, and finger and button 
 
 ## Examples
 
-Here is an example of the p5g opcodes. It uses the file [p5g.csd](../../examples/p5g.csd).
+Here is an example of the p5g opcodes. It uses the file [p5g.csd](../examples/p5g.csd).
 
 ``` csound-csd title="Example of the p5g opcodes." linenums="1"
 --8<-- "examples/p5g.csd"
@@ -32,7 +32,7 @@ Here is an example of the p5g opcodes. It uses the file [p5g.csd](../../examples
 
 ## See Also
 
-[non-MIDI Devices](../../oscnetwork/nonMIDIdevices)
+[non-MIDI Devices](../oscnetwork/nonMIDIdevices.md)
 
 ## Credits
 

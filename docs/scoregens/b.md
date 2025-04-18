@@ -41,7 +41,7 @@ i4     10     200   7         ; start time = 10
 
 ## See Also
 
-[Score Statements](../../score/statemnt)
+[Score Statements](../score/statemnt.md)
 
 ## Credits
 

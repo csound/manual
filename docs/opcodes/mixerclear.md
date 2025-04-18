@@ -47,7 +47,7 @@ instr 220 ; Master output
 endin
 ```
 
-Here is a complete example of the Mixerclear opcode. It uses the file [Mixer.csd](../../examples/Mixer.csd)
+Here is a complete example of the Mixerclear opcode. It uses the file [Mixer.csd](../examples/Mixer.csd)
 
 ``` csound-csd title="Complete example of the Mixerclear opcode." linenums="1"
 --8<-- "examples/Mixer.csd"
@@ -55,7 +55,7 @@ Here is a complete example of the Mixerclear opcode. It uses the file [Mixer.csd
 
 ## See also
 
-[Mixer Opcodes](../../mixer)
+[Mixer Opcodes](../mixer.md)
 
 ## Credits
 

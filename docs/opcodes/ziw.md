@@ -24,7 +24,7 @@ These opcodes are fast, and always check that the index is within the range of z
 
 ## Examples
 
-Here is an example of the ziw opcode. It uses the file [ziw.csd](../../examples/ziw.csd).
+Here is an example of the ziw opcode. It uses the file [ziw.csd](../examples/ziw.csd).
 
 ``` csound-csd title="Example of the ziw opcode." linenums="1"
 --8<-- "examples/ziw.csd"
@@ -32,7 +32,7 @@ Here is an example of the ziw opcode. It uses the file [ziw.csd](../../examples/
 
 ## See also
 
-[Zak Patch System](../../zak/top)
+[Zak Patch System](../zak/top.md)
 
 ## Credits
 

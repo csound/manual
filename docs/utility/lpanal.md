@@ -5,7 +5,7 @@ category:Utilities
 # lpanal
 Performs both linear predictive and pitch-tracking analysis on a soundfile.
 
-Linear predictive analysis for the Csound [Linear Predictive Coding (LPC) Resynthesis](../../spectral/lpcresyn) opcodes.
+Linear predictive analysis for the Csound [Linear Predictive Coding (LPC) Resynthesis](../spectral/lpcresyn.md) opcodes.
 
 ## Syntax
 ```
@@ -49,7 +49,7 @@ _-X_ -- write machine independent format analysis file.
 
 #### File Format
 
-Output is a file comprised of an identifiable header plus a set of frames of floating point analysis data. Each frame contains four values of pitch and gain information, followed by _npoles_ filter coefficients. The file is readable by Csound's [lpread](../../opcodes/lpread).
+Output is a file comprised of an identifiable header plus a set of frames of floating point analysis data. Each frame contains four values of pitch and gain information, followed by _npoles_ filter coefficients. The file is readable by Csound's [lpread](../opcodes/lpread.md).
 
 _lpanal_ is an extensive modification of Paul Lanksy's lpc analysis programs.
 
@@ -61,7 +61,7 @@ lpanal -a -p26 -d2.5 -P100 -Q400 audiofile.test lpfil22
 
 will analyze the first 2.5 seconds of file "audiofile.test", producing srate/200 frames per second, each containing 26-pole filter coefficients and a pitch estimate between 100 and 400 Hertz. Stabilized (_-a_) output will be placed in "lpfil22" in the current directory.
 
-Here is an example of the lpanal utility. It uses the file [lpanal.csd](../../examples/lpanal.csd).
+Here is an example of the lpanal utility. It uses the file [lpanal.csd](../examples/lpanal.csd).
 
 ``` csound-csd title="Example of the lpanal utility." linenums="1"
 --8<-- "examples/lpanal.csd"

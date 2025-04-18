@@ -51,7 +51,7 @@ The five levels of accuracy are:
 
 ## Examples
 
-Here is an example of src_conv. It uses the file [src_conv.csd](../../examples/src_conv.csd).
+Here is an example of src_conv. It uses the file [src_conv.csd](../examples/src_conv.csd).
 
 ``` csound-csd title="Example of src_conv." linenums="1"
 --8<-- "examples/src_conv.csd"

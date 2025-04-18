@@ -20,7 +20,7 @@ _kin[]_ -- input array containing the complex-valued real-imaginary input.
 
 ## Examples
 
-Here is an example of the phs opcode. It uses the file [phs.csd](../../examples/phs.csd).
+Here is an example of the phs opcode. It uses the file [phs.csd](../examples/phs.csd).
 
 ``` csound-csd title="Example of the phs opcode." linenums="1"
 --8<-- "examples/phs.csd"
@@ -28,11 +28,11 @@ Here is an example of the phs opcode. It uses the file [phs.csd](../../examples/
 
 ## See Also
 
-[Vectorial opcodes](../../vectorial/top)
+[Vectorial opcodes](../vectorial/top.md)
 
-[array opcodes](../../math/array)
+[array opcodes](../math/array.md)
 
-[Array-based spectral opcodes](../../spectral/arrays)
+[Array-based spectral opcodes](../spectral/arrays.md)
 
 ## Credits
 

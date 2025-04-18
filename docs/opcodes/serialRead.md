@@ -20,7 +20,7 @@ _kByte_ -- a byte of data to read.
 
 ## Examples
 
-Here is an example of the serialRead opcode. It uses the file [serialRead.csd](../../examples/serialRead.csd).
+Here is an example of the serialRead opcode. It uses the file [serialRead.csd](../examples/serialRead.csd).
 
 ``` csound-csd title="Example of the serialRead opcode." linenums="1"
 --8<-- "examples/serialRead.csd"
@@ -54,7 +54,7 @@ void loop() {
 
 ## See Also
 
-[non-MIDI Devices](../../oscnetwork/nonMIDIdevices)
+[non-MIDI Devices](../oscnetwork/nonMIDIdevices.md)
 
 ## Credits
 

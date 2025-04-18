@@ -47,7 +47,7 @@ if (kndx >= kmin) kgoto label
 
 ## Examples
 
-Here is a group example for all loop_xx opcodes, comparing the different loop_ opcodes. It uses the file [loop_-group.csd](../../examples/loop_-group.csd).
+Here is a group example for all loop_xx opcodes, comparing the different loop_ opcodes. It uses the file [loop_-group.csd](../examples/loop_-group.csd).
 
 ``` csound-csd title="Group example of the loop_xx opcodes." linenums="1"
 --8<-- "examples/loop_-group.csd"
@@ -55,7 +55,7 @@ Here is a group example for all loop_xx opcodes, comparing the different loop_ o
 
 ## See also
 
-[Program Flow Control: Looping Constructions](../../control/pgmctl)
+[Program Flow Control: Looping Constructions](../control/pgmctl.md)
 
 More information on this opcode: [http://www.csoundjournal.com/2006summer/controlFlow_part2.html](http://www.csoundjournal.com/2006summer/controlFlow_part2.html) written by Steven Yi, and in the Floss Manuals: [ https://flossmanual.csound.com/csound-language/control-structures](https://flossmanual.csound.com/csound-language/control-structures)
 

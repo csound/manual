@@ -18,7 +18,7 @@ If _iksmps_ is set to zero, the _ksmps_ of the caller instrument or opcode is us
 
 > :memo: **Note**
 >
-> The local _ksmps_ is implemented by splitting up a control period into smaller sub-kperiods and setting up the instrument local ksmps to the new value. This also requires converting the rate of k-rate input and output arguments (input variables receive the same value in all sub-kperiods, while outputs are written only in the last one). It also means that you cannot use a local [ksmps](../../opcodes/ksmps) that is higher than the global [ksmps](../../opcodes/ksmps).
+> The local _ksmps_ is implemented by splitting up a control period into smaller sub-kperiods and setting up the instrument local ksmps to the new value. This also requires converting the rate of k-rate input and output arguments (input variables receive the same value in all sub-kperiods, while outputs are written only in the last one). It also means that you cannot use a local [ksmps](../opcodes/ksmps.md) that is higher than the global [ksmps](../opcodes/ksmps.md).
 
 > :warning: **Warning about local ksmps**
 >
@@ -27,13 +27,13 @@ If _iksmps_ is set to zero, the _ksmps_ of the caller instrument or opcode is us
 > Other opcodes that require some care include:
 >
 > * any access to &#8220;ga&#8221; variables
-> * a-rate zak opcodes ([zar](../../opcodes/zar), [zaw](../../opcodes/zaw), etc.)
-> * [tablera](../../opcodes/tablera) and [tablewa](../../opcodes/tablewa) (these two opcodes may in fact work, but caution is needed)
+> * a-rate zak opcodes ([zar](../opcodes/zar.md), [zaw](../opcodes/zaw.md), etc.)
+> * [tablera](../opcodes/tablera.md) and [tablewa](../opcodes/tablewa.md) (these two opcodes may in fact work, but caution is needed)
 > * The _in_ and _out_ opcode family cannot be used in local-ksmps UDOs (these read from, and write to global a-rate buffers), but are safe in local-ksmps instruments
 >
 > In general, the local _ksmps_ should be used with care as it is an experimental feature. Though it works correctly in most cases.
 
-The _setksmps_ statement can be used to set the local [ksmps](../../opcodes/ksmps) value of the instrument or user-defined opcode block. It has one i-time parameter specifying the new _ksmps_ value. _setksmps_ should be used before any other opcodes (but allowed after [xin](../../opcodes/xin) in UDOs), otherwise unpredictable results may occur.
+The _setksmps_ statement can be used to set the local [ksmps](../opcodes/ksmps.md) value of the instrument or user-defined opcode block. It has one i-time parameter specifying the new _ksmps_ value. _setksmps_ should be used before any other opcodes (but allowed after [xin](../opcodes/xin.md) in UDOs), otherwise unpredictable results may occur.
 
 ### Performance
 
@@ -56,11 +56,11 @@ The new opcode can then be used with the usual syntax:
 
 ## Examples
 
-See the example for the [opcode](../../opcodes/opcode) opcode.
+See the example for the [opcode](../opcodes/opcode.md) opcode.
 
 ## See Also
 
-[User Defined Opcodes (UDO)](../../orch/user-defined-opcodes)
+[User Defined Opcodes (UDO)](../orch/user-defined-opcodes.md)
 
 ## Credits
 

@@ -21,7 +21,7 @@ _asig_ -- a-rate input signal.
 
 ## Examples
 
-Here is an example of the peak opcode. It uses the file [peak.csd](../../examples/peak.csd), and [drumsMlp.wav](../../examples/drumsMlp.wav).
+Here is an example of the peak opcode. It uses the file [peak.csd](../examples/peak.csd), and [drumsMlp.wav](../examples/drumsMlp.wav).
 
 ``` csound-csd title="Example of the peak opcode." linenums="1"
 --8<-- "examples/peak.csd"
@@ -40,7 +40,7 @@ i   1 time     2.50340:     0.89209
 
 ## See also
 
-[Sensing and Control: Envelope followers](../../control/sensing)
+[Sensing and Control: Envelope followers](../control/sensing.md)
 
 ## Credits
 

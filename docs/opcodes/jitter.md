@@ -24,7 +24,7 @@ _jitter_ can be used to make more natural and &#8220;analog-sounding&#8221; some
 
 ## Examples
 
-Here is an example of the jitter opcode. It uses the file [jitter.csd](../../examples/jitter.csd).
+Here is an example of the jitter opcode. It uses the file [jitter.csd](../examples/jitter.csd).
 
 ``` csound-orc title="Example of the jitter opcode." linenums="1"
 --8<-- "examples/jitter.csd"
@@ -32,7 +32,7 @@ Here is an example of the jitter opcode. It uses the file [jitter.csd](../../exa
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
 ## Credits
 

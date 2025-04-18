@@ -22,7 +22,7 @@ _kinitndx_ -- initial index
 
 > :memo: **Note**
 >
-> Although _kinitndx_ is listed as k-rate, it is in fact accessed only at init-time. So if you are using a k-rate argument, it must be assigned with [init](../../opcodes/init).
+> Although _kinitndx_ is listed as k-rate, it is in fact accessed only at init-time. So if you are using a k-rate argument, it must be assigned with [init](../opcodes/init.md).
 
 _kfn_values_ -- number of a table containing a sequence of groups of values
 
@@ -38,11 +38,11 @@ It is possible to start the sequence from a value different than the first, by a
 
 It is possible to disable loop (one-shot mode) by assigning the same value both to _kstart_ and _kloop_ arguments. In this case, the last read element will be the one corresponding to the value of such arguments. Table can be read backward by assigning a negative _kloop_ value.
 
-_trigseq_ is designed to be used together with [seqtime](../../opcodes/seqtime) or [trigger](../../opcodes/trigger) opcodes.
+_trigseq_ is designed to be used together with [seqtime](../opcodes/seqtime.md) or [trigger](../opcodes/trigger.md) opcodes.
 
 ## Examples
 
-Here is an example of the trigseq opcode. It uses the file [trigseq.csd](../../examples/trigseq.csd).
+Here is an example of the trigseq opcode. It uses the file [trigseq.csd](../examples/trigseq.csd).
 
 ``` csound-csd title="Example of the trigseq opcode." linenums="1"
 --8<-- "examples/trigseq.csd"
@@ -50,7 +50,7 @@ Here is an example of the trigseq opcode. It uses the file [trigseq.csd](../../e
 
 ## See also
 
-[Sensing and Control: Tempo and Sequencing](../../control/sensing)
+[Sensing and Control: Tempo and Sequencing](../control/sensing.md)
 
 ## Credits
 

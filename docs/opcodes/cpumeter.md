@@ -22,7 +22,7 @@ _cpumeter_ reads the total idle time in the last _ifreq_ seconds and reports it 
 
 ## Examples
 
-Here is an example of the cpumeter opcode. It uses the file [cpumeter.csd](../../examples/cpumeter.csd).
+Here is an example of the cpumeter opcode. It uses the file [cpumeter.csd](../examples/cpumeter.csd).
 
 ``` csound-csd title="Example of the cpumeter opcode." linenums="1"
 --8<-- "examples/cpumeter.csd"
@@ -30,7 +30,7 @@ Here is an example of the cpumeter opcode. It uses the file [cpumeter.csd](../..
 
 ## See also
 
-[Real-time Performance Control](../../control/realtime)
+[Real-time Performance Control](../control/realtime.md)
 
 ## Credits
 

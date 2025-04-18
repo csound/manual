@@ -25,11 +25,11 @@ _idur2, idur3_, etc. -- duration in seconds of subsequent segments. A zero or ne
 
 These units generate control or audio signals whose values can pass through 2 or more specified points. The sum of _dur_ values may or may not equal the instrument's performance time: a shorter performance will truncate the specified pattern, while a longer one will cause the last-defined segment to continue on in the same direction.
 
-Note that the _expseg_ opcode does not operate correctly at audio rate when segments are shorter than a k-period. Try the [expsega](../../opcodes/expsega) opcode instead.
+Note that the _expseg_ opcode does not operate correctly at audio rate when segments are shorter than a k-period. Try the [expsega](../opcodes/expsega.md) opcode instead.
 
 ## Examples
 
-Here is an example of the expseg opcode. It uses the file [expseg.csd](../../examples/expseg.csd).
+Here is an example of the expseg opcode. It uses the file [expseg.csd](../examples/expseg.csd).
 
 ``` csound-orc title="Example of the expseg opcode." linenums="1"
 --8<-- "examples/expseg.csd"
@@ -37,7 +37,7 @@ Here is an example of the expseg opcode. It uses the file [expseg.csd](../../exa
 
 ## See also
 
-[Linear and Exponential Generators](../../siggen/lineexp)
+[Linear and Exponential Generators](../siggen/lineexp.md)
 
 ## Credits
 

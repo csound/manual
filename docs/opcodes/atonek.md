@@ -3,7 +3,7 @@ id:atonek
 category:Signal Modifiers:Standard Filters:Control
 -->
 # atonek
-A hi-pass filter whose transfer functions are the complements of the [tonek](../../opcodes/tonek) opcode.
+A hi-pass filter whose transfer functions are the complements of the [tonek](../opcodes/tonek.md) opcode.
 
 ## Syntax
 ``` csound-orc
@@ -22,11 +22,11 @@ _ksig_ -- the input signal at control-rate.
 
 _khp_ --  the response curve's half-power point, in Hertz. Half power is defined as peak power / root 2.
 
-_atonek_ is a filter whose transfer functions is the complement of [tonek](../../opcodes/tonek). _atonek_ is thus a form of high-pass filter whose transfer functions represent the &#8220;filtered out&#8221; aspects of their complements. However, power scaling is not normalized in _atonek_ but remains the true complement of the corresponding unit.
+_atonek_ is a filter whose transfer functions is the complement of [tonek](../opcodes/tonek.md). _atonek_ is thus a form of high-pass filter whose transfer functions represent the &#8220;filtered out&#8221; aspects of their complements. However, power scaling is not normalized in _atonek_ but remains the true complement of the corresponding unit.
 
 ## Examples
 
-Here is an example of the atonek opcode. It uses the file [atonek.csd](../../examples/atonek.csd).
+Here is an example of the atonek opcode. It uses the file [atonek.csd](../examples/atonek.csd).
 
 ``` csound-csd title="Example of the atonek opcode." linenums="1"
 --8<-- "examples/atonek.csd"
@@ -34,7 +34,7 @@ Here is an example of the atonek opcode. It uses the file [atonek.csd](../../exa
 
 ## See also
 
-[Standard Filters: Control signal filters](../../sigmod/standard)
+[Standard Filters: Control signal filters](../sigmod/standard.md)
 
 ## Credits
 

@@ -32,7 +32,7 @@ The other adaptation involves the _ifullscale_ parameter.  The input signal is d
 
 ## Examples
 
-Here is an example of the powershape opcode. It uses the file [powershape.csd](../../examples/powershape.csd).
+Here is an example of the powershape opcode. It uses the file [powershape.csd](../examples/powershape.csd).
 
 ``` csound-csd title="Example of the powershape opcode." linenums="1"
 --8<-- "examples/powershape.csd"
@@ -40,11 +40,11 @@ Here is an example of the powershape opcode. It uses the file [powershape.csd](.
 
 ## See also
 
-[pow](../../opcodes/pow), [powoftwo](../../opcodes/powoftwo)
+[pow](../opcodes/pow.md), [powoftwo](../opcodes/powoftwo.md)
 
-[Waveshaping](../../sigmod/wavshape)
+[Waveshaping](../sigmod/wavshape.md)
 
-[Mathematical Functions](../../math/mathfunc)
+[Mathematical Functions](../math/mathfunc.md)
 
 ## Credits
 

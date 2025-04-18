@@ -32,7 +32,7 @@ _kcoefs_ -- number of cepstrum coefs used in spectral envelope estimation (defau
 
 ## Examples
 
-Here is an example of the pvsvoc opcode. It uses the file [pvsvoc.csd](../../examples/pvsvoc.csd).
+Here is an example of the pvsvoc opcode. It uses the file [pvsvoc.csd](../examples/pvsvoc.csd).
 
 ``` csound-csd title="Example of the pvsvoc opcode." linenums="1"
 --8<-- "examples/pvsvoc.csd"
@@ -42,7 +42,7 @@ The example above shows a typical cross-synthesis operation. The input signal (s
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

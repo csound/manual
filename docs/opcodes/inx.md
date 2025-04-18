@@ -17,11 +17,11 @@ ar13, ar14, ar15, ar16 inx
 
 ### Performance
 
-_inx_ reads a 16-channel audio signal from an external device or stream. If the command-line [-i](../../invoke/cs-options-alphabetically#-i-file-inputfile) flag is set, sound is read continuously from the audio input stream (e.g. _stdin_ or a soundfile) into an internal buffer.
+_inx_ reads a 16-channel audio signal from an external device or stream. If the command-line [-i](../invoke/cs-options-alphabetically.md#-i-file-inputfile) flag is set, sound is read continuously from the audio input stream (e.g. _stdin_ or a soundfile) into an internal buffer.
 
 ## See also
 
-[Signal Input](../../sigio/input)
+[Signal Input](../sigio/input.md)
 
 ## Credits
 

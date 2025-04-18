@@ -28,7 +28,7 @@ _krefl_ -- the coefficient of reflection, indicating the lossiness and the rate 
 
 ## Examples
 
-Here is an example of the wgpluck2 opcode. It uses the file [wgpluck2.csd](../../examples/wgpluck2.csd).
+Here is an example of the wgpluck2 opcode. It uses the file [wgpluck2.csd](../examples/wgpluck2.csd).
 
 ``` csound-csd title="Example of the wgpluck2 opcode." linenums="1"
 --8<-- "examples/wgpluck2.csd"
@@ -36,7 +36,7 @@ Here is an example of the wgpluck2 opcode. It uses the file [wgpluck2.csd](../..
 
 ## See also
 
-[Waveguide Physical Modeling](../../siggen/wavguide)
+[Waveguide Physical Modeling](../siggen/wavguide.md)
 
 ## Credits
 

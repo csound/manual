@@ -24,7 +24,7 @@ _v1, v2, v3,_ etc. -- values to be copied directly into the table space. The val
 
 ## Examples
 
-Here is an example of the GEN02 routine. It uses the files [gen02.csd](../../examples/gen02.csd).
+Here is an example of the GEN02 routine. It uses the files [gen02.csd](../examples/gen02.csd).
 
 ``` csound-csd title="Example of the GEN02 routine." linenums="1"
 --8<-- "examples/gen02.csd"
@@ -33,23 +33,23 @@ Here is an example of the GEN02 routine. It uses the files [gen02.csd](../../exa
 These are the diagrams of the waveforms of the GEN02 routines, as used in the example:
 
 <figure markdown="span">
-![f 2 0 5 2 0 2 0](../../images/gen02_1.png)
+![f 2 0 5 2 0 2 0](../images/gen02_1.png)
 <figcaption>f 2 0 5 2 0 2 0</figcaption>
 </figure>
 
 <figure markdown="span">
-![f 3 0 5 2 0 2 10 0](../../images/gen02_2.png)
+![f 3 0 5 2 0 2 10 0](../images/gen02_2.png)
 <figcaption>f 3 0 5 2 0 2 10 0</figcaption>
 </figure>
 
 <figure markdown="span">
-![f 4 0 9 2 0 2 10 100 0](../../images/gen02_3.png)
+![f 4 0 9 2 0 2 10 100 0](../images/gen02_3.png)
 <figcaption>f 4 0 9 2 0 2 10 100 0</figcaption>
 </figure>
 
 ## See Also
 
-[GEN17](../../scoregens/gen17)
+[GEN17](../scoregens/gen17.md)
 
 ## Credits
 

@@ -14,13 +14,13 @@ nsamp(x) (init-rate args only)
 
 Returns the number of samples loaded into stored function table number _x_ by GEN01. This is useful when a sample is shorter than the power-of-two function table that holds it. New in Csound version 3.49.
 
-As of Csound version 5.02, _nsamp_ works with deferred-length function tables (see [GEN01](../../scoregens/gen01)).
+As of Csound version 5.02, _nsamp_ works with deferred-length function tables (see [GEN01](../scoregens/gen01.md)).
 
 _nsamp_ differs from _ftlen_ in that _nsamp_ gives the number of sample frames loaded, while _ftlen_ gives the total number of samples. For example, with a stereo sound file of 10000 samples, ftlen() would return 19999 (i.e. a total of 20000 mono samples, not including a guard point), but nsamp() returns 10000.
 
 ## Examples
 
-Here is an example of the nsamp opcode. It uses the file [nsamp.csd](../../examples/nsamp.csd), [drumsSlp.wav](../../examples/drumsSlp.wav). and [fox.wav](../../examples/fox.wav).
+Here is an example of the nsamp opcode. It uses the file [nsamp.csd](../examples/nsamp.csd), [drumsSlp.wav](../examples/drumsSlp.wav). and [fox.wav](../examples/fox.wav).
 
 ``` csound-csd title="Example of the nsamp opcode." linenums="1"
 --8<-- "examples/nsamp.csd"
@@ -35,7 +35,7 @@ actual numbers of samples = 121569
 
 ## See also
 
-[Table Control:Table Queries](../../table/queries)
+[Table Control:Table Queries](../table/queries.md)
 
 ## Credits
 

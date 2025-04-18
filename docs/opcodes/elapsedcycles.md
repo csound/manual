@@ -29,11 +29,11 @@ _elapsedcycles_ can also operate only at the start of the instance of the instru
 
 > :memo: **Note**
 >
-> _elapsedcycles_ acts like [timek](../../opcodes/timek) but it returns the correct values instead of being one cycle late.
+> _elapsedcycles_ acts like [timek](../opcodes/timek.md) but it returns the correct values instead of being one cycle late.
 
 ## See also
 
-[Time Reading](../../control/timeread)
+[Time Reading](../control/timeread.md)
 
 ## Credits
 

@@ -5,7 +5,7 @@ category:Spectral Processing:Other
 # temposcal
 Phase-locked vocoder processing with onset detection/processing, 'tempo-scaling'.
 
-_temposcal_ implements phase-locked vocoder processing using function tables containing sampled-sound sources, with [GEN01](../../scoregens/gen01), and _temposcal_ will accept deferred allocation tables.
+_temposcal_ implements phase-locked vocoder processing using function tables containing sampled-sound sources, with [GEN01](../scoregens/gen01.md), and _temposcal_ will accept deferred allocation tables.
 
 This opcode allows for time and frequency-independent scaling. Time is advanced internally, but controlled by a tempo scaling parameter; when an onset is detected, timescaling is momentarily stopped to avoid smearing of attacks. The quality of the effect is generally improved with phase locking switched on.
 
@@ -34,11 +34,11 @@ _kpitch_ -- grain pitch scaling (1=normal pitch, &lt; 1 lower, > 1 higher; negat
 
 _klock_ -- 0 or 1, to switch phase-locking on/off
 
-_ktab_ -- source signal function table. Deferred-allocation tables (see [GEN01](../../scoregens/gen01)) are accepted, but the opcode expects a mono source. Tables can be switched at k-rate.
+_ktab_ -- source signal function table. Deferred-allocation tables (see [GEN01](../scoregens/gen01.md)) are accepted, but the opcode expects a mono source. Tables can be switched at k-rate.
 
 ## Examples
 
-Here is an example of the temposcal opcode. It uses the file [temposcal.csd](../../examples/temposcal.csd).
+Here is an example of the temposcal opcode. It uses the file [temposcal.csd](../examples/temposcal.csd).
 
 ``` csound-csd title="Example of the temposcal opcode." linenums="1"
 --8<-- "examples/temposcal.csd"
@@ -46,7 +46,7 @@ Here is an example of the temposcal opcode. It uses the file [temposcal.csd](../
 
 ## See Also
 
-[Short-time Fourier Transform (STFT) Resynthesis](../../spectral/stft)
+[Short-time Fourier Transform (STFT) Resynthesis](../spectral/stft.md)
 
 ## Credits
 

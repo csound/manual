@@ -50,7 +50,7 @@ aout flooper2 16000, 1, 1, 5, 0.05, 1  ; loop starts at 1 sec, for 4 secs, 0.05 
 
 The example above shows the basic operation of _flooper2_. Pitch can be controlled at the k-rate, as well as amplitude and loop parameters. The example assumes table 1 to contain at least 5.05 seconds of audio (4 secs loop duration, starting 1 sec into the table, using 0.05 secs after the loop end for the crossfade). Looping is in mode 0 (normal forward loop).
 
-Here is another example of the flooper2 opcode. It uses the file [flooper2.csd](../../examples/flooper2.csd) and [fox.wav](../../examples/fox.wav).
+Here is another example of the flooper2 opcode. It uses the file [flooper2.csd](../examples/flooper2.csd) and [fox.wav](../examples/fox.wav).
 
 ``` csound-csd linenums="1"
 --8<-- "examples/flooper2.csd"
@@ -58,7 +58,7 @@ Here is another example of the flooper2 opcode. It uses the file [flooper2.csd](
 
 ## See also
 
-[Sample Playback](../../siggen/sample)
+[Sample Playback](../siggen/sample.md)
 
 ## Credits
 

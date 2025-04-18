@@ -28,7 +28,7 @@ Derived from Robin Whittle's _printk_, prints a new value of _kvar_ each time _k
 
 ## Examples
 
-Here is an example of the printk2 opcode. It uses the file [printk2.csd](../../examples/printk2.csd).
+Here is an example of the printk2 opcode. It uses the file [printk2.csd](../examples/printk2.csd).
 
 ``` csound-csd title="Example of the printk2 opcode." linenums="1"
 --8<-- "examples/printk2.csd"
@@ -49,7 +49,7 @@ i1     3.00000
 
 ## See also
 
-[Printing and Display](../../sigio/pdisplay)
+[Printing and Display](../sigio/pdisplay.md)
 
 ## Credits
 

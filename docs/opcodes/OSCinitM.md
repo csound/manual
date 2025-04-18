@@ -49,7 +49,7 @@ ex:
 
 ## See also
 
-[OSC (Open Sound Control)](../../oscnetwork/OSC)
+[OSC (Open Sound Control)](../oscnetwork/OSC.md)
 
 More information on this opcode: [http://www.youtube.com/watch?v=JX1C3TqP_9Y](http://www.youtube.com/watch?v=JX1C3TqP_9Y), made by Andrés Cabrera
 

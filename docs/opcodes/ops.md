@@ -12,7 +12,7 @@ S(x) (control-rate or init-rate arg)
 
 ## See also
 
-[Sample Level Operators](../../sigmod/sample)
+[Sample Level Operators](../sigmod/sample.md)
 
 ## Credits
 

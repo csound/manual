@@ -20,7 +20,7 @@ _kin[]_ -- input array containing the real-valued input.
 
 ## Examples
 
-Here is an example of the rfft opcode. It uses the file [rfft.csd](../../examples/rfft.csd).
+Here is an example of the rfft opcode. It uses the file [rfft.csd](../examples/rfft.csd).
 
 ``` csound-csd title="Example of the rfft opcode." linenums="1"
 --8<-- "examples/rfft.csd"
@@ -28,11 +28,11 @@ Here is an example of the rfft opcode. It uses the file [rfft.csd](../../example
 
 ## See Also
 
-[Vectorial opcodes](../../vectorial/top)
+[Vectorial opcodes](../vectorial/top.md)
 
-[array opcodes](../../math/array)
+[array opcodes](../math/array.md)
 
-[Array-based spectral opcodes](../../spectral/arrays)
+[Array-based spectral opcodes](../spectral/arrays.md)
 
 ## Credits
 

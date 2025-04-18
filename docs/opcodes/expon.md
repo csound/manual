@@ -25,7 +25,7 @@ These units generate control or audio signals whose values can pass through 2 sp
 
 ## Examples
 
-Here is an example of the expon opcode. It uses the file [expon.csd](../../examples/expon.csd).
+Here is an example of the expon opcode. It uses the file [expon.csd](../examples/expon.csd).
 
 ``` csound-orc title="Example of the expon opcode." linenums="1"
 --8<-- "examples/expon.csd"
@@ -33,4 +33,4 @@ Here is an example of the expon opcode. It uses the file [expon.csd](../../examp
 
 ## See also
 
-[Linear and Exponential Generators](../../siggen/lineexp)
+[Linear and Exponential Generators](../siggen/lineexp.md)

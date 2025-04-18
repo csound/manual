@@ -27,7 +27,7 @@ _kin[]_ -- input array containing the input
 
 ## Examples
 
-Here is an example of the dct opcode. It uses the file [dct.csd](../../examples/dct.csd).
+Here is an example of the dct opcode. It uses the file [dct.csd](../examples/dct.csd).
 
 ``` csound-csd title="Example of the dct opcode." linenums="1"
 --8<-- "examples/dct.csd"
@@ -35,7 +35,7 @@ Here is an example of the dct opcode. It uses the file [dct.csd](../../examples/
 
 ## See Also
 
-[Vectorial opcodes](../../vectorial/top), [array opcodes](../../math/array), [dctinv](../../opcodes/dctinv)
+[Vectorial opcodes](../vectorial/top.md), [array opcodes](../math/array.md), [dctinv](../opcodes/dctinv.md)
 
 ## Credits
 

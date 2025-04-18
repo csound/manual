@@ -21,7 +21,7 @@ The output is the result of drawing an ellipse with axes _k_xradius_ and _k_yrad
 
 ## Examples
 
-Here is an example of the wterrain opcode. It uses the file [wterrain.csd](../../examples/wterrain.csd).
+Here is an example of the wterrain opcode. It uses the file [wterrain.csd](../examples/wterrain.csd).
 
 ``` csound-csd title="Example of the wterrain opcode." linenums="1"
 --8<-- "examples/wterrain.csd"
@@ -29,7 +29,7 @@ Here is an example of the wterrain opcode. It uses the file [wterrain.csd](../..
 
 ## See Also
 
-[Wave Terrain Synthesis](../../siggen/waveterr)
+[Wave Terrain Synthesis](../siggen/waveterr.md)
 
 ## Credits
 

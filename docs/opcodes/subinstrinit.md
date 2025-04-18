@@ -5,7 +5,7 @@ category:Instrument Control:Subinstrument Control
 # subinstrinit
 Creates and runs a numbered instrument instance at init-time.
 
-Same as [subinstr](../../opcodes/subinstr), but init-time only and has no output arguments.
+Same as [subinstr](../opcodes/subinstr.md), but init-time only and has no output arguments.
 
 ## Syntax
 ``` csound-orc
@@ -21,11 +21,11 @@ _&#8220;insname&#8221;_ -- A string (in double-quotes) representing a named inst
 
 _p4, p5, ..._ -- Additional input values the are mapped to the called instrument p-fields, starting with p4.
 
-The called instrument's p2 and p3 values will be identical to the host instrument's values. While the host instrument can [control its own duration](../../control/durctl), any such attempts inside the called instrument will most likely have no effect.
+The called instrument's p2 and p3 values will be identical to the host instrument's values. While the host instrument can [control its own duration](../control/durctl.md), any such attempts inside the called instrument will most likely have no effect.
 
 ## Examples
 
-Here is an example of the subinstrinit opcode. It uses the file [subinstrinit.csd](../../examples/subinstrinit.csd).
+Here is an example of the subinstrinit opcode. It uses the file [subinstrinit.csd](../examples/subinstrinit.csd).
 
 ``` csound-csd title="Example of the subinstrinit opcode." linenums="1"
 --8<-- "examples/subinstrinit.csd"
@@ -45,7 +45,7 @@ B  4.000 ..  6.000 T  6.000 TT  6.000 M:  0.00000  0.00000
 
 ## See also
 
-[Sub-instrument Control](../../control/subinstr)
+[Sub-instrument Control](../control/subinstr.md)
 
 ## Credits
 

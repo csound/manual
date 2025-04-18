@@ -26,7 +26,7 @@ _sourcemode_ -- a coded value, specifying how the source table is to be scanned 
 
 ## Examples
 
-Here is a simple example of the GEN04 routine. It uses the files [gen04.csd](../../examples/gen04.csd).
+Here is a simple example of the GEN04 routine. It uses the files [gen04.csd](../examples/gen04.csd).
 
 ``` csound-csd title="An example of the GEN04 routine." linenums="1"
 --8<-- "examples/gen04.csd"
@@ -35,21 +35,21 @@ Here is a simple example of the GEN04 routine. It uses the files [gen04.csd](../
 These are the diagrams of the waveforms of the GEN04 routines, as used in the example:
 
 <figure markdown="span">
-![f1 0 64 21 6 - Gaussian (random) distribution](../../images/gen04_1.png)
+![f1 0 64 21 6 - Gaussian (random) distribution](../images/gen04_1.png)
 <figcaption>f1 0 64 21 6 - Gaussian (random) distribution</figcaption>
 </figure>
 
 <figure markdown="span">
-![f2 0 33 4 1 1 - AND its normalizing function with midpoint bipolar offset](../../images/gen04_2.png)
+![f2 0 33 4 1 1 - AND its normalizing function with midpoint bipolar offset](../images/gen04_2.png)
 <figcaption>f2 0 33 4 1 1 - AND its normalizing function with midpoint bipolar offset</figcaption>
 </figure>
 
 <figure markdown="span">
-![f3 0 1025 13 1 1 0 5 0 5 0 10 - Chebyshev algorithm](../../images/gen04_3.png)
+![f3 0 1025 13 1 1 0 5 0 5 0 10 - Chebyshev algorithm](../images/gen04_3.png)
 <figcaption>f3 0 1025 13 1 1 0 5 0 5 0 10 - Chebyshev algorithm</figcaption>
 </figure>
 
 <figure markdown="span">
-![f4 0 513 4 3 1 - AND its normalizing function with midpoint bipolar offset](../../images/gen04_4.png)
+![f4 0 513 4 3 1 - AND its normalizing function with midpoint bipolar offset](../images/gen04_4.png)
 <figcaption>f4 0 513 4 3 1 - AND its normalizing function with midpoint bipolar offset</figcaption>
 </figure>

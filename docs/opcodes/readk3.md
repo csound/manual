@@ -12,7 +12,7 @@ kr1, kr2, kr3 readk3 ifilname, iformat, iprd
 
 ### Initialization
 
-_ifilname_ -- an integer N denoting a file named "readk.N" or a character string (in double quotes, spaces permitted) denoting the external file name. For a string, it may either be a full path name with directory specified or a simple filename.  In the later case, the file is sought first in the current directory, then in [SSDIR](../../invoke/environment-variables), and finally in [SFDIR](../../invoke/environment-variables).
+_ifilname_ -- an integer N denoting a file named "readk.N" or a character string (in double quotes, spaces permitted) denoting the external file name. For a string, it may either be a full path name with directory specified or a simple filename.  In the later case, the file is sought first in the current directory, then in [SSDIR](../invoke/environment-variables.md), and finally in [SFDIR](../invoke/environment-variables.md).
 
 _iformat_ -- specifies the input data format:
 
@@ -35,7 +35,7 @@ This opcode allows three generated control signal values to be read from a named
 
 ## Examples
 
-Here is an example of the readk3 opcode. It uses the file [readk3.csd](../../examples/readk3.csd).
+Here is an example of the readk3 opcode. It uses the file [readk3.csd](../examples/readk3.csd).
 
 ``` csound-csd title="Example of the readk3 opcode." linenums="1"
 --8<-- "examples/readk3.csd"
@@ -63,7 +63,7 @@ kfreq = 482.056800, kdb = -4.046700, kpan = 0.876500
 
 ## See also
 
-[File Input and Output](../../sigio/fileio)
+[File Input and Output](../sigio/fileio.md)
 
 ## Credits
 

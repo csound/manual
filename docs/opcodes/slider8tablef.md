@@ -42,11 +42,11 @@ When no function table translation is required, set the _ifnN_ value to 0, else 
 
 _slider8tablef_ allows a bank of 8 different MIDI control message numbers. It filters the signal before output. This eliminates discontinuities due to the low resolution of the MIDI (7 bit). The cutoff frequency can be set separately for each controller (suggested range: .1 to 5 Hz).
 
-As the input and output arguments are many, you can split the line using '\' (backslash) character (new in 3.47 version) to improve the readability. Using these opcodes is considerably more efficient than using the separate ones ([ctrl7](../../opcodes/ctrl7) and [tonek](../../opcodes/tonek)) when more controllers are required.
+As the input and output arguments are many, you can split the line using '\' (backslash) character (new in 3.47 version) to improve the readability. Using these opcodes is considerably more efficient than using the separate ones ([ctrl7](../opcodes/ctrl7.md) and [tonek](../opcodes/tonek.md)) when more controllers are required.
 
-_slider8tablef_ is very similar to  [slider8f](../../opcodes/slider8f) and _sliderNf_ family of opcodes (see their manual for more information). The actual difference is that the output is not stored to k-rate variables, but to a table, denoted by the _ioutTable_ argument. It is possible to define a starting index in order to use the same table for more than one slider bank (or other purposes).
+_slider8tablef_ is very similar to  [slider8f](../opcodes/slider8f.md) and _sliderNf_ family of opcodes (see their manual for more information). The actual difference is that the output is not stored to k-rate variables, but to a table, denoted by the _ioutTable_ argument. It is possible to define a starting index in order to use the same table for more than one slider bank (or other purposes).
 
-It is possible to use this opcode together with [FLslidBnk2Setk](../../opcodes/flslidbnk2setk) and [FLslidBnk2](../../opcodes/flslidbnk2), so you can synchronize the position of the MIDI values to the position of the FLTK valuator widgets of [FLslidBnk2](../../opcodes/flslidbnk2). Notice that you have to specify the same min/max values as well the linear/exponential responses in both _sliderNtable(f)_ and [FLslidBnk2](../../opcodes/flslidbnk2). The exception is when using table-indexed response instead of a lin/exp response. In this case, in order to achieve a useful result, the table-indexed response and actual min/max values must be set only in [FLslidBnk2](../../opcodes/flslidbnk2), whereas, in sliderNtable(f), you have to set a linear response and a minimum of zero and a maximum of one in all sliders.
+It is possible to use this opcode together with [FLslidBnk2Setk](../opcodes/flslidbnk2setk.md) and [FLslidBnk2](../opcodes/flslidbnk2.md), so you can synchronize the position of the MIDI values to the position of the FLTK valuator widgets of [FLslidBnk2](../opcodes/flslidbnk2.md). Notice that you have to specify the same min/max values as well the linear/exponential responses in both _sliderNtable(f)_ and [FLslidBnk2](../opcodes/flslidbnk2.md). The exception is when using table-indexed response instead of a lin/exp response. In this case, in order to achieve a useful result, the table-indexed response and actual min/max values must be set only in [FLslidBnk2](../opcodes/flslidbnk2.md), whereas, in sliderNtable(f), you have to set a linear response and a minimum of zero and a maximum of one in all sliders.
 
 > :warning: **Warning**
 >
@@ -54,7 +54,7 @@ It is possible to use this opcode together with [FLslidBnk2Setk](../../opcodes/f
 
 ## See Also
 
-[Slider Banks](../../midi/sliderbk)
+[Slider Banks](../midi/sliderbk.md)
 
 ## Credits
 

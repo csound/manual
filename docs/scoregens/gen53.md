@@ -24,7 +24,7 @@ f # time size 53 fsrc [mode fwin]
 
 ## Examples
 
-Here is a complete example of the GEN53 generator. It uses the file [gen53.csd](../../examples/gen53.csd).
+Here is a complete example of the GEN53 generator. It uses the file [gen53.csd](../examples/gen53.csd).
 
 ``` csound-csd title="Example of the GEN53 generator." linenums="1"
 --8<-- "examples/gen53.csd"

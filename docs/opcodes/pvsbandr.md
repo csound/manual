@@ -43,7 +43,7 @@ ________                                      ______________
 
 ## Examples
 
-Here is an example of the pvsbandr opcode. It uses the file [pvsbandr.csd](../../examples/pvsbandr.csd).
+Here is an example of the pvsbandr opcode. It uses the file [pvsbandr.csd](../examples/pvsbandr.csd).
 
 ``` csound-csd title="Example of the pvsbandr opcode." linenums="1"
 --8<-- "examples/pvsbandr.csd"
@@ -51,7 +51,7 @@ Here is an example of the pvsbandr opcode. It uses the file [pvsbandr.csd](../..
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

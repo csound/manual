@@ -36,7 +36,7 @@ The example shows a simple instrument, which when called, sends a group of 3 mes
       endin
 ```
 
-Here is a complete example of the OSCsend opcode. It uses the file [OSCsend.csd](../../examples/OSCsend.csd).
+Here is a complete example of the OSCsend opcode. It uses the file [OSCsend.csd](../examples/OSCsend.csd).
 
 ``` csound-csd title="Example of the OSCsend opcode." linenums="1"
 --8<-- "examples/OSCsend.csd"
@@ -44,7 +44,7 @@ Here is a complete example of the OSCsend opcode. It uses the file [OSCsend.csd]
 
 ## See also
 
-[OSC (Open Sound Control)](../../oscnetwork/OSC)
+[OSC (Open Sound Control)](../oscnetwork/OSC.md)
 
 More information on this opcode: [http://www.youtube.com/watch?v=JX1C3TqP_9Y](http://www.youtube.com/watch?v=JX1C3TqP_9Y), made by Andrés Cabrera
 

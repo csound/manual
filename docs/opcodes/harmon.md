@@ -36,7 +36,7 @@ This unit is useful for supplying a background chorus effect on demand, or for c
 
 ## Examples
 
-Here is an example of the harmon opcode. It uses the file [harmon.csd](../../examples/harmon.csd).
+Here is an example of the harmon opcode. It uses the file [harmon.csd](../examples/harmon.csd).
 
 ``` csound-csd title="Example of the harmon opcode." linenums="1"
 --8<-- "examples/harmon.csd"
@@ -44,7 +44,7 @@ Here is an example of the harmon opcode. It uses the file [harmon.csd](../../exa
 
 ## See also
 
-[Special Effects](../../sigmod/speciale)
+[Special Effects](../sigmod/speciale.md)
 
 ## Credits
 

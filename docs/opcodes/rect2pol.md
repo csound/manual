@@ -18,7 +18,7 @@ _kin[]_ -- input array containing the complex-valued real-imaginary input.
 
 ## Examples
 
-Here is an example of the rect2pol opcode. It uses the file [rect2pol.csd](../../examples/rect2pol.csd).
+Here is an example of the rect2pol opcode. It uses the file [rect2pol.csd](../examples/rect2pol.csd).
 
 ``` csound-csd title="Example of the rect2pol opcode." linenums="1"
 --8<-- "examples/rect2pol.csd"
@@ -26,11 +26,11 @@ Here is an example of the rect2pol opcode. It uses the file [rect2pol.csd](../..
 
 ## See Also
 
-[Vectorial opcodes](../../vectorial/top)
+[Vectorial opcodes](../vectorial/top.md)
 
-[array opcodes](../../math/array)
+[array opcodes](../math/array.md)
 
-[Array-based spectral opcodes](../../spectral/arrays)
+[Array-based spectral opcodes](../spectral/arrays.md)
 
 ## Credits
 

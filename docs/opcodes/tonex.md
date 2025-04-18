@@ -5,7 +5,7 @@ category:Signal Modifiers:Standard Filters
 # tonex
 Emulates a stack of filters using the tone opcode.
 
-_tonex_ is equivalent to a filter consisting of more layers of [tone](../../opcodes/tone) with the same arguments, serially connected. Using a stack of a larger number of filters allows a sharper cutoff. They are faster than using a larger number instances in a Csound orchestra of the old opcodes, because only one initialization and k- cycle are needed at time and the audio loop falls entirely inside the cache memory of processor.
+_tonex_ is equivalent to a filter consisting of more layers of [tone](../opcodes/tone.md) with the same arguments, serially connected. Using a stack of a larger number of filters allows a sharper cutoff. They are faster than using a larger number instances in a Csound orchestra of the old opcodes, because only one initialization and k- cycle are needed at time and the audio loop falls entirely inside the cache memory of processor.
 
 ## Syntax
 ``` csound-orc
@@ -27,7 +27,7 @@ _khp_/_ahp_ -- the response curve's half-power point. Half power is defined as p
 
 ## Examples
 
-Here is an example of the tonex opcode. It uses the file [tonex.csd](../../examples/tonex.csd).
+Here is an example of the tonex opcode. It uses the file [tonex.csd](../examples/tonex.csd).
 
 ``` csound-csd title="Example of the tonex opcode." linenums="1"
 --8<-- "examples/tonex.csd"
@@ -35,7 +35,7 @@ Here is an example of the tonex opcode. It uses the file [tonex.csd](../../examp
 
 ## See also
 
-[Standard filters: Low-pass filters](../../sigmod/standard)
+[Standard filters: Low-pass filters](../sigmod/standard.md)
 
 ## Credits
 

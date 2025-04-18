@@ -26,7 +26,7 @@ _xR_ -- filter damping factor, which controls peaking (for bandpass, R = 1/Q, wh
 
 ## Examples
 
-Here is an example of the spf opcode. It uses the file [spf.csd](../../examples/spf.csd).
+Here is an example of the spf opcode. It uses the file [spf.csd](../examples/spf.csd).
 
 ``` csound-csd title="Example of the spf opcode." linenums="1"
 --8<-- "examples/spf.csd"
@@ -34,7 +34,7 @@ Here is an example of the spf opcode. It uses the file [spf.csd](../../examples/
 
 ## See also
 
-[Standard Filters: Resonant Low-pass filters](../../sigmod/standard)
+[Standard Filters: Resonant Low-pass filters](../sigmod/standard.md)
 
 ## Credits
 

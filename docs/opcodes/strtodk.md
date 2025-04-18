@@ -27,7 +27,7 @@ _indx_ -- index of string set by strset
 
 ## See Also
 
-[String Conversion Opcodes](../../strings/convert)
+[String Conversion Opcodes](../strings/convert.md)
 
 ## Credits
 

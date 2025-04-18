@@ -18,7 +18,7 @@ _fsig_ -- an input pv stream
 
 ## Examples
 
-Here is an example of the use of the _pvsbandwidth_ opcode. It uses the file [pvsbandwidth.csd](../../examples/pvsbandwidth.csd).
+Here is an example of the use of the _pvsbandwidth_ opcode. It uses the file [pvsbandwidth.csd](../examples/pvsbandwidth.csd).
 
 ``` csound-csd title="Example of the pvsbandwidth opcode." linenums="1"
 --8<-- "examples/pvsbandwidth.csd"
@@ -26,7 +26,7 @@ Here is an example of the use of the _pvsbandwidth_ opcode. It uses the file [pv
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

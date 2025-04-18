@@ -53,7 +53,7 @@ _kS_ -- shelf slope parameter for shelving filters. Must be greater than zero; a
 
 ## Examples
 
-Here is an example of the _rbjeq_ opcode. It uses the file [rbjeq.csd](../../examples/rbjeq.csd).
+Here is an example of the _rbjeq_ opcode. It uses the file [rbjeq.csd](../examples/rbjeq.csd).
 
 ``` csound-csd title="An example of the rbjeq opcode." linenums="1"
 --8<-- "examples/rbjeq.csd"
@@ -61,7 +61,7 @@ Here is an example of the _rbjeq_ opcode. It uses the file [rbjeq.csd](../../exa
 
 ## See also
 
-[Specialized Filters: Parametric EQ](../../sigmod/speciali)
+[Specialized Filters: Parametric EQ](../sigmod/speciali.md)
 
 ## Credits
 

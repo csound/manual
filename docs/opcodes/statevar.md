@@ -36,7 +36,7 @@ _xq_ -- filter Q (k-rate or a-rate). This value is limited internally depending 
 
 ## Examples
 
-Here is an example of the statevar opcode. It uses the file [statevar.csd](../../examples/statevar.csd).
+Here is an example of the statevar opcode. It uses the file [statevar.csd](../examples/statevar.csd).
 
 ``` csound-csd title="Example of the statevar opcode." linenums="1"
 --8<-- "examples/statevar.csd"
@@ -44,7 +44,7 @@ Here is an example of the statevar opcode. It uses the file [statevar.csd](../..
 
 ## See also
 
-[Standard Filters: Resonant Low-pass filters](../../sigmod/standard)
+[Standard Filters: Resonant Low-pass filters](../sigmod/standard.md)
 
 ## Credits
 

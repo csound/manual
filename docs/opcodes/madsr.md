@@ -3,7 +3,7 @@ id:madsr
 category:Signal Generators:Envelope Generators
 -->
 # madsr
-Calculates the classical ADSR envelope using the [linsegr](../../opcodes/linsegr) mechanism.
+Calculates the classical ADSR envelope using the [linsegr](../opcodes/linsegr.md) mechanism.
 
 ## Syntax
 ``` csound-orc
@@ -25,21 +25,21 @@ _idel_ -- period of zero before the envelope starts
 
 _ireltim_ (optional, default=-1) -- Control release time after receiving a MIDI noteoff event. If less than zero, the longest release time given in the current instrument is used. If zero or more, the given value will be used for release time. Its default value is -1. (New in Csound 3.59 - not yet properly tested)
 
-Please note that the release time was restricted to 32767/[kr](../../opcodes/kr) seconds in versions prior to 5.00; since then it has been (2<sup>31</sup>-1)/kr.
+Please note that the release time was restricted to 32767/[kr](../opcodes/kr.md) seconds in versions prior to 5.00; since then it has been (2<sup>31</sup>-1)/kr.
 
 ### Performance
 
 The envelope is in the range 0 to 1 and may need to be scaled further. The envelope may be described as:
 
 <figure markdown="span">
-![Picture of an ADSR envelope.](../../images/adsr.png)
+![Picture of an ADSR envelope.](../images/adsr.png)
 <figcaption>Picture of an ADSR envelope.</figcaption>
 </figure>
 
-The length of the sustain is calculated from the length of the note. This means [adsr](../../opcodes/adsr) is not suitable for use with MIDI events. The opcode _madsr_ uses the [linsegr](../../opcodes/linsegr) mechanism, and so can be used in MIDI applications.
+The length of the sustain is calculated from the length of the note. This means [adsr](../opcodes/adsr.md) is not suitable for use with MIDI events. The opcode _madsr_ uses the [linsegr](../opcodes/linsegr.md) mechanism, and so can be used in MIDI applications.
 
 You can use other pre-made envelopes which start a release
-segment upon receiving a note off message, like [linsegr](../../opcodes/linsegr) and [expsegr](../../opcodes/expsegr), or you can construct more complex envelopes using [xtratim](../../opcodes/xtratim) and [release](../../opcodes/release). Note that you do not need to use [xtratim](../../opcodes/xtratim) if you are using _madsr_, since the time is extended automatically.
+segment upon receiving a note off message, like [linsegr](../opcodes/linsegr.md) and [expsegr](../opcodes/expsegr.md), or you can construct more complex envelopes using [xtratim](../opcodes/xtratim.md) and [release](../opcodes/release.md). Note that you do not need to use [xtratim](../opcodes/xtratim.md) if you are using _madsr_, since the time is extended automatically.
 
 > :memo: **Note**
 >
@@ -47,19 +47,19 @@ segment upon receiving a note off message, like [linsegr](../../opcodes/linsegr)
 
 ## Examples
 
-Here is an example of the madsr opcode. It uses the file [madsr.csd](../../examples/madsr.csd).
+Here is an example of the madsr opcode. It uses the file [madsr.csd](../examples/madsr.csd).
 
 ``` csound-csd title="Example of the madsr opcode." linenums="1"
 --8<-- "examples/madsr.csd"
 ```
 
-Here is another example of the madsr opcode, using midi input. It uses the file [madsr-2.csd](../../examples/madsr-2.csd).
+Here is another example of the madsr opcode, using midi input. It uses the file [madsr-2.csd](../examples/madsr-2.csd).
 
 ``` csound-csd title="second example of the madsr opcode." linenums="1"
 --8<-- "examples/madsr-2.csd"
 ```
 
-Here is an example for the adsr-group, comparing the different adsr opcodes. It uses the file [adsr-group.csd](../../examples/adsr-group.csd).
+Here is an example for the adsr-group, comparing the different adsr opcodes. It uses the file [adsr-group.csd](../examples/adsr-group.csd).
 
 ``` csound-csd title="Example of the adsr group." linenums="1"
 --8<-- "examples/adsr-group.csd"
@@ -67,7 +67,7 @@ Here is an example for the adsr-group, comparing the different adsr opcodes. It 
 
 ## See Also
 
-[Envelope Generators](../../siggen/envelope)
+[Envelope Generators](../siggen/envelope.md)
 
 ## Credits
 

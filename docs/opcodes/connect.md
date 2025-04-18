@@ -28,7 +28,7 @@ _Sinlet1_ -- String name of the sink inlet in the sink instrument.
 
 ## Examples
 
-Here is an example of the connect opcode. It uses the file [connect.csd](../../examples/connect.csd).
+Here is an example of the connect opcode. It uses the file [connect.csd](../examples/connect.csd).
 
 ``` csound-csd title="Example of the connect opcode." linenums="1"
 --8<-- "examples/connect.csd"
@@ -36,7 +36,7 @@ Here is an example of the connect opcode. It uses the file [connect.csd](../../e
 
 ## See also
 
-[Signal Flow Graph Opcodes](../../signalflowgraph)
+[Signal Flow Graph Opcodes](../signalflowgraph.md)
 
 More information on this opcode: [http://www.csoundjournal.com/issue13/signalFlowGraphOpcodes.html](http://www.csoundjournal.com/issue13/signalFlowGraphOpcodes.html), written by Michael Gogins
 

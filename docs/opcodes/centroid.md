@@ -24,7 +24,7 @@ _ktrig_ -- 1 to calculate a new centroid, 0 to skip the process (and output prev
 
 ## Examples
 
-Here is an example of the centroid opcode. It uses the file [centroid.csd](../../examples/centroid.csd).
+Here is an example of the centroid opcode. It uses the file [centroid.csd](../examples/centroid.csd).
 
 ``` csound-csd title="Example of the centroid opcode." linenums="1"
 --8<-- "examples/centroid.csd"
@@ -32,7 +32,7 @@ Here is an example of the centroid opcode. It uses the file [centroid.csd](../..
 
 ## See also
 
-[Sensing and Control: Tempo and Pitch estimation](../../control/sensing)
+[Sensing and Control: Tempo and Pitch estimation](../control/sensing.md)
 
 ## Credits
 

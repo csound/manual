@@ -5,7 +5,7 @@ category:Signal Generators:Wave Terrain Synthesis
 # wterrain2
 A wave-terrain synthesis opcode using different curves
 
-It enhances the [wterrain](../../opcodes/wterrain) opcode by providing some more curves, krate table parameters and a parameter for rotating the curve.
+It enhances the [wterrain](../opcodes/wterrain.md) opcode by providing some more curves, krate table parameters and a parameter for rotating the curve.
 
 ## Syntax
 ``` csound-orc
@@ -41,7 +41,7 @@ fy(t) = ky + kry * cos(t) * (cos(t) + kcurveparam);
 ```
 
 <figure markdown="span">
-![limacon curve with different parameters](../../images/limacon.png)
+![limacon curve with different parameters](../images/limacon.png)
 <figcaption>limacon curve with different parameters</figcaption>
 </figure>
 
@@ -53,7 +53,7 @@ fy(t) = ky + kry * sin(t) * (kcurveparam + cos(2*t))
 ```
 
 <figure markdown="span">
-![cornoid with different parameters](../../images/cornoid.png)
+![cornoid with different parameters](../images/cornoid.png)
 <figcaption>cornoid with different parameters</figcaption>
 </figure>
 
@@ -65,7 +65,7 @@ fy(t) = ky + kry * sin(t) * (1+kcurveparam*sin(2*t));
 ```
 
 <figure markdown="span">
-![trisectrix curve with different parameters](../../images/trisextic.png)
+![trisectrix curve with different parameters](../images/trisextic.png)
 <figcaption>trisectrix curve with different parameters</figcaption>
 </figure>
 
@@ -77,7 +77,7 @@ fy(t) = ky + kry * sin(t) * (1+kcurveparam*sin(2*t));
 ```
 
 <figure markdown="span">
-![scarabeus curve with different parameters](../../images/scarabeus.png)
+![scarabeus curve with different parameters](../images/scarabeus.png)
 <figcaption>scarabeus curve with different parameters</figcaption>
 </figure>
 
@@ -89,7 +89,7 @@ fy(t) = ky + kry * sin(t) * cos(t) * (sin(t)*sin(t) - kcurveparam);
 ```
 
 <figure markdown="span">
-![folium with different parameters](../../images/folium.png)
+![folium with different parameters](../images/folium.png)
 <figcaption>folium with different parameters</figcaption>
 </figure>
 
@@ -101,21 +101,21 @@ fy(t) = ky + kry * sin(t) * (1 - kcurveparam - kcurveparam*cos(t)*cos(t));
 ```
 
 <figure markdown="span">
-![Talbot curve with different parameters](../../images/talbot.png)
+![Talbot curve with different parameters](../images/talbot.png)
 <figcaption>Talbot curve with different parameters</figcaption>
 </figure>
 
 ## Examples
 
 Here is an example of the wterrain2 opcode. It uses the file
-[wterrain2_1.csd](../../examples/wterrain2_1.csd).
+[wterrain2_1.csd](../examples/wterrain2_1.csd).
 
 ``` csound-csd title="Example of the wterrain2 opcode." linenums="1"
 --8<-- "examples/wterrain2_1.csd"
 ```
 
 Here is an other example of the wterrain2 - a sound fugue.
-It uses the file [wterrain2_2.csd](../../examples/wterrain2_2.csd).
+It uses the file [wterrain2_2.csd](../examples/wterrain2_2.csd).
 
 ``` csound-csd title="Another Example of the wterrain2 opcode - a sound fugue" linenums="1"
 --8<-- "examples/wterrain2_2.csd"
@@ -123,7 +123,7 @@ It uses the file [wterrain2_2.csd](../../examples/wterrain2_2.csd).
 
 ## See Also
 
-[Wave Terrain Synthesis](../../siggen/waveterr)
+[Wave Terrain Synthesis](../siggen/waveterr.md)
 
 ## Credits
 

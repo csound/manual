@@ -22,13 +22,13 @@ Parentheses may be used as above to force particular groupings.
 
 ## Examples
 
-Here is an example of the bitwise AND and OR operators. It uses the file [bitwise.csd](../../examples/bitwise.csd).
+Here is an example of the bitwise AND and OR operators. It uses the file [bitwise.csd](../examples/bitwise.csd).
 
 ``` csound-csd title="Example of the bitwise operators." linenums="1"
 --8<-- "examples/bitwise.csd"
 ```
 
-Here is an example for the bitwise-group, comparing the different bitwise opcodes. It uses the file [bitwise-group.csd](../../examples/bitwise-group.csd).
+Here is an example for the bitwise-group, comparing the different bitwise opcodes. It uses the file [bitwise-group.csd](../examples/bitwise-group.csd).
 
 ``` csound-csd title="Example of the bitwise group." linenums="1"
 --8<-- "examples/bitwise-group.csd"
@@ -36,4 +36,4 @@ Here is an example for the bitwise-group, comparing the different bitwise opcode
 
 ## See also
 
-[Arithmetic and Logic Operations](../../math/artlogic)
+[Arithmetic and Logic Operations](../math/artlogic.md)

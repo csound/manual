@@ -18,9 +18,9 @@ Sres pwd
 
 _Sres_ -- the returned string.
 
-Example
+## Examples
 
-Here is an example of the pwd opcode. It uses the file [pwd.csd](../../examples/pwd.csd).
+Here is an example of the pwd opcode. It uses the file [pwd.csd](../examples/pwd.csd).
 
 ``` csound-csd title="Example of the pwd opcode." linenums="1"
 --8<-- "examples/pwd.csd"
@@ -28,7 +28,7 @@ Here is an example of the pwd opcode. It uses the file [pwd.csd](../../examples/
 
 ## See also
 
-[Miscellaneous opcodes](../../miscopcodes)
+[Miscellaneous opcodes](../miscopcodes.md)
 
 ## Credits
 

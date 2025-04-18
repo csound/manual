@@ -42,7 +42,7 @@ This opcode uses high quality (and slow) interpolation, that is much more accura
 
 ## Examples
 
-Here is an example of the use of the _vdelayx_ opcode. It uses the file [vdelayx.csd](../../examples/vdelayx.csd).
+Here is an example of the use of the _vdelayx_ opcode. It uses the file [vdelayx.csd](../examples/vdelayx.csd).
 
 ``` csound-csd title="Example of the _vdelayx_ opcode." linenums="1"
 --8<-- "examples/vdelayx.csd"
@@ -50,4 +50,4 @@ Here is an example of the use of the _vdelayx_ opcode. It uses the file [vdelayx
 
 ## See also
 
-[Delay](../../sigmod/delayops)
+[Delay](../sigmod/delayops.md)

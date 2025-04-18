@@ -25,7 +25,7 @@ For more detailed explanation of these distributions, see:
 
 ## Examples
 
-Here is an example of the unirand opcode. It uses the file [unirand.csd](../../examples/unirand.csd).
+Here is an example of the unirand opcode. It uses the file [unirand.csd](../examples/unirand.csd).
 
 ``` csound-orc title="Example of the unirand opcode." linenums="1"
 --8<-- "examples/unirand.csd"
@@ -65,7 +65,7 @@ Score finished in csoundPerform().
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
 ## Credits
 

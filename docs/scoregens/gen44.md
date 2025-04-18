@@ -54,13 +54,13 @@ Note: to avoid confusion with other matrix formats, it is best to save this matr
 
 ## Examples
 
-Here is an example of the GEN44 generator. It uses the file [gen44.csd](../../examples/gen44.csd).
+Here is an example of the GEN44 generator. It uses the file [gen44.csd](../examples/gen44.csd).
 
 ``` csound-csd title="Example of the GEN44 generator." linenums="1"
 --8<-- "examples/gen44.csd"
 ```
 
-Here is another example of GEN44. It uses the file [gen44-2.csd](../../examples/gen44-2.csd). The matrix file has 1024 masses.
+Here is another example of GEN44. It uses the file [gen44-2.csd](../examples/gen44-2.csd). The matrix file has 1024 masses.
 
 ``` csound-csd title="Second example of the GEN44 generator." linenums="1"
 --8<-- "examples/gen44-2.csd"
@@ -68,7 +68,7 @@ Here is another example of GEN44. It uses the file [gen44-2.csd](../../examples/
 
 ## See also
 
-[Scanned Synthesis](../../siggen/scantop)
+[Scanned Synthesis](../siggen/scantop.md)
 
 More information on the Scanned Synthesis opcodes: [Working with Scanned Synthesis](http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html), written by Steven Yi, and some [tutorials](http://www.csounds.com/scanned/) by Richard Boulanger.
 

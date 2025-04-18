@@ -26,7 +26,7 @@ _kbeta_ -- spectral parameter related to the fractal dimension
 
 ## Examples
 
-Here is an example of the fractalnoise opcode. It uses the file [fractalnoise.csd](../../examples/fractalnoise.csd).
+Here is an example of the fractalnoise opcode. It uses the file [fractalnoise.csd](../examples/fractalnoise.csd).
 
 ``` csound-orc title="Example of the fractalnoise opcode." linenums="1"
 --8<-- "examples/fractalnoise.csd"
@@ -40,7 +40,7 @@ References
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
 ## Credits
 

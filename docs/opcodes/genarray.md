@@ -21,7 +21,7 @@ _inc_ -- amount to add to previous value (default 1).
 
 ## Examples
 
-Here is an example of the genarray opcode. It uses the file [genarray.csd](../../examples/genarray.csd).
+Here is an example of the genarray opcode. It uses the file [genarray.csd](../examples/genarray.csd).
 
 ``` csound-csd title="Example of the genarray opcode." linenums="1"
 --8<-- "examples/genarray.csd"
@@ -29,7 +29,7 @@ Here is an example of the genarray opcode. It uses the file [genarray.csd](../..
 
 ## See also
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

@@ -16,7 +16,7 @@ _kfn_ - table number
 
 _kout1...koutN_ - output vector elements
 
-_vtable1k_ is a reduced version of [vtablek](../../opcodes/vtablek), it only allows to access the first vector (it is equivalent to vtablek with kndx = zero, but a bit faster). It is useful to easily and quickly convert a set of values stored in a table into a set of k-rate variables to be used in normal opocodes, instead of using individual [table](../../opcodes/table) opcodes for each value.
+_vtable1k_ is a reduced version of [vtablek](../opcodes/vtablek.md), it only allows to access the first vector (it is equivalent to vtablek with kndx = zero, but a bit faster). It is useful to easily and quickly convert a set of values stored in a table into a set of k-rate variables to be used in normal opocodes, instead of using individual [table](../opcodes/table.md) opcodes for each value.
 
 > :memo: **Note**
 >
@@ -24,7 +24,7 @@ _vtable1k_ is a reduced version of [vtablek](../../opcodes/vtablek), it only all
 
 ## Examples
 
-Here is an example of the vtable1k opcode. It uses the files [vtable1k.csd](../../examples/vtable1k.csd).
+Here is an example of the vtable1k opcode. It uses the files [vtable1k.csd](../examples/vtable1k.csd).
 
 ``` csound-csd title="Example of the vtable1k opcode." linenums="1"
 --8<-- "examples/vtable1k.csd"
@@ -32,7 +32,7 @@ Here is an example of the vtable1k opcode. It uses the files [vtable1k.csd](../.
 
 ## See also
 
-[Tables of vectors operators](../../vectorial/tables)
+[Tables of vectors operators](../vectorial/tables.md)
 
 ## Credits
 

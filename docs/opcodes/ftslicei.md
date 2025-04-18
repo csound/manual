@@ -7,7 +7,7 @@ Copy a slice from an f-table to another f-table at init
 
 Plugin opcode in emugens.
 
-The _ftslicei_ opcode takes an f-table and copies a slice to a second f-table (similar to tab2array, but between tables). This action is done at init time. For a performance-time version, see [ftslice](../../opcodes/ftslice)
+The _ftslicei_ opcode takes an f-table and copies a slice to a second f-table (similar to tab2array, but between tables). This action is done at init time. For a performance-time version, see [ftslice](../opcodes/ftslice.md)
 
 ## Syntax
 ``` csound-orc
@@ -28,7 +28,7 @@ _istep_ -- How many elements to skip. _Defaults to 1_
 
 ## Examples
 
-For an example, refer to the ftslice opcode: [ftslice.csd](../../examples/ftslice.csd).
+For an example, refer to the ftslice opcode: [ftslice.csd](../examples/ftslice.csd).
 
 ``` csound-csd title="Example of the ftslice opcode." linenums="1"
 --8<-- "examples/ftslice.csd"
@@ -36,7 +36,7 @@ For an example, refer to the ftslice opcode: [ftslice.csd](../../examples/ftslic
 
 ## See also
 
-[Read/Write Operations](../../table/readwrit)
+[Read/Write Operations](../table/readwrit.md)
 
 ## Credits
 

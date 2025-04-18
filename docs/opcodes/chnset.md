@@ -5,7 +5,7 @@ category:Signal I/O:Software Bus
 # chnset
 Writes data to a channel of the named software bus.
 
-Implies declaring the channel with _imod_=2 (see also [chn_k, chn_a, and chn_S](../../opcodes/chn)).
+Implies declaring the channel with _imod_=2 (see also [chn_k, chn_a, and chn_S](../opcodes/chn.md)).
 
 ## Syntax
 ``` csound-orc
@@ -50,7 +50,7 @@ _aval[]_ -- an array of audio vectors to write at performance time.
 >
 > Although it is possible to loop through channel names from an array with _chnget_ and _chnset_, using the array based channel opcodes is more efficient.
 
-## Example
+## Examples
 
 The example shows the software bus being used to write pitch information to a controlling program.
 
@@ -66,7 +66,7 @@ instr   1
 endin
 ```
 
-Here is another example of the chnset opcode. It uses the file [chnset.csd](../../examples/chnset.csd).
+Here is another example of the chnset opcode. It uses the file [chnset.csd](../examples/chnset.csd).
 
 ``` csound-csd title="Example of the chnset opcode." linenums="1"
 --8<-- "examples/chnset.csd"
@@ -74,7 +74,7 @@ Here is another example of the chnset opcode. It uses the file [chnset.csd](../.
 
 ## See also
 
-[Software Bus](../../sigio/softbus)
+[Software Bus](../sigio/softbus.md)
 
 ## Credits
 

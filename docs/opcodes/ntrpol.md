@@ -30,7 +30,7 @@ These opcodes are useful for crossfading two signals.
 
 ## Examples
 
-Here is an example of the ntrpol opcode. It uses the file [ntrpol.csd](../../examples/ntrpol.csd).
+Here is an example of the ntrpol opcode. It uses the file [ntrpol.csd](../examples/ntrpol.csd).
 
 ``` csound-csd title="Example of the ntrpol opcode." linenums="1"
 --8<-- "examples/ntrpol.csd"
@@ -38,7 +38,7 @@ Here is an example of the ntrpol opcode. It uses the file [ntrpol.csd](../../exa
 
 ## See also
 
-[Sample Level Operators](../../sigmod/sample)
+[Sample Level Operators](../sigmod/sample.md)
 
 ## Credits
 

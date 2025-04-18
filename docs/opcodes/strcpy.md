@@ -13,7 +13,7 @@ Sdst strcpy Ssrc
 Sdst = Ssrc
 ```
 
-Example
+## Examples
 
 ``` csound-orc
 Sfoo    strcpy "Hello, world !"
@@ -22,7 +22,7 @@ Sfoo    strcpy "Hello, world !"
 
 ## See Also
 
-[String Manipulation Opcodes](../../strings/manipulate)
+[String Manipulation Opcodes](../strings/manipulate.md)
 
 ## Credits
 

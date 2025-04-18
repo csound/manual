@@ -26,11 +26,11 @@ _kelev_ (optional) -- elevation angle of the virtual source
 
 _kspread_ (optional) -- spreading of the virtual source (range 0 - 100).  If value is zero, conventional amplitude panning is used. When _kspread_ is increased, the number of loudspeakers used in panning increases. If value is 100, the sound is applied to all loudspeakers.
 
-The opcode _vbapz_ is the multiple channel analog of the opcodes like [vbap4](../../opcodes/vbap4), working on _inumchnls_ and using a ZAK array for output.
+The opcode _vbapz_ is the multiple channel analog of the opcodes like [vbap4](../opcodes/vbap4.md), working on _inumchnls_ and using a ZAK array for output.
 
 > :warning: **Warning**
 >
-> Please note that all _vbap_ panning opcodes require the _vbap_ system to be initialized using [vbaplsinit](../../opcodes/vbaplsinit).
+> Please note that all _vbap_ panning opcodes require the _vbap_ system to be initialized using [vbaplsinit](../opcodes/vbaplsinit.md).
 
 ### Reference
 
@@ -38,11 +38,11 @@ Ville Pulkki: &#8220;Virtual Sound Source Positioning Using Vector Base Amplitud
 
 ## Examples
 
-See the entry for [vbap8](../../opcodes/vbap8) for an example of usage of the _vbap_ opcodes.
+See the entry for [vbap8](../opcodes/vbap8.md) for an example of usage of the _vbap_ opcodes.
 
 ## See also
 
-[Panning and Spatialization: Vector Base Amplitude Panning](../../sigmod/panspatl)
+[Panning and Spatialization: Vector Base Amplitude Panning](../sigmod/panspatl.md)
 
 ## Credits
 

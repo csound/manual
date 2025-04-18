@@ -20,9 +20,11 @@ _Sname_ -- String name of the outlet port. The name of the outlet is implicitly 
 
 _asignal_ -- audio output signal
 
-During performance, the audio output signal is sent to each instance of an instrument containing an inlet port to which this outlet has been connected using the [Examples](../../opcodes/connect)e>
+During performance, the audio output signal is sent to each instance of an instrument containing an inlet port to which this outlet has been connected using the connect opcode. The signals of all the outlets connected to an inlet are summed in the inlet.
 
-Here is an example of the outleta opcode. It uses the file [outleta.csd](../../examples/outleta.csd).
+## Examples
+
+Here is an example of the outleta opcode. It uses the file [outleta.csd](../examples/outleta.csd).
 
 ``` csound-csd title="Example of the outleta opcode." linenums="1"
 --8<-- "examples/outleta.csd"
@@ -30,7 +32,7 @@ Here is an example of the outleta opcode. It uses the file [outleta.csd](../../e
 
 ## See also
 
-[Signal Flow Graph Opcodes](../../signalflowgraph)
+[Signal Flow Graph Opcodes](../signalflowgraph.md)
 
 More information on this opcode: [http://www.csoundjournal.com/issue13/signalFlowGraphOpcodes.html](http://www.csoundjournal.com/issue13/signalFlowGraphOpcodes.html), written by Michael Gogins
 

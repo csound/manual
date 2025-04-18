@@ -24,7 +24,7 @@ _iformat_ -- The analysis frame format. If fsrc is created by an opcode, iformat
 
 ## Examples
 
-Here is an example of the pvsinfo opcode. It uses the file [pvsinfo.csd](../../examples/pvsinfo.csd).
+Here is an example of the pvsinfo opcode. It uses the file [pvsinfo.csd](../examples/pvsinfo.csd).
 
 ``` csound-csd title="Example of the pvsinfo opcode." linenums="1"
 --8<-- "examples/pvsinfo.csd"
@@ -38,7 +38,7 @@ instr 1:  iovl = 256.000  inb = 513.000  iws = 2048.000  ifmt = 0.000
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

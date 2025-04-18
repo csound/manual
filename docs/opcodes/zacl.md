@@ -20,7 +20,7 @@ _zacl_ clears one or more variables in the za space. This is useful for those va
 
 ## Examples
 
-Here is an example of the zacl opcode. It uses the file [zacl.csd](../../examples/zacl.csd).
+Here is an example of the zacl opcode. It uses the file [zacl.csd](../examples/zacl.csd).
 
 ``` csound-csd title="Example of the zacl opcode." linenums="1"
 --8<-- "examples/zacl.csd"
@@ -28,7 +28,7 @@ Here is an example of the zacl opcode. It uses the file [zacl.csd](../../example
 
 ## See also
 
-[Zak Patch System](../../zak/top)
+[Zak Patch System](../zak/top.md)
 
 ## Credits
 

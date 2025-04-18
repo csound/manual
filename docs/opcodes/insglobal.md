@@ -5,7 +5,7 @@ category:Remote Opcodes
 # insglobal
 An opcode which can be used to implement a remote orchestra. This opcode will send note events from a source machine to many destinations.
 
-With the [insremot](../../opcodes/insremot) and _insglobal_ opcodes you are able to perform instruments on remote machines and control them from a master machine. The remote opcodes are implemented using the master/client model. All the machines involved contain the same orchestra but only the master machine contains the information of the score. During the performance the master machine sends the note events to the clients. The _insglobal_ opcode sends the events to all the machines involved in the remote concert. These machines are determined by the [insremot](../../opcodes/insremot) definitions made above the _insglobal_ command. To send events to only one machine use [insremot](../../opcodes/insremot).
+With the [insremot](../opcodes/insremot.md) and _insglobal_ opcodes you are able to perform instruments on remote machines and control them from a master machine. The remote opcodes are implemented using the master/client model. All the machines involved contain the same orchestra but only the master machine contains the information of the score. During the performance the master machine sends the note events to the clients. The _insglobal_ opcode sends the events to all the machines involved in the remote concert. These machines are determined by the [insremot](../opcodes/insremot.md) definitions made above the _insglobal_ command. To send events to only one machine use [insremot](../opcodes/insremot.md).
 
 ## Syntax
 ``` csound-orc
@@ -34,11 +34,11 @@ _instrnum_ -- a list of instrument numbers which will be played on the destinati
 
 ## Examples
 
-See the entry for [insremot](../../opcodes/insremot) for an example of usage.
+See the entry for [insremot](../opcodes/insremot.md) for an example of usage.
 
 ## See also
 
-[Remote Opcodes](../../oscnetwork/Remote)
+[Remote Opcodes](../oscnetwork/Remote.md)
 
 ## Credits
 

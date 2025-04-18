@@ -2,4 +2,4 @@
 
 The following utilities exist for Soundfile query:
 
-* [SNDINFO](../sndinfo): Displays information about a soundfile.
+* [SNDINFO](sndinfo.md): Displays information about a soundfile.

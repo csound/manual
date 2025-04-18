@@ -38,7 +38,7 @@ fsig  pvsin   0  ; get data from pvs in bus channel 0
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

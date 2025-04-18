@@ -26,11 +26,11 @@ _iskip_ (optional) - initial disposition of delay-loop data space (see reson). T
 
 ### Performance
 
-_vecdelay_ is similar to [vdelay](../../opcodes/vdelay), but it works at k-rate and, instead of delaying a single signal, it delays a vector. _ifnIn_ is the input vector of signals, _ifn_ is the output vector of signals, and _ifnDel_ is a vector containing delay times for each element, expressed in seconds. Elements of _ifnDel_ can be updated at k-rate. Each single delay can be different from that of the other elements, and can vary at k-rate. imaxdel sets the maximum delay allowed for all elements of _ifnDel_.
+_vecdelay_ is similar to [vdelay](../opcodes/vdelay.md), but it works at k-rate and, instead of delaying a single signal, it delays a vector. _ifnIn_ is the input vector of signals, _ifn_ is the output vector of signals, and _ifnDel_ is a vector containing delay times for each element, expressed in seconds. Elements of _ifnDel_ can be updated at k-rate. Each single delay can be different from that of the other elements, and can vary at k-rate. imaxdel sets the maximum delay allowed for all elements of _ifnDel_.
 
 ## See also
 
-[Vectorial Control-rate Delay Paths](../../vectorial/delay)
+[Vectorial Control-rate Delay Paths](../vectorial/delay.md)
 
 ## Credits
 

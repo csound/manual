@@ -21,7 +21,7 @@ _+=_ - Adds the value of the expression _iarg_ (_karg, xarg_) into the named res
 
 ## Examples
 
-Here is an example of the plusbecomes opcode. It uses the file [reverb.csd](../../examples/reverb.csd).
+Here is an example of the plusbecomes opcode. It uses the file [reverb.csd](../examples/reverb.csd).
 
 ``` csound-csd title="Example of the plusbecomes opcode." linenums="1"
 --8<-- "examples/reverb.csd"
@@ -29,7 +29,7 @@ Here is an example of the plusbecomes opcode. It uses the file [reverb.csd](../.
 
 ## See also
 
-[Initialization and Reinitialization](../../control/reinitn)
+[Initialization and Reinitialization](../control/reinitn.md)
 
 ## Credits
 

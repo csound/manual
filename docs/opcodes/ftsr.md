@@ -12,11 +12,11 @@ ftsr(x) (init-rate args only)
 
 ### Performance
 
-Returns the sampling-rate of a [GEN01](../../scoregens/gen01) generated table. The sampling-rate is determined from the header of the original file. If the original file has no header or the table was not created by these GEN01, _ftsr_ returns 0. New in Csound version 3.49.
+Returns the sampling-rate of a [GEN01](../scoregens/gen01.md) generated table. The sampling-rate is determined from the header of the original file. If the original file has no header or the table was not created by these GEN01, _ftsr_ returns 0. New in Csound version 3.49.
 
 ## Examples
 
-Here is an example of the ftsr opcode. It uses the file [ftsr.csd](../../examples/ftsr.csd).
+Here is an example of the ftsr opcode. It uses the file [ftsr.csd](../examples/ftsr.csd).
 
 ``` csound-csd title="Example of the ftsr opcode." linenums="1"
 --8<-- "examples/ftsr.csd"
@@ -33,7 +33,7 @@ sampling-rate of table number 4 = 44100
 
 ## See also
 
-[Table Control:Table Queries](../../table/queries)
+[Table Control:Table Queries](../table/queries.md)
 
 ## Credits
 

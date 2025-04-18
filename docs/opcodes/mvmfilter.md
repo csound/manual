@@ -34,7 +34,7 @@ The decay time is the time in seconds for filter to decay to 1/_e_
 
 ## Examples
 
-Here is an example of the mvmfilter opcode. It uses the file [mvmfilter.csd](../../examples/mvmfilter.csd).
+Here is an example of the mvmfilter opcode. It uses the file [mvmfilter.csd](../examples/mvmfilter.csd).
 
 ``` csound-csd title="Example of the mvmfilter opcode." linenums="1"
 --8<-- "examples/mvmfilter.csd"
@@ -42,7 +42,7 @@ Here is an example of the mvmfilter opcode. It uses the file [mvmfilter.csd](../
 
 ## See also
 
-[Specialized Filters: Other filters](../../sigmod/speciali)
+[Specialized Filters: Other filters](../sigmod/speciali.md)
 
 ### References
 

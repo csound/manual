@@ -26,14 +26,14 @@ _ix, iy_ - the position of the HVS box
 
 ### Performance
 
-_FLhvsBox_ is a widget able to visualize current position of the HVS cursor in an HVS box (i.e. a squared area containing a grid). The number of  horizontal and vertical lines of the grid can be defined with the _inumlinesX, inumlinesY_ arguments. This opcode has to be declared inside an [FLpanel](../../opcodes/flpanel) - [FLpanelEnd](../../opcodes/flpanelend) block. See the entry for [hvs2](../../opcodes/hvs2) for an example of usage of _FLhvsBox_.
+_FLhvsBox_ is a widget able to visualize current position of the HVS cursor in an HVS box (i.e. a squared area containing a grid). The number of  horizontal and vertical lines of the grid can be defined with the _inumlinesX, inumlinesY_ arguments. This opcode has to be declared inside an [FLpanel](../opcodes/flpanel.md) - [FLpanelEnd](../opcodes/flpanelend.md) block. See the entry for [hvs2](../opcodes/hvs2.md) for an example of usage of _FLhvsBox_.
 
-[FLhvsBoxSetValue](../../opcodes/flhvsboxsetvalue) is used to set the cursor position of an _FLhvsBox_ widget.
+[FLhvsBoxSetValue](../opcodes/flhvsboxsetvalue.md) is used to set the cursor position of an _FLhvsBox_ widget.
 
 ## See Also
 
-[hvs2](../../opcodes/hvs2),
-[FLhvsBoxSetValue](../../opcodes/flhvsboxsetvalue)
+[hvs2](../opcodes/hvs2.md),
+[FLhvsBoxSetValue](../opcodes/flhvsboxsetvalue.md)
 
 ## Credits
 

@@ -43,7 +43,7 @@ extractor -S 10234 -D 2.13 in.aiff -o out.wav
 
 This creates a new sound file taken from sample 10234 and lasting 2.13 seconds.
 
-Here is a complete example of the extractor utility. It uses the file [extractor.csd](../../examples/extractor.csd).
+Here is a complete example of the extractor utility. It uses the file [extractor.csd](../examples/extractor.csd).
 
 ``` csound-csd title="Example of the extractor utility." linenums="1"
 --8<-- "examples/extractor.csd"

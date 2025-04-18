@@ -2,24 +2,24 @@
 
 ### High pass filters
 
-* [dcblock](../../opcodes/dcblock)
-* [dcblock2](../../opcodes/dcblock2)
+* [dcblock](../opcodes/dcblock.md)
+* [dcblock2](../opcodes/dcblock2.md)
 
 ###Parametric EQ
 
-* [eqfil](../../opcodes/eqfil)
-* [pareq](../../opcodes/pareq)
-* [rbjeq](../../opcodes/rbjeq)
+* [eqfil](../opcodes/eqfil.md)
+* [pareq](../opcodes/pareq.md)
+* [rbjeq](../opcodes/rbjeq.md)
 
 ### Other filters
 
-* [fmanal](../../opcodes/fmanal)
-* [filter2](../../opcodes/filter2)
-* [fofilter](../../opcodes/fofilter)
-* [gtf](../../opcodes/gtf)
-* [hilbert](../../opcodes/hilbert)
-* [hilbert2](../../opcodes/hilbert2)
-* [mode](../../opcodes/mode)
-* [mvmfilter](../../opcodes/mvmfilter)
-* [nlfilt](../../opcodes/nlfilt)
-* [zfilter2](../../opcodes/zfilter2)
+* [fmanal](../opcodes/fmanal.md)
+* [filter2](../opcodes/filter2.md)
+* [fofilter](../opcodes/fofilter.md)
+* [gtf](../opcodes/gtf.md)
+* [hilbert](../opcodes/hilbert.md)
+* [hilbert2](../opcodes/hilbert2.md)
+* [mode](../opcodes/mode.md)
+* [mvmfilter](../opcodes/mvmfilter.md)
+* [nlfilt](../opcodes/nlfilt.md)
+* [zfilter2](../opcodes/zfilter2.md)

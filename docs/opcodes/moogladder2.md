@@ -29,7 +29,7 @@ _kres_/_ares_ -- resonance, generally &lt; 1, but not limited to it.  Higher tha
 
 ## Examples
 
-Here is an example of the moogladder2 opcode. It uses the file [moogladder2.csd](../../examples/moogladder2.csd).
+Here is an example of the moogladder2 opcode. It uses the file [moogladder2.csd](../examples/moogladder2.csd).
 
 ``` csound-csd title="Example of the moogladder2 opcode." linenums="1"
 --8<-- "examples/moogladder2.csd"
@@ -37,7 +37,7 @@ Here is an example of the moogladder2 opcode. It uses the file [moogladder2.csd]
 
 ## See also
 
-[Standard Filters: Resonant Low-pass filters](../../sigmod/standard)
+[Standard Filters: Resonant Low-pass filters](../sigmod/standard.md)
 
 ## Credits
 

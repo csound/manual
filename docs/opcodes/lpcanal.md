@@ -57,14 +57,14 @@ Once the signal is extracted from either an audio input or function table then i
 ## Examples
 
 Here is an example of the lpcanal opcode using an audio input
-signal as lpc source. It uses the file [lpcanal.csd](../../examples/lpcanal.csd).
+signal as lpc source. It uses the file [lpcanal.csd](../examples/lpcanal.csd).
 
 ``` csound-csd title="Example of the lpcanal opcode." linenums="1"
 --8<-- "examples/lpcanal.csd"
 ```
 
 Here is another example of the lpcanal opcode, now using a
-function table as lpc source. It uses the file [lpcanal-2.csd](../../examples/lpcanal-2.csd).
+function table as lpc source. It uses the file [lpcanal-2.csd](../examples/lpcanal-2.csd).
 
 ``` csound-csd title="Another example of the lpcanal opcode." linenums="1"
 --8<-- "examples/lpcanal-2.csd"
@@ -72,4 +72,4 @@ function table as lpc source. It uses the file [lpcanal-2.csd](../../examples/lp
 
 ## See also
 
-[Streaming Linear Predictive Coding (SLPC) Resynthesis](../../spectral/lpcresyn)
+[Streaming Linear Predictive Coding (SLPC) Resynthesis](../spectral/lpcresyn.md)

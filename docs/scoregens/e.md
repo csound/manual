@@ -16,7 +16,7 @@ The second p-field _time_ is optional and if present determines the end time (le
 
 ### Special Considerations
 
-The _e statement_ is contextually identical to an [s statement](../../scoregens/s). Additionally, the _e statement_ terminates all signal generation (including indefinite performance) and closes all input and output files.
+The _e statement_ is contextually identical to an [s statement](../scoregens/s.md). Additionally, the _e statement_ terminates all signal generation (including indefinite performance) and closes all input and output files.
 
 If an _e statement_ occurs before the end of a score, all subsequent score lines will be ignored.
 
@@ -24,7 +24,7 @@ The _e statement_ is optional in a score file yet to be sorted. If a score file 
 
 ## Examples
 
-Here is an example of the e statement. It uses the file [e.csd](../../examples/e.csd).
+Here is an example of the e statement. It uses the file [e.csd](../examples/e.csd).
 
 ``` csound-csd title="Example of the e statement." linenums="1"
 --8<-- "examples/e.csd"
@@ -32,4 +32,4 @@ Here is an example of the e statement. It uses the file [e.csd](../../examples/e
 
 ## See Also
 
-[Score Statements](../../score/statemnt)
+[Score Statements](../score/statemnt.md)

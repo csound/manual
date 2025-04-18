@@ -60,7 +60,7 @@ For more information about printf() formatting, consult any C language documenta
 
 ## Examples
 
-Here is an example of the printks opcode. It uses the file [printks.csd](../../examples/printks.csd).
+Here is an example of the printks opcode. It uses the file [printks.csd](../examples/printks.csd).
 
 ``` csound-csd title="Example of the printks opcode." linenums="1"
 --8<-- "examples/printks.csd"
@@ -78,7 +78,7 @@ kup = 79.933266, kdown = 13.872493
 
 ## See also
 
-[Printing and Display](../../sigio/pdisplay)
+[Printing and Display](../sigio/pdisplay.md)
 
 ## Credits
 

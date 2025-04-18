@@ -34,7 +34,7 @@ Notice that no wrap nor limit mode is implemented.  So, if  an index attempt to 
 
 ## Examples
 
-Here is an example of the vtablewa opcode. It uses the files [vtablewa.csd](../../examples/vtablewa.csd).
+Here is an example of the vtablewa opcode. It uses the files [vtablewa.csd](../examples/vtablewa.csd).
 
 ``` csound-csd title="Example of the vtablewa opcode." linenums="1"
 --8<-- "examples/vtablewa.csd"
@@ -42,7 +42,7 @@ Here is an example of the vtablewa opcode. It uses the files [vtablewa.csd](../.
 
 ## See also
 
-[Tables of vectors operators](../../vectorial/tables)
+[Tables of vectors operators](../vectorial/tables.md)
 
 ## Credits
 

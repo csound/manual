@@ -37,7 +37,7 @@ _kmass2_ -- the mass of the second star
 
 ## Examples
 
-Here is an example of the planet opcode. It uses the file [planet.csd](../../examples/planet.csd).
+Here is an example of the planet opcode. It uses the file [planet.csd](../examples/planet.csd).
 
 ``` csound-orc title="Example of the planet opcode." linenums="1"
 --8<-- "examples/planet.csd"
@@ -45,7 +45,7 @@ Here is an example of the planet opcode. It uses the file [planet.csd](../../exa
 
 ## See Also
 
-[Models and Emulations](../../siggen/models)
+[Models and Emulations](../siggen/models.md)
 
 More information on this opcode: [http://www.csoundjournal.com/issue9/FlutesInOrbit.html](http://www.csoundjournal.com/issue9/FlutesInOrbit.html)  , written by Brian Redfern.
 

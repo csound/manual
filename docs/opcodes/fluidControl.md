@@ -36,7 +36,7 @@ In this implementation, SoundFont effects such as chorus or reverb are used if a
 
 ## Examples
 
-Here is a more complex example of the fluidsynth opcodes written by Istvan Varga. It uses the file [fluidControl-advanced.csd](../../examples/fluidControl-advanced.csd).
+Here is a more complex example of the fluidsynth opcodes written by Istvan Varga. It uses the file [fluidControl-advanced.csd](../examples/fluidControl-advanced.csd).
 
 ``` csound-csd title="A more complex example of the fluidsynth opcodes." linenums="1"
 --8<-- "examples/fluidControl-advanced.csd"
@@ -44,7 +44,7 @@ Here is a more complex example of the fluidsynth opcodes written by Istvan Varga
 
 ## See also
 
-[Soundfonts](../../siggen/sample)
+[Soundfonts](../siggen/sample.md)
 
 More information on soundfonts is in the Floss Manuals: [https://flossmanual.csound.com/midi/reading-midi-files](https://flossmanual.csound.com/midi/reading-midi-files)
 

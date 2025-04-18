@@ -20,7 +20,7 @@ _Sir_ -- the date and time as a string.
 
 ## Examples
 
-Here is an example of the dates opcode. It uses the file [dates.csd](../../examples/dates.csd).
+Here is an example of the dates opcode. It uses the file [dates.csd](../examples/dates.csd).
 
 ``` csound-csd title="Example of the dates opcode." linenums="1"
 --8<-- "examples/dates.csd"
@@ -35,7 +35,7 @@ Closing file '/home/user/csound/Output/2011_Jan_05_19_14_46.wav'...
 
 ## See also
 
-[Time Reading](../../control/timeread)
+[Time Reading](../control/timeread.md)
 
 ## Credits
 

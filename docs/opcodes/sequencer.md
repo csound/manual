@@ -57,13 +57,13 @@ _kres_ - gives the index of the event created for the current k-cycle, or -1 if 
 
 ## Examples
 
-Here is an example of the sequ opcode. It uses the file [sequ1.csd](../../examples/sequ1.csd)
+Here is an example of the sequ opcode. It uses the file [sequ1.csd](../examples/sequ1.csd)
 
 ``` csound-csd title="Example of the sequ opcode." linenums="1"
 --8<-- "examples/sequ1.csd"
 ```
 
-Here is another example of the sequ opcode showing the various modes. It uses the file [sequ2.csd](../../examples/sequ2.csd)
+Here is another example of the sequ opcode showing the various modes. It uses the file [sequ2.csd](../examples/sequ2.csd)
 
 ``` csound-csd title="Example of the sequ opcode." linenums="1"
 --8<-- "examples/sequ2.csd"
@@ -71,7 +71,7 @@ Here is another example of the sequ opcode showing the various modes. It uses th
 
 ## See also
 
-[Sensing and Control: Tempo and Sequencing](../../control/sensing)
+[Sensing and Control: Tempo and Sequencing](../control/sensing.md)
 
 ## Credits
 

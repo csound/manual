@@ -34,7 +34,7 @@ All these operators are designed to be used together with other opcodes that ope
 
 ## Examples
 
-Here is an example of the vexpseg opcode. It uses the files [vexpseg.csd](../../examples/vexpseg.csd).
+Here is an example of the vexpseg opcode. It uses the files [vexpseg.csd](../examples/vexpseg.csd).
 
 ``` csound-csd title="Example of the vexpseg opcode." linenums="1"
 --8<-- "examples/vexpseg.csd"
@@ -42,7 +42,7 @@ Here is an example of the vexpseg opcode. It uses the files [vexpseg.csd](../../
 
 ## See also
 
-[Vectorial Envelope Generators](../../vectorial/envelopeGenerators)
+[Vectorial Envelope Generators](../vectorial/envelopeGenerators.md)
 
 ## Credits
 

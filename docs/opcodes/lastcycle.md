@@ -20,7 +20,7 @@ This opcode is useful for performing cleanup actions, signaling to other events 
 
 ## Examples
 
-Here is an example of the lastcycle opcode. It uses the file [lastcycle.csd](../../examples/lastcycle.csd).
+Here is an example of the lastcycle opcode. It uses the file [lastcycle.csd](../examples/lastcycle.csd).
 
 ``` csound-csd title="Example of the lastcycle opcode." linenums="1"
 --8<-- "examples/lastcycle.csd"
@@ -28,7 +28,7 @@ Here is an example of the lastcycle opcode. It uses the file [lastcycle.csd](../
 
 ## See also
 
-[Event Extenders](../../midi/extender)
+[Event Extenders](../midi/extender.md)
 
 ## Credits
 

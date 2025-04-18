@@ -26,9 +26,9 @@ _kalpha_ -- azimuth angle in degrees (anticlockwise).
 
 _kbeta_ -- altitude angle in degrees.
 
-## Example
+## Examples
 
-Here is an example of the bformenc1 opcode. It uses the file [bformenc1.csd](../../examples/bformenc1.csd).
+Here is an example of the bformenc1 opcode. It uses the file [bformenc1.csd](../examples/bformenc1.csd).
 
 ``` csound-csd title="Example of the bformenc1 opcode." linenums="1"
 --8<-- "examples/bformenc1.csd"
@@ -36,7 +36,7 @@ Here is an example of the bformenc1 opcode. It uses the file [bformenc1.csd](../
 
 ## See also
 
-[Panning and Spatialization: Ambisonics](../../sigmod/panspatl)
+[Panning and Spatialization: Ambisonics](../sigmod/panspatl.md)
 
 ## Credits
 

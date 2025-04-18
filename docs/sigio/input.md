@@ -2,13 +2,13 @@
 
 The opcodes that receive audio signals are:
 
-* Synchronous input: [in](../../opcodes/in), [in32](../../opcodes/in32), [inch](../../opcodes/inch), [inh](../../opcodes/inh), [ino](../../opcodes/ino), [inq](../../opcodes/inq), [inrg](../../opcodes/inrg), [ins](../../opcodes/ins) and [inx](../../opcodes/inx)
-* File streaming: [diskin](../../opcodes/diskin), [diskin2](../../opcodes/diskin2), and [hdf5read](../../opcodes/hdf5read) 
-* User defined channel input: [invalue](../../opcodes/invalue)
-* Streaming input: [soundin](../../opcodes/soundin)
-* Websocket input: [websocket](../../opcodes/websocket)
-* Direct to zak input: [inz](../../opcodes/inz)
+* Synchronous input: [in](../opcodes/in.md), [in32](../opcodes/in32.md), [inch](../opcodes/inch.md), [inh](../opcodes/inh.md), [ino](../opcodes/ino.md), [inq](../opcodes/inq.md), [inrg](../opcodes/inrg.md), [ins](../opcodes/ins.md) and [inx](../opcodes/inx.md)
+* File streaming: [diskin](../opcodes/diskin.md), [diskin2](../opcodes/diskin2.md), and [hdf5read](../opcodes/hdf5read.md) 
+* User defined channel input: [invalue](../opcodes/invalue.md)
+* Streaming input: [soundin](../opcodes/soundin.md)
+* Websocket input: [websocket](../opcodes/websocket.md)
+* Direct to zak input: [inz](../opcodes/inz.md)
 
-See the section [Software Bus](../softbus) for input and output through the API.
+See the section [Software Bus](softbus.md) for input and output through the API.
 
-The [mp3in](../../opcodes/mp3in) allows reading of mp3 files, which are currently not supported by ordinary reading methods inside Csound.
+The [mp3in](../opcodes/mp3in.md) allows reading of mp3 files, which are currently not supported by ordinary reading methods inside Csound.

@@ -25,7 +25,7 @@ _filepeak_ returns the peak absolute value of the sound file _ifilcod_.
 
 ## Examples
 
-Here is an example of the filepeak opcode. It uses the file [filepeak.csd](../../examples/filepeak.csd), and [Church.wav](../../examples/Church.wav).
+Here is an example of the filepeak opcode. It uses the file [filepeak.csd](../examples/filepeak.csd), and [Church.wav](../examples/Church.wav).
 
 ``` csound-csd title="Example of the filepeak opcode." linenums="1"
 --8<-- "examples/filepeak.csd"
@@ -40,7 +40,7 @@ Peak value in file 'Church_norm.wav' is 0.501190 (-6.000 dB).
 
 ## See also
 
-[Sound File Queries](../../sigio/queries)
+[Sound File Queries](../sigio/queries.md)
 
 ## Credits
 

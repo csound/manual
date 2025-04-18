@@ -28,7 +28,7 @@ _xdec_ -- impulse response decay time (secs).
 
 ## Examples
 
-Here is an example of the fofilter opcode. It uses the file [fofilter.csd](../../examples/fofilter.csd).
+Here is an example of the fofilter opcode. It uses the file [fofilter.csd](../examples/fofilter.csd).
 
 ``` csound-csd title="Example of the fofilter opcode." linenums="1"
 --8<-- "examples/fofilter.csd"
@@ -36,7 +36,7 @@ Here is an example of the fofilter opcode. It uses the file [fofilter.csd](../..
 
 ## See also
 
-[Specialized Filters: Other filters](../../sigmod/speciali)
+[Specialized Filters: Other filters](../sigmod/speciali.md)
 
 ## Credits
 

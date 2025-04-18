@@ -27,7 +27,7 @@ _median_ is a simple filter that retuns the median value of the last _ksize_ val
 
 ## Examples
 
-Here is an example of the median opcode. It uses the file [median.csd](../../examples/median.csd).
+Here is an example of the median opcode. It uses the file [median.csd](../examples/median.csd).
 
 ``` csound-csd title="Example of the median opcode." linenums="1"
 --8<-- "examples/median.csd"
@@ -35,7 +35,7 @@ Here is an example of the median opcode. It uses the file [median.csd](../../exa
 
 ## See also
 
-[Standard filters: Variant FIR lowpass filter](../../sigmod/standard)
+[Standard filters: Variant FIR lowpass filter](../sigmod/standard.md)
 
 ## Credits
 

@@ -18,7 +18,7 @@ ar1[] diskin ifilcod[, kpitch[, iskiptim [, iwraparound[, iformat[, iskipinit]]]
 
 ### Initialization
 
-_ifilcod_ -- integer or character-string denoting the source soundfile name. An integer denotes the file soundin.filcod ; a character-string (in double quotes, spaces permitted) gives the filename itself, optionally a full pathname. If not a full path, the named file is sought first in the current directory, then in that given by the environment variable [SSDIR](../../invoke/environment-variables) (if defined) then by [SFDIR](../../invoke/environment-variables). See also [GEN01](../../scoregens/gen01).
+_ifilcod_ -- integer or character-string denoting the source soundfile name. An integer denotes the file soundin.filcod ; a character-string (in double quotes, spaces permitted) gives the filename itself, optionally a full pathname. If not a full path, the named file is sought first in the current directory, then in that given by the environment variable [SSDIR](../invoke/environment-variables.md) (if defined) then by [SFDIR](../invoke/environment-variables.md). See also [GEN01](../scoregens/gen01.md).
 
 _iskptim_ (optional) -- time in seconds of input sound to be skipped. The default value is 0.
 
@@ -38,11 +38,11 @@ _iwraparound_ -- 1 = on, 0 = off (wraps around to end of file either direction, 
 
 _iskipinit_ switches off all initialisation if non zero (default =0).  This was introduced in 4_23f13 and csound5.
 
-If _iformat_ = 0 it is taken from the soundfile header, and if no header from the Csound [-o](../../invoke/cs-options-alphabetically#-o-file-outputfile) command-line flag. The default value is 0.
+If _iformat_ = 0 it is taken from the soundfile header, and if no header from the Csound [-o](../invoke/cs-options-alphabetically.md#-o-file-outputfile) command-line flag. The default value is 0.
 
 ### Performance
 
-_a1 ... a24_ -- output signals, in the range -0dbfs to 0dbfs. Any samples before the beginning (i.e. negative location) and after the end of the file are assumed to be zero, unless _iwrap_ is non-zero. The number of output arguments must be the same as the number of sound file channels - which can be determined with the [filenchnls](../../opcodes/filenchnls) opcode, otherwise an init error will occur.
+_a1 ... a24_ -- output signals, in the range -0dbfs to 0dbfs. Any samples before the beginning (i.e. negative location) and after the end of the file are assumed to be zero, unless _iwrap_ is non-zero. The number of output arguments must be the same as the number of sound file channels - which can be determined with the [filenchnls](../opcodes/filenchnls.md) opcode, otherwise an init error will occur.
 
 _ar1[]_ --- output signals, in a-rate array of size N, where N is the number of channels in the file. Arrays are automatically allocated to the correct size.
 
@@ -67,7 +67,7 @@ _kpitch_ -- can be any real number. A negative number signifies backwards playba
 
 ## Examples
 
-Here is an example of the diskin opcode. It uses the file [diskin.csd](../../examples/diskin.csd), [drumsMlp.wav](../../examples/drumsMlp.wav).
+Here is an example of the diskin opcode. It uses the file [diskin.csd](../examples/diskin.csd), [drumsMlp.wav](../examples/drumsMlp.wav).
 
 ``` csound-csd title="Example of the diskin opcode." linenums="1"
 --8<-- "examples/diskin.csd"
@@ -75,7 +75,7 @@ Here is an example of the diskin opcode. It uses the file [diskin.csd](../../exa
 
 ## See also
 
-[Signal Input](../../sigio/input)
+[Signal Input](../sigio/input.md)
 
 ## Credits
 

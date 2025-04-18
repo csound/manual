@@ -18,7 +18,7 @@ _kin[]_ -- input array containing the values to be deinterleaved.
 
 ## Examples
 
-Here is an example of the deinterleave opcode. It uses the file [deinterleave.csd](../../examples/deinterleave.csd).
+Here is an example of the deinterleave opcode. It uses the file [deinterleave.csd](../examples/deinterleave.csd).
 
 ``` csound-csd title="Example of the deinterleave opcode." linenums="1"
 --8<-- "examples/deinterleave.csd"
@@ -26,7 +26,7 @@ Here is an example of the deinterleave opcode. It uses the file [deinterleave.cs
 
 ## See also
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

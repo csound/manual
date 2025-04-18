@@ -20,7 +20,7 @@ _karr, iarr_ -- Csound 1-dimensional arrays
 
 ## Examples
 
-Here is an example of the sum opcode. It uses the file [sum.csd](../../examples/sum.csd).
+Here is an example of the sum opcode. It uses the file [sum.csd](../examples/sum.csd).
 
 ``` csound-csd title="Example of the sum opcode." linenums="1"
 --8<-- "examples/sum.csd"
@@ -28,7 +28,7 @@ Here is an example of the sum opcode. It uses the file [sum.csd](../../examples/
 
 ## See also
 
-[Opcode Equivalents of Functions](../../math/opeqfunc)
+[Opcode Equivalents of Functions](../math/opeqfunc.md)
 
 ## Credits
 

@@ -13,7 +13,7 @@ sin(k/i[]) (k- or i-arrays )
 
 ## Examples
 
-Here is an example of the sin opcode. It uses the file [sin.csd](../../examples/sin.csd).
+Here is an example of the sin opcode. It uses the file [sin.csd](../examples/sin.csd).
 
 ``` csound-csd title="Example of the sin opcode." linenums="1"
 --8<-- "examples/sin.csd"
@@ -27,4 +27,4 @@ instr 1:  isin1 = 0.000  isin2 = 1.000  isin3 = 0.000  isin4 = -1.000  isin5 = -
 
 ## See also
 
-[Trigonometric Functions](../../math/trig)
+[Trigonometric Functions](../math/trig.md)

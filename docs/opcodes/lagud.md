@@ -31,7 +31,7 @@ _klagdown_ -- 60 dB lag time in seconds for the downgoing signal.
 
 ## Examples
 
-Here is an example of the lagud opcode. It uses the file [lagud.csd](../../examples/lagud.csd).
+Here is an example of the lagud opcode. It uses the file [lagud.csd](../examples/lagud.csd).
 
 ``` csound-csd title="Example of the lagud opcode." linenums="1"
 --8<-- "examples/lagud.csd"
@@ -39,7 +39,7 @@ Here is an example of the lagud opcode. It uses the file [lagud.csd](../../examp
 
 ## See also
 
-[Standard Filters: Control signal filters](../../sigmod/standard)
+[Standard Filters: Control signal filters](../sigmod/standard.md)
 
 ## Credits
 

@@ -21,7 +21,7 @@ Get the note number of the current MIDI event, modify it by the current pitch-be
 
 ## Examples
 
-Here is an example of the pchmidib pchmidib. It uses the file [pchmidib.csd](../../examples/pchmidib.csd).
+Here is an example of the pchmidib pchmidib. It uses the file [pchmidib.csd](../examples/pchmidib.csd).
 
 ``` csound-csd title="Example of the pchmidib pchmidib." linenums="1"
 --8<-- "examples/pchmidib.csd"
@@ -29,7 +29,7 @@ Here is an example of the pchmidib pchmidib. It uses the file [pchmidib.csd](../
 
 ## See also
 
-[Midi Converters](../../midi/convert)
+[Midi Converters](../midi/convert.md)
 
 ## Credits
 

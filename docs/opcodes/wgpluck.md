@@ -33,7 +33,7 @@ A string of frequency _icps_ is plucked with amplitude _iamp_ at point _iplk_. T
 ## Examples
 
 Here is an example of the wgpluck opcode. It uses the
-file [wgpluck.csd](../../examples/wgpluck.csd).
+file [wgpluck.csd](../examples/wgpluck.csd).
 
 ``` csound-csd title="An example of the wgpluck opcode." linenums="1"
 --8<-- "examples/wgpluck.csd"
@@ -41,7 +41,7 @@ file [wgpluck.csd](../../examples/wgpluck.csd).
 
 ## See also
 
-[Waveguide Physical Modeling](../../siggen/wavguide)
+[Waveguide Physical Modeling](../siggen/wavguide.md)
 
 ## Credits
 

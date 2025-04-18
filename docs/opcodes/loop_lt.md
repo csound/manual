@@ -47,7 +47,7 @@ if (kndx < kmax) kgoto label
 
 ## Examples
 
-Here is an example of the loop_lt opcode. It uses the file [loop_lt.csd](../../examples/loop_lt.csd).
+Here is an example of the loop_lt opcode. It uses the file [loop_lt.csd](../examples/loop_lt.csd).
 
 ``` csound-csd title="Example of the loop_lt opcode." linenums="1"
 --8<-- "examples/loop_lt.csd"
@@ -65,7 +65,7 @@ play instance 4
 
 ## See also
 
-[Program Flow Control: Looping Constructions](../../control/pgmctl)
+[Program Flow Control: Looping Constructions](../control/pgmctl.md)
 
 More information on this opcode: [http://www.csoundjournal.com/2006summer/controlFlow_part2.html](http://www.csoundjournal.com/2006summer/controlFlow_part2.html) written by Steven Yi, and in the Floss Manuals: [ https://flossmanual.csound.com/csound-language/control-structures](https://flossmanual.csound.com/csound-language/control-structures)
 

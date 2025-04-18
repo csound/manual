@@ -25,7 +25,7 @@ For more detailed explanation of these distributions, see:
 
 ## Examples
 
-Here is an example of the cauchy opcode. It uses the file [cauchy.csd](../../examples/cauchy.csd).
+Here is an example of the cauchy opcode. It uses the file [cauchy.csd](../examples/cauchy.csd).
 
 ``` csound-orc title="Example of the cauchy opcode." linenums="1"
 --8<-- "examples/cauchy.csd"
@@ -61,7 +61,7 @@ i   2 time     5.00000:     0.44681
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
 ## Credits
 

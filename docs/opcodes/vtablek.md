@@ -38,11 +38,11 @@ Notice that no wrap nor limit mode is implemented.  So, if  an index attempt to 
 
 > :memo: **Note**
 >
-> Notice that _vtablek_'s output arguments are placed at the left of the opcode name, differently from usual (this style is already used in other opcodes using undefined lists of output arguments such as [fin](../../opcodes/fin) or [trigseq](../../opcodes/trigseq)).
+> Notice that _vtablek_'s output arguments are placed at the left of the opcode name, differently from usual (this style is already used in other opcodes using undefined lists of output arguments such as [fin](../opcodes/fin.md) or [trigseq](../opcodes/trigseq.md)).
 
 ## Examples
 
-Here is an example of the vtablek opcode. It uses the files [vtablek.csd](../../examples/vtablek.csd).
+Here is an example of the vtablek opcode. It uses the files [vtablek.csd](../examples/vtablek.csd).
 
 ``` csound-csd title="Example of the vtablek opcode." linenums="1"
 --8<-- "examples/vtablek.csd"
@@ -50,7 +50,7 @@ Here is an example of the vtablek opcode. It uses the files [vtablek.csd](../../
 
 ## See also
 
-[Tables of vectors operators](../../vectorial/tables)
+[Tables of vectors operators](../vectorial/tables.md)
 
 ## Credits
 

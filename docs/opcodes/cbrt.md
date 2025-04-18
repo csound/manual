@@ -21,7 +21,7 @@ _karg[]_ -- the argument.
 
 ## Examples
 
-Here is an example of the cbrt opcode. It uses the file [cbrt.csd](../../examples/cbrt.csd).
+Here is an example of the cbrt opcode. It uses the file [cbrt.csd](../examples/cbrt.csd).
 
 ``` csound-csd title="Example of the cbrt opcode." linenums="1"
 --8<-- "examples/cbrt.csd"
@@ -29,7 +29,7 @@ Here is an example of the cbrt opcode. It uses the file [cbrt.csd](../../example
 
 ## See also
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

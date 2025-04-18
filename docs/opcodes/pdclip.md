@@ -48,7 +48,7 @@ Bipolar mode can be used for direct, linear distortion of an audio signal.  Alte
 
 ## Examples
 
-Here is an example of the pdclip opcode. It uses the file [pdclip.csd](../../examples/pdclip.csd).
+Here is an example of the pdclip opcode. It uses the file [pdclip.csd](../examples/pdclip.csd).
 
 ``` csound-csd title="Example of the pdclip opcode." linenums="1"
 --8<-- "examples/pdclip.csd"
@@ -56,7 +56,7 @@ Here is an example of the pdclip opcode. It uses the file [pdclip.csd](../../exa
 
 ## See also
 
-[Phase Distortion](../../sigmod/wavshape)
+[Phase Distortion](../sigmod/wavshape.md)
 
 ## Credits
 

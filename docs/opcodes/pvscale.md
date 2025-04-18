@@ -49,7 +49,7 @@ adel  deltapn   1024                     ; by 1024 samples
 
 The example above shows a vocal harmoniser. The delay is necessary to time-align the signals, as the analysis-synthesis process will imply a delay of 1024 samples between the analysis input and the synthesis output.
 
-Here is an example of the use of the _pvscale_ opcode. It uses the file [pvscale.csd](../../examples/pvscale.csd).
+Here is an example of the use of the _pvscale_ opcode. It uses the file [pvscale.csd](../examples/pvscale.csd).
 
 ``` csound-csd title="Example of the _pvscale_ opcode." linenums="1"
 --8<-- "examples/pvscale.csd"
@@ -57,7 +57,7 @@ Here is an example of the use of the _pvscale_ opcode. It uses the file [pvscale
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

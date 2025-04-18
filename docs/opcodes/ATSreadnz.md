@@ -14,7 +14,7 @@ kenergy ATSreadnz ktimepnt, iatsfile, iband
 
 ### Initialization
 
-_iatsfile_ – the ATS number (n in ats.n) or the name in quotes of the analysis file made using [ATSA](../../utility/atsa).
+_iatsfile_ – the ATS number (n in ats.n) or the name in quotes of the analysis file made using [ATSA](../utility/atsa.md).
 
 _iband_ – the number of the noise band to return the energy data.
 
@@ -22,7 +22,7 @@ _iband_ – the number of the noise band to return the energy data.
 
 _kenergy_ outputs the linearly interpolated energy of the noise band indicated in _iband_. The output is dependent on the data in the analysis file and the _ktimepnt_.
 
-_ktimepnt_ – The time pointer in seconds used to index the ATS file. Used for _ATSreadnz_ exactly the same as for [pvoc](../../opcodes/pvoc) and [ATSadd](../../opcodes/ATSadd).
+_ktimepnt_ – The time pointer in seconds used to index the ATS file. Used for _ATSreadnz_ exactly the same as for [pvoc](../opcodes/pvoc.md) and [ATSadd](../opcodes/ATSadd.md).
 
 _ATSaddnz_ reads from an ATS file and resynthesizes the noise from noise energy data contained in the ATS file. It uses a modified randi function to create band limited noise and modulates that with a user supplied wave table (one period of a cosine wave), to synthesize a user specified selection of frequency bands. Modulating the noise is required to put the band limited noise in the correct place in the frequency spectrum.
 
@@ -51,9 +51,9 @@ _randi_ function creates a band of noise
 centered about 0 Hz that has a bandwidth of about 110 Hz;
 multiplying it by a cosine will shift it to be centered at 455
 Hz, which is the center frequency of the 5th critical noise
-band. This is only an example, for synthesizing the noise you would be better off just using [ATSaddnz](../../opcodes/ATSaddnz) unless you want to use your own noise synthesis algorithm. Maybe you could use the noise energy for something else like applying a small amount of jitter to specific partials or for controlling something totally unrelated to the source sound?
+band. This is only an example, for synthesizing the noise you would be better off just using [ATSaddnz](../opcodes/ATSaddnz.md) unless you want to use your own noise synthesis algorithm. Maybe you could use the noise energy for something else like applying a small amount of jitter to specific partials or for controlling something totally unrelated to the source sound?
 
-Here is a complete example of the ATSreadnz opcode. It uses the file [ATSreadnz.csd](../../examples/ATSreadnz.csd).
+Here is a complete example of the ATSreadnz opcode. It uses the file [ATSreadnz.csd](../examples/ATSreadnz.csd).
 
 ``` csound-csd title="Another example of the ATSreadnz opcode." linenums="1"
 --8<-- "examples/ATSreadnz.csd"
@@ -61,7 +61,7 @@ Here is a complete example of the ATSreadnz opcode. It uses the file [ATSreadnz.
 
 ## See also
 
-[ATS Spectral Processing](../../spectral/ATS)
+[ATS Spectral Processing](../spectral/ATS.md)
 
 ## Credits
 

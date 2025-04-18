@@ -80,7 +80,7 @@ class OpcodeInfo:
         self.link = ""
         i = filename.find('docs/')
         if i != -1:
-            self.link = filename[i+5:-3]
+            self.link = filename[i+5:]
 
 def find_bad_categories(opcodes, categories):
     cats = []
@@ -103,7 +103,7 @@ def find_bad_categories(opcodes, categories):
 def write_opcodes_index(opcodes, filename, ncol=5):
     entries = []
     for opc in opcodes:
-        entries.append("| [{}]({}) ".format(opc.name, "../"+opc.link))
+        entries.append("| [{}]({}) ".format(opc.name, opc.link))
     entries.sort()
 
     f = open(filename, 'w')
@@ -157,7 +157,7 @@ def write_opcodes_ref(opc_by_cat, filename):
                             if len(l) >= len(cmd) and l[len(l)-len(cmd):] == cmd:
                                 cmd_flag = True
                 if not linked and cmd_flag:
-                    link = "../" + o.link
+                    link = o.link
                     l = l.replace(cmd, "[**`{}`**]({})".format(cmd, link))
                     k = l.find("[**")
                     if k > 0:
@@ -184,7 +184,7 @@ def write_examples_list(opc_by_cat, filename):
         print("### {}".format(cat), file=f)
         for o in opc_by_cat[cat]:
             if len(o.examples) > 0:
-                link = "(../../" + o.link + "/#examples)"
+                link = "(../" + o.link + "#examples)"
                 for ex in o.examples:
                     print("[**" + ex + "**]" + link + "<br>", file=f)
         print(file=f)

@@ -23,7 +23,7 @@ This opcode is part of a suite of streaming linear prediction opcodes. It takes 
 ## Examples
 
 Here is an example of the apoleparams opcode using an audio input
-signal as lpc source. It uses the file [apoleparams.csd](../../examples/apoleparams.csd).
+signal as lpc source. It uses the file [apoleparams.csd](../examples/apoleparams.csd).
 
 ``` csound-csd title="Example of the apoleparams opcode." linenums="1"
 --8<-- "examples/apoleparams.csd"
@@ -31,4 +31,4 @@ signal as lpc source. It uses the file [apoleparams.csd](../../examples/apolepar
 
 ## See also
 
-[Streaming Linear Predictive Coding (SLPC) Resynthesis](../../spectral/lpcresyn)
+[Streaming Linear Predictive Coding (SLPC) Resynthesis](../spectral/lpcresyn.md)

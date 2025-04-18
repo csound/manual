@@ -30,7 +30,7 @@ _krow_ -- row to be extracted.
 
 ## Examples
 
-Here is an example of the getrow opcode. It uses the file [rfft.csd](../../examples/rfft.csd).
+Here is an example of the getrow opcode. It uses the file [rfft.csd](../examples/rfft.csd).
 
 ``` csound-csd title="Example of the getrow opcode." linenums="1"
 --8<-- "examples/rfft.csd"
@@ -38,9 +38,9 @@ Here is an example of the getrow opcode. It uses the file [rfft.csd](../../examp
 
 ## See Also
 
-[Vectorial Opcodes](../../vectorial/top)
+[Vectorial Opcodes](../vectorial/top.md)
 
-[Array Opcodes](../../math/array)
+[Array Opcodes](../math/array.md)
 
 ## Credits
 

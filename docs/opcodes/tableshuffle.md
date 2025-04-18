@@ -20,7 +20,7 @@ _ktablenum_ or _itablenum_
 
 ## Examples
 
-Here is an example of the tableshuffle opcode. It uses the file [tableshuffle.csd](../../examples/tableshuffle.csd).
+Here is an example of the tableshuffle opcode. It uses the file [tableshuffle.csd](../examples/tableshuffle.csd).
 
 ``` csound-csd title="Example of the tableshuffle opcode." linenums="1"
 --8<-- "examples/tableshuffle.csd"
@@ -28,7 +28,7 @@ Here is an example of the tableshuffle opcode. It uses the file [tableshuffle.cs
 
 ## See also
 
-[Read/Write Operations](../../table/readwrit)
+[Read/Write Operations](../table/readwrit.md)
 
 ## Credits
 

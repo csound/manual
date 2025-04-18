@@ -6,7 +6,7 @@ category:Mixer Opcodes
 Sets the level at which signals from the send are added to the buss.
 Plugin opcode in mixer
 
-The actual sending of the signal to the buss is performed by the [MixerSend](../../opcodes/mixersend) opcode.
+The actual sending of the signal to the buss is performed by the [MixerSend](../opcodes/mixersend.md) opcode.
 
 ## Syntax
 ``` csound-orc
@@ -25,7 +25,7 @@ Setting the gain for a buss also creates the buss.
 
 _kgain_ -- The level (any real number) at which the signal from the send will be mixed onto the buss. The default is 0.
 
-Use of the mixer requires that instruments setting gains have smaller numbers than instruments sending signals, and that instruments sending signals have smaller numbers than instruments receiving those signals. However, an instrument may have any number of sends or receives. After the final signal is received, [MixerClear](../../opcodes/mixerclear) must be invoked to reset the busses before the next kperiod.
+Use of the mixer requires that instruments setting gains have smaller numbers than instruments sending signals, and that instruments sending signals have smaller numbers than instruments receiving those signals. However, an instrument may have any number of sends or receives. After the final signal is received, [MixerClear](../opcodes/mixerclear.md) must be invoked to reset the busses before the next kperiod.
 
 ## Examples
 
@@ -64,7 +64,7 @@ i 1  0  0  200  220  0.5
 i 1  0  0  210  220  0.2
 ```
 
-Here is a complete example of the MixerSetLevel opcode. It uses the file [Mixer.csd](../../examples/Mixer.csd)
+Here is a complete example of the MixerSetLevel opcode. It uses the file [Mixer.csd](../examples/Mixer.csd)
 
 ``` csound-csd title="Complete example of the MixerSetLevel opcode." linenums="1"
 --8<-- "examples/Mixer.csd"
@@ -72,7 +72,7 @@ Here is a complete example of the MixerSetLevel opcode. It uses the file [Mixer.
 
 ## See also
 
-[Mixer Opcodes](../../mixer)
+[Mixer Opcodes](../mixer.md)
 
 ## Credits
 

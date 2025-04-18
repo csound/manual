@@ -12,7 +12,7 @@ ftcps(x) (init-rate args only)
 
 ### Performance
 
-Returns the base frequency of stored function table, number _x_.  _ftcps_ is designed for tables storing audio waveforms read from files (see [GEN01](../../scoregens/gen01)).
+Returns the base frequency of stored function table, number _x_.  _ftcps_ is designed for tables storing audio waveforms read from files (see [GEN01](../scoregens/gen01.md)).
 
 _ftcps_ returns -1 in case of an error (no base frequency set in table or non-existent table).
 
@@ -26,7 +26,7 @@ Here is an example of the ftcps opcode.
 
 ## See also
 
-[Table Control:Table Queries](../../table/queries)
+[Table Control:Table Queries](../table/queries.md)
 
 ## Credits
 

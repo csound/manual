@@ -38,7 +38,7 @@ aout  pvsynth   fou                            ; pvoc synthesis
 
 In the example above the input signal will be regularly 'frozen' for a short while, as the trigger rises above 1 about every two seconds.
 
-Here is an example of the use of the _pvsfreeze_ opcode. It uses the file [pvsfreeze.csd](../../examples/pvsfreeze.csd).
+Here is an example of the use of the _pvsfreeze_ opcode. It uses the file [pvsfreeze.csd](../examples/pvsfreeze.csd).
 
 ``` csound-csd title="Example of the _pvsfreeze_ opcode." linenums="1"
 --8<-- "examples/pvsfreeze.csd"
@@ -46,7 +46,7 @@ Here is an example of the use of the _pvsfreeze_ opcode. It uses the file [pvsfr
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

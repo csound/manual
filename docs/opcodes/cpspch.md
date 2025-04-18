@@ -35,11 +35,11 @@ By contrast, the conversion _cpsoct_(8.75 + k1) which gives the value of A440 tr
 >
 > The conversion from _pch_, _oct_, or _midinn_ into _cps_ is not a linear operation but involves an exponential process that could be time-consuming when executed repeatedly. Csound now uses a built-in table lookup to do this efficiently, even at audio rates. Because the table index is truncated without interpolation, pitch resolution when using one of these opcodes is limited to 8192 discrete and equal divisions of the octave, and some pitches of the standard 12-tone equally-tempered scale are very slightly mistuned (by at most 0.15 cents).
 >
-> If you need more precision in the calculation, use [cps2pch](../../opcodes/cps2pch) or  [cpsxpch](../../opcodes/cpsxpch) instead.
+> If you need more precision in the calculation, use [cps2pch](../opcodes/cps2pch.md) or  [cpsxpch](../opcodes/cpsxpch.md) instead.
 
 ## Examples
 
-Here is an example of the cpspch opcode. It uses the file [cpspch.csd](../../examples/cpspch.csd).
+Here is an example of the cpspch opcode. It uses the file [cpspch.csd](../examples/cpspch.csd).
 
 ``` csound-csd title="Example of the cpspch opcode." linenums="1"
 --8<-- "examples/cpspch.csd"
@@ -56,4 +56,4 @@ instr 1:  icps = 54.995
 
 ## See also
 
-[Pitch Converters: Functions](../../pitch/funcs)
+[Pitch Converters: Functions](../pitch/funcs.md)

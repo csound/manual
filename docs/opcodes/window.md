@@ -24,7 +24,7 @@ _koff_ -- offset to make window start at position koff (non-negative only, defau
 
 ## Examples
 
-Here is an example of the window opcode. It uses the file [window.csd](../../examples/window.csd).
+Here is an example of the window opcode. It uses the file [window.csd](../examples/window.csd).
 
 ``` csound-csd title="Example of the window opcode." linenums="1"
 --8<-- "examples/window.csd"
@@ -32,11 +32,11 @@ Here is an example of the window opcode. It uses the file [window.csd](../../exa
 
 ## See Also
 
-[Vectorial opcodes](../../vectorial/top)
+[Vectorial opcodes](../vectorial/top.md)
 
-[array opcodes](../../math/array)
+[array opcodes](../math/array.md)
 
-[Array-based spectral opcodes](../../spectral/arrays)
+[Array-based spectral opcodes](../spectral/arrays.md)
 
 ## Credits
 

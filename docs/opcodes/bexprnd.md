@@ -25,7 +25,7 @@ For more detailed explanation of these distributions, see:
 
 ## Examples
 
-Here is an example of the bexprnd opcode. It uses the file [bexprnd.csd](../../examples/bexprnd.csd).
+Here is an example of the bexprnd opcode. It uses the file [bexprnd.csd](../examples/bexprnd.csd).
 
 ``` csound-orc title="Example of the bexprnd opcode." linenums="1"
 --8<-- "examples/bexprnd.csd"
@@ -61,7 +61,7 @@ i   2 time     5.00000:  -226.35500
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
 ## Credits
 

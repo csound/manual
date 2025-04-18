@@ -5,7 +5,7 @@ category:Spectral Processing:STFT
 # pvbufread
 Reads from a phase vocoder analysis file and makes the retrieved data available.
 
-_pvbufread_ reads from a [pvoc](../../opcodes/pvoc) file and makes the retrieved data available to any following [pvinterp](../../opcodes/pvinterp) and [pvcross](../../opcodes/pvcross) units that appear in an instrument before a subsequent _pvbufread_ (just as [lpread](../../opcodes/lpread) and [lpreson](../../opcodes/lpreson) work together). The data is passed internally and the unit has no output of its own.
+_pvbufread_ reads from a [pvoc](../opcodes/pvoc.md) file and makes the retrieved data available to any following [pvinterp](../opcodes/pvinterp.md) and [pvcross](../opcodes/pvcross.md) units that appear in an instrument before a subsequent _pvbufread_ (just as [lpread](../opcodes/lpread.md) and [lpreson](../opcodes/lpreson.md) work together). The data is passed internally and the unit has no output of its own.
 
 ## Syntax
 ``` csound-orc
@@ -14,7 +14,7 @@ pvbufread ktimpnt, ifile
 
 ### Initialization
 
-_ifile_ -- the _pvoc_ number (n in pvoc.n) or the name in quotes of the analysis file made using _pvanal_. (See [pvoc](../../opcodes/pvoc).)
+_ifile_ -- the _pvoc_ number (n in pvoc.n) or the name in quotes of the analysis file made using _pvanal_. (See [pvoc](../opcodes/pvoc.md).)
 
 ### Performance
 
@@ -42,7 +42,7 @@ kcross  expon     0.001, p3, 1
 apv     pvcross   ktime2, 1, "clar.pvoc", 1-kcross, kcross
 ```
 
-Here is a complete example of the pvbufread opcode. It uses the file [pvbufread.csd](../../examples/pvbufread.csd)
+Here is a complete example of the pvbufread opcode. It uses the file [pvbufread.csd](../examples/pvbufread.csd)
 
 ``` csound-csd title="Example of the pvbufread opcode." linenums="1"
 --8<-- "examples/pvbufread.csd"
@@ -50,7 +50,7 @@ Here is a complete example of the pvbufread opcode. It uses the file [pvbufread.
 
 ## See Also
 
-[Short-time Fourier Transform (STFT) Resynthesis](../../spectral/stft)
+[Short-time Fourier Transform (STFT) Resynthesis](../spectral/stft.md)
 
 ## Credits
 

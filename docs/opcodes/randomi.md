@@ -25,7 +25,7 @@ _kmax_ -- maximum range limit
 
 _kcps, xcps_ -- rate of random break-point generation
 
-The _randomi_ opcode is similar to [randi](../../opcodes/randi) but allows the user to set arbitrary minimum and maximum values.
+The _randomi_ opcode is similar to [randi](../opcodes/randi.md) but allows the user to set arbitrary minimum and maximum values.
 
 When _imode_ = 0 (the default), the _kmin_ argument value is outputted during _1/kcps_ (resp. _1/xcps_) seconds at the beginning of the note, before the first random number is generated. Then the normal interpolation process takes place, first between _kmin_ and the first random number generated, and then between successive generated random numbers, each interpolation cycle having a duration of _1/kcps_ (resp. _1/xcps_) seconds.
 
@@ -37,7 +37,7 @@ When _imode_ = 3, two random numbers are generated at initialization as breakpoi
 
 ## Examples
 
-Here is an example of the randomi opcode. It uses the file [randomi.csd](../../examples/randomi.csd).
+Here is an example of the randomi opcode. It uses the file [randomi.csd](../examples/randomi.csd).
 
 ``` csound-orc title="Example of the randomi opcode." linenums="1"
 --8<-- "examples/randomi.csd"
@@ -81,7 +81,7 @@ k1 = 303.038109
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
 ## Credits
 

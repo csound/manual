@@ -18,7 +18,7 @@ Returns a random number in the unipolar range 0 to _x_.
 
 ## Examples
 
-Here is an example of the rnd opcode. It uses the file [rnd.csd](../../examples/rnd.csd).
+Here is an example of the rnd opcode. It uses the file [rnd.csd](../examples/rnd.csd).
 
 ``` csound-orc title="Example of the rnd opcode." linenums="1"
 --8<-- "examples/rnd.csd"
@@ -48,7 +48,7 @@ i   2 time     2.80000:     2.36001
 i   2 time     2.90000:     0.03553
 ```
 
-Here is another example of the rnd opcode. It uses the file [rnd-advanced.csd](../../examples/rnd-advanced.csd).
+Here is another example of the rnd opcode. It uses the file [rnd-advanced.csd](../examples/rnd-advanced.csd).
 
 ``` csound-orc title="Advanced example of the rnd opcode." linenums="1"
 --8<-- "examples/rnd-advanced.csd"
@@ -56,7 +56,7 @@ Here is another example of the rnd opcode. It uses the file [rnd-advanced.csd](.
 
 ## See also
 
-[Random Functions](../../math/rndfunc)
+[Random Functions](../math/rndfunc.md)
 
 ## Credits
 

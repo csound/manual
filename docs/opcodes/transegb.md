@@ -29,14 +29,14 @@ ibeg + (ivalue - ibeg) * (1 - exp( i*itype/(n-1) )) / (1 - exp(itype))
 
 ### Performance
 
-If _itype_ &gt; 0, there is a slowly rising (concave) or slowly decaying (convex) curve, while if _itype_ &lt; 0, the curve is fast rising (convex) or fast decaying (concave). See also [GEN16](../../scoregens/gen16).
+If _itype_ &gt; 0, there is a slowly rising (concave) or slowly decaying (convex) curve, while if _itype_ &lt; 0, the curve is fast rising (convex) or fast decaying (concave). See also [GEN16](../scoregens/gen16.md).
 
 ## Examples
 
-Here is an example of the transegb opcode. It uses the file [transegb.csd](../../examples/transegb.csd). The example produces the following output:
+Here is an example of the transegb opcode. It uses the file [transegb.csd](../examples/transegb.csd). The example produces the following output:
 
 <figure markdown="span">
-![Output of the transegb example.](../../images/transegb.png)
+![Output of the transegb example.](../images/transegb.png)
 <figcaption>Output of the transegb example.</figcaption>
 </figure>
 
@@ -46,7 +46,7 @@ Here is an example of the transegb opcode. It uses the file [transegb.csd](../..
 
 ## See also
 
-[Linear and Exponential Generators](../../siggen/lineexp)
+[Linear and Exponential Generators](../siggen/lineexp.md)
 
 ## Credits
 

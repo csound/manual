@@ -33,14 +33,14 @@ _kperiod_ -- some km1 and km2 ratios may cause pitch shifts. With the kperiod pa
 
 ## Examples
 
-Here is an example of the sterrain opcode wich shows the impact of letting kn1 running towards zero. It uses the file [sterrain.csd](../../examples/sterrain.csd).
+Here is an example of the sterrain opcode wich shows the impact of letting kn1 running towards zero. It uses the file [sterrain.csd](../examples/sterrain.csd).
 
 ``` csound-csd title="Example of the sterrain opcode." linenums="1"
 --8<-- "examples/sterrain.csd"
 ```
 
 Here is an other example of the sterrain opcode showing overtone building.
-It uses the file [sterrain2.csd](../../examples/sterrain2.csd).
+It uses the file [sterrain2.csd](../examples/sterrain2.csd).
 
 ``` csound-csd title="Another Example of the sterrain opcode showing overtone building" linenums="1"
 --8<-- "examples/sterrain2.csd"
@@ -48,7 +48,7 @@ It uses the file [sterrain2.csd](../../examples/sterrain2.csd).
 
 ## See Also
 
-[Wave Terrain Synthesis](../../siggen/waveterr)
+[Wave Terrain Synthesis](../siggen/waveterr.md)
 
 ## Credits
 

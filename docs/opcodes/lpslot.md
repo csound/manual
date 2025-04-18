@@ -20,7 +20,7 @@ _lpslot_ selects the slot to be use by further lp opcodes. This is the way to lo
 
 ## Examples
 
-Here is an example of the lpslot opcode. It uses the file [lpslot.csd](../../examples/lpslot.csd).
+Here is an example of the lpslot opcode. It uses the file [lpslot.csd](../examples/lpslot.csd).
 
 ``` csound-csd title="Example of the lpslot opcode." linenums="1"
 --8<-- "examples/lpslot.csd"
@@ -28,7 +28,7 @@ Here is an example of the lpslot opcode. It uses the file [lpslot.csd](../../exa
 
 ## See also
 
-[Linear Predictive Coding (LPC) Resynthesis](../../spectral/lpcresyn)
+[Linear Predictive Coding (LPC) Resynthesis](../spectral/lpcresyn.md)
 
 ## Credits
 

@@ -28,7 +28,7 @@ _iPolyphony_ -- number of voices to be played in parallel; range is 16-4096 and 
 
 ## Examples
 
-Here is example of the fluidsynth opcodes using 2 engines. It uses the file [fluidEngine.csd](../../examples/fluidEngine.csd) and [midichn_advanced.mid](../../examples/midichn_advanced.mid).
+Here is example of the fluidsynth opcodes using 2 engines. It uses the file [fluidEngine.csd](../examples/fluidEngine.csd) and [midichn_advanced.mid](../examples/midichn_advanced.mid).
 
 ``` csound-csd title="Example of the fluidsynth opcodes using 2 engines." linenums="1"
 --8<-- "examples/fluidEngine.csd"
@@ -36,7 +36,7 @@ Here is example of the fluidsynth opcodes using 2 engines. It uses the file [flu
 
 ## See also
 
-[Soundfonts](../../siggen/sample)
+[Soundfonts](../siggen/sample.md)
 
 More information on soundfonts is in the Floss Manuals: [https://flossmanual.csound.com/midi/reading-midi-files](https://flossmanual.csound.com/midi/reading-midi-files)
 

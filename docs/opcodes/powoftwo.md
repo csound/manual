@@ -12,13 +12,13 @@ powoftwo(x)  (init-rate or control-rate args only)
 
 ### Performance
 
-_powoftwo_() function returns 2<sup>_x_</sup> and allows positive and negatives numbers as argument. The range of values admitted in _powoftwo_() is -5 to +5 allowing a precision more fine than one cent in a range of ten octaves. If a greater range of values is required, use the slower opcode [pow](../../opcodes/pow).
+_powoftwo_() function returns 2<sup>_x_</sup> and allows positive and negatives numbers as argument. The range of values admitted in _powoftwo_() is -5 to +5 allowing a precision more fine than one cent in a range of ten octaves. If a greater range of values is required, use the slower opcode [pow](../opcodes/pow.md).
 
 These functions are fast, because they read values stored in tables. Also they are very useful when working with tuning ratios. They work at i- and k-rate.
 
 ## Examples
 
-Here is an example of the powoftwo opcode. It uses the file [powoftwo.csd](../../examples/powoftwo.csd).
+Here is an example of the powoftwo opcode. It uses the file [powoftwo.csd](../examples/powoftwo.csd).
 
 ``` csound-csd title="Example of the powoftwo opcode." linenums="1"
 --8<-- "examples/powoftwo.csd"
@@ -37,7 +37,7 @@ instr 1:  iQuantize = 1.000
 
 ## See also
 
-[Mathematical Functions](../../math/mathfunc)
+[Mathematical Functions](../math/mathfunc.md)
 
 ## Credits
 

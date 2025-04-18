@@ -25,7 +25,7 @@ _kr_ -- return code (1 if the sound file _ifilcod_ can be read).
 
 ## Examples
 
-Here is an example of the filevalid opcode. It uses the file [filevalid.csd](../../examples/filevalid.csd).
+Here is an example of the filevalid opcode. It uses the file [filevalid.csd](../examples/filevalid.csd).
 
 ``` csound-csd title="Example of the filevalid opcode." linenums="1"
 --8<-- "examples/filevalid.csd"
@@ -39,7 +39,7 @@ Audiofile 'frox.wav' does not exist!
 
 ## See also
 
-[Sound File Queries](../../sigio/queries)
+[Sound File Queries](../sigio/queries.md)
 
 ## Credits
 

@@ -37,7 +37,7 @@ The length of the sustain is calculated from the length of the note. This means 
 
 ## Examples
 
-Here is an example of the gtadsr opcode. It uses the file [gtadsr.csd](../../examples/gtadsr.csd).
+Here is an example of the gtadsr opcode. It uses the file [gtadsr.csd](../examples/gtadsr.csd).
 
 ``` csound-csd title="Example of the gtadsr opcode." linenums="1"
 --8<-- "examples/gtadsr.csd"
@@ -45,7 +45,7 @@ Here is an example of the gtadsr opcode. It uses the file [gtadsr.csd](../../exa
 
 ## See Also
 
-[Envelope Generators](../../siggen/envelope)
+[Envelope Generators](../siggen/envelope.md)
 
 ## Credits
 

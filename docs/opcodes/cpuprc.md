@@ -37,7 +37,7 @@ All instances of _cpuprc_ must be defined in the header section, not in the inst
 
 ## Examples
 
-Here is an example of the cpuprc opcode. It uses the file [cpuprc.csd](../../examples/cpuprc.csd).
+Here is an example of the cpuprc opcode. It uses the file [cpuprc.csd](../examples/cpuprc.csd).
 
 ``` csound-csd title="Example of the cpuprc opcode." linenums="1"
 --8<-- "examples/cpuprc.csd"
@@ -45,7 +45,7 @@ Here is an example of the cpuprc opcode. It uses the file [cpuprc.csd](../../exa
 
 ## See also
 
-[Real-time Performance Control](../../control/realtime)
+[Real-time Performance Control](../control/realtime.md)
 
 ## Credits
 

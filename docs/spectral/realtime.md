@@ -2,7 +2,7 @@
 
 With these opcodes, two new core facilities are added to Csound. They offer improved audio quality, and fast performance, enabling high-quality analysis and resynthesis (together with transformations) to be applied in real-time to live signals. The original Csound phase vocoder remains unaltered; the new opcodes use an entirely separate set of functions based on &#8220;pvoc.c&#8221; in the CARL distribution, written by Mark Dolson. 
 
-The Csound [dnoise](../../utility/dnoise) and [src_conv](../../utility/src_conv) utilities (also by Dolson, from CARL) also use this pvoc engine. CARL pvoc is also the basis for the phase vocoder included in the Composer's Desktop Project. A few small but important modifications have been made to the original CARL code to support real-time streaming.
+The Csound [dnoise](../utility/dnoise.md) and [src_conv](../utility/src_conv.md) utilities (also by Dolson, from CARL) also use this pvoc engine. CARL pvoc is also the basis for the phase vocoder included in the Composer's Desktop Project. A few small but important modifications have been made to the original CARL code to support real-time streaming.
 
 1. Support for the new PVOC-EX analysis file format. This is a fully portable (cross-platform) open  file format, supporting three analysis formats, and multi-channel signals. Currently only the standard amplitude+frequency format has been implemented in the opcodes, but the file format itself supports amplitude+phase and  complex (real-imaginary) formats. In addition to the new opcodes, the original Csound pvoc opcodes have been extended (and thereby with enhanced audio quality in some cases)  to read PVOC-EX files as well as the original (non-portable) format.
 
@@ -21,69 +21,69 @@ One important point about the new signal type is that because the analysis rate 
 Because of the nature of the overlap-add system, the use of these opcodes incurs a small but significant delay, or latency, determined by the window size (max (ifftsize, iwinsize)). This is typically around 23msecs. In this first release, the delay is slightly in excess of the theoretical minimum, and it is hoped that it can be reduced, as the opcodes are further optimized for real-time streaming.
 
 The opcodes for real-time spectral processing are
- [pvsadsyn](../../opcodes/pvsadsyn),
- [pvsanal](../../opcodes/pvsanal),
- [pvscross](../../opcodes/pvscross),
- [pvsfread](../../opcodes/pvsfread),
- [pvsftr](../../opcodes/pvsftr),
- [pvsftw](../../opcodes/pvsftw),
- [pvsinfo](../../opcodes/pvsinfo),
- [pvsmaska](../../opcodes/pvsmaska), and
- [pvsynth](../../opcodes/pvsynth).
+ [pvsadsyn](../opcodes/pvsadsyn.md),
+ [pvsanal](../opcodes/pvsanal.md),
+ [pvscross](../opcodes/pvscross.md),
+ [pvsfread](../opcodes/pvsfread.md),
+ [pvsftr](../opcodes/pvsftr.md),
+ [pvsftw](../opcodes/pvsftw.md),
+ [pvsinfo](../opcodes/pvsinfo.md),
+ [pvsmaska](../opcodes/pvsmaska.md), and
+ [pvsynth](../opcodes/pvsynth.md).
 
 In addition there are a number of opcodes available as plugins in Csound5, and in the core for Csound6. These are
- [pvstanal](../../opcodes/pvstanal),
- [pvsdiskin](../../opcodes/pvsdiskin),
- [pvscent](../../opcodes/pvscent),
- [pvsdemix](../../opcodes/pvsdemix),
- [pvsfreeze](../../opcodes/pvsfreeze),
- [pvsbuffer](../../opcodes/pvsbuffer),
- [pvsbufread](../../opcodes/pvsbufread),
- [pvsbufread2](../../opcodes/pvsbufread2),
- [pvscale](../../opcodes/pvscale),
- [pvshift](../../opcodes/pvshift),
- [pvsifd](../../opcodes/pvsifd),
- [pvsinit](../../opcodes/pvsinit),
- [pvsin](../../opcodes/pvsin),
- [pvsout](../../opcodes/pvsout),
- [pvsosc](../../opcodes/pvsosc),
- [pvsbin](../../opcodes/pvsbin),
- [pvsdisp](../../opcodes/pvsdisp),
- [pvsfwrite](../../opcodes/pvsfwrite),
- [pvsmix](../../opcodes/pvsmix),
- [pvsmooth](../../opcodes/pvsmooth),
- [pvsfilter](../../opcodes/pvsfilter),
- [pvsblur](../../opcodes/pvsblur),
- [pvstencil](../../opcodes/pvstencil),
- [pvsarp](../../opcodes/pvsarp),
- [pvsvoc](../../opcodes/pvsvoc),
- [pvsmorph](../../opcodes/pvsmorph),
- [pvsbandp](../../opcodes/pvsbandp),
- [pvsbandr](../../opcodes/pvsbandr),
- [pvsbandwidth](../../opcodes/pvsbandwidth),
- [pvswarp](../../opcodes/pvswarp),
- [pvsgain](../../opcodes/pvsgain),
- [pvs2tab](../../opcodes/pvs2tab),
- [pvstrace](../../opcodes/pvstrace),
- [pvsceps](../../opcodes/pvsceps),
- [pvsfromarray](../../opcodes/pvsfromarray)
- [tab2pvs](../../opcodes/tab2pvs)
+ [pvstanal](../opcodes/pvstanal.md),
+ [pvsdiskin](../opcodes/pvsdiskin.md),
+ [pvscent](../opcodes/pvscent.md),
+ [pvsdemix](../opcodes/pvsdemix.md),
+ [pvsfreeze](../opcodes/pvsfreeze.md),
+ [pvsbuffer](../opcodes/pvsbuffer.md),
+ [pvsbufread](../opcodes/pvsbufread.md),
+ [pvsbufread2](../opcodes/pvsbufread2.md),
+ [pvscale](../opcodes/pvscale.md),
+ [pvshift](../opcodes/pvshift.md),
+ [pvsifd](../opcodes/pvsifd.md),
+ [pvsinit](../opcodes/pvsinit.md),
+ [pvsin](../opcodes/pvsin.md),
+ [pvsout](../opcodes/pvsout.md),
+ [pvsosc](../opcodes/pvsosc.md),
+ [pvsbin](../opcodes/pvsbin.md),
+ [pvsdisp](../opcodes/pvsdisp.md),
+ [pvsfwrite](../opcodes/pvsfwrite.md),
+ [pvsmix](../opcodes/pvsmix.md),
+ [pvsmooth](../opcodes/pvsmooth.md),
+ [pvsfilter](../opcodes/pvsfilter.md),
+ [pvsblur](../opcodes/pvsblur.md),
+ [pvstencil](../opcodes/pvstencil.md),
+ [pvsarp](../opcodes/pvsarp.md),
+ [pvsvoc](../opcodes/pvsvoc.md),
+ [pvsmorph](../opcodes/pvsmorph.md),
+ [pvsbandp](../opcodes/pvsbandp.md),
+ [pvsbandr](../opcodes/pvsbandr.md),
+ [pvsbandwidth](../opcodes/pvsbandwidth.md),
+ [pvswarp](../opcodes/pvswarp.md),
+ [pvsgain](../opcodes/pvsgain.md),
+ [pvs2tab](../opcodes/pvs2tab.md),
+ [pvstrace](../opcodes/pvstrace.md),
+ [pvsceps](../opcodes/pvsceps.md),
+ [pvsfromarray](../opcodes/pvsfromarray.md)
+ [tab2pvs](../opcodes/tab2pvs.md)
      
 A number of opcodes are designed to generate and process streaming partials tracks data. these are
- [binit](../../opcodes/binit),
- [partials](../../opcodes/partials),
- [part2txt](../../opcodes/part2txt),
- [trcross](../../opcodes/trcross),
- [trfilter](../../opcodes/trfilter),
- [trsplit](../../opcodes/trsplit),
- [trmix](../../opcodes/trmix),
- [trscale](../../opcodes/trscale),
- [trshift](../../opcodes/trshift),
- [trlowest](../../opcodes/trlowest),
- [trhighest](../../opcodes/trhighest),
- [tradsyn](../../opcodes/tradsyn),
- [sinsyn](../../opcodes/sinsyn),
- [resyn](../../opcodes/resyn),
- [tabifd](../../opcodes/tabifd)    
+ [binit](../opcodes/binit.md),
+ [partials](../opcodes/partials.md),
+ [part2txt](../opcodes/part2txt.md),
+ [trcross](../opcodes/trcross.md),
+ [trfilter](../opcodes/trfilter.md),
+ [trsplit](../opcodes/trsplit.md),
+ [trmix](../opcodes/trmix.md),
+ [trscale](../opcodes/trscale.md),
+ [trshift](../opcodes/trshift.md),
+ [trlowest](../opcodes/trlowest.md),
+ [trhighest](../opcodes/trhighest.md),
+ [tradsyn](../opcodes/tradsyn.md),
+ [sinsyn](../opcodes/sinsyn.md),
+ [resyn](../opcodes/resyn.md),
+ [tabifd](../opcodes/tabifd.md)    
     
-See the [Stacks section](../../control/stacks) for information on the stack opcodes which can stack f-signals.
+See the [Stacks section](../control/stacks.md) for information on the stack opcodes which can stack f-signals.

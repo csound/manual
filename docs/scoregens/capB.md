@@ -20,7 +20,7 @@ p1 is the number of beats by which p2 values of subsequent _i statements_ are mo
 
 ## Examples
 
-Here is an example of the B statement. It uses the file [capB.csd](../../examples/capB.csd).
+Here is an example of the B statement. It uses the file [capB.csd](../examples/capB.csd).
 
 ``` csound-csd title="Example of the B statement." linenums="1"
 --8<-- "examples/capB.csd"
@@ -28,7 +28,7 @@ Here is an example of the B statement. It uses the file [capB.csd](../../example
 
 ## See Also
 
-[Score Statements](../../score/statemnt)
+[Score Statements](../score/statemnt.md)
 
 ## Credits
 

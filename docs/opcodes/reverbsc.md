@@ -24,7 +24,7 @@ _iskip_ (optional, defaults to zero) -- if non-zero, initialization of the opcod
 
 _aoutL, aoutR_ -- output signals for left and right channel
 
-_ainL, ainR_ -- left and right channel input. Note that having an input signal on either the left or right channel only will still result in having reverb output on both channels, making this unit more suitable for reverberating stereo input than the [freeverb](../../opcodes/freeverb) opcode.
+_ainL, ainR_ -- left and right channel input. Note that having an input signal on either the left or right channel only will still result in having reverb output on both channels, making this unit more suitable for reverberating stereo input than the [freeverb](../opcodes/freeverb.md) opcode.
 
 _kfblvl_ -- feedback level, in the range 0 to 1. 0.6 gives a good small "live" room sound, 0.8 a small hall, and 0.9 a large hall. A setting of exactly 1 means infinite length, while higher values will make the opcode unstable.
 
@@ -32,7 +32,7 @@ _kfco_ -- cutoff frequency of simple first order lowpass filters in the feedback
 
 ## Examples
 
-Here is an example of the _reverbsc_ opcode. It uses the file [reverbsc.csd](../../examples/reverbsc.csd).
+Here is an example of the _reverbsc_ opcode. It uses the file [reverbsc.csd](../examples/reverbsc.csd).
 
 ``` csound-csd title="An example of the reverbsc opcode." linenums="1"
 --8<-- "examples/reverbsc.csd"
@@ -40,7 +40,7 @@ Here is an example of the _reverbsc_ opcode. It uses the file [reverbsc.csd](../
 
 ## See also
 
-[Reverberation](../../sigmod/reverbtn)
+[Reverberation](../sigmod/reverbtn.md)
 
 ## Credits
 

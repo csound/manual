@@ -16,7 +16,7 @@ ar[] loscilx xamp, kcps, ifn \
 
 ### Initialization
 
-_ifn_ -- function table number, typically denoting an sampled sound segment with prescribed looping points loaded using [GEN01](../../scoregens/gen01). The source file may have up to 16 channels.
+_ifn_ -- function table number, typically denoting an sampled sound segment with prescribed looping points loaded using [GEN01](../scoregens/gen01.md). The source file may have up to 16 channels.
 
 _iwsize_ (optional) -- window size used in interpolation. iwsize (optional, defaults to zero) -- interpolation window size, in samples. Can be one of the following:
 
@@ -51,7 +51,7 @@ If you want to loop the whole file, specify a looping mode in _imod_ and do not 
 
 ## Examples
 
-Here is an example of the loscilx opcode. It uses the files [loscilx.csd](../../examples/loscilx.csd) and [drumsSlp.wav](../../examples/drumsSlp.wav).
+Here is an example of the loscilx opcode. It uses the files [loscilx.csd](../examples/loscilx.csd) and [drumsSlp.wav](../examples/drumsSlp.wav).
 
 ``` csound-csd title="Example of the loscilx opcode." linenums="1"
 --8<-- "examples/loscilx.csd"
@@ -59,7 +59,7 @@ Here is an example of the loscilx opcode. It uses the files [loscilx.csd](../../
 
 ## See also
 
-[Sample Playback](../../siggen/sample)
+[Sample Playback](../siggen/sample.md)
 
 ## Credits
 

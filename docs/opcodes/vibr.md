@@ -20,11 +20,11 @@ _kAverageAmp_ -- Average amplitude value of vibrato
 
 _kAverageFreq_ -- Average frequency value of vibrato (in cps)
 
-_vibr_ is an easier-to-use version of [vibrato](../../opcodes/vibrato). It has the same generation-engine of _vibrato_, but the parameters corresponding to missing input arguments are hard-coded to default values.
+_vibr_ is an easier-to-use version of [vibrato](../opcodes/vibrato.md). It has the same generation-engine of _vibrato_, but the parameters corresponding to missing input arguments are hard-coded to default values.
 
 ## Examples
 
-Here is an example of the vibr opcode. It uses the file [vibr.csd](../../examples/vibr.csd).
+Here is an example of the vibr opcode. It uses the file [vibr.csd](../examples/vibr.csd).
 
 ``` csound-orc title="Example of the vibr opcode." linenums="1"
 --8<-- "examples/vibr.csd"
@@ -32,7 +32,7 @@ Here is an example of the vibr opcode. It uses the file [vibr.csd](../../example
 
 ## See also
 
-[Basic Oscillators](../../siggen/basic)
+[Basic Oscillators](../siggen/basic.md)
 
 ## Credits
 

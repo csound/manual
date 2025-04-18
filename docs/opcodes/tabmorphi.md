@@ -27,13 +27,13 @@ _ktabnum1_ - the first table chosen for the morphing. This number doesn’t expr
 
 _ktabnum2_ - the second table chosen for the morphing. This number doesn’t express the table number directly, but the position of the table in the set sequence (starting from 0 to N-1). If this number is an integer, corresponding table will be chosen unaltered. If it contains fractional values, then an interpolation with the next adjacent table will result.
 
-The _tabmorphi_ family of opcodes is similar to the [table](../../opcodes/table) family, but allows morphing between two tables chosen into a set of tables. Firstly the user has to provide a set of tables of equal length (ifn2 [, ifn3, ifn4, ..., ifnN]). Then he can choose a pair of tables in the set in order to perform the morphing: _ktabnum1_ and _ktabnum2_ are filled with numbers (zero represents the first table in the set, 1 the second, 2 the third and so on). Then determine the morphing between the two chosen tables with the _kweightpoint_ parameter. After that the resulting table can be indexed with the _kindex_ parameter like a normal _table_ opcode. If the value of this parameter surpasses the length of tables (which must be the same for all tables), then it is wrapped around.
+The _tabmorphi_ family of opcodes is similar to the [table](../opcodes/table.md) family, but allows morphing between two tables chosen into a set of tables. Firstly the user has to provide a set of tables of equal length (ifn2 [, ifn3, ifn4, ..., ifnN]). Then he can choose a pair of tables in the set in order to perform the morphing: _ktabnum1_ and _ktabnum2_ are filled with numbers (zero represents the first table in the set, 1 the second, 2 the third and so on). Then determine the morphing between the two chosen tables with the _kweightpoint_ parameter. After that the resulting table can be indexed with the _kindex_ parameter like a normal _table_ opcode. If the value of this parameter surpasses the length of tables (which must be the same for all tables), then it is wrapped around.
 
-_tabmorphi_ is identical to [tabmorph](../../opcodes/tabmorph), but it performs linear interpolation for non-integer values of _kindex_, much like [tablei](../../opcodes/tablei).
+_tabmorphi_ is identical to [tabmorph](../opcodes/tabmorph.md), but it performs linear interpolation for non-integer values of _kindex_, much like [tablei](../opcodes/tablei.md).
 
 ## Examples
 
-Here is an example of the tabmorphi opcode. It uses the file [tabmorphi.csd](../../examples/tabmorphi.csd).
+Here is an example of the tabmorphi opcode. It uses the file [tabmorphi.csd](../examples/tabmorphi.csd).
 
 ``` csound-csd title="Example of the tabmorphi opcode." linenums="1"
 --8<-- "examples/tabmorphi.csd"
@@ -41,7 +41,7 @@ Here is an example of the tabmorphi opcode. It uses the file [tabmorphi.csd](../
 
 ## See also
 
-[Read/Write Operations](../../table/readwrit)
+[Read/Write Operations](../table/readwrit.md)
 
 ## Credits
 

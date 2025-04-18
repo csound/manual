@@ -27,7 +27,7 @@ _kdur_ -- Duration of the trigger in seconds.
 
 ## Examples
 
-Here is an example of the trighold opcode. It uses the file [trighold.csd](../../examples/trighold.csd).
+Here is an example of the trighold opcode. It uses the file [trighold.csd](../examples/trighold.csd).
 
 ``` csound-csd title="Example of the trighold opcode." linenums="1"
 --8<-- "examples/trighold.csd"
@@ -35,7 +35,7 @@ Here is an example of the trighold opcode. It uses the file [trighold.csd](../..
 
 ## See also
 
-[Sensing and Control: Tempo and Sequencing](../../control/sensing)
+[Sensing and Control: Tempo and Sequencing](../control/sensing.md)
 
 ## Credits
 

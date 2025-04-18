@@ -30,7 +30,7 @@ _imaxtracks_ -- maximum number of analysis tracks (number of bins >= imaxtracks)
 
 ## Examples
 
-Here is an example of the partials opcodes. It uses the file [partials.csd](../../examples/partials.csd).
+Here is an example of the partials opcodes. It uses the file [partials.csd](../examples/partials.csd).
 
 ``` csound-csd title="Example of the partials opcodes." linenums="1"
 --8<-- "examples/partials.csd"
@@ -40,7 +40,7 @@ The example above shows partial tracking of an ifd-analysis signal and cubic-pha
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

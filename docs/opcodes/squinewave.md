@@ -108,7 +108,7 @@ If _iphase_ &lt; 0 (skip) at first use, initial phase is set to 1.25, ie 0-cross
 
 ## Examples
 
-Here is an example of the _squinewave_ opcode. It uses the file [squinewave.csd](../../examples/squinewave.csd).
+Here is an example of the _squinewave_ opcode. It uses the file [squinewave.csd](../examples/squinewave.csd).
 
 ``` csound-orc title="Example of the squinewave opcode." linenums="1"
 --8<-- "examples/squinewave.csd"
@@ -116,7 +116,7 @@ Here is an example of the _squinewave_ opcode. It uses the file [squinewave.csd]
 
 ## See Also
 
-[Dynamic Spectrum Oscillators](../../siggen/dynamic)
+[Dynamic Spectrum Oscillators](../siggen/dynamic.md)
 
 ## Credits
 

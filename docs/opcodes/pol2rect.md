@@ -25,7 +25,7 @@ NB: the second version of the opcode with two inputs is designed to produce a "p
 
 ## Examples
 
-Here is an example of the pol2rect opcode. It uses the file [pol2rect.csd](../../examples/pol2rect.csd).
+Here is an example of the pol2rect opcode. It uses the file [pol2rect.csd](../examples/pol2rect.csd).
 
 ``` csound-csd title="Example of the pol2rect opcode." linenums="1"
 --8<-- "examples/pol2rect.csd"
@@ -33,8 +33,8 @@ Here is an example of the pol2rect opcode. It uses the file [pol2rect.csd](../..
 
 ## See Also
 
-[Vectorial opcodes](../../vectorial/top),
-[array opcodes](../../math/array)
+[Vectorial opcodes](../vectorial/top.md),
+[array opcodes](../math/array.md)
 
 ## Credits
 

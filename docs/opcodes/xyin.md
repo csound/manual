@@ -30,7 +30,7 @@ _xyin_ samples the cursor x-y position in an input window every _iprd_ seconds. 
 
 ## Examples
 
-Here is an example of the xyin opcode. It uses the file [xyin.csd](../../examples/xyin.csd).
+Here is an example of the xyin opcode. It uses the file [xyin.csd](../examples/xyin.csd).
 
 ``` csound-csd title="Example of the xyin opcode." linenums="1"
 --8<-- "examples/xyin.csd"
@@ -45,7 +45,7 @@ kx=10.765685, ky=15.644135
 
 ## See also
 
-[Sensing and Control: Keyboard and mouse sensing](../../control/sensing)
+[Sensing and Control: Keyboard and mouse sensing](../control/sensing.md)
 
 ## Credits
 

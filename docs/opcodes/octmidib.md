@@ -21,7 +21,7 @@ Get the note number of the current MIDI event, modify it by the current pitch-be
 
 ## Examples
 
-Here is an example of the octmidib opcode. It uses the file [octmidib.csd](../../examples/octmidib.csd).
+Here is an example of the octmidib opcode. It uses the file [octmidib.csd](../examples/octmidib.csd).
 
 ``` csound-csd title="Example of the octmidib opcode." linenums="1"
 --8<-- "examples/octmidib.csd"
@@ -29,7 +29,7 @@ Here is an example of the octmidib opcode. It uses the file [octmidib.csd](../..
 
 ## See also
 
-[Midi Converters](../../midi/convert)
+[Midi Converters](../midi/convert.md)
 
 ## Credits
 

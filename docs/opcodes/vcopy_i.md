@@ -24,7 +24,7 @@ _isrcoffset_ - index offset for source table
 
 ### Performance
 
-_vcopy_i_ copies _ielements_ elements from _ifn2_ (starting from position _isrcoffset_) to _ifn1_ (starting from position _idstoffset_). Useful to keep old vector values, by storing them in another table. This opcode is exactly the same as [vcopy](../../opcodes/vcopy) but performs all the copying on the intialization pass only.
+_vcopy_i_ copies _ielements_ elements from _ifn2_ (starting from position _isrcoffset_) to _ifn1_ (starting from position _idstoffset_). Useful to keep old vector values, by storing them in another table. This opcode is exactly the same as [vcopy](../opcodes/vcopy.md) but performs all the copying on the intialization pass only.
 
 Negative values for _idstoffset_ and _isrcoffset_ are acceptable. If _idstoffset_ is negative, the out of range section of the vector will be discarded. If _isrcoffset_ is negative, the out of range elements will be assumed to be 0 (i.e. the destination elements will be set to 0). If elements for the destination vector are beyond the size of the table (including guard point), these elements are discarded (i.e. elements do not wrap around the tables). If elements for the source vector are beyond the table length, these elements are taken as 0 (i.e. the destination vector elements will be 0).
 
@@ -32,15 +32,15 @@ Negative values for _idstoffset_ and _isrcoffset_ are acceptable. If _idstoffset
 >
 > Using the same table as source and destination table in versions earlier than 5.04, might produce unexpected behavior, so use with care.
 
-All these operators ([vaddv](../../opcodes/vaddv), [vsubv](../../opcodes/vsubv), [vmultv](../../opcodes/vmultv), [vdivv](../../opcodes/vdivv), [vpowv](../../opcodes/vpowv), [vexp](../../opcodes/vexp), [vcopy](../../opcodes/vcopy) and [vmap](../../opcodes/vmap)) are designed to be used together with other opcodes that operate with vectorial signals such as [vcella](../../opcodes/vcella), [adsynt](../../opcodes/adsynt), [adsynt2](../../opcodes/adsynt2) etc.
+All these operators ([vaddv](../opcodes/vaddv.md), [vsubv](../opcodes/vsubv.md), [vmultv](../opcodes/vmultv.md), [vdivv](../opcodes/vdivv.md), [vpowv](../opcodes/vpowv.md), [vexp](../opcodes/vexp.md), [vcopy](../opcodes/vcopy.md) and [vmap](../opcodes/vmap.md)) are designed to be used together with other opcodes that operate with vectorial signals such as [vcella](../opcodes/vcella.md), [adsynt](../opcodes/adsynt.md), [adsynt2](../opcodes/adsynt2.md) etc.
 
 ## Examples
 
-See [vcopy](../../opcodes/vcopy) for an example.
+See [vcopy](../opcodes/vcopy.md) for an example.
 
 ## See also
 
-[Operations Between two  Vectorial Signals](../../vectorial/vectorial)
+[Operations Between two  Vectorial Signals](../vectorial/vectorial.md)
 
 ## Credits
 

@@ -3,7 +3,7 @@ id:tableiw
 category:Deprecated
 -->
 # tableiw
-Deprecated as of version 3.49. Use the [tablew](../../opcodes/tablew) opcode instead.
+Deprecated as of version 3.49. Use the [tablew](../opcodes/tablew.md) opcode instead.
 
 ## Syntax
 ``` csound-orc
@@ -16,7 +16,7 @@ _isig_ -- Input value to write to the table.
 
 _indx_ -- Index into table, either a positive number range matching the table length (_ixmode_ = 0) or a 0 to 1 range (_ixmode_ not equal to 0)
 
-_ifn_ -- Table number. Must be &gt;= 1. Floats are rounded down to an integer. If a table number does not point to a valid table, or the table has not yet been loaded ([GEN01](../../scoregens/gen01)) then an error will result and the instrument will be de-activated.
+_ifn_ -- Table number. Must be &gt;= 1. Floats are rounded down to an integer. If a table number does not point to a valid table, or the table has not yet been loaded ([GEN01](../scoregens/gen01.md)) then an error will result and the instrument will be de-activated.
 
 _ixmode_ (optional, default=0) -- index mode.
 
@@ -60,7 +60,7 @@ Guardpoint mode is accomplished by adding 0.5 to the total index, rounding to th
 
 ## Examples
 
-Here is an example of the tableiw opcode. It uses the file [tableiw.csd](../../examples/tableiw.csd).
+Here is an example of the tableiw opcode. It uses the file [tableiw.csd](../examples/tableiw.csd).
 
 ``` csound-csd title="Example of the tableiw opcode." linenums="1"
 --8<-- "examples/tableiw.csd"
@@ -68,8 +68,8 @@ Here is an example of the tableiw opcode. It uses the file [tableiw.csd](../../e
 
 ## See Also
 
-[tablew](../../opcodes/tablew),
-[tablewkt](../../opcodes/tablewkt)
+[tablew](../opcodes/tablew.md),
+[tablewkt](../opcodes/tablewkt.md)
 
 More information on this opcode: [http://www.csoundjournal.com/issue12/genInstruments.html](http://www.csoundjournal.com/issue12/genInstruments.html)  , written by Jacob Joaquin
 

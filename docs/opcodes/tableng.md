@@ -21,11 +21,11 @@ _kfn_ -- Table number to be interrogated
 
 _tableng_ returns the length of the specified table. This will be a power of two number in most circumstances. It will not show whether a table has a guardpoint or not. It seems this information is not available in the table's data structure. If the specified table is not found, then 0 will be returned.
 
-Likely to be useful for setting up code for table manipulation operations, such as [tablemix](../../opcodes/tablemix) and [tablecopy](../../opcodes/tablecopy).
+Likely to be useful for setting up code for table manipulation operations, such as [tablemix](../opcodes/tablemix.md) and [tablecopy](../opcodes/tablecopy.md).
 
 ## Examples
 
-Here is an example of the tableng opcode. It uses the file [tableng.csd](../../examples/tableng.csd).
+Here is an example of the tableng opcode. It uses the file [tableng.csd](../examples/tableng.csd).
 
 ``` csound-csd title="Example of the tableng opcode." linenums="1"
 --8<-- "examples/tableng.csd"
@@ -39,7 +39,7 @@ instr 1:  isize = 115506.000
 
 ## See also
 
-[Table Control:Table Queries](../../table/queries)
+[Table Control:Table Queries](../table/queries.md)
 
 ## Credits
 

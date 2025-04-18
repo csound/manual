@@ -23,7 +23,7 @@ _karg[]1/2, karg2_ -- the operands
 
 ## Examples
 
-Here is an example of the fmax opcode. It uses the file [fmax.csd](../../examples/fmax.csd).
+Here is an example of the fmax opcode. It uses the file [fmax.csd](../examples/fmax.csd).
 
 ``` csound-csd title="Example of the fmax opcode." linenums="1"
 --8<-- "examples/fmax.csd"
@@ -31,7 +31,7 @@ Here is an example of the fmax opcode. It uses the file [fmax.csd](../../example
 
 ## See Also
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

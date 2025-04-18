@@ -15,7 +15,7 @@ ares pvinterp ktimpnt, kfmod, ifile, kfreqscale1, kfreqscale2, \
 
 ### Initialization
 
-_ifile_ -- the _pvoc_ number (n in pvoc.n) or the name in quotes of the analysis file made using pvanal. (See [pvoc](../../opcodes/pvoc).)
+_ifile_ -- the _pvoc_ number (n in pvoc.n) or the name in quotes of the analysis file made using pvanal. (See [pvoc](../opcodes/pvoc.md).)
 
 ### Performance
 
@@ -23,7 +23,7 @@ _ktimpnt_ -- the passage of time, in seconds, through this file. _ktimpnt_ must 
 
 _kfmod_ -- a control-rate transposition factor: a value of 1 incurs no transposition, 1.5 transposes up a perfect fifth, and .5 down an octave.
 
-_kfreqscale1_, _kfreqscale2_, _kampscale1_, _kampscale2_ -- used in _pvinterp_ to scale the frequencies and amplitudes stored in each frame of the phase vocoder analysis file. _kfreqscale1_ and _kampscale1_ scale the frequencies and amplitudes of the data from the file read by the previously called [pvbufread](../../opcodes/pvbufread) (this data is passed internally to the _pvinterp_ unit). _kfreqscale2_ and _kampscale2_ scale the frequencies and amplitudes of the file named by _ifile_ in the _pvinterp_ argument list and read within the _pvinterp_ unit.
+_kfreqscale1_, _kfreqscale2_, _kampscale1_, _kampscale2_ -- used in _pvinterp_ to scale the frequencies and amplitudes stored in each frame of the phase vocoder analysis file. _kfreqscale1_ and _kampscale1_ scale the frequencies and amplitudes of the data from the file read by the previously called [pvbufread](../opcodes/pvbufread.md) (this data is passed internally to the _pvinterp_ unit). _kfreqscale2_ and _kampscale2_ scale the frequencies and amplitudes of the file named by _ifile_ in the _pvinterp_ argument list and read within the _pvinterp_ unit.
 
 By using these arguments, it is possible to adjust these values before applying the interpolation. For example, if file1 is much louder than file2, it might be desirable to scale down the amplitudes of file1 or scale up those of file2 before interpolating. Likewise one can adjust the frequencies of each to bring them more in accord with one another (or just the opposite, of course!) before the interpolation is performed.
 
@@ -43,7 +43,7 @@ kinterp linseg    1, p3*0.15, 1, p3*0.35, 0, p3*0.25, 0, p3*0.15, 1, p3*0.1, 1
 apv     pvinterp  ktime2,1,"clar.pvoc", 1, 1.065, 1, 0.75, 1-kinterp, 1-kinterp
 ```
 
-Here is a complete example of the pvinterp opcode. It uses the file [pvinterp.csd](../../examples/pvinterp.csd)
+Here is a complete example of the pvinterp opcode. It uses the file [pvinterp.csd](../examples/pvinterp.csd)
 
 ``` csound-csd title="Example of the pvinterp opcode." linenums="1"
 --8<-- "examples/pvinterp.csd"
@@ -51,7 +51,7 @@ Here is a complete example of the pvinterp opcode. It uses the file [pvinterp.cs
 
 ## See Also
 
-[Short-time Fourier Transform (STFT) Resynthesis](../../spectral/stft)
+[Short-time Fourier Transform (STFT) Resynthesis](../spectral/stft.md)
 
 ## Credits
 

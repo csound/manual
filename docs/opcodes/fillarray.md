@@ -24,7 +24,7 @@ In the third form the vector is regenerated at k-rate with values _kval1,..., kv
 
 ## Examples
 
-Here is an example of the fillarray opcode. It uses the file [fillarray.csd](../../examples/fillarray.csd).
+Here is an example of the fillarray opcode. It uses the file [fillarray.csd](../examples/fillarray.csd).
 
 ``` csound-csd title="Example of the fillarray opcode." linenums="1"
 --8<-- "examples/fillarray.csd"
@@ -32,7 +32,7 @@ Here is an example of the fillarray opcode. It uses the file [fillarray.csd](../
 
 ## See also
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

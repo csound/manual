@@ -20,7 +20,7 @@ _asig_ -- input audio
 
 ## Examples
 
-Here is an example of the shiftin opcode. It uses the file [shiftin.csd](../../examples/shiftin.csd).
+Here is an example of the shiftin opcode. It uses the file [shiftin.csd](../examples/shiftin.csd).
 
 ``` csound-csd title="Example of the shiftin opcode." linenums="1"
 --8<-- "examples/shiftin.csd"
@@ -28,7 +28,7 @@ Here is an example of the shiftin opcode. It uses the file [shiftin.csd](../../e
 
 ## See Also
 
-[Vectorial opcodes](../../vectorial/top), [array opcodes](../../math/array)
+[Vectorial opcodes](../vectorial/top.md), [array opcodes](../math/array.md)
 
 ## Credits
 

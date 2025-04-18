@@ -2,9 +2,9 @@
 
 The opcodes for conditional values are:
 
-* [==](../../opcodes/equals)
-* [>=](../../opcodes/greaterequal)
-* [>](../../opcodes/greaterthan)
-* [<](../../opcodes/lessthan)
-* [<=](../../opcodes/lessequal)
-* [!=](../../opcodes/notequal)
+* [==](../opcodes/equals.md)
+* [>=](../opcodes/greaterequal.md)
+* [>](../opcodes/greaterthan.md)
+* [<](../opcodes/lessthan.md)
+* [<=](../opcodes/lessequal.md)
+* [!=](../opcodes/notequal.md)

@@ -14,7 +14,7 @@ where the argument within the parentheses may be an expression. Value converters
 
 ## Examples
 
-Here is an example of the a opcode. It uses the file [opa.csd](../../examples/opa.csd).
+Here is an example of the a opcode. It uses the file [opa.csd](../examples/opa.csd).
 
 ``` csound-csd title="Example of the a opcode." linenums="1"
 --8<-- "examples/opa.csd"
@@ -22,7 +22,7 @@ Here is an example of the a opcode. It uses the file [opa.csd](../../examples/op
 
 ## See also
 
-[Sample Level Operators](../../sigmod/sample)
+[Sample Level Operators](../sigmod/sample.md)
 
 More information on this opcode can be found in the [Csound Journal, issue 10](http://www.csounds.com/journal/issue10/CsoundRates.html), written by Andrés Cabrera.
 

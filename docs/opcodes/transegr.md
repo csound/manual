@@ -5,7 +5,7 @@ category:Signal Generators:Linear and Exponential Generators
 # transegr
 Constructs a user-definable envelope with extended release segment.
 
-It is the same as [transeg](../../opcodes/transeg), with an extended release segment.
+It is the same as [transeg](../opcodes/transeg.md), with an extended release segment.
 
 ## Syntax
 ``` csound-orc
@@ -31,13 +31,13 @@ ibeg + (ivalue - ibeg) * (1 - exp( i*itype/(n-1) )) / (1 - exp(itype))
 
 ### Performance
 
-If _itype_ &gt; 0, there is a slowly rising (concave) or slowly decaying (convex) curve, while if _itype_ &lt; 0, the curve is fast rising (convex) or fast decaying (concave). See also [GEN16](../../scoregens/gen16).
+If _itype_ &gt; 0, there is a slowly rising (concave) or slowly decaying (convex) curve, while if _itype_ &lt; 0, the curve is fast rising (convex) or fast decaying (concave). See also [GEN16](../scoregens/gen16.md).
 
-This opcode is the same as of [transeg](../../opcodes/transeg) with an additional release segment triggered by a MIDI noteoff event, a negative p1 [note event](../../scoregens/i) in the score or a [turnoff2](../../opcodes/turnoff2) opcode.
+This opcode is the same as of [transeg](../opcodes/transeg.md) with an additional release segment triggered by a MIDI noteoff event, a negative p1 [note event](../scoregens/i.md) in the score or a [turnoff2](../opcodes/turnoff2.md) opcode.
 
 ## Examples
 
-Here is an example of the transegr opcode. It uses the file [transegr.csd](../../examples/transegr.csd).
+Here is an example of the transegr opcode. It uses the file [transegr.csd](../examples/transegr.csd).
 
 ``` csound-orc title="Example of the transegr opcode." linenums="1"
 --8<-- "examples/transegr.csd"
@@ -45,7 +45,7 @@ Here is an example of the transegr opcode. It uses the file [transegr.csd](../..
 
 ## See also
 
-[Linear and Exponential Generators](../../siggen/lineexp)
+[Linear and Exponential Generators](../siggen/lineexp.md)
 
 ## Credits
 

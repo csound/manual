@@ -30,7 +30,7 @@ _avar_ - a-rate variable to read from
 
 ## Examples
 
-Here is an example of the vaget opcode. It uses the file [vaget.csd](../../examples/vaget.csd).
+Here is an example of the vaget opcode. It uses the file [vaget.csd](../examples/vaget.csd).
 
 ``` csound-csd title="Example of the vaget opcode." linenums="1"
 --8<-- "examples/vaget.csd"
@@ -38,7 +38,7 @@ Here is an example of the vaget opcode. It uses the file [vaget.csd](../../examp
 
 ## See also
 
-[Sample Level Operators](../../sigmod/sample)
+[Sample Level Operators](../sigmod/sample.md)
 
 ## Credits
 

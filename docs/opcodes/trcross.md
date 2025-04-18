@@ -28,7 +28,7 @@ _kmode_ -- mode of cross-synthesis. 0, multiplication of amplitudes (filtering),
 
 ## Examples
 
-Here is an example of the trcross opcode. It uses the file [trcross.csd](../../examples/trcross.csd).
+Here is an example of the trcross opcode. It uses the file [trcross.csd](../examples/trcross.csd).
 
 ``` csound-csd title="Example of the trcross opcode." linenums="1"
 --8<-- "examples/trcross.csd"
@@ -38,7 +38,7 @@ The example above shows partial tracking of two ifd-analysis signals, cross-synt
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

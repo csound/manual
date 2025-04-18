@@ -15,7 +15,7 @@ where the argument within the parentheses may be an expression. Value converters
 
 ## Examples
 
-Here is an example of the exp opcode. It uses the file [exp.csd](../../examples/exp.csd).
+Here is an example of the exp opcode. It uses the file [exp.csd](../examples/exp.csd).
 
 ``` csound-csd title="Example of the exp opcode." linenums="1"
 --8<-- "examples/exp.csd"
@@ -30,7 +30,7 @@ B  0.000 ..  1.000 T  1.000 TT  1.000 M:  0.00000  0.00000
 .........
 ```
 
-Here is another example of the exp opcode. It uses the file [exp-musical.csd](../../examples/exp-musical.csd).
+Here is another example of the exp opcode. It uses the file [exp-musical.csd](../examples/exp-musical.csd).
 
 ``` csound-csd title="Musical example of the exp opcode." linenums="1"
 --8<-- "examples/exp-musical.csd"
@@ -58,7 +58,7 @@ rtevent:     T  3.009 TT  3.009 M:  0.48096  0.48096
 
 ## See also
 
-[Mathematical Functions](../../math/mathfunc)
+[Mathematical Functions](../math/mathfunc.md)
 
 ## Credits
 New in version 4.21

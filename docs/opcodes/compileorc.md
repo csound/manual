@@ -20,7 +20,7 @@ _ires_ --  returns 0 if compilation was successful, or -1 if not.
 
 ## Examples
 
-Here is an example of the compileorc opcode. It uses the file [compileorc.csd](../../examples/compileorc.csd).
+Here is an example of the compileorc opcode. It uses the file [compileorc.csd](../examples/compileorc.csd).
 
 ``` csound-csd title="Example of the compileorc opcode." linenums="1"
 --8<-- "examples/compileorc.csd"
@@ -28,7 +28,7 @@ Here is an example of the compileorc opcode. It uses the file [compileorc.csd](.
 
 ## See also
 
-[Instrument Invocation](../../control/invocat)
+[Instrument Invocation](../control/invocat.md)
 
 ## Credits
 

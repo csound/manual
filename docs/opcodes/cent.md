@@ -22,7 +22,7 @@ The value returned by the _cent_ function is a factor. You can multiply a freque
 
 ## Examples
 
-Here is an example of the cent opcode. It uses the file [cent.csd](../../examples/cent.csd).
+Here is an example of the cent opcode. It uses the file [cent.csd](../examples/cent.csd).
 
 ``` csound-csd title="Example of the cent opcode." linenums="1"
 --8<-- "examples/cent.csd"
@@ -44,6 +44,6 @@ instr 2:  inew = 880.000
 
 ## See also
 
-[Pitch Converters: Functions](../../pitch/funcs)
+[Pitch Converters: Functions](../pitch/funcs.md)
 
 New in version 4.16

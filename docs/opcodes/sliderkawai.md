@@ -25,11 +25,11 @@ _ifn1 ... ifn16_ -- function table for conversion for each controller
 
 _k1 ... k16_ -- output values
 
-The opcode _sliderKawai_ is equivalent to [slider16](../../opcodes/slider16), but it has the controller and channel numbers (_ichan_ and _ictlnum_) hard-coded to make for quick compatiblity with the KAWAI MM-16 midi mixer. This device doesn't allow changing the midi message associated to each slider. It can only output on control 7 for each fader on a separate midi channel. This opcode is a quick way of assigning the mixer's 16 faders to k-rate variables in csound.
+The opcode _sliderKawai_ is equivalent to [slider16](../opcodes/slider16.md), but it has the controller and channel numbers (_ichan_ and _ictlnum_) hard-coded to make for quick compatiblity with the KAWAI MM-16 midi mixer. This device doesn't allow changing the midi message associated to each slider. It can only output on control 7 for each fader on a separate midi channel. This opcode is a quick way of assigning the mixer's 16 faders to k-rate variables in csound.
 
 ## See Also
 
-[Slider Banks](../../midi/sliderbk)
+[Slider Banks](../midi/sliderbk.md)
 
 ## Credits
 

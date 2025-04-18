@@ -2,21 +2,21 @@
 
 Opcodes used for the initialization of variables:
 
-* [init](../../opcodes/init)
-* [tival](../../opcodes/tival)
-* [=](../../opcodes/assign)
-* [passign](../../opcodes/passign)
-* [pset](../../opcodes/pset)
+* [init](../opcodes/init.md)
+* [tival](../opcodes/tival.md)
+* [=](../opcodes/assign.md)
+* [passign](../opcodes/passign.md)
+* [pset](../opcodes/pset.md)
 
 The opcodes that can generate another initialization pass are:
 
-* [reinit](../../opcodes/reinit)
-* [rigoto](../../opcodes/rigoto)
-* [rireturn](../../opcodes/rireturn)
+* [reinit](../opcodes/reinit.md)
+* [rigoto](../opcodes/rigoto.md)
+* [rireturn](../opcodes/rireturn.md)
 
-The opcode [p](../../opcodes/p) can be used to find score p-fields at i- or k-rate.
+The opcode [p](../opcodes/p.md) can be used to find score p-fields at i- or k-rate.
 
-[nstrnum](../../opcodes/nstrnum) returns the instrument number for a named instrument.
+[nstrnum](../opcodes/nstrnum.md) returns the instrument number for a named instrument.
 
 > :memo: **Note**
 >

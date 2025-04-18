@@ -163,7 +163,7 @@ e
 
 A Complete Example
 
-Here is a simple example of the _csbeats_ score generator. It uses the file [csbeats.csd](../../examples/csbeats.csd).
+Here is a simple example of the _csbeats_ score generator. It uses the file [csbeats.csd](examples/csbeats.csd).
 
 ``` csound-csd title="A simple example of csbeats." linenums="1"
 --8<-- "examples/csbeats.csd"

@@ -28,17 +28,17 @@ Creates a counter object which loops between _imin_ and _imax_ in steps of _inc_
 
 ## Examples
 
-Here is an example of the cndCreate opcode. It uses the file [counter.csd](../../examples/counter.csd).
+Here is an example of the cndCreate opcode. It uses the file [counter.csd](../examples/counter.csd).
 
 ``` csound-csd title="Example of the cntCreate opcode." linenums="1"
 --8<-- "examples/counter.csd"
 ```
 
-A musical example featuring the cntCreate opcode: [NervousHappyBirthday_Cucchi.csd](../../examples/musical/NervousHappyBirthday_Cucchi.csd) by Stefano Cucchi.
+A musical example featuring the cntCreate opcode: [NervousHappyBirthday_Cucchi.csd](../examples/musical/NervousHappyBirthday_Cucchi.csd) by Stefano Cucchi.
 
 ## See also
 
-[Program Flow Control: Counter](../../control/pgmctl)
+[Program Flow Control: Counter](../control/pgmctl.md)
 
 ## Credits
 

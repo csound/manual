@@ -28,11 +28,11 @@ _ftload_ loads a list of tables from a file. (The tables have to be already allo
 
 ## Examples
 
-See the example for [ftsave](../../opcodes/ftsave).
+See the example for [ftsave](../opcodes/ftsave.md).
 
 ## See also
 
-[Read/Write Operations](../../table/readwrit)
+[Read/Write Operations](../table/readwrit.md)
 
 ## Credits
 

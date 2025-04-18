@@ -14,7 +14,7 @@ Sdst strcpyk Ssrc
 
 ## Examples
 
-Here is an example of the strcpyk opcode. It uses the file [strcpyk.csd](../../examples/strcpyk.csd).
+Here is an example of the strcpyk opcode. It uses the file [strcpyk.csd](../examples/strcpyk.csd).
 
 ``` csound-csd title="Example of the strcpyk opcode." linenums="1"
 --8<-- "examples/strcpyk.csd"
@@ -22,7 +22,7 @@ Here is an example of the strcpyk opcode. It uses the file [strcpyk.csd](../../e
 
 ## See Also
 
-[String Manipulation Opcodes](../../strings/manipulate)
+[String Manipulation Opcodes](../strings/manipulate.md)
 
 ## Credits
 

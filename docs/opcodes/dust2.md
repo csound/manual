@@ -19,7 +19,7 @@ _kdensity_ -- average number of impulses per second.
 
 ## Examples
 
-Here is an example of the dust2 opcode. It uses the file [dust2.csd](../../examples/dust2.csd).
+Here is an example of the dust2 opcode. It uses the file [dust2.csd](../examples/dust2.csd).
 
 ``` csound-orc title="Example of the dust2 opcode." linenums="1"
 --8<-- "examples/dust2.csd"
@@ -27,7 +27,7 @@ Here is an example of the dust2 opcode. It uses the file [dust2.csd](../../examp
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
 ## Credits
 

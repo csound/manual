@@ -39,7 +39,7 @@ This opcode is part of a suite of streaming linear prediction opcodes. It takes 
 ## Examples
 
 Here is an example of the resonbnk opcode using an audio input
-signal as lpc source. It uses the file [resonbnk.csd](../../examples/resonbnk.csd).
+signal as lpc source. It uses the file [resonbnk.csd](../examples/resonbnk.csd).
 
 ``` csound-csd title="Example of the resonbnk opcode." linenums="1"
 --8<-- "examples/resonbnk.csd"
@@ -47,4 +47,4 @@ signal as lpc source. It uses the file [resonbnk.csd](../../examples/resonbnk.cs
 
 ## See also
 
-[Streaming Linear Predictive Coding (SLPC) Resynthesis](../../spectral/lpcresyn)
+[Streaming Linear Predictive Coding (SLPC) Resynthesis](../spectral/lpcresyn.md)

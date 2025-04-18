@@ -22,7 +22,7 @@ _ifn1, ifn2, ..._ -- Numbers of tables to load.
 
 _ktrig_ -- The trigger signal. Load the file each time it is non-zero.
 
-_ftloadk_ loads a list of tables from a file. (The tables have to be already allocated though.) The file's format can be binary or text. Unlike [ftload](../../opcodes/ftload), the loading operation can be repeated numerous times within the same note by using a trigger signal.
+_ftloadk_ loads a list of tables from a file. (The tables have to be already allocated though.) The file's format can be binary or text. Unlike [ftload](../opcodes/ftload.md), the loading operation can be repeated numerous times within the same note by using a trigger signal.
 
 > :warning: **Warning**
 >
@@ -30,7 +30,7 @@ _ftloadk_ loads a list of tables from a file. (The tables have to be already all
 
 ## See also
 
-[Read/Write Operations](../../table/readwrit)
+[Read/Write Operations](../table/readwrit.md)
 
 ## Credits
 

@@ -20,7 +20,7 @@ _zkr_ reads the array of floats at _kndx_ in zk space.
 
 ## Examples
 
-Here is an example of the zkr opcode. It uses the file [zkr.csd](../../examples/zkr.csd).
+Here is an example of the zkr opcode. It uses the file [zkr.csd](../examples/zkr.csd).
 
 ``` csound-csd title="Example of the zkr opcode." linenums="1"
 --8<-- "examples/zkr.csd"
@@ -28,7 +28,7 @@ Here is an example of the zkr opcode. It uses the file [zkr.csd](../../examples/
 
 ## See also
 
-[Zak Patch System](../../zak/top)
+[Zak Patch System](../zak/top.md)
 
 ## Credits
 

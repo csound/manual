@@ -22,11 +22,11 @@ _ksig_ -- the input signal at control-rate.
 
 _khtim_ -- half-time of the function in seconds.
 
-_portk_ is like [port](../../opcodes/port) except the half-time can be varied at the control rate.
+_portk_ is like [port](../opcodes/port.md) except the half-time can be varied at the control rate.
 
 ## Examples
 
-Here is an example of the portk opcode. It uses the file [portk.csd](../../examples/portk.csd).
+Here is an example of the portk opcode. It uses the file [portk.csd](../examples/portk.csd).
 
 ``` csound-csd title="Example of the portk opcode." linenums="1"
 --8<-- "examples/portk.csd"
@@ -34,7 +34,7 @@ Here is an example of the portk opcode. It uses the file [portk.csd](../../examp
 
 ## See also
 
-[Standard Filters: Control signal filters](../../sigmod/standard)
+[Standard Filters: Control signal filters](../sigmod/standard.md)
 
 ## Credits
 

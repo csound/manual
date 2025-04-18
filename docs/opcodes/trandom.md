@@ -18,11 +18,11 @@ _kmin_ -- minimum range limit
 
 _kmax_ -- maximum range limit
 
-_trandom_ is almost identical to [random](../../opcodes/random) opcode, except _trandom_ updates its output with a new random value only when the _ktrig_ argument is triggered (i.e. whenever it is not zero).
+_trandom_ is almost identical to [random](../opcodes/random.md) opcode, except _trandom_ updates its output with a new random value only when the _ktrig_ argument is triggered (i.e. whenever it is not zero).
 
 ## Examples
 
-Here is an example of the trandom opcode. It uses the file [trandom.csd](../../examples/trandom.csd).
+Here is an example of the trandom opcode. It uses the file [trandom.csd](../examples/trandom.csd).
 
 ``` csound-orc title="Example of the trandom opcode." linenums="1"
 --8<-- "examples/trandom.csd"
@@ -30,7 +30,7 @@ Here is an example of the trandom opcode. It uses the file [trandom.csd](../../e
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
 ## Credits
 

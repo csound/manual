@@ -26,13 +26,13 @@ _ipresetnum_ -- number of the preset to assign
 
 ## Examples
 
-Here is an example of the fluidProgramSelect opcode. It uses the file [fluidProgramSelect.csd](../../examples/fluidProgramSelect.csd).
+Here is an example of the fluidProgramSelect opcode. It uses the file [fluidProgramSelect.csd](../examples/fluidProgramSelect.csd).
 
 ``` csound-csd title="Example of the fluidProgramSelect opcode." linenums="1"
 --8<-- "examples/fluidProgramSelect.csd"
 ```
 
-Here is another more complex example of the fluidsynth opcodes written by Istvan Varga. It uses the file [fluidcomplex.csd](../../examples/fluidcomplex.csd).
+Here is another more complex example of the fluidsynth opcodes written by Istvan Varga. It uses the file [fluidcomplex.csd](../examples/fluidcomplex.csd).
 
 ``` csound-csd title="Another more complex example of the fluidsynth opcodes." linenums="1"
 --8<-- "examples/fluidcomplex.csd"
@@ -40,7 +40,7 @@ Here is another more complex example of the fluidsynth opcodes written by Istvan
 
 ## See also
 
-[Soundfonts](../../siggen/sample)
+[Soundfonts](../siggen/sample.md)
 
 More information on soundfonts is in the Floss Manuals: [https://flossmanual.csound.com/midi/reading-midi-files](https://flossmanual.csound.com/midi/reading-midi-files)
 

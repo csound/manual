@@ -71,17 +71,17 @@ The imodscale ftable may be specified in the score like this:
 f1  0  8  -2  200 0 2 50 300 -1.5
 ```
 
-Or more conveniently using [ftgen](../../opcodes/ftgen) in the orchestra:
+Or more conveniently using [ftgen](../opcodes/ftgen.md) in the orchestra:
 
 ``` csound-orc
 gimodscale ftgen 0, 0, 8, -2, 200, 0, 2, 50, 300, -1.5
 ```
 
-Obviously, the parameter and modulator variables need not be static values, and similarly, the scaling routing coefficient table may be continuously rewritten using opcodes like [tablew](../../opcodes/tablew).
+Obviously, the parameter and modulator variables need not be static values, and similarly, the scaling routing coefficient table may be continuously rewritten using opcodes like [tablew](../opcodes/tablew.md).
 
 ## Examples
 
-Here is an example of the modmatrix opcode. It uses the file [modmatrix.csd](../../examples/modmatrix.csd).
+Here is an example of the modmatrix opcode. It uses the file [modmatrix.csd](../examples/modmatrix.csd).
 
 ``` csound-csd title="Example of the modmatrix opcode." linenums="1"
 --8<-- "examples/modmatrix.csd"
@@ -89,7 +89,7 @@ Here is an example of the modmatrix opcode. It uses the file [modmatrix.csd](../
 
 ## See also
 
-[Miscellaneous opcodes](../../miscopcodes)
+[Miscellaneous opcodes](../miscopcodes.md)
 
 ## Credits
 

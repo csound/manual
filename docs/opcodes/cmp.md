@@ -59,7 +59,7 @@ kOut[] cmp kA, ">=", kb   ; kA is an array
 
 ## Examples
 
-Here is an example of the cmp opcode. It uses the file [cmp.csd](../../examples/cmp.csd).
+Here is an example of the cmp opcode. It uses the file [cmp.csd](../examples/cmp.csd).
 
 ``` csound-csd title="Example of the cmp opcode." linenums="1"
 --8<-- "examples/cmp.csd"
@@ -67,11 +67,11 @@ Here is an example of the cmp opcode. It uses the file [cmp.csd](../../examples/
 
 ## See also
 
-[Arithmetic and Logic Operations](../../math/artlogic)
+[Arithmetic and Logic Operations](../math/artlogic.md)
 
-[Comparators and Accumulators](../../sigmod/compaccum)
+[Comparators and Accumulators](../sigmod/compaccum.md)
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

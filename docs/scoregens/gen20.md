@@ -70,9 +70,9 @@ f   1   0   1024   20    9   1   3
 
 This creates a function that contains a Sinc window with a maximum value of 1.  The extra argument specifies the range of the function as multiple of &#960;.  The default value is 1.
 
-For all diagrams, see [Window Functions](../../misc/windows)
+For all diagrams, see [Window Functions](../misc/windows.md)
 
-Here is an example of the GEN20 routine. It uses the file [gen20.csd](../../examples/gen20.csd).
+Here is an example of the GEN20 routine. It uses the file [gen20.csd](../examples/gen20.csd).
 
 ``` csound-csd title="Example of the GEN20 routine." linenums="1"
 --8<-- "examples/gen20.csd"
@@ -81,12 +81,12 @@ Here is an example of the GEN20 routine. It uses the file [gen20.csd](../../exam
 These are the diagrams of the waveforms of the GEN20 routines, as used in the example:
 
 <figure markdown="span">
-![  f 1  0 512 20 2 - Hanning window](../../images/gen20_1.png)
+![  f 1  0 512 20 2 - Hanning window](../images/gen20_1.png)
 <figcaption>  f 1  0 512 20 2 - Hanning window</figcaption>
 </figure>
 
 <figure markdown="span">
-![  f 2  0 512 20 6 1 - Gaussian window](../../images/gen20_2.png)
+![  f 2  0 512 20 6 1 - Gaussian window](../images/gen20_2.png)
 <figcaption>  f 2  0 512 20 6 1 - Gaussian window</figcaption>
 </figure>
 

@@ -19,7 +19,7 @@ _kchan_ -- a positive integer that indicates which channel of the software bus t
 
 Note that the inward and outward software busses are independent, and are not mixer buses.  Also the k-rate and a-rate busses are independent.  The last value remains until a new value is written.  There is no imposed limit to the number of busses but they use memory so small numbers are to be preferred.
 
-Example
+## Examples
 
 The example shows the software bus being used as an output audio channel. It assumes that an external program that has access to the API is receiving the values.
 
@@ -36,7 +36,7 @@ endin
 
 ## See also
 
-[Software Bus](../../sigio/softbus)
+[Software Bus](../sigio/softbus.md)
 
 ## Credits
 

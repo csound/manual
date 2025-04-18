@@ -23,7 +23,7 @@ _karg[]1/2, karg2_ -- the operands
 
 ## Examples
 
-Here is an example of the fmod opcode. It uses the file [fmod.csd](../../examples/fmod.csd).
+Here is an example of the fmod opcode. It uses the file [fmod.csd](../examples/fmod.csd).
 
 ``` csound-csd title="Example of the fmod opcode." linenums="1"
 --8<-- "examples/fmod.csd"
@@ -31,7 +31,7 @@ Here is an example of the fmod opcode. It uses the file [fmod.csd](../../example
 
 ## See Also
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

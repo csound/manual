@@ -13,7 +13,7 @@ event "scorechar", "insname", kdelay, kdur, [, kp4] [, kp5] [, ...]
 
 ### Initialization
 
-_&#8220;scorechar&#8221;_ -- A string (in double-quotes) representing the first p-field in a score statement. This is usually [&#8220;e&#8221;](../../scoregens/e), [&#8220;f&#8221;](../../scoregens/f), or [&#8220;i&#8221;](../../scoregens/i).
+_&#8220;scorechar&#8221;_ -- A string (in double-quotes) representing the first p-field in a score statement. This is usually [&#8220;e&#8221;](../scoregens/e.md), [&#8220;f&#8221;](../scoregens/f.md), or [&#8220;i&#8221;](../scoregens/i.md).
 
 _&#8220;insname&#8221;_ -- A string (in double-quotes) representing a named instrument.
 
@@ -29,17 +29,17 @@ _kp4, kp5, ..._ (optional) -- Parameters representing additional p-field in a sc
 
 > :memo: **Note**
 >
-> Note that the _event_ opcode cannot accept string p-fields. If you need to pass strings when instantiating an instrument, use the [scoreline](../../opcodes/scoreline) or [scoreline_i](../../opcodes/scoreline_i) opcode.
+> Note that the _event_ opcode cannot accept string p-fields. If you need to pass strings when instantiating an instrument, use the [scoreline](../opcodes/scoreline.md) or [scoreline_i](../opcodes/scoreline_i.md) opcode.
 
 ## Examples
 
-Here is an example of the event opcode. It uses the file [event.csd](../../examples/event.csd).
+Here is an example of the event opcode. It uses the file [event.csd](../examples/event.csd).
 
 ``` csound-csd title="Example of the event opcode." linenums="1"
 --8<-- "examples/event.csd"
 ```
 
-Here is an example of the event opcode using a named instrument. It uses the file [event_named.csd](../../examples/event_named.csd).
+Here is an example of the event opcode using a named instrument. It uses the file [event_named.csd](../examples/event_named.csd).
 
 ``` csound-csd title="Example of the event opcode using a named instrument." linenums="1"
 --8<-- "examples/event_named.csd"
@@ -47,7 +47,7 @@ Here is an example of the event opcode using a named instrument. It uses the fil
 
 ## See also
 
-[Instrument Invocation](../../control/invocat)
+[Instrument Invocation](../control/invocat.md)
 
 ## Credits
 

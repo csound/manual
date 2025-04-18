@@ -5,7 +5,7 @@ category:
 # GEN21
 Generates tables of different random distributions.
 
-(See also [betarand](../../opcodes/betarand), [bexprnd](../../opcodes/bexprnd), [cauchy](../../opcodes/cauchy), [exprand](../../opcodes/exprand), [gauss](../../opcodes/gauss), [linrand](../../opcodes/linrand), [pcauchy](../../opcodes/pcauchy), [poisson](../../opcodes/poisson), [trirand](../../opcodes/trirand), [unirand](../../opcodes/unirand), and [weibull](../../opcodes/weibull))
+(See also [betarand](../opcodes/betarand.md), [bexprnd](../opcodes/bexprnd.md), [cauchy](../opcodes/cauchy.md), [exprand](../opcodes/exprand.md), [gauss](../opcodes/gauss.md), [linrand](../opcodes/linrand.md), [pcauchy](../opcodes/pcauchy.md), [poisson](../opcodes/poisson.md), [trirand](../opcodes/trirand.md), [unirand](../opcodes/unirand.md), and [weibull](../opcodes/weibull.md))
 
 ## Syntax
 ``` csound-orc
@@ -44,7 +44,7 @@ f1 0 1024 21 10 1 2  ; Weibull
 
 All of the above additions were designed by the author between May and December 1994, under the supervision of Dr. Richard Boulanger.
 
-Here is a complete example of the GEN21 routine. It uses the file [gen21.csd](../../examples/gen21.csd).
+Here is a complete example of the GEN21 routine. It uses the file [gen21.csd](../examples/gen21.csd).
 
 ``` csound-csd title="Example of the GEN21 routine." linenums="1"
 --8<-- "examples/gen21.csd"
@@ -53,27 +53,27 @@ Here is a complete example of the GEN21 routine. It uses the file [gen21.csd](..
 These are the diagrams of the waveforms of the GEN21 routines, as used in the example:
 
 <figure markdown="span">
-![f 1 0 32 21 1 - positive numbers only](../../images/gen21_1.png)
+![f 1 0 32 21 1 - positive numbers only](../images/gen21_1.png)
 <figcaption>f 1 0 32 21 1 - positive numbers only</figcaption>
 </figure>
 
 <figure markdown="span">
-![f 2 0 32 21 6](../../images/gen21_2.png)
+![f 2 0 32 21 6](../images/gen21_2.png)
 <figcaption>f 2 0 32 21 6</figcaption>
 </figure>
 
 <figure markdown="span">
-![f 3 0 32 21 6 5.745](../../images/gen21_3.png)
+![f 3 0 32 21 6 5.745](../images/gen21_3.png)
 <figcaption>f 3 0 32 21 6 5.745</figcaption>
 </figure>
 
 <figure markdown="span">
-![f 4 0 32 21 9 1 1 2 - positive numbers only](../../images/gen21_4.png)
+![f 4 0 32 21 9 1 1 2 - positive numbers only](../images/gen21_4.png)
 <figcaption>f 4 0 32 21 9 1 1 2 - positive numbers only</figcaption>
 </figure>
 
 <figure markdown="span">
-![f 5 0 32 21 10 1 2 - positive numbers only](../../images/gen21_5.png)
+![f 5 0 32 21 10 1 2 - positive numbers only](../images/gen21_5.png)
 <figcaption>f 5 0 32 21 10 1 2 - positive numbers only</figcaption>
 </figure>
 

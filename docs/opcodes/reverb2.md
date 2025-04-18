@@ -3,7 +3,7 @@ id:reverb2
 category:Signal Modifiers:Reverberation
 -->
 # reverb2
-Same as the [nreverb](../../opcodes/nreverb) opcode.
+Same as the [nreverb](../opcodes/nreverb.md) opcode.
 
 ## Syntax
 ``` csound-orc

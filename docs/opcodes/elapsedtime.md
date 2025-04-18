@@ -21,11 +21,11 @@ _elapsedtime_ can also operate at the start of the instance of the instrument. I
 
 > :memo: **Note**
 >
-> _elapsedtime_ acts like [times](../../opcodes/times) but it returns the correct values instead of being one cycle late.
+> _elapsedtime_ acts like [times](../opcodes/times.md) but it returns the correct values instead of being one cycle late.
 
 ## See also
 
-[Time Reading](../../control/timeread)
+[Time Reading](../control/timeread.md)
 
 ## Credits
 

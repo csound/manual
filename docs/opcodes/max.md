@@ -24,7 +24,7 @@ _iin1, iin2, ..._ --  i-rate signals to be compared.
 
 ## Examples
 
-Here is an example of the max opcode. It uses the file [max.csd](../../examples/max.csd).
+Here is an example of the max opcode. It uses the file [max.csd](../examples/max.csd).
 
 ``` csound-csd title="Example of the max opcode." linenums="1"
 --8<-- "examples/max.csd"
@@ -32,7 +32,7 @@ Here is an example of the max opcode. It uses the file [max.csd](../../examples/
 
 ## See also
 
-[Comparators and Accumulators](../../sigmod/compaccum)
+[Comparators and Accumulators](../sigmod/compaccum.md)
 
 ## Credits
 

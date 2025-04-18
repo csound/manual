@@ -12,7 +12,7 @@ rewindscore
 
 ## Examples
 
-Here is an example of the _rewindscore_ opcode. It uses the file [rewindscore.csd](../../examples/rewindscore.csd).
+Here is an example of the _rewindscore_ opcode. It uses the file [rewindscore.csd](../examples/rewindscore.csd).
 
 ``` csound-csd title="An example of the rewindscore opcode." linenums="1"
 --8<-- "examples/rewindscore.csd"
@@ -20,7 +20,7 @@ Here is an example of the _rewindscore_ opcode. It uses the file [rewindscore.cs
 
 ## See also
 
-[Sensing and Control: Score control](../../control/sensing)
+[Sensing and Control: Score control](../control/sensing.md)
 
 ## Credits
 

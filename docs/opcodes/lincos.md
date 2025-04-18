@@ -34,7 +34,7 @@ y  = y0 + ((y1 - y0) * (1 + cos(dx)) / 2.0);
 
 ## Examples
 
-Here is an example of the lincos opcode. It uses the file [lincos.csd](../../examples/lincos.csd).
+Here is an example of the lincos opcode. It uses the file [lincos.csd](../examples/lincos.csd).
 
 ``` csound-orc title="Example of the lincos opcode." linenums="1"
 --8<-- "examples/lincos.csd"
@@ -42,7 +42,7 @@ Here is an example of the lincos opcode. It uses the file [lincos.csd](../../exa
 
 ## See also
 
-[Linear and Exponential Generators](../../siggen/lineexp)
+[Linear and Exponential Generators](../siggen/lineexp.md)
 
 ## Credits
 

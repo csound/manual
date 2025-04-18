@@ -43,7 +43,7 @@ _kamp_ -- Amplitude of output.  Note: As these instruments are stochastic, this 
 
 ## Examples
 
-Here is an example of the bamboo opcode. It uses the file [bamboo.csd](../../examples/bamboo.csd).
+Here is an example of the bamboo opcode. It uses the file [bamboo.csd](../examples/bamboo.csd).
 
 ``` csound-orc title="Example of the bamboo opcode." linenums="1"
 --8<-- "examples/bamboo.csd"
@@ -51,7 +51,7 @@ Here is an example of the bamboo opcode. It uses the file [bamboo.csd](../../exa
 
 ## See Also
 
-[Models and Emulations](../../siggen/models)
+[Models and Emulations](../siggen/models.md)
 
 ## Credits
 

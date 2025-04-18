@@ -26,7 +26,7 @@ _lowpass2_ is a second order IIR lowpass filter, with k-rate controls for cutoff
 
 ## Examples
 
-Here is an example of the lowpass2 opcode. It uses the file [lowpass2.csd](../../examples/lowpass2.csd).
+Here is an example of the lowpass2 opcode. It uses the file [lowpass2.csd](../examples/lowpass2.csd).
 
 ``` csound-csd title="Example of the lowpass2 opcode." linenums="1"
 --8<-- "examples/lowpass2.csd"
@@ -34,7 +34,7 @@ Here is an example of the lowpass2 opcode. It uses the file [lowpass2.csd](../..
 
 ## See also
 
-[Standard Filters: Resonant Low-pass filters](../../sigmod/standard)
+[Standard Filters: Resonant Low-pass filters](../sigmod/standard.md)
 
 ## Credits
 

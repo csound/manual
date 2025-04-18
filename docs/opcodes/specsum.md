@@ -36,4 +36,4 @@ contin:
 
 ## See Also
 
-[specdisp](../../opcodes/specdisp)
+[specdisp](../opcodes/specdisp.md)

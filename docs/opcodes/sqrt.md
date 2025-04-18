@@ -5,7 +5,7 @@ category:Mathematical Operations:Mathematical Functions
 # sqrt
 Returns the square root of _x_ (_x_ non-negative).
 
-The argument value is restricted for [log](../../opcodes/log), [log10](../../opcodes/log10), and _sqrt_.
+The argument value is restricted for [log](../opcodes/log.md), [log10](../opcodes/log10.md), and _sqrt_.
 
 ## Syntax
 ``` csound-orc
@@ -17,7 +17,7 @@ where the argument within the parentheses may be an expression. Value converters
 
 ## Examples
 
-Here is an example of the sqrt opcode. It uses the file [sqrt.csd](../../examples/sqrt.csd).
+Here is an example of the sqrt opcode. It uses the file [sqrt.csd](../examples/sqrt.csd).
 
 ``` csound-csd title="Example of the sqrt opcode." linenums="1"
 --8<-- "examples/sqrt.csd"
@@ -40,4 +40,4 @@ square root of left channel = 0.316242
 
 ## See also
 
-[Mathematical Functions](../../math/mathfunc)
+[Mathematical Functions](../math/mathfunc.md)

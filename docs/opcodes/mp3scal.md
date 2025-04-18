@@ -44,7 +44,7 @@ _asig_, _asig2_ -- stereo output signals
 
 ## Examples
 
-Here is an example of the mp3scal opcode. It uses the file [mp3scal.csd](../../examples/mp3scal.csd).
+Here is an example of the mp3scal opcode. It uses the file [mp3scal.csd](../examples/mp3scal.csd).
 
 ``` csound-csd title="Example of the mp3scal opcode." linenums="1"
 --8<-- "examples/mp3scal.csd"
@@ -52,7 +52,7 @@ Here is an example of the mp3scal opcode. It uses the file [mp3scal.csd](../../e
 
 ## See Also
 
-[Short-time Fourier Transform (STFT) Resynthesis](../../spectral/stft)
+[Short-time Fourier Transform (STFT) Resynthesis](../spectral/stft.md)
 
 ## Credits
 

@@ -2,11 +2,11 @@
 
 The opcodes that convolve and morph signals are:
 
-* [convolve](../../opcodes/convolve) also called [convle](../../opcodes/convle)
-* [cross2](../../opcodes/cross2)
-* [dconv](../../opcodes/dconv)
-* [ftconv](../../opcodes/ftconv)
-* [ftmorf](../../opcodes/ftmorf)
-* [liveconv](../../opcodes/liveconv)
-* [pconvolve](../../opcodes/pconvolve)
-* [tvconv](../../opcodes/tvconv)
+* [convolve](../opcodes/convolve.md) also called [convle](../opcodes/convle.md)
+* [cross2](../opcodes/cross2.md)
+* [dconv](../opcodes/dconv.md)
+* [ftconv](../opcodes/ftconv.md)
+* [ftmorf](../opcodes/ftmorf.md)
+* [liveconv](../opcodes/liveconv.md)
+* [pconvolve](../opcodes/pconvolve.md)
+* [tvconv](../opcodes/tvconv.md)

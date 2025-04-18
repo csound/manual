@@ -20,7 +20,7 @@ As long as the indicated instrument is not active, _remove_ deletes the instrume
 
 ## See also
 
-[Instrument Invocation](../../control/invocat)
+[Instrument Invocation](../control/invocat.md)
 
 ## Credits
 

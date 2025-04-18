@@ -29,7 +29,7 @@ _kstep_ -- the increment to use between modified indexes. Defaults to 1, which m
 
 ## Examples
 
-Here is an example of the ftset opcode. It uses the file [ftset.csd](../../examples/ftset.csd).
+Here is an example of the ftset opcode. It uses the file [ftset.csd](../examples/ftset.csd).
 
 ``` csound-csd title="Example of the ftset opcode." linenums="1"
 --8<-- "examples/ftset.csd"
@@ -37,7 +37,7 @@ Here is an example of the ftset opcode. It uses the file [ftset.csd](../../examp
 
 ## See also
 
-[Read/Write Operations](../../table/readwrit)
+[Read/Write Operations](../table/readwrit.md)
 
 ## Credits
 

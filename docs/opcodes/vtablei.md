@@ -36,11 +36,11 @@ Notice that no wrap nor limit mode is implemented.  So, if  an index attempt to 
 
 > :memo: **Note**
 >
-> Notice that _vtablei_'s output arguments are placed at the right of the opcode name, differently from usual (this style is already used in other opcodes using undefined lists of output arguments such as [fin](../../opcodes/fin) or [trigseq](../../opcodes/trigseq)).
+> Notice that _vtablei_'s output arguments are placed at the right of the opcode name, differently from usual (this style is already used in other opcodes using undefined lists of output arguments such as [fin](../opcodes/fin.md) or [trigseq](../opcodes/trigseq.md)).
 
 ## Examples
 
-Here is an example of the vtablei opcode. It uses the files [vtablei.csd](../../examples/vtablei.csd)
+Here is an example of the vtablei opcode. It uses the files [vtablei.csd](../examples/vtablei.csd)
 
 ``` csound-csd title="Example of the vtablei opcode." linenums="1"
 --8<-- "examples/vtablei.csd"
@@ -48,7 +48,7 @@ Here is an example of the vtablei opcode. It uses the files [vtablei.csd](../../
 
 ## See also
 
-[Tables of vectors operators](../../vectorial/tables)
+[Tables of vectors operators](../vectorial/tables.md)
 
 ## Credits
 

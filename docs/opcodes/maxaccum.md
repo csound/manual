@@ -28,7 +28,7 @@ _aAccumulator_ will usually be a global audio variable.  At the end of any given
 
 ## Examples
 
-Here is an example of the maxaccum opcode. It uses the file [maxaccum.csd](../../examples/maxaccum.csd).
+Here is an example of the maxaccum opcode. It uses the file [maxaccum.csd](../examples/maxaccum.csd).
 
 ``` csound-csd title="Example of the maxabs opcode." linenums="1"
 --8<-- "examples/maxaccum.csd"
@@ -36,7 +36,7 @@ Here is an example of the maxaccum opcode. It uses the file [maxaccum.csd](../..
 
 ## See also
 
-[Comparators and Accumulators](../../sigmod/compaccum)
+[Comparators and Accumulators](../sigmod/compaccum.md)
 
 ## Credits
 

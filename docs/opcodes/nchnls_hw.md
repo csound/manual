@@ -18,7 +18,7 @@ On init-pass idacc will contain the number of channels in the output device, and
 
 ## Examples
 
-Here is an example of the nchnls_hw opcode. It uses the file [nchnls_hw.csd](../../examples/nchnls_hw.csd).
+Here is an example of the nchnls_hw opcode. It uses the file [nchnls_hw.csd](../examples/nchnls_hw.csd).
 
 ``` csound-csd title="Example of the nchnls_hw opcode." linenums="1"
 --8<-- "examples/nchnls_hw.csd"
@@ -34,7 +34,7 @@ number of inputs = 32
 
 ## See also
 
-[Miscellaneous opcodes](../../miscopcodes)
+[Miscellaneous opcodes](../miscopcodes.md)
 
 ## Credits
 

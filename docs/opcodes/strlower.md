@@ -14,7 +14,7 @@ Sdst strlower Ssrc
 
 ## Examples
 
-Here is an example of the strlower opcode. It uses the file [strlower.csd](../../examples/strlower.csd).
+Here is an example of the strlower opcode. It uses the file [strlower.csd](../examples/strlower.csd).
 
 ``` csound-csd title="Example of the strlower opcode." linenums="1"
 --8<-- "examples/strlower.csd"
@@ -22,7 +22,7 @@ Here is an example of the strlower opcode. It uses the file [strlower.csd](../..
 
 ## See Also
 
-[String Conversion Opcodes](../../strings/convert)
+[String Conversion Opcodes](../strings/convert.md)
 
 ## Credits
 

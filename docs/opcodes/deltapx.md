@@ -5,7 +5,7 @@ category:Signal Modifiers:Delay
 # deltapx
 Read from or write to a delay line with interpolation.
 
-_deltapx_ is similar to [deltapi](../../opcodes/deltapi) or [deltap3](../../opcodes/deltap3). However, it allows higher quality interpolation. This opcode can read from and write to a _delayr/delayw_ delay line with interpolation.
+_deltapx_ is similar to [deltapi](../opcodes/deltapi.md) or [deltap3](../opcodes/deltap3.md). However, it allows higher quality interpolation. This opcode can read from and write to a _delayr/delayw_ delay line with interpolation.
 
 ## Syntax
 ``` csound-orc
@@ -53,7 +53,7 @@ adl3 <= idlr - (1 + iws3/2)/sr              (allows feedback)
 
 ## Examples
 
-Here is an example of the deltapx opcode. It uses the file [deltapx.csd](../../examples/deltapx.csd).
+Here is an example of the deltapx opcode. It uses the file [deltapx.csd](../examples/deltapx.csd).
 
 ``` csound-csd title="Example of the deltapx opcode." linenums="1"
 --8<-- "examples/deltapx.csd"
@@ -61,7 +61,7 @@ Here is an example of the deltapx opcode. It uses the file [deltapx.csd](../../e
 
 ## See also
 
-[Delay](../../sigmod/delayops)
+[Delay](../sigmod/delayops.md)
 
 ## Credits
 

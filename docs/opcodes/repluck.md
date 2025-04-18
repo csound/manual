@@ -32,13 +32,13 @@ _axcite_ -- A signal which excites the string.
 
 ## Examples
 
-Here is an example of the repluck opcode. It uses the file [repluck.csd](../../examples/repluck.csd).
+Here is an example of the repluck opcode. It uses the file [repluck.csd](../examples/repluck.csd).
 
 ``` csound-csd title="Example of the repluck opcode." linenums="1"
 --8<-- "examples/repluck.csd"
 ```
 
-Here is another example of the repluck opcode. It uses the file [repluck-advanced.csd](../../examples/repluck-advanced.csd).
+Here is another example of the repluck opcode. It uses the file [repluck-advanced.csd](../examples/repluck-advanced.csd).
 
 ``` csound-csd title="Advanced example of the repluck opcode." linenums="1"
 --8<-- "examples/repluck-advanced.csd"
@@ -46,7 +46,7 @@ Here is another example of the repluck opcode. It uses the file [repluck-advance
 
 ## See also
 
-[Waveguide Physical Modeling](../../siggen/wavguide)
+[Waveguide Physical Modeling](../siggen/wavguide.md)
 
 ## Credits
 

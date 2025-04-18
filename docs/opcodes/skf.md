@@ -28,7 +28,7 @@ _xK_ -- Sallen-Key opamp gain, in the range 1 to 3. At 3 the filter self-oscilla
 
 ## Examples
 
-Here is an example of the skf opcode. It uses the file [skf.csd](../../examples/skf.csd).
+Here is an example of the skf opcode. It uses the file [skf.csd](../examples/skf.csd).
 
 ``` csound-csd title="Example of the skf opcode." linenums="1"
 --8<-- "examples/skf.csd"
@@ -36,7 +36,7 @@ Here is an example of the skf opcode. It uses the file [skf.csd](../../examples/
 
 ## See also
 
-[Standard Filters: Resonant Low-pass filters](../../sigmod/standard)
+[Standard Filters: Resonant Low-pass filters](../sigmod/standard.md)
 
 ## Credits
 

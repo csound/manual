@@ -20,9 +20,9 @@ _Sname_ -- String name of the outlet port. The name of the outlet is implicitly 
 
 _fsignal_ -- frate output signal (fsig)
 
-During performance, the output signal is sent to each instance of an instrument containing an inlet port to which this outlet has been connected using the [See also](../../opcodes/connect)e>
+During performance, the output signal is sent to each instance of an instrument containing an inlet port to which this outlet has been connected using the [See also](../opcodes/connect.md)e>
 
-[Signal Flow Graph Opcodes](../../signalflowgraph)
+[Signal Flow Graph Opcodes](../signalflowgraph.md)
 
 More information on this opcode: [http://www.csoundjournal.com/issue13/signalFlowGraphOpcodes.html](http://www.csoundjournal.com/issue13/signalFlowGraphOpcodes.html), written by Michael Gogins
 

@@ -24,7 +24,7 @@ _iin1, iin2, ..._ --  i-rate signals to be compared.
 
 ## Examples
 
-Here is an example of the min opcode. It uses the file [min.csd](../../examples/min.csd).
+Here is an example of the min opcode. It uses the file [min.csd](../examples/min.csd).
 
 ``` csound-csd title="Example of the min opcode." linenums="1"
 --8<-- "examples/min.csd"
@@ -32,7 +32,7 @@ Here is an example of the min opcode. It uses the file [min.csd](../../examples/
 
 ## See also
 
-[Comparators and Accumulators](../../sigmod/compaccum)
+[Comparators and Accumulators](../sigmod/compaccum.md)
 
 ## Credits
 

@@ -57,7 +57,7 @@ Output values of the HVS are influenced by the motion pointer, a point whose pos
 
 ## See also
 
-[Hyper Vectorial Synthesis](../../siggen/hvs)
+[Hyper Vectorial Synthesis](../siggen/hvs.md)
 
 ## Credits
 

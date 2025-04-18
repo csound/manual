@@ -20,7 +20,7 @@ _kpre_ -- the numeric tag for the preset, as returned by ctrlpreset.
 
 ## Examples
 
-Here is an example of the ctrlselect opcode. It uses the file [ctrls.csd](../../examples/ctrls.csd).
+Here is an example of the ctrlselect opcode. It uses the file [ctrls.csd](../examples/ctrls.csd).
 
 ``` csound-csd title="Example of the ctrlselect opcode." linenums="1"
 --8<-- "examples/ctrls.csd"
@@ -28,7 +28,7 @@ Here is an example of the ctrlselect opcode. It uses the file [ctrls.csd](../../
 
 ## See also
 
-[MIDI input and Initialization](../../midi/input)
+[MIDI input and Initialization](../midi/input.md)
 
 ## Credits
 

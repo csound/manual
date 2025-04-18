@@ -20,7 +20,7 @@ _kin[]_ -- input array containing the complex-valued real-imaginary input.
 
 ## Examples
 
-Here is an example of the c2r opcode. It uses the file [c2r.csd](../../examples/c2r.csd).
+Here is an example of the c2r opcode. It uses the file [c2r.csd](../examples/c2r.csd).
 
 ``` csound-csd title="Example of the c2r opcode." linenums="1"
 --8<-- "examples/c2r.csd"
@@ -28,11 +28,11 @@ Here is an example of the c2r opcode. It uses the file [c2r.csd](../../examples/
 
 ## See Also
 
-[Vectorial opcodes](../../vectorial/top)
+[Vectorial opcodes](../vectorial/top.md)
 
-[array opcodes](../../math/array)
+[array opcodes](../math/array.md)
 
-[Array-based spectral opcodes](../../spectral/arrays)
+[Array-based spectral opcodes](../spectral/arrays.md)
 
 ## Credits
 

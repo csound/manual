@@ -44,7 +44,7 @@ _kvrate_ -- Vibrator rate
 
 ## Examples
 
-Here is an example of the fmbell opcode. It uses the file [fmbell.csd](../../examples/fmbell.csd).
+Here is an example of the fmbell opcode. It uses the file [fmbell.csd](../examples/fmbell.csd).
 
 ``` csound-orc title="Example of the fmbell opcode." linenums="1"
 --8<-- "examples/fmbell.csd"
@@ -52,7 +52,7 @@ Here is an example of the fmbell opcode. It uses the file [fmbell.csd](../../exa
 
 ## See Also
 
-[FM Synthesis](../../siggen/fmsynth)
+[FM Synthesis](../siggen/fmsynth.md)
 
 More information about frequency modulation on Wikipedia: [http://en.wikipedia.org/wiki/Frequency_modulation_synthesis](http://en.wikipedia.org/wiki/Frequency_modulation_synthesis)
 

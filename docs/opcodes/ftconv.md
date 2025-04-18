@@ -15,7 +15,7 @@ a1[, a2[, a3[, ... a8]]] ftconv ain, ift, iplen[, iskipsamples \
 
 ### Initialization
 
-_ift_ -- source ftable number. The table is expected to contain interleaved multichannel audio data, with the number of channels equal to the number of output variables (a1, a2, etc.). An interleaved table can be created from a set of mono tables with [GEN52](../../scoregens/gen52).
+_ift_ -- source ftable number. The table is expected to contain interleaved multichannel audio data, with the number of channels equal to the number of output variables (a1, a2, etc.). An interleaved table can be created from a set of mono tables with [GEN52](../scoregens/gen52.md).
 
 _iplen_ -- length of impulse response partitions, in sample frames; must be an integer power of two. Lower settings allow for shorter output delay, but will increase CPU usage.
 
@@ -31,9 +31,9 @@ _ain_ -- input signal.
 
 _a1 ... a8_ -- output signal(s).
 
-## Example
+## Examples
 
-Here is an example of the ftconv opcode. It uses the file [ftconv.csd](../../examples/ftconv.csd).
+Here is an example of the ftconv opcode. It uses the file [ftconv.csd](../examples/ftconv.csd).
 
 ``` csound-csd title="Example of the ftconv opcode." linenums="1"
 --8<-- "examples/ftconv.csd"
@@ -41,7 +41,7 @@ Here is an example of the ftconv opcode. It uses the file [ftconv.csd](../../exa
 
 ## See also
 
-[Convolution and Morphing](../../sigmod/conmorph)
+[Convolution and Morphing](../sigmod/conmorph.md)
 
 ## Credits
 

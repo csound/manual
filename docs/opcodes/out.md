@@ -17,11 +17,11 @@ Sends audio samples to an accumulating output buffer (created at the beginning o
 
 In the array case each element of the arrary is sent to the corresponding channel. This provides a way of using many channels.  The nonarray version is limited  to 1999.
 
-The type (mono, stereo, quad, hex, or oct) should agree with [nchnls](../../opcodes/nchnls). But as of version 3.50, Csound will attempt to change an incorrect opcode to agree with _nchnls_ statement.
+The type (mono, stereo, quad, hex, or oct) should agree with [nchnls](../opcodes/nchnls.md). But as of version 3.50, Csound will attempt to change an incorrect opcode to agree with _nchnls_ statement.
 
 ## Examples
 
-Here is an example of the out opcode. It uses the file [out.csd](../../examples/out.csd).
+Here is an example of the out opcode. It uses the file [out.csd](../examples/out.csd).
 
 ``` csound-csd title="Example of the out opcode." linenums="1"
 --8<-- "examples/out.csd"
@@ -29,7 +29,7 @@ Here is an example of the out opcode. It uses the file [out.csd](../../examples/
 
 ## See also
 
-[Signal Output](../../sigio/output)
+[Signal Output](../sigio/output.md)
 
 ## Credits
 

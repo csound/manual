@@ -18,13 +18,13 @@ _&#8220;Sin&#8221;_ --  a string (in double-quotes or enclosed by {{ }}) contain
 
 ## Examples
 
-Here is an example of the readscore opcode. It uses the file [readscore.csd](../../examples/readscore.csd).
+Here is an example of the readscore opcode. It uses the file [readscore.csd](../examples/readscore.csd).
 
 ``` csound-csd title="Example of the readscore opcode." linenums="1"
 --8<-- "examples/readscore.csd"
 ```
 
-You can use string opcodes like [sprintfk](../../opcodes/sprintfk) to produce strings to be passed to _readscore_ like this:
+You can use string opcodes like [sprintfk](../opcodes/sprintfk.md) to produce strings to be passed to _readscore_ like this:
 
 ``` csound-orc
 Sfil    = "/Volumes/Bla/file.aif"
@@ -34,7 +34,7 @@ String  sprintfk {{i 2 0 %f "%s" %f %f %f %f}}, idur, Sfil, p5, p6, knorm, iskip
 
 ## See also
 
-[Instrument Invocation](../../control/invocat)
+[Instrument Invocation](../control/invocat.md)
 
 ## Credits
 

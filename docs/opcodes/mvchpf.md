@@ -25,7 +25,7 @@ cutoff frequency. The useful range is around six octaves below and above middle 
 
 ## Examples
 
-Here is an example of the mvchpf opcode. It uses the file [mvchpf.csd](../../examples/mvchpf.csd).
+Here is an example of the mvchpf opcode. It uses the file [mvchpf.csd](../examples/mvchpf.csd).
 
 ``` csound-csd title="Example of the mvchpf opcode." linenums="1"
 --8<-- "examples/mvchpf.csd"
@@ -33,7 +33,7 @@ Here is an example of the mvchpf opcode. It uses the file [mvchpf.csd](../../exa
 
 ## See also
 
-[Standard Filters: Hi-pass filters](../../sigmod/standard)
+[Standard Filters: Hi-pass filters](../sigmod/standard.md)
 
 ## Credits
 

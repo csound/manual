@@ -20,7 +20,7 @@ _kin[]_ -- input array containing the complex-valued input.
 
 ## Examples
 
-Here is an example of the fftinv opcode. It uses the file [ifft.csd](../../examples/ifft.csd).
+Here is an example of the fftinv opcode. It uses the file [ifft.csd](../examples/ifft.csd).
 
 ``` csound-csd title="Example of the fftinv opcode." linenums="1"
 --8<-- "examples/ifft.csd"
@@ -28,11 +28,11 @@ Here is an example of the fftinv opcode. It uses the file [ifft.csd](../../examp
 
 ## See Also
 
-[Vectorial opcodes](../../vectorial/top)
+[Vectorial opcodes](../vectorial/top.md)
 
-[array opcodes](../../math/array)
+[array opcodes](../math/array.md)
 
-[Array-based spectral opcodes](../../spectral/arrays)
+[Array-based spectral opcodes](../spectral/arrays.md)
 
 ## Credits
 

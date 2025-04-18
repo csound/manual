@@ -49,7 +49,7 @@ _asource_ -- The audio signal to be cut up. This version runs in real-time witho
 
 ## Examples
 
-Here is an example of the bbcuts opcode. It uses the file [bbcuts.csd](../../examples/bbcuts.csd).
+Here is an example of the bbcuts opcode. It uses the file [bbcuts.csd](../examples/bbcuts.csd).
 
 ``` csound-orc title="Example of the bbcuts opcode." linenums="1"
 --8<-- "examples/bbcuts.csd"
@@ -57,7 +57,7 @@ Here is an example of the bbcuts opcode. It uses the file [bbcuts.csd](../../exa
 
 ## See also
 
-[Sample Playback](../../siggen/sample)
+[Sample Playback](../siggen/sample.md)
 
 ## Credits
 

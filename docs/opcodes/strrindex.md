@@ -14,7 +14,7 @@ ipos strrindex S1, S2
 
 ## Examples
 
-Here is an example of the strrindex opcode. It uses the file [strrindex.csd](../../examples/strrindex.csd).
+Here is an example of the strrindex opcode. It uses the file [strrindex.csd](../examples/strrindex.csd).
 
 ``` csound-csd title="Example of the strrindex opcode." linenums="1"
 --8<-- "examples/strrindex.csd"
@@ -22,7 +22,7 @@ Here is an example of the strrindex opcode. It uses the file [strrindex.csd](../
 
 ## See Also
 
-[String Manipulation Opcodes](../../strings/manipulate)
+[String Manipulation Opcodes](../strings/manipulate.md)
 
 ## Credits
 

@@ -24,7 +24,7 @@ _imidivel_ -- MIDI velocity for note (0-127)
 
 ## Examples
 
-Here is an example of the fluidNote opcode. It uses the file [fluidNote.csd](../../examples/fluidNote.csd) and [19Trumpet.sf2](../../examples/19Trumpet.sf2).
+Here is an example of the fluidNote opcode. It uses the file [fluidNote.csd](../examples/fluidNote.csd) and [19Trumpet.sf2](../examples/19Trumpet.sf2).
 
 ``` csound-csd title="Example of the fluidNote opcode." linenums="1"
 --8<-- "examples/fluidNote.csd"
@@ -38,7 +38,7 @@ SoundFont:   1  Bank:   0  Preset:  56  Trumpet metallic
 
 ## See also
 
-[Soundfonts](../../siggen/sample)
+[Soundfonts](../siggen/sample.md)
 
 More information on soundfonts is in the Floss Manuals: [https://flossmanual.csound.com/midi/reading-midi-files](https://flossmanual.csound.com/midi/reading-midi-files)
 

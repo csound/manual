@@ -102,18 +102,18 @@ _kfn_ -- Oscillator waveform table. Table number can be changed at k-rate (this 
 
 > :memo: **Note**<br>
 >
-> _oscbnk_ uses the same random number generator as _rnd31_. So reading [its documentation](../../opcodes/rnd31) is also recommended.
+> _oscbnk_ uses the same random number generator as _rnd31_. So reading [its documentation](../opcodes/rnd31.md) is also recommended.
 >
 
 ## Examples
 
-Here is an example of oscbnk opcode. It uses the file [oscbnk.csd](../../examples/oscbnk.csd).
+Here is an example of oscbnk opcode. It uses the file [oscbnk.csd](../examples/oscbnk.csd).
 
 ``` csound-orc title="Example of the oscbnk opcode." linenums="1"
 --8<-- "examples/oscbnk.csd"
 ```
 
-Here is an advanced example of oscbnk opcode. It uses the file [oscbnk-advanced.csd](../../examples/oscbnk-advanced.csd).
+Here is an advanced example of oscbnk opcode. It uses the file [oscbnk-advanced.csd](../examples/oscbnk-advanced.csd).
 
 ``` csound-orc title="Advanced example of the oscbnk opcode." linenums="1"
 --8<-- "examples/oscbnk-advanced.csd"
@@ -121,7 +121,7 @@ Here is an advanced example of oscbnk opcode. It uses the file [oscbnk-advanced.
 
 ## See also
 
-[Basic Oscillators](../../siggen/basic)
+[Basic Oscillators](../siggen/basic.md)
 
 ## Credits
 

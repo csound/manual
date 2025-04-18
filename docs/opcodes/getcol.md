@@ -30,7 +30,7 @@ _kcol_ -- column to be extracted.
 
 ## Examples
 
-Here is an example of the getcol opcode. It uses the file [getcol.csd](../../examples/getcol.csd).
+Here is an example of the getcol opcode. It uses the file [getcol.csd](../examples/getcol.csd).
 
 ``` csound-csd title="Example of the getcol opcode." linenums="1"
 --8<-- "examples/getcol.csd"
@@ -38,9 +38,9 @@ Here is an example of the getcol opcode. It uses the file [getcol.csd](../../exa
 
 ## See Also
 
-[Vectorial Opcodes](../../vectorial/top)
+[Vectorial Opcodes](../vectorial/top.md)
 
-[Array Opcodes](../../math/array)
+[Array Opcodes](../math/array.md)
 
 ## Credits
 

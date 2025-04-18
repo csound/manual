@@ -32,7 +32,7 @@ Frequency and amplitude of each partial is given in the two tables provided. The
 
 ## Examples
 
-Here is an example of the adsynt opcode. It uses the file [adsynt.csd](../../examples/adsynt.csd). These two instruments perform additive synthesis. The output of each sounds like a Tibetan bowl. The first one is static, as parameters are only generated at init-time. In the second one, parameters are continuously changed.
+Here is an example of the adsynt opcode. It uses the file [adsynt.csd](../examples/adsynt.csd). These two instruments perform additive synthesis. The output of each sounds like a Tibetan bowl. The first one is static, as parameters are only generated at init-time. In the second one, parameters are continuously changed.
 
 ``` csound-orc title="Example of the adsynt opcode." linenums="1"
 --8<-- "examples/adsynt.csd"
@@ -40,7 +40,7 @@ Here is an example of the adsynt opcode. It uses the file [adsynt.csd](../../exa
 
 ## See also
 
-[Additive Synthesis/Resynthesis](../../siggen/additive)
+[Additive Synthesis/Resynthesis](../siggen/additive.md)
 
 ## Credits
 

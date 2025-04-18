@@ -16,7 +16,7 @@ Get the MIDI byte value (0 - 127) denoting the note number of the current event.
 
 ## Examples
 
-Here is an example of the notnum opcode. It uses the file [notnum.csd](../../examples/notnum.csd).
+Here is an example of the notnum opcode. It uses the file [notnum.csd](../examples/notnum.csd).
 
 ``` csound-csd title="Example of the notnum opcode." linenums="1"
 --8<-- "examples/notnum.csd"
@@ -24,7 +24,7 @@ Here is an example of the notnum opcode. It uses the file [notnum.csd](../../exa
 
 ## See also
 
-[MIDI input and Initialization](../../midi/input)
+[MIDI input and Initialization](../midi/input.md)
 
 ## Credits
 

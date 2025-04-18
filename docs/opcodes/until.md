@@ -17,7 +17,7 @@ The statements between the _do_ and _od_ form the body of a loop which is obeyed
 
 ## Examples
 
-Here is an example of the until construction. It uses the file [until.csd](../../examples/until.csd).
+Here is an example of the until construction. It uses the file [until.csd](../examples/until.csd).
 
 ``` csound-csd title="Example of the until opcode." linenums="1"
 --8<-- "examples/until.csd"
@@ -45,7 +45,7 @@ B  2.000 ..  3.000 T  3.000 TT  3.000 M:      0.0
 
 ## See also
 
-[Program Flow Control: Looping Constructions](../../control/pgmctl)
+[Program Flow Control: Looping Constructions](../control/pgmctl.md)
 
 ## Credits
 

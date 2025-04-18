@@ -25,7 +25,7 @@ The probablity density function of an exponential distribution is an exponential
 
 ## Examples
 
-Here is an example of the exprand opcode. It uses the file [exprand.csd](../../examples/exprand.csd).
+Here is an example of the exprand opcode. It uses the file [exprand.csd](../examples/exprand.csd).
 
 ``` csound-orc title="Example of the exprand opcode." linenums="1"
 --8<-- "examples/exprand.csd"
@@ -63,7 +63,7 @@ i   2 time     5.00000:     4.45125
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
 ## Credits
 

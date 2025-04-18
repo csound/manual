@@ -36,7 +36,7 @@ _kdrive_ -- overdrive factor. With the internal non-linear map, values above 0.1
 
 ## Examples
 
-Here is an example of the svn opcode. It uses the file [svn.csd](../../examples/svn.csd).
+Here is an example of the svn opcode. It uses the file [svn.csd](../examples/svn.csd).
 
 ``` csound-csd title="Example of the svn opcode." linenums="1"
 --8<-- "examples/svn.csd"
@@ -44,7 +44,7 @@ Here is an example of the svn opcode. It uses the file [svn.csd](../../examples/
 
 ## See also
 
-[Standard Filters: Resonant Low-pass filters](../../sigmod/standard)
+[Standard Filters: Resonant Low-pass filters](../sigmod/standard.md)
 
 ## Credits
 

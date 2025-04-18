@@ -20,7 +20,7 @@ _idel_ -- delay time (in seconds) for delayk. It is rounded to the nearest integ
 _imode_ -- sum of 1 for skipping initialization (e.g. in tied notes) and 2 for holding the first input value during the initial delay, instead of outputting zero. This is mainly of use when delaying envelopes that do not start at zero.
 
 <figure markdown="span">
-![](../../images/delayk.png)
+![](../images/delayk.png)
 <figcaption></figcaption>
 </figure>
 
@@ -37,7 +37,7 @@ _kdel_ -- delay time (in seconds) for vdel_k. It is rounded to the nearest integ
 
 ## Examples
 
-Here is an example of the delayk opcode. It uses the file [delayk.csd](../../examples/delayk.csd).
+Here is an example of the delayk opcode. It uses the file [delayk.csd](../examples/delayk.csd).
 
 ``` csound-csd title="Example of the delayk opcode." linenums="1"
 --8<-- "examples/delayk.csd"
@@ -45,7 +45,7 @@ Here is an example of the delayk opcode. It uses the file [delayk.csd](../../exa
 
 ## See also
 
-[Delay](../../sigmod/delayops)
+[Delay](../sigmod/delayops.md)
 
 ## Credits
 

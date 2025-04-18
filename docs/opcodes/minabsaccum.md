@@ -28,7 +28,7 @@ _aAccumulator_ will usually be a global audio variable.  At the end of any given
 
 ## Examples
 
-Here is an example of the minabsaccum opcode. It uses the file [minabsaccum.csd](../../examples/minabsaccum.csd).
+Here is an example of the minabsaccum opcode. It uses the file [minabsaccum.csd](../examples/minabsaccum.csd).
 
 ``` csound-csd title="Example of the minabsaccum opcode." linenums="1"
 --8<-- "examples/minabsaccum.csd"
@@ -36,7 +36,7 @@ Here is an example of the minabsaccum opcode. It uses the file [minabsaccum.csd]
 
 ## See also
 
-[Comparators and Accumulators](../../sigmod/compaccum)
+[Comparators and Accumulators](../sigmod/compaccum.md)
 
 ## Credits
 

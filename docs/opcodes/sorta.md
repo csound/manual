@@ -12,7 +12,7 @@ k/i[] sorta k/i[]  (k- or i-arrays )
 
 ## Examples
 
-Here is an example of the sorta opcode. It uses the file [sorta.csd](../../examples/sorta.csd).
+Here is an example of the sorta opcode. It uses the file [sorta.csd](../examples/sorta.csd).
 
 ``` csound-csd title="Example of the sorta opcode." linenums="1"
 --8<-- "examples/sorta.csd"
@@ -20,7 +20,7 @@ Here is an example of the sorta opcode. It uses the file [sorta.csd](../../examp
 
 ## See Also
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

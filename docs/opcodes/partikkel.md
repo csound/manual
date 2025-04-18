@@ -50,7 +50,7 @@ Computation of trainlets can be CPU intensive, and setting _ktrainamp_ to zero w
 
 _imax_grains_ -- maximum number of grains per k-period. Estimating a large value should not affect performance, exceeding this value will lead to "oldest grains" being deleted.
 
-_iopcode_id_ -- the opcode id, linking an instance of _partikkel_ to an instance of [partikkelsync](../../opcodes/partikkelsync), the linked _partikkelsync_ will output trigger pulses synchronized to _partikkel_'s grain maker scheduler. The default value is zero, which means no connection to any _partikkelsync_ instances.
+_iopcode_id_ -- the opcode id, linking an instance of _partikkel_ to an instance of [partikkelsync](../opcodes/partikkelsync.md), the linked _partikkelsync_ will output trigger pulses synchronized to _partikkel_'s grain maker scheduler. The default value is zero, which means no connection to any _partikkelsync_ instances.
 
 _ipanlaws_ -- function table number. The table describes the panning curve used for fractional channelmask values. Fractional channelmask values will mix a grain to two neighbouring outputs, with the relative gain set by the fractional value. By default if no _ipanlaws_ table is described, a linear gain relationship is used, so that a channelmask value of e.g. 1.5 distributes the grain with 0.5 gain to output 2 and 0.5 gain to output 3. The _ipanlaws_ table can be used to describe other gain control curves (panning laws). The table should contain 8 such gain control curves, each governing the panning between two neighbouring outputs. The curves should appear one after another in the table, in a concatenated fashion. GEN 18 can be used to create this table from separate panning curve tables (see example below). The first curve describes the panning law between output 1 and output 2, the next is for panning between outputs 2 and 3, and so on. The last curve describes the panning law between the last and the first output. The table is indexed by the channelmask value such that one output (of an output pair goverened by the panning law) uses the index (tablesize/8*channelmask) while the other of the two outputs reads the value at index (tablesize/8*(int(channelmask+1)-frac(channelmask))). This means that if the panning law value halfway between these two channel masks is e.g. 0.7 (which would give approximately equal power panning), then each of those two outputs will use 0.7 as the gain value.
 
@@ -114,19 +114,19 @@ _kwavekey4_ -- as _kwavekey1_, but for source waveform 4.
 
 ## Examples
 
-Here is an example of the partikkel opcode. It uses the file [partikkel.csd](../../examples/partikkel.csd).
+Here is an example of the partikkel opcode. It uses the file [partikkel.csd](../examples/partikkel.csd).
 
 ``` csound-orc title="Example of the partikkel opcode." linenums="1"
 --8<-- "examples/partikkel.csd"
 ```
 
-Here is another example of the partikkel opcode. It uses the file [partikkel-2.csd](../../examples/partikkel-2.csd).
+Here is another example of the partikkel opcode. It uses the file [partikkel-2.csd](../examples/partikkel-2.csd).
 
 ``` csound-orc title="Example 2 of the partikkel opcode." linenums="1"
 --8<-- "examples/partikkel-2.csd"
 ```
 
-Here is an example of using panning laws with channelmasks in partikkel. It uses the file [partikkel-panlaws.csd](../../examples/partikkel-panlaws.csd).
+Here is an example of using panning laws with channelmasks in partikkel. It uses the file [partikkel-panlaws.csd](../examples/partikkel-panlaws.csd).
 
 ``` csound-orc title="Example with panning laws with channel masks." linenums="1"
 --8<-- "examples/partikkel-panlaws.csd"
@@ -134,7 +134,7 @@ Here is an example of using panning laws with channelmasks in partikkel. It uses
 
 ## See Also
 
-[Granular Synthesis](../../siggen/granular)
+[Granular Synthesis](../siggen/granular.md)
 
 ## Credits
 

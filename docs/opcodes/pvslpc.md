@@ -37,7 +37,7 @@ The analyses are produced every hopsize samples. Once the signal is extracted fr
 ## Examples
 
 Here is an example of the pvslpc opcode using an audio input
-signal as lpc source. It uses the file [pvslpc.csd](../../examples/pvslpc.csd).
+signal as lpc source. It uses the file [pvslpc.csd](../examples/pvslpc.csd).
 
 ``` csound-csd title="Example of the pvslpc opcode." linenums="1"
 --8<-- "examples/pvslpc.csd"
@@ -45,4 +45,4 @@ signal as lpc source. It uses the file [pvslpc.csd](../../examples/pvslpc.csd).
 
 ## See also
 
-[Streaming Linear Predictive Coding (SLPC) Resynthesis](../../spectral/lpcresyn)
+[Streaming Linear Predictive Coding (SLPC) Resynthesis](../spectral/lpcresyn.md)

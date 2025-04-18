@@ -22,7 +22,7 @@ _filesr_ returns the sample rate of the sound file _ifilcod_. _filesr_ can retur
 
 ## Examples
 
-Here is an example of the filesr opcode. It uses the file [filesr.csd](../../examples/filesr.csd), and [drumsMlp.wav](../../examples/drumsMlp.wav).
+Here is an example of the filesr opcode. It uses the file [filesr.csd](../examples/filesr.csd), and [drumsMlp.wav](../examples/drumsMlp.wav).
 
 ``` csound-csd title="Example of the filesr opcode." linenums="1"
 --8<-- "examples/filesr.csd"
@@ -36,7 +36,7 @@ sample rate = 44100.000000, size = 131072.000000
 
 ## See also
 
-[Sound File Queries](../../sigio/queries)
+[Sound File Queries](../sigio/queries.md)
 
 ## Credits
 

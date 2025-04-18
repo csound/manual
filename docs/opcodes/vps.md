@@ -24,7 +24,7 @@ _aph_ -- vertical vector component.
 
 ## Examples
 
-Here is an example of the use of the _vps_ opcode. It uses the file [vps.csd](../../examples/vps.csd).
+Here is an example of the use of the _vps_ opcode. It uses the file [vps.csd](../examples/vps.csd).
 
 ``` csound-csd title="Example of the _vps_ opcode." linenums="1"
 --8<-- "examples/vps.csd"
@@ -32,7 +32,7 @@ Here is an example of the use of the _vps_ opcode. It uses the file [vps.csd](..
 
 ## See also
 
-[Phase Distortion](../../sigmod/wavshape)
+[Phase Distortion](../sigmod/wavshape.md)
 
 ## Credits
 

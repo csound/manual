@@ -28,7 +28,7 @@ _khigh_ -- highest lowest frequency (rounded to the nearest bin centre frequency
 
 ## Examples
 
-Here is an example of the mfb opcode. It uses the file [mfb.csd](../../examples/mfb.csd).
+Here is an example of the mfb opcode. It uses the file [mfb.csd](../examples/mfb.csd).
 
 ``` csound-csd title="Example of the mfb opcode." linenums="1"
 --8<-- "examples/mfb.csd"
@@ -36,9 +36,9 @@ Here is an example of the mfb opcode. It uses the file [mfb.csd](../../examples/
 
 ## See Also
 
-[Vectorial opcodes](../../vectorial/top),
-[array opcodes](../../math/array),
-[dct](../../opcodes/dct)
+[Vectorial opcodes](../vectorial/top.md),
+[array opcodes](../math/array.md),
+[dct](../opcodes/dct.md)
 
 ## Credits
 

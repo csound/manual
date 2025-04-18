@@ -5,7 +5,7 @@ category:Signal Modifiers:Standard Filters
 # butterhp
 A high-pass Butterworth filter.
 
-Implementation of second-order high-pass Butterworth filter. This opcode can also be written as [buthp](../../opcodes/buthp).
+Implementation of second-order high-pass Butterworth filter. This opcode can also be written as [buthp](../opcodes/buthp.md).
 
 ## Syntax
 ``` csound-orc
@@ -27,7 +27,7 @@ _kfreq_/_afreq_ -- Cutoff or center frequency for each of the filters.
 
 ## Examples
 
-Here is an example of the butterhp opcode. It uses the file [butterhp.csd](../../examples/butterhp.csd).
+Here is an example of the butterhp opcode. It uses the file [butterhp.csd](../examples/butterhp.csd).
 
 ``` csound-csd title="Example of the butterhp opcode." linenums="1"
 --8<-- "examples/butterhp.csd"
@@ -35,7 +35,7 @@ Here is an example of the butterhp opcode. It uses the file [butterhp.csd](../..
 
 ## See also
 
-[Standard filters: Butterworth filters](../../sigmod/standard)
+[Standard filters: Butterworth filters](../sigmod/standard.md)
 
 ## Credits
 

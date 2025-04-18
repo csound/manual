@@ -29,7 +29,7 @@ _kstep / istep_ - How many elements to skip. _Defaults to 1_
 
 ## Examples
 
-Here is an example of the tab2array opcode. It uses the file [tab2array.csd](../../examples/tab2array.csd).
+Here is an example of the tab2array opcode. It uses the file [tab2array.csd](../examples/tab2array.csd).
 
 ``` csound-csd title="Example of the tab2array opcode." linenums="1"
 --8<-- "examples/tab2array.csd"
@@ -37,7 +37,7 @@ Here is an example of the tab2array opcode. It uses the file [tab2array.csd](../
 
 ## See also
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

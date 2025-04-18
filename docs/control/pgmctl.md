@@ -2,41 +2,41 @@
 
 The opcodes to manipulate which orchestra statements are executed are:
 
-* [cggoto](../../opcodes/cggoto)
-* [cigoto](../../opcodes/cigoto)
-* [ckgoto](../../opcodes/ckgoto)
-* [cngoto](../../opcodes/cngoto)
-* [elseif](../../opcodes/elseif)
-* [else](../../opcodes/else)
-* [endif](../../opcodes/endif)
-* [goto](../../opcodes/goto)
-* [if](../../opcodes/if)
-* [igoto](../../opcodes/igoto)
-* [kgoto](../../opcodes/kgoto)
-* [tigoto](../../opcodes/tigoto)
-* [timout](../../opcodes/timout)
+* [cggoto](../opcodes/cggoto.md)
+* [cigoto](../opcodes/cigoto.md)
+* [ckgoto](../opcodes/ckgoto.md)
+* [cngoto](../opcodes/cngoto.md)
+* [elseif](../opcodes/elseif.md)
+* [else](../opcodes/else.md)
+* [endif](../opcodes/endif.md)
+* [goto](../opcodes/goto.md)
+* [if](../opcodes/if.md)
+* [igoto](../opcodes/igoto.md)
+* [kgoto](../opcodes/kgoto.md)
+* [tigoto](../opcodes/tigoto.md)
+* [timout](../opcodes/timout.md)
 
 Opcodes to create looping constructions are:
 
-* [loop_ge](../../opcodes/loop_ge)
-* [loop_gt](../../opcodes/loop_gt)
-* [loop_le](../../opcodes/loop_le)
-* [loop_lt](../../opcodes/loop_lt)
-* [until](../../opcodes/until)
-* [while](../../opcodes/while)
+* [loop_ge](../opcodes/loop_ge.md)
+* [loop_gt](../opcodes/loop_gt.md)
+* [loop_le](../opcodes/loop_le.md)
+* [loop_lt](../opcodes/loop_lt.md)
+* [until](../opcodes/until.md)
+* [while](../opcodes/while.md)
 
 > :warning: **Warning**
 >
->Some of these opcodes work at i-rate even if they contain k- or a- rate comparisons. See the [Reinitialization](../reinitn) section.
+>Some of these opcodes work at i-rate even if they contain k- or a- rate comparisons. See the [Reinitialization](reinitn.md) section.
 
 These opcodes are part of a counter system:
 
-* [count](../../opcodes/count)
-* [count_i](../../opcodes/count_i)
-* [cntCycles](../../opcodes/cntcycles)
-* [cntRead](../../opcodes/cntread)
-* [cntReset](../../opcodes/cntreset)
-* [cntState](../../opcodes/cntstate)
-* [cntCreate](../../opcodes/cntcreate)
-* [cntDelete](../../opcodes/cntDelete)
-* [cntDelete_i](../../opcodes/cntDelete_i)
+* [count](../opcodes/count.md)
+* [count_i](../opcodes/count_i.md)
+* [cntCycles](../opcodes/cntcycles.md)
+* [cntRead](../opcodes/cntread.md)
+* [cntReset](../opcodes/cntreset.md)
+* [cntState](../opcodes/cntstate.md)
+* [cntCreate](../opcodes/cntcreate.md)
+* [cntDelete](../opcodes/cntDelete.md)
+* [cntDelete_i](../opcodes/cntDelete_i.md)

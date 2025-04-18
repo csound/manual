@@ -24,7 +24,7 @@ These are _operators_ not _opcodes_. Therefore, they can be used within orchestr
 
 ## Examples
 
-Here is an example of the &gt; operator. It uses the file [greaterthan.csd](../../examples/greaterthan.csd).
+Here is an example of the &gt; operator. It uses the file [greaterthan.csd](../examples/greaterthan.csd).
 
 ``` csound-csd title="Example of the &gt; operator." linenums="1"
 --8<-- "examples/greaterthan.csd"
@@ -40,7 +40,7 @@ k1 = 4.000000, k2 = 1.000000
 
 ## See also
 
-[Conditional Values](../../control/conditional)
+[Conditional Values](../control/conditional.md)
 
 ## Credits
 

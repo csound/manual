@@ -28,7 +28,7 @@ _xcf_ -- filter cutoff frequency (i-, k-, or a-rate).
 
 ## Examples
 
-Here is an example of the zdf_1pole_mode opcode. It uses the file [zdf_1pole_mode.csd](../../examples/zdf_1pole_mode.csd).
+Here is an example of the zdf_1pole_mode opcode. It uses the file [zdf_1pole_mode.csd](../examples/zdf_1pole_mode.csd).
 
 ``` csound-csd title="Example of the zdf_1pole_mode opcode." linenums="1"
 --8<-- "examples/zdf_1pole_mode.csd"
@@ -44,7 +44,7 @@ This filter is based on the work of Will Pirkle that employs Vadim Zavalishin's 
 
 ## See also
 
-[Standard filters: Zero-delay Feedback Filters (Virtual Analog)](../../sigmod/standard)
+[Standard filters: Zero-delay Feedback Filters (Virtual Analog)](../sigmod/standard.md)
 
 ## Credits
 

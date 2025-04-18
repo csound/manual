@@ -31,7 +31,7 @@ The remaining units produce band-limited noise: the _kcps_ and _xcps_ parameters
 
 ## Examples
 
-Here is an example of the randi opcode. It uses the file [randi.csd](../../examples/randi.csd).
+Here is an example of the randi opcode. It uses the file [randi.csd](../examples/randi.csd).
 
 ``` csound-orc title="Example of the randi opcode." linenums="1"
 --8<-- "examples/randi.csd"
@@ -53,4 +53,4 @@ i   2 time     3.00000:   -72.41545
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random), [randh](../../opcodes/randh), [rand](../../opcodes/rand)
+[Random (Noise) Generators](../siggen/random.md), [randh](../opcodes/randh.md), [rand](../opcodes/rand.md)

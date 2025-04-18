@@ -4,12 +4,12 @@ These units generate and process non-standard signal data types, such as down-sa
 
 The opcodes for non-standard spectral processing are:
 
-* [specaddm](../../opcodes/specaddm)
-* [specdiff](../../opcodes/specdiff)
-* [specdisp](../../opcodes/specdisp)
-* [specfilt](../../opcodes/specfilt)
-* [spechist](../../opcodes/spechist)
-* [specptrk](../../opcodes/specptrk)
-* [specscal](../../opcodes/specscal)
-* [specsum](../../opcodes/specsum)
-* [spectrum](../../opcodes/spectrum)
+* [specaddm](../opcodes/specaddm.md)
+* [specdiff](../opcodes/specdiff.md)
+* [specdisp](../opcodes/specdisp.md)
+* [specfilt](../opcodes/specfilt.md)
+* [spechist](../opcodes/spechist.md)
+* [specptrk](../opcodes/specptrk.md)
+* [specscal](../opcodes/specscal.md)
+* [specsum](../opcodes/specsum.md)
+* [spectrum](../opcodes/spectrum.md)

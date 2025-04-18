@@ -3,7 +3,7 @@ id:println
 category:Signal I/O:Printing and Display
 -->
 # println
-Prints at k-rate using a printf() style syntax like [printks](../../opcodes/printks), appends a new line.
+Prints at k-rate using a printf() style syntax like [printks](../opcodes/printks.md), appends a new line.
 
 ## Syntax
 ``` csound-orc
@@ -31,7 +31,7 @@ For more information about printf() formatting, consult any C language documenta
 
 ## Examples
 
-Here is an example of the println opcode. It uses the file [println.csd](../../examples/println.csd).
+Here is an example of the println opcode. It uses the file [println.csd](../examples/println.csd).
 
 ``` csound-csd title="Example of the println opcode." linenums="1"
 --8<-- "examples/println.csd"
@@ -39,7 +39,7 @@ Here is an example of the println opcode. It uses the file [println.csd](../../e
 
 ## See also
 
-[Printing and Display](../../sigio/pdisplay)
+[Printing and Display](../sigio/pdisplay.md)
 
 ## Credits
 

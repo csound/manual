@@ -34,7 +34,7 @@ _imaxshake_ (optional) -- amount of energy to add back into the system. The valu
 
 ## Examples
 
-Here is an example of the cabasa opcode. It uses the file [cabasa.csd](../../examples/cabasa.csd).
+Here is an example of the cabasa opcode. It uses the file [cabasa.csd](../examples/cabasa.csd).
 
 ``` csound-orc title="Example of the cabasa opcode." linenums="1"
 --8<-- "examples/cabasa.csd"
@@ -42,7 +42,7 @@ Here is an example of the cabasa opcode. It uses the file [cabasa.csd](../../exa
 
 ## See Also
 
-[Models and Emulations](../../siggen/models)
+[Models and Emulations](../siggen/models.md)
 
 ## Credits
 

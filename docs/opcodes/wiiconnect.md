@@ -34,7 +34,7 @@ Every control cycle each Wiimote is polled for its status and position.  These v
 
 ## Examples
 
-Here is an example of the wii opcodes. It uses the file [wii.csd](../../examples/wii.csd).
+Here is an example of the wii opcodes. It uses the file [wii.csd](../examples/wii.csd).
 
 ``` csound-csd title="Example of the wii opcodes." linenums="1"
 --8<-- "examples/wii.csd"
@@ -42,7 +42,7 @@ Here is an example of the wii opcodes. It uses the file [wii.csd](../../examples
 
 ## See Also
 
-[non-MIDI Devices](../../oscnetwork/nonMIDIdevices)
+[non-MIDI Devices](../oscnetwork/nonMIDIdevices.md)
 
 ## Credits
 

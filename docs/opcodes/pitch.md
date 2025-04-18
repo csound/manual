@@ -5,7 +5,7 @@ category:Instrument Control:Sensing and Control
 # pitch
 Tracks the pitch of a signal.
 
-Using the same techniques as [spectrum](../../opcodes/spectrum) and [specptrk](../../opcodes/specptrk), pitch tracks the pitch of the signal in octave point decimal form, and amplitude in dB.
+Using the same techniques as [spectrum](../opcodes/spectrum.md) and [specptrk](../opcodes/specptrk.md), pitch tracks the pitch of the signal in octave point decimal form, and amplitude in dB.
 
 ## Syntax
 ``` csound-orc
@@ -49,7 +49,7 @@ The number of partials and rolloff fraction can effect the pitch tracking, so so
 
 ## Examples
 
-Here is an example of the pitch opcode. It uses the file [pitch.csd](../../examples/pitch.csd).
+Here is an example of the pitch opcode. It uses the file [pitch.csd](../examples/pitch.csd).
 
 ``` csound-csd title="Example of the pitch opcode." linenums="1"
 --8<-- "examples/pitch.csd"
@@ -57,7 +57,7 @@ Here is an example of the pitch opcode. It uses the file [pitch.csd](../../examp
 
 ## See also
 
-[Sensing and Control: Tempo and Pitch estimation](../../control/sensing)
+[Sensing and Control: Tempo and Pitch estimation](../control/sensing.md)
 
 ## Credits
 

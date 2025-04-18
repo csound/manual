@@ -37,7 +37,7 @@ By contrast, the conversion _cpsoct_(8.75 + k1) which gives the value of A440 tr
 
 ## Examples
 
-Here is an example of the octpch opcode. It uses the file [octpch.csd](../../examples/octpch.csd).
+Here is an example of the octpch opcode. It uses the file [octpch.csd](../examples/octpch.csd).
 
 ``` csound-csd title="Example of the octpch opcode." linenums="1"
 --8<-- "examples/octpch.csd"
@@ -51,7 +51,7 @@ instr 1:  ioct = 8.750
 
 ## See also
 
-[Pitch Converters: Functions](../../pitch/funcs)
+[Pitch Converters: Functions](../pitch/funcs.md)
 
 ## Credits
 

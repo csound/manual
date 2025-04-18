@@ -25,15 +25,15 @@ _kamp, xamp_ -- amplitude
 
 _kcps, xcps_ -- frequency in cycles per second.
 
-_oscili_ differs from [oscil](../../opcodes/oscil) in that the standard procedure of using a truncated phase as a sampling index is here replaced by a process that interpolates between two successive lookups. Interpolating generators will produce a noticeably cleaner output signal, but they may take as much as twice as long to run. Adequate accuracy can also be gained without the time cost of interpolation by using large stored function tables of 2K, 4K or 8K points if the space is available.
+_oscili_ differs from [oscil](../opcodes/oscil.md) in that the standard procedure of using a truncated phase as a sampling index is here replaced by a process that interpolates between two successive lookups. Interpolating generators will produce a noticeably cleaner output signal, but they may take as much as twice as long to run. Adequate accuracy can also be gained without the time cost of interpolation by using large stored function tables of 2K, 4K or 8K points if the space is available.
 
 Table _ifn_ is incrementally sampled modulo the table length and the value obtained is multiplied by _amp_.
 
-If you need to change the oscillator table with a k-rate signal, you can use [oscilikt](../../opcodes/oscilikt).
+If you need to change the oscillator table with a k-rate signal, you can use [oscilikt](../opcodes/oscilikt.md).
 
 ## Examples
 
-Here is an example of the oscili opcode. It uses the file [oscili.csd](../../examples/oscili.csd).
+Here is an example of the oscili opcode. It uses the file [oscili.csd](../examples/oscili.csd).
 
 ``` csound-orc title="Example of the oscili opcode." linenums="1"
 --8<-- "examples/oscili.csd"
@@ -41,4 +41,4 @@ Here is an example of the oscili opcode. It uses the file [oscili.csd](../../exa
 
 ## See also
 
-[Basic Oscillators](../../siggen/basic)
+[Basic Oscillators](../siggen/basic.md)

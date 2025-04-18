@@ -16,7 +16,7 @@ The shape of histogram must be stored in a previously defined table, in fact sha
 
 Histogram shape can be generated with any other GEN routines. Since no interpolation is used when _GEN40_ processes the translation, it is suggested that the size of the table containing the histogram shape to be reasonably big, in order to obtain more precision (however after the processing the shaping-table can be destroyed in order to re-gain memory). 
 
-This subroutine is designed to be used together with cuserrnd opcode (see [cuserrnd](../../opcodes/cuserrnd) for more information).
+This subroutine is designed to be used together with cuserrnd opcode (see [cuserrnd](../opcodes/cuserrnd.md) for more information).
 
 ## Examples
 
@@ -57,7 +57,7 @@ i   2 time     5.00000:    74.49330
 This is the diagram of the waveform of the GEN40 routine, as used in the example:
 
 <figure markdown="span">
-![f 2 0 16384 40 1](../../images/gen40.png)
+![f 2 0 16384 40 1](../images/gen40.png)
 <figcaption>f 2 0 16384 40 1</figcaption>
 </figure>
 

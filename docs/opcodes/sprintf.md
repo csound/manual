@@ -26,7 +26,7 @@ _Sdst_ -- output string variable
 
 ## Examples
 
-Here is an example of the sprintf opcode. It uses the file [sprintf.csd](../../examples/sprintf.csd).
+Here is an example of the sprintf opcode. It uses the file [sprintf.csd](../examples/sprintf.csd).
 
 ``` csound-csd title="Example of the sprintf opcode." linenums="1"
 --8<-- "examples/sprintf.csd"
@@ -41,7 +41,7 @@ soundin: opened 'impuls20.aiff'
 
 ## See Also
 
-[String Manipulation Opcodes](../../strings/manipulate)
+[String Manipulation Opcodes](../strings/manipulate.md)
 
 ## Credits
 

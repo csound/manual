@@ -61,23 +61,23 @@ _ain_ -- audio input that adds to the velocity of the masses. Amplitude should n
 
 ## Examples
 
-Here is an example of the scanu opcode. It uses the file [scanu.csd](../../examples/scanu.csd).
+Here is an example of the scanu opcode. It uses the file [scanu.csd](../examples/scanu.csd).
 
 ``` csound-csd title="Example of the scanu opcode." linenums="1"
 --8<-- "examples/scanu.csd"
 ```
 
-Here is another example of the scanu opcode. It uses the file [scanu-2.csd](../../examples/scanu-2.csd).
+Here is another example of the scanu opcode. It uses the file [scanu-2.csd](../examples/scanu-2.csd).
 
 ``` csound-csd title="Second example of the scanu opcode." linenums="1"
 --8<-- "examples/scanu-2.csd"
 ```
 
-A musical example featuring the scanu opcode: [Scanu_Shengzheng_Zhang.csd](../../examples/musical/Scanu_Shengzheng_Zhang.csd) by Shengzheng Zhang. This musical example also needs [MIDIpad.mid](../../examples/MIDIpad.mid).
+A musical example featuring the scanu opcode: [Scanu_Shengzheng_Zhang.csd](../examples/musical/Scanu_Shengzheng_Zhang.csd) by Shengzheng Zhang. This musical example also needs [MIDIpad.mid](../examples/MIDIpad.mid).
 
 ## See also
 
-[Scanned Synthesis](../../siggen/scantop)
+[Scanned Synthesis](../siggen/scantop.md)
 
 More information on the Scanned Synthesis opcodes: [Working with Scanned Synthesis](http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html), written by Steven Yi, and some [tutorials](http://www.csounds.com/scanned/) by Richard Boulanger.
 

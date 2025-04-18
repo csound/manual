@@ -7,7 +7,7 @@ Convolves a signal and an impulse response.
 
 Output is the convolution of signal _ain_ and the impulse response contained in _ifilcod_. If more than one output signal is supplied, each will be convolved with the same impulse response. Note that it is considerably more efficient to use one instance of the operator when processing a mono input to create stereo, or quad, outputs.
 
-Note: this opcode can also be written as [convle](../../opcodes/convle).
+Note: this opcode can also be written as [convle](../opcodes/convle.md).
 
 ## Syntax
 ``` csound-orc
@@ -45,7 +45,7 @@ The author intends to create a higher-level operator at some stage, that would m
 
 ## Examples
 
-Create frequency domain impulse response file using the [cvanal utility](../../utility/cvanal):
+Create frequency domain impulse response file using the [cvanal utility](../utility/cvanal.md):
 
 ```
 csound -Ucvanal l1_44.wav l1_44.cv
@@ -57,7 +57,7 @@ Determine duration of impulse response. For high accuracy, determine the number 
 duration = (sample frames)/(sample rate of soundfile)
 ```
 
-This is due to the fact that the [sndinfo utility](../../utility/sndinfo) only reports the duration to the nearest 10ms. If you have a utility that reports the duration to the required accuracy, then you can simply use the reported value directly.
+This is due to the fact that the [sndinfo utility](../utility/sndinfo.md) only reports the duration to the nearest 10ms. If you have a utility that reports the duration to the required accuracy, then you can simply use the reported value directly.
 
 ```
 sndinfo l1_44.wav
@@ -89,7 +89,7 @@ Accounting for the initial delay:
               = 1.32s
 ```
 
-Here is similar example of the convolve opcode. It uses the file [convolve.csd](../../examples/convolve.csd).
+Here is similar example of the convolve opcode. It uses the file [convolve.csd](../examples/convolve.csd).
 
 ``` csound-csd title="Example of the convolve opcode." linenums="1"
 --8<-- "examples/convolve.csd"
@@ -97,7 +97,7 @@ Here is similar example of the convolve opcode. It uses the file [convolve.csd](
 
 ## See also
 
-[Convolution and Morphing](../../sigmod/conmorph)
+[Convolution and Morphing](../sigmod/conmorph.md)
 
 ## Credits
 

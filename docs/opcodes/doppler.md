@@ -31,7 +31,7 @@ _kmicposition_ -- Position of the recording microphone in meters. The distance b
 
 ## Examples
 
-Here is an example of the doppler opcode. It uses the file [doppler.csd](../../examples/doppler.csd).
+Here is an example of the doppler opcode. It uses the file [doppler.csd](../examples/doppler.csd).
 
 ``` csound-csd title="Example of the doppler opcode." linenums="1"
 --8<-- "examples/doppler.csd"
@@ -39,7 +39,7 @@ Here is an example of the doppler opcode. It uses the file [doppler.csd](../../e
 
 ## See also
 
-[Special Effects](../../sigmod/speciale)
+[Special Effects](../sigmod/speciale.md)
 
 ## Credits
 

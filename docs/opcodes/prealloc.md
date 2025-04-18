@@ -25,7 +25,7 @@ All instances of _prealloc_ must be defined in the header section, not in the in
 
 ## Examples
 
-Here is an example of the prealloc opcode. It uses the file [prealloc.csd](../../examples/prealloc.csd).
+Here is an example of the prealloc opcode. It uses the file [prealloc.csd](../examples/prealloc.csd).
 
 ``` csound-csd title="Example of the prealloc opcode." linenums="1"
 --8<-- "examples/prealloc.csd"
@@ -33,7 +33,7 @@ Here is an example of the prealloc opcode. It uses the file [prealloc.csd](../..
 
 ## See also
 
-[Real-time Performance Control](../../control/realtime)
+[Real-time Performance Control](../control/realtime.md)
 
 ## Credits
 

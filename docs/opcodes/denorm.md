@@ -22,7 +22,7 @@ If CPU usage goes to 100% at the end of reverb tails, or you get audio glitches 
 
 ## Examples
 
-Here is an example of the denorm opcode. It uses the file [denorm.csd](../../examples/denorm.csd).
+Here is an example of the denorm opcode. It uses the file [denorm.csd](../examples/denorm.csd).
 
 ``` csound-csd title="Example of the denorm opcode." linenums="1"
 --8<-- "examples/denorm.csd"
@@ -30,7 +30,7 @@ Here is an example of the denorm opcode. It uses the file [denorm.csd](../../exa
 
 ## See also
 
-[Sample Level Operators](../../sigmod/sample)
+[Sample Level Operators](../sigmod/sample.md)
 
 ## Credits
 

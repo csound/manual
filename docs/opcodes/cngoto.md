@@ -10,11 +10,11 @@ Transfers control on every pass when the condition is _not_ true.
 cngoto condition, label
 ```
 
-where _label_ is in the same instrument block and is not an expression, and where _condition_ uses one of the Relational operators (_&lt;_,_ =_, _&lt;=_, _==_, _!=_) (and _=_ for convenience, see also under [Conditional Values](../../control/conditional)).
+where _label_ is in the same instrument block and is not an expression, and where _condition_ uses one of the Relational operators (_&lt;_,_ =_, _&lt;=_, _==_, _!=_) (and _=_ for convenience, see also under [Conditional Values](../control/conditional.md)).
 
 ## Examples
 
-Here is an example of the cngoto opcode. It uses the file [cngoto.csd](../../examples/cngoto.csd).
+Here is an example of the cngoto opcode. It uses the file [cngoto.csd](../examples/cngoto.csd).
 
 ``` csound-csd title="Example of the cngoto opcode." linenums="1"
 --8<-- "examples/cngoto.csd"
@@ -30,7 +30,7 @@ kval = 1.999639, kfreq = 440.000000
 
 ## See also
 
-[Program Flow Control](../../control/pgmctl)
+[Program Flow Control](../control/pgmctl.md)
 
 ## Credits
 

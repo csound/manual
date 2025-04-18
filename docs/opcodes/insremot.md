@@ -5,7 +5,7 @@ category:Remote Opcodes
 # insremot
 An opcode which can be used to implement a remote orchestra. This opcode will send note events from a source machine to one destination.
 
-With the _insremot_ and [insglobal](../../opcodes/insglobal) opcodes you are able to perform instruments on remote machines and control them from a master machine. The remote opcodes are implemented using the master/client model. All the machines involved contain the same orchestra but only the master machine contains the information of the score. During the performance the master machine sends the note events to the clients. The _insremot_ opcode will send events from a source machine to one destination if you want to send events to many destinations (broadcast) use the [insglobal](../../opcodes/insglobal) opcode instead. These two opcodes can be used in combination.
+With the _insremot_ and [insglobal](../opcodes/insglobal.md) opcodes you are able to perform instruments on remote machines and control them from a master machine. The remote opcodes are implemented using the master/client model. All the machines involved contain the same orchestra but only the master machine contains the information of the score. During the performance the master machine sends the note events to the clients. The _insremot_ opcode will send events from a source machine to one destination if you want to send events to many destinations (broadcast) use the [insglobal](../opcodes/insglobal.md) opcode instead. These two opcodes can be used in combination.
 
 ## Syntax
 ``` csound-orc
@@ -36,7 +36,7 @@ _instrnum_ -- a list of instrument numbers which will be played on the destinati
 
 ## Examples
 
-Here is an example of the insremot opcode. It uses the files [insremot.csd](../../examples/insremot.csd) and [insremotM.csd](../../examples/insremotM.csd).
+Here is an example of the insremot opcode. It uses the files [insremot.csd](../examples/insremot.csd) and [insremotM.csd](../examples/insremotM.csd).
 
 ``` csound-csd title="Examples of the insremot opcode." linenums="1"
 --8<-- "examples/insremot.csd"
@@ -48,7 +48,7 @@ Here is an example of the insremot opcode. It uses the files [insremot.csd](../.
 
 ## See also
 
-[Remote Opcodes](../../oscnetwork/Remote)
+[Remote Opcodes](../oscnetwork/Remote.md)
 
 ## Credits
 

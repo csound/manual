@@ -28,7 +28,7 @@ y = k0 + k1*x + k2*x^2 + k3*x^3 + ...
 
 ## Examples
 
-Here is an example of the polynomial opcode. It uses the file [polynomial.csd](../../examples/polynomial.csd).
+Here is an example of the polynomial opcode. It uses the file [polynomial.csd](../examples/polynomial.csd).
 
 ``` csound-csd title="Example of the polynomial opcode." linenums="1"
 --8<-- "examples/polynomial.csd"
@@ -36,9 +36,9 @@ Here is an example of the polynomial opcode. It uses the file [polynomial.csd](.
 
 ## See also
 
-[Waveshaping](../../sigmod/wavshape)
+[Waveshaping](../sigmod/wavshape.md)
 
-[Opcode Equivalents of Functions](../../math/opeqfunc)
+[Opcode Equivalents of Functions](../math/opeqfunc.md)
 
 ## Credits
 

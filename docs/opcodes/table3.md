@@ -30,7 +30,7 @@ _iwrap_ (optional) -- wraparound index flag. The default value is 0.
 
 ### Performance
 
-_table3_ is identical to [tablei](../../opcodes/tablei), except that it uses cubic interpolation. (New in Csound version 3.50).
+_table3_ is identical to [tablei](../opcodes/tablei.md), except that it uses cubic interpolation. (New in Csound version 3.50).
 
 > :warning: **Warning**
 > 
@@ -38,6 +38,6 @@ _table3_ is identical to [tablei](../../opcodes/tablei), except that it uses cub
 
 ## See Also
 
-[Table Access](../../siggen/tableacc)
+[Table Access](../siggen/tableacc.md)
 
 More information on this opcode: [http://www.csoundjournal.com/issue12/genInstruments.html](http://www.csoundjournal.com/issue12/genInstruments.html)  , written by Jacob Joaquin

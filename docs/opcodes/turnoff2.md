@@ -43,7 +43,7 @@ _krelease_ -- if non-zero, the turned off instances are allowed to release, othe
 
 ## Examples
 
-Here is an example of the turnoff2 opcode. It uses the file [turnoff2.csd](../../examples/turnoff2.csd).
+Here is an example of the turnoff2 opcode. It uses the file [turnoff2.csd](../examples/turnoff2.csd).
 
 ``` csound-csd title="Example of the turnoff2 opcode." linenums="1"
 --8<-- "examples/turnoff2.csd"
@@ -51,7 +51,7 @@ Here is an example of the turnoff2 opcode. It uses the file [turnoff2.csd](../..
 
 ## See also
 
-[Duration Control Statements](../../control/durctl)
+[Duration Control Statements](../control/durctl.md)
 
 ## Credits
 

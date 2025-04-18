@@ -20,8 +20,8 @@ where the arguments $a$ and $b$ may be further expressions.
 
 ## Examples
 
-See the entry for the [&lt;&lt;](../../opcodes/opbitshl) operator for an example.
+See the entry for the [&lt;&lt;](../opcodes/opbitshl.md) operator for an example.
 
 ## See also
 
-[Arithmetic and Logic Operations](../../math/artlogic)
+[Arithmetic and Logic Operations](../math/artlogic.md)

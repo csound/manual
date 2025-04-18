@@ -18,7 +18,7 @@ _iPort_ -- port number optained from a _serialBegin_opcode.
 
 ## See Also
 
-[non-MIDI Devices](../../oscnetwork/nonMIDIdevices)
+[non-MIDI Devices](../oscnetwork/nonMIDIdevices.md)
 
 ## Credits
 

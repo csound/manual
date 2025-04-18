@@ -74,7 +74,7 @@ _Vosim_ was created to emulate voice sounds using a model of glottal pulse. Rich
 
 As stated, formant bandwidth depends on the ratio between pulse burst and silence in an event. But this is not an independent parameter: The fundamental decides event length, and formant center defines the pulse length. It is therefore impossible to guarantee a specific burst/silence ratio, since the burst length has to be an integer multiple of pulse length. The decay of pulses can be used to smooth the transition from N to N+/-1 pulses, but there will still be steps in the spectral profile of output. The example code below shows one approach to this.
 
-All input parameters are k-rate. The input parameters are only used to set up each new event (or grain). Event amplitude is fixed for each event at initialization. In normal parameter ranges, when [ksmps](../../opcodes/ksmps) &lt;500, the k-rate parameters are updated more often than events are created. In any case, no wide-band noise will be injected in the system due to k-rate inputs being updated less often than they are read, but some other artefacts could be created.
+All input parameters are k-rate. The input parameters are only used to set up each new event (or grain). Event amplitude is fixed for each event at initialization. In normal parameter ranges, when [ksmps](../opcodes/ksmps.md) &lt;500, the k-rate parameters are updated more often than events are created. In any case, no wide-band noise will be injected in the system due to k-rate inputs being updated less often than they are read, but some other artefacts could be created.
 
 The opcode should behave reasonably in the face of all user inputs. Some details:
 
@@ -89,7 +89,7 @@ With asymmetric pulse table there may be some use for negative _kForm_ or negati
 
 ## Examples
 
-Here is an example of the vosim opcode. It uses the file [vosim.csd](../../examples/vosim.csd).
+Here is an example of the vosim opcode. It uses the file [vosim.csd](../examples/vosim.csd).
 
 ``` csound-orc title="Example of the vosim opcode." linenums="1"
 --8<-- "examples/vosim.csd"
@@ -97,7 +97,7 @@ Here is an example of the vosim opcode. It uses the file [vosim.csd](../../examp
 
 ## See Also
 
-[Granular Synthesis](../../siggen/granular)
+[Granular Synthesis](../siggen/granular.md)
 
 ## Credits
 

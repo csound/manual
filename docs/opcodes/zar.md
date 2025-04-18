@@ -18,7 +18,7 @@ _zar_ reads the array of floats at _kndx_ in za space, which are ksmps number of
 
 ## Examples
 
-Here is an example of the zar opcode. It uses the file [zar.csd](../../examples/zar.csd).
+Here is an example of the zar opcode. It uses the file [zar.csd](../examples/zar.csd).
 
 ``` csound-csd title="Example of the zar opcode." linenums="1"
 --8<-- "examples/zar.csd"
@@ -26,7 +26,7 @@ Here is an example of the zar opcode. It uses the file [zar.csd](../../examples/
 
 ## See also
 
-[Zak Patch System](../../zak/top)
+[Zak Patch System](../zak/top.md)
 
 ## Credits
 

@@ -56,7 +56,7 @@ Output values of the HVS are influenced by the motion pointer, a point whose pos
 
 ## Examples
 
-Here is an example of the hvs1 opcode. It uses the file [hvs1.csd](../../examples/hvs1.csd).
+Here is an example of the hvs1 opcode. It uses the file [hvs1.csd](../examples/hvs1.csd).
 
 ``` csound-orc title="Example of the hvs1 opcode." linenums="1"
 --8<-- "examples/hvs1.csd"
@@ -64,7 +64,7 @@ Here is an example of the hvs1 opcode. It uses the file [hvs1.csd](../../example
 
 ## See also
 
-[Hyper Vectorial Synthesis](../../siggen/hvs)
+[Hyper Vectorial Synthesis](../siggen/hvs.md)
 
 ## Credits
 

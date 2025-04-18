@@ -26,7 +26,7 @@ Notice that no wrap nor limit mode is implemented.  So, if  an index attempt to 
 
 ## See also
 
-[Tables of vectors operators](../../vectorial/tables)
+[Tables of vectors operators](../vectorial/tables.md)
 
 ## Credits
 

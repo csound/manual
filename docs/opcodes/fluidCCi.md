@@ -30,7 +30,7 @@ This opcode is useful for setting controller values at init time. For continous 
 
 ## Examples
 
-Here is an example of the fluidCCi opcode. It uses the file [fluidCCi.csd](../../examples/fluidCCi.csd).
+Here is an example of the fluidCCi opcode. It uses the file [fluidCCi.csd](../examples/fluidCCi.csd).
 
 ``` csound-csd title="Example of the fluidCCi opcode." linenums="1"
 --8<-- "examples/fluidCCi.csd"
@@ -38,7 +38,7 @@ Here is an example of the fluidCCi opcode. It uses the file [fluidCCi.csd](../..
 
 ## See also
 
-[Soundfonts](../../siggen/sample)
+[Soundfonts](../siggen/sample.md)
 
 More information on soundfonts is in the Floss Manuals: [https://flossmanual.csound.com/midi/reading-midi-files](https://flossmanual.csound.com/midi/reading-midi-files)
 

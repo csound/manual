@@ -30,7 +30,7 @@ _kcol_ -- column to be set.
 
 ## Examples
 
-Here is an example of the setcol opcode. It uses the file [setcol.csd](../../examples/setcol.csd).
+Here is an example of the setcol opcode. It uses the file [setcol.csd](../examples/setcol.csd).
 
 ``` csound-csd title="Example of the setcol opcode." linenums="1"
 --8<-- "examples/setcol.csd"
@@ -38,9 +38,9 @@ Here is an example of the setcol opcode. It uses the file [setcol.csd](../../exa
 
 ## See Also
 
-[Vectorial Opcodes](../../vectorial/top)
+[Vectorial Opcodes](../vectorial/top.md)
 
-[Array Opcodes](../../math/array)
+[Array Opcodes](../math/array.md)
 
 ## Credits
 

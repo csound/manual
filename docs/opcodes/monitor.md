@@ -17,11 +17,11 @@ In the array form it reads all chanels to a one dimensional array.
 
 This opcode can be used for monitoring the output signal from csound. It should not be used for processing the signal further.
 
-See the entry for the [fout](../../opcodes/fout) opcode for an example of usage of _monitor_.
+See the entry for the [fout](../opcodes/fout.md) opcode for an example of usage of _monitor_.
 
 ## Examples
 
-Here is an example of the monitor opcode. It uses the file [monitor.csd](../../examples/monitor.csd).
+Here is an example of the monitor opcode. It uses the file [monitor.csd](../examples/monitor.csd).
 
 ``` csound-csd title="Example of the monitor opcode." linenums="1"
 --8<-- "examples/monitor.csd"
@@ -29,7 +29,7 @@ Here is an example of the monitor opcode. It uses the file [monitor.csd](../../e
 
 ## See also
 
-[Signal Output](../../sigio/output)
+[Signal Output](../sigio/output.md)
 
 ## Credits
 

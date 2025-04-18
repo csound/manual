@@ -30,7 +30,7 @@ When _itime_ is not 0, the opcode print on the first k-cycle it is called, and s
 
 ## Examples
 
-Here is an example of the printk opcode. It uses the file [printk.csd](../../examples/printk.csd).
+Here is an example of the printk opcode. It uses the file [printk.csd](../examples/printk.csd).
 
 ``` csound-csd title="Example of the printk opcode." linenums="1"
 --8<-- "examples/printk.csd"
@@ -48,7 +48,7 @@ i   1 time     4.00002:    79.93327
 
 ## See also
 
-[Printing and Display](../../sigio/pdisplay)
+[Printing and Display](../sigio/pdisplay.md)
 
 ## Credits
 

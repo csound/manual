@@ -14,7 +14,7 @@ aout[] bformdec2 isetup, abform[], [idecoder, idistance, ifreq, imix, \
 ### Initialization
 
 _isetup_ -- loudspeaker setup.
-There are currently 8 supported setups, the first five are backwards compatible with [bformdec1](../../opcodes/bformdec1):
+There are currently 8 supported setups, the first five are backwards compatible with [bformdec1](../opcodes/bformdec1.md):
 
 (Note that horizontal angles are measured anticlockwise in this description.)
 
@@ -49,7 +49,7 @@ _ifiler_ -- right HRTF spectral data file
 
 > :memo: **Note**
 >
-> Spectral datafiles (based on the MIT HRTF database) should be in the current directory or the SADIR (see the [hrtfstat documentation](../../opcodes/hrtfstat)).
+> Spectral datafiles (based on the MIT HRTF database) should be in the current directory or the SADIR (see the [hrtfstat documentation](../opcodes/hrtfstat.md)).
 
 ### Performance
 
@@ -61,7 +61,7 @@ The opcode receives as input an audio type array with an Ambisonics signal, and 
 
 ## See also
 
-[Panning and Spatialization: Ambisonics](../../sigmod/panspatl)
+[Panning and Spatialization: Ambisonics](../sigmod/panspatl.md)
 
 ## Credits
 

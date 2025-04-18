@@ -45,7 +45,7 @@ atps  pvsynth   ftps                     ; synthesise it
 
 Depending on the input, this will transform a pitched sound into an inharmonic, bell-like sound.
 
-Here is an example of the use of the _pvshift_ opcode. It uses the file [pvshift.csd](../../examples/pvshift.csd).
+Here is an example of the use of the _pvshift_ opcode. It uses the file [pvshift.csd](../examples/pvshift.csd).
 
 ``` csound-csd title="Example of the _pvshift_ opcode." linenums="1"
 --8<-- "examples/pvshift.csd"
@@ -53,7 +53,7 @@ Here is an example of the use of the _pvshift_ opcode. It uses the file [pvshift
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

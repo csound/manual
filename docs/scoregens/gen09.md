@@ -14,7 +14,7 @@ f # time size 9 pna stra phsa pnb strb phsb ...
 
 ### Initialization
 
-_size_ -- number of points in the table. Must be a power of 2 or power-of-2 plus 1 (see [f statement](../../scoregens/f)).
+_size_ -- number of points in the table. Must be a power of 2 or power-of-2 plus 1 (see [f statement](../scoregens/f.md)).
 
 _pna, pnb_, etc. -- partial no. (relative to a fundamental that would occupy _size_ locations per cycle) of sinusoid a, sinusoid b, etc. Must be positive, but need not be a whole number, i.e., non-harmonic partials are permitted. Partials may be in any order.
 
@@ -29,7 +29,7 @@ _phsa, phsb_, etc. -- initial phase of partials _pna, pnb,_ etc., expressed in d
 
 ## Examples
 
-Here is an example of the GEN09 routine. It uses the files [gen09.csd](../../examples/gen09.csd).
+Here is an example of the GEN09 routine. It uses the files [gen09.csd](../examples/gen09.csd).
 
 ``` csound-csd title="Example of the GEN09 routine." linenums="1"
 --8<-- "examples/gen09.csd"
@@ -38,26 +38,26 @@ Here is an example of the GEN09 routine. It uses the files [gen09.csd](../../exa
 These are the diagrams of the waveforms of the GEN09 routines, as used in the example:
 
 <figure markdown="span">
-![gi1 ftgen 1,0,2^10,9,  1,3,0,   3,1,0, 9,0.333,180 - approximation of a square wave](../../images/gen09_1.png)
+![gi1 ftgen 1,0,2^10,9,  1,3,0,   3,1,0, 9,0.333,180 - approximation of a square wave](../images/gen09_1.png)
 <figcaption>gi1 ftgen 1,0,2^10,9,  1,3,0,   3,1,0, 9,0.333,180 - approximation of a square wave</figcaption>
 </figure>
 
 <figure markdown="span">
-![gi2 ftgen 2,0,2^10,9,  1,3,180,   3,1,0, 9,0.333,0 - same values as gi1, except phase value](../../images/gen09_2.png)
+![gi2 ftgen 2,0,2^10,9,  1,3,180,   3,1,0, 9,0.333,0 - same values as gi1, except phase value](../images/gen09_2.png)
 <figcaption>gi2 ftgen 2,0,2^10,9,  1,3,180,   3,1,0, 9,0.333,0 - same values as gi1, except phase value</figcaption>
 </figure>
 
 <figure markdown="span">
-![gi3 ftgen 3,0,2^10,9,  1,2,0,   3,2,0, 9,0.333,180 - inharmonic partials, but with distortion due to the sudden jump in ending and beginning of the wave](../../images/gen09_3.png)
+![gi3 ftgen 3,0,2^10,9,  1,2,0,   3,2,0, 9,0.333,180 - inharmonic partials, but with distortion due to the sudden jump in ending and beginning of the wave](../images/gen09_3.png)
 <figcaption>gi3 ftgen 3,0,2^10,9,  1,2,0,   3,2,0, 9,0.333,180 - inharmonic partials, but with distortion due to the sudden jump in ending and beginning of the wave</figcaption>
 </figure>
 
 <figure markdown="span">
-![gi4 ftgen 4,0,2^10,9,  1,2,180,   3,2,0, 9,0.333,0 - same ratio as gi3, except with less artefacts](../../images/gen09_4.png)
+![gi4 ftgen 4,0,2^10,9,  1,2,180,   3,2,0, 9,0.333,0 - same ratio as gi3, except with less artefacts](../images/gen09_4.png)
 <figcaption>gi4 ftgen 4,0,2^10,9,  1,2,180,   3,2,0, 9,0.333,0 - same ratio as gi3, except with less artefacts</figcaption>
 </figure>
 
 ## See Also
 
-[GEN10](../../scoregens/gen10),
-[GEN19](../../scoregens/gen19)
+[GEN10](../scoregens/gen10.md),
+[GEN19](../scoregens/gen19.md)

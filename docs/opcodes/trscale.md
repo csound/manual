@@ -24,7 +24,7 @@ _kgain_ -- amplitude scaling (default 1)
 
 ## Examples
 
-Here is an example of the trscale opcode. It uses the file [trscale.csd](../../examples/trscale.csd).
+Here is an example of the trscale opcode. It uses the file [trscale.csd](../examples/trscale.csd).
 
 ``` csound-csd title="Example of the trscale opcode." linenums="1"
 --8<-- "examples/trscale.csd"
@@ -34,7 +34,7 @@ The example above shows partial tracking of an ifd-analysis signal and linear ad
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

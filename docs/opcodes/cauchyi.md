@@ -29,7 +29,7 @@ _xcps_ -- the frequency which new random numbers are generated.
 
 ## Examples
 
-Here is an example of the cauchyi opcode. It uses the file [cauchyi.csd](../../examples/cauchyi.csd).
+Here is an example of the cauchyi opcode. It uses the file [cauchyi.csd](../examples/cauchyi.csd).
 
 ``` csound-orc title="Example of the cauchyi opcode." linenums="1"
 --8<-- "examples/cauchyi.csd"
@@ -37,7 +37,7 @@ Here is an example of the cauchyi opcode. It uses the file [cauchyi.csd](../../e
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
 ## Credits
 

@@ -5,7 +5,7 @@ category:Signal Generators:Sample Playback
 # sfinstrm
 Plays a SoundFont2 (SF2) sample instrument, generating a mono sound.
 
-These opcodes allow management the sample-structure of SF2 files. In order to understand the usage of these opcodes, the user must have some knowledge of the SF2 format, so a brief description of this format can be found in the [SoundFont2 File Format](../../siggen/sample) section.
+These opcodes allow management the sample-structure of SF2 files. In order to understand the usage of these opcodes, the user must have some knowledge of the SF2 format, so a brief description of this format can be found in the [SoundFont2 File Format](../siggen/sample.md) section.
 
 ## Syntax
 ``` csound-orc
@@ -39,17 +39,17 @@ Adjustment of the amplitude can be done by varying the _xamp_ argument, which ac
 
 The _ioffset_ parameter allows the sound to start from a sample different than the first one. The user should make sure that its value is within the length of the specific sound. Otherwise, Csound will probably crash.
 
-_sfinstrm_ is a mono version of [sfinstr](../../opcodes/sfinstr). This is the fastest opcode of the SF2 family.
+_sfinstrm_ is a mono version of [sfinstr](../opcodes/sfinstr.md). This is the fastest opcode of the SF2 family.
 
 These opcodes only support the sample structure of SF2 files. The modulator structure of the SoundFont2 format is not supported in Csound. Any modulation or processing to the sample data is left to the Csound user, bypassing all restrictions forced by the SF2 standard.
 
 ## Examples
 
-See the example for [sfinstr](../../opcodes/sfinstr).
+See the example for [sfinstr](../opcodes/sfinstr.md).
 
 ## See also
 
-[Soundfonts](../../siggen/sample)
+[Soundfonts](../siggen/sample.md)
 
 More information on soundfonts is in the Floss Manuals: [https://flossmanual.csound.com/midi/reading-midi-files](https://flossmanual.csound.com/midi/reading-midi-files)
 

@@ -27,7 +27,7 @@ _aout_ -- The audio signal output from the framebuffer. _kin_ -- The k-rate arra
 
 ## Examples
 
-Here is a simple example of the framebuffer opcode. It uses the file [framebuffer.csd](../../examples/framebuffer.csd).
+Here is a simple example of the framebuffer opcode. It uses the file [framebuffer.csd](../examples/framebuffer.csd).
 
 ``` csound-csd title="Example of the framebuffer opcode." linenums="1"
 --8<-- "examples/framebuffer.csd"
@@ -35,7 +35,7 @@ Here is a simple example of the framebuffer opcode. It uses the file [framebuffe
 
 ## See Also
 
-[Array-based spectral opcodes](../../spectral/arrays)
+[Array-based spectral opcodes](../spectral/arrays.md)
 
 ## Credits
 

@@ -22,7 +22,7 @@ If an instrument with the specified name does not exist, an init error occurs, a
 
 ## Examples
 
-Here is an example of the nstrnum opcode. It uses the file [nstrnum_nstrstr.csd](../../examples/nstrnum_nstrstr.csd).
+Here is an example of the nstrnum opcode. It uses the file [nstrnum_nstrstr.csd](../examples/nstrnum_nstrstr.csd).
 
 ``` csound-csd title="Example of the nstrnum opcode." linenums="1"
 --8<-- "examples/nstrnum_nstrstr.csd"
@@ -35,11 +35,11 @@ instrument name = john
 instrument number = 2
 ```
 
-A musical examples featuring the nstrnum opcode: [TivalNstrnum_Yi.csd](../../examples/musical/TivalNstrnum_Yi.csd) by Steven Yi.
+A musical examples featuring the nstrnum opcode: [TivalNstrnum_Yi.csd](../examples/musical/TivalNstrnum_Yi.csd) by Steven Yi.
 
 ## See also
 
-[Initialization and Reinitialization](../../control/reinitn)
+[Initialization and Reinitialization](../control/reinitn.md)
 
 ## Credits
 

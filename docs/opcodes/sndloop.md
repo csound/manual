@@ -30,7 +30,7 @@ _ktrig_ -- trigger signal: when 0, processing is bypassed. When switched on (ktr
 
 ## Examples
 
-Here is an example of the sndloop opcode. It uses the file [sndloop.csd](../../examples/sndloop.csd).
+Here is an example of the sndloop opcode. It uses the file [sndloop.csd](../examples/sndloop.csd).
 
 ``` csound-csd title="Example of the sndloop opcode." linenums="1"
 --8<-- "examples/sndloop.csd"
@@ -40,7 +40,7 @@ The example above shows the basic operation of sndloop. Pitch can be controlled 
 
 ## See also
 
-[Sample Playback](../../siggen/sample)
+[Sample Playback](../siggen/sample.md)
 
 ## Credits
 

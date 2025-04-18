@@ -5,7 +5,7 @@ category:Signal Generators:Sample Playback
 # sfplist
 Prints a list of all presets of a previously loaded SoundFont2 (SF2) sample file.
 
-These opcodes allow management the sample-structure of SF2 files. In order to understand the usage of these opcodes, the user must have some knowledge of the SF2 format, so a brief description of this format can be found in the [SoundFont2 File Format](../../siggen/sample) section.
+These opcodes allow management the sample-structure of SF2 files. In order to understand the usage of these opcodes, the user must have some knowledge of the SF2 format, so a brief description of this format can be found in the [SoundFont2 File Format](../siggen/sample.md) section.
 
 ## Syntax
 ``` csound-orc
@@ -24,7 +24,7 @@ These opcodes only support the sample structure of SF2 files. The modulator stru
 
 ## Examples
 
-Here is an example of the sfplist opcode. It uses the file [sfplist.csd](../../examples/sfplist.csd).
+Here is an example of the sfplist opcode. It uses the file [sfplist.csd](../examples/sfplist.csd).
 
 ``` csound-csd title="Example of the sfplist opcode." linenums="1"
 --8<-- "examples/sfplist.csd"
@@ -48,7 +48,7 @@ Preset list of "sf_GMbank.sf2"
 
 ## See also
 
-[Soundfonts](../../siggen/sample)
+[Soundfonts](../siggen/sample.md)
 
 More information on soundfonts is in the Floss Manuals: [https://flossmanual.csound.com/midi/reading-midi-files](https://flossmanual.csound.com/midi/reading-midi-files)
 

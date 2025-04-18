@@ -5,7 +5,7 @@ category:Spectral Processing:STFT
 # pvcross
 Applies the amplitudes from one phase vocoder analysis file to the data from a second file and then performs the resynthesis.
 
-The data is passed, as described above, from a previously called [pvbufread](../../opcodes/pvbufread) unit. The two k-rate amplitude arguments are used to scale the amplitudes of each files separately before they are added together and used in the resynthesis (see below for further explanation). The frequencies of the first file are not used at all in this process. This unit simply allows for cross-synthesis through the application of the amplitudes of the spectra of one signal to the frequencies of a second signal. Unlike [pvinterp](../../opcodes/pvinterp), _pvcross_ does allow for the use of the _ispecwp_ as in [pvoc](../../opcodes/pvoc) and [vpvoc](../../opcodes/vpvoc).
+The data is passed, as described above, from a previously called [pvbufread](../opcodes/pvbufread.md) unit. The two k-rate amplitude arguments are used to scale the amplitudes of each files separately before they are added together and used in the resynthesis (see below for further explanation). The frequencies of the first file are not used at all in this process. This unit simply allows for cross-synthesis through the application of the amplitudes of the spectra of one signal to the frequencies of a second signal. Unlike [pvinterp](../opcodes/pvinterp.md), _pvcross_ does allow for the use of the _ispecwp_ as in [pvoc](../opcodes/pvoc.md) and [vpvoc](../opcodes/vpvoc.md).
 
 ## Syntax
 ``` csound-orc
@@ -14,7 +14,7 @@ ares pvcross ktimpnt, kfmod, ifile, kampscale1, kampscale2 [, ispecwp]
 
 ### Initialization
 
-_ifile_ -- the _pvoc_ number (n in pvoc.n) or the name in quotes of the analysis file made using _pvanal_. (See [pvoc](../../opcodes/pvoc).)
+_ifile_ -- the _pvoc_ number (n in pvoc.n) or the name in quotes of the analysis file made using _pvanal_. (See [pvoc](../opcodes/pvoc.md).)
 
 _ispecwp_ (optional, default=0) -- if non-zero, attempts to preserve the spectral envelope while
 its frequency content is varied by _kfmod_. The default value is zero.
@@ -31,7 +31,7 @@ By using these arguments, it is possible to adjust these values before applying 
 
 ## Examples
 
-Below is an example using [pvbufread](../../opcodes/pvbufread) with _pvcross_. In this example the amplitudes used in the resynthesis gradually change from those of the oboe to those of the clarinet. The frequencies, of course, remain those of the clarinet throughout the process since _pvcross_ does not use the frequency data from the file read by _pvbufread_.
+Below is an example using [pvbufread](../opcodes/pvbufread.md) with _pvcross_. In this example the amplitudes used in the resynthesis gradually change from those of the oboe to those of the clarinet. The frequencies, of course, remain those of the clarinet throughout the process since _pvcross_ does not use the frequency data from the file read by _pvbufread_.
 
 ``` csound-orc
 ktime1  line      0, p3, 3.5 ; used as index in the "oboe.pvoc" file
@@ -41,7 +41,7 @@ kcross  expon     0.001, p3, 1
 apv     pvcross   ktime2, 1, "clar.pvoc", 1-kcross, kcross
 ```
 
-Here is a complete example of the pvcross opcode. It uses the file [pvcross.csd](../../examples/pvcross.csd)
+Here is a complete example of the pvcross opcode. It uses the file [pvcross.csd](../examples/pvcross.csd)
 
 ``` csound-csd title="Example of the pvcross opcode." linenums="1"
 --8<-- "examples/pvcross.csd"
@@ -49,7 +49,7 @@ Here is a complete example of the pvcross opcode. It uses the file [pvcross.csd]
 
 ## See Also
 
-[Short-time Fourier Transform (STFT) Resynthesis](../../spectral/stft)
+[Short-time Fourier Transform (STFT) Resynthesis](../spectral/stft.md)
 
 ## Credits
 

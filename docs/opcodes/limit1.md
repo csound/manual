@@ -21,7 +21,7 @@ _karg[]_ -- the argument.
 
 ## Examples
 
-Here is an example of the limit1 opcode. It uses the file [limit1.csd](../../examples/limit1.csd).
+Here is an example of the limit1 opcode. It uses the file [limit1.csd](../examples/limit1.csd).
 
 ``` csound-csd title="Example of the limit1 opcode." linenums="1"
 --8<-- "examples/limit1.csd"
@@ -29,7 +29,7 @@ Here is an example of the limit1 opcode. It uses the file [limit1.csd](../../exa
 
 ## See also
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

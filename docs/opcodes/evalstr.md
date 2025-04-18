@@ -30,7 +30,7 @@ ival evalstr "return 2 + 2"
 print ival
 ```
 
-Here is a complete example of the evalstr opcode. It uses the file [evalstr.csd](../../examples/evalstr.csd).
+Here is a complete example of the evalstr opcode. It uses the file [evalstr.csd](../examples/evalstr.csd).
 
 ``` csound-csd title="Example of the evalstr opcode." linenums="1"
 --8<-- "examples/evalstr.csd"
@@ -38,7 +38,7 @@ Here is a complete example of the evalstr opcode. It uses the file [evalstr.csd]
 
 ## See Also
 
-[String Manipulation Opcodes](../../strings/manipulate)
+[String Manipulation Opcodes](../strings/manipulate.md)
 
 ## Credits
 

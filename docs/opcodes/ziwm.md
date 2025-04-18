@@ -28,7 +28,7 @@ One approach would be to establish certain ranges of zk or za variables to be us
 
 ## Examples
 
-Here is an example of the ziwm opcode. It uses the file [ziwm.csd](../../examples/ziwm.csd).
+Here is an example of the ziwm opcode. It uses the file [ziwm.csd](../examples/ziwm.csd).
 
 ``` csound-csd title="Example of the ziwm opcode." linenums="1"
 --8<-- "examples/ziwm.csd"
@@ -36,7 +36,7 @@ Here is an example of the ziwm opcode. It uses the file [ziwm.csd](../../example
 
 ## See also
 
-[Zak Patch System](../../zak/top)
+[Zak Patch System](../zak/top.md)
 
 ## Credits
 

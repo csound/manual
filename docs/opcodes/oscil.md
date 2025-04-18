@@ -31,15 +31,15 @@ The _oscil_ opcode generates periodic control (or audio) signals consisting of t
 
 Table _ifn_ is incrementally sampled modulo the table length and the value obtained is multiplied by _amp_.
 
-If you need to change the oscillator table with a k-rate signal, you can use [oscilikt](../../opcodes/oscilikt).
+If you need to change the oscillator table with a k-rate signal, you can use [oscilikt](../opcodes/oscilikt.md).
 
 > :memo: **Note**<br>
 >
-> This opcode does not perform any interpolation. This can lead to unexpected behaviour or unclean signals, e.g. for small table sizes and low frequencies. As standard oscillators the usage of [oscili](../../opcodes/oscili) or [poscil](../../opcodes/poscil) is recommended.
+> This opcode does not perform any interpolation. This can lead to unexpected behaviour or unclean signals, e.g. for small table sizes and low frequencies. As standard oscillators the usage of [oscili](../opcodes/oscili.md) or [poscil](../opcodes/poscil.md) is recommended.
 
 ## Examples
 
-Here is an example of the oscil opcode. It uses the file [oscil.csd](../../examples/oscil.csd).
+Here is an example of the oscil opcode. It uses the file [oscil.csd](../examples/oscil.csd).
 
 ``` csound-orc title="Example of the oscil opcode." linenums="1"
 --8<-- "examples/oscil.csd"
@@ -47,4 +47,4 @@ Here is an example of the oscil opcode. It uses the file [oscil.csd](../../examp
 
 ## See also
 
-[Basic Oscillators](../../siggen/basic)
+[Basic Oscillators](../siggen/basic.md)

@@ -5,7 +5,7 @@ category:Orchestra Syntax:Macros
 # &num;define
 Defines a macro.
 
-Macros are textual replacements which are made in the orchestra as it is being read.  The [orchestra macro system](../../orch/macros) in Csound is a very simple one, and uses the characters &num; and &dollar; to define and call macros. This can save typing, and can lead to a coherent structure and consistent style.  This is similar to, but independent of, the [macro system in the score language](../../score/macros).
+Macros are textual replacements which are made in the orchestra as it is being read.  The [orchestra macro system](../orch/macros.md) in Csound is a very simple one, and uses the characters &num; and &dollar; to define and call macros. This can save typing, and can lead to a coherent structure and consistent style.  This is similar to, but independent of, the [macro system in the score language](../score/macros.md).
 
 _&num;define NAME_ -- defines a simple macro. The name of the macro must begin with a letter and can consist of any combination of letters and numbers. Case is significant. This form is limiting, in that the variable names are fixed.  More flexibility can be obtained by using a macro with arguments, described below.
 
@@ -31,7 +31,7 @@ Some care is needed with textual replacement macros, as they can sometimes do st
 
 ## Examples
 
-Here is a simple example of the defining a macro. It uses the file [define.csd](../../examples/define.csd).
+Here is a simple example of the defining a macro. It uses the file [define.csd](../examples/define.csd).
 
 ``` csound-csd title="Simple example of the define macro." linenums="1"
 --8<-- "examples/define.csd"
@@ -45,7 +45,7 @@ Macro definition for CPS
 Macro definition for TABLE
 ```
 
-Here is an example of the defining a macro with arguments. It uses the file [define_args.csd](../../examples/define_args.csd).
+Here is an example of the defining a macro with arguments. It uses the file [define_args.csd](../examples/define_args.csd).
 
 ``` csound-csd title="Example of the define macro with arguments." linenums="1"
 --8<-- "examples/define_args.csd"
@@ -81,7 +81,7 @@ defined when Csound starts and available for use in orchestras.
 
 ## See also
 
-[Orchestra Macros](../../orch/macros)
+[Orchestra Macros](../orch/macros.md)
 
 ## Credits
 

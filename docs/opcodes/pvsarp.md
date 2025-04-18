@@ -30,13 +30,13 @@ _kgain_ -- gain boost applied to target bin
 
 ## Examples
 
-Here is an example of the pvsarp opcode. It uses the file [pvsarp.csd](../../examples/pvsarp.csd)
+Here is an example of the pvsarp opcode. It uses the file [pvsarp.csd](../examples/pvsarp.csd)
 
 ``` csound-csd title="Example of the pvsarp opcode." linenums="1"
 --8<-- "examples/pvsarp.csd"
 ```
 
-Here is another example of the pvsarp opcode. It uses the file [pvsarp2.csd](../../examples/pvsarp2.csd)
+Here is another example of the pvsarp opcode. It uses the file [pvsarp2.csd](../examples/pvsarp2.csd)
 
 ``` csound-csd title="Example of the pvsarp opcode." linenums="1"
 --8<-- "examples/pvsarp2.csd"
@@ -44,7 +44,7 @@ Here is another example of the pvsarp opcode. It uses the file [pvsarp2.csd](../
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

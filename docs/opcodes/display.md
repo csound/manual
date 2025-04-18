@@ -5,7 +5,7 @@ category:Signal I/O:Printing and Display
 # display
 Displays the audio or control signals as an amplitude vs. time graph.
 
-These units will print orchestra init-values, or produce graphic display of orchestra control signals and audio signals. Uses X11 windows if enabled, else (or if [-g](../../invoke/cs-options-alphabetically#-g-asciidisplay) flag is set) displays are approximated in ASCII characters.
+These units will print orchestra init-values, or produce graphic display of orchestra control signals and audio signals. Uses X11 windows if enabled, else (or if [-g](../invoke/cs-options-alphabetically.md#-g-asciidisplay) flag is set) displays are approximated in ASCII characters.
 
 ## Syntax
 ``` csound-orc
@@ -27,7 +27,7 @@ _display_ -- displays the audio or control signal _xsig_ every _iprd_ seconds, a
 
 ## Examples
 
-Here is an example of the display opcode. It uses the file [display.csd](../../examples/display.csd).
+Here is an example of the display opcode. It uses the file [display.csd](../examples/display.csd).
 
 ``` csound-csd title="Example of the display opcode." linenums="1"
 --8<-- "examples/display.csd"
@@ -35,7 +35,7 @@ Here is an example of the display opcode. It uses the file [display.csd](../../e
 
 ## See also
 
-[Printing and Display](../../sigio/pdisplay)
+[Printing and Display](../sigio/pdisplay.md)
 
 ## Credits
 

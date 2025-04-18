@@ -36,11 +36,11 @@ On each access a particular data item of the Wiimote is written. The currently i
 
 ## Examples
 
-See the example for [wiiconnect](../../opcodes/wiiconnect).
+See the example for [wiiconnect](../opcodes/wiiconnect.md).
 
 ## See Also
 
-[non-MIDI Devices](../../oscnetwork/nonMIDIdevices)
+[non-MIDI Devices](../oscnetwork/nonMIDIdevices.md)
 
 ## Credits
 

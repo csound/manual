@@ -22,11 +22,11 @@ Calling _control_ will create a new slider on the screen. There is no theoretica
 
 ## Examples
 
-See the [setctrl](../../opcodes/setctrl) opcode for an example.
+See the [setctrl](../opcodes/setctrl.md) opcode for an example.
 
 ## See also
 
-[Sensing and Control: TCL/TK widgets](../../control/sensing)
+[Sensing and Control: TCL/TK widgets](../control/sensing.md)
 
 ## Credits
 

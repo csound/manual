@@ -5,7 +5,7 @@ category:Orchestra Syntax:Macros
 # &num;ifdef
 Conditional reading of code.
 
-Macros are textual replacements which are made in the orchestra as it is being read.  The [orchestra macro system](../../orch/macros) in Csound is a very simple one, and uses the characters &num; and &dollar; to define and call macros. This can save typing, and can lead to a coherent structure and consistent style.  This is similar to, but independent of, the [macro system in the score language](../../score/macros).
+Macros are textual replacements which are made in the orchestra as it is being read.  The [orchestra macro system](../orch/macros.md) in Csound is a very simple one, and uses the characters &num; and &dollar; to define and call macros. This can save typing, and can lead to a coherent structure and consistent style.  This is similar to, but independent of, the [macro system in the score language](../score/macros.md).
 
 If a macro is defined then _&num;ifdef_ can incorporate text into an orchestra upto the next _&num;end_.
 
@@ -37,7 +37,7 @@ Here is a simple example of the conditional.
     endin
 ```
 
-Here is another example of the #ifdef conditional. It uses the file [ifdef.csd](../../examples/ifdef.csd).
+Here is another example of the #ifdef conditional. It uses the file [ifdef.csd](../examples/ifdef.csd).
 
 ``` csound-csd title="Detailed example of the #ifdef form." linenums="1"
 --8<-- "examples/ifdef.csd"
@@ -45,7 +45,7 @@ Here is another example of the #ifdef conditional. It uses the file [ifdef.csd](
 
 ## See also
 
-[Orchestra Macros](../../orch/macros)
+[Orchestra Macros](../orch/macros.md)
 
 ## Credits
 

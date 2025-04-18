@@ -26,7 +26,7 @@ _kscal_ -- amplitude scaling of output.
 
 ## Examples
 
-Here is an example of the trhighest opcode. It uses the file [trhighest.csd](../../examples/trhighest.csd).
+Here is an example of the trhighest opcode. It uses the file [trhighest.csd](../examples/trhighest.csd).
 
 ``` csound-csd title="Example of the trhighest opcode." linenums="1"
 --8<-- "examples/trhighest.csd"
@@ -36,7 +36,7 @@ The example above shows partial tracking of an ifd-analysis signal, extraction o
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

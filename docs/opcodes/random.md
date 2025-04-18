@@ -24,11 +24,11 @@ _kmin_ -- minimum range limit
 
 _kmax_ -- maximum range limit
 
-The _random_ opcode is similar to [linrand](../../opcodes/linrand) and [trirand](../../opcodes/trirand) but sometimes I [Gabriel Maldonado] find it more convenient because allows the user to set arbitrary minimum and maximum values.
+The _random_ opcode is similar to [linrand](../opcodes/linrand.md) and [trirand](../opcodes/trirand.md) but sometimes I [Gabriel Maldonado] find it more convenient because allows the user to set arbitrary minimum and maximum values.
 
 ## Examples
 
-Here is an example of the random opcode. It uses the file [random.csd](../../examples/random.csd).
+Here is an example of the random opcode. It uses the file [random.csd](../examples/random.csd).
 
 ``` csound-orc title="Example of the random opcode." linenums="1"
 --8<-- "examples/random.csd"
@@ -50,7 +50,7 @@ i   2 time     3.00000:   100.85594
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
 ## Credits
 

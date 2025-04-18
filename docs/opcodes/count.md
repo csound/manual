@@ -26,7 +26,7 @@ _kval_ -- returned value.
 
 ## Examples
 
-Here is an example of the count opcode. It uses the file [counter.csd](../../examples/counter.csd).
+Here is an example of the count opcode. It uses the file [counter.csd](../examples/counter.csd).
 
 ``` csound-csd title="Example of the count opcode." linenums="1"
 --8<-- "examples/counter.csd"
@@ -34,7 +34,7 @@ Here is an example of the count opcode. It uses the file [counter.csd](../../exa
 
 ## See also
 
-[Program Flow Control: Counter](../../control/pgmctl)
+[Program Flow Control: Counter](../control/pgmctl.md)
 
 ## Credits
 

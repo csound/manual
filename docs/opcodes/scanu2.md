@@ -63,19 +63,19 @@ _ain_ -- audio input that adds to the velocity of the masses. Amplitude should n
 
 ## Examples
 
-Here is an example of the scanu2 opcode. It uses the file [scanu2.csd](../../examples/scanu2.csd).
+Here is an example of the scanu2 opcode. It uses the file [scanu2.csd](../examples/scanu2.csd).
 
 ``` csound-csd title="Example of the scanu2 opcode." linenums="1"
 --8<-- "examples/scanu2.csd"
 ```
 
-Here is another example of the scanu2 opcode. It uses the file [scanu2-2.csd](../../examples/scanu2-2.csd).
+Here is another example of the scanu2 opcode. It uses the file [scanu2-2.csd](../examples/scanu2-2.csd).
 
 ``` csound-csd title="Second example of the scanu2 opcode." linenums="1"
 --8<-- "examples/scanu2-2.csd"
 ```
 
-Yet another example of the scanu2 opcode. It uses the file [scanu2-3.csd](../../examples/scanu2-3.csd).
+Yet another example of the scanu2 opcode. It uses the file [scanu2-3.csd](../examples/scanu2-3.csd).
 
 ``` csound-csd title="Third example of the scanu2 opcode." linenums="1"
 --8<-- "examples/scanu2-3.csd"
@@ -83,7 +83,7 @@ Yet another example of the scanu2 opcode. It uses the file [scanu2-3.csd](../../
 
 ## See also
 
-[Scanned Synthesis](../../siggen/scantop)
+[Scanned Synthesis](../siggen/scantop.md)
 
 More information on the Scanned Synthesis opcodes: [Working with Scanned Synthesis](http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html), written by Steven Yi, and some [tutorials](http://www.csounds.com/scanned/) by Richard Boulanger.
 

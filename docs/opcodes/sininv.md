@@ -13,7 +13,7 @@ sininv(k/i[]) (k- or i-arrays)
 
 ## Examples
 
-Here is an example of the sininv opcode. It uses the file [sininv.csd](../../examples/sininv.csd).
+Here is an example of the sininv opcode. It uses the file [sininv.csd](../examples/sininv.csd).
 
 ``` csound-csd title="Example of the sininv opcode." linenums="1"
 --8<-- "examples/sininv.csd"
@@ -27,7 +27,7 @@ instr 1:  i1 = 0.524
 
 ## See also
 
-[Trigonometric Functions](../../math/trig)
+[Trigonometric Functions](../math/trig.md)
 
 ## Credits
 

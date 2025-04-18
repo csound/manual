@@ -16,7 +16,7 @@ _kstart_ - the number of the first channel of the input device to be accessed (c
 
 _ain1, ain2, ... ainN_ - the output arguments filled with the incoming audio coming from corresponding channels.
 
-_inrg_ allows input from a range of adjacent channels from the input device. _kstart_ indicates the first channel to be accessed (channel 1 is the first channel). The user must be sure that the number obtained by summing _kstart_ plus the number of accessed channels -1 is &lt;= [nchnls_i](../../opcodes/nchnls_i).
+_inrg_ allows input from a range of adjacent channels from the input device. _kstart_ indicates the first channel to be accessed (channel 1 is the first channel). The user must be sure that the number obtained by summing _kstart_ plus the number of accessed channels -1 is &lt;= [nchnls_i](../opcodes/nchnls_i.md).
 
 > :memo: **Note**
 >
@@ -24,7 +24,7 @@ _inrg_ allows input from a range of adjacent channels from the input device. _ks
 
 ## See also
 
-[Signal Input](../../sigio/input)
+[Signal Input](../sigio/input.md)
 
 ## Credits
 

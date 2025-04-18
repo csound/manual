@@ -22,7 +22,7 @@ _zarg_ reads the array of floats at _kndx_ in za space, which are ksmps number o
 
 ## Examples
 
-Here is an example of the zarg opcode. It uses the file [zarg.csd](../../examples/zarg.csd).
+Here is an example of the zarg opcode. It uses the file [zarg.csd](../examples/zarg.csd).
 
 ``` csound-csd title="Example of the zarg opcode." linenums="1"
 --8<-- "examples/zarg.csd"
@@ -30,7 +30,7 @@ Here is an example of the zarg opcode. It uses the file [zarg.csd](../../example
 
 ## See also
 
-[Zak Patch System](../../zak/top)
+[Zak Patch System](../zak/top.md)
 
 ## Credits
 

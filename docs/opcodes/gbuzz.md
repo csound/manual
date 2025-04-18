@@ -26,15 +26,15 @@ _klh_ -- lowest harmonic present. Can be positive, zero or negative. In _gbuzz_ 
 
 _kmul_ -- specifies the multiplier in the series of amplitude coefficients. This is a power series: if the _klh_th partial has a strength coefficient of A, the (_klh_ + n)th partial will have a coefficient of A * (_kmul_ ** n), i.e. strength values trace an exponential curve. _kmul_ may be positive, zero or negative, and is not restricted to integers.
 
-[buzz](../../opcodes/buzz) and _gbuzz _are useful as complex sound sources in subtractive synthesis. _buzz_ is a special case of the more general _gbuzz_ in which _klh_ = _kmul_ = 1; it thus produces a set of _knh_ equal-strength harmonic partials, beginning with the fundamental. (This is a band-limited pulse train; if the partials extend to the Nyquist, i.e. _knh_ = int (sr / 2 / fundamental freq.), the result is a real pulse train of amplitude _xamp_.)
+[buzz](../opcodes/buzz.md) and _gbuzz _are useful as complex sound sources in subtractive synthesis. _buzz_ is a special case of the more general _gbuzz_ in which _klh_ = _kmul_ = 1; it thus produces a set of _knh_ equal-strength harmonic partials, beginning with the fundamental. (This is a band-limited pulse train; if the partials extend to the Nyquist, i.e. _knh_ = int (sr / 2 / fundamental freq.), the result is a real pulse train of amplitude _xamp_.)
 
 Although both _knh_ and _klh_ may be varied during performance, their internal values are necessarily integer and may cause &#8220;pops&#8221; due to discontinuities in the output. _kmul,_ however, can be varied during performance to good effect. _gbuzz_ can be amplitude- and/or frequency-modulated by either control or audio signals.
 
-N.B. This unit has its analog in [GEN11](../../scoregens/gen11), in which the same set of cosines can be stored in a function table for sampling by an oscillator. Although computationally more efficient, the stored pulse train has a fixed spectral content, not a time-varying one as above.
+N.B. This unit has its analog in [GEN11](../scoregens/gen11.md), in which the same set of cosines can be stored in a function table for sampling by an oscillator. Although computationally more efficient, the stored pulse train has a fixed spectral content, not a time-varying one as above.
 
 ## Examples
 
-Here is an example of the gbuzz opcode. It uses the file [gbuzz.csd](../../examples/gbuzz.csd).
+Here is an example of the gbuzz opcode. It uses the file [gbuzz.csd](../examples/gbuzz.csd).
 
 ``` csound-orc title="Example of the gbuzz opcode." linenums="1"
 --8<-- "examples/gbuzz.csd"
@@ -42,7 +42,7 @@ Here is an example of the gbuzz opcode. It uses the file [gbuzz.csd](../../examp
 
 ## See Also
 
-[Dynamic Spectrum Oscillators](../../siggen/dynamic)
+[Dynamic Spectrum Oscillators](../siggen/dynamic.md)
 
 ## Credits
 

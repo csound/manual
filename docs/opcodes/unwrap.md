@@ -21,7 +21,7 @@ _kin[]_ -- input array containing the input vector.
 
 ## Examples
 
-Here is an example of the unwrap opcode. It uses the file [unwrap.csd](../../examples/unwrap.csd).
+Here is an example of the unwrap opcode. It uses the file [unwrap.csd](../examples/unwrap.csd).
 
 ``` csound-csd title="Example of the unwrap opcode." linenums="1"
 --8<-- "examples/unwrap.csd"
@@ -29,7 +29,7 @@ Here is an example of the unwrap opcode. It uses the file [unwrap.csd](../../exa
 
 ## See Also
 
-[Vectorial opcodes](../../vectorial/top), [array opcodes](../../math/array)
+[Vectorial opcodes](../vectorial/top.md), [array opcodes](../math/array.md)
 
 ## Credits
 

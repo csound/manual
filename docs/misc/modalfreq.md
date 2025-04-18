@@ -6,7 +6,7 @@ John Bower, a student of Scott Lindroth, compiled this list of modal frequencies
 
 In general, wooden objects will not sound "wooden" unless a stochastic component is present in the sound (try banded waveguides). Nonetheless, some of the wooden objects make wonderful metallic instruments as well.
 
-This ratios can be useful together with opcodes like [mode](../../opcodes/mode) or [streson](../../opcodes/streson).
+This ratios can be useful together with opcodes like [mode](../opcodes/mode.md) or [streson](../opcodes/streson.md).
 
 ### Table E.1. Modal Frequency Ratios
 

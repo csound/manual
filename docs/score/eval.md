@@ -6,7 +6,7 @@ In addition to arithmetic operations, the following bitwise logical operators ar
 
 Finally, the tilde symbol ˜ can be used in an expression wherever a number is permissible to use. Each ˜ will evaluate to a random value between zero (0) and one (1).
 
-## Example
+## Examples
 
 ``` csound-sco
 r3  CNT

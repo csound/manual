@@ -14,7 +14,7 @@ Sdst strlowerk Ssrc
 
 ## See Also
 
-[String Conversion Opcodes](../../strings/convert)
+[String Conversion Opcodes](../strings/convert.md)
 
 ## Credits
 

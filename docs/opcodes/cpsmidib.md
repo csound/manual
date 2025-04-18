@@ -21,7 +21,7 @@ Get the note number of the current MIDI event, modify it by the current pitch-be
 
 ## Examples
 
-Here is an example of the cpsmidib opcode. It uses the file [cpsmidib.csd](../../examples/cpsmidib.csd).
+Here is an example of the cpsmidib opcode. It uses the file [cpsmidib.csd](../examples/cpsmidib.csd).
 
 ``` csound-csd title="Example of the cpsmidib opcode." linenums="1"
 --8<-- "examples/cpsmidib.csd"
@@ -29,7 +29,7 @@ Here is an example of the cpsmidib opcode. It uses the file [cpsmidib.csd](../..
 
 ## See also
 
-[Midi Converters](../../midi/convert)
+[Midi Converters](../midi/convert.md)
 
 ## Credits
 

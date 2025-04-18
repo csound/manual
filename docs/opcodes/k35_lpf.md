@@ -32,7 +32,7 @@ _ksaturation_ (optional, default=1) -- saturation amount to use for non-linear p
 
 ## Examples
 
-Here is an example of the K35_lpf opcode. It uses the file [k35.csd](../../examples/k35.csd).
+Here is an example of the K35_lpf opcode. It uses the file [k35.csd](../examples/k35.csd).
 
 ``` csound-csd title="Example of the K35_lpf opcode." linenums="1"
 --8<-- "examples/k35.csd"
@@ -48,7 +48,7 @@ This filter is based on the work of Will Pirkle that employs Vadim Zavalishin's 
 
 ## See also
 
-[Standard filters: Zero-delay Feedback Filters (Virtual Analog)](../../sigmod/standard)
+[Standard filters: Zero-delay Feedback Filters (Virtual Analog)](../sigmod/standard.md)
 
 ## Credits
 

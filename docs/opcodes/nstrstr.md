@@ -25,7 +25,7 @@ If an instrument with the specified name does not exist an empty string is retur
 
 ## Examples
 
-Here is an example of the nstrstr opcode. It uses the file [nstrnum_nstrstr.csd](../../examples/nstrnum_nstrstr.csd).
+Here is an example of the nstrstr opcode. It uses the file [nstrnum_nstrstr.csd](../examples/nstrnum_nstrstr.csd).
 
 ``` csound-csd title="Example of the nstrstr opcode." linenums="1"
 --8<-- "examples/nstrnum_nstrstr.csd"

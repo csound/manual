@@ -39,13 +39,13 @@ When no function table translation is required, set the _ifnN_ value to 0, else 
 
 _slider8_ allows a bank of 8 different MIDI control message numbers.
 
-As the input and output arguments are many, you can split the line using '\' (backslash) character (new in 3.47 version) to improve the readability. Using these opcodes is considerably more efficient than using the separate ones ([ctrl7](../../opcodes/ctrl7) and [tonek](../../opcodes/tonek)) when more controllers are required.
+As the input and output arguments are many, you can split the line using '\' (backslash) character (new in 3.47 version) to improve the readability. Using these opcodes is considerably more efficient than using the separate ones ([ctrl7](../opcodes/ctrl7.md) and [tonek](../opcodes/tonek.md)) when more controllers are required.
 
 In the i-rate version of _slider8_, there is not an initial value input argument, because the output is gotten directly from current status of internal controller array of Csound.
 
 ## See Also
 
-[Slider Banks](../../midi/sliderbk)
+[Slider Banks](../midi/sliderbk.md)
 
 ## Credits
 

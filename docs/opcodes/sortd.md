@@ -12,7 +12,7 @@ k/i[] sortd k/i[]  (k- or i-arrays )
 
 ## Examples
 
-Here is an example of the sortd opcode. It uses the file [sortd.csd](../../examples/sortd.csd).
+Here is an example of the sortd opcode. It uses the file [sortd.csd](../examples/sortd.csd).
 
 ``` csound-csd title="Example of the sortd opcode." linenums="1"
 --8<-- "examples/sortd.csd"
@@ -20,7 +20,7 @@ Here is an example of the sortd opcode. It uses the file [sortd.csd](../../examp
 
 ## See Also
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

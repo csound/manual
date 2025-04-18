@@ -18,7 +18,7 @@ _kin[]_ -- input array containing the sequence for autocorrelation.
 
 ## Examples
 
-Here is an example of the autocorr opcode. It uses the file [autocorr.csd](../../examples/autocorr.csd).
+Here is an example of the autocorr opcode. It uses the file [autocorr.csd](../examples/autocorr.csd).
 
 ``` csound-csd title="Example of the autocorr opcode." linenums="1"
 --8<-- "examples/autocorr.csd"
@@ -26,7 +26,7 @@ Here is an example of the autocorr opcode. It uses the file [autocorr.csd](../..
 
 ## See Also
 
-[Vectorial opcodes](../../vectorial/top), [array opcodes](../../math/array)
+[Vectorial opcodes](../vectorial/top.md), [array opcodes](../math/array.md)
 
 ## Credits
 

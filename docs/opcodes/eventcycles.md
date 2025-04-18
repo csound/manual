@@ -26,15 +26,15 @@ then after half a second, the _eventcycles_ opcode would report 3150. It will al
 
 _eventcycles_ produces a k-rate variable for output. There are no input parameters.
 
-_eventcycles_ is similar to [elapsedcycles](../../opcodes/elapsedcycles) except it returns the time since the start of this instance of the instrument.
+_eventcycles_ is similar to [elapsedcycles](../opcodes/elapsedcycles.md) except it returns the time since the start of this instance of the instrument.
 
 > :memo: **Note**
 >
-> _eventcycles_ acts like [timeinstk](../../opcodes/timeinstk) but it returns the correct values instead of being one cycle late.
+> _eventcycles_ acts like [timeinstk](../opcodes/timeinstk.md) but it returns the correct values instead of being one cycle late.
 
 ## See also
 
-[Time Reading](../../control/timeread)
+[Time Reading](../control/timeread.md)
 
 ## Credits
 

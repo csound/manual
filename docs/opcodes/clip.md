@@ -58,7 +58,7 @@ $$
 
 ## Examples
 
-Here is an example of the clip opcode. It uses the file [clip.csd](../../examples/clip.csd).
+Here is an example of the clip opcode. It uses the file [clip.csd](../examples/clip.csd).
 
 ``` csound-csd title="Example of the clip opcode." linenums="1"
 --8<-- "examples/clip.csd"
@@ -66,9 +66,9 @@ Here is an example of the clip opcode. It uses the file [clip.csd](../../example
 
 ## See also
 
-[Amplitude Modifiers and Dynamic processing](../../sigmod/ampmod)
+[Amplitude Modifiers and Dynamic processing](../sigmod/ampmod.md)
 
-[Waveshaping](../../sigmod/wavshape)
+[Waveshaping](../sigmod/wavshape.md)
 
 ## Credits
 

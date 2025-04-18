@@ -26,7 +26,7 @@ _ktrig_ -- trigger signal, should be valid at i-time. The output string variable
 
 ## Examples
 
-Here is an example of the getftargs opcode. It uses the file [getftargs.csd](../../examples/getftargs.csd).
+Here is an example of the getftargs opcode. It uses the file [getftargs.csd](../examples/getftargs.csd).
 
 ``` csound-csd title="Example of the getftargs opcode." linenums="1"
 --8<-- "examples/getftargs.csd"
@@ -40,7 +40,7 @@ Its output should include this line:
 
 ## See also
 
-[Table Control:Table Queries](../../table/queries)
+[Table Control:Table Queries](../table/queries.md)
 
 ## Credits
 

@@ -32,7 +32,7 @@ _kArg[][]_ -- a two-dimensional array containing the arguments for each message.
 
 ### Examples
 
-Here is an example of the OSCBundle opcode. It uses the file [oscbundle.csd](../../examples/oscbundle.csd).
+Here is an example of the OSCBundle opcode. It uses the file [oscbundle.csd](../examples/oscbundle.csd).
 
 ``` csound-csd title="Example of the OSCbundle opcode." linenums="1"
 --8<-- "examples/oscbundle.csd"
@@ -40,7 +40,7 @@ Here is an example of the OSCBundle opcode. It uses the file [oscbundle.csd](../
 
 ## See also
 
-[OSC (Open Sound Control)](../../oscnetwork/OSC)
+[OSC (Open Sound Control)](../oscnetwork/OSC.md)
 
 More information on this opcode: [http://www.youtube.com/watch?v=JX1C3TqP_9Y](http://www.youtube.com/watch?v=JX1C3TqP_9Y), made by Andrés Cabrera
 

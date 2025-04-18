@@ -24,7 +24,7 @@ _aright_ -- right channel input.
 
 ## Examples
 
-Here is an example of the st2ms opcode. It uses the files [st2ms.csd](../../examples/st2ms.csd) and [stereoJungle.wav](../../examples/stereoJungle.wav).
+Here is an example of the st2ms opcode. It uses the files [st2ms.csd](../examples/st2ms.csd) and [stereoJungle.wav](../examples/stereoJungle.wav).
 
 ``` csound-csd title="Example of the st2ms opcode." linenums="1"
 --8<-- "examples/st2ms.csd"
@@ -32,7 +32,7 @@ Here is an example of the st2ms opcode. It uses the files [st2ms.csd](../../exam
 
 ## See also
 
-[Panning and Spatialization: Amplitude spatialization](../../sigmod/panspatl)
+[Panning and Spatialization: Amplitude spatialization](../sigmod/panspatl.md)
 
 ## Credits
 

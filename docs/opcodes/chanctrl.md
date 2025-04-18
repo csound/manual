@@ -21,7 +21,7 @@ _ilow_, _ihigh_ -- low and high ranges for mapping
 
 ## Examples
 
-Here is an example of the chanctrl opcode. It uses the file [chanctrl.csd](../../examples/chanctrl.csd).
+Here is an example of the chanctrl opcode. It uses the file [chanctrl.csd](../examples/chanctrl.csd).
 
 ``` csound-csd title="Example of the chanctrl opcode." linenums="1"
 --8<-- "examples/chanctrl.csd"
@@ -29,7 +29,7 @@ Here is an example of the chanctrl opcode. It uses the file [chanctrl.csd](../..
 
 ## See also
 
-[MIDI input and Initialization](../../midi/input)
+[MIDI input and Initialization](../midi/input.md)
 
 ## Credits
 

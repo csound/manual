@@ -34,7 +34,7 @@ _imaxshake_ (optional) -- amount of energy to add back into the system. The valu
 
 ## Examples
 
-Here is an example of the stix opcode. It uses the file [stix.csd](../../examples/stix.csd).
+Here is an example of the stix opcode. It uses the file [stix.csd](../examples/stix.csd).
 
 ``` csound-orc title="Example of the stix opcode." linenums="1"
 --8<-- "examples/stix.csd"
@@ -42,7 +42,7 @@ Here is an example of the stix opcode. It uses the file [stix.csd](../../example
 
 ## See Also
 
-[Models and Emulations](../../siggen/models)
+[Models and Emulations](../siggen/models.md)
 
 ## Credits
 

@@ -33,7 +33,7 @@ _ipow_, _kpow_ -- the exponent.
 
 ## Examples
 
-Here is an example of the pow opcode. It uses the file [pow.csd](../../examples/pow.csd).
+Here is an example of the pow opcode. It uses the file [pow.csd](../examples/pow.csd).
 
 ``` csound-csd title="Example of the pow opcode." linenums="1"
 --8<-- "examples/pow.csd"
@@ -52,9 +52,9 @@ i1    14.46130
 
 ## See also
 
-[Mathematical Functions](../../math/mathfunc)
+[Mathematical Functions](../math/mathfunc.md)
 
-[Opcode Equivalents of Functions](../../math/opeqfunc)
+[Opcode Equivalents of Functions](../math/opeqfunc.md)
 
 ## Credits
 

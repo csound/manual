@@ -26,7 +26,7 @@ _lowres_ is a resonant lowpass filter derived from a Hans Mikelson orchestra. Th
 
 ## Examples
 
-Here is an example of the lowres opcode. It uses the file [lowres.csd](../../examples/lowres.csd).
+Here is an example of the lowres opcode. It uses the file [lowres.csd](../examples/lowres.csd).
 
 ``` csound-csd title="Example of the lowres opcode." linenums="1"
 --8<-- "examples/lowres.csd"
@@ -34,7 +34,7 @@ Here is an example of the lowres opcode. It uses the file [lowres.csd](../../exa
 
 ## See also
 
-[Standard Filters: Resonant Low-pass filters](../../sigmod/standard)
+[Standard Filters: Resonant Low-pass filters](../sigmod/standard.md)
 
 ## Credits
 

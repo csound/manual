@@ -34,7 +34,7 @@ _imaxshake_ (optional) -- amount of energy to add back into the system. The valu
 
 ## Examples
 
-Here is an example of the sekere opcode. It uses the file [sekere.csd](../../examples/sekere.csd).
+Here is an example of the sekere opcode. It uses the file [sekere.csd](../examples/sekere.csd).
 
 ``` csound-orc title="Example of the sekere opcode." linenums="1"
 --8<-- "examples/sekere.csd"
@@ -42,7 +42,7 @@ Here is an example of the sekere opcode. It uses the file [sekere.csd](../../exa
 
 ## See Also
 
-[Models and Emulations](../../siggen/models)
+[Models and Emulations](../siggen/models.md)
 
 ## Credits
 

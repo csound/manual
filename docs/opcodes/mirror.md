@@ -34,7 +34,7 @@ This opcode is useful in several situations, such as table indexing or for clipp
 
 ## Examples
 
-Here is an example of the mirror opcode. It uses the file [mirror.csd](../../examples/mirror.csd).
+Here is an example of the mirror opcode. It uses the file [mirror.csd](../examples/mirror.csd).
 
 ``` csound-csd title="Example of the mirror opcode." linenums="1"
 --8<-- "examples/mirror.csd"
@@ -42,7 +42,7 @@ Here is an example of the mirror opcode. It uses the file [mirror.csd](../../exa
 
 ## See also
 
-[Signal Limiters](../../sigmod/siglimit)
+[Signal Limiters](../sigmod/siglimit.md)
 
 ## Credits
 

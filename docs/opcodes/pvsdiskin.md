@@ -14,7 +14,7 @@ fsig pvsdiskin SFname, ktscal, kgain [, ioffset, ichan]
 
 _Sfname_ -- Name of the analysis file. This must have the .pvx file extension.
 
-A multi-channel PVOC-EX file can be generated using the extended [pvanal utility](../../utility/pvanal).
+A multi-channel PVOC-EX file can be generated using the extended [pvanal utility](../utility/pvanal.md).
 
 _ichan_ -- (optional) The channel to read (counting from 1). Default is 1.
 
@@ -28,7 +28,7 @@ _kgain_ -- gain scaling.
 
 ## Examples
 
-Here is an example of the pvsdiskin opcode. It uses the file [pvsdiskin.csd](../../examples/pvsdiskin.csd).
+Here is an example of the pvsdiskin opcode. It uses the file [pvsdiskin.csd](../examples/pvsdiskin.csd).
 
 ``` csound-csd title="Example of the pvsdiskin opcode." linenums="1"
 --8<-- "examples/pvsdiskin.csd"
@@ -36,7 +36,7 @@ Here is an example of the pvsdiskin opcode. It uses the file [pvsdiskin.csd](../
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

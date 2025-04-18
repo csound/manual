@@ -26,9 +26,9 @@ Sends a real-time message once, in init stage of current instrument. _imsgtype_ 
 
 ## See Also
 
-[mclock](../../opcodes/mclock)
+[mclock](../opcodes/mclock.md)
 
-[System Realtime Messages](../../midi/realtime)
+[System Realtime Messages](../midi/realtime.md)
 
 ## Credits
 

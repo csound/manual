@@ -45,7 +45,7 @@ Other initial values can usually be left at the default settings. Lowpass filter
 
 ## Examples
 
-Here is an example of the pitchamdf opcode. It uses the file [pitchamdf.csd](../../examples/pitchamdf.csd).
+Here is an example of the pitchamdf opcode. It uses the file [pitchamdf.csd](../examples/pitchamdf.csd).
 
 ``` csound-csd title="Example of the pitchamdf opcode." linenums="1"
 --8<-- "examples/pitchamdf.csd"
@@ -53,7 +53,7 @@ Here is an example of the pitchamdf opcode. It uses the file [pitchamdf.csd](../
 
 ## See also
 
-[Sensing and Control: Tempo and Pitch estimation](../../control/sensing)
+[Sensing and Control: Tempo and Pitch estimation](../control/sensing.md)
 
 ## Credits
 

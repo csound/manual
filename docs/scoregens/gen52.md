@@ -3,7 +3,7 @@ id:GEN52
 category:
 -->
 # GEN52
-Creates an interleaved multichannel table from the specified source tables, in the format expected by the [ftconv](../../opcodes/ftconv) opcode.
+Creates an interleaved multichannel table from the specified source tables, in the format expected by the [ftconv](../opcodes/ftconv.md) opcode.
 
 It can also be used to extract a channel from a multichannel table and store it in a normal mono table, copy tables with skipping some samples, adding delay, or store in reverse order, etc.
 
@@ -33,7 +33,7 @@ f 4 0 16384 -52 1 3 0 2
 f 5 0 16384 -52 1 3 1 2
 ```
 
-Here is a complete example of the GEN52 generator. It uses the file [gen52.csd](../../examples/gen52.csd).
+Here is a complete example of the GEN52 generator. It uses the file [gen52.csd](../examples/gen52.csd).
 
 ``` csound-csd title="Example of the GEN52 generator." linenums="1"
 --8<-- "examples/gen52.csd"
@@ -42,7 +42,7 @@ Here is a complete example of the GEN52 generator. It uses the file [gen52.csd](
 This is the diagram of the waveform of the GEN52 routine, as used in the example:
 
 <figure markdown="span">
-![f 3 0 262144 -52 3 2 0 4 2 1 4 2 2 4](../../images/gen52.png)
+![f 3 0 262144 -52 3 2 0 4 2 1 4 2 2 4](../images/gen52.png)
 <figcaption>f 3 0 262144 -52 3 2 0 4 2 1 4 2 2 4</figcaption>
 </figure>
 

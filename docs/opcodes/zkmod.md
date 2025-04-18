@@ -20,7 +20,7 @@ _zkmod_ facilitates the modulation of one signal by another, where the modulatin
 
 ## Examples
 
-Here is an example of the zkmod opcode. It uses the file [zkmod.csd](../../examples/zkmod.csd).
+Here is an example of the zkmod opcode. It uses the file [zkmod.csd](../examples/zkmod.csd).
 
 ``` csound-csd title="Example of the zkmod opcode." linenums="1"
 --8<-- "examples/zkmod.csd"
@@ -28,7 +28,7 @@ Here is an example of the zkmod opcode. It uses the file [zkmod.csd](../../examp
 
 ## See also
 
-[Zak Patch System](../../zak/top)
+[Zak Patch System](../zak/top.md)
 
 ## Credits
 

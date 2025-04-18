@@ -1,6 +1,6 @@
 # Appendix F. Window Functions
 
-Windowing functions are used for analysis, and as waveform envelopes, particularly in granular synthesis. Window functions are built in to some opcodes, but others require a function table to generate the window. [GEN20](../../scoregens/gen20) is used for this purpose. The diagram of each window below, is accompanied by the f score statement and ftgen orchestra opcode used to generate it.
+Windowing functions are used for analysis, and as waveform envelopes, particularly in granular synthesis. Window functions are built in to some opcodes, but others require a function table to generate the window. [GEN20](../scoregens/gen20.md) is used for this purpose. The diagram of each window below, is accompanied by the f score statement and ftgen orchestra opcode used to generate it.
 
 ### Hamming
 
@@ -13,7 +13,7 @@ i0 ftgen 81, 0, 8192, 20, 1, 1
 ```
 
 <figure markdown="span">
-![Hamming Window Function.](../../images/image1.png)
+![Hamming Window Function.](../images/image1.png)
 <figcaption>Hamming Window Function.</figcaption>
 </figure>
 
@@ -28,7 +28,7 @@ i0 ftgen 82, 0, 8192, 20, 2, 1
 ```
 
 <figure markdown="span">
-![Hanning Window Function](../../images/image2.png)
+![Hanning Window Function](../images/image2.png)
 <figcaption>Hanning Window Function</figcaption>
 </figure>
 
@@ -43,7 +43,7 @@ i0 ftgen 83, 0, 8192, 20, 3, 1
 ```
 
 <figure markdown="span">
-![Bartlett Window Function](../../images/image3.png)
+![Bartlett Window Function](../images/image3.png)
 <figcaption>Bartlett Window Function</figcaption>
 </figure>
 
@@ -58,7 +58,7 @@ i0 ftgen 84, 0, 8192, 20, 4, 1
 ```
 
 <figure markdown="span">
-![Blackman Window Function](../../images/image4.png)
+![Blackman Window Function](../images/image4.png)
 <figcaption>Blackman Window Function</figcaption>
 </figure>
 
@@ -73,7 +73,7 @@ i0 ftgen 85, 0, 8192, 20, 5, 1
 ```
 
 <figure markdown="span">
-![Blackman-Harris Window Function](../../images/image5.png)
+![Blackman-Harris Window Function](../images/image5.png)
 <figcaption>Blackman-Harris Window Function</figcaption>
 </figure>
 
@@ -88,7 +88,7 @@ i0 ftgen 86, 0, 8192, 20, 6, 1
 ```
 
 <figure markdown="span">
-![Blackman-Harris Window Function](../../images/image6.png)
+![Blackman-Harris Window Function](../images/image6.png)
 <figcaption>Blackman-Harris Window Function</figcaption>
 </figure>
 
@@ -101,7 +101,7 @@ i0 ftgen 61, 0, 8192, 20, 6, 1, 2
 ```
 
 <figure markdown="span">
-![Gaussian Window Function](../../images/image6a.png)
+![Gaussian Window Function](../images/image6a.png)
 <figcaption>Gaussian Window Function</figcaption>
 </figure>
 
@@ -116,7 +116,7 @@ i0 ftgen 87, 0, 8192, 20, 7, 1
 ```
 
 <figure markdown="span">
-![Gaussian Window Function](../../images/image7.png)
+![Gaussian Window Function](../images/image7.png)
 <figcaption>Gaussian Window Function</figcaption>
 </figure>
 
@@ -129,7 +129,7 @@ i0 ftgen 71, 0, 8192, 20, 7, 1, 5
 ```
 
 <figure markdown="span">
-![Gaussian Window Function](../../images/image7a.png)
+![Gaussian Window Function](../images/image7a.png)
 <figcaption>Gaussian Window Function</figcaption>
 </figure>
 
@@ -142,7 +142,7 @@ i0 ftgen 72, 0, 8192, 20, 7, 1, 10
 ```
 
 <figure markdown="span">
-![Kaiser Window Function](../../images/image7b.png)
+![Kaiser Window Function](../images/image7b.png)
 <figcaption>Kaiser Window Function</figcaption>
 </figure>
 
@@ -157,7 +157,7 @@ i0 ftgen 88, 0, 8192, -20, 8, .3
 ```
 
 <figure markdown="span">
-![Rectangle Window Function](../../images/image8.png)
+![Rectangle Window Function](../images/image8.png)
 <figcaption>Rectangle Window Function</figcaption>
 </figure>
 
@@ -172,7 +172,7 @@ i0 ftgen 89, 0, 8192, -20, 9, .8
 ```
 
 <figure markdown="span">
-![Rectangle Window Function](../../images/image9.png)
+![Rectangle Window Function](../images/image9.png)
 <figcaption>Rectangle Window Function</figcaption>
 </figure>
 
@@ -185,6 +185,6 @@ i0 ftgen 89, 0, 8192, 20, 9, 1, 3
 ```
 
 <figure markdown="span">
-![Sinc Window Function](../../images/image9a.png)
+![Sinc Window Function](../images/image9a.png)
 <figcaption>Sinc Window Function</figcaption>
 </figure>

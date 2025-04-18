@@ -26,7 +26,7 @@ The t-variable form was introduced in 5.14 and allocated space for a vector or t
 
 ## Examples
 
-Here is an example of the init opcode. It uses the file [init.csd](../../examples/init.csd).
+Here is an example of the init opcode. It uses the file [init.csd](../examples/init.csd).
 
 ``` csound-csd title="Example of the init opcode." linenums="1"
 --8<-- "examples/init.csd"
@@ -60,9 +60,9 @@ i   2 time     2.90032:     1.00000
 
 ## See also
 
-[Initialization and Reinitialization](../../control/reinitn)
+[Initialization and Reinitialization](../control/reinitn.md)
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

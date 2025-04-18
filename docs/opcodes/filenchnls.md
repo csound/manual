@@ -22,7 +22,7 @@ _filenchnls_ returns the number of channels in the sound file _ifilcod_. _filech
 
 ## Examples
 
-Here is an example of the filenchnls opcode. It uses the file [filenchnls.csd](../../examples/filenchnls.csd), [fox.wav](../../examples/fox.wav), and [drumsSlp.wav](../../examples/drumsSlp.wav).
+Here is an example of the filenchnls opcode. It uses the file [filenchnls.csd](../examples/filenchnls.csd), [fox.wav](../examples/fox.wav), and [drumsSlp.wav](../examples/drumsSlp.wav).
 
 ``` csound-csd title="Example of the filenchnls opcode." linenums="1"
 --8<-- "examples/filenchnls.csd"
@@ -37,7 +37,7 @@ number of channels = 2
 
 ## See also
 
-[Sound File Queries](../../sigio/queries)
+[Sound File Queries](../sigio/queries.md)
 
 ## Credits
 

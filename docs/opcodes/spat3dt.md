@@ -116,7 +116,7 @@ _iftnocl_ (optional, default=0) -- Do not clear output ftable (mix to existing d
 
 ## Examples
 
-Here is an example of the spat3dt opcode. It uses the file [spat3dt.csd](../../examples/spat3dt.csd).
+Here is an example of the spat3dt opcode. It uses the file [spat3dt.csd](../examples/spat3dt.csd).
 
 ``` csound-csd title="Example of the spat3dt opcode." linenums="1"
 --8<-- "examples/spat3dt.csd"
@@ -124,7 +124,7 @@ Here is an example of the spat3dt opcode. It uses the file [spat3dt.csd](../../e
 
 ## See also
 
-[Panning and Spatialization: Simulation of room acoustics](../../sigmod/panspatl)
+[Panning and Spatialization: Simulation of room acoustics](../sigmod/panspatl.md)
 
 ## Credits
 

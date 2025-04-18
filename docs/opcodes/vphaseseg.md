@@ -33,7 +33,7 @@ In _vphaseseg_, each break-point is separated from the other by a distance expre
 
 ## See also
 
-[Hyper Vectorial Synthesis](../../siggen/hvs)
+[Hyper Vectorial Synthesis](../siggen/hvs.md)
 
 ## Credits
 

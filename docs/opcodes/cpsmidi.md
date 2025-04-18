@@ -20,7 +20,7 @@ Get the note number of the current MIDI event, expressed in cycles-per-second un
 
 ## Examples
 
-Here is an example of the cpsmidi opcode. It uses the file [cpsmidi.csd](../../examples/cpsmidi.csd).
+Here is an example of the cpsmidi opcode. It uses the file [cpsmidi.csd](../examples/cpsmidi.csd).
 
 ``` csound-csd title="Example of the cpsmidi opcode." linenums="1"
 --8<-- "examples/cpsmidi.csd"
@@ -28,7 +28,7 @@ Here is an example of the cpsmidi opcode. It uses the file [cpsmidi.csd](../../e
 
 ## See also
 
-[Midi Converters](../../midi/convert)
+[Midi Converters](../midi/convert.md)
 
 ## Credits
 

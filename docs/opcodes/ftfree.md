@@ -22,7 +22,7 @@ _iwhen_ -- if zero the table is deleted at init time; otherwise the table number
 
 ## Examples
 
-Here is an example of the ftfree opcode. It uses the file [ftfree.csd](../../examples/ftfree.csd).
+Here is an example of the ftfree opcode. It uses the file [ftfree.csd](../examples/ftfree.csd).
 
 ``` csound-csd title="Example of the ftfree opcode." linenums="1"
 --8<-- "examples/ftfree.csd"
@@ -40,7 +40,7 @@ B  3.000 ..  5.000 T  5.000 TT  5.000 M:  0.00000  0.00000
 
 ## See also
 
-[Function Table Control](../../table/top)
+[Function Table Control](../table/top.md)
 
 ## Credits
 

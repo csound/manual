@@ -5,7 +5,7 @@ category:Orchestra Syntax:Macros
 # &num;include
 Includes an external file for processing.
 
-Macros are textual replacements which are made in the orchestra as it is being read.  The [orchestra macro system](../../orch/macros) in Csound is a very simple one, and uses the characters &num; and &dollar; to define and call macros. This can save typing, and can lead to a coherent structure and consistent style.  This is similar to, but independent of, the [macro system in the score language](../../score/macros).
+Macros are textual replacements which are made in the orchestra as it is being read.  The [orchestra macro system](../orch/macros.md) in Csound is a very simple one, and uses the characters &num; and &dollar; to define and call macros. This can save typing, and can lead to a coherent structure and consistent style.  This is similar to, but independent of, the [macro system in the score language](../score/macros.md).
 
 Includes an external file for processing.
 
@@ -48,7 +48,7 @@ If the version of Csound is built with the CURL library the filename in an _&num
 
 ## Examples
 
-Here is an example of the include opcode. It uses the file [include.csd](../../examples/include.csd), and [table1.inc](../../examples/table1.inc).
+Here is an example of the include opcode. It uses the file [include.csd](../examples/include.csd), and [table1.inc](../examples/table1.inc).
 
 ``` csound-sco title="Example of the include opcode."
 /* table1.inc */
@@ -63,7 +63,7 @@ f 1 0 16384 10 1
 
 ## See also
 
-[Orchestra Macros](../../orch/macros)
+[Orchestra Macros](../orch/macros.md)
 
 ## Credits
 

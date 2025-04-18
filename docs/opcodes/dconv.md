@@ -24,7 +24,7 @@ _dconv_ was designed to be used with time varying tables to facilitate new realt
 
 ## Examples
 
-Here is an example of the dconv opcode. It uses the file [dconv.csd](../../examples/dconv.csd).
+Here is an example of the dconv opcode. It uses the file [dconv.csd](../examples/dconv.csd).
 
 ``` csound-csd title="Example of the dconv opcode." linenums="1"
 --8<-- "examples/dconv.csd"
@@ -32,7 +32,7 @@ Here is an example of the dconv opcode. It uses the file [dconv.csd](../../examp
 
 ## See also
 
-[Convolution and Morphing](../../sigmod/conmorph)
+[Convolution and Morphing](../sigmod/conmorph.md)
 
 ## Credits
 

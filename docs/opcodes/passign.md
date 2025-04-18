@@ -27,9 +27,9 @@ _passign_ transfers the instrument p-fields to instrument variables, starting wi
 
 _passign_ can transfer the instrument p-fields to a one dimensional array, either an iarray or a karray.
 
-Example
+## Examples
 
-Here is an example of the passign opcode. It uses the file [passign.csd](../../examples/passign.csd).
+Here is an example of the passign opcode. It uses the file [passign.csd](../examples/passign.csd).
 
 ``` csound-csd title="A variant of toot8.csd that uses passign." linenums="1"
 --8<-- "examples/passign.csd"
@@ -37,9 +37,9 @@ Here is an example of the passign opcode. It uses the file [passign.csd](../../e
 
 ## See also
 
-[assign](../../opcodes/assign), [pcount](../../opcodes/pcount).
+[assign](../opcodes/assign.md), [pcount](../opcodes/pcount.md).
 
-[Initialization and Reinitialization](../../control/reinitn)
+[Initialization and Reinitialization](../control/reinitn.md)
 
 ## Credits
 

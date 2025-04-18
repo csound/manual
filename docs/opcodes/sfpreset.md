@@ -5,7 +5,7 @@ category:Signal Generators:Sample Playback
 # sfpreset
 Assigns an existing preset of a previously loaded SoundFont2 (SF2) sample file to an index number.
 
-These opcodes allow management the sample-structure of SF2 files. In order to understand the usage of these opcodes, the user must have some knowledge of the SF2 format, so a brief description of this format can be found in the [SoundFont2 File Format](../../siggen/sample) section.
+These opcodes allow management the sample-structure of SF2 files. In order to understand the usage of these opcodes, the user must have some knowledge of the SF2 format, so a brief description of this format can be found in the [SoundFont2 File Format](../siggen/sample.md) section.
 
 _sfpreset_ should be placed in the header section of a Csound orchestra.
 
@@ -34,7 +34,7 @@ These opcodes only support the sample structure of SF2 files. The modulator stru
 
 ## Examples
 
-Here is an example of the sfpreset opcode. It uses the file [sfpreset.csd](../../examples/sfpreset.csd).
+Here is an example of the sfpreset opcode. It uses the file [sfpreset.csd](../examples/sfpreset.csd).
 
 ``` csound-csd title="Example of the sfpreset opcode." linenums="1"
 --8<-- "examples/sfpreset.csd"
@@ -42,7 +42,7 @@ Here is an example of the sfpreset opcode. It uses the file [sfpreset.csd](../..
 
 ## See also
 
-[Soundfonts](../../siggen/sample)
+[Soundfonts](../siggen/sample.md)
 
 More information on soundfonts is in the Floss Manuals: [https://flossmanual.csound.com/midi/reading-midi-files](https://flossmanual.csound.com/midi/reading-midi-files)
 

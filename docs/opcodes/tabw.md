@@ -5,7 +5,7 @@ category:Signal Generators:Table Access
 # tabw
 Fast table opcodes.
 
-Faster than [tablew](../../opcodes/tablew) because it does not allow wrap-around and limit. Has been implemented in order to provide fast access to arrays.
+Faster than [tablew](../opcodes/tablew.md) because it does not allow wrap-around and limit. Has been implemented in order to provide fast access to arrays.
 
 ## Syntax
 ``` csound-orc
@@ -29,7 +29,7 @@ Special care of index value must be taken into account. Index values out of the 
 
 ## Examples
 
-Here is an example of the tabw opcode. It uses the file [tabw.csd](../../examples/tabw.csd).
+Here is an example of the tabw opcode. It uses the file [tabw.csd](../examples/tabw.csd).
 
 ``` csound-orc title="Example of the tabw opcode." linenums="1"
 --8<-- "examples/tabw.csd"
@@ -37,7 +37,7 @@ Here is an example of the tabw opcode. It uses the file [tabw.csd](../../example
 
 ## See Also
 
-[Table Access](../../siggen/tableacc)
+[Table Access](../siggen/tableacc.md)
 
 ## Credits
 

@@ -35,7 +35,7 @@ This opcode allows three generated control signal values to be saved in a named 
 
 ## Examples
 
-Here is an example of the dumpk3 opcode. It uses the file [dumpk3.csd](../../examples/dumpk3.csd). Note that the example must be run from a directory for which the
+Here is an example of the dumpk3 opcode. It uses the file [dumpk3.csd](../examples/dumpk3.csd). Note that the example must be run from a directory for which the
 user has write access.
 
 ``` csound-csd title="Example of the dumpk3 opcode." linenums="1"
@@ -64,7 +64,7 @@ kfreq = 482.056800, kdb = -4.046700, kpan = 0.876500
 
 ## See also
 
-[File Input and Output](../../sigio/fileio)
+[File Input and Output](../sigio/fileio.md)
 
 ## Credits
 

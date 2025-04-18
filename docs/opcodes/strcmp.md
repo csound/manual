@@ -14,7 +14,7 @@ ires strcmp S1, S2
 
 ## Examples
 
-Here is an example of the strcmp opcode. It uses the file [strcmp.csd](../../examples/strcmp.csd).
+Here is an example of the strcmp opcode. It uses the file [strcmp.csd](../examples/strcmp.csd).
 
 ``` csound-csd title="Example of the strcmp opcode." linenums="1"
 --8<-- "examples/strcmp.csd"
@@ -22,7 +22,7 @@ Here is an example of the strcmp opcode. It uses the file [strcmp.csd](../../exa
 
 ## See Also
 
-[String Manipulation Opcodes](../../strings/manipulate)
+[String Manipulation Opcodes](../strings/manipulate.md)
 
 ## Credits
 

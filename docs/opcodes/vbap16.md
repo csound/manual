@@ -24,7 +24,7 @@ _vbap16_ takes an input signal, _asig_, and distribute it among 16 outputs, acco
 
 > :warning: **Warning**
 >
-> Please note that all _vbap_ panning opcodes require the _vbap_ system to be initialized using [vbaplsinit](../../opcodes/vbaplsinit).
+> Please note that all _vbap_ panning opcodes require the _vbap_ system to be initialized using [vbaplsinit](../opcodes/vbaplsinit.md).
 
 ### Reference
 
@@ -32,11 +32,11 @@ Ville Pulkki: &#8220;Virtual Sound Source Positioning Using Vector Base Amplitud
 
 ## Examples
 
-See the entry for [vbap8](../../opcodes/vbap8) for an example of usage of the _vbap_ opcodes.
+See the entry for [vbap8](../opcodes/vbap8.md) for an example of usage of the _vbap_ opcodes.
 
 ## See also
 
-[Panning and Spatialization: Vector Base Amplitude Panning](../../sigmod/panspatl)
+[Panning and Spatialization: Vector Base Amplitude Panning](../sigmod/panspatl.md)
 
 ## Credits
 

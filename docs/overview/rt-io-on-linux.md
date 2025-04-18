@@ -8,7 +8,7 @@ Under Linux, the default portaudio/portmidi settings will result in higher laten
 
 ### Using ALSA
 
-The highest level of control and the lowest possible level of latency are to be achieved using the ALSA plugins in combination with the [--sched](../../invoke/cs-options-by-category#-sched) flag. Using [--sched](../../invoke/cs-options-by-category#-sched) flag requires that Csound be run as the root user, which may be impossible or undesirable in some circumstances.
+The highest level of control and the lowest possible level of latency are to be achieved using the ALSA plugins in combination with the [--sched](../invoke/cs-options-by-category.md#-sched) flag. Using [--sched](../invoke/cs-options-by-category.md#-sched) flag requires that Csound be run as the root user, which may be impossible or undesirable in some circumstances.
 
 The ALSA plugins require the "name" of a "card" and a "device". Unless you have named your "cards" in ~/.asoundrc (or /etc/asound.conf), the "names" will actually be numbers. In order to obtain a list of the possible configurations, use the command line utilities "aplay", "arecord" and "amidi". These utilities are included with most Linux distros, or can be downloaded and built from source here:
 

@@ -5,7 +5,7 @@ category:Mathematical Operations:Mathematical Functions
 # log2
 Returns the base 2 log of _x_ (_x_ positive only).
 
-The argument value is restricted for [log](../../opcodes/log), _log2_, and [sqrt](../../opcodes/sqrt).
+The argument value is restricted for [log](../opcodes/log.md), _log2_, and [sqrt](../opcodes/sqrt.md).
 
 ## Syntax
 ``` csound-orc
@@ -17,7 +17,7 @@ where the argument within the parentheses may be an expression. Value converters
 
 ## Examples
 
-Here is an example of the log2 opcode. It uses the file [log2.csd](../../examples/log2.csd).
+Here is an example of the log2 opcode. It uses the file [log2.csd](../examples/log2.csd).
 
 ``` csound-csd title="Example of the log2 opcode." linenums="1"
 --8<-- "examples/log2.csd"
@@ -31,7 +31,7 @@ instr 1:  i1 = 3.000
 
 ## See also
 
-[Mathematical Functions](../../math/mathfunc)
+[Mathematical Functions](../math/mathfunc.md)
 
 ## Credits
 

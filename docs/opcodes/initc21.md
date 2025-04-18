@@ -24,7 +24,7 @@ _ivalue_ -- floating point value (must be within 0 to 1)
 
 ### Performance
 
-_initc21_ can be used together with both [midic21](../../opcodes/midic21) and [ctrl21](../../opcodes/ctrl21) opcodes for initializing the first controller's value. _ivalue_ argument must be set with a number within 0 to 1. An error occurs if it is not. Use the following formula to set _ivalue_ according with _midic21_ and _ctrl21_ min and max range:
+_initc21_ can be used together with both [midic21](../opcodes/midic21.md) and [ctrl21](../opcodes/ctrl21.md) opcodes for initializing the first controller's value. _ivalue_ argument must be set with a number within 0 to 1. An error occurs if it is not. Use the following formula to set _ivalue_ according with _midic21_ and _ctrl21_ min and max range:
 
 ```
 ivalue = (initial_value - min) / (max - min)
@@ -32,7 +32,7 @@ ivalue = (initial_value - min) / (max - min)
 
 ## See also
 
-[MIDI input and Initialization](../../midi/input)
+[MIDI input and Initialization](../midi/input.md)
 
 ## Credits
 

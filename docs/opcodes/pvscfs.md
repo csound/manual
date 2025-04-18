@@ -33,7 +33,7 @@ This opcode is part of a suite of streaming linear prediction opcodes. It takes 
 ## Examples
 
 Here is an example of the pvscfs opcode using an audio input
-signal as lpc source. It uses the file [pvscfs.csd](../../examples/pvscfs.csd).
+signal as lpc source. It uses the file [pvscfs.csd](../examples/pvscfs.csd).
 
 ``` csound-csd title="Example of the pvscfs opcode." linenums="1"
 --8<-- "examples/pvscfs.csd"
@@ -41,4 +41,4 @@ signal as lpc source. It uses the file [pvscfs.csd](../../examples/pvscfs.csd).
 
 ## See also
 
-[Streaming Linear Predictive Coding (SLPC) Resynthesis](../../spectral/lpcresyn)
+[Streaming Linear Predictive Coding (SLPC) Resynthesis](../spectral/lpcresyn.md)

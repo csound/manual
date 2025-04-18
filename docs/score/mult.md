@@ -20,7 +20,7 @@ s
 #include :section1:
 ```
 
-Alternative methods of doing repeats, use the [r statement](../../scoregens/r), [m statement](../../scoregens/m), and [n statement](../../scoregens/n).
+Alternative methods of doing repeats, use the [r statement](../scoregens/r.md), [m statement](../scoregens/m.md), and [n statement](../scoregens/n.md).
 
 The form `#includestr` is the same as `#include` except the deliminator must be a double quote and the file name may contain macro calls.
 

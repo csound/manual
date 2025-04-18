@@ -52,7 +52,7 @@ The example shows a mono signal being received on port 7777 using UDP.
 
 ## See also
 
-[Network](../../oscnetwork/Network)
+[Network](../oscnetwork/Network.md)
 
 ## Credits
 

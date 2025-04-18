@@ -15,7 +15,7 @@ where the argument within the parentheses may be an expression. Value converters
 
 ## Examples
 
-Here is an example of the frac opcode. It uses the file [frac.csd](../../examples/frac.csd).
+Here is an example of the frac opcode. It uses the file [frac.csd](../examples/frac.csd).
 
 ``` csound-csd title="Example of the frac opcode." linenums="1"
 --8<-- "examples/frac.csd"
@@ -27,7 +27,7 @@ Its output should include a line like this:
 instr 1:  i2 = 0.200
 ```
 
-Here is another example of the frac opcode. It uses the file [frac2.csd](../../examples/frac2.csd).
+Here is another example of the frac opcode. It uses the file [frac2.csd](../examples/frac2.csd).
 
 ``` csound-csd linenums="1"
 --8<-- "examples/frac2.csd"
@@ -35,7 +35,7 @@ Here is another example of the frac opcode. It uses the file [frac2.csd](../../e
 
 ## See also
 
-[Mathematical Functions](../../math/mathfunc)
+[Mathematical Functions](../math/mathfunc.md)
 
 ## Credits
 

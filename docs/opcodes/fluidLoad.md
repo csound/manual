@@ -29,7 +29,7 @@ Invoke fluidLoad in the orchestra header, any number of times. The same SoundFon
 
 ## Examples
 
-Here is an example of the fluidLoad opcode. It uses the file [fluidLoad.csd](../../examples/fluidLoad.csd) and [07AcousticGuitar.sf2](../../examples/07AcousticGuitar.sf2).
+Here is an example of the fluidLoad opcode. It uses the file [fluidLoad.csd](../examples/fluidLoad.csd) and [07AcousticGuitar.sf2](../examples/07AcousticGuitar.sf2).
 
 ``` csound-csd title="Example of the fluidLoad opcode." linenums="1"
 --8<-- "examples/fluidLoad.csd"
@@ -43,7 +43,7 @@ SoundFont:   1  Bank:   0  Preset:   0  Seagul Acoustic Git
 
 ## See also
 
-[Soundfonts](../../siggen/sample)
+[Soundfonts](../siggen/sample.md)
 
 More information on soundfonts is in the Floss Manuals: [https://flossmanual.csound.com/midi/reading-midi-files](https://flossmanual.csound.com/midi/reading-midi-files)
 

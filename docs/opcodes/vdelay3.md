@@ -5,7 +5,7 @@ category:Signal Modifiers:Delay
 # vdelay3
 A variable time delay with cubic interpolation.
 
-_vdelay3_ is experimental. It is the same as [vdelay](../../opcodes/vdelay) except that it uses cubic interpolation. (New in Version 3.50.)
+_vdelay3_ is experimental. It is the same as [vdelay](../opcodes/vdelay.md) except that it uses cubic interpolation. (New in Version 3.50.)
 
 ## Syntax
 ``` csound-orc
@@ -28,7 +28,7 @@ _adel_ -- Current value of delay in milliseconds. Note that linear functions hav
 
 ## Examples
 
-Here is an example of the vdelay3 opcode. It uses the file [vdelay3.csd](../../examples/vdelay3.csd).
+Here is an example of the vdelay3 opcode. It uses the file [vdelay3.csd](../examples/vdelay3.csd).
 
 ``` csound-csd title="Example of the vdelay3 opcode." linenums="1"
 --8<-- "examples/vdelay3.csd"
@@ -38,7 +38,7 @@ Two important points here. First, the delay time must be always positive. And se
 
 ## See also
 
-[Delay](../../sigmod/delayops)
+[Delay](../sigmod/delayops.md)
 
 ## Credits
 

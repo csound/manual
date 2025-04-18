@@ -18,9 +18,9 @@ _imode_ (optional) -- mode of the stereo positioning algorithm. 0 signifies equa
 
 _pan2_ takes an input signal _asig_ and distributes it across two outputs (essentially stereo speakers) according to the control _xp_ which can be k- or a-rate. A zero value for _xp_ indicates hard left, and a 1 is hard right.
 
-## Example
+## Examples
 
-Here is an example of the pan2 opcodes. It uses the file [pan2.csd](../../examples/pan2.csd).
+Here is an example of the pan2 opcodes. It uses the file [pan2.csd](../examples/pan2.csd).
 
 ``` csound-csd title="Example of the pan2 opcodes." linenums="1"
 --8<-- "examples/pan2.csd"
@@ -28,7 +28,7 @@ Here is an example of the pan2 opcodes. It uses the file [pan2.csd](../../exampl
 
 ## See also
 
-[Panning and Spatialization: Amplitude spatialization](../../sigmod/panspatl)
+[Panning and Spatialization: Amplitude spatialization](../sigmod/panspatl.md)
 
 ## Credits
 

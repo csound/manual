@@ -20,7 +20,7 @@ _zkcl_ clears one or more variables in the zk space. This is useful for those va
 
 ## Examples
 
-Here is an example of the zkcl opcode. It uses the file [zkcl.csd](../../examples/zkcl.csd).
+Here is an example of the zkcl opcode. It uses the file [zkcl.csd](../examples/zkcl.csd).
 
 ``` csound-csd title="Example of the zkcl opcode." linenums="1"
 --8<-- "examples/zkcl.csd"
@@ -28,7 +28,7 @@ Here is an example of the zkcl opcode. It uses the file [zkcl.csd](../../example
 
 ## See also
 
-[Zak Patch System](../../zak/top)
+[Zak Patch System](../zak/top.md)
 
 ## Credits
 

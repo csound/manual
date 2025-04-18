@@ -3,7 +3,7 @@ id:UtilityAtsa
 category:Utilities
 -->
 # atsa
-ATS analysis on a soundfile for use with the Csound [ATS Resynthesis](../../spectral/ATS) opcodes.
+ATS analysis on a soundfile for use with the Csound [ATS Resynthesis](../spectral/ATS.md) opcodes.
 
 ## Syntax
 ```
@@ -84,7 +84,7 @@ atsa -b0.1 -e1 -l100 -H10000 -w2 audiofile.wav audiofile.ats
 
 Generates the ATS analysis file 'audiofile.ats' from the original 'audiofile.wav' file. It begins analysis from second 0.1 of the file and the analysis is performed for 1 second thereafter. The lowest frequency stored is 100 Hz and the highest is 10kHz. A Hamming window is used for each analysis frame.
 
-Here is an example of the atsa utility. It uses the file [atsa.csd](../../examples/atsa.csd).
+Here is an example of the atsa utility. It uses the file [atsa.csd](../examples/atsa.csd).
 
 ``` csound-csd title="Example of the atsa utility." linenums="1"
 --8<-- "examples/atsa.csd"

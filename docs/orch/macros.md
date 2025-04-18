@@ -2,21 +2,21 @@
 
 Orchestra macros work like C preprocessor macros, and replace the content of the macro in the orchestra before it is compiled. The opcodes one can use to create, call, or undefine orchestra macros are:
 
-* [#define](../../opcodes/define)
-* [$NAME](../../opcodes/dollar)
-* [#ifdef](../../opcodes/ifdef)
-* [#ifndef](../../opcodes/ifndef)
-* [#end](../../opcodes/ifdef)
-* [#else](../../opcodes/ifdef)
-* [#include](../../opcodes/include)
-* [#includestr](../../opcodes/include)
-* [#undef](../../opcodes/undef)
+* [#define](../opcodes/define.md)
+* [$NAME](../opcodes/dollar.md)
+* [#ifdef](../opcodes/ifdef.md)
+* [#ifndef](../opcodes/ifndef.md)
+* [#end](../opcodes/ifdef.md)
+* [#else](../opcodes/ifdef.md)
+* [#include](../opcodes/include.md)
+* [#includestr](../opcodes/include.md)
+* [#undef](../opcodes/undef.md)
 
-Orchestra macros can also be defined using the command line flag [--omacro:](../../invoke/cs-options-by-category#-omacroxxxyyy).
+Orchestra macros can also be defined using the command line flag [--omacro:](../invoke/cs-options-by-category.md#-omacroxxxyyy).
 
-More information and examples on the usage of orchestra macros can be found in the entry for [#define](../../opcodes/define).
+More information and examples on the usage of orchestra macros can be found in the entry for [#define](../opcodes/define.md).
 
-These opcodes refer to orchestra macros; for score macros, refer to [Score Macros](../../score/macros).
+These opcodes refer to orchestra macros; for score macros, refer to [Score Macros](../score/macros.md).
 
 ## Predefined Math Constant Macros
 

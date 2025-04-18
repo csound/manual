@@ -16,9 +16,9 @@ _tab_ --  tables for destination.
 
 _kftbl_ --  f-tables for source.
 
-## Example
+## Examples
 
-Here is an example of the copyf2array opcode. It uses the file [copyf2array.csd](../../examples/copyf2array.csd).
+Here is an example of the copyf2array opcode. It uses the file [copyf2array.csd](../examples/copyf2array.csd).
 
 ``` csound-csd title="Example of the copyf2array opcode." linenums="1"
 --8<-- "examples/copyf2array.csd"
@@ -26,7 +26,7 @@ Here is an example of the copyf2array opcode. It uses the file [copyf2array.csd]
 
 ## See also
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

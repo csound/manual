@@ -26,7 +26,7 @@ _kgainlow, kgainhig_ -- amplitude scaling of each one of the outputs (default 1)
 
 ## Examples
 
-Here is an example of the trsplit opcode. It uses the file [trsplit.csd](../../examples/trsplit.csd).
+Here is an example of the trsplit opcode. It uses the file [trsplit.csd](../examples/trsplit.csd).
 
 ``` csound-csd title="Example of the trsplit opcode." linenums="1"
 --8<-- "examples/trsplit.csd"
@@ -36,7 +36,7 @@ The example above shows partial tracking of an ifd-analysis signal and linear ad
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

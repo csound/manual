@@ -39,7 +39,7 @@ _klock_ -- switchec phase-locking on (non-zero) or off (zero).
 
 ## Examples
 
-Here is an example of the filescal opcode. It uses the file [filescal.csd](../../examples/filescal.csd).
+Here is an example of the filescal opcode. It uses the file [filescal.csd](../examples/filescal.csd).
 
 ``` csound-csd title="Example of the filescal opcode." linenums="1"
 --8<-- "examples/filescal.csd"
@@ -47,7 +47,7 @@ Here is an example of the filescal opcode. It uses the file [filescal.csd](../..
 
 ## See Also
 
-[Short-time Fourier Transform (STFT) Resynthesis](../../spectral/stft)
+[Short-time Fourier Transform (STFT) Resynthesis](../spectral/stft.md)
 
 ## Credits
 

@@ -32,7 +32,7 @@ _metrobpm_ is a simple opcode that outputs a sequence of isochronous bangs with 
 
 ## See also
 
-[Sensing and Control: Tempo and Sequencing](../../control/sensing)
+[Sensing and Control: Tempo and Sequencing](../control/sensing.md)
 
 ## Credits
 

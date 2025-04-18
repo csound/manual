@@ -26,7 +26,7 @@ Invoke fluidOut in an instrument definition numbered higher than any fluidcontro
 
 ## Examples
 
-Here is an example of the fluidOut opcode with two fluidOuts. It uses the file [fluidOut.csd](../../examples/fluidOut.csd), [01hpschd.sf2](../../examples/01hpschd.sf2) and [22Bassoon.sf2](../../examples/22Bassoon.sf2).
+Here is an example of the fluidOut opcode with two fluidOuts. It uses the file [fluidOut.csd](../examples/fluidOut.csd), [01hpschd.sf2](../examples/01hpschd.sf2) and [22Bassoon.sf2](../examples/22Bassoon.sf2).
 
 ``` csound-csd title="Example of the fluidOut opcode." linenums="1"
 --8<-- "examples/fluidOut.csd"
@@ -44,7 +44,7 @@ SoundFont:   1  Bank:   0  Preset:  70  Ethan Bassoon mono
 
 ## See also
 
-[Soundfonts](../../siggen/sample)
+[Soundfonts](../siggen/sample.md)
 
 More information on soundfonts is in the Floss Manuals: [https://flossmanual.csound.com/midi/reading-midi-files](https://flossmanual.csound.com/midi/reading-midi-files)
 

@@ -33,7 +33,7 @@ As of Csound 5.17 if the instrument number is given as zero then all instruments
 ## Examples
 
 Here is a simple example of the active opcode. It uses the file
-[active.csd](../../examples/active.csd).
+[active.csd](../examples/active.csd).
 
 ``` csound-csd title="Simple example of the active opcode." linenums="1"
 --8<-- "examples/active.csd"
@@ -46,7 +46,7 @@ instr 2:  icount = 1.000
 instr 2:  icount = 2.000
 ```
 
-Here is a more advanced example of the active opcode. It displays the results of the active opcode at k-rate instead of i-rate. It uses the file [active_k.csd](../../examples/active_k.csd).
+Here is a more advanced example of the active opcode. It displays the results of the active opcode at k-rate instead of i-rate. It uses the file [active_k.csd](../examples/active_k.csd).
 
 ``` csound-csd title="Example of the active opcode at k-rate." linenums="1"
 --8<-- "examples/active_k.csd"
@@ -59,7 +59,7 @@ i2     1.00000
 i2     2.00000
 ```
 
-Here is another example of the active opcode, using the number of instances to calculate gain. It uses the file [active_scale.csd](../../examples/active_scale.csd).
+Here is another example of the active opcode, using the number of instances to calculate gain. It uses the file [active_scale.csd](../examples/active_scale.csd).
 
 ``` csound-csd title="Example of the active opcode at k-rate." linenums="1"
 --8<-- "examples/active_scale.csd"
@@ -67,7 +67,7 @@ Here is another example of the active opcode, using the number of instances to c
 
 ## See also
 
-[Real-time Performance Control](../../control/realtime)
+[Real-time Performance Control](../control/realtime.md)
 
 ## Credits
 

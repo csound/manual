@@ -29,4 +29,4 @@ Finds the positive difference values between consecutive spectral frames. At eac
 
 ## See Also
 
-[specaddm](../../opcodes/specaddm), [specfilt](../../opcodes/specfilt), [spechist](../../opcodes/spechist), [specscal](../../opcodes/specscal)
+[specaddm](../opcodes/specaddm.md), [specfilt](../opcodes/specfilt.md), [spechist](../opcodes/spechist.md), [specscal](../opcodes/specscal.md)

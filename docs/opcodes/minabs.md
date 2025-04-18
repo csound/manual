@@ -21,7 +21,7 @@ _kin1, kin2, ..._ --  k-rate signals to be compared.
 
 ## Examples
 
-Here is an example of the minabs opcode. It uses the file [minabs.csd](../../examples/minabs.csd).
+Here is an example of the minabs opcode. It uses the file [minabs.csd](../examples/minabs.csd).
 
 ``` csound-csd title="Example of the minabs opcode." linenums="1"
 --8<-- "examples/minabs.csd"
@@ -29,7 +29,7 @@ Here is an example of the minabs opcode. It uses the file [minabs.csd](../../exa
 
 ## See also
 
-[Comparators and Accumulators](../../sigmod/compaccum)
+[Comparators and Accumulators](../sigmod/compaccum.md)
 
 ## Credits
 

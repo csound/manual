@@ -41,7 +41,7 @@ The Gardner method output has some frequency response anomalies in the low-mid a
 
 ## Examples
 
-Here is an example of the pinkish opcode. It uses the file [pinkish.csd](../../examples/pinkish.csd).
+Here is an example of the pinkish opcode. It uses the file [pinkish.csd](../examples/pinkish.csd).
 
 ``` csound-orc title="Example of the pinkish opcode." linenums="1"
 --8<-- "examples/pinkish.csd"
@@ -51,7 +51,7 @@ Kellet-filtered noise for a tied note (_iskip_ is non-zero).
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
 ## Credits
 

@@ -14,7 +14,7 @@ kres/ires product karr[]/iarr[]  (k- or i-arrays )
 
 ## Examples
 
-Here is an example of the product opcode. It uses the file [productarray.csd](../../examples/productarray.csd).
+Here is an example of the product opcode. It uses the file [productarray.csd](../examples/productarray.csd).
 
 ``` csound-csd title="Example of the product opcode." linenums="1"
 --8<-- "examples/productarray.csd"
@@ -22,7 +22,7 @@ Here is an example of the product opcode. It uses the file [productarray.csd](..
 
 ## See also
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

@@ -18,7 +18,7 @@ _index_ --  which value to read, defaulting to zero.
 
 ## Examples
 
-Here is an example of the readscratch opcode. It uses the file [readscratch.csd](../../examples/readscratch.csd).
+Here is an example of the readscratch opcode. It uses the file [readscratch.csd](../examples/readscratch.csd).
 
 ``` csound-csd title="Example of the readscratch opcode." linenums="1"
 --8<-- "examples/readscratch.csd"
@@ -26,9 +26,9 @@ Here is an example of the readscratch opcode. It uses the file [readscratch.csd]
 
 ## See Also
 
-[writescratch](../../opcodes/writescratch).
+[writescratch](../opcodes/writescratch.md).
 
-[Miscellaneous opcodes](../../miscopcodes)
+[Miscellaneous opcodes](../miscopcodes.md)
 
 ## Credits
 

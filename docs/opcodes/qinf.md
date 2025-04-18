@@ -12,7 +12,7 @@ qinf(x) (no rate restriction)
 
 ## Examples
 
-Here is an example of the qinf opcode. It uses the file [qinf.csd](../../examples/qinf.csd).
+Here is an example of the qinf opcode. It uses the file [qinf.csd](../examples/qinf.csd).
 
 ``` csound-csd title="Example of the qinf opcode." linenums="1"
 --8<-- "examples/qinf.csd"
@@ -20,7 +20,7 @@ Here is an example of the qinf opcode. It uses the file [qinf.csd](../../example
 
 ## See also
 
-[Mathematical Functions](../../math/mathfunc)
+[Mathematical Functions](../math/mathfunc.md)
 
 ## Credits
 

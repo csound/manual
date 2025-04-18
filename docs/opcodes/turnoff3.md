@@ -24,7 +24,7 @@ The following example uses the turnoff3 opcode.
 
 ## See also
 
-[Duration Control Statements](../../control/durctl)
+[Duration Control Statements](../control/durctl.md)
 
 ## Credits
 

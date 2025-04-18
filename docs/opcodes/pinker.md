@@ -16,7 +16,7 @@ _pinker_ generates pink noise (i.e., noise with equal energy in each octave), by
 
 ## Examples
 
-Here is an example of the pinker opcode. It uses the file [pinker.csd](../../examples/pinker.csd).
+Here is an example of the pinker opcode. It uses the file [pinker.csd](../examples/pinker.csd).
 
 ``` csound-orc title="Example of the pinker opcode." linenums="1"
 --8<-- "examples/pinker.csd"
@@ -24,7 +24,7 @@ Here is an example of the pinker opcode. It uses the file [pinker.csd](../../exa
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
 ## Credits
 

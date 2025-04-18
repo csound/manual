@@ -18,7 +18,7 @@ _&#8220;Sin&#8221;_ --  a string (in double-quotes or enclosed by {{ }}) contain
 
 ## Examples
 
-Here is an example of the scoreline_i opcode. It uses the file [scoreline_i.csd](../../examples/scoreline_i.csd).
+Here is an example of the scoreline_i opcode. It uses the file [scoreline_i.csd](../examples/scoreline_i.csd).
 
 ``` csound-csd title="Example of the scoreline_i opcode." linenums="1"
 --8<-- "examples/scoreline_i.csd"
@@ -26,7 +26,7 @@ Here is an example of the scoreline_i opcode. It uses the file [scoreline_i.csd]
 
 ## See also
 
-[Instrument Invocation](../../control/invocat)
+[Instrument Invocation](../control/invocat.md)
 
 More information on this opcode: [http://www.csoundjournal.com/issue15/phrase_loops.html](http://www.csoundjournal.com/issue15/phrase_loops.html) written by Jim Aikin, and in the Floss Manuals: [https://flossmanual.csound.com/csound-language/live-events](https://flossmanual.csound.com/csound-language/live-events).
 

@@ -42,7 +42,7 @@ _kvrate_ -- Vibrator rate
 
 ## Examples
 
-Here is an example of the fmpercfl opcode. It uses the file [fmpercfl.csd](../../examples/fmpercfl.csd).
+Here is an example of the fmpercfl opcode. It uses the file [fmpercfl.csd](../examples/fmpercfl.csd).
 
 ``` csound-orc title="Example of the fmpercfl opcode." linenums="1"
 --8<-- "examples/fmpercfl.csd"
@@ -50,7 +50,7 @@ Here is an example of the fmpercfl opcode. It uses the file [fmpercfl.csd](../..
 
 ## See Also
 
-[FM Synthesis](../../siggen/fmsynth)
+[FM Synthesis](../siggen/fmsynth.md)
 
 More information about frequency modulation on Wikipedia: [http://en.wikipedia.org/wiki/Frequency_modulation_synthesis](http://en.wikipedia.org/wiki/Frequency_modulation_synthesis)
 

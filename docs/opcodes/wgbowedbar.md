@@ -37,7 +37,7 @@ _kgain_ -- gain of filter. A value of about 0.809 is suggested.
 
 ## Examples
 
-Here is an example of the wgbowedbar opcode. It uses the file [wgbowedbar.csd](../../examples/wgbowedbar.csd).
+Here is an example of the wgbowedbar opcode. It uses the file [wgbowedbar.csd](../examples/wgbowedbar.csd).
 
 ``` csound-csd title="Example of the wgbowedbar opcode." linenums="1"
 --8<-- "examples/wgbowedbar.csd"
@@ -45,7 +45,7 @@ Here is an example of the wgbowedbar opcode. It uses the file [wgbowedbar.csd](.
 
 ## See also
 
-[Waveguide Physical Modeling](../../siggen/wavguide)
+[Waveguide Physical Modeling](../siggen/wavguide.md)
 
 ## Credits
 

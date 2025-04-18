@@ -23,7 +23,7 @@ _karg[]1/2, karg2_ -- the operands
 
 ## Examples
 
-Here is an example of the fmin opcode. It uses the file [fmin.csd](../../examples/fmin.csd).
+Here is an example of the fmin opcode. It uses the file [fmin.csd](../examples/fmin.csd).
 
 ``` csound-csd title="Example of the fmin opcode." linenums="1"
 --8<-- "examples/fmin.csd"
@@ -31,7 +31,7 @@ Here is an example of the fmin opcode. It uses the file [fmin.csd](../../example
 
 ## See Also
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

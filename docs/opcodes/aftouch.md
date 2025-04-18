@@ -18,7 +18,7 @@ _imax_ (optional, default=127) -- maximum limit on values obtained.
 
 ## Examples
 
-Here is an example of the aftouch opcode. It uses the file [aftouch.csd](../../examples/aftouch.csd).
+Here is an example of the aftouch opcode. It uses the file [aftouch.csd](../examples/aftouch.csd).
 
 ``` csound-csd title="Example of the aftouch opcode." linenums="1"
 --8<-- "examples/aftouch.csd"
@@ -26,7 +26,7 @@ Here is an example of the aftouch opcode. It uses the file [aftouch.csd](../../e
 
 ## See also
 
-[MIDI input and Initialization](../../midi/input)
+[MIDI input and Initialization](../midi/input.md)
 
 ## Credits
 

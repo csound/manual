@@ -22,11 +22,11 @@ _asig_ -- a-rate signal to read from when writing to the table.
 
 _koff_ -- i- or k-rate offset into table. Range unlimited - see explanation at end of this section.
 
-In one application, it is intended to be used with one or with several [tablera](../../opcodes/tablera) opcodes before a _tablewa_ -- all sharing the same _kstart_ variable.
+In one application, it is intended to be used with one or with several [tablera](../opcodes/tablera.md) opcodes before a _tablewa_ -- all sharing the same _kstart_ variable.
 
 These read from and write to sequential locations in a table at audio rates, with _ksmps_ floats being written and read each cycle.
 
-[tablera](../../opcodes/tablera) starts reading from location _kstart_. _tablewa_ starts writing to location _kstart_, and then writes to _kstart_ with the number of the location one more than the one it last wrote. (Note that for _tablewa_, _kstart_ is both an input and output variable.) If the writing index reaches the end of the table, then no further writing occurs and zero is written to _kstart_.
+[tablera](../opcodes/tablera.md) starts reading from location _kstart_. _tablewa_ starts writing to location _kstart_, and then writes to _kstart_ with the number of the location one more than the one it last wrote. (Note that for _tablewa_, _kstart_ is both an input and output variable.) If the writing index reaches the end of the table, then no further writing occurs and zero is written to _kstart_.
 
 For instance, if the table's length was 16 (locations 0 to 15), and _ksmps_ was 5. Then the following steps would occur with repetitive runs of the _tablewa_ opcode, assuming that _kstart_ started at 0.
 
@@ -37,7 +37,7 @@ For instance, if the table's length was 16 (locations 0 to 15), and _ksmps_ was 
 | 3 | 10 | 15 | 10 11 12 13 14 |
 | 4 | 15 | 0 | 15 |
 
-This is to facilitate processing table data using standard a-rate orchestra code between the [tablera](../../opcodes/tablera) and _tablewa_ opcodes. They allow all Csound k-rate operators to be used (with caution) on a-rate variables - something that would only be possible otherwise by _ksmps_ = 1, downsamp and upsamp.
+This is to facilitate processing table data using standard a-rate orchestra code between the [tablera](../opcodes/tablera.md) and _tablewa_ opcodes. They allow all Csound k-rate operators to be used (with caution) on a-rate variables - something that would only be possible otherwise by _ksmps_ = 1, downsamp and upsamp.
 
 > :warning: **Several cautions**
 >
@@ -99,7 +99,7 @@ Ideally this would be an optional variable, defaulting to 0, however with the ex
 
 ## See also
 
-[Read/Write Operations](../../table/readwrit)
+[Read/Write Operations](../table/readwrit.md)
 
 ## Credits
 

@@ -34,7 +34,7 @@ A-rate variables must be send and received as arrays that are _ksmps_ samples la
 
 ## Examples
 
-Here is a simple example of the websocket opcode. It uses the file [websocket.csd](../../examples/websocket.csd) and [websocket.html](../../examples/websocket.html).
+Here is a simple example of the websocket opcode. It uses the file [websocket.csd](../examples/websocket.csd) and [websocket.html](../examples/websocket.html).
 
 ``` csound-csd title="Example of the websocket opcode." linenums="1"
 --8<-- "examples/websocket.csd"
@@ -42,9 +42,9 @@ Here is a simple example of the websocket opcode. It uses the file [websocket.cs
 
 ## See also
 
-[Signal Input](../../sigio/input)
+[Signal Input](../sigio/input.md)
 
-[Signal Output](../../sigio/output)
+[Signal Output](../sigio/output.md)
 
 ## Credits
 

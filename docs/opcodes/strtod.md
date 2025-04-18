@@ -25,7 +25,7 @@ _ir_ -- Value of string as float.
 
 ## See Also
 
-[String Conversion Opcodes](../../strings/convert)
+[String Conversion Opcodes](../strings/convert.md)
 
 ## Credits
 

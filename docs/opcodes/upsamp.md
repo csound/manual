@@ -16,7 +16,7 @@ _upsamp_ converts a control signal to an audio signal. It does it by simple repe
 
 ## Examples
 
-Here is an example of the upsamp opcode. It uses the file [upsamp.csd](../../examples/upsamp.csd).
+Here is an example of the upsamp opcode. It uses the file [upsamp.csd](../examples/upsamp.csd).
 
 ``` csound-csd title="Example of the upsamp opcode." linenums="1"
 --8<-- "examples/upsamp.csd"
@@ -24,4 +24,4 @@ Here is an example of the upsamp opcode. It uses the file [upsamp.csd](../../exa
 
 ## See also
 
-[Sample Level Operators](../../sigmod/sample)
+[Sample Level Operators](../sigmod/sample.md)

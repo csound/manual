@@ -28,7 +28,7 @@ _ftsave_ saves a list of tables to a file. The file's format can be binary or te
 
 ## Examples
 
-Here is an example of the ftsave opcode. It uses the file [ftsave.csd](../../examples/ftsave.csd).
+Here is an example of the ftsave opcode. It uses the file [ftsave.csd](../examples/ftsave.csd).
 
 ``` csound-csd title="Example of the ftsave opcode." linenums="1"
 --8<-- "examples/ftsave.csd"
@@ -36,7 +36,7 @@ Here is an example of the ftsave opcode. It uses the file [ftsave.csd](../../exa
 
 ## See also
 
-[Read/Write Operations](../../table/readwrit)
+[Read/Write Operations](../table/readwrit.md)
 
 ## Credits
 

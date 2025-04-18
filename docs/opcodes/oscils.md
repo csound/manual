@@ -31,7 +31,7 @@ _ares_ -- audio output
 
 ## Examples
 
-Here is an example of the oscils opcode. It uses the file [oscils.csd](../../examples/oscils.csd).
+Here is an example of the oscils opcode. It uses the file [oscils.csd](../examples/oscils.csd).
 
 ``` csound-orc title="Example of the oscils opcode." linenums="1"
 --8<-- "examples/oscils.csd"
@@ -39,7 +39,7 @@ Here is an example of the oscils opcode. It uses the file [oscils.csd](../../exa
 
 ## See also
 
-[Basic Oscillators](../../siggen/basic)
+[Basic Oscillators](../siggen/basic.md)
 
 ## Credits
 

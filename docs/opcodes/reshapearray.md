@@ -24,7 +24,7 @@ _isize1_ - The size of the second dimension (0 for 1D arrays). _Defaults to 0_
 
 ## Examples
 
-Here is an example of the reshapearray opcode. It uses the file [reshapearray.csd](../../examples/reshapearray.csd).
+Here is an example of the reshapearray opcode. It uses the file [reshapearray.csd](../examples/reshapearray.csd).
 
 ``` csound-csd title="Example of the reshapearray opcode." linenums="1"
 --8<-- "examples/reshapearray.csd"
@@ -32,7 +32,7 @@ Here is an example of the reshapearray opcode. It uses the file [reshapearray.cs
 
 ## See also
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

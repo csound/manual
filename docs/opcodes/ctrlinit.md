@@ -29,7 +29,7 @@ Sets the initial values for a set of MIDI controllers.
 
 ## Examples
 
-Here is an example of the ctrlinit opcode. It uses the file [ctrlinit.csd](../../examples/ctrlinit.csd).
+Here is an example of the ctrlinit opcode. It uses the file [ctrlinit.csd](../examples/ctrlinit.csd).
 
 ``` csound-csd title="Example of the ctrlinit opcode." linenums="1"
 --8<-- "examples/ctrlinit.csd"
@@ -37,9 +37,9 @@ Here is an example of the ctrlinit opcode. It uses the file [ctrlinit.csd](../..
 
 ## See also
 
-[MIDI input and Initialization](../../midi/input)
+[MIDI input and Initialization](../midi/input.md)
 
-[Orchestra Header Statements](../../orch/header)
+[Orchestra Header Statements](../orch/header.md)
 
 ## Credits
 

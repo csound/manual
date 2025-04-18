@@ -37,4 +37,4 @@ Scales an input spectral datablock with spectral envelopes. Function tables _ift
 
 ## See Also
 
-[specaddm](../../opcodes/specaddm), [specdiff](../../opcodes/specdiff), [specfilt](../../opcodes/specfilt), [spechist](../../opcodes/spechist)
+[specaddm](../opcodes/specaddm.md), [specdiff](../opcodes/specdiff.md), [specfilt](../opcodes/specfilt.md), [spechist](../opcodes/spechist.md)

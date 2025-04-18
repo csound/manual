@@ -45,7 +45,7 @@ The example shows a simple sine wave being sent just once to a computer called "
 
 ## See also
 
-[Network](../../oscnetwork/Network)
+[Network](../oscnetwork/Network.md)
 
 ## Credits
 

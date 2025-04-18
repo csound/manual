@@ -5,7 +5,7 @@ category:Signal Generators:Sample Playback
 # sfinstr3
 Plays a SoundFont2 (SF2) sample instrument, generating a stereo sound with cubic interpolation.
 
-These opcodes allow management the sample-structure of SF2 files. In order to understand the usage of these opcodes, the user must have some knowledge of the SF2 format, so a brief description of this format can be found in the [SoundFont2 File Format](../../siggen/sample) section.
+These opcodes allow management the sample-structure of SF2 files. In order to understand the usage of these opcodes, the user must have some knowledge of the SF2 format, so a brief description of this format can be found in the [SoundFont2 File Format](../siggen/sample.md) section.
 
 ## Syntax
 ``` csound-orc
@@ -39,13 +39,13 @@ Adjustment of the amplitude can be done by varying the _xamp_ argument, which ac
 
 The _ioffset_ parameter allows the sound to start from a sample different than the first one. The user should make sure that its value is within the length of the specific sound. Otherwise, Csound will probably crash.
 
-_sfinstr3_ is a cubic-interpolation version of [sfinstr](../../opcodes/sfinstr). Difference of sound-quality is noticeable specially in bass-frequency-transposed samples. In high-freq-transposed samples the difference is less noticeable, and I suggest to use linear-interpolation versions, because they are faster.
+_sfinstr3_ is a cubic-interpolation version of [sfinstr](../opcodes/sfinstr.md). Difference of sound-quality is noticeable specially in bass-frequency-transposed samples. In high-freq-transposed samples the difference is less noticeable, and I suggest to use linear-interpolation versions, because they are faster.
 
 These opcodes only support the sample structure of SF2 files. The modulator structure of the SoundFont2 format is not supported in Csound. Any modulation or processing to the sample data is left to the Csound user, bypassing all restrictions forced by the SF2 standard.
 
 ## Examples
 
-Here is an example of the sfinstr3 opcode. It uses the file [sfinstr3.csd](../../examples/sfinstr3.csd).
+Here is an example of the sfinstr3 opcode. It uses the file [sfinstr3.csd](../examples/sfinstr3.csd).
 
 ``` csound-csd title="Example of the sfinstr3 opcode." linenums="1"
 --8<-- "examples/sfinstr3.csd"
@@ -53,7 +53,7 @@ Here is an example of the sfinstr3 opcode. It uses the file [sfinstr3.csd](../..
 
 ## See also
 
-[Soundfonts](../../siggen/sample)
+[Soundfonts](../siggen/sample.md)
 
 More information on soundfonts is in the Floss Manuals: [https://flossmanual.csound.com/midi/reading-midi-files](https://flossmanual.csound.com/midi/reading-midi-files)
 

@@ -24,15 +24,15 @@ _idstoffset_ - index offset for the destination table
 
 _vadd_i_ adds the value of _ival_ to each element of the vector contained in the table _ifn_, starting from table index _idstoffset_. This enables you to process a specific section of a table by specifying the offset and the number of elements to be processed. Offset is counted starting from 0, so if no offset is specified (or set to 0), the table will be modified from the beginning.
 
-This opcode runs only on initialization, there is a k-rate version of this opcode called [vadd](../../opcodes/vadd).
+This opcode runs only on initialization, there is a k-rate version of this opcode called [vadd](../opcodes/vadd.md).
 
 Negative values for _idstoffset_ are valid. Elements from the vector that are outside the table, will be discarded, and they will not wrap around the table.
 
-In all these opcodes, the resulting vectors are stored in _ifn_, overriding the intial vectors. If you want to keep initial vector, use [vcopy](../../opcodes/vcopy) or [vcopy_i](../../opcodes/vcopy_i) to copy it in another table. All these operators are designed to be used together with other opcodes that operate with vectorial signals such as [vcella](../../opcodes/vcella), [adsynt](../../opcodes/adsynt), [adsynt2](../../opcodes/adsynt2), etc.  They can also be useful in conjunction with the spectral opcodes [pvsftw](../../opcodes/pvsftw) and [pvsftr](../../opcodes/pvsftr).
+In all these opcodes, the resulting vectors are stored in _ifn_, overriding the intial vectors. If you want to keep initial vector, use [vcopy](../opcodes/vcopy.md) or [vcopy_i](../opcodes/vcopy_i.md) to copy it in another table. All these operators are designed to be used together with other opcodes that operate with vectorial signals such as [vcella](../opcodes/vcella.md), [adsynt](../opcodes/adsynt.md), [adsynt2](../opcodes/adsynt2.md), etc.  They can also be useful in conjunction with the spectral opcodes [pvsftw](../opcodes/pvsftw.md) and [pvsftr](../opcodes/pvsftr.md).
 
 ## Examples
 
-Here is an example of the vadd_i opcode. It uses the file [vadd_i.csd](../../examples/vadd_i.csd).
+Here is an example of the vadd_i opcode. It uses the file [vadd_i.csd](../examples/vadd_i.csd).
 
 ``` csound-csd title="Example of the vadd_i opcode." linenums="1"
 --8<-- "examples/vadd_i.csd"
@@ -40,7 +40,7 @@ Here is an example of the vadd_i opcode. It uses the file [vadd_i.csd](../../exa
 
 ## See also
 
-[Operations Vectorial/Scalar Signal](../../vectorial/scalar)
+[Operations Vectorial/Scalar Signal](../vectorial/scalar.md)
 
 ## Credits
 

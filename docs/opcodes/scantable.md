@@ -32,7 +32,7 @@ _kpch_ -- the string's scanned frequency.
 
 ## Examples
 
-Here is an example of the scantable opcode. It uses the file [scantable.csd](../../examples/scantable.csd).
+Here is an example of the scantable opcode. It uses the file [scantable.csd](../examples/scantable.csd).
 
 ``` csound-csd title="Example of the scantable opcode." linenums="1"
 --8<-- "examples/scantable.csd"
@@ -40,7 +40,7 @@ Here is an example of the scantable opcode. It uses the file [scantable.csd](../
 
 ## See also
 
-[Scanned Synthesis](../../siggen/scantop)
+[Scanned Synthesis](../siggen/scantop.md)
 
 More information on the Scanned Synthesis opcodes: [Working with Scanned Synthesis](http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html), written by Steven Yi, and some [tutorials](http://www.csounds.com/scanned/) by Richard Boulanger.
 

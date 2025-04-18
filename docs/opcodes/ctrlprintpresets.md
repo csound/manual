@@ -20,7 +20,7 @@ _Sfilename_ -- (optional) file to which to print.  If omitted it uses the curren
 
 ## Examples
 
-Here is an example of the ctrlprintpresets opcode. It uses the file [ctrls.csd](../../examples/ctrls.csd).
+Here is an example of the ctrlprintpresets opcode. It uses the file [ctrls.csd](../examples/ctrls.csd).
 
 ``` csound-csd title="Example of the ctrlprintpresets opcode." linenums="1"
 --8<-- "examples/ctrls.csd"
@@ -28,7 +28,7 @@ Here is an example of the ctrlprintpresets opcode. It uses the file [ctrls.csd](
 
 ## See also
 
-[MIDI input and Initialization](../../midi/input)
+[MIDI input and Initialization](../midi/input.md)
 
 ## Credits
 

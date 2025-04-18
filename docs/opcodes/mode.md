@@ -32,11 +32,11 @@ _xQ_ -- quality factor of the filter
 
 The resonance time is roughly proportional to _xQ_/_xfreq_.
 
-See [Modal Frequency Ratios](../../misc/modalfreq) for frequency ratios of real instruments which can be used to determine the values of _xfreq_.
+See [Modal Frequency Ratios](../misc/modalfreq.md) for frequency ratios of real instruments which can be used to determine the values of _xfreq_.
 
 ## Examples
 
-Here is an example of the mode opcode. It uses the file [mode.csd](../../examples/mode.csd).
+Here is an example of the mode opcode. It uses the file [mode.csd](../examples/mode.csd).
 
 ``` csound-csd title="Example of the mode opcode." linenums="1"
 --8<-- "examples/mode.csd"
@@ -44,7 +44,7 @@ Here is an example of the mode opcode. It uses the file [mode.csd](../../example
 
 ## See also
 
-[Specialized Filters: Other filters](../../sigmod/speciali)
+[Specialized Filters: Other filters](../sigmod/speciali.md)
 
 ## Credits
 

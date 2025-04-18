@@ -20,7 +20,7 @@ _zkw_ writes _kval_ into the zk variable specified by _kndx_.
 
 ## Examples
 
-Here is an example of the zkw opcode. It uses the file [zkw.csd](../../examples/zkw.csd).
+Here is an example of the zkw opcode. It uses the file [zkw.csd](../examples/zkw.csd).
 
 ``` csound-csd title="Example of the zkw opcode." linenums="1"
 --8<-- "examples/zkw.csd"
@@ -28,7 +28,7 @@ Here is an example of the zkw opcode. It uses the file [zkw.csd](../../examples/
 
 ## See also
 
-[Zak Patch System](../../zak/top)
+[Zak Patch System](../zak/top.md)
 
 ## Credits
 

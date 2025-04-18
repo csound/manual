@@ -22,7 +22,7 @@ _kmin, kmax_ -- range of the table to sum. If omitted or zero they default to 0 
 
 ## Examples
 
-Here is an example of the tabsum opcode. It uses the file [tabsum.csd](../../examples/tabsum.csd).
+Here is an example of the tabsum opcode. It uses the file [tabsum.csd](../examples/tabsum.csd).
 
 ``` csound-csd title="Example of the tabsum opcode." linenums="1"
 --8<-- "examples/tabsum.csd"
@@ -30,7 +30,7 @@ Here is an example of the tabsum opcode. It uses the file [tabsum.csd](../../exa
 
 ## See Also
 
-[Vectorial opcodes](../../vectorial/top)
+[Vectorial opcodes](../vectorial/top.md)
 
 ## Credits
 

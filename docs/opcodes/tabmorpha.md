@@ -27,13 +27,13 @@ _atabnum1_ - the first table chosen for the morphing. This number doesn’t expr
 
 _atabnum2_ - the second table chosen for the morphing. This number doesn’t express the table number directly, but the position of the table in the set sequence (starting from 0 to N-1). If this number is an integer, corresponding table will be chosen unaltered. If it contains fractional values, then an interpolation with the next adjacent table will result.
 
-The _tabmorpha_ family of opcodes is similar to the [table](../../opcodes/table) family, but allows morphing between two tables chosen into a set of tables. Firstly the user has to provide a set of tables of equal length (ifn2 [, ifn3, ifn4,…ifnN]). Then he can choose a pair of tables in the set in order to perform the morphing: _atabnum1_ and _atabnum2_ are filled with numbers (zero represents the first table in the set, 1 the second, 2 the third and so on). Then determine the morphing between the two chosen tables with the _aweightpoint_ parameter. After that the resulting table can be indexed with the _aindex_ parameter like a normal _table_ opcode. If the value of this parameter surpasses the length of tables (which must be the same for all tables), then it is wrapped around.
+The _tabmorpha_ family of opcodes is similar to the [table](../opcodes/table.md) family, but allows morphing between two tables chosen into a set of tables. Firstly the user has to provide a set of tables of equal length (ifn2 [, ifn3, ifn4,…ifnN]). Then he can choose a pair of tables in the set in order to perform the morphing: _atabnum1_ and _atabnum2_ are filled with numbers (zero represents the first table in the set, 1 the second, 2 the third and so on). Then determine the morphing between the two chosen tables with the _aweightpoint_ parameter. After that the resulting table can be indexed with the _aindex_ parameter like a normal _table_ opcode. If the value of this parameter surpasses the length of tables (which must be the same for all tables), then it is wrapped around.
 
-_tabmorpha_ is the audio-rate version of [tabmorphi](../../opcodes/tabmorphi) (it uses interpolation). All input arguments work at a-rate.
+_tabmorpha_ is the audio-rate version of [tabmorphi](../opcodes/tabmorphi.md) (it uses interpolation). All input arguments work at a-rate.
 
 ## Examples
 
-Here is an example of the tabmorpha opcode. It uses the file [tabmorpha.csd](../../examples/tabmorpha.csd).
+Here is an example of the tabmorpha opcode. It uses the file [tabmorpha.csd](../examples/tabmorpha.csd).
 
 ``` csound-csd title="Example of the tabmorpha opcode." linenums="1"
 --8<-- "examples/tabmorpha.csd"
@@ -41,7 +41,7 @@ Here is an example of the tabmorpha opcode. It uses the file [tabmorpha.csd](../
 
 ## See also
 
-[Read/Write Operations](../../table/readwrit)
+[Read/Write Operations](../table/readwrit.md)
 
 ## Credits
 

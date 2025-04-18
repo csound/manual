@@ -40,11 +40,11 @@ _itweek_ (optional) -- fine-tune adjust this unit so that it is stable when anal
 
 _tempest_ examines _kin_ for amplitude periodicity, and estimates a current tempo. The input is first low-pass filtered, then center-clipped, and the residue placed in a short-term memory buffer (attenuated over time) where it is analyzed for periodicity using a form of autocorrelation. The period, expressed as a _tempo_ in beats per minute, is output as _ktemp_. The period is also used internally to make predictions about future amplitude patterns, and these are placed in a buffer adjacent to that of the input. The two adjacent buffers can be periodically displayed, and the predicted values optionally mixed with the incoming signal to simulate expectation.
 
-This unit is useful for sensing the metric implications of any k-signal (e.g.- the RMS of an audio signal, or the second derivative of a conducting gesture), before sending to a [tempo](../../opcodes/tempo) statement.
+This unit is useful for sensing the metric implications of any k-signal (e.g.- the RMS of an audio signal, or the second derivative of a conducting gesture), before sending to a [tempo](../opcodes/tempo.md) statement.
 
 ## Examples
 
-Here is an example of the tempest opcode. It uses the file [tempest.csd](../../examples/tempest.csd), and [drumsMlp.wav](../../examples/drumsMlp.wav).
+Here is an example of the tempest opcode. It uses the file [tempest.csd](../examples/tempest.csd), and [drumsMlp.wav](../examples/drumsMlp.wav).
 
 ``` csound-csd title="Example of the tempest opcode." linenums="1"
 --8<-- "examples/tempest.csd"
@@ -59,4 +59,4 @@ The tempo of the audio file &#8220;drumsMlp.wav&#8221; is 120 beats per minute. 
 
 ## See also
 
-[Sensing and Control: Tempo and Pitch estimation](../../control/sensing)
+[Sensing and Control: Tempo and Pitch estimation](../control/sensing.md)

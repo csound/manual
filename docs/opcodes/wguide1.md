@@ -25,13 +25,13 @@ _wguide1_ is the most elemental waveguide model, consisting of one delay-line an
 Implementing waveguide algorithms as opcodes, instead of orc instruments, allows the user to set _kr_ different than _sr_, allowing better performance particulary when using real-time.
 
 <figure markdown="span">
-![wguide1.](../../images/wguide1.png)
+![wguide1.](../images/wguide1.png)
 <figcaption>wguide1.</figcaption>
 </figure>
 
 ## Examples
 
-Here is an example of the wguide1 opcode. It uses the file [wguide1.csd](../../examples/wguide1.csd).
+Here is an example of the wguide1 opcode. It uses the file [wguide1.csd](../examples/wguide1.csd).
 
 ``` csound-csd title="Example of the wguide1 opcode." linenums="1"
 --8<-- "examples/wguide1.csd"
@@ -39,9 +39,9 @@ Here is an example of the wguide1 opcode. It uses the file [wguide1.csd](../../e
 
 ## See also
 
-[Waveguide Physical Modeling](../../siggen/wavguide)
+[Waveguide Physical Modeling](../siggen/wavguide.md)
 
-[Waveguides](../../sigmod/wavguide)
+[Waveguides](../sigmod/wavguide.md)
 
 ## Credits
 

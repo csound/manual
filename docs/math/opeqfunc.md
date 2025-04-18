@@ -2,12 +2,12 @@
 
 Opcodes that perform the equivalent of mathematical functions are:
 
-* [chebyshevpoly](../../opcodes/chebyshevpoly)
-* [divz](../../opcodes/divz)
-* [mac](../../opcodes/mac)
-* [maca](../../opcodes/maca)
-* [polynomial](../../opcodes/polynomial)
-* [pow](../../opcodes/pow)
-* [product](../../opcodes/product)
-* [sum](../../opcodes/sum)
-* [taninv2](../../opcodes/taninv2)
+* [chebyshevpoly](../opcodes/chebyshevpoly.md)
+* [divz](../opcodes/divz.md)
+* [mac](../opcodes/mac.md)
+* [maca](../opcodes/maca.md)
+* [polynomial](../opcodes/polynomial.md)
+* [pow](../opcodes/pow.md)
+* [product](../opcodes/product.md)
+* [sum](../opcodes/sum.md)
+* [taninv2](../opcodes/taninv2.md)

@@ -22,7 +22,7 @@ _fin2_ -- second input pv stream in TRACKS format
 
 ## Examples
 
-Here is an example of the trmix opcode. It uses the file [trmix.csd](../../examples/trmix.csd).
+Here is an example of the trmix opcode. It uses the file [trmix.csd](../examples/trmix.csd).
 
 ``` csound-csd title="Example of the trmix opcode." linenums="1"
 --8<-- "examples/trmix.csd"
@@ -32,7 +32,7 @@ The example above shows partial tracking of an ifd-analysis signal, frequency sp
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

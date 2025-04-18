@@ -36,7 +36,7 @@ _distort_ is useful as an effects process, and is usually combined with reverb a
 
 ## Examples
 
-Here is an example of the distort opcode. It uses the file [distort.csd](../../examples/distort.csd).
+Here is an example of the distort opcode. It uses the file [distort.csd](../examples/distort.csd).
 
 ``` csound-csd title="Example of the distort opcode." linenums="1"
 --8<-- "examples/distort.csd"
@@ -44,9 +44,9 @@ Here is an example of the distort opcode. It uses the file [distort.csd](../../e
 
 ## See also
 
-[Special Effects](../../sigmod/speciale)
+[Special Effects](../sigmod/speciale.md)
 
-[Waveshaping](../../sigmod/wavshape)
+[Waveshaping](../sigmod/wavshape.md)
 
 ## Credits
 

@@ -20,7 +20,7 @@ _iformat_ -- a flag to choose output file format (note: Csound versions older th
 *  -1 - format exactly as per global csound output format flags (-A, -W, --format=..., etc).
 *  0 - 32-bit floating point samples without header (binary PCM multichannel file)
 *  1 - 16-bit integers without header (binary PCM multichannel file)
-*  2 - 16-bit integers with a header. The header type depends on the render (-o) format. For example, if the user chooses the AIFF format (using the [-A flag](../../invoke/cs-options-alphabetically#-a-aiff-formataiff)), the header format will be AIFF type.
+*  2 - 16-bit integers with a header. The header type depends on the render (-o) format. For example, if the user chooses the AIFF format (using the [-A flag](../invoke/cs-options-alphabetically.md#-a-aiff-formataiff)), the header format will be AIFF type.
 *  3 - u-law samples with a header (see iformat=2).
 *  4 - 16-bit integers with a header (see iformat=2).
 *  5 - 32-bit integers with a header (see iformat=2).
@@ -38,23 +38,23 @@ _aout1,... aoutN_ -- signals to be written to the file. In the case of raw files
 
 _fout_ (file output) writes samples of audio signals to a file with any number of channels. Channel number depends by the number of _aoutN_ variables (i.e. a mono signal with only an a-rate argument, a stereo signal with two a-rate arguments etc.) Maximum number of channels is fixed to 64. Multiple _fout_ opcodes can be present in the same instrument, referring to different files.
 
-Notice that, unlike [out](../../opcodes/out), [outs](../../opcodes/outs) and [outq](../../opcodes/outq), _fout_ does not zero the audio variable so you must zero it after calling it. If polyphony is to be used, you can use [vincr](../../opcodes/vincr) and [clear](../../opcodes/clear) opcodes for this task.
+Notice that, unlike [out](../opcodes/out.md), [outs](../opcodes/outs.md) and [outq](../opcodes/outq.md), _fout_ does not zero the audio variable so you must zero it after calling it. If polyphony is to be used, you can use [vincr](../opcodes/vincr.md) and [clear](../opcodes/clear.md) opcodes for this task.
 
-Notice that _fout_ and [foutk](../../opcodes/foutk) uses a string containing a file pathname. Whereas, with [fouti](../../opcodes/fouti) and [foutir](../../opcodes/foutir), the target file can be only specified by means of a handle-number.
+Notice that _fout_ and [foutk](../opcodes/foutk.md) uses a string containing a file pathname. Whereas, with [fouti](../opcodes/fouti.md) and [foutir](../opcodes/foutir.md), the target file can be only specified by means of a handle-number.
 
 > :memo: **Note**
 >
-> If you are using _fout_ to generate an audio file for the global output of csound, you might want to use the [monitor](../../opcodes/monitor) opcode, which can tap the output buffer, to avoid having to route
+> If you are using _fout_ to generate an audio file for the global output of csound, you might want to use the [monitor](../opcodes/monitor.md) opcode, which can tap the output buffer, to avoid having to route
 
 ## Examples
 
-Here is a simple example of the fout opcode. It uses the file [fout.csd](../../examples/fout.csd).
+Here is a simple example of the fout opcode. It uses the file [fout.csd](../examples/fout.csd).
 
 ``` csound-csd title="Example of the fout opcode." linenums="1"
 --8<-- "examples/fout.csd"
 ```
 
-Here is another example of _fout_, using it to save the contents of a table to an audio file. It uses the file [fout_ftable.csd](../../examples/fout_ftable.csd) and [drumsMlp.wav](../../examples/drumsMlp.wav).
+Here is another example of _fout_, using it to save the contents of a table to an audio file. It uses the file [fout_ftable.csd](../examples/fout_ftable.csd) and [drumsMlp.wav](../examples/drumsMlp.wav).
 
 ``` csound-csd title="Example of the fout opcode to save the contents of an f-table." linenums="1"
 --8<-- "examples/fout_ftable.csd"
@@ -62,7 +62,7 @@ Here is another example of _fout_, using it to save the contents of a table to a
 
 ## See also
 
-[File Input and Output](../../sigio/fileio)
+[File Input and Output](../sigio/fileio.md)
 
 ## Credits
 

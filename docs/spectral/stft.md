@@ -7,18 +7,18 @@
 
 Opcodes the implement STFT resynthesis are:
 
-* [filescal](../../opcodes/filescal)
-* [mincer](../../opcodes/mincer)
-* [mp3scal](../../opcodes/mp3scal)
-* [temposcal](../../opcodes/temposcal)
-* [pvadd](../../opcodes/pvadd)
-* [pvbufread](../../opcodes/pvbufread)
-* [pvcross](../../opcodes/pvcross)
-* [pvinterp](../../opcodes/pvinterp)
-* [pvoc](../../opcodes/pvoc)
-* [pvread](../../opcodes/pvread)
-* [tableseg](../../opcodes/tableseg)
-* [tablexseg](../../opcodes/tablexseg)
-* [vpvoc](../../opcodes/vpvoc)
+* [filescal](../opcodes/filescal.md)
+* [mincer](../opcodes/mincer.md)
+* [mp3scal](../opcodes/mp3scal.md)
+* [temposcal](../opcodes/temposcal.md)
+* [pvadd](../opcodes/pvadd.md)
+* [pvbufread](../opcodes/pvbufread.md)
+* [pvcross](../opcodes/pvcross.md)
+* [pvinterp](../opcodes/pvinterp.md)
+* [pvoc](../opcodes/pvoc.md)
+* [pvread](../opcodes/pvread.md)
+* [tableseg](../opcodes/tableseg.md)
+* [tablexseg](../opcodes/tablexseg.md)
+* [vpvoc](../opcodes/vpvoc.md)
 
-Use the utility [PVANAL](../../utility/pvanal) to generate pv analysis files.
+Use the utility [PVANAL](../utility/pvanal.md) to generate pv analysis files.

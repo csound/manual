@@ -35,20 +35,20 @@ _kcps_, _acps_ -- the
 frequency of the output signal in cycles per second.
 
 _poscil_ (precise oscillator) is the same as
-[oscili](../../opcodes/oscili), but
+[oscili](../opcodes/oscili.md), but
 always employs floating-point table indexing, instead of integer math, like
 _oscil_ and _oscili_
 (which can use either alternatively, depending on the table size).  It
 is only a bit slower than _oscili_ when
 reading power-two size tables.
 
-The opcode [poscil3](../../opcodes/poscil3) is the
+The opcode [poscil3](../opcodes/poscil3.md) is the
 same as  _poscil_, but uses cubic
 interpolation.
 
 ## Examples
 
-Here is an example of the poscil opcode. It uses the file [poscil.csd](../../examples/poscil.csd).
+Here is an example of the poscil opcode. It uses the file [poscil.csd](../examples/poscil.csd).
 
 ``` csound-orc title="Example of the poscil opcode." linenums="1"
 --8<-- "examples/poscil.csd"
@@ -56,7 +56,7 @@ Here is an example of the poscil opcode. It uses the file [poscil.csd](../../exa
 
 ## See also
 
-[Basic Oscillators](../../siggen/basic)
+[Basic Oscillators](../siggen/basic.md)
 
 ## Credits
 

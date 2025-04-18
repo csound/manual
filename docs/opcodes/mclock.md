@@ -20,7 +20,7 @@ Sends a MIDI CLOCK message (0xF8) every 1/_ifreq_ seconds. So _ifreq_ is the fre
 
 ## Examples
 
-Here is an example of the mclock opcode. It uses the file [mclock.csd](../../examples/mclock.csd).
+Here is an example of the mclock opcode. It uses the file [mclock.csd](../examples/mclock.csd).
 
 ``` csound-csd title="Example of the mclock opcode." linenums="1"
 --8<-- "examples/mclock.csd"
@@ -28,9 +28,9 @@ Here is an example of the mclock opcode. It uses the file [mclock.csd](../../exa
 
 ## See Also
 
-[mrtmsg](../../opcodes/mrtmsg)
+[mrtmsg](../opcodes/mrtmsg.md)
 
-[System Realtime Messages](../../midi/realtime)
+[System Realtime Messages](../midi/realtime.md)
 
 ## Credits
 

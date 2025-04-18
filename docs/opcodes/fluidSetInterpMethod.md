@@ -29,7 +29,7 @@ _iInterpMethod_ -- interpolation method, can be any of the following
 
 ## Examples
 
-Here is an example of the fluidSetInterpMethod opcode. It uses the file [fluidSetInterpMethod.csd](../../examples/fluidSetInterpMethod.csd) and [07AcousticGuitar.sf2](../../examples/07AcousticGuitar.sf2).
+Here is an example of the fluidSetInterpMethod opcode. It uses the file [fluidSetInterpMethod.csd](../examples/fluidSetInterpMethod.csd) and [07AcousticGuitar.sf2](../examples/07AcousticGuitar.sf2).
 
 ``` csound-csd title="Example of the fluidSetInterpMethod opcode." linenums="1"
 --8<-- "examples/fluidSetInterpMethod.csd"
@@ -37,7 +37,7 @@ Here is an example of the fluidSetInterpMethod opcode. It uses the file [fluidSe
 
 ## See also
 
-[Soundfonts](../../siggen/sample)
+[Soundfonts](../siggen/sample.md)
 
 More information on soundfonts is in the Floss Manuals: [https://flossmanual.csound.com/midi/reading-midi-files](https://flossmanual.csound.com/midi/reading-midi-files)
 

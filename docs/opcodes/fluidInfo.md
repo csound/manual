@@ -26,7 +26,7 @@ _fluidInfo_ runs at itime only.
 
 ## Examples
 
-Here is an example of the fluidInfo opcode. It uses the file [fluidInfo.csd](../../examples/fluidInfo.csd) and [sf_GMbank.sf2](../../examples/sf_GMbank.sf2).
+Here is an example of the fluidInfo opcode. It uses the file [fluidInfo.csd](../examples/fluidInfo.csd) and [sf_GMbank.sf2](../examples/sf_GMbank.sf2).
 
 ``` csound-csd title="Example of the fluidInfo opcode." linenums="1"
 --8<-- "examples/fluidInfo.csd"
@@ -34,7 +34,7 @@ Here is an example of the fluidInfo opcode. It uses the file [fluidInfo.csd](../
 
 ## See also
 
-[Soundfonts](../../siggen/sample)
+[Soundfonts](../siggen/sample.md)
 
 More information on soundfonts is in the Floss Manuals: [https://flossmanual.csound.com/midi/reading-midi-files](https://flossmanual.csound.com/midi/reading-midi-files)
 

@@ -27,4 +27,4 @@ Accumulates the values of successive spectral frames. At each new frame of _wsig
 
 ## See Also
 
-[specaddm](../../opcodes/specaddm), [specdiff](../../opcodes/specdiff), [specfilt](../../opcodes/specfilt), [specscal](../../opcodes/specscal)
+[specaddm](../opcodes/specaddm.md), [specdiff](../opcodes/specdiff.md), [specfilt](../opcodes/specfilt.md), [specscal](../opcodes/specscal.md)

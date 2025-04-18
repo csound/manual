@@ -16,11 +16,11 @@ _inum_ -- the number of a clock.  There are 32 clocks numbered 0 through 31. All
 
 ### Performance
 
-Between a [clockon](../../opcodes/clockon) and a _clockoff_ opcode, the CPU time used is accumulated in the clock.  The precision is machine dependent but is the millisecond range on UNIX and Windows systems. The [readclock](../../opcodes/readclock) opcode reads the current value of a clock at initialization time.
+Between a [clockon](../opcodes/clockon.md) and a _clockoff_ opcode, the CPU time used is accumulated in the clock.  The precision is machine dependent but is the millisecond range on UNIX and Windows systems. The [readclock](../opcodes/readclock.md) opcode reads the current value of a clock at initialization time.
 
 ## Examples
 
-Here is an example of the clockoff opcode. It uses the file [clockoff.csd](../../examples/clockoff.csd).
+Here is an example of the clockoff opcode. It uses the file [clockoff.csd](../examples/clockoff.csd).
 
 ``` csound-csd title="Example of the clockoff opcode." linenums="1"
 --8<-- "examples/clockoff.csd"
@@ -28,7 +28,7 @@ Here is an example of the clockoff opcode. It uses the file [clockoff.csd](../..
 
 ## See also
 
-[Clock Control](../../control/clockctl)
+[Clock Control](../control/clockctl.md)
 
 ## Credits
 

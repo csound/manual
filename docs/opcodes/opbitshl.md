@@ -20,7 +20,7 @@ where the arguments $a$ and $b$ may be further expressions.
 
 ## Examples
 
-Here is an example of the bitshift left operator. It uses the file [bitshift.csd](../../examples/bitshift.csd).
+Here is an example of the bitshift left operator. It uses the file [bitshift.csd](../examples/bitshift.csd).
 
 ``` csound-csd title="Example of the bitshift left operator." linenums="1"
 --8<-- "examples/bitshift.csd"
@@ -61,4 +61,4 @@ B  5.600 ..  5.700 T  5.700 TT  5.700 M:      0.0      0.0
 
 ## See also
 
-[Arithmetic and Logic Operations](../../math/artlogic)
+[Arithmetic and Logic Operations](../math/artlogic.md)

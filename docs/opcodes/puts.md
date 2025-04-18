@@ -22,7 +22,7 @@ _ktrig_ -- trigger signal, should be valid at i-time. The string is printed at i
 
 ## Examples
 
-Here is an example of the puts opcode. It uses the file [puts.csd](../../examples/puts.csd).
+Here is an example of the puts opcode. It uses the file [puts.csd](../examples/puts.csd).
 
 ``` csound-csd title="Example of the puts opcode." linenums="1"
 --8<-- "examples/puts.csd"
@@ -41,7 +41,7 @@ frequency in Hertz : 460
 
 ## See Also
 
-[String Manipulation Opcodes](../../strings/manipulate)
+[String Manipulation Opcodes](../strings/manipulate.md)
 
 ## Credits
 

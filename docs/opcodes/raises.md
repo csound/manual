@@ -24,7 +24,7 @@ $a - b - c$ is taken as $(a - b) - c$
 
 Parentheses may be used as above to force particular groupings.
 
-The operator _&circ;_ raises $a$ to the $b$ power. $b$ may not be audio-rate. Use with caution as precedence may not work correctly. See [pow](../../opcodes/pow).  (New in Csound version 3.493.)
+The operator _&circ;_ raises $a$ to the $b$ power. $b$ may not be audio-rate. Use with caution as precedence may not work correctly. See [pow](../opcodes/pow.md).  (New in Csound version 3.493.)
 
 ## Syntax
 ``` csound-orc
@@ -35,7 +35,7 @@ where the arguments $a$ and $b$ may be further expressions.
 
 ## Examples
 
-Here is an example of the &circ; operator. It uses the file [raises.csd](../../examples/raises.csd).
+Here is an example of the &circ; operator. It uses the file [raises.csd](../examples/raises.csd).
 
 ``` csound-csd title="Example of the &circ; operator." linenums="1"
 --8<-- "examples/raises.csd"
@@ -54,4 +54,4 @@ i1  1327.74465
 
 ## See also
 
-[Arithmetic and Logic Operations](../../math/artlogic)
+[Arithmetic and Logic Operations](../math/artlogic.md)

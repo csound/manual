@@ -19,7 +19,7 @@ _asig_, _ksig_ -- The value to be written into the table.
 
 _andx_, _kndx_ -- Index into table, either a positive number range matching the table length (_ixmode_ = 0) or a 0 to 1 range (_ixmode_ != 0)
 
-_kfn_ -- Table number. Must be &gt;= 1. Floats are rounded down to an integer. If a table number does not point to a valid table, or the table has not yet been loaded ([GEN01](../../scoregens/gen01)) then an error will result and the instrument will be de-activated.
+_kfn_ -- Table number. Must be &gt;= 1. Floats are rounded down to an integer. If a table number does not point to a valid table, or the table has not yet been loaded ([GEN01](../scoregens/gen01.md)) then an error will result and the instrument will be de-activated.
 
 _ixmode_ -- index mode. Default is zero.
 
@@ -67,7 +67,7 @@ At k-rate or a-rate, if a table number of &lt; 1 is given, or the table number p
 
 ## See also
 
-[Read/Write Operations](../../table/readwrit)
+[Read/Write Operations](../table/readwrit.md)
 
 ## Credits
 

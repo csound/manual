@@ -23,13 +23,13 @@ _ksig_ -- Output signal.
 
 _kfreq_ -- Repeat rate in Hz or fraction of Hz.
 
-_ktrig_ -- If non-zero, retriggers the envelope from start (see [trigger opcode](../../opcodes/trigger)), before the envelope cycle is completed.
+_ktrig_ -- If non-zero, retriggers the envelope from start (see [trigger opcode](../opcodes/trigger.md)), before the envelope cycle is completed.
 
 _kvalue0...kvalueN_ -- Values of points
 
 _ktime0...ktimeN_ -- Times between points; expressed in fractions of a cycle (see below). The final time designates a ramp between the final value and the first value.
 
-_loopseg_ opcode is similar to [linseg](../../opcodes/linseg), but the entire envelope is looped at _kfreq_ rate. Notice that times are not expressed in seconds but in fraction of a cycle. Actually each duration represent is proportional to the other, and the entire cycle duration is proportional to the sum of all duration values.
+_loopseg_ opcode is similar to [linseg](../opcodes/linseg.md), but the entire envelope is looped at _kfreq_ rate. Notice that times are not expressed in seconds but in fraction of a cycle. Actually each duration represent is proportional to the other, and the entire cycle duration is proportional to the sum of all duration values.
 
 The sum of all duration is then rescaled according to _kfreq_ argument. For example, considering an envelope made up of 3 segments, each segment having 100 as duration value, their sum will be 300. This value represents the total duration of the envelope, and is actually divided into 3 equal parts, a part for each segment.
 
@@ -39,7 +39,7 @@ All parameters can be varied at k-rate.  Negative frequency values are allowed, 
 
 ## Examples
 
-Here is an example of the loopseg opcode. It uses the file [loopseg.csd](../../examples/loopseg.csd).
+Here is an example of the loopseg opcode. It uses the file [loopseg.csd](../examples/loopseg.csd).
 
 ``` csound-orc title="Example of the loopseg opcode." linenums="1"
 --8<-- "examples/loopseg.csd"
@@ -47,7 +47,7 @@ Here is an example of the loopseg opcode. It uses the file [loopseg.csd](../../e
 
 ## See also
 
-[Linear and Exponential Generators](../../siggen/lineexp)
+[Linear and Exponential Generators](../siggen/lineexp.md)
 
 ## Credits
 

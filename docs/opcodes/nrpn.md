@@ -22,7 +22,7 @@ This opcode sends new message when the MIDI translated value of one of the input
 
 ## Examples
 
-Here is an example of the nrpn opcode. It uses the file [nrpn.csd](../../examples/nrpn.csd).
+Here is an example of the nrpn opcode. It uses the file [nrpn.csd](../examples/nrpn.csd).
 
 ``` csound-csd title="Example of the nrpn opcode." linenums="1"
 --8<-- "examples/nrpn.csd"
@@ -30,7 +30,7 @@ Here is an example of the nrpn opcode. It uses the file [nrpn.csd](../../example
 
 ## See also
 
-[MIDI Message Output](../../midi/output)
+[MIDI Message Output](../midi/output.md)
 
 ## Credits
 

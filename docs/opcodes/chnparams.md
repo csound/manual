@@ -28,7 +28,7 @@ _Sname_ -- string identifying the channel.
 
 ## See also
 
-[Software Bus](../../sigio/softbus)
+[Software Bus](../sigio/softbus.md)
 
 ## Credits
 

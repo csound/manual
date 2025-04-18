@@ -30,7 +30,7 @@ _kfcf_ -- amount of cutoff frequency for frequency function filtering, between 0
 
 ## Examples
 
-Here is an example of the pvsmooth opcode. It uses the file [pvsmooth.csd](../../examples/pvsmooth.csd).
+Here is an example of the pvsmooth opcode. It uses the file [pvsmooth.csd](../examples/pvsmooth.csd).
 
 ``` csound-csd title="Example of the pvsmooth opcode." linenums="1"
 --8<-- "examples/pvsmooth.csd"
@@ -40,7 +40,7 @@ The formula for calculating the cutoff frequency of the filter: frame rate / hop
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

@@ -29,11 +29,11 @@ These units generate control or audio signals whose values can pass through 2 or
 
 _expsegr_ is amongst the Csound &#8220;r&#8221; units that contain a note-off sensor and release time extender. When each senses an event termination or MIDI noteoff, it immediately extends the performance time of the current instrument by _irel _seconds, and sets out to reach the value _iz_ by the end of that period (no matter which segment the unit is in). &#8220;r&#8221; units can also be modified by MIDI noteoff velocities. For two or more extenders in an instrument, extension is by the greatest period.
 
-You can use other pre-made envelopes which start ao release segment upon receiving a note off message, like [linsegr](../../opcodes/linsegr) and [madsr](../../opcodes/madsr), or you can construct more complex envelopes using [xtratim](../../opcodes/xtratim) and [release](../../opcodes/release). Note that you do not need to use [xtratim](../../opcodes/xtratim) if you are using _expsegr_, since the time is extended automatically.
+You can use other pre-made envelopes which start ao release segment upon receiving a note off message, like [linsegr](../opcodes/linsegr.md) and [madsr](../opcodes/madsr.md), or you can construct more complex envelopes using [xtratim](../opcodes/xtratim.md) and [release](../opcodes/release.md). Note that you do not need to use [xtratim](../opcodes/xtratim.md) if you are using _expsegr_, since the time is extended automatically.
 
 ## Examples
 
-Here is an example of the expsegr opcode. It uses the file [expsegr.csd](../../examples/expsegr.csd).
+Here is an example of the expsegr opcode. It uses the file [expsegr.csd](../examples/expsegr.csd).
 
 ``` csound-orc title="Example of the expsegr opcode." linenums="1"
 --8<-- "examples/expsegr.csd"
@@ -41,7 +41,7 @@ Here is an example of the expsegr opcode. It uses the file [expsegr.csd](../../e
 
 ## See also
 
-[Linear and Exponential Generators](../../siggen/lineexp)
+[Linear and Exponential Generators](../siggen/lineexp.md)
 
 ## Credits
 

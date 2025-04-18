@@ -36,9 +36,9 @@ _aw, ax, ay_, ... -- input signal in the B format.
 
 _ao1 .. ao8_ -- loudspeaker specific output signals.
 
-## Example
+## Examples
 
-Here is an example of the bformdec1 opcode. It uses the file [bformenc1.csd](../../examples/bformenc1.csd).
+Here is an example of the bformdec1 opcode. It uses the file [bformenc1.csd](../examples/bformenc1.csd).
 
 ``` csound-csd title="Example of the bformdec1 opcode." linenums="1"
 --8<-- "examples/bformenc1.csd"
@@ -46,7 +46,7 @@ Here is an example of the bformdec1 opcode. It uses the file [bformenc1.csd](../
 
 ## See also
 
-[Panning and Spatialization: Ambisonics](../../sigmod/panspatl)
+[Panning and Spatialization: Ambisonics](../sigmod/panspatl.md)
 
 ## Credits
 

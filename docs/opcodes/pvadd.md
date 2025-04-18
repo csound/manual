@@ -5,7 +5,7 @@ category:Spectral Processing:STFT
 # pvadd
 Reads from a _pvoc_ file and uses the data to perform additive synthesis.
 
-_pvadd_ reads from a [pvoc](../../opcodes/pvoc) file and uses the data to perform additive synthesis using an internal array of interpolating oscillators. The user supplies the wave table (usually one period of a sine wave), and can choose which analysis bins will be used in the re-synthesis.
+_pvadd_ reads from a [pvoc](../opcodes/pvoc.md) file and uses the data to perform additive synthesis using an internal array of interpolating oscillators. The user supplies the wave table (usually one period of a sine wave), and can choose which analysis bins will be used in the re-synthesis.
 
 ## Syntax
 ``` csound-orc
@@ -15,7 +15,7 @@ ares pvadd ktimpnt, kfmod, ifilcod, ifn, ibins [, ibinoffset] \
 
 ### Initialization
 
-_ifilcod_ -- integer or character-string denoting a control-file derived from [pvanal](../../utility/pvanal) analysis of an audio signal. An integer denotes the suffix of a file _pvoc.m_; a character-string (in double quotes) gives a filename, optionally a full pathname. If not fullpath, the file is sought first in the current directory, then in the one given by the environment variable [SADIR](../../invoke/environment-variables) (if defined). _pvoc_ control files contain data organized for fft resynthesis. Memory usage depends on the size of the files involved, which are read and held entirely in memory during computation but are shared by multiple calls (see also [lpread](../../opcodes/lpread)).
+_ifilcod_ -- integer or character-string denoting a control-file derived from [pvanal](../utility/pvanal.md) analysis of an audio signal. An integer denotes the suffix of a file _pvoc.m_; a character-string (in double quotes) gives a filename, optionally a full pathname. If not fullpath, the file is sought first in the current directory, then in the one given by the environment variable [SADIR](../invoke/environment-variables.md) (if defined). _pvoc_ control files contain data organized for fft resynthesis. Memory usage depends on the size of the files involved, which are read and held entirely in memory during computation but are shared by multiple calls (see also [lpread](../opcodes/lpread.md)).
 
 _ifn_ -- table number of a stored function containing a sine wave.
 
@@ -31,7 +31,7 @@ _igatefn_ (optional) -- is the number of a stored function which will be applied
 
 ### Performance
 
-_ktimpnt_ and _kfmod_ are used in the same way as in [pvoc](../../opcodes/pvoc).
+_ktimpnt_ and _kfmod_ are used in the same way as in [pvoc](../opcodes/pvoc.md).
 
 ## Examples
 
@@ -92,7 +92,7 @@ asig  pvadd ktime, 1, “oboe.pvoc”, 1, 100, 1, 1, 2, 5, 2
 >
 > Expect to have to scale up the amplitudes by factors of 10-100, by the way.
 
-Here is a complete example of the pvadd opcode. It uses the file [pvadd.csd](../../examples/pvadd.csd)
+Here is a complete example of the pvadd opcode. It uses the file [pvadd.csd](../examples/pvadd.csd)
 
 ``` csound-csd title="Example of the pvadd opcode." linenums="1"
 --8<-- "examples/pvadd.csd"
@@ -100,7 +100,7 @@ Here is a complete example of the pvadd opcode. It uses the file [pvadd.csd](../
 
 ## See Also
 
-[Short-time Fourier Transform (STFT) Resynthesis](../../spectral/stft)
+[Short-time Fourier Transform (STFT) Resynthesis](../spectral/stft.md)
 
 ## Credits
 

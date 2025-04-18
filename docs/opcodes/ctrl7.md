@@ -38,13 +38,13 @@ _kmax_ -- user-defined maximum floating-point value of output
 
 _ctrl7_ (i- and k-rate 7 bit MIDI control) allows a floating-point 7-bit MIDI signal scaled with a minimum and a maximum range. It also allows optional non-interpolated table indexing. Minimum and maximum values can be varied at k-rate.
 
-_ctrl7_ differs from [midic7](../../opcodes/midic7) because it can be included in score-oriented instruments without Csound crashes. It also needs the additional parameter _ichan_ containing the MIDI channel of the controller.
+_ctrl7_ differs from [midic7](../opcodes/midic7.md) because it can be included in score-oriented instruments without Csound crashes. It also needs the additional parameter _ichan_ containing the MIDI channel of the controller.
 
 The a-rate version of _ctrl7_ outputs an a-rate variable, which is low-pass filtered (smoothed). It contains an optional _icutoff_ parameter, to set the cutoff frecuency for the low-pass filter. The default is 5.
 
 ## Examples
 
-Here is an example of the ctrl7 opcode. It uses the file [ctrl7.csd](../../examples/ctrl7.csd).
+Here is an example of the ctrl7 opcode. It uses the file [ctrl7.csd](../examples/ctrl7.csd).
 
 ``` csound-csd title="Example of the ctrl7 opcode." linenums="1"
 --8<-- "examples/ctrl7.csd"
@@ -56,7 +56,7 @@ Here is an example of the ctrl7 opcode. It uses the file [ctrl7.csd](../../examp
 
 ## See also
 
-[MIDI input and Initialization](../../midi/input)
+[MIDI input and Initialization](../midi/input.md)
 
 ## Credits
 

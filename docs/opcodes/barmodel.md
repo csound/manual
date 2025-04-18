@@ -40,7 +40,7 @@ Note that changing the boundary conditions during playing may lead to glitches a
 
 ## Examples
 
-Here is an example of the barmodel opcode. It uses the file [barmodel.csd](../../examples/barmodel.csd).
+Here is an example of the barmodel opcode. It uses the file [barmodel.csd](../examples/barmodel.csd).
 
 ``` csound-orc title="Example of the barmodel opcode." linenums="1"
 --8<-- "examples/barmodel.csd"
@@ -48,7 +48,7 @@ Here is an example of the barmodel opcode. It uses the file [barmodel.csd](../..
 
 ## See Also
 
-[Models and Emulations](../../siggen/models)
+[Models and Emulations](../siggen/models.md)
 
 ## Credits
 

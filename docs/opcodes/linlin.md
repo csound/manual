@@ -36,7 +36,7 @@ y = (x - x0) / (x1 - x0) * (y1 - y0) + y0
 
 ## Examples
 
-Here is an example of the linlin opcode. It uses the file [linlin.csd](../../examples/linlin.csd).
+Here is an example of the linlin opcode. It uses the file [linlin.csd](../examples/linlin.csd).
 
 ``` csound-orc title="Example of the linlin opcode." linenums="1"
 --8<-- "examples/linlin.csd"
@@ -44,7 +44,7 @@ Here is an example of the linlin opcode. It uses the file [linlin.csd](../../exa
 
 ## See also
 
-[Linear and Exponential Generators](../../siggen/lineexp)
+[Linear and Exponential Generators](../siggen/lineexp.md)
 
 ## Credits
 
