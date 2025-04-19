@@ -494,9 +494,6 @@
 `ares `[**`cabasa `**](opcodes/cabasa.md)`iamp, idettack [, inum] [, idamp] [, imaxshake]`<br>
 
 
-`aI3, aV2, aV1 `[**`chuap `**](opcodes/chuap.md)`kL, kR0, kC2, kG, kGa, kGb, kE, kC1, iI3, iV2, iV1, ktime_step`<br>
-
-
 `ares `[**`crunch `**](opcodes/crunch.md)`iamp, idettack [, inum] [, idamp] [, imaxshake]`<br>
 
 
@@ -804,39 +801,6 @@
 &nbsp;&nbsp;&nbsp;&nbsp;`[, istart, imode, ifenv, iskip]`<br>
 
 
-`aleft, aright `[**`fluidAllOut`**](opcodes/fluidAllOut.md)<br>
-
-
-[**`fluidCCi `**](opcodes/fluidCCi.md)`iEngineNumber, iChannelNumber, iControllerNumber, iValue`<br>
-
-
-[**`fluidCCk `**](opcodes/fluidCCk.md)`iEngineNumber, iChannelNumber, iControllerNumber, kValue`<br>
-
-
-[**`fluidControl `**](opcodes/fluidControl.md)`ienginenum, kstatus, kchannel, kdata1, kdata2 [,imsgs]`<br>
-
-
-`ienginenum `[**`fluidEngine `**](opcodes/fluidEngine.md)`[iChorusEnabled] [, iRevervEnabled] [, iNumChannels] [, iPolyphony]`<br>
-
-
-`SPrograms[] `[**`fluidInfo `**](opcodes/fluidInfo.md)`ienginenum`<br>
-
-
-`isfnum `[**`fluidLoad `**](opcodes/fluidLoad.md)`soundfont, ienginenum[, ilistpresets]`<br>
-
-
-[**`fluidNote `**](opcodes/fluidNote.md)`ienginenum, ichannelnum, imidikey, imidivel`<br>
-
-
-`aleft, aright `[**`fluidOut `**](opcodes/fluidOut.md)`ienginenum`<br>
-
-
-[**`fluidProgramSelect `**](opcodes/fluidProgramSelect.md)`ienginenum, ichannelnum, isfnum, ibanknum, ipresetnum`<br>
-
-
-[**`fluidSetInterpMethod `**](opcodes/fluidSetInterpMethod.md)`ienginenum, ichannelnum, iInterpMethod`<br>
-
-
 `ar1 [,ar2] `[**`loscil `**](opcodes/loscil.md)`xamp, kcps, ifn [, ibas] [, imod1] [, ibeg1] [, iend1] \`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`[, imod2] [, ibeg2] [, iend2]`<br>
 `aph, ar1 [,ar2] loscilphs xamp, kcps, ifn [, ibas] [, imod1] [, ibeg1] \`<br>
@@ -1089,13 +1053,6 @@
 [**`fprints `**](opcodes/fprints.md)`&quot;filename&quot;, &quot;string&quot; [, ival1] [, ival2] [...]`<br>
 
 
-`xout1[, xout2, xout3, ..., xoutN] `[**`hdf5read `**](opcodes/hdf5read.md)`ifilename, ivariablename1[, \`<br>
-&nbsp;&nbsp;&nbsp;&nbsp;`ivariablename2, ivariablename3, ..., ivariablenameN]`<br>
-
-
-[**`hdf5write `**](opcodes/hdf5write.md)`ifilename, xout1[, xout2, xout3, ..., xoutN]`<br>
-
-
 `Sres, kline `[**`readf `**](opcodes/readf.md)`ifilname`<br>
 
 
@@ -1112,9 +1069,6 @@
 
 
 `kr1, kr2, kr3, kr4 `[**`readk4 `**](opcodes/readk4.md)`ifilname, iformat, iprd`<br>
-
-
-`xout1[, xout2, xout3, ..., xoutN] `[**`websocket `**](opcodes/websocket.md)`iport, xin`<br>
 
 
 ### Signal I/O:Signal Input
@@ -2442,12 +2396,6 @@
 `ksig  `[**`miditempo`**](opcodes/miditempo.md)<br>
 
 
-[**`p5gconnect`**](opcodes/p5gconnect.md)<br>
-
-
-`kres `[**`p5gdata `**](opcodes/p5gdata.md)`kcontrol`<br>
-
-
 `icount `[**`pcount`**](opcodes/pcount.md)<br>
 
 
@@ -2527,18 +2475,6 @@
 
 
 `ares `[**`vactrol `**](opcodes/vactrol.md)`asig [iup, idown]`<br>
-
-
-`ires `[**`wiiconnect `**](opcodes/wiiconnect.md)`[itimeout, imaxnum]`<br>
-
-
-`kres `[**`wiidata `**](opcodes/wiidata.md)`kcontrol [, knum]`<br>
-
-
-[**`wiirange `**](opcodes/wiirange.md)`icontrol, iminimum, imaximum [, inum]`<br>
-
-
-`kres `[**`wiisend `**](opcodes/wiisend.md)`kcontrol, kvalue [, knum]`<br>
 
 
 `writescratchival [index]`<br>
@@ -2837,9 +2773,6 @@
 
 
 ### FLTK:Other
-`ihandle `[**`FLhvsBox `**](opcodes/flhvsbox.md)`inumlinesX, inumlinesY, iwidth, iheight, ix, iy`<br>
-
-
 [**`vphaseseg `**](opcodes/vphaseseg.md)`kphase, ioutab, ielems, itab1,idist1,itab2 \`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`[,idist2,itab3, ... ,idistN-1,itabN]`<br>
 

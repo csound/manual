@@ -158,7 +158,6 @@
 [**bamboo.csd**](../opcodes/bamboo.md#examples)<br>
 [**barmodel.csd**](../opcodes/barmodel.md#examples)<br>
 [**cabasa.csd**](../opcodes/cabasa.md#examples)<br>
-[**chuap.csd**](../opcodes/chuap.md#examples)<br>
 [**crunch.csd**](../opcodes/crunch.md#examples)<br>
 [**dripwater.csd**](../opcodes/dripwater.md#examples)<br>
 [**fareylen.csd**](../opcodes/fareylen.md#examples)<br>
@@ -249,18 +248,6 @@
 [**bbcuts.csd**](../opcodes/bbcuts.md#examples)<br>
 [**flooper.csd**](../opcodes/flooper.md#examples)<br>
 [**flooper2.csd**](../opcodes/flooper2.md#examples)<br>
-[**fluidAllOut.csd**](../opcodes/fluidAllOut.md#examples)<br>
-[**fluidCCi.csd**](../opcodes/fluidCCi.md#examples)<br>
-[**fluidCCk.csd**](../opcodes/fluidCCk.md#examples)<br>
-[**fluidControl-advanced.csd**](../opcodes/fluidControl.md#examples)<br>
-[**fluidEngine.csd**](../opcodes/fluidEngine.md#examples)<br>
-[**fluidInfo.csd**](../opcodes/fluidInfo.md#examples)<br>
-[**fluidLoad.csd**](../opcodes/fluidLoad.md#examples)<br>
-[**fluidNote.csd**](../opcodes/fluidNote.md#examples)<br>
-[**fluidOut.csd**](../opcodes/fluidOut.md#examples)<br>
-[**fluidProgramSelect.csd**](../opcodes/fluidProgramSelect.md#examples)<br>
-[**fluidcomplex.csd**](../opcodes/fluidProgramSelect.md#examples)<br>
-[**fluidSetInterpMethod.csd**](../opcodes/fluidSetInterpMethod.md#examples)<br>
 [**loscil.csd**](../opcodes/loscil.md#examples)<br>
 [**loscil3.csd**](../opcodes/loscil3.md#examples)<br>
 [**loscilx.csd**](../opcodes/loscilx.md#examples)<br>
@@ -347,8 +334,6 @@
 [**fprintks-2.csd**](../opcodes/fprintks.md#examples)<br>
 [**scogen.csd**](../opcodes/fprintks.md#examples)<br>
 [**fprints.csd**](../opcodes/fprints.md#examples)<br>
-[**hdf5read.csd**](../opcodes/hdf5read.md#examples)<br>
-[**hdf5write.csd**](../opcodes/hdf5write.md#examples)<br>
 [**readf.csd**](../opcodes/readf.md#examples)<br>
 [**readfi.csd**](../opcodes/readfi.md#examples)<br>
 [**readk.csd**](../opcodes/readk.md#examples)<br>
@@ -356,7 +341,6 @@
 [**readk2.csd**](../opcodes/readk2.md#examples)<br>
 [**readk3.csd**](../opcodes/readk3.md#examples)<br>
 [**readk4.csd**](../opcodes/readk4.md#examples)<br>
-[**websocket.csd**](../opcodes/websocket.md#examples)<br>
 
 ### Signal I/O:Signal Input
 [**diskin.csd**](../opcodes/diskin.md#examples)<br>
@@ -763,7 +747,6 @@
 [**metro-2.csd**](../opcodes/metro.md#examples)<br>
 [**metro2.csd**](../opcodes/metro2.md#examples)<br>
 [**miditempo.csd**](../opcodes/miditempo.md#examples)<br>
-[**p5g.csd**](../opcodes/p5gconnect.md#examples)<br>
 [**pcount.csd**](../opcodes/pcount.md#examples)<br>
 [**peak.csd**](../opcodes/peak.md#examples)<br>
 [**pindex.csd**](../opcodes/pindex.md#examples)<br>
@@ -791,7 +774,6 @@
 [**trigger.csd**](../opcodes/trigger.md#examples)<br>
 [**trigseq.csd**](../opcodes/trigseq.md#examples)<br>
 [**vactrol.csd**](../opcodes/vactrol.md#examples)<br>
-[**wii.csd**](../opcodes/wiiconnect.md#examples)<br>
 [**readscratch.csd**](../opcodes/writescratch.md#examples)<br>
 [**xyin.csd**](../opcodes/xyin.md#examples)<br>
 

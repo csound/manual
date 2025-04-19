@@ -39,18 +39,8 @@ Soundfonts can be viewed and edited by programs like Polyphone ([GPL3, https://w
 
 #### Fluid Opcodes
 
-The fluid family of opcodes wraps Peter Hannape's SoundFont 2 player, FluidSynth: [fluidEngine](../opcodes/fluidEngine.md) for instantiating a FluidSynth engine, [fluidSetInterpMethod](../opcodes/fluidSetInterpMethod.md) for setting interpolation method for a channel in a FluidSynth engine, [fluidLoad](../opcodes/fluidLoad.md) for loading SoundFonts, [fluidProgramSelect](../opcodes/fluidProgramSelect.md) for assigning presets from a SoundFont to a FluidSynth engine's MIDI channel, [fluidNote](../opcodes/fluidNote.md) for playing a note on a FluidSynth engine's MIDI channel, [fluidCCi](../opcodes/fluidCCi.md) for sending a controller message at i-time to a FluidSynth engine's MIDI channel, [fluidCCk](../opcodes/fluidCCk.md) for sending a controller message at k-rate to a FluidSynth engine's MIDI channel. [fluidControl](../opcodes/fluidControl.md) for playing and controlling loaded Soundfonts (using 'raw' MIDI messages), [fluidOut](../opcodes/fluidOut.md) for receiving audio from a single FluidSynth engine, and [fluidAllOut](../opcodes/fluidAllOut.md) for receiving audio from all FluidSynth engines.
+The fluid family of opcodes wraps Peter Hannape's SoundFont 2 player, FluidSynth: *fluidEngine* for instantiating a FluidSynth engine, *fluidSetInterpMethod* for setting interpolation method for a channel in a FluidSynth engine, *fluidLoad* for loading SoundFonts, *fluidProgramSelect* for assigning presets from a SoundFont to a FluidSynth engine's MIDI channel, *fluidNote* for playing a note on a FluidSynth engine's MIDI channel, *fluidCCi* for sending a controller message at i-time to a FluidSynth engine's MIDI channel, *fluidCCk* for sending a controller message at k-rate to a FluidSynth engine's MIDI channel. *fluidControl* for playing and controlling loaded Soundfonts (using 'raw' MIDI messages), *fluidOut* for receiving audio from a single FluidSynth engine, and *fluidAllOut* for receiving audio from all FluidSynth engines. These opcodes are available as plugins in *fluidOpcdes* from the plugins repository.
 
-* [fluidAllOut](../opcodes/fluidAllOut.md)
-* [fluidCCi](../opcodes/fluidCCi.md)
-* [fluidCCk](../opcodes/fluidCCk.md)
-* [fluidControl](../opcodes/fluidControl.md)
-* [fluidEngine](../opcodes/fluidEngine.md)
-* [fluidLoad](../opcodes/fluidLoad.md)
-* [fluidNote](../opcodes/fluidNote.md)
-* [fluidOut](../opcodes/fluidOut.md)
-* [fluidProgramSelect](../opcodes/fluidProgramSelect.md)
-* [fluidSetInterpMethod](../opcodes/fluidSetInterpMethod.md)
 
 #### "Original" Soundfont opcodes
 

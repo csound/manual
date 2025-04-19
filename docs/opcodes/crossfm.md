@@ -46,7 +46,7 @@ _crossfmpm_ and _crossfmpmi_ implement cross frequency/phase modulation between 
 
 > :warning: **Warning**
 >
-> Those opcodes may produce very rich spectra, especially with high modulation indexes, and in some cases foldover aliases may occur if the sampling rate is not high enough. Moreover the audio output may vary in function of the sampling rate, due to the non-linearity of the algorithm. In Csound, two other opcodes have this characteristic: _planet_ and _chuap_.
+> Those opcodes may produce very rich spectra, especially with high modulation indexes, and in some cases foldover aliases may occur if the sampling rate is not high enough. Moreover the audio output may vary in function of the sampling rate, due to the non-linearity of the algorithm.
 
 ## Examples
 

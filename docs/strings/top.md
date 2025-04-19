@@ -60,7 +60,7 @@ instr 1
 endin
 ```
 
-And the [python opcodes](../py.md), among others:
+And the *python opcodes* (in py from the plugins repository), among others:
 
 ``` csound-orc
 pyruni {{

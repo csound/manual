@@ -20,10 +20,10 @@ Opcodes designed to work with an Arduino:
 
 ### P5 Glove
 
-Opcodes designed to work with a P5 Glove controller:
+Opcodes in p5glove from the plugins repository, designed to work with a P5 Glove controller:
 
-* [p5gconnect](../opcodes/p5gconnect.md) - Reads data from a P5 Glove controller.
-* [p5gdata](../opcodes/p5gdata.md) - Reads data fields from an external P5 Glove.
+* *p5gconnect* - Reads data from a P5 Glove controller.
+* *p5gdata* - Reads data fields from an external P5 Glove.
 
 ### Joystick
 
@@ -35,7 +35,9 @@ Opcode designed to work with a Joystick controller (Linux only):
 
 Opcodes designed to work with Nintendo Wiimote controllers:
 
-* [wiiconnect](../opcodes/wiiconnect.md) - Reads data from a number of external Nintendo Wiimote controllers.
-* [wiidata](../opcodes/wiidata.md) - Reads data fields from a number of external Nintendo Wiimote controllers.
-* [wiirange](../opcodes/wiirange.md) - Sets scaling and range limits for certain Wiimote fields.
-* [wiisend](../opcodes/wiisend.md) - Sends data to one of a number of external Nintendo Wiimote controllers.
+* *wiiconnect* - Reads data from a number of external Nintendo Wiimote controllers.
+* *wiidata* - Reads data fields from a number of external Nintendo Wiimote controllers.
+* *wiirange* - Sets scaling and range limits for certain Wiimote fields.
+* *wiisend* - Sends data to one of a number of external Nintendo Wiimote controllers.
+
+These opcodes are plugins in wiimote from the plugins repository.
