@@ -33,6 +33,6 @@ Currently the midi modules available are:
 * _winmme_ - To use the windows MME system (Windows only)
 * _virtual_ - To use a virtual graphical keyboard (See below) as MIDI input (all platforms)
 
-> :note:
+> :memo: **Note**
 >
 > When csound runs, it will process the score and then quit. If there are no events in the score, Csound will run forever. If you want to use only MIDI events instead of score events and you know how long you wish to run, you can tell Csound to run that amount of time by using the dummy [f-statement](../scoregens/f.md) like "f 0 360".    
