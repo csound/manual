@@ -42,3 +42,12 @@ i 1 0 3 0.2 400
 </CsScore> 
 </CsoundSynthesizer> 
 ```
+## Strings in p-fields
+
+One can pass a string as a p-field instead of a number, like this:
+
+``` csound-sco
+i 1 0 10 "A4"
+```
+
+The string can be received by the instrument and further processed using the [string opcodes](../strings/top.md).

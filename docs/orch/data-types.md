@@ -51,4 +51,12 @@ ksmps = 64
 0dbfs =  1
 nchnls = 2
 ```
+## Expressions
 
+Expressions may be composed to any depth. Each part of an expression is evaluated at its own proper rate. For instance, if the terms within a sub-expression all change at the control rate or slower, the sub-expression will be evaluated only at the control rate; that result might then be used in an audio-rate evaluation. For example, in
+
+``` csound-orc
+k1 + abs(int(p5) + frac(p5) * 100/12 + sqrt(k1))
+```
+
+the 100/12 would be evaluated at orch init, the *p5* expressions evaluated at note i-time, and the remainder of the expression evaluated every k-period. The whole might occur in a unit generator argument position, or be part of an assignment statement.
