@@ -31,7 +31,7 @@ Currently the midi modules available are:
 * _alsa_ - To use the ALSA midi system (Linux only)
 * _jack_ - To use the Jack midi system
 * _winmme_ - To use the windows MME system (Windows only)
-* _virtual_ - To use a virtual graphical keyboard (See below) as MIDI input (all platforms)
+* _virtual_ - To use a virtual graphical keyboard (plugin in widgets from the plugins repository) as MIDI input (all platforms)
 
 > :memo: **Note**
 >
