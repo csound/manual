@@ -1,4 +1,4 @@
-# Appendix C. Sound Intensity Values
+# Sound Intensity Values
 
 ### Table C.1. Sound Intensity Values (for a 1000 Hz tone)
 

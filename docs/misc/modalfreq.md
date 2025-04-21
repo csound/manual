@@ -1,4 +1,4 @@
-# Appendix E. Modal Frequency Ratios
+# Modal Frequency Ratios
 
 ### Contributed by Scott Lindroth
 
