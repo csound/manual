@@ -3,7 +3,7 @@ id:joystick
 category:Instrument Control:Sensing and Control
 -->
 # joystick
-Reads data from a Linux joystick controller
+Reads data from a Linux joystick controller.
 
 Plugin opcode in joystick.
 

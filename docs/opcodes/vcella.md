@@ -3,7 +3,7 @@ id:vcella
 category:Vectorial:Cellular Automata
 -->
 # vcella
-Cellular Automata
+Cellular Automata.
 
 Unidimensional Cellular Automata applied to Csound vectors
 

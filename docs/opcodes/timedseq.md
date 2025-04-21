@@ -3,7 +3,7 @@ id:timedseq
 category:Instrument Control:Sensing and Control
 -->
 # timedseq
-Time Variant Sequencer
+Time Variant Sequencer.
 
 An event-sequencer in which time can be controlled by a time-pointer. Sequence data are stored into a table.
 

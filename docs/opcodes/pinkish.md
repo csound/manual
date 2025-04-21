@@ -3,7 +3,9 @@ id:pinkish
 category:Signal Generators:Random (Noise) Generators
 -->
 # pinkish
-Generates approximate pink noise (-3dB/oct response) by one of two different methods:
+Generates approximate pink noise (-3dB/oct response).
+
+It uses one of two different methods:
 
 *  a multirate noise generator after Moore, coded by Martin Gardner
 *  a filter bank designed by Paul Kellet

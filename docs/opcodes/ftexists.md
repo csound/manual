@@ -3,7 +3,7 @@ id:ftexists
 category:Table Control:Table Queries
 -->
 # ftexists
-Query if a given table exists
+Query if a given table exists.
 
 Plugin opcode in emugens.
 

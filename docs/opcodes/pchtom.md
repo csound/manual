@@ -3,7 +3,7 @@ id:pchtom
 category:Pitch Converters:Functions
 -->
 # pchtom
-Convert pch to midi note number
+Convert pch to midi note number.
 
 Plugin opcode in emugens.
 

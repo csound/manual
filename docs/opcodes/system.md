@@ -3,7 +3,7 @@ id:system
 category:Miscellaneous
 -->
 # system
-Call an external program via the system call
+Call an external program via the system call.
 
 Plugin opcode in system_call.
 

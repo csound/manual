@@ -2,7 +2,6 @@
  It is generated automatically by makeAppendices.py-->
 # **Opcodes Index**
 
-
 |   |   |   |   |   |
 |---|---|---|---|---|
 | [!=](opcodes/notequal.md) | [!](opcodes/opnot.md) | [&amp;&amp;](opcodes/opand.md) | [&amp;](opcodes/opbitand.md) | [&ast;](opcodes/multiplies.md) |

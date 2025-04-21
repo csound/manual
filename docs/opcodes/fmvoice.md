@@ -3,7 +3,7 @@ id:fmvoice
 category:Signal Generators:FM Synthesis
 -->
 # fmvoice
-FM Singing Voice Synthesis
+FM Singing Voice Synthesis.
 
 ## Syntax
 ``` csound-orc

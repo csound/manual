@@ -3,7 +3,7 @@ id:metrobpm
 category:Instrument Control:Sensing and Control
 -->
 # metrobpm
-Trigger Metronome with optional gate
+Trigger Metronome with optional gate.
 
 Generate a metronomic signal to be used in any circumstance an isochronous trigger is needed.
 

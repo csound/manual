@@ -3,7 +3,7 @@ id:cell
 category:Vectorial:Cellular Automata
 -->
 # cell
-Cellular Automaton
+Cellular Automaton.
 
 Plugin opcode in cellular
 

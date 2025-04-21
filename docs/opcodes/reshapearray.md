@@ -3,7 +3,7 @@ id:reshapearray
 category:Array Opcodes
 -->
 # reshapearray
-Reshape an array, maintaining its capacity
+Reshape an array, maintaining its capacity.
 
 Plugin opcode in emugens.
 

@@ -3,7 +3,7 @@ id:lufs
 category:Utilities
 -->
 # lufs
-Momentary, Integrated and Short-Term Loudness meter in LUFS
+Momentary, Integrated and Short-Term Loudness meter in LUFS.
 
 The opcodes performs an analysis of input audio according to ITU-R BS.1770-4 recommendation.
 

@@ -3,7 +3,7 @@ id:vdivv
 category:Vectorial:Vectorial operations
 -->
 # vdivv
-Performs division between two vectorial control signals
+Performs division between two vectorial control signals.
 
 ## Syntax
 ``` csound-orc

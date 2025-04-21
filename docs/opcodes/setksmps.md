@@ -3,7 +3,7 @@ id:setksmps
 category:Signal I/O:Software Bus
 -->
 # setksmps
-Sets the local ksmps value in an instrument or user-defined opcode block
+Sets the local ksmps value in an instrument or user-defined opcode block.
 
 ## Syntax
 ``` csound-orc

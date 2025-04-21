@@ -3,7 +3,7 @@ id:mandel
 category:Signal Generators:Models and Emulations
 -->
 # mandel
-Mandelbrot set
+Mandelbrot set.
 
 Returns the number of iterations corresponding to a given point of complex plane by applying the Mandelbrot set formula.
 

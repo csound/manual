@@ -3,8 +3,7 @@ id:unwrap
 category:Array Operations: Fast Fourier Transform
 -->
 # unwrap
-Applies a unwrapping operation to a vector of phase values stored in
-an array.
+Applies a unwrapping operation to a vector of phase values stored in an array.
 
 The output is an array with phases in the range of $[-\pi, \pi)$.
 

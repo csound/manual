@@ -3,7 +3,7 @@ id:ntrpol
 category:Signal Modifiers:Sample Level Operators
 -->
 # ntrpol
-Calculates the weighted mean value (i.e. linear interpolation) of two input signals
+Calculates the weighted mean value (i.e. linear interpolation) of two input signals.
 
 ## Syntax
 ``` csound-orc

@@ -3,7 +3,7 @@ id:vsubv
 category:Vectorial:Vectorial operations
 -->
 # vsubv
-Performs subtraction between two vectorial control signals
+Performs subtraction between two vectorial control signals.
 
 ## Syntax
 ``` csound-orc

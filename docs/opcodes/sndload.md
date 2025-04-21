@@ -3,7 +3,7 @@ id:sndload
 category:Table Control
 -->
 # sndload
-Loads a sound file into memory for use by [loscilx](../opcodes/loscilx.md)
+Loads a sound file into memory for use by [loscilx](../opcodes/loscilx.md).
 
 > :memo: **Note**
 >

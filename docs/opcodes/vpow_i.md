@@ -3,7 +3,7 @@ id:vpow_i
 category:Vectorial:Scalar operations
 -->
 # vpow_i
-Raises each element of a vector to a scalar power
+Raises each element of a vector to a scalar power.
 
 ## Syntax
 ``` csound-orc

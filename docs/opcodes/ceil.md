@@ -3,7 +3,7 @@ id:ceil
 category:Mathematical Operations:Mathematical Functions
 -->
 # ceil
-Returns the smallest integer not less than _x_
+Returns the smallest integer not less than *x*.
 
 ## Syntax
 ``` csound-orc

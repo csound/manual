@@ -3,7 +3,7 @@ id:vmultv
 category:Vectorial:Vectorial operations
 -->
 # vmultv
-Performs mutiplication between two vectorial control signals
+Performs mutiplication between two vectorial control signals.
 
 ## Syntax
 ``` csound-orc

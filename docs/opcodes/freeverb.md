@@ -3,7 +3,7 @@ id:freeverb
 category:Signal Modifiers:Reverberation
 -->
 # freeverb
-Opcode version of Jezar's Freeverb
+Opcode version of Jezar's Freeverb.
 
 freeverb is a stereo reverb unit based on Jezar's public domain C++ sources, composed of eight parallel comb filters on both channels, followed by four allpass units in series. The filters on the right channel are slightly detuned compared to the left channel in order to create a stereo effect.
 

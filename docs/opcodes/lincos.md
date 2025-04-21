@@ -3,7 +3,7 @@ id:lincos
 category:Signal Generators:Linear and Exponential Generators
 -->
 # lincos
-Linear to cosine interpolation
+Linear to cosine interpolation.
 
 Plugin opcode in emugens.
 

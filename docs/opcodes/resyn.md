@@ -3,9 +3,9 @@ id:resyn
 category:Spectral Processing:Streaming
 -->
 # resyn
-Streaming partial track additive synthesis with cubic phase interpolation with pitch control and support for timescale-modified input
+Streaming partial track additive synthesis with cubic phase interpolation.
 
-The resyn opcode takes an input containg a TRACKS pv streaming signal (as generated, for instance by partials). It resynthesises the signal using linear amplitude and cubic phase interpolation to drive a bank of interpolating oscillators with amplitude and pitch scaling controls. Resyn is a modified version of sinsyn, allowing for the resynthesis of data with pitch and timescale changes.
+The *resyn* opcode  uses pitch control and support for timescale-modified input. It takes an input containing a TRACKS pv streaming signal (as generated, for instance by partials). It resynthesises the signal using linear amplitude and cubic phase interpolation to drive a bank of interpolating oscillators with amplitude and pitch scaling controls. *resyn* is a modified version of [sinsyn](sinsyn.md), allowing for the resynthesis of data with pitch and timescale changes.
 
 ## Syntax
 ``` csound-orc

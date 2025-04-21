@@ -3,8 +3,7 @@ id:strindexk
 category:Strings:Manipulation
 -->
 # strindexk
-Return the position of the first occurence of S2 in S1, or -1 if not
-found. If S2 is empty, 0 is returned.
+Return the position of the first occurence of S2 in S1, or -1 if not found. If S2 is empty, 0 is returned.
 
 _strindexk_ runs both at init and performance time.
 

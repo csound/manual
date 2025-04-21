@@ -3,7 +3,7 @@ id:printf
 category:Signal I/O:Printing and Display
 -->
 # printf
-printf-style formatted output
+printf-style formatted output.
 
 _printf_ and _printf_i_ write formatted output, similarly to the C function printf(). _printf_i_ runs at i-time only, while _printf_ runs both at initialization and performance time.
 

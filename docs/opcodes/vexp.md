@@ -3,7 +3,7 @@ id:vexp
 category:Vectorial:Scalar operations
 -->
 # vexp
-Performs power-of operations between a vector and a scalar
+Performs power-of operations between a vector and a scalar.
 
 ## Syntax
 ``` csound-orc

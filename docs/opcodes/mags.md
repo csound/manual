@@ -3,7 +3,7 @@ id:mags
 category:Array Operations: complex numbers
 -->
 # mags
-Obtains the magnitudes of a complex-number array
+Obtains the magnitudes of a complex-number array.
 
 This opcode returns the magnitudes of a complex-number array (in rfft format), as a real-valued array with half the size of its input plus one. The magnitude for the Nyquist frequency are kept in the last position of the array.
 

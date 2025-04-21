@@ -3,7 +3,7 @@ id:sequ
 category:Instrument Control:Sensing and Control
 -->
 # sequ
-Emulate a hardware sequencer
+Emulate a hardware sequencer.
 
 Uses a collection of arrays to generate a sequence of events with variable tempo that can be played in forward, reverse, back and forth, and random directions. The max length of the arrays is 128, and it can be scaled dynamically. Permutational playback modes feature randomisation, probability and other algorithms.
 

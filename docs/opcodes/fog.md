@@ -3,7 +3,7 @@ id:fog
 category:Signal Generators:Granular Synthesis
 -->
 # fog
-Audio output is a succession of grains derived from data in a stored function table
+Audio output is a succession of grains derived from data in a stored function table.
 
 The local envelope of these grains and their timing is based on the model of _fof_ synthesis and permits detailed control of the granular synthesis.
 

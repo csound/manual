@@ -3,7 +3,7 @@ id:lagud
 category:Signal Modifiers:Standard Filters:Control
 -->
 # lagud
-Exponential Lag
+Exponential Lag.
 
 Plugin opcode in scugens.
 

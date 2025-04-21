@@ -3,7 +3,7 @@ id:ntof
 category:Pitch Converters:Functions
 -->
 # ntof
-Convert note name to frequency
+Convert note name to frequency.
 
 Plugin opcode in emugens.
 

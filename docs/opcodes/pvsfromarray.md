@@ -3,7 +3,7 @@ id:pvsfromarray
 category:Spectral Processing:Streaming
 -->
 # pvsfromarray
-Same as the [tab2pvs](tab2pvs.md) opcode.
+Same as the [tab2pvs](../opcodes/tab2pvs.md) opcode.
 
 ## Syntax
 ``` csound-orc

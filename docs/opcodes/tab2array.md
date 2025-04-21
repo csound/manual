@@ -3,7 +3,7 @@ id:tab2array
 category:Array Opcodes
 -->
 # tab2array
-Copy a slice from an f-table to an array
+Copy a slice from an f-table to an array.
 
 Plugin opcode in emugens.
 

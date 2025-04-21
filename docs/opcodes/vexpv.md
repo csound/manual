@@ -3,7 +3,7 @@ id:vexpv
 category:Vectorial:Vectorial operations
 -->
 # vexpv
-Performs exponential operations between two vectorial control signals
+Performs exponential operations between two vectorial control signals.
 
 ## Syntax
 ``` csound-orc

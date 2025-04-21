@@ -3,7 +3,7 @@ id:outipc
 category:Real-time MIDI:Output
 -->
 # outipc
-Sends MIDI program change messages at i-rate
+Sends MIDI program change messages at i-rate.
 
 ## Syntax
 ``` csound-orc

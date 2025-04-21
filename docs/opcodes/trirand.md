@@ -3,7 +3,7 @@ id:trirand
 category:Signal Generators:Random (Noise) Generators
 -->
 # trirand
-Triangular distribution random number generator
+Triangular distribution random number generator.
 
 This is an x-class noise generator.
 

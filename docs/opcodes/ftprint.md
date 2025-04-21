@@ -3,7 +3,7 @@ id:ftprint
 category:Table Control:Read/Write Operations
 -->
 # ftprint
-Print the contents of a table (for debugging)
+Print the contents of a table (for debugging).
 
 Plugin opcode in emugens.
 

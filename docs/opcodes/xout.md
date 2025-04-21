@@ -3,7 +3,7 @@ id:xout
 category:Signal I/O:Software Bus
 -->
 # xout
-Retrieves variables from a user-defined opcode block,
+Retrieves variables from a user-defined opcode block.
 
 The _xin_ and _xout_ opcodes copy variables to and from the opcode definition, allowing communication with the calling instrument.
 

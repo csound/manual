@@ -3,7 +3,7 @@ id:liveconv
 category:Signal Modifiers:Convolution and Morphing
 -->
 # liveconv
-Partitioned convolution with dynamically reloadable impulse response
+Partitioned convolution with dynamically reloadable impulse response.
 
 Plugin opcode in liveconv.
 

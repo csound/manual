@@ -3,7 +3,7 @@ id:strstrip
 category:Strings:Manipulation
 -->
 # strstrip
-Strip whitespace from string
+Strip whitespace from string.
 
 Plugin opcode in emugens.
 

@@ -3,7 +3,7 @@ id:olabuffer
 category:Miscellaneous
 -->
 # olabuffer
-Sum overlapping frames of audio as k-rate arrays and read as an audio signal
+Sum overlapping frames of audio as k-rate arrays and read as an audio signal.
 
 Plugin opcode in framebuffer.
 

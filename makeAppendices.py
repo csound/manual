@@ -17,7 +17,8 @@ class OpcodeInfo:
 
         fn = os.path.split(filename)[1]
         self.filename = os.path.splitext(fn)[0]
-        self.find_name()
+        j = self.find_name()
+        self.find_description(j)
         self.find_syntax()
         self.find_category()
         self.find_examples()
@@ -25,12 +26,35 @@ class OpcodeInfo:
 
     def find_name(self):
         self.name = ""
+        j = 0
         i = self.data.find('# ')
         if i != -1:
             j = self.data[i:].find('\n')
             if j != -1:
                 j += i
                 self.name = self.data[i+2:j].strip()
+        return j
+
+    def find_description(self, i):
+        self.description = ""
+        j = 0
+        s = self.data[i:]
+        while True:
+            k = s[j:].find('.')
+            if k != -1:
+                j += k
+                if s[j-1] == '(':
+                    k = s[j:].find(')')
+                    if k == -1:
+                        return
+                    j += k
+                elif s[j-1:j+3] == "i.e.":
+                    j += 3
+                elif s[j-1:j+3] == "e.g.":
+                    j += 3
+                else:
+                    self.description = s[:j+1].strip()
+                    return
 
     def find_syntax(self):
         self.syntax = ""
@@ -109,7 +133,7 @@ def write_opcodes_index(opcodes, filename, ncol=5):
     f = open(filename, 'w')
     print("<!-- Don't modify this file.", file=f)
     print(" It is generated automatically by makeAppendices.py-->", file=f)
-    print("# **Opcodes Index**\n\n", file=f)
+    print("# **Opcodes Index**\n", file=f)
     for i in range(ncol):
         print("|   ", end='', file=f)
     print("|", file=f)
@@ -127,7 +151,21 @@ def write_opcodes_index(opcodes, filename, ncol=5):
         print("|", file=f)
     f.close()
 
-def write_opcodes_ref(opc_by_cat, filename):
+def write_opcodes_reference(opcodes, filename):
+    entries = []
+    for opc in opcodes:
+        entries.append("[{}]({}) - {}<br>".format(opc.name, "../" + opc.link, opc.description))
+    entries.sort()
+
+    f = open(filename, 'w')
+    print("<!-- Don't modify this file.", file=f)
+    print(" It is generated automatically by makeAppendices.py-->", file=f)
+    print("# **Orchestra Opcodes and Operators**\n", file=f)
+    for e in entries:
+        print(e, file=f)
+    f.close()
+
+def write_opcodes_quick_ref(opc_by_cat, filename):
     f = open(filename, 'w')
     print("<!-- Don't modify this file.", file=f)
     print(" It is generated automatically by makeAppendices.py-->", file=f)
@@ -208,5 +246,6 @@ for cat, opc_list in opc_by_cat.items():
     opc_list.sort(key=lambda x: x.name)
 
 write_opcodes_index(opcodes, "./docs/opcodesIndex.md", ncol=5)
-write_opcodes_ref(opc_by_cat, "./docs/opcodesRef.md")
+write_opcodes_reference(opcodes, "./docs/reference/opcodesReference.md")
+write_opcodes_quick_ref(opc_by_cat, "./docs/opcodesQuickRef.md")
 write_examples_list(opc_by_cat, "./docs/misc/examples.md")

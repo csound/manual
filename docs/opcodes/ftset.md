@@ -3,7 +3,7 @@ id:ftset
 category:Table Control:Read/Write Operations
 -->
 # ftset
-Sets multiple elements of a table to a given value
+Sets multiple elements of a table to a given value.
 
 All elements of the table, or a slice (start\:end\:step) can be set at once. If all parameters are i-time variables, ftset will run only at init-time. Otherwise ftset is executed at each cycle.
 

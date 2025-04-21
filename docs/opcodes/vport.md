@@ -3,7 +3,7 @@ id:vport
 category:Vectorial:Delay Paths
 -->
 # vport
-Generate a sort of 'vectorial' portamento
+Generate a sort of 'vectorial' portamento.
 
 ## Syntax
 ``` csound-orc

@@ -3,7 +3,7 @@ id:outall
 category:Signal I/O:Signal Output
 -->
 # outall
-Writes a single audio value to all available audio channels
+Writes a single audio value to all available audio channels.
 
 ## Syntax
 ``` csound-orc

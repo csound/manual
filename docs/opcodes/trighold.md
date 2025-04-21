@@ -3,7 +3,7 @@ id:trighold
 category:Signal Modifiers:Standard Filters:Control
 -->
 # trighold
-Timed trigger, holds a value for a given time
+Timed trigger, holds a value for a given time.
 
 Plugin opcode in scugens.
 

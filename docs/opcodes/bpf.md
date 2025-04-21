@@ -3,7 +3,7 @@ id:bpf
 category:Signal Generators:Linear and Exponential Generators
 -->
 # bpf
-Break point function with linear interpolation
+Break point function with linear interpolation.
 
 Plugin opcode in emugens.
 

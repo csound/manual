@@ -3,7 +3,7 @@ id:socksend
 category:Network
 -->
 # socksend
-Sends data to other processes using the low-level UDP or TCP protocols
+Sends data to other processes using the low-level UDP or TCP protocols.
 
 Transmits data directly using the UDP (_socksend_ and _socksends_) or TCP (_stsend_) protocol onto a network. The data is not subject to any encoding or special routing. The _socksends_ opcode send a stereo signal interleaved.
 

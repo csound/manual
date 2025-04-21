@@ -3,7 +3,7 @@ id:part2txt
 category:Spectral Processing:Streaming
 -->
 # part2txt
-Write a text file containing partial tracks data
+Write a text file containing partial tracks data.
 
 The part2txt opcode takes a PVS_TRACKS fsig input and writes the data as sequence of track lists, one for each time point, to a line-oriented text file. Each track is placed on a separate line containing the amplitude, frequency, phase, and track ID. A separator line containing four -1.0 values is used to define the end of the track list for a given time point.
 

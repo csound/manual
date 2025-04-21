@@ -3,7 +3,7 @@ id:mode
 category:Signal Modifiers:Standard Filters
 -->
 # mode
-A filter that simulates a mass-spring-damper system
+A filter that simulates a mass-spring-damper system.
 
 Filters the incoming signal with the specified resonance frequency and quality factor. It can also be seen as a signal generator for high quality factor, with an impulse for the excitation. You can combine several modes to built complex instruments such as bells or guitar tables.
 

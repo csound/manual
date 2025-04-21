@@ -3,7 +3,7 @@ id:ihold
 category:Instrument Control:Duration Control
 -->
 # ihold
-Causes a finite-duration note to become a &#8220;held&#8221; note
+Causes a finite-duration note to become a &#8220;held&#8221; note.
 
 ## Syntax
 ``` csound-orc

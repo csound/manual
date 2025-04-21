@@ -3,7 +3,7 @@ id:strcmpk
 category:Strings:Manipulation
 -->
 # strcmpk
-Compare strings
+Compare strings.
 
 Set the result to -1, 0, or 1 if the first string is less than, equal to, or greater than the second, respectively. _strcmpk_ does the comparison both at initialization and performance time.
 

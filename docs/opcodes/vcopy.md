@@ -3,7 +3,7 @@ id:vcopy
 category:Vectorial:Vectorial operations
 -->
 # vcopy
-Copies between two vectorial control signals
+Copies between two vectorial control signals.
 
 ## Syntax
 ``` csound-orc

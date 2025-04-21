@@ -3,7 +3,7 @@ id:wterrain2
 category:Signal Generators:Wave Terrain Synthesis
 -->
 # wterrain2
-A wave-terrain synthesis opcode using different curves
+A wave-terrain synthesis opcode using different curves.
 
 It enhances the [wterrain](../opcodes/wterrain.md) opcode by providing some more curves, krate table parameters and a parameter for rotating the curve.
 

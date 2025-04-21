@@ -3,7 +3,7 @@ id:vrandi
 category:Vectorial:Random
 -->
 # vrandi
-Generate a sort of 'vectorial band-limited noise'
+Generate a sort of 'vectorial band-limited noise'.
 
 ## Syntax
 ``` csound-orc

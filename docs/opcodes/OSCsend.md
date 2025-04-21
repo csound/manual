@@ -3,7 +3,7 @@ id:OSCsend
 category:OSC
 -->
 # OSCsend
-Sends data to other listening processes using the OSC protocol
+Sends data to other listening processes using the OSC protocol.
 
 ## Syntax
 ``` csound-orc

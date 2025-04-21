@@ -3,7 +3,7 @@ id:xin
 category:Signal I/O:Software Bus
 -->
 # xin
-Passes variables to a user-defined opcode block,
+Passes variables to a user-defined opcode block.
 
 The _xin_ and _xout_ opcodes copy variables to and from the opcode definition, allowing communication with the calling instrument.
 

@@ -3,7 +3,7 @@ id:linlin
 category:Signal Generators:Linear and Exponential Generators
 -->
 # linlin
-Linear to linear interpolation
+Linear to linear interpolation.
 
 Plugin opcode in emugens.
 

@@ -3,7 +3,7 @@ id:floor
 category:Mathematical Operations:Mathematical Functions
 -->
 # floor
-Returns the largest integer not greater than _x_
+Returns the largest integer not greater than *x*.
 
 ## Syntax
 ``` csound-orc

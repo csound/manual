@@ -3,7 +3,7 @@ id:dct
 category:Array Operations: Discrete Cosine Transform
 -->
 # dct
-Discrete Cosine Transform of a sample array (type-II DCT)
+Discrete Cosine Transform of a sample array (type-II DCT).
 
 Applies a forward Discrete Cosine Transform to an input 1-dimensional array producing an array of the same size containing the transform. Currently only power-of-two sizes are implemented. Available in i-time or perf (k-rate) versions.
 

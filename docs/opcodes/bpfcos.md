@@ -3,7 +3,7 @@ id:bpfcos
 category:Signal Generators:Linear and Exponential Generators
 -->
 # bpfcos
-Break point function with cosine (easy-in/easy-out) interpolation
+Break point function with cosine (easy-in/easy-out) interpolation.
 
 Plugin opcode in emugens.
 

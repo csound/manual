@@ -3,7 +3,7 @@ id:vpowv
 category:Vectorial:Vectorial operations
 -->
 # vpowv
-Performs power-of operations between two vectorial control signals
+Performs power-of operations between two vectorial control signals.
 
 ## Syntax
 ``` csound-orc

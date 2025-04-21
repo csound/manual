@@ -3,7 +3,7 @@ id:metro2
 category:Instrument Control:Sensing and Control
 -->
 # metro2
-Trigger Metronome with Swing and Accents
+Trigger Metronome with Swing and Accents.
 
 ## Syntax
 ``` csound-orc

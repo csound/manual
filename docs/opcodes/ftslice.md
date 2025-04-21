@@ -3,7 +3,7 @@ id:ftslice
 category:Table Control:Read/Write Operations
 -->
 # ftslice
-Copy a slice from an f-table to another f-table at performance
+Copy a slice from an f-table to another f-table at performance.
 
 Plugin opcode in emugens.
 

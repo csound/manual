@@ -3,7 +3,7 @@ id:ftslicei
 category:Table Control:Read/Write Operations
 -->
 # ftslicei
-Copy a slice from an f-table to another f-table at init
+Copy a slice from an f-table to another f-table at init.
 
 Plugin opcode in emugens.
 

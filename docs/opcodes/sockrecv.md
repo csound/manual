@@ -3,7 +3,7 @@ id:sockrecv
 category:Network
 -->
 # sockrecv
-Receives data from other processes using the low-level UDP or TCP protocols
+Receives data from other processes using the low-level UDP or TCP protocols.
 
 Uses the UDP (_sockrecv_ and _sockrecvs_) or TCP (_strecv_) protocol onto a network. The data is not subject to any encoding or special routing. The _sockrecvs_ opcode receives a stereo signal interleaved.
 

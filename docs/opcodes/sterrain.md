@@ -3,7 +3,7 @@ id:sterrain
 category:Signal Generators:Wave Terrain Synthesis
 -->
 # sterrain
-A wave-terrain synthesis opcode using curves computed with the superformula
+A wave-terrain synthesis opcode using curves computed with the superformula.
 
 See [Wikipedia](https://en.wikipedia.org/wiki/Superformula) for more information.
 

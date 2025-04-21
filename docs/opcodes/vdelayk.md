@@ -3,7 +3,7 @@ id:vdelayk
 category:Vectorial:Delay Paths
 -->
 # vdelayk
-Variable time delay applied to a k-rate signal
+Variable time delay applied to a k-rate signal.
 
 ## Syntax
 ``` csound-orc

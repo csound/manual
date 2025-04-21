@@ -3,7 +3,7 @@ id:metro
 category:Instrument Control:Sensing and Control
 -->
 # metro
-Trigger Metronome
+Trigger Metronome.
 
 Generate a metronomic signal to be used in any circumstance an isochronous trigger is needed.
 

@@ -3,7 +3,7 @@ id:ntom
 category:Pitch Converters:Functions
 -->
 # ntom
-Convert note name to midi note number
+Convert note name to midi note number.
 
 Plugin opcode in emugens.
 

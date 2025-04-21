@@ -3,7 +3,7 @@ id:dcblock
 category:Signal Modifiers:Specialized Filters
 -->
 # dcblock
-Implements the DC blocking filter
+Implements the DC blocking filter.
 
 ```
 Y[i] = X[i] - X[i-1] + (igain * Y[i-1])

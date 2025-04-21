@@ -3,7 +3,7 @@ id:phs
 category:Array Operations: complex numbers
 -->
 # phs
-Obtains the phases of a complex-number array
+Obtains the phases of a complex-number array.
 
 This opcode returns the phases of a complex-number array, as a real-valued array with half the size of its input plus one. The reason for the extra point is to keep the array size equivalent to the output of the mags opcode (which is often used alongside this one).
 

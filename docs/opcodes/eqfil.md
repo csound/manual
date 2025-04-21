@@ -3,7 +3,7 @@ id:eqfil
 category:Signal Modifiers:Specialized Filters
 -->
 # eqfil
-Equalizer filter
+Equalizer filter.
 
 The opcode eqfil is a 2nd order tunable equalisation filter based on Regalia and Mitra design ("Tunable Digital Frequency Response Equalization Filters", IEEE Trans. on Ac., Sp. and Sig Proc., 35 (1), 1987). It provides a peak/notch filter for building parametric/graphic equalisers.
 

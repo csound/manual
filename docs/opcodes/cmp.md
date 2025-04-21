@@ -3,7 +3,7 @@ id:cmp
 category:Signal Modifiers:Comparators and Accumulators
 -->
 # cmp
-Compares audio signals or arrays
+Compares audio signals or arrays.
 
 Plugin opcode in emugens.
 

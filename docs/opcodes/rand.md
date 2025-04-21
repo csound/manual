@@ -3,7 +3,7 @@ id:rand
 category:Signal Generators:Random (Noise) Generators
 -->
 # rand
-Output is a controlled random number series between -_amp_ and +_amp_
+Output is a controlled random number series between -*amp* and +*amp*.
 
 ## Syntax
 ``` csound-orc

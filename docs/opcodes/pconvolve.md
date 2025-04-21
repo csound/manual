@@ -3,7 +3,7 @@ id:pconvolve
 category:Signal Modifiers:Convolution and Morphing
 -->
 # pconvolve
-Convolution based on a uniformly partitioned overlap-save algorithm
+Convolution based on a uniformly partitioned overlap-save algorithm.
 
 Compared to the [convolve](../opcodes/convolve.md) opcode, _pconvolve_ has these benefits:
 
