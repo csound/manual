@@ -1,5 +1,5 @@
 
-# Appendix B. Pitch Conversion
+# Pitch Conversion
 
 ### Table B.1. Pitch Conversion
 
