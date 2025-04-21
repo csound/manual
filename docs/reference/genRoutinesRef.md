@@ -34,7 +34,6 @@
 [GEN40](../scoregens/gen40.md) - Generates a random distribution using a distribution histogram.<br>
 [GEN41](../scoregens/gen41.md) - Generates a random list of numerical pairs.<br>
 [GEN42](../scoregens/gen42.md) - Generates a random distribution of discrete ranges of values.<br>
-function-table and rescales them.<br>
 [GEN43](../scoregens/gen43.md) - Loads a PVOCEX file containing a PV analysis.<br>
 [GEN44](../scoregens/gen44.md) - Creates a stifness matrix for scan/scanu.<br>
 [GEN49](../scoregens/gen49.md) - Transfers data from an MP3 soundfile into a function table.<br>
