@@ -217,7 +217,7 @@ def write_examples_list(opc_by_cat, filename):
     f = open(filename, 'w')
     print("<!-- Don't modify this file.", file=f)
     print(" It is generated automatically by makeAppendices.py-->", file=f)
-    print("# **Opcode Quick Reference**\n", file=f)
+    print("# **List of Examples**\n", file=f)
     for cat in categories:
         print("### {}".format(cat), file=f)
         for o in opc_by_cat[cat]:

@@ -1,6 +1,6 @@
 <!-- Don't modify this file.
  It is generated automatically by makeAppendices.py-->
-# **Opcode Quick Reference**
+# **List of Examples**
 
 ### Orchestra Syntax:Header
 [**0dbfs.csd**](../opcodes/0dbfs.md#examples)<br>
