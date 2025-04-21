@@ -9,8 +9,8 @@ Csound processes and generates output using "unit generators" (ugens) called opc
 
 Csound processes audio in sample blocks called buffers. There are three separate buffer layers:
 
-**spout** = Csound's innermost software buffer, contains `ksmps` sample frames. Csound processes real-time control events once every ksmps sample frames.
+**spout** = Csound's innermost software buffer, contains `ksmps` sample frames. Csound processes real-time control events once every `ksmps` sample frames.
 
-**-b** = Csound's intermediate software buffer (the "software" buffer), in sample frames. Should be (but does not need to be) <span style="color:red">Menno:??? Preferable or Usually ???</span> an integral multiple of ksmps (can be equal to ksmps, too). Once per ksmps sample frames, Csound copies spout to the -b buffer. Once per -b sample frames, Csound copies the -b buffer to the -B "hardware" buffer.
+**-b** = Csound's intermediate software buffer (the "software" buffer), in sample frames. Should be (but does not need to be) an integral multiple of `ksmps` (can be equal to `ksmps`, too). Once per `ksmps` sample frames, Csound copies spout to the `-b` buffer. Once per `-b` sample frames, Csound copies the `-b` buffer to the `-B` "hardware" buffer.
 
-**-B** = The sound card's internal buffer (the "hardware" buffer), in sample frames. Should be (and may need to be) <span style="color:red">??? do not understand - delete this because confusing??</span> an integral multiple of -b. If Csound misses delivering a -b one time, the extra -b sample frames in -b are still there for the sound card to keep playing while Csound catches up. But they can be of the same size if you're willing to bet Csound can always keep up with the sound card.
+**-B** = The sound card's internal buffer (the "hardware" buffer), in sample frames. Should be (and may need to be) an integral multiple of `-b`. If Csound misses delivering a `-b` one time, the extra `-b` sample frames in `-b` are still there for the sound card to keep playing while Csound catches up. But they can be of the same size if you're willing to bet Csound can always keep up with the sound card.
