@@ -1,4 +1,4 @@
-# Appendix D. Formant Values
+# Formant Values
 
 ### Table D.1. alto &ldquo;a&rdquo;
 
