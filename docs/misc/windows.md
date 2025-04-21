@@ -1,4 +1,4 @@
-# Appendix F. Window Functions
+# Window Functions
 
 Windowing functions are used for analysis, and as waveform envelopes, particularly in granular synthesis. Window functions are built in to some opcodes, but others require a function table to generate the window. [GEN20](../scoregens/gen20.md) is used for this purpose. The diagram of each window below, is accompanied by the f score statement and ftgen orchestra opcode used to generate it.
 
