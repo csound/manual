@@ -40,7 +40,7 @@ cd path_to_csound7-manual-serve
 python -m http.server
 ```
 
-Then, if the teacher machine got IP address 192.168.1.19 for example, every student can reach the manual from her browser using the URL `http://192.168.1.19:8000/`
+Then, if the teacher machine got IP address 192.168.1.19 for example, each student could reach the manual from her browser using the URL `http://192.168.1.19:8000/`
 
 ## Writing an opcode notice
 
@@ -171,5 +171,5 @@ opcodesQuickRef.md
 misc/examples.md
 ```
 
-The author can also add a link to its opcode notice in one of category notices.
+The author can also add a link to its opcode notice in one of the category notices.
 
