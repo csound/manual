@@ -33,7 +33,7 @@ Local versions of the manual can be built in two ways:
 
     `mkdocs build -d ../csound7-manual-serve`
 
-The second case could be used in a classroom whith a local wifi network. The teacher could start a local server on her computer like this:
+The second case could be used in a classroom with a local wifi network. The teacher could start a local server on her computer like this:
 
 ```
 cd path_to_csound7-manual-serve
