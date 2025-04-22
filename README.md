@@ -42,7 +42,7 @@ python -m http.server
 
 Then, if the teacher machine got IP address 192.168.1.19 for example, each student could reach the manual from her browser using the URL `http://192.168.1.19:8000/`
 
-## Writing an opcode notice
+### Writing an opcode notice
 
 Here is an example of a notice written in markdown for an opcode named 'myocode':
 
