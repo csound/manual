@@ -6,7 +6,7 @@
 [C](../scoregens/C.md) - Toggles carry facility.<br>
 [d](../scoregens/d.md) - Deletes an infinite instrument.<br>
 [e](../scoregens/e.md) - Marks the end of the last section of the score.<br>
-[f](../scoregens/f.md) - Causes a [GEN subroutine](genroutines.md) to place values in a stored function table.<br>
+[f](../scoregens/f.md) - Causes a [GEN subroutine](../score/genroutines.md) to place values in a stored function table.<br>
 [i](../scoregens/i.md) - Makes an instrument active at a specific time and for a certain duration.<br>
 [m](../scoregens/m.md) - Sets a named mark in the score.<br>
 [n](../scoregens/n.md) - Repeats a section.<br>
