@@ -14,6 +14,4 @@ The Csound Community Homepage is [csound.com](https://csound.com). We try to kee
 
 Front ends are programs that provide some form of user interface for Csound. Within these programs, Csound is used to generate sound, and familiarity with Csound code is required in order to use them. Front ends typically add helpful features, such as syntax coloring, graphic widgets, or tools for algorithmic score generation, that are not part of Csound itself. 
 
-The links to the current available frontends are collected on the Csound Community Homepage:
-
-- [Frontends](https://csound.com/frontends.html)
+The links to the current available frontends are collected on the [Csound Community Homepage](https://csound.com/frontends.html).
