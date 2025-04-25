@@ -28,7 +28,7 @@
 [GEN28](../scoregens/gen28.md) - Reads a text file which contains a time-tagged trajectory.<br>
 [GEN30](../scoregens/gen30.md) - Generates harmonic partials by analyzing an existing table.<br>
 [GEN31](../scoregens/gen31.md) - Mixes any waveform specified in an existing table.<br>
-[GEN32](../scoregens/gen32.md) -  Mixes any waveform, resampled with either FFT or linear interpolation.<br>
+[GEN32](../scoregens/gen32.md) - Mixes any waveform, resampled with either FFT or linear interpolation.<br>
 [GEN33](../scoregens/gen33.md) - Generate composite waveforms by mixing simple sinusoids.<br>
 [GEN34](../scoregens/gen34.md) - Generate composite waveforms by mixing simple sinusoids.<br>
 [GEN40](../scoregens/gen40.md) - Generates a random distribution using a distribution histogram.<br>
