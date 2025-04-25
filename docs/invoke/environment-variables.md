@@ -1,6 +1,6 @@
 # Environment variables
 
- The following environment variables ARE AVAILABLE:
+ The following environment variables are available:
 
 - SFDIR: Default directory for rendered sound files. Used if no full path is given for output sound files.  
 - SSDIR: Default directory for input (source) audio and MIDI files. Used if no full path is given for sound files. May be used in conjunction with SFDIR to set separate input and output directories. Please note that MIDI files as well as audio files are also sought inside SSDIR.  
