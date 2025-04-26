@@ -9,7 +9,7 @@ The standard numeric score consists of lines where each line represents a single
 | **a**| 0  | 0  | 80  | -  | - | advances score time |
 | **e**| 60  | -  | -  | -  | - | ends score execution |
 
-The p-fields have different meanings in the different statements. In the example above, `p1` means the instrument number for the [i]((../scoregens/i.md))-statement, the function table number for the [f](../scoregens/f.md)-statement, is without any meaning for the [a](../scoregens/a.md)-statement, and signifies the time for the [e](../scoregens/e.md)-statement.
+The p-fields have different meanings in the different statements. In the example above, `p1` means the instrument number for the [i](../scoregens/i.md)-statement, the function table number for the [f](../scoregens/f.md)-statement, is without any meaning for the [a](../scoregens/a.md)-statement, and signifies the time for the [e](../scoregens/e.md)-statement.
 
 ## P-Fields in Instrument Events
 

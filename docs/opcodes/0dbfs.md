@@ -36,7 +36,7 @@ The purpose of the _0dbfs_ opcode is for people to start to code 0dbfs-relativel
 
 Floats written to a file, when _0dbfs = 1_, will in effect go through no range translation at all. So the numbers in the file are exactly what the orc says they are.
 
-For more details on amplitude values in Csound, see the section [Amplitude values in Csound](../score/amplitudes.md)
+For more details on amplitude values in Csound, see the section [Amplitude values in Csound](../orch/amplitudes.md)
 
 ## Examples
 

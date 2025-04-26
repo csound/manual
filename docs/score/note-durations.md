@@ -6,7 +6,7 @@ The third parameter field in an instrument event (accessible as `p3` in the call
 
 ### Instrument Events Given in the Standard Numeric Score
 
-If an instrument is called via the score, both `p2` (start time) and `p3` (duration) are measured in *beats*. Per default, one beat is in tempo 60 beats per minute, so one second. But it is affected by the tempo statement which can be given via the `t` statement. So without any tempo statement this score will result in one second performance of instrument 1, then one second pause, and thene again one second performance:
+If an instrument is called via the score, both `p2` (start time) and `p3` (duration) are measured in *beats*. Per default, one beat is in tempo 60 beats per minute, so one second. But it is affected by the tempo which can be given via the `t` statement. So without any tempo statement this score will result in one second performance of instrument 1, then one second pause, and thene again one second performance:
 
 ``` csound-csd
 <CsScore>
