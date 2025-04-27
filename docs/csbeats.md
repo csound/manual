@@ -1,10 +1,10 @@
-# **Csbeats**
+# CsBeats
 
 _Csbeats_ is an alternative score language that is aimed at specifying simple scores in standard western tunings and rhythms.  _Csbeats_ can be invoked via the CsScore component of a standard .csd score with _bin="csbeats"_ or as stand-alone program which generates a standard numeric score.
 
 As a stand-alone the program reads standard input and writes to standard output.
 
-The _csbeats_ language is very simple, having only 5  kinds of statement, and only one of them has any complexity.  In general the introductory word for each statement type is case insensitive, so "QUIT", "quit", "QuIt"... are all the same.  Comments can be introduced in either ANSI C89 format or C++ (that is either /\* ... \*/ or // to the end of line) or Csound's semicolon.
+The _csbeats_ language is very simple, having only five kinds of statement, and only one of them has any complexity.  In general the introductory word for each statement type is case insensitive, so "QUIT", "quit", "QuIt"... are all the same.  Comments can be introduced in either ANSI C89 format or C++ (that is either `\* ... \*` or `//` to the end of line) or Csound's semicolon `;`.
 
 * _QUIT_
 
