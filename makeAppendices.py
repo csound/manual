@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This script generates the opcodes index and ref files
-# and the Appendix A, List of examples file
-# by François Pinot, March 2025
+# and the List of examples file in the appendix.
+# Author: François Pinot, March 2025
 # Licensed under the GPL licence version 3 or later
 
 import os
