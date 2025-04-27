@@ -1,12 +1,12 @@
 # Included files
 
-It is sometimes convenient to have the score in more than one file. This use is supported by the `#include` facility which is part of the macro system. A line containing the text
+It is sometimes convenient to have the score in more than one file. This use is supported by the [#include](../opcodes/include.md) facility which is part of the macro system. A line containing the text
 
 ``` csound-sco
 #include "filename"
 ```
 
-where the character " can be replaced by any suitable character. For most uses the double quote symbol will probably be the most convenient. The file name can include a full path.
+where the character `"` can be replaced by any suitable character. For most uses the double quote symbol will probably be the most convenient. The file name can include a full path.
 
 This takes input from the named file until it ends, when input reverts to the previous input. There is currently a limit of 20 on the depth of included files and macros.
 
@@ -23,11 +23,3 @@ s
 Alternative methods of doing repeats, use the [r statement](../scoregens/r.md), [m statement](../scoregens/m.md), and [n statement](../scoregens/n.md).
 
 The form `#includestr` is the same as `#include` except the deliminator must be a double quote and the file name may contain macro calls.
-
-Author: John ffitch<br>
-University of Bath/Codemist Ltd.<br>
-Bath, UK
-
-April, 1998 (New in Csound version 3.48)<br>
-Thanks to Luis Jure for pointing out the incorrect syntax in multiple file include statement.<br>
-`#includestr` new in version 6.12

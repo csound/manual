@@ -1,10 +1,10 @@
 # Expressions
 
-In earlier versions of Csound the numbers presented in a score were used as given. There are occasions when some simple evaluation would be easier. This need is increased when there are macros. To assist in this area the syntax of arithmetic expressions within square brackets [ ] has been introduced. Expressions built from the operations +, -, *, /, % ("modulo"), and ^ ("power of") are allowed, together with grouping with ( ). Unary minus and plus are also supported. The expressions can include numbers, and naturally macros whose values are numeric or arithmetic strings. All calculations are made in floating point numbers. The usual precedence rules are followed when evaluating: expressions within parantheses ( ) are evaluated first and ^ is evaluated before *, /, and % which are evaluated before + and -.
+In earlier versions of Csound the numbers presented in a score were used as given. There are occasions when some simple evaluation would be easier. This need is increased when there are macros. To assist in this area the syntax of arithmetic expressions within square brackets `[ ]` has been introduced. Expressions built from the operations `+`, `-`, `*`, `/`, `%` ("modulo"), and `^` ("power of") are allowed, together with grouping with `( )`. Unary minus and plus are also supported. The expressions can include numbers, and naturally macros whose values are numeric or arithmetic strings. All calculations are made in floating point numbers. The usual precedence rules are followed when evaluating: expressions within parantheses `( )` are evaluated first and `^` is evaluated before `*`, `/`, and `%` which are evaluated before `+` and `-`.
 
-In addition to arithmetic operations, the following bitwise logical operators are also available: & (AND), | (OR), and # (XOR, exclusive-OR). These operators round their operands to the nearest (long) integer before evaluating. The logical operators have the same precedence as the *, /, and % arithmetic operators.
+In addition to arithmetic operations, the following bitwise logical operators are also available: `&` (AND), `|` (OR), and `#` (XOR, exclusive-OR). These operators round their operands to the nearest (long) integer before evaluating. The logical operators have the same precedence as the `*`, `/`, and `%` arithmetic operators.
 
-Finally, the tilde symbol ˜ can be used in an expression wherever a number is permissible to use. Each ˜ will evaluate to a random value between zero (0) and one (1).
+Finally, the tilde symbol `˜` can be used in an expression wherever a number is permissible to use. Each `˜` will evaluate to a random value between zero (0) and one (1).
 
 ## Examples
 
@@ -17,7 +17,7 @@ i1  +  [($CNT./3)+0.2]
 e
 ```
 
-As the three copies of the section have the macro $CNT. with the different values of 1, 2 and 3, this expands to
+As the three copies of the section have the macro `$CNT`. with the different values of 1, 2 and 3, this expands to
 
 ``` csound-sco
 s
@@ -60,17 +60,11 @@ i1  +   .   [ 3 & 2 * 2 ]      ; 0
 i1  +   .   [ 4 | 3 * 3 ]      ; 13
 ```
 
-## The @ operator
+## The `@` operator
 
-New in Csound version 3.56 are @x (next power-of-two greater than or equal to x) and @@x (next power-of-two-plus-one greater than or equal to x).
+New in Csound version 3.56 are `@x` (next power-of-two greater than or equal to x) and `@@x` (next power-of-two-plus-one greater than or equal to x).
 
 ```
 [ @ 11 ] will evaluate to 16
 [ @@ 11 ] to 17
 ```
-
-Author: John ffitch<br>
-University of Bath/Codemist Ltd.<br>
-Bath, UK
-
-April, 1998 (New in Csound version 3.48)
