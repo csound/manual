@@ -1,6 +1,6 @@
-# **GEN Routines**
+# GEN Routines
 
-GEN routines are used as data generators for function tables. When a function table is created using the [f score statement](../scoregens/f.md), the GEN function is given as its fourth argument. A negative GEN number implies that the function is not rescaled, and maintains its original values.
+GEN routines are used as data generators for function tables. When a function table is created using the [ftgen opcode](../opcodes/ftgen.md) or the [f score statement](../scoregens/f.md), the GEN function is given as its fourth argument. A negative GEN number implies that the function is not rescaled, and maintains its original values.
 
 ## Sine/Cosine Generators:
 
