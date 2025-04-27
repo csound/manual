@@ -36,8 +36,7 @@ This call will *not* normalize the sample "dish.wav":
 ## Guard Points
 
 A guard point is the last position on a function table. If the table size is 1024, the table will have 1024+1 (1025) points: the extra point is the guard point. 
-
-In any case, for a 1024-point table,  the first point is index 0 and the last 1023; index 1024 is not really used.
+For the 1024-point table, the first point is index 0 and the last 1023; index 1024 (Guard Point) is not really used.
 
 The reason for a guard-point is that some opcodes interpolate to obtain a table value, in which case, when the table index is say, 1023.5, we need the value of the 1024 pos in order to interpolate.
 
