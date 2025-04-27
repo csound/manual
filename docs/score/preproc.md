@@ -131,3 +131,23 @@ i1   5    1    0
 Ramps cannot cross a Section boundary. Ramps cannot be anchored by an `np` or `pp` symbol (although they may be referenced by these). Ramp symbols are illegal in `p1`, `p2` and `p3`. Ramp symbols may be Carried. Note, however, that while the Carry feature will propagate ramp symbols through unsorted statements, the operation that interprets these symbols is acting on a time-warped and fully sorted version of the score. In fact, time-based linear interpolation is based on warped score-time, so that a ramp which spans a group of accelerating notes will remain linear with respect to strict chronological time.
 
 Starting with Csound version 3.52, using the symbols `(` or `)` will result in an exponential interpolation ramp, similar to [expon](../opcodes/expon.md). Using the symbol `˜` (a tilde) will result in uniform, random distribution between the first and last values of the ramp. Use of these functions must follow the same rules as the linear ramp function. 
+
+## Extract
+
+This feature will extract a segment of a sorted numeric score file according to instructions taken from a control file. The control file contains an instrument list and two time points, from and to, in the form:
+
+```
+instruments 1  2  from  1:27.5  to  2:2
+```
+
+The component labels may be abbreviated as i, f and t. The time points denote the beginning and end of the extract in terms of:
+
+```
+[section no.] : [beat no.].
+```
+
+Each of the three parts of the argument is optional. The default values for missing i, f or t are:
+
+```
+all instruments, beginning of score, end of score.
+```
