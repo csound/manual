@@ -6,22 +6,25 @@ category:Signal Generators:Basic Oscillators
 High precision oscillator.
 
 ## Syntax
-``` csound-orc
-ares poscil aamp, acps [, ifn, iphs]
-ares poscil aamp, kcps [, ifn, iphs]
-ares poscil kamp, acps [, ifn, iphs]
-ares poscil kamp, kcps [, ifn, iphs]
-ires poscil kamp, kcps [, ifn, iphs]
-kres poscil kamp, kcps [, ifn, iphs]
+=== "Classic"
+    ``` csound-orc
+    ares poscil aamp, acps [, ifn, iphs]
+    ares poscil aamp, kcps [, ifn, iphs]
+    ares poscil kamp, acps [, ifn, iphs]
+    ares poscil kamp, kcps [, ifn, iphs]
+    ires poscil kamp, kcps [, ifn, iphs]
+    kres poscil kamp, kcps [, ifn, iphs]
+    ```
 
-ares = poscil(aamp, acps [, ifn, iphs])
-ares = poscil(aamp, kcps [, ifn, iphs])
-ares = poscil(kamp, acps [, ifn, iphs])
-ares = poscil(kamp, kcps [, ifn, iphs])
-ires = poscil(kamp, kcps [, ifn, iphs])
-kres = poscil(kamp, kcps [, ifn, iphs])
-
-```
+=== "Modern"
+    ``` csound-orc
+    ares = poscil(aamp, acps [, ifn, iphs])
+    ares = poscil(aamp, kcps [, ifn, iphs])
+    ares = poscil(kamp, acps [, ifn, iphs])
+    ares = poscil(kamp, kcps [, ifn, iphs])
+    ires = poscil(kamp, kcps [, ifn, iphs])
+    kres = poscil(kamp, kcps [, ifn, iphs])
+    ```
 
 ### Initialization
 
