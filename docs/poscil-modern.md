@@ -6,16 +6,6 @@ category:Signal Generators:Basic Oscillators
 High precision oscillator.
 
 ## Syntax
-=== "Classic"
-    ``` csound-orc
-    ares poscil aamp, acps [, ifn, iphs]
-    ares poscil aamp, kcps [, ifn, iphs]
-    ares poscil kamp, acps [, ifn, iphs]
-    ares poscil kamp, kcps [, ifn, iphs]
-    ires poscil kamp, kcps [, ifn, iphs]
-    kres poscil kamp, kcps [, ifn, iphs]
-    ```
-
 === "Modern"
     ``` csound-orc
     ares = poscil(aamp, acps [, ifn, iphs])
@@ -24,6 +14,16 @@ High precision oscillator.
     ares = poscil(kamp, kcps [, ifn, iphs])
     ires = poscil(kamp, kcps [, ifn, iphs])
     kres = poscil(kamp, kcps [, ifn, iphs])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares poscil aamp, acps [, ifn, iphs]
+    ares poscil aamp, kcps [, ifn, iphs]
+    ares poscil kamp, acps [, ifn, iphs]
+    ares poscil kamp, kcps [, ifn, iphs]
+    ires poscil kamp, kcps [, ifn, iphs]
+    kres poscil kamp, kcps [, ifn, iphs]
     ```
 
 ### Initialization
@@ -59,18 +59,18 @@ interpolation.
 
 ## Examples
 
-=== "Classic"
-    Here is an example of the poscil opcode. It uses the file [poscil.csd](examples/poscil.csd).
-
-    ``` csound-orc title="Example of the poscil opcode." linenums="1"
-    --8<-- "examples/poscil.csd"
-    ```
-
 === "Modern"
     Here is an example of the poscil opcode. It uses the file [poscil.csd](poscil-modern.csd).
 
     ``` csound-orc title="Example of the poscil opcode." linenums="1"
     --8<-- "poscil-modern.csd"
+    ```
+
+=== "Classic"
+    Here is an example of the poscil opcode. It uses the file [poscil.csd](examples/poscil.csd).
+
+    ``` csound-orc title="Example of the poscil opcode." linenums="1"
+    --8<-- "examples/poscil.csd"
     ```
 
 ## See also
