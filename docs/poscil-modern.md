@@ -56,11 +56,19 @@ interpolation.
 
 ## Examples
 
-Here is an example of the poscil opcode. It uses the file [poscil.csd](poscil-modern.csd).
+=== "Classic"
+    Here is an example of the poscil opcode. It uses the file [poscil.csd](examples/poscil.csd).
 
-``` csound-orc title="Example of the poscil opcode." linenums="1"
---8<-- "poscil-modern.csd"
-```
+    ``` csound-orc title="Example of the poscil opcode." linenums="1"
+    --8<-- "examples/poscil.csd"
+    ```
+
+=== "Modern"
+    Here is an example of the poscil opcode. It uses the file [poscil.csd](poscil-modern.csd).
+
+    ``` csound-orc title="Example of the poscil opcode." linenums="1"
+    --8<-- "poscil-modern.csd"
+    ```
 
 ## See also
 
