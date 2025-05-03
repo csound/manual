@@ -44,7 +44,7 @@ Then, if the teacher machine got IP address 192.168.1.19 for example, each stude
 
 ### Writing an opcode notice
 
-Here is an example of a notice written in markdown for an opcode named 'myocode':
+Here is an example of a notice written in markdown for an opcode named 'myopcode':
 
 ~~~markdown
 <!--
