@@ -461,7 +461,7 @@ Exits after printing version information.
 Write a WAV format soundfile.
 
 #### -x FILE, --extract-score=FILE
-Extract a portion of the sorted score, score.srt, using the extract file *FILE* (see [Extract](../../)).
+Extract a portion of the sorted score, score.srt, using the extract file *FILE* (see [Extract](../score/preproc.md#extract)).
 
 #### -Z, --dither
 Switch on dithering of audio conversion from internal floating point to 32, 16 and 8-bit formats.  The default form of the dither is triangular.

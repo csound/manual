@@ -501,7 +501,7 @@ Retains the sorted score file score.srt in a simple readable format upon exit.  
 An alternative form is to follow immediately with an = and a file name, to select where to write the score.
 
 #### -x FILE, --extract-score=FILE
-Extract a portion of the sorted score, score.srt, using the extract file *FILE* (see [Extract](../../)).
+Extract a portion of the sorted score, score.srt, using the extract file *FILE* (see [Extract](../score/preproc.md#extract)).
 
 #### -t0, --keep-sorted-score
 Prevents Csound from deleting the sorted score file, score.srt, upon exit.
