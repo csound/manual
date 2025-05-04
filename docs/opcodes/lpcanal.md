@@ -9,9 +9,9 @@ Two versions exist, one taking input from an audio signal, and the other from a 
 
 ## Syntax
 ``` csound-orc
-kCoef[],krms,kerr,kcps lpcanal asrc, kflg, kprd, isiz, iord [, iwin]
-kCoef[],krms,kerr,kcps lpcanal koff, kflg, ifn, isiz, iord [, iwin]
-iCoef[],irms,ierr,icps lpcanal ioff, iflg, ifn, isiz, iord [, iwin]
+kCoef[], krms, kerr, kcps lpcanal asrc, kflg, kprd, isiz, iord [, iwin]
+kCoef[], krms, kerr, kcps lpcanal koff, kflg, ifn, isiz, iord [, iwin]
+iCoef[], irms, ierr, icps lpcanal ioff, iflg, ifn, isiz, iord [, iwin]
 ```
 
 ### Initialization

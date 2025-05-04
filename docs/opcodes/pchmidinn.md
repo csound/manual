@@ -7,7 +7,7 @@ Converts a Midi note number value to octave point pitch-class units.
 
 ## Syntax
 ``` csound-orc
-pchmidinn (MidiNoteNumber)  (init- or control-rate args only)
+pchmidinn(MidiNoteNumber)  (init- or control-rate args only)
 ```
 
 where the argument within the parentheses may be a further expression.

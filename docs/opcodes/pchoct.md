@@ -7,7 +7,7 @@ Converts an octave-point-decimal value to pitch-class.
 
 ## Syntax
 ``` csound-orc
-pchoct (oct)  (init- or control-rate args only)
+pchoct(oct)  (init- or control-rate args only)
 ```
 
 where the argument within the parentheses may be a further expression.

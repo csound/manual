@@ -9,8 +9,8 @@ Plugin opcode in stackops.
 
 ## Syntax
 ``` csound-orc
-push  xval1, [xval2, ... , xval31]
-push  ival1, [ival2, ... , ival31]
+push xval1, [xval2, ... , xval31]
+push ival1, [ival2, ... , ival31]
 ```
 
 ### Initialization

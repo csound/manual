@@ -9,7 +9,7 @@ This opcode takes in a pvs signal in AMP_* format, applies the cepstrum transfor
 
 ## Syntax
 ``` csound-orc
-kCoef[], krms, kerr  pvscfs fsig, iord [, imod]
+kCoef[], krms, kerr pvscfs fsig, iord [, imod]
 ```
 
 ### Initialization

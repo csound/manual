@@ -13,7 +13,7 @@ The alwayson opcode is designed to simplify the definition of re-usable orchestr
 
 ## Syntax
 ``` csound-orc
-alwayson Tinstrument [p4, ..., pn]
+alwayson Tinstrument [, p4, ..., pn]
 ```
 
 ### Initialization

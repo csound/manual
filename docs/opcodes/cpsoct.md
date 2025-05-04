@@ -7,7 +7,7 @@ Converts an octave-point-decimal value to cycles-per-second.
 
 ## Syntax
 ``` csound-orc
-cpsoct (oct)  (no rate restriction)
+cpsoct(oct)  (no rate restriction)
 ```
 
 where the argument within the parentheses may be a further expression.

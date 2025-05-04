@@ -11,7 +11,6 @@ It works at k-time, a trigger controls when to print (use ktrig=1, which is the 
 
 ## Syntax
 ``` csound-orc
-
 ftprint ifn [, ktrig, kstart, kend, kstep, inumcols ]
 ```
 

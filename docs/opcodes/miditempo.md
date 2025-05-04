@@ -8,7 +8,7 @@ Returns the current tempo at k-rate, of either the MIDI file (if available) or t
 
 ## Syntax
 ``` csound-orc
-ksig  miditempo
+ksig miditempo
 ```
 
 ## Examples

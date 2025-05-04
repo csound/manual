@@ -7,7 +7,7 @@ Converts a Midi note number value to octave-point-decimal.
 
 ## Syntax
 ``` csound-orc
-octmidinn (MidiNoteNumber)  (init- or control-rate args only)
+octmidinn(MidiNoteNumber)  (init- or control-rate args only)
 ```
 
 where the argument within the parentheses may be a further expression.

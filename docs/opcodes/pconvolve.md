@@ -14,7 +14,7 @@ Compared to the [convolve](../opcodes/convolve.md) opcode, _pconvolve_ has these
 
 ## Syntax
 ``` csound-orc
-ar1 [, ar2] [, ar3] [, ar4] pconvolve ain, ifilcod [, ipartitionsize, ichannel]
+ar1 [, ar2 [, ar3 [, ar4]]] pconvolve ain, ifilcod [, ipartitionsize [, ichannel]]
 ```
 
 ### Initialization

@@ -9,8 +9,8 @@ The segments are delimited by two or more specified points. The entire envelope 
 
 ## Syntax
 ``` csound-orc
-ksig lpsholdp  kphase, kvalue0, ktime0  [, kvalue1] [, ktime1] \
-               [, kvalue2] [, ktime2] [...]
+ksig lpsholdp kphase, kvalue0, ktime0  [, kvalue1] [, ktime1] \
+              [, kvalue2] [, ktime2] [...]
 ```
 
 ### Performance

@@ -7,7 +7,7 @@ Vectorial envelope generator. Generate linear vectorial segments.
 
 ## Syntax
 ``` csound-orc
-vlinseg  ifnout, ielements, ifn1, idur1, ifn2 [, idur2, ifn3 [...]]
+vlinseg ifnout, ielements, ifn1, idur1, ifn2 [, idur2, ifn3 [...]]
 ```
 
 ### Initialization

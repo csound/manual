@@ -11,7 +11,7 @@ Creates 3D audio for two speakers. Output is binaural (headphone) 3D audio.
 
 ## Syntax
 ``` csound-orc
-aleft, aright hrtfer asig, kaz, kelev, &#8220;HRTFcompact&#8221;
+aleft, aright hrtfer asig, kaz, kelev, "HRTFcompact"
 ```
 
 ### Initialization

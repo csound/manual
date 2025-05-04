@@ -9,7 +9,7 @@ This opcode reads from a circular buffer of length ilen (secs), taking a handle 
 
 ## Syntax
 ``` csound-orc
-fsig pvsbufread2  ktime, khandle, ift1, ift2
+fsig pvsbufread2 ktime, khandle, ift1, ift2
 ```
 
 ### Initialization

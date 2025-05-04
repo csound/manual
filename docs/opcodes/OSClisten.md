@@ -14,7 +14,6 @@ On each k-cycle looks to see if an OSC message has been sent to a given path of 
 kans OSClisten ihandle, idest, itype [, xdata1, xdata2, ...]
 kans, kdata[] OSClisten ihandle, idest, itype
 kans, ... OSClisten idest, itype
-
 ```
 
 ### Initialization

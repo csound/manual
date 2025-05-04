@@ -9,7 +9,7 @@ Please note that this opcode is currently only supported on GNU/Linux .
 
 ## Syntax
 ``` csound-orc
-ktot[,kcpu1, kcpu2,...]cpumeter ifreq
+ktot[,kcpu1, kcpu2,...] cpumeter ifreq
 ```
 
 ### Initialization

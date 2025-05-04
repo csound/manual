@@ -7,8 +7,8 @@ Construction of looping operations.
 
 ## Syntax
 ``` csound-orc
-loop_le  indx, incr, imax, label
-loop_le  kndx, kncr, kmax, label
+loop_le indx, incr, imax, label
+loop_le kndx, kncr, kmax, label
 ```
 
 ### Initialization

@@ -7,7 +7,7 @@ Similar to [prints](../opcodes/prints.md) but prints to a file.
 
 ## Syntax
 ``` csound-orc
-fprints &quot;filename&quot;, &quot;string&quot; [, ival1] [, ival2] [...]
+fprints "filename", "string" [, ival1] [, ival2] [...]
 ```
 
 ### Initialization

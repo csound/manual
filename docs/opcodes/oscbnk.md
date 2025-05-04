@@ -13,10 +13,10 @@ The start phase and frequency of all oscillators and LFOs can be set by a built-
 
 ## Syntax
 ``` csound-orc
-ares oscbnk  kcps, kamd, kfmd, kpmd, iovrlap, iseed, kl1minf, kl1maxf, \
-             kl2minf, kl2maxf, ilfomode, keqminf, keqmaxf, keqminl, keqmaxl, \
-             keqminq, keqmaxq, ieqmode, kfn [, il1fn] [, il2fn] [, ieqffn]   \
-             [, ieqlfn] [, ieqqfn] [, itabl] [, ioutfn]
+ares oscbnk kcps, kamd, kfmd, kpmd, iovrlap, iseed, kl1minf, kl1maxf, \
+            kl2minf, kl2maxf, ilfomode, keqminf, keqmaxf, keqminl, keqmaxl, \
+            keqminq, keqmaxq, ieqmode, kfn [, il1fn] [, il2fn] [, ieqffn]   \
+            [, ieqlfn] [, ieqqfn] [, itabl] [, ioutfn]
 ```
 
 ### Initialization

@@ -7,7 +7,7 @@ Periodically writes an orchestra control-signal value to a named external file i
 
 ## Syntax
 ``` csound-orc
-dumpk  ksig, ifilname, iformat, iprd
+dumpk ksig, ifilname, iformat, iprd
 ```
 
 ### Initialization

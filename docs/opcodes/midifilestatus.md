@@ -9,7 +9,7 @@ Returns the current playback status at k-rate, of the input MIDI file, 1 if file
 
 ## Syntax
 ``` csound-orc
-ksig  midifilestatus
+ksig midifilestatus
 ```
 
 ## See also

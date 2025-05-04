@@ -9,7 +9,7 @@ Plugin opcode in stackops.
 
 ## Syntax
 ``` csound-orc
-push_f  fsig
+push_f fsig
 ```
 
 ### Performance

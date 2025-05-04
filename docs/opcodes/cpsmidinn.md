@@ -7,7 +7,7 @@ Converts a Midi note number value to cycles-per-second.
 
 ## Syntax
 ``` csound-orc
-cpsmidinn (MidiNoteNumber)  (init- or control-rate args only)
+cpsmidinn(MidiNoteNumber)  (init- or control-rate args only)
 ```
 
 where the argument within the parentheses may be a further expression.

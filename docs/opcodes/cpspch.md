@@ -7,7 +7,7 @@ Converts a pitch-class value to cycles-per-second.
 
 ## Syntax
 ``` csound-orc
-cpspch (pch)  (init- or control-rate args only)
+cpspch(pch)  (init- or control-rate args only)
 ```
 
 where the argument within the parentheses may be a further expression.

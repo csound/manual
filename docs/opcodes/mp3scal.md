@@ -14,7 +14,7 @@ _mp3scal_ will also scale pitch, independently of frequency, using a transpositi
 ## Syntax
 ``` csound-orc
 asig, asig2, ktime mp3scal Sfile, ktimescal, kpitch, kamp \
-             [, iskip, ifftsize, idecim, ilock]
+                           [, iskip, ifftsize, idecim, ilock]
 
 ```
 

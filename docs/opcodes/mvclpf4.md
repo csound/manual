@@ -9,7 +9,7 @@ Mvclpf4 is an digital implementation of the 4th-order (24 dB/oct) Moog ladder fi
 
 ## Syntax
 ``` csound-orc
-asig1,asig2,asig3,asig4 mvclpf4 ain, xcf, xres[, istor]
+asig1, asig2, asig3, asig4 mvclpf4 ain, xcf, xres[, istor]
 ```
 
 ### Initialization

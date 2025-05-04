@@ -9,8 +9,8 @@ Generate control signal consisiting of linear segments delimited by two or more 
 
 ## Syntax
 ``` csound-orc
-ksig loopsegp  kphase, kvalue0, kdur0, kvalue1 \
-               [, kdur1, ... , kdurN-1, kvalueN]
+ksig loopsegp kphase, kvalue0, kdur0, kvalue1 \
+              [, kdur1, ... , kdurN-1, kvalueN]
 ```
 
 ### Performance

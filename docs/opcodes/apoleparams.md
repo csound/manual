@@ -9,7 +9,7 @@ This opcode takes an array of allpole filter coefficients and produces an array 
 
 ## Syntax
 ``` csound-orc
-kPar[]apoleparams kCoef[]
+kPar[] apoleparams kCoef[]
 ```
 
 ### Performance

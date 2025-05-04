@@ -7,7 +7,7 @@ Converts a cycles-per-second value to octave-point-decimal.
 
 ## Syntax
 ``` csound-orc
-octcps (cps)  (init- or control-rate args only)
+octcps(cps)  (init- or control-rate args only)
 ```
 
 where the argument within the parentheses may be a further expression.
