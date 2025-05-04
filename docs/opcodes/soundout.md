@@ -11,7 +11,7 @@ Deprecated. Writes audio output to a disk file.
 
 ## Syntax
 ``` csound-orc
-soundout  asig1, ifilcod [, iformat]
+soundout asig1, ifilcod [, iformat]
 ```
 
 ### Initialization

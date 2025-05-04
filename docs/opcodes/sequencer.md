@@ -10,7 +10,7 @@ Uses a collection of arrays to generate a sequence of events with variable tempo
 ## Syntax
 ``` csound-orc
 kres sequ irhythm[], iinstr[], idata[], kbpm, klen [, kmode] [, kstep] \
-           [, kreset] [, kverbose]
+          [, kreset] [, kverbose]
 kres sequ irhythm[], iinstr[], idata[][], kbpm, klen [, kmode] [, kstep] \
           [, kreset] [, kverbose]
 ```

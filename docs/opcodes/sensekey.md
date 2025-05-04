@@ -7,7 +7,7 @@ Returns the ASCII code of a key that has been pressed, or -1 if no key has been 
 
 ## Syntax
 ``` csound-orc
-kres[, kkeydown] sensekey
+kres [, kkeydown] sensekey
 ```
 
 ### Performance

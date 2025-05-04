@@ -7,7 +7,7 @@ A resonant second order filter, with simultaneous lowpass, highpass and bandpass
 
 ## Syntax
 ``` csound-orc
-alow, ahigh, aband svfilter  asig, kcf, kq [, iscl] [, iskip]
+alow, ahigh, aband svfilter asig, kcf, kq [, iscl] [, iskip]
 ```
 
 ### Initialization

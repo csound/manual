@@ -9,7 +9,7 @@ Plugin opcode in stackops.
 
 ## Syntax
 ``` csound-orc
-stack  iStackSize
+stack iStackSize
 ```
 
 ### Initialization
