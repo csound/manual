@@ -8,9 +8,15 @@ Generate audio output using scanned synthesis.
 Plugin opcode in scansyn.
 
 ## Syntax
-``` csound-orc
-ares scans kamp, kfreq, ifn, id [, iorder]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = scans(kamp, kfreq, ifn, id [, iorder])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares scans kamp, kfreq, ifn, id [, iorder]
+    ```
 
 ### Initialization
 

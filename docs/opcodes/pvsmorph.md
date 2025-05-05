@@ -6,9 +6,15 @@ category:Spectral Processing:Streaming
 Performs morphing (or interpolation) between two source fsigs.
 
 ## Syntax
-``` csound-orc
-fsig pvsmorph fsig1, fsig2, kampint, kfrqint
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvsmorph(fsig1, fsig2, kampint, kfrqint)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvsmorph fsig1, fsig2, kampint, kfrqint
+    ```
 
 ### Performance
 

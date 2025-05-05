@@ -6,9 +6,15 @@ category:Signal I/O:Signal Output
 Writes samples to stereo channel 1 of an external device or stream.
 
 ## Syntax
-``` csound-orc
-outs1 asig
-```
+=== "Modern"
+    ``` csound-orc
+    outs1(asig)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    outs1 asig
+    ```
 
 ### Performance
 

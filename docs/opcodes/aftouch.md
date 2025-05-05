@@ -6,9 +6,15 @@ category:Real-time MIDI:Input
 Get the current after-touch value for this channel.
 
 ## Syntax
-``` csound-orc
-kaft aftouch [imin] [, imax]
-```
+=== "Modern"
+    ``` csound-orc
+    kaft = aftouch([imin] [, imax])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kaft aftouch [imin] [, imax]
+    ```
 
 ### Initialization
 

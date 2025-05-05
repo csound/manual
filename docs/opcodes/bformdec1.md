@@ -6,17 +6,31 @@ category:Signal Modifiers:Panning and Spatialization
 Decodes an ambisonic B format signal into loudspeaker specific signals.
 
 ## Syntax
-``` csound-orc
-ao1, ao2 bformdec1 isetup, aw, ax, ay, az [, ar, as, at, au, av \
-    [, abk, al, am, an, ao, ap, aq]]
-ao1, ao2, ao3, ao4 bformdec1 isetup, aw, ax, ay, az [, ar, as, at, au, av \
-    [, abk, al, am, an, ao, ap, aq]]
-ao1, ao2, ao3, ao4, ao5 bformdec1 isetup, aw, ax, ay, az [, ar, as, at, au, av \
-    [, abk, al, am, an, ao, ap, aq]]
-ao1, ao2, ao3, ao4, ao5, ao6, ao7, ao8 bformdec1 isetup, aw, ax, ay, az \
-    [, ar, as, at, au, av [, abk, al, am, an, ao, ap, aq]]
-aout[] bformdec1 isetup, abform[]
-```
+=== "Modern"
+    ``` csound-orc
+    ao1, ao2 = bformdec1(isetup, aw, ax, ay, az [, ar, as, at, au, av \
+          [, abk, al, am, an, ao, ap, aq]])
+    ao1, ao2, ao3, ao4 = bformdec1(isetup, aw, ax, ay, az [, ar, as, at, au, av \
+          [, abk, al, am, an, ao, ap, aq]])
+    ao1, ao2, ao3, ao4, ao5 = bformdec1(isetup, aw, ax, ay, az [, ar, as, at, au, av \
+          [, abk, al, am, an, ao, ap, aq]])
+    ao1, ao2, ao3, ao4, ao5, ao6, ao7, ao8 = bformdec1(isetup, aw, ax, ay, az \
+          [, ar, as, at, au, av [, abk, al, am, an, ao, ap, aq]])
+    aout[] = bformdec1(isetup, abform[])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ao1, ao2 bformdec1 isetup, aw, ax, ay, az [, ar, as, at, au, av \
+        [, abk, al, am, an, ao, ap, aq]]
+    ao1, ao2, ao3, ao4 bformdec1 isetup, aw, ax, ay, az [, ar, as, at, au, av \
+        [, abk, al, am, an, ao, ap, aq]]
+    ao1, ao2, ao3, ao4, ao5 bformdec1 isetup, aw, ax, ay, az [, ar, as, at, au, av \
+        [, abk, al, am, an, ao, ap, aq]]
+    ao1, ao2, ao3, ao4, ao5, ao6, ao7, ao8 bformdec1 isetup, aw, ax, ay, az \
+        [, ar, as, at, au, av [, abk, al, am, an, ao, ap, aq]]
+    aout[] bformdec1 isetup, abform[]
+    ```
 
 ### Initialization
 

@@ -8,9 +8,15 @@ Read a selected channel from a PVOC-EX analysis file.
 Create an fsig stream by reading a selected channel from a PVOC-EX analysis file loaded into memory, with frame interpolation. Only format 0 files (amplitude+frequency) are currently supported. The operation of this opcode mirrors that of pvoc, but outputs an fsig instead of a resynthesized signal.
 
 ## Syntax
-``` csound-orc
-fsig pvsfread ktimpt, ifn [, ichan]
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvsfread(ktimpt, ifn [, ichan])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvsfread ktimpt, ifn [, ichan]
+    ```
 
 ### Initialization
 

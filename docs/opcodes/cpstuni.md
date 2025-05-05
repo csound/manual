@@ -6,9 +6,15 @@ category:Pitch Converters:Tuning Opcodes
 Returns micro-tuning values at init-rate.
 
 ## Syntax
-``` csound-orc
-icps cpstuni index, ifn
-```
+=== "Modern"
+    ``` csound-orc
+    icps = cpstuni(index, ifn)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    icps cpstuni index, ifn
+    ```
 
 ### Initialization
 

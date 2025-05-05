@@ -8,9 +8,15 @@ Outputs _partikkel_'s grain scheduler clock pulse and phase to synchronize sever
 _partikkelsync_ is an opcode for outputting [partikkel](../opcodes/partikkel.md)'s grain scheduler clock pulse and phase. _partikkelsync_'s output can be used to synchronize other instances of the [partikkel](../opcodes/partikkel.md) opcode to the same clock.
 
 ## Syntax
-``` csound-orc
-async [,aphase] partikkelsync iopcode_id
-```
+=== "Modern"
+    ``` csound-orc
+    async [,aphase] = partikkelsync(iopcode_id)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    async [,aphase] partikkelsync iopcode_id
+    ```
 
 ### Initialization
 

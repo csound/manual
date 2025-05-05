@@ -8,11 +8,19 @@ Poisson distribution random number generator (positive values only).
 This is an x-class noise generator.
 
 ## Syntax
-``` csound-orc
-ares poisson klambda
-ires poisson klambda
-kres poisson klambda
-```
+=== "Modern"
+    ``` csound-orc
+    ares = poisson(klambda)
+    ires = poisson(klambda)
+    kres = poisson(klambda)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares poisson klambda
+    ires poisson klambda
+    kres poisson klambda
+    ```
 
 ### Performance
 

@@ -8,9 +8,15 @@ Accumulates the maximum value of audio signals.
 _maxaccum_ compares two audio-rate variables and stores the maximum value between them into the first.
 
 ## Syntax
-``` csound-orc
-maxaccum aAccumulator, aInput
-```
+=== "Modern"
+    ``` csound-orc
+    maxaccum(aAccumulator, aInput)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    maxaccum aAccumulator, aInput
+    ```
 
 ### Performance
 

@@ -6,9 +6,15 @@ category:Vectorial:Vectorial operations
 Performs mutiplication between two vectorial control signals.
 
 ## Syntax
-``` csound-orc
-vmultv ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [,kverbose]
-```
+=== "Modern"
+    ``` csound-orc
+    vmultv(ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [,kverbose])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vmultv ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [,kverbose]
+    ```
 
 ### Initialization
 

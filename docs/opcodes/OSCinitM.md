@@ -7,9 +7,15 @@ Start a multicast listening process to a particular port, which can be used by O
 
 Plugin opcode in osc.
 ## Syntax
-``` csound-orc
-ihandle OSCinitM Sgroup, iport
-```
+=== "Modern"
+    ``` csound-orc
+    ihandle = OSCinitM(Sgroup, iport)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ihandle OSCinitM Sgroup, iport
+    ```
 
 ### Initialization
 

@@ -10,9 +10,15 @@ Reads six-channel audio data from an external device or stream.
 > This opcode is designed to be used only with orchestras that have nchnls_i=6. Doing so with orchestras with nchnls_i &gt; 6 will cause incorrect audio input.
 
 ## Syntax
-``` csound-orc
-ar1, ar2, ar3, ar4, ar5, ar6 inh
-```
+=== "Modern"
+    ``` csound-orc
+    ar1, ar2, ar3, ar4, ar5, ar6 = inh()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar1, ar2, ar3, ar4, ar5, ar6 inh
+    ```
 
 ### Performance
 

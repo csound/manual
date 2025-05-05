@@ -6,10 +6,17 @@ category:Signal Generators:Random (Noise) Generators
 Generates random impulses from 0 to 1.
 
 ## Syntax
-``` csound-orc
-ares dust kamp, kdensity
-kres dust kamp, kdensity
-```
+=== "Modern"
+    ``` csound-orc
+    ares = dust(kamp, kdensity)
+    kres = dust(kamp, kdensity)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares dust kamp, kdensity
+    kres dust kamp, kdensity
+    ```
 
 ### Performance
 

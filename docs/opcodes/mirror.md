@@ -6,11 +6,19 @@ category:Signal Modifiers:Signal Limiters
 Reflects the signal that exceeds the low and high thresholds.
 
 ## Syntax
-``` csound-orc
-ares mirror asig, klow, khigh
-ires mirror isig, ilow, ihigh
-kres mirror ksig, klow, khigh
-```
+=== "Modern"
+    ``` csound-orc
+    ares = mirror(asig, klow, khigh)
+    ires = mirror(isig, ilow, ihigh)
+    kres = mirror(ksig, klow, khigh)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares mirror asig, klow, khigh
+    ires mirror isig, ilow, ihigh
+    kres mirror ksig, klow, khigh
+    ```
 
 ### Initialization
 

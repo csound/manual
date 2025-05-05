@@ -8,9 +8,15 @@ Clears a number of audio output channel of the named software bus.
 Implies declaring the channel with _imode_=2 (see also [chn_a](../opcodes/chn.md)).
 
 ## Syntax
-``` csound-orc
-chnclear Sname1[, Sname2,...]
-```
+=== "Modern"
+    ``` csound-orc
+    chnclear(Sname1[, Sname2,...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    chnclear Sname1[, Sname2,...]
+    ```
 
 ### Initialization
 

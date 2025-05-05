@@ -10,10 +10,17 @@ Applies an envelope consisting of 3 segments.
 3.  exponential decay
 
 ## Syntax
-``` csound-orc
-ares envlpx xamp, irise, idur, idec, ifn, iatss, iatdec [, ixmod]
-kres envlpx kamp, irise, idur, idec, ifn, iatss, iatdec [, ixmod]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = envlpx(xamp, irise, idur, idec, ifn, iatss, iatdec [, ixmod])
+    kres = envlpx(kamp, irise, idur, idec, ifn, iatss, iatdec [, ixmod])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares envlpx xamp, irise, idur, idec, ifn, iatss, iatdec [, ixmod]
+    kres envlpx kamp, irise, idur, idec, ifn, iatss, iatdec [, ixmod]
+    ```
 
 ### Initialization
 

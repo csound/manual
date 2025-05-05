@@ -6,9 +6,15 @@ category:Signal Modifiers:Standard Filters:Resonant
 A bank of filters in which the cutoff frequency can be separated under user control.
 
 ## Syntax
-``` csound-orc
-ares vlowres asig, kfco, kres, iord, ksep
-```
+=== "Modern"
+    ``` csound-orc
+    ares = vlowres(asig, kfco, kres, iord, ksep)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares vlowres asig, kfco, kres, iord, ksep
+    ```
 
 ### Initialization
 

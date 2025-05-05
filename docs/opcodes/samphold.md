@@ -6,10 +6,17 @@ category:Signal Modifiers:Sample Level Operators
 Performs a sample-and-hold operation on its input.
 
 ## Syntax
-``` csound-orc
-ares samphold asig, agate [, ival] [, ivstor]
-kres samphold ksig, kgate [, ival] [, ivstor]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = samphold(asig, agate [, ival] [, ivstor])
+    kres = samphold(ksig, kgate [, ival] [, ivstor])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares samphold asig, agate [, ival] [, ivstor]
+    kres samphold ksig, kgate [, ival] [, ivstor]
+    ```
 
 ### Initialization
 

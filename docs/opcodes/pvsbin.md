@@ -6,9 +6,15 @@ category:Spectral Processing:Streaming
 Obtain the amp and freq values off a PVS signal bin as k-rate variables.
 
 ## Syntax
-``` csound-orc
-kamp, kfr pvsbin fsig, kbin
-```
+=== "Modern"
+    ``` csound-orc
+    kamp, kfr = pvsbin(fsig, kbin)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kamp, kfr pvsbin fsig, kbin
+    ```
 
 ### Performance
 

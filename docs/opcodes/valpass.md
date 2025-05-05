@@ -6,9 +6,15 @@ category:Signal Modifiers:Reverberation
 Variably reverberates an input signal with a flat frequency response.
 
 ## Syntax
-``` csound-orc
-ares valpass asig, krvt, xlpt, imaxlpt [, iskip] [, insmps]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = valpass(asig, krvt, xlpt, imaxlpt [, iskip] [, insmps])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares valpass asig, krvt, xlpt, imaxlpt [, iskip] [, insmps]
+    ```
 
 ### Initialization
 

@@ -9,14 +9,25 @@ _poscil3_ (precise oscillator) is the same as [oscil3](../opcodes/oscil3.md), bu
 always employs floating-point table indexing, instead of integer math. It is only a bit slower than _oscil3_ when reading power-two size tables.
 
 ## Syntax
-``` csound-orc
-ares poscil3 aamp, acps [, ifn, iphs]
-ares poscil3 aamp, kcps [, ifn, iphs]
-ares poscil3 kamp, acps [, ifn, iphs]
-ares poscil3 kamp, kcps [, ifn, iphs]
-ires poscil3 kamp, kcps [, ifn, iphs]
-kres poscil3 kamp, kcps [, ifn, iphs]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = poscil3(aamp, acps [, ifn, iphs])
+    ares = poscil3(aamp, kcps [, ifn, iphs])
+    ares = poscil3(kamp, acps [, ifn, iphs])
+    ares = poscil3(kamp, kcps [, ifn, iphs])
+    ires = poscil3(kamp, kcps [, ifn, iphs])
+    kres = poscil3(kamp, kcps [, ifn, iphs])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares poscil3 aamp, acps [, ifn, iphs]
+    ares poscil3 aamp, kcps [, ifn, iphs]
+    ares poscil3 kamp, acps [, ifn, iphs]
+    ares poscil3 kamp, kcps [, ifn, iphs]
+    ires poscil3 kamp, kcps [, ifn, iphs]
+    kres poscil3 kamp, kcps [, ifn, iphs]
+    ```
 
 ### Initialization
 

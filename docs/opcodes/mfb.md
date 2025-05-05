@@ -8,9 +8,15 @@ Mel scale filterbank for spectral magnitudes.
 Applies a Mel scale filterbank to an array containing a series of magnitude bins.
 
 ## Syntax
-``` csound-orc
-kout[] mfb kin[], klow, khigh, ibands
-```
+=== "Modern"
+    ``` csound-orc
+    kout[] = mfb(kin[], klow, khigh, ibands)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kout[] mfb kin[], klow, khigh, ibands
+    ```
 
 ### Initialization
 

@@ -8,9 +8,15 @@ Generates dynamic 3d binaural audio for headphones using magnitude interpolation
 This opcode takes a source signal and spatialises it in the 3 dimensional space around a listener by convolving the source with stored head related transfer function (HRTF) based filters.
 
 ## Syntax
-``` csound-orc
-aleft, aright hrtfmove asrc, kAz, kElev, ifilel, ifiler [, imode, ifade, isr]
-```
+=== "Modern"
+    ``` csound-orc
+    aleft, aright = hrtfmove(asrc, kAz, kElev, ifilel, ifiler [, imode, ifade, isr])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aleft, aright hrtfmove asrc, kAz, kElev, ifilel, ifiler [, imode, ifade, isr]
+    ```
 
 ### Initialization
 

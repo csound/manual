@@ -10,14 +10,25 @@ This opcode essentially nests the [hrtfmove](../opcodes/hrtfmove.md) opcode in a
 Although valid as a stand alone opcode, _hrtfearly_ is designed to work with [hrtfreverb](../opcodes/hrtfreverb.md) to provide spatially accurate, dynamic binaural reverberation. A number of sources can be processed dynamically using a number of _hrtfearly_ instances. All can then be processed with one instance of [hrtfreverb](../opcodes/hrtfreverb.md).
 
 ## Syntax
-``` csound-orc
-aleft, aright, irt60low, irt60high, imfp hrtfearly asrc, ksrcx, ksrcy, ksrcz, \
-    klstnrx, klstnry, klstnrz, ifilel, ifiler, idefroom [,ifade, isr, iorder, \
-    ithreed, kheadrot, iroomx, iroomy, iroomz, iwallhigh, iwalllow, \
-    iwallgain1, iwallgain2, iwallgain3, ifloorhigh, ifloorlow, ifloorgain1, \
-    ifloorgain2, ifloorgain3, iceilinghigh, iceilinglow, iceilinggain1, \
-    iceilinggain2, iceilinggain3]
-```
+=== "Modern"
+    ``` csound-orc
+    aleft, aright, irt60low, irt60high, imfp = hrtfearly(asrc, ksrcx, ksrcy, ksrcz, \
+          klstnrx, klstnry, klstnrz, ifilel, ifiler, idefroom [,ifade, isr, iorder, \
+          ithreed, kheadrot, iroomx, iroomy, iroomz, iwallhigh, iwalllow, \
+          iwallgain1, iwallgain2, iwallgain3, ifloorhigh, ifloorlow, ifloorgain1, \
+          ifloorgain2, ifloorgain3, iceilinghigh, iceilinglow, iceilinggain1, \
+          iceilinggain2, iceilinggain3])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aleft, aright, irt60low, irt60high, imfp hrtfearly asrc, ksrcx, ksrcy, ksrcz, \
+        klstnrx, klstnry, klstnrz, ifilel, ifiler, idefroom [,ifade, isr, iorder, \
+        ithreed, kheadrot, iroomx, iroomy, iroomz, iwallhigh, iwalllow, \
+        iwallgain1, iwallgain2, iwallgain3, ifloorhigh, ifloorlow, ifloorgain1, \
+        ifloorgain2, ifloorgain3, iceilinghigh, iceilinglow, iceilinggain1, \
+        iceilinggain2, iceilinggain3]
+    ```
 
 ### Initialization
 

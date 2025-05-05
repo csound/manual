@@ -8,9 +8,15 @@ Convert Ssrc to lower case, and write the result to Sdst.
 _strlower_ runs at init time only.
 
 ## Syntax
-``` csound-orc
-Sdst strlower Ssrc
-```
+=== "Modern"
+    ``` csound-orc
+    Sdst = strlower(Ssrc)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    Sdst strlower Ssrc
+    ```
 
 ## Examples
 

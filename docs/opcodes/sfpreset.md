@@ -10,9 +10,15 @@ These opcodes allow management the sample-structure of SF2 files. In order to un
 _sfpreset_ should be placed in the header section of a Csound orchestra.
 
 ## Syntax
-``` csound-orc
-ir sfpreset iprog, ibank, ifilhandle, ipreindex
-```
+=== "Modern"
+    ``` csound-orc
+    ir = sfpreset(iprog, ibank, ifilhandle, ipreindex)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ir sfpreset iprog, ibank, ifilhandle, ipreindex
+    ```
 
 ### Initialization
 

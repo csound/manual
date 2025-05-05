@@ -8,10 +8,17 @@ Delays an input signal by some time interval.
 k-rate delay opcodes
 
 ## Syntax
-``` csound-orc
-kr delayk   ksig, idel[, imode]
-kr vdel_k   ksig, kdel, imdel[, imode]
-```
+=== "Modern"
+    ``` csound-orc
+    kr = delayk(ksig, idel[, imode])
+    kr = vdel_k(ksig, kdel, imdel[, imode])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kr delayk ksig, idel[, imode]
+    kr vdel_k ksig, kdel, imdel[, imode]
+    ```
 
 ### Initialization
 

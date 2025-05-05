@@ -6,9 +6,15 @@ category:Array Opcodes
 The _copyf2array_ opcode takes an f-table and copies the contents to a t-var.
 
 ## Syntax
-``` csound-orc
-copyf2array tab, kftbl
-```
+=== "Modern"
+    ``` csound-orc
+    copyf2array(tab, kftbl)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    copyf2array tab, kftbl
+    ```
 
 ### Performance
 

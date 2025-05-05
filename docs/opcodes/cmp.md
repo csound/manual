@@ -26,13 +26,23 @@ kOut[] cmp 0.5, "<", kIn[], "<=", 1
 ```
 
 ## Syntax
-``` csound-orc
-aout cmp a1, S_operator, a2
-aout cmp a1, S_operator, kb
-kOut[] cmp kA[], S_operator, kb
-kOut[] cmp kA[], S_operator, kB[]
-kOut[] cmp k1, S_operator1, kIn[], S_operator2, k2
-```
+=== "Modern"
+    ``` csound-orc
+    aout = cmp(a1, S_operator, a2)
+    aout = cmp(a1, S_operator, kb)
+    kOut[] = cmp(kA[], S_operator, kb)
+    kOut[] = cmp(kA[], S_operator, kB[])
+    kOut[] = cmp(k1, S_operator1, kIn[], S_operator2, k2)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout cmp a1, S_operator, a2
+    aout cmp a1, S_operator, kb
+    kOut[] cmp kA[], S_operator, kb
+    kOut[] cmp kA[], S_operator, kB[]
+    kOut[] cmp k1, S_operator1, kIn[], S_operator2, k2
+    ```
 
 ### Initialization
 

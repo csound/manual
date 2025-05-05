@@ -10,9 +10,15 @@ The _paulstretch_ opcode is a lightweight implementation of the PaulStretch time
 The Paulstretch algorithm works very similarly to other STFT-based timestretching methods, using overlap-add with a hanning window. Unique to paulstretch are the use of scrambled phase and very large window sizes (specified in seconds).
 
 ## Syntax
-``` csound-orc
-asig paulstretch istretch, iwindowsize, ift
-```
+=== "Modern"
+    ``` csound-orc
+    asig = paulstretch(istretch, iwindowsize, ift)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig paulstretch istretch, iwindowsize, ift
+    ```
 
 ### Initialization
 

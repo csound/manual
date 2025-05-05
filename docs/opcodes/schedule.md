@@ -6,11 +6,19 @@ category:Instrument Control:Invocation
 Adds a new score event.
 
 ## Syntax
-``` csound-orc
-schedule insnum, iwhen, idur [, ip4] [, ip5] [...]
-schedule "insname", iwhen, idur [, ip4] [, ip5] [...]
-schedule iPar[]
-```
+=== "Modern"
+    ``` csound-orc
+    schedule(insnum, iwhen, idur [, ip4] [, ip5] [...])
+    schedule("insname", iwhen, idur [, ip4] [, ip5] [...])
+    schedule(iPar[])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    schedule insnum, iwhen, idur [, ip4] [, ip5] [...]
+    schedule "insname", iwhen, idur [, ip4] [, ip5] [...]
+    schedule iPar[]
+    ```
 
 ### Initialization
 

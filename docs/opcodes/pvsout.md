@@ -8,9 +8,15 @@ Write a fsig to the pvs output bus.
 This opcode writes a fsig to a channel of the pvs output bus. Note that the pvs out bus and the pvs in bus are separate and independent. A new channel is created if non-existent.
 
 ## Syntax
-``` csound-orc
-pvsout fsig, kchan
-```
+=== "Modern"
+    ``` csound-orc
+    pvsout(fsig, kchan)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    pvsout fsig, kchan
+    ```
 
 ### Performance
 

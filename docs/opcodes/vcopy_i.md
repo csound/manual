@@ -6,9 +6,15 @@ category:Vectorial:Vectorial operations
 Copies a vector from one table to another.
 
 ## Syntax
-``` csound-orc
-vcopy_i ifn1, ifn2, ielements [,idstoffset, isrcoffset]
-```
+=== "Modern"
+    ``` csound-orc
+    vcopy_i(ifn1, ifn2, ielements [,idstoffset, isrcoffset])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vcopy_i ifn1, ifn2, ielements [,idstoffset, isrcoffset]
+    ```
 
 ### Initialization
 

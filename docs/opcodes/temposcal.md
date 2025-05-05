@@ -12,9 +12,15 @@ This opcode allows for time and frequency-independent scaling. Time is advanced 
 _temposcal_ will also scale pitch, independently of frequency, using a transposition factor (k-rate).
 
 ## Syntax
-``` csound-orc
-asig temposcal ktimescal, kamp, kpitch, ktab, klock [,ifftsize, idecim, ithresh]
-```
+=== "Modern"
+    ``` csound-orc
+    asig = temposcal(ktimescal, kamp, kpitch, ktab, klock [,ifftsize, idecim, ithresh])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig temposcal ktimescal, kamp, kpitch, ktab, klock [,ifftsize, idecim, ithresh]
+    ```
 
 ### Initialization
 

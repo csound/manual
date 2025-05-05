@@ -6,9 +6,15 @@ category:Instrument Control:Initialization and Reinitialization
 Returns the number of a named instrument.
 
 ## Syntax
-``` csound-orc
-insno nstrnum "name"
-```
+=== "Modern"
+    ``` csound-orc
+    insno = nstrnum("name")
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    insno nstrnum "name"
+    ```
 
 ### Initialization
 

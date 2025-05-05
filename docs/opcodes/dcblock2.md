@@ -6,9 +6,15 @@ category:Signal Modifiers:Specialized Filters
 Implements a DC blocking filter with improved DC attenuation.
 
 ## Syntax
-``` csound-orc
-ares dcblock2 ain [, iorder] [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = dcblock2(ain [, iorder] [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares dcblock2 ain [, iorder] [, iskip]
+    ```
 
 ### Initialization
 

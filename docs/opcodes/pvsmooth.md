@@ -10,9 +10,15 @@ Smooth the amplitude and frequency time functions of a pv stream using a 1st ord
 These are filters applied to control signals so the effect is basically blurring the spectral evolution. The effects produced are more or less similar to _pvsblur_, but with two important differences: 1.smoothing of amplitudes and frequencies use separate sets of filters; and 2. there is no increase in computational cost when higher amounts of blurring' (smoothing) are desired.
 
 ## Syntax
-``` csound-orc
-fsig pvsmooth fsigin, kacf, kfcf
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvsmooth(fsigin, kacf, kfcf)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvsmooth fsigin, kacf, kfcf
+    ```
 
 ### Performance
 

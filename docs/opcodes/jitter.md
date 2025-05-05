@@ -6,9 +6,15 @@ category:Signal Generators:Random (Noise) Generators
 Generates a segmented line whose segments are randomly generated.
 
 ## Syntax
-``` csound-orc
-kout jitter kamp, kcpsMin, kcpsMax
-```
+=== "Modern"
+    ``` csound-orc
+    kout = jitter(kamp, kcpsMin, kcpsMax)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kout jitter kamp, kcpsMin, kcpsMax
+    ```
 
 ### Performance
 

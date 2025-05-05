@@ -6,11 +6,19 @@ category:Signal Generators:Random (Noise) Generators
 Generates a controlled pseudo-random number series between min and max values.
 
 ## Syntax
-``` csound-orc
-ares random kmin, kmax
-ires random imin, imax
-kres random kmin, kmax
-```
+=== "Modern"
+    ``` csound-orc
+    ares = random(kmin, kmax)
+    ires = random(imin, imax)
+    kres = random(kmin, kmax)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares random kmin, kmax
+    ires random imin, imax
+    kres random kmin, kmax
+    ```
 
 ### Initialization
 

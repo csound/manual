@@ -8,12 +8,21 @@ Dynamic stochastic approach to waveform synthesis using cubic interpolation.
 Implementation with cubic interpolation of the _Génération Dynamique Stochastique_ (GENDYN), a dynamic stochastic approach to waveform synthesis conceived by Iannis Xenakis.
 
 ## Syntax
-``` csound-orc
-ares gendyc kamp, kampdist, kdurdist, kadpar, kddpar, kminfreq, kmaxfreq, \
-            kampscl, kdurscl [, initcps] [, knum]
-kres gendyc kamp, kampdist, kdurdist, kadpar, kddpar, kminfreq, kmaxfreq, \
-            kampscl, kdurscl [, initcps] [, knum]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = gendyc(kamp, kampdist, kdurdist, kadpar, kddpar, kminfreq, kmaxfreq, \
+                  kampscl, kdurscl [, initcps] [, knum])
+    kres = gendyc(kamp, kampdist, kdurdist, kadpar, kddpar, kminfreq, kmaxfreq, \
+                  kampscl, kdurscl [, initcps] [, knum])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares gendyc kamp, kampdist, kdurdist, kadpar, kddpar, kminfreq, kmaxfreq, \
+                kampscl, kdurscl [, initcps] [, knum]
+    kres gendyc kamp, kampdist, kdurdist, kadpar, kddpar, kminfreq, kmaxfreq, \
+                kampscl, kdurscl [, initcps] [, knum]
+    ```
 
 ### Initialization
 

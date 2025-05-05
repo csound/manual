@@ -6,9 +6,15 @@ category:Instrument Control:Sensing and Control
 Rewinds the playback position of the current score performance.
 
 ## Syntax
-``` csound-orc
-rewindscore
-```
+=== "Modern"
+    ``` csound-orc
+    rewindscore()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    rewindscore
+    ```
 
 ## Examples
 

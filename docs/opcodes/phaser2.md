@@ -6,9 +6,15 @@ category:Signal Modifiers:Special Effects
 Second-order allpass filters arranged in a series.
 
 ## Syntax
-``` csound-orc
-ares phaser2 asig, kfreq, kq, kord, kmode, ksep, kfeedback
-```
+=== "Modern"
+    ``` csound-orc
+    ares = phaser2(asig, kfreq, kq, kord, kmode, ksep, kfeedback)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares phaser2 asig, kfreq, kq, kord, kmode, ksep, kfeedback
+    ```
 
 ### Performance
 

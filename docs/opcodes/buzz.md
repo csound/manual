@@ -6,9 +6,15 @@ category:Signal Generators:Dynamic Spectrum Oscillators
 Output is a set of harmonically related sine partials.
 
 ## Syntax
-``` csound-orc
-ares buzz xamp, xcps, knh, ifn [, iphs]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = buzz(xamp, xcps, knh, ifn [, iphs])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares buzz xamp, xcps, knh, ifn [, iphs]
+    ```
 
 ### Initialization
 

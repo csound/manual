@@ -10,10 +10,17 @@ Plugin opcode in system_call.
 _system_ and _system_i_ call any external command understood by the operating system, similarly to the C function `system()`. _system_i_ runs at i-time only, while _system_ runs both at initialization and performance time.
 
 ## Syntax
-``` csound-orc
-ires system_i itrig, Scmd, [inowait]
-kres system ktrig, Scmd, [knowait]
-```
+=== "Modern"
+    ``` csound-orc
+    ires = system_i(itrig, Scmd, [inowait])
+    kres = system(ktrig, Scmd, [knowait])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ires system_i itrig, Scmd, [inowait]
+    kres system ktrig, Scmd, [knowait]
+    ```
 
 ### Initialization
 

@@ -8,9 +8,15 @@ Can be used to render an impulse response for a 3D space at i-time.
 This opcode positions the input sound in a 3D space, with optional simulation of room acoustics, in various output formats. _spat3dt_ can be used to render the impulse response at i-time, storing output in a function table, suitable for convolution.
 
 ## Syntax
-``` csound-orc
-spat3dt ioutft, iX, iY, iZ, idist, ift, imode, irlen [, iftnocl]
-```
+=== "Modern"
+    ``` csound-orc
+    spat3dt(ioutft, iX, iY, iZ, idist, ift, imode, irlen [, iftnocl])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    spat3dt ioutft, iX, iY, iZ, idist, ift, imode, irlen [, iftnocl]
+    ```
 
 ### Initialization
 

@@ -8,11 +8,19 @@ Uniform distribution random number generator (positive values only).
 This is an x-class noise generator.
 
 ## Syntax
-``` csound-orc
-ares unirand krange
-ires unirand krange
-kres unirand krange
-```
+=== "Modern"
+    ``` csound-orc
+    ares = unirand(krange)
+    ires = unirand(krange)
+    kres = unirand(krange)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares unirand krange
+    ires unirand krange
+    kres unirand krange
+    ```
 
 ### Performance
 

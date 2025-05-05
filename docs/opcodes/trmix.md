@@ -8,9 +8,15 @@ Streaming partial track mixing.
 The _trmix_ opcode takes two inputs containg TRACKS pv streaming signals (as generated, for instance by _partials_) and mixes them into a single TRACKS stream. Tracks will be mixed up to the available space (defined by the original number of FFT bins in the analysed signals). If the sum of the input tracks exceeds this space, the higher-ordered tracks in the second input will be pruned.
 
 ## Syntax
-``` csound-orc
-fsig trmix fin1, fin2
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = trmix(fin1, fin2)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig trmix fin1, fin2
+    ```
 
 ### Performance
 

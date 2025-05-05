@@ -6,10 +6,17 @@ category:Signal I/O:Software Bus
 Reads data from a channel of the inward software bus.
 
 ## Syntax
-``` csound-orc
-kval chani kchan
-aval chani kchan
-```
+=== "Modern"
+    ``` csound-orc
+    kval = chani(kchan)
+    aval = chani(kchan)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kval chani kchan
+    aval chani kchan
+    ```
 
 ### Performance
 

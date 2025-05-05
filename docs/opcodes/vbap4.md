@@ -6,9 +6,15 @@ category:Signal Modifiers:Panning and Spatialization
 Distributes an audio signal among 4 channels.
 
 ## Syntax
-``` csound-orc
-ar1, ar2, ar3, ar4 vbap4 asig, kazim [, kelev] [, kspread]
-```
+=== "Modern"
+    ``` csound-orc
+    ar1, ar2, ar3, ar4 = vbap4(asig, kazim [, kelev] [, kspread])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar1, ar2, ar3, ar4 vbap4 asig, kazim [, kelev] [, kspread]
+    ```
 
 ### Performance
 

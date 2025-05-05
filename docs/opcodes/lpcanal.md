@@ -8,11 +8,19 @@ Streaming linear prediction analysis.
 Two versions exist, one taking input from an audio signal, and the other from a function table.
 
 ## Syntax
-``` csound-orc
-kCoef[], krms, kerr, kcps lpcanal asrc, kflg, kprd, isiz, iord [, iwin]
-kCoef[], krms, kerr, kcps lpcanal koff, kflg, ifn, isiz, iord [, iwin]
-iCoef[], irms, ierr, icps lpcanal ioff, iflg, ifn, isiz, iord [, iwin]
-```
+=== "Modern"
+    ``` csound-orc
+    kCoef[], krms, kerr, kcps = lpcanal(asrc, kflg, kprd, isiz, iord [, iwin])
+    kCoef[], krms, kerr, kcps = lpcanal(koff, kflg, ifn, isiz, iord [, iwin])
+    iCoef[], irms, ierr, icps = lpcanal(ioff, iflg, ifn, isiz, iord [, iwin])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kCoef[], krms, kerr, kcps lpcanal asrc, kflg, kprd, isiz, iord [, iwin]
+    kCoef[], krms, kerr, kcps lpcanal koff, kflg, ifn, isiz, iord [, iwin]
+    iCoef[], irms, ierr, icps lpcanal ioff, iflg, ifn, isiz, iord [, iwin]
+    ```
 
 ### Initialization
 

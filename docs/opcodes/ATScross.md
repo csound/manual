@@ -6,10 +6,17 @@ category:Spectral Processing:ATS
 _ATScross_ uses data from an ATS analysis file and data from an [ATSbufread](../opcodes/ATSbufread.md) to perform cross synthesis.
 
 ## Syntax
-``` csound-orc
-ar ATScross ktimepnt, kfmod, iatsfile, ifn, kmylev, kbuflev, ipartials \
-            [, ipartialoffset, ipartialincr]
-```
+=== "Modern"
+    ``` csound-orc
+    ar = ATScross(ktimepnt, kfmod, iatsfile, ifn, kmylev, kbuflev, ipartials \
+                  [, ipartialoffset, ipartialincr])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar ATScross ktimepnt, kfmod, iatsfile, ifn, kmylev, kbuflev, ipartials \
+                [, ipartialoffset, ipartialincr]
+    ```
 
 ### Initialization
 

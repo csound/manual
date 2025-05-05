@@ -6,9 +6,15 @@ category:Signal Modifiers:Reverberation
 Reverberates an input signal with a flat frequency response.
 
 ## Syntax
-``` csound-orc
-ares alpass asig, xrvt, ilpt [, iskip] [, insmps]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = alpass(asig, xrvt, ilpt [, iskip] [, insmps])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares alpass asig, xrvt, ilpt [, iskip] [, insmps]
+    ```
 
 ### Initialization
 

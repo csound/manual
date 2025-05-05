@@ -6,9 +6,15 @@ category:Signal Modifiers:Standard Filters
 A median filter, a variant FIR lowpass filter.
 
 ## Syntax
-``` csound-orc
-ares median asig, ksize, imaxsize [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = median(asig, ksize, imaxsize [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares median asig, ksize, imaxsize [, iskip]
+    ```
 
 ### Initialization
 

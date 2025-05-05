@@ -8,9 +8,15 @@ Streaming partial track frequency splitting.
 The _trsplit_ opcode takes an input containg a TRACKS pv streaming signal (as generated, for instance by _partials_) and splits it into two signals according to a k-rate frequency 'split point'. The first output will contain all tracks up from 0Hz to the split frequency and the second will contain the tracks from the split frequency up to the Nyquist. It can also, optionally, scale the gain of the output signals by a k-rate amount (default 1). The result is two output signals containing only part of the original spectrum.
 
 ## Syntax
-``` csound-orc
-fsiglow, fsighi trsplit fin, ksplit [, kgainlow, kgainhigh]
-```
+=== "Modern"
+    ``` csound-orc
+    fsiglow, fsighi = trsplit(fin, ksplit [, kgainlow, kgainhigh])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsiglow, fsighi trsplit fin, ksplit [, kgainlow, kgainhigh]
+    ```
 
 ### Performance
 

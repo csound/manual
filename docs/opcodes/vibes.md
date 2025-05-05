@@ -8,9 +8,15 @@ Physical model related to the striking of a metal block as found in a vibraphone
 The method is a physical model developed from Perry Cook, but re-coded for Csound.
 
 ## Syntax
-``` csound-orc
-ares vibes kamp, kfreq, ihrd, ipos, imp, kvibf, kvamp, ivibfn, idec
-```
+=== "Modern"
+    ``` csound-orc
+    ares = vibes(kamp, kfreq, ihrd, ipos, imp, kvibf, kvamp, ivibfn, idec)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares vibes kamp, kfreq, ihrd, ipos, imp, kvibf, kvamp, ivibfn, idec
+    ```
 
 ### Initialization
 

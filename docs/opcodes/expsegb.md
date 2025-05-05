@@ -6,10 +6,17 @@ category:Signal Generators:Linear and Exponential Generators
 Trace a series of exponential segments between specified absolute points.
 
 ## Syntax
-``` csound-orc
-ares expsegb ia, itim1, ib [, itim2] [, ic] [...]
-kres expsegb ia, itim1, ib [, itim2] [, ic] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = expsegb(ia, itim1, ib [, itim2] [, ic] [...])
+    kres = expsegb(ia, itim1, ib [, itim2] [, ic] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares expsegb ia, itim1, ib [, itim2] [, ic] [...]
+    kres expsegb ia, itim1, ib [, itim2] [, ic] [...]
+    ```
 
 ### Initialization
 

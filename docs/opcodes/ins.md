@@ -10,9 +10,15 @@ Reads stereo audio data from an external device or stream.
 > This opcode is designed to be used only with orchestras that have nchnls_i=2. Doing so with orchestras with nchnls_i &gt; 2 will cause incorrect audio input.
 
 ## Syntax
-``` csound-orc
-ar1, ar2 ins
-```
+=== "Modern"
+    ``` csound-orc
+    ar1, ar2 = ins()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar1, ar2 ins
+    ```
 
 ### Performance
 

@@ -6,10 +6,17 @@ category:Signal Modifiers:Panning and Spatialization
 Decodes an Ambisonics B format signal into loudspeaker specific signals, with dual--band decoding and near--field compensation.
 
 ## Syntax
-``` csound-orc
-aout[] bformdec2 isetup, abform[], [idecoder, idistance, ifreq, imix, \
-                 ifilel, ifiler]
-```
+=== "Modern"
+    ``` csound-orc
+    aout[] = bformdec2(isetup, abform[], [idecoder, idistance, ifreq, imix, \
+                       ifilel, ifiler])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout[] bformdec2 isetup, abform[], [idecoder, idistance, ifreq, imix, \
+                     ifilel, ifiler]
+    ```
 
 ### Initialization
 

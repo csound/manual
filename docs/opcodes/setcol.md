@@ -8,9 +8,15 @@ Sets a given column of a 2-dimensional array from a vector.
 The output is an 2-d array with the contents of the requested column set to values of the input array (1-d; if 2-d the first row of the input array is used).
 
 ## Syntax
-``` csound-orc
-i/kout[] setcol i/kin[], i/kcol
-```
+=== "Modern"
+    ``` csound-orc
+    i/kout[] = setcol(i/kin[], i/kcol)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    i/kout[] setcol i/kin[], i/kcol
+    ```
 
 ### Initialization
 

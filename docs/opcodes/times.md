@@ -6,10 +6,17 @@ category:Instrument Control:Time Reading
 Read absolute time, in seconds, since the start of the performance.
 
 ## Syntax
-``` csound-orc
-ires times
-kres times
-```
+=== "Modern"
+    ``` csound-orc
+    ires = times()
+    kres = times()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ires times
+    kres times
+    ```
 
 ### Performance
 

@@ -6,9 +6,15 @@ category:Signal Modifiers:Waveguides
 A simple waveguide model consisting of one delay-line and one first-order lowpass filter.
 
 ## Syntax
-``` csound-orc
-ares wguide1 asig, xfreq, kcutoff, kfeedback
-```
+=== "Modern"
+    ``` csound-orc
+    ares = wguide1(asig, xfreq, kcutoff, kfeedback)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares wguide1 asig, xfreq, kcutoff, kfeedback
+    ```
 
 ### Performance
 

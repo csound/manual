@@ -8,10 +8,17 @@ A linearly interpolated oscillator that allows changing the table number at k-ra
 _oscilikt_ is very similar to [oscili](../opcodes/oscili.md), but allows changing the table number at k-rate. It is slightly slower than _oscili_ (especially with high control rate), although also more accurate as it uses a 31-bit phase accumulator, as opposed to the 24-bit one used by _oscili_.
 
 ## Syntax
-``` csound-orc
-ares oscilikt xamp, xcps, kfn [, iphs] [, istor]
-kres oscilikt kamp, kcps, kfn [, iphs] [, istor]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = oscilikt(xamp, xcps, kfn [, iphs] [, istor])
+    kres = oscilikt(kamp, kcps, kfn [, iphs] [, istor])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares oscilikt xamp, xcps, kfn [, iphs] [, istor]
+    kres oscilikt kamp, kcps, kfn [, iphs] [, istor]
+    ```
 
 ### Initialization
 

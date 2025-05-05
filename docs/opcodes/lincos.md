@@ -10,10 +10,17 @@ Plugin opcode in emugens.
 Maps a linear range of values to a cosine (easy-in/easy-out) range of values. At present it supports only scalars, at i- and k-time (no arrays)
 
 ## Syntax
-``` csound-orc
-ky lincos kx, ky0, ky1 [, kx0, kx1 ]
-iy lincos ix, iy0, iy1 [, ix0, ix1 ]
-```
+=== "Modern"
+    ``` csound-orc
+    ky = lincos(kx, ky0, ky1 [, kx0, kx1 ])
+    iy = lincos(ix, iy0, iy1 [, ix0, ix1 ])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ky lincos kx, ky0, ky1 [, kx0, kx1 ]
+    iy lincos ix, iy0, iy1 [, ix0, ix1 ]
+    ```
 
 ### Performance
 

@@ -8,12 +8,21 @@ Convert frequency to midi note number, taking global value of A4 into account.
 Plugin opcode in emugens.
 
 ## Syntax
-``` csound-orc
-imidi ftom ifreq [,irnd]
-kmidi ftom kfreq [,irnd]
-imidis[] ftom ifreqs[] [,irnd]
-kmidis[] ftom kfreqs[] [,irnd]
-```
+=== "Modern"
+    ``` csound-orc
+    imidi = ftom(ifreq [,irnd])
+    kmidi = ftom(kfreq [,irnd])
+    imidis[] = ftom(ifreqs[] [,irnd])
+    kmidis[] = ftom(kfreqs[] [,irnd])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    imidi ftom ifreq [,irnd]
+    kmidi ftom kfreq [,irnd]
+    imidis[] ftom ifreqs[] [,irnd]
+    kmidis[] ftom kfreqs[] [,irnd]
+    ```
 
 ### Performance
 

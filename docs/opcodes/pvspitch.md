@@ -6,9 +6,15 @@ category:Spectral Processing:Streaming
 Track the pitch and amplitude of a PVS signal as k-rate variables.
 
 ## Syntax
-``` csound-orc
-kfr, kamp pvspitch fsig, kthresh
-```
+=== "Modern"
+    ``` csound-orc
+    kfr, kamp = pvspitch(fsig, kthresh)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kfr, kamp pvspitch fsig, kthresh
+    ```
 
 ### Performance
 

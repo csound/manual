@@ -33,9 +33,15 @@ Some values for the length of F<sub>n</sub> given n:
 | 20 | 129 |
 
 ## Syntax
-``` csound-orc
-kfl fareylen kfn
-```
+=== "Modern"
+    ``` csound-orc
+    kfl = fareylen(kfn)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kfl fareylen kfn
+    ```
 
 ### Performance
 

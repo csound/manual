@@ -6,9 +6,15 @@ category:Signal Modifiers:Special Effects
 Distort an audio signal via waveshaping and optional clipping.
 
 ## Syntax
-``` csound-orc
-ar distort asig, kdist, ifn[, ihp, istor]
-```
+=== "Modern"
+    ``` csound-orc
+    ar = distort(asig, kdist, ifn[, ihp, istor])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar distort asig, kdist, ifn[, ihp, istor]
+    ```
 
 ### Initialization
 

@@ -6,9 +6,15 @@ category:Real-time MIDI:Input
 Initializes the controllers used to create a 14-bit MIDI value.
 
 ## Syntax
-``` csound-orc
-initc14 ichan, ictlno1, ictlno2, ivalue
-```
+=== "Modern"
+    ``` csound-orc
+    initc14(ichan, ictlno1, ictlno2, ivalue)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    initc14 ichan, ictlno1, ictlno2, ivalue
+    ```
 
 ### Initialization
 

@@ -6,9 +6,15 @@ category:Signal Generators:Sample Playback
 A simple time stretch by repeating cycles.
 
 ## Syntax
-``` csound-orc
-ares waveset ain, krep [, ilen]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = waveset(ain, krep [, ilen])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares waveset ain, krep [, ilen]
+    ```
 
 ### Initialization
 

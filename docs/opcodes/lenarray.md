@@ -6,10 +6,17 @@ category:Table Control:Table Queries
 Evaluates the size or number of dimensions of an array.
 
 ## Syntax
-``` csound-orc
-ir lenarray karray[, iwhich]
-kr lenarray karray[, iwhich]
-```
+=== "Modern"
+    ``` csound-orc
+    ir = lenarray(karray[, iwhich])
+    kr = lenarray(karray[, iwhich])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ir lenarray karray[, iwhich]
+    kr lenarray karray[, iwhich]
+    ```
 
 Initialisation
 

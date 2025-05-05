@@ -12,10 +12,17 @@ Reads mono audio data from an external device or stream.
 > The second form will read multiple channels into an array.
 
 ## Syntax
-``` csound-orc
-ar1 in
-aarray in
-```
+=== "Modern"
+    ``` csound-orc
+    ar1 = in()
+    aarray = in()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar1 in
+    aarray in
+    ```
 
 ### Performance
 

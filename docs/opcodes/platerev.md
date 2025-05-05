@@ -6,10 +6,17 @@ category:Signal Modifiers:Reverberation
 Models the reverberation of a rectangular metal plate with settable physical characteristics when excited by audio signal(s).
 
 ## Syntax
-``` csound-orc
-a1[, a2, ...] platerev itabexcite. itabouts, kbndry, iaspect, istiff, idecay, \
-                       iloss, aexcite1[, aexcite2, ...]
-```
+=== "Modern"
+    ``` csound-orc
+    a1[, a2, ...] = platerev(itabexcite. itabouts, kbndry, iaspect, istiff, idecay, \
+                             iloss, aexcite1[, aexcite2, ...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    a1[, a2, ...] platerev itabexcite. itabouts, kbndry, iaspect, istiff, idecay, \
+                           iloss, aexcite1[, aexcite2, ...]
+    ```
 
 ### Initialization
 

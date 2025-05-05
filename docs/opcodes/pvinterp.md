@@ -8,10 +8,17 @@ Interpolates between the amplitudes and frequencies of two phase vocoder analysi
 _pvinterp_ interpolates between the amplitudes and frequencies, on a bin by bin basis, of two phase vocoder analysis files (one from a previously called _pvbufread_ unit and the other from within its own argument list), allowing for user defined transitions between analyzed sounds. It also allows for general scaling of the amplitudes and frequencies of each file separately before the interpolated values are calculated and sent to the resynthesis routines. The _kfmod_ argument in _pvinterp_ performs its frequency scaling on the frequency values after their derivation from the separate scaling and subsequent interpolation is performed so that this acts as an overall scaling value of the new frequency components.
 
 ## Syntax
-``` csound-orc
-ares pvinterp ktimpnt, kfmod, ifile, kfreqscale1, kfreqscale2, \
-              kampscale1, kampscale2, kfreqinterp, kampinterp
-```
+=== "Modern"
+    ``` csound-orc
+    ares = pvinterp(ktimpnt, kfmod, ifile, kfreqscale1, kfreqscale2, \
+                    kampscale1, kampscale2, kfreqinterp, kampinterp)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares pvinterp ktimpnt, kfmod, ifile, kfreqscale1, kfreqscale2, \
+                  kampscale1, kampscale2, kfreqinterp, kampinterp
+    ```
 
 ### Initialization
 

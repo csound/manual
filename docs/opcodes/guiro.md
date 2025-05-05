@@ -8,9 +8,15 @@ Semi-physical model of a guiro sound.
 It is one of the PhISEM percussion opcodes. PhISEM (Physically Informed Stochastic Event Modeling) is an algorithmic approach for simulating collisions of multiple independent sound producing objects.
 
 ## Syntax
-``` csound-orc
-ares guiro kamp, idettack [, inum] [, idamp] [, imaxshake] [, ifreq] [, ifreq1]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = guiro(kamp, idettack [, inum] [, idamp] [, imaxshake] [, ifreq] [, ifreq1])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares guiro kamp, idettack [, inum] [, idamp] [, imaxshake] [, ifreq] [, ifreq1]
+    ```
 
 ### Initialization
 

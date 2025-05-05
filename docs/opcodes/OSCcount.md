@@ -8,9 +8,15 @@ Gives the Count of OSC messages currently unread but received by the current lis
 Plugin opcode in osc.
 
 ## Syntax
-``` csound-orc
-kans OSCcount
-```
+=== "Modern"
+    ``` csound-orc
+    kans = OSCcount()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kans OSCcount
+    ```
 
 ### Performance
 

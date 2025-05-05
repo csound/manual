@@ -6,11 +6,19 @@ category:Signal Modifiers:Signal Limiters
 Wraps-around the signal that exceeds the low and high thresholds.
 
 ## Syntax
-``` csound-orc
-ares wrap asig, klow, khigh
-ires wrap isig, ilow, ihigh
-kres wrap ksig, klow, khigh
-```
+=== "Modern"
+    ``` csound-orc
+    ares = wrap(asig, klow, khigh)
+    ires = wrap(isig, ilow, ihigh)
+    kres = wrap(ksig, klow, khigh)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares wrap asig, klow, khigh
+    ires wrap isig, ilow, ihigh
+    kres wrap ksig, klow, khigh
+    ```
 
 ### Initialization
 

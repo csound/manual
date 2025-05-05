@@ -6,9 +6,15 @@ category:Array Operations: Cepstrum
 Calculate the cepstrum of an array input, optionally filtering coefficients.
 
 ## Syntax
-``` csound-orc
-keps[] ceps kmags[] [, icoefs]
-```
+=== "Modern"
+    ``` csound-orc
+    keps[] = ceps(kmags[] [, icoefs])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    keps[] ceps kmags[] [, icoefs]
+    ```
 
 ### Initialization
 

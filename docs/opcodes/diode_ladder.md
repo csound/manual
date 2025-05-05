@@ -9,9 +9,15 @@ Zero-delay feedback implementation of a 4 pole (24 dB/oct) diode low-pass filter
 This filter design was originally used in the EMS VCS3 and was the resonant filter in the Roland TB-303.
 
 ## Syntax
-``` csound-orc
-asig diode_ladder ain, xcf, xk [, inlp, isaturation, istor]
-```
+=== "Modern"
+    ``` csound-orc
+    asig = diode_ladder(ain, xcf, xk [, inlp, isaturation, istor])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig diode_ladder ain, xcf, xk [, inlp, isaturation, istor]
+    ```
 
 ### Initialization
 

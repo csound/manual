@@ -8,9 +8,15 @@ printf-style formatted output to a string variable.
 Similar to the C function `sprintf()`. _sprintf_ runs at i-time only.
 
 ## Syntax
-``` csound-orc
-Sdst sprintf Sfmt, xarg1[, xarg2[, ... ]]
-```
+=== "Modern"
+    ``` csound-orc
+    Sdst = sprintf(Sfmt, xarg1[, xarg2[, ... ]])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    Sdst sprintf Sfmt, xarg1[, xarg2[, ... ]]
+    ```
 
 ### Initialization
 

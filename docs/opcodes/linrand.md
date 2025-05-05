@@ -8,11 +8,19 @@ Linear distribution random number generator (positive values only).
 This is an x-class noise generator.
 
 ## Syntax
-``` csound-orc
-ares linrand krange
-ires linrand krange
-kres linrand krange
-```
+=== "Modern"
+    ``` csound-orc
+    ares = linrand(krange)
+    ires = linrand(krange)
+    kres = linrand(krange)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares linrand krange
+    ires linrand krange
+    kres linrand krange
+    ```
 
 ### Performance
 

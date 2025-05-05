@@ -8,9 +8,15 @@ Compare strings.
 Set the result to -1, 0, or 1 if the first string is less than, equal to, or greater than the second, respectively. strcmp compares at i-time only.
 
 ## Syntax
-``` csound-orc
-ires strcmp S1, S2
-```
+=== "Modern"
+    ``` csound-orc
+    ires = strcmp(S1, S2)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ires strcmp S1, S2
+    ```
 
 ## Examples
 

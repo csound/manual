@@ -8,9 +8,15 @@ A time-varying convolution (FIR filter) opcode.
 An opcode that takes two incoming signals and interprets one of them as the coefficients of linear time-variable finite impulse response filter. This is implemented via direct convolution (for partition sizes of 1 sample) or DFT-based partitioned convolution. The signals can be 'frozen' (i.e. the filter coefficients are kept the same) at any point in time, at a-rate or k-rate.
 
 ## Syntax
-``` csound-orc
-ares tvconv asig1, asig2, xfreez1, xfreez2, iparts, ifils
-```
+=== "Modern"
+    ``` csound-orc
+    ares = tvconv(asig1, asig2, xfreez1, xfreez2, iparts, ifils)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares tvconv asig1, asig2, xfreez1, xfreez2, iparts, ifils
+    ```
 
 ### Initialization
 

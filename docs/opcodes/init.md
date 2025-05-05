@@ -6,15 +6,27 @@ category:Instrument Control:Initialization and Reinitialization
 Puts the value of the i-time expression into a k-, a-rate or t- variable.
 
 ## Syntax
-``` csound-orc
-ares init iarg
-ires init iarg
-kres init iarg
-ares, ... init iarg, ...
-ires, ... init iarg, ...
-kres, ... init iarg, ...
-tab init isize[, ival]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = init(iarg)
+    ires = init(iarg)
+    kres = init(iarg)
+    ares, ... = init(iarg, ...)
+    ires, ... = init(iarg, ...)
+    kres, ... = init(iarg, ...)
+    tab = init(isize[, ival])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares init iarg
+    ires init iarg
+    kres init iarg
+    ares, ... init iarg, ...
+    ires, ... init iarg, ...
+    kres, ... init iarg, ...
+    tab init isize[, ival]
+    ```
 
 ### Initialization
 

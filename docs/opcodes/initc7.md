@@ -6,9 +6,15 @@ category:Real-time MIDI:Input
 Initializes the controller used to create a 7-bit MIDI value.
 
 ## Syntax
-``` csound-orc
-initc7 ichan, ictlno, ivalue
-```
+=== "Modern"
+    ``` csound-orc
+    initc7(ichan, ictlno, ivalue)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    initc7 ichan, ictlno, ivalue
+    ```
 
 ### Initialization
 

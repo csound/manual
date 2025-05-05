@@ -8,9 +8,15 @@ Determines the root-mean-square amplitude of an audio signal.
 It low-pass filters the actual value, to average in the manner of a VU meter.
 
 ## Syntax
-``` csound-orc
-kres rms asig [, ihp] [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    kres = rms(asig [, ihp] [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres rms asig [, ihp] [, iskip]
+    ```
 
 ### Initialization
 

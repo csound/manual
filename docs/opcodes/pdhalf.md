@@ -8,9 +8,15 @@ Distorts a phasor for reading the two halves of a table at different rates.
 The _pdhalf_ opcode is designed to emulate the "classic" phase distortion synthesis method of the Casio CZ-series of synthesizers from the mid-1980's.  This technique reads the first and second halves of a function table at different rates in order to warp the waveform.  For example, _pdhalf_ can smoothly transform a sine wave into something approximating the shape of a saw wave.
 
 ## Syntax
-``` csound-orc
-aout pdhalf ain, kShapeAmount [, ibipolar [, ifullscale]]
-```
+=== "Modern"
+    ``` csound-orc
+    aout = pdhalf(ain, kShapeAmount [, ibipolar [, ifullscale]])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout pdhalf ain, kShapeAmount [, ibipolar [, ifullscale]]
+    ```
 
 ### Initialization
 

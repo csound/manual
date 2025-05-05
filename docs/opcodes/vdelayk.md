@@ -6,9 +6,15 @@ category:Vectorial:Delay Paths
 Variable time delay applied to a k-rate signal.
 
 ## Syntax
-``` csound-orc
-kout vdelayk ksig, kdel, imaxdel [, iskip, imode]
-```
+=== "Modern"
+    ``` csound-orc
+    kout = vdelayk(ksig, kdel, imaxdel [, iskip, imode])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kout vdelayk ksig, kdel, imaxdel [, iskip, imode]
+    ```
 
 ### Initialization
 

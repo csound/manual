@@ -8,9 +8,15 @@ Return the ASCII code of the character in Sstr at ipos (defaults to zero which m
 _strchar_ runs at init time only.
 
 ## Syntax
-``` csound-orc
-ichr strchar Sstr [, ipos]
-```
+=== "Modern"
+    ``` csound-orc
+    ichr = strchar(Sstr [, ipos])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ichr strchar Sstr [, ipos]
+    ```
 
 ## Examples
 

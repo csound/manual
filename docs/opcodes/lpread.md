@@ -6,9 +6,15 @@ category:Spectral Processing:LPC
 Reads a control file of time-ordered information frames.
 
 ## Syntax
-``` csound-orc
-krmsr, krmso, kerr, kcps lpread ktimpnt, ifilcod [, inpoles] [, ifrmrate]
-```
+=== "Modern"
+    ``` csound-orc
+    krmsr, krmso, kerr, kcps = lpread(ktimpnt, ifilcod [, inpoles] [, ifrmrate])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    krmsr, krmso, kerr, kcps lpread ktimpnt, ifilcod [, inpoles] [, ifrmrate]
+    ```
 
 ### Initialization
 

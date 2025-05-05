@@ -6,9 +6,15 @@ category:Signal I/O:File I/O
 Outputs k-rate signals of an arbitrary number of channels to a specified file, in raw (headerless) format.
 
 ## Syntax
-``` csound-orc
-foutk ifilename, iformat, kout1 [, kout2, kout3,....,koutN]
-```
+=== "Modern"
+    ``` csound-orc
+    foutk(ifilename, iformat, kout1 [, kout2, kout3,....,koutN])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    foutk ifilename, iformat, kout1 [, kout2, kout3,....,koutN]
+    ```
 
 ### Initialization
 

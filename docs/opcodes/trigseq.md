@@ -6,9 +6,15 @@ category:Instrument Control:Sensing and Control
 Accepts a trigger signal as input and outputs a group of values.
 
 ## Syntax
-``` csound-orc
-trigseq ktrig_in, kstart, kloop, kinitndx, kfn_values, kout1 [, kout2] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    trigseq(ktrig_in, kstart, kloop, kinitndx, kfn_values, kout1 [, kout2] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    trigseq ktrig_in, kstart, kloop, kinitndx, kfn_values, kout1 [, kout2] [...]
+    ```
 
 ### Performance
 

@@ -6,9 +6,15 @@ category:Real-time MIDI:Output
 Sends a NPRN (Non-Registered Parameter Number) message to the MIDI OUT port each time one of the input arguments changes.
 
 ## Syntax
-``` csound-orc
-nrpn kchan, kparmnum, kparmvalue
-```
+=== "Modern"
+    ``` csound-orc
+    nrpn(kchan, kparmnum, kparmvalue)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    nrpn kchan, kparmnum, kparmvalue
+    ```
 
 ### Performance
 

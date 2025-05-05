@@ -6,9 +6,15 @@ category:Signal I/O:File I/O
 Outputs i-rate signals of an arbitrary number of channels to a specified file.
 
 ## Syntax
-``` csound-orc
-fouti ihandle, iformat, iflag, iout1 [, iout2, iout3,....,ioutN]
-```
+=== "Modern"
+    ``` csound-orc
+    fouti(ihandle, iformat, iflag, iout1 [, iout2, iout3,....,ioutN])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fouti ihandle, iformat, iflag, iout1 [, iout2, iout3,....,ioutN]
+    ```
 
 ### Initialization
 

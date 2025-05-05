@@ -6,9 +6,15 @@ category:Vectorial:Vectorial operations
 Performs addition between two vectorial control signals.
 
 ## Syntax
-``` csound-orc
-vaddv ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [,kverbose]
-```
+=== "Modern"
+    ``` csound-orc
+    vaddv(ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [,kverbose])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vaddv ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [,kverbose]
+    ```
 
 ### Initialization
 

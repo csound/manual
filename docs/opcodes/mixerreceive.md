@@ -6,9 +6,15 @@ category:Mixer Opcodes
 Receives an arate signal that has been mixed onto a channel of a buss.
 
 ## Syntax
-``` csound-orc
-asignal MixerReceive ibuss, ichannel
-```
+=== "Modern"
+    ``` csound-orc
+    asignal = MixerReceive(ibuss, ichannel)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asignal MixerReceive ibuss, ichannel
+    ```
 
 ### Initialization
 

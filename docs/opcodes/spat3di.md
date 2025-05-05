@@ -8,9 +8,15 @@ Positions the input sound in a 3D space with the sound source position set at i-
 This opcode positions the input sound in a 3D space, with optional simulation of room acoustics, in various output formats. With _spat3di_, sound source position is set at i-time.
 
 ## Syntax
-``` csound-orc
-aW, aX, aY, aZ spat3di ain, iX, iY, iZ, idist, ift, imode [, istor]
-```
+=== "Modern"
+    ``` csound-orc
+    aW, aX, aY, aZ = spat3di(ain, iX, iY, iZ, idist, ift, imode [, istor])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aW, aX, aY, aZ spat3di ain, iX, iY, iZ, idist, ift, imode [, istor]
+    ```
 
 ### Initialization
 

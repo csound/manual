@@ -12,10 +12,17 @@ The resonator geometry can be defined, along with some response characteristics,
 _babo2_ was introduced to fix the issue of the direct sound parameter (see expert parameters), which is a non-op in the original opcode.
 
 ## Syntax
-``` csound-orc
-a1, a2 babo asig, ksrcx, ksrcy, ksrcz, irx, iry, irz [, idiff] [, ifno]
-a1, a2 babo2 asig, ksrcx, ksrcy, ksrcz, irx, iry, irz [, idiff] [, ifno]
-```
+=== "Modern"
+    ``` csound-orc
+    a1, a2 = babo(asig, ksrcx, ksrcy, ksrcz, irx, iry, irz [, idiff] [, ifno])
+    a1, a2 = babo2(asig, ksrcx, ksrcy, ksrcz, irx, iry, irz [, idiff] [, ifno])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    a1, a2 babo asig, ksrcx, ksrcy, ksrcz, irx, iry, irz [, idiff] [, ifno]
+    a1, a2 babo2 asig, ksrcx, ksrcy, ksrcz, irx, iry, irz [, idiff] [, ifno]
+    ```
 
 ### Initialization
 

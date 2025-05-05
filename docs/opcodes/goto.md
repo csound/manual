@@ -6,9 +6,15 @@ category:Instrument Control:Program Flow Control
 Transfer control to _label_ on every pass. (Combination of [igoto](../opcodes/igoto.md) and [kgoto](../opcodes/kgoto.md))
 
 ## Syntax
-``` csound-orc
-goto label
-```
+=== "Modern"
+    ``` csound-orc
+    goto(label)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    goto label
+    ```
 
 where _label_ is in the same instrument block and is not an expression.
 

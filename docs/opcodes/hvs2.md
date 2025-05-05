@@ -6,10 +6,17 @@ category:Signal Generators:Hyper Vectorial Synthesis
 Allows two-dimensional Hyper Vectorial Synthesis (HVS) controlled by externally-updated k-variables.
 
 ## Syntax
-``` csound-orc
-hvs2 kx, ky, inumParms, inumPointsX, inumPointsY, iOutTab, iPositionsTab, \
-     iSnapTab [, iConfigTab]
-```
+=== "Modern"
+    ``` csound-orc
+    hvs2(kx, ky, inumParms, inumPointsX, inumPointsY, iOutTab, iPositionsTab, \
+         iSnapTab [, iConfigTab])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    hvs2 kx, ky, inumParms, inumPointsX, inumPointsY, iOutTab, iPositionsTab, \
+         iSnapTab [, iConfigTab]
+    ```
 
 ### Initialization
 

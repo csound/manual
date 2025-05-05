@@ -6,10 +6,17 @@ category:Signal Generators:Envelope Generators
 Calculates the classical ADSR envelope using linear segments.
 
 ## Syntax
-``` csound-orc
-ares adsr iatt, idec, islev, irel [, idel]
-kres adsr iatt, idec, islev, irel [, idel]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = adsr(iatt, idec, islev, irel [, idel])
+    kres = adsr(iatt, idec, islev, irel [, idel])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares adsr iatt, idec, islev, irel [, idel]
+    kres adsr iatt, idec, islev, irel [, idel]
+    ```
 
 ### Initialization
 

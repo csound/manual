@@ -7,9 +7,15 @@ Simulates layers of serially connected resonant lowpass filters.
 
 
 ## Syntax
-``` csound-orc
-ares lowresx asig, xcutoff, xresonance [, inumlayer] [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = lowresx(asig, xcutoff, xresonance [, inumlayer] [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares lowresx asig, xcutoff, xresonance [, inumlayer] [, iskip]
+    ```
 
 ### Initialization
 

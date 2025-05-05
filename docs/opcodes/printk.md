@@ -6,9 +6,15 @@ category:Signal I/O:Printing and Display
 Prints one k-rate value at specified intervals.
 
 ## Syntax
-``` csound-orc
-printk itime, kval [, ispace] [, inamed]
-```
+=== "Modern"
+    ``` csound-orc
+    printk(itime, kval [, ispace] [, inamed])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    printk itime, kval [, ispace] [, inamed]
+    ```
 
 ### Initialization
 

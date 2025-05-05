@@ -10,11 +10,19 @@ Plugin opcode in osc; internal opcode (for UDP server)
 On each k-cycle looks to see if an OSC message has been sent to a given path of a given type.
 
 ## Syntax
-``` csound-orc
-kans OSClisten ihandle, idest, itype [, xdata1, xdata2, ...]
-kans, kdata[] OSClisten ihandle, idest, itype
-kans, ... OSClisten idest, itype
-```
+=== "Modern"
+    ``` csound-orc
+    kans = OSClisten(ihandle, idest, itype [, xdata1, xdata2, ...])
+    kans, kdata[] = OSClisten(ihandle, idest, itype)
+    kans, ... = OSClisten(idest, itype)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kans OSClisten ihandle, idest, itype [, xdata1, xdata2, ...]
+    kans, kdata[] OSClisten ihandle, idest, itype
+    kans, ... OSClisten idest, itype
+    ```
 
 ### Initialization
 

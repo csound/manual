@@ -6,9 +6,15 @@ category:Real-time MIDI:Input
 Get a note number from a MIDI event.
 
 ## Syntax
-``` csound-orc
-ival notnum
-```
+=== "Modern"
+    ``` csound-orc
+    ival = notnum()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ival notnum
+    ```
 
 ### Performance
 

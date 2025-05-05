@@ -6,9 +6,15 @@ category:Instrument Control:Sensing and Control
 Returns one of four scalar values stored in the instance of an instrument.
 
 ## Syntax
-``` csound-orc
-ival readscratch [index]
-```
+=== "Modern"
+    ``` csound-orc
+    ival = readscratch([index])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ival readscratch [index]
+    ```
 
 Initialisation
 

@@ -8,11 +8,19 @@ Exponential distribution random number generator.
 This is an x-class noise generator.
 
 ## Syntax
-``` csound-orc
-ares bexprnd krange
-ires bexprnd krange
-kres bexprnd krange
-```
+=== "Modern"
+    ``` csound-orc
+    ares = bexprnd(krange)
+    ires = bexprnd(krange)
+    kres = bexprnd(krange)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares bexprnd krange
+    ires bexprnd krange
+    kres bexprnd krange
+    ```
 
 ### Performance
 

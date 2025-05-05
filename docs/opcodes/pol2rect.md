@@ -6,10 +6,17 @@ category:Array Operations: complex numbers
 Converts an input array in magnitude-phase format to real-imaginary format.
 
 ## Syntax
-``` csound-orc
-kout[] pol2rect kin[]
-kout[] pol2rect kmags[], kphs[]
-```
+=== "Modern"
+    ``` csound-orc
+    kout[] = pol2rect(kin[])
+    kout[] = pol2rect(kmags[], kphs[])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kout[] pol2rect kin[]
+    kout[] pol2rect kmags[], kphs[]
+    ```
 
 ### Performance
 

@@ -6,9 +6,15 @@ category:Real-time MIDI:Output
 Sends MIDI program change messages at i-rate.
 
 ## Syntax
-``` csound-orc
-outipc ichn, iprog, imin, imax
-```
+=== "Modern"
+    ``` csound-orc
+    outipc(ichn, iprog, imin, imax)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    outipc ichn, iprog, imin, imax
+    ```
 
 ### Initialization
 

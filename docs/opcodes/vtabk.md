@@ -6,9 +6,15 @@ category:Vectorial:Tables
 Read vectors (from tables -or arrays of vectors) at k-rate.
 
 ## Syntax
-``` csound-orc
-vtabk kndx, ifn, kout1 [, kout2, kout3, .... , koutN ]
-```
+=== "Modern"
+    ``` csound-orc
+    vtabk(kndx, ifn, kout1 [, kout2, kout3, .... , koutN ])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vtabk kndx, ifn, kout1 [, kout2, kout3, .... , koutN ]
+    ```
 
 ### Initialization
 

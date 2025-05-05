@@ -6,9 +6,15 @@ category:Spectral Processing:Streaming
 Generate an fsig from a mono audio source ain, using phase vocoder overlap-add analysis.
 
 ## Syntax
-``` csound-orc
-fsig pvsanal ain, ifftsize, ioverlap, iwinsize, iwintype [, iformat] [, iinit]
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvsanal(ain, ifftsize, ioverlap, iwinsize, iwintype [, iformat] [, iinit])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvsanal ain, ifftsize, ioverlap, iwinsize, iwintype [, iformat] [, iinit]
+    ```
 
 ### Initialization
 

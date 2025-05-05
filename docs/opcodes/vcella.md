@@ -8,10 +8,17 @@ Cellular Automata.
 Unidimensional Cellular Automata applied to Csound vectors
 
 ## Syntax
-``` csound-orc
-vcella ktrig, kreinit, ioutFunc, initStateFunc, \
-       iRuleFunc, ielements, irulelen [, iradius]
-```
+=== "Modern"
+    ``` csound-orc
+    vcella(ktrig, kreinit, ioutFunc, initStateFunc, \
+           iRuleFunc, ielements, irulelen [, iradius])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vcella ktrig, kreinit, ioutFunc, initStateFunc, \
+           iRuleFunc, ielements, irulelen [, iradius]
+    ```
 
 ### Initialization
 

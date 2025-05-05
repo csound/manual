@@ -8,9 +8,15 @@ Cepstrum all-pole coefficient analysis.
 This opcode takes in a pvs signal in AMP_* format, applies the cepstrum transform and computes the coefficients for a an allpole filter
 
 ## Syntax
-``` csound-orc
-kCoef[], krms, kerr pvscfs fsig, iord [, imod]
-```
+=== "Modern"
+    ``` csound-orc
+    kCoef[], krms, kerr = pvscfs(fsig, iord [, imod])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kCoef[], krms, kerr pvscfs fsig, iord [, imod]
+    ```
 
 ### Initialization
 

@@ -8,9 +8,15 @@ Extract a substring of the source string.
 _strsubk_ runs both at init and performance time.
 
 ## Syntax
-``` csound-orc
-Sdst strsubk Ssrc, kstart, kend
-```
+=== "Modern"
+    ``` csound-orc
+    Sdst = strsubk(Ssrc, kstart, kend)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    Sdst strsubk Ssrc, kstart, kend
+    ```
 
 ### Performance
 

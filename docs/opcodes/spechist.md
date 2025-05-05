@@ -6,9 +6,15 @@ category:Spectral Processing:Non-Standard
 Accumulates the values of successive spectral frames.
 
 ## Syntax
-``` csound-orc
-wsig spechist wsigin
-```
+=== "Modern"
+    ``` csound-orc
+    wsig = spechist(wsigin)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    wsig spechist wsigin
+    ```
 
 ### Performance
 

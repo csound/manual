@@ -8,9 +8,15 @@ Returns as a string the date and time specified.
 Plugin opcode in cs_date.
 
 ## Syntax
-``` csound-orc
-Sir dates [ itime]
-```
+=== "Modern"
+    ``` csound-orc
+    Sir = dates([ itime])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    Sir dates [ itime]
+    ```
 
 ### Initialization
 

@@ -8,9 +8,15 @@ An exponential segment generator operating at a-rate.
 This unit is almost identical to [expseg](../opcodes/expseg.md), but more precise when defining segments with very short durations (i.e., in a percussive attack phase) at audio rate.
 
 ## Syntax
-``` csound-orc
-ares expsega ia, idur1, ib [, idur2] [, ic] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = expsega(ia, idur1, ib [, idur2] [, ic] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares expsega ia, idur1, ib [, idur2] [, ic] [...]
+    ```
 
 ### Initialization
 

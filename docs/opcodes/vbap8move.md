@@ -6,9 +6,15 @@ category:Signal Modifiers:Panning and Spatialization
 Distributes an audio signal among 8 channels with moving virtual sources.
 
 ## Syntax
-``` csound-orc
-ar1, ..., ar8 vbap8move asig, idur, ispread, ifldnum, ifld1 [, ifld2] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    ar1, ..., ar8 = vbap8move(asig, idur, ispread, ifldnum, ifld1 [, ifld2] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar1, ..., ar8 vbap8move asig, idur, ispread, ifldnum, ifld1 [, ifld2] [...]
+    ```
 
 ### Initialization
 

@@ -6,9 +6,15 @@ category:Array Operations: sorting
 Takes a numeric array (k or i-rate) and returns it sorted in descending order.
 
 ## Syntax
-``` csound-orc
-k/i[] sortd k/i[]  (k- or i-arrays )
-```
+=== "Modern"
+    ``` csound-orc
+    k/i[] = sortd(k/i[])  (k- or i-arrays )
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    k/i[] sortd k/i[]  (k- or i-arrays )
+    ```
 
 ## Examples
 

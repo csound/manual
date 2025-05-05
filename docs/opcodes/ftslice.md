@@ -10,10 +10,17 @@ Plugin opcode in emugens.
 The _ftslice_ opcode takes an f-table and copies a slice to a second f-table (similar to tab2array, but between tables). This action is done at performance (every cycle), so that it can be placed inside a k-time if clause / loop / etc. For an init-only version, see [ftslicei](../opcodes/ftslicei.md)
 
 ## Syntax
-``` csound-orc
-ftslice ifnsource, ifndest [, kstart, kend, kstep ]
-ftslice kfnsource, kfndest [, kstart, kend, kstep ]
-```
+=== "Modern"
+    ``` csound-orc
+    ftslice(ifnsource, ifndest [, kstart, kend, kstep ])
+    ftslice(kfnsource, kfndest [, kstart, kend, kstep ])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ftslice ifnsource, ifndest [, kstart, kend, kstep ]
+    ftslice kfnsource, kfndest [, kstart, kend, kstep ]
+    ```
 
 ### Initialization
 

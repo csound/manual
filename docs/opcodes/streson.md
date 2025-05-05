@@ -6,9 +6,15 @@ category:Signal Generators:Waveguide Physical Modeling
 A string resonator with variable fundamental frequency.
 
 ## Syntax
-``` csound-orc
-ares streson asig, kfr, kfdbgain
-```
+=== "Modern"
+    ``` csound-orc
+    ares = streson(asig, kfr, kfdbgain)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares streson asig, kfr, kfdbgain
+    ```
 
 ### Performance
 

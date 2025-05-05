@@ -6,9 +6,15 @@ category:Real-time MIDI:Note Output
 Send a noteoff message to the MIDI OUT port.
 
 ## Syntax
-``` csound-orc
-noteoff ichn, inum, ivel
-```
+=== "Modern"
+    ``` csound-orc
+    noteoff(ichn, inum, ivel)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    noteoff ichn, inum, ivel
+    ```
 
 ### Initialization
 

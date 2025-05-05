@@ -8,10 +8,17 @@ A simple oscillator with cubic interpolation.
 _oscil3_ reads table _ifn_ sequentially and repeatedly at a frequency _xcps_. The amplitude is scaled by _xamp_. Cubic interpolation is applied for table look up from internal phase values.
 
 ## Syntax
-``` csound-orc
-ares oscil3 xamp, xcps [, ifn, iphs]
-kres oscil3 kamp, kcps [, ifn, iphs]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = oscil3(xamp, xcps [, ifn, iphs])
+    kres = oscil3(kamp, kcps [, ifn, iphs])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares oscil3 xamp, xcps [, ifn, iphs]
+    kres oscil3 kamp, kcps [, ifn, iphs]
+    ```
 
 ### Initialization
 

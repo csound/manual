@@ -8,9 +8,15 @@ Complex-to-real Inverse Fast Fourier Transform.
 Applies an Inverse Fast Fourier Transform to a complex-value input 1-dimensional array producing a real-valued output. The output is another array containing the real-valued signal. If the input array is power-of-two, the output array size will match the input size. Otherwise, the output will have two fewer values (input size - 2).
 
 ## Syntax
-``` csound-orc
-kout[] rifft kin[]
-```
+=== "Modern"
+    ``` csound-orc
+    kout[] = rifft(kin[])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kout[] rifft kin[]
+    ```
 
 ### Performance
 

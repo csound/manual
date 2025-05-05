@@ -6,10 +6,17 @@ category:Table Control:Read/Write Operations
 Allows morphing between a set of tables of the same size, by means of a weighted average between two currently selected tables.
 
 ## Syntax
-``` csound-orc
-aout tabmorpha aindex, aweightpoint, atabnum1, atabnum2, ifn1, ifn2 \
-               [, ifn3, ifn4, ... ifnN]
-```
+=== "Modern"
+    ``` csound-orc
+    aout = tabmorpha(aindex, aweightpoint, atabnum1, atabnum2, ifn1, ifn2 \
+                     [, ifn3, ifn4, ... ifnN])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout tabmorpha aindex, aweightpoint, atabnum1, atabnum2, ifn1, ifn2 \
+                   [, ifn3, ifn4, ... ifnN]
+    ```
 
 ### Initialization
 

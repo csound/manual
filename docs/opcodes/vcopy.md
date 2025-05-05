@@ -6,9 +6,15 @@ category:Vectorial:Vectorial operations
 Copies between two vectorial control signals.
 
 ## Syntax
-``` csound-orc
-vcopy ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [, kverbose]
-```
+=== "Modern"
+    ``` csound-orc
+    vcopy(ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [, kverbose])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vcopy ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [, kverbose]
+    ```
 
 ### Initialization
 

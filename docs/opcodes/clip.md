@@ -6,9 +6,15 @@ category:Signal Modifiers:Amplitude Modifiers
 Clips an a-rate signal to a predefined limit, in a &#8220;soft&#8221; manner, using one of three methods.
 
 ## Syntax
-``` csound-orc
-ares clip asig, imeth, ilimit [, iarg]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = clip(asig, imeth, ilimit [, iarg])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares clip asig, imeth, ilimit [, iarg]
+    ```
 
 ### Initialization
 

@@ -8,9 +8,15 @@ Concatenate two strings and store the result in a variable.
 _strcatk_ does the concatenation both at initialization and performance time. It is allowed for any of the input arguments to be the same as the output variable.
 
 ## Syntax
-``` csound-orc
-Sdst strcatk Ssrc1, Ssrc2
-```
+=== "Modern"
+    ``` csound-orc
+    Sdst = strcatk(Ssrc1, Ssrc2)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    Sdst strcatk Ssrc1, Ssrc2
+    ```
 
 ## Examples
 

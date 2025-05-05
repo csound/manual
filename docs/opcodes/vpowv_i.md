@@ -6,9 +6,15 @@ category:Vectorial:Vectorial operations
 Performs power-of operations between two vectorial control signals at init time.
 
 ## Syntax
-``` csound-orc
-vpowv_i ifn1, ifn2, ielements [, idstoffset] [, isrcoffset]
-```
+=== "Modern"
+    ``` csound-orc
+    vpowv_i(ifn1, ifn2, ielements [, idstoffset] [, isrcoffset])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vpowv_i ifn1, ifn2, ielements [, idstoffset] [, isrcoffset]
+    ```
 
 ### Initialization
 

@@ -8,9 +8,15 @@ Implements the Lorenz system of equations.
 Implements the Lorenz system of equations.  The Lorenz system is a chaotic-dynamic system which was originally used to simulate the motion of a particle in convection currents and simplified weather systems. Small differences in initial conditions rapidly lead to diverging values. This is sometimes expressed as the butterfly effect. If a butterfly flaps its wings in Australia, it will have an effect on the weather in Alaska. This system is one of the milestones in the development of chaos theory. It is useful as a chaotic audio source or as a low frequency modulation source.
 
 ## Syntax
-``` csound-orc
-ax, ay, az lorenz ksv, krv, kbv, kh, ix, iy, iz, iskip [, iskipinit]
-```
+=== "Modern"
+    ``` csound-orc
+    ax, ay, az = lorenz(ksv, krv, kbv, kh, ix, iy, iz, iskip [, iskipinit])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ax, ay, az lorenz ksv, krv, kbv, kh, ix, iy, iz, iskip [, iskipinit]
+    ```
 
 ### Initialization
 

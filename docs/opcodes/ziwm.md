@@ -6,9 +6,15 @@ category:Zak Patch System
 Writes to a zk variable to an i-rate variable with mixing.
 
 ## Syntax
-``` csound-orc
-ziwm isig, indx [, imix]
-```
+=== "Modern"
+    ``` csound-orc
+    ziwm(isig, indx [, imix])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ziwm isig, indx [, imix]
+    ```
 
 ### Initialization
 

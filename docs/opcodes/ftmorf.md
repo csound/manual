@@ -6,9 +6,15 @@ category:Signal Modifiers:Convolution and Morphing
 Uses an index into a table of ftable numbers to morph between adjacent tables in the list. This morphed function is written into the table referenced by _iresfn_ on every k-cycle.
 
 ## Syntax
-``` csound-orc
-ftmorf kftndx, iftfn, iresfn
-```
+=== "Modern"
+    ``` csound-orc
+    ftmorf(kftndx, iftfn, iresfn)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ftmorf kftndx, iftfn, iresfn
+    ```
 
 ### Initialization
 

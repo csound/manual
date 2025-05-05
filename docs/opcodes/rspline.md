@@ -6,10 +6,17 @@ category:Signal Generators:Random (Noise) Generators
 Generate random spline curves.
 
 ## Syntax
-``` csound-orc
-ares rspline xrangeMin, xrangeMax, kcpsMin, kcpsMax
-kres rspline krangeMin, krangeMax, kcpsMin, kcpsMax
-```
+=== "Modern"
+    ``` csound-orc
+    ares = rspline(xrangeMin, xrangeMax, kcpsMin, kcpsMax)
+    kres = rspline(krangeMin, krangeMax, kcpsMin, kcpsMax)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares rspline xrangeMin, xrangeMax, kcpsMin, kcpsMax
+    kres rspline krangeMin, krangeMax, kcpsMin, kcpsMax
+    ```
 
 ### Performance
 

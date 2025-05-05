@@ -6,11 +6,19 @@ category:Mathematical Operations:Opcode Equivalents of Functions
 Sums any number of a-rate signals, or array elements.
 
 ## Syntax
-``` csound-orc
-ares sum asig1 [, asig2] [, asig3] [...]
-kres sum karr
-ires sum iarr
-```
+=== "Modern"
+    ``` csound-orc
+    ares = sum(asig1 [, asig2] [, asig3] [...])
+    kres = sum(karr)
+    ires = sum(iarr)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares sum asig1 [, asig2] [, asig3] [...]
+    kres sum karr
+    ires sum iarr
+    ```
 
 ### Performance
 

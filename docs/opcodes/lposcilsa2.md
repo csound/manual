@@ -6,9 +6,15 @@ category:Signal Generators:Sample Playback
 Read stereo sampled sound from a table with looping and high precision.
 
 ## Syntax
-``` csound-orc
-ar1, ar2 lposcilsa2 aamp, kfreqratio, kloop, kend, ift [,iphs]
-```
+=== "Modern"
+    ``` csound-orc
+    ar1, ar2 = lposcilsa2(aamp, kfreqratio, kloop, kend, ift [,iphs])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar1, ar2 lposcilsa2 aamp, kfreqratio, kloop, kend, ift [,iphs]
+    ```
 
 ### Initialization
 

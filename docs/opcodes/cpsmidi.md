@@ -6,9 +6,15 @@ category:Real-time MIDI:Converters
 Get the note number of the current MIDI event, expressed in cycles-per-second.
 
 ## Syntax
-``` csound-orc
-icps cpsmidi
-```
+=== "Modern"
+    ``` csound-orc
+    icps = cpsmidi()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    icps cpsmidi
+    ```
 
 ### Performance
 

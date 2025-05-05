@@ -8,11 +8,19 @@ Gaussian distribution random number generator with controlled interpolation betw
 This is an x-class noise generator.
 
 ## Syntax
-``` csound-orc
-ares gaussi krange, xamp, xcps
-ires gaussi krange, xamp, xcps
-kres gaussi krange, xamp, xcps
-```
+=== "Modern"
+    ``` csound-orc
+    ares = gaussi(krange, xamp, xcps)
+    ires = gaussi(krange, xamp, xcps)
+    kres = gaussi(krange, xamp, xcps)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares gaussi krange, xamp, xcps
+    ires gaussi krange, xamp, xcps
+    kres gaussi krange, xamp, xcps
+    ```
 
 ### Performance
 

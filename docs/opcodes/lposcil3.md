@@ -8,9 +8,15 @@ Read sampled sound (mono or stereo) from a table, with looping, and high precisi
 _lposcil3_ uses cubic interpolation.
 
 ## Syntax
-``` csound-orc
-ares lposcil3 kamp, kfreqratio, kloop, kend, ifn [, iphs]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = lposcil3(kamp, kfreqratio, kloop, kend, ifn [, iphs])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares lposcil3 kamp, kfreqratio, kloop, kend, ifn [, iphs]
+    ```
 
 ### Initialization
 

@@ -8,9 +8,15 @@ Compiles a new orchestra from an ASCII file.
 Compileorc will compile one or more instruments at init time, which will be added to the running engine. In case of existing instrument numbers or names, these will be replaced, but any instance still running of the old instrument definition will still perform until it terminates.
 
 ## Syntax
-``` csound-orc
-ires compileorc Sfilename
-```
+=== "Modern"
+    ``` csound-orc
+    ires = compileorc(Sfilename)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ires compileorc Sfilename
+    ```
 
 ### Initialization
 

@@ -6,10 +6,17 @@ category:Signal Generators:Random (Noise) Generators
 Generates a controlled random number series with interpolation between each new number.
 
 ## Syntax
-``` csound-orc
-ares randi xamp, xcps [, iseed] [, isize] [, ioffset]
-kres randi kamp, kcps [, iseed] [, isize] [, ioffset]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = randi(xamp, xcps [, iseed] [, isize] [, ioffset])
+    kres = randi(kamp, kcps [, iseed] [, isize] [, ioffset])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares randi xamp, xcps [, iseed] [, isize] [, ioffset]
+    kres randi kamp, kcps [, iseed] [, isize] [, ioffset]
+    ```
 
 ### Initialization
 

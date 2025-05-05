@@ -14,9 +14,15 @@ $$
 described in Dobson and Fitch (ICMC'96) as modified by Risto Holopainen.
 
 ## Syntax
-``` csound-orc
-ares nlfilt2 ain, ka, kb, kd, kC, kL
-```
+=== "Modern"
+    ``` csound-orc
+    ares = nlfilt2(ain, ka, kb, kd, kC, kL)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares nlfilt2 ain, ka, kb, kd, kC, kL
+    ```
 
 ### Performance
 

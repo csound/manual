@@ -8,13 +8,23 @@ Declare a channel of the named software bus.
 Optional parameters can be set in the case of a control channel. If the channel does not exist yet, it is created, with an inital value of zero or empty string. Otherwise, the type (control, audio, or string) of the existing channel must match the declaration, or an init error occurs. The input/output mode of an existing channel is updated so that it becomes the bitwise OR of the previous and the newly specified value.
 
 ## Syntax
-``` csound-orc
-chn_k Sname, imode[, itype, idflt, imin, ima, ix, iy, iwidth, iheight, Sattributes]
-chn_a Sname, imode
-chn_S Sname, imode
-chn_S Sname, Smode
-chn_array Sname, imode, Stype, iSizes[]
-```
+=== "Modern"
+    ``` csound-orc
+    chn_k(Sname, imode[, itype, idflt, imin, ima, ix, iy, iwidth, iheight, Sattributes])
+    chn_a(Sname, imode)
+    chn_S(Sname, imode)
+    chn_S(Sname, Smode)
+    chn_array(Sname, imode, Stype, iSizes[])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    chn_k Sname, imode[, itype, idflt, imin, ima, ix, iy, iwidth, iheight, Sattributes]
+    chn_a Sname, imode
+    chn_S Sname, imode
+    chn_S Sname, Smode
+    chn_array Sname, imode, Stype, iSizes[]
+    ```
 
 ### Initialization
 

@@ -6,9 +6,15 @@ category:Signal I/O:File I/O
 Opens a file in a specific mode.
 
 ## Syntax
-``` csound-orc
-ihandle fiopen ifilename, imode
-```
+=== "Modern"
+    ``` csound-orc
+    ihandle = fiopen(ifilename, imode)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ihandle fiopen ifilename, imode
+    ```
 
 ### Initialization
 

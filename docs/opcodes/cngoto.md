@@ -6,9 +6,15 @@ category:Instrument Control:Program Flow Control
 Transfers control on every pass when the condition is _not_ true.
 
 ## Syntax
-``` csound-orc
-cngoto condition, label
-```
+=== "Modern"
+    ``` csound-orc
+    cngoto(condition, label)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    cngoto condition, label
+    ```
 
 where _label_ is in the same instrument block and is not an expression, and where _condition_ uses one of the Relational operators (_&lt;_,_ =_, _&lt;=_, _==_, _!=_) (and _=_ for convenience, see also under [Conditional Values](../control/conditional.md)).
 

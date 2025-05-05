@@ -6,9 +6,15 @@ category:Real-time MIDI:Input
 Get the velocity from a MIDI event.
 
 ## Syntax
-``` csound-orc
-ival veloc [ilow] [, ihigh]
-```
+=== "Modern"
+    ``` csound-orc
+    ival = veloc([ilow] [, ihigh])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ival veloc [ilow] [, ihigh]
+    ```
 
 ### Initialization
 

@@ -8,9 +8,15 @@ Scale the frequency components of a pv stream, resulting in pitch shift.
 Output amplitudes can be optionally modified in order to attempt formant preservation.
 
 ## Syntax
-``` csound-orc
-fsig pvscale fsigin, kscal [, kkeepform, kgain, kcoefs]
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvscale(fsigin, kscal [, kkeepform, kgain, kcoefs])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvscale fsigin, kscal [, kkeepform, kgain, kcoefs]
+    ```
 
 ### Performance
 

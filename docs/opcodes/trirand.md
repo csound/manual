@@ -8,11 +8,19 @@ Triangular distribution random number generator.
 This is an x-class noise generator.
 
 ## Syntax
-``` csound-orc
-ares trirand krange
-ires trirand krange
-kres trirand krange
-```
+=== "Modern"
+    ``` csound-orc
+    ares = trirand(krange)
+    ires = trirand(krange)
+    kres = trirand(krange)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares trirand krange
+    ires trirand krange
+    kres trirand krange
+    ```
 
 ### Performance
 

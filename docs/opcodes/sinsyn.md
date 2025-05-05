@@ -8,9 +8,15 @@ Streaming partial track additive synthesis with cubic phase interpolation.
 The *sinsyn* opcode takes an input containg a TRACKS pv streaming signal (as generated, for instance by the [partials](partials.md) opcode). It resynthesises the signal using linear amplitude and cubic phase interpolation to drive a bank of interpolating oscillators with amplitude scaling control. *sinsyn* attempts to preserve the phase of the partials in the original signal and in so doing it does not allow for pitch or timescale modifications of the signal.
 
 ## Syntax
-``` csound-orc
-asig sinsyn fin, kscal, kmaxtracks, ifn
-```
+=== "Modern"
+    ``` csound-orc
+    asig = sinsyn(fin, kscal, kmaxtracks, ifn)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig sinsyn fin, kscal, kmaxtracks, ifn
+    ```
 
 ### Performance
 

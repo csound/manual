@@ -8,9 +8,15 @@ Moog voltage-controlled lowpass filter emulation.
 Mvclpf2 is an digital implementation of the 4th-order (24 dB/oct) Moog ladder filter originally written by Fons Andriaensen. According to the author, mvclpf2 "uses five non-linear elements, in the input and in all four filter sections. It works by using the derivative of the nonlinearity (for which 1 / (1 + x * x) is reasonable approximation). The main advantage of this is that only one evaluation of the non-linear function is required for each section".
 
 ## Syntax
-``` csound-orc
-asig mvclpf2 ain, xcf, xres[, istor]
-```
+=== "Modern"
+    ``` csound-orc
+    asig = mvclpf2(ain, xcf, xres[, istor])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig mvclpf2 ain, xcf, xres[, istor]
+    ```
 
 ### Initialization
 

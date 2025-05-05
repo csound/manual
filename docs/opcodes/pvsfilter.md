@@ -6,9 +6,15 @@ category:Spectral Processing:Streaming
 Multiply amplitudes of a pvoc stream by those of a second pvoc stream, with dynamic scaling.
 
 ## Syntax
-``` csound-orc
-fsig pvsfilter fsigin, fsigfil, kdepth [, igain]
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvsfilter(fsigin, fsigfil, kdepth [, igain])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvsfilter fsigin, fsigfil, kdepth [, igain]
+    ```
 
 ### Performance
 

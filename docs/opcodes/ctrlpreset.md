@@ -6,9 +6,15 @@ category:Real-time MIDI:Input
 Defines a preset for MIDI controllers.
 
 ## Syntax
-``` csound-orc
-kpreset ctrlpreset ktag, kchnl, kctlno1, [kctlno2] [, kctlno3] ...
-```
+=== "Modern"
+    ``` csound-orc
+    kpreset = ctrlpreset(ktag, kchnl, kctlno1, [kctlno2] [, kctlno3] ...)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kpreset ctrlpreset ktag, kchnl, kctlno1, [kctlno2] [, kctlno3] ...
+    ```
 
 ### Initialization
 

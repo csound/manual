@@ -6,9 +6,15 @@ category:Signal Generators:Sample Playback
 Read sampled sound (mono or stereo) from a table, with looping, and high precision.
 
 ## Syntax
-``` csound-orc
-ares lposcil kamp, kfreqratio, kloop, kend, ifn [, iphs]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = lposcil(kamp, kfreqratio, kloop, kend, ifn [, iphs])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares lposcil kamp, kfreqratio, kloop, kend, ifn [, iphs]
+    ```
 
 ### Initialization
 

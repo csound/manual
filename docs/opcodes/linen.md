@@ -6,10 +6,17 @@ category:Signal Generators:Envelope Generators
 Applies a straight line rise and decay pattern to an input amp signal.
 
 ## Syntax
-``` csound-orc
-ares linen xamp, irise, idur, idec
-kres linen kamp, irise, idur, idec
-```
+=== "Modern"
+    ``` csound-orc
+    ares = linen(xamp, irise, idur, idec)
+    kres = linen(kamp, irise, idur, idec)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares linen xamp, irise, idur, idec
+    kres linen kamp, irise, idur, idec
+    ```
 
 ### Initialization
 

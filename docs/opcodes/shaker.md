@@ -8,9 +8,15 @@ Sounds like the shaking of a maraca or similar gourd instrument.
 The method is a physically inspired model developed from Perry Cook, but re-coded for Csound.
 
 ## Syntax
-``` csound-orc
-ares shaker kamp, kfreq, kbeans, kdamp, ktimes [, idecay]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = shaker(kamp, kfreq, kbeans, kdamp, ktimes [, idecay])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares shaker kamp, kfreq, kbeans, kdamp, ktimes [, idecay]
+    ```
 
 ### Initialization
 

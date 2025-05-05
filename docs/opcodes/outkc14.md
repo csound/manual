@@ -6,9 +6,15 @@ category:Real-time MIDI:Output
 Sends 14-bit MIDI controller output at k-rate.
 
 ## Syntax
-``` csound-orc
-outkc14 kchn, kmsb, klsb, kvalue, kmin, kmax
-```
+=== "Modern"
+    ``` csound-orc
+    outkc14(kchn, kmsb, klsb, kvalue, kmin, kmax)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    outkc14 kchn, kmsb, klsb, kvalue, kmin, kmax
+    ```
 
 ### Performance
 

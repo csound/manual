@@ -8,9 +8,15 @@ reads data from an ATS file.
 _ATSreadnz_ returns the energy (_kenergy_) of a user specified noise band (1-25 bands) at the time indicated by the time pointer _ktimepnt_.
 
 ## Syntax
-``` csound-orc
-kenergy ATSreadnz ktimepnt, iatsfile, iband
-```
+=== "Modern"
+    ``` csound-orc
+    kenergy = ATSreadnz(ktimepnt, iatsfile, iband)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kenergy ATSreadnz ktimepnt, iatsfile, iband
+    ```
 
 ### Initialization
 

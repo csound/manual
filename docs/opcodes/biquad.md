@@ -6,9 +6,15 @@ category:Signal Modifiers:Standard Filters
 A sweepable general purpose biquadratic digital filter.
 
 ## Syntax
-``` csound-orc
-ares biquad asig, kb0, kb1, kb2, ka0, ka1, ka2 [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = biquad(asig, kb0, kb1, kb2, ka0, ka1, ka2 [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares biquad asig, kb0, kb1, kb2, ka0, ka1, ka2 [, iskip]
+    ```
 
 ### Initialization
 

@@ -6,9 +6,15 @@ category:Vectorial:Vectorial operations
 Maps elements from a vector onto another according to indexes.
 
 ## Syntax
-``` csound-orc
-vmap ifn1, ifn2, ielements [,idstoffset, isrcoffset]
-```
+=== "Modern"
+    ``` csound-orc
+    vmap(ifn1, ifn2, ielements [,idstoffset, isrcoffset])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vmap ifn1, ifn2, ielements [,idstoffset, isrcoffset]
+    ```
 
 ### Initialization
 

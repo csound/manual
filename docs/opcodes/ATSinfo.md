@@ -6,9 +6,15 @@ category:Spectral Processing:ATS
 Reads data out of the header of an ATS file.
 
 ## Syntax
-``` csound-orc
-idata ATSinfo iatsfile, ilocation
-```
+=== "Modern"
+    ``` csound-orc
+    idata = ATSinfo(iatsfile, ilocation)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    idata ATSinfo iatsfile, ilocation
+    ```
 
 ### Initialization
 

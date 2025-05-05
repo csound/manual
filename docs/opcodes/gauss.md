@@ -8,14 +8,25 @@ Gaussian distribution random number generator.
 This is an x-class noise generator.
 
 ## Syntax
-``` csound-orc
-ares gauss krange
-ires gauss irange
-kres gauss krange
-ares gauss kmean, ksdev
-ires gauss imean, isdev
-kres gauss kmean, ksdev
-```
+=== "Modern"
+    ``` csound-orc
+    ares = gauss(krange)
+    ires = gauss(irange)
+    kres = gauss(krange)
+    ares = gauss(kmean, ksdev)
+    ires = gauss(imean, isdev)
+    kres = gauss(kmean, ksdev)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares gauss krange
+    ires gauss irange
+    kres gauss krange
+    ares gauss kmean, ksdev
+    ires gauss imean, isdev
+    kres gauss kmean, ksdev
+    ```
 
 ### Performance
 

@@ -6,9 +6,15 @@ category:Table Control:Read/Write Operations
 Simple, fast table copy opcode.
 
 ## Syntax
-``` csound-orc
-tableicopy idft, isft
-```
+=== "Modern"
+    ``` csound-orc
+    tableicopy(idft, isft)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    tableicopy idft, isft
+    ```
 
 ### Initialization
 

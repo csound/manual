@@ -6,9 +6,15 @@ category:Spectral Processing:Streaming
 Performs cross-synthesis between two source fsigs.
 
 ## Syntax
-``` csound-orc
-fsig pvscross fsrc, fdest, kamp1, kamp2
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvscross(fsrc, fdest, kamp1, kamp2)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvscross fsrc, fdest, kamp1, kamp2
+    ```
 
 ### Performance
 

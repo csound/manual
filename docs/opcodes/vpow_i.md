@@ -6,9 +6,15 @@ category:Vectorial:Scalar operations
 Raises each element of a vector to a scalar power.
 
 ## Syntax
-``` csound-orc
-vpow_i ifn, ival, ielements [, idstoffset]
-```
+=== "Modern"
+    ``` csound-orc
+    vpow_i(ifn, ival, ielements [, idstoffset])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vpow_i ifn, ival, ielements [, idstoffset]
+    ```
 
 ### Initialization
 

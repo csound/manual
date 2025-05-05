@@ -6,10 +6,17 @@ category:Instrument Control:Subinstrument Control
 Creates and runs a numbered instrument instance as if it were an opcode.
 
 ## Syntax
-``` csound-orc
-a1, [...] [, a8] subinstr instrnum [, p4] [, p5] [...]
-a1, [...] [, a8] subinstr "insname" [, p4] [, p5] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    a1, [...] [, a8] = subinstr(instrnum [, p4] [, p5] [...])
+    a1, [...] [, a8] = subinstr("insname" [, p4] [, p5] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    a1, [...] [, a8] subinstr instrnum [, p4] [, p5] [...]
+    a1, [...] [, a8] subinstr "insname" [, p4] [, p5] [...]
+    ```
 
 ### Initialization
 

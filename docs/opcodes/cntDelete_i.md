@@ -8,9 +8,15 @@ Delete a counter.
 Plugin opcode in counter and render any memory used.
 
 ## Syntax
-``` csound-orc
-ival cntDelete_i icnt
-```
+=== "Modern"
+    ``` csound-orc
+    ival = cntDelete_i(icnt)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ival cntDelete_i icnt
+    ```
 
 ### Initialization
 

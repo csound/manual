@@ -8,9 +8,15 @@ Suspends a performance while a special initialization pass is executed.
 Whenever this statement is encountered during a p-time pass, performance is temporarily suspended while a special Initialization pass, beginning at _label_ and continuing to _rireturn_ or _endin_, is executed. Performance will then be resumed from where it left off.
 
 ## Syntax
-``` csound-orc
-reinit label
-```
+=== "Modern"
+    ``` csound-orc
+    reinit(label)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    reinit label
+    ```
 
 ## Examples
 

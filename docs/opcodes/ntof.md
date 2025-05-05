@@ -10,10 +10,17 @@ Plugin opcode in emugens.
 It allows note name to include microtones or a deviation in cents.
 
 ## Syntax
-``` csound-orc
-kfreq ntof Snote
-ifreq ntof Snote
-```
+=== "Modern"
+    ``` csound-orc
+    kfreq = ntof(Snote)
+    ifreq = ntof(Snote)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kfreq ntof Snote
+    ifreq ntof Snote
+    ```
 
 ### Performance
 

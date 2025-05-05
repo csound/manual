@@ -8,9 +8,15 @@ Get information from a PVOC-EX formatted source.
 Get format information about fsrc, whether created by an opcode such as pvsanal, or obtained from a PVOCEX file by pvsfread. This information is available at init time, and can be used to set parameters for other pvs opcodes, and in particular for creating function tables (e.g. for pvsftw), or setting the number of oscillators for pvsadsyn.
 
 ## Syntax
-``` csound-orc
-ioverlap, inumbins, iwinsize, iformat pvsinfo fsrc
-```
+=== "Modern"
+    ``` csound-orc
+    ioverlap, inumbins, iwinsize, iformat = pvsinfo(fsrc)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ioverlap, inumbins, iwinsize, iformat pvsinfo fsrc
+    ```
 
 ### Initialization
 

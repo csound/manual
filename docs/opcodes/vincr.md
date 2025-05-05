@@ -6,9 +6,15 @@ category:Mathematical Operations:Comparators and Accumulators
 Increments one audio variable with another signal, i.e. it accumulates output.
 
 ## Syntax
-``` csound-orc
-vincr accum, aincr
-```
+=== "Modern"
+    ``` csound-orc
+    vincr(accum, aincr)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vincr accum, aincr
+    ```
 
 ### Performance
 

@@ -6,9 +6,15 @@ category:Signal I/O:Soundfile Queries
 Returns the number of channels in a sound file.
 
 ## Syntax
-``` csound-orc
-ir filenchnls ifilcod [, iallowraw]
-```
+=== "Modern"
+    ``` csound-orc
+    ir = filenchnls(ifilcod [, iallowraw])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ir filenchnls ifilcod [, iallowraw]
+    ```
 
 ### Initialization
 

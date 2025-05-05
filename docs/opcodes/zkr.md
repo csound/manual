@@ -6,9 +6,15 @@ category:Zak Patch System
 Reads from a location in zk space at k-rate.
 
 ## Syntax
-``` csound-orc
-kres zkr kndx
-```
+=== "Modern"
+    ``` csound-orc
+    kres = zkr(kndx)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres zkr kndx
+    ```
 
 ### Initialization
 

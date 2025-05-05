@@ -8,9 +8,15 @@ Distorts a phasor for reading two unequal portions of a table in equal periods.
 The _pdhalfy_ opcode is a variation on the phase distortion synthesis method of the [pdhalf](../opcodes/pdhalf.md) opcode.  It is useful for distorting a phasor in order to read two unequal portions of a table in the same number of samples.
 
 ## Syntax
-``` csound-orc
-aout pdhalfy ain, kShapeAmount [, ibipolar [, ifullscale]]
-```
+=== "Modern"
+    ``` csound-orc
+    aout = pdhalfy(ain, kShapeAmount [, ibipolar [, ifullscale]])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout pdhalfy ain, kShapeAmount [, ibipolar [, ifullscale]]
+    ```
 
 ### Initialization
 

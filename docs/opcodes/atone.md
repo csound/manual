@@ -6,9 +6,15 @@ category:Signal Modifiers:Standard Filters
 A hi-pass filter whose transfer functions are the complements of the [tone](../opcodes/tone.md) opcode.
 
 ## Syntax
-``` csound-orc
-ares atone asig, khp [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = atone(asig, khp [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares atone asig, khp [, iskip]
+    ```
 
 ### Initialization
 

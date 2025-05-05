@@ -6,9 +6,15 @@ category:Vectorial:Delay Paths
 Generate a sort of 'vectorial' portamento.
 
 ## Syntax
-``` csound-orc
-vport ifn, khtime, ielements [, ifnInit]
-```
+=== "Modern"
+    ``` csound-orc
+    vport(ifn, khtime, ielements [, ifnInit])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vport ifn, khtime, ielements [, ifnInit]
+    ```
 
 ### Initialization
 

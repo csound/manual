@@ -8,9 +8,15 @@ A band-pass Butterworth filter.
 Implementation of a second-order band-pass Butterworth filter. This opcode can also be written as [butbp](../opcodes/butbp.md).
 
 ## Syntax
-``` csound-orc
-ares butterbp asig, xfreq, xband [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = butterbp(asig, xfreq, xband [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares butterbp asig, xfreq, xband [, iskip]
+    ```
 
 ### Initialization
 

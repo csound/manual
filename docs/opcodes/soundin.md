@@ -8,10 +8,17 @@ Reads audio data from an external device or stream.
 Up to 24 channels may be read before v5.14, extended to 40 in later versions.
 
 ## Syntax
-``` csound-orc
-ar1[, ar2[, ar3[, ... a24]]] soundin ifilcod [, iskptim] [, iformat] \
-                                     [, iskipinit] [, ibufsize]
-```
+=== "Modern"
+    ``` csound-orc
+    ar1[, ar2[, ar3[, ... a24]]] = soundin(ifilcod [, iskptim] [, iformat] \
+                                           [, iskipinit] [, ibufsize])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar1[, ar2[, ar3[, ... a24]]] soundin ifilcod [, iskptim] [, iformat] \
+                                         [, iskipinit] [, ibufsize]
+    ```
 
 ### Initialization
 

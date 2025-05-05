@@ -8,9 +8,15 @@ Reads from a phase vocoder analysis file and makes the retrieved data available.
 _pvbufread_ reads from a [pvoc](../opcodes/pvoc.md) file and makes the retrieved data available to any following [pvinterp](../opcodes/pvinterp.md) and [pvcross](../opcodes/pvcross.md) units that appear in an instrument before a subsequent _pvbufread_ (just as [lpread](../opcodes/lpread.md) and [lpreson](../opcodes/lpreson.md) work together). The data is passed internally and the unit has no output of its own.
 
 ## Syntax
-``` csound-orc
-pvbufread ktimpnt, ifile
-```
+=== "Modern"
+    ``` csound-orc
+    pvbufread(ktimpnt, ifile)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    pvbufread ktimpnt, ifile
+    ```
 
 ### Initialization
 

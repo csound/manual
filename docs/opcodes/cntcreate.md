@@ -8,9 +8,15 @@ Create a counter object.
 Plugin opcode in counter.
 
 ## Syntax
-``` csound-orc
-icnt cntCreate [imax, imin, inc]
-```
+=== "Modern"
+    ``` csound-orc
+    icnt = cntCreate([imax, imin, inc])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    icnt cntCreate [imax, imin, inc]
+    ```
 
 ### Initialization
 

@@ -8,10 +8,17 @@ A low-pass Butterworth filter.
 Implementation of a second-order low-pass Butterworth filter. This opcode can also be written as [butlp](../opcodes/butlp.md).
 
 ## Syntax
-``` csound-orc
-ares butterlp asig, kfreq [, iskip]
-ares butterlp asig, afreq [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = butterlp(asig, kfreq [, iskip])
+    ares = butterlp(asig, afreq [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares butterlp asig, kfreq [, iskip]
+    ares butterlp asig, afreq [, iskip]
+    ```
 
 ### Initialization
 

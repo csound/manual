@@ -6,9 +6,15 @@ category:Signal I/O:Signal Output
 A MIDI delay opcode.
 
 ## Syntax
-``` csound-orc
-mdelay kstatus, kchan, kd1, kd2, kdelay
-```
+=== "Modern"
+    ``` csound-orc
+    mdelay(kstatus, kchan, kd1, kd2, kdelay)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    mdelay kstatus, kchan, kd1, kd2, kdelay
+    ```
 
 ### Performance
 

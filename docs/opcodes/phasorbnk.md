@@ -6,10 +6,17 @@ category:Signal Generators:Phasors
 Produce an arbitrary number of normalized moving phase values, accessable by an index.
 
 ## Syntax
-``` csound-orc
-ares phasorbnk xcps, kndx, icnt [, iphs]
-kres phasorbnk kcps, kndx, icnt [, iphs]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = phasorbnk(xcps, kndx, icnt [, iphs])
+    kres = phasorbnk(kcps, kndx, icnt [, iphs])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares phasorbnk xcps, kndx, icnt [, iphs]
+    kres phasorbnk kcps, kndx, icnt [, iphs]
+    ```
 
 ### Initialization
 

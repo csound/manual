@@ -6,9 +6,15 @@ category:Signal I/O:Software Bus
 Sets the local sampling rate value in a user-defined opcode block.
 
 ## Syntax
-``` csound-orc
-oversample ifactor [,icvt_in, icvt_out]
-```
+=== "Modern"
+    ``` csound-orc
+    oversample(ifactor [,icvt_in, icvt_out])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    oversample ifactor [,icvt_in, icvt_out]
+    ```
 
 ### Initialization
 

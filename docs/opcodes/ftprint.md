@@ -10,9 +10,15 @@ Plugin opcode in emugens.
 It works at k-time, a trigger controls when to print (use ktrig=1, which is the default, to print only at i-time)
 
 ## Syntax
-``` csound-orc
-ftprint ifn [, ktrig, kstart, kend, kstep, inumcols ]
-```
+=== "Modern"
+    ``` csound-orc
+    ftprint(ifn [, ktrig, kstart, kend, kstep, inumcols ])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ftprint ifn [, ktrig, kstart, kend, kstep, inumcols ]
+    ```
 
 ### Initialization
 

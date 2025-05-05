@@ -6,9 +6,15 @@ category:Signal Modifiers:Standard Filters:Control
 A notch filter whose transfer functions are the complements of the reson opcode.
 
 ## Syntax
-``` csound-orc
-kres aresonk ksig, kcf, kbw [, iscl] [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    kres = aresonk(ksig, kcf, kbw [, iscl] [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres aresonk ksig, kcf, kbw [, iscl] [, iskip]
+    ```
 
 ### Initialization
 

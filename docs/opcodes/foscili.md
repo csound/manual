@@ -6,9 +6,15 @@ category:Signal Generators:FM Synthesis
 Basic frequency modulated oscillator with linear interpolation.
 
 ## Syntax
-``` csound-orc
-ares foscili xamp, kcps, xcar, xmod, kndx [, ifn, iphs]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = foscili(xamp, kcps, xcar, xmod, kndx [, ifn, iphs])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares foscili xamp, kcps, xcar, xmod, kndx [, ifn, iphs]
+    ```
 
 ### Initialization
 

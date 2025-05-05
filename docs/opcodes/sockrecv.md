@@ -8,13 +8,23 @@ Receives data from other processes using the low-level UDP or TCP protocols.
 Uses the UDP (_sockrecv_ and _sockrecvs_) or TCP (_strecv_) protocol onto a network. The data is not subject to any encoding or special routing. The _sockrecvs_ opcode receives a stereo signal interleaved.
 
 ## Syntax
-``` csound-orc
-asig sockrecv iport, ilength
-ksig sockrecv iport, ilength
-asigl, asigr sockrecvs iport, ilength
-String sockrecv iport, ilength
-asig [,kstate] strecv Sipaddr, iport
-```
+=== "Modern"
+    ``` csound-orc
+    asig = sockrecv(iport, ilength)
+    ksig = sockrecv(iport, ilength)
+    asigl, asigr = sockrecvs(iport, ilength)
+    String = sockrecv(iport, ilength)
+    asig [,kstate] = strecv(Sipaddr, iport)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig sockrecv iport, ilength
+    ksig sockrecv iport, ilength
+    asigl, asigr sockrecvs iport, ilength
+    String sockrecv iport, ilength
+    asig [,kstate] strecv Sipaddr, iport
+    ```
 
 ### Initialization
 

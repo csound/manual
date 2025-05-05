@@ -6,9 +6,15 @@ category:Spectral Processing:Streaming
 Initialise a spectral (f) variable to zero.
 
 ## Syntax
-``` csound-orc
-fsig pvsinit isize [, iolap, iwinsize, iwintype, iformat]
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvsinit(isize [, iolap, iwinsize, iwintype, iformat])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvsinit isize [, iolap, iwinsize, iwintype, iformat]
+    ```
 
 ### Performance
 

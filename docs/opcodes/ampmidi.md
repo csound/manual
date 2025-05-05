@@ -6,9 +6,15 @@ category:Real-time MIDI:Converters
 Get the velocity of the current MIDI event.
 
 ## Syntax
-``` csound-orc
-iamp ampmidi iscal [, ifn]
-```
+=== "Modern"
+    ``` csound-orc
+    iamp = ampmidi(iscal [, ifn])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    iamp ampmidi iscal [, ifn]
+    ```
 
 ### Initialization
 

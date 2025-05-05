@@ -10,9 +10,15 @@ Plugin opcode in cs_date.
 _pwd_ runs at i-time only.
 
 ## Syntax
-``` csound-orc
-Sres pwd
-```
+=== "Modern"
+    ``` csound-orc
+    Sres = pwd()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    Sres pwd
+    ```
 
 ### Performance
 

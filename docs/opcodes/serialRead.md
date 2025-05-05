@@ -8,9 +8,15 @@ Read data from a serial port for arduino.
 Plugin opcode in serial.
 
 ## Syntax
-``` csound-orc
-kByte serialRead iPort
-```
+=== "Modern"
+    ``` csound-orc
+    kByte = serialRead(iPort)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kByte serialRead iPort
+    ```
 
 ### Performance
 

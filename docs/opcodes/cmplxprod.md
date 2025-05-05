@@ -6,9 +6,15 @@ category:Array Operations: complex numbers
 Complex  product of two arrays of the same size and in real-imaginary interleaved format.
 
 ## Syntax
-``` csound-orc
-kout[] cmplxprod kin1[], kin2[]
-```
+=== "Modern"
+    ``` csound-orc
+    kout[] = cmplxprod(kin1[], kin2[])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kout[] cmplxprod kin1[], kin2[]
+    ```
 
 ### Performance
 

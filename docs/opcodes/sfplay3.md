@@ -8,10 +8,17 @@ Plays a SoundFont2 (SF2) sample preset, generating a stereo sound with cubic int
 These opcodes allow management the sample-structure of SF2 files. In order to understand the usage of these opcodes, the user must have some knowledge of the SF2 format, so a brief description of this format can be found in the [SoundFont2 File Format](../siggen/sample.md) section.
 
 ## Syntax
-``` csound-orc
-ar1, ar2 sfplay3 ivel, inotenum, xamp, xfreq, ipreindex [, iflag] \
-                 [, ioffset] [, ienv]
-```
+=== "Modern"
+    ``` csound-orc
+    ar1, ar2 = sfplay3(ivel, inotenum, xamp, xfreq, ipreindex [, iflag] \
+                       [, ioffset] [, ienv])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar1, ar2 sfplay3 ivel, inotenum, xamp, xfreq, ipreindex [, iflag] \
+                     [, ioffset] [, ienv]
+    ```
 
 ### Initialization
 

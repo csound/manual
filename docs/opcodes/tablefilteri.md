@@ -8,9 +8,15 @@ Filters a source table and writes result into a destination table.
 This opcode can be used in order to filter values from function tables following certain algorithms. The filtered output is written into a destination table and the number of elements that have passed the filter is returned.
 
 ## Syntax
-``` csound-orc
-inumpassed tablefilteri iouttable, iintatble, imode, iparam
-```
+=== "Modern"
+    ``` csound-orc
+    inumpassed = tablefilteri(iouttable, iintatble, imode, iparam)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    inumpassed tablefilteri iouttable, iintatble, imode, iparam
+    ```
 
 ### Initialization
 

@@ -8,9 +8,15 @@ Cross synthesis using FFT's.
 This is an implementation of cross synthesis using FFT's.
 
 ## Syntax
-``` csound-orc
-ares cross2 ain1, ain2, isize, ioverlap, iwin, kbias
-```
+=== "Modern"
+    ``` csound-orc
+    ares = cross2(ain1, ain2, isize, ioverlap, iwin, kbias)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares cross2 ain1, ain2, isize, ioverlap, iwin, kbias
+    ```
 
 ### Initialization
 

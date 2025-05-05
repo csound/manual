@@ -6,9 +6,15 @@ category:Real-time MIDI:Input
 Print the saved values of MIDI controllers from an array to the console or a file.
 
 ## Syntax
-``` csound-orc
-ctrlprint kcont[][, Sfile]
-```
+=== "Modern"
+    ``` csound-orc
+    ctrlprint(kcont[][, Sfile])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ctrlprint kcont[][, Sfile]
+    ```
 
 ### Initialization
 

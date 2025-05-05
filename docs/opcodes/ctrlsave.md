@@ -6,9 +6,15 @@ category:Real-time MIDI:Input
 Recovers the current values of MIDI controllers to a k-array.
 
 ## Syntax
-``` csound-orc
-kconnt[] ctrlsave ichnl, ictlno1, [ictlno2] [, ictlno3] ...
-```
+=== "Modern"
+    ``` csound-orc
+    kconnt[] = ctrlsave(ichnl, ictlno1, [ictlno2] [, ictlno3] ...)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kconnt[] ctrlsave ichnl, ictlno1, [ictlno2] [, ictlno3] ...
+    ```
 
 ### Initialization
 

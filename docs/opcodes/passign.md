@@ -6,11 +6,19 @@ category:Instrument Control:Initialization and Reinitialization
 Assigns a range of p-fields to ivariables, or i- or k-array.
 
 ## Syntax
-``` csound-orc
-ivar1, ... passign [istart][, iend]
-iarray passign [istart][, iend]
-karray passign [istart][, iend]
-```
+=== "Modern"
+    ``` csound-orc
+    ivar1, ... = passign([istart][, iend])
+    iarray = passign([istart][, iend])
+    karray = passign([istart][, iend])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ivar1, ... passign [istart][, iend]
+    iarray passign [istart][, iend]
+    karray passign [istart][, iend]
+    ```
 
 ### Initialisation
 

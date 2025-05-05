@@ -6,12 +6,21 @@ category:Mathematical Operations:Arrays
 Returns the maximum of its two arguments.
 
 ## Syntax
-``` csound-orc
-ires[] fmax iarg1[], iarg2[]
-kres[] fmax karg1[], karg2[]
-ires[] fmax iarg1[], iarg2
-kres[] fmax karg[], karg2
-```
+=== "Modern"
+    ``` csound-orc
+    ires[] = fmax(iarg1[], iarg2[])
+    kres[] = fmax(karg1[], karg2[])
+    ires[] = fmax(iarg1[], iarg2)
+    kres[] = fmax(karg[], karg2)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ires[] fmax iarg1[], iarg2[]
+    kres[] fmax karg1[], karg2[]
+    ires[] fmax iarg1[], iarg2
+    kres[] fmax karg[], karg2
+    ```
 
 ### Initialization
 

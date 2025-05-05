@@ -6,9 +6,15 @@ category:Signal I/O:Signal Output
 Outputs audio to a range of adjacent audio channels on the audio output device.
 
 ## Syntax
-``` csound-orc
-outrg kstart, aout1 [,aout2, aout3, ..., aoutN]
-```
+=== "Modern"
+    ``` csound-orc
+    outrg(kstart, aout1 [,aout2, aout3, ..., aoutN])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    outrg kstart, aout1 [,aout2, aout3, ..., aoutN]
+    ```
 
 ### Performance
 

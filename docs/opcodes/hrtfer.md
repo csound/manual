@@ -10,9 +10,15 @@ Creates 3D audio for two speakers. Output is binaural (headphone) 3D audio.
 > This opcode is deprecated; use hrtfstat or similar opcode instead
 
 ## Syntax
-``` csound-orc
-aleft, aright hrtfer asig, kaz, kelev, "HRTFcompact"
-```
+=== "Modern"
+    ``` csound-orc
+    aleft, aright = hrtfer(asig, kaz, kelev, "HRTFcompact")
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aleft, aright hrtfer asig, kaz, kelev, "HRTFcompact"
+    ```
 
 ### Initialization
 

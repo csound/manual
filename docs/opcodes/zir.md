@@ -6,9 +6,15 @@ category:Zak Patch System
 Reads from a location in zk space at i-rate.
 
 ## Syntax
-``` csound-orc
-ir zir indx
-```
+=== "Modern"
+    ``` csound-orc
+    ir = zir(indx)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ir zir indx
+    ```
 
 ### Initialization
 

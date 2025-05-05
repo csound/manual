@@ -8,9 +8,15 @@ Transfer control at i-time when a new note is being tied onto a previously held 
 Similar to [igoto](../opcodes/igoto.md) but effective only during an i-time pass at which a new note is being &#8220;tied&#8221; onto a previously held note. (See [i Statement](../scoregens/i.md)) It does not work when a tie has not taken place. Allows an instrument to skip initialization of units according to whether a proposed tie was in fact successful. (See also [tival](../opcodes/tival.md)).
 
 ## Syntax
-``` csound-orc
-tigoto label
-```
+=== "Modern"
+    ``` csound-orc
+    tigoto(label)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    tigoto label
+    ```
 
 where _label_ is in the same instrument block and is not an expression.
 

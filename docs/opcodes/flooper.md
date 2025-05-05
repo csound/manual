@@ -8,9 +8,15 @@ Function-table-based crossfading looper.
 This opcode reads audio from a function table and plays it back in a loop with user-defined start time, duration and crossfade time. It also allows the pitch of the loop to be controlled, including reversed playback. It accepts non-power-of-two tables, such as deferred-allocation GEN01 tables, with one or two channels.
 
 ## Syntax
-``` csound-orc
-asig1[, asig2] flooper kamp, kpitch, istart, idur, ifad, ifn
-```
+=== "Modern"
+    ``` csound-orc
+    asig1[, asig2] = flooper(kamp, kpitch, istart, idur, ifad, ifn)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig1[, asig2] flooper kamp, kpitch, istart, idur, ifad, ifn
+    ```
 
 ### Initialization
 

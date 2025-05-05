@@ -6,9 +6,15 @@ category:Table Control:Read/Write Operations
 Mixes two tables.
 
 ## Syntax
-``` csound-orc
-tableimix idft, idoff, ilen, is1ft, is1off, is1g, is2ft, is2off, is2g
-```
+=== "Modern"
+    ``` csound-orc
+    tableimix(idft, idoff, ilen, is1ft, is1off, is1g, is2ft, is2off, is2g)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    tableimix idft, idoff, ilen, is1ft, is1off, is1g, is2ft, is2off, is2g
+    ```
 
 ### Initialization
 

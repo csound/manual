@@ -8,9 +8,15 @@ Return the ASCII code of the character in Sstr at kpos (defaults to zero which m
 _strchark_ runs both at init and performance time.
 
 ## Syntax
-``` csound-orc
-kchr strchark Sstr [, kpos]
-```
+=== "Modern"
+    ``` csound-orc
+    kchr = strchark(Sstr [, kpos])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kchr strchark Sstr [, kpos]
+    ```
 
 ## See Also
 

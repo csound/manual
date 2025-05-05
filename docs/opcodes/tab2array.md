@@ -10,10 +10,17 @@ Plugin opcode in emugens.
 The _tab2array_ opcode takes an f-table and copies a slice to an array, possibly allocating it or changing its size
 
 ## Syntax
-``` csound-orc
-kout[] tab2array ifn [, kstart, kend, kstep ]
-iout[] tab2array ifn [, istart, iend, istep ]
-```
+=== "Modern"
+    ``` csound-orc
+    kout[] = tab2array(ifn [, kstart, kend, kstep ])
+    iout[] = tab2array(ifn [, istart, iend, istep ])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kout[] tab2array ifn [, kstart, kend, kstep ]
+    iout[] tab2array ifn [, istart, iend, istep ]
+    ```
 
 ### Initialization
 

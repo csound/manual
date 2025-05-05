@@ -8,9 +8,15 @@ Receives an arate array signal into an instrument through a named port.
 Plugin opcode in signalflowgraph
 
 ## Syntax
-``` csound-orc
-array inletv Sname
-```
+=== "Modern"
+    ``` csound-orc
+    array = inletv(Sname)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    array inletv Sname
+    ```
 
 ### Initialization
 

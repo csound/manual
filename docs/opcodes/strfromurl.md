@@ -6,9 +6,15 @@ category:Strings:Definition
 Set a string variable to the value found from reading an URL.
 
 ## Syntax
-``` csound-orc
-Sdst strfromurl StringURL
-```
+=== "Modern"
+    ``` csound-orc
+    Sdst = strfromurl(StringURL)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    Sdst strfromurl StringURL
+    ```
 
 ### Initialization
 

@@ -8,9 +8,15 @@ Read absolute time in k-rate cycles, since the start of aninstance of an instrum
 Called at both i-time as well as k-time. NB: the returned value at k-time starts at 1
 
 ## Syntax
-``` csound-orc
-kres timeinstk
-```
+=== "Modern"
+    ``` csound-orc
+    kres = timeinstk()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres timeinstk
+    ```
 
 ### Performance
 

@@ -8,10 +8,17 @@ Semi-physical model of a water drop.
 It is one of the PhISEM percussion opcodes. PhISEM (Physically Informed Stochastic Event Modeling) is an algorithmic approach for simulating collisions of multiple independent sound producing objects.
 
 ## Syntax
-``` csound-orc
-ares dripwater kamp, idettack [, inum] [, idamp] [, imaxshake] [, ifreq] \
-               [, ifreq1] [, ifreq2]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = dripwater(kamp, idettack [, inum] [, idamp] [, imaxshake] [, ifreq] \
+                     [, ifreq1] [, ifreq2])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares dripwater kamp, idettack [, inum] [, idamp] [, imaxshake] [, ifreq] \
+                   [, ifreq1] [, ifreq2]
+    ```
 
 ### Initialization
 

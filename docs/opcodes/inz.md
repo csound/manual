@@ -6,9 +6,15 @@ category:Signal I/O:Signal Input
 Reads multi-channel audio samples into a ZAK array from an external device or stream.
 
 ## Syntax
-``` csound-orc
-inz ksig1
-```
+=== "Modern"
+    ``` csound-orc
+    inz(ksig1)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    inz ksig1
+    ```
 
 ### Performance
 

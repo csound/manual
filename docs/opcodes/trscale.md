@@ -8,9 +8,15 @@ Streaming partial track frequency scaling.
 The _trscale_ opcode takes an input containg a TRACKS pv streaming signal (as generated, for instance by _partials_) and scales all frequencies by a k-rate amount. It can also, optionally, scale the gain of the signal by a k-rate amount (default 1). The result is pitch shifting of the input tracks.
 
 ## Syntax
-``` csound-orc
-fsig trscale fin, kpitch [, kgain]
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = trscale(fin, kpitch [, kgain])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig trscale fin, kpitch [, kgain]
+    ```
 
 ### Performance
 

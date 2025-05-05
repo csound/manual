@@ -8,10 +8,17 @@ Low latency multichannel convolution, using a function table as impulse response
 The algorithm is to split the impulse response to partitions of length determined by the _iplen_ parameter, and delay and mix partitions so that the original, full length impulse response is reconstructed without gaps. The output delay (latency) is _iplen_ samples, and does not depend on the control rate, unlike in the case of other convolve opcodes.
 
 ## Syntax
-``` csound-orc
-a1[, a2[, a3[, ... a8]]] ftconv ain, ift, iplen[, iskipsamples \
-                                [, iirlen[, iskipinit]]]
-```
+=== "Modern"
+    ``` csound-orc
+    a1[, a2[, a3[, ... a8]]] = ftconv(ain, ift, iplen[, iskipsamples \
+                                      [, iirlen[, iskipinit]]])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    a1[, a2[, a3[, ... a8]]] ftconv ain, ift, iplen[, iskipsamples \
+                                    [, iirlen[, iskipinit]]]
+    ```
 
 ### Initialization
 

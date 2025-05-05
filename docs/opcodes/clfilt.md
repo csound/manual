@@ -8,9 +8,15 @@ Implements the classical standard analog filter types: low-pass and high-pass.
 They are implemented with the four classical kinds of filters: Butterworth, Chebyshev Type I, Chebyshev Type II, and Elliptical.  The number of poles may be any even number from 2 to 80.
 
 ## Syntax
-``` csound-orc
-ares clfilt asig, kfreq, itype, inpol [, ikind] [, ipbr] [, isba] [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = clfilt(asig, kfreq, itype, inpol [, ikind] [, ipbr] [, isba] [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares clfilt asig, kfreq, itype, inpol [, ikind] [, ipbr] [, isba] [, iskip]
+    ```
 
 ### Initialization
 

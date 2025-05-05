@@ -8,10 +8,17 @@ Checks that a file can be read at initialisation or performance time.
 Returns 1 if the sound file exists and is readable, or 0 if not.
 
 ## Syntax
-``` csound-orc
-ir filevalid ifilcod
-kr filevalid ifilcod
-```
+=== "Modern"
+    ``` csound-orc
+    ir = filevalid(ifilcod)
+    kr = filevalid(ifilcod)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ir filevalid ifilcod
+    kr filevalid ifilcod
+    ```
 
 ### Initialization
 

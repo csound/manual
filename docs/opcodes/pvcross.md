@@ -8,9 +8,15 @@ Applies the amplitudes from one phase vocoder analysis file to the data from a s
 The data is passed, as described above, from a previously called [pvbufread](../opcodes/pvbufread.md) unit. The two k-rate amplitude arguments are used to scale the amplitudes of each files separately before they are added together and used in the resynthesis (see below for further explanation). The frequencies of the first file are not used at all in this process. This unit simply allows for cross-synthesis through the application of the amplitudes of the spectra of one signal to the frequencies of a second signal. Unlike [pvinterp](../opcodes/pvinterp.md), _pvcross_ does allow for the use of the _ispecwp_ as in [pvoc](../opcodes/pvoc.md) and [vpvoc](../opcodes/vpvoc.md).
 
 ## Syntax
-``` csound-orc
-ares pvcross ktimpnt, kfmod, ifile, kampscale1, kampscale2 [, ispecwp]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = pvcross(ktimpnt, kfmod, ifile, kampscale1, kampscale2 [, ispecwp])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares pvcross ktimpnt, kfmod, ifile, kampscale1, kampscale2 [, ispecwp]
+    ```
 
 ### Initialization
 

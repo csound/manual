@@ -6,10 +6,17 @@ category:Table Control
 Generate a score function table from within the orchestra.
 
 ## Syntax
-``` csound-orc
-gir ftgen ifn, itime, isize, igen, iarga [, iargb ] [...]
-gir ftgen ifn, itime, isize, igen, iarray
-```
+=== "Modern"
+    ``` csound-orc
+    gir = ftgen(ifn, itime, isize, igen, iarga [, iargb ] [...])
+    gir = ftgen(ifn, itime, isize, igen, iarray)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    gir ftgen ifn, itime, isize, igen, iarga [, iargb ] [...]
+    gir ftgen ifn, itime, isize, igen, iarray
+    ```
 
 ### Initialization
 

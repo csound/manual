@@ -6,9 +6,15 @@ category:Signal I/O:Signal Input
 Reads audio from a range of adjacent audio channels from the audio input device.
 
 ## Syntax
-``` csound-orc
-inrg kstart, ain1 [,ain2, ain3, ..., ainN]
-```
+=== "Modern"
+    ``` csound-orc
+    inrg(kstart, ain1 [,ain2, ain3, ..., ainN])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    inrg kstart, ain1 [,ain2, ain3, ..., ainN]
+    ```
 
 ### Performance
 

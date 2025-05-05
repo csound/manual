@@ -12,11 +12,19 @@ This opcode allows for time and frequency-independent scaling. Time is advanced 
 _pvstanal_ will also scale pitch, independently of frequency, using a transposition factor (k-rate).
 
 ## Syntax
-``` csound-orc
-fsig pvstanal ktimescal, kamp, kpitch, ktab, [kdetect, kwrap, ioffset, \
-              ifftsize, ihop, idbthresh]
+=== "Modern"
+    ``` csound-orc
+    fsig = pvstanal(ktimescal, kamp, kpitch, ktab, [kdetect, kwrap, ioffset, \
+                    ifftsize, ihop, idbthresh])
+      )
+    ```
 
-```
+=== "Classic"
+    ``` csound-orc
+    fsig pvstanal ktimescal, kamp, kpitch, ktab, [kdetect, kwrap, ioffset, \
+                  ifftsize, ihop, idbthresh]
+    
+    ```
 
 ### Initialization
 

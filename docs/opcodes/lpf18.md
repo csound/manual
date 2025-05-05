@@ -6,9 +6,15 @@ category:Signal Modifiers:Standard Filters:Resonant
 A 3-pole sweepable resonant lowpass filter.
 
 ## Syntax
-``` csound-orc
-ares lpf18 asig, xfco, xres, xdist [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = lpf18(asig, xfco, xres, xdist [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares lpf18 asig, xfco, xres, xdist [, iskip]
+    ```
 
 ### Initialization
 

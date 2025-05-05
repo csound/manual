@@ -8,9 +8,15 @@ Indicates whether an event is in its last performance cycle.
 Whether an event has a finite duration (p3 > 0) or a note is extended via a time extending opcode (like _linsegr_ or _xtratim_), this opcode returns 1 if the event is currently at its last k-cycle. The only sitatuation where _lastcycle_ does not detect that the event will not run for another cycle is when the note is turned off by another event (using _turnoff2_) and is not given the possibility of running through its release stage (using _turnoff2 instrnum, imode, 0_)
 
 ## Syntax
-``` csound-orc
-kflag lastcycle
-```
+=== "Modern"
+    ``` csound-orc
+    kflag = lastcycle()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kflag lastcycle
+    ```
 
 ### Performance
 

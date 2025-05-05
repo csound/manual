@@ -8,10 +8,17 @@ Creates a tone similar to a clarinet.
 It uses a physical model developed from Perry Cook, but re-coded for Csound.
 
 ## Syntax
-``` csound-orc
-ares wgclar kamp, kfreq, kstiff, iatt, idetk, kngain, kvibf, kvamp \
-            [, ifn] [, iminfreq]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = wgclar(kamp, kfreq, kstiff, iatt, idetk, kngain, kvibf, kvamp \
+                  [, ifn] [, iminfreq])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares wgclar kamp, kfreq, kstiff, iatt, idetk, kngain, kvibf, kvamp \
+                [, ifn] [, iminfreq]
+    ```
 
 ### Initialization
 

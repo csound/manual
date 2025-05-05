@@ -8,9 +8,15 @@ Converts a pitch-class value into cycles-per-second (Hz) for equal divisions of 
 There is a restriction of no more than 100 equal divisions.
 
 ## Syntax
-``` csound-orc
-icps cpsxpch ipch, iequal, irepeat, ibase
-```
+=== "Modern"
+    ``` csound-orc
+    icps = cpsxpch(ipch, iequal, irepeat, ibase)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    icps cpsxpch ipch, iequal, irepeat, ibase
+    ```
 
 ### Initialization
 

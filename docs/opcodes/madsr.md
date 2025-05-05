@@ -6,10 +6,17 @@ category:Signal Generators:Envelope Generators
 Calculates the classical ADSR envelope using the [linsegr](../opcodes/linsegr.md) mechanism.
 
 ## Syntax
-``` csound-orc
-ares madsr iatt, idec, islev, irel [, idel] [, ireltim]
-kres madsr iatt, idec, islev, irel [, idel] [, ireltim]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = madsr(iatt, idec, islev, irel [, idel] [, ireltim])
+    kres = madsr(iatt, idec, islev, irel [, idel] [, ireltim])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares madsr iatt, idec, islev, irel [, idel] [, ireltim]
+    kres madsr iatt, idec, islev, irel [, idel] [, ireltim]
+    ```
 
 ### Initialization
 

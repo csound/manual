@@ -8,9 +8,15 @@ Control signal resonant filter stack.
 _resonxk_ is equivalent to a group of resonk filters, with the same arguments, serially connected. Using a stack of a larger number of filters allows a sharper cutoff.
 
 ## Syntax
-``` csound-orc
-kres resonxk ksig, kcf, kbw[, inumlayer, iscl, istor]
-```
+=== "Modern"
+    ``` csound-orc
+    kres = resonxk(ksig, kcf, kbw[, inumlayer, iscl, istor])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres resonxk ksig, kcf, kbw[, inumlayer, iscl, istor]
+    ```
 
 ### Initialization
 

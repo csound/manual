@@ -6,9 +6,15 @@ category:Signal Modifiers:Reverberation
 Variably reverberates an input signal with a &#8220;colored&#8221; frequency response.
 
 ## Syntax
-``` csound-orc
-ares vcomb asig, krvt, xlpt, imaxlpt [, iskip] [, insmps]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = vcomb(asig, krvt, xlpt, imaxlpt [, iskip] [, insmps])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares vcomb asig, krvt, xlpt, imaxlpt [, iskip] [, insmps]
+    ```
 
 ### Initialization
 

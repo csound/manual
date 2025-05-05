@@ -6,11 +6,19 @@ category:Signal Generators:Table Access
 Accesses table values by direct indexing.
 
 ## Syntax
-``` csound-orc
-ares table andx, ifn [, ixmode] [, ixoff] [, iwrap]
-ires table indx, ifn [, ixmode] [, ixoff] [, iwrap]
-kres table kndx, ifn [, ixmode] [, ixoff] [, iwrap]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = table(andx, ifn [, ixmode] [, ixoff] [, iwrap])
+    ires = table(indx, ifn [, ixmode] [, ixoff] [, iwrap])
+    kres = table(kndx, ifn [, ixmode] [, ixoff] [, iwrap])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares table andx, ifn [, ixmode] [, ixoff] [, iwrap]
+    ires table indx, ifn [, ixmode] [, ixoff] [, iwrap]
+    kres table kndx, ifn [, ixmode] [, ixoff] [, iwrap]
+    ```
 
 ### Initialization
 

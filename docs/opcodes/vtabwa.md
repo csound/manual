@@ -6,9 +6,15 @@ category:Vectorial:Tables
 Write vectors (to tables -or arrays of vectors) at a-rate.
 
 ## Syntax
-``` csound-orc
-vtabwa andx, ifn, ainarg1 [, ainarg2, ainarg3 , .... , ainargN ]
-```
+=== "Modern"
+    ``` csound-orc
+    vtabwa(andx, ifn, ainarg1 [, ainarg2, ainarg3 , .... , ainargN ])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vtabwa andx, ifn, ainarg1 [, ainarg2, ainarg3 , .... , ainargN ]
+    ```
 
 ### Initialization
 

@@ -6,9 +6,15 @@ category:Signal Modifiers:Standard Filters:Resonant
 A second-order multi-mode filter.
 
 ## Syntax
-``` csound-orc
-ares bqrez asig, xfco, xres [, imode] [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = bqrez(asig, xfco, xres [, imode] [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares bqrez asig, xfco, xres [, imode] [, iskip]
+    ```
 
 ### Initialization
 

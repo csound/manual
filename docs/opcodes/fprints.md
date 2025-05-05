@@ -6,9 +6,15 @@ category:Signal I/O:File I/O
 Similar to [prints](../opcodes/prints.md) but prints to a file.
 
 ## Syntax
-``` csound-orc
-fprints "filename", "string" [, ival1] [, ival2] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    fprints("filename", "string" [, ival1] [, ival2] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fprints "filename", "string" [, ival1] [, ival2] [...]
+    ```
 
 ### Initialization
 

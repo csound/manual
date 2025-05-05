@@ -6,9 +6,15 @@ category:Spectral Processing:ATS
 Uses the data from an ATS analysis file to perform noise resynthesis using a modified randi function.
 
 ## Syntax
-``` csound-orc
-ar ATSaddnz ktimepnt, iatsfile, ibands [, ibandoffset, ibandincr]
-```
+=== "Modern"
+    ``` csound-orc
+    ar = ATSaddnz(ktimepnt, iatsfile, ibands [, ibandoffset, ibandincr])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar ATSaddnz ktimepnt, iatsfile, ibands [, ibandoffset, ibandincr]
+    ```
 
 ### Initialization
 

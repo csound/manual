@@ -8,10 +8,17 @@ printf-style formatted output.
 _printf_ and _printf_i_ write formatted output, similarly to the C function printf(). _printf_i_ runs at i-time only, while _printf_ runs both at initialization and performance time.
 
 ## Syntax
-``` csound-orc
-printf_i Sfmt, itrig, [iarg1[, iarg2[, ... ]]]
-printf Sfmt, ktrig, [xarg1[, xarg2[, ... ]]]
-```
+=== "Modern"
+    ``` csound-orc
+    printf_i(Sfmt, itrig, [iarg1[, iarg2[, ... ]]])
+    printf(Sfmt, ktrig, [xarg1[, xarg2[, ... ]]])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    printf_i Sfmt, itrig, [iarg1[, iarg2[, ... ]]]
+    printf Sfmt, ktrig, [xarg1[, xarg2[, ... ]]]
+    ```
 
 ### Initialization
 

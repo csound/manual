@@ -10,9 +10,15 @@ Plugin opcode in framebuffer.
 _olabuffer_ This opcode takes 1 dimensional k-rate arrays that contain sequential frames of audio and sums them based on an overlap factor resulting in an audio signal output. This is useful for frame based audio processing such as spectral analysis/synthesis.
 
 ## Syntax
-``` csound-orc
-aout olabuffer kin, ioverlap
-```
+=== "Modern"
+    ``` csound-orc
+    aout = olabuffer(kin, ioverlap)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout olabuffer kin, ioverlap
+    ```
 
 ### Initialization
 

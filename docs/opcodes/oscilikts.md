@@ -8,9 +8,15 @@ A linearly interpolated oscillator with sync status that allows changing the tab
 _oscilikts_ is the same as [oscilikt](../opcodes/oscilikt.md). Except it has a sync input that can be used to re-initialize the oscillator to a k-rate phase value. It is slower than [oscilikt](../opcodes/oscilikt.md) and [osciliktp](../opcodes/osciliktp.md).
 
 ## Syntax
-``` csound-orc
-ares oscilikts xamp, xcps, kfn, async, kphs [, istor]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = oscilikts(xamp, xcps, kfn, async, kphs [, istor])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares oscilikts xamp, xcps, kfn, async, kphs [, istor]
+    ```
 
 ### Initialization
 

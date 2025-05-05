@@ -8,10 +8,17 @@ Takes an input signal and distributes between 2 or 4 channels.
 It uses values in degrees to calculate the balance between adjacent channels. It also takes arguments for distance (used to attenuate signals that are to sound as if they are some distance further than the loudspeaker itself), and for the amount the signal that will be sent to reverberators. This unit is based upon the example in the Charles Dodge/Thomas Jerse book, _Computer Music_, page 320.
 
 ## Syntax
-``` csound-orc
-a1, a2 locsig asig, kdegree, kdistance, kreverbsend
-a1, a2,  a3, a4 locsig asig, kdegree, kdistance, kreverbsend
-```
+=== "Modern"
+    ``` csound-orc
+    a1, a2 = locsig(asig, kdegree, kdistance, kreverbsend)
+    a1, a2,  a3, a4 = locsig(asig, kdegree, kdistance, kreverbsend)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    a1, a2 locsig asig, kdegree, kdistance, kreverbsend
+    a1, a2,  a3, a4 locsig asig, kdegree, kdistance, kreverbsend
+    ```
 
 ### Performance
 

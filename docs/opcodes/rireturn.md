@@ -8,9 +8,15 @@ Terminates a [reinit](../opcodes/reinit.md) pass (i.e., no-op at standard i-time
 This statement, or an _endin_, will cause normal performance to be resumed.
 
 ## Syntax
-``` csound-orc
-rireturn
-```
+=== "Modern"
+    ``` csound-orc
+    rireturn()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    rireturn
+    ```
 
 ## Examples
 

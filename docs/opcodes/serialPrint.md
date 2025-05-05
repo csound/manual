@@ -10,9 +10,15 @@ Plugin opcode in serial.
 Print to the screen any bytes (up to 32k) in the input buffer. Note that these bytes will be cleared from the buffer. use this opcode mainly for debugging messages. If you want to mix debugging and other communication messages over the same port, you will need to manually parse the data with the _serialRead_ opcode.
 
 ## Syntax
-``` csound-orc
-serialPrint iPort
-```
+=== "Modern"
+    ``` csound-orc
+    serialPrint(iPort)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    serialPrint iPort
+    ```
 
 ### Performance
 

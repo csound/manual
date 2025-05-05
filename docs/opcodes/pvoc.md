@@ -6,10 +6,17 @@ category:Spectral Processing:STFT
 Implements signal reconstruction using an fft-based phase vocoder.
 
 ## Syntax
-``` csound-orc
-ares pvoc ktimpnt, kfmod, ifilcod [, ispecwp] [, iextractmode] \
-          [, ifreqlim] [, igatefn]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = pvoc(ktimpnt, kfmod, ifilcod [, ispecwp] [, iextractmode] \
+                [, ifreqlim] [, igatefn])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares pvoc ktimpnt, kfmod, ifilcod [, ispecwp] [, iextractmode] \
+              [, ifreqlim] [, igatefn]
+    ```
 
 ### Initialization
 

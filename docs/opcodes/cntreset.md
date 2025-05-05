@@ -8,9 +8,15 @@ Resets a counter object to its initial state.
 Plugin opcode in counter.
 
 ## Syntax
-``` csound-orc
-cntReset icnt
-```
+=== "Modern"
+    ``` csound-orc
+    cntReset(icnt)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    cntReset icnt
+    ```
 
 ### Initialization
 

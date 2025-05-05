@@ -6,9 +6,15 @@ category:Instrument Control:Clock Control
 Stops one of a number of internal clocks.
 
 ## Syntax
-``` csound-orc
-clockoff inum
-```
+=== "Modern"
+    ``` csound-orc
+    clockoff(inum)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    clockoff inum
+    ```
 
 ### Initialization
 

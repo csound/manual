@@ -8,9 +8,15 @@ A sound looper with pitch control.
 This opcode records input audio and plays it back in a loop with user-defined duration and crossfade time. It also allows the pitch of the loop to be controlled, including reversed playback.
 
 ## Syntax
-``` csound-orc
-asig, krec sndloop ain, kpitch, ktrig, idur, ifad
-```
+=== "Modern"
+    ``` csound-orc
+    asig, krec = sndloop(ain, kpitch, ktrig, idur, ifad)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig, krec sndloop ain, kpitch, ktrig, idur, ifad
+    ```
 
 ### Initialization
 

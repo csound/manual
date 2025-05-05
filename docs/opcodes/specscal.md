@@ -6,9 +6,15 @@ category:Spectral Processing:Non-Standard
 Scales an input spectral datablock with spectral envelopes.
 
 ## Syntax
-``` csound-orc
-wsig specscal wsigin, ifscale, ifthresh
-```
+=== "Modern"
+    ``` csound-orc
+    wsig = specscal(wsigin, ifscale, ifthresh)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    wsig specscal wsigin, ifscale, ifthresh
+    ```
 
 ### Initialization
 

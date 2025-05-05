@@ -6,9 +6,15 @@ category:Signal Modifiers:Delay
 Writes the audio signal to a digital delay line.
 
 ## Syntax
-``` csound-orc
-delayw asig
-```
+=== "Modern"
+    ``` csound-orc
+    delayw(asig)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    delayw asig
+    ```
 
 ### Performance
 

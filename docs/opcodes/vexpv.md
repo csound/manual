@@ -6,9 +6,15 @@ category:Vectorial:Vectorial operations
 Performs exponential operations between two vectorial control signals.
 
 ## Syntax
-``` csound-orc
-vexpv ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [,kverbose]
-```
+=== "Modern"
+    ``` csound-orc
+    vexpv(ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [,kverbose])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vexpv ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [,kverbose]
+    ```
 
 ### Initialization
 

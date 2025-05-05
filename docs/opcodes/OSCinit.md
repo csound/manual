@@ -10,9 +10,15 @@ Plugin opcode in osc.
 This listening process can be used by OSClisten.
 
 ## Syntax
-``` csound-orc
-ihandle OSCinit iport
-```
+=== "Modern"
+    ``` csound-orc
+    ihandle = OSCinit(iport)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ihandle OSCinit iport
+    ```
 
 ### Initialization
 

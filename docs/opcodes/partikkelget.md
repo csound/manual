@@ -8,9 +8,15 @@ Get mask index for a specific mask parameter of a running _partikkel_ instance.
 _partikkelget_ is an opcode for outputting [partikkel](../opcodes/partikkel.md) mask index for a specific parameter. Used together with _partikkelset_, it can be used to synchronize partikkel masking between several running instances of the _ partikkel_ opcode. It can also be used to control other processes based on the internal mask index, for example to create more complex masking patterns than is available with the regular grain masking system.
 
 ## Syntax
-``` csound-orc
-kindex partikkelget kparameterindex, iopcode_id
-```
+=== "Modern"
+    ``` csound-orc
+    kindex = partikkelget(kparameterindex, iopcode_id)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kindex partikkelget kparameterindex, iopcode_id
+    ```
 
 ### Initialization
 

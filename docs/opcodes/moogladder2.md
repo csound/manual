@@ -8,12 +8,21 @@ Moog ladder lowpass filter.
 Moogladder2 is an new digital implementation of the Moog ladder filter based on the work of Antti Huovilainen, described in the paper "Non-Linear Digital Implementation of the Moog Ladder Filter" (Proceedings of DaFX04, Univ of Napoli). This implementation uses approximations to the tanh function and so is faster but less accurate than _moogladder_.
 
 ## Syntax
-``` csound-orc
-asig moogladder2 ain, kcf, kres[, istor]
-asig moogladder2 ain, acf, kres[, istor]
-asig moogladder2 ain, kcf, ares[, istor]
-asig moogladder2 ain, acf, ares[, istor]
-```
+=== "Modern"
+    ``` csound-orc
+    asig = moogladder2(ain, kcf, kres[, istor])
+    asig = moogladder2(ain, acf, kres[, istor])
+    asig = moogladder2(ain, kcf, ares[, istor])
+    asig = moogladder2(ain, acf, ares[, istor])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig moogladder2 ain, kcf, kres[, istor]
+    asig moogladder2 ain, acf, kres[, istor]
+    asig moogladder2 ain, kcf, ares[, istor]
+    asig moogladder2 ain, acf, ares[, istor]
+    ```
 
 ### Initialization
 

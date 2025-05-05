@@ -12,9 +12,15 @@ _compress_ first examines the controlling _acsig_ by performing envelope detecti
 The running envelope is next converted to decibels, then passed through a mapping function to determine what compresser action (if any) should be taken.  The mapping function is defined by four decibel control values.  These are given as positive values, where 0 db corresponds to an amplitude of 0dbfs/32768, and 90 db corresponds to an amplitude of 0dbfs.
 
 ## Syntax
-``` csound-orc
-ar compress aasig, acsig, kthresh, kloknee, khiknee, kratio, katt, krel, ilook
-```
+=== "Modern"
+    ``` csound-orc
+    ar = compress(aasig, acsig, kthresh, kloknee, khiknee, kratio, katt, krel, ilook)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar compress aasig, acsig, kthresh, kloknee, khiknee, kratio, katt, krel, ilook
+    ```
 
 ### Initialization
 

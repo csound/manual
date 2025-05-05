@@ -8,9 +8,15 @@ Mix 'seamlessly' two pv signals.
 This opcode combines the most prominent components of two pvoc streams into a single mixed stream.
 
 ## Syntax
-``` csound-orc
-fsig pvsmix fsigin1, fsigin2
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvsmix(fsigin1, fsigin2)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvsmix fsigin1, fsigin2
+    ```
 
 ### Performance
 

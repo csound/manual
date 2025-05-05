@@ -6,10 +6,17 @@ category:Vectorial:Random
 Generate a sort of 'vectorial band-limited noise'.
 
 ## Syntax
-``` csound-orc
-vrandi ifn,  krange, kcps, ielements [, idstoffset] [, iseed] \
-       [, isize] [, ioffset]
-```
+=== "Modern"
+    ``` csound-orc
+    vrandi(ifn,  krange, kcps, ielements [, idstoffset] [, iseed] \
+           [, isize] [, ioffset])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vrandi ifn,  krange, kcps, ielements [, idstoffset] [, iseed] \
+           [, isize] [, ioffset]
+    ```
 
 ### Initialization
 

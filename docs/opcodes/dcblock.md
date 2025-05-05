@@ -12,9 +12,15 @@ Y[i] = X[i] - X[i-1] + (igain * Y[i-1])
 Based on work by Perry Cook.
 
 ## Syntax
-``` csound-orc
-ares dcblock ain [, igain]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = dcblock(ain [, igain])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares dcblock ain [, igain]
+    ```
 
 ### Initialization
 

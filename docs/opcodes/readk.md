@@ -6,9 +6,15 @@ category:Signal I/O:File I/O
 Periodically reads an orchestra control-signal value from a named external file in a specific format.
 
 ## Syntax
-``` csound-orc
-kres readk ifilname, iformat, iprd
-```
+=== "Modern"
+    ``` csound-orc
+    kres = readk(ifilname, iformat, iprd)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres readk ifilname, iformat, iprd
+    ```
 
 ### Initialization
 

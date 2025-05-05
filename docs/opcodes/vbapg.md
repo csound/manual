@@ -7,10 +7,17 @@ category:Signal Modifiers:Panning and Spatialization
 Calculates the gains for a sound location for up to 64.
 
 ## Syntax
-``` csound-orc
-k1[, k2...] vbapg kazim [,kelev] [, kspread] [, ilayout]
-karray[] vbapg kazim [,kelev] [, kspread] [, ilayout]
-```
+=== "Modern"
+    ``` csound-orc
+    k1[, k2...] = vbapg(kazim [,kelev] [, kspread] [, ilayout])
+    karray[] = vbapg(kazim [,kelev] [, kspread] [, ilayout])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    k1[, k2...] vbapg kazim [,kelev] [, kspread] [, ilayout]
+    karray[] vbapg kazim [,kelev] [, kspread] [, ilayout]
+    ```
 
 ### Initialization
 

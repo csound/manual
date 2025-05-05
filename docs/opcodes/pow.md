@@ -6,15 +6,27 @@ category:Mathematical Operations:Opcode Equivalents of Functions
 Computes one argument to the power of another argument and scales the result.
 
 ## Syntax
-``` csound-orc
-ares pow aarg, kpow [, inorm]
-ires pow iarg, ipow [, inorm]
-kres pow karg, kpow [, inorm]
-ires[] pow iarg[], ipow[]
-kres[] pow karg[], kpow[]
-ires[] pow iarg[], ipow
-kres[] pow karg[], kpow
-```
+=== "Modern"
+    ``` csound-orc
+    ares = pow(aarg, k= pow([, inorm])
+    ires = pow(iarg, i= pow([, inorm])
+    kres = pow(karg, k= pow([, inorm])
+    ires[] = pow(iarg[], ipow[])
+    kres[] = pow(karg[], kpow[])
+    ires[] = pow(iarg[], ipow)
+    kres[] = pow(karg[], kpow)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares pow aarg, kpow [, inorm]
+    ires pow iarg, ipow [, inorm]
+    kres pow karg, kpow [, inorm]
+    ires[] pow iarg[], ipow[]
+    kres[] pow karg[], kpow[]
+    ires[] pow iarg[], ipow
+    kres[] pow karg[], kpow
+    ```
 
 ### Initialization
 

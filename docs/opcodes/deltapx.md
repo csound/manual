@@ -8,9 +8,15 @@ Read from or write to a delay line with interpolation.
 _deltapx_ is similar to [deltapi](../opcodes/deltapi.md) or [deltap3](../opcodes/deltap3.md). However, it allows higher quality interpolation. This opcode can read from and write to a _delayr/delayw_ delay line with interpolation.
 
 ## Syntax
-``` csound-orc
-aout deltapx adel, iwsize
-```
+=== "Modern"
+    ``` csound-orc
+    aout = deltapx(adel, iwsize)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout deltapx adel, iwsize
+    ```
 
 ### Initialization
 

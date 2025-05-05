@@ -6,9 +6,15 @@ category:Spectral Processing:Non-Standard
 Finds the positive difference values between consecutive spectral frames.
 
 ## Syntax
-``` csound-orc
-wsig specdiff wsigin
-```
+=== "Modern"
+    ``` csound-orc
+    wsig = specdiff(wsigin)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    wsig specdiff wsigin
+    ```
 
 ### Performance
 

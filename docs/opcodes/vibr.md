@@ -6,9 +6,15 @@ category:Signal Generators:Basic Oscillators
 Easier-to-use user-controllable vibrato.
 
 ## Syntax
-``` csound-orc
-kout vibr kAverageAmp, kAverageFreq, ifn
-```
+=== "Modern"
+    ``` csound-orc
+    kout = vibr(kAverageAmp, kAverageFreq, ifn)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kout vibr kAverageAmp, kAverageFreq, ifn
+    ```
 
 ### Initialization
 

@@ -6,9 +6,15 @@ category:Spectral Processing:Non-Standard
 Perform a weighted add of two input spectra.
 
 ## Syntax
-``` csound-orc
-wsig specaddm wsig1, wsig2 [, imul2]
-```
+=== "Modern"
+    ``` csound-orc
+    wsig = specaddm(wsig1, wsig2 [, imul2])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    wsig specaddm wsig1, wsig2 [, imul2]
+    ```
 
 ### Initialization
 

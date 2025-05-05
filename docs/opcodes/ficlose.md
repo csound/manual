@@ -6,10 +6,17 @@ category:Signal I/O:File I/O
 Closes a previously opened file.
 
 ## Syntax
-``` csound-orc
-ficlose ihandle
-ficlose Sfilename
-```
+=== "Modern"
+    ``` csound-orc
+    ficlose(ihandle)
+    ficlose(Sfilename)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ficlose ihandle
+    ficlose Sfilename
+    ```
 
 ### Initialization
 

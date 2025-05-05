@@ -8,9 +8,15 @@ Arbitrary signal scaling with optional smoothing.
 Scales incoming value to user-definable range. Similar to scale object found in popular dataflow languages.
 
 ## Syntax
-``` csound-orc
-kscl scale2 kinput, kmin, kmax[, kimin, kimax][ihtime]
-```
+=== "Modern"
+    ``` csound-orc
+    kscl = scale2(kinput, kmin, kmax[, kimin, kimax][ihtime])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kscl scale2 kinput, kmin, kmax[, kimin, kimax][ihtime]
+    ```
 
 Initialisation
 

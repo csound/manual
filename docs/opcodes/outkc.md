@@ -6,9 +6,15 @@ category:Real-time MIDI:Output
 Sends MIDI controller messages at k-rate.
 
 ## Syntax
-``` csound-orc
-outkc kchn, knum, kvalue, kmin, kmax
-```
+=== "Modern"
+    ``` csound-orc
+    outkc(kchn, knum, kvalue, kmin, kmax)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    outkc kchn, knum, kvalue, kmin, kmax
+    ```
 
 ### Performance
 

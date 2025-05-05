@@ -8,9 +8,15 @@ Read a line of text from an external file once on initialisation.
 Plugin opcode in cs_date.
 
 ## Syntax
-``` csound-orc
-Sres, iline readfi ifilname
-```
+=== "Modern"
+    ``` csound-orc
+    Sres, iline = readfi(ifilname)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    Sres, iline readfi ifilname
+    ```
 
 ### Initialization
 

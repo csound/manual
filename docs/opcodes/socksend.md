@@ -8,12 +8,21 @@ Sends data to other processes using the low-level UDP or TCP protocols.
 Transmits data directly using the UDP (_socksend_ and _socksends_) or TCP (_stsend_) protocol onto a network. The data is not subject to any encoding or special routing. The _socksends_ opcode send a stereo signal interleaved.
 
 ## Syntax
-``` csound-orc
-socksend asig, Sipaddr, iport, ilength
-socksend ksig, Sipaddr, iport, ilength
-socksends asigl, asigr, Sipaddr, iport, ilength
-stsend asig, Sipaddr, iport
-```
+=== "Modern"
+    ``` csound-orc
+    socksend(asig, Sipaddr, iport, ilength)
+    socksend(ksig, Sipaddr, iport, ilength)
+    socksends(asigl, asigr, Sipaddr, iport, ilength)
+    stsend(asig, Sipaddr, iport)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    socksend asig, Sipaddr, iport, ilength
+    socksend ksig, Sipaddr, iport, ilength
+    socksends asigl, asigr, Sipaddr, iport, ilength
+    stsend asig, Sipaddr, iport
+    ```
 
 ### Initialization
 

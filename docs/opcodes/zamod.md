@@ -6,9 +6,15 @@ category:Zak Patch System
 Modulates one a-rate signal by a second one.
 
 ## Syntax
-``` csound-orc
-ares zamod asig, kzamod
-```
+=== "Modern"
+    ``` csound-orc
+    ares = zamod(asig, kzamod)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares zamod asig, kzamod
+    ```
 
 ### Performance
 

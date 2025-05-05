@@ -8,10 +8,17 @@ Print the contents of an array.
 Plugin opcode in emugens.
 
 ## Syntax
-``` csound-orc
-printarray ixs[] [, Smft, Slabel ]
-printarray kxs[] [, ktrig, Sfmt, Slabel ]
-```
+=== "Modern"
+    ``` csound-orc
+    printarray(ixs[] [, Smft, Slabel ])
+    printarray(kxs[] [, ktrig, Sfmt, Slabel ])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    printarray ixs[] [, Smft, Slabel ]
+    printarray kxs[] [, ktrig, Sfmt, Slabel ]
+    ```
 
 ### Initialization
 

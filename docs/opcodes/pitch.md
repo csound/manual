@@ -8,10 +8,17 @@ Tracks the pitch of a signal.
 Using the same techniques as [spectrum](../opcodes/spectrum.md) and [specptrk](../opcodes/specptrk.md), pitch tracks the pitch of the signal in octave point decimal form, and amplitude in dB.
 
 ## Syntax
-``` csound-orc
-koct, kamp pitch asig, iupdte, ilo, ihi, idbthresh [, ifrqs] [, iconf] \
-                 [, istrt] [, iocts] [, iq] [, inptls] [, irolloff] [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    koct, kamp = pitch(asig, iupdte, ilo, ihi, idbthresh [, ifrqs] [, iconf] \
+                       [, istrt] [, iocts] [, iq] [, inptls] [, irolloff] [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    koct, kamp pitch asig, iupdte, ilo, ihi, idbthresh [, ifrqs] [, iconf] \
+                     [, istrt] [, iocts] [, iq] [, inptls] [, irolloff] [, iskip]
+    ```
 
 ### Initialization
 

@@ -10,11 +10,19 @@ Plugin opcode in urandom.
 These units are for Unix-like systems only and use /dev/urandom to construct Csound random values
 
 ## Syntax
-``` csound-orc
-ax urandom [imin, imax]
-ix urandom [imin, imax]
-kx urandom [imin, imax]
-```
+=== "Modern"
+    ``` csound-orc
+    ax = urandom([imin, imax])
+    ix = urandom([imin, imax])
+    kx = urandom([imin, imax])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ax urandom [imin, imax]
+    ix urandom [imin, imax]
+    kx urandom [imin, imax]
+    ```
 
 ### Initialization
 

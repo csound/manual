@@ -6,9 +6,15 @@ category:Signal Generators:Random (Noise) Generators
 Generates pink noise (-3dB/oct response) by the _NewShade of Pink_ algorithm of Stefan Stenzel.
 
 ## Syntax
-``` csound-orc
-ares pinker
-```
+=== "Modern"
+    ``` csound-orc
+    ares = pinker()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares pinker
+    ```
 
 ### Performance
 

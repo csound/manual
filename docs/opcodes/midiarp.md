@@ -8,9 +8,15 @@ Generates arpeggios based on currently held MIDI notes.
 The opcode will output notes in the form of MIDI note numbers, and a metronomic signal that can be used to sequence the notes. Users can choose the rate at which the notes are generated, and may also choose from a set of arpeggio patterns.
 
 ## Syntax
-``` csound-orc
-kMidiNoteNum, kTrigger midiarp kRate[, kMode]
-```
+=== "Modern"
+    ``` csound-orc
+    kMidiNoteNum, kTrigger = midiarp(kRate[, kMode])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kMidiNoteNum, kTrigger midiarp kRate[, kMode]
+    ```
 
 ### Performance
 

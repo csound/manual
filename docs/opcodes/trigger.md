@@ -6,9 +6,15 @@ category:Instrument Control:Sensing and Control
 Informs when a krate signal crosses a threshold.
 
 ## Syntax
-``` csound-orc
-kout trigger ksig, kthreshold, kmode
-```
+=== "Modern"
+    ``` csound-orc
+    kout = trigger(ksig, kthreshold, kmode)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kout trigger ksig, kthreshold, kmode
+    ```
 
 ### Performance
 

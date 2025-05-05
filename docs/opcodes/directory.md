@@ -8,9 +8,15 @@ Reads a directory and outputs to a string array a list of file names.
 Users can set the file type by passing a file extension as a string.
 
 ## Syntax
-``` csound-orc
-SFiles[] directory SDirectory [, SExtention]
-```
+=== "Modern"
+    ``` csound-orc
+    SFiles[] = directory(SDirectory [, SExtention])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    SFiles[] directory SDirectory [, SExtention]
+    ```
 
 ### Initialization
 

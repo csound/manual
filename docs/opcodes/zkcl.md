@@ -6,9 +6,15 @@ category:Zak Patch System
 Clears one or more variables in the zk space.
 
 ## Syntax
-``` csound-orc
-zkcl kfirst, klast
-```
+=== "Modern"
+    ``` csound-orc
+    zkcl(kfirst, klast)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    zkcl kfirst, klast
+    ```
 
 ### Performance
 

@@ -6,9 +6,15 @@ category:Instrument Control:Sensing and Control
 Returns the value of a specified pfield.
 
 ## Syntax
-``` csound-orc
-ivalue pindex ipfieldIndex
-```
+=== "Modern"
+    ``` csound-orc
+    ivalue = pindex(ipfieldIndex)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ivalue pindex ipfieldIndex
+    ```
 
 ### Initialization
 

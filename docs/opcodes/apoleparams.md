@@ -8,9 +8,15 @@ Extracts allpole filter parameters from coefficients.
 This opcode takes an array of allpole filter coefficients and produces an array of allpole filter parameters as frequency and bandwidth pairs.
 
 ## Syntax
-``` csound-orc
-kPar[] apoleparams kCoef[]
-```
+=== "Modern"
+    ``` csound-orc
+    kPar[] = apoleparams(kCoef[])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kPar[] apoleparams kCoef[]
+    ```
 
 ### Performance
 

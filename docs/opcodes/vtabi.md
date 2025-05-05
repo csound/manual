@@ -6,9 +6,15 @@ category:Vectorial:Tables
 Read vectors (from tables -or arrays of vectors) at init time.
 
 ## Syntax
-``` csound-orc
-vtabi indx, ifn, iout1 [, iout2, iout3, .... , ioutN ]
-```
+=== "Modern"
+    ``` csound-orc
+    vtabi(indx, ifn, iout1 [, iout2, iout3, .... , ioutN ])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vtabi indx, ifn, iout1 [, iout2, iout3, .... , ioutN ]
+    ```
 
 ### Initialization
 

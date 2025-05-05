@@ -6,10 +6,17 @@ category:FLTK:Other
 Allows one-dimensional HVS (Hyper-Vectorial Synthesis).
 
 ## Syntax
-``` csound-orc
-vphaseseg kphase, ioutab, ielems, itab1,idist1,itab2 \
-          [,idist2,itab3, ... ,idistN-1,itabN]
-```
+=== "Modern"
+    ``` csound-orc
+    vphaseseg(kphase, ioutab, ielems, itab1,idist1,itab2 \
+              [,idist2,itab3, ... ,idistN-1,itabN])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vphaseseg kphase, ioutab, ielems, itab1,idist1,itab2 \
+              [,idist2,itab3, ... ,idistN-1,itabN]
+    ```
 
 ### Initialization
 

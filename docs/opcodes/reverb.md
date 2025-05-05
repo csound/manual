@@ -6,9 +6,15 @@ category:Signal Modifiers:Reverberation
 Reverberates an input signal with a &#8220;natural room&#8221; frequency response.
 
 ## Syntax
-``` csound-orc
-ares reverb asig, krvt [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = reverb(asig, krvt [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares reverb asig, krvt [, iskip]
+    ```
 
 ### Initialization
 

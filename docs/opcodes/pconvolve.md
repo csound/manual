@@ -13,9 +13,15 @@ Compared to the [convolve](../opcodes/convolve.md) opcode, _pconvolve_ has these
 *  can often render faster than _convolve_
 
 ## Syntax
-``` csound-orc
-ar1 [, ar2 [, ar3 [, ar4]]] pconvolve ain, ifilcod [, ipartitionsize [, ichannel]]
-```
+=== "Modern"
+    ``` csound-orc
+    ar1 [, ar2 [, ar3 [, ar4]]] = pconvolve(ain, ifilcod [, ipartitionsize [, ichannel]])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar1 [, ar2 [, ar3 [, ar4]]] pconvolve ain, ifilcod [, ipartitionsize [, ichannel]]
+    ```
 
 ### Initialization
 

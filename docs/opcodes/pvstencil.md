@@ -16,9 +16,15 @@ One of the typical uses of _pvstencil_ would be in noise reduction. A noise prin
 Other possible transformation effects are possible, such as filtering and `inverse-masking'.
 
 ## Syntax
-``` csound-orc
-fsig pvstencil fsigin, kgain, klevel, iftable
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvstencil(fsigin, kgain, klevel, iftable)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvstencil fsigin, kgain, klevel, iftable
+    ```
 
 ### Performance
 

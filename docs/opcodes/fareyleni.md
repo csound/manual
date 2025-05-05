@@ -33,9 +33,15 @@ Some values for the length of F<sub>n</sub> given n:
 | 20 | 129 |
 
 ## Syntax
-``` csound-orc
-ifl fareyleni ifn
-```
+=== "Modern"
+    ``` csound-orc
+    ifl = fareyleni(ifn)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ifl fareyleni ifn
+    ```
 
 Initialisation
 

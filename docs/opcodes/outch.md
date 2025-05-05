@@ -6,9 +6,15 @@ category:Signal I/O:Signal Output
 Writes multi-channel audio data, with user-controllable channels, to an external device or stream.
 
 ## Syntax
-``` csound-orc
-outch kchan1, asig1 [, kchan2] [, asig2] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    outch(kchan1, asig1 [, kchan2] [, asig2] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    outch kchan1, asig1 [, kchan2] [, asig2] [...]
+    ```
 
 ### Performance
 

@@ -8,9 +8,15 @@ Writes audio data to the named software bus, mixing to the previous output.
 Implies declaring the channel with _imode_=2 (see also [chn_a](../opcodes/chn.md)).
 
 ## Syntax
-``` csound-orc
-chnmix aval, Sname
-```
+=== "Modern"
+    ``` csound-orc
+    chnmix(aval, Sname)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    chnmix aval, Sname
+    ```
 
 ### Initialization
 

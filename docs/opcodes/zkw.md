@@ -6,9 +6,15 @@ category:Zak Patch System
 Writes to a zk variable at k-rate without mixing.
 
 ## Syntax
-``` csound-orc
-zkw kval, kndx
-```
+=== "Modern"
+    ``` csound-orc
+    zkw(kval, kndx)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    zkw kval, kndx
+    ```
 
 ### Performance
 

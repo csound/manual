@@ -8,9 +8,15 @@ Physical model of the plucked string.
 A user can control the pluck point, the pickup point, the filter, and an additional audio signal, _axcite_. _axcite_ is used to excite the 'string'. Based on the Karplus-Strong algorithm.
 
 ## Syntax
-``` csound-orc
-ares repluck iplk, kamp, icps, kpick, krefl, axcite
-```
+=== "Modern"
+    ``` csound-orc
+    ares = repluck(iplk, kamp, icps, kpick, krefl, axcite)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares repluck iplk, kamp, icps, kpick, krefl, axcite
+    ```
 
 ### Initialization
 

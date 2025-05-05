@@ -8,9 +8,15 @@ Close a serial port for arduino.
 Plugin opcode in serial.
 
 ## Syntax
-``` csound-orc
-serialEnd iPort
-```
+=== "Modern"
+    ``` csound-orc
+    serialEnd(iPort)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    serialEnd iPort
+    ```
 
 ### Initialization
 

@@ -8,9 +8,15 @@ Time Variant Sequencer.
 An event-sequencer in which time can be controlled by a time-pointer. Sequence data are stored into a table.
 
 ## Syntax
-``` csound-orc
-ktrig timedseq ktimpnt, ifn, kp1 [,kp2, kp3, ...,kpN]
-```
+=== "Modern"
+    ``` csound-orc
+    ktrig = timedseq(ktimpnt, ifn, kp1 [,kp2, kp3, ...,kpN])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ktrig timedseq ktimpnt, ifn, kp1 [,kp2, kp3, ...,kpN]
+    ```
 
 ### Initialization
 

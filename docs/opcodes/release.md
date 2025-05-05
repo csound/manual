@@ -8,9 +8,15 @@ Indicates whether a note is in its _release_ stage.
 Provides a way of knowing when a note off message for the current note is received. Only a noteoff message with the same MIDI note number as the one which triggered the note will be reported by _release_.
 
 ## Syntax
-``` csound-orc
-kflag release
-```
+=== "Modern"
+    ``` csound-orc
+    kflag = release()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kflag release
+    ```
 
 ### Performance
 

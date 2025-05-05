@@ -8,17 +8,31 @@ Break point function with linear interpolation.
 Plugin opcode in emugens.
 
 ## Syntax
-``` csound-orc
-ky bpf kx, kx1, ky1, kx2, ..., kxn, kyn
-iy bpf ix, ix1, iy1, ix2, ..., ixn, iyn
-kys[] bpf kxs[], kx1, ky1, kx2, ..., kxn, kyn
-iys[] bpf ixs[], ix1, iy1, ix2, ..., ixn, iyn
-ky bpf kx, kxs[], kys[]
-iy bpf ix, ixs[], iys[]
-ay bpf ax, kx1, ky1, kx2, ..., kxn, kyn
-ay bpf ax, kxs[], kys[]
-ky, kw bpf kx, kxs[], kys[], kws[]
-```
+=== "Modern"
+    ``` csound-orc
+    ky = bpf(kx, kx1, ky1, kx2, ..., kxn, kyn)
+    iy = bpf(ix, ix1, iy1, ix2, ..., ixn, iyn)
+    kys[] = bpf(kxs[], kx1, ky1, kx2, ..., kxn, kyn)
+    iys[] = bpf(ixs[], ix1, iy1, ix2, ..., ixn, iyn)
+    ky = bpf(kx, kxs[], kys[])
+    iy = bpf(ix, ixs[], iys[])
+    ay = bpf(ax, kx1, ky1, kx2, ..., kxn, kyn)
+    ay = bpf(ax, kxs[], kys[])
+    ky, kw = bpf(kx, kxs[], kys[], kws[])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ky bpf kx, kx1, ky1, kx2, ..., kxn, kyn
+    iy bpf ix, ix1, iy1, ix2, ..., ixn, iyn
+    kys[] bpf kxs[], kx1, ky1, kx2, ..., kxn, kyn
+    iys[] bpf ixs[], ix1, iy1, ix2, ..., ixn, iyn
+    ky bpf kx, kxs[], kys[]
+    iy bpf ix, ixs[], iys[]
+    ay bpf ax, kx1, ky1, kx2, ..., kxn, kyn
+    ay bpf ax, kxs[], kys[]
+    ky, kw bpf kx, kxs[], kys[], kws[]
+    ```
 
 ### Performance
 

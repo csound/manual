@@ -6,9 +6,15 @@ category:Signal I/O:Software Bus
 Query parameters of a channel (if it does not exist, all returned values are zero).
 
 ## Syntax
-``` csound-orc
-itype, imode, ictltype, idflt, imin, imax chnparams Sname
-```
+=== "Modern"
+    ``` csound-orc
+    itype, imode, ictltype, idflt, imin, imax = chnparams(Sname)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    itype, imode, ictltype, idflt, imin, imax chnparams Sname
+    ```
 
 ### Initialization
 

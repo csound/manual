@@ -12,9 +12,15 @@ The _ftgenonce_ opcode is designed to simplify writing instrument definitions th
 The ftgenonce opcode is similar to ftgentmp, and has identical arguments. However, function tables are neither duplicated nor deleted. Instead, all of the arguments to the opcode are concatenated to form the key to a lookup table that points to the function table number. Thus, every request to ftgenonce with the same arguments receives the same instance of the function table data. Every change in the value of any ftgenonce argument causes the creation of a new function table.
 
 ## Syntax
-``` csound-orc
-ifno ftgenonce ip1, ip2dummy, isize, igen, iarga, iargb, ...
-```
+=== "Modern"
+    ``` csound-orc
+    ifno = ftgenonce(ip1, ip2dummy, isize, igen, iarga, iargb, ...)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ifno ftgenonce ip1, ip2dummy, isize, igen, iarga, iargb, ...
+    ```
 
 ### Initialization
 

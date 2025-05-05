@@ -10,10 +10,17 @@ Reads a 16-channel audio signal from an external device or stream.
 > This opcode is designed to be used only with orchestras that have nchnls=16. Doing so with orchestras with nchnls &gt; 16 will cause incorrect audio input.
 
 ## Syntax
-``` csound-orc
-ar1, ar2, ar3, ar4, ar5, ar6, ar7, ar8, ar9, ar10, ar11, ar12, \
-ar13, ar14, ar15, ar16 inx
-```
+=== "Modern"
+    ``` csound-orc
+    ar1, ar2, ar3, ar4, ar5, ar6, ar7, ar8, ar9, ar10, ar11, ar12, \
+    ar13, ar14, ar15, ar16 = inx()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar1, ar2, ar3, ar4, ar5, ar6, ar7, ar8, ar9, ar10, ar11, ar12, \
+    ar13, ar14, ar15, ar16 inx
+    ```
 
 ### Performance
 

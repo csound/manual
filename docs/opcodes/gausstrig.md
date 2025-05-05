@@ -6,10 +6,17 @@ category:Signal Generators:Random (Noise) Generators
 Random impulses around a certain frequency.
 
 ## Syntax
-``` csound-orc
-ares gausstrig kamp, kcps, kdev [, imode] [, ifrst1]
-kres gausstrig kamp, kcps, kdev [, imode] [, ifrst1]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = gausstrig(kamp, kcps, kdev [, imode] [, ifrst1])
+    kres = gausstrig(kamp, kcps, kdev [, imode] [, ifrst1])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares gausstrig kamp, kcps, kdev [, imode] [, ifrst1]
+    kres gausstrig kamp, kcps, kdev [, imode] [, ifrst1]
+    ```
 
 ### Initialization
 

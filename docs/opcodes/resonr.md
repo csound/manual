@@ -6,9 +6,15 @@ category:Signal Modifiers:Standard Filters:Resonant
 A second-order, two-pole two-zero bandpass filter with variable frequency response.
 
 ## Syntax
-``` csound-orc
-ares resonr asig, xcf, xbw [, iscl] [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = resonr(asig, xcf, xbw [, iscl] [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares resonr asig, xcf, xbw [, iscl] [, iskip]
+    ```
 
 ### Initialization
 

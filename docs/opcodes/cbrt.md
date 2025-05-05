@@ -6,10 +6,17 @@ category:Mathematical Operations:Arrays
 Cubic root function.
 
 ## Syntax
-``` csound-orc
-ires[] cbrt iarg
-kres[] cbrt karg
-```
+=== "Modern"
+    ``` csound-orc
+    ires[] = cbrt(iarg)
+    kres[] = cbrt(karg)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ires[] cbrt iarg
+    kres[] cbrt karg
+    ```
 
 ### Initialization
 

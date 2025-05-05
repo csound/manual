@@ -6,10 +6,17 @@ category:Signal Generators:Granular Synthesis
 Generates granular synthesis textures.
 
 ## Syntax
-``` csound-orc
-ares grain xamp, xpitch, xdens, kampoff, kpitchoff, kgdur, igfn, \
-           iwfn, imgdur [, igrnd]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = grain(xamp, xpitch, xdens, kampoff, kpitchoff, kgdur, igfn, \
+                 iwfn, imgdur [, igrnd])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares grain xamp, xpitch, xdens, kampoff, kpitchoff, kgdur, igfn, \
+               iwfn, imgdur [, igrnd]
+    ```
 
 ### Initialization
 

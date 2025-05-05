@@ -8,10 +8,17 @@ Constructs a user-definable envelope with extended release segment.
 It is the same as [transeg](../opcodes/transeg.md), with an extended release segment.
 
 ## Syntax
-``` csound-orc
-ares transegr ia, idur, itype, ib [, idur2] [, itype] [, ic] ...
-kres transegr ia, idur, itype, ib [, idur2] [, itype] [, ic] ...
-```
+=== "Modern"
+    ``` csound-orc
+    ares = transegr(ia, idur, itype, ib [, idur2] [, itype] [, ic] ...)
+    kres = transegr(ia, idur, itype, ib [, idur2] [, itype] [, ic] ...)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares transegr ia, idur, itype, ib [, idur2] [, itype] [, ic] ...
+    kres transegr ia, idur, itype, ib [, idur2] [, itype] [, ic] ...
+    ```
 
 ### Initialization
 

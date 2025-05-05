@@ -6,9 +6,15 @@ category:Real-time MIDI:Generic I/O
 Returns a generic MIDI message received by the MIDI IN port.
 
 ## Syntax
-``` csound-orc
-kstatus, kchan, kdata1, kdata2 midiin
-```
+=== "Modern"
+    ``` csound-orc
+    kstatus, kchan, kdata1, kdata2 = midiin()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kstatus, kchan, kdata1, kdata2 midiin
+    ```
 
 ### Performance
 

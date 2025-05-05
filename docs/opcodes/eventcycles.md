@@ -8,9 +8,15 @@ Read absolute time in k-rate cycles, since the start of an instance of an instru
 Called at both i-time as well as k-time. NB: the returned value at k-time starts at 1
 
 ## Syntax
-``` csound-orc
-kres eventcycles
-```
+=== "Modern"
+    ``` csound-orc
+    kres = eventcycles()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres eventcycles
+    ```
 
 ### Performance
 

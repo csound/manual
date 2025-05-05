@@ -6,9 +6,15 @@ category:Signal Generators:Random (Noise) Generators
 A white noise generator with an IIR lowpass filter.
 
 ## Syntax
-``` csound-orc
-ares noise xamp, kbeta
-```
+=== "Modern"
+    ``` csound-orc
+    ares = noise(xamp, kbeta)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares noise xamp, kbeta
+    ```
 
 ### Performance
 

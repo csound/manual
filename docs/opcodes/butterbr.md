@@ -8,9 +8,15 @@ A band-reject Butterworth filter.
 Implementation of a second-order band-reject Butterworth filter. This opcode can also be written as [butbr](../opcodes/butbr.md).
 
 ## Syntax
-``` csound-orc
-ares butterbr asig, xfreq, xband [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = butterbr(asig, xfreq, xband [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares butterbr asig, xfreq, xband [, iskip]
+    ```
 
 ### Initialization
 

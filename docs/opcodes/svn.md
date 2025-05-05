@@ -8,9 +8,15 @@ Non-linear state variable filter.
 It has overdrive control and optional user-defined non-linear transfer function.
 
 ## Syntax
-``` csound-orc
-ahp,alp,abp,abr svn asig, xcf, xQ, kdrive[, ifn,inm,imx, istor]
-```
+=== "Modern"
+    ``` csound-orc
+    ahp,alp,abp,abr = svn(asig, xcf, xQ, kdrive[, ifn,inm,imx, istor])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ahp,alp,abp,abr svn asig, xcf, xQ, kdrive[, ifn,inm,imx, istor]
+    ```
 
 ### Initialization
 

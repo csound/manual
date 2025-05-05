@@ -6,9 +6,15 @@ category:Miscellaneous
 Select sample value from three based on audio-rate comparisons of two signals.
 
 ## Syntax
-``` csound-orc
-aout select a1, a2, aless, aequal, amore
-```
+=== "Modern"
+    ``` csound-orc
+    aout = select(a1, a2, aless, aequal, amore)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout select a1, a2, aless, aequal, amore
+    ```
 
 ### Performance
 

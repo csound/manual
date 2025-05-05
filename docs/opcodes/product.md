@@ -6,9 +6,15 @@ category:Mathematical Operations:Opcode Equivalents of Functions
 Multiplies any number of a-rate signals.
 
 ## Syntax
-``` csound-orc
-ares product asig1, asig2 [, asig3] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = product(asig1, asig2 [, asig3] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares product asig1, asig2 [, asig3] [...]
+    ```
 
 ### Performance
 

@@ -8,10 +8,17 @@ Modulation matrix opcode with optimizations for sparse matrices.
 The opcode can be used to let a large number of k-rate modulator variables modulate a large number of k-rate parameter variables, with arbitrary scaling of each modulator-to-parameter connection.  Csound ftables are used to hold both the input (parameter)  variables, the modulator variables, and the scaling coefficients. Output variables are written to another Csound ftable.
 
 ## Syntax
-``` csound-orc
-modmatrix iresfn, isrcmodfn, isrcparmfn, imodscale, inum_mod, \
-          inum_parm, kupdate
-```
+=== "Modern"
+    ``` csound-orc
+    modmatrix(iresfn, isrcmodfn, isrcparmfn, imodscale, inum_mod, \
+              inum_parm, kupdate)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    modmatrix iresfn, isrcmodfn, isrcparmfn, imodscale, inum_mod, \
+              inum_parm, kupdate
+    ```
 
 ### Initialization
 

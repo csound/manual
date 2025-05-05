@@ -7,9 +7,15 @@ category:Spectral Processing:LPC
 Resynthesises a signal from the data passed internally by a previous _lpread_, applying formant shifting.
 
 ## Syntax
-``` csound-orc
-ares lpfreson asig, kfrqratio
-```
+=== "Modern"
+    ``` csound-orc
+    ares = lpfreson(asig, kfrqratio)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares lpfreson asig, kfrqratio
+    ```
 
 ### Performance
 

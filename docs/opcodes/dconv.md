@@ -6,9 +6,15 @@ category:Signal Modifiers:Convolution and Morphing
 A direct convolution opcode.
 
 ## Syntax
-``` csound-orc
-ares dconv asig, isize, ifn
-```
+=== "Modern"
+    ``` csound-orc
+    ares = dconv(asig, isize, ifn)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares dconv asig, isize, ifn
+    ```
 
 ### Initialization
 

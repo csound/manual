@@ -6,9 +6,15 @@ category:Zak Patch System
 Clears one or more variables in the za space.
 
 ## Syntax
-``` csound-orc
-zacl kfirst [, klast]
-```
+=== "Modern"
+    ``` csound-orc
+    zacl(kfirst [, klast])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    zacl kfirst [, klast]
+    ```
 
 ### Performance
 

@@ -8,12 +8,21 @@ Creates a tone similar to a piano string prepared in a Cageian fashion.
 Audio output is a tone similar to a piano string, prepared with a number of rubbers and rattles. The method uses a physical model developed from solving the partial differential equation.
 
 ## Syntax
-``` csound-orc
-ares prepiano ifreq, iNS, iD, iK, iT30, iB, kbcl, kbcr, imass, ihvfreq, \
-              iinit, ipos, ivel, isfreq, isspread[, irattles, irubbers]
-al, ar prepiano ifreq, iNS, iD, iK, iT30, iB, kbcl, kbcr, imass, ihvfreq, \
-                iinit, ipos, ivel, isfreq, isspread[, irattles, irubbers]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = prepiano(ifreq, iNS, iD, iK, iT30, iB, kbcl, kbcr, imass, ihvfreq, \
+                    iinit, ipos, ivel, isfreq, isspread[, irattles, irubbers])
+    al, ar = prepiano(ifreq, iNS, iD, iK, iT30, iB, kbcl, kbcr, imass, ihvfreq, \
+                      iinit, ipos, ivel, isfreq, isspread[, irattles, irubbers])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares prepiano ifreq, iNS, iD, iK, iT30, iB, kbcl, kbcr, imass, ihvfreq, \
+                  iinit, ipos, ivel, isfreq, isspread[, irattles, irubbers]
+    al, ar prepiano ifreq, iNS, iD, iK, iT30, iB, kbcl, kbcr, imass, ihvfreq, \
+                    iinit, ipos, ivel, isfreq, isspread[, irattles, irubbers]
+    ```
 
 ### Initialization
 

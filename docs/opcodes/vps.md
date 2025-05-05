@@ -8,9 +8,15 @@ Shapes a phase signal according to a two-dimensional vector.
 Vector phase shaping modifies a phase input value by mapping an input, in the range [0, 1) according to a non-linear function consisting of two piecewise linear segments joined at an inflection point. This is defined by the vector [kd, kv], where kd is in the range [0, 1) and kv can have any value.
 
 ## Syntax
-``` csound-orc
-avp vps aph,kd,kv
-```
+=== "Modern"
+    ``` csound-orc
+    avp = vps(aph,kd,kv)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    avp vps aph,kd,kv
+    ```
 
 ### Performance
 

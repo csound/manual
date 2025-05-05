@@ -8,10 +8,17 @@ Follows the pitch of a signal based on the AMDF method (Average Magnitude Differ
 Outputs pitch and amplitude tracking signals. The method is quite fast and should run in realtime. This technique usually works best for monophonic signals.
 
 ## Syntax
-``` csound-orc
-kcps, krms pitchamdf asig, imincps, imaxcps [, icps] [, imedi] \
-                     [, idowns] [, iexcps] [, irmsmedi]
-```
+=== "Modern"
+    ``` csound-orc
+    kcps, krms = pitchamdf(asig, imincps, imaxcps [, icps] [, imedi] \
+                           [, idowns] [, iexcps] [, irmsmedi])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kcps, krms pitchamdf asig, imincps, imaxcps [, icps] [, imedi] \
+                         [, idowns] [, iexcps] [, irmsmedi]
+    ```
 
 ### Initialization
 

@@ -6,9 +6,15 @@ category:Vectorial:Vectorial operations
 Performs division between two vectorial control signals at init time.
 
 ## Syntax
-``` csound-orc
-vdivv_i ifn1, ifn2, ielements [, idstoffset] [, isrcoffset]
-```
+=== "Modern"
+    ``` csound-orc
+    vdivv_i(ifn1, ifn2, ielements [, idstoffset] [, isrcoffset])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vdivv_i ifn1, ifn2, ielements [, idstoffset] [, isrcoffset]
+    ```
 
 ### Initialization
 

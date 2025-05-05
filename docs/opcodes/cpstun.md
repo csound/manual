@@ -6,9 +6,15 @@ category:Pitch Converters:Tuning Opcodes
 Returns micro-tuning values at k-rate.
 
 ## Syntax
-``` csound-orc
-kcps cpstun ktrig, kindex, kfn
-```
+=== "Modern"
+    ``` csound-orc
+    kcps = cpstun(ktrig, kindex, kfn)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kcps cpstun ktrig, kindex, kfn
+    ```
 
 ### Performance
 

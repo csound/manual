@@ -8,10 +8,17 @@ A simple oscillator with linear interpolation.
 _oscili_ reads table _ifn_ sequentially and repeatedly at a frequency _xcps_. The amplitude is scaled by _xamp_. Linear interpolation is applied for table look up from internal phase values.
 
 ## Syntax
-``` csound-orc
-ares oscili xamp, xcps[, ifn, iphs]
-kres oscili kamp, kcps[, ifn, iphs]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = oscili(xamp, xcps[, ifn, iphs])
+    kres = oscili(kamp, kcps[, ifn, iphs])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares oscili xamp, xcps[, ifn, iphs]
+    kres oscili kamp, kcps[, ifn, iphs]
+    ```
 
 ### Initialization
 

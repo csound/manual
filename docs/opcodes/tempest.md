@@ -7,10 +7,17 @@ Estimate the tempo of beat patterns in a control signal.
 
 
 ## Syntax
-``` csound-orc
-ktemp tempest kin, iprd, imindur, imemdur, ihp, ithresh, ihtim, ixfdbak, \
-              istartempo, ifn [, idisprd] [, itweek]
-```
+=== "Modern"
+    ``` csound-orc
+    ktemp = tempest(kin, iprd, imindur, imemdur, ihp, ithresh, ihtim, ixfdbak, \
+                    istartempo, ifn [, idisprd] [, itweek])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ktemp tempest kin, iprd, imindur, imemdur, ihp, ithresh, ihtim, ixfdbak, \
+                  istartempo, ifn [, idisprd] [, itweek]
+    ```
 
 ### Initialization
 

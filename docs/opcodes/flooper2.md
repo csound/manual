@@ -8,10 +8,17 @@ Function-table-based crossfading looper.
 This opcode implements a crossfading looper with variable loop parameters and three looping modes, optionally using a table for its crossfade shape. It accepts non-power-of-two tables for its source sounds, such as deferred-allocation GEN01 tables, with one or two channels.
 
 ## Syntax
-``` csound-orc
-asig1[,asig2] flooper2 kamp, kpitch, kloopstart, kloopend, kcrossfade, ifn \
-                       [, istart, imode, ifenv, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    asig1[,asig2] = flooper2(kamp, kpitch, kloopstart, kloopend, kcrossfade, ifn \
+                             [, istart, imode, ifenv, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig1[,asig2] flooper2 kamp, kpitch, kloopstart, kloopend, kcrossfade, ifn \
+                           [, istart, imode, ifenv, iskip]
+    ```
 
 ### Initialization
 

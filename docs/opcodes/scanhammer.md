@@ -8,9 +8,15 @@ Copies from one table to another with a gain control.
 This is is a variant of [tablecopy](../opcodes/tablecopy.md), copying from one table to another, starting at _ipos_, and with a gain control. The number of points copied is determined by the length of the source. Other points are not changed. This opcode can be used to &#8220;hit&#8221; a string in the scanned synthesis code.
 
 ## Syntax
-``` csound-orc
-scanhammer isrc, idst, ipos, imult
-```
+=== "Modern"
+    ``` csound-orc
+    scanhammer(isrc, idst, ipos, imult)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    scanhammer isrc, idst, ipos, imult
+    ```
 
 ### Initialization
 

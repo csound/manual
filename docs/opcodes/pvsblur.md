@@ -8,9 +8,15 @@ Average the amp/freq time functions of each analysis channel for a specified tim
 As a side-effect the input pvoc stream will be delayed by that amount.
 
 ## Syntax
-``` csound-orc
-fsig pvsblur fsigin, kblurtime, imaxdel
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvsblur(fsigin, kblurtime, imaxdel)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvsblur fsigin, kblurtime, imaxdel
+    ```
 
 ### Performance
 

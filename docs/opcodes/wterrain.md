@@ -6,10 +6,17 @@ category:Signal Generators:Wave Terrain Synthesis
 A simple wave-terrain synthesis opcode.
 
 ## Syntax
-``` csound-orc
-aout wterrain kamp, kpch, k_xcenter, k_ycenter, k_xradius, k_yradius, \
-              itabx, itaby
-```
+=== "Modern"
+    ``` csound-orc
+    aout = wterrain(kamp, kpch, k_xcenter, k_ycenter, k_xradius, k_yradius, \
+                    itabx, itaby)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout wterrain kamp, kpch, k_xcenter, k_ycenter, k_xradius, k_yradius, \
+                  itabx, itaby
+    ```
 
 ### Initialization
 

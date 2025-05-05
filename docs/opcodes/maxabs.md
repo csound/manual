@@ -8,10 +8,17 @@ Produces a signal that is the maximum of the absolute values of any number of in
 The _maxabs_ opcode takes any number of a-rate or k-rate signals as input (all of the same rate), and outputs a signal at the same rate that is the maximum of all of the inputs.  It is identical to the _max_ opcode except that it takes the absolute value of each input before comparing them.  Therefore, the output is always non-negative.  For a-rate signals, the inputs are compared one sample at a time (i.e. _maxabs_ does not scan an entire ksmps period of a signal for its local maximum as the _max_k_ opcode does).
 
 ## Syntax
-``` csound-orc
-amax maxabs ain1, ain2 [, ain3] [, ain4] [...]
-kmax maxabs kin1, kin2 [, kin3] [, kin4] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    amax = maxabs(ain1, ain2 [, ain3] [, ain4] [...])
+    kmax = maxabs(kin1, kin2 [, kin3] [, kin4] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    amax maxabs ain1, ain2 [, ain3] [, ain4] [...]
+    kmax maxabs kin1, kin2 [, kin3] [, kin4] [...]
+    ```
 
 ### Performance
 

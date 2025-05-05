@@ -8,9 +8,15 @@ An opcode which can be used to implement a remote midi orchestra. This opcode wi
 With the _midremot_ and [midglobal](../opcodes/midglobal.md) opcodes you are able to perform instruments on remote machines and control them from a master machine. The remote opcodes are implemented using the master/client model. All the machines involved contain the same orchestra but only the master machine contains the information of the midi score. During the performance the master machine sends the midi events to the clients. The _midremot_ opcode will send events from a source machine to one destination if you want to send events to many destinations (broadcast) use the [midglobal](../opcodes/midglobal.md) opcode instead. These two opcodes can be used in combination.
 
 ## Syntax
-``` csound-orc
-midremot idestination, isource, instrnum [, instrnum...]
-```
+=== "Modern"
+    ``` csound-orc
+    midremot(idestination, isource, instrnum [, instrnum...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    midremot idestination, isource, instrnum [, instrnum...]
+    ```
 
 ### Initialization
 

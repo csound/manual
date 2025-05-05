@@ -8,12 +8,21 @@ Reads audio data from a file, and can alter its pitch using one of several avail
 _diskin2_ can also read multichannel files with any number of channels in the range 1 to 24 in versions before 5.14, and 40 after.
 
 ## Syntax
-``` csound-orc
-a1[, a2[, ... aN]] diskin2 ifilcod[, kpitch[, iskiptim \
-    [, iwrap[, iformat[, iwsize[, ibufsize[, iskipinit]]]]]]]
-ar1[] diskin2 ifilcod[, kpitch[, iskiptim \
-    [, iwrap[, iformat[, iwsize[, ibufsize[, iskipinit]]]]]]]
-```
+=== "Modern"
+    ``` csound-orc
+    a1[, a2[, ... aN]] = diskin2(ifilcod[, kpitch[, iskiptim \
+          [, iwrap[, iformat[, iwsize[, ibufsize[, iskipinit]]]]]]])
+    ar1[] = diskin2(ifilcod[, kpitch[, iskiptim \
+          [, iwrap[, iformat[, iwsize[, ibufsize[, iskipinit]]]]]]])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    a1[, a2[, ... aN]] diskin2 ifilcod[, kpitch[, iskiptim \
+        [, iwrap[, iformat[, iwsize[, ibufsize[, iskipinit]]]]]]]
+    ar1[] diskin2 ifilcod[, kpitch[, iskiptim \
+        [, iwrap[, iformat[, iwsize[, ibufsize[, iskipinit]]]]]]]
+    ```
 
 (in the array output version, the number of output channels does not have an upper limit.)
 

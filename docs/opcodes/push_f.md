@@ -8,9 +8,15 @@ Pushes an f-sig frame into the global stack.  Deprecated.
 Plugin opcode in stackops.
 
 ## Syntax
-``` csound-orc
-push_f fsig
-```
+=== "Modern"
+    ``` csound-orc
+    push_f(fsig)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    push_f fsig
+    ```
 
 ### Performance
 

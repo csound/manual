@@ -8,9 +8,15 @@ Delays an input signal by some time interval.
 A signal can be read from or written into a delay path, or it can be automatically delayed by some time interval.
 
 ## Syntax
-``` csound-orc
-ares delay asig, idlt [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = delay(asig, idlt [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares delay asig, idlt [, iskip]
+    ```
 
 ### Initialization
 

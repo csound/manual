@@ -8,9 +8,15 @@ Efficiently evaluates a polynomial of arbitrary order.
 The _polynomial_ opcode calculates a polynomial with a single a-rate input variable.  The polynomial is a sum of any number of terms in the form _kn*x^n_ where _kn_ is the nth coefficient of the expression.  These coefficients are k-rate values.
 
 ## Syntax
-``` csound-orc
-aout polynomial ain, k0 [, k1 [, k2 [...]]]
-```
+=== "Modern"
+    ``` csound-orc
+    aout = polynomial(ain, k0 [, k1 [, k2 [...]]])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout polynomial ain, k0 [, k1 [, k2 [...]]]
+    ```
 
 ### Performance
 

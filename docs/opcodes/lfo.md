@@ -6,10 +6,17 @@ category:Signal Generators:Basic Oscillators
 A low frequency oscillator of various shapes.
 
 ## Syntax
-``` csound-orc
-kres lfo kamp, kcps [, itype]
-ares lfo kamp, kcps [, itype]
-```
+=== "Modern"
+    ``` csound-orc
+    kres = lfo(kamp, kcps [, itype])
+    ares = lfo(kamp, kcps [, itype])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres lfo kamp, kcps [, itype]
+    ares lfo kamp, kcps [, itype]
+    ```
 
 ### Initialization
 

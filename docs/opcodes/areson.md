@@ -6,12 +6,21 @@ category:Signal Modifiers:Standard Filters:Resonant
 A notch filter whose transfer functions are the complements of the reson opcode.
 
 ## Syntax
-``` csound-orc
-ares areson asig, kcf, kbw [, iscl] [, iskip]
-ares areson asig, acf, kbw [, iscl] [, iskip]
-ares areson asig, kcf, abw [, iscl] [, iskip]
-ares areson asig, acf, abw [, iscl] [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = areson(asig, kcf, kbw [, iscl] [, iskip])
+    ares = areson(asig, acf, kbw [, iscl] [, iskip])
+    ares = areson(asig, kcf, abw [, iscl] [, iskip])
+    ares = areson(asig, acf, abw [, iscl] [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares areson asig, kcf, kbw [, iscl] [, iskip]
+    ares areson asig, acf, kbw [, iscl] [, iskip]
+    ares areson asig, kcf, abw [, iscl] [, iskip]
+    ares areson asig, acf, abw [, iscl] [, iskip]
+    ```
 
 ### Initialization
 

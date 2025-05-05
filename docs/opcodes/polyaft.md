@@ -6,10 +6,17 @@ category:Real-time MIDI:Input
 Returns the polyphonic after-touch pressure of the selected note number, optionally mapped to an user-specified range.
 
 ## Syntax
-``` csound-orc
-ires polyaft inote [, ilow] [, ihigh]
-kres polyaft inote [, ilow] [, ihigh]
-```
+=== "Modern"
+    ``` csound-orc
+    ires = polyaft(inote [, ilow] [, ihigh])
+    kres = polyaft(inote [, ilow] [, ihigh])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ires polyaft inote [, ilow] [, ihigh]
+    kres polyaft inote [, ilow] [, ihigh]
+    ```
 
 ### Initialization
 

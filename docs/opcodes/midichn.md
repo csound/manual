@@ -8,9 +8,15 @@ Returns the MIDI channel number (1 - 16) from which the note was activated.
 In the case of score notes, it returns 0.
 
 ## Syntax
-``` csound-orc
-ichn midichn
-```
+=== "Modern"
+    ``` csound-orc
+    ichn = midichn()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ichn midichn
+    ```
 
 ### Initialization
 

@@ -8,9 +8,15 @@ Gives the range and increment of a counter.
 Plugin opcode in counter.
 
 ## Syntax
-``` csound-orc
-kmax, kmin, kinc cntState icnt
-```
+=== "Modern"
+    ``` csound-orc
+    kmax, kmin, kinc = cntState(icnt)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kmax, kmin, kinc cntState icnt
+    ```
 
 ### Initialization
 

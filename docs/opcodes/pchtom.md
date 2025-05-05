@@ -17,10 +17,17 @@ pch        midi    note name
 ```
 
 ## Syntax
-``` csound-orc
-imidi pchtom ipch
-kmidi pchtom kpch
-```
+=== "Modern"
+    ``` csound-orc
+    imidi = pchtom(ipch)
+    kmidi = pchtom(kpch)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    imidi pchtom ipch
+    kmidi pchtom kpch
+    ```
 
 ### Performance
 

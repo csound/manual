@@ -8,9 +8,15 @@ Shifts the contents of a 1-dimensional array into an audio variable.
 The array needs to be at least ksmps numbers long, but can be longer. Data is shifted out circularly, with the writing position moving by ksmps positions every k-cycle. When the array gets emptied, the writing position wraps around to the beginning of the array again. Together with the shiftin opcode, it can form a FIFO queue.
 
 ## Syntax
-``` csound-orc
-asig shiftout kIn[] [, ioff]
-```
+=== "Modern"
+    ``` csound-orc
+    asig = shiftout(kIn[] [, ioff])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig shiftout kIn[] [, ioff]
+    ```
 
 ### Initialization
 

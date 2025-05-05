@@ -10,9 +10,15 @@ Plugin opcode in cellular
 One-Dimensional Cellular Automaton. This opcode is the modified version of _vcella_ by Gabriel Maldonado.
 
 ## Syntax
-``` csound-orc
-cell ktrig, kreinit, ioutFunc, initStateFunc, iRuleFunc, ielements
-```
+=== "Modern"
+    ``` csound-orc
+    cell(ktrig, kreinit, ioutFunc, initStateFunc, iRuleFunc, ielements)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    cell ktrig, kreinit, ioutFunc, initStateFunc, iRuleFunc, ielements
+    ```
 
 ### Initialization
 

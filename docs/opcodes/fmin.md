@@ -6,12 +6,21 @@ category:Mathematical Operations:Arrays
 Returns the minimum of its two arguments.
 
 ## Syntax
-``` csound-orc
-ires[] fmin iarg1[], iarg2[]
-kres[] fmin karg1[], karg2[]
-ires[] fmin iarg1[], iarg2
-kres[] fmin karg[], karg2
-```
+=== "Modern"
+    ``` csound-orc
+    ires[] = fmin(iarg1[], iarg2[])
+    kres[] = fmin(karg1[], karg2[])
+    ires[] = fmin(iarg1[], iarg2)
+    kres[] = fmin(karg[], karg2)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ires[] fmin iarg1[], iarg2[]
+    kres[] fmin karg1[], karg2[]
+    ires[] fmin iarg1[], iarg2
+    kres[] fmin karg[], karg2
+    ```
 
 ### Initialization
 

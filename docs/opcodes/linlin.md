@@ -10,13 +10,23 @@ Plugin opcode in emugens.
 Maps a linear range of values to another linear range of values. Supports both scalars and arrays, at i- and k-time
 
 ## Syntax
-``` csound-orc
-ky linlin kx, ky0, ky1 [, kx0, kx1 ]
-iy linlin ix, iy0, iy1 [, ix0, ix1 ]
-kys[] linlin kxs[], ky0, ky1 [, kx0, kx1 ]
-iys[] linlin ixs[], ky0, ky1, [ kx0, kx1 ]
-kC[] linlin kx, kA[], kB[] [, kx0, kx1 ]
-```
+=== "Modern"
+    ``` csound-orc
+    ky = linlin(kx, ky0, ky1 [, kx0, kx1 ])
+    iy = linlin(ix, iy0, iy1 [, ix0, ix1 ])
+    kys[] = linlin(kxs[], ky0, ky1 [, kx0, kx1 ])
+    iys[] = linlin(ixs[], ky0, ky1, [ kx0, kx1 ])
+    kC[] = linlin(kx, kA[], kB[] [, kx0, kx1 ])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ky linlin kx, ky0, ky1 [, kx0, kx1 ]
+    iy linlin ix, iy0, iy1 [, ix0, ix1 ]
+    kys[] linlin kxs[], ky0, ky1 [, kx0, kx1 ]
+    iys[] linlin ixs[], ky0, ky1, [ kx0, kx1 ]
+    kC[] linlin kx, kA[], kB[] [, kx0, kx1 ]
+    ```
 
 ### Performance
 

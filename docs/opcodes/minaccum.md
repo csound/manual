@@ -8,9 +8,15 @@ Accumulates the minimum value of audio signals.
 _minaccum_ compares two audio-rate variables and stores the minimum value between them into the first.
 
 ## Syntax
-``` csound-orc
-minaccum aAccumulator, aInput
-```
+=== "Modern"
+    ``` csound-orc
+    minaccum(aAccumulator, aInput)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    minaccum aAccumulator, aInput
+    ```
 
 ### Performance
 

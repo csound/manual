@@ -8,9 +8,15 @@ Extracts the highest-frequency track from a streaming track input signal.
 The _trhighest_ opcode takes an input containg TRACKS pv streaming signals (as generated, for instance by _partials_) and outputs only the highest track. In addition it outputs two k-rate signals, corresponding to the frequency and amplitude of the highest track signal.
 
 ## Syntax
-``` csound-orc
-fsig, kfr, kamp trhighest fin1, kscal
-```
+=== "Modern"
+    ``` csound-orc
+    fsig, kfr, kamp = trhighest(fin1, kscal)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig, kfr, kamp trhighest fin1, kscal
+    ```
 
 ### Performance
 

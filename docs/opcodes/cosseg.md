@@ -6,10 +6,17 @@ category:Signal Generators:Linear and Exponential Generators
 Trace a series of line segments between specified points with cosine interpolation.
 
 ## Syntax
-``` csound-orc
-ares cosseg ia, idur1, ib [, idur2] [, ic] [...]
-kres cosseg ia, idur1, ib [, idur2] [, ic] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = cosseg(ia, idur1, ib [, idur2] [, ic] [...])
+    kres = cosseg(ia, idur1, ib [, idur2] [, ic] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares cosseg ia, idur1, ib [, idur2] [, ic] [...]
+    kres cosseg ia, idur1, ib [, idur2] [, ic] [...]
+    ```
 
 ### Initialization
 

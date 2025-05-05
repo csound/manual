@@ -6,9 +6,15 @@ category:Real-time MIDI:Output
 Sends MIDI pitch-bend messages at i-rate.
 
 ## Syntax
-``` csound-orc
-outipb ichn, ivalue, imin, imax
-```
+=== "Modern"
+    ``` csound-orc
+    outipb(ichn, ivalue, imin, imax)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    outipb ichn, ivalue, imin, imax
+    ```
 
 ### Initialization
 

@@ -8,10 +8,17 @@ Control signals based on linear segments.
 Generate control signal consisiting of linear segments delimited by two or more specified points. The entire envelope can be looped at time-variant rate. Each segment coordinate can also be varied at k-rate.
 
 ## Syntax
-``` csound-orc
-ksig loopsegp kphase, kvalue0, kdur0, kvalue1 \
-              [, kdur1, ... , kdurN-1, kvalueN]
-```
+=== "Modern"
+    ``` csound-orc
+    ksig = loopsegp(kphase, kvalue0, kdur0, kvalue1 \
+                    [, kdur1, ... , kdurN-1, kvalueN])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ksig loopsegp kphase, kvalue0, kdur0, kvalue1 \
+                  [, kdur1, ... , kdurN-1, kvalueN]
+    ```
 
 ### Performance
 

@@ -8,11 +8,19 @@ Change the contents of existing function tables.
 _tablew_ is for writing at k- or at a-rates, with the table number being specified at init time. Using _tablew_ with i-rate signal and index values is allowed, but the specified data will always be written to the function table at k-rate, not during the initialization pass. The valid combinations of variable types are shown by the first letter of the variable names.
 
 ## Syntax
-``` csound-orc
-tablew asig, andx, ifn [, ixmode] [, ixoff] [, iwgmode]
-tablew isig, indx, ifn [, ixmode] [, ixoff] [, iwgmode]
-tablew ksig, kndx, ifn [, ixmode] [, ixoff] [, iwgmode]
-```
+=== "Modern"
+    ``` csound-orc
+    tablew(asig, andx, ifn [, ixmode] [, ixoff] [, iwgmode])
+    tablew(isig, indx, ifn [, ixmode] [, ixoff] [, iwgmode])
+    tablew(ksig, kndx, ifn [, ixmode] [, ixoff] [, iwgmode])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    tablew asig, andx, ifn [, ixmode] [, ixoff] [, iwgmode]
+    tablew isig, indx, ifn [, ixmode] [, ixoff] [, iwgmode]
+    tablew ksig, kndx, ifn [, ixmode] [, ixoff] [, iwgmode]
+    ```
 
 ### Initialization
 

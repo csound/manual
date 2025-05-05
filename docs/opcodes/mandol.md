@@ -6,10 +6,17 @@ category:Signal Generators:Models and Emulations
 An emulation of a mandolin.
 
 ## Syntax
-``` csound-orc
-ares mandol kamp, kfreq, kpluck, kdetune, kgain, ksize \
-            [, ifn] [, iminfreq]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = mandol(kamp, kfreq, kpluck, kdetune, kgain, ksize \
+                  [, ifn] [, iminfreq])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares mandol kamp, kfreq, kpluck, kdetune, kgain, ksize \
+                [, ifn] [, iminfreq]
+    ```
 
 ### Initialization
 

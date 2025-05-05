@@ -8,9 +8,15 @@ Read integer data from an arduino port using the Csound-Arduino protocol.
 Plugin opcode in serial.
 
 ## Syntax
-``` csound-orc
-kval arduinoRead iPort, iStream [, iSmooth]
-```
+=== "Modern"
+    ``` csound-orc
+    kval = arduinoRead(iPort, iStream [, iSmooth])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kval arduinoRead iPort, iStream [, iSmooth]
+    ```
 
 ### Performance
 

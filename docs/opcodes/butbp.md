@@ -6,6 +6,12 @@ category:Signal Modifiers:Standard Filters
 Same as the [butterbp](../opcodes/butterbp.md) opcode.
 
 ## Syntax
-``` csound-orc
-ares butbp asig, kfreq, kband [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = butbp(asig, kfreq, kband [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares butbp asig, kfreq, kband [, iskip]
+    ```

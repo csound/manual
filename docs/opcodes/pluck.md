@@ -8,9 +8,15 @@ Produces a naturally decaying plucked string or drum sound.
 It is based on the Karplus-Strong algorithms.
 
 ## Syntax
-``` csound-orc
-ares pluck kamp, kcps, icps, ifn, imeth [, iparm1] [, iparm2]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = pluck(kamp, kcps, icps, ifn, imeth [, iparm1] [, iparm2])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares pluck kamp, kcps, icps, ifn, imeth [, iparm1] [, iparm2]
+    ```
 
 ### Initialization
 

@@ -6,9 +6,15 @@ category:Spectral Processing:LPC
 Computes a new set of poles from the interpolation between two analysis.
 
 ## Syntax
-``` csound-orc
-lpinterp islot1, islot2, kmix
-```
+=== "Modern"
+    ``` csound-orc
+    lpinterp(islot1, islot2, kmix)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    lpinterp islot1, islot2, kmix
+    ```
 
 ### Initialization
 

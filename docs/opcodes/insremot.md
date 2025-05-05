@@ -8,9 +8,15 @@ An opcode which can be used to implement a remote orchestra. This opcode will se
 With the _insremot_ and [insglobal](../opcodes/insglobal.md) opcodes you are able to perform instruments on remote machines and control them from a master machine. The remote opcodes are implemented using the master/client model. All the machines involved contain the same orchestra but only the master machine contains the information of the score. During the performance the master machine sends the note events to the clients. The _insremot_ opcode will send events from a source machine to one destination if you want to send events to many destinations (broadcast) use the [insglobal](../opcodes/insglobal.md) opcode instead. These two opcodes can be used in combination.
 
 ## Syntax
-``` csound-orc
-insremot idestination, isource, instrnum [, instrnum...]
-```
+=== "Modern"
+    ``` csound-orc
+    insremot(idestination, isource, instrnum [, instrnum...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    insremot idestination, isource, instrnum [, instrnum...]
+    ```
 
 ### Initialization
 

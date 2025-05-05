@@ -6,9 +6,15 @@ category:Signal Modifiers:Delay
 A 4-channel variable delay opcode with high quality interpolation.
 
 ## Syntax
-``` csound-orc
-aout1, aout2, aout3, aout4 vdelayxq ain1, ain2, ain3, ain4, adl, imd, iws [, ist]
-```
+=== "Modern"
+    ``` csound-orc
+    aout1, aout2, aout3, aout4 = vdelayxq(ain1, ain2, ain3, ain4, adl, imd, iws [, ist])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout1, aout2, aout3, aout4 vdelayxq ain1, ain2, ain3, ain4, adl, imd, iws [, ist]
+    ```
 
 ### Initialization
 

@@ -8,10 +8,17 @@ Easy-to-use granular synthesis texture generator.
 Generate granular synthesis textures. _grain2_ is simpler to use, but [grain3](../opcodes/grain3.md) offers more control.
 
 ## Syntax
-``` csound-orc
-ares grain2 kcps, kfmd, kgdur, iovrlp, kfn, iwfn [, irpow] \
-            [, iseed] [, imode]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = grain2(kcps, kfmd, kgdur, iovrlp, kfn, iwfn [, irpow] \
+                  [, iseed] [, imode])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares grain2 kcps, kfmd, kgdur, iovrlp, kfn, iwfn [, irpow] \
+                [, iseed] [, imode]
+    ```
 
 ### Initialization
 

@@ -6,10 +6,17 @@ category:Instrument Control:Realtime Performance Control
 Control allocation of cpu resources on a per-instrument basis, to optimize realtime output.
 
 ## Syntax
-``` csound-orc
-cpuprc insnum, ipercent
-cpuprc Sinsname, ipercent
-```
+=== "Modern"
+    ``` csound-orc
+    cpuprc(insnum, ipercent)
+    cpuprc(Sinsname, ipercent)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    cpuprc insnum, ipercent
+    cpuprc Sinsname, ipercent
+    ```
 
 ### Initialization
 

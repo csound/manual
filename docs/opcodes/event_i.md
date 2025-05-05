@@ -6,10 +6,17 @@ category:Instrument Control:Invocation
 Generates a score event from an instrument.
 
 ## Syntax
-``` csound-orc
-event_i "scorechar", iinsnum, idelay, idur, [, ip4] [, ip5] [, ...]
-event_i "scorechar", "insname", idelay, idur, [, ip4] [, ip5] [, ...]
-```
+=== "Modern"
+    ``` csound-orc
+    event_i("scorechar", iinsnum, idelay, idur, [, ip4] [, ip5] [, ...])
+    event_i("scorechar", "insname", idelay, idur, [, ip4] [, ip5] [, ...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    event_i "scorechar", iinsnum, idelay, idur, [, ip4] [, ip5] [, ...]
+    event_i "scorechar", "insname", idelay, idur, [, ip4] [, ip5] [, ...]
+    ```
 
 ### Initialization
 

@@ -8,9 +8,15 @@ Sends data to other processes using the OSC protocol by packing messages in a bu
 Unlike OSCsend, it can be used to send multiple messages at the same time, but only standard OSC numeric types are allowed.
 
 ## Syntax
-``` csound-orc
-OSCbundle kwhen, ihost, iport, Sdest[], Stype[], kArgs[][] [, isize]
-```
+=== "Modern"
+    ``` csound-orc
+    OSCbundle(kwhen, ihost, iport, Sdest[], Stype[], kArgs[][] [, isize])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    OSCbundle kwhen, ihost, iport, Sdest[], Stype[], kArgs[][] [, isize]
+    ```
 
 ### Initialization
 

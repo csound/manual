@@ -6,9 +6,15 @@ category:Signal Generators:Random (Noise) Generators
 Generates a controlled pseudo-random number series between min and max values at k-rate whenever the trigger parameter is different to 0.
 
 ## Syntax
-``` csound-orc
-kout trandom ktrig, kmin, kmax
-```
+=== "Modern"
+    ``` csound-orc
+    kout = trandom(ktrig, kmin, kmax)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kout trandom ktrig, kmin, kmax
+    ```
 
 ### Performance
 

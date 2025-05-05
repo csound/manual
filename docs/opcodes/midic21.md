@@ -6,10 +6,17 @@ category:Real-time MIDI:Input
 Allows a floating-point 21-bit MIDI signal scaled with a minimum and a maximum range.
 
 ## Syntax
-``` csound-orc
-idest midic21 ictlno1, ictlno2, ictlno3, imin, imax [, ifn]
-kdest midic21 ictlno1, ictlno2, ictlno3, kmin, kmax [, ifn]
-```
+=== "Modern"
+    ``` csound-orc
+    idest = midic21(ictlno1, ictlno2, ictlno3, imin, imax [, ifn])
+    kdest = midic21(ictlno1, ictlno2, ictlno3, kmin, kmax [, ifn])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    idest midic21 ictlno1, ictlno2, ictlno3, imin, imax [, ifn]
+    kdest midic21 ictlno1, ictlno2, ictlno3, kmin, kmax [, ifn]
+    ```
 
 ### Initialization
 

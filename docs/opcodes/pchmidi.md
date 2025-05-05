@@ -6,9 +6,15 @@ category:Real-time MIDI:Converters
 Get the note number of the current MIDI event, expressed in pitch-class units.
 
 ## Syntax
-``` csound-orc
-ipch pchmidi
-```
+=== "Modern"
+    ``` csound-orc
+    ipch = pchmidi()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ipch pchmidi
+    ```
 
 ### Performance
 

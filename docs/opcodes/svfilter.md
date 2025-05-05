@@ -6,9 +6,15 @@ category:Signal Modifiers:Standard Filters:Resonant
 A resonant second order filter, with simultaneous lowpass, highpass and bandpass outputs.
 
 ## Syntax
-``` csound-orc
-alow, ahigh, aband svfilter asig, kcf, kq [, iscl] [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    alow, ahigh, aband = svfilter(asig, kcf, kq [, iscl] [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    alow, ahigh, aband svfilter asig, kcf, kq [, iscl] [, iskip]
+    ```
 
 ### Initialization
 

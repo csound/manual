@@ -6,9 +6,15 @@ category:Array Opcodes
 Deinterleaves arrays by picking alternate data from its input.
 
 ## Syntax
-``` csound-orc
-kout1[], kout2[] deinterleave kin[]
-```
+=== "Modern"
+    ``` csound-orc
+    kout1[], kout2[] = deinterleave(kin[])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kout1[], kout2[] deinterleave kin[]
+    ```
 
 ### Performance
 

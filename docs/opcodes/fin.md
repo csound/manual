@@ -6,10 +6,17 @@ category:Signal I/O:File I/O
 Read signals from a file at a-rate.
 
 ## Syntax
-``` csound-orc
-fin ifilename, iskipframes, iformat, ain1 [, ain2] [, ain3] [,...]
-fin ifilename, iskipframes, iformat, arr[]
-```
+=== "Modern"
+    ``` csound-orc
+    fin(ifilename, iskipframes, iformat, ain1 [, ain2] [, ain3] [,...])
+    fin(ifilename, iskipframes, iformat, arr[])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fin ifilename, iskipframes, iformat, ain1 [, ain2] [, ain3] [,...]
+    fin ifilename, iskipframes, iformat, arr[]
+    ```
 
 ### Initialization
 

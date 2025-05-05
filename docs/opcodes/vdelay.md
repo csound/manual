@@ -8,9 +8,15 @@ An interpolating variable time delay.
 It is not very different from the existing implementation ([deltapi](../opcodes/deltapi.md)), it is only easier to use.
 
 ## Syntax
-``` csound-orc
-ares vdelay asig, adel, imaxdel [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = vdelay(asig, adel, imaxdel [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares vdelay asig, adel, imaxdel [, iskip]
+    ```
 
 ### Initialization
 

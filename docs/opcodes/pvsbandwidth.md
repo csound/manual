@@ -6,9 +6,15 @@ category:Spectral Processing:Streaming
 Calculate the spectral bandwidth of a signal from its discrete Fourier transform.
 
 ## Syntax
-``` csound-orc
-kbnd pvsbandwidth fsig
-```
+=== "Modern"
+    ``` csound-orc
+    kbnd = pvsbandwidth(fsig)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kbnd pvsbandwidth fsig
+    ```
 
 ### Performance
 

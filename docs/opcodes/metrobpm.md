@@ -8,9 +8,15 @@ Trigger Metronome with optional gate.
 Generate a metronomic signal to be used in any circumstance an isochronous trigger is needed.
 
 ## Syntax
-``` csound-orc
-ktrig  metrobpm  kfreq [, initphase] [, kgate]
-```
+=== "Modern"
+    ``` csound-orc
+    ktrig  = metrobpm( kfreq [, initphase] [, kgate])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ktrig  metrobpm  kfreq [, initphase] [, kgate]
+    ```
 
 ### Initialization
 

@@ -6,9 +6,15 @@ category:Spectral Processing:Streaming
 Warp the spectral envelope of a PVS signal by means of shifting and scaling.
 
 ## Syntax
-``` csound-orc
-fsig pvswarp fsigin, kscal, kshift [, klowest, kmeth, kgain, kcoefs]
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvswarp(fsigin, kscal, kshift [, klowest, kmeth, kgain, kcoefs])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvswarp fsigin, kscal, kshift [, klowest, kmeth, kgain, kcoefs]
+    ```
 
 ### Performance
 

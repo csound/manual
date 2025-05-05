@@ -8,10 +8,17 @@ A reverberator consisting of 6 parallel comb-lowpass filters.
 It is fed into a series of 5 allpass filters. _nreverb_ replaces [reverb2](../opcodes/reverb2.md) (version 3.48) and so both opcodes are identical.
 
 ## Syntax
-``` csound-orc
-ares nreverb asig, ktime, khdif [, iskip] [,inumCombs] [, ifnCombs] \
-             [, inumAlpas] [, ifnAlpas]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = nreverb(asig, ktime, khdif [, iskip] [,inumCombs] [, ifnCombs] \
+                   [, inumAlpas] [, ifnAlpas])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares nreverb asig, ktime, khdif [, iskip] [,inumCombs] [, ifnCombs] \
+                 [, inumAlpas] [, ifnAlpas]
+    ```
 
 ### Initialization
 

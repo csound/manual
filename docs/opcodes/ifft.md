@@ -8,9 +8,15 @@ Complex-to-complex Inverse Fast Fourier Transform.
 Applies an Inverse Fast Fourier Transform to a complex-value input 1-dimensional array producing a complex-valued output. The output is another array containing the complex-valued signal, and both arrays are arranged in interleaved real-imaginary format. The output array will have the same size as the input, and the transform size will be equivalent to half of the length of the array. Non-power-of-two transforms are limited to even sizes with not too many factors.
 
 ## Syntax
-``` csound-orc
-kout[] fftinv kin[]
-```
+=== "Modern"
+    ``` csound-orc
+    kout[] = fftinv(kin[])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kout[] fftinv kin[]
+    ```
 
 ### Performance
 

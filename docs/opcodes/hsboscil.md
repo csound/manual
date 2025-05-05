@@ -6,10 +6,17 @@ category:Signal Generators:Additive Synthesis/Resynthesis
 An oscillator which takes tonality and brightness as arguments, relative to a base frequency.
 
 ## Syntax
-``` csound-orc
-ares hsboscil kamp, ktone, kbrite, ibasfreq, iwfn, ioctfn \
-              [, ioctcnt] [, iphs]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = hsboscil(kamp, ktone, kbrite, ibasfreq, iwfn, ioctfn \
+                    [, ioctcnt] [, iphs])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares hsboscil kamp, ktone, kbrite, ibasfreq, iwfn, ioctfn \
+                  [, ioctcnt] [, iphs]
+    ```
 
 ### Initialization
 

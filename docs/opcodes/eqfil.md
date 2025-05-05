@@ -10,9 +10,15 @@ The opcode eqfil is a 2nd order tunable equalisation filter based on Regalia and
 The amplitude response for this filter will be flat (=1) for _kgain_=1. With _kgain_ bigger than 1, there will be a peak at the centre frequency, whose width is given by the _kbw_ parameter, but outside this band, the response will tend towards 1. Conversely, if _kgain_ is smaller than 1, a notch will be created around the CF.
 
 ## Syntax
-``` csound-orc
-asig eqfil ain, kcf, kbw, kgain[, istor]
-```
+=== "Modern"
+    ``` csound-orc
+    asig = eqfil(ain, kcf, kbw, kgain[, istor])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig eqfil ain, kcf, kbw, kgain[, istor]
+    ```
 
 ### Initialization
 

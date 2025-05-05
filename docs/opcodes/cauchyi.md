@@ -8,11 +8,19 @@ Cauchy distribution random number generator with interpolation between values.
 This is an x-class noise generator.
 
 ## Syntax
-``` csound-orc
-ares cauchyi klambda, xamp, xcps
-ires cauchyi klambda, xamp, xcps
-kres cauchyi klambda, xamp, xcps
-```
+=== "Modern"
+    ``` csound-orc
+    ares = cauchyi(klambda, xamp, xcps)
+    ires = cauchyi(klambda, xamp, xcps)
+    kres = cauchyi(klambda, xamp, xcps)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares cauchyi klambda, xamp, xcps
+    ires cauchyi klambda, xamp, xcps
+    kres cauchyi klambda, xamp, xcps
+    ```
 
 ### Performance
 

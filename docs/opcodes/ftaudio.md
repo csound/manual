@@ -6,10 +6,17 @@ category:Table Control:Read/Write Operations
 Write a previously-allocated table to an audio file in a variety of formats.
 
 ## Syntax
-``` csound-orc
-ians ftaudio ifn, "filename", iformat[, ibeg, iend]
-kans ftaudio ktrig, kfn, "filename", kformat [, isync, kbeg, kend]
-```
+=== "Modern"
+    ``` csound-orc
+    ians = ftaudio(ifn, "filename", iformat[, ibeg, iend])
+    kans = ftaudio(ktrig, kfn, "filename", kformat [, isync, kbeg, kend])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ians ftaudio ifn, "filename", iformat[, ibeg, iend]
+    kans ftaudio ktrig, kfn, "filename", kformat [, isync, kbeg, kend]
+    ```
 
 ### Initialization
 

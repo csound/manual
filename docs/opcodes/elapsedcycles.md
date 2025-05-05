@@ -6,10 +6,17 @@ category:Instrument Control:Time Reading
 Read absolute time, in k-rate cycles, since the start of the performance.
 
 ## Syntax
-``` csound-orc
-ires elapsedcycles
-kres elapsedcycles
-```
+=== "Modern"
+    ``` csound-orc
+    ires = elapsedcycles()
+    kres = elapsedcycles()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ires elapsedcycles
+    kres elapsedcycles
+    ```
 
 ### Performance
 

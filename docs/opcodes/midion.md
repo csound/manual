@@ -6,9 +6,15 @@ category:Real-time MIDI:Note Output
 Generates MIDI note messages at k-rate.
 
 ## Syntax
-``` csound-orc
-midion kchn, knum, kvel
-```
+=== "Modern"
+    ``` csound-orc
+    midion(kchn, knum, kvel)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    midion kchn, knum, kvel
+    ```
 
 ### Performance
 

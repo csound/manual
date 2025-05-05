@@ -6,9 +6,15 @@ category:Signal Generators:Additive Synthesis/Resynthesis
 Performs additive synthesis with an arbitrary number of partials, not necessarily harmonic.
 
 ## Syntax
-``` csound-orc
-ares adsynt kamp, kcps, iwfn, ifreqfn, iampfn, icnt [, iphs]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = adsynt(kamp, kcps, iwfn, ifreqfn, iampfn, icnt [, iphs])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares adsynt kamp, kcps, iwfn, ifreqfn, iampfn, icnt [, iphs]
+    ```
 
 ### Initialization
 

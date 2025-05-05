@@ -6,10 +6,17 @@ category:Signal Generators:Random (Noise) Generators
 A jitter-spline generator.
 
 ## Syntax
-``` csound-orc
-ares jspline xamp, kcpsMin, kcpsMax
-kres jspline kamp, kcpsMin, kcpsMax
-```
+=== "Modern"
+    ``` csound-orc
+    ares = jspline(xamp, kcpsMin, kcpsMax)
+    kres = jspline(kamp, kcpsMin, kcpsMax)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares jspline xamp, kcpsMin, kcpsMax
+    kres jspline kamp, kcpsMin, kcpsMax
+    ```
 
 ### Performance
 

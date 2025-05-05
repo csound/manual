@@ -6,9 +6,15 @@ category:Signal I/O:Printing and Display
 Prints at k-rate using a printf() style syntax like [printks](../opcodes/printks.md), appends a new line.
 
 ## Syntax
-``` csound-orc
-println "string", [, xval1] [, xval2] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    println("string", [, xval1] [, xval2] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    println "string", [, xval1] [, xval2] [...]
+    ```
 
 ### Initialization
 

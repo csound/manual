@@ -6,11 +6,19 @@ category:Signal Modifiers:Sample Level Operators
 Calculates the weighted mean value (i.e. linear interpolation) of two input signals.
 
 ## Syntax
-``` csound-orc
-ares ntrpol asig1, asig2, kpoint [, imin] [, imax]
-ires ntrpol isig1, isig2, ipoint [, imin] [, imax]
-kres ntrpol ksig1, ksig2, kpoint [, imin] [, imax]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = ntrpol(asig1, asig2, kpoint [, imin] [, imax])
+    ires = ntrpol(isig1, isig2, ipoint [, imin] [, imax])
+    kres = ntrpol(ksig1, ksig2, kpoint [, imin] [, imax])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares ntrpol asig1, asig2, kpoint [, imin] [, imax]
+    ires ntrpol isig1, isig2, ipoint [, imin] [, imax]
+    kres ntrpol ksig1, ksig2, kpoint [, imin] [, imax]
+    ```
 
 ### Initialization
 

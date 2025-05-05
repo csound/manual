@@ -8,9 +8,15 @@ Tracks the pitch of a signal.
 _ptrack_ takes an input signal, splits it into _ihopsize_ blocks and using a STFT method, extracts an estimated pitch for its fundamental frequency as well as estimating the total amplitude of the signal in dB, relative to full-scale (0dB). The method implies an analysis window size of 2*_ihopsize_ samples (overlaping by 1/2 window), which has to be a power-of-two, between 128 and 8192 (hopsizes between 64 and 4096). Smaller windows will give better time precision, but worse frequency accuracy (esp. in low fundamentals).This opcode is based on an original algorithm by M. Puckette.
 
 ## Syntax
-``` csound-orc
-kcps, kamp ptrack asig, ihopsize[,ipeaks]
-```
+=== "Modern"
+    ``` csound-orc
+    kcps, kamp = ptrack(asig, ihopsize[,ipeaks])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kcps, kamp ptrack asig, ihopsize[,ipeaks]
+    ```
 
 ### Initialization
 

@@ -8,9 +8,15 @@ Creates a tone similar to a struck metal bar.
 It uses a physical model developed from solving the partial differential equation. There are controls over the boundary conditions as well as the bar characteristics.
 
 ## Syntax
-``` csound-orc
-ares barmodel kbcL, kbcR, iK, ib, kscan, iT30, ipos, ivel, iwid
-```
+=== "Modern"
+    ``` csound-orc
+    ares = barmodel(kbcL, kbcR, iK, ib, kscan, iT30, ipos, ivel, iwid)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares barmodel kbcL, kbcR, iK, ib, kscan, iT30, ipos, ivel, iwid
+    ```
 
 ### Initialization
 

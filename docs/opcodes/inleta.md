@@ -8,9 +8,15 @@ Receives an arate signal into an instrument through a named port.
 Plugin opcode in signalflowgraph
 
 ## Syntax
-``` csound-orc
-asignal inleta Sname
-```
+=== "Modern"
+    ``` csound-orc
+    asignal = inleta(Sname)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asignal inleta Sname
+    ```
 
 ### Initialization
 

@@ -8,9 +8,15 @@ Generates output signals based on a previously defined [space](../opcodes/space.
 The output signals from _spsend_ are derived from the values given for xy and reverb in the _space_ and are ready to be sent to local or global reverb units (see example below).
 
 ## Syntax
-``` csound-orc
-a1, a2, a3, a4 spsend
-```
+=== "Modern"
+    ``` csound-orc
+    a1, a2, a3, a4 = spsend()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    a1, a2, a3, a4 spsend
+    ```
 
 ### Performance
 

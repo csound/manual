@@ -6,9 +6,15 @@ category:Instrument Control:Sensing and Control
 Returns the ASCII code of a key that has been pressed, or -1 if no key has been pressed.
 
 ## Syntax
-``` csound-orc
-kres [, kkeydown] sensekey
-```
+=== "Modern"
+    ``` csound-orc
+    kres [, kkeydown] = sensekey()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres [, kkeydown] sensekey
+    ```
 
 ### Performance
 

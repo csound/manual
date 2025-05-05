@@ -8,10 +8,17 @@ Reads the global seed value.
 Returns the global seed value used for all _x-class noise generators_.
 
 ## Syntax
-``` csound-orc
-ians getseed
-kans getseed
-```
+=== "Modern"
+    ``` csound-orc
+    ians = getseed()
+    kans = getseed()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ians getseed
+    kans getseed
+    ```
 
 ### Performance
 

@@ -6,11 +6,19 @@ category:Signal I/O:Signal Output
 Sends an i-rate or k-rate signal or string to a user-defined channel.
 
 ## Syntax
-``` csound-orc
-outvalue "channel name", ivalue
-outvalue "channel name", kvalue
-outvalue "channel name", "string"
-```
+=== "Modern"
+    ``` csound-orc
+    outvalue("channel name", ivalue)
+    outvalue("channel name", kvalue)
+    outvalue("channel name", "string")
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    outvalue "channel name", ivalue
+    outvalue "channel name", kvalue
+    outvalue "channel name", "string"
+    ```
 
 ### Performance
 

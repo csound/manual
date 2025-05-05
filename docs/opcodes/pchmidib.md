@@ -6,10 +6,17 @@ category:Real-time MIDI:Converters
 Get the note number of the current MIDI event and modify it by the current pitch-bend value, express it in pitch-class units.
 
 ## Syntax
-``` csound-orc
-ipch pchmidib [irange]
-kpch pchmidib [irange]
-```
+=== "Modern"
+    ``` csound-orc
+    ipch = pchmidib([irange])
+    kpch = pchmidib([irange])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ipch pchmidib [irange]
+    kpch pchmidib [irange]
+    ```
 
 ### Initialization
 

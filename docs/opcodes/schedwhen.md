@@ -6,10 +6,17 @@ category:Instrument Control:Invocation
 Adds a new score event.
 
 ## Syntax
-``` csound-orc
-schedwhen ktrigger, kinsnum, kwhen, kdur [, ip4] [, ip5] [...]
-schedwhen ktrigger, "insname", kwhen, kdur [, ip4] [, ip5] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    schedwhen(ktrigger, kinsnum, kwhen, kdur [, ip4] [, ip5] [...])
+    schedwhen(ktrigger, "insname", kwhen, kdur [, ip4] [, ip5] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    schedwhen ktrigger, kinsnum, kwhen, kdur [, ip4] [, ip5] [...]
+    schedwhen ktrigger, "insname", kwhen, kdur [, ip4] [, ip5] [...]
+    ```
 
 ### Initialization
 

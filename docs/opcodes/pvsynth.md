@@ -6,9 +6,15 @@ category:Spectral Processing:Streaming
 Resynthesise phase vocoder data (f-signal) using a FFT overlap-add.
 
 ## Syntax
-``` csound-orc
-ares pvsynth fsrc, [iinit]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = pvsynth(fsrc, [iinit])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares pvsynth fsrc, [iinit]
+    ```
 
 ### Performance
 

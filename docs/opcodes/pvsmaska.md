@@ -6,9 +6,15 @@ category:Spectral Processing:Streaming
 Modify amplitudes using a function table, with dynamic scaling.
 
 ## Syntax
-``` csound-orc
-fsig pvsmaska fsrc, ifn, kdepth
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvsmaska(fsrc, ifn, kdepth)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvsmaska fsrc, ifn, kdepth
+    ```
 
 ### Initialization
 

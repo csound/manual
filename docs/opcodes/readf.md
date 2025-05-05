@@ -8,9 +8,15 @@ Read a line of text from an external file once each k-cycle.
 Plugin opcode in cs_date.
 
 ## Syntax
-``` csound-orc
-Sres, kline readf ifilname
-```
+=== "Modern"
+    ``` csound-orc
+    Sres, kline = readf(ifilname)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    Sres, kline readf ifilname
+    ```
 
 ### Initialization
 

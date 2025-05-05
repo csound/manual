@@ -8,9 +8,15 @@ Mixes low level (~1e-20 for floats, and ~1e-56 for doubles) noise to a list of a
 Can be used before IIR filters and reverbs to avoid denormalized numbers which may otherwise result in significantly increased CPU usage.
 
 ## Syntax
-``` csound-orc
-denorm a1[, a2[, a3[, ... ]]]
-```
+=== "Modern"
+    ``` csound-orc
+    denorm(a1[, a2[, a3[, ... ]]])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    denorm a1[, a2[, a3[, ... ]]]
+    ```
 
 ### Performance
 

@@ -8,9 +8,15 @@ Pops an f-sig frame from the global stack.  Deprecated.
 Plugin opcode in stackops.
 
 ## Syntax
-``` csound-orc
-fsig pop_f
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pop_f()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pop_f
+    ```
 
 ### Performance
 

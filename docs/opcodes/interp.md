@@ -6,9 +6,15 @@ category:Signal Modifiers:Sample Level Operators
 Converts a control signal to an audio signal using linear interpolation.
 
 ## Syntax
-``` csound-orc
-ares interp ksig [, iskip] [, imode] [, ivalue]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = interp(ksig [, iskip] [, imode] [, ivalue])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares interp ksig [, iskip] [, imode] [, ivalue]
+    ```
 
 ### Initialization
 

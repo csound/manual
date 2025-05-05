@@ -10,10 +10,17 @@ Plugin opcode in scugens.
 Port of Supercollider's Trig ugen. When a nonpositive to positive transition occurs at the input, trighold outputs the level of the triggering input for the specified duration, otherwise it outputs zero.
 
 ## Syntax
-``` csound-orc
-aout trighold ain, kdur
-kout trighold kin, kdur
-```
+=== "Modern"
+    ``` csound-orc
+    aout = trighold(ain, kdur)
+    kout = trighold(kin, kdur)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout trighold ain, kdur
+    kout trighold kin, kdur
+    ```
 
 ### Initialization
 

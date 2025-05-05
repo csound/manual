@@ -16,9 +16,15 @@ _syncgrain_ can simulate FOF-like formant synthesis, provided that a suitable sh
 _syncgrain_ uses floating-point indexing, so its precision is not affected by large-size tables. This opcode is based on the SndObj library SyncGrain class.
 
 ## Syntax
-``` csound-orc
-asig syncgrain kamp, kfreq, kpitch, kgrsize, kprate, ifun1, ifun2, iolaps
-```
+=== "Modern"
+    ``` csound-orc
+    asig = syncgrain(kamp, kfreq, kpitch, kgrsize, kprate, ifun1, ifun2, iolaps)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig syncgrain kamp, kfreq, kpitch, kgrsize, kprate, ifun1, ifun2, iolaps
+    ```
 
 ### Initialization
 

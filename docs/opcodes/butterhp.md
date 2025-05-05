@@ -8,10 +8,17 @@ A high-pass Butterworth filter.
 Implementation of second-order high-pass Butterworth filter. This opcode can also be written as [buthp](../opcodes/buthp.md).
 
 ## Syntax
-``` csound-orc
-ares butterhp asig, kfreq [, iskip]
-ares butterhp asig, afreq [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = butterhp(asig, kfreq [, iskip])
+    ares = butterhp(asig, afreq [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares butterhp asig, kfreq [, iskip]
+    ares butterhp asig, afreq [, iskip]
+    ```
 
 ### Initialization
 

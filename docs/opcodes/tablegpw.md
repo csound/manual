@@ -6,9 +6,15 @@ category:Table Control:Read/Write Operations
 Writes a table's guard point.
 
 ## Syntax
-``` csound-orc
-tablegpw kfn
-```
+=== "Modern"
+    ``` csound-orc
+    tablegpw(kfn)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    tablegpw kfn
+    ```
 
 ### Performance
 

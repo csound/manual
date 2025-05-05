@@ -6,9 +6,15 @@ category:Strings:Manipulation
 Print a string with an optional newline at the end whenever the trigger signal is positive and changes.
 
 ## Syntax
-``` csound-orc
-puts Sstr, ktrig [, inonl]
-```
+=== "Modern"
+    ``` csound-orc
+    puts(Sstr, ktrig [, inonl])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    puts Sstr, ktrig [, inonl]
+    ```
 
 ### Initialization
 

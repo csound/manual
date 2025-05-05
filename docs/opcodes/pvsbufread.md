@@ -8,9 +8,15 @@ This opcode reads a circular buffer of f-signals (streaming PV signals).
 This opcode reads from a circular buffer of length ilen (secs), taking a handle for the buffer and a time pointer, which holds the current read position (also in seconds). It is used in conjunction with a _pvsbuffer_ opocde. Reading is circular, wrapping around at the end of the buffer.
 
 ## Syntax
-``` csound-orc
-fsig pvsbufread ktime, khandle [, ilo, ihi, iclear]
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvsbufread(ktime, khandle [, ilo, ihi, iclear])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvsbufread ktime, khandle [, ilo, ihi, iclear]
+    ```
 
 ### Initialisation
 

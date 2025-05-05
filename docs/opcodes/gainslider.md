@@ -8,9 +8,15 @@ An implementation of a logarithmic gain curve which is similar to the gainslider
 This opcode is intended for use to multiply by an audio signal to give a console mixer like feel. There is no bounds in the source code so you can for example give higher than 127 values for extra amplitude but possibly clipped audio.
 
 ## Syntax
-``` csound-orc
-kout gainslider kindex
-```
+=== "Modern"
+    ``` csound-orc
+    kout = gainslider(kindex)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kout gainslider kindex
+    ```
 
 ### Performance
 

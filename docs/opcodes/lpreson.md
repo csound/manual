@@ -6,9 +6,15 @@ category:Spectral Processing:LPC
 RResynthesises a signal from the data passed internally by a previous _lpread_.
 
 ## Syntax
-``` csound-orc
-ares lpreson asig
-```
+=== "Modern"
+    ``` csound-orc
+    ares = lpreson(asig)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares lpreson asig
+    ```
 
 ### Performance
 

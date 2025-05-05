@@ -8,9 +8,15 @@ Sense on-screen controls. Requires Winsound or TCL/TK.
 Plugin opcode in control.
 
 ## Syntax
-``` csound-orc
-kres checkbox knum
-```
+=== "Modern"
+    ``` csound-orc
+    kres = checkbox(knum)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres checkbox knum
+    ```
 
 ### Performance
 

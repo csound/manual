@@ -8,11 +8,19 @@ Beta distribution random number generator (positive values only).
 This is an x-class noise generator.
 
 ## Syntax
-``` csound-orc
-ares betarand krange, kalpha, kbeta
-ires betarand krange, kalpha, kbeta
-kres betarand krange, kalpha, kbeta
-```
+=== "Modern"
+    ``` csound-orc
+    ares = betarand(krange, kalpha, kbeta)
+    ires = betarand(krange, kalpha, kbeta)
+    kres = betarand(krange, kalpha, kbeta)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares betarand krange, kalpha, kbeta
+    ires betarand krange, kalpha, kbeta
+    kres betarand krange, kalpha, kbeta
+    ```
 
 ### Performance
 

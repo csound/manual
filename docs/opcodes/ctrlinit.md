@@ -6,10 +6,17 @@ category:Real-time MIDI:Input
 Sets the initial values for a set of MIDI controllers.
 
 ## Syntax
-``` csound-orc
-ctrlinit ichnl, ictlno1, ival1 [, ictlno2] [, ival2] [, ictlno3] \
-         [, ival3] [,...ival32]
-```
+=== "Modern"
+    ``` csound-orc
+    ctrlinit(ichnl, ictlno1, ival1 [, ictlno2] [, ival2] [, ictlno3] \
+             [, ival3] [,...ival32])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ctrlinit ichnl, ictlno1, ival1 [, ictlno2] [, ival2] [, ictlno3] \
+             [, ival3] [,...ival32]
+    ```
 
 ### Initialization
 

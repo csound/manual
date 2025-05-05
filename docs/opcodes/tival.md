@@ -6,9 +6,15 @@ category:Instrument Control:Initialization and Reinitialization
 Puts the value of the instrument's internal &#8220;tie-in&#8221; flag into the named i-rate variable.
 
 ## Syntax
-``` csound-orc
-ir tival
-```
+=== "Modern"
+    ``` csound-orc
+    ir = tival()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ir tival
+    ```
 
 ### Initialization
 

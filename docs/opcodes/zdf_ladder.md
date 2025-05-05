@@ -6,9 +6,15 @@ category:Signal Modifiers:Standard Filters
 Zero-delay feedback implementation of a 4 pole (24 dB/oct) low-pass filter based on the Moog ladder filter.
 
 ## Syntax
-``` csound-orc
-asig zdf_ladder ain, xcf, xQ [, istor]
-```
+=== "Modern"
+    ``` csound-orc
+    asig = zdf_ladder(ain, xcf, xQ [, istor])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig zdf_ladder ain, xcf, xQ [, istor]
+    ```
 
 ### Initialization
 

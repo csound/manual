@@ -6,9 +6,15 @@ category:Real-time MIDI:System Realtime
 Sends a MIDI CLOCK message.
 
 ## Syntax
-``` csound-orc
-mclock ifreq
-```
+=== "Modern"
+    ``` csound-orc
+    mclock(ifreq)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    mclock ifreq
+    ```
 
 ### Initialization
 

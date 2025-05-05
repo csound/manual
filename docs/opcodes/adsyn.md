@@ -6,9 +6,15 @@ category:Signal Generators:Additive Synthesis/Resynthesis
 Output is an additive set of individually controlled sinusoids, using an oscillator bank.
 
 ## Syntax
-``` csound-orc
-ares adsyn kamod, kfmod, ksmod, ifilcod
-```
+=== "Modern"
+    ``` csound-orc
+    ares = adsyn(kamod, kfmod, ksmod, ifilcod)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares adsyn kamod, kfmod, ksmod, ifilcod
+    ```
 
 ### Initialization
 

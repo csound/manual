@@ -6,9 +6,15 @@ category:Signal Modifiers:Specialized Filters
 A DFT-based implementation of a Hilbert transformer.
 
 ## Syntax
-``` csound-orc
-ar1, ar2 hilbert2 asig, ifftsize, ihopsize
-```
+=== "Modern"
+    ``` csound-orc
+    ar1, ar2 = hilbert2(asig, ifftsize, ihopsize)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar1, ar2 hilbert2 asig, ifftsize, ihopsize
+    ```
 
 Initialisation
 

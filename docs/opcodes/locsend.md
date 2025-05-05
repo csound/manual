@@ -8,10 +8,17 @@ Distributes the audio signals of a previous [locsig](../opcodes/locsig.md) opcod
 The number of output signals must match the number in the previous _locsig_. The output signals from _locsend_ are derived from the values given for distance and reverb in the _locsig_ and are ready to be sent to local or global reverb units (see example below). The reverb amount and the balance between the 2 or 4 channels are calculated in the same way as described in the Dodge book (an essential text!).
 
 ## Syntax
-``` csound-orc
-a1, a2 locsend
-a1, a2,  a3, a4 locsend
-```
+=== "Modern"
+    ``` csound-orc
+    a1, a2 = locsend()
+    a1, a2,  a3, a4 = locsend()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    a1, a2 locsend
+    a1, a2,  a3, a4 locsend
+    ```
 
 ## Examples
 

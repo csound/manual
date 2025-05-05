@@ -8,10 +8,17 @@ Uses FM synthesis to create a &#8220;Heavy Metal&#8221; sound.
 It comes from a family of FM sounds, all using 4 basic oscillators and various architectures, as used in the TX81Z synthesizer.
 
 ## Syntax
-``` csound-orc
-ares fmmetal kamp, kfreq, kc1, kc2, kvdepth, kvrate, ifn1, ifn2, ifn3, \
-             ifn4, ivfn
-```
+=== "Modern"
+    ``` csound-orc
+    ares = fmmetal(kamp, kfreq, kc1, kc2, kvdepth, kvrate, ifn1, ifn2, ifn3, \
+                   ifn4, ivfn)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares fmmetal kamp, kfreq, kc1, kc2, kvdepth, kvrate, ifn1, ifn2, ifn3, \
+                 ifn4, ivfn
+    ```
 
 ### Initialization
 

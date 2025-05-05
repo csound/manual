@@ -6,10 +6,17 @@ category:Spectral Processing:Non-Standard
 Estimates the pitch of the most prominent complex tone in the spectrum.
 
 ## Syntax
-``` csound-orc
-koct, kamp specptrk wsig, kvar, ilo, ihi, istr, idbthresh, inptls, irolloff \
-                    [, iodd] [, iconfs] [, interp] [, ifprd] [, iwtflg]
-```
+=== "Modern"
+    ``` csound-orc
+    koct, kamp = specptrk(wsig, kvar, ilo, ihi, istr, idbthresh, inptls, irolloff \
+                          [, iodd] [, iconfs] [, interp] [, ifprd] [, iwtflg])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    koct, kamp specptrk wsig, kvar, ilo, ihi, istr, idbthresh, inptls, irolloff \
+                        [, iodd] [, iconfs] [, interp] [, ifprd] [, iwtflg]
+    ```
 
 ### Initialization
 

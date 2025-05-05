@@ -6,9 +6,15 @@ category:Signal Modifiers:Reverberation
 Reverberates an input signal with a &#8220;colored&#8221; frequency response.
 
 ## Syntax
-``` csound-orc
-ares comb asig, krvt, ilpt [, iskip] [, insmps]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = comb(asig, krvt, ilpt [, iskip] [, insmps])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares comb asig, krvt, ilpt [, iskip] [, insmps]
+    ```
 
 ### Initialization
 

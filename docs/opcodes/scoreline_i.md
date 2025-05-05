@@ -8,9 +8,15 @@ Issues one or more score line events from an instrument at i-time.
 It can handle strings in the same conditions as the standard score. Multi-line strings are accepted, using {{  }} to enclose the string.
 
 ## Syntax
-``` csound-orc
-scoreline_i Sin
-```
+=== "Modern"
+    ``` csound-orc
+    scoreline_i(Sin)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    scoreline_i Sin
+    ```
 
 ### Initialization
 

@@ -7,9 +7,15 @@ A median filter, a variant FIR lowpass filter.
 
 
 ## Syntax
-``` csound-orc
-kres mediank kin, ksize, imaxsize [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    kres = mediank(kin, ksize, imaxsize [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres mediank kin, ksize, imaxsize [, iskip]
+    ```
 
 ### Initialization
 

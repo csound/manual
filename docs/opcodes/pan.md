@@ -6,9 +6,15 @@ category:Signal Modifiers:Panning and Spatialization
 Distribute an audio signal amongst four channels with localization control.
 
 ## Syntax
-``` csound-orc
-a1, a2, a3, a4 pan asig, kx, ky, ifn [, imode] [, ioffset]
-```
+=== "Modern"
+    ``` csound-orc
+    a1, a2, a3, a4 = pan(asig, kx, ky, ifn [, imode] [, ioffset])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    a1, a2, a3, a4 pan asig, kx, ky, ifn [, imode] [, ioffset]
+    ```
 
 ### Initialization
 

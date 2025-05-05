@@ -8,10 +8,17 @@ Change the contents of existing function tables.
 _tablewkt_ uses a k-rate variable for selecting the table number. The valid combinations of variable types are shown by the first letter of the variable names.
 
 ## Syntax
-``` csound-orc
-tablewkt asig, andx, kfn [, ixmode] [, ixoff] [, iwgmode]
-tablewkt ksig, kndx, kfn [, ixmode] [, ixoff] [, iwgmode]
-```
+=== "Modern"
+    ``` csound-orc
+    tablewkt(asig, andx, kfn [, ixmode] [, ixoff] [, iwgmode])
+    tablewkt(ksig, kndx, kfn [, ixmode] [, ixoff] [, iwgmode])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    tablewkt asig, andx, kfn [, ixmode] [, ixoff] [, iwgmode]
+    tablewkt ksig, kndx, kfn [, ixmode] [, ixoff] [, iwgmode]
+    ```
 
 ### Initialization
 

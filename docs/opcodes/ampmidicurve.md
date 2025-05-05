@@ -10,10 +10,17 @@ Plugin opcode in ampmidid.
 The minimum output gain is 1 minus the dynamic range. A shaping exponent of 1 gives a linear response; increasing the exponent produces an increasingly depressed knee in the gain response curve.
 
 ## Syntax
-``` csound-orc
-igain ampmidicurve ivelocity, idynamicrange, iexponent
-kgain ampmidicurve kvelocity, kdynamicrange, kexponent
-```
+=== "Modern"
+    ``` csound-orc
+    igain = ampmidicurve(ivelocity, idynamicrange, iexponent)
+    kgain = ampmidicurve(kvelocity, kdynamicrange, kexponent)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    igain ampmidicurve ivelocity, idynamicrange, iexponent
+    kgain ampmidicurve kvelocity, kdynamicrange, kexponent
+    ```
 
 ### Initialization
 

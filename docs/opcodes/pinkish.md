@@ -11,9 +11,15 @@ It uses one of two different methods:
 *  a filter bank designed by Paul Kellet
 
 ## Syntax
-``` csound-orc
-ares pinkish xin [, imethod] [, inumbands] [, iseed] [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = pinkish(xin [, imethod] [, inumbands] [, iseed] [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares pinkish xin [, imethod] [, inumbands] [, iseed] [, iskip]
+    ```
 
 ### Initialization
 

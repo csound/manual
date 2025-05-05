@@ -6,9 +6,15 @@ category:Real-time MIDI:Note Output
 Sends a noteon and a noteoff MIDI message both with the same channel, number and velocity.
 
 ## Syntax
-``` csound-orc
-noteondur2 ichn, inum, ivel, idur
-```
+=== "Modern"
+    ``` csound-orc
+    noteondur2(ichn, inum, ivel, idur)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    noteondur2 ichn, inum, ivel, idur
+    ```
 
 ### Initialization
 

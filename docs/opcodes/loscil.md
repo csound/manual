@@ -8,12 +8,21 @@ Read sampled sound (mono or stereo) from a table.
 Reading with optional sustain and release looping. A version that outputs the exact table position (phase) corresponding to the output sample is provided as an alternative opcode.
 
 ## Syntax
-``` csound-orc
-ar1 [,ar2] loscil xamp, kcps, ifn [, ibas] [, imod1] [, ibeg1] [, iend1] \
-                  [, imod2] [, ibeg2] [, iend2]
-aph, ar1 [,ar2] loscilphs xamp, kcps, ifn [, ibas] [, imod1] [, ibeg1] \
-                          [, iend1] [, imod2] [, ibeg2] [, iend2]
-```
+=== "Modern"
+    ``` csound-orc
+    ar1 [,ar2] = loscil(xamp, kcps, ifn [, ibas] [, imod1] [, ibeg1] [, iend1] \
+                        [, imod2] [, ibeg2] [, iend2])
+    aph, ar1 [,ar2] = loscilphs(xamp, kcps, ifn [, ibas] [, imod1] [, ibeg1] \
+                                [, iend1] [, imod2] [, ibeg2] [, iend2])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar1 [,ar2] loscil xamp, kcps, ifn [, ibas] [, imod1] [, ibeg1] [, iend1] \
+                      [, imod2] [, ibeg2] [, iend2]
+    aph, ar1 [,ar2] loscilphs xamp, kcps, ifn [, ibas] [, imod1] [, ibeg1] \
+                              [, iend1] [, imod2] [, ibeg2] [, iend2]
+    ```
 
 ### Initialization
 

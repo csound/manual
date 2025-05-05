@@ -8,17 +8,31 @@ Reads data from a channel of the inward named software bus.
 Implies declaring the channel with _imode_=1 (see also [chn_k, chn_a, and chn_S](../opcodes/chn.md)).
 
 ## Syntax
-``` csound-orc
-ival chnget Sname
-kval chnget Sname
-aval chnget Sname
-Sval chnget Sname
-Sval chngetks Sname
-ival[] chngeti Sname[]
-kval[] chngetk Sname[]
-aval[] chngeta Sname[]
-Sval[] chngets Sname[]
-```
+=== "Modern"
+    ``` csound-orc
+    ival = chnget(Sname)
+    kval = chnget(Sname)
+    aval = chnget(Sname)
+    Sval = chnget(Sname)
+    Sval = chngetks(Sname)
+    ival[] = chngeti(Sname[])
+    kval[] = chngetk(Sname[])
+    aval[] = chngeta(Sname[])
+    Sval[] = chngets(Sname[])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ival chnget Sname
+    kval chnget Sname
+    aval chnget Sname
+    Sval chnget Sname
+    Sval chngetks Sname
+    ival[] chngeti Sname[]
+    kval[] chngetk Sname[]
+    aval[] chngeta Sname[]
+    Sval[] chngets Sname[]
+    ```
 
 ### Initialization
 

@@ -12,9 +12,15 @@ The connect opcode, valid only in the orchestra header, sends the signals from t
 When Csound creates a new instance of an instrument template, new instances of its connections also are created.
 
 ## Syntax
-``` csound-orc
-connect Tsource1, Soutlet1, Tsink1, Sinlet1
-```
+=== "Modern"
+    ``` csound-orc
+    connect(Tsource1, Soutlet1, Tsink1, Sinlet1)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    connect Tsource1, Soutlet1, Tsink1, Sinlet1
+    ```
 
 ### Initialization
 

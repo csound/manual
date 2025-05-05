@@ -8,9 +8,15 @@ Emulates a stack of filters using the reson opcode.
 _resonx_ is equivalent to a filters consisting of more layers of [reson](../opcodes/reson.md) with the same arguments, serially connected. Using a stack of a larger number of filters allows a sharper cutoff. They are faster than using a larger number instances in a Csound orchestra of the old opcodes, because only one initialization and k- cycle are needed at time and the audio loop falls entirely inside the cache memory of processor.
 
 ## Syntax
-``` csound-orc
-ares resonx asig, xcf, xbw [, inumlayer] [, iscl] [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = resonx(asig, xcf, xbw [, inumlayer] [, iscl] [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares resonx asig, xcf, xbw [, inumlayer] [, iscl] [, iskip]
+    ```
 
 ### Initialization
 

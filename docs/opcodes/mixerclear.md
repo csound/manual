@@ -6,9 +6,15 @@ category:Mixer Opcodes
 Resets all channels of a buss to 0.
 
 ## Syntax
-``` csound-orc
-MixerClear
-```
+=== "Modern"
+    ``` csound-orc
+    MixerClear()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    MixerClear
+    ```
 
 ### Performance
 

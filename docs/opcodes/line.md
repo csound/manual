@@ -6,10 +6,17 @@ category:Signal Generators:Linear and Exponential Generators
 Trace a straight line between specified points.
 
 ## Syntax
-``` csound-orc
-ares line ia, idur, ib
-kres line ia, idur, ib
-```
+=== "Modern"
+    ``` csound-orc
+    ares = line(ia, idur, ib)
+    kres = line(ia, idur, ib)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares line ia, idur, ib
+    kres line ia, idur, ib
+    ```
 
 ### Initialization
 

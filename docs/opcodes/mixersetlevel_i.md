@@ -10,9 +10,15 @@ Plugin opcode in mixer
 This opcode, because all parameters are irate, may be used in the orchestra header. The actual sending of the signal to the buss is performed by the [MixerSend](../opcodes/mixersend.md) opcode.
 
 ## Syntax
-``` csound-orc
-MixerSetLevel_i isend, ibuss, igain
-```
+=== "Modern"
+    ``` csound-orc
+    MixerSetLevel_i(isend, ibuss, igain)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    MixerSetLevel_i isend, ibuss, igain
+    ```
 
 ### Initialization
 

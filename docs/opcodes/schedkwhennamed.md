@@ -6,10 +6,17 @@ category:Instrument Control:Invocation
 Similar to [schedkwhen](../opcodes/schedkwhen.md) but uses a named instrument at init-time.
 
 ## Syntax
-``` csound-orc
-schedkwhennamed ktrigger, kmintim, kmaxnum, "name", kwhen, kdur \
-                [, ip4] [, ip5] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    schedkwhennamed(ktrigger, kmintim, kmaxnum, "name", kwhen, kdur \
+                    [, ip4] [, ip5] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    schedkwhennamed ktrigger, kmintim, kmaxnum, "name", kwhen, kdur \
+                    [, ip4] [, ip5] [...]
+    ```
 
 ### Initialization
 

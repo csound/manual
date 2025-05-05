@@ -10,10 +10,17 @@ A frequency-dependent, efficient reverberant field is created based on low and h
 It is, however, designed for use with [hrtfearly](../opcodes/hrtfearly.md) to provide spatially accurate reverberation with user definable source trajectories. Accurate interaural coherence is also provided.
 
 ## Syntax
-``` csound-orc
-aleft, aright, idel hrtfreverb asrc, ilowrt60, ihighrt60, ifilel, ifiler \
-                               [,isr, imfp, iorder]
-```
+=== "Modern"
+    ``` csound-orc
+    aleft, aright, idel = hrtfreverb(asrc, ilowrt60, ihighrt60, ifilel, ifiler \
+                                     [,isr, imfp, iorder])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aleft, aright, idel hrtfreverb asrc, ilowrt60, ihighrt60, ifilel, ifiler \
+                                   [,isr, imfp, iorder]
+    ```
 
 ### Initialization
 

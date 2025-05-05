@@ -8,9 +8,15 @@ Streaming partial track frequency scaling.
 The _trshift_ opcode takes an input containg a TRACKS pv streaming signal (as generated, for instance by _partials_) and shifts all frequencies by a k-rate frequency. It can also, optionally, scale the gain of the signal by a k-rate amount (default 1). The result is frequency shifting of the input tracks.
 
 ## Syntax
-``` csound-orc
-fsig trshift fin, kpshift [, kgain]
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = trshift(fin, kpshift [, kgain])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig trshift fin, kpshift [, kgain]
+    ```
 
 ### Performance
 

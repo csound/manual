@@ -6,9 +6,15 @@ category:Signal Modifiers:Sample Level Operators
 Modify a signal by up-sampling.
 
 ## Syntax
-``` csound-orc
-ares upsamp ksig
-```
+=== "Modern"
+    ``` csound-orc
+    ares = upsamp(ksig)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares upsamp ksig
+    ```
 
 ### Performance
 

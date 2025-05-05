@@ -6,9 +6,15 @@ category:Spectral Processing:LPC
 Allpole filter implementation using direct convolution.
 
 ## Syntax
-``` csound-orc
-ares allpole asig, kCoef[]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = allpole(asig, kCoef[])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares allpole asig, kCoef[]
+    ```
 
 ### Performance
 

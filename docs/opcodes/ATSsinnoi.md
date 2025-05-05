@@ -6,10 +6,17 @@ category:Spectral Processing:ATS
 _ATSsinnoi_ reads data from an ATS data file and uses the information to synthesize sines and noise together.
 
 ## Syntax
-``` csound-orc
-ar ATSsinnoi ktimepnt, ksinlev, knzlev, kfmod, iatsfile, ipartials \
-             [, ipartialoffset, ipartialincr]
-```
+=== "Modern"
+    ``` csound-orc
+    ar = ATSsinnoi(ktimepnt, ksinlev, knzlev, kfmod, iatsfile, ipartials \
+                   [, ipartialoffset, ipartialincr])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar ATSsinnoi ktimepnt, ksinlev, knzlev, kfmod, iatsfile, ipartials \
+                 [, ipartialoffset, ipartialincr]
+    ```
 
 ### Initialization
 

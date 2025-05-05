@@ -6,10 +6,17 @@ category:Array Opcodes
 Adjust size of a one-dimensional array.
 
 ## Syntax
-``` csound-orc
-trim_i iarray, ilen
-trim xarray, klen
-```
+=== "Modern"
+    ``` csound-orc
+    trim_i(iarray, ilen)
+    trim(xarray, klen)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    trim_i iarray, ilen
+    trim xarray, klen
+    ```
 
 ### Performance
 

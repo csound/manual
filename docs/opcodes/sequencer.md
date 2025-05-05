@@ -8,12 +8,21 @@ Emulate a hardware sequencer.
 Uses a collection of arrays to generate a sequence of events with variable tempo that can be played in forward, reverse, back and forth, and random directions. The max length of the arrays is 128, and it can be scaled dynamically. Permutational playback modes feature randomisation, probability and other algorithms.
 
 ## Syntax
-``` csound-orc
-kres sequ irhythm[], iinstr[], idata[], kbpm, klen [, kmode] [, kstep] \
-          [, kreset] [, kverbose]
-kres sequ irhythm[], iinstr[], idata[][], kbpm, klen [, kmode] [, kstep] \
-          [, kreset] [, kverbose]
-```
+=== "Modern"
+    ``` csound-orc
+    kres = sequ(irhythm[], iinstr[], idata[], kbpm, klen [, kmode] [, kstep] \
+                [, kreset] [, kverbose])
+    kres = sequ(irhythm[], iinstr[], idata[][], kbpm, klen [, kmode] [, kstep] \
+                [, kreset] [, kverbose])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres sequ irhythm[], iinstr[], idata[], kbpm, klen [, kmode] [, kstep] \
+              [, kreset] [, kverbose]
+    kres sequ irhythm[], iinstr[], idata[][], kbpm, klen [, kmode] [, kstep] \
+              [, kreset] [, kverbose]
+    ```
 
 ### Initialization
 

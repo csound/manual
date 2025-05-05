@@ -6,10 +6,17 @@ category:Instrument Control:Realtime Performance Control
 Creates space for instruments but does not run them.
 
 ## Syntax
-``` csound-orc
-prealloc insnum, icount
-prealloc "insname", icount
-```
+=== "Modern"
+    ``` csound-orc
+    prealloc(insnum, icount)
+    prealloc("insname", icount)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    prealloc insnum, icount
+    prealloc "insname", icount
+    ```
 
 ### Initialization
 

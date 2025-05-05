@@ -6,9 +6,15 @@ category:Signal I/O:File I/O
 Periodically reads four orchestra control-signal values from an external file.
 
 ## Syntax
-``` csound-orc
-kr1, kr2, kr3, kr4 readk4 ifilname, iformat, iprd
-```
+=== "Modern"
+    ``` csound-orc
+    kr1, kr2, kr3, kr4 = readk4(ifilname, iformat, iprd)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kr1, kr2, kr3, kr4 readk4 ifilname, iformat, iprd
+    ```
 
 ### Initialization
 

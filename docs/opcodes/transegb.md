@@ -6,10 +6,17 @@ category:Signal Generators:Linear and Exponential Generators
 Constructs a user-definable envelope in absolute time.
 
 ## Syntax
-``` csound-orc
-ares transegb ia, itim, itype, ib [, itim2] [, itype] [, ic] ...
-kres transegb ia, itim, itype, ib [, itim2] [, itype] [, ic] ...
-```
+=== "Modern"
+    ``` csound-orc
+    ares = transegb(ia, itim, itype, ib [, itim2] [, itype] [, ic] ...)
+    kres = transegb(ia, itim, itype, ib [, itim2] [, itype] [, ic] ...)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares transegb ia, itim, itype, ib [, itim2] [, itype] [, ic] ...
+    kres transegb ia, itim, itype, ib [, itim2] [, itype] [, ic] ...
+    ```
 
 ### Initialization
 

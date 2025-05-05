@@ -6,10 +6,17 @@ category:Spectral Processing:ATS
 Uses the data from an ATS analysis file to perform additive synthesis using an internal array of interpolating oscillators.
 
 ## Syntax
-``` csound-orc
-ar ATSadd ktimepnt, kfmod, iatsfile, ifn, ipartials [, ipartialoffset, \
-          ipartialincr, igatefn]
-```
+=== "Modern"
+    ``` csound-orc
+    ar = ATSadd(ktimepnt, kfmod, iatsfile, ifn, ipartials [, ipartialoffset, \
+                ipartialincr, igatefn])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar ATSadd ktimepnt, kfmod, iatsfile, ifn, ipartials [, ipartialoffset, \
+              ipartialincr, igatefn]
+    ```
 
 ### Initialization
 

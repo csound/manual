@@ -6,9 +6,15 @@ category:Vectorial:Limiting and Wrapping
 Wraps elements of vectorial control signals.
 
 ## Syntax
-``` csound-orc
-vwrap ifn, kmin, kmax, ielements
-```
+=== "Modern"
+    ``` csound-orc
+    vwrap(ifn, kmin, kmax, ielements)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vwrap ifn, kmin, kmax, ielements
+    ```
 
 ### Initialization
 

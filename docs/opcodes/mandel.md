@@ -8,9 +8,15 @@ Mandelbrot set.
 Returns the number of iterations corresponding to a given point of complex plane by applying the Mandelbrot set formula.
 
 ## Syntax
-``` csound-orc
-kiter, koutrig mandel  ktrig, kx, ky, kmaxIter
-```
+=== "Modern"
+    ``` csound-orc
+    kiter, koutrig = mandel( ktrig, kx, ky, kmaxIter)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kiter, koutrig mandel  ktrig, kx, ky, kmaxIter
+    ```
 
 ### Performance
 

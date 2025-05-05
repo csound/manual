@@ -6,9 +6,15 @@ category:Signal Modifiers:Sample Level Operators
 Modify a signal by down-sampling.
 
 ## Syntax
-``` csound-orc
-kres downsamp asig [, iwlen]
-```
+=== "Modern"
+    ``` csound-orc
+    kres = downsamp(asig [, iwlen])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres downsamp asig [, iwlen]
+    ```
 
 ### Initialization
 

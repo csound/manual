@@ -8,10 +8,17 @@ Synchronous granular synthesis, using a soundfile as source.
 The source sound for the grains is obtained by reading a soundfile containing the samples of the source waveform.
 
 ## Syntax
-``` csound-orc
-asig diskgrain Sfname, kamp, kfreq, kpitch, kgrsize, kprate, \
-               ifun, iolaps [,imaxgrsize , ioffset]
-```
+=== "Modern"
+    ``` csound-orc
+    asig = diskgrain(Sfname, kamp, kfreq, kpitch, kgrsize, kprate, \
+                     ifun, iolaps [,imaxgrsize , ioffset])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig diskgrain Sfname, kamp, kfreq, kpitch, kgrsize, kprate, \
+                   ifun, iolaps [,imaxgrsize , ioffset]
+    ```
 
 ### Initialization
 

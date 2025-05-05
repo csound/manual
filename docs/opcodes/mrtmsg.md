@@ -6,9 +6,15 @@ category:Real-time MIDI:System Realtime
 Send system real-time messages to the MIDI OUT port.
 
 ## Syntax
-``` csound-orc
-mrtmsg imsgtype
-```
+=== "Modern"
+    ``` csound-orc
+    mrtmsg(imsgtype)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    mrtmsg imsgtype
+    ```
 
 ### Initialization
 

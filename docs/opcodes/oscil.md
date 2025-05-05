@@ -8,10 +8,17 @@ A simple oscillator without any interpolation.
 _oscil_ reads table _ifn_ sequentially and repeatedly at a frequency _xcps_. The amplitude is scaled by _xamp_.
 
 ## Syntax
-``` csound-orc
-ares oscil xamp, xcps [, ifn, iphs]
-kres oscil kamp, kcps [, ifn, iphs]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = oscil(xamp, xcps [, ifn, iphs])
+    kres = oscil(kamp, kcps [, ifn, iphs])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares oscil xamp, xcps [, ifn, iphs]
+    kres oscil kamp, kcps [, ifn, iphs]
+    ```
 
 ### Initialization
 

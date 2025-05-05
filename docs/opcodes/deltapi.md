@@ -6,9 +6,15 @@ category:Signal Modifiers:Delay
 Taps a delay line at variable offset times, uses interpolation.
 
 ## Syntax
-``` csound-orc
-ares deltapi xdlt
-```
+=== "Modern"
+    ``` csound-orc
+    ares = deltapi(xdlt)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares deltapi xdlt
+    ```
 
 ### Performance
 

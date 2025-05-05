@@ -6,10 +6,17 @@ category:Signal Generators:FM Synthesis
 FM Singing Voice Synthesis.
 
 ## Syntax
-``` csound-orc
-ares fmvoice kamp, kfreq, kvowel, ktilt, kvibamt, kvibrate[, ifn1, \
-             ifn2, ifn3, ifn4, ivibfn]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = fmvoice(kamp, kfreq, kvowel, ktilt, kvibamt, kvibrate[, ifn1, \
+                   ifn2, ifn3, ifn4, ivibfn])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares fmvoice kamp, kfreq, kvowel, ktilt, kvibamt, kvibrate[, ifn1, \
+                 ifn2, ifn3, ifn4, ivibfn]
+    ```
 
 ### Initialization
 

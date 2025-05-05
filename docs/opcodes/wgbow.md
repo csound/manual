@@ -8,9 +8,15 @@ Creates a tone similar to a bowed string.
 It uses a physical model developed from Perry Cook, but re-coded for Csound.
 
 ## Syntax
-``` csound-orc
-ares wgbow kamp, kfreq, kpres, krat, kvibf, kvamp [, ifn] [, iminfreq]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = wgbow(kamp, kfreq, kpres, krat, kvibf, kvamp [, ifn] [, iminfreq])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares wgbow kamp, kfreq, kpres, krat, kvibf, kvamp [, ifn] [, iminfreq]
+    ```
 
 ### Initialization
 

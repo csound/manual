@@ -11,9 +11,15 @@ Plugin opcode in emugens.
 (1,1)
 
 ## Syntax
-``` csound-orc
-kout xyscale kx, ky, k00, k10, k01, k11
-```
+=== "Modern"
+    ``` csound-orc
+    kout = xyscale(kx, ky, k00, k10, k01, k11)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kout xyscale kx, ky, k00, k10, k01, k11
+    ```
 
 ### Performance
 

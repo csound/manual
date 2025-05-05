@@ -6,9 +6,15 @@ category:Signal I/O:Signal Input
 Reads from numbered channels in an external audio signal or stream.
 
 ## Syntax
-``` csound-orc
-ain1[, ...] inch kchan1[,...]
-```
+=== "Modern"
+    ``` csound-orc
+    ain1[, ...] = inch(kchan1[,...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ain1[, ...] inch kchan1[,...]
+    ```
 
 ### Performance
 

@@ -8,9 +8,15 @@ Reads data from a Linux joystick controller.
 Plugin opcode in joystick.
 
 ## Syntax
-``` csound-orc
-kres joystick kdevice, ktab
-```
+=== "Modern"
+    ``` csound-orc
+    kres = joystick(kdevice, ktab)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres joystick kdevice, ktab
+    ```
 
 ### Performance
 

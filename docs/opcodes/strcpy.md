@@ -8,10 +8,17 @@ Assign to a string variable by copying the source which may be a constant or ano
 _strcpy_ and _=_copy the string at i-time only.
 
 ## Syntax
-``` csound-orc
-Sdst strcpy Ssrc
-Sdst = Ssrc
-```
+=== "Modern"
+    ``` csound-orc
+    Sdst = strcpy(Ssrc)
+    Sdst = Ssrc
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    Sdst strcpy Ssrc
+    Sdst = Ssrc
+    ```
 
 ## Examples
 

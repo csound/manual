@@ -6,10 +6,17 @@ category:Signal Modifiers:Sample Level Operators
 Modify a signal by differentiation.
 
 ## Syntax
-``` csound-orc
-ares diff asig [, iskip]
-kres diff ksig [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = diff(asig [, iskip])
+    kres = diff(ksig [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares diff asig [, iskip]
+    kres diff ksig [, iskip]
+    ```
 
 ### Initialization
 

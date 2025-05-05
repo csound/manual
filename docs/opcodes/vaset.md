@@ -16,9 +16,15 @@ Useful for doing sample-by-sample manipulation at k-rate without using setksmps 
 > In Csound6 this opcode does do bounds checking.
 
 ## Syntax
-``` csound-orc
-vaset kval, kndx, avar
-```
+=== "Modern"
+    ``` csound-orc
+    vaset(kval, kndx, avar)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vaset kval, kndx, avar
+    ```
 
 ### Performance
 

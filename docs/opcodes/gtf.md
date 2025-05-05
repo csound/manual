@@ -6,9 +6,15 @@ category:Signal Modifiers:Specialized Filters
 Apply a gammatone filter of various orders to an audio signal.
 
 ## Syntax
-``` csound-orc
-aout gtf ain, kfreq, idecay[, iorder, iphase]
-```
+=== "Modern"
+    ``` csound-orc
+    aout = gtf(ain, kfreq, idecay[, iorder, iphase])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout gtf ain, kfreq, idecay[, iorder, iphase]
+    ```
 
 ### Initialization
 

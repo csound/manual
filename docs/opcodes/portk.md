@@ -6,9 +6,15 @@ category:Signal Modifiers:Standard Filters:Control
 Applies portamento to a step-valued control signal.
 
 ## Syntax
-``` csound-orc
-kres portk ksig, khtim [, isig]
-```
+=== "Modern"
+    ``` csound-orc
+    kres = portk(ksig, khtim [, isig])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres portk ksig, khtim [, isig]
+    ```
 
 ### Initialization
 

@@ -11,9 +11,15 @@ Deprecated. Writes audio output to a disk file.
 
 
 ## Syntax
-``` csound-orc
-soundouts asigl, asigr, ifilcod [, iformat]
-```
+=== "Modern"
+    ``` csound-orc
+    soundouts(asigl, asigr, ifilcod [, iformat])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    soundouts asigl, asigr, ifilcod [, iformat]
+    ```
 
 ### Initialization
 

@@ -6,9 +6,15 @@ category:Table Control:Dynamic Selection
 Reads function tables with linear, cubic, or sinc interpolation.
 
 ## Syntax
-``` csound-orc
-ares tablexkt xndx, kfn, kwarp, iwsize [, ixmode] [, ixoff] [, iwrap]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = tablexkt(xndx, kfn, kwarp, iwsize [, ixmode] [, ixoff] [, iwrap])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares tablexkt xndx, kfn, kwarp, iwsize [, ixmode] [, ixoff] [, iwrap]
+    ```
 
 ### Initialization
 

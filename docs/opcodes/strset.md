@@ -6,9 +6,15 @@ category:Strings:Definition
 Allows a string to be linked with a numeric value.
 
 ## Syntax
-``` csound-orc
-strset iarg, istring
-```
+=== "Modern"
+    ``` csound-orc
+    strset(iarg, istring)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    strset iarg, istring
+    ```
 
 ### Initialization
 

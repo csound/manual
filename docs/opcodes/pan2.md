@@ -6,9 +6,15 @@ category:Signal Modifiers:Panning and Spatialization
 Distribute an audio signal across two channels with a choice of methods.
 
 ## Syntax
-``` csound-orc
-a1, a2 pan2 asig, xp [, imode]
-```
+=== "Modern"
+    ``` csound-orc
+    a1, a2 = pan2(asig, xp [, imode])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    a1, a2 pan2 asig, xp [, imode]
+    ```
 
 ### Initialization
 

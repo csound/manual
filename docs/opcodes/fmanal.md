@@ -8,9 +8,15 @@ AM/FM analysis from quadrature signal.
 This opcode attempts to extract the AM and FM signals off a quadrature signal (e.g. from a Hilbert transform).
 
 ## Syntax
-``` csound-orc
-am, af fmanal are, aim
-```
+=== "Modern"
+    ``` csound-orc
+    am, af = fmanal(are, aim)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    am, af fmanal are, aim
+    ```
 
 ### Performance
 

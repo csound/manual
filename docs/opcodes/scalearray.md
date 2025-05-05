@@ -6,9 +6,15 @@ category:Array Opcodes
 The _scalearray_ opcode scales a subregion of a vector to a given minimum/maximum.
 
 ## Syntax
-``` csound-orc
-scalearray tarray, kmin, kmax[, kleft, kright]
-```
+=== "Modern"
+    ``` csound-orc
+    scalearray(tarray, kmin, kmax[, kleft, kright])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    scalearray tarray, kmin, kmax[, kleft, kright]
+    ```
 
 ### Performance
 

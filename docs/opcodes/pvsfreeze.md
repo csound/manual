@@ -8,9 +8,15 @@ Freeze the amplitude and frequency time functions of a pv stream according to a 
 This opcodes 'freezes' the evolution of pvs stream by locking into steady amplitude and/or frequency values for each bin. The freezing is controlled, independently for amplitudes and frequencies, by a control-rate trigger, which switches the freezing 'on' if equal to or above 1 and 'off' if below 1.
 
 ## Syntax
-``` csound-orc
-fsig pvsfreeze fsigin, kfreeza, kfreezf
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvsfreeze(fsigin, kfreeza, kfreezf)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvsfreeze fsigin, kfreeza, kfreezf
+    ```
 
 ### Performance
 

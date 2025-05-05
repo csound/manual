@@ -6,10 +6,17 @@ category:Array Opcodes
 The _copya2ftab_ opcode takes a k-array and copies the contents to an f-table.
 
 ## Syntax
-``` csound-orc
-copya2ftab kArray[], ktab [, koffset]
-copya2ftab iArray[], itab [, ioffset]
-```
+=== "Modern"
+    ``` csound-orc
+    copya2ftab(kArray[], ktab [, koffset])
+    copya2ftab(iArray[], itab [, ioffset])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    copya2ftab kArray[], ktab [, koffset]
+    copya2ftab iArray[], itab [, ioffset]
+    ```
 
 ### Performance
 

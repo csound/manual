@@ -6,9 +6,15 @@ category:Signal Modifiers:Panning and Spatialization
 Writes a multi-channel audio signal to a ZAK array with moving virtual sources.
 
 ## Syntax
-``` csound-orc
-vbapzmove inumchnls, istartndx, asig, idur, ispread, ifldnum, ifld1, ifld2, [...]
-```
+=== "Modern"
+    ``` csound-orc
+    vbapzmove(inumchnls, istartndx, asig, idur, ispread, ifldnum, ifld1, ifld2, [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vbapzmove inumchnls, istartndx, asig, idur, ispread, ifldnum, ifld1, ifld2, [...]
+    ```
 
 ### Initialization
 

@@ -6,9 +6,15 @@ category:Zak Patch System
 Reads from a location in za space at a-rate.
 
 ## Syntax
-``` csound-orc
-ares zar kndx
-```
+=== "Modern"
+    ``` csound-orc
+    ares = zar(kndx)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares zar kndx
+    ```
 
 ### Performance
 

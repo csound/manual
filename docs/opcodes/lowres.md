@@ -6,9 +6,15 @@ category:Signal Modifiers:Standard Filters:Resonant
 Another resonant lowpass filter.
 
 ## Syntax
-``` csound-orc
-ares lowres asig, xcutoff, xresonance [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = lowres(asig, xcutoff, xresonance [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares lowres asig, xcutoff, xresonance [, iskip]
+    ```
 
 ### Initialization
 

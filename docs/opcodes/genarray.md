@@ -6,10 +6,17 @@ category:Table Control:Table Queries
 Generate a vector (one-dimensional k-rate or i-rate array) with an arithmetic sequence.
 
 ## Syntax
-``` csound-orc
-karray genarray kstart, kens [, inc]
-iarray genarray istart, iens [, inc]
-```
+=== "Modern"
+    ``` csound-orc
+    karray = genarray(kstart, kens [, inc])
+    iarray = genarray(istart, iens [, inc])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    karray genarray kstart, kens [, inc]
+    iarray genarray istart, iens [, inc]
+    ```
 
 ### Initialization
 

@@ -8,11 +8,19 @@ Cauchy distribution random number generator.
 This is an x-class noise generator.
 
 ## Syntax
-``` csound-orc
-ares cauchy kalpha
-ires cauchy kalpha
-kres cauchy kalpha
-```
+=== "Modern"
+    ``` csound-orc
+    ares = cauchy(kalpha)
+    ires = cauchy(kalpha)
+    kres = cauchy(kalpha)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares cauchy kalpha
+    ires cauchy kalpha
+    kres cauchy kalpha
+    ```
 
 ### Performance
 

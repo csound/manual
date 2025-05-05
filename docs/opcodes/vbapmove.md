@@ -6,10 +6,17 @@ category:Signal Modifiers:Panning and Spatialization
 Distributes an audio signal among upto 64 channels with moving virtual sources.
 
 ## Syntax
-``` csound-orc
-ar1[, ar2...] vbapmove asig, idur, ispread, ifldnum, ifld1 [, ifld2] [...]
-aarray[] vbapmove asig, idur, ispread, ifldnum, ifld1 [, ifld2] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    ar1[, ar2...] = vbapmove(asig, idur, ispread, ifldnum, ifld1 [, ifld2] [...])
+    aarray[] = vbapmove(asig, idur, ispread, ifldnum, ifld1 [, ifld2] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar1[, ar2...] vbapmove asig, idur, ispread, ifldnum, ifld1 [, ifld2] [...]
+    aarray[] vbapmove asig, idur, ispread, ifldnum, ifld1 [, ifld2] [...]
+    ```
 
 ### Initialization
 

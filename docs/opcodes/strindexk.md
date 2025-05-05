@@ -8,9 +8,15 @@ Return the position of the first occurence of S2 in S1, or -1 if not found. If S
 _strindexk_ runs both at init and performance time.
 
 ## Syntax
-``` csound-orc
-kpos strindexk S1, S2
-```
+=== "Modern"
+    ``` csound-orc
+    kpos = strindexk(S1, S2)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kpos strindexk S1, S2
+    ```
 
 ## Examples
 

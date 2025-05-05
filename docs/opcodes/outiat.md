@@ -6,9 +6,15 @@ category:Real-time MIDI:Output
 Sends MIDI aftertouch messages at i-rate.
 
 ## Syntax
-``` csound-orc
-outiat ichn, ivalue, imin, imax
-```
+=== "Modern"
+    ``` csound-orc
+    outiat(ichn, ivalue, imin, imax)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    outiat ichn, ivalue, imin, imax
+    ```
 
 ### Initialization
 

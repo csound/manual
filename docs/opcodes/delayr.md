@@ -6,9 +6,15 @@ category:Signal Modifiers:Delay
 Reads from an automatically established digital delay line.
 
 ## Syntax
-``` csound-orc
-ares delayr idlt [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = delayr(idlt [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares delayr idlt [, iskip]
+    ```
 
 ### Initialization
 

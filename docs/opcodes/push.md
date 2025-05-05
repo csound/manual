@@ -8,10 +8,17 @@ Pushes a value into the global stack.  Deprecated.
 Plugin opcode in stackops.
 
 ## Syntax
-``` csound-orc
-push xval1, [xval2, ... , xval31]
-push ival1, [ival2, ... , ival31]
-```
+=== "Modern"
+    ``` csound-orc
+    push(xval1, [xval2, ... , xval31])
+    push(ival1, [ival2, ... , ival31])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    push xval1, [xval2, ... , xval31]
+    push ival1, [ival2, ... , ival31]
+    ```
 
 ### Initialization
 

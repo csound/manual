@@ -8,10 +8,17 @@ Simulates a planet orbiting in a binary star system.
 _planet_ simulates a planet orbiting in a binary star system. The outputs are the x, y and z coordinates of the orbiting planet. It is possible for the planet to achieve escape velocity by a close encounter with a star. This makes this system somewhat unstable.
 
 ## Syntax
-``` csound-orc
-ax, ay, az planet kmass1, kmass2, ksep, ix, iy, iz, ivx, ivy, ivz, idelta \
-                  [, ifriction] [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ax, ay, az = planet(kmass1, kmass2, ksep, ix, iy, iz, ivx, ivy, ivz, idelta \
+                        [, ifriction] [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ax, ay, az planet kmass1, kmass2, ksep, ix, iy, iz, ivx, ivy, ivz, idelta \
+                      [, ifriction] [, iskip]
+    ```
 
 ### Initialization
 

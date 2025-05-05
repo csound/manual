@@ -14,9 +14,15 @@ The IR table is read partition by partition after signalling an update. The firs
 The low-latency, dynamic behavior of _liveconv_ makes it ideal for convolution with live sampled impulse responses, and/or real-time impulse response transformations and modifications.
 
 ## Syntax
-``` csound-orc
-ares liveconv ain, ift, iplen, kupdate, kclear
-```
+=== "Modern"
+    ``` csound-orc
+    ares = liveconv(ain, ift, iplen, kupdate, kclear)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares liveconv ain, ift, iplen, kupdate, kclear
+    ```
 
 ### Initialization
 

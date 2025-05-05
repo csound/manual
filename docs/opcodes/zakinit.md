@@ -6,9 +6,15 @@ category:Zak Patch System
 Establishes zak space. Must be called only once.
 
 ## Syntax
-``` csound-orc
-zakinit isizea, isizek
-```
+=== "Modern"
+    ``` csound-orc
+    zakinit(isizea, isizek)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    zakinit isizea, isizek
+    ```
 
 ### Initialization
 

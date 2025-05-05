@@ -6,9 +6,15 @@ category:Vectorial:Tables
 Write vectors (to tables -or arrays of vectors) at init time.
 
 ## Syntax
-``` csound-orc
-vtabwi indx, ifn, inarg1 [, inarg2, inarg3 , .... , inargN ]
-```
+=== "Modern"
+    ``` csound-orc
+    vtabwi(indx, ifn, inarg1 [, inarg2, inarg3 , .... , inargN ])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vtabwi indx, ifn, inarg1 [, inarg2, inarg3 , .... , inargN ]
+    ```
 
 ### Initialization
 

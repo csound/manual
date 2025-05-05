@@ -10,10 +10,17 @@ _sndwarp_ reads sound samples from a table and applies time-stretching and/or pi
 The window size and overlap arguments are important to the result and should be experimented with. In general they should be as small as possible. For example, start with _iwsize_=_sr_/10 and _ioverlap_=15. Try _irandw_=_iwsize_*0.2. If you can get away with less overlaps, the program will be faster. But too few may cause an audible flutter in the amplitude. The algorithm reacts differently depending upon the input sound and there are no fixed rules for the best use in all circumstances. But with proper tuning, excellent results can be achieved.
 
 ## Syntax
-``` csound-orc
-ares [, ac] sndwarp xamp, xtimewarp, xresample, ifn1, ibeg, iwsize, \
-                    irandw, ioverlap, ifn2, itimemode
-```
+=== "Modern"
+    ``` csound-orc
+    ares [, ac] = sndwarp(xamp, xtimewarp, xresample, ifn1, ibeg, iwsize, \
+                          irandw, ioverlap, ifn2, itimemode)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares [, ac] sndwarp xamp, xtimewarp, xresample, ifn1, ibeg, iwsize, \
+                        irandw, ioverlap, ifn2, itimemode
+    ```
 
 ### Initialization
 

@@ -6,10 +6,17 @@ category:Signal Generators:Phasors
 Produce a normalized moving phase value.
 
 ## Syntax
-``` csound-orc
-ares phasor xcps [, iphs]
-kres phasor kcps [, iphs]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = phasor(xcps [, iphs])
+    kres = phasor(kcps [, iphs])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares phasor xcps [, iphs]
+    kres phasor kcps [, iphs]
+    ```
 
 ### Initialization
 

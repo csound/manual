@@ -8,9 +8,15 @@ Creates a new function table by making exponential segments between values in st
 _tablexseg_ is like [expseg](../opcodes/expseg.md) but interpolate between values in a stored function tables. The result is a new function table passed internally to any following [vpvoc](../opcodes/vpvoc.md) which occurs before a subsequent _tablexseg_ (much like [lpread](../opcodes/lpread.md)/[lpreson](../opcodes/lpreson.md) pairs work). The uses of these are described below under _vpvoc_.
 
 ## Syntax
-``` csound-orc
-tablexseg ifn1, idur1, ifn2 [, idur2] [, ifn3] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    tablexseg(ifn1, idur1, ifn2 [, idur2] [, ifn3] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    tablexseg ifn1, idur1, ifn2 [, idur2] [, ifn3] [...]
+    ```
 
 ### Initialization
 

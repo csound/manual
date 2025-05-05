@@ -6,9 +6,15 @@ category:Array Opcodes
 Returns the maximum value in a k-rate array, and optional its index.
 
 ## Syntax
-``` csound-orc
-kmax [,kindx] maxarray karray
-```
+=== "Modern"
+    ``` csound-orc
+    kmax [,kindx] = maxarray(karray)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kmax [,kindx] maxarray karray
+    ```
 
 ### Performance
 

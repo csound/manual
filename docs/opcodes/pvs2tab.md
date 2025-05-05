@@ -8,10 +8,17 @@ Copies spectral data to k-rate arrays (or t-variables). Also known as [pvs2array
 Copies a pvs frame to a t-variable. Currently only AMP+FREQ and AMP+PHASE formats allowed. Since t-vars are an earlier version of k-rate arrays, the opcode also works with these. The opcode pvs2array is an alias of this one.
 
 ## Syntax
-``` csound-orc
-kframe pvs2tab tvar|kvar[], fsig
-kframe pvs2tab kmags[], kfreqs[], fsig
-```
+=== "Modern"
+    ``` csound-orc
+    kframe = pvs2tab(tvar|kvar[], fsig)
+    kframe = pvs2tab(kmags[], kfreqs[], fsig)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kframe pvs2tab tvar|kvar[], fsig
+    kframe pvs2tab kmags[], kfreqs[], fsig
+    ```
 
 ### Performance
 

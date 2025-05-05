@@ -6,9 +6,15 @@ category:Spectral Processing:Other
 Calculate the spectral centroid of an audio signal on a given trigger.
 
 ## Syntax
-``` csound-orc
-kcent centroid asig, ktrig, ifftsize
-```
+=== "Modern"
+    ``` csound-orc
+    kcent = centroid(asig, ktrig, ifftsize)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kcent centroid asig, ktrig, ifftsize
+    ```
 
 ### Initialization
 

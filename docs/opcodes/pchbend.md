@@ -6,10 +6,17 @@ category:Real-time MIDI:Input
 Get the current pitch-bend value for this channel.
 
 ## Syntax
-``` csound-orc
-ibend pchbend [imin] [, imax]
-kbend pchbend [imin] [, imax]
-```
+=== "Modern"
+    ``` csound-orc
+    ibend = pchbend([imin] [, imax])
+    kbend = pchbend([imin] [, imax])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ibend pchbend [imin] [, imax]
+    kbend pchbend [imin] [, imax]
+    ```
 
 ### Initialization
 

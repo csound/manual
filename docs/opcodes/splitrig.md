@@ -6,9 +6,15 @@ category:Instrument Control:Sensing and Control
 Split a trigger signal (i.e. a timed sequence of control-rate impulses) into several channels following a structure designed by the user.
 
 ## Syntax
-``` csound-orc
-splitrig ktrig, kndx, imaxtics, ifn, kout1 [,kout2,...,koutN]
-```
+=== "Modern"
+    ``` csound-orc
+    splitrig(ktrig, kndx, imaxtics, ifn, kout1 [,kout2,...,koutN])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    splitrig ktrig, kndx, imaxtics, ifn, kout1 [,kout2,...,koutN]
+    ```
 
 ### Initialization
 

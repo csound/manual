@@ -6,9 +6,15 @@ category:Signal Generators:Random (Noise) Generators
 Sets the global seed value for [rnd](../opcodes/rnd.md) and [birnd](../opcodes/birnd.md).
 
 ## Syntax
-``` csound-orc
-rndseed ival
-```
+=== "Modern"
+    ``` csound-orc
+    rndseed(ival)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    rndseed ival
+    ```
 
 ### Initialization
 

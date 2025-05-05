@@ -8,9 +8,15 @@ Prints a list of all presets of a previously loaded SoundFont2 (SF2) sample file
 These opcodes allow management the sample-structure of SF2 files. In order to understand the usage of these opcodes, the user must have some knowledge of the SF2 format, so a brief description of this format can be found in the [SoundFont2 File Format](../siggen/sample.md) section.
 
 ## Syntax
-``` csound-orc
-sfplist ifilhandle
-```
+=== "Modern"
+    ``` csound-orc
+    sfplist(ifilhandle)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    sfplist ifilhandle
+    ```
 
 ### Initialization
 

@@ -6,9 +6,15 @@ category:Signal Modifiers:Standard Filters:Control
 Generate glissandos starting from a control signal with a trigger.
 
 ## Syntax
-``` csound-orc
-kres tlineto ksig, ktime, ktrig
-```
+=== "Modern"
+    ``` csound-orc
+    kres = tlineto(ksig, ktime, ktrig)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres tlineto ksig, ktime, ktrig
+    ```
 
 ### Performance
 

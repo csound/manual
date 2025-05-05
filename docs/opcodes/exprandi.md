@@ -8,11 +8,19 @@ Exponential distribution random number generator with interpolation (positive va
 This is an x-class noise generator.
 
 ## Syntax
-``` csound-orc
-ares exprandi klambda, xamp, xcps
-ires exprandi klambda, xamp, xcps
-kres exprandi klambda, xamp, xcps
-```
+=== "Modern"
+    ``` csound-orc
+    ares = exprandi(klambda, xamp, xcps)
+    ires = exprandi(klambda, xamp, xcps)
+    kres = exprandi(klambda, xamp, xcps)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares exprandi klambda, xamp, xcps
+    ires exprandi klambda, xamp, xcps
+    kres exprandi klambda, xamp, xcps
+    ```
 
 ### Performance
 

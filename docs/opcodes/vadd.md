@@ -6,9 +6,15 @@ category:Vectorial:Scalar operations
 Adds a scalar value to a vector in a table.
 
 ## Syntax
-``` csound-orc
-vadd ifn, kval, kelements [, kdstoffset] [, kverbose]
-```
+=== "Modern"
+    ``` csound-orc
+    vadd(ifn, kval, kelements [, kdstoffset] [, kverbose])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vadd ifn, kval, kelements [, kdstoffset] [, kverbose]
+    ```
 
 ### Initialization
 

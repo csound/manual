@@ -8,12 +8,21 @@ Dynamic stochastic approach to waveform synthesis conceived by Iannis Xenakis.
 Implementation of the _Génération Dynamique Stochastique_ (GENDYN), a dynamic stochastic approach to waveform synthesis conceived by Iannis Xenakis.
 
 ## Syntax
-``` csound-orc
-ares gendy kamp, kampdist, kdurdist, kadpar, kddpar, kminfreq, kmaxfreq, \
-           kampscl, kdurscl [, initcps] [, knum]
-kres gendy kamp, kampdist, kdurdist, kadpar, kddpar, kminfreq, kmaxfreq, \
-           kampscl, kdurscl [, initcps] [, knum]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = gendy(kamp, kampdist, kdurdist, kadpar, kddpar, kminfreq, kmaxfreq, \
+                 kampscl, kdurscl [, initcps] [, knum])
+    kres = gendy(kamp, kampdist, kdurdist, kadpar, kddpar, kminfreq, kmaxfreq, \
+                 kampscl, kdurscl [, initcps] [, knum])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares gendy kamp, kampdist, kdurdist, kadpar, kddpar, kminfreq, kmaxfreq, \
+               kampscl, kdurscl [, initcps] [, knum]
+    kres gendy kamp, kampdist, kdurdist, kadpar, kddpar, kminfreq, kmaxfreq, \
+               kampscl, kdurscl [, initcps] [, knum]
+    ```
 
 ### Initialization
 

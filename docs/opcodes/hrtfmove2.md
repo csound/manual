@@ -8,9 +8,15 @@ Generates dynamic 3d binaural audio for headphones using a Woodworth based spher
 This opcode takes a source signal and spatialises it in the 3 dimensional space around a listener using head related transfer function (HRTF) based filters.
 
 ## Syntax
-``` csound-orc
-aleft, aright hrtfmove2 asrc, kAz, kElev, ifilel, ifiler [,ioverlap, iradius, isr]
-```
+=== "Modern"
+    ``` csound-orc
+    aleft, aright = hrtfmove2(asrc, kAz, kElev, ifilel, ifiler [,ioverlap, iradius, isr])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aleft, aright hrtfmove2 asrc, kAz, kElev, ifilel, ifiler [,ioverlap, iradius, isr]
+    ```
 
 ### Initialization
 

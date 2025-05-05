@@ -8,10 +8,17 @@ Fast table opcodes.
 Faster than [tablew](../opcodes/tablew.md) because it does not allow wrap-around and limit. Has been implemented in order to provide fast access to arrays.
 
 ## Syntax
-``` csound-orc
-tabw ksig, kndx, ifn [,ixmode]
-tabw asig, andx, ifn [,ixmode]
-```
+=== "Modern"
+    ``` csound-orc
+    tabw(ksig, kndx, ifn [,ixmode])
+    tabw(asig, andx, ifn [,ixmode])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    tabw ksig, kndx, ifn [,ixmode]
+    tabw asig, andx, ifn [,ixmode]
+    ```
 
 ### Initialization
 

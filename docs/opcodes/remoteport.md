@@ -6,9 +6,15 @@ category:Network
 Defines the port for use with the _insremot_, _midremot_, _insglobal_ and _midglobal_ opcodes.
 
 ## Syntax
-``` csound-orc
-remoteport iportnum
-```
+=== "Modern"
+    ``` csound-orc
+    remoteport(iportnum)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    remoteport iportnum
+    ```
 
 ### Initialization
 

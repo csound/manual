@@ -12,11 +12,19 @@ This opcode allows for time and frequency-independent scaling. Time is advanced 
 _mp3scal_ will also scale pitch, independently of frequency, using a transposition factor (k-rate).
 
 ## Syntax
-``` csound-orc
-asig, asig2, ktime mp3scal Sfile, ktimescal, kpitch, kamp \
-                           [, iskip, ifftsize, idecim, ilock]
+=== "Modern"
+    ``` csound-orc
+    asig, asig2, ktime = mp3scal(Sfile, ktimescal, kpitch, kamp \
+                                 [, iskip, ifftsize, idecim, ilock])
+      )
+    ```
 
-```
+=== "Classic"
+    ``` csound-orc
+    asig, asig2, ktime mp3scal Sfile, ktimescal, kpitch, kamp \
+                               [, iskip, ifftsize, idecim, ilock]
+    
+    ```
 
 ### Initialization
 

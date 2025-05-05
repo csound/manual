@@ -8,9 +8,15 @@ Semi-physical model of a cabasa sound.
 It is one of the PhISEM percussion opcodes. PhISEM (Physically Informed Stochastic Event Modeling) is an algorithmic approach for simulating collisions of multiple independent sound producing objects.
 
 ## Syntax
-``` csound-orc
-ares cabasa iamp, idettack [, inum] [, idamp] [, imaxshake]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = cabasa(iamp, idettack [, inum] [, idamp] [, imaxshake])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares cabasa iamp, idettack [, inum] [, idamp] [, imaxshake]
+    ```
 
 ### Initialization
 

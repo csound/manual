@@ -6,9 +6,15 @@ category:Signal Modifiers:Standard Filters:Resonant
 A digital emulation of the Moog diode ladder filter configuration.
 
 ## Syntax
-``` csound-orc
-ares moogvcf2 asig, xfco, xres [,iscale, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = moogvcf2(asig, xfco, xres [,iscale, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares moogvcf2 asig, xfco, xres [,iscale, iskip]
+    ```
 
 ### Initialization
 

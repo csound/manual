@@ -6,10 +6,17 @@ category:Signal Modifiers:Sample Level Operators
 Modify a signal by integration.
 
 ## Syntax
-``` csound-orc
-ares integ asig [, iskip]
-kres integ ksig [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = integ(asig [, iskip])
+    kres = integ(ksig [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares integ asig [, iskip]
+    kres integ ksig [, iskip]
+    ```
 
 ### Initialization
 

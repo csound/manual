@@ -10,9 +10,15 @@ Plugin opcode in fractalnoise.
 Implemented as a white noise filtered by a cascade of 15 first-order filters.
 
 ## Syntax
-``` csound-orc
-ares fractalnoise kamp, kbeta
-```
+=== "Modern"
+    ``` csound-orc
+    ares = fractalnoise(kamp, kbeta)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares fractalnoise kamp, kbeta
+    ```
 
 ### Performance
 

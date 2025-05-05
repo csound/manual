@@ -10,9 +10,15 @@ Output is the convolution of signal _ain_ and the impulse response contained in 
 Note: this opcode can also be written as [convle](../opcodes/convle.md).
 
 ## Syntax
-``` csound-orc
-ar1 [, ar2] [, ar3] [, ar4] convolve ain, ifilcod [, ichannel]
-```
+=== "Modern"
+    ``` csound-orc
+    ar1 [, ar2] [, ar3] [, ar4] = convolve(ain, ifilcod [, ichannel])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar1 [, ar2] [, ar3] [, ar4] convolve ain, ifilcod [, ichannel]
+    ```
 
 ### Initialization
 

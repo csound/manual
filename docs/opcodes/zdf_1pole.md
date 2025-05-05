@@ -8,9 +8,15 @@ Zero-delay feedback implementation of a 1 pole (6 dB/oct) filter.
 Offers low-pass (default), high-pass, and allpass output modes.
 
 ## Syntax
-``` csound-orc
-asig zdf_1pole ain, xcf [, kmode, istor]
-```
+=== "Modern"
+    ``` csound-orc
+    asig = zdf_1pole(ain, xcf [, kmode, istor])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig zdf_1pole ain, xcf [, kmode, istor]
+    ```
 
 ### Initialization
 

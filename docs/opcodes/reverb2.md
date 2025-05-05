@@ -6,7 +6,14 @@ category:Signal Modifiers:Reverberation
 Same as the [nreverb](../opcodes/nreverb.md) opcode.
 
 ## Syntax
-``` csound-orc
-ares reverb2 asig, ktime, khdif [, iskip] [,inumCombs] [, ifnCombs] \
-             [, inumAlpas] [, ifnAlpas]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = reverb2(asig, ktime, khdif [, iskip] [,inumCombs] [, ifnCombs] \
+                   [, inumAlpas] [, ifnAlpas])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares reverb2 asig, ktime, khdif [, iskip] [,inumCombs] [, ifnCombs] \
+                 [, inumAlpas] [, ifnAlpas]
+    ```

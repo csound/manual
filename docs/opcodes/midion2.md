@@ -6,9 +6,15 @@ category:Real-time MIDI:Note Output
 Sends noteon and noteoff messages to the MIDI OUT port when triggered by a value different than zero.
 
 ## Syntax
-``` csound-orc
-midion2 kchn, knum, kvel, ktrig
-```
+=== "Modern"
+    ``` csound-orc
+    midion2(kchn, knum, kvel, ktrig)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    midion2 kchn, knum, kvel, ktrig
+    ```
 
 ### Performance
 

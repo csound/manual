@@ -8,9 +8,15 @@ A variable time delay with cubic interpolation.
 _vdelay3_ is experimental. It is the same as [vdelay](../opcodes/vdelay.md) except that it uses cubic interpolation. (New in Version 3.50.)
 
 ## Syntax
-``` csound-orc
-ares vdelay3 asig, adel, imaxdel [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = vdelay3(asig, adel, imaxdel [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares vdelay3 asig, adel, imaxdel [, iskip]
+    ```
 
 ### Initialization
 

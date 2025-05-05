@@ -7,10 +7,17 @@ Trace a series of line segments between specified absolute points with
 cosine interpolation.
 
 ## Syntax
-``` csound-orc
-ares cossegb ia, itim1, ib [, itim2] [, ic] [...]
-kres cossegb ia, itim1, ib [, itim2] [, ic] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = cossegb(ia, itim1, ib [, itim2] [, ic] [...])
+    kres = cossegb(ia, itim1, ib [, itim2] [, ic] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares cossegb ia, itim1, ib [, itim2] [, ic] [...]
+    kres cossegb ia, itim1, ib [, itim2] [, ic] [...]
+    ```
 
 ### Initialization
 

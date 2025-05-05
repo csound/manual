@@ -6,10 +6,17 @@ category:Spectral Processing:Streaming
 Calculate the spectral centroid of a signal from its discrete Fourier transform.
 
 ## Syntax
-``` csound-orc
-kcent pvscent fsig
-acent pvscent fsig
-```
+=== "Modern"
+    ``` csound-orc
+    kcent = pvscent(fsig)
+    acent = pvscent(fsig)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kcent pvscent fsig
+    acent pvscent fsig
+    ```
 
 ### Performance
 

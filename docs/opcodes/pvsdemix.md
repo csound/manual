@@ -13,9 +13,15 @@ This opcode implements the Azimuth Discrimination and Resynthesis (ADRess) algor
 >
 
 ## Syntax
-``` csound-orc
-fsig pvsdemix fleft, fright, kpos, kwidth, ipoints
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvsdemix(fleft, fright, kpos, kwidth, ipoints)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvsdemix fleft, fright, kpos, kwidth, ipoints
+    ```
 
 ### Performance
 

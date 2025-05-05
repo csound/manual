@@ -8,9 +8,15 @@ Models some of the filter characteristics of a Roland TB303 voltage-controlled f
 Euler's method is used to approximate the system, rather than traditional filter methods. Cutoff frequency, Q, and distortion are all coupled. Empirical methods were used to try to unentwine,  but frequency is only approximate as a result. Future fixes for some problems with this opcode may break existing orchestras relying on this version of _tbvcf_.
 
 ## Syntax
-``` csound-orc
-ares tbvcf asig, xfco, xres, kdist, kasym [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = tbvcf(asig, xfco, xres, kdist, kasym [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares tbvcf asig, xfco, xres, kdist, kasym [, iskip]
+    ```
 
 ### Initialization
 

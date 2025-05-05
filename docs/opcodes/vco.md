@@ -8,10 +8,17 @@ Implementation of a band limited, analog modeled oscillator.
 It is based on integration of band limited impulses. _vco_ can be used to simulate a variety of analog wave forms.
 
 ## Syntax
-``` csound-orc
-ares vco xamp, xcps, iwave, kpw [, ifn] [, imaxd] [, ileak] [, inyx] \
-         [, iphs] [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = vco(xamp, xcps, iwave, kpw [, ifn] [, imaxd] [, ileak] [, inyx] \
+               [, iphs] [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares vco xamp, xcps, iwave, kpw [, ifn] [, imaxd] [, ileak] [, inyx] \
+             [, iphs] [, iskip]
+    ```
 
 ### Initialization
 

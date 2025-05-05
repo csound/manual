@@ -6,10 +6,17 @@ category:Real-time MIDI:Slider Banks
 Creates a bank of 16 different MIDI control message numbers, filtered before output.
 
 ## Syntax
-``` csound-orc
-k1, ..., k16 slider16f ichan, ictlnum1, imin1, imax1, init1, ifn1, icutoff1, \
-                       ..., ictlnum16, imin16, imax16, init16, ifn16, icutoff16
-```
+=== "Modern"
+    ``` csound-orc
+    k1, ..., k16 = slider16f(ichan, ictlnum1, imin1, imax1, init1, ifn1, icutoff1, \
+                             ..., ictlnum16, imin16, imax16, init16, ifn16, icutoff16)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    k1, ..., k16 slider16f ichan, ictlnum1, imin1, imax1, init1, ifn1, icutoff1, \
+                           ..., ictlnum16, imin16, imax16, init16, ifn16, icutoff16
+    ```
 
 ### Initialization
 

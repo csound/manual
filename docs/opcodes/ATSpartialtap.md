@@ -6,9 +6,15 @@ category:Spectral Processing:ATS
 Returns a frequency, amplitude pair from an [ATSbufread](../opcodes/ATSbufread.md) opcode.
 
 ## Syntax
-``` csound-orc
-kfrq, kamp ATSpartialtap ipartialnum
-```
+=== "Modern"
+    ``` csound-orc
+    kfrq, kamp = ATSpartialtap(ipartialnum)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kfrq, kamp ATSpartialtap ipartialnum
+    ```
 
 ### Initialization
 

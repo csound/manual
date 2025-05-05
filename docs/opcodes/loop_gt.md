@@ -6,10 +6,17 @@ category:Instrument Control:Program Flow Control
 Construction of looping operations.
 
 ## Syntax
-``` csound-orc
-loop_gt indx, idecr, imin, label
-loop_gt kndx, kdecr, kmin, label
-```
+=== "Modern"
+    ``` csound-orc
+    loop_gt(indx, idecr, imin, label)
+    loop_gt(kndx, kdecr, kmin, label)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    loop_gt indx, idecr, imin, label
+    loop_gt kndx, kdecr, kmin, label
+    ```
 
 ### Initialization
 

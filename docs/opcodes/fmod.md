@@ -6,12 +6,21 @@ category:Mathematical Operations:Arrays
 Computes the remainder of the division of its first argument by the second.
 
 ## Syntax
-``` csound-orc
-ires[] fmod iarg1[], iarg2[]
-kres[] fmod karg1[], karg2[]
-ires[] fmod iarg1[], iarg2
-kres[] fmod karg[], karg2
-```
+=== "Modern"
+    ``` csound-orc
+    ires[] = fmod(iarg1[], iarg2[])
+    kres[] = fmod(karg1[], karg2[])
+    ires[] = fmod(iarg1[], iarg2)
+    kres[] = fmod(karg[], karg2)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ires[] fmod iarg1[], iarg2[]
+    kres[] fmod karg1[], karg2[]
+    ires[] fmod iarg1[], iarg2
+    kres[] fmod karg[], karg2
+    ```
 
 ### Initialization
 

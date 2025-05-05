@@ -8,9 +8,15 @@ Audio output is a tone related to the striking of a cow bell or similar.
 The method is a physical model developed from Perry Cook, but re-coded for Csound.
 
 ## Syntax
-``` csound-orc
-ares gogobel kamp, kfreq, ihrd, ipos, imp, kvibf, kvamp, ivfn
-```
+=== "Modern"
+    ``` csound-orc
+    ares = gogobel(kamp, kfreq, ihrd, ipos, imp, kvibf, kvamp, ivfn)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares gogobel kamp, kfreq, ihrd, ipos, imp, kvibf, kvamp, ivfn
+    ```
 
 ### Initialization
 

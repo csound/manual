@@ -6,9 +6,15 @@ category:Instrument Control:Program Flow Control
 During the p-time passes only, conditionally transfer control to the statement labeled by _label_.
 
 ## Syntax
-``` csound-orc
-ckgoto condition, label
-```
+=== "Modern"
+    ``` csound-orc
+    ckgoto(condition, label)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ckgoto condition, label
+    ```
 
 where _label_ is in the same instrument block and is not an expression, and where _condition_ uses one of the Relational operators (_&lt;_,_ =_, _&lt;=_, _==_, _!=_) (and _=_ for convenience, see also under [Conditional Values](../control/conditional.md)).
 

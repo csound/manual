@@ -6,9 +6,15 @@ category:Signal I/O:Soundfile Queries
 Returns the peak absolute value of a sound file.
 
 ## Syntax
-``` csound-orc
-ir filepeak ifilcod [, ichnl]
-```
+=== "Modern"
+    ``` csound-orc
+    ir = filepeak(ifilcod [, ichnl])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ir filepeak ifilcod [, ichnl]
+    ```
 
 ### Initialization
 

@@ -10,10 +10,17 @@ Plugin opcode in emugens.
 Returns 1 if a given index refers to an existing table, 0 if the table does not exist. Works at i-time if output is an ivariable, at k-time otherwise
 
 ## Syntax
-``` csound-orc
-iexists ftexists ifn
-kexists ftexists kfn / ifn
-```
+=== "Modern"
+    ``` csound-orc
+    iexists = ftexists(ifn)
+    kexists = ftexists(kfn / ifn)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    iexists ftexists ifn
+    kexists ftexists kfn / ifn
+    ```
 
 ### Arguments
 

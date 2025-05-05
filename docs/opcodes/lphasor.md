@@ -6,9 +6,15 @@ category:Signal Generators:Sample Playback
 Generates a table index for sample playback (e.g. with [tablexkt](../opcodes/tablexkt.md)).
 
 ## Syntax
-``` csound-orc
-ares lphasor xtrns [, ilps] [, ilpe] [, imode] [, istrt] [, istor]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = lphasor(xtrns [, ilps] [, ilpe] [, imode] [, istrt] [, istor])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares lphasor xtrns [, ilps] [, ilpe] [, imode] [, istrt] [, istor]
+    ```
 
 ### Initialization
 

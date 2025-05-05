@@ -6,10 +6,17 @@ category:Signal Generators:Random (Noise) Generators
 Generates random numbers and holds them for a period of time.
 
 ## Syntax
-``` csound-orc
-ares randh xamp, xcps [, iseed] [, isize] [, ioffset]
-kres randh kamp, kcps [, iseed] [, isize] [, ioffset]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = randh(xamp, xcps [, iseed] [, isize] [, ioffset])
+    kres = randh(kamp, kcps [, iseed] [, isize] [, ioffset])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares randh xamp, xcps [, iseed] [, isize] [, ioffset]
+    kres randh kamp, kcps [, iseed] [, isize] [, ioffset]
+    ```
 
 ### Initialization
 

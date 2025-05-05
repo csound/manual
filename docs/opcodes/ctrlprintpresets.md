@@ -6,9 +6,15 @@ category:Real-time MIDI:Input
 Prints the current collection of presets for MIDI controllers in a format that can be used in an orchestra, to the console or a file.
 
 ## Syntax
-``` csound-orc
-ctrlprintpresets [Sfilenam]
-```
+=== "Modern"
+    ``` csound-orc
+    ctrlprintpresets([Sfilenam])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ctrlprintpresets [Sfilenam]
+    ```
 
 ### Initialization
 

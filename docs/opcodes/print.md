@@ -6,9 +6,15 @@ category:Signal I/O:Printing and Display
 Displays the values of init (i-rate) variables.
 
 ## Syntax
-``` csound-orc
-print iarg [, iarg1] [, iarg2] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    print(iarg [, iarg1] [, iarg2] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    print iarg [, iarg1] [, iarg2] [...]
+    ```
 
 ### Initialization
 

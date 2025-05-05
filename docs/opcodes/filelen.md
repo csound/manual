@@ -6,9 +6,15 @@ category:Signal I/O:Soundfile Queries
 Returns the length of a sound file.
 
 ## Syntax
-``` csound-orc
-ir filelen ifilcod, [iallowraw]
-```
+=== "Modern"
+    ``` csound-orc
+    ir = filelen(ifilcod, [iallowraw])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ir filelen ifilcod, [iallowraw]
+    ```
 
 ### Initialization
 

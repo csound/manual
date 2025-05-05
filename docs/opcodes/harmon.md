@@ -6,9 +6,15 @@ category:Signal Modifiers:Special Effects
 Analyze an audio input and generate harmonizing voices in synchrony.
 
 ## Syntax
-``` csound-orc
-ares harmon asig, kestfrq, kmaxvar, kgenfreq1, kgenfreq2, imode, iminfrq, iprd
-```
+=== "Modern"
+    ``` csound-orc
+    ares = harmon(asig, kestfrq, kmaxvar, kgenfreq1, kgenfreq2, imode, iminfrq, iprd)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares harmon asig, kestfrq, kmaxvar, kgenfreq1, kgenfreq2, imode, iminfrq, iprd
+    ```
 
 ### Initialization
 

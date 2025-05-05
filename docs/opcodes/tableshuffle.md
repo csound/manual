@@ -8,10 +8,17 @@ Shuffles the content of a function table.
 Each element of the source table is put into a different random position, without loosing any of them. Imagine shuffling a deck of cards. Each element of the table is copied to a different random position. If that position was already chosen before then the next free position is chosen. The length of the table remains the same.
 
 ## Syntax
-``` csound-orc
-tableshuffle ktablenum
-tableshufflei itablenum
-```
+=== "Modern"
+    ``` csound-orc
+    tableshuffle(ktablenum)
+    tableshufflei itablenum)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    tableshuffle ktablenum
+    tableshufflei itablenum
+    ```
 
 ### Performance
 

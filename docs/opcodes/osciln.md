@@ -8,9 +8,15 @@ Accesses table values at a user-defined frequency.
 This opcode can also be written as [oscilx](../opcodes/oscilx.md).
 
 ## Syntax
-``` csound-orc
-ares osciln kamp, ifrq, ifn, itimes
-```
+=== "Modern"
+    ``` csound-orc
+    ares = osciln(kamp, ifrq, ifn, itimes)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares osciln kamp, ifrq, ifn, itimes
+    ```
 
 ### Initialization
 

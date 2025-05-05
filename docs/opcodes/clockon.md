@@ -6,9 +6,15 @@ category:Instrument Control:Clock Control
 Starts one of a number of internal clocks.
 
 ## Syntax
-``` csound-orc
-clockon inum
-```
+=== "Modern"
+    ``` csound-orc
+    clockon(inum)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    clockon inum
+    ```
 
 ### Initialization
 

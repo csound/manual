@@ -8,9 +8,15 @@ Streaming linear prediction analysis.
 This opcode implements streaming linear prediction analysis from an input signal and outputs an fsig, which can be used with other pvs opcodes.
 
 ## Syntax
-``` csound-orc
-fsig pvslpc asrc, idftsiz, ihop, iord [, iwin]
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvslpc(asrc, idftsiz, ihop, iord [, iwin])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvslpc asrc, idftsiz, ihop, iord [, iwin]
+    ```
 
 ### Initialization
 

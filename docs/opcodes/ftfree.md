@@ -6,9 +6,15 @@ category:Table Control
 Deletes function table.
 
 ## Syntax
-``` csound-orc
-ftfree ifno, iwhen
-```
+=== "Modern"
+    ``` csound-orc
+    ftfree(ifno, iwhen)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ftfree ifno, iwhen
+    ```
 
 ### Initialization
 

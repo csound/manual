@@ -6,10 +6,17 @@ category:Spectral Processing:ATS
 Reads data from and ATS data file and stores it in an internal data table of frequency, amplitude pairs.
 
 ## Syntax
-``` csound-orc
-ATSbufread ktimepnt, kfmod, iatsfile, ipartials [, ipartialoffset, \
-           ipartialincr]
-```
+=== "Modern"
+    ``` csound-orc
+    ATSbufread(ktimepnt, kfmod, iatsfile, ipartials [, ipartialoffset, \
+               ipartialincr])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ATSbufread ktimepnt, kfmod, iatsfile, ipartials [, ipartialoffset, \
+               ipartialincr]
+    ```
 
 ### Initialization
 

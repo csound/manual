@@ -6,9 +6,15 @@ category:Signal Modifiers:Specialized Filters
 A Hilbert transformer.
 
 ## Syntax
-``` csound-orc
-ar1, ar2 hilbert asig
-```
+=== "Modern"
+    ``` csound-orc
+    ar1, ar2 = hilbert(asig)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar1, ar2 hilbert asig
+    ```
 
 ### Performance
 

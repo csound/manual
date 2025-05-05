@@ -6,9 +6,15 @@ category:Signal Modifiers:Panning and Spatialization
 Writes a multi-channel audio signal to a ZAK array.
 
 ## Syntax
-``` csound-orc
-vbapz inumchnls, istartndx, asig, kazim [, kelev] [, kspread]
-```
+=== "Modern"
+    ``` csound-orc
+    vbapz(inumchnls, istartndx, asig, kazim [, kelev] [, kspread])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vbapz inumchnls, istartndx, asig, kazim [, kelev] [, kspread]
+    ```
 
 ### Initialization
 

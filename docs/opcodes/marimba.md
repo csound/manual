@@ -8,10 +8,17 @@ Physical model related to the striking of a wooden block as found in a marimba.
 The method is a physical model developed from Perry Cook but re-coded for Csound.
 
 ## Syntax
-``` csound-orc
-ares marimba kamp, kfreq, ihrd, ipos, imp, kvibf, kvamp, ivibfn, idec \
-             [, idoubles] [, itriples]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = marimba(kamp, kfreq, ihrd, ipos, imp, kvibf, kvamp, ivibfn, idec \
+                   [, idoubles] [, itriples])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares marimba kamp, kfreq, ihrd, ipos, imp, kvibf, kvamp, ivibfn, idec \
+                 [, idoubles] [, itriples]
+    ```
 
 ### Initialization
 

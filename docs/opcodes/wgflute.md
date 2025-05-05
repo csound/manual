@@ -8,10 +8,17 @@ Creates a tone similar to a flute.
 It uses a physical model developed from Perry Cook, but re-coded for Csound.
 
 ## Syntax
-``` csound-orc
-ares wgflute kamp, kfreq, kjet, iatt, idetk, kngain, kvibf, kvamp [, ifn] \
-             [, iminfreq] [, ijetrf] [, iendrf]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = wgflute(kamp, kfreq, kjet, iatt, idetk, kngain, kvibf, kvamp [, ifn] \
+                   [, iminfreq] [, ijetrf] [, iendrf])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares wgflute kamp, kfreq, kjet, iatt, idetk, kngain, kvibf, kvamp [, ifn] \
+                 [, iminfreq] [, ijetrf] [, iendrf]
+    ```
 
 ### Initialization
 

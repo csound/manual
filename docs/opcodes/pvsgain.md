@@ -6,9 +6,15 @@ category:Spectral Processing:Streaming
 Scale the amplitude of a pv stream.
 
 ## Syntax
-``` csound-orc
-fsig pvsgain fsigin, kgain
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvsgain(fsigin, kgain)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvsgain fsigin, kgain
+    ```
 
 ### Performance
 

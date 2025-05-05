@@ -10,9 +10,15 @@ Plugin opcode in control.
 Requires Winsound or TCL/TK. _setctrl_ sets a slider to a specific value, or sets a minimum or maximum range.
 
 ## Syntax
-``` csound-orc
-setctrl inum, ival, itype
-```
+=== "Modern"
+    ``` csound-orc
+    setctrl(inum, ival, itype)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    setctrl inum, ival, itype
+    ```
 
 ### Initialization
 

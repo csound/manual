@@ -6,9 +6,15 @@ category:Table Control:Read/Write Operations
 Simple, fast table copy opcode.
 
 ## Syntax
-``` csound-orc
-tablecopy kdft, ksft
-```
+=== "Modern"
+    ``` csound-orc
+    tablecopy(kdft, ksft)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    tablecopy kdft, ksft
+    ```
 
 ### Performance
 

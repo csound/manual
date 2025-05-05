@@ -7,9 +7,15 @@ Distribute an audio signal among 16 channels with moving virtual sources.
 Distribute an audio signal among 16 channels with moving virtual sources.
 
 ## Syntax
-``` csound-orc
-ar1, ..., ar16 vbap16move asig, idur, ispread, ifldnum, ifld1 [, ifld2] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    ar1, ..., ar16 = vbap16move(asig, idur, ispread, ifldnum, ifld1 [, ifld2] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar1, ..., ar16 vbap16move asig, idur, ispread, ifldnum, ifld1 [, ifld2] [...]
+    ```
 
 ### Initialization
 

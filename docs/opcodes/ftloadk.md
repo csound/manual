@@ -6,9 +6,15 @@ category:Table Control:Read/Write Operations
 Load a set of previously-allocated tables from a file.
 
 ## Syntax
-``` csound-orc
-ftloadk Sfilename, ktrig, iflag, ifn1 [, ifn2] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    ftloadk(Sfilename, ktrig, iflag, ifn1 [, ifn2] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ftloadk Sfilename, ktrig, iflag, ifn1 [, ifn2] [...]
+    ```
 
 ### Initialization
 

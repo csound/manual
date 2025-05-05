@@ -16,9 +16,15 @@ The formula used to calculate the curve is:
 where x is equal to _kindex_ and y is equal to _ksteepness_.
 
 ## Syntax
-``` csound-orc
-kout expcurve kindex, ksteepness
-```
+=== "Modern"
+    ``` csound-orc
+    kout = expcurve(kindex, ksteepness)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kout expcurve kindex, ksteepness
+    ```
 
 ### Performance
 

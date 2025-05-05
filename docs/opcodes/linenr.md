@@ -8,10 +8,17 @@ The _linen_ opcode extended with a final release segment.
 _linenr_ -- same as [linen](../opcodes/linen.md) except that the final segment is entered only on sensing a MIDI note release. The note is then extended by the decay time.
 
 ## Syntax
-``` csound-orc
-ares linenr xamp, irise, idec, iatdec
-kres linenr kamp, irise, idec, iatdec
-```
+=== "Modern"
+    ``` csound-orc
+    ares = linenr(xamp, irise, idec, iatdec)
+    kres = linenr(kamp, irise, idec, iatdec)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares linenr xamp, irise, idec, iatdec
+    kres linenr kamp, irise, idec, iatdec
+    ```
 
 ### Initialization
 

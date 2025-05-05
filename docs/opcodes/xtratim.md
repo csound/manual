@@ -6,9 +6,15 @@ category:Real-time MIDI:Event Extenders
 Extend the duration of real-time generated events and handle their extra life (Usually for usage along with [release](../opcodes/release.md) instead of [linenr](../opcodes/linenr.md), [linsegr](../opcodes/linsegr.md), etc).
 
 ## Syntax
-``` csound-orc
-xtratim iextradur
-```
+=== "Modern"
+    ``` csound-orc
+    xtratim(iextradur)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    xtratim iextradur
+    ```
 
 ### Initialization
 

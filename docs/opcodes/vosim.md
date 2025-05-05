@@ -8,9 +8,15 @@ Simple vocal simulation based on glottal pulses with formant characteristics.
 Output is a series of sound events, where each event is composed of a burst of squared sine pulses followed by silence. The VOSIM (VOcal SIMulation) synthesis method was developed by Kaegi and Tempelaars in the 1970's.
 
 ## Syntax
-``` csound-orc
-ar vosim kamp, kFund, kForm, kDecay, kPulseCount, kPulseFactor, ifn [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ar = vosim(kamp, kFund, kForm, kDecay, kPulseCount, kPulseFactor, ifn [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar vosim kamp, kFund, kForm, kDecay, kPulseCount, kPulseFactor, ifn [, iskip]
+    ```
 
 Intialization
 

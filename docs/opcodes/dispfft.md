@@ -8,9 +8,15 @@ Displays the Fourier Transform of an audio or control signal.
 These units will print orchestra init-values, or produce graphic display of orchestra control signals and audio signals. Uses X11 windows if enabled, else (or if [-g](../invoke/cs-options-alphabetically.md#-g-asciidisplay) flag is set) displays are approximated in ASCII characters.
 
 ## Syntax
-``` csound-orc
-dispfft xsig, iprd, iwsiz [, iwtyp] [, idbout] [, iwtflg] [,imin] [,imax]
-```
+=== "Modern"
+    ``` csound-orc
+    dispfft(xsig, iprd, iwsiz [, iwtyp] [, idbout] [, iwtflg] [,imin] [,imax])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    dispfft xsig, iprd, iwsiz [, iwtyp] [, idbout] [, iwtflg] [,imin] [,imax]
+    ```
 
 ### Initialization
 

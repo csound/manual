@@ -10,9 +10,15 @@ _spdist_ uses the same xy data as [space](../opcodes/space.md), also either from
 In the case of _space_, the xy values are used to determine a distance which is used to attenuate the signal and prepare it for use in [spsend](../opcodes/spsend.md). But it is also useful to have these values for distance available to scale the frequency of the signal before it is sent to the _space_ unit.
 
 ## Syntax
-``` csound-orc
-k1 spdist ifn, ktime, kx, ky
-```
+=== "Modern"
+    ``` csound-orc
+    k1 = spdist(ifn, ktime, kx, ky)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    k1 spdist ifn, ktime, kx, ky
+    ```
 
 ### Initialization
 

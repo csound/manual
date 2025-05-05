@@ -8,9 +8,15 @@ Reads tables in sequential locations to an a-rate variable.
 Some thought is required before using it. It has at least two major, and quite different, applications which are discussed below.
 
 ## Syntax
-``` csound-orc
-ares tablera kfn, kstart, koff
-```
+=== "Modern"
+    ``` csound-orc
+    ares = tablera(kfn, kstart, koff)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares tablera kfn, kstart, koff
+    ```
 
 ### Performance
 

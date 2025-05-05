@@ -6,9 +6,15 @@ category:Signal I/O:Printing and Display
 Prints a new value every time a control variable changes.
 
 ## Syntax
-``` csound-orc
-printk2 kvar [, inumspaces] [, inamed]
-```
+=== "Modern"
+    ``` csound-orc
+    printk2(kvar [, inumspaces] [, inamed])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    printk2 kvar [, inumspaces] [, inamed]
+    ```
 
 ### Initialization
 

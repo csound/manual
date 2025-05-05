@@ -6,10 +6,17 @@ category:Signal I/O:Software Bus
 Send data to a channel of the outward software bus.
 
 ## Syntax
-``` csound-orc
-chano kval, kchan
-chano aval, kchan
-```
+=== "Modern"
+    ``` csound-orc
+    chano(kval, kchan)
+    chano(aval, kchan)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    chano kval, kchan
+    chano aval, kchan
+    ```
 
 ### Performance
 

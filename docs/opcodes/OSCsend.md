@@ -6,9 +6,15 @@ category:OSC
 Sends data to other listening processes using the OSC protocol.
 
 ## Syntax
-``` csound-orc
-OSCsend kwhen, ihost, iport, idestination [, itype , xdata1, xdata2, ...]
-```
+=== "Modern"
+    ``` csound-orc
+    OSCsend(kwhen, ihost, iport, idestination [, itype , xdata1, xdata2, ...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    OSCsend kwhen, ihost, iport, idestination [, itype , xdata1, xdata2, ...]
+    ```
 
 ### Initialization
 

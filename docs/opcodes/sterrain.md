@@ -8,10 +8,17 @@ A wave-terrain synthesis opcode using curves computed with the superformula.
 See [Wikipedia](https://en.wikipedia.org/wiki/Superformula) for more information.
 
 ## Syntax
-``` csound-orc
-aout sterrain kamp, kcps, kx, ky, krx, kry, krot, ktab0, ktab1, km1, km2, \
-              kn1, kn2, kn3, ka, kb, kperiod
-```
+=== "Modern"
+    ``` csound-orc
+    aout = sterrain(kamp, kcps, kx, ky, krx, kry, krot, ktab0, ktab1, km1, km2, \
+                    kn1, kn2, kn3, ka, kb, kperiod)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout sterrain kamp, kcps, kx, ky, krx, kry, krot, ktab0, ktab1, km1, km2, \
+                  kn1, kn2, kn3, ka, kb, kperiod
+    ```
 
 ### Performance
 

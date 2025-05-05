@@ -8,9 +8,15 @@ Assign to a string variable by copying the source which may be a constant or ano
 _strcpyk_ does the assignment both at initialization and performance time.
 
 ## Syntax
-``` csound-orc
-Sdst strcpyk Ssrc
-```
+=== "Modern"
+    ``` csound-orc
+    Sdst = strcpyk(Ssrc)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    Sdst strcpyk Ssrc
+    ```
 
 ## Examples
 

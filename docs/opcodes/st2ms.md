@@ -8,9 +8,15 @@ Stereo to Mid-Side Conversion.
 It is a pure function with no side effects.
 
 ## Syntax
-``` csound-orc
-am,as st2ms aleft,aright
-```
+=== "Modern"
+    ``` csound-orc
+    am,as = st2ms(aleft,aright)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    am,as st2ms aleft,aright
+    ```
 
 ### Performance
 

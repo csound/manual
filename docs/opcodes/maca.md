@@ -6,9 +6,15 @@ category:Mathematical Operations:Opcode Equivalents of Functions
 Multiply and accumulate a-rate signals only.
 
 ## Syntax
-``` csound-orc
-ares maca asig1 , asig2 [, asig3] [, asig4] [, asig5] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = maca(asig1 , asig2 [, asig3] [, asig4] [, asig5] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares maca asig1 , asig2 [, asig3] [, asig4] [, asig5] [...]
+    ```
 
 ### Performance
 

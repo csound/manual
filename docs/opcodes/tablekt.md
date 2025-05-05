@@ -8,10 +8,17 @@ Provides k-rate control over table numbers.
 The standard Csound opcode [table](../opcodes/table.md) when producing a k- or a-rate result, can only use an init-time variable to select the table number. _tablekt_ accepts k-rate control as well as i-time. In all other respects they are similar to the original opcodes.
 
 ## Syntax
-``` csound-orc
-ares tablekt xndx, kfn [, ixmode] [, ixoff] [, iwrap]
-kres tablekt kndx, kfn [, ixmode] [, ixoff] [, iwrap]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = tablekt(xndx, kfn [, ixmode] [, ixoff] [, iwrap])
+    kres = tablekt(kndx, kfn [, ixmode] [, ixoff] [, iwrap])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares tablekt xndx, kfn [, ixmode] [, ixoff] [, iwrap]
+    kres tablekt kndx, kfn [, ixmode] [, ixoff] [, iwrap]
+    ```
 
 ### Initialization
 

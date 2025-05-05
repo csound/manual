@@ -8,9 +8,15 @@ Runge-Kutte numerical simulation of the Moog analog resonant filter.
 Bob is based on bob~ by Miller Puckette in Pure Data. The design is based on the papers by Tim Stilson, Timothy E. Stinchcombe, and Antti Huovilainen.
 
 ## Syntax
-``` csound-orc
-asig bob ain, xcf, xres, xsat [, iosamps, istor]
-```
+=== "Modern"
+    ``` csound-orc
+    asig = bob(ain, xcf, xres, xsat [, iosamps, istor])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig bob ain, xcf, xres, xsat [, iosamps, istor]
+    ```
 
 ### Initialization
 

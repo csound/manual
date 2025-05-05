@@ -8,9 +8,15 @@ Returns a table number at i-time for a given oscillator frequency and wavform.
 _vco2ift_ is the same as [vco2ft](../opcodes/vco2ft.md), but works at i-time. It is suitable for use with opcodes that expect an i-rate table number (for example, [oscili](../opcodes/oscili.md)).
 
 ## Syntax
-``` csound-orc
-ifn vco2ift icps, iwave [, inyx]
-```
+=== "Modern"
+    ``` csound-orc
+    ifn = vco2ift(icps, iwave [, inyx])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ifn vco2ift icps, iwave [, inyx]
+    ```
 
 ### Initialization
 

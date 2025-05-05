@@ -8,9 +8,15 @@ A band pass filter working in the spectral domain.
 Filter the pvoc frames, passing bins whose frequency is within a band, and with linear interpolation for transitional bands.
 
 ## Syntax
-``` csound-orc
-fsig pvsbandp fsigin, xlowcut, xlowfull, xhighfull, xhighcut [, ktype]
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvsbandp(fsigin, xlowcut, xlowfull, xhighfull, xhighcut [, ktype])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvsbandp fsigin, xlowcut, xlowfull, xhighfull, xhighcut [, ktype]
+    ```
 
 ### Performance
 

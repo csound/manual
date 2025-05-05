@@ -8,10 +8,17 @@ A physical model of a bowed bar.
 It belongs to the Perry Cook family of waveguide instruments.
 
 ## Syntax
-``` csound-orc
-ares wgbowedbar kamp, kfreq, kpos, kbowpres, kgain [, iconst] [, itvel] \
-                [, ibowpos] [, ilow]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = wgbowedbar(kamp, kfreq, kpos, kbowpres, kgain [, iconst] [, itvel] \
+                      [, ibowpos] [, ilow])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares wgbowedbar kamp, kfreq, kpos, kbowpres, kgain [, iconst] [, itvel] \
+                    [, ibowpos] [, ilow]
+    ```
 
 ### Initialization
 

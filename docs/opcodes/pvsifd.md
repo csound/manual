@@ -8,9 +8,15 @@ Instantaneous Frequency Distribution, magnitude and phase analysis.
 The pvsifd opcode takes an input a-rate signal and performs an Instantaneous Frequency, magnitude and phase analysis, using the STFT and pvsifd (Instantaneous Frequency Distribution), as described in Lazzarini et al, "Time-stretching using the Instantaneous Frequency Distribution and Partial Tracking", Proc.of ICMC05, Barcelona. It generates two PV streaming signals, one containing the amplitudes and frequencies (a similar output to pvsanal) and another containing amplitudes and unwrapped phases.
 
 ## Syntax
-``` csound-orc
-ffr, fphs pvsifd ain, ifftsize, ihopsize, iwintype [,iscal]
-```
+=== "Modern"
+    ``` csound-orc
+    ffr, fphs = pvsifd(ain, ifftsize, ihopsize, iwintype [,iscal])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ffr, fphs pvsifd ain, ifftsize, ihopsize, iwintype [,iscal]
+    ```
 
 ### Performance
 

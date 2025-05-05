@@ -6,9 +6,15 @@ category:Spectral Processing:Streaming
 Writes amplitude and/or frequency data to function tables.
 
 ## Syntax
-``` csound-orc
-kflag pvsftw fsrc, ifna [, ifnf]
-```
+=== "Modern"
+    ``` csound-orc
+    kflag = pvsftw(fsrc, ifna [, ifnf])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kflag pvsftw fsrc, ifna [, ifnf]
+    ```
 
 ### Initialization
 

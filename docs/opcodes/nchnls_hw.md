@@ -8,9 +8,15 @@ Returns the number of audio channels in the underlying hardware.
 This does not necessarily correspond to the number of channels used by Csound (set by nchnls and nchnls_i).
 
 ## Syntax
-``` csound-orc
-idacc, iadcc nchnls_hw
-```
+=== "Modern"
+    ``` csound-orc
+    idacc, iadcc = nchnls_hw()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    idacc, iadcc nchnls_hw
+    ```
 
 ### Initialization
 

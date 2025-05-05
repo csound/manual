@@ -6,9 +6,15 @@ category:Signal I/O:Soundfile Queries
 Returns the sample rate of a sound file.
 
 ## Syntax
-``` csound-orc
-ir filesr ifilcod [, iallowraw]
-```
+=== "Modern"
+    ``` csound-orc
+    ir = filesr(ifilcod [, iallowraw])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ir filesr ifilcod [, iallowraw]
+    ```
 
 ### Initialization
 

@@ -6,9 +6,15 @@ category:Spectral Processing:Non-Standard
 Filters each channel of an input spectrum.
 
 ## Syntax
-``` csound-orc
-wsig specfilt wsigin, ifhtim
-```
+=== "Modern"
+    ``` csound-orc
+    wsig = specfilt(wsigin, ifhtim)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    wsig specfilt wsigin, ifhtim
+    ```
 
 ### Initialization
 

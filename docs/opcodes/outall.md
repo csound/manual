@@ -6,9 +6,15 @@ category:Signal I/O:Signal Output
 Writes a single audio value to all available audio channels.
 
 ## Syntax
-``` csound-orc
-outall asig
-```
+=== "Modern"
+    ``` csound-orc
+    outall(asig)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    outall asig
+    ```
 
 ### Performance
 

@@ -8,9 +8,15 @@ Adjust one audio signal according to the values of another.
 The rms power of asig can be interrogated, set, or adjusted to match that of a comparator signal.
 
 ## Syntax
-``` csound-orc
-ares balance2 asig, acomp [, ihp] [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = balance2(asig, acomp [, ihp] [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares balance2 asig, acomp [, ihp] [, iskip]
+    ```
 
 ### Initialization
 

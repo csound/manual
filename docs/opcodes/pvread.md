@@ -8,9 +8,15 @@ Reads from a [pvoc](../opcodes/pvoc.md) file and returns the frequency and ampli
 The returned values can be used anywhere else in the Csound instrument. For example, one can use them as arguments to an oscillator to synthesize a single component from an analyzed signal or a bank of _pvreads_ can be used to resynthesize the analyzed sound using additive synthesis by passing the frequency and magnitude values to a bank of oscillators.
 
 ## Syntax
-``` csound-orc
-kfreq, kamp pvread ktimpnt, ifile, ibin
-```
+=== "Modern"
+    ``` csound-orc
+    kfreq, kamp = pvread(ktimpnt, ifile, ibin)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kfreq, kamp pvread ktimpnt, ifile, ibin
+    ```
 
 ### Initialization
 

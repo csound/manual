@@ -8,11 +8,19 @@ Compute the waveform and the wavetable for use in scanned synthesis.
 Plugin opcode in scansyn.
 
 ## Syntax
-``` csound-orc
-scanu init, irate, ifndisplace, ifnmass, ifnmatrix, ifncentr, ifndamp, \
-      kmass, kmtrxstiff, kcentr, kdamp, ileft, iright, kpos, kdisplace, \
-      ain, idisp, id
-```
+=== "Modern"
+    ``` csound-orc
+    scanu(init, irate, ifndisplace, ifnmass, ifnmatrix, ifncentr, ifndamp, \
+          kmass, kmtrxstiff, kcentr, kdamp, ileft, iright, kpos, kdisplace, \
+          ain, idisp, id)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    scanu init, irate, ifndisplace, ifnmass, ifnmatrix, ifncentr, ifndamp, \
+          kmass, kmtrxstiff, kcentr, kdamp, ileft, iright, kpos, kdisplace, \
+          ain, idisp, id
+    ```
 
 ### Initialization
 

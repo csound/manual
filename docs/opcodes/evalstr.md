@@ -8,10 +8,17 @@ Evaluates a string containing Csound code, returning a value from the global spa
 This opcode can be also used to compile new instruments (as _compilestr_).
 
 ## Syntax
-``` csound-orc
-ires evalstr Scode
-kres evalstr Scode, ktrig
-```
+=== "Modern"
+    ``` csound-orc
+    ires = evalstr(Scode)
+    kres = evalstr(Scode, ktrig)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ires evalstr Scode
+    kres evalstr Scode, ktrig
+    ```
 
 ### Initialization
 

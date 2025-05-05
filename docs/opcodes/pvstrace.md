@@ -6,10 +6,17 @@ category:Spectral Processing:Streaming
 Process a PV stream by retaining only the N bins with the highest amplitude, zeroing the others.
 
 ## Syntax
-``` csound-orc
-fsig pvstrace fsigin, kn
-fsig, kBins[] pvstrace fsigin, kn [, isort, imin, imax]
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvstrace(fsigin, kn)
+    fsig, kBins[] = pvstrace(fsigin, kn [, isort, imin, imax])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvstrace fsigin, kn
+    fsig, kBins[] pvstrace fsigin, kn [, isort, imin, imax]
+    ```
 
 Initialization
 

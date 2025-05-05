@@ -10,9 +10,15 @@ Plugin opcode in emugens.
 Whitespace can be removed from left, right or both sides. Works at init-time.
 
 ## Syntax
-``` csound-orc
-Sout strstrip Sin [, Smode]
-```
+=== "Modern"
+    ``` csound-orc
+    Sout = strstrip(Sin [, Smode])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    Sout strstrip Sin [, Smode]
+    ```
 
 ### Initialization
 

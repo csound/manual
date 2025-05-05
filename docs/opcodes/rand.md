@@ -6,10 +6,17 @@ category:Signal Generators:Random (Noise) Generators
 Output is a controlled random number series between -*amp* and +*amp*.
 
 ## Syntax
-``` csound-orc
-ares rand xamp [, iseed] [, isel] [, ioffset]
-kres rand xamp [, iseed] [, isel] [, ioffset]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = rand(xamp [, iseed] [, isel] [, ioffset])
+    kres = rand(xamp [, iseed] [, isel] [, ioffset])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares rand xamp [, iseed] [, isel] [, ioffset]
+    kres rand xamp [, iseed] [, isel] [, ioffset]
+    ```
 
 ### Initialization
 

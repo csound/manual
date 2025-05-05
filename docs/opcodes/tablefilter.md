@@ -8,9 +8,15 @@ Filters a source table and writes result into a destination table.
 This opcode can be used in order to filter values from function tables following certain algorithms. The filtered output is written into a destination table and the number of elements that have passed the filter is returned.
 
 ## Syntax
-``` csound-orc
-knumpassed tablefilter kouttable, kintatble, kmode, kparam
-```
+=== "Modern"
+    ``` csound-orc
+    knumpassed = tablefilter(kouttable, kintatble, kmode, kparam)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    knumpassed tablefilter kouttable, kintatble, kmode, kparam
+    ```
 
 ### Performance
 

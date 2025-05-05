@@ -8,9 +8,15 @@ Conditional branch during p-time depending on elapsed note time.
 _istrt_ and _idur_ specify time in seconds. The branch to _label_ will become effective at time _istrt_, and will remain so for just _idur_ seconds. Note that _timout_ can be reinitialized for multiple activation within a single note (see example under [reinit](../opcodes/reinit.md)).
 
 ## Syntax
-``` csound-orc
-timout istrt, idur, label
-```
+=== "Modern"
+    ``` csound-orc
+    timout(istrt, idur, label)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    timout istrt, idur, label
+    ```
 
 where _label_ is in the same instrument block and is not an expression.
 

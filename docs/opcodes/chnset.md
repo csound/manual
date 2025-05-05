@@ -8,17 +8,31 @@ Writes data to a channel of the named software bus.
 Implies declaring the channel with _imod_=2 (see also [chn_k, chn_a, and chn_S](../opcodes/chn.md)).
 
 ## Syntax
-``` csound-orc
-chnset ival, Sname
-chnset kval, Sname
-chnset aval, Sname
-chnset Sval, Sname
-chnsetks Sval, Sname
-chnseti ival[], []Sname
-chnsetk kval[], []Sname
-chnseta aval[], []Sname
-chnsets Sval[], []Sname
-```
+=== "Modern"
+    ``` csound-orc
+    chnset(ival, Sname)
+    chnset(kval, Sname)
+    chnset(aval, Sname)
+    chnset(Sval, Sname)
+    chnsetks(Sval, Sname)
+    chnseti(ival[], []Sname)
+    chnsetk(kval[], []Sname)
+    chnseta(aval[], []Sname)
+    chnsets(Sval[], []Sname)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    chnset ival, Sname
+    chnset kval, Sname
+    chnset aval, Sname
+    chnset Sval, Sname
+    chnsetks Sval, Sname
+    chnseti ival[], []Sname
+    chnsetk kval[], []Sname
+    chnseta aval[], []Sname
+    chnsets Sval[], []Sname
+    ```
 
 ### Initialization
 

@@ -8,9 +8,15 @@ Return the position of the first occurence of S2 in S1, or -1 if not found. If S
 _strindex_ runs at init time only.
 
 ## Syntax
-``` csound-orc
-ipos strindex S1, S2
-```
+=== "Modern"
+    ``` csound-orc
+    ipos = strindex(S1, S2)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ipos strindex S1, S2
+    ```
 
 ## See Also
 

@@ -6,9 +6,15 @@ category:Signal Modifiers:Waveguides
 A model of beaten plate consisting of two parallel delay-lines and two first-order lowpass filters.
 
 ## Syntax
-``` csound-orc
-ares wguide2 asig, xfreq1, xfreq2, kcutoff1, kcutoff2, kfeedback1, kfeedback2
-```
+=== "Modern"
+    ``` csound-orc
+    ares = wguide2(asig, xfreq1, xfreq2, kcutoff1, kcutoff2, kfeedback1, kfeedback2)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares wguide2 asig, xfreq1, xfreq2, kcutoff1, kcutoff2, kfeedback1, kfeedback2
+    ```
 
 ### Performance
 

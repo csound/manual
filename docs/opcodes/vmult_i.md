@@ -6,9 +6,15 @@ category:Vectorial:Scalar operations
 Multiplies a vector in a table by a scalar value.
 
 ## Syntax
-``` csound-orc
-vmult_i ifn, ival, ielements [, idstoffset]
-```
+=== "Modern"
+    ``` csound-orc
+    vmult_i(ifn, ival, ielements [, idstoffset])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vmult_i ifn, ival, ielements [, idstoffset]
+    ```
 
 ### Initialization
 

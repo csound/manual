@@ -14,9 +14,15 @@ In general, it should be possible to write instrument definitions that work iden
 Note that correlating Csound instruments with MIDI channel numbers is done using the [massign](../opcodes/massign.md) opcode for real-time performance,.  For file-driven performance, instrument numbers default to MIDI channel number + 1, but the defaults are overridden by any MIDI program change messages in the file.
 
 ## Syntax
-``` csound-orc
-midinoteoff xkey, xvelocity
-```
+=== "Modern"
+    ``` csound-orc
+    midinoteoff(xkey, xvelocity)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    midinoteoff xkey, xvelocity
+    ```
 
 ### Performance
 

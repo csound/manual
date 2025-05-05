@@ -8,9 +8,15 @@ Returns a table number at k-time for a given oscillator frequency and wavform.
 _vco2ft_ returns the function table number to be used for generating the specified waveform at a given frequency. This function table number can be used by any Csound opcode that generates a signal by reading function tables (like [oscilikt](../opcodes/oscilikt.md)). The tables must be calculated by [vco2init](../opcodes/vco2init.md) before _vco2ft_ is called and shared as Csound ftables (_ibasfn_).
 
 ## Syntax
-``` csound-orc
-kfn vco2ft kcps, iwave [, inyx]
-```
+=== "Modern"
+    ``` csound-orc
+    kfn = vco2ft(kcps, iwave [, inyx])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kfn vco2ft kcps, iwave [, inyx]
+    ```
 
 ### Initialization
 

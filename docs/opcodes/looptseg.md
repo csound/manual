@@ -8,11 +8,19 @@ Generate control signal consisting of exponential or linear segments delimited b
 The entire envelope is looped at _kfreq_ rate. Each parameter can be varied at k-rate.
 
 ## Syntax
-``` csound-orc
-ksig looptseg kfreq, ktrig, iphase, kvalue0, ktype0, ktime0, [, kvalue1] \
-              [,ktype1] [, ktime1] [, kvalue2] [,ktype2] [, ktime2] [...] \
-              [, kvalueN] [,ktypeN] [, ktimeN]
-```
+=== "Modern"
+    ``` csound-orc
+    ksig = looptseg(kfreq, ktrig, iphase, kvalue0, ktype0, ktime0, [, kvalue1] \
+                    [,ktype1] [, ktime1] [, kvalue2] [,ktype2] [, ktime2] [...] \
+                    [, kvalueN] [,ktypeN] [, ktimeN])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ksig looptseg kfreq, ktrig, iphase, kvalue0, ktype0, ktime0, [, kvalue1] \
+                  [,ktype1] [, ktime1] [, kvalue2] [,ktype2] [, ktime2] [...] \
+                  [, kvalueN] [,ktypeN] [, ktimeN]
+    ```
 
 ### Initialization
 

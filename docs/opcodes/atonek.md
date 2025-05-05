@@ -6,9 +6,15 @@ category:Signal Modifiers:Standard Filters:Control
 A hi-pass filter whose transfer functions are the complements of the [tonek](../opcodes/tonek.md) opcode.
 
 ## Syntax
-``` csound-orc
-kres atonek ksig, khp [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    kres = atonek(ksig, khp [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres atonek ksig, khp [, iskip]
+    ```
 
 ### Initialization
 

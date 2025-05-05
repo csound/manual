@@ -6,9 +6,15 @@ category:Instrument Control:Sensing and Control
 Return various configuration settings in Svalue as a string at init time.
 
 ## Syntax
-``` csound-orc
-Svalue getcfg iopt
-```
+=== "Modern"
+    ``` csound-orc
+    Svalue = getcfg(iopt)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    Svalue getcfg iopt
+    ```
 
 ### Initialization
 

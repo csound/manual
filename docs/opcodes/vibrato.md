@@ -6,10 +6,17 @@ category:Signal Generators:Basic Oscillators
 Generates a natural-sounding user-controllable vibrato.
 
 ## Syntax
-``` csound-orc
-kout vibrato kAverageAmp, kAverageFreq, kRandAmountAmp, kRandAmountFreq, \
-             kAmpMinRate, kAmpMaxRate, kcpsMinRate, kcpsMaxRate, ifn [, iphs]
-```
+=== "Modern"
+    ``` csound-orc
+    kout = vibrato(kAverageAmp, kAverageFreq, kRandAmountAmp, kRandAmountFreq, \
+                   kAmpMinRate, kAmpMaxRate, kcpsMinRate, kcpsMaxRate, ifn [, iphs])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kout vibrato kAverageAmp, kAverageFreq, kRandAmountAmp, kRandAmountFreq, \
+                 kAmpMinRate, kAmpMaxRate, kcpsMinRate, kcpsMaxRate, ifn [, iphs]
+    ```
 
 ### Initialization
 

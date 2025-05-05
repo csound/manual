@@ -6,9 +6,15 @@ category:Spectral Processing:Non-Standard
 Sums the magnitudes across all channels of the spectrum.
 
 ## Syntax
-``` csound-orc
-ksum specsum wsig [, interp]
-```
+=== "Modern"
+    ``` csound-orc
+    ksum = specsum(wsig [, interp])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ksum specsum wsig [, interp]
+    ```
 
 ### Initialization
 

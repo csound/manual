@@ -6,14 +6,25 @@ category:Signal Modifiers:Signal Limiters
 Sets the lower and upper limits of the value it processes.
 
 ## Syntax
-``` csound-orc
-ares limit asig, klow, khigh
-ires limit isig, ilow, ihigh
-kres limit ksig, klow, khigh
-ires[] limit isig[], ilow, ihigh
-kres[] limit ksig[], klow, khigh
+=== "Modern"
+    ``` csound-orc
+    ares = limit(asig, klow, khigh)
+    ires = limit(isig, ilow, ihigh)
+    kres = limit(ksig, klow, khigh)
+    ires[] = limit(isig[], ilow, ihigh)
+    kres[] = limit(ksig[], klow, khigh)
+      )
+    ```
 
-```
+=== "Classic"
+    ``` csound-orc
+    ares limit asig, klow, khigh
+    ires limit isig, ilow, ihigh
+    kres limit ksig, klow, khigh
+    ires[] limit isig[], ilow, ihigh
+    kres[] limit ksig[], klow, khigh
+    
+    ```
 
 ### Initialization
 

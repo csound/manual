@@ -6,9 +6,15 @@ category:Signal Modifiers:Standard Filters:Resonant
 A second-order resonant filter.
 
 ## Syntax
-``` csound-orc
-ares reson asig, xcf, xbw [, iscl] [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = reson(asig, xcf, xbw [, iscl] [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares reson asig, xcf, xbw [, iscl] [, iskip]
+    ```
 
 ### Initialization
 

@@ -6,9 +6,15 @@ category:Spectral Processing:Streaming
 Create an fsig stream by reading a selected channel from a PVOC-EX analysis file, with frame interpolation.
 
 ## Syntax
-``` csound-orc
-fsig pvsdiskin SFname, ktscal, kgain [, ioffset, ichan]
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvsdiskin(SFname, ktscal, kgain [, ioffset, ichan])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvsdiskin SFname, ktscal, kgain [, ioffset, ichan]
+    ```
 
 ### Initialization
 

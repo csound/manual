@@ -6,10 +6,17 @@ category:Real-time MIDI:Slider Banks
 Stores a bank of 8 different MIDI control messages to a table.
 
 ## Syntax
-``` csound-orc
-kflag slider8table ichan, ioutTable, ioffset, ictlnum1, imin1, imax1, \
-                   init1, ifn1, ..., ictlnum8, imin8, imax8, init8, ifn8
-```
+=== "Modern"
+    ``` csound-orc
+    kflag = slider8table(ichan, ioutTable, ioffset, ictlnum1, imin1, imax1, \
+                         init1, ifn1, ..., ictlnum8, imin8, imax8, init8, ifn8)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kflag slider8table ichan, ioutTable, ioffset, ictlnum1, imin1, imax1, \
+                       init1, ifn1, ..., ictlnum8, imin8, imax8, init8, ifn8
+    ```
 
 ### Initialization
 

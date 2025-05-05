@@ -8,9 +8,15 @@ Calculates the product of an array.
 Takes a numeric array (k or i-rate) and calculates its product.
 
 ## Syntax
-``` csound-orc
-kres/ires product karr[]/iarr[]  (k- or i-arrays )
-```
+=== "Modern"
+    ``` csound-orc
+    kres/ires = product(karr[]/iarr[])  (k- or i-arrays )
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres/ires product karr[]/iarr[]  (k- or i-arrays )
+    ```
 
 ## Examples
 

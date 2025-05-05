@@ -10,10 +10,17 @@ Plugin opcode in framebuffer.
 _framebuffer_ converts audio signals into a 1 dimensional k-rate array of a specified size. The size of the k-rate array must be larger than ksmps. It also converts 1 dimensional k-rate arrays back into audio signals, the k-rate arrays must be uninitialised and also be larger than ksmps in size. The buffer works as a circular buffer and may be used for doing frame based audio processing such as spectral analysis/synthesis or as a simple delay line.
 
 ## Syntax
-``` csound-orc
-kout[] framebuffer ain, isize
-aout framebuffer kin, isize
-```
+=== "Modern"
+    ``` csound-orc
+    kout[] = framebuffer(ain, isize)
+    aout = framebuffer(kin, isize)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kout[] framebuffer ain, isize
+    aout framebuffer kin, isize
+    ```
 
 ### Initialization
 

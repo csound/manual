@@ -8,10 +8,17 @@ Write data to a serial port for arduino.
 Plugin opcode in serial.
 
 ## Syntax
-``` csound-orc
-serialWrite_i iPort, iByte
-serialWrite_i iPort, SBytes
-```
+=== "Modern"
+    ``` csound-orc
+    serialWrite_i(iPort, iByte)
+    serialWrite_i(iPort, SBytes)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    serialWrite_i iPort, iByte
+    serialWrite_i iPort, SBytes
+    ```
 
 ### Initialization
 

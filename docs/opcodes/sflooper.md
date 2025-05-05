@@ -9,10 +9,17 @@ time-varying crossfade looping.
 Similar to _sfplay_. Unlike that opcode, though, it ignores the looping points set in the SF2 file and substitutes them for a user-defined crossfade loop. It is a cross between [sfplay](../opcodes/sfplay.md) and [flooper2](../opcodes/flooper2.md). In order to understand the usage of these opcodes, the user must have some knowledge of the SF2  format, so a brief description of this format can be found in the [SoundFont2 File Format](../siggen/sample.md) section.
 
 ## Syntax
-``` csound-orc
-ar1, ar2 sflooper ivel, inotenum, kamp, kpitch, ipreindex, kloopstart, \
-                  kloopend, kcrossfade [, istart, imode, ifenv, iskip, iflag]
-```
+=== "Modern"
+    ``` csound-orc
+    ar1, ar2 = sflooper(ivel, inotenum, kamp, kpitch, ipreindex, kloopstart, \
+                        kloopend, kcrossfade [, istart, imode, ifenv, iskip, iflag])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar1, ar2 sflooper ivel, inotenum, kamp, kpitch, ipreindex, kloopstart, \
+                      kloopend, kcrossfade [, istart, imode, ifenv, iskip, iflag]
+    ```
 
 ### Initialization
 

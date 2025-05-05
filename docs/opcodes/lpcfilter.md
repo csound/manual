@@ -8,10 +8,17 @@ Streaming linear prediction all-pole filter whose coefficients are obtained from
 Two versions exist, one taking input from an audio signal, and the other from a function table.
 
 ## Syntax
-``` csound-orc
-ares lpcfilter asig, asrc, kflg, kprd, isiz, iord [, iwin]
-ares lpcfilter asig, koff, kflg, ifn, isiz, iord [, iwin]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = lpcfilter(asig, asrc, kflg, kprd, isiz, iord [, iwin])
+    ares = lpcfilter(asig, koff, kflg, ifn, isiz, iord [, iwin])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares lpcfilter asig, asrc, kflg, kprd, isiz, iord [, iwin]
+    ares lpcfilter asig, koff, kflg, ifn, isiz, iord [, iwin]
+    ```
 
 ### Initialization
 

@@ -6,9 +6,15 @@ category:Instrument Control:Sensing and Control
 Sets the playback position of the current score performance to a given position.
 
 ## Syntax
-``` csound-orc
-setscorepos ipos
-```
+=== "Modern"
+    ``` csound-orc
+    setscorepos(ipos)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    setscorepos ipos
+    ```
 
 ### Initialization
 

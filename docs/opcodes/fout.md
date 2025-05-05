@@ -6,10 +6,17 @@ category:Signal I/O:File I/O
 Outputs a-rate signals to a specified file of an arbitrary number of channels.
 
 ## Syntax
-``` csound-orc
-fout ifilename, iformat, aout1 [, aout2, aout3,...,aoutN]
-fout ifilename, iformat, array[]
-```
+=== "Modern"
+    ``` csound-orc
+    fout(ifilename, iformat, aout1 [, aout2, aout3,...,aoutN])
+    fout(ifilename, iformat, array[])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fout ifilename, iformat, aout1 [, aout2, aout3,...,aoutN]
+    fout ifilename, iformat, array[]
+    ```
 
 ### Initialization
 

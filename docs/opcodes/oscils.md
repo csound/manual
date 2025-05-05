@@ -8,9 +8,15 @@ A simple, fast sine oscillator.
 It uses only one multiply, and two add operations to generate one sample of output, and does not require a function table.
 
 ## Syntax
-``` csound-orc
-ares oscils iamp, icps, iphs [, iflg]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = oscils(iamp, icps, iphs [, iflg])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares oscils iamp, icps, iphs [, iflg]
+    ```
 
 ### Initialization
 

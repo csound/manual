@@ -8,9 +8,15 @@ Physical model of the plucked string.
 It has control over the pluck point, the pickup point and the filter. Based on the Karplus-Strong algorithm.
 
 ## Syntax
-``` csound-orc
-ares wgpluck2 iplk, kamp, icps, kpick, krefl
-```
+=== "Modern"
+    ``` csound-orc
+    ares = wgpluck2(iplk, kamp, icps, kpick, krefl)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares wgpluck2 iplk, kamp, icps, kpick, krefl
+    ```
 
 ### Initialization
 

@@ -6,9 +6,15 @@ category:Signal Modifiers:Special Effects
 A user controlled flanger.
 
 ## Syntax
-``` csound-orc
-ares flanger asig, adel, kfeedback [, imaxd]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = flanger(asig, adel, kfeedback [, imaxd])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares flanger asig, adel, kfeedback [, imaxd]
+    ```
 
 ### Initialization
 

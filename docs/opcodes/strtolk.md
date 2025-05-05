@@ -12,10 +12,17 @@ It is also possible to pass an strset index or a string p-field from the score i
 > If a k-rate index variable is used, it should be valid at i-time as well.
 
 ## Syntax
-``` csound-orc
-kr strtolk Sstr
-kr strtolk kndx
-```
+=== "Modern"
+    ``` csound-orc
+    kr = strtolk(Sstr)
+    kr = strtolk(kndx)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kr strtolk Sstr
+    kr strtolk kndx
+    ```
 
 _strtolk_ can parse numbers in decimal, octal (prefixed by 0), and hexadecimal (with a prefix of 0x) format.
 

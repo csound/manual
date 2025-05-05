@@ -8,9 +8,15 @@ Momentary, Integrated and Short-Term Loudness meter in LUFS.
 The opcodes performs an analysis of input audio according to ITU-R BS.1770-4 recommendation.
 
 ## Syntax
-``` csound-orc
-kmom, kint, kshort lufs kreset, ain1 [, ain2]
-```
+=== "Modern"
+    ``` csound-orc
+    kmom, kint, kshort = lufs(kreset, ain1 [, ain2])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kmom, kint, kshort lufs kreset, ain1 [, ain2]
+    ```
 
 ### Performance
 

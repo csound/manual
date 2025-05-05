@@ -6,9 +6,15 @@ category:Signal Generators:FM Synthesis
 A basic frequency modulated oscillator.
 
 ## Syntax
-``` csound-orc
-ares foscil xamp, kcps, xcar, xmod, kndx [, ifn , iphs]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = foscil(xamp, kcps, xcar, xmod, kndx [, ifn , iphs])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares foscil xamp, kcps, xcar, xmod, kndx [, ifn , iphs]
+    ```
 
 ### Initialization
 

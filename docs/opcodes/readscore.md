@@ -8,9 +8,15 @@ Read, preprocess and schedule a score from an input string.
 Readscore will issue one or more score events. It can handle strings in the same conditions as the standard score, including preprocessing (carry, sort, ramp, etc). Multi-line strings are accepted, using {{  }} to enclose the string.
 
 ## Syntax
-``` csound-orc
-readscore Sin
-```
+=== "Modern"
+    ``` csound-orc
+    readscore(Sin)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    readscore Sin
+    ```
 
 ### Initialization
 

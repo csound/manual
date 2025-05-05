@@ -10,9 +10,15 @@ Reads quad audio data from an external device or stream.
 > This opcode is designed to be used only with orchestras that have nchnls_i=4. Doing so with orchestras with nchnls_i &gt; 4 will cause incorrect audio input.
 
 ## Syntax
-``` csound-orc
-ar1, ar2,  ar3, a4 inq
-```
+=== "Modern"
+    ``` csound-orc
+    ar1, ar2,  ar3, a4 = inq()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar1, ar2,  ar3, a4 inq
+    ```
 
 ### Performance
 

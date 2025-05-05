@@ -8,9 +8,15 @@ Generates static 3d binaural audio for headphones using a Woodworth based spheri
 This opcode takes a source signal and spatialises it in the 3 dimensional space around a listener using head related transfer function (HRTF) based filters. It produces a static output (azimuth and elevation parameters are i-rate), because a static source allows much more efficient processing than [hrtfmove](../opcodes/hrtfmove.md) and [hrtfmove2](../opcodes/hrtfmove2.md),.
 
 ## Syntax
-``` csound-orc
-aleft, aright hrtfstat asrc, iAz, iElev, ifilel, ifiler [,iradius, isr]
-```
+=== "Modern"
+    ``` csound-orc
+    aleft, aright = hrtfstat(asrc, iAz, iElev, ifilel, ifiler [,iradius, isr])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aleft, aright hrtfstat asrc, iAz, iElev, ifilel, ifiler [,iradius, isr]
+    ```
 
 ### Initialization
 

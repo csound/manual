@@ -6,9 +6,15 @@ category:Vectorial:Limiting and Wrapping
 'Reflects' elements of vectorial control signals on thresholds.
 
 ## Syntax
-``` csound-orc
-vmirror ifn, kmin, kmax, ielements
-```
+=== "Modern"
+    ``` csound-orc
+    vmirror(ifn, kmin, kmax, ielements)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vmirror ifn, kmin, kmax, ielements
+    ```
 
 ### Initialization
 

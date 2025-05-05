@@ -6,9 +6,15 @@ category:Signal Modifiers:Delay
 Delays an input signal by one sample.
 
 ## Syntax
-``` csound-orc
-ares delay1 asig [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = delay1(asig [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares delay1 asig [, iskip]
+    ```
 
 ### Initialization
 

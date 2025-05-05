@@ -8,9 +8,15 @@ Extract a substring of the source string.
 _strsub_ runs at init time only.
 
 ## Syntax
-``` csound-orc
-Sdst strsub Ssrc [, istart[, iend]]
-```
+=== "Modern"
+    ``` csound-orc
+    Sdst = strsub(Ssrc [, istart[, iend]])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    Sdst strsub Ssrc [, istart[, iend]]
+    ```
 
 ### Initialization
 

@@ -6,10 +6,17 @@ category:Signal Modifiers:Reverberation
 Three different nested all-pass filters, useful for implementing reverbs.
 
 ## Syntax
-``` csound-orc
-ares nestedap asig, imode, imaxdel, idel1, igain1 [, idel2] [, igain2] \
-              [, idel3] [, igain3] [, istor]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = nestedap(asig, imode, imaxdel, idel1, igain1 [, idel2] [, igain2] \
+                    [, idel3] [, igain3] [, istor])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares nestedap asig, imode, imaxdel, idel1, igain1 [, idel2] [, igain2] \
+                  [, idel3] [, igain3] [, istor]
+    ```
 
 ### Initialization
 

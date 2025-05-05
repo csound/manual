@@ -6,9 +6,15 @@ category:Table Control:Read/Write Operations
 Plays-back control-rate signals on trigger-temporization basis.
 
 ## Syntax
-``` csound-orc
-tabplay ktrig, knumtics, kfn, kout1 [,kout2,..., koutN]
-```
+=== "Modern"
+    ``` csound-orc
+    tabplay(ktrig, knumtics, kfn, kout1 [,kout2,..., koutN])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    tabplay ktrig, knumtics, kfn, kout1 [,kout2,..., koutN]
+    ```
 
 ### Performance
 

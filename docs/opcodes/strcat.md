@@ -8,9 +8,15 @@ Concatenate two strings and store the result in a variable.
 _strcat_ runs at i-time only. It is allowed for any of the input arguments to be the same as the output variable.
 
 ## Syntax
-``` csound-orc
-Sdst strcat Ssrc1, Ssrc2
-```
+=== "Modern"
+    ``` csound-orc
+    Sdst = strcat(Ssrc1, Ssrc2)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    Sdst strcat Ssrc1, Ssrc2
+    ```
 
 ## Examples
 

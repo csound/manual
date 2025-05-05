@@ -6,9 +6,15 @@ category:Instrument Control:Sensing and Control
 Trigger Metronome with Swing and Accents.
 
 ## Syntax
-``` csound-orc
-ktrig  metro2  kfreq, kswing [, iamp, initphase]
-```
+=== "Modern"
+    ``` csound-orc
+    ktrig  = metro2( kfreq, kswing [, iamp, initphase])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ktrig  metro2  kfreq, kswing [, iamp, initphase]
+    ```
 
 ### Initialization
 

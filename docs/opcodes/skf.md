@@ -8,9 +8,15 @@ Sallen-Key filter.
 _skf_ is an digital implementation of a linear Sallen-Key analogue filter, which is a second-order filter with either lowpass or highpass responses.
 
 ## Syntax
-``` csound-orc
-asig skf asig, xcf, xK[, ihp, istor]
-```
+=== "Modern"
+    ``` csound-orc
+    asig = skf(asig, xcf, xK[, ihp, istor])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig skf asig, xcf, xK[, ihp, istor]
+    ```
 
 ### Initialization
 

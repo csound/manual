@@ -6,10 +6,17 @@ category:Mathematical Operations:Comparators and Accumulators
 Zeroes a list of audio signals.
 
 ## Syntax
-``` csound-orc
-clear avar1 [, avar2] [, avar3] [...]
-clear avar[]
-```
+=== "Modern"
+    ``` csound-orc
+    clear(avar1 [, avar2] [, avar3] [...])
+    clear(avar[])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    clear avar1 [, avar2] [, avar3] [...]
+    clear avar[]
+    ```
 
 ### Performance
 

@@ -8,9 +8,15 @@ Set mask index for a specific mask parameter of a running _partikkel_ instance.
 _partikkelset_ is an opcode for setting the [partikkel](../opcodes/partikkel.md) mask index for a specific parameter. Used together with _partikkelget_, it can be used to synchronize partikkel masking between several running instances of the _ partikkel_ opcode. It can also be used to set the internal mask index basaed on other processes, for example to create more complex masking patterns than is available with the regular grain masking system.
 
 ## Syntax
-``` csound-orc
-partikkelset kparameterindex, kmaskindex, iopcode_id
-```
+=== "Modern"
+    ``` csound-orc
+    partikkelset(kparameterindex, kmaskindex, iopcode_id)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    partikkelset kparameterindex, kmaskindex, iopcode_id
+    ```
 
 ### Initialization
 

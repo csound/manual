@@ -10,9 +10,15 @@ Deprecated. Writes audio output to a disk file.
 > The usage of _soundout_ is discouraged. Please use  [fout](../opcodes/fout.md) instead.
 
 ## Syntax
-``` csound-orc
-soundout asig1, ifilcod [, iformat]
-```
+=== "Modern"
+    ``` csound-orc
+    soundout(asig1, ifilcod [, iformat])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    soundout asig1, ifilcod [, iformat]
+    ```
 
 ### Initialization
 

@@ -6,9 +6,15 @@ category:Signal I/O:Soundfile Queries
 Returns the length of an MP3 sound file.
 
 ## Syntax
-``` csound-orc
-ir mp3len ifilcod
-```
+=== "Modern"
+    ``` csound-orc
+    ir = mp3len(ifilcod)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ir mp3len ifilcod
+    ```
 
 ### Initialization
 

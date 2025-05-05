@@ -6,13 +6,23 @@ category:Signal Generators:Sample Playback
 Read sampled sound (up to 16 channels) from a table, with optional sustain and release looping.
 
 ## Syntax
-``` csound-orc
-ar1 [, ar2, ar3, ar4, ar5, ar6, ar7, ar8, ar9, ar10, ar11, ar12, ar13, ar14, \
-ar15, ar16] loscilx xamp, kcps, ifn \
-                    [, iwsize, ibas, istrt, imod, ibeg, iend]
-ar[] loscilx xamp, kcps, ifn \
-             [, iwsize, ibas, istrt, imod, ibeg, iend]
-```
+=== "Modern"
+    ``` csound-orc
+    ar1 [, ar2, ar3, ar4, ar5, ar6, ar7, ar8, ar9, ar10, ar11, ar12, ar13, ar14, \
+    ar15, ar16] = loscilx(xamp, kcps, ifn \
+                          [, iwsize, ibas, istrt, imod, ibeg, iend])
+    ar[] = loscilx(xamp, kcps, ifn \
+                   [, iwsize, ibas, istrt, imod, ibeg, iend])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar1 [, ar2, ar3, ar4, ar5, ar6, ar7, ar8, ar9, ar10, ar11, ar12, ar13, ar14, \
+    ar15, ar16] loscilx xamp, kcps, ifn \
+                        [, iwsize, ibas, istrt, imod, ibeg, iend]
+    ar[] loscilx xamp, kcps, ifn \
+                 [, iwsize, ibas, istrt, imod, ibeg, iend]
+    ```
 
 ### Initialization
 

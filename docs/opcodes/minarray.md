@@ -6,9 +6,15 @@ category:Array Opcodes
 Returns the minimum value in a k-rate array, and optional its index.
 
 ## Syntax
-``` csound-orc
-kmin [,kindx] minarray karray
-```
+=== "Modern"
+    ``` csound-orc
+    kmin [,kindx] = minarray(karray)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kmin [,kindx] minarray karray
+    ```
 
 ### Performance
 

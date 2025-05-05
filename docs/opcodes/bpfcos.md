@@ -10,14 +10,25 @@ Plugin opcode in emugens.
 Given an x value and a series of pairs (x, y), it returns the corresponding y value in the half cosine curve defined by the pairs. It works both at i- and k- time
 
 ## Syntax
-``` csound-orc
-ky bpfcos kx, kx1, ky1, kx2, ..., kxn, kyn
-kys[] bpfcos kxs[], kx1, ky1, kx2, ..., kxn, kyn
-ky bpfcos kx, kxs[], kys[]
-ky bpfcos kx, ixs[], iys[]
-ky, kz bpfcos kx, kxs[], kys[], kzs[]
-ky, kz bpfcos kx, ixs[], iys[], izs[]
-```
+=== "Modern"
+    ``` csound-orc
+    ky = bpfcos(kx, kx1, ky1, kx2, ..., kxn, kyn)
+    kys[] = bpfcos(kxs[], kx1, ky1, kx2, ..., kxn, kyn)
+    ky = bpfcos(kx, kxs[], kys[])
+    ky = bpfcos(kx, ixs[], iys[])
+    ky, kz = bpfcos(kx, kxs[], kys[], kzs[])
+    ky, kz = bpfcos(kx, ixs[], iys[], izs[])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ky bpfcos kx, kx1, ky1, kx2, ..., kxn, kyn
+    kys[] bpfcos kxs[], kx1, ky1, kx2, ..., kxn, kyn
+    ky bpfcos kx, kxs[], kys[]
+    ky bpfcos kx, ixs[], iys[]
+    ky, kz bpfcos kx, kxs[], kys[], kzs[]
+    ky, kz bpfcos kx, ixs[], iys[], izs[]
+    ```
 
 ### Performance
 

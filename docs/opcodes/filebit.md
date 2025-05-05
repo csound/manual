@@ -6,9 +6,15 @@ category:Signal I/O:Soundfile Queries
 Returns the number of bits in each sample in a sound file.
 
 ## Syntax
-``` csound-orc
-ir filebit ifilcod [, iallowraw]
-```
+=== "Modern"
+    ``` csound-orc
+    ir = filebit(ifilcod [, iallowraw])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ir filebit ifilcod [, iallowraw]
+    ```
 
 ### Initialization
 

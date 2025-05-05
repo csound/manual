@@ -6,11 +6,19 @@ category:Signal I/O:Signal Input
 Reads a k-rate or i-rate signal or string from a user-defined channel.
 
 ## Syntax
-``` csound-orc
-ivalue invalue "channel name"
-kvalue invalue "channel name"
-Sname invalue "channel name"
-```
+=== "Modern"
+    ``` csound-orc
+    ivalue = invalue("channel name")
+    kvalue = invalue("channel name")
+    Sname = invalue("channel name")
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ivalue invalue "channel name"
+    kvalue invalue "channel name"
+    Sname invalue "channel name"
+    ```
 
 ### Performance
 

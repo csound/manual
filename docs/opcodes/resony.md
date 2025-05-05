@@ -7,9 +7,15 @@ A bank of second-order bandpass filters, connected in parallel.
 
 
 ## Syntax
-``` csound-orc
-ares resony asig, kbf, kbw, inum, ksep [, isepmode] [, iscl] [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = resony(asig, kbf, kbw, inum, ksep [, isepmode] [, iscl] [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares resony asig, kbf, kbw, inum, ksep [, isepmode] [, iscl] [, iskip]
+    ```
 
 ### Initialization
 

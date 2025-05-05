@@ -8,9 +8,15 @@ Fast table opcodes.
 Faster than [table](../opcodes/table.md) because it does not allow wrap-around and limit. Has been implemented in order to provide fast access to arrays.
 
 ## Syntax
-``` csound-orc
-ir tab_i indx, ifn[, ixmode]
-```
+=== "Modern"
+    ``` csound-orc
+    ir = tab_i(indx, ifn[, ixmode])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ir tab_i indx, ifn[, ixmode]
+    ```
 
 ### Initialization
 

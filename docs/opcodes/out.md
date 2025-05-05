@@ -6,10 +6,17 @@ category:Signal I/O:Signal Output
 Writes audio data to an external device or stream, either from audio variables or from an audio array.
 
 ## Syntax
-``` csound-orc
-out asig1[, asig2,....]
-out aarray
-```
+=== "Modern"
+    ``` csound-orc
+    out(asig1[, asig2,....])
+    out(aarray)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    out asig1[, asig2,....]
+    out aarray
+    ```
 
 ### Performance
 

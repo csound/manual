@@ -8,9 +8,15 @@ A filter with pronounced resonance and controllable decay time.
 Filters the incoming signal with the specified resonance frequency and decay time. This can be used to overlay a specific resonance on to an incoming sound or to model short bursts of sinusoids at a desired frequency. With a sufficiently long decay time it can be used as a sinusoidal oscillator.
 
 ## Syntax
-``` csound-orc
-aout mvmfilter ain, xfreq, xTau [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    aout = mvmfilter(ain, xfreq, xTau [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout mvmfilter ain, xfreq, xTau [, iskip]
+    ```
 
 ### Initialization
 

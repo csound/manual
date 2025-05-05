@@ -12,9 +12,15 @@ This opcode allows for time and frequency-independent scaling. Time is controlle
 _mincer_ will also scale pitch, independently of frequency, using a transposition factor (k-rate).
 
 ## Syntax
-``` csound-orc
-asig mincer atimpt, kamp, kpitch, ktab, klock [ ,ifftsize, idecim]
-```
+=== "Modern"
+    ``` csound-orc
+    asig = mincer(atimpt, kamp, kpitch, ktab, klock [ ,ifftsize, idecim])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig mincer atimpt, kamp, kpitch, ktab, klock [ ,ifftsize, idecim]
+    ```
 
 ### Initialization
 

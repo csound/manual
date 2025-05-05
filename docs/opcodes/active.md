@@ -6,11 +6,19 @@ category:Instrument Control:Realtime Performance Control
 Returns the number of active instances of an instrument with options to ignore releasing instances.
 
 ## Syntax
-``` csound-orc
-ir active insnum [,iopt [,inorel]]
-ir active Sinsname [,iopt [,inorel]]
-kres active kinsnum [,iopt [,inorel]]
-```
+=== "Modern"
+    ``` csound-orc
+    ir = active(insnum [,iopt [,inorel]])
+    ir = active(Sinsname [,iopt [,inorel]])
+    kres = active(kinsnum [,iopt [,inorel]])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ir active insnum [,iopt [,inorel]]
+    ir active Sinsname [,iopt [,inorel]]
+    kres active kinsnum [,iopt [,inorel]]
+    ```
 
 ### Initialization
 

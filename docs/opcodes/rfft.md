@@ -8,9 +8,15 @@ Fast Fourier Transform of a real-value array.
 Applies a forward Fast Fourier Transform to a real-value input 1-dimensional array. The output is another array containing the transform, non-redundant, non-negative spectrum only. If the input array is power-of-two, the output array size will match the input size, with the first two points containing 0Hz and Nyquist frequency coefficients. Otherwise, the output will have two extra values (input size + 2), and the the Nyquist coefficient will be placed at kin[input_size] position (kin[1] and kin[input_size+1] will be 0).
 
 ## Syntax
-``` csound-orc
-kout[] rfft kin[]
-```
+=== "Modern"
+    ``` csound-orc
+    kout[] = rfft(kin[])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kout[] rfft kin[]
+    ```
 
 ### Performance
 

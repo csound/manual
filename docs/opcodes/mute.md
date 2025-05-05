@@ -6,10 +6,17 @@ category:Instrument Control:Invocation
 Mutes/unmutes new instances of a given instrument.
 
 ## Syntax
-``` csound-orc
-mute insnum [, iswitch]
-mute "insname" [, iswitch]
-```
+=== "Modern"
+    ``` csound-orc
+    mute(insnum [, iswitch])
+    mute("insname" [, iswitch])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    mute insnum [, iswitch]
+    mute "insname" [, iswitch]
+    ```
 
 ### Initialization
 

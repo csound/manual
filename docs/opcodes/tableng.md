@@ -6,10 +6,17 @@ category:Table Control:Table Queries
 Interrogates a function table for length.
 
 ## Syntax
-``` csound-orc
-ires tableng ifn
-kres tableng kfn
-```
+=== "Modern"
+    ``` csound-orc
+    ires = tableng(ifn)
+    kres = tableng(kfn)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ires tableng ifn
+    kres tableng kfn
+    ```
 
 ### Initialization
 

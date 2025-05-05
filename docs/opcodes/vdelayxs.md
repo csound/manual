@@ -6,9 +6,15 @@ category:Signal Modifiers:Delay
 A stereo variable delay opcode with high quality interpolation.
 
 ## Syntax
-``` csound-orc
-aout1, aout2 vdelayxs ain1, ain2, adl, imd, iws [, ist]
-```
+=== "Modern"
+    ``` csound-orc
+    aout1, aout2 = vdelayxs(ain1, ain2, adl, imd, iws [, ist])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout1, aout2 vdelayxs ain1, ain2, adl, imd, iws [, ist]
+    ```
 
 ### Initialization
 

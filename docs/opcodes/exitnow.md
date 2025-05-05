@@ -8,9 +8,15 @@ Exit Csound as fast as possible, with no cleaning up.
 In Csound4 calls an exit function to leave Csound as fast as possible. On Csound5 and later it exits back to the driving code.
 
 ## Syntax
-``` csound-orc
-exitnow [ivalue]
-```
+=== "Modern"
+    ``` csound-orc
+    exitnow([ivalue])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    exitnow [ivalue]
+    ```
 
 Initialisation
 

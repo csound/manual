@@ -8,9 +8,15 @@ category:Signal Modifiers:Reverberation
 It has a feedback matrix based upon physical modeling scattering junction of 8 lossless waveguides of equal characteristic impedance. Based on Csound orchestra version by Sean Costello.
 
 ## Syntax
-``` csound-orc
-aoutL, aoutR reverbsc ainL, ainR, kfblvl, kfco[, israte[, ipitchm[, iskip]]]
-```
+=== "Modern"
+    ``` csound-orc
+    aoutL, aoutR = reverbsc(ainL, ainR, kfblvl, kfco[, israte[, ipitchm[, iskip]]])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aoutL, aoutR reverbsc ainL, ainR, kfblvl, kfco[, israte[, ipitchm[, iskip]]]
+    ```
 
 ### Initialization
 

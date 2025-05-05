@@ -12,11 +12,19 @@ _granule_ is a Csound unit generator which employs a wavetable as input to produ
 The characteristics of the synthesis are controlled by 22 parameters. _xamp_ is the amplitude of the output and it can be either audio rate or control rate variable.
 
 ## Syntax
-``` csound-orc
-ares granule xamp, ivoice, iratio, imode, ithd, ifn, ipshift, igskip, \
-             igskip_os, ilength, kgap, igap_os, kgsize, igsize_os, iatt, idec \
-             [, iseed] [, ipitch1] [, ipitch2] [, ipitch3] [, ipitch4] [, ifnenv]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = granule(xamp, ivoice, iratio, imode, ithd, ifn, ipshift, igskip, \
+                   igskip_os, ilength, kgap, igap_os, kgsize, igsize_os, iatt, idec \
+                   [, iseed] [, ipitch1] [, ipitch2] [, ipitch3] [, ipitch4] [, ifnenv])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares granule xamp, ivoice, iratio, imode, ithd, ifn, ipshift, igskip, \
+                 igskip_os, ilength, kgap, igap_os, kgsize, igsize_os, iatt, idec \
+                 [, iseed] [, ipitch1] [, ipitch2] [, ipitch3] [, ipitch4] [, ifnenv]
+    ```
 
 ### Initialization
 

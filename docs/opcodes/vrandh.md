@@ -8,10 +8,17 @@ Generates a vector of random numbers stored into a table, holding the values for
 Generates a sort of 'vectorial band-limited noise'.
 
 ## Syntax
-``` csound-orc
-vrandh ifn,  krange, kcps, ielements [, idstoffset] [, iseed] \
-       [, isize] [, ioffset]
-```
+=== "Modern"
+    ``` csound-orc
+    vrandh(ifn,  krange, kcps, ielements [, idstoffset] [, iseed] \
+           [, isize] [, ioffset])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vrandh ifn,  krange, kcps, ielements [, idstoffset] [, iseed] \
+           [, isize] [, ioffset]
+    ```
 
 ### Initialization
 

@@ -6,9 +6,15 @@ category:Signal Modifiers:Amplitude Modifiers
 Adjusts the amplitude audio signal according to a root-mean-square value.
 
 ## Syntax
-``` csound-orc
-ares gain asig, krms [, ihp] [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = gain(asig, krms [, ihp] [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares gain asig, krms [, ihp] [, iskip]
+    ```
 
 ### Initialization
 

@@ -6,9 +6,15 @@ category:Real-time MIDI:Generic I/O
 Sends a generic MIDI message to the MIDI OUT port.
 
 ## Syntax
-``` csound-orc
-midiout kstatus, kchan, kdata1, kdata2
-```
+=== "Modern"
+    ``` csound-orc
+    midiout(kstatus, kchan, kdata1, kdata2)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    midiout kstatus, kchan, kdata1, kdata2
+    ```
 
 ### Performance
 

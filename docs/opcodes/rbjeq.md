@@ -6,9 +6,15 @@ category:Signal Modifiers:Specialized Filters
 Parametric equalizer and filter opcode with 7 filter types, based on algorithm by Robert Bristow-Johnson.
 
 ## Syntax
-``` csound-orc
-ar rbjeq asig, kfco, klvl, kQ, kS[, imode]
-```
+=== "Modern"
+    ``` csound-orc
+    ar = rbjeq(asig, kfco, klvl, kQ, kS[, imode])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar rbjeq asig, kfco, klvl, kQ, kS[, imode]
+    ```
 
 ### Initialization
 

@@ -12,9 +12,15 @@ Instruments must be activated in the same order as they are defined.
 The alwayson opcode is designed to simplify the definition of re-usable orchestras with signal processing or effects chains and networks.
 
 ## Syntax
-``` csound-orc
-alwayson Tinstrument [, p4, ..., pn]
-```
+=== "Modern"
+    ``` csound-orc
+    alwayson(Tinstrument [, p4, ..., pn])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    alwayson Tinstrument [, p4, ..., pn]
+    ```
 
 ### Initialization
 

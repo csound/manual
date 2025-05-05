@@ -10,9 +10,15 @@ Plugin opcode in mixer
 The actual sending of the signal to the buss is performed by the [MixerSend](../opcodes/mixersend.md) opcode.
 
 ## Syntax
-``` csound-orc
-kgain MixerGetLevel isend, ibuss
-```
+=== "Modern"
+    ``` csound-orc
+    kgain = MixerGetLevel(isend, ibuss)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kgain MixerGetLevel isend, ibuss
+    ```
 
 ### Initialization
 

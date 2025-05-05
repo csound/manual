@@ -12,10 +12,17 @@ It is also possible to pass an strset index or a string p-field from the score i
 > If a k-rate index variable is used, it should be valid at i-time as well.
 
 ## Syntax
-``` csound-orc
-kr strtodk Sstr
-kr strtodk kndx
-```
+=== "Modern"
+    ``` csound-orc
+    kr = strtodk(Sstr)
+    kr = strtodk(kndx)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kr strtodk Sstr
+    kr strtodk kndx
+    ```
 
 ### Performance
 

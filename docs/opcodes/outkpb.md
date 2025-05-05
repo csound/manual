@@ -6,9 +6,15 @@ category:Real-time MIDI:Output
 Sends MIDI pitch-bend messages at k-rate.
 
 ## Syntax
-``` csound-orc
-outkpb kchn, kvalue, kmin, kmax
-```
+=== "Modern"
+    ``` csound-orc
+    outkpb(kchn, kvalue, kmin, kmax)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    outkpb kchn, kvalue, kmin, kmax
+    ```
 
 ### Performance
 

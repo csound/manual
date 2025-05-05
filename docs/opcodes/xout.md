@@ -15,9 +15,15 @@ The types of input and output variables are defined by the parameters _intypes_ 
 > * These opcodes actually run only at i-time. Performance time copying is done by the user opcode call. This means that skipping _xin_ or _xout_ with [kgoto](../opcodes/kgoto.md) has no effect, while skipping with [igoto](../opcodes/igoto.md) affects both init and performance time operation.
 
 ## Syntax
-``` csound-orc
-xout xoutarg1 [, xoutarg2] ... [, xoutargN]
-```
+=== "Modern"
+    ``` csound-orc
+    xout(xoutarg1 [, xoutarg2] ... [, xoutargN])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    xout xoutarg1 [, xoutarg2] ... [, xoutargN]
+    ```
 
 ### Performance
 

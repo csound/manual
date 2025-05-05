@@ -8,9 +8,15 @@ Set  a string variable at initialization time to the value stored in [strset](..
 If there is no string defined for the index, the variable is set to an empty string.
 
 ## Syntax
-``` csound-orc
-Sdst strget indx
-```
+=== "Modern"
+    ``` csound-orc
+    Sdst = strget(indx)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    Sdst strget indx
+    ```
 
 ### Initialization
 

@@ -6,10 +6,17 @@ category:Real-time MIDI:Input
 Get the current value of a MIDI channel controller and optionally map it onto specified range.
 
 ## Syntax
-``` csound-orc
-ival chanctrl ichnl, ictlno [, ilow] [, ihigh]
-kval chanctrl ichnl, ictlno [, ilow] [, ihigh]
-```
+=== "Modern"
+    ``` csound-orc
+    ival = chanctrl(ichnl, ictlno [, ilow] [, ihigh])
+    kval = chanctrl(ichnl, ictlno [, ilow] [, ihigh])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ival chanctrl ichnl, ictlno [, ilow] [, ihigh]
+    kval chanctrl ichnl, ictlno [, ilow] [, ihigh]
+    ```
 
 ### Initialization
 

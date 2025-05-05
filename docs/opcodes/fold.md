@@ -6,9 +6,15 @@ category:Signal Modifiers:Sample Level Operators
 Adds artificial foldover to an audio signal.
 
 ## Syntax
-``` csound-orc
-ares fold asig, kincr
-```
+=== "Modern"
+    ``` csound-orc
+    ares = fold(asig, kincr)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares fold asig, kincr
+    ```
 
 ### Performance
 

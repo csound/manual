@@ -8,9 +8,15 @@ Generates a set of impulses.
 The impulses have amplitude _kamp_ separated by _kintvl_ seconds (or samples if _kintvl_ is negative).  The first impulse is generated after a delay of _ioffset_ seconds.
 
 ## Syntax
-``` csound-orc
-ares mpulse kamp, kintvl [, ioffset]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = mpulse(kamp, kintvl [, ioffset])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares mpulse kamp, kintvl [, ioffset]
+    ```
 
 ### Initialization
 

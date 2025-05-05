@@ -6,9 +6,15 @@ category:Table Control:Read/Write Operations
 Mixes two tables.
 
 ## Syntax
-``` csound-orc
-tablemix kdft, kdoff, klen, ks1ft, ks1off, ks1g, ks2ft, ks2off, ks2g
-```
+=== "Modern"
+    ``` csound-orc
+    tablemix(kdft, kdoff, klen, ks1ft, ks1off, ks1g, ks2ft, ks2off, ks2g)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    tablemix kdft, kdoff, klen, ks1ft, ks1off, ks1g, ks2ft, ks2off, ks2g
+    ```
 
 ### Performance
 

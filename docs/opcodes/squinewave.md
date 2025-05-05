@@ -12,10 +12,17 @@ At higher frequency, the minimum sweep rate takes over, so over a certain pitch 
 Hardsync (a very quick sweep to phase=0) is supported, and a sync signal is output once per cycle.
 
 ## Syntax
-``` csound-orc
-aout [, asyncout] squinewave acps, aClip, aSkew, asyncin [, iMinSweep] [, iphase]
-aout [, asyncout] squinewave acps, aClip, aSkew [, ksyncin] [, iMinSweep] [, iphase]
-```
+=== "Modern"
+    ``` csound-orc
+    aout [, asyncout] = squinewave(acps, aClip, aSkew, asyncin [, iMinSweep] [, iphase])
+    aout [, asyncout] = squinewave(acps, aClip, aSkew [, ksyncin] [, iMinSweep] [, iphase])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout [, asyncout] squinewave acps, aClip, aSkew, asyncin [, iMinSweep] [, iphase]
+    aout [, asyncout] squinewave acps, aClip, aSkew [, ksyncin] [, iMinSweep] [, iphase]
+    ```
 
 ### Initialization
 

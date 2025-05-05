@@ -8,9 +8,15 @@ Open a serial port for arduino.
 Plugin opcode in serial.
 
 ## Syntax
-``` csound-orc
-iPort serialBegin SPortName [, ibaudRate]
-```
+=== "Modern"
+    ``` csound-orc
+    iPort = serialBegin(SPortName [, ibaudRate])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    iPort serialBegin SPortName [, ibaudRate]
+    ```
 
 ### Initialization
 

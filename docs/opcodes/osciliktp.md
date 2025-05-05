@@ -8,9 +8,15 @@ A linearly interpolated oscillator that allows allows phase modulation.
 _osciliktp_ allows phase modulation (which is actually implemented as k-rate frequency modulation, by differentiating phase input). The disadvantage is that there is no amplitude control, and frequency can be varied only at the control-rate. This opcode can be faster or slower than [oscilikt](../opcodes/oscilikt.md), depending on the control-rate.
 
 ## Syntax
-``` csound-orc
-ares osciliktp kcps, kfn, kphs [, istor]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = osciliktp(kcps, kfn, kphs [, istor])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares osciliktp kcps, kfn, kphs [, istor]
+    ```
 
 ### Initialization
 

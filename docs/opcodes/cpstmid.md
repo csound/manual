@@ -8,9 +8,15 @@ Get a MIDI note number (allows customized micro-tuning scales).
 This unit is similar to [cpsmidi](../opcodes/cpsmidi.md), but allows fully customized micro-tuning scales.
 
 ## Syntax
-``` csound-orc
-icps cpstmid ifn
-```
+=== "Modern"
+    ``` csound-orc
+    icps = cpstmid(ifn)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    icps cpstmid ifn
+    ```
 
 ### Initialization
 

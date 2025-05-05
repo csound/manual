@@ -6,9 +6,15 @@ category:Spectral Processing:Streaming
 Resynthesize using a fast oscillator-bank.
 
 ## Syntax
-``` csound-orc
-ares pvsadsyn fsrc, inoscs, kfmod [, ibinoffset] [, ibinincr] [, iinit]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = pvsadsyn(fsrc, inoscs, kfmod [, ibinoffset] [, ibinincr] [, iinit])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares pvsadsyn fsrc, inoscs, kfmod [, ibinoffset] [, ibinincr] [, iinit]
+    ```
 
 ### Initialization
 

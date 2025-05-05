@@ -6,9 +6,15 @@ category:Vectorial:Envelopes
 Vectorial envelope generator. Generate linear vectorial segments.
 
 ## Syntax
-``` csound-orc
-vlinseg ifnout, ielements, ifn1, idur1, ifn2 [, idur2, ifn3 [...]]
-```
+=== "Modern"
+    ``` csound-orc
+    vlinseg(ifnout, ielements, ifn1, idur1, ifn2 [, idur2, ifn3 [...]])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vlinseg ifnout, ielements, ifn1, idur1, ifn2 [, idur2, ifn3 [...]]
+    ```
 
 ### Initialization
 

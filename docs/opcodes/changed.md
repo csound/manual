@@ -8,9 +8,15 @@ k-rate signal change detector.
 This opcode outputs a trigger signal that informs when any one of its k-rate arguments has changed. Useful with valuator widgets or MIDI controllers.
 
 ## Syntax
-``` csound-orc
-ktrig changed kvar1 [, kvar2,..., kvarN]
-```
+=== "Modern"
+    ``` csound-orc
+    ktrig = changed(kvar1 [, kvar2,..., kvarN])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ktrig changed kvar1 [, kvar2,..., kvarN]
+    ```
 
 ### Performance
 

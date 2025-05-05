@@ -6,9 +6,15 @@ category:Signal I/O:File I/O
 Read signals from a file at k-rate.
 
 ## Syntax
-``` csound-orc
-fink ifilename, iskipframes, iformat, kin1 [, kin2] [, kin3] [,...]
-```
+=== "Modern"
+    ``` csound-orc
+    fink(ifilename, iskipframes, iformat, kin1 [, kin2] [, kin3] [,...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fink ifilename, iskipframes, iformat, kin1 [, kin2] [, kin3] [,...]
+    ```
 
 ### Initialization
 

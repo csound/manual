@@ -14,9 +14,15 @@ aout = ---------------------------------------------------------------
 ```
 
 ## Syntax
-``` csound-orc
-ares distort1 asig, kpregain, kpostgain, kshape1, kshape2[, imode]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = distort1(asig, kpregain, kpostgain, kshape1, kshape2[, imode])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares distort1 asig, kpregain, kpostgain, kshape1, kshape2[, imode]
+    ```
 
 ### Initialization
 

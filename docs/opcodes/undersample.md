@@ -6,9 +6,15 @@ category:Signal I/O:Software Bus
 Sets a lower local sampling rate based on an undersampling factor.
 
 ## Syntax
-``` csound-orc
-undersample ifactor [,icvt_in, icvt_out]
-```
+=== "Modern"
+    ``` csound-orc
+    undersample(ifactor [,icvt_in, icvt_out])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    undersample ifactor [,icvt_in, icvt_out]
+    ```
 
 ### Initialization
 

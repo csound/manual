@@ -8,9 +8,15 @@ Gets a given row from a 2-dimensional array as a vector.
 The output is an 1-d array with the contents of the requested row.
 
 ## Syntax
-``` csound-orc
-i/kout[] getrow i/kin[], i/krow
-```
+=== "Modern"
+    ``` csound-orc
+    i/kout[] = getrow(i/kin[], i/krow)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    i/kout[] getrow i/kin[], i/krow
+    ```
 
 ### Initialization
 

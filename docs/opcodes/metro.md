@@ -8,9 +8,15 @@ Trigger Metronome.
 Generate a metronomic signal to be used in any circumstance an isochronous trigger is needed.
 
 ## Syntax
-``` csound-orc
-ktrig  metro  kfreq [, initphase]
-```
+=== "Modern"
+    ``` csound-orc
+    ktrig  = metro( kfreq [, initphase])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ktrig  metro  kfreq [, initphase]
+    ```
 
 ### Initialization
 

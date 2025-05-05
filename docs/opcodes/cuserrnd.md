@@ -6,11 +6,19 @@ category:Signal Generators:Random (Noise) Generators
 Continuous USER-defined-distribution RaNDom generator.
 
 ## Syntax
-``` csound-orc
-aout cuserrnd kmin, kmax, ktableNum
-iout cuserrnd imin, imax, itableNum
-kout cuserrnd kmin, kmax, ktableNum
-```
+=== "Modern"
+    ``` csound-orc
+    aout = cuserrnd(kmin, kmax, ktableNum)
+    iout = cuserrnd(imin, imax, itableNum)
+    kout = cuserrnd(kmin, kmax, ktableNum)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout cuserrnd kmin, kmax, ktableNum
+    iout cuserrnd imin, imax, itableNum
+    kout cuserrnd kmin, kmax, ktableNum
+    ```
 
 ### Initialization
 

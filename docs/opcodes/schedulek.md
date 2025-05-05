@@ -6,11 +6,19 @@ category:Instrument Control:Invocation
 Adds a new score event.
 
 ## Syntax
-``` csound-orc
-schedulek knsnum, kwhen, kdur [, kp4] [, kp5] [...]
-schedulek "insname", kwhen, kdur [, kp4] [, kp5] [...]
-schedulek kPar[]
-```
+=== "Modern"
+    ``` csound-orc
+    schedulek(knsnum, kwhen, kdur [, kp4] [, kp5] [...])
+    schedulek("insname", kwhen, kdur [, kp4] [, kp5] [...])
+    schedulek(kPar[])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    schedulek knsnum, kwhen, kdur [, kp4] [, kp5] [...]
+    schedulek "insname", kwhen, kdur [, kp4] [, kp5] [...]
+    schedulek kPar[]
+    ```
 
 ### Performance
 

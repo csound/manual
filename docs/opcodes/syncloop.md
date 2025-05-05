@@ -8,10 +8,17 @@ Synchronous granular synthesis.
 _syncloop_ is a variation on _syncgrain_, which implements synchronous granular synthesis. _syncloop_ adds loop start and end points and an optional start position. Loop start and end control grain start positions, so the actual grains can go beyond the loop points (if the loop points are not at the extremes of the table), enabling seamless crossfading. For more information on the granular synthesis process, check the [syncgrain](../opcodes/syncgrain.md) manual page.
 
 ## Syntax
-``` csound-orc
-asig syncloop kamp, kfreq, kpitch, kgrsize, kprate, klstart, \
-              klend, ifun1, ifun2, iolaps[,istart, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    asig = syncloop(kamp, kfreq, kpitch, kgrsize, kprate, klstart, \
+                    klend, ifun1, ifun2, iolaps[,istart, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig syncloop kamp, kfreq, kpitch, kgrsize, kprate, klstart, \
+                  klend, ifun1, ifun2, iolaps[,istart, iskip]
+    ```
 
 ### Initialization
 

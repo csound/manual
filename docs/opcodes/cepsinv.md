@@ -6,9 +6,15 @@ category:Array Operations: Cepstrum
 Calculate the inverse cepstrum of an array.
 
 ## Syntax
-``` csound-orc
-kenv cepsinv keps[]
-```
+=== "Modern"
+    ``` csound-orc
+    kenv = cepsinv(keps[])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kenv cepsinv keps[]
+    ```
 
 ### Performance
 

@@ -8,9 +8,15 @@ Receives a krate signal into an instrument from a named port.
 Plugin opcode in signalflowgraph
 
 ## Syntax
-``` csound-orc
-ksignal inletkid Sname, SinstanceID
-```
+=== "Modern"
+    ``` csound-orc
+    ksignal = inletkid(Sname, SinstanceID)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ksignal inletkid Sname, SinstanceID
+    ```
 
 ### Initialization
 

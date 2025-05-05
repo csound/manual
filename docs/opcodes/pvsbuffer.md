@@ -8,9 +8,15 @@ This opcode creates and writes to a circular buffer for f-signals (streaming PV 
 This opcode sets up and writes to a circular buffer of length ilen (secs), giving a handle for the buffer and a time pointer, which holds the current write position (also in seconds). It can be used with one or more [pvsbufread](../opcodes/pvsbufread.md) opcodes. Writing is circular, wrapping around at the end of the buffer.
 
 ## Syntax
-``` csound-orc
-ihandle, ktime  pvsbuffer fsig, ilen
-```
+=== "Modern"
+    ``` csound-orc
+    ihandle, ktime  = pvsbuffer(fsig, ilen)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ihandle, ktime  pvsbuffer fsig, ilen
+    ```
 
 Initialisation
 

@@ -6,9 +6,15 @@ category:Deprecated
 Deprecated as of version 3.49. Use the [tablew](../opcodes/tablew.md) opcode instead.
 
 ## Syntax
-``` csound-orc
-tableiw isig, indx, ifn [, ixmode] [, ixoff] [, iwgmode]
-```
+=== "Modern"
+    ``` csound-orc
+    tableiw(isig, indx, ifn [, ixmode] [, ixoff] [, iwgmode])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    tableiw isig, indx, ifn [, ixmode] [, ixoff] [, iwgmode]
+    ```
 
 ### Initialization
 

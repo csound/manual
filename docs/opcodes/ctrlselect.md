@@ -6,9 +6,15 @@ category:Real-time MIDI:Input
 Loads a preset of values for MIDI controllers from a previous ctrlpreset call.
 
 ## Syntax
-``` csound-orc
-ctrlselect kpre
-```
+=== "Modern"
+    ``` csound-orc
+    ctrlselect(kpre)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ctrlselect kpre
+    ```
 
 ### Initialization
 

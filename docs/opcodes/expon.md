@@ -6,10 +6,17 @@ category:Signal Generators:Linear and Exponential Generators
 Trace an exponential curve between specified points.
 
 ## Syntax
-``` csound-orc
-ares expon ia, idur, ib
-kres expon ia, idur, ib
-```
+=== "Modern"
+    ``` csound-orc
+    ares = expon(ia, idur, ib)
+    kres = expon(ia, idur, ib)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares expon ia, idur, ib
+    kres expon ia, idur, ib
+    ```
 
 ### Initialization
 

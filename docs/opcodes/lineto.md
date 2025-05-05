@@ -6,9 +6,15 @@ category:Signal Modifiers:Standard Filters:Control
 Generate glissandos starting from a control signal.
 
 ## Syntax
-``` csound-orc
-kres lineto ksig, ktime
-```
+=== "Modern"
+    ``` csound-orc
+    kres = lineto(ksig, ktime)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres lineto ksig, ktime
+    ```
 
 ### Performance
 

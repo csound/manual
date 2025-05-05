@@ -6,11 +6,19 @@ category:Instrument Control:Duration Control
 Enables an instrument to turn itself off or to turn an instance of another instrument off.
 
 ## Syntax
-``` csound-orc
-turnoff
-turnoff inst
-turnoff knst
-```
+=== "Modern"
+    ``` csound-orc
+    turnoff()
+    turnoff(inst)
+    turnoff(knst)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    turnoff
+    turnoff inst
+    turnoff knst
+    ```
 
 ### Initialization
 

@@ -6,9 +6,15 @@ category:Signal Generators:Models and Emulations
 An emulation of a mini-Moog synthesizer.
 
 ## Syntax
-``` csound-orc
-ares moog kamp, kfreq, kfiltq, kfiltrate, kvibf, kvamp, iafn, iwfn, ivfn
-```
+=== "Modern"
+    ``` csound-orc
+    ares = moog(kamp, kfreq, kfiltq, kfiltrate, kvibf, kvamp, iafn, iwfn, ivfn)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares moog kamp, kfreq, kfiltq, kfiltrate, kvibf, kvamp, iafn, iwfn, ivfn
+    ```
 
 ### Initialization
 

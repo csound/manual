@@ -6,9 +6,15 @@ category:Signal Modifiers:Delay
 Multitap delay line implementation.
 
 ## Syntax
-``` csound-orc
-ares multitap asig [, itime1, igain1] [, itime2, igain2] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = multitap(asig [, itime1, igain1] [, itime2, igain2] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares multitap asig [, itime1, igain1] [, itime2, igain2] [...]
+    ```
 
 ### Initialization
 

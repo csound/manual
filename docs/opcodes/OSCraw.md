@@ -8,9 +8,15 @@ Listen for all OSC messages at a given port.
 On each k-cycle looks to see if an OSC message has been received at a given port and copies its contents to a string array. All messages are copied. If a bundle of messages is received, the output array will contain all of the messages in it.
 
 ## Syntax
-``` csound-orc
-Smess[], klen OSCraw iport
-```
+=== "Modern"
+    ``` csound-orc
+    Smess[], klen = OSCraw(iport)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    Smess[], klen OSCraw iport
+    ```
 
 ### Initialization
 

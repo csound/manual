@@ -6,9 +6,15 @@ category:Signal I/O:Software Bus
 Sets the local ksmps value in an instrument or user-defined opcode block.
 
 ## Syntax
-``` csound-orc
-setksmps iksmps
-```
+=== "Modern"
+    ``` csound-orc
+    setksmps(iksmps)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    setksmps iksmps
+    ```
 
 ### Initialization
 

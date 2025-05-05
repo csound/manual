@@ -10,9 +10,15 @@ Plugin opcode in counter.
 Get the next value from a counter by adding the increment and keeping the counter in the declared range.
 
 ## Syntax
-``` csound-orc
-kval count icnt
-```
+=== "Modern"
+    ``` csound-orc
+    kval = count(icnt)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kval count icnt
+    ```
 
 ### Initialization
 

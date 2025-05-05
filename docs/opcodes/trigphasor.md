@@ -10,10 +10,17 @@ Plugin opcode in scugens.
 A resettable linear ramp between two levels (port of Supercollider's Phasor). _trigphasor_ is a linear ramp between _kstart_ and _kend_ values. When its trigger input crosses from non-positive to positive, trigphasor's output will jump to its reset position (or to _kstart_if no reset value was given). Upon reaching the end of its ramp, trigphasor will wrap back to its start.
 
 ## Syntax
-``` csound-orc
-aindex trigphasor xtrig, xrate, kstart, kend [, kresetPos]
-kindex trigphasor xtrig, xrate, kstart, kend [, kresetPos]
-```
+=== "Modern"
+    ``` csound-orc
+    aindex = trigphasor(xtrig, xrate, kstart, kend [, kresetPos])
+    kindex = trigphasor(xtrig, xrate, kstart, kend [, kresetPos])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aindex trigphasor xtrig, xrate, kstart, kend [, kresetPos]
+    kindex trigphasor xtrig, xrate, kstart, kend [, kresetPos]
+    ```
 
 ### Performance
 

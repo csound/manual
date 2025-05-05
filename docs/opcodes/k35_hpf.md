@@ -8,9 +8,15 @@ Zero-delay feedback implementation of Korg35 resonant high-pass filter.
 This filter design is found in the Korg MS10 early MS20.
 
 ## Syntax
-``` csound-orc
-asig K35_hpf ain, xcf, xQ [, inlp, isaturation, istor]
-```
+=== "Modern"
+    ``` csound-orc
+    asig = K35_hpf(ain, xcf, xQ [, inlp, isaturation, istor])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig K35_hpf ain, xcf, xQ [, inlp, isaturation, istor]
+    ```
 
 ### Initialization
 

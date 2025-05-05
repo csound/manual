@@ -6,9 +6,15 @@ category:Vectorial:Tables
 Read vectors (from tables -or arrays of vectors) at a-rate.
 
 ## Syntax
-``` csound-orc
-vtaba andx, ifn, aout1 [, aout2, aout3, .... , aoutN ]
-```
+=== "Modern"
+    ``` csound-orc
+    vtaba(andx, ifn, aout1 [, aout2, aout3, .... , aoutN ])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vtaba andx, ifn, aout1 [, aout2, aout3, .... , aoutN ]
+    ```
 
 ### Initialization
 

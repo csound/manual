@@ -8,10 +8,17 @@ A wave-terrain synthesis opcode using different curves.
 It enhances the [wterrain](../opcodes/wterrain.md) opcode by providing some more curves, krate table parameters and a parameter for rotating the curve.
 
 ## Syntax
-``` csound-orc
-aout wterrain2 kamp, kcps, kx, ky, krx, kry, krot, ktab0, ktab1, \
-               kcurve, kcurveparam
-```
+=== "Modern"
+    ``` csound-orc
+    aout = wterrain2(kamp, kcps, kx, ky, krx, kry, krot, ktab0, ktab1, \
+                     kcurve, kcurveparam)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout wterrain2 kamp, kcps, kx, ky, krx, kry, krot, ktab0, ktab1, \
+                   kcurve, kcurveparam
+    ```
 
 ### Performance
 

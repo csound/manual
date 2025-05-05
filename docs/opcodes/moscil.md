@@ -6,9 +6,15 @@ category:Real-time MIDI:Note Output
 Sends a stream of the MIDI notes.
 
 ## Syntax
-``` csound-orc
-moscil kchn, knum, kvel, kdur, kpause
-```
+=== "Modern"
+    ``` csound-orc
+    moscil(kchn, knum, kvel, kdur, kpause)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    moscil kchn, knum, kvel, kdur, kpause
+    ```
 
 ### Performance
 

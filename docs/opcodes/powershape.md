@@ -8,9 +8,15 @@ Waveshapes a signal by raising it to a variable exponent.
 The _powershape_ opcode raises an input signal to a power with pre- and post-scaling of the signal so that the output will be in a predictable range.  It also processes negative inputs in a symmetrical way to positive inputs, calculating a dynamic transfer function that is useful for waveshaping.
 
 ## Syntax
-``` csound-orc
-aout powershape ain, kShapeAmount [, ifullscale]
-```
+=== "Modern"
+    ``` csound-orc
+    aout = powershape(ain, kShapeAmount [, ifullscale])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout powershape ain, kShapeAmount [, ifullscale]
+    ```
 
 ### Initialization
 

@@ -8,9 +8,15 @@ Implementation of a band-limited oscillator using pre-calculated tables.
 _vco2_ is similar to [vco](../opcodes/vco.md). But the implementation uses pre-calculated tables of band-limited waveforms (see also [GEN30](../scoregens/gen30.md)) rather than integrating impulses. This opcode can be faster than _vco_ (especially if a low control-rate is used) and also allows better sound quality. Additionally, there are more waveforms and oscillator phase can be modulated at k-rate. The disadvantage is increased memory usage. For more details about vco2 tables, see also [vco2init](../opcodes/vco2init.md) and [vco2ft](../opcodes/vco2ft.md).
 
 ## Syntax
-``` csound-orc
-ares vco2 kamp, kcps [, imode] [, kpw] [, kphs] [, inyx]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = vco2(kamp, kcps [, imode] [, kpw] [, kphs] [, inyx])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares vco2 kamp, kcps [, imode] [, kpw] [, kphs] [, inyx]
+    ```
 
 ### Initialization
 

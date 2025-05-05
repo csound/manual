@@ -6,10 +6,17 @@ category:Signal Modifiers:Panning and Spatialization
 Distributes an audio signal among many channels, up to 64 in the first form, arbitrary in the second.
 
 ## Syntax
-``` csound-orc
-ar1[, ar2...] vbap asig, kazim [,kelev] [, kspread] [, ilayout]
-array[] vbap asig, kazim [,kelev] [, kspread] [, ilayout]
-```
+=== "Modern"
+    ``` csound-orc
+    ar1[, ar2...] = vbap(asig, kazim [,kelev] [, kspread] [, ilayout])
+    array[] = vbap(asig, kazim [,kelev] [, kspread] [, ilayout])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar1[, ar2...] vbap asig, kazim [,kelev] [, kspread] [, ilayout]
+    array[] vbap asig, kazim [,kelev] [, kspread] [, ilayout]
+    ```
 
 ### Initialization
 

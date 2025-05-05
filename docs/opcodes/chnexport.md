@@ -8,12 +8,21 @@ Export a global variable as a channel of the bus.
 The channel should not already exist, otherwise an init error occurs. This opcode is normally called from the orchestra header, and allows the host application to read or write orchestra variables directly, without having to use [chnget](../opcodes/chnget.md) or [chnset](../opcodes/chnset.md) to copy data.
 
 ## Syntax
-``` csound-orc
-gival chnexport Sname, imode[, itype, idflt, imin, imax]
-gkval chnexport Sname, imode[, itype, idflt, imin, imax]
-gaval chnexport Sname, imode
-gSval chnexport Sname, imode
-```
+=== "Modern"
+    ``` csound-orc
+    gival = chnexport(Sname, imode[, itype, idflt, imin, imax])
+    gkval = chnexport(Sname, imode[, itype, idflt, imin, imax])
+    gaval = chnexport(Sname, imode)
+    gSval = chnexport(Sname, imode)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    gival chnexport Sname, imode[, itype, idflt, imin, imax]
+    gkval chnexport Sname, imode[, itype, idflt, imin, imax]
+    gaval chnexport Sname, imode
+    gSval chnexport Sname, imode
+    ```
 
 ### Initialization
 

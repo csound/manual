@@ -8,9 +8,15 @@ Streaming partial track additive synthesis.
 The _tradsyn_ opcode takes an input containg a TRACKS pv streaming signal (as generated, for instance by _partials_),as described in Lazzarini et al, "Time-stretching using the Instantaneous Frequency Distribution and Partial Tracking", Proc.of ICMC05, Barcelona. It resynthesises the signal using linear amplitude and frequency interpolation to drive a bank of interpolating oscillators with amplitude and pitch scaling controls.
 
 ## Syntax
-``` csound-orc
-asig tradsyn fin, kscal, kpitch, kmaxtracks, ifn
-```
+=== "Modern"
+    ``` csound-orc
+    asig = tradsyn(fin, kscal, kpitch, kmaxtracks, ifn)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig tradsyn fin, kscal, kpitch, kmaxtracks, ifn
+    ```
 
 ### Performance
 

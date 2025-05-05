@@ -8,9 +8,15 @@ Extracts the lowest-frequency track from a streaming track input signal.
 The _trlowest_ opcode takes an input containg TRACKS pv streaming signals (as generated, for instance by _partials_) and outputs only the lowest track. In addition it outputs two k-rate signals, corresponding to the frequency and amplitude of the lowest track signal.
 
 ## Syntax
-``` csound-orc
-fsig, kfr, kamp trlowest fin1, kscal
-```
+=== "Modern"
+    ``` csound-orc
+    fsig, kfr, kamp = trlowest(fin1, kscal)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig, kfr, kamp trlowest fin1, kscal
+    ```
 
 ### Performance
 

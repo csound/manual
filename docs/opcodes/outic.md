@@ -6,9 +6,15 @@ category:Real-time MIDI:Output
 Sends MIDI controller output at i-rate.
 
 ## Syntax
-``` csound-orc
-outic ichn, inum, ivalue, imin, imax
-```
+=== "Modern"
+    ``` csound-orc
+    outic(ichn, inum, ivalue, imin, imax)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    outic ichn, inum, ivalue, imin, imax
+    ```
 
 ### Initialization
 

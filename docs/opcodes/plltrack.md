@@ -8,9 +8,15 @@ Tracks the pitch of a signal.
 _plltrack_, a pitch tracker based on a phase-locked loop algorithm, described in Zolzer, U, Sankarababu, S.V. and Moller, S, "PLL-based Pitch Detection and Tracking for Audio Signals. Proc. of IIH-MSP 2012".
 
 ## Syntax
-``` csound-orc
-acps, alock plltrack asig, kd [, kloopf, kloopq, klf, khf, kthresh]
-```
+=== "Modern"
+    ``` csound-orc
+    acps, alock = plltrack(asig, kd [, kloopf, kloopq, klf, khf, kthresh])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    acps, alock plltrack asig, kd [, kloopf, kloopq, klf, khf, kthresh]
+    ```
 
 ### Performance
 

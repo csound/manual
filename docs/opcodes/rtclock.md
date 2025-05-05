@@ -6,10 +6,17 @@ category:Instrument Control:Time Reading
 Read the real time clock from the operating system.
 
 ## Syntax
-``` csound-orc
-ires rtclock
-kres rtclock
-```
+=== "Modern"
+    ``` csound-orc
+    ires = rtclock()
+    kres = rtclock()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ires rtclock
+    kres rtclock
+    ```
 
 ### Performance
 

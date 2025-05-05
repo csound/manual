@@ -8,9 +8,15 @@ Issues one or more score line events from an instrument.
 If _ktrig_ is 1 every k-period. It can handle strings in the same conditions as the standard score. Multi-line strings are accepted, using {{  }} to enclose the string.
 
 ## Syntax
-``` csound-orc
-scoreline Sin, ktrig
-```
+=== "Modern"
+    ``` csound-orc
+    scoreline(Sin, ktrig)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    scoreline Sin, ktrig
+    ```
 
 ### Initialization
 

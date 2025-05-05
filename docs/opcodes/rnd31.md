@@ -8,11 +8,19 @@ category:Signal Generators:Random (Noise) Generators
 These units are portable, i.e. using the same seed value will generate the same random sequence on all systems. The distribution of generated random numbers can be varied at k-rate.
 
 ## Syntax
-``` csound-orc
-ax rnd31 kscl, krpow [, iseed]
-ix rnd31 iscl, irpow [, iseed]
-kx rnd31 kscl, krpow [, iseed]
-```
+=== "Modern"
+    ``` csound-orc
+    ax = rnd31(kscl, krpow [, iseed])
+    ix = rnd31(iscl, irpow [, iseed])
+    kx = rnd31(kscl, krpow [, iseed])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ax rnd31 kscl, krpow [, iseed]
+    ix rnd31 iscl, irpow [, iseed]
+    kx rnd31 kscl, krpow [, iseed]
+    ```
 
 ### Initialization
 

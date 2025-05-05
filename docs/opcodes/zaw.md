@@ -6,9 +6,15 @@ category:Zak Patch System
 Writes to a za variable at a-rate without mixing.
 
 ## Syntax
-``` csound-orc
-zaw asig, kndx
-```
+=== "Modern"
+    ``` csound-orc
+    zaw(asig, kndx)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    zaw asig, kndx
+    ```
 
 ### Performance
 

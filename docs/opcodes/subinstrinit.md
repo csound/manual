@@ -8,10 +8,17 @@ Creates and runs a numbered instrument instance at init-time.
 Same as [subinstr](../opcodes/subinstr.md), but init-time only and has no output arguments.
 
 ## Syntax
-``` csound-orc
-subinstrinit instrnum [, p4] [, p5] [...]
-subinstrinit "insname" [, p4] [, p5] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    subinstrinit(instrnum [, p4] [, p5] [...])
+    subinstrinit("insname" [, p4] [, p5] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    subinstrinit instrnum [, p4] [, p5] [...]
+    subinstrinit "insname" [, p4] [, p5] [...]
+    ```
 
 ### Initialization
 

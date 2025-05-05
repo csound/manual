@@ -6,10 +6,17 @@ category:Signal Generators:Random (Noise) Generators
 Generates random numbers with a user-defined limit and holds them for a period of time.
 
 ## Syntax
-``` csound-orc
-ares randomh kmin, kmax, xcps [,imode] [,ifirstval]
-kres randomh kmin, kmax, kcps [,imode] [,ifirstval]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = randomh(kmin, kmax, xcps [,imode] [,ifirstval])
+    kres = randomh(kmin, kmax, kcps [,imode] [,ifirstval])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares randomh kmin, kmax, xcps [,imode] [,ifirstval]
+    kres randomh kmin, kmax, kcps [,imode] [,ifirstval]
+    ```
 
 ### Initialization
 

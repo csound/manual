@@ -6,9 +6,15 @@ category:Vectorial:Tables
 Write vectors (to tables -or arrays of vectors) at k-rate.
 
 ## Syntax
-``` csound-orc
-vtablewk kndx, kfn, ixmode, kinarg1 [, kinarg2, kinarg3 , .... , kinargN ]
-```
+=== "Modern"
+    ``` csound-orc
+    vtablewk(kndx, kfn, ixmode, kinarg1 [, kinarg2, kinarg3 , .... , kinargN ])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vtablewk kndx, kfn, ixmode, kinarg1 [, kinarg2, kinarg3 , .... , kinargN ]
+    ```
 
 ### Initialization
 

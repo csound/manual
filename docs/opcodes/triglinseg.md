@@ -6,10 +6,17 @@ category:Signal Generators:Linear and Exponential Generators
 Triggers a series of line segments between specified points.
 
 ## Syntax
-``` csound-orc
-ares triglinseg kTrig, ia, idur1, ib [, idur2] [, ic] [...]
-kres triglinseg kTrig, ia, idur1, ib [, idur2] [, ic] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = triglinseg(kTrig, ia, idur1, ib [, idur2] [, ic] [...])
+    kres = triglinseg(kTrig, ia, idur1, ib [, idur2] [, ic] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares triglinseg kTrig, ia, idur1, ib [, idur2] [, ic] [...]
+    kres triglinseg kTrig, ia, idur1, ib [, idur2] [, ic] [...]
+    ```
 
 ### Initialization
 

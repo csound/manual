@@ -16,9 +16,15 @@ where
 *  c1 = 1 - c2
 
 ## Syntax
-``` csound-orc
-ares tone asig, khp [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = tone(asig, khp [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares tone asig, khp [, iskip]
+    ```
 
 ### Initialization
 

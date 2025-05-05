@@ -6,9 +6,15 @@ category:Table Control:Read/Write Operations
 Save a set of previously-allocated tables to a file.
 
 ## Syntax
-``` csound-orc
-ftsavek "filename", ktrig, iflag, ifn1 [, ifn2] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    ftsavek("filename", ktrig, iflag, ifn1 [, ifn2] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ftsavek "filename", ktrig, iflag, ifn1 [, ifn2] [...]
+    ```
 
 ### Initialization
 

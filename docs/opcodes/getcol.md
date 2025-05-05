@@ -8,9 +8,15 @@ Gets a given column from a 2-dimensional array as a vector.
 The output is an 1-d array with the contents of the requested column
 
 ## Syntax
-``` csound-orc
-i/kout[] getcol i/kin[], i/kcol
-```
+=== "Modern"
+    ``` csound-orc
+    i/kout[] = getcol(i/kin[], i/kcol)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    i/kout[] getcol i/kin[], i/kcol
+    ```
 
 ### Initialization
 

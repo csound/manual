@@ -8,9 +8,15 @@ Produces a normalized moving phase value with sync input and output.
 Produces a moving phase value between zero and one and an extra impulse output ("sync out") whenever its phase value crosses or is reset to zero. The phase can be reset at any time by an impulse on the "sync in" parameter.
 
 ## Syntax
-``` csound-orc
-aphase, asyncout syncphasor xcps, asyncin, [, iphs]
-```
+=== "Modern"
+    ``` csound-orc
+    aphase, asyncout = syncphasor(xcps, asyncin, [, iphs])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aphase, asyncout syncphasor xcps, asyncin, [, iphs]
+    ```
 
 ### Initialization
 

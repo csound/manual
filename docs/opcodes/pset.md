@@ -6,9 +6,15 @@ category:Instrument Control:Initialization and Reinitialization
 Defines and initializes numeric arrays at orchestra load time.
 
 ## Syntax
-``` csound-orc
-pset icon1 [, icon2] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    pset(icon1 [, icon2] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    pset icon1 [, icon2] [...]
+    ```
 
 ### Initialization
 

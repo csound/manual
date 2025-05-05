@@ -7,10 +7,17 @@ Trace a series of line segments between specified points with
 cosine interpolation, including a release segment.
 
 ## Syntax
-``` csound-orc
-ares cossegr ia, idur1, ib [, idur2] [, ic] [...], irel, iz
-kres cossegr ia, idur1, ib [, idur2] [, ic] [...], irel, iz
-```
+=== "Modern"
+    ``` csound-orc
+    ares = cossegr(ia, idur1, ib [, idur2] [, ic] [...], irel, iz)
+    kres = cossegr(ia, idur1, ib [, idur2] [, ic] [...], irel, iz)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares cossegr ia, idur1, ib [, idur2] [, ic] [...], irel, iz
+    kres cossegr ia, idur1, ib [, idur2] [, ic] [...], irel, iz
+    ```
 
 ### Initialization
 

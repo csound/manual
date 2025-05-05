@@ -8,9 +8,15 @@ A resonator filter bank.
 This opcode takes an array of filter paramerers in frequency-bandwidth pairs and constructs a bank of second-order resonators, in either parallel or serial connections.
 
 ## Syntax
-``` csound-orc
-asig resonbnk ain, kPar[], kmin, kmax, iper [, imode, iscal, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    asig = resonbnk(ain, kPar[], kmin, kmax, iper [, imode, iscal, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig resonbnk ain, kPar[], kmin, kmax, iper [, imode, iscal, iskip]
+    ```
 
 ### Initialization
 

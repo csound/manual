@@ -6,9 +6,15 @@ category:Array Operations: Autocorrelation
 This opcode takes in an input array and computes its autocorrelation.
 
 ## Syntax
-``` csound-orc
-kout[] autocorr kin[]
-```
+=== "Modern"
+    ``` csound-orc
+    kout[] = autocorr(kin[])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kout[] autocorr kin[]
+    ```
 
 ### Performance
 

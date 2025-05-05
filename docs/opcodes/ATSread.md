@@ -8,9 +8,15 @@ Reads data from an ATS file.
 _ATSread_ returns the amplitude (_kamp_) and frequency (_kfreq_) information of a user specified partial contained in the ATS analysis file at the time indicated by the time pointer _ktimepnt_.
 
 ## Syntax
-``` csound-orc
-kfreq, kamp ATSread ktimepnt, iatsfile, ipartial
-```
+=== "Modern"
+    ``` csound-orc
+    kfreq, kamp = ATSread(ktimepnt, iatsfile, ipartial)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kfreq, kamp ATSread ktimepnt, iatsfile, ipartial
+    ```
 
 ### Initialization
 

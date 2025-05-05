@@ -10,10 +10,17 @@ All elements of the table, or a slice (start\:end\:step) can be set at once. If 
 Plugin opcode in emugens
 
 ## Syntax
-``` csound-orc
-ftset ktablenum, kvalue [, kstart=0, kend=0, kstep=1 ]
-ftset itablenum, ivalue [, istart=0, iend=0, istep=1 ]
-```
+=== "Modern"
+    ``` csound-orc
+    ftset(ktablenum, kvalue [, kstart=0, kend=0, kstep=1 ])
+    ftset(itablenum, ivalue [, istart=0, iend=0, istep=1 ])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ftset ktablenum, kvalue [, kstart=0, kend=0, kstep=1 ]
+    ftset itablenum, ivalue [, istart=0, iend=0, istep=1 ]
+    ```
 
 ### Performance
 

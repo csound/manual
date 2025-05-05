@@ -6,9 +6,15 @@ category:Signal Generators:Table Access
 Accesses table values by incremental sampling.
 
 ## Syntax
-``` csound-orc
-kres oscil1 idel, kamp, idur [, ifn]
-```
+=== "Modern"
+    ``` csound-orc
+    kres = oscil1(idel, kamp, idur [, ifn])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres oscil1 idel, kamp, idur [, ifn]
+    ```
 
 ### Initialization
 

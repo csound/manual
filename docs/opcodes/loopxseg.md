@@ -8,10 +8,17 @@ Generate control signal consisting of exponential segments delimited by two or m
 The entire envelope is looped at _kfreq_ rate. Each parameter can be varied at k-rate.
 
 ## Syntax
-``` csound-orc
-ksig loopxseg kfreq, ktrig, iphase, kvalue0, ktime0  [, kvalue1] [, ktime1] \
-              [, kvalue2] [, ktime2] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    ksig = loopxseg(kfreq, ktrig, iphase, kvalue0, ktime0  [, kvalue1] [, ktime1] \
+                    [, kvalue2] [, ktime2] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ksig loopxseg kfreq, ktrig, iphase, kvalue0, ktime0  [, kvalue1] [, ktime1] \
+                  [, kvalue2] [, ktime2] [...]
+    ```
 
 ### Performance
 

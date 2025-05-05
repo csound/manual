@@ -6,9 +6,15 @@ category:Spectral Processing:Streaming
 Write a fsig to a PVOCEX file (which in turn can be read by _pvsfread_ or other programs that support PVOCEX file input).
 
 ## Syntax
-``` csound-orc
-pvsfwrite fsig, ifile
-```
+=== "Modern"
+    ``` csound-orc
+    pvsfwrite(fsig, ifile)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    pvsfwrite fsig, ifile
+    ```
 
 ### Initialization
 

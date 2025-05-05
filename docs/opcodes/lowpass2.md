@@ -6,9 +6,15 @@ category:Signal Modifiers:Standard Filters:Resonant
 A resonant second-order lowpass filter.
 
 ## Syntax
-``` csound-orc
-ares lowpass2 asig, kcf, kq [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = lowpass2(asig, kcf, kq [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares lowpass2 asig, kcf, kq [, iskip]
+    ```
 
 ### Initialization
 

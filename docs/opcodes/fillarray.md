@@ -6,11 +6,19 @@ category:Table Control:Table Queries
 Generate a vector (one-dimensional k-rate array) with a sequence of numeric or string values.
 
 ## Syntax
-``` csound-orc
-karray[] fillarray ival1, ival2,.....ivaln
-karray fillarray ival1, ival2,.....ivaln
-karray fillarray kval1, kval2,.....kvaln
-```
+=== "Modern"
+    ``` csound-orc
+    karray[] = fillarray(ival1, ival2,.....ivaln)
+    karray = fillarray(ival1, ival2,.....ivaln)
+    karray = fillarray(kval1, kval2,.....kvaln)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    karray[] fillarray ival1, ival2,.....ivaln
+    karray fillarray ival1, ival2,.....ivaln
+    karray fillarray kval1, kval2,.....kvaln
+    ```
 
 ### Initialization
 

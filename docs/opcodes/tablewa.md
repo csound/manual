@@ -8,9 +8,15 @@ Writes tables in sequential locations to and from an a-rate variable.
 Some thought is required before using it. It has at least two major, and quite different, applications which are discussed below.
 
 ## Syntax
-``` csound-orc
-kstart tablewa kfn, asig, koff
-```
+=== "Modern"
+    ``` csound-orc
+    kstart = tablewa(kfn, asig, koff)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kstart tablewa kfn, asig, koff
+    ```
 
 ### Performance
 

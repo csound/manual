@@ -6,9 +6,15 @@ category:Instrument Control:Sensing and Control
 Envelope follower unit generator.
 
 ## Syntax
-``` csound-orc
-ares follow asig, idt
-```
+=== "Modern"
+    ``` csound-orc
+    ares = follow(asig, idt)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares follow asig, idt
+    ```
 
 ### Initialization
 

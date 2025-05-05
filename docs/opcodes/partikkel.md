@@ -10,17 +10,31 @@ _partikkel_ was conceived after reading Curtis Roads' book "Microsound", and the
 Some of the input parameters to _partikkel_ is table numbers, pointing to tables where values for the "per grain" parameter changes are stored.  _partikkel_ can use single-cycle or complex (e.g. sampled sound) waveforms as source waveforms for grains. Each grain consists of a mix of 4 source waveforms. Individual tuning of the base frequency can be done for each of the 4 source waveforms. Frequency modulation inside each grain is enabled via an auxillary audio input (_awavfm_). Trainlet synthesis is available, and trainlets can be mixed with wavetable based grains. Up to 8 separate audio outputs can be used. Fractional output values will distribute a grain between two outputs and a "panning law" table can be devised to control the amplitude scaling between output pairs.
 
 ## Syntax
-``` csound-orc
-a1 [, a2, a3, a4, a5, a6, a7, a8] partikkel agrainfreq, \
-    kdistribution, idisttab, async, kenv2amt, ienv2tab, ienv_attack, \
-    ienv_decay, ksustain_amount, ka_d_ratio, kduration, kamp, igainmasks, \
-    kwavfreq, ksweepshape, iwavfreqstarttab, iwavfreqendtab, awavfm, \
-    ifmamptab, kfmenv, icosine, ktraincps, knumpartials, kchroma, \
-    ichannelmasks, krandommask, kwaveform1, kwaveform2, kwaveform3, \
-    kwaveform4, iwaveamptab, asamplepos1, asamplepos2, asamplepos3, \
-    asamplepos4, kwavekey1, kwavekey2, kwavekey3, kwavekey4, imax_grains \
-    [, iopcode_id, ipanlaws]
-```
+=== "Modern"
+    ``` csound-orc
+    a1 [, a2, a3, a4, a5, a6, a7, a8] = partikkel(agrainfreq, \
+          kdistribution, idisttab, async, kenv2amt, ienv2tab, ienv_attack, \
+          ienv_decay, ksustain_amount, ka_d_ratio, kduration, kamp, igainmasks, \
+          kwavfreq, ksweepshape, iwavfreqstarttab, iwavfreqendtab, awavfm, \
+          ifmamptab, kfmenv, icosine, ktraincps, knumpartials, kchroma, \
+          ichannelmasks, krandommask, kwaveform1, kwaveform2, kwaveform3, \
+          kwaveform4, iwaveamptab, asamplepos1, asamplepos2, asamplepos3, \
+          asamplepos4, kwavekey1, kwavekey2, kwavekey3, kwavekey4, imax_grains \
+          [, iopcode_id, ipanlaws])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    a1 [, a2, a3, a4, a5, a6, a7, a8] partikkel agrainfreq, \
+        kdistribution, idisttab, async, kenv2amt, ienv2tab, ienv_attack, \
+        ienv_decay, ksustain_amount, ka_d_ratio, kduration, kamp, igainmasks, \
+        kwavfreq, ksweepshape, iwavfreqstarttab, iwavfreqendtab, awavfm, \
+        ifmamptab, kfmenv, icosine, ktraincps, knumpartials, kchroma, \
+        ichannelmasks, krandommask, kwaveform1, kwaveform2, kwaveform3, \
+        kwaveform4, iwaveamptab, asamplepos1, asamplepos2, asamplepos3, \
+        asamplepos4, kwavekey1, kwavekey2, kwavekey3, kwavekey4, imax_grains \
+        [, iopcode_id, ipanlaws]
+    ```
 
 ### Initialization
 

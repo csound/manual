@@ -16,9 +16,15 @@ Note that _vco2init_ is not required for _vco2_ to work (tables are automaticall
 * Change the default parameters of tables (e.g. size) or use an user-defined waveform specified in a function table.
 
 ## Syntax
-``` csound-orc
-ifn vco2init iwave [, ibasfn] [, ipmul] [, iminsiz] [, imaxsiz] [, isrcft]
-```
+=== "Modern"
+    ``` csound-orc
+    ifn = vco2init(iwave [, ibasfn] [, ipmul] [, iminsiz] [, imaxsiz] [, isrcft])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ifn vco2init iwave [, ibasfn] [, ipmul] [, iminsiz] [, imaxsiz] [, isrcft]
+    ```
 
 ### Initialization
 

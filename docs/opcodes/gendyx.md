@@ -8,12 +8,21 @@ Variation of the dynamic stochastic approach to waveform synthesis conceived by 
 _gendyx_ (gendy eXtended) is an implementation of the _Génération Dynamique Stochastique_ (GENDYN), a dynamic stochastic approach to waveform synthesis conceived by Iannis Xenakis, using curves instead of segments.
 
 ## Syntax
-``` csound-orc
-ares gendyx kamp, kampdist, kdurdist, kadpar, kddpar, kminfreq, kmaxfreq, \
-            kampscl, kdurscl, kcurveup, kcurvedown [, initcps] [, knum]
-kres gendyx kamp, kampdist, kdurdist, kadpar, kddpar, kminfreq, kmaxfreq, \
-            kampscl, kdurscl, kcurveup, kcurvedown [, initcps] [, knum]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = gendyx(kamp, kampdist, kdurdist, kadpar, kddpar, kminfreq, kmaxfreq, \
+                  kampscl, kdurscl, kcurveup, kcurvedown [, initcps] [, knum])
+    kres = gendyx(kamp, kampdist, kdurdist, kadpar, kddpar, kminfreq, kmaxfreq, \
+                  kampscl, kdurscl, kcurveup, kcurvedown [, initcps] [, knum])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares gendyx kamp, kampdist, kdurdist, kadpar, kddpar, kminfreq, kmaxfreq, \
+                kampscl, kdurscl, kcurveup, kcurvedown [, initcps] [, knum]
+    kres gendyx kamp, kampdist, kdurdist, kadpar, kddpar, kminfreq, kmaxfreq, \
+                kampscl, kdurscl, kcurveup, kcurvedown [, initcps] [, knum]
+    ```
 
 ### Initialization
 

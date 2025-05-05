@@ -8,12 +8,21 @@ Reads a directory for sound files and loads them to a series of GEN01 function t
 Plugin opcode in ftsamplebank.
 
 ## Syntax
-``` csound-orc
-iNumberOfFile ftsamplebank SDirectory, iFirstTableNumber, iSkipTime, iFormat, \
-                           iChannel,
-kNumberOfFile ftsamplebank SDirectory, kFirstTableNumber, kTrigger, kSkipTime, \
-                           kFormat, kChannel,
-```
+=== "Modern"
+    ``` csound-orc
+    iNumberOfFile = ftsamplebank(SDirectory, iFirstTableNumber, iSkipTime, iFormat, \
+                                 iChannel,)
+    kNumberOfFile = ftsamplebank(SDirectory, kFirstTableNumber, kTrigger, kSkipTime, \
+                                 kFormat, kChannel,)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    iNumberOfFile ftsamplebank SDirectory, iFirstTableNumber, iSkipTime, iFormat, \
+                               iChannel,
+    kNumberOfFile ftsamplebank SDirectory, kFirstTableNumber, kTrigger, kSkipTime, \
+                               kFormat, kChannel,
+    ```
 
 ### Initialization
 

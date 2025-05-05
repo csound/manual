@@ -10,10 +10,17 @@ Plugin opcode in cs_date.
 The base is 1 January 1970 for Csound using doubles, and 1 January 2010 for versions using floats. On operating systemms with sufficient resolution the date includes fractional seconds.
 
 ## Syntax
-``` csound-orc
-ir[, inano] date
-kr[, knano] date
-```
+=== "Modern"
+    ``` csound-orc
+    ir[, inano] = date()
+    kr[, knano] = date()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ir[, inano] date
+    kr[, knano] date
+    ```
 
 Initialization and Performance
 

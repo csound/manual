@@ -8,9 +8,15 @@ Creates a new function table by making linear segments between values in stored 
 _tableseg_ is like [linseg](../opcodes/linseg.md) but interpolate between values in a stored function tables. The result is a new function table passed internally to any following [vpvoc](../opcodes/vpvoc.md) which occurs before a subsequent _tableseg_ (much like [lpread](../opcodes/lpread.md)/[lpreson](../opcodes/lpreson.md) pairs work). The uses of these are described below under _vpvoc_.
 
 ## Syntax
-``` csound-orc
-tableseg ifn1, idur1, ifn2 [, idur2] [, ifn3] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    tableseg(ifn1, idur1, ifn2 [, idur2] [, ifn3] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    tableseg ifn1, idur1, ifn2 [, idur2] [, ifn3] [...]
+    ```
 
 ### Initialization
 

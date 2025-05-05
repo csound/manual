@@ -8,9 +8,15 @@ Mixes the input signal to a delay line.
 _deltapxw_ mixes the input signal to a delay line. This opcode can be mixed with reading units ([deltap](../opcodes/deltap.md), [deltapn](../opcodes/deltapn.md), [deltapi](../opcodes/deltapi.md), [deltap3](../opcodes/deltap3.md), and [deltapx](../opcodes/deltapx.md)) in any order; the actual delay time is the difference of the read and write time. This opcode can read from and write to a [delayr](../opcodes/delayr.md)/[delayw](../opcodes/delayw.md) delay line with interpolation.
 
 ## Syntax
-``` csound-orc
-deltapxw ain, adel, iwsize
-```
+=== "Modern"
+    ``` csound-orc
+    deltapxw(ain, adel, iwsize)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    deltapxw ain, adel, iwsize
+    ```
 
 ### Initialization
 

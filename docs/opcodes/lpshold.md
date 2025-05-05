@@ -8,10 +8,17 @@ Generate control signal consisting of held segments.
 The segments are delimited by two or more specified points. The entire envelope is looped at _kfreq_ rate. Each parameter can be varied at k-rate.
 
 ## Syntax
-``` csound-orc
-ksig lpshold kfreq, ktrig, iphase, kvalue0, ktime0  [, kvalue1] [, ktime1] \
-             [, kvalue2] [, ktime2] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    ksig = lpshold(kfreq, ktrig, iphase, kvalue0, ktime0  [, kvalue1] [, ktime1] \
+                   [, kvalue2] [, ktime2] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ksig lpshold kfreq, ktrig, iphase, kvalue0, ktime0  [, kvalue1] [, ktime1] \
+                 [, kvalue2] [, ktime2] [...]
+    ```
 
 ### Performance
 

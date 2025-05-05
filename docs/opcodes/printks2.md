@@ -6,9 +6,15 @@ category:Signal I/O:Printing and Display
 Prints a new value every time a control variable changes using a printf() style syntax.
 
 ## Syntax
-``` csound-orc
-printks2 "string", kval
-```
+=== "Modern"
+    ``` csound-orc
+    printks2("string", kval)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    printks2 "string", kval
+    ```
 
 ### Initialization
 

@@ -8,10 +8,17 @@ Produces sinusoid bursts useful for formant and granular synthesis.
 Audio output is a succession of sinusoid bursts initiated at frequency _xfund_ with a spectral peak at _xform_. For _xfund_ above 25 Hz these bursts produce a speech-like formant with spectral characteristics determined by the k-input parameters. For lower fundamentals this generator provides a special form of granular synthesis.
 
 ## Syntax
-``` csound-orc
-ares fof xamp, xfund, xform, koct, kband, kris, kdur, kdec, iolaps, \
-         ifna, ifnb, itotdur [, iphs] [, ifmode] [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = fof(xamp, xfund, xform, koct, kband, kris, kdur, kdec, iolaps, \
+               ifna, ifnb, itotdur [, iphs] [, ifmode] [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares fof xamp, xfund, xform, koct, kband, kris, kdur, kdec, iolaps, \
+             ifna, ifnb, itotdur [, iphs] [, ifmode] [, iskip]
+    ```
 
 ### Initialization
 

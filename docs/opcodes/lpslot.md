@@ -6,9 +6,15 @@ category:Spectral Processing:LPC
 Selects the slot to be use by further lp opcodes.
 
 ## Syntax
-``` csound-orc
-lpslot islot
-```
+=== "Modern"
+    ``` csound-orc
+    lpslot(islot)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    lpslot islot
+    ```
 
 ### Initialization
 

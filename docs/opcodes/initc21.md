@@ -6,9 +6,15 @@ category:Real-time MIDI:Input
 Initializes the controllers used to create a 21-bit MIDI value.
 
 ## Syntax
-``` csound-orc
-initc21 ichan, ictlno1, ictlno2, ictlno3, ivalue
-```
+=== "Modern"
+    ``` csound-orc
+    initc21(ichan, ictlno1, ictlno2, ictlno3, ivalue)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    initc21 ichan, ictlno1, ictlno2, ictlno3, ivalue
+    ```
 
 ### Initialization
 

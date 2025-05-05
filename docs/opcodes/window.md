@@ -6,9 +6,15 @@ category:Array Operations: Fast Fourier Transform
 Applies a given window shape to a vector stored in an array. The output is an array with the windowed vector.
 
 ## Syntax
-``` csound-orc
-kout[] window kin[] [, koff, itype]
-```
+=== "Modern"
+    ``` csound-orc
+    kout[] = window(kin[] [, koff, itype])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kout[] window kin[] [, koff, itype]
+    ```
 
 ### Initialization
 

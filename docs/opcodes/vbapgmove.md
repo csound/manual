@@ -6,10 +6,17 @@ category:Signal Modifiers:Panning and Spatialization
 Calculates the gains for a sound location between multiple channels with moving virtual sources.
 
 ## Syntax
-``` csound-orc
-kr1[, kr2...] vbapgmove idur, ispread, ifldnum, ifld1 [, ifld2] [...]
-karray[] vbapgmove idur, ispread, ifldnum, ifld1 [, ifld2] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    kr1[, kr2...] = vbapgmove(idur, ispread, ifldnum, ifld1 [, ifld2] [...])
+    karray[] = vbapgmove(idur, ispread, ifldnum, ifld1 [, ifld2] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kr1[, kr2...] vbapgmove idur, ispread, ifldnum, ifld1 [, ifld2] [...]
+    karray[] vbapgmove idur, ispread, ifldnum, ifld1 [, ifld2] [...]
+    ```
 
 ### Initialization
 

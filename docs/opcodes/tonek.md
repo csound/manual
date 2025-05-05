@@ -6,9 +6,15 @@ category:Signal Modifiers:Standard Filters:Control
 A first-order recursive low-pass filter with variable frequency response.
 
 ## Syntax
-``` csound-orc
-kres tonek ksig, khp [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    kres = tonek(ksig, khp [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres tonek ksig, khp [, iskip]
+    ```
 
 ### Initialization
 

@@ -6,10 +6,17 @@ category:Instrument Control:Duration Control
 Turn off instance(s) of other instruments at performance time.
 
 ## Syntax
-``` csound-orc
-turnoff2 kinsno, kmode, krelease
-turnoff2_i insno, imode, irelease
-```
+=== "Modern"
+    ``` csound-orc
+    turnoff2(kinsno, kmode, krelease)
+    turnoff2_i(insno, imode, irelease)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    turnoff2 kinsno, kmode, krelease
+    turnoff2_i insno, imode, irelease
+    ```
 
 ### Initialization
 

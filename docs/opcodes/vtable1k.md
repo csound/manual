@@ -6,9 +6,15 @@ category:Vectorial:Tables
 Read a vector (several scalars simultaneously) from a table at k-rate.
 
 ## Syntax
-``` csound-orc
-vtable1k kfn, kout1 [, kout2, kout3, .... , koutN ]
-```
+=== "Modern"
+    ``` csound-orc
+    vtable1k(kfn, kout1 [, kout2, kout3, .... , koutN ])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vtable1k kfn, kout1 [, kout2, kout3, .... , koutN ]
+    ```
 
 ### Performance
 

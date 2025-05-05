@@ -6,9 +6,15 @@ category:Mixer Opcodes
 Mixes an arate signal into a channel of a buss.
 
 ## Syntax
-``` csound-orc
-MixerSend asignal, isend, ibuss, ichannel
-```
+=== "Modern"
+    ``` csound-orc
+    MixerSend(asignal, isend, ibuss, ichannel)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    MixerSend asignal, isend, ibuss, ichannel
+    ```
 
 ### Initialization
 

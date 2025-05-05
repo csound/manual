@@ -6,12 +6,21 @@ category:Signal Modifiers:Special Effects
 Analyze an audio input and generate harmonizing voices in synchrony with formants preserved.
 
 ## Syntax
-``` csound-orc
-ares harmon2 asig, koct, kfrq1, kfrq2, icpsmode, ilowest[, ipolarity]
-ares harmon3 asig, koct, kfrq1, kfrq2, kfrq3, icpsmode, ilowest[, ipolarity]
-ares harmon4 asig, koct, kfrq1, kfrq2, kfrq3, kfrq4, icpsmode, ilowest \
-             [, ipolarity]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = harmon2(asig, koct, kfrq1, kfrq2, icpsmode, ilowest[, ipolarity])
+    ares = harmon3(asig, koct, kfrq1, kfrq2, kfrq3, icpsmode, ilowest[, ipolarity])
+    ares = harmon4(asig, koct, kfrq1, kfrq2, kfrq3, kfrq4, icpsmode, ilowest \
+                   [, ipolarity])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares harmon2 asig, koct, kfrq1, kfrq2, icpsmode, ilowest[, ipolarity]
+    ares harmon3 asig, koct, kfrq1, kfrq2, kfrq3, icpsmode, ilowest[, ipolarity]
+    ares harmon4 asig, koct, kfrq1, kfrq2, kfrq3, kfrq4, icpsmode, ilowest \
+                 [, ipolarity]
+    ```
 
 ### Initialization
 

@@ -6,9 +6,15 @@ category:Instrument Control:Sensing and Control
 Writes one of four scalar values into the scratchpad of the instance of an instrument.
 
 ## Syntax
-``` csound-orc
-writescratch ival [index]
-```
+=== "Modern"
+    ``` csound-orc
+    writescratch(ival [index])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    writescratch ival [index]
+    ```
 
 Initialisation
 

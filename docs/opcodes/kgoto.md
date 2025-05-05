@@ -6,9 +6,15 @@ category:Instrument Control:Program Flow Control
 During the p-time passes only, unconditionally transfer control to the statement labeled by _label_.
 
 ## Syntax
-``` csound-orc
-kgoto label
-```
+=== "Modern"
+    ``` csound-orc
+    kgoto(label)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kgoto label
+    ```
 
 where _label_ is in the same instrument block and is not an expression.
 

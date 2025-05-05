@@ -8,10 +8,17 @@ Emulates a stack of filters using the tone opcode.
 _tonex_ is equivalent to a filter consisting of more layers of [tone](../opcodes/tone.md) with the same arguments, serially connected. Using a stack of a larger number of filters allows a sharper cutoff. They are faster than using a larger number instances in a Csound orchestra of the old opcodes, because only one initialization and k- cycle are needed at time and the audio loop falls entirely inside the cache memory of processor.
 
 ## Syntax
-``` csound-orc
-ares tonex asig, khp [, inumlayer] [, iskip]
-ares tonex asig, ahp [, inumlayer] [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = tonex(asig, khp [, inumlayer] [, iskip])
+    ares = tonex(asig, ahp [, inumlayer] [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares tonex asig, khp [, inumlayer] [, iskip]
+    ares tonex asig, ahp [, inumlayer] [, iskip]
+    ```
 
 ### Initialization
 

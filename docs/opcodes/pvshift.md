@@ -6,9 +6,15 @@ category:Spectral Processing:Streaming
 Shift the frequency components of a pv stream, stretching/compressing its spectrum.
 
 ## Syntax
-``` csound-orc
-fsig pvshift fsigin, kshift, klowest [, kkeepform, igain, kcoefs]
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvshift(fsigin, kshift, klowest [, kkeepform, igain, kcoefs])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvshift fsigin, kshift, klowest [, kkeepform, igain, kcoefs]
+    ```
 
 ### Performance
 

@@ -6,9 +6,15 @@ category:Array Operations: dot product
 Calculates the dot product of two arrays.
 
 ## Syntax
-``` csound-orc
-kres/ires dot karr1[]/iarr1[], karr2[]/iarr2[]   (k- or i-arrays )
-```
+=== "Modern"
+    ``` csound-orc
+    kres/ires = dot(karr1[]/iarr1[], karr2[]/iarr2[])   (k- or i-arrays)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres/ires dot karr1[]/iarr1[], karr2[]/iarr2[]   (k- or i-arrays)
+    ```
 
 ## Examples
 

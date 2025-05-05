@@ -10,10 +10,17 @@ Function tables are read with linear interpolation.
 The standard Csound opcode [tablei](../opcodes/tablei.md), when producing a k- or a-rate result, can only use an init-time variable to select the table number. _tableikt_ accepts k-rate control as well as i-time. In all other respects they are similar to the original opcodes.
 
 ## Syntax
-``` csound-orc
-ares tableikt xndx, kfn [, ixmode] [, ixoff] [, iwrap]
-kres tableikt kndx, kfn [, ixmode] [, ixoff] [, iwrap]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = tableikt(xndx, kfn [, ixmode] [, ixoff] [, iwrap])
+    kres = tableikt(kndx, kfn [, ixmode] [, ixoff] [, iwrap])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares tableikt xndx, kfn [, ixmode] [, ixoff] [, iwrap]
+    kres tableikt kndx, kfn [, ixmode] [, ixoff] [, iwrap]
+    ```
 
 ### Initialization
 

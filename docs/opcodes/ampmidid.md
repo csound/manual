@@ -8,10 +8,17 @@ Musically map MIDI velocity to peak amplitude within a specified dynamic range i
 Plugin opcode in ampmidid.
 
 ## Syntax
-``` csound-orc
-iamplitude ampmidid ivelocity, idecibels
-kamplitude ampmidid kvelocity, idecibels
-```
+=== "Modern"
+    ``` csound-orc
+    iamplitude = ampmidid(ivelocity, idecibels)
+    kamplitude = ampmidid(kvelocity, idecibels)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    iamplitude ampmidid ivelocity, idecibels
+    kamplitude ampmidid kvelocity, idecibels
+    ```
 
 ### Initialization
 

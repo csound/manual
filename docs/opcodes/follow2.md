@@ -6,9 +6,15 @@ category:Instrument Control:Sensing and Control
 Another controllable envelope extractor using the algorithm attributed to Jean-Marc Jot.
 
 ## Syntax
-``` csound-orc
-ares follow2 asig, katt, krel
-```
+=== "Modern"
+    ``` csound-orc
+    ares = follow2(asig, katt, krel)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares follow2 asig, katt, krel
+    ```
 
 ### Performance
 

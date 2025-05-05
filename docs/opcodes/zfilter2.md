@@ -18,9 +18,15 @@ H(z) = \frac{B(z)}{A(z)} = \frac{b_0 + b_1 z^{-1} + ... + b_M z^{-M}}{1 + a_1 z^
 $$
 
 ## Syntax
-``` csound-orc
-ares zfilter2 asig, kdamp, kfreq, iM, iN, ib0, ib1, ..., ibM, ia1,ia2, ..., iaN
-```
+=== "Modern"
+    ``` csound-orc
+    ares = zfilter2(asig, kdamp, kfreq, iM, iN, ib0, ib1, ..., ibM, ia1,ia2, ..., iaN)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares zfilter2 asig, kdamp, kfreq, iM, iN, ib0, ib1, ..., ibM, ia1,ia2, ..., iaN
+    ```
 
 ### Initialization
 

@@ -6,10 +6,17 @@ category:Instrument Control:Sensing and Control
 Maintains the output equal to the highest absolute value received.
 
 ## Syntax
-``` csound-orc
-kres peak asig
-kres peak ksig
-```
+=== "Modern"
+    ``` csound-orc
+    kres = peak(asig)
+    kres = peak(ksig)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres peak asig
+    kres peak ksig
+    ```
 
 ### Performance
 

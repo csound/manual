@@ -6,10 +6,17 @@ category:Real-time MIDI:Input
 Get the current value (0-127) of a specified MIDI controller.
 
 ## Syntax
-``` csound-orc
-ival midictrl inum [, imin] [, imax]
-kval midictrl inum [, imin] [, imax]
-```
+=== "Modern"
+    ``` csound-orc
+    ival = midictrl(inum [, imin] [, imax])
+    kval = midictrl(inum [, imin] [, imax])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ival midictrl inum [, imin] [, imax]
+    kval midictrl inum [, imin] [, imax]
+    ```
 
 ### Initialization
 

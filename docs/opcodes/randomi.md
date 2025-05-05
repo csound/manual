@@ -6,10 +6,17 @@ category:Signal Generators:Random (Noise) Generators
 Generates a user-controlled random number series with interpolation between each new number.
 
 ## Syntax
-``` csound-orc
-ares randomi kmin, kmax, xcps [,imode] [,ifirstval]
-kres randomi kmin, kmax, kcps [,imode] [,ifirstval]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = randomi(kmin, kmax, xcps [,imode] [,ifirstval])
+    kres = randomi(kmin, kmax, kcps [,imode] [,ifirstval])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares randomi kmin, kmax, xcps [,imode] [,ifirstval]
+    kres randomi kmin, kmax, kcps [,imode] [,ifirstval]
+    ```
 
 ### Initialization
 

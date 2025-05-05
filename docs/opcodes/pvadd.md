@@ -8,10 +8,17 @@ Reads from a _pvoc_ file and uses the data to perform additive synthesis.
 _pvadd_ reads from a [pvoc](../opcodes/pvoc.md) file and uses the data to perform additive synthesis using an internal array of interpolating oscillators. The user supplies the wave table (usually one period of a sine wave), and can choose which analysis bins will be used in the re-synthesis.
 
 ## Syntax
-``` csound-orc
-ares pvadd ktimpnt, kfmod, ifilcod, ifn, ibins [, ibinoffset] \
-           [, ibinincr] [, iextractmode] [, ifreqlim] [, igatefn]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = pvadd(ktimpnt, kfmod, ifilcod, ifn, ibins [, ibinoffset] \
+                 [, ibinincr] [, iextractmode] [, ifreqlim] [, igatefn])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares pvadd ktimpnt, kfmod, ifilcod, ifn, ibins [, ibinoffset] \
+               [, ibinincr] [, iextractmode] [, ifreqlim] [, igatefn]
+    ```
 
 ### Initialization
 

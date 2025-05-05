@@ -8,9 +8,15 @@ printf-style formatted output to a string variable at k-rate.
 Similar to the C function `sprintf()`. _sprintfk_ runs both at initialization and performance time.
 
 ## Syntax
-``` csound-orc
-Sdst sprintfk Sfmt, xarg1[, xarg2[, ... ]]
-```
+=== "Modern"
+    ``` csound-orc
+    Sdst = sprintfk(Sfmt, xarg1[, xarg2[, ... ]])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    Sdst sprintfk Sfmt, xarg1[, xarg2[, ... ]]
+    ```
 
 ### Initialization
 

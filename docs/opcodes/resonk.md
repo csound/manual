@@ -6,9 +6,15 @@ category:Signal Modifiers:Standard Filters:Control
 A second-order resonant filter.
 
 ## Syntax
-``` csound-orc
-kres resonk ksig, kcf, kbw [, iscl] [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    kres = resonk(ksig, kcf, kbw [, iscl] [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres resonk ksig, kcf, kbw [, iscl] [, iskip]
+    ```
 
 ### Initialization
 

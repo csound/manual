@@ -8,9 +8,15 @@ Initializes and sets the size of the global stack. Deprecated.
 Plugin opcode in stackops.
 
 ## Syntax
-``` csound-orc
-stack iStackSize
-```
+=== "Modern"
+    ``` csound-orc
+    stack(iStackSize)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    stack iStackSize
+    ```
 
 ### Initialization
 

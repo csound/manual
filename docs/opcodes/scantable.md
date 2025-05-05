@@ -8,9 +8,15 @@ A simpler scanned synthesis implementation.
 This is an implementation of a circular string scanned using external tables. This opcode will allow direct modification and reading of values with the table opcodes.
 
 ## Syntax
-``` csound-orc
-aout scantable kamp, kpch, ipos, imass, istiff, idamp, ivel
-```
+=== "Modern"
+    ``` csound-orc
+    aout = scantable(kamp, kpch, ipos, imass, istiff, idamp, ivel)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout scantable kamp, kpch, ipos, imass, istiff, idamp, ivel
+    ```
 
 ### Initialization
 

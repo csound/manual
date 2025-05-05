@@ -8,9 +8,15 @@ Allows the position and velocity of a node in a scanned process to be read.
 Plugin opcode in scansyn.
 
 ## Syntax
-``` csound-orc
-kpos, kvel scanmap iscan, kamp, kvamp [, iwhich]
-```
+=== "Modern"
+    ``` csound-orc
+    kpos, kvel = scanmap(iscan, kamp, kvamp [, iwhich])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kpos, kvel scanmap iscan, kamp, kvamp [, iwhich]
+    ```
 
 ### Initialization
 

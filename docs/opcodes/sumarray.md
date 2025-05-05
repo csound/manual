@@ -6,9 +6,15 @@ category:Array Opcodes
 Returns the sum of all elements in a k-rate array.
 
 ## Syntax
-``` csound-orc
-ksum sumarray karray
-```
+=== "Modern"
+    ``` csound-orc
+    ksum = sumarray(karray)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ksum sumarray karray
+    ```
 
 ### Performance
 

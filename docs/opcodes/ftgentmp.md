@@ -6,9 +6,15 @@ category:Table Control
 Generate a score function table from within the orchestra, which is deleted at the end of the note.
 
 ## Syntax
-``` csound-orc
-ifno ftgentmp ip1, ip2dummy, isize, igen, iarga, iargb, ...
-```
+=== "Modern"
+    ``` csound-orc
+    ifno = ftgentmp(ip1, ip2dummy, isize, igen, iarga, iargb, ...)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ifno ftgentmp ip1, ip2dummy, isize, igen, iarga, iargb, ...
+    ```
 
 ### Initialization
 

@@ -6,9 +6,15 @@ category:Zak Patch System
 Reads from a location in za space at a-rate, adds some gain.
 
 ## Syntax
-``` csound-orc
-ares zarg kndx, kgain
-```
+=== "Modern"
+    ``` csound-orc
+    ares = zarg(kndx, kgain)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares zarg kndx, kgain
+    ```
 
 ### Initialization
 

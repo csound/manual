@@ -8,10 +8,17 @@ Control signals based on held segments.
 The segments are delimited by two or more specified points. The entire envelope can be looped at time-variant rate. Each segment coordinate can also be varied at k-rate.
 
 ## Syntax
-``` csound-orc
-ksig lpsholdp kphase, kvalue0, ktime0  [, kvalue1] [, ktime1] \
-              [, kvalue2] [, ktime2] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    ksig = lpsholdp(kphase, kvalue0, ktime0  [, kvalue1] [, ktime1] \
+                    [, kvalue2] [, ktime2] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ksig lpsholdp kphase, kvalue0, ktime0  [, kvalue1] [, ktime1] \
+                  [, kvalue2] [, ktime2] [...]
+    ```
 
 ### Performance
 

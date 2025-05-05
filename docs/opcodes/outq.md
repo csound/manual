@@ -6,9 +6,15 @@ category:Signal I/O:Signal Output
 Writes 4-channel audio data to an external device or stream.
 
 ## Syntax
-``` csound-orc
-outq asig1, asig2, asig3, asig4
-```
+=== "Modern"
+    ``` csound-orc
+    outq(asig1, asig2, asig3, asig4)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    outq asig1, asig2, asig3, asig4
+    ```
 
 ### Performance
 

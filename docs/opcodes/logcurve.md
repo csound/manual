@@ -16,9 +16,15 @@ log(x * (y-1)+1) / log(y)
 where x is equal to _kindex_ and y is equal to _ksteepness_.
 
 ## Syntax
-``` csound-orc
-kout logcurve kindex, ksteepness
-```
+=== "Modern"
+    ``` csound-orc
+    kout = logcurve(kindex, ksteepness)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kout logcurve kindex, ksteepness
+    ```
 
 ### Performance
 

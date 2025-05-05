@@ -8,10 +8,17 @@ Pops values from the global stack.  Deprecated.
 Plugin opcode in stackops.
 
 ## Syntax
-``` csound-orc
-xval1, [xval2, ... , xval31] pop
-ival1, [ival2, ... , ival31] pop
-```
+=== "Modern"
+    ``` csound-orc
+    xval1, [xval2, ... , xval31] = pop()
+    ival1, [ival2, ... , ival31] = pop()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    xval1, [xval2, ... , xval31] pop
+    ival1, [ival2, ... , ival31] pop
+    ```
 
 ### Initialization
 

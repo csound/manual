@@ -6,13 +6,23 @@ category:Signal Modifiers:Panning and Spatialization
 Codes a signal into the ambisonic B format.
 
 ## Syntax
-``` csound-orc
-aw, ax, ay, az bformenc1 asig, kalpha, kbeta
-aw, ax, ay, az, ar, as, at, au, av bformenc1 asig, kalpha, kbeta
-aw, ax, ay, az, ar, as, at, au, av, ak, al, am, an, ao, ap, aq bformenc1 \
-    asig, kalpha, kbeta
-aarray[] bformenc1 asig, kalpha, kbeta
-```
+=== "Modern"
+    ``` csound-orc
+    aw, ax, ay, az = bformenc1(asig, kalpha, kbeta)
+    aw, ax, ay, az, ar, as, at, au, av = bformenc1(asig, kalpha, kbeta)
+    aw, ax, ay, az, ar, as, at, au, av, ak, al, am, an, ao, ap, aq = bformenc1(\
+          asig, kalpha, kbeta)
+    aarray[] = bformenc1(asig, kalpha, kbeta)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aw, ax, ay, az bformenc1 asig, kalpha, kbeta
+    aw, ax, ay, az, ar, as, at, au, av bformenc1 asig, kalpha, kbeta
+    aw, ax, ay, az, ar, as, at, au, av, ak, al, am, an, ao, ap, aq bformenc1 \
+        asig, kalpha, kbeta
+    aarray[] bformenc1 asig, kalpha, kbeta
+    ```
 
 ### Performance
 

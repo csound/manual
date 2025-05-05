@@ -6,9 +6,15 @@ category:Spectral Processing:ATS
 Allows a user to determine the frequency envelope of any [ATSbufread](../opcodes/ATSbufread.md).
 
 ## Syntax
-``` csound-orc
-kamp ATSinterpread kfreq
-```
+=== "Modern"
+    ``` csound-orc
+    kamp = ATSinterpread(kfreq)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kamp ATSinterpread kfreq
+    ```
 
 ### Performance
 

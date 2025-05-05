@@ -8,10 +8,17 @@ Audio output is a succession of grains derived from data in a stored function ta
 The local envelope of these grains and their timing is based on the model of _fof_ synthesis and permits detailed control of the granular synthesis.
 
 ## Syntax
-``` csound-orc
-ares fog xamp, xdens, xtrans, aspd, koct, kband, kris, kdur, kdec, \
-         iolaps, ifna, ifnb, itotdur [, iphs] [, itmode] [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = fog(xamp, xdens, xtrans, aspd, koct, kband, kris, kdur, kdec, \
+               iolaps, ifna, ifnb, itotdur [, iphs] [, itmode] [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares fog xamp, xdens, xtrans, aspd, koct, kband, kris, kdur, kdec, \
+             iolaps, ifna, ifnb, itotdur [, iphs] [, itmode] [, iskip]
+    ```
 
 ### Initialization
 

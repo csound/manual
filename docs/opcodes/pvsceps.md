@@ -6,9 +6,15 @@ category:Spectral Processing:Streaming
 Calculate the cepstrum of a pvs input, optionally liftering coefficients.
 
 ## Syntax
-``` csound-orc
-keps[] pvsceps fsig[, icoefs]
-```
+=== "Modern"
+    ``` csound-orc
+    keps[] = pvsceps(fsig[, icoefs])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    keps[] pvsceps fsig[, icoefs]
+    ```
 
 ### Initialization
 

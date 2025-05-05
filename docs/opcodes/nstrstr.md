@@ -6,10 +6,17 @@ category:Instrument Control:Initialization and Reinitialization
 Returns the string of a named instr from its number or an empty string if no such association exists.
 
 ## Syntax
-``` csound-orc
-Sname nstrstr insno
-Sname nstrstr knsno
-```
+=== "Modern"
+    ``` csound-orc
+    Sname = nstrstr(insno)
+    Sname = nstrstr(knsno)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    Sname nstrstr insno
+    Sname nstrstr knsno
+    ```
 
 ### Initialization
 

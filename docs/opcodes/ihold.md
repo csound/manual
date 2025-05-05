@@ -6,9 +6,15 @@ category:Instrument Control:Duration Control
 Causes a finite-duration note to become a &#8220;held&#8221; note.
 
 ## Syntax
-``` csound-orc
-ihold
-```
+=== "Modern"
+    ``` csound-orc
+    ihold()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ihold
+    ```
 
 ### Performance
 

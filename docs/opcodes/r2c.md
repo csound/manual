@@ -8,9 +8,15 @@ Real to complex format conversion.
 Converts a real-valued input array in real-imaginary interleaved complex format, setting its imaginary parts to 0. The output array will be double the size of the input. This is a utility operation to facilitate complex-value operations on real arrays.
 
 ## Syntax
-``` csound-orc
-kout[] r2c kin[]
-```
+=== "Modern"
+    ``` csound-orc
+    kout[] = r2c(kin[])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kout[] r2c kin[]
+    ```
 
 ### Performance
 

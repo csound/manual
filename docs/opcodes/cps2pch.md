@@ -6,9 +6,15 @@ category:Pitch Converters:Tuning Opcodes
 Converts a pitch-class value into cycles-per-second (Hz) for equal divisions of the octave.
 
 ## Syntax
-``` csound-orc
-icps cps2pch ipch, iequal
-```
+=== "Modern"
+    ``` csound-orc
+    icps = cps2pch(ipch, iequal)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    icps cps2pch ipch, iequal
+    ```
 
 ### Initialization
 

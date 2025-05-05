@@ -6,9 +6,15 @@ category:Signal Modifiers:Standard Filters:Resonant
 A resonant low-pass filter.
 
 ## Syntax
-``` csound-orc
-ares rezzy asig, xfco, xres [, imode, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = rezzy(asig, xfco, xres [, imode, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares rezzy asig, xfco, xres [, imode, iskip]
+    ```
 
 ### Initialization
 

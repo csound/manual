@@ -6,9 +6,15 @@ category:Real-time MIDI:Output
 Sends MIDI program change messages at k-rate.
 
 ## Syntax
-``` csound-orc
-outkpc kchn, kprog, kmin, kmax
-```
+=== "Modern"
+    ``` csound-orc
+    outkpc(kchn, kprog, kmin, kmax)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    outkpc kchn, kprog, kmin, kmax
+    ```
 
 ### Performance
 

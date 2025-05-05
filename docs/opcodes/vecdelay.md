@@ -6,9 +6,15 @@ category:Vectorial:Delay Paths
 Generate a sort of 'vectorial' delay.
 
 ## Syntax
-``` csound-orc
-vecdelay ifn, ifnIn, ifnDel, ielements, imaxdel [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    vecdelay(ifn, ifnIn, ifnDel, ielements, imaxdel [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vecdelay ifn, ifnIn, ifnDel, ielements, imaxdel [, iskip]
+    ```
 
 ### Initialization
 

@@ -8,9 +8,15 @@ Displays a PVS signal as an amplitude vs. freq graph.
 It prints the frames every hopsize. Uses X11 or FLTK windows if enabled, else (or if [-g](../invoke/cs-options-alphabetically.md#-g-asciidisplay) flag is set) displays are approximated in ASCII characters.
 
 ## Syntax
-``` csound-orc
-pvsdisp fsig [, ibins, iwtflg]
-```
+=== "Modern"
+    ``` csound-orc
+    pvsdisp(fsig [, ibins, iwtflg])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    pvsdisp fsig [, ibins, iwtflg]
+    ```
 
 ### Initialization
 

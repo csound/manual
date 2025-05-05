@@ -8,9 +8,15 @@ Prints a list of all instruments of a previously loaded SoundFont2 (SF2) sample 
 These opcodes allow management the sample-structure of SF2 files. In order to understand the usage of these opcodes, the user must have some knowledge of the SF2 format, so a brief description of this format can be found in the [SoundFont2 File Format](../siggen/sample.md) section.
 
 ## Syntax
-``` csound-orc
-sfilist ifilhandle [, Sprintprefix]
-```
+=== "Modern"
+    ``` csound-orc
+    sfilist(ifilhandle [, Sprintprefix])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    sfilist ifilhandle [, Sprintprefix]
+    ```
 
 ### Initialization
 

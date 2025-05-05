@@ -8,9 +8,15 @@ Creates a tone related to a brass instrument.
 It uses a physical model developed from Perry Cook, but re-coded for Csound.
 
 ## Syntax
-``` csound-orc
-ares wgbrass kamp, kfreq, ktens, iatt, kvibf, kvamp [, ifn] [, iminfreq]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = wgbrass(kamp, kfreq, ktens, iatt, kvibf, kvamp [, ifn] [, iminfreq])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares wgbrass kamp, kfreq, ktens, iatt, kvibf, kvamp [, ifn] [, iminfreq]
+    ```
 
 ### Initialization
 

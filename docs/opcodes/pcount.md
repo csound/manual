@@ -6,9 +6,15 @@ category:Instrument Control:Sensing and Control
 Returns the number of pfields belonging to a note event.
 
 ## Syntax
-``` csound-orc
-icount pcount
-```
+=== "Modern"
+    ``` csound-orc
+    icount = pcount()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    icount pcount
+    ```
 
 ### Initialization
 

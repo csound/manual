@@ -6,10 +6,17 @@ category:Real-time MIDI:Input
 Assigns a MIDI channel number to a Csound instrument.
 
 ## Syntax
-``` csound-orc
-massign ichnl, insnum[, ireset]
-massign ichnl, "insname"[, ireset]
-```
+=== "Modern"
+    ``` csound-orc
+    massign(ichnl, insnum[, ireset])
+    massign(ichnl, "insname"[, ireset])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    massign ichnl, insnum[, ireset]
+    massign ichnl, "insname"[, ireset]
+    ```
 
 ### Initialization
 

@@ -6,9 +6,15 @@ category:Real-time MIDI:Converters
 Get the note number, in octave-point-decimal units, of the current MIDI event.
 
 ## Syntax
-``` csound-orc
-ioct octmidi
-```
+=== "Modern"
+    ``` csound-orc
+    ioct = octmidi()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ioct octmidi
+    ```
 
 ### Performance
 

@@ -6,9 +6,15 @@ category:Signal I/O:Printing and Display
 Prints at init-time using a printf() style syntax.
 
 ## Syntax
-``` csound-orc
-prints "string" [, xval1] [, xval2] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    prints("string" [, xval1] [, xval2] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    prints "string" [, xval1] [, xval2] [...]
+    ```
 
 ### Initialization
 

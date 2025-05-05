@@ -10,9 +10,15 @@ Sets the global seed value for all _x-class noise generators_, as well as other 
 > [rand](../opcodes/rand.md), [randh](../opcodes/randh.md), [randi](../opcodes/randi.md), [rnd(x)](../opcodes/rnd.md) and [birnd(x)](../opcodes/birnd.md) are not affected by seed.
 
 ## Syntax
-``` csound-orc
-seed ival
-```
+=== "Modern"
+    ``` csound-orc
+    seed(ival)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    seed ival
+    ```
 
 ### Performance
 

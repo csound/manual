@@ -10,9 +10,15 @@ Plugin opcode in getftargs.
 _getftargs_ runs both at initialization and performance time.
 
 ## Syntax
-``` csound-orc
-Sdst getftargs iftno, ktrig
-```
+=== "Modern"
+    ``` csound-orc
+    Sdst = getftargs(iftno, ktrig)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    Sdst getftargs iftno, ktrig
+    ```
 
 ### Initialization
 

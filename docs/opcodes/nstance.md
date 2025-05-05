@@ -8,10 +8,17 @@ Schedules a new instrument instance, storing the instance handle in a variable.
 This handle can be used later to refer directly to the running nstance. This opcode is similar to schedule, but has the added facility of retrieving the nstance handle.
 
 ## Syntax
-``` csound-orc
-iHandle nstance insnum, iwhen, idur [, ip4] [, ip5] [...]
-iHandle nstance "insname", iwhen, idur [, ip4] [, ip5] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    iHandle = nstance(insnum, iwhen, idur [, ip4] [, ip5] [...])
+    iHandle = nstance("insname", iwhen, idur [, ip4] [, ip5] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    iHandle nstance insnum, iwhen, idur [, ip4] [, ip5] [...]
+    iHandle nstance "insname", iwhen, idur [, ip4] [, ip5] [...]
+    ```
 
 ### Initialization
 

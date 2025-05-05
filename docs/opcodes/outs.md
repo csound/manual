@@ -6,9 +6,15 @@ category:Signal I/O:Signal Output
 Writes stereo audio data to an external device or stream.
 
 ## Syntax
-``` csound-orc
-outs asig1, asig2
-```
+=== "Modern"
+    ``` csound-orc
+    outs(asig1, asig2)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    outs asig1, asig2
+    ```
 
 ### Performance
 

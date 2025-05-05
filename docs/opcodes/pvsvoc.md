@@ -8,9 +8,15 @@ Combine the spectral envelope of one fsig with the excitation (frequencies) of a
 This opcode provides support for cross-synthesis of amplitudes and frequencies. It takes the amplitudes of one input fsig and combines with frequencies from another. It is a spectral version of the well-known channel vocoder.
 
 ## Syntax
-``` csound-orc
-fsig pvsvoc famp, fexc, kdepth, kgain [, kcoefs]
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvsvoc(famp, fexc, kdepth, kgain [, kcoefs])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvsvoc famp, fexc, kdepth, kgain [, kcoefs]
+    ```
 
 ### Performance
 

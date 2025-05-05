@@ -6,9 +6,15 @@ category:Instrument Control:Invocation
 Removes the definition of an instrument as long as it is not in use.
 
 ## Syntax
-``` csound-orc
-remove insnum
-```
+=== "Modern"
+    ``` csound-orc
+    remove(insnum)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    remove insnum
+    ```
 
 ### Initialization
 

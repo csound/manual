@@ -6,10 +6,17 @@ category:Real-time MIDI:Converters
 Get the note number of the current MIDI event and modify it by the current pitch-bend value, express it in octave-point-decimal.
 
 ## Syntax
-``` csound-orc
-ioct octmidib [irange]
-koct octmidib [irange]
-```
+=== "Modern"
+    ``` csound-orc
+    ioct = octmidib([irange])
+    koct = octmidib([irange])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ioct octmidib [irange]
+    koct octmidib [irange]
+    ```
 
 ### Initialization
 

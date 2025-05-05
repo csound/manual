@@ -6,9 +6,15 @@ category:Signal Generators:Waveguide Physical Modeling
 A high fidelity simulation of a plucked string, using interpolating delay-lines.
 
 ## Syntax
-``` csound-orc
-ares wgpluck icps, iamp, kpick, iplk, idamp, ifilt, axcite
-```
+=== "Modern"
+    ``` csound-orc
+    ares = wgpluck(icps, iamp, kpick, iplk, idamp, ifilt, axcite)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares wgpluck icps, iamp, kpick, iplk, idamp, ifilt, axcite
+    ```
 
 ### Initialization
 

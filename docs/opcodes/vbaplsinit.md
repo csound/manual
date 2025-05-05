@@ -7,10 +7,17 @@ Configures VBAP output according to loudspeaker parameters.
 Configures VBAP output according to loudspeaker parameters.
 
 ## Syntax
-``` csound-orc
-vbaplsinit idim, ilsnum [, idir1] [, idir2] [...] [, idir32]
-vbaplsinit idim, ilsnum, ilsarray
-```
+=== "Modern"
+    ``` csound-orc
+    vbaplsinit(idim, ilsnum [, idir1] [, idir2] [...] [, idir32])
+    vbaplsinit(idim, ilsnum, ilsarray)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vbaplsinit idim, ilsnum [, idir1] [, idir2] [...] [, idir32]
+    vbaplsinit idim, ilsnum, ilsarray
+    ```
 
 ### Initialization
 

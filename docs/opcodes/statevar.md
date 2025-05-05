@@ -8,9 +8,15 @@ Statevar is a new digital implementation of the analogue state-variable filter.
 This filter has four simultaneous outputs: high-pass, low-pass, band-pass and band-reject. This filter uses oversampling for sharper resonance (default: 3 times oversampling). It includes a resonance limiter that prevents the filter from getting unstable.
 
 ## Syntax
-``` csound-orc
-ahp, alp, abp, abr statevar ain, xcf, xq [, iosamps, istor]
-```
+=== "Modern"
+    ``` csound-orc
+    ahp, alp, abp, abr = statevar(ain, xcf, xq [, iosamps, istor])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ahp, alp, abp, abr statevar ain, xcf, xq [, iosamps, istor]
+    ```
 
 ### Initialization
 

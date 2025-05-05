@@ -8,10 +8,17 @@ The _envlpx_ opcode with a final release segment.
 _envlpxr_ is the same as [envlpx](../opcodes/envlpx.md) except that the final segment is entered only on sensing a MIDI note release. The note is then extended by the decay time.
 
 ## Syntax
-``` csound-orc
-ares envlpxr xamp, irise, idec, ifn, iatss, iatdec [, ixmod] [,irind]
-kres envlpxr kamp, irise, idec, ifn, iatss, iatdec [, ixmod] [,irind]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = envlpxr(xamp, irise, idec, ifn, iatss, iatdec [, ixmod] [,irind])
+    kres = envlpxr(kamp, irise, idec, ifn, iatss, iatdec [, ixmod] [,irind])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares envlpxr xamp, irise, idec, ifn, iatss, iatdec [, ixmod] [,irind]
+    kres envlpxr kamp, irise, idec, ifn, iatss, iatdec [, ixmod] [,irind]
+    ```
 
 ### Initialization
 

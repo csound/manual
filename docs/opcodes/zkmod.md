@@ -6,9 +6,15 @@ category:Zak Patch System
 Facilitates the modulation of one signal by another.
 
 ## Syntax
-``` csound-orc
-kres zkmod ksig, kzkmod
-```
+=== "Modern"
+    ``` csound-orc
+    kres = zkmod(ksig, kzkmod)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres zkmod ksig, kzkmod
+    ```
 
 ### Performance
 

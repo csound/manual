@@ -6,10 +6,17 @@ category:Real-time MIDI:Slider Banks
 Creates a bank of 16 different MIDI control message numbers from a KAWAI MM-16 midi mixer.
 
 ## Syntax
-``` csound-orc
-k1, k2, ...., k16 sliderKawai imin1, imax1, init1, ifn1, imin2, imax2, \
-                              init2, ifn2, ..., imin16, imax16, init16, ifn16
-```
+=== "Modern"
+    ``` csound-orc
+    k1, k2, ...., k16 = sliderKawai(imin1, imax1, init1, ifn1, imin2, imax2, \
+                                    init2, ifn2, ..., imin16, imax16, init16, ifn16)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    k1, k2, ...., k16 sliderKawai imin1, imax1, init1, ifn1, imin2, imax2, \
+                                  init2, ifn2, ..., imin16, imax16, init16, ifn16
+    ```
 
 ### Initialization
 

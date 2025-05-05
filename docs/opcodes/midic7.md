@@ -6,10 +6,17 @@ category:Real-time MIDI:Input
 Allows a floating-point 7-bit MIDI signal scaled with a minimum and a maximum range.
 
 ## Syntax
-``` csound-orc
-idest midic7 ictlno, imin, imax [, ifn]
-kdest midic7 ictlno, kmin, kmax [, ifn]
-```
+=== "Modern"
+    ``` csound-orc
+    idest = midic7(ictlno, imin, imax [, ifn])
+    kdest = midic7(ictlno, kmin, kmax [, ifn])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    idest midic7 ictlno, imin, imax [, ifn]
+    kdest midic7 ictlno, kmin, kmax [, ifn]
+    ```
 
 ### Initialization
 

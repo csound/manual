@@ -6,9 +6,15 @@ category:Instrument Control:Time Reading
 Reads the value of an internal clock.
 
 ## Syntax
-``` csound-orc
-ir readclock inum
-```
+=== "Modern"
+    ``` csound-orc
+    ir = readclock(inum)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ir readclock inum
+    ```
 
 ### Initialization
 

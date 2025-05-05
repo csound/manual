@@ -8,10 +8,17 @@ Inverse Discrete Cosine Transform of a sample array (type-III DCT).
 Applies an Inverse Discrete Cosine Transform to an input 1-dimensional array producing an array of the same size containing the transform. Currently only power-of-two sizes are implemented. Available in i-time or perf (k-rate) versions.
 
 ## Syntax
-``` csound-orc
-kout[] dctinv kin[]
-iout[] dctinv iin[]
-```
+=== "Modern"
+    ``` csound-orc
+    kout[] = dctinv(kin[])
+    iout[] = dctinv(iin[])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kout[] dctinv kin[]
+    iout[] dctinv iin[]
+    ```
 
 ### Initialization
 

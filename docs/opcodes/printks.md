@@ -6,9 +6,15 @@ category:Signal I/O:Printing and Display
 Prints at k-rate using a printf() style syntax.
 
 ## Syntax
-``` csound-orc
-printks "string", itime [, xval1] [, xval2] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    printks("string", itime [, xval1] [, xval2] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    printks "string", itime [, xval1] [, xval2] [...]
+    ```
 
 ### Initialization
 

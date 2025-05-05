@@ -6,9 +6,15 @@ category:Array Opcodes
 Interleaves arrays into a a single one by placing the input data in alternate positions.
 
 ## Syntax
-``` csound-orc
-kout[] interleave kin1[], kin2[]
-```
+=== "Modern"
+    ``` csound-orc
+    kout[] = interleave(kin1[], kin2[])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kout[] interleave kin1[], kin2[]
+    ```
 
 ### Performance
 

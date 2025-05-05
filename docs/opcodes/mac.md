@@ -6,9 +6,15 @@ category:Mathematical Operations:Opcode Equivalents of Functions
 Multiplies and accumulates a- and k-rate signals.
 
 ## Syntax
-``` csound-orc
-ares mac ksig1, asig1 [, ksig2] [, asig2] [, ksig3] [, asig3] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = mac(ksig1, asig1 [, ksig2] [, asig2] [, ksig3] [, asig3] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares mac ksig1, asig1 [, ksig2] [, asig2] [, ksig3] [, asig3] [...]
+    ```
 
 ### Performance
 

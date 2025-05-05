@@ -8,9 +8,15 @@ Reports the usage of cpu either total or per core to monitor how close to max-ou
 Please note that this opcode is currently only supported on GNU/Linux .
 
 ## Syntax
-``` csound-orc
-ktot[,kcpu1, kcpu2,...] cpumeter ifreq
-```
+=== "Modern"
+    ``` csound-orc
+    ktot[,kcpu1, kcpu2,...] = cpumeter(ifreq)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ktot[,kcpu1, kcpu2,...] cpumeter ifreq
+    ```
 
 ### Initialization
 

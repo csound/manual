@@ -8,9 +8,15 @@ Positions the input sound in a 3D space and allows moving the sound at k-rate.
 This opcode positions the input sound in a 3D space, with optional simulation of room acoustics, in various output formats. _spat3d_ allows moving the sound at k-rate (this movement is interpolated internally to eliminate "zipper noise" if sr not equal to kr).
 
 ## Syntax
-``` csound-orc
-aW, aX, aY, aZ spat3d ain, kX, kY, kZ, idist, ift, imode, imdel, iovr [, istor]
-```
+=== "Modern"
+    ``` csound-orc
+    aW, aX, aY, aZ = spat3d(ain, kX, kY, kZ, idist, ift, imode, imdel, iovr [, istor])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aW, aX, aY, aZ spat3d ain, kX, kY, kZ, idist, ift, imode, imdel, iovr [, istor]
+    ```
 
 ### Initialization
 

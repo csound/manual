@@ -6,9 +6,15 @@ category:Signal I/O:Signal Output
 Writes multi-channel audio data from a ZAK array to an external device or stream.
 
 ## Syntax
-``` csound-orc
-outz ksig1
-```
+=== "Modern"
+    ``` csound-orc
+    outz(ksig1)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    outz ksig1
+    ```
 
 ### Performance
 

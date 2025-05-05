@@ -8,9 +8,15 @@ Streaming partial track filtering.
 The _trfilter_ opcode takes an input containg a TRACKS pv streaming signal (as generated, for instance by _partials_) and filters it using an amplitude response curve stored in a function table. The function table can have any size (no restriction to powers-of-two). The table lookup is done by linear-interpolation. It is possible to create time-varying filter curves by updating the amlitude response table with a table-writing opcode.
 
 ## Syntax
-``` csound-orc
-fsig trfilter fin, kamnt, ifn
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = trfilter(fin, kamnt, ifn)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig trfilter fin, kamnt, ifn
+    ```
 
 ### Performance
 

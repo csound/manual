@@ -6,10 +6,17 @@ category:Pitch Converters:Functions
 Convert midi note number to string note name, with an accuracy of 1 cent.
 
 ## Syntax
-``` csound-orc
-Snote mton kmidi
-Snote mton imidi
-```
+=== "Modern"
+    ``` csound-orc
+    Snote = mton(kmidi)
+    Snote = mton(imidi)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    Snote mton kmidi
+    Snote mton imidi
+    ```
 
 ### Performance
 

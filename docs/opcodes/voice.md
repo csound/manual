@@ -6,9 +6,15 @@ category:Signal Generators:Models and Emulations
 An emulation of a human voice.
 
 ## Syntax
-``` csound-orc
-ares voice kamp, kfreq, kphoneme, kform, kvibf, kvamp, ifn, ivfn
-```
+=== "Modern"
+    ``` csound-orc
+    ares = voice(kamp, kfreq, kphoneme, kform, kvibf, kvamp, ifn, ivfn)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares voice kamp, kfreq, kphoneme, kform, kvibf, kvamp, ifn, ivfn
+    ```
 
 ### Initialization
 

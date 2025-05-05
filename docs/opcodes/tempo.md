@@ -7,9 +7,15 @@ Apply tempo control to an uninterpreted score.
 
 
 ## Syntax
-``` csound-orc
-tempo ktempo, istartempo
-```
+=== "Modern"
+    ``` csound-orc
+    tempo(ktempo, istartempo)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    tempo ktempo, istartempo
+    ```
 
 ### Initialization
 

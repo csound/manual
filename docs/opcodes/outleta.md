@@ -8,9 +8,15 @@ Sends an arate signal out from an instrument to a named port.
 Plugin opcode in signalflowgraph
 
 ## Syntax
-``` csound-orc
-outleta Sname, asignal
-```
+=== "Modern"
+    ``` csound-orc
+    outleta(Sname, asignal)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    outleta Sname, asignal
+    ```
 
 ### Initialization
 

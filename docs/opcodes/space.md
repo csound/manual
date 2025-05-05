@@ -13,9 +13,15 @@ It uses Cartesian xy coordinates to calculate the balance of the outputs. The xy
 _space_ then allows the user to specify a time pointer (much as is used for [pvoc](../opcodes/pvoc.md), [lpread](../opcodes/lpread.md) and some other units) to have detailed control over the final speed of movement.
 
 ## Syntax
-``` csound-orc
-a1, a2, a3, a4  space asig, ifn, ktime, kreverbsend, kx, ky
-```
+=== "Modern"
+    ``` csound-orc
+    a1, a2, a3, a4  = space(asig, ifn, ktime, kreverbsend, kx, ky)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    a1, a2, a3, a4  space asig, ifn, ktime, kreverbsend, kx, ky
+    ```
 
 ### Initialization
 

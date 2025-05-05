@@ -6,9 +6,15 @@ category:Table Control:Table Queries
 Sums the values in an f-table in a consecutive range.
 
 ## Syntax
-``` csound-orc
-kr tabsum ifn[[, kmin] [, kmax]]
-```
+=== "Modern"
+    ``` csound-orc
+    kr = tabsum(ifn[[, kmin] [, kmax]])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kr tabsum ifn[[, kmin] [, kmax]]
+    ```
 
 ### Initialization
 

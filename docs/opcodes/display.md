@@ -8,9 +8,15 @@ Displays the audio or control signals as an amplitude vs. time graph.
 These units will print orchestra init-values, or produce graphic display of orchestra control signals and audio signals. Uses X11 windows if enabled, else (or if [-g](../invoke/cs-options-alphabetically.md#-g-asciidisplay) flag is set) displays are approximated in ASCII characters.
 
 ## Syntax
-``` csound-orc
-display xsig, iprd [, inprds] [, iwtflg]
-```
+=== "Modern"
+    ``` csound-orc
+    display(xsig, iprd [, inprds] [, iwtflg])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    display xsig, iprd [, inprds] [, iwtflg]
+    ```
 
 ### Initialization
 

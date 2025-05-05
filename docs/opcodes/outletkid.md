@@ -8,9 +8,15 @@ Sends a krate signal out from an instrument to a named port.
 Plugin opcode in signalflowgraph
 
 ## Syntax
-``` csound-orc
-outletkid Sname, SinstanceID, ksignal
-```
+=== "Modern"
+    ``` csound-orc
+    outletkid(Sname, SinstanceID, ksignal)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    outletkid Sname, SinstanceID, ksignal
+    ```
 
 ### Initialization
 

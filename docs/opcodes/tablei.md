@@ -6,11 +6,19 @@ category:Signal Generators:Table Access
 Accesses table values by direct indexing with linear interpolation.
 
 ## Syntax
-``` csound-orc
-ares tablei andx, ifn [, ixmode] [, ixoff] [, iwrap]
-ires tablei indx, ifn [, ixmode] [, ixoff] [, iwrap]
-kres tablei kndx, ifn [, ixmode] [, ixoff] [, iwrap]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = tablei(andx, ifn [, ixmode] [, ixoff] [, iwrap])
+    ires = tablei(indx, ifn [, ixmode] [, ixoff] [, iwrap])
+    kres = tablei(kndx, ifn [, ixmode] [, ixoff] [, iwrap])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares tablei andx, ifn [, ixmode] [, ixoff] [, iwrap]
+    ires tablei indx, ifn [, ixmode] [, ixoff] [, iwrap]
+    kres tablei kndx, ifn [, ixmode] [, ixoff] [, iwrap]
+    ```
 
 ### Initialization
 

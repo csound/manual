@@ -6,9 +6,15 @@ category:Instrument Control:Time Reading
 Read absolute time, in seconds, since the start of an instance of an instrument.
 
 ## Syntax
-``` csound-orc
-kres eventtime
-```
+=== "Modern"
+    ``` csound-orc
+    kres = eventtime()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres eventtime
+    ```
 
 ### Performance
 

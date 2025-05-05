@@ -8,9 +8,15 @@ Formant filter.
 Fofilter generates a stream of overlapping sinewave grains, when fed with a pulse train. Each grain is the impulse response of a combination of two BP filters. The grains are defined by their attack time (determining the skirtwidth of the formant region at -60dB) and decay time (-6dB bandwidth). Overlapping will occur when 1/freq &lt; decay, but, unlike FOF, there is no upper limit on the number of overlaps. The original idea for this opcode came from J McCartney's formlet class in SuperCollider, but this is possibly implemented differently(?).
 
 ## Syntax
-``` csound-orc
-asig fofilter ain, xcf, xris, xdec[, istor]
-```
+=== "Modern"
+    ``` csound-orc
+    asig = fofilter(ain, xcf, xris, xdec[, istor])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig fofilter ain, xcf, xris, xdec[, istor]
+    ```
 
 ### Initialization
 

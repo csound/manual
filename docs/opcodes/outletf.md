@@ -8,9 +8,15 @@ Sends a frate signal (fsig) out from an instrument to a named port.
 Plugin opcode in signalflowgraph
 
 ## Syntax
-``` csound-orc
-outletf Sname, fsignal
-```
+=== "Modern"
+    ``` csound-orc
+    outletf(Sname, fsignal)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    outletf Sname, fsignal
+    ```
 
 ### Initialization
 

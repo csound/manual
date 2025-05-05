@@ -6,9 +6,15 @@ category:Spectral Processing:Streaming
 Reads amplitude and/or frequency data from function tables.
 
 ## Syntax
-``` csound-orc
-pvsftr fsrc, ifna [, ifnf]
-```
+=== "Modern"
+    ``` csound-orc
+    pvsftr(fsrc, ifna [, ifnf])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    pvsftr fsrc, ifna [, ifnf]
+    ```
 
 ### Initialization
 

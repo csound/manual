@@ -6,9 +6,15 @@ category:Signal I/O:Signal Output
 Writes samples to quad channel 1 of an external device or stream.
 
 ## Syntax
-``` csound-orc
-outq1 asig
-```
+=== "Modern"
+    ``` csound-orc
+    outq1(asig)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    outq1 asig
+    ```
 
 ### Performance
 

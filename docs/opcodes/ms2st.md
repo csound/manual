@@ -10,9 +10,15 @@ It is a pure function with no side effects.
 The ms2st opcode decodes the MS stereo signal, but it also opens up the possibility to adjust the stereo width for _every_ stereo sound; A stereo file can be encoded, using the st2ms opcode, and then decoded by ms2st. It is then possible to adjust the stereo width.
 
 ## Syntax
-``` csound-orc
-aleft,aright ms2st am, as, kwidth
-```
+=== "Modern"
+    ``` csound-orc
+    aleft,aright = ms2st(am, as, kwidth)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aleft,aright ms2st am, as, kwidth
+    ```
 
 ### Performance
 

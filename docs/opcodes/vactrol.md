@@ -9,9 +9,15 @@ Envelope follower unit generator emmulating a Perkin Elmer Vactrole VTL5C3/2.
 Plugin opcode in buchla
 
 ## Syntax
-``` csound-orc
-ares vactrol asig [iup, idown]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = vactrol(asig [iup, idown])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares vactrol asig [iup, idown]
+    ```
 
 Initialisation
 

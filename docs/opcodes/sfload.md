@@ -10,9 +10,15 @@ These opcodes allow management the sample-structure of SF2 files. In order to un
 _sfload_ should be placed in the header section of a Csound orchestra.
 
 ## Syntax
-``` csound-orc
-ir sfload "filename"
-```
+=== "Modern"
+    ``` csound-orc
+    ir = sfload("filename")
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ir sfload "filename"
+    ```
 
 ### Initialization
 

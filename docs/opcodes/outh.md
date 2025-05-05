@@ -6,9 +6,15 @@ category:Signal I/O:Signal Output
 Writes 6-channel audio data to an external device or stream.
 
 ## Syntax
-``` csound-orc
-outh asig1, asig2, asig3, asig4, asig5, asig6
-```
+=== "Modern"
+    ``` csound-orc
+    outh(asig1, asig2, asig3, asig4, asig5, asig6)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    outh asig1, asig2, asig3, asig4, asig5, asig6
+    ```
 
 ### Performance
 

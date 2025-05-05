@@ -6,9 +6,15 @@ category:Instrument Control:Sensing and Control
 Reads the current value of the tempo.
 
 ## Syntax
-``` csound-orc
-kres tempoval
-```
+=== "Modern"
+    ``` csound-orc
+    kres = tempoval()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres tempoval
+    ```
 
 ### Performance
 

@@ -6,9 +6,15 @@ category:Instrument Control:Sensing and Control
 Generates a trigger signal according to the values stored in a table.
 
 ## Syntax
-``` csound-orc
-ktrig_out seqtime2 ktrig_in, ktime_unit, kstart, kloop, kinitndx, kfn_times
-```
+=== "Modern"
+    ``` csound-orc
+    ktrig_out = seqtime2(ktrig_in, ktime_unit, kstart, kloop, kinitndx, kfn_times)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ktrig_out seqtime2 ktrig_in, ktime_unit, kstart, kloop, kinitndx, kfn_times
+    ```
 
 ### Performance
 

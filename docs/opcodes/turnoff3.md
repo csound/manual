@@ -6,9 +6,15 @@ category:Instrument Control:Duration Control
 Turn off instance(s) of other instruments at performance time in the queue of scheduled events.
 
 ## Syntax
-``` csound-orc
-turnoff3 kinsno
-```
+=== "Modern"
+    ``` csound-orc
+    turnoff3(kinsno)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    turnoff3 kinsno
+    ```
 
 ### Performance
 

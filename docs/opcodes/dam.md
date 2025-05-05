@@ -8,9 +8,15 @@ A dynamic compressor/expander.
 This opcode dynamically modifies a gain value applied to the input sound _ain_ by comparing its power level to a given threshold level. The signal will be compressed/expanded with different factors regarding that it is over or under the threshold.
 
 ## Syntax
-``` csound-orc
-ares dam asig, kthreshold, icomp1, icomp2, irtime, iftime
-```
+=== "Modern"
+    ``` csound-orc
+    ares = dam(asig, kthreshold, icomp1, icomp2, irtime, iftime)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares dam asig, kthreshold, icomp1, icomp2, irtime, iftime
+    ```
 
 ### Initialization
 

@@ -8,9 +8,15 @@ Allows text to be displayed from instruments like sliders etc. (only on Unix and
 Plugin opcode in control.
 
 ## Syntax
-``` csound-orc
-flashtxt  iwhich, String
-```
+=== "Modern"
+    ``` csound-orc
+    flashtxt( iwhich, String)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    flashtxt  iwhich, String
+    ```
 
 ### Initialization
 

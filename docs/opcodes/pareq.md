@@ -51,9 +51,15 @@ a2 =  1 - K/Q + K^2
 ```
 
 ## Syntax
-``` csound-orc
-ares pareq asig, kc, kv, kq [, imode] [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = pareq(asig, kc, kv, kq [, imode] [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares pareq asig, kc, kv, kq [, imode] [, iskip]
+    ```
 
 ### Initialization
 

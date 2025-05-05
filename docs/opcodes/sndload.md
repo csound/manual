@@ -10,10 +10,17 @@ Loads a sound file into memory for use by [loscilx](../opcodes/loscilx.md).
 > This opcode loads the file into memory but it is not available for use adfterwards.  In effect it just wastes memory.
 
 ## Syntax
-``` csound-orc
-sndload Sfname[, ifmt[, ichns[, isr[, ibas[, iamp[, istrt [, ilpmod[, ilps \
-        [, ilpe]]]]]]]]]
-```
+=== "Modern"
+    ``` csound-orc
+    sndload(Sfname[, ifmt[, ichns[, isr[, ibas[, iamp[, istrt [, ilpmod[, ilps \
+            [, ilpe]]]]]]]]])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    sndload Sfname[, ifmt[, ichns[, isr[, ibas[, iamp[, istrt [, ilpmod[, ilps \
+            [, ilpe]]]]]]]]]
+    ```
 
 ### Initialization
 

@@ -6,10 +6,17 @@ category:Signal I/O:Signal Output
 Returns the audio spout frame (if active), otherwise it returns zero.
 
 ## Syntax
-``` csound-orc
-aout1 [,aout2 ... aoutX] monitor
-aarra monitor
-```
+=== "Modern"
+    ``` csound-orc
+    aout1 [,aout2 ... aoutX] = monitor()
+    aarra = monitor()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout1 [,aout2 ... aoutX] monitor
+    aarra monitor
+    ```
 
 ### Performance
 

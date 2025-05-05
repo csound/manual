@@ -8,9 +8,15 @@ A non-linear filter system to excite the signal.
 Plugin opcode in exciter. "Filtered distortion to add brilliance to a signal"
 
 ## Syntax
-``` csound-orc
-ares exciter asig, kfreq, kceil, kharmonics, kblend
-```
+=== "Modern"
+    ``` csound-orc
+    ares = exciter(asig, kfreq, kceil, kharmonics, kblend)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares exciter asig, kfreq, kceil, kharmonics, kblend
+    ```
 
 ### Initialization
 

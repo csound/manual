@@ -6,10 +6,17 @@ category:Instrument Control:Realtime Performance Control
 Limits the number of allocations of an instrument.
 
 ## Syntax
-``` csound-orc
-maxalloc insnum, icount
-maxalloc Sinsname, icount
-```
+=== "Modern"
+    ``` csound-orc
+    maxalloc(insnum, icount)
+    maxalloc(Sinsname, icount)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    maxalloc insnum, icount
+    maxalloc Sinsname, icount
+    ```
 
 ### Initialization
 

@@ -6,10 +6,17 @@ category:Signal Generators:Linear and Exponential Generators
 Trace a series of line segments between specified points including a release segment.
 
 ## Syntax
-``` csound-orc
-ares linsegr ia, idur1, ib [, idur2] [, ic] [...], irel, iz
-kres linsegr ia, idur1, ib [, idur2] [, ic] [...], irel, iz
-```
+=== "Modern"
+    ``` csound-orc
+    ares = linsegr(ia, idur1, ib [, idur2] [, ic] [...], irel, iz)
+    kres = linsegr(ia, idur1, ib [, idur2] [, ic] [...], irel, iz)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares linsegr ia, idur1, ib [, idur2] [, ic] [...], irel, iz
+    kres linsegr ia, idur1, ib [, idur2] [, ic] [...], irel, iz
+    ```
 
 ### Initialization
 

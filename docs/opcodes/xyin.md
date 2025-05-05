@@ -8,9 +8,15 @@ Sense the cursor position in an output window.
 When _xyin_ is called the position of the mouse within the output window is used to reply to the request.  This simple mechanism does mean that only one _xyin_ can be used accurately at once.  The position of the mouse is reported in the output window.
 
 ## Syntax
-``` csound-orc
-kx, ky xyin iprd, ixmin, ixmax, iymin, iymax [, ixinit] [, iyinit]
-```
+=== "Modern"
+    ``` csound-orc
+    kx, ky = xyin(iprd, ixmin, ixmax, iymin, iymax [, ixinit] [, iyinit])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kx, ky xyin iprd, ixmin, ixmax, iymin, iymax [, ixinit] [, iyinit]
+    ```
 
 ### Initialization
 

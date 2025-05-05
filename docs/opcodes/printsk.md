@@ -8,9 +8,15 @@ Prints at k-rate using a printf() style syntax.
 This opcode prints at every cycle, possibly multiple times per cycle. Used inside an if-block it can behave like *printf*, *printks* (when used together with *metro*) or *printks2* (when used with *changed*).
 
 ## Syntax
-``` csound-orc
-printsk "string", [, xval1] [, xval2] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    printsk("string", [, xval1] [, xval2] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    printsk "string", [, xval1] [, xval2] [...]
+    ```
 
 ### Initialization
 

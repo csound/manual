@@ -8,9 +8,15 @@ Steiner-Parker filter.
 Spf is a digital implementation of a linear Steiner-Parker analogue filter, which is a second-order multimode filter with three separate inputs for lowpass, highpass, and bandpass and one output.
 
 ## Syntax
-``` csound-orc
-asig spf alp,ahp,abp, xcf, xR[, istor]
-```
+=== "Modern"
+    ``` csound-orc
+    asig = spf(alp,ahp,abp, xcf, xR[, istor])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig spf alp,ahp,abp, xcf, xR[, istor]
+    ```
 
 ### Initialization
 

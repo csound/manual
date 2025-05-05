@@ -6,9 +6,15 @@ category:Signal Modifiers:Comparators and Accumulators
 Local maximum (or minimum) value of an incoming asig signal, checked in the time interval between ktrig has become true twice.
 
 ## Syntax
-``` csound-orc
-knumkout max_k asig, ktrig, itype
-```
+=== "Modern"
+    ``` csound-orc
+    knumkout = max_k(asig, ktrig, itype)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    knumkout max_k asig, ktrig, itype
+    ```
 
 ### Initialization
 

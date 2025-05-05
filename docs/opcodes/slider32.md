@@ -6,12 +6,21 @@ category:Real-time MIDI:Slider Banks
 Creates a bank of 32 different MIDI control message numbers.
 
 ## Syntax
-``` csound-orc
-i1, ..., i32 slider32 ichan, ictlnum1, imin1, imax1, init1, ifn1, ..., \
-                      ictlnum32, imin32, imax32, init32, ifn32
-k1, ..., k32 slider32 ichan, ictlnum1, imin1, imax1, init1, ifn1, ..., \
-                      ictlnum32, imin32, imax32, init32, ifn32
-```
+=== "Modern"
+    ``` csound-orc
+    i1, ..., i32 = slider32(ichan, ictlnum1, imin1, imax1, init1, ifn1, ..., \
+                            ictlnum32, imin32, imax32, init32, ifn32)
+    k1, ..., k32 = slider32(ichan, ictlnum1, imin1, imax1, init1, ifn1, ..., \
+                            ictlnum32, imin32, imax32, init32, ifn32)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    i1, ..., i32 slider32 ichan, ictlnum1, imin1, imax1, init1, ifn1, ..., \
+                          ictlnum32, imin32, imax32, init32, ifn32
+    k1, ..., k32 slider32 ichan, ictlnum1, imin1, imax1, init1, ifn1, ..., \
+                          ictlnum32, imin32, imax32, init32, ifn32
+    ```
 
 ### Initialization
 

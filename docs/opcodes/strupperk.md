@@ -8,9 +8,15 @@ Convert Ssrc to upper case, and write the result to Sdst.
 _strupperk_ runs both at init and performance time.
 
 ## Syntax
-``` csound-orc
-Sdst strupperk Ssrc
-```
+=== "Modern"
+    ``` csound-orc
+    Sdst = strupperk(Ssrc)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    Sdst strupperk Ssrc
+    ```
 
 ## See Also
 

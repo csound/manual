@@ -10,9 +10,15 @@ These opcodes allow management the sample-structure of SF2 files. In order to un
 _sfpassign_ should be placed in the header section of a Csound orchestra.
 
 ## Syntax
-``` csound-orc
-sfpassign istartindex, ifilhandle[, imsgs]
-```
+=== "Modern"
+    ``` csound-orc
+    sfpassign(istartindex, ifilhandle[, imsgs])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    sfpassign istartindex, ifilhandle[, imsgs]
+    ```
 
 ### Initialization
 

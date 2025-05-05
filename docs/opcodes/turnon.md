@@ -6,9 +6,15 @@ category:Instrument Control:Duration Control
 Activate an instrument for an indefinite time.
 
 ## Syntax
-``` csound-orc
-turnon insnum [, itime]
-```
+=== "Modern"
+    ``` csound-orc
+    turnon(insnum [, itime])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    turnon insnum [, itime]
+    ```
 
 ### Initialization
 

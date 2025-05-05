@@ -20,10 +20,17 @@ We talk of rendering phrases (a sequence of cuts before reaching a new phrase at
 The opcode comes most alive when multiple synchronised versions are used simultaneously.
 
 ## Syntax
-``` csound-orc
-a1,a2 bbcuts asource1, asource2, ibps, isubdiv, ibarlength, iphrasebars, \
-             inumrepeats [, istutterspeed] [, istutterchance] [, ienvchoice]
-```
+=== "Modern"
+    ``` csound-orc
+    a1,a2 = bbcuts(asource1, asource2, ibps, isubdiv, ibarlength, iphrasebars, \
+                   inumrepeats [, istutterspeed] [, istutterchance] [, ienvchoice])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    a1,a2 bbcuts asource1, asource2, ibps, isubdiv, ibarlength, iphrasebars, \
+                 inumrepeats [, istutterspeed] [, istutterchance] [, ienvchoice]
+    ```
 
 ### Initialization
 

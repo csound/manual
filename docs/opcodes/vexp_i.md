@@ -6,9 +6,15 @@ category:Vectorial:Scalar operations
 Performs power-of operations between a vector and a scalar.
 
 ## Syntax
-``` csound-orc
-vexp_i ifn, ival, ielements [, idstoffset]
-```
+=== "Modern"
+    ``` csound-orc
+    vexp_i(ifn, ival, ielements [, idstoffset])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vexp_i ifn, ival, ielements [, idstoffset]
+    ```
 
 ### Initialization
 

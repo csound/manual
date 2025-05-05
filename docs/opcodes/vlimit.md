@@ -6,9 +6,15 @@ category:Vectorial:Limiting and Wrapping
 Limits elements of vectorial control signals.
 
 ## Syntax
-``` csound-orc
-vlimit ifn, kmin, kmax, ielements
-```
+=== "Modern"
+    ``` csound-orc
+    vlimit(ifn, kmin, kmax, ielements)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vlimit ifn, kmin, kmax, ielements
+    ```
 
 ### Initialization
 

@@ -10,10 +10,17 @@ Audio output is a succession of sinusoid bursts initiated at frequency _xfund_ w
 _fof2_ implements k-rate incremental indexing into _ifna_ function with each successive burst.
 
 ## Syntax
-``` csound-orc
-ares fof2 xamp, xfund, xform, koct, kband, kris, kdur, kdec, iolaps, \
-          ifna, ifnb, itotdur, kphs, kgliss [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = fof2(xamp, xfund, xform, koct, kband, kris, kdur, kdec, iolaps, \
+                ifna, ifnb, itotdur, kphs, kgliss [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares fof2 xamp, xfund, xform, koct, kband, kris, kdur, kdec, iolaps, \
+              ifna, ifnb, itotdur, kphs, kgliss [, iskip]
+    ```
 
 ### Initialization
 

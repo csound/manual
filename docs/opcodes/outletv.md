@@ -8,9 +8,15 @@ Sends an arate array signal out from an instrument to a named port.
 Plugin opcode in signalflowgraph
 
 ## Syntax
-``` csound-orc
-outletv Sname, array
-```
+=== "Modern"
+    ``` csound-orc
+    outletv(Sname, array)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    outletv Sname, array
+    ```
 
 ### Initialization
 

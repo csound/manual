@@ -6,9 +6,15 @@ category:Instrument Control:Sensing and Control
 Sense on-screen controls. Requires Winsound or TCL/TK.
 
 ## Syntax
-``` csound-orc
-kres button knum
-```
+=== "Modern"
+    ``` csound-orc
+    kres = button(knum)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres button knum
+    ```
 
 ### Performance
 

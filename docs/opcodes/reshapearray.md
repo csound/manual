@@ -10,9 +10,15 @@ Plugin opcode in emugens.
 The _reshapearray_ opcode changes the shape of an array, as long as this does not modify its capacity. It can be used to convert a 1D to a 2D array, or viceversa, or simply to modify the size of its dimensions, as long as the product remains constant.
 
 ## Syntax
-``` csound-orc
-reshapearray array[], isize0 [, isize1 ]
-```
+=== "Modern"
+    ``` csound-orc
+    reshapearray(array[], isize0 [, isize1 ])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    reshapearray array[], isize0 [, isize1 ]
+    ```
 
 ### Initialization
 

@@ -8,10 +8,17 @@ Assigns an instrument number to a specified MIDI program.
 By default, the instrument is the same as the program number. If the selected instrument is zero or negative or does not exist, the program change is ignored. This opcode is normally used in the orchestra header. Although, like [massign](../opcodes/massign.md), it also works in instruments.
 
 ## Syntax
-``` csound-orc
-pgmassign ipgm, inst[, ichn]
-pgmassign ipgm, "insname"[, ichn]
-```
+=== "Modern"
+    ``` csound-orc
+    pgmassign(ipgm, inst[, ichn])
+    pgmassign(ipgm, "insname"[, ichn])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    pgmassign ipgm, inst[, ichn]
+    pgmassign ipgm, "insname"[, ichn]
+    ```
 
 ### Initialization
 

@@ -8,10 +8,17 @@ Semi-physical model of a tambourine sound.
 It is one of the PhISEM percussion opcodes. PhISEM (Physically Informed Stochastic Event Modeling) is an algorithmic approach for simulating collisions of multiple independent sound producing objects.
 
 ## Syntax
-``` csound-orc
-ares tambourine kamp, idettack [, inum] [, idamp] [, imaxshake] [, ifreq] \
-                [, ifreq1] [, ifreq2]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = tambourine(kamp, idettack [, inum] [, idamp] [, imaxshake] [, ifreq] \
+                      [, ifreq1] [, ifreq2])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares tambourine kamp, idettack [, inum] [, idamp] [, imaxshake] [, ifreq] \
+                    [, ifreq1] [, ifreq2]
+    ```
 
 ### Initialization
 

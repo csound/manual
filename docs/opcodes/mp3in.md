@@ -6,10 +6,17 @@ category:Signal I/O:Signal Input
 Reads mono or stereo audio data from an external MP3 file.
 
 ## Syntax
-``` csound-orc
-ar1, ar2 mp3in ifilcod[, iskptim, iformat, iskipinit, ibufsize]
-ar1 mp3in ifilcod[, iskptim, iformat, iskipinit, ibufsize]
-```
+=== "Modern"
+    ``` csound-orc
+    ar1, ar2 = mp3in(ifilcod[, iskptim, iformat, iskipinit, ibufsize])
+    ar1 = mp3in(ifilcod[, iskptim, iformat, iskipinit, ibufsize])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar1, ar2 mp3in ifilcod[, iskptim, iformat, iskipinit, ibufsize]
+    ar1 mp3in ifilcod[, iskptim, iformat, iskipinit, ibufsize]
+    ```
 
 ### Initialization
 

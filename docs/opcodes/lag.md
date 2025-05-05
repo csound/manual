@@ -10,10 +10,17 @@ Plugin opcode in scugens.
 Exponential lag with 60dB lag time. Port of Supercollider's Lag. This is essentially a one pole filter except that instead of supplying the coefficient directly, it is calculated from a 60 dB lag time. This is the time required for the filter to converge to within 0.01% of a value. This is useful for smoothing out control signals.
 
 ## Syntax
-``` csound-orc
-aout lag ain, klagtime [, initialvalue]
-kout lag kin, klagtime [, initialvalue]
-```
+=== "Modern"
+    ``` csound-orc
+    aout = lag(ain, klagtime [, initialvalue])
+    kout = lag(kin, klagtime [, initialvalue])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout lag ain, klagtime [, initialvalue]
+    kout lag kin, klagtime [, initialvalue]
+    ```
 
 ### Initialization
 

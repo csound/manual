@@ -6,9 +6,15 @@ category:Signal I/O:File I/O
 Periodically writes three orchestra control-signal values to a named external file in a specific format.
 
 ## Syntax
-``` csound-orc
-dumpk3 ksig1, ksig2, ksig3, ifilname, iformat, iprd
-```
+=== "Modern"
+    ``` csound-orc
+    dumpk3(ksig1, ksig2, ksig3, ifilname, iformat, iprd)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    dumpk3 ksig1, ksig2, ksig3, ifilname, iformat, iprd
+    ```
 
 ### Initialization
 

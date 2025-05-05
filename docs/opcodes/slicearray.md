@@ -6,9 +6,15 @@ category:Table Control:Table Queries
 Take a slice of a vector (one-dimensional k-rate array).
 
 ## Syntax
-``` csound-orc
-karray slicearray kinarray, istart, iend [,istride]
-```
+=== "Modern"
+    ``` csound-orc
+    karray = slicearray(kinarray, istart, iend [,istride])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    karray slicearray kinarray, istart, iend [,istride]
+    ```
 
 ### Initialization
 
