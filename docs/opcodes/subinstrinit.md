@@ -32,11 +32,17 @@ The called instrument's p2 and p3 values will be identical to the host instrumen
 
 ## Examples
 
-Here is an example of the subinstrinit opcode. It uses the file [subinstrinit.csd](../examples/subinstrinit.csd).
+=== "Modern"
+    Here is an example of the subinstrinit opcode. It uses the file [subinstrinit-modern.csd](../examples/subinstrinit-modern.csd).
+    ``` csound-csd title="Example of the subinstrinit opcode." linenums="1"
+    --8<-- "examples/subinstrinit-modern.csd"
+    ```
 
-``` csound-csd title="Example of the subinstrinit opcode." linenums="1"
---8<-- "examples/subinstrinit.csd"
-```
+=== "Classic"
+    Here is an example of the subinstrinit opcode. It uses the file [subinstrinit.csd](../examples/subinstrinit.csd).
+    ``` csound-csd title="Example of the subinstrinit opcode." linenums="1"
+    --8<-- "examples/subinstrinit.csd"
+    ```
 
 Its output should include lines like this:
 

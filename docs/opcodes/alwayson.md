@@ -32,11 +32,17 @@ When the instrument is activated, p1 is the insno, p2 is 0, and p3 is -1. Pfield
 
 ## Examples
 
-Here is an example of the alwayson opcode. It uses the file [alwayson.csd](../examples/alwayson.csd).
+=== "Modern"
+    Here is an example of the alwayson opcode. It uses the file [alwayson-modern.csd](../examples/alwayson-modern.csd).
+    ``` csound-csd title="Example of the alwayson opcode." linenums="1"
+    --8<-- "examples/alwayson-modern.csd"
+    ```
 
-``` csound-csd title="Example of the alwayson opcode." linenums="1"
---8<-- "examples/alwayson.csd"
-```
+=== "Classic"
+    Here is an example of the alwayson opcode. It uses the file [alwayson.csd](../examples/alwayson.csd).
+    ``` csound-csd title="Example of the alwayson opcode." linenums="1"
+    --8<-- "examples/alwayson.csd"
+    ```
 
 ## See also
 

@@ -24,11 +24,17 @@ where _label_ is in the same instrument block and is not an expression.
 
 ## Examples
 
-Here is an example of the goto opcode. It uses the file [goto.csd](../examples/goto.csd).
+=== "Modern"
+    Here is an example of the goto opcode. It uses the file [goto-modern.csd](../examples/goto-modern.csd).
+    ``` csound-csd title="Example of the goto opcode." linenums="1"
+    --8<-- "examples/goto-modern.csd"
+    ```
 
-``` csound-csd title="Example of the goto opcode." linenums="1"
---8<-- "examples/goto.csd"
-```
+=== "Classic"
+    Here is an example of the goto opcode. It uses the file [goto.csd](../examples/goto.csd).
+    ``` csound-csd title="Example of the goto opcode." linenums="1"
+    --8<-- "examples/goto.csd"
+    ```
 
 ## See also
 

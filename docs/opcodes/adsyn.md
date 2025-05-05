@@ -42,11 +42,17 @@ Sound described by an _adsyn_ control file can also be modified during re-synthe
 
 ## Examples
 
-Here is an example of the adsyn opcode. It uses the file [adsyn.csd](../examples/adsyn.csd).
+=== "Modern"
+    Here is an example of the adsyn opcode. It uses the file [adsyn-modern.csd](../examples/adsyn-modern.csd).
+    ``` csound-orc title="Example of the adsyn opcode." linenums="1"
+    --8<-- "examples/adsyn-modern.csd"
+    ```
 
-``` csound-orc title="Example of the adsyn opcode." linenums="1"
---8<-- "examples/adsyn.csd"
-```
+=== "Classic"
+    Here is an example of the adsyn opcode. It uses the file [adsyn.csd](../examples/adsyn.csd).
+    ``` csound-orc title="Example of the adsyn opcode." linenums="1"
+    --8<-- "examples/adsyn.csd"
+    ```
 
 ## See also
 

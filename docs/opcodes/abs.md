@@ -15,11 +15,17 @@ where the argument within the parentheses may be an expression. Value converters
 
 ## Examples
 
-Here is an example of the abs opcode. It uses the file [abs.csd](../examples/abs.csd).
+=== "Modern"
+    Here is an example of the abs opcode. It uses the file [abs-modern.csd](../examples/abs-modern.csd).
+    ``` csound-csd title="Example of the abs opcode." linenums="1"
+    --8<-- "examples/abs-modern.csd"
+    ```
 
-``` csound-csd title="Example of the abs opcode." linenums="1"
---8<-- "examples/abs.csd"
-```
+=== "Classic"
+    Here is an example of the abs opcode. It uses the file [abs.csd](../examples/abs.csd).
+    ``` csound-csd title="Example of the abs opcode." linenums="1"
+    --8<-- "examples/abs.csd"
+    ```
 
 Its output should include lines like:
 

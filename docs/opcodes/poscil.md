@@ -46,11 +46,17 @@ The opcode [poscil3](../opcodes/poscil3.md) is the same as  _poscil_, but uses c
 
 ## Examples
 
-Here is an example of the poscil opcode. It uses the file [poscil.csd](../examples/poscil.csd).
+=== "Modern"
+    Here is an example of the poscil opcode. It uses the file [poscil-modern.csd](../examples/poscil-modern.csd).
+    ``` csound-orc title="Example of the poscil opcode." linenums="1"
+    --8<-- "examples/poscil-modern.csd"
+    ```
 
-``` csound-orc title="Example of the poscil opcode." linenums="1"
---8<-- "examples/poscil.csd"
-```
+=== "Classic"
+    Here is an example of the poscil opcode. It uses the file [poscil.csd](../examples/poscil.csd).
+    ``` csound-orc title="Example of the poscil opcode." linenums="1"
+    --8<-- "examples/poscil.csd"
+    ```
 
 ## See also
 

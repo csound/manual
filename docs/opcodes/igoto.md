@@ -20,11 +20,17 @@ where _label_ is in the same instrument block and is not an expression.
 
 ## Examples
 
-Here is an example of the igoto opcode. It uses the file [igoto.csd](../examples/igoto.csd).
+=== "Modern"
+    Here is an example of the igoto opcode. It uses the file [igoto-modern.csd](../examples/igoto-modern.csd).
+    ``` csound-csd title="Example of the igoto opcode." linenums="1"
+    --8<-- "examples/igoto-modern.csd"
+    ```
 
-``` csound-csd title="Example of the igoto opcode." linenums="1"
---8<-- "examples/igoto.csd"
-```
+=== "Classic"
+    Here is an example of the igoto opcode. It uses the file [igoto.csd](../examples/igoto.csd).
+    ``` csound-csd title="Example of the igoto opcode." linenums="1"
+    --8<-- "examples/igoto.csd"
+    ```
 
 Its output should include lines like this:
 

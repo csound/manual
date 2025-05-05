@@ -40,11 +40,19 @@ _adsynt2_ is identical to _adsynt_ (by Peter Neubäcker), except it provides lin
 
 ## Examples
 
-Here is an example of the adsynt2 opcode. It uses the file [adsynt2.csd](../examples/adsynt2.csd). These two instruments perform additive synthesis. The output of each sounds like a Tibetan bowl. The first one is static, as parameters are only generated at init-time. In the second one, parameters are continuously changed.
+Here is an example of the adsynt2 opcode. These two instruments perform additive synthesis. The output of each sounds like a Tibetan bowl. The first one is static, as parameters are only generated at init-time. In the second one, parameters are continuously changed.
 
-``` csound-orc title="Example of the adsynt2 opcode." linenums="1"
---8<-- "examples/adsynt2.csd"
-```
+=== "Modern"
+    Uses the file [adsynt2-modern.csd](../examples/adsynt2-modern.csd).
+    ``` csound-orc title="Example of the adsynt2 opcode." linenums="1"
+    --8<-- "examples/adsynt2-modern.csd"
+    ```
+
+=== "Classic"
+    Uses the file [adsynt2.csd](../examples/adsynt2.csd).
+    ``` csound-orc title="Example of the adsynt2 opcode." linenums="1"
+    --8<-- "examples/adsynt2.csd"
+    ```
 
 ## See also
 

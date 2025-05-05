@@ -24,11 +24,17 @@ _imax_ (optional, default=127) -- maximum limit on values obtained.
 
 ## Examples
 
-Here is an example of the aftouch opcode. It uses the file [aftouch.csd](../examples/aftouch.csd).
+=== "Modern"
+    Here is an example of the aftouch opcode. It uses the file [aftouch-modern.csd](../examples/aftouch-modern.csd).
+    ``` csound-csd title="Example of the aftouch opcode." linenums="1"
+    --8<-- "examples/aftouch-modern.csd"
+    ```
 
-``` csound-csd title="Example of the aftouch opcode." linenums="1"
---8<-- "examples/aftouch.csd"
-```
+=== "Classic"
+    Here is an example of the aftouch opcode. It uses the file [aftouch.csd](../examples/aftouch.csd).
+    ``` csound-csd title="Example of the aftouch opcode." linenums="1"
+    --8<-- "examples/aftouch.csd"
+    ```
 
 ## See also
 

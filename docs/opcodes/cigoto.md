@@ -20,11 +20,17 @@ where _label_ is in the same instrument block and is not an expression, and wher
 
 ## Examples
 
-Here is an example of the cigoto opcode. It uses the file [cigoto.csd](../examples/cigoto.csd).
+=== "Modern"
+    Here is an example of the cigoto opcode. It uses the file [cigoto-modern.csd](../examples/cigoto-modern.csd).
+    ``` csound-csd title="Example of the cigoto opcode." linenums="1"
+    --8<-- "examples/cigoto-modern.csd"
+    ```
 
-``` csound-csd title="Example of the cigoto opcode." linenums="1"
---8<-- "examples/cigoto.csd"
-```
+=== "Classic"
+    Here is an example of the cigoto opcode. It uses the file [cigoto.csd](../examples/cigoto.csd).
+    ``` csound-csd title="Example of the cigoto opcode." linenums="1"
+    --8<-- "examples/cigoto.csd"
+    ```
 
 Its output should include lines like:
 

@@ -54,11 +54,17 @@ if (kndx >= kmin) kgoto label
 
 ## Examples
 
-Here is a group example for all loop_xx opcodes, comparing the different loop_ opcodes. It uses the file [loop_-group.csd](../examples/loop_-group.csd).
+=== "Modern"
+    Here is a group example for all loop_xx opcodes, comparing the different loop_ opcodes. It uses the file [loop_-group-modern.csd](../examples/loop_-group-modern.csd).
+    ``` csound-csd title="Group example of the loop_xx opcodes." linenums="1"
+    --8<-- "examples/loop_-group-modern.csd"
+    ```
 
-``` csound-csd title="Group example of the loop_xx opcodes." linenums="1"
---8<-- "examples/loop_-group.csd"
-```
+=== "Classic"
+    Here is a group example for all loop_xx opcodes, comparing the different loop_ opcodes. It uses the file [loop_-group.csd](../examples/loop_-group.csd).
+    ``` csound-csd title="Group example of the loop_xx opcodes." linenums="1"
+    --8<-- "examples/loop_-group.csd"
+    ```
 
 ## See also
 

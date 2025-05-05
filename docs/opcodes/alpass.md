@@ -32,11 +32,17 @@ This filter reiterates the input with an echo density determined by loop time _i
 
 ## Examples
 
-Here is an example of the alpass opcode. It uses the file [alpass.csd](../examples/alpass.csd).
+=== "Modern"
+    Here is an example of the alpass opcode. It uses the file [alpass-modern.csd](../examples/alpass-modern.csd).
+    ``` csound-csd title="Example of the alpass opcode." linenums="1"
+    --8<-- "examples/alpass-modern.csd"
+    ```
 
-``` csound-csd title="Example of the alpass opcode." linenums="1"
---8<-- "examples/alpass.csd"
-```
+=== "Classic"
+    Here is an example of the alpass opcode. It uses the file [alpass.csd](../examples/alpass.csd).
+    ``` csound-csd title="Example of the alpass opcode." linenums="1"
+    --8<-- "examples/alpass.csd"
+    ```
 
 ## See also
 

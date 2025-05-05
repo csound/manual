@@ -20,10 +20,10 @@ sine@global:i = ftgen(0, 0, 2^10, 10, 1)
 instr 1
   dur:i = p3
 
-  env_peak:i = random(0, 1)                    ;where is the envelope peak
+  env_peak:i = random(0, 1)                   ;where is the envelope peak
   sig:a = poscil(0.8, 220, sine)
   env:a = transeg(0, dur*env_peak, 6, 1, dur-dur*env_peak, -6, 0)
-  left:a, right:a = pan2(sig*env, env_peak)    ;pan according to random value
+  left:a, right:a = pan2(sig*env, env_peak)   ;pan according to random value
   outs(left, right)
 endin
 

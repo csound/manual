@@ -34,17 +34,29 @@ The called instrument's p2 and p3 values will be identical to the host instrumen
 
 ## Examples
 
-Here is an example of the subinstr opcode. It uses the file [subinstr.csd](../examples/subinstr.csd).
+=== "Modern"
+    Here is an example of the subinstr opcode. It uses the file [subinstr-modern.csd](../examples/subinstr-modern.csd).
+    ``` csound-csd title="Example of the subinstr opcode." linenums="1"
+    --8<-- "examples/subinstr-modern.csd"
+    ```
 
-``` csound-csd title="Example of the subinstr opcode." linenums="1"
---8<-- "examples/subinstr.csd"
-```
+=== "Classic"
+    Here is an example of the subinstr opcode. It uses the file [subinstr.csd](../examples/subinstr.csd).
+    ``` csound-csd title="Example of the subinstr opcode." linenums="1"
+    --8<-- "examples/subinstr.csd"
+    ```
 
-Here is an example of the subinstr opcode using a named instrument. It uses the file [subinstr_named.csd](../examples/subinstr_named.csd).
+=== "Modern"
+    Here is an example of the subinstr opcode using a named instrument. It uses the file [subinstr_named-modern.csd](../examples/subinstr_named-modern.csd).
+    ``` csound-csd title="Example of the subinstr opcode using a named instrument." linenums="1"
+    --8<-- "examples/subinstr_named-modern.csd"
+    ```
 
-``` csound-csd title="Example of the subinstr opcode using a named instrument." linenums="1"
---8<-- "examples/subinstr_named.csd"
-```
+=== "Classic"
+    Here is an example of the subinstr opcode using a named instrument. It uses the file [subinstr_named.csd](../examples/subinstr_named.csd).
+    ``` csound-csd title="Example of the subinstr opcode using a named instrument." linenums="1"
+    --8<-- "examples/subinstr_named.csd"
+    ```
 
 ## See also
 

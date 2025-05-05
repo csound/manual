@@ -40,11 +40,17 @@ For more details on amplitude values in Csound, see the section [Amplitude value
 
 ## Examples
 
-Here is an example of the 0dbfs opcode. It uses the file [0dbfs.csd](../examples/0dbfs.csd).
+=== "Modern"
+    Here is an example of the 0dbfs opcode. It uses the file [0dbfs-modern.csd](../examples/0dbfs-modern.csd).
+    ``` csound-csd title="Example of the 0dbfs opcode." linenums="1"
+    --8<-- "examples/0dbfs-modern.csd"
+    ```
 
-``` csound-csd title="Example of the 0dbfs opcode." linenums="1"
---8<-- "examples/0dbfs.csd"
-```
+=== "Classic"
+    Here is an example of the 0dbfs opcode. It uses the file [0dbfs.csd](../examples/0dbfs.csd).
+    ``` csound-csd title="Example of the 0dbfs opcode." linenums="1"
+    --8<-- "examples/0dbfs.csd"
+    ```
 
 ## See also
 Sets the value of 0 decibels using full scale amplitude.

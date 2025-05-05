@@ -32,19 +32,33 @@ The most common method of coefficient derivation is linear prediction analysis, 
 
 ## Examples
 
-Here is an example of the allpole opcode using an audio input
-signal as lpc source. It uses the file [allpole.csd](../examples/allpole.csd).
+=== "Modern"
+    Here is an example of the allpole opcode using an audio input
+    signal as lpc source. It uses the file [allpole-modern.csd](../examples/allpole-modern.csd).
+    ``` csound-csd title="Example of the allpole opcode." linenums="1"
+    --8<-- "examples/allpole-modern.csd"
+    ```
+    
+=== "Classic"
+    Here is an example of the allpole opcode using an audio input
+    signal as lpc source. It uses the file [allpole.csd](../examples/allpole.csd).
+    ``` csound-csd title="Example of the allpole opcode." linenums="1"
+    --8<-- "examples/allpole.csd"
+    ```
+    
+=== "Modern"
+    Here is another example of the allpole opcode, now using a
+    function table as lpc source. It uses the file [allpole-2-modern.csd](../examples/allpole-2-modern.csd).
+    ``` csound-csd title="Another example of the allpole opcode." linenums="1"
+    --8<-- "examples/allpole-2-modern.csd"
+    ```
 
-``` csound-csd title="Example of the allpole opcode." linenums="1"
---8<-- "examples/allpole.csd"
-```
-
-Here is another example of the allpole opcode, now using a
-function table as lpc source. It uses the file [allpole-2.csd](../examples/allpole-2.csd).
-
-``` csound-csd title="Another example of the allpole opcode." linenums="1"
---8<-- "examples/allpole-2.csd"
-```
+=== "Classic"
+    Here is another example of the allpole opcode, now using a
+    function table as lpc source. It uses the file [allpole-2.csd](../examples/allpole-2.csd).
+    ``` csound-csd title="Another example of the allpole opcode." linenums="1"
+    --8<-- "examples/allpole-2.csd"
+    ```
 
 ## See also
 
