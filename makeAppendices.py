@@ -67,6 +67,11 @@ class OpcodeInfo:
                 if j != -1:
                     j += i + 4
                     self.syntax = self.data[i:j]
+                    l = self.syntax.splitlines()
+                    if l[1][0:4] == '    ':
+                        for k in range(1, len(l)-1):
+                            l[k] = l[k][4:]
+                        self.syntax = '\n'.join(l)
 
     def find_category(self):
         self.category = ""
@@ -173,9 +178,9 @@ def write_opcodes_quick_ref(opc_by_cat, filename):
     for cat in categories:
         print("### {}".format(cat), file=f)
         for o in opc_by_cat[cat]:
-            cmd = o.name + " "
+            cmd = o.name
             if o.filename in diff_opcnames:
-                cmd = diff_opcnames[o.filename] + " "
+                cmd = diff_opcnames[o.filename]
             s = o.syntax
             lines = s[:-1].split('\n')
             sout = ""
