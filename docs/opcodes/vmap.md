@@ -7,7 +7,7 @@ Maps elements from a vector onto another according to indexes.
 
 ## Syntax
 ``` csound-orc
-vmap  ifn1, ifn2, ielements [,idstoffset, isrcoffset]
+vmap ifn1, ifn2, ielements [,idstoffset, isrcoffset]
 ```
 
 ### Initialization

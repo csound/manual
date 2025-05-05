@@ -7,7 +7,7 @@ Performs exponential operations between two vectorial control signals.
 
 ## Syntax
 ``` csound-orc
-vexpv  ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [,kverbose]
+vexpv ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [,kverbose]
 ```
 
 ### Initialization

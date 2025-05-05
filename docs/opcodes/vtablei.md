@@ -7,7 +7,7 @@ Read vectors (from tables -or arrays of vectors).
 
 ## Syntax
 ``` csound-orc
-vtablei  indx, ifn, interp, ixmode, iout1 [, iout2, iout3, .... , ioutN ]
+vtablei indx, ifn, interp, ixmode, iout1 [, iout2, iout3, .... , ioutN ]
 ```
 
 ### Initialization

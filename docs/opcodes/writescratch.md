@@ -7,7 +7,7 @@ Writes one of four scalar values into the scratchpad of the instance of an instr
 
 ## Syntax
 ``` csound-orc
-writescratchival [index]
+writescratch ival [index]
 ```
 
 Initialisation

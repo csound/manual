@@ -7,7 +7,7 @@ Records control-rate signals on trigger-temporization basis.
 
 ## Syntax
 ``` csound-orc
-tabrec   ktrig_start, ktrig_stop, knumtics, kfn, kin1 [,kin2,...,kinN]
+tabrec ktrig_start, ktrig_stop, knumtics, kfn, kin1 [,kin2,...,kinN]
 ```
 
 ### Performance

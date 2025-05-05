@@ -9,8 +9,8 @@ _tonex_ is equivalent to a filter consisting of more layers of [tone](../opcodes
 
 ## Syntax
 ``` csound-orc
-ares tonex  asig, khp [, inumlayer] [, iskip]
-ares tonex  asig, ahp [, inumlayer] [, iskip]
+ares tonex asig, khp [, inumlayer] [, iskip]
+ares tonex asig, ahp [, inumlayer] [, iskip]
 ```
 
 ### Initialization

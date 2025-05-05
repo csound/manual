@@ -7,7 +7,7 @@ Performs division between two vectorial control signals at init time.
 
 ## Syntax
 ``` csound-orc
-vdivv_i  ifn1, ifn2, ielements [, idstoffset] [, isrcoffset]
+vdivv_i ifn1, ifn2, ielements [, idstoffset] [, isrcoffset]
 ```
 
 ### Initialization

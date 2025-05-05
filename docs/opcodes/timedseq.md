@@ -9,7 +9,7 @@ An event-sequencer in which time can be controlled by a time-pointer. Sequence d
 
 ## Syntax
 ``` csound-orc
-ktrig  timedseq  ktimpnt, ifn, kp1 [,kp2, kp3, ...,kpN]
+ktrig timedseq ktimpnt, ifn, kp1 [,kp2, kp3, ...,kpN]
 ```
 
 ### Initialization

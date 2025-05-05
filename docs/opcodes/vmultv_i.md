@@ -7,7 +7,7 @@ Performs mutiplication between two vectorial control signals at init time.
 
 ## Syntax
 ``` csound-orc
-vmultv_i  ifn1, ifn2, ielements [, idstoffset] [, isrcoffset]
+vmultv_i ifn1, ifn2, ielements [, idstoffset] [, isrcoffset]
 ```
 
 ### Initialization

@@ -7,7 +7,7 @@ Multiplies a vector in a table by a scalar value.
 
 ## Syntax
 ``` csound-orc
-vmult  ifn, kval, kelements [, kdstoffset] [, kverbose]
+vmult ifn, kval, kelements [, kdstoffset] [, kverbose]
 ```
 
 ### Initialization

@@ -7,7 +7,7 @@ Performs addition between two vectorial control signals.
 
 ## Syntax
 ``` csound-orc
-vaddv  ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [,kverbose]
+vaddv ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [,kverbose]
 ```
 
 ### Initialization

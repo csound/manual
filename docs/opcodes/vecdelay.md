@@ -7,7 +7,7 @@ Generate a sort of 'vectorial' delay.
 
 ## Syntax
 ``` csound-orc
-vecdelay  ifn, ifnIn, ifnDel, ielements, imaxdel [, iskip]
+vecdelay ifn, ifnIn, ifnDel, ielements, imaxdel [, iskip]
 ```
 
 ### Initialization

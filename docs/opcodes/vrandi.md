@@ -7,8 +7,8 @@ Generate a sort of 'vectorial band-limited noise'.
 
 ## Syntax
 ``` csound-orc
-vrandi  ifn,  krange, kcps, ielements [, idstoffset] [, iseed] \
-        [, isize] [, ioffset]
+vrandi ifn,  krange, kcps, ielements [, idstoffset] [, iseed] \
+       [, isize] [, ioffset]
 ```
 
 ### Initialization

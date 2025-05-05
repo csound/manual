@@ -7,7 +7,7 @@ Adds a scalar value to a vector in a table.
 
 ## Syntax
 ``` csound-orc
-vadd  ifn, kval, kelements [, kdstoffset] [, kverbose]
+vadd ifn, kval, kelements [, kdstoffset] [, kverbose]
 ```
 
 ### Initialization

@@ -9,8 +9,8 @@ Generates a sort of 'vectorial band-limited noise'.
 
 ## Syntax
 ``` csound-orc
-vrandh  ifn,  krange, kcps, ielements [, idstoffset] [, iseed] \
-        [, isize] [, ioffset]
+vrandh ifn,  krange, kcps, ielements [, idstoffset] [, iseed] \
+       [, isize] [, ioffset]
 ```
 
 ### Initialization

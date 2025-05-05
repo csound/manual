@@ -7,7 +7,7 @@ Limits elements of vectorial control signals.
 
 ## Syntax
 ``` csound-orc
-vlimit  ifn, kmin, kmax, ielements
+vlimit ifn, kmin, kmax, ielements
 ```
 
 ### Initialization

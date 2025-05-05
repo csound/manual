@@ -7,7 +7,7 @@ Raises each element of a vector to a scalar power.
 
 ## Syntax
 ``` csound-orc
-vpow_i  ifn, ival, ielements [, idstoffset]
+vpow_i ifn, ival, ielements [, idstoffset]
 ```
 
 ### Initialization

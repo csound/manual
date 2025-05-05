@@ -7,7 +7,7 @@ Plays-back control-rate signals on trigger-temporization basis.
 
 ## Syntax
 ``` csound-orc
-tabplay  ktrig, knumtics, kfn, kout1 [,kout2,..., koutN]
+tabplay ktrig, knumtics, kfn, kout1 [,kout2,..., koutN]
 ```
 
 ### Performance

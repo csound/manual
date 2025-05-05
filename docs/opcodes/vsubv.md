@@ -7,7 +7,7 @@ Performs subtraction between two vectorial control signals.
 
 ## Syntax
 ``` csound-orc
-vsubv  ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [,kverbose]
+vsubv ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [,kverbose]
 ```
 
 ### Initialization

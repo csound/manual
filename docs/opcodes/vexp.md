@@ -7,7 +7,7 @@ Performs power-of operations between a vector and a scalar.
 
 ## Syntax
 ``` csound-orc
-vexp  ifn, kval, kelements [, kdstoffset] [, kverbose]
+vexp ifn, kval, kelements [, kdstoffset] [, kverbose]
 ```
 
 ### Initialization

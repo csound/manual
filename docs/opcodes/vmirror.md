@@ -7,7 +7,7 @@ category:Vectorial:Limiting and Wrapping
 
 ## Syntax
 ``` csound-orc
-vmirror  ifn, kmin, kmax, ielements
+vmirror ifn, kmin, kmax, ielements
 ```
 
 ### Initialization

@@ -7,7 +7,7 @@ Write vectors (to tables -or arrays of vectors) at init time.
 
 ## Syntax
 ``` csound-orc
-vtablewi  indx, ifn, ixmode, inarg1 [, inarg2, inarg3 , .... , inargN ]
+vtablewi indx, ifn, ixmode, inarg1 [, inarg2, inarg3 , .... , inargN ]
 ```
 
 ### Initialization

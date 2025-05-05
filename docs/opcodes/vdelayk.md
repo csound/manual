@@ -7,7 +7,7 @@ Variable time delay applied to a k-rate signal.
 
 ## Syntax
 ``` csound-orc
-kout vdelayk  ksig, kdel, imaxdel [, iskip, imode]
+kout vdelayk ksig, kdel, imaxdel [, iskip, imode]
 ```
 
 ### Initialization

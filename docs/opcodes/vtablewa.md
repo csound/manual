@@ -7,7 +7,7 @@ Write vectors (to tables -or arrays of vectors) at a-rate.
 
 ## Syntax
 ``` csound-orc
-vtablewa  andx, kfn, ixmode, ainarg1 [, ainarg2, ainarg3 , .... , ainargN ]
+vtablewa andx, kfn, ixmode, ainarg1 [, ainarg2, ainarg3 , .... , ainargN ]
 ```
 
 ### Initialization

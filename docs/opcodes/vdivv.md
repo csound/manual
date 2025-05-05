@@ -7,7 +7,7 @@ Performs division between two vectorial control signals.
 
 ## Syntax
 ``` csound-orc
-vdivv  ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [,kverbose]
+vdivv ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [,kverbose]
 ```
 
 ### Initialization

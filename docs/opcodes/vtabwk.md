@@ -7,7 +7,7 @@ Write vectors (to tables -or arrays of vectors) at k-rate.
 
 ## Syntax
 ``` csound-orc
-vtabwk  kndx, ifn, kinarg1 [, kinarg2, kinarg3 , .... , kinargN ]
+vtabwk kndx, ifn, kinarg1 [, kinarg2, kinarg3 , .... , kinargN ]
 ```
 
 ### Initialization

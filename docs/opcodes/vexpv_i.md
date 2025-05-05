@@ -7,7 +7,7 @@ Performs exponential operations between two vectorial control signals at init ti
 
 ## Syntax
 ``` csound-orc
-vexpv_i  ifn1, ifn2, ielements [, idstoffset] [, isrcoffset]
+vexpv_i ifn1, ifn2, ielements [, idstoffset] [, isrcoffset]
 ```
 
 ### Initialization

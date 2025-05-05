@@ -7,7 +7,7 @@ Read vectors (from tables -or arrays of vectors) at k-rate.
 
 ## Syntax
 ``` csound-orc
-vtablek  kndx, kfn, kinterp, ixmode, kout1 [, kout2, kout3, .... , koutN ]
+vtablek kndx, kfn, kinterp, ixmode, kout1 [, kout2, kout3, .... , koutN ]
 ```
 
 ### Initialization

@@ -7,7 +7,7 @@ Performs subtraction between two vectorial control signals at init time.
 
 ## Syntax
 ``` csound-orc
-vsubv_i  ifn1, ifn2, ielements [, idstoffset] [, isrcoffset]
+vsubv_i ifn1, ifn2, ielements [, idstoffset] [, isrcoffset]
 ```
 
 ### Initialization
