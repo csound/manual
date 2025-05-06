@@ -38,11 +38,17 @@ Musically map MIDI velocity to peak amplitude within a specified dynamic range i
 
 ## Examples
 
-Here is an example of the ampmidid opcode. It uses the file [ampmidid.csd](../examples/ampmidid.csd).
+=== "Modern"
+    Here is an example of the ampmidid opcode. It uses the file [ampmidid-modern.csd](../examples/ampmidid-modern.csd).
+    ``` csound-csd title="Example of the ampmidid opcode." linenums="1"
+    --8<-- "examples/ampmidid-modern.csd"
+    ```
 
-``` csound-csd title="Example of the ampmidid opcode." linenums="1"
---8<-- "examples/ampmidid.csd"
-```
+=== "Classic"
+    Here is an example of the ampmidid opcode. It uses the file [ampmidid.csd](../examples/ampmidid.csd).
+    ``` csound-csd title="Example of the ampmidid opcode." linenums="1"
+    --8<-- "examples/ampmidid.csd"
+    ```
 
 ## See also
 

@@ -25,11 +25,17 @@ From version 5.14 values can be assigned to elements of a vector with the square
 
 ## Examples
 
-Here is an example of the assign opcode. It uses the file [assign.csd](../examples/assign.csd).
+=== "Modern"
+    Here is an example of the assign opcode. It uses the file [assign-modern.csd](../examples/assign-modern.csd).
+    ``` csound-csd title="Example of the assign opcode." linenums="1"
+    --8<-- "examples/assign-modern.csd"
+    ```
 
-``` csound-csd title="Example of the assign opcode." linenums="1"
---8<-- "examples/assign.csd"
-```
+=== "Classic"
+    Here is an example of the assign opcode. It uses the file [assign.csd](../examples/assign.csd).
+    ``` csound-csd title="Example of the assign opcode." linenums="1"
+    --8<-- "examples/assign.csd"
+    ```
 
 Its output should include a line like this:
 

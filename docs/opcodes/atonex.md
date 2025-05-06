@@ -34,11 +34,17 @@ _khp_/_ahp_ -- the response curve's half-power point. Half power is defined as p
 
 ## Examples
 
-Here is an example of the atonex opcode. It uses the file [atonex.csd](../examples/atonex.csd).
+=== "Modern"
+    Here is an example of the atonex opcode. It uses the file [atonex-modern.csd](../examples/atonex-modern.csd).
+    ``` csound-csd title="Example of the atonex opcode." linenums="1"
+    --8<-- "examples/atonex-modern.csd"
+    ```
 
-``` csound-csd title="Example of the atonex opcode." linenums="1"
---8<-- "examples/atonex.csd"
-```
+=== "Classic"
+    Here is an example of the atonex opcode. It uses the file [atonex.csd](../examples/atonex.csd).
+    ``` csound-csd title="Example of the atonex opcode." linenums="1"
+    --8<-- "examples/atonex.csd"
+    ```
 
 ## See also
 

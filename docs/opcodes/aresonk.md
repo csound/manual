@@ -36,11 +36,17 @@ _aresonk_ is a filter whose transfer functions is the complement of [resonk](../
 
 ## Examples
 
-Here is an example of the aresonk opcode. It uses the file [aresonk.csd](../examples/aresonk.csd).
+=== "Modern"
+    Here is an example of the aresonk opcode. It uses the file [aresonk-modern.csd](../examples/aresonk-modern.csd).
+    ``` csound-csd title="Example of the aresonk opcode." linenums="1"
+    --8<-- "examples/aresonk-modern.csd"
+    ```
 
-``` csound-csd title="Example of the aresonk opcode." linenums="1"
---8<-- "examples/aresonk.csd"
-```
+=== "Classic"
+    Here is an example of the aresonk opcode. It uses the file [aresonk.csd](../examples/aresonk.csd).
+    ``` csound-csd title="Example of the aresonk opcode." linenums="1"
+    --8<-- "examples/aresonk.csd"
+    ```
 
 ## See also
 

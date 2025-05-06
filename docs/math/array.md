@@ -144,11 +144,17 @@ kArr1[] fillarray 1, 2, 3
 kArr2[] = kArr1 + 10    ;(kArr2 is now [11, 12, 13])
 ```
 
-Here is an example of array/scalar operations. It uses the file [array_scalar_math.csd](../examples/array_scalar_math.csd).
+=== "Modern"
+    Here is an example of array/scalar operations. It uses the file [array_scalar_math-modern.csd](../examples/array_scalar_math-modern.csd).
+    ``` csound-csd title="Example of array operations" linenums="1"
+    --8<-- "examples/array_scalar_math-modern.csd"
+    ```
 
-``` csound-csd title="Example of array operations" linenums="1"
---8<-- "examples/array_scalar_math.csd"
-```
+=== "Classic"
+    Here is an example of array/scalar operations. It uses the file [array_scalar_math.csd](../examples/array_scalar_math.csd).
+    ``` csound-csd title="Example of array operations" linenums="1"
+    --8<-- "examples/array_scalar_math.csd"
+    ```
 
 ### +, -, *, / on a Second Array
 
@@ -160,11 +166,17 @@ kArr2[] fillarray 10, 20, 30
 kArr3[] = kArr1 + kArr2    ;(kArr3 is now [11, 22, 33])
 ```
 
-Here is an example of array operations. It uses the file [array_array_math.csd](../examples/array_array_math.csd).
+=== "Modern"
+    Here is an example of array operations. It uses the file [array_array_math-modern.csd](../examples/array_array_math-modern.csd).
+    ``` csound-csd title="Example of array operations" linenums="1"
+    --8<-- "examples/array_array_math-modern.csd"
+    ```
 
-``` csound-csd title="Example of array operations" linenums="1"
---8<-- "examples/array_array_math.csd"
-```
+=== "Classic"
+    Here is an example of array operations. It uses the file [array_array_math.csd](../examples/array_array_math.csd).
+    ``` csound-csd title="Example of array operations" linenums="1"
+    --8<-- "examples/array_array_math.csd"
+    ```
 
 ## Map a Function to an Array
 
@@ -265,11 +277,17 @@ kArr[] xin
 endop
 ```
 
-Here is an example of an array in an UDO. It uses the file [array_udo.csd](../examples/array_udo.csd).
+=== "Modern"
+    Here is an example of an array in an UDO. It uses the file [array_udo-modern.csd](../examples/array_udo-modern.csd).
+    ``` csound-csd title="Example of an array in an UDO" linenums="1"
+    --8<-- "examples/array_udo-modern.csd"
+    ```
 
-``` csound-csd title="Example of an array in an UDO" linenums="1"
---8<-- "examples/array_udo.csd"
-```
+=== "Classic"
+    Here is an example of an array in an UDO. It uses the file [array_udo.csd](../examples/array_udo.csd).
+    ``` csound-csd title="Example of an array in an UDO" linenums="1"
+    --8<-- "examples/array_udo.csd"
+    ```
 
 Note that if an opcode (for example inrg), alters arguments on its right hand argument list, an array index should not be used there. Unlike a normal variable, the array won't changed by the opcode.
 

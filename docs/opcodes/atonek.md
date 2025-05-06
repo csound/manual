@@ -32,11 +32,17 @@ _atonek_ is a filter whose transfer functions is the complement of [tonek](../op
 
 ## Examples
 
-Here is an example of the atonek opcode. It uses the file [atonek.csd](../examples/atonek.csd).
+=== "Modern"
+    Here is an example of the atonek opcode. It uses the file [atonek-modern.csd](../examples/atonek-modern.csd).
+    ``` csound-csd title="Example of the atonek opcode." linenums="1"
+    --8<-- "examples/atonek-modern.csd"
+    ```
 
-``` csound-csd title="Example of the atonek opcode." linenums="1"
---8<-- "examples/atonek.csd"
-```
+=== "Classic"
+    Here is an example of the atonek opcode. It uses the file [atonek.csd](../examples/atonek.csd).
+    ``` csound-csd title="Example of the atonek opcode." linenums="1"
+    --8<-- "examples/atonek.csd"
+    ```
 
 ## See also
 

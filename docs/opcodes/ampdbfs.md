@@ -14,11 +14,17 @@ ampdbfs(x)  (no rate restriction)
 
 ## Examples
 
-Here is an example of the ampdbfs opcode. It uses the file [ampdbfs.csd](../examples/ampdbfs.csd).
+=== "Modern"
+    Here is an example of the ampdbfs opcode. It uses the file [ampdbfs-modern.csd](../examples/ampdbfs-modern.csd).
+    ``` csound-csd title="Example of the ampdbfs opcode." linenums="1"
+    --8<-- "examples/ampdbfs-modern.csd"
+    ```
 
-``` csound-csd title="Example of the ampdbfs opcode." linenums="1"
---8<-- "examples/ampdbfs.csd"
-```
+=== "Classic"
+    Here is an example of the ampdbfs opcode. It uses the file [ampdbfs.csd](../examples/ampdbfs.csd).
+    ``` csound-csd title="Example of the ampdbfs opcode." linenums="1"
+    --8<-- "examples/ampdbfs.csd"
+    ```
 
 Its output should include lines like:
 

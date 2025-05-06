@@ -34,11 +34,17 @@ This property is particularly useful for controlled mixing of different sources 
 
 ## Examples
 
-Here is an example of the atone opcode. It uses the file [atone.csd](../examples/atone.csd).
+=== "Modern"
+    Here is an example of the atone opcode. It uses the file [atone-modern.csd](../examples/atone-modern.csd).
+    ``` csound-csd title="Example of the atone opcode." linenums="1"
+    --8<-- "examples/atone-modern.csd"
+    ```
 
-``` csound-csd title="Example of the atone opcode." linenums="1"
---8<-- "examples/atone.csd"
-```
+=== "Classic"
+    Here is an example of the atone opcode. It uses the file [atone.csd](../examples/atone.csd).
+    ``` csound-csd title="Example of the atone opcode." linenums="1"
+    --8<-- "examples/atone.csd"
+    ```
 
 ## See also
 

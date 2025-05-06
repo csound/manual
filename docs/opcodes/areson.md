@@ -48,11 +48,17 @@ This property is particularly useful for controlled mixing of different sources 
 
 ## Examples
 
-Here is an example of the areson opcode. It uses the file [areson.csd](../examples/areson.csd).
+=== "Modern"
+    Here is an example of the areson opcode. It uses the file [areson-modern.csd](../examples/areson-modern.csd).
+    ``` csound-csd title="Example of the areson opcode." linenums="1"
+    --8<-- "examples/areson-modern.csd"
+    ```
 
-``` csound-csd title="Example of the areson opcode." linenums="1"
---8<-- "examples/areson.csd"
-```
+=== "Classic"
+    Here is an example of the areson opcode. It uses the file [areson.csd](../examples/areson.csd).
+    ``` csound-csd title="Example of the areson opcode." linenums="1"
+    --8<-- "examples/areson.csd"
+    ```
 
 ## See also
 
