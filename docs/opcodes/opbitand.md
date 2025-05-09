@@ -22,17 +22,29 @@ Parentheses may be used as above to force particular groupings.
 
 ## Examples
 
-Here is an example of the bitwise AND and OR operators. It uses the file [bitwise.csd](../examples/bitwise.csd).
+=== "Modern"
+    Here is an example of the bitwise AND and OR operators. It uses the file [bitwise-modern.csd](../examples/bitwise-modern.csd).
+    ``` csound-csd title="Example of the bitwise operators." linenums="1"
+    --8<-- "examples/bitwise-modern.csd"
+    ```
 
-``` csound-csd title="Example of the bitwise operators." linenums="1"
---8<-- "examples/bitwise.csd"
-```
+=== "Classic"
+    Here is an example of the bitwise AND and OR operators. It uses the file [bitwise.csd](../examples/bitwise.csd).
+    ``` csound-csd title="Example of the bitwise operators." linenums="1"
+    --8<-- "examples/bitwise.csd"
+    ```
 
-Here is an example for the bitwise-group, comparing the different bitwise opcodes. It uses the file [bitwise-group.csd](../examples/bitwise-group.csd).
+=== "Modern"
+    Here is an example for the bitwise-group, comparing the different bitwise opcodes. It uses the file [bitwise-group-modern.csd](../examples/bitwise-group-modern.csd).
+    ``` csound-csd title="Example of the bitwise group." linenums="1"
+    --8<-- "examples/bitwise-group-modern.csd"
+    ```
 
-``` csound-csd title="Example of the bitwise group." linenums="1"
---8<-- "examples/bitwise-group.csd"
-```
+=== "Classic"
+    Here is an example for the bitwise-group, comparing the different bitwise opcodes. It uses the file [bitwise-group.csd](../examples/bitwise-group.csd).
+    ``` csound-csd title="Example of the bitwise group." linenums="1"
+    --8<-- "examples/bitwise-group.csd"
+    ```
 
 ## See also
 

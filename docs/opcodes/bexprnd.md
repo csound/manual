@@ -33,11 +33,17 @@ For more detailed explanation of these distributions, see:
 
 ## Examples
 
-Here is an example of the bexprnd opcode. It uses the file [bexprnd.csd](../examples/bexprnd.csd).
+=== "Modern"
+    Here is an example of the bexprnd opcode. It uses the file [bexprnd-modern.csd](../examples/bexprnd-modern.csd).
+    ``` csound-orc title="Example of the bexprnd opcode." linenums="1"
+    --8<-- "examples/bexprnd-modern.csd"
+    ```
 
-``` csound-orc title="Example of the bexprnd opcode." linenums="1"
---8<-- "examples/bexprnd.csd"
-```
+=== "Classic"
+    Here is an example of the bexprnd opcode. It uses the file [bexprnd.csd](../examples/bexprnd.csd).
+    ``` csound-orc title="Example of the bexprnd opcode." linenums="1"
+    --8<-- "examples/bexprnd.csd"
+    ```
 
 Its output should include a line like:
 
@@ -65,7 +71,7 @@ i   2 time     4.40267:  -117.10278
 i   2 time     4.60267:   -70.99155
 i   2 time     4.80267:   -23.24037
 i   2 time     5.00000:  -226.35500
-```
+```-modern
 
 ## See also
 

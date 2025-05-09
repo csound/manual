@@ -18,11 +18,17 @@ Returns a random number in the bipolar range -_x_ to _x_. _rnd_ and _birnd_ obta
 
 ## Examples
 
-Here is an example of the birnd opcode. It uses the file [birnd.csd](../examples/birnd.csd).
+=== "Modern"
+    Here is an example of the birnd opcode. It uses the file [birnd-modern.csd](../examples/birnd-modern.csd).
+    ``` csound-orc title="Example of the birnd opcode." linenums="1"
+    --8<-- "examples/birnd-modern.csd"
+    ```
 
-``` csound-orc title="Example of the birnd opcode." linenums="1"
---8<-- "examples/birnd.csd"
-```
+=== "Classic"
+    Here is an example of the birnd opcode. It uses the file [birnd.csd](../examples/birnd.csd).
+    ``` csound-orc title="Example of the birnd opcode." linenums="1"
+    --8<-- "examples/birnd.csd"
+    ```
 
 Its output should include lines like:
 

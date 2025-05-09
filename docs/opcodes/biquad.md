@@ -40,17 +40,29 @@ This type of filter is often encountered in digital signal processing literature
 
 ## Examples
 
-Here is an example of the biquad opcode. It uses the file [biquad.csd](../examples/biquad.csd).
+=== "Modern"
+    Here is an example of the biquad opcode. It uses the file [biquad-modern.csd](../examples/biquad-modern.csd).
+    ``` csound-csd title="Example of the biquad opcode." linenums="1"
+    --8<-- "examples/biquad-modern.csd"
+    ```
 
-``` csound-csd title="Example of the biquad opcode." linenums="1"
---8<-- "examples/biquad.csd"
-```
+=== "Classic"
+    Here is an example of the biquad opcode. It uses the file [biquad.csd](../examples/biquad.csd).
+    ``` csound-csd title="Example of the biquad opcode." linenums="1"
+    --8<-- "examples/biquad.csd"
+    ```
 
-Here is another example of the biquad opcode used for modal synthesis. It uses the file [biquad-2.csd](../examples/biquad-2.csd). See the [Modal Frequency Ratios](../misc/modalfreq.md) appendix for other frequency ratios.
+=== "Modern"
+    Here is another example of the biquad opcode used for modal synthesis. It uses the file [biquad-2-modern.csd](../examples/biquad-2-modern.csd). See the [Modal Frequency Ratios](../misc/modalfreq.md) appendix for other frequency ratios.
+    ``` csound-csd title="Example of the biquad opcode for modal synthesis." linenums="1"
+    --8<-- "examples/biquad-2-modern.csd"
+    ```
 
-``` csound-csd title="Example of the biquad opcode for modal synthesis." linenums="1"
---8<-- "examples/biquad-2.csd"
-```
+=== "Classic"
+    Here is another example of the biquad opcode used for modal synthesis. It uses the file [biquad-2.csd](../examples/biquad-2.csd). See the [Modal Frequency Ratios](../misc/modalfreq.md) appendix for other frequency ratios.
+    ``` csound-csd title="Example of the biquad opcode for modal synthesis." linenums="1"
+    --8<-- "examples/biquad-2.csd"
+    ```
 
 ## See also
 

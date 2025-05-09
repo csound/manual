@@ -36,11 +36,17 @@ Note that _balance2_ is just like _balance_ except the gain is recalculated for 
 
 ## Examples
 
-Here is an example of the balance2 opcode. It uses the file [balance2.csd](../examples/balance2.csd).
+=== "Modern"
+    Here is an example of the balance2 opcode. It uses the file [balance2-modern.csd](../examples/balance2-modern.csd).
+    ``` csound-csd title="Example of the balance2 opcode." linenums="1"
+    --8<-- "examples/balance2-modern.csd"
+    ```
 
-``` csound-csd title="Example of the balance2 opcode." linenums="1"
---8<-- "examples/balance2.csd"
-```
+=== "Classic"
+    Here is an example of the balance opcode. It uses the file [balance2.csd](../examples/balance2.csd).
+    ``` csound-csd title="Example of the balance2 opcode." linenums="1"
+    --8<-- "examples/balance2.csd"
+    ```
 
 ## See also
 

@@ -34,11 +34,17 @@ _balance_ outputs a version of _asig_, amplitude-modified so that its rms power 
 
 ## Examples
 
-Here is an example of the balance opcode. It uses the file [balance.csd](../examples/balance.csd).
+=== "Modern"
+    Here is an example of the balance opcode. It uses the file [balance-modern.csd](../examples/balance-modern.csd).
+    ``` csound-csd title="Example of the balance opcode." linenums="1"
+    --8<-- "examples/balance-modern.csd"
+    ```
 
-``` csound-csd title="Example of the balance opcode." linenums="1"
---8<-- "examples/balance.csd"
-```
+=== "Classic"
+    Here is an example of the balance opcode. It uses the file [balance.csd](../examples/balance.csd).
+    ``` csound-csd title="Example of the balance opcode." linenums="1"
+    --8<-- "examples/balance.csd"
+    ```
 
 ## See also
 
