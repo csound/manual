@@ -34,11 +34,17 @@ _xband_ -- Bandwidth of the bandpass and bandreject filters.
 
 ## Examples
 
-Here is an example of the butterbr opcode. It uses the file [butterbr.csd](../examples/butterbr.csd).
+=== "Modern"
+    Here is an example of the butterbr opcode. It uses the file [butterbr-modern.csd](../examples/butterbr-modern.csd).
+    ``` csound-csd title="Example of the butterbr opcode." linenums="1"
+    --8<-- "examples/butterbr-modern.csd"
+    ```
 
-``` csound-csd title="Example of the butterbr opcode." linenums="1"
---8<-- "examples/butterbr.csd"
-```
+=== "Classic"
+    Here is an example of the butterbr opcode. It uses the file [butterbr.csd](../examples/butterbr.csd).
+    ``` csound-csd title="Example of the butterbr opcode." linenums="1"
+    --8<-- "examples/butterbr.csd"
+    ```
 
 ## See also
 

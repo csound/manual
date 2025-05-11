@@ -34,11 +34,17 @@ _kfreq_/_afreq_ -- Cutoff or center frequency for each of the filters.
 
 ## Examples
 
-Here is an example of the butterlp opcode. It uses the file [butterlp.csd](../examples/butterlp.csd).
+=== "Modern"
+    Here is an example of the butterlp opcode. It uses the file [butterlp-modern.csd](../examples/butterlp-modern.csd).
+    ``` csound-csd title="Example of the butterlp opcode." linenums="1"
+    --8<-- "examples/butterlp-modern.csd"
+    ```
 
-``` csound-csd title="Example of the butterlp opcode." linenums="1"
---8<-- "examples/butterlp.csd"
-```
+=== "Classic"
+    Here is an example of the butterlp opcode. It uses the file [butterlp.csd](../examples/butterlp.csd).
+    ``` csound-csd title="Example of the butterlp opcode." linenums="1"
+    --8<-- "examples/butterlp.csd"
+    ```
 
 ## See also
 

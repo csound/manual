@@ -44,11 +44,17 @@ _bqrez_ is a resonant low-pass filter created using the Laplace s-domain equatio
 
 ## Examples
 
-Here is an example of the bqrez opcode. It uses the file [bqrez.csd](../examples/bqrez.csd).
+=== "Modern"
+    Here is an example of the bqrez opcode. It uses the file [bqrez-modern.csd](../examples/bqrez-modern.csd).
+    ``` csound-csd title="Example of the bqrez opcode borrowed from the &#8220;rezzy&#8221; opcode in Kevin Conder's manual." linenums="1"
+    --8<-- "examples/bqrez-modern.csd"
+    ```
 
-``` csound-csd title="Example of the bqrez opcode borrowed from the &#8220;rezzy&#8221; opcode in Kevin Conder's manual." linenums="1"
---8<-- "examples/bqrez.csd"
-```
+=== "Classic"
+    Here is an example of the bqrez opcode. It uses the file [bqrez.csd](../examples/bqrez.csd).
+    ``` csound-csd title="Example of the bqrez opcode borrowed from the &#8220;rezzy&#8221; opcode in Kevin Conder's manual." linenums="1"
+    --8<-- "examples/bqrez.csd"
+    ```
 
 ## See also
 

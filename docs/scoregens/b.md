@@ -20,24 +20,17 @@ p1 is the number of beats by which p2 values of subsequent _i statements_ are mo
 
 ## Examples
 
-``` csound-orc
+=== "Modern"
+    Here is an example of the C statement. It uses the file [b-modern.csd](../examples/b-modern.csd).
+    ``` csound-csd title="Example of the C statement." linenums="1"
+    --8<-- "examples/b-modern.csd"
+    ```
 
-
-i1     0      2
-i1     10     888		
-
-b 5                           ; set the clock "forward"
-i2     1      1     440       ; start time = 6
-i2     2      1     480       ; start time = 7
-
-b -1                          ; set the clock back
-i3     3      2     3.1415    ; start time = 2
-i3     5.5    1     1.1111    ; start time = 4.5
-
-b 0                           ; reset clock to normal
-i4     10     200   7         ; start time = 10
-
-```
+=== "Classic"
+    Here is an example of the C statement. It uses the file [b.csd](../examples/b.csd).
+    ``` csound-csd title="Example of the C statement." linenums="1"
+    --8<-- "examples/b.csd"
+    ```
 
 ## See Also
 
