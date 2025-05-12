@@ -46,12 +46,19 @@ Note that each cell is supposed to be in one of two possible states (1 = "alive"
 
 ## Examples
 
-Here is a simple example of the cell opcode. It uses the file
-[cell.csd](../examples/cell.csd).
+=== "Modern"
+    Here is a simple example of the cell opcode. It uses the file
+    [cell-modern.csd](../examples/cell-modern.csd).
+    ``` csound-orc title="A simple example of the cell opcode." linenums="1"
+    --8<-- "examples/cell-modern.csd"
+    ```
 
-``` csound-orc title="A simple example of the cell opcode." linenums="1"
---8<-- "examples/cell.csd"
-```
+=== "Classic"
+    Here is a simple example of the cell opcode. It uses the file
+    [cell.csd](../examples/cell.csd).
+    ``` csound-orc title="A simple example of the cell opcode." linenums="1"
+    --8<-- "examples/cell.csd"
+    ```
 
 ## See Also
 

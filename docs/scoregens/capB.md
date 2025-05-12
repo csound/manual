@@ -20,11 +20,17 @@ p1 is the number of beats by which p2 values of subsequent _i statements_ are mo
 
 ## Examples
 
-Here is an example of the B statement. It uses the file [capB.csd](../examples/capB.csd).
+=== "Modern"
+    Here is an example of the B statement. It uses the file [capB-modern.csd](../examples/capB-modern.csd).
+    ``` csound-csd title="Example of the B statement." linenums="1"
+    --8<-- "examples/capB-modern.csd"
+    ```
 
-``` csound-csd title="Example of the B statement." linenums="1"
---8<-- "examples/capB.csd"
-```
+=== "Classic"
+    Here is an example of the B statement. It uses the file [capB.csd](../examples/capB.csd).
+    ``` csound-csd title="Example of the B statement." linenums="1"
+    --8<-- "examples/capB.csd"
+    ```
 
 ## See Also
 

@@ -40,11 +40,17 @@ _imaxshake_ (optional) -- amount of energy to add back into the system. The valu
 
 ## Examples
 
-Here is an example of the cabasa opcode. It uses the file [cabasa.csd](../examples/cabasa.csd).
+=== "Modern"
+    Here is an example of the cabasa opcode. It uses the file [cabasa-modern.csd](../examples/cabasa-modern.csd).
+    ``` csound-orc title="Example of the cabasa opcode." linenums="1"
+    --8<-- "examples/cabasa-modern.csd"
+    ```
 
-``` csound-orc title="Example of the cabasa opcode." linenums="1"
---8<-- "examples/cabasa.csd"
-```
+=== "Classic"
+    Here is an example of the cabasa opcode. It uses the file [cabasa.csd](../examples/cabasa.csd).
+    ``` csound-orc title="Example of the cabasa opcode." linenums="1"
+    --8<-- "examples/cabasa.csd"
+    ```
 
 ## See Also
 

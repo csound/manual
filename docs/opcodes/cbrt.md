@@ -28,11 +28,17 @@ _karg[]_ -- the argument.
 
 ## Examples
 
-Here is an example of the cbrt opcode. It uses the file [cbrt.csd](../examples/cbrt.csd).
+=== "Modern"
+    Here is an example of the cbrt opcode. It uses the file [cbrt-modern.csd](../examples/cbrt-modern.csd).
+    ``` csound-csd title="Example of the cbrt opcode." linenums="1"
+    --8<-- "examples/cbrt-modern.csd"
+    ```
 
-``` csound-csd title="Example of the cbrt opcode." linenums="1"
---8<-- "examples/cbrt.csd"
-```
+=== "Classic"
+    Here is an example of the cbrt opcode. It uses the file [cbrt.csd](../examples/cbrt.csd).
+    ``` csound-csd title="Example of the cbrt opcode." linenums="1"
+    --8<-- "examples/cbrt.csd"
+    ```
 
 ## See also
 

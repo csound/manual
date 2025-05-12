@@ -39,11 +39,17 @@ instr 1:  inumber = 9.000  idiv = 9.000  ifl = 1.000
 instr 1:  inumber = 9.000  idiv = 10.000  ifl = 1.000
 ```
 
-Here is an example for the rounding-group, comparing the different rounding opcodes. It uses the file [rounding-group.csd](../examples/rounding-group.csd).
+=== "Modern"
+    Here is an example for the rounding-group, comparing the different rounding opcodes. It uses the file [rounding-group-modern.csd](../examples/rounding-group-modern.csd).
+    ``` csound-csd title="Example of the rounding group." linenums="1"
+    --8<-- "examples/rounding-group-modern.csd"
+    ```
 
-``` csound-csd title="Example of the rounding group." linenums="1"
---8<-- "examples/rounding-group.csd"
-```
+=== "Classic"
+    Here is an example for the rounding-group, comparing the different rounding opcodes. It uses the file [rounding-group.csd](../examples/rounding-group.csd).
+    ``` csound-csd title="Example of the rounding group." linenums="1"
+    --8<-- "examples/rounding-group.csd"
+    ```
 
 ## See also
 
