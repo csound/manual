@@ -13,11 +13,9 @@ ksmps = 32
 nchnls = 2
 
 instr 1 
-
-inum = p4 
-iceil = ceil(inum) 
-print iceil 
-
+  num:i = p4 
+  iceil = ceil(inum) 
+  print(iceil)
 endin 
 
 </CsInstruments> 
