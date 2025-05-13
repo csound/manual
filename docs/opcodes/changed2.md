@@ -68,12 +68,7 @@ i   1 time     1.20267:    -1.00000
 i   1 time     1.40267:    -1.00000
 i1     1.00000
 i1     0.00000
-i   1 time     1.60267:    -1.00000=== ""
-    ``` csound-csd title="Second example of the changed2 opcode." linenums="1"
-    --8<-- "examples/changed2a.csd"
-    ```
-
-
+i   1 time     1.60267:    -1.00000
 i   1 time     1.80000:    -1.00000
 i1     1.00000
 i1     0.00000
