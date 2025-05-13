@@ -22,11 +22,17 @@ The value returned by the _cent_ function is a factor. You can multiply a freque
 
 ## Examples
 
-Here is an example of the cent opcode. It uses the file [cent.csd](../examples/cent.csd).
+=== "Modern"
+    Here is an example of the cent opcode. It uses the file [cent-modern.csd](../examples/cent-modern.csd).
+    ``` csound-csd title="Example of the cent opcode." linenums="1"
+    --8<-- "examples/cent-modern.csd"
+    ```
 
-``` csound-csd title="Example of the cent opcode." linenums="1"
---8<-- "examples/cent.csd"
-```
+=== "Classic"
+    Here is an example of the cent opcode. It uses the file [cent.csd](../examples/cent.csd).
+    ``` csound-csd title="Example of the cent opcode." linenums="1"
+    --8<-- "examples/cent.csd"
+    ```
 
 Its output should include lines like:
 

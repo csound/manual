@@ -34,11 +34,17 @@ Unlike the opcode _changed_ this opcode will never report the first cycle as a c
 
 ## Examples
 
-Here are two examples of the changed2 opcode. They use the files [changed2.csd](../examples/changed2.csd) and [changed2a.csd](../examples/changed2a.csd).
+=== "Modern"
+    Here are two examples of the changed2 opcode. They use the files [changed2-modern.csd](../examples/changed2-modern.csd) and [changed2a-modern.csd](../examples/changed2a-modern.csd).
+    ``` csound-csd title="Example of the changed2 opcode." linenums="1"
+    --8<-- "examples/changed2-modern.csd"
+    ```
 
-``` csound-csd title="Example of the changed2 opcode." linenums="1"
---8<-- "examples/changed2.csd"
-```
+=== "Classic"
+    Here are two examples of the changed2 opcode. They use the files [changed2.csd](../examples/changed2.csd) and [changed2a.csd](../examples/changed2a.csd).
+    ``` csound-csd title="Example of the changed2 opcode." linenums="1"
+    --8<-- "examples/changed2.csd"
+    ```
 
 Its output should include lines like:
 
@@ -62,7 +68,12 @@ i   1 time     1.20267:    -1.00000
 i   1 time     1.40267:    -1.00000
 i1     1.00000
 i1     0.00000
-i   1 time     1.60267:    -1.00000
+i   1 time     1.60267:    -1.00000=== ""
+    ``` csound-csd title="Second example of the changed2 opcode." linenums="1"
+    --8<-- "examples/changed2a.csd"
+    ```
+
+
 i   1 time     1.80000:    -1.00000
 i1     1.00000
 i1     0.00000
@@ -72,9 +83,15 @@ i1     0.00000
 .........
 ```
 
-``` csound-csd title="Example of the changed2 opcode." linenums="1"
---8<-- "examples/changed2a.csd"
-```
+=== "Modern"
+    ``` csound-csd title="Second example of the changed2 opcode." linenums="1"
+    --8<-- "examples/changed2a-modern.csd"
+    ```
+
+=== "Classic"
+    ``` csound-csd title="Second example of the changed2 opcode." linenums="1"
+    --8<-- "examples/changed2a.csd"
+    ```
 
 ## See also
 

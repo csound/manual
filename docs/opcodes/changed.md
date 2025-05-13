@@ -30,11 +30,17 @@ _kvar1 [, kvar2,..., kvarN]_ - k-rate variables to watch for changes.
 
 ## Examples
 
-Here is an example of the changed opcode. It uses the file [changed.csd](../examples/changed.csd).
+=== "Modern"
+    Here is an example of the changed opcode. It uses the file [changed-modern.csd](../examples/changed-modern.csd).
+    ``` csound-csd title="Example of the changed opcode." linenums="1"
+    --8<-- "examples/changed-modern.csd"
+    ```
 
-``` csound-csd title="Example of the changed opcode." linenums="1"
---8<-- "examples/changed.csd"
-```
+=== "Classic"
+    Here is an example of the changed opcode. It uses the file [changed.csd](../examples/changed.csd).
+    ``` csound-csd title="Example of the changed opcode." linenums="1"
+    --8<-- "examples/changed.csd"
+    ```
 
 Its output should include lines like:
 

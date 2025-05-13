@@ -28,11 +28,17 @@ _ilow_, _ihigh_ -- low and high ranges for mapping
 
 ## Examples
 
-Here is an example of the chanctrl opcode. It uses the file [chanctrl.csd](../examples/chanctrl.csd).
+=== "Modern"
+    Here is an example of the chanctrl opcode. It uses the file [chanctrl-modern.csd](../examples/chanctrl-modern.csd).
+    ``` csound-csd title="Example of the chanctrl opcode." linenums="1"
+    --8<-- "examples/chanctrl-modern.csd"
+    ```
 
-``` csound-csd title="Example of the chanctrl opcode." linenums="1"
---8<-- "examples/chanctrl.csd"
-```
+=== "Classic"
+    Here is an example of the chanctrl opcode. It uses the file [chanctrl.csd](../examples/chanctrl.csd).
+    ``` csound-csd title="Example of the chanctrl opcode." linenums="1"
+    --8<-- "examples/chanctrl.csd"
+    ```
 
 ## See also
 
