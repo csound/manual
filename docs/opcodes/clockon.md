@@ -26,11 +26,17 @@ Between a _clockon_ and a [clockoff](../opcodes/clockoff.md) opcode, the CPU tim
 
 ## Examples
 
-Here is an example of the clockon opcode. It uses the file [clockon.csd](../examples/clockon.csd).
+=== "Modern"
+    Here is an example of the clockon opcode. It uses the file [clockon-modern.csd](../examples/clockon-modern.csd).
+    ``` csound-csd title="Example of the clockon opcode." linenums="1"
+    --8<-- "examples/clockon-modern.csd"
+    ```
 
-``` csound-csd title="Example of the clockon opcode." linenums="1"
---8<-- "examples/clockon.csd"
-```
+=== "Classic"
+    Here is an example of the clockon opcode. It uses the file [clockon.csd](../examples/clockon.csd).
+    ``` csound-csd title="Example of the clockon opcode." linenums="1"
+    --8<-- "examples/clockon.csd"
+    ```
 
 ## See also
 

@@ -40,17 +40,29 @@ _kfreq_ -- The corner frequency for low-pass or high-pass.
 
 ## Examples
 
-Here is an example of the clfilt opcode as a low-pass filter. It uses the file [clfilt_lowpass.csd](../examples/clfilt_lowpass.csd).
+=== "Modern"
+    Here is an example of the clfilt opcode as a low-pass filter. It uses the file [clfilt_lowpass-modern.csd](../examples/clfilt_lowpass-modern.csd).
+    ``` csound-csd title="Example of the clfilt opcode." linenums="1"
+    --8<-- "examples/clfilt_lowpass-modern.csd"
+    ```
 
-``` csound-csd title="Example of the clfilt opcode as a low-pass filter." linenums="1"
---8<-- "examples/clfilt_lowpass.csd"
-```
+=== "Classic"
+    Here is an example of the clfilt opcode as a low-pass filter. It uses the file [clfilt_lowpass.csd](../examples/clfilt_lowpass.csd).
+    ``` csound-csd title="Example of the clfilt opcode." linenums="1"
+    --8<-- "examples/clfilt_lowpass.csd"
+    ```
 
-Here is an example of the clfilt opcode as a high-pass filter. It uses the file [clfilt_highpass.csd](../examples/clfilt_highpass.csd).
+=== "Modern"
+    Here is an example of the clfilt opcode as a high-pass filter. It uses the file [clfilt_highpass-modern.csd](../examples/clfilt_highpass-modern.csd).
+    ``` csound-csd title="Example of the clfilt opcode." linenums="1"
+    --8<-- "examples/clfilt_highpass-modern.csd"
+    ```
 
-``` csound-csd title="Example of the clfilt opcode as a high-pass filter." linenums="1"
---8<-- "examples/clfilt_highpass.csd"
-```
+=== "Classic"
+    Here is an example of the clfilt opcode as a high-pass filter. It uses the file [clfilt_highpass.csd](../examples/clfilt_highpass.csd).
+    ``` csound-csd title="Example of the clfilt opcode." linenums="1"
+    --8<-- "examples/clfilt_highpass.csd"
+    ```
 
 ## See also
 

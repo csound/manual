@@ -4,30 +4,26 @@
 -odac     ;;;RT audio out
 ;-iadc    ;;;uncomment -iadc if RT audio input is needed too
 ; For Non-realtime ouput leave only the line below:
-; -o clfilt_highpass.wav -W ;;; for file output any platform
+; -o clfilt_lowpass.wav -W ;;; for file output any platform
 </CsOptions>
 <CsInstruments>
 
 sr = 44100
 ksmps = 32
 nchnls = 2
-0dbfs = 1
+0dbfs  = 1
 
 instr 1 ; white noise
-
-asig rand 0.6
-     outs asig, asig
-
+  sig:a = rand(0.5)
+  outs(sig, sig)
 endin
 
-instr 2 ;filtered noise
-
-asig rand 0.7
-; Highpass filter signal asig with a 6-pole Chebyshev
-; Type I at 2000 Hz with 3 dB of passband ripple.
-a1 clfilt asig, 2000, 1, 6, 1, 3
-   outs a1, a1
-
+instr 2 ; filtered noise 
+  sig:a = rand(0.9)
+  ; Lowpass filter signal asig with a 
+  ; 10-pole Butterworth at 500 Hz.
+  a1 = clfilt(sig, 500, 0, 10)
+  outs(a1, a1)
 endin
 
 </CsInstruments>

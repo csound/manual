@@ -64,11 +64,17 @@ $$
 
 ## Examples
 
-Here is an example of the clip opcode. It uses the file [clip.csd](../examples/clip.csd).
+=== "Modern"
+    Here is an example of the clip opcode. It uses the file [clip-modern.csd](../examples/clip-modern.csd).
+    ``` csound-csd title="Example of the clip opcode." linenums="1"
+    --8<-- "examples/clip-modern.csd"
+    ```
 
-``` csound-csd title="Example of the clip opcode." linenums="1"
---8<-- "examples/clip.csd"
-```
+=== "Classic"
+    Here is an example of the clip opcode. It uses the file [clip.csd](../examples/clip.csd).
+    ``` csound-csd title="Example of the clip opcode." linenums="1"
+    --8<-- "examples/clip.csd"
+    ```
 
 ## See also
 

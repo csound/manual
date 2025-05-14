@@ -11,24 +11,20 @@
 sr = 44100
 ksmps = 32
 nchnls = 2
-0dbfs = 1
+0dbfs  = 1
 
 instr 1 ; white noise
-
-arnd rand 1     ; full amlitude
-; Clip the noisy waveform's amplitude to 0.5
-a1 clip arnd, p4, 0.5
-   outs a1, a1
-
+  Rnd:a = rand(1)     ; full amlitude
+  ; Clip the noisy waveform's amplitude to 0.5
+  a1 = clip(Rnd, p4, 0.5)
+  outs(a1, a1)
 endin
 
 instr 2 ; white noise
-
-arnd rand 1     ; full amlitude
-; Clip the noisy waveform's amplitude to 0.1
-a1 clip arnd, p4, 0.1
-   outs a1, a1
-
+  Rnd:a = rand(1)     ; full amlitude
+  ; Clip the noisy waveform's amplitude to 0.1
+  a1 = clip(Rnd, p4, 0.1)
+  outs(a1, a1)
 endin
 
 </CsInstruments>

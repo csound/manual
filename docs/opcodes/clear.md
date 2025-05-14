@@ -34,11 +34,17 @@ _clear_ sets every sample of each of the given audio signals to zero when it is 
 
 ## Examples
 
-Here is an example of the clear opcode. It uses the file [clear.csd](../examples/clear.csd).
+=== "Modern"
+    Here is an example of the clear opcode. It uses the file [clear-modern.csd](../examples/clear-modern.csd).
+    ``` csound-csd title="Example of the clear opcode." linenums="1"
+    --8<-- "examples/clear-modern.csd"
+    ```
 
-``` csound-csd title="Example of the clear opcode." linenums="1"
---8<-- "examples/clear.csd"
-```
+=== "Classic"
+    Here is an example of the clear opcode. It uses the file [clear.csd](../examples/clear.csd).
+    ``` csound-csd title="Example of the clear opcode." linenums="1"
+    --8<-- "examples/clear.csd"
+    ```
 
 See the [fout](../opcodes/fout.md) opcode for another example.
 
