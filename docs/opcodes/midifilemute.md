@@ -4,6 +4,7 @@ category:Instrument Control:Sensing and Control
 -->
 # midifilemute
 Toggle-mutes playback of a MIDI file (without pausing playback). 
+
 If the file is already muted, it is
 unmuted.  This opcode can be called from
 anywhere, it is also a non-op if used 

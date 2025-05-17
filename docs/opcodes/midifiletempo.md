@@ -3,7 +3,9 @@ id:midifiletempo
 category:Instrument Control:Sensing and Control
 -->
 # midifiletempo
-Sets the playback tempo of a MIDI file. This opcode can be called from
+Sets the playback tempo of a MIDI file. 
+
+This opcode can be called from
 anywhere, it is also a non-op if used in an instrument is triggered by a MIDI event.
 
 Requires the -F flag to operate. If a filename is passed to -F, it is

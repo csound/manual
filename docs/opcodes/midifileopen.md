@@ -3,7 +3,9 @@ id:midifileopen
 category:Instrument Control:Sensing and Control
 -->
 # midifileopen
-Open a MIDI file for playback. This opcode can be called from
+Open a MIDI file for playback. 
+
+This opcode can be called from
 anywhere, it is non-op if used in an instrument is triggered by a MIDI
 event.
 

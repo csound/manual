@@ -3,7 +3,9 @@ id:midifilerewind
 category:Instrument Control:Sensing and Control
 -->
 # midifilerewind
-Rewinds playback of a MIDI file. If file playback is finished, the
+Rewinds playback of a MIDI file. 
+
+If file playback is finished, the
 file position is set back to the start in paused state, otherwise
 playback continues from start. This opcode can be called from
 anywhere, it is also a non-op if used in an instrument is triggered by a MIDI event.

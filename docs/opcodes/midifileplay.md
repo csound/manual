@@ -3,7 +3,9 @@ id:midifileplay
 category:Instrument Control:Sensing and Control
 -->
 # midifileplay
-Starts playback of a MIDI file. If the file is already playing, no
+Starts playback of a MIDI file. 
+
+If the file is already playing, no
 action results.  This opcode can be called from
 anywhere, it is also a non-op if used 
 in an instrument is triggered by a MIDI event.

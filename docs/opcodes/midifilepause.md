@@ -3,7 +3,9 @@ id:midifilepause
 category:Instrument Control:Sensing and Control
 -->
 # midifilepause
-Pauses MIDI file playback. If already paused, not action is
+Pauses MIDI file playback. 
+
+If already paused, not action is
 executed. This opcode is a non-op in MIDI-triggered instrument events.
 
 Requires the -F flag to operate. If a filename is passed to -F, it is

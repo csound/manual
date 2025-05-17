@@ -3,7 +3,9 @@ id:midifilepos
 category:Instrument Control:Sensing and Control
 -->
 # midifilepos
-Gets/Sets the playback position of a MIDI file. This opcode can be called from
+Gets/Sets the playback position of a MIDI file. 
+
+This opcode can be called from
 anywhere, the setting function is also a non-op if used in an instrument is triggered by a MIDI event.
 
 Requires the -F flag to operate. If a filename is passed to -F, it is
