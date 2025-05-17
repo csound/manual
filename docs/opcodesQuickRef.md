@@ -2393,6 +2393,9 @@
 `ktrig  = `[**`metrobpm`**](opcodes/metrobpm.md)`( kfreq [, initphase] [, kgate])`<br>
 
 
+`status:k, chan:k, data1:k, data2:k, time:k = `[**`midifilein`**](opcodes/midifilein.md)`(index:k,[id:k])`<br>
+
+
 ` len:i =  `[**`midifilelen`**](opcodes/midifilelen.md)`([id:i])`<br>
 
 
@@ -2419,6 +2422,9 @@
 
 ` `[**`midifiletempo`**](opcodes/midifiletempo.md)`(tempo:i[,id:i])`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`midifiletempo(tempo:k[,id:i])`<br>
+
+
+` num:i =  `[**`midifilevents`**](opcodes/midifilevents.md)`([id:i])`<br>
 
 
 `itempo = `[**`miditempo`**](opcodes/miditempo.md)`([id:i])`<br>

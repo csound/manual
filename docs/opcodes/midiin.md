@@ -29,7 +29,8 @@ _kstatus_ -- the type of MIDI message. Can be:
 * 224 (pitch bend)
 * 0 if no MIDI message are pending in the MIDI IN buffer
 
-_kchan_ -- MIDI channel (1-16)
+_kchan_ -- MIDI channel (1-16 if only one input port is used, higher
+if channel is port mapped.)
 
 _kdata1, kdata2_ -- message-dependent data values
 

@@ -527,6 +527,7 @@ cosine interpolation, including a release segment.<br>
 [midicontrolchange](../opcodes/midicontrolchange.md) - Gets a MIDI control change value.<br>
 [midictrl](../opcodes/midictrl.md) - Get the current value (0-127) of a specified MIDI controller.<br>
 [mididefault](../opcodes/mididefault.md) - Changes values, depending on MIDI activation.<br>
+[midifilein](../opcodes/midifilein.md) - Returns a generic MIDI message from a MIDI file.<br>
 [midifilelen](../opcodes/midifilelen.md) - Returns the length of a MIDI file.<br>
 [midifilemute](../opcodes/midifilemute.md) - Toggle-mutes playback of a MIDI file (without pausing playback).<br>
 [midifileopen](../opcodes/midifileopen.md) - Open a MIDI file for playback.<br>
@@ -536,6 +537,7 @@ cosine interpolation, including a release segment.<br>
 [midifilerewind](../opcodes/midifilerewind.md) - Rewinds playback of a MIDI file.<br>
 [midifilestatus](../opcodes/midifilestatus.md) - Returns the playback status of MIDI file input.<br>
 [midifiletempo](../opcodes/midifiletempo.md) - Sets the playback tempo of a MIDI file.<br>
+[midifilevents](../opcodes/midifilevents.md) - Returns the number of events in a MIDI file.<br>
 [midiin](../opcodes/midiin.md) - Returns a generic MIDI message received by the MIDI IN port.<br>
 [midinoteoff](../opcodes/midinoteoff.md) - Gets a MIDI noteoff value.<br>
 [midinoteoncps](../opcodes/midinoteoncps.md) - Gets a MIDI note number as a cycles-per-second frequency.<br>

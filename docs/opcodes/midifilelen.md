@@ -6,8 +6,7 @@ category:Instrument Control:Sensing and Control
 Returns the length of a MIDI file.
 
 Requires the -F flag to operate. If a filename is passed to -F, it is
-open with id 0 and playback starts immediately.
-
+open with id 0.
 
 ## Syntax
 === "Modern"

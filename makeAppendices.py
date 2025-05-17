@@ -126,7 +126,7 @@ def find_bad_categories(opcodes, categories):
                 print('!!!', cats[i], cats_ref[i])
                 err = True
         return err
-    print("length categories:{}, cats found: {}".format(len(cats_ref, len(cats))))
+    print("length categories:{}, cats found: {}".format(len(cats_ref), len(cats)))
     return True
 
 def write_opcodes_index(opcodes, filename, ncol=5):
