@@ -58,8 +58,15 @@ One-line description of myopcode.
 Eventually complementary and detailed description.
 
 ## Syntax
+
+=== "Modern"
 ``` csound-orc
-oarg myopcode iarg1, iarg2, etc
+     res:type =  myopcode(arg1:type, ...)
+```
+
+=== "Classic"
+``` csound-orc
+    res myopcode arg1, ...
 ```
 
 ### Initialization
