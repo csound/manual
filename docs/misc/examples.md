@@ -3,7 +3,9 @@
 # **List of Examples**
 
 ### Orchestra Syntax:Header
+[**0dbfs-modern.csd**](../opcodes/0dbfs.md#examples)<br>
 [**0dbfs.csd**](../opcodes/0dbfs.md#examples)<br>
+[**A4-modern.csd**](../opcodes/A4.md#examples)<br>
 [**A4.csd**](../opcodes/A4.md#examples)<br>
 [**kr.csd**](../opcodes/kr.md#examples)<br>
 [**ksmps.csd**](../opcodes/ksmps.md#examples)<br>
@@ -27,8 +29,11 @@
 [**include.csd**](../opcodes/include.md#examples)<br>
 
 ### Signal Generators:Additive Synthesis/Resynthesis
+[**adsyn-modern.csd**](../opcodes/adsyn.md#examples)<br>
 [**adsyn.csd**](../opcodes/adsyn.md#examples)<br>
+[**adsynt-modern.csd**](../opcodes/adsynt.md#examples)<br>
 [**adsynt.csd**](../opcodes/adsynt.md#examples)<br>
+[**adsynt2-modern.csd**](../opcodes/adsynt2.md#examples)<br>
 [**adsynt2.csd**](../opcodes/adsynt2.md#examples)<br>
 [**hsboscil.csd**](../opcodes/hsboscil.md#examples)<br>
 [**hsboscil_midi.csd**](../opcodes/hsboscil.md#examples)<br>
@@ -46,6 +51,7 @@
 [**oscilikts.csd**](../opcodes/oscilikts.md#examples)<br>
 [**osciln.csd**](../opcodes/osciln.md#examples)<br>
 [**oscils.csd**](../opcodes/oscils.md#examples)<br>
+[**poscil-modern.csd**](../opcodes/poscil.md#examples)<br>
 [**poscil.csd**](../opcodes/poscil.md#examples)<br>
 [**poscil3.csd**](../opcodes/poscil3.md#examples)<br>
 [**poscil3-file.csd**](../opcodes/poscil3.md#examples)<br>
@@ -53,7 +59,10 @@
 [**vibrato.csd**](../opcodes/vibrato.md#examples)<br>
 
 ### Signal Generators:Dynamic Spectrum Oscillators
+[**buzz-modern.csd**](../opcodes/buzz.md#examples)<br>
 [**buzz.csd**](../opcodes/buzz.md#examples)<br>
+[**/musical/BuzzFof_Cucchi-modern.csd**](../opcodes/buzz.md#examples)<br>
+[**/musical/BuzzFof_Cucchi.csd**](../opcodes/buzz.md#examples)<br>
 [**gbuzz.csd**](../opcodes/gbuzz.md#examples)<br>
 [**mpulse.csd**](../opcodes/mpulse.md#examples)<br>
 [**squinewave.csd**](../opcodes/squinewave.md#examples)<br>
@@ -139,7 +148,9 @@
 [**xyscale-FLTK.csd**](../opcodes/xyscale.md#examples)<br>
 
 ### Signal Generators:Envelope Generators
+[**adsr-modern.csd**](../opcodes/adsr.md#examples)<br>
 [**adsr.csd**](../opcodes/adsr.md#examples)<br>
+[**adsr-group-modern.csd**](../opcodes/adsr.md#examples)<br>
 [**adsr-group.csd**](../opcodes/adsr.md#examples)<br>
 [**envlpx.csd**](../opcodes/envlpx.md#examples)<br>
 [**envlpxr.csd**](../opcodes/envlpxr.md#examples)<br>
@@ -155,8 +166,11 @@
 [**adsr-group.csd**](../opcodes/xadsr.md#examples)<br>
 
 ### Signal Generators:Models and Emulations
+[**bamboo-modern.csd**](../opcodes/bamboo.md#examples)<br>
 [**bamboo.csd**](../opcodes/bamboo.md#examples)<br>
+[**barmodel-modern.csd**](../opcodes/barmodel.md#examples)<br>
 [**barmodel.csd**](../opcodes/barmodel.md#examples)<br>
+[**cabasa-modern.csd**](../opcodes/cabasa.md#examples)<br>
 [**cabasa.csd**](../opcodes/cabasa.md#examples)<br>
 [**crunch.csd**](../opcodes/crunch.md#examples)<br>
 [**dripwater.csd**](../opcodes/dripwater.md#examples)<br>
@@ -194,9 +208,13 @@
 [**trigphasor.csd**](../opcodes/trigphasor.md#examples)<br>
 
 ### Signal Generators:Random (Noise) Generators
+[**betarand-modern.csd**](../opcodes/betarand.md#examples)<br>
 [**betarand.csd**](../opcodes/betarand.md#examples)<br>
+[**bexprnd-modern.csd**](../opcodes/bexprnd.md#examples)<br>
 [**bexprnd.csd**](../opcodes/bexprnd.md#examples)<br>
+[**cauchy-modern.csd**](../opcodes/cauchy.md#examples)<br>
 [**cauchy.csd**](../opcodes/cauchy.md#examples)<br>
+[**cauchyi-modern.csd**](../opcodes/cauchyi.md#examples)<br>
 [**cauchyi.csd**](../opcodes/cauchyi.md#examples)<br>
 [**cuserrnd.csd**](../opcodes/cuserrnd.md#examples)<br>
 [**duserrnd.csd**](../opcodes/duserrnd.md#examples)<br>
@@ -244,7 +262,9 @@
 [**weibull.csd**](../opcodes/weibull.md#examples)<br>
 
 ### Signal Generators:Sample Playback
+[**bbcutm-modern.csd**](../opcodes/bbcutm.md#examples)<br>
 [**bbcutm.csd**](../opcodes/bbcutm.md#examples)<br>
+[**bbcuts-modern.csd**](../opcodes/bbcuts.md#examples)<br>
 [**bbcuts.csd**](../opcodes/bbcuts.md#examples)<br>
 [**flooper.csd**](../opcodes/flooper.md#examples)<br>
 [**flooper2.csd**](../opcodes/flooper2.md#examples)<br>
@@ -374,9 +394,13 @@
 [**outvalue.csd**](../opcodes/outvalue.md#examples)<br>
 
 ### Signal I/O:Software Bus
+[**chnclear-modern.csd**](../opcodes/chnclear.md#examples)<br>
 [**chnclear.csd**](../opcodes/chnclear.md#examples)<br>
+[**chnget-modern.csd**](../opcodes/chnget.md#examples)<br>
 [**chnget.csd**](../opcodes/chnget.md#examples)<br>
+[**chnmix-modern.csd**](../opcodes/chnmix.md#examples)<br>
 [**chnmix.csd**](../opcodes/chnmix.md#examples)<br>
+[**chnset-modern.csd**](../opcodes/chnset.md#examples)<br>
 [**chnset.csd**](../opcodes/chnset.md#examples)<br>
 
 ### Signal I/O:Printing and Display
@@ -403,8 +427,11 @@
 [**mp3len.csd**](../opcodes/mp3len.md#examples)<br>
 
 ### Signal Modifiers:Amplitude Modifiers
+[**balance-modern.csd**](../opcodes/balance.md#examples)<br>
 [**balance.csd**](../opcodes/balance.md#examples)<br>
+[**balance2-modern.csd**](../opcodes/balance2.md#examples)<br>
 [**balance2.csd**](../opcodes/balance2.md#examples)<br>
+[**clip-modern.csd**](../opcodes/clip.md#examples)<br>
 [**clip.csd**](../opcodes/clip.md#examples)<br>
 [**compress.csd**](../opcodes/compress.md#examples)<br>
 [**compress2.csd**](../opcodes/compress2.md#examples)<br>
@@ -445,7 +472,9 @@
 [**vdelayxws.csd**](../opcodes/vdelayxws.md#examples)<br>
 
 ### Signal Modifiers:Panning and Spatialization
+[**bformenc1-modern.csd**](../opcodes/bformdec1.md#examples)<br>
 [**bformenc1.csd**](../opcodes/bformdec1.md#examples)<br>
+[**bformenc1-modern.csd**](../opcodes/bformenc1.md#examples)<br>
 [**bformenc1.csd**](../opcodes/bformenc1.md#examples)<br>
 [**hrtfearly.csd**](../opcodes/hrtfearly.md#examples)<br>
 [**hrtfer.csd**](../opcodes/hrtfer.md#examples)<br>
@@ -479,6 +508,7 @@
 [**vbapmove.csd**](../opcodes/vbapmove.md#examples)<br>
 
 ### Signal Modifiers:Reverberation
+[**alpass-modern.csd**](../opcodes/alpass.md#examples)<br>
 [**alpass.csd**](../opcodes/alpass.md#examples)<br>
 [**babo.csd**](../opcodes/babo.md#examples)<br>
 [**babo_expert.csd**](../opcodes/babo.md#examples)<br>
@@ -527,16 +557,27 @@
 ### Signal Modifiers:Standard Filters
 [**k35.csd**](../opcodes/k35_hpf.md#examples)<br>
 [**k35.csd**](../opcodes/k35_lpf.md#examples)<br>
+[**atone-modern.csd**](../opcodes/atone.md#examples)<br>
 [**atone.csd**](../opcodes/atone.md#examples)<br>
+[**atonex-modern.csd**](../opcodes/atonex.md#examples)<br>
 [**atonex.csd**](../opcodes/atonex.md#examples)<br>
+[**biquad-modern.csd**](../opcodes/biquad.md#examples)<br>
 [**biquad.csd**](../opcodes/biquad.md#examples)<br>
+[**biquad-2-modern.csd**](../opcodes/biquad.md#examples)<br>
 [**biquad-2.csd**](../opcodes/biquad.md#examples)<br>
+[**biquada-modern.csd**](../opcodes/biquada.md#examples)<br>
 [**biquada.csd**](../opcodes/biquada.md#examples)<br>
+[**butterbp-modern.csd**](../opcodes/butterbp.md#examples)<br>
 [**butterbp.csd**](../opcodes/butterbp.md#examples)<br>
+[**butterbr-modern.csd**](../opcodes/butterbr.md#examples)<br>
 [**butterbr.csd**](../opcodes/butterbr.md#examples)<br>
+[**butterhp-modern.csd**](../opcodes/butterhp.md#examples)<br>
 [**butterhp.csd**](../opcodes/butterhp.md#examples)<br>
+[**butterlp-modern.csd**](../opcodes/butterlp.md#examples)<br>
 [**butterlp.csd**](../opcodes/butterlp.md#examples)<br>
+[**clfilt_lowpass-modern.csd**](../opcodes/clfilt.md#examples)<br>
 [**clfilt_lowpass.csd**](../opcodes/clfilt.md#examples)<br>
+[**clfilt_highpass-modern.csd**](../opcodes/clfilt.md#examples)<br>
 [**clfilt_highpass.csd**](../opcodes/clfilt.md#examples)<br>
 [**diode_ladder.csd**](../opcodes/diode_ladder.md#examples)<br>
 [**median.csd**](../opcodes/median.md#examples)<br>
@@ -551,8 +592,11 @@
 [**zdf_ladder.csd**](../opcodes/zdf_ladder.md#examples)<br>
 
 ### Signal Modifiers:Standard Filters:Resonant
+[**areson-modern.csd**](../opcodes/areson.md#examples)<br>
 [**areson.csd**](../opcodes/areson.md#examples)<br>
+[**bob-modern.csd**](../opcodes/bob.md#examples)<br>
 [**bob.csd**](../opcodes/bob.md#examples)<br>
+[**bqrez-modern.csd**](../opcodes/bqrez.md#examples)<br>
 [**bqrez.csd**](../opcodes/bqrez.md#examples)<br>
 [**lowpass2.csd**](../opcodes/lowpass2.md#examples)<br>
 [**lowres.csd**](../opcodes/lowres.md#examples)<br>
@@ -583,7 +627,9 @@
 [**vlowres.csd**](../opcodes/vlowres.md#examples)<br>
 
 ### Signal Modifiers:Standard Filters:Control
+[**aresonk-modern.csd**](../opcodes/aresonk.md#examples)<br>
 [**aresonk.csd**](../opcodes/aresonk.md#examples)<br>
+[**atonek-modern.csd**](../opcodes/atonek.md#examples)<br>
 [**atonek.csd**](../opcodes/atonek.md#examples)<br>
 [**lag.csd**](../opcodes/lag.md#examples)<br>
 [**lagud.csd**](../opcodes/lagud.md#examples)<br>
@@ -620,6 +666,7 @@
 [**wguide2.csd**](../opcodes/wguide2.md#examples)<br>
 
 ### Signal Modifiers:Waveshaping
+[**chebyshevpoly-modern.csd**](../opcodes/chebyshevpoly.md#examples)<br>
 [**chebyshevpoly.csd**](../opcodes/chebyshevpoly.md#examples)<br>
 [**pdclip.csd**](../opcodes/pdclip.md#examples)<br>
 [**pdhalf.csd**](../opcodes/pdhalf.md#examples)<br>
@@ -642,7 +689,9 @@
 [**minaccum.csd**](../opcodes/minaccum.md#examples)<br>
 
 ### Instrument Control:Clock Control
+[**clockoff-modern.csd**](../opcodes/clockoff.md#examples)<br>
 [**clockoff.csd**](../opcodes/clockoff.md#examples)<br>
+[**clockon-modern.csd**](../opcodes/clockon.md#examples)<br>
 [**clockon.csd**](../opcodes/clockon.md#examples)<br>
 
 ### Instrument Control:Conditional Values
@@ -660,6 +709,7 @@
 [**evalstr.csd**](../opcodes/evalstr.md#examples)<br>
 
 ### Instrument Control:Duration Control
+[**ihold-modern.csd**](../opcodes/ihold.md#examples)<br>
 [**ihold.csd**](../opcodes/ihold.md#examples)<br>
 [**turnoff.csd**](../opcodes/turnoff.md#examples)<br>
 [**turnoff2.csd**](../opcodes/turnoff2.md#examples)<br>
@@ -682,19 +732,26 @@
 [**scoreline_i.csd**](../opcodes/scoreline_i.md#examples)<br>
 
 ### Instrument Control:Program Flow Control
+[**cggoto-modern.csd**](../opcodes/cggoto.md#examples)<br>
 [**cggoto.csd**](../opcodes/cggoto.md#examples)<br>
+[**cigoto-modern.csd**](../opcodes/cigoto.md#examples)<br>
 [**cigoto.csd**](../opcodes/cigoto.md#examples)<br>
+[**ckgoto-modern.csd**](../opcodes/ckgoto.md#examples)<br>
 [**ckgoto.csd**](../opcodes/ckgoto.md#examples)<br>
+[**cngoto-modern.csd**](../opcodes/cngoto.md#examples)<br>
 [**cngoto.csd**](../opcodes/cngoto.md#examples)<br>
 [**else.csd**](../opcodes/else.md#examples)<br>
 [**elseif.csd**](../opcodes/elseif.md#examples)<br>
 [**endif.csd**](../opcodes/endif.md#examples)<br>
+[**goto-modern.csd**](../opcodes/goto.md#examples)<br>
 [**goto.csd**](../opcodes/goto.md#examples)<br>
 [**igoto.csd**](../opcodes/if.md#examples)<br>
 [**kgoto.csd**](../opcodes/if.md#examples)<br>
 [**ifthen.csd**](../opcodes/if.md#examples)<br>
+[**igoto-modern.csd**](../opcodes/igoto.md#examples)<br>
 [**igoto.csd**](../opcodes/igoto.md#examples)<br>
 [**kgoto.csd**](../opcodes/kgoto.md#examples)<br>
+[**loop_-group-modern.csd**](../opcodes/loop_ge.md#examples)<br>
 [**loop_-group.csd**](../opcodes/loop_ge.md#examples)<br>
 [**loop_gt.csd**](../opcodes/loop_gt.md#examples)<br>
 [**loop_le.csd**](../opcodes/loop_le.md#examples)<br>
@@ -706,8 +763,11 @@
 [**while.csd**](../opcodes/while.md#examples)<br>
 
 ### Instrument Control:Realtime Performance Control
+[**active-modern.csd**](../opcodes/active.md#examples)<br>
 [**active.csd**](../opcodes/active.md#examples)<br>
+[**active_k-modern.csd**](../opcodes/active.md#examples)<br>
 [**active_k.csd**](../opcodes/active.md#examples)<br>
+[**active_scale-modern.csd**](../opcodes/active.md#examples)<br>
 [**active_scale.csd**](../opcodes/active.md#examples)<br>
 [**cpumeter.csd**](../opcodes/cpumeter.md#examples)<br>
 [**cpuprc.csd**](../opcodes/cpuprc.md#examples)<br>
@@ -717,6 +777,7 @@
 
 ### Instrument Control:Initialization and Reinitialization
 [**reverb.csd**](../opcodes/plusbecomes.md#examples)<br>
+[**assign-modern.csd**](../opcodes/assign.md#examples)<br>
 [**assign.csd**](../opcodes/assign.md#examples)<br>
 [**init.csd**](../opcodes/init.md#examples)<br>
 [**nstrnum_nstrstr.csd**](../opcodes/nstrnum.md#examples)<br>
@@ -725,15 +786,22 @@
 [**passign.csd**](../opcodes/passign.md#examples)<br>
 [**pset.csd**](../opcodes/pset.md#examples)<br>
 [**pset-midi.csd**](../opcodes/pset.md#examples)<br>
+[**reinit-modern.csd**](../opcodes/reinit.md#examples)<br>
 [**reinit.csd**](../opcodes/reinit.md#examples)<br>
+[**musical/Reinit_Giordani-modern.csd**](../opcodes/reinit.md#examples)<br>
+[**musical/Reinit_Giordani.csd**](../opcodes/reinit.md#examples)<br>
 [**reinit.csd**](../opcodes/rireturn.md#examples)<br>
 [**tival.csd**](../opcodes/tival.md#examples)<br>
 
 ### Instrument Control:Sensing and Control
 [**checkbox.csd**](../opcodes/button.md#examples)<br>
+[**changed-modern.csd**](../opcodes/changed.md#examples)<br>
 [**changed.csd**](../opcodes/changed.md#examples)<br>
+[**changed2-modern.csd**](../opcodes/changed2.md#examples)<br>
 [**changed2.csd**](../opcodes/changed2.md#examples)<br>
+[**changed2a-modern.csd**](../opcodes/changed2.md#examples)<br>
 [**changed2a.csd**](../opcodes/changed2.md#examples)<br>
+[**checkbox-modern.csd**](../opcodes/checkbox.md#examples)<br>
 [**checkbox.csd**](../opcodes/checkbox.md#examples)<br>
 [**counter.csd**](../opcodes/cntcreate.md#examples)<br>
 [**counter.csd**](../opcodes/count.md#examples)<br>
@@ -746,6 +814,14 @@
 [**metro.csd**](../opcodes/metro.md#examples)<br>
 [**metro-2.csd**](../opcodes/metro.md#examples)<br>
 [**metro2.csd**](../opcodes/metro2.md#examples)<br>
+[**midifilelen.csd**](../opcodes/midifilelen.md#examples)<br>
+[**midifilemute.csd**](../opcodes/midifilemute.md#examples)<br>
+[**midifileopen.csd**](../opcodes/midifileopen.md#examples)<br>
+[**midifilepause.csd**](../opcodes/midifilepause.md#examples)<br>
+[**midifileplay.csd**](../opcodes/midifileplay.md#examples)<br>
+[**midifilepos.csd**](../opcodes/midifilepos.md#examples)<br>
+[**midifilerewind.csd**](../opcodes/midifilerewind.md#examples)<br>
+[**midifiletempo.csd**](../opcodes/midifiletempo.md#examples)<br>
 [**miditempo.csd**](../opcodes/miditempo.md#examples)<br>
 [**pcount.csd**](../opcodes/pcount.md#examples)<br>
 [**peak.csd**](../opcodes/peak.md#examples)<br>
@@ -783,8 +859,11 @@
 [**stack.csd**](../opcodes/stack.md#examples)<br>
 
 ### Instrument Control:Subinstrument Control
+[**subinstr-modern.csd**](../opcodes/subinstr.md#examples)<br>
 [**subinstr.csd**](../opcodes/subinstr.md#examples)<br>
+[**subinstr_named-modern.csd**](../opcodes/subinstr.md#examples)<br>
 [**subinstr_named.csd**](../opcodes/subinstr.md#examples)<br>
+[**subinstrinit-modern.csd**](../opcodes/subinstrinit.md#examples)<br>
 [**subinstrinit.csd**](../opcodes/subinstrinit.md#examples)<br>
 
 ### Instrument Control:Time Reading
@@ -856,23 +935,32 @@
 
 ### Mathematical Operations:Arithmetic and Logic Operations
 [**opnot.csd**](../opcodes/opnot.md#examples)<br>
+[**bitwise-modern.csd**](../opcodes/opbitand.md#examples)<br>
 [**bitwise.csd**](../opcodes/opbitand.md#examples)<br>
+[**bitwise-group-modern.csd**](../opcodes/opbitand.md#examples)<br>
 [**bitwise-group.csd**](../opcodes/opbitand.md#examples)<br>
 [**opand.csd**](../opcodes/opand.md#examples)<br>
 [**multiplies.csd**](../opcodes/multiplies.md#examples)<br>
 [**raises.csd**](../opcodes/raises.md#examples)<br>
+[**bitshift-modern.csd**](../opcodes/opbitshl.md#examples)<br>
 [**bitshift.csd**](../opcodes/opbitshl.md#examples)<br>
 [**modulus.csd**](../opcodes/modulus.md#examples)<br>
 [**divides.csd**](../opcodes/divides.md#examples)<br>
+[**bitwise-modern.csd**](../opcodes/opbitor.md#examples)<br>
 [**bitwise.csd**](../opcodes/opbitor.md#examples)<br>
+[**bitwise-group-modern.csd**](../opcodes/opbitor.md#examples)<br>
 [**bitwise-group.csd**](../opcodes/opbitor.md#examples)<br>
 [**logicOR.csd**](../opcodes/opor.md#examples)<br>
+[**adds-modern.csd**](../opcodes/adds.md#examples)<br>
 [**adds.csd**](../opcodes/adds.md#examples)<br>
 [**subtracts.csd**](../opcodes/subtracts.md#examples)<br>
+[**bitwise-group-modern.csd**](../opcodes/opnonequiv.md#examples)<br>
 [**bitwise-group.csd**](../opcodes/opnonequiv.md#examples)<br>
+[**bitwise-group-modern.csd**](../opcodes/opbitnot.md#examples)<br>
 [**bitwise-group.csd**](../opcodes/opbitnot.md#examples)<br>
 
 ### Mathematical Operations:Arrays
+[**cbrt-modern.csd**](../opcodes/cbrt.md#examples)<br>
 [**cbrt.csd**](../opcodes/cbrt.md#examples)<br>
 [**fmax.csd**](../opcodes/fmax.md#examples)<br>
 [**fmin.csd**](../opcodes/fmin.md#examples)<br>
@@ -881,23 +969,30 @@
 [**limit1.csd**](../opcodes/limit1.md#examples)<br>
 
 ### Mathematical Operations:Comparators and Accumulators
+[**clear-modern.csd**](../opcodes/clear.md#examples)<br>
 [**clear.csd**](../opcodes/clear.md#examples)<br>
 [**vincr.csd**](../opcodes/vincr.md#examples)<br>
 [**vincr-complex.csd**](../opcodes/vincr.md#examples)<br>
 
 ### Mathematical Operations:Mathematical Functions
+[**abs-modern.csd**](../opcodes/abs.md#examples)<br>
 [**abs.csd**](../opcodes/abs.md#examples)<br>
+[**ceil-modern.csd**](../opcodes/ceil.md#examples)<br>
 [**ceil.csd**](../opcodes/ceil.md#examples)<br>
+[**ceil-2-modern.csd**](../opcodes/ceil.md#examples)<br>
 [**ceil-2.csd**](../opcodes/ceil.md#examples)<br>
+[**rounding-group-modern.csd**](../opcodes/ceil.md#examples)<br>
 [**rounding-group.csd**](../opcodes/ceil.md#examples)<br>
 [**exp.csd**](../opcodes/exp.md#examples)<br>
 [**exp-musical.csd**](../opcodes/exp.md#examples)<br>
 [**floor.csd**](../opcodes/floor.md#examples)<br>
 [**floor2.csd**](../opcodes/floor.md#examples)<br>
+[**rounding-group-modern.csd**](../opcodes/floor.md#examples)<br>
 [**rounding-group.csd**](../opcodes/floor.md#examples)<br>
 [**frac.csd**](../opcodes/frac.md#examples)<br>
 [**frac2.csd**](../opcodes/frac.md#examples)<br>
 [**int.csd**](../opcodes/int.md#examples)<br>
+[**rounding-group-modern.csd**](../opcodes/int.md#examples)<br>
 [**rounding-group.csd**](../opcodes/int.md#examples)<br>
 [**log.csd**](../opcodes/log.md#examples)<br>
 [**log10.csd**](../opcodes/log10.md#examples)<br>
@@ -907,6 +1002,7 @@
 [**qinf.csd**](../opcodes/qinf.md#examples)<br>
 [**qnan.csd**](../opcodes/qnan.md#examples)<br>
 [**round.csd**](../opcodes/round.md#examples)<br>
+[**rounding-group-modern.csd**](../opcodes/round.md#examples)<br>
 [**rounding-group.csd**](../opcodes/round.md#examples)<br>
 [**sqrt.csd**](../opcodes/sqrt.md#examples)<br>
 
@@ -924,13 +1020,16 @@
 [**taninv.csd**](../opcodes/taninv.md#examples)<br>
 
 ### Mathematical Operations:Amplitude Functions
+[**ampdb-modern.csd**](../opcodes/ampdb.md#examples)<br>
 [**ampdb.csd**](../opcodes/ampdb.md#examples)<br>
+[**ampdbfs-modern.csd**](../opcodes/ampdbfs.md#examples)<br>
 [**ampdbfs.csd**](../opcodes/ampdbfs.md#examples)<br>
 [**db.csd**](../opcodes/db.md#examples)<br>
 [**dbamp.csd**](../opcodes/dbamp.md#examples)<br>
 [**dbfsamp.csd**](../opcodes/dbfsamp.md#examples)<br>
 
 ### Mathematical Operations:Random Functions
+[**birnd-modern.csd**](../opcodes/birnd.md#examples)<br>
 [**birnd.csd**](../opcodes/birnd.md#examples)<br>
 [**rnd.csd**](../opcodes/rnd.md#examples)<br>
 [**rnd-advanced.csd**](../opcodes/rnd.md#examples)<br>
@@ -947,6 +1046,7 @@
 [**taninv2-advanced.csd**](../opcodes/taninv2.md#examples)<br>
 
 ### Pitch Converters:Functions
+[**cent-modern.csd**](../opcodes/cent.md#examples)<br>
 [**cent.csd**](../opcodes/cent.md#examples)<br>
 [**cpsmidinn.csd**](../opcodes/cpsmidinn.md#examples)<br>
 [**cpsmidinn2.csd**](../opcodes/cpsmidinn.md#examples)<br>
@@ -977,7 +1077,9 @@
 [**cpsxpch_pierce.csd**](../opcodes/cpsxpch.md#examples)<br>
 
 ### Real-time MIDI:Input
+[**aftouch-modern.csd**](../opcodes/aftouch.md#examples)<br>
 [**aftouch.csd**](../opcodes/aftouch.md#examples)<br>
+[**chanctrl-modern.csd**](../opcodes/chanctrl.md#examples)<br>
 [**chanctrl.csd**](../opcodes/chanctrl.md#examples)<br>
 [**ctrl14.csd**](../opcodes/ctrl14.md#examples)<br>
 [**ctrl21.csd**](../opcodes/ctrl21.md#examples)<br>
@@ -1015,8 +1117,11 @@
 [**outkpc_fltk.csd**](../opcodes/outkpc.md#examples)<br>
 
 ### Real-time MIDI:Converters
+[**ampmidi-modern.csd**](../opcodes/ampmidi.md#examples)<br>
 [**ampmidi.csd**](../opcodes/ampmidi.md#examples)<br>
+[**ampmidicurve-modern.csd**](../opcodes/ampmidicurve.md#examples)<br>
 [**ampmidicurve.csd**](../opcodes/ampmidicurve.md#examples)<br>
+[**ampmidid-modern.csd**](../opcodes/ampmidid.md#examples)<br>
 [**ampmidid.csd**](../opcodes/ampmidid.md#examples)<br>
 [**cpsmidi.csd**](../opcodes/cpsmidi.md#examples)<br>
 [**cpsmidib.csd**](../opcodes/cpsmidib.md#examples)<br>
@@ -1068,6 +1173,7 @@
 ### MIDI files:MIDI input and Initialization
 
 ### Signal Flow Graph Opcodes
+[**alwayson-modern.csd**](../opcodes/alwayson.md#examples)<br>
 [**alwayson.csd**](../opcodes/alwayson.md#examples)<br>
 [**connect.csd**](../opcodes/connect.md#examples)<br>
 [**ftgenonce.csd**](../opcodes/ftgenonce.md#examples)<br>
@@ -1088,8 +1194,11 @@
 [**vpvoc.csd**](../opcodes/vpvoc.md#examples)<br>
 
 ### Spectral Processing:LPC
+[**allpole-modern.csd**](../opcodes/allpole.md#examples)<br>
 [**allpole.csd**](../opcodes/allpole.md#examples)<br>
+[**allpole-2-modern.csd**](../opcodes/allpole.md#examples)<br>
 [**allpole-2.csd**](../opcodes/allpole.md#examples)<br>
+[**apoleparams-modern.csd**](../opcodes/apoleparams.md#examples)<br>
 [**apoleparams.csd**](../opcodes/apoleparams.md#examples)<br>
 [**lpcanal.csd**](../opcodes/lpcanal.md#examples)<br>
 [**lpcanal-2.csd**](../opcodes/lpcanal.md#examples)<br>
@@ -1107,6 +1216,7 @@
 ### Spectral Processing:Non-Standard
 
 ### Spectral Processing:Streaming
+[**binit-modern.csd**](../opcodes/binit.md#examples)<br>
 [**binit.csd**](../opcodes/binit.md#examples)<br>
 [**part2txt.csd**](../opcodes/part2txt.md#examples)<br>
 [**partials.csd**](../opcodes/partials.md#examples)<br>
@@ -1184,6 +1294,7 @@
 [**ATSsinnoi-2.csd**](../opcodes/ATSsinnoi.md#examples)<br>
 
 ### Spectral Processing:Other
+[**centroid-modern.csd**](../opcodes/centroid.md#examples)<br>
 [**centroid.csd**](../opcodes/centroid.md#examples)<br>
 [**filescal.csd**](../opcodes/filescal.md#examples)<br>
 [**mincer.csd**](../opcodes/mincer.md#examples)<br>
@@ -1256,6 +1367,7 @@
 [**vrandi.csd**](../opcodes/vrandi.md#examples)<br>
 
 ### Vectorial:Cellular Automata
+[**cell-modern.csd**](../opcodes/cell.md#examples)<br>
 [**cell.csd**](../opcodes/cell.md#examples)<br>
 [**vcella.csd**](../opcodes/vcella.md#examples)<br>
 
@@ -1328,6 +1440,7 @@
 [**window.csd**](../opcodes/window.md#examples)<br>
 
 ### Array Operations: complex numbers
+[**c2r-modern.csd**](../opcodes/c2r.md#examples)<br>
 [**c2r.csd**](../opcodes/c2r.md#examples)<br>
 [**cmplxprod.csd**](../opcodes/cmplxprod.md#examples)<br>
 [**mags.csd**](../opcodes/mags.md#examples)<br>
@@ -1344,10 +1457,13 @@
 [**sortd.csd**](../opcodes/sortd.md#examples)<br>
 
 ### Array Operations: Cepstrum
+[**ceps-modern.csd**](../opcodes/ceps.md#examples)<br>
 [**ceps.csd**](../opcodes/ceps.md#examples)<br>
+[**cepsinv-modern.csd**](../opcodes/cepsinv.md#examples)<br>
 [**cepsinv.csd**](../opcodes/cepsinv.md#examples)<br>
 
 ### Array Operations: Autocorrelation
+[**autocorr-modern.csd**](../opcodes/autocorr.md#examples)<br>
 [**autocorr.csd**](../opcodes/autocorr.md#examples)<br>
 
 ### Array Operations: Discrete Cosine Transform

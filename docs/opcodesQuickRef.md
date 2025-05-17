@@ -2393,7 +2393,36 @@
 `ktrig  = `[**`metrobpm`**](opcodes/metrobpm.md)`( kfreq [, initphase] [, kgate])`<br>
 
 
-`ksig = `[**`miditempo`**](opcodes/miditempo.md)`()`<br>
+` len:i =  `[**`midifilelen`**](opcodes/midifilelen.md)`([id:i])`<br>
+
+
+` `[**`midifilemute`**](opcodes/midifilemute.md)`([id:i])`<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;`id:i = midfileopen(name:S[,port:i])`<br>
+
+
+` `[**`midifilepause`**](opcodes/midifilepause.md)`([id:i])`<br>
+
+
+` `[**`midifileplay`**](opcodes/midifileplay.md)`([id:i])`<br>
+
+
+` pos:i = `[**`midifilepos`**](opcodes/midifilepos.md)`([id:i])`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`pos:k = midifilepos([id:i])`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`midifilepos(pos:i[,id:i])`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`midifilepos(pos:k[,id:i])`<br>
+
+
+` `[**`midifilerewind`**](opcodes/midifilerewind.md)`([id:i])`<br>
+
+
+` `[**`midifiletempo`**](opcodes/midifiletempo.md)`(tempo:i[,id:i])`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`midifiletempo(tempo:k[,id:i])`<br>
+
+
+`itempo = `[**`miditempo`**](opcodes/miditempo.md)`([id:i])`<br>
+`ktempo = miditempo([id:i])`<br>
 
 
 `icount = `[**`pcount`**](opcodes/pcount.md)`()`<br>
