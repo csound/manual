@@ -6,7 +6,7 @@ category:Instrument Control:Sensing and Control
 Open a MIDI file for playback. 
 
 This opcode can be called from
-anywhere, it is non-op if used in an instrument is triggered by a MIDI
+anywhere, it is non-op if used in an instrument triggered by a MIDI
 event.
 
 Requires the -F flag to operate.

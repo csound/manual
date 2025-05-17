@@ -8,7 +8,7 @@ Starts playback of a MIDI file.
 If the file is already playing, no
 action results.  This opcode can be called from
 anywhere, it is also a non-op if used 
-in an instrument is triggered by a MIDI event.
+in an instrument triggered by a MIDI event.
 
 Requires the -F flag to operate. If a filename is passed to -F, it is
 open with id 0 and playback starts immediately.
