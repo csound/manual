@@ -1,21 +1,33 @@
 <!--
-id:midifileopem
+id:midifileopen
 category:Instrument Control:Sensing and Control
 -->
 # midifileopen
-Open a midifile for playback.
+Open a MIDI file for playback. This opcode can be called from
+anywhere, it is non-op if used in an instrument is triggered by a MIDI
+event.
+
+Requires the -F flag to operate.
 
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-     midfileopen(name:S[,port:i])
+     id:i = midfileopen(name:S[,port:i])
     ```
 
 === "Classic"
     ``` csound-orc
-    midifileopen Sname[,iport]
+    id midifileopen Sname[,iport]
     ```
+
+### Initialization
+
+_name_ -- MIDI file name.
+
+_port_ (optional, default=0) -- MIDI channel port mapping: (port + 1)*channel
+
+Returns a MIDI file id to use with other opcodes.
 
 ## Examples
 
