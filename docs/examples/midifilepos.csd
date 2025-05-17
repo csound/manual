@@ -1,6 +1,6 @@
 <CsoundSynthesizer>
 <CsOptions>
--F -odac
+--midifile -odac
 </CsOptions>
 <CsInstruments>
 0dbfs=1
@@ -16,7 +16,18 @@ instr Midisynth
    out(sig*env)
 endin
 
+instr SetPos
+ midifilepos(p4,mf)
+endin
+
+instr GetPos
+printk 1, midifilepos:k(mf)
+endin
+
 schedule(Midisynth,0,0)
+schedule(GetPos,0,-1)
+schedule(SetPos,5,0,10)
+schedule(SetPos,10,0,5)
 event_i("e", 0, midifilelen(mf))
 
 </CsInstruments>

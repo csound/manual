@@ -158,8 +158,11 @@ csound5:output2             (playback right)
 #### --aft-zero
 Use zero as initial value of after-touch.
 
-#### -F FILE, --midifile=FILE
-Read MIDI events from MIDI file *FILE*. The file should have only one track in Csound versions 4.xx and earlier; this limitation is removed in Csound 5.00.
+#### -F [FILE], --midifile[=FILE]
+Open MIDI file input (for access using MIDI file opcodes). If *FILE* is given, read MIDI events from MIDI
+file *FILE*, with MIDI file id 0 assigned to it (see MIDI file input opcodes). The file should have only one track in Csound versions
+4.xx and earlier; this limitation is removed in Csound 5.00. MIDI file
+opcodes introduce in Csound 7.00.
 
 #### --midioutfile=FILENAME
 Save MIDI output to a file (Csound 5.00 and later only).

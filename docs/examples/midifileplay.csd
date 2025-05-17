@@ -7,7 +7,7 @@
 
 mf@global:i = midifileopen("catherine.mid")
 
-instr midisynth
+instr Midisynth
  midifileplay(mf)
  amp:i = ampmidi(0.2)
  cps:i = cpsmidi()
@@ -16,7 +16,7 @@ instr midisynth
    out(sig*env)
 endin
 
-schedule(midisynth,0,0)
+schedule(Midisynth,0,0)
 event_i("e", 0, midifilelen(mf))
 
 </CsInstruments>

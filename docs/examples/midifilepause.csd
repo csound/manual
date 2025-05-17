@@ -16,7 +16,17 @@ instr Midisynth
    out(sig*env)
 endin
 
+instr Pause
+ midifilepause(mf)
+endin
+
+instr Play
+ midifileplay(mf)
+endin
+
 schedule(Midisynth,0,0)
+schedule(Pause,5,0)
+schedule(Play,7,0)
 event_i("e", 0, midifilelen(mf))
 
 </CsInstruments>

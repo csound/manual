@@ -16,7 +16,14 @@ instr Midisynth
    out(sig*env)
 endin
 
+instr Mute
+ midifilemute(mf)
+endin
+
+
 schedule(Midisynth,0,0)
+schedule(Mute,5,0)
+schedule(Mute,7,0)
 event_i("e", 0, midifilelen(mf))
 
 </CsInstruments>

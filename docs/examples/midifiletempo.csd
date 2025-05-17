@@ -16,7 +16,14 @@ instr Midisynth
    out(sig*env)
 endin
 
+instr Tempo
+ midifiletempo(p4,mf)
+endin
+
+
 schedule(Midisynth,0,0)
+schedule(Tempo,5,0,110)
+schedule(Tempo,10,0,-1)
 event_i("e", 0, midifilelen(mf))
 
 </CsInstruments>

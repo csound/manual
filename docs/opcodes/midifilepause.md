@@ -1,12 +1,10 @@
 <!--
-id:midifileplay
+id:midifilepause
 category:Instrument Control:Sensing and Control
 -->
-# midifileplay
-Starts playback of a MIDI file. If the file is already playing, no
-action results.  This opcode can be called from
-anywhere, it is also a non-op if used 
-in an instrument is triggered by a MIDI event.
+# midifilepause
+Pauses MIDI file playback. If already paused, not action is
+executed. This opcode is a non-op in MIDI-triggered instrument events.
 
 Requires the -F flag to operate. If a filename is passed to -F, it is
 open with id 0 and playback starts immediately.
@@ -15,12 +13,12 @@ open with id 0 and playback starts immediately.
 ## Syntax
 === "Modern"
     ``` csound-orc
-     midifileplay([id:i])
+     midifilepause([id:i])
     ```
 
 === "Classic"
     ``` csound-orc
-    midifileplay [id]
+    midifilepause [id]
     ```
 
 ### Initialization
@@ -32,10 +30,10 @@ any file passed to the -F flag.
 
 ## Examples
 
-Here is an example of the miditempo opcode. It uses the files [midifileplay.csd](../examples/midifileplay.csd).
+Here is an example of the miditempo opcode. It uses the files [midifilepause.csd](../examples/midifilepause.csd).
 
-``` csound-csd title="Example of the midifileplay opcode." linenums="1"
---8<-- "examples/midifileplay.csd"
+``` csound-csd title="Example of the midifilepause opcode." linenums="1"
+--8<-- "examples/midifilepause.csd"
 ```
 
 ## See also

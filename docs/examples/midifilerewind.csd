@@ -16,7 +16,13 @@ instr Midisynth
    out(sig*env)
 endin
 
+instr Rew
+ midifilerewind(mf)
+endin
+
+
 schedule(Midisynth,0,0)
+schedule(Rew,5,0)
 event_i("e", 0, midifilelen(mf))
 
 </CsInstruments>

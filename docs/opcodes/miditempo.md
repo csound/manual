@@ -9,13 +9,23 @@ Returns the current tempo at k-rate, of either the MIDI file (if available) or t
 ## Syntax
 === "Modern"
     ``` csound-orc
-    ksig = miditempo()
+    itempo = miditempo([id:i])
+    ktempo = miditempo([id:i])
     ```
 
 === "Classic"
     ``` csound-orc
-    ksig miditempo
+    itempo miditempo [id:i]
+    ktempo miditempo [id:i]
     ```
+
+### Initialization
+
+
+_id_ (optional, default=0) -- MIDI file id, defaults to 0, the id of
+any file passed to the -F flag.
+
+Tempo is returned in bpm.
 
 ## Examples
 
