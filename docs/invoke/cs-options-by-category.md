@@ -160,12 +160,10 @@ Use zero as initial value of after-touch.
 
 #### -F [FILE], --midifile[=FILE]
 Open MIDI file input (for access using MIDI file opcodes). If *FILE* is given, read MIDI events from MIDI
-file *FILE*, with MIDI file id 0 assigned to it (see MIDI file input opcodes). The file should have only one track in Csound versions
-4.xx and earlier; this limitation is removed in Csound 5.00. MIDI file
-opcodes introduce in Csound 7.00.
+file *FILE*, assigning MIDI file id 0 to it (see MIDI file input opcodes), with playback starting immediately. 
 
 #### --midioutfile=FILENAME
-Save MIDI output to a file (Csound 5.00 and later only).
+Save MIDI output to a file.
 
 #### -+mute_tracks=string
 (max. length = 255 characters) Ignore events (other than tempo changes) in MIDI file tracks defined by pattern (for example, -+mute_tracks=00101 will mute the third and fifth tracks).
