@@ -2393,7 +2393,8 @@
 `ktrig  = `[**`metrobpm`**](opcodes/metrobpm.md)`( kfreq [, initphase] [, kgate])`<br>
 
 
-`status:k, chan:k, data1:k, data2:k, time:k = `[**`midifilein`**](opcodes/midifilein.md)`(index:k,[id:k])`<br>
+`status:i,chan:i,data1:i,data2:i,time:i = `[**`midifilein`**](opcodes/midifilein.md)`(index:i,[id:i])`<br>
+`status:k, chan:k, data1:k, data2:k, time:k = midifilein(index:k,[id:k])`<br>
 
 
 ` len:i =  `[**`midifilelen`**](opcodes/midifilelen.md)`([id:i])`<br>
@@ -3485,7 +3486,10 @@
 
 
 ### MIDI files:MIDI input and Initialization
-`ksig = `[**`midifilestatus`**](opcodes/midifilestatus.md)`()`<br>
+`   type:i = `[**`eventtype`**](opcodes/eventtype.md)`()`<br>
+
+
+`status:k = `[**`midifilestatus`**](opcodes/midifilestatus.md)`([id:k])`<br>
 
 
 ### Signal Flow Graph Opcodes

@@ -268,6 +268,7 @@ cosine interpolation, including a release segment.<br>
 [event_i](../opcodes/event_i.md) - Generates a score event from an instrument.<br>
 [eventcycles](../opcodes/eventcycles.md) - Read absolute time in k-rate cycles, since the start of an instance of an instrument.<br>
 [eventtime](../opcodes/eventtime.md) - Read absolute time, in seconds, since the start of an instance of an instrument.<br>
+[eventtype](../opcodes/eventtype.md) - Returns the event type for an instrument.<br>
 [exciter](../opcodes/exciter.md) - A non-linear filter system to excite the signal.<br>
 [exitnow](../opcodes/exitnow.md) - Exit Csound as fast as possible, with no cleaning up.<br>
 [exp](../opcodes/exp.md) - Returns e raised to the xth power.<br>
