@@ -5,26 +5,21 @@ category:Instrument Control:Sensing and Control
 # midifilein
 Returns a generic MIDI message from a MIDI file.
 
- This opcode can be called from
-any instrument, it is a non-op if used 
-in an instrument triggered by a MIDI event.
-
-Requires the -F flag to operate. If a filename is passed to -F, it is
-open with id 0 and playback starts immediately.
-
 
 ## Syntax
 === "Modern"
     ``` csound-orc
+    status:i,chan:i,data1:i,data2:i,time:i = midifilein(index:i,[id:i])
     status:k, chan:k, data1:k, data2:k, time:k = midifilein(index:k,[id:k])
     ```
 
 === "Classic"
     ``` csound-orc
+    istatus, ichan, idata1, idata2, itime midifilein iindex, id
     kstatus, kchan, kdata1, kdata2, ktime midifilein kindex, kid
     ```
 
-### Performance
+### Initiatialization 
 
 _index_ -- MIDI event index in MIDI file (0 - midifilevents()].
 
@@ -47,6 +42,10 @@ if channel is port mapped.)
 
 _data1, data2_ -- message-dependent data values
 
+### Performance
+
+Same as above, but operational only at performance time. Users should
+select the appropriate overload for init or perf-time.
 
 ## Examples
 

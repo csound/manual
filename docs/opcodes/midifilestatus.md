@@ -10,13 +10,16 @@ Returns the current playback status at k-rate, of the input MIDI file, 1 if file
 ## Syntax
 === "Modern"
     ``` csound-orc
-    ksig = midifilestatus()
+    status:k = midifilestatus([id:k])
     ```
 
 === "Classic"
     ``` csound-orc
-    ksig midifilestatus
+    kstatus midifilestatus [id:k]
     ```
+
+_id_ (optional, default=0) -- MIDI file id, defaults to 0, the id of
+any file passed to the -F flag.
 
 ## See also
 
