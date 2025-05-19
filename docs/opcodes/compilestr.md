@@ -26,11 +26,17 @@ _ires_ --  returns 0 if compilation was successful, or -1 if not.
 
 ## Examples
 
-Here is an example of the compilestr opcode. It uses the file [compilestr.csd](../examples/compilestr.csd).
+=== "Modern"
+    Here is an example of the compilestr opcode. It uses the file [compilestr-modern.csd](../examples/compilestr-modern.csd).
+    ``` csound-csd title="Example of the compilestr opcode." linenums="1"
+    --8<-- "examples/compilestr-modern.csd"
+    ```
 
-``` csound-csd title="Example of the compilestr opcode." linenums="1"
---8<-- "examples/compilestr.csd"
-```
+=== "Classic"
+    Here is an example of the compilestr opcode. It uses the file [compilestr.csd](../examples/compilestr.csd).
+    ``` csound-csd title="Example of the compilestr opcode." linenums="1"
+    --8<-- "examples/compilestr.csd"
+    ```
 
 ## See also
 

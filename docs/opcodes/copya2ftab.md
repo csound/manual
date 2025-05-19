@@ -28,12 +28,17 @@ _koffset_ --  offset into the f-table (defaults to 0).
 
 ## Examples
 
-Here is an example of the copya2ftab opcode. It uses the file
-[copya2ftab.csd](../examples/copya2ftab.csd).
+=== "Modern"
+    Here is an example of the copya2ftab opcode. It uses the file [copya2ftab-modern.csd](../examples/copya2ftab-modern.csd).
+    ``` csound-csd title="Example of the copya2ftab opcode." linenums="1"
+    --8<-- "examples/copya2ftab-modern.csd"
+    ```
 
-``` csound-csd title="Example of the copya2ftab opcode." linenums="1"
---8<-- "examples/copya2ftab.csd"
-```
+=== "Classic"
+    Here is an example of the copya2ftab opcode. It uses the file [copya2ftab.csd](../examples/copya2ftab.csd).
+    ``` csound-csd title="Example of the copya2ftab opcode." linenums="1"
+    --8<-- "examples/copya2ftab.csd"
+    ```
 
 ## See also
 

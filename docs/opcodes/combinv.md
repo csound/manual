@@ -32,11 +32,17 @@ This filter reiterates input with an echo density determined by loop time _ilpt_
 
 ## Examples
 
-Here is an example of the combinv opcode. It uses the file [combinv.csd](../examples/combinv.csd).
+=== "Modern"
+    Here is an example of the combinv opcode. It uses the file [combinv-modern.csd](../examples/combinv-modern.csd).
+    ``` csound-csd title="Example of the combinv opcode." linenums="1"
+    --8<-- "examples/combinv-modern.csd"
+    ```
 
-``` csound-csd title="Example of the combinv opcode." linenums="1"
---8<-- "examples/combinv.csd"
-```
+=== "Classic"
+    Here is an example of the combinv opcode. It uses the file [combinv.csd](../examples/combinv.csd).
+    ``` csound-csd title="Example of the combinv opcode." linenums="1"
+    --8<-- "examples/combinv.csd"
+    ```
 
 ## See also
 

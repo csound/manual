@@ -32,11 +32,17 @@ This filter reiterates input with an echo density determined by loop time _ilpt_
 
 ## Examples
 
-Here is an example of the comb opcode. It uses the file [comb.csd](../examples/comb.csd).
+=== "Modern"
+    Here is an example of the comb opcode. It uses the file [comb-modern.csd](../examples/comb-modern.csd).
+    ``` csound-csd title="Example of the comb opcode." linenums="1"
+    --8<-- "examples/comb-modern.csd"
+    ```
 
-``` csound-csd title="Example of the comb opcode." linenums="1"
---8<-- "examples/comb.csd"
-```
+=== "Classic"
+    Here is an example of the comb opcode. It uses the file [comb.csd](../examples/comb.csd).
+    ``` csound-csd title="Example of the comb opcode." linenums="1"
+    --8<-- "examples/comb.csd"
+    ```
 
 ## See also
 

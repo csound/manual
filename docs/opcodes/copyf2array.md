@@ -24,11 +24,17 @@ _kftbl_ --  f-tables for source.
 
 ## Examples
 
-Here is an example of the copyf2array opcode. It uses the file [copyf2array.csd](../examples/copyf2array.csd).
+=== "Modern"
+    Here is an example of the copyf2array opcode. It uses the file [copyf2array-modern.csd](../examples/copyf2array-modern.csd).
+    ``` csound-csd title="Example of the copyf2array opcode." linenums="1"
+    --8<-- "examples/copyf2array-modern.csd"
+    ```
 
-``` csound-csd title="Example of the copyf2array opcode." linenums="1"
---8<-- "examples/copyf2array.csd"
-```
+=== "Classic"
+    Here is an example of the copyf2array opcode. It uses the file [copyf2array.csd](../examples/copyf2array.csd).
+    ``` csound-csd title="Example of the copyf2array opcode." linenums="1"
+    --8<-- "examples/copyf2array.csd"
+    ```
 
 ## See also
 
