@@ -59,7 +59,7 @@
 [S](../opcodes/ops.md) - Returns a string containg the numeric value of its argument.<br>
 [\#](../opcodes/opnonequiv.md) - Bitwise NON EQUIVALENCE operator.<br>
 [a](../opcodes/opa.md) - Converts a k-rate parameter to an a-rate value with interpolation.<br>
-[abs](../opcodes/abs.md) - Returns an absolute value.<br>
+[abs](../opcodes/abs.md) - Returns the absolute value of its input.<br>
 [active](../opcodes/active.md) - Returns the number of active instances of an instrument with options to ignore releasing instances.<br>
 [adsr](../opcodes/adsr.md) - Calculates the classical ADSR envelope using linear segments.<br>
 [adsyn](../opcodes/adsyn.md) - Output is an additive set of individually controlled sinusoids, using an oscillator bank.<br>
@@ -81,6 +81,7 @@
 [arduinoStop](../opcodes/arduinoStop.md) - Close a serial port using Arduino protocol.<br>
 [areson](../opcodes/areson.md) - A notch filter whose transfer functions are the complements of the reson opcode.<br>
 [aresonk](../opcodes/aresonk.md) - A notch filter whose transfer functions are the complements of the reson opcode.<br>
+[arg](../opcodes/arg.md) - Returns the argument of a complex number.<br>
 [atone](../opcodes/atone.md) - A hi-pass filter whose transfer functions are the complements of the [tone](../opcodes/tone.md) opcode.<br>
 [atonek](../opcodes/atonek.md) - A hi-pass filter whose transfer functions are the complements of the [tonek](../opcodes/tonek.md) opcode.<br>
 [atonex](../opcodes/atonex.md) - Emulates a stack of filters using the atone opcode.<br>
@@ -165,6 +166,9 @@
 [compilestr](../opcodes/compilestr.md) - Compiles a new orchestra passed in as an ASCII string.<br>
 [compress2](../opcodes/compress2.md) - Compress, limit, expand, duck or gate an audio signal.<br>
 [compress](../opcodes/compress.md) - Compress, limit, expand, duck or gate an audio signal.<br>
+[conj](../opcodes/complex.md) - Returns a complex number in rectangular format.<br>
+[conj](../opcodes/conj.md) - Returns the conjugate of a complex number.<br>
+[conj](../opcodes/polar.md) - Returns a complex number in polar format.<br>
 [connect](../opcodes/connect.md) - Connects a source outlet to a sink inlet.<br>
 [control](../opcodes/control.md) - Configurable slider controls for realtime user input.<br>
 [convle](../opcodes/convle.md) - Same as the [convolve](../opcodes/convolve.md) opcode.<br>
@@ -401,6 +405,7 @@ cosine interpolation, including a release segment.<br>
 [if](../opcodes/if.md) - Branches conditionally at initialization or during performance time.<br>
 [igoto](../opcodes/igoto.md) - During the i-time pass only, unconditionally transfer control to the statement labeled by _label_.<br>
 [ihold](../opcodes/ihold.md) - Causes a finite-duration note to become a &#8220;held&#8221; note.<br>
+[imag](../opcodes/imag.md) - Returns the imaginary part of a complex number.<br>
 [in32](../opcodes/in32.md) - Reads a 32-channel audio signal from an external device or stream.<br>
 [in](../opcodes/in.md) - Reads mono audio data from an external device or stream.<br>
 [inch](../opcodes/inch.md) - Reads from numbered channels in an external audio signal or stream.<br>
@@ -812,6 +817,7 @@ cosine interpolation, including a release segment.<br>
 [readk](../opcodes/readk.md) - Periodically reads an orchestra control-signal value from a named external file in a specific format.<br>
 [readscore](../opcodes/readscore.md) - Read, preprocess and schedule a score from an input string.<br>
 [readscratch](../opcodes/readscratch.md) - Returns one of four scalar values stored in the instance of an instrument.<br>
+[real](../opcodes/real.md) - Returns the real part of a complex number.<br>
 [rect2pol](../opcodes/rect2pol.md) - Converts an input array in real-imaginary format to magnitude-phase format.<br>
 [reinit](../opcodes/reinit.md) - Suspends a performance while a special initialization pass is executed.<br>
 [release](../opcodes/release.md) - Indicates whether a note is in its _release_ stage.<br>

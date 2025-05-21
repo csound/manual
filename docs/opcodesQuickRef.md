@@ -1975,10 +1975,12 @@
 `aout = `[**`gtf`**](opcodes/gtf.md)`(ain, kfreq, idecay[, iorder, iphase])`<br>
 
 
-`ar1, ar2 = `[**`hilbert`**](opcodes/hilbert.md)`(asig)`<br>
+`c:a, s:a = `[**`hilbert`**](opcodes/hilbert.md)`(sig:a)`<br>
+`csig:Complex[] = hilbert(sig:a)`<br>
 
 
-`ar1, ar2 = `[**`hilbert2`**](opcodes/hilbert2.md)`(asig, ifftsize, ihopsize)`<br>
+`c:a, s:a = `[**`hilbert2`**](opcodes/hilbert2.md)`(sig:a, fftsize:a, hopsize:i)`<br>
+`csig:Complex[] = hilbert2(sig:a, fftsize:a, hopsize:i)    `<br>
 
 
 `aout = `[**`mvmfilter`**](opcodes/mvmfilter.md)`(ain, xfreq, xTau [, iskip])`<br>
@@ -2900,12 +2902,30 @@
 
 
 ### Mathematical Operations:Mathematical Functions
-[**`abs`**](opcodes/abs.md)`(x) (no rate restriction)`<br>
-`abs(k/i[]) (k- or i-arrays )`<br>
+[**`abs`**](opcodes/abs.md)`(var:{i,k,a}) `<br>
+`abs(var:{k[],i[]})`<br>
+`abs(var:Complex)`<br>
+`abs(var:Complex[])`<br>
+
+
+[**`arg`**](opcodes/arg.md)`(var:Complex)`<br>
+`arg(var:Complex[])`<br>
 
 
 [**`ceil`**](opcodes/ceil.md)`(x) (init-, control-, or audio-rate arg allowed)`<br>
 `ceil(k/i[]) (k- or i-arrays )`<br>
+
+
+`complex(var:Complex)`<br>
+`complex(var:Complex[])`<br>
+
+
+[**`conj`**](opcodes/conj.md)`(var:Complex)`<br>
+`conj(var:Complex[])`<br>
+
+
+`polar(var:Complex)`<br>
+`polar(var:Complex[])`<br>
 
 
 [**`exp`**](opcodes/exp.md)`(x) (no rate restriction)`<br>
@@ -2918,6 +2938,10 @@
 
 [**`frac`**](opcodes/frac.md)`(x) (init-rate or control-rate args; also works at audio rate in Csound5)`<br>
 `frac(k/i[]) (k- or i-arrays )`<br>
+
+
+[**`imag`**](opcodes/imag.md)`(var:Complex)`<br>
+`imag(var:Complex[])`<br>
 
 
 [**`int`**](opcodes/int.md)`(x)  (init-rate or control-rate; also works at audio rate in Csound5)`<br>
@@ -2946,6 +2970,10 @@
 
 
 [**`qnan`**](opcodes/qnan.md)`(x) (no rate restriction)`<br>
+
+
+[**`real`**](opcodes/real.md)`(var:Complex)`<br>
+`real(var:Complex[])`<br>
 
 
 [**`round`**](opcodes/round.md)`(x)      (init-, control-, or audio-rate arg allowed)`<br>
@@ -4324,16 +4352,21 @@
 
 
 ### Array Operations: Fast Fourier Transform
-`kout[] = `[**`fft`**](opcodes/fft.md)`(kin[])`<br>
+`out:k[] = `[**`fft`**](opcodes/fft.md)`(in:k[])`<br>
+`in:Complex[] = fft(in:Complex[][,inverse:i])`<br>
+`in:Complex[] = fft(in:k[]);`<br>
+`out:k[] = fft(in:Complex[]);`<br>
 
 
 `kout[] = `[**`fftinv`**](opcodes/ifft.md)`(kin[])`<br>
 
 
-`kout[] = `[**`rfft`**](opcodes/rfft.md)`(kin[])`<br>
+`out:k[] = `[**`rfft`**](opcodes/rfft.md)`(in:k[])`<br>
+`out:Complex[] = rfft(in:k[])    `<br>
 
 
-`kout[] = `[**`rifft`**](opcodes/rifft.md)`(kin[])`<br>
+`out:k[] = `[**`rifft`**](opcodes/rifft.md)`(in:k[])`<br>
+`out:k[] = rifft(in:Complex[])    `<br>
 
 
 `kout[] = `[**`unwrap`**](opcodes/unwrap.md)`(kin[])`<br>

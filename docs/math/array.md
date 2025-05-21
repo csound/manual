@@ -4,7 +4,7 @@ category:
 -->
 # Array Opcodes
 
-List of Array Opcodes (6.12):
+Array Opcodes:
 
 * [init](../opcodes/init.md) initiatlise array
 * [fillarray](../opcodes/fillarray.md) fill array with values
@@ -36,6 +36,7 @@ List of Array Opcodes (6.12):
 * [printarray](../opcodes/printarray.md) print an array
 * [product](../opcodes/product.md) calculates the product of an array
 * the unary functions [ceil](../opcodes/ceil.md), [floor](../opcodes/floor.md) [round](../opcodes/round.md), [int](../opcodes/int.md), [frac](../opcodes/frac.md), [powoftwo](../opcodes/powoftwo.md), [abs](../opcodes/abs.md), [log2](../opcodes/log2.md), [log10](../opcodes/log10.md), [log](../opcodes/log.md), [exp](../opcodes/exp.md), [sqrt](../opcodes/sqrt.md), [cos](../opcodes/cos.md), [sin](../opcodes/sin.md), [tan](../opcodes/tan.md), [cosinv](../opcodes/cosinv.md), [sininv](../opcodes/sininv.md), [taninv](../opcodes/taninv.md), [sinh](../opcodes/sinh.md), [cosh](../opcodes/cosh.md), [tanh](../opcodes/tanh.md), [cbrt](../opcodes/cbrt.md), [limit1](../opcodes/limit1.md), and the binary functions [taninv2](../opcodes/taninv2.md), [pow](../opcodes/pow.md), [hypot](../opcodes/hypot.md), [fmod](../opcodes/fmod.md), [fmax](../opcodes/fmax.md), [fmin](../opcodes/fmin.md) accept arrays as input.
+* Other operations such as fft, etc are documented in their respective manual pages.
 
 Some instructions to work with arrays in Csound (see also the [array chapter in the Csound FLOSS Manual:](https://flossmanual.csound.com/csound-language/arrays))
 
@@ -96,6 +97,14 @@ if kTrig == 1 then ;do the following once a second
   od
 endif
 ```
+
+## Complex arrays
+
+Arrays of the Complex type can be used for various mathematical
+applications. All operations of complex arithmetic are implemented
+for these, as well as a number of special functions (see [Mathematical
+Functions](../math/mathfunc.md)). FFT and Hilbert transforms for
+these types are also available.
 
 ## Creation/Initialization
 

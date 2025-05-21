@@ -433,13 +433,16 @@
 [**balance2.csd**](../opcodes/balance2.md#examples)<br>
 [**clip-modern.csd**](../opcodes/clip.md#examples)<br>
 [**clip.csd**](../opcodes/clip.md#examples)<br>
+[**compress-modern.csd**](../opcodes/compress.md#examples)<br>
 [**compress.csd**](../opcodes/compress.md#examples)<br>
+[**compress2-modern.csd**](../opcodes/compress2.md#examples)<br>
 [**compress2.csd**](../opcodes/compress2.md#examples)<br>
 [**dam.csd**](../opcodes/dam.md#examples)<br>
 [**dam_expanded.csd**](../opcodes/dam.md#examples)<br>
 [**gain.csd**](../opcodes/gain.md#examples)<br>
 
 ### Signal Modifiers:Convolution and Morphing
+[**convolve-modern.csd**](../opcodes/convolve.md#examples)<br>
 [**convolve.csd**](../opcodes/convolve.md#examples)<br>
 [**cross2.csd**](../opcodes/cross2.md#examples)<br>
 [**dconv.csd**](../opcodes/dconv.md#examples)<br>
@@ -512,7 +515,9 @@
 [**alpass.csd**](../opcodes/alpass.md#examples)<br>
 [**babo.csd**](../opcodes/babo.md#examples)<br>
 [**babo_expert.csd**](../opcodes/babo.md#examples)<br>
+[**comb-modern.csd**](../opcodes/comb.md#examples)<br>
 [**comb.csd**](../opcodes/comb.md#examples)<br>
+[**combinv-modern.csd**](../opcodes/combinv.md#examples)<br>
 [**combinv.csd**](../opcodes/combinv.md#examples)<br>
 [**freeverb.csd**](../opcodes/freeverb.md#examples)<br>
 [**nestedap.csd**](../opcodes/nestedap.md#examples)<br>
@@ -703,8 +708,11 @@
 [**equals.csd**](../opcodes/equals.md#examples)<br>
 
 ### Instrument Control:Compilation
+[**compilecsd-modern.csd**](../opcodes/compilecsd.md#examples)<br>
 [**compilecsd.csd**](../opcodes/compilecsd.md#examples)<br>
+[**compileorc-modern.csd**](../opcodes/compileorc.md#examples)<br>
 [**compileorc.csd**](../opcodes/compileorc.md#examples)<br>
+[**compilestr-modern.csd**](../opcodes/compilestr.md#examples)<br>
 [**compilestr.csd**](../opcodes/compilestr.md#examples)<br>
 [**evalstr.csd**](../opcodes/evalstr.md#examples)<br>
 
@@ -1177,6 +1185,7 @@
 ### Signal Flow Graph Opcodes
 [**alwayson-modern.csd**](../opcodes/alwayson.md#examples)<br>
 [**alwayson.csd**](../opcodes/alwayson.md#examples)<br>
+[**connect-modern.csd**](../opcodes/connect.md#examples)<br>
 [**connect.csd**](../opcodes/connect.md#examples)<br>
 [**ftgenonce.csd**](../opcodes/ftgenonce.md#examples)<br>
 [**inleta.csd**](../opcodes/inleta.md#examples)<br>
@@ -1413,7 +1422,9 @@
 [**Mixer.csd**](../opcodes/mixersetlevel.md#examples)<br>
 
 ### Array Opcodes
+[**copya2ftab-modern.csd**](../opcodes/copya2ftab.md#examples)<br>
 [**copya2ftab.csd**](../opcodes/copya2ftab.md#examples)<br>
+[**copyf2array-modern.csd**](../opcodes/copyf2array.md#examples)<br>
 [**copyf2array.csd**](../opcodes/copyf2array.md#examples)<br>
 [**deinterleave.csd**](../opcodes/deinterleave.md#examples)<br>
 [**getcol.csd**](../opcodes/getcol.md#examples)<br>

@@ -3,15 +3,38 @@ id:abs
 category:Mathematical Operations:Mathematical Functions
 -->
 # abs
-Returns an absolute value.
+Returns the absolute value of its input.
+
+In the case of a complex variable, the absolute value is equivalent to
+the magnitude of the number.
 
 ## Syntax
 ``` csound-orc
-abs(x) (no rate restriction)
-abs(k/i[]) (k- or i-arrays )
+abs(var:{i,k,a}) 
+abs(var:{k[],i[]})
+abs(var:Complex)
+abs(var:Complex[])
 ```
 
-where the argument within the parentheses may be an expression. Value converters perform arithmetic translation from units of one kind to units of another. The result can then be a term in a further expression.
+where the argument within the parentheses may be an expression. Value
+converters perform arithmetic translation from units of one kind to
+units of another. The result can then be a term in a further
+expression.
+
+The complex array version of the opcode has two overloads, one that returns a
+k-rate array and another that returns an audio signal.
+
+```
+Array:k = abs(CplxArray)
+sig:a = abs(CplxArray)
+```
+
+In the second case, the array should be one dimensional and 
+contain a least `ksmps` complex
+numbers. This opcode takes advantage of the fact that 
+audio signals are real-valued vectors, similarly to k-sig 
+one-dimensional arrays.
+
 
 ## Examples
 

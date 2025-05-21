@@ -5,17 +5,33 @@ category:Array Operations: Fast Fourier Transform
 # rfft
 Fast Fourier Transform of a real-value array.
 
-Applies a forward Fast Fourier Transform to a real-value input 1-dimensional array. The output is another array containing the transform, non-redundant, non-negative spectrum only. If the input array is power-of-two, the output array size will match the input size, with the first two points containing 0Hz and Nyquist frequency coefficients. Otherwise, the output will have two extra values (input size + 2), and the the Nyquist coefficient will be placed at kin[input_size] position (kin[1] and kin[input_size+1] will be 0).
+Applies a forward Fast Fourier Transform to a real-value input
+1-dimensional array. The output is another array containing the
+transform, non-redundant, non-negative spectrum only. 
+
+In the case of the k-array version, the output array size will match
+ the input size, with the first two points containing 0Hz and Nyquist
+ frequency coefficients. This is the _packed_ output format.
+ 
+The Complex-array version, on the other hand, produces an array
+size that is one unit longer than the input (input size + 1 complex
+numbers), containing the Nyquist frequency coefficient in
+the last position of the Complex array.
+
+Non-power-of-two transforms are limited to even sizes 
+with not too many factors.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    kout[] = rfft(kin[])
+    out:k[] = rfft(in:k[])
+    out:Complex[] = rfft(in:k[])    
     ```
 
 === "Classic"
     ``` csound-orc
     kout[] rfft kin[]
+    out:Complex[] rfft in:k[]    
     ```
 
 ### Performance

@@ -5,24 +5,39 @@ category:Array Operations: Fast Fourier Transform
 # rifft
 Complex-to-real Inverse Fast Fourier Transform.
 
-Applies an Inverse Fast Fourier Transform to a complex-value input 1-dimensional array producing a real-valued output. The output is another array containing the real-valued signal. If the input array is power-of-two, the output array size will match the input size. Otherwise, the output will have two fewer values (input size - 2).
+Applies an Inverse Fast Fourier Transform to a complex-value input
+1-dimensional array producing a real-valued output. The output is
+another array containing the real-valued signal. The
+k-rate input expects a _packed_ input (see
+[rfft](../opcodes/rfft.md)).
+
+The Complex-array version, on the other hand, expects an array
+size that is one unit longer than the output (output size + 1 complex
+numbers), containing the Nyquist frequency coefficient in
+the last position of the Complex array.
+
+Non-power-of-two transforms are limited to even sizes 
+with not too many factors.
+
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    kout[] = rifft(kin[])
+    out:k[] = rifft(in:k[])
+    out:k[] = rifft(in:Complex[])    
     ```
 
 === "Classic"
     ``` csound-orc
     kout[] rifft kin[]
+    kout[] rifft in:Complex[]    
     ```
 
 ### Performance
 
-_kout[]_ -- output array containing the real-valued output. It will be created if it does not exist.
+_out_ -- output array containing the real-valued output. It will be created if it does not exist.
 
-_kin[]_ -- input array containing the complex input.
+_in_ -- input array containing the complex input.
 
 ## Examples
 

@@ -8,21 +8,25 @@ A Hilbert transformer.
 ## Syntax
 === "Modern"
     ``` csound-orc
-    ar1, ar2 = hilbert(asig)
+    c:a, s:a = hilbert(sig:a)
+    csig:Complex[] = hilbert(sig:a)
     ```
 
 === "Classic"
     ``` csound-orc
-    ar1, ar2 hilbert asig
+    ac, as hilbert asig
+    sig:Complex[] hilbert asig
     ```
 
 ### Performance
 
-_asig_ -- input signal
+_sig_ -- input signal
 
-_ar1_ -- sine output of _asig_
+_c_ -- cosine output of _sig_
 
-_ar2_ -- cosine output of _asig_
+_s_ -- sine output of _sig_
+
+_csig_ -- Complex array containing the analytic signal.
 
 _hilbert_ is an IIR filter based implementation of a broad-band 90 degree phase difference network. The input to _hilbert_ is an audio signal, with a frequency range from 15 Hz to 15 kHz. The outputs of _hilbert_ have an identical frequency response to the input (i.e. they sound the same), but the two outputs have a constant phase difference of 90 degrees, plus or minus some small amount of error, throughout the entire frequency range. The outputs are in quadrature.
 
