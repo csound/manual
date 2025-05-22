@@ -60,11 +60,18 @@ depending on the opcode version.
 
 ## Examples
 
-Here is an example of the fft opcode. It uses the file [fft.csd](../examples/fft.csd).
+This is example of the fft opcode (k-type array). It uses the file [fft.csd](../examples/fft.csd).
 
-``` csound-csd title="Example of the fft opcode." linenums="1"
+``` csound-csd title="Example of the fft opcode (k array)." linenums="1"
 --8<-- "examples/fft.csd"
 ```
+
+Another example of the fft opcode, now using a Complex-type array. It uses the file [fft_complex_type.csd](../examples/fft_complex_type.csd).
+
+``` csound-csd title="Example of the fft opcode (Complex array." linenums="1"
+--8<-- "examples/fft_complex_type.csd"
+```
+
 
 ## See Also
 
@@ -76,8 +83,9 @@ Here is an example of the fft opcode. It uses the file [fft.csd](../examples/fft
 
 ## Credits
 
-Author: Victor Lazzarini<br>
-NUI Maynooth<br>
-2014<br>
+Author: Victor Lazzarini  
+NUI Maynooth  
+2014  
 
-New in version 6.04
+New in version 6.04  
+Complex type introduced in version 7.

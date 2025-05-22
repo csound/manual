@@ -1,6 +1,6 @@
 <!--
 id:genarray
-category:Table Control:Table Queries
+category:Array Opcodes
 -->
 # genarray
 Generate a vector (one-dimensional k-rate or i-rate array) with an arithmetic sequence.

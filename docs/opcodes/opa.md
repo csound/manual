@@ -3,11 +3,16 @@ id:opa
 category:Signal Modifiers:Sample Level Operators
 -->
 # a
-Converts a k-rate parameter to an a-rate value with interpolation.
+Converts a k-sig or k-array parameter to an a-sig output.
+
+The k-sig version interpolates linearly its input to create the audio
+signal. The k-array opcode copies the first _ksmps_ numbers in the
+array to an audio signal.
 
 ## Syntax
 ``` csound-orc
-a(x) (control-rate args only)
+a(k)
+a(k[])
 ```
 
 where the argument within the parentheses may be an expression. Value converters perform arithmetic translation from units of one kind to units of another. The result can then be a term in a further expression.
@@ -31,3 +36,4 @@ More information on this opcode can be found in the [Csound Journal, issue 10](h
 Author: Gabriel Maldonado
 
 New in version 4.21
+Array overload introduced in version 7.

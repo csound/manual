@@ -48,18 +48,26 @@ Here is an example of the rfft opcode. It uses the file [rfft.csd](../examples/r
 --8<-- "examples/rfft.csd"
 ```
 
+Another example of the rfft opcode, now using a Complex-type array. It uses the file [rfft_complex_type.csd](../examples/rfft_complex_type.csd).
+
+``` csound-csd title="Example of the rfft opcode (Complex array." linenums="1"
+--8<-- "examples/rfft_complex_type.csd"
+```
+
+
 ## See Also
 
 [Vectorial opcodes](../vectorial/top.md)
 
-[array opcodes](../math/array.md)
+[Array opcodes](../math/array.md)
 
 [Array-based spectral opcodes](../spectral/arrays.md)
 
 ## Credits
 
-Author: Victor Lazzarini<br>
-NUI Maynooth<br>
-2014<br>
+Author: Victor Lazzarini  
+NUI Maynooth  
+2014, 2025  
 
-New in version 6.04
+New in version 6.04  
+Complex type introduced in version 7.

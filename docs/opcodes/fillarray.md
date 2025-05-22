@@ -1,6 +1,6 @@
 <!--
 id:fillarray
-category:Table Control:Table Queries
+category:Array Opcodes
 -->
 # fillarray
 Generate a vector (one-dimensional k-rate array) with a sequence of numeric or string values.
