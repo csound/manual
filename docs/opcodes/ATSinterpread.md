@@ -24,11 +24,17 @@ _ATSinterpread_ takes a frequency value (_kfreq_ in Hz). This frequency is used 
 
 ## Examples
 
-Here is an example of the ATSinterpread opcode. It uses the file [ATSinterpread.csd](../examples/ATSinterpread.csd).
+=== "Modern"
+    Here is an example of the ATSinterpread opcode. It uses the file [ATSinterpread-modern.csd](../examples/ATSinterpread-modern.csd).
+    ``` csound-csd title="Example of the ATSinterpread opcode." linenums="1"
+    --8<-- "examples/ATSinterpread-modern.csd"
+    ```
 
-``` csound-csd title="Example of the ATSinterpread opcode." linenums="1"
---8<-- "examples/ATSinterpread.csd"
-```
+=== "Classic"
+    Here is an example of the ATSinterpread opcode. It uses the file [ATSinterpread.csd](../examples/ATSinterpread.csd).
+    ``` csound-csd title="Example of the ATSinterpread opcode." linenums="1"
+    --8<-- "examples/ATSinterpread.csd"
+    ```
 
 This example shows how to use _ATSinterpread_. Here a frequency is given by the score (p5) and this frequency is given to an _ATSinterpread_ (with a corresponding [ATSbufread](../opcodes/ATSbufread.md)). The _ATSinterpread_ uses this frequency to output a corresponding amplitude value, based on the atsfile given by the [ATSbufread](../opcodes/ATSbufread.md) (beats.ats in this case). We then use that amplitude to scale a sine-wave that is synthesized with the same frequency (p5). You could extend this to include multiple sine-waves. This way you could synthesize any reasonable frequency (within the low and high frequencies of the indicated ATS file), and maintain the shape (in frequency) of the indicated atsfile (given by the [ATSbufread](../opcodes/ATSbufread.md)).
 

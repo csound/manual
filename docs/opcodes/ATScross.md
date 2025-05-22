@@ -44,11 +44,17 @@ _ATScross_ uses data from an ATS analysis file (indicated by _iatsfile_) and dat
 
 ## Examples
 
-Here is an example of the ATScross opcode. It uses the file [ATScross.csd](../examples/ATScross.csd).
+=== "Modern"
+    Here is an example of the ATScross opcode. It uses the file [ATScross-modern.csd](../examples/ATScross-modern.csd).
+    ``` csound-csd title="Example of the ATScross opcode." linenums="1"
+    --8<-- "examples/ATScross-modern.csd"
+    ```
 
-``` csound-csd title="Example of the ATScross opcode." linenums="1"
---8<-- "examples/ATScross.csd"
-```
+=== "Classic"
+    Here is an example of the ATScross opcode. It uses the file [ATScross.csd](../examples/ATScross.csd).
+    ``` csound-csd title="Example of the ATScross opcode." linenums="1"
+    --8<-- "examples/ATScross.csd"
+    ```
 
 ## See also
 

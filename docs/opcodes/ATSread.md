@@ -32,19 +32,31 @@ _ktimepnt_ – The time pointer in seconds used to index the ATS file. Used for 
 
 ## Examples
 
-Here is an example of the ATSread opcode. It uses the file [ATSread.csd](../examples/ATSread.csd).
+=== "Modern"
+    Here is an example of the ATSread opcode. It uses the file [ATSread-modern.csd](../examples/ATSread-modern.csd).
+    ``` csound-csd title="Example of the ATSread opcode." linenums="1"
+    --8<-- "examples/ATSread-modern.csd"
+    ```
 
-``` csound-csd title="Example of the ATSread opcode." linenums="1"
---8<-- "examples/ATSread.csd"
-```
+=== "Classic"
+    Here is an example of the ATSread opcode. It uses the file [ATSread.csd](../examples/ATSread.csd).
+    ``` csound-csd title="Example of the ATSread opcode." linenums="1"
+    --8<-- "examples/ATSread.csd"
+    ```
 
 Here we are using _ATSread_ to get the 10th partial's frequency and amplitude data out of the 'beats.ats' ATS analysis file. We are using that data to drive an oscillator, but we could use it for anything else that can take a k-rate input, like the bandwidth and resonance of a filter etc.
 
-Here is a musical example of the ATSread opcode. It uses the file [ATSread-musical.csd](../examples/ATSread-musical.csd).
+=== "Modern"
+    Here is a musical example of the ATSread opcode. It uses the file [ATSread-musical-modern.csd](../examples/ATSread-musical-modern.csd).
+    ``` csound-csd title="Musical example of the ATSread opcode." linenums="1"
+    --8<-- "examples/ATSread-musical-modern.csd"
+    ```
 
-``` csound-csd title="Example 2 of the ATSread opcode." linenums="1"
---8<-- "examples/ATSread-musical.csd"
-```
+=== "Classic"
+    Here is a musical example of the ATSread opcode. It uses the file [ATSread-musical.csd](../examples/ATSread-musical.csd).
+    ``` csound-csd title="Musical example of the ATSread opcode." linenums="1"
+    --8<-- "examples/ATSread-musical.csd"
+    ```
 
 ## See also
 

@@ -52,11 +52,17 @@ _ATSinfo_ can be useful for writing generic instruments that will work with many
 
 ## Examples
 
-Here is an example of the ATSinfo opcode. It uses the file [ATSinfo.csd](../examples/ATSinfo.csd).
+=== "Modern"
+    Here is an example of the ATSinfo opcode. It uses the file [ATSinfo-modern.csd](../examples/ATSinfo-modern.csd).
+    ``` csound-csd title="Example of the ATSinfo opcode." linenums="1"
+    --8<-- "examples/ATSinfo-modern.csd"
+    ```
 
-``` csound-csd title="Example of the ATSinfo opcode." linenums="1"
---8<-- "examples/ATSinfo.csd"
-```
+=== "Classic"
+    Here is an example of the ATSinfo opcode. It uses the file [ATSinfo.csd](../examples/ATSinfo.csd).
+    ``` csound-csd title="Example of the ATSinfo opcode." linenums="1"
+    --8<-- "examples/ATSinfo.csd"
+    ```
 
 ### Other examples
 

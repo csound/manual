@@ -51,17 +51,29 @@ _ATSadd_ reads from an ATS analysis file and uses the data to perform additive s
 
 In the example above, _ipartials_ is 20 and _ipartialoffset_ is 2. This will synthesize the 3rd thru 22nd partials in the "clarinet.ats" analysis file. _kfmod_ is 1 so there will be no pitch transformation. Since the _ktimepnt_ envelope moves from 0 to 2.5 over the duration of the note, the analysis file will be read from 0 to 2.5 seconds of the original duration of the analysis over the duration of the csound note, this way we can change the duration independent of the pitch.
 
-Here is a complete example of the ATSadd opcode. It uses the file [ATSadd.csd](../examples/ATSadd.csd).
+=== "Modern"
+    Here is a complete example of the ATSadd opcode. It uses the file [ATSadd-modern.csd](../examples/ATSadd-modern.csd).
+    ``` csound-csd title="Example of the ATSadd opcode." linenums="1"
+    --8<-- "examples/ATSadd-modern.csd"
+    ```
 
-``` csound-csd title="Example of the ATSadd opcode." linenums="1"
---8<-- "examples/ATSadd.csd"
-```
+=== "Classic"
+    Here is a complete example of the ATSadd opcode. It uses the file [ATSadd.csd](../examples/ATSadd.csd).
+    ``` csound-csd title="Example of the ATSadd opcode." linenums="1"
+    --8<-- "examples/ATSadd.csd"
+    ```
 
-Here is another example of the ATSadd opcode. It uses the file [ATSadd-2.csd](../examples/ATSadd-2.csd).
+=== "Modern"
+    Here is another example of the ATSadd opcode. It uses the file [ATSadd-2-modern.csd](../examples/ATSadd-2-modern.csd).
+    ``` csound-csd title="Example 2 of the ATSadd opcode." linenums="1"
+    --8<-- "examples/ATSadd-2-modern.csd"
+    ```
 
-``` csound-csd title="Example 2 of the ATSadd opcode." linenums="1"
---8<-- "examples/ATSadd-2.csd"
-```
+=== "Classic"
+    Here is another example of the ATSadd opcode. It uses the file [ATSadd-2.csd](../examples/ATSadd-2.csd).
+    ``` csound-csd title="Example 2 of the ATSadd opcode." linenums="1"
+    --8<-- "examples/ATSadd-2.csd"
+    ```
 
 ## See also
 

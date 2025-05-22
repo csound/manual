@@ -2,7 +2,7 @@
 id:polar
 category:Mathematical Operations:Mathematical Functions
 -->
-# conj
+# polar
 Returns a complex number in polar format.
 
 
