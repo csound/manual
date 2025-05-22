@@ -38,11 +38,17 @@ _ATSbufread_ is based on pvbufread by Richard Karpen. [ATScross](../opcodes/ATSc
 
 ## Examples
 
-Here is an example of the ATSbufread opcode. It uses the file [ATSbufread.csd](../examples/ATSbufread.csd).
+=== "Modern"
+    Here is an example of the ATSbufread opcode. It uses the file [ATSbufread-modern.csd](../examples/ATSbufread-modern.csd).
+    ``` csound-csd title="Example of the ATSbufread opcode." linenums="1"
+    --8<-- "examples/ATSbufread-modern.csd"
+    ```
 
-``` csound-csd title="Example of the ATSbufread opcode." linenums="1"
---8<-- "examples/ATSbufread.csd"
-```
+=== "Classic"
+    Here is an example of the ATSbufread opcode. It uses the file [ATSbufread.csd](../examples/ATSbufread.csd).
+    ``` csound-csd title="Example of the ATSbufread opcode." linenums="1"
+    --8<-- "examples/ATSbufread.csd"
+    ```
 
 See also the examples for [ATScross](../opcodes/ATScross.md), [ATSinterpread](../opcodes/ATSinterpread.md) and [ATSpartialtap](../opcodes/ATSpartialtap.md)
 

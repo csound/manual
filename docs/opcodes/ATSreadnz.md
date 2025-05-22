@@ -41,8 +41,7 @@ An ATS analysis differs from a pvanal in that ATS tracks the partials and comput
   kenergy	ATSreadnz ktime, "clarinet.ats", 5
 ```
 
-Here we are extracting the noise energy from band 5 in the
-'clarinet.ats' ATS analysis file. We are actually reading backwards from 2.5 seconds to the beginning of the analysis file. We could use this to synthesize noise like this:
+Here we are extracting the noise energy from band 5 in the 'clarinet.ats' ATS analysis file. We are actually reading backwards from 2.5 seconds to the beginning of the analysis file. We could use this to synthesize noise like this:
 
 ``` csound-orc
   anoise  randi     sqrt(kenergy), 55
@@ -50,20 +49,19 @@ Here we are extracting the noise energy from band 5 in the
   aout    =         aout * anoise
 ```
 
-Function table 2 used in the oscillator is a cosine,
-which is needed to shift the band limited noise into the
-correct place in the frequency spectrum. The
-_randi_ function creates a band of noise
-centered about 0 Hz that has a bandwidth of about 110 Hz;
-multiplying it by a cosine will shift it to be centered at 455
-Hz, which is the center frequency of the 5th critical noise
-band. This is only an example, for synthesizing the noise you would be better off just using [ATSaddnz](../opcodes/ATSaddnz.md) unless you want to use your own noise synthesis algorithm. Maybe you could use the noise energy for something else like applying a small amount of jitter to specific partials or for controlling something totally unrelated to the source sound?
+Function table 2 used in the oscillator is a cosine, which is needed to shift the band limited noise into the correct place in the frequency spectrum. The _randi_ function creates a band of noise centered about 0 Hz that has a bandwidth of about 110 Hz; multiplying it by a cosine will shift it to be centered at 455 Hz, which is the center frequency of the 5th critical noise band. This is only an example, for synthesizing the noise you would be better off just using [ATSaddnz](../opcodes/ATSaddnz.md) unless you want to use your own noise synthesis algorithm. Maybe you could use the noise energy for something else like applying a small amount of jitter to specific partials or for controlling something totally unrelated to the source sound?
 
-Here is a complete example of the ATSreadnz opcode. It uses the file [ATSreadnz.csd](../examples/ATSreadnz.csd).
+=== "Modern"
+    Here is a complete example of the ATSreadnz opcode. It uses the file [ATSreadnz-modern.csd](../examples/ATSreadnz-modern.csd).
+    ``` csound-csd title="Example of the ATSreadnz opcode." linenums="1"
+    --8<-- "examples/ATSreadnz-modern.csd"
+    ```
 
-``` csound-csd title="Another example of the ATSreadnz opcode." linenums="1"
---8<-- "examples/ATSreadnz.csd"
-```
+=== "Classic"
+    Here is a complete example of the ATSreadnz opcode. It uses the file [ATSreadnz.csd](../examples/ATSreadnz.csd).
+    ``` csound-csd title="Example of the ATSreadnz opcode." linenums="1"
+    --8<-- "examples/ATSreadnz.csd"
+    ```
 
 ## See also
 

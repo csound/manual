@@ -49,17 +49,29 @@ _ATSsinnoi_ reads data from an ATS data file and uses the information to synthes
 
 Here we synthesize both the noise and the sinewaves (all 42 partials) contained in "beats.ats" together. The relative volumes of the noise and the partials are unaltered (each set to 1).
 
-Here is a complete example of the ATSsinnoi opcode. It uses the file [ATSsinnoi.csd](../examples/ATSsinnoi.csd).
+=== "Modern"
+    Here is a complete example of the ATSsinnoi opcode. It uses the file [ATSsinnoi-modern.csd](../examples/ATSsinnoi-modern.csd).
+    ``` csound-csd title="Example of the ATSsinnoi opcode." linenums="1"
+    --8<-- "examples/ATSsinnoi-modern.csd"
+    ```
 
-``` csound-csd title="Example of the ATSsinnoi opcode." linenums="1"
---8<-- "examples/ATSsinnoi.csd"
-```
+=== "Classic"
+    Here is a complete example of the ATSsinnoi opcode. It uses the file [ATSsinnoi.csd](../examples/ATSsinnoi.csd).
+    ``` csound-csd title="Example of the ATSsinnoi opcode." linenums="1"
+    --8<-- "examples/ATSsinnoi.csd"
+    ```
 
-Here is another complete example of the ATSsinnoi opcode. It uses the file [ATSsinnoi-2.csd](../examples/ATSsinnoi-2.csd).
+=== "Modern"
+    Here is another complete example of the ATSsinnoi opcode. It uses the file [ATSsinnoi-2-modern.csd](../examples/ATSsinnoi-2-modern.csd).
+    ``` csound-csd title="Example 2 of the ATSsinnoi opcode." linenums="1"
+    --8<-- "examples/ATSsinnoi-2-modern.csd"
+    ```
 
-``` csound-csd title="Example 2 of the ATSsinnoi opcode." linenums="1"
---8<-- "examples/ATSsinnoi-2.csd"
-```
+=== "Classic"
+    Here is another complete example of the ATSsinnoi opcode. It uses the file [ATSsinnoi-2.csd](../examples/ATSsinnoi-2.csd).
+    ``` csound-csd title="Example 2 of the ATSsinnoi opcode." linenums="1"
+    --8<-- "examples/ATSsinnoi-2.csd"
+    ```
 
 ## See also
 

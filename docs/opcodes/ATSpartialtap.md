@@ -30,11 +30,17 @@ _ATSpartialtap_ takes a partial number and returns a frequency, amplitude pair. 
 
 ## Examples
 
-Here is an example of the ATSpartialtap opcode. It uses the file [ATSpartialtap.csd](../examples/ATSpartialtap.csd).
+=== "Modern"
+    Here is an example of the ATSpartialtap opcode. It uses the file [ATSpartialtap-modern.csd](../examples/ATSpartialtap-modern.csd).
+    ``` csound-csd title="Example of the ATSpartialtap opcode." linenums="1"
+    --8<-- "examples/ATSpartialtap-modern.csd"
+    ```
 
-``` csound-csd title="Example of the ATSpartialtap opcode." linenums="1"
---8<-- "examples/ATSpartialtap.csd"
-```
+=== "Classic"
+    Here is an example of the ATSpartialtap opcode. It uses the file [ATSpartialtap.csd](../examples/ATSpartialtap.csd).
+    ``` csound-csd title="Example of the ATSpartialtap opcode." linenums="1"
+    --8<-- "examples/ATSpartialtap.csd"
+    ```
 
 This example here uses an _ATSpartialtap_, and an [ATSbufread](../opcodes/ATSbufread.md) to read partials 5, 20 and 30 from 'beats.ats'. These amplitudes and frequencies could be used to re-synthesize those partials, or something all together different.
 

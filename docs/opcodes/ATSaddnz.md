@@ -43,17 +43,29 @@ _ATSaddnz_ also reads from an ATS file but it resynthesizes the noise from noise
 
 In the example above we are synthesizing all 25 noise bands from the data contained in the ATS analysis file called "clarinet.ats".
 
-Here is a complete example of the ATSaddnz opcode. It uses the file [ATSaddnz.csd](../examples/ATSaddnz.csd).
+=== "Modern"
+    Here is a complete example of the ATSaddnz opcode. It uses the file [ATSaddnz-modern.csd](../examples/ATSaddnz-modern.csd).
+    ``` csound-csd title="Example of the ATSaddnz opcode." linenums="1"
+    --8<-- "examples/ATSaddnz-modern.csd"
+    ```
 
-``` csound-csd title="Example of the ATSaddnz opcode." linenums="1"
---8<-- "examples/ATSaddnz.csd"
-```
+=== "Classic"
+    Here is a complete example of the ATSaddnz opcode. It uses the file [ATSaddnz.csd](../examples/ATSaddnz.csd).
+    ``` csound-csd title="Example of the ATSaddnz opcode." linenums="1"
+    --8<-- "examples/ATSaddnz.csd"
+    ```
 
-Here is another example of the ATSaddnz opcode. It uses the file [ATSaddnz-2.csd](../examples/ATSaddnz-2.csd).
+=== "Modern"
+    Here is another example of the ATSaddnz opcode. It uses the file [ATSaddnz-2-modern.csd](../examples/ATSaddnz-2-modern.csd).
+    ``` csound-csd title="Example 2 of the ATSaddnz opcode." linenums="1"
+    --8<-- "examples/ATSaddnz-2-modern.csd"
+    ```
 
-``` csound-csd title="Example 2 of the ATSaddnz opcode." linenums="1"
---8<-- "examples/ATSaddnz-2.csd"
-```
+=== "Classic"
+    Here is another example of the ATSaddnz opcode. It uses the file [ATSaddnz-2.csd](../examples/ATSaddnz-2.csd).
+    ``` csound-csd title="Example 2 of the ATSaddnz opcode." linenums="1"
+    --8<-- "examples/ATSaddnz-2.csd"
+    ```
 
 ## See also
 
