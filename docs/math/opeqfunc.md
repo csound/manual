@@ -1,13 +1,12 @@
-# **Opcode Equivalents of Functions**
+# **Opcode Equivalents of Arithmetic Operations**
 
-Opcodes that perform the equivalent of mathematical functions are:
+Opcodes that perform the equivalent of arithmetic operations are:
 
-* [chebyshevpoly](../opcodes/chebyshevpoly.md)
 * [divz](../opcodes/divz.md)
 * [mac](../opcodes/mac.md)
 * [maca](../opcodes/maca.md)
-* [polynomial](../opcodes/polynomial.md)
 * [pow](../opcodes/pow.md)
 * [product](../opcodes/product.md)
 * [sum](../opcodes/sum.md)
-* [taninv2](../opcodes/taninv2.md)
+
+

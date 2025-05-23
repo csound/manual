@@ -5,7 +5,7 @@ category:
 # Linear Algebra Opcodes
 Scalar, vector, and matrix arithmetic on real and complex values.
 
-Plugin opcodes in linear_algebra. This opcode is part of the plugin repository and has to be installed separately. The plugin repository can be found here: [https://github.com/csound/plugins](https://github.com/csound/plugins)
+Plugin opcodes in linear_algebra. These opcodes are part of the plugin repository and has to be installed separately. The plugin repository can be found here: [https://github.com/csound/plugins](https://github.com/csound/plugins)
 
 These opcodes implement many linear algebra operations, from scalar, vector, and matrix arithmetic up to and including QR based eigenvalue decompositions. The opcodes are designed for digital signal processing, and of course other mathematical operations, in the Csound orchestra language.
 

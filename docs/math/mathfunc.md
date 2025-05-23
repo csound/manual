@@ -5,6 +5,7 @@ Opcodes that perform mathematical functions are:
 * [abs](../opcodes/abs.md)
 * [arg](../opcodes/arg.md)
 * [ceil](../opcodes/ceil.md)
+* [chebyshevpoly](../opcodes/chebyshevpoly.md)
 * [complex](../opcodes/complex.md)
 * [conj](../opcodes/conj.md)
 * [exp](../opcodes/exp.md)
@@ -17,6 +18,7 @@ Opcodes that perform mathematical functions are:
 * [log10](../opcodes/log10.md)
 * [logbtwo](../opcodes/logbtwo.md)
 * [polar](../opcodes/polar.md)
+* [polynomial](../opcodes/polynomial.md)
 * [pow](../opcodes/pow.md)
 * [powershape](../opcodes/powershape.md)
 * [powoftwo](../opcodes/powoftwo.md)
@@ -25,3 +27,5 @@ Opcodes that perform mathematical functions are:
 * [real](../opcodes/real.md)
 * [round](../opcodes/round.md)
 * [sqrt](../opcodes/sqrt.md)
+* [taninv2](../opcodes/taninv2.md)
+

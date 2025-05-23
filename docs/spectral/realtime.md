@@ -87,3 +87,11 @@ A number of opcodes are designed to generate and process streaming partials trac
  [tabifd](../opcodes/tabifd.md)    
     
 See the [Stacks section](../control/stacks.md) for information on the stack opcodes which can stack f-signals.
+
+The following opcodes implement streaming phase vocoder analysis/synthesis for direct pitch and
+timescaling:
+
+* [filescal](../opcodes/filescal.md)
+* [mincer](../opcodes/mincer.md)
+* [mp3scal](../opcodes/mp3scal.md)
+* [temposcal](../opcodes/temposcal.md)
