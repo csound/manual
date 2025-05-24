@@ -11,8 +11,8 @@ The argument value is restricted for _log_, [log10](../opcodes/log10.md), and [s
 
 ## Syntax
 ``` csound-orc
-log(x) (no rate restriction)
-log(k/i[]) (k- or i-arrays )
+log({a,k,i,Complex}) 
+log({k[],i[],Complex[]}) 
 kout[] log kin[], ibas
 ```
 

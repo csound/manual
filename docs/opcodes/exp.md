@@ -7,8 +7,8 @@ Returns e raised to the xth power.
 
 ## Syntax
 ``` csound-orc
-exp(x) (no rate restriction)
-exp(k/i[]) (k- or i-arrays)
+exp({a,k,i,Complex})
+exp({k[],i[],Complex[]})
 ```
 
 where the argument within the parentheses may be an expression. Value converters perform arithmetic translation from units of one kind to units of another. The result can then be a term in a further expression.
