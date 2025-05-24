@@ -787,7 +787,9 @@
 [**reverb.csd**](../opcodes/plusbecomes.md#examples)<br>
 [**assign-modern.csd**](../opcodes/assign.md#examples)<br>
 [**assign.csd**](../opcodes/assign.md#examples)<br>
+[**create.csd**](../opcodes/create.md#examples)<br>
 [**init.csd**](../opcodes/init.md#examples)<br>
+[**create.csd**](../opcodes/init.md#examples)<br>
 [**nstrnum_nstrstr.csd**](../opcodes/nstrnum.md#examples)<br>
 [**nstrnum_nstrstr.csd**](../opcodes/nstrstr.md#examples)<br>
 [**p.csd**](../opcodes/p.md#examples)<br>

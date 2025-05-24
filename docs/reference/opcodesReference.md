@@ -167,7 +167,7 @@
 [compilestr](../opcodes/compilestr.md) - Compiles a new orchestra passed in as an ASCII string.<br>
 [compress2](../opcodes/compress2.md) - Compress, limit, expand, duck or gate an audio signal.<br>
 [compress](../opcodes/compress.md) - Compress, limit, expand, duck or gate an audio signal.<br>
-[conj](../opcodes/complex.md) - Returns a complex number in rectangular format.<br>
+[conj](../opcodes/complex.md) - Returns a complex number, optionally in polar form.<br>
 [conj](../opcodes/conj.md) - Returns the conjugate of a complex number.<br>
 [connect](../opcodes/connect.md) - Connects a source outlet to a sink inlet.<br>
 [control](../opcodes/control.md) - Configurable slider controls for realtime user input.<br>
@@ -197,6 +197,7 @@ cosine interpolation, including a release segment.<br>
 [cpsxpch](../opcodes/cpsxpch.md) - Converts a pitch-class value into cycles-per-second (Hz) for equal divisions of any interval.<br>
 [cpumeter](../opcodes/cpumeter.md) - Reports the usage of cpu either total or per core to monitor how close to max-out the processing is.<br>
 [cpuprc](../opcodes/cpuprc.md) - Control allocation of cpu resources on a per-instrument basis, to optimize realtime output.<br>
+[create](../opcodes/create.md) - Creates a new instrument definition or new instrument instance.<br>
 [cross2](../opcodes/cross2.md) - Cross synthesis using FFT's.<br>
 [crossfm](../opcodes/crossfm.md) - Two oscillators, mutually frequency and/or phase modulated by each other.<br>
 [crunch](../opcodes/crunch.md) - Semi-physical model of a crunch sound.<br>

@@ -2291,6 +2291,10 @@
 `table [ kval] = karg`<br>
 
 
+`var:InstrDef = `[**`create`**](opcodes/create.md)`(code:S)`<br>
+`var:Instr = create(instr:InstrDef)`<br>
+
+
 `ares = `[**`init`**](opcodes/init.md)`(iarg)`<br>
 `ires = init(iarg)`<br>
 `kres = init(iarg)`<br>
@@ -2910,14 +2914,17 @@
 
 `complex(var:Complex)`<br>
 `complex(var:Complex[])`<br>
+[**`co`**](opcodes/complex.md)`mplex(arg1:k, arg2:k[,isPolar:i])`<br>
+`complex(real:k[], imag:k[])`<br>
+`complex(real:a, imag:a)`<br>
 
 
 [**`conj`**](opcodes/conj.md)`(var:Complex)`<br>
 `conj(var:Complex[])`<br>
 
 
-[**`exp`**](opcodes/exp.md)`(x) (no rate restriction)`<br>
-`exp(k/i[]) (k- or i-arrays)`<br>
+[**`exp`**](opcodes/exp.md)`({a,k,i,Complex})`<br>
+`exp({k[],i[],Complex[]})`<br>
 
 
 [**`floor`**](opcodes/floor.md)`(x) (init-, control-, or audio-rate arg allowed)`<br>
@@ -2935,8 +2942,8 @@
 [**`int`**](opcodes/int.md)`(x)  (init-rate or control-rate; also works at audio rate in Csound5)`<br>
 
 
-[**`log`**](opcodes/log.md)`(x) (no rate restriction)`<br>
-`log(k/i[]) (k- or i-arrays )`<br>
+[**`log`**](opcodes/log.md)`({a,k,i,Complex}) `<br>
+`log({k[],i[],Complex[]}) `<br>
 `kout[] log kin[], ibas`<br>
 
 

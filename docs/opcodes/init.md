@@ -17,6 +17,15 @@ Puts the value of the i-time expression into a k-, a-rate or t- variable.
     tab = init(isize[, ival])
     ```
 
+The init opcode can also be used to initialise instrument instances
+and opcodes
+
+    ``` csound-orc
+    err:i = init(inst:Instr, ...)
+    err:i = init(op:Opcode, ...)
+    ```
+
+
 === "Classic"
     ``` csound-orc
     ares init iarg
@@ -34,7 +43,14 @@ Puts the value of the i-time expression _iarg_ into a k-, a-rate or t- variable,
 
 Since version 5.13 it is possible to initialise upto 24 variables of the same class in one statement.  If there are more output variables than input expressions then the last one is repeated.  It is an error to have more inputs than outputs.
 
-The t-variable form was introduced in 5.14 and allocated space for a vector or the given size, initialised to the given value (default value is zero).
+The t-variable form was introduced in 5.14 and allocated space for a
+vector or the given size, initialised to the given value (default
+value is zero).
+
+The versions for instruments and opcodes take optional parameters (pfields from
+p4 in the case of instruments, and opcode arguments). These run the
+initialisation step on the respective objects.
+
 
 ## Examples
 
@@ -69,6 +85,14 @@ i   2 time     2.70005:     1.00000
 i   2 time     2.80018:     1.00000
 i   2 time     2.90032:     1.00000
 ```
+
+The following example shows the init opcode in the context of
+instrument initialisation.
+
+``` csound-csd title="Examples of the two create opcode overloads." linenums="1"
+--8<-- "examples/create.csd"
+```
+
 
 ## See also
 
