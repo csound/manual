@@ -104,7 +104,7 @@ Csound 7 introduces a new type `InstrDef` to hold instrument
 definitions. The _name_ of an instrument becomes a global constant of
 that type, which may be referred directly in the code, 
 
-```
+```csound-orc
 instr Ping
  out(oscili(expon(p4,p3,0.001), p5))
  schedule(Ping,0.1,0.2,rnd(0.5),500+rnd(100))
