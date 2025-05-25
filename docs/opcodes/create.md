@@ -1,5 +1,5 @@
 <!--
-id:init
+id:create
 category:Instrument Control:Initialization and Reinitialization
 -->
 
@@ -11,12 +11,14 @@ Creates a new instrument definition or new instrument instance.
     ``` csound-orc
     var:InstrDef = create(code:S)
     var:Instr = create(instr:InstrDef)
+    var:Opcode = create(opc:OpcodeDef[,overload:i]
     ```
 
 === "Classic"
     ``` csound-orc
     var:InstrDef create code:S
     var:Instr create instr:InstrDef
+    var:Opcode create opc:OpcodeDef[,overload:i]    
     ```
 
 ### Initialization
@@ -25,8 +27,14 @@ _code_ -- String containing Csound language code for an instrument.
 
 _instr_ -- compiled instrument definition.
 
-The first overload takes Csound code on a string, compiles it, and returns an instrument definition. The
-second takes an instrument definition and instantiates it, returning the instrument instance. 
+_opc_ -- opcode definition
+
+_overload_ -- (optional, defaults to 0) opcode overload (version) (see [opcodeinfo](../opcodes/opcodeinfo))
+
+The first version takes Csound code on a string, compiles it, and returns an instrument definition. The
+second takes an instrument definition and instantiates it, returning
+the instrument instance. The third creates an opcode object from one
+of the predefined opcode overloads. 
 
 ## Examples
 

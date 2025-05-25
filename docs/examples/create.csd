@@ -9,7 +9,7 @@ opcode Osci(a:k,f:k):a
   xout linenr(oscili(a,f),0.1,0.1,0.01) 
 endop
 
-instr 1
+instr One
 
  // run at i-time
   myInstr:InstrDef = create({{ out Osci(p4,k(p5)) }})
@@ -25,10 +25,22 @@ instr 1
   delete(myInstance) 
   delete(myInstr)
 
+  // schedule instr def
+  schedule(Two,0,2,0.5,1000)
+
 endin
+
+instr Two
+ obj:Opcode = create(oscili)
+ sig:a = init(obj, p4, p5)
+ sig:a = run(obj, p4, p5)
+   out(sig)
+ event_i("e", 0, 2)
+endin
+
+schedule(One,0,1)
 
 </CsInstruments>
 <CsScore>
-i1 0 2
 </CsScore>
 </CsoundSynthesizer>

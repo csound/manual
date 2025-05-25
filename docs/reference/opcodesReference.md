@@ -411,7 +411,7 @@ cosine interpolation, including a release segment.<br>
 [in](../opcodes/in.md) - Reads mono audio data from an external device or stream.<br>
 [inch](../opcodes/inch.md) - Reads from numbered channels in an external audio signal or stream.<br>
 [inh](../opcodes/inh.md) - Reads six-channel audio data from an external device or stream.<br>
-[init](../opcodes/init.md) - Puts the value of the i-time expression into a k-, a-rate or t- variable.<br>
+[init](../opcodes/init.md) - Initialises one or more objects.<br>
 [initc14](../opcodes/initc14.md) - Initializes the controllers used to create a 14-bit MIDI value.<br>
 [initc21](../opcodes/initc21.md) - Initializes the controllers used to create a 21-bit MIDI value.<br>
 [initc7](../opcodes/initc7.md) - Initializes the controller used to create a 7-bit MIDI value.<br>
@@ -622,6 +622,7 @@ cosine interpolation, including a release segment.<br>
 [octpch](../opcodes/octpch.md) - Converts a pitch-class value to octave-point-decimal.<br>
 [olabuffer](../opcodes/olabuffer.md) - Sum overlapping frames of audio as k-rate arrays and read as an audio signal.<br>
 [opcode](../opcodes/opcode.md) - Defines the start of user-defined opcode block.<br>
+[opcodeinfo](../opcodes/opcodeinfo.md) - Prints information on an opcode definition and its overloads.<br>
 [oscbnk](../opcodes/oscbnk.md) - Mixes the output of any number of oscillators.<br>
 [oscil1](../opcodes/oscil1.md) - Accesses table values by incremental sampling.<br>
 [oscil1i](../opcodes/oscil1i.md) - Accesses table values by incremental sampling with linear interpolation.<br>
