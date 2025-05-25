@@ -4,7 +4,7 @@ category:Instrument Control:Initialization and Reinitialization
 -->
 
 # create
-Creates a new instrument definition or new instrument instance.
+Creates a new instrument definition, instrument instance, or opcode object.
 
 ## Syntax
 === "Modern"

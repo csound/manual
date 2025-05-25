@@ -33,7 +33,7 @@ endin
 instr Two
  obj:Opcode = create(oscili)
  sig:a = init(obj, p4, p5)
- sig:a = run(obj, p4, p5)
+ sig:a = perf(obj, p4, p5)
    out(sig)
  event_i("e", 0, 2)
 endin
