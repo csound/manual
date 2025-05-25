@@ -92,7 +92,7 @@ i   2 time     2.90032:     1.00000
 The following example shows the init opcode in the context of
 instrument and opcode initialisation.
 
-``` csound-csd title="Examples of the two create opcode overloads." linenums="1"
+``` csound-csd title="Examples of the instrument definition, instance and opcode init." linenums="1"
 --8<-- "examples/create.csd"
 ```
 

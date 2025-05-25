@@ -40,7 +40,7 @@ of the predefined opcode overloads.
 
 Here is an example of the create opcode. It uses the file [create.csd](../examples/create.csd).
 
-``` csound-csd title="Examples of the two create opcode overloads." linenums="1"
+``` csound-csd title="Examples of the create opcode." linenums="1"
 --8<-- "examples/create.csd"
 ```
 
