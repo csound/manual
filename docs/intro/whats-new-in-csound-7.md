@@ -1,4 +1,4 @@
--# What's new in Csound 7
+# What's new in Csound 7
 
 Csound 7 brings major changes which offer new possibilities for users and modernize coding. Nevertheless Csound 7 keeps backwards compatibility: Despite new syntax features any valid Csound code from the past can be run without any code change.
 
@@ -117,7 +117,7 @@ Csound code. If the `InstrDef` var is not yet available, we
 can use the self-reference `this_instr`. The following
 code demonstrates this,
 
-```
+```csound-orc
 Ping:InstrDef = create({{
   out(oscili(expon(p4,p3,0.001),p5))
   schedule(this_instr,0.1,0.2,rnd(0.5),500+rnd(100))
@@ -131,18 +131,96 @@ number is assigned dynamically.
 
 ## Instrument Instance Type
 
+Csound 7 introduces a new type for instrument instances, `Instr`.
 Instrument instances can be assigned to variables and manipulated
-by opcodes.
+by various opcodes. For example, 
 
+```csound-orc
+instr Container
+ myInstr:InstrDef = create({{ out Osci(p4,k(p5)) }})
+ myInstance:Instr = create(myInstr)
+ err1:i = init(myInstance,0.5,440)
+ err2:k = perf(myInstance)
+ delete(myInstance) 
+ delete(myInstr) 
+endin
+```
+
+In addition to these, several other opcodes can be used to 
+manipulate instances in Csound code.
 
 ## Opcode Reference and Opcode Types
 
 References to opcodes can be assigned to variables and instantiated
-as Opcode-type objects.
+as Opcode-type objects, for example
+
+```csound-orc
+instr 1
+ obj:Opcode = create(oscili)
+ sig:a = run(obj, p4, p5)
+   out(sig)
+endin
+```
+
+Opcode objects may be invoked in loops, passed as parameters, have
+their init and perf functions executed, etc.
 
 ## Complex Type
 
-Complex numbers are supported natively in the language now.
+Complex numbers are supported natively in the language now. All
+basic complex arithmetic operations and functions are supported
+for both scalars and arrays. For example, the following code
+implements single-sideband modulation using `Complex` arrays 
+
+```csound-orc
+instr 1
+ sig:Complex[] = hilbert(oscili(p4,p5))
+ mod:Complex[] = oscili(0.5,100,-1,0.25), oscili(0.5,100)
+ ssb:Complex[] = mod * sig
+   out real(ssb)
+endin
+```
+
+## UDP Server OSC message support
+
+The UDP server now has builtin support for OSC messages. It also
+includes message addresses for channels and events. To
+access these messages a new overload of `OSClisten` is provided,
+taking the message address and type only and returning the message
+data,
+
+```csound-orc
+instr 1
+ freq:k = chnget("freq")
+ amp:k = chnget("amp")
+    out oscili(0dbfs*amp, p4*freq)
+ status:k, f:k, mess:S, n:k = OSClisten("/in", "fsi")
+ puts mess, status
+ printk2 n
+ printk2 f
+ status, nums:k[] = OSClisten("/ina", "fi")
+ printk2 nums[0]
+ printk2 nums[1] 
+endin
+```
+
+which can be controlled by the following messages,
+
+```
+instr 2
+ OSCsend 0, "localhost", 7000, "/csound/event/instr", "ffff", 1, 0, 1, 300
+ OSCsend 1, "localhost", 7000, "/csound/channel/freq/amp", "ff", p4, p5
+ OSCsend 2, "localhost", 7000, "/in", "fsi", p5, "hello", p4
+ OSCsend 3, "localhost", 7000, "/ina", "fi", p5, p4
+ OSCsend 4, "localhost", 7000, "/csound/event", "s", "i3 4 1"
+ OSCsend 5, "localhost", 7000, "/csound/compile", "s", "schedule 1,2,2,500"
+endin
+```
+
+## MIDI File Input Opcodes
+
+Support for multiple MIDI input files with port mapping has been
+added. Opcodes for opening files and transport control are available.
 
 ## Limitations Removed
 
