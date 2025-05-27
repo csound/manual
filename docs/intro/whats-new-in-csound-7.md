@@ -137,7 +137,7 @@ by various opcodes. For example,
 
 ```csound-orc
 instr Container
- myInstr:InstrDef = create({{ out Osci(p4,k(p5)) }})
+ myInstr:InstrDef = create({{ out Osci(p4,p5) }})
  myInstance:Instr = create(myInstr)
  err1:i = init(myInstance,0.5,440)
  err2:k = perf(myInstance)
