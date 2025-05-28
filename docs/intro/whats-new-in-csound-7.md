@@ -163,7 +163,23 @@ endin
 ```
 
 Opcode objects may be invoked in loops, passed as parameters, have
-their init and perf functions executed, etc.
+their init and perf functions executed, exist in arrays, etc. 
+For example, we can run an array of opcodes in parallel,
+
+```csound-orc
+   freq:i[] = fillarray(p5*0.75, p5, p5*1.333, p5*1.666)
+   obj:Opcode[] = create(reson, lenarray(freq))
+   src:a = rand(linenr(p4,0.1,0.1,0.01))
+   sig:a[] = run(obj, src, freq, freq/p6, 2)
+```
+
+or in series
+
+```csound-orc
+   obj:Opcode[] = create(reson, 4)
+   sig:a = rand(linenr(p4,0.1,0.1,0.01))
+   sig = run(obj, sig, p5, p5/p6, 1)
+```
 
 ## Complex Type
 
