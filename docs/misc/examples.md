@@ -783,6 +783,7 @@
 [**maxalloc.csd**](../opcodes/maxalloc.md#examples)<br>
 [**create.csd**](../opcodes/perf.md#examples)<br>
 [**prealloc.csd**](../opcodes/prealloc.md#examples)<br>
+[**create.csd**](../opcodes/setp.md#examples)<br>
 
 ### Instrument Control:Initialization and Reinitialization
 [**reverb.csd**](../opcodes/plusbecomes.md#examples)<br>

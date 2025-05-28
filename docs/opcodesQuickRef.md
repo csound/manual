@@ -2280,6 +2280,9 @@
 `prealloc("insname", icount)`<br>
 
 
+[**`setp`**](opcodes/setp.md)`(ins:Instr,num:k,val:k)`<br>
+
+
 ### Instrument Control:Initialization and Reinitialization
 `ares `[**`+=`**](opcodes/plusbecomes.md)` xarg`<br>
 `ires += iarg`<br>
