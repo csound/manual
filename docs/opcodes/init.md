@@ -14,7 +14,7 @@ versions, to initialise variables, arrays, and other objects.
     var:{a,k,i,S,OpcodeDef}[,...] = init(arg:{i,S}[,...])
     var{i[],k[],a[]} = init(size1:i[,size2:i,...])
     err:i = init(inst:Instr[,p4:i,...])
-    var:*[,...] = init(op:Opcode[,arg1:*,...])
+    [var:*,... =] init(op:Opcode[,arg1:*,...])
     ```
 
 
@@ -27,7 +27,7 @@ versions, to initialise variables, arrays, and other objects.
     kres[] init size1[,size2, ...]
     ires[] init size1[,size2, ...]
     ierr init inst:Instr[,p4:i,...]
-    xvar init op:Opcode[,arg1:*,...]
+    [xvar,...] init op:Opcode[,arg1:*,...]
     ```
 
 ### Initialization

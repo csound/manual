@@ -2272,6 +2272,10 @@
 `maxalloc(Sinsname, icount)`<br>
 
 
+`err:k = `[**`perf`**](opcodes/perf.md)`(ins:Instr[, p4:k, ...])`<br>
+`[var:*,... =] perf(opc:Opcode[,arg1:*,...])`<br>
+
+
 [**`prealloc`**](opcodes/prealloc.md)`(insnum, icount)`<br>
 `prealloc("insname", icount)`<br>
 
@@ -2294,12 +2298,13 @@
 `var:InstrDef = `[**`create`**](opcodes/create.md)`(code:S)`<br>
 `var:Instr = create(instr:InstrDef)`<br>
 `var:Opcode = create(opc:OpcodeDef[,overload:i]`<br>
+`var:Opcode[] = create(opc:OpcodeDef,len:i[,overload:i])`<br>
 
 
 `var:{a,k,i,S,OpcodeDef}[,...] = `[**`init`**](opcodes/init.md)`(arg:{i,S}[,...])`<br>
 `var{i[],k[],a[]} = init(size1:i[,size2:i,...])`<br>
 `err:i = init(inst:Instr[,p4:i,...])`<br>
-`var:*[,...] = init(op:Opcode[,arg1:*,...])`<br>
+`[var:*,... =] init(op:Opcode[,arg1:*,...])`<br>
 
 
 `insno = `[**`nstrnum`**](opcodes/nstrnum.md)`("name")`<br>

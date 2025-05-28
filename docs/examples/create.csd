@@ -14,7 +14,7 @@ instr One
  // run at i-time
   myInstr:InstrDef = create({{ out Osci(p4,p5) }})
   myInstance:Instr = create(myInstr)
-  err1:i = init(myInstance,0.5,440)
+  err1:i = init(myInstance)
 
   // env, gliss
   env:k = linen(0.5,0.1,p3,0.1)

@@ -197,7 +197,7 @@ cosine interpolation, including a release segment.<br>
 [cpsxpch](../opcodes/cpsxpch.md) - Converts a pitch-class value into cycles-per-second (Hz) for equal divisions of any interval.<br>
 [cpumeter](../opcodes/cpumeter.md) - Reports the usage of cpu either total or per core to monitor how close to max-out the processing is.<br>
 [cpuprc](../opcodes/cpuprc.md) - Control allocation of cpu resources on a per-instrument basis, to optimize realtime output.<br>
-[create](../opcodes/create.md) - Creates a new instrument definition or new instrument instance.<br>
+[create](../opcodes/create.md) - Creates a new instrument definition, instrument instance, or opcode object.<br>
 [cross2](../opcodes/cross2.md) - Cross synthesis using FFT's.<br>
 [crossfm](../opcodes/crossfm.md) - Two oscillators, mutually frequency and/or phase modulated by each other.<br>
 [crunch](../opcodes/crunch.md) - Semi-physical model of a crunch sound.<br>
@@ -697,6 +697,7 @@ cosine interpolation, including a release segment.<br>
 [pdhalf](../opcodes/pdhalf.md) - Distorts a phasor for reading the two halves of a table at different rates.<br>
 [pdhalfy](../opcodes/pdhalfy.md) - Distorts a phasor for reading two unequal portions of a table in equal periods.<br>
 [peak](../opcodes/peak.md) - Maintains the output equal to the highest absolute value received.<br>
+[perf](../opcodes/perf.md) - Execute a performance pass on an instrument or opcode.<br>
 [pgmassign](../opcodes/pgmassign.md) - Assigns an instrument number to a specified MIDI program.<br>
 [phaser1](../opcodes/phaser1.md) - First-order allpass filters arranged in a series.<br>
 [phaser2](../opcodes/phaser2.md) - Second-order allpass filters arranged in a series.<br>

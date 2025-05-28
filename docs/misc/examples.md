@@ -781,6 +781,7 @@
 [**cpuprc.csd**](../opcodes/cpuprc.md#examples)<br>
 [**exitnow.csd**](../opcodes/exitnow.md#examples)<br>
 [**maxalloc.csd**](../opcodes/maxalloc.md#examples)<br>
+[**create.csd**](../opcodes/perf.md#examples)<br>
 [**prealloc.csd**](../opcodes/prealloc.md#examples)<br>
 
 ### Instrument Control:Initialization and Reinitialization
