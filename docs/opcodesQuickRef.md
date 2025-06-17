@@ -1868,6 +1868,9 @@
 `asig1, asig2, asig3, asig4 = `[**`mvclpf4`**](opcodes/mvclpf4.md)`(ain, xcf, xres[, istor])`<br>
 
 
+`sig4:a, sig2:a  = `[**`otafilter`**](opcodes/otafilter.md)`(in:a, cf:{a,k}, res:{a,k}, drive:k[, stor:i])`<br>
+
+
 `ares = `[**`reson`**](opcodes/reson.md)`(asig, xcf, xbw [, iscl] [, iskip])`<br>
 
 

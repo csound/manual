@@ -616,6 +616,7 @@
 [**mvclpf2.csd**](../opcodes/mvclpf2.md#examples)<br>
 [**mvclpf3.csd**](../opcodes/mvclpf3.md#examples)<br>
 [**mvclpf4.csd**](../opcodes/mvclpf4.md#examples)<br>
+[**otafilter.csd**](../opcodes/otafilter.md#examples)<br>
 [**reson.csd**](../opcodes/reson.md#examples)<br>
 [**resonr.csd**](../opcodes/resonr.md#examples)<br>
 [**resonx.csd**](../opcodes/resonx.md#examples)<br>

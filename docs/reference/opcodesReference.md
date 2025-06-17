@@ -635,6 +635,7 @@ cosine interpolation, including a release segment.<br>
 [osciln](../opcodes/osciln.md) - Accesses table values at a user-defined frequency.<br>
 [oscils](../opcodes/oscils.md) - A simple, fast sine oscillator.<br>
 [oscilx](../opcodes/oscilx.md) - Same as the [osciln](../opcodes/osciln.md) opcode.<br>
+[otafilter](../opcodes/otafilter.md) - Resonant 4pole non-linear lowpass filter.<br>
 [out32](../opcodes/out32.md) - Writes 32-channel audio data to an external device or stream.<br>
 [out](../opcodes/out.md) - Writes audio data to an external device or stream, either from audio variables or from an audio array.<br>
 [outall](../opcodes/outall.md) - Writes a single audio value to all available audio channels.<br>
