@@ -21,6 +21,79 @@ schedule(1,0,2)
 In addition, a number of new variable types have been introduced.
 
 
+## Functional Style Enhancements
+
+Multiple output arguments can now be used in functional style, e.g.
+
+```csound-orc title="Multiple output arguments in functional style"
+nchnls = 2
+instr 1
+  sig:a = rand(0dbfs/10)
+  aL,aR = pan2(sig, 3/4)
+  out(aL, aR)
+endin
+schedule(1, 0, 1)
+```
+
+Additionally, the new parser makes functional expressions behave
+exactly as the classic syntax, with no penalties.
+
+
+## Simplified Array assignment
+
+Arrays can be assigned by using the equal sign, as it is common in other 
+programming languages, without using the `fillarray` opcode.
+
+```csound-orc title="Array assignment"
+instr 1
+  foo:i[] = [1,2,3]
+  bar:k[] = [4,5,6]
+  print(foo[1])
+  printk(0,bar[1])
+  turnoff
+endin
+schedule(1, 0, 1)
+```
+
+
+## For-Loop
+
+In extension to the already existing `while` loop, also `for` can be used.
+
+```csound-orc title="For-loop"
+/* for-in loop
+   for var in array do
+     ...
+   od
+   running either at i or k (perf) time
+*/
+
+/* case 1
+   loop var is not declared
+   loop type follows array type
+   (i-type in this case)
+*/
+instr 1
+  for j in [1,2,3] do
+    print j
+  od
+endin
+
+/* case 2
+   loop var is declared
+   loop type follows var type
+   regardless of array type
+*/
+instr 2
+  j:k init 0
+  for j in [1,2,3] do
+    printk2 j
+  od
+  turnoff
+endin
+```
+
+
 ## New UDO Syntax and Pass-by-reference
 
 User Defined Opcodes now follow the syntax `opcode name(inargs):(outargs)`. 
@@ -49,6 +122,7 @@ caller and the UDO.
 
 The classic opcode syntax always implies pass-by-copy. 
 
+
 ## Local Sampling Rate for UDOs
 
 UDOs can now be set to a local sampling rate, which may be higher
@@ -58,27 +132,6 @@ are that the sampling rate always needs to be an integer multiple or
 divisor of the caller sampling rate and local ksmps are not allowed 
 together with local sampling rates.
 
-## Functional Style Enhancements
-
-Multiple output arguments can now be used in functional style, e.g.
-
-```csound-orc
-nchnls = 2
-instr 1
-  sig:a = rand(0dbfs/10)
-  aL,aR = pan2(sig, 3/4)
-  out(aL, aR)
-endin
-schedule(1, 0, 1)
-```
-
-Additionally, the new parser makes functional expressions behave
-exactly as the classic syntax, with no penalties.
-
-<!--
-For-Loop
-<span style="color:red">Is it going to happen??</span>
--->
 
 ## User-Defined Types
 
@@ -91,9 +144,9 @@ variables, arguments etc.
 struct MyType val0:i, val1:i
 
 instr 1
-testVal:MyType init 8, 88
-print(testVal.val0)
-print(testVal.val1)
+  testVal:MyType init 8, 88
+  print(testVal.val0)
+  print(testVal.val1)
 endin
 schedule(1, 0, 0)
 ```
@@ -106,8 +159,8 @@ that type, which may be referred directly in the code,
 
 ```csound-orc
 instr Ping
- out(oscili(expon(p4,p3,0.001), p5))
- schedule(Ping,0.1,0.2,rnd(0.5),500+rnd(100))
+  out(oscili(expon(p4,p3,0.001), p5))
+  schedule(Ping,0.1,0.2,rnd(0.5),500+rnd(100))
 endin
 schedule(Ping,0,0.2,0.5,500)
 ```
@@ -129,6 +182,7 @@ Notice that with this code pattern, we do not need to enclose the
 instrument inside `instr` and `endin`, and the instrument
 number is assigned dynamically.
 
+
 ## Instrument Instance Type
 
 Csound 7 introduces a new type for instrument instances, `Instr`.
@@ -137,17 +191,18 @@ by various opcodes. For example,
 
 ```csound-orc
 instr Container
- myInstr:InstrDef = create({{ out Osci(p4,p5) }})
- myInstance:Instr = create(myInstr)
- err1:i = init(myInstance,0.5,440)
- err2:k = perf(myInstance)
- delete(myInstance) 
- delete(myInstr) 
+  myInstr:InstrDef = create({{ out Osci(p4,p5) }})
+  myInstance:Instr = create(myInstr)
+  err1:i = init(myInstance,0.5,440)
+  err2:k = perf(myInstance)
+  delete(myInstance) 
+  delete(myInstr) 
 endin
 ```
 
 In addition to these, several other opcodes can be used to 
 manipulate instances in Csound code.
+
 
 ## Opcode Reference and Opcode Types
 
@@ -156,9 +211,9 @@ as Opcode-type objects, for example
 
 ```csound-orc
 instr 1
- obj:Opcode = create(oscili)
- sig:a = run(obj, p4, p5)
-   out(sig)
+  obj:Opcode = create(oscili)
+  sig:a = run(obj, p4, p5)
+  out(sig)
 endin
 ```
 
@@ -166,16 +221,20 @@ Opcode objects may be invoked in loops, passed as parameters, have
 their init and perf functions executed, exist in arrays, etc. 
 For example, we can run an array of opcodes in parallel,
 
-```csound-orc
-   freq:i[] = fillarray(p5*0.75, p5, p5*1.333, p5*1.666)
-   obj:Opcode[] = create(reson, lenarray(freq))
-   src:a = rand(linenr(p4,0.1,0.1,0.01))
-   sig:a[] = run(obj, src, freq, freq/p6, 2)
+```csound-orc title="Array of opcodes in parallel"
+instr 1
+  freq:i[] = [300, 400, 500, 600]
+  obj:Opcode[] = create(reson, lenarray(freq))
+  src:a = rand(linenr(.1,0.1,0.1,0.01),2,1)
+  sig:a[] = run(obj, src, freq, freq/7, 2)
+  out(sig[0]+sig[1],sig[2]+sig[3])
+endin
+schedule(1,0,10)
 ```
 
 or in series
 
-```csound-orc
+```csound-orc title="Array of opcodes in series"
    obj:Opcode[] = create(reson, 4)
    sig:a = rand(linenr(p4,0.1,0.1,0.01))
    sig = run(obj, sig, p5, p5/p6, 1)
@@ -188,12 +247,12 @@ basic complex arithmetic operations and functions are supported
 for both scalars and arrays. For example, the following code
 implements single-sideband modulation using `Complex` arrays 
 
-```csound-orc
+```csound-orc title="Complex type"
 instr 1
  sig:Complex[] = hilbert(oscili(p4,p5))
  mod:Complex[] = oscili(0.5,100,-1,0.25), oscili(0.5,100)
  ssb:Complex[] = mod * sig
-   out real(ssb)
+ out real(ssb)
 endin
 ```
 
@@ -237,6 +296,7 @@ endin
 
 Support for multiple MIDI input files with port mapping has been
 added. Opcodes for opening files and transport control are available.
+
 
 ## Limitations Removed
 
