@@ -2210,6 +2210,14 @@
 [**`endif`**](opcodes/endif.md)<br>
 
 
+[**`for`**](opcodes/for.md)` var in array-expr do`<br>
+`... od`<br>
+``<br>
+```` csound-orc`<br>
+`for var, index in array-expr do`<br>
+`... od`<br>
+
+
 [**`goto`**](opcodes/goto.md)`(label)`<br>
 
 

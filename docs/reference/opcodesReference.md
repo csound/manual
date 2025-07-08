@@ -327,6 +327,7 @@ cosine interpolation, including a release segment.<br>
 [fold](../opcodes/fold.md) - Adds artificial foldover to an audio signal.<br>
 [follow2](../opcodes/follow2.md) - Another controllable envelope extractor using the algorithm attributed to Jean-Marc Jot.<br>
 [follow](../opcodes/follow.md) - Envelope follower unit generator.<br>
+[for](../opcodes/for.md) - A syntactic looping construction.<br>
 [foscil](../opcodes/foscil.md) - A basic frequency modulated oscillator.<br>
 [foscili](../opcodes/foscili.md) - Basic frequency modulated oscillator with linear interpolation.<br>
 [fout](../opcodes/fout.md) - Outputs a-rate signals to a specified file of an arbitrary number of channels.<br>

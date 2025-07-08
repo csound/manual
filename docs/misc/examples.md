@@ -752,6 +752,7 @@
 [**else.csd**](../opcodes/else.md#examples)<br>
 [**elseif.csd**](../opcodes/elseif.md#examples)<br>
 [**endif.csd**](../opcodes/endif.md#examples)<br>
+[**forin.csd**](../opcodes/for.md#examples)<br>
 [**goto-modern.csd**](../opcodes/goto.md#examples)<br>
 [**goto.csd**](../opcodes/goto.md#examples)<br>
 [**igoto.csd**](../opcodes/if.md#examples)<br>
