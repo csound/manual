@@ -3,7 +3,9 @@ id:fillarray
 category:Array Opcodes
 -->
 # fillarray
-Generate a vector (one-dimensional k-rate array) with a sequence of numeric or string values.
+Generate a vector (one-dimensional k-rate array) with a sequence of
+numeric or string values.
+
 
 ## Syntax
 === "Modern"
@@ -19,6 +21,14 @@ Generate a vector (one-dimensional k-rate array) with a sequence of numeric or s
     karray fillarray ival1, ival2,.....ivaln
     karray fillarray kval1, kval2,.....kvaln
     ```
+
+The following expression can also be used,
+
+```
+array:{i,k} = [val1, val2, ..., valN]
+```
+
+where _val1_ etc are as above for `fillarray`.
 
 ### Initialization
 

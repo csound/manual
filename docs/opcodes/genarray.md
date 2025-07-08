@@ -18,6 +18,15 @@ Generate a vector (one-dimensional k-rate or i-rate array) with an arithmetic se
     iarray genarray istart, iens [, inc]
     ```
 
+The following expression can also be used,
+
+```
+array:{i,k} = [start ... ends, inc]
+```
+
+where `start`, `ends`,  and `inc` are as above for `genarray`. 
+
+
 ### Initialization
 
 _istart_ -- value to place in first element.
