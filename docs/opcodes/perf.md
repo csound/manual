@@ -39,6 +39,8 @@ k-sig variables but can also be a-sigs in which case the vector is truncated to 
 
 For the opcode `perf()`, inputs and outputs are checked and should match the opcode object signature. 
 
+## Examples
+
 The following example shows the perf opcode in the context of
 instrument and opcode objects,
 

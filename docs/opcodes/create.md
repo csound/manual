@@ -32,7 +32,7 @@ _instr_ -- compiled instrument definition.
 _opc_ -- opcode definition
 
 _overload_ -- (optional, defaults to 0) opcode overload (version) (see
-[opcodeinfo](../opcodes/opcodeinfo))
+[opcodeinfo](../opcodes/opcodeinfo.md))
 
 _len_ -- opcode object array length.
 
