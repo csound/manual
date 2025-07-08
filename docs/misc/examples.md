@@ -766,6 +766,7 @@
 [**loop_gt.csd**](../opcodes/loop_gt.md#examples)<br>
 [**loop_le.csd**](../opcodes/loop_le.md#examples)<br>
 [**loop_lt.csd**](../opcodes/loop_lt.md#examples)<br>
+[**switch.csd**](../opcodes/switch.md#examples)<br>
 [**tigoto.csd**](../opcodes/tigoto.md#examples)<br>
 [**tigoto2.csd**](../opcodes/tigoto.md#examples)<br>
 [**timout.csd**](../opcodes/timout.md#examples)<br>

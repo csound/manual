@@ -298,7 +298,8 @@ cosine interpolation, including a release segment.<br>
 [filescal](../opcodes/filescal.md) - Phase-locked vocoder processing with onset detection/processing, 'tempo-scaling'.<br>
 [filesr](../opcodes/filesr.md) - Returns the sample rate of a sound file.<br>
 [filevalid](../opcodes/filevalid.md) - Checks that a file can be read at initialisation or performance time.<br>
-[fillarray](../opcodes/fillarray.md) - Generate a vector (one-dimensional k-rate array) with a sequence of numeric or string values.<br>
+[fillarray](../opcodes/fillarray.md) - Generate a vector (one-dimensional k-rate array) with a sequence of
+numeric or string values.<br>
 [filter2](../opcodes/filter2.md) - General purpose custom filter.<br>
 [fin](../opcodes/fin.md) - Read signals from a file at a-rate.<br>
 [fini](../opcodes/fini.md) - Read signals from a file at i-rate.<br>
@@ -1040,6 +1041,7 @@ time-varying crossfade looping.<br>
 [sumarray](../opcodes/sumarray.md) - Returns the sum of all elements in a k-rate array.<br>
 [svfilter](../opcodes/svfilter.md) - A resonant second order filter, with simultaneous lowpass, highpass and bandpass outputs.<br>
 [svn](../opcodes/svn.md) - Non-linear state variable filter.<br>
+[switch](../opcodes/switch.md) - Branches conditionally at initialization or during performance time.<br>
 [syncgrain](../opcodes/syncgrain.md) - Synchronous granular synthesis.<br>
 [syncloop](../opcodes/syncloop.md) - Synchronous granular synthesis.<br>
 [syncphasor](../opcodes/syncphasor.md) - Produces a normalized moving phase value with sync input and output.<br>

@@ -2249,6 +2249,16 @@
 `loop_lt(kndx, kncr, kmax, label)`<br>
 
 
+[**`switch`**](opcodes/switch.md)` expr`<br>
+`case case-const`<br>
+`...`<br>
+`case case-const`<br>
+`...`<br>
+`default`<br>
+`...`<br>
+`endsw`<br>
+
+
 [**`tigoto`**](opcodes/tigoto.md)`(label)`<br>
 
 
