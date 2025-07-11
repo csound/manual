@@ -5,14 +5,13 @@ category:Instrument Control:Realtime Performance Control
 
 # setp
 
-Set the value of an instrument parameter
+Set the value of an instrument parameter.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
     setp(ins:Instr,num:k,val:k)
     ```
-
 
 === "Classic"
     ``` csound-orc
