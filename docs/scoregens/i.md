@@ -64,7 +64,7 @@ Notes being tied to previous instances of the same instrument, should skip most 
 
 Note that many opcodes (such as _delay_ and _reverb_) are prepared for optional initialization. To use this feature, the [tival opcode](../opcodes/tival.md) is suitable. Therefore, they need not be hidden by a _tigoto_ jump.
 
-Beginning with Csound version 3.53, strings are recognized in  p-fields for opcodes that accept them (_convolve, adsyn, diskin,_ etc.).  There may be only one string per score line.
+Beginning with Csound version 3.53, strings are recognized in  p-fields for opcodes that accept them (_convolve, adsyn, diskin,_ etc.).
 
 You can also turnoff notes from the score by using a negative number for the instrument (p1). This is equivalent to using the [turnoff2](../opcodes/turnoff2.md) opcode. When a note is turned off from the score, it is allowed to release (if [xtratim](../opcodes/xtratim.md) or opcodes with release section like [linenr](../opcodes/linenr.md) are used) and only notes with the same fractional part are turned off. Also, only the last instance of the instrument will be turned off, so there have to be as many negative instrument numbers as positive ones for all notes to be turned off.
 
