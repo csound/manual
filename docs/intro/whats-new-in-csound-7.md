@@ -46,7 +46,7 @@ schedule(1, 0, 1)
 Additionally, the new parser makes functional expressions behave
 exactly as the classic syntax, with no penalties.
 
-## Boolean types
+## Boolean Types
 
 Boolean variable types `b` and `B` have been exposed, with two constants `true` and
 `false' also introduced for convenience,
@@ -225,7 +225,6 @@ are that the sampling rate always needs to be an integer multiple or
 divisor of the caller sampling rate and local ksmps are not allowed 
 together with local sampling rates.
 
-
 ## Array Initializers, Generators, Slices
 
 Arrays can be initialised by using a shorthand form, 
@@ -341,7 +340,7 @@ endin
 Support for multiple MIDI input files with port mapping has been
 added. Opcodes for opening files and transport control are available.
 
-## Unary minus precedence changed
+## Unary-minus Precedence 
 
 The precedence of unary minus has been changed to match other
 programming languages such as Python, Perl, Ruby, etc. Now it
@@ -365,3 +364,7 @@ so that any size tables can be used everywhere.
 
 The limitation of event parameter numbers has been lifted, any number
 of parameters are possible everywhere.
+
+Multi-line strings (`{{ }}`) can now be used inside other multi-line
+strings (with any number of embedding levels).
+
