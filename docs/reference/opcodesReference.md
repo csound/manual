@@ -898,31 +898,7 @@ numeric or string values.<br>
 [setcol](../opcodes/setcol.md) - Sets a given column of a 2-dimensional array from a vector.<br>
 [setctrl](../opcodes/setctrl.md) - Configurable slider controls for realtime user input.<br>
 [setksmps](../opcodes/setksmps.md) - Sets the local ksmps value in an instrument or user-defined opcode block.<br>
-[setp](../opcodes/setp.md) - Set the value of an instrument parameter
-
-## Syntax
-=== "Modern"
-    ``` csound-orc
-    setp(ins:Instr,num:k,val:k)
-    ```
-
-
-=== "Classic"
-    ``` csound-orc
-    setp ins:Instr,knum,kval
-    ```
-
-### Performance
-
-_ins_ -- instrument instance
-
-_num_ -- parameter number
-
-_val_ -- parameter value
-
-
-The opcode sets the value of a parameter (pfield) defined by an instrument at
-performance time.<br>
+[setp](../opcodes/setp.md) - Set the value of an instrument parameter.<br>
 [setrow](../opcodes/setrow.md) - Sets a given row of a 2-dimensional array from a vector.<br>
 [setscorepos](../opcodes/setscorepos.md) - Sets the playback position of the current score performance to a given position.<br>
 [sfilist](../opcodes/sfilist.md) - Prints a list of all instruments of a previously loaded SoundFont2 (SF2) sample file.<br>
