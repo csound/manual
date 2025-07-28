@@ -28,14 +28,14 @@ least precedence first.
 
 | Operator                              | Associatvity |
 | :--------------------- | :--------   |
-| $||$  &&                               | left               |
-| $|$                                       | left               |
-| &                                          | left               |
+| \|\|     &&                                  | left               |
+| \|                                       | left               |
+| &                                     | left               |
 | &lt; &gt; &lt;= &gt;= == !=  | left               |
 | &lt;&lt; &gt;&gt;                   |  left              |
-| $+$ $-$                               | left   (right for unary)  |
-| $*$ $/$ $%$                         | left               |
-| $^$                                       | left              |
-| $!$                                        | right            |
+| + -                               | left   (right for unary)  |
+| * / %                         | left               |
+| ^                                       | left              |
+| !                                        | right            |
 
 See the [Conditional Values](../control/conditional.md) section and the [if](../opcodes/if.md) family of opcodes for usage of logical operators.
