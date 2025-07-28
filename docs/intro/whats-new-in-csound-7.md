@@ -18,10 +18,18 @@ endin
 schedule(1,0,2)
 ```
 
-In addition, a number of new variable types have been introduced.
+In this syntax, global variables are annotated with an `@global` sign,
+at the time of creation, then used freely in the code,
 
+```
+freq@global:k = init(0)
+```
 
-## Functional Style Enhancements
+In addition to this, a number of new standard variable types have been
+introduced, which are outlined below. These new types are only
+available under explicit semantics. 
+
+## Functional Style Improvements
 
 Multiple output arguments can now be used in functional style, e.g.
 
@@ -38,117 +46,37 @@ schedule(1, 0, 1)
 Additionally, the new parser makes functional expressions behave
 exactly as the classic syntax, with no penalties.
 
+## Boolean types
 
-## Simplified Array assignment
+Boolean variable types `b` and `B` have been exposed, with two constants `true` and
+`false' also introduced for convenience,
 
-Arrays can be assigned by using the equal sign, as it is common in other 
-programming languages, without using the `fillarray` opcode.
-
-```csound-orc title="Array assignment"
-instr 1
-  foo:i[] = [1,2,3]
-  bar:k[] = [4,5,6]
-  print(foo[1])
-  printk(0,bar[1])
-  turnoff
-endin
-schedule(1, 0, 1)
+```
+test:b = a > b
+if test then
+ prints "true test\n"
+else 
+ prints "false test\n"
+endif
 ```
 
+The `b` type operates at i-time only. For perf-time tests, we use
+the `B` type instead.
 
-## For-Loop
+## Complex Type
 
-In extension to the already existing `while` loop, also `for` can be used.
+Complex numbers are supported natively in the language now. All
+basic complex arithmetic operations and functions are supported
+for both scalars and arrays. For example, the following code
+implements single-sideband modulation using `Complex` arrays 
 
-```csound-orc title="For-loop"
-/* for-in loop
-   for var in array do
-     ...
-   od
-   running either at i or k (perf) time
-*/
-
-/* case 1
-   loop var is not declared
-   loop type follows array type
-   (i-type in this case)
-*/
+```csound-orc title="Complex type"
 instr 1
-  for j in [1,2,3] do
-    print j
-  od
+ sig:Complex[] = hilbert(oscili(p4,p5))
+ mod:Complex[] = oscili(0.5,100,-1,0.25), oscili(0.5,100)
+ ssb:Complex[] = mod * sig
+ out real(ssb)
 endin
-
-/* case 2
-   loop var is declared
-   loop type follows var type
-   regardless of array type
-*/
-instr 2
-  j:k init 0
-  for j in [1,2,3] do
-    printk2 j
-  od
-  turnoff
-endin
-```
-
-
-## New UDO Syntax and Pass-by-reference
-
-User Defined Opcodes now follow the syntax `opcode name(inargs):(outargs)`. 
-
-```csound-orc
-opcode myop(inval:i):(i)
-  xout(inval+1)
-endop
-
-opcode empty():void
-  puts("empty!", 1)
-endop
-
-instr 1
-  print(myop(17))
-  empty()
-endin
-schedule(1, 0, 0)
-```
-
-When the new opcode syntax is used, the default call semantics is by
-reference, instead of copy. The exceptions are when local sampling
-rate or local ksmps are used, when pass-by-copy is used. In
-pass-by-reference semantics all arguments data are shared between the
-caller and the UDO. 
-
-The classic opcode syntax always implies pass-by-copy. 
-
-
-## Local Sampling Rate for UDOs
-
-UDOs can now be set to a local sampling rate, which may be higher
-or lower than the calling environment. The opcodes `oversample` and
-`undersample` are used to set the local sampling rate. The limitations
-are that the sampling rate always needs to be an integer multiple or
-divisor of the caller sampling rate and local ksmps are not allowed 
-together with local sampling rates.
-
-
-## User-Defined Types
-
-The type system in Csound 7 is very sophisticated and it allows new
-types to be added using Csound code (similarly to user-defined
-opcodes). Once created, these types are available to define new
-variables, arguments etc.
-
-```csound-orc
-struct MyType val0:i, val1:i
-
-instr 1
-  testVal:MyType init 8, 88
-  print(testVal.val0)
-  print(testVal.val1)
-endin
-schedule(1, 0, 0)
 ```
 
 ## Instrument Definition Type
@@ -182,10 +110,9 @@ Notice that with this code pattern, we do not need to enclose the
 instrument inside `instr` and `endin`, and the instrument
 number is assigned dynamically.
 
-
 ## Instrument Instance Type
 
-Csound 7 introduces a new type for instrument instances, `Instr`.
+A new type for instrument instances is also present, `Instr`.
 Instrument instances can be assigned to variables and manipulated
 by various opcodes. For example, 
 
@@ -202,7 +129,6 @@ endin
 
 In addition to these, several other opcodes can be used to 
 manipulate instances in Csound code.
-
 
 ## Opcode Reference and Opcode Types
 
@@ -240,19 +166,137 @@ or in series
    sig = run(obj, sig, p5, p5/p6, 1)
 ```
 
-## Complex Type
+## User-Defined Types
 
-Complex numbers are supported natively in the language now. All
-basic complex arithmetic operations and functions are supported
-for both scalars and arrays. For example, the following code
-implements single-sideband modulation using `Complex` arrays 
+The type system in Csound 7 is very sophisticated and it allows new
+types to be added using Csound code (similarly to user-defined
+opcodes). Once created, these types are available to define new
+variables, arguments etc.
 
-```csound-orc title="Complex type"
+```csound-orc
+struct MyType val0:i, val1:i
+
 instr 1
- sig:Complex[] = hilbert(oscili(p4,p5))
- mod:Complex[] = oscili(0.5,100,-1,0.25), oscili(0.5,100)
- ssb:Complex[] = mod * sig
- out real(ssb)
+  testVal:MyType init 8, 88
+  print(testVal.val0)
+  print(testVal.val1)
+endin
+schedule(1, 0, 0)
+```
+
+## New-style UDO Syntax and Pass-by-reference
+
+User Defined Opcodes now follow the syntax `opcode
+name(inargs):(outargs)`, with types defined explicitly.
+
+```csound-orc
+opcode myop(inval:i):(i)
+  xout(inval+1)
+endop
+
+opcode empty():void
+  puts("empty!", 1)
+endop
+
+instr 1
+  print(myop(17))
+  empty()
+endin
+schedule(1, 0, 0)
+```
+
+When the new opcode syntax is used, the default call semantics is by
+reference, instead of copy. The exceptions are when local sampling
+rate or local ksmps are used, when pass-by-copy is used. In
+pass-by-reference semantics all arguments data are shared between the
+caller and the UDO. The classic opcode syntax always implies
+pass-by-copy, as before. 
+
+When using the newly-introduced standard types, and user-defined
+types, the new-style syntax is mandatory as there is no support for
+multi-character types in the classic UDO form.
+
+## Local Sampling Rate for UDOs
+
+UDOs can now be set to a local sampling rate, which may be higher
+or lower than the calling environment. The opcodes `oversample` and
+`undersample` are used to set the local sampling rate. The limitations
+are that the sampling rate always needs to be an integer multiple or
+divisor of the caller sampling rate and local ksmps are not allowed 
+together with local sampling rates.
+
+
+## Array Initializers, Generators, Slices
+
+Arrays can be initialised by using a shorthand form, 
+which is translated into a `fillarray` expression
+
+```csound-orc title="Array initialization"
+instr 1
+  foo:i[] = [1,2,3]  // foo:i[] = fillarray(1,2,3)
+  bar:k[] = [4,5,6]  // etc
+  print(foo[1])
+  printk(0,bar[1])
+  turnoff
+endin
+schedule(1, 0, 1)
+```
+
+For array generation, a similar form exists, which is translated into
+`genarray`
+
+```csound-orc title="Array generation"
+instr 1
+  foo:i[] = [1 ... 10, 2]  // foo:i[] = genarray(1,10,2)
+  print(foo[1]) // prints 3
+endin
+```
+
+Slices are similarly treated, with a slightly different syntax (and
+invoking `slicearray`)
+
+```csound-orc title="Array generation"
+instr 1
+  foo:i[] = [1,2,3,4,5]  
+  bar:i[] = [1 : 3, 1] // slicearray(1,3,1)
+  print(bar[0]) // prints 2
+endin
+```
+
+## For-Loop
+
+In extension to the already existing `while` loop, also `for` can be used.
+
+```csound-orc title="For-loop"
+/* for-in loop
+   for var in array do
+     ...
+   od
+   running either at i or k (perf) time
+*/
+
+/* case 1
+   loop var is not declared
+   loop type follows array type
+   (i-type in this case)
+*/
+instr 1
+  for j in [1,2,3] do
+    print j
+  od
+endin
+
+/* case 2
+   loop var is declared
+   loop type follows var type
+   regardless of array type
+*/
+instr 2
+  j:k init 0
+  for j in [1,2,3] do
+    printk2 j
+  od
+  turnoff
 endin
 ```
 
@@ -297,6 +341,22 @@ endin
 Support for multiple MIDI input files with port mapping has been
 added. Opcodes for opening files and transport control are available.
 
+## Unary minus precedence changed
+
+The precedence of unary minus has been changed to match other
+programming languages such as Python, Perl, Ruby, etc. Now it
+has the same precedence as binary minus, as opposed to the
+highest precedence.
+
+The only significant impact is observed in expressions involving
+exponentiation:
+
+```
+a = -2^2 // -4 now, before was (-2)^2 = 4 
+```
+
+If users have encountered this type of expression in the past, code
+may need to be adapted to the new semantics.
 
 ## Limitations Removed
 
