@@ -49,7 +49,7 @@ exactly as the classic syntax, with no penalties.
 ## Boolean Types
 
 Boolean variable types `b` and `B` have been exposed, with two constants `true` and
-`false' also introduced for convenience,
+`false` also introduced for convenience,
 
 ```
 test:b = a > b
