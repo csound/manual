@@ -34,7 +34,7 @@ The called instrument's p2 and p3 values will be identical to the host instrumen
 
 > :memo: **Note**
 >
-> Only the `p4` style accessors can read the actual parameter values passed to subinstruments. In a subinstrument, `p(4)` returns the host's `p4`, and so does `passign`. Furthermre, `pcount` returns the host's parameter count, not the subinsturment's. 
+> Only unparanthesized accessors like `p4` can read the actual parameter values passed to subinstruments. In contrast, in a subinstrument, opcodes calls relating to parameters like `p(4)` return the host's `p4`, and so does `passign`. Furthermre, `pcount` returns the host's parameter count, not the subinsturment's.
 
 ## Examples
 
