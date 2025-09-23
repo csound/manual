@@ -5,12 +5,18 @@ category:Signal I/O:Printing and Display
 # dispfft
 Displays the Fourier Transform of an audio or control signal.
 
-These units will print orchestra init-values, or produce graphic display of orchestra control signals and audio signals. Uses X11 windows if enabled, else (or if [-g](../../) flag is set) displays are approximated in ASCII characters.
+These units will print orchestra init-values, or produce graphic display of orchestra control signals and audio signals. Uses X11 windows if enabled, else (or if [-g](../invoke/cs-options-alphabetically.md#-g-asciidisplay) flag is set) displays are approximated in ASCII characters.
 
 ## Syntax
-``` csound-orc
-dispfft xsig, iprd, iwsiz [, iwtyp] [, idbout] [, iwtflg] [,imin] [,imax]
-```
+=== "Modern"
+    ``` csound-orc
+    dispfft(xsig, iprd, iwsiz [, iwtyp] [, idbout] [, iwtflg] [,imin] [,imax])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    dispfft xsig, iprd, iwsiz [, iwtyp] [, idbout] [, iwtflg] [,imin] [,imax]
+    ```
 
 ### Initialization
 
@@ -34,7 +40,7 @@ _dispfft_ -- displays the Fourier Transform of an audio or control signal (_asig
 
 ## Examples
 
-Here is an example of the dispfft opcode. It uses the file [dispfft.csd](../../examples/dispfft.csd).
+Here is an example of the dispfft opcode. It uses the file [dispfft.csd](../examples/dispfft.csd).
 
 ``` csound-csd title="Example of the dispfft opcode." linenums="1"
 --8<-- "examples/dispfft.csd"
@@ -42,4 +48,4 @@ Here is an example of the dispfft opcode. It uses the file [dispfft.csd](../../e
 
 ## See also
 
-[Printing and Display](../../sigio/pdisplay)
+[Printing and Display](../sigio/pdisplay.md)

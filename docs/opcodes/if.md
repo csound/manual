@@ -25,17 +25,17 @@ if xa R xb goto label
 if xa R xb then
 ```
 
-where _label_ is in the same instrument block and is not an expression, and where _R_ is one of the Relational operators (_&lt;_, _=_, _&lt;=_, _==_, _!=_) (and _=_ for convenience, see also under [Conditional Values](../../control/conditional)).
+where _label_ is in the same instrument block and is not an expression, and where _R_ is one of the Relational operators (_&lt;_, _=_, _&lt;=_, _==_, _!=_) (and _=_ for convenience, see also under [Conditional Values](../control/conditional.md)).
 
 If _goto_ or _then_ is used instead of _kgoto_ or _igoto_, the behavior is determined by the type being compared. If the comparison used k-type variables, kgoto is used and viceversa.
 
 > :memo: **Note**
 >
-> _If/then/goto_ statements cannot do audio-type comparisons. You cannot put a-type variables in the comparison expressions for these opcodes. The reason for this is that audio variables are actually vectors, which cannot be compared in the same way as scalars. If you need to compare individua audio samples, use  [kr = 1](../../opcodes/kr) or [Comparators](../../sigmod/compaccum)
+> _If/then/goto_ statements cannot do audio-type comparisons. You cannot put a-type variables in the comparison expressions for these opcodes. The reason for this is that audio variables are actually vectors, which cannot be compared in the same way as scalars. If you need to compare individua audio samples, use  [kr = 1](../opcodes/kr.md) or [Comparators](../sigmod/compaccum.md)
 
 ## Examples
 
-Here is an example of the if...igoto combination. It uses the file [igoto.csd](../../examples/igoto.csd).
+Here is an example of the if...igoto combination. It uses the file [igoto.csd](../examples/igoto.csd).
 
 ``` csound-csd title="Example of the if...igoto combination." linenums="1"
 --8<-- "examples/igoto.csd"
@@ -50,7 +50,7 @@ instr 1:  iparam = 1.000
 instr 1:  ifreq = 880.000
 ```
 
-Here is an example of the if...kgoto combination. It uses the file [kgoto.csd](../../examples/kgoto.csd).
+Here is an example of the if...kgoto combination. It uses the file [kgoto.csd](../examples/kgoto.csd).
 
 ``` csound-csd title="Example of the if...kgoto combination." linenums="1"
 --8<-- "examples/kgoto.csd"
@@ -64,7 +64,7 @@ kval = 0.999732, kfreq = 440.000000
 kval = 1.999639, kfreq = 880.000000
 ```
 
-Here is an example of the if...then combo. It uses the file [ifthen.csd](../../examples/ifthen.csd).
+Here is an example of the if...then combo. It uses the file [ifthen.csd](../examples/ifthen.csd).
 
 ``` csound-csd title="Example of the if...then combo." linenums="1"
 --8<-- "examples/ifthen.csd"
@@ -72,7 +72,7 @@ Here is an example of the if...then combo. It uses the file [ifthen.csd](../../e
 
 ## See also
 
-[Program Flow Control](../../control/pgmctl)
+[Program Flow Control](../control/pgmctl.md)
 
 ## Credits
 

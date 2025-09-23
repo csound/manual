@@ -6,10 +6,17 @@ category:Spectral Processing:Non-Standard
 Generate a constant-Q, exponentially-spaced DFT across all octaves of a multiply-downsampled control or audio input signal.
 
 ## Syntax
-``` csound-orc
-wsig spectrum xsig, iprd, iocts, ifrqa [, iq] [, ihann] [, idbout] \
-              [, idsprd] [, idsinrs]
-```
+=== "Modern"
+    ``` csound-orc
+    wsig = spectrum(xsig, iprd, iocts, ifrqa [, iq] [, ihann] [, idbout] \
+                    [, idsprd] [, idsinrs])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    wsig spectrum xsig, iprd, iocts, ifrqa [, iq] [, ihann] [, idbout] \
+                  [, idsprd] [, idsinrs]
+    ```
 
 ### Initialization
 

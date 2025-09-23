@@ -8,9 +8,15 @@ Produces a naturally decaying plucked string or drum sound.
 It is based on the Karplus-Strong algorithms.
 
 ## Syntax
-``` csound-orc
-ares pluck kamp, kcps, icps, ifn, imeth [, iparm1] [, iparm2]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = pluck(kamp, kcps, icps, ifn, imeth [, iparm1] [, iparm2])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares pluck kamp, kcps, icps, ifn, imeth [, iparm1] [, iparm2]
+    ```
 
 ### Initialization
 
@@ -43,14 +49,14 @@ The original Karplus-Strong algorithm used a fixed number of samples per cycle, 
 
 ## Examples
 
-Here is an example of the pluck opcode. It uses the file [pluck.csd](../../examples/pluck.csd).
+Here is an example of the pluck opcode. It uses the file [pluck.csd](../examples/pluck.csd).
 
 ``` csound-csd title="Example of the pluck opcode." linenums="1"
 --8<-- "examples/pluck.csd"
 ```
 
-A musical example featuring the pluck opcode: [ResonPluck_Cucchi.csd](../../examples/musical/ResonPluck_Cucchi.csd) by Stefano Cucchi.
+A musical example featuring the pluck opcode: [ResonPluck_Cucchi.csd](../examples/musical/ResonPluck_Cucchi.csd) by Stefano Cucchi.
 
 ## See also
 
-[Waveguide Physical Modeling](../../siggen/wavguide)
+[Waveguide Physical Modeling](../siggen/wavguide.md)

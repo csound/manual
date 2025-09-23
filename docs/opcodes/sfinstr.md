@@ -5,13 +5,20 @@ category:Signal Generators:Sample Playback
 # sfinstr
 Plays a SoundFont2 (SF2) sample instrument, generating a stereo sound.
 
-These opcodes allow management the sample-structure of SF2 files. In order to understand the usage of these opcodes, the user must have some knowledge of the SF2 format, so a brief description of this format can be found in the [SoundFont2 File Format](../../siggen/sample) section.
+These opcodes allow management the sample-structure of SF2 files. In order to understand the usage of these opcodes, the user must have some knowledge of the SF2 format, so a brief description of this format can be found in the [SoundFont2 File Format](../siggen/sample.md) section.
 
 ## Syntax
-``` csound-orc
-ar1, ar2 sfinstr ivel, inotenum, xamp, xfreq, instrnum, ifilhandle \
-                 [, iflag] [, ioffset]
-```
+=== "Modern"
+    ``` csound-orc
+    ar1, ar2 = sfinstr(ivel, inotenum, xamp, xfreq, instrnum, ifilhandle \
+                       [, iflag] [, ioffset])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar1, ar2 sfinstr ivel, inotenum, xamp, xfreq, instrnum, ifilhandle \
+                     [, iflag] [, ioffset]
+    ```
 
 ### Initialization
 
@@ -45,7 +52,7 @@ These opcodes only support the sample structure of SF2 files. The modulator stru
 
 ## Examples
 
-Here is an example of the sfinstr opcode. It uses the file [sfinstr.csd](../../examples/sfinstr.csd).
+Here is an example of the sfinstr opcode. It uses the file [sfinstr.csd](../examples/sfinstr.csd).
 
 ``` csound-csd title="Example of the sfinstr opcode." linenums="1"
 --8<-- "examples/sfinstr.csd"
@@ -53,7 +60,7 @@ Here is an example of the sfinstr opcode. It uses the file [sfinstr.csd](../../e
 
 ## See also
 
-[Soundfonts](../../siggen/sample)
+[Soundfonts](../siggen/sample.md)
 
 More information on soundfonts is in the Floss Manuals: [https://flossmanual.csound.com/midi/reading-midi-files](https://flossmanual.csound.com/midi/reading-midi-files)
 

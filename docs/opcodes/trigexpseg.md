@@ -6,10 +6,17 @@ category:Signal Generators:Linear and Exponential Generators
 Triggers a series of exponential segments between specified points.
 
 ## Syntax
-``` csound-orc
-ares trigexpseg kTrig, ia, idur1, ib [, idur2] [, ic] [...]
-kres trigexpseg kTrig, ia, idur1, ib [, idur2] [, ic] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = trigexpseg(kTrig, ia, idur1, ib [, idur2] [, ic] [...])
+    kres = trigexpseg(kTrig, ia, idur1, ib [, idur2] [, ic] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares trigexpseg kTrig, ia, idur1, ib [, idur2] [, ic] [...]
+    kres trigexpseg kTrig, ia, idur1, ib [, idur2] [, ic] [...]
+    ```
 
 ### Initialization
 
@@ -29,7 +36,7 @@ These units generate control or audio signals whose values can pass through 2 or
 
 ## Examples
 
-Here is an example of the trigexpseg opcode. It uses the file [trigexpseg.csd](../../examples/trigexpseg.csd).
+Here is an example of the trigexpseg opcode. It uses the file [trigexpseg.csd](../examples/trigexpseg.csd).
 
 ``` csound-orc title="Example of the trigexpseg opcode." linenums="1"
 --8<-- "examples/trigexpseg.csd"
@@ -37,7 +44,7 @@ Here is an example of the trigexpseg opcode. It uses the file [trigexpseg.csd](.
 
 ## See also
 
-[Linear and Exponential Generators](../../siggen/lineexp)
+[Linear and Exponential Generators](../siggen/lineexp.md)
 
 ## Credits
 

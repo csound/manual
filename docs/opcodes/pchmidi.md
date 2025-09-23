@@ -6,9 +6,15 @@ category:Real-time MIDI:Converters
 Get the note number of the current MIDI event, expressed in pitch-class units.
 
 ## Syntax
-``` csound-orc
-ipch pchmidi
-```
+=== "Modern"
+    ``` csound-orc
+    ipch = pchmidi()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ipch pchmidi
+    ```
 
 ### Performance
 
@@ -20,7 +26,7 @@ Get the note number of the current MIDI event, expressed in pitch-class units fo
 
 ## Examples
 
-Here is an example of the pchmidi opcode. It uses the file [pchmidi.csd](../../examples/pchmidi.csd).
+Here is an example of the pchmidi opcode. It uses the file [pchmidi.csd](../examples/pchmidi.csd).
 
 ``` csound-csd title="Example of the pchmidi opcode." linenums="1"
 --8<-- "examples/pchmidi.csd"
@@ -28,7 +34,7 @@ Here is an example of the pchmidi opcode. It uses the file [pchmidi.csd](../../e
 
 ## See also
 
-[Midi Converters](../../midi/convert)
+[Midi Converters](../midi/convert.md)
 
 ## Credits
 

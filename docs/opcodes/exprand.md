@@ -8,11 +8,19 @@ Exponential distribution random number generator (positive values only).
 This is an x-class noise generator.
 
 ## Syntax
-``` csound-orc
-ares exprand klambda
-ires exprand klambda
-kres exprand klambda
-```
+=== "Modern"
+    ``` csound-orc
+    ares = exprand(klambda)
+    ires = exprand(klambda)
+    kres = exprand(klambda)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares exprand klambda
+    ires exprand klambda
+    kres exprand klambda
+    ```
 
 ### Performance
 
@@ -25,7 +33,7 @@ The probablity density function of an exponential distribution is an exponential
 
 ## Examples
 
-Here is an example of the exprand opcode. It uses the file [exprand.csd](../../examples/exprand.csd).
+Here is an example of the exprand opcode. It uses the file [exprand.csd](../examples/exprand.csd).
 
 ``` csound-orc title="Example of the exprand opcode." linenums="1"
 --8<-- "examples/exprand.csd"
@@ -63,7 +71,7 @@ i   2 time     5.00000:     4.45125
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
 ## Credits
 

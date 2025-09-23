@@ -6,9 +6,15 @@ category:Signal Modifiers:Standard Filters
 Zero-delay feedback implementation of a 4 pole (24 dB/oct) low-pass filter based on the Moog ladder filter.
 
 ## Syntax
-``` csound-orc
-asig zdf_ladder ain, xcf, xQ [, istor]
-```
+=== "Modern"
+    ``` csound-orc
+    asig = zdf_ladder(ain, xcf, xQ [, istor])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig zdf_ladder ain, xcf, xQ [, istor]
+    ```
 
 ### Initialization
 
@@ -26,7 +32,7 @@ _xQ_ -- filter Q value (i-, k-, or a-rate). Range 0.5-25.0. Self-oscillation occ
 
 ## Examples
 
-Here is an example of the zdf_ladder opcode. It uses the file [zdf_ladder.csd](../../examples/zdf_ladder.csd).
+Here is an example of the zdf_ladder opcode. It uses the file [zdf_ladder.csd](../examples/zdf_ladder.csd).
 
 ``` csound-csd title="Example of the zdf_ladder opcode." linenums="1"
 --8<-- "examples/zdf_ladder.csd"
@@ -42,7 +48,7 @@ This filter is based on the work of Will Pirkle that employs Vadim Zavalishin's 
 
 ## See also
 
-[Standard filters: Zero-delay Feedback Filters (Virtual Analog)](../../sigmod/standard)
+[Standard filters: Zero-delay Feedback Filters (Virtual Analog)](../sigmod/standard.md)
 
 ## Credits
 

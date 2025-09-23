@@ -3,16 +3,22 @@ id:cell
 category:Vectorial:Cellular Automata
 -->
 # cell
-Cellular Automaton
+Cellular Automaton.
 
 Plugin opcode in cellular
 
 One-Dimensional Cellular Automaton. This opcode is the modified version of _vcella_ by Gabriel Maldonado.
 
 ## Syntax
-``` csound-orc
-cell ktrig, kreinit, ioutFunc, initStateFunc, iRuleFunc, ielements
-```
+=== "Modern"
+    ``` csound-orc
+    cell(ktrig, kreinit, ioutFunc, initStateFunc, iRuleFunc, ielements)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    cell ktrig, kreinit, ioutFunc, initStateFunc, iRuleFunc, ielements
+    ```
 
 ### Initialization
 
@@ -40,16 +46,23 @@ Note that each cell is supposed to be in one of two possible states (1 = "alive"
 
 ## Examples
 
-Here is a simple example of the cell opcode. It uses the file
-[cell.csd](../../examples/cell.csd).
+=== "Modern"
+    Here is a simple example of the cell opcode. It uses the file
+    [cell-modern.csd](../examples/cell-modern.csd).
+    ``` csound-orc title="A simple example of the cell opcode." linenums="1"
+    --8<-- "examples/cell-modern.csd"
+    ```
 
-``` csound-orc title="A simple example of the cell opcode." linenums="1"
---8<-- "examples/cell.csd"
-```
+=== "Classic"
+    Here is a simple example of the cell opcode. It uses the file
+    [cell.csd](../examples/cell.csd).
+    ``` csound-orc title="A simple example of the cell opcode." linenums="1"
+    --8<-- "examples/cell.csd"
+    ```
 
 ## See Also
 
-[Models and Emulations](../../siggen/models)
+[Models and Emulations](../siggen/models.md)
 
 ## Credits
 

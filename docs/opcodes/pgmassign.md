@@ -5,13 +5,20 @@ category:Real-time MIDI:Input
 # pgmassign
 Assigns an instrument number to a specified MIDI program.
 
-By default, the instrument is the same as the program number. If the selected instrument is zero or negative or does not exist, the program change is ignored. This opcode is normally used in the orchestra header. Although, like [massign](../../opcodes/massign), it also works in instruments.
+By default, the instrument is the same as the program number. If the selected instrument is zero or negative or does not exist, the program change is ignored. This opcode is normally used in the orchestra header. Although, like [massign](../opcodes/massign.md), it also works in instruments.
 
 ## Syntax
-``` csound-orc
-pgmassign ipgm, inst[, ichn]
-pgmassign ipgm, "insname"[, ichn]
-```
+=== "Modern"
+    ``` csound-orc
+    pgmassign(ipgm, inst[, ichn])
+    pgmassign(ipgm, "insname"[, ichn])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    pgmassign ipgm, inst[, ichn]
+    pgmassign ipgm, "insname"[, ichn]
+    ```
 
 ### Initialization
 
@@ -32,21 +39,21 @@ pgmassign 0, 0
 
 ## Examples
 
-Here is an example of the pgmassign opcode. It uses the file [pgmassign.csd](../../examples/pgmassign.csd).
+Here is an example of the pgmassign opcode. It uses the file [pgmassign.csd](../examples/pgmassign.csd).
 
 ``` csound-csd title="Example of the pgmassign opcode." linenums="1"
 --8<-- "examples/pgmassign.csd"
 ```
 
-Here is an example of the pgmassign opcode that will ignore program change events. It uses the file [pgmassign_ignore.csd](../../examples/pgmassign_ignore.csd).
+Here is an example of the pgmassign opcode that will ignore program change events. It uses the file [pgmassign_ignore.csd](../examples/pgmassign_ignore.csd).
 
 ``` csound-csd title="Example of the pgmassign opcode that will ignore program change events." linenums="1"
 --8<-- "examples/pgmassign_ignore.csd"
 ```
 
-Here is an advanced example of the pgmassign opcode. It uses the file [pgmassign_advanced.csd](../../examples/pgmassign_advanced.csd).
+Here is an advanced example of the pgmassign opcode. It uses the file [pgmassign_advanced.csd](../examples/pgmassign_advanced.csd).
 
-Do not forget that you must include the [-F flag](../../) when using an external MIDI file like &#8220;pgmassign_advanced.mid&#8221;.
+Do not forget that you must include the [-F flag](../invoke/cs-options-alphabetically.md#-f-file-midifilefile) when using an external MIDI file like &#8220;pgmassign_advanced.mid&#8221;.
 
 ``` csound-csd title="An advanced example of the pgmassign opcode." linenums="1"
 --8<-- "examples/pgmassign_advanced.csd"
@@ -54,9 +61,9 @@ Do not forget that you must include the [-F flag](../../) when using an external
 
 ## See also
 
-[MIDI input and Initialization](../../midi/input)
+[MIDI input and Initialization](../midi/input.md)
 
-[Orchestra Header Statements](../../orch/header)
+[Orchestra Header Statements](../orch/header.md)
 
 ## Credits
 

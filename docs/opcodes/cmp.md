@@ -3,7 +3,7 @@ id:cmp
 category:Signal Modifiers:Comparators and Accumulators
 -->
 # cmp
-Compares audio signals or arrays
+Compares audio signals or arrays.
 
 Plugin opcode in emugens.
 
@@ -26,13 +26,23 @@ kOut[] cmp 0.5, "<", kIn[], "<=", 1
 ```
 
 ## Syntax
-``` csound-orc
-aout cmp a1, S_operator, a2
-aout cmp a1, S_operator, kb
-kOut[] cmp kA[], S_operator, kb
-kOut[] cmp kA[], S_operator, kB[]
-kOut[] cmp k1, S_operator1, kIn[], S_operator2, k2
-```
+=== "Modern"
+    ``` csound-orc
+    aout = cmp(a1, S_operator, a2)
+    aout = cmp(a1, S_operator, kb)
+    kOut[] = cmp(kA[], S_operator, kb)
+    kOut[] = cmp(kA[], S_operator, kB[])
+    kOut[] = cmp(k1, S_operator1, kIn[], S_operator2, k2)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout cmp a1, S_operator, a2
+    aout cmp a1, S_operator, kb
+    kOut[] cmp kA[], S_operator, kb
+    kOut[] cmp kA[], S_operator, kB[]
+    kOut[] cmp k1, S_operator1, kIn[], S_operator2, k2
+    ```
 
 ### Initialization
 
@@ -59,7 +69,7 @@ kOut[] cmp kA, ">=", kb   ; kA is an array
 
 ## Examples
 
-Here is an example of the cmp opcode. It uses the file [cmp.csd](../../examples/cmp.csd).
+Here is an example of the cmp opcode. It uses the file [cmp.csd](../examples/cmp.csd).
 
 ``` csound-csd title="Example of the cmp opcode." linenums="1"
 --8<-- "examples/cmp.csd"
@@ -67,11 +77,11 @@ Here is an example of the cmp opcode. It uses the file [cmp.csd](../../examples/
 
 ## See also
 
-[Arithmetic and Logic Operations](../../math/artlogic)
+[Arithmetic and Logic Operations](../math/artlogic.md)
 
-[Comparators and Accumulators](../../sigmod/compaccum)
+[Comparators and Accumulators](../sigmod/compaccum.md)
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

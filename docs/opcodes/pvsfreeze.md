@@ -8,9 +8,15 @@ Freeze the amplitude and frequency time functions of a pv stream according to a 
 This opcodes 'freezes' the evolution of pvs stream by locking into steady amplitude and/or frequency values for each bin. The freezing is controlled, independently for amplitudes and frequencies, by a control-rate trigger, which switches the freezing 'on' if equal to or above 1 and 'off' if below 1.
 
 ## Syntax
-``` csound-orc
-fsig pvsfreeze fsigin, kfreeza, kfreezf
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvsfreeze(fsigin, kfreeza, kfreezf)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvsfreeze fsigin, kfreeza, kfreezf
+    ```
 
 ### Performance
 
@@ -38,7 +44,7 @@ aout  pvsynth   fou                            ; pvoc synthesis
 
 In the example above the input signal will be regularly 'frozen' for a short while, as the trigger rises above 1 about every two seconds.
 
-Here is an example of the use of the _pvsfreeze_ opcode. It uses the file [pvsfreeze.csd](../../examples/pvsfreeze.csd).
+Here is an example of the use of the _pvsfreeze_ opcode. It uses the file [pvsfreeze.csd](../examples/pvsfreeze.csd).
 
 ``` csound-csd title="Example of the _pvsfreeze_ opcode." linenums="1"
 --8<-- "examples/pvsfreeze.csd"
@@ -46,7 +52,7 @@ Here is an example of the use of the _pvsfreeze_ opcode. It uses the file [pvsfr
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

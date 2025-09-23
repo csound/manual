@@ -8,9 +8,15 @@ Retrieve an fsig from the input software bus; a pvs equivalent to _chani_.
 This opcode retrieves an f-sig from the pvs in software bus, which can be used to get data from an external source, using the Csound 5 API. A channel is created if not already existing. The fsig channel is in that case initialised with the given parameters. It is important to note that the pvs input and output (pvsout opcode) busses are independent and data is not shared between them.
 
 ## Syntax
-``` csound-orc
-fsig pvsin kchan [, isize, iolap, iwinsize, iwintype, iformat]
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvsin(kchan [, isize, iolap, iwinsize, iwintype, iformat])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvsin kchan [, isize, iolap, iwinsize, iwintype, iformat]
+    ```
 
 ### Initialization
 
@@ -38,7 +44,7 @@ fsig  pvsin   0  ; get data from pvs in bus channel 0
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

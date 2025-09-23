@@ -8,10 +8,17 @@ A gated linear attack-decay-sustain with exponential release.
 This opcode can work either as a signal generator or as a signal processor. It is controlled by a gate k-rate signal (0 or  > 0) which switches the envelope attack-decay-sustain phase on/off. With gate > 0 (high), the envelope cycles through the attack and decay phases, and is sustained at the sustain level. Whenever gate is 0 (low), the envelope enters the release phase, decaying exponentially to 0. The attack and decay times are fixed with gate > 0, but can be changed once the gate is zero.
 
 ## Syntax
-``` csound-orc
-ares gtadsr asig, katt, kdec, ksus, krel, kgate
-xres gtadsr kamp, katt, kdec, ksus, krel, kgate
-```
+=== "Modern"
+    ``` csound-orc
+    ares = gtadsr(asig, katt, kdec, ksus, krel, kgate)
+    xres = gtadsr(kamp, katt, kdec, ksus, krel, kgate)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares gtadsr asig, katt, kdec, ksus, krel, kgate
+    xres gtadsr kamp, katt, kdec, ksus, krel, kgate
+    ```
 
 ### Performance
 
@@ -37,7 +44,7 @@ The length of the sustain is calculated from the length of the note. This means 
 
 ## Examples
 
-Here is an example of the gtadsr opcode. It uses the file [gtadsr.csd](../../examples/gtadsr.csd).
+Here is an example of the gtadsr opcode. It uses the file [gtadsr.csd](../examples/gtadsr.csd).
 
 ``` csound-csd title="Example of the gtadsr opcode." linenums="1"
 --8<-- "examples/gtadsr.csd"
@@ -45,7 +52,7 @@ Here is an example of the gtadsr opcode. It uses the file [gtadsr.csd](../../exa
 
 ## See Also
 
-[Envelope Generators](../../siggen/envelope)
+[Envelope Generators](../siggen/envelope.md)
 
 ## Credits
 

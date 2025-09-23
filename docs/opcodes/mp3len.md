@@ -6,9 +6,15 @@ category:Signal I/O:Soundfile Queries
 Returns the length of an MP3 sound file.
 
 ## Syntax
-``` csound-orc
-ir mp3len ifilcod
-```
+=== "Modern"
+    ``` csound-orc
+    ir = mp3len(ifilcod)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ir mp3len ifilcod
+    ```
 
 ### Initialization
 
@@ -20,7 +26,7 @@ _mp3len_ returns the length of the sound file _ifilcod_ in seconds.
 
 ## Examples
 
-Here is an example of the mp3len opcode. It uses the file [mp3len.csd](../../examples/mp3len.csd).
+Here is an example of the mp3len opcode. It uses the file [mp3len.csd](../examples/mp3len.csd).
 
 ``` csound-csd title="Example of the mp3len opcode." linenums="1"
 --8<-- "examples/mp3len.csd"
@@ -28,7 +34,7 @@ Here is an example of the mp3len opcode. It uses the file [mp3len.csd](../../exa
 
 ## See also
 
-[Sound File Queries](../../sigio/queries)
+[Sound File Queries](../sigio/queries.md)
 
 ## Credits
 

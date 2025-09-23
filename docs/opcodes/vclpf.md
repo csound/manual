@@ -8,9 +8,15 @@ Resonant 4pole linear lowpass filter.
 Vclpf is an digital implementation of a standard 4-pole linear analogue filter, similar to the Moog, Arp, and SSM2040/2044 filters, consisting of four identical 1-pole filters with a feedback (resonance or regeneration) path. Unlike the moogladder opcode, this filter does not have any non-linearities, but its implementation preserves the analogue filter topology. The code is based on the work of Federico Fontana, described in the paper "PRESERVING THE STRUCTURE OF THE MOOG VCF IN THE DIGITAL DOMAIN" (Proceedings of ICMC 2007).
 
 ## Syntax
-``` csound-orc
-asig vclpf ain, xcf, xres[, istor]
-```
+=== "Modern"
+    ``` csound-orc
+    asig = vclpf(ain, xcf, xres[, istor])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig vclpf ain, xcf, xres[, istor]
+    ```
 
 ### Initialization
 
@@ -26,7 +32,7 @@ _xres_ -- resonance, between 0 and 1. Higher values will make the filter self-os
 
 ## Examples
 
-Here is an example of the vclpf opcode. It uses the file [vclpf.csd](../../examples/vclpf.csd).
+Here is an example of the vclpf opcode. It uses the file [vclpf.csd](../examples/vclpf.csd).
 
 ``` csound-csd title="Example of the vclpf opcode." linenums="1"
 --8<-- "examples/vclpf.csd"
@@ -34,7 +40,7 @@ Here is an example of the vclpf opcode. It uses the file [vclpf.csd](../../examp
 
 ## See also
 
-[Standard Filters: Resonant Low-pass filters](../../sigmod/standard)
+[Standard Filters: Resonant Low-pass filters](../sigmod/standard.md)
 
 ## Credits
 

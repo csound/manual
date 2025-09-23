@@ -6,15 +6,21 @@ category:Signal Modifiers:Delay
 Taps a delay line at variable offset times.
 
 ## Syntax
-``` csound-orc
-ares deltapn xnumsamps
-```
+=== "Modern"
+    ``` csound-orc
+    ares = deltapn(xnumsamps)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares deltapn xnumsamps
+    ```
 
 ### Performance
 
 _xnumsamps_ -- specifies the tapped delay time in number of samples. Each can range from 1 control period to the full delay time of the read/write pair; however, since there is no internal check for adherence to this range, the user is wholly responsible. Each argument can be a constant, a variable, or a time-varying signal.
 
-_deltapn_ is identical to [deltapi](../../opcodes/deltapi), except delay time is specified in number of samples, instead of seconds (Hans Mikelson).
+_deltapn_ is identical to [deltapi](../opcodes/deltapi.md), except delay time is specified in number of samples, instead of seconds (Hans Mikelson).
 
 This opcode can tap into a _delayr_/_delayw_ pair, extracting delayed audio from the _idlt_ seconds of stored sound. There can be any number of _deltap_ and/or _deltapi_ units between a read/write pair. Each receives an audio tap with no change of original amplitude.
 
@@ -26,7 +32,7 @@ _N.B._ k-rate delay times are not internally interpolated, but rather lay down s
 
 ## Examples
 
-Here is an example of the deltapn opcode. It uses the file [deltapn.csd](../../examples/deltapn.csd).
+Here is an example of the deltapn opcode. It uses the file [deltapn.csd](../examples/deltapn.csd).
 
 ``` csound-csd title="Example of the deltapn opcode." linenums="1"
 --8<-- "examples/deltapn.csd"
@@ -34,4 +40,4 @@ Here is an example of the deltapn opcode. It uses the file [deltapn.csd](../../e
 
 ## See also
 
-[Delay](../../sigmod/delayops)
+[Delay](../sigmod/delayops.md)

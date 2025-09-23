@@ -5,13 +5,20 @@ category:Signal Modifiers:Standard Filters
 # butterlp
 A low-pass Butterworth filter.
 
-Implementation of a second-order low-pass Butterworth filter. This opcode can also be written as [butlp](../../opcodes/butlp).
+Implementation of a second-order low-pass Butterworth filter. This opcode can also be written as [butlp](../opcodes/butlp.md).
 
 ## Syntax
-``` csound-orc
-ares butterlp asig, kfreq [, iskip]
-ares butterlp asig, afreq [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = butterlp(asig, kfreq [, iskip])
+    ares = butterlp(asig, afreq [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares butterlp asig, kfreq [, iskip]
+    ares butterlp asig, afreq [, iskip]
+    ```
 
 ### Initialization
 
@@ -27,15 +34,21 @@ _kfreq_/_afreq_ -- Cutoff or center frequency for each of the filters.
 
 ## Examples
 
-Here is an example of the butterlp opcode. It uses the file [butterlp.csd](../../examples/butterlp.csd).
+=== "Modern"
+    Here is an example of the butterlp opcode. It uses the file [butterlp-modern.csd](../examples/butterlp-modern.csd).
+    ``` csound-csd title="Example of the butterlp opcode." linenums="1"
+    --8<-- "examples/butterlp-modern.csd"
+    ```
 
-``` csound-csd title="Example of the butterlp opcode." linenums="1"
---8<-- "examples/butterlp.csd"
-```
+=== "Classic"
+    Here is an example of the butterlp opcode. It uses the file [butterlp.csd](../examples/butterlp.csd).
+    ``` csound-csd title="Example of the butterlp opcode." linenums="1"
+    --8<-- "examples/butterlp.csd"
+    ```
 
 ## See also
 
-[Standard filters: Butterworth filters](../../sigmod/standard)
+[Standard filters: Butterworth filters](../sigmod/standard.md)
 
 ## Credits
 

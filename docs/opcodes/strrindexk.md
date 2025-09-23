@@ -8,13 +8,19 @@ Return the position of the last occurence of S2 in S1, or -1 if not found. If S2
 _strrindexk_ runs both at init and performance time.
 
 ## Syntax
-``` csound-orc
-kpos strrindexk S1, S2
-```
+=== "Modern"
+    ``` csound-orc
+    kpos = strrindexk(S1, S2)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kpos strrindexk S1, S2
+    ```
 
 ## See Also
 
-[String Manipulation Opcodes](../../strings/manipulate)
+[String Manipulation Opcodes](../strings/manipulate.md)
 
 ## Credits
 

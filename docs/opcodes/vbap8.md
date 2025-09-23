@@ -6,9 +6,15 @@ category:Signal Modifiers:Panning and Spatialization
 Distributes an audio signal among 8 channels.
 
 ## Syntax
-``` csound-orc
-ar1, ..., ar8 vbap8 asig, kazim [, kelev] [, kspread]
-```
+=== "Modern"
+    ``` csound-orc
+    ar1, ..., ar8 = vbap8(asig, kazim [, kelev] [, kspread])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar1, ..., ar8 vbap8 asig, kazim [, kelev] [, kspread]
+    ```
 
 ### Performance
 
@@ -24,15 +30,15 @@ _vbap8_ takes an input signal, _asig_, and distributes it among 8 outputs, accor
 
 > :warning: **Warning**
 >
-> Please note that all _vbap_ panning opcodes require the _vbap_ system to be initialized using [vbaplsinit](../../opcodes/vbaplsinit).
+> Please note that all _vbap_ panning opcodes require the _vbap_ system to be initialized using [vbaplsinit](../opcodes/vbaplsinit.md).
 
 ### Reference
 
 Ville Pulkki: &#8220;Virtual Sound Source Positioning Using Vector Base Amplitude Panning&#8221; _Journal of the Audio Engineering Society_, 1997 June, Vol. 45/6, p. 456.
 
-## Example
+## Examples
 
-Here is a simple example of the _vbap8_ opcode. It uses the file [vbap8.csd](../../examples/vbap8.csd).
+Here is a simple example of the _vbap8_ opcode. It uses the file [vbap8.csd](../examples/vbap8.csd).
 
 ``` csound-csd title="Example of the vbap8 opcode." linenums="1"
 --8<-- "examples/vbap8.csd"
@@ -40,7 +46,7 @@ Here is a simple example of the _vbap8_ opcode. It uses the file [vbap8.csd](../
 
 ## See also
 
-[Panning and Spatialization: Vector Base Amplitude Panning](../../sigmod/panspatl)
+[Panning and Spatialization: Vector Base Amplitude Panning](../sigmod/panspatl.md)
 
 ## Credits
 

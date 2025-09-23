@@ -8,11 +8,19 @@ Beta distribution random number generator (positive values only).
 This is an x-class noise generator.
 
 ## Syntax
-``` csound-orc
-ares betarand krange, kalpha, kbeta
-ires betarand krange, kalpha, kbeta
-kres betarand krange, kalpha, kbeta
-```
+=== "Modern"
+    ``` csound-orc
+    ares = betarand(krange, kalpha, kbeta)
+    ires = betarand(krange, kalpha, kbeta)
+    kres = betarand(krange, kalpha, kbeta)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares betarand krange, kalpha, kbeta
+    ires betarand krange, kalpha, kbeta
+    kres betarand krange, kalpha, kbeta
+    ```
 
 ### Performance
 
@@ -31,11 +39,17 @@ For more detailed explanation of these distributions, see:
 
 ## Examples
 
-Here is an example of the betarand opcode. It uses the file [betarand.csd](../../examples/betarand.csd).
+=== "Modern"
+    Here is an example of the betarand opcode. It uses the file [betarand-modern.csd](../examples/betarand-modern.csd).
+    ``` csound-orc title="Example of the betarand opcode." linenums="1"
+    --8<-- "examples/betarand-modern.csd"
+    ```
 
-``` csound-orc title="Example of the betarand opcode." linenums="1"
---8<-- "examples/betarand.csd"
-```
+=== "Classic"
+    Here is an example of the betarand opcode. It uses the file [betarand.csd](../examples/betarand.csd).
+    ``` csound-orc title="Example of the betarand opcode." linenums="1"
+    --8<-- "examples/betarand.csd"
+    ```
 
 Its output should include a line like:
 
@@ -67,7 +81,7 @@ i   2 time     5.00000:    56.38914
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
 ## Credits
 

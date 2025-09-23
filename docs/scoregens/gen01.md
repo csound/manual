@@ -12,9 +12,9 @@ f#  time  size  1  filcod  skiptime  format  channel
 
 ### Performance
 
-_size_ -- number of points in the table. Ordinarily a power of 2 or a power-of-2 plus 1 (see [f statement](../../scoregens/f)); the maximum tablesize is 16777216 (2<sup>24</sup>) points. The allocation of table memory can be _deferred_ by setting this parameter to 0; the size allocated is then the number of points in the file (probably not a power-of-2), and the table is not usable by normal oscillators, but it is usable by a [loscil](../../opcodes/loscil) unit. The soundfile can also be mono or stereo.
+_size_ -- number of points in the table. Ordinarily a power of 2 or a power-of-2 plus 1 (see [f statement](../scoregens/f.md)); the maximum tablesize is 16777216 (2<sup>24</sup>) points. The allocation of table memory can be _deferred_ by setting this parameter to 0; the size allocated is then the number of points in the file (probably not a power-of-2), and the table is not usable by normal oscillators, but it is usable by a [loscil](../opcodes/loscil.md) unit. The soundfile can also be mono or stereo.
 
-_filcod_ -- integer or character-string denoting the source soundfile name. An integer denotes the file _soundin_._filcod_ ; a character-string (in double quotes, spaces permitted) gives the filename itself, optionally a full pathname. If not a full path, the file is sought first in the current directory, then in that given by the environment variable [SSDIR](../../command/environment) (if defined) then by [SFDIR](../../command/environment). See also [soundin](../../opcodes/soundin).
+_filcod_ -- integer or character-string denoting the source soundfile name. An integer denotes the file _soundin_._filcod_ ; a character-string (in double quotes, spaces permitted) gives the filename itself, optionally a full pathname. If not a full path, the file is sought first in the current directory, then in that given by the environment variable [SSDIR](../invoke/environment-variables.md) (if defined) then by [SFDIR](../invoke/environment-variables.md). See also [soundin](../opcodes/soundin.md).
 
 _skiptime_ -- begin reading at _skiptime_ seconds into the file.
 
@@ -36,7 +36,7 @@ _format_ -- if positive it is ignored, but if negative specifies the audio forma
 
 > :memo: **Note**
 >
-> This list is not the same as in [diskin2](../../opcodes/diskin)
+> This list is not the same as in [diskin2](../opcodes/diskin.md)
 
 If _format_ = 0 the sample format is taken from the soundfile header.
 
@@ -48,7 +48,7 @@ If _format_ = 0 the sample format is taken from the soundfile header.
 
 ## Examples
 
-Here is an example of the GEN01 routine. It uses the files [gen01.csd](../../examples/gen01.csd) and several sound files.
+Here is an example of the GEN01 routine. It uses the files [gen01.csd](../examples/gen01.csd) and several sound files.
 
 ``` csound-csd title="An example of the GEN01 routine." linenums="1"
 --8<-- "examples/gen01.csd"
@@ -57,17 +57,17 @@ Here is an example of the GEN01 routine. It uses the files [gen01.csd](../../exa
 These are the diagrams of the waveforms of the GEN01 routines, as used in the example:
 
 <figure markdown="span">
-![f 1 0 131072 1 "drumsMlp.wav" 0 0 0 - non-deferred sound](../../images/gen01_1.png)
+![f 1 0 131072 1 "drumsMlp.wav" 0 0 0 - non-deferred sound](../images/gen01_1.png)
 <figcaption>f 1 0 131072 1 "drumsMlp.wav" 0 0 0 - non-deferred sound</figcaption>
 </figure>
 
 <figure markdown="span">
-![f 2 0 0 1 "flute.aiff" 0 0 0 - deferred sound](../../images/gen01_2.png)
+![f 2 0 0 1 "flute.aiff" 0 0 0 - deferred sound](../images/gen01_2.png)
 <figcaption>f 2 0 0 1 "flute.aiff" 0 0 0 - deferred sound</figcaption>
 </figure>
 
 <figure markdown="span">
-![f 3 0 0 1 "drumsMlp.ogg" 0 0 0 - deferred sound](../../images/gen01_3.png)
+![f 3 0 0 1 "drumsMlp.ogg" 0 0 0 - deferred sound](../images/gen01_3.png)
 <figcaption>f 3 0 0 1 "drumsMlp.ogg" 0 0 0 - deferred sound</figcaption>
 </figure>
 

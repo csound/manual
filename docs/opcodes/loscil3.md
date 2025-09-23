@@ -8,16 +8,25 @@ Read sampled sound from a table using cubic interpolation.
 Reading with optional sustain and release looping, using cubic interpolation. A version that outputs the exact table position (phase) corresponding to the output sample is provided as an alternative opcode.
 
 ## Syntax
-``` csound-orc
-ar1 [,ar2] loscil3 xamp, kcps, ifn [, ibas] [, imod1] [, ibeg1] [, iend1] \
-                   [, imod2] [, ibeg2] [, iend2]
-aph, ar1 [,ar2] loscil3phs xamp, kcps, ifn [, ibas] [, imod1] [, ibeg1] \
-                           [, iend1] [, imod2] [, ibeg2] [, iend2]
-```
+=== "Modern"
+    ``` csound-orc
+    ar1 [,ar2] = loscil3(xamp, kcps, ifn [, ibas] [, imod1] [, ibeg1] [, iend1] \
+                         [, imod2] [, ibeg2] [, iend2])
+    aph, ar1 [,ar2] = loscil3phs(xamp, kcps, ifn [, ibas] [, imod1] [, ibeg1] \
+                                 [, iend1] [, imod2] [, ibeg2] [, iend2])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar1 [,ar2] loscil3 xamp, kcps, ifn [, ibas] [, imod1] [, ibeg1] [, iend1] \
+                       [, imod2] [, ibeg2] [, iend2]
+    aph, ar1 [,ar2] loscil3phs xamp, kcps, ifn [, ibas] [, imod1] [, ibeg1] \
+                               [, iend1] [, imod2] [, ibeg2] [, iend2]
+    ```
 
 ### Initialization
 
-_ifn_ -- function table number, typically denoting an sampled sound segment with prescribed looping points loaded using [GEN01](../../scoregens/gen01). The source file may be mono or stereo.
+_ifn_ -- function table number, typically denoting an sampled sound segment with prescribed looping points loaded using [GEN01](../scoregens/gen01.md). The source file may be mono or stereo.
 
 _ibas_ (optional) -- base frequency in _Hz_ of the recorded sound. This optionally overrides the frequency given in the audio file, but is required if the file did not contain one. The default value is 261.626 Hz, i.e. middle C. (New in Csound 4.03). If this value is not known or not present, use 1 here and in _kcps_.
 
@@ -35,7 +44,7 @@ _xamp_ -- the amplitude of the output signal.
 
 _kcps_ -- the frequency of the output signal in cycles per second.
 
-_loscil3_ is identical to [loscil](../../opcodes/loscil) except that it uses cubic interpolation. New in Csound version 3.50.
+_loscil3_ is identical to [loscil](../opcodes/loscil.md) except that it uses cubic interpolation. New in Csound version 3.50.
 
 > :warning: **Note to Windows users**
 > 
@@ -59,7 +68,7 @@ _loscil3_ is identical to [loscil](../../opcodes/loscil) except that it uses cub
 
 ## Examples
 
-Here is an example of the loscil3 opcode. It uses the file [loscil3.csd](../../examples/loscil3.csd), [drumsMlp.wav](../../examples/drumsMlp.wav) and [drumsSlp.wav](../../examples/drumsSlp.wav).
+Here is an example of the loscil3 opcode. It uses the file [loscil3.csd](../examples/loscil3.csd), [drumsMlp.wav](../examples/drumsMlp.wav) and [drumsSlp.wav](../examples/drumsSlp.wav).
 
 ``` csound-csd title="Example of the loscil3 opcode." linenums="1"
 --8<-- "examples/loscil3.csd"
@@ -67,7 +76,7 @@ Here is an example of the loscil3 opcode. It uses the file [loscil3.csd](../../e
 
 ## See also
 
-[Sample Playback](../../siggen/sample)
+[Sample Playback](../siggen/sample.md)
 
 ## Credits
 

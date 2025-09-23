@@ -6,9 +6,15 @@ category:Strings:Definition
 Allows a string to be linked with a numeric value.
 
 ## Syntax
-``` csound-orc
-strset iarg, istring
-```
+=== "Modern"
+    ``` csound-orc
+    strset(iarg, istring)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    strset iarg, istring
+    ```
 
 ### Initialization
 
@@ -26,7 +32,7 @@ The following statement, used in the orchestra header, will allow the numeric va
 strset 10, "asound.wav"
 ```
 
-Here is an example of the strset opcode. It uses the file [strset.csd](../../examples/strset.csd).
+Here is an example of the strset opcode. It uses the file [strset.csd](../examples/strset.csd).
 
 ``` csound-csd title="Example of the strset opcode." linenums="1"
 --8<-- "examples/strset.csd"
@@ -34,6 +40,6 @@ Here is an example of the strset opcode. It uses the file [strset.csd](../../exa
 
 ## See Also
 
-[String Manipulation Opcodes](../../strings/manipulate)
+[String Manipulation Opcodes](../strings/manipulate.md)
 
-[Orchestra Header Statements](../../orch/header)
+[Orchestra Header Statements](../orch/header.md)

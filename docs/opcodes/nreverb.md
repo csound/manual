@@ -5,13 +5,20 @@ category:Signal Modifiers:Reverberation
 # nreverb
 A reverberator consisting of 6 parallel comb-lowpass filters.
 
-It is fed into a series of 5 allpass filters. _nreverb_ replaces [reverb2](../../opcodes/reverb2) (version 3.48) and so both opcodes are identical.
+It is fed into a series of 5 allpass filters. _nreverb_ replaces [reverb2](../opcodes/reverb2.md) (version 3.48) and so both opcodes are identical.
 
 ## Syntax
-``` csound-orc
-ares nreverb asig, ktime, khdif [, iskip] [,inumCombs] [, ifnCombs] \
-             [, inumAlpas] [, ifnAlpas]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = nreverb(asig, ktime, khdif [, iskip] [,inumCombs] [, ifnCombs] \
+                   [, inumAlpas] [, ifnAlpas])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares nreverb asig, ktime, khdif [, iskip] [,inumCombs] [, ifnCombs] \
+                 [, inumAlpas] [, ifnAlpas]
+    ```
 
 ### Initialization
 
@@ -31,13 +38,13 @@ As of Csound version 4.09, _nreverb_ may read any number of comb and allpass fil
 
 ## Examples
 
-Here is a simple example of the nreverb opcode. It uses the file [nreverb.csd](../../examples/nreverb.csd).
+Here is a simple example of the nreverb opcode. It uses the file [nreverb.csd](../examples/nreverb.csd).
 
 ``` csound-csd title="Simple example of the nreverb opcode." linenums="1"
 --8<-- "examples/nreverb.csd"
 ```
 
-Here is an example of the nreverb opcode using an ftable for filter constants. It uses the file [nreverb_ftable.csd](../../examples/nreverb_ftable.csd), and [drumsMlp.wav](../../examples/drumsMlp.wav).
+Here is an example of the nreverb opcode using an ftable for filter constants. It uses the file [nreverb_ftable.csd](../examples/nreverb_ftable.csd), and [drumsMlp.wav](../examples/drumsMlp.wav).
 
 ``` csound-csd title="An example of the nreverb opcode using an ftable for filter constants." linenums="1"
 --8<-- "examples/nreverb_ftable.csd"
@@ -45,7 +52,7 @@ Here is an example of the nreverb opcode using an ftable for filter constants. I
 
 ## See also
 
-[Reverberation](../../sigmod/reverbtn)
+[Reverberation](../sigmod/reverbtn.md)
 
 ## Credits
 

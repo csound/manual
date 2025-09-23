@@ -6,13 +6,23 @@ category:Signal Modifiers:Panning and Spatialization
 Codes a signal into the ambisonic B format.
 
 ## Syntax
-``` csound-orc
-aw, ax, ay, az bformenc1 asig, kalpha, kbeta
-aw, ax, ay, az, ar, as, at, au, av bformenc1 asig, kalpha, kbeta
-aw, ax, ay, az, ar, as, at, au, av, ak, al, am, an, ao, ap, aq bformenc1 \
-    asig, kalpha, kbeta
-aarray[] bformenc1 asig, kalpha, kbeta
-```
+=== "Modern"
+    ``` csound-orc
+    aw, ax, ay, az = bformenc1(asig, kalpha, kbeta)
+    aw, ax, ay, az, ar, as, at, au, av = bformenc1(asig, kalpha, kbeta)
+    aw, ax, ay, az, ar, as, at, au, av, ak, al, am, an, ao, ap, aq = bformenc1(\
+          asig, kalpha, kbeta)
+    aarray[] = bformenc1(asig, kalpha, kbeta)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aw, ax, ay, az bformenc1 asig, kalpha, kbeta
+    aw, ax, ay, az, ar, as, at, au, av bformenc1 asig, kalpha, kbeta
+    aw, ax, ay, az, ar, as, at, au, av, ak, al, am, an, ao, ap, aq bformenc1 \
+        asig, kalpha, kbeta
+    aarray[] bformenc1 asig, kalpha, kbeta
+    ```
 
 ### Performance
 
@@ -26,17 +36,23 @@ _kalpha_ -- azimuth angle in degrees (anticlockwise).
 
 _kbeta_ -- altitude angle in degrees.
 
-## Example
+## Examples
 
-Here is an example of the bformenc1 opcode. It uses the file [bformenc1.csd](../../examples/bformenc1.csd).
+=== "Modern"
+    Here is an example of the bformenc1 opcode. It uses the file [bformenc1-modern.csd](../examples/bformenc1-modern.csd).
+    ``` csound-csd title="Example of the bformenc1 opcode." linenums="1"
+    --8<-- "examples/bformenc1-modern.csd"
+    ```
 
-``` csound-csd title="Example of the bformenc1 opcode." linenums="1"
---8<-- "examples/bformenc1.csd"
-```
+=== "Classic"
+    Here is an example of the bformenc1 opcode. It uses the file [bformenc1.csd](../examples/bformenc1.csd).
+    ``` csound-csd title="Example of the bformenc1 opcode." linenums="1"
+    --8<-- "examples/bformenc1.csd"
+    ```
 
 ## See also
 
-[Panning and Spatialization: Ambisonics](../../sigmod/panspatl)
+[Panning and Spatialization: Ambisonics](../sigmod/panspatl.md)
 
 ## Credits
 

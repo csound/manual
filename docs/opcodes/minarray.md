@@ -6,9 +6,15 @@ category:Array Opcodes
 Returns the minimum value in a k-rate array, and optional its index.
 
 ## Syntax
-``` csound-orc
-kmin [,kindx] minarray karray
-```
+=== "Modern"
+    ``` csound-orc
+    kmin [,kindx] = minarray(karray)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kmin [,kindx] minarray karray
+    ```
 
 ### Performance
 
@@ -20,7 +26,7 @@ _karray_ --  array for reading.
 
 ## Examples
 
-Here is an example of the minarray opcode. It uses the file [minarray.csd](../../examples/minarray.csd).
+Here is an example of the minarray opcode. It uses the file [minarray.csd](../examples/minarray.csd).
 
 ``` csound-csd title="Example of the minarray opcode." linenums="1"
 --8<-- "examples/minarray.csd"
@@ -28,7 +34,7 @@ Here is an example of the minarray opcode. It uses the file [minarray.csd](../..
 
 ## See also
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

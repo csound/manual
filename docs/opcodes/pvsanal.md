@@ -6,9 +6,15 @@ category:Spectral Processing:Streaming
 Generate an fsig from a mono audio source ain, using phase vocoder overlap-add analysis.
 
 ## Syntax
-``` csound-orc
-fsig pvsanal ain, ifftsize, ioverlap, iwinsize, iwintype [, iformat] [, iinit]
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvsanal(ain, ifftsize, ioverlap, iwinsize, iwintype [, iformat] [, iinit])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvsanal ain, ifftsize, ioverlap, iwinsize, iwintype [, iformat] [, iinit]
+    ```
 
 ### Initialization
 
@@ -29,7 +35,7 @@ window. Currently three choices computed windows implemented:
 * 1 = von Hann window
 * 3 = Kaiser window (not in sliding form)
 
-These are also supported by the PVOC-EX file format.  The window type is stored as an internal attribute of the fsig, together with the other parameters (see [pvsinfo](../../opcodes/pvsinfo)). Other types may be implemented later on; if the value of wintype is strictly negative then the absolute value is used as the number of an f-table which must pre-exist. A significant issue here is the common constraint of f-tables to power-of-two sizes, so this method does not offer a complete solution.  Most users will find the Hamming window meets all normal needs, and can be regarded as the default choice.
+These are also supported by the PVOC-EX file format.  The window type is stored as an internal attribute of the fsig, together with the other parameters (see [pvsinfo](../opcodes/pvsinfo.md)). Other types may be implemented later on; if the value of wintype is strictly negative then the absolute value is used as the number of an f-table which must pre-exist. A significant issue here is the common constraint of f-tables to power-of-two sizes, so this method does not offer a complete solution.  Most users will find the Hamming window meets all normal needs, and can be regarded as the default choice.
 
 _iformat_ -- (optional) The analysis format. Currently only one format is implemented by this opcode:
 
@@ -52,7 +58,7 @@ _iinit_ -- (optional) Skip reinitialization. This is not currently implemented f
 
 ## Examples
 
-Here is an example of the pvsanal opcode. It uses the file [pvsanal.csd](../../examples/pvsanal.csd).
+Here is an example of the pvsanal opcode. It uses the file [pvsanal.csd](../examples/pvsanal.csd).
 
 ``` csound-csd title="Example of the pvsanal opcode." linenums="1"
 --8<-- "examples/pvsanal.csd"
@@ -60,7 +66,7 @@ Here is an example of the pvsanal opcode. It uses the file [pvsanal.csd](../../e
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

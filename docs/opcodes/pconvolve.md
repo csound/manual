@@ -3,9 +3,9 @@ id:pconvolve
 category:Signal Modifiers:Convolution and Morphing
 -->
 # pconvolve
-Convolution based on a uniformly partitioned overlap-save algorithm
+Convolution based on a uniformly partitioned overlap-save algorithm.
 
-Compared to the [convolve](../../opcodes/convolve) opcode, _pconvolve_ has these benefits:
+Compared to the [convolve](../opcodes/convolve.md) opcode, _pconvolve_ has these benefits:
 
 *  small delay
 *  possible to run in real-time for shorter impulse files
@@ -13,9 +13,15 @@ Compared to the [convolve](../../opcodes/convolve) opcode, _pconvolve_ has these
 *  can often render faster than _convolve_
 
 ## Syntax
-``` csound-orc
-ar1 [, ar2] [, ar3] [, ar4] pconvolve ain, ifilcod [, ipartitionsize, ichannel]
-```
+=== "Modern"
+    ``` csound-orc
+    ar1 [, ar2 [, ar3 [, ar4]]] = pconvolve(ain, ifilcod [, ipartitionsize [, ichannel]])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar1 [, ar2 [, ar3 [, ar4]]] pconvolve ain, ifilcod [, ipartitionsize [, ichannel]]
+    ```
 
 ### Initialization
 
@@ -45,7 +51,7 @@ Instrument 2 shows how to do file-based convolution with a 'look ahead' method t
 >
 > You can download impulse response files from noisevault.com or replace the filenames with your own impulse files.
 
-Here is an example of the pconvolve opcode. It uses the file [pconvolve.csd](../../examples/pconvolve.csd).
+Here is an example of the pconvolve opcode. It uses the file [pconvolve.csd](../examples/pconvolve.csd).
 
 ``` csound-csd title="Example of the pconvolve opcode." linenums="1"
 --8<-- "examples/pconvolve.csd"
@@ -53,7 +59,7 @@ Here is an example of the pconvolve opcode. It uses the file [pconvolve.csd](../
 
 ## See also
 
-[Convolution and Morphing](../../sigmod/conmorph)
+[Convolution and Morphing](../sigmod/conmorph.md)
 
 ## Credits
 

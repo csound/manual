@@ -22,7 +22,7 @@ The value returned by the _p_ function is the value in a p-field.
 
 ## Examples
 
-Here is an example of the p opcode. It uses the file [p.csd](../../examples/p.csd).
+Here is an example of the p opcode. It uses the file [p.csd](../examples/p.csd).
 
 ``` csound-csd title="Example of the p opcode." linenums="1"
 --8<-- "examples/p.csd"
@@ -38,4 +38,4 @@ random number is now 139.496898
 
 ## See also
 
-[Initialization and Reinitialization](../../control/reinitn)
+[Initialization and Reinitialization](../control/reinitn.md)

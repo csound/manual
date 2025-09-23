@@ -3,17 +3,24 @@ id:schedkwhennamed
 category:Instrument Control:Invocation
 -->
 # schedkwhennamed
-Similar to [schedkwhen](../../opcodes/schedkwhen) but uses a named instrument at init-time.
+Similar to [schedkwhen](../opcodes/schedkwhen.md) but uses a named instrument at init-time.
 
 ## Syntax
-``` csound-orc
-schedkwhennamed ktrigger, kmintim, kmaxnum, "name", kwhen, kdur \
-                [, ip4] [, ip5] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    schedkwhennamed(ktrigger, kmintim, kmaxnum, "name", kwhen, kdur \
+                    [, ip4] [, ip5] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    schedkwhennamed ktrigger, kmintim, kmaxnum, "name", kwhen, kdur \
+                    [, ip4] [, ip5] [...]
+    ```
 
 ### Initialization
 
-_ip4, ip5, ..._ -- Equivalent to p4, p5, etc., in a score [i statement](../../scoregens/i)
+_ip4, ip5, ..._ -- Equivalent to p4, p5, etc., in a score [i statement](../scoregens/i.md)
 
 ### Performance
 
@@ -25,21 +32,21 @@ _kmaxnum_ -- maximum number of simultaneous instances of named instrument allowe
 
 _"name"_ -- the named instrument's name.
 
-_kwhen_ -- start time of the new event. Equivalent to p2 in a score [i statement](../../scoregens/i). Measured from the time of the triggering event. _kwhen_ must be greater than or equal to 0. If _kwhen_ greater than 0, the instrument will not be initialized until the actual time when it should start performing.
+_kwhen_ -- start time of the new event. Equivalent to p2 in a score [i statement](../scoregens/i.md). Measured from the time of the triggering event. _kwhen_ must be greater than or equal to 0. If _kwhen_ greater than 0, the instrument will not be initialized until the actual time when it should start performing.
 
-_kdur_ -- duration of event. Equivalent to p3 in a score [i statement](../../scoregens/i). If _kdur_ is 0, the instrument will only do an initialization pass, with no performance. If _kdur_ is negative, a held note is initiated. (See [ihold](../../opcodes/ihold) and [i statement](../../scoregens/i).)
-
-> :memo: **Note**
->
-> While waiting for events to be triggered by _schedkwhennamed_, the performance must be kept going, or Csound may quit if no score events are expected. To guarantee continued performance, an [f0 statement](../../scoregens/f) may be used in the score.
+_kdur_ -- duration of event. Equivalent to p3 in a score [i statement](../scoregens/i.md). If _kdur_ is 0, the instrument will only do an initialization pass, with no performance. If _kdur_ is negative, a held note is initiated. (See [ihold](../opcodes/ihold.md) and [i statement](../scoregens/i.md).)
 
 > :memo: **Note**
 >
-> Note that the _schedkwhennamed_ opcode cannot accept string p-fields. If you need to pass strings when instantiating an instrument, use the [scoreline](../../opcodes/scoreline) or [scoreline_i](../../opcodes/scoreline_i) opcode.
+> While waiting for events to be triggered by _schedkwhennamed_, the performance must be kept going, or Csound may quit if no score events are expected. To guarantee continued performance, an [f0 statement](../scoregens/f.md) may be used in the score.
+
+> :memo: **Note**
+>
+> Note that the _schedkwhennamed_ opcode cannot accept string p-fields. If you need to pass strings when instantiating an instrument, use the [scoreline](../opcodes/scoreline.md) or [scoreline_i](../opcodes/scoreline_i.md) opcode.
 
 ## Examples
 
-Here is an example of the schedkwhennamed opcode. It uses the file [schedkwhennamed.csd](../../examples/schedkwhennamed.csd).
+Here is an example of the schedkwhennamed opcode. It uses the file [schedkwhennamed.csd](../examples/schedkwhennamed.csd).
 
 ``` csound-csd title="Example of the schedkwhennamed opcode." linenums="1"
 --8<-- "examples/schedkwhennamed.csd"
@@ -47,7 +54,7 @@ Here is an example of the schedkwhennamed opcode. It uses the file [schedkwhenna
 
 ## See also
 
-[Instrument Invocation](../../control/invocat)
+[Instrument Invocation](../control/invocat.md)
 
 ## Credits
 

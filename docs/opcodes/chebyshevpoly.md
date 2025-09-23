@@ -8,9 +8,15 @@ Efficiently evaluates the sum of Chebyshev polynomials of arbitrary order.
 The _chebyshevpoly_ opcode calculates the value of a polynomial expression with a single a-rate input variable that is made up of a linear combination of the first N Chebyshev polynomials of the first kind.  Each Chebyshev polynomial, Tn(x), is weighted by a k-rate coefficient, _kn_, so that the opcode is calculating a sum of any number of terms in the form _kn*Tn(x)_.  Thus, the _chebyshevpoly_ opcode allows for the waveshaping of an audio signal with a _dynamic_ transfer function that gives precise control over the harmonic content of the output.
 
 ## Syntax
-``` csound-orc
-aout chebyshevpoly ain, k0 [, k1 [, k2 [...]]]
-```
+=== "Modern"
+    ``` csound-orc
+    aout = chebyshevpoly(ain, k0 [, k1 [, k2 [...]]])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout chebyshevpoly ain, k0 [, k1 [, k2 [...]]]
+    ```
 
 ### Performance
 
@@ -42,17 +48,23 @@ More information about Chebyshev polynomials can be found on Wikipedia at [http:
 
 ## Examples
 
-Here is an example of the chebyshevpoly opcode. It uses the file [chebyshevpoly.csd](../../examples/chebyshevpoly.csd).
+=== "Modern"
+    Here is an example of the chebyshevpoly opcode. It uses the file [chebyshevpoly-modern.csd](../examples/chebyshevpoly-modern.csd).
+    ``` csound-csd title="Example of the chebyshevpoly opcode." linenums="1"
+    --8<-- "examples/chebyshevpoly-modern.csd"
+    ```
 
-``` csound-csd title="Example of the chebyshevpoly opcode." linenums="1"
---8<-- "examples/chebyshevpoly.csd"
-```
+=== "Classic"
+    Here is an example of the chebyshevpoly opcode. It uses the file [chebyshevpoly.csd](../examples/chebyshevpoly.csd).
+    ``` csound-csd title="Example of the chebyshevpoly opcode." linenums="1"
+    --8<-- "examples/chebyshevpoly.csd"
+    ```
 
 ## See also
 
-[Waveshaping](../../sigmod/wavshape)
+[Waveshaping](../sigmod/wavshape.md)
 
-[Opcode Equivalents of Functions](../../math/opeqfunc)
+[Opcode Equivalents of Functions](../math/opeqfunc.md)
 
 ## Credits
 

@@ -3,17 +3,24 @@ id:tab2array
 category:Array Opcodes
 -->
 # tab2array
-Copy a slice from an f-table to an array
+Copy a slice from an f-table to an array.
 
 Plugin opcode in emugens.
 
 The _tab2array_ opcode takes an f-table and copies a slice to an array, possibly allocating it or changing its size
 
 ## Syntax
-``` csound-orc
-kout[] tab2array ifn [, kstart, kend, kstep ]
-iout[] tab2array ifn [, istart, iend, istep ]
-```
+=== "Modern"
+    ``` csound-orc
+    kout[] = tab2array(ifn [, kstart, kend, kstep ])
+    iout[] = tab2array(ifn [, istart, iend, istep ])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kout[] tab2array ifn [, kstart, kend, kstep ]
+    iout[] tab2array ifn [, istart, iend, istep ]
+    ```
 
 ### Initialization
 
@@ -29,7 +36,7 @@ _kstep / istep_ - How many elements to skip. _Defaults to 1_
 
 ## Examples
 
-Here is an example of the tab2array opcode. It uses the file [tab2array.csd](../../examples/tab2array.csd).
+Here is an example of the tab2array opcode. It uses the file [tab2array.csd](../examples/tab2array.csd).
 
 ``` csound-csd title="Example of the tab2array opcode." linenums="1"
 --8<-- "examples/tab2array.csd"
@@ -37,7 +44,7 @@ Here is an example of the tab2array opcode. It uses the file [tab2array.csd](../
 
 ## See also
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

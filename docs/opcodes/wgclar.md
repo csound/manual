@@ -8,10 +8,17 @@ Creates a tone similar to a clarinet.
 It uses a physical model developed from Perry Cook, but re-coded for Csound.
 
 ## Syntax
-``` csound-orc
-ares wgclar kamp, kfreq, kstiff, iatt, idetk, kngain, kvibf, kvamp \
-            [, ifn] [, iminfreq]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = wgclar(kamp, kfreq, kstiff, iatt, idetk, kngain, kvibf, kvamp \
+                  [, ifn] [, iminfreq])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares wgclar kamp, kfreq, kstiff, iatt, idetk, kngain, kvibf, kvamp \
+                [, ifn] [, iminfreq]
+    ```
 
 ### Initialization
 
@@ -41,7 +48,7 @@ _kvamp_ -- amplitude of the vibrato
 
 ## Examples
 
-Here is an example of the wgclar opcode. It uses the file [wgclar.csd](../../examples/wgclar.csd).
+Here is an example of the wgclar opcode. It uses the file [wgclar.csd](../examples/wgclar.csd).
 
 ``` csound-csd title="Example of the wgclar opcode." linenums="1"
 --8<-- "examples/wgclar.csd"
@@ -49,7 +56,7 @@ Here is an example of the wgclar opcode. It uses the file [wgclar.csd](../../exa
 
 ## See also
 
-[Waveguide Physical Modeling](../../siggen/wavguide)
+[Waveguide Physical Modeling](../siggen/wavguide.md)
 
 ## Credits
 

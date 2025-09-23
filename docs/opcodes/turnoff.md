@@ -6,11 +6,19 @@ category:Instrument Control:Duration Control
 Enables an instrument to turn itself off or to turn an instance of another instrument off.
 
 ## Syntax
-``` csound-orc
-turnoff
-turnoff inst
-turnoff knst
-```
+=== "Modern"
+    ``` csound-orc
+    turnoff()
+    turnoff(inst)
+    turnoff(knst)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    turnoff
+    turnoff inst
+    turnoff knst
+    ```
 
 ### Initialization
 
@@ -24,7 +32,7 @@ _kinst_ -- when used with an k-time parameter, this is the instance handle of an
 
 ## Examples
 
-The following example uses the turnoff opcode. It will cause a note to terminate when a control signal passes a certain threshold (here the Nyquist frequency). It uses the file [turnoff.csd](../../examples/turnoff.csd).
+The following example uses the turnoff opcode. It will cause a note to terminate when a control signal passes a certain threshold (here the Nyquist frequency). It uses the file [turnoff.csd](../examples/turnoff.csd).
 
 ``` csound-csd title="Example of the turnoff opcode." linenums="1"
 --8<-- "examples/turnoff.csd"
@@ -32,4 +40,4 @@ The following example uses the turnoff opcode. It will cause a note to terminate
 
 ## See also
 
-[Duration Control Statements](../../control/durctl)
+[Duration Control Statements](../control/durctl.md)

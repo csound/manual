@@ -6,9 +6,15 @@ category:Real-time MIDI:Output
 Sends polyphonic MIDI aftertouch messages at i-rate.
 
 ## Syntax
-``` csound-orc
-outipat ichn, inotenum, ivalue, imin, imax
-```
+=== "Modern"
+    ``` csound-orc
+    outipat(ichn, inotenum, ivalue, imin, imax)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    outipat ichn, inotenum, ivalue, imin, imax
+    ```
 
 ### Initialization
 
@@ -30,7 +36,7 @@ It can scale an i-value floating-point argument according to the _imin_ and _ima
 
 ## See also
 
-[MIDI Message Output](../../midi/output)
+[MIDI Message Output](../midi/output.md)
 
 ## Credits
 

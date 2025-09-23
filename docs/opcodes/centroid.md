@@ -6,9 +6,15 @@ category:Spectral Processing:Other
 Calculate the spectral centroid of an audio signal on a given trigger.
 
 ## Syntax
-``` csound-orc
-kcent centroid asig, ktrig, ifftsize
-```
+=== "Modern"
+    ``` csound-orc
+    kcent = centroid(asig, ktrig, ifftsize)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kcent centroid asig, ktrig, ifftsize
+    ```
 
 ### Initialization
 
@@ -24,15 +30,21 @@ _ktrig_ -- 1 to calculate a new centroid, 0 to skip the process (and output prev
 
 ## Examples
 
-Here is an example of the centroid opcode. It uses the file [centroid.csd](../../examples/centroid.csd).
+=== "Modern"
+    Here is an example of the centroid opcode. It uses the file [centroid-modern.csd](../examples/centroid-modern.csd).
+    ``` csound-csd title="Example of the centroid opcode." linenums="1"
+    --8<-- "examples/centroid-modern.csd"
+    ```
 
-``` csound-csd title="Example of the centroid opcode." linenums="1"
---8<-- "examples/centroid.csd"
-```
+=== "Classic"
+    Here is an example of the centroid opcode. It uses the file [centroid.csd](../examples/centroid.csd).
+    ``` csound-csd title="Example of the centroid opcode." linenums="1"
+    --8<-- "examples/centroid.csd"
+    ```
 
 ## See also
 
-[Sensing and Control: Tempo and Pitch estimation](../../control/sensing)
+[Sensing and Control: Tempo and Pitch estimation](../control/sensing.md)
 
 ## Credits
 

@@ -6,13 +6,20 @@ category:Signal Generators:Sample Playback
 Plays a SoundFont2 (SF2) sample preset, generating a stereo sound, with user-defined
 time-varying crossfade looping.
 
-Similar to _sfplay_. Unlike that opcode, though, it ignores the looping points set in the SF2 file and substitutes them for a user-defined crossfade loop. It is a cross between [sfplay](../../opcodes/sfplay) and [flooper2](../../opcodes/flooper2). In order to understand the usage of these opcodes, the user must have some knowledge of the SF2  format, so a brief description of this format can be found in the [SoundFont2 File Format](../../siggen/sample) section.
+Similar to _sfplay_. Unlike that opcode, though, it ignores the looping points set in the SF2 file and substitutes them for a user-defined crossfade loop. It is a cross between [sfplay](../opcodes/sfplay.md) and [flooper2](../opcodes/flooper2.md). In order to understand the usage of these opcodes, the user must have some knowledge of the SF2  format, so a brief description of this format can be found in the [SoundFont2 File Format](../siggen/sample.md) section.
 
 ## Syntax
-``` csound-orc
-ar1, ar2 sflooper ivel, inotenum, kamp, kpitch, ipreindex, kloopstart, \
-                  kloopend, kcrossfade [, istart, imode, ifenv, iskip, iflag]
-```
+=== "Modern"
+    ``` csound-orc
+    ar1, ar2 = sflooper(ivel, inotenum, kamp, kpitch, ipreindex, kloopstart, \
+                        kloopend, kcrossfade [, istart, imode, ifenv, iskip, iflag])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar1, ar2 sflooper ivel, inotenum, kamp, kpitch, ipreindex, kloopstart, \
+                      kloopend, kcrossfade [, istart, imode, ifenv, iskip, iflag]
+    ```
 
 ### Initialization
 
@@ -52,7 +59,7 @@ Note: The looping points are set on the root key of every sample that is part of
 
 ## Examples
 
-Here is an example of the sflooper opcode. It uses the file [sflooper.csd](../../examples/sflooper.csd).
+Here is an example of the sflooper opcode. It uses the file [sflooper.csd](../examples/sflooper.csd).
 
 ``` csound-csd title="Example of the sflooper opcode." linenums="1"
 --8<-- "examples/sflooper.csd"
@@ -60,7 +67,7 @@ Here is an example of the sflooper opcode. It uses the file [sflooper.csd](../..
 
 ## See also
 
-[Soundfonts](../../siggen/sample)
+[Soundfonts](../siggen/sample.md)
 
 More information on soundfonts is in the Floss Manuals: [https://flossmanual.csound.com/midi/reading-midi-files](https://flossmanual.csound.com/midi/reading-midi-files)
 

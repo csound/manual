@@ -6,10 +6,17 @@ category:Table Control
 Generate a score function table from within the orchestra.
 
 ## Syntax
-``` csound-orc
-gir ftgen ifn, itime, isize, igen, iarga [, iargb ] [...]
-gir ftgen ifn, itime, isize, igen, iarray
-```
+=== "Modern"
+    ``` csound-orc
+    gir = ftgen(ifn, itime, isize, igen, iarga [, iargb ] [...])
+    gir = ftgen(ifn, itime, isize, igen, iarray)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    gir ftgen ifn, itime, isize, igen, iarga [, iargb ] [...]
+    gir ftgen ifn, itime, isize, igen, iarray
+    ```
 
 ### Initialization
 
@@ -41,13 +48,13 @@ This is equivalent to table generation in the score with the _f statement_.
 
 ## Examples
 
-Here is an example of the ftgen opcode. It uses the file [ftgen.csd](../../examples/ftgen.csd).
+Here is an example of the ftgen opcode. It uses the file [ftgen.csd](../examples/ftgen.csd).
 
 ``` csound-csd title="Example of the ftgen opcode." linenums="1"
 --8<-- "examples/ftgen.csd"
 ```
 
-Here is another example of the ftgen opcode. It uses the file [ftgen-2.csd](../../examples/ftgen-2.csd).
+Here is another example of the ftgen opcode. It uses the file [ftgen-2.csd](../examples/ftgen-2.csd).
 
 ``` csound-csd title="Example of the ftgen opcode." linenums="1"
 --8<-- "examples/ftgen-2.csd"
@@ -55,9 +62,9 @@ Here is another example of the ftgen opcode. It uses the file [ftgen-2.csd](../.
 
 ## See also
 
-[GEN routine overview](../../score/genroutines)
+[GEN routine overview](../score/genroutines.md)
 
-[Orchestra Header Statements](../../orch/header)
+[Orchestra Header Statements](../orch/header.md)
 
 ## Credits
 

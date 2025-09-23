@@ -6,9 +6,15 @@ category:Signal Modifiers:Special Effects
 Second-order allpass filters arranged in a series.
 
 ## Syntax
-``` csound-orc
-ares phaser2 asig, kfreq, kq, kord, kmode, ksep, kfeedback
-```
+=== "Modern"
+    ``` csound-orc
+    ares = phaser2(asig, kfreq, kq, kord, kmode, ksep, kfeedback)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares phaser2 asig, kfreq, kq, kord, kmode, ksep, kfeedback
+    ```
 
 ### Performance
 
@@ -24,7 +30,7 @@ _kmode_ -- used in calculation of notch frequencies.
 
 > :memo: **Note**
 >
-> Although _kord_ and _kmode_ are listed as k-rate, they are in fact accessed only at init-time. So if you are using k-rate arguments, they must be assigned with [init](../../opcodes/init).
+> Although _kord_ and _kmode_ are listed as k-rate, they are in fact accessed only at init-time. So if you are using k-rate arguments, they must be assigned with [init](../opcodes/init.md).
 
 _ksep_ -- scaling factor used, in conjunction with _imode_, to determine the frequencies of the additional notches in the output spectrum.
 
@@ -49,7 +55,7 @@ When _imode_ = 2, the value of _ksep_ must be greater than 0. _ksep_ can be swep
 
 ## Examples
 
-Here is an example of the phaser2 opcode. It uses the file [phaser2.csd](../../examples/phaser2.csd).
+Here is an example of the phaser2 opcode. It uses the file [phaser2.csd](../examples/phaser2.csd).
 
 ``` csound-csd title="Example of the phaser2 opcode." linenums="1"
 --8<-- "examples/phaser2.csd"
@@ -69,7 +75,7 @@ A general description of the differences between flanging and phasing can be fou
 
 ## See also
 
-[Special Effects](../../sigmod/speciale)
+[Special Effects](../sigmod/speciale.md)
 
 ## Credits
 

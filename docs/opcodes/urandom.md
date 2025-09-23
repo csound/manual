@@ -10,11 +10,19 @@ Plugin opcode in urandom.
 These units are for Unix-like systems only and use /dev/urandom to construct Csound random values
 
 ## Syntax
-``` csound-orc
-ax urandom [imin, imax]
-ix urandom [imin, imax]
-kx urandom [imin, imax]
-```
+=== "Modern"
+    ``` csound-orc
+    ax = urandom([imin, imax])
+    ix = urandom([imin, imax])
+    kx = urandom([imin, imax])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ax urandom [imin, imax]
+    ix urandom [imin, imax]
+    kx urandom [imin, imax]
+    ```
 
 ### Initialization
 
@@ -37,13 +45,13 @@ _kx_ -- k-rate output value.
 
 ## Examples
 
-Here is an example of the urandom opcode at a-rate. It uses the file [urandom.csd](../../examples/urandom.csd).
+Here is an example of the urandom opcode at a-rate. It uses the file [urandom.csd](../examples/urandom.csd).
 
 ``` csound-orc title="An example of the urandom opcode at a-rate." linenums="1"
 --8<-- "examples/urandom.csd"
 ```
 
-Here is an example of the urandom opcode at k-rate. It uses the file [urandom_krate.csd](../../examples/urandom_krate.csd).
+Here is an example of the urandom opcode at k-rate. It uses the file [urandom_krate.csd](../examples/urandom_krate.csd).
 
 ``` csound-orc title="An example of the urandom opcode at k-rate." linenums="1"
 --8<-- "examples/urandom_krate.csd"
@@ -67,7 +75,7 @@ k1=-0.036276
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
 ## Credits
 

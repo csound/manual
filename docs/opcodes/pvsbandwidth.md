@@ -6,9 +6,15 @@ category:Spectral Processing:Streaming
 Calculate the spectral bandwidth of a signal from its discrete Fourier transform.
 
 ## Syntax
-``` csound-orc
-kbnd pvsbandwidth fsig
-```
+=== "Modern"
+    ``` csound-orc
+    kbnd = pvsbandwidth(fsig)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kbnd pvsbandwidth fsig
+    ```
 
 ### Performance
 
@@ -18,7 +24,7 @@ _fsig_ -- an input pv stream
 
 ## Examples
 
-Here is an example of the use of the _pvsbandwidth_ opcode. It uses the file [pvsbandwidth.csd](../../examples/pvsbandwidth.csd).
+Here is an example of the use of the _pvsbandwidth_ opcode. It uses the file [pvsbandwidth.csd](../examples/pvsbandwidth.csd).
 
 ``` csound-csd title="Example of the pvsbandwidth opcode." linenums="1"
 --8<-- "examples/pvsbandwidth.csd"
@@ -26,7 +32,7 @@ Here is an example of the use of the _pvsbandwidth_ opcode. It uses the file [pv
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

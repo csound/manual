@@ -10,10 +10,17 @@ Plugin opcode in ampmidid.
 The minimum output gain is 1 minus the dynamic range. A shaping exponent of 1 gives a linear response; increasing the exponent produces an increasingly depressed knee in the gain response curve.
 
 ## Syntax
-``` csound-orc
-igain ampmidicurve ivelocity, idynamicrange, iexponent
-kgain ampmidicurve kvelocity, kdynamicrange, kexponent
-```
+=== "Modern"
+    ``` csound-orc
+    igain = ampmidicurve(ivelocity, idynamicrange, iexponent)
+    kgain = ampmidicurve(kvelocity, kdynamicrange, kexponent)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    igain ampmidicurve ivelocity, idynamicrange, iexponent
+    kgain ampmidicurve kvelocity, kdynamicrange, kexponent
+    ```
 
 ### Initialization
 
@@ -35,15 +42,21 @@ Maps an input MIDI velocity number to an output gain factor with a maximum value
 
 ## Examples
 
-Here is an example of the ampmidicurve opcode. It uses the file [ampmidicurve.csd](../../examples/ampmidicurve.csd).
+=== "Modern"
+    Here is an example of the ampmidicurve opcode. It uses the file [ampmidicurve-modern.csd](../examples/ampmidicurve-modern.csd).
+    ``` csound-csd title="Example of the ampmidicurve opcode." linenums="1"
+    --8<-- "examples/ampmidicurve-modern.csd"
+    ```
 
-``` csound-csd title="Example of the ampmidicurve opcode." linenums="1"
---8<-- "examples/ampmidicurve.csd"
-```
+=== "Classic"
+    Here is an example of the ampmidicurve opcode. It uses the file [ampmidicurve.csd](../examples/ampmidicurve.csd).
+    ``` csound-csd title="Example of the ampmidicurve opcode." linenums="1"
+    --8<-- "examples/ampmidicurve.csd"
+    ```
 
 ## See also
 
-[Midi Converters](../../midi/convert)
+[Midi Converters](../midi/convert.md)
 
 ## Credits
 

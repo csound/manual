@@ -6,17 +6,27 @@ category:Signal Modifiers:Specialized Filters
 A Hilbert transformer.
 
 ## Syntax
-``` csound-orc
-ar1, ar2 hilbert asig
-```
+=== "Modern"
+    ``` csound-orc
+    c:a, s:a = hilbert(sig:a)
+    csig:Complex[] = hilbert(sig:a)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ac, as hilbert asig
+    sig:Complex[] hilbert asig
+    ```
 
 ### Performance
 
-_asig_ -- input signal
+_sig_ -- input signal
 
-_ar1_ -- sine output of _asig_
+_c_ -- cosine output of _sig_
 
-_ar2_ -- cosine output of _asig_
+_s_ -- sine output of _sig_
+
+_csig_ -- Complex array containing the analytic signal.
 
 _hilbert_ is an IIR filter based implementation of a broad-band 90 degree phase difference network. The input to _hilbert_ is an audio signal, with a frequency range from 15 Hz to 15 kHz. The outputs of _hilbert_ have an identical frequency response to the input (i.e. they sound the same), but the two outputs have a constant phase difference of 90 degrees, plus or minus some small amount of error, throughout the entire frequency range. The outputs are in quadrature.
 
@@ -30,7 +40,7 @@ Unlike an FIR-based Hilbert transformer, the output of _hilbert_ does not have a
 
 The first example implements frequency shifting, or single sideband amplitude modulation. Frequency shifting is similar to ring modulation, except the upper and lower sidebands are separated into individual outputs. By using only one of the outputs, the input signal can be "detuned," where the harmonic components of the signal are shifted out of harmonic alignment with each other, e.g. a signal with harmonics at 100, 200, 300, 400 and 500 Hz, shifted up by 50 Hz, will have harmonics at 150, 250, 350, 450, and 550 Hz.
 
-Here is the first example of the hilbert opcode. It uses the file [hilbert.csd](../../examples/hilbert.csd), and [drumsMlp.wav](../../examples/drumsMlp.wav).
+Here is the first example of the hilbert opcode. It uses the file [hilbert.csd](../examples/hilbert.csd), and [drumsMlp.wav](../examples/drumsMlp.wav).
 
 ``` csound-csd title="Example of the hilbert opcode implementing frequency shifting." linenums="1"
 --8<-- "examples/hilbert.csd"
@@ -38,7 +48,7 @@ Here is the first example of the hilbert opcode. It uses the file [hilbert.csd](
 
 The second example is a variation of the first, but with the output being fed back into the input. With very small shift amounts (i.e. between 0 and +-6 Hz), the result is a sound that has been described as a &#8220;barberpole phaser&#8221; or &#8220;Shepard tone phase shifter.&#8221; Several notches appear in the spectrum, and are constantly swept in the direction opposite that of the shift, producing a filtering effect that is reminiscent of Risset's &#8220;endless glissando&#8221;.
 
-Here is the second example of the hilbert opcode. It uses the file [hilbert_barberpole.csd](../../examples/hilbert_barberpole.csd).
+Here is the second example of the hilbert opcode. It uses the file [hilbert_barberpole.csd](../examples/hilbert_barberpole.csd).
 
 ``` csound-csd title="Example of the hilbert opcode sounding like a &#8220;barberpole phaser&#8221;." linenums="1"
 --8<-- "examples/hilbert_barberpole.csd"
@@ -46,7 +56,7 @@ Here is the second example of the hilbert opcode. It uses the file [hilbert_barb
 
 ## See also
 
-[Specialized Filters: Other filters](../../sigmod/speciali)
+[Specialized Filters: Other filters](../sigmod/speciali.md)
 
 ## Technical History
 

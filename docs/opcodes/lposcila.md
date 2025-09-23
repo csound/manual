@@ -6,9 +6,15 @@ category:Signal Generators:Sample Playback
 Read sampled sound from a table with looping and high precision.
 
 ## Syntax
-``` csound-orc
-ar lposcila aamp, kfreqratio, kloop, kend, ift [,iphs]
-```
+=== "Modern"
+    ``` csound-orc
+    ar = lposcila(aamp, kfreqratio, kloop, kend, ift [,iphs])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar lposcila aamp, kfreqratio, kloop, kend, ift [,iphs]
+    ```
 
 ### Initialization
 
@@ -28,11 +34,11 @@ _kloop_ -- start loop point (in samples)
 
 _kend_ -- end loop point (in samples)
 
-_lposcila_ is the same as [lposcil](../../opcodes/lposcil), but has an audio-rate amplitude argument (instead of k-rate) to allow fast envelope transients.
+_lposcila_ is the same as [lposcil](../opcodes/lposcil.md), but has an audio-rate amplitude argument (instead of k-rate) to allow fast envelope transients.
 
 ## Examples
 
-Here is an example of the lposcila opcode. It uses the file [lposcila.csd](../../examples/lposcila.csd).
+Here is an example of the lposcila opcode. It uses the file [lposcila.csd](../examples/lposcila.csd).
 
 ``` csound-csd title="Example of the lposcila opcode." linenums="1"
 --8<-- "examples/lposcila.csd"
@@ -40,7 +46,7 @@ Here is an example of the lposcila opcode. It uses the file [lposcila.csd](../..
 
 ## See also
 
-[Sample Playback](../../siggen/sample)
+[Sample Playback](../siggen/sample.md)
 
 ## Credits
 

@@ -6,10 +6,17 @@ category:Real-time MIDI:Input
 Allows a floating-point 14-bit MIDI signal scaled with a minimum and a maximum range.
 
 ## Syntax
-``` csound-orc
-idest ctrl14 ichan, ictlno1, ictlno2, imin, imax [, ifn]
-kdest ctrl14 ichan, ictlno1, ictlno2, kmin, kmax [, ifn]
-```
+=== "Modern"
+    ``` csound-orc
+    idest = ctrl14(ichan, ictlno1, ictlno2, imin, imax [, ifn])
+    kdest = ctrl14(ichan, ictlno1, ictlno2, kmin, kmax [, ifn])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    idest ctrl14 ichan, ictlno1, ictlno2, imin, imax [, ifn]
+    kdest ctrl14 ichan, ictlno1, ictlno2, kmin, kmax [, ifn]
+    ```
 
 ### Initialization
 
@@ -37,11 +44,11 @@ _kmax_ -- user-defined maximum floating-point value of output
 
 _ctrl14_ (i- and k-rate 14 bit MIDI control) allows a floating-point 14-bit MIDI signal scaled with a minimum and a maximum range. The minimum and maximum values can be varied at k-rate. It can use optional interpolated table indexing. It requires two MIDI controllers as input.
 
-_ctrl14_ differs from [midic14](../../opcodes/midic14) because it can be included in score-oriented instruments without Csound crashes. It needs the additional parameter _ichan_ containing the MIDI channel of the controller. MIDI channel is the same for all the controllers used in a single _ctrl14_ opcode.
+_ctrl14_ differs from [midic14](../opcodes/midic14.md) because it can be included in score-oriented instruments without Csound crashes. It needs the additional parameter _ichan_ containing the MIDI channel of the controller. MIDI channel is the same for all the controllers used in a single _ctrl14_ opcode.
 
 ## Examples
 
-Here is an example of the ctrl14 opcode. It uses the file [ctrl14.csd](../../examples/ctrl14.csd).
+Here is an example of the ctrl14 opcode. It uses the file [ctrl14.csd](../examples/ctrl14.csd).
 
 ``` csound-csd title="Example of the ctrl14 opcode." linenums="1"
 --8<-- "examples/ctrl14.csd"
@@ -49,7 +56,7 @@ Here is an example of the ctrl14 opcode. It uses the file [ctrl14.csd](../../exa
 
 ## See also
 
-[MIDI input and Initialization](../../midi/input)
+[MIDI input and Initialization](../midi/input.md)
 
 ## Credits
 

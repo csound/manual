@@ -8,13 +8,19 @@ Convert Ssrc to upper case, and write the result to Sdst.
 _strupper_ runs at init time only.
 
 ## Syntax
-``` csound-orc
-Sdst strupper Ssrc
-```
+=== "Modern"
+    ``` csound-orc
+    Sdst = strupper(Ssrc)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    Sdst strupper Ssrc
+    ```
 
 ## See Also
 
-[String Conversion Opcodes](../../strings/convert)
+[String Conversion Opcodes](../strings/convert.md)
 
 ## Credits
 

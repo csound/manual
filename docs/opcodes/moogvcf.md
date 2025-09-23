@@ -6,9 +6,15 @@ category:Signal Modifiers:Standard Filters:Resonant
 A digital emulation of the Moog diode ladder filter configuration.
 
 ## Syntax
-``` csound-orc
-ares moogvcf asig, xfco, xres [,iscale, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = moogvcf(asig, xfco, xres [,iscale, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares moogvcf asig, xfco, xres [,iscale, iskip]
+    ```
 
 ### Initialization
 
@@ -28,17 +34,17 @@ _moogvcf_ is a digital emulation of the Moog diode ladder filter configuration. 
 
 > :warning: **Warning**
 >
-> Before version 6.02 this filter required that the input signal be normalized to one. This can be easily achieved using [0dbfs](../../opcodes/0dbfs), like this:
+> Before version 6.02 this filter required that the input signal be normalized to one. This can be easily achieved using [0dbfs](../opcodes/0dbfs.md), like this:
 >
 > ``` csound-orc
 > ares moogvcf asig, kfco, kres, 0dbfs
 > ```
 >
-> You can also use [moogvcf2](../../opcodes/moogvcf2) which defaults scaling to [0dbfs](../../opcodes/0dbfs).
+> You can also use [moogvcf2](../opcodes/moogvcf2.md) which defaults scaling to [0dbfs](../opcodes/0dbfs.md).
 
 ## Examples
 
-Here is an example of the moogvcf opcode. It uses the file [moogvcf.csd](../../examples/moogvcf.csd).
+Here is an example of the moogvcf opcode. It uses the file [moogvcf.csd](../examples/moogvcf.csd).
 
 ``` csound-csd title="Example of the moogvcf opcode." linenums="1"
 --8<-- "examples/moogvcf.csd"
@@ -46,7 +52,7 @@ Here is an example of the moogvcf opcode. It uses the file [moogvcf.csd](../../e
 
 ## See also
 
-[Standard Filters: Resonant Low-pass filters](../../sigmod/standard)
+[Standard Filters: Resonant Low-pass filters](../sigmod/standard.md)
 
 ## Credits
 

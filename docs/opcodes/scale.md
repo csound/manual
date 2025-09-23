@@ -8,9 +8,15 @@ Arbitrary signal scaling.
 Scales incoming value to user-definable range. Similar to scale object found in popular dataflow languages.
 
 ## Syntax
-``` csound-orc
-kscl scale kinput, kmax, kmin[, kimax, kimin]
-```
+=== "Modern"
+    ``` csound-orc
+    kscl = scale(kinput, kmax, kmin[, kimax, kimin])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kscl scale kinput, kmax, kmin[, kimax, kimin]
+    ```
 
 ### Performance
 
@@ -34,7 +40,7 @@ value range, defaulting to one.
 
 ## Examples
 
-Here is an example of the scale opcode. It uses the file [scale.csd](../../examples/scale.csd).
+Here is an example of the scale opcode. It uses the file [scale.csd](../examples/scale.csd).
 
 ``` csound-orc title="Example of the scale opcode." linenums="1"
 --8<-- "examples/scale.csd"
@@ -42,7 +48,7 @@ Here is an example of the scale opcode. It uses the file [scale.csd](../../examp
 
 ## See also
 
-[Linear and Exponential Generators](../../siggen/lineexp)
+[Linear and Exponential Generators](../siggen/lineexp.md)
 
 ## Credits
 

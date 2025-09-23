@@ -6,21 +6,27 @@ category:Signal Modifiers:Standard Filters:Resonant
 A second-order, two-pole two-zero bandpass filter with variable frequency response.
 
 ## Syntax
-``` csound-orc
-ares resonz asig, xcf, xbw [, iscl] [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = resonz(asig, xcf, xbw [, iscl] [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares resonz asig, xcf, xbw [, iscl] [, iskip]
+    ```
 
 ### Initialization
 
-The optional initialization variables for _resonr_ and _resonz_ are identical to the i-time variables for [reson](../../opcodes/reson).
+The optional initialization variables for _resonr_ and _resonz_ are identical to the i-time variables for [reson](../opcodes/reson.md).
 
 _iskip_ -- initial disposition of internal data space. Since filtering incorporates a feedback loop of previous output, the initial status of the storage space used is significant. A zero value will clear the space; a non-zero value will allow previous information to remain. The default value is 0.
 
-_iscl_ -- coded scaling factor for resonators. A value of 1 signifies a peak response factor of 1, i.e.  all frequencies other than _kcf_ are attenuated in accordance with the (normalized) response curve. A value of 2 raises the response factor so that its overall RMS value equals 1. This intended equalization of input and output power assumes all frequencies are physically present; hence it is most applicable to white noise. A zero value signifies no scaling of the signal, leaving that to some later adjustment (see [balance](../../opcodes/balance)). The default value is 0.
+_iscl_ -- coded scaling factor for resonators. A value of 1 signifies a peak response factor of 1, i.e.  all frequencies other than _kcf_ are attenuated in accordance with the (normalized) response curve. A value of 2 raises the response factor so that its overall RMS value equals 1. This intended equalization of input and output power assumes all frequencies are physically present; hence it is most applicable to white noise. A zero value signifies no scaling of the signal, leaving that to some later adjustment (see [balance](../opcodes/balance.md)). The default value is 0.
 
 ### Performance
 
-_resonr_ and _resonz_ are variations of the classic two-pole bandpass resonator ([reson](../../opcodes/reson)). Both filters have two zeroes in their transfer functions, in addition to the two poles. _resonz_ has its zeroes located at z = 1 and z = -1. _resonr_ has its zeroes located at +sqrt(_R_) and -sqrt(_R_), where _R_ is the radius of the poles in the complex z-plane. The addition of zeroes to _resonr_ and _resonz_ results in the improved selectivity of the magnitude response of these filters at cutoff frequencies close to 0, at the expense of less selectivity of frequencies above the cutoff peak.
+_resonr_ and _resonz_ are variations of the classic two-pole bandpass resonator ([reson](../opcodes/reson.md)). Both filters have two zeroes in their transfer functions, in addition to the two poles. _resonz_ has its zeroes located at z = 1 and z = -1. _resonr_ has its zeroes located at +sqrt(_R_) and -sqrt(_R_), where _R_ is the radius of the poles in the complex z-plane. The addition of zeroes to _resonr_ and _resonz_ results in the improved selectivity of the magnitude response of these filters at cutoff frequencies close to 0, at the expense of less selectivity of frequencies above the cutoff peak.
 
 _resonr_ and _resonz_ are very close to constant-gain as the center frequency is swept, resulting in a more efficient control of the magnitude response than with traditional two-pole resonators such as _reson_.
 
@@ -34,7 +40,7 @@ _xbw_ -- bandwidth of the filter (the Hz difference between the upper and lower 
 
 ## Examples
 
-Here is an example of the resonr and resonz opcodes. It uses the file [resonz.csd](../../examples/resonz.csd).
+Here is an example of the resonr and resonz opcodes. It uses the file [resonz.csd](../examples/resonz.csd).
 
 ``` csound-csd title="Example of the resonr and resonz opcodes." linenums="1"
 --8<-- "examples/resonr.csd"
@@ -55,7 +61,7 @@ Ken Steiglitz, in a later article <sup>2</sup>, demonstrated that _resonz_ had c
 
 ## See also
 
-[Standard Filters: Resonant Low-pass filters](../../sigmod/standard)
+[Standard Filters: Resonant Low-pass filters](../sigmod/standard.md)
 
 ## Credits
 

@@ -12,10 +12,17 @@ At higher frequency, the minimum sweep rate takes over, so over a certain pitch 
 Hardsync (a very quick sweep to phase=0) is supported, and a sync signal is output once per cycle.
 
 ## Syntax
-``` csound-orc
-aout [, asyncout] squinewave acps, aClip, aSkew, asyncin [, iMinSweep] [, iphase]
-aout [, asyncout] squinewave acps, aClip, aSkew [, ksyncin] [, iMinSweep] [, iphase]
-```
+=== "Modern"
+    ``` csound-orc
+    aout [, asyncout] = squinewave(acps, aClip, aSkew, asyncin [, iMinSweep] [, iphase])
+    aout [, asyncout] = squinewave(acps, aClip, aSkew [, ksyncin] [, iMinSweep] [, iphase])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout [, asyncout] squinewave acps, aClip, aSkew, asyncin [, iMinSweep] [, iphase]
+    aout [, asyncout] squinewave acps, aClip, aSkew [, ksyncin] [, iMinSweep] [, iphase]
+    ```
 
 ### Initialization
 
@@ -108,7 +115,7 @@ If _iphase_ &lt; 0 (skip) at first use, initial phase is set to 1.25, ie 0-cross
 
 ## Examples
 
-Here is an example of the _squinewave_ opcode. It uses the file [squinewave.csd](../../examples/squinewave.csd).
+Here is an example of the _squinewave_ opcode. It uses the file [squinewave.csd](../examples/squinewave.csd).
 
 ``` csound-orc title="Example of the squinewave opcode." linenums="1"
 --8<-- "examples/squinewave.csd"
@@ -116,7 +123,7 @@ Here is an example of the _squinewave_ opcode. It uses the file [squinewave.csd]
 
 ## See Also
 
-[Dynamic Spectrum Oscillators](../../siggen/dynamic)
+[Dynamic Spectrum Oscillators](../siggen/dynamic.md)
 
 ## Credits
 

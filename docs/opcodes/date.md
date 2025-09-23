@@ -10,10 +10,17 @@ Plugin opcode in cs_date.
 The base is 1 January 1970 for Csound using doubles, and 1 January 2010 for versions using floats. On operating systemms with sufficient resolution the date includes fractional seconds.
 
 ## Syntax
-``` csound-orc
-ir[, inano] date
-kr[, knano] date
-```
+=== "Modern"
+    ``` csound-orc
+    ir[, inano] = date()
+    kr[, knano] = date()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ir[, inano] date
+    kr[, knano] date
+    ```
 
 Initialization and Performance
 
@@ -31,7 +38,7 @@ The optional answer and resolution including fractions of a second introduced in
 
 ## Examples
 
-Here is an example of the date opcode. It uses the file [date.csd](../../examples/date.csd).
+Here is an example of the date opcode. It uses the file [date.csd](../examples/date.csd).
 
 ``` csound-csd title="Example of the date opcode." linenums="1"
 --8<-- "examples/date.csd"
@@ -49,7 +56,7 @@ Thu Jan  1 01:00:01 1970
 
 ## See also
 
-[Time Reading](../../control/timeread)
+[Time Reading](../control/timeread.md)
 
 ## Credits
 

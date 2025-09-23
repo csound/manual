@@ -6,13 +6,19 @@ category:Strings:Manipulation
 Return the length of a string, or zero if it is empty. strlen runs at init time only.
 
 ## Syntax
-``` csound-orc
-ilen strlen Sstr
-```
+=== "Modern"
+    ``` csound-orc
+    ilen = strlen(Sstr)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ilen strlen Sstr
+    ```
 
 ## See Also
 
-[String Manipulation Opcodes](../../strings/manipulate)
+[String Manipulation Opcodes](../strings/manipulate.md)
 
 ## Credits
 

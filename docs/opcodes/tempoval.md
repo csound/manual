@@ -6,17 +6,23 @@ category:Instrument Control:Sensing and Control
 Reads the current value of the tempo.
 
 ## Syntax
-``` csound-orc
-kres tempoval
-```
+=== "Modern"
+    ``` csound-orc
+    kres = tempoval()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres tempoval
+    ```
 
 ### Performance
 
-_kres_ -- the value of the tempo. If you use a positive value with the [-t command-line flag](../../), _tempoval_ returns the percentage increase/decrease from the original tempo of 60 beats per minute. If you do not, its value will be 60 (for 60 beats per minute).
+_kres_ -- the value of the tempo. If you use a positive value with the [-t command-line flag](../invoke/cs-options-alphabetically.md#-t-num-temponum), _tempoval_ returns the percentage increase/decrease from the original tempo of 60 beats per minute. If you do not, its value will be 60 (for 60 beats per minute).
 
 ## Examples
 
-Here is an example of the tempoval opcode. Remember, it only works if you use the [-t](../../) flag with Csound. It uses the file [tempoval.csd](../../examples/tempoval.csd).
+Here is an example of the tempoval opcode. Remember, it only works if you use the [-t](../invoke/cs-options-alphabetically.md#-t-num-temponum) flag with Csound. It uses the file [tempoval.csd](../examples/tempoval.csd).
 
 ``` csound-csd title="Example of the tempoval opcode." linenums="1"
 --8<-- "examples/tempoval.csd"
@@ -30,7 +36,7 @@ kval = 0.500000
 
 ## See also
 
-[Sensing and Control: Tempo and Sequencing](../../control/sensing)
+[Sensing and Control: Tempo and Sequencing](../control/sensing.md)
 
 ## Credits
 

@@ -8,9 +8,15 @@ Models some of the filter characteristics of a Roland TB303 voltage-controlled f
 Euler's method is used to approximate the system, rather than traditional filter methods. Cutoff frequency, Q, and distortion are all coupled. Empirical methods were used to try to unentwine,  but frequency is only approximate as a result. Future fixes for some problems with this opcode may break existing orchestras relying on this version of _tbvcf_.
 
 ## Syntax
-``` csound-orc
-ares tbvcf asig, xfco, xres, kdist, kasym [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = tbvcf(asig, xfco, xres, kdist, kasym [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares tbvcf asig, xfco, xres, kdist, kasym [, iskip]
+    ```
 
 ### Initialization
 
@@ -30,7 +36,7 @@ _kasym_ -- asymmetry of resonance. Typically in the range 0 to 1.
 
 ## Examples
 
-Here is an example of the tbvcf opcode. It uses the file [tbvcf.csd](../../examples/tbvcf.csd).
+Here is an example of the tbvcf opcode. It uses the file [tbvcf.csd](../examples/tbvcf.csd).
 
 ``` csound-csd title="Example of the tbvcf opcode." linenums="1"
 --8<-- "examples/tbvcf.csd"
@@ -38,7 +44,7 @@ Here is an example of the tbvcf opcode. It uses the file [tbvcf.csd](../../examp
 
 ## See also
 
-[Standard Filters: Resonant Low-pass filters](../../sigmod/standard)
+[Standard Filters: Resonant Low-pass filters](../sigmod/standard.md)
 
 ## Credits
 

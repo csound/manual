@@ -8,9 +8,15 @@ Sounds like the shaking of a maraca or similar gourd instrument.
 The method is a physically inspired model developed from Perry Cook, but re-coded for Csound.
 
 ## Syntax
-``` csound-orc
-ares shaker kamp, kfreq, kbeans, kdamp, ktimes [, idecay]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = shaker(kamp, kfreq, kbeans, kdamp, ktimes [, idecay])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares shaker kamp, kfreq, kbeans, kdamp, ktimes [, idecay]
+    ```
 
 ### Initialization
 
@@ -37,7 +43,7 @@ _ktimes_ -- Number of times shaken.
 
 ## Examples
 
-Here is an example of the shaker opcode. It uses the file [shaker.csd](../../examples/shaker.csd).
+Here is an example of the shaker opcode. It uses the file [shaker.csd](../examples/shaker.csd).
 
 ``` csound-orc title="Example of the shaker opcode." linenums="1"
 --8<-- "examples/shaker.csd"
@@ -45,7 +51,7 @@ Here is an example of the shaker opcode. It uses the file [shaker.csd](../../exa
 
 ## See Also
 
-[Models and Emulations](../../siggen/models)
+[Models and Emulations](../siggen/models.md)
 
 ## Credits
 

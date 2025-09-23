@@ -6,9 +6,15 @@ category:Signal Generators:Sample Playback
 A simple time stretch by repeating cycles.
 
 ## Syntax
-``` csound-orc
-ares waveset ain, krep [, ilen]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = waveset(ain, krep [, ilen])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares waveset ain, krep [, ilen]
+    ```
 
 ### Initialization
 
@@ -26,7 +32,7 @@ There is an internal buffer as the output is clearly slower that the input.  Som
 
 ## Examples
 
-Here is an example of the waveset opcode. It uses the file [waveset.csd](../../examples/waveset.csd).
+Here is an example of the waveset opcode. It uses the file [waveset.csd](../examples/waveset.csd).
 
 ``` csound-csd title="Example of the waveset opcode." linenums="1"
 --8<-- "examples/waveset.csd"
@@ -34,7 +40,7 @@ Here is an example of the waveset opcode. It uses the file [waveset.csd](../../e
 
 ## See also
 
-[Sample Playback](../../siggen/sample)
+[Sample Playback](../siggen/sample.md)
 
 ## Credits
 

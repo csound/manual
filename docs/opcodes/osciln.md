@@ -5,12 +5,18 @@ category:Signal Generators:Basic Oscillators
 # osciln
 Accesses table values at a user-defined frequency.
 
-This opcode can also be written as [oscilx](../../opcodes/oscilx).
+This opcode can also be written as [oscilx](../opcodes/oscilx.md).
 
 ## Syntax
-``` csound-orc
-ares osciln kamp, ifrq, ifn, itimes
-```
+=== "Modern"
+    ``` csound-orc
+    ares = osciln(kamp, ifrq, ifn, itimes)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares osciln kamp, ifrq, ifn, itimes
+    ```
 
 ### Initialization
 
@@ -26,7 +32,7 @@ _osciln_ will sample several times through the stored table at a rate of _ifrq_ 
 
 ## Examples
 
-Here is an example of the osciln opcode. It uses the file [osciln.csd](../../examples/osciln.csd).
+Here is an example of the osciln opcode. It uses the file [osciln.csd](../examples/osciln.csd).
 
 ``` csound-orc title="Example of the osciln opcode." linenums="1"
 --8<-- "examples/osciln.csd"
@@ -34,4 +40,4 @@ Here is an example of the osciln opcode. It uses the file [osciln.csd](../../exa
 
 ## See Also
 
-[Table Access](../../siggen/tableacc)
+[Table Access](../siggen/tableacc.md)

@@ -6,9 +6,15 @@ category:Pitch Converters:Tuning Opcodes
 Converts a pitch-class value into cycles-per-second (Hz) for equal divisions of the octave.
 
 ## Syntax
-``` csound-orc
-icps cps2pch ipch, iequal
-```
+=== "Modern"
+    ``` csound-orc
+    icps = cps2pch(ipch, iequal)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    icps cps2pch ipch, iequal
+    ```
 
 ### Initialization
 
@@ -30,7 +36,7 @@ _iequal_ -- If positive, the number of equal intervals into which the 'octave' i
 
 ## Examples
 
-Here is an example of the cps2pch opcode. It uses the file [cps2pch.csd](../../examples/cps2pch.csd).
+Here is an example of the cps2pch opcode. It uses the file [cps2pch.csd](../examples/cps2pch.csd).
 
 ``` csound-csd title="Example of the cps2pch opcode." linenums="1"
 --8<-- "examples/cps2pch.csd"
@@ -42,7 +48,7 @@ Its output should include lines like this:
 instr 1:  icps = 293.666
 ```
 
-Here is an example of the cps2pch opcode using a table of frequency multipliers. It uses the file [cps2pch_ftable.csd](../../examples/cps2pch_ftable.csd).
+Here is an example of the cps2pch opcode using a table of frequency multipliers. It uses the file [cps2pch_ftable.csd](../examples/cps2pch_ftable.csd).
 
 ``` csound-csd title="Example of the cps2pch opcode using a table of frequency multipliers." linenums="1"
 --8<-- "examples/cps2pch_ftable.csd"
@@ -54,7 +60,7 @@ Its output should include lines like this:
 instr 1:  icps = 313.951
 ```
 
-Here is an example of the cps2pch opcode using a 19ET scale. It uses the file [cps2pch_19et.csd](../../examples/cps2pch_19et.csd).
+Here is an example of the cps2pch opcode using a 19ET scale. It uses the file [cps2pch_19et.csd](../examples/cps2pch_19et.csd).
 
 ``` csound-csd title="Example of the cps2pch opcode using a 19ET scale." linenums="1"
 --8<-- "examples/cps2pch_19et.csd"
@@ -68,7 +74,7 @@ instr 1:  icps = 281.429
 
 ## See also
 
-[Pitch Converters: Tuning Opcodes](../../pitch/tuning)
+[Pitch Converters: Tuning Opcodes](../pitch/tuning.md)
 
 ## Credits
 

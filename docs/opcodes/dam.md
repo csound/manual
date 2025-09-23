@@ -8,9 +8,15 @@ A dynamic compressor/expander.
 This opcode dynamically modifies a gain value applied to the input sound _ain_ by comparing its power level to a given threshold level. The signal will be compressed/expanded with different factors regarding that it is over or under the threshold.
 
 ## Syntax
-``` csound-orc
-ares dam asig, kthreshold, icomp1, icomp2, irtime, iftime
-```
+=== "Modern"
+    ``` csound-orc
+    ares = dam(asig, kthreshold, icomp1, icomp2, irtime, iftime)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares dam asig, kthreshold, icomp1, icomp2, irtime, iftime
+    ```
 
 ### Initialization
 
@@ -34,7 +40,7 @@ Note on the compression factors: A compression ratio of one leaves the sound unc
 
 Because the results of the _dam_ opcode can be subtle, I recommend looking at them in a graphical audio editor program like _audacity_. _audacity_ is available for Linux, Windows, and the MacOS and may be downloaded from [http://audacity.sourceforge.net](http://audacity.sourceforge.net/).
 
-Here is an example of the dam opcode. It uses the file [dam.csd](../../examples/dam.csd), and [drumsMlp.wav](../../examples/drumsMlp.wav).
+Here is an example of the dam opcode. It uses the file [dam.csd](../examples/dam.csd), and [drumsMlp.wav](../examples/drumsMlp.wav).
 
 ``` csound-csd title="An example of the dam opcode compressing an audio signal." linenums="1"
 --8<-- "examples/dam.csd"
@@ -42,7 +48,7 @@ Here is an example of the dam opcode. It uses the file [dam.csd](../../examples/
 
 This example compresses the audio file &#8220;drumsMlp.wav&#8221;. You should hear a drum pattern repeat twice. The second time, the sound should be quieter (compressed) than the first.
 
-Here is another example of the dam opcode. It uses the file [dam_expanded.csd](../../examples/dam_expanded.csd), and [drumsMlp.wav](../../examples/drumsMlp.wav).
+Here is another example of the dam opcode. It uses the file [dam_expanded.csd](../examples/dam_expanded.csd), and [drumsMlp.wav](../examples/drumsMlp.wav).
 
 ``` csound-csd title="An example of the dam opcode expanding an audio signal." linenums="1"
 --8<-- "examples/dam_expanded.csd"
@@ -52,7 +58,7 @@ This example expands the audio file &#8220;drumsMlp.wav&#8221;. You should hear 
 
 ## See also
 
-[Amplitude Modifiers and Dynamic processing](../../sigmod/ampmod)
+[Amplitude Modifiers and Dynamic processing](../sigmod/ampmod.md)
 
 ## Credits
 

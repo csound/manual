@@ -8,11 +8,19 @@ Cauchy distribution random number generator with interpolation between values.
 This is an x-class noise generator.
 
 ## Syntax
-``` csound-orc
-ares cauchyi klambda, xamp, xcps
-ires cauchyi klambda, xamp, xcps
-kres cauchyi klambda, xamp, xcps
-```
+=== "Modern"
+    ``` csound-orc
+    ares = cauchyi(klambda, xamp, xcps)
+    ires = cauchyi(klambda, xamp, xcps)
+    kres = cauchyi(klambda, xamp, xcps)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares cauchyi klambda, xamp, xcps
+    ires cauchyi klambda, xamp, xcps
+    kres cauchyi klambda, xamp, xcps
+    ```
 
 ### Performance
 
@@ -29,15 +37,21 @@ _xcps_ -- the frequency which new random numbers are generated.
 
 ## Examples
 
-Here is an example of the cauchyi opcode. It uses the file [cauchyi.csd](../../examples/cauchyi.csd).
+=== "Modern"
+    Here is an example of the cauchy opcode. It uses the file [cauchyi-modern.csd](../examples/cauchyi-modern.csd).
+    ``` csound-orc title="Example of the cauchy opcode." linenums="1"
+    --8<-- "examples/cauchyi-modern.csd"
+    ```
 
-``` csound-orc title="Example of the cauchyi opcode." linenums="1"
---8<-- "examples/cauchyi.csd"
-```
+=== "Classic"
+    Here is an example of the cauchy opcode. It uses the file [cauchyi.csd](../examples/cauchyi.csd).
+    ``` csound-orc title="Example of the cauchy opcode." linenums="1"
+    --8<-- "examples/cauchyi.csd"
+    ```
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
 ## Credits
 

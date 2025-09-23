@@ -5,12 +5,18 @@ category:Signal Generators:Dynamic Spectrum Oscillators
 # vco2
 Implementation of a band-limited oscillator using pre-calculated tables.
 
-_vco2_ is similar to [vco](../../opcodes/vco). But the implementation uses pre-calculated tables of band-limited waveforms (see also [GEN30](../../scoregens/gen30)) rather than integrating impulses. This opcode can be faster than _vco_ (especially if a low control-rate is used) and also allows better sound quality. Additionally, there are more waveforms and oscillator phase can be modulated at k-rate. The disadvantage is increased memory usage. For more details about vco2 tables, see also [vco2init](../../opcodes/vco2init) and [vco2ft](../../opcodes/vco2ft).
+_vco2_ is similar to [vco](../opcodes/vco.md). But the implementation uses pre-calculated tables of band-limited waveforms (see also [GEN30](../scoregens/gen30.md)) rather than integrating impulses. This opcode can be faster than _vco_ (especially if a low control-rate is used) and also allows better sound quality. Additionally, there are more waveforms and oscillator phase can be modulated at k-rate. The disadvantage is increased memory usage. For more details about vco2 tables, see also [vco2init](../opcodes/vco2init.md) and [vco2ft](../opcodes/vco2ft.md).
 
 ## Syntax
-``` csound-orc
-ares vco2 kamp, kcps [, imode] [, kpw] [, kphs] [, inyx]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = vco2(kamp, kcps [, imode] [, kpw] [, kphs] [, inyx])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares vco2 kamp, kcps [, imode] [, kpw] [, kphs] [, inyx]
+    ```
 
 ### Initialization
 
@@ -23,7 +29,7 @@ One may use any of the following values for _imode_:
 
 One may use exactly one of these _imode_ values to select the waveform to be generated:
 
-* 14: user defined waveform -1 (requires using the [vco2init](../../opcodes/vco2init) opcode)
+* 14: user defined waveform -1 (requires using the [vco2init](../opcodes/vco2init.md) opcode)
 * 12: triangle (no ramp, faster)
 * 10: square wave (no PWM, faster)
 * 8: 4 * x * (1 - x) (i.e. integrated sawtooth)
@@ -34,7 +40,7 @@ One may use exactly one of these _imode_ values to select the waveform to be gen
 
 The default value for _imode_ is zero, which means a sawtooth wave with no k-rate phase control.
 
-_inyx_ (optional, default=0.5) -- bandwidth of the generated waveform, as percentage (0 to 1) of the sample rate. The expected range is 0 to 0.5 (i.e. up to [sr](../../opcodes/sr)/2), other values are limited to the allowed range.
+_inyx_ (optional, default=0.5) -- bandwidth of the generated waveform, as percentage (0 to 1) of the sample rate. The expected range is 0 to 0.5 (i.e. up to [sr](../opcodes/sr.md)/2), other values are limited to the allowed range.
 
 Setting _inyx_ to 0.25 (_sr_/4), or 0.3333 (_sr_/3) can produce a &#8220;fatter&#8221; sound in some cases, although it is more likely to reduce quality.
 
@@ -67,7 +73,7 @@ _kphs_ (optional) -- oscillator phase (depending on _imode_, this can be either 
 
 ## Examples
 
-Here is an example of the vco2 opcode. It uses the file [vco2.csd](../../examples/vco2.csd).
+Here is an example of the vco2 opcode. It uses the file [vco2.csd](../examples/vco2.csd).
 
 ``` csound-orc title="Example of the vco2 opcode." linenums="1"
 --8<-- "examples/vco2.csd"
@@ -75,7 +81,7 @@ Here is an example of the vco2 opcode. It uses the file [vco2.csd](../../example
 
 ## See Also
 
-[Dynamic Spectrum Oscillators](../../siggen/dynamic)
+[Dynamic Spectrum Oscillators](../siggen/dynamic.md)
 
 ## Credits
 

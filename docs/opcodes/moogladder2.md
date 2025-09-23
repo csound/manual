@@ -8,12 +8,21 @@ Moog ladder lowpass filter.
 Moogladder2 is an new digital implementation of the Moog ladder filter based on the work of Antti Huovilainen, described in the paper "Non-Linear Digital Implementation of the Moog Ladder Filter" (Proceedings of DaFX04, Univ of Napoli). This implementation uses approximations to the tanh function and so is faster but less accurate than _moogladder_.
 
 ## Syntax
-``` csound-orc
-asig moogladder2 ain, kcf, kres[, istor]
-asig moogladder2 ain, acf, kres[, istor]
-asig moogladder2 ain, kcf, ares[, istor]
-asig moogladder2 ain, acf, ares[, istor]
-```
+=== "Modern"
+    ``` csound-orc
+    asig = moogladder2(ain, kcf, kres[, istor])
+    asig = moogladder2(ain, acf, kres[, istor])
+    asig = moogladder2(ain, kcf, ares[, istor])
+    asig = moogladder2(ain, acf, ares[, istor])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig moogladder2 ain, kcf, kres[, istor]
+    asig moogladder2 ain, acf, kres[, istor]
+    asig moogladder2 ain, kcf, ares[, istor]
+    asig moogladder2 ain, acf, ares[, istor]
+    ```
 
 ### Initialization
 
@@ -29,7 +38,7 @@ _kres_/_ares_ -- resonance, generally &lt; 1, but not limited to it.  Higher tha
 
 ## Examples
 
-Here is an example of the moogladder2 opcode. It uses the file [moogladder2.csd](../../examples/moogladder2.csd).
+Here is an example of the moogladder2 opcode. It uses the file [moogladder2.csd](../examples/moogladder2.csd).
 
 ``` csound-csd title="Example of the moogladder2 opcode." linenums="1"
 --8<-- "examples/moogladder2.csd"
@@ -37,7 +46,7 @@ Here is an example of the moogladder2 opcode. It uses the file [moogladder2.csd]
 
 ## See also
 
-[Standard Filters: Resonant Low-pass filters](../../sigmod/standard)
+[Standard Filters: Resonant Low-pass filters](../sigmod/standard.md)
 
 ## Credits
 

@@ -5,12 +5,18 @@ category:Signal I/O:Software Bus
 # chnmix
 Writes audio data to the named software bus, mixing to the previous output.
 
-Implies declaring the channel with _imode_=2 (see also [chn_a](../../opcodes/chn)).
+Implies declaring the channel with _imode_=2 (see also [chn_a](../opcodes/chn.md)).
 
 ## Syntax
-``` csound-orc
-chnmix aval, Sname
-```
+=== "Modern"
+    ``` csound-orc
+    chnmix(aval, Sname)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    chnmix aval, Sname
+    ```
 
 ### Initialization
 
@@ -22,15 +28,21 @@ _aval_ -- the audio signal to write at performance time.
 
 ## Examples
 
-Here is an example of the chnmix opcode. It uses the file [chnmix.csd](../../examples/chnmix.csd).
+=== "Modern"
+    Here is an example of the chnmix opcode. It uses the file [chnmix-modern.csd](../examples/chnmix-modern.csd).
+    ``` csound-csd title="Example of the chnmix opcode." linenums="1"
+    --8<-- "examples/chnmix-modern.csd"
+    ```
 
-``` csound-csd title="Example of the chnmix opcode." linenums="1"
---8<-- "examples/chnmix.csd"
-```
+=== "Classic"
+    Here is an example of the chnmix opcode. It uses the file [chnmix.csd](../examples/chnmix.csd).
+    ``` csound-csd title="Example of the chnmix opcode." linenums="1"
+    --8<-- "examples/chnmix.csd"
+    ```
 
 ## See also
 
-[Software Bus](../../sigio/softbus)
+[Software Bus](../sigio/softbus.md)
 
 ## Credits
 

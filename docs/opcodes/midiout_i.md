@@ -6,9 +6,15 @@ category:Real-time MIDI:Generic I/O
 Sends a generic MIDI message to the MIDI OUT port.
 
 ## Syntax
-``` csound-orc
-midiout_i istatus, ichan, idata1, idata2
-```
+=== "Modern"
+    ``` csound-orc
+    midiout_i(istatus, ichan, idata1, idata2)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    midiout_i istatus, ichan, idata1, idata2
+    ```
 
 Initialisation
 
@@ -31,7 +37,7 @@ _midiout_i_ has no output arguments, because it sends a message to the MIDI OUT 
 
 ## Examples
 
-Here is an example of the midiout_i opcode. It uses the file [midiout_i.csd](../../examples/midiout_i.csd).
+Here is an example of the midiout_i opcode. It uses the file [midiout_i.csd](../examples/midiout_i.csd).
 
 ``` csound-csd title="Example of the midiout_i opcode." linenums="1"
 --8<-- "examples/midiout_i.csd"
@@ -39,9 +45,9 @@ Here is an example of the midiout_i opcode. It uses the file [midiout_i.csd](../
 
 ## See also
 
-[MIDI Message Output](../../midi/output)
+[MIDI Message Output](../midi/output.md)
 
-[Generic Input and Output](../../midi/generic)
+[Generic Input and Output](../midi/generic.md)
 
 ## Credits
 

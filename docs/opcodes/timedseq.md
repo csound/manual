@@ -3,14 +3,20 @@ id:timedseq
 category:Instrument Control:Sensing and Control
 -->
 # timedseq
-Time Variant Sequencer
+Time Variant Sequencer.
 
 An event-sequencer in which time can be controlled by a time-pointer. Sequence data are stored into a table.
 
 ## Syntax
-``` csound-orc
-ktrig  timedseq  ktimpnt, ifn, kp1 [,kp2, kp3, ...,kpN]
-```
+=== "Modern"
+    ``` csound-orc
+    ktrig = timedseq(ktimpnt, ifn, kp1 [,kp2, kp3, ...,kpN])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ktrig timedseq ktimpnt, ifn, kp1 [,kp2, kp3, ...,kpN]
+    ```
 
 ### Initialization
 
@@ -78,7 +84,7 @@ You can remedy this limitation by filling with dummy values notes that belongs t
 
 ## Examples
 
-Here is a complete example of the timedseq opcode. It uses the file [timedseq.csd](../../examples/timedseq.csd).
+Here is a complete example of the timedseq opcode. It uses the file [timedseq.csd](../examples/timedseq.csd).
 
 ``` csound-csd title="Example of the timedseq opcode." linenums="1"
 --8<-- "examples/timedseq.csd"
@@ -86,7 +92,7 @@ Here is a complete example of the timedseq opcode. It uses the file [timedseq.cs
 
 ## See also
 
-[Sensing and Control: Tempo and Sequencing](../../control/sensing)
+[Sensing and Control: Tempo and Sequencing](../control/sensing.md)
 
 ## Credits
 

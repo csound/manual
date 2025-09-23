@@ -8,9 +8,15 @@ Implements the classical standard analog filter types: low-pass and high-pass.
 They are implemented with the four classical kinds of filters: Butterworth, Chebyshev Type I, Chebyshev Type II, and Elliptical.  The number of poles may be any even number from 2 to 80.
 
 ## Syntax
-``` csound-orc
-ares clfilt asig, kfreq, itype, inpol [, ikind] [, ipbr] [, isba] [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = clfilt(asig, kfreq, itype, inpol [, ikind] [, ipbr] [, isba] [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares clfilt asig, kfreq, itype, inpol [, ikind] [, ipbr] [, isba] [, iskip]
+    ```
 
 ### Initialization
 
@@ -34,21 +40,33 @@ _kfreq_ -- The corner frequency for low-pass or high-pass.
 
 ## Examples
 
-Here is an example of the clfilt opcode as a low-pass filter. It uses the file [clfilt_lowpass.csd](../../examples/clfilt_lowpass.csd).
+=== "Modern"
+    Here is an example of the clfilt opcode as a low-pass filter. It uses the file [clfilt_lowpass-modern.csd](../examples/clfilt_lowpass-modern.csd).
+    ``` csound-csd title="Example of the clfilt opcode." linenums="1"
+    --8<-- "examples/clfilt_lowpass-modern.csd"
+    ```
 
-``` csound-csd title="Example of the clfilt opcode as a low-pass filter." linenums="1"
---8<-- "examples/clfilt_lowpass.csd"
-```
+=== "Classic"
+    Here is an example of the clfilt opcode as a low-pass filter. It uses the file [clfilt_lowpass.csd](../examples/clfilt_lowpass.csd).
+    ``` csound-csd title="Example of the clfilt opcode." linenums="1"
+    --8<-- "examples/clfilt_lowpass.csd"
+    ```
 
-Here is an example of the clfilt opcode as a high-pass filter. It uses the file [clfilt_highpass.csd](../../examples/clfilt_highpass.csd).
+=== "Modern"
+    Here is an example of the clfilt opcode as a high-pass filter. It uses the file [clfilt_highpass-modern.csd](../examples/clfilt_highpass-modern.csd).
+    ``` csound-csd title="Example of the clfilt opcode." linenums="1"
+    --8<-- "examples/clfilt_highpass-modern.csd"
+    ```
 
-``` csound-csd title="Example of the clfilt opcode as a high-pass filter." linenums="1"
---8<-- "examples/clfilt_highpass.csd"
-```
+=== "Classic"
+    Here is an example of the clfilt opcode as a high-pass filter. It uses the file [clfilt_highpass.csd](../examples/clfilt_highpass.csd).
+    ``` csound-csd title="Example of the clfilt opcode." linenums="1"
+    --8<-- "examples/clfilt_highpass.csd"
+    ```
 
 ## See also
 
-[Standard filters: General filters](../../sigmod/standard)
+[Standard filters: General filters](../sigmod/standard.md)
 
 ## Credits
 

@@ -7,7 +7,7 @@ Converts a Midi note number value to cycles-per-second.
 
 ## Syntax
 ``` csound-orc
-cpsmidinn (MidiNoteNumber)  (init- or control-rate args only)
+cpsmidinn(MidiNoteNumber)  (init- or control-rate args only)
 ```
 
 where the argument within the parentheses may be a further expression.
@@ -18,7 +18,7 @@ _cpsmidinn_ is a function that takes an i-rate or k-rate value representing a Mi
 
 > :memo: **cpsmidinn vs. cpsmidi**
 >
-> The _cpsmidinn_ opcode may be used in any Csound instrument instance whether it is activated from a Midi event, score event, line event, or from another instrument.  The input value for _cpsmidinn_ might for example come from a p-field in a textual score or it may have been retrieved from the real-time Midi event that activated the current note using the [notnum](../../opcodes/notnum) opcode.  You must specify an i-rate or k-rate expression for the Midi note number that is to be converted.  On the other hand, the [cpsmidi](../../opcodes/cpsmidi) opcode only produces meaningful results in a Midi-activated note (either real-time or from a Midi score with the -F flag).  With [cpsmidi](../../opcodes/cpsmidi), the Midi note number value is taken from the Midi event associated with the instrument instance, and no location or expression for this value may be specified.
+> The _cpsmidinn_ opcode may be used in any Csound instrument instance whether it is activated from a Midi event, score event, line event, or from another instrument.  The input value for _cpsmidinn_ might for example come from a p-field in a textual score or it may have been retrieved from the real-time Midi event that activated the current note using the [notnum](../opcodes/notnum.md) opcode.  You must specify an i-rate or k-rate expression for the Midi note number that is to be converted.  On the other hand, the [cpsmidi](../opcodes/cpsmidi.md) opcode only produces meaningful results in a Midi-activated note (either real-time or from a Midi score with the -F flag).  With [cpsmidi](../opcodes/cpsmidi.md), the Midi note number value is taken from the Midi event associated with the instrument instance, and no location or expression for this value may be specified.
 
 _cpsmidinn_ and its related opcodes are really _value converters_ with a special function of manipulating pitch data.
 
@@ -43,13 +43,13 @@ By contrast, the conversion _cpsoct_(8.75 + k1) which gives the value of A440 tr
 
 ## Examples
 
-Here is an example of the cpsmidinn opcode. It uses the file [cpsmidinn.csd](../../examples/cpsmidinn.csd).
+Here is an example of the cpsmidinn opcode. It uses the file [cpsmidinn.csd](../examples/cpsmidinn.csd).
 
 ``` csound-csd title="Example of the cpsmidinn opcode." linenums="1"
 --8<-- "examples/cpsmidinn.csd"
 ```
 
-Here is another example of the cpsmidinn opcode. It uses the file [cpsmidinn2.csd](../../examples/cpsmidinn2.csd).
+Here is another example of the cpsmidinn opcode. It uses the file [cpsmidinn2.csd](../examples/cpsmidinn2.csd).
 
 ``` csound-csd title="Second example of the cpsmidinn opcode." linenums="1"
 --8<-- "examples/cpsmidinn2.csd"
@@ -57,9 +57,9 @@ Here is another example of the cpsmidinn opcode. It uses the file [cpsmidinn2.cs
 
 ## See also
 
-[Pitch Converters: Functions](../../pitch/funcs)
+[Pitch Converters: Functions](../pitch/funcs.md)
 
-[Midi Converters](../../midi/convert)
+[Midi Converters](../midi/convert.md)
 
 ## Credits
 

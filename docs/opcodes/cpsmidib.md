@@ -6,10 +6,17 @@ category:Real-time MIDI:Converters
 Get the note number of the current MIDI event and modify it by the current pitch-bend value, express it in cycles-per-second.
 
 ## Syntax
-``` csound-orc
-icps cpsmidib [irange]
-kcps cpsmidib [irange]
-```
+=== "Modern"
+    ``` csound-orc
+    icps = cpsmidib([irange])
+    kcps = cpsmidib([irange])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    icps cpsmidib [irange]
+    kcps cpsmidib [irange]
+    ```
 
 ### Initialization
 
@@ -21,7 +28,7 @@ Get the note number of the current MIDI event, modify it by the current pitch-be
 
 ## Examples
 
-Here is an example of the cpsmidib opcode. It uses the file [cpsmidib.csd](../../examples/cpsmidib.csd).
+Here is an example of the cpsmidib opcode. It uses the file [cpsmidib.csd](../examples/cpsmidib.csd).
 
 ``` csound-csd title="Example of the cpsmidib opcode." linenums="1"
 --8<-- "examples/cpsmidib.csd"
@@ -29,7 +36,7 @@ Here is an example of the cpsmidib opcode. It uses the file [cpsmidib.csd](../..
 
 ## See also
 
-[Midi Converters](../../midi/convert)
+[Midi Converters](../midi/convert.md)
 
 ## Credits
 

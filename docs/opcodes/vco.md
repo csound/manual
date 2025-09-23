@@ -8,10 +8,17 @@ Implementation of a band limited, analog modeled oscillator.
 It is based on integration of band limited impulses. _vco_ can be used to simulate a variety of analog wave forms.
 
 ## Syntax
-``` csound-orc
-ares vco xamp, xcps, iwave, kpw [, ifn] [, imaxd] [, ileak] [, inyx] \
-         [, iphs] [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = vco(xamp, xcps, iwave, kpw [, ifn] [, imaxd] [, ileak] [, inyx] \
+               [, iphs] [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares vco xamp, xcps, iwave, kpw [, ifn] [, imaxd] [, ileak] [, inyx] \
+             [, iphs] [, iskip]
+    ```
 
 ### Initialization
 
@@ -47,7 +54,7 @@ _xcps_ -- is the frequency of the wave in cycles per second.
 
 ## Examples
 
-Here is an example of the vco opcode. It uses the file [vco.csd](../../examples/vco.csd).
+Here is an example of the vco opcode. It uses the file [vco.csd](../examples/vco.csd).
 
 ``` csound-orc title="Example of the vco opcode." linenums="1"
 --8<-- "examples/vco.csd"
@@ -55,7 +62,7 @@ Here is an example of the vco opcode. It uses the file [vco.csd](../../examples/
 
 ## See Also
 
-[Dynamic Spectrum Oscillators](../../siggen/dynamic)
+[Dynamic Spectrum Oscillators](../siggen/dynamic.md)
 
 ## Credits
 

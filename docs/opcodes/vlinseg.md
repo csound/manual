@@ -6,9 +6,15 @@ category:Vectorial:Envelopes
 Vectorial envelope generator. Generate linear vectorial segments.
 
 ## Syntax
-``` csound-orc
-vlinseg  ifnout, ielements, ifn1, idur1, ifn2 [, idur2, ifn3 [...]]
-```
+=== "Modern"
+    ``` csound-orc
+    vlinseg(ifnout, ielements, ifn1, idur1, ifn2 [, idur2, ifn3 [...]])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vlinseg ifnout, ielements, ifn1, idur1, ifn2 [, idur2, ifn3 [...]]
+    ```
 
 ### Initialization
 
@@ -34,7 +40,7 @@ All these operators are designed to be used together with other opcodes that ope
 
 ## Examples
 
-Here is an example of the vlinseg opcode. It uses the files [vlinseg.csd](../../examples/vlinseg.csd).
+Here is an example of the vlinseg opcode. It uses the files [vlinseg.csd](../examples/vlinseg.csd).
 
 ``` csound-csd title="Example of the vlinseg opcode." linenums="1"
 --8<-- "examples/vlinseg.csd"
@@ -42,7 +48,7 @@ Here is an example of the vlinseg opcode. It uses the files [vlinseg.csd](../../
 
 ## See also
 
-[Vectorial Envelope Generators](../../vectorial/envelopeGenerators)
+[Vectorial Envelope Generators](../vectorial/envelopeGenerators.md)
 
 ## Credits
 

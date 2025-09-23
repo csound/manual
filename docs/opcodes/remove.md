@@ -6,9 +6,15 @@ category:Instrument Control:Invocation
 Removes the definition of an instrument as long as it is not in use.
 
 ## Syntax
-``` csound-orc
-remove insnum
-```
+=== "Modern"
+    ``` csound-orc
+    remove(insnum)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    remove insnum
+    ```
 
 ### Initialization
 
@@ -20,7 +26,7 @@ As long as the indicated instrument is not active, _remove_ deletes the instrume
 
 ## See also
 
-[Instrument Invocation](../../control/invocat)
+[Instrument Invocation](../control/invocat.md)
 
 ## Credits
 

@@ -6,9 +6,15 @@ category:Array Opcodes
 Returns the maximum value in a k-rate array, and optional its index.
 
 ## Syntax
-``` csound-orc
-kmax [,kindx] maxarray karray
-```
+=== "Modern"
+    ``` csound-orc
+    kmax [,kindx] = maxarray(karray)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kmax [,kindx] maxarray karray
+    ```
 
 ### Performance
 
@@ -20,7 +26,7 @@ _karray_ --  array for reading.
 
 ## Examples
 
-Here is an example of the maxarray opcode. It uses the file [maxarray.csd](../../examples/maxarray.csd).
+Here is an example of the maxarray opcode. It uses the file [maxarray.csd](../examples/maxarray.csd).
 
 ``` csound-csd title="Example of the maxarray opcode." linenums="1"
 --8<-- "examples/maxarray.csd"
@@ -28,7 +34,7 @@ Here is an example of the maxarray opcode. It uses the file [maxarray.csd](../..
 
 ## See also
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

@@ -8,9 +8,15 @@ A band pass filter working in the spectral domain.
 Filter the pvoc frames, passing bins whose frequency is within a band, and with linear interpolation for transitional bands.
 
 ## Syntax
-``` csound-orc
-fsig pvsbandp fsigin, xlowcut, xlowfull, xhighfull, xhighcut [, ktype]
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvsbandp(fsigin, xlowcut, xlowfull, xhighfull, xhighcut [, ktype])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvsbandp fsigin, xlowcut, xlowfull, xhighfull, xhighcut [, ktype]
+    ```
 
 ### Performance
 
@@ -43,7 +49,7 @@ ________/                                    \______________
 
 ## Examples
 
-Here is an example of the pvsbandp opcode. It uses the file [pvsbandp.csd](../../examples/pvsbandp.csd).
+Here is an example of the pvsbandp opcode. It uses the file [pvsbandp.csd](../examples/pvsbandp.csd).
 
 ``` csound-csd title="Example of the pvsbandp opcode." linenums="1"
 --8<-- "examples/pvsbandp.csd"
@@ -51,7 +57,7 @@ Here is an example of the pvsbandp opcode. It uses the file [pvsbandp.csd](../..
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

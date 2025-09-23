@@ -1,0 +1,4 @@
+# **Mixer Opcodes**
+
+The Mixer family of opcodes provides a global mixer for Csound. The Mixer opcodes include [MixerSend](opcodes/mixersend.md) for sending (that is, mixing in) an arate signal from any instrument to a channel of a mixer buss, [MixerReceive](opcodes/mixerreceive.md) for receiving an arate signal from a channel of any mixer buss in any instrument, [MixerSetLevel](opcodes/mixersetlevel.md) (krate) and 
+[MixerSetLevel_i](opcodes/mixersetlevel_i.md) (irate) for controlling the level of the signal sent from a particular send to a particular buss, [MixerGetLevel](opcodes/mixergetlevel.md) for reading (at krate) the level for sending a signal from a particular send to a particular buss, and [MixerClear](opcodes/mixerclear.md) for resetting the busses to zero before the next kperiod of a performance.

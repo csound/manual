@@ -3,14 +3,20 @@ id:mode
 category:Signal Modifiers:Standard Filters
 -->
 # mode
-A filter that simulates a mass-spring-damper system
+A filter that simulates a mass-spring-damper system.
 
 Filters the incoming signal with the specified resonance frequency and quality factor. It can also be seen as a signal generator for high quality factor, with an impulse for the excitation. You can combine several modes to built complex instruments such as bells or guitar tables.
 
 ## Syntax
-``` csound-orc
-aout mode ain, xfreq, xQ [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    aout = mode(ain, xfreq, xQ [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout mode ain, xfreq, xQ [, iskip]
+    ```
 
 ### Initialization
 
@@ -32,11 +38,11 @@ _xQ_ -- quality factor of the filter
 
 The resonance time is roughly proportional to _xQ_/_xfreq_.
 
-See [Modal Frequency Ratios](../../misc/modalfreq) for frequency ratios of real instruments which can be used to determine the values of _xfreq_.
+See [Modal Frequency Ratios](../misc/modalfreq.md) for frequency ratios of real instruments which can be used to determine the values of _xfreq_.
 
 ## Examples
 
-Here is an example of the mode opcode. It uses the file [mode.csd](../../examples/mode.csd).
+Here is an example of the mode opcode. It uses the file [mode.csd](../examples/mode.csd).
 
 ``` csound-csd title="Example of the mode opcode." linenums="1"
 --8<-- "examples/mode.csd"
@@ -44,7 +50,7 @@ Here is an example of the mode opcode. It uses the file [mode.csd](../../example
 
 ## See also
 
-[Specialized Filters: Other filters](../../sigmod/speciali)
+[Specialized Filters: Other filters](../sigmod/speciali.md)
 
 ## Credits
 

@@ -6,9 +6,15 @@ category:Array Operations: Cepstrum
 Calculate the inverse cepstrum of an array.
 
 ## Syntax
-``` csound-orc
-kenv cepsinv keps[]
-```
+=== "Modern"
+    ``` csound-orc
+    kenv = cepsinv(keps[])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kenv cepsinv keps[]
+    ```
 
 ### Performance
 
@@ -18,15 +24,21 @@ _kenv_ -- the inverse cepstrum (spectral envelope), an array of N+1 magnitudes.
 
 ## Examples
 
-Here is an example of the use of the _cepsinv_ opcode. It uses the file [cepsinv.csd](../../examples/cepsinv.csd).
+=== "Modern"
+    Here is an example of the use of the _cepsinv_ opcode. It uses the file [cepsinv-modern.csd](../examples/cepsinv-modern.csd).
+    ``` csound-csd title="Example of the _cepsinv_ opcode." linenums="1"
+    --8<-- "examples/cepsinv-modern.csd"
+    ```
 
-``` csound-csd title="Example of the _cepsinv_ opcode." linenums="1"
---8<-- "examples/cepsinv.csd"
-```
+=== "Classic"
+    Here is an example of the use of the _cepsinv_ opcode. It uses the file [cepsinv.csd](../examples/cepsinv.csd).
+    ``` csound-csd title="Example of the _cepsinv_ opcode." linenums="1"
+    --8<-- "examples/cepsinv.csd"
+    ```
 
 ## See Also
 
-[Array-based spectral opcodes](../../spectral/arrays)
+[Array-based spectral opcodes](../spectral/arrays.md)
 
 ## Credits
 

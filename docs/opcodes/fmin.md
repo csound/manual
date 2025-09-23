@@ -6,12 +6,21 @@ category:Mathematical Operations:Arrays
 Returns the minimum of its two arguments.
 
 ## Syntax
-``` csound-orc
-ires[] fmin iarg1[], iarg2[]
-kres[] fmin karg1[], karg2[]
-ires[] fmin iarg1[], iarg2
-kres[] fmin karg[], karg2
-```
+=== "Modern"
+    ``` csound-orc
+    ires[] = fmin(iarg1[], iarg2[])
+    kres[] = fmin(karg1[], karg2[])
+    ires[] = fmin(iarg1[], iarg2)
+    kres[] = fmin(karg[], karg2)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ires[] fmin iarg1[], iarg2[]
+    kres[] fmin karg1[], karg2[]
+    ires[] fmin iarg1[], iarg2
+    kres[] fmin karg[], karg2
+    ```
 
 ### Initialization
 
@@ -23,7 +32,7 @@ _karg[]1/2, karg2_ -- the operands
 
 ## Examples
 
-Here is an example of the fmin opcode. It uses the file [fmin.csd](../../examples/fmin.csd).
+Here is an example of the fmin opcode. It uses the file [fmin.csd](../examples/fmin.csd).
 
 ``` csound-csd title="Example of the fmin opcode." linenums="1"
 --8<-- "examples/fmin.csd"
@@ -31,7 +40,7 @@ Here is an example of the fmin opcode. It uses the file [fmin.csd](../../example
 
 ## See Also
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

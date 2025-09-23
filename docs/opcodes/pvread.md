@@ -3,18 +3,24 @@ id:pvread
 category:Spectral Processing:STFT
 -->
 # pvread
-Reads from a [pvoc](../../opcodes/pvoc) file and returns the frequency and amplitude from a single analysis channel or bin.
+Reads from a [pvoc](../opcodes/pvoc.md) file and returns the frequency and amplitude from a single analysis channel or bin.
 
 The returned values can be used anywhere else in the Csound instrument. For example, one can use them as arguments to an oscillator to synthesize a single component from an analyzed signal or a bank of _pvreads_ can be used to resynthesize the analyzed sound using additive synthesis by passing the frequency and magnitude values to a bank of oscillators.
 
 ## Syntax
-``` csound-orc
-kfreq, kamp pvread ktimpnt, ifile, ibin
-```
+=== "Modern"
+    ``` csound-orc
+    kfreq, kamp = pvread(ktimpnt, ifile, ibin)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kfreq, kamp pvread ktimpnt, ifile, ibin
+    ```
 
 ### Initialization
 
-_ifile_ -- the _pvoc_ number (n in pvoc.n) or the name in quotes of the analysis file made using _pvanal_. (See [pvoc](../../opcodes/pvoc).)
+_ifile_ -- the _pvoc_ number (n in pvoc.n) or the name in quotes of the analysis file made using _pvanal_. (See [pvoc](../opcodes/pvoc.md).)
 
 _ibin_ -- the number of the analysis channel from which to return frequency in Hz and magnitude.
 
@@ -34,7 +40,7 @@ The example below shows the use _pvread_ to synthesize a single component at a t
 
 ## See Also
 
-[Short-time Fourier Transform (STFT) Resynthesis](../../spectral/stft)
+[Short-time Fourier Transform (STFT) Resynthesis](../spectral/stft.md)
 
 ## Credits
 

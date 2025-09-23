@@ -8,9 +8,15 @@ Exit Csound as fast as possible, with no cleaning up.
 In Csound4 calls an exit function to leave Csound as fast as possible. On Csound5 and later it exits back to the driving code.
 
 ## Syntax
-``` csound-orc
-exitnow [ivalue]
-```
+=== "Modern"
+    ``` csound-orc
+    exitnow([ivalue])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    exitnow [ivalue]
+    ```
 
 Initialisation
 
@@ -18,7 +24,7 @@ Stops Csound on the _initialisation_ cycle, returning the result ivalue, which d
 
 ## Examples
 
-Here is an example of the exitnow opcode. It uses the file [exitnow.csd](../../examples/exitnow.csd).
+Here is an example of the exitnow opcode. It uses the file [exitnow.csd](../examples/exitnow.csd).
 
 ``` csound-csd title="Example of the exitnow opcode." linenums="1"
 --8<-- "examples/exitnow.csd"
@@ -26,4 +32,4 @@ Here is an example of the exitnow opcode. It uses the file [exitnow.csd](../../e
 
 ## See also
 
-[Real-time Performance Control](../../control/realtime)
+[Real-time Performance Control](../control/realtime.md)

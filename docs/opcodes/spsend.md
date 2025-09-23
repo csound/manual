@@ -3,14 +3,20 @@ id:spsend
 category:Signal Modifiers:Panning and Spatialization
 -->
 # spsend
-Generates output signals based on a previously defined [space](../../opcodes/space) opcode.
+Generates output signals based on a previously defined [space](../opcodes/space.md) opcode.
 
 The output signals from _spsend_ are derived from the values given for xy and reverb in the _space_ and are ready to be sent to local or global reverb units (see example below).
 
 ## Syntax
-``` csound-orc
-a1, a2, a3, a4 spsend
-```
+=== "Modern"
+    ``` csound-orc
+    a1, a2, a3, a4 = spsend()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    a1, a2, a3, a4 spsend
+    ```
 
 ### Performance
 
@@ -25,7 +31,7 @@ This assumes a loudspeaker set up as a1 is left front, a2 is right front, a3 is 
 
 ## Examples
 
-Here is a stereo example of the spsend opcode. It uses the file [spsend.csd](../../examples/spsend.csd).
+Here is a stereo example of the spsend opcode. It uses the file [spsend.csd](../examples/spsend.csd).
 
 ``` csound-csd title="Example of the spsend opcode." linenums="1"
 --8<-- "examples/spsend.csd"
@@ -33,7 +39,7 @@ Here is a stereo example of the spsend opcode. It uses the file [spsend.csd](../
 
 ## See also
 
-[Panning and Spatialization: Amplitude spatialization](../../sigmod/panspatl)
+[Panning and Spatialization: Amplitude spatialization](../sigmod/panspatl.md)
 
 ## Credits
 

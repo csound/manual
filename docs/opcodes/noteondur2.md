@@ -6,9 +6,15 @@ category:Real-time MIDI:Note Output
 Sends a noteon and a noteoff MIDI message both with the same channel, number and velocity.
 
 ## Syntax
-``` csound-orc
-noteondur2 ichn, inum, ivel, idur
-```
+=== "Modern"
+    ``` csound-orc
+    noteondur2(ichn, inum, ivel, idur)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    noteondur2 ichn, inum, ivel, idur
+    ```
 
 ### Initialization
 
@@ -30,7 +36,7 @@ Any number of _noteondur2_ opcodes can appear in the same Csound instrument, all
 
 ## Examples
 
-Here is an example of the noteondur2 opcode. It uses the file [noteondur2.csd](../../examples/noteondur2.csd).
+Here is an example of the noteondur2 opcode. It uses the file [noteondur2.csd](../examples/noteondur2.csd).
 
 This example generates notes for every note received on the MIDI input. It generates MIDI notes on csound's MIDI output, so be sure to connect something.
 
@@ -40,7 +46,7 @@ This example generates notes for every note received on the MIDI input. It gener
 
 ## See also
 
-[Note-on/Note-off Output](../../midi/onoff)
+[Note-on/Note-off Output](../midi/onoff.md)
 
 ## Credits
 

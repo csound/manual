@@ -8,9 +8,15 @@ Get information from a PVOC-EX formatted source.
 Get format information about fsrc, whether created by an opcode such as pvsanal, or obtained from a PVOCEX file by pvsfread. This information is available at init time, and can be used to set parameters for other pvs opcodes, and in particular for creating function tables (e.g. for pvsftw), or setting the number of oscillators for pvsadsyn.
 
 ## Syntax
-``` csound-orc
-ioverlap, inumbins, iwinsize, iformat pvsinfo fsrc
-```
+=== "Modern"
+    ``` csound-orc
+    ioverlap, inumbins, iwinsize, iformat = pvsinfo(fsrc)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ioverlap, inumbins, iwinsize, iformat pvsinfo fsrc
+    ```
 
 ### Initialization
 
@@ -24,7 +30,7 @@ _iformat_ -- The analysis frame format. If fsrc is created by an opcode, iformat
 
 ## Examples
 
-Here is an example of the pvsinfo opcode. It uses the file [pvsinfo.csd](../../examples/pvsinfo.csd).
+Here is an example of the pvsinfo opcode. It uses the file [pvsinfo.csd](../examples/pvsinfo.csd).
 
 ``` csound-csd title="Example of the pvsinfo opcode." linenums="1"
 --8<-- "examples/pvsinfo.csd"
@@ -38,7 +44,7 @@ instr 1:  iovl = 256.000  inb = 513.000  iws = 2048.000  ifmt = 0.000
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

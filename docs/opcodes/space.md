@@ -5,21 +5,27 @@ category:Signal Modifiers:Panning and Spatialization
 # space
 Distributes an input signal among 4 channels using cartesian coordinates.
 
-It uses Cartesian xy coordinates to calculate the balance of the outputs. The xy coordinates can be defined in a separate text file and accessed through a Function statement in the score using [Gen28](../../scoregens/gen28), or they can be specified using the optional _kx, ky_ arguments. The advantages to the former are:
+It uses Cartesian xy coordinates to calculate the balance of the outputs. The xy coordinates can be defined in a separate text file and accessed through a Function statement in the score using [Gen28](../scoregens/gen28.md), or they can be specified using the optional _kx, ky_ arguments. The advantages to the former are:
 
 1.  A graphic user interface can be used to draw and edit the trajectory through the Cartesian plane
 2.  The file format is in the form time1 X1 Y1 time2 X2 Y2 time3 X3 Y3 allowing the user to define a time-tagged trajectory
 
-_space_ then allows the user to specify a time pointer (much as is used for [pvoc](../../opcodes/pvoc), [lpread](../../opcodes/lpread) and some other units) to have detailed control over the final speed of movement.
+_space_ then allows the user to specify a time pointer (much as is used for [pvoc](../opcodes/pvoc.md), [lpread](../opcodes/lpread.md) and some other units) to have detailed control over the final speed of movement.
 
 ## Syntax
-``` csound-orc
-a1, a2, a3, a4  space asig, ifn, ktime, kreverbsend, kx, ky
-```
+=== "Modern"
+    ``` csound-orc
+    a1, a2, a3, a4  = space(asig, ifn, ktime, kreverbsend, kx, ky)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    a1, a2, a3, a4  space asig, ifn, ktime, kreverbsend, kx, ky
+    ```
 
 ### Initialization
 
-_ifn_ -- number of the stored function created using [Gen28](../../scoregens/gen28). This function generator reads a text file which contains sets of three values representing the xy coordinates and a time-tag for when the signal should be placed at that location. The file should look like:
+_ifn_ -- number of the stored function created using [Gen28](../scoregens/gen28.md). This function generator reads a text file which contains sets of three values representing the xy coordinates and a time-tag for when the signal should be placed at that location. The file should look like:
 
 ```
 0       -1       1
@@ -88,24 +94,24 @@ _kx, ky_ -- when _ifn_ is 0, _space_ and _spdist_ will use these values as the x
 
 ## Examples
 
-Here is an example of the space opcode. It uses the file [space_quad.csd](../../examples/space_quad.csd).
+Here is an example of the space opcode. It uses the file [space_quad.csd](../examples/space_quad.csd).
 
 ``` csound-csd title="Example of the space opcode." linenums="1"
 --8<-- "examples/space_quad.csd"
 ```
 In the above example, the signal, _asig_, is moved according to the data in Function #1 indexed by _ktime_. _space_ sends the appropriate amount of the signal internally to _spsend_. The outputs of the _spsend_ are added to global accumulators in a common Csound style and the global signals are used as inputs to the reverb units in a separate instrument.
 
-_space_ can be useful for quad and stereo panning as well as fixed placed of sounds anywhere between two loudspeakers. Below is an example of the fixed placement of sounds in a stereo field using xy values from the score instead of a function table. It uses the file [space_stereo.csd](../../examples/space_stereo.csd).
+_space_ can be useful for quad and stereo panning as well as fixed placed of sounds anywhere between two loudspeakers. Below is an example of the fixed placement of sounds in a stereo field using xy values from the score instead of a function table. It uses the file [space_stereo.csd](../examples/space_stereo.csd).
 
 ``` csound-csd title="Second example of the space opcode." linenums="1"
 --8<-- "examples/space_stereo.csd"
 ```
 
-[spdist](../../opcodes/spdist) demonstrates an example of a simple intuitive use of the distance values to simulate Doppler shift.
+[spdist](../opcodes/spdist.md) demonstrates an example of a simple intuitive use of the distance values to simulate Doppler shift.
 
 ## See also
 
-[Panning and Spatialization: Amplitude spatialization](../../sigmod/panspatl)
+[Panning and Spatialization: Amplitude spatialization](../sigmod/panspatl.md)
 
 ## Credits
 

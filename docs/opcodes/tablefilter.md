@@ -8,9 +8,15 @@ Filters a source table and writes result into a destination table.
 This opcode can be used in order to filter values from function tables following certain algorithms. The filtered output is written into a destination table and the number of elements that have passed the filter is returned.
 
 ## Syntax
-``` csound-orc
-knumpassed tablefilter kouttable, kintatble, kmode, kparam
-```
+=== "Modern"
+    ``` csound-orc
+    knumpassed = tablefilter(kouttable, kintatble, kmode, kparam)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    knumpassed tablefilter kouttable, kintatble, kmode, kparam
+    ```
 
 ### Performance
 
@@ -29,7 +35,7 @@ _kparam_ -- integer threshold parameter for the filter. It means that denominato
 
 ## Examples
 
-Here is an example of the tablefilter opcode. It uses the file [tablefilter.csd](../../examples/tablefilter.csd).
+Here is an example of the tablefilter opcode. It uses the file [tablefilter.csd](../examples/tablefilter.csd).
 
 ``` csound-csd title="Example of the tablefilter opcode." linenums="1"
 --8<-- "examples/tablefilter.csd"
@@ -37,7 +43,7 @@ Here is an example of the tablefilter opcode. It uses the file [tablefilter.csd]
 
 ## See also
 
-[Read/Write Operations](../../table/readwrit)
+[Read/Write Operations](../table/readwrit.md)
 
 ## Credits
 

@@ -3,12 +3,18 @@ id:vcopy
 category:Vectorial:Vectorial operations
 -->
 # vcopy
-Copies between two vectorial control signals
+Copies between two vectorial control signals.
 
 ## Syntax
-``` csound-orc
-vcopy  ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [, kverbose]
-```
+=== "Modern"
+    ``` csound-orc
+    vcopy(ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [, kverbose])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vcopy ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [, kverbose]
+    ```
 
 ### Initialization
 
@@ -36,7 +42,7 @@ If the optional _kverbose_ argument is different to 0, the opcode will print war
 >
 > Using the same table as source and destination table in versions earlier than 5.04, might produce unexpected behavior, so use with care.
 
-This opcode works at k-rate (this means that every k-pass the vectors are copied). There is an i-rate version of this opcode called [vcopy_i](../../opcodes/vcopy_i).
+This opcode works at k-rate (this means that every k-pass the vectors are copied). There is an i-rate version of this opcode called [vcopy_i](../opcodes/vcopy_i.md).
 
 > :memo: **Note**
 >
@@ -52,11 +58,11 @@ This opcode works at k-rate (this means that every k-pass the vectors are copied
       endin
 > ```
 
-All these operators ([vaddv](../../opcodes/vaddv), [vsubv](../../opcodes/vsubv), [vmultv](../../opcodes/vmultv), [vdivv](../../opcodes/vdivv), [vpowv](../../opcodes/vpowv), [vexp](../../opcodes/vexp), [vcopy](../../opcodes/vcopy) and [vmap](../../opcodes/vmap)) are designed to be used together with other opcodes that operate with vectorial signals such as [vcella](../../opcodes/vcella), [adsynt](../../opcodes/adsynt), [adsynt2](../../opcodes/adsynt2) etc.
+All these operators ([vaddv](../opcodes/vaddv.md), [vsubv](../opcodes/vsubv.md), [vmultv](../opcodes/vmultv.md), [vdivv](../opcodes/vdivv.md), [vpowv](../opcodes/vpowv.md), [vexp](../opcodes/vexp.md), [vcopy](../opcodes/vcopy.md) and [vmap](../opcodes/vmap.md)) are designed to be used together with other opcodes that operate with vectorial signals such as [vcella](../opcodes/vcella.md), [adsynt](../opcodes/adsynt.md), [adsynt2](../opcodes/adsynt2.md) etc.
 
 ## Examples
 
-Here is an example of the vcopy opcode. It uses the file [vcopy.csd](../../examples/vcopy.csd).
+Here is an example of the vcopy opcode. It uses the file [vcopy.csd](../examples/vcopy.csd).
 
 ``` csound-csd title="Example of the vcopy opcode." linenums="1"
 --8<-- "examples/vcopy.csd"
@@ -64,7 +70,7 @@ Here is an example of the vcopy opcode. It uses the file [vcopy.csd](../../examp
 
 ## See also
 
-[Operations Between two  Vectorial Signals](../../vectorial/vectorial)
+[Operations Between two  Vectorial Signals](../vectorial/vectorial.md)
 
 ## Credits
 

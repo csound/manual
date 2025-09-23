@@ -8,16 +8,23 @@ Produces sinusoid bursts useful for formant and granular synthesis.
 Audio output is a succession of sinusoid bursts initiated at frequency _xfund_ with a spectral peak at _xform_. For _xfund_ above 25 Hz these bursts produce a speech-like formant with spectral characteristics determined by the k-input parameters. For lower fundamentals this generator provides a special form of granular synthesis.
 
 ## Syntax
-``` csound-orc
-ares fof xamp, xfund, xform, koct, kband, kris, kdur, kdec, iolaps, \
-         ifna, ifnb, itotdur [, iphs] [, ifmode] [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = fof(xamp, xfund, xform, koct, kband, kris, kdur, kdec, iolaps, \
+               ifna, ifnb, itotdur [, iphs] [, ifmode] [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares fof xamp, xfund, xform, koct, kband, kris, kdur, kdec, iolaps, \
+             ifna, ifnb, itotdur [, iphs] [, ifmode] [, iskip]
+    ```
 
 ### Initialization
 
 _iolaps_ -- number of preallocated spaces needed to hold overlapping burst data. Overlaps are frequency dependent, and the space required depends on the maximum value of _xfund * kdur_. Can be over-estimated at no computation cost. Uses less than 50 bytes of memory per _iolap_.
 
-_ifna, ifnb_ -- table numbers of two stored functions. The first is a sine table for sineburst synthesis (size of at least 4096 recommended). The second is a rise shape, used forwards and backwards to shape the sineburst rise and decay; this may be linear ([GEN07](../../scoregens/gen07)) or perhaps a sigmoid ([GEN19](../../scoregens/gen19)).
+_ifna, ifnb_ -- table numbers of two stored functions. The first is a sine table for sineburst synthesis (size of at least 4096 recommended). The second is a rise shape, used forwards and backwards to shape the sineburst rise and decay; this may be linear ([GEN07](../scoregens/gen07.md)) or perhaps a sigmoid ([GEN19](../scoregens/gen19.md)).
 
 _itotdur_ -- total time during which this _fof_ will be active. Normally set to p3. No new sineburst is created if it cannot complete its _kdur_ within the remaining _itotdur_.
 
@@ -45,19 +52,19 @@ Csound's _fof_ generator is loosely based on Michael Clarke's C-coding of IRCAM'
 
 ## Examples
 
-Here is an example of the fof opcode. It uses the file [fof.csd](../../examples/fof.csd).
+Here is an example of the fof opcode. It uses the file [fof.csd](../examples/fof.csd).
 
 ``` csound-orc title="Example of the fof opcode." linenums="1"
 --8<-- "examples/fof.csd"
 ```
 
-The formant values for the alto-"a" sound were taken from the [Formant Values Appendix](../../misc/formants).
+The formant values for the alto-"a" sound were taken from the [Formant Values Appendix](../misc/formants.md).
 
-Two musical examples featuring the fof opcode: [TheElectricPriest_Enhus.csd](../../examples/musical/TheElectricPriest_Enhus.csd) by Tobias Enhus, and [BuzzFof_Cucchi.csd](../../examples/musical/BuzzFof_Cucchi.csd) by Stefano Cucchi.
+Two musical examples featuring the fof opcode: [TheElectricPriest_Enhus.csd](../examples/musical/TheElectricPriest_Enhus.csd) by Tobias Enhus, and [BuzzFof_Cucchi.csd](../examples/musical/BuzzFof_Cucchi.csd) by Stefano Cucchi.
 
 ## See Also
 
-[Granular Synthesis](../../siggen/granular)
+[Granular Synthesis](../siggen/granular.md)
 
 ## Credits
 

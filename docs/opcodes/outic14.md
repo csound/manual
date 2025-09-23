@@ -6,9 +6,15 @@ category:Real-time MIDI:Output
 Sends 14-bit MIDI controller output at i-rate.
 
 ## Syntax
-``` csound-orc
-outic14 ichn, imsb, ilsb, ivalue, imin, imax
-```
+=== "Modern"
+    ``` csound-orc
+    outic14(ichn, imsb, ilsb, ivalue, imin, imax)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    outic14 ichn, imsb, ilsb, ivalue, imin, imax
+    ```
 
 ### Initialization
 
@@ -34,7 +40,7 @@ It can scale an i-value floating-point argument according to the _imin_ and _ima
 
 ## See also
 
-[MIDI Message Output](../../midi/output)
+[MIDI Message Output](../midi/output.md)
 
 ## Credits
 

@@ -6,12 +6,21 @@ category:Mathematical Operations:Arrays
 Computes the remainder of the division of its first argument by the second.
 
 ## Syntax
-``` csound-orc
-ires[] fmod iarg1[], iarg2[]
-kres[] fmod karg1[], karg2[]
-ires[] fmod iarg1[], iarg2
-kres[] fmod karg[], karg2
-```
+=== "Modern"
+    ``` csound-orc
+    ires[] = fmod(iarg1[], iarg2[])
+    kres[] = fmod(karg1[], karg2[])
+    ires[] = fmod(iarg1[], iarg2)
+    kres[] = fmod(karg[], karg2)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ires[] fmod iarg1[], iarg2[]
+    kres[] fmod karg1[], karg2[]
+    ires[] fmod iarg1[], iarg2
+    kres[] fmod karg[], karg2
+    ```
 
 ### Initialization
 
@@ -23,7 +32,7 @@ _karg[]1/2, karg2_ -- the operands
 
 ## Examples
 
-Here is an example of the fmod opcode. It uses the file [fmod.csd](../../examples/fmod.csd).
+Here is an example of the fmod opcode. It uses the file [fmod.csd](../examples/fmod.csd).
 
 ``` csound-csd title="Example of the fmod opcode." linenums="1"
 --8<-- "examples/fmod.csd"
@@ -31,7 +40,7 @@ Here is an example of the fmod opcode. It uses the file [fmod.csd](../../example
 
 ## See Also
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

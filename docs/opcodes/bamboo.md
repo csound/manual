@@ -8,10 +8,17 @@ Semi-physical model of a bamboo sound.
 It is one of the PhISEM percussion opcodes. PhISEM (Physically Informed Stochastic Event Modeling) is an algorithmic approach for simulating collisions of multiple independent sound producing objects.
 
 ## Syntax
-``` csound-orc
-ares bamboo kamp, idettack [, inum] [, idamp] [, imaxshake] [, ifreq] \
-            [, ifreq1] [, ifreq2]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = bamboo(kamp, idettack [, inum] [, idamp] [, imaxshake] [, ifreq] \
+                  [, ifreq1] [, ifreq2])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares bamboo kamp, idettack [, inum] [, idamp] [, imaxshake] [, ifreq] \
+                [, ifreq1] [, ifreq2]
+    ```
 
 ### Initialization
 
@@ -43,15 +50,21 @@ _kamp_ -- Amplitude of output.  Note: As these instruments are stochastic, this 
 
 ## Examples
 
-Here is an example of the bamboo opcode. It uses the file [bamboo.csd](../../examples/bamboo.csd).
+=== "Modern"
+    Here is an example of the bamboo opcode. It uses the file [bamboo-modern.csd](../examples/bamboo-modern.csd).
+    ``` csound-orc title="Example of the bamboo opcode." linenums="1"
+    --8<-- "examples/bamboo-modern.csd"
+    ```
 
-``` csound-orc title="Example of the bamboo opcode." linenums="1"
---8<-- "examples/bamboo.csd"
-```
+=== "Classic"
+    Here is an example of the bamboo opcode. It uses the file [bamboo.csd](../examples/bamboo.csd).
+    ``` csound-orc title="Example of the bamboo opcode." linenums="1"
+    --8<-- "examples/bamboo.csd"
+    ```
 
 ## See Also
 
-[Models and Emulations](../../siggen/models)
+[Models and Emulations](../siggen/models.md)
 
 ## Credits
 

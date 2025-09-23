@@ -6,9 +6,17 @@ category:Signal Modifiers:Specialized Filters
 A DFT-based implementation of a Hilbert transformer.
 
 ## Syntax
-``` csound-orc
-ar1, ar2 hilbert2 asig, ifftsize, ihopsize
-```
+=== "Modern"
+    ``` csound-orc
+    c:a, s:a = hilbert2(sig:a, fftsize:a, hopsize:i)
+    csig:Complex[] = hilbert2(sig:a, fftsize:a, hopsize:i)    
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ac, as hilbert2 asig, ifftsize, ihopsize
+    csig:Complex[] hilbert2 asig, ifftsize, ihopsize    
+    ```
 
 Initialisation
 
@@ -18,17 +26,19 @@ _ihopsize_ -- analysis hopsize
 
 ### Performance
 
-_asig_ -- input signal
+_sig_ -- input signal
 
-_ar1_ -- real output of _asig_
+_c_ -- cosine output of _sig_
 
-_ar2_ -- imag output of _asig_
+_s_ -- sine output of _sig_
+
+_csig_ -- Complex array containing the analytic signal.
 
 _hilbert2_ is a DFT-based implementation of the Hilbert Transform producing two outputs in quadrature (90 degree phase difference across the spectrum). Unlike the IIR-based _hilbert_ opcode, _hilbert2_ has a linear frequency response. Given that it employs a streaming algorithm, a delay of fftsize samples will be imposed between input and output.
 
-Example
+## Examples
 
-Here is an example of the hilbert2 opcode. It uses the file [hilbert2.csd](../../examples/hilbert2.csd).
+Here is an example of the hilbert2 opcode. It uses the file [hilbert2.csd](../examples/hilbert2.csd).
 
 ``` csound-csd title="Example of the hilbert2 opcode." linenums="1"
 --8<-- "examples/hilbert2.csd"
@@ -36,7 +46,7 @@ Here is an example of the hilbert2 opcode. It uses the file [hilbert2.csd](../..
 
 ## See also
 
-[Specialized Filters: Other filters](../../sigmod/speciali)
+[Specialized Filters: Other filters](../sigmod/speciali.md)
 
 ## Credits
 

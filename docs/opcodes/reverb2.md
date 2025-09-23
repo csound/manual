@@ -3,10 +3,17 @@ id:reverb2
 category:Signal Modifiers:Reverberation
 -->
 # reverb2
-Same as the [nreverb](../../opcodes/nreverb) opcode.
+Same as the [nreverb](../opcodes/nreverb.md) opcode.
 
 ## Syntax
-``` csound-orc
-ares reverb2 asig, ktime, khdif [, iskip] [,inumCombs] [, ifnCombs] \
-             [, inumAlpas] [, ifnAlpas]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = reverb2(asig, ktime, khdif [, iskip] [,inumCombs] [, ifnCombs] \
+                   [, inumAlpas] [, ifnAlpas])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares reverb2 asig, ktime, khdif [, iskip] [,inumCombs] [, ifnCombs] \
+                 [, inumAlpas] [, ifnAlpas]
+    ```

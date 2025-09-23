@@ -6,9 +6,15 @@ category:Signal Generators:Random (Noise) Generators
 A white noise generator with an IIR lowpass filter.
 
 ## Syntax
-``` csound-orc
-ares noise xamp, kbeta
-```
+=== "Modern"
+    ``` csound-orc
+    ares = noise(xamp, kbeta)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares noise xamp, kbeta
+    ```
 
 ### Performance
 
@@ -19,7 +25,7 @@ _kbeta_ -- beta of the lowpass filter. Should be in the range of -1 to 1, exclus
 The filter equation is:
 
 <figure markdown="span">
-![[Filter equation for filter in noise opcode.]](../../images/noise-filter.png)
+![[Filter equation for filter in noise opcode.]](../images/noise-filter.png)
 <figcaption></figcaption>
 </figure>
 
@@ -27,7 +33,7 @@ where _x<sub>n</sub>_ is the original white noise and _y<sub>n</sub>_ is lowpass
 
 ## Examples
 
-Here is an example of the noise opcode. It uses the file [noise.csd](../../examples/noise.csd).
+Here is an example of the noise opcode. It uses the file [noise.csd](../examples/noise.csd).
 
 ``` csound-orc title="Example of the noise opcode." linenums="1"
 --8<-- "examples/noise.csd"
@@ -35,7 +41,7 @@ Here is an example of the noise opcode. It uses the file [noise.csd](../../examp
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
 ## Credits
 

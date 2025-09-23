@@ -6,10 +6,17 @@ category:Signal Generators:Linear and Exponential Generators
 Trace a series of line segments between specified points with cosine interpolation.
 
 ## Syntax
-``` csound-orc
-ares cosseg ia, idur1, ib [, idur2] [, ic] [...]
-kres cosseg ia, idur1, ib [, idur2] [, ic] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = cosseg(ia, idur1, ib [, idur2] [, ic] [...])
+    kres = cosseg(ia, idur1, ib [, idur2] [, ic] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares cosseg ia, idur1, ib [, idur2] [, ic] [...]
+    kres cosseg ia, idur1, ib [, idur2] [, ic] [...]
+    ```
 
 ### Initialization
 
@@ -27,7 +34,7 @@ These units generate control or audio signals whose values can pass through 2 or
 
 ## Examples
 
-Here is an example of the cosseg opcode. It uses the file [cosseg.csd](../../examples/cosseg.csd).
+Here is an example of the cosseg opcode. It uses the file [cosseg.csd](../examples/cosseg.csd).
 
 ``` csound-orc title="Example of the cosseg opcode." linenums="1"
 --8<-- "examples/cosseg.csd"
@@ -35,7 +42,7 @@ Here is an example of the cosseg opcode. It uses the file [cosseg.csd](../../exa
 
 ## See also
 
-[Linear and Exponential Generators](../../siggen/lineexp)
+[Linear and Exponential Generators](../siggen/lineexp.md)
 
 ## Credits
 

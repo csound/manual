@@ -2,8 +2,8 @@
 id:adds
 category:Mathematical Operations:Arithmetic and Logic Operations
 -->
-# $+$
-Addition operator
+# +
+Addition operator.
 
 Arithmetic operators perform operations of change-sign (negate), do-no-change-sign, logical AND logical OR, add, subtract, multiply and divide. Note that a value or an expression may fall between two of these operators, either of which could take it as its left or right argument, as in
 
@@ -38,15 +38,21 @@ The arguments of $+$ can be scalar values or k-rate one dimensional arrays (vect
 
 ## Examples
 
-Here is an example of the &plus; operator. It uses the file [adds.csd](../../examples/adds.csd).
+=== "Modern"
+    Here is an example of the &plus; operator. It uses the file [adds-modern.csd](../examples/adds-modern.csd).
+    ``` csound-csd title="Example of the &plus; operator." linenums="1"
+    --8<-- "examples/adds-modern.csd"
+    ```
 
-``` csound-csd title="Example of the &plus; operator." linenums="1"
---8<-- "examples/adds.csd"
-```
+=== "Classic"
+    Here is an example of the &plus; operator. It uses the file [adds.csd](../examples/adds.csd).
+    ``` csound-csd title="Example of the &plus; operator." linenums="1"
+    --8<-- "examples/adds.csd"
+    ```
 
 ## See also
 
-[Arithmetic and Logic Operations](../../math/artlogic)
+[Arithmetic and Logic Operations](../math/artlogic.md)
 
 ## Credits
 

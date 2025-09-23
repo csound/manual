@@ -6,9 +6,15 @@ category:Instrument Control:Duration Control
 Activate an instrument for an indefinite time.
 
 ## Syntax
-``` csound-orc
-turnon insnum [, itime]
-```
+=== "Modern"
+    ``` csound-orc
+    turnon(insnum [, itime])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    turnon insnum [, itime]
+    ```
 
 ### Initialization
 
@@ -18,11 +24,11 @@ _itime_ (optional, default=0) -- delay, in seconds, after which instrument _insn
 
 ### Performance
 
-_turnon_ activates instrument _insnum_ after a delay of _itime_ seconds, or immediately if _itime_ is not specified. Instrument is active until explicitly turned off. (See [turnoff](../../opcodes/turnoff).)
+_turnon_ activates instrument _insnum_ after a delay of _itime_ seconds, or immediately if _itime_ is not specified. Instrument is active until explicitly turned off. (See [turnoff](../opcodes/turnoff.md).)
 
 ## Examples
 
-Here is an example of the turnon opcode. It uses the files [turnon.csd](../../examples/turnon.csd).
+Here is an example of the turnon opcode. It uses the files [turnon.csd](../examples/turnon.csd).
 
 ``` csound-csd title="Example of the turnon opcode." linenums="1"
 --8<-- "examples/turnon.csd"
@@ -30,4 +36,4 @@ Here is an example of the turnon opcode. It uses the files [turnon.csd](../../ex
 
 ## See also
 
-[Duration Control Statements](../../control/durctl)
+[Duration Control Statements](../control/durctl.md)

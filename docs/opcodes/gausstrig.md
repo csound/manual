@@ -6,10 +6,17 @@ category:Signal Generators:Random (Noise) Generators
 Random impulses around a certain frequency.
 
 ## Syntax
-``` csound-orc
-ares gausstrig kamp, kcps, kdev [, imode] [, ifrst1]
-kres gausstrig kamp, kcps, kdev [, imode] [, ifrst1]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = gausstrig(kamp, kcps, kdev [, imode] [, ifrst1])
+    kres = gausstrig(kamp, kcps, kdev [, imode] [, ifrst1])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares gausstrig kamp, kcps, kdev [, imode] [, ifrst1]
+    kres gausstrig kamp, kcps, kdev [, imode] [, ifrst1]
+    ```
 
 ### Initialization
 
@@ -27,13 +34,13 @@ _kdev_ -- random deviation from mean (0 &lt;= dev &lt; 1).
 
 ## Examples
 
-Here is an example of the gausstrig opcode. It uses the file [gausstrig.csd](../../examples/gausstrig.csd).
+Here is an example of the gausstrig opcode. It uses the file [gausstrig.csd](../examples/gausstrig.csd).
 
 ``` csound-orc title="Example of the gausstrig opcode." linenums="1"
 --8<-- "examples/gausstrig.csd"
 ```
 
-Here is an example of the gausstrig opcode with imode = 1. It uses the file [gausstrig-2.csd](../../examples/gausstrig-2.csd).
+Here is an example of the gausstrig opcode with imode = 1. It uses the file [gausstrig-2.csd](../examples/gausstrig-2.csd).
 
 ``` csound-orc title="Example of the gausstrig opcode with imode = 1." linenums="1"
 --8<-- "examples/gausstrig-2.csd"
@@ -41,7 +48,7 @@ Here is an example of the gausstrig opcode with imode = 1. It uses the file [gau
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
 ## Credits
 

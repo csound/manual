@@ -28,7 +28,7 @@ Reading stops at the end of the file.
 
 ## Examples
 
-Here is an example of the GEN43 routine. It uses the files [gen43.csd](../../examples/gen43.csd).
+Here is an example of the GEN43 routine. It uses the files [gen43.csd](../examples/gen43.csd).
 
 Note: In this example, the .csd uses the ‘system_i’ opcode to launch and run the pvanal utility and analyze a section from the sound file, finneganswake1.flac, where we find a bit of reverb and noise. The ‘reverbnoise’ selection has a duration of 0.8 seconds (-d0.8) which we find after 1.04 seconds of the source (-b1.04) and thus pvanal creates the pvocex file that we use in instrument 3 to remove this noise and reverb from the original with the pvstencil opcode.
 

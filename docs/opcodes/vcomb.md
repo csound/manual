@@ -6,15 +6,21 @@ category:Signal Modifiers:Reverberation
 Variably reverberates an input signal with a &#8220;colored&#8221; frequency response.
 
 ## Syntax
-``` csound-orc
-ares vcomb asig, krvt, xlpt, imaxlpt [, iskip] [, insmps]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = vcomb(asig, krvt, xlpt, imaxlpt [, iskip] [, insmps])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares vcomb asig, krvt, xlpt, imaxlpt [, iskip] [, insmps]
+    ```
 
 ### Initialization
 
 _imaxlpt_ -- maximum loop time for _klpt_
 
-_iskip_ (optional, default=0) -- initial disposition of delay-loop data space (cf. [reson](../../opcodes/reson)). The default value is 0.
+_iskip_ (optional, default=0) -- initial disposition of delay-loop data space (cf. [reson](../opcodes/reson.md)). The default value is 0.
 
 _insmps_ (optional, default=0) -- delay amount, as a number of samples.
 
@@ -28,7 +34,7 @@ This filter reiterates input with an echo density determined by loop time _xlpt_
 
 ## Examples
 
-Here is an example of the vcomb opcode. It uses the file [vcomb.csd](../../examples/vcomb.csd).
+Here is an example of the vcomb opcode. It uses the file [vcomb.csd](../examples/vcomb.csd).
 
 ``` csound-csd title="Example of the vcomb opcode." linenums="1"
 --8<-- "examples/vcomb.csd"
@@ -36,7 +42,7 @@ Here is an example of the vcomb opcode. It uses the file [vcomb.csd](../../examp
 
 ## See also
 
-[Reverberation](../../sigmod/reverbtn)
+[Reverberation](../sigmod/reverbtn.md)
 
 ## Credits
 

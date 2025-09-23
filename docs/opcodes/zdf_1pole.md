@@ -8,9 +8,15 @@ Zero-delay feedback implementation of a 1 pole (6 dB/oct) filter.
 Offers low-pass (default), high-pass, and allpass output modes.
 
 ## Syntax
-``` csound-orc
-asig zdf_1pole ain, xcf [, kmode, istor]
-```
+=== "Modern"
+    ``` csound-orc
+    asig = zdf_1pole(ain, xcf [, kmode, istor])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig zdf_1pole ain, xcf [, kmode, istor]
+    ```
 
 ### Initialization
 
@@ -32,7 +38,7 @@ _kmode_ -- filter output type. The default value is 0. The output mode may be on
 
 ## Examples
 
-Here is an example of the zdf_1pole opcode. It uses the file [zdf_1pole.csd](../../examples/zdf_1pole.csd).
+Here is an example of the zdf_1pole opcode. It uses the file [zdf_1pole.csd](../examples/zdf_1pole.csd).
 
 ``` csound-csd title="Example of the zdf_1pole opcode." linenums="1"
 --8<-- "examples/zdf_1pole.csd"
@@ -48,7 +54,7 @@ This filter is based on the work of Will Pirkle that employs Vadim Zavalishin's 
 
 ## See also
 
-[Standard filters: Zero-delay Feedback Filters (Virtual Analog)](../../sigmod/standard)
+[Standard filters: Zero-delay Feedback Filters (Virtual Analog)](../sigmod/standard.md)
 
 ## Credits
 

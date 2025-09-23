@@ -3,17 +3,24 @@ id:ntom
 category:Pitch Converters:Functions
 -->
 # ntom
-Convert note name to midi note number
+Convert note name to midi note number.
 
 Plugin opcode in emugens.
 
 It allows note name to include microtones or a deviation in cents.
 
 ## Syntax
-``` csound-orc
-kmidi ntom Snote
-imidi ntom Snote
-```
+=== "Modern"
+    ``` csound-orc
+    kmidi = ntom(Snote)
+    imidi = ntom(Snote)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kmidi ntom Snote
+    imidi ntom Snote
+    ```
 
 ### Performance
 
@@ -40,7 +47,7 @@ midi    note name
 
 ## Examples
 
-Here is an example of the ntom opcode. It uses the file [mton-ntom.csd](../../examples/mton-ntom.csd).
+Here is an example of the ntom opcode. It uses the file [mton-ntom.csd](../examples/mton-ntom.csd).
 
 ``` csound-csd title="Example of the ftom opcode." linenums="1"
 --8<-- "examples/mton-ntom.csd"
@@ -48,9 +55,9 @@ Here is an example of the ntom opcode. It uses the file [mton-ntom.csd](../../ex
 
 ## See also
 
-[Pitch Converters: Functions](../../pitch/funcs)
+[Pitch Converters: Functions](../pitch/funcs.md)
 
-[Midi Converters](../../midi/convert)
+[Midi Converters](../midi/convert.md)
 
 ## Credits
 

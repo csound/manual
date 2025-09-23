@@ -6,9 +6,15 @@ category:Signal Modifiers:Delay
 A variable delay opcode with high quality interpolation.
 
 ## Syntax
-``` csound-orc
-aout vdelayx ain, adl, imd, iws [, ist]
-```
+=== "Modern"
+    ``` csound-orc
+    aout = vdelayx(ain, adl, imd, iws [, ist])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout vdelayx ain, adl, imd, iws [, ist]
+    ```
 
 ### Initialization
 
@@ -42,7 +48,7 @@ This opcode uses high quality (and slow) interpolation, that is much more accura
 
 ## Examples
 
-Here is an example of the use of the _vdelayx_ opcode. It uses the file [vdelayx.csd](../../examples/vdelayx.csd).
+Here is an example of the use of the _vdelayx_ opcode. It uses the file [vdelayx.csd](../examples/vdelayx.csd).
 
 ``` csound-csd title="Example of the _vdelayx_ opcode." linenums="1"
 --8<-- "examples/vdelayx.csd"
@@ -50,4 +56,4 @@ Here is an example of the use of the _vdelayx_ opcode. It uses the file [vdelayx
 
 ## See also
 
-[Delay](../../sigmod/delayops)
+[Delay](../sigmod/delayops.md)

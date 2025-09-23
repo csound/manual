@@ -8,9 +8,15 @@ Moog voltage-controlled lowpass filter emulation.
 Mvclpf4 is an digital implementation of the 4th-order (24 dB/oct) Moog ladder filter originally written by Fons Andriaensen. It is a version of the mvclpf3 opcode with four outputs, for 6dB, 12dB, 18dB, and 24 dB/octave responses.
 
 ## Syntax
-``` csound-orc
-asig1,asig2,asig3,asig4 mvclpf4 ain, xcf, xres[, istor]
-```
+=== "Modern"
+    ``` csound-orc
+    asig1, asig2, asig3, asig4 = mvclpf4(ain, xcf, xres[, istor])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig1, asig2, asig3, asig4 mvclpf4 ain, xcf, xres[, istor]
+    ```
 
 ### Initialization
 
@@ -34,7 +40,7 @@ _xres_ -- resonance, limited to the interval [0,1].
 
 ## Examples
 
-Here is an example of the mvclpf4 opcode. It uses the file [mvclpf4.csd](../../examples/mvclpf4.csd).
+Here is an example of the mvclpf4 opcode. It uses the file [mvclpf4.csd](../examples/mvclpf4.csd).
 
 ``` csound-csd title="Example of the mvclpf4 opcode." linenums="1"
 --8<-- "examples/mvclpf4.csd"
@@ -42,7 +48,7 @@ Here is an example of the mvclpf4 opcode. It uses the file [mvclpf4.csd](../../e
 
 ## See also
 
-[Standard Filters: Resonant Low-pass filters](../../sigmod/standard)
+[Standard Filters: Resonant Low-pass filters](../sigmod/standard.md)
 
 ## Credits
 

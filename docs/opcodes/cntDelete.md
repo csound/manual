@@ -8,9 +8,15 @@ Delete a counter and render any memory used.
 Plugin opcode in counter.
 
 ## Syntax
-``` csound-orc
-kval cntDelete icnt
-```
+=== "Modern"
+    ``` csound-orc
+    kval = cntDelete(icnt)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kval cntDelete icnt
+    ```
 
 ### Initialization
 
@@ -22,7 +28,7 @@ _kval_ -- the handle deleted or a negative number if there was no such counter.
 
 ## See also
 
-[Program Flow Control: Counter](../../control/pgmctl)
+[Program Flow Control: Counter](../control/pgmctl.md)
 
 ## Credits
 

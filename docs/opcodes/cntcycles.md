@@ -8,9 +8,15 @@ Get the number of times a counter has cycled.
 Plugin opcode in counter.
 
 ## Syntax
-``` csound-orc
-kval cntCycles icnt
-```
+=== "Modern"
+    ``` csound-orc
+    kval = cntCycles(icnt)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kval cntCycles icnt
+    ```
 
 ### Initialization
 
@@ -24,7 +30,7 @@ _kval_ -- returned value.
 
 ## See also
 
-[Program Flow Control: Counter](../../control/pgmctl)
+[Program Flow Control: Counter](../control/pgmctl.md)
 
 ## Credits
 

@@ -55,7 +55,7 @@ f # time size "farey" fareynum mode
 ### Initialization
 
 _size_ -- number of points in the table. Must
-be a power of 2 or power-of-2 plus 1 (see [f statement](../../scoregens/f)).
+be a power of 2 or power-of-2 plus 1 (see [f statement](../scoregens/f.md)).
 
 _fareynum_ -- the integer n for generating Farey Sequence F<sub>n</sub>
 
@@ -109,7 +109,7 @@ same as mode 0, but this time '1' is added to each table element.
 --8<-- "examples/genfarey.csd"
 ```
 
-Here is a complete example of the GENfarey routine. It uses the files [genfarey-2.csd](../../examples/genfarey-2.csd).
+Here is a complete example of the GENfarey routine. It uses the files [genfarey-2.csd](../examples/genfarey-2.csd).
 
 ``` csound-orc title="Another example of the GENfarey routine." linenums="1"
 --8<-- "examples/genfarey-2.csd"
@@ -118,18 +118,18 @@ Here is a complete example of the GENfarey routine. It uses the files [genfarey-
 These are the diagrams of the waveforms of the GENfarey routines, as used in the example:
 
 <figure markdown="span">
-![gidelta ftgen 100,0,-18,"farey",7,1 - delta values of Farey Sequence 7](../../images/genfarey-2_1.png)
+![gidelta ftgen 100,0,-18,"farey",7,1 - delta values of Farey Sequence 7](../images/genfarey-2_1.png)
 <figcaption>gidelta ftgen 100,0,-18,"farey",7,1 - delta values of Farey Sequence 7</figcaption>
 </figure>
 
 <figure markdown="span">
-![gimult ftgen 101,0,-18,"farey",7,2 - generate the denominators of fractions of F_7 ](../../images/genfarey-2_2.png)
+![gimult ftgen 101,0,-18,"farey",7,2 - generate the denominators of fractions of F_7 ](../images/genfarey-2_2.png)
 <figcaption>gimult ftgen 101,0,-18,"farey",7,2 - generate the denominators of fractions of F_7 </figcaption>
 </figure>
 
 ## See Also
 
-[Models and Emulations](../../siggen/models)
+[Models and Emulations](../siggen/models.md)
 
 ## Credits
 

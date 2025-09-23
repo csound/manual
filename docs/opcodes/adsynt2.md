@@ -3,12 +3,18 @@ id:adsynt2
 category:Signal Generators:Additive Synthesis/Resynthesis
 -->
 # adsynt2
-Performs additive synthesis with an arbitrary number of partials, not necessarily harmonic. (see [adsynt](../../opcodes/adsynt) for detailed manual)
+Performs additive synthesis with an arbitrary number of partials, not necessarily harmonic. (see [adsynt](../opcodes/adsynt.md) for detailed manual)
 
 ## Syntax
-``` csound-orc
-ar adsynt2 kamp, kcps, iwfn, ifreqfn, iampfn, icnt [, iphs]
-```
+=== "Modern"
+    ``` csound-orc
+    ar = adsynt2(kamp, kcps, iwfn, ifreqfn, iampfn, icnt [, iphs])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar adsynt2 kamp, kcps, iwfn, ifreqfn, iampfn, icnt [, iphs]
+    ```
 
 ### Initialization
 
@@ -34,15 +40,23 @@ _adsynt2_ is identical to _adsynt_ (by Peter Neubäcker), except it provides lin
 
 ## Examples
 
-Here is an example of the adsynt2 opcode. It uses the file [adsynt2.csd](../../examples/adsynt2.csd). These two instruments perform additive synthesis. The output of each sounds like a Tibetan bowl. The first one is static, as parameters are only generated at init-time. In the second one, parameters are continuously changed.
+Here is an example of the adsynt2 opcode. These two instruments perform additive synthesis. The output of each sounds like a Tibetan bowl. The first one is static, as parameters are only generated at init-time. In the second one, parameters are continuously changed.
 
-``` csound-orc title="Example of the adsynt2 opcode." linenums="1"
---8<-- "examples/adsynt2.csd"
-```
+=== "Modern"
+    Uses the file [adsynt2-modern.csd](../examples/adsynt2-modern.csd).
+    ``` csound-orc title="Example of the adsynt2 opcode." linenums="1"
+    --8<-- "examples/adsynt2-modern.csd"
+    ```
+
+=== "Classic"
+    Uses the file [adsynt2.csd](../examples/adsynt2.csd).
+    ``` csound-orc title="Example of the adsynt2 opcode." linenums="1"
+    --8<-- "examples/adsynt2.csd"
+    ```
 
 ## See also
 
-[Additive Synthesis/Resynthesis](../../siggen/additive)
+[Additive Synthesis/Resynthesis](../siggen/additive.md)
 
 ## Credits
 

@@ -7,7 +7,7 @@ Converts a cycles-per-second value to octave-point-decimal.
 
 ## Syntax
 ``` csound-orc
-octcps (cps)  (init- or control-rate args only)
+octcps(cps)  (init- or control-rate args only)
 ```
 
 where the argument within the parentheses may be a further expression.
@@ -37,7 +37,7 @@ By contrast, the conversion _cpsoct_(8.75 + k1) which gives the value of A440 tr
 
 ## Examples
 
-Here is an example of the octcps opcode. It uses the file [octcps.csd](../../examples/octcps.csd).
+Here is an example of the octcps opcode. It uses the file [octcps.csd](../examples/octcps.csd).
 
 ``` csound-csd title="Example of the octcps opcode." linenums="1"
 --8<-- "examples/octcps.csd"
@@ -51,7 +51,7 @@ instr 1:  ioct = 8.750
 
 ## See also
 
-[Pitch Converters: Functions](../../pitch/funcs)
+[Pitch Converters: Functions](../pitch/funcs.md)
 
 ## Credits
 

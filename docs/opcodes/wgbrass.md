@@ -8,9 +8,15 @@ Creates a tone related to a brass instrument.
 It uses a physical model developed from Perry Cook, but re-coded for Csound.
 
 ## Syntax
-``` csound-orc
-ares wgbrass kamp, kfreq, ktens, iatt, kvibf, kvamp [, ifn] [, iminfreq]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = wgbrass(kamp, kfreq, ktens, iatt, kvibf, kvamp [, ifn] [, iminfreq])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares wgbrass kamp, kfreq, ktens, iatt, kvibf, kvamp [, ifn] [, iminfreq]
+    ```
 
 ### Initialization
 
@@ -41,7 +47,7 @@ _kvamp_ -- amplitude of the vibrato
 
 ## Examples
 
-Here is an example of the wgbrass opcode. It uses the file [wgbrass.csd](../../examples/wgbrass.csd).
+Here is an example of the wgbrass opcode. It uses the file [wgbrass.csd](../examples/wgbrass.csd).
 
 ``` csound-csd title="Example of the wgbrass opcode." linenums="1"
 --8<-- "examples/wgbrass.csd"
@@ -49,7 +55,7 @@ Here is an example of the wgbrass opcode. It uses the file [wgbrass.csd](../../e
 
 ## See also
 
-[Waveguide Physical Modeling](../../siggen/wavguide)
+[Waveguide Physical Modeling](../siggen/wavguide.md)
 
 ## Credits
 

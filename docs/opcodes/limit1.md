@@ -6,10 +6,17 @@ category:Mathematical Operations:Arrays
 Limits the value of an argument to the range [0,1].
 
 ## Syntax
-``` csound-orc
-ires[] limit1 iarg
-kres[] limit1 karg
-```
+=== "Modern"
+    ``` csound-orc
+    ires[] = limit1(iarg)
+    kres[] = limit1(karg)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ires[] limit1 iarg
+    kres[] limit1 karg
+    ```
 
 ### Initialization
 
@@ -21,7 +28,7 @@ _karg[]_ -- the argument.
 
 ## Examples
 
-Here is an example of the limit1 opcode. It uses the file [limit1.csd](../../examples/limit1.csd).
+Here is an example of the limit1 opcode. It uses the file [limit1.csd](../examples/limit1.csd).
 
 ``` csound-csd title="Example of the limit1 opcode." linenums="1"
 --8<-- "examples/limit1.csd"
@@ -29,7 +36,7 @@ Here is an example of the limit1 opcode. It uses the file [limit1.csd](../../exa
 
 ## See also
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

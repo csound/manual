@@ -6,9 +6,15 @@ category:Instrument Control:Sensing and Control
 Returns the number of pfields belonging to a note event.
 
 ## Syntax
-``` csound-orc
-icount pcount
-```
+=== "Modern"
+    ``` csound-orc
+    icount = pcount()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    icount pcount
+    ```
 
 ### Initialization
 
@@ -16,11 +22,11 @@ _icount_ - stores the number of pfields for the current note event.
 
 > :memo: **Note**
 >
-> Note that the reported number of pfields is not necessarily what is explicitly written in the score, but the pfields available to the instrument through mechanisms like [pfield carry](../../).
+> Note that the reported number of pfields is not necessarily what is explicitly written in the score, but the pfields available to the instrument through mechanisms like [pfield carry](../score/preproc.md#carry).
 
 ## Examples
 
-Here is an example of the pcount opcode. It uses the file [pcount.csd](../../examples/pcount.csd).
+Here is an example of the pcount opcode. It uses the file [pcount.csd](../examples/pcount.csd).
 
 ``` csound-csd title="Example of the pcount opcode." linenums="1"
 --8<-- "examples/pcount.csd"
@@ -45,7 +51,7 @@ The warnings occur because pfields are not used explicitly by the instrument.
 
 ## See also
 
-[Sensing and Control: Score control](../../control/sensing)
+[Sensing and Control: Score control](../control/sensing.md)
 
 ## Credits
 

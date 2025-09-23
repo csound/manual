@@ -6,9 +6,15 @@ category:Array Operations: Fast Fourier Transform
 Applies a given window shape to a vector stored in an array. The output is an array with the windowed vector.
 
 ## Syntax
-``` csound-orc
-kout[] window kin[] [, koff, itype]
-```
+=== "Modern"
+    ``` csound-orc
+    kout[] = window(kin[] [, koff, itype])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kout[] window kin[] [, koff, itype]
+    ```
 
 ### Initialization
 
@@ -24,7 +30,7 @@ _koff_ -- offset to make window start at position koff (non-negative only, defau
 
 ## Examples
 
-Here is an example of the window opcode. It uses the file [window.csd](../../examples/window.csd).
+Here is an example of the window opcode. It uses the file [window.csd](../examples/window.csd).
 
 ``` csound-csd title="Example of the window opcode." linenums="1"
 --8<-- "examples/window.csd"
@@ -32,11 +38,11 @@ Here is an example of the window opcode. It uses the file [window.csd](../../exa
 
 ## See Also
 
-[Vectorial opcodes](../../vectorial/top)
+[Vectorial opcodes](../vectorial/top.md)
 
-[array opcodes](../../math/array)
+[array opcodes](../math/array.md)
 
-[Array-based spectral opcodes](../../spectral/arrays)
+[Array-based spectral opcodes](../spectral/arrays.md)
 
 ## Credits
 

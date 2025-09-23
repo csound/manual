@@ -13,9 +13,15 @@ This opcode implements the Azimuth Discrimination and Resynthesis (ADRess) algor
 >
 
 ## Syntax
-``` csound-orc
-fsig pvsdemix fleft, fright, kpos, kwidth, ipoints
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvsdemix(fleft, fright, kpos, kwidth, ipoints)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvsdemix fleft, fright, kpos, kwidth, ipoints
+    ```
 
 ### Performance
 
@@ -56,7 +62,7 @@ adm    pvsynth   fdm
        outs      adm, adm
 ```
 
-Here is a complete example of the pvsdemix opcode. It uses the file [pvsdemix.csd](../../examples/pvsdemix.csd).
+Here is a complete example of the pvsdemix opcode. It uses the file [pvsdemix.csd](../examples/pvsdemix.csd).
 
 ``` csound-csd title="Example of the pvsdemix opcode." linenums="1"
 --8<-- "examples/pvsdemix.csd"
@@ -64,7 +70,7 @@ Here is a complete example of the pvsdemix opcode. It uses the file [pvsdemix.cs
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

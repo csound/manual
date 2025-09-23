@@ -8,9 +8,15 @@ Read absolute time in k-rate cycles, since the start of aninstance of an instrum
 Called at both i-time as well as k-time. NB: the returned value at k-time starts at 1
 
 ## Syntax
-``` csound-orc
-kres timeinstk
-```
+=== "Modern"
+    ``` csound-orc
+    kres = timeinstk()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres timeinstk
+    ```
 
 ### Performance
 
@@ -26,11 +32,11 @@ then after half a second, the _timeinstk_ opcode would report 3150. It will alwa
 
 _timeinstk_ produces a k-rate variable for output. There are no input parameters.
 
-_timeinstk_ is similar to [timek](../../opcodes/timek) except it returns the time since the start of this instance of the instrument.
+_timeinstk_ is similar to [timek](../opcodes/timek.md) except it returns the time since the start of this instance of the instrument.
 
 ## Examples
 
-Here is an example of the timeinstk opcode. It uses the file [timeinstk.csd](../../examples/timeinstk.csd).
+Here is an example of the timeinstk opcode. It uses the file [timeinstk.csd](../examples/timeinstk.csd).
 
 ``` csound-csd title="Example of the timeinstk opcode." linenums="1"
 --8<-- "examples/timeinstk.csd"
@@ -48,7 +54,7 @@ k1 = 8820.000000 samples
 
 ## See also
 
-[Time Reading](../../control/timeread)
+[Time Reading](../control/timeread.md)
 
 ## Credits
 

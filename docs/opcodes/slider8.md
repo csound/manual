@@ -6,12 +6,21 @@ category:Real-time MIDI:Slider Banks
 Creates a bank of 8 different MIDI control message numbers.
 
 ## Syntax
-``` csound-orc
-i1, ..., i8 slider8 ichan, ictlnum1, imin1, imax1, init1, ifn1, ..., \
-                    ictlnum8, imin8, imax8, init8, ifn8
-k1, ..., k8 slider8 ichan, ictlnum1, imin1, imax1, init1, ifn1, ..., \
-                    ictlnum8, imin8, imax8, init8, ifn8
-```
+=== "Modern"
+    ``` csound-orc
+    i1, ..., i8 = slider8(ichan, ictlnum1, imin1, imax1, init1, ifn1, ..., \
+                          ictlnum8, imin8, imax8, init8, ifn8)
+    k1, ..., k8 = slider8(ichan, ictlnum1, imin1, imax1, init1, ifn1, ..., \
+                          ictlnum8, imin8, imax8, init8, ifn8)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    i1, ..., i8 slider8 ichan, ictlnum1, imin1, imax1, init1, ifn1, ..., \
+                        ictlnum8, imin8, imax8, init8, ifn8
+    k1, ..., k8 slider8 ichan, ictlnum1, imin1, imax1, init1, ifn1, ..., \
+                        ictlnum8, imin8, imax8, init8, ifn8
+    ```
 
 ### Initialization
 
@@ -39,13 +48,13 @@ When no function table translation is required, set the _ifnN_ value to 0, else 
 
 _slider8_ allows a bank of 8 different MIDI control message numbers.
 
-As the input and output arguments are many, you can split the line using '\' (backslash) character (new in 3.47 version) to improve the readability. Using these opcodes is considerably more efficient than using the separate ones ([ctrl7](../../opcodes/ctrl7) and [tonek](../../opcodes/tonek)) when more controllers are required.
+As the input and output arguments are many, you can split the line using '\' (backslash) character (new in 3.47 version) to improve the readability. Using these opcodes is considerably more efficient than using the separate ones ([ctrl7](../opcodes/ctrl7.md) and [tonek](../opcodes/tonek.md)) when more controllers are required.
 
 In the i-rate version of _slider8_, there is not an initial value input argument, because the output is gotten directly from current status of internal controller array of Csound.
 
 ## See Also
 
-[Slider Banks](../../midi/sliderbk)
+[Slider Banks](../midi/sliderbk.md)
 
 ## Credits
 

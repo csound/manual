@@ -8,10 +8,17 @@ Simulates a planet orbiting in a binary star system.
 _planet_ simulates a planet orbiting in a binary star system. The outputs are the x, y and z coordinates of the orbiting planet. It is possible for the planet to achieve escape velocity by a close encounter with a star. This makes this system somewhat unstable.
 
 ## Syntax
-``` csound-orc
-ax, ay, az planet kmass1, kmass2, ksep, ix, iy, iz, ivx, ivy, ivz, idelta \
-                  [, ifriction] [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ax, ay, az = planet(kmass1, kmass2, ksep, ix, iy, iz, ivx, ivy, ivz, idelta \
+                        [, ifriction] [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ax, ay, az planet kmass1, kmass2, ksep, ix, iy, iz, ivx, ivy, ivz, idelta \
+                      [, ifriction] [, iskip]
+    ```
 
 ### Initialization
 
@@ -37,7 +44,7 @@ _kmass2_ -- the mass of the second star
 
 ## Examples
 
-Here is an example of the planet opcode. It uses the file [planet.csd](../../examples/planet.csd).
+Here is an example of the planet opcode. It uses the file [planet.csd](../examples/planet.csd).
 
 ``` csound-orc title="Example of the planet opcode." linenums="1"
 --8<-- "examples/planet.csd"
@@ -45,7 +52,7 @@ Here is an example of the planet opcode. It uses the file [planet.csd](../../exa
 
 ## See Also
 
-[Models and Emulations](../../siggen/models)
+[Models and Emulations](../siggen/models.md)
 
 More information on this opcode: [http://www.csoundjournal.com/issue9/FlutesInOrbit.html](http://www.csoundjournal.com/issue9/FlutesInOrbit.html)  , written by Brian Redfern.
 

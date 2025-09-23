@@ -20,7 +20,7 @@ ires system_i 1,{{ atsa fox.wav fox.ats }} ; default settings
 instr 1 
 
 ktime   line    0, p3, 2
-kfreq, kamp     ATSread  ktime, "beats.ats", 10 ; take the 10th partial
+kfreq, kamp     ATSread  ktime, "fox.ats", 10 ; take the 10th partial
 aenv    linen   1, 0, p3, .1    ; envelope to avoid clicks
 aout    oscili  0.8, kfreq, 1
         outs    aout * aenv, aout * aenv

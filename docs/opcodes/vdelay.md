@@ -5,12 +5,18 @@ category:Signal Modifiers:Delay
 # vdelay
 An interpolating variable time delay.
 
-It is not very different from the existing implementation ([deltapi](../../opcodes/deltapi)), it is only easier to use.
+It is not very different from the existing implementation ([deltapi](../opcodes/deltapi.md)), it is only easier to use.
 
 ## Syntax
-``` csound-orc
-ares vdelay asig, adel, imaxdel [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = vdelay(asig, adel, imaxdel [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares vdelay asig, adel, imaxdel [, iskip]
+    ```
 
 ### Initialization
 
@@ -28,7 +34,7 @@ _adel_ -- Current value of delay in milliseconds. Note that linear functions hav
 
 ## Examples
 
-Here is an example of the vdelay opcode. It uses the file [vdelay.csd](../../examples/vdelay.csd).
+Here is an example of the vdelay opcode. It uses the file [vdelay.csd](../examples/vdelay.csd).
 
 ``` csound-csd title="Example of the vdelay opcode." linenums="1"
 --8<-- "examples/vdelay.csd"
@@ -38,7 +44,7 @@ Two important points here. First, the delay time must be always positive. And se
 
 ## See also
 
-[Delay](../../sigmod/delayops)
+[Delay](../sigmod/delayops.md)
 
 ## Credits
 

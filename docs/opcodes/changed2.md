@@ -8,11 +8,19 @@ k-rate signal change detector.
 This opcode outputs a trigger signal that informs when any one of its k-rate arguments has changed, or a value in an array. Useful with valuator widgets or MIDI controllers.
 
 ## Syntax
-``` csound-orc
-ktrig changed2 kvar1 [, kvar2,..., kvarN]
-ktrig changed2 karr[]
-ktrig changed2 aarr[]
-```
+=== "Modern"
+    ``` csound-orc
+    ktrig = changed2(kvar1 [, kvar2,..., kvarN])
+    ktrig = changed2(karr[])
+    ktrig = changed2(aarr[])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ktrig changed2 kvar1 [, kvar2,..., kvarN]
+    ktrig changed2 karr[]
+    ktrig changed2 aarr[]
+    ```
 
 ### Performance
 
@@ -26,11 +34,17 @@ Unlike the opcode _changed_ this opcode will never report the first cycle as a c
 
 ## Examples
 
-Here are two examples of the changed2 opcode. They use the files [changed2.csd](../../examples/changed2.csd) and [changed2a.csd](../../examples/changed2a.csd).
+=== "Modern"
+    Here are two examples of the changed2 opcode. They use the files [changed2-modern.csd](../examples/changed2-modern.csd) and [changed2a-modern.csd](../examples/changed2a-modern.csd).
+    ``` csound-csd title="Example of the changed2 opcode." linenums="1"
+    --8<-- "examples/changed2-modern.csd"
+    ```
 
-``` csound-csd title="Example of the changed2 opcode." linenums="1"
---8<-- "examples/changed2.csd"
-```
+=== "Classic"
+    Here are two examples of the changed2 opcode. They use the files [changed2.csd](../examples/changed2.csd) and [changed2a.csd](../examples/changed2a.csd).
+    ``` csound-csd title="Example of the changed2 opcode." linenums="1"
+    --8<-- "examples/changed2.csd"
+    ```
 
 Its output should include lines like:
 
@@ -64,13 +78,19 @@ i1     0.00000
 .........
 ```
 
-``` csound-csd title="Example of the changed2 opcode." linenums="1"
---8<-- "examples/changed2a.csd"
-```
+=== "Modern"
+    ``` csound-csd title="Second example of the changed2 opcode." linenums="1"
+    --8<-- "examples/changed2a-modern.csd"
+    ```
+
+=== "Classic"
+    ``` csound-csd title="Second example of the changed2 opcode." linenums="1"
+    --8<-- "examples/changed2a.csd"
+    ```
 
 ## See also
 
-[Sensing and Control: Tempo and Sequencing](../../control/sensing)
+[Sensing and Control: Tempo and Sequencing](../control/sensing.md)
 
 ## Credits
 

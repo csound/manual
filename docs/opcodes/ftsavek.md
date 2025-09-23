@@ -6,9 +6,15 @@ category:Table Control:Read/Write Operations
 Save a set of previously-allocated tables to a file.
 
 ## Syntax
-``` csound-orc
-ftsavek "filename", ktrig, iflag, ifn1 [, ifn2] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    ftsavek("filename", ktrig, iflag, ifn1 [, ifn2] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ftsavek "filename", ktrig, iflag, ifn1 [, ifn2] [...]
+    ```
 
 ### Initialization
 
@@ -22,7 +28,7 @@ _ifn1, ifn2, ..._ -- Numbers of tables to save.
 
 _ktrig_ -- The trigger signal. Save the file each time it is non-zero.
 
-_ftsavek_ saves a list of tables to a file. The file's format can be binary or text. Unlike [ftsave](../../opcodes/ftsave), the saving operation can be repeated numerous times within the same note by using a trigger signal.
+_ftsavek_ saves a list of tables to a file. The file's format can be binary or text. Unlike [ftsave](../opcodes/ftsave.md), the saving operation can be repeated numerous times within the same note by using a trigger signal.
 
 > :warning: **Warning**
 >
@@ -30,7 +36,7 @@ _ftsavek_ saves a list of tables to a file. The file's format can be binary or t
 
 ## See also
 
-[Read/Write Operations](../../table/readwrit)
+[Read/Write Operations](../table/readwrit.md)
 
 ## Credits
 

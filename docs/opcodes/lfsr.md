@@ -8,9 +8,15 @@ Linear Feedback Shift Register (LFSR).
 Output is a series of pseudo-random positive integers. This is the technique used in so-called "Turing machine" synth modules and is usually used to generate melodic sequences. This implementation is adapted from the firmware for the Ornament &amp; Crime module, as used in the Quantermain and Meta-Q apps.
 
 ## Syntax
-``` csound-orc
-knum lfsr ilen, iprob [, iseed]
-```
+=== "Modern"
+    ``` csound-orc
+    knum = lfsr(ilen, iprob [, iseed])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    knum lfsr ilen, iprob [, iseed]
+    ```
 
 ### Initialization
 
@@ -26,7 +32,7 @@ _knum_ -- integer output
 
 ## Examples
 
-Here is an example of the lfsr opcode. It uses the file [lfsr.csd](../../examples/lfsr.csd).
+Here is an example of the lfsr opcode. It uses the file [lfsr.csd](../examples/lfsr.csd).
 
 ``` csound-orc title="Example of the lfsr opcode." linenums="1"
 --8<-- "examples/lfsr.csd"
@@ -34,7 +40,7 @@ Here is an example of the lfsr opcode. It uses the file [lfsr.csd](../../example
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
 ## Credits
 

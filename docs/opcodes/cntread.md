@@ -8,9 +8,15 @@ Read current value of a counter object without changing it.
 Plugin opcode in counter.
 
 ## Syntax
-``` csound-orc
-kval cntRead icnt
-```
+=== "Modern"
+    ``` csound-orc
+    kval = cntRead(icnt)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kval cntRead icnt
+    ```
 
 ### Initialization
 
@@ -22,7 +28,7 @@ Reads a counter object.
 
 ## See also
 
-[Program Flow Control: Counter](../../control/pgmctl)
+[Program Flow Control: Counter](../control/pgmctl.md)
 
 ## Credits
 

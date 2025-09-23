@@ -2,18 +2,18 @@
 
 The following envelope generators are available:
 
-* [adsr](../../opcodes/adsr)
-* [gtadsr](../../opcodes/gtadsr)
-* [madsr](../../opcodes/madsr)
-* [mxadsr](../../opcodes/mxadsr)
-* [xadsr](../../opcodes/xadsr)
-* [linen](../../opcodes/linen)
-* [linenr](../../opcodes/linenr)
-* [envlpx](../../opcodes/envlpx)
-* [envlpxr](../../opcodes/envlpxr)
-* [lineto](../../opcodes/lineto)
-* [tlineto](../../opcodes/tlineto)
-* [linlin](../../opcodes/linlin)
-* [lincos](../../opcodes/lincos)
+* [adsr](../opcodes/adsr.md)
+* [gtadsr](../opcodes/gtadsr.md)
+* [madsr](../opcodes/madsr.md)
+* [mxadsr](../opcodes/mxadsr.md)
+* [xadsr](../opcodes/xadsr.md)
+* [linen](../opcodes/linen.md)
+* [linenr](../opcodes/linenr.md)
+* [envlpx](../opcodes/envlpx.md)
+* [envlpxr](../opcodes/envlpxr.md)
+* [lineto](../opcodes/lineto.md)
+* [tlineto](../opcodes/tlineto.md)
+* [linlin](../opcodes/linlin.md)
+* [lincos](../opcodes/lincos.md)
 
-Consult the [Linear and exponential generators](../lineexp) section for additional methods to create envelopes.
+Consult the [Linear and exponential generators](lineexp.md) section for additional methods to create envelopes.

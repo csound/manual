@@ -6,9 +6,15 @@ category:Signal I/O:Soundfile Queries
 Returns the length of a sound file.
 
 ## Syntax
-``` csound-orc
-ir filelen ifilcod, [iallowraw]
-```
+=== "Modern"
+    ``` csound-orc
+    ir = filelen(ifilcod, [iallowraw])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ir filelen ifilcod, [iallowraw]
+    ```
 
 ### Initialization
 
@@ -22,7 +28,7 @@ _filelen_ returns the length of the sound file _ifilcod_ in seconds. _filelen_ c
 
 ## Examples
 
-Here is an example of the filelen opcode. It uses the file [filelen.csd](../../examples/filelen.csd), [Mathews.wav](../../examples/Mathews.wav), and [drumsSlp.wav](../../examples/drumsSlp.wav).
+Here is an example of the filelen opcode. It uses the file [filelen.csd](../examples/filelen.csd), [Mathews.wav](../examples/Mathews.wav), and [drumsSlp.wav](../examples/drumsSlp.wav).
 
 ``` csound-csd title="Example of the filelen opcode." linenums="1"
 --8<-- "examples/filelen.csd"
@@ -37,7 +43,7 @@ lenght of sample = 4.000 seconds
 
 ## See also
 
-[Sound File Queries](../../sigio/queries)
+[Sound File Queries](../sigio/queries.md)
 
 ## Credits
 

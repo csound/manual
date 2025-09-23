@@ -3,14 +3,22 @@ id:ntrpol
 category:Signal Modifiers:Sample Level Operators
 -->
 # ntrpol
-Calculates the weighted mean value (i.e. linear interpolation) of two input signals
+Calculates the weighted mean value (i.e. linear interpolation) of two input signals.
 
 ## Syntax
-``` csound-orc
-ares ntrpol asig1, asig2, kpoint [, imin] [, imax]
-ires ntrpol isig1, isig2, ipoint [, imin] [, imax]
-kres ntrpol ksig1, ksig2, kpoint [, imin] [, imax]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = ntrpol(asig1, asig2, kpoint [, imin] [, imax])
+    ires = ntrpol(isig1, isig2, ipoint [, imin] [, imax])
+    kres = ntrpol(ksig1, ksig2, kpoint [, imin] [, imax])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares ntrpol asig1, asig2, kpoint [, imin] [, imax]
+    ires ntrpol isig1, isig2, ipoint [, imin] [, imax]
+    kres ntrpol ksig1, ksig2, kpoint [, imin] [, imax]
+    ```
 
 ### Initialization
 
@@ -30,7 +38,7 @@ These opcodes are useful for crossfading two signals.
 
 ## Examples
 
-Here is an example of the ntrpol opcode. It uses the file [ntrpol.csd](../../examples/ntrpol.csd).
+Here is an example of the ntrpol opcode. It uses the file [ntrpol.csd](../examples/ntrpol.csd).
 
 ``` csound-csd title="Example of the ntrpol opcode." linenums="1"
 --8<-- "examples/ntrpol.csd"
@@ -38,7 +46,7 @@ Here is an example of the ntrpol opcode. It uses the file [ntrpol.csd](../../exa
 
 ## See also
 
-[Sample Level Operators](../../sigmod/sample)
+[Sample Level Operators](../sigmod/sample.md)
 
 ## Credits
 

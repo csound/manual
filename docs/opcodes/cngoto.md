@@ -6,19 +6,31 @@ category:Instrument Control:Program Flow Control
 Transfers control on every pass when the condition is _not_ true.
 
 ## Syntax
-``` csound-orc
-cngoto condition, label
-```
+=== "Modern"
+    ``` csound-orc
+    cngoto(condition, label)
+    ```
 
-where _label_ is in the same instrument block and is not an expression, and where _condition_ uses one of the Relational operators (_&lt;_,_ =_, _&lt;=_, _==_, _!=_) (and _=_ for convenience, see also under [Conditional Values](../../control/conditional)).
+=== "Classic"
+    ``` csound-orc
+    cngoto condition, label
+    ```
+
+where _label_ is in the same instrument block and is not an expression, and where _condition_ uses one of the Relational operators (_&lt;_,_ =_, _&lt;=_, _==_, _!=_) (and _=_ for convenience, see also under [Conditional Values](../control/conditional.md)).
 
 ## Examples
 
-Here is an example of the cngoto opcode. It uses the file [cngoto.csd](../../examples/cngoto.csd).
+=== "Modern"
+    Here is an example of the cngoto opcode. It uses the file [cngoto-modern.csd](../examples/cngoto-modern.csd).
+    ``` csound-csd title="Example of the cngoto opcode." linenums="1"
+    --8<-- "examples/cngoto-modern.csd"
+    ```
 
-``` csound-csd title="Example of the cngoto opcode." linenums="1"
---8<-- "examples/cngoto.csd"
-```
+=== "Classic"
+    Here is an example of the cngoto opcode. It uses the file [cngoto.csd](../examples/cngoto.csd).
+    ``` csound-csd title="Example of the cngoto opcode." linenums="1"
+    --8<-- "examples/cngoto.csd"
+    ```
 
 Its output should include lines like:
 
@@ -30,7 +42,7 @@ kval = 1.999639, kfreq = 440.000000
 
 ## See also
 
-[Program Flow Control](../../control/pgmctl)
+[Program Flow Control](../control/pgmctl.md)
 
 ## Credits
 

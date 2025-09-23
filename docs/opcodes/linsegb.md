@@ -6,10 +6,17 @@ category:Signal Generators:Linear and Exponential Generators
 Trace a series of line segments between specified absolute points.
 
 ## Syntax
-``` csound-orc
-ares linsegb ia, itim1, ib [, itim2] [, ic] [...]
-kres linsegb ia, itim1, ib [, itim2] [, ic] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = linsegb(ia, itim1, ib [, itim2] [, ic] [...])
+    kres = linsegb(ia, itim1, ib [, itim2] [, ic] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares linsegb ia, itim1, ib [, itim2] [, ic] [...]
+    kres linsegb ia, itim1, ib [, itim2] [, ic] [...]
+    ```
 
 ### Initialization
 
@@ -28,7 +35,7 @@ These units generate control or audio signals whose values can pass through 2 or
 
 ## Examples
 
-Here is an example of the linsegb opcode. It uses the file [linsegb.csd](../../examples/linsegb.csd).
+Here is an example of the linsegb opcode. It uses the file [linsegb.csd](../examples/linsegb.csd).
 
 ``` csound-orc title="Example of the linsegb opcode." linenums="1"
 --8<-- "examples/linsegb.csd"
@@ -36,7 +43,7 @@ Here is an example of the linsegb opcode. It uses the file [linsegb.csd](../../e
 
 ## See also
 
-[Linear and Exponential Generators](../../siggen/lineexp)
+[Linear and Exponential Generators](../siggen/lineexp.md)
 
 ## Credits
 

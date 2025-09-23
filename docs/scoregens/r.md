@@ -27,7 +27,7 @@ In order that the sections may be more flexible than simple editing, the macro n
 
 ## Examples
 
-Here is an example of the r statement. It uses the file [r.csd](../../examples/r.csd).
+Here is an example of the r statement. It uses the file [r.csd](../examples/r.csd).
 
 ``` csound-csd title="Example of the r statement." linenums="1"
 --8<-- "examples/r.csd"
@@ -35,7 +35,7 @@ Here is an example of the r statement. It uses the file [r.csd](../../examples/r
 
 ## See Also
 
-[Score Statements](../../score/statemnt)
+[Score Statements](../score/statemnt.md)
 
 ## Credits
 

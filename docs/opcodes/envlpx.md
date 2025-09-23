@@ -10,10 +10,17 @@ Applies an envelope consisting of 3 segments.
 3.  exponential decay
 
 ## Syntax
-``` csound-orc
-ares envlpx xamp, irise, idur, idec, ifn, iatss, iatdec [, ixmod]
-kres envlpx kamp, irise, idur, idec, ifn, iatss, iatdec [, ixmod]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = envlpx(xamp, irise, idur, idec, ifn, iatss, iatdec [, ixmod])
+    kres = envlpx(kamp, irise, idur, idec, ifn, iatss, iatdec [, ixmod])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares envlpx xamp, irise, idur, idec, ifn, iatss, iatdec [, ixmod]
+    kres envlpx kamp, irise, idur, idec, ifn, iatss, iatdec [, ixmod]
+    ```
 
 ### Initialization
 
@@ -40,7 +47,7 @@ _idur - idec_. If these periods are separated in time there will be a steady sta
 
 ## Examples
 
-Here is an example of the envlpx opcode. It uses the file [envlpx.csd](../../examples/envlpx.csd).
+Here is an example of the envlpx opcode. It uses the file [envlpx.csd](../examples/envlpx.csd).
 
 ``` csound-csd title="Example of the envlpx opcode." linenums="1"
 --8<-- "examples/envlpx.csd"
@@ -48,7 +55,7 @@ Here is an example of the envlpx opcode. It uses the file [envlpx.csd](../../exa
 
 ## See Also
 
-[Envelope Generators](../../siggen/envelope)
+[Envelope Generators](../siggen/envelope.md)
 
 ## Credits
 

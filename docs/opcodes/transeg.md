@@ -6,10 +6,17 @@ category:Signal Generators:Linear and Exponential Generators
 Constructs a user-definable envelope.
 
 ## Syntax
-``` csound-orc
-ares transeg ia, idur, itype, ib [, idur2] [, itype] [, ic] ...
-kres transeg ia, idur, itype, ib [, idur2] [, itype] [, ic] ...
-```
+=== "Modern"
+    ``` csound-orc
+    ares = transeg(ia, idur, itype, ib [, idur2] [, itype] [, ic] ...)
+    kres = transeg(ia, idur, itype, ib [, idur2] [, itype] [, ic] ...)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares transeg ia, idur, itype, ib [, idur2] [, itype] [, ic] ...
+    kres transeg ia, idur, itype, ib [, idur2] [, itype] [, ic] ...
+    ```
 
 ### Initialization
 
@@ -29,14 +36,14 @@ ibeg + (ivalue - ibeg) * (1 - exp( i*itype/(n-1) )) / (1 - exp(itype))
 
 ### Performance
 
-If _itype_ &gt; 0, there is a slowly rising (concave) or slowly decaying (convex) curve, while if _itype_ &lt; 0, the curve is fast rising (convex) or fast decaying (concave). See also [GEN16](../../scoregens/gen16).
+If _itype_ &gt; 0, there is a slowly rising (concave) or slowly decaying (convex) curve, while if _itype_ &lt; 0, the curve is fast rising (convex) or fast decaying (concave). See also [GEN16](../scoregens/gen16.md).
 
 ## Examples
 
-Here is an example of the transeg opcode. It uses the file [transeg.csd](../../examples/transeg.csd). The example produces the following output:
+Here is an example of the transeg opcode. It uses the file [transeg.csd](../examples/transeg.csd). The example produces the following output:
 
 <figure markdown="span">
-![Output of the transeg example.](../../images/transeg.png)
+![Output of the transeg example.](../images/transeg.png)
 <figcaption>Output of the transeg example.</figcaption>
 </figure>
 
@@ -46,7 +53,7 @@ Here is an example of the transeg opcode. It uses the file [transeg.csd](../../e
 
 ## See also
 
-[Linear and Exponential Generators](../../siggen/lineexp)
+[Linear and Exponential Generators](../siggen/lineexp.md)
 
 ## Credits
 

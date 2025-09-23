@@ -8,10 +8,17 @@ Uses FM synthesis to create a Wurlitzer electric piano sound.
 It comes from a family of FM sounds, all using 4 basic oscillators and various architectures, as used in the TX81Z synthesizer.
 
 ## Syntax
-``` csound-orc
-ares fmwurlie kamp, kfreq, kc1, kc2, kvdepth, kvrate, ifn1, ifn2, ifn3, \
-              ifn4, ivfn
-```
+=== "Modern"
+    ``` csound-orc
+    ares = fmwurlie(kamp, kfreq, kc1, kc2, kvdepth, kvrate, ifn1, ifn2, ifn3, \
+                    ifn4, ivfn)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares fmwurlie kamp, kfreq, kc1, kc2, kvdepth, kvrate, ifn1, ifn2, ifn3, \
+                  ifn4, ivfn
+    ```
 
 ### Initialization
 
@@ -22,7 +29,7 @@ The initial waves should be:
 * _ifn1_ -- sine wave
 * _ifn2_ -- sine wave
 * _ifn3_ -- sine wave
-* _ifn4_ -- [fwavblnk.aiff](../../examples/fwavblnk.aiff)
+* _ifn4_ -- [fwavblnk.aiff](../examples/fwavblnk.aiff)
 
 > :memo: **Note**<br>
 >
@@ -46,7 +53,7 @@ _kvrate_ -- Vibrator rate
 
 ## Examples
 
-Here is an example of the fmwurlie opcode. It uses the file [fmwurlie.csd](../../examples/fmwurlie.csd), and [fwavblnk.aiff](../../examples/fwavblnk.aiff).
+Here is an example of the fmwurlie opcode. It uses the file [fmwurlie.csd](../examples/fmwurlie.csd), and [fwavblnk.aiff](../examples/fwavblnk.aiff).
 
 ``` csound-orc title="Example of the fmwurlie opcode." linenums="1"
 --8<-- "examples/fmwurlie.csd"
@@ -54,7 +61,7 @@ Here is an example of the fmwurlie opcode. It uses the file [fmwurlie.csd](../..
 
 ## See Also
 
-[FM Synthesis](../../siggen/fmsynth)
+[FM Synthesis](../siggen/fmsynth.md)
 
 More information about frequency modulation on Wikipedia: [http://en.wikipedia.org/wiki/Frequency_modulation_synthesis](http://en.wikipedia.org/wiki/Frequency_modulation_synthesis)
 

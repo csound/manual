@@ -18,7 +18,7 @@ where the argument within the parentheses may be an expression. Value converters
 
 ## Examples
 
-Here is an example of the round opcode. It uses the file [round.csd](../../examples/round.csd).
+Here is an example of the round opcode. It uses the file [round.csd](../examples/round.csd).
 
 ``` csound-csd title="Example of the round opcode." linenums="1"
 --8<-- "examples/round.csd"
@@ -39,15 +39,21 @@ instr 1:  inumber = 9.000  idiv = 9.000  ifl = 1.000
 instr 1:  inumber = 9.000  idiv = 10.000  ifl = 1.000
 ```
 
-Here is an example for the rounding-group, comparing the different rounding opcodes. It uses the file [rounding-group.csd](../../examples/rounding-group.csd).
+=== "Modern"
+    Here is an example for the rounding-group, comparing the different rounding opcodes. It uses the file [rounding-group-modern.csd](../examples/rounding-group-modern.csd).
+    ``` csound-csd title="Example of the rounding group." linenums="1"
+    --8<-- "examples/rounding-group-modern.csd"
+    ```
 
-``` csound-csd title="Example of the rounding group." linenums="1"
---8<-- "examples/rounding-group.csd"
-```
+=== "Classic"
+    Here is an example for the rounding-group, comparing the different rounding opcodes. It uses the file [rounding-group.csd](../examples/rounding-group.csd).
+    ``` csound-csd title="Example of the rounding group." linenums="1"
+    --8<-- "examples/rounding-group.csd"
+    ```
 
 ## See also
 
-[Mathematical Functions](../../math/mathfunc)
+[Mathematical Functions](../math/mathfunc.md)
 
 ## Credits
 

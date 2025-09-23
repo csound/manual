@@ -6,10 +6,17 @@ category:Signal Generators:Hyper Vectorial Synthesis
 Allows three-dimensional Hyper Vectorial Synthesis (HVS) controlled by externally-updated k-variables.
 
 ## Syntax
-``` csound-orc
-hvs3 kx, ky, kz, inumParms, inumPointsX, inumPointsY, inumPointsZ, iOutTab, \
-     iPositionsTab, iSnapTab [, iConfigTab]
-```
+=== "Modern"
+    ``` csound-orc
+    hvs3(kx, ky, kz, inumParms, inumPointsX, inumPointsY, inumPointsZ, iOutTab, \
+         iPositionsTab, iSnapTab [, iConfigTab])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    hvs3 kx, ky, kz, inumParms, inumPointsX, inumPointsY, inumPointsZ, iOutTab, \
+         iPositionsTab, iSnapTab [, iConfigTab]
+    ```
 
 ### Initialization
 
@@ -57,7 +64,7 @@ Output values of the HVS are influenced by the motion pointer, a point whose pos
 
 ## See also
 
-[Hyper Vectorial Synthesis](../../siggen/hvs)
+[Hyper Vectorial Synthesis](../siggen/hvs.md)
 
 ## Credits
 

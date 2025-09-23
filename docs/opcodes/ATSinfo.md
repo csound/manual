@@ -6,13 +6,19 @@ category:Spectral Processing:ATS
 Reads data out of the header of an ATS file.
 
 ## Syntax
-``` csound-orc
-idata ATSinfo iatsfile, ilocation
-```
+=== "Modern"
+    ``` csound-orc
+    idata = ATSinfo(iatsfile, ilocation)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    idata ATSinfo iatsfile, ilocation
+    ```
 
 ### Initialization
 
-_iatsfile_ – the ATS number (n in ats.n) or the name in quotes of the analysis file made using [ATSA](../../utility/atsa).
+_iatsfile_ – the ATS number (n in ats.n) or the name in quotes of the analysis file made using [ATSA](../utility/atsa.md).
 
 _ilocation_ – indicates which location in the header file to return. The data in the header gives information about the data contained in the rest of the ATS file. The possible values for _ilocation_ are given in the following list:
 
@@ -46,11 +52,17 @@ _ATSinfo_ can be useful for writing generic instruments that will work with many
 
 ## Examples
 
-Here is an example of the ATSinfo opcode. It uses the file [ATSinfo.csd](../../examples/ATSinfo.csd).
+=== "Modern"
+    Here is an example of the ATSinfo opcode. It uses the file [ATSinfo-modern.csd](../examples/ATSinfo-modern.csd).
+    ``` csound-csd title="Example of the ATSinfo opcode." linenums="1"
+    --8<-- "examples/ATSinfo-modern.csd"
+    ```
 
-``` csound-csd title="Example of the ATSinfo opcode." linenums="1"
---8<-- "examples/ATSinfo.csd"
-```
+=== "Classic"
+    Here is an example of the ATSinfo opcode. It uses the file [ATSinfo.csd](../examples/ATSinfo.csd).
+    ``` csound-csd title="Example of the ATSinfo opcode." linenums="1"
+    --8<-- "examples/ATSinfo.csd"
+    ```
 
 ### Other examples
 
@@ -70,7 +82,7 @@ imax_freq     ATSinfo "cl.ats", $ATS_FREQ_MAX
 
 ## See also
 
-[ATS Spectral Processing](../../spectral/ATS)
+[ATS Spectral Processing](../spectral/ATS.md)
 
 ## Credits
 

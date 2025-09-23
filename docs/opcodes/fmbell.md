@@ -8,10 +8,17 @@ Uses FM synthesis to create a tublar bell sound.
 It comes from a family of FM sounds, all using 4 basic oscillators and various architectures, as used in the TX81Z synthesizer.
 
 ## Syntax
-``` csound-orc
-ares fmbell kamp, kfreq, kc1, kc2, kvdepth, kvrate[, ifn1, ifn2, ifn3, \
-            ifn4, ivfn, isus]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = fmbell(kamp, kfreq, kc1, kc2, kvdepth, kvrate[, ifn1, ifn2, ifn3, \
+                  ifn4, ivfn, isus])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares fmbell kamp, kfreq, kc1, kc2, kvdepth, kvrate[, ifn1, ifn2, ifn3, \
+                ifn4, ivfn, isus]
+    ```
 
 ### Initialization
 
@@ -44,7 +51,7 @@ _kvrate_ -- Vibrator rate
 
 ## Examples
 
-Here is an example of the fmbell opcode. It uses the file [fmbell.csd](../../examples/fmbell.csd).
+Here is an example of the fmbell opcode. It uses the file [fmbell.csd](../examples/fmbell.csd).
 
 ``` csound-orc title="Example of the fmbell opcode." linenums="1"
 --8<-- "examples/fmbell.csd"
@@ -52,7 +59,7 @@ Here is an example of the fmbell opcode. It uses the file [fmbell.csd](../../exa
 
 ## See Also
 
-[FM Synthesis](../../siggen/fmsynth)
+[FM Synthesis](../siggen/fmsynth.md)
 
 More information about frequency modulation on Wikipedia: [http://en.wikipedia.org/wiki/Frequency_modulation_synthesis](http://en.wikipedia.org/wiki/Frequency_modulation_synthesis)
 

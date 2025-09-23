@@ -3,21 +3,28 @@ id:sndload
 category:Table Control
 -->
 # sndload
-Loads a sound file into memory for use by [loscilx](../../opcodes/loscilx)
+Loads a sound file into memory for use by [loscilx](../opcodes/loscilx.md).
 
 > :memo: **Note**
 >
 > This opcode loads the file into memory but it is not available for use adfterwards.  In effect it just wastes memory.
 
 ## Syntax
-``` csound-orc
-sndload Sfname[, ifmt[, ichns[, isr[, ibas[, iamp[, istrt [, ilpmod[, ilps \
-        [, ilpe]]]]]]]]]
-```
+=== "Modern"
+    ``` csound-orc
+    sndload(Sfname[, ifmt[, ichns[, isr[, ibas[, iamp[, istrt [, ilpmod[, ilps \
+            [, ilpe]]]]]]]]])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    sndload Sfname[, ifmt[, ichns[, isr[, ibas[, iamp[, istrt [, ilpmod[, ilps \
+            [, ilpe]]]]]]]]]
+    ```
 
 ### Initialization
 
-_Sfname_ - file name as a string constant or variable, string p-field, or a number that is used either as an index to strings set with strset, or, if that is not available, a file name in the format soundin.n is used. If the file name does not include a full path, the file is searched in the current directory first, then those specified by [SSDIR](../../command/environment) (if defined), and finally [SFDIR](../../command/environment). If the same file was already loaded previously, it will not be read again, but the parameters ibas, iamp, istrt, ilpmod, ilps, and ilpe are still updated.
+_Sfname_ - file name as a string constant or variable, string p-field, or a number that is used either as an index to strings set with strset, or, if that is not available, a file name in the format soundin.n is used. If the file name does not include a full path, the file is searched in the current directory first, then those specified by [SSDIR](../invoke/environment-variables.md) (if defined), and finally [SFDIR](../invoke/environment-variables.md). If the same file was already loaded previously, it will not be read again, but the parameters ibas, iamp, istrt, ilpmod, ilps, and ilpe are still updated.
 
 _ifmt _(optional, defaults to zero) - default sample format for raw (headerless) sound files; if the file has a header, this is ignored. Can be one of the following:
 

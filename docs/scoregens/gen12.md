@@ -12,7 +12,7 @@ f # time size 12 xint
 
 ### Initialization
 
-_size_ -- number of points in the table. Must be a power of 2 or a power-of-2 plus 1 (see [f statement](../../scoregens/f)). The normal value is power-of-2 plus 1.
+_size_ -- number of points in the table. Must be a power of 2 or a power-of-2 plus 1 (see [f statement](../scoregens/f.md)). The normal value is power-of-2 plus 1.
 
 _xint_ -- specifies the _x_ interval [0 to _+xint_] over which the function is defined.
 
@@ -23,7 +23,7 @@ _xint_ -- specifies the _x_ interval [0 to _+xint_] over which the function is d
 
 ## Examples
 
-Here is an example of the GEN12 generator. It uses the file [gen12.csd](../../examples/gen12.csd).
+Here is an example of the GEN12 generator. It uses the file [gen12.csd](../examples/gen12.csd).
 
 ``` csound-csd title="Example of the GEN12 generator." linenums="1"
 --8<-- "examples/gen12.csd"
@@ -32,7 +32,7 @@ Here is an example of the GEN12 generator. It uses the file [gen12.csd](../../ex
 This is the diagram of the waveform of the GEN12 routines, as used in the example:
 
 <figure markdown="span">
-![f 37 0 1024 -12 40 - Bessel function-defined from 0 to 40](../../images/gen12.png)
+![f 37 0 1024 -12 40 - Bessel function-defined from 0 to 40](../images/gen12.png)
 <figcaption>f 37 0 1024 -12 40 - Bessel function-defined from 0 to 40</figcaption>
 </figure>
 

@@ -10,9 +10,15 @@ Smooth the amplitude and frequency time functions of a pv stream using a 1st ord
 These are filters applied to control signals so the effect is basically blurring the spectral evolution. The effects produced are more or less similar to _pvsblur_, but with two important differences: 1.smoothing of amplitudes and frequencies use separate sets of filters; and 2. there is no increase in computational cost when higher amounts of blurring' (smoothing) are desired.
 
 ## Syntax
-``` csound-orc
-fsig pvsmooth fsigin, kacf, kfcf
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvsmooth(fsigin, kacf, kfcf)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvsmooth fsigin, kacf, kfcf
+    ```
 
 ### Performance
 
@@ -30,7 +36,7 @@ _kfcf_ -- amount of cutoff frequency for frequency function filtering, between 0
 
 ## Examples
 
-Here is an example of the pvsmooth opcode. It uses the file [pvsmooth.csd](../../examples/pvsmooth.csd).
+Here is an example of the pvsmooth opcode. It uses the file [pvsmooth.csd](../examples/pvsmooth.csd).
 
 ``` csound-csd title="Example of the pvsmooth opcode." linenums="1"
 --8<-- "examples/pvsmooth.csd"
@@ -40,7 +46,7 @@ The formula for calculating the cutoff frequency of the filter: frame rate / hop
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

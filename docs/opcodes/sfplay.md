@@ -5,13 +5,20 @@ category:Signal Generators:Sample Playback
 # sfplay
 Plays a SoundFont2 (SF2) sample preset, generating a stereo sound.
 
-These opcodes allow management the sample-structure of SF2 files. In order to understand the usage of these opcodes, the user must have some knowledge of the SF2 format, so a brief description of this format can be found in the [SoundFont2 File Format](../../siggen/sample) section.
+These opcodes allow management the sample-structure of SF2 files. In order to understand the usage of these opcodes, the user must have some knowledge of the SF2 format, so a brief description of this format can be found in the [SoundFont2 File Format](../siggen/sample.md) section.
 
 ## Syntax
-``` csound-orc
-ar1, ar2 sfplay ivel, inotenum, xamp, xfreq, ipreindex [, iflag] \
-                [, ioffset] [, ienv]
-```
+=== "Modern"
+    ``` csound-orc
+    ar1, ar2 = sfplay(ivel, inotenum, xamp, xfreq, ipreindex [, iflag] \
+                      [, ioffset] [, ienv])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar1, ar2 sfplay ivel, inotenum, xamp, xfreq, ipreindex [, iflag] \
+                    [, ioffset] [, ienv]
+    ```
 
 ### Initialization
 
@@ -49,11 +56,11 @@ These opcodes only support the sample structure of SF2 files. The modulator stru
 
 ## Examples
 
-See the example for [sfplay3](../../opcodes/sfplay3).
+See the example for [sfplay3](../opcodes/sfplay3.md).
 
 ## See also
 
-[Soundfonts](../../siggen/sample)
+[Soundfonts](../siggen/sample.md)
 
 More information on soundfonts is in the Floss Manuals: [https://flossmanual.csound.com/midi/reading-midi-files](https://flossmanual.csound.com/midi/reading-midi-files)
 

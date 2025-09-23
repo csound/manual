@@ -8,9 +8,15 @@ Accumulates the maximum of the absolute values of audio signals.
 _maxabsaccum_ compares two audio-rate variables and stores the maximum of their absolute values into the first.
 
 ## Syntax
-``` csound-orc
-maxabsaccum aAccumulator, aInput
-```
+=== "Modern"
+    ``` csound-orc
+    maxabsaccum(aAccumulator, aInput)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    maxabsaccum aAccumulator, aInput
+    ```
 
 ### Performance
 
@@ -28,7 +34,7 @@ _aAccumulator_ will usually be a global audio variable.  At the end of any given
 
 ## Examples
 
-Here is an example of the maxabsaccum opcode. It uses the file [maxabsaccum.csd](../../examples/maxabsaccum.csd).
+Here is an example of the maxabsaccum opcode. It uses the file [maxabsaccum.csd](../examples/maxabsaccum.csd).
 
 ``` csound-csd title="Example of the maxabsaccum opcode." linenums="1"
 --8<-- "examples/maxabsaccum.csd"
@@ -36,7 +42,7 @@ Here is an example of the maxabsaccum opcode. It uses the file [maxabsaccum.csd]
 
 ## See also
 
-[Comparators and Accumulators](../../sigmod/compaccum)
+[Comparators and Accumulators](../sigmod/compaccum.md)
 
 ## Credits
 

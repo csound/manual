@@ -6,9 +6,15 @@ category:Vectorial:Tables
 Write vectors (to tables -or arrays of vectors) at k-rate.
 
 ## Syntax
-``` csound-orc
-vtabwk  kndx, ifn, kinarg1 [, kinarg2, kinarg3 , .... , kinargN ]
-```
+=== "Modern"
+    ``` csound-orc
+    vtabwk(kndx, ifn, kinarg1 [, kinarg2, kinarg3 , .... , kinargN ])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vtabwk kndx, ifn, kinarg1 [, kinarg2, kinarg3 , .... , kinargN ]
+    ```
 
 ### Initialization
 
@@ -26,7 +32,7 @@ Notice that no wrap nor limit mode is implemented.  So, if  an index attempt to 
 
 ## See also
 
-[Tables of vectors operators](../../vectorial/tables)
+[Tables of vectors operators](../vectorial/tables.md)
 
 ## Credits
 

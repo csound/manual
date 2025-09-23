@@ -6,9 +6,15 @@ category:Vectorial:Tables
 Read vectors (from tables -or arrays of vectors) at a-rate.
 
 ## Syntax
-``` csound-orc
-vtablea  andx, kfn, kinterp, ixmode, aout1 [, aout2, aout3, .... , aoutN ]
-```
+=== "Modern"
+    ``` csound-orc
+    vtablea(andx, kfn, kinterp, ixmode, aout1 [, aout2, aout3, .... , aoutN ])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vtablea andx, kfn, kinterp, ixmode, aout1 [, aout2, aout3, .... , aoutN ]
+    ```
 
 ### Initialization
 
@@ -38,11 +44,11 @@ Notice that no wrap nor limit mode is implemented.  So, if  an index attempt to 
 
 > :memo: **Note**
 >
-> Notice that _vtablea_'s output arguments are placed at the right of the opcode name, differently from usual (this style is already used in other opcodes using undefined lists of output arguments such as [fin](../../opcodes/fin) or [trigseq](../../opcodes/trigseq)).
+> Notice that _vtablea_'s output arguments are placed at the right of the opcode name, differently from usual (this style is already used in other opcodes using undefined lists of output arguments such as [fin](../opcodes/fin.md) or [trigseq](../opcodes/trigseq.md)).
 
 ## See also
 
-[Tables of vectors operators](../../vectorial/tables)
+[Tables of vectors operators](../vectorial/tables.md)
 
 ## Credits
 

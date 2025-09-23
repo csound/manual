@@ -6,9 +6,15 @@ category:Real-time MIDI:Output
 Sends MIDI controller messages at k-rate.
 
 ## Syntax
-``` csound-orc
-outkc kchn, knum, kvalue, kmin, kmax
-```
+=== "Modern"
+    ``` csound-orc
+    outkc(kchn, knum, kvalue, kmin, kmax)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    outkc kchn, knum, kvalue, kmin, kmax
+    ```
 
 ### Performance
 
@@ -29,7 +35,7 @@ When the _kvalue_ argument receives a 2.0 value, the opcode will send a 127 valu
 
 ## Examples
 
-Here is an example of the outkc opcode. It uses the file [outkc.csd](../../examples/outkc.csd).
+Here is an example of the outkc opcode. It uses the file [outkc.csd](../examples/outkc.csd).
 
 ``` csound-csd title="Example of the outkc opcode." linenums="1"
 --8<-- "examples/outkc.csd"
@@ -37,7 +43,7 @@ Here is an example of the outkc opcode. It uses the file [outkc.csd](../../examp
 
 ## See also
 
-[MIDI Message Output](../../midi/output)
+[MIDI Message Output](../midi/output.md)
 
 ## Credits
 

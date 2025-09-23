@@ -3,14 +3,20 @@ id:metro
 category:Instrument Control:Sensing and Control
 -->
 # metro
-Trigger Metronome
+Trigger Metronome.
 
 Generate a metronomic signal to be used in any circumstance an isochronous trigger is needed.
 
 ## Syntax
-``` csound-orc
-ktrig  metro  kfreq [, initphase]
-```
+=== "Modern"
+    ``` csound-orc
+    ktrig  = metro( kfreq [, initphase])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ktrig  metro  kfreq [, initphase]
+    ```
 
 ### Initialization
 
@@ -30,13 +36,13 @@ _metro_ is a simple opcode that outputs a sequence of isochronous bangs (that is
 
 ## Examples
 
-Here is an example of the metro opcode. It uses the file [metro.csd](../../examples/metro.csd)
+Here is an example of the metro opcode. It uses the file [metro.csd](../examples/metro.csd)
 
 ``` csound-csd title="Example of the metro opcode." linenums="1"
 --8<-- "examples/metro.csd"
 ```
 
-Here is another example of the metro opcode. It uses the file [metro-2.csd](../../examples/metro-2.csd)
+Here is another example of the metro opcode. It uses the file [metro-2.csd](../examples/metro-2.csd)
 
 ``` csound-csd title="Another example of the metro opcode." linenums="1"
 --8<-- "examples/metro-2.csd"
@@ -44,7 +50,7 @@ Here is another example of the metro opcode. It uses the file [metro-2.csd](../.
 
 ## See also
 
-[Sensing and Control: Tempo and Sequencing](../../control/sensing)
+[Sensing and Control: Tempo and Sequencing](../control/sensing.md)
 
 More information on this opcode in the Floss Manuals: [https://flossmanual.csound.com/csound-language/control-structures](https://flossmanual.csound.com/csound-language/control-structures)
 

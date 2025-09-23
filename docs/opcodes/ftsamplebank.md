@@ -8,12 +8,21 @@ Reads a directory for sound files and loads them to a series of GEN01 function t
 Plugin opcode in ftsamplebank.
 
 ## Syntax
-``` csound-orc
-iNumberOfFile ftsamplebank SDirectory, iFirstTableNumber, iSkipTime, iFormat, \
-                           iChannel,
-kNumberOfFile ftsamplebank SDirectory, kFirstTableNumber, kTrigger, kSkipTime, \
-                           kFormat, kChannel,
-```
+=== "Modern"
+    ``` csound-orc
+    iNumberOfFile = ftsamplebank(SDirectory, iFirstTableNumber, iSkipTime, iFormat, \
+                                 iChannel,)
+    kNumberOfFile = ftsamplebank(SDirectory, kFirstTableNumber, kTrigger, kSkipTime, \
+                                 kFormat, kChannel,)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    iNumberOfFile ftsamplebank SDirectory, iFirstTableNumber, iSkipTime, iFormat, \
+                               iChannel,
+    kNumberOfFile ftsamplebank SDirectory, kFirstTableNumber, kTrigger, kSkipTime, \
+                               kFormat, kChannel,
+    ```
 
 ### Initialization
 
@@ -35,7 +44,7 @@ _Format_ -- specifies the audio data-file format:
 
 _Channel_ -- channel number to read in. 0 denotes read all channels.
 
-If _format_ = 0 the sample format is taken from the soundfile header, or by default from the CSound [-o](../../) command-line flag.
+If _format_ = 0 the sample format is taken from the soundfile header, or by default from the CSound [-o](../invoke/cs-options-alphabetically.md#-o-file-outputfile) command-line flag.
 
 ### Performance
 
@@ -49,7 +58,7 @@ _kNumberOfFile_ -- the number of tables that have been created
 
 ## Examples
 
-This example shows ftsamplebank browsing for samples in a fixed location. It loads all samples it finds into GEN01 function tables and then playsa them back in a sequence, one every second. It uses the file [ftsamplebank.csd](../../examples/ftsamplebank.csd).
+This example shows ftsamplebank browsing for samples in a fixed location. It loads all samples it finds into GEN01 function tables and then playsa them back in a sequence, one every second. It uses the file [ftsamplebank.csd](../examples/ftsamplebank.csd).
 
 ``` csound-csd title="Example of the ftsamplebank opcode." linenums="1"
 --8<-- "examples/ftsamplebank.csd"
@@ -57,7 +66,7 @@ This example shows ftsamplebank browsing for samples in a fixed location. It loa
 
 ## See also
 
-[Read/Write Operations](../../table/readwrit)
+[Read/Write Operations](../table/readwrit.md)
 
 ## Credits
 

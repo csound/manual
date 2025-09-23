@@ -33,7 +33,7 @@ where the arguments $a$ and $b$ may be further expressions.
 
 ## Examples
 
-Here is an example of the Logical AND operator. It uses the file [opand.csd](../../examples/opand.csd).
+Here is an example of the Logical AND operator. It uses the file [opand.csd](../examples/opand.csd).
 
 ``` csound-csd title="Example of the opand opcode." linenums="1"
 --8<-- "examples/opand.csd"
@@ -54,4 +54,4 @@ i1     3.00000
 
 ## See also
 
-[Arithmetic and Logic Operations](../../math/artlogic)
+[Arithmetic and Logic Operations](../math/artlogic.md)

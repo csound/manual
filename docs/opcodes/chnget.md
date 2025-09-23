@@ -5,20 +5,34 @@ category:Signal I/O:Software Bus
 # chnget
 Reads data from a channel of the inward named software bus.
 
-Implies declaring the channel with _imode_=1 (see also [chn_k, chn_a, and chn_S](../../opcodes/chn)).
+Implies declaring the channel with _imode_=1 (see also [chn_k, chn_a, and chn_S](../opcodes/chn.md)).
 
 ## Syntax
-``` csound-orc
-ival chnget Sname
-kval chnget Sname
-aval chnget Sname
-Sval chnget Sname
-Sval chngetks Sname
-ival[] chngeti Sname[]
-kval[] chngetk Sname[]
-aval[] chngeta Sname[]
-Sval[] chngets Sname[]
-```
+=== "Modern"
+    ``` csound-orc
+    ival = chnget(Sname)
+    kval = chnget(Sname)
+    aval = chnget(Sname)
+    Sval = chnget(Sname)
+    Sval = chngetks(Sname)
+    ival[] = chngeti(Sname[])
+    kval[] = chngetk(Sname[])
+    aval[] = chngeta(Sname[])
+    Sval[] = chngets(Sname[])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ival chnget Sname
+    kval chnget Sname
+    aval chnget Sname
+    Sval chnget Sname
+    Sval chngetks Sname
+    ival[] chngeti Sname[]
+    kval[] chngetk Sname[]
+    aval[] chngeta Sname[]
+    Sval[] chngets Sname[]
+    ```
 
 ### Initialization
 
@@ -50,7 +64,7 @@ _Sval_ -- the string value read at k-rate. The chnget opcode works both at i-tim
 >
 > Although it is possible to loop through channel names from an array with _chnget_ and _chnset_, using the array based variants is more efficient.
 
-## Example
+## Examples
 
 The example shows the software bus being used as an asynchronous control signal to select a filter cutoff.  It assumes that an external program that has access to the API is feeding the values.
 
@@ -67,15 +81,21 @@ instr   1
 endin
 ```
 
-Here is another example of the chnget opcode. It uses the file [chnget.csd](../../examples/chnget.csd).
+=== "Modern"
+    Here is another example of the chnget opcode. It uses the file [chnget-modern.csd](../examples/chnget-modern.csd).
+    ``` csound-csd title="Example of the chnget opcode." linenums="1"
+    --8<-- "examples/chnget-modern.csd"
+    ```
 
-``` csound-csd title="Example of the chnget opcode." linenums="1"
---8<-- "examples/chnget.csd"
-```
+=== "Classic"
+    Here is another example of the chnget opcode. It uses the file [chnget.csd](../examples/chnget.csd).
+    ``` csound-csd title="Example of the chnget opcode." linenums="1"
+    --8<-- "examples/chnget.csd"
+    ```
 
 ## See also
 
-[Software Bus](../../sigio/softbus)
+[Software Bus](../sigio/softbus.md)
 
 ## Credits
 

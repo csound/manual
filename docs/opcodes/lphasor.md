@@ -3,12 +3,18 @@ id:lphasor
 category:Signal Generators:Sample Playback
 -->
 # lphasor
-Generates a table index for sample playback (e.g. with [tablexkt](../../opcodes/tablexkt)).
+Generates a table index for sample playback (e.g. with [tablexkt](../opcodes/tablexkt.md)).
 
 ## Syntax
-``` csound-orc
-ares lphasor xtrns [, ilps] [, ilpe] [, imode] [, istrt] [, istor]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = lphasor(xtrns [, ilps] [, ilpe] [, imode] [, istrt] [, istor])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares lphasor xtrns [, ilps] [, ilpe] [, imode] [, istrt] [, istor]
+    ```
 
 ### Initialization
 
@@ -35,7 +41,7 @@ _xtrns_ -- transpose factor, expressed as a playback ratio. _ares_ is incremente
 
 ## Examples
 
-Here is an example of the lphasor opcode. It uses the file [lphasor.csd](../../examples/lphasor.csd).
+Here is an example of the lphasor opcode. It uses the file [lphasor.csd](../examples/lphasor.csd).
 
 ``` csound-csd title="Example of the lphasor opcode." linenums="1"
 --8<-- "examples/lphasor.csd"
@@ -43,7 +49,7 @@ Here is an example of the lphasor opcode. It uses the file [lphasor.csd](../../e
 
 ## See also
 
-[Sample Playback](../../siggen/sample)
+[Sample Playback](../siggen/sample.md)
 
 ## Credits
 

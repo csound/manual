@@ -6,9 +6,15 @@ category:Mathematical Operations:Opcode Equivalents of Functions
 Multiplies and accumulates a- and k-rate signals.
 
 ## Syntax
-``` csound-orc
-ares mac ksig1, asig1 [, ksig2] [, asig2] [, ksig3] [, asig3] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = mac(ksig1, asig1 [, ksig2] [, asig2] [, ksig3] [, asig3] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares mac ksig1, asig1 [, ksig2] [, asig2] [, ksig3] [, asig3] [...]
+    ```
 
 ### Performance
 
@@ -24,7 +30,7 @@ ares = asig1*ksig1 + asig2*ksig2 + asig3*ksig3 + ...
 
 ## Examples
 
-Here is an example of the mac opcode. It uses the file [mac.csd](../../examples/mac.csd). It is written for *NIX systems, and will generate errors on Windows.
+Here is an example of the mac opcode. It uses the file [mac.csd](../examples/mac.csd). It is written for *NIX systems, and will generate errors on Windows.
 
 ``` csound-csd title="Example of the mac opcode." linenums="1"
 --8<-- "examples/mac.csd"
@@ -32,7 +38,7 @@ Here is an example of the mac opcode. It uses the file [mac.csd](../../examples/
 
 ## See also
 
-[Opcode Equivalents of Functions](../../math/opeqfunc)
+[Opcode Equivalents of Functions](../math/opeqfunc.md)
 
 ## Credits
 

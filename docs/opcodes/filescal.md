@@ -12,10 +12,17 @@ This opcode allows for time and frequency-independent scaling. Time is advanced 
 _filescal_ will also scale pitch, independently of frequency, using a transposition factor (k-rate).
 
 ## Syntax
-``` csound-orc
-asig [,asig2] filescal ktimescal, kamp, kpitch, Sfile, klock \
-                       [,ifftsize, idecim, ithresh]
-```
+=== "Modern"
+    ``` csound-orc
+    asig [,asig2] = filescal(ktimescal, kamp, kpitch, Sfile, klock \
+                             [,ifftsize, idecim, ithresh])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig [,asig2] filescal ktimescal, kamp, kpitch, Sfile, klock \
+                           [,ifftsize, idecim, ithresh]
+    ```
 
 ### Initialization
 
@@ -39,7 +46,7 @@ _klock_ -- switchec phase-locking on (non-zero) or off (zero).
 
 ## Examples
 
-Here is an example of the filescal opcode. It uses the file [filescal.csd](../../examples/filescal.csd).
+Here is an example of the filescal opcode. It uses the file [filescal.csd](../examples/filescal.csd).
 
 ``` csound-csd title="Example of the filescal opcode." linenums="1"
 --8<-- "examples/filescal.csd"
@@ -47,7 +54,7 @@ Here is an example of the filescal opcode. It uses the file [filescal.csd](../..
 
 ## See Also
 
-[Short-time Fourier Transform (STFT) Resynthesis](../../spectral/stft)
+[Short-time Fourier Transform (STFT) Resynthesis](../spectral/stft.md)
 
 ## Credits
 

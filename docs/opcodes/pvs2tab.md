@@ -3,15 +3,22 @@ id:pvs2tab
 category:Spectral Processing:Streaming
 -->
 # pvs2tab
-Copies spectral data to k-rate arrays (or t-variables). Also known as pvs2array.
+Copies spectral data to k-rate arrays (or t-variables). Also known as [pvs2array](pvs2array.md).
 
 Copies a pvs frame to a t-variable. Currently only AMP+FREQ and AMP+PHASE formats allowed. Since t-vars are an earlier version of k-rate arrays, the opcode also works with these. The opcode pvs2array is an alias of this one.
 
 ## Syntax
-``` csound-orc
-kframe pvs2tab tvar|kvar[], fsig
-kframe pvs2tab kmags[], kfreqs[], fsig
-```
+=== "Modern"
+    ``` csound-orc
+    kframe = pvs2tab(tvar|kvar[], fsig)
+    kframe = pvs2tab(kmags[], kfreqs[], fsig)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kframe pvs2tab tvar|kvar[], fsig
+    kframe pvs2tab kmags[], kfreqs[], fsig
+    ```
 
 ### Performance
 
@@ -34,9 +41,9 @@ kframe  pvs2tab karr, fsig1
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
-[Array-based spectral opcodes](../../spectral/arrays)
+[Array-based spectral opcodes](../spectral/arrays.md)
 
 ## Credits
 

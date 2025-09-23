@@ -8,10 +8,17 @@ Evaluates a string containing Csound code, returning a value from the global spa
 This opcode can be also used to compile new instruments (as _compilestr_).
 
 ## Syntax
-``` csound-orc
-ires evalstr Scode
-kres evalstr Scode, ktrig
-```
+=== "Modern"
+    ``` csound-orc
+    ires = evalstr(Scode)
+    kres = evalstr(Scode, ktrig)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ires evalstr Scode
+    kres evalstr Scode, ktrig
+    ```
 
 ### Initialization
 
@@ -30,7 +37,7 @@ ival evalstr "return 2 + 2"
 print ival
 ```
 
-Here is a complete example of the evalstr opcode. It uses the file [evalstr.csd](../../examples/evalstr.csd).
+Here is a complete example of the evalstr opcode. It uses the file [evalstr.csd](../examples/evalstr.csd).
 
 ``` csound-csd title="Example of the evalstr opcode." linenums="1"
 --8<-- "examples/evalstr.csd"
@@ -38,7 +45,7 @@ Here is a complete example of the evalstr opcode. It uses the file [evalstr.csd]
 
 ## See Also
 
-[String Manipulation Opcodes](../../strings/manipulate)
+[String Manipulation Opcodes](../strings/manipulate.md)
 
 ## Credits
 

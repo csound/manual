@@ -8,9 +8,15 @@ Arbitrary signal scaling with optional smoothing.
 Scales incoming value to user-definable range. Similar to scale object found in popular dataflow languages.
 
 ## Syntax
-``` csound-orc
-kscl scale2 kinput, kmin, kmax[, kimin, kimax][ihtime]
-```
+=== "Modern"
+    ``` csound-orc
+    kscl = scale2(kinput, kmin, kmax[, kimin, kimax][ihtime])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kscl scale2 kinput, kmin, kmax[, kimin, kimax][ihtime]
+    ```
 
 Initialisation
 
@@ -34,7 +40,7 @@ _kimax_ -- Optional; Maximum of the incoming value range, defaulting to one.
 
 ## Examples
 
-Here is an example of the scale2 opcode. It uses the file [scale2.csd](../../examples/scale2.csd).
+Here is an example of the scale2 opcode. It uses the file [scale2.csd](../examples/scale2.csd).
 
 ``` csound-orc title="Example of the scale2 opcode." linenums="1"
 --8<-- "examples/scale2.csd"
@@ -42,7 +48,7 @@ Here is an example of the scale2 opcode. It uses the file [scale2.csd](../../exa
 
 ## See also
 
-[Linear and Exponential Generators](../../siggen/lineexp)
+[Linear and Exponential Generators](../siggen/lineexp.md)
 
 ## Credits
 

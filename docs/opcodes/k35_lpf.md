@@ -8,9 +8,15 @@ Zero-delay feedback implementation of Korg35 resonant low-pass filter.
 This filter design is found in the Korg MS10, early MS20, and Monotron series.
 
 ## Syntax
-``` csound-orc
-asig K35_lpf ain, xcf, xQ [, inlp, isaturation, istor]
-```
+=== "Modern"
+    ``` csound-orc
+    asig = K35_lpf(ain, xcf, xQ [, inlp, isaturation, istor])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig K35_lpf ain, xcf, xQ [, inlp, isaturation, istor]
+    ```
 
 ### Initialization
 
@@ -32,7 +38,7 @@ _ksaturation_ (optional, default=1) -- saturation amount to use for non-linear p
 
 ## Examples
 
-Here is an example of the K35_lpf opcode. It uses the file [k35.csd](../../examples/k35.csd).
+Here is an example of the K35_lpf opcode. It uses the file [k35.csd](../examples/k35.csd).
 
 ``` csound-csd title="Example of the K35_lpf opcode." linenums="1"
 --8<-- "examples/k35.csd"
@@ -48,7 +54,7 @@ This filter is based on the work of Will Pirkle that employs Vadim Zavalishin's 
 
 ## See also
 
-[Standard filters: Zero-delay Feedback Filters (Virtual Analog)](../../sigmod/standard)
+[Standard filters: Zero-delay Feedback Filters (Virtual Analog)](../sigmod/standard.md)
 
 ## Credits
 

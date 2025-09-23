@@ -6,9 +6,15 @@ category:Instrument Control:Sensing and Control
 Return various configuration settings in Svalue as a string at init time.
 
 ## Syntax
-``` csound-orc
-Svalue getcfg iopt
-```
+=== "Modern"
+    ``` csound-orc
+    Svalue = getcfg(iopt)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    Svalue getcfg iopt
+    ```
 
 ### Initialization
 
@@ -30,7 +36,7 @@ _iopt_
 
 ## Examples
 
-Here is an example of the getcfg opcode. It uses the file [getcfg.csd](../../examples/getcfg.csd).
+Here is an example of the getcfg opcode. It uses the file [getcfg.csd](../examples/getcfg.csd).
 
 ``` csound-csd title="Example of the getcfg opcode." linenums="1"
 --8<-- "examples/getcfg.csd"
@@ -52,7 +58,7 @@ Callback ? : 0
 
 ## See also
 
-[Sensing and Control: System](../../control/sensing)
+[Sensing and Control: System](../control/sensing.md)
 
 ## Credits
 

@@ -3,24 +3,36 @@ id:bpf
 category:Signal Generators:Linear and Exponential Generators
 -->
 # bpf
-Break point function with linear interpolation
+Break point function with linear interpolation.
 
 Plugin opcode in emugens.
 
 ## Syntax
-``` csound-orc
+=== "Modern"
+    ``` csound-orc
+    ky = bpf(kx, kx1, ky1, kx2, ..., kxn, kyn)
+    iy = bpf(ix, ix1, iy1, ix2, ..., ixn, iyn)
+    kys[] = bpf(kxs[], kx1, ky1, kx2, ..., kxn, kyn)
+    iys[] = bpf(ixs[], ix1, iy1, ix2, ..., ixn, iyn)
+    ky = bpf(kx, kxs[], kys[])
+    iy = bpf(ix, ixs[], iys[])
+    ay = bpf(ax, kx1, ky1, kx2, ..., kxn, kyn)
+    ay = bpf(ax, kxs[], kys[])
+    ky, kw = bpf(kx, kxs[], kys[], kws[])
+    ```
 
-ky bpf kx, kx1, ky1, kx2, ..., kxn, kyn
-iy bpf ix, ix1, iy1, ix2, ..., ixn, iyn
-kys[] bpf kxs[], kx1, ky1, kx2, ..., kxn, kyn
-iys[] bpf ixs[], ix1, iy1, ix2, ..., ixn, iyn
-ky bpf kx, kxs[], kys[]
-iy bpf ix, ixs[], iys[]
-ay bpf ax, kx1, ky1, kx2, ..., kxn, kyn
-ay bpf ax, kxs[], kys[]
-ky, kw bpf kx, kxs[], kys[], kws[]
-
-```
+=== "Classic"
+    ``` csound-orc
+    ky bpf kx, kx1, ky1, kx2, ..., kxn, kyn
+    iy bpf ix, ix1, iy1, ix2, ..., ixn, iyn
+    kys[] bpf kxs[], kx1, ky1, kx2, ..., kxn, kyn
+    iys[] bpf ixs[], ix1, iy1, ix2, ..., ixn, iyn
+    ky bpf kx, kxs[], kys[]
+    iy bpf ix, ixs[], iys[]
+    ay bpf ax, kx1, ky1, kx2, ..., kxn, kyn
+    ay bpf ax, kxs[], kys[]
+    ky, kw bpf kx, kxs[], kys[], kws[]
+    ```
 
 ### Performance
 
@@ -46,7 +58,7 @@ ky = tablei(limit(kx, 0, 1.02)*100, itab)
 
 ## Examples
 
-Here is an example of the bpf opcode. It uses the file [bpf.csd](../../examples/bpf.csd).
+Here is an example of the bpf opcode. It uses the file [bpf.csd](../examples/bpf.csd).
 
 ``` csound-orc title="Example of the bpf opcode." linenums="1"
 --8<-- "examples/bpf.csd"
@@ -54,7 +66,7 @@ Here is an example of the bpf opcode. It uses the file [bpf.csd](../../examples/
 
 ## See also
 
-[Linear and Exponential Generators](../../siggen/lineexp)
+[Linear and Exponential Generators](../siggen/lineexp.md)
 
 ## Credits
 

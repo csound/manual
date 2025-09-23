@@ -8,12 +8,21 @@ Convert a midi note number value to frequency, taking global value of A4 into ac
 Plugin opcode in emugens.
 
 ## Syntax
-``` csound-orc
-ifreq mtof imidi
-kfreq mtof kmidi
-ifreqs[] mtof imidis[]
-kfreqs[] mtof kmidis[]
-```
+=== "Modern"
+    ``` csound-orc
+    ifreq = mtof(imidi)
+    kfreq = mtof(kmidi)
+    ifreqs[] = mtof(imidis[])
+    kfreqs[] = mtof(kmidis[])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ifreq mtof imidi
+    kfreq mtof kmidi
+    ifreqs[] mtof imidis[]
+    kfreqs[] mtof kmidis[]
+    ```
 
 ### Performance
 
@@ -23,7 +32,7 @@ _kfreq_ / _ifreq_ -- Frequency corresponding to midi note value. An array is ret
 
 ## Examples
 
-Here is an example of the mtof opcode. It uses the file [mtof-ftom.csd](../../examples/mtof-ftom.csd).
+Here is an example of the mtof opcode. It uses the file [mtof-ftom.csd](../examples/mtof-ftom.csd).
 
 ``` csound-csd title="Example of the mtof opcode." linenums="1"
 --8<-- "examples/mtof-ftom.csd"
@@ -31,9 +40,9 @@ Here is an example of the mtof opcode. It uses the file [mtof-ftom.csd](../../ex
 
 ## See also
 
-[Pitch Converters: Functions](../../pitch/funcs)
+[Pitch Converters: Functions](../pitch/funcs.md)
 
-[Midi Converters](../../midi/convert)
+[Midi Converters](../midi/convert.md)
 
 ## Credits
 

@@ -8,13 +8,19 @@ Convert Ssrc to lower case, and write the result to Sdst.
 _strlowerk_ runs both at init and performance time.
 
 ## Syntax
-``` csound-orc
-Sdst strlowerk Ssrc
-```
+=== "Modern"
+    ``` csound-orc
+    Sdst = strlowerk(Ssrc)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    Sdst strlowerk Ssrc
+    ```
 
 ## See Also
 
-[String Conversion Opcodes](../../strings/convert)
+[String Conversion Opcodes](../strings/convert.md)
 
 ## Credits
 

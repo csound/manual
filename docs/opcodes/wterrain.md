@@ -6,10 +6,17 @@ category:Signal Generators:Wave Terrain Synthesis
 A simple wave-terrain synthesis opcode.
 
 ## Syntax
-``` csound-orc
-aout wterrain kamp, kpch, k_xcenter, k_ycenter, k_xradius, k_yradius, \
-              itabx, itaby
-```
+=== "Modern"
+    ``` csound-orc
+    aout = wterrain(kamp, kpch, k_xcenter, k_ycenter, k_xradius, k_yradius, \
+                    itabx, itaby)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout wterrain kamp, kpch, k_xcenter, k_ycenter, k_xradius, k_yradius, \
+                  itabx, itaby
+    ```
 
 ### Initialization
 
@@ -21,7 +28,7 @@ The output is the result of drawing an ellipse with axes _k_xradius_ and _k_yrad
 
 ## Examples
 
-Here is an example of the wterrain opcode. It uses the file [wterrain.csd](../../examples/wterrain.csd).
+Here is an example of the wterrain opcode. It uses the file [wterrain.csd](../examples/wterrain.csd).
 
 ``` csound-csd title="Example of the wterrain opcode." linenums="1"
 --8<-- "examples/wterrain.csd"
@@ -29,7 +36,7 @@ Here is an example of the wterrain opcode. It uses the file [wterrain.csd](../..
 
 ## See Also
 
-[Wave Terrain Synthesis](../../siggen/waveterr)
+[Wave Terrain Synthesis](../siggen/waveterr.md)
 
 ## Credits
 

@@ -38,12 +38,12 @@ endin
 i 1 0 1 2
 ; Play Instrument #2 for one second.
 i 2 1 1 2
-s 3
+s
 ; Play Instrument #1 for one second.
 i 1 0 1 0
 ; Play Instrument #2 for one second.
 i 2 1 1 0
-s 3
+s
 ; Play Instrument #1 for one second.
 i 1 0 1 1
 ; Play Instrument #2 for one second.

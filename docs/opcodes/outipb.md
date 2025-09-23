@@ -6,9 +6,15 @@ category:Real-time MIDI:Output
 Sends MIDI pitch-bend messages at i-rate.
 
 ## Syntax
-``` csound-orc
-outipb ichn, ivalue, imin, imax
-```
+=== "Modern"
+    ``` csound-orc
+    outipb(ichn, ivalue, imin, imax)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    outipb ichn, ivalue, imin, imax
+    ```
 
 ### Initialization
 
@@ -28,7 +34,7 @@ It can scale an i-value floating-point argument according to the _imin_ and _ima
 
 ## Examples
 
-Here is an example of the outipb opcode. It uses the file [outipb.csd](../../examples/outipb.csd).
+Here is an example of the outipb opcode. It uses the file [outipb.csd](../examples/outipb.csd).
 
 ``` csound-csd title="Example of the outipb opcode." linenums="1"
 --8<-- "examples/outipb.csd"
@@ -36,7 +42,7 @@ Here is an example of the outipb opcode. It uses the file [outipb.csd](../../exa
 
 ## See also
 
-[MIDI Message Output](../../midi/output)
+[MIDI Message Output](../midi/output.md)
 
 ## Credits
 

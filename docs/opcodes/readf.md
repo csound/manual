@@ -8,9 +8,15 @@ Read a line of text from an external file once each k-cycle.
 Plugin opcode in cs_date.
 
 ## Syntax
-``` csound-orc
-Sres, kline readf ifilname
-```
+=== "Modern"
+    ``` csound-orc
+    Sres, kline = readf(ifilname)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    Sres, kline readf ifilname
+    ```
 
 ### Initialization
 
@@ -26,7 +32,7 @@ This opcode allows a line of text to be read from a named external file.  There 
 
 ## Examples
 
-Here is an example of the readf opcode. It uses the file [readf.csd](../../examples/readf.csd).
+Here is an example of the readf opcode. It uses the file [readf.csd](../examples/readf.csd).
 
 ``` csound-csd title="Example of the readf opcode." linenums="1"
 --8<-- "examples/readf.csd"
@@ -34,7 +40,7 @@ Here is an example of the readf opcode. It uses the file [readf.csd](../../examp
 
 ## See also
 
-[File Input and Output](../../sigio/fileio)
+[File Input and Output](../sigio/fileio.md)
 
 ## Credits
 

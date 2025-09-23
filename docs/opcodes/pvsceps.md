@@ -6,9 +6,15 @@ category:Spectral Processing:Streaming
 Calculate the cepstrum of a pvs input, optionally liftering coefficients.
 
 ## Syntax
-``` csound-orc
-keps[] pvsceps fsig[, icoefs]
-```
+=== "Modern"
+    ``` csound-orc
+    keps[] = pvsceps(fsig[, icoefs])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    keps[] pvsceps fsig[, icoefs]
+    ```
 
 ### Initialization
 
@@ -22,7 +28,7 @@ _fsig_ -- an input pv stream
 
 ## Examples
 
-Here is an example of the use of the _pvsceps_ opcode. It uses the file [pvsceps.csd](../../examples/pvsceps.csd).
+Here is an example of the use of the _pvsceps_ opcode. It uses the file [pvsceps.csd](../examples/pvsceps.csd).
 
 ``` csound-csd title="Example of the _pvsceps_ opcode." linenums="1"
 --8<-- "examples/pvsceps.csd"
@@ -30,7 +36,7 @@ Here is an example of the use of the _pvsceps_ opcode. It uses the file [pvsceps
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

@@ -8,9 +8,15 @@ Creates a tone similar to a bowed string.
 It uses a physical model developed from Perry Cook, but re-coded for Csound.
 
 ## Syntax
-``` csound-orc
-ares wgbow kamp, kfreq, kpres, krat, kvibf, kvamp [, ifn] [, iminfreq]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = wgbow(kamp, kfreq, kpres, krat, kvibf, kvamp [, ifn] [, iminfreq])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares wgbow kamp, kfreq, kpres, krat, kvibf, kvamp [, ifn] [, iminfreq]
+    ```
 
 ### Initialization
 
@@ -36,7 +42,7 @@ _kvamp_ -- amplitude of the vibrato
 
 ## Examples
 
-Here is an example of the wgbow opcode. It uses the file [wgbow.csd](../../examples/wgbow.csd).
+Here is an example of the wgbow opcode. It uses the file [wgbow.csd](../examples/wgbow.csd).
 
 ``` csound-csd title="Example of the wgbow opcode." linenums="1"
 --8<-- "examples/wgbow.csd"
@@ -44,7 +50,7 @@ Here is an example of the wgbow opcode. It uses the file [wgbow.csd](../../examp
 
 ## See also
 
-[Waveguide Physical Modeling](../../siggen/wavguide)
+[Waveguide Physical Modeling](../siggen/wavguide.md)
 
 ## Credits
 

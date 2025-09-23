@@ -2,9 +2,9 @@
 
 The opcodes for additive synthesis and resynthesis are:
 
-* [adsyn](../../opcodes/adsyn)
-* [adsynt](../../opcodes/adsynt)
-* [adsynt2](../../opcodes/adsynt2)
-* [hsboscil](../../opcodes/hsboscil)
+* [adsyn](../opcodes/adsyn.md)
+* [adsynt](../opcodes/adsynt.md)
+* [adsynt2](../opcodes/adsynt2.md)
+* [hsboscil](../opcodes/hsboscil.md)
 
-See the section [Spectral processing](../../spectral/top) for more information and further additive/resynthesis opcodes.
+See the section [Spectral processing](../spectral/top.md) for more information and further additive/resynthesis opcodes.

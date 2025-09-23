@@ -5,7 +5,7 @@ category:Signal Modifiers:Sample Level Operators
 # k
 Converts a i-rate parameter to an k-rate value or an a-rate value to a k-rate value by down-sampling.
 
-For example to be used with [rnd()](../../opcodes/rnd) and [birnd()](../../opcodes/birnd) to generate random numbers at k-rate.
+For example to be used with [rnd()](../opcodes/rnd.md) and [birnd()](../opcodes/birnd.md) to generate random numbers at k-rate.
 
 ## Syntax
 ``` csound-orc
@@ -17,7 +17,7 @@ where the argument within the parentheses may be an expression. Value converters
 
 ## See also
 
-[Sample Level Operators](../../sigmod/sample)
+[Sample Level Operators](../sigmod/sample.md)
 
 More information on this opcode can be found in the [Csound Journal, issue 10](http://www.csounds.com/journal/issue10/CsoundRates.html), written by Andrés Cabrera.
 

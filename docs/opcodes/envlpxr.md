@@ -5,13 +5,20 @@ category:Signal Generators:Envelope Generators
 # envlpxr
 The _envlpx_ opcode with a final release segment.
 
-_envlpxr_ is the same as [envlpx](../../opcodes/envlpx) except that the final segment is entered only on sensing a MIDI note release. The note is then extended by the decay time.
+_envlpxr_ is the same as [envlpx](../opcodes/envlpx.md) except that the final segment is entered only on sensing a MIDI note release. The note is then extended by the decay time.
 
 ## Syntax
-``` csound-orc
-ares envlpxr xamp, irise, idec, ifn, iatss, iatdec [, ixmod] [,irind]
-kres envlpxr kamp, irise, idec, ifn, iatss, iatdec [, ixmod] [,irind]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = envlpxr(xamp, irise, idec, ifn, iatss, iatdec [, ixmod] [,irind])
+    kres = envlpxr(kamp, irise, idec, ifn, iatss, iatdec [, ixmod] [,irind])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares envlpxr xamp, irise, idec, ifn, iatss, iatdec [, ixmod] [,irind]
+    kres envlpxr kamp, irise, idec, ifn, iatss, iatdec [, ixmod] [,irind]
+    ```
 
 ### Initialization
 
@@ -35,13 +42,13 @@ _kamp, xamp_ -- input amplitude signal.
 
 _envlpxr_ is an example of the special Csound &#8220;r&#8221; units that contain a note-off sensor and release time extender. When each senses a score event termination or a MIDI noteoff, it will immediately extend the performance time of the current instrument by _idec_ seconds unless it is made independent by _irind_. Then it will begin a decay from wherever it was at the time.
 
-You can use other pre-made envelopes which start a release segment upon receiving a note off message, like [linsegr](../../opcodes/linsegr) and [expsegr](../../opcodes/expsegr), or you can construct more complex envelopes using [xtratim](../../opcodes/xtratim) and [release](../../opcodes/release). Note that you do not need to use [xtratim](../../opcodes/xtratim) if you are using _envlpxr_, since the time is extended automatically.
+You can use other pre-made envelopes which start a release segment upon receiving a note off message, like [linsegr](../opcodes/linsegr.md) and [expsegr](../opcodes/expsegr.md), or you can construct more complex envelopes using [xtratim](../opcodes/xtratim.md) and [release](../opcodes/release.md). Note that you do not need to use [xtratim](../opcodes/xtratim.md) if you are using _envlpxr_, since the time is extended automatically.
 
 **Multiple &#8220;r&#8221; units**. When two or more &#8220;r&#8221; units occur in the same instrument it is usual to have only one of them influence the overall note duration. This is normally the master amplitude unit. Other units controlling, say, filter motion can still be sensitive to note-off commands while not affecting the duration by making them independent (_irind_ non-zero). Depending on their own _idec_ (release time) values, independent &#8220;r&#8221; units may or may not reach their final destinations before the instrument terminates. If they do, they will simply hold their target values until termination. If two or more &#8220;r&#8221; units are simultaneously master, note extension is by the greatest _idec_.
 
 ## Examples
 
-Here is an example of the envlpxr opcode. It uses the file [envlpxr.csd](../../examples/envlpxr.csd).
+Here is an example of the envlpxr opcode. It uses the file [envlpxr.csd](../examples/envlpxr.csd).
 
 ``` csound-csd title="Example of the envlpxr opcode." linenums="1"
 --8<-- "examples/envlpxr.csd"
@@ -49,7 +56,7 @@ Here is an example of the envlpxr opcode. It uses the file [envlpxr.csd](../../e
 
 ## See Also
 
-[Envelope Generators](../../siggen/envelope)
+[Envelope Generators](../siggen/envelope.md)
 
 ## Credits
 

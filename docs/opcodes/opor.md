@@ -33,7 +33,7 @@ where the arguments $a$ and $b$ may be further expressions.
 
 ## Examples
 
-Here is an example of the &verbar; operator. It uses the file [logicOR.csd](../../examples/logicOR.csd).
+Here is an example of the &verbar; operator. It uses the file [logicOR.csd](../examples/logicOR.csd).
 
 ``` csound-csd title="Example of the &verbar; operator." linenums="1"
 --8<-- "examples/logicOR.csd"
@@ -62,4 +62,4 @@ Value:76 ChanNo:11 CtrlNo:23
 
 ## See also
 
-[Arithmetic and Logic Operations](../../math/artlogic)
+[Arithmetic and Logic Operations](../math/artlogic.md)

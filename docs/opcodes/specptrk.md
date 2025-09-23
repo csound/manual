@@ -6,10 +6,17 @@ category:Spectral Processing:Non-Standard
 Estimates the pitch of the most prominent complex tone in the spectrum.
 
 ## Syntax
-``` csound-orc
-koct, kamp specptrk wsig, kvar, ilo, ihi, istr, idbthresh, inptls, irolloff \
-                    [, iodd] [, iconfs] [, interp] [, ifprd] [, iwtflg]
-```
+=== "Modern"
+    ``` csound-orc
+    koct, kamp = specptrk(wsig, kvar, ilo, ihi, istr, idbthresh, inptls, irolloff \
+                          [, iodd] [, iconfs] [, interp] [, ifprd] [, iwtflg])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    koct, kamp specptrk wsig, kvar, ilo, ihi, istr, idbthresh, inptls, irolloff \
+                        [, iodd] [, iconfs] [, interp] [, ifprd] [, iwtflg]
+    ```
 
 ### Initialization
 
@@ -31,7 +38,7 @@ _iwtftg_ (optional) -- wait flag. If non-zero, hold each display until released 
 
 ### Performance
 
-At note initialization this unit creates a template of _inptls_ harmonically related partials (odd partials, if _iodd_ non-zero) with amplitude rolloff to the fraction _irolloff_ per octave. At each new frame of _wsig_, the spectrum is cross-correlated with this template to provide an internal spectrum of candidate fundamentals (optionally displayed). A likely pitch/amp pair (_koct_, _kamp_, in decimal octave and summed _idbout_ form) is then estimated. _koct_ varies from the previous _koct_ by no more than plus or minus _kvar_ decimal octave units. It is also guaranteed to lie within the hard limit range _ilo_ -- _ihi_ (decimal octave low and high pitch). _kvar_ can be dynamic, e.g. onset amp dependent.  Pitch resolution uses the originating _spectrum_ _ifrqs_ bins/octave, with further parabolic interpolation between adjacent bins. Settings of root magnitude, _ifrqs_ = 24, _iq_ = 15 should capture all the inflections of interest. Between frames, the output is either repeated or interpolated at the k-rate. (See [spectrum](../../opcodes/spectrum).)
+At note initialization this unit creates a template of _inptls_ harmonically related partials (odd partials, if _iodd_ non-zero) with amplitude rolloff to the fraction _irolloff_ per octave. At each new frame of _wsig_, the spectrum is cross-correlated with this template to provide an internal spectrum of candidate fundamentals (optionally displayed). A likely pitch/amp pair (_koct_, _kamp_, in decimal octave and summed _idbout_ form) is then estimated. _koct_ varies from the previous _koct_ by no more than plus or minus _kvar_ decimal octave units. It is also guaranteed to lie within the hard limit range _ilo_ -- _ihi_ (decimal octave low and high pitch). _kvar_ can be dynamic, e.g. onset amp dependent.  Pitch resolution uses the originating _spectrum_ _ifrqs_ bins/octave, with further parabolic interpolation between adjacent bins. Settings of root magnitude, _ifrqs_ = 24, _iq_ = 15 should capture all the inflections of interest. Between frames, the output is either repeated or interpolated at the k-rate. (See [spectrum](../opcodes/spectrum.md).)
 
 ## Examples
 

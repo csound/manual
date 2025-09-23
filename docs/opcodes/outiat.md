@@ -6,9 +6,15 @@ category:Real-time MIDI:Output
 Sends MIDI aftertouch messages at i-rate.
 
 ## Syntax
-``` csound-orc
-outiat ichn, ivalue, imin, imax
-```
+=== "Modern"
+    ``` csound-orc
+    outiat(ichn, ivalue, imin, imax)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    outiat ichn, ivalue, imin, imax
+    ```
 
 ### Initialization
 
@@ -28,7 +34,7 @@ It can scale an i-value floating-point argument according to the _imin_ and _ima
 
 ## Examples
 
-Here is an example of the outiat opcode. It uses the file [outiat.csd](../../examples/outiat.csd).
+Here is an example of the outiat opcode. It uses the file [outiat.csd](../examples/outiat.csd).
 
 ``` csound-csd title="Example of the outiat opcode." linenums="1"
 --8<-- "examples/outiat.csd"
@@ -36,7 +42,7 @@ Here is an example of the outiat opcode. It uses the file [outiat.csd](../../exa
 
 ## See also
 
-[MIDI Message Output](../../midi/output)
+[MIDI Message Output](../midi/output.md)
 
 ## Credits
 

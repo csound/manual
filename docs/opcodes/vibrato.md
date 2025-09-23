@@ -6,10 +6,17 @@ category:Signal Generators:Basic Oscillators
 Generates a natural-sounding user-controllable vibrato.
 
 ## Syntax
-``` csound-orc
-kout vibrato kAverageAmp, kAverageFreq, kRandAmountAmp, kRandAmountFreq, \
-             kAmpMinRate, kAmpMaxRate, kcpsMinRate, kcpsMaxRate, ifn [, iphs]
-```
+=== "Modern"
+    ``` csound-orc
+    kout = vibrato(kAverageAmp, kAverageFreq, kRandAmountAmp, kRandAmountFreq, \
+                   kAmpMinRate, kAmpMaxRate, kcpsMinRate, kcpsMaxRate, ifn [, iphs])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kout vibrato kAverageAmp, kAverageFreq, kRandAmountAmp, kRandAmountFreq, \
+                 kAmpMinRate, kAmpMaxRate, kcpsMinRate, kcpsMaxRate, ifn [, iphs]
+    ```
 
 ### Initialization
 
@@ -41,7 +48,7 @@ In order to have a total control of these random variations, several input argum
 
 ## Examples
 
-Here is an example of the vibrato opcode. It uses the file [vibrato.csd](../../examples/vibrato.csd).
+Here is an example of the vibrato opcode. It uses the file [vibrato.csd](../examples/vibrato.csd).
 
 ``` csound-orc title="Example of the vibrato opcode." linenums="1"
 --8<-- "examples/vibrato.csd"
@@ -49,7 +56,7 @@ Here is an example of the vibrato opcode. It uses the file [vibrato.csd](../../e
 
 ## See also
 
-[Basic Oscillators](../../siggen/basic)
+[Basic Oscillators](../siggen/basic.md)
 
 ## Credits
 

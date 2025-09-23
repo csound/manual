@@ -6,9 +6,15 @@ category:Signal I/O:Signal Output
 A MIDI delay opcode.
 
 ## Syntax
-``` csound-orc
-mdelay kstatus, kchan, kd1, kd2, kdelay
-```
+=== "Modern"
+    ``` csound-orc
+    mdelay(kstatus, kchan, kd1, kd2, kdelay)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    mdelay kstatus, kchan, kd1, kd2, kdelay
+    ```
 
 ### Performance
 
@@ -26,7 +32,7 @@ Each time that _kstatus_ is other than zero, _mdelay_ outputs a MIDI message to 
 
 ## Examples
 
-Here is an example of the mdelay opcode. It uses the file [mdelay.csd](../../examples/mdelay.csd).
+Here is an example of the mdelay opcode. It uses the file [mdelay.csd](../examples/mdelay.csd).
 
 ``` csound-csd title="Example of the mdelay opcode." linenums="1"
 --8<-- "examples/mdelay.csd"
@@ -34,7 +40,7 @@ Here is an example of the mdelay opcode. It uses the file [mdelay.csd](../../exa
 
 ## See also
 
-[MIDI Message Output](../../midi/output)
+[MIDI Message Output](../midi/output.md)
 
 ## Credits
 

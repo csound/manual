@@ -6,9 +6,15 @@ category:Table Control:Read/Write Operations
 Records control-rate signals on trigger-temporization basis.
 
 ## Syntax
-``` csound-orc
-tabrec   ktrig_start, ktrig_stop, knumtics, kfn, kin1 [,kin2,...,kinN]
-```
+=== "Modern"
+    ``` csound-orc
+    tabrec(ktrig_start, ktrig_stop, knumtics, kfn, kin1 [,kin2,...,kinN])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    tabrec ktrig_start, ktrig_stop, knumtics, kfn, kin1 [,kin2,...,kinN]
+    ```
 
 ### Performance
 
@@ -22,7 +28,7 @@ _kfn_ -- table where k-rate signals are recorded.
 
 _kin1,...,kinN_ -- input signals to record.
 
-The _tabrec_ and [tabplay](../../opcodes/tabplay) opcodes allow to record/playback control signals on trigger-temporization basis.
+The _tabrec_ and [tabplay](../opcodes/tabplay.md) opcodes allow to record/playback control signals on trigger-temporization basis.
 
 _tabrec_ opcode records a group of k-rate signals by storing them into _kfn_ table. Each time _ktrig_start_ is triggered, _tabrec_ resets the table pointer to zero and begins to record. Recording phase stops after _knumtics_ trigger impulses have been received by _ktrig_stop_ argument.
 
@@ -30,7 +36,7 @@ These opcodes can be used like a  sort of &ldquo;middle-term&rdquo; memory that 
 
 ## Examples
 
-Here is an example of the tabrec opcode. It uses the file [tabrec.csd](../../examples/tabrec.csd).
+Here is an example of the tabrec opcode. It uses the file [tabrec.csd](../examples/tabrec.csd).
 
 ``` csound-csd title="Example of the tabrec opcode." linenums="1"
 --8<-- "examples/tabrec.csd"
@@ -38,7 +44,7 @@ Here is an example of the tabrec opcode. It uses the file [tabrec.csd](../../exa
 
 ## See also
 
-[Read/Write Operations](../../table/readwrit)
+[Read/Write Operations](../table/readwrit.md)
 
 ## Credits
 

@@ -6,9 +6,15 @@ category:Instrument Control:Sensing and Control
 Returns the value of a specified pfield.
 
 ## Syntax
-``` csound-orc
-ivalue pindex ipfieldIndex
-```
+=== "Modern"
+    ``` csound-orc
+    ivalue = pindex(ipfieldIndex)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ivalue pindex ipfieldIndex
+    ```
 
 ### Initialization
 
@@ -18,7 +24,7 @@ _ivalue_ - value of the pfield.
 
 ## Examples
 
-Here is an example of the pindex opcode. It uses the file [pindex.csd](../../examples/pindex.csd).
+Here is an example of the pindex opcode. It uses the file [pindex.csd](../examples/pindex.csd).
 
 ``` csound-csd title="Example of the pindex opcode." linenums="1"
 --8<-- "examples/pindex.csd"
@@ -59,7 +65,7 @@ instr 1:  inum = 7.000
 
 The warnings can be ignored, because the pfields are used indirectly through pindex instead of explicitly through p4, p5, etc.
 
-Here is another example of the pindex opcode. It uses the file [pindex-2.csd](../../examples/pindex-2.csd).
+Here is another example of the pindex opcode. It uses the file [pindex-2.csd](../examples/pindex-2.csd).
 
 ``` csound-csd title="Second example of the pindex opcode." linenums="1"
 --8<-- "examples/pindex-2.csd"
@@ -82,7 +88,7 @@ B  8.000 .. 18.000 T 18.000 TT 18.000 M:  0.49994  0.49994
 
 ## See also
 
-[Sensing and Control: Score control](../../control/sensing)
+[Sensing and Control: Score control](../control/sensing.md)
 
 ## Credits
 

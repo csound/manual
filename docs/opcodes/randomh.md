@@ -6,10 +6,17 @@ category:Signal Generators:Random (Noise) Generators
 Generates random numbers with a user-defined limit and holds them for a period of time.
 
 ## Syntax
-``` csound-orc
-ares randomh kmin, kmax, xcps [,imode] [,ifirstval]
-kres randomh kmin, kmax, kcps [,imode] [,ifirstval]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = randomh(kmin, kmax, xcps [,imode] [,ifirstval])
+    kres = randomh(kmin, kmax, kcps [,imode] [,ifirstval])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares randomh kmin, kmax, xcps [,imode] [,ifirstval]
+    kres randomh kmin, kmax, kcps [,imode] [,ifirstval]
+    ```
 
 ### Initialization
 
@@ -25,7 +32,7 @@ _kmax_ -- maximum range limit
 
 _kcps, xcps_ -- rate of random break-point generation
 
-The _randomh_ opcode is similar to [randh](../../opcodes/randh) but allows the user to set arbitrary minimum and maximum values.
+The _randomh_ opcode is similar to [randh](../opcodes/randh.md) but allows the user to set arbitrary minimum and maximum values.
 
 When _imode_ = 0 (the default), the _kmin_ argument value is outputted during _1/kcps_ (resp. _1/xcps_) seconds at the beginning of the note. Then, the normal process takes place with a new random number generated and held every _1/kcps_ (resp. _1/xcps_) seconds.
 
@@ -35,7 +42,7 @@ When _imode_ = 3, the generation process begins with a random value from the ini
 
 ## Examples
 
-Here is an example of the randomh opcode. It uses the file [randomh.csd](../../examples/randomh.csd).
+Here is an example of the randomh opcode. It uses the file [randomh.csd](../examples/randomh.csd).
 
 ``` csound-orc title="Example of the randomh opcode." linenums="1"
 --8<-- "examples/randomh.csd"
@@ -67,11 +74,11 @@ i1   307.19839
 ```
 
 Two musical examples featuring the randomh opcode:
-[FtmorfRandomh_Cucchi.csd](../../examples/musical/FtmorfRandomh_Cucchi.csd) and [Ftmorf_Cucchi.csd](../../examples/musical/Ftmorf_Cucchi.csd), both by Stefano Cucchi.
+[FtmorfRandomh_Cucchi.csd](../examples/musical/FtmorfRandomh_Cucchi.csd) and [Ftmorf_Cucchi.csd](../examples/musical/Ftmorf_Cucchi.csd), both by Stefano Cucchi.
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
 ## Credits
 

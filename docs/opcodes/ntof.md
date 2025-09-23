@@ -3,17 +3,24 @@ id:ntof
 category:Pitch Converters:Functions
 -->
 # ntof
-Convert note name to frequency
+Convert note name to frequency.
 
 Plugin opcode in emugens.
 
 It allows note name to include microtones or a deviation in cents.
 
 ## Syntax
-``` csound-orc
-kfreq ntof Snote
-ifreq ntof Snote
-```
+=== "Modern"
+    ``` csound-orc
+    kfreq = ntof(Snote)
+    ifreq = ntof(Snote)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kfreq ntof Snote
+    ifreq ntof Snote
+    ```
 
 ### Performance
 
@@ -31,7 +38,7 @@ _kfreq_ -- Frequency
 
 ## Examples
 
-Here is an example of the ntof opcode. It uses the file [ntof.csd](../../examples/ntof.csd).
+Here is an example of the ntof opcode. It uses the file [ntof.csd](../examples/ntof.csd).
 
 ``` csound-csd title="Example of the ntof opcode." linenums="1"
 --8<-- "examples/ntof.csd"
@@ -39,9 +46,9 @@ Here is an example of the ntof opcode. It uses the file [ntof.csd](../../example
 
 ## See also
 
-[Pitch Converters: Functions](../../pitch/funcs)
+[Pitch Converters: Functions](../pitch/funcs.md)
 
-[Midi Converters](../../midi/convert)
+[Midi Converters](../midi/convert.md)
 
 ## Credits
 

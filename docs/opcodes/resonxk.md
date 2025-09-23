@@ -8,9 +8,15 @@ Control signal resonant filter stack.
 _resonxk_ is equivalent to a group of resonk filters, with the same arguments, serially connected. Using a stack of a larger number of filters allows a sharper cutoff.
 
 ## Syntax
-``` csound-orc
-kres resonxk ksig, kcf, kbw[, inumlayer, iscl, istor]
-```
+=== "Modern"
+    ``` csound-orc
+    kres = resonxk(ksig, kcf, kbw[, inumlayer, iscl, istor])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres resonxk ksig, kcf, kbw[, inumlayer, iscl, istor]
+    ```
 
 ### Initialization
 
@@ -34,7 +40,7 @@ _resonxk_ is a lot faster than using individual instances in Csound orchestra of
 
 ## Examples
 
-Here is an example of the resonxk opcode. It uses the file [resonxk.csd](../../examples/resonxk.csd).
+Here is an example of the resonxk opcode. It uses the file [resonxk.csd](../examples/resonxk.csd).
 
 ``` csound-csd title="Example of the resonxk opcode." linenums="1"
 --8<-- "examples/resonxk.csd"
@@ -42,7 +48,7 @@ Here is an example of the resonxk opcode. It uses the file [resonxk.csd](../../e
 
 ## See also
 
-[Standard Filters: Control signal filters](../../sigmod/standard)
+[Standard Filters: Control signal filters](../sigmod/standard.md)
 
 ## Credits
 

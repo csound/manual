@@ -6,9 +6,15 @@ category:Real-time MIDI:Output
 Sends MIDI controller output at i-rate.
 
 ## Syntax
-``` csound-orc
-outic ichn, inum, ivalue, imin, imax
-```
+=== "Modern"
+    ``` csound-orc
+    outic(ichn, inum, ivalue, imin, imax)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    outic ichn, inum, ivalue, imin, imax
+    ```
 
 ### Initialization
 
@@ -30,7 +36,7 @@ It can scale an i-value floating-point argument according to the _imin_ and _ima
 
 ## Examples
 
-Here is an example of the outic opcode. It uses the file [outic.csd](../../examples/outic.csd).
+Here is an example of the outic opcode. It uses the file [outic.csd](../examples/outic.csd).
 
 ``` csound-csd title="Example of the outic opcode." linenums="1"
 --8<-- "examples/outic.csd"
@@ -38,7 +44,7 @@ Here is an example of the outic opcode. It uses the file [outic.csd](../../examp
 
 ## See also
 
-[MIDI Message Output](../../midi/output)
+[MIDI Message Output](../midi/output.md)
 
 ## Credits
 

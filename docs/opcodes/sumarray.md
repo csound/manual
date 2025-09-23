@@ -6,9 +6,15 @@ category:Array Opcodes
 Returns the sum of all elements in a k-rate array.
 
 ## Syntax
-``` csound-orc
-ksum sumarray karray
-```
+=== "Modern"
+    ``` csound-orc
+    ksum = sumarray(karray)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ksum sumarray karray
+    ```
 
 ### Performance
 
@@ -18,7 +24,7 @@ _karray_ --  array for reading.
 
 ## Examples
 
-Here is an example of the sumarray opcode. It uses the file [sumarray.csd](../../examples/sumarray.csd).
+Here is an example of the sumarray opcode. It uses the file [sumarray.csd](../examples/sumarray.csd).
 
 ``` csound-csd title="Example of the sumarray opcode." linenums="1"
 --8<-- "examples/sumarray.csd"
@@ -26,7 +32,7 @@ Here is an example of the sumarray opcode. It uses the file [sumarray.csd](../..
 
 ## See also
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

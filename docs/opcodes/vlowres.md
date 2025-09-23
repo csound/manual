@@ -6,9 +6,15 @@ category:Signal Modifiers:Standard Filters:Resonant
 A bank of filters in which the cutoff frequency can be separated under user control.
 
 ## Syntax
-``` csound-orc
-ares vlowres asig, kfco, kres, iord, ksep
-```
+=== "Modern"
+    ``` csound-orc
+    ares = vlowres(asig, kfco, kres, iord, ksep)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares vlowres asig, kfco, kres, iord, ksep
+    ```
 
 ### Initialization
 
@@ -28,7 +34,7 @@ _vlowres_ (variable resonant lowpass filter) allows a variable response curve in
 
 ## Examples
 
-Here is an example of the vlowres opcode. It uses the file [vlowres.csd](../../examples/vlowres.csd).
+Here is an example of the vlowres opcode. It uses the file [vlowres.csd](../examples/vlowres.csd).
 
 ``` csound-csd title="Example of the vlowres opcode." linenums="1"
 --8<-- "examples/vlowres.csd"
@@ -36,7 +42,7 @@ Here is an example of the vlowres opcode. It uses the file [vlowres.csd](../../e
 
 ## See also
 
-[Standard Filters: Resonant Low-pass filters](../../sigmod/standard)
+[Standard Filters: Resonant Low-pass filters](../sigmod/standard.md)
 
 ## Credits
 

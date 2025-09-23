@@ -8,10 +8,17 @@ A physical model of a bowed bar.
 It belongs to the Perry Cook family of waveguide instruments.
 
 ## Syntax
-``` csound-orc
-ares wgbowedbar kamp, kfreq, kpos, kbowpres, kgain [, iconst] [, itvel] \
-                [, ibowpos] [, ilow]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = wgbowedbar(kamp, kfreq, kpos, kbowpres, kgain [, iconst] [, itvel] \
+                      [, ibowpos] [, ilow])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares wgbowedbar kamp, kfreq, kpos, kbowpres, kgain [, iconst] [, itvel] \
+                    [, ibowpos] [, ilow]
+    ```
 
 ### Initialization
 
@@ -37,7 +44,7 @@ _kgain_ -- gain of filter. A value of about 0.809 is suggested.
 
 ## Examples
 
-Here is an example of the wgbowedbar opcode. It uses the file [wgbowedbar.csd](../../examples/wgbowedbar.csd).
+Here is an example of the wgbowedbar opcode. It uses the file [wgbowedbar.csd](../examples/wgbowedbar.csd).
 
 ``` csound-csd title="Example of the wgbowedbar opcode." linenums="1"
 --8<-- "examples/wgbowedbar.csd"
@@ -45,7 +52,7 @@ Here is an example of the wgbowedbar opcode. It uses the file [wgbowedbar.csd](.
 
 ## See also
 
-[Waveguide Physical Modeling](../../siggen/wavguide)
+[Waveguide Physical Modeling](../siggen/wavguide.md)
 
 ## Credits
 

@@ -3,12 +3,18 @@ id:metro2
 category:Instrument Control:Sensing and Control
 -->
 # metro2
-Trigger Metronome with Swing and Accents
+Trigger Metronome with Swing and Accents.
 
 ## Syntax
-``` csound-orc
-ktrig  metro2  kfreq, kswing [, iamp, initphase]
-```
+=== "Modern"
+    ``` csound-orc
+    ktrig  = metro2( kfreq, kswing [, iamp, initphase])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ktrig  metro2  kfreq, kswing [, iamp, initphase]
+    ```
 
 ### Initialization
 
@@ -32,7 +38,7 @@ _metro2_ is a modification of 'classic' _metro_ opcode with additional swinging.
 
 ## Examples
 
-Here is an example of the metro2 opcode. It uses the file [metro2.csd](../../examples/metro2.csd)
+Here is an example of the metro2 opcode. It uses the file [metro2.csd](../examples/metro2.csd)
 
 ``` csound-csd title="Example of the metro2 opcode." linenums="1"
 --8<-- "examples/metro2.csd"
@@ -40,7 +46,7 @@ Here is an example of the metro2 opcode. It uses the file [metro2.csd](../../exa
 
 ## See also
 
-[Sensing and Control: Tempo and Sequencing](../../control/sensing)
+[Sensing and Control: Tempo and Sequencing](../control/sensing.md)
 
 ## Credits
 

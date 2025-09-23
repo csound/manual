@@ -9,9 +9,15 @@ Envelope follower unit generator emmulating a Perkin Elmer Vactrole VTL5C3/2.
 Plugin opcode in buchla
 
 ## Syntax
-``` csound-orc
-ares vactrol asig [iup, idown]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = vactrol(asig [iup, idown])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares vactrol asig [iup, idown]
+    ```
 
 Initialisation
 
@@ -25,7 +31,7 @@ _asig_ -- The signal from which to extract the envelope.
 
 ## Examples
 
-Here is an example of the vactrol opcode. It uses the file [vactrol.csd](../../examples/vactrol.csd).
+Here is an example of the vactrol opcode. It uses the file [vactrol.csd](../examples/vactrol.csd).
 
 ``` csound-csd title="Example of the vactrol opcode." linenums="1"
 --8<-- "examples/vactrol.csd"
@@ -35,7 +41,7 @@ This opcode can reduce zipper noise produced from complex envelope tracking as i
 
 ## See also
 
-[Sensing and Control: Envelope followers](../../control/sensing)
+[Sensing and Control: Envelope followers](../control/sensing.md)
 
 ## Credits
 

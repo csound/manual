@@ -5,12 +5,18 @@ category:Spectral Processing:Streaming
 # pvsdisp
 Displays a PVS signal as an amplitude vs. freq graph.
 
-It prints the frames every hopsize. Uses X11 or FLTK windows if enabled, else (or if [-g](../../) flag is set) displays are approximated in ASCII characters.
+It prints the frames every hopsize. Uses X11 or FLTK windows if enabled, else (or if [-g](../invoke/cs-options-alphabetically.md#-g-asciidisplay) flag is set) displays are approximated in ASCII characters.
 
 ## Syntax
-``` csound-orc
-pvsdisp fsig [, ibins, iwtflg]
-```
+=== "Modern"
+    ``` csound-orc
+    pvsdisp(fsig [, ibins, iwtflg])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    pvsdisp fsig [, ibins, iwtflg]
+    ```
 
 ### Initialization
 
@@ -30,7 +36,7 @@ instr 1, pvs-signal fsig:	10 points, scalemax 0.000
 
 ## Examples
 
-Here is an example of the pvsdisp opcode. It uses the file [pvsdisp.csd](../../examples/pvsdisp.csd).
+Here is an example of the pvsdisp opcode. It uses the file [pvsdisp.csd](../examples/pvsdisp.csd).
 
 ``` csound-csd title="Example of the pvsdisp opcode" linenums="1"
 --8<-- "examples/pvsdisp.csd"
@@ -38,7 +44,7 @@ Here is an example of the pvsdisp opcode. It uses the file [pvsdisp.csd](../../e
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

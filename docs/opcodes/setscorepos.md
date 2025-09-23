@@ -6,9 +6,15 @@ category:Instrument Control:Sensing and Control
 Sets the playback position of the current score performance to a given position.
 
 ## Syntax
-``` csound-orc
-setscorepos ipos
-```
+=== "Modern"
+    ``` csound-orc
+    setscorepos(ipos)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    setscorepos ipos
+    ```
 
 ### Initialization
 
@@ -16,7 +22,7 @@ _ipos_ -- playback position in seconds.
 
 ## Examples
 
-Here is an example of the setscorepos opcode. It uses the file [setscorepos.csd](../../examples/setscorepos.csd).
+Here is an example of the setscorepos opcode. It uses the file [setscorepos.csd](../examples/setscorepos.csd).
 
 ``` csound-csd title="Example of the setscorepos opcode." linenums="1"
 --8<-- "examples/setscorepos.csd"
@@ -24,7 +30,7 @@ Here is an example of the setscorepos opcode. It uses the file [setscorepos.csd]
 
 ## See also
 
-[Sensing and Control: Score control](../../control/sensing)
+[Sensing and Control: Score control](../control/sensing.md)
 
 ## Credits
 

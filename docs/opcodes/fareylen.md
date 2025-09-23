@@ -5,7 +5,7 @@ category:Signal Generators:Models and Emulations
 # fareylen
 Returns the length of a Farey Sequence.
 
-This opcode can be used in conjunction with [GENfarey](../../scoregens/genfarey). It calculates the length of Farey Sequence F<sub>n</sub>. Its length is given by: |F<sub>n</sub>| = 1 + SUM over n phi(m) where phi(m) is Euler's totient function, which gives the number of integers &#8804; m that are coprime to m.
+This opcode can be used in conjunction with [GENfarey](../scoregens/genfarey.md). It calculates the length of Farey Sequence F<sub>n</sub>. Its length is given by: |F<sub>n</sub>| = 1 + SUM over n phi(m) where phi(m) is Euler's totient function, which gives the number of integers &#8804; m that are coprime to m.
 
 Some values for the length of F<sub>n</sub> given n:
 
@@ -33,9 +33,15 @@ Some values for the length of F<sub>n</sub> given n:
 | 20 | 129 |
 
 ## Syntax
-``` csound-orc
-kfl fareylen kfn
-```
+=== "Modern"
+    ``` csound-orc
+    kfl = fareylen(kfn)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kfl fareylen kfn
+    ```
 
 ### Performance
 
@@ -45,7 +51,7 @@ _kfn_ -- Integer identifying the sequence.
 
 ## Examples
 
-Here is an example of the fareylen opcode. It uses the file [fareylen.csd](../../examples/fareylen.csd).
+Here is an example of the fareylen opcode. It uses the file [fareylen.csd](../examples/fareylen.csd).
 
 ``` csound-orc title="Example of the fareylen opcode." linenums="1"
 --8<-- "examples/fareylen.csd"
@@ -53,7 +59,7 @@ Here is an example of the fareylen opcode. It uses the file [fareylen.csd](../..
 
 ## See Also
 
-[Models and Emulations](../../siggen/models)
+[Models and Emulations](../siggen/models.md)
 
 ## Credits
 

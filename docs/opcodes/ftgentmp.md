@@ -6,9 +6,15 @@ category:Table Control
 Generate a score function table from within the orchestra, which is deleted at the end of the note.
 
 ## Syntax
-``` csound-orc
-ifno ftgentmp ip1, ip2dummy, isize, igen, iarga, iargb, ...
-```
+=== "Modern"
+    ``` csound-orc
+    ifno = ftgentmp(ip1, ip2dummy, isize, igen, iarga, iargb, ...)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ifno ftgentmp ip1, ip2dummy, isize, igen, iarga, iargb, ...
+    ```
 
 ### Initialization
 
@@ -30,7 +36,7 @@ _iarga, iargb, ..._ -- function table arguments. Correspond to p5 through pn of 
 
 ## Examples
 
-Here is an example of the ftgentmp opcode. It uses the file [ftgentmp.csd](../../examples/ftgentmp.csd).
+Here is an example of the ftgentmp opcode. It uses the file [ftgentmp.csd](../examples/ftgentmp.csd).
 
 ``` csound-csd title="Example of the ftgentmp opcode." linenums="1"
 --8<-- "examples/ftgentmp.csd"
@@ -66,7 +72,7 @@ B 17.000 - note deleted.  i2 had 1 init errors
 
 ## See also
 
-[Function Table Control](../../table/top)
+[Function Table Control](../table/top.md)
 
 ## Credits
 

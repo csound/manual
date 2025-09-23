@@ -8,9 +8,15 @@ Gets a given column from a 2-dimensional array as a vector.
 The output is an 1-d array with the contents of the requested column
 
 ## Syntax
-``` csound-orc
-i/kout[] getcol i/kin[], i/kcol
-```
+=== "Modern"
+    ``` csound-orc
+    i/kout[] = getcol(i/kin[], i/kcol)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    i/kout[] getcol i/kin[], i/kcol
+    ```
 
 ### Initialization
 
@@ -30,7 +36,7 @@ _kcol_ -- column to be extracted.
 
 ## Examples
 
-Here is an example of the getcol opcode. It uses the file [getcol.csd](../../examples/getcol.csd).
+Here is an example of the getcol opcode. It uses the file [getcol.csd](../examples/getcol.csd).
 
 ``` csound-csd title="Example of the getcol opcode." linenums="1"
 --8<-- "examples/getcol.csd"
@@ -38,9 +44,9 @@ Here is an example of the getcol opcode. It uses the file [getcol.csd](../../exa
 
 ## See Also
 
-[Vectorial Opcodes](../../vectorial/top)
+[Vectorial Opcodes](../vectorial/top.md)
 
-[Array Opcodes](../../math/array)
+[Array Opcodes](../math/array.md)
 
 ## Credits
 

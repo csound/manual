@@ -8,9 +8,15 @@ printf-style formatted output to a string variable at k-rate.
 Similar to the C function `sprintf()`. _sprintfk_ runs both at initialization and performance time.
 
 ## Syntax
-``` csound-orc
-Sdst sprintfk Sfmt, xarg1[, xarg2[, ... ]]
-```
+=== "Modern"
+    ``` csound-orc
+    Sdst = sprintfk(Sfmt, xarg1[, xarg2[, ... ]])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    Sdst sprintfk Sfmt, xarg1[, xarg2[, ... ]]
+    ```
 
 ### Initialization
 
@@ -26,7 +32,7 @@ _Sdst_ -- output string variable
 
 ## Examples
 
-Here is an example of the sprintfk opcode. It uses the file [sprintfk.csd](../../examples/sprintfk.csd).
+Here is an example of the sprintfk opcode. It uses the file [sprintfk.csd](../examples/sprintfk.csd).
 
 ``` csound-csd title="Example of the sprintfk opcode." linenums="1"
 --8<-- "examples/sprintfk.csd"
@@ -50,7 +56,7 @@ Its output should include lines like this:
 
 ## See Also
 
-[String Manipulation Opcodes](../../strings/manipulate)
+[String Manipulation Opcodes](../strings/manipulate.md)
 
 ## Credits
 

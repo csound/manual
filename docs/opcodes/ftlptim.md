@@ -16,7 +16,7 @@ Returns the loop segment start-time (in seconds) of stored function table number
 
 ## Examples
 
-Here is an example of the ftlptim opcode. It uses the files [ftlptim.csd](../../examples/ftlptim.csd), and [Church.wav](../../examples/Church.wav).
+Here is an example of the ftlptim opcode. It uses the files [ftlptim.csd](../examples/ftlptim.csd), and [Church.wav](../examples/Church.wav).
 
 ``` csound-csd title="Example of the ftlptim opcode." linenums="1"
 --8<-- "examples/ftlptim.csd"
@@ -37,7 +37,7 @@ start     : 0	end       : 0	count  :0
 
 ## See also
 
-[Table Control:Table Queries](../../table/queries)
+[Table Control:Table Queries](../table/queries.md)
 
 ## Credits
 

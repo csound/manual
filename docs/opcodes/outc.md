@@ -6,17 +6,23 @@ category:Signal I/O:Signal Output
 Writes audio data with an arbitrary number of channels to an external device or stream.
 
 ## Syntax
-``` csound-orc
-outc asig1 [, asig2] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    outc(asig1 [, asig2] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    outc asig1 [, asig2] [...]
+    ```
 
 ### Performance
 
-_outc_ outputs as many channels as provided.  Any channels greater than [nchnls](../../opcodes/nchnls) are ignored. Zeros are added as necessary
+_outc_ outputs as many channels as provided.  Any channels greater than [nchnls](../opcodes/nchnls.md) are ignored. Zeros are added as necessary
 
 ## Examples
 
-Here is an example of the outc opcode. It uses the file [outc.csd](../../examples/outc.csd).
+Here is an example of the outc opcode. It uses the file [outc.csd](../examples/outc.csd).
 
 ``` csound-csd title="Example of the outc opcode." linenums="1"
 --8<-- "examples/outc.csd"
@@ -24,7 +30,7 @@ Here is an example of the outc opcode. It uses the file [outc.csd](../../example
 
 ## See also
 
-[Signal Output](../../sigio/output)
+[Signal Output](../sigio/output.md)
 
 ## Credits
 

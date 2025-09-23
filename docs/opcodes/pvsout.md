@@ -8,9 +8,15 @@ Write a fsig to the pvs output bus.
 This opcode writes a fsig to a channel of the pvs output bus. Note that the pvs out bus and the pvs in bus are separate and independent. A new channel is created if non-existent.
 
 ## Syntax
-``` csound-orc
-pvsout fsig, kchan
-```
+=== "Modern"
+    ``` csound-orc
+    pvsout(fsig, kchan)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    pvsout fsig, kchan
+    ```
 
 ### Performance
 
@@ -28,7 +34,7 @@ fsig     pvsanal asig, 1024, 256, 1024, 1  ; analysis
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

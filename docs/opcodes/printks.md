@@ -6,9 +6,15 @@ category:Signal I/O:Printing and Display
 Prints at k-rate using a printf() style syntax.
 
 ## Syntax
-``` csound-orc
-printks "string", itime [, xval1] [, xval2] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    printks("string", itime [, xval1] [, xval2] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    printks "string", itime [, xval1] [, xval2] [...]
+    ```
 
 ### Initialization
 
@@ -41,16 +47,16 @@ All standard C language printf() control characters may be used. For example, if
 
 In addition to all the printf() codes, printks supports these useful character codes:
 
-| printks Code            | Character Code          |
-|-------------------------|-------------------------|
-| \\\\r, \\\\R, %r, or %R | return character (\r)   |
-| \\\\n, \\\\N, %n, %N    | newline character (\n)  |
-| \\\\t, \\\\T, %t, or %T | tab character (\t)      |
-| %!                      | semicolon character (;) This was needed because a “;” is interpreted as a comment. |
-| ^                       | escape character (0x1B) |
-| ^ ^                     | caret character (^)     |
-| ~                       | ESC[ (escape+[ is the escape sequence for ANSI consoles) |
-| ~~                      | tilde (~)               |
+| printks Code | Character Code |
+|---|---|
+| &#92;&#92;r, &#92;&#92;R, %r, or %R | return character (\r) |
+| &#92;&#92;n, &#92;&#92;N, %n, %N | newline character (\n) |
+| &#92;&#92;t, &#92;&#92;T, %t, or %T | tab character (\t) |
+| %! | semicolon character (;) This was needed because a “;” is interpreted as an comment. |
+| ^ | escape character (0x1B) |
+| ^ ^ | caret character (^) |
+| ~ | ESC[ (escape+[ is the escape sequence for ANSI consoles) |
+| ~~ | tilde (~) |
 
 For more information about printf() formatting, consult any C language documentation.
 
@@ -60,7 +66,7 @@ For more information about printf() formatting, consult any C language documenta
 
 ## Examples
 
-Here is an example of the printks opcode. It uses the file [printks.csd](../../examples/printks.csd).
+Here is an example of the printks opcode. It uses the file [printks.csd](../examples/printks.csd).
 
 ``` csound-csd title="Example of the printks opcode." linenums="1"
 --8<-- "examples/printks.csd"
@@ -78,7 +84,7 @@ kup = 79.933266, kdown = 13.872493
 
 ## See also
 
-[Printing and Display](../../sigio/pdisplay)
+[Printing and Display](../sigio/pdisplay.md)
 
 ## Credits
 

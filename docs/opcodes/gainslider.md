@@ -8,9 +8,15 @@ An implementation of a logarithmic gain curve which is similar to the gainslider
 This opcode is intended for use to multiply by an audio signal to give a console mixer like feel. There is no bounds in the source code so you can for example give higher than 127 values for extra amplitude but possibly clipped audio.
 
 ## Syntax
-``` csound-orc
-kout gainslider kindex
-```
+=== "Modern"
+    ``` csound-orc
+    kout = gainslider(kindex)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kout gainslider kindex
+    ```
 
 ### Performance
 
@@ -20,7 +26,7 @@ _kout_ -- Scaled output.
 
 ## Examples
 
-Here is an example of the gainslider opcode. It uses the file [gainslider.csd](../../examples/gainslider.csd).
+Here is an example of the gainslider opcode. It uses the file [gainslider.csd](../examples/gainslider.csd).
 
 ``` csound-orc title="Example of the gainslider opcode." linenums="1"
 --8<-- "examples/gainslider.csd"
@@ -28,7 +34,7 @@ Here is an example of the gainslider opcode. It uses the file [gainslider.csd](.
 
 ## See also
 
-[Linear and Exponential Generators](../../siggen/lineexp)
+[Linear and Exponential Generators](../siggen/lineexp.md)
 
 ## Credits
 

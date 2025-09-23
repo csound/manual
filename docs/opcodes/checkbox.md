@@ -8,9 +8,15 @@ Sense on-screen controls. Requires Winsound or TCL/TK.
 Plugin opcode in control.
 
 ## Syntax
-``` csound-orc
-kres checkbox knum
-```
+=== "Modern"
+    ``` csound-orc
+    kres = checkbox(knum)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres checkbox knum
+    ```
 
 ### Performance
 
@@ -22,15 +28,21 @@ _knum_ -- the number of the checkbox. If it does not exist, it is made on-screen
 
 ## Examples
 
-Here is a simple example of the checkbox opcode. It uses the file [checkbox.csd](../../examples/checkbox.csd).
+=== "Modern"
+    Here is a simple example of the checkbox opcode. It uses the file [checkbox-modern.csd](../examples/checkbox-modern.csd).
+    ``` csound-csd title="Simple example of the checkbox opcode." linenums="1"
+    --8<-- "examples/checkbox-modern.csd"
+    ```
 
-``` csound-csd title="Simple example of the checkbox opcode." linenums="1"
---8<-- "examples/checkbox.csd"
-```
+=== "Classic"
+    Here is a simple example of the checkbox opcode. It uses the file [checkbox.csd](../examples/checkbox.csd).
+    ``` csound-csd title="Simple example of the checkbox opcode." linenums="1"
+    --8<-- "examples/checkbox.csd"
+    ```
 
 ## See also
 
-[Sensing and Control: TCL/TK widgets](../../control/sensing)
+[Sensing and Control: TCL/TK widgets](../control/sensing.md)
 
 ## Credits
 

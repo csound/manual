@@ -8,9 +8,15 @@ Waveshapes a signal by raising it to a variable exponent.
 The _powershape_ opcode raises an input signal to a power with pre- and post-scaling of the signal so that the output will be in a predictable range.  It also processes negative inputs in a symmetrical way to positive inputs, calculating a dynamic transfer function that is useful for waveshaping.
 
 ## Syntax
-``` csound-orc
-aout powershape ain, kShapeAmount [, ifullscale]
-```
+=== "Modern"
+    ``` csound-orc
+    aout = powershape(ain, kShapeAmount [, ifullscale])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout powershape ain, kShapeAmount [, ifullscale]
+    ```
 
 ### Initialization
 
@@ -32,7 +38,7 @@ The other adaptation involves the _ifullscale_ parameter.  The input signal is d
 
 ## Examples
 
-Here is an example of the powershape opcode. It uses the file [powershape.csd](../../examples/powershape.csd).
+Here is an example of the powershape opcode. It uses the file [powershape.csd](../examples/powershape.csd).
 
 ``` csound-csd title="Example of the powershape opcode." linenums="1"
 --8<-- "examples/powershape.csd"
@@ -40,11 +46,11 @@ Here is an example of the powershape opcode. It uses the file [powershape.csd](.
 
 ## See also
 
-[pow](../../opcodes/pow), [powoftwo](../../opcodes/powoftwo)
+[pow](../opcodes/pow.md), [powoftwo](../opcodes/powoftwo.md)
 
-[Waveshaping](../../sigmod/wavshape)
+[Waveshaping](../sigmod/wavshape.md)
 
-[Mathematical Functions](../../math/mathfunc)
+[Mathematical Functions](../math/mathfunc.md)
 
 ## Credits
 

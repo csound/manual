@@ -8,9 +8,15 @@ Mixes low level (~1e-20 for floats, and ~1e-56 for doubles) noise to a list of a
 Can be used before IIR filters and reverbs to avoid denormalized numbers which may otherwise result in significantly increased CPU usage.
 
 ## Syntax
-``` csound-orc
-denorm a1[, a2[, a3[, ... ]]]
-```
+=== "Modern"
+    ``` csound-orc
+    denorm(a1[, a2[, a3[, ... ]]])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    denorm a1[, a2[, a3[, ... ]]]
+    ```
 
 ### Performance
 
@@ -22,7 +28,7 @@ If CPU usage goes to 100% at the end of reverb tails, or you get audio glitches 
 
 ## Examples
 
-Here is an example of the denorm opcode. It uses the file [denorm.csd](../../examples/denorm.csd).
+Here is an example of the denorm opcode. It uses the file [denorm.csd](../examples/denorm.csd).
 
 ``` csound-csd title="Example of the denorm opcode." linenums="1"
 --8<-- "examples/denorm.csd"
@@ -30,7 +36,7 @@ Here is an example of the denorm opcode. It uses the file [denorm.csd](../../exa
 
 ## See also
 
-[Sample Level Operators](../../sigmod/sample)
+[Sample Level Operators](../sigmod/sample.md)
 
 ## Credits
 

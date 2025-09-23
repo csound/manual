@@ -6,17 +6,31 @@ category:Signal Modifiers:Panning and Spatialization
 Decodes an ambisonic B format signal into loudspeaker specific signals.
 
 ## Syntax
-``` csound-orc
-ao1, ao2 bformdec1 isetup, aw, ax, ay, az [, ar, as, at, au, av \
-    [, abk, al, am, an, ao, ap, aq]]
-ao1, ao2, ao3, ao4 bformdec1 isetup, aw, ax, ay, az [, ar, as, at, au, av \
-    [, abk, al, am, an, ao, ap, aq]]
-ao1, ao2, ao3, ao4, ao5 bformdec1 isetup, aw, ax, ay, az [, ar, as, at, au, av \
-    [, abk, al, am, an, ao, ap, aq]]
-ao1, ao2, ao3, ao4, ao5, ao6, ao7, ao8 bformdec1 isetup, aw, ax, ay, az \
-    [, ar, as, at, au, av [, abk, al, am, an, ao, ap, aq]]
-aout[] bformdec1 isetup, abform[]
-```
+=== "Modern"
+    ``` csound-orc
+    ao1, ao2 = bformdec1(isetup, aw, ax, ay, az [, ar, as, at, au, av \
+          [, abk, al, am, an, ao, ap, aq]])
+    ao1, ao2, ao3, ao4 = bformdec1(isetup, aw, ax, ay, az [, ar, as, at, au, av \
+          [, abk, al, am, an, ao, ap, aq]])
+    ao1, ao2, ao3, ao4, ao5 = bformdec1(isetup, aw, ax, ay, az [, ar, as, at, au, av \
+          [, abk, al, am, an, ao, ap, aq]])
+    ao1, ao2, ao3, ao4, ao5, ao6, ao7, ao8 = bformdec1(isetup, aw, ax, ay, az \
+          [, ar, as, at, au, av [, abk, al, am, an, ao, ap, aq]])
+    aout[] = bformdec1(isetup, abform[])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ao1, ao2 bformdec1 isetup, aw, ax, ay, az [, ar, as, at, au, av \
+        [, abk, al, am, an, ao, ap, aq]]
+    ao1, ao2, ao3, ao4 bformdec1 isetup, aw, ax, ay, az [, ar, as, at, au, av \
+        [, abk, al, am, an, ao, ap, aq]]
+    ao1, ao2, ao3, ao4, ao5 bformdec1 isetup, aw, ax, ay, az [, ar, as, at, au, av \
+        [, abk, al, am, an, ao, ap, aq]]
+    ao1, ao2, ao3, ao4, ao5, ao6, ao7, ao8 bformdec1 isetup, aw, ax, ay, az \
+        [, ar, as, at, au, av [, abk, al, am, an, ao, ap, aq]]
+    aout[] bformdec1 isetup, abform[]
+    ```
 
 ### Initialization
 
@@ -36,17 +50,23 @@ _aw, ax, ay_, ... -- input signal in the B format.
 
 _ao1 .. ao8_ -- loudspeaker specific output signals.
 
-## Example
+## Examples
 
-Here is an example of the bformdec1 opcode. It uses the file [bformenc1.csd](../../examples/bformenc1.csd).
+=== "Modern"
+    Here is an example of the bformenc1 opcode. It uses the file [bformenc1-modern.csd](../examples/bformenc1-modern.csd).
+    ``` csound-csd title="Example of the bformenc1 opcode." linenums="1"
+    --8<-- "examples/bformenc1-modern.csd"
+    ```
 
-``` csound-csd title="Example of the bformdec1 opcode." linenums="1"
---8<-- "examples/bformenc1.csd"
-```
+=== "Classic"
+    Here is an example of the bformenc1 opcode. It uses the file [bformenc1.csd](../examples/bformenc1.csd).
+    ``` csound-csd title="Example of the bformenc1 opcode." linenums="1"
+    --8<-- "examples/bformenc1.csd"
+    ```
 
 ## See also
 
-[Panning and Spatialization: Ambisonics](../../sigmod/panspatl)
+[Panning and Spatialization: Ambisonics](../sigmod/panspatl.md)
 
 ## Credits
 

@@ -6,9 +6,15 @@ category:Real-time MIDI:Output
 Sends MIDI program change messages at k-rate.
 
 ## Syntax
-``` csound-orc
-outkpc kchn, kprog, kmin, kmax
-```
+=== "Modern"
+    ``` csound-orc
+    outkpc(kchn, kprog, kmin, kmax)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    outkpc kchn, kprog, kmin, kmax
+    ```
 
 ### Performance
 
@@ -27,13 +33,13 @@ When the _kvalue_ argument receives a 2.0 value, the opcode will send a 127 valu
 
 ## Examples
 
-Here is an example of the outkpc opcode. It uses the file [outkpc.csd](../../examples/outkpc.csd).
+Here is an example of the outkpc opcode. It uses the file [outkpc.csd](../examples/outkpc.csd).
 
 ``` csound-csd title="Example of the outkpc opcode." linenums="1"
 --8<-- "examples/outkpc.csd"
 ```
 
-Here is another example of the outkpc opcode. It uses the file [outkpc_flkt.csd](../../examples/outkpc_fltk.csd).
+Here is another example of the outkpc opcode. It uses the file [outkpc_flkt.csd](../examples/outkpc_fltk.csd).
 
 ``` csound-csd title="Example of the outkpc opcode using FLTK." linenums="1"
 --8<-- "examples/outkpc_fltk.csd"
@@ -41,7 +47,7 @@ Here is another example of the outkpc opcode. It uses the file [outkpc_flkt.csd]
 
 ## See also
 
-[MIDI Message Output](../../midi/output)
+[MIDI Message Output](../midi/output.md)
 
 ## Credits
 

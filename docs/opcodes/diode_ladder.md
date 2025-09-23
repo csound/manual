@@ -9,9 +9,15 @@ Zero-delay feedback implementation of a 4 pole (24 dB/oct) diode low-pass filter
 This filter design was originally used in the EMS VCS3 and was the resonant filter in the Roland TB-303.
 
 ## Syntax
-``` csound-orc
-asig diode_ladder ain, xcf, xk [, inlp, isaturation, istor]
-```
+=== "Modern"
+    ``` csound-orc
+    asig = diode_ladder(ain, xcf, xk [, inlp, isaturation, istor])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig diode_ladder ain, xcf, xk [, inlp, isaturation, istor]
+    ```
 
 ### Initialization
 
@@ -33,7 +39,7 @@ _ksaturation_ (optional, default=1) -- saturation amount to use for non-linear p
 
 ## Examples
 
-Here is an example of the diode_ladder opcode. It uses the file [diode_ladder.csd](../../examples/diode_ladder.csd).
+Here is an example of the diode_ladder opcode. It uses the file [diode_ladder.csd](../examples/diode_ladder.csd).
 
 ``` csound-csd title="Example of the diode_ladder opcode." linenums="1"
 --8<-- "examples/diode_ladder.csd"
@@ -49,7 +55,7 @@ This filter is based on the work of Will Pirkle that employs Vadim Zavalishin's 
 
 ## See also
 
-[Standard filters: Zero-delay Feedback Filters (Virtual Analog)](../../sigmod/standard)
+[Standard filters: Zero-delay Feedback Filters (Virtual Analog)](../sigmod/standard.md)
 
 ## Credits
 

@@ -6,9 +6,15 @@ category:Spectral Processing:Streaming
 Obtain the amp and freq values off a PVS signal bin as k-rate variables.
 
 ## Syntax
-``` csound-orc
-kamp, kfr pvsbin fsig, kbin
-```
+=== "Modern"
+    ``` csound-orc
+    kamp, kfr = pvsbin(fsig, kbin)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kamp, kfr pvsbin fsig, kbin
+    ```
 
 ### Performance
 
@@ -22,7 +28,7 @@ _kbin_ -- bin number
 
 ## Examples
 
-Here is an example of the pvsbin opcode. It uses the file [pvsbin.csd](../../examples/pvsbin.csd). This example uses realtime input, but you can also use it for soundfile input.
+Here is an example of the pvsbin opcode. It uses the file [pvsbin.csd](../examples/pvsbin.csd). This example uses realtime input, but you can also use it for soundfile input.
 
 ``` csound-csd title="Example of the pvsbin opcode" linenums="1"
 --8<-- "examples/pvsbin.csd"
@@ -30,7 +36,7 @@ Here is an example of the pvsbin opcode. It uses the file [pvsbin.csd](../../exa
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

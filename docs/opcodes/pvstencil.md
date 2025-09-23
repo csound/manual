@@ -16,9 +16,15 @@ One of the typical uses of _pvstencil_ would be in noise reduction. A noise prin
 Other possible transformation effects are possible, such as filtering and `inverse-masking'.
 
 ## Syntax
-``` csound-orc
-fsig pvstencil fsigin, kgain, klevel, iftable
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvstencil(fsigin, kgain, klevel, iftable)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvstencil fsigin, kgain, klevel, iftable
+    ```
 
 ### Performance
 
@@ -38,17 +44,17 @@ _iftable_ -- masking function table.
 
 ## Examples
 
-Here is an example of the pvstencil opcode. It uses the file [pvstencil.csd](../../examples/pvstencil.csd).
+Here is an example of the pvstencil opcode. It uses the file [pvstencil.csd](../examples/pvstencil.csd).
 
 ``` csound-csd title="Example of the pvstencil opcode." linenums="1"
 --8<-- "examples/pvstencil.csd"
 ```
 
-For another example of pvstencil, see [GEN43](../../scoregens/gen43)
+For another example of pvstencil, see [GEN43](../scoregens/gen43.md)
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

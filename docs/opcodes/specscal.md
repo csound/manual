@@ -6,9 +6,15 @@ category:Spectral Processing:Non-Standard
 Scales an input spectral datablock with spectral envelopes.
 
 ## Syntax
-``` csound-orc
-wsig specscal wsigin, ifscale, ifthresh
-```
+=== "Modern"
+    ``` csound-orc
+    wsig = specscal(wsigin, ifscale, ifthresh)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    wsig specscal wsigin, ifscale, ifthresh
+    ```
 
 ### Initialization
 
@@ -37,4 +43,4 @@ Scales an input spectral datablock with spectral envelopes. Function tables _ift
 
 ## See Also
 
-[specaddm](../../opcodes/specaddm), [specdiff](../../opcodes/specdiff), [specfilt](../../opcodes/specfilt), [spechist](../../opcodes/spechist)
+[specaddm](../opcodes/specaddm.md), [specdiff](../opcodes/specdiff.md), [specfilt](../opcodes/specfilt.md), [spechist](../opcodes/spechist.md)

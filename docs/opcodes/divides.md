@@ -39,7 +39,7 @@ arguments is an array, so is the value.
 
 ## Examples
 
-Here is an example of the &sol; operator. It uses the file [divides.csd](../../examples/divides.csd).
+Here is an example of the &sol; operator. It uses the file [divides.csd](../examples/divides.csd).
 
 ``` csound-csd title="Example of the &sol; operator." linenums="1"
 --8<-- "examples/divides.csd"
@@ -55,7 +55,7 @@ retrigger rate per note duration = 0.666667
 
 ## See also
 
-[Arithmetic and Logic Operations](../../math/artlogic)
+[Arithmetic and Logic Operations](../math/artlogic.md)
 
 ## Credits
 

@@ -8,9 +8,15 @@ A band reject filter working in the spectral domain.
 Filter the pvoc frames, rejecting bins whose frequency is within a band, and with linear interpolation for transitional bands.
 
 ## Syntax
-``` csound-orc
-fsig pvsbandr fsigin, xlowcut, xlowfull, xhighfull, xhighcut [, ktype]
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvsbandr(fsigin, xlowcut, xlowfull, xhighfull, xhighcut [, ktype])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvsbandr fsigin, xlowcut, xlowfull, xhighfull, xhighcut [, ktype]
+    ```
 
 ### Performance
 
@@ -43,7 +49,7 @@ ________                                      ______________
 
 ## Examples
 
-Here is an example of the pvsbandr opcode. It uses the file [pvsbandr.csd](../../examples/pvsbandr.csd).
+Here is an example of the pvsbandr opcode. It uses the file [pvsbandr.csd](../examples/pvsbandr.csd).
 
 ``` csound-csd title="Example of the pvsbandr opcode." linenums="1"
 --8<-- "examples/pvsbandr.csd"
@@ -51,7 +57,7 @@ Here is an example of the pvsbandr opcode. It uses the file [pvsbandr.csd](../..
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

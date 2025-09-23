@@ -6,12 +6,21 @@ category:Signal Modifiers:Special Effects
 Analyze an audio input and generate harmonizing voices in synchrony with formants preserved.
 
 ## Syntax
-``` csound-orc
-ares harmon2 asig, koct, kfrq1, kfrq2, icpsmode, ilowest[, ipolarity]
-ares harmon3 asig, koct, kfrq1, kfrq2, kfrq3, icpsmode, ilowest[, ipolarity]
-ares harmon4 asig, koct, kfrq1, kfrq2, kfrq3, kfrq4, icpsmode, ilowest \
-             [, ipolarity]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = harmon2(asig, koct, kfrq1, kfrq2, icpsmode, ilowest[, ipolarity])
+    ares = harmon3(asig, koct, kfrq1, kfrq2, kfrq3, icpsmode, ilowest[, ipolarity])
+    ares = harmon4(asig, koct, kfrq1, kfrq2, kfrq3, kfrq4, icpsmode, ilowest \
+                   [, ipolarity])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares harmon2 asig, koct, kfrq1, kfrq2, icpsmode, ilowest[, ipolarity]
+    ares harmon3 asig, koct, kfrq1, kfrq2, kfrq3, icpsmode, ilowest[, ipolarity]
+    ares harmon4 asig, koct, kfrq1, kfrq2, kfrq3, kfrq4, icpsmode, ilowest \
+                 [, ipolarity]
+    ```
 
 ### Initialization
 
@@ -31,7 +40,7 @@ _harmon2_, _harmon3_, _harmon4_ are especially matched to the output of _specptr
 
 ## Examples
 
-Here is an example of the harmon2 opcode. It uses the file [harmon.csd](../../examples/harmon.csd).
+Here is an example of the harmon2 opcode. It uses the file [harmon.csd](../examples/harmon.csd).
 
 ``` csound-orc title="Example of the harmon2 opcode." linenums="1"
 a1,a2      ins                                     ; get mic input
@@ -42,7 +51,7 @@ a4         harmon2   a3, koct, 1.25, 0.75, 0, 6.9  ; output a fixed 6-4 harmony
            outs      a3, a4                        ; as well as the original
 ```
 
-Here is a complete example of the harmon3 opcode. It uses the file [harmon3.csd](../../examples/harmon3.csd).
+Here is a complete example of the harmon3 opcode. It uses the file [harmon3.csd](../examples/harmon3.csd).
 
 ``` csound-csd title="Example of the harmon3 opcode." linenums="1"
 --8<-- "examples/harmon3.csd"
@@ -50,7 +59,7 @@ Here is a complete example of the harmon3 opcode. It uses the file [harmon3.csd]
 
 ## See also
 
-[Special Effects](../../sigmod/speciale)
+[Special Effects](../sigmod/speciale.md)
 
 ## Credits
 

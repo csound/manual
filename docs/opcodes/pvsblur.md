@@ -8,9 +8,15 @@ Average the amp/freq time functions of each analysis channel for a specified tim
 As a side-effect the input pvoc stream will be delayed by that amount.
 
 ## Syntax
-``` csound-orc
-fsig pvsblur fsigin, kblurtime, imaxdel
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvsblur(fsigin, kblurtime, imaxdel)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvsblur fsigin, kblurtime, imaxdel
+    ```
 
 ### Performance
 
@@ -30,7 +36,7 @@ This opcode will blur a pvstream by smoothing the amplitude and frequency time f
 
 ## Examples
 
-Here is an example of the use of the _pvsblur_ opcode. It uses the file [pvsblur.csd](../../examples/pvsblur.csd).
+Here is an example of the use of the _pvsblur_ opcode. It uses the file [pvsblur.csd](../examples/pvsblur.csd).
 
 ``` csound-csd title="Example of the _pvsblur_ opcode." linenums="1"
 --8<-- "examples/pvsblur.csd"
@@ -38,7 +44,7 @@ Here is an example of the use of the _pvsblur_ opcode. It uses the file [pvsblur
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

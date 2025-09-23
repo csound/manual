@@ -8,14 +8,21 @@ Low latency multichannel convolution, using a function table as impulse response
 The algorithm is to split the impulse response to partitions of length determined by the _iplen_ parameter, and delay and mix partitions so that the original, full length impulse response is reconstructed without gaps. The output delay (latency) is _iplen_ samples, and does not depend on the control rate, unlike in the case of other convolve opcodes.
 
 ## Syntax
-``` csound-orc
-a1[, a2[, a3[, ... a8]]] ftconv ain, ift, iplen[, iskipsamples \
-                                [, iirlen[, iskipinit]]]
-```
+=== "Modern"
+    ``` csound-orc
+    a1[, a2[, a3[, ... a8]]] = ftconv(ain, ift, iplen[, iskipsamples \
+                                      [, iirlen[, iskipinit]]])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    a1[, a2[, a3[, ... a8]]] ftconv ain, ift, iplen[, iskipsamples \
+                                    [, iirlen[, iskipinit]]]
+    ```
 
 ### Initialization
 
-_ift_ -- source ftable number. The table is expected to contain interleaved multichannel audio data, with the number of channels equal to the number of output variables (a1, a2, etc.). An interleaved table can be created from a set of mono tables with [GEN52](../../scoregens/gen52).
+_ift_ -- source ftable number. The table is expected to contain interleaved multichannel audio data, with the number of channels equal to the number of output variables (a1, a2, etc.). An interleaved table can be created from a set of mono tables with [GEN52](../scoregens/gen52.md).
 
 _iplen_ -- length of impulse response partitions, in sample frames; must be an integer power of two. Lower settings allow for shorter output delay, but will increase CPU usage.
 
@@ -31,9 +38,9 @@ _ain_ -- input signal.
 
 _a1 ... a8_ -- output signal(s).
 
-## Example
+## Examples
 
-Here is an example of the ftconv opcode. It uses the file [ftconv.csd](../../examples/ftconv.csd).
+Here is an example of the ftconv opcode. It uses the file [ftconv.csd](../examples/ftconv.csd).
 
 ``` csound-csd title="Example of the ftconv opcode." linenums="1"
 --8<-- "examples/ftconv.csd"
@@ -41,7 +48,7 @@ Here is an example of the ftconv opcode. It uses the file [ftconv.csd](../../exa
 
 ## See also
 
-[Convolution and Morphing](../../sigmod/conmorph)
+[Convolution and Morphing](../sigmod/conmorph.md)
 
 ## Credits
 

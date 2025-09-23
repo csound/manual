@@ -6,9 +6,15 @@ category:Signal Modifiers:Standard Filters:Resonant
 A resonant low-pass filter.
 
 ## Syntax
-``` csound-orc
-ares rezzy asig, xfco, xres [, imode, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = rezzy(asig, xfco, xres [, imode, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares rezzy asig, xfco, xres [, imode, iskip]
+    ```
 
 ### Initialization
 
@@ -28,7 +34,7 @@ _rezzy_ is a resonant low-pass filter created empirically by Hans Mikelson.
 
 ## Examples
 
-Here is an example of the rezzy opcode. It uses the file [rezzy.csd](../../examples/rezzy.csd).
+Here is an example of the rezzy opcode. It uses the file [rezzy.csd](../examples/rezzy.csd).
 
 ``` csound-csd title="Example of the rezzy opcode." linenums="1"
 --8<-- "examples/rezzy.csd"
@@ -36,7 +42,7 @@ Here is an example of the rezzy opcode. It uses the file [rezzy.csd](../../examp
 
 ## See also
 
-[Standard Filters: Resonant Low-pass filters](../../sigmod/standard)
+[Standard Filters: Resonant Low-pass filters](../sigmod/standard.md)
 
 ## Credits
 

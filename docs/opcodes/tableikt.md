@@ -7,13 +7,20 @@ Provides k-rate control over table numbers.
 
 Function tables are read with linear interpolation.
 
-The standard Csound opcode [tablei](../../opcodes/tablei), when producing a k- or a-rate result, can only use an init-time variable to select the table number. _tableikt_ accepts k-rate control as well as i-time. In all other respects they are similar to the original opcodes.
+The standard Csound opcode [tablei](../opcodes/tablei.md), when producing a k- or a-rate result, can only use an init-time variable to select the table number. _tableikt_ accepts k-rate control as well as i-time. In all other respects they are similar to the original opcodes.
 
 ## Syntax
-``` csound-orc
-ares tableikt xndx, kfn [, ixmode] [, ixoff] [, iwrap]
-kres tableikt kndx, kfn [, ixmode] [, ixoff] [, iwrap]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = tableikt(xndx, kfn [, ixmode] [, ixoff] [, iwrap])
+    kres = tableikt(kndx, kfn [, ixmode] [, ixoff] [, iwrap])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares tableikt xndx, kfn [, ixmode] [, ixoff] [, iwrap]
+    kres tableikt kndx, kfn [, ixmode] [, ixoff] [, iwrap]
+    ```
 
 ### Initialization
 
@@ -29,15 +36,15 @@ _kndx_ -- Index into table, either a positive number range matching the table le
 
 _xndx_ -- matching the table length (_ixmode_ = 0) or a 0 to 1 range (_ixmode_ not equal to 0)
 
-_kfn_ -- Table number. Must be &gt;= 1. Floats are rounded down to an integer.  If a table number does not point to a valid table, or the table has not yet been loaded ([GEN01](../../scoregens/gen01)) then an error will result and the instrument will be de-activated.
+_kfn_ -- Table number. Must be &gt;= 1. Floats are rounded down to an integer.  If a table number does not point to a valid table, or the table has not yet been loaded ([GEN01](../scoregens/gen01.md)) then an error will result and the instrument will be de-activated.
 
 > :warning: **Caution with k-rate table numbers**
 >
-> At k-rate, if a table number of &lt; 1 is given, or the table number points to a non-existent table, or to one which has a length of 0 (it is to be loaded from a file later) then an error will result and the instrument will be deactivated. _kfn_ must be initialized at the appropriate rate using [init](../../opcodes/init). Attempting to load an i-rate value into _kfn_ will result in an error.
+> At k-rate, if a table number of &lt; 1 is given, or the table number points to a non-existent table, or to one which has a length of 0 (it is to be loaded from a file later) then an error will result and the instrument will be deactivated. _kfn_ must be initialized at the appropriate rate using [init](../opcodes/init.md). Attempting to load an i-rate value into _kfn_ will result in an error.
 
 ## Examples
 
-Here is an example of the tableikt opcode. It uses the file [tableikt.csd](../../examples/tableikt.csd).
+Here is an example of the tableikt opcode. It uses the file [tableikt.csd](../examples/tableikt.csd).
 
 ``` csound-csd title="Example of the tableikt opcode." linenums="1"
 --8<-- "examples/tableikt.csd"
@@ -56,7 +63,7 @@ play table no: 1
 
 ## See also
 
-[Table Reading with Dynamic Selection](../../table/select)
+[Table Reading with Dynamic Selection](../table/select.md)
 
 ## Credits
 

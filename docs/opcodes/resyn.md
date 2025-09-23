@@ -3,14 +3,20 @@ id:resyn
 category:Spectral Processing:Streaming
 -->
 # resyn
-Streaming partial track additive synthesis with cubic phase interpolation with pitch control and support for timescale-modified input
+Streaming partial track additive synthesis with cubic phase interpolation.
 
-The resyn opcode takes an input containg a TRACKS pv streaming signal (as generated, for instance by partials). It resynthesises the signal using linear amplitude and cubic phase interpolation to drive a bank of interpolating oscillators with amplitude and pitch scaling controls. Resyn is a modified version of sinsyn, allowing for the resynthesis of data with pitch and timescale changes.
+The *resyn* opcode  uses pitch control and support for timescale-modified input. It takes an input containing a TRACKS pv streaming signal (as generated, for instance by partials). It resynthesises the signal using linear amplitude and cubic phase interpolation to drive a bank of interpolating oscillators with amplitude and pitch scaling controls. *resyn* is a modified version of [sinsyn](sinsyn.md), allowing for the resynthesis of data with pitch and timescale changes.
 
 ## Syntax
-``` csound-orc
-asig resyn fin, kscal, kpitch, kmaxtracks, ifn
-```
+=== "Modern"
+    ``` csound-orc
+    asig = resyn(fin, kscal, kpitch, kmaxtracks, ifn)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig resyn fin, kscal, kpitch, kmaxtracks, ifn
+    ```
 
 ### Performance
 
@@ -28,7 +34,7 @@ _ifn_ -- function table containing one cycle of a sinusoid (sine or cosine)
 
 ## Examples
 
-Here is an example of the resyn opcode. It uses the file [resyn.csd](../../examples/resyn.csd).
+Here is an example of the resyn opcode. It uses the file [resyn.csd](../examples/resyn.csd).
 
 ``` csound-csd title="Example of the resyn opcode." linenums="1"
 --8<-- "examples/resyn.csd"
@@ -38,7 +44,7 @@ The example above shows partial tracking of an ifd-analysis signal and cubic-pha
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

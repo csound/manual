@@ -9,12 +9,18 @@ _midipolyaftertouch_ is designed to simplify writing instruments that can be use
 
 In general, it should be possible to write instrument definitions that work identically with both scores and MIDI, including both MIDI files and real-time MIDI input, without using any conditional statements, and that take full advantage of MIDI voice messages.
 
-Note that correlating Csound instruments with MIDI channel numbers is done using the [massign](../../opcodes/massign) opcode for real-time performance,.  For file-driven performance, instrument numbers default to MIDI channel number + 1, but the defaults are overridden by any MIDI program change messages in the file.
+Note that correlating Csound instruments with MIDI channel numbers is done using the [massign](../opcodes/massign.md) opcode for real-time performance,.  For file-driven performance, instrument numbers default to MIDI channel number + 1, but the defaults are overridden by any MIDI program change messages in the file.
 
 ## Syntax
-``` csound-orc
-midipolyaftertouch xpolyaftertouch, xkey [, ilow] [, ihigh]
-```
+=== "Modern"
+    ``` csound-orc
+    midipolyaftertouch(xpolyaftertouch, xkey [, ilow] [, ihigh])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    midipolyaftertouch xpolyaftertouch, xkey [, ilow] [, ihigh]
+    ```
 
 ### Initialization
 
@@ -34,11 +40,11 @@ This enables score p-fields to receive MIDI input data during MIDI activation, a
 
 > :memo: **Adapting a score-activated Csound instrument.**
 >
-> See the [MIDI interop opcodes](../../midi/interop) section for details on adapting score driven instruments for MIDI or vice-versa.
+> See the [MIDI interop opcodes](../midi/interop.md) section for details on adapting score driven instruments for MIDI or vice-versa.
 
 ## Examples
 
-Here is an example of the midipolyaftertouch opcode. It uses the file [midipolyaftertouch.csd](../../examples/midipolyaftertouch.csd).
+Here is an example of the midipolyaftertouch opcode. It uses the file [midipolyaftertouch.csd](../examples/midipolyaftertouch.csd).
 
 ``` csound-csd title="Example of the midipolyaftertouch opcode." linenums="1"
 --8<-- "examples/midipolyaftertouch.csd"
@@ -54,7 +60,7 @@ i1    44.00000
 
 ## See also
 
-[MIDI/Score Interoperability](../../midi/interop)
+[MIDI/Score Interoperability](../midi/interop.md)
 
 ## Credits
 

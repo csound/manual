@@ -8,9 +8,15 @@ Combine the spectral envelope of one fsig with the excitation (frequencies) of a
 This opcode provides support for cross-synthesis of amplitudes and frequencies. It takes the amplitudes of one input fsig and combines with frequencies from another. It is a spectral version of the well-known channel vocoder.
 
 ## Syntax
-``` csound-orc
-fsig pvsvoc famp, fexc, kdepth, kgain [, kcoefs]
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvsvoc(famp, fexc, kdepth, kgain [, kcoefs])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvsvoc famp, fexc, kdepth, kgain [, kcoefs]
+    ```
 
 ### Performance
 
@@ -32,7 +38,7 @@ _kcoefs_ -- number of cepstrum coefs used in spectral envelope estimation (defau
 
 ## Examples
 
-Here is an example of the pvsvoc opcode. It uses the file [pvsvoc.csd](../../examples/pvsvoc.csd).
+Here is an example of the pvsvoc opcode. It uses the file [pvsvoc.csd](../examples/pvsvoc.csd).
 
 ``` csound-csd title="Example of the pvsvoc opcode." linenums="1"
 --8<-- "examples/pvsvoc.csd"
@@ -42,7 +48,7 @@ The example above shows a typical cross-synthesis operation. The input signal (s
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

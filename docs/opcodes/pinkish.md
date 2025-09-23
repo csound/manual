@@ -3,15 +3,23 @@ id:pinkish
 category:Signal Generators:Random (Noise) Generators
 -->
 # pinkish
-Generates approximate pink noise (-3dB/oct response) by one of two different methods:
+Generates approximate pink noise (-3dB/oct response).
+
+It uses one of two different methods:
 
 *  a multirate noise generator after Moore, coded by Martin Gardner
 *  a filter bank designed by Paul Kellet
 
 ## Syntax
-``` csound-orc
-ares pinkish xin [, imethod] [, inumbands] [, iseed] [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = pinkish(xin [, imethod] [, inumbands] [, iseed] [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares pinkish xin [, imethod] [, inumbands] [, iseed] [, iskip]
+    ```
 
 ### Initialization
 
@@ -41,7 +49,7 @@ The Gardner method output has some frequency response anomalies in the low-mid a
 
 ## Examples
 
-Here is an example of the pinkish opcode. It uses the file [pinkish.csd](../../examples/pinkish.csd).
+Here is an example of the pinkish opcode. It uses the file [pinkish.csd](../examples/pinkish.csd).
 
 ``` csound-orc title="Example of the pinkish opcode." linenums="1"
 --8<-- "examples/pinkish.csd"
@@ -51,7 +59,7 @@ Kellet-filtered noise for a tied note (_iskip_ is non-zero).
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
 ## Credits
 

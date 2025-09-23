@@ -32,25 +32,31 @@ asig 0dbfs, freq, 1
 0dbfs
 ```
 
-The purpose of the _0dbfs_ opcode is for people to start to code 0dbfs-relatively (and use the [ampdbfs()](../../opcodes/ampdbfs) opcodes a lot more!), rather than use explicit sample values. Using 0dbfs=1 is in accordance to industry practice, as ranges from -1 to 1 are used in most commercial plugin formats and in most other synthesis systems like Pure Data.
+The purpose of the _0dbfs_ opcode is for people to start to code 0dbfs-relatively (and use the [ampdbfs()](../opcodes/ampdbfs.md) opcodes a lot more!), rather than use explicit sample values. Using 0dbfs=1 is in accordance to industry practice, as ranges from -1 to 1 are used in most commercial plugin formats and in most other synthesis systems like Pure Data.
 
 Floats written to a file, when _0dbfs = 1_, will in effect go through no range translation at all. So the numbers in the file are exactly what the orc says they are.
 
-For more details on amplitude values in Csound, see the section [Amplitude values in Csound](../../)
+For more details on amplitude values in Csound, see the section [Amplitude values in Csound](../orch/amplitudes.md)
 
-Example
+## Examples
 
-Here is an example of the 0dbfs opcode. It uses the file [0dbfs.csd](../../examples/0dbfs.csd).
+=== "Modern"
+    Here is an example of the 0dbfs opcode. It uses the file [0dbfs-modern.csd](../examples/0dbfs-modern.csd).
+    ``` csound-csd title="Example of the 0dbfs opcode." linenums="1"
+    --8<-- "examples/0dbfs-modern.csd"
+    ```
 
-``` csound-csd title="Example of the 0dbfs opcode." linenums="1"
---8<-- "examples/0dbfs.csd"
-```
+=== "Classic"
+    Here is an example of the 0dbfs opcode. It uses the file [0dbfs.csd](../examples/0dbfs.csd).
+    ``` csound-csd title="Example of the 0dbfs opcode." linenums="1"
+    --8<-- "examples/0dbfs.csd"
+    ```
 
 ## See also
 Sets the value of 0 decibels using full scale amplitude.
 
 
-[Orchestra Header Statements](../../orch/header)
+[Orchestra Header Statements](../orch/header.md)
 
 ## Credits
 

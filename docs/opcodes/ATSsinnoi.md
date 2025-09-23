@@ -6,14 +6,21 @@ category:Spectral Processing:ATS
 _ATSsinnoi_ reads data from an ATS data file and uses the information to synthesize sines and noise together.
 
 ## Syntax
-``` csound-orc
-ar ATSsinnoi ktimepnt, ksinlev, knzlev, kfmod, iatsfile, ipartials \
-             [, ipartialoffset, ipartialincr]
-```
+=== "Modern"
+    ``` csound-orc
+    ar = ATSsinnoi(ktimepnt, ksinlev, knzlev, kfmod, iatsfile, ipartials \
+                   [, ipartialoffset, ipartialincr])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar ATSsinnoi ktimepnt, ksinlev, knzlev, kfmod, iatsfile, ipartials \
+                 [, ipartialoffset, ipartialincr]
+    ```
 
 ### Initialization
 
-_iatsfile_ – the ATS number (n in ats.n) or the name in quotes of the analysis file made using [ATSA](../../utility/atsa).
+_iatsfile_ – the ATS number (n in ats.n) or the name in quotes of the analysis file made using [ATSA](../utility/atsa.md).
 
 _ipartials_ – number of partials that will be used in the resynthesis (the noise has a maximum of 25 bands)
 
@@ -23,7 +30,7 @@ _ipartialincr_ (optional) – sets an increment by which these synthesis opcodes
 
 ### Performance
 
-_ktimepnt_ – The time pointer in seconds used to index the ATS file. Used for _ATSsinnoi_ exactly the same as for [pvoc](../../opcodes/pvoc).
+_ktimepnt_ – The time pointer in seconds used to index the ATS file. Used for _ATSsinnoi_ exactly the same as for [pvoc](../opcodes/pvoc.md).
 
 _ksinlev_ - controls the level of the sines in the _ATSsinnoi_ ugen. A value of 1 gives full volume sinewaves.
 
@@ -42,21 +49,33 @@ _ATSsinnoi_ reads data from an ATS data file and uses the information to synthes
 
 Here we synthesize both the noise and the sinewaves (all 42 partials) contained in "beats.ats" together. The relative volumes of the noise and the partials are unaltered (each set to 1).
 
-Here is a complete example of the ATSsinnoi opcode. It uses the file [ATSsinnoi.csd](../../examples/ATSsinnoi.csd).
+=== "Modern"
+    Here is a complete example of the ATSsinnoi opcode. It uses the file [ATSsinnoi-modern.csd](../examples/ATSsinnoi-modern.csd).
+    ``` csound-csd title="Example of the ATSsinnoi opcode." linenums="1"
+    --8<-- "examples/ATSsinnoi-modern.csd"
+    ```
 
-``` csound-csd title="Example of the ATSsinnoi opcode." linenums="1"
---8<-- "examples/ATSsinnoi.csd"
-```
+=== "Classic"
+    Here is a complete example of the ATSsinnoi opcode. It uses the file [ATSsinnoi.csd](../examples/ATSsinnoi.csd).
+    ``` csound-csd title="Example of the ATSsinnoi opcode." linenums="1"
+    --8<-- "examples/ATSsinnoi.csd"
+    ```
 
-Here is another complete example of the ATSsinnoi opcode. It uses the file [ATSsinnoi-2.csd](../../examples/ATSsinnoi-2.csd).
+=== "Modern"
+    Here is another complete example of the ATSsinnoi opcode. It uses the file [ATSsinnoi-2-modern.csd](../examples/ATSsinnoi-2-modern.csd).
+    ``` csound-csd title="Example 2 of the ATSsinnoi opcode." linenums="1"
+    --8<-- "examples/ATSsinnoi-2-modern.csd"
+    ```
 
-``` csound-csd title="Example 2 of the ATSsinnoi opcode." linenums="1"
---8<-- "examples/ATSsinnoi-2.csd"
-```
+=== "Classic"
+    Here is another complete example of the ATSsinnoi opcode. It uses the file [ATSsinnoi-2.csd](../examples/ATSsinnoi-2.csd).
+    ``` csound-csd title="Example 2 of the ATSsinnoi opcode." linenums="1"
+    --8<-- "examples/ATSsinnoi-2.csd"
+    ```
 
 ## See also
 
-[ATS Spectral Processing](../../spectral/ATS)
+[ATS Spectral Processing](../spectral/ATS.md)
 
 ## Credits
 

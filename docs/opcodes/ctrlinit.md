@@ -6,10 +6,17 @@ category:Real-time MIDI:Input
 Sets the initial values for a set of MIDI controllers.
 
 ## Syntax
-``` csound-orc
-ctrlinit ichnl, ictlno1, ival1 [, ictlno2] [, ival2] [, ictlno3] \
-         [, ival3] [,...ival32]
-```
+=== "Modern"
+    ``` csound-orc
+    ctrlinit(ichnl, ictlno1, ival1 [, ictlno2] [, ival2] [, ictlno3] \
+             [, ival3] [,...ival32])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ctrlinit ichnl, ictlno1, ival1 [, ictlno2] [, ival2] [, ictlno3] \
+             [, ival3] [,...ival32]
+    ```
 
 ### Initialization
 
@@ -29,7 +36,7 @@ Sets the initial values for a set of MIDI controllers.
 
 ## Examples
 
-Here is an example of the ctrlinit opcode. It uses the file [ctrlinit.csd](../../examples/ctrlinit.csd).
+Here is an example of the ctrlinit opcode. It uses the file [ctrlinit.csd](../examples/ctrlinit.csd).
 
 ``` csound-csd title="Example of the ctrlinit opcode." linenums="1"
 --8<-- "examples/ctrlinit.csd"
@@ -37,9 +44,9 @@ Here is an example of the ctrlinit opcode. It uses the file [ctrlinit.csd](../..
 
 ## See also
 
-[MIDI input and Initialization](../../midi/input)
+[MIDI input and Initialization](../midi/input.md)
 
-[Orchestra Header Statements](../../orch/header)
+[Orchestra Header Statements](../orch/header.md)
 
 ## Credits
 

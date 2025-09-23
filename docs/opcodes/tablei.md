@@ -6,11 +6,19 @@ category:Signal Generators:Table Access
 Accesses table values by direct indexing with linear interpolation.
 
 ## Syntax
-``` csound-orc
-ares tablei andx, ifn [, ixmode] [, ixoff] [, iwrap]
-ires tablei indx, ifn [, ixmode] [, ixoff] [, iwrap]
-kres tablei kndx, ifn [, ixmode] [, ixoff] [, iwrap]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = tablei(andx, ifn [, ixmode] [, ixoff] [, iwrap])
+    ires = tablei(indx, ifn [, ixmode] [, ixoff] [, iwrap])
+    kres = tablei(kndx, ifn [, ixmode] [, ixoff] [, iwrap])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares tablei andx, ifn [, ixmode] [, ixoff] [, iwrap]
+    ires tablei indx, ifn [, ixmode] [, ixoff] [, iwrap]
+    kres tablei kndx, ifn [, ixmode] [, ixoff] [, iwrap]
+    ```
 
 ### Initialization
 
@@ -30,7 +38,7 @@ _iwrap_ (optional) -- wraparound index flag. The default value is 0.
 
 ### Performance
 
-_tablei_ is a interpolating unit in which the fractional part of index is used to interpolate between adjacent table entries. The smoothness gained by interpolation is at some small cost in execution time (see also [oscili](../../opcodes/oscili), etc.), but the interpolating and non-interpolating units are otherwise interchangeable. Note that when _tablei_ uses a periodic index whose modulo _n_ is less than the power of 2 table length, the interpolation process requires that there be an (_n_ + 1)th table value that is a repeat of the 1st (see [f Statement](../../scoregens/f) in score).
+_tablei_ is a interpolating unit in which the fractional part of index is used to interpolate between adjacent table entries. The smoothness gained by interpolation is at some small cost in execution time (see also [oscili](../opcodes/oscili.md), etc.), but the interpolating and non-interpolating units are otherwise interchangeable. Note that when _tablei_ uses a periodic index whose modulo _n_ is less than the power of 2 table length, the interpolation process requires that there be an (_n_ + 1)th table value that is a repeat of the 1st (see [f Statement](../scoregens/f.md) in score).
 
 > :warning: **Warning**
 > 
@@ -39,7 +47,7 @@ _tablei_ is a interpolating unit in which the fractional part of index is used t
 
 ## Examples
 
-Here is an example of the tablei opcode. It uses the file [tablei.csd](../../examples/tablei.csd).
+Here is an example of the tablei opcode. It uses the file [tablei.csd](../examples/tablei.csd).
 
 ``` csound-orc title="Example of the tablei opcode." linenums="1"
 --8<-- "examples/tablei.csd"
@@ -47,6 +55,6 @@ Here is an example of the tablei opcode. It uses the file [tablei.csd](../../exa
 
 ## See Also
 
-[Table Access](../../siggen/tableacc)
+[Table Access](../siggen/tableacc.md)
 
 More information on this opcode: [http://www.csoundjournal.com/issue12/genInstruments.html](http://www.csoundjournal.com/issue12/genInstruments.html)  , written by Jacob Joaquin

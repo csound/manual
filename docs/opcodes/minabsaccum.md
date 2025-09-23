@@ -8,9 +8,15 @@ Accumulates the minimum of the absolute values of audio signals.
 _minabsaccum_ compares two audio-rate variables and stores the minimum of their absolute values into the first.
 
 ## Syntax
-``` csound-orc
-minabsaccum aAccumulator, aInput
-```
+=== "Modern"
+    ``` csound-orc
+    minabsaccum(aAccumulator, aInput)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    minabsaccum aAccumulator, aInput
+    ```
 
 ### Performance
 
@@ -28,7 +34,7 @@ _aAccumulator_ will usually be a global audio variable.  At the end of any given
 
 ## Examples
 
-Here is an example of the minabsaccum opcode. It uses the file [minabsaccum.csd](../../examples/minabsaccum.csd).
+Here is an example of the minabsaccum opcode. It uses the file [minabsaccum.csd](../examples/minabsaccum.csd).
 
 ``` csound-csd title="Example of the minabsaccum opcode." linenums="1"
 --8<-- "examples/minabsaccum.csd"
@@ -36,7 +42,7 @@ Here is an example of the minabsaccum opcode. It uses the file [minabsaccum.csd]
 
 ## See also
 
-[Comparators and Accumulators](../../sigmod/compaccum)
+[Comparators and Accumulators](../sigmod/compaccum.md)
 
 ## Credits
 

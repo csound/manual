@@ -6,9 +6,15 @@ category:Signal Modifiers:Specialized Filters
 Apply a gammatone filter of various orders to an audio signal.
 
 ## Syntax
-``` csound-orc
-aout gtf ain, kfreq, idecay[, iorder, iphase]
-```
+=== "Modern"
+    ``` csound-orc
+    aout = gtf(ain, kfreq, idecay[, iorder, iphase])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout gtf ain, kfreq, idecay[, iorder, iphase]
+    ```
 
 ### Initialization
 
@@ -28,7 +34,7 @@ The gammatone filter is commonly used in models of the auditory system. The algo
 
 ## Examples
 
-Here is an example of the gtf opcode. It uses the file [gtf.csd](../../examples/gtf.csd).
+Here is an example of the gtf opcode. It uses the file [gtf.csd](../examples/gtf.csd).
 
 ``` csound-csd title="Example of the gtf opcode." linenums="1"
 --8<-- "examples/gtf.csd"
@@ -36,7 +42,7 @@ Here is an example of the gtf opcode. It uses the file [gtf.csd](../../examples/
 
 ## See also
 
-[Specialized Filters: Other filters](../../sigmod/speciali)
+[Specialized Filters: Other filters](../sigmod/speciali.md)
 
 ## Credits
 

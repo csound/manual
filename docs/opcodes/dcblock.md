@@ -3,7 +3,7 @@ id:dcblock
 category:Signal Modifiers:Specialized Filters
 -->
 # dcblock
-Implements the DC blocking filter
+Implements the DC blocking filter.
 
 ```
 Y[i] = X[i] - X[i-1] + (igain * Y[i-1])
@@ -12,9 +12,15 @@ Y[i] = X[i] - X[i-1] + (igain * Y[i-1])
 Based on work by Perry Cook.
 
 ## Syntax
-``` csound-orc
-ares dcblock ain [, igain]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = dcblock(ain [, igain])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares dcblock ain [, igain]
+    ```
 
 ### Initialization
 
@@ -26,13 +32,13 @@ _ain_ -- audio signal input
 
 > :memo: **Note**
 >
-> The new [dcblock2](../../opcodes/dcblock2) opcode is an improved method of removing DC from an audio signal.
+> The new [dcblock2](../opcodes/dcblock2.md) opcode is an improved method of removing DC from an audio signal.
 
 ## Examples
 
 The result can be viewed in a graphical audio editor program like _audacity_. _audacity_ is available for Linux, Windows, and the MacOS and may be downloaded from [http://audacity.sourceforge.net](http://audacity.sourceforge.net/).
 
-Here is an example of the dcblock opcode. It uses the file [dcblock.csd](../../examples/dcblock.csd), and [drumsMlp.wav](../../examples/drumsMlp.wav).
+Here is an example of the dcblock opcode. It uses the file [dcblock.csd](../examples/dcblock.csd), and [drumsMlp.wav](../examples/drumsMlp.wav).
 
 ``` csound-csd title="Example of the dcblock opcode." linenums="1"
 --8<-- "examples/dcblock.csd"
@@ -40,7 +46,7 @@ Here is an example of the dcblock opcode. It uses the file [dcblock.csd](../../e
 
 ## See also
 
-[Specialized Filters: High pass filters](../../sigmod/speciali)
+[Specialized Filters: High pass filters](../sigmod/speciali.md)
 
 ## Credits
 

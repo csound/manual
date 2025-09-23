@@ -5,7 +5,7 @@ category:Mathematical Operations:Mathematical Functions
 # log10
 Returns the base 10 log of _x_ (_x_ positive only).
 
-The argument value is restricted for [log](../../opcodes/log), _log10_, and [sqrt](../../opcodes/sqrt).
+The argument value is restricted for [log](../opcodes/log.md), _log10_, and [sqrt](../opcodes/sqrt.md).
 
 ## Syntax
 ``` csound-orc
@@ -17,7 +17,7 @@ where the argument within the parentheses may be an expression. Value converters
 
 ## Examples
 
-Here is an example of the log10 opcode. It uses the file [log10.csd](../../examples/log10.csd).
+Here is an example of the log10 opcode. It uses the file [log10.csd](../examples/log10.csd).
 
 ``` csound-csd title="Example of the log10 opcode." linenums="1"
 --8<-- "examples/log10.csd"
@@ -31,7 +31,7 @@ instr 1:  i1 = 0.903
 
 ## See also
 
-[Mathematical Functions](../../math/mathfunc)
+[Mathematical Functions](../math/mathfunc.md)
 
 ## Credits
 

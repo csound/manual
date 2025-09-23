@@ -6,13 +6,19 @@ category:Signal Generators:Models and Emulations
 An emulation of a mini-Moog synthesizer.
 
 ## Syntax
-``` csound-orc
-ares moog kamp, kfreq, kfiltq, kfiltrate, kvibf, kvamp, iafn, iwfn, ivfn
-```
+=== "Modern"
+    ``` csound-orc
+    ares = moog(kamp, kfreq, kfiltq, kfiltrate, kvibf, kvamp, iafn, iwfn, ivfn)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares moog kamp, kfreq, kfiltq, kfiltrate, kvibf, kvamp, iafn, iwfn, ivfn
+    ```
 
 ### Initialization
 
-_iafn, iwfn, ivfn_ -- three table numbers containing the attack waveform (unlooped), the main looping wave form, and the vibrato waveform. The files [mandpluk.aiff](../../examples/mandpluk.aiff) and [impuls20.aiff](../../examples/impuls20.aiff) are suitable for the first two, and a sine wave for the last.
+_iafn, iwfn, ivfn_ -- three table numbers containing the attack waveform (unlooped), the main looping wave form, and the vibrato waveform. The files [mandpluk.aiff](../examples/mandpluk.aiff) and [impuls20.aiff](../examples/impuls20.aiff) are suitable for the first two, and a sine wave for the last.
 
 > :memo: **Note**
 >
@@ -35,7 +41,7 @@ _kvamp_ -- amplitude of the vibrato
 
 ## Examples
 
-Here is an example of the moog opcode. It uses the file [moog.csd](../../examples/moog.csd), [mandpluk.aiff](../../examples/mandpluk.aiff), and [impuls20.aiff](../../examples/impuls20.aiff).
+Here is an example of the moog opcode. It uses the file [moog.csd](../examples/moog.csd), [mandpluk.aiff](../examples/mandpluk.aiff), and [impuls20.aiff](../examples/impuls20.aiff).
 
 ``` csound-orc title="Example of the moog opcode." linenums="1"
 --8<-- "examples/moog.csd"
@@ -43,7 +49,7 @@ Here is an example of the moog opcode. It uses the file [moog.csd](../../example
 
 ## See Also
 
-[Models and Emulations](../../siggen/models)
+[Models and Emulations](../siggen/models.md)
 
 ## Credits
 

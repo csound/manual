@@ -6,9 +6,15 @@ category:Table Control:Read/Write Operations
 Writes a table's guard point.
 
 ## Syntax
-``` csound-orc
-tableigpw ifn
-```
+=== "Modern"
+    ``` csound-orc
+    tableigpw(ifn)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    tableigpw ifn
+    ```
 
 ### Initialization
 
@@ -18,11 +24,11 @@ _ifn_ -- Table number to be interrogated
 
 _tableigpw_ -- For writing the table's guard point, with the value which is in location 0. Does nothing if table does not exist.
 
-Likely to be useful after manipulating a table with [tablemix](../../opcodes/tablemix) or [tablecopy.](../../opcodes/tablecopy)
+Likely to be useful after manipulating a table with [tablemix](../opcodes/tablemix.md) or [tablecopy.](../opcodes/tablecopy.md)
 
 ## See also
 
-[Read/Write Operations](../../table/readwrit)
+[Read/Write Operations](../table/readwrit.md)
 
 ## Credits
 

@@ -3,13 +3,20 @@ id:rand
 category:Signal Generators:Random (Noise) Generators
 -->
 # rand
-Output is a controlled random number series between -_amp_ and +_amp_
+Output is a controlled random number series between -*amp* and +*amp*.
 
 ## Syntax
-``` csound-orc
-ares rand xamp [, iseed] [, isel] [, ioffset]
-kres rand xamp [, iseed] [, isel] [, ioffset]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = rand(xamp [, iseed] [, isel] [, ioffset])
+    kres = rand(xamp [, iseed] [, isel] [, ioffset])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares rand xamp [, iseed] [, isel] [, ioffset]
+    kres rand xamp [, iseed] [, isel] [, ioffset]
+    ```
 
 ### Initialization
 
@@ -31,7 +38,7 @@ The value _ares_ or _kres_ is within is a half-closed interval which contains _-
 
 ## Examples
 
-Here is an example of the rand opcode. It uses the file [rand.csd](../../examples/rand.csd).
+Here is an example of the rand opcode. It uses the file [rand.csd](../examples/rand.csd).
 
 ``` csound-orc title="Example of the rand opcode." linenums="1"
 --8<-- "examples/rand.csd"
@@ -53,7 +60,7 @@ i   2 time     3.00000:   -48.79761
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random), [randh](../../opcodes/randh), [randi](../../opcodes/randi)
+[Random (Noise) Generators](../siggen/random.md), [randh](../opcodes/randh.md), [randi](../opcodes/randi.md)
 
 ## Credits
 

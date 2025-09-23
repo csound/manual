@@ -8,9 +8,15 @@ Distorts a phasor for reading the two halves of a table at different rates.
 The _pdhalf_ opcode is designed to emulate the "classic" phase distortion synthesis method of the Casio CZ-series of synthesizers from the mid-1980's.  This technique reads the first and second halves of a function table at different rates in order to warp the waveform.  For example, _pdhalf_ can smoothly transform a sine wave into something approximating the shape of a saw wave.
 
 ## Syntax
-``` csound-orc
-aout pdhalf ain, kShapeAmount [, ibipolar [, ifullscale]]
-```
+=== "Modern"
+    ``` csound-orc
+    aout = pdhalf(ain, kShapeAmount [, ibipolar [, ifullscale]])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout pdhalf ain, kShapeAmount [, ibipolar [, ifullscale]]
+    ```
 
 ### Initialization
 
@@ -27,7 +33,7 @@ _aout_ --  the output signal.
 _kShapeAmount_ --  the amount of distortion applied to the input.  Must be between negative one and one (-1 to 1). An amount of zero means no distortion.
 
 <figure markdown="span">
-![Transfer function created by pdhalf and a negative kShapeAmount.](../../images/pdhalf.png)
+![Transfer function created by pdhalf and a negative kShapeAmount.](../images/pdhalf.png)
 <figcaption>Transfer function created by pdhalf and a negative kShapeAmount.</figcaption>
 </figure>
 
@@ -47,7 +53,7 @@ apd       pdhalf    aphase, kamount
 aout      tablei    apd, 1, 1
 ```
 
-Here is an example of the pdhalf opcode. It uses the file [pdhalf.csd](../../examples/pdhalf.csd).
+Here is an example of the pdhalf opcode. It uses the file [pdhalf.csd](../examples/pdhalf.csd).
 
 ``` csound-csd title="Example of the pdhalf opcode." linenums="1"
 --8<-- "examples/pdhalf.csd"
@@ -55,7 +61,7 @@ Here is an example of the pdhalf opcode. It uses the file [pdhalf.csd](../../exa
 
 ## See also
 
-[Phase Distortion](../../sigmod/wavshape)
+[Phase Distortion](../sigmod/wavshape.md)
 
 More information about phase distortion on Wikipedia: [http://en.wikipedia.org/wiki/Phase_distortion_synthesis](http://en.wikipedia.org/wiki/Phase_distortion_synthesis)
 

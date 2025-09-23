@@ -3,10 +3,17 @@ id:buthp
 category:Signal Modifiers:Standard Filters
 -->
 # buthp
-Same as the [butterhp](../../opcodes/butterhp) opcode.
+Same as the [butterhp](../opcodes/butterhp.md) opcode.
 
 ## Syntax
-``` csound-orc
-ares buthp asig, kfreq [, iskip]
-ares buthp asig, afreq [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = buthp(asig, kfreq [, iskip])
+    ares = buthp(asig, afreq [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares buthp asig, kfreq [, iskip]
+    ares buthp asig, afreq [, iskip]
+    ```

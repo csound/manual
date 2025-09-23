@@ -18,7 +18,7 @@ _p2_ -- Action time of function generation (or destruction) in beats.
 
 _p3_ -- Size of function table (i.e.  number of points). Some GEN routines allow the table size to be set dynamically according to routine inputs (e.g. file size), in a process called deferred-size allocation. In this case, we can set the table size to 0 to take advantage of this mechanism. Maximum fixed table size is 16777216 (2<sup>24</sup>) points, but larger tables can be created with deferred-size allocation.
 
-_p4_ -- Number of the GEN routine to be called (see [GEN Routines](../../score/genroutines)). A negative value will cause rescaling to be omitted.
+_p4_ -- Number of the GEN routine to be called (see [GEN Routines](../score/genroutines.md)). A negative value will cause rescaling to be omitted.
 
 _p5 ... PMAX_ -- Parameters whose meaning is determined by the particular GEN routine.
 
@@ -30,7 +30,7 @@ Function tables are arrays of floating-point values. You can create a simple sin
 f 1 0 1024 10 1
 ```
 
-This table uses [GEN10](../../scoregens/gen10) to fill the table.
+This table uses [GEN10](../scoregens/gen10.md) to fill the table.
 
 Historically, due to older platform constraints, Csound could only accept tables whose size was a power of two. This limitation has been removed in recent versions, and you can freely create tables of any size.
 
@@ -54,9 +54,9 @@ p2 action time is treated in the same way as in _i statement_s with respect to s
 
 > :warning: **Warning**
 >
-> The maximum number of p-fields accepted in the score is determined by PMAX (a compilation time varible). PMAX is currently set to 1000. This may discard values entered when using [GEN02](../../scoregens/gen02). To overcome this, use [GEN23](../../scoregens/gen23) or [GEN28](../../scoregens/gen28) to read the values from a file.
+> The maximum number of p-fields accepted in the score is determined by PMAX (a compilation time varible). PMAX is currently set to 1000. This may discard values entered when using [GEN02](../scoregens/gen02.md). To overcome this, use [GEN23](../scoregens/gen23.md) or [GEN28](../scoregens/gen28.md) to read the values from a file.
 
-An _f 0 statement_ (zero p1, positive p2) may be used to create an action time with no associated action. Such time markers are useful for padding out a score section (see [s statement](../../scoregens/s)) and for letting Csound run from realtime events only (e.g. using only MIDI input without score events). The time given is the number of seconds Csound will run. If you want Csound to run for 10 hours, use:
+An _f 0 statement_ (zero p1, positive p2) may be used to create an action time with no associated action. Such time markers are useful for padding out a score section (see [s statement](../scoregens/s.md)) and for letting Csound run from realtime events only (e.g. using only MIDI input without score events). The time given is the number of seconds Csound will run. If you want Csound to run for 10 hours, use:
 
 ```
 f0 36000
@@ -82,9 +82,9 @@ In both of the above examples, table size (p3) must be a power of 2 or power-of-
 
 ## See also
 
-[GEN Routines](../../score/genroutines)
+[GEN Routines](../score/genroutines.md)
 
-[Score Statements](../../score/statemnt)
+[Score Statements](../score/statemnt.md)
 
 ## Credits
 

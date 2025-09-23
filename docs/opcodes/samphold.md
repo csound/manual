@@ -6,10 +6,17 @@ category:Signal Modifiers:Sample Level Operators
 Performs a sample-and-hold operation on its input.
 
 ## Syntax
-``` csound-orc
-ares samphold asig, agate [, ival] [, ivstor]
-kres samphold ksig, kgate [, ival] [, ivstor]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = samphold(asig, agate [, ival] [, ivstor])
+    kres = samphold(ksig, kgate [, ival] [, ivstor])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares samphold asig, agate [, ival] [, ivstor]
+    kres samphold ksig, kgate [, ival] [, ivstor]
+    ```
 
 ### Initialization
 
@@ -32,7 +39,7 @@ asamp samphold  anew, agate           ;   to gate the new audiosig
 aout  tone      asamp, 100            ; smooth out the rough edges
 ```
 
-Here is another example of the samphold opcode. It uses the file [samphold.csd](../../examples/samphold.csd).
+Here is another example of the samphold opcode. It uses the file [samphold.csd](../examples/samphold.csd).
 
 ``` csound-csd title="Example of the samphold opcode." linenums="1"
 --8<-- "examples/samphold.csd"
@@ -40,4 +47,4 @@ Here is another example of the samphold opcode. It uses the file [samphold.csd](
 
 ## See also
 
-[Sample Level Operators](../../sigmod/sample)
+[Sample Level Operators](../sigmod/sample.md)

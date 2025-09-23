@@ -8,11 +8,19 @@ Linear distribution random number generator (positive values only).
 This is an x-class noise generator.
 
 ## Syntax
-``` csound-orc
-ares linrand krange
-ires linrand krange
-kres linrand krange
-```
+=== "Modern"
+    ``` csound-orc
+    ares = linrand(krange)
+    ires = linrand(krange)
+    kres = linrand(krange)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares linrand krange
+    ires linrand krange
+    kres linrand krange
+    ```
 
 ### Performance
 
@@ -25,7 +33,7 @@ For more detailed explanation of these distributions, see:
 
 ## Examples
 
-Here is an example of the linrand opcode. It uses the file [linrand.csd](../../examples/linrand.csd).
+Here is an example of the linrand opcode. It uses the file [linrand.csd](../examples/linrand.csd).
 
 ``` csound-orc title="Example of the linrand opcode." linenums="1"
 --8<-- "examples/linrand.csd"
@@ -61,7 +69,7 @@ i   2 time     5.00000:    21.88815
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
 ## Credits
 

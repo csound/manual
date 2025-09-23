@@ -6,10 +6,17 @@ category:Signal Generators:Linear and Exponential Generators
 Trace a straight line between specified points.
 
 ## Syntax
-``` csound-orc
-ares line ia, idur, ib
-kres line ia, idur, ib
-```
+=== "Modern"
+    ``` csound-orc
+    ares = line(ia, idur, ib)
+    kres = line(ia, idur, ib)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares line ia, idur, ib
+    kres line ia, idur, ib
+    ```
 
 ### Initialization
 
@@ -30,7 +37,7 @@ _line_ generates control or audio signals whose values move linearly from an ini
 
 ## Examples
 
-Here is an example of the line opcode. It uses the file [line.csd](../../examples/line.csd).
+Here is an example of the line opcode. It uses the file [line.csd](../examples/line.csd).
 
 ``` csound-orc title="Example of the line opcode." linenums="1"
 --8<-- "examples/line.csd"
@@ -38,4 +45,4 @@ Here is an example of the line opcode. It uses the file [line.csd](../../example
 
 ## See also
 
-[Linear and Exponential Generators](../../siggen/lineexp)
+[Linear and Exponential Generators](../siggen/lineexp.md)

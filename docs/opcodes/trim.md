@@ -6,10 +6,17 @@ category:Array Opcodes
 Adjust size of a one-dimensional array.
 
 ## Syntax
-``` csound-orc
-trim_i iarray, ilen
-trim xarray, klen
-```
+=== "Modern"
+    ``` csound-orc
+    trim_i(iarray, ilen)
+    trim(xarray, klen)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    trim_i iarray, ilen
+    trim xarray, klen
+    ```
 
 ### Performance
 
@@ -23,7 +30,7 @@ Makes the array the desired length, either truncating or padding with zero/Null 
 
 ## Examples
 
-Here is an example of the trim opcode. It uses the file [trim.csd](../../examples/trim.csd).
+Here is an example of the trim opcode. It uses the file [trim.csd](../examples/trim.csd).
 
 ``` csound-csd title="Example of the trim opcode." linenums="1"
 --8<-- "examples/trim.csd"
@@ -31,7 +38,7 @@ Here is an example of the trim opcode. It uses the file [trim.csd](../../example
 
 ## See also
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

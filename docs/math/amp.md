@@ -2,10 +2,10 @@
 
 Opcodes to convert between different amplitude measurements are:
 
-* [ampdb](../../opcodes/ampdb)
-* [ampdbfs](../../opcodes/ampdbfs)
-* [db](../../opcodes/db)
-* [dbamp](../../opcodes/dbamp)
-* [dbfsamp](../../opcodes/dbfsamp)
+* [ampdb](../opcodes/ampdb.md)
+* [ampdbfs](../opcodes/ampdbfs.md)
+* [db](../opcodes/db.md)
+* [dbamp](../opcodes/dbamp.md)
+* [dbfsamp](../opcodes/dbfsamp.md)
 
-Use [rms](../../opcodes/rms) to find the rms value of a signal. See also [0dbfs](../../opcodes/0dbfs) for another way to handle amplitudes in csound.
+Use [rms](../opcodes/rms.md) to find the rms value of a signal. See also [0dbfs](../opcodes/0dbfs.md) for another way to handle amplitudes in csound.

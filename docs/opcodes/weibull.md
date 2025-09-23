@@ -8,11 +8,19 @@ Weibull distribution random number generator (positive values only).
 This is an x-class noise generator
 
 ## Syntax
-``` csound-orc
-ares weibull ksigma, ktau
-ires weibull ksigma, ktau
-kres weibull ksigma, ktau
-```
+=== "Modern"
+    ``` csound-orc
+    ares = weibull(ksigma, ktau)
+    ires = weibull(ksigma, ktau)
+    kres = weibull(ksigma, ktau)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares weibull ksigma, ktau
+    ires weibull ksigma, ktau
+    kres weibull ksigma, ktau
+    ```
 
 ### Performance
 
@@ -27,7 +35,7 @@ For more detailed explanation of these distributions, see:
 
 ## Examples
 
-Here is an example of the weibull opcode. It uses the file [weibull.csd](../../examples/weibull.csd).
+Here is an example of the weibull opcode. It uses the file [weibull.csd](../examples/weibull.csd).
 
 ``` csound-orc title="Example of the weibull opcode." linenums="1"
 --8<-- "examples/weibull.csd"
@@ -77,7 +85,7 @@ i   3 time     7.80045:   106.76515
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
 ## Credits
 

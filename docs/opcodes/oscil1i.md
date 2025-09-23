@@ -6,9 +6,15 @@ category:Signal Generators:Table Access
 Accesses table values by incremental sampling with linear interpolation.
 
 ## Syntax
-``` csound-orc
-kres oscil1i idel, kamp, idur [, ifn]
-```
+=== "Modern"
+    ``` csound-orc
+    kres = oscil1i(idel, kamp, idur [, ifn])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres oscil1i idel, kamp, idur [, ifn]
+    ```
 
 ### Initialization
 
@@ -22,11 +28,11 @@ _ifn_ -- (optional) function table number. _oscil1i_ requires the extended guard
 
 _kamp_ -- amplitude factor
 
-_oscil1i_ is an interpolating unit in which the fractional part of index is used to interpolate between adjacent table entries. The smoothness gained by interpolation is at some small cost in execution time (see also [oscili](../../opcodes/oscili), etc.), but the interpolating and non-interpolating units are otherwise interchangeable.
+_oscil1i_ is an interpolating unit in which the fractional part of index is used to interpolate between adjacent table entries. The smoothness gained by interpolation is at some small cost in execution time (see also [oscili](../opcodes/oscili.md), etc.), but the interpolating and non-interpolating units are otherwise interchangeable.
 
 ## Examples
 
-Here is an example of the oscil1i opcode. It uses the file [oscil1i.csd](../../examples/oscil1i.csd).
+Here is an example of the oscil1i opcode. It uses the file [oscil1i.csd](../examples/oscil1i.csd).
 
 ``` csound-orc title="Example of the oscil1i opcode." linenums="1"
 --8<-- "examples/oscil1i.csd"
@@ -34,4 +40,4 @@ Here is an example of the oscil1i opcode. It uses the file [oscil1i.csd](../../e
 
 ## See Also
 
-[Table Access](../../siggen/tableacc)
+[Table Access](../siggen/tableacc.md)

@@ -6,9 +6,15 @@ category:Signal Modifiers:Delay
 Multitap delay line implementation.
 
 ## Syntax
-``` csound-orc
-ares multitap asig [, itime1, igain1] [, itime2, igain2] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = multitap(asig [, itime1, igain1] [, itime2, igain2] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares multitap asig [, itime1, igain1] [, itime2, igain2] [...]
+    ```
 
 ### Initialization
 
@@ -18,7 +24,7 @@ The delay line is fed by _asig_.
 
 ## Examples
 
-Here is an example of the multitap opcode. It uses the file [multitap.csd](../../examples/multitap.csd)
+Here is an example of the multitap opcode. It uses the file [multitap.csd](../examples/multitap.csd)
 
 ``` csound-csd title="Example of the multitap opcode." linenums="1"
 --8<-- "examples/multitap.csd"
@@ -28,7 +34,7 @@ This results in two delays, one with length of 1.2 and gain of .5, and one with 
 
 ## See also
 
-[Delay](../../sigmod/delayops)
+[Delay](../sigmod/delayops.md)
 
 ## Credits
 

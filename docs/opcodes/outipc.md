@@ -3,12 +3,18 @@ id:outipc
 category:Real-time MIDI:Output
 -->
 # outipc
-Sends MIDI program change messages at i-rate
+Sends MIDI program change messages at i-rate.
 
 ## Syntax
-``` csound-orc
-outipc ichn, iprog, imin, imax
-```
+=== "Modern"
+    ``` csound-orc
+    outipc(ichn, iprog, imin, imax)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    outipc ichn, iprog, imin, imax
+    ```
 
 ### Initialization
 
@@ -28,7 +34,7 @@ It can scale an i-value floating-point argument according to the _imin_ and _ima
 
 ## Examples
 
-Here is an example of the outipc opcode. It uses the file [outipc.csd](../../examples/outipc.csd).
+Here is an example of the outipc opcode. It uses the file [outipc.csd](../examples/outipc.csd).
 
 ``` csound-csd title="Example of the outipc opcode." linenums="1"
 --8<-- "examples/outipc.csd"
@@ -36,7 +42,7 @@ Here is an example of the outipc opcode. It uses the file [outipc.csd](../../exa
 
 ## See also
 
-[MIDI Message Output](../../midi/output)
+[MIDI Message Output](../midi/output.md)
 
 ## Credits
 

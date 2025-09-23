@@ -10,14 +10,21 @@ _sndwarp_ reads sound samples from a table and applies time-stretching and/or pi
 The window size and overlap arguments are important to the result and should be experimented with. In general they should be as small as possible. For example, start with _iwsize_=_sr_/10 and _ioverlap_=15. Try _irandw_=_iwsize_*0.2. If you can get away with less overlaps, the program will be faster. But too few may cause an audible flutter in the amplitude. The algorithm reacts differently depending upon the input sound and there are no fixed rules for the best use in all circumstances. But with proper tuning, excellent results can be achieved.
 
 ## Syntax
-``` csound-orc
-ares [, ac] sndwarp xamp, xtimewarp, xresample, ifn1, ibeg, iwsize, \
-                    irandw, ioverlap, ifn2, itimemode
-```
+=== "Modern"
+    ``` csound-orc
+    ares [, ac] = sndwarp(xamp, xtimewarp, xresample, ifn1, ibeg, iwsize, \
+                          irandw, ioverlap, ifn2, itimemode)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares [, ac] sndwarp xamp, xtimewarp, xresample, ifn1, ibeg, iwsize, \
+                        irandw, ioverlap, ifn2, itimemode
+    ```
 
 ### Initialization
 
-_ifn1_ -- the number of the table holding the sound samples which will be subjected to the _sndwarp_ processing. [GEN01](../../scoregens/gen01) is the appropriate function generator to use to store the sound samples from a pre-existing soundfile.
+_ifn1_ -- the number of the table holding the sound samples which will be subjected to the _sndwarp_ processing. [GEN01](../scoregens/gen01.md) is the appropriate function generator to use to store the sound samples from a pre-existing soundfile.
 
 _ibeg_ -- the time in seconds to begin reading in the table (or soundfile). When _itimemode_ is non- zero, the value of _xtimewarp_ is offset by _ibeg_.
 
@@ -33,17 +40,17 @@ _ifn2_ -- a function used to shape the window. It is usually used to create a ra
 
 _ares_ -- the single channel of output from the _sndwarp_ unit generator. _sndwarp_ assumes that the function table holding the sampled signal is a mono one. This simply means that _sndwarp_ will index the table by single-sample frame increments. The user must be aware then that if a stereo signal is used with _sndwarp_, time and pitch will be altered accordingly.
 
-_ac_ (optional) -- a single-layer (no overlaps), unwindowed versions of the time and/or pitch altered signal. They are supplied in order to be able to balance the amplitude of the signal output, which typically contains many overlapping and windowed versions of the signal, with a clean version of the time-scaled and pitch-shifted signal. The _sndwarp_ process can cause noticeable changes in amplitude, (up and down), due to a time differential between the overlaps when time-shifting is being done. When used with a [balance](../../opcodes/balance) unit, _ac_ can greatly enhance the quality of sound.
+_ac_ (optional) -- a single-layer (no overlaps), unwindowed versions of the time and/or pitch altered signal. They are supplied in order to be able to balance the amplitude of the signal output, which typically contains many overlapping and windowed versions of the signal, with a clean version of the time-scaled and pitch-shifted signal. The _sndwarp_ process can cause noticeable changes in amplitude, (up and down), due to a time differential between the overlaps when time-shifting is being done. When used with a [balance](../opcodes/balance.md) unit, _ac_ can greatly enhance the quality of sound.
 
 _xamp_ -- the value by which to scale the amplitude (see note on the use of this when using _ac_).
 
-_xtimewarp_ -- determines how the input signal will be stretched or shrunk in time. There are two ways to use this argument depending upon the value given for _itimemode_. When the value of _itimemode_ is 0, _xtimewarp_ will scale the time of the sound. For example, a value of 2 will stretch the sound by 2 times. When _itimemode_ is any non-zero value then _xtimewarp_ is used as a time pointer in a similar way in which the time pointer works in [lpread](../../opcodes/lpread) and [pvoc](../../opcodes/pvoc). An example below illustrates this. In both cases, the pitch will _not_ be altered by this process. Pitch shifting is done independently using _xresample_.
+_xtimewarp_ -- determines how the input signal will be stretched or shrunk in time. There are two ways to use this argument depending upon the value given for _itimemode_. When the value of _itimemode_ is 0, _xtimewarp_ will scale the time of the sound. For example, a value of 2 will stretch the sound by 2 times. When _itimemode_ is any non-zero value then _xtimewarp_ is used as a time pointer in a similar way in which the time pointer works in [lpread](../opcodes/lpread.md) and [pvoc](../opcodes/pvoc.md). An example below illustrates this. In both cases, the pitch will _not_ be altered by this process. Pitch shifting is done independently using _xresample_.
 
 _xresample_ -- the factor by which to change the pitch of the sound. For example, a value of 2 will produce a sound one octave higher than the original. The timing of the sound, however, will _not_ be altered.
 
 ## Examples
 
-Here is an example of the sndwarp opcode. It uses the file [sndwarp.csd](../../examples/sndwarp.csd).
+Here is an example of the sndwarp opcode. It uses the file [sndwarp.csd](../examples/sndwarp.csd).
 
 ``` csound-orc title="Example of the sndwarp opcode." linenums="1"
 --8<-- "examples/sndwarp.csd"
@@ -100,7 +107,7 @@ In the above two examples notice the use of the _balance_ unit. The output of _b
 
 ## See Also
 
-[Granular Synthesis](../../siggen/granular)
+[Granular Synthesis](../siggen/granular.md)
 
 ## Credits
 

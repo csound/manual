@@ -3,15 +3,22 @@ id:locsend
 category:Signal Modifiers:Panning and Spatialization
 -->
 # locsend
-Distributes the audio signals of a previous [locsig](../../opcodes/locsig) opcode.
+Distributes the audio signals of a previous [locsig](../opcodes/locsig.md) opcode.
 
 The number of output signals must match the number in the previous _locsig_. The output signals from _locsend_ are derived from the values given for distance and reverb in the _locsig_ and are ready to be sent to local or global reverb units (see example below). The reverb amount and the balance between the 2 or 4 channels are calculated in the same way as described in the Dodge book (an essential text!).
 
 ## Syntax
-``` csound-orc
-a1, a2 locsend
-a1, a2,  a3, a4 locsend
-```
+=== "Modern"
+    ``` csound-orc
+    a1, a2 = locsend()
+    a1, a2,  a3, a4 = locsend()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    a1, a2 locsend
+    a1, a2,  a3, a4 locsend
+    ```
 
 ## Examples
 
@@ -40,9 +47,9 @@ instr 99 ; reverb instrument
   ga4=0
 ```
 
-In the above example, the signal, _asig_, is sent around a complete circle once during the duration of a note while at the same time it becomes more and more &#8220;distant&#8221; from the listeners' location. _locsig_ sends the appropriate amount of the signal internally to _locsend_. The outputs of the _locsend_ are added to global accumulators in a common Csound style and the global signals are used as inputs to the reverb units in a separate instrument. For an example, see [locsig](../../opcodes/locsig).
+In the above example, the signal, _asig_, is sent around a complete circle once during the duration of a note while at the same time it becomes more and more &#8220;distant&#8221; from the listeners' location. _locsig_ sends the appropriate amount of the signal internally to _locsend_. The outputs of the _locsend_ are added to global accumulators in a common Csound style and the global signals are used as inputs to the reverb units in a separate instrument. For an example, see [locsig](../opcodes/locsig.md).
 
-_locsig_ is useful for quad and stereo panning as well as fixed placed of sounds anywhere between two loudspeakers. Below is an example of the fixed placement of sounds in a stereo field. It uses the file [locsend_stereo.csd](../../examples/locsend_stereo.csd).
+_locsig_ is useful for quad and stereo panning as well as fixed placed of sounds anywhere between two loudspeakers. Below is an example of the fixed placement of sounds in a stereo field. It uses the file [locsend_stereo.csd](../examples/locsend_stereo.csd).
 
 ``` csound-csd title="Example of the locsend opcode." linenums="1"
 --8<-- "examples/locsend_stereo.csd"
@@ -75,7 +82,7 @@ ar1, ar2, ar3, ar4 locsend
 
 ## See also
 
-[Panning and Spatialization: Amplitude spatialization](../../sigmod/panspatl)
+[Panning and Spatialization: Amplitude spatialization](../sigmod/panspatl.md)
 
 ## Credits
 

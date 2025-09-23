@@ -8,9 +8,15 @@ Instantaneous Frequency Distribution, magnitude and phase analysis.
 The tabifd opcode takes an input function table and performs an Instantaneous Frequency, magnitude and phase analysis, using the STFT and tabifd (Instantaneous Frequency Distribution), as described in Lazzarini et al, "Time-stretching using the Instantaneous Frequency Distribution and Partial Tracking", Proc.of ICMC05, Barcelona. It generates two PV streaming signals, one containing the amplitudes and frequencies (a similar output to pvsanal) and another containing amplitudes and unwrapped phases.
 
 ## Syntax
-``` csound-orc
-ffr,fphs tabifd ktimpt, kamp, kpitch, ifftsize, ihopsize, iwintype,ifn
-```
+=== "Modern"
+    ``` csound-orc
+    ffr,fphs = tabifd(ktimpt, kamp, kpitch, ifftsize, ihopsize, iwintype,ifn)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ffr,fphs tabifd ktimpt, kamp, kpitch, ifftsize, ihopsize, iwintype,ifn
+    ```
 
 ### Initialization
 
@@ -36,7 +42,7 @@ _kpitch_ -- pitch scaling (transposition)
 
 ## Examples
 
-Here is an example of the tabifd opcode. It uses the file [tabifd.csd](../../examples/tabifd.csd).
+Here is an example of the tabifd opcode. It uses the file [tabifd.csd](../examples/tabifd.csd).
 
 ``` csound-csd title="Example of the tabifd opcode." linenums="1"
 --8<-- "examples/tabifd.csd"
@@ -46,7 +52,7 @@ The example above shows the tabifd analysis feeding into partial tracking andcub
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

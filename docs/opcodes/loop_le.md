@@ -6,10 +6,17 @@ category:Instrument Control:Program Flow Control
 Construction of looping operations.
 
 ## Syntax
-``` csound-orc
-loop_le  indx, incr, imax, label
-loop_le  kndx, kncr, kmax, label
-```
+=== "Modern"
+    ``` csound-orc
+    loop_le(indx, incr, imax, label)
+    loop_le(kndx, kncr, kmax, label)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    loop_le indx, incr, imax, label
+    loop_le kndx, kncr, kmax, label
+    ```
 
 ### Initialization
 
@@ -47,7 +54,7 @@ if (kndx <= kmax) kgoto label
 
 ## Examples
 
-Here is an example of the loop_le opcode. It uses the file [loop_le.csd](../../examples/loop_le.csd).
+Here is an example of the loop_le opcode. It uses the file [loop_le.csd](../examples/loop_le.csd).
 
 ``` csound-csd title="Example of the loop_le opcode." linenums="1"
 --8<-- "examples/loop_le.csd"
@@ -66,7 +73,7 @@ play instance 5
 
 ## See also
 
-[Program Flow Control: Looping Constructions](../../control/pgmctl)
+[Program Flow Control: Looping Constructions](../control/pgmctl.md)
 
 More information on this opcode: [http://www.csoundjournal.com/2006summer/controlFlow_part2.html](http://www.csoundjournal.com/2006summer/controlFlow_part2.html) written by Steven Yi, and in the Floss Manuals: [ https://flossmanual.csound.com/csound-language/control-structures](https://flossmanual.csound.com/csound-language/control-structures)
 

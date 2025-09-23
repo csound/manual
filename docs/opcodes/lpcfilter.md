@@ -8,10 +8,17 @@ Streaming linear prediction all-pole filter whose coefficients are obtained from
 Two versions exist, one taking input from an audio signal, and the other from a function table.
 
 ## Syntax
-``` csound-orc
-ares lpcfilter asig, asrc, kflg, kprd, isiz, iord [, iwin]
-ares lpcfilter asig, koff, kflg, ifn, isiz, iord [, iwin]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = lpcfilter(asig, asrc, kflg, kprd, isiz, iord [, iwin])
+    ares = lpcfilter(asig, koff, kflg, ifn, isiz, iord [, iwin])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares lpcfilter asig, asrc, kflg, kprd, isiz, iord [, iwin]
+    ares lpcfilter asig, koff, kflg, ifn, isiz, iord [, iwin]
+    ```
 
 ### Initialization
 
@@ -49,13 +56,13 @@ Once the signal is extracted from either an audio input or function table then i
 
 ## Examples
 
-Here is an example of the lpcfilter opcode using an audio input signal as lpc source. It uses the file [lpcfilter.csd](../../examples/lpcfilter.csd).
+Here is an example of the lpcfilter opcode using an audio input signal as lpc source. It uses the file [lpcfilter.csd](../examples/lpcfilter.csd).
 
 ``` csound-csd title="Example of the lpcfilter opcode." linenums="1"
 --8<-- "examples/lpcfilter.csd"
 ```
 
-Here is another example of the lpcfilter opcode, now using a function table as lpc source. It uses the file [lpcfilter-2.csd](../../examples/lpcfilter-2.csd).
+Here is another example of the lpcfilter opcode, now using a function table as lpc source. It uses the file [lpcfilter-2.csd](../examples/lpcfilter-2.csd).
 
 ``` csound-csd title="Another example of the lpcfilter opcode." linenums="1"
 --8<-- "examples/lpcfilter-2.csd"
@@ -63,4 +70,4 @@ Here is another example of the lpcfilter opcode, now using a function table as l
 
 ## See also
 
-[Streaming Linear Predictive Coding (SLPC) Resynthesis](../../spectral/lpcresyn)
+[Streaming Linear Predictive Coding (SLPC) Resynthesis](../spectral/lpcresyn.md)

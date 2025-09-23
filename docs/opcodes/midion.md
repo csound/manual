@@ -6,9 +6,15 @@ category:Real-time MIDI:Note Output
 Generates MIDI note messages at k-rate.
 
 ## Syntax
-``` csound-orc
-midion kchn, knum, kvel
-```
+=== "Modern"
+    ``` csound-orc
+    midion(kchn, knum, kvel)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    midion kchn, knum, kvel
+    ```
 
 ### Performance
 
@@ -24,7 +30,7 @@ Any number of _midion_ opcodes can appear in the same Csound instrument, allowin
 
 ## Examples
 
-Here is a simple example of the midion opcode. It uses the file [midion_simple.csd](../../examples/midion_simple.csd).
+Here is a simple example of the midion opcode. It uses the file [midion_simple.csd](../examples/midion_simple.csd).
 
 This example generates a minor chord over every note received on the MIDI input. It generates MIDI notes on csound's MIDI output, so be sure to connect something.
 
@@ -32,7 +38,7 @@ This example generates a minor chord over every note received on the MIDI input.
 --8<-- "examples/midion_simple.csd"
 ```
 
-Here is another example of the midion opcode. It uses the file [midion_scale.csd](../../examples/midion_scale.csd).
+Here is another example of the midion opcode. It uses the file [midion_scale.csd](../examples/midion_scale.csd).
 
 This example generates random notes from a given scale for every note received on the MIDI input. It generates MIDI notes on csound's MIDI output, so be sure to connect something.
 
@@ -42,7 +48,7 @@ This example generates random notes from a given scale for every note received o
 
 ## See also
 
-[Note-on/Note-off Output](../../midi/onoff)
+[Note-on/Note-off Output](../midi/onoff.md)
 
 ## Credits
 

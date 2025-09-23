@@ -6,9 +6,15 @@ category:Mathematical Operations:Opcode Equivalents of Functions
 Multiplies any number of a-rate signals.
 
 ## Syntax
-``` csound-orc
-ares product asig1, asig2 [, asig3] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = product(asig1, asig2 [, asig3] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares product asig1, asig2 [, asig3] [...]
+    ```
 
 ### Performance
 
@@ -16,7 +22,7 @@ _asig1, asig2, asig3, ..._ --  a-rate signals to be multiplied.
 
 ## Examples
 
-Here is an example of the product opcode. It uses the file [product.csd](../../examples/product.csd).
+Here is an example of the product opcode. It uses the file [product.csd](../examples/product.csd).
 
 ``` csound-csd title="Example of the product opcode." linenums="1"
 --8<-- "examples/product.csd"
@@ -24,7 +30,7 @@ Here is an example of the product opcode. It uses the file [product.csd](../../e
 
 ## See also
 
-[Opcode Equivalents of Functions](../../math/opeqfunc)
+[Opcode Equivalents of Functions](../math/opeqfunc.md)
 
 ## Credits
 

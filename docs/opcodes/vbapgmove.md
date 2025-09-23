@@ -6,10 +6,17 @@ category:Signal Modifiers:Panning and Spatialization
 Calculates the gains for a sound location between multiple channels with moving virtual sources.
 
 ## Syntax
-``` csound-orc
-kr1[, kr2...] vbapgmove idur, ispread, ifldnum, ifld1 [, ifld2] [...]
-karray[] vbapgmove idur, ispread, ifldnum, ifld1 [, ifld2] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    kr1[, kr2...] = vbapgmove(idur, ispread, ifldnum, ifld1 [, ifld2] [...])
+    karray[] = vbapgmove(idur, ispread, ifldnum, ifld1 [, ifld2] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kr1[, kr2...] vbapgmove idur, ispread, ifldnum, ifld1 [, ifld2] [...]
+    karray[] vbapgmove idur, ispread, ifldnum, ifld1 [, ifld2] [...]
+    ```
 
 ### Initialization
 
@@ -29,7 +36,7 @@ If _ifldnum_ is negative, the fields represent angular velocities and equal time
 
 > :warning: **Warning**
 >
-> Please note that all _vbap_ panning opcodes require the _vbap_ system to be initialized using [vbaplsinit](../../opcodes/vbaplsinit).
+> Please note that all _vbap_ panning opcodes require the _vbap_ system to be initialized using [vbaplsinit](../opcodes/vbaplsinit.md).
 
 ### Reference
 
@@ -38,7 +45,7 @@ Ville Pulkki: &#8220;Virtual Sound Source Positioning Using Vector Base Amplitud
 ## Examples
 
 Here is an example of the vbapgmove opcode. It uses the file
-[vbapgmove.csd](../../examples/vbapgmove.csd).
+[vbapgmove.csd](../examples/vbapgmove.csd).
 
 ``` csound-csd title="Example of the vbapg opcode." linenums="1"
 --8<-- "examples/vbapgmove.csd"
@@ -46,7 +53,7 @@ Here is an example of the vbapgmove opcode. It uses the file
 
 ## See also
 
-[Panning and Spatialization: Vector Base Amplitude Panning](../../sigmod/panspatl)
+[Panning and Spatialization: Vector Base Amplitude Panning](../sigmod/panspatl.md)
 
 ## Credits
 

@@ -1,6 +1,6 @@
 <!--
 id:pvscfs
-category:Spectral Processing: lpc
+category:Spectral Processing:LPC
 -->
 # pvscfs
 Cepstrum all-pole coefficient analysis.
@@ -8,9 +8,15 @@ Cepstrum all-pole coefficient analysis.
 This opcode takes in a pvs signal in AMP_* format, applies the cepstrum transform and computes the coefficients for a an allpole filter
 
 ## Syntax
-``` csound-orc
-kCoef[], krms, kerr  pvscfs fsig, iord [, imod]
-```
+=== "Modern"
+    ``` csound-orc
+    kCoef[], krms, kerr = pvscfs(fsig, iord [, imod])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kCoef[], krms, kerr pvscfs fsig, iord [, imod]
+    ```
 
 ### Initialization
 
@@ -33,7 +39,7 @@ This opcode is part of a suite of streaming linear prediction opcodes. It takes 
 ## Examples
 
 Here is an example of the pvscfs opcode using an audio input
-signal as lpc source. It uses the file [pvscfs.csd](../../examples/pvscfs.csd).
+signal as lpc source. It uses the file [pvscfs.csd](../examples/pvscfs.csd).
 
 ``` csound-csd title="Example of the pvscfs opcode." linenums="1"
 --8<-- "examples/pvscfs.csd"
@@ -41,4 +47,4 @@ signal as lpc source. It uses the file [pvscfs.csd](../../examples/pvscfs.csd).
 
 ## See also
 
-[Streaming Linear Predictive Coding (SLPC) Resynthesis](../../spectral/lpcresyn)
+[Streaming Linear Predictive Coding (SLPC) Resynthesis](../spectral/lpcresyn.md)

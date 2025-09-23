@@ -31,7 +31,7 @@ _ay, ax_ -- audio rate signals to be converted
 
 ## Examples
 
-Here is an example of the taninv2 opcode. It uses the file [taninv2.csd](../../examples/taninv2.csd).
+Here is an example of the taninv2 opcode. It uses the file [taninv2.csd](../examples/taninv2.csd).
 
 ``` csound-csd title="Example of the taninv2 opcode." linenums="1"
 --8<-- "examples/taninv2.csd"
@@ -43,7 +43,7 @@ Its output should include a line like this:
 instr 1:  i1 = 0.464
 ```
 
-Here is another example of the taninv2 opcode. It uses the file [taninv2-advanced.csd](../../examples/taninv2-advanced.csd).
+Here is another example of the taninv2 opcode. It uses the file [taninv2-advanced.csd](../examples/taninv2-advanced.csd).
 
 ``` csound-csd title="Advanced example of the taninv2 opcode." linenums="1"
 --8<-- "examples/taninv2-advanced.csd"
@@ -51,9 +51,9 @@ Here is another example of the taninv2 opcode. It uses the file [taninv2-advance
 
 ## See also
 
-[Opcode Equivalents of Functions](../../math/opeqfunc)
+[Opcode Equivalents of Functions](../math/opeqfunc.md)
 
-[Trigonometric Functions](../../math/trig)
+[Trigonometric Functions](../math/trig.md)
 
 ## Credits
 

@@ -8,9 +8,15 @@ Mix 'seamlessly' two pv signals.
 This opcode combines the most prominent components of two pvoc streams into a single mixed stream.
 
 ## Syntax
-``` csound-orc
-fsig pvsmix fsigin1, fsigin2
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvsmix(fsigin1, fsigin2)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvsmix fsigin1, fsigin2
+    ```
 
 ### Performance
 
@@ -26,7 +32,7 @@ _fsigin2_ -- input pv stream, which must have same format as _fsigin1_.
 
 ## Examples
 
-Here is an example of the pvsmix opcode. It uses the file [pvsmix.csd](../../examples/pvsmix.csd).
+Here is an example of the pvsmix opcode. It uses the file [pvsmix.csd](../examples/pvsmix.csd).
 
 ``` csound-csd title="Example of the pvsmix opcode." linenums="1"
 --8<-- "examples/pvsmix.csd"
@@ -34,7 +40,7 @@ Here is an example of the pvsmix opcode. It uses the file [pvsmix.csd](../../exa
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

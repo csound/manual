@@ -6,9 +6,15 @@ category:Signal I/O:File I/O
 Periodically writes two orchestra control-signal values to a named external file in a specific format.
 
 ## Syntax
-``` csound-orc
-dumpk2 ksig1, ksig2, ifilname, iformat, iprd
-```
+=== "Modern"
+    ``` csound-orc
+    dumpk2(ksig1, ksig2, ifilname, iformat, iprd)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    dumpk2 ksig1, ksig2, ifilname, iformat, iprd
+    ```
 
 ### Initialization
 
@@ -35,7 +41,7 @@ This opcode allows two generated control signal values to be saved in a named ex
 
 ## Examples
 
-Here is an example of the dumpk2 opcode. It uses the file [dumpk2.csd](../../examples/dumpk2.csd). Note that the example must be run from a directory for which the
+Here is an example of the dumpk2 opcode. It uses the file [dumpk2.csd](../examples/dumpk2.csd). Note that the example must be run from a directory for which the
 user has write access.
 
 ``` csound-csd title="Example of the dumpk2 opcode." linenums="1"
@@ -62,7 +68,7 @@ kfreq = 440.103500, kdb = -0.058300
 
 ## See also
 
-[File Input and Output](../../sigio/fileio)
+[File Input and Output](../sigio/fileio.md)
 
 ## Credits
 

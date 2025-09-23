@@ -23,7 +23,7 @@ _size_ -- number of points in the table. Must be a power of 2 , power of 2 + 1, 
 
 ## Examples
 
-Here is an example of the GEN23 generator. It uses the file [gen23.csd](../../examples/gen23.csd) and [spectrum.txt](../../examples/spectrum.txt).
+Here is an example of the GEN23 generator. It uses the file [gen23.csd](../examples/gen23.csd) and [spectrum.txt](../examples/spectrum.txt).
 
 ``` csound-csd title="Example of the GEN23 generator." linenums="1"
 --8<-- "examples/gen23.csd"
@@ -32,7 +32,7 @@ Here is an example of the GEN23 generator. It uses the file [gen23.csd](../../ex
 This is the diagram of the waveform of the GEN23 routine, as used in the example:
 
 <figure markdown="span">
-![f 2 0 128 -23 "spectrum.txt" - not normalized](../../images/gen23.png)
+![f 2 0 128 -23 "spectrum.txt" - not normalized](../images/gen23.png)
 <figcaption>f 2 0 128 -23 "spectrum.txt" - not normalized</figcaption>
 </figure>
 

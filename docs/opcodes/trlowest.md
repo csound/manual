@@ -8,9 +8,15 @@ Extracts the lowest-frequency track from a streaming track input signal.
 The _trlowest_ opcode takes an input containg TRACKS pv streaming signals (as generated, for instance by _partials_) and outputs only the lowest track. In addition it outputs two k-rate signals, corresponding to the frequency and amplitude of the lowest track signal.
 
 ## Syntax
-``` csound-orc
-fsig, kfr, kamp trlowest fin1, kscal
-```
+=== "Modern"
+    ``` csound-orc
+    fsig, kfr, kamp = trlowest(fin1, kscal)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig, kfr, kamp trlowest fin1, kscal
+    ```
 
 ### Performance
 
@@ -26,7 +32,7 @@ _kscal_ -- amplitude scaling of output.
 
 ## Examples
 
-Here is an example of the trlowest opcode. It uses the file [trlowest.csd](../../examples/trlowest.csd).
+Here is an example of the trlowest opcode. It uses the file [trlowest.csd](../examples/trlowest.csd).
 
 ``` csound-csd title="Example of the trlowest opcode." linenums="1"
 --8<-- "examples/trlowest.csd"
@@ -36,7 +42,7 @@ The example above shows partial tracking of an ifd-analysis signal, extraction o
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

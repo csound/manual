@@ -6,10 +6,17 @@ category:Table Control:Table Queries
 Evaluates the size or number of dimensions of an array.
 
 ## Syntax
-``` csound-orc
-ir lenarray karray[, iwhich]
-kr lenarray karray[, iwhich]
-```
+=== "Modern"
+    ``` csound-orc
+    ir = lenarray(karray[, iwhich])
+    kr = lenarray(karray[, iwhich])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ir lenarray karray[, iwhich]
+    kr lenarray karray[, iwhich]
+    ```
 
 Initialisation
 
@@ -27,7 +34,7 @@ If the dimension requested is larger than the actual array, or the array is not 
 
 ## Examples
 
-Here is an example of the lenarray opcode. It uses the file [lenarray.csd](../../examples/lenarray.csd).
+Here is an example of the lenarray opcode. It uses the file [lenarray.csd](../examples/lenarray.csd).
 
 ``` csound-csd title="Example of the lenarray opcode." linenums="1"
 --8<-- "examples/lenarray.csd"
@@ -35,7 +42,7 @@ Here is an example of the lenarray opcode. It uses the file [lenarray.csd](../..
 
 ## See also
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

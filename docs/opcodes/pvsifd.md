@@ -8,9 +8,15 @@ Instantaneous Frequency Distribution, magnitude and phase analysis.
 The pvsifd opcode takes an input a-rate signal and performs an Instantaneous Frequency, magnitude and phase analysis, using the STFT and pvsifd (Instantaneous Frequency Distribution), as described in Lazzarini et al, "Time-stretching using the Instantaneous Frequency Distribution and Partial Tracking", Proc.of ICMC05, Barcelona. It generates two PV streaming signals, one containing the amplitudes and frequencies (a similar output to pvsanal) and another containing amplitudes and unwrapped phases.
 
 ## Syntax
-``` csound-orc
-ffr, fphs pvsifd ain, ifftsize, ihopsize, iwintype [,iscal]
-```
+=== "Modern"
+    ``` csound-orc
+    ffr, fphs = pvsifd(ain, ifftsize, ihopsize, iwintype [,iscal])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ffr, fphs pvsifd ain, ifftsize, ihopsize, iwintype [,iscal]
+    ```
 
 ### Performance
 
@@ -32,7 +38,7 @@ _iscal_ -- amplitude scaling (defaults to 1).
 
 ## Examples
 
-Here is an example of the pvsifd opcode. It uses the file [pvsifd.csd](../../examples/pvsifd.csd).
+Here is an example of the pvsifd opcode. It uses the file [pvsifd.csd](../examples/pvsifd.csd).
 
 ``` csound-csd title="Example of the pvsifd opcode." linenums="1"
 --8<-- "examples/pvsifd.csd"
@@ -42,7 +48,7 @@ The example above shows the pvsifd analysis feeding into partial tracking and cu
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

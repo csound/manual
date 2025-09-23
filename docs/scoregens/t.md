@@ -34,11 +34,11 @@ A tempo, once assigned, will remain in effect from that time-point unless influe
 
 A _t statement_ applies only to the score section in which it appears. Only one _t statement_ is meaningful in a section; it can be placed anywhere within that section. If a score section contains no _t statement_, then beats are interpreted as seconds (i.e. with an implicit _t 0 60_ statement).
 
-N.B. If the CSound command includes a [-t flag](../../), the interpreted tempo of all score _t statements_ will be overridden by the command-line tempo.
+N.B. If the CSound command includes a [-t flag](../invoke/cs-options-by-category.md#-t-num-temponum), the interpreted tempo of all score _t statements_ will be overridden by the command-line tempo.
 
 ## Examples
 
-Here is an example of the t statement. It uses the file [t.csd](../../examples/t.csd).
+Here is an example of the t statement. It uses the file [t.csd](../examples/t.csd).
 
 ``` csound-csd title="Example of the t statement." linenums="1"
 --8<-- "examples/t.csd"
@@ -46,4 +46,4 @@ Here is an example of the t statement. It uses the file [t.csd](../../examples/t
 
 ## See Also
 
-[Score Statements](../../score/statemnt)
+[Score Statements](../score/statemnt.md)

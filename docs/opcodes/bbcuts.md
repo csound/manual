@@ -20,10 +20,17 @@ We talk of rendering phrases (a sequence of cuts before reaching a new phrase at
 The opcode comes most alive when multiple synchronised versions are used simultaneously.
 
 ## Syntax
-``` csound-orc
-a1,a2 bbcuts asource1, asource2, ibps, isubdiv, ibarlength, iphrasebars, \
-             inumrepeats [, istutterspeed] [, istutterchance] [, ienvchoice]
-```
+=== "Modern"
+    ``` csound-orc
+    a1,a2 = bbcuts(asource1, asource2, ibps, isubdiv, ibarlength, iphrasebars, \
+                   inumrepeats [, istutterspeed] [, istutterchance] [, ienvchoice])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    a1,a2 bbcuts asource1, asource2, ibps, isubdiv, ibarlength, iphrasebars, \
+                 inumrepeats [, istutterspeed] [, istutterchance] [, ienvchoice]
+    ```
 
 ### Initialization
 
@@ -49,15 +56,21 @@ _asource_ -- The audio signal to be cut up. This version runs in real-time witho
 
 ## Examples
 
-Here is an example of the bbcuts opcode. It uses the file [bbcuts.csd](../../examples/bbcuts.csd).
+=== "Modern"
+    Here is an example of the bbcuts opcode. It uses the file [bbcuts-modern.csd](../examples/bbcuts-modern.csd).
+    ``` csound-orc title="Example of the bbcuts opcode." linenums="1"
+    --8<-- "examples/bbcuts-modern.csd"
+    ```
 
-``` csound-orc title="Example of the bbcuts opcode." linenums="1"
---8<-- "examples/bbcuts.csd"
-```
+=== "Classic"
+    Here is an example of the bbcuts opcode. It uses the file [bbcuts.csd](../examples/bbcuts.csd).
+    ``` csound-orc title="Example of the bbcuts opcode." linenums="1"
+    --8<-- "examples/bbcuts.csd"
+    ```
 
 ## See also
 
-[Sample Playback](../../siggen/sample)
+[Sample Playback](../siggen/sample.md)
 
 ## Credits
 

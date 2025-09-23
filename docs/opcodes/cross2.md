@@ -8,9 +8,15 @@ Cross synthesis using FFT's.
 This is an implementation of cross synthesis using FFT's.
 
 ## Syntax
-``` csound-orc
-ares cross2 ain1, ain2, isize, ioverlap, iwin, kbias
-```
+=== "Modern"
+    ``` csound-orc
+    ares = cross2(ain1, ain2, isize, ioverlap, iwin, kbias)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares cross2 ain1, ain2, isize, ioverlap, iwin, kbias
+    ```
 
 ### Initialization
 
@@ -18,7 +24,7 @@ _isize_ --  This is the size of the FFT to be performed. The larger the size the
 
 _ioverlap_ --  This is the overlap factor of the FFT's, must be a power of two. The best settings are 2 and 4.  A  big overlap takes a long time to compile.
 
-_iwin_ --  This is the function table that contains the window to be used in the analysis. One can use the [GEN20](../../scoregens/gen20) routine to create this window.
+_iwin_ --  This is the function table that contains the window to be used in the analysis. One can use the [GEN20](../scoregens/gen20.md) routine to create this window.
 
 ### Performance
 
@@ -30,7 +36,7 @@ _kbias_ --  The amount of cross synthesis.  1 is the normal, 0 is no cross synth
 
 ## Examples
 
-Here is an example of the cross2 opcode. It uses the file [cross2.csd](../../examples/cross2.csd) and [fox.wav](../../examples/fox.wav).
+Here is an example of the cross2 opcode. It uses the file [cross2.csd](../examples/cross2.csd) and [fox.wav](../examples/fox.wav).
 
 ``` csound-csd title="Example of the cross2 opcode." linenums="1"
 --8<-- "examples/cross2.csd"
@@ -38,7 +44,7 @@ Here is an example of the cross2 opcode. It uses the file [cross2.csd](../../exa
 
 ## See also
 
-[Convolution and Morphing](../../sigmod/conmorph)
+[Convolution and Morphing](../sigmod/conmorph.md)
 
 ## Credits
 

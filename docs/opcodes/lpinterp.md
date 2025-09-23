@@ -6,9 +6,15 @@ category:Spectral Processing:LPC
 Computes a new set of poles from the interpolation between two analysis.
 
 ## Syntax
-``` csound-orc
-lpinterp islot1, islot2, kmix
-```
+=== "Modern"
+    ``` csound-orc
+    lpinterp(islot1, islot2, kmix)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    lpinterp islot1, islot2, kmix
+    ```
 
 ### Initialization
 
@@ -22,11 +28,11 @@ _lpinterp_ computes a new set of poles from the interpolation between two analys
 
 ## Examples
 
-See the example for [lpslot](../../opcodes/lpslot).
+See the example for [lpslot](../opcodes/lpslot.md).
 
 ## See also
 
-[Linear Predictive Coding (LPC) Resynthesis](../../spectral/lpcresyn)
+[Linear Predictive Coding (LPC) Resynthesis](../spectral/lpcresyn.md)
 
 ## Credits
 

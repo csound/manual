@@ -3,12 +3,18 @@ id:outall
 category:Signal I/O:Signal Output
 -->
 # outall
-Writes a single audio value to all available audio channels
+Writes a single audio value to all available audio channels.
 
 ## Syntax
-``` csound-orc
-outall asig
-```
+=== "Modern"
+    ``` csound-orc
+    outall(asig)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    outall asig
+    ```
 
 ### Performance
 
@@ -16,7 +22,7 @@ Sends audio samples to all accumulating output buffers (created at the beginning
 
 ## Examples
 
-Here is an example of the outall opcode. It uses the file [outall.csd](../../examples/outall.csd).
+Here is an example of the outall opcode. It uses the file [outall.csd](../examples/outall.csd).
 
 ``` csound-csd title="Example of the outall opcode." linenums="1"
 --8<-- "examples/outall.csd"
@@ -24,7 +30,7 @@ Here is an example of the outall opcode. It uses the file [outall.csd](../../exa
 
 ## See also
 
-[Signal Output](../../sigio/output)
+[Signal Output](../sigio/output.md)
 
 ## Credits
 

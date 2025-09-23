@@ -7,9 +7,15 @@ A median filter, a variant FIR lowpass filter.
 
 
 ## Syntax
-``` csound-orc
-kres mediank kin, ksize, imaxsize [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    kres = mediank(kin, ksize, imaxsize [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres mediank kin, ksize, imaxsize [, iskip]
+    ```
 
 ### Initialization
 
@@ -27,7 +33,7 @@ _mediank_ is a simple filter that retuns the median value of the last _ksize_ va
 
 ## Examples
 
-Here is an example of the mediank opcode. It uses the file [mediank.csd](../../examples/mediank.csd).
+Here is an example of the mediank opcode. It uses the file [mediank.csd](../examples/mediank.csd).
 
 ``` csound-csd title="Example of the mediank opcode." linenums="1"
 --8<-- "examples/mediank.csd"
@@ -35,7 +41,7 @@ Here is an example of the mediank opcode. It uses the file [mediank.csd](../../e
 
 ## See also
 
-[Standard filters: Variant FIR lowpass filter](../../sigmod/standard)
+[Standard filters: Variant FIR lowpass filter](../sigmod/standard.md)
 
 ## Credits
 

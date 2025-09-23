@@ -19,7 +19,7 @@ Strings within Csound can be expressed using traditional double quotes ("  "), a
 >
 >String variables and related opcodes are not available in Csound versions older than 5.00.
 
-Strings can also be linked to a number using [strset](../../opcodes/strset) and [strget](../../opcodes/strget).
+Strings can also be linked to a number using [strset](../opcodes/strset.md) and [strget](../opcodes/strget.md).
 
 Csound 5 also has improvements in parsing string constants. It is possible to specify a multi-line string by enclosing it within {{ and }} instead of the usual double quote characters, and the following escape sequences are automatically converted:
 
@@ -45,7 +45,7 @@ Csound 5 also has improvements in parsing string constants. It is possible to sp
     ```
 > before being used.
     
-It can be useful together with the [system](../../opcodes/system) opcode:
+It can be useful together with the [system](../opcodes/system.md) opcode:
 
 ``` csound-orc
 instr 1
@@ -60,7 +60,7 @@ instr 1
 endin
 ```
 
-And the [python opcodes](../../py), among others:
+And the *python opcodes* (in py from the plugins repository), among others:
 
 ``` csound-orc
 pyruni {{

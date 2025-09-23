@@ -21,7 +21,7 @@ The tilde symbol ˜ can be used in an expression wherever a number is permissibl
 
 ## Examples
 
-Here is an example of the y statement. It uses the file [y_statement.csd](../../examples/y_statement.csd).
+Here is an example of the y statement. It uses the file [y_statement.csd](../examples/y_statement.csd).
 
 ``` csound-csd title="Example of the y statement." linenums="1"
 --8<-- "examples/y_statement.csd"
@@ -31,7 +31,7 @@ Each time this example is run, different values between 1 and 10 will be display
 
 ## See Also
 
-[Score Statements](../../score/statemnt)
+[Score Statements](../score/statemnt.md)
 
 ## Credits
 

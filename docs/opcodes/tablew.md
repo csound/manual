@@ -8,11 +8,19 @@ Change the contents of existing function tables.
 _tablew_ is for writing at k- or at a-rates, with the table number being specified at init time. Using _tablew_ with i-rate signal and index values is allowed, but the specified data will always be written to the function table at k-rate, not during the initialization pass. The valid combinations of variable types are shown by the first letter of the variable names.
 
 ## Syntax
-``` csound-orc
-tablew asig, andx, ifn [, ixmode] [, ixoff] [, iwgmode]
-tablew isig, indx, ifn [, ixmode] [, ixoff] [, iwgmode]
-tablew ksig, kndx, ifn [, ixmode] [, ixoff] [, iwgmode]
-```
+=== "Modern"
+    ``` csound-orc
+    tablew(asig, andx, ifn [, ixmode] [, ixoff] [, iwgmode])
+    tablew(isig, indx, ifn [, ixmode] [, ixoff] [, iwgmode])
+    tablew(ksig, kndx, ifn [, ixmode] [, ixoff] [, iwgmode])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    tablew asig, andx, ifn [, ixmode] [, ixoff] [, iwgmode]
+    tablew isig, indx, ifn [, ixmode] [, ixoff] [, iwgmode]
+    tablew ksig, kndx, ifn [, ixmode] [, ixoff] [, iwgmode]
+    ```
 
 ### Initialization
 
@@ -20,7 +28,7 @@ _asig_, _isig,_ _ksig_ -- The value to be written into the table.
 
 _andx_, _indx_, _kndx_ -- Index into table, either a positive number range matching the table length (_ixmode_ = 0) or a 0 to 1 range (_ixmode_ != 0)
 
-_ifn_ -- Table number. Must be &gt;= 1. Floats are rounded down to an integer. If a table number does not point to a valid table, or the table has not yet been loaded ([GEN01](../../scoregens/gen01)) then an error will result and the instrument will be de-activated.
+_ifn_ -- Table number. Must be &gt;= 1. Floats are rounded down to an integer. If a table number does not point to a valid table, or the table has not yet been loaded ([GEN01](../scoregens/gen01.md)) then an error will result and the instrument will be de-activated.
 
 _ixmode_ (optional, default=0) -- index mode.
 
@@ -91,11 +99,11 @@ At k-rate or a-rate, if a table number of &lt; 1 is given, or the table number p
 > </CsoundSynthesizer>
 > ```
 >
-> Although it may seem this program should print a 10 to the console. It will print 0, because  [tab_i](../../opcodes/tab) will read the value at the initialization of the note, before the first performance pass, when _tablew_ writes its value.
+> Although it may seem this program should print a 10 to the console. It will print 0, because  [tab_i](../opcodes/tab.md) will read the value at the initialization of the note, before the first performance pass, when _tablew_ writes its value.
 
 ## See also
 
-[Read/Write Operations](../../table/readwrit)
+[Read/Write Operations](../table/readwrit.md)
 
 ## Credits
 

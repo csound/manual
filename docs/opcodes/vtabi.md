@@ -6,9 +6,15 @@ category:Vectorial:Tables
 Read vectors (from tables -or arrays of vectors) at init time.
 
 ## Syntax
-``` csound-orc
-vtabi  indx, ifn, iout1 [, iout2, iout3, .... , ioutN ]
-```
+=== "Modern"
+    ``` csound-orc
+    vtabi(indx, ifn, iout1 [, iout2, iout3, .... , ioutN ])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vtabi indx, ifn, iout1 [, iout2, iout3, .... , ioutN ]
+    ```
 
 ### Initialization
 
@@ -28,15 +34,15 @@ The _vtab_ family is similar to _vtable_, but is much faster because interpolati
 
 > :memo: **Note**
 >
-> Notice that _vtabi_'s output arguments are placed at the right of the opcode name, differently from usual (this style is already used in other opcodes using undefined lists of output arguments such as [fin](../../opcodes/fin) or [trigseq](../../opcodes/trigseq)).
+> Notice that _vtabi_'s output arguments are placed at the right of the opcode name, differently from usual (this style is already used in other opcodes using undefined lists of output arguments such as [fin](../opcodes/fin.md) or [trigseq](../opcodes/trigseq.md)).
 
 ## Examples
 
-For an example of the vtabi opcode usage, see [vtablei](../../opcodes/vtablei).
+For an example of the vtabi opcode usage, see [vtablei](../opcodes/vtablei.md).
 
 ## See also
 
-[Tables of vectors operators](../../vectorial/tables)
+[Tables of vectors operators](../vectorial/tables.md)
 
 ## Credits
 

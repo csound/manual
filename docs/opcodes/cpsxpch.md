@@ -8,9 +8,15 @@ Converts a pitch-class value into cycles-per-second (Hz) for equal divisions of 
 There is a restriction of no more than 100 equal divisions.
 
 ## Syntax
-``` csound-orc
-icps cpsxpch ipch, iequal, irepeat, ibase
-```
+=== "Modern"
+    ``` csound-orc
+    icps = cpsxpch(ipch, iequal, irepeat, ibase)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    icps cpsxpch ipch, iequal, irepeat, ibase
+    ```
 
 ### Initialization
 
@@ -35,7 +41,7 @@ _ibase_ -- The frequency which corresponds to pitch 0.0
 
 ## Examples
 
-Here is an example of the cpsxpch opcode. It uses the file [cpsxpch.csd](../../examples/cpsxpch.csd).
+Here is an example of the cpsxpch opcode. It uses the file [cpsxpch.csd](../examples/cpsxpch.csd).
 
 ``` csound-csd title="Example of the cpsxpch opcode." linenums="1"
 --8<-- "examples/cpsxpch.csd"
@@ -47,7 +53,7 @@ Its output should include lines like this:
 instr 1:  icps = 293.666
 ```
 
-Here is an example of the cpsxpch opcode using a 10.5 ET scale. It uses the file [cpsxpch_105et.csd](../../examples/cpsxpch_105et.csd).
+Here is an example of the cpsxpch opcode using a 10.5 ET scale. It uses the file [cpsxpch_105et.csd](../examples/cpsxpch_105et.csd).
 
 ``` csound-csd title="Example of the cpsxpch opcode using a 10.5 ET scale." linenums="1"
 --8<-- "examples/cpsxpch_105et.csd"
@@ -59,7 +65,7 @@ Its output should include lines like this:
 instr 1:  icps = 4776.824
 ```
 
-Here is an example of the cpsxpch opcode using a Pierce scale centered on middle A. It uses the file [cpsxpch_pierce.csd](../../examples/cpsxpch_pierce.csd).
+Here is an example of the cpsxpch opcode using a Pierce scale centered on middle A. It uses the file [cpsxpch_pierce.csd](../examples/cpsxpch_pierce.csd).
 
 ``` csound-csd title="Example of the cpsxpch opcode using a Pierce scale centered on middle A." linenums="1"
 --8<-- "examples/cpsxpch_pierce.csd"
@@ -73,7 +79,7 @@ instr 1:  icps = 2827.762
 
 ## See also
 
-[Pitch Converters: Tuning Opcodes](../../pitch/tuning)
+[Pitch Converters: Tuning Opcodes](../pitch/tuning.md)
 
 ## Credits
 

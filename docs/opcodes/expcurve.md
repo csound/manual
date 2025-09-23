@@ -16,9 +16,15 @@ The formula used to calculate the curve is:
 where x is equal to _kindex_ and y is equal to _ksteepness_.
 
 ## Syntax
-``` csound-orc
-kout expcurve kindex, ksteepness
-```
+=== "Modern"
+    ``` csound-orc
+    kout = expcurve(kindex, ksteepness)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kout expcurve kindex, ksteepness
+    ```
 
 ### Performance
 
@@ -30,7 +36,7 @@ _kout_ -- Scaled output.
 
 ## Examples
 
-Here is an example of the expcurve opcode. It uses the file [expcurve.csd](../../examples/expcurve.csd).
+Here is an example of the expcurve opcode. It uses the file [expcurve.csd](../examples/expcurve.csd).
 
 ``` csound-orc title="Example of the expcurve opcode." linenums="1"
 --8<-- "examples/expcurve.csd"
@@ -38,7 +44,7 @@ Here is an example of the expcurve opcode. It uses the file [expcurve.csd](../..
 
 ## See also
 
-[Linear and Exponential Generators](../../siggen/lineexp)
+[Linear and Exponential Generators](../siggen/lineexp.md)
 
 ## Credits
 

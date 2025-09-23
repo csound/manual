@@ -6,13 +6,19 @@ category:Signal Generators:Models and Emulations
 An emulation of a human voice.
 
 ## Syntax
-``` csound-orc
-ares voice kamp, kfreq, kphoneme, kform, kvibf, kvamp, ifn, ivfn
-```
+=== "Modern"
+    ``` csound-orc
+    ares = voice(kamp, kfreq, kphoneme, kform, kvibf, kvamp, ifn, ivfn)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares voice kamp, kfreq, kphoneme, kform, kvibf, kvamp, ifn, ivfn
+    ```
 
 ### Initialization
 
-_ifn_, _ivfn_ -- two table numbers containing the carrier waveform and the vibrato waveform. The files [impuls20.aiff](../../examples/impuls20.aiff), [ahh.aiff](../../examples/ahh.aiff), [eee.aiff](../../examples/eee.aiff), or [ooo.aiff](../../examples/ooo.aiff) are suitable for the first of these, and a sine wave for the second. These files are available from [ftp://ftp.cs.bath.ac.uk/pub/dream/documentation/sounds/modelling/](ftp://ftp.cs.bath.ac.uk/pub/dream/documentation/sounds/modelling/).
+_ifn_, _ivfn_ -- two table numbers containing the carrier waveform and the vibrato waveform. The files [impuls20.aiff](../examples/impuls20.aiff), [ahh.aiff](../examples/ahh.aiff), [eee.aiff](../examples/eee.aiff), or [ooo.aiff](../examples/ooo.aiff) are suitable for the first of these, and a sine wave for the second. These files are available from [ftp://ftp.cs.bath.ac.uk/pub/dream/documentation/sounds/modelling/](ftp://ftp.cs.bath.ac.uk/pub/dream/documentation/sounds/modelling/).
 
 ### Performance
 
@@ -44,7 +50,7 @@ _kvamp_ -- amplitude of the vibrato
 
 ## Examples
 
-Here is an example of the voice opcode. It uses the file [voice.csd](../../examples/voice.csd), and [impuls20.aiff](../../examples/impuls20.aiff).
+Here is an example of the voice opcode. It uses the file [voice.csd](../examples/voice.csd), and [impuls20.aiff](../examples/impuls20.aiff).
 
 ``` csound-orc title="Example of the voice opcode." linenums="1"
 --8<-- "examples/voice.csd"
@@ -52,7 +58,7 @@ Here is an example of the voice opcode. It uses the file [voice.csd](../../examp
 
 ## See Also
 
-[Models and Emulations](../../siggen/models)
+[Models and Emulations](../siggen/models.md)
 
 ## Credits
 

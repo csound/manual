@@ -6,10 +6,17 @@ category:Signal Generators:Random (Noise) Generators
 Generates a controlled random number series with cubic interpolation between each new number.
 
 ## Syntax
-``` csound-orc
-ares randc xamp, xcps [, iseed] [, isize] [, ioffset]
-kres randc kamp, kcps [, iseed] [, isize] [, ioffset]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = randc(xamp, xcps [, iseed] [, isize] [, ioffset])
+    kres = randc(kamp, kcps [, iseed] [, isize] [, ioffset])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares randc xamp, xcps [, iseed] [, isize] [, ioffset]
+    kres randc kamp, kcps [, iseed] [, isize] [, ioffset]
+    ```
 
 ### Initialization
 
@@ -31,7 +38,7 @@ The remaining units produce band-limited noise: the _kcps_ and _xcps_ parameters
 
 ## Examples
 
-Here is an example of the randc opcode. It uses the file [randc.csd](../../examples/randc.csd).
+Here is an example of the randc opcode. It uses the file [randc.csd](../examples/randc.csd).
 
 ``` csound-orc title="Example of the randc opcode." linenums="1"
 --8<-- "examples/randc.csd"
@@ -57,4 +64,4 @@ i   2 time     5.50240:    65.35726
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random), [randh](../../opcodes/randh), [rand](../../opcodes/rand)
+[Random (Noise) Generators](../siggen/random.md), [randh](../opcodes/randh.md), [rand](../opcodes/rand.md)

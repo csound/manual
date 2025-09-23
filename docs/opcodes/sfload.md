@@ -5,20 +5,26 @@ category:Signal Generators:Sample Playback
 # sfload
 Loads an entire SoundFont2 (SF2) sample file into memory.
 
-These opcodes allow management the sample-structure of SF2 files. In order to understand the usage of these opcodes, the user must have some knowledge of the SF2 format, so a brief description of this format can be found in the [SoundFont2 File Format](../../siggen/sample) section.
+These opcodes allow management the sample-structure of SF2 files. In order to understand the usage of these opcodes, the user must have some knowledge of the SF2 format, so a brief description of this format can be found in the [SoundFont2 File Format](../siggen/sample.md) section.
 
 _sfload_ should be placed in the header section of a Csound orchestra.
 
 ## Syntax
-``` csound-orc
-ir sfload "filename"
-```
+=== "Modern"
+    ``` csound-orc
+    ir = sfload("filename")
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ir sfload "filename"
+    ```
 
 ### Initialization
 
 _ir_ -- output to be used by other SF2 opcodes. For _sfload_, _ir_ is _ifilhandle_.
 
-_&#8220;filename&#8221;_ -- name of the SF2 file, with its complete path. It must be a string typed within double-quotes with &#8220;/&#8221; to separate directories (this applies to DOS and Windows as well, where using a backslash will generate an error), or an integer that has been the subject of a [strset](../../opcodes/strset) operation
+_&#8220;filename&#8221;_ -- name of the SF2 file, with its complete path. It must be a string typed within double-quotes with &#8220;/&#8221; to separate directories (this applies to DOS and Windows as well, where using a backslash will generate an error), or an integer that has been the subject of a [strset](../opcodes/strset.md) operation
 
 ### Performance
 
@@ -32,7 +38,7 @@ It should be noted that before version 5.12 a maximum of 10 sound fonts could be
 
 ## Examples
 
-Here is an example of the sfload opcode. It uses the file [sfload.csd](../../examples/sfload.csd).
+Here is an example of the sfload opcode. It uses the file [sfload.csd](../examples/sfload.csd).
 
 ``` csound-csd title="Example of the sfload opcode." linenums="1"
 --8<-- "examples/sfload.csd"
@@ -40,7 +46,7 @@ Here is an example of the sfload opcode. It uses the file [sfload.csd](../../exa
 
 ## See also
 
-[Soundfonts](../../siggen/sample)
+[Soundfonts](../siggen/sample.md)
 
 More information on soundfonts is in the Floss Manuals: [https://flossmanual.csound.com/midi/reading-midi-files](https://flossmanual.csound.com/midi/reading-midi-files)
 

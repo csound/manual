@@ -8,11 +8,19 @@ Cauchy distribution random number generator.
 This is an x-class noise generator.
 
 ## Syntax
-``` csound-orc
-ares cauchy kalpha
-ires cauchy kalpha
-kres cauchy kalpha
-```
+=== "Modern"
+    ``` csound-orc
+    ares = cauchy(kalpha)
+    ires = cauchy(kalpha)
+    kres = cauchy(kalpha)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares cauchy kalpha
+    ires cauchy kalpha
+    kres cauchy kalpha
+    ```
 
 ### Performance
 
@@ -25,11 +33,17 @@ For more detailed explanation of these distributions, see:
 
 ## Examples
 
-Here is an example of the cauchy opcode. It uses the file [cauchy.csd](../../examples/cauchy.csd).
+=== "Modern"
+    Here is an example of the cauchy opcode. It uses the file [cauchy-modern.csd](../examples/cauchy-modern.csd).
+    ``` csound-orc title="Example of the cauchy opcode." linenums="1"
+    --8<-- "examples/cauchy-modern.csd"
+    ```
 
-``` csound-orc title="Example of the cauchy opcode." linenums="1"
---8<-- "examples/cauchy.csd"
-```
+=== "Classic"
+    Here is an example of the cauchy opcode. It uses the file [cauchy.csd](../examples/cauchy.csd).
+    ``` csound-orc title="Example of the cauchy opcode." linenums="1"
+    --8<-- "examples/cauchy.csd"
+    ```
 
 Its output should include lines like:
 
@@ -61,7 +75,7 @@ i   2 time     5.00000:     0.44681
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
 ## Credits
 

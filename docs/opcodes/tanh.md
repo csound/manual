@@ -13,7 +13,7 @@ tanh(k/i[]) (k- or i-arrays )
 
 ## Examples
 
-Here is an example of the tanh opcode. It uses the file [tanh.csd](../../examples/tanh.csd).
+Here is an example of the tanh opcode. It uses the file [tanh.csd](../examples/tanh.csd).
 
 ``` csound-csd title="Example of the tanh opcode." linenums="1"
 --8<-- "examples/tanh.csd"
@@ -21,7 +21,7 @@ Here is an example of the tanh opcode. It uses the file [tanh.csd](../../example
 
 ## See also
 
-[Trigonometric Functions](../../math/trig)
+[Trigonometric Functions](../math/trig.md)
 
 ## Credits
 

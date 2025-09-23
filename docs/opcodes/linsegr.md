@@ -6,10 +6,17 @@ category:Signal Generators:Linear and Exponential Generators
 Trace a series of line segments between specified points including a release segment.
 
 ## Syntax
-``` csound-orc
-ares linsegr ia, idur1, ib [, idur2] [, ic] [...], irel, iz
-kres linsegr ia, idur1, ib [, idur2] [, ic] [...], irel, iz
-```
+=== "Modern"
+    ``` csound-orc
+    ares = linsegr(ia, idur1, ib [, idur2] [, ic] [...], irel, iz)
+    kres = linsegr(ia, idur1, ib [, idur2] [, ic] [...], irel, iz)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares linsegr ia, idur1, ib [, idur2] [, ic] [...], irel, iz
+    kres linsegr ia, idur1, ib [, idur2] [, ic] [...], irel, iz
+    ```
 
 ### Initialization
 
@@ -23,7 +30,7 @@ _idur2, idur3_, etc. -- duration in seconds of subsequent segments. A zero or ne
 
 _irel, iz_ -- duration in seconds and final value of a note releasing segment.
 
-For Csound versions prior to 5.00, the release time cannot be longer than 32767/[kr](../../opcodes/kr) seconds. This limit has been extended to (2<sup>31</sup>-1)/kr.
+For Csound versions prior to 5.00, the release time cannot be longer than 32767/[kr](../opcodes/kr.md) seconds. This limit has been extended to (2<sup>31</sup>-1)/kr.
 
 ### Performance
 
@@ -31,11 +38,11 @@ These units generate control or audio signals whose values can pass through 2 or
 
 _linsegr_ is amongst the Csound &#8220;r&#8221; units that contain a note-off sensor and release time extender. When each senses an event termination or MIDI noteoff, it immediately extends the performance time of the current instrument by _irel _seconds, and sets out to reach the value _iz_ by the end of that period (no matter which segment the unit is in). &#8220;r&#8221; units can also be modified by MIDI noteoff velocities. For two or more extenders in an instrument, extension is by the greatest period.
 
-You can use other pre-made envelopes which start a release segment upon receiving a note off message, like [linenr](../../opcodes/linenr) and [expsegr](../../opcodes/expsegr), or you can construct more complex envelopes using [xtratim](../../opcodes/xtratim) and [release](../../opcodes/release). Note that you do not need to use [xtratim](../../opcodes/xtratim) if you are using _linsegr_, since the time is extended automatically.
+You can use other pre-made envelopes which start a release segment upon receiving a note off message, like [linenr](../opcodes/linenr.md) and [expsegr](../opcodes/expsegr.md), or you can construct more complex envelopes using [xtratim](../opcodes/xtratim.md) and [release](../opcodes/release.md). Note that you do not need to use [xtratim](../opcodes/xtratim.md) if you are using _linsegr_, since the time is extended automatically.
 
 ## Examples
 
-Here is an example of the linsegr opcode. It uses the file [linsegr.csd](../../examples/linsegr.csd).
+Here is an example of the linsegr opcode. It uses the file [linsegr.csd](../examples/linsegr.csd).
 
 ``` csound-orc title="Example of the linsegr opcode." linenums="1"
 --8<-- "examples/linsegr.csd"
@@ -43,7 +50,7 @@ Here is an example of the linsegr opcode. It uses the file [linsegr.csd](../../e
 
 ## See also
 
-[Linear and Exponential Generators](../../siggen/lineexp)
+[Linear and Exponential Generators](../siggen/lineexp.md)
 
 ## Credits
 

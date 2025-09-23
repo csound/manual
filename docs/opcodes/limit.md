@@ -6,14 +6,25 @@ category:Signal Modifiers:Signal Limiters
 Sets the lower and upper limits of the value it processes.
 
 ## Syntax
-``` csound-orc
-ares limit asig, klow, khigh
-ires limit isig, ilow, ihigh
-kres limit ksig, klow, khigh
-ires[] limit isig[], ilow, ihigh
-kres[] limit ksig[], klow, khigh
+=== "Modern"
+    ``` csound-orc
+    ares = limit(asig, klow, khigh)
+    ires = limit(isig, ilow, ihigh)
+    kres = limit(ksig, klow, khigh)
+    ires[] = limit(isig[], ilow, ihigh)
+    kres[] = limit(ksig[], klow, khigh)
+      )
+    ```
 
-```
+=== "Classic"
+    ``` csound-orc
+    ares limit asig, klow, khigh
+    ires limit isig, ilow, ihigh
+    kres limit ksig, klow, khigh
+    ires[] limit isig[], ilow, ihigh
+    kres[] limit ksig[], klow, khigh
+    
+    ```
 
 ### Initialization
 
@@ -37,7 +48,7 @@ This opcode is useful in several situations, such as table indexing or for clipp
 
 ## Examples
 
-Here is an example of the limit opcode. It uses the file [limit.csd](../../examples/limit.csd).
+Here is an example of the limit opcode. It uses the file [limit.csd](../examples/limit.csd).
 
 ``` csound-csd title="Example of the limit opcode." linenums="1"
 --8<-- "examples/limit.csd"
@@ -45,9 +56,9 @@ Here is an example of the limit opcode. It uses the file [limit.csd](../../examp
 
 ## See also
 
-[Signal Limiters](../../sigmod/siglimit)
+[Signal Limiters](../sigmod/siglimit.md)
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

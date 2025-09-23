@@ -6,11 +6,19 @@ category:Signal Modifiers:Signal Limiters
 Reflects the signal that exceeds the low and high thresholds.
 
 ## Syntax
-``` csound-orc
-ares mirror asig, klow, khigh
-ires mirror isig, ilow, ihigh
-kres mirror ksig, klow, khigh
-```
+=== "Modern"
+    ``` csound-orc
+    ares = mirror(asig, klow, khigh)
+    ires = mirror(isig, ilow, ihigh)
+    kres = mirror(ksig, klow, khigh)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares mirror asig, klow, khigh
+    ires mirror isig, ilow, ihigh
+    kres mirror ksig, klow, khigh
+    ```
 
 ### Initialization
 
@@ -34,7 +42,7 @@ This opcode is useful in several situations, such as table indexing or for clipp
 
 ## Examples
 
-Here is an example of the mirror opcode. It uses the file [mirror.csd](../../examples/mirror.csd).
+Here is an example of the mirror opcode. It uses the file [mirror.csd](../examples/mirror.csd).
 
 ``` csound-csd title="Example of the mirror opcode." linenums="1"
 --8<-- "examples/mirror.csd"
@@ -42,7 +50,7 @@ Here is an example of the mirror opcode. It uses the file [mirror.csd](../../exa
 
 ## See also
 
-[Signal Limiters](../../sigmod/siglimit)
+[Signal Limiters](../sigmod/siglimit.md)
 
 ## Credits
 

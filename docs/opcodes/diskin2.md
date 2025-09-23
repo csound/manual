@@ -8,19 +8,28 @@ Reads audio data from a file, and can alter its pitch using one of several avail
 _diskin2_ can also read multichannel files with any number of channels in the range 1 to 24 in versions before 5.14, and 40 after.
 
 ## Syntax
-``` csound-orc
-a1[, a2[, ... aN]] diskin2 ifilcod[, kpitch[, iskiptim \
-    [, iwrap[, iformat[, iwsize[, ibufsize[, iskipinit]]]]]]]
-ar1[] diskin2 ifilcod[, kpitch[, iskiptim \
-    [, iwrap[, iformat[, iwsize[, ibufsize[, iskipinit]]]]]]]
-```
+=== "Modern"
+    ``` csound-orc
+    a1[, a2[, ... aN]] = diskin2(ifilcod[, kpitch[, iskiptim \
+          [, iwrap[, iformat[, iwsize[, ibufsize[, iskipinit]]]]]]])
+    ar1[] = diskin2(ifilcod[, kpitch[, iskiptim \
+          [, iwrap[, iformat[, iwsize[, ibufsize[, iskipinit]]]]]]])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    a1[, a2[, ... aN]] diskin2 ifilcod[, kpitch[, iskiptim \
+        [, iwrap[, iformat[, iwsize[, ibufsize[, iskipinit]]]]]]]
+    ar1[] diskin2 ifilcod[, kpitch[, iskiptim \
+        [, iwrap[, iformat[, iwsize[, ibufsize[, iskipinit]]]]]]]
+    ```
 
 (in the array output version, the number of output channels does not have an upper limit.)
 
 
 ### Initialization
 
-_ifilcod_ -- integer or character-string denoting the source soundfile name. An integer denotes the file soundin.ifilcod; a character-string (in double quotes, spaces permitted) gives the filename itself, optionally a full pathname. If not a full path, the named file is sought first in the current directory, then in those given by the environment variable [SSDIR](../../command/environment) (if defined) then by [SFDIR](../../command/environment). See also [GEN01](../../scoregens/gen01). Note: files longer than 2<sup>31</sup>-1 sample frames may not be played correctly on 32-bit platforms; this means a maximum length about 3 hours with a sample rate of 192000 Hz.
+_ifilcod_ -- integer or character-string denoting the source soundfile name. An integer denotes the file soundin.ifilcod; a character-string (in double quotes, spaces permitted) gives the filename itself, optionally a full pathname. If not a full path, the named file is sought first in the current directory, then in those given by the environment variable [SSDIR](../invoke/environment-variables.md) (if defined) then by [SFDIR](../invoke/environment-variables.md). See also [GEN01](../scoregens/gen01.md). Note: files longer than 2<sup>31</sup>-1 sample frames may not be played correctly on 32-bit platforms; this means a maximum length about 3 hours with a sample rate of 192000 Hz.
 
 _iskiptim_ (optional, defaults to zero) -- time in seconds of input sound to be skipped, assuming _kpitch_=1. Can be negative, to add -_iskiptim_/_kpitch_ seconds of delay instead of skipping sound.
 
@@ -49,7 +58,7 @@ _iformat_ (optional, defaults to zero) -- sets raw and sample format for raw (he
 
 > :memo: **Note**
 >
-> This list is not the same as in [GEN01](../../scoregens/gen01)
+> This list is not the same as in [GEN01](../scoregens/gen01.md)
 
 _iwsize_ (optional, defaults to zero) -- interpolation window size, in samples. Can be one of the following:
 
@@ -70,7 +79,7 @@ _iskipinit_ (optional, defaults to 0) -- skip initialization if set to any non-z
 
 ### Performance
 
-_a1 ... a24_ -- output signals, in the range -0dbfs to 0dbfs. Any samples before the beginning (i.e. negative location) and after the end of the file are assumed to be zero, unless _iwrap_ is non-zero. The number of output arguments must be the same as the number of sound file channels - which can be determined with the [filenchnls](../../opcodes/filenchnls) opcode, otherwise an init error will occur.
+_a1 ... a24_ -- output signals, in the range -0dbfs to 0dbfs. Any samples before the beginning (i.e. negative location) and after the end of the file are assumed to be zero, unless _iwrap_ is non-zero. The number of output arguments must be the same as the number of sound file channels - which can be determined with the [filenchnls](../opcodes/filenchnls.md) opcode, otherwise an init error will occur.
 
 _ar1[]_ --- output signals, in a-rate array of size N, where N is the number of channels in the file. Arrays are automatically allocated to the correct size.
 
@@ -82,7 +91,7 @@ _kpitch_ -- transpose the pitch of input sound by this factor (e.g. 0.5 means on
 
 ## Examples
 
-Here is an example of the diskin2 opcode. It uses the file [diskin2.csd](../../examples/diskin2.csd), [drumsMlp.wav](../../examples/drumsMlp.wav).
+Here is an example of the diskin2 opcode. It uses the file [diskin2.csd](../examples/diskin2.csd), [drumsMlp.wav](../examples/drumsMlp.wav).
 
 ``` csound-csd title="Example of the diskin2 opcode." linenums="1"
 --8<-- "examples/diskin2.csd"
@@ -90,7 +99,7 @@ Here is an example of the diskin2 opcode. It uses the file [diskin2.csd](../../e
 
 ## See also
 
-[Signal Input](../../sigio/input)
+[Signal Input](../sigio/input.md)
 
 ## Credits
 

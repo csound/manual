@@ -6,9 +6,15 @@ category:Instrument Control:Sensing and Control
 Informs when a krate signal crosses a threshold.
 
 ## Syntax
-``` csound-orc
-kout trigger ksig, kthreshold, kmode
-```
+=== "Modern"
+    ``` csound-orc
+    kout = trigger(ksig, kthreshold, kmode)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kout trigger ksig, kthreshold, kmode
+    ```
 
 ### Performance
 
@@ -26,7 +32,7 @@ Normally _trigger_ outputs zeroes: only each time _ksig_ crosses _kthreshold_ _t
 
 ## Examples
 
-Here is an example of the trigger opcode. It uses the file [trigger.csd](../../examples/trigger.csd).
+Here is an example of the trigger opcode. It uses the file [trigger.csd](../examples/trigger.csd).
 
 ``` csound-csd title="Example of the trigger opcode." linenums="1"
 --8<-- "examples/trigger.csd"
@@ -34,7 +40,7 @@ Here is an example of the trigger opcode. It uses the file [trigger.csd](../../e
 
 ## See also
 
-[Sensing and Control: Tempo and Sequencing](../../control/sensing)
+[Sensing and Control: Tempo and Sequencing](../control/sensing.md)
 
 ## Credits
 

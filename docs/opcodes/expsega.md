@@ -5,12 +5,18 @@ category:Signal Generators:Linear and Exponential Generators
 # expsega
 An exponential segment generator operating at a-rate.
 
-This unit is almost identical to [expseg](../../opcodes/expseg), but more precise when defining segments with very short durations (i.e., in a percussive attack phase) at audio rate.
+This unit is almost identical to [expseg](../opcodes/expseg.md), but more precise when defining segments with very short durations (i.e., in a percussive attack phase) at audio rate.
 
 ## Syntax
-``` csound-orc
-ares expsega ia, idur1, ib [, idur2] [, ic] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = expsega(ia, idur1, ib [, idur2] [, ic] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares expsega ia, idur1, ib [, idur2] [, ic] [...]
+    ```
 
 ### Initialization
 
@@ -28,7 +34,7 @@ This unit generate audio signals whose values can pass through two or more speci
 
 ## Examples
 
-Here is an example of the expsega opcode. It uses the file [expsega.csd](../../examples/expsega.csd).
+Here is an example of the expsega opcode. It uses the file [expsega.csd](../examples/expsega.csd).
 
 ``` csound-orc title="Example of the expsega opcode." linenums="1"
 --8<-- "examples/expsega.csd"
@@ -36,7 +42,7 @@ Here is an example of the expsega opcode. It uses the file [expsega.csd](../../e
 
 ## See also
 
-[Linear and Exponential Generators](../../siggen/lineexp)
+[Linear and Exponential Generators](../siggen/lineexp.md)
 
 ## Credits
 

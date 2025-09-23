@@ -8,13 +8,23 @@ Declare a channel of the named software bus.
 Optional parameters can be set in the case of a control channel. If the channel does not exist yet, it is created, with an inital value of zero or empty string. Otherwise, the type (control, audio, or string) of the existing channel must match the declaration, or an init error occurs. The input/output mode of an existing channel is updated so that it becomes the bitwise OR of the previous and the newly specified value.
 
 ## Syntax
-``` csound-orc
-chn_k Sname, imode[, itype, idflt, imin, ima, ix, iy, iwidth, iheight, Sattributes]
-chn_a Sname, imode
-chn_S Sname, imode
-chn_S Sname, Smode
-chn_array Sname, imode, Stype, iSizes[]
-```
+=== "Modern"
+    ``` csound-orc
+    chn_k(Sname, imode[, itype, idflt, imin, ima, ix, iy, iwidth, iheight, Sattributes])
+    chn_a(Sname, imode)
+    chn_S(Sname, imode)
+    chn_S(Sname, Smode)
+    chn_array(Sname, imode, Stype, iSizes[])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    chn_k Sname, imode[, itype, idflt, imin, ima, ix, iy, iwidth, iheight, Sattributes]
+    chn_a Sname, imode
+    chn_S Sname, imode
+    chn_S Sname, Smode
+    chn_array Sname, imode, Stype, iSizes[]
+    ```
 
 ### Initialization
 
@@ -53,13 +63,13 @@ _Sattributes_ -- attributes for controller.
 
 The channel parameters (_imode_, _itype_, _idflt_, _imin_, and _imax_) are only hints for the host application or external software accessing the bus through the API, and do not actually restrict reading from or writing to the channel in any way. Also, the initial value of a newly created control channel is zero, regardless of the setting of _idflt_.
 
-For communication with external software, using [chnexport](../../opcodes/chnexport) may be preferred, as it allows direct access to orchestra variables exported as channels of the bus, eliminating the need for using [chnset](../../opcodes/chnset) and [chnget](../../opcodes/chnget) to send or receive data.
+For communication with external software, using [chnexport](../opcodes/chnexport.md) may be preferred, as it allows direct access to orchestra variables exported as channels of the bus, eliminating the need for using [chnset](../opcodes/chnset.md) and [chnget](../opcodes/chnget.md) to send or receive data.
 
 ### Performance
 
 _chn_k_, _chn_a_, and _chn_S_ declare a control, audio, or string channel, respectively.
 
-### Example
+### Examples
 
 The example shows the software bus being used as an asynchronous control signal to select a filter cutoff.  It assumes that an external program that has access to the API is feeding the values.
 
@@ -80,7 +90,7 @@ endin
 
 ## See also
 
-[Software Bus](../../sigio/softbus)
+[Software Bus](../sigio/softbus.md)
 
 ## Credits
 

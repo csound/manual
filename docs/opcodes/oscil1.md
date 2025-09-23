@@ -6,9 +6,15 @@ category:Signal Generators:Table Access
 Accesses table values by incremental sampling.
 
 ## Syntax
-``` csound-orc
-kres oscil1 idel, kamp, idur [, ifn]
-```
+=== "Modern"
+    ``` csound-orc
+    kres = oscil1(idel, kamp, idur [, ifn])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres oscil1 idel, kamp, idur [, ifn]
+    ```
 
 ### Initialization
 
@@ -26,7 +32,7 @@ _oscil1_ accesses values by sampling once through the function table at a rate d
 
 ## Examples
 
-Here is an example of the oscil1 opcode. It uses the file [oscil1.csd](../../examples/oscil1.csd).
+Here is an example of the oscil1 opcode. It uses the file [oscil1.csd](../examples/oscil1.csd).
 
 ``` csound-orc title="Example of the oscil1 opcode." linenums="1"
 --8<-- "examples/oscil1.csd"
@@ -47,4 +53,4 @@ i1     0.50000
 
 ## See Also
 
-[Table Access](../../siggen/tableacc)
+[Table Access](../siggen/tableacc.md)

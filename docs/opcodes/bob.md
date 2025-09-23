@@ -8,9 +8,15 @@ Runge-Kutte numerical simulation of the Moog analog resonant filter.
 Bob is based on bob~ by Miller Puckette in Pure Data. The design is based on the papers by Tim Stilson, Timothy E. Stinchcombe, and Antti Huovilainen.
 
 ## Syntax
-``` csound-orc
-asig bob ain, xcf, xres, xsat [, iosamps, istor]
-```
+=== "Modern"
+    ``` csound-orc
+    asig = bob(ain, xcf, xres, xsat [, iosamps, istor])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig bob ain, xcf, xres, xsat [, iosamps, istor]
+    ```
 
 ### Initialization
 
@@ -33,15 +39,21 @@ The saturation parameter determines at what signal level the "transistors" in th
 
 ## Examples
 
-Here is an example of the bob opcode. It uses the file [bob.csd](../../examples/bob.csd).
+=== "Modern"
+    Here is an example of the bob opcode. It uses the file [bob-modern.csd](../examples/bob-modern.csd).
+    ``` csound-csd title="Example of the bob opcode." linenums="1"
+    --8<-- "examples/bob-modern.csd"
+    ```
 
-``` csound-csd title="Example of the bob opcode." linenums="1"
---8<-- "examples/bob.csd"
-```
+=== "Classic"
+    Here is an example of the bob opcode. It uses the file [bob.csd](../examples/bob.csd).
+    ``` csound-csd title="Example of the bob opcode." linenums="1"
+    --8<-- "examples/bob.csd"
+    ```
 
 ## See also
 
-[Standard Filters: Resonant Low-pass filters](../../sigmod/standard)
+[Standard Filters: Resonant Low-pass filters](../sigmod/standard.md)
 
 ## Credits
 

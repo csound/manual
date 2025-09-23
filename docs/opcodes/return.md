@@ -8,9 +8,15 @@ Returns a value from an instrument at i-time.
 The value of a global instrument (instrument 0) can be retrieved after compilation by the evalstr opcode. The retrieval of values returned by other instruments is not yet implemented.
 
 ## Syntax
-``` csound-orc
-return ival
-```
+=== "Modern"
+    ``` csound-orc
+    return(ival)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    return ival
+    ```
 
 ### Initialization
 
@@ -27,7 +33,7 @@ print ival
 
 ## See Also
 
-[String Manipulation Opcodes](../../strings/manipulate)
+[String Manipulation Opcodes](../strings/manipulate.md)
 
 ## Credits
 

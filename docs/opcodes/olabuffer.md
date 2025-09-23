@@ -3,16 +3,22 @@ id:olabuffer
 category:Miscellaneous
 -->
 # olabuffer
-Sum overlapping frames of audio as k-rate arrays and read as an audio signal
+Sum overlapping frames of audio as k-rate arrays and read as an audio signal.
 
 Plugin opcode in framebuffer.
 
 _olabuffer_ This opcode takes 1 dimensional k-rate arrays that contain sequential frames of audio and sums them based on an overlap factor resulting in an audio signal output. This is useful for frame based audio processing such as spectral analysis/synthesis.
 
 ## Syntax
-``` csound-orc
-aout olabuffer kin, ioverlap
-```
+=== "Modern"
+    ``` csound-orc
+    aout = olabuffer(kin, ioverlap)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout olabuffer kin, ioverlap
+    ```
 
 ### Initialization
 
@@ -26,7 +32,7 @@ _kin_ -- A k-rate array containing sequential frames of audio.
 
 ## Examples
 
-Here is a simple example of the olabuffer opcode. It uses the file [framebuffer.csd](../../examples/framebuffer.csd).
+Here is a simple example of the olabuffer opcode. It uses the file [framebuffer.csd](../examples/framebuffer.csd).
 
 ``` csound-csd title="Example of the olabuffer opcode." linenums="1"
 --8<-- "examples/framebuffer.csd"
@@ -34,7 +40,7 @@ Here is a simple example of the olabuffer opcode. It uses the file [framebuffer.
 
 ## See Also
 
-[Array-based spectral opcodes](../../spectral/arrays)
+[Array-based spectral opcodes](../spectral/arrays.md)
 
 ## Credits
 

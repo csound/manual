@@ -8,9 +8,15 @@ Configurable slider controls for realtime user input. Requires Winsound or TCL/T
 Plugin opcode in control.
 
 ## Syntax
-``` csound-orc
-kres control knum
-```
+=== "Modern"
+    ``` csound-orc
+    kres = control(knum)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres control knum
+    ```
 
 ### Performance
 
@@ -22,11 +28,11 @@ Calling _control_ will create a new slider on the screen. There is no theoretica
 
 ## Examples
 
-See the [setctrl](../../opcodes/setctrl) opcode for an example.
+See the [setctrl](../opcodes/setctrl.md) opcode for an example.
 
 ## See also
 
-[Sensing and Control: TCL/TK widgets](../../control/sensing)
+[Sensing and Control: TCL/TK widgets](../control/sensing.md)
 
 ## Credits
 

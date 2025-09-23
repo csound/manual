@@ -14,7 +14,7 @@ dbfsamp(x)  (init-rate or control-rate args only)
 
 ## Examples
 
-Here is an example of the dbfsamp opcode. It uses the file [dbfsamp.csd](../../examples/dbfsamp.csd).
+Here is an example of the dbfsamp opcode. It uses the file [dbfsamp.csd](../examples/dbfsamp.csd).
 
 ``` csound-csd title="Example of the dbfsamp opcode." linenums="1"
 --8<-- "examples/dbfsamp.csd"
@@ -32,4 +32,4 @@ instr 1:  idb = -0.767
 
 ## See also
 
-[Amplitude Converters](../../math/amp)
+[Amplitude Converters](../math/amp.md)

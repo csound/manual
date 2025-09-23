@@ -3,14 +3,20 @@ id:metrobpm
 category:Instrument Control:Sensing and Control
 -->
 # metrobpm
-Trigger Metronome with optional gate
+Trigger Metronome with optional gate.
 
 Generate a metronomic signal to be used in any circumstance an isochronous trigger is needed.
 
 ## Syntax
-``` csound-orc
-ktrig  metrobpm  kfreq [, initphase] [, kgate]
-```
+=== "Modern"
+    ``` csound-orc
+    ktrig  = metrobpm( kfreq [, initphase] [, kgate])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ktrig  metrobpm  kfreq [, initphase] [, kgate]
+    ```
 
 ### Initialization
 
@@ -32,7 +38,7 @@ _metrobpm_ is a simple opcode that outputs a sequence of isochronous bangs with 
 
 ## See also
 
-[Sensing and Control: Tempo and Sequencing](../../control/sensing)
+[Sensing and Control: Tempo and Sequencing](../control/sensing.md)
 
 ## Credits
 

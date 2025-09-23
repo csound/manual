@@ -6,9 +6,15 @@ category:Signal Modifiers:Specialized Filters
 Parametric equalizer and filter opcode with 7 filter types, based on algorithm by Robert Bristow-Johnson.
 
 ## Syntax
-``` csound-orc
-ar rbjeq asig, kfco, klvl, kQ, kS[, imode]
-```
+=== "Modern"
+    ``` csound-orc
+    ar = rbjeq(asig, kfco, klvl, kQ, kS[, imode])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar rbjeq asig, kfco, klvl, kQ, kS[, imode]
+    ```
 
 ### Initialization
 
@@ -53,7 +59,7 @@ _kS_ -- shelf slope parameter for shelving filters. Must be greater than zero; a
 
 ## Examples
 
-Here is an example of the _rbjeq_ opcode. It uses the file [rbjeq.csd](../../examples/rbjeq.csd).
+Here is an example of the _rbjeq_ opcode. It uses the file [rbjeq.csd](../examples/rbjeq.csd).
 
 ``` csound-csd title="An example of the rbjeq opcode." linenums="1"
 --8<-- "examples/rbjeq.csd"
@@ -61,7 +67,7 @@ Here is an example of the _rbjeq_ opcode. It uses the file [rbjeq.csd](../../exa
 
 ## See also
 
-[Specialized Filters: Parametric EQ](../../sigmod/speciali)
+[Specialized Filters: Parametric EQ](../sigmod/speciali.md)
 
 ## Credits
 

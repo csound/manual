@@ -12,20 +12,27 @@ Reads mono audio data from an external device or stream.
 > The second form will read multiple channels into an array.
 
 ## Syntax
-``` csound-orc
-ar1 in
-aarray in
-```
+=== "Modern"
+    ``` csound-orc
+    ar1 = in()
+    aarray = in()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar1 in
+    aarray in
+    ```
 
 ### Performance
 
-Form 1 reads mono audio data from an external device or stream. If the command-line [-i](../../) flag is set, sound is read continuously from the audio input stream (e.g. _stdin_ or a soundfile) into an internal buffer. Any number of these opcodes can read freely from this buffer.
+Form 1 reads mono audio data from an external device or stream. If the command-line [-i](../invoke/cs-options-alphabetically.md#-i-file-inputfile) flag is set, sound is read continuously from the audio input stream (e.g. _stdin_ or a soundfile) into an internal buffer. Any number of these opcodes can read freely from this buffer.
 
 The second format will read upto ichnls of audio into an audio array, which must be initialised.
 
 ## Examples
 
-Here is an example of the in opcode. It uses the file [in.csd](../../examples/in.csd).
+Here is an example of the in opcode. It uses the file [in.csd](../examples/in.csd).
 
 ``` csound-csd title="Example of the in opcode." linenums="1"
 --8<-- "examples/in.csd"
@@ -33,7 +40,7 @@ Here is an example of the in opcode. It uses the file [in.csd](../../examples/in
 
 ## See also
 
-[Signal Input](../../sigio/input)
+[Signal Input](../sigio/input.md)
 
 ## Credits
 

@@ -12,12 +12,21 @@ Although the LFOs run at k-rate, amplitude, phase and filter modulation are inte
 The start phase and frequency of all oscillators and LFOs can be set by a built-in seedable 31-bit random number generator, or specified manually in a function table (GEN2).
 
 ## Syntax
-``` csound-orc
-ares oscbnk  kcps, kamd, kfmd, kpmd, iovrlap, iseed, kl1minf, kl1maxf, \
-             kl2minf, kl2maxf, ilfomode, keqminf, keqmaxf, keqminl, keqmaxl, \
-             keqminq, keqmaxq, ieqmode, kfn [, il1fn] [, il2fn] [, ieqffn]   \
-             [, ieqlfn] [, ieqqfn] [, itabl] [, ioutfn]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = oscbnk(kcps, kamd, kfmd, kpmd, iovrlap, iseed, kl1minf, kl1maxf, \
+                  kl2minf, kl2maxf, ilfomode, keqminf, keqmaxf, keqminl, keqmaxl, \
+                  keqminq, keqmaxq, ieqmode, kfn [, il1fn] [, il2fn] [, ieqffn]   \
+                  [, ieqlfn] [, ieqqfn] [, itabl] [, ioutfn])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares oscbnk kcps, kamd, kfmd, kpmd, iovrlap, iseed, kl1minf, kl1maxf, \
+                kl2minf, kl2maxf, ilfomode, keqminf, keqmaxf, keqminl, keqmaxl, \
+                keqminq, keqmaxq, ieqmode, kfn [, il1fn] [, il2fn] [, ieqffn]   \
+                [, ieqlfn] [, ieqqfn] [, itabl] [, ioutfn]
+    ```
 
 ### Initialization
 
@@ -102,18 +111,18 @@ _kfn_ -- Oscillator waveform table. Table number can be changed at k-rate (this 
 
 > :memo: **Note**<br>
 >
-> _oscbnk_ uses the same random number generator as _rnd31_. So reading [its documentation](../../opcodes/rnd31) is also recommended.
+> _oscbnk_ uses the same random number generator as _rnd31_. So reading [its documentation](../opcodes/rnd31.md) is also recommended.
 >
 
 ## Examples
 
-Here is an example of oscbnk opcode. It uses the file [oscbnk.csd](../../examples/oscbnk.csd).
+Here is an example of oscbnk opcode. It uses the file [oscbnk.csd](../examples/oscbnk.csd).
 
 ``` csound-orc title="Example of the oscbnk opcode." linenums="1"
 --8<-- "examples/oscbnk.csd"
 ```
 
-Here is an advanced example of oscbnk opcode. It uses the file [oscbnk-advanced.csd](../../examples/oscbnk-advanced.csd).
+Here is an advanced example of oscbnk opcode. It uses the file [oscbnk-advanced.csd](../examples/oscbnk-advanced.csd).
 
 ``` csound-orc title="Advanced example of the oscbnk opcode." linenums="1"
 --8<-- "examples/oscbnk-advanced.csd"
@@ -121,7 +130,7 @@ Here is an advanced example of oscbnk opcode. It uses the file [oscbnk-advanced.
 
 ## See also
 
-[Basic Oscillators](../../siggen/basic)
+[Basic Oscillators](../siggen/basic.md)
 
 ## Credits
 

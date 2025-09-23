@@ -8,9 +8,15 @@ Reports the usage of cpu either total or per core to monitor how close to max-ou
 Please note that this opcode is currently only supported on GNU/Linux .
 
 ## Syntax
-``` csound-orc
-ktot[,kcpu1, kcpu2,...]cpumeter ifreq
-```
+=== "Modern"
+    ``` csound-orc
+    ktot[,kcpu1, kcpu2,...] = cpumeter(ifreq)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ktot[,kcpu1, kcpu2,...] cpumeter ifreq
+    ```
 
 ### Initialization
 
@@ -22,7 +28,7 @@ _cpumeter_ reads the total idle time in the last _ifreq_ seconds and reports it 
 
 ## Examples
 
-Here is an example of the cpumeter opcode. It uses the file [cpumeter.csd](../../examples/cpumeter.csd).
+Here is an example of the cpumeter opcode. It uses the file [cpumeter.csd](../examples/cpumeter.csd).
 
 ``` csound-csd title="Example of the cpumeter opcode." linenums="1"
 --8<-- "examples/cpumeter.csd"
@@ -30,7 +36,7 @@ Here is an example of the cpumeter opcode. It uses the file [cpumeter.csd](../..
 
 ## See also
 
-[Real-time Performance Control](../../control/realtime)
+[Real-time Performance Control](../control/realtime.md)
 
 ## Credits
 

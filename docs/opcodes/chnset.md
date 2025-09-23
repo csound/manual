@@ -5,20 +5,34 @@ category:Signal I/O:Software Bus
 # chnset
 Writes data to a channel of the named software bus.
 
-Implies declaring the channel with _imod_=2 (see also [chn_k, chn_a, and chn_S](../../opcodes/chn)).
+Implies declaring the channel with _imod_=2 (see also [chn_k, chn_a, and chn_S](../opcodes/chn.md)).
 
 ## Syntax
-``` csound-orc
-chnset ival, Sname
-chnset kval, Sname
-chnset aval, Sname
-chnset Sval, Sname
-chnsetks Sval, Sname
-chnseti ival[], []Sname
-chnsetk kval[], []Sname
-chnseta aval[], []Sname
-chnsets Sval[], []Sname
-```
+=== "Modern"
+    ``` csound-orc
+    chnset(ival, Sname)
+    chnset(kval, Sname)
+    chnset(aval, Sname)
+    chnset(Sval, Sname)
+    chnsetks(Sval, Sname)
+    chnseti(ival[], []Sname)
+    chnsetk(kval[], []Sname)
+    chnseta(aval[], []Sname)
+    chnsets(Sval[], []Sname)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    chnset ival, Sname
+    chnset kval, Sname
+    chnset aval, Sname
+    chnset Sval, Sname
+    chnsetks Sval, Sname
+    chnseti ival[], []Sname
+    chnsetk kval[], []Sname
+    chnseta aval[], []Sname
+    chnsets Sval[], []Sname
+    ```
 
 ### Initialization
 
@@ -50,7 +64,7 @@ _aval[]_ -- an array of audio vectors to write at performance time.
 >
 > Although it is possible to loop through channel names from an array with _chnget_ and _chnset_, using the array based channel opcodes is more efficient.
 
-## Example
+## Examples
 
 The example shows the software bus being used to write pitch information to a controlling program.
 
@@ -59,22 +73,28 @@ sr = 44100
 kr = 100
 ksmps = 1
 
-instr   1
+instr 1
     a1    in
     kp,ka pitchamdf a1
           chnset    kp, "pitch"
 endin
 ```
 
-Here is another example of the chnset opcode. It uses the file [chnset.csd](../../examples/chnset.csd).
+=== "Modern"
+    Here is another example of the chnset opcode. It uses the file [chnset-modern.csd](../examples/chnset-modern.csd).
+    ``` csound-csd title="Example of the chnset opcode." linenums="1"
+    --8<-- "examples/chnset-modern.csd"
+    ```
 
-``` csound-csd title="Example of the chnset opcode." linenums="1"
---8<-- "examples/chnset.csd"
-```
+=== "Classic"
+    Here is another example of the chnset opcode. It uses the file [chnset.csd](../examples/chnset.csd).
+    ``` csound-csd title="Example of the chnset opcode." linenums="1"
+    --8<-- "examples/chnset.csd"
+    ```
 
 ## See also
 
-[Software Bus](../../sigio/softbus)
+[Software Bus](../sigio/softbus.md)
 
 ## Credits
 

@@ -8,11 +8,19 @@ Exponential distribution random number generator with interpolation (positive va
 This is an x-class noise generator.
 
 ## Syntax
-``` csound-orc
-ares exprandi klambda, xamp, xcps
-ires exprandi klambda, xamp, xcps
-kres exprandi klambda, xamp, xcps
-```
+=== "Modern"
+    ``` csound-orc
+    ares = exprandi(klambda, xamp, xcps)
+    ires = exprandi(klambda, xamp, xcps)
+    kres = exprandi(klambda, xamp, xcps)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares exprandi klambda, xamp, xcps
+    ires exprandi klambda, xamp, xcps
+    kres exprandi klambda, xamp, xcps
+    ```
 
 ### Performance
 
@@ -29,7 +37,7 @@ _xcps_ -- the frequency which new random numbers are generated.
 
 ## Examples
 
-Here is an example of the exprandi opcode. It uses the file [exprandi.csd](../../examples/exprandi.csd).
+Here is an example of the exprandi opcode. It uses the file [exprandi.csd](../examples/exprandi.csd).
 
 ``` csound-orc title="Example of the exprandi opcode." linenums="1"
 --8<-- "examples/exprandi.csd"
@@ -37,7 +45,7 @@ Here is an example of the exprandi opcode. It uses the file [exprandi.csd](../..
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
 ## Credits
 

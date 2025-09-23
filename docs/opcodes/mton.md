@@ -6,10 +6,17 @@ category:Pitch Converters:Functions
 Convert midi note number to string note name, with an accuracy of 1 cent.
 
 ## Syntax
-``` csound-orc
-Snote mton kmidi
-Snote mton imidi
-```
+=== "Modern"
+    ``` csound-orc
+    Snote = mton(kmidi)
+    Snote = mton(imidi)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    Snote mton kmidi
+    Snote mton imidi
+    ```
 
 ### Performance
 
@@ -32,7 +39,7 @@ midi    note number
 
 ## Examples
 
-Here is an example of the mton opcode. It uses the file [mton-ntom.csd](../../examples/mton-ntom.csd).
+Here is an example of the mton opcode. It uses the file [mton-ntom.csd](../examples/mton-ntom.csd).
 
 ``` csound-csd title="Example of the ftom opcode." linenums="1"
 --8<-- "examples/mton-ntom.csd"
@@ -40,9 +47,9 @@ Here is an example of the mton opcode. It uses the file [mton-ntom.csd](../../ex
 
 ## See also
 
-[Pitch Converters: Functions](../../pitch/funcs)
+[Pitch Converters: Functions](../pitch/funcs.md)
 
-[Midi Converters](../../midi/convert)
+[Midi Converters](../midi/convert.md)
 
 ## Credits
 

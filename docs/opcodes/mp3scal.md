@@ -12,11 +12,19 @@ This opcode allows for time and frequency-independent scaling. Time is advanced 
 _mp3scal_ will also scale pitch, independently of frequency, using a transposition factor (k-rate).
 
 ## Syntax
-``` csound-orc
-asig, asig2, ktime mp3scal Sfile, ktimescal, kpitch, kamp \
-             [, iskip, ifftsize, idecim, ilock]
+=== "Modern"
+    ``` csound-orc
+    asig, asig2, ktime = mp3scal(Sfile, ktimescal, kpitch, kamp \
+                                 [, iskip, ifftsize, idecim, ilock])
+      )
+    ```
 
-```
+=== "Classic"
+    ``` csound-orc
+    asig, asig2, ktime mp3scal Sfile, ktimescal, kpitch, kamp \
+                               [, iskip, ifftsize, idecim, ilock]
+    
+    ```
 
 ### Initialization
 
@@ -44,7 +52,7 @@ _asig_, _asig2_ -- stereo output signals
 
 ## Examples
 
-Here is an example of the mp3scal opcode. It uses the file [mp3scal.csd](../../examples/mp3scal.csd).
+Here is an example of the mp3scal opcode. It uses the file [mp3scal.csd](../examples/mp3scal.csd).
 
 ``` csound-csd title="Example of the mp3scal opcode." linenums="1"
 --8<-- "examples/mp3scal.csd"
@@ -52,7 +60,7 @@ Here is an example of the mp3scal opcode. It uses the file [mp3scal.csd](../../e
 
 ## See Also
 
-[Short-time Fourier Transform (STFT) Resynthesis](../../spectral/stft)
+[Short-time Fourier Transform (STFT) Resynthesis](../spectral/stft.md)
 
 ## Credits
 

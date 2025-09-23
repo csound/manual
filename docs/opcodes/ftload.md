@@ -6,9 +6,15 @@ category:Table Control:Read/Write Operations
 Load a set of previously-allocated tables from a file.
 
 ## Syntax
-``` csound-orc
-ftload Sfilename, iflag, ifn1 [, ifn2] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    ftload(Sfilename, iflag, ifn1 [, ifn2] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ftload Sfilename, iflag, ifn1 [, ifn2] [...]
+    ```
 
 ### Initialization
 
@@ -28,11 +34,11 @@ _ftload_ loads a list of tables from a file. (The tables have to be already allo
 
 ## Examples
 
-See the example for [ftsave](../../opcodes/ftsave).
+See the example for [ftsave](../opcodes/ftsave.md).
 
 ## See also
 
-[Read/Write Operations](../../table/readwrit)
+[Read/Write Operations](../table/readwrit.md)
 
 ## Credits
 

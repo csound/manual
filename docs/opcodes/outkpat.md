@@ -6,9 +6,15 @@ category:Real-time MIDI:Output
 Sends polyphonic MIDI aftertouch messages at k-rate.
 
 ## Syntax
-``` csound-orc
-outkpat kchn, knotenum, kvalue, kmin, kmax
-```
+=== "Modern"
+    ``` csound-orc
+    outkpat(kchn, knotenum, kvalue, kmin, kmax)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    outkpat kchn, knotenum, kvalue, kmin, kmax
+    ```
 
 ### Performance
 
@@ -29,7 +35,7 @@ When the _kvalue_ argument receives a 2.0 value, the opcode will send a 127 valu
 
 ## See also
 
-[MIDI Message Output](../../midi/output)
+[MIDI Message Output](../midi/output.md)
 
 ## Credits
 

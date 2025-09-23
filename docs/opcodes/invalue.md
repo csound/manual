@@ -6,11 +6,19 @@ category:Signal I/O:Signal Input
 Reads a k-rate or i-rate signal or string from a user-defined channel.
 
 ## Syntax
-``` csound-orc
-ivalue invalue "channel name"
-kvalue invalue "channel name"
-Sname invalue "channel name"
-```
+=== "Modern"
+    ``` csound-orc
+    ivalue = invalue("channel name")
+    kvalue = invalue("channel name")
+    Sname = invalue("channel name")
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ivalue invalue "channel name"
+    kvalue invalue "channel name"
+    Sname invalue "channel name"
+    ```
 
 ### Performance
 
@@ -22,7 +30,7 @@ _"channel name"_ -- An integer, string (in double-quotes), or string variable id
 
 ## Examples
 
-Here is an example of the invalue opcode. It uses the file [invalue.csd](../../examples/invalue.csd).
+Here is an example of the invalue opcode. It uses the file [invalue.csd](../examples/invalue.csd).
 
 ``` csound-csd title="Example of the invalue opcode." linenums="1"
 --8<-- "examples/invalue.csd"
@@ -30,7 +38,7 @@ Here is an example of the invalue opcode. It uses the file [invalue.csd](../../e
 
 ## See also
 
-[Signal Input](../../sigio/input)
+[Signal Input](../sigio/input.md)
 
 ## Credits
 

@@ -6,13 +6,19 @@ category:Spectral Processing:Streaming
 Modify amplitudes using a function table, with dynamic scaling.
 
 ## Syntax
-``` csound-orc
-fsig pvsmaska fsrc, ifn, kdepth
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvsmaska(fsrc, ifn, kdepth)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvsmaska fsrc, ifn, kdepth
+    ```
 
 ### Initialization
 
-_ifn_ -- The f-table to use. Given fsrc has N analysis bins, table ifn must be of size N or larger. The table need not be normalized, but values should lie within the range 0 to 1. It can be supplied from the score in the usual way, or from within the orchestra by using [pvsinfo](../../opcodes/pvsinfo) to find the size of fsrc, (returned by pvsinfo in inbins), which can then be passed to ftgen to create the f-table.
+_ifn_ -- The f-table to use. Given fsrc has N analysis bins, table ifn must be of size N or larger. The table need not be normalized, but values should lie within the range 0 to 1. It can be supplied from the score in the usual way, or from within the orchestra by using [pvsinfo](../opcodes/pvsinfo.md) to find the size of fsrc, (returned by pvsinfo in inbins), which can then be passed to ftgen to create the f-table.
 
 ### Performance
 
@@ -26,7 +32,7 @@ Note that power-of-two FFT sizes are particularly convenient when using table-ba
 
 ## Examples
 
-Here is an example of the use of the _pvsmaska_ opcode. It uses the file [pvsmaska.csd](../../examples/pvsmaska.csd).
+Here is an example of the use of the _pvsmaska_ opcode. It uses the file [pvsmaska.csd](../examples/pvsmaska.csd).
 
 ``` csound-csd title="Example of the _pvsmaska_ opcode." linenums="1"
 --8<-- "examples/pvsmaska.csd"
@@ -34,7 +40,7 @@ Here is an example of the use of the _pvsmaska_ opcode. It uses the file [pvsmas
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

@@ -6,9 +6,15 @@ category:Vectorial:Vectorial operations
 Performs mutiplication between two vectorial control signals at init time.
 
 ## Syntax
-``` csound-orc
-vmultv_i  ifn1, ifn2, ielements [, idstoffset] [, isrcoffset]
-```
+=== "Modern"
+    ``` csound-orc
+    vmultv_i(ifn1, ifn2, ielements [, idstoffset] [, isrcoffset])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vmultv_i ifn1, ifn2, ielements [, idstoffset] [, isrcoffset]
+    ```
 
 ### Initialization
 
@@ -26,7 +32,7 @@ _isrcoffset_ - index offset for the source (ifn2) table (Default=0)
 
 _vmultv_i_ multiplies two vectorial control signals, that is, each element of the first vector is processed (only) with the corresponding element of the other vector. Each vectorial signal is hosted by a table (ifn1 and ifn2). The number of elements contained in both vectors must be the same.
 
-The result is a new vectorial control signal that overrides old values of ifn1. If you want to keep the old ifn1 vector, use [vcopy_i](../../opcodes/vcopy_i) opcode to copy it in another table. You can use _idstoffset_ and _isrcoffset_ to specify vectors in any location of the tables.
+The result is a new vectorial control signal that overrides old values of ifn1. If you want to keep the old ifn1 vector, use [vcopy_i](../opcodes/vcopy_i.md) opcode to copy it in another table. You can use _idstoffset_ and _isrcoffset_ to specify vectors in any location of the tables.
 
 Negative values for _idstoffset_ and _isrcoffset_ are acceptable. If _idstoffset_ is negative, the out of range section of the vector will be discarded. If _isrcoffset_ is negative, the out of range elements will be assumed to be 1 (i.e. the destination elements will not be changed). If elements for the destination vector are beyond the size of the table (including guard point), these elements are discarded (i.e. elements do not wrap around the tables). If elements for the source vector are beyond the table length, these elements are taken as 1 (i.e. the destination vector will not be changed for these elements).
 
@@ -34,13 +40,13 @@ Negative values for _idstoffset_ and _isrcoffset_ are acceptable. If _idstoffset
 >
 > Using the same table as source and destination table in versions earlier than 5.04, might produce unexpected behavior, so use with care.
 
-This opcode works at init time. There is an k-rate version of this opcode called [vmultv](../../opcodes/vmultv).
+This opcode works at init time. There is an k-rate version of this opcode called [vmultv](../opcodes/vmultv.md).
 
-All these operators ([vaddv_i](../../opcodes/vaddv_i), [vsubv_i](../../opcodes/vsubv_i), [vmultv_i](../../opcodes/vmultv_i), [vdivv_i](../../opcodes/vdivv_i), [vpowv_i](../../opcodes/vpowv_i), [vexpv_i](../../opcodes/vexpv_i), [vcopy](../../opcodes/vcopy) and [vmap](../../opcodes/vmap)) are designed to be used together with other opcodes that operate with vectorial signals such as [vcella](../../opcodes/vcella), [adsynt](../../opcodes/adsynt), [adsynt2](../../opcodes/adsynt2) etc.
+All these operators ([vaddv_i](../opcodes/vaddv_i.md), [vsubv_i](../opcodes/vsubv_i.md), [vmultv_i](../opcodes/vmultv_i.md), [vdivv_i](../opcodes/vdivv_i.md), [vpowv_i](../opcodes/vpowv_i.md), [vexpv_i](../opcodes/vexpv_i.md), [vcopy](../opcodes/vcopy.md) and [vmap](../opcodes/vmap.md)) are designed to be used together with other opcodes that operate with vectorial signals such as [vcella](../opcodes/vcella.md), [adsynt](../opcodes/adsynt.md), [adsynt2](../opcodes/adsynt2.md) etc.
 
 ## See also
 
-[Operations Between two  Vectorial Signals](../../vectorial/vectorial)
+[Operations Between two  Vectorial Signals](../vectorial/vectorial.md)
 
 ## Credits
 

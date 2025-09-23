@@ -6,9 +6,15 @@ category:Instrument Control:Initialization and Reinitialization
 Defines and initializes numeric arrays at orchestra load time.
 
 ## Syntax
-``` csound-orc
-pset icon1 [, icon2] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    pset(icon1 [, icon2] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    pset icon1 [, icon2] [...]
+    ```
 
 ### Initialization
 
@@ -18,13 +24,13 @@ _pset_ (optional) defines and initializes numeric arrays at orchestra load time.
 
 ## Examples
 
-Here is an example of the pset opcode. It uses the file [pset.csd](../../examples/pset.csd)
+Here is an example of the pset opcode. It uses the file [pset.csd](../examples/pset.csd)
 
 ``` csound-csd title="Example of the pset opcode." linenums="1"
 --8<-- "examples/pset.csd"
 ```
 
-Here is another example of the pset opcode, using pset with a midi file. It uses the files [pset-midi.csd](../../examples/pset-midi.csd) and [midiChords.mid](../../examples/midiChords.mid)
+Here is another example of the pset opcode, using pset with a midi file. It uses the files [pset-midi.csd](../examples/pset-midi.csd) and [midiChords.mid](../examples/midiChords.mid)
 
 ``` csound-csd title="Second example of the pset opcode." linenums="1"
 --8<-- "examples/pset-midi.csd"
@@ -32,6 +38,6 @@ Here is another example of the pset opcode, using pset with a midi file. It uses
 
 ## See also
 
-[Initialization and Reinitialization](../../control/reinitn)
+[Initialization and Reinitialization](../control/reinitn.md)
 
-[Orchestra Header Statements](../../orch/header)
+[Orchestra Header Statements](../orch/header.md)

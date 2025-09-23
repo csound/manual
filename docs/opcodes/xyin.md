@@ -3,14 +3,20 @@ id:xyin
 category:Instrument Control:Sensing and Control
 -->
 # xyin
-Sense the cursor position in an output window
+Sense the cursor position in an output window.
 
 When _xyin_ is called the position of the mouse within the output window is used to reply to the request.  This simple mechanism does mean that only one _xyin_ can be used accurately at once.  The position of the mouse is reported in the output window.
 
 ## Syntax
-``` csound-orc
-kx, ky xyin iprd, ixmin, ixmax, iymin, iymax [, ixinit] [, iyinit]
-```
+=== "Modern"
+    ``` csound-orc
+    kx, ky = xyin(iprd, ixmin, ixmax, iymin, iymax [, ixinit] [, iyinit])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kx, ky xyin iprd, ixmin, ixmax, iymin, iymax [, ixinit] [, iyinit]
+    ```
 
 ### Initialization
 
@@ -30,7 +36,7 @@ _xyin_ samples the cursor x-y position in an input window every _iprd_ seconds. 
 
 ## Examples
 
-Here is an example of the xyin opcode. It uses the file [xyin.csd](../../examples/xyin.csd).
+Here is an example of the xyin opcode. It uses the file [xyin.csd](../examples/xyin.csd).
 
 ``` csound-csd title="Example of the xyin opcode." linenums="1"
 --8<-- "examples/xyin.csd"
@@ -45,7 +51,7 @@ kx=10.765685, ky=15.644135
 
 ## See also
 
-[Sensing and Control: Keyboard and mouse sensing](../../control/sensing)
+[Sensing and Control: Keyboard and mouse sensing](../control/sensing.md)
 
 ## Credits
 

@@ -6,13 +6,13 @@ These opcodes can read, transform and resynthesize ATS analysis files. Please no
 
 For more information on ATS visit: [https://ccrma.stanford.edu/~juan/ATS_manual.html](https://ccrma.stanford.edu/~juan/ATS_manual.html).
 
-ATS analysis files can be produced using the ATS software or the csound utility [ATSA](../../utility/atsa).
+ATS analysis files can be produced using the ATS software or the csound utility [ATSA](../utility/atsa.md).
 
 The opcodes for ATS processing are:
 
-* [ATSinfo](../../opcodes/ATSinfo): reads data out of the header of an ATS file.
-* [ATSread](../../opcodes/ATSread), [ATSreadnz](../../opcodes/ATSreadnz), [ATSbufread](../../opcodes/ATSbufread), [ATSinterpread](../../opcodes/ATSinterpread), [ATSpartialtap](../../opcodes/ATSpartialtap): read data from an ATS file or buffer.
-* [ATSadd](../../opcodes/ATSadd), [ATSaddnz](../../opcodes/ATSaddnz), [ATScross](../../opcodes/ATScross), [ATSsinnoi](../../opcodes/ATSsinnoi): Resynthesize sound.
+* [ATSinfo](../opcodes/ATSinfo.md): reads data out of the header of an ATS file.
+* [ATSread](../opcodes/ATSread.md), [ATSreadnz](../opcodes/ATSreadnz.md), [ATSbufread](../opcodes/ATSbufread.md), [ATSinterpread](../opcodes/ATSinterpread.md), [ATSpartialtap](../opcodes/ATSpartialtap.md): read data from an ATS file or buffer.
+* [ATSadd](../opcodes/ATSadd.md), [ATSaddnz](../opcodes/ATSaddnz.md), [ATScross](../opcodes/ATScross.md), [ATSsinnoi](../opcodes/ATSsinnoi.md): Resynthesize sound.
 
 ## Credits
 

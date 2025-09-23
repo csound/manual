@@ -8,9 +8,15 @@ Extract a substring of the source string.
 _strsub_ runs at init time only.
 
 ## Syntax
-``` csound-orc
-Sdst strsub Ssrc [, istart[, iend]]
-```
+=== "Modern"
+    ``` csound-orc
+    Sdst = strsub(Ssrc [, istart[, iend]])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    Sdst strsub Ssrc [, istart[, iend]]
+    ```
 
 ### Initialization
 
@@ -20,7 +26,7 @@ _iend_ (optional, defaults to -1) -- end position in Ssrc, counting from 0. A ne
 
 ## Examples
 
-Here is an example of the strsub opcode. It uses the file [strsub.csd](../../examples/strsub.csd).
+Here is an example of the strsub opcode. It uses the file [strsub.csd](../examples/strsub.csd).
 
 ``` csound-csd title="Example of the strsub opcode." linenums="1"
 --8<-- "examples/strsub.csd"
@@ -28,7 +34,7 @@ Here is an example of the strsub opcode. It uses the file [strsub.csd](../../exa
 
 ## See Also
 
-[String Manipulation Opcodes](../../strings/manipulate)
+[String Manipulation Opcodes](../strings/manipulate.md)
 
 ## Credits
 

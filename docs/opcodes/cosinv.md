@@ -13,7 +13,7 @@ cosinv(k/i[]) (k- or i-arrays )
 
 ## Examples
 
-Here is an example of the cosinv opcode. It uses the file [cosinv.csd](../../examples/cosinv.csd).
+Here is an example of the cosinv opcode. It uses the file [cosinv.csd](../examples/cosinv.csd).
 
 ``` csound-csd title="Example of the cosinv opcode." linenums="1"
 --8<-- "examples/cosinv.csd"
@@ -27,7 +27,7 @@ instr 1:  i1 = 1.047
 
 ## See also
 
-[Trigonometric Functions](../../math/trig)
+[Trigonometric Functions](../math/trig.md)
 
 ## Credits
 

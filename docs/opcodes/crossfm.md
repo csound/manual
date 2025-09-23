@@ -7,14 +7,25 @@ category:Signal Generators:FM Synthesis
 Two oscillators, mutually frequency and/or phase modulated by each other.
 
 ## Syntax
-``` csound-orc
-a1, a2 crossfm xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2]
-a1, a2 crossfmi xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2]
-a1, a2 crosspm xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2]
-a1, a2 crosspmi xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2]
-a1, a2 crossfmpm xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2]
-a1, a2 crossfmpmi xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2]
-```
+=== "Modern"
+    ``` csound-orc
+    a1, a2 = crossfm(xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2])
+    a1, a2 = crossfmi(xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2])
+    a1, a2 = crosspm(xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2])
+    a1, a2 = crosspmi(xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2])
+    a1, a2 = crossfmpm(xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2])
+    a1, a2 = crossfmpmi(xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    a1, a2 crossfm xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2]
+    a1, a2 crossfmi xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2]
+    a1, a2 crosspm xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2]
+    a1, a2 crosspmi xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2]
+    a1, a2 crossfmpm xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2]
+    a1, a2 crossfmpmi xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2]
+    ```
 
 ### Initialization
 
@@ -46,12 +57,12 @@ _crossfmpm_ and _crossfmpmi_ implement cross frequency/phase modulation between 
 
 > :warning: **Warning**
 >
-> Those opcodes may produce very rich spectra, especially with high modulation indexes, and in some cases foldover aliases may occur if the sampling rate is not high enough. Moreover the audio output may vary in function of the sampling rate, due to the non-linearity of the algorithm. In Csound, two other opcodes have this characteristic: _planet_ and _chuap_.
+> Those opcodes may produce very rich spectra, especially with high modulation indexes, and in some cases foldover aliases may occur if the sampling rate is not high enough. Moreover the audio output may vary in function of the sampling rate, due to the non-linearity of the algorithm.
 
 ## Examples
 
 Here is an example of the crossfm opcode. It uses the file
-[crossfm.csd](../../examples/crossfm.csd).
+[crossfm.csd](../examples/crossfm.csd).
 
 ``` csound-orc title="Example of the crossfm opcode." linenums="1"
 --8<-- "examples/crossfm.csd"
@@ -59,7 +70,7 @@ Here is an example of the crossfm opcode. It uses the file
 
 ## See Also
 
-[FM Synthesis](../../siggen/fmsynth)
+[FM Synthesis](../siggen/fmsynth.md)
 
 More information about frequency modulation on Wikipedia: [http://en.wikipedia.org/wiki/Frequency_modulation_synthesis](http://en.wikipedia.org/wiki/Frequency_modulation_synthesis)
 

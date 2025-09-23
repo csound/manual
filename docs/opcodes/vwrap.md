@@ -6,9 +6,15 @@ category:Vectorial:Limiting and Wrapping
 Wraps elements of vectorial control signals.
 
 ## Syntax
-``` csound-orc
-vwrap  ifn, kmin, kmax, ielements
-```
+=== "Modern"
+    ``` csound-orc
+    vwrap(ifn, kmin, kmax, ielements)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vwrap ifn, kmin, kmax, ielements
+    ```
 
 ### Initialization
 
@@ -24,15 +30,15 @@ _kmax_  - maximum threshold value
 
 _vwrap_ wraps around each element of corresponding vector if it exceeds low or high thresholds.
 
-These opcodes are similar to [limit](../../opcodes/limit), [wrap](../../opcodes/wrap) and [mirror](../../opcodes/mirror), but operate with a vectorial signal instead of with a scalar signal.
+These opcodes are similar to [limit](../opcodes/limit.md), [wrap](../opcodes/wrap.md) and [mirror](../opcodes/mirror.md), but operate with a vectorial signal instead of with a scalar signal.
 
-Result overrides old values of _ifn1_, if these are out of min/max interval. If you want to keep input vector, use [vcopy](../../opcodes/vcopy) opcode to copy it in another table.
+Result overrides old values of _ifn1_, if these are out of min/max interval. If you want to keep input vector, use [vcopy](../opcodes/vcopy.md) opcode to copy it in another table.
 
-All these opcodes are designed to be used together with other opcodes that operate with vectorial signals such as [vcella](../../opcodes/vcella), [adsynt](../../opcodes/adsynt), [adsynt2](../../opcodes/adsynt2) etc.
+All these opcodes are designed to be used together with other opcodes that operate with vectorial signals such as [vcella](../opcodes/vcella.md), [adsynt](../opcodes/adsynt.md), [adsynt2](../opcodes/adsynt2.md) etc.
 
 ## See also
 
-[Limiting and wrapping of vectorial control signals](../../vectorial/limiting)
+[Limiting and wrapping of vectorial control signals](../vectorial/limiting.md)
 
 ## Credits
 

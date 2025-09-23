@@ -8,16 +8,25 @@ Read sampled sound (mono or stereo) from a table.
 Reading with optional sustain and release looping. A version that outputs the exact table position (phase) corresponding to the output sample is provided as an alternative opcode.
 
 ## Syntax
-``` csound-orc
-ar1 [,ar2] loscil xamp, kcps, ifn [, ibas] [, imod1] [, ibeg1] [, iend1] \
-                  [, imod2] [, ibeg2] [, iend2]
-aph, ar1 [,ar2] loscilphs xamp, kcps, ifn [, ibas] [, imod1] [, ibeg1] \
-                          [, iend1] [, imod2] [, ibeg2] [, iend2]
-```
+=== "Modern"
+    ``` csound-orc
+    ar1 [,ar2] = loscil(xamp, kcps, ifn [, ibas] [, imod1] [, ibeg1] [, iend1] \
+                        [, imod2] [, ibeg2] [, iend2])
+    aph, ar1 [,ar2] = loscilphs(xamp, kcps, ifn [, ibas] [, imod1] [, ibeg1] \
+                                [, iend1] [, imod2] [, ibeg2] [, iend2])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar1 [,ar2] loscil xamp, kcps, ifn [, ibas] [, imod1] [, ibeg1] [, iend1] \
+                      [, imod2] [, ibeg2] [, iend2]
+    aph, ar1 [,ar2] loscilphs xamp, kcps, ifn [, ibas] [, imod1] [, ibeg1] \
+                              [, iend1] [, imod2] [, ibeg2] [, iend2]
+    ```
 
 ### Initialization
 
-_ifn_ -- function table number, typically denoting an sampled sound segment with prescribed looping points loaded using [GEN01](../../scoregens/gen01). The source file may be mono or stereo.
+_ifn_ -- function table number, typically denoting an sampled sound segment with prescribed looping points loaded using [GEN01](../scoregens/gen01.md). The source file may be mono or stereo.
 
 _ibas_ (optional) -- base frequency in _Hz_ of the recorded sound. This optionally overrides the frequency given in the audio file, but is required if the file did not contain one. The default value is 261.626 Hz, i.e. middle C. (New in Csound 4.03). If this value is not known or not present, use 1 here and in _kcps_.
 
@@ -39,7 +48,7 @@ _loscil_ samples the ftable audio at a rate determined by _kcps_, then multiplie
 
 If sampling reaches the _sustain loop_ endpoint and looping is in effect, the point of sampling will be modified and _loscil_ will continue reading from within that loop segment. Once the instrument has received a _turnoff_ signal (from the score or from a MIDI noteoff event), the next sustain endpoint encountered will be ignored and sampling will continue towards the _release loop_ end-point, or towards the last sample (henceforth to zeros).
 
-_loscil_ is the basic unit for building a sampling synthesizer. Given a sufficient set of recorded piano tones, for example, this unit can resample them to simulate the missing tones. Locating the sound source nearest a desired pitch can be done via table lookup. Once a sampling instrument has begun, its _turnoff_ point may be unpredictable and require an external _release_ envelope; this is often done by gating the sampled audio with [linenr](../../opcodes/linenr), which will extend the duration of a turned-off instrument by a specific period while it implements a decay.
+_loscil_ is the basic unit for building a sampling synthesizer. Given a sufficient set of recorded piano tones, for example, this unit can resample them to simulate the missing tones. Locating the sound source nearest a desired pitch can be done via table lookup. Once a sampling instrument has begun, its _turnoff_ point may be unpredictable and require an external _release_ envelope; this is often done by gating the sampled audio with [linenr](../opcodes/linenr.md), which will extend the duration of a turned-off instrument by a specific period while it implements a decay.
 
 If you want to loop the whole file, specify a looping mode in _imod1_ and do not enter any values for _ibeg_ and _iend_.
 
@@ -65,7 +74,7 @@ If you want to loop the whole file, specify a looping mode in _imod1_ and do not
 
 ## Examples
 
-Here is an example of the loscil opcode. It uses the files [loscil.csd](../../examples/loscil.csd), [drumsMlp.wav](../../examples/drumsMlp.wav) and [drumsSlp.wav](../../examples/drumsSlp.wav).
+Here is an example of the loscil opcode. It uses the files [loscil.csd](../examples/loscil.csd), [drumsMlp.wav](../examples/drumsMlp.wav) and [drumsSlp.wav](../examples/drumsSlp.wav).
 
 ``` csound-csd title="Example of the loscil opcode." linenums="1"
 --8<-- "examples/loscil.csd"
@@ -73,7 +82,7 @@ Here is an example of the loscil opcode. It uses the files [loscil.csd](../../ex
 
 ## See also
 
-[Sample Playback](../../siggen/sample)
+[Sample Playback](../siggen/sample.md)
 
 ## Credits
 

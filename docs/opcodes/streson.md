@@ -6,9 +6,15 @@ category:Signal Generators:Waveguide Physical Modeling
 A string resonator with variable fundamental frequency.
 
 ## Syntax
-``` csound-orc
-ares streson asig, kfr, kfdbgain
-```
+=== "Modern"
+    ``` csound-orc
+    ares = streson(asig, kfr, kfdbgain)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares streson asig, kfr, kfdbgain
+    ```
 
 ### Performance
 
@@ -20,13 +26,13 @@ _kfdbgain_ -- feedback gain, typically between 0 and 1, of the internal delay li
 
 _streson_ passes the input _asig_ through a network composed of comb, low-pass and all-pass filters, similar to the one used in some versions of the Karplus-Strong algorithm, creating a string resonator effect. The fundamental frequency of the &#8220;string&#8221; is controlled by the k-rate variable _kfr_.This opcode can be used to simulate sympathetic resonances to an input signal.
 
-See [Modal Frequency Ratios](../../misc/modalfreq) for frequency ratios of real instruments which can be used to determine the values of _kfrq_.
+See [Modal Frequency Ratios](../misc/modalfreq.md) for frequency ratios of real instruments which can be used to determine the values of _kfrq_.
 
 _streson_ is an adaptation of the StringFlt object of the SndObj Sound Object Library developed by the author.
 
 ## Examples
 
-Here is an example of the streson opcode. It uses the file [streson.csd](../../examples/streson.csd).
+Here is an example of the streson opcode. It uses the file [streson.csd](../examples/streson.csd).
 
 ``` csound-csd title="Example of the streson opcode." linenums="1"
 --8<-- "examples/streson.csd"
@@ -34,7 +40,7 @@ Here is an example of the streson opcode. It uses the file [streson.csd](../../e
 
 ## See also
 
-[Waveguides](../../sigmod/wavguide)
+[Waveguides](../sigmod/wavguide.md)
 
 ## Credits
 

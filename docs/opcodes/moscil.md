@@ -6,9 +6,15 @@ category:Real-time MIDI:Note Output
 Sends a stream of the MIDI notes.
 
 ## Syntax
-``` csound-orc
-moscil kchn, knum, kvel, kdur, kpause
-```
+=== "Modern"
+    ``` csound-orc
+    moscil(kchn, knum, kvel, kdur, kpause)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    moscil kchn, knum, kvel, kdur, kpause
+    ```
 
 ### Performance
 
@@ -22,13 +28,13 @@ _kdur_ -- note duration in seconds
 
 _kpause_ -- pause duration after each noteoff and before new note in seconds
 
-_moscil_ and [midion](../../opcodes/midion) are the most powerful MIDI OUT opcodes. _moscil_ (MIDI oscil) plays a stream of notes of _kdur_ duration. Channel, pitch, velocity, duration and pause can be controlled at k-rate, allowing very complex algorithmically generated melodic lines. When current instrument is deactivated, the note played by current instance of _moscil_ is forcedly truncated.
+_moscil_ and [midion](../opcodes/midion.md) are the most powerful MIDI OUT opcodes. _moscil_ (MIDI oscil) plays a stream of notes of _kdur_ duration. Channel, pitch, velocity, duration and pause can be controlled at k-rate, allowing very complex algorithmically generated melodic lines. When current instrument is deactivated, the note played by current instance of _moscil_ is forcedly truncated.
 
 Any number of _moscil_ opcodes can appear in the same Csound instrument, allowing a counterpoint-style polyphony within a single instrument.
 
 ## Examples
 
-Here is an example of the moscil opcode. It uses the file [moscil.csd](../../examples/moscil.csd).
+Here is an example of the moscil opcode. It uses the file [moscil.csd](../examples/moscil.csd).
 
 This example generates a stream of notes for every note received on the MIDI input. It generates MIDI notes on csound's MIDI output, so be sure to connect something.
 
@@ -38,7 +44,7 @@ This example generates a stream of notes for every note received on the MIDI inp
 
 ## See also
 
-[Note-on/Note-off Output](../../midi/onoff)
+[Note-on/Note-off Output](../midi/onoff.md)
 
 ## Credits
 

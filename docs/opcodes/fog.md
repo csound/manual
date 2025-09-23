@@ -3,21 +3,28 @@ id:fog
 category:Signal Generators:Granular Synthesis
 -->
 # fog
-Audio output is a succession of grains derived from data in a stored function table
+Audio output is a succession of grains derived from data in a stored function table.
 
 The local envelope of these grains and their timing is based on the model of _fof_ synthesis and permits detailed control of the granular synthesis.
 
 ## Syntax
-``` csound-orc
-ares fog xamp, xdens, xtrans, aspd, koct, kband, kris, kdur, kdec, \
-         iolaps, ifna, ifnb, itotdur [, iphs] [, itmode] [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = fog(xamp, xdens, xtrans, aspd, koct, kband, kris, kdur, kdec, \
+               iolaps, ifna, ifnb, itotdur [, iphs] [, itmode] [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares fog xamp, xdens, xtrans, aspd, koct, kband, kris, kdur, kdec, \
+             iolaps, ifna, ifnb, itotdur [, iphs] [, itmode] [, iskip]
+    ```
 
 ### Initialization
 
 _iolaps_ -- number of pre-located spaces needed to hold overlapping grain data. Overlaps are density dependent, and the space required depends on the maximum value of _xdens_ * _kdur_. Can be over-estimated at no computation cost. Uses less than 50 bytes of memory per _iolap_.
 
-_ifna_, _ifnb_ -- table numbers of two stored functions. The first is the data used for granulation, usually from a soundfile ([GEN01](../../scoregens/gen01)). The second is a rise shape, used forwards and backwards to shape the grain rise and decay; this is normally a sigmoid ([GEN19](../../scoregens/gen19)) but may be linear ([GEN05](../../scoregens/gen05)).
+_ifna_, _ifnb_ -- table numbers of two stored functions. The first is the data used for granulation, usually from a soundfile ([GEN01](../scoregens/gen01.md)). The second is a rise shape, used forwards and backwards to shape the grain rise and decay; this is normally a sigmoid ([GEN19](../scoregens/gen19.md)) but may be linear ([GEN05](../scoregens/gen05.md)).
 
 _itotdur_ -- total time during which this _fog_ will be active. Normally set to p3. No new grain is created if it cannot complete its _kdur_ within the remaining _itotdur_.
 
@@ -37,13 +44,13 @@ _xtrans_ -- transposition factor. The rate at which data from the stored functio
 
 _aspd_ -- Starting index pointer. _aspd_ is the normalized index (0 to 1) to table _ifna_ that determines the movement of a pointer used as the starting point for reading data within each grain. (_xtrans_ determines the rate at which data is read starting from this pointer.)
 
-_koct_ -- octaviation index. The operation of this parameter is identical to that in [fof](../../opcodes/fof).
+_koct_ -- octaviation index. The operation of this parameter is identical to that in [fof](../opcodes/fof.md).
 
 _kband_, _kris_, _kdur_, _kdec_ -- grain envelope shape. These parameters determine the exponential decay (_kband_), and the rise (_kris_), overall duration (_kdur_,) and decay (_kdec_ ) times of the grain envelope. Their operation is identical to that of the local envelope parameters in _fof_.
 
 ## Examples
 
-Here is an example of the fog opcode. It uses the file [fog.csd](../../examples/fog.csd).
+Here is an example of the fog opcode. It uses the file [fog.csd](../examples/fog.csd).
 
 ``` csound-orc title="Example of the fog opcode." linenums="1"
 --8<-- "examples/fog.csd"
@@ -51,7 +58,7 @@ Here is an example of the fog opcode. It uses the file [fog.csd](../../examples/
 
 ## See Also
 
-[Granular Synthesis](../../siggen/granular)
+[Granular Synthesis](../siggen/granular.md)
 
 ## Credits
 

@@ -27,7 +27,7 @@ p6    |
 
 This statement allows the beat count within a score section to be advanced without generating intervening sound samples. This can be of use when a score section is incomplete (the beginning or middle is missing) and the user does not wish to generate and listen to a lot of silence.
 
-p2, action time, and p3, number of beats, are treated as in [i statements](../../scoregens/i), with respect to sorting and modification by [t statements](../../scoregens/t).
+p2, action time, and p3, number of beats, are treated as in [i statements](../scoregens/i.md), with respect to sorting and modification by [t statements](../scoregens/t.md).
 
 An _a statement_ will be temporarily inserted in the score by the Score Extract feature when the extracted segment begins later than the start of a Section. The purpose of this is to preserve the beat count and time count of the original score for the benefit of the peak amplitude messages which are reported on the user console.
 
@@ -35,12 +35,18 @@ Whenever an _a statement_ is encountered by a performing orchestra, its presence
 
 ## Examples
 
-Here is an example of the a statement. It uses the file [a.csd](../../examples/a.csd).
+=== "Modern"
+    Here is an example of the a statement. It uses the file [a-modern.csd](../examples/a-modern.csd).
+    ``` csound-csd title="Example of the a statement." linenums="1"
+    --8<-- "examples/a-modern.csd"
+    ```
 
-``` csound-csd title="Example of the a statement." linenums="1"
---8<-- "examples/a.csd"
-```
+=== "Classic"
+    Here is an example of the a statement. It uses the file [a.csd](../examples/a.csd).
+    ``` csound-csd title="Example of the a statement." linenums="1"
+    --8<-- "examples/a.csd"
+    ```
 
 ## See Also
 
-[Score Statements](../../score/statemnt)
+[Score Statements](../score/statemnt.md)

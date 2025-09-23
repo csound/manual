@@ -13,7 +13,7 @@ taninv(k/i[]) (k- or i-arrays )
 
 ## Examples
 
-Here is an example of the taninv opcode. It uses the file [taninv.csd](../../examples/taninv.csd).
+Here is an example of the taninv opcode. It uses the file [taninv.csd](../examples/taninv.csd).
 
 ``` csound-csd title="Example of the taninv opcode." linenums="1"
 --8<-- "examples/taninv.csd"
@@ -27,7 +27,7 @@ instr 1:  i1 = 0.464
 
 ## See also
 
-[Trigonometric Functions](../../math/trig)
+[Trigonometric Functions](../math/trig.md)
 
 ## Credits
 

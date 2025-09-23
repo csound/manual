@@ -8,12 +8,21 @@ Convert frequency to midi note number, taking global value of A4 into account.
 Plugin opcode in emugens.
 
 ## Syntax
-``` csound-orc
-imidi ftom ifreq [,irnd]
-kmidi ftom kfreq [,irnd]
-imidis[] ftom ifreqs[] [,irnd]
-kmidis[] ftom kfreqs[] [,irnd]
-```
+=== "Modern"
+    ``` csound-orc
+    imidi = ftom(ifreq [,irnd])
+    kmidi = ftom(kfreq [,irnd])
+    imidis[] = ftom(ifreqs[] [,irnd])
+    kmidis[] = ftom(kfreqs[] [,irnd])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    imidi ftom ifreq [,irnd]
+    kmidi ftom kfreq [,irnd]
+    imidis[] ftom ifreqs[] [,irnd]
+    kmidis[] ftom kfreqs[] [,irnd]
+    ```
 
 ### Performance
 
@@ -25,11 +34,11 @@ _kmidi_ / _imidi_ -- Corresponding midi note number
 
 > :memo: **Note**
 >
-> Set the global [A4](../../opcodes/A4) value at the header to modify the tuning
+> Set the global [A4](../opcodes/A4.md) value at the header to modify the tuning
 
 ## Examples
 
-Here is an example of the ftom opcode. It uses the file [mtof-ftom.csd](../../examples/mtof-ftom.csd).
+Here is an example of the ftom opcode. It uses the file [mtof-ftom.csd](../examples/mtof-ftom.csd).
 
 ``` csound-csd title="Example of the ftom opcode." linenums="1"
 --8<-- "examples/mtof-ftom.csd"
@@ -37,9 +46,9 @@ Here is an example of the ftom opcode. It uses the file [mtof-ftom.csd](../../ex
 
 ## See also
 
-[Pitch Converters: Functions](../../pitch/funcs)
+[Pitch Converters: Functions](../pitch/funcs.md)
 
-[Midi Converters](../../midi/convert)
+[Midi Converters](../midi/convert.md)
 
 ## Credits
 

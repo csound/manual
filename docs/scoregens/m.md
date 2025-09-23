@@ -3,7 +3,7 @@ id:m
 category:
 -->
 # m Statement (Mark Statement)
-Sets a named mark in the score, which can be used by an [n statement](../../scoregens/n).
+Sets a named mark in the score, which can be used by an [n statement](../scoregens/n.md).
 
 ## Syntax
 ``` csound-orc
@@ -52,7 +52,7 @@ e
 
 ## Examples
 
-Here is an example of the m statement. It uses the file [m.csd](../../examples/m.csd).
+Here is an example of the m statement. It uses the file [m.csd](../examples/m.csd).
 
 ``` csound-csd title="Example of the m statement." linenums="1"
 --8<-- "examples/m.csd"
@@ -60,7 +60,7 @@ Here is an example of the m statement. It uses the file [m.csd](../../examples/m
 
 ## See Also
 
-[Score Statements](../../score/statemnt)
+[Score Statements](../score/statemnt.md)
 
 ## Credits
 

@@ -3,30 +3,61 @@ id:init
 category:Instrument Control:Initialization and Reinitialization
 -->
 # init
-Puts the value of the i-time expression into a k-, a-rate or t- variable.
+Initialises one or more objects.
+
+This opcode can be used for various purposes in its different
+versions, to initialise variables, arrays, and other objects.
 
 ## Syntax
-``` csound-orc
-ares init iarg
-ires init iarg
-kres init iarg
-ares, ... init iarg, ...
-ires, ... init iarg, ...
-kres, ... init iarg, ...
-tab init isize[, ival]
-```
+=== "Modern"
+    ``` csound-orc
+    var:{a,k,i,S,OpcodeDef}[,...] = init(arg:{i,S}[,...])
+    var{i[],k[],a[]} = init(size1:i[,size2:i,...])
+    err:i = init(inst:Instr[,p4:i,...])
+    [var:*,... =] init(op:Opcode[,arg1:*,...])
+    ```
+
+
+=== "Classic"
+    ``` csound-orc
+    ares[,...] init iarg[,...] 
+    ires[,...] init iarg[,...] 
+    kres[,...]  init iarg[,...] 
+    ares[] init size1[,size2, ...]
+    kres[] init size1[,size2, ...]
+    ires[] init size1[,size2, ...]
+    ierr init inst:Instr[,p4:i,...]
+    [xvar,...] init op:Opcode[,arg1:*,...]
+    ```
 
 ### Initialization
 
-Puts the value of the i-time expression _iarg_ into a k-, a-rate or t- variable, i.e., initialize the result. Note that _init_ provides the only case of an init-time statement being permitted to write into a perf-time (k- or a-rate) result cell; the statement has no effect at perf-time.
+Puts the value of the i-time expression _arg_ into a variable, i.e.,
+initialize the result. Note that _init_ provides the only case of an
+init-time statement being permitted to write into a perf-time (k- or
+a-rate) result cell; the statement has no effect at perf-time. In the
+case of opcode definition variables, the name of an existing opcode
+is passed as a string.
 
-Since version 5.13 it is possible to initialise upto 24 variables of the same class in one statement.  If there are more output variables than input expressions then the last one is repeated.  It is an error to have more inputs than outputs.
+It is possible to initialise upto 24 variables 
+of the same class in one statement.  If there are more output
+variables  than input expressions then the last one is repeated.  
+It is an error to have more inputs than outputs.
 
-The t-variable form was introduced in 5.14 and allocated space for a vector or the given size, initialised to the given value (default value is zero).
+The array form allocates space for a array object (of any number of
+dimensions).
+
+In the case of instrument instances, the opcode takes any pfields
+as parameters, and run an initialisation pass, returning any error
+codes (or zero in case of success).
+
+For opcode objects, the code runs the initialisation routine (if it
+exists) defined for the opcode. The input arguments and outputs should match
+the opcode signature for the object being initialised.
 
 ## Examples
 
-Here is an example of the init opcode. It uses the file [init.csd](../../examples/init.csd).
+Here is an example of the init opcode. It uses the file [init.csd](../examples/init.csd).
 
 ``` csound-csd title="Example of the init opcode." linenums="1"
 --8<-- "examples/init.csd"
@@ -58,11 +89,19 @@ i   2 time     2.80018:     1.00000
 i   2 time     2.90032:     1.00000
 ```
 
+The following example shows the init opcode in the context of
+instrument and opcode initialisation.
+
+``` csound-csd title="Examples of the instrument definition, instance and opcode init." linenums="1"
+--8<-- "examples/create.csd"
+```
+
+
 ## See also
 
-[Initialization and Reinitialization](../../control/reinitn)
+[Initialization and Reinitialization](../control/reinitn.md)
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

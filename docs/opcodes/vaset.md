@@ -16,9 +16,15 @@ Useful for doing sample-by-sample manipulation at k-rate without using setksmps 
 > In Csound6 this opcode does do bounds checking.
 
 ## Syntax
-``` csound-orc
-vaset kval, kndx, avar
-```
+=== "Modern"
+    ``` csound-orc
+    vaset(kval, kndx, avar)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vaset kval, kndx, avar
+    ```
 
 ### Performance
 
@@ -30,7 +36,7 @@ _avar_ - a-rate variable to write to
 
 ## Examples
 
-Here is an example of the vaset opcode. It uses the file [vaset.csd](../../examples/vaset.csd).
+Here is an example of the vaset opcode. It uses the file [vaset.csd](../examples/vaset.csd).
 
 ``` csound-csd title="Example of the vaset opcode." linenums="1"
 --8<-- "examples/vaset.csd"
@@ -38,7 +44,7 @@ Here is an example of the vaset opcode. It uses the file [vaset.csd](../../examp
 
 ## See also
 
-[Sample Level Operators](../../sigmod/sample)
+[Sample Level Operators](../sigmod/sample.md)
 
 ## Credits
 

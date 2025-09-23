@@ -6,9 +6,15 @@ category:Signal Modifiers:Sample Level Operators
 Adds artificial foldover to an audio signal.
 
 ## Syntax
-``` csound-orc
-ares fold asig, kincr
-```
+=== "Modern"
+    ``` csound-orc
+    ares = fold(asig, kincr)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares fold asig, kincr
+    ```
 
 ### Performance
 
@@ -20,7 +26,7 @@ _fold_ is an opcode which creates artificial foldover.  For example, when _kincr
 
 ## Examples
 
-Here is an example of the fold opcode. It uses the file [fold.csd](../../examples/fold.csd).
+Here is an example of the fold opcode. It uses the file [fold.csd](../examples/fold.csd).
 
 ``` csound-csd title="Example of the fold opcode." linenums="1"
 --8<-- "examples/fold.csd"
@@ -28,7 +34,7 @@ Here is an example of the fold opcode. It uses the file [fold.csd](../../example
 
 ## See also
 
-[Sample Level Operators](../../sigmod/sample)
+[Sample Level Operators](../sigmod/sample.md)
 
 ## Credits
 

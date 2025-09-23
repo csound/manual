@@ -6,9 +6,15 @@ category:Vectorial:Tables
 Write vectors (to tables -or arrays of vectors) at a-rate.
 
 ## Syntax
-``` csound-orc
-vtablewa  andx, kfn, ixmode, ainarg1 [, ainarg2, ainarg3 , .... , ainargN ]
-```
+=== "Modern"
+    ``` csound-orc
+    vtablewa(andx, kfn, ixmode, ainarg1 [, ainarg2, ainarg3 , .... , ainargN ])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vtablewa andx, kfn, ixmode, ainarg1 [, ainarg2, ainarg3 , .... , ainargN ]
+    ```
 
 ### Initialization
 
@@ -34,7 +40,7 @@ Notice that no wrap nor limit mode is implemented.  So, if  an index attempt to 
 
 ## Examples
 
-Here is an example of the vtablewa opcode. It uses the files [vtablewa.csd](../../examples/vtablewa.csd).
+Here is an example of the vtablewa opcode. It uses the files [vtablewa.csd](../examples/vtablewa.csd).
 
 ``` csound-csd title="Example of the vtablewa opcode." linenums="1"
 --8<-- "examples/vtablewa.csd"
@@ -42,7 +48,7 @@ Here is an example of the vtablewa opcode. It uses the files [vtablewa.csd](../.
 
 ## See also
 
-[Tables of vectors operators](../../vectorial/tables)
+[Tables of vectors operators](../vectorial/tables.md)
 
 ## Credits
 

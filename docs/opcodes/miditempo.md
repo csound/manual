@@ -7,13 +7,29 @@ Returns the current tempo at k-rate, of either the MIDI file (if available) or t
 
 
 ## Syntax
-``` csound-orc
-ksig  miditempo
-```
+=== "Modern"
+    ``` csound-orc
+    itempo = miditempo([id:i])
+    ktempo = miditempo([id:i])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    itempo miditempo [id:i]
+    ktempo miditempo [id:i]
+    ```
+
+### Initialization
+
+
+_id_ (optional, default=0) -- MIDI file id, defaults to 0, the id of
+any file passed to the -F flag.
+
+Tempo is returned in bpm.
 
 ## Examples
 
-Here is an example of the miditempo opcode. It uses the files [miditempo.csd](../../examples/miditempo.csd).
+Here is an example of the miditempo opcode. It uses the files [miditempo.csd](../examples/miditempo.csd).
 
 ``` csound-csd title="Example of the miditempo opcode." linenums="1"
 --8<-- "examples/miditempo.csd"
@@ -27,7 +43,7 @@ miditempo = 96
 
 ## See also
 
-[Sensing and Control: Tempo and Sequencing](../../control/sensing)
+[Sensing and Control: Tempo and Sequencing](../control/sensing.md)
 
 ## Credits
 

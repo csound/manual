@@ -2,24 +2,24 @@
 
 The following opcodes can be used to design instruments that work interchangably for real-time MIDI and score events:
 
-* [midichannelaftertouch](../../opcodes/midichannelaftertouch)
-* [midichn](../../opcodes/midichn)
-* [midicontrolchange](../../opcodes/midicontrolchange)
-* [mididefault](../../opcodes/mididefault)
-* [midinoteoff](../../opcodes/midinoteoff)
-* [midinoteoncps](../../opcodes/midinoteoncps)
-* [midinoteonkey](../../opcodes/midinoteonkey)
-* [midinoteonoct](../../opcodes/midinoteonoct)
-* [midinoteonpch](../../opcodes/midinoteonpch)
-* [midipitchbend](../../opcodes/midipitchbend)
-* [midipolyaftertouch](../../opcodes/midipolyaftertouch)
-* [midiprogramchange](../../opcodes/midiprogramchange).
+* [midichannelaftertouch](../opcodes/midichannelaftertouch.md)
+* [midichn](../opcodes/midichn.md)
+* [midicontrolchange](../opcodes/midicontrolchange.md)
+* [mididefault](../opcodes/mididefault.md)
+* [midinoteoff](../opcodes/midinoteoff.md)
+* [midinoteoncps](../opcodes/midinoteoncps.md)
+* [midinoteonkey](../opcodes/midinoteonkey.md)
+* [midinoteonoct](../opcodes/midinoteonoct.md)
+* [midinoteonpch](../opcodes/midinoteonpch.md)
+* [midipitchbend](../opcodes/midipitchbend.md)
+* [midipolyaftertouch](../opcodes/midipolyaftertouch.md)
+* [midiprogramchange](../opcodes/midiprogramchange.md).
 
 > :memo: **Adapting a score-activated Csound instrument.**
 >
 > To adapt an ordinary Csound instrument designed for score activation for score/MIDI interoperability:
 >
-> * Change all [linen](../../opcodes/linen), [linseg](../../opcodes/linseg), and [expseg](../../opcodes/expseg) opcodes to [linenr](../../opcodes/linenr), [linsegr](../../opcodes/linsegr), and [expsegr](../../opcodes/expsegr), respectively, except for a de-clicking or damping envelope. This will not materially change score-driven performance.
+> * Change all [linen](../opcodes/linen.md), [linseg](../opcodes/linseg.md), and [expseg](../opcodes/expseg.md) opcodes to [linenr](../opcodes/linenr.md), [linsegr](../opcodes/linsegr.md), and [expsegr](../opcodes/expsegr.md), respectively, except for a de-clicking or damping envelope. This will not materially change score-driven performance.
 > * Add the following lines at the beginning of the instrument definition:
 > ``` csound-orc
 >  ; Ensures that a MIDI-activated instrument
@@ -34,4 +34,4 @@ The following opcodes can be used to design instruments that work interchangably
 
 > :memo: **MIDI Realtime Input/Ouput command line options**
 >
-> New [MIDI I/O flags](../../command) in Csound 5.02, can replace most uses of these MIDI interop opcodes, and make usage easier.
+> New [MIDI I/O flags](../invoke/cs-options-by-category.md#-m-device-midi-devicedevice) in Csound 5.02, can replace most uses of these MIDI interop opcodes, and make usage easier.

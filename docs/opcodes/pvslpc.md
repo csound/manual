@@ -8,9 +8,15 @@ Streaming linear prediction analysis.
 This opcode implements streaming linear prediction analysis from an input signal and outputs an fsig, which can be used with other pvs opcodes.
 
 ## Syntax
-``` csound-orc
-fsig pvslpc asrc, idftsiz, ihop, iord [, iwin]
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvslpc(asrc, idftsiz, ihop, iord [, iwin])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvslpc asrc, idftsiz, ihop, iord [, iwin]
+    ```
 
 ### Initialization
 
@@ -37,7 +43,7 @@ The analyses are produced every hopsize samples. Once the signal is extracted fr
 ## Examples
 
 Here is an example of the pvslpc opcode using an audio input
-signal as lpc source. It uses the file [pvslpc.csd](../../examples/pvslpc.csd).
+signal as lpc source. It uses the file [pvslpc.csd](../examples/pvslpc.csd).
 
 ``` csound-csd title="Example of the pvslpc opcode." linenums="1"
 --8<-- "examples/pvslpc.csd"
@@ -45,4 +51,4 @@ signal as lpc source. It uses the file [pvslpc.csd](../../examples/pvslpc.csd).
 
 ## See also
 
-[Streaming Linear Predictive Coding (SLPC) Resynthesis](../../spectral/lpcresyn)
+[Streaming Linear Predictive Coding (SLPC) Resynthesis](../spectral/lpcresyn.md)

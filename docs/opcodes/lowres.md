@@ -6,9 +6,15 @@ category:Signal Modifiers:Standard Filters:Resonant
 Another resonant lowpass filter.
 
 ## Syntax
-``` csound-orc
-ares lowres asig, xcutoff, xresonance [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = lowres(asig, xcutoff, xresonance [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares lowres asig, xcutoff, xresonance [, iskip]
+    ```
 
 ### Initialization
 
@@ -26,7 +32,7 @@ _lowres_ is a resonant lowpass filter derived from a Hans Mikelson orchestra. Th
 
 ## Examples
 
-Here is an example of the lowres opcode. It uses the file [lowres.csd](../../examples/lowres.csd).
+Here is an example of the lowres opcode. It uses the file [lowres.csd](../examples/lowres.csd).
 
 ``` csound-csd title="Example of the lowres opcode." linenums="1"
 --8<-- "examples/lowres.csd"
@@ -34,7 +40,7 @@ Here is an example of the lowres opcode. It uses the file [lowres.csd](../../exa
 
 ## See also
 
-[Standard Filters: Resonant Low-pass filters](../../sigmod/standard)
+[Standard Filters: Resonant Low-pass filters](../sigmod/standard.md)
 
 ## Credits
 

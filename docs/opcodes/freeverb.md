@@ -3,14 +3,20 @@ id:freeverb
 category:Signal Modifiers:Reverberation
 -->
 # freeverb
-Opcode version of Jezar's Freeverb
+Opcode version of Jezar's Freeverb.
 
 freeverb is a stereo reverb unit based on Jezar's public domain C++ sources, composed of eight parallel comb filters on both channels, followed by four allpass units in series. The filters on the right channel are slightly detuned compared to the left channel in order to create a stereo effect.
 
 ## Syntax
-``` csound-orc
-aoutL, aoutR freeverb ainL, ainR, kRoomSize, kHFDamp[, iSRate[, iSkip]]
-```
+=== "Modern"
+    ``` csound-orc
+    aoutL, aoutR = freeverb(ainL, ainR, kRoomSize, kHFDamp[, iSRate[, iSkip]])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aoutL, aoutR freeverb ainL, ainR, kRoomSize, kHFDamp[, iSRate[, iSkip]]
+    ```
 
 ### Initialization
 
@@ -37,7 +43,7 @@ _kHFDamp_ (range: 0 to 1): high frequency attenuation; a value of zero means all
 
 ## Examples
 
-Here is an example of the _freeverb_ opcode. It uses the file [freeverb.csd](../../examples/freeverb.csd).
+Here is an example of the _freeverb_ opcode. It uses the file [freeverb.csd](../examples/freeverb.csd).
 
 ``` csound-csd title="An example of the freeverb opcode." linenums="1"
 --8<-- "examples/freeverb.csd"
@@ -45,7 +51,7 @@ Here is an example of the _freeverb_ opcode. It uses the file [freeverb.csd](../
 
 ## See also
 
-[Reverberation](../../sigmod/reverbtn)
+[Reverberation](../sigmod/reverbtn.md)
 
 ## Credits
 

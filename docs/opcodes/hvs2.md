@@ -6,10 +6,17 @@ category:Signal Generators:Hyper Vectorial Synthesis
 Allows two-dimensional Hyper Vectorial Synthesis (HVS) controlled by externally-updated k-variables.
 
 ## Syntax
-``` csound-orc
-hvs2 kx, ky, inumParms, inumPointsX, inumPointsY, iOutTab, iPositionsTab, \
-     iSnapTab [, iConfigTab]
-```
+=== "Modern"
+    ``` csound-orc
+    hvs2(kx, ky, inumParms, inumPointsX, inumPointsY, iOutTab, iPositionsTab, \
+         iSnapTab [, iConfigTab])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    hvs2 kx, ky, inumParms, inumPointsX, inumPointsY, iOutTab, iPositionsTab, \
+         iSnapTab [, iConfigTab]
+    ```
 
 ### Initialization
 
@@ -57,13 +64,13 @@ Output values of the HVS are influenced by the motion pointer, a point whose pos
 
 ## Examples
 
-Here is an example of the hvs2 opcode. It uses the file [hvs2.csd](../../examples/hvs2.csd).
+Here is an example of the hvs2 opcode. It uses the file [hvs2.csd](../examples/hvs2.csd).
 
 ``` csound-orc title="Example of the hvs2 opcode." linenums="1"
 --8<-- "examples/hvs2.csd"
 ```
 
-Here is second example of the hvs2 opcode. It uses the file [hvs2-2.csd](../../examples/hvs2-2.csd).
+Here is second example of the hvs2 opcode. It uses the file [hvs2-2.csd](../examples/hvs2-2.csd).
 
 ``` csound-orc title="Second example of the hvs2 opcode." linenums="1"
 --8<-- "examples/hvs2-2.csd"
@@ -71,7 +78,7 @@ Here is second example of the hvs2 opcode. It uses the file [hvs2-2.csd](../../e
 
 ## See also
 
-[Hyper Vectorial Synthesis](../../siggen/hvs)
+[Hyper Vectorial Synthesis](../siggen/hvs.md)
 
 ## Credits
 

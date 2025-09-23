@@ -6,9 +6,15 @@ category:Real-time MIDI:Input
 Recovers the current values of MIDI controllers to a k-array.
 
 ## Syntax
-``` csound-orc
-kconnt[] ctrlsave ichnl, ictlno1, [ictlno2] [, ictlno3] ...
-```
+=== "Modern"
+    ``` csound-orc
+    kconnt[] = ctrlsave(ichnl, ictlno1, [ictlno2] [, ictlno3] ...)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kconnt[] ctrlsave ichnl, ictlno1, [ictlno2] [, ictlno3] ...
+    ```
 
 ### Initialization
 
@@ -22,7 +28,7 @@ Sets the array kcontrl to the current values of MIDI controllers indicated.
 
 ## Examples
 
-Here is an example of the ctrlsave opcode. It uses the file [ctrls.csd](../../examples/ctrls.csd).
+Here is an example of the ctrlsave opcode. It uses the file [ctrls.csd](../examples/ctrls.csd).
 
 ``` csound-csd title="Example of the ctrlsave opcode." linenums="1"
 --8<-- "examples/ctrls.csd"
@@ -30,7 +36,7 @@ Here is an example of the ctrlsave opcode. It uses the file [ctrls.csd](../../ex
 
 ## See also
 
-[MIDI input and Initialization](../../midi/input)
+[MIDI input and Initialization](../midi/input.md)
 
 ## Credits
 

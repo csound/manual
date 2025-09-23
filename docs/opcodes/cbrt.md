@@ -6,10 +6,17 @@ category:Mathematical Operations:Arrays
 Cubic root function.
 
 ## Syntax
-``` csound-orc
-ires[] cbrt iarg
-kres[] cbrt karg
-```
+=== "Modern"
+    ``` csound-orc
+    ires[] = cbrt(iarg)
+    kres[] = cbrt(karg)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ires[] cbrt iarg
+    kres[] cbrt karg
+    ```
 
 ### Initialization
 
@@ -21,15 +28,21 @@ _karg[]_ -- the argument.
 
 ## Examples
 
-Here is an example of the cbrt opcode. It uses the file [cbrt.csd](../../examples/cbrt.csd).
+=== "Modern"
+    Here is an example of the cbrt opcode. It uses the file [cbrt-modern.csd](../examples/cbrt-modern.csd).
+    ``` csound-csd title="Example of the cbrt opcode." linenums="1"
+    --8<-- "examples/cbrt-modern.csd"
+    ```
 
-``` csound-csd title="Example of the cbrt opcode." linenums="1"
---8<-- "examples/cbrt.csd"
-```
+=== "Classic"
+    Here is an example of the cbrt opcode. It uses the file [cbrt.csd](../examples/cbrt.csd).
+    ``` csound-csd title="Example of the cbrt opcode." linenums="1"
+    --8<-- "examples/cbrt.csd"
+    ```
 
 ## See also
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

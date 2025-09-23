@@ -12,7 +12,7 @@ f  #    time    size   7   a   n1   b   n2   c  ...
 
 ### Initialization
 
-_size_ -- number of points in the table. Must be a power of 2 or power-of-2 plus 1 (see [f statement](../../scoregens/f)).
+_size_ -- number of points in the table. Must be a power of 2 or power-of-2 plus 1 (see [f statement](../scoregens/f.md)).
 
 _a, b, c,_ etc. -- ordinate values, in odd-numbered pfields p5, p7, p9, . . .
 
@@ -25,7 +25,7 @@ _n1, n2_, etc. -- length of segment (no. of storage locations), in even-numbered
 
 ## Examples
 
-Here is an example of the GEN07 routine. It uses the files [gen07.csd](../../examples/gen07.csd).
+Here is an example of the GEN07 routine. It uses the files [gen07.csd](../examples/gen07.csd).
 
 ``` csound-csd title="An example of the GEN07 routine." linenums="1"
 --8<-- "examples/gen07.csd"
@@ -34,20 +34,20 @@ Here is an example of the GEN07 routine. It uses the files [gen07.csd](../../exa
 These are the diagrams of the waveforms of the GEN07 routines, as used in the example:
 
 <figure markdown="span">
-![f 2 0 1024 7 0 512 1 0 -1 512 0 - sawtooth up and down, starting and ending at 0](../../images/gen07_1.png)
+![f 2 0 1024 7 0 512 1 0 -1 512 0 - sawtooth up and down, starting and ending at 0](../images/gen07_1.png)
 <figcaption>f 2 0 1024 7 0 512 1 0 -1 512 0 - sawtooth up and down, starting and ending at 0</figcaption>
 </figure>
 
 <figure markdown="span">
-![f 3 0 1024 7 1 512 1 0 -1 512 -1 - a square from positive to negative](../../images/gen07_2.png)
+![f 3 0 1024 7 1 512 1 0 -1 512 -1 - a square from positive to negative](../images/gen07_2.png)
 <figcaption>f 3 0 1024 7 1 512 1 0 -1 512 -1 - a square from positive to negative</figcaption>
 </figure>
 
 <figure markdown="span">
-![f 4 0 1024 7 1 1024 -1 - sawtooth down, a straight line from positive to negative](../../images/gen07_3.png)
+![f 4 0 1024 7 1 1024 -1 - sawtooth down, a straight line from positive to negative](../images/gen07_3.png)
 <figcaption>f 4 0 1024 7 1 1024 -1 - sawtooth down, a straight line from positive to negative</figcaption>
 </figure>
 
 ## See Also
 
-[GEN05](../../scoregens/gen05), [GEN06](../../scoregens/gen06), and [GEN08](../../scoregens/gen08)
+[GEN05](../scoregens/gen05.md), [GEN06](../scoregens/gen06.md), and [GEN08](../scoregens/gen08.md)

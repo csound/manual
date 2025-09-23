@@ -6,9 +6,15 @@ category:Signal Modifiers:Waveguides
 A model of beaten plate consisting of two parallel delay-lines and two first-order lowpass filters.
 
 ## Syntax
-``` csound-orc
-ares wguide2 asig, xfreq1, xfreq2, kcutoff1, kcutoff2, kfeedback1, kfeedback2
-```
+=== "Modern"
+    ``` csound-orc
+    ares = wguide2(asig, xfreq1, xfreq2, kcutoff1, kcutoff2, kfeedback1, kfeedback2)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares wguide2 asig, xfreq1, xfreq2, kcutoff1, kcutoff2, kfeedback1, kfeedback2
+    ```
 
 ### Performance
 
@@ -25,7 +31,7 @@ _wguide2_ is a model of beaten plate consisting of two parallel delay-lines and 
 Implementing waveguide algorithms as opcodes, instead of orc instruments, allows the user to set _kr_ different than _sr_, allowing better performance particulary when using real-time.
 
 <figure markdown="span">
-![wguide2.](../../images/wguide2.png)
+![wguide2.](../images/wguide2.png)
 <figcaption>wguide2.</figcaption>
 </figure>
 
@@ -35,7 +41,7 @@ Implementing waveguide algorithms as opcodes, instead of orc instruments, allows
 
 ## Examples
 
-Here is an example of the wguide2 opcode. It uses the file [wguide2.csd](../../examples/wguide2.csd).
+Here is an example of the wguide2 opcode. It uses the file [wguide2.csd](../examples/wguide2.csd).
 
 ``` csound-csd title="Example of the wguide2 opcode." linenums="1"
 --8<-- "examples/wguide2.csd"
@@ -43,9 +49,9 @@ Here is an example of the wguide2 opcode. It uses the file [wguide2.csd](../../e
 
 ## See also
 
-[Waveguide Physical Modeling](../../siggen/wavguide)
+[Waveguide Physical Modeling](../siggen/wavguide.md)
 
-[Waveguides](../../sigmod/wavguide)
+[Waveguides](../sigmod/wavguide.md)
 
 ## Credits
 

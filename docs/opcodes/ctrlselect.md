@@ -6,9 +6,15 @@ category:Real-time MIDI:Input
 Loads a preset of values for MIDI controllers from a previous ctrlpreset call.
 
 ## Syntax
-``` csound-orc
-ctrlselect kpre
-```
+=== "Modern"
+    ``` csound-orc
+    ctrlselect(kpre)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ctrlselect kpre
+    ```
 
 ### Initialization
 
@@ -20,7 +26,7 @@ _kpre_ -- the numeric tag for the preset, as returned by ctrlpreset.
 
 ## Examples
 
-Here is an example of the ctrlselect opcode. It uses the file [ctrls.csd](../../examples/ctrls.csd).
+Here is an example of the ctrlselect opcode. It uses the file [ctrls.csd](../examples/ctrls.csd).
 
 ``` csound-csd title="Example of the ctrlselect opcode." linenums="1"
 --8<-- "examples/ctrls.csd"
@@ -28,7 +34,7 @@ Here is an example of the ctrlselect opcode. It uses the file [ctrls.csd](../../
 
 ## See also
 
-[MIDI input and Initialization](../../midi/input)
+[MIDI input and Initialization](../midi/input.md)
 
 ## Credits
 

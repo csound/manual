@@ -16,9 +16,15 @@ where
 *  c1 = 1 - c2
 
 ## Syntax
-``` csound-orc
-ares tone asig, khp [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = tone(asig, khp [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares tone asig, khp [, iskip]
+    ```
 
 ### Initialization
 
@@ -36,7 +42,7 @@ _tone_ implements a first-order recursive low-pass filter in which the variable 
 
 ## Examples
 
-Here is an example of the tone opcode. It uses the file [tone.csd](../../examples/tone.csd).
+Here is an example of the tone opcode. It uses the file [tone.csd](../examples/tone.csd).
 
 ``` csound-csd title="Example of the tone opcode." linenums="1"
 --8<-- "examples/tone.csd"
@@ -44,4 +50,4 @@ Here is an example of the tone opcode. It uses the file [tone.csd](../../example
 
 ## See also
 
-[Standard filters: Low-pass filters](../../sigmod/standard)
+[Standard filters: Low-pass filters](../sigmod/standard.md)

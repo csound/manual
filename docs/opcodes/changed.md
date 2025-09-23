@@ -8,9 +8,15 @@ k-rate signal change detector.
 This opcode outputs a trigger signal that informs when any one of its k-rate arguments has changed. Useful with valuator widgets or MIDI controllers.
 
 ## Syntax
-``` csound-orc
-ktrig changed kvar1 [, kvar2,..., kvarN]
-```
+=== "Modern"
+    ``` csound-orc
+    ktrig = changed(kvar1 [, kvar2,..., kvarN])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ktrig changed kvar1 [, kvar2,..., kvarN]
+    ```
 
 ### Performance
 
@@ -24,11 +30,17 @@ _kvar1 [, kvar2,..., kvarN]_ - k-rate variables to watch for changes.
 
 ## Examples
 
-Here is an example of the changed opcode. It uses the file [changed.csd](../../examples/changed.csd).
+=== "Modern"
+    Here is an example of the changed opcode. It uses the file [changed-modern.csd](../examples/changed-modern.csd).
+    ``` csound-csd title="Example of the changed opcode." linenums="1"
+    --8<-- "examples/changed-modern.csd"
+    ```
 
-``` csound-csd title="Example of the changed opcode." linenums="1"
---8<-- "examples/changed.csd"
-```
+=== "Classic"
+    Here is an example of the changed opcode. It uses the file [changed.csd](../examples/changed.csd).
+    ``` csound-csd title="Example of the changed opcode." linenums="1"
+    --8<-- "examples/changed.csd"
+    ```
 
 Its output should include lines like:
 
@@ -64,7 +76,7 @@ i1     0.00000
 
 ## See also
 
-[Sensing and Control: Tempo and Sequencing](../../control/sensing)
+[Sensing and Control: Tempo and Sequencing](../control/sensing.md)
 
 ## Credits
 

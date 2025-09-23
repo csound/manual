@@ -5,12 +5,18 @@ category:Signal Generators:Table Access
 # tabw_i
 Fast table opcodes.
 
-Faster than [tablew](../../opcodes/tablew) because it does not allow wrap-around and limit. Has been implemented in order to provide fast access to arrays.
+Faster than [tablew](../opcodes/tablew.md) because it does not allow wrap-around and limit. Has been implemented in order to provide fast access to arrays.
 
 ## Syntax
-``` csound-orc
-tabw_i isig, indx, ifn [,ixmode]
-```
+=== "Modern"
+    ``` csound-orc
+    tabw_i(isig, indx, ifn [,ixmode])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    tabw_i isig, indx, ifn [,ixmode]
+    ```
 
 ### Initialization
 
@@ -28,7 +34,7 @@ _tabw_i_ opcode is similar to _tablew_ but is faster, and use rounding of the in
 
 ## See Also
 
-[Table Access](../../siggen/tableacc)
+[Table Access](../siggen/tableacc.md)
 
 ## Credits
 

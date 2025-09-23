@@ -8,10 +8,17 @@ Semi-physical model of a sleighbell sound.
 It is one of the PhISEM percussion opcodes. PhISEM (Physically Informed Stochastic Event Modeling) is an algorithmic approach for simulating collisions of multiple independent sound producing objects.
 
 ## Syntax
-``` csound-orc
-ares sleighbells kamp, idettack [, inum] [, idamp] [, imaxshake] [, ifreq] \
-                 [, ifreq1] [, ifreq2]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = sleighbells(kamp, idettack [, inum] [, idamp] [, imaxshake] [, ifreq] \
+                       [, ifreq1] [, ifreq2])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares sleighbells kamp, idettack [, inum] [, idamp] [, imaxshake] [, ifreq] \
+                     [, ifreq1] [, ifreq2]
+    ```
 
 ### Initialization
 
@@ -43,7 +50,7 @@ _kamp_ -- Amplitude of output.  Note: As these instruments are stochastic, this 
 
 ## Examples
 
-Here is an example of the sleighbells opcode. It uses the file [sleighbells.csd](../../examples/sleighbells.csd).
+Here is an example of the sleighbells opcode. It uses the file [sleighbells.csd](../examples/sleighbells.csd).
 
 ``` csound-orc title="Example of the sleighbells opcode." linenums="1"
 --8<-- "examples/sleighbells.csd"
@@ -51,7 +58,7 @@ Here is an example of the sleighbells opcode. It uses the file [sleighbells.csd]
 
 ## See Also
 
-[Models and Emulations](../../siggen/models)
+[Models and Emulations](../siggen/models.md)
 
 ## Credits
 

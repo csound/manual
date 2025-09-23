@@ -6,9 +6,15 @@ category:Spectral Processing:Streaming
 Write a fsig to a PVOCEX file (which in turn can be read by _pvsfread_ or other programs that support PVOCEX file input).
 
 ## Syntax
-``` csound-orc
-pvsfwrite fsig, ifile
-```
+=== "Modern"
+    ``` csound-orc
+    pvsfwrite(fsig, ifile)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    pvsfwrite fsig, ifile
+    ```
 
 ### Initialization
 
@@ -18,7 +24,7 @@ _ifile_ -- filename (a string in double-quotes) .
 
 ## Examples
 
-Here is an example of the pvsfwrite opcode. It uses the file [pvsfwrite.csd](../../examples/pvsfwrite.csd). This example uses realtime audio input.
+Here is an example of the pvsfwrite opcode. It uses the file [pvsfwrite.csd](../examples/pvsfwrite.csd). This example uses realtime audio input.
 
 ``` csound-csd title="Example of the pvsfwrite opcode" linenums="1"
 --8<-- "examples/pvsfwrite.csd"
@@ -26,7 +32,7 @@ Here is an example of the pvsfwrite opcode. It uses the file [pvsfwrite.csd](../
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

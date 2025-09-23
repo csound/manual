@@ -8,10 +8,17 @@ Copies spectral data from k-rate arrays (or t-variables.). Also known as _pvsfro
 Copies a pvs frame from a t-variable or k-rate array. Currently only AMP+FREQ is produced. This opcode requires the t-type to be defined, which means it only works in the new bison/flex-based parser.
 
 ## Syntax
-``` csound-orc
-fsig tab2pvs tvar|karr[] [, ihopsize, iwinsize, iwintype]
-fsig tab2pvs kmags[], kfreqs[] [, ihopsize, iwinsize, iwintype]
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = tab2pvs(tvar|karr[] [, ihopsize, iwinsize, iwintype])
+    fsig = tab2pvs(kmags[], kfreqs[] [, ihopsize, iwinsize, iwintype])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig tab2pvs tvar|karr[] [, ihopsize, iwinsize, iwintype]
+    fsig tab2pvs kmags[], kfreqs[] [, ihopsize, iwinsize, iwintype]
+    ```
 
 ### Performance
 
@@ -39,9 +46,9 @@ aout pvsynth fsig1
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
-[Array-based spectral opcodes](../../spectral/arrays)
+[Array-based spectral opcodes](../spectral/arrays.md)
 
 ## Credits
 

@@ -6,10 +6,17 @@ category:Signal Generators:Additive Synthesis/Resynthesis
 An oscillator which takes tonality and brightness as arguments, relative to a base frequency.
 
 ## Syntax
-``` csound-orc
-ares hsboscil kamp, ktone, kbrite, ibasfreq, iwfn, ioctfn \
-              [, ioctcnt] [, iphs]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = hsboscil(kamp, ktone, kbrite, ibasfreq, iwfn, ioctfn \
+                    [, ioctcnt] [, iphs])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares hsboscil kamp, ktone, kbrite, ibasfreq, iwfn, ioctfn \
+                  [, ioctcnt] [, iphs]
+    ```
 
 ### Initialization
 
@@ -41,13 +48,13 @@ Oscillator table _iwfn_ is always read interpolated. Performance time requires a
 
 ## Examples
 
-Here is an example of the hsboscil opcode. It uses the file [hsboscil.csd](../../examples/hsboscil.csd).
+Here is an example of the hsboscil opcode. It uses the file [hsboscil.csd](../examples/hsboscil.csd).
 
 ``` csound-orc title="Example of the hsboscil opcode." linenums="1"
 --8<-- "examples/hsboscil.csd"
 ```
 
-Here is an example of the hsboscil opcode in a MIDI instrument. It uses the file [hsboscil_midi.csd](../../examples/hsboscil_midi.csd).
+Here is an example of the hsboscil opcode in a MIDI instrument. It uses the file [hsboscil_midi.csd](../examples/hsboscil_midi.csd).
 
 ``` csound-orc title="Example of the hsboscil opcode in a MIDI instrument." linenums="1"
 --8<-- "examples/hsboscil_midi.csd"
@@ -55,7 +62,7 @@ Here is an example of the hsboscil opcode in a MIDI instrument. It uses the file
 
 ## See also
 
-[Additive Synthesis/Resynthesis](../../siggen/additive)
+[Additive Synthesis/Resynthesis](../siggen/additive.md)
 
 ## Credits
 

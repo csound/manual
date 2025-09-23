@@ -3,14 +3,20 @@ id:joystick
 category:Instrument Control:Sensing and Control
 -->
 # joystick
-Reads data from a Linux joystick controller
+Reads data from a Linux joystick controller.
 
 Plugin opcode in joystick.
 
 ## Syntax
-``` csound-orc
-kres joystick kdevice, ktab
-```
+=== "Modern"
+    ``` csound-orc
+    kres = joystick(kdevice, ktab)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres joystick kdevice, ktab
+    ```
 
 ### Performance
 
@@ -24,13 +30,13 @@ _ktab_ -- A table to hold input results, should be at least enough elements to s
 
 ## Examples
 
-Here is an example of the joystick opcode. It uses the file [joystick.csd](../../examples/joystick.csd).
+Here is an example of the joystick opcode. It uses the file [joystick.csd](../examples/joystick.csd).
 
 ``` csound-csd linenums="1"
 --8<-- "examples/joystick.csd"
 ```
 
-Here is another example of the joystick opcode. It uses the file [joystick-2.csd](../../examples/joystick-2.csd).
+Here is another example of the joystick opcode. It uses the file [joystick-2.csd](../examples/joystick-2.csd).
 
 ``` csound-csd linenums="1"
 --8<-- "examples/joystick-2.csd"
@@ -38,9 +44,9 @@ Here is another example of the joystick opcode. It uses the file [joystick-2.csd
 
 ## See also
 
-[Sensing and Control: Keyboard and mouse sensing](../../control/sensing)
+[Sensing and Control: Keyboard and mouse sensing](../control/sensing.md)
 
-[non-MIDI devices](../../oscnetwork/nonMIDIdevices)
+[non-MIDI devices](../oscnetwork/nonMIDIdevices.md)
 
 ## Credits
 

@@ -13,7 +13,7 @@ tan(k/i[]) (k- or i-arrays )
 
 ## Examples
 
-Here is an example of the tan opcode. It uses the file [tan.csd](../../examples/tan.csd).
+Here is an example of the tan opcode. It uses the file [tan.csd](../examples/tan.csd).
 
 ``` csound-csd title="Example of the tan opcode." linenums="1"
 --8<-- "examples/tan.csd"
@@ -27,7 +27,7 @@ instr 1:  i1 = -0.134
 
 ## See also
 
-[Trigonometric Functions](../../math/trig)
+[Trigonometric Functions](../math/trig.md)
 
 ## Credits
 

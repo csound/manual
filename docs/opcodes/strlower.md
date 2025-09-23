@@ -8,13 +8,19 @@ Convert Ssrc to lower case, and write the result to Sdst.
 _strlower_ runs at init time only.
 
 ## Syntax
-``` csound-orc
-Sdst strlower Ssrc
-```
+=== "Modern"
+    ``` csound-orc
+    Sdst = strlower(Ssrc)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    Sdst strlower Ssrc
+    ```
 
 ## Examples
 
-Here is an example of the strlower opcode. It uses the file [strlower.csd](../../examples/strlower.csd).
+Here is an example of the strlower opcode. It uses the file [strlower.csd](../examples/strlower.csd).
 
 ``` csound-csd title="Example of the strlower opcode." linenums="1"
 --8<-- "examples/strlower.csd"
@@ -22,7 +28,7 @@ Here is an example of the strlower opcode. It uses the file [strlower.csd](../..
 
 ## See Also
 
-[String Conversion Opcodes](../../strings/convert)
+[String Conversion Opcodes](../strings/convert.md)
 
 ## Credits
 

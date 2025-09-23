@@ -6,17 +6,23 @@ category:Signal Modifiers:Delay
 Writes the audio signal to a digital delay line.
 
 ## Syntax
-``` csound-orc
-delayw asig
-```
+=== "Modern"
+    ``` csound-orc
+    delayw(asig)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    delayw asig
+    ```
 
 ### Performance
 
-_delayw_ writes _asig_ into the delay area established by the preceding [delayr](../../opcodes/delayr) unit. Viewed as a pair, these two units permit the formation of modified feedback loops, etc. However, there is a lower bound on the value of _idlt_, which must be at least 1 control period (or 1/_kr_).
+_delayw_ writes _asig_ into the delay area established by the preceding [delayr](../opcodes/delayr.md) unit. Viewed as a pair, these two units permit the formation of modified feedback loops, etc. However, there is a lower bound on the value of _idlt_, which must be at least 1 control period (or 1/_kr_).
 
 ## Examples
 
-Here is an example of the delayw opcode. It uses the file [delayw.csd](../../examples/delayw.csd).
+Here is an example of the delayw opcode. It uses the file [delayw.csd](../examples/delayw.csd).
 
 ``` csound-csd title="Example of the delayw opcode." linenums="1"
 --8<-- "examples/delayw.csd"
@@ -24,4 +30,4 @@ Here is an example of the delayw opcode. It uses the file [delayw.csd](../../exa
 
 ## See also
 
-[Delay](../../sigmod/delayops)
+[Delay](../sigmod/delayops.md)

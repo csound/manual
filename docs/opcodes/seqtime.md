@@ -6,9 +6,15 @@ category:Instrument Control:Sensing and Control
 Generates a trigger signal according to the values stored in a table.
 
 ## Syntax
-``` csound-orc
-ktrig_out seqtime ktime_unit, kstart, kloop, kinitndx, kfn_times
-```
+=== "Modern"
+    ``` csound-orc
+    ktrig_out = seqtime(ktime_unit, kstart, kloop, kinitndx, kfn_times)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ktrig_out seqtime ktime_unit, kstart, kloop, kinitndx, kfn_times
+    ```
 
 ### Performance
 
@@ -24,13 +30,13 @@ _kinitndx_ -- initial index
 
 > :memo: **Note**
 >
-> Although _kinitndx_ is listed as k-rate, it is in fact accessed only at init-time. So if you are using a k-rate argument, it must be assigned with [init](../../opcodes/init).
+> Although _kinitndx_ is listed as k-rate, it is in fact accessed only at init-time. So if you are using a k-rate argument, it must be assigned with [init](../opcodes/init.md).
 
 _kfn_times_ -- number of table containing a sequence of times
 
 This opcode handles timed-sequences of groups of values stored into a table.
 
-_seqtime_ generates a trigger signal (a sequence of impulses, see also [trigger](../../opcodes/trigger) opcode), according to the values stored in the _kfn_times_ table. This table should contain a series of delta-times (i.e. times beetween to adjacent events). The time units stored into table are expressed in seconds, but can be rescaled by means of ktime_unit argument. The table can be filled with [GEN02](../../scoregens/gen02) or by means of an external text-file containing numbers, with [GEN23](../../scoregens/gen23).
+_seqtime_ generates a trigger signal (a sequence of impulses, see also [trigger](../opcodes/trigger.md) opcode), according to the values stored in the _kfn_times_ table. This table should contain a series of delta-times (i.e. times beetween to adjacent events). The time units stored into table are expressed in seconds, but can be rescaled by means of ktime_unit argument. The table can be filled with [GEN02](../scoregens/gen02.md) or by means of an external text-file containing numbers, with [GEN23](../scoregens/gen23.md).
 
 > :memo: **Note**
 >
@@ -42,7 +48,7 @@ It is possible to disable loop (one-shot mode) by assigning the same value both 
 
 ## Examples
 
-Here is an example of the seqtime opcode. It uses the file [seqtime.csd](../../examples/seqtime.csd).
+Here is an example of the seqtime opcode. It uses the file [seqtime.csd](../examples/seqtime.csd).
 
 ``` csound-csd title="Example of the seqtime opcode." linenums="1"
 --8<-- "examples/seqtime.csd"
@@ -50,7 +56,7 @@ Here is an example of the seqtime opcode. It uses the file [seqtime.csd](../../e
 
 ## See also
 
-[Sensing and Control: Tempo and Sequencing](../../control/sensing)
+[Sensing and Control: Tempo and Sequencing](../control/sensing.md)
 
 ## Credits
 

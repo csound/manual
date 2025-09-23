@@ -8,9 +8,15 @@ A non-linear filter system to excite the signal.
 Plugin opcode in exciter. "Filtered distortion to add brilliance to a signal"
 
 ## Syntax
-``` csound-orc
-ares exciter asig, kfreq, kceil, kharmonics, kblend
-```
+=== "Modern"
+    ``` csound-orc
+    ares = exciter(asig, kfreq, kceil, kharmonics, kblend)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares exciter asig, kfreq, kceil, kharmonics, kblend
+    ```
 
 ### Initialization
 
@@ -30,7 +36,7 @@ _exciter_ is a reimplementation of the calf exciter plugin.
 
 ## Examples
 
-Here is an example of the exciter opcode. It uses the file [exciter.csd](../../examples/exciter.csd).
+Here is an example of the exciter opcode. It uses the file [exciter.csd](../examples/exciter.csd).
 
 ``` csound-csd title="Example of the exciter opcode." linenums="1"
 --8<-- "examples/exciter.csd"
@@ -38,7 +44,7 @@ Here is an example of the exciter opcode. It uses the file [exciter.csd](../../e
 
 ## See also
 
-[Special Effects](../../sigmod/speciale)
+[Special Effects](../sigmod/speciale.md)
 
 ## Credits
 

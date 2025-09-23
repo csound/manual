@@ -8,10 +8,17 @@ Uses FM synthesis to create a Hammond B3 organ sound.
 It comes from a family of FM sounds, all using 4 basic oscillators and various architectures, as used in the TX81Z synthesizer.
 
 ## Syntax
-``` csound-orc
-ares fmb3 kamp, kfreq, kc1, kc2, kvdepth, kvrate[, ifn1, ifn2, ifn3, \
-          ifn4, ivfn]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = fmb3(kamp, kfreq, kc1, kc2, kvdepth, kvrate[, ifn1, ifn2, ifn3, \
+                ifn4, ivfn])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares fmb3 kamp, kfreq, kc1, kc2, kvdepth, kvrate[, ifn1, ifn2, ifn3, \
+              ifn4, ivfn]
+    ```
 
 ### Initialization
 
@@ -42,7 +49,7 @@ _kvrate_ -- Vibrator rate
 
 ## Examples
 
-Here is an example of the fmb3 opcode. It uses the file [fmb3.csd](../../examples/fmb3.csd).
+Here is an example of the fmb3 opcode. It uses the file [fmb3.csd](../examples/fmb3.csd).
 
 ``` csound-orc title="Example of the fmb3 opcode." linenums="1"
 --8<-- "examples/fmb3.csd"
@@ -50,7 +57,7 @@ Here is an example of the fmb3 opcode. It uses the file [fmb3.csd](../../example
 
 ## See Also
 
-[FM Synthesis](../../siggen/fmsynth)
+[FM Synthesis](../siggen/fmsynth.md)
 
 More information about frequency modulation on Wikipedia: [http://en.wikipedia.org/wiki/Frequency_modulation_synthesis](http://en.wikipedia.org/wiki/Frequency_modulation_synthesis)
 

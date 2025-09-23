@@ -6,16 +6,27 @@ category:Mathematical Operations:Opcode Equivalents of Functions
 Computes one argument to the power of another argument and scales the result.
 
 ## Syntax
-``` csound-orc
-ares pow aarg, kpow [, inorm]
-ires pow iarg, ipow [, inorm]
-kres pow karg, kpow [, inorm]
+=== "Modern"
+    ``` csound-orc
+    ares = pow(aarg, k= pow([, inorm])
+    ires = pow(iarg, i= pow([, inorm])
+    kres = pow(karg, k= pow([, inorm])
+    ires[] = pow(iarg[], ipow[])
+    kres[] = pow(karg[], kpow[])
+    ires[] = pow(iarg[], ipow)
+    kres[] = pow(karg[], kpow)
+    ```
 
-ires[] pow iarg[], ipow[]
-kres[] pow karg[], kpow[]
-ires[] pow iarg[], ipow
-kres[] pow karg[], kpow
-```
+=== "Classic"
+    ``` csound-orc
+    ares pow aarg, kpow [, inorm]
+    ires pow iarg, ipow [, inorm]
+    kres pow karg, kpow [, inorm]
+    ires[] pow iarg[], ipow[]
+    kres[] pow karg[], kpow[]
+    ires[] pow iarg[], ipow
+    kres[] pow karg[], kpow
+    ```
 
 ### Initialization
 
@@ -33,7 +44,7 @@ _ipow_, _kpow_ -- the exponent.
 
 ## Examples
 
-Here is an example of the pow opcode. It uses the file [pow.csd](../../examples/pow.csd).
+Here is an example of the pow opcode. It uses the file [pow.csd](../examples/pow.csd).
 
 ``` csound-csd title="Example of the pow opcode." linenums="1"
 --8<-- "examples/pow.csd"
@@ -52,9 +63,9 @@ i1    14.46130
 
 ## See also
 
-[Mathematical Functions](../../math/mathfunc)
+[Mathematical Functions](../math/mathfunc.md)
 
-[Opcode Equivalents of Functions](../../math/opeqfunc)
+[Opcode Equivalents of Functions](../math/opeqfunc.md)
 
 ## Credits
 

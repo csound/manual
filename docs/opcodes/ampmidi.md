@@ -6,9 +6,15 @@ category:Real-time MIDI:Converters
 Get the velocity of the current MIDI event.
 
 ## Syntax
-``` csound-orc
-iamp ampmidi iscal [, ifn]
-```
+=== "Modern"
+    ``` csound-orc
+    iamp = ampmidi(iscal [, ifn])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    iamp ampmidi iscal [, ifn]
+    ```
 
 ### Initialization
 
@@ -22,15 +28,21 @@ Get the velocity of the current MIDI event, optionally pass it through a normali
 
 ## Examples
 
-Here is an example of the ampmidi opcode. It uses the file [ampmidi.csd](../../examples/ampmidi.csd).
+=== "Modern"
+    Here is an example of the ampmidi opcode. It uses the file [ampmidi-modern.csd](../examples/ampmidi-modern.csd).
+    ``` csound-csd title="Example of the ampmidi opcode." linenums="1"
+    --8<-- "examples/ampmidi-modern.csd"
+    ```
 
-``` csound-csd title="Example of the ampmidi opcode." linenums="1"
---8<-- "examples/ampmidi.csd"
-```
+=== "Classic"
+    Here is an example of the ampmidi opcode. It uses the file [ampmidi.csd](../examples/ampmidi.csd).
+    ``` csound-csd title="Example of the ampmidi opcode." linenums="1"
+    --8<-- "examples/ampmidi.csd"
+    ```
 
 ## See also
 
-[Midi Converters](../../midi/convert)
+[Midi Converters](../midi/convert.md)
 
 ## Credits
 

@@ -6,13 +6,19 @@ category:Array Operations: dot product
 Calculates the dot product of two arrays.
 
 ## Syntax
-``` csound-orc
-kres/ires dot karr1[]/iarr1[], karr2[]/iarr2[]   (k- or i-arrays )
-```
+=== "Modern"
+    ``` csound-orc
+    kres/ires = dot(karr1[]/iarr1[], karr2[]/iarr2[])   (k- or i-arrays)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres/ires dot karr1[]/iarr1[], karr2[]/iarr2[]   (k- or i-arrays)
+    ```
 
 ## Examples
 
-Here is an example of the dot opcode. It uses the file [dota.csd](../../examples/dot.csd).
+Here is an example of the dot opcode. It uses the file [dota.csd](../examples/dot.csd).
 
 ``` csound-csd title="Example of the dot opcode." linenums="1"
 --8<-- "examples/dot.csd"
@@ -20,7 +26,7 @@ Here is an example of the dot opcode. It uses the file [dota.csd](../../examples
 
 ## See also
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

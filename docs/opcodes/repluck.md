@@ -8,9 +8,15 @@ Physical model of the plucked string.
 A user can control the pluck point, the pickup point, the filter, and an additional audio signal, _axcite_. _axcite_ is used to excite the 'string'. Based on the Karplus-Strong algorithm.
 
 ## Syntax
-``` csound-orc
-ares repluck iplk, kamp, icps, kpick, krefl, axcite
-```
+=== "Modern"
+    ``` csound-orc
+    ares = repluck(iplk, kamp, icps, kpick, krefl, axcite)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares repluck iplk, kamp, icps, kpick, krefl, axcite
+    ```
 
 ### Initialization
 
@@ -32,13 +38,13 @@ _axcite_ -- A signal which excites the string.
 
 ## Examples
 
-Here is an example of the repluck opcode. It uses the file [repluck.csd](../../examples/repluck.csd).
+Here is an example of the repluck opcode. It uses the file [repluck.csd](../examples/repluck.csd).
 
 ``` csound-csd title="Example of the repluck opcode." linenums="1"
 --8<-- "examples/repluck.csd"
 ```
 
-Here is another example of the repluck opcode. It uses the file [repluck-advanced.csd](../../examples/repluck-advanced.csd).
+Here is another example of the repluck opcode. It uses the file [repluck-advanced.csd](../examples/repluck-advanced.csd).
 
 ``` csound-csd title="Advanced example of the repluck opcode." linenums="1"
 --8<-- "examples/repluck-advanced.csd"
@@ -46,7 +52,7 @@ Here is another example of the repluck opcode. It uses the file [repluck-advance
 
 ## See also
 
-[Waveguide Physical Modeling](../../siggen/wavguide)
+[Waveguide Physical Modeling](../siggen/wavguide.md)
 
 ## Credits
 

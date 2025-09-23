@@ -2,63 +2,63 @@
 
 ###TCL/TK widgets
 
-* [button](../../opcodes/button)
-* [checkbox](../../opcodes/checkbox)
-* [control](../../opcodes/control)
-* [flashtxt](../../opcodes/flashtxt)
-* [setctrl](../../opcodes/setctrl)
+* [button](../opcodes/button.md)
+* [checkbox](../opcodes/checkbox.md)
+* [control](../opcodes/control.md)
+* [flashtxt](../opcodes/flashtxt.md)
+* [setctrl](../opcodes/setctrl.md)
 
 ###Keyboard and mouse sensing
 
-* [joystick](../../opcodes/joystick)
-* [sensekey](../../opcodes/sensekey) (also called [sense](../../opcodes/sense))
-* [xyin](../../opcodes/xyin)
+* [joystick](../opcodes/joystick.md)
+* [sensekey](../opcodes/sensekey.md) (also called [sense](../opcodes/sense.md))
+* [xyin](../opcodes/xyin.md)
 
 ###Envelope followers
 
-* [follow](../../opcodes/follow)
-* [follow2](../../opcodes/follow2)
-* [lufs](../../opcodes/lufs)
-* [peak](../../opcodes/peak)
-* [rms](../../opcodes/rms)
-* [vactrol](../../opcodes/vactrol)
+* [follow](../opcodes/follow.md)
+* [follow2](../opcodes/follow2.md)
+* [lufs](../opcodes/lufs.md)
+* [peak](../opcodes/peak.md)
+* [rms](../opcodes/rms.md)
+* [vactrol](../opcodes/vactrol.md)
 
 ###Tempo and Pitch estimation
 
-* [centroid](../../opcodes/centroid)
-* [pitch](../../opcodes/pitch)
-* [pitchamdf](../../opcodes/pitchamdf)
-* [plltrack](../../opcodes/plltrack)
-* [ptrack](../../opcodes/ptrack)
-* [pvspitch](../../opcodes/pvspitch)
-* [tempest](../../opcodes/tempest)
+* [centroid](../opcodes/centroid.md)
+* [pitch](../opcodes/pitch.md)
+* [pitchamdf](../opcodes/pitchamdf.md)
+* [plltrack](../opcodes/plltrack.md)
+* [ptrack](../opcodes/ptrack.md)
+* [pvspitch](../opcodes/pvspitch.md)
+* [tempest](../opcodes/tempest.md)
 
 ###Tempo and Sequencing
 
-* [changed](../../opcodes/changed)
-* [changed2](../../opcodes/changed2)
-* [metro](../../opcodes/metro)
-* [metro2](../../opcodes/metro2)
-* [metrobpm](../../opcodes/metrobpm)
-* [miditempo](../../opcodes/miditempo)
-* [seqtime](../../opcodes/seqtime)
-* [seqtime2](../../opcodes/seqtime2)
-* [sequ](../../opcodes/sequencer)
-* [splitrig](../../opcodes/splitrig)
-* [tempo](../../opcodes/tempo)
-* [tempoval](../../opcodes/tempoval)
-* [trigger](../../opcodes/trigger)
-* [trighold](../../opcodes/trighold)
-* [trigseq](../../opcodes/trigseq)
-* [timedseq](../../opcodes/timedseq)
+* [changed](../opcodes/changed.md)
+* [changed2](../opcodes/changed2.md)
+* [metro](../opcodes/metro.md)
+* [metro2](../opcodes/metro2.md)
+* [metrobpm](../opcodes/metrobpm.md)
+* [miditempo](../opcodes/miditempo.md)
+* [seqtime](../opcodes/seqtime.md)
+* [seqtime2](../opcodes/seqtime2.md)
+* [sequ](../opcodes/sequencer.md)
+* [splitrig](../opcodes/splitrig.md)
+* [tempo](../opcodes/tempo.md)
+* [tempoval](../opcodes/tempoval.md)
+* [trigger](../opcodes/trigger.md)
+* [trighold](../opcodes/trighold.md)
+* [trigseq](../opcodes/trigseq.md)
+* [timedseq](../opcodes/timedseq.md)
 
 ###System
 
-* [getcfg](../../opcodes/getcfg)
+* [getcfg](../opcodes/getcfg.md)
 
 ###Score control
 
-* [pcount](../../opcodes/pcount)
-* [pindex](../../opcodes/pindex)
-* [rewindscore](../../opcodes/rewindscore)
-* [setscorepos](../../opcodes/setscorepos)
+* [pcount](../opcodes/pcount.md)
+* [pindex](../opcodes/pindex.md)
+* [rewindscore](../opcodes/rewindscore.md)
+* [setscorepos](../opcodes/setscorepos.md)

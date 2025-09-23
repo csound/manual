@@ -5,12 +5,18 @@ category:Signal Modifiers:Delay
 # deltapxw
 Mixes the input signal to a delay line.
 
-_deltapxw_ mixes the input signal to a delay line. This opcode can be mixed with reading units ([deltap](../../opcodes/deltap), [deltapn](../../opcodes/deltapn), [deltapi](../../opcodes/deltapi), [deltap3](../../opcodes/deltap3), and [deltapx](../../opcodes/deltapx)) in any order; the actual delay time is the difference of the read and write time. This opcode can read from and write to a [delayr](../../opcodes/delayr)/[delayw](../../opcodes/delayw) delay line with interpolation.
+_deltapxw_ mixes the input signal to a delay line. This opcode can be mixed with reading units ([deltap](../opcodes/deltap.md), [deltapn](../opcodes/deltapn.md), [deltapi](../opcodes/deltapi.md), [deltap3](../opcodes/deltap3.md), and [deltapx](../opcodes/deltapx.md)) in any order; the actual delay time is the difference of the read and write time. This opcode can read from and write to a [delayr](../opcodes/delayr.md)/[delayw](../opcodes/delayw.md) delay line with interpolation.
 
 ## Syntax
-``` csound-orc
-deltapxw ain, adel, iwsize
-```
+=== "Modern"
+    ``` csound-orc
+    deltapxw(ain, adel, iwsize)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    deltapxw ain, adel, iwsize
+    ```
 
 ### Initialization
 
@@ -53,7 +59,7 @@ adl3 <= idlr - (1 + iws3/2)/sr              (allows feedback)
 
 ## Examples
 
-Here is an example of the deltapxw opcode. It uses the file [deltapxw.csd](../../examples/deltapxw.csd).
+Here is an example of the deltapxw opcode. It uses the file [deltapxw.csd](../examples/deltapxw.csd).
 
 ``` csound-csd title="Example of the deltapxw opcode." linenums="1"
 --8<-- "examples/deltapxw.csd"
@@ -61,7 +67,7 @@ Here is an example of the deltapxw opcode. It uses the file [deltapxw.csd](../..
 
 ## See also
 
-[Delay](../../sigmod/delayops)
+[Delay](../sigmod/delayops.md)
 
 ## Credits
 

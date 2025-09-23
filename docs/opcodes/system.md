@@ -3,17 +3,24 @@ id:system
 category:Miscellaneous
 -->
 # system
-Call an external program via the system call
+Call an external program via the system call.
 
 Plugin opcode in system_call.
 
 _system_ and _system_i_ call any external command understood by the operating system, similarly to the C function `system()`. _system_i_ runs at i-time only, while _system_ runs both at initialization and performance time.
 
 ## Syntax
-``` csound-orc
-ires system_i itrig, Scmd [, inowait]
-kres system ktrig, Scmd [, knowait]
-```
+=== "Modern"
+    ``` csound-orc
+    ires = system_i(itrig, Scmd, [inowait])
+    kres = system(ktrig, Scmd, [knowait])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ires system_i itrig, Scmd, [inowait]
+    kres system ktrig, Scmd, [knowait]
+    ```
 
 ### Initialization
 
@@ -35,9 +42,9 @@ More than one system command (a script) can be executed with a single _system_ o
 >
 > This opcode is very system dependant, so should be used with extreme care (or not used) if platform neutrality is desired.
 
-### Examples
+## Examples
 
-Here is an example of the system_i opcode. It uses the file [system.csd](../../examples/system.csd).
+Here is an example of the system_i opcode. It uses the file [system.csd](../examples/system.csd).
 
 ``` csound-csd title="Example of the system opcode." linenums="1"
 --8<-- "examples/system.csd"
@@ -45,7 +52,7 @@ Here is an example of the system_i opcode. It uses the file [system.csd](../../e
 
 ## See also
 
-[Miscellaneous opcodes](../../miscopcodes/top)
+[Miscellaneous opcodes](../miscopcodes.md)
 
 ## Credits
 

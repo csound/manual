@@ -6,9 +6,15 @@ category:Signal Modifiers:Convolution and Morphing
 Uses an index into a table of ftable numbers to morph between adjacent tables in the list. This morphed function is written into the table referenced by _iresfn_ on every k-cycle.
 
 ## Syntax
-``` csound-orc
-ftmorf kftndx, iftfn, iresfn
-```
+=== "Modern"
+    ``` csound-orc
+    ftmorf(kftndx, iftfn, iresfn)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ftmorf kftndx, iftfn, iresfn
+    ```
 
 ### Initialization
 
@@ -33,19 +39,19 @@ If _iftfn_ contains (6, 4, 6, 8, 7, 4):
 
 ## Examples
 
-Here is an example of the ftmorf opcode. It uses the file [ftmorf.csd](../../examples/ftmorf.csd).
+Here is an example of the ftmorf opcode. It uses the file [ftmorf.csd](../examples/ftmorf.csd).
 
 ``` csound-csd title="Example of the ftmorf opcode." linenums="1"
 --8<-- "examples/ftmorf.csd"
 ```
 
-Two musical examples featuring the ftmorf opcode: [FtmorfRandomh_Cucchi.csd](../../examples/musical/FtmorfRandomh_Cucchi.csd) and [Ftmorf_Cucchi.csd](../../examples/musical/Ftmorf_Cucchi.csd), both by Stefano Cucchi.
+Two musical examples featuring the ftmorf opcode: [FtmorfRandomh_Cucchi.csd](../examples/musical/FtmorfRandomh_Cucchi.csd) and [Ftmorf_Cucchi.csd](../examples/musical/Ftmorf_Cucchi.csd), both by Stefano Cucchi.
 
 ## See also
 
-[Convolution and Morphing](../../sigmod/conmorph)
+[Convolution and Morphing](../sigmod/conmorph.md)
 
-[Read/Write Operations](../../table/readwrit)
+[Read/Write Operations](../table/readwrit.md)
 
 ## Credits
 

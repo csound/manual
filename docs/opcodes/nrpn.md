@@ -6,9 +6,15 @@ category:Real-time MIDI:Output
 Sends a NPRN (Non-Registered Parameter Number) message to the MIDI OUT port each time one of the input arguments changes.
 
 ## Syntax
-``` csound-orc
-nrpn kchan, kparmnum, kparmvalue
-```
+=== "Modern"
+    ``` csound-orc
+    nrpn(kchan, kparmnum, kparmvalue)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    nrpn kchan, kparmnum, kparmvalue
+    ```
 
 ### Performance
 
@@ -22,7 +28,7 @@ This opcode sends new message when the MIDI translated value of one of the input
 
 ## Examples
 
-Here is an example of the nrpn opcode. It uses the file [nrpn.csd](../../examples/nrpn.csd).
+Here is an example of the nrpn opcode. It uses the file [nrpn.csd](../examples/nrpn.csd).
 
 ``` csound-csd title="Example of the nrpn opcode." linenums="1"
 --8<-- "examples/nrpn.csd"
@@ -30,7 +36,7 @@ Here is an example of the nrpn opcode. It uses the file [nrpn.csd](../../example
 
 ## See also
 
-[MIDI Message Output](../../midi/output)
+[MIDI Message Output](../midi/output.md)
 
 ## Credits
 

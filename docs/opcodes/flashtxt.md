@@ -8,9 +8,15 @@ Allows text to be displayed from instruments like sliders etc. (only on Unix and
 Plugin opcode in control.
 
 ## Syntax
-``` csound-orc
-flashtxt  iwhich, String
-```
+=== "Modern"
+    ``` csound-orc
+    flashtxt( iwhich, String)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    flashtxt  iwhich, String
+    ```
 
 ### Initialization
 
@@ -26,7 +32,7 @@ A window is created, identified by the iwhich argument, with the text string dis
 
 ## Examples
 
-Here is an example of the flashtxt opcode. It uses the file [flashtxt.csd](../../examples/flashtxt.csd).
+Here is an example of the flashtxt opcode. It uses the file [flashtxt.csd](../examples/flashtxt.csd).
 
 ``` csound-csd title="Example of the flashtxt opcode." linenums="1"
 --8<-- "examples/flashtxt.csd"
@@ -34,7 +40,7 @@ Here is an example of the flashtxt opcode. It uses the file [flashtxt.csd](../..
 
 ## See also
 
-[Sensing and Control: TCL/TK widgets](../../control/sensing)
+[Sensing and Control: TCL/TK widgets](../control/sensing.md)
 
 ## Credits
 

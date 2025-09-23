@@ -6,9 +6,15 @@ category:Signal Modifiers:Delay
 Taps a delay line at variable offset times, uses cubic interpolation.
 
 ## Syntax
-``` csound-orc
-ares deltap3 xdlt
-```
+=== "Modern"
+    ``` csound-orc
+    ares = deltap3(xdlt)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares deltap3 xdlt
+    ```
 
 ### Performance
 
@@ -16,7 +22,7 @@ _xdlt_ -- specifies the tapped delay time in seconds. Each can range from 1 cont
 
 _deltap3_ is experimental, and uses cubic interpolation. (New in Csound version 3.50.)
 
-This opcode can tap into a [delayr](../../opcodes/delayr)/[delayw](../../opcodes/delayw) pair, extracting delayed audio from the _idlt_ seconds of stored sound. There can be any number of _deltap_ and/or _deltapi_ units between a read/write pair. Each receives an audio tap with no change of original amplitude.
+This opcode can tap into a [delayr](../opcodes/delayr.md)/[delayw](../opcodes/delayw.md) pair, extracting delayed audio from the _idlt_ seconds of stored sound. There can be any number of _deltap_ and/or _deltapi_ units between a read/write pair. Each receives an audio tap with no change of original amplitude.
 
 This opcode can provide multiple delay taps for arbitrary delay path and feedback networks. They can deliver either constant-time or time-varying taps, and are useful for building chorus effects, harmonizers, and Doppler shifts. Constant-time delay taps (and some slowly changing ones) do not need interpolated readout; they are well served by _deltap_. Medium-paced or fast varying dlt's, however, will need the extra services of _deltapi_.
 
@@ -62,7 +68,7 @@ amove    deltapi   atime                 ; move sound source past
           outs    adly1, adly2
 ```
 
-Here is yet another example of the deltap3 opcode. It uses the file [deltap3.csd](../../examples/deltap3.csd).
+Here is yet another example of the deltap3 opcode. It uses the file [deltap3.csd](../examples/deltap3.csd).
 
 ``` csound-csd title="Example of the deltap3 opcode." linenums="1"
 --8<-- "examples/deltap3.csd"
@@ -70,4 +76,4 @@ Here is yet another example of the deltap3 opcode. It uses the file [deltap3.csd
 
 ## See also
 
-[Delay](../../sigmod/delayops)
+[Delay](../sigmod/delayops.md)

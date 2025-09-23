@@ -3,13 +3,20 @@ id:vrandi
 category:Vectorial:Random
 -->
 # vrandi
-Generate a sort of 'vectorial band-limited noise'
+Generate a sort of 'vectorial band-limited noise'.
 
 ## Syntax
-``` csound-orc
-vrandi  ifn,  krange, kcps, ielements [, idstoffset] [, iseed] \
-        [, isize] [, ioffset]
-```
+=== "Modern"
+    ``` csound-orc
+    vrandi(ifn,  krange, kcps, ielements [, idstoffset] [, iseed] \
+           [, isize] [, ioffset])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vrandi ifn,  krange, kcps, ielements [, idstoffset] [, iseed] \
+           [, isize] [, ioffset]
+    ```
 
 ### Initialization
 
@@ -31,17 +38,17 @@ _krange_ - range of random elements (from -_krange_ to _krange_)
 
 _kcps_ - rate of generated elements in cycles per seconds
 
-This opcode is similar to [randi](../../opcodes/randi), but operates on vectors instead of with scalar values.
+This opcode is similar to [randi](../opcodes/randi.md), but operates on vectors instead of with scalar values.
 
 Though argument _isize_ defaults to 0, thus using a 16-bit random number generator, using the newer 31-bit algorithm is recommended, as this will produce a random sequence with a longer period (more random numbers before the sequence starts repeating).
 
 The output is a vector contained in _ifn_ (that must be previously allocated).
 
-All these operators are designed to be used together with other opcodes that operate with vector such as [adsynt](../../opcodes/adsynt), etc.
+All these operators are designed to be used together with other opcodes that operate with vector such as [adsynt](../opcodes/adsynt.md), etc.
 
 ## Examples
 
-Here is an example of the vrandi opcode. It uses the file [vrandi.csd](../../examples/vrandi.csd).
+Here is an example of the vrandi opcode. It uses the file [vrandi.csd](../examples/vrandi.csd).
 
 ``` csound-csd title="Example of the vrandi opcode." linenums="1"
 --8<-- "examples/vrandi.csd"
@@ -49,7 +56,7 @@ Here is an example of the vrandi opcode. It uses the file [vrandi.csd](../../exa
 
 ## See also
 
-[Vectorial Random Signal Generators](../../vectorial/vectorialrandom)
+[Vectorial Random Signal Generators](../vectorial/vectorialrandom.md)
 
 ## Credits
 

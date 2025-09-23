@@ -8,10 +8,17 @@ Converts a string to a signed integer value (i-rate).
 It is also possible to pass an strset index or a string p-field from the score instead of a string argument. If the string cannot be parsed as an integer number, an init error occurs and the instrument is deactivated.
 
 ## Syntax
-``` csound-orc
-ir strtol Sstr
-ir strtol indx
-```
+=== "Modern"
+    ``` csound-orc
+    ir = strtol(Sstr)
+    ir = strtol(indx)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ir strtol Sstr
+    ir strtol indx
+    ```
 
 ### Initialization
 
@@ -27,7 +34,7 @@ _ir_ -- Value of string as signed integer.
 
 ## See Also
 
-[String Conversion Opcodes](../../strings/convert)
+[String Conversion Opcodes](../strings/convert.md)
 
 ## Credits
 

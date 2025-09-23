@@ -24,7 +24,7 @@ These are _operators_ not _opcodes_. Therefore, they can be used within orchestr
 
 ## Examples
 
-Here is an example of the == operator. It uses the file [equals.csd](../../examples/equals.csd).
+Here is an example of the == operator. It uses the file [equals.csd](../examples/equals.csd).
 
 ``` csound-csd title="Example of the == operator." linenums="1"
 --8<-- "examples/equals.csd"
@@ -32,4 +32,4 @@ Here is an example of the == operator. It uses the file [equals.csd](../../examp
 
 ## See also
 
-[Conditional Values](../../control/conditional)
+[Conditional Values](../control/conditional.md)

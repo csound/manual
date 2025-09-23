@@ -6,9 +6,15 @@ category:Table Control:Read/Write Operations
 Mixes two tables.
 
 ## Syntax
-``` csound-orc
-tableimix idft, idoff, ilen, is1ft, is1off, is1g, is2ft, is2off, is2g
-```
+=== "Modern"
+    ``` csound-orc
+    tableimix(idft, idoff, ilen, is1ft, is1off, is1g, is2ft, is2off, is2g)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    tableimix idft, idoff, ilen, is1ft, is1off, is1g, is2ft, is2off, is2g
+    ```
 
 ### Initialization
 
@@ -32,7 +38,7 @@ If _ilen_ is 0, no writing occurs. Note that the internal integer value of _ilen
 
 The total index for table reading and writing is calculated from the starting offset for each table, plus the index value, which starts at 0 and then increments (or decrements) by 1 as mixing proceeds.
 
-These total indexes can potentially be very large, since there is no restriction on the offset or the _ilen_. However each total index for each table is ANDed with a length mask (such as 0000 0111 for a table of length 8) to form a final index which is actually used for reading or writing. So no reading or writing can occur outside the tables. This is the same as &#8220;wrap&#8221; mode in table read and write. These opcodes do not read or write the guardpoint. If a table has been rewritten with one of these, then if it has a guardpoint which is supposed to contain the same value as the location 0, then call [tableigpw](../../opcodes/tableigpw) afterwards.
+These total indexes can potentially be very large, since there is no restriction on the offset or the _ilen_. However each total index for each table is ANDed with a length mask (such as 0000 0111 for a table of length 8) to form a final index which is actually used for reading or writing. So no reading or writing can occur outside the tables. This is the same as &#8220;wrap&#8221; mode in table read and write. These opcodes do not read or write the guardpoint. If a table has been rewritten with one of these, then if it has a guardpoint which is supposed to contain the same value as the location 0, then call [tableigpw](../opcodes/tableigpw.md) afterwards.
 
 The indexes and offsets are all in table steps - they are not normalized to 0 - 1. So for a table of length 256, _ilen_ should be set to 256 if all the table was to be read or written.
 
@@ -40,7 +46,7 @@ The tables do not need to be the same length - wrapping occurs individually for 
 
 ## Examples
 
-Here is an example of the tableimix opcode. It uses the file [tableimix.csd](../../examples/tableimix.csd).
+Here is an example of the tableimix opcode. It uses the file [tableimix.csd](../examples/tableimix.csd).
 
 ``` csound-csd title="Example of the tableimix opcode." linenums="1"
 --8<-- "examples/tableimix.csd"
@@ -48,7 +54,7 @@ Here is an example of the tableimix opcode. It uses the file [tableimix.csd](../
 
 ## See also
 
-[Read/Write Operations](../../table/readwrit)
+[Read/Write Operations](../table/readwrit.md)
 
 ## Credits
 

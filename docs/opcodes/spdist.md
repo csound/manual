@@ -5,18 +5,24 @@ category:Signal Modifiers:Panning and Spatialization
 # spdist
 Calculates distance values from xy coordinates.
 
-_spdist_ uses the same xy data as [space](../../opcodes/space), also either from a text file using [Gen28](../../scoregens/gen28) or from x and y arguments given to the unit directly. The purpose of this unit is to make available the values for distance that are calculated from the xy coordinates.
+_spdist_ uses the same xy data as [space](../opcodes/space.md), also either from a text file using [Gen28](../scoregens/gen28.md) or from x and y arguments given to the unit directly. The purpose of this unit is to make available the values for distance that are calculated from the xy coordinates.
 
-In the case of _space_, the xy values are used to determine a distance which is used to attenuate the signal and prepare it for use in [spsend](../../opcodes/spsend). But it is also useful to have these values for distance available to scale the frequency of the signal before it is sent to the _space_ unit.
+In the case of _space_, the xy values are used to determine a distance which is used to attenuate the signal and prepare it for use in [spsend](../opcodes/spsend.md). But it is also useful to have these values for distance available to scale the frequency of the signal before it is sent to the _space_ unit.
 
 ## Syntax
-``` csound-orc
-k1 spdist ifn, ktime, kx, ky
-```
+=== "Modern"
+    ``` csound-orc
+    k1 = spdist(ifn, ktime, kx, ky)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    k1 spdist ifn, ktime, kx, ky
+    ```
 
 ### Initialization
 
-_ifn_ -- number of the stored function created using [Gen28](../../scoregens/gen28). This function generator reads a text file which contains sets of three values representing the xy coordinates and a time-tag for when the signal should be placed at that location. The file should look like:
+_ifn_ -- number of the stored function created using [Gen28](../scoregens/gen28.md). This function generator reads a text file which contains sets of three values representing the xy coordinates and a time-tag for when the signal should be placed at that location. The file should look like:
 
 ```
 0       -1       1
@@ -80,7 +86,7 @@ _kx, ky_ -- when _ifn_ is 0, _space_ and _spdist_ will use these values as the X
 
 ## Examples
 
-Here is an example of the spdist opcode. It uses the file [spdist.csd](../../examples/spdist.csd).
+Here is an example of the spdist opcode. It uses the file [spdist.csd](../examples/spdist.csd).
 
 ``` csound-csd title="Example of the spdist opcode." linenums="1"
 --8<-- "examples/spdist.csd"
@@ -90,7 +96,7 @@ The same function and time values are used for both _spdist_ and _space_. This i
 
 ## See also
 
-[Panning and Spatialization: Amplitude spatialization](../../sigmod/panspatl)
+[Panning and Spatialization: Amplitude spatialization](../sigmod/panspatl.md)
 
 ## Credits
 

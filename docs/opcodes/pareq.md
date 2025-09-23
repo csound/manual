@@ -51,9 +51,15 @@ a2 =  1 - K/Q + K^2
 ```
 
 ## Syntax
-``` csound-orc
-ares pareq asig, kc, kv, kq [, imode] [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = pareq(asig, kc, kv, kq [, imode] [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares pareq asig, kc, kv, kq [, imode] [, iskip]
+    ```
 
 ### Initialization
 
@@ -77,7 +83,7 @@ _asig_ -- the incoming signal
 
 ## Examples
 
-Here is an example of the pareq opcode. It uses the file [pareq.csd](../../examples/pareq.csd).
+Here is an example of the pareq opcode. It uses the file [pareq.csd](../examples/pareq.csd).
 
 ``` csound-csd title="Example of the pareq opcode." linenums="1"
 --8<-- "examples/pareq.csd"
@@ -85,7 +91,7 @@ Here is an example of the pareq opcode. It uses the file [pareq.csd](../../examp
 
 ## See also
 
-[Specialized Filters: Parametric EQ](../../sigmod/speciali)
+[Specialized Filters: Parametric EQ](../sigmod/speciali.md)
 
 ## Credits
 

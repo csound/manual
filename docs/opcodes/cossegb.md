@@ -7,10 +7,17 @@ Trace a series of line segments between specified absolute points with
 cosine interpolation.
 
 ## Syntax
-``` csound-orc
-ares cossegb ia, itim1, ib [, itim2] [, ic] [...]
-kres cossegb ia, itim1, ib [, itim2] [, ic] [...]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = cossegb(ia, itim1, ib [, itim2] [, ic] [...])
+    kres = cossegb(ia, itim1, ib [, itim2] [, ic] [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares cossegb ia, itim1, ib [, itim2] [, ic] [...]
+    kres cossegb ia, itim1, ib [, itim2] [, ic] [...]
+    ```
 
 ### Initialization
 
@@ -28,7 +35,7 @@ These units generate control or audio signals whose values can pass through 2 or
 
 ## Examples
 
-Here is an example of the cossegb opcode. It uses the file [cossegb.csd](../../examples/cossegb.csd).
+Here is an example of the cossegb opcode. It uses the file [cossegb.csd](../examples/cossegb.csd).
 
 ``` csound-orc title="Example of the cossegb opcode." linenums="1"
 --8<-- "examples/cossegb.csd"
@@ -36,7 +43,7 @@ Here is an example of the cossegb opcode. It uses the file [cossegb.csd](../../e
 
 ## See also
 
-[Linear and Exponential Generators](../../siggen/lineexp)
+[Linear and Exponential Generators](../siggen/lineexp.md)
 
 ## Credits
 

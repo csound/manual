@@ -8,9 +8,15 @@ This opcode reads a circular buffer of f-signals (streaming PV signals).
 This opcode reads from a circular buffer of length ilen (secs), taking a handle for the buffer and a time pointer, which holds the current read position (also in seconds). It is used in conjunction with a _pvsbuffer_ opocde. Reading is circular, wrapping around at the end of the buffer.
 
 ## Syntax
-``` csound-orc
-fsig pvsbufread  ktime, khandle [, ilo, ihi, iclear]
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvsbufread(ktime, khandle [, ilo, ihi, iclear])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvsbufread ktime, khandle [, ilo, ihi, iclear]
+    ```
 
 ### Initialisation
 
@@ -26,7 +32,7 @@ _ktime_ -- time position of reading pointer (in secs).
 
 _khandle_ -- handle identifying the buffer to be read. When using k-rate handles, it is important to initialise the k-rate variable to a given existing handle. When changing buffers, fsig buffers need to be compatible (same fsig format).
 
-With this opcode and [pvsbuffer](../../opcodes/pvsbuffer), it is possible to, among other things:
+With this opcode and [pvsbuffer](../opcodes/pvsbuffer.md), it is possible to, among other things:
 
 * time-stretch/compress a fsig stream, by reading it at different rates
 * delay a fsig or portions of it.
@@ -34,7 +40,7 @@ With this opcode and [pvsbuffer](../../opcodes/pvsbuffer), it is possible to, am
 
 > :memo: **Note**
 >
-> It is important that the handle value passed to _pvsbufread_ is valid and was created by [pvsbuffer](../../opcodes/pvsbuffer). Csound will crash with invalid handles.
+> It is important that the handle value passed to _pvsbufread_ is valid and was created by [pvsbuffer](../opcodes/pvsbuffer.md). Csound will crash with invalid handles.
 
 ## Examples
 
@@ -59,7 +65,7 @@ endif
 fsb         pvsbufread  kt1, khan   ; read buffer
 ```
 
-Here is an example of the pvsbufread opcode. It uses the file [pvsbufread.csd](../../examples/pvsbufread.csd).
+Here is an example of the pvsbufread opcode. It uses the file [pvsbufread.csd](../examples/pvsbufread.csd).
 
 ``` csound-csd title="Example of the pvsbufread opcode." linenums="1"
 --8<-- "examples/pvsbufread.csd"
@@ -67,7 +73,7 @@ Here is an example of the pvsbufread opcode. It uses the file [pvsbufread.csd](.
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

@@ -6,10 +6,17 @@ category:Signal Generators:Random (Noise) Generators
 Generates random impulses from -1 to 1.
 
 ## Syntax
-``` csound-orc
-ares dust2 kamp, kdensity
-kres dust2 kamp, kdensity
-```
+=== "Modern"
+    ``` csound-orc
+    ares = dust2(kamp, kdensity)
+    kres = dust2(kamp, kdensity)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares dust2 kamp, kdensity
+    kres dust2 kamp, kdensity
+    ```
 
 ### Performance
 
@@ -19,7 +26,7 @@ _kdensity_ -- average number of impulses per second.
 
 ## Examples
 
-Here is an example of the dust2 opcode. It uses the file [dust2.csd](../../examples/dust2.csd).
+Here is an example of the dust2 opcode. It uses the file [dust2.csd](../examples/dust2.csd).
 
 ``` csound-orc title="Example of the dust2 opcode." linenums="1"
 --8<-- "examples/dust2.csd"
@@ -27,7 +34,7 @@ Here is an example of the dust2 opcode. It uses the file [dust2.csd](../../examp
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
 ## Credits
 

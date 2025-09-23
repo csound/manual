@@ -8,9 +8,15 @@ Zero-delay feedback implementation of 2 pole (12 dB/oct) filter with multimode o
 Offers low-pass, band-pass, and high-pass output.
 
 ## Syntax
-``` csound-orc
-alp, abp, ahp zdf_2pole_mode ain, xcf, Q [, istor]
-```
+=== "Modern"
+    ``` csound-orc
+    alp, abp, ahp = zdf_2pole_mode(ain, xcf, Q [, istor])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    alp, abp, ahp zdf_2pole_mode ain, xcf, Q [, istor]
+    ```
 
 ### Initialization
 
@@ -32,7 +38,7 @@ _Q_ -- filter Q value (i-, k-, or a-rate). Range 0.5-25.0.
 
 ## Examples
 
-Here is an example of the zdf_2pole_mode opcode. It uses the file [zdf_2pole_mode.csd](../../examples/zdf_2pole_mode.csd).
+Here is an example of the zdf_2pole_mode opcode. It uses the file [zdf_2pole_mode.csd](../examples/zdf_2pole_mode.csd).
 
 ``` csound-csd title="Example of the zdf_2pole_mode opcode." linenums="1"
 --8<-- "examples/zdf_2pole_mode.csd"
@@ -48,7 +54,7 @@ This filter is based on the work of Will Pirkle that employs Vadim Zavalishin's 
 
 ## See also
 
-[Standard filters: Zero-delay Feedback Filters (Virtual Analog)](../../sigmod/standard)
+[Standard filters: Zero-delay Feedback Filters (Virtual Analog)](../sigmod/standard.md)
 
 ## Credits
 

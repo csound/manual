@@ -6,9 +6,15 @@ category:Signal Modifiers:Panning and Spatialization
 Distribute an audio signal amongst four channels with localization control.
 
 ## Syntax
-``` csound-orc
-a1, a2, a3, a4 pan asig, kx, ky, ifn [, imode] [, ioffset]
-```
+=== "Modern"
+    ``` csound-orc
+    a1, a2, a3, a4 = pan(asig, kx, ky, ifn [, imode] [, ioffset])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    a1, a2, a3, a4 pan asig, kx, ky, ifn [, imode] [, ioffset]
+    ```
 
 ### Initialization
 
@@ -26,9 +32,9 @@ Movement between speakers is by amplitude variation, controlled by the stored fu
 
 _kx, ky_ values are not restricted to 0 - 1. A circular motion passing through all four speakers (inscribed) would have a diameter of root 2, and might be defined by a circle of radius R = root 1/2 with center at (.5,.5). _kx, ky_ would then come from Rcos(angle), Rsin(angle), with an implicit origin at (.5,.5) (i.e. _ioffset_ = 1). Unscaled raw values operate similarly. Sounds can thus be located anywhere in the polar or Cartesian plane; points lying outside the speaker square are projected correctly onto the square's perimeter as for a listener at the center.
 
-## Example
+## Examples
 
-Here is an example of the pan opcodes. It uses the file [pan.csd](../../examples/pan.csd).
+Here is an example of the pan opcodes. It uses the file [pan.csd](../examples/pan.csd).
 
 ``` csound-csd title="Example of the pan opcodes." linenums="1"
 --8<-- "examples/pan.csd"
@@ -36,4 +42,4 @@ Here is an example of the pan opcodes. It uses the file [pan.csd](../../examples
 
 ## See also
 
-[Panning and Spatialization: Amplitude spatialization](../../sigmod/panspatl)
+[Panning and Spatialization: Amplitude spatialization](../sigmod/panspatl.md)

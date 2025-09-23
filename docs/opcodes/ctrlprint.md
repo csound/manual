@@ -6,9 +6,15 @@ category:Real-time MIDI:Input
 Print the saved values of MIDI controllers from an array to the console or a file.
 
 ## Syntax
-``` csound-orc
-ctrlprint kcont[][, Sfile]
-```
+=== "Modern"
+    ``` csound-orc
+    ctrlprint(kcont[][, Sfile])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ctrlprint kcont[][, Sfile]
+    ```
 
 ### Initialization
 
@@ -20,7 +26,7 @@ _kcont_ -- the array of controls as saved by _ctrlsave_.
 
 ## Examples
 
-Here is an example of the ctrlprint opcode. It uses the file [ctrls.csd](../../examples/ctrls.csd).
+Here is an example of the ctrlprint opcode. It uses the file [ctrls.csd](../examples/ctrls.csd).
 
 ``` csound-csd title="Example of the ctrlprint opcode." linenums="1"
 --8<-- "examples/ctrls.csd"
@@ -28,7 +34,7 @@ Here is an example of the ctrlprint opcode. It uses the file [ctrls.csd](../../e
 
 ## See also
 
-[MIDI input and Initialization](../../midi/input)
+[MIDI input and Initialization](../midi/input.md)
 
 ## Credits
 

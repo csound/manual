@@ -5,12 +5,18 @@ category:Signal Modifiers:Standard Filters
 # butterbr
 A band-reject Butterworth filter.
 
-Implementation of a second-order band-reject Butterworth filter. This opcode can also be written as [butbr](../../opcodes/butbr).
+Implementation of a second-order band-reject Butterworth filter. This opcode can also be written as [butbr](../opcodes/butbr.md).
 
 ## Syntax
-``` csound-orc
-ares butterbr asig, xfreq, xband [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = butterbr(asig, xfreq, xband [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares butterbr asig, xfreq, xband [, iskip]
+    ```
 
 ### Initialization
 
@@ -28,15 +34,21 @@ _xband_ -- Bandwidth of the bandpass and bandreject filters.
 
 ## Examples
 
-Here is an example of the butterbr opcode. It uses the file [butterbr.csd](../../examples/butterbr.csd).
+=== "Modern"
+    Here is an example of the butterbr opcode. It uses the file [butterbr-modern.csd](../examples/butterbr-modern.csd).
+    ``` csound-csd title="Example of the butterbr opcode." linenums="1"
+    --8<-- "examples/butterbr-modern.csd"
+    ```
 
-``` csound-csd title="Example of the butterbr opcode." linenums="1"
---8<-- "examples/butterbr.csd"
-```
+=== "Classic"
+    Here is an example of the butterbr opcode. It uses the file [butterbr.csd](../examples/butterbr.csd).
+    ``` csound-csd title="Example of the butterbr opcode." linenums="1"
+    --8<-- "examples/butterbr.csd"
+    ```
 
 ## See also
 
-[Standard filters: Butterworth filters](../../sigmod/standard)
+[Standard filters: Butterworth filters](../sigmod/standard.md)
 
 ## Credits
 

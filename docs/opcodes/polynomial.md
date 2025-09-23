@@ -8,9 +8,15 @@ Efficiently evaluates a polynomial of arbitrary order.
 The _polynomial_ opcode calculates a polynomial with a single a-rate input variable.  The polynomial is a sum of any number of terms in the form _kn*x^n_ where _kn_ is the nth coefficient of the expression.  These coefficients are k-rate values.
 
 ## Syntax
-``` csound-orc
-aout polynomial ain, k0 [, k1 [, k2 [...]]]
-```
+=== "Modern"
+    ``` csound-orc
+    aout = polynomial(ain, k0 [, k1 [, k2 [...]]])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout polynomial ain, k0 [, k1 [, k2 [...]]]
+    ```
 
 ### Performance
 
@@ -28,7 +34,7 @@ y = k0 + k1*x + k2*x^2 + k3*x^3 + ...
 
 ## Examples
 
-Here is an example of the polynomial opcode. It uses the file [polynomial.csd](../../examples/polynomial.csd).
+Here is an example of the polynomial opcode. It uses the file [polynomial.csd](../examples/polynomial.csd).
 
 ``` csound-csd title="Example of the polynomial opcode." linenums="1"
 --8<-- "examples/polynomial.csd"
@@ -36,9 +42,9 @@ Here is an example of the polynomial opcode. It uses the file [polynomial.csd](.
 
 ## See also
 
-[Waveshaping](../../sigmod/wavshape)
+[Waveshaping](../sigmod/wavshape.md)
 
-[Opcode Equivalents of Functions](../../math/opeqfunc)
+[Opcode Equivalents of Functions](../math/opeqfunc.md)
 
 ## Credits
 

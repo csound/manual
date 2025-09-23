@@ -8,9 +8,15 @@ Implements the Lorenz system of equations.
 Implements the Lorenz system of equations.  The Lorenz system is a chaotic-dynamic system which was originally used to simulate the motion of a particle in convection currents and simplified weather systems. Small differences in initial conditions rapidly lead to diverging values. This is sometimes expressed as the butterfly effect. If a butterfly flaps its wings in Australia, it will have an effect on the weather in Alaska. This system is one of the milestones in the development of chaos theory. It is useful as a chaotic audio source or as a low frequency modulation source.
 
 ## Syntax
-``` csound-orc
-ax, ay, az lorenz ksv, krv, kbv, kh, ix, iy, iz, iskip [, iskipinit]
-```
+=== "Modern"
+    ``` csound-orc
+    ax, ay, az = lorenz(ksv, krv, kbv, kh, ix, iy, iz, iskip [, iskipinit])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ax, ay, az lorenz ksv, krv, kbv, kh, ix, iy, iz, iskip [, iskipinit]
+    ```
 
 ### Initialization
 
@@ -48,11 +54,11 @@ kb = 8/3
 
 > :memo: **Note**
 >
-> This algorithm uses internal non linear feedback loops which causes audio result to depend on the orchestra sampling rate. For example, if you develop a project with _sr_=48000Hz and if you want to produce an audio CD from it, you should record a file with _sr_=48000Hz and then downsample the file to 44100Hz using the [src_conv](../../utility/src_conv) utility.
+> This algorithm uses internal non linear feedback loops which causes audio result to depend on the orchestra sampling rate. For example, if you develop a project with _sr_=48000Hz and if you want to produce an audio CD from it, you should record a file with _sr_=48000Hz and then downsample the file to 44100Hz using the [src_conv](../utility/src_conv.md) utility.
 
 ## Examples
 
-Here is an example of the lorenz opcode. It uses the file [lorenz.csd](../../examples/lorenz.csd).
+Here is an example of the lorenz opcode. It uses the file [lorenz.csd](../examples/lorenz.csd).
 
 ``` csound-orc title="Example of the lorenz opcode." linenums="1"
 --8<-- "examples/lorenz.csd"
@@ -60,7 +66,7 @@ Here is an example of the lorenz opcode. It uses the file [lorenz.csd](../../exa
 
 ## See Also
 
-[Models and Emulations](../../siggen/models)
+[Models and Emulations](../siggen/models.md)
 
 ## Credits
 

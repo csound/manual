@@ -8,15 +8,25 @@ Gaussian distribution random number generator.
 This is an x-class noise generator.
 
 ## Syntax
-``` csound-orc
-ares gauss krange
-ires gauss irange
-kres gauss krange
-ares gauss kmean, ksdev
-ires gauss imean, isdev
-kres gauss kmean, ksdev
+=== "Modern"
+    ``` csound-orc
+    ares = gauss(krange)
+    ires = gauss(irange)
+    kres = gauss(krange)
+    ares = gauss(kmean, ksdev)
+    ires = gauss(imean, isdev)
+    kres = gauss(kmean, ksdev)
+    ```
 
-```
+=== "Classic"
+    ``` csound-orc
+    ares gauss krange
+    ires gauss irange
+    kres gauss krange
+    ares gauss kmean, ksdev
+    ires gauss imean, isdev
+    kres gauss kmean, ksdev
+    ```
 
 ### Performance
 
@@ -37,7 +47,7 @@ For more detailed explanation of these distributions, see:
 
 ## Examples
 
-Here is an example of the gauss opcode. It uses the file [gauss.csd](../../examples/gauss.csd).
+Here is an example of the gauss opcode. It uses the file [gauss.csd](../examples/gauss.csd).
 
 ``` csound-orc title="Example of the gauss opcode." linenums="1"
 --8<-- "examples/gauss.csd"
@@ -53,7 +63,7 @@ mean = 2.700, std = 1.497, samples inside the given range: 100.000%
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
 ## Credits
 

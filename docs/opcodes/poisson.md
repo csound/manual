@@ -8,11 +8,19 @@ Poisson distribution random number generator (positive values only).
 This is an x-class noise generator.
 
 ## Syntax
-``` csound-orc
-ares poisson klambda
-ires poisson klambda
-kres poisson klambda
-```
+=== "Modern"
+    ``` csound-orc
+    ares = poisson(klambda)
+    ires = poisson(klambda)
+    kres = poisson(klambda)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares poisson klambda
+    ires poisson klambda
+    kres poisson klambda
+    ```
 
 ### Performance
 
@@ -27,7 +35,7 @@ In probability theory and statistics, the Poisson distribution is a discrete pro
 The Poisson distribution describing the probability that there are exactly _k_ occurrences (_k_ being a non-negative integer, k = 0, 1, 2, ...) is:
 
 <figure markdown="span">
-![[The Poisson distribution equation.]](../../images/poisson_equation.png)
+![[The Poisson distribution equation.]](../images/poisson_equation.png)
 <figcaption></figcaption>
 </figure>
 where:
@@ -50,7 +58,7 @@ The Poisson distribution arises in connection with Poisson processes. It applies
 * The number of viruses that can infect a cell in cell culture.
 
 <figure markdown="span">
-![[A diagram showing the Poisson distribution.]](../../images/Poisson_distribution_PMF.png)
+![[A diagram showing the Poisson distribution.]](../images/Poisson_distribution_PMF.png)
 <figcaption>A diagram showing the Poisson distribution.</figcaption>
 </figure>
 
@@ -61,23 +69,23 @@ For more detailed explanation of these distributions, see:
 
 ## Examples
 
-Here is an example of the poisson opcode. It uses the file [poisson.csd](../../examples/poisson.csd). It is written for *NIX systems, and will generate errors on Windows.
+Here is an example of the poisson opcode. It uses the file [poisson.csd](../examples/poisson.csd). It is written for *NIX systems, and will generate errors on Windows.
 
 ``` csound-orc title="Example of the poisson opcode." linenums="1"
 --8<-- "examples/poisson.csd"
 ```
 
-Here is another example of the poisson opcode. It uses the file [poisson2.csd](../../examples/poisson2.csd).
+Here is another example of the poisson opcode. It uses the file [poisson2.csd](../examples/poisson2.csd).
 
 ``` csound-orc linenums="1"
 --8<-- "examples/poisson2.csd"
 ```
 
-A musical example featuring the poisson opcode: [Poisson_Cucchi.csd](../../examples/musical/Poisson_Cucchi.csd) by Stefano Cucchi.
+A musical example featuring the poisson opcode: [Poisson_Cucchi.csd](../examples/musical/Poisson_Cucchi.csd) by Stefano Cucchi.
 
 ## See also
 
-[Random (Noise) Generators](../../siggen/random)
+[Random (Noise) Generators](../siggen/random.md)
 
 ## Credits
 

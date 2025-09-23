@@ -8,9 +8,15 @@ Generates dynamic 3d binaural audio for headphones using magnitude interpolation
 This opcode takes a source signal and spatialises it in the 3 dimensional space around a listener by convolving the source with stored head related transfer function (HRTF) based filters.
 
 ## Syntax
-``` csound-orc
-aleft, aright hrtfmove asrc, kAz, kElev, ifilel, ifiler [, imode, ifade, isr]
-```
+=== "Modern"
+    ``` csound-orc
+    aleft, aright = hrtfmove(asrc, kAz, kElev, ifilel, ifiler [, imode, ifade, isr])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aleft, aright hrtfmove asrc, kAz, kElev, ifilel, ifiler [, imode, ifade, isr]
+    ```
 
 ### Initialization
 
@@ -20,11 +26,11 @@ _ifiler_ -- right HRTF spectral data file
 
 > :memo: **Note**
 >
-> Spectral datafiles (based on the MIT HRTF database) are available in 3 different sampling rates: 44.1, 48 and 96 khz and are labelled accordingly. Input and processing _sr_ should match datafile _sr_. Files should be in the current directory or the SADIR (see [Environment Variables](../../command/environment)).
+> Spectral datafiles (based on the MIT HRTF database) are available in 3 different sampling rates: 44.1, 48 and 96 khz and are labelled accordingly. Input and processing _sr_ should match datafile _sr_. Files should be in the current directory or the SADIR (see [Environment Variables](../invoke/environment-variables.md)).
 
 > :memo: **Note**
 >
-> HRTF Data files for use with _hrtfmove_, [hrtfmove2](../../opcodes/hrtfmove2), [hrtfstat](../../opcodes/hrtfstat), [hrtfearly](../../opcodes/hrtfearly), [hrtfreverb](../../opcodes/hrtfreverb) were updated for Csound 5.15 and later (the code was updated and is more efficient). Old datafiles are now deprecated.
+> HRTF Data files for use with _hrtfmove_, [hrtfmove2](../opcodes/hrtfmove2.md), [hrtfstat](../opcodes/hrtfstat.md), [hrtfearly](../opcodes/hrtfearly.md), [hrtfreverb](../opcodes/hrtfreverb.md) were updated for Csound 5.15 and later (the code was updated and is more efficient). Old datafiles are now deprecated.
 
 _imode_ -- optional, default 0 for phase truncation, 1 for minimum phase
 
@@ -46,7 +52,7 @@ Artifact-free user-defined trajectories are made possible using an interpolation
 
 ## Examples
 
-Here is an example of the hrtfmove opcode. It uses the file [hrtfmove.csd](../../examples/hrtfmove.csd).
+Here is an example of the hrtfmove opcode. It uses the file [hrtfmove.csd](../examples/hrtfmove.csd).
 
 ``` csound-csd title="Example of the htrfmove opcode." linenums="1"
 --8<-- "examples/hrtfmove.csd"
@@ -54,7 +60,7 @@ Here is an example of the hrtfmove opcode. It uses the file [hrtfmove.csd](../..
 
 ## See also
 
-[Panning and Spatialization: Binaural spatialization](../../sigmod/panspatl)
+[Panning and Spatialization: Binaural spatialization](../sigmod/panspatl.md)
 
 More information on this opcode: [http://www.csoundjournal.com/issue9/newHRTFOpcodes.html](http://www.csoundjournal.com/issue9/newHRTFOpcodes.html), written by Brian Carty
 

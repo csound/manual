@@ -6,9 +6,15 @@ category:Spectral Processing:Non-Standard
 Displays the magnitude values of the spectrum.
 
 ## Syntax
-``` csound-orc
-specdisp wsig, iprd [, iwtflg]
-```
+=== "Modern"
+    ``` csound-orc
+    specdisp(wsig, iprd [, iwtflg])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    specdisp wsig, iprd [, iwtflg]
+    ```
 
 ### Initialization
 
@@ -36,4 +42,4 @@ contin:
 
 ## See Also
 
-[specsum](../../opcodes/specsum)
+[specsum](../opcodes/specsum.md)

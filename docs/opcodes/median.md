@@ -6,9 +6,15 @@ category:Signal Modifiers:Standard Filters
 A median filter, a variant FIR lowpass filter.
 
 ## Syntax
-``` csound-orc
-ares median asig, ksize, imaxsize [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = median(asig, ksize, imaxsize [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares median asig, ksize, imaxsize [, iskip]
+    ```
 
 ### Initialization
 
@@ -27,7 +33,7 @@ _median_ is a simple filter that retuns the median value of the last _ksize_ val
 
 ## Examples
 
-Here is an example of the median opcode. It uses the file [median.csd](../../examples/median.csd).
+Here is an example of the median opcode. It uses the file [median.csd](../examples/median.csd).
 
 ``` csound-csd title="Example of the median opcode." linenums="1"
 --8<-- "examples/median.csd"
@@ -35,7 +41,7 @@ Here is an example of the median opcode. It uses the file [median.csd](../../exa
 
 ## See also
 
-[Standard filters: Variant FIR lowpass filter](../../sigmod/standard)
+[Standard filters: Variant FIR lowpass filter](../sigmod/standard.md)
 
 ## Credits
 

@@ -6,9 +6,15 @@ category:Signal Generators:FM Synthesis
 A basic frequency modulated oscillator.
 
 ## Syntax
-``` csound-orc
-ares foscil xamp, kcps, xcar, xmod, kndx [, ifn , iphs]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = foscil(xamp, kcps, xcar, xmod, kndx [, ifn , iphs])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares foscil xamp, kcps, xcar, xmod, kndx [, ifn , iphs]
+    ```
 
 ### Initialization
 
@@ -35,7 +41,7 @@ The actual formula used for this implementation of FM synthesis is _xamp_ * cos(
 
 ## Examples
 
-Here is an example of the foscil opcode. It uses the file [foscil.csd](../../examples/foscil.csd).
+Here is an example of the foscil opcode. It uses the file [foscil.csd](../examples/foscil.csd).
 
 ``` csound-orc title="Example of the foscil opcode." linenums="1"
 --8<-- "examples/foscil.csd"
@@ -43,6 +49,6 @@ Here is an example of the foscil opcode. It uses the file [foscil.csd](../../exa
 
 ## See Also
 
-[FM Synthesis](../../siggen/fmsynth)
+[FM Synthesis](../siggen/fmsynth.md)
 
 More information about frequency modulation on Wikipedia: [http://en.wikipedia.org/wiki/Frequency_modulation_synthesis](http://en.wikipedia.org/wiki/Frequency_modulation_synthesis)

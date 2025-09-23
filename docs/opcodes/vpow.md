@@ -6,9 +6,15 @@ category:Vectorial:Scalar operations
 Raises each element of a vector to a scalar power.
 
 ## Syntax
-``` csound-orc
-vpow  ifn, kval, kelements [, kdstoffset] [, kverbose]
-```
+=== "Modern"
+    ``` csound-orc
+    vpow(ifn, kval, kelements [, kdstoffset] [, kverbose])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vpow ifn, kval, kelements [, kdstoffset] [, kverbose]
+    ```
 
 ### Initialization
 
@@ -26,15 +32,15 @@ _kverbose_ - Selects whether or not warnings are printed (Default=0)
 
 _vpow_ raises each element of the vector contained in the table _ifn_ to the power of _kval_, starting from table index _kdstoffset_. This enables you to process a specific section of a table by specifying the offset and the number of elements to be processed. Offset is counted starting from 0, so if no offset is specified (or set to 0), the table will be modified from the beginning.
 
-Note that this opcode runs at k-rate so the value of _kval_ is processed every control period. Use with care or you will end up with very large (or small) numbers (or use [vpow_i](../../opcodes/vpow_i)).
+Note that this opcode runs at k-rate so the value of _kval_ is processed every control period. Use with care or you will end up with very large (or small) numbers (or use [vpow_i](../opcodes/vpow_i.md)).
 
-These opcodes ([vadd](../../opcodes/vadd), [vmult](../../opcodes/vmult), [vpow](../../opcodes/vpow) and [vexp](../../opcodes/vexp)) perform numeric operations between a vectorial control signal (hosted by the table _ifn_), and a scalar signal (_kval_). Result is a new vector that overrides old values of _ifn_. All these opcodes work at k-rate.
+These opcodes ([vadd](../opcodes/vadd.md), [vmult](../opcodes/vmult.md), [vpow](../opcodes/vpow.md) and [vexp](../opcodes/vexp.md)) perform numeric operations between a vectorial control signal (hosted by the table _ifn_), and a scalar signal (_kval_). Result is a new vector that overrides old values of _ifn_. All these opcodes work at k-rate.
 
 Negative values for _kdstoffset_ are valid. Elements from the vector that are outside the table, will be discarded, and they will not wrap around the table.
 
 If the optional _kverbose_ argument is different to 0, the opcode will print warning messages every k-pass if table lengths are exceeded.
 
-In all these opcodes, the resulting vectors are stored in _ifn_, overriding the intial vectors. If you want to keep initial vector, use [vcopy](../../opcodes/vcopy) or [vcopy_i](../../opcodes/vcopy_i) to copy it in another table. All these operators are designed to be used together with other opcodes that operate with vectorial signals such as [vcella](../../opcodes/vcella), [adsynt](../../opcodes/adsynt), [adsynt2](../../opcodes/adsynt2), etc.  They can also be useful in conjunction with the spectral opcodes [pvsftw](../../opcodes/pvsftw) and [pvsftr](../../opcodes/pvsftr).
+In all these opcodes, the resulting vectors are stored in _ifn_, overriding the intial vectors. If you want to keep initial vector, use [vcopy](../opcodes/vcopy.md) or [vcopy_i](../opcodes/vcopy_i.md) to copy it in another table. All these operators are designed to be used together with other opcodes that operate with vectorial signals such as [vcella](../opcodes/vcella.md), [adsynt](../opcodes/adsynt.md), [adsynt2](../opcodes/adsynt2.md), etc.  They can also be useful in conjunction with the spectral opcodes [pvsftw](../opcodes/pvsftw.md) and [pvsftr](../opcodes/pvsftr.md).
 
 > :memo: **Note**
 >
@@ -52,13 +58,13 @@ In all these opcodes, the resulting vectors are stored in _ifn_, overriding the 
 
 ## Examples
 
-Here is an example of the vpow opcode. It uses the file [vpow.csd](../../examples/vpow.csd).
+Here is an example of the vpow opcode. It uses the file [vpow.csd](../examples/vpow.csd).
 
 ``` csound-csd title="Examples of the vpow opcode." linenums="1"
 --8<-- "examples/vpow.csd"
 ```
 
-Here is another example of the vpow opcode. It uses the file [vpow-2.csd](../../examples/vpow-2.csd).
+Here is another example of the vpow opcode. It uses the file [vpow-2.csd](../examples/vpow-2.csd).
 
 ``` csound-csd linenums="1"
 --8<-- "examples/vpow-2.csd"
@@ -66,7 +72,7 @@ Here is another example of the vpow opcode. It uses the file [vpow-2.csd](../../
 
 ## See also
 
-[Operations Vectorial/Scalar Signal](../../vectorial/scalar)
+[Operations Vectorial/Scalar Signal](../vectorial/scalar.md)
 
 ## Credits
 

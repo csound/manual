@@ -6,9 +6,15 @@ category:Table Control:Dynamic Selection
 Reads function tables with linear, cubic, or sinc interpolation.
 
 ## Syntax
-``` csound-orc
-ares tablexkt xndx, kfn, kwarp, iwsize [, ixmode] [, ixoff] [, iwrap]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = tablexkt(xndx, kfn, kwarp, iwsize [, ixmode] [, ixoff] [, iwrap])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares tablexkt xndx, kfn, kwarp, iwsize [, ixmode] [, ixoff] [, iwrap]
+    ```
 
 ### Initialization
 
@@ -54,7 +60,7 @@ _kwarp_ -- if greater than 1, use sin (x / kwarp) / x function for sinc interpol
 
 ## Examples
 
-Here is an example of the tablexkt opcode. It uses the file [tablexkt.csd](../../examples/tablexkt.csd).
+Here is an example of the tablexkt opcode. It uses the file [tablexkt.csd](../examples/tablexkt.csd).
 
 ``` csound-csd title="Example of the tablexkt opcode." linenums="1"
 --8<-- "examples/tablexkt.csd"
@@ -62,7 +68,7 @@ Here is an example of the tablexkt opcode. It uses the file [tablexkt.csd](../..
 
 ## See also
 
-[Table Reading with Dynamic Selection](../../table/select)
+[Table Reading with Dynamic Selection](../table/select.md)
 
 ## Credits
 

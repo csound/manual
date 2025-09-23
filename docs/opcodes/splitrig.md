@@ -6,9 +6,15 @@ category:Instrument Control:Sensing and Control
 Split a trigger signal (i.e. a timed sequence of control-rate impulses) into several channels following a structure designed by the user.
 
 ## Syntax
-``` csound-orc
-splitrig ktrig, kndx, imaxtics, ifn, kout1 [,kout2,...,koutN]
-```
+=== "Modern"
+    ``` csound-orc
+    splitrig(ktrig, kndx, imaxtics, ifn, kout1 [,kout2,...,koutN])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    splitrig ktrig, kndx, imaxtics, ifn, kout1 [,kout2,...,koutN]
+    ```
 
 ### Initialization
 
@@ -64,7 +70,7 @@ This opcode can be useful in several situations, for example to implement a vu-m
 
 ## Examples
 
-Here is an example of splitrig opcode. It uses the file [splitrig.csd](../../examples/splitrig.csd).
+Here is an example of splitrig opcode. It uses the file [splitrig.csd](../examples/splitrig.csd).
 
 ``` csound-csd title="Example of the splitrig opcode." linenums="1"
 --8<-- "examples/splitrig.csd"
@@ -72,7 +78,7 @@ Here is an example of splitrig opcode. It uses the file [splitrig.csd](../../exa
 
 ## See also
 
-[Sensing and Control: Tempo and Sequencing](../../control/sensing)
+[Sensing and Control: Tempo and Sequencing](../control/sensing.md)
 
 ## Credits
 

@@ -7,7 +7,7 @@ Converts an octave-point-decimal value to pitch-class.
 
 ## Syntax
 ``` csound-orc
-pchoct (oct)  (init- or control-rate args only)
+pchoct(oct)  (init- or control-rate args only)
 ```
 
 where the argument within the parentheses may be a further expression.
@@ -37,7 +37,7 @@ By contrast, the conversion _cpsoct_(8.75 + k1) which gives the value of A440 tr
 
 ## Examples
 
-Here is an example of the pchoct opcode. It uses the file [pchoct.csd](../../examples/pchoct.csd).
+Here is an example of the pchoct opcode. It uses the file [pchoct.csd](../examples/pchoct.csd).
 
 ``` csound-csd title="Example of the pchoct opcode." linenums="1"
 --8<-- "examples/pchoct.csd"
@@ -51,7 +51,7 @@ instr 1:  ipch = 8.090
 
 ## See also
 
-[Pitch Converters: Functions](../../pitch/funcs)
+[Pitch Converters: Functions](../pitch/funcs.md)
 
 ## Credits
 

@@ -6,10 +6,17 @@ category:Signal Modifiers:Delay
 Variable delay opcodes with high quality interpolation.
 
 ## Syntax
-``` csound-orc
-aout1, aout2, aout3, aout4 vdelayxwq ain1, ain2, ain3, ain4, adl, \
-                           imd, iws [, ist]
-```
+=== "Modern"
+    ``` csound-orc
+    aout1, aout2, aout3, aout4 = vdelayxwq(ain1, ain2, ain3, ain4, adl, \
+                                 imd, iws [, ist])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout1, aout2, aout3, aout4 vdelayxwq ain1, ain2, ain3, ain4, adl, \
+                               imd, iws [, ist]
+    ```
 
 ### Initialization
 
@@ -47,7 +54,7 @@ The multichannel opcodes (eg. _vdelayxq_) allow delaying 2 or 4 variables at onc
 
 ## Examples
 
-Here is an example of the use of the _vdelayxwq_ opcode. It uses the file [vdelayxwq.csd](../../examples/vdelayxwq.csd).
+Here is an example of the use of the _vdelayxwq_ opcode. It uses the file [vdelayxwq.csd](../examples/vdelayxwq.csd).
 
 ``` csound-csd title="Example of the _vdelayxwq_ opcode." linenums="1"
 --8<-- "examples/vdelayxwq.csd"
@@ -55,4 +62,4 @@ Here is an example of the use of the _vdelayxwq_ opcode. It uses the file [vdela
 
 ## See also
 
-[Delay](../../sigmod/delayops)
+[Delay](../sigmod/delayops.md)

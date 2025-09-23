@@ -2,6 +2,6 @@
 
 Opcodes that let one extend the duration of an event are:
 
-* [lastcycle](../../opcodes/lastcycle)
-* [release](../../opcodes/release)
-* [xtratim](../../opcodes/xtratim)
+* [lastcycle](../opcodes/lastcycle.md)
+* [release](../opcodes/release.md)
+* [xtratim](../opcodes/xtratim.md)

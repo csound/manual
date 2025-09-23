@@ -6,11 +6,19 @@ category:Real-time MIDI:Slider Banks
 Stores a bank of 64 different MIDI control messages to a table.
 
 ## Syntax
-``` csound-orc
-kflag slider64table ichan, ioutTable, ioffset, ictlnum1, imin1, \
-                    imax1, init1, ifn1, ...., \
-                    ictlnum64, imin64, imax64, init64, ifn64
-```
+=== "Modern"
+    ``` csound-orc
+    kflag = slider64table(ichan, ioutTable, ioffset, ictlnum1, imin1, \
+                          imax1, init1, ifn1, ...., \
+                          ictlnum64, imin64, imax64, init64, ifn64)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kflag slider64table ichan, ioutTable, ioffset, ictlnum1, imin1, \
+                        imax1, init1, ifn1, ...., \
+                        ictlnum64, imin64, imax64, init64, ifn64
+    ```
 
 ### Initialization
 
@@ -40,15 +48,15 @@ When no function table translation is required, set the _ifnN_ value to 0, else 
 
 _slider64table_ allows a bank of 64 different MIDI control message numbers.
 
-As the input and output arguments are many, you can split the line using '\' (backslash) character (new in 3.47 version) to improve the readability. Using these opcodes is considerably more efficient than using the separate ones ([ctrl7](../../opcodes/ctrl7) and [tonek](../../opcodes/tonek)) when more controllers are required.
+As the input and output arguments are many, you can split the line using '\' (backslash) character (new in 3.47 version) to improve the readability. Using these opcodes is considerably more efficient than using the separate ones ([ctrl7](../opcodes/ctrl7.md) and [tonek](../opcodes/tonek.md)) when more controllers are required.
 
-_slider64table_ is very similar to  [slider64](../../opcodes/slider64) and _sliderN_ family of opcodes (see their manual for more information). The actual difference is that the output is not stored to k-rate variables, but to a table, denoted by the _ioutTable_ argument. It is possible to define a starting index in order to use the same table for more than one slider bank (or other purposes).
+_slider64table_ is very similar to  [slider64](../opcodes/slider64.md) and _sliderN_ family of opcodes (see their manual for more information). The actual difference is that the output is not stored to k-rate variables, but to a table, denoted by the _ioutTable_ argument. It is possible to define a starting index in order to use the same table for more than one slider bank (or other purposes).
 
-It is possible to use this opcode together with [FLslidBnk2Setk](../../opcodes/flslidbnk2setk) and [FLslidBnk2](../../opcodes/flslidbnk2), so you can synchronize the position of the MIDI values to the position of the FLTK valuator widgets of [FLslidBnk2](../../opcodes/flslidbnk2). Notice that you have to specify the same min/max values as well the linear/exponential responses in both _sliderNtable(f)_ and [FLslidBnk2](../../opcodes/flslidbnk2). The exception is when using table-indexed response instead of a lin/exp response. In this case, in order to achieve a useful result, the table-indexed response and actual min/max values must be set only in [FLslidBnk2](../../opcodes/flslidbnk2), whereas, in sliderNtable(f), you have to set a linear response and a minimum of zero and a maximum of one in all sliders.
+It is possible to use this opcode together with *FLslidBnk2Setk* and *FLslidBnk2*, so you can synchronize the position of the MIDI values to the position of the FLTK valuator widgets of *FLslidBnk2*. Notice that you have to specify the same min/max values as well the linear/exponential responses in both *sliderNtable(f)* and *FLslidBnk2*. The exception is when using table-indexed response instead of a lin/exp response. In this case, in order to achieve a useful result, the table-indexed response and actual min/max values must be set only in *FLslidBnk2*, whereas, in sliderNtable(f), you have to set a linear response and a minimum of zero and a maximum of one in all sliders. The FLTK opcodes are plugin opcodes in widgets from the plugins repository.
 
 ## See Also
 
-[Slider Banks](../../midi/sliderbk)
+[Slider Banks](../midi/sliderbk.md)
 
 ## Credits
 

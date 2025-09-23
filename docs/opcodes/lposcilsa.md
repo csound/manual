@@ -6,9 +6,15 @@ category:Signal Generators:Sample Playback
 Read stereo sampled sound from a table with looping and high precision.
 
 ## Syntax
-``` csound-orc
-ar1, ar2 lposcilsa aamp, kfreqratio, kloop, kend, ift [,iphs]
-```
+=== "Modern"
+    ``` csound-orc
+    ar1, ar2 = lposcilsa(aamp, kfreqratio, kloop, kend, ift [,iphs])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar1, ar2 lposcilsa aamp, kfreqratio, kloop, kend, ift [,iphs]
+    ```
 
 ### Initialization
 
@@ -28,11 +34,11 @@ _kloop_ -- start loop point (in samples)
 
 _kend_ -- end loop point (in samples)
 
-_lposcilsa_ is the same as [lposcila](../../opcodes/lposcila), but works with stereo files loaded with [GEN01](../../scoregens/gen01).
+_lposcilsa_ is the same as [lposcila](../opcodes/lposcila.md), but works with stereo files loaded with [GEN01](../scoregens/gen01.md).
 
 ## Examples
 
-Here is an example of the lposcilsa opcode. It uses the file [lposcilsa.csd](../../examples/lposcilsa.csd).
+Here is an example of the lposcilsa opcode. It uses the file [lposcilsa.csd](../examples/lposcilsa.csd).
 
 ``` csound-csd title="Example of the lposcilsa opcode." linenums="1"
 --8<-- "examples/lposcilsa.csd"
@@ -40,7 +46,7 @@ Here is an example of the lposcilsa opcode. It uses the file [lposcilsa.csd](../
 
 ## See also
 
-[Sample Playback](../../siggen/sample)
+[Sample Playback](../siggen/sample.md)
 
 ## Credits
 

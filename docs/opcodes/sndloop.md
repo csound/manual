@@ -8,9 +8,15 @@ A sound looper with pitch control.
 This opcode records input audio and plays it back in a loop with user-defined duration and crossfade time. It also allows the pitch of the loop to be controlled, including reversed playback.
 
 ## Syntax
-``` csound-orc
-asig, krec sndloop ain, kpitch, ktrig, idur, ifad
-```
+=== "Modern"
+    ``` csound-orc
+    asig, krec = sndloop(ain, kpitch, ktrig, idur, ifad)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig, krec sndloop ain, kpitch, ktrig, idur, ifad
+    ```
 
 ### Initialization
 
@@ -30,7 +36,7 @@ _ktrig_ -- trigger signal: when 0, processing is bypassed. When switched on (ktr
 
 ## Examples
 
-Here is an example of the sndloop opcode. It uses the file [sndloop.csd](../../examples/sndloop.csd).
+Here is an example of the sndloop opcode. It uses the file [sndloop.csd](../examples/sndloop.csd).
 
 ``` csound-csd title="Example of the sndloop opcode." linenums="1"
 --8<-- "examples/sndloop.csd"
@@ -40,7 +46,7 @@ The example above shows the basic operation of sndloop. Pitch can be controlled 
 
 ## See also
 
-[Sample Playback](../../siggen/sample)
+[Sample Playback](../siggen/sample.md)
 
 ## Credits
 

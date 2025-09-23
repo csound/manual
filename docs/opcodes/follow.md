@@ -6,9 +6,15 @@ category:Instrument Control:Sensing and Control
 Envelope follower unit generator.
 
 ## Syntax
-``` csound-orc
-ares follow asig, idt
-```
+=== "Modern"
+    ``` csound-orc
+    ares = follow(asig, idt)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares follow asig, idt
+    ```
 
 ### Initialization
 
@@ -20,7 +26,7 @@ _asig_ -- This is the signal from which to extract the envelope.
 
 ## Examples
 
-Here is an example of the follow opcode. It uses the file [follow.csd](../../examples/follow.csd), and [drumsMlp.wav](../../examples/drumsMlp.wav).
+Here is an example of the follow opcode. It uses the file [follow.csd](../examples/follow.csd), and [drumsMlp.wav](../examples/drumsMlp.wav).
 
 ``` csound-csd title="Example of the follow opcode." linenums="1"
 --8<-- "examples/follow.csd"
@@ -30,7 +36,7 @@ To avoid zipper noise, by discontinuities produced from complex envelope trackin
 
 ## See also
 
-[Sensing and Control: Envelope followers](../../control/sensing)
+[Sensing and Control: Envelope followers](../control/sensing.md)
 
 ## Credits
 

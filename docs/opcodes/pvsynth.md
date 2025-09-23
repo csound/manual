@@ -6,9 +6,15 @@ category:Spectral Processing:Streaming
 Resynthesise phase vocoder data (f-signal) using a FFT overlap-add.
 
 ## Syntax
-``` csound-orc
-ares pvsynth fsrc, [iinit]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = pvsynth(fsrc, [iinit])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares pvsynth fsrc, [iinit]
+    ```
 
 ### Performance
 
@@ -33,7 +39,7 @@ aout    pvsynth  fsigout                   ; resynthesize,
         dispfft  aout, 0.1, 1024           ; and view the effect
 ```
 
-Here is an example of the pvsynth opcode. It uses the file [pvsynth.csd](../../examples/pvsynth.csd).
+Here is an example of the pvsynth opcode. It uses the file [pvsynth.csd](../examples/pvsynth.csd).
 
 ``` csound-csd title="Example of the pvsynth opcode." linenums="1"
 --8<-- "examples/pvsynth.csd"
@@ -41,7 +47,7 @@ Here is an example of the pvsynth opcode. It uses the file [pvsynth.csd](../../e
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

@@ -6,9 +6,15 @@ category:Signal Modifiers:Panning and Spatialization
 Writes a multi-channel audio signal to a ZAK array with moving virtual sources.
 
 ## Syntax
-``` csound-orc
-vbapzmove inumchnls, istartndx, asig, idur, ispread, ifldnum, ifld1, ifld2, [...]
-```
+=== "Modern"
+    ``` csound-orc
+    vbapzmove(inumchnls, istartndx, asig, idur, ispread, ifldnum, ifld1, ifld2, [...])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vbapzmove inumchnls, istartndx, asig, idur, ispread, ifldnum, ifld1, ifld2, [...]
+    ```
 
 ### Initialization
 
@@ -28,11 +34,11 @@ _ifld1, ifld2, ..._ -- azimuth angles or angular velocities, and relative durati
 
 _asig_ -- audio signal to be panned
 
-The opcode _vbapzmove_ is the multiple channel analog of the opcodes like [vbap4move](../../opcodes/vbap4move), working on _inumchnls_ and using a ZAK array for output.
+The opcode _vbapzmove_ is the multiple channel analog of the opcodes like [vbap4move](../opcodes/vbap4move.md), working on _inumchnls_ and using a ZAK array for output.
 
 > :warning: **Warning**
 >
-> Please note that all _vbap_ panning opcodes require the _vbap_ system to be initialized using [vbaplsinit](../../opcodes/vbaplsinit).
+> Please note that all _vbap_ panning opcodes require the _vbap_ system to be initialized using [vbaplsinit](../opcodes/vbaplsinit.md).
 
 ### Reference
 
@@ -40,11 +46,11 @@ Ville Pulkki: &#8220;Virtual Sound Source Positioning Using Vector Base Amplitud
 
 ## Examples
 
-See the entry for [vbap8move](../../opcodes/vbap8move) for an example of usage of the _vbapXmove_ opcodes.
+See the entry for [vbap8move](../opcodes/vbap8move.md) for an example of usage of the _vbapXmove_ opcodes.
 
 ## See also
 
-[Panning and Spatialization: Vector Base Amplitude Panning](../../sigmod/panspatl)
+[Panning and Spatialization: Vector Base Amplitude Panning](../sigmod/panspatl.md)
 
 ## Credits
 

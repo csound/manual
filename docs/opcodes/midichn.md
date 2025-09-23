@@ -8,9 +8,15 @@ Returns the MIDI channel number (1 - 16) from which the note was activated.
 In the case of score notes, it returns 0.
 
 ## Syntax
-``` csound-orc
-ichn midichn
-```
+=== "Modern"
+    ``` csound-orc
+    ichn = midichn()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ichn midichn
+    ```
 
 ### Initialization
 
@@ -18,15 +24,15 @@ _ichn_ -- channel number. If the current note was activated from score, it is se
 
 ## Examples
 
-Here is a simple example of the midichn opcode. It uses the file [midichn.csd](../../examples/midichn.csd).
+Here is a simple example of the midichn opcode. It uses the file [midichn.csd](../examples/midichn.csd).
 
 ``` csound-csd title="Example of the midichn opcode." linenums="1"
 --8<-- "examples/midichn.csd"
 ```
 
-Here is an advanced example of the midichn opcode. It uses the file [midichn_advanced.csd](../../examples/midichn_advanced.csd).
+Here is an advanced example of the midichn opcode. It uses the file [midichn_advanced.csd](../examples/midichn_advanced.csd).
 
-Do not forget that you must include the [-F flag](../../) when using an external MIDI file like &#8220;midichn_advanced.mid&#8221;.
+Do not forget that you must include the [-F flag](../invoke/cs-options-alphabetically.md#-f-file-midifilefile) when using an external MIDI file like &#8220;midichn_advanced.mid&#8221;.
 
 ``` csound-csd title="An advanced example of the midichn opcode." linenums="1"
 --8<-- "examples/midichn_advanced.csd"
@@ -43,9 +49,9 @@ note 4 (time = 5.00) was activated from channel 3
 
 ## See also
 
-[MIDI input and Initialization](../../midi/input)
+[MIDI input and Initialization](../midi/input.md)
 
-[MIDI/Score Interoperability](../../midi/interop)
+[MIDI/Score Interoperability](../midi/interop.md)
 
 ## Credits
 

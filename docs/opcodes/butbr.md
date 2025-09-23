@@ -3,9 +3,15 @@ id:butbr
 category:Signal Modifiers:Standard Filters
 -->
 # butbr
-Same as the [butterbr](../../opcodes/butterbr) opcode.
+Same as the [butterbr](../opcodes/butterbr.md) opcode.
 
 ## Syntax
-``` csound-orc
-ares butbr asig, kfreq, kband [, iskip]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = butbr(asig, kfreq, kband [, iskip])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares butbr asig, kfreq, kband [, iskip]
+    ```

@@ -3,17 +3,22 @@ id:ftprint
 category:Table Control:Read/Write Operations
 -->
 # ftprint
-Print the contents of a table (for debugging)
+Print the contents of a table (for debugging).
 
 Plugin opcode in emugens.
 
 It works at k-time, a trigger controls when to print (use ktrig=1, which is the default, to print only at i-time)
 
 ## Syntax
-``` csound-orc
+=== "Modern"
+    ``` csound-orc
+    ftprint(ifn [, ktrig, kstart, kend, kstep, inumcols ])
+    ```
 
-ftprint ifn [, ktrig, kstart, kend, kstep, inumcols ]
-```
+=== "Classic"
+    ``` csound-orc
+    ftprint ifn [, ktrig, kstart, kend, kstep, inumcols ]
+    ```
 
 ### Initialization
 
@@ -33,7 +38,7 @@ _kstep_ - How many elements to skip (default = 1)
 
 ## Examples
 
-Here is an example of the ftprint opcode. It uses the file [ftprint.csd](../../examples/ftprint.csd).
+Here is an example of the ftprint opcode. It uses the file [ftprint.csd](../examples/ftprint.csd).
 
 ``` csound-csd title="Example of the ftprint opcode." linenums="1"
 --8<-- "examples/ftprint.csd"
@@ -41,9 +46,9 @@ Here is an example of the ftprint opcode. It uses the file [ftprint.csd](../../e
 
 ## See also
 
-[Printing and Display](../../sigio/pdisplay)
+[Printing and Display](../sigio/pdisplay.md)
 
-[Read/Write Operations](../../table/readwrit)
+[Read/Write Operations](../table/readwrit.md)
 
 ## Credits
 

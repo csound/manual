@@ -8,9 +8,15 @@ Tracks the pitch of a signal.
 _plltrack_, a pitch tracker based on a phase-locked loop algorithm, described in Zolzer, U, Sankarababu, S.V. and Moller, S, "PLL-based Pitch Detection and Tracking for Audio Signals. Proc. of IIH-MSP 2012".
 
 ## Syntax
-``` csound-orc
-acps, alock plltrack asig, kd [, kloopf, kloopq, klf, khf, kthresh]
-```
+=== "Modern"
+    ``` csound-orc
+    acps, alock = plltrack(asig, kd [, kloopf, kloopq, klf, khf, kthresh])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    acps, alock plltrack asig, kd [, kloopf, kloopq, klf, khf, kthresh]
+    ```
 
 ### Performance
 
@@ -34,7 +40,7 @@ _plltrack_ analyzes the input signal, _asig_, estimating the fundamental of a mo
 
 ## Examples
 
-Here is an example of the plltrack operator. It uses the file [plltrack.csd](../../examples/plltrack.csd).
+Here is an example of the plltrack operator. It uses the file [plltrack.csd](../examples/plltrack.csd).
 
 ``` csound-csd title="Example of the plltrack operator." linenums="1"
 --8<-- "examples/plltrack.csd"
@@ -42,7 +48,7 @@ Here is an example of the plltrack operator. It uses the file [plltrack.csd](../
 
 ## See also
 
-[Sensing and Control: Tempo and Pitch estimation](../../control/sensing)
+[Sensing and Control: Tempo and Pitch estimation](../control/sensing.md)
 
 ## Credits
 

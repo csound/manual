@@ -6,9 +6,15 @@ category:Signal Modifiers:Amplitude Modifiers
 Clips an a-rate signal to a predefined limit, in a &#8220;soft&#8221; manner, using one of three methods.
 
 ## Syntax
-``` csound-orc
-ares clip asig, imeth, ilimit [, iarg]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = clip(asig, imeth, ilimit [, iarg])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares clip asig, imeth, ilimit [, iarg]
+    ```
 
 ### Initialization
 
@@ -58,17 +64,23 @@ $$
 
 ## Examples
 
-Here is an example of the clip opcode. It uses the file [clip.csd](../../examples/clip.csd).
+=== "Modern"
+    Here is an example of the clip opcode. It uses the file [clip-modern.csd](../examples/clip-modern.csd).
+    ``` csound-csd title="Example of the clip opcode." linenums="1"
+    --8<-- "examples/clip-modern.csd"
+    ```
 
-``` csound-csd title="Example of the clip opcode." linenums="1"
---8<-- "examples/clip.csd"
-```
+=== "Classic"
+    Here is an example of the clip opcode. It uses the file [clip.csd](../examples/clip.csd).
+    ``` csound-csd title="Example of the clip opcode." linenums="1"
+    --8<-- "examples/clip.csd"
+    ```
 
 ## See also
 
-[Amplitude Modifiers and Dynamic processing](../../sigmod/ampmod)
+[Amplitude Modifiers and Dynamic processing](../sigmod/ampmod.md)
 
-[Waveshaping](../../sigmod/wavshape)
+[Waveshaping](../sigmod/wavshape.md)
 
 ## Credits
 

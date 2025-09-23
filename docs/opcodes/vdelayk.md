@@ -3,12 +3,18 @@ id:vdelayk
 category:Vectorial:Delay Paths
 -->
 # vdelayk
-Variable time delay applied to a k-rate signal
+Variable time delay applied to a k-rate signal.
 
 ## Syntax
-``` csound-orc
-kout vdelayk  ksig, kdel, imaxdel [, iskip, imode]
-```
+=== "Modern"
+    ``` csound-orc
+    kout = vdelayk(ksig, kdel, imaxdel [, iskip, imode])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kout vdelayk ksig, kdel, imaxdel [, iskip, imode]
+    ```
 
 ### Initialization
 
@@ -26,11 +32,11 @@ _ksig_ - input signal
 
 _kdel_ - delay time in seconds can be varied at k-rate
 
-_vdelayk_ is similar to [vdelay](../../opcodes/vdelay), but works at k-rate. It is designed to delay control signals, to be used, for example, in algorithmic composition.
+_vdelayk_ is similar to [vdelay](../opcodes/vdelay.md), but works at k-rate. It is designed to delay control signals, to be used, for example, in algorithmic composition.
 
 ## See also
 
-[Vectorial Control-rate Delay Paths](../../vectorial/delay)
+[Vectorial Control-rate Delay Paths](../vectorial/delay.md)
 
 ## Credits
 

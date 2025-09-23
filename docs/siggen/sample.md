@@ -2,23 +2,23 @@
 
 Opcodes that implement sample playback and looping are:
 
-* [bbcutm](../../opcodes/bbcutm)
-* [bbcuts](../../opcodes/bbcuts)
-* [flooper](../../opcodes/flooper)
-* [flooper2](../../opcodes/flooper2)
-* [loscil](../../opcodes/loscil)
-* [loscil3](../../opcodes/loscil3)
-* [loscilx](../../opcodes/loscilx)
-* [lphasor](../../opcodes/lphasor)
-* [lposcil](../../opcodes/lposcil)
-* [lposcil3](../../opcodes/lposcil3)
-* [lposcila](../../opcodes/lposcila)
-* [lposcilsa](../../opcodes/lposcilsa)
-* [lposcilsa2](../../opcodes/lposcilsa2)
-* [sndloop](../../opcodes/sndloop)
-* [waveset](../../opcodes/waveset)
+* [bbcutm](../opcodes/bbcutm.md)
+* [bbcuts](../opcodes/bbcuts.md)
+* [flooper](../opcodes/flooper.md)
+* [flooper2](../opcodes/flooper2.md)
+* [loscil](../opcodes/loscil.md)
+* [loscil3](../opcodes/loscil3.md)
+* [loscilx](../opcodes/loscilx.md)
+* [lphasor](../opcodes/lphasor.md)
+* [lposcil](../opcodes/lposcil.md)
+* [lposcil3](../opcodes/lposcil3.md)
+* [lposcila](../opcodes/lposcila.md)
+* [lposcilsa](../opcodes/lposcilsa.md)
+* [lposcilsa2](../opcodes/lposcilsa2.md)
+* [sndloop](../opcodes/sndloop.md)
+* [waveset](../opcodes/waveset.md)
 
-See also the [Signal Input](../../sigio/input) section for other ways to input sound.
+See also the [Signal Input](../sigio/input.md) section for other ways to input sound.
 
 ## **Soundfonts**
 
@@ -29,7 +29,7 @@ The SF2 format is made by generator and modulator objects. All current Csound op
 There are several levels of generators having a hierarchical structure. The most basic kind of generator object is a sample. Samples may or may not be be looped, and are associated with a MIDI note number, called the base-key. When a sample is associated with a range of MIDI note numbers, a range of velocities, a transposition (coarse and fine tuning), a scale tuning, and a level scaling factor, the sample and its associations make up a &#8220;split.&#8221; A set of splits, together with a name, make up an &#8220;instrument.&#8221; When an instrument is associated with a key range, a velocity range, a level scaling factor, and a transposition, the instrument and its associations make up a &#8220;layer.&#8221; A set of layers, together with a name, makes up a &#8220;preset.&#8221; Presets are normally the final sound-generating structures ready for the user. They generate sound according to the settings of their lower-level components.
 
 <figure markdown="span">
-![](../../images/SF.png)
+![](../images/SF.png)
 <figcaption></figcaption>
 </figure>
 
@@ -39,34 +39,24 @@ Soundfonts can be viewed and edited by programs like Polyphone ([GPL3, https://w
 
 #### Fluid Opcodes
 
-The fluid family of opcodes wraps Peter Hannape's SoundFont 2 player, FluidSynth: [fluidEngine](../../opcodes/fluidEngine) for instantiating a FluidSynth engine, [fluidSetInterpMethod](../../opcodes/fluidSetInterpMethod) for setting interpolation method for a channel in a FluidSynth engine, [fluidLoad](../../opcodes/fluidLoad) for loading SoundFonts, [fluidProgramSelect](../../opcodes/fluidProgramSelect) for assigning presets from a SoundFont to a FluidSynth engine's MIDI channel, [fluidNote](../../opcodes/fluidNote) for playing a note on a FluidSynth engine's MIDI channel, [fluidCCi](../../opcodes/fluidCCi) for sending a controller message at i-time to a FluidSynth engine's MIDI channel, [fluidCCk](../../opcodes/fluidCCk) for sending a controller message at k-rate to a FluidSynth engine's MIDI channel. [fluidControl](../../opcodes/fluidControl) for playing and controlling loaded Soundfonts (using 'raw' MIDI messages), [fluidOut](../../opcodes/fluidOut) for receiving audio from a single FluidSynth engine, and [fluidAllOut](../../opcodes/fluidAllOut) for receiving audio from all FluidSynth engines.
+The fluid family of opcodes wraps Peter Hannape's SoundFont 2 player, FluidSynth: *fluidEngine* for instantiating a FluidSynth engine, *fluidSetInterpMethod* for setting interpolation method for a channel in a FluidSynth engine, *fluidLoad* for loading SoundFonts, *fluidProgramSelect* for assigning presets from a SoundFont to a FluidSynth engine's MIDI channel, *fluidNote* for playing a note on a FluidSynth engine's MIDI channel, *fluidCCi* for sending a controller message at i-time to a FluidSynth engine's MIDI channel, *fluidCCk* for sending a controller message at k-rate to a FluidSynth engine's MIDI channel. *fluidControl* for playing and controlling loaded Soundfonts (using 'raw' MIDI messages), *fluidOut* for receiving audio from a single FluidSynth engine, and *fluidAllOut* for receiving audio from all FluidSynth engines. These opcodes are available as plugins in *fluidOpcodes* from the plugins repository.
 
-* [fluidAllOut](../../opcodes/fluidAllOut)
-* [fluidCCi](../../opcodes/fluidCCi)
-* [fluidCCk](../../opcodes/fluidCCk)
-* [fluidControl](../../opcodes/fluidControl)
-* [fluidEngine](../../opcodes/fluidEngine)
-* [fluidLoad](../../opcodes/fluidLoad)
-* [fluidNote](../../opcodes/fluidNote)
-* [fluidOut](../../opcodes/fluidOut)
-* [fluidProgramSelect](../../opcodes/fluidProgramSelect)
-* [fluidSetInterpMethod](../../opcodes/fluidSetInterpMethod)
 
 #### "Original" Soundfont opcodes
 
 These opcodes can also use soundfonts to generate sound. sfplay etc. were created for one purpose -- to access the instruments and samples in SoundFonts. The fluid opcodes were created for another purpose -- to use SoundFonts more or less the way they were designed to be used, i.e. using keyboard mappings, layers, internal processing, etc.
 
-* [sfilist](../../opcodes/sfilist)
-* [sfinstr](../../opcodes/sfinstr)
-* [sfinstr3](../../opcodes/sfinstr3)
-* [sfinstr3m](../../opcodes/sfinstr3m)
-* [sfinstrm](../../opcodes/sfinstrm)
-* [sfload](../../opcodes/sfload)
-* [sfpassign](../../opcodes/sfpassign)
-* [sfplay](../../opcodes/sfplay)
-* [sfplay3](../../opcodes/sfplay3)
-* [sfplay3m](../../opcodes/sfplay3m)
-* [sfplaym](../../opcodes/sfplaym)
-* [sflooper](../../opcodes/sflooper)
-* [sfplist](../../opcodes/sfplist)
-* [sfpreset](../../opcodes/sfpreset)
+* [sfilist](../opcodes/sfilist.md)
+* [sfinstr](../opcodes/sfinstr.md)
+* [sfinstr3](../opcodes/sfinstr3.md)
+* [sfinstr3m](../opcodes/sfinstr3m.md)
+* [sfinstrm](../opcodes/sfinstrm.md)
+* [sfload](../opcodes/sfload.md)
+* [sfpassign](../opcodes/sfpassign.md)
+* [sfplay](../opcodes/sfplay.md)
+* [sfplay3](../opcodes/sfplay3.md)
+* [sfplay3m](../opcodes/sfplay3m.md)
+* [sfplaym](../opcodes/sfplaym.md)
+* [sflooper](../opcodes/sflooper.md)
+* [sfplist](../opcodes/sfplist.md)
+* [sfpreset](../opcodes/sfpreset.md)

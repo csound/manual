@@ -12,7 +12,7 @@ f # time size -24 ftable min max
 
 ### Initialization
 
-_#, time, size_ -- the usual GEN parameters. See [f statement](../../scoregens/f).
+_#, time, size_ -- the usual GEN parameters. See [f statement](../scoregens/f.md).
 
 _ftable_ -- ftable must be an already allocated table with the same size as this function.
 
@@ -24,7 +24,7 @@ _min, max_ -- the rescaling range.
 
 ## Examples
 
-Here is an example of the GEN24 opcode. It uses the file [gen24.csd](../../examples/gen24.csd).
+Here is an example of the GEN24 opcode. It uses the file [gen24.csd](../examples/gen24.csd).
 
 ``` csound-csd title="Example of the GEN24 generator." linenums="1"
 --8<-- "examples/gen24.csd"

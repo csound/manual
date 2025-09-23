@@ -3,15 +3,22 @@ id:printf
 category:Signal I/O:Printing and Display
 -->
 # printf
-printf-style formatted output
+printf-style formatted output.
 
 _printf_ and _printf_i_ write formatted output, similarly to the C function printf(). _printf_i_ runs at i-time only, while _printf_ runs both at initialization and performance time.
 
 ## Syntax
-``` csound-orc
-printf_i Sfmt, itrig, [iarg1[, iarg2[, ... ]]]
-printf Sfmt, ktrig, [xarg1[, xarg2[, ... ]]]
-```
+=== "Modern"
+    ``` csound-orc
+    printf_i(Sfmt, itrig, [iarg1[, iarg2[, ... ]]])
+    printf(Sfmt, ktrig, [xarg1[, xarg2[, ... ]]])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    printf_i Sfmt, itrig, [iarg1[, iarg2[, ... ]]]
+    printf Sfmt, ktrig, [xarg1[, xarg2[, ... ]]]
+    ```
 
 ### Initialization
 
@@ -31,7 +38,7 @@ _xarg1, xarg2, ..._ -- input arguments (max. 30) for format.  Integer formats li
 
 ## Examples
 
-Here is an example of the printf opcode. It uses the file [printf.csd](../../examples/printf.csd).
+Here is an example of the printf opcode. It uses the file [printf.csd](../examples/printf.csd).
 
 ``` csound-csd title="Example of the printf opcode." linenums="1"
 --8<-- "examples/printf.csd"
@@ -45,7 +52,7 @@ Audiofile 'frox.wav' does not exist!
 
 ## See also
 
-[Printing and Display](../../sigio/pdisplay)
+[Printing and Display](../sigio/pdisplay.md)
 
 More information about printf: [http://www.cplusplus.com/reference/clibrary/cstdio/printf/](http://www.cplusplus.com/reference/clibrary/cstdio/printf/)
 

@@ -8,9 +8,15 @@ A time-varying convolution (FIR filter) opcode.
 An opcode that takes two incoming signals and interprets one of them as the coefficients of linear time-variable finite impulse response filter. This is implemented via direct convolution (for partition sizes of 1 sample) or DFT-based partitioned convolution. The signals can be 'frozen' (i.e. the filter coefficients are kept the same) at any point in time, at a-rate or k-rate.
 
 ## Syntax
-``` csound-orc
-ares tvconv asig1, asig2, xfreez1, xfreez2, iparts, ifils
-```
+=== "Modern"
+    ``` csound-orc
+    ares = tvconv(asig1, asig2, xfreez1, xfreez2, iparts, ifils)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares tvconv asig1, asig2, xfreez1, xfreez2, iparts, ifils
+    ```
 
 ### Initialization
 
@@ -30,7 +36,7 @@ _xfreez2_ -- freeze switch for asig2, similar to xfreez1 in operation.
 
 ## Examples
 
-Here is an example of the tvconv opcode. It uses the file [tvconv.csd](../../examples/tvconv.csd).
+Here is an example of the tvconv opcode. It uses the file [tvconv.csd](../examples/tvconv.csd).
 
 ``` csound-csd title="Example of the tvconv opcode." linenums="1"
 --8<-- "examples/tvconv.csd"
@@ -38,7 +44,7 @@ Here is an example of the tvconv opcode. It uses the file [tvconv.csd](../../exa
 
 ## See also
 
-[Convolution and Morphing](../../sigmod/conmorph)
+[Convolution and Morphing](../sigmod/conmorph.md)
 
 ## Credits
 

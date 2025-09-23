@@ -6,9 +6,15 @@ category:Signal Modifiers:Sample Level Operators
 Modify a signal by down-sampling.
 
 ## Syntax
-``` csound-orc
-kres downsamp asig [, iwlen]
-```
+=== "Modern"
+    ``` csound-orc
+    kres = downsamp(asig [, iwlen])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres downsamp asig [, iwlen]
+    ```
 
 ### Initialization
 
@@ -20,7 +26,7 @@ _downsamp_ converts an audio signal to a control signal by downsampling. It prod
 
 ## Examples
 
-Here is an example of the downsamp opcode. It uses the file [downsamp.csd](../../examples/downsamp.csd).
+Here is an example of the downsamp opcode. It uses the file [downsamp.csd](../examples/downsamp.csd).
 
 ``` csound-csd title="Example of the downsamp opcode." linenums="1"
 --8<-- "examples/downsamp.csd"
@@ -28,4 +34,4 @@ Here is an example of the downsamp opcode. It uses the file [downsamp.csd](../..
 
 ## See also
 
-[Sample Level Operators](../../sigmod/sample)
+[Sample Level Operators](../sigmod/sample.md)

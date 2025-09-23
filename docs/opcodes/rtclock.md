@@ -6,10 +6,17 @@ category:Instrument Control:Time Reading
 Read the real time clock from the operating system.
 
 ## Syntax
-``` csound-orc
-ires rtclock
-kres rtclock
-```
+=== "Modern"
+    ``` csound-orc
+    ires = rtclock()
+    kres = rtclock()
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ires rtclock
+    kres rtclock
+    ```
 
 ### Performance
 
@@ -17,7 +24,7 @@ Read the real-time clock from operating system. Under Windows, this changes only
 
 ## Examples
 
-Here is an example of the rtclock opcode. It uses the file [rtclock.csd](../../examples/rtclock.csd).
+Here is an example of the rtclock opcode. It uses the file [rtclock.csd](../examples/rtclock.csd).
 
 ``` csound-csd title="Example of the rtclock opcode." linenums="1"
 --8<-- "examples/rtclock.csd"
@@ -25,7 +32,7 @@ Here is an example of the rtclock opcode. It uses the file [rtclock.csd](../../e
 
 ## See also
 
-[Time Reading](../../control/timeread)
+[Time Reading](../control/timeread.md)
 
 ## Credits
 

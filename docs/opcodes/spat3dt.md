@@ -8,9 +8,15 @@ Can be used to render an impulse response for a 3D space at i-time.
 This opcode positions the input sound in a 3D space, with optional simulation of room acoustics, in various output formats. _spat3dt_ can be used to render the impulse response at i-time, storing output in a function table, suitable for convolution.
 
 ## Syntax
-``` csound-orc
-spat3dt ioutft, iX, iY, iZ, idist, ift, imode, irlen [, iftnocl]
-```
+=== "Modern"
+    ``` csound-orc
+    spat3dt(ioutft, iX, iY, iZ, idist, ift, imode, irlen [, iftnocl])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    spat3dt ioutft, iX, iY, iZ, idist, ift, imode, irlen [, iftnocl]
+    ```
 
 ### Initialization
 
@@ -116,7 +122,7 @@ _iftnocl_ (optional, default=0) -- Do not clear output ftable (mix to existing d
 
 ## Examples
 
-Here is an example of the spat3dt opcode. It uses the file [spat3dt.csd](../../examples/spat3dt.csd).
+Here is an example of the spat3dt opcode. It uses the file [spat3dt.csd](../examples/spat3dt.csd).
 
 ``` csound-csd title="Example of the spat3dt opcode." linenums="1"
 --8<-- "examples/spat3dt.csd"
@@ -124,7 +130,7 @@ Here is an example of the spat3dt opcode. It uses the file [spat3dt.csd](../../e
 
 ## See also
 
-[Panning and Spatialization: Simulation of room acoustics](../../sigmod/panspatl)
+[Panning and Spatialization: Simulation of room acoustics](../sigmod/panspatl.md)
 
 ## Credits
 

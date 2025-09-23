@@ -18,17 +18,17 @@ All pfields are ignored.
 
 ### Performance
 
-The _} statement_ is used in conjunction with the [{ statement](../../scoregens/leftbrace) to define repeating groups of other score events.  A score loop begins with the _{ statement_ which defines the number of repetitions and a unique macro name that will contain the current loop counter.  The body of a loop can contain any number of other events (including sectional breaks) and is terminated by a _} statement_ on its own line. The _} statement_ takes no parameters.
+The _} statement_ is used in conjunction with the [{ statement](../scoregens/leftbrace.md) to define repeating groups of other score events.  A score loop begins with the _{ statement_ which defines the number of repetitions and a unique macro name that will contain the current loop counter.  The body of a loop can contain any number of other events (including sectional breaks) and is terminated by a _} statement_ on its own line. The _} statement_ takes no parameters.
 
-See the documentation for the [{ statement](../../scoregens/leftbrace) for further details.
+See the documentation for the [{ statement](../scoregens/leftbrace.md) for further details.
 
 ## Examples
 
-See the examples in the entry for the [{ statement](../../scoregens/leftbrace).
+See the examples in the entry for the [{ statement](../scoregens/leftbrace.md).
 
 ## See Also
 
-[Score Statements](../../score/statemnt)
+[Score Statements](../score/statemnt.md)
 
 ## Credits
 

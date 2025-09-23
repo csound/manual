@@ -6,9 +6,15 @@ category:Signal Generators:FM Synthesis
 Basic frequency modulated oscillator with linear interpolation.
 
 ## Syntax
-``` csound-orc
-ares foscili xamp, kcps, xcar, xmod, kndx [, ifn, iphs]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = foscili(xamp, kcps, xcar, xmod, kndx [, ifn, iphs])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares foscili xamp, kcps, xcar, xmod, kndx [, ifn, iphs]
+    ```
 
 ### Initialization
 
@@ -29,11 +35,11 @@ _xmod_ -- a factor that, when multiplied by the _kcps_ parameter, gives the modu
 
 _kndx_ -- the modulation index.
 
-_foscili_ differs from [foscil](../../opcodes/foscil) in that the standard procedure of using a truncated phase as a sampling index is here replaced by a process that interpolates between two successive lookups. Interpolating generators will produce a noticeably cleaner output signal, but they may take as much as twice as long to run. Adequate accuracy can also be gained without the time cost of interpolation by using large stored function tables of 2K, 4K or 8K points if the space is available.
+_foscili_ differs from [foscil](../opcodes/foscil.md) in that the standard procedure of using a truncated phase as a sampling index is here replaced by a process that interpolates between two successive lookups. Interpolating generators will produce a noticeably cleaner output signal, but they may take as much as twice as long to run. Adequate accuracy can also be gained without the time cost of interpolation by using large stored function tables of 2K, 4K or 8K points if the space is available.
 
 ## Examples
 
-Here is an example of the foscili opcode. It uses the file [foscili.csd](../../examples/foscili.csd).
+Here is an example of the foscili opcode. It uses the file [foscili.csd](../examples/foscili.csd).
 
 ``` csound-orc title="Example of the foscili opcode." linenums="1"
 --8<-- "examples/foscili.csd"
@@ -41,6 +47,6 @@ Here is an example of the foscili opcode. It uses the file [foscili.csd](../../e
 
 ## See Also
 
-[FM Synthesis](../../siggen/fmsynth)
+[FM Synthesis](../siggen/fmsynth.md)
 
 More information about frequency modulation on Wikipedia: [http://en.wikipedia.org/wiki/Frequency_modulation_synthesis](http://en.wikipedia.org/wiki/Frequency_modulation_synthesis)

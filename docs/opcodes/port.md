@@ -6,9 +6,15 @@ category:Signal Modifiers:Standard Filters:Control
 Applies portamento to a step-valued control signal.
 
 ## Syntax
-``` csound-orc
-kres port ksig, ihtim [, isig]
-```
+=== "Modern"
+    ``` csound-orc
+    kres = port(ksig, ihtim [, isig])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres port ksig, ihtim [, isig]
+    ```
 
 ### Initialization
 
@@ -23,11 +29,11 @@ _kres_ -- the output signal at control-rate.
 
 _ksig_ -- the input signal at control-rate.
 
-_port_ applies portamento to a step-valued control signal. At each new step value, _ksig_ is low-pass filtered to move towards that value at a rate determined by _ihtim_. _ihtim_ is the &#8220;half-time&#8221; of the function (in seconds), during which the curve will traverse half the distance towards the new value, then half as much again, etc., theoretically never reaching its asymptote. With [portk](../../opcodes/portk), the half-time can be varied at the control rate.
+_port_ applies portamento to a step-valued control signal. At each new step value, _ksig_ is low-pass filtered to move towards that value at a rate determined by _ihtim_. _ihtim_ is the &#8220;half-time&#8221; of the function (in seconds), during which the curve will traverse half the distance towards the new value, then half as much again, etc., theoretically never reaching its asymptote. With [portk](../opcodes/portk.md), the half-time can be varied at the control rate.
 
 ## Examples
 
-Here is an example of the port opcode. It uses the file [port.csd](../../examples/port.csd).
+Here is an example of the port opcode. It uses the file [port.csd](../examples/port.csd).
 
 ``` csound-csd title="Example of the port opcode." linenums="1"
 --8<-- "examples/port.csd"
@@ -35,4 +41,4 @@ Here is an example of the port opcode. It uses the file [port.csd](../../example
 
 ## See also
 
-[Standard Filters: Control signal filters](../../sigmod/standard)
+[Standard Filters: Control signal filters](../sigmod/standard.md)

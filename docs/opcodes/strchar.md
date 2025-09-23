@@ -8,13 +8,19 @@ Return the ASCII code of the character in Sstr at ipos (defaults to zero which m
 _strchar_ runs at init time only.
 
 ## Syntax
-``` csound-orc
-ichr strchar Sstr [, ipos]
-```
+=== "Modern"
+    ``` csound-orc
+    ichr = strchar(Sstr [, ipos])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ichr strchar Sstr [, ipos]
+    ```
 
 ## Examples
 
-Here is an example of the strchar opcode. It uses the file [strchar.csd](../../examples/strchar.csd).
+Here is an example of the strchar opcode. It uses the file [strchar.csd](../examples/strchar.csd).
 
 ``` csound-csd title="Example of the strchar opcode." linenums="1"
 --8<-- "examples/strchar.csd"
@@ -22,7 +28,7 @@ Here is an example of the strchar opcode. It uses the file [strchar.csd](../../e
 
 ## See Also
 
-[String Conversion Opcodes](../../strings/convert)
+[String Conversion Opcodes](../strings/convert.md)
 
 ## Credits
 

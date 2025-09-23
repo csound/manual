@@ -8,9 +8,15 @@ Generates a set of impulses.
 The impulses have amplitude _kamp_ separated by _kintvl_ seconds (or samples if _kintvl_ is negative).  The first impulse is generated after a delay of _ioffset_ seconds.
 
 ## Syntax
-``` csound-orc
-ares mpulse kamp, kintvl [, ioffset]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = mpulse(kamp, kintvl [, ioffset])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares mpulse kamp, kintvl [, ioffset]
+    ```
 
 ### Initialization
 
@@ -26,17 +32,17 @@ After the initial delay, an impulse of _kamp_ amplitude is generated as a single
 
 ## Examples
 
-Here is an example of the mpulse opcode. It uses the file [mpulse.csd](../../examples/mpulse.csd).
+Here is an example of the mpulse opcode. It uses the file [mpulse.csd](../examples/mpulse.csd).
 
 ``` csound-orc title="Example of the mpulse opcode." linenums="1"
 --8<-- "examples/mpulse.csd"
 ```
 
-Another example of how to use mpulse can be found here: [mode](../../opcodes/mode)
+Another example of how to use mpulse can be found here: [mode](../opcodes/mode.md)
 
 ## See Also
 
-[Dynamic Spectrum Oscillators](../../siggen/dynamic)
+[Dynamic Spectrum Oscillators](../siggen/dynamic.md)
 
 ## Credits
 

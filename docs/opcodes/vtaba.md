@@ -6,9 +6,15 @@ category:Vectorial:Tables
 Read vectors (from tables -or arrays of vectors) at a-rate.
 
 ## Syntax
-``` csound-orc
-vtaba  andx, ifn, aout1 [, aout2, aout3, .... , aoutN ]
-```
+=== "Modern"
+    ``` csound-orc
+    vtaba(andx, ifn, aout1 [, aout2, aout3, .... , aoutN ])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vtaba andx, ifn, aout1 [, aout2, aout3, .... , aoutN ]
+    ```
 
 ### Initialization
 
@@ -28,15 +34,15 @@ The _vtab_ family is similar to the _vtable_ family, but is much faster because 
 
 > :memo: **Note**
 >
-> Notice that _vtaba_'s output arguments are placed at the right of the opcode name, differently from usual (this style is already used in other opcodes using undefined lists of output arguments such as [fin](../../opcodes/fin) or [trigseq](../../opcodes/trigseq)).
+> Notice that _vtaba_'s output arguments are placed at the right of the opcode name, differently from usual (this style is already used in other opcodes using undefined lists of output arguments such as [fin](../opcodes/fin.md) or [trigseq](../opcodes/trigseq.md)).
 
 ## Examples
 
-The usage of _vtaba_ is similar to [vtablek](../../opcodes/vtablek).
+The usage of _vtaba_ is similar to [vtablek](../opcodes/vtablek.md).
 
 ## See also
 
-[Tables of vectors operators](../../vectorial/tables)
+[Tables of vectors operators](../vectorial/tables.md)
 
 ## Credits
 

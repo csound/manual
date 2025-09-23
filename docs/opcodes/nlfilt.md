@@ -7,16 +7,22 @@ A filter with a non-linear effect.
 
 Implements the filter:
 
-```
-Y{n} = a Y{n-1} + b Y{n-2} + d Y^2{n-L} + X{n} - C
-```
+$$
+Y[n] = a \; Y[n-1] + b \; Y[n-2] + d \; Y^2[n-L] + X[n] - C
+$$
 
 described in Dobson and Fitch (ICMC'96)
 
 ## Syntax
-``` csound-orc
-ares nlfilt ain, ka, kb, kd, kC, kL
-```
+=== "Modern"
+    ``` csound-orc
+    ares = nlfilt(ain, ka, kb, kd, kC, kL)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares nlfilt ain, ka, kb, kd, kC, kL
+    ```
 
 ### Performance
 
@@ -62,7 +68,7 @@ The high pass version is less likely to oscillate. It adds scintillation to medi
 
 ## Examples
 
-Here is an example of the nlfilt opcode. It uses the file [nlfilt.csd](../../examples/nlfilt.csd).
+Here is an example of the nlfilt opcode. It uses the file [nlfilt.csd](../examples/nlfilt.csd).
 
 ``` csound-csd title="Example of the nlfilt opcode." linenums="1"
 --8<-- "examples/nlfilt.csd"
@@ -70,7 +76,7 @@ Here is an example of the nlfilt opcode. It uses the file [nlfilt.csd](../../exa
 
 ## See also
 
-[Specialized Filters: Other filters](../../sigmod/speciali)
+[Specialized Filters: Other filters](../sigmod/speciali.md)
 
 ## Credits
 

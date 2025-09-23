@@ -3,14 +3,20 @@ id:tradsyn
 category:Spectral Processing:Streaming
 -->
 # tradsyn
-Streaming partial track additive synthesis
+Streaming partial track additive synthesis.
 
 The _tradsyn_ opcode takes an input containg a TRACKS pv streaming signal (as generated, for instance by _partials_),as described in Lazzarini et al, "Time-stretching using the Instantaneous Frequency Distribution and Partial Tracking", Proc.of ICMC05, Barcelona. It resynthesises the signal using linear amplitude and frequency interpolation to drive a bank of interpolating oscillators with amplitude and pitch scaling controls.
 
 ## Syntax
-``` csound-orc
-asig tradsyn fin, kscal, kpitch, kmaxtracks, ifn
-```
+=== "Modern"
+    ``` csound-orc
+    asig = tradsyn(fin, kscal, kpitch, kmaxtracks, ifn)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    asig tradsyn fin, kscal, kpitch, kmaxtracks, ifn
+    ```
 
 ### Performance
 
@@ -28,7 +34,7 @@ _ifn_ -- function table containing one cycle of a sinusoid (sine or cosine).
 
 ## Examples
 
-Here is an example of the tradsyn opcode. It uses the file [tradsyn.csd](../../examples/tradsyn.csd).
+Here is an example of the tradsyn opcode. It uses the file [tradsyn.csd](../examples/tradsyn.csd).
 
 ``` csound-csd title="Example of the tradsyn opcode." linenums="1"
 --8<-- "examples/tradsyn.csd"
@@ -38,7 +44,7 @@ The example above shows partial tracking of an ifd-analysis signal and linear ad
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

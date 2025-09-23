@@ -12,13 +12,13 @@ f  #   time   size   6   a   n1   b   n2   c   n3   d ...
 
 ### Initialization
 
-_size_ -- number of points in the table. Must be a power off or power-of-2 plus 1 (see [f statement](../../scoregens/f)).
+_size_ -- number of points in the table. Must be a power off or power-of-2 plus 1 (see [f statement](../scoregens/f.md)).
 
 _a, c, e, ..._ -- local maxima or minima of successive segments, depending on the relation of these points to adjacent inflexions. May be either positive or negative.
 
 _b, d, f, ..._ -- ordinate values of points of inflexion at the ends of successive curved segments. May be positive or negative.
 
-_n1, n2, n3 ..._ -- number of stored values between specified points. Cannot be negative, but a zero is meaningful for specifying discontinuities. The sum _n1_ + _n2_ + ... will normally equal size for fully specified functions. (for details, see [GEN05](../../scoregens/gen05)).
+_n1, n2, n3 ..._ -- number of stored values between specified points. Cannot be negative, but a zero is meaningful for specifying discontinuities. The sum _n1_ + _n2_ + ... will normally equal size for fully specified functions. (for details, see [GEN05](../scoregens/gen05.md)).
 
 > :memo: **Note**
 >
@@ -27,7 +27,7 @@ _n1, n2, n3 ..._ -- number of stored values between specified points. Cannot be 
 
 ## Examples
 
-Here is an example of the GEN06 routine. It uses the files [gen06.csd](../../examples/gen06.csd).
+Here is an example of the GEN06 routine. It uses the files [gen06.csd](../examples/gen06.csd).
 
 ``` csound-csd title="An example of the GEN06 routine." linenums="1"
 --8<-- "examples/gen06.csd"
@@ -36,15 +36,15 @@ Here is an example of the GEN06 routine. It uses the files [gen06.csd](../../exa
 These are the diagrams of the waveforms of the GEN06 routines, as used in the example:
 
 <figure markdown="span">
-![f 2 0 513 6 1 128 -1 128 1 64 -.5 64 .5 16 -.5 8 1 16 -.5 8 1 16 -.5 84 1 16 -.5 8 .1 16 -.1 17 0 - a not-so-smooth curve](../../images/gen06_1.png)
+![f 2 0 513 6 1 128 -1 128 1 64 -.5 64 .5 16 -.5 8 1 16 -.5 8 1 16 -.5 84 1 16 -.5 8 .1 16 -.1 17 0 - a not-so-smooth curve](../images/gen06_1.png)
 <figcaption>f 2 0 513 6 1 128 -1 128 1 64 -.5 64 .5 16 -.5 8 1 16 -.5 8 1 16 -.5 84 1 16 -.5 8 .1 16 -.1 17 0 - a not-so-smooth curve</figcaption>
 </figure>
 
 <figure markdown="span">
-![f 3 0 513 6 0 128 0.5 128 1 128 0 129 -1 - a curve running 0 to 1 to -1, with a minimum, maximum and minimum at these values respectively. Inflexions are at .5 and 0 and are relatively smooth](../../images/gen06_2.png)
+![f 3 0 513 6 0 128 0.5 128 1 128 0 129 -1 - a curve running 0 to 1 to -1, with a minimum, maximum and minimum at these values respectively. Inflexions are at .5 and 0 and are relatively smooth](../images/gen06_2.png)
 <figcaption>f 3 0 513 6 0 128 0.5 128 1 128 0 129 -1 - a curve running 0 to 1 to -1, with a minimum, maximum and minimum at these values respectively. Inflexions are at .5 and 0 and are relatively smooth</figcaption>
 </figure>
 
 ## See Also
 
-[GEN05](../../scoregens/gen05), [GEN07](../../scoregens/gen07), and [GEN08](../../scoregens/gen08)
+[GEN05](../scoregens/gen05.md), [GEN07](../scoregens/gen07.md), and [GEN08](../scoregens/gen08.md)

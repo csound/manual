@@ -7,10 +7,17 @@ Configures VBAP output according to loudspeaker parameters.
 Configures VBAP output according to loudspeaker parameters.
 
 ## Syntax
-``` csound-orc
-vbaplsinit idim, ilsnum [, idir1] [, idir2] [...] [, idir32]
-vbaplsinit idim, ilsnum, ilsarray
-```
+=== "Modern"
+    ``` csound-orc
+    vbaplsinit(idim, ilsnum [, idir1] [, idir2] [...] [, idir32])
+    vbaplsinit(idim, ilsnum, ilsarray)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    vbaplsinit idim, ilsnum [, idir1] [, idir2] [...] [, idir32]
+    vbaplsinit idim, ilsnum, ilsarray
+    ```
 
 ### Initialization
 
@@ -36,7 +43,7 @@ Ville Pulkki: &#8220;Virtual Sound Source Positioning Using Vector Base Amplitud
 
 ## Examples
 
-Here is an example of the vbaplsinit opcode. It uses the file [vbaplsinit.csd](../../examples/vbaplsinit.csd).
+Here is an example of the vbaplsinit opcode. It uses the file [vbaplsinit.csd](../examples/vbaplsinit.csd).
 
 ``` csound-csd title="Example of the vbaplsinit opcode." linenums="1"
 --8<-- "examples/vbaplsinit.csd"
@@ -46,7 +53,7 @@ See the other entries of the vbap opcodes for different examples.
 
 ## See also
 
-[Panning and Spatialization: Vector Base Amplitude Panning](../../sigmod/panspatl)
+[Panning and Spatialization: Vector Base Amplitude Panning](../sigmod/panspatl.md)
 
 ## Credits
 

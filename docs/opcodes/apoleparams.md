@@ -8,9 +8,15 @@ Extracts allpole filter parameters from coefficients.
 This opcode takes an array of allpole filter coefficients and produces an array of allpole filter parameters as frequency and bandwidth pairs.
 
 ## Syntax
-``` csound-orc
-kPar[]apoleparams kCoef[]
-```
+=== "Modern"
+    ``` csound-orc
+    kPar[] = apoleparams(kCoef[])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kPar[] apoleparams kCoef[]
+    ```
 
 ### Performance
 
@@ -22,13 +28,20 @@ This opcode is part of a suite of streaming linear prediction opcodes. It takes 
 
 ## Examples
 
-Here is an example of the apoleparams opcode using an audio input
-signal as lpc source. It uses the file [apoleparams.csd](../../examples/apoleparams.csd).
+=== "Modern"
+    Here is an example of the apoleparams opcode using an audio input
+    signal as lpc source. It uses the file [apoleparams-modern.csd](../examples/apoleparams-modern.csd).
+    ``` csound-csd title="Example of the apoleparams opcode." linenums="1"
+    --8<-- "examples/apoleparams-modern.csd"
+    ```
 
-``` csound-csd title="Example of the apoleparams opcode." linenums="1"
---8<-- "examples/apoleparams.csd"
-```
+=== "Classic"
+    Here is an example of the apoleparams opcode using an audio input
+    signal as lpc source. It uses the file [apoleparams.csd](../examples/apoleparams.csd).
+    ``` csound-csd title="Example of the apoleparams opcode." linenums="1"
+    --8<-- "examples/apoleparams.csd"
+    ```
 
 ## See also
 
-[Streaming Linear Predictive Coding (SLPC) Resynthesis](../../spectral/lpcresyn)
+[Streaming Linear Predictive Coding (SLPC) Resynthesis](../spectral/lpcresyn.md)

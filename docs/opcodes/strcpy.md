@@ -8,12 +8,19 @@ Assign to a string variable by copying the source which may be a constant or ano
 _strcpy_ and _=_copy the string at i-time only.
 
 ## Syntax
-``` csound-orc
-Sdst strcpy Ssrc
-Sdst = Ssrc
-```
+=== "Modern"
+    ``` csound-orc
+    Sdst = strcpy(Ssrc)
+    Sdst = Ssrc
+    ```
 
-Example
+=== "Classic"
+    ``` csound-orc
+    Sdst strcpy Ssrc
+    Sdst = Ssrc
+    ```
+
+## Examples
 
 ``` csound-orc
 Sfoo    strcpy "Hello, world !"
@@ -22,7 +29,7 @@ Sfoo    strcpy "Hello, world !"
 
 ## See Also
 
-[String Manipulation Opcodes](../../strings/manipulate)
+[String Manipulation Opcodes](../strings/manipulate.md)
 
 ## Credits
 

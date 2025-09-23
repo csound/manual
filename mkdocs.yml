@@ -33,6 +33,8 @@ markdown_extensions:
   - pymdownx.snippets:
       base_path: 'docs/'
   - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
   - attr_list:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
@@ -44,44 +46,60 @@ extra_javascript:
   - javascripts/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
+plugins:
+  - offline:
+      enabled: !ENV [OFFLINE, false]
+  - search
+
 nav:
-  - Home: 'index.md'
-  - Preface:
-    - What's New in Csound 7: 'intro-whats-new-in-csound-7.md'
-    - Historical Preface: 'intro-historic-preface.md'
-    - History of the Manual: 'intro-history-of-the-manual.md'
-    - Copyright Notice: 'intro-copyright-notice.md'
-  - Invoking Csound:
-    - How Csound Works: 'invoke-how-csound-works.md'
-    - The `csound` Command: 'invoke-the-csound-command.md'
-    - The `.csd` File Format: 'invoke-the-csd-file-format.md'
-    - Csound Options (flags) Alphabetically: 'invoke-cs-options-alphabetically.md'
-    - Csound Options (flags) by Category: 'invoke-cs-options-by-category.md'
-    - Environment Variables: 'invoke-environment-variables.md'
-    - Order of Precedence: 'invoke-order-of-precedence.md'
+- Home: 'index.md'
+- Introduction:
+  - What's New in Csound 7: 'intro/whats-new-in-csound-7.md'
+  - Historical:
+    - Historical Preface: 'intro/historic-preface.md'
+    - History of the Manual: 'intro/history-of-the-manual.md'
+  - Nomenclature: 'overview/nomenclature.md'
+  - Copyright Notice: 'intro/copyright-notice.md'
+  - Links and Front Ends: 'overview/links.md'
+- Csound System:
+  - How Csound Works: 'invoke/how-csound-works.md'
+  - Configuring: 'overview/configuring.md'
+  - Real-Time Audio:
+    - 'overview/rt-audio.md'
+    - Real-Time I/O on Linux: 'overview/rt-io-on-linux.md'
+    - Mac OSX: 'overview/rt-io-on-mac-osx.md'
+    - Windows: 'overview/rt-io-on-windows.md'
+    - Realtime I/O with JACK Connection Kit: 'overview/rt-io-with-jack.md'
+  - The `csound` Command: 'invoke/the-csound-command.md'
+  - The `.csd` File Format: 'invoke/the-csd-file-format.md'
+  - Csound Options:
+    - 'invoke/cs-options.md'
+    - Alphabetically: 'invoke/cs-options-alphabetically.md'
+    - By Category: 'invoke/cs-options-by-category.md'
+  - Order of Precedence: 'invoke/order-of-precedence.md'
+  - Environment Variables: 'invoke/environment-variables.md'
+  - Tables and Guard Points: 'invoke/guard-point.md'
+  - UDP Server: 'overview/udp-server.md'
   - Syntax of the Orchestra:
-    - Header Statements and Global Space: 'orc-header-statements.md'
-    - Instruments: 'orc-instruments.md'
-    - Data Types and Variables: 'orc-data-types.md'
-    - Macros: 'orc-macros.md'
-    - User Defined Opcodes (UDO): 'orc-user-defined-opcodes.md'
-    - Traditional and Functional Code: 'orc-traditional-functional-code.md'
+    - Header Statements and Global Space: 'orch/header.md'
+    - Instruments: 'orch/instruments.md'
+    - Data Types and Variables: 'orch/data-types.md'
+    - Macros: 'orch/macros.md'
+    - User Defined Opcodes (UDO): 'orch/user-defined-opcodes.md'
+    - Traditional and Functional Code: 'orch/traditional-functional-code.md'
+    - Amplitudes Values: 'orch/amplitudes.md'
   - Syntax of the Score:
     - Parameter Fields: 'score/parameter-fields.md'
-    - Durations in Instrument Events: 'score/note-durations.md'
     - Preprocessing: 'score/preproc.md'
-    - List of Statements: 'score/statemnt.md'
-    - GEN routines: 'score/genroutines.md'
+    - Durations in Instrument Events: 'score/note-durations.md'
+    - Score Statements: 'score/statemnt.md'
     - Macros: 'score/macros.md'
     - Included Files: 'score/mult.md'
     - Expressions: 'score/eval.md'
     - Scripts: 'score/scripts.md'
-  - Miscellanea:
-    - Nomenclature: 'misc-nomenclature.md'
-    - Links: 'misc-links.md'
-    - UDP Server: 'misc-udp-server.md'
-    - Real-Time Audio: 'misc-rt-audio.md'
-  - Opcodes Overview:
+    - CsBeats: csbeats.md
+- Overview:
+  - Opcodes Categories:
     - Signal Generators:
       - Additive Synthesis/Resynthesis: 'siggen/additive.md'
       - Basic Oscillators: 'siggen/basic.md'
@@ -140,6 +158,7 @@ nav:
       - Amplitude Converters: 'math/amp.md'
       - Arithmetic and Logic Operations: 'math/artlogic.md'
       - Comparators and Accumulators: 'sigmod/compaccum.md'
+      - Complex number Operations: 'math/complex.md'
       - Mathematical Functions: 'math/mathfunc.md'
       - Opcode Equivalents of Functions: 'math/opeqfunc.md'
       - Random Functions: 'math/rndfunc.md'
@@ -151,10 +170,9 @@ nav:
       - Tuning Opcodes: 'pitch/tuning.md'
     - Real-time MIDI Support:
       - 'midi/top.md'
-      - Virtual MIDI Keyboard: 'midi/virtual.md'
       - MIDI input and Initialization: 'midi/input.md'
       - MIDI Message Output: 'midi/output.md'
-      - Generic Input and Output: 'midi/generic.md'
+      - Generic MIDI Input and Output: 'midi/generic.md'
       - Converters: 'midi/convert.md'
       - Event Extenders: "midi/extender.md"
       - Note-on/Note-off Output: "midi/onoff.md"
@@ -163,12 +181,12 @@ nav:
       - Slider Banks: 'midi/sliderbk.md'
     - Spectral processing:
       - 'spectral/top.md'
-      - Short-time Fourier Transform (STFT) Resynthesis: 'spectral/stft.md'
-      - Linear Predictive Coding (LPC) Resynthesis: 'spectral/lpcresyn.md'
-      - Non-standard Spectral Processing: 'spectral/nonstand.md'
-      - Tools for Real-time Spectral Processing (pvs opcodes): 'spectral/realtime.md'
+      - Streaming Spectral Processing: 'spectral/realtime.md'
+      - Linear Predictive Coding (LPC): 'spectral/lpcresyn.md'
+      - Phase Vocoder Resynthesis: 'spectral/stft.md'
       - ATS Spectral Processing: 'spectral/ATS.md'
       - Array-based spectral opcodes: 'spectral/arrays.md'
+      - Non-standard Spectral Processing: 'spectral/nonstand.md'
     - Strings:
       - 'strings/top.md'
       - String Manipulation Opcodes: 'strings/manipulate.md'
@@ -184,3 +202,34 @@ nav:
       - Vectorial Random Signal Generators: 'vectorial/vectorialrandom.md'
     - Zak Patch System:
       - 'zak/top.md'
+    - OSC, Network and non-MIDI Devices:
+      - OSC: 'oscnetwork/OSC.md'
+      - Network: 'oscnetwork/Network.md'
+      - Remote Opcodes: 'oscnetwork/Remote.md'
+      - Non-MIDI Devices: 'oscnetwork/nonMIDIdevices.md'
+    - Signal Flow Graph Opcodes: 'signalflowgraph.md'
+    - Mixer Opcodes: 'mixer.md'
+    - Miscellaneous Opcodes: 'miscopcodes.md'
+  - Score Statements: 'score/statemnt.md'
+  - GEN Routines: 'score/genroutines.md'
+- Reference:
+  - Orchestra Opcodes and Operators: 'reference/opcodesReference.md'
+  - Score Statements: 'reference/scoreStatementsRef.md'
+  - GEN Routines: 'reference/genRoutinesRef.md'
+- Utility Programs:
+  - About: 'utility/top.md'
+  - Analysis File Generation: 'utility/analysis.md'
+  - File Queries: 'utility/queries.md'
+  - File Conversion: 'utility/convert.md'
+  - Other Csound Utilities: 'utility/other.md'
+- Index and Quick Reference:
+  - Opcodes Index: opcodesIndex.md
+  - Opcodes Quick Reference: opcodesQuickRef.md 
+  - GEN Routines Index: genIndex.md
+- Appendices:
+  - List of Examples: 'misc/examples.md'
+  - Pitch Conversion: 'misc/pitch.md'
+  - Sound Intensity Values: 'misc/amp.md'
+  - Formant Values: 'misc/formants.md'
+  - Modal Frequency Ratios: 'misc/modalfreq.md'
+  - Window Functions: misc/windows.md

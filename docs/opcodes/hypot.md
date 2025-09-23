@@ -6,10 +6,17 @@ category:Mathematical Operations:Arrays
 Euclidean distance function.
 
 ## Syntax
-``` csound-orc
-ires[] hypot iarg1[], iarg2[]
-kres[] hypot karg1[], karg2[]
-```
+=== "Modern"
+    ``` csound-orc
+    ires[] = hypot(iarg1[], iarg2[])
+    kres[] = hypot(karg1[], karg2[])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ires[] hypot iarg1[], iarg2[]
+    kres[] hypot karg1[], karg2[]
+    ```
 
 ### Initialization
 
@@ -21,7 +28,7 @@ _karg[]1/2_ -- the operands
 
 ## Examples
 
-Here is an example of the hypot opcode. It uses the file [hypot.csd](../../examples/hypot.csd).
+Here is an example of the hypot opcode. It uses the file [hypot.csd](../examples/hypot.csd).
 
 ``` csound-csd title="Example of the hypot opcode." linenums="1"
 --8<-- "examples/hypot.csd"
@@ -29,7 +36,7 @@ Here is an example of the hypot opcode. It uses the file [hypot.csd](../../examp
 
 ## See Also
 
-[Array opcodes](../../math/array)
+[Array opcodes](../math/array.md)
 
 ## Credits
 

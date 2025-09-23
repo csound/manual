@@ -6,15 +6,21 @@ category:Spectral Processing:Streaming
 Performs cross-synthesis between two source fsigs.
 
 ## Syntax
-``` csound-orc
-fsig pvscross fsrc, fdest, kamp1, kamp2
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvscross(fsrc, fdest, kamp1, kamp2)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvscross fsrc, fdest, kamp1, kamp2
+    ```
 
 ### Performance
 
-The operation of this opcode is identical to that of [pvcross](../../opcodes/pvcross) (q.v.), except in using _fsig_s rather than analysis files, and the absence of spectral envelope preservation. The amplitudes from _fsrc_ and _fdest_ (using scale factors _kamp1_ for _fsrc_ and _kamp2_ for _fdest_) are applied to the frequencies of _fsrc_. _kamp1_ and _kamp2_ must not exceed the range 0 to 1.
+The operation of this opcode is identical to that of [pvcross](../opcodes/pvcross.md) (q.v.), except in using _fsig_s rather than analysis files, and the absence of spectral envelope preservation. The amplitudes from _fsrc_ and _fdest_ (using scale factors _kamp1_ for _fsrc_ and _kamp2_ for _fdest_) are applied to the frequencies of _fsrc_. _kamp1_ and _kamp2_ must not exceed the range 0 to 1.
 
-With this opcode, cross-synthesis can be performed on real-time audio input, by using [pvsanal](../../opcodes/pvsanal) to generate _fsrc_ and _fdest_. These must have the same format.
+With this opcode, cross-synthesis can be performed on real-time audio input, by using [pvsanal](../opcodes/pvsanal.md) to generate _fsrc_ and _fdest_. These must have the same format.
 
 > :warning: **Warning**
 >
@@ -22,7 +28,7 @@ With this opcode, cross-synthesis can be performed on real-time audio input, by 
 
 ## Examples
 
-Here is an example of the use of the _pvscross_ opcode. It uses the file [pvscross.csd](../../examples/pvscross.csd).
+Here is an example of the use of the _pvscross_ opcode. It uses the file [pvscross.csd](../examples/pvscross.csd).
 
 ``` csound-csd title="Example of the _pvscross_ opcode." linenums="1"
 --8<-- "examples/pvscross.csd"
@@ -30,7 +36,7 @@ Here is an example of the use of the _pvscross_ opcode. It uses the file [pvscro
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

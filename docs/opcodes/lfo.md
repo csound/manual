@@ -6,10 +6,17 @@ category:Signal Generators:Basic Oscillators
 A low frequency oscillator of various shapes.
 
 ## Syntax
-``` csound-orc
-kres lfo kamp, kcps [, itype]
-ares lfo kamp, kcps [, itype]
-```
+=== "Modern"
+    ``` csound-orc
+    kres = lfo(kamp, kcps [, itype])
+    ares = lfo(kamp, kcps [, itype])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    kres lfo kamp, kcps [, itype]
+    ares lfo kamp, kcps [, itype]
+    ```
 
 ### Initialization
 
@@ -32,13 +39,13 @@ _kcps_ -- frequency of oscillator
 
 ## Examples
 
-Here is an example of the lfo opcode. It uses the file [lfo.csd](../../examples/lfo.csd).
+Here is an example of the lfo opcode. It uses the file [lfo.csd](../examples/lfo.csd).
 
 ``` csound-orc title="Example of the lfo opcode." linenums="1"
 --8<-- "examples/lfo.csd"
 ```
 
-Here is another example of the lfo opcode. It uses the file [lfo-advanced.csd](../../examples/lfo-advanced.csd).
+Here is another example of the lfo opcode. It uses the file [lfo-advanced.csd](../examples/lfo-advanced.csd).
 
 ``` csound-orc title="Advanced example of the lfo opcode." linenums="1"
 --8<-- "examples/lfo-advanced.csd"
@@ -46,7 +53,7 @@ Here is another example of the lfo opcode. It uses the file [lfo-advanced.csd](.
 
 ## See also
 
-[Basic Oscillators](../../siggen/basic)
+[Basic Oscillators](../siggen/basic.md)
 
 ## Credits
 

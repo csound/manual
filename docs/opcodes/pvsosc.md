@@ -15,10 +15,17 @@ Generates periodic signal spectra in AMP-FREQ format, with the option of four wa
 Complex waveforms (ie. all types except cosine) contain all harmonics up to the Nyquist. This makes pvsosc an option for generation of band-limited periodic waves. In addition, types can be changed using a k-rate variable.
 
 ## Syntax
-``` csound-orc
-fsig pvsosc kamp, kfreq, ktype, isize [,ioverlap] [, iwinsize] [, iwintype] \
-            [, iformat]
-```
+=== "Modern"
+    ``` csound-orc
+    fsig = pvsosc(kamp, kfreq, ktype, isize [,ioverlap] [, iwinsize] [, iwintype] \
+                  [, iformat])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    fsig pvsosc kamp, kfreq, ktype, isize [,ioverlap] [, iwinsize] [, iwintype] \
+                [, iformat]
+    ```
 
 ### Initialisation
 
@@ -47,7 +54,7 @@ _ktype_ -- wave type: 1. sawtooh-like, 2.square-like, 3.pulse and any other valu
 
 ## Examples
 
-Here is an example of the pvsosc opcode. It uses the file [pvsosc.csd](../../examples/pvsosc.csd).
+Here is an example of the pvsosc opcode. It uses the file [pvsosc.csd](../examples/pvsosc.csd).
 
 ``` csound-csd title="Example of the pvsosc opcode" linenums="1"
 --8<-- "examples/pvsosc.csd"
@@ -55,7 +62,7 @@ Here is an example of the pvsosc opcode. It uses the file [pvsosc.csd](../../exa
 
 ## See also
 
-[Tools for Real-time Spectral Processing (pvs opcodes)](../../spectral/realtime)
+[Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits
 

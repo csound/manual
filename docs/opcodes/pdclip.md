@@ -8,9 +8,15 @@ Performs linear clipping on an audio signal or a phasor.
 The _pdclip_ opcode allows a percentage of the input range of a signal to be clipped to fullscale. It is similar to simply multiplying the signal and limiting the range of the result, but _pdclip_ allows you to think about how much of the signal range is being distorted instead of the scalar factor and has a offset parameter for assymetric clipping of the signal range. _pdclip_ is also useful for remapping phasors for phase distortion synthesis.
 
 ## Syntax
-``` csound-orc
-aout pdclip ain, kWidth, kCenter [, ibipolar [, ifullscale]]
-```
+=== "Modern"
+    ``` csound-orc
+    aout = pdclip(ain, kWidth, kCenter [, ibipolar [, ifullscale]])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    aout pdclip ain, kWidth, kCenter [, ibipolar [, ifullscale]]
+    ```
 
 ### Initialization
 
@@ -48,7 +54,7 @@ Bipolar mode can be used for direct, linear distortion of an audio signal.  Alte
 
 ## Examples
 
-Here is an example of the pdclip opcode. It uses the file [pdclip.csd](../../examples/pdclip.csd).
+Here is an example of the pdclip opcode. It uses the file [pdclip.csd](../examples/pdclip.csd).
 
 ``` csound-csd title="Example of the pdclip opcode." linenums="1"
 --8<-- "examples/pdclip.csd"
@@ -56,7 +62,7 @@ Here is an example of the pdclip opcode. It uses the file [pdclip.csd](../../exa
 
 ## See also
 
-[Phase Distortion](../../sigmod/wavshape)
+[Phase Distortion](../sigmod/wavshape.md)
 
 ## Credits
 

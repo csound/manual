@@ -6,9 +6,17 @@ category:Signal Modifiers:Panning and Spatialization
 Distribute an audio signal across two channels with a choice of methods.
 
 ## Syntax
-``` csound-orc
-a1, a2 pan2 asig, xp [, imode]
-```
+=== "Modern"
+    ``` csound-orc
+    a1, a2 = pan2(asig, xp [, imode])
+    aouts[] = pan2(asig, xp [, imode])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    a1, a2 pan2 asig, xp [, imode]
+    aouts[] pan2 asig, xs [, imode]
+    ```
 
 ### Initialization
 
@@ -18,9 +26,9 @@ _imode_ (optional) -- mode of the stereo positioning algorithm. 0 signifies equa
 
 _pan2_ takes an input signal _asig_ and distributes it across two outputs (essentially stereo speakers) according to the control _xp_ which can be k- or a-rate. A zero value for _xp_ indicates hard left, and a 1 is hard right.
 
-## Example
+## Examples
 
-Here is an example of the pan2 opcodes. It uses the file [pan2.csd](../../examples/pan2.csd).
+Here is an example of the pan2 opcodes. It uses the file [pan2.csd](../examples/pan2.csd).
 
 ``` csound-csd title="Example of the pan2 opcodes." linenums="1"
 --8<-- "examples/pan2.csd"
@@ -28,7 +36,7 @@ Here is an example of the pan2 opcodes. It uses the file [pan2.csd](../../exampl
 
 ## See also
 
-[Panning and Spatialization: Amplitude spatialization](../../sigmod/panspatl)
+[Panning and Spatialization: Amplitude spatialization](../sigmod/panspatl.md)
 
 ## Credits
 
@@ -36,5 +44,6 @@ Author: John ffitch<br>
 University of Bath, Codemist Ltd.<br>
 Bath, UK<br>
 September 2007<br>
+Array version: 2025<br>
 
 New in version 5.07

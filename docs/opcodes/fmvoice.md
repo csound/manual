@@ -3,13 +3,20 @@ id:fmvoice
 category:Signal Generators:FM Synthesis
 -->
 # fmvoice
-FM Singing Voice Synthesis
+FM Singing Voice Synthesis.
 
 ## Syntax
-``` csound-orc
-ares fmvoice kamp, kfreq, kvowel, ktilt, kvibamt, kvibrate[, ifn1, \
-             ifn2, ifn3, ifn4, ivibfn]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = fmvoice(kamp, kfreq, kvowel, ktilt, kvibamt, kvibrate[, ifn1, \
+                   ifn2, ifn3, ifn4, ivibfn])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares fmvoice kamp, kfreq, kvowel, ktilt, kvibamt, kvibrate[, ifn1, \
+                 ifn2, ifn3, ifn4, ivibfn]
+    ```
 
 ### Initialization
 
@@ -31,7 +38,7 @@ _kvibrate_ -- Rate of vibrato
 
 ## Examples
 
-Here is an example of the fmvoice opcode. It uses the file [fmvoice.csd](../../examples/fmvoice.csd).
+Here is an example of the fmvoice opcode. It uses the file [fmvoice.csd](../examples/fmvoice.csd).
 
 ``` csound-orc title="Example of the fmvoice opcode." linenums="1"
 --8<-- "examples/fmvoice.csd"
@@ -39,7 +46,7 @@ Here is an example of the fmvoice opcode. It uses the file [fmvoice.csd](../../e
 
 ## See Also
 
-[FM Synthesis](../../siggen/fmsynth)
+[FM Synthesis](../siggen/fmsynth.md)
 
 More information about frequency modulation on Wikipedia: [http://en.wikipedia.org/wiki/Frequency_modulation_synthesis](http://en.wikipedia.org/wiki/Frequency_modulation_synthesis)
 

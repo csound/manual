@@ -12,9 +12,15 @@ _compress2_ first examines the controlling _acsig_ by performing envelope detect
 The running envelope is next converted to decibels, then passed through a mapping function to determine what compresser action (if any) should be taken.  The mapping function is defined by four decibel control values.  These are given as negative values, where 0 db corresponds to an amplitude of 0dbfs.
 
 ## Syntax
-``` csound-orc
-ar compress2 aasig, acsig, kthresh, kloknee, khiknee, kratio, katt, krel, ilook
-```
+=== "Modern"
+    ``` csound-orc
+    ar = compress2(aasig, acsig, kthresh, kloknee, khiknee, kratio, katt, krel, ilook)
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ar compress2 aasig, acsig, kthresh, kloknee, khiknee, kratio, katt, krel, ilook
+    ```
 
 ### Initialization
 
@@ -32,15 +38,21 @@ The actions of compress2 will depend on the parameter settings given.  A hard-kn
 
 ## Examples
 
-Here is an example of the compress2 opcode. It uses the file [compress2.csd](../../examples/compress2.csd).
+=== "Modern"
+    Here is an example of the compress2 opcode. It uses the file [compress2-modern.csd](../examples/compress2-modern.csd).
+    ``` csound-csd title="Example of the compress2 opcode." linenums="1"
+    --8<-- "examples/compress2-modern.csd"
+    ```
 
-``` csound-csd title="Example of the compress2 opcode." linenums="1"
---8<-- "examples/compress2.csd"
-```
+=== "Classic"
+    Here is an example of the compress2 opcode. It uses the file [compress2.csd](../examples/compress2.csd).
+    ``` csound-csd title="Example of the compress2 opcode." linenums="1"
+    --8<-- "examples/compress2.csd"
+    ```
 
 ## See also
 
-[Amplitude Modifiers and Dynamic processing](../../sigmod/ampmod)
+[Amplitude Modifiers and Dynamic processing](../sigmod/ampmod.md)
 
 ## Credits
 

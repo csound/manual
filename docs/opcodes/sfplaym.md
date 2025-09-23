@@ -5,13 +5,20 @@ category:Signal Generators:Sample Playback
 # sfplaym
 Plays a SoundFont2 (SF2) sample preset, generating a mono sound.
 
-These opcodes allow management the sample-structure of SF2 files. In order to understand the usage of these opcodes, the user must have some knowledge of the SF2 format, so a brief description of this format can be found in the [SoundFont2 File Format](../../siggen/sample) section.
+These opcodes allow management the sample-structure of SF2 files. In order to understand the usage of these opcodes, the user must have some knowledge of the SF2 format, so a brief description of this format can be found in the [SoundFont2 File Format](../siggen/sample.md) section.
 
 ## Syntax
-``` csound-orc
-ares sfplaym ivel, inotenum, xamp, xfreq, ipreindex [, iflag] \
-             [, ioffset] [, ienv]
-```
+=== "Modern"
+    ``` csound-orc
+    ares = sfplaym(ivel, inotenum, xamp, xfreq, ipreindex [, iflag] \
+                   [, ioffset] [, ienv])
+    ```
+
+=== "Classic"
+    ``` csound-orc
+    ares sfplaym ivel, inotenum, xamp, xfreq, ipreindex [, iflag] \
+                 [, ioffset] [, ienv]
+    ```
 
 ### Initialization
 
@@ -43,13 +50,13 @@ The _ioffset_ parameter allows the sound to start from a sample different than t
 
 The _ienv_ parameter enables and determines the type of amplitude envelope used. The default value is 0, or no envelope. If _ienv_ is set to 1, the attack and decay portions are linear. If set to 2, the attack is linear and the decay is exponential. The release portion of the envelope has not yet been implemented.
 
-_sfplaym_ is a mono version of [sfplay](../../opcodes/sfplay). It should be used with mono preset, or with the stereo presets in which stereo output is not required. It is faster than _sfplay_.
+_sfplaym_ is a mono version of [sfplay](../opcodes/sfplay.md). It should be used with mono preset, or with the stereo presets in which stereo output is not required. It is faster than _sfplay_.
 
 These opcodes only support the sample structure of SF2 files. The modulator structure of the SoundFont2 format is not supported in Csound. Any modulation or processing to the sample data is left to the Csound user, bypassing all restrictions forced by the SF2 standard.
 
 ## Examples
 
-Here is an example of the sfplaym opcode. It uses the file [sfplaym.csd](../../examples/sfplaym.csd).
+Here is an example of the sfplaym opcode. It uses the file [sfplaym.csd](../examples/sfplaym.csd).
 
 ``` csound-csd title="Example of the sfplaym opcode." linenums="1"
 --8<-- "examples/sfplaym.csd"
@@ -57,7 +64,7 @@ Here is an example of the sfplaym opcode. It uses the file [sfplaym.csd](../../e
 
 ## See also
 
-[Soundfonts](../../siggen/sample)
+[Soundfonts](../siggen/sample.md)
 
 More information on soundfonts is in the Floss Manuals: [https://flossmanual.csound.com/midi/reading-midi-files](https://flossmanual.csound.com/midi/reading-midi-files)
 

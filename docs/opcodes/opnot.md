@@ -33,7 +33,7 @@ where the argument $a$ may be further expressions.
 
 ## Examples
 
-Here is an example of the Logical NOT operator. It uses the file [opnot.csd](../../examples/opnot.csd).
+Here is an example of the Logical NOT operator. It uses the file [opnot.csd](../examples/opnot.csd).
 
 ``` csound-csd title="Example of the opnot opcode." linenums="1"
 --8<-- "examples/opnot.csd"
@@ -54,4 +54,4 @@ i1     1.00000
 
 ## See also
 
-[Arithmetic and Logic Operations](../../math/artlogic)
+[Arithmetic and Logic Operations](../math/artlogic.md)

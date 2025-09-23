@@ -3,7 +3,7 @@ id:n
 category:
 -->
 # n Statement
-Repeats a section from the referenced [m statement](../../scoregens/m).
+Repeats a section from the referenced [m statement](../scoregens/m.md).
 
 ## Syntax
 ``` csound-orc
@@ -52,11 +52,11 @@ e
 
 ## Examples
 
-See the example for the [m statement](../../scoregens/m).
+See the example for the [m statement](../scoregens/m.md).
 
 ## See Also
 
-[Score Statements](../../score/statemnt)
+[Score Statements](../score/statemnt.md)
 
 ## Credits
 
