@@ -9,11 +9,13 @@ Distribute an audio signal across two channels with a choice of methods.
 === "Modern"
     ``` csound-orc
     a1, a2 = pan2(asig, xp [, imode])
+    aouts[] = pan2(asig, xp [, imode])
     ```
 
 === "Classic"
     ``` csound-orc
     a1, a2 pan2 asig, xp [, imode]
+    aouts[] pan2 asig, xs [, imode]
     ```
 
 ### Initialization
@@ -42,5 +44,6 @@ Author: John ffitch<br>
 University of Bath, Codemist Ltd.<br>
 Bath, UK<br>
 September 2007<br>
+Array version: 2025<br>
 
 New in version 5.07
