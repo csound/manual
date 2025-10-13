@@ -741,6 +741,7 @@
 [**scoreline_i.csd**](../opcodes/scoreline_i.md#examples)<br>
 
 ### Instrument Control:Program Flow Control
+[**break.csd**](../opcodes/break.md#examples)<br>
 [**cggoto-modern.csd**](../opcodes/cggoto.md#examples)<br>
 [**cggoto.csd**](../opcodes/cggoto.md#examples)<br>
 [**cigoto-modern.csd**](../opcodes/cigoto.md#examples)<br>
@@ -749,6 +750,7 @@
 [**ckgoto.csd**](../opcodes/ckgoto.md#examples)<br>
 [**cngoto-modern.csd**](../opcodes/cngoto.md#examples)<br>
 [**cngoto.csd**](../opcodes/cngoto.md#examples)<br>
+[**continue.csd**](../opcodes/continue.md#examples)<br>
 [**else.csd**](../opcodes/else.md#examples)<br>
 [**elseif.csd**](../opcodes/elseif.md#examples)<br>
 [**endif.csd**](../opcodes/endif.md#examples)<br>

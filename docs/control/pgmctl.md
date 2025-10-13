@@ -18,6 +18,9 @@ The opcodes to manipulate which orchestra statements are executed are:
 
 Opcodes to create looping constructions are:
 
+* [break](../opcodes/break.md)
+* [continue](../opcodes/continue.md)
+* [for](../opcodes/for.md)
 * [loop_ge](../opcodes/loop_ge.md)
 * [loop_gt](../opcodes/loop_gt.md)
 * [loop_le](../opcodes/loop_le.md)
