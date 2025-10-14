@@ -1511,6 +1511,7 @@
 
 
 `a1, a2 = `[**`pan2`**](opcodes/pan2.md)`(asig, xp [, imode])`<br>
+`aouts[] = pan2(asig, xp [, imode])`<br>
 
 
 `a1, a2, a3, a4  = `[**`space`**](opcodes/space.md)`(asig, ifn, ktime, kreverbsend, kx, ky)`<br>
@@ -2189,6 +2190,9 @@
 
 
 ### Instrument Control:Program Flow Control
+[**`break`**](opcodes/break.md)<br>
+
+
 [**`cggoto`**](opcodes/cggoto.md)`(condition, label)`<br>
 
 
@@ -2199,6 +2203,9 @@
 
 
 [**`cngoto`**](opcodes/cngoto.md)`(condition, label)`<br>
+
+
+[**`continue`**](opcodes/continue.md)<br>
 
 
 [**`else`**](opcodes/else.md)<br>

@@ -107,6 +107,7 @@
 [bpf](../opcodes/bpf.md) - Break point function with linear interpolation.<br>
 [bpfcos](../opcodes/bpfcos.md) - Break point function with cosine (easy-in/easy-out) interpolation.<br>
 [bqrez](../opcodes/bqrez.md) - A second-order multi-mode filter.<br>
+[break](../opcodes/break.md) - A syntactic looping construction used in for, while, and until loops.<br>
 [butbp](../opcodes/butbp.md) - Same as the [butterbp](../opcodes/butterbp.md) opcode.<br>
 [butbr](../opcodes/butbr.md) - Same as the [butterbr](../opcodes/butterbr.md) opcode.<br>
 [buthp](../opcodes/buthp.md) - Same as the [butterhp](../opcodes/butterhp.md) opcode.<br>
@@ -170,6 +171,7 @@
 [conj](../opcodes/complex.md) - Returns a complex number, optionally in polar form.<br>
 [conj](../opcodes/conj.md) - Returns the conjugate of a complex number.<br>
 [connect](../opcodes/connect.md) - Connects a source outlet to a sink inlet.<br>
+[continue](../opcodes/continue.md) - A syntactic looping construction used in for, while, and until loops.<br>
 [control](../opcodes/control.md) - Configurable slider controls for realtime user input.<br>
 [convle](../opcodes/convle.md) - Same as the [convolve](../opcodes/convolve.md) opcode.<br>
 [convolve](../opcodes/convolve.md) - Convolves a signal and an impulse response.<br>
