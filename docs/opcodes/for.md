@@ -8,11 +8,11 @@ A syntactic looping construction.
 ## Syntax
 ``` csound-orc
 for var in array-expr do
-... od
-
-``` csound-orc
+  ...
+od
 for var, index in array-expr do
-... od
+  ...
+od
 ```
 
 
