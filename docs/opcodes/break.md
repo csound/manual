@@ -7,24 +7,7 @@ A syntactic looping construction used in for, while, and until loops.
 
 ## Syntax
 ``` csound-orc
-for var in array-expr do
-    ...
-    break
-    ...
-od
-
-while (expr) do
-    ...
-    break
-    ...
-od
-
-until (expr) do
-    ...
-    break
-    ...
-od
-
+break
 ```
 
 

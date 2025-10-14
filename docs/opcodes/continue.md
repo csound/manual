@@ -7,24 +7,7 @@ A syntactic looping construction used in for, while, and until loops.
 
 ## Syntax
 ``` csound-orc
-for var in array-expr do
-    ...
-    continue
-    ...
-od
-
-while (expr) do
-    ...
-    continue
-    ...
-od
-
-until (expr) do
-    ...
-    continue
-    ...
-od
-
+continue
 ```
 
 
@@ -41,7 +24,7 @@ Here is an example of the continue statement. It uses the file [continue.csd](..
 --8<-- "examples/continue.csd"
 ```
 
-Its output should include lines like this, stopping at 2.000:
+Its output should include lines like this, skipping the line for 2.000:
 
 ```
 instr 1:	p4 = 3.000
