@@ -1511,6 +1511,7 @@
 
 
 `a1, a2 = `[**`pan2`**](opcodes/pan2.md)`(asig, xp [, imode])`<br>
+`aouts[] = pan2(asig, xp [, imode])`<br>
 
 
 `a1, a2, a3, a4  = `[**`space`**](opcodes/space.md)`(asig, ifn, ktime, kreverbsend, kx, ky)`<br>
@@ -2189,6 +2190,9 @@
 
 
 ### Instrument Control:Program Flow Control
+[**`break`**](opcodes/break.md)<br>
+
+
 [**`cggoto`**](opcodes/cggoto.md)`(condition, label)`<br>
 
 
@@ -2201,6 +2205,9 @@
 [**`cngoto`**](opcodes/cngoto.md)`(condition, label)`<br>
 
 
+[**`continue`**](opcodes/continue.md)<br>
+
+
 [**`else`**](opcodes/else.md)<br>
 
 
@@ -2211,11 +2218,11 @@
 
 
 [**`for`**](opcodes/for.md)` var in array-expr do`<br>
-`... od`<br>
-``<br>
-```` csound-orc`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`...`<br>
+`od`<br>
 `for var, index in array-expr do`<br>
-`... od`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`...`<br>
+`od`<br>
 
 
 [**`goto`**](opcodes/goto.md)`(label)`<br>
@@ -2943,15 +2950,15 @@
 `ceil(k/i[]) (k- or i-arrays )`<br>
 
 
+[**`conj`**](opcodes/conj.md)`(var:Complex)`<br>
+`conj(var:Complex[])`<br>
+
+
 `complex(var:Complex)`<br>
 `complex(var:Complex[])`<br>
 [**`co`**](opcodes/complex.md)`mplex(arg1:k, arg2:k[,isPolar:i])`<br>
 `complex(real:k[], imag:k[])`<br>
 `complex(real:a, imag:a)`<br>
-
-
-[**`conj`**](opcodes/conj.md)`(var:Complex)`<br>
-`conj(var:Complex[])`<br>
 
 
 [**`exp`**](opcodes/exp.md)`({a,k,i,Complex})`<br>

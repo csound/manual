@@ -32,6 +32,10 @@ _p4, p5, ..._ -- Additional input values the are mapped to the called instrument
 
 The called instrument's p2 and p3 values will be identical to the host instrument's values. While the host instrument can [control its own duration](../control/durctl.md), any such attempts inside the called instrument will most likely have no effect.
 
+> :memo: **Note**
+>
+> Only unparenthesized accessors like `p4` can read the actual parameter values passed to subinstruments. In contrast, in a subinstrument, opcodes calls relating to parameters like `p(4)` return the host's `p4`, and so does `passign`. Furthermre, `pcount` returns the host's parameter count, not the subinsturment's.
+
 ## Examples
 
 === "Modern"
