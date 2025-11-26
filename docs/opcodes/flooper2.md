@@ -22,15 +22,15 @@ This opcode implements a crossfading looper with variable loop parameters and th
 
 ### Initialization
 
-_ifn _ -- sound source function table number, generally created using GEN01
+_ifn_ -- sound source function table number, generally created using GEN01
 
-_istart _ -- playback start pos in seconds
+_istart_ -- playback start pos in seconds
 
-_imode _ -- loop modes: 0 forward, 1 backward, 2 back-and-forth [def: 0]
+_imode_ -- loop modes: 0 forward, 1 backward, 2 back-and-forth [def: 0]
 
-_ifenv _ -- if non-zero, crossfade envelope shape table number. The default, 0, sets the crossfade to linear.
+_ifenv_ -- if non-zero, crossfade envelope shape table number. The default, 0, sets the crossfade to linear.
 
-_iskip _ -- if 1, the opcode initialisation is skipped, for tied notes, performance continues from the position in the loop where the previous note stopped. The default, 0, does not skip initialisation
+_iskip_ -- if 1, the opcode initialisation is skipped, for tied notes, performance continues from the position in the loop where the previous note stopped. The default, 0, does not skip initialisation
 
 ### Performance
 
@@ -44,9 +44,9 @@ _kloopstart_ -- loop start point (secs). Note that although k-rate, loop paramet
 
 _kloopend_ -- loop end point (secs), updated once per loop cycle.
 
-_kcrossfade _ -- crossfade length (secs), updated once per loop cycle and limited to loop length.
+_kcrossfade_ -- crossfade length (secs), updated once per loop cycle and limited to loop length.
 
-Mode 1 for _imode _ will only loop backwards from the end point to the start point.
+Mode 1 for _imode_ will only loop backwards from the end point to the start point.
 
 ## Examples
 
