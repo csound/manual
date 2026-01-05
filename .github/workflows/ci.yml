@@ -1,9 +1,8 @@
 name: ci
 on:
-  push:
-    branches:
-      - develop
-      - master
+    release:
+        types:
+          - published
 
 jobs:
   deploy:
@@ -26,10 +25,8 @@ jobs:
       - name: Create release and upload asset
         uses: softprops/action-gh-release@v1
         with:
-            tag_name: ${{ github.ref_name }}
-            name: Release ${{ github.ref_name }}
+            tag_name: ${{ github.event.release.tag_name }}
             files: csound_manual-html.zip
-            draft: false
-            prerelease: false
+            overwrite: true
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
