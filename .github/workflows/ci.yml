@@ -23,8 +23,13 @@ jobs:
           cd site
           zip -r ../csound_manual-html.zip .
 
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
+      - name: Create release and upload asset
+        uses: softprops/action-gh-release@v1
         with:
-            name: csound_manual-html
-            path: csound_manual-html.zip
+            tag_name: ${{ github.ref_name }}
+            name: Release ${{ github.ref_name }}
+            files: csound_manual-html.zip
+            draft: false
+            prerelease: false
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
