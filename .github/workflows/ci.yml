@@ -17,9 +17,20 @@ jobs:
       - run: pip install mkdocs-material
       - run: mkdocs build
 
+      - name: Generate Json Data
+        run: |
+            cd parse_data_to_lsp
+            python to_parse.py
+
       - name: Zip manual
         run: |
           cd site
+          mkdir -p csound_resources
+          mkdir -p csound_resources/opcodes
+          mkdir -p csound_resources/examples
+          cp -r ../csound_manual/parse_data_to_lsp/json_data/* csound_resources/
+          cp -r ../csound_manual/docs/opcodes/* csound_resources/opcodes/
+          cp -r ../csound_manual/docs/examples/* csound_resources/examples/
           zip -r ../csound_manual-html.zip .
 
       - name: Create release and upload asset
