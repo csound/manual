@@ -323,6 +323,7 @@
 
 ### Signal Generators:Waveguide Physical Modeling
 [**pluck.csd**](../opcodes/pluck.md#examples)<br>
+[**musical/ResonPluck_Cucchi.csd**](../opcodes/pluck.md#examples)<br>
 [**repluck.csd**](../opcodes/repluck.md#examples)<br>
 [**repluck-advanced.csd**](../opcodes/repluck.md#examples)<br>
 [**streson.csd**](../opcodes/streson.md#examples)<br>
@@ -767,6 +768,7 @@
 [**loop_-group.csd**](../opcodes/loop_ge.md#examples)<br>
 [**loop_gt.csd**](../opcodes/loop_gt.md#examples)<br>
 [**loop_le.csd**](../opcodes/loop_le.md#examples)<br>
+[**looplt.csd**](../opcodes/loop_lt.md#examples)<br>
 [**loop_lt.csd**](../opcodes/loop_lt.md#examples)<br>
 [**switch.csd**](../opcodes/switch.md#examples)<br>
 [**tigoto.csd**](../opcodes/tigoto.md#examples)<br>

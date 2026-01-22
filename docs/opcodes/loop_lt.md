@@ -1,15 +1,15 @@
 <!--
-id:loop_lt
+id:looplt
 category:Instrument Control:Program Flow Control
 -->
-# loop_lt
+# looplt
 Construction of looping operations.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    loop_lt(indx, incr, imax, label)
-    loop_lt(kndx, kncr, kmax, label)
+    looplt(indx, incr, imax, label)
+    looplt(kndx, kncr, kmax, label)
     ```
 
 === "Classic"
@@ -34,7 +34,7 @@ _kncr_ -- value to increment the loop.
 
 _kmax_ -- maximum value of loop index.
 
-The actions of _loop\_lt_ are equivalent to the code
+The actions of _looplt_ are equivalent to the code
 
 ``` csound-orc
 indx  =  indx + incr
@@ -54,11 +54,17 @@ if (kndx < kmax) kgoto label
 
 ## Examples
 
-Here is an example of the loop_lt opcode. It uses the file [loop_lt.csd](../examples/loop_lt.csd).
+=== "Modern"
+    Here is an example of the looplt opcode. It uses the file [looplt.csd](../examples/looplt.csd).
+    ``` csound-csd title="Example of the looplt opcode." linenums="1"
+    --8<-- "examples/looplt.csd"
+    ```
 
-``` csound-csd title="Example of the loop_lt opcode." linenums="1"
---8<-- "examples/loop_lt.csd"
-```
+=== "Classic"
+    Here is an example of the loop_lt opcode. It uses the file [loop_lt.csd](../examples/loop_lt.csd).
+    ``` csound-csd title="Example of the loop_lt opcode." linenums="1"
+    --8<-- "examples/loop_lt.csd"
+    ```
 
 Its output should include a line like this:
 

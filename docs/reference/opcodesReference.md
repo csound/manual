@@ -475,7 +475,7 @@ numeric or string values.<br>
 [loop_ge](../opcodes/loop_ge.md) - Construction of looping operations.<br>
 [loop_gt](../opcodes/loop_gt.md) - Construction of looping operations.<br>
 [loop_le](../opcodes/loop_le.md) - Construction of looping operations.<br>
-[loop_lt](../opcodes/loop_lt.md) - Construction of looping operations.<br>
+[looplt](../opcodes/loop_lt.md) - Construction of looping operations.<br>
 [loopseg](../opcodes/loopseg.md) - Generate control signal consisting of linear segments delimited by two or more specified points.<br>
 [loopsegp](../opcodes/loopsegp.md) - Control signals based on linear segments.<br>
 [looptseg](../opcodes/looptseg.md) - Generate control signal consisting of exponential or linear segments delimited by two or more specified points.<br>

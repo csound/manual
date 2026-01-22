@@ -2252,8 +2252,8 @@
 `loop_le(kndx, kncr, kmax, label)`<br>
 
 
-[**`loop_lt`**](opcodes/loop_lt.md)`(indx, incr, imax, label)`<br>
-`loop_lt(kndx, kncr, kmax, label)`<br>
+[**`looplt`**](opcodes/loop_lt.md)`(indx, incr, imax, label)`<br>
+`looplt(kndx, kncr, kmax, label)`<br>
 
 
 [**`switch`**](opcodes/switch.md)` expr`<br>

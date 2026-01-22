@@ -98,7 +98,7 @@
 | [linrand](opcodes/linrand.md) | [linseg](opcodes/linseg.md) | [linsegb](opcodes/linsegb.md) | [linsegr](opcodes/linsegr.md) | [liveconv](opcodes/liveconv.md) |
 | [locsend](opcodes/locsend.md) | [locsig](opcodes/locsig.md) | [log10](opcodes/log10.md) | [log2](opcodes/log2.md) | [log](opcodes/log.md) |
 | [logbtwo](opcodes/logbtwo.md) | [logcurve](opcodes/logcurve.md) | [loop_ge](opcodes/loop_ge.md) | [loop_gt](opcodes/loop_gt.md) | [loop_le](opcodes/loop_le.md) |
-| [loop_lt](opcodes/loop_lt.md) | [loopseg](opcodes/loopseg.md) | [loopsegp](opcodes/loopsegp.md) | [looptseg](opcodes/looptseg.md) | [loopxseg](opcodes/loopxseg.md) |
+| [looplt](opcodes/loop_lt.md) | [loopseg](opcodes/loopseg.md) | [loopsegp](opcodes/loopsegp.md) | [looptseg](opcodes/looptseg.md) | [loopxseg](opcodes/loopxseg.md) |
 | [lorenz](opcodes/lorenz.md) | [loscil3](opcodes/loscil3.md) | [loscil](opcodes/loscil.md) | [loscilx](opcodes/loscilx.md) | [lowpass2](opcodes/lowpass2.md) |
 | [lowres](opcodes/lowres.md) | [lowresx](opcodes/lowresx.md) | [lpcanal](opcodes/lpcanal.md) | [lpcfilter](opcodes/lpcfilter.md) | [lpf18](opcodes/lpf18.md) |
 | [lpfreson](opcodes/lpfreson.md) | [lphasor](opcodes/lphasor.md) | [lpinterp](opcodes/lpinterp.md) | [lposcil3](opcodes/lposcil3.md) | [lposcil](opcodes/lposcil.md) |
