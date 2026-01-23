@@ -1,15 +1,20 @@
 <!--
 id:loop_ge
 category:Instrument Control:Program Flow Control
+alias:loop_ge
 -->
-# loop_ge
+# loopge
 Construction of looping operations.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *loop_ge*.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    loop_ge(indx, idecr, imin, label)
-    loop_ge(kndx, kdecr, kmin, label)
+    loopge(indx, idecr, imin, label)
+    loopge(kndx, kdecr, kmin, label)
     ```
 
 === "Classic"
@@ -34,7 +39,7 @@ _kdecr_ -- value to decrement the loop.
 
 _kmin_ -- minimum value of loop index.
 
-The actions of _loop\_ge_ are equivalent to the code
+The actions of _loopge_ are equivalent to the code
 
 ``` csound-orc
 indx  =  indx - idecr

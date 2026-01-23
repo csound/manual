@@ -729,6 +729,7 @@
 ### Instrument Control:Invocation
 [**event.csd**](../opcodes/event.md#examples)<br>
 [**event_named.csd**](../opcodes/event.md#examples)<br>
+[**eventi.csd**](../opcodes/event_i.md#examples)<br>
 [**event_i.csd**](../opcodes/event_i.md#examples)<br>
 [**mute.csd**](../opcodes/mute.md#examples)<br>
 [**nstance.csd**](../opcodes/nstance.md#examples)<br>
@@ -766,7 +767,9 @@
 [**kgoto.csd**](../opcodes/kgoto.md#examples)<br>
 [**loop_-group-modern.csd**](../opcodes/loop_ge.md#examples)<br>
 [**loop_-group.csd**](../opcodes/loop_ge.md#examples)<br>
+[**loopgt.csd**](../opcodes/loop_gt.md#examples)<br>
 [**loop_gt.csd**](../opcodes/loop_gt.md#examples)<br>
+[**loople.csd**](../opcodes/loop_le.md#examples)<br>
 [**loop_le.csd**](../opcodes/loop_le.md#examples)<br>
 [**looplt.csd**](../opcodes/loop_lt.md#examples)<br>
 [**loop_lt.csd**](../opcodes/loop_lt.md#examples)<br>
@@ -921,6 +924,7 @@
 [**ftsr.csd**](../opcodes/ftsr.md#examples)<br>
 [**genarray_i.csd**](../opcodes/genarray_i.md#examples)<br>
 [**lenarray.csd**](../opcodes/lenarray.md#examples)<br>
+[**maparray-modern.csd**](../opcodes/maparray.md#examples)<br>
 [**maparray.csd**](../opcodes/maparray.md#examples)<br>
 [**nsamp.csd**](../opcodes/nsamp.md#examples)<br>
 [**slicearray.csd**](../opcodes/slicearray.md#examples)<br>
@@ -1469,6 +1473,7 @@
 [**shiftout.csd**](../opcodes/shiftout.md#examples)<br>
 [**sumarray.csd**](../opcodes/sumarray.md#examples)<br>
 [**tab2array.csd**](../opcodes/tab2array.md#examples)<br>
+[**trim-modern.csd**](../opcodes/trim.md#examples)<br>
 [**trim.csd**](../opcodes/trim.md#examples)<br>
 
 ### Array Operations: Fast Fourier Transform

@@ -272,8 +272,8 @@ cosine interpolation, including a release segment.<br>
 [eqfil](../opcodes/eqfil.md) - Equalizer filter.<br>
 [evalstr](../opcodes/evalstr.md) - Evaluates a string containing Csound code, returning a value from the global space (instr 0).<br>
 [event](../opcodes/event.md) - Generates a score event from an instrument.<br>
-[event_i](../opcodes/event_i.md) - Generates a score event from an instrument.<br>
 [eventcycles](../opcodes/eventcycles.md) - Read absolute time in k-rate cycles, since the start of an instance of an instrument.<br>
+[eventi](../opcodes/event_i.md) - Generates a score event from an instrument.<br>
 [eventtime](../opcodes/eventtime.md) - Read absolute time, in seconds, since the start of an instance of an instrument.<br>
 [eventtype](../opcodes/eventtype.md) - Returns the event type for an instrument.<br>
 [exciter](../opcodes/exciter.md) - A non-linear filter system to excite the signal.<br>
@@ -472,9 +472,9 @@ numeric or string values.<br>
 [log](../opcodes/log.md) - Returns the natural log of _x_ (_x_ positive only).<br>
 [logbtwo](../opcodes/logbtwo.md) - Performs a logarithmic base two calculation.<br>
 [logcurve](../opcodes/logcurve.md) - This opcode implements a formula for generating a normalised logarithmic curve in range 0 - 1.<br>
-[loop_ge](../opcodes/loop_ge.md) - Construction of looping operations.<br>
-[loop_gt](../opcodes/loop_gt.md) - Construction of looping operations.<br>
-[loop_le](../opcodes/loop_le.md) - Construction of looping operations.<br>
+[loopge](../opcodes/loop_ge.md) - Construction of looping operations.<br>
+[loopgt](../opcodes/loop_gt.md) - Construction of looping operations.<br>
+[loople](../opcodes/loop_le.md) - Construction of looping operations.<br>
 [looplt](../opcodes/loop_lt.md) - Construction of looping operations.<br>
 [loopseg](../opcodes/loopseg.md) - Generate control signal consisting of linear segments delimited by two or more specified points.<br>
 [loopsegp](../opcodes/loopsegp.md) - Control signals based on linear segments.<br>

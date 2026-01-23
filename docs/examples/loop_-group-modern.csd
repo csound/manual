@@ -9,35 +9,35 @@ ksmps  = 32
 nchnls = 2
 0dbfs  = 1
 
-instr 1 ;loop_lt: counts from 1 upwards and checks if < 10
+instr 1 ;looplt: counts from 1 upwards and checks if < 10
   cnt:i = 1
 loop:
   print(cnt)
-  loop_lt(cnt, 1, 10, loop)
+  looplt(cnt, 1, 10, loop)
   prints("Instr 1 terminated!%n")
 endin
 
-instr 2 ;loop_le: counts from 1 upwards and checks if <= 10
+instr 2 ;loople: counts from 1 upwards and checks if <= 10
   cnt:i = 1
 loop:
   print(cnt)
-  loop_le(cnt, 1, 10, loop)
+  loople(cnt, 1, 10, loop)
   prints("Instr 2 terminated!%n")
 endin
 
-instr 3 ;loop_gt: counts from 10 downwards and checks if > 0
+instr 3 ;loopgt: counts from 10 downwards and checks if > 0
   cnt:i = 10
 loop:
   print(cnt)
-  loop_gt(cnt, 1, 0, loop)
+  loopgt(cnt, 1, 0, loop)
   prints("Instr 3 terminated!%n")
 endin
 
-instr 4 ;loop_ge: counts from 10 downwards and checks if >= 0
+instr 4 ;loopge: counts from 10 downwards and checks if >= 0
   cnt:i = 10
 loop:
   print(cnt)
-  loop_ge(cnt, 1, 0, loop)
+  loopge(cnt, 1, 0, loop)
   prints("Instr 4 terminated!%n")
 endin
 

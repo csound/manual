@@ -57,7 +57,7 @@
 | [dumpk4](opcodes/dumpk4.md) | [dumpk](opcodes/dumpk.md) | [duserrnd](opcodes/duserrnd.md) | [dust2](opcodes/dust2.md) | [dust](opcodes/dust.md) |
 | [elapsedcycles](opcodes/elapsedcycles.md) | [elapsedtime](opcodes/elapsedtime.md) | [else](opcodes/else.md) | [elseif](opcodes/elseif.md) | [endif](opcodes/endif.md) |
 | [endin](opcodes/endin.md) | [endop](opcodes/endop.md) | [envlpx](opcodes/envlpx.md) | [envlpxr](opcodes/envlpxr.md) | [ephasor](opcodes/ephasor.md) |
-| [eqfil](opcodes/eqfil.md) | [evalstr](opcodes/evalstr.md) | [event](opcodes/event.md) | [event_i](opcodes/event_i.md) | [eventcycles](opcodes/eventcycles.md) |
+| [eqfil](opcodes/eqfil.md) | [evalstr](opcodes/evalstr.md) | [event](opcodes/event.md) | [eventcycles](opcodes/eventcycles.md) | [eventi](opcodes/event_i.md) |
 | [eventtime](opcodes/eventtime.md) | [eventtype](opcodes/eventtype.md) | [exciter](opcodes/exciter.md) | [exitnow](opcodes/exitnow.md) | [exp](opcodes/exp.md) |
 | [expcurve](opcodes/expcurve.md) | [expon](opcodes/expon.md) | [exprand](opcodes/exprand.md) | [exprandi](opcodes/exprandi.md) | [expseg](opcodes/expseg.md) |
 | [expsega](opcodes/expsega.md) | [expsegb](opcodes/expsegb.md) | [expsegba](opcodes/expsegba.md) | [expsegr](opcodes/expsegr.md) | [fareylen](opcodes/fareylen.md) |
@@ -97,7 +97,7 @@
 | [line](opcodes/line.md) | [linen](opcodes/linen.md) | [linenr](opcodes/linenr.md) | [lineto](opcodes/lineto.md) | [linlin](opcodes/linlin.md) |
 | [linrand](opcodes/linrand.md) | [linseg](opcodes/linseg.md) | [linsegb](opcodes/linsegb.md) | [linsegr](opcodes/linsegr.md) | [liveconv](opcodes/liveconv.md) |
 | [locsend](opcodes/locsend.md) | [locsig](opcodes/locsig.md) | [log10](opcodes/log10.md) | [log2](opcodes/log2.md) | [log](opcodes/log.md) |
-| [logbtwo](opcodes/logbtwo.md) | [logcurve](opcodes/logcurve.md) | [loop_ge](opcodes/loop_ge.md) | [loop_gt](opcodes/loop_gt.md) | [loop_le](opcodes/loop_le.md) |
+| [logbtwo](opcodes/logbtwo.md) | [logcurve](opcodes/logcurve.md) | [loopge](opcodes/loop_ge.md) | [loopgt](opcodes/loop_gt.md) | [loople](opcodes/loop_le.md) |
 | [looplt](opcodes/loop_lt.md) | [loopseg](opcodes/loopseg.md) | [loopsegp](opcodes/loopsegp.md) | [looptseg](opcodes/looptseg.md) | [loopxseg](opcodes/loopxseg.md) |
 | [lorenz](opcodes/lorenz.md) | [loscil3](opcodes/loscil3.md) | [loscil](opcodes/loscil.md) | [loscilx](opcodes/loscilx.md) | [lowpass2](opcodes/lowpass2.md) |
 | [lowres](opcodes/lowres.md) | [lowresx](opcodes/lowresx.md) | [lpcanal](opcodes/lpcanal.md) | [lpcfilter](opcodes/lpcfilter.md) | [lpf18](opcodes/lpf18.md) |

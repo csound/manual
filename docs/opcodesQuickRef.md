@@ -2141,8 +2141,8 @@
 `event("scorechar", "insname", kdelay, kdur, [, kp4] [, kp5] [, ...])`<br>
 
 
-[**`event_i`**](opcodes/event_i.md)`("scorechar", iinsnum, idelay, idur, [, ip4] [, ip5] [, ...])`<br>
-`event_i("scorechar", "insname", idelay, idur, [, ip4] [, ip5] [, ...])`<br>
+[**`eventi`**](opcodes/event_i.md)`("scorechar", iinsnum, idelay, idur, [, ip4] [, ip5] [, ...])`<br>
+`eventi("scorechar", "insname", idelay, idur, [, ip4] [, ip5] [, ...])`<br>
 
 
 [**`mute`**](opcodes/mute.md)`(insnum [, iswitch])`<br>
@@ -2240,16 +2240,16 @@
 [**`kgoto`**](opcodes/kgoto.md)`(label)`<br>
 
 
-[**`loop_ge`**](opcodes/loop_ge.md)`(indx, idecr, imin, label)`<br>
-`loop_ge(kndx, kdecr, kmin, label)`<br>
+[**`loopge`**](opcodes/loop_ge.md)`(indx, idecr, imin, label)`<br>
+`loopge(kndx, kdecr, kmin, label)`<br>
 
 
-[**`loop_gt`**](opcodes/loop_gt.md)`(indx, idecr, imin, label)`<br>
-`loop_gt(kndx, kdecr, kmin, label)`<br>
+[**`loopgt`**](opcodes/loop_gt.md)`(indx, idecr, imin, label)`<br>
+`loopgt(kndx, kdecr, kmin, label)`<br>
 
 
-[**`loop_le`**](opcodes/loop_le.md)`(indx, incr, imax, label)`<br>
-`loop_le(kndx, kncr, kmax, label)`<br>
+[**`loople`**](opcodes/loop_le.md)`(indx, incr, imax, label)`<br>
+`loople(kndx, kncr, kmax, label)`<br>
 
 
 [**`looplt`**](opcodes/loop_lt.md)`(indx, incr, imax, label)`<br>
@@ -2717,7 +2717,7 @@
 
 
 `karray = `[**`maparray`**](opcodes/maparray.md)`(kinarray, String)`<br>
-`karray = maparray_i(kinarray, String)`<br>
+`karray = maparrayi(kinarray, String)`<br>
 
 
 [**`nsamp`**](opcodes/nsamp.md)`(x) (init-rate args only)`<br>
@@ -4398,7 +4398,7 @@
 `iout[] = tab2array(ifn [, istart, iend, istep ])`<br>
 
 
-[**`trim`**](opcodes/trim.md)`_i(iarray, ilen)`<br>
+[**`trim`**](opcodes/trim.md)`i(iarray, ilen)`<br>
 `trim(xarray, klen)`<br>
 
 

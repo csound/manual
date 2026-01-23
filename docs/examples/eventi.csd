@@ -1,10 +1,10 @@
 <CsoundSynthesizer>
 <CsOptions>
 ; Select audio/midi flags here according to platform
--odac     ;;;realtime audio out
+-odac     ;;;RT audio out
 ;-iadc    ;;;uncomment -iadc if RT audio input is needed too
 ; For Non-realtime ouput leave only the line below:
-; -o loop_lt.wav -W ;;; for file output any platform
+; -o event_i.wav -W ;;; for file output any platform
 </CsOptions>
 <CsInstruments>
 
@@ -13,14 +13,13 @@ ksmps = 32
 nchnls = 2
 0dbfs  = 1
 
-seed 0
-gisine = ftgen(0, 0, 2^10, 10, 1)
+seed(0)
+sine@global:i = ftgen(0, 0, 2^10, 10, 1)
 
 instr 1 ;master instrument
-  ninstr:i = 5 ;number of called instances
+  ninstr:i = 10 ;number of called instances
   ndx:i = 0
 loop:
-  prints("play instance %d\\n", ndx)
   Pan:i = random(0, 1)
   freq:i = random(100, 1000)
   amp:i = 1/ninstr
@@ -29,8 +28,9 @@ loop:
 endin
 
 instr 10
+  print(p4, p5, p6)
   Peak:i = random(0, 1) ;where is the envelope peak
-  sig:a = poscil3(p4, p5, gisine)
+  sig:a = poscil3(p4, p5, sine)
   env:a = transeg(0, p3*Peak, 6, 1, p3-p3*Peak, -6, 0)
   aL, aR = pan2(sig*env, p6)
   out(aL, aR)
@@ -39,6 +39,8 @@ endin
 </CsInstruments>
 <CsScore>
 i1 0 10
+i1 8 10
+i1 16 15
 e
 </CsScore>
 </CsoundSynthesizer>

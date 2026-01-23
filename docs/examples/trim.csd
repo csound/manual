@@ -5,9 +5,9 @@
 <CsInstruments>
 instr 1
     kA1[]   fillarray       0, 1, 2, 3, 4, 5, 6, 7 ; <-- 8 elements
-            printf          "lenarray(kA1) before slicearray: %d\n", 1, lenarray:k(kA1)
-            kA1     slicearray      kA1, 1, 4 ; <-- 4 elements
-            printf          "lenarray(kA1) AFTER  slicearray: %d\n", 1, lenarray:k(kA1)
+            printf          "lenarray(kA1) before slicearray: %d\n", 1, lenarray(kA1)
+            kA2[]     slicearray      kA1, 1, 4 ; <-- 4 elements
+            printf          "lenarray(kA2) AFTER  slicearray: %d\n", 1, lenarray(kA2)
             trim            kA1, 4
             printks         "kA1 after trim: { ", 0
       kCnt    =               0
