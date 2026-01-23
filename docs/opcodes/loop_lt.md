@@ -5,6 +5,10 @@ category:Instrument Control:Program Flow Control
 # looplt
 Construction of looping operations.
 
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *loop_lt*.
+
 ## Syntax
 === "Modern"
     ``` csound-orc
