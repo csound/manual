@@ -29,7 +29,7 @@ Sends in a score [score], to which most preprocessing (except for tempo) can  be
 ```
    @[channel_name] [value]
 ```
-Set a control channel [channel_name] with the value [value].  Example:   if the csd contains the line ' chn_k "freq", 440' then send '@freq 330' sets "freq" to 330
+Set a control channel [channel_name] with the value [value].  Example:   if the csd contains the line ' chnk "freq", 440' then send '@freq 330' sets "freq" to 330
 
 
 ```

@@ -1,7 +1,6 @@
 <!--
 id:maparray
 category:Table Control:Table Queries
-alias:maparray_i
 -->
 # maparray
 Apply a function of one argument to every element of a vector (one-dimensional k-rate array).

@@ -12,7 +12,7 @@ Opcodes for slider banks of MIDI controls are:
 * [slider64f](../opcodes/slider64f.md)
 * [s16b14](../opcodes/s16b14.md)
 * [s32b14](../opcodes/s32b14.md)
-* [sliderKawai](../opcodes/sliderkawai.md)
+* [sliderkawai](../opcodes/sliderkawai.md)
 
 Opcodes for storing slider banks of MIDI controls to tables are:
 

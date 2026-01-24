@@ -1,7 +1,6 @@
 <!--
 id:event_i
 category:Instrument Control:Invocation
-alias:event_i
 -->
 # eventi
 Generates a score event from an instrument.

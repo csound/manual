@@ -122,14 +122,14 @@
 | [mp3in](opcodes/mp3in.md) | [mp3len](opcodes/mp3len.md) | [mp3scal](opcodes/mp3scal.md) | [mpulse](opcodes/mpulse.md) | [mrtmsg](opcodes/mrtmsg.md) |
 | [ms2st](opcodes/ms2st.md) | [mtof](opcodes/mtof.md) | [mton](opcodes/mton.md) | [multitap](opcodes/multitap.md) | [mute](opcodes/mute.md) |
 | [mvchpf](opcodes/mvchpf.md) | [mvclpf1](opcodes/mvclpf1.md) | [mvclpf2](opcodes/mvclpf2.md) | [mvclpf3](opcodes/mvclpf3.md) | [mvclpf4](opcodes/mvclpf4.md) |
-| [mvmfilter](opcodes/mvmfilter.md) | [mxadsr](opcodes/mxadsr.md) | [nchnls](opcodes/nchnls.md) | [nchnls_hw](opcodes/nchnls_hw.md) | [nchnls_i](opcodes/nchnls_i.md) |
+| [mvmfilter](opcodes/mvmfilter.md) | [mxadsr](opcodes/mxadsr.md) | [nchnls](opcodes/nchnls.md) | [nchnls_i](opcodes/nchnls_i.md) | [nchnlshw](opcodes/nchnls_hw.md) |
 | [nestedap](opcodes/nestedap.md) | [nlfilt2](opcodes/nlfilt2.md) | [nlfilt](opcodes/nlfilt.md) | [noise](opcodes/noise.md) | [noteoff](opcodes/noteoff.md) |
 | [noteon](opcodes/noteon.md) | [noteondur2](opcodes/noteondur2.md) | [noteondur](opcodes/noteondur.md) | [notnum](opcodes/notnum.md) | [nreverb](opcodes/nreverb.md) |
 | [nrpn](opcodes/nrpn.md) | [nsamp](opcodes/nsamp.md) | [nstance](opcodes/nstance.md) | [nstrnum](opcodes/nstrnum.md) | [nstrstr](opcodes/nstrstr.md) |
 | [ntof](opcodes/ntof.md) | [ntom](opcodes/ntom.md) | [ntrpol](opcodes/ntrpol.md) | [octave](opcodes/octave.md) | [octcps](opcodes/octcps.md) |
 | [octmidi](opcodes/octmidi.md) | [octmidib](opcodes/octmidib.md) | [octmidinn](opcodes/octmidinn.md) | [octpch](opcodes/octpch.md) | [olabuffer](opcodes/olabuffer.md) |
-| [opcode](opcodes/opcode.md) | [opcodeinfo](opcodes/opcodeinfo.md) | [oscbnk](opcodes/oscbnk.md) | [oscil1](opcodes/oscil1.md) | [oscil1i](opcodes/oscil1i.md) |
-| [oscil3](opcodes/oscil3.md) | [oscil](opcodes/oscil.md) | [oscili](opcodes/oscili.md) | [oscilikt](opcodes/oscilikt.md) | [osciliktp](opcodes/osciliktp.md) |
+| [opcode](opcodes/opcode.md) | [opcodeinfo](opcodes/opcodeinfo.md) | [oscil1](opcodes/oscil1.md) | [oscil1i](opcodes/oscil1i.md) | [oscil3](opcodes/oscil3.md) |
+| [oscil](opcodes/oscil.md) | [oscilbank](opcodes/oscbnk.md) | [oscili](opcodes/oscili.md) | [oscilikt](opcodes/oscilikt.md) | [osciliktp](opcodes/osciliktp.md) |
 | [oscilikts](opcodes/oscilikts.md) | [osciln](opcodes/osciln.md) | [oscils](opcodes/oscils.md) | [oscilx](opcodes/oscilx.md) | [otafilter](opcodes/otafilter.md) |
 | [out32](opcodes/out32.md) | [out](opcodes/out.md) | [outall](opcodes/outall.md) | [outc](opcodes/outc.md) | [outch](opcodes/outch.md) |
 | [outh](opcodes/outh.md) | [outiat](opcodes/outiat.md) | [outic14](opcodes/outic14.md) | [outic](opcodes/outic.md) | [outipat](opcodes/outipat.md) |
@@ -191,7 +191,7 @@
 | [skf](opcodes/skf.md) | [sleighbells](opcodes/sleighbells.md) | [slicearray](opcodes/slicearray.md) | [slider16](opcodes/slider16.md) | [slider16f](opcodes/slider16f.md) |
 | [slider16table](opcodes/slider16table.md) | [slider16tablef](opcodes/slider16tablef.md) | [slider32](opcodes/slider32.md) | [slider32f](opcodes/slider32f.md) | [slider32table](opcodes/slider32table.md) |
 | [slider32tablef](opcodes/slider32tablef.md) | [slider64](opcodes/slider64.md) | [slider64f](opcodes/slider64f.md) | [slider64table](opcodes/slider64table.md) | [slider64tablef](opcodes/slider64tablef.md) |
-| [slider8](opcodes/slider8.md) | [slider8f](opcodes/slider8f.md) | [slider8table](opcodes/slider8table.md) | [slider8tablef](opcodes/slider8tablef.md) | [sliderKawai](opcodes/sliderkawai.md) |
+| [slider8](opcodes/slider8.md) | [slider8f](opcodes/slider8f.md) | [slider8table](opcodes/slider8table.md) | [slider8tablef](opcodes/slider8tablef.md) | [sliderkawai](opcodes/sliderkawai.md) |
 | [sndload](opcodes/sndload.md) | [sndloop](opcodes/sndloop.md) | [sndwarp](opcodes/sndwarp.md) | [sndwarpst](opcodes/sndwarpst.md) | [sockrecv](opcodes/sockrecv.md) |
 | [socksend](opcodes/socksend.md) | [sorta](opcodes/sorta.md) | [sortd](opcodes/sortd.md) | [soundin](opcodes/soundin.md) | [soundout](opcodes/soundout.md) |
 | [soundouts](opcodes/soundouts.md) | [space](opcodes/space.md) | [spat3d](opcodes/spat3d.md) | [spat3di](opcodes/spat3di.md) | [spat3dt](opcodes/spat3dt.md) |

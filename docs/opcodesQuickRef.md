@@ -86,18 +86,18 @@
 `ares = lfo(kamp, kcps [, itype])`<br>
 
 
-`ares = `[**`oscbnk`**](opcodes/oscbnk.md)`(kcps, kamd, kfmd, kpmd, iovrlap, iseed, kl1minf, kl1maxf, \`<br>
-&nbsp;&nbsp;&nbsp;&nbsp;`kl2minf, kl2maxf, ilfomode, keqminf, keqmaxf, keqminl, keqmaxl, \`<br>
-&nbsp;&nbsp;&nbsp;&nbsp;`keqminq, keqmaxq, ieqmode, kfn [, il1fn] [, il2fn] [, ieqffn]   \`<br>
-&nbsp;&nbsp;&nbsp;&nbsp;`[, ieqlfn] [, ieqqfn] [, itabl] [, ioutfn])`<br>
-
-
 `ares = `[**`oscil`**](opcodes/oscil.md)`(xamp, xcps [, ifn, iphs])`<br>
 `kres = oscil(kamp, kcps [, ifn, iphs])`<br>
 
 
 `ares = `[**`oscil3`**](opcodes/oscil3.md)`(xamp, xcps [, ifn, iphs])`<br>
 `kres = oscil3(kamp, kcps [, ifn, iphs])`<br>
+
+
+`ares = `[**`oscilbank`**](opcodes/oscbnk.md)`(kcps, kamd, kfmd, kpmd, iovrlap, iseed, kl1minf, kl1maxf, \`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`kl2minf, kl2maxf, ilfomode, keqminf, keqmaxf, keqminl, keqmaxl, \`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`keqminq, keqmaxq, ieqmode, kfn [, il1fn] [, il2fn] [, ieqffn]   \`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`[, ieqlfn] [, ieqqfn] [, itabl] [, ioutfn])`<br>
 
 
 `ares = `[**`oscili`**](opcodes/oscili.md)`(xamp, xcps[, ifn, iphs])`<br>
@@ -1216,11 +1216,11 @@
 `chano(aval, kchan)`<br>
 
 
-[**`chn`**](opcodes/chn.md)`_k(Sname, imode[, itype, idflt, imin, ima, ix, iy, iwidth, iheight, Sattributes])`<br>
-`chn_a(Sname, imode)`<br>
-`chn_S(Sname, imode)`<br>
-`chn_S(Sname, Smode)`<br>
-`chn_array(Sname, imode, Stype, iSizes[])`<br>
+[**`chn`**](opcodes/chn.md)`k(Sname, imode[, itype, idflt, imin, ima, ix, iy, iwidth, iheight, Sattributes])`<br>
+`chna(Sname, imode)`<br>
+`chnS(Sname, imode)`<br>
+`chnS(Sname, Smode)`<br>
+`chnarray(Sname, imode, Stype, iSizes[])`<br>
 
 
 [**`chnclear`**](opcodes/chnclear.md)`(Sname1[, Sname2,...])`<br>
@@ -1288,7 +1288,7 @@
 [**`print`**](opcodes/print.md)`(iarg [, iarg1] [, iarg2] [...])`<br>
 
 
-[**`printf`**](opcodes/printf.md)`_i(Sfmt, itrig, [iarg1[, iarg2[, ... ]]])`<br>
+[**`printf`**](opcodes/printf.md)`i(Sfmt, itrig, [iarg1[, iarg2[, ... ]]])`<br>
 `printf(Sfmt, ktrig, [xarg1[, xarg2[, ... ]]])`<br>
 
 
@@ -2127,7 +2127,7 @@
 
 
 [**`turnoff2`**](opcodes/turnoff2.md)`(kinsno, kmode, krelease)`<br>
-`turnoff2_i(insno, imode, irelease)`<br>
+`turnoff2i(insno, imode, irelease)`<br>
 
 
 [**`turnoff3`**](opcodes/turnoff3.md)`(kinsno)`<br>
@@ -3546,7 +3546,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;`ictlnum8, imin8, imax8, init8, ifn8, icutoff8)`<br>
 
 
-`k1, k2, ...., k16 = `[**`sliderKawai`**](opcodes/sliderkawai.md)`(imin1, imax1, init1, ifn1, imin2, imax2, \`<br>
+`k1, k2, ...., k16 = `[**`sliderkawai`**](opcodes/sliderkawai.md)`(imin1, imax1, init1, ifn1, imin2, imax2, \`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`init2, ifn2, ..., imin16, imax16, init16, ifn16)`<br>
 
 
@@ -4500,7 +4500,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;`inum_parm, kupdate)`<br>
 
 
-`idacc, iadcc = `[**`nchnls_hw`**](opcodes/nchnls_hw.md)`()`<br>
+`idacc, iadcc = `[**`nchnlshw`**](opcodes/nchnls_hw.md)`()`<br>
 
 
 `aout = `[**`olabuffer`**](opcodes/olabuffer.md)`(kin, ioverlap)`<br>

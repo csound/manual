@@ -2,13 +2,17 @@
 id:sliderKawai
 category:Real-time MIDI:Slider Banks
 -->
-# sliderKawai
+# sliderkawai
 Creates a bank of 16 different MIDI control message numbers from a KAWAI MM-16 midi mixer.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *sliderKawai*.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    k1, k2, ...., k16 = sliderKawai(imin1, imax1, init1, ifn1, imin2, imax2, \
+    k1, k2, ...., k16 = sliderkawai(imin1, imax1, init1, ifn1, imin2, imax2, \
                                     init2, ifn2, ..., imin16, imax16, init16, ifn16)
     ```
 
@@ -32,7 +36,7 @@ _ifn1 ... ifn16_ -- function table for conversion for each controller
 
 _k1 ... k16_ -- output values
 
-The opcode _sliderKawai_ is equivalent to [slider16](../opcodes/slider16.md), but it has the controller and channel numbers (_ichan_ and _ictlnum_) hard-coded to make for quick compatiblity with the KAWAI MM-16 midi mixer. This device doesn't allow changing the midi message associated to each slider. It can only output on control 7 for each fader on a separate midi channel. This opcode is a quick way of assigning the mixer's 16 faders to k-rate variables in csound.
+The opcode _sliderkawai_ is equivalent to [slider16](../opcodes/slider16.md), but it has the controller and channel numbers (_ichan_ and _ictlnum_) hard-coded to make for quick compatiblity with the KAWAI MM-16 midi mixer. This device doesn't allow changing the midi message associated to each slider. It can only output on control 7 for each fader on a separate midi channel. This opcode is a quick way of assigning the mixer's 16 faders to k-rate variables in csound.
 
 ## See Also
 

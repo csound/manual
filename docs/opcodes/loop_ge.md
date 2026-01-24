@@ -1,7 +1,6 @@
 <!--
 id:loop_ge
 category:Instrument Control:Program Flow Control
-alias:loop_ge
 -->
 # loopge
 Construction of looping operations.

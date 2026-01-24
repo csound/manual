@@ -41,10 +41,12 @@
 ### Signal Generators:Basic Oscillators
 [**lfo.csd**](../opcodes/lfo.md#examples)<br>
 [**lfo-advanced.csd**](../opcodes/lfo.md#examples)<br>
-[**oscbnk.csd**](../opcodes/oscbnk.md#examples)<br>
-[**oscbnk-advanced.csd**](../opcodes/oscbnk.md#examples)<br>
 [**oscil.csd**](../opcodes/oscil.md#examples)<br>
 [**oscil3.csd**](../opcodes/oscil3.md#examples)<br>
+[**oscilbank.csd**](../opcodes/oscbnk.md#examples)<br>
+[**oscbnk.csd**](../opcodes/oscbnk.md#examples)<br>
+[**oscilbank-advanced.csd**](../opcodes/oscbnk.md#examples)<br>
+[**oscbnk-advanced.csd**](../opcodes/oscbnk.md#examples)<br>
 [**oscili.csd**](../opcodes/oscili.md#examples)<br>
 [**oscilikt.csd**](../opcodes/oscilikt.md#examples)<br>
 [**osciliktp.csd**](../opcodes/osciliktp.md#examples)<br>
@@ -409,6 +411,7 @@
 [**display.csd**](../opcodes/display.md#examples)<br>
 [**flashtxt.csd**](../opcodes/flashtxt.md#examples)<br>
 [**print.csd**](../opcodes/print.md#examples)<br>
+[**printf-modern.csd**](../opcodes/printf.md#examples)<br>
 [**printf.csd**](../opcodes/printf.md#examples)<br>
 [**printk.csd**](../opcodes/printk.md#examples)<br>
 [**printk2.csd**](../opcodes/printk2.md#examples)<br>
@@ -722,6 +725,7 @@
 [**ihold-modern.csd**](../opcodes/ihold.md#examples)<br>
 [**ihold.csd**](../opcodes/ihold.md#examples)<br>
 [**turnoff.csd**](../opcodes/turnoff.md#examples)<br>
+[**turnoff2-modern.csd**](../opcodes/turnoff2.md#examples)<br>
 [**turnoff2.csd**](../opcodes/turnoff2.md#examples)<br>
 [**turnoff3.csd**](../opcodes/turnoff3.md#examples)<br>
 [**turnon.csd**](../opcodes/turnon.md#examples)<br>
@@ -1525,9 +1529,11 @@
 [**tableiw.csd**](../opcodes/tableiw.md#examples)<br>
 
 ### Miscellaneous
+[**directory-modern.csd**](../opcodes/directory.md#examples)<br>
 [**directory.csd**](../opcodes/directory.md#examples)<br>
 [**framebuffer.csd**](../opcodes/framebuffer.md#examples)<br>
 [**modmatrix.csd**](../opcodes/modmatrix.md#examples)<br>
+[**nchnlshw.csd**](../opcodes/nchnls_hw.md#examples)<br>
 [**nchnls_hw.csd**](../opcodes/nchnls_hw.md#examples)<br>
 [**framebuffer.csd**](../opcodes/olabuffer.md#examples)<br>
 [**pwd.csd**](../opcodes/pwd.md#examples)<br>

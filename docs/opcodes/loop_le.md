@@ -1,7 +1,6 @@
 <!--
 id:loop_le
 category:Instrument Control:Program Flow Control
-alias:loop_le
 -->
 # loople
 Construction of looping operations.

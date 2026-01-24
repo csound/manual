@@ -5,16 +5,20 @@ category:Signal I/O:Software Bus
 # chn
 Declare a channel of the named software bus.
 
+> :memo: **Note**
+>
+> Up to Csound 6, *chnk*, *chna*, *chnS*, and *chnarray* were called *chn_k*, *chn_a*, *chn_S*, and *chn_array*.
+
 Optional parameters can be set in the case of a control channel. If the channel does not exist yet, it is created, with an inital value of zero or empty string. Otherwise, the type (control, audio, or string) of the existing channel must match the declaration, or an init error occurs. The input/output mode of an existing channel is updated so that it becomes the bitwise OR of the previous and the newly specified value.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    chn_k(Sname, imode[, itype, idflt, imin, ima, ix, iy, iwidth, iheight, Sattributes])
-    chn_a(Sname, imode)
-    chn_S(Sname, imode)
-    chn_S(Sname, Smode)
-    chn_array(Sname, imode, Stype, iSizes[])
+    chnk(Sname, imode[, itype, idflt, imin, ima, ix, iy, iwidth, iheight, Sattributes])
+    chna(Sname, imode)
+    chnS(Sname, imode)
+    chnS(Sname, Smode)
+    chnarray(Sname, imode, Stype, iSizes[])
     ```
 
 === "Classic"
@@ -67,7 +71,7 @@ For communication with external software, using [chnexport](../opcodes/chnexport
 
 ### Performance
 
-_chn_k_, _chn_a_, and _chn_S_ declare a control, audio, or string channel, respectively.
+_chnk_, _chna_, and _chnS_ declare a control, audio, or string channel, respectively.
 
 ### Examples
 
@@ -78,13 +82,13 @@ sr = 44100
 kr = 100
 ksmps = 1
 
-chn_k "cutoff", 1, 3, 1000, 500, 2000
+chnk("cutoff", 1, 3, 1000, 500, 2000)
 
 instr   1
-    kc   chnget    "cutoff"
-    a1   oscil     p4, p5, 100
-    a2   lowpass2  a1, kc, 200
-         out       a2
+  kc = chnget("cutoff")
+  a1 = oscil(p4, p5, 100)
+  a2 = lowpass2(a1, kc, 200)
+  out(a2)
 endin
 ```
 

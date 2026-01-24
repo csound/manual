@@ -1,7 +1,6 @@
 <!--
 id:looplt
 category:Instrument Control:Program Flow Control
-alias:loop_lt
 -->
 # looplt
 Construction of looping operations.

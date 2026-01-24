@@ -39,4 +39,4 @@ Typical statements in the global space other than the orchestra header are:
 - Macro definitions  
 - [#include](../opcodes/include.md) statements for external files  
 - setting or initializing global variables, e.g. `gaReverb init 0`  
-- declaring software channels, e.g. `chn_k("watchdog", 3)`  
+- declaring software channels, e.g. `chnk("watchdog", 3)`  

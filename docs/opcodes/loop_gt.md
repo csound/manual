@@ -1,7 +1,6 @@
 <!--
 id:loop_gt
 category:Instrument Control:Program Flow Control
-alias:loop_gt
 -->
 # loopgt
 Construction of looping operations.

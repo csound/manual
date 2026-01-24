@@ -598,8 +598,8 @@ numeric or string values.<br>
 [mvmfilter](../opcodes/mvmfilter.md) - A filter with pronounced resonance and controllable decay time.<br>
 [mxadsr](../opcodes/mxadsr.md) - Calculates the classical ADSR envelope using the [expsegr](../opcodes/expsegr.md) mechanism.<br>
 [nchnls](../opcodes/nchnls.md) - Sets the number of channels of audio output.<br>
-[nchnls_hw](../opcodes/nchnls_hw.md) - Returns the number of audio channels in the underlying hardware.<br>
 [nchnls_i](../opcodes/nchnls_i.md) - Sets the number of channels of audio input.<br>
+[nchnlshw](../opcodes/nchnls_hw.md) - Returns the number of audio channels in the underlying hardware.<br>
 [nestedap](../opcodes/nestedap.md) - Three different nested all-pass filters, useful for implementing reverbs.<br>
 [nlfilt2](../opcodes/nlfilt2.md) - A filter with a non-linear effect and blowup protection.<br>
 [nlfilt](../opcodes/nlfilt.md) - A filter with a non-linear effect.<br>
@@ -627,11 +627,11 @@ numeric or string values.<br>
 [olabuffer](../opcodes/olabuffer.md) - Sum overlapping frames of audio as k-rate arrays and read as an audio signal.<br>
 [opcode](../opcodes/opcode.md) - Defines the start of user-defined opcode block.<br>
 [opcodeinfo](../opcodes/opcodeinfo.md) - Prints information on an opcode definition and its overloads.<br>
-[oscbnk](../opcodes/oscbnk.md) - Mixes the output of any number of oscillators.<br>
 [oscil1](../opcodes/oscil1.md) - Accesses table values by incremental sampling.<br>
 [oscil1i](../opcodes/oscil1i.md) - Accesses table values by incremental sampling with linear interpolation.<br>
 [oscil3](../opcodes/oscil3.md) - A simple oscillator with cubic interpolation.<br>
 [oscil](../opcodes/oscil.md) - A simple oscillator without any interpolation.<br>
+[oscilbank](../opcodes/oscbnk.md) - Mixes the output of any number of oscillators.<br>
 [oscili](../opcodes/oscili.md) - A simple oscillator with linear interpolation.<br>
 [oscilikt](../opcodes/oscilikt.md) - A linearly interpolated oscillator that allows changing the table number at k-rate.<br>
 [osciliktp](../opcodes/osciliktp.md) - A linearly interpolated oscillator that allows allows phase modulation.<br>
@@ -945,7 +945,7 @@ time-varying crossfade looping.<br>
 [slider8f](../opcodes/slider8f.md) - Creates a bank of 8 different MIDI control message numbers, filtered before output.<br>
 [slider8table](../opcodes/slider8table.md) - Stores a bank of 8 different MIDI control messages to a table.<br>
 [slider8tablef](../opcodes/slider8tablef.md) - Stores a bank of 8 different MIDI control messages to a table, filtered before output.<br>
-[sliderKawai](../opcodes/sliderkawai.md) - Creates a bank of 16 different MIDI control message numbers from a KAWAI MM-16 midi mixer.<br>
+[sliderkawai](../opcodes/sliderkawai.md) - Creates a bank of 16 different MIDI control message numbers from a KAWAI MM-16 midi mixer.<br>
 [sndload](../opcodes/sndload.md) - Loads a sound file into memory for use by [loscilx](../opcodes/loscilx.md).<br>
 [sndloop](../opcodes/sndloop.md) - A sound looper with pitch control.<br>
 [sndwarp](../opcodes/sndwarp.md) - Reads a mono sound sample from a table and applies time-stretching and/or pitch modification.<br>

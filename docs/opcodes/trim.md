@@ -1,7 +1,6 @@
 <!--
 id:trim
 category:Array Opcodes
-alias:trim_i
 -->
 # trim
 Adjust size of a one-dimensional array.

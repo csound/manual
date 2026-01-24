@@ -34,11 +34,17 @@ _SFiles[]_ -- a string array that holds the names of all files of a given type f
 
 ## Examples
 
-This example shows how directory can be used to browse for .wav files in a fixed location. _printf_i_ is then used to print the file names. It uses the file [directory.csd](../examples/directory.csd).
+=== "Modern"
+    This example shows how directory can be used to browse for .wav files in a fixed location. *printfi* is then used to print the file names. It uses the file [directory-modern.csd](../examples/directory-modern.csd).
+    ``` csound-csd title="Example of the directory opcode." linenums="1"
+    --8<-- "examples/directory-modern.csd"
+    ```
 
-``` csound-csd title="Example of the directory opcode." linenums="1"
---8<-- "examples/directory.csd"
-```
+=== "Classic"
+    This example shows how directory can be used to browse for .wav files in a fixed location. *printf_i* is then used to print the file names. It uses the file [directory.csd](../examples/directory.csd).
+    ``` csound-csd title="Example of the directory opcode." linenums="1"
+    --8<-- "examples/directory.csd"
+    ```
 
 ## See also
 
