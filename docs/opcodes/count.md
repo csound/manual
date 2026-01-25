@@ -22,21 +22,27 @@ Get the next value from a counter by adding the increment and keeping the counte
 
 ### Initialization
 
-_icnt_ -- the handle of a counter object from a call to _cntCreate_.
+_icnt_ -- the handle of a counter object from a call to _cntcreate_.
 
 ### Performance
 
-Calculate the next value from the counter object and return that  value.
+Calculate the next value from the counter object and return that value.
 
 _kval_ -- returned value.
 
 ## Examples
 
-Here is an example of the count opcode. It uses the file [counter.csd](../examples/counter.csd).
+=== "Modern"
+    Here is an example of the count opcode. It uses the file [counter-modern.csd](../examples/counter-modern.csd).
+    ``` csound-csd title="Example of the count opcode." linenums="1"
+    --8<-- "examples/counter-modern.csd"
+    ```
 
-``` csound-csd title="Example of the count opcode." linenums="1"
---8<-- "examples/counter.csd"
-```
+=== "Classic"
+    Here is an example of the count opcode. It uses the file [counter.csd](../examples/counter.csd).
+    ``` csound-csd title="Example of the count opcode." linenums="1"
+    --8<-- "examples/counter.csd"
+    ```
 
 ## See also
 

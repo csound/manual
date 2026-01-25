@@ -2,15 +2,19 @@
 id:cntRead
 category:Instrument Control:Sensing and Control
 -->
-# cntRead
+# cntread
 Read current value of a counter object without changing it.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *cntRead*.
 
 Plugin opcode in counter.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    kval = cntRead(icnt)
+    kval = cntread(icnt)
     ```
 
 === "Classic"

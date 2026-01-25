@@ -2,15 +2,19 @@
 id:cntCreate
 category:Instrument Control:Sensing and Control
 -->
-# cntCreate
+# cntcreate
 Create a counter object.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *cntCreate*.
 
 Plugin opcode in counter.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    icnt = cntCreate([imax, imin, inc])
+    icnt = cntcreate([imax, imin, inc])
     ```
 
 === "Classic"
@@ -34,13 +38,21 @@ Creates a counter object which loops between _imin_ and _imax_ in steps of _inc_
 
 ## Examples
 
-Here is an example of the cndCreate opcode. It uses the file [counter.csd](../examples/counter.csd).
+=== "Modern"
+    Here is an example of the cndcreate opcode. It uses the file [counter-modern.csd](../examples/counter-modern.csd).
+    ``` csound-csd title="Example of the cntcreate opcode." linenums="1"
+    --8<-- "examples/counter-modern.csd"
+    ```
 
-``` csound-csd title="Example of the cntCreate opcode." linenums="1"
---8<-- "examples/counter.csd"
-```
+    A musical example featuring the cntcreate opcode: [NervousHappyBirthday_Cucchi-modern.csd](../examples/musical/NervousHappyBirthday_Cucchi-modern.csd) by Stefano Cucchi.
 
-A musical example featuring the cntCreate opcode: [NervousHappyBirthday_Cucchi.csd](../examples/musical/NervousHappyBirthday_Cucchi.csd) by Stefano Cucchi.
+=== "Classic"
+    Here is an example of the cndCreate opcode. It uses the file [counter.csd](../examples/counter.csd).
+    ``` csound-csd title="Example of the cntCreate opcode." linenums="1"
+    --8<-- "examples/counter.csd"
+    ```
+
+    A musical example featuring the cntCreate opcode: [NervousHappyBirthday_Cucchi.csd](../examples/musical/NervousHappyBirthday_Cucchi.csd) by Stefano Cucchi.
 
 ## See also
 

@@ -2,15 +2,19 @@
 id:cntCycles
 category:Instrument Control:Sensing and Control
 -->
-# cntCycles
+# cntcycles
 Get the number of times a counter has cycled.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *cntCycles*.
 
 Plugin opcode in counter.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    kval = cntCycles(icnt)
+    kval = cntcycles(icnt)
     ```
 
 === "Classic"
@@ -20,7 +24,7 @@ Plugin opcode in counter.
 
 ### Initialization
 
-_icnt_ -- the handle of a counter object from a call to _cntCreate_.
+_icnt_ -- the handle of a counter object from a call to _cntcreate_.
 
 ### Performance
 

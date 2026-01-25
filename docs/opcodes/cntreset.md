@@ -2,15 +2,19 @@
 id:cntReset
 category:Instrument Control:Sensing and Control
 -->
-# cntReset
+# cntreset
 Resets a counter object to its initial state.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *cntReset*.
 
 Plugin opcode in counter.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    cntReset(icnt)
+    cntreset(icnt)
     ```
 
 === "Classic"

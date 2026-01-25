@@ -2,15 +2,19 @@
 id:cntDelete
 category:Instrument Control:Sensing and Control
 -->
-# cntDelete
+# cntdelete
 Delete a counter and render any memory used.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *cntDelete*.
 
 Plugin opcode in counter.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    kval = cntDelete(icnt)
+    kval = cntdelete(icnt)
     ```
 
 === "Classic"
@@ -20,7 +24,7 @@ Plugin opcode in counter.
 
 ### Initialization
 
-_icnt_ -- the handle of a counter object from a call to _cntCreate_.
+_icnt_ -- the handle of a counter object from a call to _cntcreate_.
 
 ### Performance
 
