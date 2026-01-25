@@ -33,13 +33,13 @@
 | [chnexport](opcodes/chnexport.md) | [chnget](opcodes/chnget.md) | [chnmix](opcodes/chnmix.md) | [chnparams](opcodes/chnparams.md) | [chnset](opcodes/chnset.md) |
 | [cigoto](opcodes/cigoto.md) | [ckgoto](opcodes/ckgoto.md) | [clear](opcodes/clear.md) | [clfilt](opcodes/clfilt.md) | [clip](opcodes/clip.md) |
 | [clockoff](opcodes/clockoff.md) | [clockon](opcodes/clockon.md) | [cmp](opcodes/cmp.md) | [cmplxprod](opcodes/cmplxprod.md) | [cngoto](opcodes/cngoto.md) |
-| [cntCreate](opcodes/cntcreate.md) | [cntCycles](opcodes/cntcycles.md) | [cntDelete](opcodes/cntDelete.md) | [cntDelete_i](opcodes/cntDelete_i.md) | [cntRead](opcodes/cntread.md) |
-| [cntReset](opcodes/cntreset.md) | [cntState](opcodes/cntstate.md) | [comb](opcodes/comb.md) | [combinv](opcodes/combinv.md) | [compilecsd](opcodes/compilecsd.md) |
+| [cntcreate](opcodes/cntcreate.md) | [cntcycles](opcodes/cntcycles.md) | [cntdelete](opcodes/cntDelete.md) | [cntdeletei](opcodes/cntDelete_i.md) | [cntread](opcodes/cntread.md) |
+| [cntreset](opcodes/cntreset.md) | [cntstate](opcodes/cntstate.md) | [comb](opcodes/comb.md) | [combinv](opcodes/combinv.md) | [compilecsd](opcodes/compilecsd.md) |
 | [compileorc](opcodes/compileorc.md) | [compilestr](opcodes/compilestr.md) | [compress2](opcodes/compress2.md) | [compress](opcodes/compress.md) | [conj](opcodes/complex.md) |
 | [conj](opcodes/conj.md) | [connect](opcodes/connect.md) | [continue](opcodes/continue.md) | [control](opcodes/control.md) | [convle](opcodes/convle.md) |
 | [convolve](opcodes/convolve.md) | [copya2ftab](opcodes/copya2ftab.md) | [copyf2array](opcodes/copyf2array.md) | [cos](opcodes/cos.md) | [cosh](opcodes/cosh.md) |
 | [cosinv](opcodes/cosinv.md) | [cosseg](opcodes/cosseg.md) | [cossegb](opcodes/cossegb.md) | [cossegr](opcodes/cossegr.md) | [count](opcodes/count.md) |
-| [count_i](opcodes/count_i.md) | [cps2pch](opcodes/cps2pch.md) | [cpsmidi](opcodes/cpsmidi.md) | [cpsmidib](opcodes/cpsmidib.md) | [cpsmidinn](opcodes/cpsmidinn.md) |
+| [counti](opcodes/count_i.md) | [cps2pch](opcodes/cps2pch.md) | [cpsmidi](opcodes/cpsmidi.md) | [cpsmidib](opcodes/cpsmidib.md) | [cpsmidinn](opcodes/cpsmidinn.md) |
 | [cpsoct](opcodes/cpsoct.md) | [cpspch](opcodes/cpspch.md) | [cpstmid](opcodes/cpstmid.md) | [cpstun](opcodes/cpstun.md) | [cpstuni](opcodes/cpstuni.md) |
 | [cpsxpch](opcodes/cpsxpch.md) | [cpumeter](opcodes/cpumeter.md) | [cpuprc](opcodes/cpuprc.md) | [create](opcodes/create.md) | [cross2](opcodes/cross2.md) |
 | [crossfm](opcodes/crossfm.md) | [crunch](opcodes/crunch.md) | [ctrl14](opcodes/ctrl14.md) | [ctrl21](opcodes/ctrl21.md) | [ctrl7](opcodes/ctrl7.md) |

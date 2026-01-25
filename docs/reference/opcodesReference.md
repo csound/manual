@@ -147,13 +147,13 @@
 [cmp](../opcodes/cmp.md) - Compares audio signals or arrays.<br>
 [cmplxprod](../opcodes/cmplxprod.md) - Complex  product of two arrays of the same size and in real-imaginary interleaved format.<br>
 [cngoto](../opcodes/cngoto.md) - Transfers control on every pass when the condition is _not_ true.<br>
-[cntCreate](../opcodes/cntcreate.md) - Create a counter object.<br>
-[cntCycles](../opcodes/cntcycles.md) - Get the number of times a counter has cycled.<br>
-[cntDelete](../opcodes/cntDelete.md) - Delete a counter and render any memory used.<br>
-[cntDelete_i](../opcodes/cntDelete_i.md) - Delete a counter.<br>
-[cntRead](../opcodes/cntread.md) - Read current value of a counter object without changing it.<br>
-[cntReset](../opcodes/cntreset.md) - Resets a counter object to its initial state.<br>
-[cntState](../opcodes/cntstate.md) - Gives the range and increment of a counter.<br>
+[cntcreate](../opcodes/cntcreate.md) - Create a counter object.<br>
+[cntcycles](../opcodes/cntcycles.md) - Get the number of times a counter has cycled.<br>
+[cntdelete](../opcodes/cntDelete.md) - Delete a counter and render any memory used.<br>
+[cntdeletei](../opcodes/cntDelete_i.md) - Delete a counter.<br>
+[cntread](../opcodes/cntread.md) - Read current value of a counter object without changing it.<br>
+[cntreset](../opcodes/cntreset.md) - Resets a counter object to its initial state.<br>
+[cntstate](../opcodes/cntstate.md) - Gives the range and increment of a counter.<br>
 [comb](../opcodes/comb.md) - Reverberates an input signal with a &#8220;colored&#8221; frequency response.<br>
 [combinv](../opcodes/combinv.md) - Reverberates an input signal with a &#8220;colored&#8221; frequency response.<br>
 [compilecsd](../opcodes/compilecsd.md) - Compiles a new orchestra from an ASCII file.<br>
@@ -179,7 +179,7 @@ cosine interpolation.<br>
 [cossegr](../opcodes/cossegr.md) - Trace a series of line segments between specified points with
 cosine interpolation, including a release segment.<br>
 [count](../opcodes/count.md) - Get the next value from a counter.<br>
-[count_i](../opcodes/count_i.md) - Get the next value from a counter.<br>
+[counti](../opcodes/count_i.md) - Get the next value from a counter.<br>
 [cps2pch](../opcodes/cps2pch.md) - Converts a pitch-class value into cycles-per-second (Hz) for equal divisions of the octave.<br>
 [cpsmidi](../opcodes/cpsmidi.md) - Get the note number of the current MIDI event, expressed in cycles-per-second.<br>
 [cpsmidib](../opcodes/cpsmidib.md) - Get the note number of the current MIDI event and modify it by the current pitch-bend value, express it in cycles-per-second.<br>

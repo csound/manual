@@ -2387,25 +2387,25 @@
 `kres = `[**`checkbox`**](opcodes/checkbox.md)`(knum)`<br>
 
 
-`icnt = `[**`cntCreate`**](opcodes/cntcreate.md)`([imax, imin, inc])`<br>
+`icnt = `[**`cntcreate`**](opcodes/cntcreate.md)`([imax, imin, inc])`<br>
 
 
-`kval = `[**`cntCycles`**](opcodes/cntcycles.md)`(icnt)`<br>
+`kval = `[**`cntcycles`**](opcodes/cntcycles.md)`(icnt)`<br>
 
 
-`kval = `[**`cntDelete`**](opcodes/cntDelete.md)`(icnt)`<br>
+`kval = `[**`cntdelete`**](opcodes/cntDelete.md)`(icnt)`<br>
 
 
-`ival = `[**`cntDelete_i`**](opcodes/cntDelete_i.md)`(icnt)`<br>
+`ival = `[**`cntdeletei`**](opcodes/cntDelete_i.md)`(icnt)`<br>
 
 
-`kval = `[**`cntRead`**](opcodes/cntread.md)`(icnt)`<br>
+`kval = `[**`cntread`**](opcodes/cntread.md)`(icnt)`<br>
 
 
-[**`cntReset`**](opcodes/cntreset.md)`(icnt)`<br>
+[**`cntreset`**](opcodes/cntreset.md)`(icnt)`<br>
 
 
-`kmax, kmin, kinc = `[**`cntState`**](opcodes/cntstate.md)`(icnt)`<br>
+`kmax, kmin, kinc = `[**`cntstate`**](opcodes/cntstate.md)`(icnt)`<br>
 
 
 `kres = `[**`control`**](opcodes/control.md)`(knum)`<br>
@@ -2414,7 +2414,7 @@
 `kval = `[**`count`**](opcodes/count.md)`(icnt)`<br>
 
 
-`ival = `[**`count_i`**](opcodes/count_i.md)`(icnt)`<br>
+`ival = `[**`counti`**](opcodes/count_i.md)`(icnt)`<br>
 
 
 `ares = `[**`follow`**](opcodes/follow.md)`(asig, idt)`<br>

@@ -830,8 +830,11 @@
 [**changed2a.csd**](../opcodes/changed2.md#examples)<br>
 [**checkbox-modern.csd**](../opcodes/checkbox.md#examples)<br>
 [**checkbox.csd**](../opcodes/checkbox.md#examples)<br>
+[**counter-modern.csd**](../opcodes/cntcreate.md#examples)<br>
 [**counter.csd**](../opcodes/cntcreate.md#examples)<br>
+[**counter-modern.csd**](../opcodes/count.md#examples)<br>
 [**counter.csd**](../opcodes/count.md#examples)<br>
+[**counter-modern.csd**](../opcodes/count_i.md#examples)<br>
 [**counter.csd**](../opcodes/count_i.md#examples)<br>
 [**follow.csd**](../opcodes/follow.md#examples)<br>
 [**follow2.csd**](../opcodes/follow2.md#examples)<br>
