@@ -1432,11 +1432,17 @@
 [**zkwm.csd**](../opcodes/zkwm.md#examples)<br>
 
 ### OSC
+[**oscbundle-modern.csd**](../opcodes/OSCbundle.md#examples)<br>
 [**oscbundle.csd**](../opcodes/OSCbundle.md#examples)<br>
+[**oscmidisend-modern.csd**](../opcodes/OSClisten.md#examples)<br>
+[**oscmidircv-modern.csd**](../opcodes/OSClisten.md#examples)<br>
+[**osclistenex2-modern.csd**](../opcodes/OSClisten.md#examples)<br>
 [**OSCmidisend.csd**](../opcodes/OSClisten.md#examples)<br>
 [**OSCmidircv.csd**](../opcodes/OSClisten.md#examples)<br>
 [**OSClistenex2.csd**](../opcodes/OSClisten.md#examples)<br>
+[**oscraw-modern.csd**](../opcodes/OSCraw.md#examples)<br>
 [**OSCraw.csd**](../opcodes/OSCraw.md#examples)<br>
+[**oscsend-modern.csd**](../opcodes/OSCsend.md#examples)<br>
 [**OSCsend.csd**](../opcodes/OSCsend.md#examples)<br>
 
 ### Network

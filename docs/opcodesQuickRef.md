@@ -4254,27 +4254,27 @@
 
 
 ### OSC
-[**`OSCbundle`**](opcodes/OSCbundle.md)`(kwhen, ihost, iport, Sdest[], Stype[], kArgs[][] [, isize])`<br>
+[**`oscbundle`**](opcodes/OSCbundle.md)`(kwhen, ihost, iport, Sdest[], Stype[], kArgs[][] [, isize])`<br>
 
 
-`kans = `[**`OSCcount`**](opcodes/OSCcount.md)`()`<br>
+`kans = `[**`osccount`**](opcodes/OSCcount.md)`()`<br>
 
 
-`ihandle = `[**`OSCinit`**](opcodes/OSCinit.md)`(iport)`<br>
+`ihandle = `[**`oscinit`**](opcodes/OSCinit.md)`(iport)`<br>
 
 
-`ihandle = `[**`OSCinitM`**](opcodes/OSCinitM.md)`(Sgroup, iport)`<br>
+`ihandle = `[**`oscinitm`**](opcodes/OSCinitM.md)`(Sgroup, iport)`<br>
 
 
-`kans = `[**`OSClisten`**](opcodes/OSClisten.md)`(ihandle, idest, itype [, xdata1, xdata2, ...])`<br>
-`kans, kdata[] = OSClisten(ihandle, idest, itype)`<br>
-`kans, ... = OSClisten(idest, itype)`<br>
+`kans = `[**`osclisten`**](opcodes/OSClisten.md)`(ihandle, idest, itype [, xdata1, xdata2, ...])`<br>
+`kans, kdata[] = osclisten(ihandle, idest, itype)`<br>
+`kans, ... = osclisten(idest, itype)`<br>
 
 
-`Smess[], klen = `[**`OSCraw`**](opcodes/OSCraw.md)`(iport)`<br>
+`Smess[], klen = `[**`oscraw`**](opcodes/OSCraw.md)`(iport)`<br>
 
 
-[**`OSCsend`**](opcodes/OSCsend.md)`(kwhen, ihost, iport, idestination [, itype , xdata1, xdata2, ...])`<br>
+[**`oscsend`**](opcodes/OSCsend.md)`(kwhen, ihost, iport, idestination [, itype , xdata1, xdata2, ...])`<br>
 
 
 ### Network

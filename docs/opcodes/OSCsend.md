@@ -2,13 +2,17 @@
 id:OSCsend
 category:OSC
 -->
-# OSCsend
+# oscsend
 Sends data to other listening processes using the OSC protocol.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *OSCsend*.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    OSCsend(kwhen, ihost, iport, idestination [, itype , xdata1, xdata2, ...])
+    oscsend(kwhen, ihost, iport, idestination [, itype , xdata1, xdata2, ...])
     ```
 
 === "Classic"
@@ -37,16 +41,22 @@ The data is taken from the k-values or a-value that follow the format string.   
 The example shows a simple instrument, which when called, sends a group of 3 messages to a computer called "xenakis", on port 7770, to be read by a process that recognises /foo/bar as its address.
 
 ``` csound-orc
-      instr   1
-          OSCsend     1, "xenakis.cs.bath.ac.uk",7770, "/foo/bar", "sis", "FOO", 42, "bar"
-      endin
+instr 1
+  oscsend(1, "xenakis.cs.bath.ac.uk",7770, "/foo/bar", "sis", "FOO", 42, "bar")
+endin
 ```
 
-Here is a complete example of the OSCsend opcode. It uses the file [OSCsend.csd](../examples/OSCsend.csd).
+=== "Modern"
+    Here is a complete example of the oscsend opcode. It uses the file [oscsend-modern.csd](../examples/oscsend-modern.csd).
+    ``` csound-csd title="Example of the oscsend opcode." linenums="1"
+    --8<-- "examples/oscsend-modern.csd"
+    ```
 
-``` csound-csd title="Example of the OSCsend opcode." linenums="1"
---8<-- "examples/OSCsend.csd"
-```
+=== "Classic"
+    Here is a complete example of the OSCsend opcode. It uses the file [OSCsend.csd](../examples/OSCsend.csd).
+    ``` csound-csd title="Example of the OSCsend opcode." linenums="1"
+    --8<-- "examples/OSCsend.csd"
+    ```
 
 ## See also
 

@@ -6,13 +6,13 @@ Multiple OSC servers can be set up, separately or together with the Csound ([UDP
 
 The following opcodes are available:
 
-* [OSCinit](../opcodes/OSCinit.md) - Start an OSC listener thread.
-* [OSClisten](../opcodes/OSClisten.md) - Receive OSC messages.
-* [OSCsend](../opcodes/OSCsend.md) - Send an OSC message.
-* [OSCinitM](../opcodes/OSCinitM.md) - Start to list for multicast OSC messages.
-* [OSCraw](../opcodes/OSCraw.md) - Listen for all OSC messages.
-* [OSCcount](../opcodes/OSCcount.md) - Count of OSC messages currently unread.
-* [OSCbundle](../opcodes/OSCbundle.md) - Sends data by packing messages in a bundle.
+* [oscinit](../opcodes/OSCinit.md) - Start an OSC listener thread.
+* [osclisten](../opcodes/OSClisten.md) - Receive OSC messages.
+* [oscsend](../opcodes/OSCsend.md) - Send an OSC message.
+* [oscinitm](../opcodes/OSCinitM.md) - Start to list for multicast OSC messages.
+* [oscraw](../opcodes/OSCraw.md) - Listen for all OSC messages.
+* [osccount](../opcodes/OSCcount.md) - Count of OSC messages currently unread.
+* [oscbundle](../opcodes/OSCbundle.md) - Sends data by packing messages in a bundle.
 
 ## Credits
 

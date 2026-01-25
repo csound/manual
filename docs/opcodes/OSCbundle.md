@@ -2,15 +2,19 @@
 id:OSCbundle
 category:OSC
 -->
-# OSCbundle
+# oscbundle
 Sends data to other processes using the OSC protocol by packing messages in a bundle.
 
-Unlike OSCsend, it can be used to send multiple messages at the same time, but only standard OSC numeric types are allowed.
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *OSCbundle*.
+
+Unlike *oscsend*, it can be used to send multiple messages at the same time, but only standard OSC numeric types are allowed.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    OSCbundle(kwhen, ihost, iport, Sdest[], Stype[], kArgs[][] [, isize])
+    oscbundle(kwhen, ihost, iport, Sdest[], Stype[], kArgs[][] [, isize])
     ```
 
 === "Classic"
@@ -38,11 +42,17 @@ _kArg[][]_ -- a two-dimensional array containing the arguments for each message.
 
 ### Examples
 
-Here is an example of the OSCBundle opcode. It uses the file [oscbundle.csd](../examples/oscbundle.csd).
+=== "Modern"
+    Here is an example of the oscbundle opcode. It uses the file [oscbundle-modern.csd](../examples/oscbundle-modern.csd).
+    ``` csound-csd title="Example of the oscbundle opcode." linenums="1"
+    --8<-- "examples/oscbundle-modern.csd"
+    ```
 
-``` csound-csd title="Example of the OSCbundle opcode." linenums="1"
---8<-- "examples/oscbundle.csd"
-```
+=== "Classic"
+    Here is an example of the OSCbundle opcode. It uses the file [oscbundle.csd](../examples/oscbundle.csd).
+    ``` csound-csd title="Example of the OSCbundle opcode." linenums="1"
+    --8<-- "examples/oscbundle.csd"
+    ```
 
 ## See also
 

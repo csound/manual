@@ -2,17 +2,21 @@
 id:OSCinit
 category:OSC
 -->
-# OSCinit
+# oscinit
 Start a listening process for OSC messages to a particular port.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *OSCinit*.
 
 Plugin opcode in osc.
 
-This listening process can be used by OSClisten.
+This listening process can be used by *osclisten*.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    ihandle = OSCinit(iport)
+    ihandle = oscinit(iport)
     ```
 
 === "Classic"
@@ -22,13 +26,13 @@ This listening process can be used by OSClisten.
 
 ### Initialization
 
-_ihandle_ -- handle returned that can be passed to any number of OSClisten opcodes to receive messages on this port.
+_ihandle_ -- handle returned that can be passed to any number of *osclisten* opcodes to receive messages on this port.
 
 _iport_ -- the port on which to listen.
 
 ### Performance
 
-The listener runs in the background.  See OSClisten for details.
+The listener runs in the background.  See *osclisten* for details.
 
 ## Examples
 
@@ -39,17 +43,17 @@ sr = 44100
 ksmps = 100
 nchnls = 2
 
-gihandle OSCinit 7770
+handle@global:i = oscinit(7770)
 
-  instr   1
-    kf1 init 0
-    kf2 init 0
+instr 1
+  f1:k = init(0)
+  f2:k = init(0)
 nxtmsg:
-    kk  OSClisten gihandle, "/foo/bar", "ff", kf1, kf2
-if (kk == 0) goto ex
-    printk 0,kf1
-    printk 0,kf2
-    kgoto nxtmsg
+  kk = osclisten(handle, "/foo/bar", "ff", f1, f2)
+  if (kk == 0) goto ex
+    printk(0, f1)
+    printk(0, f2)
+    kgoto(nxtmsg)
 ex:
   endin
 

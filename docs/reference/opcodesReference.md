@@ -49,13 +49,6 @@
 [MixerSend](../opcodes/mixersend.md) - Mixes an arate signal into a channel of a buss.<br>
 [MixerSetLevel](../opcodes/mixersetlevel.md) - Sets the level at which signals from the send are added to the buss.<br>
 [MixerSetLevel_i](../opcodes/mixersetlevel_i.md) - Sets the level at which signals from the send are added to the buss.<br>
-[OSCbundle](../opcodes/OSCbundle.md) - Sends data to other processes using the OSC protocol by packing messages in a bundle.<br>
-[OSCcount](../opcodes/OSCcount.md) - Gives the Count of OSC messages currently unread but received by the current listeners.<br>
-[OSCinitM](../opcodes/OSCinitM.md) - Start a multicast listening process to a particular port, which can be used by OSClisten.<br>
-[OSCinit](../opcodes/OSCinit.md) - Start a listening process for OSC messages to a particular port.<br>
-[OSClisten](../opcodes/OSClisten.md) - Listen for OSC messages to a particular path, either from a custom-defined OSC server or from the Csound UDP server.<br>
-[OSCraw](../opcodes/OSCraw.md) - Listen for all OSC messages at a given port.<br>
-[OSCsend](../opcodes/OSCsend.md) - Sends data to other listening processes using the OSC protocol.<br>
 [S](../opcodes/ops.md) - Returns a string containg the numeric value of its argument.<br>
 [\#](../opcodes/opnonequiv.md) - Bitwise NON EQUIVALENCE operator.<br>
 [a](../opcodes/opa.md) - Converts a k-sig or k-array parameter to an a-sig output.<br>
@@ -627,6 +620,8 @@ numeric or string values.<br>
 [olabuffer](../opcodes/olabuffer.md) - Sum overlapping frames of audio as k-rate arrays and read as an audio signal.<br>
 [opcode](../opcodes/opcode.md) - Defines the start of user-defined opcode block.<br>
 [opcodeinfo](../opcodes/opcodeinfo.md) - Prints information on an opcode definition and its overloads.<br>
+[oscbundle](../opcodes/OSCbundle.md) - Sends data to other processes using the OSC protocol by packing messages in a bundle.<br>
+[osccount](../opcodes/OSCcount.md) - Gives the Count of OSC messages currently unread but received by the current listeners.<br>
 [oscil1](../opcodes/oscil1.md) - Accesses table values by incremental sampling.<br>
 [oscil1i](../opcodes/oscil1i.md) - Accesses table values by incremental sampling with linear interpolation.<br>
 [oscil3](../opcodes/oscil3.md) - A simple oscillator with cubic interpolation.<br>
@@ -639,6 +634,11 @@ numeric or string values.<br>
 [osciln](../opcodes/osciln.md) - Accesses table values at a user-defined frequency.<br>
 [oscils](../opcodes/oscils.md) - A simple, fast sine oscillator.<br>
 [oscilx](../opcodes/oscilx.md) - Same as the [osciln](../opcodes/osciln.md) opcode.<br>
+[oscinit](../opcodes/OSCinit.md) - Start a listening process for OSC messages to a particular port.<br>
+[oscinitm](../opcodes/OSCinitM.md) - Start a multicast listening process to a particular port, which can be used by *osclisten*.<br>
+[osclisten](../opcodes/OSClisten.md) - Listen for OSC messages to a particular path, either from a custom-defined OSC server or from the Csound UDP server.<br>
+[oscraw](../opcodes/OSCraw.md) - Listen for all OSC messages at a given port.<br>
+[oscsend](../opcodes/OSCsend.md) - Sends data to other listening processes using the OSC protocol.<br>
 [otafilter](../opcodes/otafilter.md) - Resonant 4pole non-linear lowpass filter.<br>
 [out32](../opcodes/out32.md) - Writes 32-channel audio data to an external device or stream.<br>
 [out](../opcodes/out.md) - Writes audio data to an external device or stream, either from audio variables or from an audio array.<br>
