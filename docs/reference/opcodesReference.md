@@ -507,12 +507,12 @@ numeric or string values.<br>
 [marimba](../opcodes/marimba.md) - Physical model related to the striking of a wooden block as found in a marimba.<br>
 [massign](../opcodes/massign.md) - Assigns a MIDI channel number to a Csound instrument.<br>
 [max](../opcodes/max.md) - Produces a signal that is the maximum of any number of input signals.<br>
-[max_k](../opcodes/max_k.md) - Local maximum (or minimum) value of an incoming asig signal, checked in the time interval between ktrig has become true twice.<br>
 [maxabs](../opcodes/maxabs.md) - Produces a signal that is the maximum of the absolute values of any number of input signals.<br>
 [maxabsaccum](../opcodes/maxabsaccum.md) - Accumulates the maximum of the absolute values of audio signals.<br>
 [maxaccum](../opcodes/maxaccum.md) - Accumulates the maximum value of audio signals.<br>
 [maxalloc](../opcodes/maxalloc.md) - Limits the number of allocations of an instrument.<br>
 [maxarray](../opcodes/maxarray.md) - Returns the maximum value in a k-rate array, and optional its index.<br>
+[maxk](../opcodes/max_k.md) - Local maximum (or minimum) value of an incoming asig signal, checked in the time interval between ktrig has become true twice.<br>
 [mclock](../opcodes/mclock.md) - Sends a MIDI CLOCK message.<br>
 [mdelay](../opcodes/mdelay.md) - A MIDI delay opcode.<br>
 [median](../opcodes/median.md) - A median filter, a variant FIR lowpass filter.<br>
@@ -1027,7 +1027,7 @@ time-varying crossfade looping.<br>
 [tab2array](../opcodes/tab2array.md) - Copy a slice from an f-table to an array.<br>
 [tab2pvs](../opcodes/tab2pvs.md) - Copies spectral data from k-rate arrays (or t-variables.<br>
 [tab](../opcodes/tab.md) - Fast table opcode.<br>
-[tab_i](../opcodes/tab_i.md) - Fast table opcodes.<br>
+[tabi](../opcodes/tab_i.md) - Fast table opcodes.<br>
 [tabifd](../opcodes/tabifd.md) - Instantaneous Frequency Distribution, magnitude and phase analysis.<br>
 [table3](../opcodes/table3.md) - Accesses table values by direct indexing with cubic interpolation.<br>
 [table](../opcodes/table.md) - Accesses table values by direct indexing.<br>
@@ -1060,7 +1060,7 @@ time-varying crossfade looping.<br>
 [tabrec](../opcodes/tabrec.md) - Records control-rate signals on trigger-temporization basis.<br>
 [tabsum](../opcodes/tabsum.md) - Sums the values in an f-table in a consecutive range.<br>
 [tabw](../opcodes/tabw.md) - Fast table opcodes.<br>
-[tabw_i](../opcodes/tabw_i.md) - Fast table opcodes.<br>
+[tabwi](../opcodes/tabw_i.md) - Fast table opcodes.<br>
 [tambourine](../opcodes/tambourine.md) - Semi-physical model of a tambourine sound.<br>
 [tan](../opcodes/tan.md) - Returns the tangent of _x_ (_x_ in radians).<br>
 [tanh](../opcodes/tanh.md) - Returns the hyperbolic tangent of _x_.<br>
@@ -1118,9 +1118,9 @@ time-varying crossfade looping.<br>
 [urd](../opcodes/urd.md) - A discrete user-defined-distribution random generator that can be used as a function.<br>
 [vactrol](../opcodes/vactrol.md) - Envelope follower unit generator emmulating a Perkin Elmer Vactrole VTL5C3/2.<br>
 [vadd](../opcodes/vadd.md) - Adds a scalar value to a vector in a table.<br>
-[vadd_i](../opcodes/vadd_i.md) - Adds a scalar value to a vector in a table.<br>
+[vaddi](../opcodes/vadd_i.md) - Adds a scalar value to a vector in a table.<br>
 [vaddv](../opcodes/vaddv.md) - Performs addition between two vectorial control signals.<br>
-[vaddv_i](../opcodes/vaddv_i.md) - Performs addition between two vectorial control signals at init time.<br>
+[vaddvi](../opcodes/vaddv_i.md) - Performs addition between two vectorial control signals at init time.<br>
 [vaget](../opcodes/vaget.md) - Access values of the current buffer of an a-rate variable by indexing.<br>
 [valpass](../opcodes/valpass.md) - Variably reverberates an input signal with a flat frequency response.<br>
 [vaset](../opcodes/vaset.md) - Write values into the current buffer of an a-rate variable at the given index.<br>
@@ -1146,7 +1146,7 @@ time-varying crossfade looping.<br>
 [vco](../opcodes/vco.md) - Implementation of a band limited, analog modeled oscillator.<br>
 [vcomb](../opcodes/vcomb.md) - Variably reverberates an input signal with a &#8220;colored&#8221; frequency response.<br>
 [vcopy](../opcodes/vcopy.md) - Copies between two vectorial control signals.<br>
-[vcopy_i](../opcodes/vcopy_i.md) - Copies a vector from one table to another.<br>
+[vcopyi](../opcodes/vcopy_i.md) - Copies a vector from one table to another.<br>
 [vdelay3](../opcodes/vdelay3.md) - A variable time delay with cubic interpolation.<br>
 [vdelay](../opcodes/vdelay.md) - An interpolating variable time delay.<br>
 [vdelayk](../opcodes/vdelayk.md) - Variable time delay applied to a k-rate signal.<br>
@@ -1157,14 +1157,14 @@ time-varying crossfade looping.<br>
 [vdelayxwq](../opcodes/vdelayxwq.md) - Variable delay opcodes with high quality interpolation.<br>
 [vdelayxws](../opcodes/vdelayxws.md) - Variable delay opcodes with high quality interpolation.<br>
 [vdivv](../opcodes/vdivv.md) - Performs division between two vectorial control signals.<br>
-[vdivv_i](../opcodes/vdivv_i.md) - Performs division between two vectorial control signals at init time.<br>
+[vdivvi](../opcodes/vdivv_i.md) - Performs division between two vectorial control signals at init time.<br>
 [vecdelay](../opcodes/vecdelay.md) - Generate a sort of 'vectorial' delay.<br>
 [veloc](../opcodes/veloc.md) - Get the velocity from a MIDI event.<br>
 [vexp](../opcodes/vexp.md) - Performs power-of operations between a vector and a scalar.<br>
-[vexp_i](../opcodes/vexp_i.md) - Performs power-of operations between a vector and a scalar.<br>
+[vexpi](../opcodes/vexp_i.md) - Performs power-of operations between a vector and a scalar.<br>
 [vexpseg](../opcodes/vexpseg.md) - Vectorial envelope generator.<br>
 [vexpv](../opcodes/vexpv.md) - Performs exponential operations between two vectorial control signals.<br>
-[vexpv_i](../opcodes/vexpv_i.md) - Performs exponential operations between two vectorial control signals at init time.<br>
+[vexpvi](../opcodes/vexpv_i.md) - Performs exponential operations between two vectorial control signals at init time.<br>
 [vibes](../opcodes/vibes.md) - Physical model related to the striking of a metal block as found in a vibraphone.<br>
 [vibr](../opcodes/vibr.md) - Easier-to-use user-controllable vibrato.<br>
 [vibrato](../opcodes/vibrato.md) - Generates a natural-sounding user-controllable vibrato.<br>
@@ -1175,23 +1175,23 @@ time-varying crossfade looping.<br>
 [vmap](../opcodes/vmap.md) - Maps elements from a vector onto another according to indexes.<br>
 [vmirror](../opcodes/vmirror.md) - 'Reflects' elements of vectorial control signals on thresholds.<br>
 [vmult](../opcodes/vmult.md) - Multiplies a vector in a table by a scalar value.<br>
-[vmult_i](../opcodes/vmult_i.md) - Multiplies a vector in a table by a scalar value.<br>
+[vmulti](../opcodes/vmult_i.md) - Multiplies a vector in a table by a scalar value.<br>
 [vmultv](../opcodes/vmultv.md) - Performs mutiplication between two vectorial control signals.<br>
-[vmultv_i](../opcodes/vmultv_i.md) - Performs mutiplication between two vectorial control signals at init time.<br>
+[vmultvi](../opcodes/vmultv_i.md) - Performs mutiplication between two vectorial control signals at init time.<br>
 [voice](../opcodes/voice.md) - An emulation of a human voice.<br>
 [vosim](../opcodes/vosim.md) - Simple vocal simulation based on glottal pulses with formant characteristics.<br>
 [vphaseseg](../opcodes/vphaseseg.md) - Allows one-dimensional HVS (Hyper-Vectorial Synthesis).<br>
 [vport](../opcodes/vport.md) - Generate a sort of 'vectorial' portamento.<br>
 [vpow](../opcodes/vpow.md) - Raises each element of a vector to a scalar power.<br>
-[vpow_i](../opcodes/vpow_i.md) - Raises each element of a vector to a scalar power.<br>
+[vpowi](../opcodes/vpow_i.md) - Raises each element of a vector to a scalar power.<br>
 [vpowv](../opcodes/vpowv.md) - Performs power-of operations between two vectorial control signals.<br>
-[vpowv_i](../opcodes/vpowv_i.md) - Performs power-of operations between two vectorial control signals at init time.<br>
+[vpowvi](../opcodes/vpowv_i.md) - Performs power-of operations between two vectorial control signals at init time.<br>
 [vps](../opcodes/vps.md) - Shapes a phase signal according to a two-dimensional vector.<br>
 [vpvoc](../opcodes/vpvoc.md) - Implements signal reconstruction using an fft-based phase vocoder and an extra envelope.<br>
 [vrandh](../opcodes/vrandh.md) - Generates a vector of random numbers stored into a table, holding the values for a period of time.<br>
 [vrandi](../opcodes/vrandi.md) - Generate a sort of 'vectorial band-limited noise'.<br>
 [vsubv](../opcodes/vsubv.md) - Performs subtraction between two vectorial control signals.<br>
-[vsubv_i](../opcodes/vsubv_i.md) - Performs subtraction between two vectorial control signals at init time.<br>
+[vsubvi](../opcodes/vsubv_i.md) - Performs subtraction between two vectorial control signals at init time.<br>
 [vtaba](../opcodes/vtaba.md) - Read vectors (from tables -or arrays of vectors) at a-rate.<br>
 [vtabi](../opcodes/vtabi.md) - Read vectors (from tables -or arrays of vectors) at init time.<br>
 [vtabk](../opcodes/vtabk.md) - Read vectors (from tables -or arrays of vectors) at k-rate.<br>

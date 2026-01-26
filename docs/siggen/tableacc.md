@@ -15,9 +15,9 @@ Opcodes ending in 'i' implement linear interpolation and opcodes ending in '3' i
 The following opcodes implement fast table reading/writing without boundary checks:
 
 * [tab](../opcodes/tab.md)
-* [tab_i](../opcodes/tab_i.md)
+* [tabi](../opcodes/tab_i.md)
 * [tabw](../opcodes/tabw.md)
-* [tabw_i](../opcodes/tabw_i.md)
+* [tabwi](../opcodes/tabw_i.md)
 
 See the sections [Table Queries](../table/queries.md),
 [Read/Write Operations](../table/readwrit.md) and

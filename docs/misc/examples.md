@@ -689,10 +689,11 @@
 ### Signal Modifiers:Comparators and Accumulators
 [**cmp.csd**](../opcodes/cmp.md#examples)<br>
 [**max.csd**](../opcodes/max.md#examples)<br>
-[**max_k.csd**](../opcodes/max_k.md#examples)<br>
 [**maxabs.csd**](../opcodes/maxabs.md#examples)<br>
 [**maxabsaccum.csd**](../opcodes/maxabsaccum.md#examples)<br>
 [**maxaccum.csd**](../opcodes/maxaccum.md#examples)<br>
+[**maxk.csd**](../opcodes/max_k.md#examples)<br>
+[**max_k.csd**](../opcodes/max_k.md#examples)<br>
 [**min.csd**](../opcodes/min.md#examples)<br>
 [**minabs.csd**](../opcodes/minabs.md#examples)<br>
 [**minabsaccum.csd**](../opcodes/minabsaccum.md#examples)<br>
@@ -1379,14 +1380,19 @@
 
 ### Vectorial:Scalar operations
 [**vadd.csd**](../opcodes/vadd.md#examples)<br>
+[**vaddi.csd**](../opcodes/vadd_i.md#examples)<br>
 [**vadd_i.csd**](../opcodes/vadd_i.md#examples)<br>
 [**vexp.csd**](../opcodes/vexp.md#examples)<br>
+[**vexpi.csd**](../opcodes/vexp_i.md#examples)<br>
 [**vexp_i.csd**](../opcodes/vexp_i.md#examples)<br>
 [**vmult-2.csd**](../opcodes/vmult.md#examples)<br>
 [**vmult.csd**](../opcodes/vmult.md#examples)<br>
+[**vmulti.csd**](../opcodes/vmult_i.md#examples)<br>
 [**vmult_i.csd**](../opcodes/vmult_i.md#examples)<br>
 [**vpow.csd**](../opcodes/vpow.md#examples)<br>
 [**vpow-2.csd**](../opcodes/vpow.md#examples)<br>
+[**vpowi.csd**](../opcodes/vpow_i.md#examples)<br>
+[**vpowi-2.csd**](../opcodes/vpow_i.md#examples)<br>
 [**vpow_i.csd**](../opcodes/vpow_i.md#examples)<br>
 [**vpow_i-2.csd**](../opcodes/vpow_i.md#examples)<br>
 

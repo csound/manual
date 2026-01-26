@@ -42,20 +42,20 @@ If the optional _kverbose_ argument is different to 0, the opcode will print war
 >
 > Using the same table as source and destination table in versions earlier than 5.04, might produce unexpected behavior, so use with care.
 
-This opcode works at k-rate (this means that every k-pass the vectors are copied). There is an i-rate version of this opcode called [vcopy_i](../opcodes/vcopy_i.md).
+This opcode works at k-rate (this means that every k-pass the vectors are copied). There is an i-rate version of this opcode called [vcopyi](../opcodes/vcopy_i.md).
 
 > :memo: **Note**
 >
 > Please note that the _elements_ argument has changed in version 5.03 from i-rate to k-rate. This will change the opcode's behavior in the unusual cases where the i-rate variable _ielements_ is changed inside the instrument, for example in:
 >
 > ``` csound-orc
-      instr 1
-  ielements  =        10
-             vadd     1, 1, ielements
-  ielements  =        20
-             vadd     2, 1, ielements
-             turnoff
-      endin
+  instr 1
+    elements:i = 10
+    vadd(1, 1, elements)
+    elements = 20
+    vadd(2, 1, elements)
+    turnoff()
+  endin
 > ```
 
 All these operators ([vaddv](../opcodes/vaddv.md), [vsubv](../opcodes/vsubv.md), [vmultv](../opcodes/vmultv.md), [vdivv](../opcodes/vdivv.md), [vpowv](../opcodes/vpowv.md), [vexp](../opcodes/vexp.md), [vcopy](../opcodes/vcopy.md) and [vmap](../opcodes/vmap.md)) are designed to be used together with other opcodes that operate with vectorial signals such as [vcella](../opcodes/vcella.md), [adsynt](../opcodes/adsynt.md), [adsynt2](../opcodes/adsynt2.md) etc.

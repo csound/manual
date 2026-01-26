@@ -34,7 +34,7 @@ _kverbose_ - Selects whether or not warnings are printed (Default=0)
 
 _vdivv_ divides two vectorial control signals, that is, each element of _ifn1_ is divided by the corresponding element of _ifn2_. Each vectorial signal is hosted by a table (_ifn1_ and _ifn2_). The number of elements contained in both vectors must be the same.
 
-The result is a new vectorial control signal that overrides old values of _ifn1_. If you want to keep the old ifn1 vector, use [vcopy_i](../opcodes/vcopy_i.md) opcode to copy it in another table. You can use _kdstoffset_ and _ksrcoffset_ to specify vectors in any location of the tables.
+The result is a new vectorial control signal that overrides old values of _ifn1_. If you want to keep the old ifn1 vector, use [vcopyi](../opcodes/vcopy_i.md) opcode to copy it in another table. You can use _kdstoffset_ and _ksrcoffset_ to specify vectors in any location of the tables.
 
 Negative values for _kdstoffset_ and _ksrcoffset_ are acceptable. If _kdstoffset_ is negative, the out of range section of the vector will be discarded. If _ksrcoffset_ is negative, the out of range elements will be assumed to be 0 (i.e. the destination elements will be set to 0). If elements for the destination vector are beyond the size of the table (including guard point), these elements are discarded (i.e. elements do not wrap around the tables). If elements for the source vector are beyond the table length, these elements are taken as 0 (i.e. the destination elements will be set to 0).
 
@@ -45,20 +45,20 @@ If the optional _kverbose_ argument is different to 0, the opcode will print war
 > Using the same table as source and destination table in versions earlier than 5.04, might produce unexpected behavior, so use with care.
 
 This opcode works at k-rate (this means that every k-pass the
-vectors are divided). There is an i-rate version of this opcode called [vdivv_i](../opcodes/vdivv_i.md).
+vectors are divided). There is an i-rate version of this opcode called [vdivvi](../opcodes/vdivv_i.md).
 
 > :memo: **Note**
 >
 > Please note that the _elements_ argument has changed in version 5.03 from i-rate to k-rate. This will change the opcode's behavior in the unusual cases where the i-rate variable _ielements_ is changed inside the instrument, for example in:
 >
 > ``` csound-orc
-      instr 1
-  ielements  =        10
-             vadd     1, 1, ielements
-  ielements  =        20
-             vadd     2, 1, ielements
-             turnoff
-      endin
+  instr 1
+    elements:i = 10
+    vadd(1, 1, elements)
+    elements = 20
+    vadd(2, 1, elements)
+    turnoff()
+  endin
 > ```
 
 All these operators ([vaddv](../opcodes/vaddv.md), [vsubv](../opcodes/vsubv.md), [vmultv](../opcodes/vmultv.md), [vdivv](../opcodes/vdivv.md), [vpowv](../opcodes/vpowv.md), [vexpv](../opcodes/vexpv.md), [vcopy](../opcodes/vcopy.md) and [vmap](../opcodes/vmap.md)) are designed to be used together with other opcodes that operate with vectorial signals such as [vcella](../opcodes/vcella.md), [adsynt](../opcodes/adsynt.md), [adsynt2](../opcodes/adsynt2.md) etc.

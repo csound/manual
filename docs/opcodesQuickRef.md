@@ -932,7 +932,7 @@
 `ar = tab(xndx, ifn[, ixmode])`<br>
 
 
-`ir = `[**`tab_i`**](opcodes/tab_i.md)`(indx, ifn[, ixmode])`<br>
+`ir = `[**`tabi`**](opcodes/tab_i.md)`(indx, ifn[, ixmode])`<br>
 
 
 `ares = `[**`table`**](opcodes/table.md)`(andx, ifn [, ixmode] [, ixoff] [, iwrap])`<br>
@@ -954,7 +954,7 @@
 `tabw(asig, andx, ifn [,ixmode])`<br>
 
 
-[**`tabw_i`**](opcodes/tabw_i.md)`(isig, indx, ifn [,ixmode])`<br>
+[**`tabwi`**](opcodes/tabw_i.md)`(isig, indx, ifn [,ixmode])`<br>
 
 
 ### Signal Generators:Wave Terrain Synthesis
@@ -2046,9 +2046,6 @@
 `imax = max(iin1, iin2 [, iin3] [, iin4] [...])`<br>
 
 
-`knumkout = `[**`max_k`**](opcodes/max_k.md)`(asig, ktrig, itype)`<br>
-
-
 `amax = `[**`maxabs`**](opcodes/maxabs.md)`(ain1, ain2 [, ain3] [, ain4] [...])`<br>
 `kmax = maxabs(kin1, kin2 [, kin3] [, kin4] [...])`<br>
 
@@ -2057,6 +2054,9 @@
 
 
 [**`maxaccum`**](opcodes/maxaccum.md)`(aAccumulator, aInput)`<br>
+
+
+`knumkout = `[**`maxk`**](opcodes/max_k.md)`(asig, ktrig, itype)`<br>
 
 
 `a`[**`min`**](opcodes/min.md)` = [**`min`**](opcodes/min.md)(ain1, ain2 [, ain3] [, ain4] [...])`<br>
@@ -4096,50 +4096,50 @@
 [**`vadd`**](opcodes/vadd.md)`(ifn, kval, kelements [, kdstoffset] [, kverbose])`<br>
 
 
-[**`vadd_i`**](opcodes/vadd_i.md)`(ifn, ival, ielements [, idstoffset])`<br>
+[**`vaddi`**](opcodes/vadd_i.md)`(ifn, ival, ielements [, idstoffset])`<br>
 
 
 [**`vexp`**](opcodes/vexp.md)`(ifn, kval, kelements [, kdstoffset] [, kverbose])`<br>
 
 
-[**`vexp_i`**](opcodes/vexp_i.md)`(ifn, ival, ielements [, idstoffset])`<br>
+[**`vexpi`**](opcodes/vexp_i.md)`(ifn, ival, ielements [, idstoffset])`<br>
 
 
 [**`vmult`**](opcodes/vmult.md)`(ifn, kval, kelements [, kdstoffset] [, kverbose])`<br>
 
 
-[**`vmult_i`**](opcodes/vmult_i.md)`(ifn, ival, ielements [, idstoffset])`<br>
+[**`vmulti`**](opcodes/vmult_i.md)`(ifn, ival, ielements [, idstoffset])`<br>
 
 
 [**`vpow`**](opcodes/vpow.md)`(ifn, kval, kelements [, kdstoffset] [, kverbose])`<br>
 
 
-[**`vpow_i`**](opcodes/vpow_i.md)`(ifn, ival, ielements [, idstoffset])`<br>
+[**`vpowi`**](opcodes/vpow_i.md)`(ifn, ival, ielements [, idstoffset])`<br>
 
 
 ### Vectorial:Vectorial operations
 [**`vaddv`**](opcodes/vaddv.md)`(ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [,kverbose])`<br>
 
 
-[**`vaddv_i`**](opcodes/vaddv_i.md)`(ifn1, ifn2, ielements [, idstoffset] [, isrcoffset])`<br>
+[**`vaddvi`**](opcodes/vaddv_i.md)`(ifn1, ifn2, ielements [, idstoffset] [, isrcoffset])`<br>
 
 
 [**`vcopy`**](opcodes/vcopy.md)`(ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [, kverbose])`<br>
 
 
-[**`vcopy_i`**](opcodes/vcopy_i.md)`(ifn1, ifn2, ielements [,idstoffset, isrcoffset])`<br>
+[**`vcopyi`**](opcodes/vcopy_i.md)`(ifn1, ifn2, ielements [,idstoffset, isrcoffset])`<br>
 
 
 [**`vdivv`**](opcodes/vdivv.md)`(ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [,kverbose])`<br>
 
 
-[**`vdivv_i`**](opcodes/vdivv_i.md)`(ifn1, ifn2, ielements [, idstoffset] [, isrcoffset])`<br>
+[**`vdivvi`**](opcodes/vdivv_i.md)`(ifn1, ifn2, ielements [, idstoffset] [, isrcoffset])`<br>
 
 
 [**`vexpv`**](opcodes/vexpv.md)`(ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [,kverbose])`<br>
 
 
-[**`vexpv_i`**](opcodes/vexpv_i.md)`(ifn1, ifn2, ielements [, idstoffset] [, isrcoffset])`<br>
+[**`vexpvi`**](opcodes/vexpv_i.md)`(ifn1, ifn2, ielements [, idstoffset] [, isrcoffset])`<br>
 
 
 [**`vmap`**](opcodes/vmap.md)`(ifn1, ifn2, ielements [,idstoffset, isrcoffset])`<br>
@@ -4148,19 +4148,19 @@
 [**`vmultv`**](opcodes/vmultv.md)`(ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [,kverbose])`<br>
 
 
-[**`vmultv_i`**](opcodes/vmultv_i.md)`(ifn1, ifn2, ielements [, idstoffset] [, isrcoffset])`<br>
+[**`vmultvi`**](opcodes/vmultv_i.md)`(ifn1, ifn2, ielements [, idstoffset] [, isrcoffset])`<br>
 
 
 [**`vpowv`**](opcodes/vpowv.md)`(ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [,kverbose])`<br>
 
 
-[**`vpowv_i`**](opcodes/vpowv_i.md)`(ifn1, ifn2, ielements [, idstoffset] [, isrcoffset])`<br>
+[**`vpowvi`**](opcodes/vpowv_i.md)`(ifn1, ifn2, ielements [, idstoffset] [, isrcoffset])`<br>
 
 
 [**`vsubv`**](opcodes/vsubv.md)`(ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [,kverbose])`<br>
 
 
-[**`vsubv_i`**](opcodes/vsubv_i.md)`(ifn1, ifn2, ielements [, idstoffset] [, isrcoffset])`<br>
+[**`vsubvi`**](opcodes/vsubv_i.md)`(ifn1, ifn2, ielements [, idstoffset] [, isrcoffset])`<br>
 
 
 ### Vectorial:Envelopes

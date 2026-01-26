@@ -32,7 +32,7 @@ _kverbose_ - Selects whether or not warnings are printed (Optional, default=0)
 
 _vadd_ adds the value of _kval_ to each element of the vector contained in the table _ifn_, starting from table index _kdstoffset_. This enables you to process a specific section of a table by specifying the offset and the number of elements to be processed. Offset is counted starting from 0, so if no offset is specified (or set to 0), the table will be modified from the beginning.
 
-Note that this opcode runs at k-rate so the value of _kval_ is added every control period. Use with care or you will end up with very large numbers (or use [vadd_i](../opcodes/vadd_i.md)).
+Note that this opcode runs at k-rate so the value of _kval_ is added every control period. Use with care or you will end up with very large numbers (or use [vaddi](../opcodes/vadd_i.md)).
 
 These opcodes ([vadd](../opcodes/vadd.md), [vmult](../opcodes/vmult.md), [vpow](../opcodes/vpow.md) and [vexp](../opcodes/vexp.md)) perform numeric operations between a vectorial control signal (hosted by the table _ifn_), and a scalar signal (_kval_). Result is a new vector that overrides old values of _ifn_. All these opcodes work at k-rate.
 
@@ -40,20 +40,20 @@ Negative values for _kdstoffset_ are valid. Elements from the vector that are ou
 
 If the optional _kverbose_ argument is different to 0, the opcode will print warning messages every k-pass if table lengths are exceeded.
 
-In all these opcodes, the resulting vectors are stored in _ifn_, overriding the intial vectors. If you want to keep initial vector, use [vcopy](../opcodes/vcopy.md) or [vcopy_i](../opcodes/vcopy_i.md) to copy it in another table. All these operators are designed to be used together with other opcodes that operate with vectorial signals such as [vcella](../opcodes/vcella.md), [adsynt](../opcodes/adsynt.md), [adsynt2](../opcodes/adsynt2.md), etc.  They can also be useful in conjunction with the spectral opcodes [pvsftw](../opcodes/pvsftw.md) and [pvsftr](../opcodes/pvsftr.md).
+In all these opcodes, the resulting vectors are stored in _ifn_, overriding the intial vectors. If you want to keep initial vector, use [vcopy](../opcodes/vcopy.md) or [vcopyi](../opcodes/vcopy_i.md) to copy it in another table. All these operators are designed to be used together with other opcodes that operate with vectorial signals such as [vcella](../opcodes/vcella.md), [adsynt](../opcodes/adsynt.md), [adsynt2](../opcodes/adsynt2.md), etc.  They can also be useful in conjunction with the spectral opcodes [pvsftw](../opcodes/pvsftw.md) and [pvsftr](../opcodes/pvsftr.md).
 
 > :memo: **Note**
 >
 > Please note that the _elements_ argument has changed in version 5.03 from i-rate to k-rate. This will change the opcode's behavior in the unusual cases where the i-rate variable _ielements_ is changed inside the instrument, for example in:
 >
 > ``` csound-orc
-      instr 1
-  ielements  =        10
-             vadd     1, 1, ielements
-  ielements  =        20
-             vadd     2, 1, ielements
-             turnoff
-      endin
+  instr 1
+    elements:i = 10
+    vadd(1, 1, elements)
+    elements = 20
+    vadd(2, 1, elements)
+    turnoff()
+  endin
 > ```
 
 ## Examples
