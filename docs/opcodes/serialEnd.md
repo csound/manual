@@ -2,15 +2,19 @@
 id:serialEnd
 category:Serial I/O
 -->
-# serialEnd
+# serialend
 Close a serial port for arduino.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *serialEnd*.
 
 Plugin opcode in serial.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    serialEnd(iPort)
+    serialend(iPort)
     ```
 
 === "Classic"
@@ -20,7 +24,7 @@ Plugin opcode in serial.
 
 ### Initialization
 
-_iPort_ -- port number optained from a _serialBegin_opcode.
+_iPort_ -- port number optained from a *serialbegin* opcode.
 
 ## See Also
 

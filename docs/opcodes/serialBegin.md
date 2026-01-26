@@ -2,15 +2,19 @@
 id:serialBegin
 category:Serial I/O
 -->
-# serialBegin
+# serialbegin
 Open a serial port for arduino.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *serialBegin*.
 
 Plugin opcode in serial.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    iPort = serialBegin(SPortName [, ibaudRate])
+    iPort = serialbegin(SPortName [, ibaudRate])
     ```
 
 === "Classic"
@@ -26,11 +30,17 @@ _ibaudrate_ -- serial speed, defaulting to 9600 bps.
 
 ## Examples
 
-Here is an example of the serialBegin opcode. It uses the file [serialBegin.csd](../examples/serialBegin.csd).
+=== "Modern"
+    Here is an example of the serialbegin opcode. It uses the file [serialbegin-modern.csd](../examples/serialbegin-modern.csd).
+    ``` csound-csd title="Example of the serialbegin opcode." linenums="1"
+    --8<-- "examples/serialbegin-modern.csd"
+    ```
 
-``` csound-csd title="Example of the serialBegin opcode." linenums="1"
---8<-- "examples/serialBegin.csd"
-```
+=== "Classic"
+    Here is an example of the serialBegin opcode. It uses the file [serialBegin.csd](../examples/serialBegin.csd).
+    ``` csound-csd title="Example of the serialBegin opcode." linenums="1"
+    --8<-- "examples/serialBegin.csd"
+    ```
 
 This is the matching Arduino code :
 

@@ -43,12 +43,6 @@
 [ATSsinnoi](../opcodes/ATSsinnoi.md) - _ATSsinnoi_ reads data from an ATS data file and uses the information to synthesize sines and noise together.<br>
 [K35_hpf](../opcodes/k35_hpf.md) - Zero-delay feedback implementation of Korg35 resonant high-pass filter.<br>
 [K35_lpf](../opcodes/k35_lpf.md) - Zero-delay feedback implementation of Korg35 resonant low-pass filter.<br>
-[MixerClear](../opcodes/mixerclear.md) - Resets all channels of a buss to 0.<br>
-[MixerGetLevel](../opcodes/mixergetlevel.md) - Gets the level at which signals from the send are being added to the buss.<br>
-[MixerReceive](../opcodes/mixerreceive.md) - Receives an arate signal that has been mixed onto a channel of a buss.<br>
-[MixerSend](../opcodes/mixersend.md) - Mixes an arate signal into a channel of a buss.<br>
-[MixerSetLevel](../opcodes/mixersetlevel.md) - Sets the level at which signals from the send are added to the buss.<br>
-[MixerSetLevel_i](../opcodes/mixersetlevel_i.md) - Sets the level at which signals from the send are added to the buss.<br>
 [S](../opcodes/ops.md) - Returns a string containg the numeric value of its argument.<br>
 [\#](../opcodes/opnonequiv.md) - Bitwise NON EQUIVALENCE operator.<br>
 [a](../opcodes/opa.md) - Converts a k-sig or k-array parameter to an a-sig output.<br>
@@ -564,6 +558,12 @@ numeric or string values.<br>
 [minarray](../opcodes/minarray.md) - Returns the minimum value in a k-rate array, and optional its index.<br>
 [mincer](../opcodes/mincer.md) - Phase-locked vocoder processing.<br>
 [mirror](../opcodes/mirror.md) - Reflects the signal that exceeds the low and high thresholds.<br>
+[mixerclear](../opcodes/mixerclear.md) - Resets all channels of a buss to 0.<br>
+[mixergetlevel](../opcodes/mixergetlevel.md) - Gets the level at which signals from the send are being added to the buss.<br>
+[mixerreceive](../opcodes/mixerreceive.md) - Receives an arate signal that has been mixed onto a channel of a buss.<br>
+[mixersend](../opcodes/mixersend.md) - Mixes an arate signal into a channel of a buss.<br>
+[mixersetlevel](../opcodes/mixersetlevel.md) - Sets the level at which signals from the send are added to the buss.<br>
+[mixersetleveli](../opcodes/mixersetlevel_i.md) - Sets the level at which signals from the send are added to the buss.<br>
 [mode](../opcodes/mode.md) - A filter that simulates a mass-spring-damper system.<br>
 [modmatrix](../opcodes/modmatrix.md) - Modulation matrix opcode with optimizations for sparse matrices.<br>
 [monitor](../opcodes/monitor.md) - Returns the audio spout frame (if active), otherwise it returns zero.<br>
@@ -880,7 +880,7 @@ numeric or string values.<br>
 [schedulek](../opcodes/schedulek.md) - Adds a new score event.<br>
 [schedwhen](../opcodes/schedwhen.md) - Adds a new score event.<br>
 [scoreline](../opcodes/scoreline.md) - Issues one or more score line events from an instrument.<br>
-[scoreline_i](../opcodes/scoreline_i.md) - Issues one or more score line events from an instrument at i-time.<br>
+[scorelinei](../opcodes/scoreline_i.md) - Issues one or more score line events from an instrument at i-time.<br>
 [seed](../opcodes/seed.md) - Sets the global seed value for all _x-class noise generators_, as well as other opcodes that use a random call, such as [grain](../opcodes/grain.md).<br>
 [sekere](../opcodes/sekere.md) - Semi-physical model of a sekere sound.<br>
 [select](../opcodes/select.md) - Select sample value from three based on audio-rate comparisons of two signals.<br>
@@ -890,13 +890,13 @@ numeric or string values.<br>
 [seqtime2](../opcodes/seqtime2.md) - Generates a trigger signal according to the values stored in a table.<br>
 [seqtime](../opcodes/seqtime.md) - Generates a trigger signal according to the values stored in a table.<br>
 [sequ](../opcodes/sequencer.md) - Emulate a hardware sequencer.<br>
-[serialBegin](../opcodes/serialBegin.md) - Open a serial port for arduino.<br>
-[serialEnd](../opcodes/serialEnd.md) - Close a serial port for arduino.<br>
-[serialFlush](../opcodes/serialFlush.md) - Flush data from a serial port.<br>
-[serialPrint](../opcodes/serialPrint.md) - Print data from a serial port.<br>
-[serialRead](../opcodes/serialRead.md) - Read data from a serial port for arduino.<br>
-[serialWrite](../opcodes/serialWrite.md) - Write data to a serial port for arduino.<br>
-[serialWrite_i](../opcodes/serialWrite_i.md) - Write data to a serial port for arduino.<br>
+[serialbegin](../opcodes/serialBegin.md) - Open a serial port for arduino.<br>
+[serialend](../opcodes/serialEnd.md) - Close a serial port for arduino.<br>
+[serialflush](../opcodes/serialFlush.md) - Flush data from a serial port.<br>
+[serialprint](../opcodes/serialPrint.md) - Print data from a serial port.<br>
+[serialread](../opcodes/serialRead.md) - Read data from a serial port for arduino.<br>
+[serialwrite](../opcodes/serialWrite.md) - Write data to a serial port for arduino.<br>
+[serialwritei](../opcodes/serialWrite_i.md) - Write data to a serial port for arduino.<br>
 [setcol](../opcodes/setcol.md) - Sets a given column of a 2-dimensional array from a vector.<br>
 [setctrl](../opcodes/setctrl.md) - Configurable slider controls for realtime user input.<br>
 [setksmps](../opcodes/setksmps.md) - Sets the local ksmps value in an instrument or user-defined opcode block.<br>

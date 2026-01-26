@@ -745,6 +745,7 @@
 [**schedulek.csd**](../opcodes/schedulek.md#examples)<br>
 [**schedwhen.csd**](../opcodes/schedwhen.md#examples)<br>
 [**scoreline.csd**](../opcodes/scoreline.md#examples)<br>
+[**scorelinei.csd**](../opcodes/scoreline_i.md#examples)<br>
 [**scoreline_i.csd**](../opcodes/scoreline_i.md#examples)<br>
 
 ### Instrument Control:Program Flow Control
@@ -912,8 +913,11 @@
 ### Serial I/O
 [**arduinoRead.csd**](../opcodes/arduinoRead.md#examples)<br>
 [**arduinoReadF.csd**](../opcodes/arduinoReadF.md#examples)<br>
+[**serialbegin-modern.csd**](../opcodes/serialBegin.md#examples)<br>
 [**serialBegin.csd**](../opcodes/serialBegin.md#examples)<br>
+[**serialread-modern.csd**](../opcodes/serialRead.md#examples)<br>
 [**serialRead.csd**](../opcodes/serialRead.md#examples)<br>
+[**serialwrite-modern.csd**](../opcodes/serialWrite.md#examples)<br>
 [**serialWrite.csd**](../opcodes/serialWrite.md#examples)<br>
 
 ### Table Control
@@ -1462,10 +1466,15 @@
 [**midremot.csd**](../opcodes/midremot.md#examples)<br>
 
 ### Mixer Opcodes
+[**Mixer-modern.csd**](../opcodes/mixerclear.md#examples)<br>
 [**Mixer.csd**](../opcodes/mixerclear.md#examples)<br>
+[**Mixer-modern.csd**](../opcodes/mixergetlevel.md#examples)<br>
 [**Mixer.csd**](../opcodes/mixergetlevel.md#examples)<br>
+[**Mixer-modern.csd**](../opcodes/mixerreceive.md#examples)<br>
 [**Mixer.csd**](../opcodes/mixerreceive.md#examples)<br>
+[**Mixer-modern.csd**](../opcodes/mixersend.md#examples)<br>
 [**Mixer.csd**](../opcodes/mixersend.md#examples)<br>
+[**Mixer-modern.csd**](../opcodes/mixersetlevel.md#examples)<br>
 [**Mixer.csd**](../opcodes/mixersetlevel.md#examples)<br>
 
 ### Array Opcodes

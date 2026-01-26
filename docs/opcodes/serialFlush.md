@@ -2,17 +2,21 @@
 id:serialFlush
 category:Serial I/O
 -->
-# serialFlush
+# serialflush
 Flush data from a serial port.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *serialFlush*.
 
 Plugin opcode in serial.
 
-Flush to the screen any bytes (up to 32k) in the input buffer. Note that these bytes will be cleared from the buffer. use this opcode mainly for debugging messages. If you want to mix debugging and other communication messages over the same port, you will need to manually parse the data with the _serialRead_ opcode.
+Flush to the screen any bytes (up to 32k) in the input buffer. Note that these bytes will be cleared from the buffer. use this opcode mainly for debugging messages. If you want to mix debugging and other communication messages over the same port, you will need to manually parse the data with the *serialread* opcode.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    serialFlush(iPort)
+    serialflush(iPort)
     ```
 
 === "Classic"
@@ -22,7 +26,7 @@ Flush to the screen any bytes (up to 32k) in the input buffer. Note that these b
 
 ### Performance
 
-_iPort_ -- port number optained from a _serialBegin_ opcode.
+_iPort_ -- port number optained from a *serialbegin* opcode.
 
 ## See Also
 

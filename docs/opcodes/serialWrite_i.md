@@ -2,16 +2,20 @@
 id:serialWrite_i
 category:Serial I/O
 -->
-# serialWrite_i
+# serialwritei
 Write data to a serial port for arduino.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *serialWrite_i*.
 
 Plugin opcode in serial.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    serialWrite_i(iPort, iByte)
-    serialWrite_i(iPort, SBytes)
+    serialwritei(iPort, iByte)
+    serialwritei(iPort, SBytes)
     ```
 
 === "Classic"
@@ -22,7 +26,7 @@ Plugin opcode in serial.
 
 ### Initialization
 
-_iPort_ -- port number optained from a _serialBegin_ opcode.
+_iPort_ -- port number optained from a *serialbegin* opcode.
 
 _iByte_ -- a byte of data to write.
 

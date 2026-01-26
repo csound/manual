@@ -2,13 +2,17 @@
 id:MixerClear
 category:Mixer Opcodes
 -->
-# MixerClear
+# mixerclear
 Resets all channels of a buss to 0.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *MixerClear*.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    MixerClear()
+    mixerclear()
     ```
 
 === "Classic"
@@ -18,46 +22,52 @@ Resets all channels of a buss to 0.
 
 ### Performance
 
-Use of the mixer requires that instruments setting gains have smaller numbers than instruments sending signals, and that instruments sending signals have smaller numbers than instruments receiving those signals. However, an instrument may have any number of sends or receives. After the final signal is received, _MixerClear_ must be invoked to reset the busses to 0 before the next kperiod.
+Use of the mixer requires that instruments setting gains have smaller numbers than instruments sending signals, and that instruments sending signals have smaller numbers than instruments receiving those signals. However, an instrument may have any number of sends or receives. After the final signal is received, _mixerclear_ must be invoked to reset the busses to 0 before the next kperiod.
 
 ## Examples
 
 ``` csound-orc
 instr 220 ; Master output
-    ; It applies a bass enhancement, compression and fadeout
-    ; to the whole piece, outputs signals, and clears the mixer.
-  a1  MixerReceive 220, 0
-  a2  MixerReceive 220, 1
+  ; It applies a bass enhancement, compression and fadeout
+  ; to the whole piece, outputs signals, and clears the mixer.
+  a1 = mixerreceive(220, 0)
+  a2 = mixerreceive(220, 1)
   ; Bass enhancement
-  al1 butterlp a1, 100
-  al2 butterlp a2, 100
+  al1 = butterlp(a1, 100)
+  al2 = butterlp(a2, 100)
   a1 = al1*1.5 + a1
   a2 = al2*1.5 + a2 
 
   ; Global amplitude shape
-  kenv   linseg 0., p5 / 2.0, p4, p3 - p5, p4, p5 / 2.0, 0.
-  a1=a1*kenv
-  a2=a2*kenv 
+  env:k = linseg(0.0, p5/2.0, p4, p3-p5, p4, p5/2.0, 0.0)
+  a1 *= env
+  a2 *= env 
   
   ; Compression
-  a1 dam a1, 5000, 0.5, 1, 0.2, 0.1  
-  a2 dam a2, 5000, 0.5, 1, 0.2, 0.1  
-  
+  a1 = dam(a1, 5000, 0.5, 1, 0.2, 0.1)
+  a2 = dam(a2, 5000, 0.5, 1, 0.2, 0.1)
+
   ; Remove DC bias
-  a1blocked dcblock		a1
-  a2blocked	dcblock		a2
+  blocked1:a = dcblock(a1)
+  blocked2:a = dcblock(a2)
   
   ; Output signals
-  outs a1blocked, a2blocked
-  MixerClear
+  out(blocked1, blocked2)
+  mixerclear()
 endin
 ```
 
-Here is a complete example of the Mixerclear opcode. It uses the file [Mixer.csd](../examples/Mixer.csd)
+=== "Modern"
+    Here is a complete example of the mixerclear opcode. It uses the file [Mixer-modern.csd](../examples/Mixer-modern.csd)
+    ``` csound-csd title="Complete example of the mixerclear opcode." linenums="1"
+    --8<-- "examples/Mixer-modern.csd"
+    ```
 
-``` csound-csd title="Complete example of the Mixerclear opcode." linenums="1"
---8<-- "examples/Mixer.csd"
-```
+=== "Classic"
+    Here is a complete example of the MixerClear opcode. It uses the file [Mixer.csd](../examples/Mixer.csd)
+    ``` csound-csd title="Complete example of the MixerClear opcode." linenums="1"
+    --8<-- "examples/Mixer.csd"
+    ```
 
 ## See also
 

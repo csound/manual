@@ -2186,7 +2186,7 @@
 [**`scoreline`**](opcodes/scoreline.md)`(Sin, ktrig)`<br>
 
 
-[**`scoreline_i`**](opcodes/scoreline_i.md)`(Sin)`<br>
+[**`scorelinei`**](opcodes/scoreline_i.md)`(Sin)`<br>
 
 
 ### Instrument Control:Program Flow Control
@@ -2647,28 +2647,28 @@
 [**`arduinoStop`**](opcodes/arduinoStop.md)`(iPort)`<br>
 
 
-`iPort = `[**`serialBegin`**](opcodes/serialBegin.md)`(SPortName [, ibaudRate])`<br>
+`iPort = `[**`serialbegin`**](opcodes/serialBegin.md)`(SPortName [, ibaudRate])`<br>
 
 
-[**`serialEnd`**](opcodes/serialEnd.md)`(iPort)`<br>
+[**`serialend`**](opcodes/serialEnd.md)`(iPort)`<br>
 
 
-[**`serialFlush`**](opcodes/serialFlush.md)`(iPort)`<br>
+[**`serialflush`**](opcodes/serialFlush.md)`(iPort)`<br>
 
 
-[**`serialPrint`**](opcodes/serialPrint.md)`(iPort)`<br>
+[**`serialprint`**](opcodes/serialPrint.md)`(iPort)`<br>
 
 
-`kByte = `[**`serialRead`**](opcodes/serialRead.md)`(iPort)`<br>
+`kByte = `[**`serialread`**](opcodes/serialRead.md)`(iPort)`<br>
 
 
-[**`serialWrite`**](opcodes/serialWrite.md)`(iPort, iByte)`<br>
-`serialWrite(iPort, kByte)`<br>
-`serialWrite(iPort, SBytes)`<br>
+[**`serialwrite`**](opcodes/serialWrite.md)`(iPort, iByte)`<br>
+`serialwrite(iPort, kByte)`<br>
+`serialwrite(iPort, SBytes)`<br>
 
 
-[**`serialWrite_i`**](opcodes/serialWrite_i.md)`(iPort, iByte)`<br>
-`serialWrite_i(iPort, SBytes)`<br>
+[**`serialwritei`**](opcodes/serialWrite_i.md)`(iPort, iByte)`<br>
+`serialwritei(iPort, SBytes)`<br>
 
 
 ### Table Control
@@ -4308,22 +4308,22 @@
 
 
 ### Mixer Opcodes
-[**`MixerClear`**](opcodes/mixerclear.md)`()`<br>
+[**`mixerclear`**](opcodes/mixerclear.md)`()`<br>
 
 
-`kgain = `[**`MixerGetLevel`**](opcodes/mixergetlevel.md)`(isend, ibuss)`<br>
+`kgain = `[**`mixergetlevel`**](opcodes/mixergetlevel.md)`(isend, ibuss)`<br>
 
 
-`asignal = `[**`MixerReceive`**](opcodes/mixerreceive.md)`(ibuss, ichannel)`<br>
+`asignal = `[**`mixerreceive`**](opcodes/mixerreceive.md)`(ibuss, ichannel)`<br>
 
 
-[**`MixerSend`**](opcodes/mixersend.md)`(asignal, isend, ibuss, ichannel)`<br>
+[**`mixersend`**](opcodes/mixersend.md)`(asignal, isend, ibuss, ichannel)`<br>
 
 
-[**`MixerSetLevel`**](opcodes/mixersetlevel.md)`(isend, ibuss, kgain)`<br>
+[**`mixersetlevel`**](opcodes/mixersetlevel.md)`(isend, ibuss, kgain)`<br>
 
 
-[**`MixerSetLevel_i`**](opcodes/mixersetlevel_i.md)`(isend, ibuss, igain)`<br>
+[**`mixersetleveli`**](opcodes/mixersetlevel_i.md)`(isend, ibuss, igain)`<br>
 
 
 ### Array Opcodes
