@@ -2,15 +2,19 @@
 id:arduinoStart
 category:Serial I/O
 -->
-# arduinoStart
+# arduinostart
 Open a serial port for use with the Arduino protocol.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *arduinoStart*.
 
 Plugin opcode in serial.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    iPort = arduinoStart(SPortName [, ibaudRate])
+    iPort = arduinostart(SPortName [, ibaudRate])
     ```
 
 === "Classic"

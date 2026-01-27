@@ -2635,16 +2635,16 @@
 
 
 ### Serial I/O
-`kval = `[**`arduinoRead`**](opcodes/arduinoRead.md)`(iPort, iStream [, iSmooth])`<br>
+`kval = `[**`arduinoread`**](opcodes/arduinoRead.md)`(iPort, iStream [, iSmooth])`<br>
 
 
-`kval = `[**`arduinoReadF`**](opcodes/arduinoReadF.md)`(iPort, iStream1, iStream2, iStream3)`<br>
+`kval = `[**`arduinoreadf`**](opcodes/arduinoReadF.md)`(iPort, iStream1, iStream2, iStream3)`<br>
 
 
-`iPort = `[**`arduinoStart`**](opcodes/arduinoStart.md)`(SPortName [, ibaudRate])`<br>
+`iPort = `[**`arduinostart`**](opcodes/arduinoStart.md)`(SPortName [, ibaudRate])`<br>
 
 
-[**`arduinoStop`**](opcodes/arduinoStop.md)`(iPort)`<br>
+[**`arduinostop`**](opcodes/arduinoStop.md)`(iPort)`<br>
 
 
 `iPort = `[**`serialbegin`**](opcodes/serialBegin.md)`(SPortName [, ibaudRate])`<br>
@@ -4512,7 +4512,7 @@
 `aout = `[**`select`**](opcodes/select.md)`(a1, a2, aless, aequal, amore)`<br>
 
 
-`ires = `[**`system`**](opcodes/system.md)`_i(itrig, Scmd, [inowait])`<br>
+`ires = `[**`system`**](opcodes/system.md)`i(itrig, Scmd, [inowait])`<br>
 `kres = system(ktrig, Scmd, [knowait])`<br>
 
 

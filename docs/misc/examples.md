@@ -911,7 +911,9 @@
 [**times_complex.csd**](../opcodes/times.md#examples)<br>
 
 ### Serial I/O
+[**arduinoread-modern.csd**](../opcodes/arduinoRead.md#examples)<br>
 [**arduinoRead.csd**](../opcodes/arduinoRead.md#examples)<br>
+[**arduinoreadf-modern.csd**](../opcodes/arduinoReadF.md#examples)<br>
 [**arduinoReadF.csd**](../opcodes/arduinoReadF.md#examples)<br>
 [**serialbegin-modern.csd**](../opcodes/serialBegin.md#examples)<br>
 [**serialBegin.csd**](../opcodes/serialBegin.md#examples)<br>
@@ -1562,6 +1564,7 @@
 [**framebuffer.csd**](../opcodes/olabuffer.md#examples)<br>
 [**pwd.csd**](../opcodes/pwd.md#examples)<br>
 [**select.csd**](../opcodes/select.md#examples)<br>
+[**system-modern.csd**](../opcodes/system.md#examples)<br>
 [**system.csd**](../opcodes/system.md#examples)<br>
 [**tableshuffle.csd**](../opcodes/tableshuffle.md#examples)<br>
 

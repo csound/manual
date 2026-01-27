@@ -6,10 +6,10 @@ The following opcodes connect and communicate with non-MIDI hardware devices.
 
 Opcodes designed to work with an Arduino:
 
-* [arduinoRead](../opcodes/arduinoRead.md) - Read data from an arduino.
-* [arduinoReadF](../opcodes/arduinoReadF.md) - Read data from an arduino.
-* [arduinoStart](../opcodes/arduinoStart.md) - Open a serial port for use with the Arduino protocol.
-* [arduinoStop](../opcodes/arduinoStop.md) - Close a serial port using Arduino protocol.
+* [arduinoread](../opcodes/arduinoRead.md) - Read data from an arduino.
+* [arduinoreadf](../opcodes/arduinoReadF.md) - Read data from an arduino.
+* [arduinostart](../opcodes/arduinoStart.md) - Open a serial port for use with the Arduino protocol.
+* [arduinostop](../opcodes/arduinoStop.md) - Close a serial port using Arduino protocol.
 * [serialbegin](../opcodes/serialBegin.md) - Open a serial port for Arduino.
 * [serialend](../opcodes/serialEnd.md) - Close a serial port for Arduino.
 * [serialflush](../opcodes/serialFlush.md) - Flush data from a serial port.

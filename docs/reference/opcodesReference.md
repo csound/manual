@@ -62,10 +62,10 @@
 [ampmidicurve](../opcodes/ampmidicurve.md) - Maps an input MIDI velocity number to an output gain factor with a maximum value of 1, modifying the output gain by a dynamic range and a shaping exponent.<br>
 [ampmidid](../opcodes/ampmidid.md) - Musically map MIDI velocity to peak amplitude within a specified dynamic range in decibels.<br>
 [apoleparams](../opcodes/apoleparams.md) - Extracts allpole filter parameters from coefficients.<br>
-[arduinoReadF](../opcodes/arduinoReadF.md) - Read integer data from an arduino port using the Csound-Arduino protocol.<br>
-[arduinoRead](../opcodes/arduinoRead.md) - Read integer data from an arduino port using the Csound-Arduino protocol.<br>
-[arduinoStart](../opcodes/arduinoStart.md) - Open a serial port for use with the Arduino protocol.<br>
-[arduinoStop](../opcodes/arduinoStop.md) - Close a serial port using Arduino protocol.<br>
+[arduinoread](../opcodes/arduinoRead.md) - Read integer data from an arduino port using the Csound-Arduino protocol.<br>
+[arduinoreadf](../opcodes/arduinoReadF.md) - Read integer data from an arduino port using the Csound-Arduino protocol.<br>
+[arduinostart](../opcodes/arduinoStart.md) - Open a serial port for use with the Arduino protocol.<br>
+[arduinostop](../opcodes/arduinoStop.md) - Close a serial port using Arduino protocol.<br>
 [areson](../opcodes/areson.md) - A notch filter whose transfer functions are the complements of the reson opcode.<br>
 [aresonk](../opcodes/aresonk.md) - A notch filter whose transfer functions are the complements of the reson opcode.<br>
 [arg](../opcodes/arg.md) - Returns the argument of a complex number.<br>

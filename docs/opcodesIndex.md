@@ -16,7 +16,7 @@
 | [active](opcodes/active.md) | [adsr](opcodes/adsr.md) | [adsyn](opcodes/adsyn.md) | [adsynt2](opcodes/adsynt2.md) | [adsynt](opcodes/adsynt.md) |
 | [aftouch](opcodes/aftouch.md) | [allpole](opcodes/allpole.md) | [alpass](opcodes/alpass.md) | [alwayson](opcodes/alwayson.md) | [ampdb](opcodes/ampdb.md) |
 | [ampdbfs](opcodes/ampdbfs.md) | [ampmidi](opcodes/ampmidi.md) | [ampmidicurve](opcodes/ampmidicurve.md) | [ampmidid](opcodes/ampmidid.md) | [apoleparams](opcodes/apoleparams.md) |
-| [arduinoReadF](opcodes/arduinoReadF.md) | [arduinoRead](opcodes/arduinoRead.md) | [arduinoStart](opcodes/arduinoStart.md) | [arduinoStop](opcodes/arduinoStop.md) | [areson](opcodes/areson.md) |
+| [arduinoread](opcodes/arduinoRead.md) | [arduinoreadf](opcodes/arduinoReadF.md) | [arduinostart](opcodes/arduinoStart.md) | [arduinostop](opcodes/arduinoStop.md) | [areson](opcodes/areson.md) |
 | [aresonk](opcodes/aresonk.md) | [arg](opcodes/arg.md) | [array](opcodes/array.md) | [atone](opcodes/atone.md) | [atonek](opcodes/atonek.md) |
 | [atonex](opcodes/atonex.md) | [autocorr](opcodes/autocorr.md) | [babo](opcodes/babo.md) | [balance2](opcodes/balance2.md) | [balance](opcodes/balance.md) |
 | [bamboo](opcodes/bamboo.md) | [barmodel](opcodes/barmodel.md) | [bbcutm](opcodes/bbcutm.md) | [bbcuts](opcodes/bbcuts.md) | [betarand](opcodes/betarand.md) |
