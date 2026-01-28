@@ -1727,12 +1727,6 @@
 
 
 ### Signal Modifiers:Standard Filters
-`asig = `[**`K35_hpf`**](opcodes/k35_hpf.md)`(ain, xcf, xQ [, inlp, isaturation, istor])`<br>
-
-
-`asig = `[**`K35_lpf`**](opcodes/k35_lpf.md)`(ain, xcf, xQ [, inlp, isaturation, istor])`<br>
-
-
 `ares = `[**`atone`**](opcodes/atone.md)`(asig, khp [, iskip])`<br>
 
 
@@ -1777,7 +1771,13 @@
 `ares = `[**`clfilt`**](opcodes/clfilt.md)`(asig, kfreq, itype, inpol [, ikind] [, ipbr] [, isba] [, iskip])`<br>
 
 
-`asig = `[**`diode_ladder`**](opcodes/diode_ladder.md)`(ain, xcf, xk [, inlp, isaturation, istor])`<br>
+`asig = `[**`diodeladder`**](opcodes/diode_ladder.md)`(ain, xcf, xk [, inlp, isaturation, istor])`<br>
+
+
+`asig = k35hpf(ain, xcf, xQ [, inlp, isaturation, istor])`<br>
+
+
+`asig = k35lpf(ain, xcf, xQ [, inlp, isaturation, istor])`<br>
 
 
 `ares = `[**`median`**](opcodes/median.md)`(asig, ksize, imaxsize [, iskip])`<br>
@@ -1796,19 +1796,19 @@
 `ares = tonex(asig, ahp [, inumlayer] [, iskip])`<br>
 
 
-`asig = `[**`zdf_1pole`**](opcodes/zdf_1pole.md)`(ain, xcf [, kmode, istor])`<br>
+`asig = `[**`zdf1pole`**](opcodes/zdf_1pole.md)`(ain, xcf [, kmode, istor])`<br>
 
 
-`alp, ahp = `[**`zdf_1pole_mode`**](opcodes/zdf_1pole_mode.md)`(ain, xcf [, istor])`<br>
+`alp, ahp = `[**`zdf1polemode`**](opcodes/zdf_1pole_mode.md)`(ain, xcf [, istor])`<br>
 
 
-`asig = `[**`zdf_2pole`**](opcodes/zdf_2pole.md)`(ain, xcf, xQ [, kmode, istor])`<br>
+`asig = `[**`zdf2pole`**](opcodes/zdf_2pole.md)`(ain, xcf, xQ [, kmode, istor])`<br>
 
 
-`alp, abp, ahp = `[**`zdf_2pole_mode`**](opcodes/zdf_2pole_mode.md)`(ain, xcf, Q [, istor])`<br>
+`alp, abp, ahp = `[**`zdf2polemode`**](opcodes/zdf_2pole_mode.md)`(ain, xcf, Q [, istor])`<br>
 
 
-`asig = `[**`zdf_ladder`**](opcodes/zdf_ladder.md)`(ain, xcf, xQ [, istor])`<br>
+`asig = `[**`zdfladder`**](opcodes/zdf_ladder.md)`(ain, xcf, xQ [, istor])`<br>
 
 
 ### Signal Modifiers:Standard Filters:Resonant
@@ -3895,37 +3895,37 @@
 
 
 ### Spectral Processing:ATS
-`ar = `[**`ATSadd`**](opcodes/ATSadd.md)`(ktimepnt, kfmod, iatsfile, ifn, ipartials [, ipartialoffset, \`<br>
+`ar = `[**`atsadd`**](opcodes/ATSadd.md)`(ktimepnt, kfmod, iatsfile, ifn, ipartials [, ipartialoffset, \`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`ipartialincr, igatefn])`<br>
 
 
-`ar = `[**`ATSaddnz`**](opcodes/ATSaddnz.md)`(ktimepnt, iatsfile, ibands [, ibandoffset, ibandincr])`<br>
+`ar = `[**`atsaddnz`**](opcodes/ATSaddnz.md)`(ktimepnt, iatsfile, ibands [, ibandoffset, ibandincr])`<br>
 
 
-[**`ATSbufread`**](opcodes/ATSbufread.md)`(ktimepnt, kfmod, iatsfile, ipartials [, ipartialoffset, \`<br>
+[**`atsbufread`**](opcodes/ATSbufread.md)`(ktimepnt, kfmod, iatsfile, ipartials [, ipartialoffset, \`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`ipartialincr])`<br>
 
 
-`ar = `[**`ATScross`**](opcodes/ATScross.md)`(ktimepnt, kfmod, iatsfile, ifn, kmylev, kbuflev, ipartials \`<br>
+`ar = `[**`atscross`**](opcodes/ATScross.md)`(ktimepnt, kfmod, iatsfile, ifn, kmylev, kbuflev, ipartials \`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`[, ipartialoffset, ipartialincr])`<br>
 
 
-`idata = `[**`ATSinfo`**](opcodes/ATSinfo.md)`(iatsfile, ilocation)`<br>
+`idata = `[**`atsinfo`**](opcodes/ATSinfo.md)`(iatsfile, ilocation)`<br>
 
 
-`kamp = `[**`ATSinterpread`**](opcodes/ATSinterpread.md)`(kfreq)`<br>
+`kamp = `[**`atsinterpread`**](opcodes/ATSinterpread.md)`(kfreq)`<br>
 
 
-`kfrq, kamp = `[**`ATSpartialtap`**](opcodes/ATSpartialtap.md)`(ipartialnum)`<br>
+`kfrq, kamp = `[**`atspartialtap`**](opcodes/ATSpartialtap.md)`(ipartialnum)`<br>
 
 
-`kfreq, kamp = `[**`ATSread`**](opcodes/ATSread.md)`(ktimepnt, iatsfile, ipartial)`<br>
+`kfreq, kamp = `[**`atsread`**](opcodes/ATSread.md)`(ktimepnt, iatsfile, ipartial)`<br>
 
 
-`kenergy = `[**`ATSreadnz`**](opcodes/ATSreadnz.md)`(ktimepnt, iatsfile, iband)`<br>
+`kenergy = `[**`atsreadnz`**](opcodes/ATSreadnz.md)`(ktimepnt, iatsfile, iband)`<br>
 
 
-`ar = `[**`ATSsinnoi`**](opcodes/ATSsinnoi.md)`(ktimepnt, ksinlev, knzlev, kfmod, iatsfile, ipartials \`<br>
+`ar = `[**`atssinnoi`**](opcodes/ATSsinnoi.md)`(ktimepnt, ksinlev, knzlev, kfmod, iatsfile, ipartials \`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`[, ipartialoffset, ipartialincr])`<br>
 
 

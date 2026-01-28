@@ -126,6 +126,11 @@ def find_bad_categories(opcodes, categories):
                 print('!!!', cats[i], cats_ref[i])
                 err = True
         return err
+    
+    # Found a different number of categories in opcodes than in categories.py
+    ncat = max(len(cats), len(cats_ref)) 
+    for i in range(ncat):
+        print(i, cats_ref[i], cats[i])
     print("length categories:{}, cats found: {}".format(len(cats_ref), len(cats)))
     return True
 

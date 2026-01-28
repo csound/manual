@@ -1,6 +1,6 @@
 <!--
 id:ATScross
-category:Spectral Processing:ats
+category:Spectral Processing:ATS
 -->
 # atscross
 _atscross_ uses data from an ATS analysis file and data from an [atsbufread](../opcodes/ATSbufread.md) to perform cross synthesis.

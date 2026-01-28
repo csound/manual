@@ -31,18 +31,6 @@
 [==](../opcodes/equals.md) - Compares two values for equality.<br>
 [=](../opcodes/assign.md) - Performs a simple assignment.<br>
 [A4](../opcodes/A4.md) - Sets the base frequency for pitch A4.<br>
-[ATSadd](../opcodes/ATSadd.md) - Uses the data from an ATS analysis file to perform additive synthesis using an internal array of interpolating oscillators.<br>
-[ATSaddnz](../opcodes/ATSaddnz.md) - Uses the data from an ATS analysis file to perform noise resynthesis using a modified randi function.<br>
-[ATSbufread](../opcodes/ATSbufread.md) - Reads data from and ATS data file and stores it in an internal data table of frequency, amplitude pairs.<br>
-[ATScross](../opcodes/ATScross.md) - _ATScross_ uses data from an ATS analysis file and data from an [ATSbufread](../opcodes/ATSbufread.md) to perform cross synthesis.<br>
-[ATSinfo](../opcodes/ATSinfo.md) - Reads data out of the header of an ATS file.<br>
-[ATSinterpread](../opcodes/ATSinterpread.md) - Allows a user to determine the frequency envelope of any [ATSbufread](../opcodes/ATSbufread.md).<br>
-[ATSpartialtap](../opcodes/ATSpartialtap.md) - Returns a frequency, amplitude pair from an [ATSbufread](../opcodes/ATSbufread.md) opcode.<br>
-[ATSread](../opcodes/ATSread.md) - Reads data from an ATS file.<br>
-[ATSreadnz](../opcodes/ATSreadnz.md) - reads data from an ATS file.<br>
-[ATSsinnoi](../opcodes/ATSsinnoi.md) - _ATSsinnoi_ reads data from an ATS data file and uses the information to synthesize sines and noise together.<br>
-[K35_hpf](../opcodes/k35_hpf.md) - Zero-delay feedback implementation of Korg35 resonant high-pass filter.<br>
-[K35_lpf](../opcodes/k35_lpf.md) - Zero-delay feedback implementation of Korg35 resonant low-pass filter.<br>
 [S](../opcodes/ops.md) - Returns a string containg the numeric value of its argument.<br>
 [\#](../opcodes/opnonequiv.md) - Bitwise NON EQUIVALENCE operator.<br>
 [a](../opcodes/opa.md) - Converts a k-sig or k-array parameter to an a-sig output.<br>
@@ -73,6 +61,16 @@
 [atone](../opcodes/atone.md) - A hi-pass filter whose transfer functions are the complements of the [tone](../opcodes/tone.md) opcode.<br>
 [atonek](../opcodes/atonek.md) - A hi-pass filter whose transfer functions are the complements of the [tonek](../opcodes/tonek.md) opcode.<br>
 [atonex](../opcodes/atonex.md) - Emulates a stack of filters using the atone opcode.<br>
+[atsadd](../opcodes/ATSadd.md) - Uses the data from an ATS analysis file to perform additive synthesis using an internal array of interpolating oscillators.<br>
+[atsaddnz](../opcodes/ATSaddnz.md) - Uses the data from an ATS analysis file to perform noise resynthesis using a modified randi function.<br>
+[atsbufread](../opcodes/ATSbufread.md) - Reads data from and ATS data file and stores it in an internal data table of frequency, amplitude pairs.<br>
+[atscross](../opcodes/ATScross.md) - _atscross_ uses data from an ATS analysis file and data from an [atsbufread](../opcodes/ATSbufread.md) to perform cross synthesis.<br>
+[atsinfo](../opcodes/ATSinfo.md) - Reads data out of the header of an ATS file.<br>
+[atsinterpread](../opcodes/ATSinterpread.md) - Allows a user to determine the frequency envelope of any [atsbufread](../opcodes/ATSbufread.md).<br>
+[atspartialtap](../opcodes/ATSpartialtap.md) - Returns a frequency, amplitude pair from an [atsbufread](../opcodes/ATSbufread.md) opcode.<br>
+[atsread](../opcodes/ATSread.md) - Reads data from an ATS file.<br>
+[atsreadnz](../opcodes/ATSreadnz.md) - reads data from an ATS file.<br>
+[atssinnoi](../opcodes/ATSsinnoi.md) - _atssinnoi_ reads data from an ATS data file and uses the information to synthesize sines and noise together.<br>
 [autocorr](../opcodes/autocorr.md) - This opcode takes in an input array and computes its autocorrelation.<br>
 [babo](../opcodes/babo.md) - A physical model reverberator.<br>
 [balance2](../opcodes/balance2.md) - Adjust one audio signal according to the values of another.<br>
@@ -225,7 +223,7 @@ cosine interpolation, including a release segment.<br>
 [deltapxw](../opcodes/deltapxw.md) - Mixes the input signal to a delay line.<br>
 [denorm](../opcodes/denorm.md) - Mixes low level (~1e-20 for floats, and ~1e-56 for doubles) noise to a list of a-rate signals.<br>
 [diff](../opcodes/diff.md) - Modify a signal by differentiation.<br>
-[diode_ladder](../opcodes/diode_ladder.md) - Zero-delay feedback implementation of a 4 pole (24 dB/oct) diode low-pass filter.<br>
+[diodeladder](../opcodes/diode_ladder.md) - Zero-delay feedback implementation of a 4 pole (24 dB/oct) diode low-pass filter.<br>
 [directory](../opcodes/directory.md) - Reads a directory and outputs to a string array a list of file names.<br>
 [diskgrain](../opcodes/diskgrain.md) - Synchronous granular synthesis, using a soundfile as source.<br>
 [diskin2](../opcodes/diskin2.md) - Reads audio data from a file, and can alter its pitch using one of several available interpolation types, as well as convert the sample rate to match the orchestra sr setting.<br>
@@ -429,6 +427,8 @@ numeric or string values.<br>
 [jitter](../opcodes/jitter.md) - Generates a segmented line whose segments are randomly generated.<br>
 [joystick](../opcodes/joystick.md) - Reads data from a Linux joystick controller.<br>
 [jspline](../opcodes/jspline.md) - A jitter-spline generator.<br>
+[k35hpf](../opcodes/k35_hpf.md) - Zero-delay feedback implementation of Korg35 resonant high-pass filter.<br>
+[k35lpf](../opcodes/k35_lpf.md) - Zero-delay feedback implementation of Korg35 resonant low-pass filter.<br>
 [k](../opcodes/opk.md) - Converts a i-rate parameter to an k-rate value or an a-rate value to a k-rate value by down-sampling.<br>
 [kgoto](../opcodes/kgoto.md) - During the p-time passes only, unconditionally transfer control to the statement labeled by _label_.<br>
 [kr](../opcodes/kr.md) - Sets the control rate.<br>
@@ -1236,11 +1236,11 @@ time-varying crossfade looping.<br>
 [zarg](../opcodes/zarg.md) - Reads from a location in za space at a-rate, adds some gain.<br>
 [zaw](../opcodes/zaw.md) - Writes to a za variable at a-rate without mixing.<br>
 [zawm](../opcodes/zawm.md) - Writes to a za variable at a-rate with mixing.<br>
-[zdf_1pole](../opcodes/zdf_1pole.md) - Zero-delay feedback implementation of a 1 pole (6 dB/oct) filter.<br>
-[zdf_1pole_mode](../opcodes/zdf_1pole_mode.md) - Zero-delay feedback implementation of 1 pole (6 dB/oct) filter with multimode output.<br>
-[zdf_2pole](../opcodes/zdf_2pole.md) - Zero-delay feedback implementation of a 2 pole (12 dB/oct) filter.<br>
-[zdf_2pole_mode](../opcodes/zdf_2pole_mode.md) - Zero-delay feedback implementation of 2 pole (12 dB/oct) filter with multimode output.<br>
-[zdf_ladder](../opcodes/zdf_ladder.md) - Zero-delay feedback implementation of a 4 pole (24 dB/oct) low-pass filter based on the Moog ladder filter.<br>
+[zdf1pole](../opcodes/zdf_1pole.md) - Zero-delay feedback implementation of a 1 pole (6 dB/oct) filter.<br>
+[zdf1polemode](../opcodes/zdf_1pole_mode.md) - Zero-delay feedback implementation of 1 pole (6 dB/oct) filter with multimode output.<br>
+[zdf2pole](../opcodes/zdf_2pole.md) - Zero-delay feedback implementation of a 2 pole (12 dB/oct) filter.<br>
+[zdf2polemode](../opcodes/zdf_2pole_mode.md) - Zero-delay feedback implementation of 2 pole (12 dB/oct) filter with multimode output.<br>
+[zdfladder](../opcodes/zdf_ladder.md) - Zero-delay feedback implementation of a 4 pole (24 dB/oct) low-pass filter based on the Moog ladder filter.<br>
 [zfilter2](../opcodes/zfilter2.md) - Performs filtering using a transposed form-II digital filter lattice with radial pole-shearing and angular pole-warping.<br>
 [zir](../opcodes/zir.md) - Reads from a location in zk space at i-rate.<br>
 [ziw](../opcodes/ziw.md) - Writes to a zk variable at i-rate without mixing.<br>

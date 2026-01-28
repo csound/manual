@@ -564,8 +564,6 @@
 [**phaser2.csd**](../opcodes/phaser2.md#examples)<br>
 
 ### Signal Modifiers:Standard Filters
-[**k35.csd**](../opcodes/k35_hpf.md#examples)<br>
-[**k35.csd**](../opcodes/k35_lpf.md#examples)<br>
 [**atone-modern.csd**](../opcodes/atone.md#examples)<br>
 [**atone.csd**](../opcodes/atone.md#examples)<br>
 [**atonex-modern.csd**](../opcodes/atonex.md#examples)<br>
@@ -588,16 +586,26 @@
 [**clfilt_lowpass.csd**](../opcodes/clfilt.md#examples)<br>
 [**clfilt_highpass-modern.csd**](../opcodes/clfilt.md#examples)<br>
 [**clfilt_highpass.csd**](../opcodes/clfilt.md#examples)<br>
+[**diodeladder.csd**](../opcodes/diode_ladder.md#examples)<br>
 [**diode_ladder.csd**](../opcodes/diode_ladder.md#examples)<br>
+[**k35-modern.csd**](../opcodes/k35_hpf.md#examples)<br>
+[**k35.csd**](../opcodes/k35_hpf.md#examples)<br>
+[**k35-modern.csd**](../opcodes/k35_lpf.md#examples)<br>
+[**k35.csd**](../opcodes/k35_lpf.md#examples)<br>
 [**median.csd**](../opcodes/median.md#examples)<br>
 [**mediank.csd**](../opcodes/mediank.md#examples)<br>
 [**mode.csd**](../opcodes/mode.md#examples)<br>
 [**tone.csd**](../opcodes/tone.md#examples)<br>
 [**tonex.csd**](../opcodes/tonex.md#examples)<br>
+[**zdf1pole.csd**](../opcodes/zdf_1pole.md#examples)<br>
 [**zdf_1pole.csd**](../opcodes/zdf_1pole.md#examples)<br>
+[**zdf1polemode.csd**](../opcodes/zdf_1pole_mode.md#examples)<br>
 [**zdf_1pole_mode.csd**](../opcodes/zdf_1pole_mode.md#examples)<br>
+[**zdf2pole.csd**](../opcodes/zdf_2pole.md#examples)<br>
 [**zdf_2pole.csd**](../opcodes/zdf_2pole.md#examples)<br>
+[**zdf2polemode.csd**](../opcodes/zdf_2pole_mode.md#examples)<br>
 [**zdf_2pole_mode.csd**](../opcodes/zdf_2pole_mode.md#examples)<br>
+[**zdfladder.csd**](../opcodes/zdf_ladder.md#examples)<br>
 [**zdf_ladder.csd**](../opcodes/zdf_ladder.md#examples)<br>
 
 ### Signal Modifiers:Standard Filters:Resonant
@@ -1317,33 +1325,33 @@
 [**trsplit.csd**](../opcodes/trsplit.md#examples)<br>
 
 ### Spectral Processing:ATS
-[**ATSadd-modern.csd**](../opcodes/ATSadd.md#examples)<br>
+[**atsadd-modern.csd**](../opcodes/ATSadd.md#examples)<br>
 [**ATSadd.csd**](../opcodes/ATSadd.md#examples)<br>
-[**ATSadd-2-modern.csd**](../opcodes/ATSadd.md#examples)<br>
+[**atsadd-2-modern.csd**](../opcodes/ATSadd.md#examples)<br>
 [**ATSadd-2.csd**](../opcodes/ATSadd.md#examples)<br>
-[**ATSaddnz-modern.csd**](../opcodes/ATSaddnz.md#examples)<br>
+[**atsaddnz-modern.csd**](../opcodes/ATSaddnz.md#examples)<br>
 [**ATSaddnz.csd**](../opcodes/ATSaddnz.md#examples)<br>
-[**ATSaddnz-2-modern.csd**](../opcodes/ATSaddnz.md#examples)<br>
+[**atsaddnz-2-modern.csd**](../opcodes/ATSaddnz.md#examples)<br>
 [**ATSaddnz-2.csd**](../opcodes/ATSaddnz.md#examples)<br>
-[**ATSbufread-modern.csd**](../opcodes/ATSbufread.md#examples)<br>
+[**atsbufread-modern.csd**](../opcodes/ATSbufread.md#examples)<br>
 [**ATSbufread.csd**](../opcodes/ATSbufread.md#examples)<br>
-[**ATScross-modern.csd**](../opcodes/ATScross.md#examples)<br>
+[**atscross-modern.csd**](../opcodes/ATScross.md#examples)<br>
 [**ATScross.csd**](../opcodes/ATScross.md#examples)<br>
-[**ATSinfo-modern.csd**](../opcodes/ATSinfo.md#examples)<br>
+[**atsinfo-modern.csd**](../opcodes/ATSinfo.md#examples)<br>
 [**ATSinfo.csd**](../opcodes/ATSinfo.md#examples)<br>
-[**ATSinterpread-modern.csd**](../opcodes/ATSinterpread.md#examples)<br>
+[**atsinterpread-modern.csd**](../opcodes/ATSinterpread.md#examples)<br>
 [**ATSinterpread.csd**](../opcodes/ATSinterpread.md#examples)<br>
-[**ATSpartialtap-modern.csd**](../opcodes/ATSpartialtap.md#examples)<br>
+[**atspartialtap-modern.csd**](../opcodes/ATSpartialtap.md#examples)<br>
 [**ATSpartialtap.csd**](../opcodes/ATSpartialtap.md#examples)<br>
-[**ATSread-modern.csd**](../opcodes/ATSread.md#examples)<br>
+[**atsread-modern.csd**](../opcodes/ATSread.md#examples)<br>
 [**ATSread.csd**](../opcodes/ATSread.md#examples)<br>
-[**ATSread-musical-modern.csd**](../opcodes/ATSread.md#examples)<br>
+[**atsread-musical-modern.csd**](../opcodes/ATSread.md#examples)<br>
 [**ATSread-musical.csd**](../opcodes/ATSread.md#examples)<br>
-[**ATSreadnz-modern.csd**](../opcodes/ATSreadnz.md#examples)<br>
+[**atsreadnz-modern.csd**](../opcodes/ATSreadnz.md#examples)<br>
 [**ATSreadnz.csd**](../opcodes/ATSreadnz.md#examples)<br>
-[**ATSsinnoi-modern.csd**](../opcodes/ATSsinnoi.md#examples)<br>
+[**atssinnoi-modern.csd**](../opcodes/ATSsinnoi.md#examples)<br>
 [**ATSsinnoi.csd**](../opcodes/ATSsinnoi.md#examples)<br>
-[**ATSsinnoi-2-modern.csd**](../opcodes/ATSsinnoi.md#examples)<br>
+[**atssinnoi-2-modern.csd**](../opcodes/ATSsinnoi.md#examples)<br>
 [**ATSsinnoi-2.csd**](../opcodes/ATSsinnoi.md#examples)<br>
 
 ### Spectral Processing:Other
