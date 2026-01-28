@@ -2,15 +2,19 @@
 id:zdf_1pole
 category:Signal Modifiers:Standard Filters
 -->
-# zdf_1pole
+# zdf1pole
 Zero-delay feedback implementation of a 1 pole (6 dB/oct) filter.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *zdf_1pole*.
 
 Offers low-pass (default), high-pass, and allpass output modes.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    asig = zdf_1pole(ain, xcf [, kmode, istor])
+    asig = zdf1pole(ain, xcf [, kmode, istor])
     ```
 
 === "Classic"
@@ -38,11 +42,17 @@ _kmode_ -- filter output type. The default value is 0. The output mode may be on
 
 ## Examples
 
-Here is an example of the zdf_1pole opcode. It uses the file [zdf_1pole.csd](../examples/zdf_1pole.csd).
+=== "Modern"
+    Here is an example of the zdf1pole opcode. It uses the file [zdf1pole.csd](../examples/zdf1pole.csd).
+    ``` csound-csd title="Example of the zdf1pole opcode." linenums="1"
+    --8<-- "examples/zdf1pole.csd"
+    ```
 
-``` csound-csd title="Example of the zdf_1pole opcode." linenums="1"
---8<-- "examples/zdf_1pole.csd"
-```
+=== "Classic"
+    Here is an example of the zdf_1pole opcode. It uses the file [zdf_1pole.csd](../examples/zdf_1pole.csd).
+    ``` csound-csd title="Example of the zdf_1pole opcode." linenums="1"
+    --8<-- "examples/zdf_1pole.csd"
+    ```
 
 ### References
 

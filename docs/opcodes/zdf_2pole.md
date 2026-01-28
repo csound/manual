@@ -2,15 +2,19 @@
 id:zdf_2pole
 category:Signal Modifiers:Standard Filters
 -->
-# zdf_2pole
+# zdf2pole
 Zero-delay feedback implementation of a 2 pole (12 dB/oct) filter.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *zdf_2pole*.
 
 Offers low-pass (default), high-pass, and allpass output modes.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    asig = zdf_2pole(ain, xcf, xQ [, kmode, istor])
+    asig = zdf2pole(ain, xcf, xQ [, kmode, istor])
     ```
 
 === "Classic"
@@ -44,11 +48,17 @@ _kmode_ -- filter output type. The default value is 0. The output mode may be on
 
 ## Examples
 
-Here is an example of the zdf_2pole opcode. It uses the file [zdf_2pole.csd](../examples/zdf_2pole.csd).
+=== "Modern"
+    Here is an example of the zdf2pole opcode. It uses the file [zdf2pole.csd](../examples/zdf2pole.csd).
+    ``` csound-csd title="Example of the zdf2pole opcode." linenums="1"
+    --8<-- "examples/zdf2pole.csd"
+    ```
 
-``` csound-csd title="Example of the zdf_2pole opcode." linenums="1"
---8<-- "examples/zdf_2pole.csd"
-```
+=== "Classic"
+    Here is an example of the zdf_2pole opcode. It uses the file [zdf_2pole.csd](../examples/zdf_2pole.csd).
+    ``` csound-csd title="Example of the zdf_2pole opcode." linenums="1"
+    --8<-- "examples/zdf_2pole.csd"
+    ```
 
 ### References
 
