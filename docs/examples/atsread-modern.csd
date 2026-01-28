@@ -4,7 +4,7 @@
 -odac     ;;;RT audio out
 ;-iadc    ;;;uncomment -iadc if RT audio input is needed too
 ; For Non-realtime ouput leave only the line below:
-; -o ATSread.wav -W ;;; for file output any platform
+; -o atsread.wav -W ;;; for file output any platform
 </CsOptions>
 <CsInstruments>
 
@@ -15,14 +15,14 @@ nchnls = 2
 
 ; by Menno Knevel - 2021
 
-ires = system_i(1, {{ atsa fox.wav fox.ats }}) ; default settings
+res:i = systemi(1, {{ atsa fox.wav fox.ats }}) ; default settings
 
 instr 1 
   time:k = line(0, p3, 2)
-  freq:k, amp:k = ATSread(time, "fox.ats", 10) ; take the 10th partial
+  freq:k, amp:k = atsread(time, "fox.ats", 10) ; take the 10th partial
   env:a = linen(1, 0, p3, 0.1)    ; envelope to avoid clicks
-  aout = oscili(0.8, freq, 1)
-  outs(aout*env, aout*env)
+  Out:a = oscili(0.8, freq, 1)
+  out(Out*env, Out*env)
 endin
 
 </CsInstruments>

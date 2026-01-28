@@ -2,13 +2,17 @@
 id:ATSinfo
 category:Spectral Processing:ATS
 -->
-# ATSinfo
+# atsinfo
 Reads data out of the header of an ATS file.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *ATSinfo*.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    idata = ATSinfo(iatsfile, ilocation)
+    idata = atsinfo(iatsfile, ilocation)
     ```
 
 === "Classic"
@@ -48,14 +52,14 @@ Macros can really improve the legibility of your csound code, I have provided my
 #define ATS_TYPE #8#
 ```
 
-_ATSinfo_ can be useful for writing generic instruments that will work with many ATS files, even if they have different lengths and different numbers of partials etc. Example 2 is a simple application of this.
+_atsinfo_ can be useful for writing generic instruments that will work with many ATS files, even if they have different lengths and different numbers of partials etc. Example 2 is a simple application of this.
 
 ## Examples
 
 === "Modern"
-    Here is an example of the ATSinfo opcode. It uses the file [ATSinfo-modern.csd](../examples/ATSinfo-modern.csd).
-    ``` csound-csd title="Example of the ATSinfo opcode." linenums="1"
-    --8<-- "examples/ATSinfo-modern.csd"
+    Here is an example of the atsinfo opcode. It uses the file [atsinfo-modern.csd](../examples/atsinfo-modern.csd).
+    ``` csound-csd title="Example of the atsinfo opcode." linenums="1"
+    --8<-- "examples/atsinfo-modern.csd"
     ```
 
 === "Classic"
@@ -68,17 +72,17 @@ _ATSinfo_ can be useful for writing generic instruments that will work with many
 
 1. 
 ``` csound-orc
-imax_freq     ATSinfo "cl.ats", $ATS_FREQ_MAX
+max_freq:i = atsinfo("cl.ats", $ATS_FREQ_MAX)
 ```
     In the example above we get the maximum frequency value from the ATS file "cl.ats" and store it in imax_freq. We use the Csound Macro (defined above) $ATS_FREQ_MAX, which is equivalent to the number 6.
 2. 
 ``` csound-orc
-  i_npartials   ATSinfo p4, $ATS_N_PARTIALS
-  i_dur         ATSinfo p4, $ATS_DUR
-  ktimepnt      line    0, p3, i_dur
-  aout          ATSadd  ktimepnt, 1, p4, 1, i_npartials
+  npartials:i = atsinfo(p4, $ATS_N_PARTIALS)
+  dur:i = atsinfo(p4, $ATS_DUR)
+  timepnt:k = line(0, p3, dur)
+  Out:a = atsadd(timepnt, 1, p4, 1, npartials)
 ```
-    In the example above we use _ATSinfo_ to retrieve the duration and number of partials in the ATS file indicated by p4. With this info we synthesize the partials using atsadd. Since the duration and number of partials are not "hard-coded" we can use this code with any ATS file.
+    In the example above we use _atsinfo_ to retrieve the duration and number of partials in the ATS file indicated by p4. With this info we synthesize the partials using atsadd. Since the duration and number of partials are not "hard-coded" we can use this code with any ATS file.
 
 ## See also
 

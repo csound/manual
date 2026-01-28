@@ -16,12 +16,12 @@ nchnls = 2
 0dbfs  = 1
 
 ;ATSA wants a mono file!
-ires = system_i(1, {{ atsa Mathews.wav Mathews.ats }}) ; default options
+res:i = systemi(1, {{ atsa Mathews.wav Mathews.ats }}) ; default options
 
 instr 1 
   time:k = line(0, p3, p3)
-  sig:a = ATSaddnz(time, "Mathews.ats", 1, 4)   ; only 1 noise band, the 4th one
-  outs(sig*2, sig*2)  ;amplify
+  sig:a = atsaddnz(time, "Mathews.ats", 1, 4)   ; only 1 noise band, the 4th one
+  out(sig*2, sig*2)  ;amplify
 endin
 
 </CsInstruments>

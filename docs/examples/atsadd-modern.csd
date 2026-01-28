@@ -15,15 +15,15 @@ nchnls = 2
 
 ; by Menno Knevel - 2021
 ;ATSA wants a mono file!
-ires = system_i(1, {{ atsa fox.wav fox.ats }}) ; default settings
+res:i = systemi(1, {{ atsa fox.wav fox.ats }}) ; default settings
 
 instr 1 
   ; synthesize 30 partials, using a ipartialoffset of 0 and ipartialincr of 2, 
   ; which means that we will start from the first partial and synthesize
   ; 30 partials in total, skipping every other one (ie. partial 1, 3, 5,..).
   time:k = line(0, p3, 2.756)
-  sig:a = ATSadd(time, 1,  "fox.ats", 1, 30, 0, 2)
-  outs(sig*2.5, sig*2.5)      ;amplify
+  sig:a = atsadd(time, 1, "fox.ats", 1, 30, 0, 2)
+  out(sig*2.5, sig*2.5)      ;amplify
 endin
 
 </CsInstruments>

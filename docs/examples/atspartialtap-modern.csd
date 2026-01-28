@@ -16,22 +16,22 @@ nchnls = 2
 ; by Menno Knevel - 2023
 
 ; default settings
-ires1 = system_i(1, {{ atsa drumsMlp.wav drumsMlp1.ats }})
+res1:i = systemi(1, {{ atsa drumsMlp.wav drumsMlp1.ats }})
  ; longer hopsize & more cycles
-ires2 = system_i(1, {{ atsa -h.8 -c8 drumsMlp.wav drumsMlp2.ats }})
+res2:i = systemi(1, {{ atsa -h.8 -c8 drumsMlp.wav drumsMlp2.ats }})
 
 instr 1 
   time:k = line(0, p3, 2)
-  ATSbufread(time, 1, p4 , 54)
-  freq1:k, amp1:k = ATSpartialtap(5)
-  freq2:k, amp2:k = ATSpartialtap(20)
-  freq3:k, amp3:k = ATSpartialtap(30)
+  atsbufread(time, 1, p4 , 54)
+  freq1:k, amp1:k = atspartialtap(5)
+  freq2:k, amp2:k = atspartialtap(20)
+  freq3:k, amp3:k = atspartialtap(30)
 
-  aout1 = poscil(amp1, freq1, 1)
-  aout2 = poscil(amp2, freq2, 1)
-  aout3 = poscil(amp3, freq3, 1)
-  aout = (aout1+aout2+aout3)*10  ; amplify some more
-  outs(aout*p5, aout*p5)
+  out1:a = poscil(amp1, freq1, 1)
+  out2:a = poscil(amp2, freq2, 1)
+  out3:a = poscil(amp3, freq3, 1)
+  Out:a = (out1 + out2 + out3)*10  ; amplify some more
+  out(Out*p5, Out*p5)
 endin
 
 </CsInstruments>

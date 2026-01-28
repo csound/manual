@@ -15,21 +15,21 @@ nchnls = 2
 
 ; by Menno Knevel - 2023
 
-ires = system_i(1, {{ atsa Mathews.wav Mathews.ats }}) ; default settings
+res:i = systemi(1, {{ atsa Mathews.wav Mathews.ats }}) ; default settings
 
 instr 1 
   time:k = line(0, p3, 2)
-  energy:k = ATSreadnz(time, "Mathews.ats", p4) ; return energy from band p4
+  energy:k = atsreadnz(time, "Mathews.ats", p4) ; return energy from band p4
   Noise:a = randi(energy, 5000)
-  outs(Noise*p5, Noise*p5)          ; compensate amplitude differences!
+  out(Noise*p5, Noise*p5)          ; compensate amplitude differences!
 endin
 
 </CsInstruments>
 <CsScore>
 ; 3 different energy bands, compensated by different amplitude values
-i 1 0  10      6        .015    ; loud!!
-i 1 11 10      12       .4      ; less energy in this band              
-i 1 22 10      17       1       ; and even less...
+i 1 0  10      6        0.015    ; loud!!
+i 1 11 10      12       0.4      ; less energy in this band              
+i 1 22 10      17       1        ; and even less...
 e
 
 </CsScore>

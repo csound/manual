@@ -12,19 +12,19 @@ ksmps = 32
 nchnls = 2
 0dbfs =  1
 ;ATSA wants a mono file!
-ires = system_i(1, {{ atsa fox.wav fox.ats }}) ; default settings
+res:i = systemi(1, {{ atsa fox.wav fox.ats }}) ; default settings
 
 instr 1 
   file:S = "fox.ats"
-  isr = ATSinfo(file, 0)
-  ifs = ATSinfo(file, 1)
-  iws = ATSinfo(file, 2)
-  inp = ATSinfo(file, 3)
-  inf = ATSinfo(file, 4)
-  ima = ATSinfo(file, 5)
-  imf = ATSinfo(file, 6)
-  id  = ATSinfo(file, 7)
-  ift = ATSinfo(file, 8)
+  isr = atsinfo(file, 0)
+  ifs = atsinfo(file, 1)
+  iws = atsinfo(file, 2)
+  inp = atsinfo(file, 3)
+  inf = atsinfo(file, 4)
+  ima = atsinfo(file, 5)
+  imf = atsinfo(file, 6)
+  id  = atsinfo(file, 7)
+  ift = atsinfo(file, 8)
   prints({{
 *****fox.ats*********************
 0. Sample rate = %d Hz

@@ -30,7 +30,7 @@ endin
 </CsInstruments>
 <CsScore>
 s
-;                       atsfile         partial
+;            atsfile         partial
 i 1 0 2 "drumsMlp1.ats"         3
 i 1 3 2 "drumsMlp2.ats"         3
 s

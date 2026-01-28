@@ -15,14 +15,14 @@ nchnls = 2
 
 ; by Menno Knevel - 2021
 
-ires = system_i(1, {{ atsa fox.wav fox.ats }}) ; ATSA wants a mono file!
+res:i = systemi(1, {{ atsa fox.wav fox.ats }}) ; ATSA wants a mono file!
 
 instr 1 
   time:k = line(0, p3, 2.65)
-  ATSbufread(time, 1, "fox.ats", p4)
-  amp:k = ATSinterpread(p5)  ; get envelope from partial
+  atsbufread(time, 1, "fox.ats", p4)
+  amp:k = atsinterpread(p5)  ; get envelope from partial
   osc:a = poscil3(amp, p5)
-  outs(osc*8, osc*8)
+  out(osc*8, osc*8)
 endin
 
 </CsInstruments>

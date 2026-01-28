@@ -2,13 +2,17 @@
 id:ATSaddnz
 category:Spectral Processing:ATS
 -->
-# ATSaddnz
+# atsaddnz
 Uses the data from an ATS analysis file to perform noise resynthesis using a modified randi function.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *ATSaddnz*.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    ar = ATSaddnz(ktimepnt, iatsfile, ibands [, ibandoffset, ibandincr])
+    ar = atsaddnz(ktimepnt, iatsfile, ibands [, ibandoffset, ibandincr])
     ```
 
 === "Classic"
@@ -28,25 +32,25 @@ _ibandincr_ (optional) – sets an increment by which these synthesis opcodes co
 
 ### Performance
 
-_ktimepnt_ – The time pointer in seconds used to index the ATS file. Used for _ATSaddnz_ exactly the same as for [pvoc](../opcodes/pvoc.md) and [ATSadd](../opcodes/ATSadd.md).
+_ktimepnt_ – The time pointer in seconds used to index the ATS file. Used for _atsaddnz_ exactly the same as for [pvoc](../opcodes/pvoc.md) and [atsadd](../opcodes/ATSadd.md).
 
-_ATSaddnz_ and [ATSadd](../opcodes/ATSadd.md) are based on [pvadd](../opcodes/pvadd.md) by Richard Karpen and use files created by Juan Pampin's ATS ([Analysis - Transformation - Synthesis](https://ccrma.stanford.edu/~juan/ATS_manual.html)).
+_atsaddnz_ and [atsadd](../opcodes/ATSadd.md) are based on [pvadd](../opcodes/pvadd.md) by Richard Karpen and use files created by Juan Pampin's ATS ([Analysis - Transformation - Synthesis](https://ccrma.stanford.edu/~juan/ATS_manual.html)).
 
-_ATSaddnz_ also reads from an ATS file but it resynthesizes the noise from noise energy data contained in the ATS file. It uses a modified randi function to create band limited noise and modulates that with a cosine wave, to synthesize a user specified selection of frequency bands. Modulating the noise is required to put the band limited noise in the correct place in the frequency spectrum.
+_atsaddnz_ also reads from an ATS file but it resynthesizes the noise from noise energy data contained in the ATS file. It uses a modified randi function to create band limited noise and modulates that with a cosine wave, to synthesize a user specified selection of frequency bands. Modulating the noise is required to put the band limited noise in the correct place in the frequency spectrum.
 
 ## Examples
 
 ``` csound-orc
-  ktime line     0, p3, 2.5
-  asig  ATSaddnz ktime, "clarinet.ats", 25
+  time:k = line(0, p3, 2.5)
+  sig:a = atsaddnz(time, "clarinet.ats", 25)
 ```
 
 In the example above we are synthesizing all 25 noise bands from the data contained in the ATS analysis file called "clarinet.ats".
 
 === "Modern"
-    Here is a complete example of the ATSaddnz opcode. It uses the file [ATSaddnz-modern.csd](../examples/ATSaddnz-modern.csd).
-    ``` csound-csd title="Example of the ATSaddnz opcode." linenums="1"
-    --8<-- "examples/ATSaddnz-modern.csd"
+    Here is a complete example of the atsaddnz opcode. It uses the file [atsaddnz-modern.csd](../examples/atsaddnz-modern.csd).
+    ``` csound-csd title="Example of the atsaddnz opcode." linenums="1"
+    --8<-- "examples/atsaddnz-modern.csd"
     ```
 
 === "Classic"
@@ -56,9 +60,9 @@ In the example above we are synthesizing all 25 noise bands from the data contai
     ```
 
 === "Modern"
-    Here is another example of the ATSaddnz opcode. It uses the file [ATSaddnz-2-modern.csd](../examples/ATSaddnz-2-modern.csd).
-    ``` csound-csd title="Example 2 of the ATSaddnz opcode." linenums="1"
-    --8<-- "examples/ATSaddnz-2-modern.csd"
+    Here is another example of the atsaddnz opcode. It uses the file [atsaddnz-2-modern.csd](../examples/atsaddnz-2-modern.csd).
+    ``` csound-csd title="Example 2 of the atsaddnz opcode." linenums="1"
+    --8<-- "examples/atsaddnz-2-modern.csd"
     ```
 
 === "Classic"
