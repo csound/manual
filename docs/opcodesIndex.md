@@ -74,7 +74,7 @@
 | [ftlptim](opcodes/ftlptim.md) | [ftmorf](opcodes/ftmorf.md) | [ftom](opcodes/ftom.md) | [ftprint](opcodes/ftprint.md) | [ftsamplebank](opcodes/ftsamplebank.md) |
 | [ftsave](opcodes/ftsave.md) | [ftsavek](opcodes/ftsavek.md) | [ftset](opcodes/ftset.md) | [ftslice](opcodes/ftslice.md) | [ftslicei](opcodes/ftslicei.md) |
 | [ftsr](opcodes/ftsr.md) | [gain](opcodes/gain.md) | [gainslider](opcodes/gainslider.md) | [gauss](opcodes/gauss.md) | [gaussi](opcodes/gaussi.md) |
-| [gausstrig](opcodes/gausstrig.md) | [gbuzz](opcodes/gbuzz.md) | [genarray](opcodes/genarray.md) | [genarray_i](opcodes/genarray_i.md) | [gendy](opcodes/gendy.md) |
+| [gausstrig](opcodes/gausstrig.md) | [gbuzz](opcodes/gbuzz.md) | [genarray](opcodes/genarray.md) | [genarrayi](opcodes/genarray_i.md) | [gendy](opcodes/gendy.md) |
 | [gendyc](opcodes/gendyc.md) | [gendyx](opcodes/gendyx.md) | [getcfg](opcodes/getcfg.md) | [getcol](opcodes/getcol.md) | [getftargs](opcodes/getftargs.md) |
 | [getrow](opcodes/getrow.md) | [getseed](opcodes/getseed.md) | [gogobel](opcodes/gogobel.md) | [goto](opcodes/goto.md) | [grain2](opcodes/grain2.md) |
 | [grain3](opcodes/grain3.md) | [grain](opcodes/grain.md) | [granule](opcodes/granule.md) | [gtadsr](opcodes/gtadsr.md) | [gtf](opcodes/gtf.md) |

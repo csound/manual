@@ -358,7 +358,7 @@ numeric or string values.<br>
 [gausstrig](../opcodes/gausstrig.md) - Random impulses around a certain frequency.<br>
 [gbuzz](../opcodes/gbuzz.md) - Output is a set of harmonically related cosine partials.<br>
 [genarray](../opcodes/genarray.md) - Generate a vector (one-dimensional k-rate or i-rate array) with an arithmetic sequence.<br>
-[genarray_i](../opcodes/genarray_i.md) - Generate a vector (one-dimensional k-rate) with an arithmetic sequence at initialisation time.<br>
+[genarrayi](../opcodes/genarray_i.md) - Generate a vector (one-dimensional k-rate) with an arithmetic sequence at initialisation time.<br>
 [gendy](../opcodes/gendy.md) - Dynamic stochastic approach to waveform synthesis conceived by Iannis Xenakis.<br>
 [gendyc](../opcodes/gendyc.md) - Dynamic stochastic approach to waveform synthesis using cubic interpolation.<br>
 [gendyx](../opcodes/gendyx.md) - Variation of the dynamic stochastic approach to waveform synthesis conceived by Iannis Xenakis.<br>

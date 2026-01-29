@@ -2709,7 +2709,7 @@
 [**`ftsr`**](opcodes/ftsr.md)`(x) (init-rate args only)`<br>
 
 
-`karray = `[**`genarray_i`**](opcodes/genarray_i.md)`(istart, iend [,inc])`<br>
+`karray = `[**`genarrayi`**](opcodes/genarray_i.md)`(istart, iend [,inc])`<br>
 
 
 `ir = `[**`lenarray`**](opcodes/lenarray.md)`(karray[, iwhich])`<br>

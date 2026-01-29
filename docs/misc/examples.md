@@ -944,6 +944,7 @@
 [**ftlen.csd**](../opcodes/ftlen.md#examples)<br>
 [**ftlptim.csd**](../opcodes/ftlptim.md#examples)<br>
 [**ftsr.csd**](../opcodes/ftsr.md#examples)<br>
+[**genarrayi.csd**](../opcodes/genarray_i.md#examples)<br>
 [**genarray_i.csd**](../opcodes/genarray_i.md#examples)<br>
 [**lenarray.csd**](../opcodes/lenarray.md#examples)<br>
 [**maparray-modern.csd**](../opcodes/maparray.md#examples)<br>
