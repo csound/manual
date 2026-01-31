@@ -191,4 +191,4 @@ status:deprecated
 -->
 ```
 
-Then, runnning the `makeAppendices.py` script will automatically remove the references to this opcode in the *Opcodes Index*, "Opcodes Quick Reference*, and *List of Examples* sections, and it will add a link to the this opcode notice in the *Deprecated Opcodes* section.
+Then, runnning the `makeAppendices.py` script will automatically remove the references to this opcode in the *Opcodes Index*, *Opcodes Quick Reference*, and *List of Examples* sections, and it will add a link to the this opcode notice in the *Deprecated Opcodes* section.
