@@ -1021,10 +1021,6 @@
 `ficlose(Sfilename)`<br>
 
 
-[**`fin`**](opcodes/fin.md)`(ifilename, iskipframes, iformat, ain1 [, ain2] [, ain3] [,...])`<br>
-`fin(ifilename, iskipframes, iformat, arr[])`<br>
-
-
 [**`fini`**](opcodes/fini.md)`(ifilename, iskipframes, iformat, in1 [, in2] [, in3] [, ...])`<br>
 
 
@@ -1199,12 +1195,6 @@
 
 
 [**`outz`**](opcodes/outz.md)`(ksig1)`<br>
-
-
-[**`soundout`**](opcodes/soundout.md)`(asig1, ifilcod [, iformat])`<br>
-
-
-[**`soundouts`**](opcodes/soundouts.md)`(asigl, asigr, ifilcod [, iformat])`<br>
 
 
 ### Signal I/O:Software Bus
@@ -1478,9 +1468,6 @@
 &nbsp;&nbsp;&nbsp;&nbsp;`iwallgain1, iwallgain2, iwallgain3, ifloorhigh, ifloorlow, ifloorgain1, \`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`ifloorgain2, ifloorgain3, iceilinghigh, iceilinglow, iceilinggain1, \`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`iceilinggain2, iceilinggain3])`<br>
-
-
-`aleft, aright = `[**`hrtfer`**](opcodes/hrtfer.md)`(asig, kaz, kelev, "HRTFcompact")`<br>
 
 
 `aleft, aright = `[**`hrtfmove`**](opcodes/hrtfmove.md)`(asrc, kAz, kElev, ifilel, ifiler [, imode, ifade, isr])`<br>
@@ -2564,24 +2551,6 @@
 `kx, ky = `[**`xyin`**](opcodes/xyin.md)`(iprd, ixmin, ixmax, iymin, iymax [, ixinit] [, iyinit])`<br>
 
 
-### Instrument Control:Stacks
-`xval1, [xval2, ... , xval31] = `[**`pop`**](opcodes/pop.md)`()`<br>
-`ival1, [ival2, ... , ival31] = pop()`<br>
-
-
-`fsig = `[**`pop_f`**](opcodes/pop_f.md)`()`<br>
-
-
-[**`push`**](opcodes/push.md)`(xval1, [xval2, ... , xval31])`<br>
-`push(ival1, [ival2, ... , ival31])`<br>
-
-
-[**`push_f`**](opcodes/push_f.md)`(fsig)`<br>
-
-
-[**`stack`**](opcodes/stack.md)`(iStackSize)`<br>
-
-
 ### Instrument Control:Subinstrument Control
 `a1, [...] [, a8] = `[**`subinstr`**](opcodes/subinstr.md)`(instrnum [, p4] [, p5] [...])`<br>
 `a1, [...] [, a8] = subinstr("insname" [, p4] [, p5] [...])`<br>
@@ -2683,10 +2652,6 @@
 
 
 `Sdst = `[**`getftargs`**](opcodes/getftargs.md)`(iftno, ktrig)`<br>
-
-
-[**`sndload`**](opcodes/sndload.md)`(Sfname[, ifmt[, ichns[, isr[, ibas[, iamp[, istrt [, ilpmod[, ilps \`<br>
-&nbsp;&nbsp;&nbsp;&nbsp;`[, ilpe]]]]]]]]])`<br>
 
 
 ### Table Control:Table Queries
@@ -3668,36 +3633,6 @@
 `asig = `[**`resonbnk`**](opcodes/resonbnk.md)`(ain, kPar[], kmin, kmax, iper [, imode, iscal, iskip])`<br>
 
 
-### Spectral Processing:Non-Standard
-`wsig = `[**`specaddm`**](opcodes/specaddm.md)`(wsig1, wsig2 [, imul2])`<br>
-
-
-`wsig = `[**`specdiff`**](opcodes/specdiff.md)`(wsigin)`<br>
-
-
-[**`specdisp`**](opcodes/specdisp.md)`(wsig, iprd [, iwtflg])`<br>
-
-
-`wsig = `[**`specfilt`**](opcodes/specfilt.md)`(wsigin, ifhtim)`<br>
-
-
-`wsig = `[**`spechist`**](opcodes/spechist.md)`(wsigin)`<br>
-
-
-`koct, kamp = `[**`specptrk`**](opcodes/specptrk.md)`(wsig, kvar, ilo, ihi, istr, idbthresh, inptls, irolloff \`<br>
-&nbsp;&nbsp;&nbsp;&nbsp;`[, iodd] [, iconfs] [, interp] [, ifprd] [, iwtflg])`<br>
-
-
-`wsig = `[**`specscal`**](opcodes/specscal.md)`(wsigin, ifscale, ifthresh)`<br>
-
-
-`ksum = `[**`specsum`**](opcodes/specsum.md)`(wsig [, interp])`<br>
-
-
-`wsig = `[**`spectrum`**](opcodes/spectrum.md)`(xsig, iprd, iocts, ifrqa [, iq] [, ihann] [, idbout] \`<br>
-&nbsp;&nbsp;&nbsp;&nbsp;`[, idsprd] [, idsinrs])`<br>
-
-
 ### Spectral Processing:Streaming
 `fsig = `[**`binit`**](opcodes/binit.md)`(fin, isize)`<br>
 
@@ -4482,10 +4417,6 @@
 
 ### Array Operations: Mel scale filterbank
 `kout[] = `[**`mfb`**](opcodes/mfb.md)`(kin[], klow, khigh, ibands)`<br>
-
-
-### Deprecated
-[**`tableiw`**](opcodes/tableiw.md)`(isig, indx, ifn [, ixmode] [, ixoff] [, iwgmode])`<br>
 
 
 ### Miscellaneous

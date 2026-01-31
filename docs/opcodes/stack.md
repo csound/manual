@@ -1,6 +1,7 @@
 <!--
 id:stack
 category:Instrument Control:Stacks
+status:deprecated
 -->
 # stack
 Initializes and sets the size of the global stack. Deprecated.

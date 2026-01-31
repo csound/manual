@@ -20,7 +20,6 @@ Opcodes that read and write to a table are:
 * [tablegpw](../opcodes/tablegpw.md)
 * [tableigpw](../opcodes/tableigpw.md)
 * [tableimix](../opcodes/tableimix.md)
-* [tableiw](../opcodes/tableiw.md)
 * [tablemix](../opcodes/tablemix.md)
 * [tablera](../opcodes/tablera.md)
 * [tableshuffle](../opcodes/tableshuffle.md)

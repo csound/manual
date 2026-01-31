@@ -1,6 +1,7 @@
 <!--
 id:specdiff
 category:Spectral Processing:Non-Standard
+status:deprecated
 -->
 # specdiff
 Finds the positive difference values between consecutive spectral frames.

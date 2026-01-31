@@ -1,6 +1,7 @@
 <!--
 id:specfilt
 category:Spectral Processing:Non-Standard
+status:deprecated
 -->
 # specfilt
 Filters each channel of an input spectrum.

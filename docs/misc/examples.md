@@ -344,7 +344,6 @@
 [**dumpk3.csd**](../opcodes/dumpk3.md#examples)<br>
 [**dumpk4.csd**](../opcodes/dumpk4.md#examples)<br>
 [**ficlose.csd**](../opcodes/ficlose.md#examples)<br>
-[**fin.csd**](../opcodes/fin.md#examples)<br>
 [**fini.csd**](../opcodes/fini.md#examples)<br>
 [**fink.csd**](../opcodes/fink.md#examples)<br>
 [**fiopen.csd**](../opcodes/fiopen.md#examples)<br>
@@ -484,7 +483,6 @@
 [**bformenc1-modern.csd**](../opcodes/bformenc1.md#examples)<br>
 [**bformenc1.csd**](../opcodes/bformenc1.md#examples)<br>
 [**hrtfearly.csd**](../opcodes/hrtfearly.md#examples)<br>
-[**hrtfer.csd**](../opcodes/hrtfer.md#examples)<br>
 [**hrtfmove.csd**](../opcodes/hrtfmove.md#examples)<br>
 [**hrtfmove2.csd**](../opcodes/hrtfmove2.md#examples)<br>
 [**hrtfearly.csd**](../opcodes/hrtfreverb.md#examples)<br>
@@ -895,11 +893,6 @@
 [**readscratch.csd**](../opcodes/writescratch.md#examples)<br>
 [**xyin.csd**](../opcodes/xyin.md#examples)<br>
 
-### Instrument Control:Stacks
-[**pop.csd**](../opcodes/pop.md#examples)<br>
-[**push.csd**](../opcodes/push.md#examples)<br>
-[**stack.csd**](../opcodes/stack.md#examples)<br>
-
 ### Instrument Control:Subinstrument Control
 [**subinstr-modern.csd**](../opcodes/subinstr.md#examples)<br>
 [**subinstr.csd**](../opcodes/subinstr.md#examples)<br>
@@ -1261,8 +1254,6 @@
 [**pvslpc.csd**](../opcodes/pvslpc.md#examples)<br>
 [**resonbnk.csd**](../opcodes/resonbnk.md#examples)<br>
 
-### Spectral Processing:Non-Standard
-
 ### Spectral Processing:Streaming
 [**binit-modern.csd**](../opcodes/binit.md#examples)<br>
 [**binit.csd**](../opcodes/binit.md#examples)<br>
@@ -1559,9 +1550,6 @@
 
 ### Array Operations: Mel scale filterbank
 [**mfb.csd**](../opcodes/mfb.md#examples)<br>
-
-### Deprecated
-[**tableiw.csd**](../opcodes/tableiw.md#examples)<br>
 
 ### Miscellaneous
 [**directory-modern.csd**](../opcodes/directory.md#examples)<br>

@@ -1,6 +1,7 @@
 <!--
 id:push
 category:Instrument Control:Stacks
+status:deprecated
 -->
 # push
 Pushes a value into the global stack.  Deprecated.

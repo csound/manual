@@ -288,7 +288,6 @@ cosine interpolation, including a release segment.<br>
 [fillarray](../opcodes/fillarray.md) - Generate a vector (one-dimensional k-rate array) with a sequence of
 numeric or string values.<br>
 [filter2](../opcodes/filter2.md) - General purpose custom filter.<br>
-[fin](../opcodes/fin.md) - Read signals from a file at a-rate.<br>
 [fini](../opcodes/fini.md) - Read signals from a file at i-rate.<br>
 [fink](../opcodes/fink.md) - Read signals from a file at k-rate.<br>
 [fiopen](../opcodes/fiopen.md) - Opens a file in a specific mode.<br>
@@ -381,7 +380,6 @@ numeric or string values.<br>
 [hilbert2](../opcodes/hilbert2.md) - A DFT-based implementation of a Hilbert transformer.<br>
 [hilbert](../opcodes/hilbert.md) - A Hilbert transformer.<br>
 [hrtfearly](../opcodes/hrtfearly.md) - Generates 3D binaural audio with high-fidelity early reflections in a parametric room using a Phase Truncation algorithm.<br>
-[hrtfer](../opcodes/hrtfer.md) - Creates 3D audio for two speakers.<br>
 [hrtfmove2](../opcodes/hrtfmove2.md) - Generates dynamic 3d binaural audio for headphones using a Woodworth based spherical head model with improved low frequency phase accuracy.<br>
 [hrtfmove](../opcodes/hrtfmove.md) - Generates dynamic 3d binaural audio for headphones using magnitude interpolation and phase truncation.<br>
 [hrtfreverb](../opcodes/hrtfreverb.md) - A binaural, dynamic FDN based diffuse-field reverberator.<br>
@@ -723,8 +721,6 @@ numeric or string values.<br>
 [polar](../opcodes/polar.md) - Returns a complex number in polar format.<br>
 [polyaft](../opcodes/polyaft.md) - Returns the polyphonic after-touch pressure of the selected note number, optionally mapped to an user-specified range.<br>
 [polynomial](../opcodes/polynomial.md) - Efficiently evaluates a polynomial of arbitrary order.<br>
-[pop](../opcodes/pop.md) - Pops values from the global stack.<br>
-[pop_f](../opcodes/pop_f.md) - Pops an f-sig frame from the global stack.<br>
 [port](../opcodes/port.md) - Applies portamento to a step-valued control signal.<br>
 [portk](../opcodes/portk.md) - Applies portamento to a step-valued control signal.<br>
 [poscil3](../opcodes/poscil3.md) - High precision oscillator with cubic interpolation.<br>
@@ -748,8 +744,6 @@ numeric or string values.<br>
 [product](../opcodes/productarray.md) - Calculates the product of an array.<br>
 [pset](../opcodes/pset.md) - Defines and initializes numeric arrays at orchestra load time.<br>
 [ptrack](../opcodes/ptrack.md) - Tracks the pitch of a signal.<br>
-[push](../opcodes/push.md) - Pushes a value into the global stack.<br>
-[push_f](../opcodes/push_f.md) - Pushes an f-sig frame into the global stack.<br>
 [puts](../opcodes/puts.md) - Print a string with an optional newline at the end whenever the trigger signal is positive and changes.<br>
 [pvadd](../opcodes/pvadd.md) - Reads from a _pvoc_ file and uses the data to perform additive synthesis.<br>
 [pvbufread](../opcodes/pvbufread.md) - Reads from a phase vocoder analysis file and makes the retrieved data available.<br>
@@ -946,7 +940,6 @@ time-varying crossfade looping.<br>
 [slider8table](../opcodes/slider8table.md) - Stores a bank of 8 different MIDI control messages to a table.<br>
 [slider8tablef](../opcodes/slider8tablef.md) - Stores a bank of 8 different MIDI control messages to a table, filtered before output.<br>
 [sliderkawai](../opcodes/sliderkawai.md) - Creates a bank of 16 different MIDI control message numbers from a KAWAI MM-16 midi mixer.<br>
-[sndload](../opcodes/sndload.md) - Loads a sound file into memory for use by [loscilx](../opcodes/loscilx.md).<br>
 [sndloop](../opcodes/sndloop.md) - A sound looper with pitch control.<br>
 [sndwarp](../opcodes/sndwarp.md) - Reads a mono sound sample from a table and applies time-stretching and/or pitch modification.<br>
 [sndwarpst](../opcodes/sndwarpst.md) - Reads a stereo sound sample from a table and applies time-stretching and/or pitch modification.<br>
@@ -955,22 +948,11 @@ time-varying crossfade looping.<br>
 [sorta](../opcodes/sorta.md) - Takes a numeric array (k or i-rate) and returns it sorted in ascending order.<br>
 [sortd](../opcodes/sortd.md) - Takes a numeric array (k or i-rate) and returns it sorted in descending order.<br>
 [soundin](../opcodes/soundin.md) - Reads audio data from an external device or stream.<br>
-[soundout](../opcodes/soundout.md) - Deprecated.<br>
-[soundouts](../opcodes/soundouts.md) - Deprecated.<br>
 [space](../opcodes/space.md) - Distributes an input signal among 4 channels using cartesian coordinates.<br>
 [spat3d](../opcodes/spat3d.md) - Positions the input sound in a 3D space and allows moving the sound at k-rate.<br>
 [spat3di](../opcodes/spat3di.md) - Positions the input sound in a 3D space with the sound source position set at i-time.<br>
 [spat3dt](../opcodes/spat3dt.md) - Can be used to render an impulse response for a 3D space at i-time.<br>
 [spdist](../opcodes/spdist.md) - Calculates distance values from xy coordinates.<br>
-[specaddm](../opcodes/specaddm.md) - Perform a weighted add of two input spectra.<br>
-[specdiff](../opcodes/specdiff.md) - Finds the positive difference values between consecutive spectral frames.<br>
-[specdisp](../opcodes/specdisp.md) - Displays the magnitude values of the spectrum.<br>
-[specfilt](../opcodes/specfilt.md) - Filters each channel of an input spectrum.<br>
-[spechist](../opcodes/spechist.md) - Accumulates the values of successive spectral frames.<br>
-[specptrk](../opcodes/specptrk.md) - Estimates the pitch of the most prominent complex tone in the spectrum.<br>
-[specscal](../opcodes/specscal.md) - Scales an input spectral datablock with spectral envelopes.<br>
-[specsum](../opcodes/specsum.md) - Sums the magnitudes across all channels of the spectrum.<br>
-[spectrum](../opcodes/spectrum.md) - Generate a constant-Q, exponentially-spaced DFT across all octaves of a multiply-downsampled control or audio input signal.<br>
 [spf](../opcodes/spf.md) - Steiner-Parker filter.<br>
 [splitrig](../opcodes/splitrig.md) - Split a trigger signal (i.e. a timed sequence of control-rate impulses) into several channels following a structure designed by the user.<br>
 [sprintf](../opcodes/sprintf.md) - printf-style formatted output to a string variable.<br>
@@ -980,7 +962,6 @@ time-varying crossfade looping.<br>
 [squinewave](../opcodes/squinewave.md) - A mostly bandlimited shape-shifting square-pulse-saw-sinewave oscillator with hardsync.<br>
 [sr](../opcodes/sr.md) - Sets the audio sampling rate.<br>
 [st2ms](../opcodes/st2ms.md) - Stereo to Mid-Side Conversion.<br>
-[stack](../opcodes/stack.md) - Initializes and sets the size of the global stack.<br>
 [statevar](../opcodes/statevar.md) - Statevar is a new digital implementation of the analogue state-variable filter.<br>
 [sterrain](../opcodes/sterrain.md) - A wave-terrain synthesis opcode using curves computed with the superformula.<br>
 [stix](../opcodes/stix.md) - Semi-physical model of a stick sound.<br>
@@ -1040,7 +1021,6 @@ time-varying crossfade looping.<br>
 [tableigpw](../opcodes/tableigpw.md) - Writes a table's guard point.<br>
 [tableikt](../opcodes/tableikt.md) - Provides k-rate control over table numbers.<br>
 [tableimix](../opcodes/tableimix.md) - Mixes two tables.<br>
-[tableiw](../opcodes/tableiw.md) - Deprecated as of version 3.<br>
 [tablekt](../opcodes/tablekt.md) - Provides k-rate control over table numbers.<br>
 [tablemix](../opcodes/tablemix.md) - Mixes two tables.<br>
 [tableng](../opcodes/tableng.md) - Interrogates a function table for length.<br>
