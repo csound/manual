@@ -34,7 +34,7 @@ Here is an example of the zkr opcode. It uses the file [zkr.csd](../examples/zkr
 
 ## See also
 
-[Zak Patch System](../zak/top.md)
+[Zak Patch System](../sigrouting/zak/top.md)
 
 ## Credits
 

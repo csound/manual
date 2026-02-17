@@ -48,7 +48,7 @@ _Sinlet1_ -- String name of the sink inlet in the sink instrument.
 
 ## See also
 
-[Signal Flow Graph Opcodes](../signalflowgraph.md)
+[Signal Flow Graph Opcodes](../sigrouting/signalflowgraph.md)
 
 More information on this opcode: [http://www.csoundjournal.com/issue13/signalFlowGraphOpcodes.html](http://www.csoundjournal.com/issue13/signalFlowGraphOpcodes.html), written by Michael Gogins
 

@@ -36,7 +36,7 @@ Here is an example of the zarg opcode. It uses the file [zarg.csd](../examples/z
 
 ## See also
 
-[Zak Patch System](../zak/top.md)
+[Zak Patch System](../sigrouting/zak/top.md)
 
 ## Credits
 

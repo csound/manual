@@ -54,7 +54,7 @@ Use of the mixer requires that instruments setting gains have smaller numbers th
 
 ## See also
 
-[Mixer Opcodes](../mixer.md)
+[Mixer Opcodes](../sigrouting/mixer.md)
 
 ## Credits
 

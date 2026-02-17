@@ -36,7 +36,7 @@ Here is an example of the zaw opcode. It uses the file [zaw.csd](../examples/zaw
 
 ## See also
 
-[Zak Patch System](../zak/top.md)
+[Zak Patch System](../sigrouting/zak/top.md)
 
 ## Credits
 

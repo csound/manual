@@ -38,7 +38,7 @@ Here is an example of the ziw opcode. It uses the file [ziw.csd](../examples/ziw
 
 ## See also
 
-[Zak Patch System](../zak/top.md)
+[Zak Patch System](../sigrouting/zak/top.md)
 
 ## Credits
 

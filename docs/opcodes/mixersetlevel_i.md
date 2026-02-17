@@ -48,7 +48,7 @@ mixersetleveli(3, 4, 0.76)
 
 ## See also
 
-[Mixer Opcodes](../mixer.md)
+[Mixer Opcodes](../sigrouting/mixer.md)
 
 ## Credits
 

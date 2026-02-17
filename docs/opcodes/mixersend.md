@@ -71,7 +71,7 @@ endin
 
 ## See also
 
-[Mixer Opcodes](../mixer.md)
+[Mixer Opcodes](../sigrouting/mixer.md)
 
 ## Credits
 

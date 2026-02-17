@@ -34,7 +34,7 @@ Here is an example of the zkcl opcode. It uses the file [zkcl.csd](../examples/z
 
 ## See also
 
-[Zak Patch System](../zak/top.md)
+[Zak Patch System](../sigrouting/zak/top.md)
 
 ## Credits
 

@@ -34,7 +34,7 @@ Here is an example of the zir opcode. It uses the file [zir.csd](../examples/zir
 
 ## See also
 
-[Zak Patch System](../zak/top.md)
+[Zak Patch System](../sigrouting/zak/top.md)
 
 ## Credits
 

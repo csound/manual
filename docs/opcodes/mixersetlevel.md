@@ -89,7 +89,7 @@ i 1  0  0  210  220  0.2
 
 ## See also
 
-[Mixer Opcodes](../mixer.md)
+[Mixer Opcodes](../sigrouting/mixer.md)
 
 ## Credits
 

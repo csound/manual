@@ -42,7 +42,7 @@ Here is an example of the ziwm opcode. It uses the file [ziwm.csd](../examples/z
 
 ## See also
 
-[Zak Patch System](../zak/top.md)
+[Zak Patch System](../sigrouting/zak/top.md)
 
 ## Credits
 
