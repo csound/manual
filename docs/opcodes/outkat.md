@@ -8,13 +8,18 @@ Sends MIDI aftertouch messages at k-rate.
 ## Syntax
 === "Modern"
     ``` csound-orc
-    outkat(kchn, kvalue, kmin, kmax)
+    outkat(kchn, kvalue, kmin, kmax [, iport])
     ```
 
 === "Classic"
     ``` csound-orc
-    outkat kchn, kvalue, kmin, kmax
+    outkat kchn, kvalue, kmin, kmax [, iport]
     ```
+
+### Initialisation
+
+_iport_ -- MIDI output port, optional set to 0.
+
 
 ### Performance
 
@@ -24,7 +29,8 @@ _kvalue_ -- floating point value
 
 _kmin_ -- minimum floating point value (converted in MIDI integer value 0)
 
-_kmax_ -- maximum floating point value (converted in MIDI integer value 127)
+_kmax_ -- maximum floating point value (converted in MIDI integer
+value 127)
 
 _outkat_ (k-rate aftertouch output) sends aftertouch messages. It works only with MIDI instruments which recognize them. It can drive a different value of a parameter for each note currently active.
 

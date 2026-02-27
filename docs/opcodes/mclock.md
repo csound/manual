@@ -8,17 +8,19 @@ Sends a MIDI CLOCK message.
 ## Syntax
 === "Modern"
     ``` csound-orc
-    mclock(ifreq)
+    mclock(ifreq [, iport])
     ```
 
 === "Classic"
     ``` csound-orc
-    mclock ifreq
+    mclock ifreq [, iport]
     ```
 
 ### Initialization
 
 _ifreq_ -- clock message frequency rate in Hz
+
+_iport_ -- MIDI output port, optional set to 0.
 
 ### Performance
 

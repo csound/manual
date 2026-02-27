@@ -8,12 +8,12 @@ Sends 14-bit MIDI controller output at i-rate.
 ## Syntax
 === "Modern"
     ``` csound-orc
-    outic14(ichn, imsb, ilsb, ivalue, imin, imax)
+    outic14(ichn, imsb, ilsb, ivalue, imin, imax [, iport])
     ```
 
 === "Classic"
     ``` csound-orc
-    outic14 ichn, imsb, ilsb, ivalue, imin, imax
+    outic14 ichn, imsb, ilsb, ivalue, imin, imax, iport
     ```
 
 ### Initialization
@@ -28,7 +28,10 @@ _ivalue_ -- floating point value
 
 _imin_ -- minimum floating point value (converted in MIDI integer value 0)
 
-_imax_ -- maximum floating point value (converted in MIDI integer value 16383 (14-bit))
+_imax_ -- maximum floating point value (converted in MIDI integer
+value 16383 (14-bit))
+
+_iport_ -- MIDI output port, optional set to 0.
 
 ### Performance
 

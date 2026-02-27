@@ -8,13 +8,18 @@ Sends MIDI pitch-bend messages at k-rate.
 ## Syntax
 === "Modern"
     ``` csound-orc
-    outkpb(kchn, kvalue, kmin, kmax)
+    outkpb(kchn, kvalue, kmin, kmax [, iport])
     ```
 
 === "Classic"
     ``` csound-orc
-    outkpb kchn, kvalue, kmin, kmax
+    outkpb kchn, kvalue, kmin, kmax [, iport]
     ```
+
+### Initialisation
+
+_iport_ -- MIDI output port, optional set to 0.
+
 
 ### Performance
 

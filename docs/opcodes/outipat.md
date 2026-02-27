@@ -8,12 +8,12 @@ Sends polyphonic MIDI aftertouch messages at i-rate.
 ## Syntax
 === "Modern"
     ``` csound-orc
-    outipat(ichn, inotenum, ivalue, imin, imax)
+    outipat(ichn, inotenum, ivalue, imin, imax [, iport])
     ```
 
 === "Classic"
     ``` csound-orc
-    outipat ichn, inotenum, ivalue, imin, imax
+    outipat ichn, inotenum, ivalue, imin, imax [, iport]
     ```
 
 ### Initialization
@@ -26,7 +26,10 @@ _ivalue_ -- floating point value
 
 _imin_ -- minimum floating point value (converted in MIDI integer value 0)
 
-_imax_ -- maximum floating point value (converted in MIDI integer value 127 (7 bit))
+_imax_ -- maximum floating point value (converted in MIDI integer
+value 127 (7 bit))
+
+_iport_ -- MIDI output port, optional set to 0.
 
 ### Performance
 

@@ -8,12 +8,12 @@ Sends MIDI program change messages at i-rate.
 ## Syntax
 === "Modern"
     ``` csound-orc
-    outipc(ichn, iprog, imin, imax)
+    outipc(ichn, iprog, imin, imax, [, iport])
     ```
 
 === "Classic"
     ``` csound-orc
-    outipc ichn, iprog, imin, imax
+    outipc ichn, iprog, imin, imax [, iport]
     ```
 
 ### Initialization
@@ -24,7 +24,10 @@ _iprog_ -- program change number in floating point
 
 _imin_ -- minimum floating point value (converted in MIDI integer value 0)
 
-_imax_ -- maximum floating point value (converted in MIDI integer value 127 (7 bit))
+_imax_ -- maximum floating point value (converted in MIDI integer
+value 127 (7 bit))
+
+_iport_ -- MIDI output port, optional set to 0.
 
 ### Performance
 

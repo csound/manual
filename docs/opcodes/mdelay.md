@@ -8,13 +8,17 @@ A MIDI delay opcode.
 ## Syntax
 === "Modern"
     ``` csound-orc
-    mdelay(kstatus, kchan, kd1, kd2, kdelay)
+    mdelay(kstatus, kchan, kd1, kd2, kdelay [, iport])
     ```
 
 === "Classic"
     ``` csound-orc
-    mdelay kstatus, kchan, kd1, kd2, kdelay
+    mdelay kstatus, kchan, kd1, kd2, kdelay[, iport]
     ```
+
+### Initialisation
+
+_iport_ -- MIDI output port, optional set to 0.
 
 ### Performance
 

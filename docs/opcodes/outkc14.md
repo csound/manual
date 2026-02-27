@@ -8,13 +8,18 @@ Sends 14-bit MIDI controller output at k-rate.
 ## Syntax
 === "Modern"
     ``` csound-orc
-    outkc14(kchn, kmsb, klsb, kvalue, kmin, kmax)
+    outkc14(kchn, kmsb, klsb, kvalue, kmin, kmax [, iport])
     ```
 
 === "Classic"
     ``` csound-orc
-    outkc14 kchn, kmsb, klsb, kvalue, kmin, kmax
+    outkc14 kchn, kmsb, klsb, kvalue, kmin, kmax [, iport]
     ```
+
+### Initialisation
+
+_iport_ -- MIDI output port, optional set to 0.
+
 
 ### Performance
 

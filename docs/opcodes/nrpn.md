@@ -8,13 +8,17 @@ Sends a NPRN (Non-Registered Parameter Number) message to the MIDI OUT port each
 ## Syntax
 === "Modern"
     ``` csound-orc
-    nrpn(kchan, kparmnum, kparmvalue)
+    nrpn(kchan, kparmnum, kparmvalue [, iport])
     ```
 
 === "Classic"
     ``` csound-orc
-    nrpn kchan, kparmnum, kparmvalue
+    nrpn kchan, kparmnum, kparmvalue [, iport]
     ```
+
+### Initialisation
+
+_iport_ -- MIDI output port, optional set to 0.
 
 ### Performance
 
