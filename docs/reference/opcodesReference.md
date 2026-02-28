@@ -203,6 +203,8 @@ cosine interpolation, including a release segment.<br>
 [dates](../opcodes/dates.md) - Returns as a string the date and time specified.<br>
 [db](../opcodes/db.md) - Returns the amplitude equivalent for a given decibel amount.<br>
 [dbamp](../opcodes/dbamp.md) - Returns the decibel equivalent of the raw amplitude _x_.<br>
+[dbap](../opcodes/dbap.md) - Distance-Based Amplitude Panning for arbitrary 2D and 3D loudspeaker layouts.<br>
+[dbapgains](../opcodes/dbapgains.md) - Distance-Based Amplitude Panning gain vector generator.<br>
 [dbfsamp](../opcodes/dbfsamp.md) - Returns the decibel equivalent of the raw amplitude _x_, relative to full scale amplitude.<br>
 [dcblock2](../opcodes/dcblock2.md) - Implements a DC blocking filter with improved DC attenuation.<br>
 [dcblock](../opcodes/dcblock.md) - Implements the DC blocking filter.<br>
