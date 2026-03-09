@@ -180,7 +180,10 @@ Terminate the performance when the end of MIDI file is reached.
 ## MIDI Realtime Input/Ouput
 
 #### -M DEVICE, --midi-device=DEVICE
-Read MIDI events from device *DEVICE*. If using ALSA MIDI (-+rtmidi=alsa), devices are selected by name and not number. So, you need to use an option like -M hw:CARD, DEVICE where CARD and DEVICE are the card and device numbers (e.g. -M hw:1,0). In the case of CoreMIDI and MME, DEVICE should be a number, and if it is out of range, an error occurs and the valid device numbers are printed. With PortMIDI, DEVICE is either a number for single port input, 'a' for listening to all input ports, or 'm' for mapping ports to MIDI channels above 16. In this case, device 0 uses 1-16, device 1 uses 17-32, ... device N uses (N+1)*channel. The options 'a' and 'm' are also convenient when you don't have devices as they will not generate an error.
+Read MIDI events from device *DEVICE*. If using ALSA MIDI (-+rtmidi=alsa), devices are selected by name and not number. So, you need to use an option like -M hw:CARD, DEVICE where CARD and DEVICE are the card and device numbers (e.g. -M hw:1,0). In the case of 
+CoreMIDI and MME, DEVICE should be a number, and if it is out of range, an error occurs and the valid device numbers are printed. 
+
+With PortMIDI, DEVICE is either a number for single port input, 'a' for listening to all input ports, or 'm' for mapping ports to MIDI channels above 16. In this case, device 0 uses 1-16, device 1 uses 17-32, ... device N uses (N+1)*channel. The options 'a' and 'm' are also convenient when you don't have devices as they will not generate an error.
 
 #### --midi-key=N
 Route MIDI note on message key number to pfield N as MIDI value [0-127].
@@ -212,6 +215,8 @@ ALSA MIDI devices are selected by name and not number. So, you need to use an op
 Enables MIDI OUT operations to device id *DEVICE*. This flag allows parallel MIDI OUT and DAC performance. Unfortunately the real-time timing implemented in Csound is completely managed by DAC buffer sample flow. So MIDI OUT operations can present some time irregularities. These irregularities can be reduced by using a lower value for the [-b](#-b-num-iobufsampsnum) flag.
 
 If using ALSA MIDI (-+rtmidi=alsa), devices are selected by name and not number. So, you need to use an option like -Q hw:CARD,DEVICE where CARD and DEVICE are the card and device numbers (e.g. -Q hw:1,0). In the case of PortMIDI, CoreMIDI and MME, DEVICE should be a number, and if it is out of range, an error occurs and the valid device numbers are printed.
+
+With portmidi, multiple output devices can be opened with -Ma or -Mm. The former opens all devices available in the system and sends MIDI messages to all ports. The latter opens all devices in the system and maps ports from 0 upwards to devices in the order listed by portmidi. All MIDI output opcodes can use an optional parameter to select the output port.
 
 ## Display
 
