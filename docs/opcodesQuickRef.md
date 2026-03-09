@@ -1126,7 +1126,7 @@
 
 
 ### Signal I/O:Signal Output
-[**`mdelay`**](opcodes/mdelay.md)`(kstatus, kchan, kd1, kd2, kdelay)`<br>
+[**`mdelay`**](opcodes/mdelay.md)`(kstatus, kchan, kd1, kd2, kdelay [, iport])`<br>
 
 
 `aout1 [,aout2 ... aoutX] = `[**`monitor`**](opcodes/monitor.md)`()`<br>
@@ -3251,43 +3251,43 @@
 
 
 ### Real-time MIDI:Output
-[**`nrpn`**](opcodes/nrpn.md)`(kchan, kparmnum, kparmvalue)`<br>
+[**`nrpn`**](opcodes/nrpn.md)`(kchan, kparmnum, kparmvalue [, iport])`<br>
 
 
-[**`outiat`**](opcodes/outiat.md)`(ichn, ivalue, imin, imax)`<br>
+[**`outiat`**](opcodes/outiat.md)`(ichn, ivalue, imin, imax, [, iport])`<br>
 
 
-[**`outic`**](opcodes/outic.md)`(ichn, inum, ivalue, imin, imax)`<br>
+[**`outic`**](opcodes/outic.md)`(ichn, inum, ivalue, imin, imax [, iport])`<br>
 
 
-[**`outic14`**](opcodes/outic14.md)`(ichn, imsb, ilsb, ivalue, imin, imax)`<br>
+[**`outic14`**](opcodes/outic14.md)`(ichn, imsb, ilsb, ivalue, imin, imax [, iport])`<br>
 
 
-[**`outipat`**](opcodes/outipat.md)`(ichn, inotenum, ivalue, imin, imax)`<br>
+[**`outipat`**](opcodes/outipat.md)`(ichn, inotenum, ivalue, imin, imax [, iport])`<br>
 
 
-[**`outipb`**](opcodes/outipb.md)`(ichn, ivalue, imin, imax)`<br>
+[**`outipb`**](opcodes/outipb.md)`(ichn, ivalue, imin, imax [, iport])`<br>
 
 
-[**`outipc`**](opcodes/outipc.md)`(ichn, iprog, imin, imax)`<br>
+[**`outipc`**](opcodes/outipc.md)`(ichn, iprog, imin, imax, [, iport])`<br>
 
 
-[**`outkat`**](opcodes/outkat.md)`(kchn, kvalue, kmin, kmax)`<br>
+[**`outkat`**](opcodes/outkat.md)`(kchn, kvalue, kmin, kmax [, iport])`<br>
 
 
-[**`outkc`**](opcodes/outkc.md)`(kchn, knum, kvalue, kmin, kmax)`<br>
+[**`outkc`**](opcodes/outkc.md)`(kchn, knum, kvalue, kmin, kmax [, iport])`<br>
 
 
-[**`outkc14`**](opcodes/outkc14.md)`(kchn, kmsb, klsb, kvalue, kmin, kmax)`<br>
+[**`outkc14`**](opcodes/outkc14.md)`(kchn, kmsb, klsb, kvalue, kmin, kmax [, iport])`<br>
 
 
-[**`outkpat`**](opcodes/outkpat.md)`(kchn, knotenum, kvalue, kmin, kmax)`<br>
+[**`outkpat`**](opcodes/outkpat.md)`(kchn, knotenum, kvalue, kmin, kmax [, iport])`<br>
 
 
-[**`outkpb`**](opcodes/outkpb.md)`(kchn, kvalue, kmin, kmax)`<br>
+[**`outkpb`**](opcodes/outkpb.md)`(kchn, kvalue, kmin, kmax [, iport])`<br>
 
 
-[**`outkpc`**](opcodes/outkpc.md)`(kchn, kprog, kmin, kmax)`<br>
+[**`outkpc`**](opcodes/outkpc.md)`(kchn, kprog, kmin, kmax [, iport])`<br>
 
 
 ### Real-time MIDI:Converters
@@ -3330,7 +3330,7 @@
 `kstatus, kchan, kdata1, kdata2 = `[**`midiin`**](opcodes/midiin.md)`()`<br>
 
 
-[**`midiout`**](opcodes/midiout.md)`(kstatus, kchan, kdata1, kdata2)`<br>
+[**`midiout`**](opcodes/midiout.md)`(kstatus, kchan, kdata1, kdata2  [, iport])`<br>
 
 
 [**`midiout_i`**](opcodes/midiout_i.md)`(istatus, ichan, idata1, idata2)`<br>
@@ -3353,22 +3353,22 @@
 [**`midion`**](opcodes/midion.md)`(kchn, knum, kvel)`<br>
 
 
-[**`midion2`**](opcodes/midion2.md)`(kchn, knum, kvel, ktrig)`<br>
+[**`midion2`**](opcodes/midion2.md)`(kchn, knum, kvel, ktrig[, iport)`<br>
 
 
 [**`moscil`**](opcodes/moscil.md)`(kchn, knum, kvel, kdur, kpause)`<br>
 
 
-[**`noteoff`**](opcodes/noteoff.md)`(ichn, inum, ivel)`<br>
+[**`noteoff`**](opcodes/noteoff.md)`(ichn, inum, ivel, iport)`<br>
 
 
-[**`noteon`**](opcodes/noteon.md)`(ichn, inum, ivel)`<br>
+[**`noteon`**](opcodes/noteon.md)`(ichn, inum, ivel, iport)`<br>
 
 
-[**`noteondur`**](opcodes/noteondur.md)`(ichn, inum, ivel, idur)`<br>
+[**`noteondur`**](opcodes/noteondur.md)`(ichn, inum, ivel, idur [, iport])`<br>
 
 
-[**`noteondur2`**](opcodes/noteondur2.md)`(ichn, inum, ivel, idur)`<br>
+[**`noteondur2`**](opcodes/noteondur2.md)`(ichn, inum, ivel, idur [, port])`<br>
 
 
 ### Real-time MIDI:MIDI/Score Interoperability
@@ -3409,10 +3409,10 @@
 
 
 ### Real-time MIDI:System Realtime
-[**`mclock`**](opcodes/mclock.md)`(ifreq)`<br>
+[**`mclock`**](opcodes/mclock.md)`(ifreq [, iport])`<br>
 
 
-[**`mrtmsg`**](opcodes/mrtmsg.md)`(imsgtype)`<br>
+[**`mrtmsg`**](opcodes/mrtmsg.md)`(imsgtype [, iport])`<br>
 
 
 ### Real-time MIDI:Slider Banks
