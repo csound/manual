@@ -1,6 +1,7 @@
 <!--
 id:pop_f
 category:Instrument Control:Stacks
+status:deprecated
 -->
 # pop_f
 Pops an f-sig frame from the global stack.  Deprecated.

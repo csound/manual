@@ -2,13 +2,17 @@
 id:vadd_i
 category:Vectorial:Scalar operations
 -->
-# vadd_i
+# vaddi
 Adds a scalar value to a vector in a table.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *vadd_i*.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    vadd_i(ifn, ival, ielements [, idstoffset])
+    vaddi(ifn, ival, ielements [, idstoffset])
     ```
 
 === "Classic"
@@ -28,21 +32,27 @@ _idstoffset_ - index offset for the destination table
 
 ### Performance
 
-_vadd_i_ adds the value of _ival_ to each element of the vector contained in the table _ifn_, starting from table index _idstoffset_. This enables you to process a specific section of a table by specifying the offset and the number of elements to be processed. Offset is counted starting from 0, so if no offset is specified (or set to 0), the table will be modified from the beginning.
+_vaddi_ adds the value of _ival_ to each element of the vector contained in the table _ifn_, starting from table index _idstoffset_. This enables you to process a specific section of a table by specifying the offset and the number of elements to be processed. Offset is counted starting from 0, so if no offset is specified (or set to 0), the table will be modified from the beginning.
 
 This opcode runs only on initialization, there is a k-rate version of this opcode called [vadd](../opcodes/vadd.md).
 
 Negative values for _idstoffset_ are valid. Elements from the vector that are outside the table, will be discarded, and they will not wrap around the table.
 
-In all these opcodes, the resulting vectors are stored in _ifn_, overriding the intial vectors. If you want to keep initial vector, use [vcopy](../opcodes/vcopy.md) or [vcopy_i](../opcodes/vcopy_i.md) to copy it in another table. All these operators are designed to be used together with other opcodes that operate with vectorial signals such as [vcella](../opcodes/vcella.md), [adsynt](../opcodes/adsynt.md), [adsynt2](../opcodes/adsynt2.md), etc.  They can also be useful in conjunction with the spectral opcodes [pvsftw](../opcodes/pvsftw.md) and [pvsftr](../opcodes/pvsftr.md).
+In all these opcodes, the resulting vectors are stored in _ifn_, overriding the intial vectors. If you want to keep initial vector, use [vcopy](../opcodes/vcopy.md) or [vcopyi](../opcodes/vcopy_i.md) to copy it in another table. All these operators are designed to be used together with other opcodes that operate with vectorial signals such as [vcella](../opcodes/vcella.md), [adsynt](../opcodes/adsynt.md), [adsynt2](../opcodes/adsynt2.md), etc.  They can also be useful in conjunction with the spectral opcodes [pvsftw](../opcodes/pvsftw.md) and [pvsftr](../opcodes/pvsftr.md).
 
 ## Examples
 
-Here is an example of the vadd_i opcode. It uses the file [vadd_i.csd](../examples/vadd_i.csd).
+=== "Modern"
+    Here is an example of the vaddi opcode. It uses the file [vaddi.csd](../examples/vaddi.csd).
+    ``` csound-csd title="Example of the vaddi opcode." linenums="1"
+    --8<-- "examples/vaddi.csd"
+    ```
 
-``` csound-csd title="Example of the vadd_i opcode." linenums="1"
---8<-- "examples/vadd_i.csd"
-```
+=== "Classic"
+    Here is an example of the vadd_i opcode. It uses the file [vadd_i.csd](../examples/vadd_i.csd).
+    ``` csound-csd title="Example of the vadd_i opcode." linenums="1"
+    --8<-- "examples/vadd_i.csd"
+    ```
 
 ## See also
 

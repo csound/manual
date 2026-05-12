@@ -1,6 +1,7 @@
 <!--
 id:specdisp
 category:Spectral Processing:Non-Standard
+status:deprecated
 -->
 # specdisp
 Displays the magnitude values of the spectrum.

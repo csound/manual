@@ -2,17 +2,21 @@
 id:serialPrint
 category:Serial I/O
 -->
-# serialPrint
+# serialprint
 Print data from a serial port.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *serialPrint*.
 
 Plugin opcode in serial.
 
-Print to the screen any bytes (up to 32k) in the input buffer. Note that these bytes will be cleared from the buffer. use this opcode mainly for debugging messages. If you want to mix debugging and other communication messages over the same port, you will need to manually parse the data with the _serialRead_ opcode.
+Print to the screen any bytes (up to 32k) in the input buffer. Note that these bytes will be cleared from the buffer. use this opcode mainly for debugging messages. If you want to mix debugging and other communication messages over the same port, you will need to manually parse the data with the *serialread* opcode.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    serialPrint(iPort)
+    serialprint(iPort)
     ```
 
 === "Classic"
@@ -22,7 +26,7 @@ Print to the screen any bytes (up to 32k) in the input buffer. Note that these b
 
 ### Performance
 
-_iPort_ -- port number optained from a _serialBegin_ opcode.
+_iPort_ -- port number optained from a *serialbegin* opcode.
 
 ## See Also
 

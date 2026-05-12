@@ -32,7 +32,7 @@ Here is an example of the zar opcode. It uses the file [zar.csd](../examples/zar
 
 ## See also
 
-[Zak Patch System](../zak/top.md)
+[Zak Patch System](../sigrouting/zak/top.md)
 
 ## Credits
 

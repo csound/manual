@@ -2,15 +2,19 @@
 id:arduinoStop
 category:Serial I/O
 -->
-# arduinoStop
+# arduinostop
 Close a serial port using Arduino protocol.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *arduinoStop*.
 
 Plugin opcode in serial.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    arduinoStop(iPort)
+    arduinostop(iPort)
     ```
 
 === "Classic"

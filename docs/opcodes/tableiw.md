@@ -1,6 +1,7 @@
 <!--
 id:tableiw
-category:Deprecated
+category:Table Control:Read/Write Operations
+status:deprecated
 -->
 # tableiw
 Deprecated as of version 3.49. Use the [tablew](../opcodes/tablew.md) opcode instead.

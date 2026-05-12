@@ -2,15 +2,19 @@
 id:serialRead
 category:Serial I/O
 -->
-# serialRead
+# serialread
 Read data from a serial port for arduino.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *serialRead*.
 
 Plugin opcode in serial.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    kByte = serialRead(iPort)
+    kByte = serialread(iPort)
     ```
 
 === "Classic"
@@ -20,17 +24,23 @@ Plugin opcode in serial.
 
 ### Performance
 
-_iPort_ -- port number optained from a _serialBegin_ opcode.
+_iPort_ -- port number optained from a *serialread* opcode.
 
 _kByte_ -- a byte of data to read.
 
 ## Examples
 
-Here is an example of the serialRead opcode. It uses the file [serialRead.csd](../examples/serialRead.csd).
+=== "Modern"
+    Here is an example of the serialread opcode. It uses the file [serialread-modern.csd](../examples/serialread-modern.csd).
+    ``` csound-csd title="Example of the serialread opcode." linenums="1"
+    --8<-- "examples/serialread-modern.csd"
+    ```
 
-``` csound-csd title="Example of the serialRead opcode." linenums="1"
---8<-- "examples/serialRead.csd"
-```
+=== "Classic"
+    Here is an example of the serialRead opcode. It uses the file [serialRead.csd](../examples/serialRead.csd).
+    ``` csound-csd title="Example of the serialRead opcode." linenums="1"
+    --8<-- "examples/serialRead.csd"
+    ```
 
 This is the matching Arduino code :
 

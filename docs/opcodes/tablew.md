@@ -85,12 +85,12 @@ At k-rate or a-rate, if a table number of &lt; 1 is given, or the table number p
 > <CsOptions>
 > </CsOptions>
 > <CsInstruments>
-> giFt ftgen  1, 0, 8, 2, 0
+> ft@global:i = ftgen(1, 0, 8, 2, 0)
 > instr 1
-> indx = 0
->      tablew 10, indx, giFt
-> ival tab_i  indx, giFt
->      print  ival
+>   ndx:i = 0
+>   tablew(10, ndx, ft)
+>   val:i = tabi(ndx, ft)
+>   print(val)
 > endin
 > </CsInstruments>
 > <CsScore>
@@ -99,7 +99,7 @@ At k-rate or a-rate, if a table number of &lt; 1 is given, or the table number p
 > </CsoundSynthesizer>
 > ```
 >
-> Although it may seem this program should print a 10 to the console. It will print 0, because  [tab_i](../opcodes/tab.md) will read the value at the initialization of the note, before the first performance pass, when _tablew_ writes its value.
+> Although it may seem this program should print a 10 to the console. It will print 0, because  [tabi](../opcodes/tab_i.md) will read the value at the initialization of the note, before the first performance pass, when _tablew_ writes its value.
 
 ## See also
 

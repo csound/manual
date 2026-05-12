@@ -20,7 +20,7 @@ class OpcodeInfo:
         j = self.find_name()
         self.find_description(j)
         self.find_syntax()
-        self.find_category()
+        self.find_category_status()
         self.find_examples()
         self.set_link(filename)
 
@@ -73,8 +73,9 @@ class OpcodeInfo:
                             l[k] = l[k][4:]
                         self.syntax = '\n'.join(l)
 
-    def find_category(self):
+    def find_category_status(self):
         self.category = ""
+        self.status = ""
         i = self.data.find('<!--')
         if i != -1:
             j = self.data[i:].find('-->')
@@ -86,6 +87,12 @@ class OpcodeInfo:
                     j = s[i:].find('\n')
                     if j != -1:
                         self.category = s[i:i+j].strip()
+                i = s.find("status:")
+                if i != -1:
+                    i += 7
+                    j = s[i:].find('\n')
+                    if j != -1:
+                        self.status = s[i:i+j].strip()
     
     def find_examples(self):
         self.examples = []
@@ -126,6 +133,13 @@ def find_bad_categories(opcodes, categories):
                 print('!!!', cats[i], cats_ref[i])
                 err = True
         return err
+    
+    # Found a different number of categories in opcodes than in categories.py
+    ncat = max(len(cats), len(cats_ref)) 
+    for i in range(ncat):
+        if cats_ref[i] != cats[i]:
+            print(i, cats_ref[i], " | ", cats[i])
+            break
     print("length categories:{}, cats found: {}".format(len(cats_ref), len(cats)))
     return True
 
@@ -233,11 +247,35 @@ def write_examples_list(opc_by_cat, filename):
         print(file=f)
     f.close()
 
+def write_deprecated_list(deprecated, filename):
+    entries = []
+    for opc in deprecated:
+        entries.append("[{}]({}) - {}<br>".format(opc.name, opc.link, opc.description))
+    entries.sort()
+
+    f = open(filename, 'w')
+    print("<!-- Don't modify this file.", file=f)
+    print(" It is generated automatically by makeAppendices.py-->", file=f)
+    print("# **Deprecated Opcodes**\n", file=f)
+    print("The following opcodes are deprecated. They are still distributed"
+          " with Csound for backward compatibility. The new opcodes which are"
+          " to be used in place of the deprecated ones are indicated"
+          " within each of the following entries.\n", file=f)
+    for e in entries:
+        print(e, file=f)
+    f.close()
+
 dir = './docs/opcodes/'
 files = os.listdir(dir)
 opcodes = []
+deprecated = []
 for f in files:
-    opcodes.append(OpcodeInfo(dir+f))
+    opc_info = OpcodeInfo(dir+f)
+    if opc_info.status == "":
+        opcodes.append(opc_info)
+    elif opc_info.status == "deprecated":
+        deprecated.append(opc_info)
+
 if find_bad_categories(opcodes, categories):
     sys.exit("Bad categories")
 
@@ -254,3 +292,4 @@ write_opcodes_index(opcodes, "./docs/opcodesIndex.md", ncol=5)
 write_opcodes_reference(opcodes, "./docs/reference/opcodesReference.md")
 write_opcodes_quick_ref(opc_by_cat, "./docs/opcodesQuickRef.md")
 write_examples_list(opc_by_cat, "./docs/misc/examples.md")
+write_deprecated_list(deprecated, "./docs/deprecated.md")

@@ -8,12 +8,12 @@ Send a noteon message to the MIDI OUT port.
 ## Syntax
 === "Modern"
     ``` csound-orc
-    noteon(ichn, inum, ivel)
+    noteon(ichn, inum, ivel, iport)
     ```
 
 === "Classic"
     ``` csound-orc
-    noteon ichn, inum, ivel
+    noteon ichn, inum, ivel, iport
     ```
 
 ### Initialization
@@ -23,6 +23,8 @@ _ichn_ -- MIDI channel number (1-16)
 _inum_ -- note number (0-127)
 
 _ivel_ -- velocity (0-127)
+
+_iport_ -- MIDI output port, optional set to 0.
 
 ### Performance
 

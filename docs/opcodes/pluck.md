@@ -57,6 +57,11 @@ Here is an example of the pluck opcode. It uses the file [pluck.csd](../examples
 
 A musical example featuring the pluck opcode: [ResonPluck_Cucchi.csd](../examples/musical/ResonPluck_Cucchi.csd) by Stefano Cucchi.
 
+``` csound-csd title="Musical example of the pluck opcode." linenums="1"
+--8<-- "examples/musical/ResonPluck_Cucchi.csd"
+```
+
+
 ## See also
 
 [Waveguide Physical Modeling](../siggen/wavguide.md)

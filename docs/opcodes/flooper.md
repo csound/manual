@@ -20,13 +20,13 @@ This opcode reads audio from a function table and plays it back in a loop with u
 
 ### Initialization
 
-_istart _ -- loop start pos in seconds
+_istart_ -- loop start pos in seconds
 
-_idur _ -- loop duration in seconds
+_idur_ -- loop duration in seconds
 
-_ifad _ -- crossfade duration in seconds
+_ifad_ -- crossfade duration in seconds
 
-_ifn _ -- function table number, generally created using GEN01
+_ifn_ -- function table number, generally created using GEN01
 
 ### Performance
 

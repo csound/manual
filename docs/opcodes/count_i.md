@@ -2,8 +2,12 @@
 id:count_i
 category:Instrument Control:Sensing and Control
 -->
-# count_i
+# counti
 Get the next value from a counter.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *count_i*.
 
 Plugin opcode in counter.
 
@@ -12,7 +16,7 @@ Get the next value from a counter a init time by adding the increment and keepin
 ## Syntax
 === "Modern"
     ``` csound-orc
-    ival = count_i(icnt)
+    ival = counti(icnt)
     ```
 
 === "Classic"
@@ -22,7 +26,7 @@ Get the next value from a counter a init time by adding the increment and keepin
 
 ### Initialization
 
-_icnt_ -- the handle of a counter object from a call to _cntCreate_.
+_icnt_ -- the handle of a counter object from a call to _cntcreate_.
 
 ### Performance
 
@@ -32,11 +36,17 @@ _ival_ -- returned value.
 
 ## Examples
 
-Here is an example of the count_i opcode. It uses the file [counter.csd](../examples/counter.csd).
+=== "Modern"
+    Here is an example of the counti opcode. It uses the file [counter-modern.csd](../examples/counter-modern.csd).
+    ``` csound-csd title="Example of the counti opcode." linenums="1"
+    --8<-- "examples/counter-modern.csd"
+    ```
 
-``` csound-csd title="Example of the count_i opcode." linenums="1"
---8<-- "examples/counter.csd"
-```
+=== "Classic"
+    Here is an example of the count_i opcode. It uses the file [counter.csd](../examples/counter.csd).
+    ``` csound-csd title="Example of the count_i opcode." linenums="1"
+    --8<-- "examples/counter.csd"
+    ```
 
 ## See also
 

@@ -1,22 +1,17 @@
 <!--
 id:fin
 category:Signal I/O:File I/O
+status:deprecated
 -->
 # fin
 Read signals from a file at a-rate.
 
-## Syntax
-=== "Modern"
-    ``` csound-orc
-    fin(ifilename, iskipframes, iformat, ain1 [, ain2] [, ain3] [,...])
-    fin(ifilename, iskipframes, iformat, arr[])
-    ```
 
-=== "Classic"
-    ``` csound-orc
-    fin ifilename, iskipframes, iformat, ain1 [, ain2] [, ain3] [,...]
-    fin ifilename, iskipframes, iformat, arr[]
-    ```
+## Syntax
+``` csound-orc
+fin ifilename, iskipframes, iformat, ain1 [, ain2] [, ain3] [,...]
+fin ifilename, iskipframes, iformat, arr[]
+```
 
 ### Initialization
 
@@ -26,7 +21,7 @@ _iskipframes_ -- number of frames to skip at the start (every frame contains a s
 
 _iformat_ -- a number specifying the input file format for headerless files.
 
-*  -2 - 32 bit floating points without header
+*  -2 -  32 bit floating points without header
 *  -1 - 16 bit integers without header
 *  0 - take values from the header
 
@@ -36,12 +31,11 @@ _fin_ (file input) is the complement of [fout](../opcodes/fout.md): it reads a m
 
 > :memo: **Note**
 >
-> Please note that since this opcode generates its output using input parameters (on the right side of the opcode), these variables must be initialized before use, otherwise a 'used before defined' error will occur. You can use the [init](../opcodes/init.md) opcode for this.
+Please note that since this opcode generates its output using input parameters (on the right side of the opcode), these variables must be initialized before use, otherwise a 'used before defined' error will occur. You can use the [init](../opcodes/init.md) opcode for this.
 
 ## Examples
 
 Here is an example of the fin opcode. It uses the file [fin.csd](../examples/fin.csd) and [fox.wav](../examples/fox.wav).
-
 ``` csound-csd title="Example of the fin opcode." linenums="1"
 --8<-- "examples/fin.csd"
 ```

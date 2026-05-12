@@ -44,7 +44,7 @@ Here is an example of the zawm opcode. It uses the file [zawm.csd](../examples/z
 
 ## See also
 
-[Zak Patch System](../zak/top.md)
+[Zak Patch System](../sigrouting/zak/top.md)
 
 ## Credits
 

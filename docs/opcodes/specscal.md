@@ -1,6 +1,7 @@
 <!--
 id:specscal
 category:Spectral Processing:Non-Standard
+status:deprecated
 -->
 # specscal
 Scales an input spectral datablock with spectral envelopes.

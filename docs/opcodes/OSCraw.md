@@ -2,15 +2,19 @@
 id:OSCraw
 category:OSC
 -->
-# OSCraw
+# oscraw
 Listen for all OSC messages at a given port.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *OSCraw*.
 
 On each k-cycle looks to see if an OSC message has been received at a given port and copies its contents to a string array. All messages are copied. If a bundle of messages is received, the output array will contain all of the messages in it.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    Smess[], klen = OSCraw(iport)
+    Smess[], klen = oscraw(iport)
     ```
 
 === "Classic"
@@ -30,9 +34,15 @@ _klen_ -- number of items placed in the output array. It is 0 if no message has 
 
 ## Examples
 
-``` csound-csd title="OSCraw.csd" linenums="1"
---8<-- "examples/OSCraw.csd"
-```
+=== "Modern"
+    ``` csound-csd title="oscraw-modern.csd" linenums="1"
+    --8<-- "examples/oscraw-modern.csd"
+    ```
+
+=== "Classic"
+    ``` csound-csd title="OSCraw.csd" linenums="1"
+    --8<-- "examples/OSCraw.csd"
+    ```
 
 ## See also
 

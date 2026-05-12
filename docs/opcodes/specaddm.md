@@ -1,6 +1,7 @@
 <!--
 id:specaddm
 category:Spectral Processing:Non-Standard
+status:deprecated
 -->
 # specaddm
 Perform a weighted add of two input spectra.

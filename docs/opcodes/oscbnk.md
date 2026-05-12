@@ -2,8 +2,12 @@
 id:oscbnk
 category:Signal Generators:Basic Oscillators
 -->
-# oscbnk
+# oscilbank
 Mixes the output of any number of oscillators.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *oscbnk*.
 
 This unit generator mixes the output of any number of oscillators. The frequency, phase, and amplitude of each oscillator can be modulated by two LFOs (all oscillators have a separate set of LFOs, with different phase and frequency); additionally, the output of each oscillator can be filtered through an optional parametric equalizer (also controlled by the LFOs).  This opcode is most useful for rendering ensemble (strings, choir, etc.) instruments.
 
@@ -14,10 +18,10 @@ The start phase and frequency of all oscillators and LFOs can be set by a built-
 ## Syntax
 === "Modern"
     ``` csound-orc
-    ares = oscbnk(kcps, kamd, kfmd, kpmd, iovrlap, iseed, kl1minf, kl1maxf, \
-                  kl2minf, kl2maxf, ilfomode, keqminf, keqmaxf, keqminl, keqmaxl, \
-                  keqminq, keqmaxq, ieqmode, kfn [, il1fn] [, il2fn] [, ieqffn]   \
-                  [, ieqlfn] [, ieqqfn] [, itabl] [, ioutfn])
+    ares = oscilbank(kcps, kamd, kfmd, kpmd, iovrlap, iseed, kl1minf, kl1maxf, \
+                     kl2minf, kl2maxf, ilfomode, keqminf, keqmaxf, keqminl, keqmaxl, \
+                     keqminq, keqmaxq, ieqmode, kfn [, il1fn] [, il2fn] [, ieqffn]   \
+                     [, ieqlfn] [, ieqqfn] [, itabl] [, ioutfn])
     ```
 
 === "Classic"
@@ -75,7 +79,7 @@ All values are in the range 0 to 1; if the specified number is greater than 1, i
 
 _ioutfn_ (optional: default=0) -- Function table to write phase and frequency values (optional). The format is the same as in the case of _itabl_. This table is useful when experimenting with random numbers to record the best values.
 
-The two optional tables (_itabl_ and _ioutfn_) are accessed only at i-time. This is useful to know, as the tables can be safely overwritten after opcode initialization, which allows precalculating parameters at i-time and storing in a temporary table before _oscbnk_ initialization.
+The two optional tables (_itabl_ and _ioutfn_) are accessed only at i-time. This is useful to know, as the tables can be safely overwritten after opcode initialization, which allows precalculating parameters at i-time and storing in a temporary table before *oscilbank* initialization.
 
 ### Performance
 
@@ -111,22 +115,34 @@ _kfn_ -- Oscillator waveform table. Table number can be changed at k-rate (this 
 
 > :memo: **Note**<br>
 >
-> _oscbnk_ uses the same random number generator as _rnd31_. So reading [its documentation](../opcodes/rnd31.md) is also recommended.
+> *oscilbank* uses the same random number generator as _rnd31_. So reading [its documentation](../opcodes/rnd31.md) is also recommended.
 >
 
 ## Examples
 
-Here is an example of oscbnk opcode. It uses the file [oscbnk.csd](../examples/oscbnk.csd).
+=== "Modern"
+    Here is an example of oscilbank opcode. It uses the file [oscilbank.csd](../examples/oscilbank.csd).
+    ``` csound-orc title="Example of the oscilbank opcode." linenums="1"
+    --8<-- "examples/oscilbank.csd"
+    ```
 
-``` csound-orc title="Example of the oscbnk opcode." linenums="1"
---8<-- "examples/oscbnk.csd"
-```
+=== "Classic"
+    Here is an example of oscbnk opcode. It uses the file [oscbnk.csd](../examples/oscbnk.csd).
+    ``` csound-orc title="Example of the oscbnk opcode." linenums="1"
+    --8<-- "examples/oscbnk.csd"
+    ```
 
-Here is an advanced example of oscbnk opcode. It uses the file [oscbnk-advanced.csd](../examples/oscbnk-advanced.csd).
+=== "Modern"
+    Here is an advanced example of oscilbank opcode. It uses the file [oscilbank-advanced.csd](../examples/oscilbank-advanced.csd).
+    ``` csound-orc title="Advanced example of the oscilbank opcode." linenums="1"
+    --8<-- "examples/oscilbank-advanced.csd"
+    ```
 
-``` csound-orc title="Advanced example of the oscbnk opcode." linenums="1"
---8<-- "examples/oscbnk-advanced.csd"
-```
+=== "Classic"
+    Here is an advanced example of oscbnk opcode. It uses the file [oscbnk-advanced.csd](../examples/oscbnk-advanced.csd).
+    ``` csound-orc title="Advanced example of the oscbnk opcode." linenums="1"
+    --8<-- "examples/oscbnk-advanced.csd"
+    ```
 
 ## See also
 

@@ -1,6 +1,7 @@
 <!--
 id:push_f
 category:Instrument Control:Stacks
+status:deprecated
 -->
 # push_f
 Pushes an f-sig frame into the global stack.  Deprecated.

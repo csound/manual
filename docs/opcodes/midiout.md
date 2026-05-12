@@ -8,13 +8,17 @@ Sends a generic MIDI message to the MIDI OUT port.
 ## Syntax
 === "Modern"
     ``` csound-orc
-    midiout(kstatus, kchan, kdata1, kdata2)
+    midiout(kstatus, kchan, kdata1, kdata2  [, iport])
     ```
 
 === "Classic"
     ``` csound-orc
-    midiout kstatus, kchan, kdata1, kdata2
+    midiout kstatus, kchan, kdata1, kdata2 [, iport]
     ```
+
+### Initialisation
+
+_iport_ -- MIDI output port, optional set to 0.
 
 ### Performance
 

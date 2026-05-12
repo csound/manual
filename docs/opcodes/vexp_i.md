@@ -2,13 +2,17 @@
 id:vexp_i
 category:Vectorial:Scalar operations
 -->
-# vexp_i
+# vexpi
 Performs power-of operations between a vector and a scalar.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *vexp_i*.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    vexp_i(ifn, ival, ielements [, idstoffset])
+    vexpi(ifn, ival, ielements [, idstoffset])
     ```
 
 === "Classic"
@@ -30,21 +34,27 @@ _idstoffset_ - index offset for the destination table
 
 ### Performance
 
-_vexp_i_ rises _ival_ to each element contained in a vector from table _ifn_, starting from table index _idstoffset_. This enables you to process a specific section of a table by specifying the offset and the number of elements to be processed. Offset is counted starting from 0, so if no offset is specified (or set to 0), the table will be modified from the beginning.
+_vexpi_ rises _ival_ to each element contained in a vector from table _ifn_, starting from table index _idstoffset_. This enables you to process a specific section of a table by specifying the offset and the number of elements to be processed. Offset is counted starting from 0, so if no offset is specified (or set to 0), the table will be modified from the beginning.
 
 Negative values for _idstoffset_ are valid. Elements from the vector that are outside the table, will be discarded, and they will not wrap around the table.
 
 This opcode runs only on initialization, there is a k-rate version of this opcode called [vexp](../opcodes/vexp.md).
 
-In all these opcodes, the resulting vectors are stored in _ifn_, overriding the initial vectors. If you want to keep initial vector, use [vcopy](../opcodes/vcopy.md) or [vcopy_i](../opcodes/vcopy_i.md) to copy it in another table. All these operators are designed to be used together with other opcodes that operate with vectorial signals such as [vcella](../opcodes/vcella.md), [adsynt](../opcodes/adsynt.md), [adsynt2](../opcodes/adsynt2.md), etc.  They can also be useful in conjunction with the spectral opcodes [pvsftw](../opcodes/pvsftw.md) and [pvsftr](../opcodes/pvsftr.md).
+In all these opcodes, the resulting vectors are stored in _ifn_, overriding the initial vectors. If you want to keep initial vector, use [vcopy](../opcodes/vcopy.md) or [vcopyi](../opcodes/vcopy_i.md) to copy it in another table. All these operators are designed to be used together with other opcodes that operate with vectorial signals such as [vcella](../opcodes/vcella.md), [adsynt](../opcodes/adsynt.md), [adsynt2](../opcodes/adsynt2.md), etc.  They can also be useful in conjunction with the spectral opcodes [pvsftw](../opcodes/pvsftw.md) and [pvsftr](../opcodes/pvsftr.md).
 
 ## Examples
 
-Here is an example of the vexp_i opcode. It uses the file [vexp_i.csd](../examples/vexp_i.csd).
+=== "Modern"
+    Here is an example of the vexpi opcode. It uses the file [vexpi.csd](../examples/vexpi.csd).
+    ``` csound-csd title="Example of the vexpi opcode." linenums="1"
+    --8<-- "examples/vexpi.csd"
+    ```
 
-``` csound-csd title="Example of the vexp_i opcode." linenums="1"
---8<-- "examples/vexp_i.csd"
-```
+=== "Classic"
+    Here is an example of the vexp_i opcode. It uses the file [vexp_i.csd](../examples/vexp_i.csd).
+    ``` csound-csd title="Example of the vexp_i opcode." linenums="1"
+    --8<-- "examples/vexp_i.csd"
+    ```
 
 ## See also
 

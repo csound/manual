@@ -1,6 +1,7 @@
 <!--
 id:soundout
 category:Signal I/O:Signal Output
+status:deprecated
 -->
 # soundout
 Deprecated. Writes audio output to a disk file.

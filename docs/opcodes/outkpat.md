@@ -8,13 +8,18 @@ Sends polyphonic MIDI aftertouch messages at k-rate.
 ## Syntax
 === "Modern"
     ``` csound-orc
-    outkpat(kchn, knotenum, kvalue, kmin, kmax)
+    outkpat(kchn, knotenum, kvalue, kmin, kmax [, iport])
     ```
 
 === "Classic"
     ``` csound-orc
-    outkpat kchn, knotenum, kvalue, kmin, kmax
+    outkpat kchn, knotenum, kvalue, kmin, kmax [, iport]
     ```
+
+### Initialisation
+
+_iport_ -- MIDI output port, optional set to 0.
+
 
 ### Performance
 

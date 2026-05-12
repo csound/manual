@@ -3,7 +3,7 @@
 ## Basic Oscillators
 The basic oscillator opcodes are: (note that opcodes that end with 'i' implement linear interpolation and those that end with '3' implement cubic interpolation).
 
-- Oscillator Banks: [oscbnk](../opcodes/oscbnk.md)
+- Oscillator Banks: [oscilbank](../opcodes/oscbnk.md)
 - Simple table oscillators: [oscil](../opcodes/oscil.md), [oscil3](../opcodes/oscil3.md) and [oscili](../opcodes/oscili.md).
 - Simple, fast sine oscilator: [oscils](../opcodes/oscils.md)
 - Precision oscilators: [poscil](../opcodes/poscil.md) and [poscil3](../opcodes/poscil3.md).

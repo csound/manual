@@ -2,14 +2,18 @@
 id:loop_gt
 category:Instrument Control:Program Flow Control
 -->
-# loop_gt
+# loopgt
 Construction of looping operations.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *loop_gt*.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    loop_gt(indx, idecr, imin, label)
-    loop_gt(kndx, kdecr, kmin, label)
+    loopgt(indx, idecr, imin, label)
+    loopgt(kndx, kdecr, kmin, label)
     ```
 
 === "Classic"
@@ -34,7 +38,7 @@ _kdecr_ -- value to decrement the loop.
 
 _kmin_ -- minimum value of loop index.
 
-The actions of _loop\_gt_ are equivalent to the code
+The actions of _loopgt_ are equivalent to the code
 
 ``` csound-orc
 indx  =  indx - idecr
@@ -54,11 +58,17 @@ if (kndx > kmin) kgoto label
 
 ## Examples
 
-Here is an example of the loop_gt opcode. It uses the file [loop_gt.csd](../examples/loop_gt.csd).
+=== "Modern"
+    Here is an example of the loopgt opcode. It uses the file [loopgt.csd](../examples/loopgt.csd).
+    ``` csound-csd title="Example of the loopgt opcode." linenums="1"
+    --8<-- "examples/loopgt.csd"
+    ```
 
-``` csound-csd title="Example of the loop_gt opcode." linenums="1"
---8<-- "examples/loop_gt.csd"
-```
+=== "Classic"
+    Here is an example of the loop_gt opcode. It uses the file [loop_gt.csd](../examples/loop_gt.csd).
+    ``` csound-csd title="Example of the loop_gt opcode." linenums="1"
+    --8<-- "examples/loop_gt.csd"
+    ```
 
 ## See also
 

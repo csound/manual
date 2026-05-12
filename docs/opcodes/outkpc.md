@@ -8,13 +8,18 @@ Sends MIDI program change messages at k-rate.
 ## Syntax
 === "Modern"
     ``` csound-orc
-    outkpc(kchn, kprog, kmin, kmax)
+    outkpc(kchn, kprog, kmin, kmax [, iport])
     ```
 
 === "Classic"
     ``` csound-orc
-    outkpc kchn, kprog, kmin, kmax
+    outkpc kchn, kprog, kmin, kmax [, iport]
     ```
+
+### Initialisation
+
+_iport_ -- MIDI output port, optional set to 0.
+
 
 ### Performance
 

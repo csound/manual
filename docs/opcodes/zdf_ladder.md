@@ -2,13 +2,17 @@
 id:zdf_ladder
 category:Signal Modifiers:Standard Filters
 -->
-# zdf_ladder
+# zdfladder
 Zero-delay feedback implementation of a 4 pole (24 dB/oct) low-pass filter based on the Moog ladder filter.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *zdf_ladder*.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    asig = zdf_ladder(ain, xcf, xQ [, istor])
+    asig = zdfladder(ain, xcf, xQ [, istor])
     ```
 
 === "Classic"
@@ -32,11 +36,17 @@ _xQ_ -- filter Q value (i-, k-, or a-rate). Range 0.5-25.0. Self-oscillation occ
 
 ## Examples
 
-Here is an example of the zdf_ladder opcode. It uses the file [zdf_ladder.csd](../examples/zdf_ladder.csd).
+=== "Modern"
+    Here is an example of the zdfladder opcode. It uses the file [zdfladder.csd](../examples/zdfladder.csd).
+    ``` csound-csd title="Example of the zdfladder opcode." linenums="1"
+    --8<-- "examples/zdfladder.csd"
+    ```
 
-``` csound-csd title="Example of the zdf_ladder opcode." linenums="1"
---8<-- "examples/zdf_ladder.csd"
-```
+=== "Classic"
+    Here is an example of the zdf_ladder opcode. It uses the file [zdf_ladder.csd](../examples/zdf_ladder.csd).
+    ``` csound-csd title="Example of the zdf_ladder opcode." linenums="1"
+    --8<-- "examples/zdf_ladder.csd"
+    ```
 
 ### References
 

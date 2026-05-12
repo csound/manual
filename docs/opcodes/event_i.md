@@ -2,14 +2,18 @@
 id:event_i
 category:Instrument Control:Invocation
 -->
-# event_i
+# eventi
 Generates a score event from an instrument.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *event_i*.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    event_i("scorechar", iinsnum, idelay, idur, [, ip4] [, ip5] [, ...])
-    event_i("scorechar", "insname", idelay, idur, [, ip4] [, ip5] [, ...])
+    eventi("scorechar", iinsnum, idelay, idur, [, ip4] [, ip5] [, ...])
+    eventi("scorechar", "insname", idelay, idur, [, ip4] [, ip5] [, ...])
     ```
 
 === "Classic"
@@ -38,15 +42,21 @@ The event is added to the queue at initialisation time.
 
 > :memo: **Note**
 >
-> Note that the _event_i_ opcode cannot accept string p-fields. If you need to pass strings when instantiating an instrument, use the [scoreline](../opcodes/scoreline.md) or [scoreline_i](../opcodes/scoreline_i.md) opcode.
+> Note that the _eventi_ opcode cannot accept string p-fields. If you need to pass strings when instantiating an instrument, use the [scoreline](../opcodes/scoreline.md) or [scorelinei](../opcodes/scoreline_i.md) opcode.
 
 ## Examples
 
-Here is an example of the event_i opcode. It uses the file [event_i.csd](../examples/event_i.csd).
+=== "Modern"
+    Here is an example of the eventi opcode. It uses the file [eventi.csd](../examples/eventi.csd).
+    ``` csound-csd title="Example of the eventi opcode." linenums="1"
+    --8<-- "examples/eventi.csd"
+    ```
 
-``` csound-csd title="Example of the event_i opcode." linenums="1"
---8<-- "examples/event_i.csd"
-```
+=== "Classic"
+    Here is an example of the event_i opcode. It uses the file [event_i.csd](../examples/event_i.csd).
+    ``` csound-csd title="Example of the event_i opcode." linenums="1"
+    --8<-- "examples/event_i.csd"
+    ```
 
 ## See also
 

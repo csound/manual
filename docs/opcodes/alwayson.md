@@ -46,7 +46,7 @@ When the instrument is activated, p1 is the insno, p2 is 0, and p3 is -1. Pfield
 
 ## See also
 
-[Signal Flow Graph Opcodes](../signalflowgraph.md)
+[Signal Flow Graph Opcodes](../sigrouting/signalflowgraph.md)
 
 ## Credits
 

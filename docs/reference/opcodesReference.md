@@ -31,31 +31,6 @@
 [==](../opcodes/equals.md) - Compares two values for equality.<br>
 [=](../opcodes/assign.md) - Performs a simple assignment.<br>
 [A4](../opcodes/A4.md) - Sets the base frequency for pitch A4.<br>
-[ATSadd](../opcodes/ATSadd.md) - Uses the data from an ATS analysis file to perform additive synthesis using an internal array of interpolating oscillators.<br>
-[ATSaddnz](../opcodes/ATSaddnz.md) - Uses the data from an ATS analysis file to perform noise resynthesis using a modified randi function.<br>
-[ATSbufread](../opcodes/ATSbufread.md) - Reads data from and ATS data file and stores it in an internal data table of frequency, amplitude pairs.<br>
-[ATScross](../opcodes/ATScross.md) - _ATScross_ uses data from an ATS analysis file and data from an [ATSbufread](../opcodes/ATSbufread.md) to perform cross synthesis.<br>
-[ATSinfo](../opcodes/ATSinfo.md) - Reads data out of the header of an ATS file.<br>
-[ATSinterpread](../opcodes/ATSinterpread.md) - Allows a user to determine the frequency envelope of any [ATSbufread](../opcodes/ATSbufread.md).<br>
-[ATSpartialtap](../opcodes/ATSpartialtap.md) - Returns a frequency, amplitude pair from an [ATSbufread](../opcodes/ATSbufread.md) opcode.<br>
-[ATSread](../opcodes/ATSread.md) - Reads data from an ATS file.<br>
-[ATSreadnz](../opcodes/ATSreadnz.md) - reads data from an ATS file.<br>
-[ATSsinnoi](../opcodes/ATSsinnoi.md) - _ATSsinnoi_ reads data from an ATS data file and uses the information to synthesize sines and noise together.<br>
-[K35_hpf](../opcodes/k35_hpf.md) - Zero-delay feedback implementation of Korg35 resonant high-pass filter.<br>
-[K35_lpf](../opcodes/k35_lpf.md) - Zero-delay feedback implementation of Korg35 resonant low-pass filter.<br>
-[MixerClear](../opcodes/mixerclear.md) - Resets all channels of a buss to 0.<br>
-[MixerGetLevel](../opcodes/mixergetlevel.md) - Gets the level at which signals from the send are being added to the buss.<br>
-[MixerReceive](../opcodes/mixerreceive.md) - Receives an arate signal that has been mixed onto a channel of a buss.<br>
-[MixerSend](../opcodes/mixersend.md) - Mixes an arate signal into a channel of a buss.<br>
-[MixerSetLevel](../opcodes/mixersetlevel.md) - Sets the level at which signals from the send are added to the buss.<br>
-[MixerSetLevel_i](../opcodes/mixersetlevel_i.md) - Sets the level at which signals from the send are added to the buss.<br>
-[OSCbundle](../opcodes/OSCbundle.md) - Sends data to other processes using the OSC protocol by packing messages in a bundle.<br>
-[OSCcount](../opcodes/OSCcount.md) - Gives the Count of OSC messages currently unread but received by the current listeners.<br>
-[OSCinitM](../opcodes/OSCinitM.md) - Start a multicast listening process to a particular port, which can be used by OSClisten.<br>
-[OSCinit](../opcodes/OSCinit.md) - Start a listening process for OSC messages to a particular port.<br>
-[OSClisten](../opcodes/OSClisten.md) - Listen for OSC messages to a particular path, either from a custom-defined OSC server or from the Csound UDP server.<br>
-[OSCraw](../opcodes/OSCraw.md) - Listen for all OSC messages at a given port.<br>
-[OSCsend](../opcodes/OSCsend.md) - Sends data to other listening processes using the OSC protocol.<br>
 [S](../opcodes/ops.md) - Returns a string containg the numeric value of its argument.<br>
 [\#](../opcodes/opnonequiv.md) - Bitwise NON EQUIVALENCE operator.<br>
 [a](../opcodes/opa.md) - Converts a k-sig or k-array parameter to an a-sig output.<br>
@@ -75,10 +50,10 @@
 [ampmidicurve](../opcodes/ampmidicurve.md) - Maps an input MIDI velocity number to an output gain factor with a maximum value of 1, modifying the output gain by a dynamic range and a shaping exponent.<br>
 [ampmidid](../opcodes/ampmidid.md) - Musically map MIDI velocity to peak amplitude within a specified dynamic range in decibels.<br>
 [apoleparams](../opcodes/apoleparams.md) - Extracts allpole filter parameters from coefficients.<br>
-[arduinoReadF](../opcodes/arduinoReadF.md) - Read integer data from an arduino port using the Csound-Arduino protocol.<br>
-[arduinoRead](../opcodes/arduinoRead.md) - Read integer data from an arduino port using the Csound-Arduino protocol.<br>
-[arduinoStart](../opcodes/arduinoStart.md) - Open a serial port for use with the Arduino protocol.<br>
-[arduinoStop](../opcodes/arduinoStop.md) - Close a serial port using Arduino protocol.<br>
+[arduinoread](../opcodes/arduinoRead.md) - Read integer data from an arduino port using the Csound-Arduino protocol.<br>
+[arduinoreadf](../opcodes/arduinoReadF.md) - Read integer data from an arduino port using the Csound-Arduino protocol.<br>
+[arduinostart](../opcodes/arduinoStart.md) - Open a serial port for use with the Arduino protocol.<br>
+[arduinostop](../opcodes/arduinoStop.md) - Close a serial port using Arduino protocol.<br>
 [areson](../opcodes/areson.md) - A notch filter whose transfer functions are the complements of the reson opcode.<br>
 [aresonk](../opcodes/aresonk.md) - A notch filter whose transfer functions are the complements of the reson opcode.<br>
 [arg](../opcodes/arg.md) - Returns the argument of a complex number.<br>
@@ -86,6 +61,16 @@
 [atone](../opcodes/atone.md) - A hi-pass filter whose transfer functions are the complements of the [tone](../opcodes/tone.md) opcode.<br>
 [atonek](../opcodes/atonek.md) - A hi-pass filter whose transfer functions are the complements of the [tonek](../opcodes/tonek.md) opcode.<br>
 [atonex](../opcodes/atonex.md) - Emulates a stack of filters using the atone opcode.<br>
+[atsadd](../opcodes/ATSadd.md) - Uses the data from an ATS analysis file to perform additive synthesis using an internal array of interpolating oscillators.<br>
+[atsaddnz](../opcodes/ATSaddnz.md) - Uses the data from an ATS analysis file to perform noise resynthesis using a modified randi function.<br>
+[atsbufread](../opcodes/ATSbufread.md) - Reads data from and ATS data file and stores it in an internal data table of frequency, amplitude pairs.<br>
+[atscross](../opcodes/ATScross.md) - _atscross_ uses data from an ATS analysis file and data from an [atsbufread](../opcodes/ATSbufread.md) to perform cross synthesis.<br>
+[atsinfo](../opcodes/ATSinfo.md) - Reads data out of the header of an ATS file.<br>
+[atsinterpread](../opcodes/ATSinterpread.md) - Allows a user to determine the frequency envelope of any [atsbufread](../opcodes/ATSbufread.md).<br>
+[atspartialtap](../opcodes/ATSpartialtap.md) - Returns a frequency, amplitude pair from an [atsbufread](../opcodes/ATSbufread.md) opcode.<br>
+[atsread](../opcodes/ATSread.md) - Reads data from an ATS file.<br>
+[atsreadnz](../opcodes/ATSreadnz.md) - reads data from an ATS file.<br>
+[atssinnoi](../opcodes/ATSsinnoi.md) - _atssinnoi_ reads data from an ATS data file and uses the information to synthesize sines and noise together.<br>
 [autocorr](../opcodes/autocorr.md) - This opcode takes in an input array and computes its autocorrelation.<br>
 [babo](../opcodes/babo.md) - A physical model reverberator.<br>
 [balance2](../opcodes/balance2.md) - Adjust one audio signal according to the values of another.<br>
@@ -154,13 +139,13 @@
 [cmp](../opcodes/cmp.md) - Compares audio signals or arrays.<br>
 [cmplxprod](../opcodes/cmplxprod.md) - Complex  product of two arrays of the same size and in real-imaginary interleaved format.<br>
 [cngoto](../opcodes/cngoto.md) - Transfers control on every pass when the condition is _not_ true.<br>
-[cntCreate](../opcodes/cntcreate.md) - Create a counter object.<br>
-[cntCycles](../opcodes/cntcycles.md) - Get the number of times a counter has cycled.<br>
-[cntDelete](../opcodes/cntDelete.md) - Delete a counter and render any memory used.<br>
-[cntDelete_i](../opcodes/cntDelete_i.md) - Delete a counter.<br>
-[cntRead](../opcodes/cntread.md) - Read current value of a counter object without changing it.<br>
-[cntReset](../opcodes/cntreset.md) - Resets a counter object to its initial state.<br>
-[cntState](../opcodes/cntstate.md) - Gives the range and increment of a counter.<br>
+[cntcreate](../opcodes/cntcreate.md) - Create a counter object.<br>
+[cntcycles](../opcodes/cntcycles.md) - Get the number of times a counter has cycled.<br>
+[cntdelete](../opcodes/cntDelete.md) - Delete a counter and render any memory used.<br>
+[cntdeletei](../opcodes/cntDelete_i.md) - Delete a counter.<br>
+[cntread](../opcodes/cntread.md) - Read current value of a counter object without changing it.<br>
+[cntreset](../opcodes/cntreset.md) - Resets a counter object to its initial state.<br>
+[cntstate](../opcodes/cntstate.md) - Gives the range and increment of a counter.<br>
 [comb](../opcodes/comb.md) - Reverberates an input signal with a &#8220;colored&#8221; frequency response.<br>
 [combinv](../opcodes/combinv.md) - Reverberates an input signal with a &#8220;colored&#8221; frequency response.<br>
 [compilecsd](../opcodes/compilecsd.md) - Compiles a new orchestra from an ASCII file.<br>
@@ -186,7 +171,7 @@ cosine interpolation.<br>
 [cossegr](../opcodes/cossegr.md) - Trace a series of line segments between specified points with
 cosine interpolation, including a release segment.<br>
 [count](../opcodes/count.md) - Get the next value from a counter.<br>
-[count_i](../opcodes/count_i.md) - Get the next value from a counter.<br>
+[counti](../opcodes/count_i.md) - Get the next value from a counter.<br>
 [cps2pch](../opcodes/cps2pch.md) - Converts a pitch-class value into cycles-per-second (Hz) for equal divisions of the octave.<br>
 [cpsmidi](../opcodes/cpsmidi.md) - Get the note number of the current MIDI event, expressed in cycles-per-second.<br>
 [cpsmidib](../opcodes/cpsmidib.md) - Get the note number of the current MIDI event and modify it by the current pitch-bend value, express it in cycles-per-second.<br>
@@ -238,7 +223,7 @@ cosine interpolation, including a release segment.<br>
 [deltapxw](../opcodes/deltapxw.md) - Mixes the input signal to a delay line.<br>
 [denorm](../opcodes/denorm.md) - Mixes low level (~1e-20 for floats, and ~1e-56 for doubles) noise to a list of a-rate signals.<br>
 [diff](../opcodes/diff.md) - Modify a signal by differentiation.<br>
-[diode_ladder](../opcodes/diode_ladder.md) - Zero-delay feedback implementation of a 4 pole (24 dB/oct) diode low-pass filter.<br>
+[diodeladder](../opcodes/diode_ladder.md) - Zero-delay feedback implementation of a 4 pole (24 dB/oct) diode low-pass filter.<br>
 [directory](../opcodes/directory.md) - Reads a directory and outputs to a string array a list of file names.<br>
 [diskgrain](../opcodes/diskgrain.md) - Synchronous granular synthesis, using a soundfile as source.<br>
 [diskin2](../opcodes/diskin2.md) - Reads audio data from a file, and can alter its pitch using one of several available interpolation types, as well as convert the sample rate to match the orchestra sr setting.<br>
@@ -272,8 +257,8 @@ cosine interpolation, including a release segment.<br>
 [eqfil](../opcodes/eqfil.md) - Equalizer filter.<br>
 [evalstr](../opcodes/evalstr.md) - Evaluates a string containing Csound code, returning a value from the global space (instr 0).<br>
 [event](../opcodes/event.md) - Generates a score event from an instrument.<br>
-[event_i](../opcodes/event_i.md) - Generates a score event from an instrument.<br>
 [eventcycles](../opcodes/eventcycles.md) - Read absolute time in k-rate cycles, since the start of an instance of an instrument.<br>
+[eventi](../opcodes/event_i.md) - Generates a score event from an instrument.<br>
 [eventtime](../opcodes/eventtime.md) - Read absolute time, in seconds, since the start of an instance of an instrument.<br>
 [eventtype](../opcodes/eventtype.md) - Returns the event type for an instrument.<br>
 [exciter](../opcodes/exciter.md) - A non-linear filter system to excite the signal.<br>
@@ -303,7 +288,6 @@ cosine interpolation, including a release segment.<br>
 [fillarray](../opcodes/fillarray.md) - Generate a vector (one-dimensional k-rate array) with a sequence of
 numeric or string values.<br>
 [filter2](../opcodes/filter2.md) - General purpose custom filter.<br>
-[fin](../opcodes/fin.md) - Read signals from a file at a-rate.<br>
 [fini](../opcodes/fini.md) - Read signals from a file at i-rate.<br>
 [fink](../opcodes/fink.md) - Read signals from a file at k-rate.<br>
 [fiopen](../opcodes/fiopen.md) - Opens a file in a specific mode.<br>
@@ -373,7 +357,7 @@ numeric or string values.<br>
 [gausstrig](../opcodes/gausstrig.md) - Random impulses around a certain frequency.<br>
 [gbuzz](../opcodes/gbuzz.md) - Output is a set of harmonically related cosine partials.<br>
 [genarray](../opcodes/genarray.md) - Generate a vector (one-dimensional k-rate or i-rate array) with an arithmetic sequence.<br>
-[genarray_i](../opcodes/genarray_i.md) - Generate a vector (one-dimensional k-rate) with an arithmetic sequence at initialisation time.<br>
+[genarrayi](../opcodes/genarray_i.md) - Generate a vector (one-dimensional k-rate) with an arithmetic sequence at initialisation time.<br>
 [gendy](../opcodes/gendy.md) - Dynamic stochastic approach to waveform synthesis conceived by Iannis Xenakis.<br>
 [gendyc](../opcodes/gendyc.md) - Dynamic stochastic approach to waveform synthesis using cubic interpolation.<br>
 [gendyx](../opcodes/gendyx.md) - Variation of the dynamic stochastic approach to waveform synthesis conceived by Iannis Xenakis.<br>
@@ -396,7 +380,6 @@ numeric or string values.<br>
 [hilbert2](../opcodes/hilbert2.md) - A DFT-based implementation of a Hilbert transformer.<br>
 [hilbert](../opcodes/hilbert.md) - A Hilbert transformer.<br>
 [hrtfearly](../opcodes/hrtfearly.md) - Generates 3D binaural audio with high-fidelity early reflections in a parametric room using a Phase Truncation algorithm.<br>
-[hrtfer](../opcodes/hrtfer.md) - Creates 3D audio for two speakers.<br>
 [hrtfmove2](../opcodes/hrtfmove2.md) - Generates dynamic 3d binaural audio for headphones using a Woodworth based spherical head model with improved low frequency phase accuracy.<br>
 [hrtfmove](../opcodes/hrtfmove.md) - Generates dynamic 3d binaural audio for headphones using magnitude interpolation and phase truncation.<br>
 [hrtfreverb](../opcodes/hrtfreverb.md) - A binaural, dynamic FDN based diffuse-field reverberator.<br>
@@ -442,6 +425,8 @@ numeric or string values.<br>
 [jitter](../opcodes/jitter.md) - Generates a segmented line whose segments are randomly generated.<br>
 [joystick](../opcodes/joystick.md) - Reads data from a Linux joystick controller.<br>
 [jspline](../opcodes/jspline.md) - A jitter-spline generator.<br>
+[k35hpf](../opcodes/k35_hpf.md) - Zero-delay feedback implementation of Korg35 resonant high-pass filter.<br>
+[k35lpf](../opcodes/k35_lpf.md) - Zero-delay feedback implementation of Korg35 resonant low-pass filter.<br>
 [k](../opcodes/opk.md) - Converts a i-rate parameter to an k-rate value or an a-rate value to a k-rate value by down-sampling.<br>
 [kgoto](../opcodes/kgoto.md) - During the p-time passes only, unconditionally transfer control to the statement labeled by _label_.<br>
 [kr](../opcodes/kr.md) - Sets the control rate.<br>
@@ -472,10 +457,10 @@ numeric or string values.<br>
 [log](../opcodes/log.md) - Returns the natural log of _x_ (_x_ positive only).<br>
 [logbtwo](../opcodes/logbtwo.md) - Performs a logarithmic base two calculation.<br>
 [logcurve](../opcodes/logcurve.md) - This opcode implements a formula for generating a normalised logarithmic curve in range 0 - 1.<br>
-[loop_ge](../opcodes/loop_ge.md) - Construction of looping operations.<br>
-[loop_gt](../opcodes/loop_gt.md) - Construction of looping operations.<br>
-[loop_le](../opcodes/loop_le.md) - Construction of looping operations.<br>
-[loop_lt](../opcodes/loop_lt.md) - Construction of looping operations.<br>
+[loopge](../opcodes/loop_ge.md) - Construction of looping operations.<br>
+[loopgt](../opcodes/loop_gt.md) - Construction of looping operations.<br>
+[loople](../opcodes/loop_le.md) - Construction of looping operations.<br>
+[looplt](../opcodes/loop_lt.md) - Construction of looping operations.<br>
 [loopseg](../opcodes/loopseg.md) - Generate control signal consisting of linear segments delimited by two or more specified points.<br>
 [loopsegp](../opcodes/loopsegp.md) - Control signals based on linear segments.<br>
 [looptseg](../opcodes/looptseg.md) - Generate control signal consisting of exponential or linear segments delimited by two or more specified points.<br>
@@ -514,12 +499,12 @@ numeric or string values.<br>
 [marimba](../opcodes/marimba.md) - Physical model related to the striking of a wooden block as found in a marimba.<br>
 [massign](../opcodes/massign.md) - Assigns a MIDI channel number to a Csound instrument.<br>
 [max](../opcodes/max.md) - Produces a signal that is the maximum of any number of input signals.<br>
-[max_k](../opcodes/max_k.md) - Local maximum (or minimum) value of an incoming asig signal, checked in the time interval between ktrig has become true twice.<br>
 [maxabs](../opcodes/maxabs.md) - Produces a signal that is the maximum of the absolute values of any number of input signals.<br>
 [maxabsaccum](../opcodes/maxabsaccum.md) - Accumulates the maximum of the absolute values of audio signals.<br>
 [maxaccum](../opcodes/maxaccum.md) - Accumulates the maximum value of audio signals.<br>
 [maxalloc](../opcodes/maxalloc.md) - Limits the number of allocations of an instrument.<br>
 [maxarray](../opcodes/maxarray.md) - Returns the maximum value in a k-rate array, and optional its index.<br>
+[maxk](../opcodes/max_k.md) - Local maximum (or minimum) value of an incoming asig signal, checked in the time interval between ktrig has become true twice.<br>
 [mclock](../opcodes/mclock.md) - Sends a MIDI CLOCK message.<br>
 [mdelay](../opcodes/mdelay.md) - A MIDI delay opcode.<br>
 [median](../opcodes/median.md) - A median filter, a variant FIR lowpass filter.<br>
@@ -571,6 +556,12 @@ numeric or string values.<br>
 [minarray](../opcodes/minarray.md) - Returns the minimum value in a k-rate array, and optional its index.<br>
 [mincer](../opcodes/mincer.md) - Phase-locked vocoder processing.<br>
 [mirror](../opcodes/mirror.md) - Reflects the signal that exceeds the low and high thresholds.<br>
+[mixerclear](../opcodes/mixerclear.md) - Resets all channels of a buss to 0.<br>
+[mixergetlevel](../opcodes/mixergetlevel.md) - Gets the level at which signals from the send are being added to the buss.<br>
+[mixerreceive](../opcodes/mixerreceive.md) - Receives an arate signal that has been mixed onto a channel of a buss.<br>
+[mixersend](../opcodes/mixersend.md) - Mixes an arate signal into a channel of a buss.<br>
+[mixersetlevel](../opcodes/mixersetlevel.md) - Sets the level at which signals from the send are added to the buss.<br>
+[mixersetleveli](../opcodes/mixersetlevel_i.md) - Sets the level at which signals from the send are added to the buss.<br>
 [mode](../opcodes/mode.md) - A filter that simulates a mass-spring-damper system.<br>
 [modmatrix](../opcodes/modmatrix.md) - Modulation matrix opcode with optimizations for sparse matrices.<br>
 [monitor](../opcodes/monitor.md) - Returns the audio spout frame (if active), otherwise it returns zero.<br>
@@ -598,8 +589,8 @@ numeric or string values.<br>
 [mvmfilter](../opcodes/mvmfilter.md) - A filter with pronounced resonance and controllable decay time.<br>
 [mxadsr](../opcodes/mxadsr.md) - Calculates the classical ADSR envelope using the [expsegr](../opcodes/expsegr.md) mechanism.<br>
 [nchnls](../opcodes/nchnls.md) - Sets the number of channels of audio output.<br>
-[nchnls_hw](../opcodes/nchnls_hw.md) - Returns the number of audio channels in the underlying hardware.<br>
 [nchnls_i](../opcodes/nchnls_i.md) - Sets the number of channels of audio input.<br>
+[nchnlshw](../opcodes/nchnls_hw.md) - Returns the number of audio channels in the underlying hardware.<br>
 [nestedap](../opcodes/nestedap.md) - Three different nested all-pass filters, useful for implementing reverbs.<br>
 [nlfilt2](../opcodes/nlfilt2.md) - A filter with a non-linear effect and blowup protection.<br>
 [nlfilt](../opcodes/nlfilt.md) - A filter with a non-linear effect.<br>
@@ -627,11 +618,13 @@ numeric or string values.<br>
 [olabuffer](../opcodes/olabuffer.md) - Sum overlapping frames of audio as k-rate arrays and read as an audio signal.<br>
 [opcode](../opcodes/opcode.md) - Defines the start of user-defined opcode block.<br>
 [opcodeinfo](../opcodes/opcodeinfo.md) - Prints information on an opcode definition and its overloads.<br>
-[oscbnk](../opcodes/oscbnk.md) - Mixes the output of any number of oscillators.<br>
+[oscbundle](../opcodes/OSCbundle.md) - Sends data to other processes using the OSC protocol by packing messages in a bundle.<br>
+[osccount](../opcodes/OSCcount.md) - Gives the Count of OSC messages currently unread but received by the current listeners.<br>
 [oscil1](../opcodes/oscil1.md) - Accesses table values by incremental sampling.<br>
 [oscil1i](../opcodes/oscil1i.md) - Accesses table values by incremental sampling with linear interpolation.<br>
 [oscil3](../opcodes/oscil3.md) - A simple oscillator with cubic interpolation.<br>
 [oscil](../opcodes/oscil.md) - A simple oscillator without any interpolation.<br>
+[oscilbank](../opcodes/oscbnk.md) - Mixes the output of any number of oscillators.<br>
 [oscili](../opcodes/oscili.md) - A simple oscillator with linear interpolation.<br>
 [oscilikt](../opcodes/oscilikt.md) - A linearly interpolated oscillator that allows changing the table number at k-rate.<br>
 [osciliktp](../opcodes/osciliktp.md) - A linearly interpolated oscillator that allows allows phase modulation.<br>
@@ -639,6 +632,11 @@ numeric or string values.<br>
 [osciln](../opcodes/osciln.md) - Accesses table values at a user-defined frequency.<br>
 [oscils](../opcodes/oscils.md) - A simple, fast sine oscillator.<br>
 [oscilx](../opcodes/oscilx.md) - Same as the [osciln](../opcodes/osciln.md) opcode.<br>
+[oscinit](../opcodes/OSCinit.md) - Start a listening process for OSC messages to a particular port.<br>
+[oscinitm](../opcodes/OSCinitM.md) - Start a multicast listening process to a particular port, which can be used by *osclisten*.<br>
+[osclisten](../opcodes/OSClisten.md) - Listen for OSC messages to a particular path, either from a custom-defined OSC server or from the Csound UDP server.<br>
+[oscraw](../opcodes/OSCraw.md) - Listen for all OSC messages at a given port.<br>
+[oscsend](../opcodes/OSCsend.md) - Sends data to other listening processes using the OSC protocol.<br>
 [otafilter](../opcodes/otafilter.md) - Resonant 4pole non-linear lowpass filter.<br>
 [out32](../opcodes/out32.md) - Writes 32-channel audio data to an external device or stream.<br>
 [out](../opcodes/out.md) - Writes audio data to an external device or stream, either from audio variables or from an audio array.<br>
@@ -723,8 +721,6 @@ numeric or string values.<br>
 [polar](../opcodes/polar.md) - Returns a complex number in polar format.<br>
 [polyaft](../opcodes/polyaft.md) - Returns the polyphonic after-touch pressure of the selected note number, optionally mapped to an user-specified range.<br>
 [polynomial](../opcodes/polynomial.md) - Efficiently evaluates a polynomial of arbitrary order.<br>
-[pop](../opcodes/pop.md) - Pops values from the global stack.<br>
-[pop_f](../opcodes/pop_f.md) - Pops an f-sig frame from the global stack.<br>
 [port](../opcodes/port.md) - Applies portamento to a step-valued control signal.<br>
 [portk](../opcodes/portk.md) - Applies portamento to a step-valued control signal.<br>
 [poscil3](../opcodes/poscil3.md) - High precision oscillator with cubic interpolation.<br>
@@ -748,8 +744,6 @@ numeric or string values.<br>
 [product](../opcodes/productarray.md) - Calculates the product of an array.<br>
 [pset](../opcodes/pset.md) - Defines and initializes numeric arrays at orchestra load time.<br>
 [ptrack](../opcodes/ptrack.md) - Tracks the pitch of a signal.<br>
-[push](../opcodes/push.md) - Pushes a value into the global stack.<br>
-[push_f](../opcodes/push_f.md) - Pushes an f-sig frame into the global stack.<br>
 [puts](../opcodes/puts.md) - Print a string with an optional newline at the end whenever the trigger signal is positive and changes.<br>
 [pvadd](../opcodes/pvadd.md) - Reads from a _pvoc_ file and uses the data to perform additive synthesis.<br>
 [pvbufread](../opcodes/pvbufread.md) - Reads from a phase vocoder analysis file and makes the retrieved data available.<br>
@@ -880,7 +874,7 @@ numeric or string values.<br>
 [schedulek](../opcodes/schedulek.md) - Adds a new score event.<br>
 [schedwhen](../opcodes/schedwhen.md) - Adds a new score event.<br>
 [scoreline](../opcodes/scoreline.md) - Issues one or more score line events from an instrument.<br>
-[scoreline_i](../opcodes/scoreline_i.md) - Issues one or more score line events from an instrument at i-time.<br>
+[scorelinei](../opcodes/scoreline_i.md) - Issues one or more score line events from an instrument at i-time.<br>
 [seed](../opcodes/seed.md) - Sets the global seed value for all _x-class noise generators_, as well as other opcodes that use a random call, such as [grain](../opcodes/grain.md).<br>
 [sekere](../opcodes/sekere.md) - Semi-physical model of a sekere sound.<br>
 [select](../opcodes/select.md) - Select sample value from three based on audio-rate comparisons of two signals.<br>
@@ -890,13 +884,13 @@ numeric or string values.<br>
 [seqtime2](../opcodes/seqtime2.md) - Generates a trigger signal according to the values stored in a table.<br>
 [seqtime](../opcodes/seqtime.md) - Generates a trigger signal according to the values stored in a table.<br>
 [sequ](../opcodes/sequencer.md) - Emulate a hardware sequencer.<br>
-[serialBegin](../opcodes/serialBegin.md) - Open a serial port for arduino.<br>
-[serialEnd](../opcodes/serialEnd.md) - Close a serial port for arduino.<br>
-[serialFlush](../opcodes/serialFlush.md) - Flush data from a serial port.<br>
-[serialPrint](../opcodes/serialPrint.md) - Print data from a serial port.<br>
-[serialRead](../opcodes/serialRead.md) - Read data from a serial port for arduino.<br>
-[serialWrite](../opcodes/serialWrite.md) - Write data to a serial port for arduino.<br>
-[serialWrite_i](../opcodes/serialWrite_i.md) - Write data to a serial port for arduino.<br>
+[serialbegin](../opcodes/serialBegin.md) - Open a serial port for arduino.<br>
+[serialend](../opcodes/serialEnd.md) - Close a serial port for arduino.<br>
+[serialflush](../opcodes/serialFlush.md) - Flush data from a serial port.<br>
+[serialprint](../opcodes/serialPrint.md) - Print data from a serial port.<br>
+[serialread](../opcodes/serialRead.md) - Read data from a serial port for arduino.<br>
+[serialwrite](../opcodes/serialWrite.md) - Write data to a serial port for arduino.<br>
+[serialwritei](../opcodes/serialWrite_i.md) - Write data to a serial port for arduino.<br>
 [setcol](../opcodes/setcol.md) - Sets a given column of a 2-dimensional array from a vector.<br>
 [setctrl](../opcodes/setctrl.md) - Configurable slider controls for realtime user input.<br>
 [setksmps](../opcodes/setksmps.md) - Sets the local ksmps value in an instrument or user-defined opcode block.<br>
@@ -945,8 +939,7 @@ time-varying crossfade looping.<br>
 [slider8f](../opcodes/slider8f.md) - Creates a bank of 8 different MIDI control message numbers, filtered before output.<br>
 [slider8table](../opcodes/slider8table.md) - Stores a bank of 8 different MIDI control messages to a table.<br>
 [slider8tablef](../opcodes/slider8tablef.md) - Stores a bank of 8 different MIDI control messages to a table, filtered before output.<br>
-[sliderKawai](../opcodes/sliderkawai.md) - Creates a bank of 16 different MIDI control message numbers from a KAWAI MM-16 midi mixer.<br>
-[sndload](../opcodes/sndload.md) - Loads a sound file into memory for use by [loscilx](../opcodes/loscilx.md).<br>
+[sliderkawai](../opcodes/sliderkawai.md) - Creates a bank of 16 different MIDI control message numbers from a KAWAI MM-16 midi mixer.<br>
 [sndloop](../opcodes/sndloop.md) - A sound looper with pitch control.<br>
 [sndwarp](../opcodes/sndwarp.md) - Reads a mono sound sample from a table and applies time-stretching and/or pitch modification.<br>
 [sndwarpst](../opcodes/sndwarpst.md) - Reads a stereo sound sample from a table and applies time-stretching and/or pitch modification.<br>
@@ -955,22 +948,11 @@ time-varying crossfade looping.<br>
 [sorta](../opcodes/sorta.md) - Takes a numeric array (k or i-rate) and returns it sorted in ascending order.<br>
 [sortd](../opcodes/sortd.md) - Takes a numeric array (k or i-rate) and returns it sorted in descending order.<br>
 [soundin](../opcodes/soundin.md) - Reads audio data from an external device or stream.<br>
-[soundout](../opcodes/soundout.md) - Deprecated.<br>
-[soundouts](../opcodes/soundouts.md) - Deprecated.<br>
 [space](../opcodes/space.md) - Distributes an input signal among 4 channels using cartesian coordinates.<br>
 [spat3d](../opcodes/spat3d.md) - Positions the input sound in a 3D space and allows moving the sound at k-rate.<br>
 [spat3di](../opcodes/spat3di.md) - Positions the input sound in a 3D space with the sound source position set at i-time.<br>
 [spat3dt](../opcodes/spat3dt.md) - Can be used to render an impulse response for a 3D space at i-time.<br>
 [spdist](../opcodes/spdist.md) - Calculates distance values from xy coordinates.<br>
-[specaddm](../opcodes/specaddm.md) - Perform a weighted add of two input spectra.<br>
-[specdiff](../opcodes/specdiff.md) - Finds the positive difference values between consecutive spectral frames.<br>
-[specdisp](../opcodes/specdisp.md) - Displays the magnitude values of the spectrum.<br>
-[specfilt](../opcodes/specfilt.md) - Filters each channel of an input spectrum.<br>
-[spechist](../opcodes/spechist.md) - Accumulates the values of successive spectral frames.<br>
-[specptrk](../opcodes/specptrk.md) - Estimates the pitch of the most prominent complex tone in the spectrum.<br>
-[specscal](../opcodes/specscal.md) - Scales an input spectral datablock with spectral envelopes.<br>
-[specsum](../opcodes/specsum.md) - Sums the magnitudes across all channels of the spectrum.<br>
-[spectrum](../opcodes/spectrum.md) - Generate a constant-Q, exponentially-spaced DFT across all octaves of a multiply-downsampled control or audio input signal.<br>
 [spf](../opcodes/spf.md) - Steiner-Parker filter.<br>
 [splitrig](../opcodes/splitrig.md) - Split a trigger signal (i.e. a timed sequence of control-rate impulses) into several channels following a structure designed by the user.<br>
 [sprintf](../opcodes/sprintf.md) - printf-style formatted output to a string variable.<br>
@@ -980,7 +962,6 @@ time-varying crossfade looping.<br>
 [squinewave](../opcodes/squinewave.md) - A mostly bandlimited shape-shifting square-pulse-saw-sinewave oscillator with hardsync.<br>
 [sr](../opcodes/sr.md) - Sets the audio sampling rate.<br>
 [st2ms](../opcodes/st2ms.md) - Stereo to Mid-Side Conversion.<br>
-[stack](../opcodes/stack.md) - Initializes and sets the size of the global stack.<br>
 [statevar](../opcodes/statevar.md) - Statevar is a new digital implementation of the analogue state-variable filter.<br>
 [sterrain](../opcodes/sterrain.md) - A wave-terrain synthesis opcode using curves computed with the superformula.<br>
 [stix](../opcodes/stix.md) - Semi-physical model of a stick sound.<br>
@@ -1027,7 +1008,7 @@ time-varying crossfade looping.<br>
 [tab2array](../opcodes/tab2array.md) - Copy a slice from an f-table to an array.<br>
 [tab2pvs](../opcodes/tab2pvs.md) - Copies spectral data from k-rate arrays (or t-variables.<br>
 [tab](../opcodes/tab.md) - Fast table opcode.<br>
-[tab_i](../opcodes/tab_i.md) - Fast table opcodes.<br>
+[tabi](../opcodes/tab_i.md) - Fast table opcodes.<br>
 [tabifd](../opcodes/tabifd.md) - Instantaneous Frequency Distribution, magnitude and phase analysis.<br>
 [table3](../opcodes/table3.md) - Accesses table values by direct indexing with cubic interpolation.<br>
 [table](../opcodes/table.md) - Accesses table values by direct indexing.<br>
@@ -1040,7 +1021,6 @@ time-varying crossfade looping.<br>
 [tableigpw](../opcodes/tableigpw.md) - Writes a table's guard point.<br>
 [tableikt](../opcodes/tableikt.md) - Provides k-rate control over table numbers.<br>
 [tableimix](../opcodes/tableimix.md) - Mixes two tables.<br>
-[tableiw](../opcodes/tableiw.md) - Deprecated as of version 3.<br>
 [tablekt](../opcodes/tablekt.md) - Provides k-rate control over table numbers.<br>
 [tablemix](../opcodes/tablemix.md) - Mixes two tables.<br>
 [tableng](../opcodes/tableng.md) - Interrogates a function table for length.<br>
@@ -1060,7 +1040,7 @@ time-varying crossfade looping.<br>
 [tabrec](../opcodes/tabrec.md) - Records control-rate signals on trigger-temporization basis.<br>
 [tabsum](../opcodes/tabsum.md) - Sums the values in an f-table in a consecutive range.<br>
 [tabw](../opcodes/tabw.md) - Fast table opcodes.<br>
-[tabw_i](../opcodes/tabw_i.md) - Fast table opcodes.<br>
+[tabwi](../opcodes/tabw_i.md) - Fast table opcodes.<br>
 [tambourine](../opcodes/tambourine.md) - Semi-physical model of a tambourine sound.<br>
 [tan](../opcodes/tan.md) - Returns the tangent of _x_ (_x_ in radians).<br>
 [tanh](../opcodes/tanh.md) - Returns the hyperbolic tangent of _x_.<br>
@@ -1118,9 +1098,9 @@ time-varying crossfade looping.<br>
 [urd](../opcodes/urd.md) - A discrete user-defined-distribution random generator that can be used as a function.<br>
 [vactrol](../opcodes/vactrol.md) - Envelope follower unit generator emmulating a Perkin Elmer Vactrole VTL5C3/2.<br>
 [vadd](../opcodes/vadd.md) - Adds a scalar value to a vector in a table.<br>
-[vadd_i](../opcodes/vadd_i.md) - Adds a scalar value to a vector in a table.<br>
+[vaddi](../opcodes/vadd_i.md) - Adds a scalar value to a vector in a table.<br>
 [vaddv](../opcodes/vaddv.md) - Performs addition between two vectorial control signals.<br>
-[vaddv_i](../opcodes/vaddv_i.md) - Performs addition between two vectorial control signals at init time.<br>
+[vaddvi](../opcodes/vaddv_i.md) - Performs addition between two vectorial control signals at init time.<br>
 [vaget](../opcodes/vaget.md) - Access values of the current buffer of an a-rate variable by indexing.<br>
 [valpass](../opcodes/valpass.md) - Variably reverberates an input signal with a flat frequency response.<br>
 [vaset](../opcodes/vaset.md) - Write values into the current buffer of an a-rate variable at the given index.<br>
@@ -1146,7 +1126,7 @@ time-varying crossfade looping.<br>
 [vco](../opcodes/vco.md) - Implementation of a band limited, analog modeled oscillator.<br>
 [vcomb](../opcodes/vcomb.md) - Variably reverberates an input signal with a &#8220;colored&#8221; frequency response.<br>
 [vcopy](../opcodes/vcopy.md) - Copies between two vectorial control signals.<br>
-[vcopy_i](../opcodes/vcopy_i.md) - Copies a vector from one table to another.<br>
+[vcopyi](../opcodes/vcopy_i.md) - Copies a vector from one table to another.<br>
 [vdelay3](../opcodes/vdelay3.md) - A variable time delay with cubic interpolation.<br>
 [vdelay](../opcodes/vdelay.md) - An interpolating variable time delay.<br>
 [vdelayk](../opcodes/vdelayk.md) - Variable time delay applied to a k-rate signal.<br>
@@ -1157,14 +1137,14 @@ time-varying crossfade looping.<br>
 [vdelayxwq](../opcodes/vdelayxwq.md) - Variable delay opcodes with high quality interpolation.<br>
 [vdelayxws](../opcodes/vdelayxws.md) - Variable delay opcodes with high quality interpolation.<br>
 [vdivv](../opcodes/vdivv.md) - Performs division between two vectorial control signals.<br>
-[vdivv_i](../opcodes/vdivv_i.md) - Performs division between two vectorial control signals at init time.<br>
+[vdivvi](../opcodes/vdivv_i.md) - Performs division between two vectorial control signals at init time.<br>
 [vecdelay](../opcodes/vecdelay.md) - Generate a sort of 'vectorial' delay.<br>
 [veloc](../opcodes/veloc.md) - Get the velocity from a MIDI event.<br>
 [vexp](../opcodes/vexp.md) - Performs power-of operations between a vector and a scalar.<br>
-[vexp_i](../opcodes/vexp_i.md) - Performs power-of operations between a vector and a scalar.<br>
+[vexpi](../opcodes/vexp_i.md) - Performs power-of operations between a vector and a scalar.<br>
 [vexpseg](../opcodes/vexpseg.md) - Vectorial envelope generator.<br>
 [vexpv](../opcodes/vexpv.md) - Performs exponential operations between two vectorial control signals.<br>
-[vexpv_i](../opcodes/vexpv_i.md) - Performs exponential operations between two vectorial control signals at init time.<br>
+[vexpvi](../opcodes/vexpv_i.md) - Performs exponential operations between two vectorial control signals at init time.<br>
 [vibes](../opcodes/vibes.md) - Physical model related to the striking of a metal block as found in a vibraphone.<br>
 [vibr](../opcodes/vibr.md) - Easier-to-use user-controllable vibrato.<br>
 [vibrato](../opcodes/vibrato.md) - Generates a natural-sounding user-controllable vibrato.<br>
@@ -1175,23 +1155,23 @@ time-varying crossfade looping.<br>
 [vmap](../opcodes/vmap.md) - Maps elements from a vector onto another according to indexes.<br>
 [vmirror](../opcodes/vmirror.md) - 'Reflects' elements of vectorial control signals on thresholds.<br>
 [vmult](../opcodes/vmult.md) - Multiplies a vector in a table by a scalar value.<br>
-[vmult_i](../opcodes/vmult_i.md) - Multiplies a vector in a table by a scalar value.<br>
+[vmulti](../opcodes/vmult_i.md) - Multiplies a vector in a table by a scalar value.<br>
 [vmultv](../opcodes/vmultv.md) - Performs mutiplication between two vectorial control signals.<br>
-[vmultv_i](../opcodes/vmultv_i.md) - Performs mutiplication between two vectorial control signals at init time.<br>
+[vmultvi](../opcodes/vmultv_i.md) - Performs mutiplication between two vectorial control signals at init time.<br>
 [voice](../opcodes/voice.md) - An emulation of a human voice.<br>
 [vosim](../opcodes/vosim.md) - Simple vocal simulation based on glottal pulses with formant characteristics.<br>
 [vphaseseg](../opcodes/vphaseseg.md) - Allows one-dimensional HVS (Hyper-Vectorial Synthesis).<br>
 [vport](../opcodes/vport.md) - Generate a sort of 'vectorial' portamento.<br>
 [vpow](../opcodes/vpow.md) - Raises each element of a vector to a scalar power.<br>
-[vpow_i](../opcodes/vpow_i.md) - Raises each element of a vector to a scalar power.<br>
+[vpowi](../opcodes/vpow_i.md) - Raises each element of a vector to a scalar power.<br>
 [vpowv](../opcodes/vpowv.md) - Performs power-of operations between two vectorial control signals.<br>
-[vpowv_i](../opcodes/vpowv_i.md) - Performs power-of operations between two vectorial control signals at init time.<br>
+[vpowvi](../opcodes/vpowv_i.md) - Performs power-of operations between two vectorial control signals at init time.<br>
 [vps](../opcodes/vps.md) - Shapes a phase signal according to a two-dimensional vector.<br>
 [vpvoc](../opcodes/vpvoc.md) - Implements signal reconstruction using an fft-based phase vocoder and an extra envelope.<br>
 [vrandh](../opcodes/vrandh.md) - Generates a vector of random numbers stored into a table, holding the values for a period of time.<br>
 [vrandi](../opcodes/vrandi.md) - Generate a sort of 'vectorial band-limited noise'.<br>
 [vsubv](../opcodes/vsubv.md) - Performs subtraction between two vectorial control signals.<br>
-[vsubv_i](../opcodes/vsubv_i.md) - Performs subtraction between two vectorial control signals at init time.<br>
+[vsubvi](../opcodes/vsubv_i.md) - Performs subtraction between two vectorial control signals at init time.<br>
 [vtaba](../opcodes/vtaba.md) - Read vectors (from tables -or arrays of vectors) at a-rate.<br>
 [vtabi](../opcodes/vtabi.md) - Read vectors (from tables -or arrays of vectors) at init time.<br>
 [vtabk](../opcodes/vtabk.md) - Read vectors (from tables -or arrays of vectors) at k-rate.<br>
@@ -1236,11 +1216,11 @@ time-varying crossfade looping.<br>
 [zarg](../opcodes/zarg.md) - Reads from a location in za space at a-rate, adds some gain.<br>
 [zaw](../opcodes/zaw.md) - Writes to a za variable at a-rate without mixing.<br>
 [zawm](../opcodes/zawm.md) - Writes to a za variable at a-rate with mixing.<br>
-[zdf_1pole](../opcodes/zdf_1pole.md) - Zero-delay feedback implementation of a 1 pole (6 dB/oct) filter.<br>
-[zdf_1pole_mode](../opcodes/zdf_1pole_mode.md) - Zero-delay feedback implementation of 1 pole (6 dB/oct) filter with multimode output.<br>
-[zdf_2pole](../opcodes/zdf_2pole.md) - Zero-delay feedback implementation of a 2 pole (12 dB/oct) filter.<br>
-[zdf_2pole_mode](../opcodes/zdf_2pole_mode.md) - Zero-delay feedback implementation of 2 pole (12 dB/oct) filter with multimode output.<br>
-[zdf_ladder](../opcodes/zdf_ladder.md) - Zero-delay feedback implementation of a 4 pole (24 dB/oct) low-pass filter based on the Moog ladder filter.<br>
+[zdf1pole](../opcodes/zdf_1pole.md) - Zero-delay feedback implementation of a 1 pole (6 dB/oct) filter.<br>
+[zdf1polemode](../opcodes/zdf_1pole_mode.md) - Zero-delay feedback implementation of 1 pole (6 dB/oct) filter with multimode output.<br>
+[zdf2pole](../opcodes/zdf_2pole.md) - Zero-delay feedback implementation of a 2 pole (12 dB/oct) filter.<br>
+[zdf2polemode](../opcodes/zdf_2pole_mode.md) - Zero-delay feedback implementation of 2 pole (12 dB/oct) filter with multimode output.<br>
+[zdfladder](../opcodes/zdf_ladder.md) - Zero-delay feedback implementation of a 4 pole (24 dB/oct) low-pass filter based on the Moog ladder filter.<br>
 [zfilter2](../opcodes/zfilter2.md) - Performs filtering using a transposed form-II digital filter lattice with radial pole-shearing and angular pole-warping.<br>
 [zir](../opcodes/zir.md) - Reads from a location in zk space at i-rate.<br>
 [ziw](../opcodes/ziw.md) - Writes to a zk variable at i-rate without mixing.<br>

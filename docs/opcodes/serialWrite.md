@@ -2,17 +2,21 @@
 id:serialWrite
 category:Serial I/O
 -->
-# serialWrite
+# serialwrite
 Write data to a serial port for arduino.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *serialWrite*.
 
 Plugin opcode in serial.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    serialWrite(iPort, iByte)
-    serialWrite(iPort, kByte)
-    serialWrite(iPort, SBytes)
+    serialwrite(iPort, iByte)
+    serialwrite(iPort, kByte)
+    serialwrite(iPort, SBytes)
     ```
 
 === "Classic"
@@ -24,17 +28,23 @@ Plugin opcode in serial.
 
 ### Performance
 
-_iPort_ -- port number optained from a _serialBegin_ opcode.
+_iPort_ -- port number optained from a *serialbegin* opcode.
 
 _iByte_ -- a byte of data to write.
 
 ## Examples
 
-Here is an example of the serialWrite opcode. It uses the file [serialWrite.csd](../examples/serialWrite.csd).
+=== "Modern"
+    Here is an example of the serialwrite opcode. It uses the file [serialwrite-modern.csd](../examples/serialwrite-modern.csd).
+    ``` csound-csd title="Example of the serialwrite opcode." linenums="1"
+    --8<-- "examples/serialwrite-modern.csd"
+    ```
 
-``` csound-csd title="Example of the serialWrite opcode." linenums="1"
---8<-- "examples/serialWrite.csd"
-```
+=== "Classic"
+    Here is an example of the serialWrite opcode. It uses the file [serialWrite.csd](../examples/serialWrite.csd).
+    ``` csound-csd title="Example of the serialWrite opcode." linenums="1"
+    --8<-- "examples/serialWrite.csd"
+    ```
 
 This is the matching Arduino code :
 

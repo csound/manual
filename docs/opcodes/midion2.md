@@ -8,13 +8,17 @@ Sends noteon and noteoff messages to the MIDI OUT port when triggered by a value
 ## Syntax
 === "Modern"
     ``` csound-orc
-    midion2(kchn, knum, kvel, ktrig)
+    midion2(kchn, knum, kvel, ktrig[, iport)
     ```
 
 === "Classic"
     ``` csound-orc
-    midion2 kchn, knum, kvel, ktrig
+    midion2 kchn, knum, kvel, ktrig, iport
     ```
+
+### Initialisation
+
+_iport_ -- MIDI output port, optional set to 0.
 
 ### Performance
 

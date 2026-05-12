@@ -5,7 +5,7 @@ category:Signal I/O:Software Bus
 # chnset
 Writes data to a channel of the named software bus.
 
-Implies declaring the channel with _imod_=2 (see also [chn_k, chn_a, and chn_S](../opcodes/chn.md)).
+Implies declaring the channel with _imod_=2 (see also [chnk, chna, and chnS](../opcodes/chn.md)).
 
 ## Syntax
 === "Modern"

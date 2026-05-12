@@ -8,12 +8,12 @@ Sends a noteon and a noteoff MIDI message both with the same channel, number and
 ## Syntax
 === "Modern"
     ``` csound-orc
-    noteondur2(ichn, inum, ivel, idur)
+    noteondur2(ichn, inum, ivel, idur [, port])
     ```
 
 === "Classic"
     ``` csound-orc
-    noteondur2 ichn, inum, ivel, idur
+    noteondur2 ichn, inum, ivel, idur, port
     ```
 
 ### Initialization
@@ -25,6 +25,8 @@ _inum_ -- note number (0-127)
 _ivel_ -- velocity (0-127)
 
 _idur_ -- how long, in seconds, this note should last.
+
+_iport_ -- MIDI output port, optional set to 0.
 
 ### Performance
 

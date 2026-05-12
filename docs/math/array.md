@@ -9,6 +9,7 @@ Array Opcodes:
 * [init](../opcodes/init.md) initiatlise array
 * [fillarray](../opcodes/fillarray.md) fill array with values
 * [genarray](../opcodes/genarray.md) create array with artithmetic sequence
+* [genarrayi](../opcodes/genarray_i.md) create array with artithmetic sequence
 * [=](../opcodes/assign.md) create or reset array as copy of another array
 * [slicearray](../opcodes/slicearray.md) take slice of an array
 * [maparray](../opcodes/maparray.md) apply a function to an array

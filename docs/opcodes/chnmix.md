@@ -5,7 +5,7 @@ category:Signal I/O:Software Bus
 # chnmix
 Writes audio data to the named software bus, mixing to the previous output.
 
-Implies declaring the channel with _imode_=2 (see also [chn_a](../opcodes/chn.md)).
+Implies declaring the channel with _imode_=2 (see also [chna](../opcodes/chn.md)).
 
 ## Syntax
 === "Modern"

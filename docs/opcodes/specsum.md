@@ -1,6 +1,7 @@
 <!--
 id:specsum
 category:Spectral Processing:Non-Standard
+status:deprecated
 -->
 # specsum
 Sums the magnitudes across all channels of the spectrum.

@@ -2,16 +2,20 @@
 id:diode_ladder
 category:Signal Modifiers:Standard Filters
 -->
-# diode_ladder
+# diodeladder
 
 Zero-delay feedback implementation of a 4 pole (24 dB/oct) diode low-pass filter.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *diode_ladder*.
 
 This filter design was originally used in the EMS VCS3 and was the resonant filter in the Roland TB-303.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    asig = diode_ladder(ain, xcf, xk [, inlp, isaturation, istor])
+    asig = diodeladder(ain, xcf, xk [, inlp, isaturation, istor])
     ```
 
 === "Classic"
@@ -39,11 +43,17 @@ _ksaturation_ (optional, default=1) -- saturation amount to use for non-linear p
 
 ## Examples
 
-Here is an example of the diode_ladder opcode. It uses the file [diode_ladder.csd](../examples/diode_ladder.csd).
+=== "Modern"
+    Here is an example of the diodeladder opcode. It uses the file [diodeladder.csd](../examples/diodeladder.csd).
+    ``` csound-csd title="Example of the diodeladder opcode." linenums="1"
+    --8<-- "examples/diodeladder.csd"
+    ```
 
-``` csound-csd title="Example of the diode_ladder opcode." linenums="1"
---8<-- "examples/diode_ladder.csd"
-```
+=== "Classic"
+    Here is an example of the diode_ladder opcode. It uses the file [diode_ladder.csd](../examples/diode_ladder.csd).
+    ``` csound-csd title="Example of the diode_ladder opcode." linenums="1"
+    --8<-- "examples/diode_ladder.csd"
+    ```
 
 ### References
 

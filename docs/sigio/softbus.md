@@ -6,9 +6,9 @@ The opcodes to use the software bus are:
 
 * [chani](../opcodes/chani.md)
 * [chano](../opcodes/chano.md)
-* [chn_k](../opcodes/chn.md)
-* [chn_a](../opcodes/chn.md)
-* [chn_S](../opcodes/chn.md)
+* [chnk](../opcodes/chn.md)
+* [chna](../opcodes/chn.md)
+* [chnS](../opcodes/chn.md)
 * [chnclear](../opcodes/chnclear.md)
 * [chnexport](../opcodes/chnexport.md)
 * [chnget](../opcodes/chnget.md)

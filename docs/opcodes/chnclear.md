@@ -5,7 +5,7 @@ category:Signal I/O:Software Bus
 # chnclear
 Clears a number of audio output channel of the named software bus.
 
-Implies declaring the channel with _imode_=2 (see also [chn_a](../opcodes/chn.md)).
+Implies declaring the channel with _imode_=2 (see also [chna](../opcodes/chn.md)).
 
 ## Syntax
 === "Modern"

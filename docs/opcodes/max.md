@@ -5,7 +5,7 @@ category:Signal Modifiers:Comparators and Accumulators
 # max
 Produces a signal that is the maximum of any number of input signals.
 
-The _max_ opcode takes any number of a-rate, k-rate or i-rate signals as input (all of the same rate), and outputs a signal at the same rate that is the maximum of all of the inputs.  For a-rate signals, the inputs are compared one sample at a time (i.e. _max_ does not scan an entire ksmps period of a signal for its local maximum as the _max_k_ opcode does).
+The _max_ opcode takes any number of a-rate, k-rate or i-rate signals as input (all of the same rate), and outputs a signal at the same rate that is the maximum of all of the inputs.  For a-rate signals, the inputs are compared one sample at a time (i.e. _max_ does not scan an entire ksmps period of a signal for its local maximum as the _maxk_ opcode does).
 
 ## Syntax
 === "Modern"

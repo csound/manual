@@ -2,15 +2,19 @@
 id:arduinoRead
 category:Serial I/O
 -->
-# arduinoRead
+# arduinoread
 Read integer data from an arduino port using the Csound-Arduino protocol.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *arduinoRead*.
 
 Plugin opcode in serial.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    kval = arduinoRead(iPort, iStream [, iSmooth])
+    kval = arduinoread(iPort, iStream [, iSmooth])
     ```
 
 === "Classic"
@@ -20,7 +24,7 @@ Plugin opcode in serial.
 
 ### Performance
 
-_iPort_ -- port number obtained from a _arduinoStart_ opcode.
+_iPort_ -- port number obtained from a *arduinostart* opcode.
 
 _iStream_ -- Number of the data stream in range 0 to 30.
 
@@ -30,11 +34,17 @@ _kval_ -- data to read in range [0, 1023].
 
 ## Examples
 
-Here is an example of the arduinoRead opcode. It uses the file [arduinoRead.csd](../examples/arduinoRead.csd).
+=== "Modern"
+    Here is an example of the arduinoread opcode. It uses the file [arduinoread-modern.csd](../examples/arduinoread-modern.csd).
+    ``` csound-csd title="Example of the arduinoread opcode." linenums="1"
+    --8<-- "examples/arduinoread-modern.csd"
+    ```
 
-``` csound-csd title="Example of the arduinoRead opcode." linenums="1"
---8<-- "examples/arduinoRead.csd"
-```
+=== "Classic"
+    Here is an example of the arduinoRead opcode. It uses the file [arduinoRead.csd](../examples/arduinoRead.csd).
+    ``` csound-csd title="Example of the arduinoRead opcode." linenums="1"
+    --8<-- "examples/arduinoRead.csd"
+    ```
 
 ## See Also
 

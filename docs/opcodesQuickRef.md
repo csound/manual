@@ -86,18 +86,18 @@
 `ares = lfo(kamp, kcps [, itype])`<br>
 
 
-`ares = `[**`oscbnk`**](opcodes/oscbnk.md)`(kcps, kamd, kfmd, kpmd, iovrlap, iseed, kl1minf, kl1maxf, \`<br>
-&nbsp;&nbsp;&nbsp;&nbsp;`kl2minf, kl2maxf, ilfomode, keqminf, keqmaxf, keqminl, keqmaxl, \`<br>
-&nbsp;&nbsp;&nbsp;&nbsp;`keqminq, keqmaxq, ieqmode, kfn [, il1fn] [, il2fn] [, ieqffn]   \`<br>
-&nbsp;&nbsp;&nbsp;&nbsp;`[, ieqlfn] [, ieqqfn] [, itabl] [, ioutfn])`<br>
-
-
 `ares = `[**`oscil`**](opcodes/oscil.md)`(xamp, xcps [, ifn, iphs])`<br>
 `kres = oscil(kamp, kcps [, ifn, iphs])`<br>
 
 
 `ares = `[**`oscil3`**](opcodes/oscil3.md)`(xamp, xcps [, ifn, iphs])`<br>
 `kres = oscil3(kamp, kcps [, ifn, iphs])`<br>
+
+
+`ares = `[**`oscilbank`**](opcodes/oscbnk.md)`(kcps, kamd, kfmd, kpmd, iovrlap, iseed, kl1minf, kl1maxf, \`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`kl2minf, kl2maxf, ilfomode, keqminf, keqmaxf, keqminl, keqmaxl, \`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`keqminq, keqmaxq, ieqmode, kfn [, il1fn] [, il2fn] [, ieqffn]   \`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`[, ieqlfn] [, ieqqfn] [, itabl] [, ioutfn])`<br>
 
 
 `ares = `[**`oscili`**](opcodes/oscili.md)`(xamp, xcps[, ifn, iphs])`<br>
@@ -932,7 +932,7 @@
 `ar = tab(xndx, ifn[, ixmode])`<br>
 
 
-`ir = `[**`tab_i`**](opcodes/tab_i.md)`(indx, ifn[, ixmode])`<br>
+`ir = `[**`tabi`**](opcodes/tab_i.md)`(indx, ifn[, ixmode])`<br>
 
 
 `ares = `[**`table`**](opcodes/table.md)`(andx, ifn [, ixmode] [, ixoff] [, iwrap])`<br>
@@ -954,7 +954,7 @@
 `tabw(asig, andx, ifn [,ixmode])`<br>
 
 
-[**`tabw_i`**](opcodes/tabw_i.md)`(isig, indx, ifn [,ixmode])`<br>
+[**`tabwi`**](opcodes/tabw_i.md)`(isig, indx, ifn [,ixmode])`<br>
 
 
 ### Signal Generators:Wave Terrain Synthesis
@@ -1019,10 +1019,6 @@
 
 [**`ficlose`**](opcodes/ficlose.md)`(ihandle)`<br>
 `ficlose(Sfilename)`<br>
-
-
-[**`fin`**](opcodes/fin.md)`(ifilename, iskipframes, iformat, ain1 [, ain2] [, ain3] [,...])`<br>
-`fin(ifilename, iskipframes, iformat, arr[])`<br>
 
 
 [**`fini`**](opcodes/fini.md)`(ifilename, iskipframes, iformat, in1 [, in2] [, in3] [, ...])`<br>
@@ -1130,7 +1126,7 @@
 
 
 ### Signal I/O:Signal Output
-[**`mdelay`**](opcodes/mdelay.md)`(kstatus, kchan, kd1, kd2, kdelay)`<br>
+[**`mdelay`**](opcodes/mdelay.md)`(kstatus, kchan, kd1, kd2, kdelay [, iport])`<br>
 
 
 `aout1 [,aout2 ... aoutX] = `[**`monitor`**](opcodes/monitor.md)`()`<br>
@@ -1201,12 +1197,6 @@
 [**`outz`**](opcodes/outz.md)`(ksig1)`<br>
 
 
-[**`soundout`**](opcodes/soundout.md)`(asig1, ifilcod [, iformat])`<br>
-
-
-[**`soundouts`**](opcodes/soundouts.md)`(asigl, asigr, ifilcod [, iformat])`<br>
-
-
 ### Signal I/O:Software Bus
 `kval = `[**`chani`**](opcodes/chani.md)`(kchan)`<br>
 `aval = chani(kchan)`<br>
@@ -1216,11 +1206,11 @@
 `chano(aval, kchan)`<br>
 
 
-[**`chn`**](opcodes/chn.md)`_k(Sname, imode[, itype, idflt, imin, ima, ix, iy, iwidth, iheight, Sattributes])`<br>
-`chn_a(Sname, imode)`<br>
-`chn_S(Sname, imode)`<br>
-`chn_S(Sname, Smode)`<br>
-`chn_array(Sname, imode, Stype, iSizes[])`<br>
+[**`chn`**](opcodes/chn.md)`k(Sname, imode[, itype, idflt, imin, ima, ix, iy, iwidth, iheight, Sattributes])`<br>
+`chna(Sname, imode)`<br>
+`chnS(Sname, imode)`<br>
+`chnS(Sname, Smode)`<br>
+`chnarray(Sname, imode, Stype, iSizes[])`<br>
 
 
 [**`chnclear`**](opcodes/chnclear.md)`(Sname1[, Sname2,...])`<br>
@@ -1288,7 +1278,7 @@
 [**`print`**](opcodes/print.md)`(iarg [, iarg1] [, iarg2] [...])`<br>
 
 
-[**`printf`**](opcodes/printf.md)`_i(Sfmt, itrig, [iarg1[, iarg2[, ... ]]])`<br>
+[**`printf`**](opcodes/printf.md)`i(Sfmt, itrig, [iarg1[, iarg2[, ... ]]])`<br>
 `printf(Sfmt, ktrig, [xarg1[, xarg2[, ... ]]])`<br>
 
 
@@ -1478,9 +1468,6 @@
 &nbsp;&nbsp;&nbsp;&nbsp;`iwallgain1, iwallgain2, iwallgain3, ifloorhigh, ifloorlow, ifloorgain1, \`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`ifloorgain2, ifloorgain3, iceilinghigh, iceilinglow, iceilinggain1, \`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`iceilinggain2, iceilinggain3])`<br>
-
-
-`aleft, aright = `[**`hrtfer`**](opcodes/hrtfer.md)`(asig, kaz, kelev, "HRTFcompact")`<br>
 
 
 `aleft, aright = `[**`hrtfmove`**](opcodes/hrtfmove.md)`(asrc, kAz, kElev, ifilel, ifiler [, imode, ifade, isr])`<br>
@@ -1727,12 +1714,6 @@
 
 
 ### Signal Modifiers:Standard Filters
-`asig = `[**`K35_hpf`**](opcodes/k35_hpf.md)`(ain, xcf, xQ [, inlp, isaturation, istor])`<br>
-
-
-`asig = `[**`K35_lpf`**](opcodes/k35_lpf.md)`(ain, xcf, xQ [, inlp, isaturation, istor])`<br>
-
-
 `ares = `[**`atone`**](opcodes/atone.md)`(asig, khp [, iskip])`<br>
 
 
@@ -1777,7 +1758,13 @@
 `ares = `[**`clfilt`**](opcodes/clfilt.md)`(asig, kfreq, itype, inpol [, ikind] [, ipbr] [, isba] [, iskip])`<br>
 
 
-`asig = `[**`diode_ladder`**](opcodes/diode_ladder.md)`(ain, xcf, xk [, inlp, isaturation, istor])`<br>
+`asig = `[**`diodeladder`**](opcodes/diode_ladder.md)`(ain, xcf, xk [, inlp, isaturation, istor])`<br>
+
+
+`asig = k35hpf(ain, xcf, xQ [, inlp, isaturation, istor])`<br>
+
+
+`asig = k35lpf(ain, xcf, xQ [, inlp, isaturation, istor])`<br>
 
 
 `ares = `[**`median`**](opcodes/median.md)`(asig, ksize, imaxsize [, iskip])`<br>
@@ -1796,19 +1783,19 @@
 `ares = tonex(asig, ahp [, inumlayer] [, iskip])`<br>
 
 
-`asig = `[**`zdf_1pole`**](opcodes/zdf_1pole.md)`(ain, xcf [, kmode, istor])`<br>
+`asig = `[**`zdf1pole`**](opcodes/zdf_1pole.md)`(ain, xcf [, kmode, istor])`<br>
 
 
-`alp, ahp = `[**`zdf_1pole_mode`**](opcodes/zdf_1pole_mode.md)`(ain, xcf [, istor])`<br>
+`alp, ahp = `[**`zdf1polemode`**](opcodes/zdf_1pole_mode.md)`(ain, xcf [, istor])`<br>
 
 
-`asig = `[**`zdf_2pole`**](opcodes/zdf_2pole.md)`(ain, xcf, xQ [, kmode, istor])`<br>
+`asig = `[**`zdf2pole`**](opcodes/zdf_2pole.md)`(ain, xcf, xQ [, kmode, istor])`<br>
 
 
-`alp, abp, ahp = `[**`zdf_2pole_mode`**](opcodes/zdf_2pole_mode.md)`(ain, xcf, Q [, istor])`<br>
+`alp, abp, ahp = `[**`zdf2polemode`**](opcodes/zdf_2pole_mode.md)`(ain, xcf, Q [, istor])`<br>
 
 
-`asig = `[**`zdf_ladder`**](opcodes/zdf_ladder.md)`(ain, xcf, xQ [, istor])`<br>
+`asig = `[**`zdfladder`**](opcodes/zdf_ladder.md)`(ain, xcf, xQ [, istor])`<br>
 
 
 ### Signal Modifiers:Standard Filters:Resonant
@@ -2046,9 +2033,6 @@
 `imax = max(iin1, iin2 [, iin3] [, iin4] [...])`<br>
 
 
-`knumkout = `[**`max_k`**](opcodes/max_k.md)`(asig, ktrig, itype)`<br>
-
-
 `amax = `[**`maxabs`**](opcodes/maxabs.md)`(ain1, ain2 [, ain3] [, ain4] [...])`<br>
 `kmax = maxabs(kin1, kin2 [, kin3] [, kin4] [...])`<br>
 
@@ -2057,6 +2041,9 @@
 
 
 [**`maxaccum`**](opcodes/maxaccum.md)`(aAccumulator, aInput)`<br>
+
+
+`knumkout = `[**`maxk`**](opcodes/max_k.md)`(asig, ktrig, itype)`<br>
 
 
 `a`[**`min`**](opcodes/min.md)` = [**`min`**](opcodes/min.md)(ain1, ain2 [, ain3] [, ain4] [...])`<br>
@@ -2127,7 +2114,7 @@
 
 
 [**`turnoff2`**](opcodes/turnoff2.md)`(kinsno, kmode, krelease)`<br>
-`turnoff2_i(insno, imode, irelease)`<br>
+`turnoff2i(insno, imode, irelease)`<br>
 
 
 [**`turnoff3`**](opcodes/turnoff3.md)`(kinsno)`<br>
@@ -2141,8 +2128,8 @@
 `event("scorechar", "insname", kdelay, kdur, [, kp4] [, kp5] [, ...])`<br>
 
 
-[**`event_i`**](opcodes/event_i.md)`("scorechar", iinsnum, idelay, idur, [, ip4] [, ip5] [, ...])`<br>
-`event_i("scorechar", "insname", idelay, idur, [, ip4] [, ip5] [, ...])`<br>
+[**`eventi`**](opcodes/event_i.md)`("scorechar", iinsnum, idelay, idur, [, ip4] [, ip5] [, ...])`<br>
+`eventi("scorechar", "insname", idelay, idur, [, ip4] [, ip5] [, ...])`<br>
 
 
 [**`mute`**](opcodes/mute.md)`(insnum [, iswitch])`<br>
@@ -2186,7 +2173,7 @@
 [**`scoreline`**](opcodes/scoreline.md)`(Sin, ktrig)`<br>
 
 
-[**`scoreline_i`**](opcodes/scoreline_i.md)`(Sin)`<br>
+[**`scorelinei`**](opcodes/scoreline_i.md)`(Sin)`<br>
 
 
 ### Instrument Control:Program Flow Control
@@ -2240,20 +2227,20 @@
 [**`kgoto`**](opcodes/kgoto.md)`(label)`<br>
 
 
-[**`loop_ge`**](opcodes/loop_ge.md)`(indx, idecr, imin, label)`<br>
-`loop_ge(kndx, kdecr, kmin, label)`<br>
+[**`loopge`**](opcodes/loop_ge.md)`(indx, idecr, imin, label)`<br>
+`loopge(kndx, kdecr, kmin, label)`<br>
 
 
-[**`loop_gt`**](opcodes/loop_gt.md)`(indx, idecr, imin, label)`<br>
-`loop_gt(kndx, kdecr, kmin, label)`<br>
+[**`loopgt`**](opcodes/loop_gt.md)`(indx, idecr, imin, label)`<br>
+`loopgt(kndx, kdecr, kmin, label)`<br>
 
 
-[**`loop_le`**](opcodes/loop_le.md)`(indx, incr, imax, label)`<br>
-`loop_le(kndx, kncr, kmax, label)`<br>
+[**`loople`**](opcodes/loop_le.md)`(indx, incr, imax, label)`<br>
+`loople(kndx, kncr, kmax, label)`<br>
 
 
-[**`loop_lt`**](opcodes/loop_lt.md)`(indx, incr, imax, label)`<br>
-`loop_lt(kndx, kncr, kmax, label)`<br>
+[**`looplt`**](opcodes/loop_lt.md)`(indx, incr, imax, label)`<br>
+`looplt(kndx, kncr, kmax, label)`<br>
 
 
 [**`switch`**](opcodes/switch.md)` expr`<br>
@@ -2387,25 +2374,25 @@
 `kres = `[**`checkbox`**](opcodes/checkbox.md)`(knum)`<br>
 
 
-`icnt = `[**`cntCreate`**](opcodes/cntcreate.md)`([imax, imin, inc])`<br>
+`icnt = `[**`cntcreate`**](opcodes/cntcreate.md)`([imax, imin, inc])`<br>
 
 
-`kval = `[**`cntCycles`**](opcodes/cntcycles.md)`(icnt)`<br>
+`kval = `[**`cntcycles`**](opcodes/cntcycles.md)`(icnt)`<br>
 
 
-`kval = `[**`cntDelete`**](opcodes/cntDelete.md)`(icnt)`<br>
+`kval = `[**`cntdelete`**](opcodes/cntDelete.md)`(icnt)`<br>
 
 
-`ival = `[**`cntDelete_i`**](opcodes/cntDelete_i.md)`(icnt)`<br>
+`ival = `[**`cntdeletei`**](opcodes/cntDelete_i.md)`(icnt)`<br>
 
 
-`kval = `[**`cntRead`**](opcodes/cntread.md)`(icnt)`<br>
+`kval = `[**`cntread`**](opcodes/cntread.md)`(icnt)`<br>
 
 
-[**`cntReset`**](opcodes/cntreset.md)`(icnt)`<br>
+[**`cntreset`**](opcodes/cntreset.md)`(icnt)`<br>
 
 
-`kmax, kmin, kinc = `[**`cntState`**](opcodes/cntstate.md)`(icnt)`<br>
+`kmax, kmin, kinc = `[**`cntstate`**](opcodes/cntstate.md)`(icnt)`<br>
 
 
 `kres = `[**`control`**](opcodes/control.md)`(knum)`<br>
@@ -2414,7 +2401,7 @@
 `kval = `[**`count`**](opcodes/count.md)`(icnt)`<br>
 
 
-`ival = `[**`count_i`**](opcodes/count_i.md)`(icnt)`<br>
+`ival = `[**`counti`**](opcodes/count_i.md)`(icnt)`<br>
 
 
 `ares = `[**`follow`**](opcodes/follow.md)`(asig, idt)`<br>
@@ -2564,24 +2551,6 @@
 `kx, ky = `[**`xyin`**](opcodes/xyin.md)`(iprd, ixmin, ixmax, iymin, iymax [, ixinit] [, iyinit])`<br>
 
 
-### Instrument Control:Stacks
-`xval1, [xval2, ... , xval31] = `[**`pop`**](opcodes/pop.md)`()`<br>
-`ival1, [ival2, ... , ival31] = pop()`<br>
-
-
-`fsig = `[**`pop_f`**](opcodes/pop_f.md)`()`<br>
-
-
-[**`push`**](opcodes/push.md)`(xval1, [xval2, ... , xval31])`<br>
-`push(ival1, [ival2, ... , ival31])`<br>
-
-
-[**`push_f`**](opcodes/push_f.md)`(fsig)`<br>
-
-
-[**`stack`**](opcodes/stack.md)`(iStackSize)`<br>
-
-
 ### Instrument Control:Subinstrument Control
 `a1, [...] [, a8] = `[**`subinstr`**](opcodes/subinstr.md)`(instrnum [, p4] [, p5] [...])`<br>
 `a1, [...] [, a8] = subinstr("insname" [, p4] [, p5] [...])`<br>
@@ -2635,40 +2604,40 @@
 
 
 ### Serial I/O
-`kval = `[**`arduinoRead`**](opcodes/arduinoRead.md)`(iPort, iStream [, iSmooth])`<br>
+`kval = `[**`arduinoread`**](opcodes/arduinoRead.md)`(iPort, iStream [, iSmooth])`<br>
 
 
-`kval = `[**`arduinoReadF`**](opcodes/arduinoReadF.md)`(iPort, iStream1, iStream2, iStream3)`<br>
+`kval = `[**`arduinoreadf`**](opcodes/arduinoReadF.md)`(iPort, iStream1, iStream2, iStream3)`<br>
 
 
-`iPort = `[**`arduinoStart`**](opcodes/arduinoStart.md)`(SPortName [, ibaudRate])`<br>
+`iPort = `[**`arduinostart`**](opcodes/arduinoStart.md)`(SPortName [, ibaudRate])`<br>
 
 
-[**`arduinoStop`**](opcodes/arduinoStop.md)`(iPort)`<br>
+[**`arduinostop`**](opcodes/arduinoStop.md)`(iPort)`<br>
 
 
-`iPort = `[**`serialBegin`**](opcodes/serialBegin.md)`(SPortName [, ibaudRate])`<br>
+`iPort = `[**`serialbegin`**](opcodes/serialBegin.md)`(SPortName [, ibaudRate])`<br>
 
 
-[**`serialEnd`**](opcodes/serialEnd.md)`(iPort)`<br>
+[**`serialend`**](opcodes/serialEnd.md)`(iPort)`<br>
 
 
-[**`serialFlush`**](opcodes/serialFlush.md)`(iPort)`<br>
+[**`serialflush`**](opcodes/serialFlush.md)`(iPort)`<br>
 
 
-[**`serialPrint`**](opcodes/serialPrint.md)`(iPort)`<br>
+[**`serialprint`**](opcodes/serialPrint.md)`(iPort)`<br>
 
 
-`kByte = `[**`serialRead`**](opcodes/serialRead.md)`(iPort)`<br>
+`kByte = `[**`serialread`**](opcodes/serialRead.md)`(iPort)`<br>
 
 
-[**`serialWrite`**](opcodes/serialWrite.md)`(iPort, iByte)`<br>
-`serialWrite(iPort, kByte)`<br>
-`serialWrite(iPort, SBytes)`<br>
+[**`serialwrite`**](opcodes/serialWrite.md)`(iPort, iByte)`<br>
+`serialwrite(iPort, kByte)`<br>
+`serialwrite(iPort, SBytes)`<br>
 
 
-[**`serialWrite_i`**](opcodes/serialWrite_i.md)`(iPort, iByte)`<br>
-`serialWrite_i(iPort, SBytes)`<br>
+[**`serialwritei`**](opcodes/serialWrite_i.md)`(iPort, iByte)`<br>
+`serialwritei(iPort, SBytes)`<br>
 
 
 ### Table Control
@@ -2683,10 +2652,6 @@
 
 
 `Sdst = `[**`getftargs`**](opcodes/getftargs.md)`(iftno, ktrig)`<br>
-
-
-[**`sndload`**](opcodes/sndload.md)`(Sfname[, ifmt[, ichns[, isr[, ibas[, iamp[, istrt [, ilpmod[, ilps \`<br>
-&nbsp;&nbsp;&nbsp;&nbsp;`[, ilpe]]]]]]]]])`<br>
 
 
 ### Table Control:Table Queries
@@ -2709,7 +2674,7 @@
 [**`ftsr`**](opcodes/ftsr.md)`(x) (init-rate args only)`<br>
 
 
-`karray = `[**`genarray_i`**](opcodes/genarray_i.md)`(istart, iend [,inc])`<br>
+`karray = `[**`genarrayi`**](opcodes/genarray_i.md)`(istart, iend [,inc])`<br>
 
 
 `ir = `[**`lenarray`**](opcodes/lenarray.md)`(karray[, iwhich])`<br>
@@ -2717,7 +2682,7 @@
 
 
 `karray = `[**`maparray`**](opcodes/maparray.md)`(kinarray, String)`<br>
-`karray = maparray_i(kinarray, String)`<br>
+`karray = maparrayi(kinarray, String)`<br>
 
 
 [**`nsamp`**](opcodes/nsamp.md)`(x) (init-rate args only)`<br>
@@ -3286,43 +3251,43 @@
 
 
 ### Real-time MIDI:Output
-[**`nrpn`**](opcodes/nrpn.md)`(kchan, kparmnum, kparmvalue)`<br>
+[**`nrpn`**](opcodes/nrpn.md)`(kchan, kparmnum, kparmvalue [, iport])`<br>
 
 
-[**`outiat`**](opcodes/outiat.md)`(ichn, ivalue, imin, imax)`<br>
+[**`outiat`**](opcodes/outiat.md)`(ichn, ivalue, imin, imax, [, iport])`<br>
 
 
-[**`outic`**](opcodes/outic.md)`(ichn, inum, ivalue, imin, imax)`<br>
+[**`outic`**](opcodes/outic.md)`(ichn, inum, ivalue, imin, imax [, iport])`<br>
 
 
-[**`outic14`**](opcodes/outic14.md)`(ichn, imsb, ilsb, ivalue, imin, imax)`<br>
+[**`outic14`**](opcodes/outic14.md)`(ichn, imsb, ilsb, ivalue, imin, imax [, iport])`<br>
 
 
-[**`outipat`**](opcodes/outipat.md)`(ichn, inotenum, ivalue, imin, imax)`<br>
+[**`outipat`**](opcodes/outipat.md)`(ichn, inotenum, ivalue, imin, imax [, iport])`<br>
 
 
-[**`outipb`**](opcodes/outipb.md)`(ichn, ivalue, imin, imax)`<br>
+[**`outipb`**](opcodes/outipb.md)`(ichn, ivalue, imin, imax [, iport])`<br>
 
 
-[**`outipc`**](opcodes/outipc.md)`(ichn, iprog, imin, imax)`<br>
+[**`outipc`**](opcodes/outipc.md)`(ichn, iprog, imin, imax, [, iport])`<br>
 
 
-[**`outkat`**](opcodes/outkat.md)`(kchn, kvalue, kmin, kmax)`<br>
+[**`outkat`**](opcodes/outkat.md)`(kchn, kvalue, kmin, kmax [, iport])`<br>
 
 
-[**`outkc`**](opcodes/outkc.md)`(kchn, knum, kvalue, kmin, kmax)`<br>
+[**`outkc`**](opcodes/outkc.md)`(kchn, knum, kvalue, kmin, kmax [, iport])`<br>
 
 
-[**`outkc14`**](opcodes/outkc14.md)`(kchn, kmsb, klsb, kvalue, kmin, kmax)`<br>
+[**`outkc14`**](opcodes/outkc14.md)`(kchn, kmsb, klsb, kvalue, kmin, kmax [, iport])`<br>
 
 
-[**`outkpat`**](opcodes/outkpat.md)`(kchn, knotenum, kvalue, kmin, kmax)`<br>
+[**`outkpat`**](opcodes/outkpat.md)`(kchn, knotenum, kvalue, kmin, kmax [, iport])`<br>
 
 
-[**`outkpb`**](opcodes/outkpb.md)`(kchn, kvalue, kmin, kmax)`<br>
+[**`outkpb`**](opcodes/outkpb.md)`(kchn, kvalue, kmin, kmax [, iport])`<br>
 
 
-[**`outkpc`**](opcodes/outkpc.md)`(kchn, kprog, kmin, kmax)`<br>
+[**`outkpc`**](opcodes/outkpc.md)`(kchn, kprog, kmin, kmax [, iport])`<br>
 
 
 ### Real-time MIDI:Converters
@@ -3365,7 +3330,7 @@
 `kstatus, kchan, kdata1, kdata2 = `[**`midiin`**](opcodes/midiin.md)`()`<br>
 
 
-[**`midiout`**](opcodes/midiout.md)`(kstatus, kchan, kdata1, kdata2)`<br>
+[**`midiout`**](opcodes/midiout.md)`(kstatus, kchan, kdata1, kdata2  [, iport])`<br>
 
 
 [**`midiout_i`**](opcodes/midiout_i.md)`(istatus, ichan, idata1, idata2)`<br>
@@ -3388,22 +3353,22 @@
 [**`midion`**](opcodes/midion.md)`(kchn, knum, kvel)`<br>
 
 
-[**`midion2`**](opcodes/midion2.md)`(kchn, knum, kvel, ktrig)`<br>
+[**`midion2`**](opcodes/midion2.md)`(kchn, knum, kvel, ktrig[, iport)`<br>
 
 
 [**`moscil`**](opcodes/moscil.md)`(kchn, knum, kvel, kdur, kpause)`<br>
 
 
-[**`noteoff`**](opcodes/noteoff.md)`(ichn, inum, ivel)`<br>
+[**`noteoff`**](opcodes/noteoff.md)`(ichn, inum, ivel, iport)`<br>
 
 
-[**`noteon`**](opcodes/noteon.md)`(ichn, inum, ivel)`<br>
+[**`noteon`**](opcodes/noteon.md)`(ichn, inum, ivel, iport)`<br>
 
 
-[**`noteondur`**](opcodes/noteondur.md)`(ichn, inum, ivel, idur)`<br>
+[**`noteondur`**](opcodes/noteondur.md)`(ichn, inum, ivel, idur [, iport])`<br>
 
 
-[**`noteondur2`**](opcodes/noteondur2.md)`(ichn, inum, ivel, idur)`<br>
+[**`noteondur2`**](opcodes/noteondur2.md)`(ichn, inum, ivel, idur [, port])`<br>
 
 
 ### Real-time MIDI:MIDI/Score Interoperability
@@ -3444,10 +3409,10 @@
 
 
 ### Real-time MIDI:System Realtime
-[**`mclock`**](opcodes/mclock.md)`(ifreq)`<br>
+[**`mclock`**](opcodes/mclock.md)`(ifreq [, iport])`<br>
 
 
-[**`mrtmsg`**](opcodes/mrtmsg.md)`(imsgtype)`<br>
+[**`mrtmsg`**](opcodes/mrtmsg.md)`(imsgtype [, iport])`<br>
 
 
 ### Real-time MIDI:Slider Banks
@@ -3546,7 +3511,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;`ictlnum8, imin8, imax8, init8, ifn8, icutoff8)`<br>
 
 
-`k1, k2, ...., k16 = `[**`sliderKawai`**](opcodes/sliderkawai.md)`(imin1, imax1, init1, ifn1, imin2, imax2, \`<br>
+`k1, k2, ...., k16 = `[**`sliderkawai`**](opcodes/sliderkawai.md)`(imin1, imax1, init1, ifn1, imin2, imax2, \`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`init2, ifn2, ..., imin16, imax16, init16, ifn16)`<br>
 
 
@@ -3666,36 +3631,6 @@
 
 
 `asig = `[**`resonbnk`**](opcodes/resonbnk.md)`(ain, kPar[], kmin, kmax, iper [, imode, iscal, iskip])`<br>
-
-
-### Spectral Processing:Non-Standard
-`wsig = `[**`specaddm`**](opcodes/specaddm.md)`(wsig1, wsig2 [, imul2])`<br>
-
-
-`wsig = `[**`specdiff`**](opcodes/specdiff.md)`(wsigin)`<br>
-
-
-[**`specdisp`**](opcodes/specdisp.md)`(wsig, iprd [, iwtflg])`<br>
-
-
-`wsig = `[**`specfilt`**](opcodes/specfilt.md)`(wsigin, ifhtim)`<br>
-
-
-`wsig = `[**`spechist`**](opcodes/spechist.md)`(wsigin)`<br>
-
-
-`koct, kamp = `[**`specptrk`**](opcodes/specptrk.md)`(wsig, kvar, ilo, ihi, istr, idbthresh, inptls, irolloff \`<br>
-&nbsp;&nbsp;&nbsp;&nbsp;`[, iodd] [, iconfs] [, interp] [, ifprd] [, iwtflg])`<br>
-
-
-`wsig = `[**`specscal`**](opcodes/specscal.md)`(wsigin, ifscale, ifthresh)`<br>
-
-
-`ksum = `[**`specsum`**](opcodes/specsum.md)`(wsig [, interp])`<br>
-
-
-`wsig = `[**`spectrum`**](opcodes/spectrum.md)`(xsig, iprd, iocts, ifrqa [, iq] [, ihann] [, idbout] \`<br>
-&nbsp;&nbsp;&nbsp;&nbsp;`[, idsprd] [, idsinrs])`<br>
 
 
 ### Spectral Processing:Streaming
@@ -3895,37 +3830,37 @@
 
 
 ### Spectral Processing:ATS
-`ar = `[**`ATSadd`**](opcodes/ATSadd.md)`(ktimepnt, kfmod, iatsfile, ifn, ipartials [, ipartialoffset, \`<br>
+`ar = `[**`atsadd`**](opcodes/ATSadd.md)`(ktimepnt, kfmod, iatsfile, ifn, ipartials [, ipartialoffset, \`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`ipartialincr, igatefn])`<br>
 
 
-`ar = `[**`ATSaddnz`**](opcodes/ATSaddnz.md)`(ktimepnt, iatsfile, ibands [, ibandoffset, ibandincr])`<br>
+`ar = `[**`atsaddnz`**](opcodes/ATSaddnz.md)`(ktimepnt, iatsfile, ibands [, ibandoffset, ibandincr])`<br>
 
 
-[**`ATSbufread`**](opcodes/ATSbufread.md)`(ktimepnt, kfmod, iatsfile, ipartials [, ipartialoffset, \`<br>
+[**`atsbufread`**](opcodes/ATSbufread.md)`(ktimepnt, kfmod, iatsfile, ipartials [, ipartialoffset, \`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`ipartialincr])`<br>
 
 
-`ar = `[**`ATScross`**](opcodes/ATScross.md)`(ktimepnt, kfmod, iatsfile, ifn, kmylev, kbuflev, ipartials \`<br>
+`ar = `[**`atscross`**](opcodes/ATScross.md)`(ktimepnt, kfmod, iatsfile, ifn, kmylev, kbuflev, ipartials \`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`[, ipartialoffset, ipartialincr])`<br>
 
 
-`idata = `[**`ATSinfo`**](opcodes/ATSinfo.md)`(iatsfile, ilocation)`<br>
+`idata = `[**`atsinfo`**](opcodes/ATSinfo.md)`(iatsfile, ilocation)`<br>
 
 
-`kamp = `[**`ATSinterpread`**](opcodes/ATSinterpread.md)`(kfreq)`<br>
+`kamp = `[**`atsinterpread`**](opcodes/ATSinterpread.md)`(kfreq)`<br>
 
 
-`kfrq, kamp = `[**`ATSpartialtap`**](opcodes/ATSpartialtap.md)`(ipartialnum)`<br>
+`kfrq, kamp = `[**`atspartialtap`**](opcodes/ATSpartialtap.md)`(ipartialnum)`<br>
 
 
-`kfreq, kamp = `[**`ATSread`**](opcodes/ATSread.md)`(ktimepnt, iatsfile, ipartial)`<br>
+`kfreq, kamp = `[**`atsread`**](opcodes/ATSread.md)`(ktimepnt, iatsfile, ipartial)`<br>
 
 
-`kenergy = `[**`ATSreadnz`**](opcodes/ATSreadnz.md)`(ktimepnt, iatsfile, iband)`<br>
+`kenergy = `[**`atsreadnz`**](opcodes/ATSreadnz.md)`(ktimepnt, iatsfile, iband)`<br>
 
 
-`ar = `[**`ATSsinnoi`**](opcodes/ATSsinnoi.md)`(ktimepnt, ksinlev, knzlev, kfmod, iatsfile, ipartials \`<br>
+`ar = `[**`atssinnoi`**](opcodes/ATSsinnoi.md)`(ktimepnt, ksinlev, knzlev, kfmod, iatsfile, ipartials \`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`[, ipartialoffset, ipartialincr])`<br>
 
 
@@ -4096,50 +4031,50 @@
 [**`vadd`**](opcodes/vadd.md)`(ifn, kval, kelements [, kdstoffset] [, kverbose])`<br>
 
 
-[**`vadd_i`**](opcodes/vadd_i.md)`(ifn, ival, ielements [, idstoffset])`<br>
+[**`vaddi`**](opcodes/vadd_i.md)`(ifn, ival, ielements [, idstoffset])`<br>
 
 
 [**`vexp`**](opcodes/vexp.md)`(ifn, kval, kelements [, kdstoffset] [, kverbose])`<br>
 
 
-[**`vexp_i`**](opcodes/vexp_i.md)`(ifn, ival, ielements [, idstoffset])`<br>
+[**`vexpi`**](opcodes/vexp_i.md)`(ifn, ival, ielements [, idstoffset])`<br>
 
 
 [**`vmult`**](opcodes/vmult.md)`(ifn, kval, kelements [, kdstoffset] [, kverbose])`<br>
 
 
-[**`vmult_i`**](opcodes/vmult_i.md)`(ifn, ival, ielements [, idstoffset])`<br>
+[**`vmulti`**](opcodes/vmult_i.md)`(ifn, ival, ielements [, idstoffset])`<br>
 
 
 [**`vpow`**](opcodes/vpow.md)`(ifn, kval, kelements [, kdstoffset] [, kverbose])`<br>
 
 
-[**`vpow_i`**](opcodes/vpow_i.md)`(ifn, ival, ielements [, idstoffset])`<br>
+[**`vpowi`**](opcodes/vpow_i.md)`(ifn, ival, ielements [, idstoffset])`<br>
 
 
 ### Vectorial:Vectorial operations
 [**`vaddv`**](opcodes/vaddv.md)`(ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [,kverbose])`<br>
 
 
-[**`vaddv_i`**](opcodes/vaddv_i.md)`(ifn1, ifn2, ielements [, idstoffset] [, isrcoffset])`<br>
+[**`vaddvi`**](opcodes/vaddv_i.md)`(ifn1, ifn2, ielements [, idstoffset] [, isrcoffset])`<br>
 
 
 [**`vcopy`**](opcodes/vcopy.md)`(ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [, kverbose])`<br>
 
 
-[**`vcopy_i`**](opcodes/vcopy_i.md)`(ifn1, ifn2, ielements [,idstoffset, isrcoffset])`<br>
+[**`vcopyi`**](opcodes/vcopy_i.md)`(ifn1, ifn2, ielements [,idstoffset, isrcoffset])`<br>
 
 
 [**`vdivv`**](opcodes/vdivv.md)`(ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [,kverbose])`<br>
 
 
-[**`vdivv_i`**](opcodes/vdivv_i.md)`(ifn1, ifn2, ielements [, idstoffset] [, isrcoffset])`<br>
+[**`vdivvi`**](opcodes/vdivv_i.md)`(ifn1, ifn2, ielements [, idstoffset] [, isrcoffset])`<br>
 
 
 [**`vexpv`**](opcodes/vexpv.md)`(ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [,kverbose])`<br>
 
 
-[**`vexpv_i`**](opcodes/vexpv_i.md)`(ifn1, ifn2, ielements [, idstoffset] [, isrcoffset])`<br>
+[**`vexpvi`**](opcodes/vexpv_i.md)`(ifn1, ifn2, ielements [, idstoffset] [, isrcoffset])`<br>
 
 
 [**`vmap`**](opcodes/vmap.md)`(ifn1, ifn2, ielements [,idstoffset, isrcoffset])`<br>
@@ -4148,19 +4083,19 @@
 [**`vmultv`**](opcodes/vmultv.md)`(ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [,kverbose])`<br>
 
 
-[**`vmultv_i`**](opcodes/vmultv_i.md)`(ifn1, ifn2, ielements [, idstoffset] [, isrcoffset])`<br>
+[**`vmultvi`**](opcodes/vmultv_i.md)`(ifn1, ifn2, ielements [, idstoffset] [, isrcoffset])`<br>
 
 
 [**`vpowv`**](opcodes/vpowv.md)`(ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [,kverbose])`<br>
 
 
-[**`vpowv_i`**](opcodes/vpowv_i.md)`(ifn1, ifn2, ielements [, idstoffset] [, isrcoffset])`<br>
+[**`vpowvi`**](opcodes/vpowv_i.md)`(ifn1, ifn2, ielements [, idstoffset] [, isrcoffset])`<br>
 
 
 [**`vsubv`**](opcodes/vsubv.md)`(ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [,kverbose])`<br>
 
 
-[**`vsubv_i`**](opcodes/vsubv_i.md)`(ifn1, ifn2, ielements [, idstoffset] [, isrcoffset])`<br>
+[**`vsubvi`**](opcodes/vsubv_i.md)`(ifn1, ifn2, ielements [, idstoffset] [, isrcoffset])`<br>
 
 
 ### Vectorial:Envelopes
@@ -4254,27 +4189,27 @@
 
 
 ### OSC
-[**`OSCbundle`**](opcodes/OSCbundle.md)`(kwhen, ihost, iport, Sdest[], Stype[], kArgs[][] [, isize])`<br>
+[**`oscbundle`**](opcodes/OSCbundle.md)`(kwhen, ihost, iport, Sdest[], Stype[], kArgs[][] [, isize])`<br>
 
 
-`kans = `[**`OSCcount`**](opcodes/OSCcount.md)`()`<br>
+`kans = `[**`osccount`**](opcodes/OSCcount.md)`()`<br>
 
 
-`ihandle = `[**`OSCinit`**](opcodes/OSCinit.md)`(iport)`<br>
+`ihandle = `[**`oscinit`**](opcodes/OSCinit.md)`(iport)`<br>
 
 
-`ihandle = `[**`OSCinitM`**](opcodes/OSCinitM.md)`(Sgroup, iport)`<br>
+`ihandle = `[**`oscinitm`**](opcodes/OSCinitM.md)`(Sgroup, iport)`<br>
 
 
-`kans = `[**`OSClisten`**](opcodes/OSClisten.md)`(ihandle, idest, itype [, xdata1, xdata2, ...])`<br>
-`kans, kdata[] = OSClisten(ihandle, idest, itype)`<br>
-`kans, ... = OSClisten(idest, itype)`<br>
+`kans = `[**`osclisten`**](opcodes/OSClisten.md)`(ihandle, idest, itype [, xdata1, xdata2, ...])`<br>
+`kans, kdata[] = osclisten(ihandle, idest, itype)`<br>
+`kans, ... = osclisten(idest, itype)`<br>
 
 
-`Smess[], klen = `[**`OSCraw`**](opcodes/OSCraw.md)`(iport)`<br>
+`Smess[], klen = `[**`oscraw`**](opcodes/OSCraw.md)`(iport)`<br>
 
 
-[**`OSCsend`**](opcodes/OSCsend.md)`(kwhen, ihost, iport, idestination [, itype , xdata1, xdata2, ...])`<br>
+[**`oscsend`**](opcodes/OSCsend.md)`(kwhen, ihost, iport, idestination [, itype , xdata1, xdata2, ...])`<br>
 
 
 ### Network
@@ -4308,22 +4243,22 @@
 
 
 ### Mixer Opcodes
-[**`MixerClear`**](opcodes/mixerclear.md)`()`<br>
+[**`mixerclear`**](opcodes/mixerclear.md)`()`<br>
 
 
-`kgain = `[**`MixerGetLevel`**](opcodes/mixergetlevel.md)`(isend, ibuss)`<br>
+`kgain = `[**`mixergetlevel`**](opcodes/mixergetlevel.md)`(isend, ibuss)`<br>
 
 
-`asignal = `[**`MixerReceive`**](opcodes/mixerreceive.md)`(ibuss, ichannel)`<br>
+`asignal = `[**`mixerreceive`**](opcodes/mixerreceive.md)`(ibuss, ichannel)`<br>
 
 
-[**`MixerSend`**](opcodes/mixersend.md)`(asignal, isend, ibuss, ichannel)`<br>
+[**`mixersend`**](opcodes/mixersend.md)`(asignal, isend, ibuss, ichannel)`<br>
 
 
-[**`MixerSetLevel`**](opcodes/mixersetlevel.md)`(isend, ibuss, kgain)`<br>
+[**`mixersetlevel`**](opcodes/mixersetlevel.md)`(isend, ibuss, kgain)`<br>
 
 
-[**`MixerSetLevel_i`**](opcodes/mixersetlevel_i.md)`(isend, ibuss, igain)`<br>
+[**`mixersetleveli`**](opcodes/mixersetlevel_i.md)`(isend, ibuss, igain)`<br>
 
 
 ### Array Opcodes
@@ -4398,7 +4333,7 @@
 `iout[] = tab2array(ifn [, istart, iend, istep ])`<br>
 
 
-[**`trim`**](opcodes/trim.md)`_i(iarray, ilen)`<br>
+[**`trim`**](opcodes/trim.md)`i(iarray, ilen)`<br>
 `trim(xarray, klen)`<br>
 
 
@@ -4484,10 +4419,6 @@
 `kout[] = `[**`mfb`**](opcodes/mfb.md)`(kin[], klow, khigh, ibands)`<br>
 
 
-### Deprecated
-[**`tableiw`**](opcodes/tableiw.md)`(isig, indx, ifn [, ixmode] [, ixoff] [, iwgmode])`<br>
-
-
 ### Miscellaneous
 `SFiles[] = `[**`directory`**](opcodes/directory.md)`(SDirectory [, SExtention])`<br>
 
@@ -4500,7 +4431,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;`inum_parm, kupdate)`<br>
 
 
-`idacc, iadcc = `[**`nchnls_hw`**](opcodes/nchnls_hw.md)`()`<br>
+`idacc, iadcc = `[**`nchnlshw`**](opcodes/nchnls_hw.md)`()`<br>
 
 
 `aout = `[**`olabuffer`**](opcodes/olabuffer.md)`(kin, ioverlap)`<br>
@@ -4512,7 +4443,7 @@
 `aout = `[**`select`**](opcodes/select.md)`(a1, a2, aless, aequal, amore)`<br>
 
 
-`ires = `[**`system`**](opcodes/system.md)`_i(itrig, Scmd, [inowait])`<br>
+`ires = `[**`system`**](opcodes/system.md)`i(itrig, Scmd, [inowait])`<br>
 `kres = system(ktrig, Scmd, [knowait])`<br>
 
 

@@ -5,7 +5,7 @@ category:Signal Modifiers:Comparators and Accumulators
 # min
 Produces a signal that is the minimum of any number of input signals.
 
-The _min_ opcode takes any number of a-rate, k-rate or i-rate signals as input (all of the same rate), and outputs a signal at the same rate that is the minimum of all of the inputs.  For a-rate signals, the inputs are compared one sample at a time (i.e. _min_ does not scan an entire ksmps period of a signal for its local minimum as the _max_k_ opcode does).
+The _min_ opcode takes any number of a-rate, k-rate or i-rate signals as input (all of the same rate), and outputs a signal at the same rate that is the minimum of all of the inputs.  For a-rate signals, the inputs are compared one sample at a time (i.e. _min_ does not scan an entire ksmps period of a signal for its local minimum as the _maxk_ opcode does).
 
 ## Syntax
 === "Modern"

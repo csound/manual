@@ -5,7 +5,7 @@ The following opcodes perform comparisons between signals at a-rate or k-rate, f
 * [clear](../opcodes/clear.md)
 * [cmp](../opcodes/cmp.md)
 * [max](../opcodes/max.md)
-* [max_k](../opcodes/max_k.md)
+* [maxk](../opcodes/max_k.md)
 * [maxabs](../opcodes/maxabs.md)
 * [maxabsaccum](../opcodes/maxabsaccum.md)
 * [maxaccum](../opcodes/maxaccum.md)

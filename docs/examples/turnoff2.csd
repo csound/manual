@@ -44,7 +44,7 @@ endin
 instr 3 ;after 10 seconds, turn off the instruments
     ktrigger init 1
    if (ktrigger==1) then
-        turnoff2 200, 1, 1       ;turn off must recently started instrument instance
+        turnoff2 200, 1, 1       ;turn off most recently started instrument instance
         kactive active 200       ;find out how many are still active
         printk2 kactive          ;print mainly to show progress
         turnoff2    200, 0, 1    ;turn off all the rest of the instruments

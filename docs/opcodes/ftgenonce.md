@@ -50,7 +50,7 @@ Here is an example of the ftgenonce opcode. It uses the file [ftgenonce.csd](../
 
 ## See also
 
-[Signal Flow Graph Opcodes](../signalflowgraph.md)
+[Signal Flow Graph Opcodes](../sigrouting/signalflowgraph.md)
 
 ## Credits
 

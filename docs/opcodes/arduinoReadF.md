@@ -2,15 +2,19 @@
 id:arduinoReadF
 category:Serial I/O
 -->
-# arduinoReadF
+# arduinoreadf
 Read integer data from an arduino port using the Csound-Arduino protocol.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *arduinoReadF*.
 
 Plugin opcode in serial.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    kval = arduinoReadF(iPort, iStream1, iStream2, iStream3)
+    kval = arduinoreadf(iPort, iStream1, iStream2, iStream3)
     ```
 
 === "Classic"
@@ -20,7 +24,7 @@ Plugin opcode in serial.
 
 ### Performance
 
-_iPort_ -- port number obtained from a _arduinoStart_ opcode.
+_iPort_ -- port number obtained from a *arduinostart* opcode.
 
 _iStream1, iStream2, iStream3_ -- Numbers of the three data streams in the range 0 to 30.  Each stream carries 10 bits of the 30 bits floating point result. The division is created in the Arduino sketch encapsulated in the put_float function.
 
@@ -32,11 +36,17 @@ _kval_ -- floating point value read.
 
 ## Examples
 
-Here is an example of the arduinoReadF opcode. It uses the file [arduinoReadF.csd](../examples/arduinoReadF.csd).
+=== "Modern"
+    Here is an example of the arduinoreadf opcode. It uses the file [arduinoreadf-modern.csd](../examples/arduinoreadf-modern.csd).
+    ``` csound-csd title="Example of the arduinoreadf opcode." linenums="1"
+    --8<-- "examples/arduinoreadf-modern.csd"
+    ```
 
-``` csound-csd title="Example of the arduinoReadF opcode." linenums="1"
---8<-- "examples/arduinoReadF.csd"
-```
+=== "Classic"
+    Here is an example of the arduinoReadF opcode. It uses the file [arduinoReadF.csd](../examples/arduinoReadF.csd).
+    ``` csound-csd title="Example of the arduinoReadF opcode." linenums="1"
+    --8<-- "examples/arduinoReadF.csd"
+    ```
 
 ## See Also
 

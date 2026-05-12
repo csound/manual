@@ -41,10 +41,12 @@
 ### Signal Generators:Basic Oscillators
 [**lfo.csd**](../opcodes/lfo.md#examples)<br>
 [**lfo-advanced.csd**](../opcodes/lfo.md#examples)<br>
-[**oscbnk.csd**](../opcodes/oscbnk.md#examples)<br>
-[**oscbnk-advanced.csd**](../opcodes/oscbnk.md#examples)<br>
 [**oscil.csd**](../opcodes/oscil.md#examples)<br>
 [**oscil3.csd**](../opcodes/oscil3.md#examples)<br>
+[**oscilbank.csd**](../opcodes/oscbnk.md#examples)<br>
+[**oscbnk.csd**](../opcodes/oscbnk.md#examples)<br>
+[**oscilbank-advanced.csd**](../opcodes/oscbnk.md#examples)<br>
+[**oscbnk-advanced.csd**](../opcodes/oscbnk.md#examples)<br>
 [**oscili.csd**](../opcodes/oscili.md#examples)<br>
 [**oscilikt.csd**](../opcodes/oscilikt.md#examples)<br>
 [**osciliktp.csd**](../opcodes/osciliktp.md#examples)<br>
@@ -323,6 +325,7 @@
 
 ### Signal Generators:Waveguide Physical Modeling
 [**pluck.csd**](../opcodes/pluck.md#examples)<br>
+[**musical/ResonPluck_Cucchi.csd**](../opcodes/pluck.md#examples)<br>
 [**repluck.csd**](../opcodes/repluck.md#examples)<br>
 [**repluck-advanced.csd**](../opcodes/repluck.md#examples)<br>
 [**streson.csd**](../opcodes/streson.md#examples)<br>
@@ -341,7 +344,6 @@
 [**dumpk3.csd**](../opcodes/dumpk3.md#examples)<br>
 [**dumpk4.csd**](../opcodes/dumpk4.md#examples)<br>
 [**ficlose.csd**](../opcodes/ficlose.md#examples)<br>
-[**fin.csd**](../opcodes/fin.md#examples)<br>
 [**fini.csd**](../opcodes/fini.md#examples)<br>
 [**fink.csd**](../opcodes/fink.md#examples)<br>
 [**fiopen.csd**](../opcodes/fiopen.md#examples)<br>
@@ -408,6 +410,7 @@
 [**display.csd**](../opcodes/display.md#examples)<br>
 [**flashtxt.csd**](../opcodes/flashtxt.md#examples)<br>
 [**print.csd**](../opcodes/print.md#examples)<br>
+[**printf-modern.csd**](../opcodes/printf.md#examples)<br>
 [**printf.csd**](../opcodes/printf.md#examples)<br>
 [**printk.csd**](../opcodes/printk.md#examples)<br>
 [**printk2.csd**](../opcodes/printk2.md#examples)<br>
@@ -480,7 +483,6 @@
 [**bformenc1-modern.csd**](../opcodes/bformenc1.md#examples)<br>
 [**bformenc1.csd**](../opcodes/bformenc1.md#examples)<br>
 [**hrtfearly.csd**](../opcodes/hrtfearly.md#examples)<br>
-[**hrtfer.csd**](../opcodes/hrtfer.md#examples)<br>
 [**hrtfmove.csd**](../opcodes/hrtfmove.md#examples)<br>
 [**hrtfmove2.csd**](../opcodes/hrtfmove2.md#examples)<br>
 [**hrtfearly.csd**](../opcodes/hrtfreverb.md#examples)<br>
@@ -560,8 +562,6 @@
 [**phaser2.csd**](../opcodes/phaser2.md#examples)<br>
 
 ### Signal Modifiers:Standard Filters
-[**k35.csd**](../opcodes/k35_hpf.md#examples)<br>
-[**k35.csd**](../opcodes/k35_lpf.md#examples)<br>
 [**atone-modern.csd**](../opcodes/atone.md#examples)<br>
 [**atone.csd**](../opcodes/atone.md#examples)<br>
 [**atonex-modern.csd**](../opcodes/atonex.md#examples)<br>
@@ -584,16 +584,26 @@
 [**clfilt_lowpass.csd**](../opcodes/clfilt.md#examples)<br>
 [**clfilt_highpass-modern.csd**](../opcodes/clfilt.md#examples)<br>
 [**clfilt_highpass.csd**](../opcodes/clfilt.md#examples)<br>
+[**diodeladder.csd**](../opcodes/diode_ladder.md#examples)<br>
 [**diode_ladder.csd**](../opcodes/diode_ladder.md#examples)<br>
+[**k35-modern.csd**](../opcodes/k35_hpf.md#examples)<br>
+[**k35.csd**](../opcodes/k35_hpf.md#examples)<br>
+[**k35-modern.csd**](../opcodes/k35_lpf.md#examples)<br>
+[**k35.csd**](../opcodes/k35_lpf.md#examples)<br>
 [**median.csd**](../opcodes/median.md#examples)<br>
 [**mediank.csd**](../opcodes/mediank.md#examples)<br>
 [**mode.csd**](../opcodes/mode.md#examples)<br>
 [**tone.csd**](../opcodes/tone.md#examples)<br>
 [**tonex.csd**](../opcodes/tonex.md#examples)<br>
+[**zdf1pole.csd**](../opcodes/zdf_1pole.md#examples)<br>
 [**zdf_1pole.csd**](../opcodes/zdf_1pole.md#examples)<br>
+[**zdf1polemode.csd**](../opcodes/zdf_1pole_mode.md#examples)<br>
 [**zdf_1pole_mode.csd**](../opcodes/zdf_1pole_mode.md#examples)<br>
+[**zdf2pole.csd**](../opcodes/zdf_2pole.md#examples)<br>
 [**zdf_2pole.csd**](../opcodes/zdf_2pole.md#examples)<br>
+[**zdf2polemode.csd**](../opcodes/zdf_2pole_mode.md#examples)<br>
 [**zdf_2pole_mode.csd**](../opcodes/zdf_2pole_mode.md#examples)<br>
+[**zdfladder.csd**](../opcodes/zdf_ladder.md#examples)<br>
 [**zdf_ladder.csd**](../opcodes/zdf_ladder.md#examples)<br>
 
 ### Signal Modifiers:Standard Filters:Resonant
@@ -685,10 +695,11 @@
 ### Signal Modifiers:Comparators and Accumulators
 [**cmp.csd**](../opcodes/cmp.md#examples)<br>
 [**max.csd**](../opcodes/max.md#examples)<br>
-[**max_k.csd**](../opcodes/max_k.md#examples)<br>
 [**maxabs.csd**](../opcodes/maxabs.md#examples)<br>
 [**maxabsaccum.csd**](../opcodes/maxabsaccum.md#examples)<br>
 [**maxaccum.csd**](../opcodes/maxaccum.md#examples)<br>
+[**maxk.csd**](../opcodes/max_k.md#examples)<br>
+[**max_k.csd**](../opcodes/max_k.md#examples)<br>
 [**min.csd**](../opcodes/min.md#examples)<br>
 [**minabs.csd**](../opcodes/minabs.md#examples)<br>
 [**minabsaccum.csd**](../opcodes/minabsaccum.md#examples)<br>
@@ -721,6 +732,7 @@
 [**ihold-modern.csd**](../opcodes/ihold.md#examples)<br>
 [**ihold.csd**](../opcodes/ihold.md#examples)<br>
 [**turnoff.csd**](../opcodes/turnoff.md#examples)<br>
+[**turnoff2-modern.csd**](../opcodes/turnoff2.md#examples)<br>
 [**turnoff2.csd**](../opcodes/turnoff2.md#examples)<br>
 [**turnoff3.csd**](../opcodes/turnoff3.md#examples)<br>
 [**turnon.csd**](../opcodes/turnon.md#examples)<br>
@@ -728,6 +740,7 @@
 ### Instrument Control:Invocation
 [**event.csd**](../opcodes/event.md#examples)<br>
 [**event_named.csd**](../opcodes/event.md#examples)<br>
+[**eventi.csd**](../opcodes/event_i.md#examples)<br>
 [**event_i.csd**](../opcodes/event_i.md#examples)<br>
 [**mute.csd**](../opcodes/mute.md#examples)<br>
 [**nstance.csd**](../opcodes/nstance.md#examples)<br>
@@ -738,6 +751,7 @@
 [**schedulek.csd**](../opcodes/schedulek.md#examples)<br>
 [**schedwhen.csd**](../opcodes/schedwhen.md#examples)<br>
 [**scoreline.csd**](../opcodes/scoreline.md#examples)<br>
+[**scorelinei.csd**](../opcodes/scoreline_i.md#examples)<br>
 [**scoreline_i.csd**](../opcodes/scoreline_i.md#examples)<br>
 
 ### Instrument Control:Program Flow Control
@@ -765,8 +779,11 @@
 [**kgoto.csd**](../opcodes/kgoto.md#examples)<br>
 [**loop_-group-modern.csd**](../opcodes/loop_ge.md#examples)<br>
 [**loop_-group.csd**](../opcodes/loop_ge.md#examples)<br>
+[**loopgt.csd**](../opcodes/loop_gt.md#examples)<br>
 [**loop_gt.csd**](../opcodes/loop_gt.md#examples)<br>
+[**loople.csd**](../opcodes/loop_le.md#examples)<br>
 [**loop_le.csd**](../opcodes/loop_le.md#examples)<br>
+[**looplt.csd**](../opcodes/loop_lt.md#examples)<br>
 [**loop_lt.csd**](../opcodes/loop_lt.md#examples)<br>
 [**switch.csd**](../opcodes/switch.md#examples)<br>
 [**tigoto.csd**](../opcodes/tigoto.md#examples)<br>
@@ -821,8 +838,11 @@
 [**changed2a.csd**](../opcodes/changed2.md#examples)<br>
 [**checkbox-modern.csd**](../opcodes/checkbox.md#examples)<br>
 [**checkbox.csd**](../opcodes/checkbox.md#examples)<br>
+[**counter-modern.csd**](../opcodes/cntcreate.md#examples)<br>
 [**counter.csd**](../opcodes/cntcreate.md#examples)<br>
+[**counter-modern.csd**](../opcodes/count.md#examples)<br>
 [**counter.csd**](../opcodes/count.md#examples)<br>
+[**counter-modern.csd**](../opcodes/count_i.md#examples)<br>
 [**counter.csd**](../opcodes/count_i.md#examples)<br>
 [**follow.csd**](../opcodes/follow.md#examples)<br>
 [**follow2.csd**](../opcodes/follow2.md#examples)<br>
@@ -873,11 +893,6 @@
 [**readscratch.csd**](../opcodes/writescratch.md#examples)<br>
 [**xyin.csd**](../opcodes/xyin.md#examples)<br>
 
-### Instrument Control:Stacks
-[**pop.csd**](../opcodes/pop.md#examples)<br>
-[**push.csd**](../opcodes/push.md#examples)<br>
-[**stack.csd**](../opcodes/stack.md#examples)<br>
-
 ### Instrument Control:Subinstrument Control
 [**subinstr-modern.csd**](../opcodes/subinstr.md#examples)<br>
 [**subinstr.csd**](../opcodes/subinstr.md#examples)<br>
@@ -897,10 +912,15 @@
 [**times_complex.csd**](../opcodes/times.md#examples)<br>
 
 ### Serial I/O
+[**arduinoread-modern.csd**](../opcodes/arduinoRead.md#examples)<br>
 [**arduinoRead.csd**](../opcodes/arduinoRead.md#examples)<br>
+[**arduinoreadf-modern.csd**](../opcodes/arduinoReadF.md#examples)<br>
 [**arduinoReadF.csd**](../opcodes/arduinoReadF.md#examples)<br>
+[**serialbegin-modern.csd**](../opcodes/serialBegin.md#examples)<br>
 [**serialBegin.csd**](../opcodes/serialBegin.md#examples)<br>
+[**serialread-modern.csd**](../opcodes/serialRead.md#examples)<br>
 [**serialRead.csd**](../opcodes/serialRead.md#examples)<br>
+[**serialwrite-modern.csd**](../opcodes/serialWrite.md#examples)<br>
 [**serialWrite.csd**](../opcodes/serialWrite.md#examples)<br>
 
 ### Table Control
@@ -917,8 +937,10 @@
 [**ftlen.csd**](../opcodes/ftlen.md#examples)<br>
 [**ftlptim.csd**](../opcodes/ftlptim.md#examples)<br>
 [**ftsr.csd**](../opcodes/ftsr.md#examples)<br>
+[**genarrayi.csd**](../opcodes/genarray_i.md#examples)<br>
 [**genarray_i.csd**](../opcodes/genarray_i.md#examples)<br>
 [**lenarray.csd**](../opcodes/lenarray.md#examples)<br>
+[**maparray-modern.csd**](../opcodes/maparray.md#examples)<br>
 [**maparray.csd**](../opcodes/maparray.md#examples)<br>
 [**nsamp.csd**](../opcodes/nsamp.md#examples)<br>
 [**slicearray.csd**](../opcodes/slicearray.md#examples)<br>
@@ -1232,8 +1254,6 @@
 [**pvslpc.csd**](../opcodes/pvslpc.md#examples)<br>
 [**resonbnk.csd**](../opcodes/resonbnk.md#examples)<br>
 
-### Spectral Processing:Non-Standard
-
 ### Spectral Processing:Streaming
 [**binit-modern.csd**](../opcodes/binit.md#examples)<br>
 [**binit.csd**](../opcodes/binit.md#examples)<br>
@@ -1297,33 +1317,33 @@
 [**trsplit.csd**](../opcodes/trsplit.md#examples)<br>
 
 ### Spectral Processing:ATS
-[**ATSadd-modern.csd**](../opcodes/ATSadd.md#examples)<br>
+[**atsadd-modern.csd**](../opcodes/ATSadd.md#examples)<br>
 [**ATSadd.csd**](../opcodes/ATSadd.md#examples)<br>
-[**ATSadd-2-modern.csd**](../opcodes/ATSadd.md#examples)<br>
+[**atsadd-2-modern.csd**](../opcodes/ATSadd.md#examples)<br>
 [**ATSadd-2.csd**](../opcodes/ATSadd.md#examples)<br>
-[**ATSaddnz-modern.csd**](../opcodes/ATSaddnz.md#examples)<br>
+[**atsaddnz-modern.csd**](../opcodes/ATSaddnz.md#examples)<br>
 [**ATSaddnz.csd**](../opcodes/ATSaddnz.md#examples)<br>
-[**ATSaddnz-2-modern.csd**](../opcodes/ATSaddnz.md#examples)<br>
+[**atsaddnz-2-modern.csd**](../opcodes/ATSaddnz.md#examples)<br>
 [**ATSaddnz-2.csd**](../opcodes/ATSaddnz.md#examples)<br>
-[**ATSbufread-modern.csd**](../opcodes/ATSbufread.md#examples)<br>
+[**atsbufread-modern.csd**](../opcodes/ATSbufread.md#examples)<br>
 [**ATSbufread.csd**](../opcodes/ATSbufread.md#examples)<br>
-[**ATScross-modern.csd**](../opcodes/ATScross.md#examples)<br>
+[**atscross-modern.csd**](../opcodes/ATScross.md#examples)<br>
 [**ATScross.csd**](../opcodes/ATScross.md#examples)<br>
-[**ATSinfo-modern.csd**](../opcodes/ATSinfo.md#examples)<br>
+[**atsinfo-modern.csd**](../opcodes/ATSinfo.md#examples)<br>
 [**ATSinfo.csd**](../opcodes/ATSinfo.md#examples)<br>
-[**ATSinterpread-modern.csd**](../opcodes/ATSinterpread.md#examples)<br>
+[**atsinterpread-modern.csd**](../opcodes/ATSinterpread.md#examples)<br>
 [**ATSinterpread.csd**](../opcodes/ATSinterpread.md#examples)<br>
-[**ATSpartialtap-modern.csd**](../opcodes/ATSpartialtap.md#examples)<br>
+[**atspartialtap-modern.csd**](../opcodes/ATSpartialtap.md#examples)<br>
 [**ATSpartialtap.csd**](../opcodes/ATSpartialtap.md#examples)<br>
-[**ATSread-modern.csd**](../opcodes/ATSread.md#examples)<br>
+[**atsread-modern.csd**](../opcodes/ATSread.md#examples)<br>
 [**ATSread.csd**](../opcodes/ATSread.md#examples)<br>
-[**ATSread-musical-modern.csd**](../opcodes/ATSread.md#examples)<br>
+[**atsread-musical-modern.csd**](../opcodes/ATSread.md#examples)<br>
 [**ATSread-musical.csd**](../opcodes/ATSread.md#examples)<br>
-[**ATSreadnz-modern.csd**](../opcodes/ATSreadnz.md#examples)<br>
+[**atsreadnz-modern.csd**](../opcodes/ATSreadnz.md#examples)<br>
 [**ATSreadnz.csd**](../opcodes/ATSreadnz.md#examples)<br>
-[**ATSsinnoi-modern.csd**](../opcodes/ATSsinnoi.md#examples)<br>
+[**atssinnoi-modern.csd**](../opcodes/ATSsinnoi.md#examples)<br>
 [**ATSsinnoi.csd**](../opcodes/ATSsinnoi.md#examples)<br>
-[**ATSsinnoi-2-modern.csd**](../opcodes/ATSsinnoi.md#examples)<br>
+[**atssinnoi-2-modern.csd**](../opcodes/ATSsinnoi.md#examples)<br>
 [**ATSsinnoi-2.csd**](../opcodes/ATSsinnoi.md#examples)<br>
 
 ### Spectral Processing:Other
@@ -1366,14 +1386,19 @@
 
 ### Vectorial:Scalar operations
 [**vadd.csd**](../opcodes/vadd.md#examples)<br>
+[**vaddi.csd**](../opcodes/vadd_i.md#examples)<br>
 [**vadd_i.csd**](../opcodes/vadd_i.md#examples)<br>
 [**vexp.csd**](../opcodes/vexp.md#examples)<br>
+[**vexpi.csd**](../opcodes/vexp_i.md#examples)<br>
 [**vexp_i.csd**](../opcodes/vexp_i.md#examples)<br>
 [**vmult-2.csd**](../opcodes/vmult.md#examples)<br>
 [**vmult.csd**](../opcodes/vmult.md#examples)<br>
+[**vmulti.csd**](../opcodes/vmult_i.md#examples)<br>
 [**vmult_i.csd**](../opcodes/vmult_i.md#examples)<br>
 [**vpow.csd**](../opcodes/vpow.md#examples)<br>
 [**vpow-2.csd**](../opcodes/vpow.md#examples)<br>
+[**vpowi.csd**](../opcodes/vpow_i.md#examples)<br>
+[**vpowi-2.csd**](../opcodes/vpow_i.md#examples)<br>
 [**vpow_i.csd**](../opcodes/vpow_i.md#examples)<br>
 [**vpow_i-2.csd**](../opcodes/vpow_i.md#examples)<br>
 
@@ -1422,11 +1447,17 @@
 [**zkwm.csd**](../opcodes/zkwm.md#examples)<br>
 
 ### OSC
+[**oscbundle-modern.csd**](../opcodes/OSCbundle.md#examples)<br>
 [**oscbundle.csd**](../opcodes/OSCbundle.md#examples)<br>
+[**oscmidisend-modern.csd**](../opcodes/OSClisten.md#examples)<br>
+[**oscmidircv-modern.csd**](../opcodes/OSClisten.md#examples)<br>
+[**osclistenex2-modern.csd**](../opcodes/OSClisten.md#examples)<br>
 [**OSCmidisend.csd**](../opcodes/OSClisten.md#examples)<br>
 [**OSCmidircv.csd**](../opcodes/OSClisten.md#examples)<br>
 [**OSClistenex2.csd**](../opcodes/OSClisten.md#examples)<br>
+[**oscraw-modern.csd**](../opcodes/OSCraw.md#examples)<br>
 [**OSCraw.csd**](../opcodes/OSCraw.md#examples)<br>
+[**oscsend-modern.csd**](../opcodes/OSCsend.md#examples)<br>
 [**OSCsend.csd**](../opcodes/OSCsend.md#examples)<br>
 
 ### Network
@@ -1437,10 +1468,15 @@
 [**midremot.csd**](../opcodes/midremot.md#examples)<br>
 
 ### Mixer Opcodes
+[**Mixer-modern.csd**](../opcodes/mixerclear.md#examples)<br>
 [**Mixer.csd**](../opcodes/mixerclear.md#examples)<br>
+[**Mixer-modern.csd**](../opcodes/mixergetlevel.md#examples)<br>
 [**Mixer.csd**](../opcodes/mixergetlevel.md#examples)<br>
+[**Mixer-modern.csd**](../opcodes/mixerreceive.md#examples)<br>
 [**Mixer.csd**](../opcodes/mixerreceive.md#examples)<br>
+[**Mixer-modern.csd**](../opcodes/mixersend.md#examples)<br>
 [**Mixer.csd**](../opcodes/mixersend.md#examples)<br>
+[**Mixer-modern.csd**](../opcodes/mixersetlevel.md#examples)<br>
 [**Mixer.csd**](../opcodes/mixersetlevel.md#examples)<br>
 
 ### Array Opcodes
@@ -1467,6 +1503,7 @@
 [**shiftout.csd**](../opcodes/shiftout.md#examples)<br>
 [**sumarray.csd**](../opcodes/sumarray.md#examples)<br>
 [**tab2array.csd**](../opcodes/tab2array.md#examples)<br>
+[**trim-modern.csd**](../opcodes/trim.md#examples)<br>
 [**trim.csd**](../opcodes/trim.md#examples)<br>
 
 ### Array Operations: Fast Fourier Transform
@@ -1514,17 +1551,17 @@
 ### Array Operations: Mel scale filterbank
 [**mfb.csd**](../opcodes/mfb.md#examples)<br>
 
-### Deprecated
-[**tableiw.csd**](../opcodes/tableiw.md#examples)<br>
-
 ### Miscellaneous
+[**directory-modern.csd**](../opcodes/directory.md#examples)<br>
 [**directory.csd**](../opcodes/directory.md#examples)<br>
 [**framebuffer.csd**](../opcodes/framebuffer.md#examples)<br>
 [**modmatrix.csd**](../opcodes/modmatrix.md#examples)<br>
+[**nchnlshw.csd**](../opcodes/nchnls_hw.md#examples)<br>
 [**nchnls_hw.csd**](../opcodes/nchnls_hw.md#examples)<br>
 [**framebuffer.csd**](../opcodes/olabuffer.md#examples)<br>
 [**pwd.csd**](../opcodes/pwd.md#examples)<br>
 [**select.csd**](../opcodes/select.md#examples)<br>
+[**system-modern.csd**](../opcodes/system.md#examples)<br>
 [**system.csd**](../opcodes/system.md#examples)<br>
 [**tableshuffle.csd**](../opcodes/tableshuffle.md#examples)<br>
 

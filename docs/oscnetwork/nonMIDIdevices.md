@@ -6,17 +6,17 @@ The following opcodes connect and communicate with non-MIDI hardware devices.
 
 Opcodes designed to work with an Arduino:
 
-* [arduinoRead](../opcodes/arduinoRead.md) - Read data from an arduino.
-* [arduinoReadF](../opcodes/arduinoReadF.md) - Read data from an arduino.
-* [arduinoStart](../opcodes/arduinoStart.md) - Open a serial port for use with the Arduino protocol.
-* [arduinoStop](../opcodes/arduinoStop.md) - Close a serial port using Arduino protocol.
-* [serialBegin](../opcodes/serialBegin.md) - Open a serial port for Arduino.
-* [serialEnd](../opcodes/serialEnd.md) - Close a serial port for Arduino.
-* [serialFlush](../opcodes/serialFlush.md) - Flush data from a serial port.
-* [serialPrint](../opcodes/serialPrint.md) - Print data from a serial port.
-* [serialRead](../opcodes/serialRead.md) - Read data from a serial port.
-* [serialWrite_i](../opcodes/serialWrite_i.md) - Write data to a serial port.
-* [serialWrite](../opcodes/serialWrite.md) - Write data to a serial port.
+* [arduinoread](../opcodes/arduinoRead.md) - Read data from an arduino.
+* [arduinoreadf](../opcodes/arduinoReadF.md) - Read data from an arduino.
+* [arduinostart](../opcodes/arduinoStart.md) - Open a serial port for use with the Arduino protocol.
+* [arduinostop](../opcodes/arduinoStop.md) - Close a serial port using Arduino protocol.
+* [serialbegin](../opcodes/serialBegin.md) - Open a serial port for Arduino.
+* [serialend](../opcodes/serialEnd.md) - Close a serial port for Arduino.
+* [serialflush](../opcodes/serialFlush.md) - Flush data from a serial port.
+* [serialprint](../opcodes/serialPrint.md) - Print data from a serial port.
+* [serialread](../opcodes/serialRead.md) - Read data from a serial port.
+* [serialwritei](../opcodes/serialWrite_i.md) - Write data to a serial port.
+* [serialwrite](../opcodes/serialWrite.md) - Write data to a serial port.
 
 ### P5 Glove
 

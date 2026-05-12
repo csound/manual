@@ -1,6 +1,7 @@
 <!--
 id:specptrk
 category:Spectral Processing:Non-Standard
+status:deprecated
 -->
 # specptrk
 Estimates the pitch of the most prominent complex tone in the spectrum.

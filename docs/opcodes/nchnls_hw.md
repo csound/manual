@@ -2,15 +2,19 @@
 id:nchnls_hw
 category:Miscellaneous
 -->
-# nchnls_hw
+# nchnlshw
 Returns the number of audio channels in the underlying hardware.
 
 This does not necessarily correspond to the number of channels used by Csound (set by nchnls and nchnls_i).
 
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *nchnls_hw*.
+
 ## Syntax
 === "Modern"
     ``` csound-orc
-    idacc, iadcc = nchnls_hw()
+    idacc, iadcc = nchnlshw()
     ```
 
 === "Classic"
@@ -24,11 +28,17 @@ On init-pass idacc will contain the number of channels in the output device, and
 
 ## Examples
 
-Here is an example of the nchnls_hw opcode. It uses the file [nchnls_hw.csd](../examples/nchnls_hw.csd).
+=== "Modern"
+    Here is an example of the nchnlshw opcode. It uses the file [nchnlshw.csd](../examples/nchnlshw.csd).
+    ``` csound-csd title="Example of the nchnlshw opcode." linenums="1"
+    --8<-- "examples/nchnlshw.csd"
+    ```
 
-``` csound-csd title="Example of the nchnls_hw opcode." linenums="1"
---8<-- "examples/nchnls_hw.csd"
-```
+=== "Classic"
+    Here is an example of the nchnls_hw opcode. It uses the file [nchnls_hw.csd](../examples/nchnls_hw.csd).
+    ``` csound-csd title="Example of the nchnls_hw opcode." linenums="1"
+    --8<-- "examples/nchnls_hw.csd"
+    ```
 
 The output should include lines like these:
 

@@ -1,6 +1,7 @@
 <!--
 id:spechist
 category:Spectral Processing:Non-Standard
+status:deprecated
 -->
 # spechist
 Accumulates the values of successive spectral frames.

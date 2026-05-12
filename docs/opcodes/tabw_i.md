@@ -2,15 +2,19 @@
 id:tabw_i
 category:Signal Generators:Table Access
 -->
-# tabw_i
+# tabwi
 Fast table opcodes.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *tabw_i*.
 
 Faster than [tablew](../opcodes/tablew.md) because it does not allow wrap-around and limit. Has been implemented in order to provide fast access to arrays.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    tabw_i(isig, indx, ifn [,ixmode])
+    tabwi(isig, indx, ifn [,ixmode])
     ```
 
 === "Classic"
@@ -30,7 +34,7 @@ _indx_ -- table index
 
 ### Performance
 
-_tabw_i_ opcode is similar to _tablew_ but is faster, and use rounding of the index.
+_tabwi_ opcode is similar to _tablew_ but is faster, and use rounding of the index.
 
 ## See Also
 

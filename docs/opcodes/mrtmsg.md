@@ -8,12 +8,12 @@ Send system real-time messages to the MIDI OUT port.
 ## Syntax
 === "Modern"
     ``` csound-orc
-    mrtmsg(imsgtype)
+    mrtmsg(imsgtype [, iport])
     ```
 
 === "Classic"
     ``` csound-orc
-    mrtmsg imsgtype
+    mrtmsg imsgtype [, iport]
     ```
 
 ### Initialization
@@ -25,6 +25,8 @@ _imsgtype_ -- type of real-time message:
 * 0 sends a STOP message (0xFC);
 * -1 sends a SYSTEM RESET message (0xFF);
 * -2 sends an ACTIVE SENSING message (0xFE)
+
+_iport_ -- MIDI output port, optional set to 0.
 
 ### Performance
 

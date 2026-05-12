@@ -42,7 +42,7 @@ Here is an example of the zkwm opcode. It uses the file [zkwm.csd](../examples/z
 
 ## See also
 
-[Zak Patch System](../zak/top.md)
+[Zak Patch System](../sigrouting/zak/top.md)
 
 ## Credits
 

@@ -2,15 +2,19 @@
 id:cntState
 category:Instrument Control:Sensing and Control
 -->
-# cntState
+# cntstate
 Gives the range and increment of a counter.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *cntState*.
 
 Plugin opcode in counter.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    kmax, kmin, kinc = cntState(icnt)
+    kmax, kmin, kinc = cntstate(icnt)
     ```
 
 === "Classic"

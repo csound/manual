@@ -5,7 +5,7 @@ category:Signal I/O:Software Bus
 # chnget
 Reads data from a channel of the inward named software bus.
 
-Implies declaring the channel with _imode_=1 (see also [chn_k, chn_a, and chn_S](../opcodes/chn.md)).
+Implies declaring the channel with _imode_=1 (see also [chnk, chna, and chnS](../opcodes/chn.md)).
 
 ## Syntax
 === "Modern"

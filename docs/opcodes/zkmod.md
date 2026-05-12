@@ -34,7 +34,7 @@ Here is an example of the zkmod opcode. It uses the file [zkmod.csd](../examples
 
 ## See also
 
-[Zak Patch System](../zak/top.md)
+[Zak Patch System](../sigrouting/zak/top.md)
 
 ## Credits
 

@@ -17,7 +17,6 @@ ifn1 = p4
 ival = p5
 ielements = p6
 idstoffset = p7
-kval init 25
 vpow_i ifn1, ival, ielements, idstoffset
         endin
 

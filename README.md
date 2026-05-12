@@ -180,3 +180,15 @@ misc/examples.md
 
 The author can also add a link to its opcode notice in one of the category notices.
 
+### Deprecated Opcodes
+
+To mark an opcode as deprecated, simply add the line `status:deprecated` to the header comment of its notice, below the `category:` line. For example:
+```
+<!--
+id:bformenc
+category:Signal Modifiers:Panning and Spatialization
+status:deprecated
+-->
+```
+
+Then, runnning the `makeAppendices.py` script will automatically remove the references to this opcode in the *Opcodes Index*, *Opcodes Quick Reference*, and *List of Examples* sections, and it will add a link to the this opcode notice in the *Deprecated Opcodes* section.

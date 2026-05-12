@@ -1,6 +1,7 @@
 <!--
 id:pop
 category:Instrument Control:Stacks
+status:deprecated
 -->
 # pop
 Pops values from the global stack.  Deprecated.

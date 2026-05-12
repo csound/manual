@@ -2,15 +2,19 @@
 id:OSCcount
 category:OSC
 -->
-# OSCcount
+# osccount
 Gives the Count of OSC messages currently unread but received by the current listeners.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *OSCcount*.
 
 Plugin opcode in osc.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    kans = OSCcount()
+    kans = osccount()
     ```
 
 === "Classic"
@@ -20,7 +24,7 @@ Plugin opcode in osc.
 
 ### Performance
 
-_kans_ -- set to the number of messages accepted by this Csound process to any address but not yet presented to a call of OSClisten.
+_kans_ -- set to the number of messages accepted by this Csound process to any address but not yet presented to a call of *osclisten*.
 
 The expected use of this opcode is when there are a number of listeners and we can decide checking them all if there are no messages.
 
@@ -29,26 +33,24 @@ The expected use of this opcode is when there are a number of listeners and we c
 This example shows a pair of floating point numbers being received on port 7770.
 
 ``` csound-orc
-  sr = 44100
-  ksmps = 100
-  nchnls = 2
+sr = 44100
+ksmps = 100
+nchnls = 2
 
-  gihandle OSCinit 7770
+handle@global:i = oscinit(7770)
 
-  instr   1
-    kf1 init 0
-    kf2 init 0
-    kk  OSCcount
-nxtmsg:
+instr 1
+  f1:k = init(0)
+  f2:k = init(0)
+  kk = osccount()
 
-if (kk == 0) goto ex
-  kr  OSClisten gihandle, "/foo/bar", "ff", kf1, kf2
-    printk 0,kf1
-    printk 0,kf2
+  until (kk == 0) do
+    kr = osclisten(handle, "/foo/bar", "ff", f1, f2)
+    printk(0, f1)
+    printk(0, f2)
     kk -= 1
-    kgoto nxtmsg
-ex:
-  endin
+  od
+endin
 ```
 
 ## See also

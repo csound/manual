@@ -34,7 +34,7 @@ Here is an example of the zkw opcode. It uses the file [zkw.csd](../examples/zkw
 
 ## See also
 
-[Zak Patch System](../zak/top.md)
+[Zak Patch System](../sigrouting/zak/top.md)
 
 ## Credits
 

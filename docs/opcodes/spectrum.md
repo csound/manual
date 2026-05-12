@@ -1,6 +1,7 @@
 <!--
 id:spectrum
 category:Spectral Processing:Non-Standard
+status:deprecated
 -->
 # spectrum
 Generate a constant-Q, exponentially-spaced DFT across all octaves of a multiply-downsampled control or audio input signal.

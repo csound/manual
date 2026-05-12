@@ -8,13 +8,20 @@ Sends MIDI controller messages at k-rate.
 ## Syntax
 === "Modern"
     ``` csound-orc
-    outkc(kchn, knum, kvalue, kmin, kmax)
+    outkc(kchn, knum, kvalue, kmin, kmax [, iport])
     ```
 
 === "Classic"
     ``` csound-orc
-    outkc kchn, knum, kvalue, kmin, kmax
+    outkc kchn, knum, kvalue, kmin, kmax [, iport]
     ```
+
+
+### Initialisation
+
+_iport_ -- MIDI output port, optional set to 0.
+
+
 
 ### Performance
 

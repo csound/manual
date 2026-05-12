@@ -2,15 +2,19 @@
 id:k35_hpf
 category:Signal Modifiers:Standard Filters
 -->
-# K35_hpf
+# k35hpf
 Zero-delay feedback implementation of Korg35 resonant high-pass filter.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *K35_hpf*.
 
 This filter design is found in the Korg MS10 early MS20.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    asig = K35_hpf(ain, xcf, xQ [, inlp, isaturation, istor])
+    asig = k35hpf(ain, xcf, xQ [, inlp, isaturation, istor])
     ```
 
 === "Classic"
@@ -38,11 +42,17 @@ _ksaturation_ (optional, default=1) -- saturation amount to use for non-linear p
 
 ## Examples
 
-Here is an example of the K35_hpf opcode. It uses the file [k35.csd](../examples/k35.csd).
+=== "Modern"
+    Here is an example of the k35hpf opcode. It uses the file [k35-modern.csd](../examples/k35-modern.csd).
+    ``` csound-csd title="Example of the k35hpf opcode." linenums="1"
+    --8<-- "examples/k35-modern.csd"
+    ```
 
-``` csound-csd title="Example of the K35_hpf opcode." linenums="1"
---8<-- "examples/k35.csd"
-```
+=== "Classic"
+    Here is an example of the K35_hpf opcode. It uses the file [k35.csd](../examples/k35.csd).
+    ``` csound-csd title="Example of the K35_hpf opcode." linenums="1"
+    --8<-- "examples/k35.csd"
+    ```
 
 ### References
 

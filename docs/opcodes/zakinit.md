@@ -42,7 +42,7 @@ Here is an example of the zakinit opcode. It uses the file [zakinit.csd](../exam
 
 ## See also
 
-[Zak Patch System](../zak/top.md)
+[Zak Patch System](../sigrouting/zak/top.md)
 
 ## Credits
 

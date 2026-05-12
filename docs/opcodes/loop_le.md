@@ -2,14 +2,18 @@
 id:loop_le
 category:Instrument Control:Program Flow Control
 -->
-# loop_le
+# loople
 Construction of looping operations.
+
+> :memo: **Note**
+>
+> Up to Csound 6, this opcode was called *loop_le*.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    loop_le(indx, incr, imax, label)
-    loop_le(kndx, kncr, kmax, label)
+    loople(indx, incr, imax, label)
+    loople(kndx, kncr, kmax, label)
     ```
 
 === "Classic"
@@ -34,7 +38,7 @@ _kncr_ -- value to increment the loop.
 
 _kmax_ -- maximum value of loop index.
 
-The actions of _loop\_le_ are equivalent to the code
+The actions of _loople_ are equivalent to the code
 
 ``` csound-orc
 indx  =  indx + incr
@@ -54,11 +58,17 @@ if (kndx <= kmax) kgoto label
 
 ## Examples
 
-Here is an example of the loop_le opcode. It uses the file [loop_le.csd](../examples/loop_le.csd).
+=== "Modern"
+    Here is an example of the loople opcode. It uses the file [loople.csd](../examples/loople.csd).
+    ``` csound-csd title="Example of the loople opcode." linenums="1"
+    --8<-- "examples/loople.csd"
+    ```
 
-``` csound-csd title="Example of the loop_le opcode." linenums="1"
---8<-- "examples/loop_le.csd"
-```
+=== "Classic"
+    Here is an example of the loop_le opcode. It uses the file [loop_le.csd](../examples/loop_le.csd).
+    ``` csound-csd title="Example of the loop_le opcode." linenums="1"
+    --8<-- "examples/loop_le.csd"
+    ```
 
 Its output should include a line like this:
 

@@ -1,24 +1,20 @@
 <!--
 id:hrtfer
 category:Signal Modifiers:Panning and Spatialization
+status:deprecated
 -->
 # hrtfer
-Creates 3D audio for two speakers. Output is binaural (headphone) 3D audio.
+Creates 3D audio for two speakers.
+
+Output is binaural (headphone) 3D audio.
 
 > :memo: **Note**
-> 
-> This opcode is deprecated; use hrtfstat or similar opcode instead
+> This opcode is deprecated; use [hrtfstat](../opcodes/hrtfstat.md) or similar opcode instead.
 
 ## Syntax
-=== "Modern"
-    ``` csound-orc
-    aleft, aright = hrtfer(asig, kaz, kelev, "HRTFcompact")
-    ```
-
-=== "Classic"
-    ``` csound-orc
-    aleft, aright hrtfer asig, kaz, kelev, "HRTFcompact"
-    ```
+``` csound-orc
+aleft, aright hrtfer asig, kaz, kelev, "HRTFcompact"
+```
 
 ### Initialization
 
@@ -37,11 +33,11 @@ These unit generators place a mono input signal in a virtual 3D space around the
 > :memo: **Note**
 >
 > The sampling rate of the orchestra must be 44.1kHz. This is because 44.1kHz is the sampling rate at which the HRTFs were measured. In order to be used at a different rate, the HRTFs would need to be re-sampled at the desired rate.
+>
 
 ## Examples
 
-Here is an example of the hrtfer opcode. It uses the file [hrtfer.csd](../examples/hrtfer.csd),  [HRTFcompact](../examples/HRTFcompact), and [drumsMlp.wav](../examples/drumsMlp.wav).
-
+Here is an example of the hrtfer opcode. It uses the file [hrtfer.csd](../examples/hrtfer.csd), [HRTFcompact](../examples/HRTFcompact), and [drumsMlp.wav](../examples/drumsMlp.wav).
 ``` csound-csd title="Example of the hrtfer opcode." linenums="1"
 --8<-- "examples/hrtfer.csd"
 ```
