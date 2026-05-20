@@ -5,7 +5,6 @@ category:Utilities
 # mkdir
 Provides support for the preparation of empirical impulse responses (IRs).
 
-Fourier analysis for the Csound [pvoc](../opcodes/pvoc.md) generator
 
 ## Syntax
 ```
