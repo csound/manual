@@ -17,7 +17,9 @@ _size_ -- number of points in the table. Must be a power of 2 or power-of-2 plus
 
 _fnsf_ -- source table holding sine sweep data used in measurement
 
-_inputfn1_ -- source table holding impulse response measurement. Multiple tables can be used for multichannel measurement.
+_inputfn1_ -- source table holding impulse response
+measurement. Multiple tables can be used for multichannel measurement,
+producing an interleaved IR table.
 
 
 ## Examples

@@ -42,6 +42,7 @@
 [GEN53](../scoregens/gen53.md) - creates a linear-phase or minimum-phase impulse response table from a source table containing a frequency response or an impulse response.<br>
 ["exp"](../scoregens/genexp.md) - fills a table from an exponential formula.<br>
 ["farey"](../scoregens/genfarey.md) - fills a table from a Farey sequence.<br>
+["deconv"](../scoregens/gendeconv.md) - fills a table with the inverse convolution from source tables.<br>
 ["padsynth"](../scoregens/genpadsynth.md) - fills a table using the padsynth algorithm.<br>
 ["quadbezier"](../scoregens/genquadbezier.md) - fills a table with a quadratic Bézier curve.<br>
 ["sone"](../scoregens/gensone.md) - fills a table from a sone function formula.<br>
