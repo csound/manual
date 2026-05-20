@@ -1,5 +1,5 @@
 <!--
-id:rfft
+id:deconv
 category:Array Operations: Fast Fourier Transform
 -->
 # deconv
