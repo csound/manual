@@ -209,6 +209,8 @@ cosine interpolation, including a release segment.<br>
 [dconv](../opcodes/dconv.md) - A direct convolution opcode.<br>
 [dct](../opcodes/dct.md) - Discrete Cosine Transform of a sample array (type-II DCT).<br>
 [dctinv](../opcodes/dctinv.md) - Inverse Discrete Cosine Transform of a sample array (type-III DCT).<br>
+[deconv](../opcodes/deconv.md) - Inverse convolution of one array by another using the fast Fourier
+transform.<br>
 [deinterleave](../opcodes/deinterleave.md) - Deinterleaves arrays by picking alternate data from its input.<br>
 [delay1](../opcodes/delay1.md) - Delays an input signal by one sample.<br>
 [delay](../opcodes/delay.md) - Delays an input signal by some time interval.<br>

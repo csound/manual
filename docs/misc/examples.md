@@ -1507,6 +1507,7 @@
 [**trim.csd**](../opcodes/trim.md#examples)<br>
 
 ### Array Operations: Fast Fourier Transform
+[**rfft.csd**](../opcodes/deconv.md#examples)<br>
 [**fft.csd**](../opcodes/fft.md#examples)<br>
 [**fft_complex_type.csd**](../opcodes/fft.md#examples)<br>
 [**ifft.csd**](../opcodes/ifft.md#examples)<br>
