@@ -5,11 +5,10 @@ system (version 7.x).
 
 # GETTING STARTED
 
-This manuals contains the reference for the core Csound operation,
+This manual contains the reference for the core Csound operation,
 its language and utility programmes. For general project information, 
-please look at http://csound.com, where all details about Csound, 
-what it does, its history, music made with it, and many 
-other things can be found.
+please look at [https://csound.com](https://csound.com), where all details about Csound, 
+what it does, its history, music made with it, and many other things can be found.
 
 # CONTRIBUTORS
 
