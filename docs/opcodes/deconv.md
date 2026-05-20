@@ -47,8 +47,8 @@ of the output array.
 
 Here is an example of the rfft opcode. It uses the file [ideconv.csd](../examples/ideconv.csd).
 
-``` csound-csd title="Example of the rfft opcode." linenums="1"
---8<-- "examples/rfft.csd"
+``` csound-csd title="Example of the deconv opcode." linenums="1"
+--8<-- "examples/ideconv.csd"
 ```
 
 
