@@ -854,6 +854,7 @@
 [**metro2.csd**](../opcodes/metro2.md#examples)<br>
 [**midifilein.csd**](../opcodes/midifilein.md#examples)<br>
 [**midifilelen.csd**](../opcodes/midifilelen.md#examples)<br>
+[**midifileloop.csd**](../opcodes/midifileloop.md#examples)<br>
 [**midifilemute.csd**](../opcodes/midifilemute.md#examples)<br>
 [**midifileopen.csd**](../opcodes/midifileopen.md#examples)<br>
 [**midifilepause.csd**](../opcodes/midifilepause.md#examples)<br>

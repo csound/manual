@@ -527,6 +527,7 @@ numeric or string values.<br>
 [mididefault](../opcodes/mididefault.md) - Changes values, depending on MIDI activation.<br>
 [midifilein](../opcodes/midifilein.md) - Returns a generic MIDI message from a MIDI file.<br>
 [midifilelen](../opcodes/midifilelen.md) - Returns the length of a MIDI file.<br>
+[midifileloop](../opcodes/midifileloop.md) - Sets the looping mode of a MIDI file playback.<br>
 [midifilemute](../opcodes/midifilemute.md) - Toggle-mutes playback of a MIDI file (without pausing playback).<br>
 [midifileopen](../opcodes/midifileopen.md) - Open a MIDI file for playback.<br>
 [midifilepause](../opcodes/midifilepause.md) - Pauses MIDI file playback.<br>

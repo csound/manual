@@ -2432,6 +2432,10 @@
 ` len:i =  `[**`midifilelen`**](opcodes/midifilelen.md)`([id:i])`<br>
 
 
+&nbsp;&nbsp;&nbsp;&nbsp;`midifileplay(loop:i, [id:i])`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`midifileplay(loop:k, [id:i])`<br>
+
+
 ` `[**`midifilemute`**](opcodes/midifilemute.md)`([id:i])`<br>
 
 
