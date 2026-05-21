@@ -151,9 +151,9 @@
 [compilecsd](../opcodes/compilecsd.md) - Compiles a new orchestra from an ASCII file.<br>
 [compileorc](../opcodes/compileorc.md) - Compiles a new orchestra from an ASCII file.<br>
 [compilestr](../opcodes/compilestr.md) - Compiles a new orchestra passed in as an ASCII string.<br>
+[complex](../opcodes/complex.md) - Returns a complex number, optionally in polar form.<br>
 [compress2](../opcodes/compress2.md) - Compress, limit, expand, duck or gate an audio signal.<br>
 [compress](../opcodes/compress.md) - Compress, limit, expand, duck or gate an audio signal.<br>
-[conj](../opcodes/complex.md) - Returns a complex number, optionally in polar form.<br>
 [conj](../opcodes/conj.md) - Returns the conjugate of a complex number.<br>
 [connect](../opcodes/connect.md) - Connects a source outlet to a sink inlet.<br>
 [continue](../opcodes/continue.md) - A syntactic looping construction used in for, while, and until loops.<br>

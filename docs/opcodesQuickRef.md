@@ -2919,15 +2919,15 @@
 `ceil(k/i[]) (k- or i-arrays )`<br>
 
 
-[**`conj`**](opcodes/conj.md)`(var:Complex)`<br>
-`conj(var:Complex[])`<br>
-
-
-`complex(var:Complex)`<br>
+[**`complex`**](opcodes/complex.md)`(var:Complex)`<br>
 `complex(var:Complex[])`<br>
-[**`co`**](opcodes/complex.md)`mplex(arg1:k, arg2:k[,isPolar:i])`<br>
+`complex(arg1:k, arg2:k[,isPolar:i])`<br>
 `complex(real:k[], imag:k[])`<br>
 `complex(real:a, imag:a)`<br>
+
+
+[**`conj`**](opcodes/conj.md)`(var:Complex)`<br>
+`conj(var:Complex[])`<br>
 
 
 [**`exp`**](opcodes/exp.md)`({a,k,i,Complex})`<br>

@@ -33,8 +33,8 @@
 | [clfilt](opcodes/clfilt.md) | [clip](opcodes/clip.md) | [clockoff](opcodes/clockoff.md) | [clockon](opcodes/clockon.md) | [cmp](opcodes/cmp.md) |
 | [cmplxprod](opcodes/cmplxprod.md) | [cngoto](opcodes/cngoto.md) | [cntcreate](opcodes/cntcreate.md) | [cntcycles](opcodes/cntcycles.md) | [cntdelete](opcodes/cntDelete.md) |
 | [cntdeletei](opcodes/cntDelete_i.md) | [cntread](opcodes/cntread.md) | [cntreset](opcodes/cntreset.md) | [cntstate](opcodes/cntstate.md) | [comb](opcodes/comb.md) |
-| [combinv](opcodes/combinv.md) | [compilecsd](opcodes/compilecsd.md) | [compileorc](opcodes/compileorc.md) | [compilestr](opcodes/compilestr.md) | [compress2](opcodes/compress2.md) |
-| [compress](opcodes/compress.md) | [conj](opcodes/complex.md) | [conj](opcodes/conj.md) | [connect](opcodes/connect.md) | [continue](opcodes/continue.md) |
+| [combinv](opcodes/combinv.md) | [compilecsd](opcodes/compilecsd.md) | [compileorc](opcodes/compileorc.md) | [compilestr](opcodes/compilestr.md) | [complex](opcodes/complex.md) |
+| [compress2](opcodes/compress2.md) | [compress](opcodes/compress.md) | [conj](opcodes/conj.md) | [connect](opcodes/connect.md) | [continue](opcodes/continue.md) |
 | [control](opcodes/control.md) | [convle](opcodes/convle.md) | [convolve](opcodes/convolve.md) | [copya2ftab](opcodes/copya2ftab.md) | [copyf2array](opcodes/copyf2array.md) |
 | [cos](opcodes/cos.md) | [cosh](opcodes/cosh.md) | [cosinv](opcodes/cosinv.md) | [cosseg](opcodes/cosseg.md) | [cossegb](opcodes/cossegb.md) |
 | [cossegr](opcodes/cossegr.md) | [count](opcodes/count.md) | [counti](opcodes/count_i.md) | [cps2pch](opcodes/cps2pch.md) | [cpsmidi](opcodes/cpsmidi.md) |
