@@ -151,9 +151,9 @@
 [compilecsd](../opcodes/compilecsd.md) - Compiles a new orchestra from an ASCII file.<br>
 [compileorc](../opcodes/compileorc.md) - Compiles a new orchestra from an ASCII file.<br>
 [compilestr](../opcodes/compilestr.md) - Compiles a new orchestra passed in as an ASCII string.<br>
+[complex](../opcodes/complex.md) - Returns a complex number, optionally in polar form.<br>
 [compress2](../opcodes/compress2.md) - Compress, limit, expand, duck or gate an audio signal.<br>
 [compress](../opcodes/compress.md) - Compress, limit, expand, duck or gate an audio signal.<br>
-[conj](../opcodes/complex.md) - Returns a complex number, optionally in polar form.<br>
 [conj](../opcodes/conj.md) - Returns the conjugate of a complex number.<br>
 [connect](../opcodes/connect.md) - Connects a source outlet to a sink inlet.<br>
 [continue](../opcodes/continue.md) - A syntactic looping construction used in for, while, and until loops.<br>
@@ -209,6 +209,8 @@ cosine interpolation, including a release segment.<br>
 [dconv](../opcodes/dconv.md) - A direct convolution opcode.<br>
 [dct](../opcodes/dct.md) - Discrete Cosine Transform of a sample array (type-II DCT).<br>
 [dctinv](../opcodes/dctinv.md) - Inverse Discrete Cosine Transform of a sample array (type-III DCT).<br>
+[deconv](../opcodes/deconv.md) - Inverse convolution of one array by another using the fast Fourier
+transform.<br>
 [deinterleave](../opcodes/deinterleave.md) - Deinterleaves arrays by picking alternate data from its input.<br>
 [delay1](../opcodes/delay1.md) - Delays an input signal by one sample.<br>
 [delay](../opcodes/delay.md) - Delays an input signal by some time interval.<br>
@@ -525,6 +527,7 @@ numeric or string values.<br>
 [mididefault](../opcodes/mididefault.md) - Changes values, depending on MIDI activation.<br>
 [midifilein](../opcodes/midifilein.md) - Returns a generic MIDI message from a MIDI file.<br>
 [midifilelen](../opcodes/midifilelen.md) - Returns the length of a MIDI file.<br>
+[midifileloop](../opcodes/midifileloop.md) - Sets the looping mode of a MIDI file playback.<br>
 [midifilemute](../opcodes/midifilemute.md) - Toggle-mutes playback of a MIDI file (without pausing playback).<br>
 [midifileopen](../opcodes/midifileopen.md) - Open a MIDI file for playback.<br>
 [midifilepause](../opcodes/midifilepause.md) - Pauses MIDI file playback.<br>

@@ -13,6 +13,6 @@
 | [GEN41](scoregens/gen41.md) | [GEN42](scoregens/gen42.md) | [GEN43](scoregens/gen43.md) | [GEN44](scoregens/gen44.md) |                             |
 |                             |                             |                             | [GEN49](scoregens/gen49.md) |                             |
 | [GEN51](scoregens/gen51.md) | [GEN52](scoregens/gen52.md) | [GEN53](scoregens/gen53.md) |                             |                             |
-| [exp](scoregens/genexp.md)  | [farey](scoregens/genfarey.md) | [padsynth](scoregens/genpadsynth.md) | [quadbezier](scoregens/genquadbezier.md) | [sone](scoregens/gensone.md) |
+| [exp](scoregens/genexp.md)  | [farey](scoregens/genfarey.md)  | [deconv](scoregens/gendeconv.md) |  [padsynth](scoregens/genpadsynth.md) | [quadbezier](scoregens/genquadbezier.md) | [sone](scoregens/gensone.md) |
 | [tanh](scoregens/gentanh.md) | [wave](scoregens/genwave.md) |   |
 

@@ -18,16 +18,4 @@ Filenames are of two kinds, source soundfiles and resultant analysis files. Each
 
 Resultant analysis files are written into the current directory, or to the named directory if a path is included. It is tidy to keep analysis files separate from sound files, usually in a separate directory known to the SADIR variable. Analysis is conveniently run from within the SADIR directory. When an analysis file is later invoked by a Csound generator it is sought first in the current directory, then in the directory defined by SADIR.
 
-## Soundfile Formats
 
-Csound can read and write audio files in a variety of formats. Write formats are described by Csound command flags. On reading, the format is determined from the soundfile header, and the data automatically converted to floating-point during internal processing. When Csound is installed on a host with local soundfile conventions (SUN, NeXT, Macintosh) it may conditionally include local packaging code which creates soundfiles not portable to other hosts. However, Csound on any host can always generate and read AIFF files, which is thus a portable format. Sampled sound libraries are typically AIFF, and the variable [SSDIR](../invoke/environment-variables.md) usually points to a directory of such sounds. If defined, the [SSDIR](../invoke/environment-variables.md) directory is in the search path during soundfile access. Note that some AIFF sampled sounds have an audio looping feature for sustained performance; the analysis programs will traverse any loop segment once only.
-
-For soundfiles without headers, an SR value may be supplied by the [-r flag](../invoke/cs-options-by-category.md#-r-num-sample-ratenum) (or its default). If both the [SR header](../opcodes/sr.md) and the command-line flag are present, the flag value will override the header.
-
-When sound is accessed by the audio Analysis programs, only a single channel is read. For stereo or quad files, the default is channel one; alternate channels may be obtained on request.
-
-## Credits
-
-Dan Ellis<br>
-MIT Media Lab<br>
-Cambridge, Massachussetts

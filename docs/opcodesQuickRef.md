@@ -2432,6 +2432,10 @@
 ` len:i =  `[**`midifilelen`**](opcodes/midifilelen.md)`([id:i])`<br>
 
 
+&nbsp;&nbsp;&nbsp;&nbsp;`midifileplay(loop:i, [id:i])`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`midifileplay(loop:k, [id:i])`<br>
+
+
 ` `[**`midifilemute`**](opcodes/midifilemute.md)`([id:i])`<br>
 
 
@@ -2915,15 +2919,15 @@
 `ceil(k/i[]) (k- or i-arrays )`<br>
 
 
-[**`conj`**](opcodes/conj.md)`(var:Complex)`<br>
-`conj(var:Complex[])`<br>
-
-
-`complex(var:Complex)`<br>
+[**`complex`**](opcodes/complex.md)`(var:Complex)`<br>
 `complex(var:Complex[])`<br>
-[**`co`**](opcodes/complex.md)`mplex(arg1:k, arg2:k[,isPolar:i])`<br>
+`complex(arg1:k, arg2:k[,isPolar:i])`<br>
 `complex(real:k[], imag:k[])`<br>
 `complex(real:a, imag:a)`<br>
+
+
+[**`conj`**](opcodes/conj.md)`(var:Complex)`<br>
+`conj(var:Complex[])`<br>
 
 
 [**`exp`**](opcodes/exp.md)`({a,k,i,Complex})`<br>
@@ -4338,6 +4342,10 @@
 
 
 ### Array Operations: Fast Fourier Transform
+`out:i[] = `[**`deconv`**](opcodes/deconv.md)`(in1:i[],in2:i[])`<br>
+`out:k[] = deconv(in1:k[],in2:k[])    `<br>
+
+
 `out:k[] = `[**`fft`**](opcodes/fft.md)`(in:k[])`<br>
 `in:Complex[] = fft(in:Complex[][,inverse:i])`<br>
 `in:Complex[] = fft(in:k[]);`<br>
