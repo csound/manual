@@ -63,4 +63,8 @@ Here is an example of the dbap opcode. It uses the file [dbap.csd](../examples/d
 Author: Pasquale Mainolfi<br>
 Italy<br>
 New in Csound version 7.0
+<<<<<<< HEAD
 Febrauary 2026.
+=======
+February 2026.
+>>>>>>> upstream/develop

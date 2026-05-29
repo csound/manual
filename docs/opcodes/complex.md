@@ -2,7 +2,7 @@
 id:complex
 category:Mathematical Operations:Mathematical Functions
 -->
-# conj
+# complex
 Returns a complex number, optionally in polar form.
 
 
