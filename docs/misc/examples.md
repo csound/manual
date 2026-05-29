@@ -482,6 +482,8 @@
 [**bformenc1.csd**](../opcodes/bformdec1.md#examples)<br>
 [**bformenc1-modern.csd**](../opcodes/bformenc1.md#examples)<br>
 [**bformenc1.csd**](../opcodes/bformenc1.md#examples)<br>
+[**dbap.csd**](../opcodes/dbap.md#examples)<br>
+[**dbapgains.csd**](../opcodes/dbapgains.md#examples)<br>
 [**hrtfearly.csd**](../opcodes/hrtfearly.md#examples)<br>
 [**hrtfmove.csd**](../opcodes/hrtfmove.md#examples)<br>
 [**hrtfmove2.csd**](../opcodes/hrtfmove2.md#examples)<br>
