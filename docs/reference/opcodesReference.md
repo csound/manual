@@ -151,9 +151,9 @@
 [compilecsd](../opcodes/compilecsd.md) - Compiles a new orchestra from an ASCII file.<br>
 [compileorc](../opcodes/compileorc.md) - Compiles a new orchestra from an ASCII file.<br>
 [compilestr](../opcodes/compilestr.md) - Compiles a new orchestra passed in as an ASCII string.<br>
+[complex](../opcodes/complex.md) - Returns a complex number, optionally in polar form.<br>
 [compress2](../opcodes/compress2.md) - Compress, limit, expand, duck or gate an audio signal.<br>
 [compress](../opcodes/compress.md) - Compress, limit, expand, duck or gate an audio signal.<br>
-[conj](../opcodes/complex.md) - Returns a complex number, optionally in polar form.<br>
 [conj](../opcodes/conj.md) - Returns the conjugate of a complex number.<br>
 [connect](../opcodes/connect.md) - Connects a source outlet to a sink inlet.<br>
 [continue](../opcodes/continue.md) - A syntactic looping construction used in for, while, and until loops.<br>
@@ -203,6 +203,8 @@ cosine interpolation, including a release segment.<br>
 [dates](../opcodes/dates.md) - Returns as a string the date and time specified.<br>
 [db](../opcodes/db.md) - Returns the amplitude equivalent for a given decibel amount.<br>
 [dbamp](../opcodes/dbamp.md) - Returns the decibel equivalent of the raw amplitude _x_.<br>
+[dbap](../opcodes/dbap.md) - Distance-Based Amplitude Panning for arbitrary 2D and 3D loudspeaker layouts.<br>
+[dbapgains](../opcodes/dbapgains.md) - Distance-Based Amplitude Panning gain vector generator.<br>
 [dbfsamp](../opcodes/dbfsamp.md) - Returns the decibel equivalent of the raw amplitude _x_, relative to full scale amplitude.<br>
 [dcblock2](../opcodes/dcblock2.md) - Implements a DC blocking filter with improved DC attenuation.<br>
 [dcblock](../opcodes/dcblock.md) - Implements the DC blocking filter.<br>

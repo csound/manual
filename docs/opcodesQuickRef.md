@@ -1462,6 +1462,14 @@
 `aarray[] = bformenc1(asig, kalpha, kbeta)`<br>
 
 
+`    var:a[] = `[**`dbap`**](opcodes/dbap.md)`(sig:a, mode:i, src:k[], lpos:i[][], sprd:k, rloff:i [, wgts:i[]])`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`var:a[] = dbap(sig:a, mode:i, src:k[], ldim:i, lpos:i, sprd:k, rloff:i [, wgts:i[]])`<br>
+
+
+`    var:k[] = `[**`dbapgains`**](opcodes/dbapgains.md)`(mode:i, src:k[], lpos:i[][], sprd:k, rloff:i [, wgts:i[]])`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`var:k[] = dbapgains(mode:i, src:k[], lpos:i, sprd:k, rloff:i, ldim:i [, wgts:i])`<br>
+
+
 `aleft, aright, irt60low, irt60high, imfp = `[**`hrtfearly`**](opcodes/hrtfearly.md)`(asrc, ksrcx, ksrcy, ksrcz, \`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`klstnrx, klstnry, klstnrz, ifilel, ifiler, idefroom [,ifade, isr, iorder, \`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`ithreed, kheadrot, iroomx, iroomy, iroomz, iwallhigh, iwalllow, \`<br>
@@ -2919,9 +2927,9 @@
 `ceil(k/i[]) (k- or i-arrays )`<br>
 
 
-`complex(var:Complex)`<br>
+[**`complex`**](opcodes/complex.md)`(var:Complex)`<br>
 `complex(var:Complex[])`<br>
-[**`co`**](opcodes/complex.md)`mplex(arg1:k, arg2:k[,isPolar:i])`<br>
+`complex(arg1:k, arg2:k[,isPolar:i])`<br>
 `complex(real:k[], imag:k[])`<br>
 `complex(real:a, imag:a)`<br>
 
