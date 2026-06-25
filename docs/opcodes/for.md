@@ -19,24 +19,37 @@ od
 ### Performance
 
 This expressions creates a loop controlled by an array expression or
-variable. In the first form, the loop iterates for each element in the
-array returned by _array-expr_, with the numeric value of the array
-setting the value of _var_ at each iteration. The second form adds
-an _index_ variable holding an index (0-based) used to access the
-array. This can be used as a loop count.The statements between 
-the _do_ and _od_ form the body of a loop. Loop array expressions
-and variables are strictly of either i- or k-types.
+variable.
+
+In the first form, the loop iterates for each element in the
+array returned by _array-expr_, with the value of the array
+setting the value of _var_ at each iteration. This gets a
+copy of the array value of each item at the top of the loop.
+Note that since this is a copy, this variable cannot be used
+to modify the array item itself. The variable can be overwritten
+in the body of the loop if required, but will always be reset
+to the relevant array value at the start of the loop.
+
+
+The second form adds an _index_ variable holding an index (0-based) used to access the
+array. This may be a scalar numeric value of either i (init) or k (perf) type.
+It is normally used  as a loop count.
+
+For both forms, the statements between the _do_ and _od_ form the body of a loop. 
 
 The loop action time is determined by the following rules:
 
-- if _var_ has been declared before the loop, the type (i or k)
+- For i and k-arrays, if _var_ has been declared with a given type, the type 
 of this variable determines the action time (init or perf).
 
-- if _var_ has not yet been declared, the array-expression type
-is used instead, and the variable is created to accept this type.
+- if _var_ has not  been declared with a given type, the array-expression type
+is used instead, and the variable is created to accept this type. In this case
+the loop will perform either at i-time or at perf-time depending on the
+array type (audio, control, complex types run at perf-time, other types
+run at init time).
 
-The _index_ variable, if not declared, is created to match the
-type of _array-expr
+- The _index_ variable, if not declared with given type (i or k), is created
+to match the type of _array-expr_ action time. 
 
 ## Examples
 
