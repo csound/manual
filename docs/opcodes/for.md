@@ -53,7 +53,7 @@ to match the type of _array-expr_ action time.
 
 ## Examples
 
-Here is an example of the while construction. It uses the file [forin.csd](../examples/forin.csd).
+Here is an example of the for construction. It uses the file [forin.csd](../examples/forin.csd).
 
 ``` csound-csd title="Example of the while opcode." linenums="1"
 --8<-- "examples/forin.csd"
