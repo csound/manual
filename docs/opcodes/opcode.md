@@ -9,9 +9,9 @@ Defines the start of user-defined opcode block.
 
 The _opcode_ and _endop_ statements allow defining a new opcode that can be used the same way as any of the built-in Csound opcodes, using
 the Csound language itself. There are two declaration forms for UDOs: classic and modern.
-Beside the different syntaxes, these forms may also imply different call semantics (see below).
+Besides the different syntaxes, these forms may also imply different call semantics (see below).
 
-A user-defined opcode definition or a its protype declaration must precede the instrument (or other opcode) from which it is used.
+A user-defined opcode definition or its protype declaration must precede the instrument (or other opcode) from which it is used.
 It is also possible to call the opcode from itself. Such recursive calls are limited by default to a depth of 1000,
 but this can be adjusted by the `--recursion-depth=` option (see options).
 
@@ -26,7 +26,7 @@ Also, the release flag (see the [release](../opcodes/release.md) opcode) is copi
 Modifying the note duration in the opcode definition by assigning to _p3_, or using [ihold](../opcodes/ihold.md), [turnoff](../opcodes/turnoff.md), [xtratim](../opcodes/xtratim.md), [linsegr](../opcodes/linsegr.md), or similar opcodes will also affect the caller instrument. Changes to MIDI controllers (for example with [ctrlinit](../opcodes/ctrlinit.md)) will also apply to the instrument from which the opcode was called.
 
 Use the [setksmps](../opcodes/setksmps.md) opcode to set the local [ksmps](../opcodes/ksmps.md) directly or
-alternative [oversample]](../opcodes/oversample.md) and [undersample]](../opcodes/undersample.md) to set
+alternative [oversample](../opcodes/oversample.md) and [undersample](../opcodes/undersample.md) to set
 local sampling/control rates, indirectly.
 
 The [xin](../opcodes/xin.md) and [xout](../opcodes/xout.md) allow communication with the calling instrument. The former is
