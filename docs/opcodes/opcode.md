@@ -21,7 +21,7 @@ Input and output arguments may be passed by copy or by reference (see _call sema
 * extra time (see also [xtratim](../opcodes/xtratim.md), [linsegr](../opcodes/linsegr.md), and related opcodes). This may affect the operation of _linsegr_/_expsegr_/_linenr_/_envlpxr_ in the user-defined opcode block.
 * MIDI parameters, if there are any.
 
-Also, the release flag (see the [release](../opcodes/release.md) opcode) is copied at performance time.
+The release flag (see the [release](../opcodes/release.md) opcode) is copied at performance time from the calling instrument.
 
 Modifying the note duration in the opcode definition by assigning to _p3_, or using [ihold](../opcodes/ihold.md), [turnoff](../opcodes/turnoff.md), [xtratim](../opcodes/xtratim.md), [linsegr](../opcodes/linsegr.md), or similar opcodes will also affect the caller instrument. Changes to MIDI controllers (for example with [ctrlinit](../opcodes/ctrlinit.md)) will also apply to the instrument from which the opcode was called.
 
