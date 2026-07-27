@@ -412,6 +412,9 @@ Realtime priority mode is switched on which the following effects:
 1. all opcode audio file reading/writing is handled asynchronously by a separate thread.
 2. all init-pass operations are also performed asynchronously.
 
+#### --recursion-depth=n
+Sets the max recursion depth *n* for user-defined opcodes, defaulting to 1000. Setting *n* to 0 disables any recursion depth checks but leaves the engine exposed to stack overflows. 
+
 #### -+rtaudio=string
 (max. length = 20 characters) Real time audio module name. The default is PortAudio. Also available, depending on platform and build options: Linux: alsa, jack; Windows: mme; Mac OS X: CoreAudio. In addition, null can be used on all platforms, to disable the use of any real time audio plugin.
 
