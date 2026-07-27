@@ -6,7 +6,7 @@ The opcodes one can use to create score events from within a orchestra are:
 * [eventi](../opcodes/event_i.md)
 * [nstance](../opcodes/nstance.md)
 * [readscore](../opcodes/readscore.md)
-* [scoreline_i](../opcodes/scoreline_i.md)
+* [scorelinei](../opcodes/scoreline_i.md)
 * [scoreline](../opcodes/scoreline.md)
 * [schedule](../opcodes/schedule.md)
 * [schedulek](../opcodes/schedulek.md)
