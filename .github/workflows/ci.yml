@@ -52,6 +52,13 @@ jobs:
         run: mkdocs build -d csound7-manual-offline
       - name: Package offline manual
         run: zip -r csound7-manual-offline.zip csound7-manual-offline/
+      - name: Delete previous dev release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view latest --json isPrerelease --jq '.isPrerelease' | grep -q true; then
+            gh release delete latest --yes --cleanup-tag
+          fi
       - name: Update latest release
         uses: softprops/action-gh-release@v2
         with:
