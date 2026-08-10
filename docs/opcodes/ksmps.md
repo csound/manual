@@ -14,7 +14,7 @@ ksmps = iarg
 
 ### Initialization
 
-_ksmps_ = (optional) -- set the number of samples in a control period. This value must equal_ sr/kr_. The default value is 10.
+_ksmps_ = (optional) -- set the number of samples in a control period. This value must equal _sr/kr_. The default value is 10.
 
 In addition, any [global variable](../orch/data-types.md) can be initialized by an _init-time assignment_ anywhere before the first [instr statement](../opcodes/instr.md).  All of the above assignments are run as instrument 0 (i-pass only) at the start of real performance.
 
