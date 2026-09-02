@@ -35,7 +35,7 @@
 [**`instr`**](opcodes/instr.md)` i, j, ...`<br>
 
 
-[**`opcode`**](opcodes/opcode.md)` name, outtypes, intypes`<br>
+[**`opcode`**](opcodes/opcode.md)` name(arg:type, ...):(out-type,...) `<br>
 
 
 ### Orchestra Syntax:Macros

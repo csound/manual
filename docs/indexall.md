@@ -177,6 +177,7 @@
   - [Opcodes Index](opcodesIndex.md)
   - [Opcodes Quick Reference](opcodesQuickRef.md)
   - [GEN Routines Index](genIndex.md)
+  - [General Index](indexall.md)
 - Appendices
   - [List of Examples](misc/examples.md)
   - [Pitch Conversion](misc/pitch.md)
