@@ -514,3 +514,6 @@ Prevents Csound from deleting the sorted score file, score.srt, upon exit.
 
 #### -U UTILITY, --utility=UTILITY
 Invoke the utility program *UTILITY*. Use any invalid name to list the available utilities.
+
+#### --recursion-depth=n
+Sets the max recursion depth *n* for user-defined opcodes, defaulting to 1000. Setting *n* to 0 disables any recursion depth checks but leaves the engine exposed to stack overflows. 

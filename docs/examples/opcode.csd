@@ -23,6 +23,11 @@ a1      vco2 kamp, kcps         ; sawtooth oscillator
 
         endop
 
+// modern syntax
+opcode Oscillator2(amp:k, freq:k):a
+  xout(vco2(amp,freq))
+endop
+
 /* example opcode 2: lowpass filter with local ksmps */
 
         opcode Lowpass, a, akk
@@ -34,6 +39,21 @@ aout    =  ain*ka1 + aout*ka2   ; simple tone-like filter
         xout aout               ; write output
 
         endop
+
+// modern syntax 
+opcode Lowpass2(x:a,c1:k,c2:k):a
+ n:k = 0
+ y:a init 0
+ ynm1:k init 0
+ while n < ksmps do
+  y[n] = x[n]*c1 + ynm1*c2
+  ynm1 = y[n]
+  n+=1
+ od
+ xout(y)
+endop
+
+
 
 /* example opcode 3: recursive call */
 
@@ -48,8 +68,15 @@ aout    Lowpass ain, ka1, ka2           ; call filter
 
         endop
 
-/* example opcode 4: de-click envelope */
+// modern syntax
+opcode RecursiveLowpass2(sig:a,c1:k,c2:k,dep:p,cnt:p):a
+  if cnt < dep then
+   sig = RecursiveLowpass2(sig,c1,c2,dep,cnt+1)
+  endif
+   xout(Lowpass2(sig,c1,c2))
+endop
 
+/* example opcode 4: de-click envelope */
         opcode DeClick, a, a
 
 ain     xin
@@ -58,26 +85,45 @@ aenv    linseg 0, 0.02, 1, p3 - 0.05, 1, 0.02, 0, 0.01, 0
 
         endop
 
-/* instr 1 uses the example opcodes */
+// modern syntax
+opcode DeClick2(sig:a):a
+ xout(sig*linseg(0, 0.02, 1, p3 - 0.05, 1, 0.02, 0, 0.01, 0))
+endop
+
+
+/* instr 1 uses the example opcodes - classic UDO, pass by copy */
 
         instr 1
-
 kamp    =  .7                ; amplitude
 kcps    expon 50, p3, 500       ; pitch
 a1      Oscillator kamp, kcps                   ; call oscillator
 kflt    linseg 0.4, 1.5, 0.4, 1, 0.8, 1.5, 0.8  ; filter envelope
-a1      RecursiveLowpass a1, kflt, 1 - kflt, 10 ; 10th order lowpass
-a1      DeClick a1
-        outs a1, a1
-
+a2      RecursiveLowpass a1, kflt, 1 - kflt, 10 ; 10th order lowpass
+a1      DeClick a2
+        out a1, a1
         endin
+
+
+// instr 2 uses the modern form, pass by reference */
+        instr 2
+kamp    =  .7                //  amplitude
+kcps = expon(50, p3, 500)    // pitch
+a1 =  Oscillator2(kamp, kcps)  // call oscillator
+kflt = linseg(0.4, 1.5, 0.4, 1, 0.8, 1.5, 0.8)  // filter envelope
+a1  = RecursiveLowpass2(a1, kflt, 1 - kflt, 10) // 10th order lowpass
+a1  = DeClick2(a1)
+        out(a1, a1)
+
+         endin
+
 
 
 </CsInstruments>
 <CsScore>
 
 i 1 0 4
-e5              ;extra second before quitting
+i 2 4 4
+e9              ;extra second before quitting
 
 </CsScore>
 </CsoundSynthesizer>

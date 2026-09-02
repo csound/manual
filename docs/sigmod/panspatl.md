@@ -34,6 +34,11 @@
 * [vbapz](../opcodes/vbapz.md)
 * [vbapzmove](../opcodes/vbapzmove.md)
 
+### Distance Based Amplitude Panning
+
+* [dbap](../opcodes/dbap.md)
+* [dbapgains](../opcodes/dbapgains.md)
+
 ### Binaural spatialization
 
 * [hrtfer](../opcodes/hrtfer.md)

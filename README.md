@@ -15,7 +15,7 @@ To work locally on the manual you have to:
 
 The manual is written using markdown in md files. A good reference for markdown in GitHub is [here](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
 
-It is recommanded to use a good text editor for writing md files. [Visual Studio Code](https://code.visualstudio.com/) is particularly convenient for this task.
+It is recommended to use a good text editor for writing md files. [Visual Studio Code](https://code.visualstudio.com/) is particularly convenient for this task.
 
 If you want to see local changes, run `mkdocs serve` in the doc directory. The site is then visible under `localhost:8000` in your browser.
 
@@ -79,7 +79,10 @@ List and describe perf-time arguments.
 
 Eventually describe performance in detail.
 
-An internal relative link is like this: see [GEN01](../scoregens/gen01.md) where our myopcode notice is in the directory 'opcodes' and the GEN01 notice is in the directory 'scoregens' at the same level of the directory 'opcodes'. A link to another opcode within the same 'opcodes' directory would be: [anotherOpcode](anotherOpcode.md).
+An internal relative link is like this: see [GEN01](../scoregens/gen01.md) where our
+myopcode notice is in the directory 'opcodes' and the GEN01 notice is in the directory
+'scoregens' at the same level of the directory 'opcodes'. A link to another opcode
+within the same 'opcodes' directory would be: [anotherOpcode](anotherOpcode.md).
 
 An image can be inserted like this:
 
