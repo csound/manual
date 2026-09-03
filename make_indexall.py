@@ -5,6 +5,7 @@ Generate indexall.md - a complete index of the mkdocs site structure.
 Reads the `nav` section of mkdocs.yml and produces a markdown file
 containing a bullet tree of all pages, mirroring the site structure.
 Pages for individual opcodes (docs/opcodes/) are excluded.
+The bullet tree indent width can be set with --indent (default: 4).
 """
 
 import sys
@@ -48,11 +49,9 @@ def load_nav(path: Path):
     return config["nav"]
 
 
-def walk_nav(items, depth=0, lines=None):
+def walk_nav(items, depth, lines, indent_spaces):
     """Recursively convert nav items into markdown bullet lines."""
-    if lines is None:
-        lines = []
-    indent = "  " * depth
+    indent = " " * indent_spaces * depth
 
     for item in items:
         if isinstance(item, str):
@@ -69,7 +68,7 @@ def walk_nav(items, depth=0, lines=None):
                 elif isinstance(value, list):
                     # "- Section:" followed by nested items
                     lines.append(f"{indent}- {title}")
-                    walk_nav(value, depth + 1, lines)
+                    walk_nav(value, depth + 1, lines, indent_spaces)
     return lines
 
 
@@ -85,6 +84,19 @@ def title_from_path(path: str) -> str:
 
 
 def main():
+    import argparse
+
+    parser = argparse.ArgumentParser(
+        description="Generate docs/indexall.md from the mkdocs.yml nav section."
+    )
+    parser.add_argument(
+        "--indent",
+        type=int,
+        default=4,
+        help="number of spaces used to indent each nesting level of the bullet tree (default: 4)",
+    )
+    args = parser.parse_args()
+
     nav = load_nav(MKDOCS_YML)
 
     lines = [
@@ -92,7 +104,7 @@ def main():
         "",
         "",
     ]
-    lines.extend(walk_nav(nav))
+    lines.extend(walk_nav(nav, 0, [], args.indent))
     lines.append("")
 
     OUTPUT.write_text("\n".join(lines), encoding="utf-8")
