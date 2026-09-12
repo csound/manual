@@ -854,6 +854,7 @@
 [**metro.csd**](../opcodes/metro.md#examples)<br>
 [**metro-2.csd**](../opcodes/metro.md#examples)<br>
 [**metro2.csd**](../opcodes/metro2.md#examples)<br>
+[**metro2_corrected.csd**](../opcodes/metro2.md#examples)<br>
 [**midifilein.csd**](../opcodes/midifilein.md#examples)<br>
 [**midifilelen.csd**](../opcodes/midifilelen.md#examples)<br>
 [**midifileloop.csd**](../opcodes/midifileloop.md#examples)<br>
