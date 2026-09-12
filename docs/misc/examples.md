@@ -633,7 +633,6 @@
 [**resonr.csd**](../opcodes/resonr.md#examples)<br>
 [**resonx.csd**](../opcodes/resonx.md#examples)<br>
 [**resony.csd**](../opcodes/resony.md#examples)<br>
-[**resony_corrected.csd**](../opcodes/resony.md#examples)<br>
 [**resonr.csd**](../opcodes/resonz.md#examples)<br>
 [**rezzy.csd**](../opcodes/rezzy.md#examples)<br>
 [**skf.csd**](../opcodes/skf.md#examples)<br>
@@ -873,7 +872,6 @@
 [**pindex.csd**](../opcodes/pindex.md#examples)<br>
 [**pindex-2.csd**](../opcodes/pindex.md#examples)<br>
 [**pitch.csd**](../opcodes/pitch.md#examples)<br>
-[**pitchac.csd**](../opcodes/pitchac.md#examples)<br>
 [**pitchamdf.csd**](../opcodes/pitchamdf.md#examples)<br>
 [**plltrack.csd**](../opcodes/plltrack.md#examples)<br>
 [**ptrack.csd**](../opcodes/ptrack.md#examples)<br>

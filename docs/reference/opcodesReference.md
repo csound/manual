@@ -716,7 +716,6 @@ numeric or string values.<br>
 [pinker](../opcodes/pinker.md) - Generates pink noise (-3dB/oct response) by the _NewShade of Pink_ algorithm of Stefan Stenzel.<br>
 [pinkish](../opcodes/pinkish.md) - Generates approximate pink noise (-3dB/oct response).<br>
 [pitch](../opcodes/pitch.md) - Tracks the pitch of a signal.<br>
-[pitchac](../opcodes/pitchac.md) - Estimate pitch by correlating successive windows of an audio signal.<br>
 [pitchamdf](../opcodes/pitchamdf.md) - Follows the pitch of a signal based on the AMDF method (Average Magnitude Difference Function).<br>
 [planet](../opcodes/planet.md) - Simulates a planet orbiting in a binary star system.<br>
 [platerev](../opcodes/platerev.md) - Models the reverberation of a rectangular metal plate with settable physical characteristics when excited by audio signal(s).<br>
@@ -765,7 +764,7 @@ numeric or string values.<br>
 [pvsbandp](../opcodes/pvsbandp.md) - A band pass filter working in the spectral domain.<br>
 [pvsbandr](../opcodes/pvsbandr.md) - A band reject filter working in the spectral domain.<br>
 [pvsbandwidth](../opcodes/pvsbandwidth.md) - Calculate the spectral bandwidth of a signal from its discrete Fourier transform.<br>
-[pvsbin](../opcodes/pvsbin.md) - Read the amplitude and frequency of a PVS bin at control or audio rate.<br>
+[pvsbin](../opcodes/pvsbin.md) - Obtain the amp and freq values off a PVS signal bin as k-rate variables.<br>
 [pvsblur](../opcodes/pvsblur.md) - Average the amp/freq time functions of each analysis channel for a specified time (truncated to number of frames).<br>
 [pvsbuffer](../opcodes/pvsbuffer.md) - This opcode creates and writes to a circular buffer for f-signals (streaming PV signals).<br>
 [pvsbufread2](../opcodes/pvsbufread2.md) - This opcode reads a circular buffer of f-signals (streaming PV signals), with binwise additional delays.<br>
@@ -1098,7 +1097,7 @@ time-varying crossfade looping.<br>
 [undersample](../opcodes/undersample.md) - Sets a lower local sampling rate based on an undersampling factor.<br>
 [unirand](../opcodes/unirand.md) - Uniform distribution random number generator (positive values only).<br>
 [until](../opcodes/until.md) - A syntactic looping construction.<br>
-[unwrap](../opcodes/unwrap.md) - Wrap or unwrap an array of phase values in radians.<br>
+[unwrap](../opcodes/unwrap.md) - Applies a unwrapping operation to a vector of phase values stored in an array.<br>
 [upsamp](../opcodes/upsamp.md) - Modify a signal by up-sampling.<br>
 [urandom](../opcodes/urandom.md) - Truly random opcodes with controllable range.<br>
 [urd](../opcodes/urd.md) - A discrete user-defined-distribution random generator that can be used as a function.<br>

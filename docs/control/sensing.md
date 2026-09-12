@@ -27,7 +27,6 @@
 
 * [centroid](../opcodes/centroid.md)
 * [pitch](../opcodes/pitch.md)
-* [pitchac](../opcodes/pitchac.md)
 * [pitchamdf](../opcodes/pitchamdf.md)
 * [plltrack](../opcodes/plltrack.md)
 * [ptrack](../opcodes/ptrack.md)
