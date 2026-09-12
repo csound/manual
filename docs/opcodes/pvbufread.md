@@ -10,17 +10,21 @@ _pvbufread_ reads from a [pvoc](../opcodes/pvoc.md) file and makes the retrieved
 ## Syntax
 === "Modern"
     ``` csound-orc
-    pvbufread(ktimpnt, ifile)
+    pvbufread(ktimpnt, ifile [, ifiletime])
     ```
 
 === "Classic"
     ``` csound-orc
-    pvbufread ktimpnt, ifile
+    pvbufread ktimpnt, ifile [, ifiletime]
     ```
 
 ### Initialization
 
 _ifile_ -- the _pvoc_ number (n in pvoc.n) or the name in quotes of the analysis file made using _pvanal_. (See [pvoc](../opcodes/pvoc.md).)
+
+_ifiletime_ (optional, default=0) -- zero keeps the original time mapping, which uses Csound's output sample rate to convert _ktimpnt_ to a file frame. Set to 1 to use the analysis file's sample rate instead, so _ktimpnt_ refers to seconds in the source recording. The modes differ only when those sample rates differ.
+
+Set _ifiletime_ on both _pvbufread_ and its paired _pvinterp_ or _pvcross_ when opting into file-rate timing.
 
 ### Performance
 

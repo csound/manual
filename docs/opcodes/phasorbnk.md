@@ -24,6 +24,8 @@ _icnt_ -- maximum number of phasors to be used.
 
 _iphs_ -- initial phase, expressed as a fraction of a cycle (0 to 1). If -1 initialization is skipped. If _iphas_&gt;1 each phasor will be initialized with a random value.
 
+When a negative initial phase skips initialization during a bank resize, retained banks keep their phase. Newly added banks start at zero. Reducing the bank count makes the removed indices unavailable, even if their storage remains allocated.
+
 ### Performance
 
 _kndx_ -- index value to access individual phasors

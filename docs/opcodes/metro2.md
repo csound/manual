@@ -26,6 +26,10 @@ _icorrect_ (optional, default=0) -- zero preserves the original timing, includin
 
 For example, `ktrig metro2 4, .65, -1, 0, 1` selects corrected timing, with `1` for main beats and `-1` for offbeats.
 
+_icorrect_ (optional, default=0) -- zero preserves the original timing, including startup offbeats and the one-control-cycle offset between the two clocks. Set to 1 for corrected timing: both clocks advance together, the initial swing comes from its first control-rate value, and a nonzero initial phase does not emit an offbeat that has already passed. Corrected mode requires a finite, nonnegative frequency and initial phase, and swing between 0 and 1.
+
+For example, `ktrig metro2 4, .65, -1, 0, 1` selects corrected timing, with `1` for main beats and `-1` for offbeats.
+
 ### Performance
 
 _ktrig_ - output trigger signal

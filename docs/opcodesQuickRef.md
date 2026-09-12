@@ -3579,24 +3579,24 @@
 
 ### Spectral Processing:STFT
 `ares = `[**`pvadd`**](opcodes/pvadd.md)`(ktimpnt, kfmod, ifilcod, ifn, ibins [, ibinoffset] \`<br>
-&nbsp;&nbsp;&nbsp;&nbsp;`[, ibinincr] [, iextractmode] [, ifreqlim] [, igatefn])`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`[, ibinincr] [, iextractmode] [, ifreqlim] [, igatefn] [, ifiletime])`<br>
 
 
-[**`pvbufread`**](opcodes/pvbufread.md)`(ktimpnt, ifile)`<br>
+[**`pvbufread`**](opcodes/pvbufread.md)`(ktimpnt, ifile [, ifiletime])`<br>
 
 
-`ares = `[**`pvcross`**](opcodes/pvcross.md)`(ktimpnt, kfmod, ifile, kampscale1, kampscale2 [, ispecwp])`<br>
+`ares = `[**`pvcross`**](opcodes/pvcross.md)`(ktimpnt, kfmod, ifile, kampscale1, kampscale2 [, ispecwp, ifiletime])`<br>
 
 
 `ares = `[**`pvinterp`**](opcodes/pvinterp.md)`(ktimpnt, kfmod, ifile, kfreqscale1, kfreqscale2, \`<br>
-&nbsp;&nbsp;&nbsp;&nbsp;`kampscale1, kampscale2, kfreqinterp, kampinterp)`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`kampscale1, kampscale2, kfreqinterp, kampinterp [, ifiletime])`<br>
 
 
 `ares = `[**`pvoc`**](opcodes/pvoc.md)`(ktimpnt, kfmod, ifilcod [, ispecwp] [, iextractmode] \`<br>
-&nbsp;&nbsp;&nbsp;&nbsp;`[, ifreqlim] [, igatefn])`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`[, ifreqlim] [, igatefn] [, ifiletime])`<br>
 
 
-`kfreq, kamp = `[**`pvread`**](opcodes/pvread.md)`(ktimpnt, ifile, ibin)`<br>
+`kfreq, kamp = `[**`pvread`**](opcodes/pvread.md)`(ktimpnt, ifile, ibin [, ifiletime])`<br>
 
 
 [**`tableseg`**](opcodes/tableseg.md)`(ifn1, idur1, ifn2 [, idur2] [, ifn3] [...])`<br>

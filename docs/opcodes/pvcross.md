@@ -10,12 +10,12 @@ The data is passed, as described above, from a previously called [pvbufread](../
 ## Syntax
 === "Modern"
     ``` csound-orc
-    ares = pvcross(ktimpnt, kfmod, ifile, kampscale1, kampscale2 [, ispecwp])
+    ares = pvcross(ktimpnt, kfmod, ifile, kampscale1, kampscale2 [, ispecwp, ifiletime])
     ```
 
 === "Classic"
     ``` csound-orc
-    ares pvcross ktimpnt, kfmod, ifile, kampscale1, kampscale2 [, ispecwp]
+    ares pvcross ktimpnt, kfmod, ifile, kampscale1, kampscale2 [, ispecwp, ifiletime]
     ```
 
 ### Initialization
@@ -24,6 +24,10 @@ _ifile_ -- the _pvoc_ number (n in pvoc.n) or the name in quotes of the analysis
 
 _ispecwp_ (optional, default=0) -- if non-zero, attempts to preserve the spectral envelope while
 its frequency content is varied by _kfmod_. The default value is zero.
+
+_ifiletime_ (optional, default=0) -- zero keeps the original time mapping, which uses Csound's output sample rate to convert _ktimpnt_ to a file frame. Set to 1 to use the analysis file's sample rate instead, so _ktimpnt_ refers to seconds in the source recording. The modes differ only when those sample rates differ.
+
+Set _ifiletime_ on both _pvbufread_ and its paired _pvinterp_ or _pvcross_ when opting into file-rate timing.
 
 ### Performance
 
