@@ -11,18 +11,22 @@ _pvinterp_ interpolates between the amplitudes and frequencies, on a bin by bin 
 === "Modern"
     ``` csound-orc
     ares = pvinterp(ktimpnt, kfmod, ifile, kfreqscale1, kfreqscale2, \
-                    kampscale1, kampscale2, kfreqinterp, kampinterp)
+                    kampscale1, kampscale2, kfreqinterp, kampinterp [, ifiletime])
     ```
 
 === "Classic"
     ``` csound-orc
     ares pvinterp ktimpnt, kfmod, ifile, kfreqscale1, kfreqscale2, \
-                  kampscale1, kampscale2, kfreqinterp, kampinterp
+                  kampscale1, kampscale2, kfreqinterp, kampinterp [, ifiletime]
     ```
 
 ### Initialization
 
 _ifile_ -- the _pvoc_ number (n in pvoc.n) or the name in quotes of the analysis file made using pvanal. (See [pvoc](../opcodes/pvoc.md).)
+
+_ifiletime_ (optional, default=0) -- zero keeps the original time mapping, which uses Csound's output sample rate to convert _ktimpnt_ to a file frame. Set to 1 to use the analysis file's sample rate instead, so _ktimpnt_ refers to seconds in the source recording. The modes differ only when those sample rates differ.
+
+Set _ifiletime_ on both _pvbufread_ and its paired _pvinterp_ or _pvcross_ when opting into file-rate timing.
 
 ### Performance
 

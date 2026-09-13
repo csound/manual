@@ -10,12 +10,12 @@ The returned values can be used anywhere else in the Csound instrument. For exam
 ## Syntax
 === "Modern"
     ``` csound-orc
-    kfreq, kamp = pvread(ktimpnt, ifile, ibin)
+    kfreq, kamp = pvread(ktimpnt, ifile, ibin [, ifiletime])
     ```
 
 === "Classic"
     ``` csound-orc
-    kfreq, kamp pvread ktimpnt, ifile, ibin
+    kfreq, kamp pvread ktimpnt, ifile, ibin [, ifiletime]
     ```
 
 ### Initialization
@@ -24,11 +24,15 @@ _ifile_ -- the _pvoc_ number (n in pvoc.n) or the name in quotes of the analysis
 
 _ibin_ -- the number of the analysis channel from which to return frequency in Hz and magnitude.
 
+_ifiletime_ (optional, default=0) -- zero keeps the original time mapping, which uses Csound's output sample rate to convert _ktimpnt_ to a file frame. Set to 1 to use the analysis file's sample rate instead, so _ktimpnt_ refers to seconds in the source recording. The modes differ only when those sample rates differ.
+
 ### Performance
 
 _kfreq, kamp_ -- outputs of the _pvread_ unit. These values, retrieved from a phase vocoder analysis file, represent the values of frequency and amplitude from a single analysis channel specified in the _ibin_ argument. Interpolation between analysis frames is performed at k-rate resolution and dependent of course upon the rate and direction of _ktimpnt_.
 
 _ktimpnt_ -- the passage of time, in seconds, through this file. _ktimpnt_ must always be positive, but can move forwards or backwards in time, be stationary or discontinuous, as a pointer into the analysis file.
+
+For a 22,050 Hz analysis file played by Csound at 44,100 Hz, the default mode reads the frame at file time 2 seconds when _ktimpnt_ is 1. With `kfreq, kamp pvread 1, "source.pvx", 2, 1`, it reads file time 1 second.
 
 ## Examples
 

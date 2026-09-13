@@ -22,7 +22,9 @@ Produce an arbitrary number of normalized moving phase values, accessable by an 
 
 _icnt_ -- maximum number of phasors to be used.
 
-_iphs_ -- initial phase, expressed as a fraction of a cycle (0 to 1). If -1 initialization is skipped. If _iphas_&gt;1 each phasor will be initialized with a random value.
+_iphs_ -- initial phase, expressed as a fraction of a cycle (0 to 1). A negative value skips initialization. If _iphs_&gt;1, each phasor starts at a random phase.
+
+When a negative initial phase skips initialization during a bank resize, retained phasors keep their phase. Newly added phasors start at zero. Reducing the bank count makes the removed indices unavailable, even if their storage remains allocated.
 
 ### Performance
 

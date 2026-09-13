@@ -11,13 +11,13 @@ _pvadd_ reads from a [pvoc](../opcodes/pvoc.md) file and uses the data to perfor
 === "Modern"
     ``` csound-orc
     ares = pvadd(ktimpnt, kfmod, ifilcod, ifn, ibins [, ibinoffset] \
-                 [, ibinincr] [, iextractmode] [, ifreqlim] [, igatefn])
+                 [, ibinincr] [, iextractmode] [, ifreqlim] [, igatefn] [, ifiletime])
     ```
 
 === "Classic"
     ``` csound-orc
     ares pvadd ktimpnt, kfmod, ifilcod, ifn, ibins [, ibinoffset] \
-               [, ibinincr] [, iextractmode] [, ifreqlim] [, igatefn]
+               [, ibinincr] [, iextractmode] [, ifreqlim] [, igatefn] [, ifiletime]
     ```
 
 ### Initialization
@@ -35,6 +35,8 @@ _ibinincr_ (optional) -- sets an increment by which _pvadd_ counts up from _ibin
 _iextractmode_ (optional) -- determines if spectral extraction will be carried out and if so whether components that have changes in frequency below _ifreqlim_ or above _ifreqlim_ will be discarded. A value for _iextractmode_ of 1 will cause _pvadd_ to synthesize only those components where the frequency difference between analysis frames is greater than _ifreqlim_. A value of 2 for _iextractmode_ will cause _pvadd_ to synthesize only those components where the frequency difference between frames is less than _ifreqlim_. The default values for _iextractmode_ and _ifreqlim_ are 0, in which case a simple resynthesis will be done. See examples below.
 
 _igatefn_ (optional) -- is the number of a stored function which will be applied to the amplitudes of the analysis bins before resynthesis takes place. If _igatefn_ is greater than 0 the amplitudes of each bin will be scaled by _igatefn_ through a simple mapping process. First, the  amplitudes of all of the bins in all of the frames in the entire analysis file are compared to determine the maximum amplitude value. This value is then used create normalized amplitudes as indeces into the stored function _igatefn_. The maximum amplitude will map to the last point in the function. An amplitude of 0 will map to the first point in the function. Values between 0 and 1 will map accordingly to points along the function table.This will be made clearer in the examples below.
+
+_ifiletime_ (optional, default=0) -- zero keeps the original time mapping, which uses Csound's output sample rate to convert _ktimpnt_ to a file frame. Set to 1 to use the analysis file's sample rate instead, so _ktimpnt_ refers to seconds in the source recording. The modes differ only when those sample rates differ.
 
 ### Performance
 

@@ -5,7 +5,7 @@ category:Signal Generators:Envelope Generators
 # gtadsr
 A gated linear attack-decay-sustain with exponential release.
 
-This opcode can work either as a signal generator or as a signal processor. It is controlled by a gate k-rate signal (0 or  > 0) which switches the envelope attack-decay-sustain phase on/off. With gate > 0 (high), the envelope cycles through the attack and decay phases, and is sustained at the sustain level. Whenever gate is 0 (low), the envelope enters the release phase, decaying exponentially to 0. The attack and decay times are fixed with gate > 0, but can be changed once the gate is zero.
+This opcode can generate an envelope or apply it to an audio signal. A positive _kgate_ starts attack and decay, then holds the sustain level. A zero or negative gate starts release. Attack and decay durations are captured when the gate becomes positive.
 
 ## Syntax
 === "Modern"
@@ -29,18 +29,20 @@ _asig_ -- input signal (envelope as an amplitude processor)
 _kamp_ -- maximum amplitude (envelope as a
 signal generator)
 
-_katt_ -- duration of attack phase
+_katt_ -- attack duration in seconds; must be nonnegative.
 
-_kdec_ -- duration of decay
+_kdec_ -- decay duration in seconds; must be nonnegative.
 
 _ksus_ -- level for sustain phase (in the
 range 0 - 1)
 
-_krel_ -- duration of release phase
+_krel_ -- release time in seconds for a 60 dB drop in envelope level. Zero or negative values end release immediately.
 
-_kgate_ -- gate signal (0 = low, > 0 high).
+_kgate_ -- gate signal (zero or negative = low, positive = high).
 
-The length of the sustain is calculated from the length of the note. This means _gtadsr_ is not suitable for use with MIDI events.
+Attack reaches the peak envelope level before decay begins, and decay reaches _ksus_. Zero or very short attack and decay times each take at least one output sample at audio rate, or one control period at control rate. If the gate becomes positive during release, a new attack starts from the current level and lasts for the newly captured attack duration.
+
+Sustain lasts while the gate stays positive; it is not calculated from the score note's duration. For MIDI use, drive the gate from the note state and keep the instrument running long enough for release.
 
 ## Examples
 
