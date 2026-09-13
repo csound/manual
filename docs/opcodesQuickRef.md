@@ -287,7 +287,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;`klend, ifun1, ifun2, iolaps[,istart, iskip])`<br>
 
 
-`ar = `[**`vosim`**](opcodes/vosim.md)`(kamp, kFund, kForm, kDecay, kPulseCount, kPulseFactor, ifn [, iskip])`<br>
+`ar = `[**`vosim`**](opcodes/vosim.md)`(kamp, kFund, kForm, kDecay, kPulseCount, kPulseFactor, ifn [, iskip] [, icorrect])`<br>
 
 
 ### Signal Generators:Hyper Vectorial Synthesis
