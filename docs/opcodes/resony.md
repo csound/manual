@@ -59,7 +59,7 @@ Here is an example of the resony opcode. It uses the file [resony.csd](../exampl
 --8<-- "examples/resony.csd"
 ```
 
-This example selects corrected linear spacing with the final argument:
+Here is another example of the metro2 Opcode. It uses the file [resony_corrected.csd](../examples/resony_corrected.csd). It selects corrected linear spacing with the final argument:
 
 ``` csound-csd
 --8<-- "examples/resony_corrected.csd"

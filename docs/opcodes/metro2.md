@@ -48,7 +48,7 @@ Here is an example of the metro2 opcode. It uses the file [metro2.csd](../exampl
 --8<-- "examples/metro2.csd"
 ```
 
-This example selects corrected timing and starts after the first offbeat. It prints `1` for main beats and `-1` for offbeats:
+Here is another example of the metro2 Opcode. It uses the file [metro2_corrected](../examples/metro2_corrected.csd). It selects corrected timing and starts after the first offbeat. It prints `1` for main beats and `-1` for offbeats:
 
 ``` csound-csd title="Corrected metro2 timing" linenums="1"
 --8<-- "examples/metro2_corrected.csd"

@@ -34,7 +34,7 @@ The opcode correlates the previous sample window with a circularly shifted curre
 
 ## Examples
 
-This example prints the estimate for a sine wave:
+Here is an example of the pitchac opcode. It uses the file [pitchac.csd](../examples/pitchac.csd). It prints the estimate for a sine wave:
 
 ``` csound-csd
 --8<-- "examples/pitchac.csd"
