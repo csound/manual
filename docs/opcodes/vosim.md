@@ -10,12 +10,12 @@ Output is a series of sound events, where each event is composed of a burst of s
 ## Syntax
 === "Modern"
     ``` csound-orc
-    ar = vosim(kamp, kFund, kForm, kDecay, kPulseCount, kPulseFactor, ifn [, iskip])
+    ar = vosim(kamp, kFund, kForm, kDecay, kPulseCount, kPulseFactor, ifn [, iskip] [, icorrect])
     ```
 
 === "Classic"
     ``` csound-orc
-    ar vosim kamp, kFund, kForm, kDecay, kPulseCount, kPulseFactor, ifn [, iskip]
+    ar vosim kamp, kFund, kForm, kDecay, kPulseCount, kPulseFactor, ifn [, iskip] [, icorrect]
     ```
 
 Intialization
@@ -23,6 +23,8 @@ Intialization
 _ifn_ - a sound table, normally containing half a period of a sinewave, squared (see notes below).
 
 _iskip_ - (optional) Skip initialization, for tied notes.
+
+_icorrect_ - (optional, default=0) For power-of-two tables, zero preserves the legacy pulse timing and amplitude behavior. Set to 1 to use the corrected behavior: the first pulse starts at _kForm_, amplitude changes take effect at each new pulse, and a negative _kPulseFactor_ reverses direction between pulses. Non-power-of-two tables always use the corrected behavior, regardless of this setting.
 
 ### Performance
 
@@ -38,7 +40,7 @@ _kDecay_ - a dampening factor from pulse to pulse. This is subtracted from ampli
 
 _kPulseCount_ - number of pulses in the burst part of each event.
 
-_kPulseFactor_ - the pulse width is multiplied by this value at each new pulse. This results in formant sweeping. If factor is  &lt; 1.0, the formant sweeps up, if &gt; 1.0 each new pulse is longer, so the formant sweeps down. The final pitch of the formant is kForm * pow(kPulseFactor, kPulseCount)
+_kPulseFactor_ - multiplier for the table playback rate between pulses. Magnitudes above 1 shorten successive pulses and raise the formant frequency; magnitudes between 0 and 1 lengthen pulses and lower it. In corrected mode, the first pulse uses _kForm_ without this multiplier.
 
 The output of _vosim_ is a series of sound events, where each event is composed of a burst of squared sine pulses followed by silence. The total duration of the events determines fundamental frequency. The length of each single pulse in the squared-sine bursts produce a formant frequency band. The width of the formant is determined by rate of silence to pulses (see below). The final result is also shaped by the dampening factor from pulse to pulse.
 
@@ -88,8 +90,8 @@ The opcode should behave reasonably in the face of all user inputs. Some details
 2.  kFund == 0: This leads to "infinite" length event, ie a pulse burst followed by very long indefinite silence.
 3.  kForm == 0: This leads to infinite length pulse, so no pulses are generated (i.e. silence).
 4.  kForm &lt; 0: Table is read backward. If table is symmetric, _kform_ and -_kform_ should give bit-identical outputs.
-5.  kPulseFactor == 0: Second pulse onwards is zero. See (3).
-6.  kPulseFactor &lt; 0: Pulses alternately read table forward and reversed.
+5.  kPulseFactor == 0: In corrected mode, only the first pulse can play. Legacy power-of-two mode produces silence.
+6.  kPulseFactor &lt; 0: In corrected mode, pulses alternately read the table forward and backward.
 
 With asymmetric pulse table there may be some use for negative _kForm_ or negative _kPulseFactor_.
 
