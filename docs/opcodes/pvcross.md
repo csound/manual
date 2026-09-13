@@ -10,12 +10,12 @@ The data is passed, as described above, from a previously called [pvbufread](../
 ## Syntax
 === "Modern"
     ``` csound-orc
-    ares = pvcross(ktimpnt, kfmod, ifile, kampscale1, kampscale2 [, ispecwp, ifiletime])
+    ares = pvcross(ktimpnt, kfmod, ifile, kampscale1, kampscale2 [, ispecwp] [, ifiletime])
     ```
 
 === "Classic"
     ``` csound-orc
-    ares pvcross ktimpnt, kfmod, ifile, kampscale1, kampscale2 [, ispecwp, ifiletime]
+    ares pvcross ktimpnt, kfmod, ifile, kampscale1, kampscale2 [, ispecwp] [, ifiletime]
     ```
 
 ### Initialization

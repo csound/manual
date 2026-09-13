@@ -8,12 +8,12 @@ Trigger Metronome with Swing and Accents.
 ## Syntax
 === "Modern"
     ``` csound-orc
-    ktrig  = metro2( kfreq, kswing [, iamp, initphase])
+    ktrig  = metro2( kfreq, kswing [, iamp, initphase, icorrect])
     ```
 
 === "Classic"
     ``` csound-orc
-    ktrig  metro2  kfreq, kswing [, iamp, initphase]
+    ktrig  metro2  kfreq, kswing [, iamp, initphase, icorrect]
     ```
 
 ### Initialization

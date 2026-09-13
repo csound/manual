@@ -1876,7 +1876,7 @@
 `ares = `[**`resonx`**](opcodes/resonx.md)`(asig, xcf, xbw [, inumlayer] [, iscl] [, iskip])`<br>
 
 
-`ares = `[**`resony`**](opcodes/resony.md)`(asig, kbf, kbw, inum, ksep [, isepmode] [, iscl] [, iskip])`<br>
+`ares = `[**`resony`**](opcodes/resony.md)`(asig, kbf, kbw, inum, ksep [, isepmode] [, iscl] [, iskip] [, icorrect])`<br>
 
 
 `ares = `[**`resonz`**](opcodes/resonz.md)`(asig, xcf, xbw [, iscl] [, iskip])`<br>
@@ -2427,7 +2427,7 @@
 `ktrig  = `[**`metro`**](opcodes/metro.md)`( kfreq [, initphase])`<br>
 
 
-`ktrig  = `[**`metro2`**](opcodes/metro2.md)`( kfreq, kswing [, iamp, initphase])`<br>
+`ktrig  = `[**`metro2`**](opcodes/metro2.md)`( kfreq, kswing [, iamp, initphase, icorrect])`<br>
 
 
 `ktrig  = `[**`metrobpm`**](opcodes/metrobpm.md)`( kfreq [, initphase] [, kgate])`<br>
@@ -2488,6 +2488,9 @@
 
 `koct, kamp = `[**`pitch`**](opcodes/pitch.md)`(asig, iupdte, ilo, ihi, idbthresh [, ifrqs] [, iconf] \`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`[, istrt] [, iocts] [, iq] [, inptls] [, irolloff] [, iskip])`<br>
+
+
+`kpitch = `[**`pitchac`**](opcodes/pitchac.md)`(asig, kfmin, kfmax, iflow)`<br>
 
 
 `kcps, krms = `[**`pitchamdf`**](opcodes/pitchamdf.md)`(asig, imincps, imaxcps [, icps] [, imedi] \`<br>
@@ -3582,7 +3585,7 @@
 [**`pvbufread`**](opcodes/pvbufread.md)`(ktimpnt, ifile [, ifiletime])`<br>
 
 
-`ares = `[**`pvcross`**](opcodes/pvcross.md)`(ktimpnt, kfmod, ifile, kampscale1, kampscale2 [, ispecwp, ifiletime])`<br>
+`ares = `[**`pvcross`**](opcodes/pvcross.md)`(ktimpnt, kfmod, ifile, kampscale1, kampscale2 [, ispecwp] [, ifiletime])`<br>
 
 
 `ares = `[**`pvinterp`**](opcodes/pvinterp.md)`(ktimpnt, kfmod, ifile, kfreqscale1, kfreqscale2, \`<br>
@@ -3682,6 +3685,7 @@
 
 
 `kamp, kfr = `[**`pvsbin`**](opcodes/pvsbin.md)`(fsig, kbin)`<br>
+`aamp, afr = pvsbin(fsig, kbin)`<br>
 
 
 `fsig = `[**`pvsblur`**](opcodes/pvsblur.md)`(fsigin, kblurtime, imaxdel)`<br>
@@ -4371,7 +4375,7 @@
 `out:k[] = rifft(in:Complex[])    `<br>
 
 
-`kout[] = `[**`unwrap`**](opcodes/unwrap.md)`(kin[])`<br>
+`kout[] = `[**`unwrap`**](opcodes/unwrap.md)`(kin[] [, imode])`<br>
 
 
 `kout[] = `[**`window`**](opcodes/window.md)`(kin[] [, koff, itype])`<br>
