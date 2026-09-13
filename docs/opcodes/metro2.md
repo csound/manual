@@ -8,19 +8,23 @@ Trigger Metronome with Swing and Accents.
 ## Syntax
 === "Modern"
     ``` csound-orc
-    ktrig  = metro2( kfreq, kswing [, iamp, initphase])
+    ktrig  = metro2( kfreq, kswing [, iamp, initphase, icorrect])
     ```
 
 === "Classic"
     ``` csound-orc
-    ktrig  metro2  kfreq, kswing [, iamp, initphase]
+    ktrig  metro2  kfreq, kswing [, iamp, initphase, icorrect]
     ```
 
 ### Initialization
 
-_iamp_  -  off-beat click amplitude
+_iamp_ (optional, default=1) -- offbeat trigger amplitude
 
-_initphase_  - initial phase value (in the 0 to 1 range)
+_initphase_ (optional, default=0) -- initial phase value, normally between 0 and 1.
+
+_icorrect_ (optional, default=0) -- zero preserves the original timing, including startup offbeats and the one-control-cycle offset between the two clocks. Set to 1 for corrected timing: both clocks advance together, the initial swing comes from its first control-rate value, and a nonzero initial phase does not emit an offbeat that has already passed. Corrected mode requires a finite, nonnegative frequency and initial phase, and swing between 0 and 1.
+
+For example, `ktrig metro2 4, .65, -1, 0, 1` selects corrected timing, with `1` for main beats and `-1` for offbeats.
 
 ### Performance
 
@@ -42,6 +46,12 @@ Here is an example of the metro2 opcode. It uses the file [metro2.csd](../exampl
 
 ``` csound-csd title="Example of the metro2 opcode." linenums="1"
 --8<-- "examples/metro2.csd"
+```
+
+This example selects corrected timing and starts after the first offbeat. It prints `1` for main beats and `-1` for offbeats:
+
+``` csound-csd title="Corrected metro2 timing" linenums="1"
+--8<-- "examples/metro2_corrected.csd"
 ```
 
 ## See also

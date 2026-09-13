@@ -2427,7 +2427,7 @@
 `ktrig  = `[**`metro`**](opcodes/metro.md)`( kfreq [, initphase])`<br>
 
 
-`ktrig  = `[**`metro2`**](opcodes/metro2.md)`( kfreq, kswing [, iamp, initphase])`<br>
+`ktrig  = `[**`metro2`**](opcodes/metro2.md)`( kfreq, kswing [, iamp, initphase, icorrect])`<br>
 
 
 `ktrig  = `[**`metrobpm`**](opcodes/metrobpm.md)`( kfreq [, initphase] [, kgate])`<br>
