@@ -3,26 +3,32 @@ id:unwrap
 category:Array Operations: Fast Fourier Transform
 -->
 # unwrap
-Applies a unwrapping operation to a vector of phase values stored in an array.
+Wrap or unwrap an array of phase values in radians.
 
-The output is an array with phases in the range of $[-\pi, \pi)$.
+The default mode wraps each phase into $[-\pi, \pi)$. Mode 1 unwraps each array element over successive control periods; its output can extend beyond that interval.
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    kout[] = unwrap(kin[])
+    kout[] = unwrap(kin[] [, imode])
     ```
 
 === "Classic"
     ``` csound-orc
-    kout[] unwrap kin[]
+    kout[] unwrap kin[] [, imode]
     ```
+
+### Initialization
+
+_imode_ (optional, default=0) -- 0 wraps each input value independently. 1 keeps a separate phase history for each element and adds or subtracts multiples of $2\pi$ so that its change from the previous output lies in $[-\pi, \pi)$. Only 0 and 1 are accepted. Phase history starts at zero and resets on initialization or reinitialization.
 
 ### Performance
 
-_kout[]_ -- output array containing the unwrapped phases. It will be created if it does not exist.
+_kout[]_ -- output array containing the wrapped or unwrapped phases. It is created if needed. The same array may be used for input and output.
 
-_kin[]_ -- input array containing the input vector.
+_kin[]_ -- one-dimensional input array of phases. Its length must stay fixed after initialization. A separate input array is left unchanged.
+
+In mode 1, phase changes larger than half a cycle between updates cannot be distinguished from a smaller change in the opposite direction.
 
 ## Examples
 
