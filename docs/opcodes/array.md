@@ -5,22 +5,36 @@ category: Array Opcodes
 # array
 Converts an input into an array, optionally creating it.
 
-If the array does not exist, it is created. Otherwise, the data is
-just copied into the array.
+The audio-input form remains supported. It copies each block of audio into a k-rate array with _ksmps_ elements, creating the array if needed.
+
+> :warning: **Deprecated initializers**
+>
+> Only the forms that initialize an array from a list of values are deprecated. Use [fillarray](fillarray.md) for these. The audio-input form is not deprecated.
 
 ## Syntax
 ``` csound-orc
-array(arg:a)
-array(arg1:k, arg2:k, ...)
-array(arg1:i, arg2:i, ...)
+kSamples[] = array(aSignal)
 ```
 
-The a-type version produces an array with _ksmps_ numbers. The other versions produce an array with as many
-numbers as their inputs.
+### Legacy value-list forms
+
+These forms take initial values and remain available for compatibility:
+
+``` csound-orc
+iValues[] = array(ival1, ival2, ...)
+kValues[] = array(ival1, ival2, ...)
+```
+
+For new code, use `fillarray`:
+
+``` csound-orc
+iValues[] = fillarray(1, 2, 3)
+kValues[] = fillarray(1, 2, 3)
+```
 
 ## Examples
 
-Here is an example of the a opcode. It uses the file [array.csd](../examples/array.csd).
+Here is an example of the array opcode. It uses the file [array.csd](../examples/array.csd).
 
 ``` csound-csd title="Example of the array opcode." linenums="1"
 --8<-- "examples/array.csd"
@@ -28,7 +42,7 @@ Here is an example of the a opcode. It uses the file [array.csd](../examples/arr
 
 ## See also
 
-[array opcodes](../math/array.md)
+[fillarray](fillarray.md), [array opcodes](../math/array.md)
 
 
 ## Credits

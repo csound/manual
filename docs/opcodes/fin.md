@@ -6,6 +6,20 @@ status:deprecated
 # fin
 Read signals from a file at a-rate.
 
+> :warning: **Deprecated**
+>
+> Both the scalar and audio-array forms of `fin` are deprecated and remain available for older orchestras. Use [diskin2](diskin2.md) for new code.
+
+## Replacement
+
+`diskin2` returns audio through output arguments and can allocate an audio array to match the file's channels:
+
+``` csound-orc
+aChannels[] diskin2 "fox.wav", 1
+```
+
+When adapting an existing `fin` call, use the file path instead of a `fiopen` handle. `diskin2` takes its skip position in seconds, while `fin` uses sample frames. Their raw-file format numbers also differ; use the values listed on the [diskin2](diskin2.md) page. At a playback rate of 1, `diskin2` normally converts the file's sample rate to the orchestra's sample rate.
+
 
 ## Syntax
 ``` csound-orc
