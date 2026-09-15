@@ -4278,9 +4278,7 @@
 
 
 ### Array Opcodes
-[**`array`**](opcodes/array.md)`(arg:a)`<br>
-`array(arg1:k, arg2:k, ...)`<br>
-`array(arg1:i, arg2:i, ...)`<br>
+`kSamples[] = `[**`array`**](opcodes/array.md)`(aSignal)`<br>
 
 
 [**`copya2ftab`**](opcodes/copya2ftab.md)`(kArray[], ktab [, koffset])`<br>
