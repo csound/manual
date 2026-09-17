@@ -24,6 +24,22 @@ _kflag_ -- indicates whether the note is in its _last cycle_. (1 if this the las
 
 This opcode is useful for performing cleanup actions, signaling to other events that this event is finishing, etc. It works only at performance time.
 
+### Extra release cycle
+
+During initialization, _lastcycle_ reserves one control cycle of release time if
+the instrument has no release time set. This extends the note by `ksmps / sr`
+seconds without changing `p3`. It does not add another cycle if release time is
+already set. A longer release requested by another opcode takes precedence.
+
+Calling [xtratim](../opcodes/xtratim.md) with 0 does not cancel this extra cycle:
+_xtratim_ only increases the release time.
+
+For example, with `sr = 1024`, `ksmps = 16`, and `p3 = 0.0625`, the score duration
+covers four control cycles. With _lastcycle_ and no other release extension, the
+instrument runs for five cycles in total. [eventcycles](../opcodes/eventcycles.md)
+returns indices 0 through 4, and _lastcycle_ returns 1 at index 4, during the extra
+release cycle.
+
 ## Examples
 
 Here is an example of the lastcycle opcode. It uses the file [lastcycle.csd](../examples/lastcycle.csd).
