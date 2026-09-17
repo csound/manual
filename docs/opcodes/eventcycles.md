@@ -5,7 +5,8 @@ category:Instrument Control:Time Reading
 # eventcycles
 Read absolute time in k-rate cycles, since the start of an instance of an instrument.
 
-Called at both i-time as well as k-time. NB: the returned value at k-time starts at 1
+Called at both i-time and k-time. At k-time, the first performance cycle returns 0.
+A note that runs for N cycles reports cycle indices from 0 through N - 1.
 
 ## Syntax
 === "Modern"
@@ -36,7 +37,7 @@ _eventcycles_ is similar to [elapsedcycles](../opcodes/elapsedcycles.md) except 
 
 > :memo: **Note**
 >
-> _eventcycles_ acts like [timeinstk](../opcodes/timeinstk.md) but it returns the correct values instead of being one cycle late.
+> _eventcycles_ starts at 0 on the first performance cycle, while [timeinstk](../opcodes/timeinstk.md) starts at 1.
 
 ## See also
 
