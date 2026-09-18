@@ -16,7 +16,7 @@ nchnls = 2
 instr 1
 
 kfreq = 110
-kvowel = p4     ; p4 = vowel (0 - 64)
+kvowel = p4     ; p4 = vowel (0 - 127, in four banks of 32)
 ktilt  = p5
 kvibamt = 0.005
 kvibrate = 6
@@ -47,6 +47,12 @@ i 1 14 1 >  .
 i 1 15 1 >  .
 i 1 16 1 >  .
 i 1 17 1 12 .
+
+; The same vowel entry in each bank, with tilt held at 90.
+i 1 20 1 1  90  ; formant scale 0.9
+i 1 22 1 33 90  ; formant scale 1.0
+i 1 24 1 65 90  ; formant scale 1.1
+i 1 26 1 97 90  ; formant scale 1.2
 
 e
 </CsScore>
