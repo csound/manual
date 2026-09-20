@@ -15,7 +15,8 @@
 | [alpass](opcodes/alpass.md) | [alwayson](opcodes/alwayson.md) | [ampdb](opcodes/ampdb.md) | [ampdbfs](opcodes/ampdbfs.md) | [ampmidi](opcodes/ampmidi.md) |
 | [ampmidicurve](opcodes/ampmidicurve.md) | [ampmidid](opcodes/ampmidid.md) | [apoleparams](opcodes/apoleparams.md) | [arduinoread](opcodes/arduinoRead.md) | [arduinoreadf](opcodes/arduinoReadF.md) |
 | [arduinostart](opcodes/arduinoStart.md) | [arduinostop](opcodes/arduinoStop.md) | [areson](opcodes/areson.md) | [aresonk](opcodes/aresonk.md) | [arg](opcodes/arg.md) |
-| [array](opcodes/array.md) | [atone](opcodes/atone.md) | [atonek](opcodes/atonek.md) | [atonex](opcodes/atonex.md) | [atsadd](opcodes/ATSadd.md) |
+| [array](opcodes/array.md) | [assert](opcodes/assert.md) | [assert_false](opcodes/assert_false.md) | [assert_true](opcodes/assert_true.md) | [assertfalse](opcodes/assertfalse.md) |
+| [asserttrue](opcodes/asserttrue.md) | [atone](opcodes/atone.md) | [atonek](opcodes/atonek.md) | [atonex](opcodes/atonex.md) | [atsadd](opcodes/ATSadd.md) |
 | [atsaddnz](opcodes/ATSaddnz.md) | [atsbufread](opcodes/ATSbufread.md) | [atscross](opcodes/ATScross.md) | [atsinfo](opcodes/ATSinfo.md) | [atsinterpread](opcodes/ATSinterpread.md) |
 | [atspartialtap](opcodes/ATSpartialtap.md) | [atsread](opcodes/ATSread.md) | [atsreadnz](opcodes/ATSreadnz.md) | [atssinnoi](opcodes/ATSsinnoi.md) | [autocorr](opcodes/autocorr.md) |
 | [babo](opcodes/babo.md) | [balance2](opcodes/balance2.md) | [balance](opcodes/balance.md) | [bamboo](opcodes/bamboo.md) | [barmodel](opcodes/barmodel.md) |

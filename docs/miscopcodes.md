@@ -10,3 +10,7 @@ Here is a list of opcodes that don't fall in any category:
 * [modmatrix](opcodes/modmatrix.md) - Modulation matrix opcode with optimizations for sparse matrices.
 * [readscratch](opcodes/readscratch.md) - Returns a value stored in the instance of an instrument.
 * [writescratch](opcodes/writescratch.md) - Writes a value into the scratchpad of the instance of an instrument.
+
+## Testing
+
+[Testing opcodes](misc/testing.md) check conditions when `--run-unit-tests` is enabled. The [assert family](opcodes/assert.md) can stay in a composition with checks disabled during normal playback.

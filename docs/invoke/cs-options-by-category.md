@@ -498,6 +498,9 @@ Load plugin library *LIBNAME*.
 #### --orc orcname
 Set the argument as the orchestra file.  Used when no score is required.  (Csound 5.18 and later).
 
+#### --run-unit-tests
+Enable the built-in [assertion opcodes](../opcodes/assert.md) and print a unit test report at the end. Checks are ignored by default. Failed checks add errors and the command-line program returns a nonzero exit status. See [Testing](../misc/testing.md).
+
 #### --syntax-check-only
 Causes Csound to exit immediately after the orchestra and score parsers finish checking the syntax of the input files and before the orchestra performs the score. This option is exclusive of the --i-only flag.  (Csound 5.08 and later).
 

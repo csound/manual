@@ -1574,6 +1574,9 @@
 [**system.csd**](../opcodes/system.md#examples)<br>
 [**tableshuffle.csd**](../opcodes/tableshuffle.md#examples)<br>
 
+### Miscellaneous:Testing
+[**assert.csd**](../opcodes/assert.md#examples)<br>
+
 ### Utilities
 [**lufs.csd**](../opcodes/lufs.md#examples)<br>
 
