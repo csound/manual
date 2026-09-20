@@ -1637,6 +1637,9 @@
 `kres = `[**`downsamp`**](opcodes/downsamp.md)`(asig [, iwlen])`<br>
 
 
+`kEarly = `[**`earlysmps`**](opcodes/earlysmps.md)`()`<br>
+
+
 `ares = `[**`fold`**](opcodes/fold.md)`(asig, kincr)`<br>
 
 
