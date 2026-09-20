@@ -635,6 +635,7 @@ numeric or string values.<br>
 [octmidib](../opcodes/octmidib.md) - Get the note number of the current MIDI event and modify it by the current pitch-bend value, express it in octave-point-decimal.<br>
 [octmidinn](../opcodes/octmidinn.md) - Converts a Midi note number value to octave-point-decimal.<br>
 [octpch](../opcodes/octpch.md) - Converts a pitch-class value to octave-point-decimal.<br>
+[offsetsmps](../opcodes/offsetsmps.md) - Returns the number of inactive samples before a note starts in the current control block.<br>
 [olabuffer](../opcodes/olabuffer.md) - Sum overlapping frames of audio as k-rate arrays and read as an audio signal.<br>
 [opcode](../opcodes/opcode.md) - Defines the start of user-defined opcode block.<br>
 [opcodeinfo](../opcodes/opcodeinfo.md) - Prints information on an opcode definition and its overloads.<br>

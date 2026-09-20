@@ -545,6 +545,7 @@
 [**integ.csd**](../opcodes/integ.md#examples)<br>
 [**interp.csd**](../opcodes/interp.md#examples)<br>
 [**ntrpol.csd**](../opcodes/ntrpol.md#examples)<br>
+[**offsetsmps.csd**](../opcodes/offsetsmps.md#examples)<br>
 [**samphold.csd**](../opcodes/samphold.md#examples)<br>
 [**upsamp.csd**](../opcodes/upsamp.md#examples)<br>
 [**vaget.csd**](../opcodes/vaget.md#examples)<br>

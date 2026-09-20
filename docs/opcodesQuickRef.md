@@ -1670,6 +1670,9 @@
 `kres = ntrpol(ksig1, ksig2, kpoint [, imin] [, imax])`<br>
 
 
+`kOffset = `[**`offsetsmps`**](opcodes/offsetsmps.md)`()`<br>
+
+
 `ares = `[**`samphold`**](opcodes/samphold.md)`(asig, agate [, ival] [, ivstor])`<br>
 `kres = samphold(ksig, kgate [, ival] [, ivstor])`<br>
 
