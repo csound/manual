@@ -11,7 +11,7 @@ Creates a new instrument definition, instrument instance, or opcode object.
     ``` csound-orc
     var:InstrDef = create(code:S)
     var:Instr = create(instr:InstrDef)
-    var:Opcode = create(opc:OpcodeDef[,overload:i]
+    var:Opcode = create(opc:OpcodeDef[,overload:i])
     var:Opcode[] = create(opc:OpcodeDef,len:i[,overload:i])
     ```
 
@@ -36,11 +36,13 @@ _overload_ -- (optional, defaults to 0) opcode overload (version) (see
 
 _len_ -- opcode object array length.
 
-The first version takes Csound code on a string, compiles it, and returns an instrument definition. The
-second takes an instrument definition and instantiates it, returning
-the instrument instance. The third creates an opcode object from one
-of the predefined opcode overloads. The final version creates an array
-of opcode objects of the same OpcodeDef type and overload.
+All forms run at initialization. The string form takes an instrument body without `instr` or `endin`, compiles it and returns an `InstrDef`. [createinstr](createinstr.md) is another name for this form.
+
+`create(definition)` allocates an `Instr` instance without scheduling it. Use [init](init.md) to initialize it, then [perf](perf.md) to run it from the calling instrument. For an instance that Csound performs automatically, use [play](play.md) or [schedule](schedule.md).
+
+The `Opcode` form creates one object from the chosen overload. The array form creates a one-dimensional `Opcode[]` with `len` independent objects. Use a nonnegative integer for `len`. Creating an opcode object does not run its initialization or performance code. Use `run`, or separate `init` and `perf` calls, to execute it.
+
+Arrange [delete](delete.md) in the owning instrument for cleanup. The [object guide](../orch/instrument-and-opcode-objects.md) explains lifetimes and gives examples of each form.
 
 ## Examples
 
@@ -49,6 +51,10 @@ Here is an example of the create opcode. It uses the file [create.csd](../exampl
 ``` csound-csd title="Examples of the create opcode." linenums="1"
 --8<-- "examples/create.csd"
 ```
+
+## See also
+
+[Instrument definitions, instances and opcode objects](../orch/instrument-and-opcode-objects.md), [delete](delete.md), [init](init.md), [perf](perf.md)
 
 ## Credits
 

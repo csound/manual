@@ -191,6 +191,7 @@ cosine interpolation, including a release segment.<br>
 [cpumeter](../opcodes/cpumeter.md) - Reports system-wide CPU usage, overall or per logical CPU.<br>
 [cpuprc](../opcodes/cpuprc.md) - Control allocation of cpu resources on a per-instrument basis, to optimize realtime output.<br>
 [create](../opcodes/create.md) - Creates a new instrument definition, instrument instance, or opcode object.<br>
+[createinstr](../opcodes/createinstr.md) - Compiles an instrument body into an instrument definition.<br>
 [cross2](../opcodes/cross2.md) - Cross synthesis using FFT's.<br>
 [crossfm](../opcodes/crossfm.md) - Two oscillators, mutually frequency and/or phase modulated by each other.<br>
 [crunch](../opcodes/crunch.md) - Semi-physical model of a crunch sound.<br>
@@ -225,6 +226,7 @@ transform.<br>
 [delayk](../opcodes/delayk.md) - Delays an input signal by some time interval.<br>
 [delayr](../opcodes/delayr.md) - Reads from an automatically established digital delay line.<br>
 [delayw](../opcodes/delayw.md) - Writes the audio signal to a digital delay line.<br>
+[delete](../opcodes/delete.md) - Cleans up an object when the containing instrument ends.<br>
 [deltap3](../opcodes/deltap3.md) - Taps a delay line at variable offset times, uses cubic interpolation.<br>
 [deltap](../opcodes/deltap.md) - Taps a delay line at variable offset times.<br>
 [deltapi](../opcodes/deltapi.md) - Taps a delay line at variable offset times, uses interpolation.<br>
@@ -375,6 +377,7 @@ numeric or string values.<br>
 [getcfg](../opcodes/getcfg.md) - Return various configuration settings in Svalue as a string at init time.<br>
 [getcol](../opcodes/getcol.md) - Gets a given column from a 2-dimensional array as a vector.<br>
 [getftargs](../opcodes/getftargs.md) - Fill a string variable with the arguments used to create a function table at k-rate.<br>
+[getinstance](../opcodes/getinstance.md) - Returns a reference to the current instrument instance.<br>
 [getrow](../opcodes/getrow.md) - Gets a given row from a 2-dimensional array as a vector.<br>
 [getseed](../opcodes/getseed.md) - Reads the global seed value.<br>
 [gogobel](../opcodes/gogobel.md) - Audio output is a tone related to the striking of a cow bell or similar.<br>
@@ -425,6 +428,8 @@ numeric or string values.<br>
 [insglobal](../opcodes/insglobal.md) - An opcode which can be used to implement a remote orchestra.<br>
 [insremot](../opcodes/insremot.md) - An opcode which can be used to implement a remote orchestra.<br>
 [instr](../opcodes/instr.md) - Starts an instrument block.<br>
+[instrnum](../opcodes/instrnum.md) - Returns an instrument number from a name or definition.<br>
+[instrstr](../opcodes/instrstr.md) - Returns an instrument name from its number.<br>
 [int](../opcodes/int.md) - Extracts an integer from a decimal number.<br>
 [integ](../opcodes/integ.md) - Modify a signal by integration.<br>
 [interleave](../opcodes/interleave.md) - Interleaves arrays into a a single one by placing the input data in alternate positions.<br>
@@ -432,6 +437,8 @@ numeric or string values.<br>
 [invalue](../opcodes/invalue.md) - Reads a k-rate or i-rate signal or string from a user-defined channel.<br>
 [inx](../opcodes/inx.md) - Reads a 16-channel audio signal from an external device or stream.<br>
 [inz](../opcodes/inz.md) - Reads multi-channel audio samples into a ZAK array from an external device or stream.<br>
+[isactive](../opcodes/isactive.md) - Reports whether an instrument instance is active.<br>
+[isreleasing](../opcodes/isreleasing.md) - Reports whether an instrument instance is in its release stage.<br>
 [jitter2](../opcodes/jitter2.md) - Generates a segmented line with user-controllable random segments.<br>
 [jitter](../opcodes/jitter.md) - Generates a segmented line whose segments are randomly generated.<br>
 [joystick](../opcodes/joystick.md) - Reads data from a Linux joystick controller.<br>
@@ -616,8 +623,8 @@ numeric or string values.<br>
 [nrpn](../opcodes/nrpn.md) - Sends a NPRN (Non-Registered Parameter Number) message to the MIDI OUT port each time one of the input arguments changes.<br>
 [nsamp](../opcodes/nsamp.md) - Returns the number of samples loaded into a stored function table number.<br>
 [nstance](../opcodes/nstance.md) - Schedules a new instrument instance, storing the instance handle in a variable.<br>
-[nstrnum](../opcodes/nstrnum.md) - Returns the number of a named instrument.<br>
-[nstrstr](../opcodes/nstrstr.md) - Returns the string of a named instr from its number or an empty string if no such association exists.<br>
+[nstrnum](../opcodes/nstrnum.md) - Returns an instrument number from a name or definition.<br>
+[nstrstr](../opcodes/nstrstr.md) - Returns an instrument name from its number, or an empty string if no name matches.<br>
 [ntof](../opcodes/ntof.md) - Convert note name to frequency.<br>
 [ntom](../opcodes/ntom.md) - Convert note name to midi note number.<br>
 [ntrpol](../opcodes/ntrpol.md) - Calculates the weighted mean value (i.e. linear interpolation) of two input signals.<br>
@@ -699,6 +706,7 @@ numeric or string values.<br>
 [partikkelsync](../opcodes/partikkelsync.md) - Outputs _partikkel_'s grain scheduler clock pulse and phase to synchronize several instances of the _partikkel_ opcode to the same clock source.<br>
 [passign](../opcodes/passign.md) - Assigns a range of p-fields to ivariables, or i- or k-array.<br>
 [paulstretch](../opcodes/paulstretch.md) - Extreme time-stretching algorithm by Nasca Octavian Paul.<br>
+[pause](../opcodes/pause.md) - Pauses or resumes an instrument instance.<br>
 [pcauchy](../opcodes/pcauchy.md) - Cauchy distribution random number generator (positive values only).<br>
 [pchbend](../opcodes/pchbend.md) - Get the current pitch-bend value for this channel.<br>
 [pchmidi](../opcodes/pchmidi.md) - Get the note number of the current MIDI event, expressed in pitch-class units.<br>
@@ -727,6 +735,7 @@ numeric or string values.<br>
 [pitchamdf](../opcodes/pitchamdf.md) - Follows the pitch of a signal based on the AMDF method (Average Magnitude Difference Function).<br>
 [planet](../opcodes/planet.md) - Simulates a planet orbiting in a binary star system.<br>
 [platerev](../opcodes/platerev.md) - Models the reverberation of a rectangular metal plate with settable physical characteristics when excited by audio signal(s).<br>
+[play](../opcodes/play.md) - Starts an instrument immediately and returns its instance.<br>
 [plltrack](../opcodes/plltrack.md) - Tracks the pitch of a signal.<br>
 [pluck](../opcodes/pluck.md) - Produces a naturally decaying plucked string or drum sound.<br>
 [poisson](../opcodes/poisson.md) - Poisson distribution random number generator (positive values only).<br>
@@ -969,6 +978,7 @@ time-varying crossfade looping.<br>
 [spat3dt](../opcodes/spat3dt.md) - Can be used to render an impulse response for a 3D space at i-time.<br>
 [spdist](../opcodes/spdist.md) - Calculates distance values from xy coordinates.<br>
 [spf](../opcodes/spf.md) - Steiner-Parker filter.<br>
+[splice](../opcodes/splice.md) - Places an instrument instance before or after another in the performance list.<br>
 [splitrig](../opcodes/splitrig.md) - Split a trigger signal (i.e. a timed sequence of control-rate impulses) into several channels following a structure designed by the user.<br>
 [sprintf](../opcodes/sprintf.md) - printf-style formatted output to a string variable.<br>
 [sprintfk](../opcodes/sprintfk.md) - printf-style formatted output to a string variable at k-rate.<br>
@@ -980,6 +990,7 @@ time-varying crossfade looping.<br>
 [statevar](../opcodes/statevar.md) - Statevar is a new digital implementation of the analogue state-variable filter.<br>
 [sterrain](../opcodes/sterrain.md) - A wave-terrain synthesis opcode using curves computed with the superformula.<br>
 [stix](../opcodes/stix.md) - Semi-physical model of a stick sound.<br>
+[str](../opcodes/str.md) - Returns the name of an instrument definition.<br>
 [strcat](../opcodes/strcat.md) - Concatenate two strings and store the result in a variable.<br>
 [strcatk](../opcodes/strcatk.md) - Concatenate two strings and store the result in a variable.<br>
 [strchar](../opcodes/strchar.md) - Return the ASCII code of the character in Sstr at ipos (defaults to zero which means the first character), or zero if ipos is out of range.<br>
