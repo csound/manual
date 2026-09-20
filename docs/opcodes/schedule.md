@@ -11,6 +11,8 @@ Adds a new score event.
     schedule(insnum, iwhen, idur [, ip4] [, ip5] [...])
     schedule("insname", iwhen, idur [, ip4] [, ip5] [...])
     schedule(iPar[])
+    schedule(definition, iwhen, idur [, ip4, ip5, ...])
+    voice:Instr = schedule(definition, iwhen, idur [, ip4, ip5, ...])
     ```
 
 === "Classic"
@@ -18,6 +20,8 @@ Adds a new score event.
     schedule insnum, iwhen, idur [, ip4] [, ip5] [...]
     schedule "insname", iwhen, idur [, ip4] [, ip5] [...]
     schedule iPar[]
+    schedule definition, iwhen, idur [, ip4, ip5, ...]
+    voice:Instr schedule definition, iwhen, idur [, ip4, ip5, ...]
     ```
 
 ### Initialization
@@ -33,6 +37,14 @@ _idur_ -- duration of event. Equivalent to p3 in a score [i statement](../scoreg
 _iPar[]_ -- event parameters as an i-time array.
 
 _ip4, ip5, ..._ -- Equivalent to p4, p5, etc., in a score [i statement](../scoregens/i.md). The opcode also accepts strings as arguments for p4-pN.
+
+### Instrument references in Csound 7
+
+`definition` is an `InstrDef`, such as a named instrument without quotes or the result of [create](create.md). The form with an `Instr` output also accepts an instrument number or name string.
+
+`voice` receives the instance reference when the scheduled note initializes. Until then, it is unset, even if `iwhen` is 0. Do not pass it to state queries or instance controls before the note starts. Keep the output variable alive until that start time so Csound can store the reference.
+
+Use [play](play.md) when you need an initialized reference immediately. The [object guide](../orch/instrument-and-opcode-objects.md) explains the difference and shows how to control an instance.
 
 ### Performance
 
@@ -50,7 +62,7 @@ Here is an example of the schedule opcode. It uses the file [schedule.csd](../ex
 
 ## See also
 
-[unschedule](unschedule.md), [unscheduleall](unscheduleall.md), [Instrument Invocation](../control/invocat.md)
+[play](play.md), [unschedule](unschedule.md), [unscheduleall](unscheduleall.md), [Instrument Invocation](../control/invocat.md)
 
 More information on this opcode: [http://www.csoundjournal.com/issue15/phrase_loops.html](http://www.csoundjournal.com/issue15/phrase_loops.html)  , written by Jim Aikin
 

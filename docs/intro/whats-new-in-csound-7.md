@@ -81,6 +81,8 @@ endin
 
 ## Instrument Definition Type
 
+The [guide to instrument definitions, instances and opcode objects](../orch/instrument-and-opcode-objects.md) explains these types with complete examples.
+
 Csound 7 introduces a new type `InstrDef` to hold instrument
 definitions. The _name_ of an instrument becomes a global constant of
 that type, which may be referred directly in the code, 
@@ -118,7 +120,7 @@ by various opcodes. For example,
 
 ```csound-orc
 instr Container
-  myInstr:InstrDef = create({{ out Osci(p4,p5) }})
+  myInstr:InstrDef = create({{ out poscil(p4,p5) }})
   myInstance:Instr = create(myInstr)
   err1:i = init(myInstance,0.5,440)
   err2:k = perf(myInstance)
@@ -127,8 +129,9 @@ instr Container
 endin
 ```
 
-In addition to these, several other opcodes can be used to 
-manipulate instances in Csound code.
+[play](../opcodes/play.md) starts an instance immediately. Use [pause](../opcodes/pause.md) to pause and resume it, [setp](../opcodes/setp.md) to change its p-fields, and [isactive](../opcodes/isactive.md) or [isreleasing](../opcodes/isreleasing.md) to read its state. [getinstance](../opcodes/getinstance.md) returns the current instance. [splice](../opcodes/splice.md) controls its place in the performance list.
+
+The [object guide](../orch/instrument-and-opcode-objects.md) has complete examples and explains when to use scheduling or manual `init` and `perf` calls.
 
 ## Opcode Reference and Opcode Types
 
@@ -165,6 +168,12 @@ or in series
    sig:a = rand(linenr(p4,0.1,0.1,0.01))
    sig = run(obj, sig, p5, p5/p6, 1)
 ```
+
+## Object cleanup
+
+[delete](../opcodes/delete.md) cleans up an instrument instance, instrument definition, opcode object, opcode array or separate Csound engine when the containing instrument ends. It runs at deinitialization, after any release extension.
+
+Keep a definition available until all notes that use it have finished. Copied references share an object, so arrange one cleanup for each object. See [Object lifetimes](../orch/instrument-and-opcode-objects.md#object-lifetimes) for the timing and examples.
 
 ## User-Defined Types
 

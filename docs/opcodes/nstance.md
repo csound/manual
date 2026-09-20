@@ -7,6 +7,8 @@ Schedules a new instrument instance, storing the instance handle in a variable.
 
 This handle can be used later to refer directly to the running nstance. This opcode is similar to schedule, but has the added facility of retrieving the nstance handle.
 
+In Csound 7, use the `Instr` output of [schedule](schedule.md) instead of a numeric instance handle. See the [object guide](../orch/instrument-and-opcode-objects.md) for examples of typed references.
+
 ## Syntax
 === "Modern"
     ``` csound-orc
