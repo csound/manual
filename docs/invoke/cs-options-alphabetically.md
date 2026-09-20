@@ -423,6 +423,9 @@ Sets the max recursion depth *n* for user-defined opcodes, defaulting to 1000. S
 
 ALSA MIDI devices are selected by name and not number. So, you need to use an option like -M hw:CARD,DEVICE where CARD and DEVICE are the card and device numbers (e.g. -M hw:1,0). PortMIDI allows multiple port inputs with either -Ma or -Mm.
 
+#### --run-unit-tests
+Enable the built-in [assertion opcodes](../opcodes/assert.md) and print a unit test report at the end. Checks are ignored by default. Failed checks add errors and the command-line program returns a nonzero exit status. See [Testing](../misc/testing.md).
+
 #### -s, --format=short
 Use short integer audio samples.
 

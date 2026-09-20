@@ -58,6 +58,11 @@
 [aresonk](../opcodes/aresonk.md) - A notch filter whose transfer functions are the complements of the reson opcode.<br>
 [arg](../opcodes/arg.md) - Returns the argument of a complex number.<br>
 [array](../opcodes/array.md) - Converts an input into an array, optionally creating it.<br>
+[assert](../opcodes/assert.md) - Checks a condition when testing is enabled.<br>
+[assert_false](../opcodes/assert_false.md) - Checks that a condition is false when testing is enabled.<br>
+[assert_true](../opcodes/assert_true.md) - Checks that a condition is true when testing is enabled.<br>
+[assertfalse](../opcodes/assertfalse.md) - Checks that a condition is false when testing is enabled.<br>
+[asserttrue](../opcodes/asserttrue.md) - Checks that a condition is true when testing is enabled.<br>
 [atone](../opcodes/atone.md) - A hi-pass filter whose transfer functions are the complements of the [tone](../opcodes/tone.md) opcode.<br>
 [atonek](../opcodes/atonek.md) - A hi-pass filter whose transfer functions are the complements of the [tonek](../opcodes/tonek.md) opcode.<br>
 [atonex](../opcodes/atonex.md) - Emulates a stack of filters using the atone opcode.<br>

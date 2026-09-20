@@ -110,4 +110,5 @@ categories = ['Orchestra Syntax:Header',
 'Array Operations: Discrete Cosine Transform',
 'Array Operations: Mel scale filterbank',
 'Miscellaneous',
+'Miscellaneous:Testing',
 'Utilities']

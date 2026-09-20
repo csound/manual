@@ -4469,6 +4469,26 @@
 `tableshufflei itablenum)`<br>
 
 
+### Miscellaneous:Testing
+[**`assert`**](opcodes/assert.md)`(condition)`<br>
+`assert_true(condition)`<br>
+`asserttrue(condition)`<br>
+`assert_false(condition)`<br>
+`assertfalse(condition)`<br>
+
+
+[**`assert_false`**](opcodes/assert_false.md)`(condition)`<br>
+
+
+[**`assert_true`**](opcodes/assert_true.md)`(condition)`<br>
+
+
+[**`assertfalse`**](opcodes/assertfalse.md)`(condition)`<br>
+
+
+[**`asserttrue`**](opcodes/asserttrue.md)`(condition)`<br>
+
+
 ### Utilities
 `kmom, kint, kshort = `[**`lufs`**](opcodes/lufs.md)`(kreset, ain1 [, ain2])`<br>
 
