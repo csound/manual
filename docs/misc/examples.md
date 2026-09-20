@@ -812,6 +812,7 @@
 [**cpumeter.csd**](../opcodes/cpumeter.md#examples)<br>
 [**cpuprc.csd**](../opcodes/cpuprc.md#examples)<br>
 [**exitnow.csd**](../opcodes/exitnow.md#examples)<br>
+[**exitnowk.csd**](../opcodes/exitnowk.md#examples)<br>
 [**instance-controls.csd**](../opcodes/isactive.md#examples)<br>
 [**isreleasing.csd**](../opcodes/isreleasing.md#examples)<br>
 [**maxalloc.csd**](../opcodes/maxalloc.md#examples)<br>
