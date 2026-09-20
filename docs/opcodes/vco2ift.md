@@ -3,7 +3,7 @@ id:vco2ift
 category:Signal Generators:Dynamic Spectrum Oscillators
 -->
 # vco2ift
-Returns a table number at i-time for a given oscillator frequency and wavform.
+Returns a table number at i-time for a given oscillator frequency and waveform.
 
 _vco2ift_ is the same as [vco2ft](../opcodes/vco2ft.md), but works at i-time. It is suitable for use with opcodes that expect an i-rate table number (for example, [oscili](../opcodes/oscili.md)).
 
@@ -40,19 +40,15 @@ Setting _inyx_ to 0.25 (_sr_/4), or 0.3333 (_sr_/3) can produce a &#8220;fatter&
 
 ## Examples
 
-Here is an example of the vco2ift opcode. It uses the file [vco2ift.csd](../examples/vco2ift.csd).
+This example builds a band-limited table set from a user-defined waveform, then uses `vco2ift` to select a table for each note. It uses the file [vco2ift.csd](../examples/vco2ift.csd).
 
-``` csound-orc title="Example of the vco2ift opcode." linenums="1"
+The generated tables start after the source table. The frequency passed to `vco2ift` also drives `oscili`, so the selected table has the right bandwidth for playback. Because selection happens only at initialization, use [vco2ft](vco2ft.md) with an oscillator that accepts a k-rate table number if the frequency changes during a note.
+
+``` csound-csd title="Example of the vco2ift opcode." linenums="1"
 --8<-- "examples/vco2ift.csd"
 ```
 
-Its output should include a line like these:
-
-```
-instr 1:  ifn = 22.000
-instr 1:  ifn = 8.000
-instr 1:  ifn = 3.000
-```
+The example prints each note's frequency and selected table number. Higher notes select tables with fewer harmonics. The table numbers depend on the generated set and should not be hard-coded.
 
 See the example for the [vco2](../opcodes/vco2.md) opcode too.
 
