@@ -91,9 +91,7 @@ This example starts a voice with `play`, pauses it for half a second and resumes
 
 Once an instance is in this list, Csound performs it automatically. Stop calling `perf` on it yourself.
 
-### Queued notes and names
-
-[unschedule](../opcodes/unschedule.md) removes one matching queued note. [unscheduleall](../opcodes/unscheduleall.md) removes all notes with the same parameters. Neither stops a note that has already begun. Their matching rules include the start position and every p-field, so see those pages before using them to cancel events.
+### Instrument names
 
 [instrnum](../opcodes/instrnum.md), also called [nstrnum](../opcodes/nstrnum.md), gets the number of an `InstrDef`. [str](../opcodes/str.md) gets a named definition's name. To look up a name from a number, use [instrstr](../opcodes/instrstr.md) or [nstrstr](../opcodes/nstrstr.md). You can pass an `InstrDef` straight to scheduling opcodes without converting it first.
 
