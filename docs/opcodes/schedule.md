@@ -50,7 +50,7 @@ Here is an example of the schedule opcode. It uses the file [schedule.csd](../ex
 
 ## See also
 
-[Instrument Invocation](../control/invocat.md)
+[unschedule](unschedule.md), [unscheduleall](unscheduleall.md), [Instrument Invocation](../control/invocat.md)
 
 More information on this opcode: [http://www.csoundjournal.com/issue15/phrase_loops.html](http://www.csoundjournal.com/issue15/phrase_loops.html)  , written by Jim Aikin
 
