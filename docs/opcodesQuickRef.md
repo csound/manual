@@ -2281,7 +2281,7 @@
 `kres = active(kinsnum [,iopt [,inorel]])`<br>
 
 
-`ktot[,kcpu1, kcpu2,...] = `[**`cpumeter`**](opcodes/cpumeter.md)`(ifreq)`<br>
+`ktot [, kcpu1, kcpu2, ...] = `[**`cpumeter`**](opcodes/cpumeter.md)`(ifreq)`<br>
 
 
 [**`cpuprc`**](opcodes/cpuprc.md)`(insnum, ipercent)`<br>
