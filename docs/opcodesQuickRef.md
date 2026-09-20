@@ -2184,6 +2184,12 @@
 [**`scorelinei`**](opcodes/scoreline_i.md)`(Sin)`<br>
 
 
+[**`unschedule`**](opcodes/unschedule.md)`(instrument, iStart, iDuration[, ip4, ip5, ...])`<br>
+
+
+[**`unscheduleall`**](opcodes/unscheduleall.md)`(instrument, iStart, iDuration[, ip4, ip5, ...])`<br>
+
+
 ### Instrument Control:Program Flow Control
 [**`break`**](opcodes/break.md)<br>
 

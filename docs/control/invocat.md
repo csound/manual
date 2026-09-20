@@ -14,6 +14,8 @@ The opcodes one can use to create score events from within a orchestra are:
 * [schedkwhen](../opcodes/schedkwhen.md)
 * [schedkwhennamed](../opcodes/schedkwhennamed.md)
 
+Use [unschedule](../opcodes/unschedule.md) or [unscheduleall](../opcodes/unscheduleall.md) to remove matching queued notes.
+
 The [mute](../opcodes/mute.md) opcode can be used to mute/unmute instruments during a performance.
 
 Instruments definitions can be removed using the [remove](../opcodes/remove.md) opcode.

@@ -756,6 +756,8 @@
 [**scoreline.csd**](../opcodes/scoreline.md#examples)<br>
 [**scorelinei.csd**](../opcodes/scoreline_i.md#examples)<br>
 [**scoreline_i.csd**](../opcodes/scoreline_i.md#examples)<br>
+[**unschedule.csd**](../opcodes/unschedule.md#examples)<br>
+[**unschedule.csd**](../opcodes/unscheduleall.md#examples)<br>
 
 ### Instrument Control:Program Flow Control
 [**break.csd**](../opcodes/break.md#examples)<br>

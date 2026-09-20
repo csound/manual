@@ -1097,6 +1097,8 @@ time-varying crossfade looping.<br>
 [tvconv](../opcodes/tvconv.md) - A time-varying convolution (FIR filter) opcode.<br>
 [undersample](../opcodes/undersample.md) - Sets a lower local sampling rate based on an undersampling factor.<br>
 [unirand](../opcodes/unirand.md) - Uniform distribution random number generator (positive values only).<br>
+[unschedule](../opcodes/unschedule.md) - Removes the first matching queued note event.<br>
+[unscheduleall](../opcodes/unscheduleall.md) - Removes all matching queued note events.<br>
 [until](../opcodes/until.md) - A syntactic looping construction.<br>
 [unwrap](../opcodes/unwrap.md) - Wrap or unwrap an array of phase values in radians.<br>
 [upsamp](../opcodes/upsamp.md) - Modify a signal by up-sampling.<br>
