@@ -1278,6 +1278,9 @@
 [**`print`**](opcodes/print.md)`(iarg [, iarg1] [, iarg2] [...])`<br>
 
 
+[**`print_type`**](opcodes/print_type.md)`(xarg)`<br>
+
+
 [**`printf`**](opcodes/printf.md)`i(Sfmt, itrig, [iarg1[, iarg2[, ... ]]])`<br>
 `printf(Sfmt, ktrig, [xarg1[, xarg2[, ... ]]])`<br>
 
@@ -1301,6 +1304,10 @@
 
 
 [**`printsk`**](opcodes/printsk.md)`("string", [, xval1] [, xval2] [...])`<br>
+
+
+[**`printtype`**](opcodes/printtype.md)`(xarg)`<br>
+`print_type(xarg)`<br>
 
 
 ### Signal I/O:Soundfile Queries

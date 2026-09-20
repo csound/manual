@@ -17,3 +17,5 @@ Opcodes for printing and displaying values are:
 * [prints](../opcodes/prints.md)
 * [printsk](../opcodes/printsk.md)
 * [printarray](../opcodes/printarray.md)
+
+* [printtype](../opcodes/printtype.md) and [print_type](../opcodes/printtype.md) print the type of a variable or expression.
