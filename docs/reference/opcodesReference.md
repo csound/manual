@@ -303,6 +303,7 @@ numeric or string values.<br>
 [fiopen](../opcodes/fiopen.md) - Opens a file in a specific mode.<br>
 [flanger](../opcodes/flanger.md) - A user controlled flanger.<br>
 [flashtxt](../opcodes/flashtxt.md) - Allows text to be displayed from instruments like sliders etc.<br>
+[floatsize](../opcodes/floatsize.md) - Returns the size of Csound's internal floating-point type in bytes.<br>
 [flooper2](../opcodes/flooper2.md) - Function-table-based crossfading looper.<br>
 [flooper](../opcodes/flooper.md) - Function-table-based crossfading looper.<br>
 [floor](../opcodes/floor.md) - Returns the largest integer not greater than *x*.<br>

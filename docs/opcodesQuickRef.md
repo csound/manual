@@ -4450,6 +4450,9 @@
 `SFiles[] = `[**`directory`**](opcodes/directory.md)`(SDirectory [, SExtention])`<br>
 
 
+`iBytes = `[**`floatsize`**](opcodes/floatsize.md)`()`<br>
+
+
 `kout[] = `[**`framebuffer`**](opcodes/framebuffer.md)`(ain, isize)`<br>
 `aout = framebuffer(kin, isize)`<br>
 

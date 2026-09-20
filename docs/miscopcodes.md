@@ -2,6 +2,7 @@
 
 Here is a list of opcodes that don't fall in any category:
 
+* [floatsize](opcodes/floatsize.md) - Returns the size of Csound's internal floating-point type in bytes.
 * [directory](opcodes/directory.md) - Reads a directory and outputs to a string array a list of file names.
 * [nchnlshw](opcodes/nchnls_hw.md) - Returns the number of audio channels in the underlying hardware.
 * [pwd](opcodes/pwd.md) - Asks the underlying operating system for the current directory name as a string.

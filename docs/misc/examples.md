@@ -1564,6 +1564,7 @@
 ### Miscellaneous
 [**directory-modern.csd**](../opcodes/directory.md#examples)<br>
 [**directory.csd**](../opcodes/directory.md#examples)<br>
+[**floatsize.csd**](../opcodes/floatsize.md#examples)<br>
 [**framebuffer.csd**](../opcodes/framebuffer.md#examples)<br>
 [**modmatrix.csd**](../opcodes/modmatrix.md#examples)<br>
 [**nchnlshw.csd**](../opcodes/nchnls_hw.md#examples)<br>
