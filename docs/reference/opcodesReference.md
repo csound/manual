@@ -182,7 +182,7 @@ cosine interpolation, including a release segment.<br>
 [cpstun](../opcodes/cpstun.md) - Returns micro-tuning values at k-rate.<br>
 [cpstuni](../opcodes/cpstuni.md) - Returns micro-tuning values at init-rate.<br>
 [cpsxpch](../opcodes/cpsxpch.md) - Converts a pitch-class value into cycles-per-second (Hz) for equal divisions of any interval.<br>
-[cpumeter](../opcodes/cpumeter.md) - Reports the usage of cpu either total or per core to monitor how close to max-out the processing is.<br>
+[cpumeter](../opcodes/cpumeter.md) - Reports system-wide CPU usage, overall or per logical CPU.<br>
 [cpuprc](../opcodes/cpuprc.md) - Control allocation of cpu resources on a per-instrument basis, to optimize realtime output.<br>
 [create](../opcodes/create.md) - Creates a new instrument definition, instrument instance, or opcode object.<br>
 [cross2](../opcodes/cross2.md) - Cross synthesis using FFT's.<br>
