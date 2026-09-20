@@ -4481,6 +4481,9 @@
 `tableshufflei itablenum)`<br>
 
 
+`Stype = `[**`typeof`**](opcodes/typeof.md)`(xarg)`<br>
+
+
 ### Miscellaneous:Testing
 [**`assert`**](opcodes/assert.md)`(condition)`<br>
 `assert_true(condition)`<br>

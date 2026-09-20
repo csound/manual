@@ -1102,6 +1102,7 @@ time-varying crossfade looping.<br>
 [turnoff](../opcodes/turnoff.md) - Enables an instrument to turn itself off or to turn an instance of another instrument off.<br>
 [turnon](../opcodes/turnon.md) - Activate an instrument for an indefinite time.<br>
 [tvconv](../opcodes/tvconv.md) - A time-varying convolution (FIR filter) opcode.<br>
+[typeof](../opcodes/typeof.md) - Returns the Csound type of a variable or expression as a string.<br>
 [undersample](../opcodes/undersample.md) - Sets a lower local sampling rate based on an undersampling factor.<br>
 [unirand](../opcodes/unirand.md) - Uniform distribution random number generator (positive values only).<br>
 [unschedule](../opcodes/unschedule.md) - Removes the first matching queued note event.<br>
