@@ -6,7 +6,8 @@ Opcodes that monitor and control real-time performance are:
 * [cpuprc](../opcodes/cpuprc.md)
 * [cpumeter](../opcodes/cpumeter.md)
 * [exitnow](../opcodes/exitnow.md)
+* [exitnowk](../opcodes/exitnowk.md)
 * [maxalloc](../opcodes/maxalloc.md)
 * [prealloc](../opcodes/prealloc.md)
 
-The running csound process can be terminated using [exitnow](../opcodes/exitnow.md).
+Use [exitnow](../opcodes/exitnow.md) to stop Csound at initialization, or [exitnowk](../opcodes/exitnowk.md) to stop it during performance.

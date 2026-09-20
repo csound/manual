@@ -2297,6 +2297,9 @@
 [**`exitnow`**](opcodes/exitnow.md)`([ivalue])`<br>
 
 
+[**`exitnowk`**](opcodes/exitnowk.md)`(kStatus)`<br>
+
+
 [**`maxalloc`**](opcodes/maxalloc.md)`(insnum, icount)`<br>
 `maxalloc(Sinsname, icount)`<br>
 

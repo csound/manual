@@ -273,6 +273,7 @@ transform.<br>
 [eventtype](../opcodes/eventtype.md) - Returns the event type for an instrument.<br>
 [exciter](../opcodes/exciter.md) - A non-linear filter system to excite the signal.<br>
 [exitnow](../opcodes/exitnow.md) - Exit Csound as fast as possible, with no cleaning up.<br>
+[exitnowk](../opcodes/exitnowk.md) - Stops the whole Csound performance at k-rate with an exit status.<br>
 [exp](../opcodes/exp.md) - Returns e raised to the xth power.<br>
 [expcurve](../opcodes/expcurve.md) - Generates a normalised exponential curve in range 0 to 1 of arbitrary steepness.<br>
 [expon](../opcodes/expon.md) - Trace an exponential curve between specified points.<br>

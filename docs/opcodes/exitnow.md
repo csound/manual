@@ -22,6 +22,8 @@ Initialisation
 
 Stops Csound on the _initialisation_ cycle, returning the result ivalue, which defaults to zero. Note that it is usual for this opcode to be alone in an instrument.
 
+For an exit controlled by a k-rate condition, use [exitnowk](exitnowk.md). It runs during performance and takes a required status argument.
+
 ## Examples
 
 Here is an example of the exitnow opcode. It uses the file [exitnow.csd](../examples/exitnow.csd).
@@ -32,4 +34,4 @@ Here is an example of the exitnow opcode. It uses the file [exitnow.csd](../exam
 
 ## See also
 
-[Real-time Performance Control](../control/realtime.md)
+[exitnowk](exitnowk.md), [Real-time Performance Control](../control/realtime.md)
