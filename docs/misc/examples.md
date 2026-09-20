@@ -419,6 +419,7 @@
 [**println.csd**](../opcodes/println.md#examples)<br>
 [**prints.csd**](../opcodes/prints.md#examples)<br>
 [**printsk.csd**](../opcodes/printsk.md#examples)<br>
+[**printtype.csd**](../opcodes/printtype.md#examples)<br>
 
 ### Signal I/O:Soundfile Queries
 [**filebit.csd**](../opcodes/filebit.md#examples)<br>

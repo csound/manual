@@ -744,6 +744,7 @@ numeric or string values.<br>
 [prealloc](../opcodes/prealloc.md) - Creates space for instruments but does not run them.<br>
 [prepiano](../opcodes/prepiano.md) - Creates a tone similar to a piano string prepared in a Cageian fashion.<br>
 [print](../opcodes/print.md) - Displays the values of init (i-rate) variables.<br>
+[print_type](../opcodes/print_type.md) - Prints the type of a variable or expression.<br>
 [printarray](../opcodes/printarray.md) - Print the contents of an array.<br>
 [printf](../opcodes/printf.md) - printf-style formatted output.<br>
 [printk2](../opcodes/printk2.md) - Prints a new value every time a control variable changes.<br>
@@ -753,6 +754,7 @@ numeric or string values.<br>
 [println](../opcodes/println.md) - Prints at k-rate using a printf() style syntax like [printks](../opcodes/printks.md), appends a new line.<br>
 [prints](../opcodes/prints.md) - Prints at init-time using a printf() style syntax.<br>
 [printsk](../opcodes/printsk.md) - Prints at k-rate using a printf() style syntax.<br>
+[printtype](../opcodes/printtype.md) - Prints the type of a variable or expression.<br>
 [product](../opcodes/product.md) - Multiplies any number of a-rate signals.<br>
 [product](../opcodes/productarray.md) - Calculates the product of an array.<br>
 [pset](../opcodes/pset.md) - Defines and initializes numeric arrays at orchestra load time.<br>
