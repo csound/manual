@@ -3909,6 +3909,9 @@
 
 
 ### Strings:Definition
+`Sargs[] = `[**`argv`**](opcodes/argv.md)`()`<br>
+
+
 `Sdst = `[**`strfromurl`**](opcodes/strfromurl.md)`(StringURL)`<br>
 
 

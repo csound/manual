@@ -57,6 +57,7 @@
 [areson](../opcodes/areson.md) - A notch filter whose transfer functions are the complements of the reson opcode.<br>
 [aresonk](../opcodes/aresonk.md) - A notch filter whose transfer functions are the complements of the reson opcode.<br>
 [arg](../opcodes/arg.md) - Returns the argument of a complex number.<br>
+[argv](../opcodes/argv.md) - Returns application arguments as a string array.<br>
 [array](../opcodes/array.md) - Converts an input into an array, optionally creating it.<br>
 [assert](../opcodes/assert.md) - Checks a condition when testing is enabled.<br>
 [assert_false](../opcodes/assert_false.md) - Checks that a condition is false when testing is enabled.<br>

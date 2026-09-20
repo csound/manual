@@ -1364,6 +1364,7 @@
 [**temposcal.csd**](../opcodes/temposcal.md#examples)<br>
 
 ### Strings:Definition
+[**argv.csd**](../opcodes/argv.md#examples)<br>
 [**strfromurl.csd**](../opcodes/strfromurl.md#examples)<br>
 [**strget.csd**](../opcodes/strget.md#examples)<br>
 [**strset.csd**](../opcodes/strset.md#examples)<br>

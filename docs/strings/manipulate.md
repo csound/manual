@@ -2,6 +2,7 @@
 
 These opcodes perform operations on string variables (note: most of the opcodes run at init time only, and have a version with a "k" suffix that runs at both init and performance time; exceptions to this rule include puts and strget):
 
+* [argv](../opcodes/argv.md) - Returns application arguments as a string array.
 * [evalstr](../opcodes/evalstr.md) - Evaluates a string containing Csound code, returning a value.
 * [return](../opcodes/return.md) - Returns a value from an instrument.
 * [strcpy](../opcodes/strcpy.md) and [strcpyk](../opcodes/strcpyk.md) - Assigns to a string variable.
