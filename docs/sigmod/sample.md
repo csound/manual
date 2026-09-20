@@ -12,6 +12,7 @@ The opcodes one may use to modify signals are:
 * [interp](../opcodes/interp.md)
 * [k(i)](../opcodes/opk.md)
 * [ntrpol](../opcodes/ntrpol.md)
+* [offsetsmps](../opcodes/offsetsmps.md)
 * [S](../opcodes/ops.md)
 * [samphold](../opcodes/samphold.md)
 * [upsamp](../opcodes/upsamp.md)
