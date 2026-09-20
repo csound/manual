@@ -8,3 +8,5 @@ The opcodes for conditional values are:
 * [<](../opcodes/lessthan.md)
 * [<=](../opcodes/lessequal.md)
 * [!=](../opcodes/notequal.md)
+
+* [typecheck](../opcodes/typecheck.md) compares the types of two arguments.

@@ -2095,6 +2095,9 @@
 `(a `[**`==`**](opcodes/equals.md)` b ? v1 : v2)`<br>
 
 
+`sameType:b = `[**`typecheck`**](opcodes/typecheck.md)`(xarg1, xarg2)`<br>
+
+
 ### Instrument Control:Compilation
 `ires = `[**`compilecsd`**](opcodes/compilecsd.md)`(Sfilename)`<br>
 

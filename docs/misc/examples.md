@@ -721,6 +721,7 @@
 [**lessthan.csd**](../opcodes/lessthan.md#examples)<br>
 [**lessequal.csd**](../opcodes/lessequal.md#examples)<br>
 [**equals.csd**](../opcodes/equals.md#examples)<br>
+[**typecheck.csd**](../opcodes/typecheck.md#examples)<br>
 
 ### Instrument Control:Compilation
 [**compilecsd-modern.csd**](../opcodes/compilecsd.md#examples)<br>
