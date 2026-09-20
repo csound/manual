@@ -3,7 +3,9 @@ id:nstrstr
 category:Instrument Control:Initialization and Reinitialization
 -->
 # nstrstr
-Returns the string of a named instr from its number or an empty string if no such association exists.
+Returns an instrument name from its number, or an empty string if no name matches.
+
+[instrstr](instrstr.md) is another name for this opcode in Csound 7.
 
 ## Syntax
 === "Modern"
@@ -24,7 +26,7 @@ _insno_ -- the instrument number of the named instrument.
 
 ### Performance
 
-_knsno_ -- the named instrument's number.
+_knsno_ -- the instrument number to look up on each control cycle. The i-rate form looks it up once at initialization.
 
 _Sname_ -- the named instrument's name.
 
@@ -44,6 +46,10 @@ The example will produce the following output:
 instrument name = john
 instrument number = 2
 ```
+
+## See also
+
+[instrstr](instrstr.md), [instrnum](instrnum.md), [str](str.md)
 
 ## Credits
 

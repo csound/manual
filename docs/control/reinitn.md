@@ -29,3 +29,5 @@ isustain = p3
 p3 = iattack + isustain + irelease
 ```
 > are valid.
+
+[delete](../opcodes/delete.md) cleans up objects at deinitialization. See the [object guide](../orch/instrument-and-opcode-objects.md) for instrument definitions, instances and opcode objects.

@@ -1278,6 +1278,9 @@
 [**`print`**](opcodes/print.md)`(iarg [, iarg1] [, iarg2] [...])`<br>
 
 
+[**`print_type`**](opcodes/print_type.md)`(xarg)`<br>
+
+
 [**`printf`**](opcodes/printf.md)`i(Sfmt, itrig, [iarg1[, iarg2[, ... ]]])`<br>
 `printf(Sfmt, ktrig, [xarg1[, xarg2[, ... ]]])`<br>
 
@@ -1301,6 +1304,10 @@
 
 
 [**`printsk`**](opcodes/printsk.md)`("string", [, xval1] [, xval2] [...])`<br>
+
+
+[**`printtype`**](opcodes/printtype.md)`(xarg)`<br>
+`print_type(xarg)`<br>
 
 
 ### Signal I/O:Soundfile Queries
@@ -1637,6 +1644,9 @@
 `kres = `[**`downsamp`**](opcodes/downsamp.md)`(asig [, iwlen])`<br>
 
 
+`kEarly = `[**`earlysmps`**](opcodes/earlysmps.md)`()`<br>
+
+
 `ares = `[**`fold`**](opcodes/fold.md)`(asig, kincr)`<br>
 
 
@@ -1658,6 +1668,9 @@
 `ares = `[**`ntrpol`**](opcodes/ntrpol.md)`(asig1, asig2, kpoint [, imin] [, imax])`<br>
 `ires = ntrpol(isig1, isig2, ipoint [, imin] [, imax])`<br>
 `kres = ntrpol(ksig1, ksig2, kpoint [, imin] [, imax])`<br>
+
+
+`kOffset = `[**`offsetsmps`**](opcodes/offsetsmps.md)`()`<br>
 
 
 `ares = `[**`samphold`**](opcodes/samphold.md)`(asig, agate [, ival] [, ivstor])`<br>
@@ -2095,6 +2108,9 @@
 `(a `[**`==`**](opcodes/equals.md)` b ? v1 : v2)`<br>
 
 
+`sameType:b = `[**`typecheck`**](opcodes/typecheck.md)`(xarg1, xarg2)`<br>
+
+
 ### Instrument Control:Compilation
 `ires = `[**`compilecsd`**](opcodes/compilecsd.md)`(Sfilename)`<br>
 
@@ -2119,6 +2135,8 @@
 [**`turnoff`**](opcodes/turnoff.md)`()`<br>
 `turnoff(inst)`<br>
 `turnoff(knst)`<br>
+`turnoff(voice)`<br>
+`turnoff(voice, kStop)`<br>
 
 
 [**`turnoff2`**](opcodes/turnoff2.md)`(kinsno, kmode, krelease)`<br>
@@ -2148,10 +2166,14 @@
 `iHandle = nstance("insname", iwhen, idur [, ip4] [, ip5] [...])`<br>
 
 
+`voice:Instr = `[**`play`**](opcodes/play.md)`(definition[, ip4, ip5, ...])`<br>
+
+
 [**`readscore`**](opcodes/readscore.md)`(Sin)`<br>
 
 
 [**`remove`**](opcodes/remove.md)`(insnum)`<br>
+`remove(definition)`<br>
 
 
 [**`schedkwhen`**](opcodes/schedkwhen.md)`(ktrigger, kmintim, kmaxnum, kinsnum, kwhen, kdur )`<br>
@@ -2167,6 +2189,8 @@
 [**`schedule`**](opcodes/schedule.md)`(insnum, iwhen, idur [, ip4] [, ip5] [...])`<br>
 `schedule("insname", iwhen, idur [, ip4] [, ip5] [...])`<br>
 `schedule(iPar[])`<br>
+`schedule(definition, iwhen, idur [, ip4, ip5, ...])`<br>
+`voice:Instr = schedule(definition, iwhen, idur [, ip4, ip5, ...])`<br>
 
 
 [**`schedulek`**](opcodes/schedulek.md)`(knsnum, kwhen, kdur [, kp4] [, kp5] [...])`<br>
@@ -2297,8 +2321,21 @@
 [**`exitnow`**](opcodes/exitnow.md)`([ivalue])`<br>
 
 
+`active:b = `[**`isactive`**](opcodes/isactive.md)`(voice)`<br>
+`active:B = isactive(voice)`<br>
+
+
+`releasing:b = `[**`isreleasing`**](opcodes/isreleasing.md)`(voice)`<br>
+`releasing:B = isreleasing(voice)`<br>
+`releasing:B = isreleasing()`<br>
+`kReleasing = isreleasing()`<br>
+
+
 [**`maxalloc`**](opcodes/maxalloc.md)`(insnum, icount)`<br>
 `maxalloc(Sinsname, icount)`<br>
+
+
+[**`pause`**](opcodes/pause.md)`(voice, kPause)`<br>
 
 
 `err:k = `[**`perf`**](opcodes/perf.md)`(ins:Instr[, p4:k, ...])`<br>
@@ -2329,8 +2366,21 @@
 
 `var:InstrDef = `[**`create`**](opcodes/create.md)`(code:S)`<br>
 `var:Instr = create(instr:InstrDef)`<br>
-`var:Opcode = create(opc:OpcodeDef[,overload:i]`<br>
+`var:Opcode = create(opc:OpcodeDef[,overload:i])`<br>
 `var:Opcode[] = create(opc:OpcodeDef,len:i[,overload:i])`<br>
+
+
+`definition:InstrDef = `[**`createinstr`**](opcodes/createinstr.md)`(Scode)`<br>
+
+
+[**`delete`**](opcodes/delete.md)`(instance)`<br>
+`delete(definition)`<br>
+`delete(opcode)`<br>
+`delete(opcodes)`<br>
+`delete(engine)`<br>
+
+
+`self:Instr = `[**`getinstance`**](opcodes/getinstance.md)`()`<br>
 
 
 `var:{a,k,i,S,OpcodeDef}[,...] = `[**`init`**](opcodes/init.md)`(arg:{i,S}[,...])`<br>
@@ -2339,7 +2389,16 @@
 `[var:*,... =] init(op:Opcode[,arg1:*,...])`<br>
 
 
+`iNumber = `[**`instrnum`**](opcodes/instrnum.md)`(Sname)`<br>
+`iNumber = instrnum(definition[, iOffset])`<br>
+
+
+`Sname = `[**`instrstr`**](opcodes/instrstr.md)`(iNumber)`<br>
+`Sname = instrstr(kNumber)`<br>
+
+
 `insno = `[**`nstrnum`**](opcodes/nstrnum.md)`("name")`<br>
+`insno = nstrnum(definition[, iOffset])`<br>
 
 
 `Sname = `[**`nstrstr`**](opcodes/nstrstr.md)`(insno)`<br>
@@ -2368,6 +2427,12 @@
 
 
 [**`rireturn`**](opcodes/rireturn.md)`()`<br>
+
+
+`iStatus = `[**`splice`**](opcodes/splice.md)`(voice, anchor, iMode)`<br>
+
+
+`Sname = `[**`str`**](opcodes/str.md)`(definition)`<br>
 
 
 `ir = `[**`tival`**](opcodes/tival.md)`()`<br>

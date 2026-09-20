@@ -419,6 +419,7 @@
 [**println.csd**](../opcodes/println.md#examples)<br>
 [**prints.csd**](../opcodes/prints.md#examples)<br>
 [**printsk.csd**](../opcodes/printsk.md#examples)<br>
+[**printtype.csd**](../opcodes/printtype.md#examples)<br>
 
 ### Signal I/O:Soundfile Queries
 [**filebit.csd**](../opcodes/filebit.md#examples)<br>
@@ -539,10 +540,12 @@
 [**denorm.csd**](../opcodes/denorm.md#examples)<br>
 [**diff.csd**](../opcodes/diff.md#examples)<br>
 [**downsamp.csd**](../opcodes/downsamp.md#examples)<br>
+[**earlysmps.csd**](../opcodes/earlysmps.md#examples)<br>
 [**fold.csd**](../opcodes/fold.md#examples)<br>
 [**integ.csd**](../opcodes/integ.md#examples)<br>
 [**interp.csd**](../opcodes/interp.md#examples)<br>
 [**ntrpol.csd**](../opcodes/ntrpol.md#examples)<br>
+[**offsetsmps.csd**](../opcodes/offsetsmps.md#examples)<br>
 [**samphold.csd**](../opcodes/samphold.md#examples)<br>
 [**upsamp.csd**](../opcodes/upsamp.md#examples)<br>
 [**vaget.csd**](../opcodes/vaget.md#examples)<br>
@@ -721,6 +724,7 @@
 [**lessthan.csd**](../opcodes/lessthan.md#examples)<br>
 [**lessequal.csd**](../opcodes/lessequal.md#examples)<br>
 [**equals.csd**](../opcodes/equals.md#examples)<br>
+[**typecheck.csd**](../opcodes/typecheck.md#examples)<br>
 
 ### Instrument Control:Compilation
 [**compilecsd-modern.csd**](../opcodes/compilecsd.md#examples)<br>
@@ -747,6 +751,7 @@
 [**event_i.csd**](../opcodes/event_i.md#examples)<br>
 [**mute.csd**](../opcodes/mute.md#examples)<br>
 [**nstance.csd**](../opcodes/nstance.md#examples)<br>
+[**instance-controls.csd**](../opcodes/play.md#examples)<br>
 [**readscore.csd**](../opcodes/readscore.md#examples)<br>
 [**schedkwhen.csd**](../opcodes/schedkwhen.md#examples)<br>
 [**schedkwhennamed.csd**](../opcodes/schedkwhennamed.md#examples)<br>
@@ -807,19 +812,25 @@
 [**cpumeter.csd**](../opcodes/cpumeter.md#examples)<br>
 [**cpuprc.csd**](../opcodes/cpuprc.md#examples)<br>
 [**exitnow.csd**](../opcodes/exitnow.md#examples)<br>
+[**instance-controls.csd**](../opcodes/isactive.md#examples)<br>
+[**isreleasing.csd**](../opcodes/isreleasing.md#examples)<br>
 [**maxalloc.csd**](../opcodes/maxalloc.md#examples)<br>
+[**instance-controls.csd**](../opcodes/pause.md#examples)<br>
 [**create.csd**](../opcodes/perf.md#examples)<br>
 [**prealloc.csd**](../opcodes/prealloc.md#examples)<br>
-[**create.csd**](../opcodes/setp.md#examples)<br>
+[**instance-controls.csd**](../opcodes/setp.md#examples)<br>
 
 ### Instrument Control:Initialization and Reinitialization
 [**reverb.csd**](../opcodes/plusbecomes.md#examples)<br>
 [**assign-modern.csd**](../opcodes/assign.md#examples)<br>
 [**assign.csd**](../opcodes/assign.md#examples)<br>
 [**create.csd**](../opcodes/create.md#examples)<br>
+[**delete.csd**](../opcodes/delete.md#examples)<br>
+[**instance-controls.csd**](../opcodes/getinstance.md#examples)<br>
 [**init.csd**](../opcodes/init.md#examples)<br>
 [**create.csd**](../opcodes/init.md#examples)<br>
 [**nstrnum_nstrstr.csd**](../opcodes/nstrnum.md#examples)<br>
+[**instrument-names.csd**](../opcodes/nstrnum.md#examples)<br>
 [**nstrnum_nstrstr.csd**](../opcodes/nstrstr.md#examples)<br>
 [**opcodeinfo.csd**](../opcodes/opcodeinfo.md#examples)<br>
 [**p.csd**](../opcodes/p.md#examples)<br>
@@ -831,6 +842,8 @@
 [**musical/Reinit_Giordani-modern.csd**](../opcodes/reinit.md#examples)<br>
 [**musical/Reinit_Giordani.csd**](../opcodes/reinit.md#examples)<br>
 [**reinit.csd**](../opcodes/rireturn.md#examples)<br>
+[**splice.csd**](../opcodes/splice.md#examples)<br>
+[**instrument-names.csd**](../opcodes/str.md#examples)<br>
 [**tival.csd**](../opcodes/tival.md#examples)<br>
 
 ### Instrument Control:Sensing and Control
