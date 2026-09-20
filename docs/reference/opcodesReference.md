@@ -1129,7 +1129,7 @@ time-varying crossfade looping.<br>
 [vclpf](../opcodes/vclpf.md) - Resonant 4pole linear lowpass filter.<br>
 [vco2](../opcodes/vco2.md) - Implementation of a band-limited oscillator using pre-calculated tables.<br>
 [vco2ft](../opcodes/vco2ft.md) - Returns a table number at k-time for a given oscillator frequency and wavform.<br>
-[vco2ift](../opcodes/vco2ift.md) - Returns a table number at i-time for a given oscillator frequency and wavform.<br>
+[vco2ift](../opcodes/vco2ift.md) - Returns a table number at i-time for a given oscillator frequency and waveform.<br>
 [vco2init](../opcodes/vco2init.md) - Calculates tables for use by vco2 opcode.<br>
 [vco](../opcodes/vco.md) - Implementation of a band limited, analog modeled oscillator.<br>
 [vcomb](../opcodes/vcomb.md) - Variably reverberates an input signal with a &#8220;colored&#8221; frequency response.<br>

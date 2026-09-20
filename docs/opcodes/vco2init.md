@@ -40,7 +40,9 @@ _iwave_ -- sum of the following values selecting which waveforms are to be calcu
 
 Alternatively, _iwave_ can be set to a negative integer that selects an user-defined waveform. This also requires the _isrcft_ parameter to be specified. [vco2](../opcodes/vco2.md) can access waveform number -1. However, other user-defined waveforms are usable only with [vco2ft](../opcodes/vco2ft.md) or [vco2ift](../opcodes/vco2ift.md).
 
-_ibasfn_ (optional, default=-1) -- ftable number from which the table set(s) can be accessed by opcodes other than _vco2_. This is required by user defined waveforms, with the exception of -1. If this value is less than 1, it is not possible to access the tables calculated by _vco2init_ as Csound function tables.
+_ibasfn_ (optional, default=-1) -- the first function-table number to allocate for the generated table set(s). The tables occupy consecutive numbers, starting at _ibasfn_ and ending just before the returned _ifn_. Reserve this range for the generated tables; do not overlap it with the source table or other tables you need to keep. For example, if _isrcft_ is table 2 and no later tables are in use, start at _ibasfn_=3.
+
+A positive _ibasfn_ exposes the generated tables to opcodes other than _vco2_, including [vco2ft](vco2ft.md) and [vco2ift](vco2ift.md). This is required for user-defined waveforms other than -1. If _ibasfn_ is less than 1, the generated tables cannot be accessed as ordinary Csound function tables.
 
 _ipmul_ (optional, default=1.05) -- multiplier value for number of harmonic partials. If one table has n partials, the next one will have n * _ipmul_ (at least n + 1). The allowed range for _ipmul_ is 1.01 to 2. Zero or negative values select the default (1.05).
 
