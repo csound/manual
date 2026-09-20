@@ -47,9 +47,7 @@ It is an error to have more inputs than outputs.
 The array form allocates space for a array object (of any number of
 dimensions).
 
-In the case of instrument instances, the opcode takes any pfields
-as parameters, and run an initialisation pass, returning any error
-codes (or zero in case of success).
+For an `Instr` instance, `init` runs its initialization pass and returns 0 on success or an error code. The optional numeric arguments supply p4, p5 and the following p-fields. It sets p2 to 0 and p3 to -1. This does not add the instance to Csound's performance list. Use [perf](perf.md) to perform it manually after initialization.
 
 For opcode objects, the code runs the initialisation routine (if it
 exists) defined for the opcode. The input arguments and outputs should match
@@ -98,6 +96,8 @@ instrument and opcode initialisation.
 
 
 ## See also
+
+[create](create.md), [perf](perf.md), [delete](delete.md), [Instrument definitions, instances and opcode objects](../orch/instrument-and-opcode-objects.md)
 
 [Initialization and Reinitialization](../control/reinitn.md)
 

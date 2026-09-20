@@ -22,7 +22,7 @@ Set the value of an instrument parameter.
 
 _ins_ -- instrument instance
 
-_num_ -- parameter number
+_num_ -- positive integer p-field number, such as 4 for p4 or 5 for p5
 
 _val_ -- parameter value
 
@@ -34,12 +34,16 @@ If the parameter is only used at i-time (e.g. p3 setting duration), then there w
 
 ## Examples
 
-``` csound-csd title="Example of setp." linenums="1"
---8<-- "examples/create.csd"
+
+The controller changes p5 during performance. The `poscil` inside `Tone` reads p5 for its frequency on each control cycle. It uses [instance-controls.csd](../examples/instance-controls.csd).
+
+``` csound-csd title="Change the pitch of an existing voice" linenums="1"
+--8<-- "examples/instance-controls.csd"
 ```
+
 
 ## See also
 
-[Initialization and Reinitialization](../control/reinitn.md)
+[play](play.md), [pause](pause.md), [Instrument definitions, instances and opcode objects](../orch/instrument-and-opcode-objects.md)
 
 

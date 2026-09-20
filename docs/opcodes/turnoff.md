@@ -11,6 +11,8 @@ Enables an instrument to turn itself off or to turn an instance of another instr
     turnoff()
     turnoff(inst)
     turnoff(knst)
+    turnoff(voice)
+    turnoff(voice, kStop)
     ```
 
 === "Classic"
@@ -18,6 +20,8 @@ Enables an instrument to turn itself off or to turn an instance of another instr
     turnoff
     turnoff inst
     turnoff knst
+    turnoff voice
+    turnoff voice, kStop
     ```
 
 ### Initialization
@@ -30,6 +34,14 @@ _turnoff_ -- with no parameters this p-time statement enables an instrument to t
 
 _kinst_ -- when used with an k-time parameter, this is the instance handle of an instrument to be turned off (obtained from the nstance opcode).
 
+### Instrument references in Csound 7
+
+`voice` is an `Instr` reference, obtained from [play](play.md), [getinstance](getinstance.md), or the instance-returning form of [schedule](schedule.md). Use the reference only while its instance is available.
+
+`turnoff(voice)` requests turn-off at initialization. `turnoff(voice, kStop)` checks the trigger at performance time. Use 0 to leave the instance running and 1 to request turn-off. Any release extension still applies.
+
+This affects only the referenced instance. It does not remove its `InstrDef`. Use [delete](delete.md) for cleanup of manually owned objects when the containing instrument ends.
+
 ## Examples
 
 The following example uses the turnoff opcode. It will cause a note to terminate when a control signal passes a certain threshold (here the Nyquist frequency). It uses the file [turnoff.csd](../examples/turnoff.csd).
@@ -40,4 +52,4 @@ The following example uses the turnoff opcode. It will cause a note to terminate
 
 ## See also
 
-[Duration Control Statements](../control/durctl.md)
+[play](play.md), [isreleasing](isreleasing.md), [delete](delete.md), [Duration Control Statements](../control/durctl.md)

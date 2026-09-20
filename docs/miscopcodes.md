@@ -12,6 +12,8 @@ Here is a list of opcodes that don't fall in any category:
 * [readscratch](opcodes/readscratch.md) - Returns a value stored in the instance of an instrument.
 * [writescratch](opcodes/writescratch.md) - Writes a value into the scratchpad of the instance of an instrument.
 
+* [typeof](opcodes/typeof.md) - Returns the Csound type of a variable or expression as a string.
+
 ## Testing
 
 [Testing opcodes](misc/testing.md) check conditions when `--run-unit-tests` is enabled. The [assert family](opcodes/assert.md) can stay in a composition with checks disabled during normal playback.

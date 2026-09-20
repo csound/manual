@@ -18,7 +18,7 @@ Execute a performance pass on an instrument or opcode.
 === "Classic"
     ``` csound-orc
     kerr perf ins:Instr[, kp4, ...]
-    [xvar,...] init op:Opcode[,arg1:*,...]
+    [xvar,...] perf op:Opcode[,arg1:*,...]
     ```
 
 ### Performance
@@ -31,8 +31,13 @@ _arg1, ..._ -- opcode arguments
 
 _var,..._ -- opcode outputs
 
-These three versions of perf execute a performance pass of a complete instrument or a single opcode.
-Some opcodes and all instruments are required to be initialised first (see [init](../opcodes/init.md)).
+These forms execute one performance pass of an instrument instance or opcode object.
+
+For an `Instr` made with [create](create.md), call [init](init.md) before `perf` so its initialization takes place at a known point. If the instance has not been initialized, `perf` attempts to initialize it on its first call using the same p-field arguments.
+
+Do not call `perf` on an instance that Csound already performs through `play`, `schedule` or `splice`. That would perform it twice. A paused instance skips its performance code. Keep the instance in a compatible performance context, with the same sample rate as its caller.
+
+Initialize an opcode object before calling `perf` if that opcode has an initialization routine.
 
 Optionally, parameters(pfields) are passed to an instrument `perf()` and are picked up at perf-time. They are normally
 k-sig variables but can also be a-sigs in which case the vector is truncated to the first element. 
@@ -50,6 +55,6 @@ instrument and opcode objects,
 
 ## See also
 
-[Initialization and Reinitialization](../control/reinitn.md)
+[create](create.md), [init](init.md), [pause](pause.md), [delete](delete.md), [Instrument definitions, instances and opcode objects](../orch/instrument-and-opcode-objects.md)
 
 
