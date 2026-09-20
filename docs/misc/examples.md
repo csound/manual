@@ -1588,6 +1588,7 @@
 [**system-modern.csd**](../opcodes/system.md#examples)<br>
 [**system.csd**](../opcodes/system.md#examples)<br>
 [**tableshuffle.csd**](../opcodes/tableshuffle.md#examples)<br>
+[**typeof.csd**](../opcodes/typeof.md#examples)<br>
 
 ### Miscellaneous:Testing
 [**assert.csd**](../opcodes/assert.md#examples)<br>
