@@ -540,6 +540,7 @@
 [**denorm.csd**](../opcodes/denorm.md#examples)<br>
 [**diff.csd**](../opcodes/diff.md#examples)<br>
 [**downsamp.csd**](../opcodes/downsamp.md#examples)<br>
+[**earlysmps.csd**](../opcodes/earlysmps.md#examples)<br>
 [**fold.csd**](../opcodes/fold.md#examples)<br>
 [**integ.csd**](../opcodes/integ.md#examples)<br>
 [**interp.csd**](../opcodes/interp.md#examples)<br>

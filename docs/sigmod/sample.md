@@ -17,3 +17,5 @@ The opcodes one may use to modify signals are:
 * [upsamp](../opcodes/upsamp.md)
 * [vaget](../opcodes/vaget.md)
 * [vaset](../opcodes/vaset.md)
+
+[earlysmps](../opcodes/earlysmps.md) reports inactive samples at the end of a control block when using sample-accurate timing.

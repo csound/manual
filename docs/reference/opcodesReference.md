@@ -256,6 +256,7 @@ transform.<br>
 [duserrnd](../opcodes/duserrnd.md) - Discrete USER-defined-distribution RaNDom generator.<br>
 [dust2](../opcodes/dust2.md) - Generates random impulses from -1 to 1.<br>
 [dust](../opcodes/dust.md) - Generates random impulses from 0 to 1.<br>
+[earlysmps](../opcodes/earlysmps.md) - Returns the number of inactive samples at the end of the current control block.<br>
 [elapsedcycles](../opcodes/elapsedcycles.md) - Read absolute time, in k-rate cycles, since the start of the performance.<br>
 [elapsedtime](../opcodes/elapsedtime.md) - Read absolute time, in seconds, since the start of the performance.<br>
 [else](../opcodes/else.md) - Executes a block of code when an "if.<br>
