@@ -54,6 +54,8 @@ Here is an example of the pvsftw opcode. It uses the file [pvsftw.csd](../exampl
 
 ## See also
 
+[pvsenvftw](pvsenvftw.md) writes a smoothed spectral envelope instead of the individual bin amplitudes.
+
 [Tools for Real-time Spectral Processing (pvs opcodes)](../spectral/realtime.md)
 
 ## Credits

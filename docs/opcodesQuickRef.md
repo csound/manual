@@ -3555,9 +3555,13 @@
 [**`mclock`**](opcodes/mclock.md)`(ifreq [, iport])`<br>
 
 
-`kcontinue = `[**`midicontinue`**](opcodes/midicontinue.md)`()`<br>
-`kpulse = `[**`midiclockin`**](opcodes/midiclockin.md)`()`<br>
 `kfreq = `[**`midiclockfreq`**](opcodes/midiclockfreq.md)`()`<br>
+
+
+`kpulse = `[**`midiclockin`**](opcodes/midiclockin.md)`()`<br>
+
+
+`kcontinue = `[**`midicontinue`**](opcodes/midicontinue.md)`()`<br>
 
 
 [**`mrtmsg`**](opcodes/mrtmsg.md)`(imsgtype [, iport])`<br>
@@ -3853,6 +3857,9 @@
 
 
 [**`pvsdisp`**](opcodes/pvsdisp.md)`(fsig [, ibins, iwtflg])`<br>
+
+
+`kupdate = `[**`pvsenvftw`**](opcodes/pvsenvftw.md)`(fsrc, ktable [, kmethod [, kgain [, kcoefs]]])`<br>
 
 
 `fsig = `[**`pvsfilter`**](opcodes/pvsfilter.md)`(fsigin, fsigfil, kdepth [, igain])`<br>
