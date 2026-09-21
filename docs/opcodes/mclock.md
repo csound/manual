@@ -36,6 +36,8 @@ Here is an example of the mclock opcode. It uses the file [mclock.csd](../exampl
 
 ## See Also
 
+[midiclockin](midiclockin.md) reports incoming MIDI clock pulses.
+
 [mrtmsg](../opcodes/mrtmsg.md)
 
 [System Realtime Messages](../midi/realtime.md)

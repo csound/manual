@@ -540,6 +540,7 @@ numeric or string values.<br>
 [midic7](../opcodes/midic7.md) - Allows a floating-point 7-bit MIDI signal scaled with a minimum and a maximum range.<br>
 [midichannelaftertouch](../opcodes/midichannelaftertouch.md) - Gets a MIDI channel's aftertouch value.<br>
 [midichn](../opcodes/midichn.md) - Returns the MIDI channel number (1 - 16) from which the note was activated.<br>
+[midiclockin](../opcodes/midiclockin.md) - Reports incoming MIDI Timing Clock pulses at control rate.<br>
 [midicontrolchange](../opcodes/midicontrolchange.md) - Gets a MIDI control change value.<br>
 [midictrl](../opcodes/midictrl.md) - Get the current value (0-127) of a specified MIDI controller.<br>
 [mididefault](../opcodes/mididefault.md) - Changes values, depending on MIDI activation.<br>
