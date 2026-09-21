@@ -1040,6 +1040,7 @@ time-varying crossfade looping.<br>
 [tabi](../opcodes/tab_i.md) - Fast table opcodes.<br>
 [tabifd](../opcodes/tabifd.md) - Instantaneous Frequency Distribution, magnitude and phase analysis.<br>
 [table3](../opcodes/table3.md) - Accesses table values by direct indexing with cubic interpolation.<br>
+[table3kt](../opcodes/table3kt.md) - Reads a function table with cubic interpolation and a table number that can change at control rate.<br>
 [table](../opcodes/table.md) - Accesses table values by direct indexing.<br>
 [tablecopy](../opcodes/tablecopy.md) - Simple, fast table copy opcode.<br>
 [tablefilter](../opcodes/tablefilter.md) - Filters a source table and writes result into a destination table.<br>

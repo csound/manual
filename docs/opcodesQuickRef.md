@@ -2788,6 +2788,10 @@
 
 
 ### Table Control:Dynamic Selection
+`ares = `[**`table3kt`**](opcodes/table3kt.md)`(andx, kfn [, ixmode] [, ixoff] [, iwrap])`<br>
+`kres = table3kt(kndx, kfn [, ixmode] [, ixoff] [, iwrap])`<br>
+
+
 `ares = `[**`tableikt`**](opcodes/tableikt.md)`(xndx, kfn [, ixmode] [, ixoff] [, iwrap])`<br>
 `kres = tableikt(kndx, kfn [, ixmode] [, ixoff] [, iwrap])`<br>
 
