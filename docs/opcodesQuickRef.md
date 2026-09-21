@@ -3501,6 +3501,9 @@
 [**`mclock`**](opcodes/mclock.md)`(ifreq [, iport])`<br>
 
 
+`kcontinue = `[**`midicontinue`**](opcodes/midicontinue.md)`()`<br>
+
+
 [**`mrtmsg`**](opcodes/mrtmsg.md)`(imsgtype [, iport])`<br>
 
 
