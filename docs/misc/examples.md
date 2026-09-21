@@ -1177,6 +1177,7 @@
 [**pgmassign.csd**](../opcodes/pgmassign.md#examples)<br>
 [**pgmassign_ignore.csd**](../opcodes/pgmassign.md#examples)<br>
 [**pgmassign_advanced.csd**](../opcodes/pgmassign.md#examples)<br>
+[**pgmchn.csd**](../opcodes/pgmchn.md#examples)<br>
 [**polyaft.csd**](../opcodes/polyaft.md#examples)<br>
 [**veloc.csd**](../opcodes/veloc.md#examples)<br>
 
@@ -1243,9 +1244,9 @@
 
 ### Real-time MIDI:System Realtime
 [**mclock.csd**](../opcodes/mclock.md#examples)<br>
-[**midicontinue.csd**](../opcodes/midicontinue.md#examples)<br>
-[**midiclockin.csd**](../opcodes/midiclockin.md#examples)<br>
 [**midiclockfreq.csd**](../opcodes/midiclockfreq.md#examples)<br>
+[**midiclockin.csd**](../opcodes/midiclockin.md#examples)<br>
+[**midicontinue.csd**](../opcodes/midicontinue.md#examples)<br>
 
 ### Real-time MIDI:Slider Banks
 

@@ -547,9 +547,9 @@ numeric or string values.<br>
 [midic7](../opcodes/midic7.md) - Allows a floating-point 7-bit MIDI signal scaled with a minimum and a maximum range.<br>
 [midichannelaftertouch](../opcodes/midichannelaftertouch.md) - Gets a MIDI channel's aftertouch value.<br>
 [midichn](../opcodes/midichn.md) - Returns the MIDI channel number (1 - 16) from which the note was activated.<br>
-[midicontinue](../opcodes/midicontinue.md) - Intended to report incoming MIDI Continue messages at control rate.<br>
-[midiclockin](../opcodes/midiclockin.md) - Reports incoming MIDI Timing Clock pulses at control rate.<br>
 [midiclockfreq](../opcodes/midiclockfreq.md) - Measures the frequency of incoming MIDI Timing Clock messages in Hz.<br>
+[midiclockin](../opcodes/midiclockin.md) - Reports incoming MIDI Timing Clock pulses at control rate.<br>
+[midicontinue](../opcodes/midicontinue.md) - Intended to report incoming MIDI Continue messages at control rate.<br>
 [midicontrolchange](../opcodes/midicontrolchange.md) - Gets a MIDI control change value.<br>
 [midictrl](../opcodes/midictrl.md) - Get the current value (0-127) of a specified MIDI controller.<br>
 [mididefault](../opcodes/mididefault.md) - Changes values, depending on MIDI activation.<br>
@@ -738,6 +738,7 @@ numeric or string values.<br>
 [peak](../opcodes/peak.md) - Maintains the output equal to the highest absolute value received.<br>
 [perf](../opcodes/perf.md) - Execute a performance pass on an instrument or opcode.<br>
 [pgmassign](../opcodes/pgmassign.md) - Assigns an instrument number to a specified MIDI program.<br>
+[pgmchn](../opcodes/pgmchn.md) - Reads MIDI Program Change messages and returns the program number and channel.<br>
 [phaser1](../opcodes/phaser1.md) - First-order allpass filters arranged in a series.<br>
 [phaser2](../opcodes/phaser2.md) - Second-order allpass filters arranged in a series.<br>
 [phasor](../opcodes/phasor.md) - Produce a normalized moving phase value.<br>
