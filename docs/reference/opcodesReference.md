@@ -380,6 +380,7 @@ numeric or string values.<br>
 [getcol](../opcodes/getcol.md) - Gets a given column from a 2-dimensional array as a vector.<br>
 [getftargs](../opcodes/getftargs.md) - Fill a string variable with the arguments used to create a function table at k-rate.<br>
 [getinstance](../opcodes/getinstance.md) - Returns a reference to the current instrument instance.<br>
+[getp](../opcodes/getp.md) - Reads one output from an opcode object.<br>
 [getrow](../opcodes/getrow.md) - Gets a given row from a 2-dimensional array as a vector.<br>
 [getseed](../opcodes/getseed.md) - Reads the global seed value.<br>
 [gogobel](../opcodes/gogobel.md) - Audio output is a tone related to the striking of a cow bell or similar.<br>

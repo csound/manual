@@ -2324,6 +2324,9 @@
 [**`exitnowk`**](opcodes/exitnowk.md)`(kStatus)`<br>
 
 
+`xvalue = `[**`getp`**](opcodes/getp.md)`(object, kindex)`<br>
+
+
 `active:b = `[**`isactive`**](opcodes/isactive.md)`(voice)`<br>
 `active:B = isactive(voice)`<br>
 
