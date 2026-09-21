@@ -125,7 +125,7 @@ Keep one clear owner for each object and arrange its cleanup there. Copying a re
 
 Delete manually managed instances before deleting a definition they use. A shared named instrument definition normally stays available for the whole piece. For a temporary definition, let all its notes finish before removing it, as in the first example.
 
-`delete` also accepts a `Csound` object, which holds a separate Csound engine. The [delete reference](../opcodes/delete.md) covers that form and the immediate `remove` and `destroy` operations.
+`delete` also accepts a `Csound` object, which holds a separate Csound engine. Use [destroy](../opcodes/destroy.md) to release that engine during initialization, or [delete](../opcodes/delete.md) to release it when the containing instrument ends.
 
 ## See also
 
