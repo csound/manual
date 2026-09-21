@@ -1243,9 +1243,9 @@
 
 ### Real-time MIDI:System Realtime
 [**mclock.csd**](../opcodes/mclock.md#examples)<br>
-[**midicontinue.csd**](../opcodes/midicontinue.md#examples)<br>
-[**midiclockin.csd**](../opcodes/midiclockin.md#examples)<br>
 [**midiclockfreq.csd**](../opcodes/midiclockfreq.md#examples)<br>
+[**midiclockin.csd**](../opcodes/midiclockin.md#examples)<br>
+[**midicontinue.csd**](../opcodes/midicontinue.md#examples)<br>
 
 ### Real-time MIDI:Slider Banks
 
@@ -1284,6 +1284,7 @@
 [**lpcanal-2.csd**](../opcodes/lpcanal.md#examples)<br>
 [**lpcfilter.csd**](../opcodes/lpcfilter.md#examples)<br>
 [**lpcfilter-2.csd**](../opcodes/lpcfilter.md#examples)<br>
+[**lpform.csd**](../opcodes/lpform.md#examples)<br>
 [**lpfreson.csd**](../opcodes/lpfreson.md#examples)<br>
 [**lpread.csd**](../opcodes/lpread.md#examples)<br>
 [**lpreson.csd**](../opcodes/lpreson.md#examples)<br>

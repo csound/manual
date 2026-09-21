@@ -2,6 +2,7 @@
 
 The linear predictive coding resynthesis opcodes are:
 
+* [lpform](../opcodes/lpform.md)
 * [lpfreson](../opcodes/lpfreson.md)
 * [lpinterp](../opcodes/lpinterp.md)
 * [lpread](../opcodes/lpread.md)

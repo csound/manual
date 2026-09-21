@@ -3555,9 +3555,13 @@
 [**`mclock`**](opcodes/mclock.md)`(ifreq [, iport])`<br>
 
 
-`kcontinue = `[**`midicontinue`**](opcodes/midicontinue.md)`()`<br>
-`kpulse = `[**`midiclockin`**](opcodes/midiclockin.md)`()`<br>
 `kfreq = `[**`midiclockfreq`**](opcodes/midiclockfreq.md)`()`<br>
+
+
+`kpulse = `[**`midiclockin`**](opcodes/midiclockin.md)`()`<br>
+
+
+`kcontinue = `[**`midicontinue`**](opcodes/midicontinue.md)`()`<br>
 
 
 [**`mrtmsg`**](opcodes/mrtmsg.md)`(imsgtype [, iport])`<br>
@@ -3755,6 +3759,9 @@
 
 `ares = `[**`lpcfilter`**](opcodes/lpcfilter.md)`(asig, asrc, kflg, kprd, isiz, iord [, iwin])`<br>
 `ares = lpcfilter(asig, koff, kflg, ifn, isiz, iord [, iwin])`<br>
+
+
+`kfrequency, kbandwidth = `[**`lpform`**](opcodes/lpform.md)`(kformant)`<br>
 
 
 `ares = `[**`lpfreson`**](opcodes/lpfreson.md)`(asig, kfrqratio)`<br>
