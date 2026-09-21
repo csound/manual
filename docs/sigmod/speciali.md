@@ -21,5 +21,6 @@
 * [hilbert2](../opcodes/hilbert2.md)
 * [mode](../opcodes/mode.md)
 * [mvmfilter](../opcodes/mvmfilter.md)
+* [nlalp](../opcodes/nlalp.md)
 * [nlfilt](../opcodes/nlfilt.md)
 * [zfilter2](../opcodes/zfilter2.md)

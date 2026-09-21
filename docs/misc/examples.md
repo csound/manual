@@ -678,6 +678,7 @@
 [**hilbert_barberpole.csd**](../opcodes/hilbert.md#examples)<br>
 [**hilbert2.csd**](../opcodes/hilbert2.md#examples)<br>
 [**mvmfilter.csd**](../opcodes/mvmfilter.md#examples)<br>
+[**nlalp.csd**](../opcodes/nlalp.md#examples)<br>
 [**nlfilt.csd**](../opcodes/nlfilt.md#examples)<br>
 [**nlfilt2.csd**](../opcodes/nlfilt2.md#examples)<br>
 [**pareq.csd**](../opcodes/pareq.md#examples)<br>
@@ -1243,9 +1244,9 @@
 
 ### Real-time MIDI:System Realtime
 [**mclock.csd**](../opcodes/mclock.md#examples)<br>
-[**midicontinue.csd**](../opcodes/midicontinue.md#examples)<br>
-[**midiclockin.csd**](../opcodes/midiclockin.md#examples)<br>
 [**midiclockfreq.csd**](../opcodes/midiclockfreq.md#examples)<br>
+[**midiclockin.csd**](../opcodes/midiclockin.md#examples)<br>
+[**midicontinue.csd**](../opcodes/midicontinue.md#examples)<br>
 
 ### Real-time MIDI:Slider Banks
 

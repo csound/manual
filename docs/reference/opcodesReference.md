@@ -547,9 +547,9 @@ numeric or string values.<br>
 [midic7](../opcodes/midic7.md) - Allows a floating-point 7-bit MIDI signal scaled with a minimum and a maximum range.<br>
 [midichannelaftertouch](../opcodes/midichannelaftertouch.md) - Gets a MIDI channel's aftertouch value.<br>
 [midichn](../opcodes/midichn.md) - Returns the MIDI channel number (1 - 16) from which the note was activated.<br>
-[midicontinue](../opcodes/midicontinue.md) - Intended to report incoming MIDI Continue messages at control rate.<br>
-[midiclockin](../opcodes/midiclockin.md) - Reports incoming MIDI Timing Clock pulses at control rate.<br>
 [midiclockfreq](../opcodes/midiclockfreq.md) - Measures the frequency of incoming MIDI Timing Clock messages in Hz.<br>
+[midiclockin](../opcodes/midiclockin.md) - Reports incoming MIDI Timing Clock pulses at control rate.<br>
+[midicontinue](../opcodes/midicontinue.md) - Intended to report incoming MIDI Continue messages at control rate.<br>
 [midicontrolchange](../opcodes/midicontrolchange.md) - Gets a MIDI control change value.<br>
 [midictrl](../opcodes/midictrl.md) - Get the current value (0-127) of a specified MIDI controller.<br>
 [mididefault](../opcodes/mididefault.md) - Changes values, depending on MIDI activation.<br>
@@ -624,6 +624,7 @@ numeric or string values.<br>
 [nchnls_i](../opcodes/nchnls_i.md) - Sets the number of channels of audio input.<br>
 [nchnlshw](../opcodes/nchnls_hw.md) - Returns the number of audio channels in the underlying hardware.<br>
 [nestedap](../opcodes/nestedap.md) - Three different nested all-pass filters, useful for implementing reverbs.<br>
+[nlalp](../opcodes/nlalp.md) - Filters an audio signal with a nonlinear first-order all-pass structure.<br>
 [nlfilt2](../opcodes/nlfilt2.md) - A filter with a non-linear effect and blowup protection.<br>
 [nlfilt](../opcodes/nlfilt.md) - A filter with a non-linear effect.<br>
 [noise](../opcodes/noise.md) - A white noise generator with an IIR lowpass filter.<br>
