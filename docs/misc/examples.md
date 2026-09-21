@@ -950,6 +950,8 @@
 [**ftgen.csd**](../opcodes/ftgen.md#examples)<br>
 [**ftgen-2.csd**](../opcodes/ftgen.md#examples)<br>
 [**ftgentmp.csd**](../opcodes/ftgentmp.md#examples)<br>
+[**ftresize.csd**](../opcodes/ftresize.md#examples)<br>
+[**ftresize.csd**](../opcodes/ftresizei.md#examples)<br>
 [**getftargs.csd**](../opcodes/getftargs.md#examples)<br>
 
 ### Table Control:Table Queries
