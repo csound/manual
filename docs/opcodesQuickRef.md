@@ -3555,6 +3555,9 @@
 `kfreq = `[**`midiclockfreq`**](opcodes/midiclockfreq.md)`()`<br>
 
 
+`kstart = `[**`midistart`**](opcodes/midistart.md)`()`<br>
+
+
 [**`mrtmsg`**](opcodes/mrtmsg.md)`(imsgtype [, iport])`<br>
 
 

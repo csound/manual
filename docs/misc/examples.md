@@ -1243,6 +1243,7 @@
 ### Real-time MIDI:System Realtime
 [**mclock.csd**](../opcodes/mclock.md#examples)<br>
 [**midiclockfreq.csd**](../opcodes/midiclockfreq.md#examples)<br>
+[**midistart.csd**](../opcodes/midistart.md#examples)<br>
 
 ### Real-time MIDI:Slider Banks
 
