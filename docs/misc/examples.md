@@ -691,6 +691,7 @@
 ### Signal Modifiers:Waveshaping
 [**chebyshevpoly-modern.csd**](../opcodes/chebyshevpoly.md#examples)<br>
 [**chebyshevpoly.csd**](../opcodes/chebyshevpoly.md#examples)<br>
+[**chebyshevpoly2.csd**](../opcodes/chebyshevpoly2.md#examples)<br>
 [**pdclip.csd**](../opcodes/pdclip.md#examples)<br>
 [**pdhalf.csd**](../opcodes/pdhalf.md#examples)<br>
 [**pdhalfy.csd**](../opcodes/pdhalfy.md#examples)<br>
@@ -1243,9 +1244,9 @@
 
 ### Real-time MIDI:System Realtime
 [**mclock.csd**](../opcodes/mclock.md#examples)<br>
-[**midicontinue.csd**](../opcodes/midicontinue.md#examples)<br>
-[**midiclockin.csd**](../opcodes/midiclockin.md#examples)<br>
 [**midiclockfreq.csd**](../opcodes/midiclockfreq.md#examples)<br>
+[**midiclockin.csd**](../opcodes/midiclockin.md#examples)<br>
+[**midicontinue.csd**](../opcodes/midicontinue.md#examples)<br>
 
 ### Real-time MIDI:Slider Banks
 

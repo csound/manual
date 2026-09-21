@@ -126,6 +126,7 @@
 [changed](../opcodes/changed.md) - k-rate signal change detector.<br>
 [chani](../opcodes/chani.md) - Reads data from a channel of the inward software bus.<br>
 [chano](../opcodes/chano.md) - Send data to a channel of the outward software bus.<br>
+[chebyshevpoly2](../opcodes/chebyshevpoly2.md) - Evaluates a weighted sum of Chebyshev polynomials directly for each audio sample.<br>
 [chebyshevpoly](../opcodes/chebyshevpoly.md) - Efficiently evaluates the sum of Chebyshev polynomials of arbitrary order.<br>
 [checkbox](../opcodes/checkbox.md) - Sense on-screen controls.<br>
 [chn](../opcodes/chn.md) - Declare a channel of the named software bus.<br>
@@ -547,9 +548,9 @@ numeric or string values.<br>
 [midic7](../opcodes/midic7.md) - Allows a floating-point 7-bit MIDI signal scaled with a minimum and a maximum range.<br>
 [midichannelaftertouch](../opcodes/midichannelaftertouch.md) - Gets a MIDI channel's aftertouch value.<br>
 [midichn](../opcodes/midichn.md) - Returns the MIDI channel number (1 - 16) from which the note was activated.<br>
-[midicontinue](../opcodes/midicontinue.md) - Intended to report incoming MIDI Continue messages at control rate.<br>
-[midiclockin](../opcodes/midiclockin.md) - Reports incoming MIDI Timing Clock pulses at control rate.<br>
 [midiclockfreq](../opcodes/midiclockfreq.md) - Measures the frequency of incoming MIDI Timing Clock messages in Hz.<br>
+[midiclockin](../opcodes/midiclockin.md) - Reports incoming MIDI Timing Clock pulses at control rate.<br>
+[midicontinue](../opcodes/midicontinue.md) - Intended to report incoming MIDI Continue messages at control rate.<br>
 [midicontrolchange](../opcodes/midicontrolchange.md) - Gets a MIDI control change value.<br>
 [midictrl](../opcodes/midictrl.md) - Get the current value (0-127) of a specified MIDI controller.<br>
 [mididefault](../opcodes/mididefault.md) - Changes values, depending on MIDI activation.<br>
