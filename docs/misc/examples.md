@@ -1158,6 +1158,7 @@
 [**midic21.csd**](../opcodes/midic21.md#examples)<br>
 [**midic7.csd**](../opcodes/midic7.md#examples)<br>
 [**midictrl.csd**](../opcodes/midictrl.md#examples)<br>
+[**midipgm.csd**](../opcodes/midipgm.md#examples)<br>
 [**notnum.csd**](../opcodes/notnum.md#examples)<br>
 [**pchbend.csd**](../opcodes/pchbend.md#examples)<br>
 [**pgmassign.csd**](../opcodes/pgmassign.md#examples)<br>

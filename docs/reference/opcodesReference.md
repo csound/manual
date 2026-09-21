@@ -565,6 +565,7 @@ numeric or string values.<br>
 [midion](../opcodes/midion.md) - Generates MIDI note messages at k-rate.<br>
 [midiout](../opcodes/midiout.md) - Sends a generic MIDI message to the MIDI OUT port.<br>
 [midiout_i](../opcodes/midiout_i.md) - Sends a generic MIDI message to the MIDI OUT port.<br>
+[midipgm](../opcodes/midipgm.md) - Reads the last program number received on a MIDI channel.<br>
 [midipitchbend](../opcodes/midipitchbend.md) - Gets a MIDI pitchbend value.<br>
 [midipolyaftertouch](../opcodes/midipolyaftertouch.md) - Gets a MIDI polyphonic aftertouch value.<br>
 [midiprogramchange](../opcodes/midiprogramchange.md) - Gets a MIDI program change value.<br>

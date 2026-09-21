@@ -3321,6 +3321,9 @@
 `kval = midictrl(inum [, imin] [, imax])`<br>
 
 
+`iprogram = `[**`midipgm`**](opcodes/midipgm.md)`([ichannel])`<br>
+
+
 `ival = `[**`notnum`**](opcodes/notnum.md)`()`<br>
 
 
