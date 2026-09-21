@@ -1243,9 +1243,9 @@
 
 ### Real-time MIDI:System Realtime
 [**mclock.csd**](../opcodes/mclock.md#examples)<br>
-[**midicontinue.csd**](../opcodes/midicontinue.md#examples)<br>
-[**midiclockin.csd**](../opcodes/midiclockin.md#examples)<br>
 [**midiclockfreq.csd**](../opcodes/midiclockfreq.md#examples)<br>
+[**midiclockin.csd**](../opcodes/midiclockin.md#examples)<br>
+[**midicontinue.csd**](../opcodes/midicontinue.md#examples)<br>
 
 ### Real-time MIDI:Slider Banks
 
@@ -1325,6 +1325,7 @@
 [**pvsftw.csd**](../opcodes/pvsftw.md#examples)<br>
 [**pvsfwrite.csd**](../opcodes/pvsfwrite.md#examples)<br>
 [**pvsgain.csd**](../opcodes/pvsgain.md#examples)<br>
+[**pvsgendy.csd**](../opcodes/pvsgendy.md#examples)<br>
 [**pvshift.csd**](../opcodes/pvshift.md#examples)<br>
 [**pvsifd.csd**](../opcodes/pvsifd.md#examples)<br>
 [**pvsinfo.csd**](../opcodes/pvsinfo.md#examples)<br>
