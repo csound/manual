@@ -127,6 +127,8 @@ Delete manually managed instances before deleting a definition they use. A share
 
 `delete` also accepts a `Csound` object, which holds a separate Csound engine. The [delete reference](../opcodes/delete.md) covers that form and the immediate `remove` and `destroy` operations.
 
+[start](../opcodes/start.md) prepares an embedded engine for performance. Call `perf(engine)` to advance it and [delete](../opcodes/delete.md) to release it when the containing instrument ends.
+
 ## See also
 
 [create](../opcodes/create.md), [play](../opcodes/play.md), [init](../opcodes/init.md), [perf](../opcodes/perf.md), [delete](../opcodes/delete.md), [opcodeinfo](../opcodes/opcodeinfo.md), [What's new in Csound 7](../intro/whats-new-in-csound-7.md)

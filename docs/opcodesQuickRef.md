@@ -2435,6 +2435,9 @@
 `iStatus = `[**`splice`**](opcodes/splice.md)`(voice, anchor, iMode)`<br>
 
 
+`iresult = `[**`start`**](opcodes/start.md)`(engine)`<br>
+
+
 `Sname = `[**`str`**](opcodes/str.md)`(definition)`<br>
 
 
