@@ -921,6 +921,7 @@ numeric or string values.<br>
 [setcol](../opcodes/setcol.md) - Sets a given column of a 2-dimensional array from a vector.<br>
 [setctrl](../opcodes/setctrl.md) - Configurable slider controls for realtime user input.<br>
 [setksmps](../opcodes/setksmps.md) - Sets the local ksmps value in an instrument or user-defined opcode block.<br>
+[setoption](../opcodes/setoption.md) - Sets command-line options on an embedded Csound engine.<br>
 [setp](../opcodes/setp.md) - Set the value of an instrument parameter.<br>
 [setrow](../opcodes/setrow.md) - Sets a given row of a 2-dimensional array from a vector.<br>
 [setscorepos](../opcodes/setscorepos.md) - Sets the playback position of the current score performance to a given position.<br>

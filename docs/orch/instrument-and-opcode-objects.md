@@ -127,6 +127,8 @@ Delete manually managed instances before deleting a definition they use. A share
 
 `delete` also accepts a `Csound` object, which holds a separate Csound engine. The [delete reference](../opcodes/delete.md) covers that form and the immediate `remove` and `destroy` operations.
 
+Use [setoption](../opcodes/setoption.md) to configure an embedded engine before compiling code or starting it. Its example shows how the main engine can play audio from an embedded engine configured with `-n`.
+
 ## See also
 
 [create](../opcodes/create.md), [play](../opcodes/play.md), [init](../opcodes/init.md), [perf](../opcodes/perf.md), [delete](../opcodes/delete.md), [opcodeinfo](../opcodes/opcodeinfo.md), [What's new in Csound 7](../intro/whats-new-in-csound-7.md)
