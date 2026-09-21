@@ -819,6 +819,7 @@
 [**instance-controls.csd**](../opcodes/pause.md#examples)<br>
 [**create.csd**](../opcodes/perf.md#examples)<br>
 [**prealloc.csd**](../opcodes/prealloc.md#examples)<br>
+[**opcode-object.csd**](../opcodes/run.md#examples)<br>
 [**instance-controls.csd**](../opcodes/setp.md#examples)<br>
 
 ### Instrument Control:Initialization and Reinitialization

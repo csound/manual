@@ -881,6 +881,7 @@ numeric or string values.<br>
 [round](../opcodes/round.md) - Returns the integer value nearest to _x_.<br>
 [rspline](../opcodes/rspline.md) - Generate random spline curves.<br>
 [rtclock](../opcodes/rtclock.md) - Read the real time clock from the operating system.<br>
+[run](../opcodes/run.md) - Initializes and performs an opcode object or an array of opcode objects.<br>
 [s16b14](../opcodes/s16b14.md) - Creates a bank of 16 different 14-bit MIDI control message numbers.<br>
 [s32b14](../opcodes/s32b14.md) - Creates a bank of 32 different 14-bit MIDI control message numbers.<br>
 [samphold](../opcodes/samphold.md) - Performs a sample-and-hold operation on its input.<br>

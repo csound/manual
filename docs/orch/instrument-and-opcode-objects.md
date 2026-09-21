@@ -99,7 +99,7 @@ Once an instance is in this list, Csound performs it automatically. Stop calling
 
 An opcode name such as `oscili` is an `OpcodeDef`. Pass it to `create` to get an `Opcode` object. Creating two objects gives two independent sets of opcode state.
 
-Use `run` to initialize an object and call its performance routine each control cycle. Its inputs and outputs must match the chosen opcode overload. For separate control of these phases, use `init` and `perf` instead.
+Use [run](../opcodes/run.md) to initialize an object and call its performance routine each control cycle. Its inputs and outputs must match the chosen opcode overload. For separate control of these phases, use `init` and `perf` instead.
 
 ``` csound-orc
 oscillator:Opcode = create(oscili)
