@@ -29,7 +29,7 @@ _code_ -- String containing Csound language code for an instrument.
 
 _instr_ -- compiled instrument definition.
 
-_opc_ -- opcode definition
+_opc_ -- opcode definition, supplied directly or looked up by name with [opcoderef](opcoderef.md)
 
 _overload_ -- (optional, defaults to 0) opcode overload (version) (see
 [opcodeinfo](../opcodes/opcodeinfo.md))

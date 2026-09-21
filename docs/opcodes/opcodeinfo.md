@@ -59,6 +59,10 @@ oscili.ak 	out-types: a	in-types: akjo
 ```
 
 
+## See also
+
+[opcoderef](opcoderef.md), [create](create.md)
+
 ## Credits
 
 
