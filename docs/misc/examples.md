@@ -398,6 +398,7 @@
 ### Signal I/O:Software Bus
 [**chnclear-modern.csd**](../opcodes/chnclear.md#examples)<br>
 [**chnclear.csd**](../opcodes/chnclear.md#examples)<br>
+[**chncleararray.csd**](../opcodes/chncleararray.md#examples)<br>
 [**chnget-modern.csd**](../opcodes/chnget.md#examples)<br>
 [**chnget.csd**](../opcodes/chnget.md#examples)<br>
 [**chnmix-modern.csd**](../opcodes/chnmix.md#examples)<br>

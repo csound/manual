@@ -1216,6 +1216,12 @@
 [**`chnclear`**](opcodes/chnclear.md)`(Sname1[, Sname2,...])`<br>
 
 
+[**`chnclear_array`**](opcodes/chnclear_array.md)`(Sname1[, Sname2, ...])`<br>
+
+
+[**`chncleararray`**](opcodes/chncleararray.md)`(Sname1[, Sname2, ...])`<br>
+
+
 `gival = `[**`chnexport`**](opcodes/chnexport.md)`(Sname, imode[, itype, idflt, imin, imax])`<br>
 `gkval = chnexport(Sname, imode[, itype, idflt, imin, imax])`<br>
 `gaval = chnexport(Sname, imode)`<br>
