@@ -3050,6 +3050,9 @@
 [**`logbtwo`**](opcodes/logbtwo.md)`(x)  (init-rate or control-rate args only)`<br>
 
 
+`isize = `[**`nxtpow2`**](opcodes/nxtpow2.md)`(ivalue)`<br>
+
+
 [**`polar`**](opcodes/polar.md)`(var:Complex)`<br>
 `polar(var:Complex[])`<br>
 
