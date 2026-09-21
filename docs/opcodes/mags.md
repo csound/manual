@@ -34,6 +34,8 @@ Here is an example of the mags opcode. It uses the file [mags.csd](../examples/m
 
 ## See Also
 
+[pows](pows.md) returns squared magnitudes from the same packed input format.
+
 [Vectorial opcodes](../vectorial/top.md)
 
 [array opcodes](../math/array.md)

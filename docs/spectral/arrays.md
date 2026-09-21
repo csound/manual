@@ -22,4 +22,5 @@
 * [r2c](../opcodes/r2c.md)
 * [c2r](../opcodes/c2r.md)
 * [mags](../opcodes/mags.md)
+* [pows](../opcodes/pows.md)
 * [phs](../opcodes/phs.md)

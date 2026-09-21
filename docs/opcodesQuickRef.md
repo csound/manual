@@ -4473,6 +4473,9 @@
 `kout[] = pol2rect(kmags[], kphs[])`<br>
 
 
+`kpower[] = `[**`pows`**](opcodes/pows.md)`(kspectrum[])`<br>
+
+
 `kout[] = `[**`r2c`**](opcodes/r2c.md)`(kin[])`<br>
 
 
