@@ -1007,6 +1007,7 @@ time-varying crossfade looping.<br>
 [strget](../opcodes/strget.md) - Set  a string variable at initialization time to the value stored in [strset](../opcodes/strset.md) table at the specified index, or a string p-field from the score.<br>
 [strindex](../opcodes/strindex.md) - Return the position of the first occurence of S2 in S1, or -1 if not found.<br>
 [strindexk](../opcodes/strindexk.md) - Return the position of the first occurence of S2 in S1, or -1 if not found.<br>
+[string2array](../opcodes/string2array.md) - Reads a list of numbers from a string into an array.<br>
 [strlen](../opcodes/strlen.md) - Return the length of a string, or zero if it is empty.<br>
 [strlenk](../opcodes/strlenk.md) - Return the length of a string, or zero if it is empty.<br>
 [strlower](../opcodes/strlower.md) - Convert Ssrc to lower case, and write the result to Sdst.<br>

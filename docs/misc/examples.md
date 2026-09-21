@@ -1398,6 +1398,7 @@
 
 ### Strings:Conversion
 [**strchar.csd**](../opcodes/strchar.md#examples)<br>
+[**string2array.csd**](../opcodes/string2array.md#examples)<br>
 [**strlower.csd**](../opcodes/strlower.md#examples)<br>
 
 ### Vectorial:Tables

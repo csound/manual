@@ -4052,6 +4052,10 @@
 `kchr = `[**`strchark`**](opcodes/strchark.md)`(Sstr [, kpos])`<br>
 
 
+`iarray[] = `[**`string2array`**](opcodes/string2array.md)`(Svalues)`<br>
+`karray[] = string2array(Svalues)`<br>
+
+
 `Sdst = `[**`strlower`**](opcodes/strlower.md)`(Ssrc)`<br>
 
 
