@@ -195,6 +195,7 @@ cosine interpolation, including a release segment.<br>
 [cross2](../opcodes/cross2.md) - Cross synthesis using FFT's.<br>
 [crossfm](../opcodes/crossfm.md) - Two oscillators, mutually frequency and/or phase modulated by each other.<br>
 [crunch](../opcodes/crunch.md) - Semi-physical model of a crunch sound.<br>
+[ctlchn](../opcodes/ctlchn.md) - Reads MIDI controller messages and returns their value, controller number and channel.<br>
 [ctrl14](../opcodes/ctrl14.md) - Allows a floating-point 14-bit MIDI signal scaled with a minimum and a maximum range.<br>
 [ctrl21](../opcodes/ctrl21.md) - Allows a floating-point 21-bit MIDI signal scaled with a minimum and a maximum range.<br>
 [ctrl7](../opcodes/ctrl7.md) - Allows a floating-point 7-bit MIDI signal scaled with a minimum and a maximum range.<br>

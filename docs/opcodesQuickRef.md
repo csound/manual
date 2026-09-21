@@ -3260,6 +3260,9 @@
 `kval = chanctrl(ichnl, ictlno [, ilow] [, ihigh])`<br>
 
 
+`kvalue, knumber, kchannel = `[**`ctlchn`**](opcodes/ctlchn.md)`([ichannel] [, icontroller])`<br>
+
+
 `idest = `[**`ctrl14`**](opcodes/ctrl14.md)`(ichan, ictlno1, ictlno2, imin, imax [, ifn])`<br>
 `kdest = ctrl14(ichan, ictlno1, ictlno2, kmin, kmax [, ifn])`<br>
 

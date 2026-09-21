@@ -1143,6 +1143,7 @@
 [**aftouch.csd**](../opcodes/aftouch.md#examples)<br>
 [**chanctrl-modern.csd**](../opcodes/chanctrl.md#examples)<br>
 [**chanctrl.csd**](../opcodes/chanctrl.md#examples)<br>
+[**ctlchn.csd**](../opcodes/ctlchn.md#examples)<br>
 [**ctrl14.csd**](../opcodes/ctrl14.md#examples)<br>
 [**ctrl21.csd**](../opcodes/ctrl21.md#examples)<br>
 [**ctrl7.csd**](../opcodes/ctrl7.md#examples)<br>
