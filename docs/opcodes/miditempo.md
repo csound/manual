@@ -43,6 +43,8 @@ miditempo = 96
 
 ## See also
 
+[midiclockfreq](midiclockfreq.md) estimates tempo from incoming MIDI Timing Clock messages.
+
 [Sensing and Control: Tempo and Sequencing](../control/sensing.md)
 
 ## Credits
