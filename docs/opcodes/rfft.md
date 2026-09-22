@@ -57,6 +57,8 @@ Another example of the rfft opcode, now using a Complex-type array. It uses the 
 
 ## See Also
 
+[pows](pows.md) calculates the power spectrum from the packed k-array output.
+
 [Vectorial opcodes](../vectorial/top.md)
 
 [Array opcodes](../math/array.md)

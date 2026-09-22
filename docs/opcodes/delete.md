@@ -45,7 +45,7 @@ Place `delete` alongside the code that creates the object, and keep that object 
 
 Several variables may refer to the same object. Arrange one cleanup for that object and stop using all its references after deletion. An `InstrDef` must remain available until every note that uses it has finished, including any release tail or pending scheduled event.
 
-A performance-time condition does not make `delete` run immediately. To stop an `Instr` during performance, use [turnoff](turnoff.md). `remove(definition)` attempts to remove an `InstrDef` at initialization and still requires its instances to have finished. `destroy(engine)` destroys a `Csound` object at initialization. Do not also arrange a later `delete` for an object you destroy immediately.
+A performance-time condition does not make `delete` run immediately. To stop an `Instr` during performance, use [turnoff](turnoff.md). `remove(definition)` attempts to remove an `InstrDef` at initialization and still requires its instances to have finished. [destroy](destroy.md) destroys a `Csound` object at initialization. Do not also arrange a later `delete` for an object you destroy immediately.
 
 ## Examples
 
@@ -59,7 +59,7 @@ The [object guide](../orch/instrument-and-opcode-objects.md) also has examples u
 
 ## See also
 
-[create](create.md), [init](init.md), [perf](perf.md), [turnoff](turnoff.md), [remove](remove.md)
+[destroy](destroy.md), [create](create.md), [init](init.md), [perf](perf.md), [turnoff](turnoff.md), [remove](remove.md)
 
 ## Credits
 
