@@ -675,6 +675,11 @@
 | [sorta](opcodes/sorta.md) | [sortd](opcodes/sortd.md) | [soundin](opcodes/soundin.md) | [space](opcodes/space.md) | [spat3d](opcodes/spat3d.md) |
 | [spat3di](opcodes/spat3di.md) | [spat3dt](opcodes/spat3dt.md) | [spdist](opcodes/spdist.md) | [spf](opcodes/spf.md) | [splice](opcodes/splice.md) |
 | [splitrig](opcodes/splitrig.md) | [sprintf](opcodes/sprintf.md) | [sprintfk](opcodes/sprintfk.md) | [spsend](opcodes/spsend.md) | [sqrt](opcodes/sqrt.md) |
+| [squinewave](opcodes/squinewave.md) | [sr](opcodes/sr.md) | [st2ms](opcodes/st2ms.md) | [statevar](opcodes/statevar.md) | [sterrain](opcodes/sterrain.md) |
+| [stix](opcodes/stix.md) | [str](opcodes/str.md) | [strcat](opcodes/strcat.md) | [strcatk](opcodes/strcatk.md) | [strchar](opcodes/strchar.md) |
+| [strchark](opcodes/strchark.md) | [strcmp](opcodes/strcmp.md) | [strcmpk](opcodes/strcmpk.md) | [strcpy](opcodes/strcpy.md) | [strcpyk](opcodes/strcpyk.md) |
+| [streson](opcodes/streson.md) | [strfromurl](opcodes/strfromurl.md) | [strget](opcodes/strget.md) | [strindex](opcodes/strindex.md) | [strindexk](opcodes/strindexk.md) |
+| [string2array](opcodes/string2array.md) | [strlen](opcodes/strlen.md) | [strlenk](opcodes/strlenk.md) | [strlower](opcodes/strlower.md) | [strlowerk](opcodes/strlowerk.md) |
 | [squinewave](opcodes/squinewave.md) | [sr](opcodes/sr.md) | [st2ms](opcodes/st2ms.md) | [start](opcodes/start.md) | [statevar](opcodes/statevar.md) |
 | [setoption](opcodes/setoption.md) | [setp](opcodes/setp.md) | [setrow](opcodes/setrow.md) | [setscorepos](opcodes/setscorepos.md) | [sfilist](opcodes/sfilist.md) |
 | [run](opcodes/run.md) | [s16b14](opcodes/s16b14.md) | [s32b14](opcodes/s32b14.md) | [samphold](opcodes/samphold.md) | [sandpaper](opcodes/sandpaper.md) |
