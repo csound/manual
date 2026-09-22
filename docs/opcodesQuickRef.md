@@ -2034,6 +2034,11 @@
 `aout = `[**`chebyshevpoly`**](opcodes/chebyshevpoly.md)`(ain, k0 [, k1 [, k2 [...]]])`<br>
 
 
+`aout = `[**`chebyshevpoly2`**](opcodes/chebyshevpoly2.md)`(ain, k0 [, k1 [, k2 [...]]])`<br>
+`aout = chebyshevpoly2(ain, kcoefficients)`<br>
+`aout = chebyshevpoly2(ain, icoefficients)`<br>
+
+
 `aout = `[**`pdclip`**](opcodes/pdclip.md)`(ain, kWidth, kCenter [, ibipolar [, ifullscale]])`<br>
 
 
@@ -3389,6 +3394,9 @@
 `pgmassign(ipgm, "insname"[, ichn])`<br>
 
 
+`kprogram, kchannel = `[**`pgmchn`**](opcodes/pgmchn.md)`([ichannel])`<br>
+
+
 `ires = `[**`polyaft`**](opcodes/polyaft.md)`(inote [, ilow] [, ihigh])`<br>
 `kres = polyaft(inote [, ilow] [, ihigh])`<br>
 
@@ -3565,6 +3573,10 @@
 
 
 `kcontinue = `[**`midicontinue`**](opcodes/midicontinue.md)`()`<br>
+
+
+`kstop = `[**`midistop`**](opcodes/midistop.md)`()`<br>
+`kstart = `[**`midistart`**](opcodes/midistart.md)`()`<br>
 
 
 [**`mrtmsg`**](opcodes/mrtmsg.md)`(imsgtype [, iport])`<br>
@@ -3762,6 +3774,9 @@
 
 `ares = `[**`lpcfilter`**](opcodes/lpcfilter.md)`(asig, asrc, kflg, kprd, isiz, iord [, iwin])`<br>
 `ares = lpcfilter(asig, koff, kflg, ifn, isiz, iord [, iwin])`<br>
+
+
+`kfrequency, kbandwidth = `[**`lpform`**](opcodes/lpform.md)`(kformant)`<br>
 
 
 `ares = `[**`lpfreson`**](opcodes/lpfreson.md)`(asig, kfrqratio)`<br>
